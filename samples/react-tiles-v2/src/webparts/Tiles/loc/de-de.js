@@ -9,6 +9,23 @@ define([], function() {
     "tilesPanelHeader": "Konfigurieren Sie Ihre Kachel",
     "tilesManageBtn": "Kacheln konfigurieren",
 
+    "tilesHeight": "Tile Height",
+
+    "colourMode": "Colour Mode",
+    "colourModeTheme": "Theme",
+    "colourModeUniform": "Custom Uniform",
+    "colourModeUnique": "Custom Unique",
+
+    "widthAutomaticOrStatic": "Automatic or Static Width",
+    "widthStatic": "Static",
+    "widthAutomatic": "Automatic",
+    "widthStaticSet": "Tile static width",
+
+    "iconSelectFile": "Select Icon",
+
+    "colorSetUniqueFg": "Foreground Colour",
+    "colorSetUniqueBg": "Background Colour",
+
     "titleField": "Title",
     "descriptionField": "Description",
     "urlField": "URL",

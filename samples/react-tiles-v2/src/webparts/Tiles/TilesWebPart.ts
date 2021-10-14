@@ -4,10 +4,11 @@ import * as strings from 'TilesWebPartStrings';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
-import { PropertyPaneToggle, PropertyPaneSlider } from '@microsoft/sp-property-pane';
+import { PropertyPaneToggle, PropertyPaneSlider, PropertyPaneDropdown } from '@microsoft/sp-property-pane';
 import { Tiles, ITilesProps, ITileInfo, LinkTarget } from './components';
 import { IconPicker } from '@pnp/spfx-controls-react/lib/IconPicker';
-import { initializeIcons } from 'office-ui-fabric-react/lib';
+import { ColorPicker, initializeIcons } from 'office-ui-fabric-react/lib';
+import { SimpleColorPicker } from './components/colorpicker/SimpleColorPicker';
 
 const ThemeColorsFromWindow: any = (window as any).__themeState__.theme;
 
@@ -18,8 +19,8 @@ export interface ITilesWebPartProps {
   tileColour: string;
   tileFont: string;
   title: string;
-  customColour: boolean;
   staticWidth: boolean;
+  colourMode: string;
   themeVariant: IReadonlyTheme | undefined;
   ThemeColorsFromWindow: IReadonlyTheme | undefined;
 }
@@ -69,12 +70,12 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
         tileWidth: this.properties.tileWidth,
         tileColour: this.properties.tileColour,
         tileFont: this.properties.tileFont,
-        customColour: this.properties.customColour,
         staticWidth: this.properties.staticWidth,
         collectionData: this.properties.collectionData,
         displayMode: this.displayMode,
         themeVariant: this._themeVariant,
         ThemeColorsFromWindow: ThemeColorsFromWindow,
+        colourMode: this.properties.colourMode,
         fUpdateProperty: (value: string) => {
           this.properties.title = value;
         },
@@ -113,7 +114,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
     let tileFontplaceholder: any = [];
     let tileStaticWidthplaceholder: any = [];
 
-    if (this.properties.customColour) {
+    if (this.properties.colourMode === '2') {
       tileColourplaceholder = this.propertyFieldColorPicker('tileColour', {
         key: "tileColour",
         label: strings.tileColour,
@@ -143,7 +144,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
 
     if (this.properties.staticWidth) {
       tileStaticWidthplaceholder = PropertyPaneSlider('tileWidth', {
-        label: 'Tile static width',
+        label: strings.widthStaticSet,
         max: 1000,
         min: 10,
         step: 1,
@@ -195,14 +196,46 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                       required: true
                     },
                     {
+                      id: "background",
+                      title: strings.colorSetUniqueBg,
+                      type: this.customCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
+                        return (
+                          React.createElement(SimpleColorPicker, {
+                            key: itemId,
+                            onChange: (colour: string) => {
+                              onUpdate(field.id, colour);
+                              return Event;
+                            }
+                          })
+                        );
+                      }
+                    },
+                    {
+                      id: "foreground",
+                      title: strings.colorSetUniqueFg,
+                      type: this.customCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
+                        return (
+                          React.createElement(SimpleColorPicker, {
+                            key: itemId,
+                            onChange: (colour: string) => {
+                              onUpdate(field.id, colour);
+                              return Event;
+                            }
+                          })
+                        );
+                      }
+                    },
+                    {
                       id: "icon",
-                      title: "Select Icon",
+                      title: strings.iconField,
                       type: this.customCollectionFieldType.custom,
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement(IconPicker, {
                             key: itemId,
-                            buttonLabel: "Select File",
+                            buttonLabel: strings.iconSelectFile,
                             onChange: (iconName: string) => {
                               onUpdate(field.id, iconName);
                               return Event;
@@ -238,7 +271,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
               groupName: "Tile Settings",
               groupFields: [
                 PropertyPaneSlider('tileHeight', {
-                  label: 'Tile Height',
+                  label: strings.tilesHeight,
                   max: 300,
                   min: 120,
                   step: 1,
@@ -247,18 +280,20 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                 }),
                 PropertyPaneToggle('staticWidth', {
                   key: 'staticWidthID',
-                  label: 'Automatic or Static width',
-                  onText: 'Static width',
-                  offText: 'Automatic width',
-                  checked: this.properties.customColour
+                  label: strings.widthAutomaticOrStatic, 
+                  onText: strings.widthStatic,
+                  offText: strings.widthAutomatic,
+                  checked: this.properties.staticWidth
                 }),
                 tileStaticWidthplaceholder,
-                PropertyPaneToggle('customColour', {
-                  key: 'customColourID',
-                  label: 'Theme or Custom colours',
-                  onText: 'Custom Colours',
-                  offText: 'Theme Colours',
-                  checked: this.properties.customColour
+                PropertyPaneDropdown('colourMode', {
+                  label: strings.colourMode,
+                  options: [
+                    { key: '1', text: strings.colourModeTheme },
+                    { key: '2', text: strings.colourModeUniform },
+                    { key: '3', text: strings.colourModeUnique }
+                  ],
+                  selectedKey: '1',
                 }),
                 tileColourplaceholder,
                 tileFontplaceholder

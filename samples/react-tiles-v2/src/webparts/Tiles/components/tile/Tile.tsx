@@ -5,11 +5,8 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { tilesDataLabel } from 'TilesWebPartStrings';
 
-
-
 export class Tile extends React.Component<ITileProps, {}> {
   public render(): React.ReactElement<ITileProps> {
-
     //const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
     const { palette }: IReadonlyTheme = this.props.themeVariant;
     const tileStyle: React.CSSProperties = {};
@@ -18,7 +15,7 @@ export class Tile extends React.Component<ITileProps, {}> {
     const tileInnerStyle: React.CSSProperties = {};
     const fontInnerStyle: React.CSSProperties = {};
 
-    if (this.props.tileWidth) {
+    if (this.props.staticWidth) {
       tileStyle.flexBasis = `${this.props.tileWidth}px`;
       tileStyle.minWidth = `${this.props.tileWidth}px`;
       tileStyle.flexGrow = 0;
@@ -32,14 +29,17 @@ export class Tile extends React.Component<ITileProps, {}> {
       icoStyle.fontSize = `${Math.round(this.props.tileHeight / 2 - 18)}px`;
       tileFontSize.fontSize = `${Math.round(this.props.tileHeight / 6 - 6)}px`;
     }
-    if (this.props.customColour) {
+    if (this.props.colourMode === '1' || this.props.colourMode === undefined) {
+      tileInnerStyle.backgroundColor = palette.themePrimary;
+      fontInnerStyle.color = palette.white;
+    } else if (this.props.colourMode === '2') {
       if (this.props.tileColour) {
         tileInnerStyle.backgroundColor = `${this.props.tileColour}`;
         fontInnerStyle.color = `${this.props.tileFont}`;
       }
     } else {
-      tileInnerStyle.backgroundColor = palette.themePrimary;
-      fontInnerStyle.color = palette.white;
+      tileInnerStyle.backgroundColor = `${this.props.item.background}`;
+      fontInnerStyle.color = `${this.props.item.foreground}`;
     }
     return (
       <div className={styles.tile} style={tileStyle}>

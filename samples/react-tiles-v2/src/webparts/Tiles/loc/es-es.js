@@ -9,6 +9,23 @@ define([], function() {
     "tilesPanelHeader": "Configure sus recuadros",
     "tilesManageBtn": "Configure los recuadros",
 
+    "tilesHeight": "Tile Height",
+
+    "colourMode": "Colour Mode",
+    "colourModeTheme": "Theme",
+    "colourModeUniform": "Custom Uniform",
+    "colourModeUnique": "Custom Unique",
+
+    "widthAutomaticOrStatic": "Automatic or Static Width",
+    "widthStatic": "Static",
+    "widthAutomatic": "Automatic",
+    "widthStaticSet": "Tile static width",
+
+    "iconSelectFile": "Select Icon",
+
+    "colorSetUniqueFg": "Foreground Colour",
+    "colorSetUniqueBg": "Background Colour",
+
     "titleField": "Título",
     "descriptionField": "Descripción",
     "urlField": "URL",

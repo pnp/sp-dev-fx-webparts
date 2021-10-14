@@ -7,8 +7,8 @@ export interface ITileProps {
   tileWidth: number;
   tileColour: string;
   tileFont: string;
-  customColour:boolean;
   staticWidth:boolean;
+  colourMode:string;
   themeVariant: IReadonlyTheme | undefined;
   ThemeColorsFromWindow: IReadonlyTheme | undefined;
 }

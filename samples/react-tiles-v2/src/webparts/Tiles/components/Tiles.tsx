@@ -39,8 +39,8 @@ export class Tiles extends React.Component<ITilesProps, {}> {
                       tileWidth={this.props.tileWidth}
                       tileColour={this.props.tileColour}
                       tileFont={this.props.tileFont}
-                      customColour={this.props.customColour}
                       staticWidth={this.props.staticWidth}
+                      colourMode={this.props.colourMode}
                       themeVariant={this.props.themeVariant}
                       ThemeColorsFromWindow={this.props.ThemeColorsFromWindow} />)
               }
