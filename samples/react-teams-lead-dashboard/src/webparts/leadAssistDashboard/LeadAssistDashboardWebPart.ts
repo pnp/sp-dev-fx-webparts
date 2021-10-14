@@ -39,7 +39,7 @@ export default class LeadAssistDashboardWebPart extends BaseClientSideWebPart<IL
     this.graphClient = await this.context.msGraphClientFactory.getClient();
 
     // Get the settings
-    const settings = await SettingsService.getSettings(this.graphClient, this.context.httpClient);
+    const settings = await SettingsService.getSettings(this.graphClient, this.context.httpClient, 'lead_dashboard_settings.json');
 
     // If there are settings specified
     if (settings) {
