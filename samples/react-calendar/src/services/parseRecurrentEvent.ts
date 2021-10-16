@@ -369,6 +369,8 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.fRecurrence === "1" && e.MasterSeriesItemID !== "") {
+        e.EventDate = new Date(this.parseDate(e.EventDate, e.fAllDayEvent));
+        e.EndDate = new Date(this.parseDate(e.EndDate, e.fAllDayEvent));
         const ni = this.cloneObj(e);
         er.push(ni);
       }
