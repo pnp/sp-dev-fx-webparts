@@ -62,11 +62,13 @@ Solution|Author(s)
 --------|---------
 react-modern-charts|Jeremy Coleman (MCP, PC Professional, Inc.)
 react-modern-charts|Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
+react-modern-charts|[Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.4|October 19, 2021| Fix values of managed metadata fields
 1.0.0.3|July 30, 2020| Support for Managed Metadata Field(Single) as Label
 1.0.0.2|February 09, 2020| Upgrade to SPFx 1.10.0
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
