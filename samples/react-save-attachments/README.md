@@ -10,7 +10,7 @@ This SPFx Outlook Add-In lets users save any email attachments to a OneDrive fol
 
 ## Used SharePoint Framework Version
 
-![SPFx 1.10](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.13](https://img.shields.io/badge/version-1.13-green.svg)
 
 ## Features
 
@@ -34,6 +34,7 @@ react-save-attachments | [Aakash Bhardwaj](https://twitter.com/aakash_316)
 Version|Date|Comments
 -------|----|--------
 1.0|October 4, 2020|Initial release
+1.1|October 19, 2021|Upgraded to SPFx 1.13.0
 
 ## Minimal Path to Awesome
 
