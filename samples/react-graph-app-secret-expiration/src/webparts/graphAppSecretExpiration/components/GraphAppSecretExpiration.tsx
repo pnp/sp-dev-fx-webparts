@@ -5,7 +5,9 @@ import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp
 import { IApplications, IApplication, IFormattedApplication } from '../../../models/IApplication';
 import { IGraphAppSecretExpirationState } from './GraphAppSecretExpirationState';
 import * as moment from 'moment';
-import { DefaultButton, Spinner, mergeStyles } from '@fluentui/react';
+import { DefaultButton, Spinner, mergeStyles, SearchBox } from '@fluentui/react';
+import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
+import * as strings from 'GraphAppSecretExpirationWebPartStrings';
 
 const stackItemHidden = mergeStyles({
   display: 'none',
@@ -57,9 +59,13 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     super(props);
     this.state = {
       applications: [],
+      filteredApplications: [],
+      filterValue: "",
+      searchFilter: "",
       error: undefined,
       loading: true,
-      groupByFields: []
+      groupByFields: [],
+      page: 1
     };
   }
 
@@ -113,39 +119,77 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     var today = (moment(Date.now())).format('DD-MMM-YYYY');
     try {
       applications.forEach(app => {
-
-        if (app.passwordCredentials.length > 0) {
-          app.passwordCredentials.forEach(pswd => {
-            let daysBeforeExpiration = moment.duration((moment(pswd.endDateTime)).diff(today, 'days'), 'days').asDays();
-            let formatedApp: IFormattedApplication = {
-              applicationId: app.appId,
-              displayName: app.displayName,
-              type: "Secret",
-              expirationDate: (moment(pswd.endDateTime)).format('DD-MMM-YYYY'),
-              daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
-            };
-            displayedApplication.push(formatedApp);
-          });
-        }
-        if (app.keyCredentials.length > 0) {
-          app.keyCredentials.forEach(keyCred => {
-            let daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
-            let formatedApp: IFormattedApplication = {
-              applicationId: app.appId,
-              displayName: app.displayName,
-              type: "Certificate",
-              expirationDate: (moment(keyCred.endDateTime)).format('DD-MMM-YYYY'),
-              daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
-            };
-            displayedApplication.push(formatedApp);
-          });
-        }
+        app.passwordCredentials.forEach(pswd => {
+          let daysBeforeExpiration = moment.duration((moment(pswd.endDateTime)).diff(today, 'days'), 'days').asDays();
+          let formatedApp: IFormattedApplication = {
+            applicationId: app.appId,
+            displayName: app.displayName,
+            type: "Secret",
+            expirationDate: (moment(pswd.endDateTime)).format('DD-MMM-YYYY'),
+            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
+          };
+          displayedApplication.push(formatedApp);
+        });
+        app.keyCredentials.forEach(keyCred => {
+          let daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
+          let formatedApp: IFormattedApplication = {
+            applicationId: app.appId,
+            displayName: app.displayName,
+            type: "Certificate",
+            expirationDate: (moment(keyCred.endDateTime)).format('DD-MMM-YYYY'),
+            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
+          };
+          displayedApplication.push(formatedApp);
+        });
       });
       this.setState({
-        applications: displayedApplication
+        applications: displayedApplication,
+        filteredApplications: displayedApplication
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  private _getPage(selectedPage: number) {
+    this.setState({
+      page: selectedPage
+    });
+  }
+
+  private _filterApplication = (value, clear: boolean) => {
+    let searchResult: IFormattedApplication[] = [];
+    if (clear) {
+      this.state.applications.forEach(app => {
+        if (this._filterByProperties(app, value)) {
+          searchResult.push(app);
+        }
+      });
+      this.setState({
+        filteredApplications: searchResult,
+        filterValue: value
+      });
+    } else {
+      this.setState({
+        filteredApplications: this.state.applications,
+        filterValue: value,
+        page: 1
+      });
+    }
+
+  }
+
+  private _filterByProperties(application: IFormattedApplication, filterValue) {
+    if (application.applicationId.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
+      return true;
+    } else if (application.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
+      return true;
+    } else if (application.expirationDate.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
+      return true;
+    } else if (application.type.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -177,21 +221,31 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
           <p className={styles.title}>Application list :</p>
           <div className={this.state.loading ? "" : stackItemHidden}>
             <Spinner label="Loading..." ariaLive="assertive" labelPosition="left" />
-            <br/>
+            <br />
           </div>
           <div className={this.state.loading ? stackItemHidden : ""}>
             <DefaultButton text={this.state.groupByFields.length === 0 ? "Group by App ID" : "Ungroup"} onClick={this._groupView} />
+            <SearchBox placeholder="Search" onChange={(e, text) => this._filterApplication(text, false)} onClear={() => this._filterApplication("", true)} value={this.state.filterValue} />
             <ListView
-              items={this.state.applications}
+              items={this.state.filteredApplications.slice(this.state.page === 1 || this.state.filterValue !== "" ? 0 : this.state.page * 10 - 10, this.state.page * 10)}
               viewFields={_viewFields}
               iconFieldName="ServerRelativeUrl"
               compact={true}
               selectionMode={SelectionMode.none}
               selection={this._getSelection}
               groupByFields={this.state.groupByFields}
-              showFilter={true}
+              showFilter={false}
               filterPlaceHolder="Search..." />
           </div>
+          <Pagination
+            currentPage={1}
+            totalPages={Math.floor(this.state.filteredApplications.length / 10) + 1}
+            onChange={(page) => this._getPage(page)}
+            limiter={3} // Optional - default value 3
+            hideFirstPageJump // Optional
+            hideLastPageJump // Optional
+            limiterIcon={"Emoji12"} // Optional
+          />
         </div>
       </div>
     );
