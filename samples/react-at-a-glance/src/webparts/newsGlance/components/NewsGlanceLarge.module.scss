@@ -25,13 +25,12 @@
   }
 
   .leftItem {
-    max-width: 150px;
-    object-fit: contain;
-    align-self: flex-start;
+    max-width: 200px;
+    flex: 1;
   }
 
   .rightItem {
-    flex: 1 1 auto;
+    flex: 2;
   }
 
   .articleImage {
