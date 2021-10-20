@@ -10,13 +10,14 @@ When added to a Vertical Section it can be used as a Contents table for the page
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.9.1-green.svg)
+![version](https://img.shields.io/badge/version-1.12.1-green.svg)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|September 5, 2019|Initial release
+1.1|October 20, 2021|SPFx Upgraded to 1.12.1 and code refactored
 
 ## Minimal Path to Awesome
 
