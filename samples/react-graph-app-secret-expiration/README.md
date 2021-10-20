@@ -32,6 +32,7 @@ react-graph-app-secret-expiration | [Aimery Thomas](https://github.com/a1mery) (
 Version|Date|Comments
 -------|----|--------
 1.0|September 17, 2021|Initial release
+1.1|October 10, 2021|Add pagination
 
 
 ## Minimal Path to Awesome
