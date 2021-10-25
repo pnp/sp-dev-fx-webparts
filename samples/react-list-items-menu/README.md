@@ -55,6 +55,7 @@ Version|Date|Comments
 1.0.0|November 20, 2020|Initial release
 1.0.1|February 18, 2021|Added support for metadata columns
 1.0.2|February 21, 2021|Fixed `gulp build` issues
+1.0.3|October 25, 2021|Fixed bug support for metadata columns and Lookup fields
 
 ## Minimal Path to Awesome
 
