@@ -106,7 +106,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             disabled: false,
             onPropertyChange: this.listConfigurationChanged.bind(this),
             properties: this.properties,
-            context: this.context,
+            context: this.context as any,
             onGetErrorMessage: null,
             deferredValidationTime: 0,
             key: 'listPickerFieldId',

@@ -6,7 +6,14 @@
         "version": "2.0.0.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
-        "isDomainIsolated": false
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "websiteUrl": "",
+            "mpnId": ""
+          }
     },
     "paths": {
         "zippedPackage": "solution/react-kanban-board.sppkg"
