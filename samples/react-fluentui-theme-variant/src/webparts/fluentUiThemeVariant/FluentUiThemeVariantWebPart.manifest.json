@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "91003ade-424e-44d5-8c1e-af1273519a18",
+  "alias": "FluentUiThemeVariantWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Fluent UI Theme Variant" },
+    "description": { "default": "Example on how to apply Fluent UI theme variant not only at Section level but at Web Part level" },
+    "officeFabricIconFontName": "BackgroundColor",
+    "properties": {
+    }
+  }]
+}

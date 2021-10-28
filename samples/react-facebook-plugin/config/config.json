@@ -11,8 +11,8 @@
       ]
     }
   },
+  "externals": {},
   "localizedResources": {
     "FacebookPageWebPartStrings": "lib/webparts/facebookPage/loc/{locale}.js"
-  },
-  "externals": {}
+  }
 }

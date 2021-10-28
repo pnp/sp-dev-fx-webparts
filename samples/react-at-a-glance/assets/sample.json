@@ -1,0 +1,81 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-at-a-glance",
+    "source": "pnp",
+    "title": "At a Glance",
+    "shortDescription": "This sample shows a web part to show the first few sentences of an article in a SharePoint site, so that the article can be looked at a glance.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-at-a-glance",
+    "longDescription": [
+      "This sample shows a web part to show the first few sentences of an article in a SharePoint site, so that the article can be looked at a glance.",
+      "The idea is based of the At a glance section of a news in the BBC news app."
+    ],
+    "creationDateTime": "2021-09-07",
+    "updateDateTime": "2021-09-07",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.12.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/demo.gif",
+        "alt": "Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/article-content-desktop.png",
+        "alt": "Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/article-content-mobile.png",
+        "alt": "Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/article-content.png",
+        "alt": "Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/at_a_glance_large.png",
+        "alt": "Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/custom_props.png",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "anoopt",
+        "pictureUrl": "https://github.com/anoopt.png",
+        "name": "Anoop Tatti"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

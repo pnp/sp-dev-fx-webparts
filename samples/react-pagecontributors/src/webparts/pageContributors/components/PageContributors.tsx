@@ -160,7 +160,7 @@ export default class PageContributors extends React.Component<IPageContributorsP
         }
         else if (Environment.type == EnvironmentType.SharePoint ||
             Environment.type == EnvironmentType.ClassicSharePoint) {
-            PageContributorsService.getPageContributors(this.props.pageUrl || location.pathname).then(
+            PageContributorsService.getPageContributors(this.props.pageUrl).then(
                 (response) => {
                     this._setContributors(response);
                 },

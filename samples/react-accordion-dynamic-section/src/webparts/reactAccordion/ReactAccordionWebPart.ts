@@ -35,6 +35,8 @@ export interface IReactAccordionWebPartProps {
   allowMultipleExpanded: boolean;
   accordianTitleColumn: string;
   accordianContentColumn: string;
+  accordianSortColumn: string;
+  isSortDescending: false;
 }
 
 export default class ReactAccordionWebPart extends BaseClientSideWebPart<
@@ -65,6 +67,8 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
         accordionTitle: this.properties.accordionTitle,
         accordianTitleColumn: this.properties.accordianTitleColumn,
         accordianContentColumn: this.properties.accordianContentColumn,
+        accordianSortColumn: this.properties.accordianSortColumn,
+        isSortDescending: this.properties.isSortDescending,
         allowZeroExpanded: this.properties.allowZeroExpanded,
         allowMultipleExpanded: this.properties.allowMultipleExpanded,
         displayMode: this.displayMode,
@@ -341,6 +345,17 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
                   label: "Select the Column for Accordion Content.",
                   options: this.allListColumns,
                   disabled: this.choicesDropdownDisabled,
+                }),
+                PropertyPaneDropdown("accordianSortColumn", {
+                  label: "Select the Column for Accordion Sort Rows.",
+                  options: this.allListColumns,
+                  disabled: this.choicesDropdownDisabled,
+                }),
+                PropertyPaneToggle("isSortDescending", {
+                  label: "Sort type",
+                  onText: "Descending",
+                  offText: "Ascending",
+                  disabled: !this.properties.accordianSortColumn
                 }),
                 PropertyPaneToggle("allowZeroExpanded", {
                   label: "Allow zero expanded",

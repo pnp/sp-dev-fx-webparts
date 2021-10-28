@@ -5,6 +5,8 @@
 Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.  
 The web part accepts a search query through a Dynamic Data connection, to further filter the displayed results. A source for this search query is not provided, but by default this can come from the Microsoft Search search box or the Page Environment. You could also use the Search Box Web Part provided by the [PnP Modern Search Web Parts](https://microsoft-search.github.io/pnp-modern-search/).
 
+The sample also shows how to use SPFx Web Part asynchronous rendering using `isRenderAsync` property and `renderCompleted` method.
+
 ![directory](./assets/MicrosoftGraphPeopleSearch.gif) 
 ![directory](./assets/MicrosoftGraphPeopleSearch-LPC.gif) 
 

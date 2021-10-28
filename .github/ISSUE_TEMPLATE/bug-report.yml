@@ -134,18 +134,6 @@ body:
       - label: other (enter in the "Additional environment details" area below)
 
 - type: input
-  id: spfx
-  validations:
-    required: true
-  attributes:
-    label: SPFx version
-    placeholder: 1.11.0
-    description: |
-        Which version of SPFx are you using?
-        
-        TIP: To find out, run `npm ls -g --depth=0 @microsoft/generator-sharepoint` and provide the number that comes after `@microsoft/generator-sharepoint@`
-
-- type: input
   id: Node
   validations:
     required: true

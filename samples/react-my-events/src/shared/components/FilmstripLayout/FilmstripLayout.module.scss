@@ -1,0 +1,117 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+:export {
+  centerPadding: 50px;
+}
+
+.filmstripLayout {
+  position: relative;
+
+  &.filmStrip {
+    margin-bottom: 27px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    :global(.slick-slide) {
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+  }
+
+  .sliderButtons {
+    opacity: 0;
+  }
+
+  &:hover .sliderButtons {
+    opacity: 1;
+
+    &:hover {
+      color: $ms-color-white;
+    }
+  }
+}
+
+.indexButtonContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.indexButton {
+  font-size: 28px;
+  font-weight: 400;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: 0 0;
+  cursor: pointer;
+  color: $ms-color-white;
+  width: 40px;
+  min-width: 20px;
+  margin-left: 0;
+  line-height: 40px;
+  box-sizing: content-box;
+  background-color: $ms-color-black;
+  opacity: 0.6;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+
+  &:hover {
+    color: $ms-color-white;
+    background-color: $ms-color-black;
+    opacity: 0.6;
+  }
+
+  &:active {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+}
+
+.carouselDotsContainer {
+  .carouselDot {
+    display: inline-block;
+    background-color: $ms-color-black;
+    height: 4px;
+    width: 4px;
+    opacity: 0.5;
+    border: 2px solid $ms-color-black;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.25;
+    outline: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+:global(.slick-active) {
+  .carouselDotsContainer {
+    .carouselDot {
+      background-color: "[theme:themeDark, default: #005a9e]";
+      opacity: 0.75;
+      border-color: "[theme:themeDark, default: #005a9e]";
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.indexButton:global(.ms-Button-flexContainer):hover:global(.ms-Icon),
+.indexButton:global(.ms-Icon:hover),
+.indexButton:hover:global(.ms-Icon) {
+  color: $ms-color-white;
+}
+
+.leftPositioned {
+  left: 0;
+}
+
+.rightPositioned {
+  right: 0;
+}

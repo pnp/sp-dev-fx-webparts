@@ -1,0 +1,12 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+    "port": 4321,
+    "https": true,
+
+    "serveConfigurations": {
+        "default": {
+            "pageUrl": "https://russellwgove.sharepoint.com/sites/ReactPrivateLibraries/_layouts/15/workbench.aspx"
+
+        }
+    }
+}

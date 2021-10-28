@@ -3,7 +3,7 @@
   "solution": {
     "name": "Advanced Page Properties",
     "id": "daae06a2-8599-445c-93c0-3bd739305f56",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

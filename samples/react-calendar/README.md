@@ -138,6 +138,7 @@ Version|Date|Comments
 1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
 1.0.11|May 10, 2021|Optimized page refresh using local storage
+1.0.12|June 21, 2021|Fixes overlap with Year-view and the comment section by adding a vertical scrollbar.
 
 
 ## Minimal Path to Awesome

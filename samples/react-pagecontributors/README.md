@@ -26,7 +26,7 @@ Displays page contributors in reverse chronological order.
 ## Compatibility
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![Node.js LTS 14.x](https://img.shields.io/badge/Node.js-LTS%2014.x-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
@@ -51,6 +51,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|July 27, 2017|Initial release
 1.1.0|May 23, 2021|Update SPFx (v1.12.1) version and replace sp-pnp-js with @pnp/sp (v2.5)
+1.2.0|July 5, 2021|Add support for homepage page
 
 ## Minimal Path to Awesome
 

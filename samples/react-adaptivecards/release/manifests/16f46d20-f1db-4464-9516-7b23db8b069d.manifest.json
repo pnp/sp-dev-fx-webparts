@@ -1,0 +1,96 @@
+{
+  "id": "16f46d20-f1db-4464-9516-7b23db8b069d",
+  "alias": "AdaptiveCardHostWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "supportsThemeVariants": true,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Adaptive Card Host"
+      },
+      "description": {
+        "default": "Displays Adaptive Cards within SharePoint"
+      },
+      "iconImageUrl": "data:image/svg+xml,%3C?xml version='1.0' encoding='UTF-8'?%3E %3Csvg width='96px' height='96px' viewBox='0 0 96 96' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3Eadaptive_cards%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='assets' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='adaptive_cards'%3E %3Cg id='Group-21'%3E %3Crect id='Rectangle-17-Copy-22' fill='%233A96DD' x='0' y='0' width='96' height='96' rx='48'%3E%3C/rect%3E %3Cg id='Page-1' transform='translate(22.000000, 30.000000)' fill='%23FFFFFF'%3E %3Cg id='Group-3'%3E %3Cpath d='M6.38596491,0.911322807 C2.86091228,0.911322807 0,3.77223509 0,7.29728772 L0,19.9702351 L3.19298246,19.9702351 L3.19298246,7.29728772 C3.19298246,5.53795439 4.62663158,4.10430526 6.38596491,4.10430526 L35.122807,4.10430526 L35.122807,0.911322807 L6.38596491,0.911322807 Z' id='Fill-1'%3E%3C/path%3E %3C/g%3E %3Cpolygon id='Fill-4' points='0 36.0341298 12.922 36.0341298 12.922 32.8411474 5.45042105 32.8411474 15.8052632 22.4894982 13.5478246 20.2320596 3.19298246 30.5837088 3.19298246 23.1632175 0 23.1632175'%3E%3C/polygon%3E %3Cg id='Group-8' transform='translate(35.122807, 0.000000)'%3E %3Cpolygon id='Fill-6' points='3.19298246 0.911322807 3.19298246 4.10430526 10.5144912 4.10430526 0.159649123 14.4591474 2.41708772 16.716586 12.7719298 6.36174386 12.7719298 13.6832526 15.9649123 13.6832526 15.9649123 0.911322807'%3E%3C/polygon%3E %3C/g%3E %3Cpath d='M47.8947368,29.6481649 C47.8947368,31.4106912 46.4610877,32.8411474 44.7017544,32.8411474 L16.1149825,32.8411474 L16.1149825,36.0341298 L44.7017544,36.0341298 C48.226807,36.0341298 51.0877193,33.1732175 51.0877193,29.6481649 L51.0877193,16.8762351 L47.8947368,16.8762351 L47.8947368,29.6481649 Z' id='Fill-9'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E",
+      "properties": {
+        "template": "",
+        "data": "",
+        "dynamicTemplate": {},
+        "useTemplating": false
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "adaptive-card-host-web-part",
+    "scriptResources": {
+      "adaptive-card-host-web-part": {
+        "type": "path",
+        "path": "adaptive-card-host-web-part.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.9.0"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.9.0"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6",
+        "version": "1.12.1"
+      },
+      "AdaptiveCardHostWebPartStrings": {
+        "type": "path",
+        "path": "AdaptiveCardHostWebPartStrings_en-us.js"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "en-US": "PropertyControlStrings_en-us.js",
+          "fr-FR": "PropertyControlStrings_fr-fr.js",
+          "nl-NL": "PropertyControlStrings_nl-nl.js",
+          "no": "PropertyControlStrings_no.js",
+          "ru-RU": "PropertyControlStrings_ru-ru.js",
+          "zh-CN": "PropertyControlStrings_zh-cn.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us.js"
+      }
+    }
+  }
+}

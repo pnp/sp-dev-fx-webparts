@@ -1,0 +1,39 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.grid {
+  color: inherit;
+}
+
+.documentTile {
+  background-color: transparent;
+  outline: transparent;
+  position: relative;
+}
+
+.gridItem {
+  color: inherit;
+  //margin-bottom: 20px;
+}
+
+
+.documentTile:hover::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  pointer-events: none;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: $ms-color-themeDarker !important;
+}
+.spinnerLoading{
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.DocumentCardActionsPadding{
+  padding: 4px 4px;
+}

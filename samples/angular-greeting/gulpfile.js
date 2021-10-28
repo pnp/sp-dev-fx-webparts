@@ -60,5 +60,12 @@ build.configureWebpack.mergeConfig({
 /**
  * Custom Framework Specific gulp tasks
  */
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
 
+  result.set('serve', result.get('serve-deprecated'));
+
+  return result;
+};
 build.initialize(gulp);

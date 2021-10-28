@@ -3,7 +3,7 @@
   "solution": {
     "name": "React Quick Poll",
     "id": "890ced10-dacc-4d0d-b9df-355a289980b3",
-    "version": "2.0.0.0",
+    "version": "2.1.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

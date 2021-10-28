@@ -109,7 +109,8 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
   }
   // Render
   public render(): React.ReactElement<IHappyBirthdayCardProps> {
-    this._birthdayMsg = this.state.isBirthdayToday ? strings.HappyBirthdayMsg : strings.NextBirthdayMsg;
+    
+    this._birthdayMsg = this.state.isBirthdayToday ? (this.props.anniversary? strings.HappyAnniversaryMsg: strings.HappyBirthdayMsg) : (this.props.anniversary? strings.NextAnniversaryMsg: strings.NextBirthdayMsg);
     return (
       <div className={styles.happyBirdthay}>
         <div className={styles.documentCardWrapper}>

@@ -1,0 +1,15 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.myonedrivefiles {
+  .noMessages {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+  .titleArea{
+    cursor: pointer;
+  }
+}

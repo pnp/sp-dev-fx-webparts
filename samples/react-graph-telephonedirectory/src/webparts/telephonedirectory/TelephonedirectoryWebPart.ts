@@ -26,7 +26,7 @@ export default class TelephonedirectoryWebPart extends BaseClientSideWebPart<ITe
         context:this.context,
         MsGraphClient:this.MSGraphClient,
         DisplayMode:this.displayMode,
-        WebpartTitle:strings.WebpartTitle,
+        WebpartTitle:this.properties.Title,
         updateProperty: (value: string) => {
           this.properties.Title = value;
         }

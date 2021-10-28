@@ -25,6 +25,16 @@ body:
   validations:
     required: true
 
+- type: input
+  id: spfx
+  validations:
+    required: false
+  attributes:
+    label: SPFx version
+    placeholder: 1.12.1
+    description: |
+        Which version of SPFx would you like this sample to work with? Leave blank if no preference.
+
 - type: dropdown
   id: willing-to-help
   attributes:

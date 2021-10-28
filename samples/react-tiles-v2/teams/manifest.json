@@ -1,0 +1,44 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.5",
+    "packageName": "Tiles V2 App",
+    "id": "3f170f95-26da-4621-9f3e-6e10078c8fa3",
+    "version": "0.1",
+    "developer": {
+      "name": "Omar El-Anis",
+      "websiteUrl": "https://spdeveloper.co.uk",
+      "privacyUrl": "https://spdeveloper.co.uk",
+      "termsOfUseUrl": "https://spdeveloper.co.uk"
+    },
+    "name": {
+      "short": "Tiles V2 App"
+    },
+    "description": {
+      "short": "Displayes a group of links as tiles",
+      "full": "This app displayes a group of tiles which can be set to navigate to different URLs"
+    },
+    "icons": {
+      "outline": "3f170f95-26da-4621-9f3e-6e10078c8fa3_outline.png",
+      "color": "3f170f95-26da-4621-9f3e-6e10078c8fa3_color.png"
+    },
+    "accentColor": "#004578",
+    "configurableTabs": [
+      {
+        "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=26cb4af3-7f48-4737-b82a-4e24167c2d07%26forceLocale={locale}",
+        "canUpdateConfiguration": true,
+        "scopes": [
+          "team"
+        ]
+      }
+    ],
+    "validDomains": [
+      "*.login.microsoftonline.com",
+      "*.sharepoint.com",
+      "spoprod-a.akamaihd.net",
+      "resourceseng.blob.core.windows.net"
+    ],
+    "webApplicationInfo": {
+      "resource": "https://{teamSiteDomain}",
+      "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+  }

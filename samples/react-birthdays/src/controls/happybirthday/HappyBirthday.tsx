@@ -35,6 +35,8 @@ export class HappyBirthday extends React.Component<IHappyBirthdayProps, IHappbir
                 <HappyBirdthayCard userName={user.userName}
                   jobDescription={user.jobDescription}
                   birthday={moment(user.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('Do MMMM')}
+                  anniversary={user.anniversary}
+                  congratulationsMsg={user.message}
                   userEmail={user.userEmail}
                   imageTemplate={this.props.imageTemplate}
                 />

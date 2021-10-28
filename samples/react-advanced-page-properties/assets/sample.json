@@ -15,7 +15,7 @@
       "- Improved support for dates"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2021-03-30",
+    "updateDateTime": "2021-09-22",
     "products": [
       "SharePoint",
       "Office"
@@ -57,6 +57,12 @@
         "pictureUrl": "https://github.com/mhomol.png",
         "name": "Mike Homol",
         "twitter": "homol"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
       }
     ],
     "references": [
