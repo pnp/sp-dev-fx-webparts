@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "CSS in JS with SharePoint Framework and TypeStyle",
     "shortDescription": "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-css-in-js-typestyle",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-css-in-js-typestyle",
     "longDescription": [
       "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library."
     ],
-    "created": "2020-04-24",
-    "modified": "2020-04-24",
+    "creationDateTime": "2020-04-24",
+    "updateDateTime": "2020-04-24",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif",
         "alt": "CSS in JS with SharePoint Framework and TypeStyle"
       }
     ],

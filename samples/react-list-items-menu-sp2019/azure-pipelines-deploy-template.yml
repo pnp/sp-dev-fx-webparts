@@ -1,0 +1,39 @@
+parameters:
+  # unique name of the job
+  job_name: deploy_sppkg
+  # friendly name of the job
+  display_name: Upload & deploy *.sppkg to SharePoint app catalog
+  # name of target enviroment deploying to
+  target_environment: ''
+  # app catalog scope (tenant|sitecollection)
+  o365cli_app_catalog_scope: 'tenant'
+  variable_group_name: ''
+jobs:
+- deployment: ${{ parameters.job_name }}
+  displayName: ${{ parameters.display_name }}
+  pool:
+    vmImage: 'ubuntu-latest'
+  environment: ${{ parameters.target_environment }}
+  variables:
+  - group: ${{parameters.variable_group_name}} #o365_user_login, o365_user_password, o365_app_catalog_site_url
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - checkout: none
+        - download: current
+          artifact: drop
+          patterns: '**/*.sppkg'
+        - script: sudo npm install --global @pnp/office365-cli
+          displayName: Install Office365 CLI
+        - script: o365 login $(o365_app_catalog_site_url) --authType password --userName $(o365_user_login) --password $(o365_user_password)
+          displayName: Login to Office365
+        - script: |
+            CMD_GET_SPPKG_NAME=$(find $(Pipeline.Workspace)/drop -name '*.sppkg' -exec basename {} \;)
+            echo "##vso[task.setvariable variable=SpPkgFileName;isOutput=true]${CMD_GET_SPPKG_NAME}"
+          displayName: Get generated *.sppkg filename
+          name: GetSharePointPackage
+        - script: o365 spo app add --filePath "$(Pipeline.Workspace)/drop/sharepoint/solution/$(GetSharePointPackage.SpPkgFileName)" --appCatalogUrl $(o365_app_catalog_site_url) --scope ${{ parameters.o365cli_app_catalog_scope }} --overwrite
+          displayName: Upload SharePoint package to Site Collection App Catalog
+        - script: o365 spo app deploy --name $(GetSharePointPackage.SpPkgFileName) --appCatalogUrl $(o365_app_catalog_site_url) --scope ${{ parameters.o365cli_app_catalog_scope }}
+          displayName: Deploy SharePoint package

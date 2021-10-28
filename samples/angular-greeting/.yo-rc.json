@@ -16,7 +16,7 @@
     "environment": "spo",
     "framework": "none",
     "isCreatingSolution": true,
-    "version": "1.10.0",
+    "version": "1.12.1",
     "libraryName": "greetings-angular-js",
     "libraryId": "d7464213-bad8-452f-941b-34ca45e2ac74",
     "packageManager": "npm",

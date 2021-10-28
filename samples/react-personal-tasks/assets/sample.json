@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Personal Tasks",
     "shortDescription": "This web part provides you the ability to add a particular user\u0027s personal tasks on a web page. The web part may be configured to show all tasks or to exclude completed tasks. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-tasks",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tasks",
     "longDescription": [
       "This web part provides you the ability to add a particular user\u0027s personal tasks on a web page. The web part may be configured to show all tasks or to exclude completed tasks. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,15 @@
         "alt": "Personal Tasks"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",

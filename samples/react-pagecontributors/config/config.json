@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/pageContributors/PageContributorsWebPart.js",
-      "manifest": "./src/webparts/pageContributors/PageContributorsWebPart.manifest.json",
-      "outputPath": "./dist/page-contributors.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "page-contributors-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pageContributors/PageContributorsWebPart.js",
+          "manifest": "./src/webparts/pageContributors/PageContributorsWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {},
   "localizedResources": {
-    "pageContributorsStrings": "webparts/pageContributors/loc/{locale}.js"
+    "pageContributorsStrings": "lib/webparts/pageContributors/loc/{locale}.js"
   }
 }

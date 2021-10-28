@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="ReferenceInjector"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="038b8074-854b-488f-9d6f-7ecf671a99b8"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>

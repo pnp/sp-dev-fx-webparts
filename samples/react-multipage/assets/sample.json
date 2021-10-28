@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Multi-page client-side web part",
     "shortDescription": "Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multipage",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multipage",
     "longDescription": [
       "Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts."
     ],
-    "created": "2017-05-01",
-    "modified": "2017-05-01",
+    "creationDateTime": "2017-05-01",
+    "updateDateTime": "2017-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multipage/assets/poll-preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multipage/assets/poll-preview.gif",
         "alt": "Multi-page client-side web part"
       }
     ],

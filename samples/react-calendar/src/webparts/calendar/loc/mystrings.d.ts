@@ -26,7 +26,8 @@ declare interface ICalendarWebPartStrings {
   EnDateValidationMessage: string;
   SartDateValidationMessage: string;
   eventSelectDatesLabel: string;
-  ConfirmeDeleteMessage: string;
+  ConfirmeDeleteAllRecurrrencesMessage: string;
+  ConfirmeDeleteOneRecurrenceMessage: string;
   DialogConfirmDeleteTitle: string;
   SpinnerDeletingLabel: string;
   DialogCloseButtonLabel: string;

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-list-items-menu-client-side-solution",
+    "id": "8b4a758d-a968-4e7c-a949-b42e7dd5ad14",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+
+  },
+  "paths": {
+    "zippedPackage": "solution/react-list-items-menu.sppkg"
+  }
+}

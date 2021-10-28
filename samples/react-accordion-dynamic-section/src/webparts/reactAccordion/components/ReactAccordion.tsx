@@ -46,12 +46,24 @@ export default class ReactAccordion extends React.Component<
       typeof this.props.selectedChoice !== "undefined" &&
       this.props.selectedChoice.length > 0
     ) {
-      let query =
-        "<View><Query><Where><Eq><FieldRef Name='" +
-        this.props.columnTitle +
-        "'/><Value Type='Text'>" +
-        this.props.selectedChoice +
-        "</Value></Eq></Where></Query></View>";
+      let orderByQuery = '';
+      if (this.props.accordianSortColumn) {
+        orderByQuery = `<OrderBy>
+          <FieldRef Name='${this.props.accordianSortColumn}' ${this.props.isSortDescending ? 'Ascending="False"' : ''} />
+        </OrderBy>`;
+      }
+
+      let query = `<View>
+        <Query>
+          <Where>
+            <Eq>
+              <FieldRef Name='${this.props.columnTitle}'/>
+              <Value Type='Text'>${this.props.selectedChoice}</Value>
+            </Eq>
+          </Where>
+          ${orderByQuery}
+        </Query>
+      </View>`;
 
       let theAccordianList = sp.web.lists.getById(this.props.listId);
       theAccordianList

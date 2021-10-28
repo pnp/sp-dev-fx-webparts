@@ -66,6 +66,6 @@ Web parts in this solution illustrate the following concepts on top of the Share
 * subscribing to dynamic data source notifications from a web part
 * deploying list instances from a SharePoint Framework solution package
 * using [PnPjs](https://github.com/pnp/pnpjs) to retrieve data from a SharePoint list
-* using [SharePoint Framework React Controls](https://github.com/SharePoint/sp-dev-fx-controls-react) in web parts
+* using [SharePoint Framework React Controls](https://github.com/pnp/sp-dev-fx-controls-react) in web parts
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-events-dynamicdata" />

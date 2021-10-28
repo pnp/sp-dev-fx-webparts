@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side webpart and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx webpart when the app is added to a SharePoint site. It also contains custom list and document library xml schemas.
+This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side web part and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx web part when the app is added to a SharePoint site. It also contains custom list and document library xml schemas.
 
 ![The yammer search web part displayed in SharePoint online](./assets/spfx-provision-assets.gif)
 
@@ -30,7 +30,7 @@ This sample shows how we can provision Document Library, Custom List, Web and Li
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
  
-  ** The SPFx webpart will work in local workbench, but not the assets. They can be provisioned only when the app is deployed since they are SharePoint specific.
+  ** The SPFx web part will work in local workbench, but not the assets. They can be provisioned only when the app is deployed since they are SharePoint specific.
 
 ## Prerequisites
 
@@ -51,6 +51,7 @@ Version|Date|Comments
 0.0.1|June 17, 2017 | Initial commit
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

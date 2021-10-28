@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "12d57dab-78b3-48d3-a405-a15fbcbcaea3",
+  "alias": "ReactMyEventsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportsThemeVariants": true,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "react-my-events"
+      },
+      "description": {
+        "default": "react-my-events description"
+      },
+      "officeFabricIconFontName": "EventInfo",
+      "properties": {
+        "webpartTitle": "My Outlook Events"
+      }
+    }
+  ]
+}

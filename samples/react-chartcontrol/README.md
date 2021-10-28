@@ -8,7 +8,7 @@ This sample contains several web parts that demonstrate how to use the ChartCont
 
 The web parts in this sample are not intended to be used in production -- they simply demonstrate how you would use all the capabilities of the ChartControl.
 
-> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the `ChartControl`.
+> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-charts), which was built without the `ChartControl`.
 
 ## About the samples
 
@@ -170,16 +170,7 @@ This sample shows how to use X and Y coordinate data elements in a scatter chart
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg)
-
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
-
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
-
-![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
-
-![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
-
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg) ![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg) ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg) ![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 
 ## Applies to
 
@@ -233,5 +224,15 @@ This Web Part sample pack illustrates the following concepts on top of the Share
 * Rendering conditional property pane groups
 * Rendering conditional property pane fields
 * Creating custom property pane controls
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-chartcontrol&authors=@hugoabernier&title=react-chartcontrol%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-chartcontrol&authors=@hugoabernier&title=react-chartcontrol%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-chartcontrol&authors=@hugoabernier&title=react-chartcontrol%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-chartcontrol" />

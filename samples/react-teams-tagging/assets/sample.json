@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Tag Teams using a TermSet in SharePoint",
     "shortDescription": "This sample shows how read and update a custom Schema extension in MS Graph to Tag a Team using metadata from a specific TermSet in SharePoint.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tagging",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tagging",
     "longDescription": [
       "This sample shows how read and update a custom Schema extension in MS Graph to Tag a Team using metadata from a specific TermSet in SharePoint."
     ],
-    "created": "2019-04-18",
-    "modified": "2019-04-18",
+    "creationDateTime": "2019-04-18",
+    "updateDateTime": "2019-04-18",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tagging/assets/webpart.JPG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tagging/assets/webpart.JPG",
         "alt": "Tag Teams using a TermSet in SharePoint"
       }
     ],

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Sample with Handlebars.js",
     "shortDescription": "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/handlebarsjs-webpack-loader",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/handlebarsjs-webpack-loader",
     "longDescription": [
       "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader."
     ],
-    "created": "2018-03-21",
-    "modified": "2018-03-21",
+    "creationDateTime": "2018-03-21",
+    "updateDateTime": "2018-03-21",
     "products": [
       "SharePoint",
       "Office"
@@ -17,19 +17,11 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "Handlebars"
+        "value": "Other"
       },
       {
         "key": "SPFX-VERSION",
         "value": "1.4.1"
-      }
-    ],
-    "thumbnails": [
-      {
-        "type": "image",
-        "order": 100,
-        "url": "https://avatars2.githubusercontent.com/u/5503835?s=460\u0026v=4",
-        "alt": "Sample with Handlebars.js"
       }
     ],
     "authors": [

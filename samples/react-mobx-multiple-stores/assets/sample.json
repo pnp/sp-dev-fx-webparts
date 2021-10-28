@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using multiple stores with React and Mobx",
     "shortDescription": "A sample web part that uses the Mobx library with multiple stores to keep track of the applications state.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mobx-multiple-stores",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx-multiple-stores",
     "longDescription": [
       "A sample web part that uses the Mobx library with multiple stores to keep track of the applications state."
     ],
-    "created": "2019-05-24",
-    "modified": "2019-05-24",
+    "creationDateTime": "2019-05-24",
+    "updateDateTime": "2019-05-24",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-mobx-multiple-stores/assets/demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx-multiple-stores/assets/demo.gif",
         "alt": "Using multiple stores with React and Mobx"
       }
     ],

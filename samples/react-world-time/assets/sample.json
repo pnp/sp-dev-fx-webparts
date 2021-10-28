@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "World Time",
     "shortDescription": "This web part provides you the ability to display basic clock for a given time zone on a web page. The clock is based on the user\u0027s workstation time with an offset from UTC to the selected time zone.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-world-time",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-world-time",
     "longDescription": [
       "This web part provides you the ability to display basic clock for a given time zone on a web page. The clock is based on the user\u0027s workstation time with an offset from UTC to the selected time zone."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,14 @@
         "alt": "World Time"
       }
     ],
-    "authors": [],
+    "authors": [
+{
+        "gitHubAccount": "eoverfield",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield"
+
+      }
+],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",

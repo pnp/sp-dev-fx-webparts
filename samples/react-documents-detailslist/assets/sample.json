@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Documents Web Part",
     "shortDescription": "This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-documents-detailslist",
     "longDescription": [
       "This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library."
     ],
-    "created": "2020-04-28",
-    "modified": "2020-04-28",
+    "creationDateTime": "2020-04-28",
+    "updateDateTime": "2020-04-28",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-documents-detailslist/assets/Preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-documents-detailslist/assets/Preview.gif",
         "alt": "Documents Web Part"
       }
     ],

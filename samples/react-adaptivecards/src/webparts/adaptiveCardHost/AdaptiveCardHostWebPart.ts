@@ -1,10 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { DisplayMode } from '@microsoft/sp-core-library';
-import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
-
 // Used for property pane
 import {
   IPropertyPaneConfiguration,
@@ -12,6 +8,14 @@ import {
   PropertyPaneToggle,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
+
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
+
+import * as strings from 'AdaptiveCardHostWebPartStrings';
+import AdaptiveCardHost from './components/AdaptiveCardHost';
+import { IAdaptiveCardHostProps } from './components/IAdaptiveCardHostProps';
 
 // Used to select which list
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
@@ -34,13 +38,6 @@ import '@pnp/sp/webs';
 import '@pnp/sp/lists';
 import "@pnp/sp/views";
 //import '@pnp/sp/items';
-
-// Used for localizations
-import * as strings from 'AdaptiveCardHostWebPartStrings';
-
-// Used to render adaptive cards
-import AdaptiveCardHost from './components/AdaptiveCardHost';
-import { IAdaptiveCardHostProps } from './components/IAdaptiveCardHostProps';
 
 export type TemplateSourceType = 'json' | 'url';
 export type DataSourceType = 'list' | 'json' | 'url';
@@ -92,6 +89,7 @@ export interface IAdaptiveCardHostWebPartProps {
   dataUrl: string | undefined;
 }
 
+
 export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdaptiveCardHostWebPartProps> {
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
@@ -123,11 +121,11 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
     await this._loadDataFromUrl();
   }
 
-  public async render(): Promise<void> {
-    const templateJson: string = this.properties.templateSource === 'url' && this.properties.templateUrl ? this._templateJSON: this.properties.template;
+  public render(): void {
+    const templateJson: string = this.properties.templateSource === 'url' && this.properties.templateUrl ? this._templateJSON : this.properties.template;
 
     const dataJson: string = (this.properties.dataSource === 'list' && this.properties.list && this.properties.view) ||
-                             (this.properties.dataSource === 'url' && this.properties.dataUrl) ? this._dataJSON : this.properties.data;
+      (this.properties.dataSource === 'url' && this.properties.dataUrl) ? this._dataJSON : this.properties.data;
 
     // The Adaptive Card control does not care where the template and data are coming from.
     // Pass a valid template JSON and -- if using -- some data JSON
@@ -159,7 +157,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
    * we load it dynamically only when we need to display the property pane.
    *
    */
-  protected async loadPropertyPaneResources(): Promise<void> {
+   protected async loadPropertyPaneResources(): Promise<void> {
     // load the property field code editor asynchronously
     const codeEditor = await import(
       '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor'
@@ -189,7 +187,6 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       language: PropertyFieldCodeEditorLanguages.JSON
     });
   }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     const isTemplateJSONBound: boolean = this.properties.templateSource === 'json';
     const isTemplateUrlBound: boolean = this.properties.templateSource === 'url';

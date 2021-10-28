@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Youtube Web Part",
     "shortDescription": "This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-youtube",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-youtube",
     "longDescription": [
       "This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id."
     ],
-    "created": "2020-10-01",
-    "modified": "2020-10-01",
+    "creationDateTime": "2020-10-01",
+    "updateDateTime": "2020-10-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-youtube/assets/Preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-youtube/assets/Preview.gif",
         "alt": "Youtube Web Part"
       }
     ],

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-news-banner",
+    "source": "pnp",
+    "title": "News Banner",
+    "shortDescription": "Shows news information as a Banner, this information come from a list defined in any site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-banner",
+    "longDescription": [
+      "This web part shows news information as a Banner, this information come from a list defined in any site, this web part can be installed on 2019, and SharePoint Online."
+    ],
+    "creationDateTime": "2021-05-06",
+    "updateDateTime": "2021-05-06",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-banner/assets/NewsBanner.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-news-banner/assets/NewsBanner.png?raw=true",
+        "alt": "List Items Menu"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

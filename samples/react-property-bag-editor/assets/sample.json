@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Property Bag Navigation Webparts",
     "shortDescription": "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-property-bag-editor",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-bag-editor",
     "longDescription": [
       "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties."
     ],
-    "created": "2017-03-19",
-    "modified": "2017-03-19",
+    "creationDateTime": "2017-03-19",
+    "updateDateTime": "2017-03-19",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG",
         "alt": "Property Bag Navigation Webparts"
       }
     ],

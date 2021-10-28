@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Add JS and CSS reference on Modern Pages",
     "shortDescription": "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-add-js-css-ref",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-add-js-css-ref",
     "longDescription": [
       "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."
     ],
-    "created": "2020-06-11",
-    "modified": "2020-06-11",
+    "creationDateTime": "2020-06-11",
+    "updateDateTime": "2020-06-11",
     "products": [
       "SharePoint",
       "Office"
@@ -22,13 +22,17 @@
       {
         "key": "SPFX-VERSION",
         "value": "1.9.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "ListView"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-add-js-css-ref/assets/webpartinaction.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-js-css-ref/assets/webpartinaction.gif",
         "alt": "Add JS and CSS reference on Modern Pages"
       }
     ],

@@ -11,6 +11,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "outDir": "lib",
+    "downlevelIteration": true,
     "inlineSources": false,
     "strictNullChecks": false,
     "noUnusedLocals": false,
@@ -25,7 +26,9 @@
     "lib": [
       "es5",
       "dom",
-      "es2015.collection"
+      "es2015",
+      "es2015.collection",
+      "ES2017"
     ]
   },
   "include": [

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Microsoft Authentication Library (MSAL JS) authentication sample",
     "shortDescription": "",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msal-msgraph",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msal-msgraph",
     "longDescription": [
       ""
     ],
-    "created": "2017-03-17",
-    "modified": "2017-03-17",
+    "creationDateTime": "2017-03-17",
+    "updateDateTime": "2017-03-17",
     "products": [
       "SharePoint",
       "Office"
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msal-msgraph/assets/msal-wp-output.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msal-msgraph/assets/msal-wp-output.png",
         "alt": "Microsoft Authentication Library (MSAL JS) authentication sample"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msal-msgraph/assets/permission-scopes.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msal-msgraph/assets/permission-scopes.png?raw=true",
         "alt": "Microsoft Authentication Library (MSAL JS) authentication sample"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msal-msgraph/assets/redirect-url.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msal-msgraph/assets/redirect-url.png?raw=true",
         "alt": "Microsoft Authentication Library (MSAL JS) authentication sample"
       }
     ],

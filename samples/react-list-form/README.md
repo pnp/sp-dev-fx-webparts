@@ -24,8 +24,6 @@ The web part allows configuring which list to use and if a form for adding a new
 
 ![Demo](./assets/React-ListForm-Overview.gif)
 
-## Used SharePoint Framework Version
-
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
@@ -39,16 +37,21 @@ The web part allows configuring which list to use and if a form for adding a new
 - [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
+## Prerequisites
+
+You'll need to connect to a list before you can use this sample.
+
 ## Solution
 
-| Solution        | Author(s)                                                         |
-| --------------- | ----------------------------------------------------------------- |
-| react-list-form | Dany Wyss                                                         |
-| react-list-form | Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy)) |
-| react-list-form | Ryan Schouten ([@shrpntknight](https://twitter.com/shrpntknight)) |
-| react-list-form | Abderahman Moujahid                                               |
-| react-list-form | [Kman1131](https://github.com/Kman1131)                           |
-| react-list-form | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)         |
+| Solution        | Author(s)                                                           |
+| --------------- | -----------------------------------------------------------------   |
+| react-list-form | [Dany Wyss](https://github.com/DanyWyss)                            |
+| react-list-form | [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))   |
+| react-list-form | [Ryan Schouten](https://github.com/sharepointknight) ([@shrpntknight](https://twitter.com/shrpntknight))   |
+| react-list-form | [Abderahman Moujahid](https://github.com/Abderahman88)              |
+| react-list-form | [Kman1131](https://github.com/Kman1131)                             |
+| react-list-form | [Fredrik Thorild](https://github.com/fthorild) [@fthorild](https://twitter.com/fthorild)           |
+| react-list-form | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023)) |
 
 ## Version history
 
@@ -64,12 +67,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | 1.0.7   | December 11, 2020  | Fix limit of lookup fields                                                                                |
 | 1.0.8   | February 7, 2021   | Fixed dragging and dropping fields                                                                        |
 | 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
+| 1.0.10  | May 6, 2021        | Fixed "attachments are not cleared after submit" issue                                                    |
 
 ## Minimal Path to Awesome
 
@@ -88,5 +86,20 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using Office UI Fabric React components and styles for building user experience consistent with SharePoint and Office.
 - Integrating drag and drop to provide better user experience for configuring web parts visually.
 - Using custom drop-down property editors in the property pane.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-list-form&authors=@DanyWyss, @Harshagracy, @sharepointknight, @Abderahman88, @Kman1131, @fthorild, @AriGunawan&title=react-list-form%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-list-form&authors=@DanyWyss, @Harshagracy, @sharepointknight, @Abderahman88, @Kman1131, @fthorild, @AriGunawan&title=react-list-form%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-list-form&authors=@DanyWyss, @Harshagracy, @sharepointknight, @Abderahman88, @Kman1131, @fthorild, @AriGunawan&title=react-list-form%20-%20).
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-list-form" />

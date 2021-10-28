@@ -17,6 +17,9 @@ export class SPService {
             for (var i = 0; i < selectedFields.length; i++) {
                 switch (selectedFields[i].fieldType) {
                     case 'SP.FieldUser':
+                        selectQuery.push(`${selectedFields[i].key}/Title,${selectedFields[i].key}/EMail,${selectedFields[i].key}/Name`);
+                        expandQuery.push(selectedFields[i].key);
+                        break;
                     case 'SP.FieldLookup':
                         selectQuery.push(`${selectedFields[i].key}/Title`);
                         expandQuery.push(selectedFields[i].key);
@@ -54,6 +57,17 @@ export class SPService {
                 .filter("Hidden eq false and ReadOnlyField eq false and Title ne 'Content Type' and Title ne 'Attachments'")
                 .get();
             return allFields;
+        }
+        catch (err) {
+            Promise.reject(err);
+        }
+    }
+
+    public async getUserProfileUrl(loginName: string) {
+        try {
+            const properties = await sp.profiles.getPropertiesFor(loginName);
+            const profileUrl = properties['PictureUrl'];
+            return profileUrl;
         }
         catch (err) {
             Promise.reject(err);

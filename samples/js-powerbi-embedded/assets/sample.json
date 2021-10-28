@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Embed a PowerBI report in a Client-Side Web Part",
     "shortDescription": "This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-powerbi-embedded",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-powerbi-embedded",
     "longDescription": [
       "This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code."
     ],
-    "created": "2016-09-13",
-    "modified": "2016-09-13",
+    "creationDateTime": "2016-09-13",
+    "updateDateTime": "2016-09-13",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png",
         "alt": "Embed a PowerBI report in a Client-Side Web Part"
       }
     ],

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "vendor-maintenance-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/vendorMaintenance/VendorMaintenanceWebPart.js",
+          "manifest": "./src/webparts/vendorMaintenance/VendorMaintenanceWebPart.manifest.json"
+        }
+      ]
+    },
+    "request-maintenance-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/requestMaintenance/RequestMaintenanceWebPart.js",
+          "manifest": "./src/webparts/requestMaintenance/RequestMaintenanceWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "VendorMaintenanceWebPartStrings": "lib/webparts/vendorMaintenance/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "RequestMaintenanceWebPartStrings": "lib/webparts/requestMaintenance/loc/{locale}.js"
+  }
+}

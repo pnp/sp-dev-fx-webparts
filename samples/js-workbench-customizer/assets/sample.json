@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Workbench customizer",
     "shortDescription": "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-workbench-customizer",
     "longDescription": [
       "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page."
     ],
-    "created": "2020-11-02",
-    "modified": "2020-11-02",
+    "creationDateTime": "2020-11-02",
+    "updateDateTime": "2020-11-02",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-workbench-customizer/assets/Preview.png",
         "alt": "Workbench customizer"
       }
     ],

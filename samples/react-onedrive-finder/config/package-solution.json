@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-onedrive-finder-client-side-solution",
+    "id": "63bcee97-4373-4a30-9c62-a1369b4d08ba",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [{  
+      "resource": "Microsoft Graph",  
+      "scope": "Files.Read"  
+  }, {  
+      "resource": "Microsoft Graph",  
+      "scope": "Files.Read.All"  
+  }, {  
+      "resource": "Microsoft Graph",  
+      "scope": "Sites.Read.All"  
+  }]  
+  },
+  "paths": {
+    "zippedPackage": "solution/react-onedrive-finder.sppkg"
+  }
+}

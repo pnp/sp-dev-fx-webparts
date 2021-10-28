@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Modern Experience Theme Manager",
     "shortDescription": "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-theme-manager",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager",
     "longDescription": [
       "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online."
     ],
-    "created": "2020-06-01",
-    "modified": "2020-06-01",
+    "creationDateTime": "2020-06-01",
+    "updateDateTime": "2020-06-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,31 +28,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-theme-manager/assets/create-a-theme.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png",
         "alt": "Modern Experience Theme Manager"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager/assets/apply-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager/assets/apply-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager/assets/delete-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager/assets/delete-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager/assets/theme-manager.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager/assets/theme-manager.png?raw=true",
         "alt": "Modern Experience Theme Manager"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager/assets/update-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager/assets/update-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager"
       }
     ],

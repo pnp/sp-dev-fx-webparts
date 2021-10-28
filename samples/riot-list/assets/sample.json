@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "List RiotJS Client-Side Web Part",
     "shortDescription": "Simplistic sample Web Part that demonstrates the use of RiotJS in creating a SharePoint Framework web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/riot-list",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/riot-list",
     "longDescription": [
       "Simplistic sample Web Part that demonstrates the use of RiotJS in creating a SharePoint Framework web part."
     ],
-    "created": "2017-04-26",
-    "modified": "2017-04-26",
+    "creationDateTime": "2017-04-26",
+    "updateDateTime": "2017-04-26",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/riot-list/assets/riot-list-preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/riot-list/assets/riot-list-preview.gif",
         "alt": "List RiotJS Client-Side Web Part"
       }
     ],

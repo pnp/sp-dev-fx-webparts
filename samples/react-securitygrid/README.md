@@ -39,7 +39,7 @@ The user can change alternate between displaying user names and emails  selectin
 
 ![Select Mode](./src/images/SelectDisplayModePopout.PNG)
 
-The the first configuration panel of the webpart is shown below:
+The the first configuration panel of the web part is shown below:
 
 ![config panel](./src/images/Configuration.PNG)
 

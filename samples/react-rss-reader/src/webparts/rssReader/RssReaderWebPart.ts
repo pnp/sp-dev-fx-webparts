@@ -1,5 +1,5 @@
 /*
-Template concept from https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search-refiners
+Template concept from https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search-refiners
 */
 import * as React from                                     'react';
 import * as ReactDom from                                  'react-dom';
@@ -279,7 +279,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
   }
 
-  //concept from https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search-refiners
+  //concept from https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search-refiners
   protected async loadPropertyPaneResources(): Promise<void> {
     this._propertyPage = await import(
         /* webpackChunkName: 'search-property-pane' */
@@ -540,7 +540,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
   /**
    * Custom handler when the external template file URL
-   * from https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search-refiners
+   * from https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search-refiners
    * @param value the template file URL value
    */
   private async _onTemplateUrlChange(value: string): Promise<String> {

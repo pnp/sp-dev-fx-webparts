@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "3c0443ba-8202-4d11-817e-482586feeb6f",
+  "alias": "ReactHtmWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "React HTM (Hyperscript Tagged Markup)" },
+    "description": { "default": "Use HTM (Hyperscript Tagged Markup) as Template Engine for React components like 'Fluent UI React'" },
+    "officeFabricIconFontName": "CodeEdit",
+    "properties": {
+      "template": "let [count, setCount] = this.react.useState(0);\r\nconst originalItems = this.fuiHooks.useConst(() => this.fuiSampleData.createListItems(10));\r\nconst classNames = this.fui.mergeStyleSets({\r\n    itemCell: [\r\n        this.fui.getFocusStyle(this.theme, { inset: -1 }),\r\n        {\r\n            minHeight: 54,\r\n            padding: 10,\r\n            boxSizing: 'border-box',\r\n            borderBottom: `1px solid ${this.themeVariant.semanticColors.bodyDivider}`,\r\n            display: 'flex',\r\n            selectors: {\r\n                '&:hover': { background: this.themeVariant.palette.neutralLight },\r\n            }\r\n        },\r\n    ],\r\n    itemImage: {\r\n        flexShrink: 0,\r\n    },\r\n    itemContent: {\r\n        marginLeft: 10,\r\n        overflow: 'hidden',\r\n        flexGrow: 1,\r\n    },\r\n    itemName: [\r\n        this.themeVariant.fonts.xLarge,\r\n        {\r\n            whiteSpace: 'nowrap',\r\n            overflow: 'hidden',\r\n            textOverflow: 'ellipsis',\r\n        },\r\n    ],\r\n    itemIndex: {\r\n        fontSize: this.themeVariant.fonts.small.fontSize,\r\n        color: this.themeVariant.palette.neutralTertiary,\r\n        marginBottom: 10,\r\n    },\r\n    chevron: {\r\n        alignSelf: 'center',\r\n        marginLeft: 10,\r\n        color: this.themeVariant.palette.neutralTertiary,\r\n        fontSize: this.themeVariant.fonts.large.fontSize,\r\n        flexShrink: 0,\r\n    },\r\n});\r\n\r\nconst onRenderCell = (item, index) => {\r\n    return this.html`\r\n    <div class=${classNames.itemCell} data-is-focusable>\r\n    <${this.fui.Image} className=${classNames.itemImage} src=${item.thumbnail} width=${50} height=${50} imageFit=${this.fui.ImageFit.cover} />\r\n    <div class=${classNames.itemContent}>\r\n        <div class=${classNames.itemName}>${item.name}</div>\r\n        <div class=${classNames.itemIndex}>${`Item ${index}`}</div>\r\n        <div>${item.description}</div>\r\n    </div>\r\n    <${this.fui.Icon} className=${classNames.chevron} iconName=${this.fui.getRTL() ? 'ChevronLeft' : 'ChevronRight'} />\r\n    </div>`;\r\n};\r\n\r\nreturn this.html`\r\n    <${this.fui.ThemeProvider} theme=${this.themeVariant}>\r\n        <${this.fui.Stack} tokens=${{ childrenGap: 10 }}>\r\n            <${this.fui.Label}>Clicked ${count} times<//>\r\n            <${this.fui.PrimaryButton} text=\"Click here!\" onClick=${() => setCount(count + 1)} />\r\n            <${this.fui.List} items=${originalItems} onRenderCell=${onRenderCell} />\r\n        <//>\r\n    <//>`;",
+      "loadFluentUI": true,
+      "loadFluentUISampleData": true
+    }
+  }]
+}

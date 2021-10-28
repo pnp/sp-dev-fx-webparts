@@ -56,6 +56,6 @@ Version|Date|Comments
 
 ## Features
 
-This sample demonstrates how to combine different parts of PnP Reusable React controls to create rich solutions. It also partially answers the question from [Issue 493](https://github.com/SharePoint/sp-dev-fx-controls-react/issues/493) in PnP Reusable Controls repo. 
+This sample demonstrates how to combine different parts of PnP Reusable React controls to create rich solutions. It also partially answers the question from [Issue 493](https://github.com/pnp/sp-dev-fx-controls-react/issues/493) in PnP Reusable Controls repo. 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-pnp-controls-list-view-fields" />

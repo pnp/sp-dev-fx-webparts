@@ -1,0 +1,56 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.docCardContainer {
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.docCardObj{
+ display: -webkit-inline-box;
+ display: -ms-inline-flexbox;
+ display: inline-flex;
+ margin-right: 15px;
+}
+.docCard {
+ width: 300px;
+ height: 300px;
+ border: $ms-color-themeDark;
+ border-style: double;
+ margin-bottom: 15px;
+ padding-bottom: 15px;
+ padding-right: 15px;
+ position: relative;
+}
+
+.docCardTitle {
+ font-size: large;
+ font-weight: 600;
+ text-decoration: underline;
+ color: $ms-color-themeDark	;
+ text-align: center;
+}
+
+.docCardQuestionButtonDiv {
+ padding-bottom: 20px;
+ padding-top: 20px;
+}
+
+
+.docCardQuestionButton {
+ width: 90%;
+ color: $ms-color-themeDark;
+ outline: $ms-color-themePrimary;
+ outline-style: solid;
+ outline-width: 1px;
+ background-color: white;
+ margin: 0 auto;
+ display: block;
+ size: 9px;
+}
+
+.docCardQuestionButton:hover {
+ background-color: $ms-color-themeDark;
+ color: white;
+ font-weight: 600;
+
+}

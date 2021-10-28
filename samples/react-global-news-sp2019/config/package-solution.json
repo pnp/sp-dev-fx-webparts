@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-global-news-sp-2019-client-side-solution",
+    "id": "acaa866b-a64e-45a6-ae2e-572a04f305ad",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-global-news-sp-2019.sppkg"
+  }
+}

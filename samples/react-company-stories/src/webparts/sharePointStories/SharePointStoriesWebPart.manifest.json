@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "076de2d7-509f-469c-ab79-42f88611ae13",
+  "alias": "SharePointStoriesWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsTab"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "SharePointStories" },
+    "description": { "default": "Kind of IG Stories for SharePoint!" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "SharePointStories"
+    }
+  }]
+}

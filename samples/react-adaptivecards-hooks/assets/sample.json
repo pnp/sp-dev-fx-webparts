@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Adaptive Cards Viewer using Hooks",
     "shortDescription": "A version of react-adaptivecards using React Hooks.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards-hooks",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards-hooks",
     "longDescription": [
       "A version of react-adaptivecards using React Hooks."
     ],
-    "created": "2020-08-25",
-    "modified": "2020-08-25",
+    "creationDateTime": "2020-08-25",
+    "updateDateTime": "2020-08-25",
     "products": [
       "SharePoint",
       "Office"
@@ -22,13 +22,17 @@
       {
         "key": "SPFX-VERSION",
         "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyPaneWebPartInformation, PropertyFieldListPicker, PropertyFieldViewPicker, PropertyFieldCodeEditorLanguages"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards-hooks/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards-hooks/assets/preview.png",
         "alt": "Adaptive Cards Viewer using Hooks"
       }
     ],

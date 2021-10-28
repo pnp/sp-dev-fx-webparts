@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8a901797-4600-476a-aa51-b2027a73715f",
+  "alias": "TeamsMembershipUpdaterWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["TeamsPersonalApp", "SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Teams Membership Updater" },
+    "description": { "default": "Teams Membership Updater" },
+    "officeFabricIconFontName": "UserSync",
+    "properties": {
+      "title": "Teams Membership Updater",
+      "loglist": null
+    }
+  }]
+}

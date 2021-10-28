@@ -21,7 +21,8 @@ extensions:
 
 A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File.
 
-## Used SharePoint Framework Version 
+## Used SharePoint Framework Version
+ 
 ![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
@@ -33,7 +34,7 @@ A sample web part illustrating how to use Angular Elements in the SharePoint Fra
 
 Solution|Author(s)
 --------|---------
-angularelements-html-templatefile| Jayakumar Balasubramaniam (C# Corner MVP, Hubfly, @jayakumrB)
+angularelements-html-templatefile| [Jayakumar Balasubramaniam](https://github.com/JayakumarB) (C# Corner MVP, Hubfly, [@jayakumrB](https://twitter.com/jayakumrB))
 
 ## Version history
 
@@ -83,6 +84,16 @@ build.rig.addPostTypescriptTask(tsInlines);
 
 //************END: Added to handle Template file url ************/
 ```
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angularelements-html-templatefile=@JayakumarB&title=angular-todo%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angularelements-html-templatefile=@JayakumarB&title=angular-todo%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angularelements-html-templatefile=@JayakumarB&title=angular-todo%20-%20).
 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angularelements-helloworld" />

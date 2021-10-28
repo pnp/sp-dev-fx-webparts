@@ -42,8 +42,6 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
 
   protected async onInit(): Promise<void> {
 
-
-
     this._themeProvider = this.context.serviceScope.consume(
       ThemeProvider.serviceKey
     );
@@ -189,7 +187,6 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
                   PropertyFieldMultiSelect('userAttributes', {
                     key: 'userAttributes',
                     label: strings.UserAttributesLabel,
-
                     options: [
                       {
                         key: "company",
@@ -222,6 +219,14 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
                       {
                         key: "userType",
                         text: "User Type"
+                      },
+                      {
+                        key: "aboutMe",
+                        text: "About Me"
+                      },
+                      {
+                        key: "skills",
+                        text: "Skills"
                       },
                     ],
                     selectedKeys: this.properties.userAttributes

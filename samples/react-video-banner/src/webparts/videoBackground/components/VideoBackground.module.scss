@@ -1,0 +1,31 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.videoBackground {
+  // height: 324px;
+  overflow: hidden;
+  // max-height: 324px;
+
+  div {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    // height: 324px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+      h1{ 
+        font-size: 48px;
+        z-index: 1;
+      }
+  }
+
+  video{
+    height: 486px;
+    width: 1920px;
+    left: 0px;
+    top: -79px;
+    object-fit: cover
+  }
+}

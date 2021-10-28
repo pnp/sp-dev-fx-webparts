@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "lead-assist-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/leadAssistDashboard/LeadAssistDashboardWebPart.js",
+          "manifest": "./src/webparts/leadAssistDashboard/LeadAssistDashboardWebPart.manifest.json"
+        }
+      ]
+    },
+    "lead-assist-dashboard-settings-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/leadAssistDashboardSettings/LeadAssistDashboardSettingsWebPart.js",
+          "manifest": "./src/webparts/leadAssistDashboardSettings/LeadAssistDashboardSettingsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "LeadAssistDashboardWebPartStrings": "lib/webparts/leadAssistDashboard/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "LeadAssistDashboardSettingsWebPartStrings": "lib/webparts/leadAssistDashboardSettings/loc/{locale}.js"
+  }
+}

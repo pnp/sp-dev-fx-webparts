@@ -3,8 +3,16 @@
 .reactDatatable {
   .dataTableUtilities{
     margin-bottom: 10px;
+    margin-top: 10px;
     .downloadButtons > *{
       margin-right: 10px;
-    }
+    }    
+  }
+  .txtSearchBox{
+    min-width: 250px;
+  }
+  .colHeader{
+    font-weight: 600;
+    font-size: 12px;
   }
 }

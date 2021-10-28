@@ -17,9 +17,9 @@ extensions:
 
 ## Summary
 
-Using Microsoft Graph, this webpart grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
+Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
 
-The webpart has been updated to include a grid like in addition to the compact layout as seen below:
+The web part has been updated to include a grid like in addition to the compact layout as seen below:
 ![Grid Demo](./assets/React-MyGroups_Grid.png)
 
 Compact Layout:
@@ -66,7 +66,7 @@ Version|Date|Comments
   * `gulp package-solution --ship`
 * Add the package to your app catalog
 * Approve the Graph API permissions in the SharePoint admin center
-* Add the webpart to your page
+* Add the web part to your page
 
 
 ## Features

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Visio Embed",
     "shortDescription": "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-visio",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-visio",
     "longDescription": [
       "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it."
     ],
-    "created": "2020-08-25",
-    "modified": "2020-08-25",
+    "creationDateTime": "2020-08-25",
+    "updateDateTime": "2020-08-25",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG",
         "alt": "Visio Embed"
       }
     ],

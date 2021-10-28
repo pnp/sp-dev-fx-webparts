@@ -11,9 +11,10 @@ import XMLParser from 'react-xml-parser';
 import { IWeb, Web } from '@pnp/sp/webs';
 import { SharePointType } from '../model/ISharePointFieldTypes';
 import IResult from '../model/IResult';
-import { isEmpty } from '@microsoft/sp-lodash-subset';
+import { intersection, isEmpty } from '@microsoft/sp-lodash-subset';
 import { ListField, SiteList } from '../model/IListConfigProps';
 import { IListSearchListQuery } from '../model/IMapQuery';
+import GraphService from './GraphService';
 
 
 export interface QueryHelperEntity {
@@ -21,9 +22,12 @@ export interface QueryHelperEntity {
   expandFields: string[];
 }
 
+
 export default class ListService implements IListService {
   private web: IWeb;
   private baseUrl: string;
+  private static SharePointOnlineAudienceOOTBFieldName = "OData__ModernAudienceTargetUserField";
+  public static MAX_TOP: number = 5000;
 
   constructor(siteUrl: string, useCache: boolean, cacheTime?: number, cacheType?: "session" | "local") {
     sp.setup({
@@ -40,7 +44,102 @@ export default class ListService implements IListService {
     this.baseUrl = siteUrl;
   }
 
-  private GetViewFieldsWithId(listQueryOptions: IListSearchListQuery, isCamlQuery: boolean): QueryHelperEntity {
+  public async getListItems(listQueryOptions: IListSearchListQuery, listPropertyName: string, sitePropertyName: string, sitePropertyValue: string, rowLimit: number, graphService?: GraphService): Promise<Array<IResult>> {
+    try {
+      let camlQuery: boolean = false;
+      let items: any = undefined;
+      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName), false);
+      if (listQueryOptions.camlQuery) {
+        let query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
+        items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
+      }
+      else {
+        if (listQueryOptions.viewName) {
+          let viewInfo: any = await this.web.lists.getById(listQueryOptions.list.Id).views.getByTitle(listQueryOptions.viewName).select("ViewQuery").get();
+          let query = this.getCamlQueryWithViewFieldsAndRowLimit(`<View><Query>${viewInfo.ViewQuery}</Query></View>`, queryConfig, rowLimit);
+          items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
+        }
+        else {
+          items = await sp.web.lists.getById(listQueryOptions.list.Id).items
+            .select(queryConfig.viewFields.join(','))
+            .top(rowLimit || ListService.MAX_TOP)
+            .expand(queryConfig.expandFields.join(',')).usingCaching().get();
+        }
+      }
+
+      if (listQueryOptions.audienceEnabled && graphService) {
+        let userGroups: string[] = await graphService.getTransitiveMemberOf();
+        items = this.getAudienceItems(items, userGroups);
+      }
+
+      let mappedItems = items.map((i: IResult) => {
+        i.FileExtension = this.GetFileExtension(i.FileLeafRef);
+        i.SiteUrl = this.baseUrl;
+        i.ListName = listQueryOptions.list.Title;
+        i.List = listQueryOptions.list;
+
+        listQueryOptions.fields.map(field => {
+          i = this.GetItemValue(i, field, camlQuery);
+        });
+
+        if (listPropertyName) {
+          i[listPropertyName] = listQueryOptions.list.Title;
+        }
+        if (sitePropertyName) {
+          i[sitePropertyName] = sitePropertyValue;
+        }
+        return i;
+      });
+      return mappedItems;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  public async getListItemById(listQueryOptions: IListSearchListQuery, itemId: number): Promise<any> {
+    try {
+      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, false, true);
+      return this.web.lists.getById(listQueryOptions.list.Id).items.getById(itemId).select(queryConfig.viewFields.join(',')).expand(queryConfig.expandFields.join(',')).usingCaching().get();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  public async getSiteListsTitle(): Promise<Array<SiteList>> {
+    try {
+      return this.web.lists.filter('Hidden eq false').select('Title,Id').get();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  public async getListFields(listId: string): Promise<Array<ListField>> {
+    try {
+      return this.web.lists.getById(listId).fields.select('EntityPropertyName,Title,InternalName,TypeAsString').get();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  private getAudienceItems(itemsToFilter: IResult[], userGroups: string[]) {
+    let results: IResult[] = [];
+    userGroups && itemsToFilter.map(item => {
+      let itemAudiencesIds: string[] = item.OData__ModernAudienceTargetUserField && item.OData__ModernAudienceTargetUserField.map(audience => { return audience.Name.split("|")[2]; });
+      if (itemAudiencesIds) {
+        let matches: string[] = intersection(itemAudiencesIds, userGroups);
+        if (matches && matches.length > 0) {
+          results.push(item);
+        }
+      }
+      else {
+        results.push(item);
+      }
+    });
+
+    return results;
+  }
+
+  private GetViewFieldsWithId(listQueryOptions: IListSearchListQuery, isCamlQuery: boolean, isItemId: boolean): QueryHelperEntity {
     let result: QueryHelperEntity = { expandFields: [], viewFields: ['ServerUrl', 'FileLeafRef', 'Id', 'UniqueId'] };
     let hasToAddFieldsAsText: boolean = false;
     listQueryOptions.fields.map(field => {
@@ -98,6 +197,11 @@ export default class ListService implements IListService {
 
     if (hasToAddFieldsAsText) {
       result.expandFields.push('FieldValuesAsText');
+    }
+
+    if (listQueryOptions.audienceEnabled && !isItemId) {
+      result.expandFields.push(ListService.SharePointOnlineAudienceOOTBFieldName);
+      result.viewFields.push(`${ListService.SharePointOnlineAudienceOOTBFieldName}/Name`);
     }
 
     return result;
@@ -184,90 +288,6 @@ export default class ListService implements IListService {
 
 
     return item;
-  }
-
-  public async getListItems(listQueryOptions: IListSearchListQuery, listPropertyName: string, sitePropertyName: string, sitePropertyValue: string, rowLimit: number): Promise<Array<IResult>> {
-    try {
-      let camlQuery: boolean = false;
-      let items: any = undefined;
-      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName));
-      if (listQueryOptions.camlQuery) {
-        let query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
-        items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
-      }
-      else {
-        if (listQueryOptions.viewName) {
-          let viewInfo: any = await this.web.lists.getById(listQueryOptions.list.Id).views.getByTitle(listQueryOptions.viewName).select("ViewQuery").get();
-          let query = this.getCamlQueryWithViewFieldsAndRowLimit(`<View><Query>${viewInfo.ViewQuery}</Query></View>`, queryConfig, rowLimit);
-          items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
-        }
-        else {
-          if (rowLimit) {
-            if (queryConfig.expandFields && queryConfig.expandFields.length > 0) {
-              items = await this.web.lists.getById(listQueryOptions.list.Id).items.select(queryConfig.viewFields.join(',')).expand(queryConfig.expandFields.join(',')).usingCaching().get();
-            }
-            else {
-              items = await this.web.lists.getById(listQueryOptions.list.Id).items.top(rowLimit).select(queryConfig.viewFields.join(',')).usingCaching().get();
-            }
-          }
-          else {
-            if (queryConfig.expandFields && queryConfig.expandFields.length > 0) {
-              items = await this.web.lists.getById(listQueryOptions.list.Id).items.select(queryConfig.viewFields.join(',')).expand(queryConfig.expandFields.join(',')).usingCaching().get();
-            }
-            else {
-              items = await this.web.lists.getById(listQueryOptions.list.Id).items.select(queryConfig.viewFields.join(',')).usingCaching().get();
-            }
-          }
-        }
-
-      }
-      let mappedItems = items.map((i: IResult) => {
-        i.FileExtension = this.GetFileExtension(i.FileLeafRef);
-        i.SiteUrl = this.baseUrl;
-        i.ListName = listQueryOptions.list.Title;
-        i.List = listQueryOptions.list;
-
-        listQueryOptions.fields.map(field => {
-          i = this.GetItemValue(i, field, camlQuery);
-        });
-
-        if (listPropertyName) {
-          i[listPropertyName] = listQueryOptions.list.Title;
-        }
-        if (sitePropertyName) {
-          i[sitePropertyName] = sitePropertyValue;
-        }
-        return i;
-      });
-      return mappedItems;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
-  public async getListItemById(listQueryOptions: IListSearchListQuery, itemId: number): Promise<any> {
-    try {
-      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, false);
-      return this.web.lists.getById(listQueryOptions.list.Id).items.getById(itemId).select(queryConfig.viewFields.join(',')).expand(queryConfig.expandFields.join(',')).usingCaching().get();
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
-  public async getSiteListsTitle(): Promise<Array<SiteList>> {
-    try {
-      return this.web.lists.filter('Hidden eq false').select('Title,Id').get();
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
-  public async getListFields(listId: string): Promise<Array<ListField>> {
-    try {
-      return this.web.lists.getById(listId).fields.select('EntityPropertyName,Title,InternalName,TypeAsString').get();
-    } catch (error) {
-      return Promise.reject(error);
-    }
   }
 
   private async getListItemsByCamlQuery(listId: string, camlQuery: string, queryConfig: QueryHelperEntity): Promise<Array<any>> {

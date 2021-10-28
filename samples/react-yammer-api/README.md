@@ -14,11 +14,11 @@ extensions:
   - react
   createdDate: 4/1/2017 12:00:00 AM
 ---
-# Yammer REST API SPFx webpart #
+# Yammer REST API SPFx web part #
 
 ## Summary
 
-This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React webpart and the Yammer JavaScript SDK. The SPFx webpart contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
+This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React web part and the Yammer JavaScript SDK. The SPFx web part contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
 
 ### Yammer search
 
@@ -28,7 +28,7 @@ Sample SharePoint Framework client-side web part built using React that consumes
 
 ### Smart Authentication, if Yammer Enforce Office 365 identity is enabled
 
-If Yammer Office 365 Identity Enforcement is enabled, the webpart will 'smart' authenticate Office 365 user when in SharePoint Online environment i.e. a user should allow the app (consent popup) once in a lifetime. After, the user will be logged in all the time. Smart because if you do not have the yammer auth cookies, you would not have to re-authenticate with login button and popups.
+If Yammer Office 365 Identity Enforcement is enabled, the web part will 'smart' authenticate Office 365 user when in SharePoint Online environment i.e. a user should allow the app (consent popup) once in a lifetime. After, the user will be logged in all the time. Smart because if you do not have the yammer auth cookies, you would not have to re-authenticate with login button and popups.
 To enable Office 365 Identity Enforcement on `Office 365 Enterprise E3 Trial tenant`, go to the Office 365 admin -> Admin centers -> Yammer -> Security Settings -> Enforce Office 365 identity.
 
 ## Used SharePoint Framework Version 
@@ -39,7 +39,7 @@ To enable Office 365 Identity Enforcement on `Office 365 Enterprise E3 Trial ten
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 Enterprise E3](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
  
-  ** [Office 365 Enterprise E3 Trial](https://products.office.com/en-ie/business/office-365-enterprise-e3-business-software) instead of `Office 365 Enterprise E3 Developer Trial` is required to test the webpart with Yammer.
+  ** [Office 365 Enterprise E3 Trial](https://products.office.com/en-ie/business/office-365-enterprise-e3-business-software) instead of `Office 365 Enterprise E3 Developer Trial` is required to test the web part with Yammer.
 
 ## Prerequisites
 
@@ -60,6 +60,7 @@ Version|Date|Comments
 0.0.1|April 19, 2017 | Initial commit
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -75,13 +76,13 @@ Version|Date|Comments
 ![Yammer app enabled](./assets/yammer-enabled-screen.png)
 
 - Copy the Yammer app client Id and redirect uri.
-- Go to the SPFx webpart folder and find **src/webparts/reactYammerApi/yammer/ProdConfiguration.ts**.
+- Go to the SPFx web part folder and find **src/webparts/reactYammerApi/yammer/ProdConfiguration.ts**.
 - Replace the config client id and redirect uri with the copied from the yammer registered app values.
 ```typescript
 import { IConfiguration } from './IConfiguration';
 
 /**
- * Webpart production configuration.
+ * Web part production configuration.
  */
 export class ProdConfiguration implements IConfiguration {
     public readonly clientId: string = "<YOUR_YAMMER_APP_CLIENT_ID>";

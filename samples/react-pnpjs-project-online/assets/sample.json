@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "PnPjs Project Online",
     "shortDescription": "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjs-project-online",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-project-online",
     "longDescription": [
       "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept."
     ],
-    "created": "2019-12-04",
-    "modified": "2019-12-04",
+    "creationDateTime": "2019-12-04",
+    "updateDateTime": "2019-12-04",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjs-project-online/assets/Preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-project-online/assets/Preview.gif",
         "alt": "PnPjs Project Online"
       }
     ],

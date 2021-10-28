@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Hero Layout Webpart",
+    "id": "5efc0426-3e59-4fc7-b638-73eb77aaf788",
+    "version": "1.2.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Omar El-Anis",
+      "websiteUrl": "www.spbytes.com",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "6238832"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/hero-webpart.sppkg"
+  }
+}

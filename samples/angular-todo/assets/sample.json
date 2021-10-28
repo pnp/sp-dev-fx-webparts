@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Angular client-side web part",
     "shortDescription": "Sample Web Part illustrating using Angular with the SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-todo",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-todo",
     "longDescription": [
       "Sample Web Part illustrating using Angular with the SharePoint Framework."
     ],
-    "created": "2017-03-10",
-    "modified": "2017-03-10",
+    "creationDateTime": "2017-03-10",
+    "updateDateTime": "2017-03-10",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-todo/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-todo/assets/preview.png",
         "alt": "Angular client-side web part"
       }
     ],

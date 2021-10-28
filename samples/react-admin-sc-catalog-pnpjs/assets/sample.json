@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Site Collection App Catalogs",
     "shortDescription": "A SPFx Web Part using @pnp/sp/appcatalog and @pnp/spfx-controls-react. It allows to see in a single view all the SiteCollection catalogs and the Apps installed with some useful metadata. It needs Globlal Administrator or SharePoint Online Administrator permissions in order to access Site collection App Catalogs hidden list and each Site Collection App Catalog.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-admin-sc-catalog-pnpjs",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-admin-sc-catalog-pnpjs",
     "longDescription": [
       "A SPFx Web Part using @pnp/sp/appcatalog and @pnp/spfx-controls-react. It allows to see in a single view all the SiteCollection catalogs and the Apps installed with some useful metadata. It needs Globlal Administrator or SharePoint Online Administrator permissions in order to access Site collection App Catalogs hidden list and each Site Collection App Catalog."
     ],
-    "created": "2019-11-07",
-    "modified": "2019-11-07",
+    "creationDateTime": "2019-11-07",
+    "updateDateTime": "2019-11-07",
     "products": [
       "SharePoint",
       "Office"
@@ -22,13 +22,17 @@
       {
         "key": "SPFX-VERSION",
         "value": "1.9.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "ListView, WebPartTitle"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif",
         "alt": "Site Collection App Catalogs"
       }
     ],

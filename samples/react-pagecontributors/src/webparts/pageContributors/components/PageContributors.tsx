@@ -5,7 +5,7 @@ import {
     Environment,
     EnvironmentType
 } from '@microsoft/sp-core-library';
-import pnp from 'sp-pnp-js';
+import { sp } from '@pnp/sp';
 import { IPageContributorsProps } from "./IPageContributorsProps";
 
 export class PageContributor {
@@ -56,12 +56,12 @@ export class PageContributorsMockData {
 export class PageContributorsService {
     public static getPageContributors(pageServerRelativeUrl: string): Promise<PageContributor[]> {
         return new Promise<PageContributor[]>((resolve, reject) => {
-            pnp.sp.web.getFileByServerRelativeUrl(pageServerRelativeUrl)
+            sp.web.getFileByServerRelativeUrl(pageServerRelativeUrl)
                 .select('ModifiedBy')
                 .expand('ModifiedBy')
                 .get()
                 .then(file => {
-                    pnp.sp.web.getFileByServerRelativeUrl(pageServerRelativeUrl)
+                    sp.web.getFileByServerRelativeUrl(pageServerRelativeUrl)
                         .versions
                         .orderBy('Created')
                         .select('ID, Created, CreatedBy')
@@ -71,7 +71,7 @@ export class PageContributorsService {
                             let history = versions.map((version) => {
                                 return new PageContributor(version.CreatedBy);
                             });
-                            history.unshift(new PageContributor(file.ModifiedBy));
+                            history.unshift(new PageContributor(file['ModifiedBy']));
                             history = RemoveDuplicates(history);
                             resolve(history);
                         });
@@ -160,7 +160,7 @@ export default class PageContributors extends React.Component<IPageContributorsP
         }
         else if (Environment.type == EnvironmentType.SharePoint ||
             Environment.type == EnvironmentType.ClassicSharePoint) {
-            PageContributorsService.getPageContributors(this.props.pageUrl || location.pathname).then(
+            PageContributorsService.getPageContributors(this.props.pageUrl).then(
                 (response) => {
                     this._setContributors(response);
                 },

@@ -1,12 +1,12 @@
 # Stock Information
 
-> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/stockInformation.
+> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/stockInformation.
 
-This web part provides you the ability to display basic stock information for one publicly traded stock on a web page. The web part may be configured to display a stock based on stock symbol as well as be set to automatically refresh the stock information every 60 (sixty) seconds. The web part depends on a service provided by [Alpha Advantage](https://www.alphavantage.co/). [Learn how to register for your api key](https://github.com/SharePoint/sp-starter-kit/blob/master/documentation/tenant-settings.md#request-a-custom-api-key-to-alpha-vantage).
+This web part provides you the ability to display basic stock information for one publicly traded stock on a web page. The web part may be configured to display a stock based on stock symbol as well as be set to automatically refresh the stock information every 60 (sixty) seconds. The web part depends on a service provided by [Alpha Advantage](https://www.alphavantage.co/). [Learn how to register for your api key](https://github.com/pnp/sp-starter-kit/blob/master/documentation/tenant-settings.md#request-a-custom-api-key-to-alpha-vantage).
 
-The api key provided by Alpha Advantage is added as a tenant property by the Starter Kit provisioning process. [Use the -StockAPIKey parameter when deploying the kit](https://github.com/SharePoint/sp-starter-kit/tree/master/provisioning#-stockapikey).
+The api key provided by Alpha Advantage is added as a tenant property by the Starter Kit provisioning process. [Use the -StockAPIKey parameter when deploying the kit](https://github.com/pnp/sp-starter-kit/tree/master/provisioning#-stockapikey).
 
-By default, the `Stock Information` web part will use the stock symbol set during the Starter Kit provisioning process when the [-StockSymbol](https://github.com/SharePoint/sp-starter-kit/tree/master/provisioning#-stocksymbol) parameter is provided. The default stock symbol is `MSFT`. The stock symbol may be customized per web part instance.
+By default, the `Stock Information` web part will use the stock symbol set during the Starter Kit provisioning process when the [-StockSymbol](https://github.com/pnp/sp-starter-kit/tree/master/provisioning#-stocksymbol) parameter is provided. The default stock symbol is `MSFT`. The stock symbol may be customized per web part instance.
 
 ![Stock Information](https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-stock.gif)
 
@@ -27,9 +27,9 @@ The `Stock Information` web part can be configured with the following properties
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
 
 # Screenshots
 
@@ -37,7 +37,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/stockInformation
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/stockInformation
 
 # Minimal Path to Awesome
 

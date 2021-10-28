@@ -1,0 +1,67 @@
+$white: '[theme:white,default:#ffffff]';
+$black: '[theme:black,default:#000000]';
+
+.carouselContainer.filmStrip {
+  margin: 0 -10px;
+}
+
+.carouselContainer.filmStrip:global(.slick-slide) {
+  box-sizing: border-box;
+  max-height: 300px !important;
+  margin-left: 50px !important;
+}
+
+.indexButtonContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.indexButton {
+  font-size: 17px;
+  font-weight: 300;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: 0 0;
+  cursor: pointer;
+  color: $white;
+  width: 40px;
+  min-width: 20px;
+  margin-left: 0;
+  line-height: 40px;
+  box-sizing: content-box;
+  background-color: $black;
+  opacity: .6;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .3s;
+}
+
+.carouselContainer .sliderButtons {
+  opacity: 0;
+}
+
+.carouselContainer:hover .sliderButtons {
+  opacity: 1;
+}
+
+.sliderButtons:hover {
+  color: $white;
+}
+
+.indexButton:global(.ms-Button-flexContainer):hover:global(.ms-Icon),
+.indexButton:global(.ms-Icon:hover),
+.indexButton:hover:global(.ms-Icon) {
+  color: $white;
+}
+
+.leftPositioned {
+  left: 0;
+}
+
+.rightPositioned {
+  right: 0;
+}

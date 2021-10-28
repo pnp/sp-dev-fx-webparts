@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Word Game",
     "shortDescription": "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-word-game",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-word-game",
     "longDescription": [
       "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site."
     ],
-    "created": "2020-05-27",
-    "modified": "2020-05-27",
+    "creationDateTime": "2020-05-27",
+    "updateDateTime": "2020-05-27",
     "products": [
       "SharePoint",
       "Office"
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-word-game/assets/preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-word-game/assets/preview.gif",
         "alt": "Word Game"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-word-game/assets/settings.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-word-game/assets/settings.PNG?raw=true",
         "alt": "Word Game"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-word-game/assets/wordgame_mobile.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-word-game/assets/wordgame_mobile.png?raw=true",
         "alt": "Word Game"
       }
     ],

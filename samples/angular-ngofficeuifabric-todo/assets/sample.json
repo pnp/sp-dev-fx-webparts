@@ -2,14 +2,15 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-todo",
     "source": "pnp",
-    "title": "Angular \u0026 ngOfficeUIFabric Client-Side Web Part",
-    "shortDescription": "",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-ngofficeuifabric-todo",
+     "title": "Angular \u0026 ngOfficeUIFabric Client-Side Web Part",
+    "shortDescription": "Illustrates the use of Angular and ngOfficeUIFabric with the SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-todo",
     "longDescription": [
-      ""
+      "This is a sample web part that illustrates the use of Angular and ngOfficeUIFabric with the SharePoint Framework.",
+      "You can find a video recording walk-through this sample from SharePoint PnP YouTube channel."
     ],
-    "created": "2016-09-09",
-    "modified": "2016-09-09",
+    "creationDateTime": "2016-09-09",
+    "updateDateTime": "2016-09-09",
     "products": [
       "SharePoint",
       "Office"

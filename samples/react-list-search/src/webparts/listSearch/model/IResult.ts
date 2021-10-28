@@ -9,4 +9,9 @@ export default interface IResult {
     UniqueId: string;
     ServerUrl: string;
     FileLeafRef: string;
+    OData__ModernAudienceTargetUserField:Audience[];
+}
+
+interface Audience{
+  Name: string;
 }

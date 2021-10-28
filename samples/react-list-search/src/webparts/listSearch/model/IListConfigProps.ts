@@ -8,6 +8,7 @@ export interface IListData {
   Query: string;
   uniqueId: string;
   sortIdx: number;
+  AudienceEnabled: boolean;
 }
 
 export interface IBaseFieldData {

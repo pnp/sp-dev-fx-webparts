@@ -1,6 +1,6 @@
 # Site Information
 
-> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/siteInformation.
+> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/siteInformation.
 
 
 This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.
@@ -29,9 +29,9 @@ The `Site Information` web part can be configured with the following properties:
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
 
 # Screenshots
 
@@ -39,7 +39,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/siteInformation
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/siteInformation
 
 # Minimal Path to Awesome
 
@@ -54,6 +54,6 @@ https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/s
 Version|Date|Comments
 -------|----|--------
 1.0|May 2018|Initial release
-1.1|June 2018|Link webpart to proper term group and term set
+1.1|June 2018|Link web part to proper term group and term set
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-site-information" />

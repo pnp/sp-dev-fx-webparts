@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "137868a8-8e7e-4e06-85f3-a8913f5ff71c",
+  "alias": "NewsWebPart",
+  "componentType": "WebPart",
+  "supportsFullBleed": true, // suport to full width sections
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "World News" },
+    "description": { "default": "World News WebPart" },
+    "officeFabricIconFontName": "NewsSearch",
+    "properties": {
+      "title": "News",
+      "newsUrl": "https://newsapi.org/v2/everything?q=*",
+      "apiKey": "1da2fba78a5e459ba299f002f53155cf",
+      "endpoint":"",
+      "queryTitleOnly" : "",
+      "domains": "",
+      "excludeDomains": "",
+      "language":"",
+      "country": "ALL",
+      "category": "general",
+      "pagesize": 12,
+      "viewOption": "tiles" // tiles or list
+    }
+  }]
+}

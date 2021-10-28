@@ -20,7 +20,7 @@
         "default": "Other"
       },
       "title": {
-        "default": "react-datatable"
+        "default": "Datatable"
       },
       "description": {
         "default": "Shows the sharepoint list items in data table format with some advanced features."

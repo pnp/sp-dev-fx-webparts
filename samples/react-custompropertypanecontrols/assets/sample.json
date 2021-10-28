@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Custom property pane controls",
     "shortDescription": "Sample custom property pane controls built in React for use with SharePoint Framework client-side web parts.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-custompropertypanecontrols",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custompropertypanecontrols",
     "longDescription": [
       "Sample custom property pane controls built in React for use with SharePoint Framework client-side web parts."
     ],
-    "created": "2017-05-01",
-    "modified": "2017-05-01",
+    "creationDateTime": "2017-05-01",
+    "updateDateTime": "2017-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif",
         "alt": "Custom property pane controls"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-custompropertypanecontrols/assets/cascading-dropdown-preview.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-custompropertypanecontrols/assets/cascading-dropdown-preview.gif?raw=true",
         "alt": "Custom property pane controls"
       }
     ],

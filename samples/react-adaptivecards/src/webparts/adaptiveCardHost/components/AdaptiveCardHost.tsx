@@ -14,6 +14,8 @@ import { MessageBar, MessageBarType, MessageBarButton } from 'office-ui-fabric-r
 // Localization
 import * as strings from 'AdaptiveCardHostWebPartStrings';
 
+import { DisplayMode } from '@microsoft/sp-core-library';
+
 export default class AdaptiveCardHost extends React.Component<IAdaptiveCardHostProps, {}> {
 
   /**
@@ -70,6 +72,7 @@ export default class AdaptiveCardHost extends React.Component<IAdaptiveCardHostP
           >
             {strings.AdaptingTemplatingWarningIntro}<a href={strings.AdaptiveCardTemplatingMoreInfoLinkUrl} target='_blank'>{strings.AdaptiveCardTemplating}</a>{strings.AdaptiveCardWarningPartTwo}<strong>{strings.UseAdaptiveTemplatingLabel}</strong>{strings.AdaptiveTemplatingEnd}
           </MessageBar>}
+
           <AdaptiveCard
             template={template}
             data={data}
@@ -77,6 +80,22 @@ export default class AdaptiveCardHost extends React.Component<IAdaptiveCardHostP
             themeVariant={themeVariant}
             onExecuteAction={this._executeActionHandler}
             className={styles.adaptiveCardHost}
+            onParseError={(errors: string[]) => {
+              console.log("Errors parsing adpative cards", errors);
+            }}
+            errorTemplate={(errors: string[]) => {
+              if (this.props.displayMode === DisplayMode.Edit) {
+                return (
+                  <MessageBar messageBarType={MessageBarType.error} isMultiline={true}>
+                    {strings.AdaptiveCardErrorIntro}<br />
+                    {errors.map((error: string) => {
+                      return <p>{error}</p>;
+                    })}
+                  </MessageBar>);
+              } else {
+                return null;
+              }
+            }}
           /></>);
     }
   }

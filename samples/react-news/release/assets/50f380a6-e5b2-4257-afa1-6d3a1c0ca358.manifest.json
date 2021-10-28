@@ -1,0 +1,114 @@
+{
+  "id": "50f380a6-e5b2-4257-afa1-6d3a1c0ca358",
+  "alias": "ReactNewsWebpart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "React-News-Webpart"
+      },
+      "description": {
+        "default": "React-News-Webpart description"
+      },
+      "officeFabricIconFontName": "News",
+      "properties": {
+        "description": "React-News-Webpart"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/dist/"
+    ],
+    "entryModuleId": "react-news-webpart",
+    "scriptResources": {
+      "react-news-webpart": {
+        "type": "path",
+        "path": "react-news-webpart_a82dc6a09ff2adec49dd.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.1"
+      },
+      "ReactNewsWebpartStrings": {
+        "type": "path",
+        "path": "ReactNewsWebpartStrings_en-us_9c69b7524949cbd1c1bc277cc0857652.js"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.8.5"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.8.5"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6",
+        "version": "1.12.1"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "bg-BG": "PropertyControlStrings_bg-bg_8ed72ece3685811017132eb844d74d2b.js",
+          "ca-ES": "PropertyControlStrings_ca-es_4584e999630b4da0f3943516915be8f0.js",
+          "da-DK": "PropertyControlStrings_da-dk_1d0932d33a05e1bfcf90ff2073389182.js",
+          "de-DE": "PropertyControlStrings_de-de_d40342425b678318d0419e6ad9dd6f70.js",
+          "el-GR": "PropertyControlStrings_el-gr_85080a0fd923b34329ed3afc8e24f0ca.js",
+          "en-US": "PropertyControlStrings_en-us_3770839de1f3a0bef2a56730368aab40.js",
+          "es-ES": "PropertyControlStrings_es-es_69e478d7c5043b45e6628ac2c9e2de4b.js",
+          "et-EE": "PropertyControlStrings_et-ee_598f724341a6fb38723922f994e302e0.js",
+          "fi-FI": "PropertyControlStrings_fi-fi_0f6d7d22b90096f65e849824ea36f036.js",
+          "fr-FR": "PropertyControlStrings_fr-fr_f17d1581e1807a854fa5df15365797bb.js",
+          "it-IT": "PropertyControlStrings_it-it_8f63bbadd3620640d822549f04da2ccb.js",
+          "ja-JP": "PropertyControlStrings_ja-jp_1ab0c1b344e245022153106fc5722a75.js",
+          "lt-LT": "PropertyControlStrings_lt-lt_1e9c7953e8515297e074b213288dfaaa.js",
+          "lv-LV": "PropertyControlStrings_lv-lv_56d7a5f081517fa938fa8bc2d903cd97.js",
+          "nb-NO": "PropertyControlStrings_nb-no_357d85cd6acd4c9cdfc5cc8c0b198986.js",
+          "nl-NL": "PropertyControlStrings_nl-nl_217fc5878d50553567c652e81c1b743c.js",
+          "no": "PropertyControlStrings_no_819bcb574a9a9b7bee923721da82f3af.js",
+          "pl-PL": "PropertyControlStrings_pl-pl_c233eab225f8a0a54bfd72e8cf26fcad.js",
+          "pt-PT": "PropertyControlStrings_pt-pt_4e8ff2c4c080c29048b237bec8d6c857.js",
+          "ro-RO": "PropertyControlStrings_ro-ro_5a1eb0ace969b2930de4c2b89f9791cc.js",
+          "ru-RU": "PropertyControlStrings_ru-ru_f2b220073240303d6e0a4693c7a95d24.js",
+          "sk-SK": "PropertyControlStrings_sk-sk_753cba40099869f50de2c9bc8d1f54e3.js",
+          "sr-Latn-RS": "PropertyControlStrings_sr-latn-rs_673d7d1f6c33e4e706753cf7dceb0655.js",
+          "sv-SE": "PropertyControlStrings_sv-se_5dbecd28947c574648adbe0516fa2b3b.js",
+          "tr-TR": "PropertyControlStrings_tr-tr_cda80038fa0f28a0926730ba014ef8d2.js",
+          "vi-VN": "PropertyControlStrings_vi-vn_e285a250de584da19f4d2bcda40cd095.js",
+          "zh-CN": "PropertyControlStrings_zh-cn_f54e63ffc9812984f622f4eef90882c9.js",
+          "zh-TW": "PropertyControlStrings_zh-tw_c48095a54869748740db4e3387cd8006.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us_3770839de1f3a0bef2a56730368aab40.js"
+      }
+    }
+  }
+}

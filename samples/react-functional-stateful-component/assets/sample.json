@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "React Functional Stateful Component web part",
     "shortDescription": "This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-stateful-component",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component",
     "longDescription": [
       "This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool."
     ],
-    "created": "2019-06-05",
-    "modified": "2019-06-05",
+    "creationDateTime": "2019-06-05",
+    "updateDateTime": "2019-06-05",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-stateful-component/Screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-stateful-component/Screenshot.png",
         "alt": "React Functional Stateful Component web part"
       }
     ],

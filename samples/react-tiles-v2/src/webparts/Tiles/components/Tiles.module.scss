@@ -1,0 +1,28 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+$ms-themePrimary:               "[theme:themePrimary, default:#0078d7]";
+$ms-themeSecondary:             "[theme:themeSecondary, default:#2488d8]";
+
+.tiles {
+  .message {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+
+  .tilesList {
+    @include ms-Grid-row;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tileBG{
+    color: $ms-themePrimary;
+  }
+
+  .tileFont{
+    color: $ms-themeSecondary;
+  }
+}

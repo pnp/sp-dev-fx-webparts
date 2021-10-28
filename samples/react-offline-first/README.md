@@ -17,10 +17,10 @@ extensions:
 
 ## Summary
 
-Sample Webpart that demonstrates how to use offline storage in a way that is more
+Sample Web part that demonstrates how to use offline storage in a way that is more
 offline first.
 
-This webpart would not be possible without the great tools provided, please
+This web part would not be possible without the great tools provided, please
 read the documentation for 
 * [LocalForage](https://github.com/localForage/localForage)
 * [ES6-Promise](https://github.com/stefanpenner/es6-promise)
@@ -51,6 +51,7 @@ Version |Date       | Comments
 0.0.3   |18/Feb/18  | Updated JSDocs, and and created readme.
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -67,7 +68,7 @@ Version |Date       | Comments
 
 ## Features
 
-This webpart demonstrates using the OfflineFirstHTTPService how to do offline
+This web part demonstrates using the OfflineFirstHTTPService how to do offline
 first HTTP Requests.
 
 HTTP Get requests are first retrieved from an offline storage system. Either

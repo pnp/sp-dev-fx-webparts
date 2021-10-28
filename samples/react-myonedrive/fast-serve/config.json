@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/s-KaiNet/spfx-fast-serve/master/schema/config.1.1.schema.json",
+  "cli": {
+    "isLibraryComponent": false
+  }
+}

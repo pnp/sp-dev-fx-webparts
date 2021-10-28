@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "teams-meeting-app-client-side-solution",
+    "id": "a70a8d1d-f76f-4535-bf43-0d1abd0377e6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Test User",
+      "websiteUrl": "https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview",
+      "privacyUrl": "https://microsoft.com/privacy",
+      "termsOfUseUrl": "https://microsoft.com/terms",
+      "mpnId": "000000"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/teams-meeting-app.sppkg"
+  }
+}

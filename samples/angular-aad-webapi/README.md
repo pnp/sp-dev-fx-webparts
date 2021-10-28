@@ -24,6 +24,7 @@ Sample SharePoint Framework client-side web part illustrating communication with
 ![Sample showing the client-side web part](./assets/preview.jpg)
 
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
@@ -35,7 +36,7 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 Solution|Author(s)
 --------|---------
-angular-aad-webapi|David Hartman ([Slalom](https://slalom.com))
+angular-aad-webapi|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 
@@ -45,11 +46,13 @@ Version|Date|Comments
 1.0|December 21, 2016|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
 
 ## Configuration Bliss
+
 - clone this repo
 
 ### Create custom Web API site
@@ -57,6 +60,7 @@ Version|Date|Comments
 - in the Azure Management Portal at https://portal.azure.com create a new API App
 
 ### Secure custom Web API with AAD
+
 - in the Azure Management Portal at https://manage.windowsazure.com navigate to Azure Active Directory and register a new web application:
   - as the name use anything you want
   - as the sign-in URL use the URL of the previously created API App 
@@ -97,8 +101,19 @@ Version|Date|Comments
 > Note: When you first login, the screen will refresh several times. I tried using the popUp feature with adal,
 > however, this caused a infinite digest loop. Also ideally you should be able to make the calls to both the Graph
 > API and your custom Web API without having to acquire the bearer tokens first, however, what happens is the app
-> aquires the bearer token and then never finishes the call, I believe that is because the app is reloading, not quite
+> acquires the bearer token and then never finishes the call, I believe that is because the app is reloading, not quite
 > sure how to fix that yet. There is definitely room to improved the user experience but the main logic and functionality
 > is here. Thanks!
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angular-aad-webapi&authors=@davidhartman&title=angular-aad-webapi%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angular-aad-webapi&authors=@davidhartman&title=angular-aad-webapi%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angular-aad-webapi&authors=@davidhartman&title=angular-aad-webapi%20-%20).
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-aad-webapi" />

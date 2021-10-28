@@ -1,0 +1,178 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+  .image {
+    width: 100%;
+  }
+  .newsTitle {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px){
+
+}
+
+.image {
+  object-fit: cover;
+}
+
+.newsTitle {
+  font-size: 20px;
+  padding-top: 0px;
+  /* color: $ms-color-themePrimary; */
+  margin-bottom: 20px;
+  @include ms-fontWeight-semibold;
+  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+.row {
+  @include ms-Grid-row;
+  @include ms-fontColor-white;
+  background-color: $ms-color-themeDark;
+  padding: 20px;
+}
+.column {
+  @include ms-Grid-col;
+  @include ms-lg10;
+  @include ms-xl8;
+  @include ms-xlPush2;
+  @include ms-lgPush1;
+}
+
+.title {
+  @include ms-font-xl;
+  @include ms-fontColor-white;
+}
+
+.description {
+  /*  color: $ms-color-neutralSecondaryAlt; */
+  @include ms-fontSize-m;
+  padding-left: 16px;
+  padding-right: 16px;
+  line-height: 22px;
+  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.date {
+  @include ms-font-s-plus;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 15px;
+  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.descriptionTile {
+  /*  color: $ms-color-neutralSecondaryAlt;*/
+  @include ms-fontSize-m;
+  padding-left: 16px;
+  padding-right: 16px;
+  line-height: 22px;
+  max-height: 135px;
+  min-height: 135px;
+  margin-bottom: 15px;
+  display: block;
+  overflow: hidden;
+  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.separator {
+  border-top: 1px solid lighten(#333, 70%);
+  margin: 0 auto;
+  padding-bottom: 5px;
+  width: 90%;
+}
+
+.cardTile {
+max-width: 100%
+}
+
+[data-theme="default"] {
+  .cardTile {
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+  .separator {
+    border-top: 1px solid $ms-color-neutralTertiaryAlt;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    width: 90%;
+  }
+}
+[data-theme="dark"] {
+  .cardTile {
+    border-color: $ms-color-neutralSecondaryAlt;
+  }
+  .separator {
+    border-top: 1px solid $ms-color-neutralSecondaryAlt;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    width: 90%;
+  }
+  .cardTile:hover {
+    border-color: $ms-color-neutralTertiary;
+  }
+  .descriptionTile {
+    /*  color: $ms-color-neutralSecondaryAlt;*/
+    @include ms-fontSize-m;
+    padding-left: 16px;
+    padding-right: 16px;
+    line-height: 22px;
+    max-height: 135px;
+    min-height: 135px;
+    margin-bottom: 15px;
+    display: block;
+    overflow: hidden;
+    color: $ms-color-neutralTertiaryAlt;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  :global {
+    .ms-Persona-initials {
+      color: $ms-color-white;
+    }
+  }
+}
+[data-theme="contrast"] {
+  .cardTile {
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+  .separator {
+    border-top: 1px solid $ms-color-neutralTertiaryAlt;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    width: 90%;
+  }
+  .descriptionTile {
+    /*  color: $ms-color-neutralSecondaryAlt;*/
+    @include ms-fontSize-m;
+    padding-left: 16px;
+    padding-right: 16px;
+    line-height: 22px;
+    max-height: 135px;
+    min-height: 135px;
+    margin-bottom: 15px;
+    display: block;
+    overflow: hidden;
+    color: $ms-color-neutralTertiaryAlt;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  }
+  :global {
+    .ms-Persona-initials {
+      color: $ms-color-white;
+    }
+  }
+}

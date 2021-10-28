@@ -73,7 +73,7 @@ In addition the React elements returned have been simplified. In particular the 
 
 ## Adding State
 
-You may be wondering how maintaining state, side effects or other complexities can be accommodated with functional components like the one used. This can be achieved by using a fairly new feature called [React Hooks](https://reactjs.org/docs/hooks-intro.html) and will be demonstrated using [another sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-stateful-component).
+You may be wondering how maintaining state, side effects or other complexities can be accommodated with functional components like the one used. This can be achieved by using a fairly new feature called [React Hooks](https://reactjs.org/docs/hooks-intro.html) and will be demonstrated using [another sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component).
 
 ## Building and testing
 

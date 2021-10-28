@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Displaying the version number in a web part",
     "shortDescription": "This very simple sample demonstrates three different approaches to display the version number of your SharePoint solution in your web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-versiondisplay",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-versiondisplay",
     "longDescription": [
       "This very simple sample demonstrates three different approaches to display the version number of your SharePoint solution in your web part."
     ],
-    "created": "2020-04-10",
-    "modified": "2020-04-10",
+    "creationDateTime": "2020-04-10",
+    "updateDateTime": "2020-04-10",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-versiondisplay/assets/VersionDisplay.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-versiondisplay/assets/VersionDisplay.gif",
         "alt": "Displaying the version number in a web part"
       }
     ],

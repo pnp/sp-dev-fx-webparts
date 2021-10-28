@@ -18,11 +18,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "SPFx Custom Web Parts" },
-    "title": { "default": "Search Directory" },
-    "description": { "default": "Search Directory" },
+    "title": { "default": "UoB Search Directory" },
+    "description": { "default": "University of Brighton Search Directory" },
     "officeFabricIconFontName": "ProfileSearch",
     "properties": {
-      "title": "Search Directory",
+      "title": "UoB Search Directory",
       "maxHeight": 700,
       "showBox":  true,
       "refreshInterval": 3,

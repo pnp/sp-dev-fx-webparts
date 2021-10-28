@@ -13,17 +13,18 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# Content Query WebPart (Compatible with On-Premises SharePoint versions)
+# Content Query Web Part (Compatible with On-Premises SharePoint versions)
 
 ## Summary
 
 > NOTE: This web part was built with an earlier version of SPFx which is compatible with on-premises versions of SharePoint. If you wish, you can use the [newer version of this web part](../react-content-query-online/README.md) which is compatible with SharePoint Online only.
 
-The `React Content Query WebPart` is a modern version of the good old `Content by Query WebPart` that was introduced in SharePoint 2007. Built for *SharePoint 2016* and *Office 365*, this modern version is built against the new **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. While the original WebPart was based on a `XSLT` templating engine, this *React* WebPart is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerfull `HTML` templates for rendering the queried content. This new version also lets the user query `any site collections` which resides on the same domain url, add `unlimited filters`, query *DateTime* fields to the `nearest minute` rather than being limited to a day, and much more.
+The `React Content Query Web Part` is a modern version of the good old `Content by Query Web Part` that was introduced in SharePoint 2007. Built for *SharePoint 2016* and *Office 365*, this modern version is built against the new **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. While the original Web Part was based on a `XSLT` templating engine, this *React* Web Part is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerful `HTML` templates for rendering the queried content. This new version also lets the user query `any site collections` which resides on the same domain url, add `unlimited filters`, query *DateTime* fields to the `nearest minute` rather than being limited to a day, and much more.
 
 <img src="Misc/toolpart.gif" />
 
 ## Used SharePoint Framework Version
+
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
@@ -43,24 +44,25 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|May 04, 2017|Initial release
 1.0.1|July 23rd 15, 2017|Updated to GA Version
-1.0.3|August 12, 2017|Added external scripts functionnality
+1.0.3|August 12, 2017|Added external scripts functionality
 1.0.4|August 31, 2017|Fixed a bug where tenant sites/subsites were missing from the **Web Url** dropdown
 1.0.5|September 1st, 2017|Added a **Site Url** parameter next to the **Web Url** parameter in order to narrow down the results
-1.0.6|September 19, 2017|Upgraded to SharePoint drop 1.2.0 and added the site url and web url preselection when adding the WebPart for the first time on a page. Also fixed a bug with fields that had spaces in their internal names (automatically replaced with `_x0020_` by SharePoint).
+1.0.6|September 19, 2017|Upgraded to SharePoint drop 1.2.0 and added the site url and web url pre-selection when adding the web part for the first time on a page. Also fixed a bug with fields that had spaces in their internal names (automatically replaced with `_x0020_` by SharePoint).
 1.0.7|November 17, 2017|Reverted to drop 1.1.0 in order to keep compatibility for SP2016 on-premise
-1.0.8|March 17, 2018|Updated to store the selected list using its ID instead of its title, so the webpart keeps working if the list title gets updated.
-1.0.9|March 28, 2018|Added a switch to enable the WebPart to apply it's query recursively within folders, and fixed a bug where webs could sometimes not appear under the web url dropdown
+1.0.8|March 17, 2018|Updated to store the selected list using its ID instead of its title, so the web part keeps working if the list title gets updated.
+1.0.9|March 28, 2018|Added a switch to enable the web part to apply it's query recursively within folders, and fixed a bug where webs could sometimes not appear under the web url dropdown
 1.0.10|April 5, 2018|Fixed a bug where the webs of the selected site collection were not being loaded correctly for particular tenants
 1.0.11|May 22, 2018|Fixed a bug causing filters to loose their sort order in IE
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Features
 
 ### Cross site collection
 
-The WebPart uses the search in order to get all sites under the current domain, which makes it possible to query not only subsites but other site collections and their subsites as well. By default, the current site collection and the current web on which the user is adding the WebPart will be pre-selected automatically.
+The web part uses the search in order to get all sites under the current domain, which makes it possible to query not only sub-sites but other site collections and their sub-sites as well. By default, the current site collection and the current web on which the user is adding the web part will be pre-selected automatically.
 
 <img src="Misc/allsites_v2.gif" />
 <br>
@@ -81,7 +83,7 @@ It is now possible to include time validation when querying date fields, giving 
 
 ### Handlebars templating engine
 
-Enjoy a simple, yet powerfull html-based templating engine for rendering your results. The WebPart even generates a default Handlebars template for you based on the view fields you have selected during the configuration! 
+Enjoy a simple, yet powerfull html-based templating engine for rendering your results. The web part even generates a default Handlebars template for you based on the view fields you have selected during the configuration! 
 
 For advanced users, more than 150 Handlebars block helpers are available by default within the user defined template. For a list of all block helpers, see [handlebars-helpers](https://github.com/helpers/handlebars-helpers#helpers) 
 <br>
@@ -103,7 +105,7 @@ External scripts can be used to include either libraries such as *jQuery*, or ev
 
 ## Getting Started
 
-### Adding the WebPart to your page
+### Adding the web part to your page
 
 To add the `React Content Query WebPart` to your site page you have two options : 
 - Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
@@ -113,7 +115,7 @@ Note : The second method will only work for Office 365 sites, since the **.ppkg*
 
 ### Configuring the WebPart
 
-As seen in the [User friendly configuration](#user-friendly-configuration) section, configuring the WebPart is quite straight forward. However, here's a list of *gotchas* that could save you some time :
+As seen in the [User friendly configuration](#user-friendly-configuration) section, configuring the web part is quite straight forward. However, here's a list of *gotchas* that could save you some time :
 
 - The `Web Url` property uses the search to find all sites that are under the current domain. That being said, newly created sites can take a while to appear within the dropdown options, based on the search crawl schedule.
 - The `Filters` property still supports query string expressions like *[PageQueryString:ParamName]* for text fields, and date expressions such as *[Today]* or *[Today] + 4* for date fields.
@@ -187,7 +189,7 @@ Once we can loop within the items, we can render any field, as long as the field
 <div class="item">[object]</div>
 ```
 
-We are almost there, the above code is rendering a *[object]* because the Content Query Webpart offers 3 different ways to render a field value:
+We are almost there, the above code is rendering a *[object]* because the Content Query Web Part offers 3 different ways to render a field value:
 
 Property | Description
 ---------|---------------
@@ -221,15 +223,15 @@ Property | Description
 
 #### Including basic library files
 
-For including JavaScript files within the WebPart, file URLs must be added to the **External Scripts** parameter available in the toolpart. 
+For including JavaScript files within the web part, file URLs must be added to the **External Scripts** parameter available in the toolpart. 
 
 <img src="Misc/externalScripts.png" />
 
-Each file URL must be on its own line, and placed in the desired order. The scripts will be loaded asynchronously, but in a sequential fashion, which means that the WebPart will wait until a script is completely loaded before proceeding to load the next one.
+Each file URL must be on its own line, and placed in the desired order. The scripts will be loaded asynchronously, but in a sequential fashion, which means that the web part will wait until a script is completely loaded before proceeding to load the next one.
 
 #### Including custom logic files
 
-If you need custom logic files that can interact precisely **before** or **after** the rendering of the HTML generated by the *Handlebars* template, you must follow the patern below in order for the WebPart to recognize the endpoints and call them when needed :
+If you need custom logic files that can interact precisely **before** or **after** the rendering of the HTML generated by the *Handlebars* template, you must follow the pattern below in order for the web part to recognize the endpoints and call them when needed :
 
 ```javascript
 ReactContentQuery.ExternalScripts.MyScriptFile = {
@@ -250,7 +252,7 @@ Looking at this example, here are the key things that needs to be respected in o
 _Namespace_
 
 - [x] The script uses a namespace which starts by **ReactContentQuery.ExternalScripts.**, followed by the name of its own file
-- [x] The name of the file has to be written without its **.js** extension, and without any caracters that aren't letters or numbers
+- [x] The name of the file has to be written without its **.js** extension, and without any characters that aren't letters or numbers
 - [x] The name of the file needs to respect the same casing as in it's URL
 
 Examples :
@@ -278,8 +280,8 @@ Both functions provide the following parameters :
 
 Parameter             | Description
 ----------------------|-------------
-**wpContext**         | Represents the context of the WebPart who called the function, which exposes all kinds of useful informations such as **wpContext.domElement** which represents the HTML element on which the current WebPart is being rendered. 
-**handlebarsContext** | Represents the handlebars context used for generating the template of the current WebPart. Can be used for adding handlebar block helpers in the **onPreRender** function for example.
+**wpContext**         | Represents the context of the web part which called the function, which exposes all kinds of useful information such as **wpContext.domElement** which represents the HTML element on which the current web part is being rendered. 
+**handlebarsContext** | Represents the handlebars context used for generating the template of the current web part. Can be used for adding handlebar block helpers in the **onPreRender** function for example.
 
 
 #### Including custom block helpers

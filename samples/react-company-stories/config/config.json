@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sharepoint-stories-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sharePointStories/SharePointStoriesWebPart.js",
+          "manifest": "./src/webparts/sharePointStories/SharePointStoriesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SharePointStoriesWebPartStrings": "lib/webparts/sharePointStories/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

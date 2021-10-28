@@ -31,6 +31,7 @@ import { IDynamicItem } from './model/IDynamicItem';
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import { SharePointFieldTypes, SharePointType } from './model/ISharePointFieldTypes';
 import { IModalType } from './model/IModalType';
+import { find, has } from '@microsoft/sp-lodash-subset';
 
 
 
@@ -76,6 +77,7 @@ export interface IListSearchWebPartProps {
   initialQueryOption: "simpleText" | "dynamicData";
   dynamicQueryText: DynamicProperty<string>;
   initialQueryText: string;
+  title: string;
 }
 
 export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearchWebPartProps> implements IDynamicDataCallables {
@@ -294,7 +296,12 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
           AnyCamlQuery: (this.properties.listsCollectionData.findIndex(listConfig => !this.isEmpty(listConfig.Query) || !this.isEmpty(listConfig.ListView)) > -1),
           groupByFieldType: this.properties.groupByFieldType,
           CacheType: this.properties.CacheType,
-          generalFilterText: queryText
+          generalFilterText: queryText,
+          title: this.properties.title,
+          updateTitle: (value: string) => {
+            this.properties.title = value;
+          },
+          displayMode: this.displayMode,
         }
       );
       renderElement = element;
@@ -574,7 +581,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
         ]
     }) : emptyProperty;
 
-    let GeneralFilterInitialQueryText = this.properties.initialQueryEnabled && this.properties.initialQueryOption === "simpleText" ?  PropertyPaneTextField('initialQueryText', {
+    let GeneralFilterInitialQueryText = this.properties.initialQueryEnabled && this.properties.initialQueryOption === "simpleText" ? PropertyPaneTextField('initialQueryText', {
       label: strings.GeneralFilterInitialQueryTextValue,
     }) : emptyProperty;
 
@@ -866,6 +873,11 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
                       title: strings.CollectionDataListCamlQueryTitle,
                       placeholder: strings.CollectionDataListCamlQueryPlaceHolder,
                       type: CustomCollectionFieldType.string,
+                    },
+                    {
+                      id: "AudienceEnabled",
+                      title: strings.ModerAudienceEnabledTitle,
+                      type: CustomCollectionFieldType.boolean,
                     }
                   ],
                   disabled: !this.properties.sites || this.properties.sites.length == 0,

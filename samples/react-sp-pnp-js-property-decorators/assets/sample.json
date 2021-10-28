@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using PnP JS Core custom objects with @select and @expand decorators",
     "shortDescription": "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-pnp-js-property-decorators",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-pnp-js-property-decorators",
     "longDescription": [
       "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators."
     ],
-    "created": "2017-07-02",
-    "modified": "2017-07-02",
+    "creationDateTime": "2017-07-02",
+    "updateDateTime": "2017-07-02",
     "products": [
       "SharePoint",
       "Office"
@@ -32,11 +32,11 @@
         "alt": "Using PnP JS Core custom objects with @select and @expand decorators"
       }
     ],
-    "authors": [
+   "authors": [
       {
-        "gitHubAccount": "jquinzamora",
+        "gitHubAccount": "jquintozamora",
         "company": "",
-        "pictureUrl": "https://github.com/jquinzamora.png",
+        "pictureUrl": "https://github.com/jquintozamora.png",
         "name": "Jose Quinto"
       }
     ],

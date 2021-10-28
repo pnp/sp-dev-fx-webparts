@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using Redux-Form library and React",
     "shortDescription": "Sample web part to demonstrate the use of Redux-Form library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-reduxform",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-reduxform",
     "longDescription": [
       "Sample web part to demonstrate the use of Redux-Form library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form."
     ],
-    "created": "2018-05-02",
-    "modified": "2018-05-02",
+    "creationDateTime": "2018-05-02",
+    "updateDateTime": "2018-05-02",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true",
         "alt": "Using Redux-Form library and React"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true",
         "alt": "Using Redux-Form library and React"
       }
     ],

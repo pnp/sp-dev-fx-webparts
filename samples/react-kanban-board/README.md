@@ -19,8 +19,8 @@ extensions:
 ## Summary
 
 
-This solution contains an SPFx webpart that shows a kanban board using Office UI Fabric components ([Office UI Fabric](https://developer.microsoft.com/fluentui/)).
-The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
+This solution contains an SPFx web part that shows a kanban board using Office UI Fabric components ([Office UI Fabric](https://developer.microsoft.com/fluentui/)).
+The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
 
 ![picture of the web part in action](assets/kanbanofficeUI.gif)
 
@@ -35,7 +35,7 @@ The webpart uses the default columns of the SharePoint Tasks list for showing th
 
 ## Prerequisites
 
-This webpart reads the information from a Tasks list and uses the following OOB columns
+This web part reads the information from a Tasks list and uses the following OOB columns
 * Task Name
 * Assigned To
 * % Complete
@@ -43,7 +43,7 @@ This webpart reads the information from a Tasks list and uses the following OOB 
 * Priority
 * Task Status
 
-The Task list can be chosen using the webpart properties (BaseTemplate 171 or 107)
+The Task list can be chosen using the web part properties (BaseTemplate 171 or 107)
 
 ## Solution
 

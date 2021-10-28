@@ -19,7 +19,7 @@ This repo is a react based SPFx web part and extension that allows users to add/
 
 WebPart in Action
 
-![Webpart in action](assets/webpartinaction.gif?raw=true "Webpart in action")
+![Web part in action](assets/webpartinaction.gif?raw=true "Webpart in action")
 
 Challenges/Drawback with ONLY using SPFx extension for adding js and css file references.
 * JS and CSS file references links needs to be hardcoded in solution
@@ -32,7 +32,7 @@ To overcome this drawbacks, this solution comes handy. This is reusable componen
 
 ### Features of solution
 
-* WebPart to configure JS and CSS file reference.
+* Web part to configure JS and CSS file reference.
 * Edit functionality if at least one JS or CSS reference is already added via this solution
 * Completely remove all the references added via this solution
 * Support for relative url also, if your js and css file is referred from some document library in same site collection.
@@ -70,19 +70,19 @@ gulp package-solution --ship
 - Upload or drag and drop the newly created client-side solution package to the app catalog in your tenant.
 - Based on your tenant settings, if you would not have CDN enabled in your tenant, and the `includeClientSideAssets` setting would be true in the `package-solution.json`, the loading URL for the assets would be dynamically updated and pointing directly to the `ClientSideAssets` folder located in the app catalog site collection.
 
-
 ### How to Use Solution
+
 * Once app is deployed to app catalog successfully.
 * Install app to required site collection
-* Create new modern page. Add **addJsCssReference** webpart to page. Publish the page.
+* Create new modern page. Add **addJsCssReference** web part to page. Publish the page.
 * Use grid to add js and css file references, both are separate sections.
 * On Success message - Refresh the page and you would see your js and css files will be loaded.
 * To Edit/Remove, go to same page again and Use **Activate** or **Deactivate**.
-* Only Users with Manage Web permission will be able to access webpart and add/modify references.
+* Only Users with Manage Web permission will be able to access web part and add/modify references.
 
 ### High level design of Solution
 
-* SPFx solution with 2 components 1. SPFx Webpart 2. SPFx Extension Application Customizer
+* SPFx solution with 2 components 1. SPFx Web part 2. SPFx Extension Application Customizer
 * Disables Automatic activation of SPFx extension when app is installed.
 * React based solution
 * Register Custom action with ClientSideComponentId of Extension component
@@ -100,7 +100,6 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|Apr 24, 2020|Initial release
 2.0.0|June 09, 2020|Displaying access denied message,  added spinner to display on page load, fix edit, delete icons not displaying.
-
 
 ## Disclaimer
 

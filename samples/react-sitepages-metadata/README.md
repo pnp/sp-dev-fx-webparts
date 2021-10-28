@@ -19,7 +19,7 @@ Solution provides an enhancement to SitePages library that enables updating exis
 
 ## Prerequisites
  
-> If you plan on using included PowerShell script make sure you have [PnP PowerShell](https://github.com/SharePoint/PnP-PowerShell) installed
+> If you plan on using included PowerShell script make sure you have [PnP PowerShell](https://github.com/pnp/PnP-PowerShell) installed
 
 ## Solution
 

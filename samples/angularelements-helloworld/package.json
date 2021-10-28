@@ -42,6 +42,6 @@
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }

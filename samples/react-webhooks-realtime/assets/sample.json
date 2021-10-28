@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Webhooks Realtime",
     "shortDescription": "This web part demonstrates how to leverage the capabilities of SharePoint Webhooks. The libraries used by this web part are Socket.io, sp pnp js, moment.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webhooks-realtime",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-webhooks-realtime",
     "longDescription": [
       "This web part demonstrates how to leverage the capabilities of SharePoint Webhooks. The libraries used by this web part are Socket.io, sp pnp js, moment."
     ],
-    "created": "2017-10-29",
-    "modified": "2017-10-29",
+    "creationDateTime": "2017-10-29",
+    "updateDateTime": "2017-10-29",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webhooks-realtime/assets/spfx-react-webhooks-realtime.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webhooks-realtime/assets/spfx-react-webhooks-realtime.gif",
         "alt": "Webhooks Realtime"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-webhooks-realtime/assets/Architecture.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-webhooks-realtime/assets/Architecture.png?raw=true",
         "alt": "Webhooks Realtime"
       }
     ],

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Minesweeper",
     "shortDescription": "This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-minesweeper",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-minesweeper",
     "longDescription": [
       "This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!."
     ],
-    "created": "2020-07-01",
-    "modified": "2020-07-01",
+    "creationDateTime": "2020-07-01",
+    "updateDateTime": "2020-07-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-minesweeper/assets/Minesweeper.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-minesweeper/assets/Minesweeper.gif",
         "alt": "Minesweeper"
       }
     ],

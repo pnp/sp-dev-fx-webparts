@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Dev-Radar for SharePoint Online",
     "shortDescription": "The web part Use PnPjs library and Axios",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-dev-radar",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dev-radar",
     "longDescription": [
       "The web part Use PnPjs library and Axios"
     ],
-    "created": "2020-03-01",
-    "modified": "2020-03-01",
+    "creationDateTime": "2020-03-01",
+    "updateDateTime": "2020-03-01",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dev-radar/dev-radar.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dev-radar/dev-radar.png",
         "alt": "Dev-Radar for SharePoint Online"
       }
     ],

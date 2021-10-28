@@ -7,7 +7,7 @@ define([], function () {
     "ConfigureWebpartDescription": "Please configure the web part.",
     "ListFieldValidation": "Please select the list fields.",
     "ListPickerLabel": "Select a list",
-    "MultiSelectFieldLabel": "Multi select field",
+    "MultiSelectFieldLabel": "Select list fields",
     "SortingToggleLabel": "Enable Sort",
     "SortByLabel": "Default Sort By",
     "SearchingToggleLabel": "Enable Search",

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Image Magnifier",
     "shortDescription": "This web part allow to magnify an image, displaying a resolution more detailed through a lens.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-magnifier",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-magnifier",
     "longDescription": [
       "This web part allow to magnify an image, displaying a resolution more detailed through a lens."
     ],
-    "created": "2017-09-17",
-    "modified": "2017-09-17",
+    "creationDateTime": "2017-09-17",
+    "updateDateTime": "2017-09-17",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif",
         "alt": "Image Magnifier"
       }
     ],

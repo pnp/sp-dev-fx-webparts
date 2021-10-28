@@ -55,7 +55,7 @@ The purpose of this web part is to demonstrate building a React functional compo
 
 ![Screenshot](ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
 
-This is an extension of the approach used in the [React-Functional-Component](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-component) and [React-Functional-Stateful-Component](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-stateful-component) samples.
+This is an extension of the approach used in the [React-Functional-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component) and [React-Functional-Stateful-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component) samples.
 
 * Simplification
 * Functional Component

@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a webpart or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) by using the [ReactiveX (RxJs)](http://reactivex.io/) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.
+This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) by using the [ReactiveX (RxJs)](http://reactivex.io/) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.
 
 ![SPFx ReactiveX (RxJs) Event Emitter Sample](./assets/spfx-event-emitter.gif)
 
@@ -49,6 +49,7 @@ Version|Date|Comments
 0.0.3|December 10, 2018 | Updated to SPFx v1.7.0
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

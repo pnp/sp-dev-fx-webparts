@@ -1,24 +1,24 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneSlider,
   PropertyPaneDropdown,
+  PropertyPaneSlider,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import * as strings from 'pageContributorsStrings';
 import PageContributors from './components/PageContributors';
 import { IPageContributorsWebPartProps } from './IPageContributorsWebPartProps';
 import { PersonaSize } from "office-ui-fabric-react/lib/index";
-import pnp from 'sp-pnp-js';
+import { sp } from "@pnp/sp/presets/all";
 
 export default class PagecontributionWebPart extends BaseClientSideWebPart<IPageContributorsWebPartProps> {
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
-      pnp.setup({
+      sp.setup({
         spfxContext: this.context
       });
     });
@@ -28,9 +28,13 @@ export default class PagecontributionWebPart extends BaseClientSideWebPart<IPage
       React.createElement(PageContributors, {
         personaSize: this.properties.personaSize,
         numberOfFaces: this.properties.numberOfFaces,
-        pageUrl: this.properties.pageUrl
+        pageUrl: this.properties.pageUrl || this.getCurrentPageRelativeUrl()
       })
       , this.domElement);
+  }
+
+  private getCurrentPageRelativeUrl(): string {
+    return this.context.pageContext.legacyPageContext.serverRequestPath;
   }
 
   protected get dataVersion(): Version {
@@ -56,13 +60,13 @@ export default class PagecontributionWebPart extends BaseClientSideWebPart<IPage
                 PropertyPaneDropdown('personaSize', {
                   label: strings.PropertyPanePersonaSizeText,
                   options: [
-                    { key: PersonaSize.tiny, text: strings.PropertyPaneIconsSizeTiny },
-                    { key: PersonaSize.extraExtraSmall, text: strings.PropertyPaneIconsSizeEES },
-                    { key: PersonaSize.extraSmall, text: strings.PropertyPaneIconsSizeES },
-                    { key: PersonaSize.small, text: strings.PropertyPaneIconsSizeS },
-                    { key: PersonaSize.regular, text: strings.PropertyPaneIconsSizeR },
-                    { key: PersonaSize.large, text: strings.PropertyPaneIconsSizeL },
-                    { key: PersonaSize.extraLarge, text: strings.PropertyPaneIconsSizeEL },
+                    { key: PersonaSize.size8, text: strings.PropertyPaneIconsSizeTiny },
+                    { key: PersonaSize.size24, text: strings.PropertyPaneIconsSizeEES },
+                    { key: PersonaSize.size32, text: strings.PropertyPaneIconsSizeES },
+                    { key: PersonaSize.size40, text: strings.PropertyPaneIconsSizeS },
+                    { key: PersonaSize.size48, text: strings.PropertyPaneIconsSizeR },
+                    { key: PersonaSize.size72, text: strings.PropertyPaneIconsSizeL },
+                    { key: PersonaSize.size100, text: strings.PropertyPaneIconsSizeEL },
                   ],
                   selectedKey: this.properties.personaSize
                 }),

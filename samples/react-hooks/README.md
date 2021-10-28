@@ -1,7 +1,7 @@
 # React Hooks Form WebPart
 
 ## Summary
-The `React Hooks web part` is an example of how to implement Hooks in Spfx. 
+The `React Hooks web part` is an example of how to implement Hooks in SPFx. 
 Hooks is a new feature included in React version 16.8, with the new version of **SharePoint Framework (SPFx) version 1.9.1**  we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it.
 ![Brithdays Web Part](./assets/webpart.PNG)
 

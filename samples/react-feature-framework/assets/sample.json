@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Deployment of SharePoint assets as part of SPFx package",
     "shortDescription": "Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-feature-framework",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feature-framework",
     "longDescription": [
       "Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site."
     ],
-    "created": "2017-02-27",
-    "modified": "2017-02-27",
+    "creationDateTime": "2017-02-27",
+    "updateDateTime": "2017-02-27",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feature-framework/assets/screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feature-framework/assets/screenshot.png",
         "alt": "Deployment of SharePoint assets as part of SPFx package"
       }
     ],

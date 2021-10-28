@@ -1,0 +1,223 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/sp/site-design-script-actions.schema.json",
+    "actions": [{
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Number\" DisplayName=\"Folder Visitors Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\"   CanToggleHidden=\"FALSE\" ID=\"{0c44d811-1669-4109-b2ae-133c764e2eb3}\" Name=\"rfxFolderVisitorsGroupId\" StaticName=\"rfxFolderVisitorsGroupId\" Percentage=\"FALSE\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Number\" DisplayName=\"Folder Members Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\"  CanToggleHidden=\"FALSE\" ID=\"{26b670d4-2d58-4798-becf-f869a3b28497}\" Name=\"rfxFolderMembersGroupId\" StaticName=\"rfxFolderMembersGroupId\" Percentage=\"FALSE\" Customization=\"\"   PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Text\" DisplayName=\"Closing Date\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{2701f2bf-d45f-4672-9774-6dab88b9792d}\" Name=\"rfxClosingDate\" StaticName=\"rfxClosingDate\" MaxLength=\"255\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"User\" DisplayName=\"Contract Specialist\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{843f09c7-19cb-4889-8b39-d3132643568c}\" Name=\"rfxContractSpecialist\" StaticName=\"rfxContractSpecialist\" ShowField=\"ImnName\" UserSelectionScope=\"0\" UserSelectionMode=\"PeopleOnly\" List=\"UserInfo\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Note\" DisplayName=\"Description\" Group=\"Custom Columns\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" Sortable=\"FALSE\" ID=\"{a04fc484-b807-4fef-a970-cbd007deeb87}\" Name=\"rfxDescription\" StaticName=\"rfxDescription\" RichText=\"TRUE\" RichTextMode=\"FullHtml\" IsolateStyles=\"TRUE\" AppendOnly=\"FALSE\" NumLines=\"6\" UnlimitedLengthInDocumentLibrary=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Number\" DisplayName=\"Owners Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{34889607-f472-4d16-8f5b-b5ba6617c6cd}\" Name=\"rfxOwnersGroupId\" StaticName=\"rfxOwnersGroupId\" Percentage=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Number\" DisplayName=\"Library Members Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{a395c515-2e66-4009-9704-64533250b082}\" Name=\"rfxLibraryMembersGroupId\" StaticName=\"rfxLibraryMembersGroupId\" Percentage=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type=\"Number\" DisplayName=\"Library Visitors Group Id\" Group=\"Custom Columns\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{b0f7ea7e-1bf3-44d7-a293-9b1c6b6af67c}\" Name=\"rfxLibraryVisitorsGroupId\" StaticName=\"rfxLibraryVisitorsGroupId\" Percentage=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createContentType",
+            "name": "RFXFolder",
+            "id": "0x010061598027686ADA4CA1D35CA1D0DEC987",
+            "description": "",
+            "parentId": "0x01",
+            "hidden": false,
+            "group": "_RFX",
+            "subactions": [{
+                    "verb": "addSiteColumn",
+                    "internalName": "RFx"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxFolderVisitorsGroupId"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxFolderMembersGroupId"
+                }
+            ]
+        },
+        {
+            "verb": "createContentType",
+            "name": "RFX",
+            "id": "0x0100C654015369B79E4DA6572D4FE4C0BFBD",
+            "description": "",
+            "parentId": "0x01",
+            "hidden": false,
+            "group": "_RFX",
+            "subactions": [{
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxClosingDate"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxContractSpecialist"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxDescription"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxOwnersGroupId"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxLibraryMembersGroupId"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxLibraryVisitorsGroupId"
+                }
+            ]
+        },
+        {
+            "verb": "createSPList",
+            "listName": "RFxs",
+            "templateType": 100,
+            "subactions": [{
+                    "verb": "addContentType",
+                    "name": "RFX",
+                    "id": "0x0100C654015369B79E4DA6572D4FE4C0BFBD"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{fa564e0f-0c70-4ab9-b863-0177e6ddd247}\" Type=\"Text\" Name=\"Title\" DisplayName=\"RFx Number\" Required=\"TRUE\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"Title\" FromBaseType=\"TRUE\" Indexed=\"TRUE\" EnforceUniqueValues=\"TRUE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" MaxLength=\"255\" Sealed=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Text\" DisplayName=\"Closing Date\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{2701f2bf-d45f-4672-9774-6dab88b9792d}\" Name=\"rfxClosingDate\" StaticName=\"rfxClosingDate\" MaxLength=\"255\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Number\" DisplayName=\"Library Members Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{a395c515-2e66-4009-9704-64533250b082}\" Name=\"rfxLibraryMembersGroupId\" StaticName=\"rfxLibraryMembersGroupId\" Percentage=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Number\" DisplayName=\"Library Visitors Group Id\" Group=\"Custom Columns\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{b0f7ea7e-1bf3-44d7-a293-9b1c6b6af67c}\" Name=\"rfxLibraryVisitorsGroupId\" StaticName=\"rfxLibraryVisitorsGroupId\" Percentage=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Number\" DisplayName=\"Owners Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{34889607-f472-4d16-8f5b-b5ba6617c6cd}\" Name=\"rfxOwnersGroupId\" StaticName=\"rfxOwnersGroupId\" Percentage=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Note\" DisplayName=\"Description\" Group=\"Custom Columns\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" Sortable=\"FALSE\" ID=\"{a04fc484-b807-4fef-a970-cbd007deeb87}\" Name=\"rfxDescription\" StaticName=\"rfxDescription\" RichText=\"TRUE\" RichTextMode=\"FullHtml\" IsolateStyles=\"TRUE\" AppendOnly=\"FALSE\" NumLines=\"6\" UnlimitedLengthInDocumentLibrary=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"User\" DisplayName=\"Contract Specialist\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{843f09c7-19cb-4889-8b39-d3132643568c}\" Name=\"rfxContractSpecialist\" StaticName=\"rfxContractSpecialist\" ShowField=\"ImnName\" UserSelectionScope=\"0\" UserSelectionMode=\"PeopleOnly\" List=\"UserInfo\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{bc91a437-52e7-49e1-8c4e-4698904b2b6d}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitleNoMenu\" DisplayName=\"RFx Number\" Dir=\"\" DisplayNameSrcField=\"Title\" AuthoringInfo=\"(linked to item)\" EnableLookup=\"TRUE\" ListItemMenuAllowed=\"Prohibited\" LinkToItemAllowed=\"Prohibited\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitleNoMenu\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkFilenameNoMenu\" /></FieldRefs><DisplayPattern><IfEqual><Expr1><LookupColumn Name=\"FSObjType\" /></Expr1><Expr2>1</Expr2><Then><Field Name=\"LinkFilenameNoMenu\" /></Then><Else><HTML><![CDATA[<a onfocus=\"OnLink(this)\" href=\"]]></HTML><URL /><HTML><![CDATA[\" onclick=\"EditLink2(this,]]></HTML><Counter Type=\"View\" /><HTML><![CDATA[);return false;\" target=\"_self\">]]></HTML><Column HTMLEncode=\"TRUE\" Name=\" Title\" Default=\"(no title)\" /><IfEqual><Expr1><GetVar Name=\"ShowAccessibleIcon\" /></Expr1><Expr2>1</Expr2><Then><HTML><![CDATA[<img src=\"/_layouts/15/images/blank.gif?rev=47\" class=\"ms-hidden\" border=\"0\" width=\"1\" height=\"1\" alt=\"Use SHIFT+ENTER to open the menu (new window).\"/>]]></HTML></Then></IfEqual><HTML><![CDATA[</a>]]></HTML><IfNew><HTML><![CDATA[<img src=\"/_layouts/1033/images/new.gif\" alt=\"]]></HTML><HTML>New</HTML><HTML><![CDATA[\" class=\"ms-newgif\" />]]></HTML></IfNew></Else></IfEqual></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{82642ec8-ef9b-478f-acf9-31f7d45fbc31}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitle\" DisplayName=\"RFx Number\" DisplayNameSrcField=\"Title\" ClassInfo=\"Menu\" AuthoringInfo=\"(linked to item with edit menu)\" ListItemMenuAllowed=\"Required\" LinkToItemAllowed=\"Prohibited\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitle\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkTitleNoMenu\" /><FieldRef Name=\"_EditMenuTableStart2\" /><FieldRef Name=\"_EditMenuTableEnd\" /></FieldRefs><DisplayPattern><FieldSwitch><Expr><GetVar Name=\"FreeForm\" /></Expr><Case Value=\"TRUE\"><Field Name=\"LinkTitleNoMenu\" /></Case><Default><HTML><![CDATA[<div class=\"ms-vb itx\" onmouseover=\"OnItem(this)\" CTXName=\"ctx]]></HTML><Field Name=\"_EditMenuTableStart2\" /><HTML><![CDATA[\">]]></HTML><Field Name=\"LinkTitleNoMenu\" /><HTML><![CDATA[</div>]]></HTML><HTML><![CDATA[<div class=\"s4-ctx\" onmouseover=\"OnChildItem(this.parentNode); return false;\">]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[<a onfocus=\"OnChildItem(this.parentNode.parentNode); return false;\" onclick=\"PopMenuFromChevron(event); return false;\" href=\"javascript:;\" title=\"Open Menu\"></a>]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[</div>]]></HTML></Default></FieldSwitch></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{5f190d91-3dbc-4489-9878-3c092caf35b6}\" Hidden=\"TRUE\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitle2\" DisplayName=\"RFx Number\" DisplayNameSrcField=\"Title\" ClassInfo=\"Menu\" AuthoringInfo=\"(linked to item with edit menu) (old)\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitle2\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkTitleNoMenu\" /><FieldRef Name=\"_EditMenuTableStart\" /><FieldRef Name=\"_EditMenuTableEnd\" /></FieldRefs><DisplayPattern><FieldSwitch><Expr><GetVar Name=\"FreeForm\" /></Expr><Case Value=\"TRUE\"><Field Name=\"LinkTitleNoMenu\" /></Case><Default><Field Name=\"_EditMenuTableStart\" /><SetVar Name=\"ShowAccessibleIcon\" Value=\"1\" /><Field Name=\"LinkTitleNoMenu\" /><SetVar Name=\"ShowAccessibleIcon\" Value=\"0\" /><Field Name=\"_EditMenuTableEnd\" /></Default></FieldSwitch></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPView",
+                    "name": "All Items",
+                    "viewFields": [
+                        "LinkTitle",
+                        "rfxClosingDate",
+                        "rfxContractSpecialist",
+                        "rfxOwnersGroupId",
+                        "rfxLibraryMembersGroupId",
+                        "rfxLibraryVisitorsGroupId"
+                    ],
+                    "query": "",
+                    "rowLimit": 30,
+                    "isPaged": true,
+                    "makeDefault": true,
+                    "replaceViewFields": true
+                }
+            ]
+        },
+        {
+            "verb": "createSPList",
+            "listName": "RFXFolders",
+            "templateType": 100,
+            "subactions": [{
+                    "verb": "addContentType",
+                    "name": "RFXFolder",
+                    "id": "0x010061598027686ADA4CA1D35CA1D0DEC987"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{fa564e0f-0c70-4ab9-b863-0177e6ddd247}\" Type=\"Text\" Name=\"Title\" DisplayName=\"Folder Name\" Required=\"TRUE\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"Title\" FromBaseType=\"TRUE\" EnforceUniqueValues=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" MaxLength=\"255\" Sealed=\"FALSE\" Customization=\"\" PITarget=\"\" PrimaryPITarget=\"\" PIAttribute=\"\" PrimaryPIAttribute=\"\" Aggregation=\"\" Node=\"\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Number\" DisplayName=\"Folder Visitors Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{0c44d811-1669-4109-b2ae-133c764e2eb3}\" Name=\"rfxFolderVisitorsGroupId\" StaticName=\"rfxFolderVisitorsGroupId\" Percentage=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field Type=\"Number\" DisplayName=\"Folder Members Group Id\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{26b670d4-2d58-4798-becf-f869a3b28497}\" Name=\"rfxFolderMembersGroupId\" StaticName=\"rfxFolderMembersGroupId\" Percentage=\"FALSE\" />"
+                },
+                {
+                    "verb": "addSPLookupFieldXml",
+                    "schemaXml": "<Field Type=\"Lookup\" DisplayName=\"RFx\" Group=\"_RFX\" EnforceUniqueValues=\"FALSE\" Required=\"FALSE\" Hidden=\"FALSE\" ReadOnly=\"FALSE\" CanToggleHidden=\"FALSE\" ID=\"{dc4715d2-d74f-41bc-80cb-ed55ef102a7a}\" Name=\"RFx\" StaticName=\"RFx\" ShowField=\"Title\" UnlimitedLengthInDocumentLibrary=\"FALSE\" />",
+                    "targetListName": "RFxs"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{bc91a437-52e7-49e1-8c4e-4698904b2b6d}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitleNoMenu\" DisplayName=\"Folder Name\" Dir=\"\" DisplayNameSrcField=\"Title\" AuthoringInfo=\"(linked to item)\" EnableLookup=\"TRUE\" ListItemMenuAllowed=\"Prohibited\" LinkToItemAllowed=\"Prohibited\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitleNoMenu\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkFilenameNoMenu\" /></FieldRefs><DisplayPattern><IfEqual><Expr1><LookupColumn Name=\"FSObjType\" /></Expr1><Expr2>1</Expr2><Then><Field Name=\"LinkFilenameNoMenu\" /></Then><Else><HTML><![CDATA[<a onfocus=\"OnLink(this)\" href=\"]]></HTML><URL /><HTML><![CDATA[\" onclick=\"EditLink2(this,]]></HTML><Counter Type=\"View\" /><HTML><![CDATA[);return false;\" target=\"_self\">]]></HTML><Column HTMLEncode=\"TRUE\" Name=\"Title\" Default=\"(no title)\" /><IfEqual><Expr1><GetVar Name=\"ShowAccessibleIcon\" /></Expr1><Expr2>1</Expr2><Then><HTML><![CDATA[<img src=\"/_layouts/15/images/blank.gif?rev=47\" class=\"ms-hidden\" border=\"0\" width=\"1\" height=\"1\" alt=\"Use SHIFT+ENTER to open the menu (new window).\"/>]]></HTML></Then></IfEqual><HTML><![CDATA[</a>]]></HTML><IfNew><HTML><![CDATA[<img src=\"/_layouts/1033/images/new.gif\" alt=\"]]></HTML><HTML>New</HTML><HTML><![CDATA[\" class=\"ms-newgif\" />]]></HTML></IfNew></Else></IfEqual></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{82642ec8-ef9b-478f-acf9-31f7d45fbc31}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitle\" DisplayName=\"Folder Name\" DisplayNameSrcField=\"Title\" ClassInfo=\"Menu\" AuthoringInfo=\"(linked to item with edit menu)\" ListItemMenuAllowed=\"Required\" LinkToItemAllowed=\"Prohibited\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitle\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkTitleNoMenu\" /><FieldRef Name=\"_EditMenuTableStart2\" /><FieldRef Name=\"_EditMenuTableEnd\" /></FieldRefs><DisplayPattern><FieldSwitch><Expr><GetVar Name=\"FreeForm\" /></Expr><Case Value=\"TRUE\"><Field Name=\"LinkTitleNoMenu\" /></Case><Default><HTML><![CDATA[<div class=\"ms-vb itx\" onmouseover=\"OnItem(this)\" CTXName=\"ctx]]></HTML><Field Name=\"_EditMenuTableStart2\" /><HTML><![CDATA[\">]]></HTML><Field Name=\"LinkTitleNoMenu\" /><HTML><![CDATA[</div>]]></HTML><HTML><![CDATA[<div class=\"s4-ctx\" onmouseover=\"OnChildItem(this.parentNode); return false;\">]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[<a onfocus=\"OnChildItem(this.parentNode.parentNode); return false;\" onclick=\"PopMenuFromChevron(event); return false;\" href=\"javascript:;\" title=\"Open Menu\"></a>]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[</div>]]></HTML></Default></FieldSwitch></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPFieldXml",
+                    "schemaXml": "<Field ID=\"{5f190d91-3dbc-4489-9878-3c092caf35b6}\" Hidden=\"TRUE\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"LinkTitle2\" DisplayName=\"Folder Name\" DisplayNameSrcField=\"Title\" ClassInfo=\"Menu\" AuthoringInfo=\"(linked to item with edit menu) (old)\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitle2\" FromBaseType=\"TRUE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkTitleNoMenu\" /><FieldRef Name=\"_EditMenuTableStart\" /><FieldRef Name=\"_EditMenuTableEnd\" /></FieldRefs><DisplayPattern><FieldSwitch><Expr><GetVar Name=\"FreeForm\" /></Expr><Case Value=\"TRUE\"><Field Name=\"LinkTitleNoMenu\" /></Case><Default><Field Name=\"_EditMenuTableStart\" /><SetVar Name=\"ShowAccessibleIcon\" Value=\"1\" /><Field Name=\"LinkTitleNoMenu\" /><SetVar Name=\"ShowAccessibleIcon\" Value=\"0\" /><Field Name=\"_EditMenuTableEnd\" /></Default></FieldSwitch></DisplayPattern></Field>"
+                },
+                {
+                    "verb": "addSPView",
+                    "name": "All Items",
+                    "viewFields": [
+                        "LinkTitle",
+                        "RFx",
+                        "rfxFolderVisitorsGroupId",
+                        "rfxFolderMembersGroupId"
+                    ],
+                    "query": "",
+                    "rowLimit": 30,
+                    "isPaged": true,
+                    "makeDefault": true,
+                    "replaceViewFields": true
+                }
+            ]
+        }
+    ]
+}

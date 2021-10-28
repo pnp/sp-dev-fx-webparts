@@ -3,7 +3,7 @@
   "solution": {
     "name": "Accordion Section FAQ Builder",
     "id": "bf6fa974-fd40-45a3-80e9-e826abe025b9",
-    "version": "1.6.0.0",
+    "version": "1.7.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

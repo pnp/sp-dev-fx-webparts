@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Adaptive Cards Host",
     "shortDescription": "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards",
     "longDescription": [
       "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications."
     ],
-    "created": "2021-02-23",
-    "modified": "2021-02-23",
+    "creationDateTime": "2021-02-23",
+    "updateDateTime": "2021-08-02",
     "products": [
       "SharePoint",
       "Office"
@@ -21,114 +21,118 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.12.1"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldViewPicker, ropertyFieldCodeEditorLanguages, PropertyPaneWebPartInformation, Placeholder"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/AdaptiveCardHostRendering.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/AdaptiveCardHostRendering.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/AdaptiveCardsHost.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/AdaptiveCardsHost.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/BackgroundColors.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/BackgroundColors.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/DataContext.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DataContext.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/DependentControls.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DependentControls.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/DevTools.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DevTools.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/EnableTemplating.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/EnableTemplating.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/ErrorHandling.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/ErrorHandling.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/SampleDataEditor.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SampleDataEditor.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/SelectLibrary.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SelectLibrary.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/SharePointHost.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SharePointHost.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/Templating.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/Templating.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 113,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/TemplatingDetection.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/TemplatingDetection.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 114,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/TemplatingSamples.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/TemplatingSamples.gif?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 115,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/UIFabric.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/UIFabric.png?raw=true",
         "alt": "Adaptive Cards Host"
       },
       {
         "type": "image",
         "order": 116,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
         "alt": "Adaptive Cards Host"
       }
     ],

@@ -17,11 +17,12 @@ extensions:
 
 ## Summary
 
-This webpart demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.
+This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.
 
 ![Sample of the search web part](./assets/screenshot.png)
 
 ## Used SharePoint Framework Version
+
 ![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
@@ -45,6 +46,7 @@ Version|Date|Comments
 1.0.0| November 14, 2018| Version Upgrade
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

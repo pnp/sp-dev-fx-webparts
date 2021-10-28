@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Display List JavaScript Client-Side Web Part",
     "shortDescription": "This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-display-list",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-display-list",
     "longDescription": [
       "This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list."
     ],
-    "created": "2020-08-29",
-    "modified": "2020-08-29",
+    "creationDateTime": "2020-08-29",
+    "updateDateTime": "2020-08-29",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-display-list/assets/display-list-preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-display-list/assets/display-list-preview.png",
         "alt": "Display List JavaScript Client-Side Web Part"
       }
     ],

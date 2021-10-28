@@ -1,12 +1,16 @@
-import { ColDef } from "@material-ui/data-grid";
+import {
+  IColumn,
+} from 'office-ui-fabric-react/lib/DetailsList';
+
 
 export interface IReactDatatableState {
   listItems: any[];
-    columns: ColDef[];
-    page: number;
-    rowsPerPage: number;
-    searchText: string;
-    contentType: string;
-    sortingFields: string;
-    sortDirection: 'asc'|'desc';
+  columns: IColumn[];
+  page: number;
+  rowsPerPage?: number;
+  searchText: string;
+  contentType: string;
+  sortingFields: string;
+  pageOfItems: any[];
+  sortDirection: 'asc' | 'desc';
 }

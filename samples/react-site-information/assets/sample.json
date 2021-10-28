@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Site Information",
     "shortDescription": "This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-site-information",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-information",
     "longDescription": [
       "This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,15 @@
         "alt": "Site Information"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",

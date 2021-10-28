@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-This webpart show organization chart for current user, shows, managers and direct reports and there available status.
+This web part show organization chart for current user, shows, managers and direct reports and there available status.
 
 On Click the profile page of will be open.
 

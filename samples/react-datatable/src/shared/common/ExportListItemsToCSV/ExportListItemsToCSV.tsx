@@ -1,44 +1,27 @@
-import * as React from 'react';
-import * as strings from 'ReactDatatableWebPartStrings';
-import { ExportToCsv } from 'export-to-csv';
-import { Button } from '@material-ui/core';
-import GetAppSharpIcon from '@material-ui/icons/GetAppSharp';
+import * as React from "react";
+import * as strings from "ReactDatatableWebPartStrings";
+import { CSVLink } from "react-csv";
+import { IIconProps, PrimaryButton } from "office-ui-fabric-react";
+import styles from "./ExportListItemsToCSV.module.scss";
 interface IExportToCSV {
-    columnHeader: Array<string>;
-    listItems: any[];
-    listName: string;
-    description: string;
+  columnHeader: Array<string>;
+  listName: string;
+  description: string;
+  dataSource: () => any[];
 }
 
 export function ExportListItemsToCSV(props: IExportToCSV) {
+  const downloadIcon: IIconProps = { iconName: "Download" };
 
-    let { columnHeader, listItems, listName, description } = props;
+  let { listName, dataSource } = props;
 
-    function generateCSV() {
-        let colHeader = columnHeader;
-        const options = {
-            filename: listName,
-            fieldSeparator: ',',
-            quoteStrings: '"',
-            decimalSeparator: '.',
-            showLabels: true,
-            showTitle: true,
-            title: '',
-            useTextFile: false,
-            useBom: true,
-            useKeysAsHeaders: true,
-            headers: colHeader
-        };
-        const csvExporter = new ExportToCsv(options);
-        csvExporter.generateCsv(listItems);
-    }
-
-    return (
-        <Button variant="contained"
-            onClick={() => generateCSV()}
-            startIcon={<GetAppSharpIcon />}>
-            {strings.DownloadAsCSVLabel}
-        </Button>
-    );
-
+  return (
+    <CSVLink data={dataSource()} filename={`${listName}.csv`}>
+      <PrimaryButton
+        text={strings.DownloadAsCSVLabel}
+        iconProps={downloadIcon}
+        className={styles.btnCSV}
+      />
+    </CSVLink>
+  );
 }
