@@ -390,10 +390,12 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
 
   private _renderList(items: any[]): void {
     var calItems: EventObjectInput[] = items.map((list: any) => {
+      const start = list[this.properties.start];
+      const end = list[this.properties.end];
       return {
         title: list[this.properties.title],
-        start: list[this.properties.start],
-        end: list[this.properties.end],
+        start: moment.utc(start,'YYYY-MM-DD HH:mm:ss').toDate(),
+        end: moment.utc(end,'YYYY-MM-DD HH:mm:ss').toDate(),
         id: list["Id"],
         detail: list[this.properties.detail],
       };
@@ -405,9 +407,9 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       events: calItems,
       eventClick: (_event) => {
         var eventDetail =
-          moment(_event["start"]).format("MM/DD/YYYY hh:mm") +
-          " - " +
-          moment(_event["end"]).format("MM/DD/YYYY hh:mm") +
+        moment.utc(_event["start"]).local().format('YYYY-MM-DD hh:mm A') +
+        " - " +
+        moment.utc(_event["end"]).local().format('YYYY-MM-DD hh:mm A') +
           "<br>" +
           _event["detail"];
         swal2.default(_event.title, eventDetail, "info");
