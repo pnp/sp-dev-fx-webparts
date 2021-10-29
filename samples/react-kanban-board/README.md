@@ -26,7 +26,7 @@ The web part uses the default columns of the SharePoint Tasks list for showing t
 
 ## Used SharePoint Framework Version
 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.13.0](https://img.shields.io/badge/version-1.13.0-green.svg)
 
 ## Applies to
 
@@ -60,6 +60,7 @@ Version|Date|Comments
 1.0.0.0|July 17, 2019|Initial release
 1.0.1.0|April 21, 2020|Added support for Teams hosts
 2.0.0.0|July 10, 2020| jqwidgets replaced with a custom Kanban Board based on Office UI Component and IE11 Support
+3.0.0.0|October 29, 2021| SPFx 1.13, PnPJS v2, PnP Controls v3
 
 [Read More about the implementation of this Board](./src/kanban/README.md)
 
