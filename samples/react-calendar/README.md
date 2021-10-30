@@ -119,7 +119,7 @@ Calendar Web Part|[Eli H. Schei](https://github.com/Eli-Schei)
 Calendar Web Part|[Hugo Bernier](https://github.com/hugoabernier) ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
 Calendar Web Part|[João Mendes](https://github.com/joaojmendes)
 Calendar Web Part|[Mohamed Derhalli](https://github.com/derhallim)
-Calendar Web PArt|[Mohammed Amer](https://www.linkedin.com/in/mohammad3mer/) ([@Mohammad3mer](https://twitter.com/Mohammad3mer))
+Calendar Web PArt|[Mohammed Amer](https://github.com/mohammadamer) ([@Mohammad3mer](https://twitter.com/Mohammad3mer), https://www.linkedin.com/in/mohammad3mer/)
 Calendar Web Part|[Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
 
 ## Version history
@@ -139,6 +139,7 @@ Version|Date|Comments
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
 1.0.11|May 10, 2021|Optimized page refresh using local storage
 1.0.12|June 21, 2021|Fixes overlap with Year-view and the comment section by adding a vertical scrollbar.
+1.0.13|October 2, 2021|Fix to make sure Today is always visible and highlighted.
 
 
 ## Minimal Path to Awesome
@@ -160,11 +161,11 @@ Version|Date|Comments
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@mohammadamer,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@mohammadamer,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@mohammadamer,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
 
 
 
