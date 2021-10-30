@@ -51,7 +51,7 @@ This web part shows a Restaurant Menu, the user can select the options to show i
 
 Solution|Author(s)
 --------|---------
-react-restaurant-menu|João Mendes
+react-restaurant-menu|[João Mendes](https://github.com/joaojmendes)
 
 
 ## Version history
