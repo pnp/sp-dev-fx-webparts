@@ -24,11 +24,14 @@ Short summary on functionality and used technologies.
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
 ![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
-![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
-![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 
 > Don't worry if you're unsure about the compatibility matrix above. We'll verify it when we approve the PR. 
 >
@@ -79,8 +82,8 @@ folder name | [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2021|Update comment
-1.0|August 29, 2021|Initial release
+1.1|November 1, 2021|Update comment
+1.0|October 29, 2021|Initial release
 
 ## Prerequisites
 
