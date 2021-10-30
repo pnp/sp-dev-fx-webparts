@@ -6,8 +6,6 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 
 ![Demo](./assets/Preview.PNG)
 
-## Used SharePoint Framework Version
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
