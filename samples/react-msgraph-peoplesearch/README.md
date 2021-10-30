@@ -20,7 +20,6 @@ The sample also shows how to use SPFx Web Part asynchronous rendering using `isR
 ## Accompanying blog post
 I wrote a blog post covering more if the inner workings, you can find it at [SPFx People Search web part based on Microsoft Graph](https://blog.yannickreekmans.be/spfx-people-search-web-part-based-on-microsoft-graph/)
 
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
