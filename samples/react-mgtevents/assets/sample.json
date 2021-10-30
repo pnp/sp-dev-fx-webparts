@@ -1,10 +1,10 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-mgtEvents",
+    "name": "pnp-sp-dev-spfx-web-parts-react-mgtevents",
     "source": "pnp",
     "title": "MGT Events",
     "shortDescription": "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtEvents",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents",
     "longDescription": [
       "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls"
     ],
@@ -44,7 +44,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtEvents/assets/mhtEvents.JPG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg",
         "alt": "MGT Events"
       }
     ],
