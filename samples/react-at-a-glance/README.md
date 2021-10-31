@@ -1,4 +1,4 @@
-# react-at-a-glance
+# At a glance
 
 ## Summary
 
@@ -7,7 +7,7 @@ This sample shows a web part to show the first few sentences of an article in a 
 The idea is based of the *At a glance* section of a news in the BBC news app (beta).
 
 ### Highlights
-- Usage of `SPHttpClient` or `PnP JS`
+- Usage of `SPHttpClient` or `PnPjs`
 - Conditional property enabling
 - Usage of regex to get the sentences from article content
 - Usage of Carousel for mobile view
@@ -31,14 +31,16 @@ The idea is based of the *At a glance* section of a news in the BBC news app (be
 
 ![article-content-desktop](./assets/article-content-desktop.png)
 
+
 ## Compatibility
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
-![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
-![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
-
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to a news page to work")
+![Hosted Workbench Partially](https://img.shields.io/badge/Hosted%20Workbench-Partially-yellow.svg "The solution needs to run on a news page to work")
 
 ## Applies to
 
@@ -62,17 +64,18 @@ react-at-a-glance | [Anoop Tatti](https://github.com/anoopt) ([https://linktr.ee
 Version|Date|Comments
 -------|----|--------
 1.0|September 07, 2021|Initial release
+1.1|October 20, 2021|Minor CSS changes
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 - Open a news article
 - Add `?loadSPFX=true&debugManifestsFile=https://localhost:4321/temp/manifests.js` to the URL
-- Add the `At a glance` web part to the page
+- Add the **At a glance** web part to the page
 
 ## Features
 
