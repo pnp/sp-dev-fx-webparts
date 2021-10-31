@@ -8,16 +8,23 @@ This SPFx Outlook Add-In lets users save any email attachments to a OneDrive fol
 
 ![Save Attachments in Action](./assets/react-save-attachments-2.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![SPFx 1.13](https://img.shields.io/badge/version-1.13-green.svg)
+![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Designed to work in Outlook, but will display sample attachments while in workbench")
+
 
 ## Features
 
 This web part illustrates the below features for creating Outlook Add-Ins using SPFx.
 
 * Select Office context and attributes of currently selected mail
-* Requesting **Mail.Read** and **Files.ReadWrite** permission scopes for Microsoft Graph through the `webApiPermissionRequests` property in `package-solution.json`
+* Requesting `Mail.Read` and `Files.ReadWrite` permission scopes for Microsoft Graph through the `webApiPermissionRequests` property in `package-solution.json`
 * Use Microsoft Graph to retrieve folders and sub-folders for OneDrive
 * Use Microsoft Graph to retrieve complete mail `mimestream` by given `ID`
 * Use Microsoft Graph to save normal or big files (in size bigger 4MB) with different concepts
@@ -26,7 +33,7 @@ This web part illustrates the below features for creating Outlook Add-Ins using 
 
 Solution|Author(s)
 --------|---------
-react-save-attachments | [Aakash Bhardwaj](https://twitter.com/aakash_316)
+react-save-attachments | [Aakash Bhardwaj](https://github.com/aakashbhardwaj619) ([@aakash_316](https://twitter.com/aakash_316))
 
 
 ## Version history
@@ -56,9 +63,19 @@ Version|Date|Comments
 * Go to the **API Management** section in the new SharePoint Admin Center (*https://{tenantname}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement*)
 * **Approve** the permission request for **Mail.ReadWrite** and **Files.ReadWrite** to **Microsoft Graph**
 
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-save-attachments&authors=@aakashbhardwaj619&title=react-save-attachments%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-save-attachments&authors=@aakashbhardwaj619&title=react-save-attachments%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-save-attachments&authors=@aakashbhardwaj619&title=react-save-attachments%20-%20).
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-save-attachments" />
