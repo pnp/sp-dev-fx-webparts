@@ -17,25 +17,24 @@ When the user clicks on the header it dynamically load documents.
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to SharePoint content")
-![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution needs access to APIs")
+![Hosted Workbench Compatible (with permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(with%20permissions)-yellow.svg "The solution needs access to APIs")
 
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
-WebPart Title| Text| no|
+Web Part Title| Text| no|
 Select Document Library| dropdown|yes
 Select Field to Group By | dropdown|yes
  
@@ -57,6 +56,7 @@ Version|Date|Comments
 1.0.0|November 20, 2020|Initial release
 1.0.1|February 18, 2021|Added support for metadata columns
 1.0.2|February 21, 2021|Fixed `gulp build` issues
+1.0.3|October 25, 2021|Fixed bug support for metadata columns and Lookup fields
 
 ## Minimal Path to Awesome
 
@@ -73,7 +73,6 @@ Version|Date|Comments
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 
 ## Support
