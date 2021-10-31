@@ -33,7 +33,7 @@ The web part utilizes the usage of hashes in the URL so different screen will be
 
 Solution|Author(s)
 --------|---------
-react-multiscreen-webpart | Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)), Stefan Bauer ([@StfBauer](https://twitter.com/stfbauer))
+react-multiscreen-webpart | [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev)), Stefan Bauer ([@StfBauer](https://twitter.com/stfbauer))
 react-multiscreen-webpart | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
 
 ## Version history
