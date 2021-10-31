@@ -23,7 +23,7 @@
         "default": "Ratings"
       },
       "description": {
-        "default": "Youn can rate site pages."
+        "default": "You can rate site pages."
       },
       "officeFabricIconFontName": "FavoriteStar",
       "properties": {
