@@ -47,6 +47,7 @@ Solution|Author(s)
 js-modern-calendar | Jeremy Coleman (MCP, PC Professional, Inc.)
 js-modern-calendar | Nanddeep Nachan ([@NanddeepNachan](twitter.com/NanddeepNachan))
 js-modern-calendar | Ravi Chandra ([Ravikadri](https://github.com/Ravikadri))
+js-modern-calendar | Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
@@ -55,6 +56,7 @@ Version|Date|Comments
 1.0.0.0|February 11, 2017|Initial release
 1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
 1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies
+1.0.3.0|October 28, 2021|fixed issues with Timezones. The Browser Timezone Settings are now used
 
 ## Disclaimer
 

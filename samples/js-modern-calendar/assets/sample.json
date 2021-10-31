@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.6.0"
+        "value": "1.11.0"
       }
     ],
     "thumbnails": [
@@ -45,6 +45,13 @@
         "pictureUrl": "https://github.com/nanddeepn.png",
         "name": "Nanddeep Nachan",
         "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "petkir",
+        "company": "Cubido Business Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
       }
     ],
     "references": [
