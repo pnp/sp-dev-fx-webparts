@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part allows user create a navigation menu , grouped by any column of document library.
+This web part allows user create a navigation menu, grouped by any column of document library.
 When the user clicks on the header it dynamically load documents.
 
 ![ListItemsMenu](./assets/ListMenuDocs.gif)

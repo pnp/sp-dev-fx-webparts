@@ -20,8 +20,16 @@ The sample also shows how to use SPFx Web Part asynchronous rendering using `isR
 ## Accompanying blog post
 I wrote a blog post covering more if the inner workings, you can find it at [SPFx People Search web part based on Microsoft Graph](https://blog.yannickreekmans.be/spfx-people-search-web-part-based-on-microsoft-graph/)
 
-## Used SharePoint Framework Version 
-![1.11.0](https://img.shields.io/badge/version-1.11-green.svg)
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to Microsoft Graph")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -85,5 +93,20 @@ These web parts were an enormous inspiration on code structure and implementatio
 - Tarald Gåsbakk (PuzzlePart) - [@taraldgasbakk](https://twitter.com/Taraldgasbakk)  
 - Brad Schlintz (Microsoft) - [@bschlintz](https://twitter.com/bschlintz)  
 - Richard Gigan - [@PooLP](https://twitter.com/PooLP)  
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-msgraph-peoplesearch&authors=@YannickRe&title=react-msgraph-peoplesearch%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-msgraph-peoplesearch&authors=@YannickRe&title=react-msgraph-peoplesearch%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-msgraph-peoplesearch&authors=@YannickRe&title=react-msgraph-peoplesearch%20-%20).
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msgraph-peoplesearch" />
