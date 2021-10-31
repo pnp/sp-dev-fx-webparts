@@ -23,11 +23,11 @@
     "properties": {
       "propertyRatingText": "React emoji reaction rating web part!. How does you like this news/article? ",
       "propertyEmojisCollection":[
-        {"Title":"Wow!","ImagaeUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary//RatingImg1.png"},
-        {"Title":"Mmm","ImagaeUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary//RatingImg2.png"},
-        {"Title":"Hmm","ImagaeUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary//RatingImg3.png"},
-        {"Title":"Meh","ImagaeUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary//RatingImg4.png"},
-        {"Title":"Pff","ImagaeUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary//RatingImg5.png"}
+        {"Title":"Wow!","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg1.png"},
+        {"Title":"Mmm","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg2.png"},
+        {"Title":"Hmm","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg3.png"},
+        {"Title":"Meh","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg4.png"},
+        {"Title":"Pff","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg5.png"}
       
       ],
       /* "propertyListName":"EmojiReactionRating", */

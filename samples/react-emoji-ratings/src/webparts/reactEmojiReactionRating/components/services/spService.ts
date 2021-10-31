@@ -128,18 +128,18 @@ export default class spService {
                 }).catch(error => {
                     console.log(error);
                 });
-                return "List with required columns created."
+                return "List with required columns created.";
             }
         }
         else {
-            return "List alreay exist"
+            return "List alreay exist";
         }
     }
 
     public async _checkList(listName: string) {
-        let filterList = `Title eq '${listName}'`
+        let filterList = `Title eq '${listName}'`;
         let boolResult: boolean = false;
-        let getList = await sp.web.lists.filter(filterList).get()
+        let getList = await sp.web.lists.filter(filterList).get();
         if (getList.length > 0) {
             return boolResult = true;
         }

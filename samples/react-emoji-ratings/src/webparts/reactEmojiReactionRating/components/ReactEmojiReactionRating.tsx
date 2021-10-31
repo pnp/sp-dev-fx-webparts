@@ -1,16 +1,12 @@
 import * as React from 'react';
 import styles from './ReactEmojiReactionRating.module.scss';
 import { IReactEmojiReactionRatingProps } from './IReactEmojiReactionRatingProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { IReactEmojiReactionRatingState } from './IReactEmojiReactionRatingState';
 import { DisplayMode, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import spService from './services/spService';
-import { getItemStyles } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 import {
-  FocusZone, IRectangle, List, mergeStyleSets, getTheme,
-  ITheme, getFocusStyle, ImageFit, TextField, Stack, Label, Rectangle, Button, DefaultButton, PrimaryButton
+  TextField, Stack, Label, PrimaryButton
 } from '@microsoft/office-ui-fabric-react-bundle';
-import { IRatingNewItem } from './models/IRatingNewItem';
 import Badge from '@material-ui/core/Badge/Badge';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react';
@@ -58,7 +54,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
     this.closeDialog = this.closeDialog.bind(this);
   }
 
-  componentDidMount() {
+public componentDidMount() {
     if (this.props.enableCount) {
       this.getItems();
     }
@@ -67,7 +63,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
     }
   }
 
-  componentDidUpdate(previousProps, previousState) {
+  public componentDidUpdate(previousProps, previousState) {
     if (previousProps.listName !== this.props.listName) {
       if (this.props.listName && (this.props.emojisCollection.length > 0)) {
         this.setState({ configLoaded: true });
@@ -81,7 +77,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
   }
 
 
-  submitRating(event) {
+  private submitRating(event) {
 
     let ratingCommnets = this.state.RatingComments ? (this.state.RatingComments).trim() : "";
     //let selectedRatingIndex = parseInt(event.target.id);
@@ -140,7 +136,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
       Rating3: "",
       Rating4: "",
       Rating5: "",
-    }
+    };
 
     body[ratingField] = selectedRatingValue;
     console.log("body object is: ", body);
@@ -156,7 +152,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
         })
         .catch(error => {
           console.log("Something went wrong! please contact admin for more information.");
-          this.ShowDialogError(error, "Something went wrong! please contact admin for more information.")
+          this.ShowDialogError(error, "Something went wrong! please contact admin for more information.");
         });
     }
     else {
@@ -167,7 +163,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
         })
         .catch(error => {
           console.log("Something went wrong! please contact admin for more information.");
-          this.ShowDialogError(error, "Something went wrong! please contact admin for more information.")
+          this.ShowDialogError(error, "Something went wrong! please contact admin for more information.");
         });
 
     }
@@ -175,7 +171,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
 
   }
 
-  async getItems() {
+  private async getItems() {
 
     console.log("getItems: ", this._currentContext);
     let ratingItems = await this._spService.getRatingListItems(this.listName);
@@ -204,9 +200,9 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
       }
     }
 
-    let pageRatings = await ratingItems.filter(function (element) {
+    let pageRatings = await ratingItems.filter((element)=> {
       return (element["Pagename"] == window.location.href
-        )
+        );
     });
 
     Promise.all([
@@ -238,9 +234,9 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
       });
 
     let userLogin = this._currentContext.pageContext.user.loginName;
-    let userSelectedRating = await ratingItems.filter(function (element) {
+    let userSelectedRating = await ratingItems.filter((element)=> {
       return (element["Pagename"] == window.location.href
-        && (element["User"] == userLogin))
+        && (element["User"] == userLogin));
     });
 
     console.log("userSelectedRating: ", userSelectedRating[0]);
@@ -276,7 +272,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
     }
 
     let userSelectedRatingIndex;
-    await this.props.emojisCollection.filter(function (element, tabIndex) {
+    await this.props.emojisCollection.filter((element, tabIndex)=> {
       if ((element["Title"] == currentUserRatingVal)) {
         userSelectedRatingIndex = tabIndex;
         return tabIndex;
@@ -291,23 +287,23 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
 
   }
 
-  async getRatingCount(items: any[], colName: string, colValue: string) {
-    let ratingCount = await items.filter(function (element) {
+  private async getRatingCount(items: any[], colName: string, colValue: string) {
+    let ratingCount = await items.filter((element)=> {
       return element[colName] == colValue;
-    }).length
+    }).length;
 
     return ratingCount;
   }
 
 
-  selectedRating(event) {
+  private selectedRating(event) {
     let selectedRatingIndex = event.target.tabIndex;
     let selectedRatingValue = event.target.title;
 
     this.setState({
       selectedRatingIndex: selectedRatingIndex,
       selectedRatingValue: selectedRatingValue
-    })
+    });
   }
 
   private handleChange(event: any, newValue: string) {
@@ -388,7 +384,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
                     {this.props.enableCount ? (
                       <>
                         <Badge color="secondary" overlap="circular" badgeContent={this.state[tabIndex]}>
-                          <img src={ratingItem.ImagaeUrl}
+                          <img src={ratingItem.ImageUrl}
                             className={this.state.selectedRatingIndex == tabIndex ? styles.selectedEmoji : styles.stackImage}
                             title={ratingItem.Title}
                             tabIndex={tabIndex}
@@ -400,7 +396,7 @@ export default class ReactEmojiReactionRating extends React.Component<IReactEmoj
                         <Label className={styles.labelClass}>{ratingItem.Title}</Label>
                       </>) : (
                       <>
-                        <img src={ratingItem.ImagaeUrl}
+                        <img src={ratingItem.ImageUrl}
                           className={this.state.selectedRatingIndex == tabIndex ? styles.selectedEmoji : styles.stackImage}
                           title={ratingItem.Title}
                           tabIndex={tabIndex}

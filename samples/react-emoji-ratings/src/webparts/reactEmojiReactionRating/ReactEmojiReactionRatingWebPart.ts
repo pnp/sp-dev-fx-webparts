@@ -87,11 +87,11 @@ export default class ReactEmojiReactionRatingWebPart extends BaseClientSideWebPa
     let listName = this.properties.propertyListName;
     console.log("listName: ", listName);
 
-    this._spService._createListwithColumns(listName, colListColumns).then((result) => {
-      console.log(result);
+    this._spService._createListwithColumns(listName, colListColumns).then((res) => {
+      console.log(res);
       //this.properties.propertyListOperationMessage = result;
       //this.context.propertyPane.refresh();  
-      alert(result);
+      alert(res);
 
     }).catch(error => {
       console.log("Something went wrong! please contact admin for more information.", error);
@@ -146,8 +146,8 @@ export default class ReactEmojiReactionRatingWebPart extends BaseClientSideWebPa
                       required: true
                     },
                     {
-                      id: "ImagaeUrl",
-                      title: "ImagaeUrl",
+                      id: "ImageUrl",
+                      title: "ImageUrl",
                       type: CustomCollectionFieldType.url,
                       required: true
 
