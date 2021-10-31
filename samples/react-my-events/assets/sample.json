@@ -9,7 +9,7 @@
             "This web part provides loggedin user's outlook events with some advanced features"
         ],
         "created": "2021-08-18",
-        "modified": "2021-08-18",
+        "modified": "2021-10-04",
         "products": [
             "SharePoint",
             "Office"
@@ -21,7 +21,11 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.11.0"
+                "value": "1.12.1"
+            },
+            {
+                "key": "PNPCONTROLS",
+                "value": "PropertyFieldNumber, WebPartTitle"
             }
         ],
         "thumbnails": [
