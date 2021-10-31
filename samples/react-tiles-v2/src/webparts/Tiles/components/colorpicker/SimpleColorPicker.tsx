@@ -7,7 +7,7 @@ export class SimpleColorPicker extends React.Component<ISimpleColorPickerProps, 
         super(props);
         this.state = { val: '#efefef' };
     }
-    handleChange = event => {
+    private handleChange = event => {
         const value = event.target.value;
         (async () => {
             await this.setState({ val: value });

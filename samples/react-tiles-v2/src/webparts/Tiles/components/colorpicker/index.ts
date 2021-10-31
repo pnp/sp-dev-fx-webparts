@@ -1,3 +1,3 @@
-export * from './ISimpleColorPickerState'
-export * from './ISimpleColorPickerProps'
-export * from './SimpleColorPicker'
+export * from './ISimpleColorPickerState';
+export * from './ISimpleColorPickerProps';
+export * from './SimpleColorPicker';
