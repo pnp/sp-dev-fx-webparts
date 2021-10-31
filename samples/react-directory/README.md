@@ -78,8 +78,6 @@ Version|Date|Comments
 3.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
 3.0.1|March 4 2021|Bugfix 'Sort People by'
 
-
-
 ## Minimal Path to Awesome
 
 - Clone this repository
@@ -89,7 +87,6 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
-
 
 ## Disclaimer
 
