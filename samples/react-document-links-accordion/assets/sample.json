@@ -1,15 +1,16 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-list-items-menu",
+    "name": "pnp-sp-dev-spfx-web-parts-react-documents-links-accordion",
     "source": "pnp",
-    "title": "List Items Menu",
-    "shortDescription": "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-items-menu",
+    "title": "Documents Links Accordion",
+    "shortDescription": "This web part allows user create a accordion with documents links grouped by any column of document library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-documents-links-accordion",
     "longDescription": [
-      "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents."
+      "This web part allows user create a accordion with documents links grouped by any column of document library.",
+      "When the user clicks on the header it dynamically load documents."
     ],
-    "creationDateTime": "2021-02-18",
-    "updateDateTime": "2021-02-18",
+    "creationDateTime": "2021-10-10",
+    "updateDateTime": "2021-10-10",
     "products": [
       "SharePoint",
       "Office"
@@ -21,10 +22,10 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.12.1"
       },
       {
-        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "key": "SPFX-FULLPAGEAPP",
         "value": "true"
       },
       {
@@ -34,32 +35,28 @@
       {
         "key": "SPFX-TEAMSPERSONALAPP",
         "value": "true"
+      },
+      {
+        "key": "REACT-HOOKS",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldMessage, PropertyFieldSpinner, Placeholder, AccessibleAccordion"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-items-menu/assets/ListMenuDocs.gif",
-        "alt": "List Items Menu"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-documents-links-accordion/assets/documentsLinksAccordion.gif",
+        "alt": "Web part in action"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems1.JPG?raw=true",
-        "alt": "List Items Menu"
-      },
-      {
-        "type": "image",
-        "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems2.JPG?raw=true",
-        "alt": "List Items Menu"
-      },
-      {
-        "type": "image",
-        "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems3.JPG?raw=true",
-        "alt": "List Items Menu"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-documents-links-accordion/assets/documentsLinksAccordion1.png",
+        "alt": "Screen shot of web part"
       }
     ],
     "authors": [
