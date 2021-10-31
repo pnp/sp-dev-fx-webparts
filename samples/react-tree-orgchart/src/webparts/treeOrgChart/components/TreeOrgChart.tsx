@@ -290,7 +290,7 @@ export default class TreeOrgChart extends React.Component<
     if (showEditOther && this.props.teamLeader && this.props.teamLeader.length > 0) {
       selectedTeamleader = this.claimUserToUPN(this.props.teamLeader);
       if (!selectedTeamleader) {
-        selectedTeamleader == this.props.teamLeader;
+        selectedTeamleader = this.props.teamLeader;
       }
     }
 
