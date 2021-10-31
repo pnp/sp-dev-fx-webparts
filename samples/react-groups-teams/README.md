@@ -26,11 +26,13 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%210.x-green.svg)
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
-![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
-![Workbench Hosted: Only after API permissions granted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Only after API permissions granted")
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%202019-Not%20compatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%202016%20(Feature%20Pack%202)-Not%20compatible-red.svg)
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires API permissions")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Only after API permissions granted")
 
 ## Applies to
 
@@ -41,7 +43,7 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 Solution|Author(s)
 --------|---------
-React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
+React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))  |
 
 ## Version history
 
@@ -49,7 +51,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
 | ------- | ---------------- | --------------- |
 | 1.0.0   | April 16, 2021 | Initial release |
 | 1.0.1   | August 1, 2021 | Fixed references to Office.com |
-
+| 1.1.0   | October 8, 2021 | Upgraded to SPFx 1.12.1 for higher compatibility and added Teams Tab deployment support. |
 
 
 # Prerequisites

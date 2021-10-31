@@ -69,7 +69,86 @@ export const ListItemsMenu: React.FunctionComponent<IListItemsMenuProps> = (
 
   const stateRef = React.useRef(state); // Use to access state on eventListenners
 
-  // On component did mount only if listId or Field Change
+  React.useEffect(() => {
+    (async () => {
+      if (!props.listId || !props.fieldName) {
+        return;
+      }
+      try {
+        let _navLinksGroups: INavLinkGroup[] = [];
+        stateRef.current = {
+          ...stateRef.current,
+          isLoading: true,
+          navLinkGroups: _navLinksGroups,
+        };
+        setState(stateRef.current);
+        const _groupHeaders = await getGroupHeaders(props.listId, props.fieldName, props.listBaseTemplate);
+        const { fieldName } = props;
+        const _field: any = await getField(props.listId, props.fieldName);
+
+        for (const groupHeader of _groupHeaders) {
+          let _name: any;
+          switch (_field.fieldType) {
+            case "TaxonomyFieldType":
+              _name = groupHeader[fieldName]?.Label ?? "Unassigned";
+              break;
+            case "TaxonomyFieldTypeMulti":
+              _name = groupHeader[fieldName][0]?.Label ?? "Unassigned";
+              break;
+            case "User":
+              if (_name != "Unassigned") {
+                _name = groupHeader[fieldName][0]?.title;
+              }
+              break;
+            case "Lookup":
+              _name =
+                groupHeader[props.fieldName] !== "" &&
+                groupHeader[props.fieldName] !== undefined &&
+                groupHeader[props.fieldName][0].lookupValue !== ""
+                  ? groupHeader[props.fieldName][0]?.lookupValue
+                  : "Unassigned";
+              break;
+            default:
+              _name =
+                groupHeader[props.fieldName] !== "" && groupHeader[props.fieldName] !== undefined
+                  ? groupHeader[props.fieldName]
+                  : "Unassigned";
+              break;
+          }
+          _navLinksGroups.push({
+            name: _name,
+            groupData: _name,
+            collapseByDefault: true,
+            onHeaderClick: _onGroupHeaderClick,
+            links: [],
+          });
+          // Ensure the groups name are unique!
+          _navLinksGroups = uniqBy(_navLinksGroups, "name");
+        }
+        stateRef.current = {
+          ...stateRef.current,
+          hasError: false,
+          errorMessage: "",
+          isLoading: false,
+          listName: _field.fieldScope,
+          navLinkGroups: _navLinksGroups,
+        };
+
+        setState(stateRef.current);
+      } catch (error) {
+        stateRef.current = {
+          ...stateRef.current,
+          hasError: true,
+          errorMessage: error.message,
+        };
+        setState(stateRef.current);
+      }
+    })();
+  }, [props.listId, props.fieldName]);
+
+
+
+  /* // On component did mount only if listId or Field Change
   React.useEffect(() => {
     (async () => {
       if (!props.listId || !props.fieldName) {
@@ -142,7 +221,7 @@ export const ListItemsMenu: React.FunctionComponent<IListItemsMenuProps> = (
         setState(stateRef.current);
       }
     })();
-  }, [props.listId, props.fieldName]);
+  }, [props.listId, props.fieldName]); */
 
   // On Header click get Items for the header
   const _onGroupHeaderClick = async (

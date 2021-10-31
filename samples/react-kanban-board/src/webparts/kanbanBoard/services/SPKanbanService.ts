@@ -1,8 +1,16 @@
 import { ISPKanbanService } from "./ISPKanbanService";
-import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
+import '@pnp/sp/webs';
+import '@pnp/sp/lists';
+import '@pnp/sp/items';
+import '@pnp/sp/fields';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from "../../../kanban";
 import * as strings from 'KanbanBoardWebPartStrings';
+import { IFieldInfo } from "@pnp/sp/fields";
+
+interface IFieldChoiceInfo extends IFieldInfo {
+    Choices: string[];
+}
 
 export default class SPKanbanService implements ISPKanbanService {
 
@@ -50,7 +58,7 @@ export default class SPKanbanService implements ISPKanbanService {
     }
     public getBuckets(listId: string, ): Promise<string[]> {
         return sp.web.lists.getById(listId).fields.getByInternalNameOrTitle("Status").get()
-            .then(status => status.Choices.map((val, index) => {
+            .then((status: IFieldChoiceInfo) => status.Choices.map((val, index) => {
                 return val;
             }));
     }

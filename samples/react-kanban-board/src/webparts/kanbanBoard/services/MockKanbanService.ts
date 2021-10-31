@@ -1,6 +1,4 @@
 import { ISPKanbanService } from "./ISPKanbanService";
-import "@pnp/polyfill-ie11";
-import { sp } from '@pnp/sp';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from "../../../kanban";
 import * as strings from 'KanbanBoardWebPartStrings';
 

@@ -4,11 +4,8 @@
   @include ms-Grid-col;
   // @include ms-sm6;
   // @include ms-md3;
-  display: flex;
-  flex-grow: 1;
   margin-bottom: 16px;
-  flex-basis: 120px;
-  min-width: 120px;
+  display: flex;
 
   a {
     background-color: $ms-color-themePrimary;

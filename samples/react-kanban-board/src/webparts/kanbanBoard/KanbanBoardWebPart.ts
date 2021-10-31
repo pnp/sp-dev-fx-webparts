@@ -11,7 +11,6 @@ import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
 import * as strings from 'KanbanBoardWebPartStrings';
-import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
 
 import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
@@ -113,7 +112,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             onListsRetrieved: (lists) => {
               //TODO Check from TS Definition it should be a string but i get a number
               // with Typesafe equal it fails
-              if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
+              if (Environment.type == EnvironmentType.Test) {
                 return lists;
               } else {
                 const alists = lists.filter((l: any) => {
