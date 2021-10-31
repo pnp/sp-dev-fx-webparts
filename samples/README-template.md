@@ -37,6 +37,7 @@ Short summary on functionality and used technologies.
 > If using SPFx 1.12.1, update the SPFx and Node.js tags accordingly:
 > ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 > ![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+>
 > If using an older version of SPFx, update the SPFx and Node.js compatibility tag accordingly:
 > SPFx 1.11
 >    ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
@@ -47,11 +48,12 @@ Short summary on functionality and used technologies.
 >    ![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
 >
 > If you built this sample specifically for SharePoint 2016, or SharePoint 2019 support, update the SharePoint compatibility tag accordingly:
->    ![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
->    ![SharePoint 2016 | 2019 | Online](https://img.shields.io/badge/SharePoint-2016%20%7C%202019%20%7C%20Online-green.svg)
+> ![Works with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+> ![Work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 > If you know your web part only works on the hosted workbench, you can use this for the workbench compatibility tag:
 > ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to XXX")
 > ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+>
 >
 > If you specifically built and tested this web part to work with Teams, use this for the Teams compatibility tag:
 >    ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
