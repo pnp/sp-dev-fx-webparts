@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0dbbad17-3a6b-44ed-8ebb-989a8dd906b5",
+  "alias": "ReactEmojiReactionRatingWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "react-emoji-reaction-rating" },
+    "description": { "default": "react-emoji-reaction-rating description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "propertyRatingText": "React emoji reaction rating web part!. How does you like this news/article? ",
+      "propertyEmojisCollection":[
+        {"Title":"Wow!","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg1.png"},
+        {"Title":"Mmm","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg2.png"},
+        {"Title":"Hmm","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg3.png"},
+        {"Title":"Meh","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg4.png"},
+        {"Title":"Pff","ImageUrl":"https://mypersorg.sharepoint.com/sites/PnPSearchDemo/EmojiLibrary/RatingImg5.png"}
+      
+      ],
+      /* "propertyListName":"EmojiReactionRating", */
+      "propertyEnableComments":"True",
+      "propertyEnableCount":"True"
+    }
+  }]
+}

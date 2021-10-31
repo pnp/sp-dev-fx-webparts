@@ -3,9 +3,16 @@
   "solution": {
     "name": "react-router-dom-client-side-solution",
     "id": "8aae1dc4-d74b-4ec4-ae2f-ebfd1e9ee7d0",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "000000"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-router-dom.sppkg"
