@@ -4,10 +4,9 @@
 var jsonPath = "https://pnp.github.io/sp-dev-fx-webparts/samples.json";
 if (window.location.host.toLowerCase() !== "pnp.github.io") {
   // When serving locally there is no /teams-dev-samples in the path
-  jsonPath = window.location.origin + "/samples.json"
+  jsonPath = window.location.origin + "/samples.json";
+  console.log(`Reading samples from ${jsonPath}`);
 }
-console.log(`Reading samples from ${jsonPath}`);
-
 
 /**
  * Reads a sample metadata and returns a pre-populated HTML element
@@ -56,10 +55,11 @@ function loadSample(sample, filter) {
               break;
           }
         });
+const dtModified = new Date(sample.updateDateTime)
 
         var compatible2019 = SPFxVersion == "1.4.1" || SPFxVersion.startsWith("1.3.") || SPFxVersion == "GA";
         var compatible2016 = SPFxVersion == "GA";
-        var modified = new Date(sample.updateDateTime).toString().substr(4).substr(0, 12);
+        var modified = moment(dtModified).toISOString();
         var authors = sample.authors;
         var authorsList = "";
         var authorAvatars = "";
@@ -110,7 +110,7 @@ function loadSample(sample, filter) {
 
         // Build the HTML to insert
         var $items = $(`
-<a class="sample-thumbnail" href="${sample.url}" data-modified="${sample.modified}" data-title="${title}" data-keywords="${keywords}" data-tags="${tags}" data-framework="${framework}" data-spfx="${SPFxVersion}" data-outlook="${outlookCompatible}" data-teams="${teamsCompatible}" data-sp2016="${compatible2016}" data-sp2019="${compatible2019}" data-pnpcontrols="${pnpControls}"
+<a class="sample-thumbnail" href="${sample.url}" data-modified="${modified}" data-title="${title}" data-keywords="${keywords}" data-tags="${tags}" data-framework="${framework}" data-spfx="${SPFxVersion}" data-outlook="${outlookCompatible}" data-teams="${teamsCompatible}" data-sp2016="${compatible2016}" data-sp2019="${compatible2019}" data-pnpcontrols="${pnpControls}"
 >
   <div class="sample-inner">
     <div class="sample-preview">
@@ -124,7 +124,7 @@ function loadSample(sample, filter) {
         ${authorAvatars}
         <div class="activity-details">
           <span class="sample-author" title="${authorsList}">${authorName}</span>
-          <span class="sample-date">Modified ${modified}</span>
+          <span class="sample-date">Modified ${dtModified.toDateString()}</span>
         </div>
       </div>
     </div>
