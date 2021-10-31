@@ -9,11 +9,29 @@ define([], function() {
     "tilesPanelHeader": "Configurez vos tuiles",
     "tilesManageBtn": "Configurer les tuiles",
 
+    "tilesHeight": "Tile Height",
+
+    "colourMode": "Colour Mode",
+    "colourModeTheme": "Theme",
+    "colourModeUniform": "Custom Uniform",
+    "colourModeUnique": "Custom Unique",
+
+    "widthAutomaticOrStatic": "Automatic or Static Width",
+    "widthStatic": "Static",
+    "widthAutomatic": "Automatic",
+    "widthStaticSet": "Tile static width",
+
+    "iconSelectFile": "Select Icon",
+
+    "colorSetUniqueFg": "Foreground Colour",
+    "colorSetUniqueBg": "Background Colour",
+
     "titleField": "Titre",
     "descriptionField": "Description",
     "urlField": "URL",
     "iconField": "Nom de l'icône d'UI Fabric",
     "targetField": "Cible",
+    "sortOrder": "Ordre de tri",
 
     "targetCurrent": "Page fenêtre",
     "targetNew": "Nouvel onglet",
