@@ -30,7 +30,7 @@ When the user clicks on the header it dynamically load documents.
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
@@ -56,7 +56,8 @@ Version|Date|Comments
 1.0.0|November 20, 2020|Initial release
 1.0.1|February 18, 2021|Added support for metadata columns
 1.0.2|February 21, 2021|Fixed `gulp build` issues
-1.0.3|October 31🦇, 2021|Upgraded to SPFx 1.13
+1.0.3|October 25, 2021|Fixed bug support for metadata columns and Lookup fields
+1.0.4|October 31🦇, 2021|Upgraded to SPFx 1.13
 
 ## Minimal Path to Awesome
 

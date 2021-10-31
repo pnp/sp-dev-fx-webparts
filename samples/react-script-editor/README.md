@@ -165,7 +165,7 @@ In order to make it available to absolutely all sites you need apply the _Deploy
 
 Solution|Author(s)
 --------|---------
-react-script-editor | Mikael Svenson ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+react-script-editor | [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
 
 ## Version history
 
@@ -190,11 +190,6 @@ Version|Date|Comments
 1.0.0.16|April 1st, 2020|Improved how script tags are handled and cleaned up on smart page navigation.
 1.0.17.0|January 29th, 2021|Changed versioning to 3 parts. Updated npm packages, restructured documentation, minor change to webpack analyzer setup.
 
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 ### Local testing
 
@@ -204,10 +199,10 @@ Version|Date|Comments
   - `gulp serve`
 
 ### Deploy
-* gulp clean
-* gulp bundle --ship
-* gulp package-solution --ship
-* Upload .sppkg file from sharepoint\solution to your tenant App Catalog
+* `gulp clean`
+* `gulp bundle --ship`
+* `gulp package-solution --ship`
+* Upload `.sppkg` file from `sharepoint\solution` to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page
 ## Features
@@ -216,5 +211,25 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 - Re-use existing JavaScript solutions on a modern page
 - Office UI Fabric
 - React
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/labels/react-script-editor) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-script-editor) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-script-editor" />

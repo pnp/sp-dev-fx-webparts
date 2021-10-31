@@ -1,6 +1,6 @@
 {
   "name": "react-list-items-menu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -27,6 +27,7 @@
     "@pnp/spfx-property-controls": "1.19.0",
     "@types/jquery": "^3.5.0",
     "@uifabric/file-type-icons": "^7.6.11",
+    "date-fns": "^2.25.0",
     "jquery": "^3.5.1",
     "jsstore": "^3.10.3",
     "moment": "^2.29.1",

@@ -3,7 +3,11 @@ import { IApplications, IApplication,IPasswordCredential,IKeyCredential,IFormatt
 
 export interface IGraphAppSecretExpirationState {
     applications: IFormattedApplication[];
+    filteredApplications: IFormattedApplication[];
+    filterValue: string;
+    searchFilter: string;
     groupByFields: IGrouping[];
+    page: number;
     error: string;
     loading: boolean;
   }

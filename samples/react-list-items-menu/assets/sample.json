@@ -34,6 +34,14 @@
       {
         "key": "SPFX-TEAMSPERSONALAPP",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldMessage, PropertyFieldSpinner"
+      },
+      {
+        "key": "REACT-HOOKS",
+        "value": "true"
       }
     ],
     "thumbnails": [

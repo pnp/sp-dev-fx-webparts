@@ -1,0 +1,66 @@
+{
+  "id": "5ced32db-af85-469a-a3cb-39f3986e1f1a",
+  "alias": "MicrosoftGroupsWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsTab"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Microsoft Groups"
+      },
+      "description": {
+        "default": "Microsoft Groups description"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "Microsoft Groups"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/dist/"
+    ],
+    "entryModuleId": "microsoft-groups-web-part",
+    "scriptResources": {
+      "microsoft-groups-web-part": {
+        "type": "path",
+        "path": "microsoft-groups-web-part_da003a7fb7fd1f14fcb7.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.8.5"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.8.5"
+      },
+      "MicrosoftGroupsWebPartStrings": {
+        "type": "path",
+        "path": "MicrosoftGroupsWebPartStrings_en-us_b41dd8b4c7f5f69692bd8f24e2b83745.js"
+      }
+    }
+  }
+}
