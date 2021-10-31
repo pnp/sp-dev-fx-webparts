@@ -60,6 +60,8 @@ This extension illustrates the following concepts:
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/labels/react-organization-chart)
+
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-organisation-chart&authors=@joaojmendes&title=react-organisation-chart%20-%20).
 
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-organisation-chart&authors=@joaojmendes&title=react-organisation-chart%20-%20).
