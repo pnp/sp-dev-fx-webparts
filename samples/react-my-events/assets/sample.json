@@ -8,8 +8,8 @@
         "longDescription": [
             "This web part provides loggedin user's outlook events with some advanced features"
         ],
-        "created": "2021-08-18",
-        "modified": "2021-10-04",
+        "creationDateTime": "2021-08-18",
+        "updateDateTime": "2021-10-04",
         "products": [
             "SharePoint",
             "Office"
@@ -29,12 +29,6 @@
             }
         ],
         "thumbnails": [
-            {
-                "type": "image",
-                "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.gif",
-                "alt": "react-my-events"
-            },
             {
                 "type": "image",
                 "order": 101,
