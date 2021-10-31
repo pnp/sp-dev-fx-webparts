@@ -10,6 +10,7 @@ node_modules
 dist
 lib
 solution
+release
 temp
 *.sppkg
 
