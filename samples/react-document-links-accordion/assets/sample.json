@@ -1,10 +1,10 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-documents-links-accordion",
+    "name": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion",
     "source": "pnp",
     "title": "Documents Links Accordion",
     "shortDescription": "This web part allows user create a accordion with documents links grouped by any column of document library.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-documents-links-accordion",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-links-accordion",
     "longDescription": [
       "This web part allows user create a accordion with documents links grouped by any column of document library.",
       "When the user clicks on the header it dynamically load documents."
@@ -49,13 +49,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-documents-links-accordion/assets/documentsLinksAccordion.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
         "alt": "Web part in action"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-documents-links-accordion/assets/documentsLinksAccordion1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
         "alt": "Screen shot of web part"
       }
     ],
