@@ -64,7 +64,8 @@ Tree Organization Web Part|[Peter Paul Kirschner](https://github.com/petkir) ([@
 
 Version|Date|Comments
 -------|----|--------
-1.1.1|October 28, 2021|Fixes the Issue with different TimeZones.
+1.1.2|October 28, 2021|Fixes the Issue with different TimeZones.
+1.1.1|October 5, 2021|Added missing Graph permissions in manifest
 1.1.0|Feb 28, 2021|Added <ul><li>Show Other Team</li><li>Live Contact Card</li><li>Filter user by userPrincipalName</li><li>Graph API</li><li>PNPJS updates</li></ul> 
 1.0.2|June 12, 2020|Added exception handler for profiles missing display name 
 1.0.1|Jan 28, 2020|Update to SPFx 1.10, minor fixes and refactoring.

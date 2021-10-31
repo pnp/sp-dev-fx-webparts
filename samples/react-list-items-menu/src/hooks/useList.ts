@@ -9,7 +9,8 @@ import moment from "moment";
 import { sp } from "@pnp/sp";
 import { IFieldInfo } from "@pnp/sp/fields";
 import { IListInfo } from "@pnp/sp/lists";
-
+import { checkIfValidDate } from "../Utils/Utils";
+import {format , parseISO} from 'date-fns';
 export const useList = () => {
   // Run on useList hook
   (async () => {})();
@@ -71,12 +72,14 @@ export const useList = () => {
   ): Promise<any[]> => {
     const _field: any = await getField(listId, groupByField);
 
+    if (checkIfValidDate(groupFieldValue)) {
+      groupFieldValue = format(new Date(groupFieldValue), "yyyy-MM-dd");
+    }
+
     switch (_field.fieldType) {
       case "DateTime":
         groupFieldValue =
-          groupFieldValue != "Unassigned"
-            ? moment(groupFieldValue).format("YYYY-MM-DD")
-            : "Unassigned";
+          groupFieldValue != "Unassigned" ? format(parseISO(groupFieldValue), "yyyy-MM-dd") : "Unassigned";
         break;
       case "AllDayEvent":
         groupFieldValue = groupFieldValue === "No" ? "0" : "1";
@@ -84,7 +87,6 @@ export const useList = () => {
       default:
         break;
     }
-
     let _viewXml = `<View Scope='Recursive'>
            <Query>
             <OrderBy>

@@ -9,7 +9,7 @@
       "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents."
     ],
     "creationDateTime": "2021-02-18",
-    "updateDateTime": "2021-02-18",
+    "updateDateTime": "2021-10-25",
     "products": [
       "SharePoint",
       "Office"
@@ -33,6 +33,14 @@
       },
       {
         "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldMessage, PropertyFieldSpinner"
+      },
+      {
+        "key": "REACT-HOOKS",
         "value": "true"
       }
     ],

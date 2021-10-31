@@ -68,7 +68,14 @@
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
+      },
+      {
+        "gitHubAccount": "tom-daly",
+        "company": "SoHo Dragon",
+        "pictureUrl": "https://github.com/tom-daly.png",
+        "name": "Thomas Daly"
       }
+      
     ],
     "references": [
       {

@@ -9,7 +9,7 @@
       "This web part uses the Chart.js library to visualize SharePoint list data."
     ],
     "creationDateTime": "2020-07-30",
-    "updateDateTime": "2020-07-30",
+    "updateDateTime": "2021-10-19",
     "products": [
       "SharePoint",
       "Office"

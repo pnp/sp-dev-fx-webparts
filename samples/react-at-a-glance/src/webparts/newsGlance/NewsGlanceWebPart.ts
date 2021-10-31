@@ -77,6 +77,10 @@ export default class NewsGlanceWebPart extends BaseClientSideWebPart<INewsGlance
     let element: any;
 
     if (this.width < 400) {
+      this.sentences = this.sentences.map(sentence => {
+        return sentence.length > 100 ? `${sentence.slice(0, 100)}...` : sentence;
+      });
+
       element = React.createElement(
         NewsGlanceSmall,
         {
