@@ -21,11 +21,15 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.13.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldOrder, WebPartTitle, Placeholder"
       }
     ],
     "thumbnails": [
@@ -57,6 +61,13 @@
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
+      },
+      {
+        "gitHubAccount": "AJIXuMuK",
+        "company": "Sharepointalist",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460\u0026u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f\u0026v=4",
+        "name": "Alex Terentiev",
+        "twitter": "alexaterentiev"
       }
     ],
     "references": [
