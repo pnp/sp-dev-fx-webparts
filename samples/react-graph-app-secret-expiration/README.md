@@ -10,7 +10,7 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 ## Compatibility
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![Node.js LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v12%20%7C%20LTS%20v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
@@ -40,14 +40,14 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - In the command-line run:
-  - **npm install**
-  - **gulp bundle**
-  - **gulp package-solution**
+  - `npm install`
+  - `gulp bundle`
+  - `gulp package-solution`
 - Deploy the package to your app catalog
 - Approve the API permission request from the SharePoint admin
 - Add the web part to a page
 - In the command-line run:
-  - **gulp serve --nobrowser**
+  - `gulp serve --nobrowser`
 
 ## Features
 
