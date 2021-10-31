@@ -1,0 +1,273 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '../../../common/colors.module.scss';
+@import '../../../common/Global.dark.module.scss';
+@import '../../../common/Global.default.module.scss';
+@import '../../../common/Global.contrast.module.scss';
+
+:export {
+  callRGBColor: $leadAssistDashboard-callRGBColor;
+  emailRGBColor: $leadAssistDashboard-emailRGBColor;
+  textRGBColor: $leadAssistDashboard-textRGBColor;
+}
+
+.leadAssistDashboard {
+  max-width: 1648px;
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .chartCallDot {
+    @extend .dot;
+    background-color: $leadAssistDashboard-callRGBColor;
+  }
+
+  .chartEmailDot {
+    @extend .dot;
+    background-color: $leadAssistDashboard-emailRGBColor;
+  }
+
+  .chartTextDot {
+    @extend .dot;
+    background-color: $leadAssistDashboard-textRGBColor;
+  }
+
+  .chartNumber {
+    font-size: large;
+  }
+
+  .tip {
+    padding: 8px;
+  }
+
+  .grid {
+    @include ms-Grid;
+  }
+
+  .row {
+    @include ms-Grid-row;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;    
+  }
+
+  .smallColumn {
+    @extend .column;
+    max-width: 100px;
+  }
+
+  .smallColumnTeams {
+    @extend .column;
+    max-width: 180px;
+  }
+
+  .chartColumn {
+    @extend .column;
+    max-width: 100px;
+  }
+
+  .chartColumnTeams {
+    @extend .column;
+    max-width: 200px;
+    margin-left: -10px;
+  }
+
+  .event {
+    margin-bottom: 2px;
+  }
+
+  .eventBorder {
+    border-left: 4px solid $leadAssistDashboard-eventColor;
+  }
+
+  .teamsEventBorder{
+    @extend .eventBorder;
+    border-left: 4px solid $leadAssistDashboard-eventTeamsColor;
+  }
+
+  .leftPadding{
+    padding-left: 9px;
+  }
+
+  .eventTitle {
+    font-weight: bold;
+  }
+
+  .task {
+    margin-bottom: 2px;
+  }
+
+  .taskTitle {
+    font-weight: bold;
+  }
+
+  .taskDateTime {
+    font-weight: lighter;
+    font-size: smaller;
+  }
+
+  .paddedContainer {
+    padding: 15px;
+  }
+
+  .padding5 {
+    padding: 5px;
+  }
+
+  .loader {
+    padding: 30px;
+  }
+
+  .centeredContainer {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .progressDescription {
+    text-align: center;
+  }
+
+  .marginLeft {
+    margin-left: -30px;
+  }
+}
+
+[data-theme='default'] {
+  
+  :export {
+    callRGBColor: $default-leadAssistDashboard-callRGBColor;
+    emailRGBColor: $default-leadAssistDashboard-emailRGBColor;
+    textRGBColor: $default-leadAssistDashboard-textRGBColor;
+  }
+
+  .leadAssistDashboard {
+    background: $default-leadAssistDashboard-background;
+		color: $default-leadAssistDashboard-color;
+
+    .button {
+			background: $default-leadAssistDashboard-buttonBackground;
+			color: $default-leadAssistDashboard-buttonColor;
+		}
+
+    .chartCallDot {
+      @extend .dot;
+      background-color: $default-leadAssistDashboard-callRGBColor;
+    }
+  
+    .chartEmailDot {
+      @extend .dot;
+      background-color: $default-leadAssistDashboard-emailRGBColor;
+    }
+  
+    .chartTextDot {
+      @extend .dot;
+      background-color: $default-leadAssistDashboard-textRGBColor;
+    }
+
+    .eventBorder {
+      border-left: 4px solid $default-leadAssistDashboard-eventColor;
+    }
+  
+    .teamsEventBorder{
+      @extend .eventBorder;
+      border-left: 4px solid $default-leadAssistDashboard-eventTeamsColor;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  
+  :export {
+    callRGBColor: $dark-leadAssistDashboard-callRGBColor;
+    emailRGBColor: $dark-leadAssistDashboard-emailRGBColor;
+    textRGBColor: $dark-leadAssistDashboard-textRGBColor;
+  }
+
+  .leadAssistDashboard {
+    background: $dark-leadAssistDashboard-background;
+		color: $dark-leadAssistDashboard-color;
+
+    .button {
+			background: $dark-leadAssistDashboard-buttonBackground;
+			color: $dark-leadAssistDashboard-buttonColor;
+		}
+
+    .chartCallDot {
+      @extend .dot;
+      background-color: $dark-leadAssistDashboard-callRGBColor;
+    }
+  
+    .chartEmailDot {
+      @extend .dot;
+      background-color: $dark-leadAssistDashboard-emailRGBColor;
+    }
+  
+    .chartTextDot {
+      @extend .dot;
+      background-color: $dark-leadAssistDashboard-textRGBColor;
+    }
+
+    .eventBorder {
+      border-left: 4px solid $dark-leadAssistDashboard-eventColor;
+    }
+  
+    .teamsEventBorder{
+      @extend .eventBorder;
+      border-left: 4px solid $dark-leadAssistDashboard-eventTeamsColor;
+    }
+  }
+}
+
+[data-theme='contrast'] {
+  
+  :export {
+    callRGBColor: $contrast-leadAssistDashboard-callRGBColor;
+    emailRGBColor: $contrast-leadAssistDashboard-emailRGBColor;
+    textRGBColor: $contrast-leadAssistDashboard-textRGBColor;
+  }
+
+  .leadAssistDashboard {
+    background: $contrast-leadAssistDashboard-background;
+		color: $contrast-leadAssistDashboard-color;
+
+    .button {
+			background: $contrast-leadAssistDashboard-buttonBackground;
+			color: $contrast-leadAssistDashboard-buttonColor;
+		}
+    .chartCallDot {
+      @extend .dot;
+      background-color: $contrast-leadAssistDashboard-callRGBColor;
+    }
+  
+    .chartEmailDot {
+      @extend .dot;
+      background-color: $contrast-leadAssistDashboard-emailRGBColor;
+    }
+  
+    .chartTextDot {
+      @extend .dot;
+      background-color: $contrast-leadAssistDashboard-textRGBColor;
+    }
+
+    .eventBorder {
+      border-left: 4px solid $contrast-leadAssistDashboard-eventColor;
+    }
+  
+    .teamsEventBorder{
+      @extend .eventBorder;
+      border-left: 4px solid $contrast-leadAssistDashboard-eventTeamsColor;
+    }
+  }
+}

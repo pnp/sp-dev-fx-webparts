@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "lead-assist-client-side-solution",
+    "id": "c311a0fc-3dcb-4316-a798-fd7d8a6d5344",
+    "version": "1.0.13.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Tasks.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.ReadWrite.AppFolder"
+      }
+    ],
+    "developer": {
+      "name": "PnP",
+      "websiteUrl": "https://pnp.github.io/",
+      "privacyUrl": "https://pnp.github.io/",
+      "termsOfUseUrl": "https://pnp.github.io/",
+      "mpnId": ""
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/lead-assist.sppkg"
+  }
+}
