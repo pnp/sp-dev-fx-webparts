@@ -26,7 +26,6 @@ This web part shows the current user's colleagues, and allows the user to search
 ![staff](./assets/staffTeams01.png)
 ![staff](./assets/staffTeams02.png)
 
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
