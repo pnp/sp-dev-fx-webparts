@@ -331,6 +331,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
     }
 
     private onDragStart(event, taskId: string, bucket: string): void {
+        console.log('onDragStart');
         const taskitem = this.props.tasks.filter(p => p.taskId === taskId);
         if (taskitem.length === 1) {
             event.dataTransfer.setData("text", taskId);
@@ -353,6 +354,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     private onDragOver(event, targetbucket: string): void {
         event.preventDefault();
+        console.log('onDragOver');
 
         if (this.dragelement.bucket !== targetbucket) {
             const index = findIndex(this.props.buckets, element => element.bucket == targetbucket);
