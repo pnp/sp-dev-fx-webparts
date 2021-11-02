@@ -69,7 +69,7 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * using conditional rendering for one-time web part setup
 * passing web part configuration to Angular and reacting to configuration changes
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

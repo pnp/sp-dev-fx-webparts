@@ -70,7 +70,7 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * calling the SharePoint REST API from an Angular Element using PnPjs
 * calling the Microsoft Graph from an Angular Element using PnPjs
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

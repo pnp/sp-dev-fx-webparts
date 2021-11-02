@@ -51,7 +51,7 @@ Built with SharePoint Framework GA, Office Graph, React and Chart.JS
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LSTS 8 | LTS 10](https://img.shields.io/badge/Node.js-LTS%208%20%7C%20LTS%20v10-green.svg) 
+![Node.js LSTS 8 | LTS 10](https://img.shields.io/badge/Node.js-LTS%208%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")

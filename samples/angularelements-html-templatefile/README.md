@@ -85,7 +85,7 @@ build.rig.addPostTypescriptTask(tsInlines);
 //************END: Added to handle Template file url ************/
 ```
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

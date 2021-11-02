@@ -100,7 +100,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - reading and updating SharePoint list items using Angular
 - showing charts using [Chart.js](http://www.chartjs.org) and [Angular Chart directives](https://jtblin.github.io/angular-chart.js/)
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

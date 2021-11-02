@@ -40,7 +40,7 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 ## Compatibility
 
 ![SPFx 1.4.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg)
-![Node.js LTS 6.x](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
+![Node.js v6](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
 ![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
 ![Teams No: Not designed for Microsoft Teams](https://img.shields.io/badge/Teams-No-red.svg "Not designed for Microsoft Teams")
 ![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)

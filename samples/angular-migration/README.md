@@ -52,7 +52,7 @@ Follow the setup instructions:
 - [Angular application](./angular-todo/README.md)
 - [SharePoint Framework client-side web part](./angular-todo-webpart/README.md)
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

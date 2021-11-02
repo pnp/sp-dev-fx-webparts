@@ -105,7 +105,7 @@ Version|Date|Comments
 > sure how to fix that yet. There is definitely room to improved the user experience but the main logic and functionality
 > is here. Thanks!
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

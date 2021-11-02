@@ -13,7 +13,7 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/spfx-1.11.0-green.svg)
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
 ![Teams N/A](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg)
 ![Workbench Hosted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg)

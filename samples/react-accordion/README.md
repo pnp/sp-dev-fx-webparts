@@ -26,7 +26,7 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LTS 10.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%2010.x%7C%20LTS%208.x-green.svg) ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%7C%20v8-green.svg) ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 

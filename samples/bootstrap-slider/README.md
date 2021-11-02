@@ -70,7 +70,7 @@ Version|Date|Comments
  ![Deployed List](./assets/List.png)
 - Add items to the **SPFx List** in order for slides to display in the web part
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

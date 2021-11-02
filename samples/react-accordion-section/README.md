@@ -30,7 +30,7 @@
 
 ![SPFx 1.10](https://img.shields.io/badge/spfx-1.10.0-green.svg)
 
-![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%2010.x-green.svg)
+![Node.js v8 | v10](https://img.shields.io/badge/Node.js-v8%20%7C%20v10-green.svg)
 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
 

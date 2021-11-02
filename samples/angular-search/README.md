@@ -75,7 +75,7 @@ Version|Date|Comments
 > and not by id because then I would get everything that inherits from that content type. I only want the
 > the results for a specific content type and not everything that inherits that content type as well
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
