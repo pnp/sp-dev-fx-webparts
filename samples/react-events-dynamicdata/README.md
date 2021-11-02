@@ -4,8 +4,14 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 
 ![Web parts placed on a modern SharePoint page showing information about events](./assets/dynamic-data-webparts.png)
 
-## Used SharePoint Framework Version 
-![SPFx 1.10](https://img.shields.io/badge/drop-1.10.0-green.svg)
+## Compatibility
+
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to Dynamics 365")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -16,8 +22,8 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 
 Solution|Author(s)
 --------|---------
-react-events-dynamicdata|Waldek Mastykarz (MVP, Rencore, @waldekm)
-react-events-dynamicdata|Hugo Bernier (MVP, [@bernierh](https://twitter.com/bernierh))
+react-events-dynamicdata|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+react-events-dynamicdata|[Hugo Bernier](https://github.com/hugoabernier) (MVP, [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 
@@ -26,11 +32,6 @@ Version|Date|Comments
 1.2|July 8, 2020|Updated sample to SPFx v1.10.0 (Hugo Bernier)
 1.1|November 9, 2018|Updated sample to SPFx v1.7.0
 1.0|June 5, 2018|Initial release
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 

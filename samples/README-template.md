@@ -43,6 +43,10 @@ Short summary on functionality and used technologies.
 >    ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 >    ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 >
+> SPFx 1.10
+>    ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+>    ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+>
 > SPFx 1.4.1
 >    ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
 >    ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg)
