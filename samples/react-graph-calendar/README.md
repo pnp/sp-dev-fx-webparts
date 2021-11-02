@@ -16,7 +16,7 @@ Web part is developed using below technologies
 * Office UI Fabric
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.10-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.10-green.svg)
 
 ## Applies to
 

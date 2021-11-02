@@ -26,7 +26,7 @@ The goal of the sample is to illustrate a single call calling pattern for the th
 
 ## Compatibility
 
-![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")

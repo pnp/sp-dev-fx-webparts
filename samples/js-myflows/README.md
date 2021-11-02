@@ -24,7 +24,7 @@
 
 ## Used SharePoint Framework Version 
 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.8.2-green.svg)
 
 ## Applies to
 

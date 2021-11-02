@@ -11,7 +11,7 @@ The web part only displays the flows which are shared with the current user and 
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.9.1-green.svg)
+![version](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Minimal Path to Awesome
 

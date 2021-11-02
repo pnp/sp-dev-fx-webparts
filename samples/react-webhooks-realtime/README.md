@@ -25,7 +25,7 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 ![Architecture](./assets/Architecture.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

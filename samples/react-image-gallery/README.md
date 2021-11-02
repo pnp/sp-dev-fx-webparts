@@ -7,7 +7,7 @@ This sample describes an SPFx application which implements an image gallery with
 ![Filterable Image Gallery web part built on the SharePoint Framework using React](./assets/image-gallery.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.6.0-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.6.0-green.svg)
 
 ## Applies to
 

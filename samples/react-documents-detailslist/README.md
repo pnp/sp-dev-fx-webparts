@@ -21,7 +21,7 @@ This sample shows how to build web parts that display documents in accordance wi
 ![Demo](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 
 ## Applies to
 

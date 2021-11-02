@@ -8,7 +8,7 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

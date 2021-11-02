@@ -9,7 +9,7 @@ You can also find out how you can use React Hooks to manage the state of your ap
 ![react-provisioning-manager](./assets/screenshot.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9-green.svg)
 
 ## Applies to
 

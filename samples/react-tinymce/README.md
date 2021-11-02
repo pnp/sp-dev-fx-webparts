@@ -24,7 +24,7 @@ editor is powered by the community.
 ![picture of the web part in action](./assets/preview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
 
 ## Applies to
 

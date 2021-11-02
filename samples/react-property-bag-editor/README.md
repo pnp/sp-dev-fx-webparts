@@ -6,7 +6,7 @@ A set of webparts that lets you set property bag settings on site collections an
 [picture of the web part in action]
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

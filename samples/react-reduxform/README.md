@@ -9,7 +9,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
 
 ## Applies to
 

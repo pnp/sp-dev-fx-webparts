@@ -36,7 +36,7 @@ In this web part you can full customize the background and foreground color, fon
 
 ## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![1.11.0](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 
 ## Applies to
 

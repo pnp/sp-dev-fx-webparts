@@ -7,7 +7,7 @@ This sample describe a SPFx application which retrieve an office 365 usage repor
 ![Office 365 Usage Reports using Microsoft Graph API](./assets/react-graph-reports.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.0-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.8.0-green.svg)
 
 ## Applies to
 

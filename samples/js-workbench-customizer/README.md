@@ -24,9 +24,6 @@ Alternatively, you can add the output files for the web part to a custom SPFx pr
 
 > **Note:** This approach will not "pollute" your solution with additional resources or dependencies as the SPFx toolchain will ignore those additional files by default when you package your solution. You can also clean everything by running `gulp clean` as both the lib and dist folders are deleted and recreated again. Git will also ignore dist and lib folders by default, so the files will never be added to source control.
 
-## Used SharePoint Framework Version
-
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 

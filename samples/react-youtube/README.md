@@ -23,7 +23,7 @@ This web part allows to search and view the YouTube videos, across the YouTube A
 
 ## Used SharePoint Framework Version
 
-![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg)
 
 ## Applies to
 

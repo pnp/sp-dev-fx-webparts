@@ -7,7 +7,7 @@ Hooks is a new feature included in React version 16.8, with the new version of *
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

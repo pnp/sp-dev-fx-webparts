@@ -10,7 +10,7 @@ Solution provides an enhancement to SitePages library that enables updating exis
 ![SitePages library CommandSet](./assets/demo-commandset.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

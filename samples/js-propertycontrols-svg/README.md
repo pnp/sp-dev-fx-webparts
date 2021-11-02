@@ -8,7 +8,7 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 
 ## Used SharePoint Framework Version 
 
-![drop](https://img.shields.io/badge/version-1.3.4-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.3.4-green.svg)
 
 ## Which PnP SPFx controls are being used in this sample?
 

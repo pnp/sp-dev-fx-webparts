@@ -8,7 +8,7 @@ This web part will allow a user to select a text file contatining zpl which is u
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

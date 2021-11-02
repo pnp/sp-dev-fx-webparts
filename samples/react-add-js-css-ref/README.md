@@ -40,7 +40,7 @@ Path can be `/sites/mysc/style library/js/custom.js` or `/sites/mysc/style libra
 
 ## Used SharePoint Framework Version
 
-![1.9.1](https://img.shields.io/badge/version-1.9.1-green.svg)
+![1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

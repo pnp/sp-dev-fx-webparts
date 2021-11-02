@@ -9,7 +9,7 @@ Another definition which I liked more and fits perfectly my sample  is the follo
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 
