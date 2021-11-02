@@ -19,9 +19,17 @@ extensions:
 
 Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.
 
-## Used SharePoint Framework Version 
 
-![SPFx 1.4.1](https://img.shields.io/badge/spfx-1.4.1-green.svg)
+## Compatibility
+
+![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
+![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatbile-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 
 ## Applies to
 
@@ -40,12 +48,6 @@ angularelements-helloworld|[Sébastien Levert](https://github.com/sebastienlever
 Version|Date|Comments
 -------|----|--------
 1.0|June 1, 2018|Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -70,14 +72,23 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * calling the SharePoint REST API from an Angular Element using PnPjs
 * calling the Microsoft Graph from an Angular Element using PnPjs
 
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 ## Help
 
-We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angularelements-helloworld=@waldekmastykarz,%20@sebastienlevert&title=angular-todo%20-%20).
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Aangularelements-helloworld) to see if anybody else is having the same issues.
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angularelements-helloworld=@waldekmastykarz,%20@sebastienlevert&title=angular-todo%20-%20).
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Aangularelements-helloworld) and see what the community is saying.
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angularelements-helloworld=@waldekmastykarz,%20@sebastienlevert&title=angular-todo%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angularelements-helloworld=@waldekmastykarz%20@sebastienlevert&title=angular-todo%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angularelements-helloworld=@waldekmastykarz%20@sebastienlevert&title=angular-todo%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angularelements-helloworld=@waldekmastykarz%20@sebastienlevert&title=angular-todo%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angularelements-helloworld" />
