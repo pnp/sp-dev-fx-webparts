@@ -80,10 +80,11 @@ Version|Date|Comments
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/labels/react-list-items-menu) to see if anybody else is having the same issues.
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-list-items-menu) and see what the community is saying.
-
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-list-items-menu&authors=@joaojmendes%20@Ravikadri&title=react-list-items-menu%20-%20).
 
