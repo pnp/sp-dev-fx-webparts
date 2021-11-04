@@ -8,7 +8,7 @@ define([], function() {
     "CouldNotFindPlaceForParkersDescription": "🙄 Your page seems strange, I don't see any playground to play here 😉",
     "StartGameButton": "🎮 Start the game !",
     "RestartGameButton": "🎮 It was fun, lets try again",
-    "EndGameMessage": "Congrats! You are awasome 👍👍👍",
+    "EndGameMessage": "Congrats! You are awesome 👍👍👍",
     "GameProgressELementsLabel": "🔍 Elements to find: ",
     "GameProgressLabel": "👉 You found: "
   }
