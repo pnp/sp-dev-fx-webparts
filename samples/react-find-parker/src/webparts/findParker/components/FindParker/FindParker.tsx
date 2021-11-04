@@ -17,6 +17,7 @@ export default class FindParker extends React.Component<IFindParkerProps, IFindP
       numberOfFoundElements: 0,
       gameStarted: false,
       gameFinsihed: false,
+      foundPlaceForParkers: false,
       listOfParkers: [],
       elements: []
     };
@@ -25,9 +26,17 @@ export default class FindParker extends React.Component<IFindParkerProps, IFindP
   public componentDidMount(): void {
     const { numberOfElements } = this.props;
 
-    const listOfParkers = this.createListOfParkers(numberOfElements);
+    if(document.querySelector(Constants.mainPageContent) === null){
+      this.setState({ foundPlaceForParkers: false });
+      return;
+    }
 
-    this.setState({ listOfParkers: listOfParkers });
+    const listOfParkers = this.createListOfParkers(numberOfElements);
+    this.setState(
+      { 
+        listOfParkers: listOfParkers,
+        foundPlaceForParkers: true 
+      });
   }
 
   public render(): React.ReactElement<IFindParkerProps> {
@@ -35,6 +44,7 @@ export default class FindParker extends React.Component<IFindParkerProps, IFindP
     const {
       gameStarted,
       gameFinsihed,
+      foundPlaceForParkers,
       numberOfFoundElements,
       elements } = this.state;
     const { numberOfElements } = this.props;
@@ -45,13 +55,20 @@ export default class FindParker extends React.Component<IFindParkerProps, IFindP
           <div className={styles.row}>
             <div className={styles.column}>
               <p className={styles.title}>{strings.GameTitle}</p>
-              <p className={styles.label}>{strings.GameDescription}</p>
+              {foundPlaceForParkers ? 
+                <p className={styles.label}>{strings.GameDescription}</p>
+                :
+                <p className={styles.label}>{strings.CouldNotFindPlaceForParkersDescription}</p>
+              }
             </div>
           </div>
           {!gameStarted ?
             <div className={styles.row}>
               <div className={styles.column}>
-                <DefaultButton onClick={() => this.startGame()}>{strings.StartGameButton}</DefaultButton>
+                {foundPlaceForParkers ? 
+                  <DefaultButton onClick={() => this.startGame()}>{strings.StartGameButton}</DefaultButton>
+                  : ''
+                }
               </div>
             </div>
             :

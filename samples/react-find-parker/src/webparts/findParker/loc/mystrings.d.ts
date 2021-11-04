@@ -4,6 +4,7 @@ declare interface IFindParkerWebPartStrings {
   PropertyPaneNumberOfElementsFieldLabel: string;
   GameTitle: string;
   GameDescription: string;
+  CouldNotFindPlaceForParkersDescription: string;
   StartGameButton: string;
   RestartGameButton: string;
   EndGameMessage: string;

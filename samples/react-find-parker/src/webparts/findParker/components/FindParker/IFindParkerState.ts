@@ -6,4 +6,5 @@ export interface IFindParkerState {
     elements: Array<React.ReactElement>;
     gameStarted: boolean;
     gameFinsihed: boolean;
+    foundPlaceForParkers: boolean;
 }
