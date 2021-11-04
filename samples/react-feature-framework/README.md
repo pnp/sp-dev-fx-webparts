@@ -33,7 +33,7 @@ More details on the capability is available from the following article
 * [Provision SharePoint assets with your solution package](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/provision-sharepoint-assets)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

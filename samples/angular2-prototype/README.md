@@ -102,7 +102,7 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 - Manipulating properties in the Angular2 component class and saving to web part’s property bag
 
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

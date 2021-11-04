@@ -25,7 +25,7 @@ More details in my post here: [Using Redux Async Actions and ImmutableJS in Shar
 ![](https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

@@ -6,7 +6,7 @@ This web part lists all the public teams the current user is not yet a member of
 ![picture of the web part in action](./assets/js-public-unjoined-teams.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.7.1-green.svg)
 
 ## Applies to
 

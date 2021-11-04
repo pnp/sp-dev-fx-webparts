@@ -5,7 +5,7 @@ A singleton is a pattern that guarantees there is a single instance of an object
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

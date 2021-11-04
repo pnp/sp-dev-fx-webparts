@@ -11,7 +11,7 @@ business requirement if you need to implement CAPTCHA in SPFx webpart.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

@@ -9,7 +9,7 @@ It needs Globlal Administrator or SharePoint Online Administrator permissions in
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

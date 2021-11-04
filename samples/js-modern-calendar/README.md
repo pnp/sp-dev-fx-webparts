@@ -21,8 +21,6 @@ This is a modern web part built on the GA version of the [SharePoint Framework](
 ![SS2](./assets/14c3ec26-0121-11e7-8be8-65fbcca32b62.png)
 ![SS3](./assets/14b88f34-0121-11e7-8c91-56ecff9343e1.png)
 
-
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 

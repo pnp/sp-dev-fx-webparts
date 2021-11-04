@@ -13,7 +13,7 @@ This sample shows how to managed Microsoft Graph Open Extension in SPFx. This ap
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

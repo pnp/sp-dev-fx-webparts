@@ -8,7 +8,7 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![version](https://img.shields.io/badge/SPFx-1.11-green.svg)
 
 ## Applies to
 

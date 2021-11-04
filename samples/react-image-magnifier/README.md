@@ -21,7 +21,7 @@ This web part allow to magnify an image, displaying a resolution more detailed t
 ![site page header configurator web part](./assets/spfx-react-image-magnifier.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

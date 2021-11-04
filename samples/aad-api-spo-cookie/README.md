@@ -229,7 +229,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - manipulating DOM without using JavaScript libraries
 - chaining promises
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

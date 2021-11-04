@@ -99,7 +99,7 @@ Version|Date|Comments
 src -> angularMsGraph -> GraphHelper.ts
 
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

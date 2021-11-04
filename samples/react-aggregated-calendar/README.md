@@ -18,7 +18,7 @@ Web part is developed using below technologies
 
 ## Used SharePoint Framework Version 
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

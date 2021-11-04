@@ -51,7 +51,7 @@ Built with SharePoint Framework GA, Office Graph, React and Chart.JS
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LSTS 8 | LTS 10](https://img.shields.io/badge/Node.js-LTS%208%20%7C%20LTS%20v10-green.svg) 
+![Node.js LSTS 8 | LTS 10](https://img.shields.io/badge/Node.js-LTS%208%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -109,6 +109,8 @@ Sample Web Parts in this solution illustrate the following concepts on top of th
 ## Help
 
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-modern-charts) to see if anybody else is having the same issues.
 

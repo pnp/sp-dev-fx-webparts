@@ -33,7 +33,7 @@ Please go to https://newsapi.org to get more information.
 
 ## Used SharePoint Framework Version
 
-![1.4.1](https://img.shields.io/badge/version-1.4.1-green.svg)
+![1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
 
 ## Applies to
 

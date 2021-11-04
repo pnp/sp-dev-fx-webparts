@@ -8,7 +8,7 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 
 ## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![1.11.0](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 
 ## Applies to
 

@@ -25,7 +25,7 @@ Short summary on functionality and used technologies.
 ## Compatibility
 
 ![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
-![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -36,16 +36,20 @@ Short summary on functionality and used technologies.
 >
 > If using SPFx 1.12.1, update the SPFx and Node.js tags accordingly:
 > ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-> ![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+> ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 >
 > If using an older version of SPFx, update the SPFx and Node.js compatibility tag accordingly:
 > SPFx 1.11
 >    ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
->    ![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+>    ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+>
+> SPFx 1.10
+>    ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+>    ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 >
 > SPFx 1.4.1
 >    ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
->    ![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
+>    ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg)
 >
 > If you built this sample specifically for SharePoint 2016, or SharePoint 2019 support, update the SharePoint compatibility tag accordingly:
 > ![Works with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
@@ -127,6 +131,8 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 ## Help
 
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3AYOUR-SOLUTION-NAME) to see if anybody else is having the same issues.
 

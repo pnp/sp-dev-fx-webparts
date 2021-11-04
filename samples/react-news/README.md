@@ -25,7 +25,7 @@ Web part pulls all SharePoint News Posts that the logged in user has access to v
 ## Compatibility
 
 ![SPFx 1.12](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
 ![Workbench Hosted: Only after API permissions granted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Only after API permissions granted")
@@ -86,7 +86,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-## Support
+## Help
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 

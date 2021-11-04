@@ -89,7 +89,7 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 
 
 ## Used SharePoint Framework Version 
-![SPFx 1.8.0](https://img.shields.io/badge/version-1.8.0-green.svg)
+![SPFx 1.8.0](https://img.shields.io/badge/SPFx-1.8.0-green.svg)
 
 ## Applies to
 

@@ -27,7 +27,7 @@ The Section Theme web part illustrates how to use theme variant variables to sty
 
 ## Used SharePoint Framework Version
 
-![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 
 ## Applies to
 

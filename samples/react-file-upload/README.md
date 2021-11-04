@@ -6,7 +6,7 @@ The file upload web part allowing users to upload multiple files to a document l
 ![File upload web part built on the SharePoint Framework using React](./assets/SPFileUploadPreview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

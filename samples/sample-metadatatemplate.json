@@ -1,15 +1,15 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-TODO",
+    "name": "pnp-sp-dev-spfx-web-parts-YOUR-SAMPLE-NAME",
     "source": "pnp",
-    "title": "TODO",
-    "shortDescription": "TODO",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/TODO",
+    "title": "YOUR-SAMPLE-TITLE",
+    "shortDescription": "YOUR-SHORT-DESCRIPTION",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/YOUR-SAMPLE-NAME",
     "longDescription": [
-      "TODO"
+      "YOUR-SHORT-DESCRIPTION"
     ],
-    "creationDateTime": "2021-04-02",
-    "updateDateTime": "2021-04-02",
+    "creationDateTime": "2021-11-01",
+    "updateDateTime": "2021-11-01",
     "products": [
       "SharePoint",
       "Office"
@@ -21,23 +21,22 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.13.0"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/TODO",
-        "alt": "TODO"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/YOUR-SAMPLE-NAME/assets/YOUR-IMAGE-NAME-HERE",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "TODO",
-        "pictureUrl": "https://github.com/TODO.png",
-        "name": "TODO",
-        "twitter": "TODO"
+        "gitHubAccount": "YOUR-GITHUB-ACCOUNT",
+        "pictureUrl": "https://github.com/YOUR-GITHUB-ACCOUNT.png",
+        "name": "YOUR-NAME"
       }
     ],
     "references": [

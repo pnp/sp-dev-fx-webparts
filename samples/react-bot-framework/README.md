@@ -27,9 +27,15 @@ extensions:
 You can see this web part sample, including a sample VS 2015 bot application in practice from [PnP SPFx Special Interest Group recording](https://youtu.be/Tv03CU_PmVs?t=1329)
 where sample was demonstrated.
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1,10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
+![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to the Microsoft Bot Framework Directline API")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -58,9 +64,9 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 
 Solution|Author(s)
 --------|---------
-bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-|webpart v4| Stephan Bisser ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
-|Upgrade to SPFx 1.10.0| Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy))
+bot-framework | [Gary Pretty](https://github.com/garypretty) ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
+|webpart v4| [Stephan Bisser](https://github.com/stephanbisser) ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
+|Upgrade to SPFx 1.10.0| [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
 
 ## Version history
 
@@ -72,12 +78,6 @@ Version|Date|Comments
 1.3|February 8, 2018|Updated to SPFx 1.7
 1.4|September 4, 2019|Added BotFramework webchat v4
 1.5|April 15, 2020|Upgraded to SPFx 1.10.0
-
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -119,5 +119,26 @@ Additional settings can be set to style the web part, including:
 |[v3](./src/webparts/botFrameworkChat)| Placeholder text|
 
 Currently the [Bot Framework Webchat v3 web part](./src/webparts/botFrameworkChat) only supports plain text conversations with a bot. Other message types, such as Rich Cards and Attachments are not supported, so in order to use that, use the [Bot Framework Webchat v4 web part](./src/webparts/botFrameworkChatv4)
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-bot-framework) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-bot-framework) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-bot-framework&authors=@Harshagracy%20@stephanbisser%20@garypretty&title=react-bot-framework%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-bot-framework&authors=@Harshagracy%20@stephanbisser%20@garypretty&title=react-bot-framework%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-bot-framework&authors=@Harshagracy%20@stephanbisser%20@garypretty&title=react-bot-framework%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework" />

@@ -16,7 +16,7 @@ This is a sample web part that helps user create their avatar and save as profil
 
 ## Used SharePoint Framework Version
  
-![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 
 ## Applies to
 

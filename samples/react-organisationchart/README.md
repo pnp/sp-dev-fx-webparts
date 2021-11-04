@@ -23,7 +23,7 @@ A simple Organisation Chart web part using Office UI Fabric, React, REST API bat
 ![Organisation Chart for the current user running in local Workbench](./assets/orgchart-mock.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 

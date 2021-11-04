@@ -12,7 +12,7 @@ This is sample web part to showcase how to open webcam and take photo in SPFx we
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
 
 ## Applies to
 

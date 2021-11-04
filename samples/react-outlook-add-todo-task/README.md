@@ -44,15 +44,22 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 }
 ```
 
-## Used SharePoint Framework Version
+# Compatibility
 
-![SPFx v1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to the Microsoft Graph")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-react-outlook-add-todo-task|Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+react-outlook-add-todo-task|[Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 
@@ -62,17 +69,12 @@ Version|Date|Comments
 1.1.0|Sep 3, 2020|To Do item body coming from email body
 1.2.0|Oct 16, 2020|To Do item body included a "open in outlook" link
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
 * clone repo
-* gulp bundle --ship
-* gulp package-solution --ship
+* `gulp bundle --ship`
+* `gulp package-solution --ship`
 * deploy package to SharePoint App Catalog (check tenant deploy)
 * Using O365 CLI to configure MS Graph permissions to allow creating ToDo tasks
 ```ps
@@ -90,5 +92,26 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Outlook SPFx add-in
 * Using _async / await_ for the async calls
 * FluentUI components
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-outlook-add-todo-task) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-outlook-add-todo-task) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-outlook-add-todo-task&authors=@luismanez&title=react-outlook-add-todo-task%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-outlook-add-todo-task&authors=@luismanez&title=react-outlook-add-todo-task%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-outlook-add-todo-task&authors=@luismanez&title=react-outlook-add-todo-task%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-outlook-add-todo-task" />

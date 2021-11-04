@@ -6,7 +6,7 @@ Blog post here: https://dev.to/kayis/is-react-solid-630
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 
