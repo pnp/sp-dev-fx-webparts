@@ -150,10 +150,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                 this.properties.site
               ).then((response3) => {
                 var col: IPropertyPaneDropdownOption[] = [];
-                for (var _key in response3.value) {
+                for (var _innerKey in response3.value) {
                   col.push({
-                    key: response3.value[_key]["InternalName"],
-                    text: response3.value[_key]["Title"],
+                    key: response3.value[_innerKey]["InternalName"],
+                    text: response3.value[_innerKey]["Title"],
                   });
                 }
                 this._columnOptions = col;
@@ -453,10 +453,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
               this.properties.site
             ).then((response3) => {
               var col: IPropertyPaneDropdownOption[] = [];
-              for (var _key in response3.value) {
+              for (var _innerKey in response3.value) {
                 col.push({
-                  key: response3.value[_key]["InternalName"],
-                  text: response3.value[_key]["Title"],
+                  key: response3.value[_innerKey]["InternalName"],
+                  text: response3.value[_innerKey]["Title"],
                 });
               }
               this._columnOptions = col;
