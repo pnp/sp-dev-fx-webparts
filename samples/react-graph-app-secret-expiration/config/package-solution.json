@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-graph-app-secret-expiration-client-side-solution",
     "id": "b25d85a4-7310-408a-a263-25959b0a5b1b",
-    "version": "1.1.0.0",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "skipFeatureDeployment": true,
