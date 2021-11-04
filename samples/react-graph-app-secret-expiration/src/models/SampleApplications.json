@@ -1,0 +1,175 @@
+{
+    "applications": [
+        {
+            "appId": "bb4bcecc-d0cb-478a-9d48-1527cb7b65c0",
+            "displayName": "API Backend",
+            "keyCredentials": [],
+            "passwordCredentials": [
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2020-09-20T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "c2435363-4f50-4c14-8994-0122e77d84c9",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Postman",
+                    "endDateTime": "2021-11-25T16:25:17.375Z",
+                    "hint": "42",
+                    "keyId": "7ead14df-56e8-4a24-9f6e-6692ae17e84f",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:25:17.375Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "PnP",
+                    "endDateTime": "2022-02-04T06:58:04.525Z",
+                    "hint": "42",
+                    "keyId": "8fc28fb8-ab39-4623-bd75-6d7baf5f205d",
+                    "secretText": null,
+                    "startDateTime": "2021-02-04T06:58:17.678Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Dev",
+                    "endDateTime": "2021-12-15T16:36:58.443Z",
+                    "hint": "42",
+                    "keyId": "ef77eda1-741c-4b51-9de7-aa455831dff0",
+                    "secretText": null,
+                    "startDateTime": "2020-12-15T16:37:05.242Z"
+                }
+            ]
+        },
+        {
+            "appId": "8537b74d-1bfe-41ba-849a-eb25917d3746",
+            "displayName": "Client API",
+            "keyCredentials": [],
+            "passwordCredentials": [
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2022-09-20T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "7e6dd1c3-2366-4c5a-9a3f-d1c83f40ba11",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2021-12-05T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "7c341ab9-089e-47e1-946b-60b155c3e94c",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2021-12-01T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "24d724d8-71b3-471e-9b92-a5bd7e9bb6d6",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2021-11-20T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "4488b5fa-01a0-4191-a96e-de3a83cae203",
+                    "secretText": null,
+                    "startDateTime": "2021-11-20T15:47:46.5876682Z"
+                }
+            ]
+        },
+        {
+            "appId": "e2bfaff8-9a03-4837-886e-b110b4972a47",
+            "displayName": "Graph Console App",
+            "keyCredentials": [],
+            "passwordCredentials": [
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2021-12-28T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "7791e9be-defd-4588-9612-ea6404af1875",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2022-01-03T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "8962ac05-6a3e-4f9a-b91f-e0212cd9847b",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2022-11-18T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "85bc5551-1165-4e04-aa77-0d0c8f32ab1f",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2020-12-28T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "cd909eca-bc21-4005-b346-7e2ef47fe26b",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                }
+            ]
+        },
+        {
+            "appId": "b166b3ca-38e0-4dd5-80e4-03f51509a8eb",
+            "displayName": "PnP Modernization Scanner",
+            "keyCredentials": [
+                {
+                    "customKeyIdentifier": "SampleId",
+                    "displayName": "PnP Modernization Scanner",
+                    "endDateTime": "2031-01-11T23:00:00Z",
+                    "key": "SampleKey",
+                    "keyId": "9942dd18-a265-422f-bbfe-b8fdd866c3d3",
+                    "startDateTime": "2021-01-11T23:00:00Z",
+                    "type": "AsymmetricX509Cert",
+                    "usage": "Verify"
+                }
+            ],
+            "passwordCredentials": []
+        },
+        {
+            "appId": "14ce9f15-41ed-446b-8733-a0eeb1379b38",
+            "displayName": "Bot - OfficeDev",
+            "keyCredentials": [],
+            "passwordCredentials": [
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2023-09-20T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "cb8cf8ec-630b-4da6-a578-4d27742d069c",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                },
+                {
+                    "customKeyIdentifier": null,
+                    "displayName": "Password friendly name",
+                    "endDateTime": "2024-09-20T15:47:46.5876682Z",
+                    "hint": "42",
+                    "keyId": "2bfdc738-db27-4b3d-898d-ce3f57ab81eb",
+                    "secretText": null,
+                    "startDateTime": "2021-09-20T15:47:46.5876682Z"
+                }
+            ]
+        }
+    ]
+}

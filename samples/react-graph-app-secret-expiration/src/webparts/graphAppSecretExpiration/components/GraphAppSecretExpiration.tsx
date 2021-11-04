@@ -5,9 +5,10 @@ import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp
 import { IApplications, IApplication, IFormattedApplication } from '../../../models/IApplication';
 import { IGraphAppSecretExpirationState } from './GraphAppSecretExpirationState';
 import * as moment from 'moment';
-import { DefaultButton, Spinner, mergeStyles, SearchBox } from '@fluentui/react';
+import { Spinner, mergeStyles, SearchBox } from '@fluentui/react';
 import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
 import * as strings from 'GraphAppSecretExpirationWebPartStrings';
+import sampleApplications from '../../../models/SampleApplications.json';
 
 const stackItemHidden = mergeStyles({
   display: 'none',
@@ -16,7 +17,8 @@ const _viewFields: IViewField[] = [
   {
     name: "applicationId",
     displayName: "Application ID",
-    minWidth: 250
+    minWidth: 250,
+    linkPropertyName: "linkTitle"
   },
   {
     name: "displayName",
@@ -71,7 +73,12 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
 
 
   public componentDidMount(): void {
-    this._getApplications();
+    if(!this.props.displaySampleData){
+      this._getApplications();
+    }else{
+      this._propertiesMapping(sampleApplications.applications);
+    }
+
   }
 
   private _getApplications(): IApplication[] {
@@ -126,9 +133,16 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
             displayName: app.displayName,
             type: "Secret",
             expirationDate: (moment(pswd.endDateTime)).format('DD-MMM-YYYY'),
-            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
+            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0,
+            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/"+app.appId
           };
-          displayedApplication.push(formatedApp);
+          if (this.props.expiringSoon){
+            if(daysBeforeExpiration < 30){
+              displayedApplication.push(formatedApp);
+            }
+          } else {
+            displayedApplication.push(formatedApp);
+          }        
         });
         app.keyCredentials.forEach(keyCred => {
           let daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
@@ -137,18 +151,27 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
             displayName: app.displayName,
             type: "Certificate",
             expirationDate: (moment(keyCred.endDateTime)).format('DD-MMM-YYYY'),
-            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0
+            daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0,
+            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/"+app.appId
           };
-          displayedApplication.push(formatedApp);
+          if (this.props.expiringSoon){
+            if(daysBeforeExpiration < 30){
+              displayedApplication.push(formatedApp);
+            }
+          } else {
+            displayedApplication.push(formatedApp);
+          }   
         });
       });
       this.setState({
         applications: displayedApplication,
-        filteredApplications: displayedApplication
+        filteredApplications: displayedApplication,
+        loading: false
       });
     } catch (error) {
       console.log(error);
     }
+    this._groupView();
   }
 
   private _getPage(selectedPage: number) {
@@ -194,10 +217,10 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
   }
 
   private _groupView = () => {
-    if (this.state.groupByFields.length === 0) {
+    if (this.props.groupByColumn !== "none") {
       let groupByFields: IGrouping[] = [
         {
-          name: "applicationId",
+          name: this.props.groupByColumn,
           order: GroupOrder.ascending
         }
       ];
@@ -218,14 +241,13 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
       <div className={styles.graphAppSecretExpiration}>
         <div className={styles.container}>
           <br />
-          <p className={styles.title}>Application list :</p>
+          <p className={styles.title}>Certificates and secrets :</p>
           <div className={this.state.loading ? "" : stackItemHidden}>
             <Spinner label="Loading..." ariaLive="assertive" labelPosition="left" />
             <br />
           </div>
           <div className={this.state.loading ? stackItemHidden : ""}>
-            <DefaultButton text={this.state.groupByFields.length === 0 ? "Group by App ID" : "Ungroup"} onClick={this._groupView} />
-            <SearchBox placeholder="Search" onChange={(e, text) => this._filterApplication(text, false)} onClear={() => this._filterApplication("", true)} value={this.state.filterValue} />
+            <SearchBox placeholder="Search" onChange={(e, text) => this._filterApplication(text, true)} onClear={() => this._filterApplication("", false)} value={this.state.filterValue} />
             <ListView
               items={this.state.filteredApplications.slice(this.state.page === 1 || this.state.filterValue !== "" ? 0 : this.state.page * 10 - 10, this.state.page * 10)}
               viewFields={_viewFields}
