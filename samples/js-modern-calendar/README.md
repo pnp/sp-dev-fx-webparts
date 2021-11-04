@@ -15,7 +15,7 @@ extensions:
 
 ## Summary
 
-This is a modern web part built on the GA version of the [SharePoint Framework](https://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview) demonstrating how to build a custom web part with a calendar capabilities in it.  
+This is a modern web part built using the [SharePoint Framework](https://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview) demonstrating how to build a custom web part with a calendar capabilities in it.  
 
 ![SS1](./assets/14c4333e-0121-11e7-9bf1-3117651222d3.png)
 ![SS2](./assets/14c3ec26-0121-11e7-8be8-65fbcca32b62.png)
