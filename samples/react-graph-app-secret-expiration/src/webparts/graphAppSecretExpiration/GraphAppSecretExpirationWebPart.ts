@@ -24,10 +24,10 @@ export interface IGraphAppSecretExpirationWebPartProps {
 export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPart<IGraphAppSecretExpirationWebPartProps> {
   private graphClient: MSGraphClient;
   private dropdownOptions: IPropertyPaneDropdownOption[] = [
-    {key:"none",text:"None"},
-    {key:"applicationId",text:"Application ID"},
-    {key:"type",text:"Type"}];  
-  
+    { key: "none", text: "None" },
+    { key: "applicationId", text: "Application ID" },
+    { key: "type", text: "Type" }];
+
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
@@ -72,28 +72,28 @@ export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPa
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneDropdown('groupByColumn', {  
-                  label: strings.DefaultGroupColumnFieldLabel,  
+                PropertyPaneDropdown('groupByColumn', {
+                  label: strings.DefaultGroupColumnFieldLabel,
                   options: this.dropdownOptions,
                   selectedKey: "none"
-              }),
-              PropertyPaneToggle('expiringSoon', {  
-                label: strings.DisplayOnlySecretsFieldLabel,
-                onText:"Yes",
-                offText:"No"
-                
-            })
+                }),
+                PropertyPaneToggle('expiringSoon', {
+                  label: strings.DisplayOnlySecretsFieldLabel,
+                  onText: "Yes",
+                  offText: "No"
+
+                })
               ]
             },
             {
               groupName: strings.OtherGroupName,
               groupFields: [
-                PropertyPaneToggle('displaySampleData', {  
+                PropertyPaneToggle('displaySampleData', {
                   label: strings.DisplaySampleDataFieldLabel,
-                  onText:"Yes",
-                  offText:"No"
-                  
-              })
+                  onText: "Yes",
+                  offText: "No"
+
+                })
               ]
             }
           ]

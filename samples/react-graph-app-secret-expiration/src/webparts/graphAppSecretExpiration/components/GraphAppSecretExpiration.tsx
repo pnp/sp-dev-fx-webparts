@@ -73,9 +73,9 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
 
 
   public componentDidMount(): void {
-    if(!this.props.displaySampleData){
+    if (!this.props.displaySampleData) {
       this._getApplications();
-    }else{
+    } else {
       this._propertiesMapping(sampleApplications.applications);
     }
 
@@ -134,15 +134,15 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
             type: "Secret",
             expirationDate: (moment(pswd.endDateTime)).format('DD-MMM-YYYY'),
             daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0,
-            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/"+app.appId
+            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/" + app.appId
           };
-          if (this.props.expiringSoon){
-            if(daysBeforeExpiration < 30){
+          if (this.props.expiringSoon) {
+            if (daysBeforeExpiration < 30) {
               displayedApplication.push(formatedApp);
             }
           } else {
             displayedApplication.push(formatedApp);
-          }        
+          }
         });
         app.keyCredentials.forEach(keyCred => {
           let daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
@@ -152,15 +152,15 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
             type: "Certificate",
             expirationDate: (moment(keyCred.endDateTime)).format('DD-MMM-YYYY'),
             daysLeft: daysBeforeExpiration > 0 ? daysBeforeExpiration : 0,
-            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/"+app.appId
+            linkTitle: "https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Credentials/appId/" + app.appId
           };
-          if (this.props.expiringSoon){
-            if(daysBeforeExpiration < 30){
+          if (this.props.expiringSoon) {
+            if (daysBeforeExpiration < 30) {
               displayedApplication.push(formatedApp);
             }
           } else {
             displayedApplication.push(formatedApp);
-          }   
+          }
         });
       });
       this.setState({
