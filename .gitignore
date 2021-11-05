@@ -35,3 +35,5 @@ obj
 packages/
 samples/react-teams-send-notification/MyNotes.md
 samples/react-teams-send-notification/teams/teams.zip
+samples/react-find-parker/release/component-dependency-audit/react-find-parker.json
+samples/react-find-parker/release/webpack-stats/react-find-parker.stats.json

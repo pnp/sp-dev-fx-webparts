@@ -33,6 +33,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|September 17, 2021|Initial release
 1.1|October 10, 2021|Add pagination
+1.2|November 04, 2021|Add group views
 
 
 ## Minimal Path to Awesome
