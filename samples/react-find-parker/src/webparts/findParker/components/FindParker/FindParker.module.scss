@@ -1,0 +1,41 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "../../../styles/Common.module.scss";
+
+.findParker {
+  .container {
+    background-color: $neutralLight;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .row {
+      @include ms-Grid-row;
+
+      .column {
+        @include ms-Grid-col;
+        @include ms-lg10;
+        @include ms-xl8;
+        @include ms-xlPush2;
+        @include ms-lgPush1;
+
+        .title {
+          @include ms-font-xxl;
+          text-align: center;
+        }
+
+        .label {
+          @include ms-font-m;
+          text-align: justify;
+          margin-top: 0px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+.parkersContener {
+  .parker {
+      position: absolute;
+      z-index: 1000;
+  }
+}
