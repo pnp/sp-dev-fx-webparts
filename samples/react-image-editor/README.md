@@ -36,7 +36,6 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 
 ![react-image-editor in action](assets/react-image-editor.gif)
 
-
 ## Compatibility
 
 ![SPFx 1.4.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg)
@@ -95,6 +94,10 @@ Version|Date|Comments
 * PNP WebPartTitle control  (toggle Show/Hide in property pane)
 * PNP FilePicker control to pick Images (is mocked on local workbench)
 * Office UI Fabric
+
+## Video
+
+[![Building an advanced SPFx Image Editor web part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=aNvvFz8Ab5Y "Building an advanced SPFx Image Editor web part")
 
 
 ## References
