@@ -58,6 +58,8 @@ Short summary on functionality and used technologies.
 > ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to XXX")
 > ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 >
+> Otherwise:
+> > ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 >
 > If you specifically built and tested this web part to work with Teams, use this for the Teams compatibility tag:
 >    ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")

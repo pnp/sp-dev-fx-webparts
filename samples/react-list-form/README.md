@@ -89,6 +89,10 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Integrating drag and drop to provide better user experience for configuring web parts visually.
 - Using custom drop-down property editors in the property pane.
 
+## Video
+
+[![Building a list editing web part with React](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=6HbtHVZ-3Js "Building a list editing web part with React")
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

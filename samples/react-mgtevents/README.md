@@ -4,8 +4,6 @@ We do not support samples, but this communityWe do not support samples, but this
 
 This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls
 
-## ScreenShots
-
  ![mgtEvents](./assets/mgtevents.jpg)
  
 ## Compatibility
@@ -46,6 +44,9 @@ If you have not previously granted the required Microsoft Graph permissions, you
 - Install the `.sppkg` file (under `.\sharepoint\solution`) to the SP app catalog
 - Approve the API permissions in the new SP admin center
 
+## Video
+
+[![Building personal events web part with SPFx and Microsoft Graph Toolkit](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=St9QvaK_HUU "Building personal events web part with SPFx and Microsoft Graph Toolkit")
 
 ## Disclaimer
 

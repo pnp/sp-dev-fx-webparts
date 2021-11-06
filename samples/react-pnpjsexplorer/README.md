@@ -83,10 +83,9 @@ gulp package-solution --ship
 | 2.1.0   | October 05, 2020 | Update to SPFx 1.11.0 |
 | 2.1.1   | October 30, 2020 | Fixed button formatting issues |
 
-## Disclaimer
+## Video
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
+[![Introduction to PnPjs Tester Web Part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=mdgkyxeayY0 "Introduction to PnPjs Tester Web Part")
 
 ## Disclaimer
 

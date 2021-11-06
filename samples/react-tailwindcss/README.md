@@ -85,6 +85,9 @@ Version|Date|Comments
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
+## Video
+
+[![Integrating Tailwind CSS framework into a SPFx React project for advance User Experience](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=_gQkauERWh0 "Integrating Tailwind CSS framework into a SPFx React project for advance User Experience")
 
 ## Disclaimer
 
@@ -95,6 +98,11 @@ Version|Date|Comments
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-tailwindcss) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-tailwindcss) and see what the community is saying.
+
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-tailwindcss&authors=@fabiofranzini&title=react-tailwindcss%20-%20).
 

@@ -71,6 +71,11 @@ Version|Date|Comments
 - Add to AppCatalog and deploy
 - go to SharePoint Admin Center and Approve required API Permissions
 
+## Video
+
+[![React web part to group documents based on metadata](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=6vqjRTcWd4M "React web part to group documents based on metadata")
+
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
