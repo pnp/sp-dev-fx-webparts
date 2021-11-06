@@ -110,10 +110,14 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* From your command line, change your current directory to the directory containing this sample (`react-teams-message`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`
 
+## Video
+
+[![Sending a Teams Message using Microsoft Graph from a SPFx web part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=lzOcAL_6A7c "Sending a Teams Message using Microsoft Graph from a SPFx web part")
 
 ## Disclaimer
 
