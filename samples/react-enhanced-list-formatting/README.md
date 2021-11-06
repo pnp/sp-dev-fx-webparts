@@ -45,8 +45,8 @@ To use this web part, you must be familiar with SharePoint list formatting and C
 
 Solution|Author(s)
 --------|---------
-react-enhanced-list-formatting | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
-react-enhanced-list-formatting | David Warner II ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+react-enhanced-list-formatting | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
+react-enhanced-list-formatting | [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
 
 ## Version history
 
@@ -153,26 +153,26 @@ The sample has a disclaimer that is inspired by that annoying disclaimer you see
 
 ```bash
 git clone the repo
+cd samples/react-enhanced-list-formatting
 npm i
-npm i -g gulp
-gulp
+gulp build
 ```
 
 This package produces the following:
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+* `lib/*` - intermediate-stage commonjs build artifacts
+* `dist/*` - the bundled script, along with other resources
+* `deploy/*` - all resources which should be uploaded to a CDN.
 
 ### Build options
 
-* gulp clean - Cleans the solution
-* gulp test - Runs unit tests
-* gulp serve - Runs the solution for testing purposes
-* gulp bundle - Bundles the solution
-* gulp package-solution - Packages the solution
-* gulp dev -- Builds a clean instance of the solution for development purposes
-* gulp dist -- Builds a clean instance of the solution for distribution purposes
+* `gulp clean` - Cleans the solution
+* `gulp test` - Runs unit tests
+* `gulp serve` - Runs the solution for testing purposes
+* `gulp bundle` - Bundles the solution
+* `gulp package-solution` - Packages the solution
+* `gulp dev` -- Builds a clean instance of the solution for development purposes
+* `gulp dist` -- Builds a clean instance of the solution for distribution purposes
 
 ## Video
 
