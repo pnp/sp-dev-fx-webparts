@@ -1,4 +1,4 @@
-# "CSS in JS" with SharePoint Framework and TypeStyle
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# "CSS in JS" with SharePoint Framework and TypeStyle
 
 ## Summary
 

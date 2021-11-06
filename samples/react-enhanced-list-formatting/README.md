@@ -174,6 +174,10 @@ This package produces the following:
 * gulp dev -- Builds a clean instance of the solution for development purposes
 * gulp dist -- Builds a clean instance of the solution for distribution purposes
 
+## Video
+
+[![List Formatting Enhanced Web Part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=B7p7_lVc8kI "List Formatting Enhanced Web Part")
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

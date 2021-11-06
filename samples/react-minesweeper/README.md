@@ -1,4 +1,4 @@
-# Minesweeper
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Minesweeper
 
 ## Summary
 

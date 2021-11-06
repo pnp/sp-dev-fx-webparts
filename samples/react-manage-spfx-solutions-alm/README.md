@@ -1,4 +1,4 @@
-# Manage SPFx solution using ALM APIs
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Manage SPFx solution using ALM APIs
 
 ## Summary
 

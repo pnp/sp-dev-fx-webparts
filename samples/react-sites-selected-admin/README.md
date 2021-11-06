@@ -55,12 +55,6 @@ Version|Date|Comments
 1.0|February 19, 2021|Initial release
 1.1|March 8, 2021|Switch to functional components. Re-factor
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 - Add an app in Azure AD, or for an existing app add the Sites.Selected Microsoft Graph api permission
@@ -70,8 +64,8 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **gulp bundle --ship**
-  - **gulp package-solution --ship**
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 - Add the `.sppkg` package to your app catalog
 - Approve the api access requests
 
@@ -88,7 +82,10 @@ Version|Date|Comments
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-  
+
+## Video
+
+[![Using a web part to control which Sites have been grated permissions in Azure AD application](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=afwLIS77h8Y "Using a web part to control which Sites have been grated permissions in Azure AD application")
   
 ## Disclaimer
 
@@ -99,6 +96,10 @@ Version|Date|Comments
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-content-query-online) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-content-query-online) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-content-query-online&authors=@fthorild&title=react-content-query-online%20-%20).
 

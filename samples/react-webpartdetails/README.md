@@ -1,4 +1,4 @@
-# Display Web Part Details
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Display Web Part Details
 
 ## Summary
 

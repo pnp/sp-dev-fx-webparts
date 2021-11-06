@@ -1,4 +1,4 @@
-# Remote Event Receiver Manager
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Remote Event Receiver Manager
 
 ## Summary
 
@@ -50,6 +50,11 @@ Version|Date|Comments
 
 - See, add, and delete remote event receivers from a list
 
+## Video
+
+[![Remote Event Receiver Manager solution in SPFx for managing list events](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=nYKXmXkuaKc "Remote Event Receiver Manager solution in SPFx for managing list events")
+
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -59,6 +64,10 @@ Version|Date|Comments
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-remote-event-receiver-manager) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-remote-event-receiver-manager) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-remote-event-receiver-manager&authors=@Tanddant&title=react-remote-event-receiver-manager%20-%20).
 

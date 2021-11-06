@@ -25,17 +25,18 @@ Usage of following Technologies:
 - Usage of  [adaptive cards](https://adaptivecards.io/)
 - Microsoft Teams integration with following option [TeamsTab, TeamsPersonalApp]
 
-![image](./Assets/FollowDocumentSample1.gif)
+![image](./assets/FollowDocumentSample1.gif)
+
 
 ## Compatibility
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
-![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
-![Workbench Local](https://img.shields.io/badge/Workbench-Local-yellow.svg)
-
-
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs access to OneDrive documents")
+![Hosted Workbench Compatible (requires permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(requires%20permissions)-yellow.svg)
 
 ## Applies to
 
@@ -84,10 +85,10 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
-  - **gulp bundle --ship**
-  - **gulp package-solution --ship**
+  - `npm install`
+  - `gulp serve`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
 
 ## Features
@@ -100,18 +101,31 @@ This extension illustrates the following concepts:
 - Simple UX to manage **Followed** documents and report list followed documents across Tenant and access properties and Preview of Document.
 - Option to unfollow documents individually. 
 - Integration with other services of Office 365 such us (Preview, Microsoft Team Messages).  
+
+## Video
+
+[![Follow Documents in Modern Workspace with SPFx](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=Wx7nqlP3WQU "Follow Documents in Modern Workspace with SPFx")
+
+
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
+
 ## Help
 
-We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-follow-document-WebPart&authors=@aaclage&title=react-follow-document-WebPart%20-%20).
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-follow-document-WebPart&authors=@aaclage&title=react-follow-document-WebPart%20-%20).
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-follow-document) to see if anybody else is having the same issues.
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-follow-document-WebPart&authors=@aaclage&title=react-follow-document-WebPart%20-%20).
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-follow-document) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-follow-document&authors=@aaclage&title=react-follow-document%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-follow-document&authors=@aaclage&title=react-follow-document%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-follow-document&authors=@aaclage&title=react-follow-document%20-%20).
 
 ## References
 

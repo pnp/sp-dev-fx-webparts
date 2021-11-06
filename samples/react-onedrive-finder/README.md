@@ -99,7 +99,6 @@ This extension illustrates the following concepts:
 
 [![Using Microsoft Graph Toolkit to easily access files in Sites and in OneDrive](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=Xgna1iH55k8 "Using Microsoft Graph Toolkit to easily access files in Sites and in OneDrive")
 
-
 ## Help
 
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.

@@ -1,4 +1,4 @@
-# Dev-Radar for SharePoint Online
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Dev-Radar for SharePoint Online
 
 ## Summary
 

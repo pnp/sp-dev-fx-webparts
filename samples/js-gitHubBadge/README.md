@@ -1,4 +1,4 @@
-# GitHub Badge (JavaScript version)
+We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# GitHub Badge (JavaScript version)
 
 ## Summary
 Displays information from GitHub for a specified user.
