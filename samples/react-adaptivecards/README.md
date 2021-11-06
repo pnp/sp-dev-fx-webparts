@@ -49,8 +49,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
-* in the command line run:
-  * `cd samples/react-adaptivecards`
+* From your command line, change to the folder for this sample (`react-adaptivecards`)
+* In the command line run:
   * `npm install`
   * `gulp serve`
 
