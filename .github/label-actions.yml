@@ -36,6 +36,20 @@ status:wrong-repo:
   # Close the issue
   close: true
 
+# Actions taken when the `wrong-author` label is added to issues 
+status:wrong-author:
+  # Post a comment
+  comment: >
+    Thank you for your submission, but you appear to have tagged the wrong author.
+    
+    To help increase your chances of getting assistance from the original authors of the sample, you should make sure to @mention the actual authors -- not the repository maintainers.
+
+    Please note that the sample authors will not get notified about this issue unless you update this issue accordingly.
+    
+  # Close the issue
+  close: false
+
+
 # Dealing with wrong versions of Node issues
 status:node-compatibility:
   # Post a comment

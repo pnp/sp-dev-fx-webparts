@@ -137,6 +137,7 @@ As tempting as it may be, don't just use images to describe the steps. Let's be 
 -->
 
 * Clone this repository
+* From the command line, change your current directory to this sample's directory (`YOUR-SOLUTION-NAME`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`

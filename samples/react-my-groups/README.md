@@ -61,6 +61,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* From your command line, change to this sample's folder (`react-my-groups`, under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp bundle --ship`
@@ -73,6 +74,10 @@ Version|Date|Comments
 ## Features
 
 This web part lists the current user's Office 365 groups with links to the groups SharePoint site.
+
+## Video
+
+[![Building My Groups web part with SharePoint Framework and Microsoft Graph](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=jkpbXlUWhlg "Building My Groups web part with SharePoint Framework and Microsoft Graph")
 
 
 ## Disclaimer
