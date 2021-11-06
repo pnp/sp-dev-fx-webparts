@@ -72,13 +72,14 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* clone repo
+* Clone this repository
+* From your command line, change your current directory to the directory containing this sample (`react-outlook-add-todo-task`, located under `samples`)
 * `gulp bundle --ship`
 * `gulp package-solution --ship`
 * deploy package to SharePoint App Catalog (check tenant deploy)
-* Using O365 CLI to configure MS Graph permissions to allow creating ToDo tasks
+* Using [M365 CLI](https://pnp.github.io/cli-microsoft365/) to configure MS Graph permissions to allow creating ToDo tasks
 ```ps
-spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.ReadWrite"
+m365 spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.ReadWrite"
 ```
 
 * deploy spfx solution as Outlook add-in following instructions here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
@@ -92,6 +93,10 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Outlook SPFx add-in
 * Using _async / await_ for the async calls
 * FluentUI components
+
+## Video
+
+[![Create a To-Do task with Microsoft Graph from an email with SPFx Outlook Add-In](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=szu4j46ehOw "Create a To-Do task with Microsoft Graph from an email with SPFx Outlook Add-In")
 
 
 ## Disclaimer
