@@ -15,14 +15,12 @@ Uses [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cogni
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to the storage entity, which is only available on hosted pages")
-![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
-
+![Hosted Workbench (configuration required)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(configuration%20required)-yellow.svg "You'll need a key and endpoint to Azure Cognitive Services in the entity storage")
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-
 
 ## Prerequisites
 
@@ -73,12 +71,6 @@ Version|Date|Comments
 1.0|October 15, 2019|Initial release
 1.1|August 12, 2020| Upgraded to SPFx 1.11; Added placeholder, markdown control, and property pane controls for API key and endpoint
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 * Clone this repository
@@ -95,5 +87,32 @@ This web part demonstrates the following concepts:
 * Using a web cam to capture images
 * Retrieving settings from the SharePoint Online tenant properties
 * Using Azure Cognitive Services
+
+## Video
+
+[![Photo ID Web Part using Azure Cognitive Services](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=FQITfL_EfaU "Photo ID Web Part using Azure Cognitive Services")
+-->
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-smart-profile-photo-editor) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-smart-profile-photo-editor) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-smart-profile-photo-editor&authors=@hugoabernier&title=react-smart-profile-photo-editor%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-smart-profile-photo-editor&authors=@hugoabernier&title=react-smart-profile-photo-editor%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-smart-profile-photo-editor&authors=@hugoabernier&title=react-smart-profile-photo-editor%20-%20).
+
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-smart-profile-photo-editor" />

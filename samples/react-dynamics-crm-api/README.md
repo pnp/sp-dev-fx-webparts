@@ -7,7 +7,6 @@ This sample shows how to consume Dynamics CRM API using AadTokenProvider class.
 
 ## Compatibility
 
-
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -62,7 +61,9 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 > **NOTE:** This sample will not work in the local workbench.
 
+## Video
 
+[![Calling Dynamics 365 CRM APIs from SharePoint](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=VXzYc6cfjuI "Calling Dynamics 365 CRM APIs from SharePoint")
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
