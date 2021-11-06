@@ -20,7 +20,7 @@
 
 **1) Create or use a list for World Clocks. The List should have the following Columns:**
 
-- Title, GMTValues, ListOrder, IsActive.
+- `Title`, `GMTValues`, `ListOrder`, `IsActive`.
 
 ![Create list for use with the World Clocks](./assets/WorldClockList.png)
 
@@ -66,12 +66,17 @@ Please create the list as described above
 ## Minimal Path to Awesome
 
 - Clone or download this repository
+- From your command line, change your current directory to the directory containing this sample (`react-world-clocks`, located under `samples`)
 - Run in command line:
   - `npm install` to install the npm dependencies
   - `gulp serve` to display in Developer Workbench (recommend using your tenant workbench so you can test with real lists within your site)
 - To package and deploy:
   - Use `gulp bundle --ship` & `gulp package-solution --ship`
   - Add the `.sppkg` to your SharePoint App Catalog
+
+## Video
+
+[![Implementing a World Clocks web part with SharePoint Framework](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=91uQHUgpKo8 "Implementing a World Clocks web part with SharePoint Framework")
 
 
 ## Disclaimer
@@ -80,7 +85,13 @@ Please create the list as described above
 
 ## Help
 
-We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-world-clocks) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-world-clocks) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-world-clocks&authors=@jyasir&title=react-world-clocks%20-%20).
 
