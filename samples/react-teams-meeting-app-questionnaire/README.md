@@ -49,11 +49,16 @@ spfx-react-teams-meeting-app-questionnaire
 
 ## Compatibility
 
+## Compatibility
+
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v10 | LTS 12.x](https://img.shields.io/badge/Node.js-LTS%2010%20%7C%20LTS%20.12.x-green.svg)
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
-![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
-![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![Microsoft Teams](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Incompatible-red.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs Teams to work")
+![Hosted Workbench Incmpatible](https://img.shields.io/badge/Hosted%20Workbench-Incompatible-red.svg)
 
 ## Applies to
 
@@ -116,7 +121,7 @@ MeetingID|MeetingID|Single line of text|N|
 
 Solution|Author(s)
 --------|---------
-spfx-react-teams-meeting-app-questionnaire|[Nanddeep Nachan](https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
+spfx-react-teams-meeting-app-questionnaire|[Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
 spfx-react-teams-meeting-app-questionnaire|[Ravi Kulkarni](https://www.linkedin.com/in/ravi-kulkarni-a5381723/) (SharePoint Consultant, [@RaviKul16a87](https://twitter.com/RaviKul16a87))
 spfx-react-teams-meeting-app-questionnaire|[Smita Nachan](https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan))
 
@@ -126,10 +131,6 @@ Version|Date|Comments
 -------|----|--------
 2.0.0|September 28, 2021|Upgraded to SPFx v1.12.1 (Nanddeep Nachan, Smita Nachan)
 1.0.0|March 22, 2021|Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Features
 
@@ -141,6 +142,31 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Using PnP/PnPjs
 - Creating extensible services
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
+
+## Video
+
+[![Microsoft Teams Meeting Questionnaire App with SharePoint Framework](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=gDcT7yu6UmU "Microsoft Teams Meeting Questionnaire App with SharePoint Framework")
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-teams-meeting-app-questionnaire) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-teams-meeting-app-questionnaire) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-teams-meeting-app-questionnaire&authors=@nanddeepn&title=react-teams-meeting-app-questionnaire%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-teams-meeting-app-questionnaire&authors=@nanddeepn&title=react-teams-meeting-app-questionnaire%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-teams-meeting-app-questionnaire&authors=@nanddeepn&title=react-teams-meeting-app-questionnaire%20-%20).
+
 
 ## References
 
