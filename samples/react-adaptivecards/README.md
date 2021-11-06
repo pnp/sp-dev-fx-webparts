@@ -50,8 +50,11 @@ Version|Date|Comments
 
 * Clone this repository
 * in the command line run:
+  * `cd samples/react-adaptivecards`
   * `npm install`
   * `gulp serve`
+
+> Don't want to clone the entire repository? Try downloading this folder [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards). Unzip the file, and continue with the command-line instructions.
 
 ## Features
 
