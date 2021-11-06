@@ -6,9 +6,9 @@ This is sample web part to showcase how to open webcam and take photo in SPFx we
 
 * [Please refer this link on How to build this from Scratch](https://www.c-sharpcorner.com/article/how-to-open-webmobile-camera-and-take-photo-from-spfx-webpart/)
 
-![Options Available](screens/3.png?raw=true "Options Available")
-![Opening webcam](screens/4.png?raw=true "Opening webcam")
-![Taking photo](screens/4.png?raw=true "Taking photo")
+![Options Available](./assets/3.png?raw=true "Options Available")
+![Opening webcam](./assets/4.png?raw=true "Opening webcam")
+![Taking photo](./assets/5.png?raw=true "Taking photo")
 
 ## Compatibility
 
