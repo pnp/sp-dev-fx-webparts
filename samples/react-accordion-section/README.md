@@ -77,6 +77,9 @@ Version|Date|Comments
   - Use `gulp bundle --ship` & `gulp package-solution --ship`
   - Add the `.sppkg` to your SharePoint App Catalog
 
+## Video
+
+[![Building an accessible Accordion web part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=-oKhmh-g3z8 "Building an accessible Accordion web part")
 
 ## Disclaimer
 
