@@ -71,6 +71,10 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Currently, this web part supports 2-level cascading. So there is scope to enhance this such that it supports more levels of cascading dynamically.
 * Currently, this web part reads latitude and longitude from description of the city terms. If there is a way of getting these from the custom properties of the city terms, then that needs to be implemented.
 
+## Video
+
+[![Cascading managed metadata using Microsoft Graph and SharePoint Framework](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=lk47ijo_H6Y "Cascading managed metadata using Microsoft Graph and SharePoint Framework")
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

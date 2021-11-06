@@ -9,8 +9,6 @@ Sample web part showing how to embed a Power App that resizes, adapts to themes,
 It also resizes the app to fit the web part dimension:
 ![Enhanced Power Apps reszing in Action](./assets/resize.gif)
 
-## Used SharePoint Framework Version
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
@@ -43,11 +41,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|July 27, 2020|Initial release
 1.1|August 15, 2020|Added improved resize event handler
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -120,6 +113,9 @@ Note that the web part always sends the current page's locale to Power Apps via 
 
 This sample includes a `PropertyPaneHTML` control that you can use to embed custom HTML in a property pane. I use it to highlight syntax using the `<pre>` tag and to make text bold.
 
+## Video
+
+[![Enhanced Power App Web Part - Cool Power App integration scenarios with SharePoint](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=L_ArTxSQKgo "Enhanced Power App Web Part - Cool Power App integration scenarios with SharePoint")
 
 ## Disclaimer
 
@@ -127,9 +123,13 @@ This sample includes a `PropertyPaneHTML` control that you can use to embed cust
 
 ## Help
 
-We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-enhanced-powerapps) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-enhanced-powerapps) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-enhanced-powerapps&authors=@hugoabernier&title=react-enhanced-powerapps%20-%20).
 
