@@ -41,6 +41,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* From your command line, change your current directory to the directory containing this sample (`react-minesweeper`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`
@@ -56,6 +57,9 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 * [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/)
 
+## Video
+
+[![Creating a Minesweeper game in React with SPFx](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=b7lZWR9xcVM "Creating a Minesweeper game in React with SPFx")
 
 ## Disclaimer
 
