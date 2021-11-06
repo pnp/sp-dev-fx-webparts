@@ -1,6 +1,6 @@
-## All Microsoft 365 Groups and Teams with SPFx
+# All Microsoft 365 Groups and Teams with SPFx
 
-### Summary
+## Summary
 Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.
 1. The Microsoft Groups view has filter option for private or public groups and can switch between viewing all groups or just my groups. 
  - Group Name (hover for group description)
@@ -54,7 +54,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](ht
 | 1.1.0   | October 8, 2021 | Upgraded to SPFx 1.12.1 for higher compatibility and added Teams Tab deployment support. |
 
 
-# Prerequisites
+## Prerequisites
 
 - Administrative access to Azure AD of Microsoft 365 tenant
 - SharePoint Online tenant
@@ -70,7 +70,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](ht
     }]
 ```
 
-# Minimal Path to Awesome
+## Minimal Path to Awesome
 
 - Clone this repo
 - Navigate to the folder with current sample
@@ -84,7 +84,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](ht
 - Open hosted workbench, i.e. `https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
 - Search and add `O365 Groups Manager` web part to see it in action
 
-# Features
+## Features
 
 This project contains sample client-side web part built on the SharePoint Framework illustrating possibilities to quickly gain access to features in Microsoft 365 Groups and Teams using React and MS Graph.
 
@@ -97,14 +97,23 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
 - Passing web part properties to React components 
 
-# Disclaimer
+## Video
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+[![Building a React groups and teams web part for aggregating detailed information for end users](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=MakgCyOq9tk "Building a React groups and teams web part for aggregating detailed information for end users")
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Help
 
-We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-groups-teams) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-groups-teams) and see what the community is saying.
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
 
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).

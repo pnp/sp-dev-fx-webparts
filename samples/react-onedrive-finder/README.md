@@ -9,19 +9,19 @@ This sample access drives from OneDrive and navigate between his content using *
 **[File](https://docs.microsoft.com/en-us/graph/toolkit/components/file)** control allow to File component is used to represent an individual file/folder from OneDrive or SharePoint base on graph querys or parameters ids.
 
 Below a draw resuming the custom query's made and what control uses to retrieve associated folders and files from different locations.
-![Demo](./Assets/OneDrivefinderSample4.PNG)
+![Demo](./assets/OneDrivefinderSample4.PNG)
 
 ### Retrieve Sites with drives associate
 
-![Demo](./Assets/OneDrivefinderSample1.PNG)
+![Demo](./assets/OneDrivefinderSample1.PNG)
 
 ### Navigate between folders and Breadcrumb
 
-![Demo](./Assets/OneDrivefinderSample2.PNG)
+![Demo](./assets/OneDrivefinderSample2.PNG)
 
 ### Navigate, search Files and filter extensions
 
-![Demo](./Assets/OneDrivefinderSample3.gif)
+![Demo](./assets/OneDrivefinderSample3.gif)
 
 
 ## Compatibility
@@ -95,13 +95,20 @@ This extension illustrates the following concepts:
 - **[FileList](https://docs.microsoft.com/en-us/graph/toolkit/components/file-list)** New mgt-file-list control.
 - **[File](https://docs.microsoft.com/en-us/graph/toolkit/components/file)** New mgt-file control.
 
-## Disclaimer
+## Video
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+[![Using Microsoft Graph Toolkit to easily access files in Sites and in OneDrive](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=Xgna1iH55k8 "Using Microsoft Graph Toolkit to easily access files in Sites and in OneDrive")
+
 
 ## Help
 
-We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-onedrive-finder) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-onedrive-finder) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-onedrive-finder&authors=@aaclage&title=react-onedrive-finder%20-%20).
 
