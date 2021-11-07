@@ -69,10 +69,6 @@ This component will help the administrators who are currently maintaining the us
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Prerequisites
- 
-> **@microsoft/generator-sharepoint - 1.10.0**
-
 ## Solution
 
 Solution|Author(s)
@@ -88,6 +84,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+- From your command line, change your current directory to the directory containing this sample (`react-spupsproperty-sync`, located under `samples`)
 - in the command line run:
   - `npm install`
   - `gulp bundle --ship && gulp package-solution --ship`
@@ -102,6 +99,9 @@ This solution doesn't work on local mode.
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
 
+## Video
+
+[![SharePoint User Profile Property Sync with SPFx and Azure Function](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=BaNWS0hzUpQ "SharePoint User Profile Property Sync with SPFx and Azure Function")
 
 ## Disclaimer
 
