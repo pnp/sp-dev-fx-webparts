@@ -23,7 +23,7 @@ Sample web part to display PnP [`ListView`](https://sharepoint.github.io/sp-dev-
 
 Solution|Author(s)
 --------|---------
-react-pnp-controls-list-view-fields|[AJIXuMuK](https://github.com/AJIXuMuK)
+react-pnp-controls-list-view-fields|[Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -35,7 +35,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * clone this repo
-* move to right folder
+* From your command line, change your current directory to the directory containing this sample (`react-pnp-controls-list-view-fields`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp bundle --ship`
@@ -60,6 +60,9 @@ Version|Date|Comments
 
 This sample demonstrates how to combine different parts of PnP Reusable React controls to create rich solutions. It also partially answers the question from [Issue 493](https://github.com/pnp/sp-dev-fx-controls-react/issues/493) in PnP Reusable Controls repo. 
 
+## Video
+
+[![PnP ListView with PnP Field Controls](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=pLPA8vmSsl4 "PnP ListView with PnP Field Controls")
 
 ## Disclaimer
 
