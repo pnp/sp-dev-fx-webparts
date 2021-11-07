@@ -6,9 +6,16 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 
 ![react-company-stories](./assets/react-company-stories.gif)
 
-## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/SPFx-1.11-green.svg)
+# Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg) 
+![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -50,8 +57,8 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - In the command-line run:
-  - **npm install**
-  - **gulp serve --nobrowser**
+  - `npm install`
+  - `gulp serve --nobrowser`
 - Add the web part to the SharePoint Workbench (same Site where the List was created)
 
 ## Features

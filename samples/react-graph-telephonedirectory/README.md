@@ -7,8 +7,6 @@ The web part will fetch data from directory using Graph API and display in detai
 
 ![Telephone Directory using SPFx and Graph](./assets/Preview.gif)
 
-## Used SharePoint Framework Version
-
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
