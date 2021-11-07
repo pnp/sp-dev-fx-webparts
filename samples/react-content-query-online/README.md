@@ -468,6 +468,9 @@ Note that, in the example above, the `person-query` attribute is still bound usi
 
 ## Video
 
+
+[![Introduction to Modern Content by Query Web Part with Dynamic Data support](./assets/video-thumbnail1.jpg)](https://www.youtube.com/watch?v=bbWMQhl4Y38 "Introduction to Modern Content by Query Web Part with Dynamic Data support")
+
 [![Modern Content Query Web Part with Microsoft Graph Toolkit capabilities](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=reZfuibLCpo "Modern Content Query Web Part with Microsoft Graph Toolkit capabilities")
 
 ## Disclaimer
