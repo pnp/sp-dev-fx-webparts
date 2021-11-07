@@ -23,7 +23,7 @@ Sample web part to display Twitter timeline
 
 Solution|Author(s)
 --------|---------
-react-twitter-client-side-solution|[AJIXuMuK](https://github.com/AJIXuMuK)
+react-twitter|[Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -34,8 +34,8 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* clone this repo
-* move to right folder
+* Clone this repo
+* From your command line, change your current directory to the directory containing this sample (`react-twitter`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp bundle --ship`
@@ -52,6 +52,9 @@ Version|Date|Comments
 This sample illustrates how to use [react-twitter-embed](https://www.npmjs.com/package/react-twitter-embed) module to display Twitter timeline of specific profile, likes, list, collection or url.
 It also uses [PnP React Controls](https://github.com/pnp/sp-dev-fx-controls-react) and [PnP Property Controls](https://github.com/pnp/sp-dev-fx-property-controls) for rich web part and property pane components.
 
+## Video
+
+[![Building a custom SharePoint Framework Twitter web part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=e8K_Hu4-Bx8 "Building a custom SharePoint Framework Twitter web part")
 
 ## Disclaimer
 
