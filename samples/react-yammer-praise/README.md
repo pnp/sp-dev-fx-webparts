@@ -51,26 +51,29 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 ## Configuration
 
-To get access to Yammer API, we need to add the required permission to “SharePoint Online Client Extensibility Web Application Principal” application:
+To get access to Yammer API, we need to add the required permission to **SharePoint Online Client Extensibility Web Application Principal** application:
 
 * Navigate to Azure portal.
 * Search for App Registration at top search box.
-* Select “SharePoint Online Client Extensibility Web Application Principal“
-* Select “API permissions” from left navigation.
-* Click “Add a permission“.
-* Select Yammer.
-* Select “User_Impersonation” from delegated permissions.
-* Click “Add permissions“.
-* Click “Grant admin consent” button.
-* Select “Yes, add other granted permissions to configured permissions“
-* Click “Save and continue“.
-* Click “Grant admin consent“.
-* Select “Yes“.
+* Select **SharePoint Online Client Extensibility Web Application Principal**
+* Select **API permissions** from left navigation.
+* Click **Add a permission**.
+* Select **Yammer**.
+* Select **User_Impersonation** from delegated permissions.
+* Click **Add permissions**.
+* Click **Grant admin consent** button.
+* Select **Yes, add other granted permissions to configured permissions**
+* Click **Save and continue**.
+* Click **Grant admin consent**.
+* Select **Yes**.
 
 Bundle and package the solution, deploy it to app catalog, then add the web part to any pages in SharePoint or add to your Teams.
 
 Read my blog post for more information from [here](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-yammer-api).
 
+## Video
+
+[![Introduction to React Yammer Praise sample for Microsoft Teams and SharePoint](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=fYDqjOEuTKY "Introduction to React Yammer Praise sample for Microsoft Teams and SharePoint")
 
 ## Disclaimer
 
