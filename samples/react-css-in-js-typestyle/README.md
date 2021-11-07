@@ -1,4 +1,4 @@
-We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# "CSS in JS" with SharePoint Framework and TypeStyle
+# "CSS in JS" with SharePoint Framework and TypeStyle
 
 ## Summary
 
@@ -36,6 +36,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* From your command line, change your current directory to the directory containing this sample (`react-css-in-js-typestyle`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp build`
@@ -54,6 +55,9 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Dynamically reacting to theme changes without affecting performance
 * React hooks
 
+## Video
+
+[![CSS in JS with SharePoint Framework](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=IGt5DJHYPsQ "CSS in JS with SharePoint Framework")
 
 ## Disclaimer
 
