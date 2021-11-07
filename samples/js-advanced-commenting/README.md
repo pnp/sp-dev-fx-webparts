@@ -75,6 +75,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+- From your command line, change your current directory to the directory containing this sample (`js-advanced-commenting`, located under `samples`)
 - in the command line run:
   - `npm install`
   - `gulp bundle --ship && gulp package-solution --ship`
@@ -92,6 +93,10 @@ This solution doesn't work on local mode.
 #### SharePoint Mode
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
+
+## Video
+
+[![Building an enhanced commenting web part with SPFx](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=ndHMdfFscsk "Building an enhanced commenting web part with SPFx")
 
 
 ## Disclaimer
