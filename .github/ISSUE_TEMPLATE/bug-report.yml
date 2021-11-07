@@ -1,6 +1,6 @@
 name: 🐞 Bug or error report
 description: Report an anomaly or unexpected behavior with a sample from this repository.
-labels: ['Needs: Triage :mag:', 'type:bug-suspected']
+labels: ['type:bug-suspected']
 
 body:
 - type: markdown
