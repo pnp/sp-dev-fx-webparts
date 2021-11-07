@@ -2479,11 +2479,11 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-web-parts-js-gitHubBadge",
+    "name": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge",
     "source": "pnp",
     "title": "GitHub Badge",
     "shortDescription": "",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubbadge",
     "longDescription": [
       ""
     ],
@@ -2507,7 +2507,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-gitHubBadge/assets/1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-gitHubbadge/assets/1.png",
         "alt": "GitHub Badge"
       }
     ],
@@ -3310,6 +3310,13 @@
         "pictureUrl": "https://github.com/patrick-rodgers.png",
         "name": "Patrick Rodgers",
         "twitter": "mediocrebowler"
+      },
+      {
+        "gitHubAccount": "gautamdsheth",
+        "company": "Rapid Circle",
+        "pictureUrl": "https://github.com/gautamdsheth.png",
+        "name": "Gautam Sheth",
+        "twitter": "gautamdsheth"
       }
     ],
     "references": [
@@ -16922,8 +16929,20 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/screens/4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png?raw=true",
         "alt": "Web/Mobile Camera Demo"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/5.png?raw=true",
+        "alt": "Taking a photo"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/3.png?raw=true",
+        "alt": "Options available"
       }
     ],
     "authors": [
