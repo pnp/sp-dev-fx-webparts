@@ -35,12 +35,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|Jan 09, 2019|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 - clone this repo
 - navigate to the folder with current sample
@@ -60,5 +54,10 @@ Web part in this solution illustrates the following concepts on top of the Share
 - showcases PnPJS configuration inside SharePoint Framework
 - showcases how to use MS Graph with PnPJS 
 - showcases how to correctly configure SharePoint Framework solution and tenant to allow PnPJS to call MS Graph
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-pnpjs" />

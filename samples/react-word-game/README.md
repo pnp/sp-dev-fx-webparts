@@ -40,11 +40,6 @@ Version|Date|Comments
 1.0|May 27, 2020|Initial release
 2.0|Nov 4, 2020|Upgrade to SPFx v1.11.0 (Don Kirkham)
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -79,5 +74,10 @@ If you want to disable the high scores feature you can edit the Web Part Setting
 It also uses responsive design which works great on the SharePoint Mobile App:
 
 ![Mobile](./assets/wordgame_mobile.png)
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-word-game" />

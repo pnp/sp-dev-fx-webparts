@@ -38,11 +38,7 @@ Version|Date|Comments
 1.0 | April 18, 2019 | Initial release
 2.0 | June 06, 2019 | Upgraded to SPFx 1.8.2. Added GitHub Badge v2.
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -58,5 +54,11 @@ This sample illustrates how to convert an existing Javascript-only SPFx web part
 A second web part (called `GitHub Badge v2`) demonstrates how to render the same data using a Fabric UI persona card.
 
 For more information about the conversion process, refer to this [blog article](https://tahoeninjas.blog/2019/04/19/converting-spfx-from-javascript-to-react/).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-github-badge" />

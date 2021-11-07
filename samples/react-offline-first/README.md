@@ -59,11 +59,7 @@ Version |Date       | Comments
 0.0.2   |17/Feb/18  | Separated interfaces into their own files.
 0.0.3   |18/Feb/18  | Updated JSDocs, and and created readme.
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -99,5 +95,10 @@ HTTP requests.
 - Async looping, can be found in the Queue System.
 - Performance techniques for browsers, async looping does not block render,
 using local storage first reduces the time to draw the initial page load.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-offline-first" />

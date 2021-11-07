@@ -33,12 +33,6 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|Apr 18, 2019|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Prerequisites
 * Create a custom extenion for Groups using Graph API: Currently, spfx has no permissions to create custom extensions
 for entities in Graph API. To create the custom extension, you can use the [MS Graph Explorer website](https://developer.microsoft.com/en-us/graph/graph-explorer).
@@ -97,5 +91,9 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * How to filter Graph data using a custom Schema Extension
 * Using async / await for the async calls
 * Office UI fabric components
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tagging" />

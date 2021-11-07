@@ -52,11 +52,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|July 11, 2017|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -72,5 +67,11 @@ Every [Redux](http://redux.js.org/) action creates a copy of the state, changes 
 On the other hand, this can also be performance intensive as for changing only a single element, we have to copy the entire state tree in memory. Fortunately, [ImmutableJS](https://facebook.github.io/immutable-js/) comes to the rescue here.
 
 Using ImmutableJS, we can create new state trees in memory without duplicating the elements which are unchanged. When you create a new state object using ImmutableJS, the new object still points to the previous memory locations of unchanged elements. Only the properties which are changed are allocated new memory locations.
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-redux-async-immutablejs" />

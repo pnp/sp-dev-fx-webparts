@@ -40,11 +40,7 @@ Version|Date|Comments
 1.0|September 13, 2020|Initial release
 2.0|March, 22, 2021|Version 2.0 with new features and new editor based on TinyMCE.<br />This change has new list schema dependencies so you will need remove and re-add the app if you installed version 1.0.  See below for more on what's new in 2.o
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -155,5 +151,11 @@ Mark/Unmark a Reply as Correct Answer - Question entered by others|Yes|No|No
 * Make the Questions list visible and searchable
   * added extension which intercepts list item url and redirects to the appropriate questions or conversations page with threaded replies
 * Bug fixes with dates
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-questions-and-answers" />

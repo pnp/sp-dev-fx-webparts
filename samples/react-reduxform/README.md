@@ -42,11 +42,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 02, 2018|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -79,5 +74,11 @@ Refer to the [Getting started](https://redux-form.com/6.4.3/docs/gettingstarted.
 - The sample demonstrates how to integrate redux-form in SPFx web part and develop a dynamic grid component using [FieldArray](https://redux-form.com/6.4.3/docs/api/fieldarray.md/) component of redux-form.
 
 - The sample also uses custom renderers for form fields along with required field and number validations.
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-reduxform" />

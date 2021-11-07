@@ -42,11 +42,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 1, 2019 |Initial release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -65,5 +61,11 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - How to add the Terms in the propertypage and pass the values to react component
 - How to filter the list based on Taxonomy and extract the Image URL
 - Implementation of Slick Slider
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-image-slider-list-taxonomy-filter" />

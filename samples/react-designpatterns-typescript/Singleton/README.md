@@ -36,12 +36,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 15, 2018|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 
 ### Singleton pattern
 
@@ -142,5 +136,10 @@ export default class Singleton extends React.Component<ISingletonProps, {}> {
 ```
 
 As you can see this clearly shows how to use the singleton pattern in a real life situation and I hope its clear to the reader and start using in your own projects
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/designpatterns-typescript/singleton" />

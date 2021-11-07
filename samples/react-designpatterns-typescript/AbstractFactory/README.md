@@ -37,13 +37,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 15, 2018|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-
 ### Abstract factory pattern
 
 A very good real life scenario where this pattern can be used is in Data Application Layers scenario, more than often developers and architects are faced with requirements where an application needs to be able to access different databases or event different database servers which have different drivers, but the users want to to that without changing a lot of code, something that can be switched from an easy parameter somewhere.
@@ -401,5 +394,11 @@ export default class AbstractfactoryWebPart extends BaseClientSideWebPart<IAbstr
 
 >Conclusion:
 We all know that SharePoint Framework Projects are transpiled and bundled into one single JS file, however regardless of that for those of us who have worked in huge projects and are only User Interface Developers, we know that we can do better than what the standard samples show us in the standard documentation, with the above post I wanted to show you how simple is to create maintainable code, code that anyone can read, and later modify.
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/designpatterns-typescript/abstractfactory" />

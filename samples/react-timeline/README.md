@@ -97,12 +97,6 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|July 08, 2020|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Prerequisites
 
 - SharePoint Online tenant 
@@ -136,5 +130,11 @@ This sample web part displays list of events in chronological order with data st
 [figure5]: ./assets/layout-horizontal.png
 [figure6]: ./assets/list-schema.png
 [figure7]: ./assets/list-sample-data.png
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-timeline" />

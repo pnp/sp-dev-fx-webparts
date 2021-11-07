@@ -54,9 +54,10 @@ $ gulp serve
 * MobX **computed** values
 * **Typescript** version 3.3.4 using <em>@microsoft/rush-stack-compiler-3.3</em> for compatibility with the latest MobX version and typings
 
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-mobx-multiple-stores" />

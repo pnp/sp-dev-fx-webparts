@@ -57,12 +57,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|October 28, 2016|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 ```sh
@@ -79,5 +73,11 @@ $ gulp serve
 * Redux reducers are defined in `./reducers` with a sample web part reducer that stores the web part properties.
   Web part reducer implementation follows the [ducks pattern](https://github.com/erikras/ducks-modular-redux).
 * Redux store configuration defined in `./store`
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-redux" />
