@@ -6,8 +6,17 @@ If you are going to use PnP JS Core library and you've plans for [extending it w
 You can also find more information in the [blog series about working with Custom Business Objects, Parsers and TypeScript Decorators in PnP JS Core](https://blog.josequinto.com/2017/05/19/why-do-we-should-use-custom-business-objects-models-in-pnp-js-core/)
 
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+## Compatibility
+
+![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
+
 
 
 ## Applies to

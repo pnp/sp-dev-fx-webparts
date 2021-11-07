@@ -22,9 +22,16 @@ Sample Web Part illustrating using Angular with the SharePoint Framework.
 
 ![Sample To do SharePoint Framework client-side web part built using Angular](./assets/preview.png)
 
-## Used SharePoint Framework Version 
+## Compatibility
 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 
 ## Applies to
 

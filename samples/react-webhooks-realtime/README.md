@@ -24,8 +24,16 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 ### Solution architecture
 ![Architecture](./assets/Architecture.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/SPFx-GA-green.svg)
+## Compatibility
+
+![SPFx 1.3.0](https://img.shields.io/badge/SPFx-1.3.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 
 ## Applies to
 

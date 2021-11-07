@@ -24,8 +24,16 @@ This is a sample web Part that illustrates the use of jQuery and its plugins loa
 
 ![Sample Web Part built using jQuery showing current weather in the specified location](./assets/preview_weather.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+
+## Compatibility
+
+![SPFx 0.2.0](https://img.shields.io/badge/SPFx-0.2.0-orange.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
