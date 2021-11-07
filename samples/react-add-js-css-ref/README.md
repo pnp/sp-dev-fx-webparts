@@ -118,10 +118,6 @@ Version|Date|Comments
 
 [![Using SharePoint Framework to embed JS and CSS to modern pages](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=2j_tcNWt3S0 "Using SharePoint Framework to embed JS and CSS to modern pages")
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
@@ -140,6 +136,11 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_me/))
 
-> Sharing is caring!
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-add-js-css-ref" />
