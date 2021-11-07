@@ -1,4 +1,4 @@
-We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Remote Event Receiver Manager
+# Remote Event Receiver Manager
 
 ## Summary
 

@@ -1,4 +1,4 @@
-We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Documents Links Accordion
+# Documents Links Accordion
 
 ## Summary
 

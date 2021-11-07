@@ -43,11 +43,6 @@ Current Data Functions:
 ![](https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/modern-charts.png)
 ![](https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/Modern-Charts.gif)
 
-### Working with
-
-Built with SharePoint Framework GA, Office Graph, React and Chart.JS
-
-
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 

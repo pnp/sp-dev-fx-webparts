@@ -1,4 +1,4 @@
-We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community# Consuming SPFx Service Scopes using React Hooks
+# Consuming SPFx Service Scopes using React Hooks
 
 ## Summary
 

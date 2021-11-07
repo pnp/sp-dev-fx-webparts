@@ -1,4 +1,4 @@
-We do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this communityWe do not support samples, but this community---
+---
 page_type: sample
 products:
 - office-sp
@@ -21,9 +21,6 @@ This web part show organization chart for current user, shows, managers and dire
 
 On Click the profile page of will be open.
 
-
-
-
 ## Screenshots
 
 ![](../react-modern-organization-chart/assets/Screenshot1.png)
@@ -37,11 +34,6 @@ Property |Type|Required| comments
 --------------------|----|--------|----------
 Title | Text| no|
 Refresh Status Interval in minutes | number| no | default value 5 min
-
-
-### Working with
-
-Built with SharePoint Framework GA, Microsoft Graph API and @pnp/PnPjs  
 
 # Compatibility
 
