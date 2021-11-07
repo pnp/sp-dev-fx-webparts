@@ -1,6 +1,6 @@
 name: ❓ Question
 description: Ask a question about one of our web part samples
-labels: ['Needs: Triage :mag:', 'type:question']
+labels: ['type:question']
 
 body:
 - type: markdown
