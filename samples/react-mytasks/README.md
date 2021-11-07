@@ -98,9 +98,8 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
-   - `go to SharePoint Admin Center and Approve required API Permissions`
-
+  - Add to AppCatalog and deploy
+  - go to **SharePoint Admin Center** and approve required API Permissions
 
 ## Help
 

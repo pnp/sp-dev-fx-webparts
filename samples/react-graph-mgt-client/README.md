@@ -79,13 +79,13 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp bundle**
-  - **gulp package-solution**
+  - `npm install`
+  - `gulp bundle`
+  - `gulp package-solution`
 - Deploy the generated *.sppkg to your App Catalog
 - Approve the Microsoft Graph scopes
 - in the command-line run:
-  - **gulp serve**
+  - `gulp serve`
 
 
 ## Features

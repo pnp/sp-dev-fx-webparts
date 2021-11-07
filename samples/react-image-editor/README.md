@@ -76,11 +76,9 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - edit config\serve.json set "initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"
-  - **gulp serve**
-
-> Include any additional steps as needed.
+  - `npm install`
+  - edit `config\serve.json` set `"initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"`
+  - `gulp serve`
 
 ## Usage
 

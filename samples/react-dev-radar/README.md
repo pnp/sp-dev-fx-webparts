@@ -57,7 +57,7 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
+  - Add to AppCatalog and deploy
 
   
 ## Help

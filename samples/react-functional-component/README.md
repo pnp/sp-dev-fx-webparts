@@ -80,7 +80,7 @@ You may be wondering how maintaining state, side effects or other complexities c
 
 ## Building and testing
 
-In the react-functional-component directory run **npm install** to resolve all the dependencies. Once this has completed you can run **gulp serve** to test the web part in the local workbench.
+In the react-functional-component directory run `npm install` to resolve all the dependencies. Once this has completed you can run `gulp serve` to test the web part in the local workbench.
 
 
 ## Disclaimer

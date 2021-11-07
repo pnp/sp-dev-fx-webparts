@@ -42,8 +42,8 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - In the command-line run:
-  - **npm install**
-  - **npm run package**
+  - `npm install`
+  - `npm run package`
 - Upload the generated SPPKG file into the SharePoint App Catalog of your tenant
 - Select the SPPKG in the App Catalog and click on "Sync to Teams" button
 - Add the web part to a SharePoint page

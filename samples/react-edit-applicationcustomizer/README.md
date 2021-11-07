@@ -59,8 +59,8 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 
 For any issue or help, Buzz us on twitter:([sanganikunj](https://twitter.com/sanganikunj)) or ([siddh_me](https://twitter.com/siddh_me/))

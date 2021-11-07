@@ -42,10 +42,8 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+  - `npm install`
+  - `gulp serve`
 
 ## Features
 
@@ -56,10 +54,6 @@ This extension illustrates the following concepts:
 - Store data (images) in a collection from property panel using the file picker module
 - Load the data into a paginated list
 - Display the data in a Hero style format 
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
 ## References
 
@@ -83,6 +77,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-hero-webpart" />

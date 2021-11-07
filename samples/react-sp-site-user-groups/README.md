@@ -45,9 +45,9 @@ Access to a SharePoint online site with various tenant users granted access to v
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp trust-dev-cert**
-  - **gulp serve --nobrowser**
+  - `npm install`
+  - `gulp trust-dev-cert`
+  - `gulp serve --nobrowser`
 - Open the hosted workbench on a SharePoint site - i.e. https://_tenant_.sharepoint.com/site/_sitename_/_layouts/workbench.aspx
 - Add the User and Group Info web part to the page.
 - View the current user's information and the 'user' information for any Azure AD groups the user belongs to which are also known to the SharePoint site.

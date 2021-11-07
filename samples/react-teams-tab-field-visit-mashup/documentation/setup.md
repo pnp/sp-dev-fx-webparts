@@ -59,9 +59,9 @@ In this section we will make changes to the sample FieldVisit project
 5.	Copy file **constants.sample.ts** in src\webparts\fieldvisittab to **constants.ts**
 6.	Open constants.ts and update keys with your own keys. **NOTE:** These keys are used to retrieve map and weather from Bing. If you do not provide a valid key, maps and weather will not be displayed
 7.	In Visual Studio Code, click on menu **Terminal -> New Terminal**
-8.	Issue command **gulp bundle -–ship**
-9.	Issue command **gulp trust-dev-cert** (**NOTE:** This step needs to be performed only once per development machine)
-10.	Issue command **gulp package-solution -–ship**
+8.	Issue command `gulp bundle -–ship`
+9.	Issue command `gulp trust-dev-cert` (**NOTE:** This step needs to be performed only once per development machine)
+10.	Issue command `gulp package-solution -–ship`
 11.	Ensure there are no errors for any of these commands.
 
 ## 4. Deploying Solution in SharePoint
