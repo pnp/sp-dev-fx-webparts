@@ -55,6 +55,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* From your command line, change your current directory to the directory containing this sample (`react-covid19-info`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`
@@ -74,6 +75,10 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * [SPFx Controls React](https://sharepoint.github.io/sp-dev-fx-controls-react/)
 * [SPFx Property Controls](https://sharepoint.github.io/sp-dev-fx-property-controls/)
 * [Recharts](http://recharts.org/en-US/)
+
+## Video
+
+[![COVID Information Web Part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=nuso6glfQ5Q "COVID Information Web Part")
 
 
 ## Disclaimer
