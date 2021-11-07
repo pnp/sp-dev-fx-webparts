@@ -52,11 +52,7 @@ Version|Date|Comments
 2.0|March 12, 2017|Updated for SPFx 1.0
 2.1|July 19, 2017|Use office-ui-fabric-react and uifabric/styling
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -78,5 +74,11 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - REST API batching in SPFx
 - ServiceScope and ServiceKeys
 - Service Locator pattern to register and consume services
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-organisationchart" />

@@ -62,11 +62,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0| October 5, 2020|Initial release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -80,6 +76,10 @@ Please follow all the steps:
   - `gulp package-solution --ship`
 - Add and deploy package to your tenant's App Catalog
 
+## Disclaimer
 
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-custom-links" />

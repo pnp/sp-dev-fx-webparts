@@ -52,11 +52,7 @@ Version|Date|Comments
 1.1|Mar 6, 2018|Update to 1.4.1
 1.0|May 1, 2017|Initial release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -89,4 +85,9 @@ https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
 - [PnP JS and SPFx Logging systems integration](https://blog.josequinto.com/2017/04/30/how-to-integrate-pnp-js-core-and-sharepoint-framework-logging-systems)
 ![React-sp-pnp-js-async-await-code](./assets/pnp-js-logging-spfx.png)
 
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-async-await-sp-pnp-js" />

@@ -41,12 +41,6 @@ Version | Date            | Comments
 1.0.0   | June 27, 2017   | Initial commit
 1.1.0   | June 28, 2017   | Updated tutorial code for SPFx v1.10
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
-
 ## Build and run the tutorials
 
 To build and run this client-side project, you will need to clone and build the tutorials project. Because the solution retrieves its data from SharePoint, you will also need a custom list named **IT Requests** with some data in it. To preview the web part use the hosted version of the SharePoint Workbench loaded in the context of the site where the Tasks list is located.
@@ -88,5 +82,11 @@ Once the npm packages are installed, run the command to preview your web parts i
 ```console
 gulp serve --nobrowser
 ```
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorial-migrate-datatables" />
