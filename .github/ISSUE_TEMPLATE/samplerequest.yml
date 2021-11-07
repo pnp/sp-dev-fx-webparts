@@ -1,6 +1,6 @@
 name: "\U0001F9EA Sample request"
 description: Request a new sample from the community
-labels: ['Needs: Triage :mag:', 'type:sample-request', 'Help wanted 🪧']
+labels: ['type:sample-request', 'Help wanted 🪧']
 
 body:
 - type: markdown
