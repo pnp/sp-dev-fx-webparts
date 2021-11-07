@@ -61,10 +61,13 @@ Clone the solution and make sure there is no error before packaging. Try first o
 
 Change the `pageURL` property in `/config/serve.json` - This should be a valid modern page on your site collection.
 
-* From your command line, change your current directory to the directory containing this sample (`react-add-js-css-ref`, located under `samples`)
 
 ```bash
 git clone the repo
+```
+* From your command line, change your current directory to the directory containing this sample (`react-add-js-css-ref`, located under `samples`)
+
+```bash
 npm i
 gulp serve
 ```
