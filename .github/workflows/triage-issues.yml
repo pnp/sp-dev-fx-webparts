@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Verify that issue contains valid authors
         id: valid-authors
-        if: contains(github.event.issue.labels.*.name, 'bug')
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected')
         uses: ./.github/actions/verify-author
         with:
           issue: "${{ toJson(github.event.issue) }}"
@@ -36,7 +36,7 @@ jobs:
             body: issueBody
             })
       - name: Add issue to project board
-        if: contains(github.event.issue.labels.*.name, 'bug')
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected')
         uses: actions/github-script@0.8.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
