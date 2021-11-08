@@ -67,5 +67,6 @@ This webpart illustrates the following concepts:
 When looking for a robust solution in Microsoft Teams espacially also consider my alternative sample created with the yeoman generator for Teams.
 There the up- and download functionality takes place in the backend and not via the frontend (browser).
 Of course consider the same code to be combined with a SPFx forntend (only).
+(https://github.com/pnp/teams-dev-samples/tree/main/samples/tab-sso-graph-upload-as-pdf)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-graph-upload-as-pdf" />
