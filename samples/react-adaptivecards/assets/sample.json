@@ -134,6 +134,12 @@
         "order": 116,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
         "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "video",
+        "order": 117,
+        "url": "https://www.youtube.com/watch?v=gWrvC-0HF4A",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [
