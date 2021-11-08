@@ -63,5 +63,9 @@ This webpart illustrates the following concepts:
 - Retrieving files with [format=pdf](https://docs.microsoft.com/en-us/graph/api/driveitem-get-content-format?view=graph-rest-1.0&tabs=http) conversion
 - [FluentUI Progress Indicator](https://developer.microsoft.com/en-us/fluentui#/controls/web/progressindicator)
 
+## Alternative
+When looking for a robust solution in Microsoft Teams espacially also consider my alternative sample created with the yeoman generator for Teams.
+There the up- and download functionality takes place in the backend and not via the frontend (browser).
+Of course consider the same code to be combined with a SPFx forntend (only).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-graph-upload-as-pdf" />
