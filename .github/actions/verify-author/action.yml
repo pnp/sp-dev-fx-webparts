@@ -6,4 +6,4 @@ inputs:
     description: 'The issue to verify'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
