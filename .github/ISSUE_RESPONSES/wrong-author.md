@@ -1,4 +1,4 @@
-## Invalid Author
+## Wrong or missing author @mentions
 
 Thank you for your submission, but you appear to have forgotten to @mention the sample author(s).
 
