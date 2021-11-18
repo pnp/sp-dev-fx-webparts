@@ -44,7 +44,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository (or download this [solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-graph-upload-as-pdf) then unzip it)
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-graph-upload-as-pdf) then unzip it)
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
