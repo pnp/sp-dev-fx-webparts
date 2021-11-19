@@ -1,3 +1,4 @@
+<!--
 ---
 page_type: sample
 products:
@@ -10,6 +11,7 @@ extensions:
   - SharePoint Framework
   createdDate: 8/30/2016 10:21:43 AM
 ---
+-->
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/pnp/sp-dev-fx-webparts?style=social)
