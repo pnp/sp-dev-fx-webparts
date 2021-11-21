@@ -81,10 +81,10 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Aangular-ngofficeuifabric-file-upload) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&template=bug-report.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&template=question.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&template=question.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-ngofficeuifabric-file-upload" />

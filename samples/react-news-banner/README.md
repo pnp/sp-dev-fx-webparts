@@ -52,11 +52,11 @@ This web part shows how to use PnPjs, Office-ui-fabric-react, @pnp/spfx-controls
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-news-banner&authors=@joaojmendes&template=bug-report.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-news-banner&authors=@joaojmendes&template=question.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-news-banner&authors=@joaojmendes&template=question.yml&sample=react-news-banner&authors=@joaojmendes&title=react-news-banner%20-%20).
 
 ## Disclaimer
 
