@@ -36,6 +36,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-cascading-managed-metadata/assets/termstore.png?raw=true",
         "alt": "Cascading managed metadata using Graph API"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/lk47ijo_H6Y",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

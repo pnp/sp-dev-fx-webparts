@@ -48,6 +48,12 @@
         "order": 103,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sites-selected-admin/assets/vsDemo.gif?raw=true",
         "alt": "Sites Selected Admin"
+      },
+      {
+        "type": "video",
+        "order": 104,
+        "url": "https://www.youtube.com/embed/afwLIS77h8Y",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

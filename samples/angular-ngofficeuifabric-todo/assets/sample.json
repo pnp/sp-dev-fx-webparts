@@ -31,6 +31,12 @@
         "order": 100,
         "url": "https://avatars2.githubusercontent.com/u/11164679?s=460\u0026v=4",
         "alt": "Angular \u0026 ngOfficeUIFabric Client-Side Web Part"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/FS-_0KENJkI",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

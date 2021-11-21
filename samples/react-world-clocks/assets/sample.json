@@ -46,6 +46,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/WorldClockList.png?raw=true",
         "alt": "React World Clocks"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/91uQHUgpKo8",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

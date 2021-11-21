@@ -96,6 +96,18 @@
         "order": 111,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/itemSelectorTemplateOutput.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "video",
+        "order": 112,
+        "url": "https://www.youtube.com/embed/bbWMQhl4Y38",
+        "alt": "Demo of the web part in action"
+      },
+      {
+        "type": "video",
+        "order": 113,
+        "url": "https://www.youtube.com/embed/reZfuibLCpo",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

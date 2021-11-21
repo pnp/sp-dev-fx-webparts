@@ -50,6 +50,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-section/assets/ListForAccordion.png?raw=true",
         "alt": "Accordion Section FAQ Builder"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/-oKhmh-g3z8",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

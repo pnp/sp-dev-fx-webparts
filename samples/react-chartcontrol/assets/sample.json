@@ -146,6 +146,12 @@
         "order": 118,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/ScatterChart.png?raw=true",
         "alt": "Chart Control Samples"
+      },
+      {
+        "type": "video",
+        "order": 119,
+        "url": "https://www.youtube.com/embed/U_rtVSyM6_I",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

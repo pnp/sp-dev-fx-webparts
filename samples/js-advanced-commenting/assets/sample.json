@@ -34,6 +34,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
         "alt": "Advanced Comments Box"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/ndHMdfFscsk",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

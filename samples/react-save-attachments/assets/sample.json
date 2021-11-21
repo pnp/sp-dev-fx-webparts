@@ -46,6 +46,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-save-attachments/assets/react-save-attachments-2.gif?raw=true",
         "alt": "Save Attachments"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/Hl4zu9YeeRA",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

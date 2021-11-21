@@ -38,6 +38,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamics-crm-api/assets/screenshot.gif",
         "alt": "Using Dynamics CRM API"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/VXzYc6cfjuI",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

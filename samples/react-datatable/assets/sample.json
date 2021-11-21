@@ -34,6 +34,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
         "alt": "Data Table"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/-i4EAmjKxpQ",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

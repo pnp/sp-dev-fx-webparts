@@ -36,6 +36,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-telephonedirectory/assets/Capture.PNG?raw=true",
         "alt": "Telephone Directory using React, Ms Graph and SPFx"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/5ArJneWBy8s  ",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

@@ -36,6 +36,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-message/assets/webpartproperties.jpg?raw=true",
         "alt": "React Teams Messages"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/lzOcAL_6A7c",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

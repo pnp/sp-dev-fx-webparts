@@ -34,6 +34,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
         "alt": "Tailwind CSS"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/_gQkauERWh0",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

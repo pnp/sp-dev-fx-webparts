@@ -36,6 +36,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-covid19-info/assets/Langing-page-screenshot.png?raw=true",
         "alt": "COVID 19 information web part"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/nuso6glfQ5Q",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [
