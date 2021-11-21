@@ -49,11 +49,6 @@ Version|Date|Comments
 -------|----|--------
 2.0.0|July 30, 2020|Initial release
 
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 - Clone this repository
@@ -68,8 +63,6 @@ Version|Date|Comments
 o365 login
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
 ```
-
----
 
 ## Acknowledgements / Inspiration
 
@@ -109,7 +102,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msgraph-peoplesearch" />
