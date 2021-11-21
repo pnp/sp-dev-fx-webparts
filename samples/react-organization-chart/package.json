@@ -28,7 +28,8 @@
     "office-ui-fabric-react": "^6.214.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "spfx-uifabric-themes": "^0.8.5"
+    "spfx-uifabric-themes": "^0.8.5",
+    "jsonpointer": ">=5.0.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.4.1",
