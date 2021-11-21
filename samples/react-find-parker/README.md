@@ -3,7 +3,7 @@
 ## Summary
 
 Work is not about work 🤨, sometimes a bit of fun is in order 🕹️.
-This webpart is a simple find object game.
+This web part is a simple find object game.
 ![parker](./assets/parker.gif)
 
 User may set up how many elements will she or he be looking for in the property pane

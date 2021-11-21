@@ -43,7 +43,7 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## WebPart Properties
+## Web Part Properties
  
 | Property              | Type            | Required | comments                          |
 | --------------------- | --------------- | -------- | --------------------------------- |

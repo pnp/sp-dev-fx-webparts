@@ -1,13 +1,13 @@
 # News
 
-SPFx Webpart to display News from SharePoint site(s)
+SPFx web part to display news from SharePoint site(s)
 
 ## SharePoint News Posts with SPFx
 
 ### Summary
 Web part pulls all SharePoint News Posts that the logged in user has access to view.
  - Pagination ( Back/Next ) and Page Display ( n out of n )
- - Select Multiple Sites ( Defaults to site webpart is deployed to )
+ - Select Multiple Sites ( Defaults to site web part is deployed to )
  - Two styling options, Stack or Single
  - News Title as link ( Click to go to post )
  - News Thumbnail Image

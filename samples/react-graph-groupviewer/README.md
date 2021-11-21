@@ -2,7 +2,7 @@
 
 ## Summary
 
-This webpart will provide the functionality to search for groups in your tenant and allow you to view the details of the selected group as well as view a list of group members and export the list of members to a CSV file.
+This web part will provide the functionality to search for groups in your tenant and allow you to view the details of the selected group as well as view a list of group members and export the list of members to a CSV file.
 
 ![picture of the web part in action](assets/preview.gif)
 

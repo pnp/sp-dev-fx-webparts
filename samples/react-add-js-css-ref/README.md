@@ -19,7 +19,7 @@ This repo is a react based SPFx web part and extension that allows users to add/
 
 WebPart in Action
 
-![Web part in action](assets/webpartinaction.gif?raw=true "Webpart in action")
+![Web part in action](assets/webpartinaction.gif?raw=true "web part in action")
 
 Challenges/Drawback with ONLY using SPFx extension for adding js and css file references.
 * JS and CSS file references links needs to be hardcoded in solution

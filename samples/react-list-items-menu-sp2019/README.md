@@ -29,7 +29,7 @@ When the user clicks on the header it dynamically load documents.
 [SharePoint Framework](https://aka.ms/spfx)
  
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------

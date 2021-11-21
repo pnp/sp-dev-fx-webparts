@@ -1,7 +1,7 @@
 # react-sitepages-metadata
 
 ## Summary
-Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup WebPart to display them.
+Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup web part to display them.
 
 ### News rollup WebPart
 ![News rollup WebPart](./assets/demo-wp.gif)
@@ -47,12 +47,12 @@ Solution provides an enhancement to SitePages library that enables updating exis
 Relies heavily on Office UI Fabric. 
 
 Contains following elements:
-- Metadata-News rollup WebPart - displays published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
+- Metadata-News rollup web part - displays published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
 - CommandSet extension for SitePages library - a button appears when a single item is selected. Clicking on the item shows a fillable dialog with lookup fields
 
 ### Important notes
-- Changes in some WebPart properties will not be reflected after hitting "Apply" button - please refresh the page, too
-- To see a collection of lookup fields in the WebPart property pane change/edit any of the instantly visible properties, such as Item limit, width or item height. Reason for this is SitePages library will be queried for lookup lists only after the property pane is initially opened
+- Changes in some web part properties will not be reflected after hitting "Apply" button - please refresh the page, too
+- To see a collection of lookup fields in the web part property pane change/edit any of the instantly visible properties, such as Item limit, width or item height. Reason for this is SitePages library will be queried for lookup lists only after the property pane is initially opened
 
 ### Resources
 - [React Quick Start](https://facebook.github.io/react/docs/tutorial.html) 

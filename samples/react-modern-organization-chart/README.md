@@ -28,7 +28,7 @@ On Click the profile page of will be open.
 ![](../react-modern-organization-chart/assets/Screenshot2.png)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------

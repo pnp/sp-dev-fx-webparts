@@ -10,15 +10,15 @@ The web part uses the built in MSGraphClient and needs to be approved in API man
 
 ## Web part usage
 
-![alt text][Webpart in action]
+![alt text][web part in action]
 
-[Webpart in action]: ./assets/sites-manager-demo.gif "Sites Selected Manager in action"
+[web part in action]: ./assets/sites-manager-demo.gif "Sites Selected Manager in action"
 
 ## Using the web part to grant an app access to a site, start to finish
 
-![alt text][Webpart in action - Visual Studio]
+![alt text][web part in action - Visual Studio]
 
-[Webpart in action - Visual Studio]: ./assets/vsDemo.gif "Sites Selected Manager Demo"
+[web part in action - Visual Studio]: ./assets/vsDemo.gif "Sites Selected Manager Demo"
 
 ## Compatibility
 

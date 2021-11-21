@@ -4,7 +4,7 @@
 
 This web part will allow users to view/update application customizers properties across any web where the current user has access to. This web part can be helpful when we require to update the properties for application customizer without using any PowerShell script or cli tool.
 
-![Web part in action](assets/react-all-applicationcustomizers.gif?raw=true "Webpart in action")
+![Web part in action](assets/react-all-applicationcustomizers.gif?raw=true "web part in action")
 
 ## Idea behind this web part
 
