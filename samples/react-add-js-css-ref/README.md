@@ -126,7 +126,7 @@ If you're having issues building the solution, please run [spfx doctor](https://
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-add-js-css-ref) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-add-js-css-ref) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-add-js-css-ref) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-add-js-css-ref&template=bug-report.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
 

@@ -103,7 +103,7 @@ We do not support samples, but we do use GitHub to track issues and constantly w
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-list-form) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-list-form) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-list-form) and see what the community is saying.
 
 If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-list-form&template=bug-report.yml&sample=react-list-form&authors=@DanyWyss%20@Harshagracy%20@sharepointknight%20@Abderahman88,%20@Kman1131%20@fthorild%20@AriGunawan&title=react-list-form%20-%20).
 
