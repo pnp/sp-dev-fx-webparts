@@ -101,7 +101,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-list-form) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-list-form") to see if anybody else is having the same issues.
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-list-form) and see what the community is saying.
 
