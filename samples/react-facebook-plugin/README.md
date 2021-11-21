@@ -54,11 +54,11 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-facebook-plugin&authors=@koltyakov%20@AriGunawan&template=bug-report.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-facebook-plugin&template=bug-report.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-facebook-plugin&authors=@koltyakov%20@AriGunawan&template=question.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-facebook-plugin&template=question.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-facebook-plugin&authors=@koltyakov%20@AriGunawan&template=question.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-facebook-plugin&template=question.yml&sample=react-facebook-plugin&authors=@koltyakov%20@AriGunawan&title=react-facebook-plugin%20-%20).
 
 ## Disclaimer
 

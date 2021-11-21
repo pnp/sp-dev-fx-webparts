@@ -83,11 +83,11 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-pagecontributors) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-pagecontributors&authors=@SPParseError%20@AriGunawan&template=bug-report.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-pagecontributors&template=bug-report.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-pagecontributors&authors=@SPParseError%20@AriGunawan&template=question.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-pagecontributors&template=question.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-pagecontributors&authors=@SPParseError%20@AriGunawan&template=question.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-pagecontributors&template=question.yml&sample=react-pagecontributors&authors=@SPParseError%20@AriGunawan&title=react-pagecontributors%20-%20).
 
 ## Disclaimer
 
