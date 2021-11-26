@@ -119,7 +119,10 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     const graphService: Graph = new Graph();
     const initialized = await graphService.initialize(this.props.context.serviceScope);
     if (initialized) {
-      const requests = this.getBatchRequest(followDocuments, "/me/drives/{driveId}/list?select=id,webUrl,parentReference", "GET");
+      let uniq = {};
+      let uniqueArray = [];
+      uniqueArray = followDocuments.filter(obj => !uniq[obj.DriveId] && (uniq[obj.DriveId] = true));
+      const requests = this.getBatchRequest(uniqueArray, "/me/drives/{driveId}/list?select=id,webUrl,parentReference", "GET");
       for (let index = 0; index < requests.length; index++) {
         const graphData: any = await graphService.postGraphContent("https://graph.microsoft.com/v1.0/$batch", requests[index]);
         graphData.responses.forEach((data: any) => {
@@ -177,12 +180,15 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     let items: FollowDocument[] = [];
     const initialized = await graphService.initialize(this.props.context.serviceScope);
     if (initialized) {
-      const requests = this.getBatchRequest(followDocuments, "/sites/{SiteId}?$select=id,siteCollection,webUrl,name,displayName", "GET");
+      let uniq = {};
+      let uniqueArray = [];
+      uniqueArray = followDocuments.filter(obj => !uniq[obj.SiteId] && (uniq[obj.SiteId] = true));
+      const requests = this.getBatchRequest(uniqueArray, "/sites/{SiteId}?$select=id,siteCollection,webUrl,name,displayName", "GET");
       for (let index = 0; index < requests.length; index++) {
         const graphData = await graphService.postGraphContent("https://graph.microsoft.com/v1.0/$batch", requests[index]);
         graphData.responses.forEach((data: any) => {
           followDocuments.forEach((followDocument: FollowDocument) => {
-            if (followDocument.SiteId === data.body.id && followDocument.Domain === undefined) {
+            if (followDocument.SiteId === data.body.id && (followDocument.Domain === undefined || followDocument.Domain === "")) {
               followDocument.Domain = data.body.siteCollection.hostname;
               followDocument.WebUrl = data.body.webUrl;
               followDocument.WebName = data.body.displayName;
