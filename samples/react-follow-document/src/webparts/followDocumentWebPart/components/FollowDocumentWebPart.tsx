@@ -94,21 +94,23 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     const graphService: Graph = new Graph();
     let graphData: any = [];
     graphData = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/me/drive/following?$select=id,name,webUrl,parentReference,followed&Top=1000`, this.props.context);
-    graphData.value.forEach(data => {
+    if (graphData.value !== undefined) {
+      graphData.value.forEach(data => {
 
-      let followDocument: FollowDocument = {
-        ItemId: data.id,
-        Title: data.name,
-        WebFileUrl: data.webUrl,
-        DriveId: data.parentReference.driveId,
-        followedDateTime: new Date(data.followed.followedDateTime),
-      } as FollowDocument;
-      this.GetIcon(data.name).then(icon => {
-        followDocument.IconUrl = this.props.context.pageContext.web.absoluteUrl + "/_layouts/images/" + icon;
+        let followDocument: FollowDocument = {
+          ItemId: data.id,
+          Title: data.name,
+          WebFileUrl: data.webUrl,
+          DriveId: data.parentReference.driveId,
+          followedDateTime: new Date(data.followed.followedDateTime),
+        } as FollowDocument;
+        this.GetIcon(data.name).then(icon => {
+          followDocument.IconUrl = this.props.context.pageContext.web.absoluteUrl + "/_layouts/images/" + icon;
+        });
+        followDocuments.push(followDocument);
       });
-      followDocuments.push(followDocument);
-    });
-    followDocuments = await this.getList(followDocuments);
+      followDocuments = await this.getList(followDocuments);
+    }
     return followDocuments;
   }
 
