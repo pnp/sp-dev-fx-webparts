@@ -429,7 +429,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
           ItemsSearch: this.state.Items,
         });
       } else {
-        const items = this.state.Items.filter(item => item.WebUrl.toLowerCase().indexOf(selectedOption.key.toString().toLowerCase()) > -1);
+        const items = this.state.Items.filter(item => item.WebUrl.toLowerCase() === selectedOption.key.toString().toLowerCase());
         this.setState({
           ItemsSearch: items,
         });
