@@ -131,9 +131,8 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
               data.body["@odata.context"].indexOf("drives('") + 8,
               data.body["@odata.context"].lastIndexOf("'")
             ));
-            if (followDocument.DriveId === driveId && followDocument.Folder === undefined) {
+            if (followDocument.DriveId === driveId && (followDocument.ListId === undefined || followDocument.ListId === "")) {
               followDocument.ListId = data.body.id;
-              followDocument.Folder = data.body.webUrl;
               followDocument.ItemProperties = data.body.webUrl + "/Forms/dispForm.aspx?ID=";
               followDocument.SiteId = data.body.parentReference.siteId;
               items.push(followDocument);
@@ -162,6 +161,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
             if (followDocument.ItemId === data.body.id && followDocument.Url === undefined) {
               followDocument.id = data.body.listItem.id;
               followDocument.Url = data.body.listItem.webUrl;
+              followDocument.Folder = data.body.listItem.webUrl.substring(0, data.body.listItem.webUrl.lastIndexOf("/") + 1);
               followDocument.ItemProperties = followDocument.ItemProperties + data.body.listItem.id;
               followDocument.DownloadFile = data.body["@microsoft.graph.downloadUrl"];
               followDocument.Thumbnail = data.body.thumbnails.length > 0 ? data.body.thumbnails[0].large.url : "";
@@ -283,49 +283,6 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
   }
 
   /************************************************************************************* */
-
-
-
-
-  //get Web Name and Web Url of Document
-  private getSearchWebID = async (graphData: any[], webs: any[]): Promise<any[]> => {
-    const graphService: Graph = new Graph();
-    const initialized = await graphService.initialize(this.props.context.serviceScope);
-    let queryString: string = "";
-    for (let index = 0; index < webs.length; index++) {
-      if (index === 0) {
-        queryString += "WebId:" + webs[index].replace('{', '').replace('}', '');
-      } else {
-        queryString += " OR WebId:" + webs[index].replace('{', '').replace('}', '') + " ";
-      }
-    }
-    if (initialized) {
-      const HeaderWeb = {
-        "requests": [
-          {
-            "entityTypes": [
-              "site"
-            ],
-            "query": {
-              "queryString": "" + queryString + "",
-            }
-          }
-        ]
-      };
-      //Retrieve webNames
-      const tmpWebs = await graphService.postGraphContent("https://graph.microsoft.com/beta/search/query", HeaderWeb);
-      graphData.forEach(element => {
-        tmpWebs.value[0].hitsContainers[0].hits.forEach(Webelement => {
-          if (element.fields.WebId.replace('{', '').replace('}', '') === Webelement.resource.id.split(/[, ]+/).pop().toUpperCase()) {
-            element.WebName = Webelement.resource.name;
-            element.WebUrl = Webelement.resource.webUrl;
-          }
-        }
-        );
-      });
-      return graphData;
-    }
-  }
 
   private onActionTeamsClick = (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>): void => {
 
