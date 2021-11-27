@@ -105,7 +105,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
           followedDateTime: new Date(data.followed.followedDateTime),
         } as FollowDocument;
         this.GetIcon(data.name).then(icon => {
-          followDocument.IconUrl = this.props.context.pageContext.web.absoluteUrl + "/_layouts/images/" + icon;
+          followDocument.IconUrl = (this.props.context.pageContext.web.absoluteUrl + "/_layouts/15/images/lg_" + icon).replace("lg_iczip.gif", "lg_iczip.png").replace("lg_icmsg.png", "lg_icmsg.gif");
         });
         followDocuments.push(followDocument);
       });
