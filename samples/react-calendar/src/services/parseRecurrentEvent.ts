@@ -52,21 +52,13 @@ export default class parseRecurrentEvent {
     return str.split(' ');
   }
 
-
   public parseDate(date: any, allDay: any) {
     if (typeof date == 'string') {
-      if (allDay) {
-        if (date.lastIndexOf('Z') == date.length - 1) {
-          const dt = date.substring(0, date.length - 1);
-          return new Date(dt);
-        }
-      }
-      else {
-        return new Date(date);
-      }
+      return new Date(date);
     }
     return date;
   }
+  
   public parseEvent(e: any, start: any, end: any) {
     if (e.fRecurrence == '0' || e.fRecurrence == '4') {
       e.EventDate = new Date(this.parseDate(e.EventDate, e.fAllDayEvent));
