@@ -142,6 +142,7 @@ Version|Date|Comments
 1.0.12|June 21, 2021|Fixes overlap with Year-view and the comment section by adding a vertical scrollbar.
 1.0.13|October 2, 2021|Fix to make sure Today is always visible and highlighted.
 1.0.14|October 16, 2021|Resolve unhandled exception that happens clicking on recurrent events
+1.0.15|November 22, 2021|Fix All Day event issue that makes All Day events date expanded to another day instead of being full day event.
 
 
 ## Minimal Path to Awesome
