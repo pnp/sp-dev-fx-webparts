@@ -2,7 +2,7 @@
 
 ## Summary
 
-This solution has the goal to easily identify/follow user key documents from all Tenant and easily access them in Modern Pages and Microsoft Teams. This solution uses the Out of Box Social feature **"Follow Document WebPart"** with combination of MSGraph queries and extension for Microsoft Teams.
+This solution has the goal to easily identify/follow user key documents from all Tenant and easily access them in Modern Pages and Microsoft Teams. This solution uses the Out of Box Office Page >  Favorites Files Tab with combination of MSGraph queries and extension for Microsoft Teams.
 
 This is a 2 phase project with associated dependency of solution [Follow-Document](https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-follow-document) extension where users are allow to select and manage Followed Document in Libraries to be used in this project. 
 
@@ -20,8 +20,9 @@ Available features:
 - Microsoft Team integration with personal/Tab App that allow user focus on key Documents. 
 
 Usage of following Technologies:
-- Usage of Social Feature **"Follow" documents** and associated REST "[/_api/social.following/](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/how-to-follow-documents-sites-and-tags-by-using-the-rest-service-in-sharepoint-2)"
-- Usage of Graph queries using  [Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
+- Usage of Microsoft Graph API "[Follow drive item](https://docs.microsoft.com/en-us/graph/api/driveitem-follow?view=graph-rest-1.0&tabs=http)"
+- Usage of Microsoft Graph API "[Unfollow drive item](https://docs.microsoft.com/en-us/graph/api/driveitem-unfollow?view=graph-rest-1.0&tabs=http)"
+- Usage of Microsoft Graph API "[List followed items](https://docs.microsoft.com/en-us/graph/api/drive-list-following?view=graph-rest-1.0&tabs=http)"- Usage of Graph queries using  [Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
 - Usage of  [adaptive cards](https://adaptivecards.io/)
 - Microsoft Teams integration with following option [TeamsTab, TeamsPersonalApp]
 
@@ -57,6 +58,8 @@ o365 spo login https://contoso-admin.sharepoint.com
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Files.Read'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Files.Read.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Sites.Read.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Files.ReadWrite.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Sites.ReadWrite.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Team.ReadBasic.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Channel.ReadBasic.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'ChannelMessage.Send'
@@ -73,7 +76,7 @@ react-follow-document | [André Lage](https://github.com/aaclage) (http://aaclag
 Version|Date|Comments
 -------|----|--------
 1.0|June 22, 2021|Initial release
-
+2.0|November 25, 2021|Change to use Microsoft Graph Follow
 
 
 ## Minimal Path to Awesome
@@ -93,7 +96,7 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- Change of SharePoint Social Feature **"Follow"** to follow key Documents for users in Modern Sites. 
+- Usage of Office > Favorites to follow key Documents from users in Modern Sites. 
 - Simple UX to manage **Followed** documents and report list followed documents across Tenant and access properties and Preview of Document.
 - Option to unfollow documents individually. 
 - Integration with other services of Office 365 such us (Preview, Microsoft Team Messages).  

@@ -9,6 +9,7 @@ import { ITag, } from "office-ui-fabric-react/lib/Pickers";
 import * as AdaptiveCards from "adaptivecards";
 import Graph from "../../Service/GraphService";
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { FollowDocument } from '../../models/followDocument';
 
 export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSendMessageProps, IfollowDocumentSendMessageState> {
     private card: any;
@@ -47,7 +48,7 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
             const HeadersendMessage = {
                 "body": {
                     "contentType": "html",
-                    "content": this._acContainer.innerHTML + `<a href="${(this.props.fileInfo.fields.ServerUrlProgid === undefined ? this.props.fileInfo.fields.Url : this.props.fileInfo.fields.ServerUrlProgid.substring(1))}">${this.props.fileInfo.fields.Title}</a>`
+                    "content": this._acContainer.innerHTML + `<a href="${this.props.fileInfo.WebFileUrl}">${this.props.fileInfo.Title}</a>`
                 }
             };
             const getresult = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/teams/${this.state.selectedTeamId}/channels/${this.state.selectedTeamChannelId}/messages`, HeadersendMessage);
@@ -67,7 +68,7 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
         return getresult;
     }
 
-    public showAdaptiveCard(fileInfo: any) {
+    public showAdaptiveCard(fileInfo: FollowDocument) {
 
         this.card = {
             "type": "AdaptiveCard",
@@ -86,7 +87,7 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
                             "items": [
                                 {
                                     "type": "Image",
-                                    "url": fileInfo.fields.IconUrl,
+                                    "url": fileInfo.IconUrl,
                                     "size": "Small",
                                     "spacing": "Medium"
                                 }
@@ -99,7 +100,7 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
                                 {
                                     "type": "TextBlock",
                                     "weight": "Bolder",
-                                    "text": fileInfo.fields.Title,
+                                    "text": fileInfo.Title,
                                     "wrap": true
                                 }
                             ],

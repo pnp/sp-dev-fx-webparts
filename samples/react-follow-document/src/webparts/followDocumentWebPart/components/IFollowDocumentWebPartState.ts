@@ -1,8 +1,9 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { FollowDocument } from "../models/followDocument";
 export interface IFollowDocumentWebPartState {
   siteId?: string;
   listId?: string;
-  Items: any;
+  Items: FollowDocument[];
   ItemsSearch?: any;
   ItemsGroup?: IDropdownOption[];
   previewImgUrl:string;

@@ -4,8 +4,9 @@ import styles from './FollowDocumentWebPart.module.scss';
 import { IFollowDocumentWebPartProps } from './IFollowDocumentWebPartProps';
 import { IFollowDocumentWebPartState } from './IFollowDocumentWebPartState';
 import { FollowDocumentGrid } from '../components/followDocumentGrid/index';
-import Rest from '../Service/Rest';
 import Graph from "../Service/GraphService";
+import { FollowDocument } from "../models/followDocument";
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 // Used to render list grid
 import {
@@ -62,52 +63,228 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
         visible: true,
       });
     }
-    //Load using Graph
-    this.getGraphFollowedDocs();
+    let followDocuments: FollowDocument[] = [];
+    this.getFollowDocuments(followDocuments).then((Items: FollowDocument[]) => {
+      //Order by Date
+      Items = Items.sort((a, b) => {
+        return b.followedDateTime.getTime() - a.followedDateTime.getTime();
+      });
+      let uniq = {};
+      let group: Array<IDropdownOption> = new Array<IDropdownOption>();
+      //Remove duplicated from array
+      let uniqueArray = [];
+      uniqueArray = Items.filter(obj => !uniq[obj.WebUrl] && (uniq[obj.WebUrl] = true));
+      group.push({ key: '0', text: 'All Sites' });
+      uniqueArray.forEach(Item => {
+        group.push({
+          key: Item.WebUrl,
+          text: "Site: " + Item.WebName,
+        });
+      });
+      this.setState({
+        Items: Items,
+        ItemsSearch: Items,
+        ItemsGroup: group,
+        visible: false,
+      });
+    });
+  }
+  /********************************************************************** */
+  private getFollowDocuments = async (followDocuments: FollowDocument[]): Promise<any> => {
+    const graphService: Graph = new Graph();
+    let graphData: any = [];
+    graphData = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/me/drive/following?$select=id,name,webUrl,parentReference,followed&Top=1000`, this.props.context);
+    if (graphData.value !== undefined) {
+      graphData.value.forEach(data => {
 
+        let followDocument: FollowDocument = {
+          ItemId: data.id,
+          Title: data.name,
+          WebFileUrl: data.webUrl,
+          DriveId: data.parentReference.driveId,
+          followedDateTime: new Date(data.followed.followedDateTime),
+        } as FollowDocument;
+        this.GetIcon(data.name).then(icon => {
+          followDocument.IconUrl = (this.props.context.pageContext.web.absoluteUrl + "/_layouts/15/images/lg_" + icon).replace("lg_iczip.gif", "lg_iczip.png").replace("lg_icmsg.png", "lg_icmsg.gif");
+        });
+        followDocuments.push(followDocument);
+      });
+      followDocuments = await this.getList(followDocuments);
+    }
+    return followDocuments;
   }
 
-  //get Web Name and Web Url of Document
-  private getSearchWebID = async (graphData: any[], webs: any[]): Promise<any[]> => {
+  private getList = async (followDocuments: FollowDocument[]): Promise<any> => {
+    let items: FollowDocument[] = [];
     const graphService: Graph = new Graph();
     const initialized = await graphService.initialize(this.props.context.serviceScope);
-    let queryString: string = "";
-    for (let index = 0; index < webs.length; index++) {
-      if (index === 0) {
-        queryString += "WebId:" + webs[index].replace('{', '').replace('}', '');
-      } else {
-        queryString += " OR WebId:" + webs[index].replace('{', '').replace('}', '') + " ";
+    if (initialized) {
+      let uniq = {};
+      let uniqueArray = [];
+      uniqueArray = followDocuments.filter(obj => !uniq[obj.DriveId] && (uniq[obj.DriveId] = true));
+      const requests = this.getBatchRequest(uniqueArray, "/me/drives/{driveId}/list?select=id,webUrl,parentReference", "GET");
+      for (let index = 0; index < requests.length; index++) {
+        const graphData: any = await graphService.postGraphContent("https://graph.microsoft.com/v1.0/$batch", requests[index]);
+        graphData.responses.forEach((data: any) => {
+          followDocuments.forEach((followDocument: FollowDocument) => {
+            let driveId: string = decodeURI(data.body["@odata.context"].substring(
+              data.body["@odata.context"].indexOf("drives('") + 8,
+              data.body["@odata.context"].lastIndexOf("'")
+            ));
+            if (followDocument.DriveId === driveId && (followDocument.ListId === undefined || followDocument.ListId === "")) {
+              followDocument.ListId = data.body.id;
+              followDocument.ItemProperties = data.body.webUrl + "/Forms/dispForm.aspx?ID=";
+              followDocument.SiteId = data.body.parentReference.siteId;
+              items.push(followDocument);
+            }
+          });
+        });
+
       }
     }
+    followDocuments = await this.getDriveItem(items);
+    return followDocuments;
+
+  }
+
+  private getDriveItem = async (followDocuments: FollowDocument[]): Promise<any> => {
+    const graphService: Graph = new Graph();
+    let items: FollowDocument[] = [];
+    const initialized = await graphService.initialize(this.props.context.serviceScope);
     if (initialized) {
-      const HeaderWeb = {
-        "requests": [
-          {
-            "entityTypes": [
-              "site"
-            ],
-            "query": {
-              "queryString": "" + queryString + "",
+      const requests = this.getBatchRequest(followDocuments, "/me/drives/{driveId}/items/{ItemID}?$select=id,content.downloadUrl,ListItem&expand=ListItem(select=id,webUrl),thumbnails(select=large)", "GET");
+      for (let index = 0; index < requests.length; index++) {
+        const graphData: any = await graphService.postGraphContent("https://graph.microsoft.com/v1.0/$batch", requests[index]);
+        graphData.responses.forEach((data: any) => {
+          followDocuments.forEach((followDocument: FollowDocument) => {
+
+            if (followDocument.ItemId === data.body.id && followDocument.Url === undefined) {
+              followDocument.id = data.body.listItem.id;
+              followDocument.Url = data.body.listItem.webUrl;
+              followDocument.Folder = data.body.listItem.webUrl.substring(0, data.body.listItem.webUrl.lastIndexOf("/") + 1);
+              followDocument.ItemProperties = followDocument.ItemProperties + data.body.listItem.id;
+              followDocument.DownloadFile = data.body["@microsoft.graph.downloadUrl"];
+              followDocument.Thumbnail = data.body.thumbnails.length > 0 ? data.body.thumbnails[0].large.url : "";
+              items.push(followDocument);
             }
-          }
-        ]
-      };
-      //Retrieve webNames
-      const tmpWebs = await graphService.postGraphContent("https://graph.microsoft.com/beta/search/query", HeaderWeb);
-      graphData.forEach(element => {
-        tmpWebs.value[0].hitsContainers[0].hits.forEach(Webelement => {
-          if (element.fields.WebId.replace('{', '').replace('}', '') === Webelement.resource.id.split(/[, ]+/).pop().toUpperCase()) {
-            element.WebName = Webelement.resource.name;
-            element.WebUrl = Webelement.resource.webUrl;
-          }
-        }
-        );
-      });
-      return graphData;
+          });
+        });
+      }
+      followDocuments = await this.getWeb(items);
+      return followDocuments;
     }
   }
 
-  private onActionTeamsClick = (action: any, ev: React.SyntheticEvent<HTMLElement>): void => {
+  private getWeb = async (followDocuments: FollowDocument[]): Promise<any> => {
+    const graphService: Graph = new Graph();
+    let items: FollowDocument[] = [];
+    const initialized = await graphService.initialize(this.props.context.serviceScope);
+    if (initialized) {
+      let uniq = {};
+      let uniqueArray = [];
+      uniqueArray = followDocuments.filter(obj => !uniq[obj.SiteId] && (uniq[obj.SiteId] = true));
+      const requests = this.getBatchRequest(uniqueArray, "/sites/{SiteId}?$select=id,siteCollection,webUrl,name,displayName", "GET");
+      for (let index = 0; index < requests.length; index++) {
+        const graphData = await graphService.postGraphContent("https://graph.microsoft.com/v1.0/$batch", requests[index]);
+        graphData.responses.forEach((data: any) => {
+          followDocuments.forEach((followDocument: FollowDocument) => {
+            if (followDocument.SiteId === data.body.id && (followDocument.Domain === undefined || followDocument.Domain === "")) {
+              followDocument.Domain = data.body.siteCollection.hostname;
+              followDocument.WebUrl = data.body.webUrl;
+              followDocument.WebName = data.body.displayName;
+              followDocument.documentCardActions = [
+                {
+                  iconProps: { iconName: 'TeamsLogo' },
+                  onClick: this.onActionTeamsClick.bind(this, followDocument),
+                  ariaLabel: 'Send to Teams',
+                },
+                {
+                  iconProps: { iconName: 'FabricFolder' },
+                  onClick: this.onActionFolderClick.bind(this, followDocument),
+                  ariaLabel: 'open Folder',
+                },
+                {
+                  iconProps: { iconName: 'FavoriteStarFill' },
+                  onClick: this.onActionUnfollowClick.bind(this, followDocument),
+                  ariaLabel: 'Unfollow Document',
+                },
+                {
+                  iconProps: { iconName: 'Info' },
+                  onClick: this.onActionPropertiesClick.bind(this, followDocument),
+                  ariaLabel: 'Document info',
+                },
+                {
+                  iconProps: { iconName: 'DocumentSearch' },
+                  onClick: this.onActionPanelClick.bind(this, followDocument),
+                  ariaLabel: 'Preview',
+                },
+
+              ];
+              items.push(followDocument);
+            }
+          });
+        });
+        return items;
+      }
+    }
+
+  }
+
+  public GetIcon = async (name: string): Promise<string> => {
+    var url = `${this.props.context.pageContext.web.absoluteUrl}/_api/web/maptoicon(filename='${name}',%20progid='',%20size=0)`;
+    const value = await this.props.context.spHttpClient.get(url, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse): Promise<{
+      value: string;
+    }> => {
+      return response.json();
+    })
+      .then((item: { value: string }) => {
+        return item.value;
+      });
+
+    return value;
+  }
+
+  public getBatchRequest = (followDocuments: FollowDocument[], graphQuery: string, method: string) => {
+    let HeaderDriveItemsId = {
+      "requests": []
+    };
+    let count = 1;
+    let Items = [];
+    followDocuments.forEach((element, index) => {
+      if (count < 21) {
+        HeaderDriveItemsId.requests.push({
+          "url": graphQuery.replace("{driveId}", element.DriveId).replace("{ItemID}", element.ItemId).replace("{SiteId}", element.SiteId),
+          "method": method,
+          "id": count
+        });
+        count++;
+      } else if (count === 21) {
+        Items.push(HeaderDriveItemsId);
+        HeaderDriveItemsId = {
+          "requests": []
+        };
+        count = 1;
+        HeaderDriveItemsId.requests.push({
+          "url": graphQuery.replace("{driveId}", element.DriveId).replace("{ItemID}", element.ItemId).replace("{SiteId}", element.SiteId),
+          "method": method,
+          "id": count
+        });
+        count++;
+      }
+      if (index === followDocuments.length - 1) {
+        Items.push(HeaderDriveItemsId);
+        HeaderDriveItemsId = {
+          "requests": []
+        };
+        count = 1;
+      }
+    });
+    return Items;
+  }
+
+  /************************************************************************************* */
+
+  private onActionTeamsClick = (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>): void => {
 
     const dialog: FollowDocumentDialog = new FollowDocumentDialog();
     dialog.initializedTeams(action, this.props.context, followType.SendTeams);
@@ -115,41 +292,12 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     ev.preventDefault();
   }
 
-  private getSearchListItemID = async (ListId: string): Promise<string> => {
-    const graphService: Graph = new Graph();
-    const initialized = await graphService.initialize(this.props.context.serviceScope);
-    if (initialized) {
-      const HeaderListId = {
-        "requests": [
-          {
-            "entityTypes": [
-              "list"
-            ],
-            "query": {
-              "queryString": "ListID:" + ListId + ""
-            },
-            "fields": [
-              "webUrl"
-            ]
-          }
-        ]
-      };
-      const tmpFileID = await graphService.postGraphContent("https://graph.microsoft.com/beta/search/query", HeaderListId);
-      console.log(tmpFileID);
-      return tmpFileID.value[0].hitsContainers[0].hits[0].resource.webUrl.substring(0, tmpFileID.value[0].hitsContainers[0].hits[0].resource.webUrl.lastIndexOf("/"));
-    }
-  }
-  private getListItemID = async (ListID, ItemID) => {
-    const _ListId = await this.getSearchListItemID(ListID);
-    const dialog: FollowDocumentDialog = new FollowDocumentDialog();
-    dialog.initialize(_ListId + "/dispForm.aspx?ID=" + ItemID, followType.ViewPropreties);
-  }
-
-  private _showPanel = (Url: string, Title: string): void => {
+  private _showPanel = (followDocument: FollowDocument): void => {
     this._renderPanelComponent({
+      FollowDocument: followDocument,
       context: this.props.context,
-      url: Url,
-      filename: Title,
+      url: followDocument.Url,
+      filename: followDocument.Title,
       isOpen: true,
     });
   }
@@ -159,15 +307,16 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     ReactDom.render(element, this._panelPlaceHolder);
   }
 
-  private onActionPropertiesClick = (action: any, ev: React.SyntheticEvent<HTMLElement>): void => {
+  private onActionPropertiesClick = (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>): void => {
     //Get Document Display Form List   
-    this.getListItemID(action.fields.ListId.replace('{', '').replace('}', ''), action.fields.ItemId);
+    const dialog: FollowDocumentDialog = new FollowDocumentDialog();
+    dialog.initialize(action.ItemProperties, followType.ViewPropreties);
     ev.stopPropagation();
     ev.preventDefault();
   }
 
-  private onActionFolderClick = (action: any, ev: React.SyntheticEvent<HTMLElement>): void => {
-    window.open(action.fields.Url.replace(action.fields.Title, ""), "_blank");
+  private onActionFolderClick = (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>): void => {
+    window.open(action.Url.replace(action.Title, ""), "_blank");
     ev.stopPropagation();
     ev.preventDefault();
   }
@@ -175,159 +324,43 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
   /**
    * Unfollow Option
    */
-  private onActionUnfollowClick = async (action: any, ev: React.SyntheticEvent<HTMLElement>) => {
+  private onActionUnfollowClick = async (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>) => {
     ev.stopPropagation();
     ev.preventDefault();
 
     const dialog: FollowDocumentDialog = new FollowDocumentDialog();
     dialog._followTypeDialog = followType.Unfollow;
-    dialog._filename = action.fields.Title;
+    dialog._filename = action.Title;
     dialog.show().then(async () => {
       if (dialog._followDocumentState) {
-        const restService: Rest = new Rest();
-        const Status = await restService.stopfollowing(
-          this.props.context.spHttpClient,
-          action.fields.Url,
-          this.props.context.pageContext.web.absoluteUrl,
-        );
-        if (Status) {
-          dialog._followDocumentState = false;
-          this.getListItems();
+        const graphService: Graph = new Graph();
+        const initialized = await graphService.initialize(this.props.context.serviceScope);
+        if (initialized) {
+          const graphData: any = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/drives/${action.DriveId}/items/${action.ItemId}/unfollow`, "");
+          if (graphData === undefined) {
+            dialog._followDocumentState = false;
+            this.getListItems();
+          }
         }
       }
     });
   }
 
-  private onActionPanelClick = async (action: any, ev: React.SyntheticEvent<HTMLElement>) => {
-    this._showPanel(action.fields.Url, action.fields.Title);
+  private onActionPanelClick = async (action: FollowDocument, ev: React.SyntheticEvent<HTMLElement>) => {
+    this._showPanel(action);
     ev.stopPropagation();
     ev.preventDefault();
   }
 
-  private getGraphFollowedDocs = async () => {
-    const GraphService: Graph = new Graph();
-    let DriveItem: any = [];
-
-    if (this.state.siteId === null) {
-      let graphData: any = await GraphService.getGraphContent("https://graph.microsoft.com/v1.0/me/drive/list", this.props.context);
-      this._siteId = graphData.parentReference.siteId;
-      DriveItem = await this.getListID(graphData.parentReference.siteId);
-    } else {
-      if (this.state.listId === null) {
-        DriveItem = await this.getListID(this.state.siteId);
-      } else {
-        DriveItem = await this.getFollowDocuments(this.state.siteId, this.state.listId);
-
-      }
-    }
-    let items = [];
-    DriveItem.forEach(element => {
-      if (element.fields.IconUrl.indexOf("lg_iczip.gif") > -1) {
-        element.fields.IconUrl = element.fields.IconUrl.replace("lg_iczip.gif", "lg_iczip.png");
-      }
-      if (element.fields.IconUrl.indexOf("lg_icmsg.png") > -1) {
-        element.fields.IconUrl = element.fields.IconUrl.replace("lg_icmsg.png", "lg_icmsg.gif");
-      }
-      items.push({
-        thumbnail: element.previewImg,
-        title: element.fields.Title,
-        profileImageSrc: element.fields.IconUrl,
-        url: (element.fields.ServerUrlProgid === undefined ? element.fields.Url : element.fields.ServerUrlProgid.substring(1)),
-        webName: element.WebName,
-        webUrl: element.WebUrl,
-        documentCardActions: [
-          {
-            iconProps: { iconName: 'TeamsLogo' },
-            onClick: this.onActionTeamsClick.bind(this, element),
-            ariaLabel: 'Send to Teams',
-          },
-          {
-            iconProps: { iconName: 'FabricFolder' },
-            onClick: this.onActionFolderClick.bind(this, element),
-            ariaLabel: 'open Folder',
-          },
-          {
-            iconProps: { iconName: 'FavoriteStarFill' },
-            onClick: this.onActionUnfollowClick.bind(this, element),
-            ariaLabel: 'Unfollow Document',
-          },
-          {
-            iconProps: { iconName: 'Info' },
-            onClick: this.onActionPropertiesClick.bind(this, element),
-            ariaLabel: 'Document info',
-          },
-          {
-            iconProps: { iconName: 'DocumentSearch' },
-            onClick: this.onActionPanelClick.bind(this, element),
-            ariaLabel: 'Preview',
-          },
-
-        ]
-      });
-
-    });
-    let uniq = {};
-    let group: Array<IDropdownOption> = new Array<IDropdownOption>();
-    //Remove duplicated from array
-    let uniqueArray = [];
-    uniqueArray = items.filter(obj => !uniq[obj.webUrl] && (uniq[obj.webUrl] = true));
-    group.push({ key: '0', text: 'All Sites' });
-    uniqueArray.forEach(element => {
-      group.push({
-        key: element.webUrl,
-        text: "Site: " + element.webName,
-      });
-    });
-    this.setState({
-      Items: items,
-      ItemsSearch: items,
-      ItemsGroup: group,
-      visible: false,
-      siteId: this._siteId,
-      listId: this._listId
-    });
-
-  }
-  private getListID = async (siteId: string): Promise<string> => {
-    const GraphService: Graph = new Graph();
-    let graphData: any = await GraphService.getGraphContent(`https://graph.microsoft.com/v1.0/sites/${siteId}/lists?$select=id&$filter=displayName eq 'Social'`, this.props.context);
-    this._listId = graphData.value[0].id;
-    const DriveItem: string = await this.getFollowDocuments(siteId, graphData.value[0].id);
-    return DriveItem;
-  }
-
-  private getFollowDocuments = async (siteId: string, listId: string): Promise<any> => {
-    const GraphService: Graph = new Graph();
-    let graphData: any = [];
-    graphData = await GraphService.getGraphContent(`https://graph.microsoft.com/v1.0/sites/${siteId}/Lists/${listId}/items?expand=fields(select=ItemId,ListId,SiteId,webId,Title,Url,ServerUrlProgid,IconUrl,File_x0020_Type.progid)&$filter=fields/ItemId gt -1`, this.props.context);
-    graphData.value = graphData.value.sort((a, b) => {
-      return b.id - a.id;
-    });
-
-    //Get Web site Name 
-    graphData = await this.getFollowDocumentsWebName(graphData);
-    return graphData;
-  }
-
-  private getFollowDocumentsWebName = async (graphData) => {
-    let _webs = [];
-    graphData.value.forEach(element => {
-      if (_webs.indexOf(element.fields.WebId) === -1) {
-        _webs.push(element.fields.WebId);
-      }
-    });
-    graphData = await this.getSearchWebID(graphData.value, _webs);
-    return graphData;
-  }
   public render(): React.ReactElement<IFollowDocumentWebPartProps> {
     //Filter Search Text
     const checkSearchDrive = (SearchQuery: string) => {
       let items = [];
       if (this._selectedGroup === "0") {
-        items = this.state.Items.filter(item => (item.title.toLowerCase().indexOf(SearchQuery.toLowerCase()) > -1));
+        items = this.state.Items.filter(item => (item.Title.toLowerCase().indexOf(SearchQuery.toLowerCase()) > -1));
 
       } else {
-        items = this.state.Items.filter(item => (item.title.toLowerCase().indexOf(SearchQuery.toLowerCase()) > -1 && item.webUrl.toLowerCase().indexOf(this._selectedGroup.toLowerCase()) > -1));
+        items = this.state.Items.filter(item => (item.Title.toLowerCase().indexOf(SearchQuery.toLowerCase()) > -1 && item.WebUrl.toLowerCase().indexOf(this._selectedGroup.toLowerCase()) > -1));
       }
       this.setState({
         ItemsSearch: items,
@@ -339,7 +372,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
         items = this.state.Items;
 
       } else {
-        items = this.state.Items.filter(item => (item.webUrl.toLowerCase().indexOf(this._selectedGroup.toLowerCase()) > -1));
+        items = this.state.Items.filter(item => (item.WebUrl.toLowerCase().indexOf(this._selectedGroup.toLowerCase()) > -1));
       }
       this.setState({
         ItemsSearch: items,
@@ -353,7 +386,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
           ItemsSearch: this.state.Items,
         });
       } else {
-        const items = this.state.Items.filter(item => item.webUrl.toLowerCase().indexOf(selectedOption.key.toString().toLowerCase()) > -1);
+        const items = this.state.Items.filter(item => item.WebUrl.toLowerCase() === selectedOption.key.toString().toLowerCase());
         this.setState({
           ItemsSearch: items,
         });
@@ -405,31 +438,26 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
         <div className={styles.grid}>
           <FollowDocumentGrid
             items={this.state.ItemsSearch}
-            onRenderGridItem={(item: any, finalSize: ISize, isCompact: boolean) => this._onRenderGridItem(item, finalSize, isCompact)}
+            onRenderGridItem={(item, finalSize: ISize, isCompact: boolean) => this._onRenderGridItem(item, finalSize, isCompact)}
           />
         </div>
       </>
     );
   }
-  private _onRenderGridItem = (item: any, finalSize: ISize, isCompact: boolean): JSX.Element => {
+  private _onRenderGridItem = (item: FollowDocument, finalSize: ISize, isCompact: boolean): JSX.Element => {
 
-    return <div
-      className={styles.documentTile}
-      data-is-focusable={true}
-      role="listitem"
-      aria-label={item.title}
-    >
+    return <div className={styles.documentTile} data-is-focusable={true} aria-label={item.Title} >
       <DocumentCard
         type={isCompact ? DocumentCardType.compact : DocumentCardType.normal}
 
       >
-        <div style={{ cursor: 'pointer' }} onClick={() => window.open(item.url, '_blank')}>
-          <DocumentCardImage height={100} imageFit={ImageFit.center} imageSrc={item.profileImageSrc} />
+        <div style={{ cursor: 'pointer' }} onClick={() => window.open(item.WebFileUrl, '_blank')}>
+          <DocumentCardImage height={100} imageFit={ImageFit.center} imageSrc={item.IconUrl} />
         </div>
-        {!isCompact && <DocumentCardLocation location={item.webName} onClick={() => window.open(item.webUrl, '_blank')} />}
+        {!isCompact && <DocumentCardLocation location={item.WebName} onClick={() => window.open(item.WebUrl, '_blank')} />}
         <DocumentCardDetails>
           <DocumentCardTitle
-            title={item.title}
+            title={item.Title}
             shouldTruncate={true}
           />
 
