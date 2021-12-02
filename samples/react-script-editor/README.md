@@ -140,7 +140,7 @@ If you however want to allow the web part for non-script sites like Office 365 G
 ```
 
 ### Deploy tenant wide
-By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
+By default you have to install this web part per site collection where you want it available. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
 ```
 "skipFeatureDeployment": true
 ```
