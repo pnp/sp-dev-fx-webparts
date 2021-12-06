@@ -41,7 +41,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-Not applicable.
+Download this [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me)
 
 
 ## Features
