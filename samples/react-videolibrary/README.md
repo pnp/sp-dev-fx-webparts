@@ -116,7 +116,7 @@ to display videos stored on an O365 Video Channel.
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-videolibrary" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-videolibrary" />
 
 
 

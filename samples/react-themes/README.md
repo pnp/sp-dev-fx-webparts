@@ -72,4 +72,4 @@ npm i -g gulp
 gulp
 ```
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-themes" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-themes" />

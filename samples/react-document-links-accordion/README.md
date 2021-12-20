@@ -86,4 +86,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-document-links-accordion&template=question.yml&sample=react-document-links-accordion&authors=@joaojmendes%20@Ravikadri&title=react-document-links-accordion%20-%20).
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-documents-links-accordion" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-documents-links-accordion" />

@@ -70,4 +70,4 @@ gulp serve
 ----------
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-3rd-party-api" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/react-3rd-party-api" />

@@ -68,4 +68,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-migration)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-migration)

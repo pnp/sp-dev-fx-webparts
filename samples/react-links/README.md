@@ -75,4 +75,4 @@ Version|Date|Comments
 1.1|June 2018|Updated collection descriptions
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-links" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-links" />
