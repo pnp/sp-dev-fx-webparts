@@ -88,4 +88,4 @@ react-invitation-manager | Гиулиано де-Лука ([@giuleon](https://tw
 - взаимодействие с Microsoft Graph с помощью REST API
 - использование библиотеки ADAL JS с веб-частями SharePoint Framework, созданными с помощью React
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

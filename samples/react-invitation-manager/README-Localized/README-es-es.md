@@ -88,4 +88,4 @@ El elemento web de ejemplo en esta solución ilustra los siguientes conceptos en
 - La comunicación con Microsoft Graph mediante la API de REST.
 - Cómo usar la biblioteca ADAL JS con elementos web de SharePoint Framework creados con React.
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

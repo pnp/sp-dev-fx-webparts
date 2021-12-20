@@ -89,4 +89,4 @@ El elemento web de ejemplo en esta solución ilustra los siguientes conceptos en
 - Cómo comunicarse con Microsoft Graph mediante la API de REST
 - Cómo usar la biblioteca MSAL JS con elementos web de SharePoint Framework creados con React.
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msal-msgraph)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)
