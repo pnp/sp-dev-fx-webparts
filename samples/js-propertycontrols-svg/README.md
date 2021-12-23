@@ -68,4 +68,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-propertycontrols-svg" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-propertycontrols-svg" />

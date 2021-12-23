@@ -58,7 +58,7 @@ It also introduces React Functional Components which offers a simpler way of bui
 * Functional Component
 * Adding State
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-component" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component" />
 
 ## HelloWorldWebPart.ts Simplification
 
@@ -88,4 +88,4 @@ In the react-functional-component directory run `npm install` to resolve all the
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-component" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component" />

@@ -11,8 +11,7 @@
     "creationDateTime": "2019-09-05",
     "updateDateTime": "2019-09-05",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -30,6 +29,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/screens/4.png?raw=true",
         "alt": "Web/Mobile Camera Demo"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/YIaCEkjCTKc",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

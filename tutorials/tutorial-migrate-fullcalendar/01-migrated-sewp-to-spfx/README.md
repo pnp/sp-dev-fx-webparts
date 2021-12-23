@@ -1,6 +1,6 @@
 ## fullcalendar-taskscalendar
 
-This is where you include your WebPart documentation.
+This is where you include your web part documentation.
 
 ### Building the code
 

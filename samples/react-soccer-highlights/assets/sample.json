@@ -11,8 +11,7 @@
     "creationDateTime": "2020-10-30",
     "updateDateTime": "2020-10-30",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -46,6 +45,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-soccer-highlights/assets/SoccerHighlights.png?raw=true",
         "alt": "Soccer Highlights"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/LZcFEVV7J94",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

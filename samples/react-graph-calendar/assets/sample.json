@@ -11,8 +11,7 @@
     "creationDateTime": "2020-11-06",
     "updateDateTime": "2020-11-06",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -44,6 +43,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-calendar/assets/react-graph-calendar-teams.gif?raw=true",
         "alt": "Graph Calendar Web Part"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/1R1Ed3rdwts",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

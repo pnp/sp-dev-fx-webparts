@@ -11,8 +11,7 @@
     "creationDateTime": "2020-01-20",
     "updateDateTime": "2020-01-20",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -30,6 +29,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png",
         "alt": "Twitter Timeline"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/e8K_Hu4-Bx8",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

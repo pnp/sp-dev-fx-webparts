@@ -89,4 +89,4 @@ Once the npm packages are installed, run the command to preview your web parts i
 gulp serve --nobrowser
 ```
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorial-migrate-fullcalendar" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/tutorial-migrate-fullcalendar" />

@@ -11,8 +11,7 @@
     "creationDateTime": "2020-04-23",
     "updateDateTime": "2020-04-23",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -34,6 +33,18 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif",
         "alt": "SPUPS Property Sync"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/BaNWS0hzUpQ",
+        "alt": "Community demo of the web part"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/plS_1BsQAto",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

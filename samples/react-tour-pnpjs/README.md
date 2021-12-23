@@ -2,7 +2,7 @@
 
 ## Summary
 
-A SPFx WebPart using [PnP/PnPjs](https://pnp.github.io/pnpjs/), [@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/) and [ReactTourJS](https://reactour.js.org/). 
+A SPFx web part using [PnP/PnPjs](https://pnp.github.io/pnpjs/), [@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/) and [ReactTourJS](https://reactour.js.org/). 
 It allows to create a configurable tutorial/tour of a SharePoint modern page for adoption scope.
 When you start the tour, a modal will be displayed, with a description of the highlighted area, and you can go to the next step or go back, thus navigating inside the page. The user will see the descriptions and will have the opportunity to preview the advice that the publisher thought for him.
 The property pane shows dinamically all webparts in the current page, using [PnP/PnPjs](https://pnp.github.io/pnpjs/) to make easy page tour configuration.
@@ -65,7 +65,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 * How to use [@pnp/spfx-property-controls - PropertyFieldCollectionData](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/).
 * How to extend with custom render [@pnp/spfx-property-controls - PropertyFieldCollectionData](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/).
-* How to retrieve all SPFx WebPart in the current page using [PnP/PnPjs](https://pnp.github.io/pnpjs/)
+* How to retrieve all SPFx web part in the current page using [PnP/PnPjs](https://pnp.github.io/pnpjs/)
 * How to include external React Component [ReactTourJS](https://reactour.js.org/)
 
 
@@ -74,4 +74,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-tour-pnpjs" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/react-tour-pnpjs" />

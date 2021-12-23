@@ -11,8 +11,7 @@
     "creationDateTime": "2018-12-03",
     "updateDateTime": "2018-12-03",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -36,6 +35,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PreClick.jpg?raw=true",
         "alt": "Dynamic Bundling \u0026 Loading of SPFx Packages"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/Gxsau1yhHZE",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
