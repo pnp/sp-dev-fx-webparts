@@ -1,0 +1,25 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.taxonomyFileExplorer {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+    color: "[theme: themePrimary, default: #0078d7]";
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg6;
+  }
+  
+  ul {
+    list-style: none;
+    padding-inline-start: 0px;
+  }
+}
