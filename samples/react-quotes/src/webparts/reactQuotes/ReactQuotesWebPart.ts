@@ -1,17 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'ReactQuotesWebPartStrings';
 import ReactQuotes from './components/ReactQuotes';
 import { IReactQuotesProps } from './components/IReactQuotesProps';
-import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
-import { PropertyPaneToggle } from '@microsoft/sp-property-pane';
+import { PropertyFieldColorPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
+import { PropertyPaneToggle, IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
 
 export interface IReactQuotesWebPartProps {
   description: string;
@@ -25,7 +20,7 @@ export interface IReactQuotesWebPartProps {
 export default class ReactQuotesWebPart extends BaseClientSideWebPart<IReactQuotesWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IReactQuotesProps > = React.createElement(
+    const element: React.ReactElement<IReactQuotesProps> = React.createElement(
       ReactQuotes,
       {
         description: this.properties.description,
