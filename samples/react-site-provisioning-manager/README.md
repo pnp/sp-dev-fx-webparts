@@ -166,4 +166,4 @@ Open the web part configurations and set the values:
 2. Get provisioning function URL: Go to the Azure functions in Azure portal and click on "GetProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 3. Apply provisioning function URL: Go to the Azure functions in Azure portal and click on "ApplyProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />

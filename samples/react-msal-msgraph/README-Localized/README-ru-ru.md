@@ -89,4 +89,4 @@ react-msal-msgraph| Елио Струйф (MVP [U2U](https://www.u2u.be), [@elio
 - взаимодействие с Microsoft Graph с помощью REST API
 - использование библиотеки MSAL JS с веб-частями SharePoint Framework, созданными с помощью React
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msal-msgraph)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)

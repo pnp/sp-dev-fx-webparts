@@ -94,4 +94,4 @@ angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 1. 使用 src -> angularMsGraph -> GraphHelper.ts 下 GraphHelper.
 ts 文件中的已注册 Azure 应用的应用程序 ID 和重定向 url 替换 **aad** 和 **redirect\_uri** 占位符值
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

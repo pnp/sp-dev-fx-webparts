@@ -98,4 +98,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-my-events" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-my-events" />

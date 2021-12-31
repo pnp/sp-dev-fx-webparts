@@ -101,4 +101,4 @@ Column Name|Field Type
 - This web part allows to search within questions and answers which are stored in a SharePoint FAQ list.
 - Sorting is enabled on both the category & Question
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-FAQApp" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-FAQApp" />

@@ -143,4 +143,4 @@ For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-add-js-css-ref" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-js-css-ref" />

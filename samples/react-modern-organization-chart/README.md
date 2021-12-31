@@ -102,4 +102,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-modern-organization-chart)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-organization-chart)

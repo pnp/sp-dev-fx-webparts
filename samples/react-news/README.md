@@ -102,4 +102,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-news&template=question.yml&sample=react-news&authors=@ReactIntern&title=react-news%20-%20).
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/React-News" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/React-News" />

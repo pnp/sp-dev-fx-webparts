@@ -52,4 +52,4 @@ Version|Date|Comments
 1.0|May 2018|Initial release
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-personal-calendar" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-personal-calendar" />

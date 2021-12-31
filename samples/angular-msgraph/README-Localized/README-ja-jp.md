@@ -94,4 +94,4 @@ angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 1. **aad** および **redirect_uri** プレースホルダー値をアプリケーション ID に置き換え、
 GraphHelper.ts ファイルの登録済み Azure アプリケーションの URL を src -> angularMsGraph -> GraphHelper.ts でリダイレクトします。
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
