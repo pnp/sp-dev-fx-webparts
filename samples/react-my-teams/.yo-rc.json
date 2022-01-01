@@ -10,7 +10,7 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.7.1",
+    "version": "1.13.1",
     "libraryName": "my-teams",
     "libraryId": "9bf27890-01d8-4041-8030-72831ed570aa",
     "packageManager": "npm",

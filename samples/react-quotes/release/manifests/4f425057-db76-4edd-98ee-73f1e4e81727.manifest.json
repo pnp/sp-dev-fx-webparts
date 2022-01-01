@@ -1,0 +1,81 @@
+{
+  "id": "4f425057-db76-4edd-98ee-73f1e4e81727",
+  "alias": "ReactQuotesWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "react-quotes"
+      },
+      "description": {
+        "default": "react-quotes description"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "react-quotes"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "react-quotes-web-part",
+    "scriptResources": {
+      "react-quotes-web-part": {
+        "type": "path",
+        "path": "react-quotes-web-part_df447f7dfa0047d6531b.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.13.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.13.1"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.13.1"
+      },
+      "ReactQuotesWebPartStrings": {
+        "type": "path",
+        "path": "ReactQuotesWebPartStrings_en-us_536e65149b0acf4d52c0043073b9fc59.js"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "en-US": "PropertyControlStrings_en-us_d0be7d4a6e93bb93cbdbfdf9b68777c5.js",
+          "fr-FR": "PropertyControlStrings_fr-fr_0cf2232498fe89a65605c40b32bf6e62.js",
+          "nl-NL": "PropertyControlStrings_nl-nl_e4dbd4e9a5ee42128c79fbe62d0ebd9a.js",
+          "ru-RU": "PropertyControlStrings_ru-ru_497f3b438575ed05ac7c3922fd60aefe.js",
+          "zh-CN": "PropertyControlStrings_zh-cn_11ef263e542c6dec3bb45f7f32177f8b.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us_d0be7d4a6e93bb93cbdbfdf9b68777c5.js"
+      }
+    }
+  }
+}
