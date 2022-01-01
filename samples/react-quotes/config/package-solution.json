@@ -3,9 +3,16 @@
   "solution": {
     "name": "react-quotes-client-side-solution",
     "id": "aa9211b8-e9b8-44bf-a804-af2db58bc03e",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Zach Roberts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-quotes.sppkg"

@@ -9,12 +9,11 @@ This web part displays a quote of the day by querying a third-party api or can d
 
 # Compatibility
 
-![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
@@ -31,6 +30,7 @@ react-quotes | Zach Roberts
 
 Version|Date|Comments
 -------|----|--------
+1.1| December 31, 2021| Upgraded for SPFx v1.13.1
 1.0| November 11, 2019| Initial Release
 
 ## Minimal Path to Awesome
