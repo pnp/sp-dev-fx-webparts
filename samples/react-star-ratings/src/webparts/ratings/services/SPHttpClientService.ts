@@ -13,6 +13,8 @@ interface IRetedBy {
 }
 
 interface IRating {
+  AverageRating: number;
+  RatingCount: number;
   RatedBy: IRetedBy[];
   Ratings: string;
 }
@@ -58,10 +60,10 @@ export default class SPSPHttpClientService {
     return value;
   }
 
-  public async getRatings(): Promise<Map<string, number>> {
+  public async getRating(loginName: string): Promise<[number, number, number]> {
     const response = await this.client.get(
       `${this.url}/_api/web/lists('${this.listId}')/items(${this.itemId})` +
-      '?$select=Ratings,RatedBy/Id,RatedBy/Name' +
+      '?$select=AverageRating,RatingCount,Ratings,RatedBy/Id,RatedBy/Name' +
       '&$expand=RatedBy',
       SPHttpClient.configurations.v1);
     if (!response.ok) {
@@ -69,15 +71,25 @@ export default class SPSPHttpClientService {
     }
     const json = await response.json();
     const value = json as IRating;
-    if (value.Ratings) {
-      return new Map(value.Ratings
-        .slice(0, -1)
-        .split(',')
-        .map(item => Number(item))
-        .map((item, index) => ([value.RatedBy[index].Name, item])));
-    } else {
-      return new Map();
+    const ratings = value.Ratings ? value.Ratings.slice(0, -1).split(',') : [];
+    const average = value.AverageRating || 0;
+    const count = value.RatingCount || 0;
+    let rating = 0;
+    if (value.RatedBy) {
+      for (let index = 0; index < value.RatedBy.length; index += 1) {
+        const ratedBy = value.RatedBy[index];
+        if (ratedBy.Name === loginName) {
+          if (index < ratings.length) {
+            rating = Number(ratings[index]);
+          }
+        }
+      }
     }
+    return [
+      average,
+      count,
+      rating
+    ];
   }
 
   public async setRating(rating: number): Promise<void> {
