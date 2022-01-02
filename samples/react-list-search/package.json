@@ -23,7 +23,7 @@
     "@pnp/graph": "2.4.0",
     "@pnp/sp": "2.0.8",
     "@pnp/spfx-controls-react": "2.4.0",
-    "@pnp/spfx-property-controls": "2.5.0",
+    "@pnp/spfx-property-controls": "3.3.0",
     "office-ui-fabric-react": "7.174.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
