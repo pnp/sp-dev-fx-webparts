@@ -823,7 +823,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
                 PropertyFieldSitePicker('sites', {
                   label: strings.SitesSelector,
                   initialSites: this.properties.sites || [],
-                  context: this.context,
+                  context: this.context as any,
                   multiSelect: true,
                   onPropertyChange: (propertyPath, oldValue, newValue) => this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue),
                   properties: this.properties,
