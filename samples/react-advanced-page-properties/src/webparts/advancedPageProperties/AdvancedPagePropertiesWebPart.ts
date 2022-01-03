@@ -68,7 +68,7 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
 
   private async getPageProperties(): Promise<void> {
     Log.Write("Getting Site Page fields...");
-    const list = await sp.web.lists.ensureSiteAssetsLibrary();
+    const list = await sp.web.lists.ensureSitePagesLibrary();
     const fi = await list.fields();
 
     this.availableProperties = [];
