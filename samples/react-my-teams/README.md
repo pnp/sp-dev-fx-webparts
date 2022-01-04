@@ -30,6 +30,8 @@ The web part can be configured to open the team on the web browser or client app
 | Solution       | Author(s)      |
 | -------------- | -------------- |
 | react-my-teams | Joel Rodrigues |
+| react-my-teams | [Yves Habersaat](https://github.com/yhabersaat) |
+
 
 ## Version history
 

@@ -9,7 +9,7 @@
       "This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app."
     ],
     "creationDateTime": "2019-02-26",
-    "updateDateTime": "2019-02-26",
+    "updateDateTime": "2021-12-18",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.7.1"
+        "value": "1.13.1"
       }
     ],
     "thumbnails": [
@@ -38,6 +38,12 @@
         "pictureUrl": "https://github.com/joelfmrodrigues.png",
         "name": "Joel Rodrigues",
         "twitter": "joelfmrodrigues"
+      },
+      {
+        "gitHubAccount": "yhabersaat",
+        "pictureUrl": "https://github.com/yhabersaat.png",
+        "name": "Yves Habersaat",
+        "twitter": "yhabersaat"
       }
     ],
     "references": [

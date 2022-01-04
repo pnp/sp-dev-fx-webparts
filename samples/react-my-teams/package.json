@@ -31,7 +31,6 @@
     "@types/webpack-env": "1.13.1",
     "@voitanos/jest-preset-spfx-react16": "^1.1.0",
     "ajv": "~5.2.2",
-    "gulp": "4.0.2",
     "gulp-sequence": "^1.0.0",
     "jest": "^23.6.0"
   }
