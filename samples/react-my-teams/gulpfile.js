@@ -3,8 +3,8 @@
 
 // check if gulp dist was called
 if (process.argv.indexOf('dist') !== -1) {
-    // add ship options to command call
-    process.argv.push('--ship');
+  // add ship options to command call
+  process.argv.push('--ship');
 }
 
 const path = require('path');
@@ -25,5 +25,13 @@ gulp.task('dist', gulpSequence('clean', 'bundle', 'package-solution'));
  * Custom Framework Specific gulp tasks
  */
 
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
+
+  result.set('serve', result.get('serve-deprecated'));
+
+  return result;
+};
 
 build.initialize(gulp);
