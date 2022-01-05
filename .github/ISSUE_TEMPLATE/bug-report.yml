@@ -142,7 +142,7 @@ body:
     required: true
   attributes:
     label: Node.js version
-    placeholder: v10.23.1
+    placeholder: E.g.: v10.23.1
     description: |
         Which version of Node.js are you using?
         
