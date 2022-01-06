@@ -7,19 +7,30 @@ import { IPropertyPaneConfiguration, IPropertyPaneField, PropertyPaneTextField, 
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
+import { isEmpty } from '@microsoft/sp-lodash-subset';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
-    public _propertyPaneHelper;
+    public _scriptEditorPropertyPane;
+    public _disposeScriptEditorPropertyPane;
     private _unqiueId;
 
     constructor() {
         super();
         this.scriptUpdate = this.scriptUpdate.bind(this);
+        this.disposeScriptUpdate = this.disposeScriptUpdate.bind(this);
+        this.executeScript = this.executeScript.bind(this);
+        this.evalScript = this.evalScript.bind(this);
+        this.cleanUp = this.cleanUp.bind(this);
     }
 
     public scriptUpdate(_property: string, _oldVal: string, newVal: string) {
         this.properties.script = newVal;
-        this._propertyPaneHelper.initialValue = newVal;
+        this._scriptEditorPropertyPane.initialValue = newVal;
+    }
+
+    public disposeScriptUpdate(_property: string, _oldVal: string, newVal: string) {
+        this.properties.disposeScript = newVal;
+        this._disposeScriptEditorPropertyPane.initialValue = newVal;
     }
 
     public render(): void {
@@ -49,6 +60,15 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         }
     }
 
+    public onDispose(): void {
+        this.cleanUp();
+        if (!isEmpty(this.properties.disposeScript)) {
+            this.domElement.innerHTML = this.properties.disposeScript;
+            this.executeScript(this.domElement);
+            this.cleanUp();
+        }
+    }
+
     private async renderEditor() {
         // Dynamically load the editor pane to reduce overall bundle size
         const editorPopUp = await import(
@@ -59,6 +79,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             editorPopUp.default,
             {
                 script: this.properties.script,
+                disposeScript: this.properties.disposeScript,
                 title: this.properties.title,
                 propPaneHandle: this.context.propertyPane,
                 key: "pnp" + new Date().getTime()
@@ -78,11 +99,22 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor'
         );
 
-        this._propertyPaneHelper = editorProp.PropertyFieldCodeEditor('scriptCode', {
+        this._scriptEditorPropertyPane = editorProp.PropertyFieldCodeEditor('scriptCode', {
             label: 'Edit HTML Code',
             panelTitle: 'Edit HTML Code',
             initialValue: this.properties.script,
             onPropertyChange: this.scriptUpdate,
+            properties: this.properties,
+            disabled: false,
+            key: 'codeEditorFieldId',
+            language: editorProp.PropertyFieldCodeEditorLanguages.HTML
+        });
+
+        this._disposeScriptEditorPropertyPane = editorProp.PropertyFieldCodeEditor('disposeScriptCode', {
+            label: 'Edit dispose code',
+            panelTitle: 'Edit dispose Code',
+            initialValue: this.properties.disposeScript,
+            onPropertyChange: this.disposeScriptUpdate,
             properties: this.properties,
             disabled: false,
             key: 'codeEditorFieldId',
@@ -108,7 +140,8 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 onText: "Enabled",
                 offText: "Disabled"
             }),
-            this._propertyPaneHelper
+            this._scriptEditorPropertyPane,
+            this._disposeScriptEditorPropertyPane
         ];
 
         if (this.context.sdks.microsoftTeams) {
@@ -144,7 +177,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         for (let i = 0; i < elem.attributes.length; i++) {
             const attr = elem.attributes[i];
             // Copies all attributes in case of loaded script relies on the tag attributes
-            if(attr.name.toLowerCase() === "onload"  ) continue; // onload handled after loading with SPComponentLoader
+            if (attr.name.toLowerCase() === "onload") continue; // onload handled after loading with SPComponentLoader
             scriptTag.setAttribute(attr.name, attr.value);
         }
 
@@ -164,8 +197,19 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         headTag.insertBefore(scriptTag, headTag.firstChild);
     }
 
-    private nodeName(elem, name) {
-        return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
+    // Clean up added script tags in case of smart re-load        
+    private cleanUp(): void {
+        if (this.domElement) {
+            this.domElement.innerHTML = "";
+        }
+        const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
+        let scriptTags = headTag.getElementsByTagName("script");
+        for (let i = 0; i < scriptTags.length; i++) {
+            const scriptTag = scriptTags[i];
+            if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {
+                headTag.removeChild(scriptTag);
+            }
+        }
     }
 
     // Finds and executes scripts in a newly added element's body.
@@ -173,16 +217,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     //
     // Argument element is an element in the dom.
     private async executeScript(element: HTMLElement) {
-        // clean up added script tags in case of smart re-load        
-        const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        let scriptTags = headTag.getElementsByTagName("script");
-        for (let i = 0; i < scriptTags.length; i++) {
-            const scriptTag = scriptTags[i];
-            if(scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId ) {
-                headTag.removeChild(scriptTag);
-            }            
-        }
-
         if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {
             window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
         }
