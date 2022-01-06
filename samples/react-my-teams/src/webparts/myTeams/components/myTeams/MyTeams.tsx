@@ -3,7 +3,6 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import styles from '../myTeams/MyTeams.module.scss';
 import { IMyTeamsProps, IMyTeamsState } from '.';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { ITeam, IChannel } from '../../../../shared/interfaces';
 
 export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {

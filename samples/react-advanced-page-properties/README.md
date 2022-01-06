@@ -49,6 +49,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|March 30, 2021|Initial release
 1.0.1|September 22, 2021|Added support for multi-language sites
+1.0.2|December 24, 2021|Fix retrieving fields from SitePages
 
 ## Minimal Path to Awesome
 
