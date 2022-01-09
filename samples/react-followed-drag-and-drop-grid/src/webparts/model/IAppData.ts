@@ -1,5 +1,5 @@
-import ISiteItem from './ISiteItem';
+import IFollowedSite from "./IFollowedSite";
 
 export default interface IAppData {
-    userFallowedSites: ISiteItem[];
+    userFollowedSites: IFollowedSite[];
 }

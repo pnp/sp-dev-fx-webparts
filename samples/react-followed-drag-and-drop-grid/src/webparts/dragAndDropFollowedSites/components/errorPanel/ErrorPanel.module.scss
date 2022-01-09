@@ -1,0 +1,39 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "../../styles/Main.module.scss";
+
+.panel {
+    @include ms-font-xl;
+    margin-top: $marginStep;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    background-color: $neutralLight;
+    color: $neutralSecondary;
+
+    i {
+        @include ms-font-su;
+    }
+
+    .refreshButtonRow {
+        text-align: right;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: $marginStep;
+        margin-bottom: $marginStep;
+        margin-top: $marginStep;
+    }
+
+    .console {
+        background-color: $black;
+        color: $white;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        @include ms-font-s;
+        text-align: left;
+        padding: 5px 10px 5px 10px;
+    }
+}

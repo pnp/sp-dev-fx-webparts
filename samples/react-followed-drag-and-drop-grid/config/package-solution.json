@@ -6,7 +6,7 @@
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": true,
+    "isDomainIsolated": false,
     "developer": {
       "name": "",
       "websiteUrl": "",

@@ -1,7 +1,11 @@
 declare interface IDragAndDropFollowedSitesWebPartStrings {
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  Title: string;
+  Loading: string;
+  ErrorText: string;
+  ErrorPanelRefresh: string;
+  ErrorCouldNotGetData: string;
+  NoItemsText: string;
 }
 
 declare module 'DragAndDropFollowedSitesWebPartStrings' {

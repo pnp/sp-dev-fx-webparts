@@ -2,37 +2,48 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+![image](./assets/sorting.gif)
 
-[picture of the solution in action, if possible]
+This webpart is a good example (starting point) for a solution to implement alternative view for user followed sites (or any kind of links). The webpart uses Microsoft Graph so it presents how to define needed web api permissions in package-solution and use MS Graph API endpoints.
+
+![image](./assets/mainImage.png)
+how it looks on SP site
+
+![image](./assets/appInTeams.png)
+how it looks in Teams
+
+![image](./assets/nothingToFollow.png)
+when user does not have any followed sites
+
+Another cool feature is also done using MS Graph in order to save or update the order of the links as a .json file in special approot folder which is kept on each individual user OneDrive. Thanks to that the webpart may keep the user order of the links in one place where it may be easily used in a SharePoint page or in Teams.
+![image](./assets/linkSavedInJsonFile.png)
+![image](./assets/dataAsJson.png)
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.13-green.svg)
+![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
 ## Prerequisites
 
-> Any special pre-requisites?
+As this solution uses Microsoft Graph to get user followed sites it is required to approve all web api permission requests in SharePoint Admin page https://YourCoolTenantNameHere-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details (name, company, twitter alias with link)
+react-followed-drag-and-drop-grid | [Adam Wójcik](https://github.com/Adam-it)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
+1.0|January 09, 2022|Initial release
 
 ## Disclaimer
 
@@ -45,10 +56,12 @@ Version|Date|Comments
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+  - `npm install`
+  - `gulp serve`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
+  - Add to AppCatalog and deploy
+  - Approve the MS Graph API permissions in SharePoint Admin page
 
 ## Features
 
@@ -56,13 +69,9 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- how to use Microsoft Graph api and get user followed sites or use special approot on user OneDrive
+- how to save/update data in a json file special approot folder on user OneDrive as a place to keep data a use in SharePoint or Teams
+- how to create a simple alternative drag and drop view for links
 
 ## References
 
