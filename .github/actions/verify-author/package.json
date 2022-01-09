@@ -1,0 +1,36 @@
+{
+  "name": "triage-issues",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TypeScript template action",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "all": "npm run build && npm run package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actions/typescript-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.5",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@vercel/ncc": "^0.31.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-github": "^4.3.2",
+    "js-yaml": "^4.1.0",
+    "typescript": "^4.4.4"
+  }
+}

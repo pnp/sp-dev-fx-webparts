@@ -11,8 +11,7 @@
     "creationDateTime": "2021-02-23",
     "updateDateTime": "2021-08-02",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -134,6 +133,12 @@
         "order": 116,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
         "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "video",
+        "order": 117,
+        "url": "https://www.youtube.com/embed/gWrvC-0HF4A",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

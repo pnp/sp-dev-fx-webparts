@@ -11,8 +11,7 @@
     "creationDateTime": "2020-06-17",
     "updateDateTime": "2020-06-17",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -68,6 +67,12 @@
         "order": 105,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/UserStatistics.png?raw=true",
         "alt": "React AppInsights Dashboard"
+      },
+      {
+        "type": "video",
+        "order": 106,
+        "url": "https://www.youtube.com/embed/ynwGKrvIimo",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

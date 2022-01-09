@@ -11,8 +11,7 @@
     "creationDateTime": "2019-11-07",
     "updateDateTime": "2019-11-07",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -34,6 +33,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif",
         "alt": "Site Collection App Catalogs"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/rNypp40HpdI",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [

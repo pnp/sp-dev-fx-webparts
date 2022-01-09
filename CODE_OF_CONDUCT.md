@@ -6,4 +6,4 @@ For more information, see the [Code of Conduct FAQ](https://opensource.microsoft
 
 Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/CODE_OF_CONDUCT.md" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/CODE_OF_CONDUCT.md" />

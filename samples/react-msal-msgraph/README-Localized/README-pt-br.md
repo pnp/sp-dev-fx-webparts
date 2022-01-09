@@ -89,4 +89,4 @@ A web part de exemplo nesta solução ilustra os seguintes conceitos sobre a est
 - comunicar-se com o Microsoft Graph usando sua API REST
 - usar a biblioteca do JS do MSAL com web parts do SharePoint Framework construída usando o React
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msal-msgraph)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)

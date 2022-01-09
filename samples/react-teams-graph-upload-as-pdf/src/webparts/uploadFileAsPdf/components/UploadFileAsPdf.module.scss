@@ -1,0 +1,31 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.uploadFileAsPdf {
+  .fileCanvas {
+    position: absolute;
+    top: 10;
+    border: 1px solid black;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+  .background {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    .inner {
+      position: absolute;
+      top: 45%;
+      left: 45%;
+      color: #ccc;
+      text-align: center;
+      .icon {
+        font-size: 80px;
+      }
+    }
+  }
+  .highlight {
+    background-color: rgba(211, 211, 211, 0.5);
+  }
+}

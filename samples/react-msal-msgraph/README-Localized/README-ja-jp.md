@@ -89,4 +89,4 @@ react-msal-msgraph|Elio Struyf (MVP、[U2U](https://www.u2u.be)、[@eliostruyf](
 - REST API を使用した Microsoft Graph との通信
 - React を使用して構築された SharePoint Framework Web パーツを使用した MSAL JS ライブラリの使用
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msal-msgraph)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)

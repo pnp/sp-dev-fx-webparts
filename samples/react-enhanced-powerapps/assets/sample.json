@@ -11,8 +11,7 @@
     "creationDateTime": "2020-07-26",
     "updateDateTime": "2020-07-26",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -66,6 +65,12 @@
         "order": 106,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step2.png?raw=true",
         "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "video",
+        "order": 107,
+        "url": "https://www.youtube.com/embed/L_ArTxSQKgo",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

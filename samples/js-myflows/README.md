@@ -82,5 +82,5 @@ Version|Date|Comments
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-myflows" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-myflows" />
 

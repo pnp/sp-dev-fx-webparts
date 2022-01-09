@@ -7,7 +7,7 @@ business requirement if you need to implement CAPTCHA in SPFx webpart.
 
 * Please refer this [link](https://www.c-sharpcorner.com/article/google-recaptcha-in-sharepoint-framework-webpartspfx/) to know 'How to build this from Scratch'
 
-![Webpart in action](screens/WebpartInAction.gif?raw=true "Webpart in action")
+![web part in action](screens/WebpartInAction.gif?raw=true "web part in action")
 
 
 # Compatibility
@@ -82,4 +82,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-recaptcha" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-recaptcha" />

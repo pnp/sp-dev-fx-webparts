@@ -11,8 +11,7 @@
     "creationDateTime": "2019-10-30",
     "updateDateTime": "2019-10-30",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -36,6 +35,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart.png?raw=true",
         "alt": "MS Teams Channels and Tabs from Modern Team site"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/jUesdAdHRng",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

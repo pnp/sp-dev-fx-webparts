@@ -11,8 +11,7 @@
     "creationDateTime": "2020-08-12",
     "updateDateTime": "2020-08-12",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -30,6 +29,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif",
         "alt": "Smart Profile Photo Editor"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/FQITfL_EfaU",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

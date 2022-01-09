@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "upload-file-as-pdf-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/uploadFileAsPdf/UploadFileAsPdfWebPart.js",
+          "manifest": "./src/webparts/uploadFileAsPdf/UploadFileAsPdfWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "UploadFileAsPdfWebPartStrings": "lib/webparts/uploadFileAsPdf/loc/{locale}.js"
+  }
+}

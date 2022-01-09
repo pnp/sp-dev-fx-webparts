@@ -60,4 +60,4 @@ https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />

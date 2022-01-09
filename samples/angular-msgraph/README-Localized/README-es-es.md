@@ -94,4 +94,4 @@ Versión | Fecha |Comentarios
 1. Reemplace los valores de los marcadores de posición **aad** y **redirect_uri** con el Id.
 de la aplicación y la dirección URL de redireccionamiento de la aplicación de Azure registrada en el archivo GraphHelper.ts en src -> angularMsGraph -> GraphHelper.ts
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

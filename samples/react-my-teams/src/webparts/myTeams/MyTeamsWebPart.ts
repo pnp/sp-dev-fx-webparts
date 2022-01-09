@@ -1,12 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
-
+import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import * as strings from 'MyTeamsWebPartStrings';
 import { MyTeams, IMyTeamsProps } from './components/myTeams';
 import { MSGraphClient } from '@microsoft/sp-http';
@@ -22,14 +18,8 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPar
   private _teamsService: ITeamsService;
 
   public async onInit(): Promise<void> {
-
-    if (DEBUG && Environment.type === EnvironmentType.Local) {
-      console.log("Mock data service not implemented yet");
-    } else {
-
-      this._graphClient = await this.context.msGraphClientFactory.getClient();
-      this._teamsService = new TeamsService(this._graphClient);
-    }
+    this._graphClient = await this.context.msGraphClientFactory.getClient();
+    this._teamsService = new TeamsService(this._graphClient);
 
     return super.onInit();
   }

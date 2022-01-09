@@ -11,8 +11,7 @@
     "creationDateTime": "2020-10-30",
     "updateDateTime": "2020-10-30",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -36,6 +35,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
         "alt": "SPFx web part to Test PnpJS SharePoint Methods"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/mdgkyxeayY0",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

@@ -95,4 +95,4 @@ Version|Date|Comments
 1.1|June 2018|Updated collection descriptions
 1.2|October 2018|Updated documentation
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-lob-integration" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-lob-integration" />

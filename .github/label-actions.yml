@@ -9,6 +9,7 @@ status:invalid-issue:
     The new issue template includes sections for you to fill out.
         
     Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
+
   # Close the issue
   close: true
 
@@ -19,6 +20,7 @@ status:incomplete-submission:
     Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward.
         
     The new issue template includes sections for you to fill out. Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
+
   # Close the issue
   close: true
 
@@ -29,6 +31,7 @@ status:wrong-repo:
     Thank you for your submission, but this issues list is intended only for issues related to the samples in this repository.
         
     For general SPFx development issues, you may want to try to create issues in the [SP-Dev-Docs repository](https://github.com/SharePoint/sp-dev-docs/issues/new)
+
   # Close the issue
   close: true
 
@@ -36,14 +39,20 @@ status:wrong-repo:
 status:wrong-author:
   # Post a comment
   comment: |+
-    Thank you for your submission, but you appear to have tagged the wrong author.
-    
-    To help increase your chances of getting assistance from the original authors of the sample, you should make sure to @mention the actual authors -- not the repository maintainers.
+    ## Wrong or missing author @mentions
+
+    Thank you for your submission, but you appear to have forgotten to @mention the sample author(s).
+
+    To help increase your chances of getting assistance from the original authors of the sample, you should make sure to @mention the actual authors (and not the repository maintainers).
 
     Please note that the sample authors will not get notified about this issue unless you update this issue accordingly.    
 
-    For more information on how to create a good issue, refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
-  
+    You can find the author(s) of each sample in the sample's `README.md`, under **Solution**.
+
+    We'll automatically close this issue in 7 days unless you update the issue.
+
+    For more information on how to create a good issue, refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)  
+
   # Close the issue
   close: false
 
@@ -51,13 +60,12 @@ status:wrong-author:
 # Dealing with wrong versions of Node issues
 status:node-compatibility:
   # Post a comment
-  comment: >
+  comment: |+
     Thank you for your issue. It looks like the web part sample you're trying to use is not compatible with the version of Node.js that you're running in your environment.
-    
     
     Please refer to the [SPFx Compatibility Matrix](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/compatibility) to make sure that you're using a version of Node.js that is compatible with the version of SPFx the sample uses.
     
-    
     We'll close this issue, but if you run into further issues after you have made changes to your environment, please do not hesitate to open a new issue so we can help you further.
+
   # Close the issue
   close: true

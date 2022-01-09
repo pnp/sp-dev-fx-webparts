@@ -1,0 +1,31 @@
+.termLabel {
+    li {
+        list-style: none;
+    }
+    .liFilled {
+        border-left-color: "[theme: themePrimary, default: #0078d7]";
+        border-left-style: dotted;
+        border-left-width: 1px;
+    }
+    ul {
+        padding-inline-start: 16px;
+    }
+    .label {
+        margin-bottom: 4px;
+        cursor: pointer;
+    }
+    .checkedLabel {
+        border: 1px dotted "[theme: themePrimary, default: #0078d7]";
+    }
+    .icon {
+        margin-right: 6px;
+        cursor: pointer;
+    }
+    .emptyicon {
+        margin-right: 15px;
+    }
+    .fileCount {
+        font-weight: 600;
+        padding-left: 18px;
+    }
+}
