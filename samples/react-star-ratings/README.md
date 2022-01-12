@@ -38,14 +38,14 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 Solution|Author(s)
 --------|---------
-react-star-ratings | [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+react-star-ratings|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.1|January 12, 2022|Updated to retrieve values from API
 1.0|October 7, 2021|Initial release
-
 
 ## Help
 

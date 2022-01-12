@@ -19,7 +19,7 @@ interface IRating {
   Ratings: string;
 }
 
-export default class SPSPHttpClientService {
+export default class SPHttpClientService {
 
   private client: SPHttpClient;
   private url: string;

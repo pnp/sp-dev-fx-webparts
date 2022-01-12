@@ -34,7 +34,7 @@ export default class RatingsWebPart extends BaseClientSideWebPart<IRatingsWebPar
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse('1.1');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
