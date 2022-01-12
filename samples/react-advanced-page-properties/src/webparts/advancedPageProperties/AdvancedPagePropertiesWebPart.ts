@@ -75,7 +75,7 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     Log.Write(`${fi.length.toString()} fields retrieved!`);
     fi.forEach((f) => {
       if (!f.FromBaseType && !f.Hidden && f.SchemaXml.indexOf("ShowInListSettings=\"FALSE\"") === -1
-          && f.TypeAsString !== "Boolean" && f.TypeAsString !== "Note" && f.TypeAsString !== "User") {
+          && f.TypeAsString !== "Boolean" && f.TypeAsString !== "Note") {
         this.availableProperties.push({ key: f.InternalName, text: f.Title });
         Log.Write(f.TypeAsString);
       }

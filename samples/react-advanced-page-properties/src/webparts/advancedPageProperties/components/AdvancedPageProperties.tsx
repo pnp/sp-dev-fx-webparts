@@ -44,7 +44,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
       var allValues: any = {};
       const sitePagesList = await sp.web.lists.ensureSitePagesLibrary();
       if (props.context.pageContext.listItem !== undefined && props.context.pageContext.listItem !== null) {
-        allValues = await sitePagesList.items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).get();
+        allValues = await sitePagesList.items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).fieldValuesAsText();
       }
 
       for (let i = 0; i < props.selectedProperties.length; i++) {
@@ -57,19 +57,21 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
 
         // Establish the values array
         var values: any[] = [];
-        if (allValues.hasOwnProperty(prop)) {
+        if (allValues.hasOwnProperty(field.InternalName)) {
           switch (field.TypeAsString) {
+            case "UserMulti":
             case "TaxonomyFieldTypeMulti":
+              values = _.clone(allValues[field.InternalName].split(";"));
+              break;
             case "MultiChoice":
-              values = _.clone(allValues[prop]);
+              values = _.clone(allValues[field.InternalName].split(","));
               break;
             case "Thumbnail":
-              values.push(JSON.parse(allValues[prop]));
+              values.push(JSON.parse(allValues[field.InternalName]));
               break;
-
             default:
               // Default behavior is to treat it like a string
-              values.push(allValues[prop]);
+              values.push(allValues[field.InternalName]);
               break;
           }
         }
@@ -124,53 +126,27 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
    */
    const RenderPagePropValue = (prop: PageProperty) => {
     var retVal = _.map(prop.values, (val) => {
-      if (val !== null) {
+      if (val !== null && val !== "") {
         switch (prop.info.TypeAsString) {
           case "URL":
+            const url_parts = val.split(",");
             return (
-              <span className={styles.urlValue}><a href={val.Url} target="_blank" style={{color: semanticColors.link}}>{val.Description}</a></span>
+              <span className={styles.urlValue}><a href={url_parts[0]} target="_blank" style={{color: semanticColors.link}}>{url_parts[1]}</a></span>
             );
           case "Thumbnail":
             return (
               <span><img className={styles.imgValue} src={val.serverRelativeUrl} /></span>
             );
           case "Number":
-            return (
-              <span className={styles.plainValue}>{(prop.info["ShowAsPercentage"] === true ? Number(val).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) : (prop.info["CommaSeparator"] === true ? val.toLocaleString('en') : val.toString()))}</span>
-            );
           case "Currency":
-            return (
-              <span className={styles.plainValue}>{(prop.info["CommaSeparator"] === true ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val) : Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', useGrouping: false }).format(val))}</span>
-            );
           case "DateTime":
-            //,"",,
-            switch (prop.info["DateFormat"]) {
-              case "StandardUS":
-                return (
-                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString()}</span>
-                );
-              case "ISO8601":
-                const d = new Date(val);
-                return (
-                  <span className={styles.plainValue}>{`${d.getFullYear().toString()}-${d.getMonth()}-${d.getDate()}`}</span>
-                );
-              case "DayOfWeek":
-                return (
-                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                );
-              case "MonthSpelled":
-                return (
-                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                );
-              default:
-                return (
-                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString()}</span>
-                );
-            }
+            return (
+              <span className={styles.plainValue}>{val}</span>
+            );
           case "TaxonomyFieldTypeMulti":
           case "TaxonomyFieldType":
             return (
-              <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val.Label}</span>
+              <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
             );
           default:
             return (
