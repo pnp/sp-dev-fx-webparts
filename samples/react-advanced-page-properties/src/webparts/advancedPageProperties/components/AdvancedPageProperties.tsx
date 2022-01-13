@@ -131,7 +131,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
           case "URL":
             const url_parts = val.split(",");
             return (
-              <span className={styles.urlValue}><a href={url_parts[0]} target="_blank" style={{color: semanticColors.link}}>{url_parts[1]}</a></span>
+              <span className={styles.urlValue}><a href={url_parts[0]} target="_blank" rel="noopener noreferrer" style={{color: semanticColors.link}}>{url_parts[1]}</a></span>
             );
           case "Thumbnail":
             return (
