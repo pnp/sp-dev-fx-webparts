@@ -3,9 +3,35 @@
   "solution": {
     "name": "react-async-await-sp-pnp-js-client-side-solution",
     "id": "c3bd0bfa-1bee-4af0-ad3d-a72d02b4dc7c",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "isDomainIsolated": false,
-    "includeClientSideAssets": true
+    "includeClientSideAssets": true,
+    "features": [
+      {
+        "title": "react-async-await-sp-pnp-js Feature",
+        "description": "The feature that activates elements of the react-async-await-sp-pnp-js solution.",
+        "id": "f603896e-4507-4787-a6bf-1f44b985645e",
+        "version": "1.0.0.0"
+      }
+    ],
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "M365PnPJS"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-async-await-sp-pnp-js description"
+      },
+      "longDescription": {
+        "default": "react-async-await-sp-pnp-js description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-async-await-sp-pnp-js.sppkg"
