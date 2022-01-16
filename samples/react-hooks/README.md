@@ -1,4 +1,4 @@
-# React Hooks Form WebPart
+# React Hooks Form Web Part
 
 ## Summary
 The `React Hooks web part` is an example of how to implement Hooks in SPFx. 

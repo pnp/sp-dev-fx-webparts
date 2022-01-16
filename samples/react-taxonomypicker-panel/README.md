@@ -4,7 +4,7 @@
 Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy.
 
 
-![TaxonomyPickerPanel webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/TaxonomyPanelPicker/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif)
+![TaxonomyPickerPanel web part](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/TaxonomyPanelPicker/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif)
 
 
 ## Compatibility
@@ -53,7 +53,7 @@ Version|Date|Comments
 
 - Navigate to the file 'src/webparts/components/ReactTaxonomyPickerpanel.tsx'
 
-- In the RENDER method of the webpart, a custom taxonomy picker component is used. Please replace the "TermSetId" property with the desired term set id in your tenant.
+- In the RENDER method of the web part, a custom taxonomy picker component is used. Please replace the "TermSetId" property with the desired term set id in your tenant.
 
 - in the command line run:
   - `npm install`

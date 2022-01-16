@@ -4,7 +4,7 @@
 
 This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components. In this example, a Service Scope is shared globally that components can consume to call the Microsoft Graph, it also uses Functional Components replacing the more commonly seen Class Component approach.
 
-![webpart](webpart.png)
+![web part](webpart.png)
 
 ## Compatibility
 

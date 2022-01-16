@@ -68,7 +68,7 @@ Version|Date|Comments
     - `npm i`
     - `gulp serve`
 - Navigate to the local or hosted version of the SharePoint workbench.(`https://<your_tenant>.sharepoint.com/sites/<your_site>/_layouts/15/workbench.aspx`).
-- Add the **React AppSettings Webpart** web part.
+- Add the **React AppSettings Web part** web part.
 
 ## Features
 

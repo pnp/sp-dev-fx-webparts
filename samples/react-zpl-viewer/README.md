@@ -41,7 +41,7 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve --nobrowser`
-* Browse to the workbench `https://yourtenant.sharepoint.com/sites/yoursite/_layout/15/workbench.aspx` and add the webpart
+* Browse to the workbench `https://yourtenant.sharepoint.com/sites/yoursite/_layout/15/workbench.aspx` and add the web part
 
 ## Features
 

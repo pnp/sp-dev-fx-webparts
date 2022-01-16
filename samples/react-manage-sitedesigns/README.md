@@ -112,7 +112,7 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components.
 
 Solution|Author(s)
 --------|---------
-Site Design Manager WebPart|João Mendes
+Site Design Manager Web Part|João Mendes
 
 ## Version history
 

@@ -21,8 +21,8 @@ extensions:
 
 | Name | Image |Description |  
 |:------------:|------------|------------|
-|Bot Framework v4 WebPart|![bot framework v3 web part](./assets/bot-frameworkv4-webpart-preview.png)|A web part that uses the [botframework-webchat module](https://www.npmjs.com/package/botframework-webchat) to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.|
-|Bot Framework v3 WebPart|![bot framework v4 web part](./assets/bot-framework-webpart-preview.png)|A web part that acts as a web chat component for bot's built on the Microsoft Bot Framework using the DirectLine API. When sending messages the web part uses the username of the currently logged in user. The web part has settings for color for branding purposes.|
+|Bot Framework v4 Web Part|![bot framework v3 web part](./assets/bot-frameworkv4-webpart-preview.png)|A web part that uses the [botframework-webchat module](https://www.npmjs.com/package/botframework-webchat) to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.|
+|Bot Framework v3 Web Part|![bot framework v4 web part](./assets/bot-framework-webpart-preview.png)|A web part that acts as a web chat component for bot's built on the Microsoft Bot Framework using the DirectLine API. When sending messages the web part uses the username of the currently logged in user. The web part has settings for color for branding purposes.|
 
 You can see this web part sample, including a sample VS 2015 bot application in practice from [PnP SPFx Special Interest Group recording](https://youtu.be/Tv03CU_PmVs?t=1329)
 where sample was demonstrated.
@@ -65,7 +65,7 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 Solution|Author(s)
 --------|---------
 bot-framework | [Gary Pretty](https://github.com/garypretty) ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-|webpart v4| [Stephan Bisser](https://github.com/stephanbisser) ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
+|web part v4| [Stephan Bisser](https://github.com/stephanbisser) ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
 |Upgrade to SPFx 1.10.0| [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
 
 ## Version history

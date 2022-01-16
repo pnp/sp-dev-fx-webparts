@@ -34,7 +34,7 @@ Version|Date|Comments
 1.0|September 27, 2021|Initial release
 
 ## Prerequisites
-There are no prerequisites to use this webpart.
+There are no prerequisites to use this web part.
 
 
 ## Minimal Path to Awesome
@@ -51,7 +51,7 @@ There are no prerequisites to use this webpart.
     * in the command line run:
         * `npm install`
         * `gulp serve --nobrowser`
-    * browse to your hosted workbench and add the webpart.
+    * browse to your hosted workbench and add the web part.
 
 ## Features
 

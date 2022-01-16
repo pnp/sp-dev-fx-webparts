@@ -125,7 +125,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 10th, 2017|Initial release
 1.0.0.1|August 8th, 2017|Updated SPFx version and CSS loading
-1.0.0.2|October 4th, 2017|Updated SPFx version, bundle Office UI Fabric and CSS in webpart
+1.0.0.2|October 4th, 2017|Updated SPFx version, bundle Office UI Fabric and CSS in web part
 1.0.0.3|January 10th, 2018|Updated SPFx version, added remove padding property and refactoring
 1.0.0.4|February 14th, 2018|Added title property for edit mode and documentation for enabling the web part on Group sites / tenant wide
 1.0.0.5|March 8th, 2018|Added support for loading scripts which are AMD/UMD modules. Added support for classic _spPageContextInfo. Refactoring.

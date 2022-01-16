@@ -1,4 +1,4 @@
-# Followed Sites webpart
+# Followed Sites web part
 
 > NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/followedSites.
 

@@ -3,7 +3,7 @@
 ## Summary
 The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title "Birthdays."
 
-Now is possible to the user select an image for the background in the properties of the webpart.
+Now is possible to the user select an image for the background in the properties of the web part.
 
 
 There is an Azure function available that get AAD user birthdays, this function creates a list on the tenant root site, if it does not exist.

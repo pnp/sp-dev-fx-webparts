@@ -89,7 +89,7 @@ Column Name|Field Type
 `QuestionSortOrder`|Number
 
 
-- Edit the webpart, set the  **ListName** in the property pane 
+- Edit the web part, set the  **ListName** in the property pane 
 
 ## Features
 

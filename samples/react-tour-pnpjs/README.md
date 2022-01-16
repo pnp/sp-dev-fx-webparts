@@ -1,4 +1,4 @@
-# react-tour-pnpjs - SharePoint modern page tutorial: SPFx Tour sample WebPart.
+# react-tour-pnpjs - SharePoint modern page tutorial: SPFx Tour sample Web Part.
 
 ## Summary
 

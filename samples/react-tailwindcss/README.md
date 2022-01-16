@@ -25,7 +25,7 @@ This project shows how to integrate [Tailwind CSS](https://tailwindcss.com/) fra
 - Using CSS custom properties to manage in Tailwind CSS Classes the Theme Variant into sections
 - Avoid writing SASS but only use Tailwind CSS classes to style components
 
-![WebPart](./assets/react-tailwindcss-overview.gif)
+![Web Part](./assets/react-tailwindcss-overview.gif)
 
 ## Compatibility
 

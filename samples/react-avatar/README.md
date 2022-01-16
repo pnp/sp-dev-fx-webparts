@@ -48,8 +48,8 @@ This is a sample web part that helps user create their avatar and save as profil
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Calling Graph API my Photo to store the image in SPFx webpart
+* Using react framework in SPFx web part
+* Calling Graph API my Photo to store the image in SPFx web part
 * Usage of Material UI Tab and Dialog
 * Usage of [avataaars](https://getavataaars.com/)
 

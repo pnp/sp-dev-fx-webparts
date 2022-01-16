@@ -5,7 +5,7 @@
 This is a sample web part that displays currently logged in user's OneDrive's file,
 This web part can be useful on the Intranet home page which can be added as My OneDrive files for quick reference of user's OneDrive files.
 
-![WebPart in Action](./assets/MyOneDriveInAction.gif)
+![Web Part in Action](./assets/MyOneDriveInAction.gif)
 
 
 ## Features

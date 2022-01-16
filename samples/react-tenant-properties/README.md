@@ -57,7 +57,7 @@ The Web Part Use MSGraph API and need to SharePoint Administrator approve de sco
 
 Solution|Author(s)
 --------|---------
-Tenant Properties WebPart|[João Mendes](https://github.com/joaojmendes)
+Tenant Properties Web Part|[João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

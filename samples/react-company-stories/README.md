@@ -1,4 +1,4 @@
-# Company Stories Webpart
+# Company Stories Web part
 
 ## Summary
 

@@ -15,7 +15,7 @@ Main features include:
 - Optional View All link in header to point to custom feed source
 - Embedded feed rendering with optional parameters
 -- Feed result layout options including optional display of item publish date and description
--- Demostration of color picker property for color control of certain aspects of webpart
+-- Demostration of color picker property for color control of certain aspects of web part
 - Custom feed rendering using local or remote handlebar template
 
 ![RSS Reader](./assets/react-rss-reader.gif)

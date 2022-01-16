@@ -23,7 +23,7 @@ This is a sample web part that displays currently logged in user's Microsoft Tea
 
 * Web Part in Action
 
-![WebPart in Action](./assets/myteamsmessage.gif)
+![Web Part in Action](./assets/myteamsmessage.gif)
 
 * Configurable Web Part Properties
 
@@ -90,8 +90,8 @@ Configurable Web part Properties
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Calling Teams Graph API in SPFx webpart
+* Using react framework in SPFx web part
+* Calling Teams Graph API in SPFx web part
 * Usage of PnP Tree View  Control
 * Usage of Fluent UI/Office UI Fabric Controls
 
