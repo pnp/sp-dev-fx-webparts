@@ -502,21 +502,27 @@
       },
       {
         "type": "image",
-        "order": 100,
+        "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Stack-Style-Default.png",
         "alt": "Stack style"
       },
       {
         "type": "image",
-        "order": 100,
+        "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Several-Sites-Author-Hidden.png",
         "alt": "Several sites author hidden"
       },
       {
         "type": "image",
-        "order": 100,
+        "order": 103,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Pagination.png",
         "alt": "Pagination"
+      },
+      {
+        "type": "video",
+        "order": 104,
+        "url": "https://www.youtube.com/embed/DMZkZmJhLf0", 
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

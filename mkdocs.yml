@@ -51,7 +51,7 @@ markdown_extensions:
   - toc:
       permalink: true
 extra:
-  telemetry: 'telemetry.sharepointpnp.com/sp-dev-fx-webparts'
+  telemetry: 'pnptelemetry.azurewebsites.net/sp-dev-fx-webparts'
   twitter_site: '@m365pnp'
   media_url: https://pnp.github.io/sp-dev-fx-webparts/img/pnp-samples-white.png
   twitter_media_url: https://pnp.github.io/sp-dev-fx-webparts/img/pnp-samples-logo-twitter.png
