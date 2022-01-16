@@ -10,7 +10,7 @@
     "@microsoft/sp-core-library": "~1.4.1",
     "@microsoft/sp-webpart-base": "~1.4.1",
     "@types/webpack-env": "~1.13.5",
-    "handlebars": "^4.0.11"
+    "handlebars": "^4.7.7"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
