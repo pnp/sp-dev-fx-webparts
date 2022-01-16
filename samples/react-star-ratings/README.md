@@ -14,7 +14,7 @@ This web part demonstrates *Star Ratings* capablities to SharePoint News. The "R
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires the ratings feature from SharePoint Online")
-![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Hosted Workbench Not Compatible](https://img.shields.io/badge/Hosted%20Workbench-Not-Compatible-red.svg  "This web part needs to run on a page")
 
 
 ## Prerequisites
@@ -38,14 +38,14 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 Solution|Author(s)
 --------|---------
-react-star-ratings | [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+react-star-ratings|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.1|January 12, 2022|Updated to retrieve values from API
 1.0|October 7, 2021|Initial release
-
 
 ## Help
 
