@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "my-approvals",
+    "id": "35ebc939-0c57-456f-9fea-bc8f2bae3e58",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Flow Service",
+        "scope": "Approvals.Read.All"
+      },
+      {
+        "resource": "Microsoft Flow Service",
+        "scope": "Flows.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/my-approvals.sppkg"
+  }
+}
