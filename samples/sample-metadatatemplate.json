@@ -8,8 +8,8 @@
     "longDescription": [
       "YOUR-SHORT-DESCRIPTION"
     ],
-    "creationDateTime": "2021-11-01",
-    "updateDateTime": "2021-11-01",
+    "creationDateTime": "2022-12-25",
+    "updateDateTime": "2022-12-31",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13.0"
+        "value": "1.13.1"
       }
     ],
     "thumbnails": [

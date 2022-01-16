@@ -28,7 +28,7 @@ You can add as many screen shots as you'd like to help users understand your web
 
 ## Compatibility
 
-![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -108,8 +108,8 @@ folder name | [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https
 
 Version|Date|Comments
 -------|----|--------
-1.1|November 1, 2021|Update comment
-1.0|October 29, 2021|Initial release
+1.1|November 1, 2022|Update comment
+1.0|October 29, 2022|Initial release
 
 ## Prerequisites
 
