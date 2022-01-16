@@ -93,7 +93,7 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
   private getFollowDocuments = async (followDocuments: FollowDocument[]): Promise<any> => {
     const graphService: Graph = new Graph();
     let graphData: any = [];
-    graphData = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/me/drive/following?$select=id,name,webUrl,parentReference,followed&Top=1000`, this.props.context);
+    graphData = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/me/drive/following?$select=id,name,webUrl,parentReference,followed,size&Top=1000&Filter=size%20ne%200`, this.props.context);
     if (graphData.value !== undefined) {
       graphData.value.forEach(data => {
 

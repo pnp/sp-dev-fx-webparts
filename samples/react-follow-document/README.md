@@ -77,7 +77,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|June 22, 2021|Initial release
 2.0|November 25, 2021|Change to use Microsoft Graph Follow
-
+3.0|January 13, 2022|Graph fixes
 
 ## Minimal Path to Awesome
 
@@ -104,10 +104,6 @@ This extension illustrates the following concepts:
 ## Video
 
 [![Follow Documents in Modern Workspace with SPFx](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=Wx7nqlP3WQU "Follow Documents in Modern Workspace with SPFx")
-
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
 ## Help
