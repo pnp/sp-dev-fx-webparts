@@ -1,0 +1,14 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "../../styles/Main.module.scss";
+
+.panel {
+    @include ms-font-xl;
+    margin-top: $marginStep;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    background-color: $neutralLight;
+    color: $neutralSecondary;
+}
