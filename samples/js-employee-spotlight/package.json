@@ -6,6 +6,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "@microsoft/generator-sharepoint": "^1.10.0",
     "@microsoft/sp-client-base": "~1.0.0",
     "@microsoft/sp-core-library": "~1.0.0",
     "@microsoft/sp-webpart-base": "~1.0.0",

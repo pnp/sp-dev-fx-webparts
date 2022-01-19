@@ -1,0 +1,95 @@
+{
+  "id": "3d2f89fa-3b9e-4876-82c2-c15ff82190f1",
+  "alias": "EnhancedPowerAppsWebPart",
+  "componentType": "WebPart",
+  "version": "1.1.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportsFullBleed": true,
+  "supportsThemeVariants": true,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Enhanced PowerApps"
+      },
+      "description": {
+        "default": "Embed Power Apps in a SharePoint page, and add theme supports and dynamic properties"
+      },
+      "officeFabricIconFontName": "PowerApps",
+      "properties": {
+        "layout": "AspectRatio",
+        "aspectratio": "16:9"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "enhanced-power-apps-web-part",
+    "scriptResources": {
+      "enhanced-power-apps-web-part": {
+        "type": "path",
+        "path": "enhanced-power-apps-web-part_70b4999c2fa33df5299a.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.13.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.13.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.8.5"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.8.5"
+      },
+      "EnhancedPowerAppsWebPartStrings": {
+        "type": "path",
+        "path": "EnhancedPowerAppsWebPartStrings_en-us_9f26998d31be70447931c8cf0c029bf6.js"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "en-US": "PropertyControlStrings_en-us_bc1ee3a7fc7a99fa73b1046ded6d6ec4.js",
+          "fr-FR": "PropertyControlStrings_fr-fr_cf0a6c9832ab7cfe0823d96e0862d8da.js",
+          "nl-NL": "PropertyControlStrings_nl-nl_76710d6b135805b79e286430fb3dcfe7.js",
+          "no": "PropertyControlStrings_no_d3c24be5b19da4d977239b37f50eec60.js",
+          "ru-RU": "PropertyControlStrings_ru-ru_3129604be645add05328df8271e318f2.js",
+          "zh-CN": "PropertyControlStrings_zh-cn_11ef263e542c6dec3bb45f7f32177f8b.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us_bc1ee3a7fc7a99fa73b1046ded6d6ec4.js"
+      }
+    }
+  }
+}
