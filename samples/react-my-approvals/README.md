@@ -36,6 +36,7 @@ react-my-approvals|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.1|January 22, 2022|Updated to allow multiple environments to be selected
 1.0|January 11, 2022|Initial release
 
 ## Help

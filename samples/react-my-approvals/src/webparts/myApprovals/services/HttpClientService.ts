@@ -10,6 +10,7 @@ interface IEnvironment {
 }
 
 interface IApproval {
+  environment: string;
   name: string;
   type: string;
   id: string;
@@ -49,17 +50,26 @@ export default class HttpClientService {
     return json.value as IEnvironment[];
   }
 
-  public async getApprovals(environments: string): Promise<IApproval[]> {
-    const response = await this.flowHttpClient.get(
-      `https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/${environments}/approvalViews` +
-      '?$filter=properties/userRole eq \'Approver\' and properties/isActive eq \'true\' and properties/isDescending eq \'true\'' +
-      '&api-version=2016-11-01',
-      AadHttpClient.configurations.v1);
-    const json = await response.json();
-    if (json.error) {
-      throw new Error(json.error);
+  public async getApprovals(environments: string[]): Promise<IApproval[]> {
+    const values = [];
+    for (const environment of environments) {
+      const response = await this.flowHttpClient.get(
+        `https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/${environment}/approvalViews` +
+        '?$filter=properties/userRole eq \'Approver\' and properties/isActive eq \'true\' and properties/isDescending eq \'true\'' +
+        '&api-version=2016-11-01',
+        AadHttpClient.configurations.v1);
+      const json = await response.json();
+      if (json.error) {
+        throw new Error(json.error);
+      }
+      for (const value of json.value) {
+        values.push({
+          ...value,
+          environment: environment
+        });
+      }
     }
-    return json.value as IEnvironment[];
+    return values;
   }
 
   public async convertUtcToLocal(date: string): Promise<string> {
