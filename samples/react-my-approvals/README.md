@@ -9,7 +9,7 @@ This web part demonstrates displaying the list of approval requests of Power Aut
 
 ## Compatibility
 
-![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -17,12 +17,14 @@ This web part demonstrates displaying the list of approval requests of Power Aut
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible (with permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Requires API permissions")
 
+>  NodeJS version must match >=10.13.0 <11.0.0 on >=12.13.0 <13.0.0 or >=14.15.0 <15.0.0
 ## Prerequisites
+
 
 This web part uses *Microsoft Flow Service* API. You need to approve the API request after deploying the package.
 
-- Approvals.Read.All
-- Flows.Read.All
+- `Approvals.Read.All`
+- `Flows.Read.All`
 
 For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev/spfx/use-aadhttpclient).
 
