@@ -26,9 +26,9 @@
       "description": {
         "default": "View approval requests for you."
       },
-      "officeFabricIconFontName": "Page",
+      "officeFabricIconFontName": "DocumentApproval",
       "properties": {
-        "environment": ""
+        "environments": null
       }
     }
   ]

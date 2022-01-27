@@ -21,7 +21,7 @@ import { IMyApprovalsState } from './IMyApprovalsState';
 const MyApprovals = ({
   httpService,
   displayMode,
-  environment,
+  environments,
   title,
   setTitle
 }: IMyApprovalsProps) => {
@@ -31,12 +31,13 @@ const MyApprovals = ({
 
   React.useEffect(() => {
     if (!httpService) return;
-    if (!environment) return;
+    if (!environments.length) return;
     (async () => {
       setApprovals(
         await httpService
-          .getApprovals(environment)
+          .getApprovals(environments)
           .then(async (values) => await Promise.all(values.map(async (value) => ({
+            environment: value.environment,
             name: value.name,
             title: value.properties.title,
             requestDate: await httpService.convertUtcToLocal(value.properties.creationDate),
@@ -46,13 +47,13 @@ const MyApprovals = ({
     })();
   }, [
     httpService,
-    environment
+    environments
   ]);
 
   return (
     <div className={styles.root}>
       {
-        environment
+        environments.length
           ? (
             <React.Fragment>
               <WebPartTitle
@@ -81,9 +82,9 @@ const MyApprovals = ({
                               data: 'string',
                               minWidth: 160,
                               isResizable: true,
-                              onRender: (value) => (
+                              onRender: (value: IMyApprovalsState) => (
                                 <Link
-                                  href={`https://flow.microsoft.com/manage/environments/${environment}/approvals/received/${value.name}`}
+                                  href={`https://flow.microsoft.com/manage/environments/${value.environment}/approvals/received/${value.name}`}
                                   target='_blank'>
                                   {value.title}
                                 </Link>
@@ -96,7 +97,7 @@ const MyApprovals = ({
                               data: 'string',
                               minWidth: 160,
                               isResizable: true,
-                              onRender: (value) =>
+                              onRender: (value: IMyApprovalsState) =>
                                 intl.formatDate(
                                   value.requestDate.replace(/([+-]\d{2}:\d{2}|Z)$/, ""),
                                   {

@@ -4,7 +4,7 @@ import HttpClientService from '../services/HttpClientService';
 export interface IMyApprovalsProps {
   httpService: HttpClientService;
   displayMode: DisplayMode;
-  environment: string;
+  environments: string[];
   title: string;
   setTitle: (value: string) => void;
 }
