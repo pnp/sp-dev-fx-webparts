@@ -41,7 +41,7 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve --nobrowser`
-* Browse to the workbench `https://yourtenant.sharepoint.com/sites/yoursite/_layout/15/workbench.aspx` and add the webpart
+* Browse to the workbench `https://yourtenant.sharepoint.com/sites/yoursite/_layout/15/workbench.aspx` and add the web part
 
 ## Features
 
@@ -56,4 +56,4 @@ This web part allows a user to select a text file containing zpl which then the 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-zpl-viewer" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-zpl-viewer" />

@@ -1,9 +1,9 @@
 # react-sitepages-metadata
 
 ## Summary
-Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup WebPart to display them.
+Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup web part to display them.
 
-### News rollup WebPart
+### News rollup Web Part
 ![News rollup WebPart](./assets/demo-wp.gif)
 
 ### SitePages library CommandSet
@@ -34,7 +34,7 @@ Solution provides an enhancement to SitePages library that enables updating exis
 
 Solution|Author(s)
 --------|---------
-react-sitepages-metadata | Oleg Rumiancev ([LinkedIn](https://linkedin.com/in/olegrumiancev), [Twitter (olezhka_lt)](https://twitter.com/olezhka_lt))
+react-sitepages-metadata | [Oleg Rumiancev](https://github.com/olegrumiancev) ([LinkedIn](https://linkedin.com/in/olegrumiancev), [Twitter (olezhka_lt)](https://twitter.com/olezhka_lt))
 
 ## Version history
 
@@ -42,22 +42,17 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 17, 2018|Initial release
 
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Features
 Solution provides an enhancement to SitePages library that enables updating existing items with metadata (implemented as Lookup fields). 
 Relies heavily on Office UI Fabric. 
 
 Contains following elements:
-- Metadata-News rollup WebPart - displays published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
+- Metadata-News rollup web part - displays published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
 - CommandSet extension for SitePages library - a button appears when a single item is selected. Clicking on the item shows a fillable dialog with lookup fields
 
 ### Important notes
-- Changes in some WebPart properties will not be reflected after hitting "Apply" button - please refresh the page, too
-- To see a collection of lookup fields in the WebPart property pane change/edit any of the instantly visible properties, such as Item limit, width or item height. Reason for this is SitePages library will be queried for lookup lists only after the property pane is initially opened
+- Changes in some web part properties will not be reflected after hitting "Apply" button - please refresh the page, too
+- To see a collection of lookup fields in the web part property pane change/edit any of the instantly visible properties, such as Item limit, width or item height. Reason for this is SitePages library will be queried for lookup lists only after the property pane is initially opened
 
 ### Resources
 - [React Quick Start](https://facebook.github.io/react/docs/tutorial.html) 
@@ -75,4 +70,25 @@ Contains following elements:
   - `gulp serve --nobrowser`
 - navigate to `https://<tenant>.sharepoint.com/sites/<target site>/_layouts/workbench.aspx`
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-sitepages-metadata" />
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-sitepages-metadata%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-sitepages-metadata) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-sitepages-metadata&template=bug-report.yml&sample=react-sitepages-metadata&authors=@olegrumiancev&title=react-sitepages-metadata%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-sitepages-metadata&template=question.yml&sample=react-sitepages-metadata&authors=@olegrumiancev&title=react-sitepages-metadata%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-sitepages-metadata&template=suggestion.yml&sample=react-sitepages-metadata&authors=@olegrumiancev&title=react-sitepages-metadata%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-sitepages-metadata" />

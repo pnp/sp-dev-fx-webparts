@@ -1,4 +1,4 @@
-# Company Stories Webpart
+# Company Stories Web part
 
 ## Summary
 
@@ -83,4 +83,4 @@ About SPFx:
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-company-stories" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-company-stories" />

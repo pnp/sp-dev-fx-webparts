@@ -65,4 +65,4 @@ Version|Date|Comments
 1.0|May 2018|Initial release
 1.1|June 2018|Update SPFx Property Controls version to 1.7.0 - use Fabric Icon control
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-tiles" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-tiles" />

@@ -4,7 +4,7 @@
 
 This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components. In this example, a Service Scope is shared globally that components can consume to call the Microsoft Graph, it also uses Functional Components replacing the more commonly seen Class Component approach.
 
-![webpart](webpart.png)
+![web part](webpart.png)
 
 ## Compatibility
 
@@ -68,19 +68,19 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-functional-servicescope) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-functional-servicescope") to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-functional-servicescope) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-functional-servicescope) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-functional-servicescope&template=bug-report.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-functional-servicescope&template=question.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-functional-servicescope&template=question.yml&sample=react-functional-servicescope&authors=@garrytrinder&title=react-functional-servicescope%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-servicescope-hooks" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-servicescope-hooks" />

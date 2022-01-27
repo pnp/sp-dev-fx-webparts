@@ -15,10 +15,9 @@
       "- Improved support for dates"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2021-09-22",
+    "updateDateTime": "2022-01-12",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {

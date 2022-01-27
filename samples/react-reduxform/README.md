@@ -28,7 +28,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 ## Prerequisites
  
 - Basic knowledge of react-redux concepts - reducer,actions and dispatch.
-- PnP PowerShell - to setup Fields and Lists to work with the webpart.
+- PnP PowerShell - to setup Fields and Lists to work with the web part.
 
 ## Solution
 
@@ -81,4 +81,4 @@ Refer to the [Getting started](https://redux-form.com/6.4.3/docs/gettingstarted.
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-reduxform" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-reduxform" />

@@ -33,21 +33,10 @@ export class followDocumentPreview extends React.Component<IfollowDocumentPrevie
         const graphService: Graph = new Graph();
         const initialized = await graphService.initialize(this.props.context.serviceScope);
         if (initialized) {
-            const HeaderItem = {
-                "requests": [
-                    {
-                        "entityTypes": ["driveItem"],
-                        "query": {
-                            "queryString": "path:\"" + this.props.url.replace(this.props.filename, "") + "\" Filename:\"" + this.props.filename + "\"",
-                        },
-                    },
-                ],
-            };
-            const tmpFileID = await graphService.postGraphContent("https://graph.microsoft.com/beta/search/query", HeaderItem);
-            let graphData: any = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/drives/${tmpFileID.value[0].hitsContainers[0].hits[0].resource.parentReference.driveId}/items/${tmpFileID.value[0].hitsContainers[0].hits[0].resource.id}/preview`, {});
+            let graphData: any = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/drives/${this.props.FollowDocument.DriveId}/items/${this.props.FollowDocument.ItemId}/preview`, {});
             this.setState({
                 preview: graphData.getUrl,
-                name: tmpFileID.value[0].hitsContainers[0].hits[0].resource.name,
+                name: this.props.FollowDocument.Title,
                 visible: true,
             });
         }

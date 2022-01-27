@@ -3,12 +3,12 @@
 ## Summary
 This sample shows how read and update a custom Schema extension in Microsoft Graph. It shows how to create a
 custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update
-that data using an spfx webpart.
+that data using an spfx web part.
 
 A possible business scenario here could be if we want to store some additional custom data related to some specific
 Office 365 Groups, for instance Sales information, and make it available in the SharePoint site.
 
-![Custom Schema Extension Webpart](./assets/webpart.png)
+![Custom Schema Extension Web part](./assets/webpart.png)
 
 
 # Compatibility
@@ -103,4 +103,4 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-schema-extensions" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-graph-schema-extensions" />

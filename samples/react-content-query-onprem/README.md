@@ -115,13 +115,13 @@ External scripts can be used to include either libraries such as *jQuery*, or ev
 
 ### Adding the web part to your page
 
-To add the `React Content Query WebPart` to your site page you have two options : 
+To add the `React Content Query Web Part` to your site page you have two options : 
 - Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
 - Or download the `react-content-query-webpart.sppkg` file available in the `sharepoint/solution` folder of the repository and add it directly in your app catalog in order to be able to use it in your site. 
 
 Note : The second method will only work for Office 365 sites, since the **.ppkg** file points to an Office 365 public CDN url which expects the referer to come from a valid https://**\*.sharepoint.com\*** url.
 
-### Configuring the WebPart
+### Configuring the Web Part
 
 As seen in the [User friendly configuration](#user-friendly-configuration) section, configuring the web part is quite straight forward. However, here's a list of *gotchas* that could save you some time :
 
@@ -328,4 +328,4 @@ This package produces the following:
 * deploy/* - all resources which should be uploaded to a CDN.
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />

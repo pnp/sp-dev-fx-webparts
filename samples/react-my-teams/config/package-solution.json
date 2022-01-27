@@ -3,7 +3,7 @@
   "solution": {
     "name": "my-teams-client-side-solution",
     "id": "9bf27890-01d8-4041-8030-72831ed570aa",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "webApiPermissionRequests": [

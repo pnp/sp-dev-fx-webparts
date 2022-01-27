@@ -1,4 +1,4 @@
-# Links webpart
+# Links web part
 
 > NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/links.
 
@@ -75,4 +75,4 @@ Version|Date|Comments
 1.1|June 2018|Updated collection descriptions
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-links" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-links" />

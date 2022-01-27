@@ -123,6 +123,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
     this.onSelectDateStart = this.onSelectDateStart.bind(this);
     this.onUpdateCoordinates = this.onUpdateCoordinates.bind(this);
     this.onGetErrorMessageTitle = this.onGetErrorMessageTitle.bind(this);
+    this.onChangeEventTitle = this.onChangeEventTitle.bind(this);
     this.getPeoplePickerItems = this.getPeoplePickerItems.bind(this);
     this.hidePanel = this.hidePanel.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -410,10 +411,21 @@ export class Event extends React.Component<IEventProps, IEventState> {
     if (value.length === 0) {
       returnMessage = strings.EventTitleErrorMessage;
     } else {
-      this.setState({ eventData: { ...this.state.eventData, title: value }, disableButton: false, errorMessage: '' });
+      this.setState({disableButton: false, errorMessage: '' });
     }
     return returnMessage;
   }
+
+  /**
+   *
+   * @private
+   * @memberof Event
+   */
+  private onChangeEventTitle (event:any) {
+    const eventTitle = event.target.value;
+    this.setState({eventData: {...this.state.eventData, title: eventTitle}});
+  }
+
   /**
    *
    * @private
@@ -923,6 +935,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   <TextField
                     label={strings.EventTitleLabel}
                     value={this.state.eventData ? this.state.eventData.title : ''}
+                    onChange={this.onChangeEventTitle}
                     onGetErrorMessage={this.onGetErrorMessageTitle}
                     deferredValidationTime={500}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}

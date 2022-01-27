@@ -3,11 +3,11 @@
 ## Summary
 
 This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your
-business requirement if you need to implement CAPTCHA in SPFx webpart.
+business requirement if you need to implement CAPTCHA in SPFx web part.
 
 * Please refer this [link](https://www.c-sharpcorner.com/article/google-recaptcha-in-sharepoint-framework-webpartspfx/) to know 'How to build this from Scratch'
 
-![Webpart in action](screens/WebpartInAction.gif?raw=true "Webpart in action")
+![web part in action](screens/WebpartInAction.gif?raw=true "web part in action")
 
 
 # Compatibility
@@ -71,9 +71,9 @@ Version|Date|Comments
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure webpart.
-* Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx webpart
+* Using react framework in SPFx web part
+* Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure web part.
+* Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx web part
 * Validate if captcha is resolved before submitting data.
 
 
@@ -82,4 +82,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-recaptcha" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-recaptcha" />

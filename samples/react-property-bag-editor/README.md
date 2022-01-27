@@ -62,7 +62,7 @@ Selecting a Property and clicking the Edit button will bring up the Edit Panel:
 
 Here you can change the value of the property and specify if the property should be included in the search Index. 
 
-The Properties that can be edited are specified in the webpart&#39;s Property Pane:
+The Properties that can be edited are specified in the web part&#39;s Property Pane:
 
 ![PropertyBagEditorEdur](./src/images/PropertyBagEditorConfig.PNG)
 
@@ -120,11 +120,11 @@ The propertyBagDisplay web part can be used by an administrator to view and edit
 
 ![PropertyBagDisplay](./src/images/PropertyBagDisplayDisplay.PNG)
 
-In the Property Pane, an administrator must specify both the Crawled Property Name and the Managed Property name (separated by a pipe character) of the properties to be included in the webpart:
+In the Property Pane, an administrator must specify both the Crawled Property Name and the Managed Property name (separated by a pipe character) of the properties to be included in the web part:
 
 ![PropertyBagDisplayConfig](./src/images/PropertBagDisplayConfig.PNG)
 
-The administrator can also include a list of site templates to narrow down the list of sites to be included in the webpart. When specifying site templates to include you can include just the Site Template Name (STS) and all sites within that template name will be included, or you can specify the Site Template Name and ID, separated by a &#39;#&quot; character (STS#1) to have only sites with that template name and ID included.
+The administrator can also include a list of site templates to narrow down the list of sites to be included in the web part. When specifying site templates to include you can include just the Site Template Name (STS) and all sites within that template name will be included, or you can specify the Site Template Name and ID, separated by a &#39;#&quot; character (STS#1) to have only sites with that template name and ID included.
 
 The web part displays the site template, Title and Url, plus the selected Managed Properties for all sites in the tenant with the selected site template. The Managed Properties are only displayed if they have been set as searchable, and a full crawl has been run.  After selecting a Site, a user can click the edit button to edit the Crawled properties (i.e. the raw property bag values) for the selected site:
 
@@ -160,4 +160,4 @@ If desired, the admin can also specify which site templates should be included i
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-property-bag-editor" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-property-bag-editor" />

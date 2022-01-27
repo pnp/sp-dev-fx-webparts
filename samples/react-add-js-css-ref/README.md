@@ -17,9 +17,9 @@ extensions:
 
 This repo is a react based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site. This web part provides an interface to JS and CSS file references so that we don't have to modify code when we need to change references or add new references in the future. As part of security measures, this actions on web part can be only accessed by users who have Manage web permission on site.
 
-WebPart in Action
+Web Part in Action
 
-![Web part in action](assets/webpartinaction.gif?raw=true "Webpart in action")
+![Web part in action](assets/webpartinaction.gif?raw=true "web part in action")
 
 Challenges/Drawback with ONLY using SPFx extension for adding js and css file references.
 * JS and CSS file references links needs to be hardcoded in solution
@@ -124,15 +124,15 @@ We do not support samples, but this community is always willing to help, and we 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3Areact-add-js-css-ref) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-add-js-css-ref") to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=label%3Areact-add-js-css-ref) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-add-js-css-ref) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-add-js-css-ref&template=bug-report.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-add-js-css-ref&template=question.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-add-js-css-ref&template=question.yml&sample=react-add-js-css-ref&authors=@siddharth-vaghasia&title=react-add-js-css-ref%20-%20).
 
 For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_me/))
 
@@ -143,4 +143,4 @@ For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-add-js-css-ref" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-js-css-ref" />

@@ -42,6 +42,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-meeting-app-questionnaire/assets/questionnaire-preview.png",
         "alt": "Questionnaire Preview"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/gDcT7yu6UmU",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

@@ -221,4 +221,4 @@ For how to find this option, please refer [connect to direct line](https://docs.
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-secure" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />

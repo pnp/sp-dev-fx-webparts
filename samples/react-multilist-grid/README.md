@@ -16,7 +16,7 @@ These are SharePoint field types for the most part(not all field types have been
 
 The columns will be displayed in the grid in the order they appear on the Column Definition panel. You can use the up and down arrow icons on each row to rearrange the columns. The delete icon on each row can be used to delete a column from the grid.
 
-After defining all the columns to be displayed in your grid, click the save icon in the command bar and you will be returned to the configuration panel for the webpart.
+After defining all the columns to be displayed in your grid, click the save icon in the command bar and you will be returned to the configuration panel for the web part.
 
 Clicking the Update Lists button on the configuration panel will open the List Definitions panel:
 ![ListDefinitions panel](./src/images/ListDefinitions.PNG)
@@ -131,7 +131,7 @@ Usage:
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-multilist-grid" />
 
 
 

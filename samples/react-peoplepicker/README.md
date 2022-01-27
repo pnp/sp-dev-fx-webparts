@@ -41,7 +41,7 @@ SharePoint Framework solution with the Office UI Fabric People Picker, the clien
 
 Solution|Author(s)
 --------|---------
-spfx-react-peoplepicker | Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](http://www.delucagiuliano.com))
+spfx-react-peoplepicker | [Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](http://www.delucagiuliano.com))
 
 ## Version history
 
@@ -50,11 +50,6 @@ Version|Date|Comments
 1.0.0|May 21, 2017|Initial release
 1.0.1|Sep 28, 2017|Updated to GA Version, New properties that allow to specify the number of items to display and which entities retrieve (User, SharePoint Groups, Distribution Lists, Security Groups).
 1.0.2|Dec 06, 2017|Minor bug fixes, Add events on people picked can now be used as a standalone component (Thanks to [@MikeMyers](https://github.com/thespooler) for contributing.
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -75,4 +70,25 @@ https://localhost:4321/temp/workbench.html
 If you want to try on a real environment, open:
 https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-peoplepicker" />
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-peoplepicker%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-peoplepicker) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-peoplepicker&template=bug-report.yml&sample=react-peoplepicker&authors=@giuleon&title=react-peoplepicker%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-peoplepicker&template=question.yml&sample=react-peoplepicker&authors=@giuleon&title=react-peoplepicker%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-peoplepicker&template=suggestion.yml&sample=react-peoplepicker&authors=@giuleon&title=react-peoplepicker%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-peoplepicker" />

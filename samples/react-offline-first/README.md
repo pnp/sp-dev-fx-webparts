@@ -26,7 +26,7 @@ read the documentation for
 * [ES6-Promise](https://github.com/stefanpenner/es6-promise)
 * [Whatwg-Fetch](https://github.com/whatwg/fetch)
 
-![Sample of the offline first webpart](./assets/preview.gif)
+![Sample of the offline first web part](./assets/preview.gif)
 
 
 ## Compatibility
@@ -101,4 +101,4 @@ using local storage first reduces the time to draw the initial page load.
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-offline-first" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-offline-first" />

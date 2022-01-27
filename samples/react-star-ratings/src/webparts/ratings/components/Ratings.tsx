@@ -12,7 +12,6 @@ import styles from './Ratings.module.scss';
 import * as strings from 'RatingsWebPartStrings';
 import { IRatingsProps } from './IRatingsProps';
 import SPHttpClientService from '../services/SPHttpClientService';
-import '../extensions/Map';
 
 interface IRatings {
   rating: number;
@@ -77,14 +76,11 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
     const service = new SPHttpClientService(context);
     await service.ensureFeatureEnabled();
     const user = await service.getCurrentUser();
-    const ratings = await service.getRatings();
-    const rating = ratings.get(user.LoginName);
-    const count = ratings.size;
-    const sum = ratings.values().reduce((current, prev) => prev + current, 0);
+    const [ average, count, rating ] = await service.getRating(user.LoginName);
     return {
       rating: rating,
       count: count,
-      average: count ? sum / count : 0
+      average: average
     };
   }, []);
 
@@ -103,6 +99,7 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
         setValue(await getRating());
       } catch (error) {
         setError(error.toString());
+        throw error;
       }
     })();
   }, [context]);

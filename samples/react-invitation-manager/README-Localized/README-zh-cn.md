@@ -88,4 +88,4 @@ react-invitation-manager|Giuliano De Luca ([@giuleon](https://twitter.com/giuleo
 - 使用 REST API 与 Microsoft Graph 通信
 - 使用 ADAL JS 库及使用“回应”创建的 SharePoint 框架 web 部件
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

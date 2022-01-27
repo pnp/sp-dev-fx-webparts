@@ -18,7 +18,7 @@ extensions:
 ## Summary
 SharePoint Framework web part which uses [Redux](http://redux.js.org/) to maintain a single state for the entire application and [ImmutableJS](https://facebook.github.io/immutable-js/) to create performant state trees.
 
-Redux AJAX actions are used together with the SharePoint REST API to display lists in your site. You can also add a new list to the site from this webpart.
+Redux AJAX actions are used together with the SharePoint REST API to display lists in your site. You can also add a new list to the site from this web part.
 
 More details in my post here: [Using Redux Async Actions and ImmutableJS in SharePoint Framework](http://www.vrdmn.com/2017/07/using-redux-async-actions-and.html)
 
@@ -74,4 +74,4 @@ Using ImmutableJS, we can create new state trees in memory without duplicating t
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-redux-async-immutablejs" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-redux-async-immutablejs" />

@@ -56,4 +56,4 @@ Version|Date|Comments
 1.0|May 2018|Initial release
 1.1|June 2018|Link web part to proper term group and term set
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-site-information" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-information" />
