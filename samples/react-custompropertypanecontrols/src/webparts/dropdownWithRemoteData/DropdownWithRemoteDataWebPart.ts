@@ -106,7 +106,7 @@ export default class DropdownWithRemoteDataWebPart extends BaseClientSideWebPart
     });
   }
 
-  private loadItems(): Promise<IDropdownOption[]> {
+  private loadItems(): Promise<IDropdownOption[] | void> {
     if (!this.properties.list) {
       // resolve to empty options since no list has been selected
       return Promise.resolve();
