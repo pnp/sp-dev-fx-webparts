@@ -1,0 +1,32 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.reactDatatable {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  background:#f6f6f6;
+  .dataTableUtilities{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    .downloadButtons > *{
+      margin-right: 10px;
+    }    
+  }
+  .txtSearchBox{
+    min-width: 250px;
+  }
+  .colHeader{
+    font-weight: 600;
+    font-size: 12px;
+  }
+  :global(.ms-TextField-fieldGroup){
+    border:none;
+  }
+
+}
+:global(div[data-automation-id="contentScrollRegion"]){
+  background:#f6f6f6;
+}
+:global(.CanvasSection){
+  background:#f6f6f6;
+}

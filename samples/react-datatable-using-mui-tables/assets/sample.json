@@ -1,0 +1,56 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
+    "source": "pnp",
+    "title": "Data Table",
+    "shortDescription": "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
+    "longDescription": [
+      "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
+    ],
+    "creationDateTime": "2021-03-01",
+    "updateDateTime": "2021-04-10",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldColorPicker, PropertyFieldListPicker, PropertyFieldMultiSelect, PropertyFieldOrder, WebPartTitle, Placeholder"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
+        "alt": "Data Table"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "chandaniprajapati",
+        "company": "",
+        "pictureUrl": "https://github.com/chandaniprajapati.png",
+        "name": "Chandani Prajapati",
+        "twitter": "Chandani_SPD"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
