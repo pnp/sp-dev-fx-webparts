@@ -54,7 +54,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-followed-drag-and-drop-grid) then unzip it)
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
@@ -63,6 +63,8 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
   - Approve the MS Graph API permissions in SharePoint Admin page
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
