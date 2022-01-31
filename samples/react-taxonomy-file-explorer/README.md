@@ -63,7 +63,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomy-file-explorer) then unzip it)
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
@@ -73,6 +73,8 @@ Version|Date|Comments
   - A document library using that managed metadata column and several documents with selected terms
 - In the web part properties set the library name and the internal field name of the managed metadata column
 - Done!
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
 
 ## Features
 

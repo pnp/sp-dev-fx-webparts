@@ -55,6 +55,8 @@ Version|Date|Comments
   - `Files.ReadWrite`
   - `Sites.ReadWrite.All`
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
+
 ## Features
 
 This web part illustrates the following concepts:

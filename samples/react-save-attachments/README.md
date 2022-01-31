@@ -45,7 +45,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-save-attachments`, located under `samples`)
 * In the command line run:
   * Restore dependencies: `npm install`
@@ -63,6 +63,8 @@ Version|Date|Comments
   * Click **Install** on the warning message to get your add-in available on the tenant
 * Go to the **API Management** section in the new SharePoint Admin Center (*https://{tenantname}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement*)
 * **Approve** the permission request for **Mail.ReadWrite** and **Files.ReadWrite** to **Microsoft Graph**
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
 
 ## Video
 

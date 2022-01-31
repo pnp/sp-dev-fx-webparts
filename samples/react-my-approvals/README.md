@@ -26,7 +26,19 @@ This web part uses *Microsoft Flow Service* API. You need to approve the API req
 - `Approvals.Read.All`
 - `Flows.Read.All`
 
+
 For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev/spfx/use-aadhttpclient).
+
+
+## Minimal Path to Awesome
+
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-approvals) then unzip it)
+- Ensure that you are at the solution folder
+- in the command-line run:
+  - `npm install`
+  - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Solution
 
@@ -40,6 +52,7 @@ Version|Date|Comments
 -------|----|--------
 1.1|January 22, 2022|Updated to allow multiple environments to be selected
 1.0|January 11, 2022|Initial release
+
 
 ## Help
 
