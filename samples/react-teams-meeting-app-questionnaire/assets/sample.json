@@ -9,8 +9,8 @@
       "SPFx v1.12 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
       "The Questionnaire meeting app displays the questions from attendees as pre-meeting app experience."
     ],
-    "created": "2021-03-22",
-    "modified": "2021-03-22",
+    "creationDateTime": "2021-03-22",
+    "updateDateTime": "2021-03-22",
     "products": [
       "SharePoint",
       "Office",

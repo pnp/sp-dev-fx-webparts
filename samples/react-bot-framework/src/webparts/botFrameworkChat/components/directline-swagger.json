@@ -222,7 +222,7 @@
           "description": "Conversation ID for this message",
           "type": "string"
         },
-        "created": {
+        "creationDateTime": {
           "format": "date-time",
           "description": "UTC timestamp when this message was created",
           "type": "string"
