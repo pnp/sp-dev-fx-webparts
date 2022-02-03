@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-auto-batching-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphAutoBatching/GraphAutoBatchingWebPart.js",
+          "manifest": "./src/webparts/graphAutoBatching/GraphAutoBatchingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js"
+  }
+}
