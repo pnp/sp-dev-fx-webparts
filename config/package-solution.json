@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-ppw-html-client-side-solution",
+    "id": "32f04ff0-07c9-4fee-ab26-b488c8f651fa",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Christophe Humbert",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0-beta.5"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-ppw-html description"
+      },
+      "longDescription": {
+        "default": "react-ppw-html description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-ppw-html Feature",
+        "description": "The feature that activates elements of the react-ppw-html solution.",
+        "id": "183a5d23-8799-4cd2-a67c-576fd323270b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-ppw-html.sppkg"
+  }
+}
