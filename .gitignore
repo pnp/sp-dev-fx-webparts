@@ -40,3 +40,4 @@ samples/react-find-parker/release/webpack-stats/react-find-parker.stats.json
 
 # Include distributable workflow actions
 !.github/actions/**/dist
+samples/react-enhanced-powerapps/lib/*
