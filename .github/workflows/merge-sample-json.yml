@@ -45,4 +45,7 @@ jobs:
     - name: Combine json files
       run: |
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
+        echo "Merged samples"
+        cat test-samples.json | xargs echo -e
+        echo "Done"     
       shell: bash
