@@ -27,26 +27,20 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # # This workflow contains a single job called "greet"
-  # greet:
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
-
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #   # Runs a single command using the runners shell
-  #   - name: Send greeting
-  #     run: echo "Hello ${{ github.event.inputs.name }}"
-
   merge_json:
     runs-on: ubuntu-20.04
     steps:
+    - name: Install xmllint
+    - uses: actions/checkout@v2
+      run: |
+        sudo apt-get install -y jq
+        jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
     # - uses: actions/checkout@v2
     # - name: Run script file
     #   run: |
     #      find samples/ -name 'sample.json' -exec cat {} \; > test-samples.json
     #   shell: bash
-      - uses: sergeysova/jq-action@v2
-        name: Merge sample.json files
-        with:
-          cmd: jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
+      # - uses: sergeysova/jq-action@v2
+      #   name: Merge sample.json files
+      #   with:
+      #     cmd: jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
