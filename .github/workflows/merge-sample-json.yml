@@ -42,8 +42,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Run script file
+    - name: Combine json files
       run: |
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
       shell: bash
-
