@@ -46,6 +46,7 @@ jobs:
     #   run: |
     #      find samples/ -name 'sample.json' -exec cat {} \; > test-samples.json
     #   shell: bash
-      uses: sergeysova/jq-action@v2
-      with:
-        cmd: jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
+      - uses: sergeysova/jq-action@v2
+        name: Merge sample.json files
+        with:
+          cmd: jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
