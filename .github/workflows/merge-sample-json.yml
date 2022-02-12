@@ -44,8 +44,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Combine json files
       run: |
+        echo "Merging samples"
+        echo '::echo::on'
+        echo '::set-output name=action_echo::enabled'
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
+        echo '::echo::off'
         echo "Merged samples"
-        cat test-samples.json | xargs echo -e
-        echo "Done"     
       shell: bash
