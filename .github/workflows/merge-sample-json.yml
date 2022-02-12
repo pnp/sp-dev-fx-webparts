@@ -44,7 +44,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run script file
       run: |
-        sudo apt-get install -y jq
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
       shell: bash
 
