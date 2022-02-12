@@ -41,8 +41,11 @@ jobs:
   merge_json:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         find samples/ -name 'sample.json' -exec cat {} \; > test-samples.json
-      shell: bash
+    # - uses: actions/checkout@v2
+    # - name: Run script file
+    #   run: |
+    #      find samples/ -name 'sample.json' -exec cat {} \; > test-samples.json
+    #   shell: bash
+      uses: sergeysova/jq-action@v2
+      with:
+        cmd: jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
