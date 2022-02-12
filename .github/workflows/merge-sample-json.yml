@@ -30,8 +30,8 @@ jobs:
   merge_json:
     runs-on: ubuntu-20.04
     steps:
-    - name: Install xmllint
     - uses: actions/checkout@v2
+      name: Merge sample.json files
       run: |
         sudo apt-get install -y jq
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samples.json
