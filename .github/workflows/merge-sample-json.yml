@@ -39,21 +39,19 @@ jobs:
   #     run: echo "Hello ${{ github.event.inputs.name }}"
 
   build:
-    name: Example
+    name: Merge
+    description: 'Merge all sample.json'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with: 
           path: './'      
       - run: |
-          echo "Merging samples"
-          find samples/ -name 'sample.json' -path '*/assets/*' -o -name "test*.json" | xargs cat > ./test-samples.json
-          jq -s '[.[][]]' samples/**/assets/sample.json > test-samplesjq.json
-          echo "Merged samples"
+          jq -s '[.[][]]' samples/**/assets/sample.json > samples.json
      
       - uses: EndBug/add-and-commit@v6
         with:
-          message: 'Add the version and date'
-          add: '*.json --force'
+          message: 'Updated samples.json'
+          add: 'samples.json --force'
           cwd: './' 
           token: ${{ secrets.TOKEN }} 
