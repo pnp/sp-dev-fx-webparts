@@ -27,7 +27,11 @@ jobs:
           path: './'      
       - run: |
           jq -s '[.[][]]' samples/**/assets/sample.json > samples.json
-     
+     - name: Validate JSON
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: /metadata-schema.json
+          INPUT_JSONS: /samples.json
       - name: Commit updated file
         uses: EndBug/add-and-commit@v6
         with:
