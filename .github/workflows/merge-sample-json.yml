@@ -38,5 +38,6 @@ jobs:
       - name: Copy to the pages
         uses: planetoftheweb/copy-to-branches@v1
         env:
+          key: main
           branches: gh-pages
           files: samples.json
