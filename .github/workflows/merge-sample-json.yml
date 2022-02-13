@@ -23,6 +23,11 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
+      - name: Checkout Docs branch
+        uses: actions/checkout@v2
+        with:
+          ref: Docs
+          path: Docs
       - name: Join samples  
         run: |
           jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./main/samples.json
@@ -31,11 +36,16 @@ jobs:
         env:
           INPUT_SCHEMA: ./main/metadata-schema.json
           INPUT_JSONS: ./main/samples.json
-      - name: copy file
+      - name: copy file to gh-pages
         uses: canastro/copy-file-action@master
         with:
           source: "./main/samples.json"
           target: "./gh-pages/samples.json"     
+      - name: copy file to Docs
+        uses: canastro/copy-file-action@master
+        with:
+          source: "./main/samples.json"
+          target: "./Docs/docs/samples.json"           
       - name: Commit updated samples.json
         uses: EndBug/add-and-commit@v6
         with:
@@ -49,5 +59,13 @@ jobs:
           cwd: ./gh-pages
           branch: gh-pages
           add: 'samples.json --force'
+          push: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit samples.json to Docs
+        uses: EndBug/add-and-commit@v6
+        with:
+          cwd: ./Docs
+          branch: Docs
+          add: 'docs/samples.json --force'
           push: true
           token: ${{ secrets.GITHUB_TOKEN }}
