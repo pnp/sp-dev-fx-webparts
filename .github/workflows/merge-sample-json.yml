@@ -13,30 +13,41 @@ jobs:
     name: 'Merge all sample.json files to samples.json'
     runs-on: ubuntu-latest
     steps:
-      - name: Join samples
+      - name: Checkout main branch
         uses: actions/checkout@v2
-        with: 
-          path: './'      
-      - run: |
-          jq -s '[.[][]]' samples/**/assets/sample.json > samples.json
+        with:
+          ref: main
+          path: main
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Join samples  
+        run: |
+          jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./main/samples.json
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: /metadata-schema.json
-          INPUT_JSONS: /samples.json
-      - name: Commit updated file
+          INPUT_SCHEMA: ./main/metadata-schema.json
+          INPUT_JSONS: ./main/samples.json
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: "./main/samples.json"
+          target: "./gh-pages/samples.json"     
+      - name: Commit updated samples.json
         uses: EndBug/add-and-commit@v6
         with:
           message: 'Updated samples.json'
           add: 'samples.json --force'
-          cwd: './' 
+          cwd: './main' 
           token: ${{ secrets.TOKEN }} 
-      - uses: actions/checkout@v2
+      - name: Commit samples.json to gh-pages
+        uses: EndBug/add-and-commit@v6
         with:
-          fetch-depth: 0
-      - name: Copy to the pages
-        uses: planetoftheweb/copy-to-branches@v1
-        env:
-          key: main
-          branches: gh-pages
-          files: samples.json
+          cwd: ./gh-pages
+          branch: gh-pages
+          add: 'samples.json --force'
+          push: true
+          token: ${{ secrets.GITHUB_TOKEN }}
