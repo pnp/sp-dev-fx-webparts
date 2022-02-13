@@ -16,7 +16,7 @@ export function RenderProfilePicture(props: IProfilePicProps) {
         getUserProfileUrl().then(url => {
             setProfileUrl(url);
         });
-    }, [props])
+    }, [props]);
 
     return (
         <Persona

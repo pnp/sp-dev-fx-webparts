@@ -27,6 +27,7 @@
     "pdfmake": "^0.1.70",
     "react": "16.9.0",
     "react-csv": "^2.0.3",
+    "react-csv-downloader": "^2.7.1",
     "react-dom": "16.9.0"
   },
   "devDependencies": {

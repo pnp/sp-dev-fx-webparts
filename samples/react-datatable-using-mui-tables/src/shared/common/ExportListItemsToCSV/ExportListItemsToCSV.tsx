@@ -4,7 +4,7 @@ import { ExportToCsv } from 'export-to-csv';
 import CsvDownloader from 'react-csv-downloader';
 import { IIconProps, PrimaryButton } from 'office-ui-fabric-react';
 import styles from './ExportListItemsToCSV.module.scss';
-import CloudDownload from '@material-ui/icons/CloudDownload'
+import CloudDownload from '@material-ui/icons/CloudDownload';
 import { Button, Chip } from '@material-ui/core';
 interface IExportToCSV {
     columnHeader: Array<string>;

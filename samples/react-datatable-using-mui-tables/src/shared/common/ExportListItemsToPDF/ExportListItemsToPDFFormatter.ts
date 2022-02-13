@@ -8,7 +8,8 @@ export function pdfCellFormatter(value: any, type: string) {
       value = { text, link, color: 'blue' };
       break;
     case 'SP.FieldUser':
-      value = value.props.displayName;  
+      value = value.props.displayName;
+      break;
     default:
       break;
   }

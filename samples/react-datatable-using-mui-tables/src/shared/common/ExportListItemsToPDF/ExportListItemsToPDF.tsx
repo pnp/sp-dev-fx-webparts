@@ -7,7 +7,7 @@ import { IconButton, IIconProps, PrimaryButton } from 'office-ui-fabric-react';
 import styles from './ExportListItemsToPDF.module.scss';
 import { isNullOrUndefined } from '../../utilities/utilities';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
-import CloudDownload from '@material-ui/icons/CloudDownload'
+import CloudDownload from '@material-ui/icons/CloudDownload';
 import { Button, Chip } from '@material-ui/core';
 interface IExportToPDF {
     listName: string;
@@ -30,13 +30,13 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
 
         let data = {
             pageOrientation: 'landscape',
-            content: [      
+            content: [
                 {
                     text: title,
                     fontSize: 16,
                     alignment: 'center',
                     margin: [0, 0, 0, 15],
-                },       
+                },
                 {
                     style: 'tableExample',
                     table: {
@@ -48,7 +48,7 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
                         ]
                     },
                     layout: {
-                        fillColor: function (rowIndex: number) {
+                        fillColor: (rowIndex: number) =>{
                             if (oddRowColor && evenRowColor)
                                 return (rowIndex % 2 === 0) ? evenRowColor : oddRowColor;
                             else
@@ -59,7 +59,7 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
             ]
         };
         pdfMake.createPdf(data).download(`${listName}.pdf`);
-    }    
+    }
 
     return (
         // <PrimaryButton

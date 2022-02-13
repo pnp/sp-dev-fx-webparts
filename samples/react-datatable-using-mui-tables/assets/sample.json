@@ -1,18 +1,17 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
+    "name": "pnp-sp-dev-spfx-web-parts-react-datatable-using-mui-tables",
     "source": "pnp",
-    "title": "Data Table",
-    "shortDescription": "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
+    "title": "DataTable Using MUI table",
+    "shortDescription": "This web part provides mui datatable features for your lists.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable-using-mui-tables",
     "longDescription": [
-      "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
+      "This web part provides mui datatable features for your lists."
     ],
-    "creationDateTime": "2021-03-01",
-    "updateDateTime": "2021-04-10",
+    "creationDateTime": "2022-01-30",
+    "updateDateTime": "2022-01-30",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -21,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.12.1"
       },
       {
         "key": "PNPCONTROLS",
@@ -32,17 +31,21 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
-        "alt": "Data Table"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/first.png",
+        "alt": "Data Table with MUI"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/second.png",
+        "alt": "Data Table with MUI"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "chandaniprajapati",
-        "company": "",
-        "pictureUrl": "https://github.com/chandaniprajapati.png",
-        "name": "Chandani Prajapati",
-        "twitter": "Chandani_SPD"
+        "gitHubAccount": "jeffinjacob",
+        "pictureUrl": "https://github.com/jeffinjacob.png",
+        "name": "Jeffin Jacob"
       }
     ],
     "references": [

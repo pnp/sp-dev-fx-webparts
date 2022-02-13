@@ -3,7 +3,7 @@ import styles from './ReactDatatable.module.scss';
 import { IReactDatatableProps } from './IReactDatatableProps';
 import { IReactDatatableState } from './IReactDatatableState';
 import { SPService } from '../../../shared/service/SPService';
-import { Row } from '../../../shared/common/ExpandableRow/Row'
+import { Row } from '../../../shared/common/ExpandableRow/Row';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Typography } from '@material-ui/core';
 import { Link, SearchBox } from 'office-ui-fabric-react';
@@ -45,7 +45,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   }
 
   private getUserProfileUrl = (loginName: string) => {
-    return this._services.getUserProfileUrl(loginName)
+    return this._services.getUserProfileUrl(loginName);
   }
 
   public componentDidUpdate(prevProps: IReactDatatableProps) {
@@ -103,7 +103,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         break;
       case 'SP.FieldLookup':
         if (allowMultipleValues) {
-          let valueArray = value.map(function (obj) {
+          let valueArray = value.map( (obj) =>{
             return obj.Title;
           });
           value = valueArray.join(', ');
@@ -235,8 +235,8 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     let filteredItems = this.filterListItems();
     let { list, fields, enableDownloadAsCsv, enableDownloadAsPdf, enablePagination, displayMode, enableSearching, title, evenRowColor, oddRowColor } = this.props;
     let { columns, sortingFields, sortDirection } = this.state;
-    let currentThis = this
-    columns = columns.filter(column => { return column.name != "Attachments" });
+    let currentThis = this;
+    columns = columns.filter(column => { return column.name != "Attachments"; });
 
     let filteredPageItems = enablePagination ? this.paginateFn(filteredItems) : filteredItems;
     return (
@@ -282,7 +282,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
                     <TableSortLabel
                       active={sortingFields === column.key}
                       direction={sortingFields === column.key ? sortDirection : 'asc'}
-                      onClick={() => { this.handleSorting(column.key as string) }}
+                      onClick={() => { this.handleSorting(column.key as string); }}
                     >
                       {column.name}
                     </TableSortLabel>
@@ -303,6 +303,6 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
                 onChange={this.handlePaginationChange.bind(this)} />
               : <></>}
           </Table>
-        </TableContainer></div>)
+        </TableContainer></div>);
   }
 }

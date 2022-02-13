@@ -4,10 +4,10 @@ import styles from "./Pagination.module.scss";
 import { isEqual } from "lodash";
 import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { Box, IconButton, TableFooter, TablePagination, TableRow, useTheme } from "@material-ui/core";
-import LastPageIcon from '@material-ui/icons/LastPage'
-import FirstPageIcon from '@material-ui/icons/FirstPage'
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import LastPageIcon from '@material-ui/icons/LastPage';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 export interface IPaginationProps {
   /**
    * The page initial selected
@@ -77,12 +77,12 @@ export class Pagination extends React.Component<IPaginationProps, IPaginationSta
               },
               native: true,
             }}
-            onPageChange={(event, page) => { this.onClick(page) }}
-            onRowsPerPageChange={(event) => { this.onRowChange(event) }}
+            onPageChange={(event, page) => { this.onClick(page); }}
+            onRowsPerPageChange={(event) => { this.onRowChange(event); }}
             ActionsComponent={TablePaginationActions}
           />
         </TableRow>
-      </TableFooter>)
+      </TableFooter>);
   }
 
 
@@ -92,7 +92,7 @@ export class Pagination extends React.Component<IPaginationProps, IPaginationSta
   }
 
   private onRowChange = (event: any) => {
-    let row = parseInt(event.target.value, 10)
+    let row = parseInt(event.target.value, 10);
     this.setState({ rowsPerPage: row, currentPage: 0 });
     this.props.onChange(0, row);
   }
