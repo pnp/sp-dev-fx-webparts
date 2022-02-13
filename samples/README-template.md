@@ -28,7 +28,7 @@ You can add as many screen shots as you'd like to help users understand your web
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -37,6 +37,8 @@ You can add as many screen shots as you'd like to help users understand your web
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 <!--
+  If using SPFx 1.13.1, update the SPFx and Node.js tags accordingly:
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 
   If using SPFx 1.12.1, update the SPFx and Node.js tags accordingly:
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
@@ -88,6 +90,7 @@ Don't worry if you're unsure about the compatibility matrix above. We'll verify 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
 ## Solution
 <!--
@@ -141,6 +144,8 @@ As tempting as it may be, don't just use images to describe the steps. Let's be 
   * `npm install`
   * `gulp serve`
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+>  
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
