@@ -141,8 +141,6 @@ As tempting as it may be, don't just use images to describe the steps. Let's be 
   * `npm install`
   * `gulp serve`
 
-> Don't want to clone the entire repository? Try downloading this folder [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/YOUR-SOLUTION-NAME). Unzip the file, and continue with the command-line instructions.
-
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
