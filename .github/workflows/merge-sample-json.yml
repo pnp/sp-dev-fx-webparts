@@ -35,6 +35,9 @@ jobs:
           add: 'samples.json --force'
           cwd: './' 
           token: ${{ secrets.TOKEN }} 
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Copy to the pages
         uses: planetoftheweb/copy-to-branches@v1
         env:
