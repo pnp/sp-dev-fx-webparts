@@ -7581,8 +7581,8 @@
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching",
-    "source": "pnp",
     "title": "Graph auto batching",
+    "source": "pnp",
     "shortDescription": "This same shows how to abstract batching graph requests",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
     "longDescription": [
