@@ -38,14 +38,22 @@ jobs:
   #   - name: Send greeting
   #     run: echo "Hello ${{ github.event.inputs.name }}"
 
-  merge_json:
-    runs-on: ubuntu-20.04
+  build:
+    name: Example
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Combine json files
-      run: |
+      - uses: actions/checkout@v2
+        with: 
+          path: './'      
+      - run: |
         echo "Merging samples"
         find samples/ -name 'sample.json' -path '*/assets/*' -o -name "test*.json" | xargs cat > ./test-samples.json
         jq -s '[.[][]]' samples/**/assets/sample.json > test-samplesjq.json
         echo "Merged samples"
-      shell: bash
+     
+      - uses: EndBug/add-and-commit@v6
+        with:
+          message: 'Add the version and date'
+          add: '*.json --force'
+          cwd: './' 
+          token: ${{ secrets.TOKEN }} 
