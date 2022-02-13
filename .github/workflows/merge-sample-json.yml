@@ -1,4 +1,4 @@
-name: Merge Sample JSON
+name: Merge sample metadata
 
 on:
   push:
