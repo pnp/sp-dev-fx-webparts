@@ -6,7 +6,8 @@
         "type": "object",
         "properties": {
             "name": {
-                "type": "string"
+                "type": "string",
+                "pattern": "pnp-sp-dev-spfx-web-parts-.*"
             },
             "version": {
                 "type": "string"
@@ -20,7 +21,8 @@
                 "type": "string"
             },
             "url": {
-                "type": "string"
+                "type": "string",
+                "pattern": "https:\/\/github.com\/pnp\/sp-dev-fx-webparts\/tree\/main\/samples\/.*"
             },
             "creationDateTime": {
                 "type": "string",
@@ -195,6 +197,7 @@
             "name",
             "source",
             "title",
+            "url",
             "shortDescription",
             "products",
             "metadata",
