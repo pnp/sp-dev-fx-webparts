@@ -1,7 +1,6 @@
 [
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-list-form",
-    "version": null,
     "source": "pnp",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-form",
     "title": "List Form Web Part",
