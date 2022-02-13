@@ -1,21 +1,13 @@
 name: Merge Sample JSON
 
-# on:
-#   push:
-#     branches:
-#       # When someone push to `main` branch
-#       - main
-#       # When someone pushes to `develop` branch
-#       - develop
-#       # When someone pushes to a branch within the `features` folder
-#       - 'features/**'
-
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
-  workflow_dispatch
+  pull_request:
+    branches:
+      # When someone push to `main` branch
+      - main
+    paths:
+      - 'samples/**/assets/sample.json'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     name: 'Merge all sample.json files to samples.json'
