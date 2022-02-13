@@ -30,29 +30,17 @@ jobs:
           path: Docs
       - name: Join samples  
         run: |
-          jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./main/samples.json
+          jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./Docs/docs/samples.json
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
           INPUT_SCHEMA: ./main/metadata-schema.json
-          INPUT_JSONS: ./main/samples.json
+          INPUT_JSONS: ./Docs/docs/samples.json
       - name: copy file to gh-pages
         uses: canastro/copy-file-action@master
         with:
-          source: "./main/samples.json"
+          source: "./Docs/docs/samples.json" 
           target: "./gh-pages/samples.json"     
-      - name: copy file to Docs
-        uses: canastro/copy-file-action@master
-        with:
-          source: "./main/samples.json"
-          target: "./Docs/docs/samples.json"           
-      - name: Commit updated samples.json
-        uses: EndBug/add-and-commit@v6
-        with:
-          message: 'Updated samples.json'
-          add: 'samples.json --force'
-          cwd: './main' 
-          token: ${{ secrets.TOKEN }} 
       - name: Commit samples.json to gh-pages
         uses: EndBug/add-and-commit@v6
         with:
