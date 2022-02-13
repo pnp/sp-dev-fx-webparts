@@ -39,8 +39,7 @@ jobs:
   #     run: echo "Hello ${{ github.event.inputs.name }}"
 
   build:
-    name: Merge
-    description: 'Merge all sample.json'
+    name: 'Merge all sample.json'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
