@@ -1,4 +1,4 @@
-g{
+{
     "$id": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "array",
