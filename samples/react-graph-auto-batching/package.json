@@ -29,7 +29,7 @@
     "@types/react": "16.9.36",
     "@types/react-dom": "16.9.8",
     "@types/webpack-env": "1.13.1",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "chai": "^4.3.6",
     "gulp": "~4.0.2",
     "jest": "^27.4.7",
