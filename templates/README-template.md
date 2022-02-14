@@ -24,7 +24,11 @@ If your web part uses a placeholder screen and requires the user to configure it
 You can add as many screen shots as you'd like to help users understand your web part without having to download it and install it.
 -->
 
-![picture of the web part in action](assets/preview.png)
+![Example of a good preview](assets/goodpreview.png)
+
+![Also a good preview](assets/alsogoodpreview.png)
+
+![Not so good](assets/notsogood.gif)
 
 ## Compatibility
 
