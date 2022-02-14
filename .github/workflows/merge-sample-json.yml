@@ -34,7 +34,7 @@ jobs:
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: ./main/metadata-schema.json
+          INPUT_SCHEMA: ./main/templates/metadata-schema.json
           INPUT_JSONS: ./Docs/docs/samples.json
       - name: copy file to gh-pages
         uses: canastro/copy-file-action@master

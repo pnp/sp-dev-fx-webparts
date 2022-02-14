@@ -1,8 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "plusBeta": true,
-    "isCreatingSolution": true,
-    "environment": "spo",
-    "whichFolder": "subdir"
-  }
-}
