@@ -9,7 +9,7 @@ Displays information about a GitHub user.
 ![React GitHub Badge in action](https://github.com/hugoabernier/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

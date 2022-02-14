@@ -85,7 +85,7 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 ![tenant properties](./assets/screen17.jpg)  
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8](https://img.shields.io/badge/SPFx-1.8.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

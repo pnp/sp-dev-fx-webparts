@@ -34,7 +34,7 @@ The provided sample demonstrates how it can be achieved using custom Settings Pa
 
 Downside of this approach is we need to additionally implement "app uninstalled" event to correctly remove properties from OneDrive list.
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

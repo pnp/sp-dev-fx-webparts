@@ -17,7 +17,7 @@ The property pane shows dinamically all webparts in the current page, using [PnP
 ![WebPartInAction](./assets/react-tour-pnpjs-webpart-configuration.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

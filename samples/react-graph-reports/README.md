@@ -7,7 +7,7 @@ This sample describe a SPFx application which retrieve an office 365 usage repor
 ![Office 365 Usage Reports using Microsoft Graph API](./assets/react-graph-reports.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8](https://img.shields.io/badge/SPFx-1.8.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

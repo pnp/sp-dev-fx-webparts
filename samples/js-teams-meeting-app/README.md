@@ -15,6 +15,7 @@ This project demonstrates a SPFx web part used as a Microsoft Teams meetings app
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -42,6 +43,8 @@ Version |      Date      |    Comments
 ## Minimal Path to Awesome
 
 Refer to the above mentioned SPFx tutorial for full repro instructions.
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 - Clone this repository
 - ZIP the contents of the `./teams` folder, *but not the folder itself*

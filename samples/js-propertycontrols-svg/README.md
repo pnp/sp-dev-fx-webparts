@@ -7,7 +7,7 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 ![picture of the web part in action](./assets/js-propertycontrols-svg.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg) 
 ![Node.js v6](https://img.shields.io/badge/Node.js-v14-green.svg) 
@@ -16,6 +16,7 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Which PnP SPFx controls are being used in this sample?
 
@@ -50,6 +51,8 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
 - Customize your PnP Hero!
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 Displays a Scalable Vector Graphics (SVG) image of the SharePoint Patterns and Practices Super Hero and allows users to customize the colors used and the size of the image through the use of PnP SPFx Property Controls (SpinButton & ColorPicker).

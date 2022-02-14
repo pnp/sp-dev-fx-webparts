@@ -26,7 +26,7 @@ The Section Theme web part illustrates how to use theme variant variables to sty
 ![SharePoint Section Themes Client Side Web Part](./assets/SectionThemes.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 

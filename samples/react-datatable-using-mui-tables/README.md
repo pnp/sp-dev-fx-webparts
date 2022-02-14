@@ -56,6 +56,8 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 
 > Don't want to clone the entire repository? Try downloading this folder [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable-using-mui-tables). Unzip the file, and continue with the command-line instructions.
 

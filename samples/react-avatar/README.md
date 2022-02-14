@@ -15,7 +15,7 @@ This is a sample web part that helps user create their avatar and save as profil
 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.11.1](https://img.shields.io/badge/SPFx-1.11.1-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 

@@ -16,7 +16,7 @@ This web part acts as a centralized place where admin can manage SPFx solutions 
 **Note:**
 This web part is mainly build for tenant and SharePoint admins, since most of the operation requires administrator privileges.
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

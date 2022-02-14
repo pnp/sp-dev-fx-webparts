@@ -11,7 +11,7 @@ Office 365 Groups, for instance Sales information, and make it available in the 
 ![Custom Schema Extension Web part](./assets/webpart.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.5.1](https://img.shields.io/badge/SPFx-1.5.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 

@@ -147,7 +147,7 @@ By default you have to install this web part per site collection where you want 
 
 In order to make it available to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

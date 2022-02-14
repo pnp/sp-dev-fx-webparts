@@ -20,7 +20,7 @@ The solution demonstrates:
 ![Field Visit Demo](./documentation/FieldVisitDemo.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8](https://img.shields.io/badge/SPFx-1.8.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

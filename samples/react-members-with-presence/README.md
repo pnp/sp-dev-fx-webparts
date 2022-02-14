@@ -7,7 +7,7 @@ This sample shows how to get the members of a specific group, including their pr
 ![Members with Presence](./assets/react-members-with-presence.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
