@@ -26,7 +26,7 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 ![gallery](/samples/react-multimedia-gallery/assets/Screenshot2.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

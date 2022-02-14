@@ -7,7 +7,7 @@ Sample React web part showing how to retrieve and display personal e-mail retrie
 ![SharePoint Framework web part showing latest personal e-mails](./assets/preview.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.6](https://img.shields.io/badge/SPFx-1.6.0-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 

@@ -7,7 +7,7 @@ This web part demonstrates building a React functional component that includes s
 ![Screenshot](Screenshot.png "Screenshot - Roman Numerals web part")
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

@@ -14,7 +14,7 @@ Furthermore it shows you how to retrieve a complete mail as a mimestream via Mic
 A detailed functionality and technical description can be found in the [author's blog series](https://mmsharepoint.wordpress.com/2020/01/11/an-outlook-add-in-with-sharepoint-framework-spfx-introduction/)
 
 #
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

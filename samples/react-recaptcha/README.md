@@ -10,7 +10,7 @@ business requirement if you need to implement CAPTCHA in SPFx web part.
 ![web part in action](screens/WebpartInAction.gif?raw=true "web part in action")
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

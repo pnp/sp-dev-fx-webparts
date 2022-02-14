@@ -6,7 +6,7 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 ![Word Game Preview](./assets/preview.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 

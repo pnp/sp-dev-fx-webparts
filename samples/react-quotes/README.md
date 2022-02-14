@@ -7,7 +7,7 @@ This web part displays a quote of the day by querying a third-party api or can d
 ![picture of the web part in action](./assets/react-quotes-sample.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)

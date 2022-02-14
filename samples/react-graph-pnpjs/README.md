@@ -8,7 +8,7 @@ It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/a
 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

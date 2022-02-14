@@ -9,7 +9,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 

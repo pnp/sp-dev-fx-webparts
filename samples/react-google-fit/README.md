@@ -42,7 +42,7 @@ Below NPM package is used to develop this sample.
 1.	react-google-authorize (https://www.npmjs.com/package/react-google-authorize) 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

@@ -7,7 +7,7 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 ![react-company-stories](./assets/react-company-stories.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 

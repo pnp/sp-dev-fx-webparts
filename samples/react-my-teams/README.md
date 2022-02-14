@@ -8,13 +8,14 @@ The web part can be configured to open the team on the web browser or client app
 ![Demo](./assets/Preview.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg) 
 ![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 

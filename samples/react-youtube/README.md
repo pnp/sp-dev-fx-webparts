@@ -22,7 +22,7 @@ This web part allows to search and view the YouTube videos, across the YouTube A
 ![Demo](./assets/Preview.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 

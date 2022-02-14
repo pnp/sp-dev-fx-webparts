@@ -34,7 +34,7 @@ Look at this to go deep:
 ![The invitation manager web part displayed in SharePoint workbench](./assets/SPFx-Invitation-Manager.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.3](https://img.shields.io/badge/SPFx-1.3.0-green.svg) 
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 

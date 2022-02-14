@@ -10,7 +10,7 @@ This web part lists all the automated Flows associated with a SharePoint List/ L
 The web part only displays the flows which are shared with the current user and reside in the default environment.
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
