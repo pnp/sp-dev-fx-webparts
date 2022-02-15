@@ -41,7 +41,7 @@
     "gulp": "~4.0.2",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "@types/webpack-env": "1.13.1",
     "@types/es6-promise": "0.0.33"
   }
