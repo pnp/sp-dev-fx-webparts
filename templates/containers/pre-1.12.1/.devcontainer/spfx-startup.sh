@@ -1,20 +1,15 @@
-## Optional switch to dev branch (if pushing to main/master is restricted)
-# git checkout dev
-
-## configure nvm, modejs, and fix project for spfx, if not handled by Dockerfile
-#. ${NVM_DIR}/nvm.sh
-#npm config delete prefix
-#nvm install 10
-#npm install -g gulp
-
+echo
+echo -e "\e[1;94mInstalling Node dependencies\e[0m"
 npm install
 
 ## commands to create dev certificate and copy it to the root folder of the project
+echo
+echo -e "\e[1;94mGenerating dev certificate\e[0m"
 gulp trust-dev-cert
-# Use following command for SPFx >= 1.12.1
-cp ~/.rushstack/rushstack-serve.pem ./spfx-dev-cert.cer
-# Use following command for SPFx < 1.12.1
-# cp ~/.gcb-serve-data/gcb-serve.cer ./spfx-dev-cert.cer
+
+
+cp ~/.gcb-serve-data/gcb-serve.cer ./spfx-dev-cert.cer
+cp ~/.gcb-serve-data/gcb-serve.cer ./spfx-dev-cert.pem
 
 ## add *.cer to .gitignore to prevent certificates from being saved in repo
 if ! grep -Fxq '*.cer' ./.gitignore

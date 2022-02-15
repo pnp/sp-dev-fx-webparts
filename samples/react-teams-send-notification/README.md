@@ -16,6 +16,7 @@ This web part allows you to send MS Teams feed notifications to a selected user.
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to Microsoft Graph")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -53,6 +54,8 @@ Version|Date|Comments
 - Edit the file `/teams/manifest.json` and update the `webApplicationInfo` with your *SharePoint Online Client Extensibility Web Application Principal* App ID
 - Zip the files in the `/teams` folder, and deploy it to Teams
 - Add the new SPFx Tab to any Team
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

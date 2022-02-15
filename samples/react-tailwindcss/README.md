@@ -37,6 +37,7 @@ This project shows how to integrate [Tailwind CSS](https://tailwindcss.com/) fra
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -71,6 +72,8 @@ Version|Date|Comments
 - in the command-line run:
   - `npm install`
   - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## References
 
