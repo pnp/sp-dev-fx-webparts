@@ -18,11 +18,15 @@ GET https://graph.microsoft.com/beta/me/todo/lists
 
 POST https://graph.microsoft.com/beta/me/todo/lists
 
-```json
+```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.json
 {
   displayName: "My new List"
 }
 ```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ### Get tasks in list
 
@@ -32,7 +36,9 @@ GET https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 
 POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 
-```json
+```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.json
 {
   "importance": "high",
   "status": "notStarted",
@@ -44,6 +50,8 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 }
 ```
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 ## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
@@ -53,6 +61,7 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to the Microsoft Graph")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Solution
@@ -78,9 +87,13 @@ Version|Date|Comments
 * `gulp package-solution --ship`
 * deploy package to SharePoint App Catalog (check tenant deploy)
 * Using [M365 CLI](https://pnp.github.io/cli-microsoft365/) to configure MS Graph permissions to allow creating ToDo tasks
-```ps
+```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.ps
 m365 spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.ReadWrite"
 ```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 * deploy spfx solution as Outlook add-in following instructions here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
 

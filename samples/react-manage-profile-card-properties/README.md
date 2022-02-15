@@ -30,6 +30,7 @@ Only users with Tenant Admin Role are allowed to managed profile card properties
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to Microsoft Graph API")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -69,6 +70,8 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
 - Approve the required permissions (`User.ReadWrite`, `Directory.AccessAsUser.All`) on SharePoint Admin in App permissions
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 > **NOTE:** This web part does not work in the local workbench
 
