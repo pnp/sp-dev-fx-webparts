@@ -6,7 +6,7 @@ This web part lists all the public teams the current user is not yet a member of
 ![picture of the web part in action](./assets/js-public-unjoined-teams.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

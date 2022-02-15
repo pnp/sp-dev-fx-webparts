@@ -23,6 +23,14 @@
         "value": "1.4.1"
       }
     ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "alt": "No preview available"
+    }
+    ],
     "authors": [
       {
         "gitHubAccount": "StfBauer",

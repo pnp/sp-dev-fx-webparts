@@ -30,6 +30,7 @@ I wrote a blog post covering more if the inner workings, you can find it at [SPF
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to Microsoft Graph")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -60,9 +61,13 @@ Version|Date|Comments
 - Add to AppCatalog and deploy
 - Assign `User.Read.All` delegated permissions to the **SharePoint Online Client Extensibility Web Application Principal**, easiest way is with [Office 365 CLI](https://pnp.github.io/office365-cli/):
 ```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 o365 login
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
 ```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Acknowledgements / Inspiration
 

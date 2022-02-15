@@ -6,7 +6,7 @@ This sample shows how read and update a custom Schema extension in MS Graph to T
 ![Custom Schema Extension Webpart](./assets/webpart.JPG)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8](https://img.shields.io/badge/SPFx-1.8.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

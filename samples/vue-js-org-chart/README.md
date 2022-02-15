@@ -7,7 +7,7 @@ A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.
 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8.1](https://img.shields.io/badge/SPFx-1.8.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

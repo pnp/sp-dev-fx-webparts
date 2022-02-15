@@ -16,6 +16,7 @@ Uses [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cogni
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to the storage entity, which is only available on hosted pages")
 ![Hosted Workbench (configuration required)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(configuration%20required)-yellow.svg "You'll need a key and endpoint to Azure Cognitive Services in the entity storage")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -77,6 +78,8 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

@@ -6,7 +6,7 @@ Load React components and third-party packages on demand in SPFx
 ![Dynamic Loading of React components](./assets/cs3.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.6](https://img.shields.io/badge/SPFx-1.6.0-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 

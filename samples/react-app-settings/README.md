@@ -27,7 +27,7 @@ That allows better DevOps and continuous integration (CI/CD) automation. The App
 Azure DevOps pipelines configurations are included to demonstrate how the AppSettings.ts values can be changed per different environments. Please refer to the `devops/configurations` folder to see how this can be setup for your pipeline.
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 

@@ -1,0 +1,42 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.root {
+  width: 100%;
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, calc(50% - 0.5rem));
+    grid-template-rows: auto;
+    gap: 1rem;
+    .button {
+      height: inherit;
+      .content {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        .icon {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
+          font-size: 2rem;
+        }
+        .title {
+          grid-column: 2 / 3;
+          grid-row: 1 / 2;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .author {
+          grid-column: 2 / 3;
+          grid-row: 2 / 3;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

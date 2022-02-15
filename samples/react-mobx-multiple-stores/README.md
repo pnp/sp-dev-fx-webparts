@@ -7,7 +7,7 @@ A sample web part that uses the [Mobx](https://mobx.js.org/) library with multip
 <img src="assets/demo.gif"/>
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
