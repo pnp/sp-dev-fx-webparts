@@ -18,7 +18,6 @@ This web part demonstrates building a React functional component that uses data 
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
@@ -51,6 +50,8 @@ Version|Date|Comments
   * `gulp serve --nobrowser`
   * Navigate to *https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*
   * Sign in to your account if needed
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
