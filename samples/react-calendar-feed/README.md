@@ -32,6 +32,7 @@ For more information about how this solution was built, including some design de
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Partially](https://img.shields.io/badge/Local%20Workbench-Partially-yellow.svg "Some functionality may not work on local workbech")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -85,6 +86,8 @@ Version|Date|Comments
 - If necessary, specify to use a proxy. Use this option if you encounter issues where your feed provider does not accept your tenant URL as a CORS origin.
 - If desired, specify how long (in minutes) you want to expire your users' local storage and refresh the events.
 - Exclude IE11 support with gulp parameter ```--NoIE11``` this is in-case-sensitive 
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

@@ -4,7 +4,7 @@
 
 This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components. In this example, a Service Scope is shared globally that components can consume to call the Microsoft Graph, it also uses Functional Components replacing the more commonly seen Class Component approach.
 
-![webpart](webpart.png)
+![web part](webpart.png)
 
 ## Compatibility
 
@@ -15,6 +15,7 @@ This web part is designed to help developers understand how to use the Context A
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to the context API")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -48,6 +49,8 @@ Version|Date|Comments
   * `gulp serve`
 * Navigate to remote workbench `https://tenant.sharepoint.com/_layouts/15/workbench.aspx`
 * Add `HelloWorld` web part to the workbench
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

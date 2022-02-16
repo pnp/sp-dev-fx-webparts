@@ -1,0 +1,19 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+// colors
+$themePrimary: "[theme: themePrimary, default: #0078d7]";
+$neutralPrimary: "[theme: neutralPrimary, default: #333]";
+$neutralLight: "[theme: neutralLight, default: #eaeaea]";
+$neutralSecondary: "[theme: neutralSecondary, default: #666666]";
+$white: "[theme: white, default: #fff]";
+$black: "[theme: black, default: #000000]";
+
+// general styling
+$marginSize: 9.4px;
+$marginStep: 20px;
+
+// tiles -> tilePadding + tileHeight = tileSize
+$tileSize: 130px;
+$tilePadding: 35px;
+$tileHeight: 95px;
+$additionalMarginWhenNoIcon: 42px;

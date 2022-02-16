@@ -41,7 +41,7 @@ channels on the tenants Video Service, and allows the user to select a channel.
 
 The second web part used react-slick. The carousel is not as fancy as react-3d-carousel, but I was able to to swap out the 
 image and replace it with an Iframe playing the Video once a user clicked it. I had trouble with the css and getting the next and previous 
-buttons to show. If you run the webpart, the buttons are there to the left and the right of the image, they are just not visible.You can find them by moving the mouse along the left and right borders. Hopefully someone with better css skiils than I can fix this. You can also change videos by clicking the dots at the bottom of the webpart, A sample of the web part is shown below:
+buttons to show. If you run the web part, the buttons are there to the left and the right of the image, they are just not visible.You can find them by moving the mouse along the left and right borders. Hopefully someone with better css skiils than I can fix this. You can also change videos by clicking the dots at the bottom of the web part, A sample of the web part is shown below:
 
 ![react-slick](./src/assets/react-slick.PNG)
 And a sample of the webparts configuration:

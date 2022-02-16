@@ -9,7 +9,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
@@ -28,7 +28,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 ## Prerequisites
  
 - Basic knowledge of react-redux concepts - reducer,actions and dispatch.
-- PnP PowerShell - to setup Fields and Lists to work with the webpart.
+- PnP PowerShell - to setup Fields and Lists to work with the web part.
 
 ## Solution
 

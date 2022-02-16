@@ -49,7 +49,7 @@
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
     "@voitanos/jest-preset-spfx-react16": "^1.1.0",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "gulp": "~3.9.1",
     "gulp-sequence": "1.0.0",
     "jest": "^23.6.0",

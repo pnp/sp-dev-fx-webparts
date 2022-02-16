@@ -1,0 +1,71 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "../../styles/Main.module.scss";
+
+.sortableContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    overflow: auto;
+}
+
+.isSortingActive .sortableItem label {
+    display: none !important;
+}
+
+.sortableItem {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: $tileSize;
+    min-height: $tileSize;
+    margin: $marginSize;
+    background-color: $themePrimary;
+
+    label {
+        position: absolute;
+        cursor: pointer;
+        top: 4px;
+        color: $white;
+        display: none;
+        transition: all 0.2s ease-in-out;
+
+        &.moveButton {
+            right: 4px;
+        }
+    }
+
+    &:hover label {
+        display: block;
+    }
+}
+
+.sortableInnerItem {
+    display: block;
+    align-items: center;
+    flex-direction: row;
+    height: $tileHeight;
+    padding-top: $tilePadding;
+    justify-content: center;
+    text-align: center;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+
+    i {
+        @include ms-font-su;
+        display: block;
+    }
+
+    span {
+        display: block;
+
+        &.noIcon {
+            margin-top: $additionalMarginWhenNoIcon;
+        }
+    }
+}
+
+.sortableItemDragging {
+    box-shadow: 0 0 $marginSize $neutralPrimary;
+}

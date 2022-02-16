@@ -18,6 +18,7 @@ This SPFx Outlook Add-In lets users save any email attachments to a OneDrive fol
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Partially](https://img.shields.io/badge/Hosted%20Workbench-Partially-yellow.svg "Designed to work in Outlook, but will display sample attachments while in workbench")
 ![Outlook Web Access Compatible ](https://img.shields.io/badge/Outlook%20Web%20Access-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Features
@@ -45,7 +46,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-save-attachments`, located under `samples`)
 * In the command line run:
   * Restore dependencies: `npm install`
@@ -63,6 +64,8 @@ Version|Date|Comments
   * Click **Install** on the warning message to get your add-in available on the tenant
 * Go to the **API Management** section in the new SharePoint Admin Center (*https://{tenantname}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement*)
 * **Approve** the permission request for **Mail.ReadWrite** and **Files.ReadWrite** to **Microsoft Graph**
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
 
 ## Video
 

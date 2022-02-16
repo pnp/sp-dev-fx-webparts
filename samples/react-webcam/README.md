@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is sample web part to showcase how to open webcam and take photo in SPFx webpart. This will work in desktop/laptop with webcam and mobile device also(from browser). This can be extended to stored captured photo in document library or it can be saved as user profile photo using GRAPH API.
+This is sample web part to showcase how to open webcam and take photo in SPFx web part. This will work in desktop/laptop with webcam and mobile device also(from browser). This can be extended to stored captured photo in document library or it can be saved as user profile photo using GRAPH API.
 
 * [Please refer this link on How to build this from Scratch](https://www.c-sharpcorner.com/article/how-to-open-webmobile-camera-and-take-photo-from-spfx-webpart/)
 
@@ -19,6 +19,7 @@ This is sample web part to showcase how to open webcam and take photo in SPFx we
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -51,13 +52,15 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 
 ## Features
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Using react-webcam npm package in SPFx webpart
+* Using react framework in SPFx web part
+* Using react-webcam npm package in SPFx web part
 * Open web cam or mobile camera to capture photo and display in img html element
 
 ## Video

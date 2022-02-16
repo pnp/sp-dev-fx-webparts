@@ -7,7 +7,7 @@ This web part displays a quote of the day by querying a third-party api or can d
 ![picture of the web part in action](./assets/react-quotes-sample.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
@@ -15,6 +15,7 @@ This web part displays a quote of the day by querying a third-party api or can d
 ![Does not work with with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -36,12 +37,15 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quotes) then unzip it)
 * in the command line run:
   * `npm install`
   * `gulp serve`
 * In the browser that opens add the web part to your page.
 * After the web part has loaded it will load the quote automatically or you can edit the webparts properties to display a manual quote.
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
+
 
 ## Features
 

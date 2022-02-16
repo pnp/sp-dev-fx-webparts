@@ -1,0 +1,104 @@
+{
+  "bundles": {
+    "my-approvals-web-part": {
+      "dependencies": [
+        {
+          "componentId": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+          "componentName": "@microsoft/sp-property-pane",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": true
+        },
+        {
+          "componentId": "1c6c9123-7aac-41f3-a376-3caea41ed83f",
+          "componentName": "@microsoft/sp-loader",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "8217e442-8ed3-41fd-957d-b112e841286a",
+          "componentName": "@ms/sp-telemetry",
+          "componentVersion": "0.19.42",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "e40f8203-b39d-425a-a957-714852e33b79",
+          "componentName": "@microsoft/sp-dynamic-data",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+          "componentName": "@microsoft/sp-lodash-subset",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+          "componentName": "@microsoft/sp-core-library",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "01c4df03-e775-48cb-aa14-171ee5199a15",
+          "componentName": "tslib",
+          "componentVersion": "1.10.0",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "2e09fb9b-13bb-48f2-859f-97d6fff71176",
+          "componentName": "@ms/odsp-core-bundle",
+          "componentVersion": "1.1.192",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "78359e4b-07c2-43c6-8d0b-d060b4d577e8",
+          "componentName": "@microsoft/sp-diagnostics",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "1c4541f7-5c31-41aa-9fa8-fbc9dc14c0a8",
+          "componentName": "@microsoft/sp-page-context",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "229b8d08-79f3-438b-8c21-4613fc877abd",
+          "componentName": "@microsoft/load-themed-styles",
+          "componentVersion": "0.1.2",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "c07208f0-ea3b-4c1a-9965-ac1b825211a6",
+          "componentName": "@microsoft/sp-http",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+          "componentName": "react",
+          "componentVersion": "16.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+          "componentName": "react-dom",
+          "componentVersion": "16.13.1",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "974a7777-0990-4136-8fa6-95d80114c2e0",
+          "componentName": "@microsoft/sp-webpart-base",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": true
+        },
+        {
+          "componentId": "467dc675-7cc5-4709-8aac-78e3b71bd2f6",
+          "componentName": "@microsoft/sp-component-base",
+          "componentVersion": "1.13.1",
+          "isDirectDependency": false
+        }
+      ]
+    }
+  }
+}

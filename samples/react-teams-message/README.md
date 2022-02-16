@@ -23,7 +23,7 @@ This is a sample web part that displays currently logged in user's Microsoft Tea
 
 * Web Part in Action
 
-![WebPart in Action](./assets/myteamsmessage.gif)
+![Web Part in Action](./assets/myteamsmessage.gif)
 
 * Configurable Web Part Properties
 
@@ -44,7 +44,7 @@ Configurable Web part Properties
 
 * Please refer this [link](https://www.c-sharpcorner.com/article/microsoft-teams-operations-in-spfx-webpart-using-graph-api/) if you are interested in learning step by step on how to call Team graph API from SPFx web part.
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
@@ -53,6 +53,7 @@ Configurable Web part Properties
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to Microsoft Graph")
 ![Hosted Workbench Compatible (with API permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(with%20API%20permissions)-yellow.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -90,8 +91,8 @@ Configurable Web part Properties
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Calling Teams Graph API in SPFx webpart
+* Using react framework in SPFx web part
+* Calling Teams Graph API in SPFx web part
 * Usage of PnP Tree View  Control
 * Usage of Fluent UI/Office UI Fabric Controls
 
@@ -114,6 +115,8 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Video
 

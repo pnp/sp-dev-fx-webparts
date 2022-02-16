@@ -15,7 +15,7 @@ Main features include:
 - Optional View All link in header to point to custom feed source
 - Embedded feed rendering with optional parameters
 -- Feed result layout options including optional display of item publish date and description
--- Demostration of color picker property for color control of certain aspects of webpart
+-- Demostration of color picker property for color control of certain aspects of web part
 - Custom feed rendering using local or remote handlebar template
 
 ![RSS Reader](./assets/react-rss-reader.gif)
@@ -30,6 +30,7 @@ Main features include:
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -53,6 +54,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ### SPFx 
 - In the command line, with a version of Node 10, i.e. 10.16.3, run:

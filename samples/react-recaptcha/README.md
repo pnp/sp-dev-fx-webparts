@@ -3,14 +3,14 @@
 ## Summary
 
 This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your
-business requirement if you need to implement CAPTCHA in SPFx webpart.
+business requirement if you need to implement CAPTCHA in SPFx web part.
 
 * Please refer this [link](https://www.c-sharpcorner.com/article/google-recaptcha-in-sharepoint-framework-webpartspfx/) to know 'How to build this from Scratch'
 
 ![web part in action](screens/WebpartInAction.gif?raw=true "web part in action")
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
@@ -19,6 +19,7 @@ business requirement if you need to implement CAPTCHA in SPFx webpart.
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -66,14 +67,16 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 
 ## Features
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure webpart.
-* Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx webpart
+* Using react framework in SPFx web part
+* Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure web part.
+* Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx web part
 * Validate if captcha is resolved before submitting data.
 
 

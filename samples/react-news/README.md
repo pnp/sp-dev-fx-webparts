@@ -29,6 +29,7 @@ Web part pulls all SharePoint News Posts that the logged in user has access to v
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
 ![Workbench Hosted: Only after API permissions granted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Only after API permissions granted")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -85,6 +86,11 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 # Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+## Video
+
+[![News SharePoint Framework web part](./assets/video-thumbnail.jpg)](https://youtu.be/DMZkZmJhLf0 "News SharePoint Framework web part")
 
 ## Help
 

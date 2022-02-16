@@ -4,7 +4,7 @@
 
 SPFx v1.12.1 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.  
 
-![WebPart Preview](./assets/web-part-preview.gif)
+![Web Part Preview](./assets/web-part-preview.gif)
 
 The Questionnaire meeting app displays the questions from attendees as pre-meeting app experience.
 ![Questionnaire Preview](./assets/questionnaire-preview.png)
@@ -48,8 +48,10 @@ spfx-react-teams-meeting-app-questionnaire
 ```
 
 ## Compatibility
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Compatibility
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
@@ -94,6 +96,8 @@ MeetingID|MeetingID|Single line of text|N|
 ## Minimal Path to Awesome
 
 ### SharePoint deployment
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 - Clone this repo
 - Navigate to the folder with current sample
