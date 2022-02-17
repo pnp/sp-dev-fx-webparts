@@ -42,6 +42,7 @@ After you gave permissions, the following will information will get displayed:
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -74,6 +75,8 @@ Version|Date|Comments
     - Click on **add platform**, and choose **web**
     - Specify the workbench URL and be sure that **allow implicit flow** is enabled
     - Click on save to store these changes
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ![Web URL configuration and implicit flow](./assets/redirect-url.png)
 
