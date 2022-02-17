@@ -41,6 +41,7 @@ To enable Office 365 Identity Enforcement on `Office 365 Enterprise E3 Trial ten
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -75,6 +76,8 @@ Version|Date|Comments
 - Do not forget to paste your Office 365 tenant url in the `Javascript Origins` upon Yammer app registration e.g `Javascript Origins: https://<your_tenant>.sharepoint.com`.
 - Add Yammer app redirect URI e.g. `https://<your_tenant>.sharepoint.com/SitePages/Home.aspx`.
 - Make sure the Yammer app is enabled
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ![Yammer app enabled](./assets/yammer-enabled-screen.png)
 

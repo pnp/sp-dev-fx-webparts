@@ -34,6 +34,7 @@ More details in my post here: [Using Redux Async Actions and ImmutableJS in Shar
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -60,6 +61,8 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
   - Open the SharePoint Online version of the workbench: /_layouts/15/workbench.aspx
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Why Redux and ImmutableJS
 Every [Redux](http://redux.js.org/) action creates a copy of the state, changes the required properties in the copy and then returns the copy as a new state. This prevents bugs where the state is changed unknowingly. 
