@@ -48,7 +48,6 @@ Version|Date|Comments
 
 - Clone this repository
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 - Navigate to the file 'src/webparts/components/TermsPickerComponent.tsx'
 
@@ -64,6 +63,7 @@ Version|Date|Comments
 
 - Navigate to - <Your SP site>/_layouts/workbench.aspx and add the "react-taxonomypicker-panel"
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
