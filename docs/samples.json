@@ -7053,7 +7053,7 @@
       "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team."
     ],
     "creationDateTime": "2019-06-14",
-    "updateDateTime": "2019-06-14",
+    "updateDateTime": "2022-02-15",
     "products": [
       "SharePoint"
     ],
@@ -7064,7 +7064,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.8.2"
+        "value": "1.13.1"
       }
     ],
     "thumbnails": [
@@ -7082,6 +7082,11 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/10207194?s=460&v=4",
         "name": "Bill Ayers",
         "twitter": "SPDoctor"
+      },
+      {
+        "gitHubAccount": "DonKirkham",
+        "pictureUrl": "https://github.com/DonKirkham.png",
+        "name": "Don Kirkham"
       }
     ],
     "references": [
