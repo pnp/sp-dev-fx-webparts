@@ -3,7 +3,14 @@
   "solution": {
     "name": "teams-tracker-client-side-solution",
     "id": "f5a39f0e-c504-4969-8e47-1ed85d9f8a68",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
+        "developer": {
+          "name": "",
+          "privacyUrl": "",
+          "termsOfUseUrl": "",
+          "websiteUrl": "",
+          "mpnId": "SPFx-1.13.1"
+        },
     "includeClientSideAssets": true,
     "isDomainIsolated": false
   },

@@ -17,6 +17,7 @@ It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/a
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -48,6 +49,8 @@ Version|Date|Comments
 ![Approve request from new Admin UI](./assets/approve-request.png)
 - run `$ gulp serve` and open hosted workbench, i.e. `https://<org>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
 - add `PnPGraph` web part to see it in action
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features  
 Web part in this solution illustrates the following concepts on top of the SharePoint Framework:

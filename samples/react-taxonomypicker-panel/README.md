@@ -16,6 +16,7 @@ Sample web part with Single and Multi-select taxonomy pickers using Office UI Fa
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -47,6 +48,7 @@ Version|Date|Comments
 
 - Clone this repository
 
+
 - Navigate to the file 'src/webparts/components/TermsPickerComponent.tsx'
 
 - In the method "GetTerms", replace the <TERM_STORE_NAME> with the term store name in your tenant.
@@ -61,6 +63,7 @@ Version|Date|Comments
 
 - Navigate to - <Your SP site>/_layouts/workbench.aspx and add the "react-taxonomypicker-panel"
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

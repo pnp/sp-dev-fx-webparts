@@ -14,6 +14,7 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 ![SharePoint 2019 | Online - It won't work with SharePoint 2016](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg "It won't work on SharePoint 2016")
 ![Teams Not compatible - Don't waste your time](https://img.shields.io/badge/Teams-Not%20compatible-red.svg "Don't waste your time")
 ![Workbench Local | Hosted - It works on my machine, and yours, and in the cloud](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg "It works on my machine, your machine, and in the cloud")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -42,6 +43,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 Download this [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me)
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 
 ## Features

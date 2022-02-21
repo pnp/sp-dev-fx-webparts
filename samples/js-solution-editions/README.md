@@ -24,6 +24,7 @@ This sample shows a possible approach of handling multiple editions (e.g. trial,
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
