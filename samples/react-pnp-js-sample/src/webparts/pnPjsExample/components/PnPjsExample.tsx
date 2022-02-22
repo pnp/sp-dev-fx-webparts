@@ -42,40 +42,45 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
   }
 
   public render(): React.ReactElement<IAsyncAwaitPnPJsProps> {
-    // calculate total of file sizes
-    const totalDocs: number = this.state.items.length > 0
-      ? this.state.items.reduce<number>((acc: number, item: IFile) => {
-        return (acc + Number(item.Size));
-      }, 0)
-      : 0;
-    return (
-      <div className={styles.pnPjsExample}>
-        <Label>Welcome to PnP JS Version 3 Demo!</Label>
-        <PrimaryButton onClick={this._updateTitles}>Update Item Titles</PrimaryButton>
-        <Label>List of documents:</Label>
-        <table width="100%">
-          <tr>
-            <td><strong>Title</strong></td>
-            <td><strong>Name</strong></td>
-            <td><strong>Size (KB)</strong></td>
-          </tr>
-          {this.state.items.map((item, idx) => {
-            return (
-              <tr key={idx}>
-                <td>{item.Title}</td>
-                <td>{item.Name}</td>
-                <td>{(item.Size / 1024).toFixed(2)}</td>
-              </tr>
-            );
-          })}
-          <tr>
-            <td></td>
-            <td><strong>Total:</strong></td>
-            <td><strong>{(totalDocs / 1024).toFixed(2)}</strong></td>
-          </tr>
-        </table>
-      </div >
-    );
+    try {
+      // calculate total of file sizes
+      const totalDocs: number = this.state.items.length > 0
+        ? this.state.items.reduce<number>((acc: number, item: IFile) => {
+          return (acc + Number(item.Size));
+        }, 0)
+        : 0;
+      return (
+        <div className={styles.pnPjsExample}>
+          <Label>Welcome to PnP JS Version 3 Demo!</Label>
+          <PrimaryButton onClick={this._updateTitles}>Update Item Titles</PrimaryButton>
+          <Label>List of documents:</Label>
+          <table width="100%">
+            <tr>
+              <td><strong>Title</strong></td>
+              <td><strong>Name</strong></td>
+              <td><strong>Size (KB)</strong></td>
+            </tr>
+            {this.state.items.map((item, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>{item.Title}</td>
+                  <td>{item.Name}</td>
+                  <td>{(item.Size / 1024).toFixed(2)}</td>
+                </tr>
+              );
+            })}
+            <tr>
+              <td></td>
+              <td><strong>Total:</strong></td>
+              <td><strong>{(totalDocs / 1024).toFixed(2)}</strong></td>
+            </tr>
+          </table>
+        </div >
+      );
+    } catch (err) {
+      Logger.write(`${this.LOG_SOURCE} (render) - ${JSON.stringify(err)} - `, LogLevel.Error);
+    }
+    return null;
   }
 
   private _readAllFilesSize = async (): Promise<void> => {
