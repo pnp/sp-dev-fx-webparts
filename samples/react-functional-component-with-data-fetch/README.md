@@ -9,7 +9,7 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -38,6 +38,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|June 14, 2019|Initial release
 2.0|February 15, 2022|Upgrade to SPFx v1.13.1
+2.1|February 21, 2022|Upgrade to SPFx v1.14.0
 
 ## Minimal Path to Awesome
 
