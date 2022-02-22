@@ -27,7 +27,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
         "alt": "Enhanced Power Apps"
       },
       {
