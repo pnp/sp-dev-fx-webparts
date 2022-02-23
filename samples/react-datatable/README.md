@@ -50,6 +50,7 @@ Version|Date|Comments
 1.4|April 10, 2021|Added feature to show profile picture in user column and shows display name of user field in export to CSV and PDF.
 1.5|June 2, 2021|Added feature to show image in dataTable and upgraded to the SPFx version 1.12.1.
 1.6|July 16, 2021|Changed library export-to-csv with react-csv
+1.7|Feb 22, 2022|Upgrade to SPFx v1.14.0
 
 ## Minimal Path to Awesome
 
