@@ -4,12 +4,12 @@
 
 This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.
 
-![Screenshot](Screenshot.png "Screenshot - Teams Tracker web part")
+![Screenshot](assets/Screenshot.png "Screenshot - Teams Tracker web part")
 
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -38,6 +38,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|June 14, 2019|Initial release
 2.0|February 15, 2022|Upgrade to SPFx v1.13.1
+2.1|February 21, 2022|Upgrade to SPFx v1.14.0
 
 ## Minimal Path to Awesome
 
@@ -55,7 +56,7 @@ Version|Date|Comments
 
 The purpose of this web part is to demonstrate building a React functional component that includes state and data fetched from a remote service. This is achieved using the recent React Hooks feature. The resulting code is cleaner and easier to follow than using a JavaScript/TypeScript class derived from React.Component. The example web part renders a list of the user's Teams and, if enabled, a list of the Teams channels for each Team with a link to the channel.
 
-![Screenshot](ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
+![Screenshot](assets/ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
 
 This is an extension of the approach used in the [React-Functional-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component) and [React-Functional-Stateful-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component) samples.
 
