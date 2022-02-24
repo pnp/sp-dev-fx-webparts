@@ -1,8 +1,8 @@
-# react-save-to-onedrive-app-personal-folder
+# Save to User Application Personal Folder in OneDrive
 
 ## Summary
 
-This solution shows how to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams. The solution is built of two compontents. Spfx library which provides the functionality to manage data saved to OneDrive application personal folder and Spfx webpart component which is a very simple solution that uses the library and gets or saves data.
+This solution shows how to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams. The solution is built of two compontents. SPFx library which provides the functionality to manage data saved to OneDrive application personal folder and SPFx webpart component which is a very simple solution that uses the library and gets or saves data.
 
 ![image](./assets/to-all-sites.png)
 when adding solution to appcatalog make it available to all sites
@@ -20,19 +20,19 @@ webpart added to teams
 
 ## Compatibility
 
-![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
-![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Hosted Workbench (Requires permissions))](https://img.shields.io/badge/Hosted%20Workbench-(Requires%20permissions%)-yellow.svg "Requires permissions to be granted before this solution can work on the hosted workbench")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [SharePoint Framework](https://aka.ms/SPFx)
+- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/SPFx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -44,20 +44,20 @@ react-save-to-onedrive-app-personal-folder | [Adam Wójcik](https://github.com/A
 
 Version|Date|Comments
 -------|----|--------
-1.0|Februaru 21, 2022|Initial release
+1.0|February 21, 2022|Initial release
 
 ## Minimal Path to Awesome
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-to-onedrive-app-personal-folder) then unzip it)
 - Ensure that you are at the solution folder
-- go to library folder
+- go to `library` folder
 - in the command-line run:
   - `npm install`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy (check option to make this solution available to all sites)
   - Approve the MS Graph API permissions in SharePoint Admin page
-- go to webpart folder
+- go to `webpart` folder
 - in the command-line run:
   - `npm install`
   - `gulp serve`
@@ -65,7 +65,7 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/SPFx-devcontainer for further instructions.
 
 ## Features
 
@@ -73,23 +73,23 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- how to use Spfx library code in webpart
-- how to use Microsoft Graph api to use special approot on user OneDrive
-- how to save/update data in a json file special approot folder on user OneDrive as a place to keep data a use in SharePoint or Teams
+- how to use SPFx library code in webpart
+- how to use Microsoft Graph API to use special approot on user OneDrive
+- how to save/update data in a `json` file special approot folder on user OneDrive as a place to keep data a use in SharePoint or Teams
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
+- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/SPFx/set-up-your-developer-tenant)
+- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/SPFx/build-for-teams-overview)
+- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/SPFx/web-parts/get-started/using-microsoft-graph-apis)
+- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/SPFx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+If you're having issues building the solution, please run [SPFx doctor](https://pnp.github.io/cli-microsoft365/cmd/SPFx/SPFx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-save-to-onedrive-app-personal-folder%22) to see if anybody else is having the same issues.
 

@@ -9,7 +9,8 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-webpart-base": "^1.14.0-beta.5"
+    "@microsoft/sp-webpart-base": "^1.14.0-beta.5",
+    "sudo": "^1.0.3"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.14.0-beta.5",

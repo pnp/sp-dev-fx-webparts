@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a Spfx library component which provides functionality to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams.
+This is a SPFx library component which provides functionality to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams.
 
 ![image](../assets/to-all-sites.png)
 when adding solution to appcatalog make it available to all sites

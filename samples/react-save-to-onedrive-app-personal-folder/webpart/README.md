@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a very simple Spfx webpart which presents how to use your own Spfx library in your solution. The webpart uses two methods from Spfx manage-data library to get and save data in user application's personal folder in OneDrive.
+This is a very simple SPFx webpart which presents how to use your own SPFx library in your solution. The webpart uses two methods from SPFx manage-data library to get and save data in user application's personal folder in OneDrive.
 
 ![image](../assets/in-sharepoint.png)
 webpart added to sharepoint page
@@ -57,7 +57,7 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- how to use Spfx library code in webpart
+- how to use SPFx library code in webpart
 
 ## References
 
