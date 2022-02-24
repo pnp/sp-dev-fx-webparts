@@ -4,7 +4,7 @@
 
 This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.
 
-![Screenshot](Screenshot.png "Screenshot - Teams Tracker web part")
+![Screenshot](assets/Screenshot.png "Screenshot - Teams Tracker web part")
 
 
 ## Compatibility
@@ -56,7 +56,7 @@ Version|Date|Comments
 
 The purpose of this web part is to demonstrate building a React functional component that includes state and data fetched from a remote service. This is achieved using the recent React Hooks feature. The resulting code is cleaner and easier to follow than using a JavaScript/TypeScript class derived from React.Component. The example web part renders a list of the user's Teams and, if enabled, a list of the Teams channels for each Team with a link to the channel.
 
-![Screenshot](ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
+![Screenshot](assets/ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
 
 This is an extension of the approach used in the [React-Functional-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component) and [React-Functional-Stateful-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component) samples.
 
