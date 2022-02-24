@@ -87,7 +87,7 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+* Clone this repository  (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer) then unzip it)
 * In the command line run:
   * `npm i`
   * `gulp serve --nobrowser`
