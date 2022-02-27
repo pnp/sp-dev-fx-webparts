@@ -20,8 +20,6 @@ This Webpart will be accessible only to users with Site Collection Admin access.
 
 PnP Js library to get relevant SharePoint lists and libraries from current Site Collection and use "Hidden" property of lists to hide/Unhide.
 
-![HideLists WebPart](./assets/CallOut.jpg)
-
 ![HideLists WebPart GIF](./assets/listHidewp.gif)
 
 ## Compatibility
