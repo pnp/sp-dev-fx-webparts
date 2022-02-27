@@ -46,6 +46,17 @@ Version|Date|Comments
 -------|----|--------
 1.0|Februaru 21, 2022|Initial release
 
+## How to debug (local testing)
+
+please follow those instructions being in the root folder (react-save-to-onedrive-app-personal-folder):
+- go to library folder `cd library`
+- bundle and build the solution running `gulp bundle --ship` and then `gulp build`
+- run the command `npm link`
+- go to the webpart folder `cd ../webpart`
+- run the command `npm link manage-data`
+- modify the 'config/serve.json' file and specify the `initialPage` with your local workbench
+- test the webpart locally running `gulp serve`
+
 ## Minimal Path to Awesome
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-to-onedrive-app-personal-folder) then unzip it)
