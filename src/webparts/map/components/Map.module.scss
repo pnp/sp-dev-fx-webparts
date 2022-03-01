@@ -1,0 +1,18 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+
+
+.map {
+  display: block;
+  min-height: 400px;
+  position: relative;
+}
+
+:global {
+  .map-icon {
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    color: #fff;
+  }
+}
