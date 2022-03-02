@@ -6,7 +6,7 @@ import { clone } from '@microsoft/sp-lodash-subset';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import * as L from 'leaflet';
-import { Icon, ContextualMenu, ContextualMenuItemType, IContextualMenuItem, Panel, Dialog, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, DialogType, DialogContent } from 'office-ui-fabric-react';
+import { Icon, ContextualMenu, ContextualMenuItemType, IContextualMenuItem, Panel, Dialog, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, DialogType, DialogContent, Label } from 'office-ui-fabric-react';
 import { randomString, isset, isNullOrEmpty, getDeepOrDefault, cssClasses } from '@spfxappdev/utility';
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
@@ -64,6 +64,18 @@ export default class Map extends React.Component<IMapProps, IMapState> {
   constructor(props: IMapProps) {
     super(props);
     this.setAllCatagoriesDictionary();
+  }
+
+  componentDidUpdate(prevProps: Readonly<IMapProps>, prevState: Readonly<IMapState>, snapshot?: any): void {
+
+    if(!JSON.stringify(prevProps.markerCategories).Equals(JSON.stringify(this.props.markerCategories))) {
+      this.setState({
+        markerCategories: this.props.markerCategories
+      }, () => {
+        this.setAllCatagoriesDictionary();
+      })
+    }
+
   }
 
   public render(): React.ReactElement<IMapProps> {
@@ -173,7 +185,21 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       return (<></>);
     }
 
-    return (<>TBD</>);
+    return (
+    <div className='map-legend'>
+        {this.state.markerCategories.map((cat: IMarkerCategory): JSX.Element => {
+          return (
+          <div key={`legend_${cat.id}`}>
+              <div style={{position: "relative", height: "36px", float: "left" }}>
+                <div style={{position: "absolute"}}>
+                    <MarkerIcon {...cat.iconProperties} /> 
+                </div>
+                
+              </div>
+              <Label style={{margin: "0 36px 0 10px"}}>{cat.name}</Label>
+          </div>)
+        })}
+    </div>);
   }
 
   private showClickContent(): JSX.Element {
