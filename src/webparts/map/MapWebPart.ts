@@ -16,6 +16,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'MapWebPartStrings';
 import Map from './components/Map';
 import { IMapProps, IMarker, IMarkerCategory } from './components/IMapProps';
+import ManageMarkerCategoriesDialog, { IManageMarkerCategoriesDialogProps } from './components/ManageMarkerCategoriesDialog';
 
 export interface IMapPlugins {
   searchBox: boolean;
@@ -51,7 +52,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
 
   public render(): void {
 
-    console.log(this.properties);
+    console.log("render", this.properties);
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
       {
@@ -68,7 +69,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
           this.properties.markerItems = markerItems;
         },
         onMarkerCategoriesChanged: (markerCategories: IMarkerCategory[]) => {
-          this.properties.markerCategories = markerCategories;
+          this.onMarkerCategoriesChanged(markerCategories);
         },
         onStartViewSet: (zoomLevel: number, lat: number, lng: number) => {
           this.properties.startZoom = zoomLevel;
@@ -88,6 +89,11 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
   //   super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue)
   //   console.log()
   // }
+
+  private onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]): void {
+    this.properties.markerCategories = markerCategories;
+    this.render();
+  }
 
   private _getEnvironmentMessage(): string {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams
@@ -146,9 +152,28 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                 PropertyPaneToggle('plugins.scrollWheelZoom', {
                   label: "scrollWheelZoom",
                 }),
-                PropertyPaneButton('groups', {
-                  text: "Manage Groups",
+                PropertyPaneButton(null, {
+                  text: "Manage categories",
                   onClick: (val: any) => {
+                    const dummyElement: HTMLDivElement = document.createElement("div");
+                    dummyElement.id = "teeeeest";
+                    let reactInstance = null;
+
+                    document.body.appendChild(dummyElement);
+
+                    const element: React.ReactElement<IManageMarkerCategoriesDialogProps> = React.createElement(ManageMarkerCategoriesDialog, {
+                      markerCategories: this.properties.markerCategories,
+                      onDismiss: () => {
+                        dummyElement.remove();
+                      },
+                      onMarkerCategoriesChanged: (markerCategories: IMarkerCategory[]) => {
+                        dummyElement.remove();
+                        this.onMarkerCategoriesChanged(markerCategories);
+                      },
+                    });
+
+                    ReactDom.render(element, dummyElement);
+                    
                     return null;
                   }
                 })

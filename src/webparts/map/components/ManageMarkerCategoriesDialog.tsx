@@ -22,7 +22,7 @@ interface IManageMarkerCategoriesDialogState {
     markerCategories: IMarkerCategory[];
     isSaveButtonDisabled: boolean;
     isNewFormVisible: boolean;
-
+    isDialogVisible: boolean;
 }
 
 export default class ManageMarkerCategoriesDialog extends React.Component<IManageMarkerCategoriesDialogProps, IManageMarkerCategoriesDialogState> {
@@ -30,7 +30,8 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
     public state: IManageMarkerCategoriesDialogState = {
         markerCategories: clone(this.props.markerCategories),
         isSaveButtonDisabled: false,
-        isNewFormVisible: false
+        isNewFormVisible: false,
+        isDialogVisible: true
     };
 
     constructor(props: IManageMarkerCategoriesDialogProps) {
@@ -45,8 +46,8 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
     public render(): React.ReactElement<IManageMarkerCategoriesDialogProps> {
         return (
         <Dialog 
-            hidden={false}
-            onDismiss={() => { this.props.onDismiss(); }}
+            hidden={!this.state.isDialogVisible}
+            onDismiss={() => { this.onDialogDismiss(); }}
             dialogContentProps={{
                 title: "Manage Categories",
                 type: DialogType.close
@@ -91,15 +92,20 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             <DialogFooter>
                 <PrimaryButton 
                     onClick={() => {
+
                         if(isFunction(this.props.onMarkerCategoriesChanged)) {
                             this.props.onMarkerCategoriesChanged(this.state.markerCategories);
                         }
+
+                        this.setState({
+                            isDialogVisible: false
+                        }); 
                     }} 
                     text="Save" 
                     disabled={this.state.isSaveButtonDisabled} 
                 />
                 <DefaultButton onClick={() => {
-                    this.props.onDismiss();
+                    this.onDialogDismiss();
                 }} text="Cancel" />
             </DialogFooter>
 
@@ -195,12 +201,19 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             id: Guid.newGuid().toString(),
             name: "",
             iconProperties: {
-                markerColor: "#000",
-                iconName: "",
-                iconColor: "#fff"
+                markerColor: "#000000",
+                iconName: "FullCircleMask",
+                iconColor: "#ffffff"
             }
         };
 
         return category;
+    }
+
+    private onDialogDismiss(): void {
+        this.setState({
+            isDialogVisible: false
+        }); 
+        this.props.onDismiss();
     }
 }

@@ -72,8 +72,8 @@ export const emptyMarkerItem: IMarker = {
   categoryId: Guid.empty.toString(),
   iconProperties: {
     markerColor: "#000000",
-    iconName: "",
-    iconColor: "#000000"
+    iconName: "FullCircleMask",
+    iconColor: "#ffffff"
   },
   popuptext: null
 };

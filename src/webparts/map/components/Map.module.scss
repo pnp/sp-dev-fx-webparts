@@ -166,4 +166,8 @@
   .ql-editor[contenteditable='true'] {
     border: solid 1px $ms-color-themeDarker !important;
   }
+
+  .map-legend {
+    display: flex;
+  }
 }
