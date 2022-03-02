@@ -13,4 +13,9 @@
         height: 14px; 
         border-radius: 2px;
     }
+
+    &.disabled {
+        background: darkgrey;
+        cursor: not-allowed;
+    }
 }

@@ -5,6 +5,7 @@ import { isset, isNullOrEmpty } from '@spfxappdev/utility';
 
 export interface IInlineColorPickerProps extends IColorPickerProps {
     label?: string;
+    isDisbaled?: boolean;
 }
 
 interface IInlineColorPickerState {
@@ -16,6 +17,11 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
     public state: IInlineColorPickerState = {
         isPickerVisible: false,
     };
+
+    public static defaultProps: IInlineColorPickerProps = {
+        color: '#000000',
+        isDisbaled: false
+    }
 
     private targetElement: HTMLDivElement = null;
     
@@ -41,13 +47,18 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
             <Label>{this.props.label}</Label> 
             }
         <div 
-        className={styles['inline-color-picker']} 
+        className={styles['inline-color-picker'] + ` ${this.props.isDisbaled?styles['disabled']:''}`} 
         ref={(r) => {
             if(isset(r)) {
                 this.targetElement = r;
             }
         }} 
         onClick={() => {
+
+            if(this.props.isDisbaled) {
+                return;
+            }
+
             this.setState({ isPickerVisible: true });
         }}>
             <div className={styles['inline-color-picker-inner']} style={customCss}></div>

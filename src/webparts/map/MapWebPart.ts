@@ -3,7 +3,12 @@ import * as ReactDom from 'react-dom';
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
+  PropertyPaneSlider,
+  PropertyPaneButton,
+  PropertyPaneLabel
+
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -12,10 +17,23 @@ import * as strings from 'MapWebPartStrings';
 import Map from './components/Map';
 import { IMapProps, IMarker, IMarkerCategory } from './components/IMapProps';
 
+export interface IMapPlugins {
+  searchBox: boolean;
+  markercluster: boolean;
+  legend: boolean;
+  zoomControl: boolean;
+  scrollWheelZoom: boolean;
+}
 
 export interface IMapWebPartProps {
   markerItems: IMarker[];
   markerCategories: IMarkerCategory[];
+  title: string;
+  center: [number, number];
+  startZoom: number;
+  maxZoom: number;
+  height: number;
+  plugins: IMapPlugins;
 }
 
 export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> {
@@ -27,57 +45,49 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     this._environmentMessage = this._getEnvironmentMessage();
 
     return super.onInit();
+
+    
   }
 
   public render(): void {
 
-    const dummyData: IMarker = {
-      id: "5828b794-0c76-4962-9faa-95e89aea6c37",
-      latitude: 49.318121,
-      longitude: 10.624094,
-      type: "Panel",
-      categoryId: "00000000-0000-0000-0000-000000000000",
-      markerClickProps: {
-        headerText: "",
-        content: ""
-      },
-      iconProperties: {
-        markerColor: "red",
-        iconName: "PageLink",
-        iconColor: "#000"
-      },
-      popuptext: "Hello"
-    }
-
-    const dummyData2: IMarker = {
-      id: "5828b794-0c76-4962-9faa-95e89aea6c37",
-      latitude: 49.508121,
-      longitude: 10.824094,
-      type: "None",
-      categoryId: "5828b794-0c76-4962-9faa-95e89aea6123"
-    }
-
-    const dummyCategory: IMarkerCategory = {
-      id: "5828b794-0c76-4962-9faa-95e89aea6123",
-      name: "teeeeest",
-      iconProperties: {
-        markerColor: "#000",
-        iconName: "Installation",
-        iconColor: "#fff"
-      },
-    }
-
+    console.log(this.properties);
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
       {
-        markerItems: this.properties.markerItems||[dummyData, dummyData2],
-        markerCategories: this.properties.markerCategories||[dummyCategory],
-        isEditMode: this.displayMode == DisplayMode.Edit
+        markerItems: this.properties.markerItems||[],
+        markerCategories: this.properties.markerCategories||[],
+        isEditMode: this.displayMode == DisplayMode.Edit,
+        zoom: this.properties.startZoom,
+        center: this.properties.center,
+        title: this.properties.title,
+        height: this.properties.height,
+        plugins: this.properties.plugins,
+
+        onMarkerCollectionChanged: (markerItems: IMarker[]) => {
+          this.properties.markerItems = markerItems;
+        },
+        onMarkerCategoriesChanged: (markerCategories: IMarkerCategory[]) => {
+          this.properties.markerCategories = markerCategories;
+        },
+        onStartViewSet: (zoomLevel: number, lat: number, lng: number) => {
+          this.properties.startZoom = zoomLevel;
+          this.properties.center = [lat, lng];
+        },
+        
+        onTitleUpdate: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
+
+  // protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+  //   super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue)
+  //   console.log()
+  // }
 
   private _getEnvironmentMessage(): string {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams
@@ -121,8 +131,26 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneToggle('plugins.searchBox', {
+                  label: "searchBox"
+                }),
+                PropertyPaneToggle('plugins.markercluster', {
+                  label: "markercluster"
+                }),
+                PropertyPaneToggle('plugins.legend', {
+                  label: "legend"
+                }),
+                PropertyPaneToggle('plugins.zoomControl', {
+                  label: "zoomControl"
+                }),
+                PropertyPaneToggle('plugins.scrollWheelZoom', {
+                  label: "scrollWheelZoom",
+                }),
+                PropertyPaneButton('groups', {
+                  text: "Manage Groups",
+                  onClick: (val: any) => {
+                    return null;
+                  }
                 })
               ]
             }

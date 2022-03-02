@@ -1,21 +1,22 @@
+import { Guid } from '@microsoft/sp-core-library';
+import * as L from 'leaflet';
+import { IMapPlugins } from '../MapWebPart';
 
 export type MarkerType = "Panel"|"Dialog"|"Url"|"None";
 
+export interface IMarkerClickProps {
+  url: IMarkerUrlProperties;
+  content: IMarkerContentProperties
+}
 
-
-export type MarkerTypePanel = {
-  headerText: string;
-  content: string;  
+export interface IMarkerUrlProperties {
+  href: string;
+  target: '_self'|'_blank'|'embedded';
 };
 
-export type MarkerTypeUrl = {
-  url: string;
-};
-
-export type MarkerTypeDialog = {
+export interface IMarkerContentProperties {
   headerText: string;
-  content?: string;
-  url?: string;
+  html: string;
 };
 
 export interface IMarkerIcon {
@@ -39,15 +40,40 @@ export interface IMarker {
   categoryId: string;
   iconProperties?: IMarkerIcon;
   popuptext?: string;
-  markerClickProps?: MarkerTypePanel|MarkerTypeUrl|MarkerTypeDialog;
+  markerClickProps?: IMarkerClickProps;
 }
 
 export interface IMapProps {
   markerItems: IMarker[];
   markerCategories: IMarkerCategory[];
-  onMarkerCollectionChanged?(markerItems: IMarker[]);
-  onMarkerCategoriesChanged?(markerCategories: IMarkerCategory[]);
   isEditMode: boolean;
+  zoom?: number;
+  center?: [number, number];
+  maxZoom?: number;
+  title?: string;
+  height: number;
+  plugins: IMapPlugins;
+
+  onMarkerCollectionChanged(markerItems: IMarker[]);
+  onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]);
+  onStartViewSet(zoomLevel: number, lat: number, lng: number);
+  onTitleUpdate?: (value: string) => void;
 }
 
-
+export const emptyMarkerItem: IMarker = {
+  id: Guid.empty.toString(),
+  latitude: 0,
+  longitude: 0,
+  type: "Panel",
+  markerClickProps: {
+    url: { href: "", target: '_blank' },
+    content: { html: '', headerText: ''  }
+  },
+  categoryId: Guid.empty.toString(),
+  iconProperties: {
+    markerColor: "#000000",
+    iconName: "",
+    iconColor: "#000000"
+  },
+  popuptext: null
+};
