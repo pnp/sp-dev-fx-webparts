@@ -17,10 +17,15 @@
   "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
-    "groupId": "142aa22c-9004-41c2-9821-2d78eed048d1", // SPFx App Dev
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "Map" },
-    "description": { "default": "Map description" },
+    "title": { 
+      "default": "Interactive Map",
+      "de-de": "Interaktive Karte"
+    },
+    "description": { 
+      "default": "Map description" 
+    },
     "officeFabricIconFontName": "MapPin",
     "properties": {
       "title": "Map",
@@ -29,13 +34,17 @@
       "center": [51.505, -0.09],
       "startZoom": 13,
       "maxZoom": 50,
+      "dragging": true,
+      "height": 400,
+      "scrollWheelZoom": true,
       "plugins": {
         "searchBox": false,
         "markercluster": false,
         "legend": false,
-        "zoomControl": true,
-        "scrollWheelZoom": false
-      }
+        "zoomControl": true
+      },
+      "tileLayerUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "tileLayerAttribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
     }
   }]
 }

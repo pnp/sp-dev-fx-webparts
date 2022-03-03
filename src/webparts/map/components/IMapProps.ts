@@ -52,7 +52,13 @@ export interface IMapProps {
   maxZoom?: number;
   title?: string;
   height: number;
+  dragging: boolean;
+  scrollWheelZoom: boolean;
   plugins: IMapPlugins;
+  tileLayerUrl: string;
+  tileLayerAttribution: string;
+  showPopUp: boolean; 
+  
 
   onMarkerCollectionChanged(markerItems: IMarker[]);
   onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]);

@@ -1,23 +1,26 @@
 
 import * as React from 'react';
 import { IMarker, IMarkerCategory, MarkerType } from './IMapProps';
-import styles from './Map.module.scss';
+import './Map.module.scss';
 import { clone } from '@microsoft/sp-lodash-subset';
-import { Icon, Panel, Dialog, TextField, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, Label } from 'office-ui-fabric-react';
+import { Icon, Panel, TextField, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, Label, TooltipHost } from 'office-ui-fabric-react';
 import { Guid } from '@microsoft/sp-core-library';
 import { isNullOrEmpty, isFunction } from '@spfxappdev/utility';
-import { InlineColorPicker, IInlineColorPickerProps } from '@src/components/inlineColorPicker/InlineColorPicker';
+import { InlineColorPicker } from '@src/components/inlineColorPicker/InlineColorPicker';
 import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 import ManageMarkerCategoriesDialog from './ManageMarkerCategoriesDialog';
 import { MarkerIcon } from './MarkerIcon';
+import * as strings from 'MapWebPartStrings';
 
 export interface IAddOrEditPanelProps {
     markerItem: IMarker;
     markerCategories: IMarkerCategory[];
     onDismiss();
     onMarkerChanged(markerItem: IMarker, isNewMarker: boolean);
+    onDeleteMarker(markerItem: IMarker);
+    onChangePositionClick(markerItem: IMarker);
     onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]);
 }
 
@@ -26,6 +29,7 @@ interface IAddOrEditPanelState {
     markerCategories: IMarkerCategory[];
     isSaveButtonDisabled: boolean;
     isManageCategoriesDialogVisible: boolean;
+    
 }
 
 export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps, IAddOrEditPanelState> {
@@ -42,23 +46,23 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
     private readonly headerText: string;
     
     private markerTypeOptions: IChoiceGroupOption[] = [
-        { key: 'Panel', text: 'Panel', iconProps: { iconName: 'SidePanel' } },
-        { key: 'Dialog', text: 'Dialog', iconProps: { iconName: 'Favicon' } },
-        { key: 'Url', text: 'Url', iconProps: { iconName: 'Link' } },
-        { key: 'None', text: 'None (not clickable)', iconProps: { iconName: 'FieldEmpty' } },
+        { key: 'Panel', text: strings.ChoiceGroupPanelLabel, iconProps: { iconName: 'SidePanel' } },
+        { key: 'Dialog', text: strings.ChoiceGroupDialogLabel, iconProps: { iconName: 'Favicon' } },
+        { key: 'Url', text: strings.ChoiceGroupUrlLabel, iconProps: { iconName: 'Link' } },
+        { key: 'None', text: strings.ChoiceGroupNoneLabel, iconProps: { iconName: 'FieldEmpty' } },
     ];
 
     private urlOptions: IChoiceGroupOption[] = [
-        { key: '_self', text: 'Open in same window' },
-        { key: '_blank', text: 'Open in new window' },
-        { key: 'embedded', text: 'Embedded (Dialog/iFrame)' },
+        { key: '_self', text: strings.ChoiceGroupTargetSelfLabel },
+        { key: '_blank', text: strings.ChoiceGroupTargetBlankLabel },
+        { key: 'embedded', text: strings.ChoiceGroupTargetEmbeddedLabel },
       ];
 
     constructor(props: IAddOrEditPanelProps) {
         super(props);
 
         this.isNewMarker = this.props.markerItem.id.Equals(Guid.empty.toString());
-        this.headerText = !this.isNewMarker ? "Bearbeiten" : "Neu";
+        this.headerText = this.isNewMarker ? strings.PanelHeaderNewLabel : strings.PanelHeaderEditLabel;
 
     }
     
@@ -72,7 +76,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
               isOpen={true}
               onDismiss={() => { this.onConfigPanelDismiss() }}
               headerText={this.headerText}
-              closeButtonAriaLabel="Close"
+              closeButtonAriaLabel={strings.CloseLabel}
               onRenderFooterContent={(props: IPanelProps) => {
                 return this.renderPanelFooter();
               }}
@@ -81,7 +85,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
               isFooterAtBottom={true}
             >
                 <Label>
-                    Category 
+                    {strings.LabelCategory} 
                     <span 
                         onClick={() => {
                             this.setState({
@@ -89,11 +93,11 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                             });
                         }} 
                         className='manage-categories-label'>
-                            (Manage)
+                            ({strings.LabelManage})
                     </span>
                 </Label> 
               <Dropdown
-                placeholder="Select a category"
+                placeholder={strings.PlaceholderSelectACategory}
                 defaultSelectedKey={selectedCatId}
                 onChange={(ev: any, option: IDropdownOption) => {
                   this.state.markerItem.categoryId = option.key.toString();
@@ -106,7 +110,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                 options={this.categoryOptions}
               />
               <ChoiceGroup 
-                label="Type of marker (on click)" 
+                label={strings.LabelMarkerType}
                 defaultSelectedKey={this.state.markerItem.type} 
                 onChange={(ev: any, option: IChoiceGroupOption) => {
                   this.state.markerItem.type = option.key.toString() as MarkerType;
@@ -131,18 +135,28 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
     }
 
     private renderPanelFooter(): JSX.Element {
-        return (<div>
-            <PrimaryButton disabled={this.state.isSaveButtonDisabled} onClick={() => {
+        return (<div className='panel-footer'>
+            <PrimaryButton 
+                text={strings.SaveLabel}
+                disabled={this.state.isSaveButtonDisabled} 
+                onClick={() => {
 
-              if(this.isNewMarker) {
-                  this.state.markerItem.id = Guid.newGuid().toString();
-              }
-              
-              this.onSaveMarkerClick(this.state.markerItem);
-            }}>
-              Save
-            </PrimaryButton>
-            <DefaultButton onClick={() => { this.onConfigPanelDismiss(); }}>Cancel</DefaultButton>
+                    if(this.isNewMarker) {
+                        this.state.markerItem.id = Guid.newGuid().toString();
+                    }
+                    
+                    this.onSaveMarkerClick(this.state.markerItem);
+                }} 
+            />
+
+            {!this.isNewMarker &&
+            <>
+            <DefaultButton text={strings.DeleteLabel} onClick={() => { this.onDeleteMarkerClick(this.state.markerItem); }} />
+            <DefaultButton text={strings.ChangePositionLabel} onClick={() => { this.onChangePositionClick(this.state.markerItem); }} />
+            </>
+            }
+
+            <DefaultButton text={strings.CancelLabel} onClick={() => { this.onConfigPanelDismiss(); }} />
           </div>);
     }
 
@@ -155,7 +169,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
         return (
             <>
                 <InlineColorPicker 
-                label='Marker Color' 
+                label={strings.LabelMarkerColor} 
                 alphaType='none'
                 color={getColorFromString(this.state.markerItem.iconProperties.markerColor)} 
                 onChange={(ev: any, color: IColor) => {
@@ -167,7 +181,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                 }} 
                 />
     
-                <TextField label='Icon' description='leaf blank for none' defaultValue={this.state.markerItem.iconProperties.iconName} onChange={(ev: any, iconName: string) => {
+                <TextField label={strings.LabelIcon} description={strings.LabelLeaveEmpty} defaultValue={this.state.markerItem.iconProperties.iconName} onChange={(ev: any, iconName: string) => {
                     this.state.markerItem.iconProperties.iconName = iconName;
                     this.setState({
                     markerItem: this.state.markerItem,
@@ -176,7 +190,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                 }} />
 
                 <InlineColorPicker 
-                    label='Icon Color' 
+                    label={strings.LabelIconColor}
                     alphaType='none'
                     color={getColorFromString(this.state.markerItem.iconProperties.iconColor)} 
                     onChange={(ev: any, color: IColor) => {
@@ -189,7 +203,13 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                     isDisbaled={isNullOrEmpty(this.state.markerItem.iconProperties.iconName)}
                 />
     
-                <TextField label='Popup Text' description='leaf blank for none' defaultValue={this.state.markerItem.popuptext} onChange={(ev: any, popuptext: string) => {
+                <Label>
+                    {strings.LabelTooltip}
+                    <TooltipHost content={strings.TooltipInfo}>
+                        <Icon className='info-tooltip' iconName='Info' />
+                    </TooltipHost>
+                </Label>
+                <TextField description={strings.LabelLeaveEmptyTooltip} defaultValue={this.state.markerItem.popuptext} onChange={(ev: any, popuptext: string) => {
                     this.state.markerItem.popuptext = popuptext;
                     this.setState({
                     markerItem: this.state.markerItem,
@@ -197,7 +217,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                     });
                 }} />
 
-                <Label>Vorschau</Label>
+                <Label>{strings.LabelPreview}</Label>
                 <div style={{position: "relative", height: "36px", }}>
                     <div style={{position: "absolute"}}>
                         <MarkerIcon {...this.state.markerItem.iconProperties} />
@@ -213,8 +233,10 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
             return (<></>);
         }
 
+        const headerLabel: string = this.state.markerItem.type == "Dialog" ? strings.LabelDialogHeader : strings.LabelPanelHeader
+
         return (<>
-        <TextField label='Panel Header' defaultValue={this.state.markerItem.markerClickProps.content.headerText} onChange={(ev: any, headerText: string) => {
+        <TextField label={headerLabel} defaultValue={this.state.markerItem.markerClickProps.content.headerText} onChange={(ev: any, headerText: string) => {
             this.state.markerItem.markerClickProps.content.headerText = headerText;
             this.setState({
               markerItem: this.state.markerItem,
@@ -222,7 +244,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
             });
           }} />
 
-          <Label>Content</Label>
+          <Label>{strings.LabelContent}</Label>
           <RichText isEditMode={true} value={this.state.markerItem.markerClickProps.content.html} onChange={(content: string): string => {
             this.state.markerItem.markerClickProps.content.html = content;
             this.setState({
@@ -244,7 +266,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
 
         return (
             <>
-                <TextField label='Url' type='url' defaultValue={this.state.markerItem.markerClickProps.url.href} onChange={(ev: any, url: string) => {
+                <TextField label={strings.LabelUrl} type='url' defaultValue={this.state.markerItem.markerClickProps.url.href} onChange={(ev: any, url: string) => {
                     this.state.markerItem.markerClickProps.url.href = url;
                     this.setState({
                     markerItem: this.state.markerItem,
@@ -308,7 +330,21 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
     private onSaveMarkerClick(marker: IMarker): void {
 
         if(isFunction(this.props.onMarkerChanged)) {
-            this.props.onMarkerChanged(this.state.markerItem, this.isNewMarker);
+            this.props.onMarkerChanged(marker, this.isNewMarker);
+        }
+    }
+
+    private onDeleteMarkerClick(marker: IMarker): void {
+
+        if(isFunction(this.props.onDeleteMarker)) {
+            this.props.onDeleteMarker(marker);
+        }
+    }
+
+    private onChangePositionClick(marker: IMarker): void {
+
+        if(isFunction(this.props.onChangePositionClick)) {
+            this.props.onChangePositionClick(marker);
         }
     }
 

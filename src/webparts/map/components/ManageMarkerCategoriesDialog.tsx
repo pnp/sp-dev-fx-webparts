@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { IMarker, IMarkerCategory, MarkerType } from './IMapProps';
-import styles from './Map.module.scss';
+import { IMarkerCategory } from './IMapProps';
+import './Map.module.scss';
 import { clone } from '@microsoft/sp-lodash-subset';
-import { Icon, Panel, Dialog, TextField, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, Label, DialogFooter, DialogContent, DialogType } from 'office-ui-fabric-react';
+import { Icon, Dialog, TextField, PrimaryButton, DefaultButton, getColorFromString, IColor, DialogFooter, DialogContent, DialogType, MessageBar, TooltipHost } from 'office-ui-fabric-react';
 import { Guid } from '@microsoft/sp-core-library';
 import { isNullOrEmpty, isFunction } from '@spfxappdev/utility';
-import { InlineColorPicker, IInlineColorPickerProps } from '@src/components/inlineColorPicker/InlineColorPicker';
-import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
+import { InlineColorPicker } from '@src/components/inlineColorPicker/InlineColorPicker';
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 import { IconButton } from '@microsoft/office-ui-fabric-react-bundle';
 import { MarkerIcon } from './MarkerIcon';
+import * as strings from 'MapWebPartStrings';
 
 export interface IManageMarkerCategoriesDialogProps {
     markerCategories: IMarkerCategory[];
@@ -49,7 +49,7 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             hidden={!this.state.isDialogVisible}
             onDismiss={() => { this.onDialogDismiss(); }}
             dialogContentProps={{
-                title: "Manage Categories",
+                title: strings.DialogTitleManageCategories,
                 type: DialogType.close
             }}
             minWidth={800}
@@ -60,15 +60,30 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             }}
         >
             <DialogContent>
+                
                 <div className='spfxappdev-grid'>
+                    <MessageBar className='category-messagebar'>
+                    {isNullOrEmpty(this.state.markerCategories) && <>{strings.InfoTextNoCategories} </>}{strings.InfoTextCategories}
+                    </MessageBar>
 
+                {!isNullOrEmpty(this.state.markerCategories) &&
+                <>
                     <div className='spfxappdev-grid-row grid-header'>
                         <div className='spfxappdev-grid-col spfxappdev-sm1'></div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm3'>Name</div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm1'>Marker color</div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm3'>Icon</div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm1'>Icon Color</div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm2'>Tooltip text</div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm3'>{strings.LabelCategoryHeaderName}</div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm1'>{strings.LabelMarkerColor}</div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm3'>
+                            {strings.LabelIcon} 
+                            <TooltipHost content={strings.LabelLeaveEmpty}>
+                                <Icon className='info-tooltip' iconName='Info' />
+                            </TooltipHost></div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm1'>{strings.LabelIconColor}</div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm2'>
+                            {strings.LabelTooltip}
+                            <TooltipHost content={strings.TooltipInfoCategory}>
+                                <Icon className='info-tooltip' iconName='Info' />
+                            </TooltipHost>
+                        </div>
                         <div className='spfxappdev-grid-col spfxappdev-sm1'></div>
                     </div>
                     {this.state.markerCategories.map((cat: IMarkerCategory, index: number): JSX.Element => {
@@ -76,16 +91,21 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                             {this.renderForm(cat, index)}
                         </div>)
                     })}
+                </>
+                }
                     <div className='spfxappdev-grid-row grid-footer'>
 
                         <div className='spfxappdev-grid-col spfxappdev-sm12'>
-                            <PrimaryButton onClick={() => {
+                            <PrimaryButton 
+                            text={strings.AddLabel}
+                            onClick={() => {
                                 this.onAddNewCatagoryButtonClick();
-                            }}>Add</PrimaryButton>
+                            }} />
                         </div>
                         
                     </div>
                 </div>
+                
 
             </DialogContent>
 
@@ -101,12 +121,12 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                             isDialogVisible: false
                         }); 
                     }} 
-                    text="Save" 
+                    text={strings.SaveLabel} 
                     disabled={this.state.isSaveButtonDisabled} 
                 />
                 <DefaultButton onClick={() => {
                     this.onDialogDismiss();
-                }} text="Cancel" />
+                }} text={strings.CancelLabel} />
             </DialogFooter>
 
         </Dialog>);

@@ -169,5 +169,87 @@
 
   .map-legend {
     display: flex;
+    margin-top: 5px;
+
+    &-title {
+      font-weight: 700;
+      padding-right: 4px;
+      font-size: 12px;
+    }
+
+    &-marker-wrapper {
+      position: relative; 
+      height: 36px; 
+      float: left;
+    
+      & > div {
+        position: absolute;
+      }
+
+      svg {
+        height: 18px !important;
+      }
+
+      .map-icon,
+      .map-icon i {
+        font-size: 6px;
+      }
+
+      .map-icon {
+        left: 3px;
+        top: 4px;
+      }
+    }
+
+    label {
+      margin: 0 10px 0 16px;
+      padding: 1px 0;
+      font-size: 12px;
+    }
+  }
+
+  .panel-footer {
+    button {
+      margin: 0 5px;
+    }
+  }
+
+  .leaflet-popup-close-button {
+    display: none;
+  }
+
+  .leaflet-popup-tip-container {
+    margin-top: -1px;
+  }
+
+  .change-position-popup {
+    text-align: center;
+
+    label {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+
+  }
+
+  .info-tooltip {
+    font-size: 10px;
+    padding-left: 4px;
+    vertical-align: middle;
+    cursor:help;
+  }
+
+  .wp-settings-info {
+    font-weight: 600;
+    padding: 20px 0;
+    color: $ms-color-themeDarker;
+  }
+
+  .category-messagebar {
+    margin-bottom: 10px;
   }
 }

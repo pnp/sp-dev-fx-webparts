@@ -16,12 +16,14 @@
     "@microsoft/sp-property-pane": "1.14.0",
     "@microsoft/sp-webpart-base": "1.14.0",
     "@pnp/spfx-controls-react": "3.6.0",
+    "@pnp/spfx-property-controls": "3.5.0",
     "@spfxappdev/utility": "^1.1.0",
     "leaflet": "^1.7.1",
     "office-ui-fabric-react": "7.174.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-leaflet": "^3.2.5"
+    "react-leaflet": "^3.2.5",
+    "react-leaflet-markercluster": "^3.0.0-rc1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

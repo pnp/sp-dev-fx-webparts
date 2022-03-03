@@ -10,6 +10,7 @@ import {
   PropertyPaneLabel
 
 } from '@microsoft/sp-property-pane';
+import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
@@ -17,13 +18,13 @@ import * as strings from 'MapWebPartStrings';
 import Map from './components/Map';
 import { IMapProps, IMarker, IMarkerCategory } from './components/IMapProps';
 import ManageMarkerCategoriesDialog, { IManageMarkerCategoriesDialogProps } from './components/ManageMarkerCategoriesDialog';
+import { isNullOrEmpty } from '@spfxappdev/utility';
 
 export interface IMapPlugins {
   searchBox: boolean;
   markercluster: boolean;
   legend: boolean;
   zoomControl: boolean;
-  scrollWheelZoom: boolean;
 }
 
 export interface IMapWebPartProps {
@@ -34,25 +35,25 @@ export interface IMapWebPartProps {
   startZoom: number;
   maxZoom: number;
   height: number;
+  scrollWheelZoom: boolean;
+  dragging: boolean;
+  showPopUp: boolean;
   plugins: IMapPlugins;
+  tileLayerUrl: string;
+  tileLayerAttribution: string;
+    
 }
 
 export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> {
 
   private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
 
   protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
-
-    
+      return super.onInit();
   }
 
   public render(): void {
 
-    console.log("render", this.properties);
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
       {
@@ -64,6 +65,11 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
         title: this.properties.title,
         height: this.properties.height,
         plugins: this.properties.plugins,
+        tileLayerUrl: isNullOrEmpty(this.properties.tileLayerUrl) ? "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" : this.properties.tileLayerUrl,
+        tileLayerAttribution: isNullOrEmpty(this.properties.tileLayerAttribution) ? "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" : this.properties.tileLayerAttribution,
+        dragging: this.properties.dragging,
+        scrollWheelZoom: this.properties.scrollWheelZoom,
+        showPopUp: this.properties.showPopUp, 
 
         onMarkerCollectionChanged: (markerItems: IMarker[]) => {
           this.properties.markerItems = markerItems;
@@ -94,15 +100,6 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     this.properties.markerCategories = markerCategories;
     this.render();
   }
-
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-    }
-
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
-  }
-
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
       return;
@@ -130,35 +127,67 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: strings.WebPartPropertyGroupMapSettings,
               groupFields: [
-                PropertyPaneToggle('plugins.searchBox', {
-                  label: "searchBox"
+                // PropertyPaneToggle('plugins.searchBox', {
+                //   label: "searchBox"
+                // }),
+                PropertyPaneWebPartInformation({
+                  description: `<div class='wp-settings-info'>${strings.WebPartPropertySettingsInfoLabel}</div>`,
+                  key: 'Info_For_3f860b48-1dc3-496d-bd28-b145672289cc'
                 }),
+                PropertyPaneSlider('maxZoom', {
+                  label: strings.WebPartPropertyMaxZoomLabel,
+                  max: 30,
+                  min: 5,
+                  step: 1
+                }),
+                PropertyPaneSlider('height', {
+                  label: strings.WebPartPropertyHeightLabel,
+                  min: 100,
+                  max: 1200,
+                  step: 50
+                }),
+                PropertyPaneTextField('tileLayerUrl', {
+                  label: strings.WebPartPropertyTileLayerUrlLabel
+                }),
+                PropertyPaneTextField('tileLayerAttribution', {
+                  label: strings.WebPartPropertyTileLayerAttributionLabel
+                }),
+                PropertyPaneToggle('scrollWheelZoom', {
+                  label: strings.WebPartPropertyScrollWheelZoomLabel,
+                }),
+                PropertyPaneToggle('dragging', {
+                  label: strings.WebPartPropertyMapDraggingLabel,
+                }),
+                PropertyPaneToggle('showPopUp', {
+                  label: strings.WebPartPropertyShowPopUpLabel,
+                }),
+                
+              ]
+            },
+            {
+              isCollapsed: true,
+              groupName: strings.WebPartPropertyGroupPlugins,
+              groupFields: [
                 PropertyPaneToggle('plugins.markercluster', {
-                  label: "markercluster"
-                }),
-                PropertyPaneToggle('plugins.legend', {
-                  label: "legend"
+                  label: strings.WebPartPropertyPluginMarkerClusterLabel,
                 }),
                 PropertyPaneToggle('plugins.zoomControl', {
-                  label: "zoomControl"
+                  label: strings.WebPartPropertyPluginZoomControlLabel
                 }),
-                PropertyPaneToggle('plugins.scrollWheelZoom', {
-                  label: "scrollWheelZoom",
-                }),
+              ]
+            },
+            {
+              isCollapsed: true,
+              groupName: strings.WebPartPropertyGroupCategories,
+              groupFields: [
                 PropertyPaneButton(null, {
-                  text: "Manage categories",
+                  text: strings.WebPartPropertyButtonManageCategories,
                   onClick: (val: any) => {
                     const dummyElement: HTMLDivElement = document.createElement("div");
-                    dummyElement.id = "teeeeest";
-                    let reactInstance = null;
-
                     document.body.appendChild(dummyElement);
 
                     const element: React.ReactElement<IManageMarkerCategoriesDialogProps> = React.createElement(ManageMarkerCategoriesDialog, {
@@ -176,10 +205,24 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                     
                     return null;
                   }
+                }),
+                PropertyPaneToggle('plugins.legend', {
+                  label: strings.WebPartPropertyPluginLegendLabel
+                })
+              ]
+            },
+            {
+              groupName: strings.WebPartPropertyGroupAbout,
+              groupFields: [
+                PropertyPaneWebPartInformation({
+                  description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
+                  moreInfoLink: `https://pnp.github.io/sp-dev-fx-property-controls/`,
+                  key: '3f860b48-1dc3-496d-bd28-b145672289cc'
                 })
               ]
             }
-          ]
+          ],
+          displayGroupsAsAccordion: true,
         }
       ]
     };
