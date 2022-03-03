@@ -18,4 +18,4 @@ export const MarkerIcon: React.FunctionComponent<IMarkerIcon> = (iconProperties)
         <span className="map-icon" style={iconColor}><Icon iconName={iconProperties.iconName} /></span>
     </span>
     );
-}
+};

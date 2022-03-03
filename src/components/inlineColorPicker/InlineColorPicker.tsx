@@ -21,7 +21,7 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
     public static defaultProps: IInlineColorPickerProps = {
         color: '#000000',
         isDisbaled: false
-    }
+    };
 
     private targetElement: HTMLDivElement = null;
     

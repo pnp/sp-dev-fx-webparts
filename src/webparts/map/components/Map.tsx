@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import styles from './Map.module.scss';
 import { IMapProps, IMarker, IMarkerCategory, IMarkerIcon, emptyMarkerItem } from './IMapProps';
-import { clone } from '@microsoft/sp-lodash-subset';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
@@ -33,8 +33,8 @@ interface IMapState {
 export default class Map extends React.Component<IMapProps, IMapState> {
 
   public state: IMapState = {
-    markerItems: clone(this.props.markerItems),
-    markerCategories: clone(this.props.markerCategories),
+    markerItems: cloneDeep(this.props.markerItems),
+    markerCategories: cloneDeep(this.props.markerCategories),
     showAddOrEditMarkerPanel: false,
     showClickContent: false,
     changePositionMarkerId: '-1'
@@ -71,14 +71,14 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     this.setAllCatagoriesDictionary();
   }
 
-  componentDidUpdate(prevProps: Readonly<IMapProps>, prevState: Readonly<IMapState>, snapshot?: any): void {
+  public componentDidUpdate(prevProps: Readonly<IMapProps>, prevState: Readonly<IMapState>, snapshot?: any): void {
 
     if(!JSON.stringify(prevProps.markerCategories).Equals(JSON.stringify(this.props.markerCategories))) {
       this.setState({
-        markerCategories: this.props.markerCategories
+        markerCategories: cloneDeep(this.props.markerCategories)
       }, () => {
         this.setAllCatagoriesDictionary();
-      })
+      });
     }
 
   }
@@ -105,6 +105,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         maxZoom={this.props.maxZoom} 
         scrollWheelZoom={isScrollWheelZoomEnabled}
         touchZoom={isScrollWheelZoomEnabled}
+        doubleClickZoom={isScrollWheelZoomEnabled}
         dragging={isDraggingEnabled}
 
         whenCreated={(map: L.Map) => {
@@ -329,7 +330,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                 </div>
               </div>
               <Label style={{}}>{cat.name}</Label>
-          </div>)
+          </div>);
         })}
     </div>);
   }
@@ -352,7 +353,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       return (<Panel
         type={PanelType.medium}
         isOpen={true}
-        onDismiss={() => { this.onContentPanelOrDialogDismiss() }}
+        onDismiss={() => { this.onContentPanelOrDialogDismiss(); }}
         headerText={this.state.currentMarker.markerClickProps.content.headerText}
         closeButtonAriaLabel="Close"
         onRenderFooterContent={(props: IPanelProps) => {
@@ -521,12 +522,12 @@ export default class Map extends React.Component<IMapProps, IMapState> {
   }
 
   private onCreateNewMarkerContextMenuItemClick(): void {
-    this.state.currentMarker = clone(emptyMarkerItem);
+    this.state.currentMarker = cloneDeep(emptyMarkerItem);
     this.state.currentMarker.latitude = this.lastLatLngRightClickPosition.lat;
     this.state.currentMarker.longitude = this.lastLatLngRightClickPosition.lng;
     this.state.showAddOrEditMarkerPanel = true;
 
-    this.setState({...this.state})
+    this.setState({...this.state});
   }
 
   private onSetStartView(): void {

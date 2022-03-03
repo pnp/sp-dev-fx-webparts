@@ -24,11 +24,12 @@
       "de-de": "Interaktive Karte"
     },
     "description": { 
-      "default": "Map description" 
+      "default": "An interactive map with which you can create markers",
+      "de-de": "Eine interactive Karte mit der man Markierungen erstellen kann" 
     },
     "officeFabricIconFontName": "MapPin",
     "properties": {
-      "title": "Map",
+      "title": "",
       "markerItems": [],
       "markerCategories": [],
       "center": [51.505, -0.09],

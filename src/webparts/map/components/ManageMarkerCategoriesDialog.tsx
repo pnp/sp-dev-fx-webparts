@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IMarkerCategory } from './IMapProps';
 import './Map.module.scss';
-import { clone } from '@microsoft/sp-lodash-subset';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { Icon, Dialog, TextField, PrimaryButton, DefaultButton, getColorFromString, IColor, DialogFooter, DialogContent, DialogType, MessageBar, TooltipHost } from 'office-ui-fabric-react';
 import { Guid } from '@microsoft/sp-core-library';
 import { isNullOrEmpty, isFunction } from '@spfxappdev/utility';
@@ -28,7 +28,7 @@ interface IManageMarkerCategoriesDialogState {
 export default class ManageMarkerCategoriesDialog extends React.Component<IManageMarkerCategoriesDialogProps, IManageMarkerCategoriesDialogState> {
 
     public state: IManageMarkerCategoriesDialogState = {
-        markerCategories: clone(this.props.markerCategories),
+        markerCategories: cloneDeep(this.props.markerCategories),
         isSaveButtonDisabled: false,
         isNewFormVisible: false,
         isDialogVisible: true
@@ -39,7 +39,7 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
 
     }
 
-    componentDidMount(): void {
+    public componentDidMount(): void {
         this.validateForm();
     }
     
@@ -89,7 +89,7 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                     {this.state.markerCategories.map((cat: IMarkerCategory, index: number): JSX.Element => {
                         return (<div key={cat.id} className='spfxappdev-grid-row categories-grid' data-catid={cat.id}>
                             {this.renderForm(cat, index)}
-                        </div>)
+                        </div>);
                     })}
                 </>
                 }

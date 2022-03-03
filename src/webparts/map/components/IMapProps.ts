@@ -6,18 +6,18 @@ export type MarkerType = "Panel"|"Dialog"|"Url"|"None";
 
 export interface IMarkerClickProps {
   url: IMarkerUrlProperties;
-  content: IMarkerContentProperties
+  content: IMarkerContentProperties;
 }
 
 export interface IMarkerUrlProperties {
   href: string;
   target: '_self'|'_blank'|'embedded';
-};
+}
 
 export interface IMarkerContentProperties {
   headerText: string;
   html: string;
-};
+}
 
 export interface IMarkerIcon {
   markerColor: string;

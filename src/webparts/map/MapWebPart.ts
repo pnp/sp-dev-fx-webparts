@@ -215,8 +215,13 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
               groupName: strings.WebPartPropertyGroupAbout,
               groupFields: [
                 PropertyPaneWebPartInformation({
-                  description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
-                  moreInfoLink: `https://pnp.github.io/sp-dev-fx-property-controls/`,
+                  description: `<h3>Author</h3> 
+                                <a href='https://spfx-app.dev/'>SPFx-App.dev</a>
+                                <h3>Version</h3>
+                                ${this.context.manifest.version}
+                                <h3>Web Part Instance id</h3>
+                                ${this.context.instanceId}`,
+                  moreInfoLink: `https://spfx-app.dev/`,
                   key: '3f860b48-1dc3-496d-bd28-b145672289cc'
                 })
               ]

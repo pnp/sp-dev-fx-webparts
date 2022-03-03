@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { IMarker, IMarkerCategory, MarkerType } from './IMapProps';
 import './Map.module.scss';
-import { clone } from '@microsoft/sp-lodash-subset';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { Icon, Panel, TextField, IPanelProps, PrimaryButton, DefaultButton, IChoiceGroupOption, ChoiceGroup, IDropdownOption, Dropdown, getColorFromString, IColor, PanelType, Label, TooltipHost } from 'office-ui-fabric-react';
 import { Guid } from '@microsoft/sp-core-library';
 import { isNullOrEmpty, isFunction } from '@spfxappdev/utility';
@@ -35,9 +35,9 @@ interface IAddOrEditPanelState {
 export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps, IAddOrEditPanelState> {
 
     public state: IAddOrEditPanelState = {
-        markerItem: clone(this.props.markerItem),
-        markerCategories: clone(this.props.markerCategories),
-        isSaveButtonDisabled: true,
+        markerItem: cloneDeep(this.props.markerItem),
+        markerCategories: cloneDeep(this.props.markerCategories),
+        isSaveButtonDisabled: false,
         isManageCategoriesDialogVisible: false
     };
 
@@ -63,7 +63,18 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
 
         this.isNewMarker = this.props.markerItem.id.Equals(Guid.empty.toString());
         this.headerText = this.isNewMarker ? strings.PanelHeaderNewLabel : strings.PanelHeaderEditLabel;
+    }
 
+    public componentDidUpdate(prevProps: Readonly<IAddOrEditPanelProps>, prevState: Readonly<IAddOrEditPanelState>, snapshot?: any): void {
+
+        if(!JSON.stringify(prevProps.markerCategories).Equals(JSON.stringify(this.props.markerCategories)) ||
+        !JSON.stringify(prevProps.markerItem).Equals(JSON.stringify(this.props.markerItem))) {
+            this.setState({
+              markerCategories: cloneDeep(this.props.markerCategories),
+              markerItem: cloneDeep(this.props.markerItem),
+              isSaveButtonDisabled: false
+            });
+        }
     }
     
     public render(): React.ReactElement<IAddOrEditPanelProps> {
@@ -74,7 +85,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
             <Panel
               type={PanelType.medium}
               isOpen={true}
-              onDismiss={() => { this.onConfigPanelDismiss() }}
+              onDismiss={() => { this.onConfigPanelDismiss(); }}
               headerText={this.headerText}
               closeButtonAriaLabel={strings.CloseLabel}
               onRenderFooterContent={(props: IPanelProps) => {
@@ -233,7 +244,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
             return (<></>);
         }
 
-        const headerLabel: string = this.state.markerItem.type == "Dialog" ? strings.LabelDialogHeader : strings.LabelPanelHeader
+        const headerLabel: string = this.state.markerItem.type == "Dialog" ? strings.LabelDialogHeader : strings.LabelPanelHeader;
 
         return (<>
         <TextField label={headerLabel} defaultValue={this.state.markerItem.markerClickProps.content.headerText} onChange={(ev: any, headerText: string) => {
@@ -255,7 +266,7 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
             return content;
           }} />
 
-        </>)
+        </>);
     }
 
     private renderUrlSettings(): JSX.Element {
