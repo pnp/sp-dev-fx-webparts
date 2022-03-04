@@ -6,9 +6,7 @@ import {
   PropertyPaneTextField,
   PropertyPaneToggle,
   PropertyPaneSlider,
-  PropertyPaneButton,
-  PropertyPaneLabel
-
+  PropertyPaneButton
 } from '@microsoft/sp-property-pane';
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -19,6 +17,7 @@ import Map from './components/Map';
 import { IMapProps, IMarker, IMarkerCategory } from './components/IMapProps';
 import ManageMarkerCategoriesDialog, { IManageMarkerCategoriesDialogProps } from './components/ManageMarkerCategoriesDialog';
 import { isNullOrEmpty } from '@spfxappdev/utility';
+import { Spinner, ISpinnerProps } from '@microsoft/office-ui-fabric-react-bundle';
 
 export interface IMapPlugins {
   searchBox: boolean;
@@ -34,6 +33,7 @@ export interface IMapWebPartProps {
   center: [number, number];
   startZoom: number;
   maxZoom: number;
+  minZoom: number;
   height: number;
   scrollWheelZoom: boolean;
   dragging: boolean;
@@ -49,11 +49,10 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
   private _isDarkTheme: boolean = false;
 
   protected onInit(): Promise<void> {
-      return super.onInit();
+    return super.onInit();
   }
 
   public render(): void {
-
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
       {
@@ -61,6 +60,8 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
         markerCategories: this.properties.markerCategories||[],
         isEditMode: this.displayMode == DisplayMode.Edit,
         zoom: this.properties.startZoom,
+        minZoom: this.properties.minZoom,
+        maxZoom: this.properties.maxZoom,
         center: this.properties.center,
         title: this.properties.title,
         height: this.properties.height,
@@ -91,9 +92,37 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     ReactDom.render(element, this.domElement);
   }
 
-  // protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
-  //   super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue)
-  //   console.log()
+  protected onDisplayModeChanged(oldDisplayMode: DisplayMode): void {
+      this.reload();
+  }
+
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+
+    const reloadIfOneOfProps = ["height", "tileLayerUrl", "minZoom", "maxZoom", "tileLayerAttribution", "plugins.zoomControl"]
+    
+    if(reloadIfOneOfProps.Contains(p => p.Equals(propertyPath))) {
+      this.reload();
+    }
+  }
+
+  private reload(): void {
+    
+    setTimeout(() => {
+      const spinner: React.ReactElement<ISpinnerProps> = React.createElement(Spinner, {
+
+      });
+
+      ReactDom.render(spinner, this.domElement);
+
+      setTimeout(() => { this.render(); }, 300);
+    }, 500);
+    
+    
+  }
+
+  // protected get disableReactivePropertyChanges(): boolean {
+  //   return true;
   // }
 
   private onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]): void {
@@ -131,12 +160,15 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
             {
               groupName: strings.WebPartPropertyGroupMapSettings,
               groupFields: [
-                // PropertyPaneToggle('plugins.searchBox', {
-                //   label: "searchBox"
+                // PropertyPaneWebPartInformation({
+                //   description: `<div class='wp-settings-info'>${strings.WebPartPropertySettingsInfoLabel}</div>`,
+                //   key: 'Info_For_3f860b48-1dc3-496d-bd28-b145672289cc'
                 // }),
-                PropertyPaneWebPartInformation({
-                  description: `<div class='wp-settings-info'>${strings.WebPartPropertySettingsInfoLabel}</div>`,
-                  key: 'Info_For_3f860b48-1dc3-496d-bd28-b145672289cc'
+                PropertyPaneSlider('minZoom', {
+                  label: strings.WebPartPropertyMinZoomLabel,
+                  max: 30,
+                  min: 0,
+                  step: 1
                 }),
                 PropertyPaneSlider('maxZoom', {
                   label: strings.WebPartPropertyMaxZoomLabel,
@@ -149,12 +181,6 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                   min: 100,
                   max: 1200,
                   step: 50
-                }),
-                PropertyPaneTextField('tileLayerUrl', {
-                  label: strings.WebPartPropertyTileLayerUrlLabel
-                }),
-                PropertyPaneTextField('tileLayerAttribution', {
-                  label: strings.WebPartPropertyTileLayerAttributionLabel
                 }),
                 PropertyPaneToggle('scrollWheelZoom', {
                   label: strings.WebPartPropertyScrollWheelZoomLabel,
@@ -170,8 +196,27 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
             },
             {
               isCollapsed: true,
+              groupName: strings.WebPartPropertyGroupTileLayerSettings,
+              groupFields: [
+                PropertyPaneWebPartInformation({
+                  description: `<div class='wp-settings-info'>${strings.WebPartPropertyTileLayerUrlInformationLabel}</div>`,
+                  key: 'Tile_For_3f860b48-1dc3-496d-bd28-b145672289cc'
+                }),
+                PropertyPaneTextField('tileLayerUrl', {
+                  label: strings.WebPartPropertyTileLayerUrlLabel
+                }),
+                PropertyPaneTextField('tileLayerAttribution', {
+                  label: strings.WebPartPropertyTileLayerAttributionLabel
+                }),                
+              ]
+            },
+            {
+              isCollapsed: true,
               groupName: strings.WebPartPropertyGroupPlugins,
               groupFields: [
+                // PropertyPaneToggle('plugins.searchBox', {
+                //   label: "searchBox"
+                // }),
                 PropertyPaneToggle('plugins.markercluster', {
                   label: strings.WebPartPropertyPluginMarkerClusterLabel,
                 }),
@@ -216,7 +261,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
               groupFields: [
                 PropertyPaneWebPartInformation({
                   description: `<h3>Author</h3> 
-                                <a href='https://spfx-app.dev/'>SPFx-App.dev</a>
+                                <a href='https://spfx-app.dev/' data-interception="off" target='_blank'>SPFx-App.dev</a>
                                 <h3>Version</h3>
                                 ${this.context.manifest.version}
                                 <h3>Web Part Instance id</h3>

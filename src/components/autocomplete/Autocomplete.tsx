@@ -1,6 +1,6 @@
 import * as React from 'react';
-// import styles from './Autocomplete.module.scss';
-import { TextField, ITextFieldProps, Callout, DirectionalHint, ITextField } from 'office-ui-fabric-react';
+import styles from './Autocomplete.module.scss';
+import { TextField, ITextFieldProps, Callout, ICalloutProps, DirectionalHint, ITextField, TextFieldBase } from 'office-ui-fabric-react';
 import { isNullOrEmpty, cssClasses, getDeepOrDefault, isFunction } from '@spfxappdev/utility';
 
 
@@ -9,6 +9,9 @@ export interface IAutocompleteProps extends Omit<ITextFieldProps, "componentRef"
     minValueLength?: number;
     onLoadSuggestions?(newValue: string): void;
     onRenderSuggestions?(): JSX.Element;
+    textFieldRef?(fluentUITextField: ITextField, autocompleteComponent: Autocomplete, htmlInput?: HTMLInputElement);
+    onUpdated?(newValue: string);
+    calloutProps?: Omit<ICalloutProps, "hidden" | "target" | "preventDismissOnScroll" | "directionalHint" | "directionalHintFixed" | "isBeakVisible">;
 }
 
 interface IAutocompleteState {
@@ -25,7 +28,10 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
 
     public static defaultProps: IAutocompleteProps = {
         showSuggestionsOnFocus: false,
-        minValueLength: 3
+        minValueLength: 3,
+        calloutProps: {
+            gapSpace: 0
+        }
     };
 
     private textFieldReference: ITextField = null;
@@ -35,15 +41,22 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
     private userIsTyping: boolean = false;
 
     private lastValue: string = "";
+
+    private onUpdateValueText: string = "";
     
     public render(): React.ReactElement<IAutocompleteProps> {
+
         return (<>
         <TextField {...this.props}
-        className={cssClasses("styles.autocomplete", this.props.className)}
+        autoComplete={"off"}
+        className={cssClasses(styles.autocomplete, this.props.className)}
         componentRef={(input: ITextField) => {
             this.textFieldReference = input;
             this.textFieldDomElement = getDeepOrDefault<HTMLInputElement>(input, "_textElement.current", null);
             
+            if(isFunction(this.props.textFieldRef)) {
+                this.props.textFieldRef(input, this, this.textFieldDomElement);
+            }
             
         }}
         onFocus={(ev: any) => {
@@ -64,12 +77,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
             }
         }}
         onChange={(ev: any, newValue: string) => {
-            
-            this.onValueChanged(newValue);
-
-            if(isFunction(this.props.onChange)) {
-                this.props.onChange(ev, newValue);
-            }
+            this.onValueChanged(ev, newValue);
         }}
         defaultValue={this.state.currentValue}
         />
@@ -78,17 +86,45 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         </>);
     }
 
+    public updateValue(newValue: string): void {
+        this.onUpdateValueText = newValue;
+        
+        this.setState({
+            currentValue: newValue
+        }, () => {
+            (this.textFieldReference as TextFieldBase).setState({
+                uncontrolledValue: this.onUpdateValueText
+            });
+    
+            if(isFunction(this.props.onUpdated)) {
+                this.props.onUpdated(newValue);
+            }
+        });        
+    }
+
     private renderSuggesstionsFlyout(): JSX.Element {
+        let minWidth: number = getDeepOrDefault<number>(this.props, "calloutProps.calloutMinWidth", -1);
+
+        if(minWidth <= 0) {
+            minWidth = getDeepOrDefault<number>(this, "textFieldDomElement.clientWidth", -1);
+        }
+
+        if(minWidth > 0) {
+            this.props.calloutProps.calloutMinWidth = minWidth;
+        }
+
         return (<Callout
+            {...this.props.calloutProps}
             hidden={!this.state.isFlyoutVisible}
-            className={"styles.bagHeaderMegamenu"}
             directionalHintFixed={true}
-            gapSpace={0}
-            // calloutWidth={window.outerWidth}
             isBeakVisible={false}
             target={this.textFieldDomElement}
-            onDismiss={() => {
+            onDismiss={(ev?: any) => {
                 this.hideSuggesstionsFlyout();
+                
+                if(isFunction(this.props.calloutProps.onDismiss)) {
+                    this.props.calloutProps.onDismiss(ev);
+                }
             }}
             preventDismissOnScroll={true}
             directionalHint={DirectionalHint.bottomCenter}>
@@ -97,7 +133,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         );
     }
 
-    private onValueChanged(newValue: string): void {
+    private onValueChanged(ev: any, newValue: string): void {
         this.userIsTyping = true;
 
         this.state.currentValue = newValue;
@@ -106,11 +142,17 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         });
 
         this.handleSuggestionListVisibility();
+
+        if(isFunction(this.props.onChange)) {
+            this.props.onChange(ev, newValue);
+        }
     }
 
     private onTextFieldBlur(): void {
         this.userIsTyping = false;
-
+        window.setTimeout(() => {
+            this.hideSuggesstionsFlyout();
+        }, 150);
     }
 
     private handleSuggestionListVisibility(): void {

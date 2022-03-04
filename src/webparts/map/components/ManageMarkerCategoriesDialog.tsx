@@ -165,11 +165,11 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm3'>
                 <IconPicker
-                    defaultValue={categoryItem.iconProperties.iconName} 
-                    onChange={(ev: any, name: string) => {
+                    defaultValue={categoryItem.iconProperties.iconName}
+                    onIconChanged={(name: string) => {
                         this.state.markerCategories[index].iconProperties.iconName = name;
                         this.validateForm();
-                    }}  
+                    }} 
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm1'>
