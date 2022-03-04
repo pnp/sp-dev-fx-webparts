@@ -8,7 +8,7 @@ export interface IAutocompleteProps extends Omit<ITextFieldProps, "componentRef"
     showSuggestionsOnFocus?: boolean;
     minValueLength?: number;
     onLoadSuggestions?(newValue: string): void;
-    onRenderSuggestions?(): JSX.Element;
+    onRenderSuggestions?(inputValue: string): JSX.Element;
     textFieldRef?(fluentUITextField: ITextField, autocompleteComponent: Autocomplete, htmlInput?: HTMLInputElement);
     onUpdated?(newValue: string);
     calloutProps?: Omit<ICalloutProps, "hidden" | "target" | "preventDismissOnScroll" | "directionalHint" | "directionalHintFixed" | "isBeakVisible">;
@@ -128,7 +128,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
             }}
             preventDismissOnScroll={true}
             directionalHint={DirectionalHint.bottomCenter}>
-                {isFunction(this.props.onRenderSuggestions) && this.props.onRenderSuggestions()}
+                {isFunction(this.props.onRenderSuggestions) && this.props.onRenderSuggestions(this.state.currentValue)}
         </Callout>
         );
     }

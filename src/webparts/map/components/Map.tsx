@@ -19,6 +19,7 @@ import { isFunction } from 'lodash';
 import { MarkerIcon } from './MarkerIcon';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import * as strings from 'MapWebPartStrings';
+import SearchPlugin from './plugin/SearchPlugin';
 
 interface IMapState {
   markerItems: IMarker[];
@@ -128,9 +129,6 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 
             });
 
-            map.on("zoom", (ev: any) => {
-              console.log("SSC", this.props.maxZoom, ev);
-            })
             this.map = map;
           }
         }  
@@ -151,6 +149,8 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         {!this.props.plugins.markercluster &&
             this.renderMarker()
         }
+        
+        {this.renderSearchBox()}
       </MapContainer>
       
       {this.renderLegend()}
@@ -339,6 +339,42 @@ export default class Map extends React.Component<IMapProps, IMapState> {
           </div>);
         })}
     </div>);
+  }
+
+  private renderSearchBox(): JSX.Element {
+
+    if(!this.props.plugins.searchBox) {
+      return (<></>);
+    }
+
+    return (
+      <SearchPlugin onLocationSelected={(lat: number, lon: number) => {
+        this.map.setView([lat, lon], this.props.maxZoom > 18 ? 18 : this.props.maxZoom);
+
+        const defaultRadius = 12;
+        const circleOptions = {
+            inner: {
+                color: '#136AEC',
+                fillColor: '#2A93EE',
+                fillOpacity: 1,
+                weight: 1.5,
+                opacity: 0.7,
+                radius: defaultRadius / 4
+            },
+            outer: {
+                color: "#136AEC",
+                fillColor: "#136AEC",
+                fillOpacity: 0.15,
+                opacity: 0.3,
+                weight: 1,
+                radius: defaultRadius
+            }
+        };
+
+        L.circle([lat, lon], circleOptions.outer).addTo(this.map);
+        L.circle([lat, lon], circleOptions.inner).addTo(this.map);
+      }} />
+    );
   }
 
   private showClickContent(): JSX.Element {

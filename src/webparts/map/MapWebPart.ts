@@ -99,7 +99,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
 
-    const reloadIfOneOfProps = ["height", "tileLayerUrl", "minZoom", "maxZoom", "tileLayerAttribution", "plugins.zoomControl"]
+    const reloadIfOneOfProps = ["height", "tileLayerUrl", "minZoom", "maxZoom", "tileLayerAttribution", "plugins.zoomControl"];
     
     if(reloadIfOneOfProps.Contains(p => p.Equals(propertyPath))) {
       this.reload();
@@ -214,9 +214,9 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
               isCollapsed: true,
               groupName: strings.WebPartPropertyGroupPlugins,
               groupFields: [
-                // PropertyPaneToggle('plugins.searchBox', {
-                //   label: "searchBox"
-                // }),
+                PropertyPaneToggle('plugins.searchBox', {
+                  label: strings.WebPartPropertyPluginSearchboxLabel
+                }),
                 PropertyPaneToggle('plugins.markercluster', {
                   label: strings.WebPartPropertyPluginMarkerClusterLabel,
                 }),
