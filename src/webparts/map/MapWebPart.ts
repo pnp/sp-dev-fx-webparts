@@ -266,7 +266,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                                 ${this.context.manifest.version}
                                 <h3>Web Part Instance id</h3>
                                 ${this.context.instanceId}`,
-                  moreInfoLink: `https://spfx-app.dev/`,
+                  moreInfoLink: `https://spfxappdev.github.io/sp-map-webpart/`,
                   key: '3f860b48-1dc3-496d-bd28-b145672289cc'
                 })
               ]

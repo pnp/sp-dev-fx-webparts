@@ -24,11 +24,9 @@
 :global {
     .map-legend {
         margin: 10px;
-    
+
         &-title {
-          font-weight: 700;
-        //   padding-right: 4px;
-        //   font-size: 12px;
+            font-weight: 700;
             text-align: center;
             font-size: 1.5em;
         }
@@ -41,6 +39,12 @@
             &-icon {
                 width: 35px;
             }
+
+            label {
+                margin: 0 10px;
+                padding: 1px 0;
+                font-size: 12px;
+            }
         }
 
         &-marker-wrapper {
@@ -51,12 +55,6 @@
                 & > div {
                     position: absolute;
                 }    
-        }
-    
-        label {
-          margin: 0 10px 0 16px;
-          padding: 1px 0;
-          font-size: 12px;
         }
       }
 }
