@@ -20,6 +20,11 @@
     }
   }
 
+
+  .display-mode .marker-type-none {
+    cursor: default !important;
+  }
+
   .manage-categories-label {
     font-size: 10px;
     color: #1190F4;
@@ -143,7 +148,7 @@
       border-bottom: solid 1px #aeaeae;
 
       &:nth-child(odd) {
-        background: $ms-color-themeLight;
+        background: $ms-color-themeLighter;
       }
     }
   }

@@ -11,6 +11,7 @@ import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 import { IconButton } from '@microsoft/office-ui-fabric-react-bundle';
 import { MarkerIcon } from './MarkerIcon';
 import * as strings from 'MapWebPartStrings';
+import { IconPicker } from '@src/components/iconPicker/IconPicker';
 
 export interface IManageMarkerCategoriesDialogProps {
     markerCategories: IMarkerCategory[];
@@ -163,12 +164,12 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm3'>
-                <TextField
-                    defaultValue={categoryItem.iconProperties.iconName} 
-                    onChange={(ev: any, name: string) => {
+                <IconPicker
+                    defaultValue={categoryItem.iconProperties.iconName}
+                    onIconChanged={(name: string) => {
                         this.state.markerCategories[index].iconProperties.iconName = name;
                         this.validateForm();
-                    }}  
+                    }} 
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm1'>

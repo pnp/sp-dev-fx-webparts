@@ -13,6 +13,7 @@ import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 import ManageMarkerCategoriesDialog from './ManageMarkerCategoriesDialog';
 import { MarkerIcon } from './MarkerIcon';
 import * as strings from 'MapWebPartStrings';
+import { IconPicker } from '@src/components/iconPicker/IconPicker';
 
 export interface IAddOrEditPanelProps {
     markerItem: IMarker;
@@ -192,13 +193,26 @@ export default class AddOrEditPanel extends React.Component<IAddOrEditPanelProps
                 }} 
                 />
     
-                <TextField label={strings.LabelIcon} description={strings.LabelLeaveEmpty} defaultValue={this.state.markerItem.iconProperties.iconName} onChange={(ev: any, iconName: string) => {
+                {/* <TextField label={strings.LabelIcon} description={strings.LabelLeaveEmpty} defaultValue={this.state.markerItem.iconProperties.iconName} onChange={(ev: any, iconName: string) => {
                     this.state.markerItem.iconProperties.iconName = iconName;
                     this.setState({
                     markerItem: this.state.markerItem,
                     isSaveButtonDisabled: false
                     });
-                }} />
+                }} /> */}
+
+                <IconPicker
+                    label={strings.LabelIcon}
+                    description={strings.LabelLeaveEmpty}
+                    defaultValue={this.state.markerItem.iconProperties.iconName}
+                    onIconChanged={(iconName: string) => {
+                        this.state.markerItem.iconProperties.iconName = iconName;
+                        this.setState({
+                            markerItem: this.state.markerItem,
+                            isSaveButtonDisabled: false
+                        });
+                    }} 
+                />
 
                 <InlineColorPicker 
                     label={strings.LabelIconColor}

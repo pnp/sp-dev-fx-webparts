@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import * as L from 'leaflet';
 import { ContextualMenu, IContextualMenuItem, Panel, Dialog, IPanelProps, DefaultButton, PanelType, DialogType, DialogContent, Label, Separator, PrimaryButton } from 'office-ui-fabric-react';
-import { isset, isNullOrEmpty, getDeepOrDefault } from '@spfxappdev/utility';
+import { isset, isNullOrEmpty, getDeepOrDefault, cssClasses } from '@spfxappdev/utility';
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 import { DisplayMode } from '@microsoft/sp-core-library';
@@ -86,7 +86,8 @@ export default class Map extends React.Component<IMapProps, IMapState> {
   public render(): React.ReactElement<IMapProps> {
    
     this.allLeafletMarker = {};
-    const isZoomControlEnabled: boolean = this.props.isEditMode ? true : getDeepOrDefault<boolean>(this.props, "plugins.zoomControl", true);
+    // const isZoomControlEnabled: boolean = this.props.isEditMode ? true : getDeepOrDefault<boolean>(this.props, "plugins.zoomControl", true);
+    const isZoomControlEnabled: boolean = getDeepOrDefault<boolean>(this.props, "plugins.zoomControl", true);
     const isScrollWheelZoomEnabled: boolean = this.props.isEditMode ? true : getDeepOrDefault<boolean>(this.props, "scrollWheelZoom", true);
     const isDraggingEnabled: boolean = this.props.isEditMode ? true : getDeepOrDefault<boolean>(this.props, "dragging", true);
     //
@@ -99,15 +100,16 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         }      
         
       <MapContainer
+        className={this.props.isEditMode ? "edit-mode" : "display-mode"}
         zoomControl={isZoomControlEnabled} 
         center={this.props.center} 
         zoom={this.props.zoom} 
-        maxZoom={this.props.maxZoom} 
+        maxZoom={this.props.maxZoom}
+        minZoom={this.props.minZoom} 
         scrollWheelZoom={isScrollWheelZoomEnabled}
         touchZoom={isScrollWheelZoomEnabled}
         doubleClickZoom={isScrollWheelZoomEnabled}
         dragging={isDraggingEnabled}
-
         whenCreated={(map: L.Map) => {
             map.on("contextmenu", (ev: L.LeafletEvent) => {
 
@@ -125,6 +127,10 @@ export default class Map extends React.Component<IMapProps, IMapState> {
               });
 
             });
+
+            map.on("zoom", (ev: any) => {
+              console.log("SSC", this.props.maxZoom, ev);
+            })
             this.map = map;
           }
         }  
@@ -502,12 +508,14 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       shadowSize: null,
       shadowAnchor: null,
       iconSize: new L.Point(27, 36),
-      className: 'leaflet-div-icon'
+      className: cssClasses('leaflet-div-icon', `marker-type-${marker.type.toLowerCase()}`)
     });
     
     markerIcon.createIcon = (oldIcon: HTMLElement) => {
       const wrapper = document.createElement("div");    
       wrapper.classList.add("leaflet-marker-icon");
+      wrapper.classList.add(`marker-type-${marker.type.toLowerCase()}`);
+
       wrapper.dataset.markerid = marker.id;
     
       wrapper.style.marginLeft = (markerIcon.options.iconAnchor[0] * -1) + "px";

@@ -50,6 +50,7 @@ export interface IMapProps {
   zoom?: number;
   center?: [number, number];
   maxZoom?: number;
+  minZoom?: number;
   title?: string;
   height: number;
   dragging: boolean;

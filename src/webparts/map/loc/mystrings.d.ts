@@ -1,5 +1,6 @@
 declare interface IMapWebPartStrings {
   WebPartPropertyGroupMapSettings: string;
+  WebPartPropertyGroupTileLayerSettings: string;
   WebPartPropertyGroupPlugins: string;
   WebPartPropertyGroupCategories: string;
   WebPartPropertyGroupAbout: string;
@@ -12,8 +13,10 @@ declare interface IMapWebPartStrings {
   WebPartPropertyMapDraggingLabel: string;
   WebPartPropertyShowPopUpLabel: string;
   WebPartPropertySettingsInfoLabel: string;
+  WebPartPropertyMinZoomLabel: string;
   WebPartPropertyMaxZoomLabel: string;
   WebPartPropertyHeightLabel: string;
+  WebPartPropertyTileLayerUrlInformationLabel: string;
   WebPartPropertyTileLayerUrlLabel: string;
   WebPartPropertyTileLayerAttributionLabel: string;
   ContextMenuAddNewMarkerLabel: string;
