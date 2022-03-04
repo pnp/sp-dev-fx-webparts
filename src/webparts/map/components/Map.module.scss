@@ -172,47 +172,6 @@
     border: solid 1px $ms-color-themeDarker !important;
   }
 
-  .map-legend {
-    display: flex;
-    margin-top: 5px;
-
-    &-title {
-      font-weight: 700;
-      padding-right: 4px;
-      font-size: 12px;
-    }
-
-    &-marker-wrapper {
-      position: relative; 
-      height: 36px; 
-      float: left;
-    
-      & > div {
-        position: absolute;
-      }
-
-      svg {
-        height: 18px !important;
-      }
-
-      .map-icon,
-      .map-icon i {
-        font-size: 6px;
-      }
-
-      .map-icon {
-        left: 3px;
-        top: 4px;
-      }
-    }
-
-    label {
-      margin: 0 10px 0 16px;
-      padding: 1px 0;
-      font-size: 12px;
-    }
-  }
-
   .panel-footer {
     button {
       margin: 0 5px;
