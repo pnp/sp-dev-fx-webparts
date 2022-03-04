@@ -100,7 +100,6 @@ export default class SearchPlugin extends React.Component<ISearchPluginProps, IS
 
         const response = await fetch(`${this.props.nominatimUrl}?format=json&limit=${this.props.resultLimit}&q=${searchTerm}`);
         const responseJson = await response.json();
-        console.log("SSC", responseJson);
         return responseJson;
     }
 }

@@ -19,7 +19,8 @@ import { isFunction } from 'lodash';
 import { MarkerIcon } from './MarkerIcon';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import * as strings from 'MapWebPartStrings';
-import SearchPlugin from './plugin/SearchPlugin';
+import SearchPlugin from './plugins/search/SearchPlugin';
+import LegendPlugin from './plugins/legend/LegendPlugin';
 
 interface IMapState {
   markerItems: IMarker[];
@@ -151,9 +152,10 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         }
         
         {this.renderSearchBox()}
+        {this.renderLegend(isZoomControlEnabled)}
       </MapContainer>
       
-      {this.renderLegend()}
+      
 
         {this.props.isEditMode &&
           <ContextualMenu
@@ -319,26 +321,14 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     );
   }
 
-  private renderLegend(): JSX.Element {
+  private renderLegend(isZoomControlEnabled: boolean): JSX.Element {
     if(!getDeepOrDefault<boolean>(this.props, "plugins.legend", false) || isNullOrEmpty(this.state.markerCategories)) {
       return (<></>);
     }
 
     return (
-    <div className='map-legend'>
-        <span className="map-legend-title">{strings.LegendLabel}:</span>
-        {this.state.markerCategories.map((cat: IMarkerCategory): JSX.Element => {
-          return (
-          <div key={`legend_${cat.id}`}>
-              <div className='map-legend-marker-wrapper'>
-                <div style={{}}>
-                    <MarkerIcon {...cat.iconProperties} /> 
-                </div>
-              </div>
-              <Label style={{}}>{cat.name}</Label>
-          </div>);
-        })}
-    </div>);
+      <LegendPlugin isZoomControlVisible={isZoomControlEnabled} markerCategories={this.state.markerCategories} />
+    );
   }
 
   private renderSearchBox(): JSX.Element {
