@@ -1,5 +1,6 @@
 import { isFunction, isNullOrEmpty } from '@spfxappdev/utility';
 import { Autocomplete } from '@src/components/autocomplete/Autocomplete';
+import * as strings from 'MapWebPartStrings';
 import { Icon } from 'office-ui-fabric-react';
 import * as React from 'react';
 import styles from './SearchPlugin.module.scss';
@@ -70,7 +71,7 @@ export default class SearchPlugin extends React.Component<ISearchPluginProps, IS
 
         if(isNullOrEmpty(results)) {
             return (<>
-            No results
+            {strings.NoSearchResultsLabel}
                 </>);
         }
 

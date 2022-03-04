@@ -60,5 +60,6 @@ define([], function() {
   "InfoTextCategories": "Markers can be assigned to categories. If you change the category, this change will be applied to all markers assigned to this category. If you delete a category, the default configuration is used.",
   "LabelCategoryHeaderName": "Name",
   "AddLabel": "Add",
+  "NoSearchResultsLabel": "No Results"
   }
 });

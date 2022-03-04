@@ -59,6 +59,7 @@ declare interface IMapWebPartStrings {
   InfoTextCategories: string;
   LabelCategoryHeaderName: string;
   AddLabel: string;
+  NoSearchResultsLabel: string;
 }
 
 declare module 'MapWebPartStrings' {
