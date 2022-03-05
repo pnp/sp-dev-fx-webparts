@@ -8,21 +8,13 @@ This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to g
 
 ![Cascading managed metadata](./assets/cmmd.gif)
 
-### Termstore
-
-![Term store](./assets/termstore.png)
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
-![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
-![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
-![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-yellow.svg "This solution requires access to data terms using Microsoft Graph API")
-![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
-![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Workbench Hosted](https://img.shields.io/badge/Workbench-Hosted-green.svg)
 
 ## Applies to
 
@@ -31,16 +23,18 @@ This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to g
 
 ## Pre-requisites
 
-* Set up the termset structure as shown in the image above.
+* Set up the termset structure as shown in the image below - .
+* To the termset, add a custom property called `UsedForShowingMaps` and set it's value to `true` as shown in the image below
+  ![Term store properties](./assets/termsetproperties.png)
 * For the cities, get the required latitude and longitude.
-* Set the description of the city term as `latitude;longitude` (as highlighted for the term `London` in the image above).
-
+* Add 2 custom properties for the city terms `latitude` and `longitude` (as highlighted for the term `London` in the image below).
+  ![Term store](./assets/termstore.png)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-react-graph-cascading-managed-metadata| Anoop Tatti ([anoopt](https://github.com/anoopt), [@anooptells](https://twitter.com/anooptells))
+react-graph-cascading-managed-metadata| Anoop Tatti ([anoopt](https://github.com/anoopt), ([https://linktr.ee/anoopt](https://linktr.ee/anoopt))
 
 ## Version history
 
@@ -48,6 +42,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|Aug 24, 2020|Initial release
 1.0.1|Sep 03, 2020|Error handling and logging improvements
+2.0.0|Mar 04, 2022|Updated to SPFx 1.14, used term `custom properties` to get co-ordinates (as Graph API provides that capability now), usage of `PropertyFieldGuid` and several other improvements
 
 ## Minimal Path to Awesome
 
@@ -55,6 +50,9 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+* Make sure you have completed the [pre-requisites](#Pre-requisites)
+* Add the web part to the workbench page of a site
+* Edit the web part and add the termset id in the properties
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
@@ -62,7 +60,7 @@ Version|Date|Comments
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
-* Get data terms using Microsoft Graph API (beta).
+* Get termset, terms and their custom properties using Microsoft Graph API (beta).
 * React Hooks
 * Using async / await for the async calls
 * Caching the data in session storage
@@ -72,11 +70,14 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 ### Enhancements
 
 * Currently, this web part supports 2-level cascading. So there is scope to enhance this such that it supports more levels of cascading dynamically.
-* Currently, this web part reads latitude and longitude from description of the city terms. If there is a way of getting these from the custom properties of the city terms, then that needs to be implemented.
 
 ## Video
 
 [![Cascading managed metadata using Microsoft Graph and SharePoint Framework](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=lk47ijo_H6Y "Cascading managed metadata using Microsoft Graph and SharePoint Framework")
+
+## Need to show more details?
+
+An Adaptive Card Extension (ACE) which performs similar operations and provides more data like the local time of the office, weather data of the office location and address of the office location along with it's map can be found in the `Office locations` sample of [pnp/sp-dev-fx-aces repostory](https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-OfficeLocations).
 
 ## Help
 

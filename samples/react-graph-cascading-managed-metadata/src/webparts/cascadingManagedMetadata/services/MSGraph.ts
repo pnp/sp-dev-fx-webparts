@@ -10,7 +10,7 @@ export class MSGraph {
         this._graphClient = await context.msGraphClientFactory.getClient();
     }
 
-    public static async Get(apiUrl: string, version: string = "v1.0", selectProperties?: string[], expandProperties?: string[], filter?: string): Promise<any> {
+    public static async Get(apiUrl: string, version: string = "v1.0", selectProperties?: string[], expandProperties?: string[], filter?: string, count?: boolean): Promise<any> {
         var p = new Promise<string>(async (resolve, reject) => {
             let query = this._graphClient.api(apiUrl).version(version);
             if (selectProperties && selectProperties.length > 0) {
@@ -21,6 +21,9 @@ export class MSGraph {
             }
             if (expandProperties && expandProperties.length > 0) {
                 query = query.expand(expandProperties);
+            }
+            if (count) {
+                query = query.count(true);
             }
 
             let callback = (error: GraphError, response: any, rawResponse?: any) => {
@@ -46,7 +49,7 @@ export class MSGraph {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve();
+                    resolve(_response);
                 }
             };
             await query.update(content, callback);
