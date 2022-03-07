@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 03/07/2022 12:00:00 AM
 ---
-# Frequently Asked Questions with Property Colection Data
+# Frequently Asked Questions with Property Feld Colection Data
 
 ## Summary
 
