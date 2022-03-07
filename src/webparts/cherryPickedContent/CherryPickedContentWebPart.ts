@@ -4,6 +4,7 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
+  PropertyPaneCheckbox,
   PropertyPaneDropdown,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
@@ -13,12 +14,14 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'CherryPickedContentWebPartStrings';
 import CherryPickedContent from './components/CherryPickedContent';
 import { ICherryPickedContentProps } from './components/ICherryPickedContentProps';
-import { update } from '@microsoft/sp-lodash-subset';
 
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { approvedLibraries } from './components/ApprovedLibraries';
 
 export interface ICherryPickedContentWebPartProps {
+  isolated: boolean;
+  iframeWidth: string;
+  iframeHeight: string;
   description: string;
   libraryPicker: string;
   libraryItemPicker: string;
@@ -43,6 +46,9 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
         libraryPicker: this.properties.libraryPicker,
         libraryItemPicker: this.properties.libraryItemPicker,
         approvedLibraries: this.approvedLibraries,
+        isolated: this.properties.isolated,
+        width: this.properties.iframeWidth,
+        height: this.properties.iframeHeight,
         context: this.context,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
@@ -74,7 +80,6 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
     this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
     this.domElement.style.setProperty('--link', semanticColors.link);
     this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
-
   }
 
   protected onDispose(): void {
@@ -87,14 +92,6 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
 
   // Only content from the approved libraries can be selected
   private approvedLibraries = approvedLibraries;
-
-  private updateWebPartProperty(property, value, refreshWebPart = true, refreshPropertyPane = true) {
-
-    update(this.properties, property, () => value);
-    if (refreshWebPart) this.render();
-    if (refreshPropertyPane) this.context.propertyPane.refresh();
-
-  }
 
   // Dropdown gets disabled while retrieving items asynchronously
   private itemsDropdownDisabled: boolean = true;
@@ -122,7 +119,7 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
       this.getLibraryItemsList(this.properties.libraryPicker)
         .then((files): void => {
           // store items
-          this.libraryItemsList = files.map(file => { return { key: file.Name, text: file.Name }; });
+          this.libraryItemsList = files.map(file => file.Name).sort().map(name => { return { key: name, text: name }; });
           this.itemsDropdownDisabled = false;
         })
         .then(() => this.context.propertyPane.refresh());
@@ -140,21 +137,18 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
       this.itemsDropdownDisabled = true;
       // push new item value
       this.onPropertyPaneFieldChanged('libraryItemPicker', previousItem, this.properties.libraryItemPicker);
-      // this.render();
       // refresh the item selector control by repainting the property pane
       this.context.propertyPane.refresh();
 
       this.getLibraryItemsList(newValue)
         .then((files): void => {
-
           if (files.length) {
-          // store items
-          this.libraryItemsList = files.map(file => { return { key: file.Name, text: file.Name }; });
-          // enable item selector
-          this.itemsDropdownDisabled = false;
-          // this.render();
-          // refresh the item selector control by repainting the property pane
-          this.context.propertyPane.refresh();
+            // store items
+            this.libraryItemsList = files.map(file => { return { key: file.Name, text: file.Name }; });
+            // enable item selector
+            this.itemsDropdownDisabled = false;
+            // refresh the item selector control by repainting the property pane
+            this.context.propertyPane.refresh();
           }
         });
     }
@@ -179,8 +173,7 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
                 PropertyPaneDropdown('libraryPicker', {
                   label: strings.LibraryPickerLabel,
                   options: this.approvedLibraries,
-                  selectedKey: this.properties.libraryPicker,
-
+                  selectedKey: this.properties.libraryPicker
                 }),
                 // Cascading Library Item Picker
                 PropertyPaneDropdown('libraryItemPicker', {
@@ -189,6 +182,21 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
                   selectedKey: this.properties.libraryItemPicker,
                   disabled: this.itemsDropdownDisabled
                 })
+              ]
+            },
+            {
+              groupName: strings.IsolatedMode,
+              groupFields: [
+                // Isolated options
+                PropertyPaneCheckbox('isolated', {
+                  text: strings.Isolated,
+                }),
+                this.properties.isolated && PropertyPaneTextField('iframeWidth', {
+                  label: strings.IframeWidth
+                }),
+                this.properties.isolated && PropertyPaneTextField('iframeHeight', {
+                  label: strings.IframeHeight
+                }),
               ]
             }
           ]

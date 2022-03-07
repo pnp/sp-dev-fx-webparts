@@ -22,7 +22,11 @@
     "description": { "default": "Cherry-Picked-Content description" },
     "officeFabricIconFontName": "BullseyeTargetEdit",
     "properties": {
-      "description": "Cherry-Picked-Content"
+      "description": "Cherry-Picked-Content",
+      "isolated": true,
+      "iframeWidth": "100%",
+      "iframeHeight": "600px"
+      
     }
   }]
 }

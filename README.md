@@ -19,7 +19,11 @@ The Cherry=Picked Content Web Part is a modern replacement for the classic Conte
 
 ## Prerequisites
 
-> N/A
+Start by editing the ApprovedLibraries.ts file to list your approved libraries. Then upload your code snippets to those locations. If you are looking for ideas, check out the samples folder.
+
+The code can be rendered in two ways:
+- isolated: the code is wrapped in an iframe to prevent conflicts with other Web Parts. Note: this is not a security feature.
+- non isolated: the code is directly inserted in the page.
 
 ## Solution
 
@@ -31,6 +35,7 @@ React-Cherry-Picked-Content | [Christophe Humbert](https://github.com/PathToShar
 
 Version|Date|Comments
 -------|----|--------
+0.2.0|March 6, 2022|Refactoring
 0.1.0|February 21, 2022|Initial draft
 
 ## Disclaimer
@@ -43,6 +48,7 @@ Version|Date|Comments
 
 - Clone this repository
 - Under components, edit ApprovedLibraries.ts to list your approved libraries that contain HTML snippets
+- Upload the code snippets
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
@@ -52,9 +58,11 @@ Version|Date|Comments
 
 This Web Part illustrates the following concepts:
 
-- Cascading dropdown in the Property Pane
+- Cascading dropdown and conditional display in the Property Pane
 - Use of SPHttpClient and the SharePoint REST API to query SharePoint content
 - React function component with useState and useEffect hooks
+- React Portal in combination with iframe
+- Various examples of client-side code in the samples: Microsoft Graph Toolkit (people, email, agenda), charts, widgets (map, stock, countdown, clock, video).
 
 ## References
 
@@ -63,3 +71,5 @@ This Web Part illustrates the following concepts:
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-cherry-picked-content" />

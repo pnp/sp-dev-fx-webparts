@@ -1,4 +1,8 @@
 declare interface ICherryPickedContentWebPartStrings {
+  IsolatedMode: string;
+  IframeHeight: string;
+  IframeWidth: string;
+  Isolated: string;
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;

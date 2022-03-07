@@ -1,0 +1,49 @@
+
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Agenda Custom View - Microsoft Graph Toolkit</h3>
+<p>Isolated mode: &#9888; mandatory. Find more samples on <a href="https://mgt.dev/?path=/story/overview--page" target="_blank">MGT Playground</a>. MGT components require API permissions, see the <a href="https://docs.microsoft.com/en-us/graph/toolkit/overview">Microsoft docs</a> for more info.</p>
+<script>
+  function setProvider() {mgt.Providers.globalProvider = new mgt.SharePointProvider(props.context);}
+</script>
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/wc/webcomponents-loader.js" type="text/javascript"></script>
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt.es6.js" type="text/javascript" onload="setProvider()"></script>
+<mgt-person person-query="me" view="twoLines"></mgt-person>
+<mgt-agenda></mgt-agenda>
+<!-- <mgt-agenda show-max="7" days="10">
+	<template data-type="event">
+		<div class="root">
+			<div class="time-container">
+				<div class="date">{{ dayFromDateTime(event.start.dateTime)}}</div>
+				<div class="time">{{ timeRangeFromEvent(event, '12') }}</div>
+			</div>
+
+			<div class="separator">
+				<div class="vertical-line top"></div>
+				<div class="circle">
+					<div data-if="!event.bodyPreview.includes('Join Microsoft Teams Meeting')" class="inner-circle">
+					</div>
+				</div>
+				<div class="vertical-line bottom"></div>
+			</div>
+
+			<div class="details">
+				<div class="subject">{{ event.subject }}</div>
+				<div class="location" data-if="event.location.displayName">
+					at
+					<a href="https://bing.com/maps/default.aspx?where1={{event.location.displayName}}"
+						target="_blank"><b>{{ event.location.displayName }}</b></a>
+				</div>
+				<div class="attendees" data-if="event.attendees.length">
+					<span class="attendee" data-for="attendee in event.attendees">
+              <mgt-person person-query="{{attendee.emailAddress.name}}"></mgt-person>
+            </span>
+				</div>
+				<div class="online-meeting" data-if="event.bodyPreview.includes('Join Microsoft Teams Meeting')">
+					<img class="online-meeting-icon" src="https://img.icons8.com/color/48/000000/microsoft-teams.png" />
+					<a class="online-meeting-link" href="{{ event.onlineMeetingUrl }}">Join Teams Meeting</a>
+				</div>
+			</div>
+		</div>
+	</template>
+</mgt-agenda> -->
+</div>

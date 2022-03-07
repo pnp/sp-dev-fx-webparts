@@ -5,6 +5,9 @@ export interface ICherryPickedContentProps {
   libraryPicker: string;
   libraryItemPicker: string;
   approvedLibraries: any[];
+  isolated: boolean;
+  width: string;
+  height: string;
   context: WebPartContext;
   isDarkTheme: boolean;
   environmentMessage: string;
