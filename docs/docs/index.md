@@ -21,7 +21,7 @@ The "Interactive Map" wepart for Microsoft Teams/SharePoint is a solution, that 
 
 ## Configuration
 
-work in process
+Documentation is still being prepared. But I think the animated picture above shows all functions/configurations :)
 
 ### How to add a new marker
 
