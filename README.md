@@ -17,7 +17,7 @@ The "Interactive Map" wepart for Microsoft Teams/SharePoint is a solution, that 
 3. If the solution was not installed globally (available in all sites), install the app in the site
 4. Add the webpart to a SharePoint Page or Teams Tab
 
-![My interactive maps webpart](https://spfxappdev.github.io/sp-map-webpart/images/MapWPOverview.gif)
+![My interactive maps webpart](/docs/docs/images/MapWPOverview.gif)
 
 ## Configuration
 
