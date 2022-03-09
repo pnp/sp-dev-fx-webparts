@@ -1,0 +1,20 @@
+{
+        "title": "Tell us about yourself",
+        "body": "We just need a few more details to get you booked for the trip of a lifetime!",
+        "disclaimer": "Don't worry, we'll never share or sell your information.",
+        "properties": [ 
+            { 
+                "title" : "Your Name",                       
+                "placeholder" : "Last, First"
+            },
+            { 
+                "title" : "Your email",                
+                "placeholder" : "youremail@example.com"
+            },
+            { 
+                "title" : "Phone Number",
+                "placeholder" : "xxx.xxx.xxxx"
+            }        
+        ],
+        "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Diver_Silhouette%2C_Great_Barrier_Reef.jpg"
+}

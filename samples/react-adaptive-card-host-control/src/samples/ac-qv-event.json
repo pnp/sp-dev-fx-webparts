@@ -1,0 +1,824 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "Container",
+            "backgroundImage": {
+                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/event-schedule/assets/Ignite-2021-fall-trim.gif",
+                "horizontalAlignment": "Center",
+                "verticalAlignment": "Center"
+            },
+            "bleed": true,
+            "height": "stretch",
+            "minHeight": "240px",
+            "horizontalAlignment": "Center",
+            "spacing": "None"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Microsoft Ignite 2021",
+            "wrap": true,
+            "size": "Small",
+            "isSubtle": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "Schedule",
+            "wrap": true,
+            "size": "Large",
+            "weight": "Bolder",
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Join us November 2–3, 2021 to explore the latest tools, training sessions, technical expertise, networking opportunities, and more.",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "See what’s coming up and when it will be happening. The schedule adjusts to your time zone and content is updated regularly, so check back often.",
+            "wrap": true,
+            "size": "Default"
+        },
+        {
+            "type": "Container",
+            "id": "day_1",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "DAY 1",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "DAY 2",
+                                    "wrap": true,
+                                    "color": "Accent",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "id": "show_d2",
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Show day 2 schedule",
+                                "targetElements": [
+                                    "day_1",
+                                    "day_2"
+                                ]
+                            }
+                        }
+                    ],
+                    "spacing": "Large"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/event-schedule/assets/line_pivot_dark.svg",
+                                "fillMode": "RepeatHorizontally",
+                                "verticalAlignment": "Center"
+                            },
+                            "minHeight": "3px",
+                            "style": "default"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "minHeight": "3px",
+                            "backgroundImage": {
+                                "fillMode": "RepeatHorizontally",
+                                "verticalAlignment": "Center"
+                            }
+                        }
+                    ],
+                    "spacing": "None"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Tuesday, November 2",
+                    "wrap": true,
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Time",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "color": "Accent",
+                                    "isSubtle": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Description",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "color": "Accent",
+                                    "isSubtle": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:00 AM - 8:15 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Welcome to Microsoft Ignite: join your daily hosts who will get you ready for the day.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:15 AM - 11:00 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Keynotes: hear from Microsoft leadership on revealing the latest innovations that are shaping the flexible, innovative, and secure business environments of the future.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "11:30 AM - 4:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Breakout Sessions: you have the opportunity to select the sessions best suited for your role and interests.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "11:30 AM - 4:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Connection and Learning Zone: connect with your global community in live interactive sessions, join Learning Zone opportunities, get Microsoft Certified and so much more.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "7:15 PM - 10:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Welcome to Microsoft Ignite's APAC broadcast: hear from Microsoft leadership on revealing the latest innovations that are shaping the flexible, innovative, and secure business environments of the future. ",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "10:00 PM - 1:00 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Connection Zone: join your community and hear from local Microsoft leaders and experts through Local Connection sessions to find out what's new in your region.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                }
+            ],
+            "spacing": "Large"
+        },
+        {
+            "type": "Container",
+            "id": "day_2",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "DAY 1",
+                                    "wrap": true,
+                                    "weight": "Default",
+                                    "color": "Accent",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Show day 1 schedule",
+                                "targetElements": [
+                                    "day_1",
+                                    "day_2"
+                                ]
+                            },
+                            "id": "show_d1"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "DAY 2",
+                                    "wrap": true,
+                                    "color": "Default",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Large"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "fillMode": "RepeatHorizontally",
+                                "verticalAlignment": "Center"
+                            },
+                            "minHeight": "3px",
+                            "style": "default"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "minHeight": "3px",
+                            "backgroundImage": {
+                                "fillMode": "RepeatHorizontally",
+                                "verticalAlignment": "Center",
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/event-schedule/assets/line_pivot_dark.svg"
+                            }
+                        }
+                    ],
+                    "spacing": "None"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Wednesday, November 3",
+                    "wrap": true,
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Time",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "color": "Accent",
+                                    "isSubtle": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Description",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "color": "Accent",
+                                    "isSubtle": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "1:00 AM - 3:45 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Welcome to Microsoft Ignite's EMEA broadcast: hear from Microsoft leadership on revealing the latest innovations that are shaping the flexible, innovative, and secure business environments of the future. ",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:00 AM - 8:10 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Welcome to Microsoft Ignite day two: join your daily hosts who will get you ready for the day.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:10 AM - 10:00 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Microsoft Into Focus Business Applications: Join us for conversations with Microsoft leaders and engineers to discuss the news and innovations.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "10:30 AM - 12:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Microsoft Into Focus Security: hear from Microsoft Leaders and industry experts on trending security topics. ",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:30 AM - 4:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Breakout Sessions: you have the opportunity to select the sessions best suited for your role and interests.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8:30 AM - 4:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Connection and Learning Zone: connect with your global community in live interactive sessions, join Learning Zone opportunities, get Microsoft Certified and so much more.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "6:00 PM - 10:00 PM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Welcome to Microsoft Ignite day two APAC broadcast: join your daily hosts who will get you ready for the day. join us for the broadcast of Microsoft Into Focus Business Applications and Microsoft Into Focus Security. ",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 15,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "10:00 PM - 1:00 AM",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 65,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Connection Zone: join your community and hear from local Microsoft leaders and experts through Local Connection sessions to find out what's new in your region.",
+                                    "wrap": true,
+                                    "size": "Default"
+                                }
+                            ]
+                        }
+                    ],
+                    "separator": true
+                }
+            ],
+            "spacing": "Large",
+            "isVisible": false
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.ToggleVisibility",
+                    "title": "Register",
+                    "style": "positive",
+                    "targetElements": [
+                        "Reg_form",
+                        "show_reg"
+                    ]
+                }
+            ],
+            "spacing": "ExtraLarge",
+            "id": "show_reg"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Registration form",
+                    "wrap": true,
+                    "size": "Large",
+                    "weight": "Bolder",
+                    "spacing": "ExtraLarge"
+                },
+                {
+                    "type": "Input.Text",
+                    "placeholder": "Type your first name",
+                    "label": "First name",
+                    "value": "John",
+                    "isRequired": true,
+                    "errorMessage": "Enter your first name.",
+                    "id": "first_name"
+                },
+                {
+                    "type": "Input.Text",
+                    "label": "Last name",
+                    "isRequired": true,
+                    "placeholder": "Type your last name",
+                    "value": "Doe",
+                    "errorMessage": "Enter your last name.",
+                    "id": "last_name"
+                },
+                {
+                    "type": "Input.Text",
+                    "label": "Company",
+                    "isRequired": true,
+                    "placeholder": "Add you company name",
+                    "errorMessage": "Enter your company name.",
+                    "id": "company_name"
+                },
+                {
+                    "type": "Input.Text",
+                    "placeholder": "(000) 000-0000",
+                    "label": "Phone",
+                    "regex": "(000) 000-0000",
+                    "isRequired": true,
+                    "errorMessage": "Enter your phone number.",
+                    "id": "phone"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "An email containing a One-Time Passcode will be sent to the email address you have provided.",
+                    "wrap": true,
+                    "isSubtle": true,
+                    "size": "Small",
+                    "spacing": "Small"
+                },
+                {
+                    "type": "Input.Toggle",
+                    "title": "By continuing, you acknowledge that you’ve read and accepted our Notice of Privacy Practices.",
+                    "wrap": true,
+                    "spacing": "Medium",
+                    "errorMessage": "Please accept Notice of Privacy Practices.",
+                    "id": "accept_policy"
+                },
+                {
+                    "type": "ActionSet",
+                    "spacing": "Medium",
+                    "actions": [
+                        {
+                            "type": "Action.Submit",
+                            "title": "Submit",
+                            "style": "positive",
+                            "associatedInputs": "none",
+                            "id": "data_send"
+                        },
+                        {
+                            "type": "Action.ToggleVisibility",
+                            "title": "Cancel",
+                            "id": "hide_reg",
+                            "targetElements": [
+                                "Reg_form",
+                                "show_reg"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "isVisible": false,
+            "spacing": "ExtraLarge",
+            "id": "Reg_form"
+        }
+    ]
+}

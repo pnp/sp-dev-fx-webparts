@@ -1,0 +1,5 @@
+{
+    "fallback": {
+        "message":"No graph support. Guess we'll just use this textblock instead."
+    }
+}

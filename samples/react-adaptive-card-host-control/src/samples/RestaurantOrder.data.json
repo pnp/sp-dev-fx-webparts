@@ -1,0 +1,76 @@
+{ 
+    "FormInfo": {
+        "title": "Malt & Vine Order Form"
+    },
+    "Order": {
+        "questions": [
+            {
+                "question": "Which entree would you like?",
+                "items": [
+                    {
+                        "choice": "Steak",
+                        "value": "1"
+                    },
+                    {
+                        "choice": "Chicken",
+                        "value": "2"
+                    },
+                    {
+                        "choice": "Tofu",
+                        "value": "3"
+                    }
+                ]
+            },
+            {
+                "question": "Which side would you like?",
+                "items": [
+                    {
+                        "choice": "Baked Potato",
+                        "value": "1"
+                    },
+                    {
+                        "choice": "Rice",
+                        "value": "2"
+                    },
+                    {
+                        "choice": "Vegetables",
+                        "value": "3"
+                    },
+                    {
+                        "choice": "Noodles",
+                        "value": "4"
+                    },
+                    {
+                        "choice": "No Side",
+                        "value": "5"
+                    }
+                ]
+            },
+            {
+                "question": "Which drink would you like?",
+                "items": [
+                    {
+                        "choice": "Water",
+                        "value": "1"
+                    },
+                    {
+                        "choice": "Soft Drink",
+                        "value": "2"
+                    },
+                    {
+                        "choice": "Coffee",
+                        "value": "3"
+                    },
+                    {
+                        "choice": "Natural Juice",
+                        "value": "4"
+                    },
+                    {
+                        "choice": "No Drink",
+                        "value": "5"
+                    }
+                ]
+            }
+        ]
+    }
+}

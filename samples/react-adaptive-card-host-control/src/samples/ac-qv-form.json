@@ -1,0 +1,181 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "Container",
+            "spacing": "None",
+            "minHeight": "8px"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "200px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/vaccination-booster/assets/HealthCenterLogo.png",
+                            "height": "50px",
+                            "horizontalAlignment": "Left"
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Schedule your FREE COVID-19 booster appointment today",
+            "wrap": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder",
+            "spacing": "Large"
+        },
+        {
+            "type": "Container",
+            "backgroundImage": {
+                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/vaccination-booster/assets/Vaccine_Image.jpeg",
+                "horizontalAlignment": "Center",
+                "verticalAlignment": "Center"
+            },
+            "bleed": true,
+            "height": "stretch",
+            "minHeight": "240px",
+            "horizontalAlignment": "Center",
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Some vaccines are a series of multiple shots or doses. Tell us which dose you need so we can have it ready.",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "\n\nAll fields are required.",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "COVID-19 dosage information",
+            "wrap": true,
+            "spacing": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "We can help you start a vaccination or schedule a second dose. Patients 5-17 years of age can only receive the Pfizer vaccine at this time.\n\nBooster dose: You're eligible if you were fully vaccinated with Pfizer or Moderna over 6 months ago, or Janssen/J&J over 2 months ago, and meet the CDC booster eligibility requirements.\n\nExtra dose: You're eligible if you were fully vaccinated with Pfizer or Moderna over 28 days ago, have a weakened immune system, and meet the CDC extra dose eligibility requirements.",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Previous dose",
+            "wrap": true,
+            "size": "Medium",
+            "weight": "Bolder",
+            "spacing": "Medium"
+        },
+        {
+            "type": "Input.Date",
+            "placeholder": "MMDDYYYY",
+            "label": "Enter the date when you received your last dose:",
+            "value": "John",
+            "isRequired": true,
+            "errorMessage": "Select the vaccine you received:",
+            "id": "first_name"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "PFIZER COVID-19 VACCINE",
+                    "value": "PFIZER COVID-19 VACCINE"
+                },
+                {
+                    "title": "JANSSEN COVID-19 VACCINE (EUA)",
+                    "value": "JANSSEN COVID-19 VACCINE (EUA)"
+                },
+                {
+                    "title": "MODERNA COVID-19 VACCINE (EUA)",
+                    "value": "MODERNA COVID-19 VACCINE (EUA)"
+                },
+                {
+                    "title": "Other/I don't know",
+                    "value": "Other/I don't know"
+                }
+            ],
+            "placeholder": "Placeholder text",
+            "style": "expanded",
+            "label": "Select the vaccine you received:",
+            "value": "Female",
+            "isRequired": true,
+            "errorMessage": "Choose your vaccine.",
+            "id": "vaccine"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Booster vaccine",
+            "wrap": true,
+            "size": "Medium",
+            "weight": "Bolder",
+            "spacing": "Large"
+        },
+        {
+            "type": "Input.Date",
+            "placeholder": "MMDDYYYY",
+            "label": "Select the date you would like to receive your COVID-19 booster vaccine:",
+            "value": "John",
+            "isRequired": true,
+            "errorMessage": "Select the date you would like to receive your COVID-19 booster vaccine:",
+            "id": "booster_date"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "PFIZER COVID-19 VACCINE",
+                    "value": "PFIZER COVID-19 VACCINE"
+                },
+                {
+                    "title": "JANSSEN COVID-19 VACCINE (EUA)",
+                    "value": "JANSSEN COVID-19 VACCINE (EUA)"
+                }
+            ],
+            "placeholder": "Placeholder text",
+            "style": "expanded",
+            "label": "Select the COVID-19 booster vaccine you would like to  receive:",
+            "value": "Female",
+            "isRequired": true,
+            "errorMessage": "Choose your vaccine.",
+            "id": "vaccine_booster_2"
+        },
+        {
+            "type": "ActionSet",
+            "spacing": "Medium",
+            "actions": [
+                {
+                    "type": "Action.Submit",
+                    "title": "Continue",
+                    "style": "positive",
+                    "associatedInputs": "none",
+                    "id": "data_send"
+                },
+                {
+                    "type": "Action.Submit",
+                    "title": "Cancel",
+                    "associatedInputs": "none",
+                    "id": "form_cancel"
+                }
+            ]
+        }
+    ]
+}
