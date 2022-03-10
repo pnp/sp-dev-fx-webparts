@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-cherry-picked-content-client-side-solution",
+    "id": "6a0a135e-c421-4508-955a-dbb0b392104a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Christophe Humbert",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-cherry-picked-content description"
+      },
+      "longDescription": {
+        "default": "react-cherry-picked-content description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-cherry-picked-content Feature",
+        "description": "The feature that activates elements of the react-cherry-picked-content solution.",
+        "id": "bb64f400-c482-4467-83ae-3a05b9eacf4d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-cherry-picked-content.sppkg"
+  }
+}
