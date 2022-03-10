@@ -1,0 +1,16 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Site Lists - SharePoint REST API</h3>
+<p>Isolated mode: &#9888; mandatory. This sample uses the JavaScript fetch method to query the SharePoint REST API.</p>
+<script>
+    var currentScript = document.currentScript;
+	fetch(props.context.pageContext.web.absoluteUrl + "/_api/web/lists?$select=Title,ImageUrl", {headers: {'Accept': 'application/json'}})
+    .then(response => response.json())
+    .then(result => result.value)
+    .then(lists => lists.map(list => `<li><img src="${list.ImageUrl}"/> ${list.Title}</li>`))
+    .then(items => {
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `<div>${items.length} lists found on this site:</div><ul style="list-style-type: none; columns: 2;">${items.join("")}</ul>`;
+        currentScript.insertAdjacentElement('afterend', newDiv);
+    });
+</script>
+</div>
