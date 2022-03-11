@@ -12,13 +12,13 @@ import HeroWebpart from './components/HeroWebpart';
 import { IHeroWebpartProps } from './components/IHeroWebpartProps';
 
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
-import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
-import { FilePicker , IFilePickerProps } from '@pnp/spfx-controls-react/lib/FilePicker';
+import { IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
+import { FilePicker } from '@pnp/spfx-controls-react/lib/FilePicker';
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
+import { DisplayMode } from '@microsoft/sp-core-library';  
 
 export interface IHeroWebpartWebPartProps {
   title: string;
@@ -26,9 +26,11 @@ export interface IHeroWebpartWebPartProps {
   hideFirstPageJump: boolean;
   hideLastPageJump: boolean;
   showAllHero: boolean;
+  showCollage: boolean;
   collectionData: any[];
   filePickerResult: IFilePickerResult;
   pageLimit:number;
+  displayMode: DisplayMode;
 }
 
 export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpartWebPartProps> {
@@ -42,9 +44,11 @@ export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpa
         hideFirstPageJump:this.properties.hideFirstPageJump,
         hideLastPageJump:this.properties.hideLastPageJump,
         spfxContext: this.context,
-        showAllHero: this.properties.showAllHero,
+        showAllHero: this.properties.showAllHero?this.properties.showAllHero:false,
+        showCollage: this.properties.showCollage?this.properties.showCollage:false,
         pageLimit:5,
-        items:this.properties.collectionData?this.properties.collectionData:[]
+        items:this.properties.collectionData?this.properties.collectionData:[],
+        displayMode: this.displayMode,
       }
     );
 
@@ -132,11 +136,20 @@ export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpa
                   ],
                   disabled: false
                 }),
+                PropertyFieldToggleWithCallout('showCollage', {
+                  calloutTrigger: CalloutTriggers.Hover,
+                  key: 'showCollage',
+                  label: 'Show collage of all images?',
+                  calloutContent: React.createElement('p', {}, 'Enabling this will show all images in a collage view'),
+                  onText: 'ON',
+                  offText: 'OFF',
+                  checked: this.properties.showCollage,
+                }),
                 PropertyFieldToggleWithCallout('showAllHero', {
                   calloutTrigger: CalloutTriggers.Hover,
                   key: 'showAllHeroFieldId',
-                  label: 'Show all courses in Hero view?',
-                  calloutContent: React.createElement('p', {}, 'Enabling this will show all courses in the Hero view'),
+                  label: 'Show all images in Hero view?',
+                  calloutContent: React.createElement('p', {}, 'Enabling this will show all images in the Hero view'),
                   onText: 'ON',
                   offText: 'OFF',
                   checked: this.properties.showAllHero,
