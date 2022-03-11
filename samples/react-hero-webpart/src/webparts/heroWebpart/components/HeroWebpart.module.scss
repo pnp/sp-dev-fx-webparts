@@ -305,7 +305,7 @@
       }
       .heroTitle {
         font-size: 14px;
-        width: calc(33% - 12px);
+        width: calc(33% - 22px);
         margin: -80px 0px 0px 0px;
         position: absolute;
         bottom: unset;
@@ -322,7 +322,7 @@
         margin: -90px 0px 0px 0px;
         bottom: unset;
         background: rgba(0, 0, 0, 0);
-        width: calc(33% - 12px);
+        width: calc(33% - 22px);
         transition: .5s ease;
         font-size: 18px;
         padding: 20px 0px;;
@@ -333,7 +333,7 @@
     .collageItemInner:hover {
       .description {
         background: rgba(0, 0, 0, 0.9);
-        width: calc(33% - 12px);
+        width: calc(33% - 22px);
         position: absolute;
         margin: -90px 0px 0px 0px;
         bottom: unset;
