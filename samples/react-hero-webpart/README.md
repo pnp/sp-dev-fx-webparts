@@ -34,6 +34,7 @@ hero-webpart | [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.spby
 
 Version|Date|Comments
 -------|----|--------
+1.3|March 11, 2022|At the request of another user a option has been added to allow a collage of images to be shown in a flex grid layout<br/>Added in placeholder configuration screen<br/>Fixed webpart not loading the 5 temporary items on first adding webpart to new page in local workbench<br/>General maintenance to remove unused imports<br/>Updated CSS to add in collage feature
 1.2|July 27, 2021|Updated to automatically detect how many items are being displayed and adjust the display layout based on this<br/>Updated design to show the title on all images<br/>Updated description area on hover<br/>Updated hover effect of image to show a zoom effect when hovering over an item<br/>General cleaning up of CSS and code
 1.1|March 10, 2021|Update comment
 1.0|January 29, 2021|Initial release
