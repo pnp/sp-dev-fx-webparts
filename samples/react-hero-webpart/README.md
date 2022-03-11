@@ -5,7 +5,7 @@
 This solution creates a customisable Hero web part, it uses a stored collection from the PnP PropertyFieldCollectionData control 
 
 ![Preview](./assets/Hero-Webpart.gif)
- 
+![Preview](./assets/collage-hero-webpart.PNG)
 
 ## Compatibility
 
