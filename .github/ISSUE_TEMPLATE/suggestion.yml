@@ -16,6 +16,15 @@ body:
       - If you have multiple suggestions please submit them separately so we can track resolution.
       - Screenshots are always helpful (just paste any images right here in the suggestion)
 
+- type: dropdown
+  id: disclaimer
+  validations:
+    required: true
+  attributes:
+    label: Disclaimer
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
+    options:
+    - "Yes"
 - type: input
   id: sample
   validations:
