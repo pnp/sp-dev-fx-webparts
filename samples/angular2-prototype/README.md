@@ -38,6 +38,7 @@ Sample To Do Web Part built with Angular2. This sample illustrates how you can u
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 
@@ -74,6 +75,8 @@ Version|Date|Comments
   - `gulp serve`
 - Open the workbench
 - Test out the web part
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
