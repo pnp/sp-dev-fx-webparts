@@ -22,7 +22,7 @@ body:
 
       Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
 
-- type: checkboxes
+- type: dropdown
   id: disclaimer
   validations:
     required: true
