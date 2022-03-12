@@ -28,7 +28,7 @@ body:
     required: true
   attributes:
     label: Disclaimer
-    description: I have reviewed the **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)** and **[how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)** before submitting this issue and understand that my issue may be closed if I do not follow the guidelines.
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)**, and followed the steps listed in **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)** and **[how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
     options:
     - "Yes"
 - type: input
