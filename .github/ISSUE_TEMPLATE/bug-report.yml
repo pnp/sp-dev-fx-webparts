@@ -30,7 +30,7 @@ body:
     label: Disclaimer
     description: I have reviewed the **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)** and **[how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)** before submitting this issue and understand that my issue may be closed if I do not follow the guidelines.
     options:
-    - label: "Yes"
+    - Yes
 - type: input
   id: sample
   validations:
