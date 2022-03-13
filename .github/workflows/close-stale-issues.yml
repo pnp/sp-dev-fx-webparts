@@ -6,11 +6,11 @@ on:
 permissions:
   issues: write
 jobs:
-  stale:
+  destale-inator:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v4
-        name: 'Close invalid author'
+        name: 'Close invalid authors'
         with:
           days-before-issue-stale: 3
           days-before-issue-close: 1
