@@ -9,7 +9,7 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v12 | v10](https://img.shields.io/badge/Node.js-v12%20%7C%20v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
@@ -35,6 +35,7 @@ Version|Date|Comments
 1.0|September 17, 2021|Initial release
 1.1|October 10, 2021|Add pagination
 1.2|November 04, 2021|Add group views
+1.3|March 14, 2022|Upgrade to SPFx v1.14.0
 
 
 ## Minimal Path to Awesome
