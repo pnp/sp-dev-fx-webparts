@@ -9,12 +9,11 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg) 
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg) 
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
@@ -27,6 +26,8 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 
 ## Prerequisites
 
+- Before deploying your SharePoint Framework package to your tenant, you will need to deploy the @microsoft/mgt-spfx SharePoint Framework package to your tenant. You can download the package corresponding to the version of @microsoft/mgt-spfx that you used in your project, from the [Releases](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) section on GitHub.
+See here for more information about using Microsoft Graph Toolkit components in SPFx: https://docs.microsoft.com/en-gb/graph/toolkit/get-started/mgt-spfx
 - A SharePoint list called "Stories" with the following fields:
   - Image: image field type
   - Content: multi-line field type
@@ -45,11 +46,14 @@ react-company-stories | Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.c
 Version|Date|Comments
 -------|----|--------
 1.0|March 31, 2021|Initial release
+2.0|March 16, 2022|Upgraded to SPFx v1.14. Issue 2442 fixed. Using latest MGT version
 
 
 
 ## Minimal Path to Awesome
 
+- Before deploying your SharePoint Framework package to your tenant, you will need to deploy the @microsoft/mgt-spfx SharePoint Framework package to your tenant. You can download the package corresponding to the version of @microsoft/mgt-spfx that you used in your project, from the [Releases](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) section on GitHub.
+See here for more information about using Microsoft Graph Toolkit components in SPFx: https://docs.microsoft.com/en-gb/graph/toolkit/get-started/mgt-spfx
 - Configure SharePoint permissions to Graph API (see Prerequisites). Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/)
 - Clone this repository
 - Ensure that you are at the solution folder
@@ -83,7 +87,5 @@ About SPFx:
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-company-stories" />
