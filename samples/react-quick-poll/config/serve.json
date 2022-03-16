@@ -4,7 +4,7 @@
   "https": true,
   "initialPage": "https://localhost:5432/workbench",
   //you need to replace initialPage url with your sharepoint url
-  //Something like "initialPage": "https://<mysharepointurl>.sharepoint.com/sites/Mysite?debug=true&noredir=true&debugManifestsFile=https://localhost:4321/temp/manifests.js",
+  //Something like "initialPage": "https://<mysharepointurl>.sharepoint.com/sites/Mysite",
 
   "api": {
     "port": 5432,
