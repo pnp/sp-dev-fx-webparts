@@ -65,7 +65,11 @@ Implemented controls:
 - People Picker
 - List Picker and List Item Picker (cascading selection)
 
-> There's a minor issue with the [Location Picker](https://github.com/pnp/sp-dev-fx-controls-react/issues/1125) of the SPFx React Controls library in v3.7.0, it'll be addressed in the next release.
+## Known Issues
+
+There are a couple minor issues with the Location Picker of the SPFx React Controls library. [I am working with the authors](https://github.com/pnp/sp-dev-fx-controls-react/issues/1125) to get them addressed in the next release. In the meantime, be aware that:
+- the control will overflow its container width if the address is too long
+- the control doesn't work on the root site
 
 ## References
 
