@@ -1,0 +1,41 @@
+{
+  "name": "sp-fx-app-dev-simple-password-vault",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.12.1",
+    "@microsoft/sp-lodash-subset": "1.12.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.12.1",
+    "@microsoft/sp-property-pane": "1.12.1",
+    "@microsoft/sp-webpart-base": "1.12.1",
+    "@pnp/spfx-controls-react": "2.9.0",
+    "@spfxappdev/framework": "^1.0.7",
+    "@types/crypto-js": "^4.1.1",
+    "crypto-js": "^4.1.1",
+    "office-ui-fabric-react": "7.156.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
+  },
+  "devDependencies": {
+    "@microsoft/decorators": "^1.14.0",
+    "@microsoft/rush-stack-compiler-3.7": "0.2.3",
+    "@microsoft/sp-application-base": "^1.14.0",
+    "@microsoft/sp-build-web": "1.12.1",
+    "@microsoft/sp-module-interfaces": "1.12.1",
+    "@microsoft/sp-tslint-rules": "1.12.1",
+    "@microsoft/sp-webpart-workbench": "1.12.1",
+    "@types/react": "16.9.36",
+    "@types/react-dom": "16.9.8",
+    "@types/webpack-env": "1.13.1",
+    "ajv": "~5.2.2",
+    "gulp": "~4.0.2",
+    "spfx-fast-serve-helpers": "~1.12.0"
+  }
+}
