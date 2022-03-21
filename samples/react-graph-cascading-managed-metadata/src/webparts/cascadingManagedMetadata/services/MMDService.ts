@@ -25,7 +25,7 @@ export class MMDService {
 
     private static async _getTermsAsDropdownOptionsUsingGraph(apiUrl: string, selectProperties: string[], parent: string): Promise<ICMMDDropdownOption[]> {
         try {
-            let terms: ITerms = await MSGraph.Get(apiUrl, "beta", selectProperties);
+            let terms: ITerms = await MSGraph.Call("get", apiUrl, "beta", {}, selectProperties);
             if (terms.value) {
                 const options: ICMMDDropdownOption[] = terms.value.map(t => ({
                     key: t.id,

@@ -29,7 +29,7 @@ const CascadingManagedMetadata: React.SFC<ICascadingManagedMetadataProps> = (pro
   //* Check if the term set has a property called UsedForShowingMaps
   const _checkIfTermsetIsUsedForShowingMaps = async (): Promise<boolean> => {
     try {
-      const termsetData = await MSGraph.Get(`/termStore/sets/${props.termSetId}`, "beta", ["properties"]);
+      const termsetData = await MSGraph.Call('get', `/termStore/sets/${props.termSetId}`, "beta", {}, ["properties"]);
       const termsetProperties: IProperty[] = termsetData.properties;
       console.debug("%s Retrieved termset properties. %o", LOG_SOURCE, termsetProperties);
 
@@ -53,7 +53,7 @@ const CascadingManagedMetadata: React.SFC<ICascadingManagedMetadataProps> = (pro
   //* Get the country terms i.e. level 1 children using Graph
   const _getCountries = async (): Promise<ITerms> => {
     try {
-      let countries: ITerms = await MSGraph.Get(`/termStore/sets/${props.termSetId}/children`, "beta");
+      let countries: ITerms = await MSGraph.Call('get', `/termStore/sets/${props.termSetId}/children`, "beta");
       setMessageBarStatus(state => ({ ...state, show: false }));
       console.debug("%s Retrieved countries. %o", LOG_SOURCE, countries);
       return countries;

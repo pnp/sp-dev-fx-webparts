@@ -16,8 +16,12 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
 
   private _placeholder = null;
 
-  public async render(): Promise<void> {
+  protected async onInit(): Promise<void> {
     await MSGraph.Init(this.context);
+    return super.onInit();
+  }
+
+  public async render(): Promise<void> {
     let renderElement = null;
     if (this.properties.termSetId) {
       renderElement = React.createElement(
