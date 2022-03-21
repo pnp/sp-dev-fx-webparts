@@ -18,6 +18,16 @@ body:
       - Screenshots are always helpful (just paste any images right here in the question)
       - If you're trying to start a conversation on a topic, consider using [Discussions](https://github.com/pnp/sp-dev-fx-webparts/discussions). We want to close every issue as quickly as possible, but discussions are intended for longer conversations.
 
+
+- type: dropdown
+  id: disclaimer
+  validations:
+    required: true
+  attributes:
+    label: Disclaimer
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
+    options:
+    - "Yes"
 - type: input
   id: sample
   validations:

@@ -11,7 +11,7 @@ body:
       Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues. 
       
       > **IMPORTANT**
-      > Before you submit an issue, please run **[spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/)** from within the solution folder to diagnose incompatibility issues with your environment.
+      > Before you submit an issue, please follow the **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)**. 
 
       - Follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues).
       - All bug reports are welcome - we want to fix them!
@@ -22,6 +22,15 @@ body:
 
       Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
 
+- type: dropdown
+  id: disclaimer
+  validations:
+    required: true
+  attributes:
+    label: Disclaimer
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)**, and followed the steps listed in **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)** and **[how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
+    options:
+    - "Yes"
 - type: input
   id: sample
   validations:
@@ -136,17 +145,16 @@ body:
       - label: not applicable
       - label: other (enter in the "Additional environment details" area below)
 
-- type: input
-  id: Node
+- type: textarea
+  id: spfxdoctor
   validations:
     required: true
   attributes:
-    label: Node.js version
-    placeholder: E.g. v10.23.1
+    label: Paste the results of SPFx doctor
     description: |
-        Which version of Node.js are you using?
+        Run `m365 spfx doctor -o json` and paste the results. 
         
-        TIP: To find out, run `node -v`
+        Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 
 - type: textarea
   id: moar

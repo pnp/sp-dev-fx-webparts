@@ -1,0 +1,34 @@
+name: 'Close stale issues'
+on:
+  schedule:
+    - cron: '30 1 * * *'
+  workflow_dispatch:
+permissions:
+  issues: write
+jobs:
+  destale-inator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4
+        name: 'Close invalid authors'
+        with:
+          days-before-issue-stale: 3
+          days-before-issue-close: 1
+          days-before-pr-stale: -1
+          operations-per-run: 1000
+          stale-issue-message: 'Please note that this issue will be closed within 24 hours because it has been flagged as having invalid authors. [Read the guidance](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-create-good-issues#mention-authors) and @mention the authors so they can respond to you.'
+          only-issue-labels: 'status:wrong-author'
+          close-issue-message: 'Closing this issue due to lack of response. Feel free to open a new issue, but make sure to follow the guidance on [how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-create-good-issues#mention-authors) and @mention the authors so they can respond to you.'
+      - uses: actions/stale@v4
+        name: 'Close stale issues'
+        with:
+          days-before-issue-stale: 90
+          days-before-issue-close: 7
+          days-before-pr-stale: -1
+          stale-issue-label: 'status:no-recent-activity'
+          exempt-all-issue-assignees: true
+          exempt-issue-labels: 'type:sample-request'
+          remove-issue-stale-when-updated: true
+          operations-per-run: 1000
+          stale-issue-message: 'This issue has been marked as stale due to no progress in over 90 days. If you are still experiencing this issue, please provide additional information so we can help you resolve it.'
+          close-issue-message: 'Closing this issue due to lack of activity. If you are still encountering this issue, please do not hesitate to open a new issue. Make sure to follow the guidance on [how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-create-good-issues) to increase your chances of getting the help you deserve.'
