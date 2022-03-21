@@ -29,7 +29,6 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
 
     public render(): void {
 
-      this.log(this.properties);
         const element: React.ReactElement<IPasswordVaultProps> = React.createElement(
             PasswordVault,
             {
@@ -98,7 +97,7 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
                     ${this.context.instanceId}
                   </div>
                   <div>
-                    <a href="https://github.com/SPFxAppDev/sp-rte-webpart" target="_blank">More info</a>
+                    <a href="https://github.com/SPFxAppDev/sp-passwordvault-webpart" target="_blank">More info</a>
                   </div>
                   `
                 })
