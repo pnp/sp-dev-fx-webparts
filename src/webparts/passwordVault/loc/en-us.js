@@ -13,6 +13,7 @@ define([], function() {
     "WrongPasswordLabel": "Wrong Password",
     "OpenVaultLabel": "Open vault",
     "UsernameCopiedLabel": "Username copied",
-    "PasswordCopiedLabel": "Password copied"
+    "PasswordCopiedLabel": "Password copied",
+    "DontLoseMasterpasswordLabel": "If you forget the master password, you will not be able to unlock the vault and all data will be lost. It is not possible to recover the password."
   }
 });

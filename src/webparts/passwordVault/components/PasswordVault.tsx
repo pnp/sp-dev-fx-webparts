@@ -244,6 +244,10 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
         {this.renderOpenVaultForm()}
 
         {showForm &&
+        <>
+        <MessageBar messageBarType={MessageBarType.warning}>
+          {strings.DontLoseMasterpasswordLabel}
+        </MessageBar>
         <div className='spfxappdev-grid'>
           <div className="spfxappdev-grid-row">
             <div className="spfxappdev-grid-col spfxappdev-sm12">
@@ -350,6 +354,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
             </div>
           </div>
         </div>
+        </>
         }
       </>
     );

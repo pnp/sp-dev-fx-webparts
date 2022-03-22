@@ -5,6 +5,7 @@
     "id": "d091b369-f63d-459c-846e-5a4323e31745",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
       "name": "SPFXAppDev",

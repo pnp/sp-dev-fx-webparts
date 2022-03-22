@@ -13,6 +13,7 @@ define([], function() {
         "WrongPasswordLabel": "Falsches Passwort",
         "OpenVaultLabel": "Tresor entsperren",
         "UsernameCopiedLabel": "Benutzername kopiert",
-        "PasswordCopiedLabel": "Passwort kopiert"
+        "PasswordCopiedLabel": "Passwort kopiert",
+        "DontLoseMasterpasswordLabel": "Wenn Sie das Master passwort vergessen, können Sie den Tresor nicht mehr entsperren und alle Daten gehen verloren. Es ist nicht möglich das Passwort wiederherzustellen."
     }
   });
