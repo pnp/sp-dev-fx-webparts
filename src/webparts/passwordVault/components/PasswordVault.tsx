@@ -324,13 +324,15 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
               <PrimaryButton disabled={this.state.isSaveButtonDisabled} onClick={() => {
                   this.isNewVault = false;
                   let encryptedMaster = this.currentMasterPW;
+
                   if(!this.enteredMasterPW.IsEmpty()) {
                     encryptedMaster = this.props.passwordVaultService.setMasterPassword(this.enteredMasterPW);
                     this.currentMasterPW = encryptedMaster;
                   }
 
+                  
+
                   this.encryptedData = this.props.passwordVaultService.encryptData({
-                    masterPW: encryptedMaster,
                     note: this.editModeNote,
                     password: this.editModePw,
                     username: this.editModeUsername
@@ -435,11 +437,10 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
     if(isCorrectPW) {
       this.decryptedData = props.passwordVaultService.decryptData(this.encryptedData);
+      this.editModeNote = this.decryptedData.note;
+      this.editModePw = this.decryptedData.password;
+      this.editModeUsername = this.decryptedData.username;
     }
-
-    this.editModeNote = this.decryptedData.note;
-    this.editModePw = this.decryptedData.password;
-    this.editModeUsername = this.decryptedData.username;
 
     this.setState({
       isVaultOpen: isCorrectPW,

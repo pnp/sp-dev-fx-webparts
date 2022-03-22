@@ -5,7 +5,7 @@ import { IVaultData } from '@src/interfaces/IVaultData';
 
 
 export interface IPasswordVaultService {
-    encryptData(plainData: IVaultData): IVaultData;
+    encryptData(plainData: Omit<IVaultData, "masterPW">): IVaultData;
     decryptData(encryptedData: IVaultData): IVaultData;
     open(masterPW: string, encryptedMasterPW: string): boolean;
     isOpen(): boolean;
@@ -72,9 +72,15 @@ export class PasswordVaultService implements IPasswordVaultService {
         this.isVaultOpen = toBoolean(this.cache.get(this.encryptedInstanceId));
         let pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
         this.encryptedMasterPw = isNullOrEmpty(pwFromCache) ? "" : pwFromCache;
+
+        if(!isNullOrEmpty(this.encryptedMasterPw)) {
+            const plainPassword: string = this.decrypt(this.encryptedMasterPw, this.masterSecretKey);
+            this.hashedMasterPw = CryptoJS.HmacSHA256(plainPassword, this.masterSecretKey).toString();
+        }
     }
 
     public encryptData(plainData: Omit<IVaultData, "masterPW">): IVaultData {
+        
         return {
             masterPW: this.hashedMasterPw,
             username: this.encryptUsername(plainData.username),
