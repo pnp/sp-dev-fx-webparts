@@ -12,5 +12,7 @@ define([], function() {
     "SaveLabel": "Save",
     "WrongPasswordLabel": "Wrong Password",
     "OpenVaultLabel": "Open vault",
+    "UsernameCopiedLabel": "Username copied",
+    "PasswordCopiedLabel": "Password copied"
   }
 });

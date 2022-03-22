@@ -11,6 +11,8 @@ declare interface IPasswordVaultWebPartStrings {
   SaveLabel: string;
   WrongPasswordLabel: string;
   OpenVaultLabel: string;
+  UsernameCopiedLabel: string;
+  PasswordCopiedLabel: string;
 }
 
 declare module 'PasswordVaultWebPartStrings' {

@@ -1,20 +1,20 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "sp-fx-app-dev-simple-password-vault-client-side-solution",
+    "name": "SPFx app dev Simple Password Vault",
     "id": "d091b369-f63d-459c-846e-5a4323e31745",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
-      "websiteUrl": "",
+      "name": "SPFXAppDev",
+      "websiteUrl": "https://spfx-app.dev/",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": ""
     }
   },
   "paths": {
-    "zippedPackage": "solution/sp-fx-app-dev-simple-password-vault.sppkg"
+    "zippedPackage": "solution/spfxappdev-simple-password-vault.sppkg"
   }
 }

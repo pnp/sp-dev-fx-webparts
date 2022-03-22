@@ -5,12 +5,6 @@ import { IVaultData } from '@src/interfaces/IVaultData';
 
 
 export interface IPasswordVaultService {
-    // encryptPassword(password: string): string;
-    // decryptPassword(encryptedPassword: string): string;
-    // encryptUsername(username: string): string;
-    // decryptUsername(encryptedUsername: string): string;
-    // encryptDescription(description: string): string;
-    // decryptDescription(encryptedDescription: string): string;
     encryptData(plainData: IVaultData): IVaultData;
     decryptData(encryptedData: IVaultData): IVaultData;
     open(masterPW: string, encryptedMasterPW: string): boolean;
@@ -30,11 +24,17 @@ export class PasswordVaultService implements IPasswordVaultService {
 
     private encryptedInstanceId: string = "";
 
+    private encryptedMasterPWInstanceId: string = "";
+
     private secretWasSet: boolean = false;
 
     private isVaultOpen: boolean = false;
 
-    private plainMasterPW: string = "";
+    private get plainMasterPW() : string {
+        return this.decrypt(this.encryptedMasterPw, this.masterSecretKey);
+    }
+
+    private encryptedMasterPw: string = "";
 
     private hashedMasterPw: string = "";
 
@@ -57,20 +57,21 @@ export class PasswordVaultService implements IPasswordVaultService {
     constructor(instanceId: string) {
 
         this.instanceId = instanceId;
-        this.encryptedInstanceId = this.encrypt(instanceId, instanceId);
+        this.encryptedInstanceId = CryptoJS.HmacSHA256(instanceId, instanceId).toString();
         this.setSecret(`SPFxAppDevSecret_${instanceId}`);
+        this.encryptedMasterPWInstanceId = CryptoJS.HmacSHA256(`${instanceId}_Master`, this.masterSecretKey).toString();
 
-        this.cache = new SessionStorage(
-            {
+        const cacheSettings = {
             ...SessionStorage.DefaultSettings, 
             ...{
                 DefaultTimeToLife: 5
             }
-        });
+        };
 
+        this.cache = new SessionStorage(cacheSettings);
         this.isVaultOpen = toBoolean(this.cache.get(this.encryptedInstanceId));
-
-        
+        let pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
+        this.encryptedMasterPw = isNullOrEmpty(pwFromCache) ? "" : pwFromCache;
     }
 
     public encryptData(plainData: Omit<IVaultData, "masterPW">): IVaultData {
@@ -106,8 +107,9 @@ export class PasswordVaultService implements IPasswordVaultService {
         
         if(masterPWEncrypted.toString() == encryptedMasterPW) {
             this.isVaultOpen = true;
-            // this.cache.set(this.encryptedInstanceId, true);
-            this.plainMasterPW = masterPW;
+            this.cache.set(this.encryptedInstanceId, true);
+            this.encryptedMasterPw = this.encrypt(masterPW, this.masterSecretKey);
+            this.cache.set(this.encryptedMasterPWInstanceId, this.encryptedMasterPw);
             this.hashedMasterPw = masterPWEncrypted.toString();
             return true;            
         }
@@ -122,13 +124,15 @@ export class PasswordVaultService implements IPasswordVaultService {
 
     public close(): void {
         this.isVaultOpen = false;
-        // this.cache.set(this.encryptedInstanceId, false);
-        this.plainMasterPW = "";
+        this.cache.set(this.encryptedInstanceId, false);
+        this.cache.remove(this.encryptedMasterPWInstanceId);
+        this.encryptedMasterPw = "";
     }
 
     public setMasterPassword(plainPassword: string): string {
-        this.plainMasterPW = plainPassword;
+        this.encryptedMasterPw = this.encrypt(plainPassword, this.masterSecretKey);
         this.hashedMasterPw = CryptoJS.HmacSHA256(plainPassword, this.masterSecretKey).toString();
+        this.cache.set(this.encryptedMasterPWInstanceId, this.encryptedMasterPw);
         return this.hashedMasterPw;
     }
 
@@ -175,7 +179,7 @@ export class PasswordVaultService implements IPasswordVaultService {
     }
 
     private encryptNote(note: string): string {
-        return this.encrypt(note, this.noteSecretKey)
+        return this.encrypt(note, this.noteSecretKey);
     }
 
     private decryptNote(encryptedNote: string): string {

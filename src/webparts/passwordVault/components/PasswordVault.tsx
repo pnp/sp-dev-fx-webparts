@@ -3,7 +3,7 @@ import styles from './PasswordVault.module.scss';
 import { SPFxAppDevWebPartComponent, ISPFxAppDevWebPartComponentProps } from '@spfxappdev/framework';
 import PasswordVaultWebPart from '../PasswordVaultWebPart';
 import { IPasswordVaultService } from '@src/services/PasswordVaultService';
-import { DefaultButton, Icon, Label, MessageBar, MessageBarType, PrimaryButton, TextField } from 'office-ui-fabric-react';
+import { Callout, DefaultButton, DirectionalHint, Icon, ITextField, Label, MessageBar, MessageBarType, PrimaryButton, TextField } from 'office-ui-fabric-react';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
 import { IVaultData } from '@src/interfaces/IVaultData';
@@ -13,6 +13,8 @@ interface IPasswordVaultState {
   isVaultOpen: boolean;
   showWrongMasterInfo: boolean;
   isSaveButtonDisabled: boolean;
+  isCopyPasswordToClipboardCalloutHidden: boolean;
+  isCopyUsernameToClipboardCalloutHidden: boolean;
 }
 
 export interface IPasswordVaultProps extends ISPFxAppDevWebPartComponentProps<PasswordVaultWebPart> {
@@ -36,7 +38,9 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   public state: IPasswordVaultState = {
     isVaultOpen: this.isVaultOpen,
     showWrongMasterInfo: false,
-    isSaveButtonDisabled: this.helper.functions.isNullOrEmpty(this.props.masterPW)
+    isSaveButtonDisabled: this.helper.functions.isNullOrEmpty(this.props.masterPW),
+    isCopyPasswordToClipboardCalloutHidden: true,
+    isCopyUsernameToClipboardCalloutHidden: true
   };
 
   private get isVaultOpen(): boolean {
@@ -66,6 +70,12 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
   private editModeUsername: string;
 
+  private currentMasterPW: string = "";
+
+  private usernameTextFieldDomElement: HTMLInputElement = null;
+
+  private passwordTextFieldDomElement: HTMLInputElement = null;
+
   constructor(props: IPasswordVaultProps) {
     super(props);
     this.encryptedData = {
@@ -75,8 +85,20 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
       note: props.note
     };
 
+    this.currentMasterPW = props.masterPW;
     this.decryptedData = this.props.passwordVaultService.decryptData(this.encryptedData);
+
+    this.editModeNote = this.helper.functions.getDeepOrDefault(this.decryptedData, "note", "");
+    this.editModePw = this.helper.functions.getDeepOrDefault(this.decryptedData, "password", "");
+    this.editModeUsername = this.helper.functions.getDeepOrDefault(this.decryptedData, "username", "");
+
     this.isNewVault = this.helper.functions.isNullOrEmpty(props.masterPW);
+  }
+
+  public componentDidUpdate(prevProps: Readonly<IPasswordVaultProps>, prevState: Readonly<IPasswordVaultState>, snapshot?: any): void {
+    if(prevProps.masterPW !== this.props.masterPW) {
+      this.currentMasterPW = this.props.masterPW;
+    }
   }
 
   public render(): React.ReactElement<IPasswordVaultProps> {
@@ -99,12 +121,11 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   }
 
   private renderDisplayMode(): JSX.Element {
-    const props: IPasswordVaultProps = this.props;
     const showCopyToClipboard: boolean = this.helper.functions.issetDeep(window, "navigator.clipboard.writeText");
 
     return (
       <>
-        {this.helper.functions.isNullOrEmpty(props.masterPW) && 
+        {this.helper.functions.isNullOrEmpty(this.currentMasterPW) && 
         <MessageBar messageBarType={MessageBarType.info}>
           {strings.NoMasterPasswordSetLabel}
         </MessageBar>
@@ -121,15 +142,29 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                     label={strings.UsernameLabel}
                     disabled={true}
                     defaultValue={this.decryptedData.username}
+                    componentRef={(input: ITextField) => {
+                      this.usernameTextFieldDomElement = this.helper.functions.getDeepOrDefault(input, "_textElement.current", null);                      
+                    }}
                     onRenderSuffix={() => {
 
                       if(!showCopyToClipboard) {
                         return <></>;
                       }
 
-                      return <Icon iconName={"Copy"} className="copy-icon" onClick={() => { this.copyToClipboard(this.decryptedData.username); }} /> 
+                      return (<Icon iconName={"Copy"} className="copy-icon" onClick={() => { this.copyToClipboard(this.decryptedData.username, false); }} />);
                     }}
                   />
+                   {showCopyToClipboard && this.helper.functions.isset(this.usernameTextFieldDomElement) &&
+                    <Callout
+                      hidden={this.state.isCopyUsernameToClipboardCalloutHidden}
+                      target={this.usernameTextFieldDomElement.parentElement}
+                      isBeakVisible={false}
+                      className={"clipboard-callout"}
+                      directionalHint={DirectionalHint.rightCenter}
+                    >
+                      {strings.UsernameCopiedLabel}
+                    </Callout>
+                  }
                 </div>
               </div>
             }
@@ -143,15 +178,31 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                   disabled={true}
                   canRevealPassword={true}
                   defaultValue={this.decryptedData.password}
+                  componentRef={(input: ITextField) => {
+                    this.passwordTextFieldDomElement = this.helper.functions.getDeepOrDefault(input, "_textElement.current", null);   
+                  }}
                   onRenderSuffix={() => {
                     
                     if(!showCopyToClipboard) {
                       return <></>;
                     }
 
-                    return <Icon iconName={"Copy"} className="copy-icon" onClick={() => { this.copyToClipboard(this.decryptedData.password); }} /> 
+                    return (<Icon iconName={"Copy"} className="copy-icon" onClick={() => { 
+                      this.copyToClipboard(this.decryptedData.password, true); 
+                    }} />);
                   }}
                 />
+                {showCopyToClipboard && this.helper.functions.isset(this.passwordTextFieldDomElement) &&
+                <Callout
+                  hidden={this.state.isCopyPasswordToClipboardCalloutHidden}
+                  target={this.passwordTextFieldDomElement.parentElement}
+                  isBeakVisible={false}
+                  className={"clipboard-callout"}
+                  directionalHint={DirectionalHint.rightCenter}
+                >
+                  {strings.PasswordCopiedLabel}
+                </Callout>
+                }
               </div>
             </div>
             }
@@ -168,7 +219,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
           <div className="spfxappdev-grid-row grid-footer">
             <div className="spfxappdev-grid-col spfxappdev-sm12">
-            {!this.helper.functions.isNullOrEmpty(this.props.masterPW) &&
+            {!this.helper.functions.isNullOrEmpty(this.currentMasterPW) &&
               <DefaultButton onClick={() => {
                   this.closeVault();
                 }}>
@@ -205,7 +256,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                   this.enteredMasterPW = newValue;
                   this.setState({
                     isSaveButtonDisabled: this.isSaveButtonDisabled()
-                  })
+                  });
                 }}
               />
             </div>
@@ -268,9 +319,10 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
             <div className="spfxappdev-grid-col spfxappdev-sm12">
               <PrimaryButton disabled={this.state.isSaveButtonDisabled} onClick={() => {
                   this.isNewVault = false;
-                  let encryptedMaster = this.props.masterPW;
+                  let encryptedMaster = this.currentMasterPW;
                   if(!this.enteredMasterPW.IsEmpty()) {
                     encryptedMaster = this.props.passwordVaultService.setMasterPassword(this.enteredMasterPW);
+                    this.currentMasterPW = encryptedMaster;
                   }
 
                   this.encryptedData = this.props.passwordVaultService.encryptData({
@@ -288,7 +340,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                   {strings.SaveLabel}
               </PrimaryButton>
 
-              {!this.helper.functions.isNullOrEmpty(this.props.masterPW) &&
+              {!this.helper.functions.isNullOrEmpty(this.currentMasterPW) &&
               <DefaultButton onClick={() => {
                   this.closeVault();
                 }}>
@@ -305,7 +357,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
   private renderOpenVaultForm(): JSX.Element {
 
-    if(this.helper.functions.isNullOrEmpty(this.props.masterPW)) {
+    if(this.helper.functions.isNullOrEmpty(this.currentMasterPW)) {
       return (<></>);
     }
 
@@ -327,6 +379,11 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                   canRevealPassword={true}
                   onChange={(ev: any, newValue: string) => {
                     this.enteredMasterPW = newValue;
+                  }}
+                  onKeyUp={(ev: React.KeyboardEvent<HTMLInputElement>) => {
+                    if(ev.keyCode == 13) {
+                      this.onOpenVault();
+                    }
                   }}
                 />
               </div>
@@ -368,7 +425,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
   private onOpenVault(): void {
     const props: IPasswordVaultProps = this.props;
-    const isCorrectPW = props.passwordVaultService.open(this.enteredMasterPW, props.masterPW);
+    const isCorrectPW = props.passwordVaultService.open(this.enteredMasterPW, this.currentMasterPW);
     this.enteredMasterPW = "";
 
     if(isCorrectPW) {
@@ -385,7 +442,21 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
     });
   }
 
-  private copyToClipboard(text: string): void {
-    window.navigator.clipboard.writeText(text);
+  private copyToClipboard(text: string, isPasswordField: boolean): void {
+    window.navigator.clipboard.writeText(text).then(() => {
+
+      this.setState({
+        isCopyPasswordToClipboardCalloutHidden: !isPasswordField,
+        isCopyUsernameToClipboardCalloutHidden: isPasswordField
+      });
+
+      window.setTimeout(() => {
+        this.setState({
+          isCopyPasswordToClipboardCalloutHidden: true,
+          isCopyUsernameToClipboardCalloutHidden: true
+        });
+      }, 2000);
+
+    });
   }
 }
