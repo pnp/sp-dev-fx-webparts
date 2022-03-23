@@ -13,6 +13,14 @@
     "products": [
       "SharePoint"
     ],
+    "preview": {
+      "label": "Click here for preview",
+      "url": "https://www.something.com/",
+      "settings": {
+        "oneCustomSetting": "OneCustomCustomValue",
+        "anotherCustomSetting": "AnotherCustomCustomValue"
+      }
+    },
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
