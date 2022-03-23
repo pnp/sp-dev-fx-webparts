@@ -10,6 +10,7 @@
     ],
     "creationDateTime": "2017-05-05",
     "updateDateTime": "2017-05-05",
+    "downloadUrl": "https://download.url/file.zip",
     "products": [
       "SharePoint"
     ],
