@@ -24,8 +24,8 @@ This web part allows users to create a faux page hierarchy in their pages librar
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -54,6 +54,7 @@ react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](htt
 Version|Date|Comments
 -------|----|--------
 1.0|April 30, 2020|Initial release
+1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
 
 
 ## Minimal Path to Awesome
