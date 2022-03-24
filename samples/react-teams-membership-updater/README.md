@@ -12,7 +12,7 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
@@ -49,6 +49,7 @@ Version|Date|Comments
 1.1.0|July 13, 2021|Upgraded to v1.12.1 of SPFx and v3 of pnp controls
 1.2.0|August 17, 2021|Added support for populating private channels inside of a team, added support for paged list of teams from Graph, added sorting to the Team list
 1.2.1|September 21, 2021| Missing '/members' in the private channel membership url 
+1.2.2|March, 24, 2022|Upgraded to SPFx v1.14 and v4 of react-papaparse
 
 ## Minimal Path to Awesome
 

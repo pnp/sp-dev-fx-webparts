@@ -3,7 +3,7 @@ import styles from './TeamsMembershipUpdater.module.scss';
 import { ITeamsMembershipUpdaterProps } from './ITeamsMembershipUpdaterProps';
 import { DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, ProgressIndicator, Separator, PrimaryButton, MessageBar, MessageBarType, Link, Toggle, List, Dropdown, IDropdownOption, Text, TeachingBubble, Icon, Callout, mergeStyleSets, FontWeights } from 'office-ui-fabric-react';
 import { ITeamsMembershipUpdaterWebPartProps } from '../TeamsMembershipUpdaterWebPart';
-import { readString } from 'react-papaparse';
+import { usePapaParse } from 'react-papaparse';
 import { MSGraphClient, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react';
@@ -117,11 +117,13 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           reader.readAsArrayBuffer(file);
           reader.onloadend = ((ev) => {
             let decodedString = new TextDecoder('utf-8').decode(new DataView(reader.result as ArrayBuffer));
-            const csv = readString(decodedString, { header: true, skipEmptyLines: true });
-            var h = csv.meta.fields;
-            this._data = csv.data;
-            this._datacolumns = h.map(r => { return { key: r.replace(' ', ''), name: r, fieldName: r, isResizable: true }; });
-            this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => ({ key: r.replace(' ', ''), text: r })), logs: [], errors: [], logurl: null });
+            const { readString } = usePapaParse();
+            readString(decodedString, { header: true, skipEmptyLines: true, worker: true, complete: (results) => {
+              var h = results.meta.fields;
+              this._data = results.data;
+              this._datacolumns = h.map(r => { return { key: r.replace(' ', ''), name: r, fieldName: r, isResizable: true, minWidth: 100 }; });
+              this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => ({ key: r.replace(' ', ''), text: r })), logs: [], errors: [], logurl: null });
+            } });
           });
         });
       });
