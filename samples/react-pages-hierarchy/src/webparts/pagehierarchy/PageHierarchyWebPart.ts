@@ -53,7 +53,8 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
         displayMode: this.displayMode,
         updateTitle: (t) => { this.properties.title = t; this.render(); },
         onConfigure: () => { this.onConfigure(); },
-        pageEditFinished: this.pageEditFinished
+        pageEditFinished: this.pageEditFinished,
+        context: this.context
       }
     );
     ReactDom.render(element, this.domElement, () => {
