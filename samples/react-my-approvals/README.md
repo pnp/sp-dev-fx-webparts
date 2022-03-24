@@ -6,10 +6,9 @@ This web part demonstrates displaying the list of approval requests of Power Aut
 
 ![](./assets/react-my-approvals.gif)
 
-
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -19,17 +18,15 @@ This web part demonstrates displaying the list of approval requests of Power Aut
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 >  NodeJS version must match >=10.13.0 <11.0.0 on >=12.13.0 <13.0.0 or >=14.15.0 <15.0.0
-## Prerequisites
 
+## Prerequisites
 
 This web part uses *Microsoft Flow Service* API. You need to approve the API request after deploying the package.
 
 - `Approvals.Read.All`
 - `Flows.Read.All`
 
-
 For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev/spfx/use-aadhttpclient).
-
 
 ## Minimal Path to Awesome
 
@@ -51,9 +48,9 @@ react-my-approvals|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 22, 2022|Updated to allow multiple environments to be selected
 1.0|January 11, 2022|Initial release
-
 
 ## Help
 
@@ -71,10 +68,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-my-approvals&template=suggestion.yml&sample=react-my-approvals&authors=@karamem0&title=react-my-approvals%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-my-approvals" />
