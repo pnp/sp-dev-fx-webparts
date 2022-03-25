@@ -8,15 +8,14 @@ This web part demonstrates *Star Ratings* capablities to SharePoint News. The "R
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires the ratings feature from SharePoint Online")
-![Hosted Workbench Not Compatible](https://img.shields.io/badge/Hosted%20Workbench-Not-Compatible-red.svg  "This web part needs to run on a page")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Incompatible](https://img.shields.io/badge/Hosted%20Workbench-Incompatible-red.svg  "This web part needs to run on a page")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
-
 
 ## Prerequisites
 
@@ -45,6 +44,7 @@ react-star-ratings|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 12, 2022|Updated to retrieve values from API
 1.0|October 7, 2021|Initial release
 
@@ -63,6 +63,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-star-ratings" />
