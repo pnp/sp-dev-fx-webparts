@@ -41,7 +41,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|July 14, 2021|Initial release
 1.1|October 14, 2021|Added sorting, static tile width and unique tile colour - [fthorild](https://github.com/fthorild)
-1.2|March 25, 2022|Added current icon within property pane
+1.1.1|March 25, 2022|Added current icon within property pane
 
 ## Minimal Path to Awesome
 
