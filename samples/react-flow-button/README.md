@@ -8,7 +8,7 @@ This web part demonstrates displaying the list of flow button of Power Automate.
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -46,6 +46,7 @@ react-my-approvals|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.0|February 9, 2022|Initial release
 
 ## Help
@@ -64,11 +65,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-flow-button&template=suggestion.yml&sample=react-flow-button&authors=@karamem0&title=react-flow-button%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-flow-button" />
-
