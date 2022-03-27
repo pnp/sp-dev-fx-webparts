@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hide-lists-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hideLists/HideListsWebPart.js",
+          "manifest": "./src/webparts/hideLists/HideListsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HideListsWebPartStrings": "lib/webparts/hideLists/loc/{locale}.js"
+  }
+}
