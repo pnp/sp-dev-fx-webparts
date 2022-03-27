@@ -173,8 +173,9 @@ const CascadingManagedMetadata: React.SFC<ICascadingManagedMetadataProps> = (pro
       return;
     }
 
-    let countriesList: IDropdownOption[] = countries.value.map(c => ({ key: c.id, text: c.labels[0].name }));
-    setCountriesList(countriesList);
+    // Renamed to avoid shadowed variables
+    let localCountriesList: IDropdownOption[] = countries.value.map(c => ({ key: c.id, text: c.labels[0].name }));
+    setCountriesList(localCountriesList);
 
   };
 

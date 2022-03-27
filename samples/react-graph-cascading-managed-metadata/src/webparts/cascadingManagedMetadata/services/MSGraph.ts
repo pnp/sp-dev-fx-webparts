@@ -26,10 +26,15 @@ export class MSGraph {
         
         var p = new Promise<string>(async (resolve, reject) => {
             let query = this._graphClient.api(apiUrl).version(version);
+            // tslint:disable-next-line: no-unused-expression
             typeof(content) === "object" && (content = JSON.stringify(content));
+            // tslint:disable-next-line: no-unused-expression
             selectProperties && selectProperties.length > 0 && (query = query.select(selectProperties));
+            // tslint:disable-next-line: no-unused-expression
             filter && filter.length > 0 && (query = query.filter(filter));
+            // tslint:disable-next-line: no-unused-expression
             expandProperties && expandProperties.length > 0 && (query = query.expand(expandProperties));
+            // tslint:disable-next-line: no-unused-expression
             count && (query = query.count(count));
             let callback = (error: GraphError, response: any, rawResponse?: any) => error ? reject(error) : resolve(response);
             //* ES2016
