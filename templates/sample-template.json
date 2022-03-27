@@ -5,6 +5,7 @@
     "title": "YOUR-SAMPLE-TITLE",
     "shortDescription": "YOUR-SHORT-DESCRIPTION",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/YOUR-SAMPLE-NAME",
+    "downloadUrl": "https://download.url/file.zip",
     "longDescription": [
       "YOUR-SHORT-DESCRIPTION"
     ],
