@@ -1,12 +1,9 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version, DisplayMode, Guid } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
-
+import { Version, DisplayMode } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import { PropertyFieldGuid } from '@pnp/spfx-property-controls/lib/PropertyFieldGuid';
 import * as strings from 'CascadingManagedMetadataWebPartStrings';
 import CascadingManagedMetadata from './components/CascadingManagedMetadata';
 import { MSGraph } from './services/MSGraph';
@@ -19,8 +16,12 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
 
   private _placeholder = null;
 
-  public async render(): Promise<void> {
+  protected async onInit(): Promise<void> {
     await MSGraph.Init(this.context);
+    return super.onInit();
+  }
+
+  public async render(): Promise<void> {
     let renderElement = null;
     if (this.properties.termSetId) {
       renderElement = React.createElement(
@@ -68,18 +69,6 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
     return Version.parse('1.0');
   }
 
-  private validateTermSetId(value: string): string {
-    if (value === null ||
-      value.trim().length === 0) {
-      return 'Provide a term set Id.';
-    }
-
-    if (!Guid.isValid(value.trim())) {
-      return 'Term set Id must be a valid GUID.';
-    }
-
-    return '';
-  }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -92,9 +81,11 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('termSetId', {
+                PropertyFieldGuid('termSetId', {
+                  key: 'termSetId',
                   label: strings.TermSetIdFieldLabel,
-                  onGetErrorMessage: this.validateTermSetId.bind(this)
+                  value: this.properties.termSetId,
+                  errorMessage: "Term set Id must be a valid GUID"
                 })
               ]
             }
