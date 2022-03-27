@@ -9588,12 +9588,12 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-hide-lists",
+    "name": "pnp-sp-dev-spfx-web-parts-react-lists-hide",
     "source": "pnp",
     "title": "Hide Lists",
     "shortDescription": "SPFx Web part to Hide/UnHide lists in a Site Collection's Site Contents Page.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hide-lists",
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hide-lists",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lists-hide",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lists-hide",
     "longDescription": [
       "SPFx Web part to Hide/UnHide lists in a Site Collection's Site Contents Page."
     ],
@@ -9616,13 +9616,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hide-lists/assets/ListHideWebPart.jpg",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/ListHideWebPart.jpg",
         "alt": "Web Part Preview"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hide-lists/assets/listHidewp.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/listHidewp.gif",
         "alt": "Web Part Preview"
       }
     ],
