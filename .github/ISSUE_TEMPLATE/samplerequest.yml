@@ -16,6 +16,15 @@ body:
       - If you have multiple requests submit them separately so we can track resolution.
       - We accept pull requests. If you know how to make it - go ahead! If you're unsure how to do a pull request, consider signing up for a free [Sharing is Caring First-Time Contributor](http://aka.ms/sharing-is-caring#pnp-sic-first-time-contributor) session.
 
+- type: dropdown
+  id: disclaimer
+  validations:
+    required: true
+  attributes:
+    label: Disclaimer
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
+    options:
+    - "Yes"
 - type: textarea
   id: description
   attributes:
