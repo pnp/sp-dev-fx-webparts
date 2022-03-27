@@ -5,6 +5,7 @@
     "title": "Frequently Asked Questions",
     "shortDescription": "Allows users to create Frequently Asked Questions using Property Field Collection Data",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqs",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqs",
     "longDescription": [
       "Allows users to create Frequently Asked Questions using Property Field Collection Data, with options to view as an Accordion or Tab and also ability to search within the FAQs"
     ],
