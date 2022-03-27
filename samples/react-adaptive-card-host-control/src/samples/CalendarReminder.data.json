@@ -1,0 +1,54 @@
+{
+	"kind": "calendar#event",
+	"etag": "\"3007572097704000\"",
+	"id": "_6sp3gdjcksmab9kc4rgq1aldjelm8chhcgp66phocg_20191105T150000Z",
+	"status": "confirmed",
+	"htmlLink": "https://www.google.com/calendar/event?eid=XzZzcDNnZGoxNjBxamdiYjRja3NtYWI5a2M0cmplYjlwNjhyM2diOXA2Z3FtOGNoaGNncDY2cGhvY2dfMjA2xO1UwMDAuZ0Bt",
+	"created": "2016-12-29T06:35:05.000Z",
+	"updated": "2018-04-24T14:04:50.184Z",
+	"summary": "Adaptive Card design session",
+	"location": "Conf Room 112/3377 (10)",
+	"creator": {
+		"email": "sundance@outlook.com",
+		"displayName": "John Doe",
+		"self": true
+	},
+	"organizer": {
+		"email": "sundance@outlook.com",
+		"displayName": "John Doe",
+		"self": true
+	},
+	"start": {
+		"dateTime": "2019-11-05T12:30:00-08:00",
+		"timeZone": "America/Los_Angeles"
+	},
+	"end": {
+		"dateTime": "2019-11-05T13:30:00-08:00",
+		"timeZone": "America/Los_Angeles"
+	},
+	"recurringEventId": "_6sp3gdj160qjgbb4cksmab9kc4rjeb9p68r3gb9p6gqm8chhcgp66phocg",
+	"originalStartTime": {
+		"dateTime": "12:30",
+		"timeZone": "America/Los_Angeles"
+	},
+	"visibility": "private",
+	"iCalUID": "7286a058-de9e-4a77-9268-945d21d2cf8d",
+	"sequence": 4,
+	"reminders": {
+		"useDefault": false,
+		"overrides": [
+			{
+				"method": "popup",
+				"minutes": "5"
+			},
+			{
+				"method": "popup",
+				"minutes": "15"
+			},
+			{
+				"method": "popup",
+				"minutes": "30"
+			}
+		]
+	}
+}

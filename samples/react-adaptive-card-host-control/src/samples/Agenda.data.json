@@ -1,0 +1,90 @@
+{
+        "@odata.context": "https://outlook.office.com/api/beta/$metadata#Me/Events/$entity",
+        "@odata.id": "https://outlook.office.com/api/beta/Users('ddfcd489-628b-40d7-b48b-57002df800e5@1717622f-1d94-4d0c-9d74-709fad664b77')/Events('AAMkAGI2TG93AAA=')",
+        "@odata.etag": "W/\"nfZyf7VcrEKLNoU37KWlkQAAA0x48w==\"",
+        "Id": "AAMkAGI2TG93AAA=",
+        "ChangeKey": "nfZyf7VcrEKLNoU37KWlkQAAA0x48w==",
+        "Categories": [],
+        "CreatedDateTime": "2014-10-19T23:13:47.3959685Z",
+        "LastModifiedDateTime": "2014-10-19T23:13:47.6772234Z",
+        "Subject": "Contoso Campaign Status Meeting",
+        "BodyPreview": "Setting up some time to review the budget and planning on the Contoso Project",
+        "Body": {
+            "ContentType": "HTML",
+            "Content": "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n</head>\r\n<body>\r\nSetting up some time to review the budget and planning on the Contoso Project\r\n</body>\r\n</html>\r\n"
+        },
+        "Importance": "Normal",
+        "HasAttachments": false,
+        "Start": {
+            "DateTime": "2014-10-13T21:00:00",
+            "TimeZone": "Pacific Standard Time"
+        },
+        "End": {
+            "DateTime": "2014-10-13T22:00:00",
+            "TimeZone": "Pacific Standard Time"
+        },        
+        "Location": {
+            "DisplayName": "Conf Room Bravern-2/9050",
+            "Address": null
+        },
+        "ShowAs": "Busy",
+        "IsAllDay": false,
+        "IsCancelled": false,
+        "IsOrganizer": true,
+        "ResponseRequested": true,
+        "Type": "SeriesMaster",
+        "SeriesMasterId": null,
+        "Attendees": [
+            {
+                "EmailAddress": {
+                    "Address": "janets@a830edad9050849NDA1.onmicrosoft.com",
+                    "Name": "Janet Schorr"
+                },
+                "Status": {
+                    "Response": "None",
+                    "Time": "0001-01-01T00:00:00Z"
+                },
+                "Type": "Required"
+            },
+            {
+                "EmailAddress": {
+                    "Address": "pavelb@a830edad9050849NDA1.onmicrosoft.com",
+                    "Name": "Pavel Bansky"
+                },
+                "Status": {
+                    "Response": "None",
+                    "Time": "0001-01-01T00:00:00Z"
+                },
+                "Type": "Required"
+            }
+        ],
+        "Recurrence": {
+            "Pattern": {
+                "Type": "Weekly",
+                "Interval": 1,
+                "Month": 0,
+                "Index": "First",
+                "FirstDayOfWeek": "Sunday",
+                "DayOfMonth": 0,
+                "DaysOfWeek": [
+                    "Monday"
+                ]
+            },
+            "RecurrenceTimeZone": "Pacific Standard Time",
+            "Range": {
+                "Type": "NoEnd",
+                "StartDate": "2014-10-13",
+                "EndDate": "2014-11-13",
+                "NumberOfOccurrences": 0
+            }
+        },
+        "OriginalEndTimeZone": "Pacific Standard Time",
+        "OriginalStartTimeZone": "Pacific Standard Time",
+        "Organizer": {
+            "EmailAddress": {
+                "Address": "alexd@a830edad9050849NDA1.onmicrosoft.com",
+                "Name": "Alex D"
+            },
+        "OnlineMeetingUrl": null
+        }
+    }

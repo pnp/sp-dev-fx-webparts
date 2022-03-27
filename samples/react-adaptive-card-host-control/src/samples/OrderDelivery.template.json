@@ -1,0 +1,70 @@
+{ 
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 2,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "${address.addressLocality}, ${address.addressRegion}",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "4.5 stars (176 reviews) · mid-priced",
+                            "isSubtle": true,
+                            "spacing": "none",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "**${review[0].author}** said \"${review[0].description}\"",
+                            "size": "small",
+                            "wrap": true,
+                            "maxLines": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": 1,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://picsum.photos/300?image=882",
+                            "size": "auto",
+                            "altText": "Seated guest drinking a cup of coffee"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Pickup",
+            "tooltip": "Schedule order for pickup"
+        },
+        {
+            "type": "Action.Submit",
+            "title": "Delivery",
+            "isEnabled": false,
+            "tooltip": "Your location is too far for delivery"
+        }
+    ]
+}

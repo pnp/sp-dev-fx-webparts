@@ -1,0 +1,670 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "__comment": "Elements used",
+    "body": [
+        {
+            "type": "Container",
+            "spacing": "None",
+            "minHeight": "8px"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "64px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/officelogo.png"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "OFFICE",
+                            "wrap": true,
+                            "size": "Small",
+                            "color": "Dark",
+                            "weight": "Bolder",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Frequently asked questions",
+            "wrap": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder",
+            "spacing": "Large"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Plan a remote gathering, create school projects, set health and fitness goals, and manage your household budget with the apps, tools, and features of Microsoft 365.",
+            "wrap": true
+        },
+        {
+            "type": "Container",
+            "selectAction": {
+                "type": "Action.ToggleVisibility",
+                "title": "q1",
+                "targetElements": [
+                    "a1",
+                    "chevron_up1",
+                    "chevron_down1"
+                ]
+            },
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "wrap": true,
+                                    "text": "What Office apps do I get with Microsoft 365?",
+                                    "weight": "Bolder",
+                                    "spacing": "Large",
+                                    "separator": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "28px",
+                            "verticalContentAlignment": "Center",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-up.png",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "id": "chevron_up1"
+                                },
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-down.png",
+                                    "id": "chevron_down1",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "isVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "verticalContentAlignment": "Center",
+            "minHeight": "30px",
+            "spacing": "Large",
+            "style": "emphasis"
+        },
+        {
+            "type": "Container",
+            "id": "a1",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "8px"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Get Office apps such as Word, Excel, PowerPoint, Outlook, OneNote, OneDrive, and more.\n\nLearn more about Microsoft 365 plans for:",
+                                    "wrap": true,
+                                    "spacing": "Padding"
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "horizontalAlignment": "Center",
+                                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/icn_home.svg",
+                                                    "width": "64px",
+                                                    "height": "64px"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Home",
+                                                    "wrap": true,
+                                                    "horizontalAlignment": "Center",
+                                                    "weight": "Bolder"
+                                                }
+                                            ],
+                                            "style": "emphasis",
+                                            "selectAction": {
+                                                "type": "Action.OpenUrl",
+                                                "url": "https://www.microsoft.com/en-us/microsoft-365/explore-microsoft-365-for-home",
+                                                "title": "Learn more"
+                                            }
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/icn_business.svg",
+                                                    "width": "64px",
+                                                    "height": "64px",
+                                                    "horizontalAlignment": "Center"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Business",
+                                                    "wrap": true,
+                                                    "horizontalAlignment": "Center",
+                                                    "weight": "Bolder"
+                                                }
+                                            ],
+                                            "style": "emphasis",
+                                            "selectAction": {
+                                                "type": "Action.OpenUrl",
+                                                "url": "Learn more ",
+                                                "title": "Learn more"
+                                            }
+                                        }
+                                    ],
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/icn_enterprise.svg",
+                                                    "horizontalAlignment": "Center",
+                                                    "width": "64px",
+                                                    "height": "64px"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Enterprise",
+                                                    "wrap": true,
+                                                    "weight": "Bolder",
+                                                    "horizontalAlignment": "Center"
+                                                }
+                                            ],
+                                            "style": "emphasis",
+                                            "selectAction": {
+                                                "type": "Action.OpenUrl",
+                                                "url": "https://www.microsoft.com/en-us/microsoft-365/enterprise",
+                                                "title": "Learn more"
+                                            }
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/icn_education.svg",
+                                                    "horizontalAlignment": "Center",
+                                                    "width": "64px",
+                                                    "height": "64px"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Education",
+                                                    "wrap": true,
+                                                    "horizontalAlignment": "Center",
+                                                    "weight": "Bolder"
+                                                }
+                                            ],
+                                            "style": "emphasis",
+                                            "selectAction": {
+                                                "type": "Action.OpenUrl",
+                                                "url": "https://go.microsoft.com/fwlink/p/?LinkID=864773&clcid=0x409&culture=en-us&country=US",
+                                                "title": "Learn more"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "spacing": "None",
+                    "minHeight": "24px"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "What is the difference between Office 365 and Microsoft 365?",
+                                    "wrap": true,
+                                    "separator": true,
+                                    "spacing": "Large",
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "28px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-up.png",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "id": "chevron_up2",
+                                    "isVisible": false
+                                },
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-down.png",
+                                    "id": "chevron_down2",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "style": "emphasis",
+            "spacing": "Small",
+            "selectAction": {
+                "type": "Action.ToggleVisibility",
+                "title": "q2",
+                "targetElements": [
+                    "a2",
+                    "chevron_up2",
+                    "chevron_down2"
+                ]
+            }
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "8px"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Microsoft 365 includes everything you know in Office 365. Microsoft 365 is designed to help people and businesses achieve more with innovative Office apps, intelligent cloud services, and world-class security.",
+                                    "wrap": true,
+                                    "spacing": "Medium"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "minHeight": "24px"
+                }
+            ],
+            "isVisible": false,
+            "id": "a2"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Is internet access required for Microsoft 365?",
+                                    "wrap": true,
+                                    "spacing": "Large",
+                                    "separator": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "28px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-up.png",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "id": "chevron_up3",
+                                    "isVisible": false
+                                },
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-down.png",
+                                    "id": "chevron_down3",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "style": "emphasis",
+            "spacing": "Small",
+            "selectAction": {
+                "type": "Action.ToggleVisibility",
+                "title": "q3",
+                "targetElements": [
+                    "a3",
+                    "chevron_up3",
+                    "chevron_down3"
+                ]
+            }
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "8px"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Yes, internet access is required to install and activate Microsoft 365 and get all the latest releases of apps and services.\n\nNote that if you are an existing subscriber, you do not need to reinstall or purchase another subscription.\n\nYou do not need to be connected to the Internet to use the Office apps, such as Word, Excel, and PowerPoint, because the apps are fully installed on your computer.",
+                                    "wrap": true,
+                                    "spacing": "Medium"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "minHeight": "24px"
+                }
+            ],
+            "id": "a3",
+            "isVisible": false
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "What happens to existing Office 365 subscriptions for home and business?",
+                                    "wrap": true,
+                                    "spacing": "Large",
+                                    "separator": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "28px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-up.png",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "id": "chevron_up4",
+                                    "isVisible": false
+                                },
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-down.png",
+                                    "id": "chevron_down4",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "Small",
+            "style": "emphasis",
+            "selectAction": {
+                "type": "Action.ToggleVisibility",
+                "title": "q4",
+                "targetElements": [
+                    "a4",
+                    "chevron_up4",
+                    "chevron_down4"
+                ]
+            }
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "8px"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Some Office 365 subscriptions automatically become Microsoft 365 subscriptions. No action required.\n\n- Office 365 Personal becomes Microsoft 365 Personal.\n- Office 365 Home becomes Microsoft 365 Family.\n- Office 365 Business Essentials becomes Microsoft 365 Business Basic.\n- Office 365 Business Premium becomes Microsoft 365 Business Standard.\n- Microsoft 365 Business becomes Microsoft 365 Business Premium.\n- Office 365 Business becomes Microsoft 365 Apps for business.\n- Office 365 ProPlus becomes Microsoft 365 Apps for enterprise.\n \n\nThere are no changes to the following Office 365 for enterprise plans:\n- Office 365 E1\n- Office 365 E3\n- Office 365 E5",
+                                    "wrap": true,
+                                    "spacing": "Small"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "minHeight": "24px"
+                }
+            ],
+            "id": "a4",
+            "isVisible": false
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Does Microsoft 365 cost more?",
+                                    "wrap": true,
+                                    "spacing": "Large",
+                                    "separator": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "28px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-up.png",
+                                    "width": "20px",
+                                    "height": "20px",
+                                    "id": "chevron_up5",
+                                    "isVisible": false
+                                },
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/faq-accordion/assets/ico-down.png",
+                                    "id": "chevron_down5",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "Small",
+            "style": "emphasis",
+            "selectAction": {
+                "type": "Action.ToggleVisibility",
+                "title": "q5",
+                "targetElements": [
+                    "a5",
+                    "chevron_up5",
+                    "chevron_down5"
+                ]
+            }
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "8px"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "No, the subscription cost will not change.",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "minHeight": "8px"
+                        }
+                    ],
+                    "minHeight": "24px"
+                }
+            ],
+            "id": "a5",
+            "isVisible": false,
+            "spacing": "Small"
+        },
+        {
+            "type": "Container",
+            "spacing": "ExtraLarge",
+            "style": "accent",
+            "items": [
+                {
+                    "type": "Container",
+                    "style": "accent",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Still curious?",
+                                    "wrap": true,
+                                    "size": "Medium",
+                                    "weight": "Bolder"
+                                },
+                                {
+                                    "type": "Input.Text",
+                                    "placeholder": "Ask your question here",
+                                    "id": "ipt_question"
+                                },
+                                {
+                                    "type": "ActionSet",
+                                    "actions": [
+                                        {
+                                            "type": "Action.Submit",
+                                            "style": "positive",
+                                            "title": "Get answers",
+                                            "id": "btn_search"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "style": "accent"
+                        }
+                    ]
+                }
+            ],
+            "backgroundImage": {
+                "verticalAlignment": "Center",
+                "horizontalAlignment": "Center"
+            },
+            "verticalContentAlignment": "Bottom",
+            "minHeight": "2px"
+        }
+    ]
+}

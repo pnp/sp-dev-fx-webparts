@@ -1,0 +1,440 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "Container"
+        },
+        {
+            "type": "TextBlock",
+            "text": "2021",
+            "wrap": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder",
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Three holidays remaining this year.",
+            "wrap": true,
+            "size": "Small"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "40px",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/timeline_node.svg",
+                        "horizontalAlignment": "Center",
+                        "fillMode": "RepeatVertically"
+                    },
+                    "horizontalAlignment": "Right"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "minHeight": "4px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "minHeight": "18px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "November 25",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/autumn.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "160px",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Thanksgiving",
+                                    "wrap": true,
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Thursday, November 25, 2021",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "In 1789, President George Washington proclaimed Nov. 26, 1789 as the first nation-wide day of Thanksgiving, marking the event as a time of public prayer.",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "16px"
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "40px",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/timeline_node.svg",
+                        "horizontalAlignment": "Center",
+                        "fillMode": "RepeatVertically"
+                    },
+                    "horizontalAlignment": "Right"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "minHeight": "4px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "minHeight": "18px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "December 24",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Christmas eve",
+                                    "wrap": true,
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Friday, December 24, 2021",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Celebrating the evening before Christmas Day which celebrates the birth of Jesus Christ",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "16px"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "40px",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/timeline_node.svg",
+                        "horizontalAlignment": "Center",
+                        "fillMode": "RepeatVertically"
+                    },
+                    "horizontalAlignment": "Right"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "minHeight": "4px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "minHeight": "18px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "December 31",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "New Year's eve",
+                                    "wrap": true,
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Friday, December 31, 2021",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "The last day of the year which Americans reflect back over the past year and look forward to the new year.",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "16px"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "TextBlock",
+            "text": "2022",
+            "wrap": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder",
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "TextBlock",
+            "text": "15 holidays will be celebrated this year.",
+            "wrap": true,
+            "size": "Small"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "40px",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/timeline_node.svg",
+                        "horizontalAlignment": "Center",
+                        "fillMode": "RepeatVertically"
+                    },
+                    "horizontalAlignment": "Right"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "minHeight": "4px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "minHeight": "18px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "January 1",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "New Year's day",
+                                    "wrap": true,
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Saturday, January 1, 2022",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "January 1, celebrating in the United States the first day of the first month on the Gregorian calendar.",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "16px"
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "40px",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/timeline_node.svg",
+                        "horizontalAlignment": "Center",
+                        "fillMode": "RepeatVertically"
+                    },
+                    "horizontalAlignment": "Right"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "minHeight": "4px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "minHeight": "18px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "January 17",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "MLK",
+                                    "wrap": true,
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Monday, January 17, 2022",
+                                    "wrap": true,
+                                    "size": "Small",
+                                    "isSubtle": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Honors the famous American civil rights leader who dedicated his life to achieving equality for people of all colors.",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "Container",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Long weekend opportunity!",
+                                            "wrap": true,
+                                            "weight": "Bolder",
+                                            "size": "Small"
+                                        },
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Extend this holiday by taking Friday, January 14 or Tuesday, January 18 off. You have 5 days of paid time off available in 2022.",
+                                            "wrap": true,
+                                            "size": "Small"
+                                        },
+                                        {
+                                            "type": "ColumnSet",
+                                            "columns": [
+                                                {
+                                                    "type": "Column",
+                                                    "width": "stretch",
+                                                    "items": [
+                                                        {
+                                                            "type": "ColumnSet",
+                                                            "columns": [
+                                                                {
+                                                                    "type": "Column",
+                                                                    "width": "32px",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "Image",
+                                                                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/timeline-holidays/assets/icn_beach.svg",
+                                                                            "width": "20px",
+                                                                            "height": "20px"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Column",
+                                                                    "width": "stretch",
+                                                                    "verticalContentAlignment": "Center",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "TextBlock",
+                                                                            "text": "Time off",
+                                                                            "wrap": true,
+                                                                            "color": "Accent"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "spacing": "Medium"
+                                                        }
+                                                    ],
+                                                    "selectAction": {
+                                                        "type": "Action.OpenUrl",
+                                                        "url": "https://www.microsoft.com/en-us/about",
+                                                        "title": "Time off"
+                                                    },
+                                                    "minHeight": "24px",
+                                                    "verticalContentAlignment": "Center"
+                                                },
+                                                {
+                                                    "type": "Column",
+                                                    "width": "stretch"
+                                                }
+                                            ],
+                                            "spacing": "Medium"
+                                        }
+                                    ],
+                                    "style": "emphasis",
+                                    "spacing": "Medium"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "16px"
+                }
+            ],
+            "spacing": "None"
+        }
+    ]
+}

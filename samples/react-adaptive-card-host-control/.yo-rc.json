@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "react-adaptive-card-host-control",
+    "libraryId": "f829f44a-9afb-4ec6-b1a3-bc4e22b43d30",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-adaptive-card-host-control",
+    "solutionShortDescription": "react-adaptive-card-host-control description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,321 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.3",
+	"body": [{
+			"type": "Container",
+			"bleed": true,
+			"style": "default",
+			"minHeight": "240px",
+			"items": [{
+				"type": "TextBlock",
+				"text": "Send praise to your colleagues",
+				"wrap": true,
+				"fontType": "Default",
+				"size": "ExtraLarge",
+				"weight": "Bolder",
+				"color": "Default",
+				"isSubtle": false,
+				"horizontalAlignment": "Center"
+			}],
+			"backgroundImage": {
+				"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Dashboard_Praise_bg.png"
+			}
+		},
+		{
+			"type": "Container",
+			"minHeight": "32px"
+		},
+		{
+			"type": "TextBlock",
+			"text": "3 anniversaries are coming up 🥳",
+			"wrap": true,
+			"fontType": "Default",
+			"size": "Medium",
+			"weight": "Bolder",
+			"color": "Default"
+		},
+		{
+			"type": "Container",
+			"spacing": "Small"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"minHeight": "40px",
+					"items": [{
+						"type": "Image",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Lee.jpg",
+						"width": "48px",
+						"height": "48px"
+					}],
+					"verticalContentAlignment": "Center",
+					"width": 8
+				},
+				{
+					"type": "Column",
+					"items": [{
+							"type": "TextBlock",
+							"text": "Lee Gu",
+							"wrap": true,
+							"size": "Default",
+							"horizontalAlignment": "Left",
+							"weight": "Bolder"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Marketing Assistant",
+							"wrap": true,
+							"isSubtle": true,
+							"spacing": "Small",
+							"size": "Small"
+						}
+					],
+					"verticalContentAlignment": "Top",
+					"width": 20
+				},
+				{
+					"type": "Column",
+					"verticalContentAlignment": "Top",
+					"items": [{
+						"type": "TextBlock",
+						"text": "1 year on Oct 10",
+						"wrap": true,
+						"size": "Default",
+						"horizontalAlignment": "Right"
+					}],
+					"width": 20
+				},
+				{
+					"type": "Column",
+					"width": "20px",
+					"items": [{
+						"type": "Image",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/arrowforward.png",
+						"width": "20px",
+						"height": "20px"
+					}]
+				}
+			],
+			"separator": true,
+			"spacing": "Medium"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"items": [{
+						"type": "Image",
+						"width": "48px",
+						"height": "48px",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Lidia2.jpg"
+					}],
+					"width": 8
+				},
+				{
+					"type": "Column",
+					"width": 20,
+					"items": [{
+							"type": "TextBlock",
+							"text": "Lidia Holloway",
+							"wrap": true,
+							"weight": "Bolder"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Office Planner",
+							"wrap": true,
+							"spacing": "Small",
+							"size": "Small",
+							"isSubtle": true
+						}
+					],
+					"verticalContentAlignment": "Center"
+				},
+				{
+					"type": "Column",
+					"verticalContentAlignment": "Top",
+					"items": [{
+						"type": "TextBlock",
+						"text": "2 years on Oct 15",
+						"wrap": true,
+						"horizontalAlignment": "Right"
+					}],
+					"width": 20
+				},
+				{
+					"type": "Column",
+					"width": "20px",
+					"items": [{
+						"type": "Image",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/arrowforward.png",
+						"width": "20px",
+						"height": "20px"
+					}]
+				}
+			],
+			"separator": true,
+			"spacing": "Medium"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"horizontalAlignment": "Left",
+					"spacing": "None",
+					"minHeight": "40px",
+					"verticalContentAlignment": "Center",
+					"items": [{
+						"type": "Image",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Lynne.jpg",
+						"width": "48px",
+						"height": "48px"
+					}],
+					"width": 8
+				},
+				{
+					"type": "Column",
+					"items": [{
+							"type": "TextBlock",
+							"text": "Lynne Robbins",
+							"wrap": true,
+							"weight": "Bolder"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Regional Director",
+							"wrap": true,
+							"spacing": "Small",
+							"isSubtle": true,
+							"size": "Small"
+						}
+					],
+					"verticalContentAlignment": "Center",
+					"width": 20
+				},
+				{
+					"type": "Column",
+					"verticalContentAlignment": "Top",
+					"items": [{
+						"type": "TextBlock",
+						"text": "5 years on Oct 29",
+						"wrap": true,
+						"horizontalAlignment": "Right"
+					}],
+					"width": 20
+				},
+				{
+					"type": "Column",
+					"width": "20px",
+					"items": [{
+						"type": "Image",
+						"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/arrowforward.png",
+						"width": "20px",
+						"height": "20px"
+					}]
+				}
+			],
+			"separator": true,
+			"spacing": "Medium"
+		},
+		{
+			"type": "Container",
+			"spacing": "ExtraLarge"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Looks like you’ve received praise! 👏",
+			"wrap": true,
+			"size": "Medium",
+			"weight": "Bolder",
+			"fontType": "Default",
+			"color": "Default",
+			"isSubtle": false
+		},
+		{
+			"type": "Container"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+							"type": "Image",
+							"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Praise1.jpg"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Achiever",
+							"wrap": true,
+							"weight": "Bolder",
+							"horizontalAlignment": "Left"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Kudos to you for not only achieving our quarterly goals and objectives...",
+							"wrap": true,
+							"size": "Small",
+							"height": "stretch",
+							"horizontalAlignment": "Left"
+						},
+						{
+							"type": "ActionSet"
+						},
+						{
+							"type": "TextBlock",
+							"text": "View more »",
+							"wrap": true,
+							"isSubtle": false,
+							"size": "Default",
+							"color": "Accent",
+							"weight": "Bolder"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "10px"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+							"type": "Image",
+							"url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/simple-list/assets/Praise2.jpg"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Coach",
+							"wrap": true,
+							"weight": "Bolder",
+							"horizontalAlignment": "Left"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Thank you for being a great team leader and encouraging us to...",
+							"wrap": true,
+							"size": "Small",
+							"height": "stretch",
+							"horizontalAlignment": "Left"
+						},
+						{
+							"type": "TextBlock",
+							"text": "View more »",
+							"wrap": true,
+							"fontType": "Default",
+							"size": "Default",
+							"isSubtle": false,
+							"color": "Accent",
+							"weight": "Bolder"
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "Container"
+		}
+	]
+}
