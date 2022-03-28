@@ -29,7 +29,7 @@ This web part uses *Microsoft Graph* API and *Microsoft Flow Service* API. You n
 ## Minimal Path to Awesome
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-button) then unzip it)
-- Ensure that you are at the solution folder
+- From your command line, change your current directory to the directory containing this sample (`react-flow-button`, located under `samples`)
 - in the command-line run:
   - `npm install`
   - `gulp serve`
