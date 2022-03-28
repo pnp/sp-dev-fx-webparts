@@ -33,7 +33,7 @@
     "fresh": ">=0.5.2",
     "fstream": ">=1.0.12",
     "growl": ">=1.10.0",
-    "handlebars": "^4.0.6",
+    "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.8.4",
     "hoek": ">=4.2.1",
     "is-my-json-valid": ">=2.17.2",
