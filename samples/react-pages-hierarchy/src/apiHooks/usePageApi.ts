@@ -1,10 +1,9 @@
 import { useReducer, useEffect, useState } from 'react';
-import { PermissionKind, spfi, SPFx } from '@pnp/sp/presets/all';
+import { sp, PermissionKind } from '@pnp/sp/presets/all';
 import { ErrorHelper, LogHelper, ListTitles, PageFields } from '@src/utilities';
 import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
-import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 // state that we track
 interface PagesState {
@@ -84,7 +83,7 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
   }
 }
 
-export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext): PageApi {
+export function usePageApi(currentPageId: number, pageEditFinished: boolean): PageApi {
   const [pagesState, pagesDispatch] = useReducer(pagesReducer, {
     parentPageColumnExists: true,
     userCanManagePages: false,
@@ -92,8 +91,6 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     childrenPages: [] = [],
     getRequest: { isLoading: false, hasError: false, errorMessage: "" },
   });
-
-  const sp = spfi().using(SPFx(context));
 
   // currentPageId is a dependency only because it can change when on the workbench, otherwise it really wouldn't change while on a page
   useEffect(() => {
@@ -129,7 +126,8 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
         PageFields.PARENTPAGELOOKUP
       )
       .top(5000)
-      .orderBy(PageFields.TITLE, true)()
+      .orderBy(PageFields.TITLE, true)
+      .get()
       .catch(e => {
         ErrorHelper.handleHttpError('getPages', e);
         pagesDispatch({ type: ActionTypes.GET_PAGES_ERRORED });
@@ -155,7 +153,8 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     LogHelper.verbose('usePageApi', 'parentPageExists', ``);
 
     let parentPage = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
-      .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)()
+      .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)
+      .get()
       .catch(e => {
         // swallow the exception we'll handle below
       });
@@ -186,10 +185,11 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   async function addParentPageFieldToSitePages(): Promise<void> {
     LogHelper.verbose('usePageApi', 'addParentPageFieldToSitePages', ``);
 
-    let list = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)();
+    let list = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)
+      .get();
 
     let lookup = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
-      .addLookup(PageFields.PARENTPAGELOOKUP, { LookupListId: list.Id, LookupFieldName: PageFields.TITLE })
+      .addLookup(PageFields.PARENTPAGELOOKUP, list.Id, PageFields.TITLE)
       .catch(e => {
         return null;
         ErrorHelper.handleHttpError('canUserUpdateSitePages', e);
