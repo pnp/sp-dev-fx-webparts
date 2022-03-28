@@ -1,0 +1,68 @@
+{ 
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "${title}",
+            "wrap": true,
+            "style": "heading"
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                {
+                    "title": "Name",
+                    "value": "${customer[0].firstName} ${customer[0].lastName}"
+                },
+                {
+                    "title": "Phone number",
+                    "value": "${customer[0].phone}"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "FactSet",
+                    "facts": [
+                        {
+                            "title": "1x",
+                            "value": "Steak"
+                        },
+                        {
+                            "title": "2x",
+                            "value": "Side Rice"
+                        },
+                        {
+                            "title": "1x",
+                            "value": "Soft Drink"
+                        }
+                    ],
+                    "spacing": "Small"
+                }
+            ],
+            "spacing": "Small"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Execute",
+            "title": "Place Order"
+        },
+        {
+            "type": "Action.Execute",
+            "title": "Edit Order",
+            "data": "edit",
+            "mode": "secondary"
+        },
+        {
+            "type": "Action.Execute",
+            "title": "Save Order",
+            "data": "save",
+            "mode": "secondary"
+        }
+    ]
+}

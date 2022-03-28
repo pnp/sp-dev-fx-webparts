@@ -9,7 +9,7 @@ import { usePageApi } from '@src/apiHooks/usePageApi';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
 export const Container: React.FunctionComponent<IContainerProps> = props => {
-  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished);
+  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context);
 
   let controlToRender = undefined;
   switch (props.pagesToDisplay) {

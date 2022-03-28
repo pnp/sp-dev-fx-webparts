@@ -1,0 +1,70 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Emails Custom View - Microsoft Graph Toolkit</h3>
+<p>Isolated mode: &#9888; mandatory. Find more samples on <a href="https://mgt.dev/?path=/story/overview--page" target="_blank">MGT Playground</a>. MGT components require API permissions, see the <a href="https://docs.microsoft.com/en-us/graph/toolkit/overview">Microsoft docs</a> for more info.</p>
+<style>
+  .email {
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      margin: 8px 4px;
+      font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    }
+
+    .email:hover {
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      margin: 8px 4px;
+    }
+
+    .email h3 {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .email h4 {
+      font-size: 10px;
+      margin-top: 0px;
+      margin-bottom: 4px;
+    }
+
+    .email mgt-person {
+      --font-size: 10px;
+      --avatar-size-s: 12px;
+    }
+
+    .email .preview {
+      font-size: 13px;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      overflow: hidden;
+      max-height: 2.8em;
+      line-height: 1.4em;
+    }
+</style>
+<script>
+  function setProvider() {mgt.Providers.globalProvider = new mgt.SharePointProvider(props.context);}
+</script>
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/wc/webcomponents-loader.js" type="text/javascript"></script>
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt.es6.js" type="text/javascript" onload="setProvider()"></script>
+<mgt-person person-query="me" view="twoLines"></mgt-person>
+<mgt-get resource="/me/messages" version="beta" scopes="mail.read" max-pages="1">
+	<template>
+		<div class="email" data-for="email in value">
+			<h3>{{ email.subject }}</h3>
+			<h4>
+				<mgt-person person-query="{{email.sender.emailAddress.address}}" view="oneline" person-card="hover">
+				</mgt-person>
+			</h4>
+			<div data-if="email.bodyPreview" class="preview" innerHtml>{{email.bodyPreview}}</div>
+			<div data-else class="preview">
+				email body is empty
+			</div>
+		</div>
+	</template>
+	<template data-type="loading">
+		loading
+	</template>
+	<template data-type="error">
+		{{ this }}
+	</template>
+</mgt-get>
+</div>

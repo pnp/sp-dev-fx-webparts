@@ -1,6 +1,5 @@
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { sp } from "@pnp/sp";
 import { Logger, ConsoleListener, LogLevel } from "@pnp/logging";
 import { CustomFetchClient } from '@src/mocks/customfetchclient';
 
@@ -14,15 +13,6 @@ export default class BaseWebPart<TProperties> extends BaseClientSideWebPart<TPro
         }
 
         return super.onInit().then(_ => {
-
-            sp.setup({
-              spfxContext: this.context,
-              sp: {
-                fetchClientFactory: () => {
-                    return new CustomFetchClient(isUsingSharePoint);
-                },
-            }
-            });
             // subscribe a listener
             Logger.subscribe(new ConsoleListener());
 

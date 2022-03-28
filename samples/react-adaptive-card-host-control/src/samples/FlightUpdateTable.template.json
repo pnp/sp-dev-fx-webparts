@@ -1,0 +1,261 @@
+{ 
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Table",
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 1
+                },
+                {
+                    "width": 1
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "size": "Small",
+                                    "url": "https://adaptivecards.io/content/airplane.png"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell"
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Flight Status",
+                                    "horizontalAlignment": "Right",
+                                    "isSubtle": true,
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "DELAYED",
+                                    "horizontalAlignment": "Right",
+                                    "spacing": "None",
+                                    "size": "Large",
+                                    "color": "Attention",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Passengers",
+                                    "isSubtle": true,
+                                    "weight": "Bolder",
+                                    "wrap": true,
+                                    "spacing": "None"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${underName.name}",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Jeremy Goldberg",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Evan Litvak",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell"
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Seat",
+                                    "horizontalAlignment": "Right",
+                                    "isSubtle": true,
+                                    "weight": "Bolder",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "14A",
+                                    "horizontalAlignment": "Right",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "14B",
+                                    "horizontalAlignment": "Right",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "14C",
+                                    "horizontalAlignment": "Right",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Flight",
+                                    "isSubtle": true,
+                                    "weight": "Bolder",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${reservationFor.flightNumber}",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Departs",
+                                    "isSubtle": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "{{TIME(${string(reservationFor.departureTime)})}}",
+                                    "color": "Attention",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Arrives",
+                                    "isSubtle": true,
+                                    "horizontalAlignment": "Right",
+                                    "weight": "Bolder",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "{{TIME(${string(reservationFor.arrivalTime)})}}",
+                                    "color": "Attention",
+                                    "horizontalAlignment": "Right",
+                                    "weight": "Bolder",
+                                    "spacing": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${reservationFor.departureAirport.name}",
+                                    "isSubtle": true,
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${reservationFor.departureAirport.iataCode}",
+                                    "size": "ExtraLarge",
+                                    "color": "Accent",
+                                    "spacing": "None",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://adaptivecards.io/content/airplane.png",
+                                    "horizontalAlignment": "Center",
+                                    "size": "Small"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${reservationFor.arrivalAirport.name}",
+                                    "isSubtle": true,
+                                    "horizontalAlignment": "Right",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${reservationFor.arrivalAirport.iataCode}",
+                                    "horizontalAlignment": "Right",
+                                    "size": "ExtraLarge",
+                                    "color": "Accent",
+                                    "spacing": "None",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "None"
+                }
+            ],
+            "showGridLines": false
+        }
+    ]
+}

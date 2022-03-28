@@ -1,0 +1,74 @@
+{
+   "@context":"http://schema.org",
+   "@type":"Restaurant",
+   "url":"https://www.thisisarestaurant.com",
+   "name":"The Restaurant",
+   "image":"https://www.example.com/image-of-some-restaurant.jpg",
+   "description":"This is an example restaurant that serves American cuisine.",
+   "servesCuisine":[
+      "American cuisine"
+   ],
+   "hasMenu":{
+      "@type":"Menu",
+      "name":"Dine-In Menu",
+      "description":"Menu for in-restaurant dining only.",
+      "hasMenuSection":[
+         {
+            "@type":"MenuSection",
+            "name":"Steak",
+            "description":"How would you like your steak prepared?",
+            "image":"https://contososcubademo.azurewebsites.net/assets/steak.jpg",
+            "offers":{
+               "@type":"Offer",
+               "availabilityEnds":"T8:22:00",
+               "availabilityStarts":"T8:22:00"
+            },
+            "hasMenuSection":[
+               {
+                  "@type":"MenuSection",
+                  "name":"Chicken",
+                  "description":"Do you have any allergies?",
+                  "image":"https://contososcubademo.azurewebsites.net/assets/chicken.jpg",
+                  "offers":{
+                     "@type":"Offer",
+                     "availabilityEnds":"T8:22:00",
+                     "availabilityStarts":"T8:22:00"
+                  },
+                  "hasMenuItem":{
+                     "@type":"MenuItem",
+                     "name":"Potato Skins",
+                     "description":"Small serving of stuffed potato skins.",
+                     "offers":{
+                        "@type":"Offer",
+                        "price":"7.49",
+                        "priceCurrency":"USD"
+                     },
+                     "suitableForDiet":"http://schema.org/GlutenFreeDiet"
+                  }
+               },
+               {
+                  "@type":"MenuSection",
+                  "name":"Tofu",
+                  "description":"Would you like it prepared vegan?",
+                  "image":"https://contososcubademo.azurewebsites.net/assets/tofu.jpg",
+                  "offers":{
+                     "@type":"Offer",
+                     "availabilityEnds":"T8:22:00",
+                     "availabilityStarts":"T8:22:00"
+                  },
+                  "hasMenuItem":{
+                     "@type":"MenuItem",
+                     "name":"Pea Soup",
+                     "description":"Creamy pea soup topped with melted cheese and sourdough croutons.",
+                     "offers":{
+                        "@type":"Offer",
+                        "price":"3.49",
+                        "priceCurrency":"USD"
+                     }
+                  }
+               }
+            ]
+         }
+      ]
+   }
+}

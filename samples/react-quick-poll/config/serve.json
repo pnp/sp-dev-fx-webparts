@@ -3,6 +3,9 @@
   "port": 4321,
   "https": true,
   "initialPage": "https://localhost:5432/workbench",
+  //you need to replace initialPage url with your sharepoint url
+  //Something like "initialPage": "https://<mysharepointurl>.sharepoint.com/sites/Mysite",
+
   "api": {
     "port": 5432,
     "entryPath": "node_modules/@microsoft/sp-webpart-workbench/lib/api/"

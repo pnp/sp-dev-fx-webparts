@@ -1,0 +1,26 @@
+{
+	"title": "Tell us about yourself",
+	"body": "We just need a few more details to get you booked for the trip of a lifetime!",
+	"disclaimer": "Don't worry, we'll never share or sell your information.",
+	"properties": [
+		{
+			"id": "myName",
+			"label": "Your name (Last, First)",
+			"validation": "^[A-Z][a-z]+, [A-Z][a-z]+$",
+			"error": "Please enter your name in the specified format"
+		},
+		{
+			"id": "myEmail",
+			"label": "Your email",
+			"validation": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z0-9-]{2,4}$",
+			"error": "Please enter a valid email address"
+		},
+		{
+			"id": "myTel",
+			"label": "Phone Number (xxx-xxx-xxxx)",
+			"validation": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$",
+			"error": "Invalid phone number. Use the specified format: 3 numbers, hyphen, 3 numbers, hyphen and 4 numbers"
+		}
+	],
+	"thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Diver_Silhouette%2C_Great_Barrier_Reef.jpg"
+}

@@ -1,0 +1,109 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "${formTitle}",
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "${nameCard.title}",
+            "card": {
+                "type": "AdaptiveCard",
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "body": [
+                    {
+                        "type": "Container",
+                        "id": "${nameCard.idPrefix}Properties",
+                        "items": [
+                            {
+                                "$data": "${nameCard.fields}",
+                                "type": "Input.Text",
+                                "label": "${label}",
+                                "id": "${id}",
+                                "isRequired": "${required}",
+                                "errorMessage": "'${label}' is required"
+                            }
+                        ]
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "${addressCard.title}",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                            "body": [
+                                {
+                                    "type": "Container",
+                                    "id": "${addressCard.idPrefix}Properties",
+                                    "items": [
+                                        {
+                                            "$data": "${addressCard.textInputFields}",
+                                            "type": "Input.Text",
+                                            "label": "${label}",
+                                            "id": "${id}",
+                                            "isRequired": "${required}",
+                                            "errorMessage": "'${label} is required"
+                                        },
+                                        {
+                                            "type": "ColumnSet",
+                                            "columns": [
+                                                {
+                                                    "$data": "${addressCard.columnFields}",
+                                                    "type": "Column",
+                                                    "width": "stretch",
+                                                    "items": [
+                                                        {
+                                                            "type": "Input.Text",
+                                                            "label": "${label}",
+                                                            "id": "${id}",
+                                                            "isRequired": "${required}",
+                                                            "errorMessage": "'${label}' is required"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "${contactCard.title}",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                                        "body": [
+                                            {
+                                                "$data": "${contactCard.fields}",
+                                                "type": "Input.Text",
+                                                "label": "${label}",
+                                                "id": "${id}",
+                                                "isRequired": "${required}",
+                                                "errorMessage": "'${label}' is required"
+                                            }
+                                        ],
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Submit"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

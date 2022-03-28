@@ -1,0 +1,366 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+/*
+* ----------------------------------------------
+* Demo styles
+* ----------------------------------------------
+**/
+
+:global {
+  .ql-toolbar {
+    top: 28px !important;
+  }
+}
+
+.webparttitle {
+  font-size: 24px;
+  font-weight: 100;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+
+.faqQuestionBlock {
+  padding-left:10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid ;
+  border-color: $ms-color-themePrimary;
+}
+
+.faqAnswerLink {
+  //padding-left:25px;
+  position: relative;
+  max-width: 650px;
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.faqAnswerSvgLink {
+  fill: $ms-color-themePrimary;
+  position: relative;
+  top: 1px;
+  left: 0;
+  height: 21px;
+  float: left;
+}
+.faqAnswerSvgLink svg {
+  width: 17px;
+}
+
+.faqAnswerLink a {
+  margin-left:10px;
+  text-decoration: none;
+  color: $ms-color-themePrimary;
+ 
+}
+
+.faqHeader {
+  float:left;
+  width: 100%;
+}
+
+.faqContent {
+  float:left;
+  width: 100%;
+}
+.faqSearchBox {
+  //margin-top: -40px;
+  float: right;
+  margin-bottom: 10px;
+  @media (max-width: 480px) {
+    margin-top: 10px !important;
+    float: left;
+    width:80%;
+  }
+  @media (max-width: 320px) {
+    margin-top: 10px !important;
+    float: left;
+    width: 80%;
+  }
+}
+
+.faqWebPartTitle {
+  width:80%;
+  float: left;
+  @media (max-width: 480px) {
+   width: 100%;
+  }
+  @media (max-width: 320px) {
+    width: 100%;
+  }
+}
+
+.noResultsWrapper {
+  display: block;
+  margin-left: 35px;
+  float: left;
+  width: 100%;
+}
+
+.backToCategories {
+  color: $ms-color-white;
+  background-color: $ms-color-themePrimary;
+  border-bottom: 2px solid $ms-color-themeDarker;
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  margin: 15px 0;
+  padding-left: 24px;
+  padding-right: 10px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  text-transform: uppercase;
+
+}
+
+.noSearchResults {
+  color: $ms-color-black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+.iconNavigateBack {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.searchResultsCategoryName {
+  color: $ms-color-themePrimary;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+input[class^="react-search-field-input"] {
+  padding-left: 10px;
+}
+
+.webpartheader>span {
+  float: right;
+  position:relative;
+  display:inline-block;
+}
+
+.positionAbsolute {
+  position: absolute;
+}
+
+.positionRelative {
+  position: relative;
+  display: inline;
+  padding-left: 20px;
+  font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 21px;
+  top: 15%;
+  font-weight: 600;
+}
+
+.accordion {
+ // border-bottom: 1px solid;
+  //border-radius: 2px;
+ // border-bottom-color: $ms-color-themePrimary;
+  float: left;
+  width: 100%;
+  @media (max-width: 480px) {
+    margin-top: 10px !important;
+    
+  }
+  @media (max-width: 320px) {
+    margin-top: 10px !important;
+    
+  }
+}
+
+
+.accordion__item{
+  margin-bottom: 15px;
+}
+
+.accordion__item:focus{
+  outline:none;
+}
+
+.accordionItemHasIcon {
+  position: relative;
+}
+
+.accordion__title {
+  background-color: $ms-color-neutralLighter;
+  color: $ms-color-themePrimary;
+  cursor: pointer;
+  padding: 8px 0px 10px 0px;
+  text-align: left;
+  border: none;
+  vertical-align: top;
+  &:hover {
+    background-color: $ms-color-neutralLight;
+  }
+}
+
+.accordion__item [aria-expanded='true'], .accordion__item [aria-selected='true'] {
+  background-color: $ms-color-themePrimary;
+  color:$ms-color-white;
+  &:hover {
+    background-color: $ms-color-themeDarker;
+  }
+}
+
+.accordion__title:focus  {
+  outline:none;
+  border:none;
+}
+
+.accordion__body {
+  padding: 20px;
+  display: block;
+  animation: fadein 0.35s ease-in;
+}
+
+
+.accordionBodyHidden {
+  display: none;
+  opacity: 0;
+  animation: fadein 0.35s ease-in;
+}
+
+.accordion__title > *:last-child, .accordion__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.accordion__arrow {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  border-radius: 20px;
+  background-color: $ms-color-themePrimary;
+  color:$ms-color-white;
+  margin-left: 20px;
+  &::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 2px;    
+    content: '';
+    background-color: $ms-color-white;
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 2px;
+    content: '';
+    transform: rotate(45deg);
+    background-color: $ms-color-white;
+  }
+}
+
+[aria-expanded='true'] .accordion__arrow, [aria-selected='true'] .accordion__arrow{
+	background-color: $ms-color-white;
+}
+
+[aria-expanded='true'] .accordion__arrow::before, [aria-selected='true'] .accordion__arrow::before {
+  transform: rotate(-45deg);
+  background-color: $ms-color-themePrimary;
+  color:$ms-color-themePrimary;
+}
+
+.accordion__arrow::before {
+  left: 2px;
+}
+
+.accordion__arrow::after {
+  right: 2px;
+  transform: rotate(-45deg);
+}
+
+[aria-expanded='true'] .accordion__arrow::after, [aria-selected='true'] .accordion__arrow::after {
+  transform: rotate(45deg);
+  background-color: $ms-color-themePrimary;
+}
+
+.accordion__arrow {
+  &::before, &::after {
+    transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+  }
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(5px);
+  }
+
+  30% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-5px);
+  }
+
+  30% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.accordionTitleAnimated {
+  &:hover .accordion__arrow {
+    animation-name: moveDown;
+    animation-duration: 1.5s;
+  }
+  &[aria-expanded='true']:hover .accordion__arrow {
+    animation-name: moveUp;
+    animation-duration: 1.5s;
+  }
+}

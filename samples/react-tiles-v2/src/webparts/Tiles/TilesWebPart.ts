@@ -235,6 +235,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                         return (
                           React.createElement(IconPicker, {
                             key: itemId,
+                            currentIcon: value,
                             buttonLabel: strings.iconSelectFile,
                             onChange: (iconName: string) => {
                               onUpdate(field.id, iconName);

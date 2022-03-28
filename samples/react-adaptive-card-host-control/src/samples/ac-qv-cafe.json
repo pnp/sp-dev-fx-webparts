@@ -1,0 +1,831 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "bleed": true,
+            "backgroundImage": {
+                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/cafe.jpg"
+            },
+            "items": [
+                {
+                    "type": "Container",
+                    "minHeight": "120px"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "style": "default",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "auto",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "OPEN",
+                                                    "wrap": true,
+                                                    "color": "Default",
+                                                    "weight": "Bolder",
+                                                    "size": "Small"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "auto",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "•",
+                                                    "wrap": true,
+                                                    "horizontalAlignment": "Center",
+                                                    "isSubtle": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Closes in 30 min",
+                                                    "wrap": true,
+                                                    "color": "Attention",
+                                                    "weight": "Default",
+                                                    "size": "Small",
+                                                    "spacing": "Small"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Cafeteria 34",
+                                    "wrap": true,
+                                    "size": "ExtraLarge",
+                                    "weight": "Bolder",
+                                    "spacing": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "style": "default",
+            "bleed": true,
+            "items": [
+                {
+                    "type": "Container",
+                    "minHeight": "24px",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "MENU",
+                                            "wrap": true,
+                                            "weight": "Bolder",
+                                            "horizontalAlignment": "Center"
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "backgroundImage": {
+                                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/line_pivot_dark.svg",
+                                                "fillMode": "RepeatHorizontally",
+                                                "verticalAlignment": "Center"
+                                            },
+                                            "minHeight": "8px",
+                                            "spacing": "None"
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "minHeight": "44px",
+                                    "verticalContentAlignment": "Top"
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "INFO",
+                                            "wrap": true,
+                                            "horizontalAlignment": "Center",
+                                            "weight": "Bolder",
+                                            "color": "Accent"
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "backgroundImage": {
+                                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/line_pivot_dark.svg",
+                                                "fillMode": "RepeatHorizontally",
+                                                "verticalAlignment": "Center"
+                                            },
+                                            "minHeight": "8px",
+                                            "spacing": "None",
+                                            "isVisible": false
+                                        }
+                                    ],
+                                    "selectAction": {
+                                        "type": "Action.ToggleVisibility",
+                                        "targetElements": [
+                                            "tab_info",
+                                            "tab_menu"
+                                        ]
+                                    },
+                                    "id": "show_info",
+                                    "minHeight": "44px"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "TODAY'S ROTATION",
+                    "wrap": true,
+                    "size": "Small",
+                    "isSubtle": true,
+                    "weight": "Bolder",
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/korean.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Korean cuisine",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Kimchi, Bibimbap, Red rice cakes, Bulgogi, Korean stew, Korean fried chicken, Spicy cold noodle",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/dumplings.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Dim sum",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Beef Balls, Rice Noodle Rolls,  Curried Cuttlefish, Deep-Fried Crescent Dumplings, Egg Custard",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/tandoori.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Indian cuisine",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Chicken Makhani, Samosas,  Naan, Matar Paneer, Rogan Josh, Tandoori Chicken, Shu’Bah’",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "RESIDENT VENUES",
+                    "wrap": true,
+                    "size": "Small",
+                    "weight": "Bolder",
+                    "isSubtle": true,
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/mixed1st.jpg",
+                                        "verticalAlignment": "Center",
+                                        "horizontalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "in.gredients",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "1st: Onion soup / Mushroom tart, 2nd: New York steak / Caesar's salad, 3rd: Mango mousse / Ice cream ",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/burgers.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Coup de grille",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Burger, Cheeseburger, Grilled chicken, French fries, Onion rings, Kale salad",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/eggsandwish.jpg",
+                                        "horizontalAlignment": "Center",
+                                        "verticalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Organic salad bar",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Wide selection of organic components plus a protein of your choice",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "items": [
+                                {
+                                    "type": "Container",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/pizza.jpg",
+                                        "verticalAlignment": "Center",
+                                        "horizontalAlignment": "Center"
+                                    },
+                                    "minHeight": "80px",
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "horizontalAlignment": "Left"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Hand-tossed pizza",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Cheese, Veggie,  Pepperoni, Margherita, BBQ Chicken, Hawaiian, DIY",
+                                    "isSubtle": true,
+                                    "wrap": true,
+                                    "spacing": "Small",
+                                    "maxLines": 2
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/arrow-right.png",
+                                    "horizontalAlignment": "Right",
+                                    "width": "20px",
+                                    "height": "20px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.ToggleVisibility"
+                    }
+                }
+            ],
+            "spacing": "Medium",
+            "id": "tab_menu"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "Container",
+                    "minHeight": "24px",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "MENU",
+                                            "wrap": true,
+                                            "weight": "Bolder",
+                                            "horizontalAlignment": "Center",
+                                            "color": "Accent"
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "backgroundImage": {
+                                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/line_pivot_dark.svg",
+                                                "fillMode": "RepeatHorizontally",
+                                                "verticalAlignment": "Center"
+                                            },
+                                            "minHeight": "8px",
+                                            "spacing": "None",
+                                            "isVisible": false
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "minHeight": "44px",
+                                    "verticalContentAlignment": "Top",
+                                    "id": "show_menu",
+                                    "selectAction": {
+                                        "type": "Action.ToggleVisibility",
+                                        "targetElements": [
+                                            "tab_info",
+                                            "tab_menu"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "INFO",
+                                            "wrap": true,
+                                            "horizontalAlignment": "Center",
+                                            "weight": "Bolder",
+                                            "color": "Default"
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "backgroundImage": {
+                                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/line_pivot_dark.svg",
+                                                "fillMode": "RepeatHorizontally",
+                                                "verticalAlignment": "Center"
+                                            },
+                                            "minHeight": "8px",
+                                            "spacing": "None"
+                                        }
+                                    ],
+                                    "minHeight": "44px",
+                                    "verticalContentAlignment": "Top"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "STATUS",
+                    "wrap": true,
+                    "size": "Small",
+                    "weight": "Bolder",
+                    "isSubtle": true
+                },
+                {
+                    "type": "Container",
+                    "backgroundImage": {
+                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/graph.gif"
+                    },
+                    "minHeight": "200px"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "ABOUT",
+                    "wrap": true,
+                    "spacing": "Medium",
+                    "size": "Small",
+                    "weight": "Bolder",
+                    "isSubtle": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "16px",
+                            "minHeight": "20px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/icn_hours.svg"
+                            }
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "verticalContentAlignment": "Center",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Open 9AM – 2PM, Monday through Friday",
+                                    "wrap": true,
+                                    "size": "Default",
+                                    "spacing": "Small"
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "minHeight": "20px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/icn_location.svg"
+                            }
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Nearest venue based on your location",
+                                    "wrap": true,
+                                    "spacing": "Small"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "separator": true,
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "20px",
+                            "minHeight": "20px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/visual-list/assets/icn_venues.svg"
+                            }
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "4 stations and 1 à la carte restaurant",
+                                    "wrap": true,
+                                    "spacing": "Small"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center"
+                        }
+                    ],
+                    "separator": true,
+                    "spacing": "Medium"
+                }
+            ],
+            "id": "tab_info",
+            "isVisible": false,
+            "spacing": "Medium"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "backgroundImage": {
+        "horizontalAlignment": "Center"
+    }
+}
