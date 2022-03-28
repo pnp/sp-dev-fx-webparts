@@ -7737,7 +7737,7 @@
       "This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date."
     ],
     "creationDateTime": "2021-09-17",
-    "updateDateTime": "2021-11-04",
+    "updateDateTime": "2022-03-14",
     "products": [
       "SharePoint",
       "Office"
@@ -7749,7 +7749,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.14.0"
       },
       {
         "key": "PNPCONTROLS",
