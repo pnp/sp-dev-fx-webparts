@@ -3,9 +3,44 @@
   "solution": {
     "name": "react-pages-hierarchy",
     "id": "89758fb6-85e2-4e2b-ac88-4f4e7e5f60cb",
-    "version": "1.0.1.0",
+    "title": "Pages Hierarchy",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Bo George",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "https://github.com/bogeorge",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation"
+      },
+      "longDescription": {
+        "default": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.  It will ask you to create a page parent property on first use which is then used by the web part to either show a breadcrumb of the current pages ancestors or buttons for the pages children."
+      },
+      "screenshotPaths": [
+        "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pages-hierarchy/assets/PagesHierarchy.gif"
+      ],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Breadcrumbs",
+        "description": "Displays breadcrumbs to the current page",
+        "id": "ce42762f-a823-4f12-80b2-b708cdebfaa4",
+        "version": "1.0.2.0"
+      },
+      {
+        "title": "Child Pages",
+        "description": "Displays a list of child pages",
+        "id": "ce42762f-a823-4f12-80b2-b708cdebfaa5",
+        "version": "1.0.2.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-pages-hierarchy.sppkg"
