@@ -1,9 +1,28 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
+    "metadata": {
+      "shortDescription": {
+        "default": "react-graph-app-secret-expiration description"
+      },
+      "longDescription": {
+        "default": "react-graph-app-secret-expiration description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-graph-app-secret-expiration Feature",
+        "description": "The feature that activates elements of the react-graph-app-secret-expiration solution.",
+        "id": "ca58f355-9872-4025-8ad5-763ad6076034",
+        "version": "1.3.0.0"
+      }
+    ],
     "name": "react-graph-app-secret-expiration-client-side-solution",
     "id": "b25d85a4-7310-408a-a263-25959b0a5b1b",
-    "version": "1.2.0.0",
+    "version": "1.3.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "skipFeatureDeployment": true,
