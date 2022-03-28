@@ -31,7 +31,7 @@ For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev
 ## Minimal Path to Awesome
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-approvals) then unzip it)
-- Ensure that you are at the solution folder
+- From your command line, change your current directory to the directory containing this sample (`react-my-approvals`, located under `samples`)
 - in the command-line run:
   - `npm install`
   - `gulp serve`
@@ -54,6 +54,7 @@ Version|Date|Comments
 
 ## Help
 
+
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
@@ -67,6 +68,7 @@ If you encounter any issues while using this sample, [create a new issue](https:
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-my-approvals&template=question.yml&sample=react-my-approvals&authors=@karamem0&title=react-my-approvals%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-my-approvals&template=suggestion.yml&sample=react-my-approvals&authors=@karamem0&title=react-my-approvals%20-%20).
+
 
 ## Disclaimer
 
