@@ -1,16 +1,16 @@
 [
     {
-        "name": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls",
+        "name": "pnp-sp-dev-spfx-web-parts-react-cherry-picked-content",
         "source": "pnp",
-        "title": "Property Pane Portal PnP Controls",
-        "shortDescription": "The React-PPP-PnP-Controls sample showcases the use of the Property Pane Portal to display the PnP SPFx React controls in the SPFx Property Pane.",
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",
-        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",
+        "title": "Cherry picked content",
+        "shortDescription": "The Cherry-Picked Content Web Part is a modern replacement for the classic Content Editor Web Part, with a twist: code snippets can only be picked from approved document libraries.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cherry-picked-content",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cherry-picked-content",
         "longDescription": [
-            "The React-PPP-PnP-Controls sample showcases the use of the Property Pane Portal to display the PnP SPFx React controls in the SPFx Property Pane."
+            "The Cherry-Picked Content Web Part is a modern replacement for the classic Content Editor Web Part, with a twist: code snippets can only be picked from approved document libraries."
         ],
-        "creationDateTime": "2022-03-20",
-        "updateDateTime": "2022-03-20",
+        "creationDateTime": "2022-02-21",
+        "updateDateTime": "2022-03-09",
         "products": [
             "SharePoint"
         ],
@@ -28,7 +28,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cherry-picked-content/assets/React-Cherry-Picked-Content-Sample.png",
                 "alt": "Web Part Preview"
             }
         ],
