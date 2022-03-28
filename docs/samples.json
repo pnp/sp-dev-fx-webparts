@@ -13638,7 +13638,7 @@
       "This component is developed for the users who really need to create a Poll within a minute and with less maintenance."
     ],
     "creationDateTime": "2020-10-17",
-    "updateDateTime": "2021-06-30",
+    "updateDateTime": "2022-03-18",
     "products": [
       "SharePoint"
     ],
@@ -13649,7 +13649,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.13.1"
       }
     ],
     "thumbnails": [
