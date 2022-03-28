@@ -2,12 +2,11 @@
 
 ## Summary
 
-This solution creates a customisable Tiles Web part, it uses a stored collection from the PnP `PropertyFieldCollectionData` control and allows the user to choose the colour scheme (theme or custom) and to set the size of the tiles. By default the tiles use a fluid flex layout to use the available screen area.
+This solution creates a customizable Tiles Web part, it uses a stored collection from the PnP `PropertyFieldCollectionData` control and allows the user to choose the color scheme (theme or custom) and to set the size of the tiles. By default the tiles use a fluid flex layout to use the available screen area.
 
 This is a rebuild of the awesome project created by @hugoabernier [https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles] so the credit goes to him!
 
 ![Preview](./assets/react-tiles-v2.gif)
- 
 
 ## Compatibility
 
@@ -24,7 +23,7 @@ This is a rebuild of the awesome project created by @hugoabernier [https://githu
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
@@ -40,12 +39,13 @@ react-tiles-v2 | [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.sp
 Version|Date|Comments
 -------|----|--------
 1.0|July 14, 2021|Initial release
-1.1|October 14, 2021|Added sorting, static tile width and unique tile colour - [fthorild](https://github.com/fthorild)
+1.1|October 14, 2021|Added sorting, static tile width and unique tile color - [fthorild](https://github.com/fthorild)
+1.1.1|March 25, 2022|Added current icon within property pane
 
-## Minimal Path to Awesome
+## Minimal path to awesome
 
-- Clone this repository
-- Ensure that you are at the solution folder
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles-v2) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-tiles-v2`, located under `samples`)
 - in the command-line run:
   - `npm install`
   - `gulp serve`
@@ -60,7 +60,7 @@ Description of the extension that expands upon high-level summary above.
 This extension illustrates the following concepts:
 
 - Store data (including icons) in a collection from property panel
-- Allow usage of site theme or custom colours
+- Allow usage of site theme or custom colors
 - Set size of tile content based on slider bar
 - Load the data onto the page to display a tile web part
 
