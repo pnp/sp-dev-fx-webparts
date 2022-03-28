@@ -15749,7 +15749,7 @@
       "This web part demonstrates Star Ratings capablities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
     ],
     "creationDateTime": "2021-10-07",
-    "updateDateTime": "2022-01-06",
+    "updateDateTime": "2022-03-28",
     "products": [
       "SharePoint"
     ],
@@ -15760,7 +15760,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [
