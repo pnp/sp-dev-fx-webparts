@@ -16431,7 +16431,7 @@
       "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app."
     ],
     "creationDateTime": "2020-04-27",
-    "updateDateTime": "2022-03-24",
+    "updateDateTime": "2021-09-21",
     "products": [
       "SharePoint"
     ],
@@ -16442,7 +16442,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.12.1"
       }
     ],
     "thumbnails": [
