@@ -17075,7 +17075,7 @@
       "This solution creates a customizable Tiles Web part, it uses a stored collection from the PnP `PropertyFieldCollectionData` control and allows the user to choose the color scheme (theme or custom) and to set the size of the tiles. By default the tiles use a fluid flex layout to use the available screen area."
     ],
     "creationDateTime": "2021-07-14",
-    "updateDateTime": "2022-03-25",
+    "updateDateTime": "2022-03-28",
     "products": [
       "SharePoint"
     ],
@@ -17112,6 +17112,11 @@
         "name": "Fredrik Thorild",
         "company": "Sogeti Sweden",
         "pictureUrl": "https://github.com/fthorild.png"
+      },
+      {
+        "gitHubAccount": "Jwaegebaert",
+        "name": "Jasey Waegebaert",
+        "pictureUrl": "https://github.com/Jwaegebaert.png"
       }
     ],
     "references": [
