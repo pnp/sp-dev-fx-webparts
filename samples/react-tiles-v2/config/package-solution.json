@@ -3,7 +3,7 @@
   "solution": {
     "name": "Tiles V2 Webpart - Modern",
     "id": "d56958d6-9eaf-4500-934b-b421c22a7d1f",
-    "version": "1.1.1.0",
+    "version": "1.1.2.0",
     "skipFeatureDeployment": true,
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
