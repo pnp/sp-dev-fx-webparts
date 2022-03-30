@@ -74,8 +74,8 @@ This Web Part allows users to create content as Tabbed content using Property Fi
 
 Has the following features:
 
-- Ability to create Tabs or Accordions 
-- Ability to create Tabs with Rich Text Editor for Content using tinyMCE Control 
+- Ability to create Tabs or Accordions based content
+- Ability to create Tabs with Rich Text Editor for content using tinyMCE Control 
 - Defaults to Accordion in Mobile displays
 - Uses Custom Accordion components included in the code.
 - Uses Custom Tab components included in the code
