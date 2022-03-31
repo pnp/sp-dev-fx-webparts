@@ -5,6 +5,7 @@ import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { INavLink } from 'office-ui-fabric-react';
 
 // state that we track
 interface PagesState {
@@ -12,6 +13,7 @@ interface PagesState {
   userCanManagePages: boolean;
   ancestorPages: IPage[];
   childrenPages: IPage[];
+  tree: INavLink | null;
   getRequest: GetRequest;
 }
 
@@ -27,7 +29,8 @@ interface PageApi {
 interface PageTreePayloadAction extends Action {
   payload: {
     childgrenPages: IPage[],
-    ancestorPages: IPage[]
+    ancestorPages: IPage[],
+    tree: INavLink
   };
 }
 interface ParentPageColumnExistAction extends Action {
@@ -56,6 +59,7 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
         ...state,
         childrenPages: arrayAction.payload.childgrenPages,
         ancestorPages: arrayAction.payload.ancestorPages,
+        tree: arrayAction.payload.tree,
         getRequest: { isLoading: false, hasError: false, errorMessage: "" }
       };
     case ActionTypes.GET_PAGES_ERRORED:
@@ -84,13 +88,14 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
   }
 }
 
-export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext): PageApi {
+export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext, treeTop: number, treeExpandTo: number): PageApi {
   const [pagesState, pagesDispatch] = useReducer(pagesReducer, {
     parentPageColumnExists: true,
     userCanManagePages: false,
     ancestorPages: [] = [],
     childrenPages: [] = [],
     getRequest: { isLoading: false, hasError: false, errorMessage: "" },
+    tree: null
   });
 
   const sp = spfi().using(SPFx(context));
@@ -143,11 +148,12 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
 
     const ancestorPages: IPage[] = buildPageAncestors(pages, currentPageId).reverse();
     const childrenPages: IPage[] = buildPageChildren(pages, currentPageId);
+    const treeLink: INavLink = buildHierarchy(pages);
 
     // dispatch the GET_ALL action
     pagesDispatch({
       type: ActionTypes.GET_PAGES,
-      payload: { childgrenPages: childrenPages, ancestorPages: ancestorPages },
+      payload: { childgrenPages: childrenPages, ancestorPages: ancestorPages, tree: treeLink },
     } as PageTreePayloadAction);
   }
 
@@ -247,6 +253,18 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     return childPages;
   }
 
+  function buildHierarchy(allPages: IPage[]): INavLink {
+    function recurse(id: number, l: number): INavLink {
+      var item: IPage = allPages.filter(i => i.id === id)[0];
+      
+      var links: INavLink[] = [];
+      links = links.concat(allPages.filter(i => i.parentPageId === id).map(it => recurse(it.id, (l+1))));
+  
+      return  { name: item.title, url: item.url, key: item.id.toString(), links: links, isExpanded: treeExpandTo >= l  };
+    }
+    return recurse(treeTop, 1);
+  }
+
   const addParentPageField = () => {
     addParentPageFieldToSitePages();
   };
@@ -262,6 +280,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
         hasError: pagesState.getRequest.hasError,
         errorMessage: pagesState.getRequest.errorMessage
       },
+      tree: pagesState.tree
     },
     addParentPageField
   };

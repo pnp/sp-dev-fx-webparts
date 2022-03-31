@@ -20,7 +20,7 @@ extensions:
 This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.  It will ask you to create a page parent property on first use which is then used by the web part to either show a breadcrumb of the current pages ancestors or buttons for the pages children.
 
 ![Page Navigator](./assets/PagesHierarchy.gif)
-
+![Tree View](./assets/treeview.png)
 
 ## Compatibility
 
@@ -48,6 +48,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 Solution|Author(s)
 --------|---------
 react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
+react-pages-hierarchy|[Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
 
 ## Version history
 
@@ -55,6 +56,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 30, 2020|Initial release
 1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
+1.3|March 31, 2322|Added a Tree View
 
 
 ## Minimal Path to Awesome
