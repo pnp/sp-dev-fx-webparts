@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-ppp-pnpcontrols-client-side-solution",
+    "id": "04fdd42b-6e5b-4d68-a48c-c086c85a7887",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Christophe Humbert",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0-beta.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-ppp-pnpcontrols) description"
+      },
+      "longDescription": {
+        "default": "react-ppp-pnpcontrols) description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-ppp-pnpcontrols Feature",
+        "description": "The feature that activates elements of the react-ppp-pnpcontrols solution.",
+        "id": "539ffd20-c6d2-453c-b908-047d8a48d2fe",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-ppp-pnpcontrols.sppkg"
+  }
+}

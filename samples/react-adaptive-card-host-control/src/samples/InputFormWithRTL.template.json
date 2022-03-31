@@ -1,0 +1,116 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+	  {
+		"type": "TextBlock",
+		"text": "Please select your language:"
+	  }
+	],
+	"actions": [
+	  {
+		"type": "Action.ShowCard",
+		"title": "English",
+		"card": {
+		  "type": "AdaptiveCard",
+		  "body": [
+			{
+			  "type": "TextBlock",
+			  "size": "medium",
+			  "weight": "bolder",
+			  "text": " ${FormInfo.titleENG}",
+			  "horizontalAlignment": "center",
+			  "wrap": true,
+			  "style": "heading"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "Name",
+			  "style": "text",
+			  "id": "SimpleValENG",
+			  "isRequired": true,
+			  "errorMessage": "Name is required"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "Email",
+			  "style": "email",
+			  "id": "EmailValENG"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "Phone",
+			  "style": "tel",
+			  "id": "TelValENG"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "Comments",
+			  "style": "text",
+			  "isMultiline": true,
+			  "id": "MultiLineValENG"
+			}
+		  ],
+		  "actions": [
+			{
+			  "type": "Action.Submit",
+			  "title": "Submit"
+			}
+		  ]
+		}
+	  },
+	  {
+		"type": "Action.ShowCard",
+		"title": "عربي",
+		"card": {
+		  "type": "AdaptiveCard",
+		  "rtl": true,
+		  "body": [
+			{
+			  "type": "TextBlock",
+			  "size": "medium",
+			  "weight": "bolder",
+			  "text": " ${FormInfo.titleARA}",
+			  "horizontalAlignment": "center",
+			  "wrap": true,
+			  "style": "heading"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "اسم",
+			  "style": "text",
+			  "id": "SimpleValARA",
+			  "isRequired": true,
+			  "errorMessage": "مطلوب اسم"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "بريد الالكتروني",
+			  "style": "email",
+			  "id": "EmailValARA"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "هاتف",
+			  "style": "tel",
+			  "id": "TelValARA"
+			},
+			{
+			  "type": "Input.Text",
+			  "label": "تعليقات",
+			  "style": "text",
+			  "isMultiline": true,
+			  "id": "MultiLineValARA"
+			}
+		  ],
+		  "actions": [
+			{
+			  "type": "Action.Submit",
+			  "title": "يقدم"
+			}
+		  ]
+		}
+	  }
+	]
+}

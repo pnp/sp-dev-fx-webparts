@@ -1,0 +1,242 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+:global {
+  .ql-toolbar {
+    top: 28px !important;
+  }
+  .propertyPanel { 
+    left: -350px;
+  }
+  
+  .tableSpan{
+    vertical-align: top;
+  }
+}
+
+
+.faq {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  
+
+  .faqHeader {
+    float:left;
+    width: 100%;
+  }
+
+ 
+
+  .faqContent {
+    float:left;
+    width: 100%;
+  }
+
+  .faqSearchBox {
+    //margin-top: -40px;
+    float: right;
+    margin-top: 40px;
+    @media (max-width: 480px) {
+      margin-top: 10px !important;
+      float: left;
+    }
+    @media (max-width: 320px) {
+      margin-top: 10px !important;
+      float: left;
+    }
+  }
+  input[class^="react-search-field-input"] {
+    padding-left: 10px;
+  }
+
+
+
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  div[class^="ms-Pivot"] { 
+    background-color: $ms-color-neutralLighter;
+    height: 58px;
+    margin-top: 40px;
+  }
+
+  button[class*="ms-Pivot-link"] { 
+    height: 58px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    margin-left: 40px;
+    color: $ms-color-neutralTertiary;
+  }
+
+  button[class*="linkIsSelected"] {
+    color: $ms-color-themePrimary;
+    margin-left: 40px;
+    //border-bottom: 6px solid;
+    //border-color: $ms-color-themeDark;
+  }
+
+  span[class^="ms-Pivot-text"] { 
+    font-size: 21px;
+  }
+
+  .faqQuestionBlock {
+    padding-left:10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid ;
+    border-color: $ms-color-themePrimary;
+    margin-left: 40px;
+    width: 90%;
+  }
+
+  .faqAnswerLink {
+    //padding-left:25px;
+    position: relative;
+    max-width: 650px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .faqAnswerSvgLink {
+    fill: $ms-color-themePrimary;
+    position: relative;
+    top: 1px;
+    left: 0;
+    height: 21px;
+    float: left;
+  }
+  .faqAnswerSvgLink svg {
+    width: 17px;
+  }
+
+  .faqAnswerLink a {
+    margin-left:10px;
+    text-decoration: none;
+    color: $ms-color-themePrimary;
+   
+  }
+
+  .faqWebPartTitle {
+    width:80%;
+    float: left;
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+    @media (max-width: 320px) {
+      width: 100%;
+    }
+  }
+
+  .faqPlaceholder {
+    width: 100%;
+    float: left;
+  }
+
+  .noResultsWrapper {
+    display: block;
+    margin-left: 35px;
+  }
+
+  .backToCategories {
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+    border-bottom: 2px solid $ms-color-themeDarker;
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    margin: 15px 0;
+    padding-left: 24px;
+    padding-right: 10px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 32px;
+    text-transform: uppercase;
+
+  }
+
+  .noSearchResults {
+    color: $ms-color-black;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+  .iconNavigateBack {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .searchResultsCategoryName {
+    color: $ms-color-themePrimary;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

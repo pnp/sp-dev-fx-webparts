@@ -1,0 +1,30 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>TradingView Widget</h3>
+<p>Isolated mode: recommended. Source: <a href="https://www.tradingview.com/widget/" target="_blank">TradingView widget</a>.</p>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_cd1aa"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-MSFT/" rel="noopener" target="_blank"><span class="blue-text">MSFT Chart</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js" onload="drawChart()"></script>
+  <script type="text/javascript">
+  function drawChart() {
+  new TradingView.widget(
+  {
+  "autosize": true,
+  "symbol": "NASDAQ:MSFT",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_cd1aa"
+}
+  );
+  }
+  </script>
+</div>
+<!-- TradingView Widget END -->
+</div>

@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "react-cherry-picked-content",
+    "libraryId": "6a0a135e-c421-4508-955a-dbb0b392104a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-cherry-picked-content",
+    "solutionShortDescription": "react-cherry-picked-content description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

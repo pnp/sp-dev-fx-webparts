@@ -7,7 +7,7 @@ import {
   Rating,
   RatingSize,
   TooltipHost
-} from '@fluentui/react';
+} from 'office-ui-fabric-react';
 import styles from './Ratings.module.scss';
 import * as strings from 'RatingsWebPartStrings';
 import { IRatingsProps } from './IRatingsProps';

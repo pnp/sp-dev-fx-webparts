@@ -59,14 +59,14 @@ Version|Date|Comments
 1.3|March 31, 2322|Added a Tree View
 
 
-## Minimal Path to Awesome
+## Minimal path to awesome
 
-* Clone this repository
-* in the command line run:
+* Clone this repository* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-pages-hierarchy`, located under `samples`)* in the command line run:
   * `npm install`
   * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

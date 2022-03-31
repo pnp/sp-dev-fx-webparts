@@ -1,0 +1,23 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>My Teams - MS Graph Client</h3>
+<p>Isolated mode: &#9888; mandatory. This sample leverages the SPFx built-in Microsoft Graph client.</p>
+<script>
+	var logoURL = "https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets/brand-icons/product/svg/teams_48x1.svg";
+    var currentScript = document.currentScript;
+    props.context.msGraphClientFactory
+        .getClient()
+        .then((client) => {
+            client
+                .api("me/joinedTeams")
+                .version("v1.0")
+                .get((err, res) => {
+                    if (res) {
+                        let items = res.value.map(team => `<li><img src="${logoURL}" style="width:24px;"/> ${team.displayName}</li>`);
+                        const newDiv = document.createElement('div');
+                        newDiv.innerHTML = `<div>You are a member of ${items.length} teams:</div><ul style="list-style-type: none; columns: 3;">${items.join("")}</ul>`;
+                        currentScript.insertAdjacentElement('afterend', newDiv);
+                    }
+                });
+        });
+</script>
+</div>

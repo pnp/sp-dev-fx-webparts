@@ -11,9 +11,8 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
     
 
     public render(): React.ReactElement<IHeroLayoutProps> {
-      //const classTotal = "itemShow"+this.props.totalShow;
       const items = this.props.items; 
-      const viewType = items.length==1 ? "heroOne" : items.length==2 ? "heroTwo" : items.length==3 ? "heroThree" :
+      const viewType = this.props.isCollage ? "heroCollage" : items.length==1 ? "heroOne" : items.length==2 ? "heroTwo" : items.length==3 ? "heroThree" :
       items.length==4 ? "heroFour" : items.length==5 ? "heroFive" : "heroFive";
       var arr = [];
       arr.push(items);
@@ -25,7 +24,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
             className={styles.heroItem}
             items={arr}
             getItemCountForPage={this._getItemCountForPage}
-            onRenderCell={this._onRenderHeroItem}
+            onRenderCell={this.props.isCollage?this._onRenderHeroCollage:this._onRenderHeroItem}
             {...this.props.listProps}
           />
         </div>
@@ -68,6 +67,27 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
                 ))}
           </div>
         </div>
+      );
+    }
+
+    private _onRenderHeroCollage =  (items: any, index: number | undefined): JSX.Element => {
+      const thumbRend = "https://media.akamai.odsp.cdn.office.net/uksouth1-mediap.svc.ms/transform/thumbnail?provider=url&inputFormat=jpg&docid=";
+      var smalltemUrl;
+      return(
+          <div className={styles["collageContainer"]}>
+                {items.map((item) => (
+                  smalltemUrl= item.Hyperlink ? item.Hyperlink : "#",
+                  <div className={styles["collageitem"]}>
+                    <div className={styles["collageItemInner"]}>
+                        <a href={smalltemUrl}>
+                        <img src={item.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?item.filePicker[0].fileAbsoluteUrl:thumbRend+item.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
+                        <div className={styles.heroTitle}>{item.Title}</div>
+                        <div className={styles.description}><div className={styles.heroTitleHover}>{item.Title}</div><div className={styles.info}>{item.Description ? item.Description.length>150 ? item.Description.substring(0, 150)+".." : item.Description : "Description coming soon"}</div></div>
+                        </a>
+                    </div>
+                  </div>
+                ))}
+          </div>
       );
     }
 }
