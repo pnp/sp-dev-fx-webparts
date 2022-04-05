@@ -42,7 +42,7 @@ userAADGUID| Text| no | required if used Azure Function to get Birthdays from AA
 Title| Text| true
 email| Text| true
 
-> **IMPORTANT:** After create a column Index on column "Birthday"
+> **IMPORTANT:** Create index on column "Birthday".
 
 ## Solution
 
@@ -58,6 +58,7 @@ Version|Date|Comments
 1.0.0|November 6, 2018|Initial release
 1.1.0|July 23, 2019 | new version
 2.0.0|June 16, 2021 | Upgraded to SPFx 1.12.1
+3.0.0|April 6, 2022 | Upgraded to SPFx 1.14.0
 
 ## Minimal Path to Awesome
 

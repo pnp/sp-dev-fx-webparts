@@ -2,9 +2,8 @@ import * as React from 'react';
 import styles from './HappyBirthdayCard.module.scss';
 import { IHappyBirthdayCardProps } from './IHappyBirthdayCardProps';
 import { IHappyBirthdayCardPState } from './IHappyBirthdayCardState';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { IPersonaSharedProps, Persona, PersonaSize, IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { Image, IImageProps, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { IPersonaSharedProps, Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as strings from 'ControlStrings';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
@@ -109,7 +108,7 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
   }
   // Render
   public render(): React.ReactElement<IHappyBirthdayCardProps> {
-    
+
     this._birthdayMsg = this.state.isBirthdayToday ? (this.props.anniversary? strings.HappyAnniversaryMsg: strings.HappyBirthdayMsg) : (this.props.anniversary? strings.NextAnniversaryMsg: strings.NextBirthdayMsg);
     return (
       <div className={styles.happyBirdthay}>
