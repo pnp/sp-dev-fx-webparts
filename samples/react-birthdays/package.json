@@ -20,7 +20,7 @@
     "@pnp/logging": "^1.3.11",
     "@pnp/odata": "^1.3.11",
     "@pnp/sp": "^1.3.11",
-    "@pnp/spfx-controls-react": "1.10.0",
+    "@pnp/spfx-controls-react": "3.7.2",
     "@pnp/spfx-property-controls": "1.12.0",
     "moment": "^2.29.1",
     "office-ui-fabric-react": "7.174.1",
