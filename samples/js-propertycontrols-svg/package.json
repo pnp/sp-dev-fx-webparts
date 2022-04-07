@@ -18,7 +18,6 @@
     "@pnp/spfx-property-controls": "3.3.0"
   },
   "devDependencies": {
-    "microsoft/rush-stack-compiler-3.7": "0.2.3",
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
     "@microsoft/sp-build-web": "1.13.0",
     "@microsoft/sp-module-interfaces": "1.13.0",
