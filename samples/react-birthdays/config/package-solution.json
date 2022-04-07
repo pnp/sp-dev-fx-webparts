@@ -16,10 +16,10 @@
     },
     "metadata": {
       "shortDescription": {
-        "default": "birthdays-anniversay"
+        "default": "birthdays-anniversary"
       },
       "longDescription": {
-        "default": "birthdays-anniversay"
+        "default": "birthdays-anniversary"
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "birthdays-anniversay Feature",
-        "description": "The feature that activates elements of the birthdays-anniversay solution.",
+        "title": "birthdays-anniversary Feature",
+        "description": "The feature that activates elements of the birthdays-anniversary solution.",
         "id": "22eb0871-ae82-49b1-8d14-9dd9e1ec4d30",
         "version": "3.0.0.0"
       }
