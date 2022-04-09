@@ -147,7 +147,10 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
         .then((files): void => {
           if (files.length) {
             // store items
-            this.libraryItemsList = files.map(file => { return { key: file.Name, text: file.Name }; });
+            this.libraryItemsList = files.map(file => file.FileLeafRef)
+              .filter(rf => rf.match(/\.(htm?l|txt)$/i))
+              .sort()
+              .map(name => ({ key: name, text: name }));
             // enable item selector
             this.itemsDropdownDisabled = false;
             // refresh the item selector control by repainting the property pane
