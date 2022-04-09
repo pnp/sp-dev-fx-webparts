@@ -106,7 +106,7 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
     const filesQuery = window.location.origin + filesLocation.siteRelativeURL + "/_api/web/lists/getbytitle('" + filesLocation.library + "')/Items?$select=FileLeafRef";
 
     return this.context.spHttpClient.get(filesQuery, SPHttpClient.configurations.v1)
-      .then((response: SPHttpClientResponse) => { console.log(); return response.json(); })
+      .then((response: SPHttpClientResponse) => response.json())
       .then(data => data.value);
   }
 
@@ -147,7 +147,10 @@ export default class CherryPickedContentWebPart extends BaseClientSideWebPart<IC
         .then((files): void => {
           if (files.length) {
             // store items
-            this.libraryItemsList = files.map(file => { return { key: file.Name, text: file.Name }; });
+            this.libraryItemsList = files.map(file => file.FileLeafRef)
+              .filter(rf => rf.match(/\.(htm?l|txt)$/i))
+              .sort()
+              .map(name => ({ key: name, text: name }));
             // enable item selector
             this.itemsDropdownDisabled = false;
             // refresh the item selector control by repainting the property pane
