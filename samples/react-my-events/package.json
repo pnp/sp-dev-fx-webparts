@@ -14,7 +14,7 @@
     "@pnp/spfx-controls-react": "^3.2.1",
     "@pnp/spfx-property-controls": "^3.2.0",
     "@rehooks/component-size": "^1.0.3",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "react-slick": "^0.28.1",
     "tslib": "1.13.0",
     "react": "16.13.1",
