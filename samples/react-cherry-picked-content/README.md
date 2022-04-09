@@ -43,6 +43,7 @@ React-Cherry-Picked-Content | [Christophe Humbert](https://github.com/PathToShar
 
 Version|Date|Comments
 -------|----|--------
+0.4.0|March 18, 2022|Update to library REST query
 0.3.0|March 9, 2022|4 samples added
 0.2.0|March 6, 2022|Refactoring
 0.1.0|February 21, 2022|Initial draft
