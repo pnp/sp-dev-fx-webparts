@@ -22,7 +22,7 @@
     "@types/jquery": "^2.0.54",
     "@types/webpack-env": "1.13.1",
     "jquery": "^3.5.0",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.9.1",
