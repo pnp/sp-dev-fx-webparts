@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version, DisplayMode } from '@microsoft/sp-core-library';
+import { Version, Guid } from '@microsoft/sp-core-library';
+import { BrowserUtilities } from '@microsoft/sp-core-library/lib-commonjs/BrowserUtilities';
 import {
   BaseClientSideWebPart,
   IWebPartPropertiesMetadata,
   WebPartContext
 } from '@microsoft/sp-webpart-base';
+
 
 import {
   IPropertyPaneConfiguration,
@@ -53,9 +55,9 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
     super();
 
     //Initialize unique GUID
-    this.guid = this.getGuid();
+    this.guid = Guid.newGuid().toString();
 
-    this.isMobile = this.detectmob();
+    this.isMobile = BrowserUtilities.isMobileBrowser();
 
     //Hack: to invoke correctly the onPropertyChange function outside this class
     //we need to bind this object on it first
@@ -64,7 +66,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
   
 
   public render(): void {
-    console.log('Web Part Render Called');
     this.properties.tabContent = "";
     this.properties.tabs.map((tab: any, tabindex: number) => {
       this.properties.tabContent += tab.Title + "," + tab.Content + "|";
@@ -109,34 +110,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
-  }
-
-  /**
-   * @function
-   * Generates a GUID
-   */
-  private getGuid(): string {
-    return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' +
-      this.s4() + '-' + this.s4() + this.s4() + this.s4();
-  }
-
-  private detectmob(): boolean {
-    console.log('inside detectmob');
-    if(window.innerWidth <= 480) {
-      return true;
-    } else {
-      return false;
-    }
- }
-
-  /**
-   * @function
-   * Generates a GUID part
-   */
-  private s4(): string {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
   }
 
   //executes only before property pane is loaded.
