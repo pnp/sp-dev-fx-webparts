@@ -1603,7 +1603,7 @@
       "An SPFx web part that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The web part utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties."
     ],
     "creationDateTime": "2017-11-12",
-    "updateDateTime": "2021-12-30",
+    "updateDateTime": "2022-04-07",
     "products": [
       "SharePoint"
     ],
@@ -1614,7 +1614,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.3.4"
+        "value": "1.13.0"
       },
       {
         "key": "PNPCONTROLS",
