@@ -53,8 +53,7 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
   
     
     public findDefault(children) {
-      //console.log(this.defaultTab);
-      /*  if (this.defaultTab !== undefined) {
+        /*  if (this.defaultTab !== undefined) {
           return this.defaultTab;
         }*/
     
@@ -66,7 +65,6 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
           if (!child || !child.props || firstDefaultLink) {
             return;
           }
-          //console.log(child.type.displayName);
          /* if (child.type.displayName === 'TabLink') {
             firstLink = firstLink || child.props.to;
             firstDefaultLink =
@@ -93,8 +91,7 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
           name,
         },
       ) {
-       // console.log(typeof children);
-       /* if (typeof children !== 'object') {
+         /* if (typeof children !== 'object') {
           return children;
         }*/
     
@@ -152,8 +149,6 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
           ...divProps
         } = this.props;
         const handleSelect = handleSelectProp || this.handleSelect;
-        //console.log(this.state.selectedTab);
-        //console.log(selectedTabProp);
         const selectedTab =  this.state.selectedTab ;
     
         const children = this.transformChildren(this.props.children, {

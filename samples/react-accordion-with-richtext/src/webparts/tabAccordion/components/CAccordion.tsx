@@ -46,17 +46,13 @@ export default class CAccordion extends React.Component<ICAccordionProps, {}> {
                   <Editor
                           id={this.props.guid + '-editor-' + index}                        
                           value={tab.Content}
-                          init={{                          
+                          init={{
                             content_style: "a {color:rgb(0,120,212) !important}",
-                            plugins: 'link image table lists pageembed',
+                            plugins: 'link image table lists media code',                              
                             menubar: 'edit insert format table lists view',  // skip file
                             height : "240",
-                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | numlist bullist pageembed',
+                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | numlist bullist | media | code',
                             table_responsive_width: true,
-                            tiny_pageembed_classes: [
-                              { text: 'Big embed', value: 'my-big-class' },
-                              { text: 'Small embed', value: 'my-small-class' }
-                            ],
                             table_default_styles: {
                               'width': '100%',
                               'height': 'auto'
@@ -64,9 +60,9 @@ export default class CAccordion extends React.Component<ICAccordionProps, {}> {
                             image_advtab: true,
                             style_formats: [
                               {title: 'Headings', items: [
-                                  {title: 'Heading 1', format: 'h1'},
-                                  {title: 'Heading 2', format: 'h2'},
-                                  {title: 'Heading 3', format: 'h3'}
+                                  {title: 'Heading 1', format: 'h2'},
+                                  {title: 'Heading 2', format: 'h3'},
+                                  {title: 'Heading 3', format: 'h4'}
                               ]}]
                             
                           }}

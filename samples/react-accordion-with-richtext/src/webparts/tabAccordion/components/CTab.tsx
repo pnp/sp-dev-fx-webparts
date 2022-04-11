@@ -35,7 +35,6 @@ export default class CTab extends React.Component<ICTabProps, {}> {
   
 
   public render(): React.ReactElement<ICTabProps> {   
-    //console.log(this.props.tabs);
     if(this.props.displayMode === DisplayMode.Edit)  
     {
       return (
@@ -82,9 +81,9 @@ export default class CTab extends React.Component<ICTabProps, {}> {
                               image_advtab: true,
                               style_formats: [
                                 {title: 'Headings', items: [
-                                    {title: 'Heading 1', format: 'h1'},
-                                    {title: 'Heading 2', format: 'h2'},
-                                    {title: 'Heading 3', format: 'h3'}
+                                    {title: 'Heading 1', format: 'h2'},
+                                    {title: 'Heading 2', format: 'h3'},
+                                    {title: 'Heading 3', format: 'h4'}
                                 ]}]
                               
                             }}
