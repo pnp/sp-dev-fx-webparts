@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-group-members-client-side-solution",
+    "id": "0b0829f6-4e41-4bf2-9cbe-fd67fca2d34c",
+    "title": "Group Members",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nick Brown",
+      "websiteUrl": "https://nbdev.uk",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "List members of a group in people cards"
+      },
+      "longDescription": {
+        "default": "Loads the members of an AAD group and then displays that in a people card"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "List members of a group in the People control view",
+        "description": "Loads the members of an AAD group and then displays that in a people card. Automated people profiles based on a group",
+        "id": "a3238ad2-9b27-4970-88a7-cad9bbf08142",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-group-members.sppkg"
+  }
+}
