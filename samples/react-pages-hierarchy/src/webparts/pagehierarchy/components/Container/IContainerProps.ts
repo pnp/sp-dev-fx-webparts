@@ -6,6 +6,8 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 export interface IContainerProps {
   currentPageId: number;
   pagesToDisplay: PagesToDisplay;
+  treeFrom: number;
+  treeExpandTo: number;
   themeVariant: IReadonlyTheme;
   context: WebPartContext;
   domElement: HTMLElement;
@@ -15,6 +17,5 @@ export interface IContainerProps {
   displayMode: DisplayMode;
   updateTitle: (value: string) => void;
   onConfigure: () => void;
-
   pageEditFinished: boolean;
 }

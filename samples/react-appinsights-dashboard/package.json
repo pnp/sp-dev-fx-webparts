@@ -23,7 +23,7 @@
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
     "lodash": "^4.17.21",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
     "react-dom": "16.8.5"

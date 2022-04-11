@@ -45,7 +45,7 @@
     "macaddress": ">=0.2.9",
     "minimist": ">=1.2.3",
     "mixin-deep": ">=1.3.2",
-    "moment": ">=2.19.3",
+    "moment": ">=2.29.2",
     "morgan": ">=1.9.1",
     "natives": "^1.1.6",
     "node.extend": ">=1.1.7",

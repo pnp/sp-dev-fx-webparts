@@ -5,12 +5,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import PortalIframe from './PortalIframe';
-
-const CherryPickedDiv = ({ htmlFragment }) =>
-  <div ref={ref => { if (ref) { ref.innerHTML = ""; ref.appendChild(document.createRange().createContextualFragment(htmlFragment)); } }}>
-  </div>;
-
-const MemoDiv = React.memo(CherryPickedDiv);
+import CherryPickedMemo from './CherryPickedMemo';
 
 const CherryPickedContent: React.FunctionComponent<ICherryPickedContentProps> = (props) => {
 
@@ -70,13 +65,13 @@ const CherryPickedContent: React.FunctionComponent<ICherryPickedContentProps> = 
   else if (props.isolated) {
     return (
       <PortalIframe {...props}>
-        <MemoDiv htmlFragment={htmlFragment} />
+        <CherryPickedMemo htmlFragment={htmlFragment} />
       </PortalIframe>
     );
   }
   else {
     return (
-      <MemoDiv htmlFragment={htmlFragment} />
+      <CherryPickedMemo htmlFragment={htmlFragment} />
     );
   }
 };
