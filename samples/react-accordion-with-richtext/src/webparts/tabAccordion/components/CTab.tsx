@@ -6,13 +6,6 @@ import { ICTabProps } from './ICTabProps';
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Editor } from '@tinymce/tinymce-react';
-import {
-  Pivot,
-  PivotItem,
-  PivotLinkFormat,
-  PivotLinkSize
-} from 'office-ui-fabric-react/lib/Pivot';
-
 
 import { Tabs, TabLink, TabContent } from './utilities/Tab/index';
 
@@ -103,7 +96,7 @@ export default class CTab extends React.Component<ICTabProps, {}> {
         return (
           <div>                 
               <div className={styles.webpartheader}>
-                <WebPartTitle displayMode={this.props.displayMode}
+              <WebPartTitle displayMode={this.props.displayMode}
                     title={this.props.title}
                     updateProperty={this.props.fUpdateProperty}
                     className={styles.webparttitle} />
