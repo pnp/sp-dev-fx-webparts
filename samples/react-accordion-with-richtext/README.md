@@ -21,7 +21,7 @@ extensions:
 - Provides options to view as an Accordion or Tab.
 - In mobile browser defaults to Accordion view.
 
-![Web part preview](assets/TabAccordionWebpart.gif)
+![Web part preview](assets/TabAccordionWebpart.PNG)
 
 ## Compatibility
 
@@ -49,7 +49,7 @@ There are no pre-requisites to use these samples.
 
 Solution|Author(s)
 --------|---------
-react-TabAccordion | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/> - Twitter: <https://twitter.com/arun_perumal16>
+react-accordion-with-richtext | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/> - Twitter: <https://twitter.com/arun_perumal16>
 
 ## Version history
 
@@ -60,7 +60,7 @@ Version|Date|Comments
 
 ## Minimal path to awesome
 
-- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabaccordion) then unzip it)
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext) then unzip it)
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
@@ -100,18 +100,18 @@ We do not support samples, but this community is always willing to help, and we 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-tabaccordion%22) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-accordion-with-richtext%22) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-tabaccordion) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-accordion-with-richtext) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-tabaccordion&template=bug-report.yml&sample=react-tabaccordion&authors=@arunkumarperumal&title=react-tabaccordion%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-accordion-with-richtext&template=bug-report.yml&sample=react-accordion-with-richtext&authors=@arunkumarperumal&title=react-accordion-with-richtext%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-tabaccordion&template=question.yml&sample=react-tabaccordion&authors=@arunkumarperumal&title=react-tabaccordion%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-accordion-with-richtext&template=question.yml&sample=react-accordion-with-richtext&authors=@arunkumarperumal&title=react-accordion-with-richtext%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-tabaccordion&template=suggestion.yml&sample=react-tabaccordion&authors=@arunkumarperumal&title=react-tabaccordion%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-accordion-with-richtext&template=suggestion.yml&sample=react-accordion-with-richtext&authors=@arunkumarperumal&title=react-accordion-with-richtext%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-tabaccordion" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-accordion-with-richtext" />

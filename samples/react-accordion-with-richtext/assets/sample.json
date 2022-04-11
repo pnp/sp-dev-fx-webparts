@@ -1,11 +1,11 @@
 [
     {
-        "name": "pnp-sp-dev-spfx-web-parts-react-tabacordion",
+        "name": "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext",
         "source": "pnp",
         "title": "Tab Accordion",
         "shortDescription": "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online",
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabacordion",
-        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabacordion",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
         "longDescription": [
             "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online"
         ],
@@ -28,7 +28,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tabacordion/assets/TabAccordionWebpart.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.gif",
                 "alt": "Web Part Preview"
             },
             // {
