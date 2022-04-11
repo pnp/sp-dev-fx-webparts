@@ -9,6 +9,7 @@ node_modules
 # Build generated files
 dist
 lib
+release
 solution
 temp
 *.sppkg
@@ -30,8 +31,3 @@ obj
 
 # Styles Generated Code
 *.scss.ts
-
-release# .CER Certificates
-*.cer
-# .PEM Certificates
-*.pem
