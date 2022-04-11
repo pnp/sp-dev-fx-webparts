@@ -30,3 +30,9 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem
+
+release/webpack-stats/js-propertycontrols-svg.stats.json

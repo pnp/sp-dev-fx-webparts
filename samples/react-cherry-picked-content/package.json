@@ -1,6 +1,6 @@
 {
   "name": "react-cherry-picked-content",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "private": true,
   "main": "lib/index.js",
   "scripts": {
