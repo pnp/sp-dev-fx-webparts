@@ -69,8 +69,8 @@ export default class TabLink extends React.Component<ITabLinkProps, {}> {
           ...passedProps
         } = this.props;
     
-        const _className = className || 'tab-link';
-        const _activeClassName = activeClassName || 'tab-link-active';
+        const _className = className;
+        const _activeClassName = activeClassName;
        
         const _style = {
           ...style,

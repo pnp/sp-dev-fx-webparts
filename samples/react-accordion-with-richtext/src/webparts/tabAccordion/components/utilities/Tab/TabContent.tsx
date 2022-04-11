@@ -33,9 +33,9 @@ export default class TabContent extends React.Component<ITabContentProps, {}> {
         const visibleStyle = this.props.visibleStyle || {};
         const displayStyle = this.props.isVisible ? visibleStyle : styles.hidden;
         const disableInlineStyles = this.props.disableInlineStyles;
-        const className = this.props.className || 'tab-content';
+        const className = this.props.className;
         const visibleClassName =
-          this.props.visibleClassName || 'tab-content-visible';
+          this.props.visibleClassName;
         const style = this.props.style;
    
         return (
