@@ -6,6 +6,7 @@ import styles from './CAccordion.module.scss';
 import { ICAccordionProps } from './ICAccordionProps';
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import { Editor } from '@tinymce/tinymce-react';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 
 import {
   Accordion,
@@ -27,9 +28,10 @@ export default class CAccordion extends React.Component<ICAccordionProps, {}> {
       return (
         <div>                 
          <div className={styles.webpartheader}>
-            <div className={styles.webparttitle}>
-              <span role="heading" aria-level={2}>{this.props.title}</span>
-            </div>
+         <WebPartTitle displayMode={this.props.displayMode}
+                    title={this.props.title}
+                    updateProperty={this.props.fUpdateProperty}
+                    className={styles.webparttitle} />
          </div>
         <Accordion className={styles.accordion} aria-live="polite" accordion={this.props.accordion}>
           {           
@@ -82,9 +84,10 @@ export default class CAccordion extends React.Component<ICAccordionProps, {}> {
       return (
         <div>                 
          <div className={styles.webpartheader}>
-            <div className={styles.webparttitle}>
-              <span role="heading" aria-level={2}>{this.props.title}</span>
-            </div>
+            <WebPartTitle displayMode={this.props.displayMode}
+                    title={this.props.title}
+                    updateProperty={this.props.fUpdateProperty}
+                    className={styles.webparttitle} />
          </div>             
         <Accordion className={styles.accordion} aria-live="polite" accordion={this.props.accordion}>
           {         

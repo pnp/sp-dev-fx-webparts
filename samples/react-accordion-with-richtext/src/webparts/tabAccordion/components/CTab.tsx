@@ -3,9 +3,8 @@
 import * as React from 'react';
 import styles from './CTab.module.scss';
 import { ICTabProps } from './ICTabProps';
-import { SPComponentLoader } from '@microsoft/sp-loader';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Editor } from '@tinymce/tinymce-react';
 import {
   Pivot,
@@ -40,9 +39,10 @@ export default class CTab extends React.Component<ICTabProps, {}> {
       return (
             <div>                 
               <div className={styles.webpartheader}>
-                <div className={styles.webparttitle}>
-                  <span role="heading" aria-level={2}>{this.props.title}</span>
-                </div>
+                <WebPartTitle displayMode={this.props.displayMode}
+                    title={this.props.title}
+                    updateProperty={this.props.fUpdateProperty}
+                    className={styles.webparttitle} />
               </div>
                 <Tabs className={styles.tabs} selectedTab={this.props.guid + "-editor-0"}>
                   <div className={styles.tablinks} tabIndex={0}>
@@ -103,9 +103,10 @@ export default class CTab extends React.Component<ICTabProps, {}> {
         return (
           <div>                 
               <div className={styles.webpartheader}>
-                <div className={styles.webparttitle}>
-                  <span role="heading" aria-level={2}>{this.props.title}</span>
-                </div>
+                <WebPartTitle displayMode={this.props.displayMode}
+                    title={this.props.title}
+                    updateProperty={this.props.fUpdateProperty}
+                    className={styles.webparttitle} />
             </div>
             <Tabs className={styles.tabs} selectedTab={this.props.guid + "-editor-0"} >
                   <div className={styles.tablinks} >

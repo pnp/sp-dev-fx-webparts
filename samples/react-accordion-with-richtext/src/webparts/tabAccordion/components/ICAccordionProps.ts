@@ -5,5 +5,6 @@ export interface ICAccordionProps {
   displayMode: DisplayMode;
   guid: string;
   title: string;
-  accordion:boolean;
+  accordion:boolean;  
+  fUpdateProperty: (value: string) => void;
 }

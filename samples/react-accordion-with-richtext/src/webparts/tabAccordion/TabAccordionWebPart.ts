@@ -77,7 +77,10 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         tabs: this.properties.tabs, 
         displayMode: this.displayMode,
         guid: this.guid,
-        title:this.properties.title
+        title:this.properties.title,
+        fUpdateProperty: (value: string) => {
+          this.properties.title = value;
+        },
       }
     );
     const elementAccordion: React.ReactElement<ICAccordionProps > = React.createElement(
@@ -87,7 +90,10 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         displayMode: this.displayMode,
         guid: this.guid,
         title: this.properties.title,
-        accordion:this.properties.accordion
+        accordion:this.properties.accordion,
+        fUpdateProperty: (value: string) => {
+          this.properties.title = value;
+        },
       }
     );
     if(this.isMobile)
@@ -142,9 +148,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('title', {
-                  label: strings.TitleFieldLabel
-                }),
                 PropertyPaneDropdown('type', {
                   label: strings.Type,
                   disabled: false,                   

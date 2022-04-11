@@ -5,4 +5,5 @@ export interface ICTabProps {
   displayMode: DisplayMode;
   guid: string;
   title:string;
+  fUpdateProperty: (value: string) => void;
 }
