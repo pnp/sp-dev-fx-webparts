@@ -72,11 +72,11 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
           var wpName = {}
           var wp = {};
           if (control.data.webPartData != undefined) {
-            wpName = `sec[${section.order}] col[${column.order}] - ${control.data.webPartData.title}`;
+            wpName = `sec[${section.order}] col[${column.order}] wp[${control.order}] - ${control.data.webPartData.title}`;
             wp = { text: wpName, key: control.data.webPartData.instanceId };
             wpData.push(wp);
           } else {
-            wpName = `sec[${section.order}] col[${column.order}] - "Webpart"`;
+            wpName = `sec[${section.order}] col[${column.order}] wp[${control.order}] - "Webpart"`;
             wp = { text: wpName, key: control.data.id };
           }
           wpData.push(wp);
