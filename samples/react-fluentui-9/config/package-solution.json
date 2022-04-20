@@ -23,8 +23,8 @@
         "default": "react-fluentui-9 description"
       },
       "screenshotPaths": [
-        "assets/FQzNLB4XwAIFMRh.jpg",
-        "assets/FQzO9YjWUAgFlrU.jpg"
+        "../assets/FQzNLB4XwAIFMRh.jpg",
+        "../assets/FQzO9YjWUAgFlrU.jpg"
       ],
       "videoUrl": "",
       "categories": []
