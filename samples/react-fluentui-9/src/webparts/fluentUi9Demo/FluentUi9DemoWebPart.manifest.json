@@ -13,7 +13,7 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
     "title": { "default": "Fluent UI 9 Demo" },
-    "description": { "default": "Demo's the use of Fluent UI 9 in SPFX complete with theme detection" },
+    "description": { "default": "Demos the use of Fluent UI 9 in SPFX complete with theme detection" },
     "officeFabricIconFontName": "Page",
     "properties": {}
   }]

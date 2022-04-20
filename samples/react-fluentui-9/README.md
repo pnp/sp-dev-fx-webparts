@@ -2,7 +2,7 @@
 
 ## Summary
 
-This demo's the use of the new [Fluent UI version 9](https://github.com/microsoft/fluentui/tree/master/packages/react-components) controls and theme provider.  1 UI framework which has native theming for both Teams, SharePoint and Windows
+This demos the use of the new [Fluent UI version 9](https://github.com/microsoft/fluentui/tree/master/packages/react-components) controls and theme provider.  1 UI framework which has native theming for Teams, SharePoint and Windows
 
 ![SharePoint View](assets/FQzNLB4XwAIFMRh.jpg "SharePoint View") 
 ![Teams View](assets/FQzO9YjWUAgFlrU.jpg "Teams View")
@@ -22,7 +22,7 @@ This demo's the use of the new [Fluent UI version 9](https://github.com/microsof
 
 Solution|Author(s)
 --------|---------
-react-fluentui-9 | Nick Brown ([@techienickb](https://twitter.com/techienickb) / Jisc)
+react-fluentui-9 | Nick Brown ([@techienickb](https://twitter.com/techienickb) / [Jisc](https://jisc.ac.uk))
 
 ## Version history
 

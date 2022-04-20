@@ -39,7 +39,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
         <p>
-          This demo's the use of Fluent UI 9 instead of using FabircUI.  The new framework combines Northstar and FlientUI.  Below are some demo's and they should render in Teams style when inside Teams.
+          This demos the use of Fluent UI 9 instead of using FabircUI.  The new framework combines Northstar and FluentUI.  Below are some demo's and they should render in Teams style when inside Teams.
         </p>
         <Text as="h3">Demo components</Text>
         <div className={styles.stack}>
