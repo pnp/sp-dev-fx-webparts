@@ -33,6 +33,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|February 27, 2019|Initial release
 1.1|March 22, 2019| Update to SPFx 1.8, additional theme, comments
+1.2|April 25, 2022 | Update to SPFx 1.14.0
 
 ## Minimal Path to Awesome
 
