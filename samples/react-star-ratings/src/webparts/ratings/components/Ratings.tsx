@@ -119,9 +119,9 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
   React.useEffect(() => {
     (async () => {
       try {
-        const value = await getRating();
-        if (value) {
-          setValue(value);
+        const rating = await getRating();
+        if (rating) {
+          setValue(rating);
           setLoading(false);
         }
       } catch (error) {
