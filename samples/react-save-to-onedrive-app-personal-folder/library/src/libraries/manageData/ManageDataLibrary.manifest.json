@@ -1,0 +1,9 @@
+{
+  "id": "a02d4028-02fe-451e-94e3-512872a414c9",
+  "alias": "ManageDataLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}

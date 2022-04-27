@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "react-group-members",
+    "libraryId": "0b0829f6-4e41-4bf2-9cbe-fd67fca2d34c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-group-members",
+    "solutionShortDescription": "react-group-members description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

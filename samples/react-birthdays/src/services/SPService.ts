@@ -1,13 +1,11 @@
-
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
-import { SPHttpClient, SPHttpClientResponse, MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClient } from "@microsoft/sp-http";
 import * as moment from 'moment';
 
 export class SPService {
   private graphClient: MSGraphClient = null;
   private  birthdayListTitle: string = "Birthdays";
-  constructor(private _context: WebPartContext | ApplicationCustomizerContext) {
+  constructor(private _context: WebPartContext) {
 
   }
   // Get Profiles
@@ -21,9 +19,9 @@ export class SPService {
       _month = parseInt(moment().format('MM'));
       _day = parseInt(moment().format('DD'));
       _filter = "fields/Birthday ge '" + _today + "'";
-      // If we are in Dezember we have to look if there are birthday in January
+      // If we are in December we have to look if there are birthdays in January
       // we have to build a condition to select birthday in January based on number of upcommingDays
-      // we can not use the year for teste , the year is always 2000.
+      // we can not use the year for test, the year is always 2000.
       console.log(_month);
       _countdays = _day + upcommingDays;
       _f = 0;

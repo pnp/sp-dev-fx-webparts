@@ -1,6 +1,6 @@
 define([], function() {
   return {
-    "BirdthayControlDefaultDay": "Today",
+    "BirthdayControlDefaultDay": "Today",
     "HappyBirthdayMsg": "Happy Birthday!",
     "NextBirthdayMsg": "Next Birthday",
     "HappyAnniversaryMsg": "Happy Anniversary!",

@@ -1,12 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "happy-birdthay-anniversary-client-side-solution",
+    "name": "happy-birthday-anniversary-client-side-solution",
     "id": "474e78f8-113f-4057-a9a9-640241137620",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "birthdays-anniversary"
+      },
+      "longDescription": {
+        "default": "birthdays-anniversary"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "birthdays-anniversary Feature",
+        "description": "The feature that activates elements of the birthdays-anniversary solution.",
+        "id": "22eb0871-ae82-49b1-8d14-9dd9e1ec4d30",
+        "version": "3.0.0.0"
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",

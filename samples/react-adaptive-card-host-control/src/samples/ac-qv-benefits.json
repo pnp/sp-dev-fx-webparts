@@ -1,0 +1,196 @@
+{
+    "schema": "http=//adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Enrollment is open!",
+            "wrap": true,
+            "horizontalAlignment": "Left",
+            "fontType": "Default",
+            "weight": "Bolder",
+            "size": "ExtraLarge",
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "Container",
+            "backgroundImage": {
+                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/benefits/assets/building.png",
+                "horizontalAlignment": "Center",
+                "verticalAlignment": "Center"
+            },
+            "bleed": true,
+            "height": "stretch",
+            "minHeight": "240px",
+            "horizontalAlignment": "Center",
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "What does 2022 have in store?",
+            "wrap": true,
+            "horizontalAlignment": "Left",
+            "fontType": "Default",
+            "weight": "Bolder",
+            "spacing": "Large"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Take your pick! The past year has been limiting in more ways than one, but now is your chance to finally make a few choices for you and your family. And you have plenty of great options to choose from—we’ve even expanded some benefits to support you more fully in the year ahead! Check out some of the essential updates and enhancements we’ve made for 2022 below:",
+            "wrap": true,
+            "horizontalAlignment": "Left",
+            "fontType": "Default"
+        },
+        {
+            "type": "Container",
+            "spacing": "Medium",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Perks+ Reimbursement",
+                    "wrap": true,
+                    "weight": "Bolder",
+                    "size": "Medium"
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "We’ve increased program reimbursement amounts. That’s means more money to put toward you doing you!",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "80px",
+                                    "minHeight": "80px",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/benefits/assets/gym.jpg"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                            "type": "Action.Submit",
+                            "id": "stages",
+                            "title": "Learn more the Perks+ reimbursement",
+                            "data": {
+                                "id": "stages"
+                            }
+                        }
+                    ],
+                    "spacing": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "Medium",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Life insurance",
+                    "wrap": true,
+                    "size": "Medium",
+                    "weight": "Bolder"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Prudential is providing a one-time exception for you to increase your coverage without Evidence of Insurability.",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "80px",
+                            "minHeight": "80px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/benefits/assets/outside.jpg"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                            "type": "Action.OpenUrl",
+                            "title": "Visit the return-to-worksite toolkit",
+                            "url": "http://aka.ms/TechToolkit"
+                        }
+                    ],
+                    "spacing": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "Medium",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Your workspace assignment beginning Stage 4",
+                    "wrap": true,
+                    "weight": "Bolder",
+                    "size": "Medium"
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "If you have any questions or concerns about your schedule please see genes@microsoft.com",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "80px",
+                                    "minHeight": "80px",
+                                    "backgroundImage": {
+                                        "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/benefits/assets/office.jpg"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}

@@ -1,12 +1,14 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.11.0",
+    "version": "1.14.0",
     "libraryName": "react-company-stories",
     "libraryId": "9ac063b7-aed6-4fcb-a226-5813ac363fad",
     "packageManager": "npm",
     "isDomainIsolated": false,
+    "skipFeatureDeployment": true,
     "componentType": "webpart"
   }
 }

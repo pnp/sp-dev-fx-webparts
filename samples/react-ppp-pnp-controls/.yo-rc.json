@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "version": "1.15.0-beta.1",
+    "libraryName": "react-ppp-pnpcontrols",
+    "libraryId": "04fdd42b-6e5b-4d68-a48c-c086c85a7887",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-ppp-pnpcontrols)",
+    "solutionShortDescription": "react-ppp-pnpcontrols) description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

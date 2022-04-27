@@ -1,0 +1,25 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+	<h3>People Components - Microsoft Graph Toolkit</h3>
+	<p>Isolated mode: &#9888; mandatory. Find more samples on the <a href="https://mgt.dev/?path=/story/overview--page" target="_blank">MGT Playground</a>. MGT components require API permissions, see the <a href="https://docs.microsoft.com/en-us/graph/toolkit/overview">Microsoft docs</a> for more info.</p>
+	<script>
+		function setProvider() {mgt.Providers.globalProvider = new mgt.SharePointProvider(props.context);}
+	</script>
+	<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/wc/webcomponents-loader.js" type="text/javascript">
+	</script>
+	<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt.es6.js" type="text/javascript" onload="setProvider()">
+	</script>
+	<div style="display: flex;">
+		<div style="flex: 50%;">
+			<h4>mgt-login</h4>
+			<mgt-login></mgt-login>
+			<h4>mgt-person</h4>
+			<mgt-person person-query="me" view="twoLines"></mgt-person>
+			<h4>mgt-people</h4>
+			<mgt-people show-max="10"></mgt-people>
+		</div>
+		<div style="flex: 50%;">
+			<h4>mgt-person-card</h4>
+			<mgt-person-card person-query="me"></mgt-person-card>
+		</div>
+	</div>
+</div>
