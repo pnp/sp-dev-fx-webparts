@@ -3,8 +3,7 @@ declare interface IRatingsWebPartStrings {
   ActiveColorLabel: string;
   InactiveColorLabel: string;
   RateThisPageLabel: string;
-  AverageLabel: string;
-  CountLabel: string;
+  YourRatingLabel: string;
 }
 
 declare module 'RatingsWebPartStrings' {

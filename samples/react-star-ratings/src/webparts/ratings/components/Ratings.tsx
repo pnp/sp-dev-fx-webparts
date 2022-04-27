@@ -73,21 +73,33 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
   const [value, setValue] = React.useState<IRatings>();
 
   const getRating = React.useCallback(async (): Promise<IRatings> => {
+    if (!context.pageContext.list) {
+      return;
+    }
+    if (!context.pageContext.listItem) {
+      return;
+    }
     const service = new SPHttpClientService(context);
     await service.ensureFeatureEnabled();
     const user = await service.getCurrentUser();
-    const [ average, count, rating ] = await service.getRating(user.LoginName);
+    const [average, count, rating] = await service.getRating(user.LoginName);
     return {
       rating: rating,
       count: count,
       average: average
     };
-  }, []);
+  }, [context]);
 
   const setRating = React.useCallback(async (rating: number): Promise<void> => {
+    if (!context.pageContext.list) {
+      return;
+    }
+    if (!context.pageContext.listItem) {
+      return;
+    }
     const service = new SPHttpClientService(context);
     await service.setRating(rating);
-  }, []);
+  }, [context]);
 
   const handleOnChange = React.useCallback((_, rating?: number) => {
     if (!rating) {
@@ -99,48 +111,57 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
         setValue(await getRating());
       } catch (error) {
         setError(error.toString());
-        throw error;
+        console.error(error);
       }
     })();
-  }, [context]);
+  }, []);
 
   React.useEffect(() => {
     (async () => {
       try {
-        setValue(await getRating());
+        const value = await getRating();
+        if (value) {
+          setValue(value);
+          setLoading(false);
+        }
       } catch (error) {
         setError(error.toString());
-      } finally {
+        console.error(error);
         setLoading(false);
       }
     })();
-  }, [context]);
+  }, []);
 
   return (
     <div className={styles.root}>
       <div className={styles.container}>
         {
-          loading
-            ? null
-            : error
-              ? (
+          (() => {
+            if (loading) {
+              return null;
+            }
+            if (error) {
+              return (
                 <MessageBar messageBarType={MessageBarType.error}>
                   {error}
                 </MessageBar>
-              )
-              : (
-                <div className={styles.flex}>
-                  <span>{strings.RateThisPageLabel}: </span>
-                  <TooltipHost content={`${strings.AverageLabel}: ${value.average}, ${strings.CountLabel}: ${value.count}`}>
-                    <Rating
-                      allowZeroStars
-                      rating={value.rating}
-                      size={RatingSize.Small}
-                      styles={ratingStyles}
-                      onChange={handleOnChange} />
-                  </TooltipHost>
-                </div>
-              )
+              );
+            }
+            return (
+              <div className={styles.flex}>
+                <div>{strings.RateThisPageLabel}: </div>
+                <TooltipHost content={`${strings.YourRatingLabel}: ${value.rating}`}>
+                  <Rating
+                    allowZeroStars
+                    rating={value.average}
+                    size={RatingSize.Small}
+                    styles={ratingStyles}
+                    onChange={handleOnChange} />
+                </TooltipHost>
+                <div>{value.count}</div>
+              </div>
+            );
+          })()
         }
       </div>
     </div>

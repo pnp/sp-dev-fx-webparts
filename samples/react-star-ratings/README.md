@@ -44,6 +44,7 @@ react-star-ratings|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.3|April 27, 2022|Changed to show averages with stars instead of user ratings.
 1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 12, 2022|Updated to retrieve values from API
 1.0|October 7, 2021|Initial release
