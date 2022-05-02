@@ -2,12 +2,11 @@ import * as React from 'react';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import styles from './Container.module.scss';
 import * as strings from 'PageHierarchyWebPartStrings';
-import { BreadcrumbLayout, ListLayout } from '../Layouts';
+import { BreadcrumbLayout, ListLayout, TreeLayout } from '../Layouts';
 import { IContainerProps } from './IContainerProps';
 import { PagesToDisplay } from '@src/utilities';
 import { usePageApi } from '@src/apiHooks/usePageApi';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { TreeLayout } from '../Layouts/TreeLayout';
 
 export const Container: React.FunctionComponent<IContainerProps> = props => {
   const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, props.treeFrom, props.treeExpandTo);

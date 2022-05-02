@@ -4,7 +4,7 @@
     "name": "react-pages-hierarchy",
     "id": "89758fb6-85e2-4e2b-ac88-4f4e7e5f60cb",
     "title": "Pages Hierarchy",
-    "version": "1.0.3.0",
+    "version": "1.0.3.1",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -32,13 +32,13 @@
         "title": "Breadcrumbs",
         "description": "Displays breadcrumbs to the current page",
         "id": "ce42762f-a823-4f12-80b2-b708cdebfaa4",
-        "version": "1.0.2.0"
+        "version": "1.0.3.0"
       },
       {
         "title": "Child Pages",
         "description": "Displays a list of child pages",
         "id": "ce42762f-a823-4f12-80b2-b708cdebfaa5",
-        "version": "1.0.2.0"
+        "version": "1.0.3.0"
       },
       {
         "title": "Tree",

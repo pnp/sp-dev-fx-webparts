@@ -22,7 +22,7 @@
     "@pnp/spfx-controls-react": "^3.7.2",
     "@pnp/spfx-property-controls": "^3.6.0",
     "office-ui-fabric-react": "^7.185.3",
-    "react": "16.13.1",
+    "react": "^16.14.0",
     "react-dom": "16.13.1"
   },
   "resolutions": {
