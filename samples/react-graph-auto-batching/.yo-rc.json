@@ -5,9 +5,10 @@
     "libraryId": "03631505-3899-4de0-bebe-f59283d991ba",
     "environment": "spo",
     "packageManager": "npm",
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "plusBeta": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "adaptiveCardExtension",
+    "templateType": "Image"
   }
 }
