@@ -7,12 +7,17 @@
         {
           "entrypoint": "./lib/webparts/graphAutoBatching/GraphAutoBatchingWebPart.js",
           "manifest": "./src/webparts/graphAutoBatching/GraphAutoBatchingWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js"
+    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js",
+    "ProfileCardAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/profileCard/loc/{locale}.js"
   }
 }
