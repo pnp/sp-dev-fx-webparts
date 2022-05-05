@@ -9,19 +9,10 @@
           "manifest": "./src/webparts/graphAutoBatching/GraphAutoBatchingWebPart.manifest.json"
         }
       ]
-    },
-    "profile-card-adaptive-card-extension": {
-      "components": [
-        {
-          "entrypoint": "./lib/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.js",
-          "manifest": "./src/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.manifest.json"
-        }
-      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js",
-    "ProfileCardAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/profileCard/loc/{locale}.js"
+    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js"
   }
 }

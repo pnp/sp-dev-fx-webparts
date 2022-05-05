@@ -16,8 +16,7 @@
     "@microsoft/sp-property-pane": "1.13.0-beta.17",
     "@microsoft/sp-webpart-base": "1.13.0-beta.17",
     "@microsoft/sp-lodash-subset": "1.13.0-beta.17",
-    "@microsoft/sp-office-ui-fabric-core": "1.13.0-beta.17",
-    "@microsoft/sp-adaptive-card-extension-base": "1.13.0-beta.17"
+    "@microsoft/sp-office-ui-fabric-core": "1.13.0-beta.17"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
