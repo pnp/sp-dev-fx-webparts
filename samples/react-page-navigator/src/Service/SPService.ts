@@ -13,9 +13,11 @@ export class SPService {
    */
   private static GetAnchorUrl(headingValue: string): string {
     let urlExists = true;
+    // .replace(/[^a-zA-Z0-9. ]/g, "") replaces chars except a - z, 0 - 9 and a . with ""
     // .replace(/'|?|\|/| |&/g, "-") replaces any blanks and special characters (list is for sure not complete) with "-"
     // .replace(/--+/g, "-") replaces any additional - with only one -; e.g. --- get replaced with -, -- get replaced with - etc.
     let anchorUrl = `#${headingValue
+      .replace(/[^a-zA-Z0-9. ]/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
       .replace(/--+/g, "-")}`.toLowerCase();
     let urlSuffix = 1;
@@ -27,6 +29,16 @@ export class SPService {
       }
     }
     return anchorUrl;
+  }
+  
+  /**
+   * Returns the decoded html string
+   * @param input the html string
+   * @returns decoded string
+   */
+  private static htmlDecode(input: string) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
   }
 
   /**
@@ -63,9 +75,7 @@ export class SPService {
             /* The Header Text value */
             // .replace(/<.+?>/gi, "") replaces in the headingValue any html tags like <strong> </strong>
             // .replace(/&.+;/gi, "") replaces in the headingValue any &****; tags like &nbsp;
-            const headingValue = HTMLString.substring(HTMLString.search(/<h[1-4](.*?)>/g) + lengthFirstOccurence, HTMLString.search(/<\/h[1-4]>/g))
-              .replace(/<.+?>/gi, "")
-              .replace(/\&.+\;/gi, "");
+            const headingValue = this.htmlDecode(HTMLString.substring(HTMLString.search(/<h[1-4](.*?)>/g) + lengthFirstOccurence, HTMLString.search(/<\/h[1-4]>/g)));
 
             headingOrder = parseInt(HTMLString.charAt(HTMLString.search(/<h[1-4](.*?)>/g) + 2));
 
@@ -113,7 +123,7 @@ export class SPService {
             prevHeadingOrder = headingOrder;
 
             /* Replace the added header links from the string so they don't get processed again */
-            HTMLString = HTMLString.replace(`<h${headingOrder}`, '').replace(`</h${headingOrder}>`, '');
+            HTMLString = HTMLString.replace(/<h[1-4](.*?)>/, '').replace(`</h${headingOrder}>`, '');
           }
         }
       });
