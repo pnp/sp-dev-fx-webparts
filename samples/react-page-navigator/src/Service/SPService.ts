@@ -73,8 +73,6 @@ export class SPService {
           while (HTMLString.search(/<h[1-4](.*?)>/g) !== -1) {
             const lengthFirstOccurence = HTMLString.match(/<h[1-4](.*?)>/g)[0].length;
             /* The Header Text value */
-            // .replace(/<.+?>/gi, "") replaces in the headingValue any html tags like <strong> </strong>
-            // .replace(/&.+;/gi, "") replaces in the headingValue any &****; tags like &nbsp;
             const headingValue = this.htmlDecode(HTMLString.substring(HTMLString.search(/<h[1-4](.*?)>/g) + lengthFirstOccurence, HTMLString.search(/<\/h[1-4]>/g)));
 
             headingOrder = parseInt(HTMLString.charAt(HTMLString.search(/<h[1-4](.*?)>/g) + 2));
