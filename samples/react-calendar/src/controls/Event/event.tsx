@@ -45,6 +45,7 @@ import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
 import { getGUID } from '@pnp/common';
 import { toLocaleShortDateString } from '../../utils/dateUtils';
+import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 const format = require('string-format');
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -455,6 +456,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   private onDelete(ev: React.MouseEvent<HTMLDivElement>) {
+    debugger;
     ev.preventDefault();
     this.setState({ displayDialog: true });
   }
@@ -1210,6 +1212,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   styles: { main: { maxWidth: 450 } }
                 }}
               >
+                TEST
+                {/*
                  <Label>{this.state.recurrenceSeriesEdited ? strings.ConfirmeDeleteAllRecurrrencesMessage : strings.ConfirmeDeleteOneRecurrenceMessage }</Label>
                 {
                   this.state.isDeleting &&
@@ -1219,6 +1223,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   <PrimaryButton onClick={this.confirmDelete} text={strings.DialogConfirmDeleteLabel} disabled={this.state.isDeleting} />
                   <DefaultButton onClick={this.closeDialog} text={strings.DialogCloseButtonLabel} />
                 </DialogFooter>
+              */}
               </Dialog>
             </div>
 

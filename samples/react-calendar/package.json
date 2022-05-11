@@ -40,7 +40,6 @@
     "react-big-calendar": "^0.24.6",
     "react-dom": "16.9.0",
     "react-draft-wysiwyg": "^1.13.2",
-    "spfx-uifabric-themes": "^0.6.0",
     "string-format": "^2.0.0",
     "typescript": "^3.2.4",
     "xml2js": "^0.4.19"
@@ -69,6 +68,7 @@
     "gulp-stylelint": "^8.0.0",
     "jest": "^23.6.0",
     "karma-junit-reporter": "^1.2.0",
+    "spfx-uifabric-themes": "^0.6.0",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.4",
