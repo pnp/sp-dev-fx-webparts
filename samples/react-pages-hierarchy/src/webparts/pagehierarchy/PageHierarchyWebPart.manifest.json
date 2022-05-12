@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "d1ba5a4d-dea3-4eb2-a8c8-c652f58cbc42",
+  "id": "d1ba5a4d-dea3-4eb2-a8c8-c652f58cbc39",
   "alias": "PageHierarchyWebPart",
   "componentType": "WebPart",
   "supportsThemeVariants": true,
