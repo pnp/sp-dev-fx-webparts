@@ -32,19 +32,19 @@
         "title": "Breadcrumbs",
         "description": "Displays breadcrumbs to the current page",
         "id": "ce42762f-a823-4f12-80b2-b708cdebfaa4",
-        "version": "1.0.3.0"
+        "version": "1.0.3.1"
       },
       {
         "title": "Child Pages",
         "description": "Displays a list of child pages",
-        "id": "ce42762f-a823-4f12-80b2-b708cdebfaa5",
-        "version": "1.0.3.0"
+        "id": "ce42762f-a823-4f12-80b2-b708cdebfad5",
+        "version": "1.0.3.1"
       },
       {
         "title": "Tree",
         "description": "Displays a list of pages in a tree",
-        "id": "ce42762f-a823-4f12-80b2-b708cdebfaa6",
-        "version": "1.0.3.0"
+        "id": "ce42762f-a823-4f12-80b2-b708cdebfaf6",
+        "version": "1.0.3.1"
       }
     ]
   },

@@ -14,7 +14,7 @@ export default class BaseWebPart<TProperties> extends BaseClientSideWebPart<TPro
 
         return super.onInit().then(_ => {
             // subscribe a listener
-            Logger.subscribe(new ConsoleListener());
+            Logger.subscribe(ConsoleListener());
 
             // set the active log level -- eventually make this a web part property
             Logger.activeLogLevel = LogLevel.Verbose;
