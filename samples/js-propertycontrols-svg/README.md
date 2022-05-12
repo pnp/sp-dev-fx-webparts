@@ -1,4 +1,4 @@
-# Dynamic Scalable Vector Graphics (SVG) image using propertie
+# Dynamic Scalable Vector Graphics (SVG) image using properties
 
 ## Summary
 
