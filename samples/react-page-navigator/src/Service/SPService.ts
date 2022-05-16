@@ -13,11 +13,11 @@ export class SPService {
    */
   private static GetAnchorUrl(headingValue: string): string {
     let urlExists = true;
-    // .replace(/[^a-zA-Z0-9. ]/g, "") replaces chars except a - z, 0 - 9 and a . with ""
+    // .replace(/[^a-zA-Z0-9.,()\-& ]/g, "") replaces chars except a - z, 0 - 9 , '.', ',', ( ), - and a & with ""
     // .replace(/'|?|\|/| |&/g, "-") replaces any blanks and special characters (list is for sure not complete) with "-"
     // .replace(/--+/g, "-") replaces any additional - with only one -; e.g. --- get replaced with -, -- get replaced with - etc.
     let anchorUrl = `#${headingValue
-      .replace(/[^a-zA-Z0-9. ]/g, "")
+      .replace(/[^a-zA-Z0-9.,()\-& ]/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
       .replace(/--+/g, "-")}`.toLowerCase();
     let urlSuffix = 1;
