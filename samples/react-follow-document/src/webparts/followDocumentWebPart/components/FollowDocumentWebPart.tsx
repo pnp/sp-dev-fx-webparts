@@ -65,22 +65,29 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
     }
     let followDocuments: FollowDocument[] = [];
     this.getFollowDocuments(followDocuments).then((Items: FollowDocument[]) => {
-      //Order by Date
-      Items = Items.sort((a, b) => {
-        return b.followedDateTime.getTime() - a.followedDateTime.getTime();
-      });
-      let uniq = {};
+
       let group: Array<IDropdownOption> = new Array<IDropdownOption>();
-      //Remove duplicated from array
-      let uniqueArray = [];
-      uniqueArray = Items.filter(obj => !uniq[obj.WebUrl] && (uniq[obj.WebUrl] = true));
       group.push({ key: '0', text: 'All Sites' });
-      uniqueArray.forEach(Item => {
-        group.push({
-          key: Item.WebUrl,
-          text: "Site: " + Item.WebName,
+
+      if(Items){ //checking if there are items before performing sort & filter to fix the error of running those functions on undefined
+        //Order by Date
+        Items = Items.sort((a, b) => {
+          return b.followedDateTime.getTime() - a.followedDateTime.getTime();
         });
-      });
+
+        let uniq = {};
+        //Remove duplicated from array
+        let uniqueArray = [];
+        uniqueArray = Items.filter(obj => !uniq[obj.WebUrl] && (uniq[obj.WebUrl] = true));
+        
+        uniqueArray.forEach(Item => {
+          group.push({
+            key: Item.WebUrl,
+            text: "Site: " + Item.WebName,
+          });
+        });
+      }
+
       this.setState({
         Items: Items,
         ItemsSearch: Items,
