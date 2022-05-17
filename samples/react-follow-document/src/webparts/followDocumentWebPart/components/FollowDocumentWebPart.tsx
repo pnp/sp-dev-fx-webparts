@@ -448,6 +448,18 @@ export default class FollowDocumentWebPart extends React.Component<IFollowDocume
             onRenderGridItem={(item, finalSize: ISize, isCompact: boolean) => this._onRenderGridItem(item, finalSize, isCompact)}
           />
         </div>
+        {/* No Items message */}
+        {!this.state.visible && !this.state.ItemsSearch &&
+          <div className={styles.emptyStateControl}>
+            <div className={styles.emptyStateImage}>
+              <img src="https://res.cdn.office.net/officehub/officestartresources/favorites_light_and_dark.svg" alt="Empty state icon" />
+            </div>
+            <div className={styles.emptyStateTextWrapper}>
+              <div className={styles.title} role="status" aria-live="polite">No favorites yet</div>
+              <div className={styles.subtitle} role="status" aria-live="polite">See something you love? Favorite it and we'll put it here.</div>
+            </div>
+          </div>
+        }
       </>
     );
   }
