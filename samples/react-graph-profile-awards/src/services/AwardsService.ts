@@ -20,7 +20,10 @@ export default class AwardsService implements IAwardsService {
     public async getMyAwards(): Promise<IAward[]> {
         const msGraphClient = await this._msGraphClientFactory.getClient("3");
 
-        const listAwardsResponse: IListAwardsResponse = await msGraphClient.api(this.GraphMyAwardsEndpoint).get();
+        const listAwardsResponse: IListAwardsResponse = await msGraphClient
+            .api(this.GraphMyAwardsEndpoint)
+            .orderby('issuedDate desc')
+            .get();
 
         return listAwardsResponse.value || [];
     }    

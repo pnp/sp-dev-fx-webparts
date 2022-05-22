@@ -3,6 +3,7 @@ import styles from './MyAwards.module.scss';
 import { IMyAwardsProps } from './IMyAwardsProps';
 import { IMyAwardsState } from './IMyAwardsState';
 import { IAwardsService } from '../../../services/AwardsService';
+import Award from './Award';
 
 export default class MyAwards extends React.Component<IMyAwardsProps, IMyAwardsState> {
 
@@ -26,17 +27,13 @@ export default class MyAwards extends React.Component<IMyAwardsProps, IMyAwardsS
 
   public render(): React.ReactElement<IMyAwardsProps> {
     const {
-      isDarkTheme,
       hasTeamsContext,
     } = this.props;
 
-    const awards = <ul>{this.state.awards.map(t => <li key={t.id}>{t.displayName} ({t.description}%) - {t.issuedDate}</li>)}</ul>;
+    const awards = <ul>{this.state.awards.map(t => <li key={t.id}><Award award={t} /></li>)}</ul>;
 
     return (
       <section className={`${styles.myAwards} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-        </div>
         <div>
           <h3>My Awards</h3>
           {awards}
