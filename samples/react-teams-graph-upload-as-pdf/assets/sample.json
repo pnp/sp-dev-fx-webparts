@@ -1,0 +1,49 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-teams-graph-upload-as-pdf",
+        "source": "pnp",
+        "title": "Teams Graph Upload as PDF",
+        "shortDescription": "This SPFx web part (or Teams Tab) enables a user to upload a supported file type via drag and drop while the uploaded file will be converted as PDF",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-graph-upload-as-pdf",
+        "longDescription": [
+            "This SPFx web part (or Teams Tab) enables a user to upload a supported file type via drag and drop while the uploaded file will be converted as PDF"
+        ],
+        "creationDateTime": "2020-11-10",
+        "updateDateTime": "2021-11-08",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.13.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-graph-upload-as-pdf/assets/UploadAnimated.gif",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "mmsharepoint",
+                "pictureUrl": "https://github.com/mmsharepoint.png",
+                "name": "Markus Moeller"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

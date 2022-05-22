@@ -11,8 +11,7 @@
     "creationDateTime": "2019-08-13",
     "updateDateTime": "2019-08-13",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -63,7 +62,6 @@
     "authors": [
       {
         "gitHubAccount": "joaojmendes",
-        "company": "Storm Technology Ltd",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "Jo\u00E3o Mendes",
         "twitter": "joaojmendes"

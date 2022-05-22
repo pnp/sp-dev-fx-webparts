@@ -8,14 +8,15 @@ import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import { DialogContent, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { FollowDocumentProperties } from '../followDocumentProperties/followDocumentProperties';
 import { FollowDocumentSendMessage } from '../followDocumentSendMessage/followDocumentSendMessage';
+import { FollowDocument } from '../../models/followDocument';
 
 export default class FollowDocumentDialog extends BaseDialog {
     public _followDocumentState: boolean = false;
     private _webUrl: string;
-    public _filename:string;
-    private _context:WebPartContext;
+    public _filename: string;
+    private _context: WebPartContext;
     public _followTypeDialog: followType;
-    public _fileInfo: any;
+    public _fileInfo: FollowDocument;
     public return: (string) => void;
 
 
@@ -24,7 +25,7 @@ export default class FollowDocumentDialog extends BaseDialog {
         this._followTypeDialog = type;
         this.show();
     }
-    public async initializedTeams(fileInfo: any,context:WebPartContext, type: followType) {
+    public async initializedTeams(fileInfo: FollowDocument, context: WebPartContext, type: followType) {
         this._context = context;
         this._fileInfo = fileInfo;
         this._followTypeDialog = type;

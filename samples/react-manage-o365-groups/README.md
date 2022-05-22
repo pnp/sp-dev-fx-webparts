@@ -59,13 +59,22 @@ react-manage-o365-groups
                     └── mystrings.d.ts
 ```
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.9.1-green.svg)
 
-# Demo
+## Compatibility
+
+![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs access to Microsoft Graph")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+## Demo
 The SPFx solution provides below functionalities:
 
-## O365 Group Listing and Search
+### O365 Group Listing and Search
 The web part lists all public and private O365 groups and helps to search the group by name.
 
 ![Group Listing and Search](./assets/group-listing-search.gif)
@@ -82,22 +91,22 @@ Private|Owner|Manage Group
 Private|Member|Leave Group
 Private|-|Request to Join Group
 
-## Join the Public Group
+### Join the Public Group
 Clicking "Join Group" icon against the O365 group helps to join the public group.
 
 ![Join Public Group](./assets/join-group.gif)
 
-## Join the Private Group
+### Join the Private Group
 Clicking "Request to Join Group" icon against the O365 group helps to send the approval request to the owners of the private group. The approval takes place using Power Automate.
 
 ![Join Private Group](./assets/join-private-group.gif)
 
-## Leave the Group
+### Leave the Group
 Clicking "Leave Group" icon against the O365 group helps to leave the public and private group.
 
 ![Leave Group](./assets/leave-group.gif)
 
-## Create New Group
+### Create New Group
 The web part helps to create new O365 group.
 
 ![New Group](./assets/new-group.gif)
@@ -107,7 +116,7 @@ The web part helps to create new O365 group.
 * [SharePoint Online](https://docs.microsoft.com/en-us/sharepoint/sharepoint-online)
 * [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-# WebPart Properties
+# Web Part Properties
 Property|Type|Required|Comments
 --------|----|--------|--------
 Flow URL|Text|No|URL of MS Flow (Power Automate) to join the private group
@@ -116,20 +125,14 @@ Flow URL|Text|No|URL of MS Flow (Power Automate) to join the private group
 
 Solution|Author(s)
 --------|---------
-react-manage-o365-groups|[Nanddeep Nachan](https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan) )
-&nbsp;|[Smita Nachan](https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan) )
+react-manage-o365-groups|[Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan) )
+&nbsp;|[Smita Nachan](https://github.com/SmitaNachan) (https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan) )
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|January 01, 2020|Initial release
-
-
-# Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 # Prerequisites
 
@@ -205,4 +208,31 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Passing web part properties to React components
 - Call MS Flow (Power Automate) flow from SharePoint Framework web part
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-o365-groups" />
+
+## Video
+
+[![Office 365 group management solution using SharePoint Framework and Microsoft Graph](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=V8n_3ayr-Yw "Office 365 group management solution using SharePoint Framework and Microsoft Graph")
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-manage-o365-groups") to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-manage-o365-groups) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-manage-o365-groups&template=bug-report.yml&sample=react-manage-o365-groups&authors=@nanddeepn%20@SmitaNachan&title=react-manage-o365-groups%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-manage-o365-groups&template=question.yml&sample=react-manage-o365-groups&authors=@nanddeepn%20@SmitaNachan&title=react-manage-o365-groups%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-manage-o365-groups&template=question.yml&sample=react-manage-o365-groups&authors=@nanddeepn%20@SmitaNachan&title=react-manage-o365-groups%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-manage-o365-groups" />

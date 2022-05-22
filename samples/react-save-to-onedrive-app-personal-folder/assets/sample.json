@@ -1,0 +1,56 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-save-to-onedrive-app-personal-folder",
+        "source": "pnp",
+        "title": "Save to User Application Personal Folder in OneDrive",
+        "shortDescription": "This solution shows how to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-to-onedrive-app-personal-folder",
+        "longDescription": [
+            "This solution shows how to manage data stored in user application's personal folder in OneDrive which is one of many good methods to store application data/configuration which may be easily used in apps added to SharePoint page or Teams. The solution is built of two compontents.",
+            "SPFx library which provides the functionality to manage data saved to OneDrive application personal folder and SFIx webpart component which is a very simple solution that uses the library and gets or saves data."
+        ],
+        "creationDateTime": "2022-02-21",
+        "updateDateTime": "2022-02-21",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.14"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-to-onedrive-app-personal-folder/assets/in-sharepoint.png",
+                "alt": "Web Part Preview in SharePoint"
+            },
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-to-onedrive-app-personal-folder/assets/in-teams.png",
+                "alt": "Web Part Preview in Teams"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "Adam-it",
+                "pictureUrl": "https://github.com/Adam-it.png",
+                "name": "Adam Wójcik"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

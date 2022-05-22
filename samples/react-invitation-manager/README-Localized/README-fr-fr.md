@@ -88,4 +88,4 @@ L’exemple de composant WebPart dans cette solution illustre les concepts suiva
 - communication avec Microsoft Graph à l’aide de l’API REST
 - utilisation de la bibliothèque ADAL JS avec les composants WebPart SharePoint Framework créés à l’aide de la fonction React
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

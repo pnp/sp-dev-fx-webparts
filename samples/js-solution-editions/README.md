@@ -15,8 +15,17 @@ extensions:
 ## Summary
 This sample shows a possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution.
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-ga-green.svg)
+## Compatibility
+
+![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 
 ## Applies to
 
@@ -77,4 +86,4 @@ gulp deploy-azure-storage
 ## Resources
 [Handling Multiple Editions of SPFx Solution](http://tricky-sharepoint.blogspot.com/2017/08/handling-multiple-editions-of-spfx.html)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-solution-editions" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />

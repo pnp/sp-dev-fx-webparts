@@ -9,10 +9,9 @@
       "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS."
     ],
     "creationDateTime": "2019-11-23",
-    "updateDateTime": "2019-11-23",
+    "updateDateTime": "2022-04-06",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {

@@ -2,6 +2,21 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-graph-cascading-managed-metadata-client-side-solution",
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-graph-cascading-managed-metadata description"
+      },
+      "longDescription": {
+        "default": "react-graph-cascading-managed-metadata description"
+      }
+    },
     "id": "cdc626ca-e9a7-4d1d-bded-a574bc5e61d0",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,

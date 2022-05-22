@@ -284,6 +284,65 @@
       font-size: 14px;
     }
   }
+
+  :global(.heroCollage) .collageContainer
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    .collageitem {
+      overflow: hidden;
+      flex-shrink: 1;
+      padding: 6px;
+      width: calc(33% - 12px);
+      a{
+        width: 100%;
+      }
+      img{
+        width: inherit;
+      }
+      .heroTitle {
+        font-size: 14px;
+        width: calc(33% - 22px);
+        margin: -80px 0px 0px 0px;
+        position: absolute;
+        bottom: unset;
+      }
+      .heroTitleHover{
+        font-size: 16px;
+      }
+      .info{
+        font-size: 12px;
+      }
+      .description{
+        @include ms-fontColor-white;
+        position: absolute;
+        margin: -90px 0px 0px 0px;
+        bottom: unset;
+        background: rgba(0, 0, 0, 0);
+        width: calc(33% - 22px);
+        transition: .5s ease;
+        font-size: 18px;
+        padding: 20px 0px;;
+        text-align: center;
+      }
+    }
+    
+    .collageItemInner:hover {
+      .description {
+        background: rgba(0, 0, 0, 0.9);
+        width: calc(33% - 22px);
+        position: absolute;
+        margin: -90px 0px 0px 0px;
+        bottom: unset;
+        .info,.heroTitleHover{
+          opacity: 1;
+        }
+      }
+    }
+  }
   
 
   @media all and (max-width: 768px) {

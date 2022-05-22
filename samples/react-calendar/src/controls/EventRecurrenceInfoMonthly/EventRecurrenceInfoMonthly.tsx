@@ -95,9 +95,11 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-  private onStartDateChange(date: Date) {
-    this.setState({ startDate: date });
-    this.applyRecurrence();
+   private onStartDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ startDate: date }, () => {
+      this.applyRecurrence();
+    });
   }
 
   /**
@@ -107,9 +109,12 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-  private onEndDateChange(date: Date) {
-    this.setState({ endDate: date });
-    this.applyRecurrence();
+   private onEndDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+      this.setState({ endDate: date}, () => {
+        this.applyRecurrence();
+      }
+    );
   }
 
   /**
@@ -197,12 +202,16 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {string} value
    * @memberof EventRecurrenceInfoDaily
    */
-  private onNumberOfOcurrencesChange(ev: React.SyntheticEvent<HTMLElement>, value: string) {
+   private onNumberOfOcurrencesChange(
+    ev: React.SyntheticEvent<HTMLElement>,
+    value: string
+  ) {
     ev.preventDefault();
-    this.setState({ numberOcurrences: value });
-    this.applyRecurrence();
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ numberOcurrences: value }, () => {
+      this.applyRecurrence();
+    });
   }
-
   /**
    *
    *
@@ -211,15 +220,22 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoDaily
    */
-  private onDataRangeOptionChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
+   private onDataRangeOptionChange(
+    ev: React.SyntheticEvent<HTMLElement>,
+    option: IChoiceGroupOption
+  ): void {
     ev.preventDefault();
-
-    this.setState({
-      selectdateRangeOption: option.key,
-      disableNumberOcurrences: option.key == 'endAfter' ? false : true,
-      disableEndDate: option.key == 'endDate' ? false : true,
-    });
-    this.applyRecurrence();
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState(
+      {
+        selectdateRangeOption: option.key,
+        disableNumberOcurrences: option.key == "endAfter" ? false : true,
+        disableEndDate: option.key == "endDate" ? false : true,
+      },
+      () => {
+        this.applyRecurrence();
+      }
+    );
   }
 
   /**
@@ -230,15 +246,22 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoMonthly
    */
-  private onPaternChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
+   private onPaternChange(
+    ev: React.SyntheticEvent<HTMLElement>,
+    option: IChoiceGroupOption
+  ): void {
     ev.preventDefault();
-    this.setState({
-      selectPatern: option.key,
-      disableDayOfMonth: option.key == 'monthly' ? false : true,
-    });
-    this.applyRecurrence();
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState(
+      {
+        selectPatern: option.key,
+        disableDayOfMonth: option.key == "monthly" ? false : true,
+      },
+      () => {
+        this.applyRecurrence();
+      }
+    );
   }
-
   public async componentWillMount() {
 
     await this.load();
@@ -253,10 +276,16 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoMonthly
    */
-  private  onWeekOrderMonthChange(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption):void {
-    this.setState({selectedWeekOrderMonth: item.key.toString()});
-    this.applyRecurrence();
+   private onWeekOrderMonthChange(
+    ev: React.FormEvent<HTMLDivElement>,
+    item: IDropdownOption
+  ): void {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ selectedWeekOrderMonth: item.key.toString() }, () => {
+      this.applyRecurrence();
+    });
   }
+
 
   /**
    *
@@ -266,13 +295,14 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoMonthly
    */
-  private onSelectedWeekDayChange(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption):void {
-    this.setState({selectedWeekDay: item.key});
-    this.applyRecurrence();
-  }
-
-  public async  componentDidUpdate(prevProps: IEventRecurrenceInfoMonthlyProps, prevState: IEventRecurrenceInfoMonthlyState) {
-
+   private onSelectedWeekDayChange(
+    ev: React.FormEvent<HTMLDivElement>,
+    item: IDropdownOption
+  ): void {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ selectedWeekDay: item.key }, () => {
+      this.applyRecurrence();
+    });
   }
 
   /**

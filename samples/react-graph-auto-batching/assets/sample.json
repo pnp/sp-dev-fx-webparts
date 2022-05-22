@@ -1,0 +1,50 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching",
+        "title": "Graph auto batching",
+        "source": "pnp",
+        "shortDescription": "This same shows how to abstract batching graph requests",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
+        "longDescription": [
+            "This same shows how to abstract batching graph requests"
+        ],
+        "creationDateTime": "2022-02-03",
+        "updateDateTime": "2022-02-03",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.13.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+                "alt": "No preview available"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "mgwojciech",
+                "pictureUrl": "https://github.com/mgwojciech.png",
+                "name": "Marcin Wojciechowski",
+                "company": "Valo"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

@@ -10,10 +10,9 @@
       "The idea is based of the At a glance section of a news in the BBC news app."
     ],
     "creationDateTime": "2021-09-07",
-    "updateDateTime": "2021-09-07",
+    "updateDateTime": "2021-10-20",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {

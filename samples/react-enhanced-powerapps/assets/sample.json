@@ -1,18 +1,17 @@
 [
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
-    "source": "pnp",
     "title": "Enhanced Power Apps",
+    "source": "pnp",
     "shortDescription": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
     "longDescription": [
       "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
     ],
     "creationDateTime": "2020-07-26",
-    "updateDateTime": "2020-07-26",
+    "updateDateTime": "2022-01-29",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -21,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.13.1"
       }
     ],
     "thumbnails": [
@@ -34,37 +33,37 @@
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/dpstep1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/dpstep1.png?raw=true",
         "alt": "Enhanced Power Apps"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/resize.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/resize.gif?raw=true",
         "alt": "Enhanced Power Apps"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/sizeoptions.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/sizeoptions.png?raw=true",
         "alt": "Enhanced Power Apps"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step1-5.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step1-5.png?raw=true",
         "alt": "Enhanced Power Apps"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step1.png?raw=true",
         "alt": "Enhanced Power Apps"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step2.png?raw=true",
         "alt": "Enhanced Power Apps"
       }
     ],
@@ -75,6 +74,11 @@
         "pictureUrl": "https://github.com/hugoabernier.png",
         "name": "Hugo Bernier",
         "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "kunj-sangani",
+        "pictureUrl": "https://github.com/kunj-sangani.png",
+        "name": "Kunj Balkrishna Sangani"
       }
     ],
     "references": [

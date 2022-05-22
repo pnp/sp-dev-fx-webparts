@@ -13,6 +13,10 @@ This sample describes an SPFx application which implements an image gallery with
 ![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -23,7 +27,7 @@ This sample describes an SPFx application which implements an image gallery with
 
 Solution|Author(s)
 --------|---------
-react-image-gallery | [Ejaz Hussain](https://github.com/ejazhussain) ([@EjazHussain_](https://twitter.com/EjazHussain_))
+react-image-gallery | [Ejaz Hussain](https://github.com/ejazhussain)
 react-image-gallery | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
 
 ## Version history
@@ -75,10 +79,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-image-gallery" />
-
-
-
-
-
-
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-image-gallery" />

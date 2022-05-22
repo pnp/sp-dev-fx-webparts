@@ -22,8 +22,17 @@ A simple Organisation Chart web part using Office UI Fabric, React, REST API bat
 
 ![Organisation Chart for the current user running in local Workbench](./assets/orgchart-mock.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+
+## Compatibility
+
+![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -44,11 +53,7 @@ Version|Date|Comments
 2.0|March 12, 2017|Updated for SPFx 1.0
 2.1|July 19, 2017|Use office-ui-fabric-react and uifabric/styling
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -56,6 +61,8 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 
 ## Features
@@ -71,4 +78,16 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - ServiceScope and ServiceKeys
 - Service Locator pattern to register and consume services
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-organisationchart" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-organisationchart" />

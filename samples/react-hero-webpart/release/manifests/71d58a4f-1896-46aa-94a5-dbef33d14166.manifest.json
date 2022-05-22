@@ -2,7 +2,7 @@
   "id": "71d58a4f-1896-46aa-94a5-dbef33d14166",
   "alias": "HeroWebpartWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "1.3.0",
   "manifestVersion": 2,
   "requiresCustomScript": false,
   "supportedHosts": [

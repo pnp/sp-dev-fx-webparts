@@ -1,0 +1,45 @@
+{
+    "coord":{
+        "lon":-122.12,
+        "lat":47.67
+    },
+    "weather":[
+        {
+            "id":802,
+            "main":"Clouds",
+            "description":"scattered clouds",
+            "icon":"03n"
+        }
+    ],
+    "base":"stations",
+    "main":
+    {
+        "temp":281.05,
+        "pressure":1022,
+        "humidity":81,
+        "temp_min":278.15,
+        "temp_max":283.15
+    },
+    "visibility":16093,
+    "wind":
+    {
+        "speed":4.1,
+        "deg":360
+    },
+    "rain":{},
+    "clouds": {
+        "all":40
+    },
+    "dt":1572920478,
+    "sys":{
+        "type":1,
+        "id":5798,
+        "country":"US",
+        "sunrise":1572879421,
+        "sunset":1572914822
+    },
+    "timezone":-28800,
+    "id":5808079,
+    "name":"Redmond",
+    "cod":200
+}

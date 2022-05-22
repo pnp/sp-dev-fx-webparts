@@ -1,0 +1,14 @@
+.fileLabel {
+    padding-left: 8px;
+    li {
+        list-style: none;
+    }
+    
+    .filelink {
+        margin-left: 6px;
+        text-decoration: none;
+        font-style: italic;
+        font-size: 0.9em;
+        color: "[theme: themePrimary, default: #0078d7]";
+    }
+}

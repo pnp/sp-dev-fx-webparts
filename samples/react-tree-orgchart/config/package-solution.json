@@ -6,7 +6,13 @@
     "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-tree-orgchart.sppkg"

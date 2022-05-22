@@ -18,7 +18,7 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.9.1",
+    "version": "1.12.1",
     "libraryName": "navigator",
     "libraryId": "065ee566-e00d-4058-bbfd-356c8d9a8005",
     "packageManager": "npm",

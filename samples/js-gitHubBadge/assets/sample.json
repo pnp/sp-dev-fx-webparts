@@ -1,18 +1,17 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-js-gitHubBadge",
+    "name": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge",
     "source": "pnp",
     "title": "GitHub Badge",
     "shortDescription": "",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubbadge",
     "longDescription": [
       ""
     ],
     "creationDateTime": "2019-04-18",
     "updateDateTime": "2019-04-18",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -28,7 +27,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-gitHubBadge/assets/1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-gitHubbadge/assets/1.png",
         "alt": "GitHub Badge"
       }
     ],

@@ -1,0 +1,79 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-followed-drag-and-drop-grid",
+        "source": "pnp",
+        "title": "Followed Drag and Drop Grid",
+        "shortDescription": "This web part is a good example (starting point) for a solution to implement alternative view for user followed sites (or any kind of links). The web part uses Microsoft Graph so it presents how to define needed web api permissions in package-solution and use MS Graph API endpoints.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-followed-drag-and-drop-grid",
+        "longDescription": [
+            "YOUR-SHORT-DESCRIPTION"
+        ],
+        "creationDateTime": "2022-01-09",
+        "updateDateTime": "2022-01-09",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.13.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/mainImage.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/appInTeams.png",
+                "alt": "App in Teams"
+            },
+            {
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/nothingToFollow.png",
+                "alt": "Nothisg to follow"
+            },
+            {
+                "type": "image",
+                "order": 103,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/sorting.gif",
+                "alt": "Sorting"
+            },
+            {
+                "type": "image",
+                "order": 104,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/dataAsJson.png",
+                "alt": "Data as JSON"
+            },
+            {
+                "type": "image",
+                "order": 105,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/linkSavedInJsonFile.png",
+                "alt": "Link saved to JSON file"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "Adam-it",
+                "pictureUrl": "https://github.com/Adam-it.png",
+                "name": "Adam Wójcik"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

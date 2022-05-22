@@ -1,0 +1,61 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-taxonomy-file-explorer",
+        "source": "pnp",
+        "title": "Taxonomy File Explorer",
+        "shortDescription": "This solution renders a given Termset as a Tree and incorporates files similar than a folder structure in file explorer.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomy-file-explorer",
+        "longDescription": [
+            "This solution renders a given Termset as a Tree and incorporates files similar than a folder structure in file explorer."
+        ],
+        "creationDateTime": "2021-12-26",
+        "updateDateTime": "2021-12-26",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.13.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/03Link.gif",
+                "alt": "Linking to a file"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/04Move.gif",
+                "alt": "Moving a file"
+            }, 
+            {
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/04Move.gif",
+                "alt": "Copying a file"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "mmsharepoint",
+                "pictureUrl": "https://github.com/mmsharepoint.png",
+                "name": "Markus Moeller"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

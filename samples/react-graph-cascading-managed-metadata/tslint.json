@@ -1,5 +1,5 @@
 {
-  "extends": "@microsoft/sp-tslint-rules/base-tslint.json",
+  "extends": "./node_modules/@microsoft/sp-tslint-rules/base-tslint.json",
   "rules": {
     "class-name": false,
     "export-name": false,
@@ -17,7 +17,6 @@
     "no-switch-case-fall-through": true,
     "no-unnecessary-semicolons": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
     "no-with-statement": true,
     "semicolon": true,
     "trailing-comma": false,

@@ -1,31 +1,41 @@
 {
   // See http://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
-  "version": "0.1.0",
+  "version": "2.0.0",
   "command": "gulp",
-  "isShellCommand": true,
-  "showOutput": "always",
   "args": [
     "--no-color"
   ],
   "tasks": [
     {
-      "taskName": "bundle",
-      "isBuildCommand": true,
+      "label": "bundle",
+      "type": "gulp",
+      "task": "--no-color",
       "problemMatcher": [
         "$tsc"
-      ]
+      ],
+      "group": {
+        "_id": "build",
+        "isDefault": false
+      }
     },
     {
-      "taskName": "test",
-      "isTestCommand": true,
+      "label": "test",
+      "type": "gulp",
+      "task": "--no-color",
       "problemMatcher": [
         "$tsc"
-      ]
+      ],
+      "group": {
+        "_id": "test",
+        "isDefault": false
+      }
     },
     {
-      "taskName": "serve",
-      "isWatching": true,
+      "label": "serve",
+      "type": "gulp",
+      "task": "--no-color",
+      "isBackground": true,
       "problemMatcher": [
         "$tsc"
       ]

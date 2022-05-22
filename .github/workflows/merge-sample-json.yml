@@ -1,0 +1,59 @@
+name: Merge sample metadata
+
+on:
+  push:
+    branches:
+      # When someone push to `main` branch
+      - main
+    paths:
+      - 'samples/**/assets/sample.json'
+
+jobs:
+  build:
+    name: 'Merge all sample.json files to samples.json'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          path: main
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Checkout Docs branch
+        uses: actions/checkout@v2
+        with:
+          ref: Docs
+          path: Docs
+      - name: Join samples  
+        run: |
+          jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./Docs/docs/samples.json
+      - name: Validate JSON
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: ./main/templates/metadata-schema.json
+          INPUT_JSONS: ./Docs/docs/samples.json
+      - name: copy file to gh-pages
+        uses: canastro/copy-file-action@master
+        with:
+          source: "./Docs/docs/samples.json" 
+          target: "./gh-pages/samples.json"     
+      - name: Commit samples.json to gh-pages
+        uses: EndBug/add-and-commit@v6
+        with:
+          cwd: ./gh-pages
+          branch: gh-pages
+          add: 'samples.json --force'
+          push: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit samples.json to Docs
+        uses: EndBug/add-and-commit@v6
+        with:
+          cwd: ./Docs
+          branch: Docs
+          add: 'docs/samples.json --force'
+          push: true
+          token: ${{ secrets.GITHUB_TOKEN }}

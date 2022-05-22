@@ -1,0 +1,54 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-emoji-ratings",
+        "source": "pnp",
+        "title": "Emoji Ratings",
+        "shortDescription": "Take emoji-based reactions or feedback for a given news/article/post",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-emoji-ratings",
+        "longDescription": [
+            "This is sample web part which can be used to take emoji based reaction or feedback for particular news/article/posts.",
+            "We all know every organizations would be using SharePoint news features for company's internal communications from HR to IT updates and some time annoucements. News created in SharePoint are created as Pages in library. Idea behind this web part is to take employee/user's feedback as emoji reactions on particular news. This web part can also be used on wiki articles or blog posts to take similar reactions. Web part uses concept of 1 to 5 star based rating system(configurable), you can decide low to high based on your preference."
+        ],
+        "creationDateTime": "2021-09-24",
+        "updateDateTime": "2021-09-24",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.12.1"
+            },
+            {
+                "key": "PNPCONTROLS",
+                "value": "PropertyFieldCollectionData, PropertyFieldColorPicker, Placeholder"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-emoji-ratings/assets/EmojiWPinAction.gif",
+                "alt": "Web part in action"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "siddharth-vaghasia",
+                "pictureUrl": "https://github.com/siddharth-vaghasia.png",
+                "name": "Siddharth Vaghasia"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

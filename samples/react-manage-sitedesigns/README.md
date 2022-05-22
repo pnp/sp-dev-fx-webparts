@@ -85,18 +85,23 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 ![tenant properties](./assets/screen17.jpg)  
 
 
+## Compatibility
 
-
-
-## Used SharePoint Framework Version 
-![SPFx 1.8.0](https://img.shields.io/badge/version-1.8.0-green.svg)
+![SPFx 1.8](https://img.shields.io/badge/SPFx-1.8.0-green.svg) 
+![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
@@ -108,18 +113,13 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components.
 
 Solution|Author(s)
 --------|---------
-Site Design Manager WebPart|João Mendes
+Site Design Manager Web Part|João Mendes
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|April 08, 2019|Initial release
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -130,6 +130,11 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
+  - Add to AppCatalog and deploy
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-sitedesigns" />
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-manage-sitedesigns" />

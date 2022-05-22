@@ -20,17 +20,17 @@ extensions:
 
 This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and [socket.io](http://socket.io/).
 
-<p align="center">
+
   <img width="900" src="./assets/animated-demo.gif"/>
-</p>
+
 
 ### Solution Architecture ###
 
 Here is the solution overview:
 
-<p align="center">
+
   <img width="600" src="./assets/solution_overview.png"/>
-</p>
+
 
 1. The SPFx Web Part first connects to the Azure web application via socket.io and subscribes to events (the web application have to be in https and allow cross domain calls (CORS)).
 2. An Azure logic app is used to catch new item creation events in the SharePoint list.
@@ -64,7 +64,7 @@ Before starting, you'll need to install some prerequisites:
 
 Solution|Author(s)
 --------|---------
-react-real-time | Franck Cornu (MVP, [@franckcornu](https://twitter.com/FranckCornu))
+react-real-time | [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
 
 ## Version history
 
@@ -72,11 +72,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|October 25, 2016 | Initial commit
 1.1|November 4, 2016 | Replaced Microsoft Flow by Azure Logic Apps
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -129,10 +124,7 @@ Version|Date|Comments
 3. When prompted, enter your Azure credentials
 4. Wait for the installation to finish. It can take several minutes to complete due to the npm packages installation on the Azure web application.
 5. Go to the ".\client" folder and run the `gulp serve` cmd to launch the SharePoint Workbench on localhost. Open the network panel in developer console and make sure the Azure web application can be reached.
-
-    <p align="center">
-        <img width="600" src="./assets/network-console.png"/>
-    </p>
+![](./assets/network-console.png)
 
    You can let the `gulp serve` cmd running.
 
@@ -141,38 +133,28 @@ Version|Date|Comments
 
 - **[Condition]** *"SharePoint - When a new item is created"*. Select 3 seconds interval.
 - **[Action]** *"Service Bus - Send Message"*
-
-    <p align="center">
-        <img width="400" src="./assets/flow.png"/>
-    </p>
+![](./assets/flow.png)
+    
 
    **TIP**
 
    The first time you will add the "Service bus - Send Message" action, you will asked to enter the service bus connection string:
-
-    <p align="center">
-        <img width="400" src="./assets/service-bus-new-connection.png"/>
-    </p>
+   ![](./assets/service-bus-new-connection.png)
+    
 
    To get it, go to your Azure portal and select the "*SPFxSocketIODemo*" resource group and click on the service bus resource.
    From here your will be able to get the primary connection string:
-
-    <p align="center">
-        <img width="600" src="./assets/service-bus.png"/>
-    </p>
+   ![](./assets/service-bus.png)
+    
 
 7. Go back to your list and add initial items in the list.
 8. In your SharePoint site, [upload the workbench.aspx page](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
-
-    <p align="center">
-        <img width="400" src="./assets/spfx-initial.png"/>
-    </p>
+![](./assets/spfx-initial.png)
+    
 
 9. Go back to your list and create some others items. Because of the flow is asynchronous, you should see new items appear after few seconds (between 5 and 30 seconds) on the opened Workbench page.
-
-    <p align="center">
-        <img width="400" src="./assets/spfx-newitem.png"/>
-    </p>
+![](./assets/spfx-newitem.png)
+    
 
 
 ## Features
@@ -183,4 +165,26 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using PnP JS library (1.0.5) to get items from a list.
 - Using Office UI Fabric React components to build a beautiful design in minutes.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-real-time" />
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-real-time%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-real-time) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-real-time&template=bug-report.yml&sample=react-real-time&authors=@FranckyC&title=react-real-time%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-real-time&template=question.yml&sample=react-real-time&authors=@FranckyC&title=react-real-time%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-real-time&template=suggestion.yml&sample=react-real-time&authors=@FranckyC&title=react-real-time%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-real-time" />

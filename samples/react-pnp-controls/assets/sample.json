@@ -1,0 +1,68 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-pnp-controls",
+    "source": "pnp",
+    "title": "SharePoint Framework PnP Controls Sample",
+    "shortDescription": "This is a sample project that contains a web part which makes use of the PnP SPFx Controls",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-controls",
+    "longDescription": [
+      "This is a sample project that contains a web part which makes use of the PnP SPFx Controls"
+    ],
+    "creationDateTime": "2020-12-16",
+    "updateDateTime": "2020-12-16",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": " PropertyFieldListPicker, PropertyFieldTermPicker, Placeholder, ListView, FileTypeIcon"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls/assets/webpart-outcome.gif",
+        "alt": "SharePoint Framework PnP Controls Sample"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls/assets/documents.png",
+        "alt": "SharePoint Framework PnP Controls Sample"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "estruyf",
+        "company": "Struyf Consulting",
+        "pictureUrl": "https://github.com/estruyf.png",
+        "name": "Elio Struyf",
+        "twitter": "eliostruyf"
+      },
+      {
+        "gitHubAccount": "Swaminathan-Sriram",
+        "company": "",
+        "pictureUrl": "https://github.com/Swaminathan-Sriram.png",
+        "name": "Swaminathan Sriram",
+        "twitter": "SwaminathanSri3"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

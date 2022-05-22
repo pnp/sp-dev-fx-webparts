@@ -1,17 +1,22 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "1f2cbf1e-b43a-475d-beda-35cdad7ff4f7",
+  "id": "5515ef23-6a72-4099-b9eb-4a92dec25693",
   "alias": "VersionDisplayWebPart",
   "componentType": "WebPart",
 
+  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
 
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-  "supportedHosts": ["SharePointWebPart"],
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "Version Display" },
     "description": { "default": "Demonstrates how to update and display the version number of a web part" },

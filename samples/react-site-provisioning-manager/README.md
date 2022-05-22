@@ -8,8 +8,16 @@ You can also find out how you can use React Hooks to manage the state of your ap
 
 ![react-provisioning-manager](./assets/screenshot.gif)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9-green.svg)
+
+## Compatibility
+
+![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
@@ -158,4 +166,4 @@ Open the web part configurations and set the values:
 2. Get provisioning function URL: Go to the Azure functions in Azure portal and click on "GetProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 3. Apply provisioning function URL: Go to the Azure functions in Azure portal and click on "ApplyProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />

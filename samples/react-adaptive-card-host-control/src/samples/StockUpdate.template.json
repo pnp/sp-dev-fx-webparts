@@ -1,0 +1,83 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "${companyName}",
+                    "size": "Medium",
+                    "wrap": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${primaryExchange}: ${symbol}",
+                    "isSubtle": true,
+                    "spacing": "None",
+                    "wrap": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "{{DATE(${formatEpoch(latestUpdate, 'yyyy-MM-ddTHH:mm:ssZ')}, SHORT)}} {{TIME(${formatEpoch(latestUpdate, 'yyyy-MM-ddTHH:mm:ssZ')})}}",
+                    "wrap": true
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "None",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${formatNumber(latestPrice, 2)} ",
+                                    "size": "ExtraLarge",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${if(change >= 0, '▲', '▼')} ${formatNumber(change,2)} USD (${formatNumber(changePercent * 100, 2)}%)",
+                                    "color": "${if(change >= 0, 'good', 'attention')}",
+                                    "spacing": "None",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "FactSet",
+                                    "facts": [
+                                        {
+                                            "title": "Open",
+                                            "value": "${open} "
+                                        },
+                                        {
+                                            "title": "High",
+                                            "value": "${high} "
+                                        },
+                                        {
+                                            "title": "Low",
+                                            "value": "${low} "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

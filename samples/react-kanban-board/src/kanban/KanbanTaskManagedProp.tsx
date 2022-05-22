@@ -4,7 +4,7 @@
 import * as React from 'react';
 import styles from './KanbanTaskManagedProp.module.scss';
 import { IKanbanTaskManagedProps, KanbanTaskMamagedPropertyType } from './IKanbanTask';
-import {  Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import ReactHtmlParser from 'react-html-parser';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react';
 
@@ -67,10 +67,8 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                                 size={PersonaSize.size32}
                                 hidePersonaDetails={false}
                             />))
-                            )
-                        )
+                        ))
                     }
-                  };
                 </span>);
                 break;
             case KanbanTaskMamagedPropertyType.complex:

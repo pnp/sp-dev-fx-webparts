@@ -9,10 +9,9 @@
       "This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder."
     ],
     "creationDateTime": "2020-10-04",
-    "updateDateTime": "2020-10-04",
+    "updateDateTime": "2021-10-19",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -21,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.13.0"
       },
       {
         "key": "SPFX-OUTLOOKADDIN",
@@ -46,6 +45,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-save-attachments/assets/react-save-attachments-2.gif?raw=true",
         "alt": "Save Attachments"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/Hl4zu9YeeRA",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [

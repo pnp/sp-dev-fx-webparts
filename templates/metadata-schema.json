@@ -1,0 +1,210 @@
+{
+    "$id": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "pattern": "pnp-sp-dev-spfx-web-parts-.*"
+            },
+            "version": {
+                "type": "string"
+            },
+            "source": {
+                "type": "string",
+                "default": "pnp",
+                "pattern": "pnp"
+            },
+            "title": {
+                "type": "string"
+            },
+            "url": {
+                "type": "string",
+                "pattern": "https:\/\/github.com\/pnp\/sp-dev-fx-webparts\/tree\/main\/samples\/.*"
+            },
+            "creationDateTime": {
+                "type": "string",
+                "format": "date"
+            },
+            "updateDateTime": {
+                "type": "string",
+                "format": "date"
+            },
+            "shortDescription": {
+                "type": "string"
+            },
+            "longDescription": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "products": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "categories": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "metadata": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "key": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "key",
+                        "value"
+                    ]
+                }
+            },
+            "thumbnails": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "image",
+                                    "video",
+                                    "slideshow"
+                                ]
+                            },
+                            "order": {
+                                "type": "integer"
+                            },
+                            "alt": {
+                                "type": "string"
+                            }
+                        },
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "slideshow"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "slides": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "order": {
+                                                "type": "integer"
+                                            },
+                                            "alt": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "url",
+                                            "order",
+                                            "alt"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "slides"
+                            ]
+                        },
+                        "else": {
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "url"
+                            ]
+                        },
+                        "required": [
+                            "type",
+                            "order",
+                            "alt"
+                        ]
+                    }
+                ]
+            },
+            "authors": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "gitHubAccount": {
+                                "type": "string",
+                                "pattern": "^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$"
+                            },
+                            "company": {
+                                "type": "string"
+                            },
+                            "pictureUrl": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "gitHubAccount"
+                        ]
+                    }
+                ]
+            },
+            "references": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "url"
+                        ]
+                    }
+                ]
+            }
+        },
+        "required": [
+            "name",
+            "source",
+            "title",
+            "url",
+            "shortDescription",
+            "products",
+            "metadata",
+            "thumbnails",
+            "authors",
+            "creationDateTime",
+            "updateDateTime"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.14.0",
+    "libraryName": "spfx-pnp-js-example",
+    "libraryId": "d20ceaf6-094b-4086-b7a0-85761bc8be23",
+    "packageManager": "npm",
+    "solutionShortDescription": "spfx-pnp-js-example description",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1038,9 +1038,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
                       }
                     },
                   ],
-                  disabled: !this.properties.sites || this.properties.sites.length == 0 || !this.properties.detailListFieldsCollectionData || this.properties.detailListFieldsCollectionData.length == 0,
-
-
+                  disabled: !this.properties.sites || this.properties.sites.length == 0 || !this.properties.detailListFieldsCollectionData || this.properties.detailListFieldsCollectionData.length == 0
                 })]
             }
           ]
@@ -1238,7 +1236,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
     this.ListsFields[row.SiteCollectionSource][option.key] = fields;
   }
 
-  private updateFieldType(row: any, fieldId: string, option: any, updateFunction: any) {
+  private updateFieldType(row: any, fieldId: string, option: any, updateFunction: (fieldId: string, value: any) => void) {
     updateFunction(fieldId, option.key);
     row.SPFieldType = SharePointFieldTypes.GetSPFieldTypeByString(option.FieldType);
   }
@@ -1253,7 +1251,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
     }
   }
 
-  private UpdateListNameById(row: IMappingFieldData, fieldId: string, option: IDropdownOption, updateFunction: any, errorFunction: any) {
+  private UpdateListNameById(row: IMappingFieldData, fieldId: string, option: IDropdownOption, updateFunction: (fieldId: string, value: any) => void, errorFunction: any) {
     updateFunction(fieldId, option.key);
     row.ListSourceFieldName = option.text;
   }

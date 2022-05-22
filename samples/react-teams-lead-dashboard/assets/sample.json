@@ -1,0 +1,72 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard",
+        "source": "pnp",
+        "title": "Lead Dashboard",
+        "shortDescription": "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-lead-dashboard",
+        "longDescription": [
+            "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app."
+        ],
+        "creationDateTime": "2021-10-05",
+        "updateDateTime": "2021-10-05",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.12.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-lead-dashboard/assets/LeadAssistDashboard_overview.png",
+                "alt": "Lead Dashboard"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "PaoloPia",
+                "company": "PiaSys.com",
+                "pictureUrl": "https://github.com/PaoloPia.png",
+                "name": "Paolo Pialorsi",
+                "twitter": "PaoloPia"
+            },
+            {
+                "gitHubAccount": "GuidoZam",
+                "company": "PiaSys.com",
+                "pictureUrl": "https://github.com/GuidoZam.png",
+                "name": "Guido Zambarda"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            },
+            {
+                "name": "Building for Microsoft Teams",
+                "description": "Learn how to create SPFx web parts that integrate with the Microsoft Teams context.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview"
+            },
+            {
+                "name": "Use Microsoft Graph in your solution",
+                "description": "Learn how you can leverage the Microsoft Graph API from your custom developed SPFx web parts.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
+            },
+            {
+                "name": "Publish SharePoint Framework applications to the Marketplace",
+                "description": "Publishing your SharePoint Framework solutions to marketplace (also known as AppSource) and to SharePoint store, which allows you to reach other organizations and let them easily install your application in their Microsoft 365 tenant.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview"
+            }
+        ]
+    }
+]

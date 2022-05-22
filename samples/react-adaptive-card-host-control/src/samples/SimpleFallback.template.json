@@ -1,0 +1,26 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Fallback test:",
+            "wrap": true
+        },
+        {
+            "type": "Steve Holt!",
+            "egg": "her?",
+            "fallback": "drop"
+        },
+        {
+            "type": "Graph",
+            "someProperty": "foo",
+            "fallback": {
+                "type": "TextBlock",
+                "text": "${fallback.message}",
+                "wrap": true
+            }
+        }
+    ]
+}

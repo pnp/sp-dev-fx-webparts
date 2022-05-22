@@ -150,10 +150,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                 this.properties.site
               ).then((response3) => {
                 var col: IPropertyPaneDropdownOption[] = [];
-                for (var _key in response3.value) {
+                for (var _innerKey in response3.value) {
                   col.push({
-                    key: response3.value[_key]["InternalName"],
-                    text: response3.value[_key]["Title"],
+                    key: response3.value[_innerKey]["InternalName"],
+                    text: response3.value[_innerKey]["Title"],
                   });
                 }
                 this._columnOptions = col;
@@ -390,10 +390,12 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
 
   private _renderList(items: any[]): void {
     var calItems: EventObjectInput[] = items.map((list: any) => {
+      const start = list[this.properties.start];
+      const end = list[this.properties.end];
       return {
         title: list[this.properties.title],
-        start: list[this.properties.start],
-        end: list[this.properties.end],
+        start: moment.utc(start,'YYYY-MM-DD HH:mm:ss').toDate(),
+        end: moment.utc(end,'YYYY-MM-DD HH:mm:ss').toDate(),
         id: list["Id"],
         detail: list[this.properties.detail],
       };
@@ -405,9 +407,9 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       events: calItems,
       eventClick: (_event) => {
         var eventDetail =
-          moment(_event["start"]).format("MM/DD/YYYY hh:mm") +
-          " - " +
-          moment(_event["end"]).format("MM/DD/YYYY hh:mm") +
+        moment.utc(_event["start"]).local().format('YYYY-MM-DD hh:mm A') +
+        " - " +
+        moment.utc(_event["end"]).local().format('YYYY-MM-DD hh:mm A') +
           "<br>" +
           _event["detail"];
         swal2.default(_event.title, eventDetail, "info");
@@ -451,10 +453,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
               this.properties.site
             ).then((response3) => {
               var col: IPropertyPaneDropdownOption[] = [];
-              for (var _key in response3.value) {
+              for (var _innerKey in response3.value) {
                 col.push({
-                  key: response3.value[_key]["InternalName"],
-                  text: response3.value[_key]["Title"],
+                  key: response3.value[_innerKey]["InternalName"],
+                  text: response3.value[_innerKey]["Title"],
                 });
               }
               this._columnOptions = col;

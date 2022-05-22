@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "drag-and-drop-followed-sites-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dragAndDropFollowedSites/DragAndDropFollowedSitesWebPart.js",
+          "manifest": "./src/webparts/dragAndDropFollowedSites/DragAndDropFollowedSitesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DragAndDropFollowedSitesWebPartStrings": "lib/webparts/dragAndDropFollowedSites/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

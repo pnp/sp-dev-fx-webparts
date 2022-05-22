@@ -24,7 +24,9 @@
       },
       "officeFabricIconFontName": "CompassNW",
       "properties": {
-        "pagesToDisplay": "none"
+        "pagesToDisplay": "none",
+        "treeFrom": 1,
+        "treeExpandTo": 10
       }
     }
   ]

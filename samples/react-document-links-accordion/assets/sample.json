@@ -1,0 +1,88 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion",
+    "source": "pnp",
+    "title": "Documents Links Accordion",
+    "shortDescription": "This web part allows user create a accordion with documents links grouped by any column of document library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-links-accordion",
+    "longDescription": [
+      "This web part allows user create a accordion with documents links grouped by any column of document library.",
+      "When the user clicks on the header it dynamically load documents."
+    ],
+    "creationDateTime": "2021-10-10",
+    "updateDateTime": "2021-10-10",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.12.1"
+      },
+      {
+        "key": "SPFX-FULLPAGEAPP",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      },
+      {
+        "key": "REACT-HOOKS",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldMessage, PropertyFieldSpinner, Placeholder, AccessibleAccordion"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
+        "alt": "Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
+        "alt": "Screen shot of web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

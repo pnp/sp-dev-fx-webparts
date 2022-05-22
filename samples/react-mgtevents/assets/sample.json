@@ -1,0 +1,82 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-mgtevents",
+    "source": "pnp",
+    "title": "MGT Events",
+    "shortDescription": "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents",
+    "longDescription": [
+      "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls"
+    ],
+    "creationDateTime": "2020-11-29",
+    "updateDateTime": "2020-11-29",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-FULLPAGEAPP",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg",
+        "alt": "MGT Events"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Using single part app pages in SharePoint Online",
+        "description": "Single part app pages provide a capability to host SharePoint Framework web parts or Microsoft Teams applications in SharePoint Online with a locked layout. End users cannot modify or configure the page that is using the Single Part App Page layout.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/single-part-app-pages?tabs=pnpposh"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

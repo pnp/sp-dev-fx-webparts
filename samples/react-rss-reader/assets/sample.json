@@ -11,8 +11,7 @@
     "creationDateTime": "2020-11-22",
     "updateDateTime": "2020-11-22",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -28,8 +27,14 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/images/react-rss-reader.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader.gif",
         "alt": "SharePoint Framework RSS Reader"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/rss_property_pane.png",
+        "alt": "Property Pane"
       }
     ],
     "authors": [

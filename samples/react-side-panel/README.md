@@ -21,8 +21,17 @@ The web part illustrates creation and usage of Side Panel (Sidebar) control.
 
 ![React Side Panel Client-Side Web Part](./assets/side-panel.gif)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-ga-green.svg)
+
+## Compatibility
+
+![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -73,4 +82,4 @@ This package produces the following:
 * dist/* - the bundled script, along with other resources
 * deploy/* - all resources which should be uploaded to a CDN.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-side-panel" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-side-panel" />

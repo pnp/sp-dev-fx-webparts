@@ -14,25 +14,40 @@
       "termsOfUseUrl": "",
       "mpnId": ""
     },
-    "webApiPermissionRequests": [{  
-      "resource": "Microsoft Graph",  
-      "scope": "Files.Read"  
-  }, {  
-      "resource": "Microsoft Graph",  
-      "scope": "Files.Read.All"  
-  }, {  
-      "resource": "Microsoft Graph",  
-      "scope": "Sites.Read.All"  
-  }, {  
-    "resource": "Microsoft Graph",  
-    "scope": "Team.ReadBasic.All"  
-  }, {  
-    "resource": "Microsoft Graph",  
-    "scope": "Channel.ReadBasic.All"  
-  }, {  
-    "resource": "Microsoft Graph",  
-    "scope": "ChannelMessage.Send"  
-  }] 
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Team.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Channel.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ChannelMessage.Send"
+      }
+    ] 
   },
   "paths": {
     "zippedPackage": "solution/follow-document-web-part.sppkg"

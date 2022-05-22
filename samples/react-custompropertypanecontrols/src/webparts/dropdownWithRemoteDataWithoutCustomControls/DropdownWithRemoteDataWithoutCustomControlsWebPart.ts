@@ -39,29 +39,29 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
       return;
     }
 
-    this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'lists');
+    this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'lists', undefined, this.clearDomNode);
 
     this.loadLists().then((listOptions: IDropdownOption[]) => {
-        this.lists = listOptions;
-        this.listsDropdownDisabled = false;
+      this.lists = listOptions;
+      this.listsDropdownDisabled = false;
 
-        //if the list was already selected, then get columns
-        if (this.properties.list) {
-          //go and load up dynamic column data
-          this.loadItems().then((itemOptions: IDropdownOption[]): void => {
-            this.items = itemOptions;
-            this.context.propertyPane.refresh();
-            this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-            this.render();
-          });
-        }
-        else {
-          //else no list pre selected, so we can continue
+      //if the list was already selected, then get columns
+      if (this.properties.list) {
+        //go and load up dynamic column data
+        this.loadItems().then((itemOptions: IDropdownOption[]): void => {
+          this.items = itemOptions;
           this.context.propertyPane.refresh();
           this.context.statusRenderer.clearLoadingIndicator(this.domElement);
           this.render();
-        }
-      });
+        });
+      }
+      else {
+        //else no list pre selected, so we can continue
+        this.context.propertyPane.refresh();
+        this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+        this.render();
+      }
+    });
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
@@ -79,7 +79,7 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
       // refresh the item selector control by repainting the property pane
       this.context.propertyPane.refresh();
       // communicate loading items
-      this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'items');
+      this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'items', undefined, this.clearDomNode);
 
       this.loadItems()
         .then((itemOptions: IDropdownOption[]): void => {
@@ -87,12 +87,14 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
           this.items = itemOptions;
           // enable item selector
           this.itemsDropdownDisabled = false;
-          // clear status indicator
-          this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-          // re-render the web part as clearing the loading indicator removes the web part body
-          this.render();
-          // refresh the item selector control by repainting the property pane
-          this.context.propertyPane.refresh();
+          setTimeout(() => {
+            // clear status indicator
+            this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+            // re-render the web part as clearing the loading indicator removes the web part body
+            this.render();
+            // refresh the item selector control by repainting the property pane
+            this.context.propertyPane.refresh();
+          }, 5000);
         });
     }
     else {
@@ -143,44 +145,46 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
 
   private loadLists(): Promise<IDropdownOption[]> {
     const dataService = (Environment.type === EnvironmentType.Test || Environment.type === EnvironmentType.Local) ?
-        new MockListService() :
-        new ListService(this.context);
+      new MockListService() :
+      new ListService(this.context);
 
     return new Promise<IDropdownOption[]>(resolve => {
       dataService.getLists()
-      .then((response: IList[]) => {
-          var options : IDropdownOption[] = [];
+        .then((response: IList[]) => {
+          var options: IDropdownOption[] = [];
 
           response.forEach((item: IList) => {
-            options.push({"key": item.Id, "text": item.Title});
+            options.push({ "key": item.Id, "text": item.Title });
           });
 
           resolve(options);
-      });
+        });
     });
   }
 
-  private loadItems(): Promise<IDropdownOption[]> {
+  private loadItems(): Promise<IDropdownOption[] | void> {
     if (!this.properties.list) {
       // resolve to empty options since no list has been selected
       return Promise.resolve();
     }
 
     const dataService = (Environment.type === EnvironmentType.Test || Environment.type === EnvironmentType.Local) ?
-        new MockListService() :
-        new ListService(this.context);
+      new MockListService() :
+      new ListService(this.context);
 
     return new Promise<IDropdownOption[]>(resolve => {
       dataService.getList(this.properties.list)
-      .then((response) => {
-          var options : IDropdownOption[] = [];
+        .then((response) => {
+          var options: IDropdownOption[] = [];
 
-          response.forEach((item: IListItem) => {
-            options.push({"key": item.Id, "text": item.Title});
-          });
+          if (response && response.length) {
+            response.forEach((item: IListItem) => {
+              options.push({ "key": item.Id, "text": item.Title });
+            });
+          }
 
           resolve(options);
-      });
+        });
     });
   }
 
@@ -195,5 +199,9 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
 
   private configureWebPart(): void {
     this.context.propertyPane.open();
+  }
+
+  private clearDomNode = (domNode: HTMLElement): void => {
+    ReactDom.unmountComponentAtNode(domNode);
   }
 }

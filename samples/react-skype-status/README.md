@@ -25,8 +25,17 @@ Allows you to properly display and subscribe to change of users' availability.
 See the demo:  
 ![demo](./images/demo.gif)
 
-## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+
+## Compatibility
+
+![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
+![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -50,12 +59,6 @@ Version|Date|Comments
 1.1|June 25th, 2018|Upgrade to 1.5
 1.0|December 1, 2017|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 ### Authentication
 Because the Skype API's are secured, you first need to register an Azure Active Directory application.  
@@ -75,6 +78,8 @@ Select under `delegated permissions` both `Read/Write Skype user contacts and gr
 ![grant permission](./images/7.PNG)  
 Don't forget to click on `Grant permissions` and `yes`.
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 ### Updating the app
 After copying that sample to your local machine and running `npm install` to install the depenencies, `/src/webparts/skypePresence/services/Constants.ts` open your favorite editor. Make sure you replace the value of `ApplicationIdKey` to the value application id we kept earlier.  
 
@@ -87,4 +92,28 @@ Don't forget to run `gulp serve --nobrowser` to start the debugging server.
 Because Skype needs to silently redirect the user to a page for the authentication flow, you need to create an additional page called `skypepresence` in your site.  
 You don't need to add anything on that page.  
 
-![tracking image](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-skype-status)
+
+## Help
+
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-skype-status") to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-skype-status) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-skype-status&template=bug-report.yml&sample=react-skype-status&authors=@baywet&title=react-skype-status%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-skype-status&template=question.yml&sample=react-skype-status&authors=@baywet&title=react-skype-status%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-skype-status&template=question.yml&sample=react-skype-status&authors=@baywet&title=react-skype-status%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+![tracking image](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-skype-status)

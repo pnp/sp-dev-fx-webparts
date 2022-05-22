@@ -11,8 +11,7 @@
     "creationDateTime": "2020-03-23",
     "updateDateTime": "2020-03-23",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -44,6 +43,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-yammer-praise/assets/screenshot2.gif?raw=true",
         "alt": "Yammer Praise using aadTokenProvider"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/fYDqjOEuTKY",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
