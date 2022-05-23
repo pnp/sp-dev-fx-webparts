@@ -1,14 +1,16 @@
-# react-graph-profile-awards
+# My Awards
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This webpart is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this webpart could include the ability to add new awards to your profile. 
 
-[picture of the solution in action, if possible]
+In the meantime, you can add a new award using this request: [https://docs.microsoft.com/en-us/graph/api/profile-post-awards?view=graph-rest-beta&tabs=http](https://docs.microsoft.com/en-us/graph/api/profile-post-awards?view=graph-rest-beta&tabs=http) (You can use [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) tool to do so.)
+
+![my-awards](./assets/react-graph-profile-awards.png)
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.13-green.svg)
+![version](https://img.shields.io/badge/version-1.14-green.svg)
 
 ## Applies to
 
@@ -19,20 +21,21 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+> You need to grant any of these permissions to MS Graph API (from least to most privileged): _User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All_
+
+> Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/)
 
 ## Solution
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| react-graph-profile-awards | Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez) |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | May 23, 2022 | Initial release |
 
 ## Disclaimer
 
@@ -43,26 +46,18 @@ Short summary on functionality and used technologies.
 ## Minimal Path to Awesome
 
 - Clone this repository
+- Configure SharePoint permissions to Graph API (see Prerequisites). Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/)
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
-
 ## Features
-
-Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- Using the MS Graph Profile Awards endpoint to list the awards of the current user
+- Using ServiceScope and DI concept to get a _MSGraphClientFactory_
 
 ## References
 
