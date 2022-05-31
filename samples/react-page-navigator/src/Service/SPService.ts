@@ -15,16 +15,17 @@ export class SPService {
     let anchorUrl = `#${headingValue
       .toLowerCase()
       .trim()
-      .replace(/[^a-zA-Z0-9.,()!\-& ]/g, "")
-      .replace(/\'|\?|\\|\/| |\&/g, "-")
+      .replace(/[{}|\[\]\<\>#@"'^%`?;:/=~\\]/g, " ")
       .replace( /^\-*|\-*$/g , "")
+      .trim()
+      .replace(/\'|\?|\\|\/| |\&/g, "-")
       .replace(/--+/g, "-")}`;
 
     let counter = 1;
     this.allUrls.forEach(url => {
       if (url === anchorUrl) {
         if (counter != 1) {
-          anchorUrl = anchorUrl.slice(0, -2) + '-' + counter;
+          anchorUrl = anchorUrl.slice(0, -((counter - 1).toString().length + 1)) + '-' + counter;
 
         } else {
           anchorUrl += '-1';
@@ -60,6 +61,8 @@ export class SPService {
       let subHeadingIndex = -1;
       let prevHeadingOrder = 0;
 
+      this.allUrls = [];
+
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.innerHTML) {
@@ -76,6 +79,7 @@ export class SPService {
 
             const anchorUrl = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
+            console.log(this.allUrls);
 
             /* Add links to Nav element */
             if (anchorLinks.length === 0) {
