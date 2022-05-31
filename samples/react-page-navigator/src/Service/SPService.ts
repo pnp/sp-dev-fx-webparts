@@ -12,33 +12,29 @@ export class SPService {
    * @returns anchorUrl
    */
   private static GetAnchorUrl(headingValue: string): string {
-    let urlExists = true;
-    // .replace(/[^a-zA-Z0-9.,()\-& ]/g, "") replaces chars except a - z, 0 - 9 , '.', ',', ( ), - and a & with ""
-    // .replace(/'|?|\|/| |&/g, "-") replaces any blanks and special characters (list is for sure not complete) with "-"
-    // .replace(/--+/g, "-") replaces any additional - with only one -; e.g. --- get replaced with -, -- get replaced with - etc.
     let anchorUrl = `#${headingValue
-      .replace(/[^a-zA-Z0-9.,()\-& ]/g, "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-zA-Z0-9.,()!\-& ]/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
-      .replace(/--+/g, "-")}`.toLowerCase();
-    let urlSuffix = 1;
-    while (urlExists === true) {
-      urlExists = (this.allUrls.indexOf(anchorUrl) === -1) ? false : true;
-      if (urlExists) {
-        anchorUrl = anchorUrl + `-${urlSuffix}`;
-        urlSuffix++;
-      }
-    }
+      .replace( /^\-*|\-*$/g , "")
+      .replace(/--+/g, "-")}`;
+
+    let counter = 1;
+    this.allUrls.forEach(url => {
+      if (url === anchorUrl) {
+        if (counter != 1) {
+          anchorUrl = anchorUrl.slice(0, -2) + '-' + counter;
+
+        } else {
+          anchorUrl += '-1';
+        }
+
+        counter++;
+      }      
+    });
+
     return anchorUrl;
-  }
-  
-  /**
-   * Returns the decoded html string
-   * @param input the html string
-   * @returns decoded string
-   */
-  private static htmlDecode(input: string) {
-    var doc = new DOMParser().parseFromString(input, "text/html");
-    return doc.documentElement.textContent;
   }
 
   /**
@@ -62,20 +58,21 @@ export class SPService {
       /* Initialize variables to be used for sorting and adding the Navigation links */
       let headingIndex = 0;
       let subHeadingIndex = -1;
-      let headingOrder = 0;
       let prevHeadingOrder = 0;
 
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.innerHTML) {
-          let HTMLString: string = webPart.innerHTML;
+          const HTMLString: string = webPart.innerHTML;
 
-          while (HTMLString.search(/<h[1-4](.*?)>/g) !== -1) {
-            const lengthFirstOccurence = HTMLString.match(/<h[1-4](.*?)>/g)[0].length;
-            /* The Header Text value */
-            const headingValue = this.htmlDecode(HTMLString.substring(HTMLString.search(/<h[1-4](.*?)>/g) + lengthFirstOccurence, HTMLString.search(/<\/h[1-4]>/g)));
+          const htmlObject = document.createElement('div');
+          htmlObject.innerHTML = HTMLString;
 
-            headingOrder = parseInt(HTMLString.charAt(HTMLString.search(/<h[1-4](.*?)>/g) + 2));
+          const headers = htmlObject.querySelectorAll('h1, h2, h3, h4');
+
+          headers.forEach(header => {
+            const headingValue = header.textContent;
+            const headingOrder = parseInt(header.tagName.substring(1));
 
             const anchorUrl = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
@@ -119,10 +116,7 @@ export class SPService {
               }
             }
             prevHeadingOrder = headingOrder;
-
-            /* Replace the added header links from the string so they don't get processed again */
-            HTMLString = HTMLString.replace(/<h[1-4](.*?)>/, '').replace(`</h${headingOrder}>`, '');
-          }
+          });
         }
       });
     } catch (error) {
