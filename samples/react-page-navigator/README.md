@@ -10,7 +10,7 @@ When added to a Vertical Section it can be used as a Contents table for the page
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -25,6 +25,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|September 5, 2019|Initial release
 1.1|October 20, 2021|SPFx Upgraded to 1.12.1 and code refactored
+1.2|May, 2022|SPFx Upgraded to 1.14.0
 
 ## Minimal Path to Awesome
 
