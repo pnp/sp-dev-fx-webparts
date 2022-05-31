@@ -52,4 +52,4 @@ samples/**/solution/
 samples/**/temp/
 samples/**/release/
 samples/**/node_modules
-samples/react-fluentui-9/package-lock.json
+samples/**/package-lock.json
