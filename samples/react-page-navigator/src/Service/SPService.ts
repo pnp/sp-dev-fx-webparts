@@ -79,7 +79,6 @@ export class SPService {
 
             const anchorUrl = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
-            console.log(this.allUrls);
 
             /* Add links to Nav element */
             if (anchorLinks.length === 0) {
@@ -127,7 +126,6 @@ export class SPService {
       console.log(error);
     }
 
-    console.log('anchorLinks', anchorLinks);
     return anchorLinks;
   }
 }
