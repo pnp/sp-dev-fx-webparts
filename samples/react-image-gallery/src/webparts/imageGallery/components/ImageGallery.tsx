@@ -1,26 +1,19 @@
 import * as React from 'react';
 import styles from './ImageGallery.module.scss';
 import { IImageGalleryProps } from './IImageGalleryProps';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { css, classNamesFunction, IStyleFunction } from '@uifabric/utilities/lib';
+import { css } from '@uifabric/utilities/lib';
 import { TaxonomyPicker, IPickerTerms } from "@pnp/spfx-controls-react/lib/TaxonomyPicker";
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IListService, IImage } from '../../../Interfaces';
 import { ListService } from '../../../Services/ListService';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { objectDefinedNotNull, stringIsNullOrEmpty } from '@pnp/common';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IImageGalleryState } from './IImageGalleryState';
 
-
-
 export default class ImageGallery extends React.Component<IImageGalleryProps, IImageGalleryState> {
-
   private _spService: IListService;
   private selectQuery: string[] = [];
   private expandQuery: string[] = [];
@@ -41,10 +34,7 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
       pageSize: this.props.pageSize,
       currentPage: 1,
       nextLink: "",
-
-    }
-
-
+    };
 
     this._onTaxPickerChange = this._onTaxPickerChange.bind(this);
     this._onClickNext = this._onClickNext.bind(this);
@@ -52,17 +42,12 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
     this._onImageClick = this._onImageClick.bind(this);
     this._onSearchChange = this._onSearchChange.bind(this);
 
-
-
     this._spService = new ListService(this.props.context.spHttpClient);
   }
 
 
   public async componentDidMount() {
     //Get Images from the library 
-
-
-
     let value = await this._spService.getListItemsCount(`${this.props.siteUrl}/_api/web/lists/GetByTitle('${this.props.listName}')/ItemCount`);
     this.setState({
       itemCount: value
@@ -83,17 +68,16 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
     });
     let response = await this._spService.readItems(url);
 
-    if (objectDefinedNotNull(response)) {
-
-      if (objectDefinedNotNull(response.nextLink)) {
+    if (response) {
+      if (response.nextLink) {
         this.urlCollection.push(response.nextLink);
       }
+
       this.setState({
         showLoader: false,
         items: response.items,
         status: `Showing items ${(this.state.currentPage - 1) * this.props.pageSize + 1} - ${((this.state.currentPage - 1) * this.props.pageSize) + response.items.length} of ${this.state.itemCount}`
       });
-
     }
     else {
       this.setState({
@@ -102,12 +86,10 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
         status: "",
         itemsNotFound: true
       });
-
     }
   }
 
   private async _onClickNext() {
-
     this.setState({
       currentPage: this.state.currentPage + 1,
       showLoader: true
@@ -115,12 +97,13 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
     let url = this.urlCollection[this.urlCollection.length - 1];
     this._readItems(url);
   }
+
   private async _onClickPrevious() {
     let url = "";
     if (this.urlCollection.length > 1) {
       this.setState({
         currentPage: this.state.currentPage - 1
-      })
+      });
 
       this.urlCollection.pop();
       url = this.urlCollection[this.urlCollection.length - 1];
@@ -142,8 +125,6 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
       status: `Showing items ${(this.state.currentPage - 1) * this.props.pageSize + 1} - ${((this.state.currentPage - 1) * this.props.pageSize) + response.items.length} of ${this.state.itemCount}`
     });
   }
-
-
 
   private buildQueryParams(taxQuery?: string, searchQuery?: string): string {
     this.selectQuery = [];
@@ -179,33 +160,30 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
     return queryParam + selectColumns + filterColumns;
   }
 
-
-
-
-
   private buildFilterQuery(taxQuery: string, searchQuery: string) {
     let result: string = "";
 
-    if (!stringIsNullOrEmpty(taxQuery) && stringIsNullOrEmpty(searchQuery)) {
+    if (!taxQuery && searchQuery) {
       result = `TaxCatchAll/Term eq '${taxQuery}'`;
     }
 
-    if (stringIsNullOrEmpty(taxQuery) && !stringIsNullOrEmpty(searchQuery)) {
+    if (taxQuery && !searchQuery) {
       result = `startswith(Title,'${searchQuery}')`;
     }
 
-    if (!stringIsNullOrEmpty(taxQuery) && !stringIsNullOrEmpty(searchQuery)) {
+    if (!taxQuery && !searchQuery) {
       result = `(TaxCatchAll/Term eq '${taxQuery}') and (startswith(Title,'${searchQuery}'))`;
     }
-    if (stringIsNullOrEmpty(taxQuery) && stringIsNullOrEmpty(searchQuery)) {
+
+    if (taxQuery && searchQuery) {
       result = "";
     }
 
     return result;
 
   }
-  private async _onTaxPickerChange(terms: IPickerTerms) {
 
+  private async _onTaxPickerChange(terms: IPickerTerms) {
     this.urlCollection = [];
     let query = "";
 
@@ -225,9 +203,9 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
     let url = `${this.props.siteUrl}/_api/web/lists/GetByTitle('${this.props.listName}')/items/${queryParam}`;
     this.urlCollection.push(url);
     this._readItems(url);
-
   }
-  private async _onSearchChange(query: any) {
+
+  private async _onSearchChange(event: any, query: any) {
     this.urlCollection = [];
     this.setState({
       sQuery: query
@@ -235,12 +213,10 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
 
     let queryParam = this.buildQueryParamsTotalFilteredItems(this.state.dQuery, query);
     let response = await this._spService.readItems(`${this.props.siteUrl}/_api/web/lists/GetByTitle('${this.props.listName}')/items/${queryParam}`);
-    if (objectDefinedNotNull(response)) {
-
+    if (response) {
       this.setState({
         itemCount: response.items.length
       });
-
     }
     else {
       this.setState({
@@ -248,12 +224,12 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
       });
     }
 
-
     queryParam = this.buildQueryParams(this.state.dQuery, query);
     let url = `${this.props.siteUrl}/_api/web/lists/GetByTitle('${this.props.listName}')/items/${queryParam}`;
     this.urlCollection.push(url);
     this._readItems(url);
   }
+  
   private _onImageClick(selectedImage: any): void {
     this.setState({
       selectedImage,
@@ -263,7 +239,6 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
   }
 
   public render(): React.ReactElement<IImageGalleryProps> {
-
     const spinnerStyles = props => ({
       circle: [
         {
@@ -279,13 +254,11 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
       ]
     });
 
-
     let result = [];
 
     let tagList;
 
     if (this.state.items.length) {
-
       result = this.state.items.map((item, index) => {
         return (
           <div key={index} className={css(styles.column, styles.mslg3)} onClick={() => this._onImageClick(item)}>
@@ -295,27 +268,27 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
               <figcaption>{item.Title}</figcaption>
             </div>
           </div>
-        )
+        );
       });
     }
 
-    if (objectDefinedNotNull(this.state.selectedImage.Department)) {
+    if (this.state.selectedImage.Department) {
       tagList = this.state.selectedImage.Department.map((tag: any, index) => {
         return <li className={styles.listGroupItem} key={index}> <Icon iconName="Tag" className={styles.msIconTag} /> {tag.Label}</li>;
       });
     }
+
     return (
       <div className={styles.imageGallery}>
         <div className={styles.container} dir="ltr">
           <div className={css(styles.row, styles.header)}>
             <div className={css(styles.column, styles.mslg12, styles.pageTitle)}>
               <h1>Image Gallery <small> Filterable</small></h1></div>
-
           </div>
           <div className={css(styles.row, styles.filters)}>
             <div className={css(styles.column, styles.mslg12, styles.panel)}>
-              <div className={styles.panelBody}>
-                <div className={css(styles.column, styles.mslg3, styles.filter)}>
+              <div className={styles.filterContainer}>
+                <div>
                   <TaxonomyPicker
                     allowMultipleSelections={false}
                     termsetNameOrID="Departments"
@@ -325,10 +298,9 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
                     onChange={this._onTaxPickerChange}
                     isTermSetSelectable={false}
                   />
-
                 </div>
-                <div className={css(styles.column, styles.mslg3, "ms-u-lgPush6", styles.searchBox)}>
-                  <TextField label="Search" className={styles.searchBoxInputField} placeholder="Enter search term" onChanged={this._onSearchChange} />
+                <div>
+                  <TextField label="Search" className={styles.searchBoxInputField} placeholder="Enter search term" onChange={this._onSearchChange} />
                 </div>
               </div>
             </div>
@@ -336,15 +308,12 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
           <div className={css(styles.row)}>
             <div className={css(styles.column, styles.mslg12, styles.panel)}>
               <div className={styles.panelBody}>
-
                 {
                   this.state.showLoader
-                    ? <Spinner size={SpinnerSize.large} label="loading..." className={css(styles.loader)} getStyles={spinnerStyles} />
+                    ? <Spinner size={SpinnerSize.large} label="loading..." className={css(styles.loader)} styles={spinnerStyles} />
                     : ""
                 }
-
                 <div className={css(styles.row, styles.mainContent)}>
-
                   {result.length > 0 ? result : ""}
                   {!result.length && this.state.itemsNotFound ? <MessageBar
                     messageBarType={MessageBarType.warning}
@@ -375,7 +344,6 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
                       </div>
                     </div>
                   </Panel>
-
                 </div>
               </div>
             </div>
@@ -386,10 +354,10 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
                 <div className={styles.status}>{this.state.status}</div>
                 <ul className={styles.pager}>
                   <li>
-                    <Button disabled={((this.state.currentPage - 1) * this.props.pageSize + 1) <= 1} onClick={this._onClickPrevious}>Previous</Button>
+                    <PrimaryButton disabled={((this.state.currentPage - 1) * this.props.pageSize + 1) <= 1} onClick={this._onClickPrevious}>Previous</PrimaryButton>
                   </li>
                   <li>
-                    <Button disabled={((this.state.currentPage - 1) * this.props.pageSize) + this.state.items.length >= this.state.itemCount} onClick={this._onClickNext}>Next</Button>
+                    <PrimaryButton disabled={((this.state.currentPage - 1) * this.props.pageSize) + this.state.items.length >= this.state.itemCount} onClick={this._onClickNext}>Next</PrimaryButton>
                   </li>
 
                 </ul>
@@ -399,5 +367,4 @@ export default class ImageGallery extends React.Component<IImageGalleryProps, II
       </div>
     );
   }
-
 }
