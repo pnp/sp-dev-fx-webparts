@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
   "manifestVersion": "1.2",
-  "packageName": "HappyBirdthayAnniversary",
+  "packageName": "HappyBirthdayAnniversary",
   "id": "b0069b7e-8ec8-4e14-a76c-0c8bcb33993e",
   "version": "0.1",
   "developer": {
@@ -14,8 +14,8 @@
     "short": "HappyBirthdayAnniversary"
   },
   "description": {
-    "short": "HappyBirdthay & anniversary description",
-    "full": "HappyBirdthay & anniversary description"
+    "short": "HappyBirthday & anniversary description",
+    "full": "HappyBirthday & anniversary description"
   },
   "icons": {
     "outline": "tab20x20.png",

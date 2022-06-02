@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00",
+  "alias": "FluentUi9DemoWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Fluent UI 9 Demo" },
+    "description": { "default": "Demos the use of Fluent UI 9 in SPFX complete with theme detection" },
+    "officeFabricIconFontName": "Page",
+    "properties": {}
+  }]
+}

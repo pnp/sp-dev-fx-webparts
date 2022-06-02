@@ -1,0 +1,143 @@
+{
+    "_type": "Images",
+    "instrumentation": {
+        "pingUrlBase": "https://www.bingapis.com/api/ping?IG=08FFB177A90A4DF585A703215CEC19AA&CID=070910FF0C0362112C11188E0DD06323&ID=",
+        "pageLoadPingUrl": "https://www.bingapis.com/api/ping/pageload"
+    },
+    "readLink": "https://www.bing.com/api/V7/images/search?q=cats",
+    "webSearchUrl": "https://www.bing.com/images/search?q=cats&FORM=OIIARP",
+    "webSearchUrlPingSuffix": "DevEx,5042.1",
+    "totalEstimatedMatches": 1000,
+    "value": [
+        {
+            "name": "Proxecto Gato: cats wallpapers by bighdwallpapers",
+            "webSearchUrl": "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&q=cats&id=DF010D14AC241C0AC39B5EAFD85F8B117825C79B&simid=608001210598098509",
+            "webSearchUrlPingSuffix": "DevEx,5043.1",
+            "thumbnailUrl": "https://tse2.mm.bing.net/th?id=OIP.M42428010d527fc1225757ada9d9a8bccH0&pid=Api",
+            "datePublished": "2012-08-23T12:00:00",
+            "contentUrl": "https://4.bp.blogspot.com/-XkviAtJ1s6Q/T3YFb2RUhDI/AAAAAAAAAVQ/EHomLZlFMKo/s1600/small+cat.jpg",
+            "hostPageUrl": "https://proxectogato.blogspot.com/2012/08/cats-wallpapers-by-bighdwallpapers.html",
+            "hostPageUrlPingSuffix": "DevEx,5006.1",
+            "contentSize": "241661 B",
+            "encodingFormat": "jpeg",
+            "hostPageDisplayUrl": "proxectogato.blogspot.com/2012/08/cats-wallpapers-by...",
+            "width": 1600,
+            "height": 1200,
+            "thumbnail": {
+                "width": 480,
+                "height": 360
+            },
+            "imageInsightsToken": "ccid_QkKAENUn*mid_DF010D14AC241C0AC39B5EAFD85F8B117825C79B*simid_608001210598098509",
+            "insightsSourcesSummary": {
+                "shoppingSourcesCount": 1,
+                "recipeSourcesCount": 0
+            },
+            "imageId": "DF010D14AC241C0AC39B5EAFD85F8B117825C79B",
+            "accentColor": "5A4E46"
+        },
+        {
+            "name": "Kitten - Cats Wallpaper (18565791) - Fanpop",
+            "webSearchUrl": "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&q=cats&id=6119DF9238F0C40EC3C326F41919BAFBF88F5CA4&simid=608041523156487908",
+            "webSearchUrlPingSuffix": "DevEx,5044.1",
+            "thumbnailUrl": "https://tse3.mm.bing.net/th?id=OIP.M7dfb8973bca22c4939102df3ae3de66do0&pid=Api",
+            "datePublished": "2012-06-29T23:55:00",
+            "contentUrl": "https://images4.fanpop.com/image/photos/18500000/Kitten-cats-18565791-1024-768.jpg",
+            "hostPageUrl": "https://www.fanpop.com/clubs/cats/images/18565791/title/kitten-wallpaper",
+            "hostPageUrlPingSuffix": "DevEx,5011.1",
+            "contentSize": "207480 B",
+            "encodingFormat": "jpeg",
+            "hostPageDisplayUrl": "www.fanpop.com/clubs/cats/images/18565791/title/kitten-wallpaper",
+            "width": 1024,
+            "height": 768,
+            "thumbnail": {
+                "width": 300,
+                "height": 225
+            },
+            "imageInsightsToken": "ccid_ffuJc7yi*mid_6119DF9238F0C40EC3C326F41919BAFBF88F5CA4*simid_608041523156487908",
+            "insightsSourcesSummary": {
+                "shoppingSourcesCount": 1,
+                "recipeSourcesCount": 0
+            },
+            "imageId": "6119DF9238F0C40EC3C326F41919BAFBF88F5CA4",
+            "accentColor": "7D694E"
+        },
+        {
+            "name": "Wonderous Cats Admiration of the docile feline",
+            "webSearchUrl": "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&q=cats&id=EDF89351A0ECA99617C859D06F71450FCB5EF2E3&simid=608032623984250213",
+            "webSearchUrlPingSuffix": "DevEx,5045.1",
+            "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.M38d3aa9aa6cc8c444492212efdb3a91dH0&pid=Api",
+            "datePublished": "2014-04-27T22:53:00",
+            "contentUrl": "https://www.andrew.cmu.edu/user/cfperron/cats/images/cat8.jpg",
+            "hostPageUrl": "https://www.andrew.cmu.edu/user/cfperron/cats/",
+            "hostPageUrlPingSuffix": "DevEx,5016.1",
+            "contentSize": "484631 B",
+            "encodingFormat": "jpeg",
+            "hostPageDisplayUrl": "www.andrew.cmu.edu/user/cfperron/cats",
+            "width": 2015,
+            "height": 1511,
+            "thumbnail": {
+                "width": 480,
+                "height": 359
+            },
+            "imageInsightsToken": "ccid_ONOqmqbM*mid_EDF89351A0ECA99617C859D06F71450FCB5EF2E3*simid_608032623984250213",
+            "insightsSourcesSummary": {
+                "shoppingSourcesCount": 1,
+                "recipeSourcesCount": 0
+            },
+            "imageId": "EDF89351A0ECA99617C859D06F71450FCB5EF2E3",
+            "accentColor": "5F4937"
+        }
+    ],
+    "queryExpansions": [
+        {
+            "text": "Grumpy Cat",
+            "displayText": "Grumpy",
+            "webSearchUrl": "https://www.bing.com/images/search?q=Grumpy+Cat&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Grumpy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+            "webSearchUrlPingSuffix": "DevEx,5049.1",
+            "searchLink": "https://www.bing.com/api/V7/images/search?q=Grumpy+Cat&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Grumpy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+            "thumbnail": {
+                "thumbnailUrl": "https://tse3.mm.bing.net/th?q=Grumpy+Cat&pid=Api&mkt=en-US&adlt=moderate&t=1"
+            }
+        },
+        {
+            "text": "Funny Cats",
+            "displayText": "Funny",
+            "webSearchUrl": "https://www.bing.com/images/search?q=Funny+Cats&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+            "webSearchUrlPingSuffix": "DevEx,5051.1",
+            "searchLink": "https://www.bing.com/api/V7/images/search?q=Funny+Cats&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+            "thumbnail": {
+                "thumbnailUrl": "https://tse2.mm.bing.net/th?q=Funny+Cats&pid=Api&mkt=en-US&adlt=moderate&t=1"
+            }
+        }
+    ],
+    "nextOffsetAddCount": 0,
+    "pivotSuggestions": [
+        {
+            "pivot": "cats",
+            "suggestions": [
+                {
+                    "text": "Felidae",
+                    "displayText": "Felidae",
+                    "webSearchUrl": "https://www.bing.com/images/search?q=Felidae&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Felidae%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+                    "webSearchUrlPingSuffix": "DevEx,5134.1",
+                    "searchLink": "https://www.bing.com/api/V7/images/search?q=Felidae&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Felidae%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+                    "thumbnail": {
+                        "thumbnailUrl": "https://tse3.mm.bing.net/th?q=Felidae&pid=Api&mkt=en-US&adlt=moderate&t=1"
+                    }
+                },
+                {
+                    "text": "African Wildcat",
+                    "displayText": "African Wildcat",
+                    "webSearchUrl": "https://www.bing.com/images/search?q=African+Wildcat&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22African+Wildcat%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+                    "webSearchUrlPingSuffix": "DevEx,5136.1",
+                    "searchLink": "https://www.bing.com/api/V7/images/search?q=African+Wildcat&tq=%7b%22pq%22%3a%22cats%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22cats%22%2c%22pv%22%3a%22cats%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22African+Wildcat%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+                    "thumbnail": {
+                        "thumbnailUrl": "https://tse3.mm.bing.net/th?q=African+Wildcat&pid=Api&mkt=en-US&adlt=moderate&t=1"
+                    }
+                }
+            ]
+        }
+    ],
+    "displayShoppingSourcesBadges": false,
+    "displayRecipeSourcesBadges": true
+}

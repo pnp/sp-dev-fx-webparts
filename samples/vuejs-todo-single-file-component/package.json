@@ -32,7 +32,7 @@
     "ajv": "~6.12.3",
     "css-loader": "^3.5.3",
     "gulp": "~3.9.1",
-    "node-sass": "~7.0.0",
+    "sass": "^1.49.11",
     "sass-loader": "~8.0.2",
     "tslint-microsoft-contrib": "5.0.0",
     "vue-loader": "^15.9.1",

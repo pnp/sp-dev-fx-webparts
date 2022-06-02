@@ -1,0 +1,221 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.0",
+	"body": [
+		{
+			"type": "TextBlock",
+			"size": "Medium",
+			"weight": "Bolder",
+			"text": " ${ParticipantInfoForm.title}",
+			"horizontalAlignment": "Center",
+			"wrap": true,
+			"style": "heading"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Name",
+			"wrap": true
+		},
+		{
+			"type": "Input.Text",
+			"style": "text",
+			"id": "SimpleVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Homepage",
+			"wrap": true
+		},
+		{
+			"type": "Input.Text",
+			"style": "url",
+			"id": "UrlVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Email",
+			"wrap": true
+		},
+		{
+			"type": "Input.Text",
+			"style": "email",
+			"id": "EmailVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Phone",
+			"wrap": true
+		},
+		{
+			"type": "Input.Text",
+			"style": "tel",
+			"id": "TelVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Comments",
+			"wrap": true
+		},
+		{
+			"type": "Input.Text",
+			"style": "text",
+			"isMultiline": true,
+			"id": "MultiLineVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Quantity",
+			"wrap": true
+		},
+		{
+			"type": "Input.Number",
+			"min": -5,
+			"max": 5,
+			"value": 1,
+			"id": "NumVal"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Due Date",
+			"wrap": true
+		},
+		{
+			"type": "Input.Date",
+			"id": "DateVal",
+			"value": "2017-09-20"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Start time",
+			"wrap": true
+		},
+		{
+			"type": "Input.Time",
+			"id": "TimeVal",
+			"value": "16:59"
+		},
+		{
+			"type": "TextBlock",
+			"size": "Medium",
+			"weight": "Bolder",
+			"text": "${Survey.title} ",
+			"horizontalAlignment": "Center",
+			"wrap": true,
+			"style": "heading"
+		},
+		{
+			"type": "TextBlock",
+			"text": "${Survey.questions[0].question}",
+			"wrap": true
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "CompactSelectVal",
+			"value": "1",
+			"choices": [
+				{
+					"$data": "${Survey.questions[0].items}",
+					"title": "${choice}",
+					"value": "${value}"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "${Survey.questions[1].question}",
+			"wrap": true
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "SingleSelectVal",
+			"style": "expanded",
+			"value": "1",
+			"choices": [
+				{
+					"$data": "${Survey.questions[1].items}",
+					"title": "${choice}",
+					"value": "${value}"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "${Survey.questions[2].question}",
+			"wrap": true
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "MultiSelectVal",
+			"isMultiSelect": true,
+			"value": "1,3",
+			"choices": [
+				{
+					"$data": "${Survey.questions[2].items}",
+					"title": "${choice}",
+					"value": "${value}"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"size": "Medium",
+			"weight": "Bolder",
+			"text": "Input.Toggle",
+			"horizontalAlignment": "Center",
+			"wrap": true,
+			"style": "heading"
+		},
+		{
+			"type": "Input.Toggle",
+			"title": "${Survey.questions[3].question}",
+			"id": "AcceptsTerms",
+			"wrap": false,
+			"value": "false"
+		},
+		{
+			"type": "Input.Toggle",
+			"title": "${Survey.questions[4].question}",
+			"valueOn": "RedCars",
+			"valueOff": "NotRedCars",
+			"id": "ColorPreference",
+			"wrap": false,
+			"value": "NotRedCars"
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Submit",
+			"data": {
+				"id": "1234567890"
+			}
+		},
+		{
+			"type": "Action.ShowCard",
+			"title": "Show Card",
+			"card": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "TextBlock",
+						"text": "Enter comment",
+						"wrap": true
+					},
+					{
+						"type": "Input.Text",
+						"style": "text",
+						"id": "CommentVal"
+					}
+				],
+				"actions": [
+					{
+						"type": "Action.Submit",
+						"title": "OK"
+					}
+				],
+				"$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+			}
+		}
+	]
+}

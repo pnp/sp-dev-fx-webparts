@@ -1,0 +1,724 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "Container"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Distribution center #73",
+            "wrap": true,
+            "weight": "Bolder",
+            "size": "ExtraLarge",
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": " As of 11:45 AM  •  San Diego, CA",
+            "wrap": true,
+            "size": "Small",
+            "isSubtle": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 48,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Available",
+                            "wrap": true,
+                            "size": "Small",
+                            "weight": "Bolder",
+                            "isSubtle": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "10.82M",
+                            "wrap": true,
+                            "size": "ExtraLarge",
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "28px",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "\t⬆",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "verticalContentAlignment": "Center",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+8.00%",
+                                            "wrap": true
+                                        }
+                                    ]
+                                }
+                            ],
+                            "style": "good",
+                            "spacing": "Medium"
+                        }
+                    ],
+                    "style": "emphasis"
+                },
+                {
+                    "type": "Column",
+                    "width": 4
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Ready to ship",
+                            "wrap": true,
+                            "size": "Small",
+                            "weight": "Bolder",
+                            "isSubtle": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "946k",
+                            "wrap": true,
+                            "size": "ExtraLarge",
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "style": "good",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "28px",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "\t⬆",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+2.56%",
+                                            "wrap": true
+                                        }
+                                    ],
+                                    "verticalContentAlignment": "Center"
+                                }
+                            ],
+                            "spacing": "Medium"
+                        }
+                    ],
+                    "width": 48,
+                    "style": "emphasis"
+                }
+            ],
+            "spacing": "Large"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Top selling items",
+            "wrap": true,
+            "spacing": "ExtraLarge",
+            "size": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Container"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_keyboard.svg",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Pro Signature Keyboard",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "56k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+11k",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_pen.svg"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Slim Pen 2",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "4,556k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "–",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_a11y.svg",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Adaptive Kit",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "256k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+3k",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_power.svg",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface 23W USB-C Power Supply",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "750k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+123k",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_earbuds.svg",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Earbuds",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "1,312k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+423k",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_dial.svg"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Dial",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "256k",
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "-24k",
+                                            "wrap": true,
+                                            "color": "Attention"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "50px",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/9f06f6552e9eb40f525ac81ea0e38a79a2239371/samples/inventory/assets/icn_cover.svg",
+                            "width": "48px",
+                            "height": "48px",
+                            "horizontalAlignment": "Center"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 75,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Surface Duo 2 Bumper",
+                            "wrap": true,
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "873k",
+                                            "wrap": true
+                                        }
+                                    ],
+                                    "width": 33
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "+72k",
+                                            "wrap": true,
+                                            "color": "Good"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 33
+                                }
+                            ],
+                            "spacing": "Small"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center"
+                },
+                {
+                    "type": "Column",
+                    "width": 5,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/inventory/assets/arrowforward.png",
+                            "width": "20px",
+                            "height": "20px"
+                        }
+                    ],
+                    "verticalContentAlignment": "Center",
+                    "horizontalAlignment": "Right"
+                }
+            ],
+            "spacing": "Medium",
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "View the most popular inventory items ready to ship today. Click item for more details.",
+            "wrap": true,
+            "spacing": "Large"
+        }
+    ]
+}

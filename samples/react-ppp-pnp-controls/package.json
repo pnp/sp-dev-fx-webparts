@@ -1,0 +1,35 @@
+{
+  "name": "react-ppp-pnpcontrols",
+  "version": "0.1.0",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.15.0-beta.1",
+    "@microsoft/sp-lodash-subset": "1.15.0-beta.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.15.0-beta.1",
+    "@microsoft/sp-property-pane": "1.15.0-beta.1",
+    "@microsoft/sp-webpart-base": "1.15.0-beta.1",
+    "@pnp/spfx-controls-react": "3.7.0",
+    "office-ui-fabric-react": "7.181.1",
+    "property-pane-portal": "^0.2.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tslib": "1.13.0"
+  },
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-3.9": "^0.4.48",
+    "@microsoft/sp-build-web": "1.15.0-beta.1",
+    "@microsoft/sp-module-interfaces": "1.15.0-beta.1",
+    "@microsoft/sp-tslint-rules": "1.15.0-beta.1",
+    "@types/react": "16.9.51",
+    "@types/react-dom": "16.9.8",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "gulp": "4.0.2"
+  }
+}

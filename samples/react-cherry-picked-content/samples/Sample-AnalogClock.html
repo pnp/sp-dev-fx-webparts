@@ -1,0 +1,263 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Analog Clock</h3>
+<p>Isolated mode: recommended.</p>
+<p>Source: Tushar Nankani on <a href="https://github.com/tusharnankani/AnalogClock" target="_blank">Github</a>.</p>
+</div>
+    <div class="clock">
+
+        <div class="hour">
+            <div class="hr" id="hr">
+
+            </div>
+        </div>
+
+        <div class="min">
+            <div class="mn" id="mn">
+
+            </div>
+        </div>
+
+        <div class="sec">
+            <div class="sc" id="sc">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="toggleClass" onclick="toggleClass()"></div>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #090909;
+    background: #07141b;
+}
+
+
+
+body.light {
+    background: #d1dae3;
+}
+
+
+.clock {
+    width: 375px;
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../clock.png);
+    background-size: cover;
+    border: 4px;
+    /* box-shadow: 15px 15px 15px rgba(255, 255, 255, 0.5); */
+    box-shadow: 0em -1.2em 1.2em rgba(255, 255, 255, 0.06),
+                inset 0em -1.2em 1.2em rgba(255, 255, 255, 0.06),
+                0em 1.2em 1.2em rgba(0, 0, 0, 0.3),
+                inset 0em 1.2em 1.2em rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+body.light .clock {
+    box-shadow: 0em -1.2em 1.2em rgba(255, 255, 255, 0.3),
+                inset 1em 1em -1em rgba(255, 255, 255, 0.3),
+                0em -1.2em -1.2em rgba(0, 0, 0, 0.5),
+                inset 1em -1em 1em rgba(0, 0, 0, 0.1);
+}
+
+.clock :hover {
+    /* yet to be completed; when hovered, diplay complete information about time, `new Date().toLocaleString();` */
+    cursor: pointer;
+
+}
+
+
+
+/* The small circle int the center */
+.clock:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+
+    /* The z-index property specifies the stack order of an element.
+    /* An element with greater stack order is always in front of an element with a lower stack order.  */
+    /* Note: z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky). */
+    z-index: 10000;
+    /* kept as a high value, since wanted at top */
+}
+
+body.light .clock:before {
+    background: #1a74be;
+}
+
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+    position: absolute;
+}
+
+/* length of respective arms; */
+.clock .hour, .hr {
+    width: 160px;
+    height: 160px;
+} 
+
+.clock .min, .mn {
+    width: 190px;
+    height: 190px;
+}
+
+.clock .sec, .sc {
+    width: 230px;
+    height: 230px;
+}
+
+
+.hr, .mn, .sc {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: absolute;
+    border-radius: 50%;
+    
+}
+
+
+.hr:before {
+    content: '';
+    position: absolute;
+    width: 7.5px;
+    height: 80px;
+    background: #f81460;
+    z-index: 10;
+    /* z-index least */
+    border-radius: 2.8px;
+}
+
+.mn:before {
+    content: '';
+    position: absolute;
+    width: 3.5px;
+    height: 100px;
+    background: #ffffff;
+    z-index: 11;
+    /* z-index more than hour hand */
+    border-radius: 3px;
+}
+
+body.light .mn:before {
+    background: #091921;
+
+}
+
+
+.sc:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background: #0075fa80;
+    z-index: 12;
+    /* z-index more than hour minute hand */
+    border-radius: 3px;
+}
+
+
+.toggleClass {
+    position: absolute;
+    top: 35px;
+    right: 150px;
+    width: 20px;
+    margin: 2px;
+    height: 20px;
+    font-size: 18px;
+    border-radius: 50%;
+    background: #d1dae3;
+    color: #d1dae3;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
+.toggleClass:before {
+    position: absolute;
+    content: 'Light Mode';
+    white-space: nowrap;
+    left: 25px;
+
+}
+
+body.light .toggleClass {
+    background: #091921;
+    color: #091921;
+    content: 'Dark Mode';
+}
+
+
+body.light .toggleClass:before {
+    content: 'Dark Mode';
+    white-space: nowrap;
+}
+</style>
+
+<script>// For toggle button;
+
+function toggleClass()
+{
+
+    const body = document.querySelector('body');
+    body.classList.toggle('light');
+    body.style.transition = `0.3s linear`;
+}
+
+
+
+
+
+
+
+
+// for time;
+const deg = 6; 
+// 360 / (12 * 5);
+
+const hr = document.querySelector('#hr');
+const mn = document.querySelector('#mn');
+const sc = document.querySelector('#sc');
+
+
+setInterval(() => {
+    
+    let day = new Date();
+    let hh = day.getHours() * 30;
+    let mm = day.getMinutes() * deg;
+    let ss = day.getSeconds() * deg;
+    let msec = day.getMilliseconds();
+    
+    
+    // VERY IMPORTANT STEP:
+    
+    hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+    mn.style.transform = `rotateZ(${mm}deg)`;
+    sc.style.transform = `rotateZ(${ss}deg)`;
+    
+    // gives the smooth transitioning effect, but there's a bug here!
+    // sc.style.transition = `1s`;
+    
+
+})
+</script>

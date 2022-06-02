@@ -1,7 +1,8 @@
 export enum PagesToDisplay {
   None = 'none',
   Ancestors = 'ancestors',
-  Children = 'children'
+  Children = 'children',
+  Tree = 'tree'
 }
 
 export enum RenderDirection {

@@ -1,0 +1,78 @@
+{
+	"formTitle": "Please provide the following information:",
+	"nameCard": {
+		"title": "Name",
+		"idPrefix": "name",
+		"fields": [
+			{
+				"label": "First Name",
+				"id": "FirstName",
+				"required": true
+			},
+			{
+				"label": "Middle Name",
+				"id": "MiddleName",
+				"required": false
+			},
+			{
+				"label": "Last Name",
+				"id": "LastName",
+				"required": true
+			}
+		]
+	},
+	"addressCard": {
+		"title": "Address",
+		"idPrefix": "address",
+		"textInputFields": [
+			{
+			"label": "Address line 1",
+			"id": "addressLine1",
+				"required": true
+			},
+			{
+				"label": "Address line 2",
+				"id": "addressLine2",
+				"required": false
+			}
+		],
+		"columnFields": [
+			{
+				"label": "City",
+				"id": "city",
+				"required": false
+			},
+			{
+				"label": "State",
+				"id": "state",
+				"required": false
+			},
+			{
+				"label": "Zip Code",
+				"id": "zip",
+				"required": true
+			}
+		]
+	},
+	"contactCard": {
+		"title": "Phone/Email",
+		"idPrefix": "contact",
+		"fields": [
+			{
+				"label": "Mobile number",
+				"id": "mobileNumber",
+				"required": false
+			},
+			{
+				"label": "Home number",
+				"id": "homeNumber",
+				"required": false
+			},
+			{
+				"label": "Email address",
+				"id": "emailAddress",
+				"required": true
+			}
+		]
+	}
+}
