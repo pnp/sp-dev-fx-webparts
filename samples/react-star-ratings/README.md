@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part demonstrates *Star Ratings* capablities to SharePoint News. The "Ratings" site collection feature provides *Likes* and *Star Ratings*, but SharePoint News provides only provides *Likes*. This web part can get or set ratings of the current page.
+This web part demonstrates *Star Ratings* capabilities to SharePoint News. The "Ratings" site collection feature provides *Likes* and *Star Ratings*, but SharePoint News provides only provides *Likes*. This web part can get or set ratings of the current page.
 
 ![react-star-ratings](./assets/react-star-ratings.png)
 
@@ -36,19 +36,6 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 ## Minimal Path to Awesome
 
-<!-- 
-PRO TIP:
-
-For commands, use the `code syntax`
-
-For button labels, page names, dialog names, etc. as they appear on the screen, use **Bold**
-
-Don't use "click", use "select" or "use"
-
-As tempting as it may be, don't just use images to describe the steps. Let's be as inclusive as possible and think about accessibility.
-
--->
-
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-star-ratings`, located under `samples`)
 * in the command line run:
@@ -72,7 +59,6 @@ Version|Date|Comments
 1.0|October 7, 2021|Initial release
 
 ## Help
-
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
