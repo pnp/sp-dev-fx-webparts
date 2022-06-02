@@ -79,6 +79,7 @@ Version|Date|Comments
 1.0|June 22, 2021|Initial release
 2.0|November 25, 2021|Change to use Microsoft Graph Follow
 3.0|January 13, 2022|Graph fixes
+3.1|May 17, 2022|Fixed issue when no items are returned
 
 ## Minimal Path to Awesome
 
