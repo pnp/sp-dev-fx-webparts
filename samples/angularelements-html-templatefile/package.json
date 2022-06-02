@@ -13,7 +13,7 @@
   "dependencies": {
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
-    "@angular/core": "^6.0.3",
+    "@angular/core": "^11.0.5",
     "@angular/elements": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
