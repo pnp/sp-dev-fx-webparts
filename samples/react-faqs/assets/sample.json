@@ -10,7 +10,7 @@
       "Allows users to create Frequently Asked Questions using Property Field Collection Data, with options to view as an Accordion or Tab and also ability to search within the FAQs"
     ],
     "creationDateTime": "2022-03-07",
-    "updateDateTime": "2022-03-07",
+    "updateDateTime": "2022-06-02",
     "products": [
       "SharePoint"
     ],
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13"
+        "value": "1.13.0"
       }
     ],
     "thumbnails": [
