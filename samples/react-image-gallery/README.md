@@ -4,9 +4,7 @@
 
 This sample describes an SPFx application which implements an image gallery with taxonomy base filtering and typed search. This application also implements pagination.
 
-
 ![Filterable Image Gallery web part built on the SharePoint Framework using React](./assets/image-gallery.gif)
-
 
 ## Compatibility
 
@@ -39,25 +37,27 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm install`
-  - `gulp serve`
+* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-gallery) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-image-gallery`, located under `samples`)
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
 
+* Create a Departments Term set with associated child terms, for example, HR, Information Services, Sales, Marketing
+* Create an Image Library and add some sample images
+* Tag each image with Department Metadata Column
+* Also fill in Title field for each image, this is require for typed search functionality
 
-- Create a Departments Term set with associated child terms, for example, HR, Information Services, Sales, Marketing
-- Create an Image Library and add some sample images
-- Tag each image with Department Metadata Column
-- Also fill in Title field for each image, this is require for typed search functionality
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
 Here are the main features for this application
 
-- Taxonomy-based filtering
-- Typed Search
-- Right-side popup panel
-- Server-side pagination using REST API
+* Taxonomy-based filtering
+* Typed Search
+* Right-side popup panel
+* Server-side pagination using REST API
 
 ## Help
 
