@@ -20,12 +20,12 @@ extensions:
 This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.  It will ask you to create a page parent property on first use which is then used by the web part to either show a breadcrumb of the current pages ancestors or buttons for the pages children.
 
 ![Page Navigator](./assets/PagesHierarchy.gif)
-
+![Tree View](./assets/treeview.png)
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -48,22 +48,25 @@ This web part allows users to create a faux page hierarchy in their pages librar
 Solution|Author(s)
 --------|---------
 react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
+react-pages-hierarchy|[Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|April 30, 2020|Initial release
+1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
+1.3|March 31, 2022|Added a Tree View
 
 
-## Minimal Path to Awesome
+## Minimal path to awesome
 
-* Clone this repository
-* in the command line run:
+* Clone this repository* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-pages-hierarchy`, located under `samples`)* in the command line run:
   * `npm install`
   * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

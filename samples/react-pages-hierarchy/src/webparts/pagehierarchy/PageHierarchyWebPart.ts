@@ -53,7 +53,10 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
         displayMode: this.displayMode,
         updateTitle: (t) => { this.properties.title = t; this.render(); },
         onConfigure: () => { this.onConfigure(); },
-        pageEditFinished: this.pageEditFinished
+        pageEditFinished: this.pageEditFinished,
+        context: this.context,
+        treeFrom: this.properties.treeFrom,
+        treeExpandTo: this.properties.treeExpandTo
       }
     );
     ReactDom.render(element, this.domElement, () => {
@@ -145,8 +148,30 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
               text: strings.PropertyPane_PagesToDisplay_OptionText_Children,
               checked: this.properties.pagesToDisplay === PagesToDisplay.Children,
               iconProps: { officeFabricIconFontName: 'DistributeDown' }
+            },
+            {
+              key: PagesToDisplay.Tree,
+              text: strings.PropertyPane_PagesToDisplay_OptionText_Tree,
+              checked: this.properties.pagesToDisplay === PagesToDisplay.Tree,
+              iconProps: { officeFabricIconFontName: 'ViewListTree' }
             }
           ]
+        }),
+        this.properties.pagesToDisplay === PagesToDisplay.Tree && PropertyFieldNumber('treeFrom', {
+          key: 'treeFrom',
+          value: this.properties.treeFrom,
+          label: strings.PropertyPane_Label_TreeFrom,
+          description: strings.PropertyPane_Description_TreeFrom,
+          minValue: 1,
+          disabled: false
+        }),
+        this.properties.pagesToDisplay === PagesToDisplay.Tree && PropertyFieldNumber('treeExpandTo', {
+          key: 'treeExpandTo',
+          value: this.properties.treeExpandTo,
+          label: strings.PropertyPane_Label_TreeExpandTo,
+          description: strings.PropertyPane_Description_TreeExpandTo,
+          minValue: 1,
+          disabled: false
         })
       ]
     });

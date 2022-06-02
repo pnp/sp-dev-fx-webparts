@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "51789d0c-7a65-494e-8969-59bfc883e751",
+  "alias": "TabAccordionWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "ae3ce92d-ee3f-44cf-b944-eeaff3499b8b", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Tab Accordion" },
+    "description": { "default": "Tab & Accordion Web Part" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "tabs": [
+        { "Title": "Tab 1", "Content": "Tab 1 Content"},
+        { "Title": "Tab 2", "Content": "Tab 2 Content"},
+        { "Title": "Tab 3", "Content": "Tab 3 Content"}
+      ],
+      "title": "Tabs",
+      "type": "Tab"
+    }
+  }]
+}

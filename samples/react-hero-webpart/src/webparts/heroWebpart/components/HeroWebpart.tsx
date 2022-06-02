@@ -8,6 +8,8 @@ import { sp } from '@pnp/sp';
 import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";  
+import { DisplayMode } from '@microsoft/sp-core-library'; 
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
@@ -87,11 +89,17 @@ export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHer
         <Stack {...rowProps} tokens={tokens.spinnerStack}>
           <Label>Loading</Label>
           <Spinner size={SpinnerSize.large} />
-        </Stack>
+        </Stack> &&
+        <Placeholder iconName='Edit'  
+          iconText='Configure your web part'  
+          description='Please configure the web part.'  
+          buttonLabel='Configure'  
+          hideButton={this.props.displayMode === DisplayMode.Read}  
+          onConfigure={this._onConfigure} />  
       );
     }else{
-    var itemList:any[];
-    this.props.showAllHero ? itemList = this.state.itemsPaginated : itemList = this.state.items;   
+    var itemList:any[] = this.state.items;
+    this.props.showAllHero && !this.props.showCollage ? itemList = this.state.itemsPaginated : itemList = this.state.items;   
     }
 
     return (
@@ -99,9 +107,10 @@ export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHer
        <div className={styles.titleHead}>
          {this.props.title}
        </div>
-       <Hero items={this.props.showAllHero ? this.state.itemsPaginated : this.state.items.slice(0, 5)}/>
-         {this.props.showAllHero ? 
-         <Pagination
+        {this.props.showAllHero &&
+          <>
+          <Hero items={this.props.showAllHero ? this.state.itemsPaginated : this.state.items.slice(0, 5)} isCollage={this.props.showCollage}/>
+          <Pagination
            currentPage={this.state.currentPage}
            totalPages={this.state.totalPages} 
            onChange={(page) => this._getPage(page)}
@@ -109,10 +118,20 @@ export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHer
            hideFirstPageJump={this.props.hideFirstPageJump} // Optional
            hideLastPageJump={this.props.hideLastPageJump} // Optional
            limiterIcon={"Emoji12"} // Optional
-           /> : "" }
-          </div>
+          /> 
+          </>
+        }
+        {!this.props.showAllHero &&
+          <Hero items={this.state.items} isCollage={this.props.showCollage}/>
+        }
+      </div>
     );
   }
+
+  private _onConfigure() {  
+    // Context of the web part  
+    this.props.spfxContext.propertyPane.open();  
+  }  
 }
 
 

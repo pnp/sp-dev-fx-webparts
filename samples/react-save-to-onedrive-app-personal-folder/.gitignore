@@ -1,0 +1,4 @@
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem

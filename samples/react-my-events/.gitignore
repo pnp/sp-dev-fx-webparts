@@ -32,3 +32,8 @@ obj
 # Styles Generated Code
 *.scss.ts
 *.scss.d.ts
+
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem

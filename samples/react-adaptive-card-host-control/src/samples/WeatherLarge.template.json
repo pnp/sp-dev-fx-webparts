@@ -1,0 +1,100 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "speak": "<s>Weather forecast for ${formatEpoch(data[0].sunrise_ts, 'dddd')} is high of ${formatNumber(data[0].app_max_temp / 5 * 9 + 32, 0)} and low of ${formatNumber(data[0].app_min_temp / 5 * 9 + 32, 0)} degrees with a ${formatNumber(data[0].precip * 100, 0)}% chance of rain</s><s>Winds will be ${formatNumber(data[0].wind_gust_spd, 0)} mph from the ${data[0].wind_cdir}</s>",
+    "backgroundImage": "https://messagecardplayground.azurewebsites.net/assets/Mostly%20Cloudy-Background.jpg",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 35,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://messagecardplayground.azurewebsites.net/assets/Mostly%20Cloudy-Square.png",
+                            "size": "Stretch"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": 65,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "{{DATE(${formatEpoch(data[0].sunrise_ts, 'yyyy-MM-ddTHH:mm:ssZ')}, SHORT)}}",
+                            "weight": "Bolder",
+                            "size": "Large",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "${formatNumber(data[0].app_min_temp / 5 * 9 + 32, 0)} / ${formatNumber(data[0].app_max_temp / 5 * 9 + 32, 0)}",
+                            "size": "Medium",
+                            "spacing": "None",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "${formatNumber(data[0].precip * 100, 0)}% chance of rain",
+                            "spacing": "None",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "Winds ${data[0].wind_gust_spd} mph ${data[0].wind_cdir}",
+                            "spacing": "None",
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "$data": "${data}",
+                    "$when": "${$index != 0}",
+                    "type": "Column",
+                    "width": 20,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "horizontalAlignment": "Center",
+                            "text": "${formatEpoch(sunrise_ts, 'dddd')}",
+                            "wrap": true
+                        },
+                        {
+                            "type": "Image",
+                            "size": "auto",
+                            "url": "${weather.icon}"
+                        },
+                        {
+                            "type": "FactSet",
+                            "horizontalAlignment": "Right",
+                            "facts": [
+                                {
+                                    "title": "High",
+                                    "value": "${formatNumber(app_max_temp / 5 * 9  + 32, 0)}"
+                                },
+                                {
+                                    "title": "Low",
+                                    "value": "${formatNumber(app_min_temp / 5 * 9  + 32, 0)}"
+                                }
+                            ]
+                        }
+                    ],
+                    "selectAction": {
+                        "type": "Action.OpenUrl",
+                        "title": "View ${formatEpoch(sunrise_ts, 'dddd')}",
+                        "url": "https://www.microsoft.com"
+                    }
+                }
+            ]
+        }
+    ]
+}

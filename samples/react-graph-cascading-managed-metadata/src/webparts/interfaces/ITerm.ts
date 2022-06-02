@@ -1,5 +1,4 @@
-import { IDescription } from "./IDescription";
-import { ILabel } from "./ILabel";
+import { IProperty, ILabel, IDescription } from ".";
 
 export interface ITerm {
     id: string;
@@ -7,4 +6,5 @@ export interface ITerm {
     lastModifiedDateTime: Date;
     labels: ILabel[];
     descriptions: IDescription[];
+    properties: IProperty[];
 }

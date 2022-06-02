@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "version": "1.14.0-beta.5",
+    "libraryName": "manage-data",
+    "libraryId": "cc04d03e-418c-44fc-a125-9fb84d9e9b33",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "manage-data",
+    "solutionShortDescription": "manage-data description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "library"
+  }
+}

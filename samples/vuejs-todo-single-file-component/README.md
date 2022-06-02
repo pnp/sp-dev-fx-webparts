@@ -51,6 +51,7 @@ Version|Date|Comments
 0.0.5|November 15, 2017|Added data provider that demonstrates the CRUD operations
 0.0.6|December 11, 2018|Updated sample to SPFx 1.4 and Vue 2.5.x
 0.0.7|April 28, 2020|Updated sample to SPFx 1.10 and Vue 2.6.x, fixed issues with batch loader
+0.0.8|April 4, 2022|Replace node sass with sass
 
 ## Minimal Path to Awesome
 

@@ -207,7 +207,8 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-chartcontrol`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`

@@ -11,7 +11,7 @@ import * as strings from 'SharePointStoriesWebPartStrings';
 import SharePointStories from './components/SharePointStories';
 import { ISharePointStoriesProps } from './components/ISharePointStoriesProps';
 
-import { Providers, SharePointProvider } from '@microsoft/mgt';
+import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
 
 export interface ISharePointStoriesWebPartProps {
   description: string;
@@ -20,7 +20,9 @@ export interface ISharePointStoriesWebPartProps {
 export default class SharePointStoriesWebPart extends BaseClientSideWebPart<ISharePointStoriesWebPartProps> {
 
   protected async onInit(): Promise<void> {
-    Providers.globalProvider = new SharePointProvider(this.context);
+    if (!Providers.globalProvider) {
+      Providers.globalProvider = new SharePointProvider(this.context);
+    }
   }
 
   public render(): void {

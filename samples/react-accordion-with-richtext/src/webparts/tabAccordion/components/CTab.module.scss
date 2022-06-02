@@ -1,0 +1,119 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.outermargin {
+  margin:1em 1em;
+}
+.tabs {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%; 
+  margin-top: 20px;
+}
+
+.tabs .tablinks {
+  margin: 0;
+  padding: 0;
+  height: 58px;
+  position: relative;  
+  background-color: $ms-color-neutralLighter;   
+}
+
+.tabs .tablink {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  height: 58px;
+  line-height: 58px;
+  padding-left: 10px;
+  padding-right:10px;
+  font-family: "Segoe UI Web (West European)",Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;  
+  margin-left: 20px;
+  color: $ms-color-neutralTertiary;
+}
+
+
+
+.tabs .tablinkactive  {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  height: 58px;
+  line-height: 58px;
+  padding-left: 10px;
+  padding-right:10px;
+  font-family: "Segoe UI Web (West European)",Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;  
+  font-weight: 600 !important;
+  margin-left: 20px;
+  color: $ms-color-themePrimary;
+}
+.tabs .tablinkactive span {
+  border-bottom:2px solid;
+  border-bottom-color: $ms-color-themePrimary;
+  padding-bottom: 15px;
+}
+.tabs .tablink:focus  {
+  outline:none;
+}
+.tabs .tablinkactive:focus  {
+  outline:none;
+}
+.tabs .content {
+  padding: 15px 35px;
+}
+
+
+.tabs .content table {
+  border:none;
+  border-collapse: collapse;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.tabs .content tr:first-child  {
+  color:#fff;
+  border-top: 1px solid #ddd;
+  font-weight: 600;
+  background-color: #666;
+}
+
+.tabs .content td {
+  border-bottom: 1px solid #ddd;
+  padding:5px;
+  vertical-align: top;
+}
+.tabs .content tr {
+  border-left: 1px solid #ddd;
+  border-right:1px solid #ddd;
+  vertical-align: top;
+}
+
+.tabs .content img {
+  width:100%;
+}
+
+
+
+.tabs .content a {
+  color: $ms-color-themePrimary !important;
+}
+
+.activeLinkStyle  {
+  border-Bottom: '2px solid rgb(0, 120, 212)'
+}
+
+.webparttitle {
+  font-size: 32px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.webpartheader > span {
+  float: right;
+  position:relative;
+}
