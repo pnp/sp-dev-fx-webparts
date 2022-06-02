@@ -57,7 +57,7 @@ Version|Date|Comments
 1.0|April 30, 2020|Initial release
 1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
 1.3|March 31, 2022|Added a Tree View
-1.3.1|May, 2022|Added logic to handle upgrading from 1.0 to 1.3
+1.3.1|May 31, 2022|Added logic to handle upgrading from 1.0 to 1.3
 
 
 ## Minimal path to awesome
