@@ -26,7 +26,7 @@ extensions:
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -50,13 +50,14 @@ There are no pre-requisites to use these samples.
 
 Solution|Author(s)
 --------|---------
-react-Faqs | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/>
+react-faqs | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/>
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|March 07, 2022|Initial release
+1.1|June 02, 2022|Updates to sorting on Categories
 
 
 ## Minimal path to awesome

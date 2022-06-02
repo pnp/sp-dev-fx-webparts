@@ -3,7 +3,7 @@ import styles from './Faqs.module.scss';
 import * as strings from 'FaqsWebPartStrings';
 import { IFaqsProps } from './IFaqsProps';
 import { IFaqsState } from './IFaqsState';
-import { escape, groupBy, toPairs, sortBy, fromPairs } from '@microsoft/sp-lodash-subset';
+import { escape,find, groupBy, toPairs, sortBy, fromPairs } from '@microsoft/sp-lodash-subset';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
@@ -32,10 +32,13 @@ export default class Faqs extends React.Component<IFaqsProps, IFaqsState> {
   private _processFaqs(): void {
     const {collectionData} = this.props;
     if (collectionData && collectionData.length > 0) {
+
+
       // Group by the group name
       let categories = groupBy(collectionData, Faq => Faq.category ? Faq.category : NO_CATEGORY_NAME);
       // Sort the group by the property name
       categories = fromPairs(sortBy(toPairs(categories), 0));
+
       
       this.setState({
         categories
@@ -109,7 +112,7 @@ export default class Faqs extends React.Component<IFaqsProps, IFaqsState> {
   public render(): React.ReactElement<IFaqsProps> {
 
     // Get all group names
-    const categoryNames = this.state.categories ? Object.keys(this.state.categories) : null;
+    const categoryNames = this.props.categoryData ? this.props.categoryData : null;
     const searchCategoryNames = this.state.searchCategories ? Object.keys(this.state.searchCategories) : null;
     const searchValue = this.state.searchValue;
    
@@ -160,11 +163,11 @@ export default class Faqs extends React.Component<IFaqsProps, IFaqsState> {
       categories = <Pivot linkSize={PivotLinkSize.large} className={styles.faqContent}>
       {
         categoryNames.map(categoryName => (
-          <PivotItem headerText={categoryName} key={categoryName}>
+          <PivotItem headerText={categoryName.title} key={categoryName.title}>
           
           {
             // Loop over all links per group
-            this.state.categories[categoryName].map(faq => (
+            this.state.categories[categoryName.title].map(faq => (
             
              <div className={styles.faqQuestionBlock}> 
                 <h2>{faq.questionTitle}</h2>
