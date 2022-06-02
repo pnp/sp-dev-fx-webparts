@@ -73,6 +73,7 @@ export default class FaqsWebPart extends BaseClientSideWebPart<IFaqsWebPartProps
         displayMode: this.displayMode,
         guid: this.guid,
         title: this.properties.title,
+        categoryData: this.properties.categoryData,
         accordion:true,
         fUpdateProperty: (value: string) => {
           this.properties.title = value;

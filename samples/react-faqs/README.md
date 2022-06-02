@@ -57,6 +57,7 @@ react-Faqs | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedI
 Version|Date|Comments
 -------|----|--------
 1.0|March 07, 2022|Initial release
+1.1|June 02, 2022|Updates to sorting on Categories
 
 
 ## Minimal path to awesome

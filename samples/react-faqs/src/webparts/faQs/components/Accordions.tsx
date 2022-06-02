@@ -114,7 +114,7 @@ export default class Accordions extends React.Component<IAccordionsProps, IAccor
 
 
   public render(): React.ReactElement<IAccordionsProps> {
-    const categoryNames = this.state.categories ? Object.keys(this.state.categories) : null;
+    const categoryNames = this.props.categoryData ? this.props.categoryData : null;
 
     const searchCategoryNames = this.state.searchCategories ? Object.keys(this.state.searchCategories) : null;
     const searchValue = this.state.searchValue;
@@ -169,13 +169,13 @@ export default class Accordions extends React.Component<IAccordionsProps, IAccor
               <AccordionItemTitle className={styles.accordion__title}  id={this.props.guid + '-title-' + index}>
               <div className={styles.accordion__arrow} role="presentation" />
                   <div className={styles["positionRelative"]} >
-                    {categoryName}
+                    {categoryName.title}
                   </div>
               </AccordionItemTitle>
               <AccordionItemBody className={styles.accordion__body} hideBodyClassName={styles["accordionBodyHidden"]}>                    
               {
                 // Loop over all links per group
-                this.state.categories[categoryName].map(faq => (
+                this.state.categories[categoryName.title].map(faq => (
                 
                  <div className={styles.faqQuestionBlock}> 
                     <h2>{faq.questionTitle}</h2>
