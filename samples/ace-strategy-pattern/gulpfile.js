@@ -12,19 +12,5 @@ build.rig.getTasks = function () {
 
   return result;
 };
-build.configureWebpack.mergeConfig({
-  additionalConfiguration: (generatedConfiguration) => {
-    generatedConfiguration.node = {
-      fs: 'empty'
-    },
-      generatedConfiguration.module.rules.unshift(
-        {
-          test: /\.resx$/,
-          loader: "xml-loader",
-        }
-      )
-    return generatedConfiguration;
-  }
-});
 
 build.initialize(require('gulp'));
