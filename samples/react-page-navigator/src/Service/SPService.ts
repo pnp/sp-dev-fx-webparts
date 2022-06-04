@@ -12,20 +12,29 @@ export class SPService {
    * @returns anchorUrl
    */
   private static GetAnchorUrl(headingValue: string): string {
-    let urlExists = true;
-    // .replace(/'|?|\|/| |&/g, "-") replaces any blanks and special characters (list is for sure not complete) with "-"
-    // .replace(/--+/g, "-") replaces any additional - with only one -; e.g. --- get replaced with -, -- get replaced with - etc.
     let anchorUrl = `#${headingValue
+      .toLowerCase()
+      .trim()
+      .replace(/[{}|\[\]\<\>#@"'^%`?;:/=~\\]/g, " ")
+      .replace(/^\-*|\-*$/g, "")
+      .trim()
       .replace(/\'|\?|\\|\/| |\&/g, "-")
-      .replace(/--+/g, "-")}`.toLowerCase();
-    let urlSuffix = 1;
-    while (urlExists === true) {
-      urlExists = (this.allUrls.indexOf(anchorUrl) === -1) ? false : true;
-      if (urlExists) {
-        anchorUrl = anchorUrl + `-${urlSuffix}`;
-        urlSuffix++;
+      .replace(/--+/g, "-")}`;
+
+    let counter = 1;
+    this.allUrls.forEach(url => {
+      if (url === anchorUrl) {
+        if (counter != 1) {
+          anchorUrl = anchorUrl.slice(0, -((counter - 1).toString().length + 1)) + '-' + counter;
+
+        } else {
+          anchorUrl += '-1';
+        }
+
+        counter++;
       }
-    }
+    });
+
     return anchorUrl;
   }
 
@@ -50,23 +59,23 @@ export class SPService {
       /* Initialize variables to be used for sorting and adding the Navigation links */
       let headingIndex = 0;
       let subHeadingIndex = -1;
-      let headingOrder = 0;
       let prevHeadingOrder = 0;
+
+      this.allUrls = [];
 
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.innerHTML) {
-          let HTMLString: string = webPart.innerHTML;
+          const HTMLString: string = webPart.innerHTML;
 
-          while (HTMLString.search(/<h[1-4]>/g) !== -1) {
-            /* The Header Text value */
-            // .replace(/<.+?>/gi, "") replaces in the headingValue any html tags like <strong> </strong>
-            // .replace(/&.+;/gi, "") replaces in the headingValue any &****; tags like &nbsp;
-            const headingValue = HTMLString.substring(HTMLString.search(/<h[1-4]>/g) + 4, HTMLString.search(/<\/h[1-4]>/g))
-              .replace(/<.+?>/gi, "")
-              .replace(/\&.+\;/gi, "");
+          const htmlObject = document.createElement('div');
+          htmlObject.innerHTML = HTMLString;
 
-            headingOrder = parseInt(HTMLString.charAt(HTMLString.search(/<h[1-4]>/g) + 2));
+          const headers = htmlObject.querySelectorAll('h1, h2, h3, h4');
+
+          headers.forEach(header => {
+            const headingValue = header.textContent;
+            const headingOrder = parseInt(header.tagName.substring(1));
 
             const anchorUrl = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
@@ -110,17 +119,13 @@ export class SPService {
               }
             }
             prevHeadingOrder = headingOrder;
-
-            /* Replace the added header links from the string so they don't get processed again */
-            HTMLString = HTMLString.replace(`<h${headingOrder}>`, '').replace(`</h${headingOrder}>`, '');
-          }
+          });
         }
       });
     } catch (error) {
       console.log(error);
     }
 
-    console.log('anchorLinks', anchorLinks);
     return anchorLinks;
   }
 }
