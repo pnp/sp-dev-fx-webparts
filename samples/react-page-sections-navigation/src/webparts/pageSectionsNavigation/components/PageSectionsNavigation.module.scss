@@ -1,10 +1,10 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .psnLayer {
   position: sticky;
   top: 0;
   z-index: 500;
-  
+
   .pageSectionsNavigation {
     border-bottom: 1px solid;
     border-bottom-color: "[theme:neutralLighter, default: #f4f4f4]";
@@ -16,13 +16,13 @@
       padding-inline-start: 40px;
       padding-inline-end: 40px;
       margin: 0;
-    
+
       .navItem {
         margin-right: 20px;
         display: flex;
         align-items: center;
         height: 100%;
-    
+
         .navItemLink {
           cursor: pointer;
           min-width: 20px;

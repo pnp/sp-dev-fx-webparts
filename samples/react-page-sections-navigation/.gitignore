@@ -8,6 +8,7 @@ node_modules
 
 # Build generated files
 dist
+release
 lib
 solution
 temp
