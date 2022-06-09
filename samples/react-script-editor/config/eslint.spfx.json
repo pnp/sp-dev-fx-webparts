@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": [ "error", { "accessibility": "explicit" } ],
+    "@typescript-eslint/interface-name-prefix": ["off"],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": { "delimiter": "semi", "requireLast": true },
+        "singleline": { "delimiter": "semi", "requireLast": false }
+      }
+    ],
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/prefer-namespace-keyword": "error",
+    "@typescript-eslint/type-annotation-spacing": "off",
+    "comma-dangle": "off",
+    "guard-for-in": "off",
+    "id-blacklist": "off",
+    "id-match": "off",
+    "no-caller": "off",
+    "no-console": "off",
+    "no-eval": "off",
+    "no-extra-semi": "error",
+    "no-fallthrough": "error",
+    "no-new-wrappers": "off",
+    "no-redeclare": "error",
+    "no-shadow": "error",
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "error",
+    "no-unused-labels": "off",
+    "no-use-before-define": "error",
+    "no-with": "error",
+    "semi": "error"
+  }
+}

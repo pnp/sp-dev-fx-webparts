@@ -5,7 +5,7 @@ export class PropertyPaneLogo implements IPropertyPaneField<IPropertyPaneCustomF
     public targetProperty: string;
     public properties: IPropertyPaneCustomFieldProps;
 
-    constructor() {
+    public constructor() {
          this.properties = {
              key: "Logo",
              onRender: this.onRender.bind(this)

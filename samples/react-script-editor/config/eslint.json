@@ -1,0 +1,39 @@
+{
+  // NOTE: To enable  IntelliSense for this file, uncomment the next immediate
+  //       line. However, leaving this uncommented will throw an error with
+  //       ESLint v6 so you must comment/remove it before running ESLint.
+  //
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    // NOTE: Delete the following line for TypeScript version check.
+    //       Omitting this property, or setting it to `true`, will result in
+    //       a version warning every time you run ESLint.
+    "warnOnUnsupportedTypeScriptVersion": false
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    // NOTE: To use the ESLint equivalent rules that default SPFx projects use:
+    //       1. uncomment the next immediate line
+    //       2. append a comma to the line immediately before this comment block
+    "./eslint.spfx.json"
+  ]
+}

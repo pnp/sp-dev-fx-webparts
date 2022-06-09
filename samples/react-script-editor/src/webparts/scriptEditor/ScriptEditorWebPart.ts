@@ -12,7 +12,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     public _propertyPaneHelper;
     private _unqiueId;
 
-    constructor() {
+    public constructor() {
         super();
         this.scriptUpdate = this.scriptUpdate.bind(this);
     }
@@ -66,7 +66,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         );
         ReactDom.render(element, this.domElement);
     }
-
+    
     protected get dataVersion(): Version {
         return Version.parse('1.0');
     }
@@ -91,7 +91,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-        let webPartOptions: IPropertyPaneField<any>[] = [
+        const webPartOptions: IPropertyPaneField<any>[] = [
             PropertyPaneTextField("title", {
                 label: "Title to show in edit mode",
                 value: this.properties.title
@@ -112,7 +112,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         ];
 
         if (this.context.sdks.microsoftTeams) {
-            let config = PropertyPaneToggle("teamsContext", {
+            const config = PropertyPaneToggle("teamsContext", {
                 label: "Enable teams context as _teamsContexInfo",
                 checked: this.properties.teamsContext,
                 onText: "Enabled",
@@ -144,7 +144,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         for (let i = 0; i < elem.attributes.length; i++) {
             const attr = elem.attributes[i];
             // Copies all attributes in case of loaded script relies on the tag attributes
-            if(attr.name.toLowerCase() === "onload"  ) continue; // onload handled after loading with SPComponentLoader
+            if (attr.name.toLowerCase() === "onload") continue; // onload handled after loading with SPComponentLoader
             scriptTag.setAttribute(attr.name, attr.value);
         }
 
@@ -175,12 +175,12 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     private async executeScript(element: HTMLElement) {
         // clean up added script tags in case of smart re-load        
         const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        let scriptTags = headTag.getElementsByTagName("script");
+        const scriptTags = headTag.getElementsByTagName("script");
         for (let i = 0; i < scriptTags.length; i++) {
             const scriptTag = scriptTags[i];
-            if(scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId ) {
+            if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {
                 headTag.removeChild(scriptTag);
-            }            
+            }
         }
 
         if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {

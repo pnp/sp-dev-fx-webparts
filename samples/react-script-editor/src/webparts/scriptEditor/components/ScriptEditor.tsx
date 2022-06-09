@@ -3,7 +3,7 @@ import { IScriptEditorProps } from './IScriptEditorProps';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
-    constructor(props: IScriptEditorProps, state: any) {
+    public constructor(props: IScriptEditorProps, state: any) {
         super(props);
 
         this._showDialog = this._showDialog.bind(this);
