@@ -28,8 +28,8 @@ This web part shows the current user's colleagues, and allows the user to search
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20|%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -60,6 +60,7 @@ Version|Date|Comments
 1.0.0|February 16, 2021|Initial release
 1.0.1|March 28, 2021|Added missing Graph API Permission (User.Read.All) for getting users information
 1.0.2|April 14, 2021|Added About Me and Skills 
+1.0.3|June 16, 2022|Upgraded project to SPFx v1.14.0
 
 ## Minimal Path to Awesome
 
