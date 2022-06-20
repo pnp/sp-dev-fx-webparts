@@ -9,7 +9,7 @@
       "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card."
     ],
     "creationDateTime": "2021-03-09",
-    "updateDateTime": "2021-04-14",
+    "updateDateTime": "2022-06-16",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.14.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -71,6 +71,16 @@
         "gitHubAccount": "AriGunawan",
         "pictureUrl": "https://github.com/AriGunawan.png",
         "name": "Ari Gunawan"
+      },
+      {
+        "gitHubAccount": "tristian2",
+        "pictureUrl": "https://github.com/tristian2.png",
+        "name": "Tristian O'brien"
+      },
+      {
+        "gitHubAccount": "milanholemans",
+        "pictureUrl": "https://github.com/milanholemans.png",
+        "name": "Milan Holemans"
       }
     ],
     "references": [
