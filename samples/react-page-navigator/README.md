@@ -26,25 +26,27 @@ Version|Date|Comments
 1.0|September 5, 2019|Initial release
 1.1|October 20, 2021|SPFx Upgraded to 1.12.1 and code refactored
 1.2|May, 2022|SPFx Upgraded to 1.14.0
+1.3|June 9, 2022|Updated React package from `^16.14.0` to `16.13.1`
 
 ## Minimal Path to Awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-page-navigator`, located under `samples`)
 * in the command line run:
-  - `npm i`
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
-- Add the app package to Site Collection App Catalog and Install the App
-- Add the web part to a page in the Site Collection
+  * `npm i`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+* Add the app package to Site Collection App Catalog and Install the App
+* Add the web part to a page in the Site Collection
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-page-navigator|[Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
+react-page-navigator|[Jasey Waegebaert](https://github.com/Jwaegebaert)
 
 ## Help
 
@@ -59,6 +61,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-page-navigator" />
