@@ -16,7 +16,8 @@ import { PropertyPaneHost } from 'property-pane-portal';
 import { update } from '@microsoft/sp-lodash-subset';
 
 export interface IPalettePickerWebPartProps {
-  cssObjectText;
+  //cssObjectText: string;
+  //colorObject: any;
 }
 
 
@@ -54,13 +55,13 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
 
 
 
-  public updateWebPartProperty(property, value, isObj) {
+  public updateWebPartProperty(property, value) {
 
-    if(isObj != true) {
+   // if(isObj != true) {
     update(this.properties, property, () => value);
-    } else {
-      update(this.properties, property, () => JSON.stringify(value));
-    }
+   // } else {
+   //   update(this.properties, property, () => JSON.stringify(value));
+   // }
     this.render();
   
   }
@@ -98,6 +99,7 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
                 
                 }),
                 PropertyPaneHost('fieldSetDisplay', hostProperties),
+                //TODO: get the text of the object here, or otherwise somehow send the object up the line for use in the web part
                 PropertyPaneTextField('cssObjectText', {
                   label: "CSS Object",
                   disabled: false,

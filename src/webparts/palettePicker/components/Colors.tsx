@@ -13,6 +13,7 @@ export const Colors: React.FC<IColorsProps> = (props) => {
 
     return (
         <div>
+            <div>:root &#123;</div>
         {
                Object.keys(props.colorObject).map((key) => {
                 return (
@@ -21,6 +22,8 @@ export const Colors: React.FC<IColorsProps> = (props) => {
 
                }) 
             }
+
+            <div>&#125;</div>
 
         </div>
     );

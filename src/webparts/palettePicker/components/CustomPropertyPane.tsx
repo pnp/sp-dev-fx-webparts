@@ -5,6 +5,7 @@ import styles from './CustomPropertyPane.module.scss';
 import { Range } from 'react-range';
 import { composeComponentAs } from 'office-ui-fabric-react';
 import { Colors } from './Colors';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 
 /*
@@ -49,26 +50,10 @@ const getCode = (hue, saturation, lightness, shades) => {
     } catch(ex) {console.log("obj problems"); }
    // console.log("RESULT:", RESULT);
    //console.log("color obj:", obj);
-    return [obj, JSON.stringify(obj).replace(/['"]+/g, '')];
+    return obj; //, JSON.stringify(obj)];// .replace(/['"]+/g, '')];
   }
 
- const cssStyles = (obj) => {
-    //console.log("OBJ:", obj);
-   // let cssText:string = ":root {";
-    let cssText:string = "";
 
-  Object.keys(obj).map((key) => {
-                console.log(key + ":" + obj[key]);
-                let txt = key + ":" + obj[key];
-                cssText += txt + "; "  ;
-            });
-
-           // cssText += "}";
-
-
-        return cssText;
-
-  }
 
 export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProps> = (props) => {
 
@@ -82,7 +67,8 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
             setColorObj(cssObject(props.properties["fieldSetHue"], props.properties["fieldSetSat"],props.properties["fieldSetLight"],props.properties["fieldSetShades"][0]));
             console.log("COBJ:",colorObj);
            // props.updateWebPartProperty("cssObjectText", JSON.stringify(colorObj[0]));
-            props.updateWebPartProperty("cssObjectText", colorObj[0], true);
+           // props.updateWebPartProperty("cssObjectText", JSON.stringify(colorObj));
+            props.updateWebPartProperty("cssObjectText", "some text");
         }
         catch(ex) {
             console.log("color issues");
@@ -109,8 +95,8 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                                 props.updateWebPartProperty("fieldSetHue", values);
                                 setColorObj(cssObject(props.properties["fieldSetHue"], props.properties["fieldSetSat"],props.properties["fieldSetLight"],props.properties["fieldSetShades"][0]));
                                 //props.updateWebPartProperty("cssObjectText", cssStyles(colorObj));
-                                console.log(colorObj);
-                                props.updateWebPartProperty("cssObjectText", colorObj[0], true); //JSON.stringify(colorObj).replace(/['"]+/g, ''));
+                                console.log(escape(JSON.stringify(colorObj)));
+                                props.updateWebPartProperty("cssObjectText", escape(JSON.stringify(colorObj))); //JSON.stringify(colorObj).replace(/['"]+/g, ''));
 
                         }}
                 renderTrack={({ props, children }) => (
@@ -271,7 +257,7 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
             </fieldset>
             <fieldset data-property="fieldSetDisplay" className={styles.CustomPropertyPane} >
             <Colors
-            colorObject = {colorObj[0]}
+            colorObject = {colorObj}
             fontColor = {props.properties["fontColor"]}
             context = {props.context}
             ></Colors>
