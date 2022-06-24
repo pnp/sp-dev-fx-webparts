@@ -16,23 +16,24 @@ import { PropertyPaneHost } from 'property-pane-portal';
 import { update } from '@microsoft/sp-lodash-subset';
 
 export interface IPalettePickerWebPartProps {
-  description: string;
-  hueSlider: any;
+  cssObjectText;
 }
+
+
+
 
 export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalettePickerWebPartProps> {
 
   public render(): void {
     const mainElement: React.ReactElement<IPalettePickerProps> = React.createElement(
       PalettePicker,
-      {
-        description: this.properties.description
-      }
+
       
     );
 
     const ppProps = {
-      description: "blah"
+      cssObjectText: this.properties["cssObjectText"],
+      context: this.context
     }
 
     const customPropertyPaneProperties = {
@@ -51,9 +52,15 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
       ,  this.domElement);
   }
 
-  public updateWebPartProperty(property, value) {
 
+
+  public updateWebPartProperty(property, value, isObj) {
+
+    if(isObj != true) {
     update(this.properties, property, () => value);
+    } else {
+      update(this.properties, property, () => JSON.stringify(value));
+    }
     this.render();
   
   }
@@ -86,7 +93,19 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
                 PropertyPaneHost('fieldSetSat', hostProperties),
                 PropertyPaneHost('fieldSetLight', hostProperties),
                 PropertyPaneHost('fieldSetShades', hostProperties),
+                PropertyPaneTextField('fontColor', {
+                  label: "Font Color"
+                
+                }),
                 PropertyPaneHost('fieldSetDisplay', hostProperties),
+                PropertyPaneTextField('cssObjectText', {
+                  label: "CSS Object",
+                  disabled: false,
+                  multiline: true,
+                  resizable: true
+                
+                
+                }),
               ]
             }
           ]

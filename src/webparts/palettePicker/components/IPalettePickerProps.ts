@@ -1,3 +1,4 @@
 export interface IPalettePickerProps {
-  description: string;
+  cssObjectText;
+  context;
 }

@@ -22,7 +22,12 @@
     "description": { "default": "Palette Picker description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Palette Picker"
+      "description": "Palette Picker",
+      "fontColor": "white",
+      "fieldSetHue": [90,280],
+      "fieldSetSat": [45, 75],
+      "fieldSetLight": [50, 75],
+      "fieldSetShades": [5]
     }
   }]
 }
