@@ -27,6 +27,7 @@ Version|Date|Comments
 1.1|October 20, 2021|SPFx Upgraded to 1.12.1 and code refactored
 1.2|May, 2022|SPFx Upgraded to 1.14.0
 1.3|June 9, 2022|Updated React package from `^16.14.0` to `16.13.1`
+1.4|June 29, 2022|Adds the capability to find collapsible section headers and insert them into the navigation
 
 ## Minimal Path to Awesome
 
