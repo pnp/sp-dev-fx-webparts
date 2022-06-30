@@ -152,7 +152,7 @@ body:
   attributes:
     label: Paste the results of SPFx doctor
     description: |
-        Run `m365 spfx doctor -o json` and paste the results. 
+        Run `m365 spfx doctor` and paste the results. 
         
         Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 
