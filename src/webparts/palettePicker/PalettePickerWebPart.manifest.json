@@ -20,14 +20,14 @@
     "group": { "default": "Other" },
     "title": { "default": "Palette Picker" },
     "description": { "default": "Palette Picker description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Color",
     "properties": {
       "description": "Palette Picker",
       "fontColor": "white",
       "fieldSetHue": [90,280],
       "fieldSetSat": [45, 75],
       "fieldSetLight": [50, 75],
-      "fieldSetShades": [5]
+      "fieldSetShades": [8]
     }
   }]
 }

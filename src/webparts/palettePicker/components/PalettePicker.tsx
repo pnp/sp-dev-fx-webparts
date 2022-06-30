@@ -1,16 +1,8 @@
 import * as React from 'react';
 import styles from './PalettePicker.module.scss';
 import { IPalettePickerProps } from './IPalettePickerProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
-
-const dropdownStyles: Partial<IDropdownStyles> = {
-
-  dropdown: { width: 300
-
-   }
-};
 
 const options: IDropdownOption[] = [  
   { key: 'apple', text: 'Apple' },
@@ -22,31 +14,81 @@ const options: IDropdownOption[] = [
   { key: 'lettuce', text: 'Lettuce' }
 ];
 
+const returnCss = (obj) => {
+
+  let newObj = {};
+  Object.keys(obj).map((key, i) => {
+    newObj[`.ms-Dropdown-item:nth-of-type(${i+1})`] = { "backgroundColor": obj[key] };
+  });
+
+  return newObj;
+
+}
+
 
 export default class PalettePicker extends React.Component<IPalettePickerProps, {}> {
 
-  public componentDidMount() {
-  //  console.log("css:", JSON.parse(this.props.colorObj));
+constructor(props: IPalettePickerProps) {
+  super(props);
+
+ 
+}
+
+
+
+
+  private dropdownStyles: Partial<IDropdownStyles> = {
+    root: this.props.cssObject,
+    label: {color: this.props.fontColor},
+  /*  dropdownItem: {
+      backgroundColor: 'pink'
+    },  */
+   /* dropdownItemsWrapper: {
+      style: this.props.cssObject ? this.props.cssObject : {},
+    }, */
+
+   dropdownItems: {
+      selectors: returnCss(this.props.cssObject),
+    dropdown: { width: 300
+    }
+  
   }
 
+}
+ 
 
 
-//console.log(props)
 
 
   public render(): React.ReactElement<IPalettePickerProps> {
+
+console.log("styles:", this.dropdownStyles);
+console.log("obj", returnCss(this.props.cssObject));
+
+
+
     return (
-      <div className={ styles.palettePicker }>
-        <div className={ styles.container }>
-          <div className={ styles.row }>
+      <div style={this.props.cssObject} className={ styles.palettePicker }>
+        <div>
+          <div className={ styles.row } style={{backgroundColor: this.props.cssObject["--color-1"], color: this.props.fontColor}}>
             <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} styles={dropdownStyles} />                    
-              
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
+              <span className={ styles.title } style={{color: this.props.fontColor}}>Here's a Palette Picker for you!</span>
+              <p className={ styles.subTitle  }  style={{color: this.props.fontColor}}>Allow users to select a color palette for your web part.</p>
+              <div style={{height: 'auto', minHeight: '20px', backgroundColor: this.props.fontColor}}>
+              {Object.keys(this.props.cssObject).map((key,i) =>{
+                return <div style={{backgroundColor: this.props.cssObject[key], height:'10px', width: '10px', display: 'inline-block', borderRadius: '50%', left: 0, top: 0 }}></div>
+              })}
+              </div>
+
+              <Dropdown placeholder="Select an option" label="Color your dropdown options .." options={options} styles={this.dropdownStyles} />   
+              <div>               
+
+</div>
+              <a href="https://aka.ms/spfx" className={ styles.button } style={{backgroundColor: this.props.cssObject["--color-3"], color: this.props.fontColor}}>
+                <span className={ styles.label } style={{color: this.props.fontColor}}>Learn more</span>
               </a>
+              <pre style={{font: 'courier', backgroundColor: this.props.cssObject["--color-5"], color: this.props.fontColor}}> {JSON.stringify(this.props.cssObject, null, 4)}</pre>
+
             </div>
           </div>
         </div>

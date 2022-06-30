@@ -16,14 +16,17 @@ import { PropertyPaneHost } from 'property-pane-portal';
 import { update } from '@microsoft/sp-lodash-subset';
 
 export interface IPalettePickerWebPartProps {
-  //cssObjectText: string;
-  //colorObject: any;
+  cssObjectText: string;
+  fontColor: string;
+  cssObject: any;
 }
 
 
 
 
 export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalettePickerWebPartProps> {
+
+  
 
   public render(): void {
     const mainElement: React.ReactElement<IPalettePickerProps> = React.createElement(
@@ -34,7 +37,9 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
 
     const ppProps = {
       cssObjectText: this.properties["cssObjectText"],
-      context: this.context
+      context: this.context,
+      cssObject: JSON.parse(this.properties["cssObjectText"]),
+      fontColor: this.properties.fontColor
     }
 
     const customPropertyPaneProperties = {
@@ -56,12 +61,13 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
 
 
   public updateWebPartProperty(property, value) {
-
-   // if(isObj != true) {
     update(this.properties, property, () => value);
-   // } else {
-   //   update(this.properties, property, () => JSON.stringify(value));
-   // }
+
+    if(property == "cssObject" && value != {}) {
+     // update(this.properties, "cssObjectText", () => ":root {" + Object.entries(value).map(([k, v]) => `${k}:${v}`).join('; ') + "}");
+     update(this.properties, "cssObjectText", () => JSON.stringify(value));
+    }
+
     this.render();
   
   }
@@ -99,15 +105,7 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
                 
                 }),
                 PropertyPaneHost('fieldSetDisplay', hostProperties),
-                //TODO: get the text of the object here, or otherwise somehow send the object up the line for use in the web part
-                PropertyPaneTextField('cssObjectText', {
-                  label: "CSS Object",
-                  disabled: false,
-                  multiline: true,
-                  resizable: true
-                
-                
-                }),
+                PropertyPaneHost('cssObjectText', hostProperties),
               ]
             }
           ]
