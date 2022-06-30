@@ -65,6 +65,15 @@ export class SPService {
 
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
+        if (webPart.zoneGroupMetadata) {
+          const headingValue = webPart.zoneGroupMetadata.displayName;
+          const anchorUrl = this.GetAnchorUrl(headingValue);
+          this.allUrls.push(anchorUrl);
+
+          /* Add link to Nav element */
+          anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: webPart.zoneGroupMetadata.isExpanded });
+        }
+
         if (webPart.innerHTML) {
           const HTMLString: string = webPart.innerHTML;
 
@@ -75,7 +84,11 @@ export class SPService {
 
           headers.forEach(header => {
             const headingValue = header.textContent;
-            const headingOrder = parseInt(header.tagName.substring(1));
+            let headingOrder = parseInt(header.tagName.substring(1));
+
+            if (webPart.zoneGroupMetadata) {
+              headingOrder++;
+            }
 
             const anchorUrl = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
