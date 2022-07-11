@@ -52,12 +52,14 @@ export default class ListService implements IListService {
       if (listQueryOptions.camlQuery) {
         let query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
         items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
+        items = items.map(m => m.FieldValuesAsText);
       }
       else {
         if (listQueryOptions.viewName) {
           let viewInfo: any = await this.web.lists.getById(listQueryOptions.list.Id).views.getByTitle(listQueryOptions.viewName).select("ViewQuery").get();
           let query = this.getCamlQueryWithViewFieldsAndRowLimit(`<View><Query>${viewInfo.ViewQuery}</Query></View>`, queryConfig, rowLimit);
           items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
+          items = items.map(m => m.FieldValuesAsText);
         }
         else {
           items = await sp.web.lists.getById(listQueryOptions.list.Id).items
