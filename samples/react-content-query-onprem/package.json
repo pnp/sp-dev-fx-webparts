@@ -13,7 +13,7 @@
   "dependencies": {
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.8.2",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "react": "15.4.2",
     "react-ace": "^5.1.0",
     "react-dom": "15.4.2",
