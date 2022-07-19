@@ -39,12 +39,37 @@ export class SPService {
   }
 
   /**
+   * Nests a new nav link within the nav links tree
+   * @param currentLinks current nav links
+   * @param newLink the new nav link to be added to the structure
+   * @param order place order of the new link
+   * @param depth sequence depth
+   * @returns navLinks
+   */
+  public static navLinkBuilder(currentLinks: INavLink[], newLink: INavLink, order: number, depth: number = 0): INavLink[] {
+    const lastIndex = currentLinks.length - 1;
+
+    if (currentLinks[lastIndex].links.length === 0 || order === depth) {
+      if (depth === 0) {
+        currentLinks.push(newLink);
+      } else {
+        currentLinks[lastIndex].links.push(newLink);
+      }
+    } else {
+      depth++;
+      currentLinks[lastIndex].links.concat(this.navLinkBuilder(currentLinks[lastIndex].links, newLink, order, depth));
+    }
+
+    return currentLinks;
+  }
+
+  /**
    * Returns the Anchor Links for Nav element
    * @param context Web part context
    * @returns anchorLinks
    */
   public static async GetAnchorLinks(context: WebPartContext) {
-    const anchorLinks: INavLink[] = [];
+    let anchorLinks: INavLink[] = [];
 
     try {
       /* Page ID on which the web part is added */
@@ -56,82 +81,49 @@ export class SPService {
       const canvasContent1 = jsonData.CanvasContent1;
       const canvasContent1JSON: any[] = JSON.parse(canvasContent1);
 
-      /* Initialize variables to be used for sorting and adding the Navigation links */
-      let headingIndex = 0;
-      let subHeadingIndex = -1;
-      let prevHeadingOrder = 0;
-
       this.allUrls = [];
 
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
-        if (webPart.zoneGroupMetadata) {
-          const headingValue = webPart.zoneGroupMetadata.displayName;
-          const anchorUrl = this.GetAnchorUrl(headingValue);
+        if (webPart.zoneGroupMetadata && webPart.zoneGroupMetadata.type === 1) {
+          const headingValue: string = webPart.zoneGroupMetadata.displayName;
+          const anchorUrl: string = this.GetAnchorUrl(headingValue);
           this.allUrls.push(anchorUrl);
 
-          /* Add link to Nav element */
-          anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: webPart.zoneGroupMetadata.isExpanded });
+          // Limitation! This will break with headings containing the same name
+          if (anchorLinks.filter(x => x.name === headingValue).length === 0) {
+            // Add link to nav element
+            anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: webPart.zoneGroupMetadata.isExpanded });
+          }
         }
 
         if (webPart.innerHTML) {
           const HTMLString: string = webPart.innerHTML;
+          const hasCollapsableHeader: boolean = webPart.zoneGroupMetadata && 
+            webPart.zoneGroupMetadata.type === 1 && 
+            anchorLinks.filter(x => x.name === webPart.zoneGroupMetadata.displayName).length === 1;
 
-          const htmlObject = document.createElement('div');
+          const htmlObject: HTMLDivElement = document.createElement('div');
           htmlObject.innerHTML = HTMLString;
 
-          const headers = htmlObject.querySelectorAll('h1, h2, h3, h4');
+          const headers: NodeListOf<Element> = htmlObject.querySelectorAll('h1, h2, h3, h4');
 
           headers.forEach(header => {
-            const headingValue = header.textContent;
-            let headingOrder = parseInt(header.tagName.substring(1));
+            const headingValue: string = header.textContent;
+            let headingOrder: number = parseInt(header.tagName.substring(1));
+            // -2 because the text webpart heading 1 uses a h2 element
+            headingOrder -= 2;
 
-            if (webPart.zoneGroupMetadata) {
+            if (hasCollapsableHeader) {
               headingOrder++;
             }
 
-            const anchorUrl = this.GetAnchorUrl(headingValue);
+            const anchorUrl: string = this.GetAnchorUrl(headingValue);
             this.allUrls.push(anchorUrl);
 
-            /* Add links to Nav element */
-            if (anchorLinks.length === 0) {
-              anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-            } else {
-              if (headingOrder <= prevHeadingOrder) {
-                /* Adding or Promoting links */
-                switch (headingOrder) {
-                  case 2:
-                    anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                    headingIndex++;
-                    subHeadingIndex = -1;
-                    break;
-                  case 4:
-                    if (subHeadingIndex > -1) {
-                      anchorLinks[headingIndex].links[subHeadingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                    } else {
-                      anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                    }
-                    break;
-                  default:
-                    anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                    subHeadingIndex = anchorLinks[headingIndex].links.length - 1;
-                    break;
-                }
-              } else {
-                /* Making sub links */
-                if (headingOrder === 3) {
-                  anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                  subHeadingIndex = anchorLinks[headingIndex].links.length - 1;
-                } else {
-                  if (subHeadingIndex > -1) {
-                    anchorLinks[headingIndex].links[subHeadingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                  } else {
-                    anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                  }
-                }
-              }
-            }
-            prevHeadingOrder = headingOrder;
+            // Add link to nav element
+            const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true };
+            anchorLinks = this.navLinkBuilder(anchorLinks, newNavLink, headingOrder, hasCollapsableHeader ? 1 : 0);
           });
         }
       });
