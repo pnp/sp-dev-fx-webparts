@@ -86,14 +86,15 @@ export class SPService {
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.zoneGroupMetadata && webPart.zoneGroupMetadata.type === 1) {
-          const headingValue: string = webPart.zoneGroupMetadata.displayName;
+          const headingIsEmpty: boolean = webPart.zoneGroupMetadata.displayName === '';
+          const headingValue: string = headingIsEmpty ? 'Empty Heading' : webPart.zoneGroupMetadata.displayName ;
           const anchorUrl: string = this.GetAnchorUrl(headingValue);
           this.allUrls.push(anchorUrl);
 
           // Limitation! This will break with headings containing the same name
           if (anchorLinks.filter(x => x.name === headingValue).length === 0) {
             // Add link to nav element
-            anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: webPart.zoneGroupMetadata.isExpanded });
+            anchorLinks.push({ name: headingValue, key: anchorUrl, url: !headingIsEmpty && anchorUrl, links: [], isExpanded: webPart.zoneGroupMetadata.isExpanded });
           }
         }
 
@@ -101,7 +102,8 @@ export class SPService {
           const HTMLString: string = webPart.innerHTML;
           const hasCollapsableHeader: boolean = webPart.zoneGroupMetadata && 
             webPart.zoneGroupMetadata.type === 1 && 
-            anchorLinks.filter(x => x.name === webPart.zoneGroupMetadata.displayName).length === 1;
+            ( anchorLinks.filter(x => x.name === webPart.zoneGroupMetadata.displayName).length === 1 || 
+            webPart.zoneGroupMetadata.displayName === '' );
 
           const htmlObject: HTMLDivElement = document.createElement('div');
           htmlObject.innerHTML = HTMLString;
