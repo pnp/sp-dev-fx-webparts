@@ -79,10 +79,10 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
   Really only used for workbench mode when we cannot get a page id for the current page.
   We'll allow user to test with a property and also using mock data allow them to navigate when on local host with a querystring
   */
-  private getDebugPageId() : number {
+  private getDebugPageId(): number {
     let queryParms = new UrlQueryParameterCollection(window.location.href);
     let debugPageId = this.properties.debugPageId;
-    if(queryParms.getValue(Parameters.DEBUGPAGEID)) { debugPageId = Number(queryParms.getValue(Parameters.DEBUGPAGEID)); }
+    if (queryParms.getValue(Parameters.DEBUGPAGEID)) { debugPageId = Number(queryParms.getValue(Parameters.DEBUGPAGEID)); }
 
     return debugPageId;
   }
@@ -162,7 +162,7 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
           value: this.properties.treeFrom,
           label: strings.PropertyPane_Label_TreeFrom,
           description: strings.PropertyPane_Description_TreeFrom,
-          minValue: 1,
+          minValue: 0,
           disabled: false
         }),
         this.properties.pagesToDisplay === PagesToDisplay.Tree && PropertyFieldNumber('treeExpandTo', {
@@ -170,7 +170,7 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
           value: this.properties.treeExpandTo,
           label: strings.PropertyPane_Label_TreeExpandTo,
           description: strings.PropertyPane_Description_TreeExpandTo,
-          minValue: 1,
+          minValue: 0,
           disabled: false
         })
       ]
