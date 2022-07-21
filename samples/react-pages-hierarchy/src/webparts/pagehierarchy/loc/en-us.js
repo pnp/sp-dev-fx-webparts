@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
   return {
     "Configuration_Placeholder_IconText": "Configure Page Hierarchy Web Part",
     "Configuration_Placeholder_Description": "Please configure the web part.",
@@ -22,8 +22,8 @@ define([], function() {
     "PropertyPane_Label_DebugPageId": "Debug Page Id",
     "PropertyPane_Label_VersionInfo": "Version: ",
     "PropertyPane_Description_DebugPageId": "Provide a valid page list item id to see how the web part would render for it",
-    "PropertyPane_Description_TreeFrom": "Please provide the page id for the root of the tree to render",
+    "PropertyPane_Description_TreeFrom": "Please provide the page id for the root of the tree to render. Entering zero will start the tree at the current pages highest ancestor",
     "PropertyPane_Label_TreeExpandTo": "Default Expand the Tree To Level",
-    "PropertyPane_Description_TreeExpandTo": "By default expand the tree to this level"
+    "PropertyPane_Description_TreeExpandTo": "By default expand the tree to this level. Entering zero will inclusively expand the tree along the ancestor path of the current page"
   }
 });
