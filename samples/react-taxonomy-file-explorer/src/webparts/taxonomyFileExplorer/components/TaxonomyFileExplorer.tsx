@@ -18,6 +18,7 @@ export const TaxonomyFileExplorer: React.FC<ITaxonomyFileExplorerProps> = (props
   const [collapseAll, setCollapseAll] = React.useState<boolean>(false);
   const [expandAll, setExpandAll] = React.useState<boolean>(false);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const buildTree = async () => {
     const taxSvc: TaxonomyService = new TaxonomyService(props.serviceScope);
     const termsetID: string = await taxSvc.getTermsetInfo(props.fieldName);
@@ -34,9 +35,11 @@ export const TaxonomyFileExplorer: React.FC<ITaxonomyFileExplorerProps> = (props
     const spSrvc: SPService = new SPService(props.serviceScope, props.listName, props.fieldName);
     const files: IFileItem[] = await spSrvc.getItems(termsetID);
     setSpSvc(spSrvc);
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     updateFiles(files, termnodetree);
   };
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const updateFiles = (files: IFileItem[], termnodetree: ITermNode[]) => {
     const taxSvc: TaxonomyService = new TaxonomyService(props.serviceScope);
     termnodetree = taxSvc.incorporateFiles(termnodetree, files);
@@ -52,6 +55,7 @@ export const TaxonomyFileExplorer: React.FC<ITaxonomyFileExplorerProps> = (props
     setSelectedTermnode(newNodeID);
   },[setSelectedTermnode]);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const reloadFiles = (file: IFileItem) => {
     const newFiles: IFileItem[] = [];
     fileItems.forEach(fi => {
@@ -65,17 +69,20 @@ export const TaxonomyFileExplorer: React.FC<ITaxonomyFileExplorerProps> = (props
     updateFiles(newFiles, terms);
   };
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const loadNewFiles = (file: IFileItem) => {
     const newFiles: IFileItem[] = [file].concat(fileItems);
     updateFiles(newFiles, terms);
   };
 
   const addTerm = React.useCallback((file: IFileItem, newTaxonomyValue: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     spSvc.updateTaxonomyItemByAdd(file, props.fieldName, newTaxonomyValue);
     reloadFiles(file);
   },[spSvc, fileItems, terms]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const replaceTerm = React.useCallback((file: IFileItem, newTaxonomyValue: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     spSvc.updateTaxonomyItemByReplace(file, props.fieldName, newTaxonomyValue);
     reloadFiles(file);
   },[spSvc, fileItems, terms]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -85,6 +92,7 @@ export const TaxonomyFileExplorer: React.FC<ITaxonomyFileExplorerProps> = (props
     loadNewFiles(newFile);
   },[spSvc, fileItems, terms]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const uploadFile = React.useCallback(async (file: any, newTaxonomyValue: string) => {
     const newFile = await spSvc.newTaxonomyItemByUpload(file, props.fieldName, newTaxonomyValue)
     loadNewFiles(newFile);

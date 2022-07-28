@@ -26,12 +26,15 @@ export const TermLabel: React.FC<ITermLabelProps> = (props) => {
     setShowContextualMenu(false);
   },[setShowContextualMenu]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const uploadWithNewTerm = React.useCallback((file: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const newTaxonomyValue: string = `${props.node.name}|${props.node.guid}`;
     props.uploadFile(file, newTaxonomyValue);
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
   
   const addNewTerm = React.useCallback((file: IFileItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const newTaxonomyValue: string = `${props.node.name}|${props.node.guid}`;
     file.termGuid.push(props.node.guid);
     file.taxValue.push(newTaxonomyValue);
@@ -73,7 +76,9 @@ export const TermLabel: React.FC<ITermLabelProps> = (props) => {
     setDragEntered(false);
   },[setDragEntered]);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const replaceByNewTerm = (file: IFileItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const newTaxonomyValue: string = `${props.node.name}|${props.node.guid}`;
     file.termGuid = [props.node.guid];
     file.taxValue = [newTaxonomyValue];
@@ -81,7 +86,9 @@ export const TermLabel: React.FC<ITermLabelProps> = (props) => {
     props.addTerm(file, newTaxonomyValue);
   };
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const copyWithNewTerm = (file: IFileItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const newTaxonomyValue: string = `${props.node.name}|${props.node.guid}`;
     props.copyFile(file, newTaxonomyValue);
   };

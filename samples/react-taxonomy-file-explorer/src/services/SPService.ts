@@ -26,6 +26,7 @@ export class SPService {
   }
 
   public async getItems (termsetID: string): Promise<IFileItem[]> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const items: any[] = await this._sp.web.lists.getByTitle(this._listName).items.select('Id', this._fieldName).expand('File').getAll();
     const files: IFileItem[] = [];
     items.forEach(i => {
@@ -85,6 +86,7 @@ export class SPService {
   public async newTaxonomyItemByCopy (file: IFileItem, fieldName: string, newTaxonomyValue: string): Promise<IFileItem> {
     const fileUrl: URL = new URL(file.url);
     const currentFileNamePart: string = file.title.replace(`.${file.extension}`, '');
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const newFilename: string = `${currentFileNamePart}_Copy.${file.extension}`;
     const destinationUrl: string = decodeURI(fileUrl.pathname).replace(file.title, newFilename);
     await this._sp.web.getFileByServerRelativePath(decodeURI(fileUrl.pathname)).copyByPath(destinationUrl, false, true);
@@ -109,6 +111,7 @@ export class SPService {
     return newFile;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public async newTaxonomyItemByUpload (file: any, fieldName: string, newTaxonomyValue: string): Promise<IFileItem> {
     const libraryRoot = await this._sp.web.lists.getByTitle(this._listName).rootFolder();
     // Assuming small file size, otherwise use chunks

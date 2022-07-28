@@ -22,6 +22,7 @@ export class TaxonomyService {
     const parser = new DOMParser();
     const xmlField = parser.parseFromString(mmFieldInfo.SchemaXml, "text/xml");
     const properties = xmlField.getElementsByTagName("ArrayOfProperty")[0].childNodes;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let termsetID: string = "";
     properties.forEach(prop => {
       if (prop.childNodes[0].textContent === "TermSetId") {

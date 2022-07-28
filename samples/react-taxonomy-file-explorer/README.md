@@ -62,7 +62,7 @@ react-taxonomy-file-explorer| [Markus Moeller](https://github.com/mmsharepoint) 
 Version|Date|Comments
 -------|----|--------
 1.0|December 26, 2021|Initial release
-1.1|July 16, 2021|Added expand/collapse all, upgraded to SPFx 1.15.0, upgraded to PnPJS V3.5.1
+1.1|July 16, 2022|Added expand/collapse all, upgraded to SPFx 1.15.0, upgraded to PnPJS V3.5.1
 
 
 ## Minimal Path to Awesome

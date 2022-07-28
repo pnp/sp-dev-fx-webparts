@@ -11,5 +11,6 @@ export interface ITermLabelProps {
     addTerm: (file: IFileItem, newValue: string) => void;
     replaceTerm: (file: IFileItem, newValue: string) => void;
     copyFile: (file: IFileItem, newValue: string) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     uploadFile: (file: any, newValue: string) => void;
 }
