@@ -22,12 +22,15 @@ Copy:
 
 ![Copying the file to a new one with (only) the target term in the managed metadata column (Copy)](./assets/05Copy.gif)
 
-For further details see the author's [blog post](https://mmsharepoint.wordpress.com/2021/12/23/a-sharepoint-file-explorer-based-on-managed-metadata-and-spfx/)
+[UPDATE] Collapse and expand all:
 
+![Collapse and expand all](./assets/ExpandCollapseAll.gif)
+
+For further details see the author's [blog post](https://mmsharepoint.wordpress.com/2021/12/23/a-sharepoint-file-explorer-based-on-managed-metadata-and-spfx/)
 
 ## Compatibility
 
-![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
+![SPFx 1.15.0](https://img.shields.io/badge/version-1.15-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -35,7 +38,6 @@ For further details see the author's [blog post](https://mmsharepoint.wordpress.
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
-
 
 ## Applies to
 
@@ -60,6 +62,7 @@ react-taxonomy-file-explorer| [Markus Moeller](https://github.com/mmsharepoint) 
 Version|Date|Comments
 -------|----|--------
 1.0|December 26, 2021|Initial release
+1.1|July 16, 2022|Added expand/collapse all, upgraded to SPFx 1.15.0, upgraded to PnPJS V3.5.1
 
 
 ## Minimal Path to Awesome
