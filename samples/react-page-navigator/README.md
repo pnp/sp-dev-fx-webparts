@@ -30,7 +30,6 @@ Version|Date|Comments
 1.4|June 29, 2022|Adds the capability to find collapsible section headers and insert them into the navigation
 1.5|July 19, 2022|Bug fixes
 
-
 ## Minimal Path to Awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator) then unzip it)

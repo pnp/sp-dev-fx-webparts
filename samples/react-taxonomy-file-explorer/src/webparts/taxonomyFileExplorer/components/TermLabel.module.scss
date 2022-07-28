@@ -17,6 +17,9 @@
     .checkedLabel {
         border: 1px dotted "[theme: themePrimary, default: #0078d7]";
     }
+    .dragEnter {
+        background-color: "[theme: themeLight, default: #c7e0f4]";
+    }
     .icon {
         margin-right: 6px;
         cursor: pointer;

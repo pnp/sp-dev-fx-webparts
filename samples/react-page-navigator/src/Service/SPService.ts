@@ -14,12 +14,11 @@ export class SPService {
   private static GetAnchorUrl(headingValue: string): string {
     let anchorUrl = `#${headingValue
       .toLowerCase()
-      .trim()
-      .replace(/[{}|\[\]\<\>#@"'^%`?;:/=~\\]/g, " ")
-      .replace(/^\-*|\-*$/g, "")
-      .trim()
+      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s+]/g, " ")
+      .replace(/^(-|\s)*|(-|\s)*$/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
-      .replace(/--+/g, "-")}`;
+      .replace(/-+/g, "-")
+      .substring(0, 128)}`;
 
     let counter = 1;
     this.allUrls.forEach(url => {
