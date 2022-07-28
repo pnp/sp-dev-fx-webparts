@@ -12,7 +12,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'GraphAppSecretExpirationWebPartStrings';
 import GraphAppSecretExpiration from './components/GraphAppSecretExpiration';
 import { IGraphAppSecretExpirationProps } from './components/IGraphAppSecretExpirationProps';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IGraphAppSecretExpirationWebPartProps {
   groupByColumn: string;
@@ -22,7 +22,7 @@ export interface IGraphAppSecretExpirationWebPartProps {
 }
 
 export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPart<IGraphAppSecretExpirationWebPartProps> {
-  private graphClient: MSGraphClient;
+  private graphClient: MSGraphClientV3;
   private dropdownOptions: IPropertyPaneDropdownOption[] = [
     { key: "none", text: "None" },
     { key: "applicationId", text: "Application ID" },
@@ -31,8 +31,8 @@ export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPa
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient("3")
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));
