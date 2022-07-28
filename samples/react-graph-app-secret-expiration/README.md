@@ -9,7 +9,7 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 
 ## Compatibility
 
-![SPFx 1.15](https://img.shields.io/badge/SPFx-1.14-green.svg)
+![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
