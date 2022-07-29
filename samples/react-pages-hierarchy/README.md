@@ -49,6 +49,7 @@ Solution|Author(s)
 --------|---------
 react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
 react-pages-hierarchy|[Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
+react-pages-hierarchy|[SlowRobot](https://github.com/SlowRobot)
 
 ## Version history
 
@@ -57,6 +58,7 @@ Version|Date|Comments
 1.0|April 30, 2020|Initial release
 1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
 1.3|March 31, 2022|Added a Tree View
+1.4|July 29, 2022|Updated Tree View Functionality
 
 
 ## Minimal path to awesome
