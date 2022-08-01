@@ -5,6 +5,9 @@
 Custom Property Pane pain resolved (whew), color palette generator inspired by [Jhey](https://codepen.io/jh3y/pen/rNjbmBQ?editors=0011).
 Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) and cuz I want to eventually build in a dynamic palette generator/css reader for my web parts.
 
+![property pane view](images/palettePickerWebPart.gif)
+![after save and refresh](images/palettePickerWebPartAfterSaveAndRefresh.gif)
+
 ## Used SharePoint Framework Version
 
 ![version](https://img.shields.io/badge/version-1.13-green.svg)
@@ -18,7 +21,7 @@ Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com
 
 ## Prerequisites
 
-> Any special pre-requisites?
+The standard stoic perserverance required for spFx development.
 
 ## Solution
 
@@ -46,27 +49,25 @@ Version|Date|Comments
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
 
 ## Features
 
-Next step is see if I can make prism work with it (as per inspiring example), and then to have the generated colors applied to web part elements.
+Multi-parameter sliders* in property pane from [react-range](https://www.npmjs.com/package/react-range), dynamic colour updating, css snippet generation, apply colours to MS dropdown component options.  
 
-![property pane view](images/palettePickerWebPart.gif)
-![after save and refresh](images/palettePickerWebPartAfterSaveAndRefresh.gif)
+* PnP - please consider :)
 
 This web part illustrates the following concepts:
 
 - custom property pane
-- dynamic css in spFx property pane (and later beyond)
+- dynamic css in spFx property pane 
 - custom css colour on dropdown options
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
 
 > Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
 ## References
 
+- [Property Pane Portal](https://blog.pathtosharepoint.com/2021/07/29/introducing-the-property-pane-portal/) (thank you Christophe!)
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
