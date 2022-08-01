@@ -54,7 +54,7 @@ Version|Date|Comments
 
 Multi-parameter sliders* in property pane from [react-range](https://www.npmjs.com/package/react-range), dynamic colour updating, css snippet generation, apply colours to MS dropdown component options.  
 
-* PnP - please consider :)
+ * PnP - please consider :)
 
 This web part illustrates the following concepts:
 
