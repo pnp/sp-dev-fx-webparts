@@ -24,14 +24,13 @@ Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com
 
 Solution|Author(s)
 --------|---------
-folder name | Author details (name, company, twitter alias with link)
+react Palette Picker Web Part | [Linda K](https://github.com/flowerbot)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
+1.0|August, 2022|Initial release
 
 ## Disclaimer
 
@@ -60,7 +59,7 @@ This web part illustrates the following concepts:
 
 - custom property pane
 - dynamic css in spFx property pane (and later beyond)
-- topic 3
+- custom css colour on dropdown options
 
 > Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
 
