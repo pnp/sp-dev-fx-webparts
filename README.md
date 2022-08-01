@@ -3,7 +3,7 @@
 ## Summary
 
 Custom Property Pane pain resolved (whew), color palette generator inspired by [Jhey](https://codepen.io/jh3y/pen/rNjbmBQ?editors=0011).
-Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) and cuz I to build in a dynamic palette generator/css reader for my web parts.
+Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) and cuz I want to eventually build in a dynamic palette generator/css reader for my web parts.
 
 ## Used SharePoint Framework Version
 
@@ -53,7 +53,8 @@ Version|Date|Comments
 
 Next step is see if I can make prism work with it (as per inspiring example), and then to have the generated colors applied to web part elements.
 
-[picture of the solution in action, if possible]
+![property pane view](images/palettePickerWebPart.gif)
+![after save and refresh](images/palettePickerWebPartAfterSaveAndRefresh.gif)
 
 This web part illustrates the following concepts:
 
