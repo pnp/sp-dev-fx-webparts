@@ -19,9 +19,6 @@ Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Prerequisites
-
-The standard stoic perserverance required for spFx development.
 
 ## Solution
 
