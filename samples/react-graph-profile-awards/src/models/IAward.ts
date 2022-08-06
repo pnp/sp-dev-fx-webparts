@@ -5,7 +5,7 @@ export interface IAward {
     displayName: string;
     allowedAudiences: allowedAudiences;
     description: string;
-    issuedDate: Date;
+    issuedDate: string;
     issuingAuthority: string;
     thumbnailUrl: string;
     webUrl: string;

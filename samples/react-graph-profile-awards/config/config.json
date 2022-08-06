@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "MyAwardsWebPartStrings": "lib/webparts/myAwards/loc/{locale}.js"
+    "MyAwardsWebPartStrings": "lib/webparts/myAwards/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

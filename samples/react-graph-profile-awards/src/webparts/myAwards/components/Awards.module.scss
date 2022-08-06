@@ -1,0 +1,103 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+p {
+  font-size: 12px;
+  color: #3B3838;
+}
+
+.App {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.awards_container {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+.award_card {
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #5CC8FF;
+  display: grid;
+}
+
+.award_title {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.award_card img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.award_issuedby {
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}
+
+.award_thumbnail {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.award_footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: end;
+  font-size: 12px;
+}
+
+.award_footer a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.award_when {
+  color: white;
+  font-weight: 600;
+}
+
+.award_details {
+  text-align: end;
+}
+
+.awards_list_container {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-columns: auto;
+  grid-gap: 1rem;
+}
+
+.award_list_item {
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #5CC8FF;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.award_list_item img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.award_list_item_content .award_issuedby {
+  text-align: left;
+}
+
+.award_list_item_img {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
