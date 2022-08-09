@@ -2501,6 +2501,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext",
+    "source": "pnp",
+    "title": "Tab Accordion",
+    "shortDescription": "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
+    "longDescription": [
+      "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online"
+    ],
+    "creationDateTime": "2022-03-30",
+    "updateDateTime": "2022-03-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.14"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.PNG",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "arunkumarperumal",
+        "pictureUrl": "https://github.com/arunkumarperumal.png",
+        "name": "Arun Kumar Perumal"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-accordion",
     "source": "pnp",
     "title": "Accordion Web Part",
@@ -4585,17 +4633,15 @@
     "authors": [
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       }
     ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -6733,7 +6779,7 @@
       "Allows users to create Frequently Asked Questions using Property Field Collection Data, with options to view as an Accordion or Tab and also ability to search within the FAQs"
     ],
     "creationDateTime": "2022-03-07",
-    "updateDateTime": "2022-03-07",
+    "updateDateTime": "2022-06-02",
     "products": [
       "SharePoint"
     ],
@@ -6744,7 +6790,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13"
+        "value": "1.13.0"
       }
     ],
     "thumbnails": [
@@ -7018,6 +7064,60 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-9",
+    "source": "pnp",
+    "title": "Fluent UI 9 Demo",
+    "shortDescription": "description",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9",
+    "longDescription": [
+      "description"
+    ],
+    "creationDateTime": "2022-04-20",
+    "updateDateTime": "2022-04-20",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.14"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzNLB4XwAIFMRh.jpg",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzO9YjWUAgFlrU.jpg",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "techienickb",
+        "pictureUrl": "https://github.com/techienickb.png",
+        "name": "Nick Brown"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant",
     "source": "pnp",
     "title": "Fluent UI Theme Variant",
@@ -7075,7 +7175,7 @@
       "identify/follow user key documents from all Tenant and easily access them in Modern Pages and Microsoft Teams"
     ],
     "creationDateTime": "2021-06-21",
-    "updateDateTime": "2022-01-13",
+    "updateDateTime": "2022-05-17",
     "products": [
       "SharePoint"
     ],
@@ -7108,6 +7208,11 @@
         "gitHubAccount": "aaclage",
         "pictureUrl": "https://github.com/aaclage.png",
         "name": "André Lage"
+      },
+      {
+        "gitHubAccount": "Maya-Mostafa",
+        "pictureUrl": "https://github.com/Maya-Mostafa.png",
+        "name": "Mai Mostafa"
       }
     ],
     "references": [
@@ -7788,7 +7893,7 @@
       "This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date."
     ],
     "creationDateTime": "2021-09-17",
-    "updateDateTime": "2022-03-14",
+    "updateDateTime": "2022-07-07",
     "products": [
       "SharePoint"
     ],
@@ -7799,7 +7904,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.15.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -7837,7 +7942,7 @@
     "shortDescription": "This same shows how to abstract batching graph requests",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
     "longDescription": [
-      "This same shows how to abstract batching graph requests"
+      "This sample shows how to abstract batching Graph requests"
     ],
     "creationDateTime": "2022-02-03",
     "updateDateTime": "2022-02-03",
@@ -8337,6 +8442,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-profile-awards",
+    "source": "pnp",
+    "title": "My Awards",
+    "shortDescription": "This web part is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this web part could include the ability to add new awards to your profile.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-profile-awards",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-profile-awards",
+    "longDescription": [
+      "This web part is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this web part could include the ability to add new awards to your profile."
+    ],
+    "creationDateTime": "2022-06-02",
+    "updateDateTime": "2022-06-02",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.14"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-profile-awards/assets/react-graph-profile-awards.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "luismanez",
+        "pictureUrl": "https://github.com/luismanez.png",
+        "name": "Luis Mañez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-reports",
     "source": "pnp",
     "title": "Graph Usage Reports",
@@ -8799,7 +8952,7 @@
       "This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination."
     ],
     "creationDateTime": "2019-03-01",
-    "updateDateTime": "2019-03-01",
+    "updateDateTime": "2022-05-23",
     "products": [
       "SharePoint"
     ],
@@ -8810,7 +8963,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.6.0"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [
@@ -9691,7 +9844,7 @@
       "This list search web part allows the user to show data from lists or libraries."
     ],
     "creationDateTime": "2020-12-20",
-    "updateDateTime": "2022-01-01",
+    "updateDateTime": "2022-07-11",
     "products": [
       "SharePoint"
     ],
@@ -12428,7 +12581,7 @@
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
     "creationDateTime": "2019-09-05",
-    "updateDateTime": "2021-10-20",
+    "updateDateTime": "2022-07-19",
     "products": [
       "SharePoint"
     ],
@@ -12439,7 +12592,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [
@@ -12457,6 +12610,11 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460&u=e780f4ef1da922c84f2c5c66c59cecbff2300581&v=4",
         "name": "Aakash Bhardwaj",
         "twitter": "aakash_316"
+      },
+      {
+        "gitHubAccount": "jwaegebaert",
+        "pictureUrl": "https://github.com/Jwaegebaert.png",
+        "name": "Jasey Waegebaert"
       }
     ],
     "references": [
@@ -12477,7 +12635,7 @@
       "Sample web parts allowing to add sections navigation to the SharePoint page."
     ],
     "creationDateTime": "2019-03-22",
-    "updateDateTime": "2019-03-22",
+    "updateDateTime": "2022-04-25",
     "products": [
       "SharePoint"
     ],
@@ -12488,7 +12646,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.8.0"
+        "value": "1.14.0"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
@@ -14419,6 +14577,60 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-roomchat",
+    "source": "pnp",
+    "title": "Room Chat",
+    "shortDescription": "This web part shows how to use Azure Communications Services and React UI component to create a Room Chat.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-roomchat",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-roomchat",
+    "longDescription": [
+      "This web part shows how to use Azure Communications Services and React UI component to create a Room Chat."
+    ],
+    "creationDateTime": "2022-07-19",
+    "updateDateTime": "2022-07-19",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.15"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "João Mendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-rss-reader",
     "source": "pnp",
     "title": "SharePoint Framework RSS Reader",
@@ -14732,7 +14944,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2019-10-13",
+    "updateDateTime": "2022-06-14",
     "products": [
       "SharePoint"
     ],
@@ -14743,7 +14955,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.4.1"
+        "value": "1.13.1"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
@@ -14775,6 +14987,11 @@
         "pictureUrl": "https://github.com/waldekmastykarz.png",
         "name": "Waldek Mastykarz",
         "twitter": "waldekm"
+      },
+      {
+        "gitHubAccount": "felixbohnacker",
+        "pictureUrl": "https://github.com/felixbohnacker.png",
+        "name": "Felix Bohnacker"
       }
     ],
     "references": [
@@ -15657,7 +15874,7 @@
       "This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card."
     ],
     "creationDateTime": "2021-03-09",
-    "updateDateTime": "2021-04-14",
+    "updateDateTime": "2022-06-16",
     "products": [
       "SharePoint"
     ],
@@ -15668,7 +15885,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.14.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -15719,6 +15936,16 @@
         "gitHubAccount": "AriGunawan",
         "pictureUrl": "https://github.com/AriGunawan.png",
         "name": "Ari Gunawan"
+      },
+      {
+        "gitHubAccount": "tristian2",
+        "pictureUrl": "https://github.com/tristian2.png",
+        "name": "Tristian O'brien"
+      },
+      {
+        "gitHubAccount": "milanholemans",
+        "pictureUrl": "https://github.com/milanholemans.png",
+        "name": "Milan Holemans"
       }
     ],
     "references": [
@@ -15825,6 +16052,54 @@
         "pictureUrl": "https://github.com/eoverfield.png",
         "name": "Eric Overfield",
         "twitter": "EricOverfield"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-tabacordion",
+    "source": "pnp",
+    "title": "Tab Accordion Web Part with Property Field Collection Data and tinyMCE for Rich Text Editing",
+    "shortDescription": "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabacordion",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabacordion",
+    "longDescription": [
+      "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online."
+    ],
+    "creationDateTime": "2022-03-30",
+    "updateDateTime": "2022-03-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.13.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tabacordion/assets/TabAccordionWebpart.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "arunkumarperumal",
+        "pictureUrl": "https://github.com/arunkumarperumal.png",
+        "name": "Arun Kumar Perumal"
       }
     ],
     "references": [
@@ -15962,7 +16237,7 @@
       "This solution renders a given Termset as a Tree and incorporates files similar than a folder structure in file explorer."
     ],
     "creationDateTime": "2021-12-26",
-    "updateDateTime": "2021-12-26",
+    "updateDateTime": "2022-07-16",
     "products": [
       "SharePoint"
     ],
@@ -15973,7 +16248,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13.0"
+        "value": "1.15.0"
       }
     ],
     "thumbnails": [
@@ -16339,7 +16614,7 @@
       "The Questionnaire meeting app displays the questions from attendees as pre-meeting app experience."
     ],
     "creationDateTime": "2021-03-22",
-    "updateDateTime": "2021-09-28",
+    "updateDateTime": "2022-05-02",
     "products": [
       "SharePoint",
       "Teams"
@@ -16351,7 +16626,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.0"
+        "value": "1.14.0"
       },
       {
         "key": "SPFX-TEAMSMEETINGAPP",
