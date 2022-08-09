@@ -31,18 +31,12 @@
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.gif",
         "alt": "Web Part Preview"
       },
-    {
+      {
         "type": "image",
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.png",
         "alt": "Web Part Preview"
-    }
-     // {
-     //   "type": "video",
-     //   "order": 101,
-     //   "url": "https://www.youtube.com/embed/FS-_0KENJkI",
-    //    "alt": "Community demo of the web part"
-    //  }
+      }
     ],
     "authors": [
       {
