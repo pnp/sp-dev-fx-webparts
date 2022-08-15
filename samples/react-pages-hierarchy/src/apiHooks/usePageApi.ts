@@ -148,7 +148,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
 
     const ancestorPages: IPage[] = buildPageAncestors(pages, currentPageId).reverse();
     const childrenPages: IPage[] = buildPageChildren(pages, currentPageId);
-    const treeLink: INavLink = buildHierarchy(pages);
+    const treeLink: INavLink = buildHierarchy(pages, currentPageId);
 
     // dispatch the GET_ALL action
     pagesDispatch({
@@ -253,16 +253,19 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     return childPages;
   }
 
-  function buildHierarchy(allPages: IPage[]): INavLink {
-    function recurse(id: number, l: number): INavLink {
+  function buildHierarchy(allPages: IPage[], pageId: number): INavLink {
+    function recurse(id: number, l: number, ancestorPages: IPage[]): INavLink {
       var item: IPage = allPages.filter(i => i.id === id)[0];
-      
+
       var links: INavLink[] = [];
-      links = links.concat(allPages.filter(i => i.parentPageId === id).map(it => recurse(it.id, (l+1))));
-  
-      return  { name: item.title, url: item.url, key: item.id.toString(), links: links, isExpanded: treeExpandTo >= l  };
+      links = links.concat(allPages.filter(i => i.parentPageId === id).map(it => recurse(it.id, l ? l + 1 : l, ancestorPages)));
+
+      return { name: item.title, url: item.url, key: item.id.toString(), links: links, isExpanded: treeExpandTo ? (treeExpandTo >= l) : (ancestorPages.find(f => f.id === id) ? true : false) };
     }
-    return recurse(treeTop, 1);
+
+    const ancestorPages: IPage[] = buildPageAncestors(allPages, pageId).reverse();
+
+    return recurse(treeTop ? treeTop : ancestorPages[0].id, treeExpandTo ? 1 : treeExpandTo, ancestorPages);
   }
 
   const addParentPageField = () => {
