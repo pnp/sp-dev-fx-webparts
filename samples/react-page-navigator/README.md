@@ -29,6 +29,7 @@ Version|Date|Comments
 1.3|June 9, 2022|Updated React package from `^16.14.0` to `16.13.1`
 1.4|June 29, 2022|Adds the capability to find collapsible section headers and insert them into the navigation
 1.5|July 19, 2022|Bug fixes
+1.6|August 8, 2022|Add theme provider and bug fixes
 
 ## Minimal Path to Awesome
 

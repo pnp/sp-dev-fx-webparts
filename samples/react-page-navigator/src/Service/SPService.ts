@@ -45,14 +45,16 @@ export class SPService {
    * @param depth sequence depth
    * @returns navLinks
    */
-  public static navLinkBuilder(currentLinks: INavLink[], newLink: INavLink, order: number, depth: number = 0): INavLink[] {
+  public static navLinkBuilder(currentLinks: INavLink[], newLink: INavLink, order: number, depth: number): INavLink[] {
     const lastIndex = currentLinks.length - 1;
 
-    if (currentLinks[lastIndex].links.length === 0 || order === depth) {
-      if (depth === 0) {
-        currentLinks.push(newLink);
-      } else {
+    if (lastIndex === -1) {
+      currentLinks.push(newLink);
+    } else if (currentLinks[lastIndex].links.length === 0 || order === depth) {
+      if (order !== depth || depth !== 0) {
         currentLinks[lastIndex].links.push(newLink);
+      } else {
+        currentLinks.push(newLink);
       }
     } else {
       depth++;
