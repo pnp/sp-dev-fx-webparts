@@ -9,15 +9,16 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "tslib": "1.13.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "office-ui-fabric-react": "7.181.1",
     "@microsoft/sp-core-library": "1.15.0-beta.1",
+    "@microsoft/sp-lodash-subset": "1.15.0-beta.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.15.0-beta.1",
     "@microsoft/sp-property-pane": "1.15.0-beta.1",
     "@microsoft/sp-webpart-base": "1.15.0-beta.1",
-    "@microsoft/sp-lodash-subset": "1.15.0-beta.1",
-    "@microsoft/sp-office-ui-fabric-core": "1.15.0-beta.1"
+    "@pnp/spfx-property-controls": "3.8.0",
+    "office-ui-fabric-react": "7.181.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tslib": "1.13.0"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",

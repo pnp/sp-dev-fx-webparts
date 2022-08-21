@@ -2,16 +2,20 @@
 
 ## Summary
 
-This web part is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this web part could include the ability to add new awards to your profile.
+This web part is using the beta MS Graph Profile endpoint to list user's profile awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. You can select the user you want to get their profile awards. It allows to configure different options. You can the user selecting it from a People picker, or from a Page environment variable (using Dynamic field), or just selecting the current logged user. It also allows two different layout options, so it can render the awards using cards, or in a list format.
+
+A future version of this web part could include the ability to add new awards to your profile.
 
 In the meantime, you can add a new award using this request: [https://docs.microsoft.com/en-us/graph/api/profile-post-awards?view=graph-rest-beta&tabs=http](https://docs.microsoft.com/en-us/graph/api/profile-post-awards?view=graph-rest-beta&tabs=http) (You can use [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) tool to do so.)
 
-![my-awards](./assets/react-graph-profile-awards.png)
+__Note__: when adding a new award, ensure you set the field __allowedAudiences__ to a proper value (organization / everyone). Otherwise, the award is only visible for the user who owns it.
+
+![Awards](./assets/react-graph-profile-awards.gif)
 
 ## Compatibility
 
-![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.15.0](https://img.shields.io/badge/SPFx-1.15.0-green.svg)
+![Node.js v16 | v14](https://img.shields.io/badge/Node.js-v16%20%7C%20v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -28,7 +32,7 @@ In the meantime, you can add a new award using this request: [https://docs.micro
 
 ## Prerequisites
 
-You need to grant any of these permissions to MS Graph API (from least to most privileged): _User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All_
+You need to grant these permissions to MS Graph API (from least to most privileged): _User.Read, User.Read.All_
 
 Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/)
 
@@ -43,6 +47,7 @@ Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-p
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | May 23, 2022 | Initial release |
+| 1.1     | Aug 06, 2022 | User selector from different origins (People picker, Page environment variable). Also has 2 different layouts for rendering the awards |
 
 
 ## Minimal Path to Awesome
