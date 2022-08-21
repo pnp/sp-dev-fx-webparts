@@ -5,12 +5,12 @@
 Custom Property Pane pain resolved (whew), color palette generator inspired by [Jhey](https://codepen.io/jh3y/pen/rNjbmBQ?editors=0011).
 Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) and cuz I want to eventually build in a dynamic palette generator/css reader for my web parts.
 
-![property pane view](images/palettePickerWebPart.gif)
-![after save and refresh](images/palettePickerWebPartAfterSaveAndRefresh.gif)
+![property pane view](./assets/palettePickerWebPart.gif)
+![after save and refresh](./assets/palettePickerWebPartAfterSaveAndRefresh.gif)
 
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
