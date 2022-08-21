@@ -18,7 +18,7 @@ export const Colors: React.FC<IColorsProps> = (props) => {
                Object.keys(props.colorObject).map((key) => {
                 return (
                     <div style={{backgroundColor: props.colorObject[key]}} ><code style={{color:props.fontColor}}>{`${key}: ${props.colorObject[key]}`};</code></div>
-                )
+                );
 
                }) 
             }

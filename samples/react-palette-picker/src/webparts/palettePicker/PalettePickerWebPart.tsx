@@ -40,7 +40,7 @@ export default class PalettePickerWebPart extends BaseClientSideWebPart<IPalette
       context: this.context,
       cssObject: this.properties["cssObjectText"] != undefined ? JSON.parse(this.properties["cssObjectText"]) : {},
       fontColor: this.properties.fontColor
-    }
+    };
 
     const customPropertyPaneProperties = {
       context: this.context,

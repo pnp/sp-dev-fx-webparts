@@ -17,19 +17,19 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
   const cssObject = (hue, saturation, lightness, shades) => {
     let obj = {};
     try {
-        const HUE_STEP = (hue[1] - hue[0]) / shades
-        const LIGHT_STEP = (lightness[1] - lightness[0]) / shades
-        const SAT_STEP = (saturation[1] - saturation[0]) / shades
+        const HUE_STEP = (hue[1] - hue[0]) / shades;
+        const LIGHT_STEP = (lightness[1] - lightness[0]) / shades;
+        const SAT_STEP = (saturation[1] - saturation[0]) / shades;
         for (let s = 0; s < shades + 1; s++) {
-        const HUE = Math.floor(hue[1] - s * HUE_STEP)
-        const LIGHTNESS = Math.floor(lightness[1] - s * LIGHT_STEP)
-        const SATURATION = Math.floor(saturation[1] - s * SAT_STEP)
+        const HUE = Math.floor(hue[1] - s * HUE_STEP);
+        const LIGHTNESS = Math.floor(lightness[1] - s * LIGHT_STEP);
+        const SATURATION = Math.floor(saturation[1] - s * SAT_STEP);
         obj[`--color-${s + 1}`] = `hsl(${HUE}, ${SATURATION}%, ${LIGHTNESS}%)`;
         }
     } catch(ex) {console.log("obj problems"); }
 
     return obj; 
-  }
+  };
 
     const[colorObj, setColorObj] = React.useState({});
 
@@ -61,11 +61,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                                 setColorObj(cssObject(props.properties["fieldSetHue"], props.properties["fieldSetSat"],props.properties["fieldSetLight"],props.properties["fieldSetShades"][0]));
                                props.updateWebPartProperty("cssObject", colorObj);
                         }}
-                renderTrack={({ props, children }) => (
+                renderTrack={({ props: innerProps, children }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '6px',
                     width: '100%',
                     backgroundColor: '#ccc'
@@ -74,11 +74,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                     {children}
                 </div>
                 )}
-                renderThumb={({ props }) => (
+                renderThumb={({ props: innerProps }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '30px',
                     width: '30px',
                     backgroundColor: '#999'
@@ -102,11 +102,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                 }
                     
                 }
-                renderTrack={({ props, children }) => (
+                renderTrack={({ props: innerProps, children }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '6px',
                     width: '100%',
                     backgroundColor: '#ccc'
@@ -115,11 +115,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                     {children}
                 </div>
                 )}
-                renderThumb={({ props }) => (
+                renderThumb={({ props: innerProps }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '30px',
                     width: '30px',
                     backgroundColor: '#999'
@@ -147,11 +147,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
 
 
                 }}
-                renderTrack={({ props, children }) => (
+                renderTrack={({ props: innerProps, children }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '6px',
                     width: '100%',
                     backgroundColor: '#ccc'
@@ -160,11 +160,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                     {children}
                 </div>
                 )}
-                renderThumb={({ props }) => (
+                renderThumb={({ props: innerProps }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '30px',
                     width: '30px',
                     backgroundColor: '#999'
@@ -189,11 +189,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                    props.updateWebPartProperty("cssObject", colorObj);
 
                 }}
-                renderTrack={({ props, children }) => (
+                renderTrack={({ props: innerProps, children }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '6px',
                     width: '100%',
                     backgroundColor: '#ccc'
@@ -202,11 +202,11 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
                     {children}
                 </div>
                 )}
-                renderThumb={({ props }) => (
+                renderThumb={({ props: innerProps }) => (
                 <div
-                    {...props}
+                    {...innerProps}
                     style={{
-                    ...props.style,
+                    ...innerProps.style,
                     height: '30px',
                     width: '30px',
                     backgroundColor: '#999'
