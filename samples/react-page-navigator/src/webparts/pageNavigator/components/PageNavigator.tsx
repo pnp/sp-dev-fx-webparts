@@ -3,6 +3,7 @@ import styles from './PageNavigator.module.scss';
 import { IPageNavigatorProps } from './IPageNavigatorProps';
 import { IPageNavigatorState } from './IPageNavigatorState';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { ITheme } from 'office-ui-fabric-react';
 
 export default class PageNavigator extends React.Component<IPageNavigatorProps, IPageNavigatorState> {
   constructor(props: IPageNavigatorProps) {
@@ -43,6 +44,7 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
                     links: this.state.anchorLinks
                   }
                 ]}
+                theme={this.props.themeVariant as ITheme}
               />
             </div>
           </div>
