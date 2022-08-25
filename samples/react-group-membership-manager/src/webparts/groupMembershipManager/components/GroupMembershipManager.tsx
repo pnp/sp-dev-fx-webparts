@@ -75,11 +75,12 @@ export default function GroupMembershipManager(props: IGroupMembershipManagerPro
         <div style={{width: '49%'}}>
           <Subtitle1>{strings.Members}</Subtitle1>
           {!members && <Spinner labelPosition='below' label={strings.LoadingMembers} />}
-          {members && <>
-            <Toolbar>
+          {members && <> 
+            {//don't display the toolbar if the group is dynamic
+              !(groups.filter(g => g.displayName === group)[0].groupTypes?.filter(g => g === "DynamicMembership").length > 0) && <Toolbar>
               <AddUser context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Member} onCompleted={loadGroup} />
               <Button icon={<PersonDeleteRegular />} disabled={toRemove.length === 0}>{strings.Remove} {toRemove.length === 0 ? null : toRemove.length}</Button>
-            </Toolbar>
+            </Toolbar>}
             <Table>
               <TableBody>
                 {members.map(user => (
