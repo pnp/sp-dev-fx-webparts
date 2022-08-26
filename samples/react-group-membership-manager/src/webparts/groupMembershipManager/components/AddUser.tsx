@@ -110,7 +110,7 @@ export default function AddUser({ Group, Mode, context, onCompleted }: Props): R
                     <DialogTrigger>
                         <Button appearance="secondary" disabled={running === rState.Running}>{strings.Close}</Button>
                     </DialogTrigger>
-                    <Button appearance="primary" disabled={running === rState.Completed || running === rState.Running} onClick={add}>{strings.Add}</Button>
+                    {users.length > 0 && <Button appearance="primary" disabled={running === rState.Completed || running === rState.Running} onClick={add}>{strings.Add}</Button>}
                 </DialogActions>
             </DialogSurface>
         </Dialog>

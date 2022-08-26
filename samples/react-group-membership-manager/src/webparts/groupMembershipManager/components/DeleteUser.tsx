@@ -57,7 +57,7 @@ export default function RemoveUser({ Group, Users, Mode, context, onCompleted }:
                     errors.push(v.statusText);
                 }
             });
-            if (errors.length > 0) throw errors.join(', ');
+            if (errors.length > 0) throw errors.join('||');
             else setRunning(rState.Completed);
         } catch (error) {
             handleError(error);
@@ -77,14 +77,14 @@ export default function RemoveUser({ Group, Users, Mode, context, onCompleted }:
     return (
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
             <DialogTrigger>
-                <Button appearance='primary' icon={<PersonDeleteRegular />}>{strings.Remove}</Button>
+                <Button appearance='primary' icon={<PersonDeleteRegular />} disabled={Users.length === 0}>{strings.Remove}</Button>
             </DialogTrigger>
             <DialogSurface aria-label="label">
                 <DialogTitle>{Mode === AddUserMode.Owner ? strings.RemoveDialogTitleOwner : strings.RemoveDialogTitle}{Group.displayName}</DialogTitle>
                 <DialogBody>
                     <div className={styles.stack}>
-                        {running !== rState.Error && _error && <Alert intent="error">{_error}</Alert>}
-                        {running === rState.Error && <Alert intent="error" action={{ children: 'Retry', onClick: () => setRunning(rState.Running) }}>{_error}</Alert>}
+                        {running !== rState.Error && _error && <Alert intent="error">{_error.split('||').map((v, i) => (<div key={i}>{v}</div>))}</Alert>}
+                        {running === rState.Error && _error && <Alert intent="error" action={{ children: 'Retry', onClick: () => setRunning(rState.Running) }}>{_error.split('||').map((v, i) => (<div key={i}>{v}</div>))}</Alert>}
                         {running === rState.Completed && <Alert intent="success">{Mode === AddUserMode.Owner ? strings.Owners : strings.Members} {strings.Removed} {Group.displayName}</Alert>}
                         {Users.length > 0 && <div className={styles.stackHoz} style={{ flexWrap: 'wrap' }}>
                             {Users.map(u => <div key={u.id} className={styles.stackHoz} style={{ maxWidth: 200, whiteSpace: 'nowrap' }}>
