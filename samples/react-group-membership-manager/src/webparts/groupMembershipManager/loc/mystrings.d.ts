@@ -23,6 +23,10 @@ declare interface IGroupMembershipManagerWebPartStrings {
   Retry: string;
   Adding: string;
   Added: string;
+  Removing: string;
+  Removed: string;
+  RemoveDialogTitle: string;
+  RemoveDialogTitleOwner: string;
 }
 
 declare module 'GroupMembershipManagerWebPartStrings' {

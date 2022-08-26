@@ -42,6 +42,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "GroupMember.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.ReadWrite.All"
       }
     ]
   },

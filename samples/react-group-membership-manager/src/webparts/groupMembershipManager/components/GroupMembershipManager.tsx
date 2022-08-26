@@ -4,11 +4,12 @@ import { IGroupMembershipManagerProps } from './IGroupMembershipManagerProps';
 import * as strings from 'GroupMembershipManagerWebPartStrings';
 import { MSGraphClientV3 } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-import { Button, Checkbox, CheckboxOnChangeData, Spinner, Subtitle1 } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData, Spinner, Subtitle1, Textarea } from '@fluentui/react-components';
 import { Dropdown, Option, Toolbar } from "@fluentui/react-components/unstable";
 import { TableBody, TableCell, TableRow, Table } from '@fluentui/react-table';
-import { PersonDeleteRegular } from '@fluentui/react-icons';
 import AddUser, { AddUserMode } from './AddUser';
+import RemoveUser from './DeleteUser';
+import { GraphError } from '@microsoft/microsoft-graph-client';
 
 type OnSelectData = {
   optionValue: string;
@@ -26,7 +27,7 @@ export default function GroupMembershipManager(props: IGroupMembershipManagerPro
 
   React.useEffect(() => {
     context.msGraphClientFactory.getClient("3").then((client: MSGraphClientV3) => {
-      client.api('/me/ownedObjects').select("id,displayName,groupTypes,visibility,securityEnabled").get((error, response: { value: MicrosoftGraph.Group[] }) => {
+      client.api('/me/ownedObjects').select("id,displayName,groupTypes,visibility,securityEnabled,description").get((error, response: { value: MicrosoftGraph.Group[] }) => {
         if (error) throw error;
         setGroups(response.value.sort((a, b) => a.displayName.localeCompare(b.displayName)));
       }).catch(console.error);
@@ -39,11 +40,11 @@ export default function GroupMembershipManager(props: IGroupMembershipManagerPro
     setToRemove([]);
     setRemoveOwner([]);
     const client: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
-    client.api(`/groups/${groups.filter(g => g.displayName === group)[0].id}/members`).select("id,displayName").get((error, response: { value: MicrosoftGraph.User[] }) => {
+    client.api(`/groups/${groups.filter(g => g.displayName === group)[0].id}/members`).select("id,displayName").get((error: GraphError, response: { value: MicrosoftGraph.User[] }) => {
       if (error) throw error;
       setMembers(response.value.sort((a, b) => a.displayName.localeCompare(b.displayName)));
     }).catch(console.error);
-    client.api(`/groups/${groups.filter(g => g.displayName === group)[0].id}/owners`).select("id,displayName").get((error, response: { value: MicrosoftGraph.User[] }) => {
+    client.api(`/groups/${groups.filter(g => g.displayName === group)[0].id}/owners`).select("id,displayName").get((error: GraphError, response: { value: MicrosoftGraph.User[] }) => {
       if (error) throw error;
       setOwners(response.value);
     }).catch(console.error);
@@ -71,49 +72,52 @@ export default function GroupMembershipManager(props: IGroupMembershipManagerPro
         </Dropdown>
       </section>}
       {(!members || !owners) && groups && group && <Spinner labelPosition='below' label={strings.LoadingMembers} />}
-      {groups && group && <div className={`${styles.stackHoz} ${styles.spaceBetween}`} style={{marginTop: 10 }}>
-        <div style={{width: '49%'}}>
-          <Subtitle1>{strings.Members}</Subtitle1>
-          {!members && <Spinner labelPosition='below' label={strings.LoadingMembers} />}
-          {members && <> 
-            {//don't display the toolbar if the group is dynamic
-              !(groups.filter(g => g.displayName === group)[0].groupTypes?.filter(g => g === "DynamicMembership").length > 0) && <Toolbar>
-              <AddUser context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Member} onCompleted={loadGroup} />
-              <Button icon={<PersonDeleteRegular />} disabled={toRemove.length === 0}>{strings.Remove} {toRemove.length === 0 ? null : toRemove.length}</Button>
-            </Toolbar>}
-            <Table>
-              <TableBody>
-                {members.map(user => (
-                  <TableRow key={user.id}>
-                    <TableCell>
-                      <Checkbox label={user.displayName} onChange={(ev, data) => checkUser(data, user)} />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>}
-        </div>
-        <div style={{width: '49%'}}>
-          <Subtitle1>{strings.Owners}</Subtitle1>
-          {!owners && <Spinner labelPosition='below' label={strings.LoadingOwners} />}
-          {owners && <>
-            <Toolbar>
-            <AddUser context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Owner} onCompleted={loadGroup} />
-              <Button icon={<PersonDeleteRegular />} disabled={removeOwner.length === 0}>{strings.Remove} {removeOwner.length === 0 ? null : removeOwner.length }</Button>
-            </Toolbar>
-            <Table>
-              <TableBody>
-                {owners.map(user => (
-                  <TableRow key={user.id}>
-                    <TableCell>
-                      <Checkbox label={user.displayName} onChange={(ev, data) => checkOwner(data, user)} />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>}
+      {groups && group && <div className={styles.stack} style={{marginTop: 10 }}>
+        <Textarea defaultValue={groups.filter(g => g.displayName === group)[0].description} resize='vertical' readOnly />
+        <div className={`${styles.stackHoz} ${styles.spaceBetween}`} style={{marginTop: 10 }}>
+          <div style={{width: '49%'}}>
+            <Subtitle1>{strings.Members}</Subtitle1>
+            {!members && <Spinner labelPosition='below' label={strings.LoadingMembers} />}
+            {members && <> 
+              {//don't display the toolbar if the group is dynamic
+                !(groups.filter(g => g.displayName === group)[0].groupTypes?.filter(g => g === "DynamicMembership").length > 0) && <Toolbar>
+                <AddUser context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Member} onCompleted={loadGroup} />
+                <RemoveUser Users={toRemove} context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Member} onCompleted={loadGroup} />
+              </Toolbar>}
+              <Table>
+                <TableBody>
+                  {members.map(user => (
+                    <TableRow key={user.id}>
+                      <TableCell>
+                        <Checkbox label={user.displayName} onChange={(ev, data) => checkUser(data, user)} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>}
+          </div>
+          <div style={{width: '49%'}}>
+            <Subtitle1>{strings.Owners}</Subtitle1>
+            {!owners && <Spinner labelPosition='below' label={strings.LoadingOwners} />}
+            {owners && <>
+              <Toolbar>
+                <AddUser context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Owner} onCompleted={loadGroup} />
+                <RemoveUser Users={removeOwner} context={context} Group={groups.filter(g => g.displayName === group)[0]} Mode={AddUserMode.Owner} onCompleted={loadGroup} />
+              </Toolbar>
+              <Table>
+                <TableBody>
+                  {owners.map(user => (
+                    <TableRow key={user.id}>
+                      <TableCell>
+                        <Checkbox label={user.displayName} onChange={(ev, data) => checkOwner(data, user)} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>}
+          </div>
         </div>
       </div>}
     </section>

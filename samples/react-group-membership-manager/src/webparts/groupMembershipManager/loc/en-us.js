@@ -23,6 +23,10 @@ define([], function() {
     "SearchPlaceholder": "Start typing to search",
     "Retry": "Retry",
     "Adding": "Adding Users",
-    "Added": "Added to"
+    "Added": "Added to",
+    "Removing": "Removing Users",
+    "Removed": "Removed from",
+    "RemoveDialogTitle": "Remove users from ",
+    "RemoveDialogTitleOwner": "Remove owners from "
   }
 });
