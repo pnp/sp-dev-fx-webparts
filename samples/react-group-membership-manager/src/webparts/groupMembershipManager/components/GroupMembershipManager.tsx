@@ -36,7 +36,7 @@ export default function GroupMembershipManager(props: IGroupMembershipManagerPro
     context.msGraphClientFactory.getClient("3").then((client: MSGraphClientV3) => {
       client.api('/me/ownedObjects').select("id,displayName,groupTypes,visibility,mailEnabled,resourceProvisioningOptions,securityEnabled,description").get((error, response: { value: MicrosoftGraph.Group[] }) => {
         if (error) throw error;
-        setGroups(response.value.sort((a, b) => a.displayName.localeCompare(b.displayName)));
+        setGroups(response.value.filter(g => g.groupTypes).sort((a, b) => a.displayName.localeCompare(b.displayName)));
       }).catch(console.error);
     }).catch(console.error);
   }, []);
