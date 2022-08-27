@@ -4,7 +4,7 @@
 
 This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9
 
-![Screenshot](assets/screenshot.png "Screenshot")
+![Screenshot](assets/group-membership-manager.gif "Screenshot")
 
 ## Compatibility
 
