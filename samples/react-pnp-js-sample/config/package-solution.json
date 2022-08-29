@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-pnp-js-example-client-side-solution",
     "id": "d20ceaf6-094b-4086-b7a0-85761bc8be23",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

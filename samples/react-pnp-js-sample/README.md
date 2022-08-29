@@ -48,6 +48,7 @@ react-spfx-pnp-js-sample | Julie Turner ([@jfj1997](https://twitter.com/jfj1997)
 
 Version|Date|Comments
 -------|----|--------
+1.1|Aug 29, 2022|Bug fix & dependency updates
 1.0|Jan 13, 2022|Initial release
 
 ## Minimal Path to Awesome

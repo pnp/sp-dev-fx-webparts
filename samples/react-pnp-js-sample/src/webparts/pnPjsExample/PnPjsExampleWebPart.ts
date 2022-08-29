@@ -20,8 +20,8 @@ export interface IPnPjsExampleWebPartProps {
 
 export default class PnPjsExampleWebPart extends BaseClientSideWebPart<IPnPjsExampleWebPartProps> {
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
+  private _isDarkTheme = false;
+  private _environmentMessage = '';
 
   protected async onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
@@ -49,7 +49,7 @@ export default class PnPjsExampleWebPart extends BaseClientSideWebPart<IPnPjsExa
   }
 
   private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
+    if (!this.context.sdks.microsoftTeams) { // running in Teams
       return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
     }
 
