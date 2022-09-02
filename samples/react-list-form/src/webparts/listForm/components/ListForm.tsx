@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { IFieldConfiguration } from './IFieldConfiguration';
 import { IListFormProps } from './IListFormProps';
 import { IListFormState } from './IListFormState';
@@ -233,8 +232,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     }
   }
 
-  @autobind
-  private async readSchema(listUrl: string, formType: ControlMode): Promise<void> {
+  private readSchema = async (listUrl: string, formType: ControlMode): Promise<void> => {
     try {
       if (!listUrl) {
         this.setState({ ...this.state, isLoadingSchema: false, fieldsSchema: null, errors: [strings.ConfigureListMessage] });
@@ -293,8 +291,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     }
   }
 
-  @autobind
-  private async readData(listUrl: string, formType: ControlMode, id?: number): Promise<void> {
+  private readData = async (listUrl: string, formType: ControlMode, id?: number): Promise<void> => {
     try {
       if ((formType === ControlMode.New) || !id) {
         const data = this.state.fieldsSchema
@@ -333,8 +330,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     }
   }
 
-  @autobind
-  private async valueChanged(fieldName: string, newValue: any) {
+  private valueChanged = async (fieldName: string, newValue: any) => {
     let schema = this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0];
     if (schema.Type == "User" || schema.Type === "UserMulti") {
       for (let i = 0; i < newValue.length; i++) {

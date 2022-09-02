@@ -24,8 +24,6 @@ export interface IDateFormFieldState {
 export default class DateFormField extends React.Component<IDateFormFieldProps, IDateFormFieldState> {
   constructor(props) {
     super(props);
-    this._createComboBoxHours = this._createComboBoxHours.bind(this);
-    this._createComboBoxMinutes = this._createComboBoxMinutes.bind(this);
     this.state = {
       date: null,
       hours: 0,
@@ -38,7 +36,7 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
     if (this.props.value && prevProps.value != this.props.value) {
       let momentDate = this.props.fieldSchema.DisplayFormat == 1 ?
         moment(this.props.value, moment.localeData(this.props.locale).longDateFormat('LT')) :
-        moment(this.props.value, moment.localeData(this.props.locale).longDateFormat('L'))
+        moment(this.props.value, moment.localeData(this.props.locale).longDateFormat('L'));
       this.setState({
         hours: momentDate.hour(),
         minutes: momentDate.minute(),
@@ -148,18 +146,18 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
     }
   }
 
-  private _parseDateString(inputDate: string): Date {
+  private _parseDateString = (inputDate: string): Date => {
     if (!inputDate) {
       return null;
     }
 
     let momentDate = this.props.fieldSchema.DisplayFormat == 1 ?
       moment(inputDate, moment.localeData(this.props.locale).longDateFormat('LT')) :
-      moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L'))
-    return momentDate.toDate()
+      moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L'));
+    return momentDate.toDate();
   }
 
-  private _createComboBoxHours(): IComboBoxOption[] {
+  private _createComboBoxHours = (): IComboBoxOption[] => {
     let results = new Array<IComboBoxOption>();
     if (this.props.fieldSchema.HoursOptions) {
       results = this.props.fieldSchema.HoursOptions.map((item, index) => {
@@ -171,7 +169,7 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
     }
     return results;
   }
-  private _createComboBoxMinutes(): IComboBoxOption[] {
+  private _createComboBoxMinutes = (): IComboBoxOption[] => {
     let results = new Array<IComboBoxOption>();
     for (var i = 0; i < 60; i++) {
       results.push({
@@ -181,5 +179,4 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
     }
     return results;
   }
-
 }
