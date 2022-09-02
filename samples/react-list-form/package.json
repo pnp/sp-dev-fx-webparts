@@ -25,7 +25,7 @@
     "@types/webpack-env": "1.13.1",
     "@uifabric/icons": "^7.3.14",
     "moment": "^2.24.0",
-    "office-ui-fabric-react": "^6.189.2",
+    "office-ui-fabric-react": "^7.197.1",
     "react-dnd": "~2.5.4",
     "react-dnd-html5-backend": "~2.5.4",
     "react-html-parser": "^2.0.2",
