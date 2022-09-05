@@ -34,15 +34,14 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
   public componentDidUpdate(prevProps: IDateFormFieldProps, prevState: IDateFormFieldState) {
     //Component Value property got updated from List State
     if (this.props.value && prevProps.value != this.props.value) {
-      let momentDate = this.props.fieldSchema.DisplayFormat == 1 ?
-        moment(this.props.value, moment.localeData(this.props.locale).longDateFormat('LT')) :
-        moment(this.props.value, moment.localeData(this.props.locale).longDateFormat('L'));
+      let date: Date = this._parseDateString(this.props.value);
       this.setState({
-        hours: momentDate.hour(),
-        minutes: momentDate.minute(),
-        date: momentDate.toDate()
+        date: date,
+        hours: date.getHours(),
+        minutes: date.getMinutes()
       });
     }
+
     //Component value updated 
     if (this.state.date && this.state.date != prevState.date) {
       let result = this.props.fieldSchema.DisplayFormat == 1 ?
@@ -96,26 +95,23 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
   }
 
   private _onSelectDate = (inputDate: Date | null | undefined): void => {
-
-
     this.setState(prevState => {
-      let momentDate = inputDate ? this.props.fieldSchema.DisplayFormat == 1 ?
-        moment(inputDate, moment.localeData(this.props.locale).longDateFormat('LT')) :
+      let momentDate = inputDate ?
         moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L')) : moment();
 
       momentDate.hour(prevState.hours);
       momentDate.minute(prevState.minutes);
       return {
         date: momentDate.toDate(),
-        ...prevState
+        hours: prevState.hours,
+        minutes: prevState.minutes
       };
     });
   }
   private _onHoursChanged = (event: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
     if (option) {
       this.setState(prevState => {
-        let momentDate = prevState.date ? this.props.fieldSchema.DisplayFormat == 1 ?
-          moment(prevState.date, moment.localeData(this.props.locale).longDateFormat('LT')) :
+        let momentDate = prevState.date ?
           moment(prevState.date, moment.localeData(this.props.locale).longDateFormat('L')) : moment();
         let hours = parseInt(option.key.toString());
         momentDate.hour(hours);
@@ -131,8 +127,7 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
   private _onMinutesChanged = (event: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
     if (option) {
       this.setState(prevState => {
-        let momentDate = prevState.date ? this.props.fieldSchema.DisplayFormat == 1 ?
-          moment(prevState.date, moment.localeData(this.props.locale).longDateFormat('LT')) :
+        let momentDate = prevState.date ?
           moment(prevState.date, moment.localeData(this.props.locale).longDateFormat('L')) : moment();
         let minutes = parseInt(option.key.toString());
         momentDate.hour(prevState.hours);
@@ -151,9 +146,12 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
       return null;
     }
 
-    let momentDate = this.props.fieldSchema.DisplayFormat == 1 ?
-      moment(inputDate, moment.localeData(this.props.locale).longDateFormat('LT')) :
-      moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L'));
+    let momentDate = moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L'));
+    let time = this.props.fieldSchema.DisplayFormat == 1 ? moment(this.props.value.split(" ")[1], moment.localeData(this.props.locale).longDateFormat('LT')) : null;
+    if (time) {
+      momentDate.hours(time.hours());
+      momentDate.minutes(time.minutes());
+    }
     return momentDate.toDate();
   }
 
