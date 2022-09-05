@@ -13,4 +13,7 @@ build.rig.getTasks = function () {
   return result;
 };
 
+// add this line:
+// build.lintCmd.enabled = false;
+
 build.initialize(require('gulp'));

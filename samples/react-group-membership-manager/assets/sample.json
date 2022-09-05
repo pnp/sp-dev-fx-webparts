@@ -1,0 +1,56 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
+        "source": "pnp",
+        "title": "Group Membership Manager",
+        "shortDescription": "This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
+        "longDescription": [
+            "This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9"
+        ],
+        "creationDateTime": "2022-08-25",
+        "updateDateTime": "2022-08-25",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.14"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/YOUR-IMAGE-NAME-HERE",
+                "alt": "Web Part Preview"
+            },
+            // {
+            //   "type": "video",
+            //   "order": 101,
+            //   "url": "https://www.youtube.com/embed/FS-_0KENJkI",
+            //    "alt": "Community demo of the web part"
+            //  }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "techienickb",
+                "pictureUrl": "https://github.com/techienickb.png",
+                "name": "Nick Brown"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

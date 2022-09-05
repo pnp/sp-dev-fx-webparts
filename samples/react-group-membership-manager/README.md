@@ -8,7 +8,7 @@ This app is an example of managing the membership of a group you own including t
 
 ## Compatibility
 
-![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
 ![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -28,7 +28,7 @@ This app is an example of managing the membership of a group you own including t
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| react-group-membership-manager | Nick Brown ([Jisc](https://www.jisc.ac.uk), [@techienickb](https://twitter.com/techienickb)) |
+| react-group-membership-manager | [Nick Brown](https://github.com/techienickb) ([Jisc](https://www.jisc.ac.uk), [@techienickb](https://twitter.com/techienickb)) |
 
 ## Version history
 
@@ -36,21 +36,15 @@ This app is an example of managing the membership of a group you own including t
 | ------- | ---------------- | --------------- |
 | 1.0     | August 25, 2022  | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
-> Include any additional steps as needed.
 
 ## Features
 
@@ -92,4 +86,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<!--<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-group-membership-manager" />-->
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-group-membership-manager" />
