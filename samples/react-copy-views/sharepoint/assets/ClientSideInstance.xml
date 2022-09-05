@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="CopyViews for lists"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ListTemplateId="100"
+        Properties="{}"
+        ComponentId="8e99be83-ad7e-4706-a8e1-d72df435d7e9" />
+    <ClientSideComponentInstance
+        Title="CopyViews for libraries"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ListTemplateId="101"
+        Properties="{}"
+        ComponentId="8e99be83-ad7e-4706-a8e1-d72df435d7e9" />
+</Elements>
