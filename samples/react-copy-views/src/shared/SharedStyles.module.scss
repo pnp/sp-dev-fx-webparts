@@ -18,48 +18,49 @@
 }
 
 .checkboxSetDefaultView {
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .checkboxSelectionContainer {
   border-width: 1px;
   border-style: solid;
-  border-color:#a19f9d;
-  height:300px;
-  padding:10px;
-  overflow:auto;
+  border-color: #a19f9d;
+  height: 300px;
+  padding: 10px;
+  overflow: auto;
 
   &:hover {
-    border-color:#323130;
+    border-color: #323130;
   }
 }
 
 
 .SiteSuggestion {
-  padding:5px 5px;
-  text-align:left;
+  padding: 5px 5px;
+  text-align: left;
 }
 
 .selectedSite {
-  background:#f2f2f2;
+  background: #f2f2f2;
   padding: 0px 5px;
   margin: 2px;
   line-height: 26px;
 }
 
 .copyStatusContainer {
-  height:300px;
-  overflow-y:auto;
-  overflow-x:hidden;  
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
 .copyTaskLine {
-  width:100%;
-  position:relative;
+  width: 100%;
+  position: relative;
 
   .copyTaskIcon {
-    position:absolute;
-    right:0;
-    top:0;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -76,4 +77,13 @@
 .sitePicker {
   visibility: inherit;
   // height: 38.66px;
+}
+
+.title {
+  color: "[theme:bodyText, default: #323130]";
+    color: var(--bodyText);
+  font-family: $ms-font-family-fallbacks;
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+  font-weight: 600;
 }

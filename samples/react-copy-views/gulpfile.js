@@ -17,4 +17,7 @@ const { addFastServe } = require("spfx-fast-serve-helpers");
 addFastServe(build);
 /* end of fast-serve */
 
+// disable eslint
+build.lintCmd.enabled = false;
+
 build.initialize(require('gulp'));

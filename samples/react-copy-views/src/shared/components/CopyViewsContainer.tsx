@@ -56,7 +56,7 @@ export class CopyViewsContainer extends React.Component<ICopyViewsContainerProps
     const copyingDisabled = !(targetLists?.length > 0 && sourceViews?.length > 0);
 
     return <>          
-      <h1>{ !showCopyStatus ? strings.CopyViews : strings.CopyStatus }</h1>
+      <h2 className={styles.title}>{ !showCopyStatus ? strings.CopyViews : strings.CopyStatus }</h2>
       { 
         error && <MessageBar 
           messageBarType={MessageBarType.error} 

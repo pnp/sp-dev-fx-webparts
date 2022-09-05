@@ -44,8 +44,8 @@ This solution enables a user to copy views from one list/library to another acro
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 - To package and deploy:
   - Use `gulp bundle --ship` & `gulp package-solution --ship`
   - Add the `.sppkg` to your SharePoint App Catalog
@@ -66,6 +66,22 @@ This solution enables a user to copy views from one list/library to another acro
 - Views that are set to default on the source list will not automatically be set to default on the target list. The checkbox 'Set as default' will need to be used. 
 
 > *The component uses the DOM parser to parse the ViewQuery XML, and removes any filter conditions that reference fields that are not available on the target list. The component can even clean filter queries with multiple And/Or CAML-conditions.
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-copy-views%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-copy-views) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-copy-views&template=bug-report.yml&sample=react-copy-views&authors=@martinlingstuyl&title=react-copy-views%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-copy-views&template=question.yml&sample=react-copy-views&authors=@martinlingstuyl&title=react-copy-views%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-copy-views&template=suggestion.yml&sample=react-copy-views&authors=@martinlingstuyl&title=react-copy-views%20-%20).
 
 ## Disclaimer
 

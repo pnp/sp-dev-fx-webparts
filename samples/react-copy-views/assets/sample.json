@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
     "source": "pnp",
     "title": "Copy Views",
-    "shortDescription": "The Copy Views soluton enables a user to copy views from one list/library to another across site collections.",
+    "shortDescription": "The Copy Views solution enables a user to copy views from one list/library to another across site collections.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-query-onprem",
     "longDescription": [
-      "The Copy Views soluton enables a user to copy views from one list/library to another across site collections. It can be used as a webpart on a page, or as a ListView Command Set extension. The user can select multiple views to copy to multiple target lists."
+      "The Copy Views solution enables a user to copy views from one list/library to another across site collections. It can be used as a webpart on a page, or as a ListView Command Set extension. The user can select multiple views to copy to multiple target lists."
     ],
     "creationDateTime": "2022-08-29",
     "updateDateTime": "2022-08-29",
