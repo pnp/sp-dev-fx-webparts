@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+  "id": "8e99be83-ad7e-4706-a8e1-d72df435d7e9",
+  "alias": "CopyViewsCommandSet",
+  "componentType": "Extension",
+  "extensionType": "ListViewCommandSet",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "items": {
+    "COPYVIEWS": {
+      "title": { "default": "Copy views", "nl-nl": "Weergaven kopiëren" },
+      "iconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDQ4IDIwNDgiIGNsYXNzPSJzdmdfZGQ3OTBlZTMiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0xOTIwIDgwNXYxMjQzSDY0MHYtMzg0SDEyOFYwaDg1OWwzODQgMzg0aDEyOGw0MjEgNDIxem0tMzg0LTM3aDE2NWwtMTY1LTE2NXYxNjV6TTY0MCAzODRoNTQ5TDkzMyAxMjhIMjU2djE0MDhoMzg0VjM4NHptMTE1MiA1MTJoLTM4NFY1MTJINzY4djE0MDhoMTAyNFY4OTZ6Ij48L3BhdGg+PC9zdmc+",
+      "type": "command"
+    }
+  }
+}

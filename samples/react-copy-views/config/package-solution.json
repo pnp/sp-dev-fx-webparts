@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "copy-views-client-side-solution",
+    "id": "f9a94606-ce1c-487c-ab87-550b240421de",
+    "version": "1.0.1.5",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Martin Lingstuyl",
+      "websiteUrl": "https://www.blimped.nl",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Webpart and extension to copy views between lists and libraries."
+      },
+      "longDescription": {
+        "default": "Webpart and extension to copy views between lists and libraries."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "copy-views Feature",
+        "description": "The feature that activates elements of the copy-views solution.",
+        "id": "13252aea-fba5-4919-b962-045954817a5b",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/copy-views.sppkg"
+  }
+}

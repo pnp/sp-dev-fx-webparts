@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "1f59d413-5f43-41a1-bd36-a01403f89c4b",
+  "alias": "CopyViewsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other", "nl-nl": "Overige" },
+    "title": { "default": "Copy views", "nl-nl": "Weergaven kopiëren" },
+    "description": { "default": "Copy views from one list to another.", "nl-nl": "Weergaven kopiëren van één lijst naar een andere." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+    }
+  }]
+}
