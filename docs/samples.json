@@ -15052,7 +15052,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2022-06-14",
+    "updateDateTime": "2022-08-31",
     "products": [
       "SharePoint"
     ],
