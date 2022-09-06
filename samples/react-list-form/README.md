@@ -72,6 +72,7 @@ You'll need to connect to a list before you can use this sample.
 | 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
 | 1.0.10  | May 6, 2021        | Fixed "attachments are not cleared after submit" issue                                                    |
 | 1.0.11  | August 31, 2022        | Fixed Caret RichTextField issues                                                    |
+| 1.0.12  | Sept 5, 2022        | Fixed DateField does not support manually entering date                                                    |
 
 ## Minimal Path to Awesome
 
