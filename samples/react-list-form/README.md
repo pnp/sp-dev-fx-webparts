@@ -71,6 +71,7 @@ You'll need to connect to a list before you can use this sample.
 | 1.0.8   | February 7, 2021   | Fixed dragging and dropping fields                                                                        |
 | 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
 | 1.0.10  | May 6, 2021        | Fixed "attachments are not cleared after submit" issue                                                    |
+| 1.0.11  | August 31, 2022        | Fixed Caret RichTextField issues                                                    |
 
 ## Minimal Path to Awesome
 
@@ -96,9 +97,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 [![Building a list editing web part with React](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=6HbtHVZ-3Js "Building a list editing web part with React")
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Help
 
@@ -113,5 +111,9 @@ If you encounter any issues while using this sample, [create a new issue](https:
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-list-form&template=question.yml&sample=react-list-form&authors=@DanyWyss%20@Harshagracy%20@sharepointknight%20@Abderahman88,%20@Kman1131%20@fthorild%20@AriGunawan&title=react-list-form%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-list-form&template=question.yml&sample=react-list-form&authors=@DanyWyss%20@Harshagracy%20@sharepointknight%20@Abderahman88,%20@Kman1131%20@fthorild%20@AriGunawan&title=react-list-form%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-form" />
