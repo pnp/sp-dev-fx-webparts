@@ -147,7 +147,7 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
     }
 
     let momentDate = moment(inputDate, moment.localeData(this.props.locale).longDateFormat('L'));
-    let time = this.props.fieldSchema.DisplayFormat == 1 ? moment(this.props.value.split(" ")[1], moment.localeData(this.props.locale).longDateFormat('LT')) : null;
+    let time = this.props.fieldSchema.DisplayFormat == 1 ? moment(inputDate.split(" ")[1], moment.localeData(this.props.locale).longDateFormat('LT')) : null;
     if (time) {
       momentDate.hours(time.hours());
       momentDate.minutes(time.minutes());
