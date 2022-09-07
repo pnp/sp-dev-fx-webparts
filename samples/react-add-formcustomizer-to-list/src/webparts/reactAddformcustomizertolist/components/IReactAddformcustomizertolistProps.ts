@@ -6,5 +6,5 @@ export interface IReactAddformcustomizertolistProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  context: any;
+  context: WebPartContext;
 }
