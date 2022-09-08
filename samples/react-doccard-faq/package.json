@@ -31,10 +31,10 @@
     "@types/react": "16.8.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.10.0",
+    "@microsoft/sp-build-web": "1.15.2",
     "@microsoft/sp-tslint-rules": "1.10.0",
     "@microsoft/sp-module-interfaces": "1.10.0",
-    "@microsoft/sp-webpart-workbench": "1.10.0",
+    "@microsoft/sp-webpart-workbench": "1.12.1",
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
     "gulp": "~3.9.1",
     "@types/chai": "3.4.34",
