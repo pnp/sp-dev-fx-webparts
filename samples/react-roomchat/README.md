@@ -35,7 +35,7 @@ This sample needs the Azure communications services configured on the Azure, Ple
 
 ## Compatibility
 
-![SPFx 1.15](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
+![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15.0-green.svg)
 ![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
