@@ -29,6 +29,12 @@
                 "order": 100,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-graph-upload-as-pdf/assets/UploadAnimated.gif",
                 "alt": "Web Part Preview"
+            },
+            {
+              "type": "video",
+              "order": 101,
+              "url": "https://www.youtube.com/embed/ikujJ0UnGAY",
+              "alt": "Community demo of the web part"
             }
         ],
         "authors": [
