@@ -5175,7 +5175,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-onprem/Misc/toolpart.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-onprem/Misc/toolpart.gif?raw=true",
         "alt": "Content Query Web Part  (On-Premises SharePoint)"
       }
     ],
