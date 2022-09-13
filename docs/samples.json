@@ -5200,12 +5200,12 @@
     "source": "pnp",
     "title": "Copy Views",
     "shortDescription": "The Copy Views solution enables a user to copy views from one list/library to another across site collections.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-query-onprem",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copy-views",
     "longDescription": [
       "The Copy Views solution enables a user to copy views from one list/library to another across site collections. It can be used as a webpart on a page, or as a ListView Command Set extension. The user can select multiple views to copy to multiple target lists."
     ],
     "creationDateTime": "2022-08-29",
-    "updateDateTime": "2022-08-29",
+    "updateDateTime": "2022-09-12",
     "products": [
       "SharePoint"
     ],
@@ -12601,6 +12601,12 @@
         "order": 100,
         "url": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
         "alt": "Outlook to Teams"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/h4NXi-p2fEw",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
@@ -16377,6 +16383,12 @@
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/04Move.gif",
         "alt": "Copying a file"
+      },
+      {
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/embed/V10hJuakgis",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
@@ -16624,6 +16636,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-graph-upload-as-pdf/assets/UploadAnimated.gif",
         "alt": "Web Part Preview"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/ikujJ0UnGAY",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
