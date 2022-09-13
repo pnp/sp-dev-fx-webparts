@@ -41,6 +41,12 @@
                 "order": 102,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/04Move.gif",
                 "alt": "Copying a file"
+            },
+            {
+              "type": "video",
+              "order": 103,
+              "url": "https://www.youtube.com/embed/V10hJuakgis",
+              "alt": "Community demo of the web part"
             }
         ],
         "authors": [
