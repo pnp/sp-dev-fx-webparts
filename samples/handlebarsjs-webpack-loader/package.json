@@ -13,9 +13,9 @@
     "handlebars": "^4.7.7"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.4.1",
+    "@microsoft/sp-build-web": "~1.15.2",
     "@microsoft/sp-module-interfaces": "~1.4.1",
-    "@microsoft/sp-webpart-workbench": "~1.4.1",
+    "@microsoft/sp-webpart-workbench": "~1.12.1",
     "@types/chai": "~4.1.2",
     "@types/es6-collections": "^0.5.31",
     "@types/mocha": "~2.2.48",
