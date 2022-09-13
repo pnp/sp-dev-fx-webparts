@@ -16,7 +16,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.12.1-rc.3"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.12.1-rc.3",
+    "@microsoft/sp-build-web": "1.15.2",
     "@microsoft/sp-tslint-rules": "1.12.1-rc.3",
     "@microsoft/sp-module-interfaces": "1.12.1-rc.3",
     "@microsoft/sp-webpart-workbench": "1.12.1-rc.3",
