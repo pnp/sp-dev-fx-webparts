@@ -34,10 +34,10 @@
     "@types/react": "16.4.2"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.7.1",
+    "@microsoft/sp-build-web": "1.15.2",
     "@microsoft/sp-tslint-rules": "1.7.1",
     "@microsoft/sp-module-interfaces": "1.7.1",
-    "@microsoft/sp-webpart-workbench": "1.7.1",
+    "@microsoft/sp-webpart-workbench": "1.12.1",
     "gulp": "~3.9.1",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
