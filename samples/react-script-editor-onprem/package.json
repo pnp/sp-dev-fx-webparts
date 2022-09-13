@@ -23,9 +23,9 @@
         "react-dom": "15.6.2"
     },
     "devDependencies": {
-        "@microsoft/sp-build-web": "1.4.1",
+        "@microsoft/sp-build-web": "1.15.2",
         "@microsoft/sp-module-interfaces": "1.4.1",
-        "@microsoft/sp-webpart-workbench": "1.4.1",
+        "@microsoft/sp-webpart-workbench": "1.12.1",
         "@types/chai": "3.4.34",
         "@types/mocha": "2.2.38",
         "@types/prop-types": "ts2.4",
