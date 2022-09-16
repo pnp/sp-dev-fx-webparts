@@ -5,7 +5,7 @@
 This Webpart consume an anonymous Function App from an HTTP Triger using the templates from the Northwind Microsoft DBs
 You must create a database in azure and run the scripts
 
-![Here](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/readme.md)
+- [Here](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/readme.md)
 
 ![SMAPLE](./assets/FAPP.png)
 
