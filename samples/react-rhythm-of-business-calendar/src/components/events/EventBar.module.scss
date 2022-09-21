@@ -1,0 +1,51 @@
+@import '../common.module';
+
+$eventBorderRadius: 6px;
+
+@mixin event-font() {
+    color: white;
+    @include ms-fontSize-12;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.event {
+    @include event-font();
+    margin-top: 1px;
+    cursor: pointer;
+
+    padding: 3px 6px;
+
+    &.compact {
+        padding: 1px 6px 2px 6px;
+    }
+
+    &.unapproved {
+        font-style: italic;
+    }
+
+    &.rejected {
+        text-decoration: line-through;
+    }
+
+    &.startsIn {
+        border-top-left-radius: $eventBorderRadius;
+        border-bottom-left-radius: $eventBorderRadius;
+    }
+
+    &.endsIn {
+        border-top-right-radius: $eventBorderRadius;
+        border-bottom-right-radius: $eventBorderRadius;
+        margin-right: 1px;
+    }
+
+    .text {
+        @include event-font();
+        text-overflow: ellipsis;
+    }
+
+    .recur {
+        text-align: end;
+    }
+}
