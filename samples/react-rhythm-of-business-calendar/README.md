@@ -2,7 +2,11 @@
 
 ## Summary
 
+This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.
+
+<!-- TODO: link to the app once published
 This sample is the source code for the Rhythm of Business Calendar app published in [AppSource](https://appsource.microsoft.com/en-us/marketplace/apps?product=sharepoint) and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.
+ -->
 
 Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events.  Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events.
 
@@ -63,11 +67,14 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve --nobrowser`
 
-> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+<!--
+TODO: add support for containers
+>> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+-->
 
 ## Features
 
-This sample is a complete app that demonstrates the "SPFx Solution Accelerator" framework, along with patterns and practices for building enterprise-class apps on SharePoint.  Inspired by Domain Driven Design and Onion Architecture, this Accelerator has evolved since SPFx v1.0, and we want to share it with the world!
+This sample is a complete app that demonstrates the "SPFx Solution Accelerator" framework, along with patterns and practices for building enterprise-class apps on SharePoint.  Inspired by Domain Driven Design and Onion Architecture, this accelerator has evolved since SPFx v1.0, and we want to share it with the world!
 
 At a high-level, the accelerator includes the following features:
 * Prescribed solution structure separates web parts, components, model, services, and schema (data) layers
