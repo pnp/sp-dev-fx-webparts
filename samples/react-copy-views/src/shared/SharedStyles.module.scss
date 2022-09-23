@@ -1,0 +1,89 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.row {
+  @include ms-Grid-row;
+}
+
+.formHidden {
+  display: none;
+}
+
+.column {
+  @include ms-Grid-col;
+  @include ms-sm12;
+  @include ms-md12;
+  @include ms-lg6;
+  @include ms-xl6;
+}
+
+.checkboxSetDefaultView {
+  margin-top: 10px;
+}
+
+.checkboxSelectionContainer {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a19f9d;
+  height: 300px;
+  padding: 10px;
+  overflow: auto;
+
+  &:hover {
+    border-color: #323130;
+  }
+}
+
+
+.SiteSuggestion {
+  padding: 5px 5px;
+  text-align: left;
+}
+
+.selectedSite {
+  background: #f2f2f2;
+  padding: 0px 5px;
+  margin: 2px;
+  line-height: 26px;
+}
+
+.copyStatusContainer {
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.copyTaskLine {
+  width: 100%;
+  position: relative;
+
+  .copyTaskIcon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.searchBox {
+  height: 38.66px;
+
+  :global {
+    .ms-SearchBox-iconContainer {
+      display: none;
+    }
+  }
+}
+
+.sitePicker {
+  visibility: inherit;
+  // height: 38.66px;
+}
+
+.title {
+  color: "[theme:bodyText, default: #323130]";
+    color: var(--bodyText);
+  font-family: $ms-font-family-fallbacks;
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+  font-weight: 600;
+}

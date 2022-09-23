@@ -17,7 +17,7 @@ const SPFieldDateEdit: React.SFC<ISPFormFieldProps> = (props) => {
     ariaLabel={props.fieldSchema.Title}
     locale={locale}
     firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
-    allowTextInput
+    allowTextInput={true}
     fieldSchema={props.fieldSchema}
     value={props.value}
     valueChanged={props.valueChanged}
