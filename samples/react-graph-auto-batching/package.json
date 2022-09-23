@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
-    "@microsoft/sp-build-web": "1.13.0-beta.17",
+    "@microsoft/sp-build-web": "1.15.2",
     "@microsoft/sp-module-interfaces": "1.13.0-beta.17",
     "@microsoft/sp-tslint-rules": "1.13.0-beta.17",
     "@testing-library/react": "^12.1.2",
