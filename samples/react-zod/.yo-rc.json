@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "packageManager": "pnpm",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-zod",
+    "libraryId": "779d312a-d0d1-4a13-b049-a356100de6b6",
+    "environment": "spo",
+    "solutionName": "react-zod",
+    "solutionShortDescription": "react-zod description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
