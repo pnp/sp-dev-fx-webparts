@@ -1,14 +1,6 @@
-declare interface IReactZodWebPartStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
-  AppLocalEnvironmentSharePoint: string;
-  AppLocalEnvironmentTeams: string;
-  AppSharePointEnvironment: string;
-  AppTeamsTabEnvironment: string;
-}
+declare interface IReactZodWebPartStrings {}
 
-declare module 'ReactZodWebPartStrings' {
+declare module "ReactZodWebPartStrings" {
   const strings: IReactZodWebPartStrings;
   export = strings;
 }
