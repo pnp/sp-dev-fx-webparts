@@ -23,6 +23,7 @@ export default class SpSiteErDiagram extends React.Component<ISpSiteErDiagramPro
     let spSiteData = await getSPSiteData(this.props.context, true, (progress) => {
       this.setState({ loadingProgress: progress });
     });
+    console.log("SPSiteData", spSiteData);
     // Transform to GoJS Model
     let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData);
     // Set State

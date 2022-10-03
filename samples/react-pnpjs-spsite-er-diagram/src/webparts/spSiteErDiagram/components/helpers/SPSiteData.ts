@@ -22,7 +22,7 @@ export interface SPTableField {
     type: string
 }
 export interface SPTableAlert {
-    type: "Warning" | "Error",
+    type: "Warning" | "Error" | "Info",
     title: string,
 }
 export interface SPRelation {
@@ -31,11 +31,11 @@ export interface SPRelation {
     fromX: number | "n",
     toX: number | "m"
 }
-const storageKeyPrefix = "reactpnpjsdiagram_sitegraphdata_"
+const storageKey = "reactpnpjsdiagram_sitegraphdata"
 const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (number: number) => void) : Promise<SPSiteData> => {
 
     // return from cache
-    let spSiteDataFromCache = JSON.parse(localStorage.getItem(storageKeyPrefix));
+    let spSiteDataFromCache = JSON.parse(localStorage.getItem(storageKey));
     if (spSiteDataFromCache && !force) {
         progress(100);
         return spSiteDataFromCache;
@@ -66,7 +66,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             let table: SPTable = { title: list.Title, fields: [], alerts: [] };
             // Fields
             let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
-            .filter(f => !f.Hidden).sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
+            .filter(f => !f.Hidden).sort((a,b) => a.TypeDisplayName.charCodeAt(0) - b.TypeDisplayName.charCodeAt(0) );
             table.fields = fields.map(f => {
                 return { 
                     name: f.InternalName, 
@@ -75,6 +75,12 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
                     type: f.TypeDisplayName
                     } 
                 });  
+
+            // Table Alerts
+            !list.EnableVersioning && table.alerts.push({ title: "no versioning activated", type: "Error" });
+            list.MajorVersionLimit && list.MajorVersionLimit > 100 && table.alerts.push({ title: `high max. version limit (${list.MajorVersionLimit})`, type: "Warning" });
+            table.alerts.push({ title: `Crawling is ${list.NoCrawl ? 'inactive' : 'active'}`, type:"Info" })
+
             // add Table
             spSiteData.tables.push(table);
 
@@ -98,9 +104,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
     // resolve Ids
     spSiteData.relations = spSiteData.relations.map<SPRelation>((r) => {return {...r, toTableTitle: tmp_listNames[r.toTableTitle]}})
 
-    console.log("SPSiteData", spSiteData);
-
-    localStorage.setItem(storageKeyPrefix, JSON.stringify(spSiteData));
+    localStorage.setItem(storageKey, JSON.stringify(spSiteData));
 
     return spSiteData
 }

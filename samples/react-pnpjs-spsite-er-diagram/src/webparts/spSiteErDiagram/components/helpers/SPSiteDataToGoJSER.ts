@@ -1,30 +1,55 @@
 import { List } from "@pnp/sp/lists";
-import { SPSiteData, SPTableField } from "./SPSiteData";
+import { SPSiteData, SPTableAlert, SPTableField } from "./SPSiteData";
 
 
 const colors = {
   'red': '#be4b15',
   'green': '#52ce60',
-  'blue': '#6ea5f8',
+  'blue': '#186ddf',
   'lightred': '#fd8852',
   'lightblue': '#afd4fe',
   'lightgreen': '#b9e986',
-  'pink': '#faadc1',
-  'purple': '#d689ff',
-  'orange': '#fdb400',
+  'pink': '#f31eaf',
+  'purple': '#881798',
+  'orange': '#fddb01',
+  'keycolor': '#fdb400',
 }
-const colorByType: any = {
-  'Lookup': colors.orange
+const configByFieldType: any = {
+    'default': { color: colors.purple, figure: "Ellipse" },
+    'Lookup': { color: colors.orange, figure: "TriangleRight" },
+    'Counter': { color: colors.keycolor, figure: "Diamond" },
+    "Attachments": { color: colors.blue, figure: "Rectangle" },
+    "Person or Group": { color: colors.green, figure: "RoundedRectangle" },
+    "Single line of text": { color: colors.blue, figure: "Circle" },
+    "Multiple lines of text": { color: colors.blue, figure: "Circle" },
+    "Computed": { color: colors.blue, figure: "Ellipse" },
+    "Date and Time": { color: colors.pink, figure: "Ellipse" },
+    "Choice": { color: colors.blue, figure: "Ellipse" },
+    "Hyperlink or Picture": { color: colors.blue, figure: "Ellipse" }
 }
-
 const getNodeFromField = (f: SPTableField) => {
-  let isLookup = (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship;
-  return { 
-    name: f.name, 
-    iskey: false, 
-    figure: "Decision", 
-    color: isLookup ? colors.orange : colors.purple 
-  };
+    let c = configByFieldType[f.type] || configByFieldType['default'];
+    let prefix = f.type == "Counter" ? "PK | " : (f.iskey && f.type == "Lookup" ? "FK | " : "");
+    return { 
+        name: prefix + f.name + ` (${f.type})`, 
+        iskey: f.iskey, 
+        figure: c.figure, 
+        color: f.iskey ? colors.keycolor : c.color
+    };
+}
+const configByAlert: any = {
+    'Info': { color: colors.lightblue, figure: "LineRight" },
+    'Warning': { color: colors.orange, figure: "LineRight" },
+    'Error': { color: colors.red, figure: "LineRight" },
+}
+const getNodeFromAlert = (a: SPTableAlert) => {
+    let c = configByAlert[a.type];
+    return { 
+        name: "#" + a.type + " | " + a.title, 
+        iskey: false, 
+        figure: c.figure, 
+        color: c.color
+    };
 }
 
 const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: [], linkDataArray: [] } => {
@@ -34,7 +59,10 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: [
 
     nodeDataArray = spSiteData.tables.map(t => { return {
         key: t.title,
-        items: t.fields.map(f => getNodeFromField(f))
+        items: [
+            ...t.alerts.map(a => getNodeFromAlert(a)),
+            ...t.fields.map(f => getNodeFromField(f))
+        ]
     }})
 
     linkDataArray = spSiteData.relations.map(r => { return {
