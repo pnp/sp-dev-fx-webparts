@@ -40,7 +40,8 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: [
     linkDataArray = spSiteData.relations.map(r => { return {
         from: r.fromTableTitle,
         to: r.toTableTitle,
-        text: r.fromX+":"+r.toX
+        text: r.fromX+":"+r.toX,
+        toText: "1"
     }})
 
     return { nodeDataArray, linkDataArray}

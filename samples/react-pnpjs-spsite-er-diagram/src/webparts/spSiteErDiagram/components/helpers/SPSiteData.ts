@@ -7,10 +7,10 @@ import "@pnp/sp/lists/web";
 import "@pnp/sp/fields";
 
 export interface SPSiteData {
-    tables: SPTables[],
-    relations: SPRelations[]
+    tables: SPTable[],
+    relations: SPRelation[]
 }
-export interface SPTables {
+export interface SPTable {
     title: string,
     fields: SPTableField[],
     alerts: SPTableAlert[]
@@ -25,15 +25,23 @@ export interface SPTableAlert {
     type: "Warning" | "Error",
     title: string,
 }
-export interface SPRelations {
+export interface SPRelation {
     fromTableTitle: string,
     toTableTitle: string,
     fromX: number | "n",
     toX: number | "m"
 }
 const storageKeyPrefix = "reactpnpjsdiagram_sitegraphdata_"
-const getSPSiteData = async (spfxContext: any) : Promise<SPSiteData> => {
+const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (number: number) => void) : Promise<SPSiteData> => {
 
+    // return from cache
+    let spSiteDataFromCache = JSON.parse(localStorage.getItem(storageKeyPrefix));
+    if (spSiteDataFromCache && !force) {
+        progress(100);
+        return spSiteDataFromCache;
+    }
+
+    // Load from site
     let spSiteData: SPSiteData = {
         relations: [],
         tables: []
@@ -43,14 +51,19 @@ const getSPSiteData = async (spfxContext: any) : Promise<SPSiteData> => {
     const sp = spfi().using(SPFx(spfxContext));
     let lists = await sp.web.lists.filter("Hidden ne 1")();
 
+    const totalCount = lists.filter(l => !l.Hidden).length;
+    let loadedCount = 0;
+
     for(let list of lists) {
         if(!list.Hidden) {
+            loadedCount++;
+            progress && progress(loadedCount/totalCount * 100);
 
             // save names for later
             tmp_listNames[`{${list.Id}}`] = list.Title;
 
             // Tables/Lists
-            let table: SPTables = { title: list.Title, fields: [], alerts: [] };
+            let table: SPTable = { title: list.Title, fields: [], alerts: [] };
             // Fields
             let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
             .filter(f => !f.Hidden).sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
@@ -66,13 +79,13 @@ const getSPSiteData = async (spfxContext: any) : Promise<SPSiteData> => {
             spSiteData.tables.push(table);
 
             // Links/Lookups
-            let relations: SPRelations[] = fields.filter(f => f.TypeDisplayName == "Lookup" && 
+            let relations: SPRelation[] = fields.filter(f => f.TypeDisplayName == "Lookup" && 
             (f as any).IsRelationship &&
             (f as any).LookupList != '' && 
             (f as any).LookupList != "AppPrincipals"
-            ).map<SPRelations>(f => 
+            ).map<SPRelation>(f => 
             {return {
-                fromTableTitle: f.Title,
+                fromTableTitle: list.Title,
                 toTableTitle: (f as any).LookupList!, 
                 fromX: "n",
                 toX: 1
@@ -83,9 +96,11 @@ const getSPSiteData = async (spfxContext: any) : Promise<SPSiteData> => {
     }
 
     // resolve Ids
-    spSiteData.relations = spSiteData.relations.map((r) => {return {...r, to: tmp_listNames[r.toTableTitle]}})
+    spSiteData.relations = spSiteData.relations.map<SPRelation>((r) => {return {...r, toTableTitle: tmp_listNames[r.toTableTitle]}})
 
     console.log("SPSiteData", spSiteData);
+
+    localStorage.setItem(storageKeyPrefix, JSON.stringify(spSiteData));
 
     return spSiteData
 }
