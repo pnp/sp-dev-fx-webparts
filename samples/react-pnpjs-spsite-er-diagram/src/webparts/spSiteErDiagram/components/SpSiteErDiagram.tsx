@@ -2,8 +2,9 @@ import * as React from 'react';
 import styles from './SpSiteErDiagram.module.scss';
 import { ISpSiteErDiagramProps } from './ISpSiteErDiagramProps';
 import { ReactDiagram } from 'gojs-react';
-import getSiteData from './helpers/SPSiteData';
+import getSPSiteData from './helpers/SPSiteData';
 import { initDiagram } from './helpers/GoJSHelper';
+import getGoJSNodesFromSPSiteData from './helpers/SPSiteDataToGoJSER';
 
 interface SpSiteDiagramState {
   nodeDataArray: any,
@@ -17,21 +18,17 @@ export default class SpSiteErDiagram extends React.Component<ISpSiteErDiagramPro
   }
 
   public async componentDidMount() {
-    let a = await getSiteData(this.props.context);
-    this.setState({nodeDataArray: a.nodeDataArray, linkDataArray: a.linkDataArray});
+    // Get SP SiteData for ER Diagram
+    let spSiteData = await getSPSiteData(this.props.context);
+    // Transform to GoJS Model
+    let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData);
+    // Set State
+    this.setState({nodeDataArray: goJSNodes.nodeDataArray, linkDataArray: goJSNodes.linkDataArray});
   }
 
   public render(): React.ReactElement<ISpSiteErDiagramProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
-
     return (
-      <div className={styles.spSiteErDiagram} style={{height: "400px"}}>
+      <div className={styles.spSiteErDiagram} style={{height: "calc(100% - 0px)", padding: "0px"}}>
         <ReactDiagram //ref={diagramRef} 
           divClassName='diagram-component'
           style={{ backgroundColor: '#eee' }}

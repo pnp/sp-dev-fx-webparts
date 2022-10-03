@@ -2,86 +2,92 @@
   Hit 'ctrl + d' or 'cmd + d' to run the code, view console for results
 */
 import { spfi, SPFx } from "@pnp/sp";
-import { Caching, CacheKey } from "@pnp/queryable";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists/web";
 import "@pnp/sp/fields";
-import { IFieldInfo } from "@pnp/sp/fields";
 
-const storageKeyPrefix = "hs365_sitegraphdata_"
-
-
-const colors = {
-  'red': '#be4b15',
-  'green': '#52ce60',
-  'blue': '#6ea5f8',
-  'lightred': '#fd8852',
-  'lightblue': '#afd4fe',
-  'lightgreen': '#b9e986',
-  'pink': '#faadc1',
-  'purple': '#d689ff',
-  'orange': '#fdb400',
+export interface SPSiteData {
+    tables: SPTables[],
+    relations: SPRelations[]
 }
-
-const colorByType: any = {
-  'Lookup': colors.orange
+export interface SPTables {
+    title: string,
+    fields: SPTableField[],
+    alerts: SPTableAlert[]
 }
-
-const getNodeFromField = (f: IFieldInfo) => {
-
-  let isLookup = (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship;
-
-  return { 
-    name: f.InternalName, 
-    iskey: false, 
-    figure: "Decision", 
-    color: isLookup ? colors.orange : colors.purple 
-  };
+export interface SPTableField {
+    name: string,
+    displayName: string,
+    iskey: boolean,
+    type: string
 }
+export interface SPTableAlert {
+    type: "Warning" | "Error",
+    title: string,
+}
+export interface SPRelations {
+    fromTableTitle: string,
+    toTableTitle: string,
+    fromX: number | "n",
+    toX: number | "m"
+}
+const storageKeyPrefix = "reactpnpjsdiagram_sitegraphdata_"
+const getSPSiteData = async (spfxContext: any) : Promise<SPSiteData> => {
 
-
-
-const getSiteData = async (spfxContext: any) => {
-
-  let nodeDataArray: any = [];
-  let linkDataArray: any = [];
-  let listNames: any = {};
-
-  const sp = spfi().using(SPFx(spfxContext)); //.using(Caching({ store: "local" }));
-  let lists = await sp.web.lists.filter("Hidden ne 1").using(CacheKey(storageKeyPrefix+"lists"))();
-  //lists = lists.slice(0,15); 
-
-  for(let list of lists) {
-    if(!list.Hidden) {
-
-      listNames[`{${list.Id}}`] = list.Title;
-
-      // Tables/Lists
-      let node = { key: list.Title, items: [] as any };
-      let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1").using(CacheKey(storageKeyPrefix+"fields_"+list.Id))())
-      .filter(f => !f.Hidden).sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
-      node.items = fields.map(f => {return getNodeFromField(f) });  
-      nodeDataArray.push(node);
-
-      // Links/Lookups
-      let links = fields.filter(f => f.TypeDisplayName == "Lookup" && 
-      (f as any).IsRelationship &&
-      (f as any).LookupList != '' && 
-      (f as any).LookupList != "AppPrincipals"
-      ).map(f => 
-      {return { from: list.Title, to: (f as any).LookupList!, text: "0..N", toText: "1" }});
-      linkDataArray= [...linkDataArray, ...links];
-
+    let spSiteData: SPSiteData = {
+        relations: [],
+        tables: []
     }
-  }
+    let tmp_listNames: any = {};
 
-  linkDataArray = linkDataArray.map((l: any) => {return {...l, to: listNames[l.to]}})
+    const sp = spfi().using(SPFx(spfxContext));
+    let lists = await sp.web.lists.filter("Hidden ne 1")();
 
-  console.log("listNames", listNames);
-  console.log("nodeDataArray", nodeDataArray);
-  console.log("linkDataArray", linkDataArray);
+    for(let list of lists) {
+        if(!list.Hidden) {
 
-  return {nodeDataArray: nodeDataArray, linkDataArray: linkDataArray}
+            // save names for later
+            tmp_listNames[`{${list.Id}}`] = list.Title;
+
+            // Tables/Lists
+            let table: SPTables = { title: list.Title, fields: [], alerts: [] };
+            // Fields
+            let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
+            .filter(f => !f.Hidden).sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
+            table.fields = fields.map(f => {
+                return { 
+                    name: f.InternalName, 
+                    displayName: f.Title, 
+                    iskey: (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship,
+                    type: f.TypeDisplayName
+                    } 
+                });  
+            // add Table
+            spSiteData.tables.push(table);
+
+            // Links/Lookups
+            let relations: SPRelations[] = fields.filter(f => f.TypeDisplayName == "Lookup" && 
+            (f as any).IsRelationship &&
+            (f as any).LookupList != '' && 
+            (f as any).LookupList != "AppPrincipals"
+            ).map<SPRelations>(f => 
+            {return {
+                fromTableTitle: f.Title,
+                toTableTitle: (f as any).LookupList!, 
+                fromX: "n",
+                toX: 1
+            }});
+            
+            spSiteData.relations = [...spSiteData.relations, ...relations];
+        }
+    }
+
+    // resolve Ids
+    spSiteData.relations = spSiteData.relations.map((r) => {return {...r, to: tmp_listNames[r.toTableTitle]}})
+
+    console.log("SPSiteData", spSiteData);
+
+    return spSiteData
 }
 
-export default getSiteData;
+export default getSPSiteData;
