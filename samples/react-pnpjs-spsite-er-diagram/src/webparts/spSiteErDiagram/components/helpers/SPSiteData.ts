@@ -60,7 +60,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             progress && progress(loadedCount/totalCount * 100);
 
             // save names for later
-            tmp_listNames[`{${list.Id}}`] = list.Title;
+            tmp_listNames[`{${list.Id.toLocaleLowerCase()}}`] = list.Title;
 
             // Tables/Lists
             let table: SPTable = { title: list.Title, fields: [], alerts: [] };
@@ -102,7 +102,9 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
     }
 
     // resolve Ids
-    spSiteData.relations = spSiteData.relations.map<SPRelation>((r) => {return {...r, toTableTitle: tmp_listNames[r.toTableTitle]}})
+    console.log("tmp_listNames",tmp_listNames);
+    console.log("asd", [...spSiteData.relations]);
+    spSiteData.relations = spSiteData.relations.map<SPRelation>((r) => {return {...r, toTableTitle: tmp_listNames[r.toTableTitle.toLocaleLowerCase()]}})
 
     localStorage.setItem(storageKey, JSON.stringify(spSiteData));
 
