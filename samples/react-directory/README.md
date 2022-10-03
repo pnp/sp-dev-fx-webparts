@@ -76,6 +76,7 @@ Version|Date|Comments
 2.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
 3.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
 3.0.1|March 4 2021|Bugfix 'Sort People by'
+3.0.1|Oct 3 2022|Minor styling fixes and people container position
 
 
 ## Disclaimer
