@@ -19,7 +19,7 @@ export interface IDirectoryWebPartProps {
     searchProps: string;
     clearTextSearchProps: string;
     pageSize: number;
-    justifycontent:boolean
+    justifycontent:boolean;
 }
 
 export default class DirectoryWebPart extends BaseClientSideWebPart<
