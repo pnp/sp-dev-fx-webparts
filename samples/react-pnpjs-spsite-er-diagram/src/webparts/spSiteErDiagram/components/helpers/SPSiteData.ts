@@ -11,6 +11,7 @@ export interface SPSiteData {
     relations: SPRelation[]
 }
 export interface SPTable {
+    id: string,
     title: string,
     fields: SPTableField[],
     alerts: SPTableAlert[]
@@ -63,7 +64,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             tmp_listNames[`{${list.Id.toLocaleLowerCase()}}`] = list.Title;
 
             // Tables/Lists
-            let table: SPTable = { title: list.Title, fields: [], alerts: [] };
+            let table: SPTable = { id: list.Id, title: list.Title, fields: [], alerts: [] };
             // Fields
             let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
             .filter(f => !f.Hidden).sort((a,b) => a.TypeDisplayName.charCodeAt(0) - b.TypeDisplayName.charCodeAt(0) );
@@ -71,7 +72,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
                 return { 
                     name: f.InternalName, 
                     displayName: f.Title, 
-                    iskey: (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship,
+                    iskey: (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship && (f as any).LookupList != '' && (f as any).LookupList != "AppPrincipals",
                     type: f.TypeDisplayName
                     } 
                 });  
@@ -87,15 +88,16 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             // Links/Lookups
             let relations: SPRelation[] = fields.filter(f => f.TypeDisplayName == "Lookup" && 
             (f as any).IsRelationship &&
-            (f as any).LookupList != '' && 
-            (f as any).LookupList != "AppPrincipals"
+            (f as any).LookupList != '' && (f as any).LookupList != "AppPrincipals"
             ).map<SPRelation>(f => 
-            {return {
-                fromTableTitle: list.Title,
-                toTableTitle: (f as any).LookupList!, 
-                fromX: "n",
-                toX: 1
-            }});
+            {
+                return {
+                    fromTableTitle: list.Title,
+                    toTableTitle: (f as any).LookupList!, 
+                    fromX: "n",
+                    toX: 1
+                }
+            });
             
             spSiteData.relations = [...spSiteData.relations, ...relations];
         }

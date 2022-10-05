@@ -27,7 +27,7 @@ const configByFieldType: any = {
     "Choice": { color: colors.blue, figure: "Ellipse" },
     "Hyperlink or Picture": { color: colors.blue, figure: "Ellipse" }
 }
-const getNodeFromField = (f: SPTableField) => {
+const getNodeItemFromField = (f: SPTableField) : GoJSNodeItem => {
     let c = configByFieldType[f.type] || configByFieldType['default'];
     let prefix = f.type == "Counter" ? "PK | " : (f.iskey && f.type == "Lookup" ? "FK | " : "");
     return { 
@@ -42,7 +42,7 @@ const configByAlert: any = {
     'Warning': { color: colors.orange, figure: "LineRight" },
     'Error': { color: colors.red, figure: "LineRight" },
 }
-const getNodeFromAlert = (a: SPTableAlert) => {
+const getNodeItemFromAlert = (a: SPTableAlert) : GoJSNodeItem => {
     let c = configByAlert[a.type];
     return { 
         name: "#" + a.type + " | " + a.title, 
@@ -52,16 +52,32 @@ const getNodeFromAlert = (a: SPTableAlert) => {
     };
 }
 
-const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: [], linkDataArray: [] } => {
+export interface GoJSNode {
+    key: string,
+    items: GoJSNodeItem[]
+}
+export interface GoJSNodeItem {
+    name: string,
+    iskey: boolean,
+    figure: string,
+    color: string
+}
+export interface GoJSLink {
+    from: string,
+    to: string,
+    text: string,
+    toText: string
+}
+const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: GoJSNode[], linkDataArray:  GoJSLink[] } => {
 
-    let nodeDataArray: any = [];
-    let linkDataArray: any = [];
+    let nodeDataArray: GoJSNode[] = [];
+    let linkDataArray: GoJSLink[] = [];
 
     nodeDataArray = spSiteData.tables.map(t => { return {
         key: t.title,
         items: [
-            ...t.alerts.map(a => getNodeFromAlert(a)),
-            ...t.fields.map(f => getNodeFromField(f))
+            ...t.alerts.map(a => getNodeItemFromAlert(a)),
+            ...t.fields.map(f => getNodeItemFromField(f))
         ]
     }})
 
@@ -72,6 +88,6 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: [
         toText: "1"
     }})
 
-    return { nodeDataArray, linkDataArray}
+    return { nodeDataArray, linkDataArray }
 }
 export default getGoJSNodesFromSPSiteData;
