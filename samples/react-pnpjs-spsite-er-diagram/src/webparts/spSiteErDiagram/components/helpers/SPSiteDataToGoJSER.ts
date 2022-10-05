@@ -16,7 +16,7 @@ const colors = {
 }
 const configByFieldType: any = {
     'default': { color: colors.purple, figure: "Ellipse" },
-    'Lookup': { color: colors.orange, figure: "TriangleRight" },
+    'Lookup': { color: colors.purple, figure: "TriangleLeft" },
     'Counter': { color: colors.keycolor, figure: "Diamond" },
     "Attachments": { color: colors.blue, figure: "Rectangle" },
     "Person or Group": { color: colors.green, figure: "RoundedRectangle" },
@@ -27,11 +27,11 @@ const configByFieldType: any = {
     "Choice": { color: colors.blue, figure: "Ellipse" },
     "Hyperlink or Picture": { color: colors.blue, figure: "Ellipse" }
 }
-const getNodeItemFromField = (f: SPTableField) : GoJSNodeItem => {
+const getNodeItemFromField = (f: SPTableField, fieldNameProperty: string = "name") : GoJSNodeItem => {
     let c = configByFieldType[f.type] || configByFieldType['default'];
     let prefix = f.type == "Counter" ? "PK | " : (f.iskey && f.type == "Lookup" ? "FK | " : "");
     return { 
-        name: prefix + f.name + ` (${f.type})`, 
+        name: prefix + (f as any)[fieldNameProperty] + ` (${f.type})`, 
         iskey: f.iskey, 
         figure: c.figure, 
         color: f.iskey ? colors.keycolor : c.color
@@ -68,7 +68,7 @@ export interface GoJSLink {
     text: string,
     toText: string
 }
-const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: GoJSNode[], linkDataArray:  GoJSLink[] } => {
+const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData, fieldNameProperty: string = "name") : { nodeDataArray: GoJSNode[], linkDataArray:  GoJSLink[] } => {
 
     let nodeDataArray: GoJSNode[] = [];
     let linkDataArray: GoJSLink[] = [];
@@ -77,7 +77,7 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData) : { nodeDataArray: G
         key: t.title,
         items: [
             ...t.alerts.map(a => getNodeItemFromAlert(a)),
-            ...t.fields.map(f => getNodeItemFromField(f))
+            ...t.fields.map(f => getNodeItemFromField(f, fieldNameProperty))
         ]
     }})
 

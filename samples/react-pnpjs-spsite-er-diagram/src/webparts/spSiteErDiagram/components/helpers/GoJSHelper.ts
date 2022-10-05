@@ -124,7 +124,7 @@ export const initDiagram = () => {
             {
             textAlign: "center",
             font: "bold 16px sans-serif",
-            stroke: "#fdb400",
+            stroke: "#333333",
             segmentIndex: 0,
             segmentOffset: new go.Point(NaN, NaN),
             segmentOrientation: go.Link.OrientUpright
@@ -134,7 +134,7 @@ export const initDiagram = () => {
             {
             textAlign: "center",
             font: "bold 16px sans-serif",
-            stroke: "#fdb400",
+            stroke: "#333333",
             segmentIndex: -1,
             segmentOffset: new go.Point(NaN, NaN),
             segmentOrientation: go.Link.OrientUpright

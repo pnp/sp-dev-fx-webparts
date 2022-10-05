@@ -20,6 +20,7 @@ export interface SPTableField {
     name: string,
     displayName: string,
     iskey: boolean,
+    isunique: boolean,
     type: string
 }
 export interface SPTableAlert {
@@ -67,12 +68,15 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             let table: SPTable = { id: list.Id, title: list.Title, fields: [], alerts: [] };
             // Fields
             let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
-            .filter(f => !f.Hidden).sort((a,b) => a.TypeDisplayName.charCodeAt(0) - b.TypeDisplayName.charCodeAt(0) );
+            .filter(f => !f.Hidden && (f as any).LookupList != "AppPrincipals" && ((f as any).CanBeDeleted || (f as any).InternalName == "Title"))
+            .sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
             table.fields = fields.map(f => {
+                f.InternalName.indexOf("_") > -1 && console.log(f);
                 return { 
                     name: f.InternalName, 
                     displayName: f.Title, 
                     iskey: (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship && (f as any).LookupList != '' && (f as any).LookupList != "AppPrincipals",
+                    isunique: f.EnforceUniqueValues,
                     type: f.TypeDisplayName
                     } 
                 });  

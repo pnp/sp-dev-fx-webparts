@@ -15,7 +15,8 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
   const [nodeDataArray, setNodeDataArray] = React.useState([]);
   const [linkDataArray, setLinkDataArray] = React.useState([]);
   // State: Options
-  const [optionRelationOnly, setOptionRelationOnly] = React.useState(false);
+  const [optionRelationOnly, setOptionRelationOnly] = React.useState(true);
+  const [useInternalName, setUseInternalName] = React.useState(true);
 
   const loadDiagram = async (refresh: boolean) => {
     if(refresh) { setLoadingProgress(0); setNodeDataArray([]); }
@@ -23,7 +24,7 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
     let spSiteData = await getSPSiteData(props.context, refresh, (progress) => {setLoadingProgress(progress);});
     console.log("SPSiteData", spSiteData);
     // Transform to GoJS Model
-    let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData);
+    let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData, useInternalName ? "name" : "displayName");
     // Set State
     setNodeDataArray(goJSNodes.nodeDataArray.filter((n) => 
       optionRelationOnly && goJSNodes.linkDataArray.some(l => l.from == n.key || l.to == n.key) || !optionRelationOnly // Filter optionRelationOnly
@@ -34,14 +35,14 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
   // "ComponentDitMount"
   React.useEffect(() => {
     loadDiagram(false);
-  }, [optionRelationOnly]);
-
+  }, [optionRelationOnly, useInternalName]);
 
   return (
     <div style={{height: "100%", padding: "0px"}}>
       <CommandBar items={[
         {key: '1', text: 'Refresh', iconProps: { iconName: 'Refresh' }, onClick: () => { loadDiagram(true); }},
-        {key: '2', text: 'Only Lists with Relations', iconProps: { iconName: optionRelationOnly ? 'CheckboxComposite' : 'Checkbox' }, onClick: () => { setOptionRelationOnly(!optionRelationOnly); }}
+        {key: '2', text: 'Only Lists with Relations', iconProps: { iconName: optionRelationOnly ? 'CheckboxComposite' : 'Checkbox' }, onClick: () => { setOptionRelationOnly(!optionRelationOnly); }},
+        {key: '3', text: useInternalName ? "InternalName" : "DisplayName", iconProps: { iconName: useInternalName ? 'ToggleLeft' : 'ToggleRight' }, onClick: () => { setUseInternalName(!useInternalName); }}
       ]} />
       <div className={styles.spSiteErDiagram} style={{height: "calc(100% - 44px)", padding: "0px"}}>
         { loadingProgress != 100 && nodeDataArray.length == 0 ?
