@@ -10,6 +10,7 @@ const colors = {
   'lightblue': '#afd4fe',
   'lightgreen': '#b9e986',
   'pink': '#f31eaf',
+  'darkPink': '#7c158a',
   'purple': '#881798',
   'orange': '#fddb01',
   'keycolor': '#fdb400',
@@ -18,14 +19,15 @@ const configByFieldType: any = {
     'default': { color: colors.purple, figure: "Ellipse" },
     'Lookup': { color: colors.purple, figure: "TriangleLeft" },
     'Counter': { color: colors.keycolor, figure: "Diamond" },
-    "Attachments": { color: colors.blue, figure: "Rectangle" },
-    "Person or Group": { color: colors.green, figure: "RoundedRectangle" },
+    "Attachments": { color: colors.blue, figure: "Circle" },
+    "Person or Group": { color: colors.green, figure: "Circle" },
     "Single line of text": { color: colors.blue, figure: "Circle" },
     "Multiple lines of text": { color: colors.blue, figure: "Circle" },
-    "Computed": { color: colors.blue, figure: "Ellipse" },
-    "Date and Time": { color: colors.pink, figure: "Ellipse" },
-    "Choice": { color: colors.blue, figure: "Ellipse" },
-    "Hyperlink or Picture": { color: colors.blue, figure: "Ellipse" }
+    "Computed": { color: colors.blue, figure: "Circle" },
+    "Date and Time": { color: colors.pink, figure: "Circle" },
+    "Choice": { color: colors.blue, figure: "Circle" },
+    "Number": { color: colors.darkPink, figure: "Circle" },
+    "Hyperlink or Picture": { color: colors.blue, figure: "Circle" }
 }
 const getNodeItemFromField = (f: SPTableField, fieldNameProperty: string = "name") : GoJSNodeItem => {
     let c = configByFieldType[f.type] || configByFieldType['default'];
@@ -34,13 +36,17 @@ const getNodeItemFromField = (f: SPTableField, fieldNameProperty: string = "name
         name: prefix + (f as any)[fieldNameProperty] + ` (${f.type})`, 
         iskey: f.iskey, 
         figure: c.figure, 
-        color: f.iskey ? colors.keycolor : c.color
+        color: f.iskey ? colors.keycolor : c.color,
+        order: f.type == "Counter" ? "1" :
+        f.type == "Lookup" && f.iskey ? "2" :
+        f.type == "Lookup" ? "3" :
+        f.type
     };
 }
 const configByAlert: any = {
-    'Info': { color: colors.lightblue, figure: "LineRight" },
-    'Warning': { color: colors.orange, figure: "LineRight" },
-    'Error': { color: colors.red, figure: "LineRight" },
+    'Info': { color: colors.lightblue, figure: "Rectangle" },
+    'Warning': { color: colors.orange, figure: "Rectangle" },
+    'Error': { color: colors.red, figure: "Rectangle" },
 }
 const getNodeItemFromAlert = (a: SPTableAlert) : GoJSNodeItem => {
     let c = configByAlert[a.type];
@@ -48,7 +54,8 @@ const getNodeItemFromAlert = (a: SPTableAlert) : GoJSNodeItem => {
         name: "#" + a.type + " | " + a.title, 
         iskey: false, 
         figure: c.figure, 
-        color: c.color
+        color: c.color,
+        order: "#"
     };
 }
 
@@ -57,6 +64,7 @@ export interface GoJSNode {
     items: GoJSNodeItem[]
 }
 export interface GoJSNodeItem {
+    order: string,
     name: string,
     iskey: boolean,
     figure: string,
@@ -78,7 +86,7 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData, fieldNameProperty: s
         items: [
             ...t.alerts.map(a => getNodeItemFromAlert(a)),
             ...t.fields.map(f => getNodeItemFromField(f, fieldNameProperty))
-        ]
+        ].sort((a,b) => a.order.charCodeAt(0) - b.order.charCodeAt(0))
     }})
 
     linkDataArray = spSiteData.relations.map(r => { return {

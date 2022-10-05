@@ -68,8 +68,10 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             let table: SPTable = { id: list.Id, title: list.Title, fields: [], alerts: [] };
             // Fields
             let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
-            .filter(f => !f.Hidden && (f as any).LookupList != "AppPrincipals" && ((f as any).CanBeDeleted || (f as any).InternalName == "Title"))
-            .sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
+            .filter(f => !f.Hidden && (f as any).LookupList != "AppPrincipals" && 
+                ((f as any).CanBeDeleted || (f as any).InternalName == "Title" || (f as any).InternalName == "Id")
+            )
+            //.sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
             table.fields = fields.map(f => {
                 f.InternalName.indexOf("_") > -1 && console.log(f);
                 return { 
