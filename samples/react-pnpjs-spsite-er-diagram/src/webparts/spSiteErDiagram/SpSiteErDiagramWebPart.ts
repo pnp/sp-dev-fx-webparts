@@ -9,8 +9,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'SpSiteErDiagramWebPartStrings';
-import SpSiteErDiagram from './components/SpSiteErDiagram';
-import { ISpSiteErDiagramProps } from './components/ISpSiteErDiagramProps';
+import SpSiteErDiagram, { ISpSiteDiagramProps } from './components/SpSiteErDiagram';
 
 export interface ISpSiteErDiagramWebPartProps {
   description: string;
@@ -23,15 +22,15 @@ export default class SpSiteErDiagramWebPart extends BaseClientSideWebPart<ISpSit
 
   
   public render(): void {
-    const element: React.ReactElement<ISpSiteErDiagramProps> = React.createElement(
+    const element: React.ReactElement<ISpSiteDiagramProps> = React.createElement(
       SpSiteErDiagram,
       {
         context: this.context,
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        //description: this.properties.description,
+        //isDarkTheme: this._isDarkTheme,
+        //environmentMessage: this._environmentMessage,
+        //hasTeamsContext: !!this.context.sdks.microsoftTeams,
+        //userDisplayName: this.context.pageContext.user.displayName
       }
     );
     ReactDom.render(element, this.domElement);

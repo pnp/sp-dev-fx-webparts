@@ -1,53 +1,55 @@
 import * as React from 'react';
 import styles from './SpSiteErDiagram.module.scss';
-import { ISpSiteErDiagramProps } from './ISpSiteErDiagramProps';
 import { ReactDiagram } from 'gojs-react';
 import getSPSiteData from './helpers/SPSiteData';
 import { initDiagram } from './helpers/GoJSHelper';
 import getGoJSNodesFromSPSiteData from './helpers/SPSiteDataToGoJSER';
 import { ProgressIndicator } from 'office-ui-fabric-react';
 
-interface SpSiteDiagramState {
-  loadingProgress: number,
-  nodeDataArray: any[],
-  linkDataArray: any[]
+export interface ISpSiteDiagramProps { 
+  context: any 
 }
-export default class SpSiteErDiagram extends React.Component<ISpSiteErDiagramProps, SpSiteDiagramState> {
+const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramProps) => {
+  // State: Data
+  const [loadingProgress, setLoadingProgress] = React.useState(0);
+  const [nodeDataArray, setNodeDataArray] = React.useState([]);
+  const [linkDataArray, setLinkDataArray] = React.useState([]);
+  // State: Options
+  const [optionRelationOnly, setOptionRelationOnly] = React.useState(false);
 
-  constructor(props: any) {
-    super(props);
-    this.state = { loadingProgress: 0, nodeDataArray: [], linkDataArray: []};
-  }
-
-  public async componentDidMount() {
+  const loadDiagram = async () => {
     // Get SP SiteData for ER Diagram
-    let spSiteData = await getSPSiteData(this.props.context, true, (progress) => {
-      this.setState({ loadingProgress: progress });
-    });
+    let spSiteData = await getSPSiteData(props.context, true, (progress) => {setLoadingProgress(progress);});
     console.log("SPSiteData", spSiteData);
     // Transform to GoJS Model
     let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData);
     // Set State
-    this.setState({nodeDataArray: goJSNodes.nodeDataArray, linkDataArray: goJSNodes.linkDataArray});
+    setNodeDataArray(goJSNodes.nodeDataArray);
+    setLinkDataArray(goJSNodes.linkDataArray);
   }
 
-  public render(): React.ReactElement<ISpSiteErDiagramProps> {
-    return (
-      <div className={styles.spSiteErDiagram} style={{height: "calc(100% - 0px)", padding: "0px"}}>
-        { // this.state.loadingProgress != 100 || this.state.nodeDataArray.length == 0
-        this.state.loadingProgress != 100 || this.state.nodeDataArray.length == 0 ?
-        <div style={{ padding: "8%" }}>
-          <ProgressIndicator label={`Loading Lists and Columns ${this.state.loadingProgress.toFixed(0)}%`} percentComplete={this.state.loadingProgress/100} />
-        </div> : 
-        <ReactDiagram //ref={diagramRef} 
-          divClassName='diagram-component'
-          style={{ backgroundColor: '#eee' }}
-          initDiagram={initDiagram}
-          nodeDataArray={this.state.nodeDataArray}
-          linkDataArray={this.state.linkDataArray}
+  // "ComponentDitMount"
+  React.useEffect(() => {
+    loadDiagram();
+  }, [optionRelationOnly]);
 
-        />}
-      </div>
-    );
-  }
+
+  return (
+    <div className={styles.spSiteErDiagram} style={{height: "calc(100% - 0px)", padding: "0px"}}>
+      {
+      loadingProgress != 100 || nodeDataArray.length == 0 ?
+      <div style={{ padding: "8%" }}>
+        <ProgressIndicator label={`Loading Lists and Columns ${loadingProgress.toFixed(0)}%`} percentComplete={loadingProgress/100} />
+      </div> : 
+      <ReactDiagram //ref={diagramRef} 
+        divClassName='diagram-component'
+        style={{ backgroundColor: '#eee' }}
+        initDiagram={initDiagram}
+        nodeDataArray={nodeDataArray}
+        linkDataArray={linkDataArray}
+      />}
+    </div>
+  );
 }
+
+export default SpSiteErDiagram;
