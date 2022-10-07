@@ -84,9 +84,14 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
                 });  
 
             // Table Alerts
-            !list.EnableVersioning && table.alerts.push({ title: "no versioning activated", type: "Error" });
+            list.ItemCount > 3500 && list.ItemCount < 5000 && table.alerts.push({ title: `Itemcount (${list.ItemCount}) will reach soon 5k => check if all necessary columns are indexed !!`, type:"Error" });
+            list.ItemCount > 5000 && table.alerts.push({ title: `Itemcount (${list.ItemCount}) > 5k. Filter or sorting might not work anymore`, type:"Error" });
+            !list.EnableVersioning && table.alerts.push({ title: "no versioning activated", type: "Warning" });
             list.MajorVersionLimit && list.MajorVersionLimit > 100 && table.alerts.push({ title: `high max. version limit (${list.MajorVersionLimit})`, type: "Warning" });
-            table.alerts.push({ title: `Crawling is ${list.NoCrawl ? 'inactive' : 'active'}`, type:"Info" })
+            // Infos
+            table.alerts.push({ title: `Crawling is ${list.NoCrawl ? 'inactive' : 'active'}`, type:"Info" });
+            table.alerts.push({ title: `Item Count: ${list.ItemCount}`, type:"Info" });
+            table.alerts.push({ title: `ContentTypes ${list.ContentTypesEnabled ? 'enabled' : 'disabled'}`, type:"Info" });
 
             // add Table
             spSiteData.tables.push(table);

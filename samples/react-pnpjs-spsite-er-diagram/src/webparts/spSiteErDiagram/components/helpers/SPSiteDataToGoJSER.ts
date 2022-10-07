@@ -76,7 +76,7 @@ export interface GoJSLink {
     text: string,
     toText: string
 }
-const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData, fieldNameProperty: string = "name") : { nodeDataArray: GoJSNode[], linkDataArray:  GoJSLink[] } => {
+const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData, fieldNameProperty: string = "name", alertsActive = true, fieldsActive = true) : { nodeDataArray: GoJSNode[], linkDataArray:  GoJSLink[] } => {
 
     let nodeDataArray: GoJSNode[] = [];
     let linkDataArray: GoJSLink[] = [];
@@ -84,8 +84,8 @@ const getGoJSNodesFromSPSiteData = (spSiteData: SPSiteData, fieldNameProperty: s
     nodeDataArray = spSiteData.tables.map(t => { return {
         key: t.title,
         items: [
-            ...t.alerts.map(a => getNodeItemFromAlert(a)),
-            ...t.fields.map(f => getNodeItemFromField(f, fieldNameProperty))
+            ...(alertsActive ? t.alerts.map(a => getNodeItemFromAlert(a)) : []),
+            ...(fieldsActive ? t.fields.map(f => getNodeItemFromField(f, fieldNameProperty)) : [])
         ].sort((a,b) => a.order.charCodeAt(0) - b.order.charCodeAt(0))
     }})
 
