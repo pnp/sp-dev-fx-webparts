@@ -35,7 +35,7 @@ If you provide a link to your Twitter profile, we'll promote your contribution o
 
 Solution|Author(s)
 --------|---------
-react-pnpjs-spsite-er-diagram | [Niklas Wilhelm](https://github.com/ICTNiklasWilhelm) ([@NiklasWilhelm4](https://twitter.com/@NiklasWilhelm4)), NetForce 365 GmbH (HubSite 365)
+react-pnpjs-spsite-er-diagram | [Niklas Wilhelm](https://github.com/ICTNiklasWilhelm) ([@NiklasWilhelm4](https://twitter.com/@NiklasWilhelm4)), NetForce 365 GmbH ([HubSite 365](https://www.hubsite365.com/) [@Hubsite365](https://twitter.com/@Hubsite365))
 
 ## Version history
 
