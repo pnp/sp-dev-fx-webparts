@@ -1,7 +1,7 @@
-# Site ER Diagram
+# SP Site ER Diagram
 ## Summary
 
-This web parts loads all lists on a site and display it in a Entity Relationship Diagram (ERD).
+This web part loads all lists on a site and display it in a Entity Relationship Diagram (ERD) using [GoJS](https://www.npmjs.com/package/gojs).
 
 ![Best to create a AppPage with the webpart](assets/SPERasAppPage.png)
 ![ER Webpart in fullscreen](assets/SPERasAppPageFullScreen.png)
