@@ -8,10 +8,10 @@
         "skipFeatureDeployment": false,
         "isDomainIsolated": false,
         "developer": {
-            "name": "Mikael Svenson",
+            "name": "PnP Team",
             "privacyUrl": "",
             "termsOfUseUrl": "",
-            "websiteUrl": "https://www.techmikael.com/",
+            "websiteUrl": "",
             "mpnId": ""
         }
     },
