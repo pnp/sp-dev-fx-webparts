@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IFile, IResponseItem } from "../components/interfaces";
 import { getSP } from "../pnpjsConfig";
 import { Caching } from "@pnp/queryable";
+import { IItemUpdateResult } from "@pnp/sp/items";
 
 const useDocuments = () => {
   const LOG_SOURCE = "🅿PnPjsExample";
@@ -15,6 +16,7 @@ const useDocuments = () => {
 
   const _sp: SPFI = getSP();
 
+  //side effect with empty depdency array, means to run once
   useEffect(() => {
     (async () => {
       try {
@@ -44,7 +46,7 @@ const useDocuments = () => {
           };
         });
 
-        // Add the items to the state
+        // Add the items and totalsize to the state of the hook
         setDocuments(documents);
         setTotalSize(
           documents.length > 0
@@ -56,14 +58,57 @@ const useDocuments = () => {
       } catch (err) {
         setError(true);
         Logger.write(
-          `${LOG_SOURCE} (_readAllFilesSize) - ${JSON.stringify(err)} - `,
+          `${LOG_SOURCE} (getting files useEffect) - ${JSON.stringify(err)} - `,
           LogLevel.Error
         );
       }
     })();
   }, []);
 
-  return [documents, totalSize, isError] as const;
+  const updateDocuments = async () => {
+    try {
+      const [batchedSP, execute] = _sp.batched();
+
+      //clone documents
+      const items = JSON.parse(JSON.stringify(documents));
+
+      const res: IItemUpdateResult[] = [];
+
+      for (let i = 0; i < items.length; i++) {
+        // you need to use .then syntax here as otherwise the application will stop and await the result
+        batchedSP.web.lists
+          .getByTitle(LIBRARY_NAME)
+          .items.getById(items[i].Id)
+          .update({ Title: `${items[i].Name}-Updated` })
+          .then((r) => res.push(r));
+      }
+      // Executes the batched calls
+      await execute();
+
+      // Results for all batched calls are available
+      for (let i = 0; i < res.length; i++) {
+        //If the result is successful update the item
+        //NOTE: This code is over simplified, you need to make sure the Id's match
+        const item = await res[i].item.select("Id, Title")<{
+          Id: number;
+          Title: string;
+        }>();
+        items[i].Name = item.Title;
+      }
+
+      //Update the state
+      setDocuments(items);
+      setError(false);
+    } catch (err) {
+      setError(true);
+      Logger.write(
+        `${LOG_SOURCE} (updating titles) - ${JSON.stringify(err)} - `,
+        LogLevel.Error
+      );
+    }
+  };
+
+  return [documents, updateDocuments, totalSize, isError] as const;
 };
 
 export default useDocuments;
