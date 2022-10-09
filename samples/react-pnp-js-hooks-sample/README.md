@@ -13,13 +13,13 @@ extensions:
   - react
   createdDate: 5/1/2017 12:00:00 AM
 ---
-# SharePoint Framework sample using @pnp/js and ReactJS
+# SharePoint Framework sample using @pnp/js and ReactJS Functional Components
 
 ## Summary
 
-This solution builds off of the solution [react-async-await-sp-pnp-js](./react-async-await-sp-pnp-js) submitted by Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
+This solution builds off of the solution [react-async-await-sp-pnp-js](./react-async-await-sp-pnp-js) submitted by Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com)) and re-work of the existing class based [react-pnp-js-sample](./react-pnp-js-sample) by [Julie Turner](https://twitter.com/jfj1997)
 
-This implementaiton refactors to take aspects out and utilize and showcase PnPjs Version 3.
+This implementation refactors to take aspects out and utilize and showcase PnPjs Version 3 using React Functional Components and Hooks.
 
 ![React-pnp-js-sample](./assets/react-pnp-js-sample.png)
 
@@ -42,14 +42,13 @@ This implementaiton refactors to take aspects out and utilize and showcase PnPjs
 
 Solution|Author(s)
 --------|---------
-react-spfx-pnp-js-sample | Julie Turner ([@jfj1997](https://twitter.com/jfj1997))
+react-pnp-js-hooks-sample | Beau Cameron ([@beau__cameron](https://twitter.com/Beau__Cameron))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|Aug 29, 2022|Bug fix & dependency updates
-1.0|Jan 13, 2022|Initial release
+1.0|Oct 09, 2022|Initial release
 
 ## Minimal Path to Awesome
 
@@ -62,6 +61,7 @@ Version|Date|Comments
 
 * Establishing context for the SharePoint Factory Interface
 * Creating a project config file to centralize defining the PnPjs imports and SharePoint Querable object for reuse.
+* Demo using PnPjs with React Functional Components & Hooks
 * Demo extending the SharePoint Querables instance with the PnPLogging beavhior.
 * Demo extending the SharePoing Queryable instance with the Caching behavior
 * Demo loading list items from a SharePoint library
