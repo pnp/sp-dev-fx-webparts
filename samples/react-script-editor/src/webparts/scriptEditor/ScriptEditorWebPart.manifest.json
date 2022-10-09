@@ -22,7 +22,7 @@
         },
         "officeFabricIconFontName": "JS",
         "properties": {
-            "script": "",
+            "script": "<div>sample text<div>\r\n\r\n<script>\r\n// It is preferred to use a self-executing function around your script if\r\n// code should run on each page load\r\n// See https://developer.mozilla.org/en-US/docs/Glossary/IIFE\r\n    (function () {\r\n        // put script here\r\n    })() \r\n</script>",
             "title": "The Modern Script Editor web part!",
             "removePadding": false,
             "spPageContextInfo": false
