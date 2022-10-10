@@ -61,7 +61,9 @@ const useDocuments = () => {
           );
         }
       } catch (err) {
-        setError(true);
+        if (mounted) {
+          setError(true);
+        }
         Logger.write(
           `${LOG_SOURCE} (getting files useEffect) - ${JSON.stringify(err)} - `,
           LogLevel.Error
@@ -114,7 +116,9 @@ const useDocuments = () => {
         setError(false);
       }
     } catch (err) {
-      setError(true);
+      if (mounted) {
+        setError(true);
+      }
       Logger.write(
         `${LOG_SOURCE} (updating titles) - ${JSON.stringify(err)} - `,
         LogLevel.Error
