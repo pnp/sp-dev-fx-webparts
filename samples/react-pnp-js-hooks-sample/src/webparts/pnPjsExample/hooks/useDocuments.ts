@@ -18,6 +18,8 @@ const useDocuments = () => {
 
   //side effect with empty depdency array, means to run once
   useEffect(() => {
+    //mount logic to prevent updates to state when unmounted. Typically we'd use AbortController with Fetch, just can't with PnPjs
+    let mounted = true;
     (async () => {
       try {
         // do PnP JS query, some notes:
@@ -46,15 +48,18 @@ const useDocuments = () => {
           };
         });
 
-        // Add the items and totalsize to the state of the hook
-        setDocuments(documents);
-        setTotalSize(
-          documents.length > 0
-            ? documents.reduce<number>((acc: number, item: IFile) => {
-                return acc + Number(item.Size);
-              }, 0)
-            : 0
-        );
+        //only update state if we are still mounted
+        if (mounted) {
+          // Add the items and totalsize to the state of the hook
+          setDocuments(documents);
+          setTotalSize(
+            documents.length > 0
+              ? documents.reduce<number>((acc: number, item: IFile) => {
+                  return acc + Number(item.Size);
+                }, 0)
+              : 0
+          );
+        }
       } catch (err) {
         setError(true);
         Logger.write(
@@ -62,10 +67,16 @@ const useDocuments = () => {
           LogLevel.Error
         );
       }
+
+      //best practice to return a cleanup method in scenarios where component unmounts before completion
+      return () => (mounted = false);
     })();
   }, []);
 
   const updateDocuments = async () => {
+    //mount logic to prevent updates to state when unmounted. Typically we'd use AbortController with Fetch, just can't with PnPjs
+    let mounted = true;
+
     try {
       const [batchedSP, execute] = _sp.batched();
 
@@ -96,9 +107,12 @@ const useDocuments = () => {
         items[i].Name = item.Title;
       }
 
-      //Update the state
-      setDocuments(items);
-      setError(false);
+      //only update state if we are still mounted
+      if (mounted) {
+        //Update the state
+        setDocuments(items);
+        setError(false);
+      }
     } catch (err) {
       setError(true);
       Logger.write(
@@ -106,6 +120,9 @@ const useDocuments = () => {
         LogLevel.Error
       );
     }
+
+    //best practice to return a cleanup method in scenarios where component unmounts before completion
+    return () => (mounted = false);
   };
 
   return [documents, updateDocuments, totalSize, isError] as const;
