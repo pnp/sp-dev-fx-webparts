@@ -24,6 +24,8 @@ export default class SharePointHelper {
           "Contact/Title",
           "Email"
         )();
+
+      // Parse data into a fully typed object
       return FormResultsSchema.parse(items);
   }
 }

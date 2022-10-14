@@ -7,6 +7,7 @@ const dateFormatter = new Intl.DateTimeFormat([], {
   weekday: "short",
 });
 
+// Setup schema
 const FormResultSchema = z.object({
   Id: z.number(),
   Title: z.string(),
@@ -27,6 +28,7 @@ const FormResultSchema = z.object({
 });
 const FormResultsSchema = z.array(FormResultSchema);
 
+// Generate type from schema
 type FormResultModel = z.infer<typeof FormResultSchema>;
 type FormResultsModel = z.infer<typeof FormResultsSchema>;
 

@@ -15,7 +15,7 @@ export interface IReactZodWebPartProps {
 }
 
 export default class ReactZodWebPart extends BaseClientSideWebPart<IReactZodWebPartProps> {
-  private _sp: SPFI;
+  private _sp!: SPFI;
 
   public async render(): Promise<void> {
     let element: React.ReactElement;
