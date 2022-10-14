@@ -1,0 +1,47 @@
+site_name: 'SharePoint Interactive Map Webpart'
+nav:
+  - Home: 'index.md'
+theme:
+  name: material
+  palette:
+    - scheme: slate 
+      primary: blue grey
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny 
+        name: Switch to dark mode
+  logo: 'https://spfx-app.dev/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1629447472494%2FdGmmXf-Id.png%3Fw%3D1000%26h%3D250%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=1080&q=75'
+  features:
+    - toc.integrate
+    - navigation.tabs 
+    - navigation.sections
+    - content.code.annotate
+plugins:
+  - search
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - tables
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+repo_url: https://github.com/SPFxAppDev/sp-map-webpart
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/sergej-schwabauer-a26b5267/
+    - icon: fontawesome/brands/github
+      link: https://github.com/SPFxAppDev
+    - icon: fontawesome/brands/hashnode
+      link: https://spfx-app.dev/
+copyright: Copyright &copy; 2021 - 2022 Sergej Schwabauer
