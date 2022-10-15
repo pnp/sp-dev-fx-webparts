@@ -1,29 +1,56 @@
-import * as React from "react";
-import * as ReactDom from "react-dom";
-import { Version } from "@microsoft/sp-core-library";
-import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
-import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import "../../../assets/dist/tailwind.css";
+import '../../../assets/dist/tailwind.css';
+import '@pnp/sp/search';
+import '@pnp/sp/webs';
+import '@pnp/sp/sites';
+
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+
+import { Version } from '@microsoft/sp-core-library';
+import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { SPFI, spfi, SPFx } from '@pnp/sp';
 
 import {
-  ReactAssociatedHubLinks,
-  IReactAssociatedHubLinksProps,
-} from "./components/ReactAssociatedHubLinks";
+  IReactAssociatedHubLinksProps, ReactAssociatedHubLinks
+} from './components/ReactAssociatedHubLinks';
+import { ILink } from './utils/ILink';
+import { SearchResults } from '@pnp/sp/search';
 
 export interface IReactAssociatedHubLinksWebPartProps {
   description: string;
 }
 
 export default class ReactAssociatedHubLinksWebPart extends BaseClientSideWebPart<IReactAssociatedHubLinksWebPartProps> {
-  public render(): void {
+  private _sp: SPFI;
+
+  public async render(): Promise<void> {
+    const links = await this.getAssociatedSitesLinks();
     const element: React.ReactElement<IReactAssociatedHubLinksProps> =
-      React.createElement(ReactAssociatedHubLinks, {});
+      React.createElement(ReactAssociatedHubLinks, {
+        links,
+      });
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return super.onInit();
+  protected async getAssociatedSitesLinks() {
+    const site = await this._sp.site();
+    const searchResults: SearchResults = await this._sp.search(
+      `DepartmentId=${site.Id} contentclass:sts_site -SiteId:${site.Id}`
+    );
+    const associatedSitesLinks: ILink[] =
+      searchResults.PrimarySearchResults.map((result) => ({
+        title: result.Title,
+        url: result.Path,
+        logoUrl: result.SiteLogo
+      } as ILink));
+    return associatedSitesLinks;
+  }
+
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    this._sp = spfi().using(SPFx(this.context));
   }
 
   protected onDispose(): void {

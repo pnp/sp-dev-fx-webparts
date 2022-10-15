@@ -11,6 +11,7 @@ specifiers:
   '@microsoft/sp-office-ui-fabric-core': 1.15.2
   '@microsoft/sp-property-pane': 1.15.2
   '@microsoft/sp-webpart-base': 1.15.2
+  '@pnp/sp': ^3.8.0
   '@rushstack/eslint-config': 2.5.1
   '@types/react': 16.9.51
   '@types/react-dom': 16.9.8
@@ -36,6 +37,7 @@ dependencies:
   '@microsoft/sp-office-ui-fabric-core': 1.15.2
   '@microsoft/sp-property-pane': 1.15.2_7ombvvupg4tnmt4iqt5m47i6cu
   '@microsoft/sp-webpart-base': 1.15.2_7ombvvupg4tnmt4iqt5m47i6cu
+  '@pnp/sp': 3.8.0
   office-ui-fabric-react: 7.185.7_24igt2r6uynb67fv3burekl4py
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
@@ -76,7 +78,7 @@ packages:
     resolution: {integrity: sha512-TrRLIoSQVzfAJX9H1JeFjzAoDGcoK1IYX1UImfceTZpsyYfWr09Ss1aHW1y5TrrR3iq6RZLBwJ3E24uwPhwahw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/core-asynciterator-polyfill/1.0.2:
@@ -89,7 +91,7 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/core-http/1.2.6:
@@ -107,7 +109,7 @@ packages:
       node-fetch: 2.6.7
       process: 0.11.10
       tough-cookie: 4.1.2
-      tslib: 2.3.1
+      tslib: 2.4.0
       tunnel: 0.0.6
       uuid: 8.3.2
       xml2js: 0.4.23
@@ -123,7 +125,7 @@ packages:
       '@azure/core-http': 1.2.6
       '@azure/core-tracing': 1.0.0-preview.11
       events: 3.3.0
-      tslib: 2.3.1
+      tslib: 2.4.0
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -132,7 +134,7 @@ packages:
     resolution: {integrity: sha512-H6Tg9eBm0brHqLy0OSAGzxIh1t4UL8eZVrSUMJ60Ra9cwq2pOskFqVpz2pYoHDsBY1jZ4V/P8LRGb5D5pmC6rg==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/core-tracing/1.0.0-preview.11:
@@ -141,7 +143,7 @@ packages:
     dependencies:
       '@opencensus/web-types': 0.0.7
       '@opentelemetry/api': 1.0.0-rc.0
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/core-tracing/1.0.0-preview.7:
@@ -158,7 +160,7 @@ packages:
     dependencies:
       '@opencensus/web-types': 0.0.7
       '@opentelemetry/api': 0.10.2
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/identity/1.0.3:
@@ -182,7 +184,7 @@ packages:
     resolution: {integrity: sha512-aK4s3Xxjrx3daZr3VylxejK3vG5ExXck5WOHDJ8in/k9AqlfIyFMMT1uG7u8mNjX+QRILTIn0/Xgschfh/dQ9g==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: true
 
   /@azure/msal-browser/2.22.0:
@@ -208,7 +210,7 @@ packages:
       '@azure/logger': 1.0.3
       '@opentelemetry/api': 0.10.2
       events: 3.3.0
-      tslib: 2.3.1
+      tslib: 2.4.0
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -225,7 +227,7 @@ packages:
       '@azure/logger': 1.0.3
       '@opentelemetry/api': 0.10.2
       events: 3.3.0
-      tslib: 2.3.1
+      tslib: 2.4.0
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -1126,7 +1128,7 @@ packages:
     dependencies:
       '@azure/msal-browser': 2.22.0
       '@babel/runtime': 7.19.4
-      tslib: 2.3.1
+      tslib: 2.4.0
     dev: false
 
   /@microsoft/office-ui-fabric-react-bundle/1.15.2_7ombvvupg4tnmt4iqt5m47i6cu:
@@ -1788,6 +1790,31 @@ packages:
       webpack: 4.44.2_webpack-cli@4.6.0
       webpack-dev-server: 3.11.2_jtacdaqalodjhudd6qhs6dld5q
     dev: true
+
+  /@pnp/core/3.8.0:
+    resolution: {integrity: sha512-xPUohlAxbLate6yjR0+ajE29PJouhLqKW6iO37Xl3npT5IdC3C8k/W/RTvXEu1xegHAM+LVYQ3/OhKr+zxf6tw==}
+    engines: {node: '>=14.15.1'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@pnp/queryable/3.8.0:
+    resolution: {integrity: sha512-W2pX05FmIuFaQTNqcbrblgFjd9WVc0W4ElKAf5u4vMp0zlPidtsybkME6YC0o4k9+4LgTT9HZzCEY3ovuxhZ4g==}
+    engines: {node: '>=14.15.1'}
+    dependencies:
+      '@pnp/core': 3.8.0
+      tslib: 2.4.0
+    dev: false
+
+  /@pnp/sp/3.8.0:
+    resolution: {integrity: sha512-8mfvaCODbdfud3lJVRWbVWIQ4SlbN3sNBhSEDq4fHnC/SNSn21V2ADOR//LqYcovdPQU3AKTlqrorItoSnK8/g==}
+    engines: {node: '>=14.15.1'}
+    requiresBuild: true
+    dependencies:
+      '@pnp/core': 3.8.0
+      '@pnp/queryable': 3.8.0
+      tslib: 2.4.0
+    dev: false
 
   /@pnpm/error/1.4.0:
     resolution: {integrity: sha512-vxkRrkneBPVmP23kyjnYwVOtipwlSl6UfL+h+Xa3TrABJTz5rYBXemlTsU5BzST8U4pD7YDkTb3SQu+MMuIDKA==}
@@ -14150,6 +14177,10 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
+    dev: false
+
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   /tsutils/3.21.0_typescript@4.5.5:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
