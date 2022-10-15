@@ -6,6 +6,7 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import '../../../assets/dist/tailwind.css';
 
 import * as strings from 'ReactAssociatedHubLinksWebPartStrings';
 import ReactAssociatedHubLinks from './components/ReactAssociatedHubLinks';
