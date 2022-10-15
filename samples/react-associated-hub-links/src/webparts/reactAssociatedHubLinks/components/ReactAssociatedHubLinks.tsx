@@ -7,11 +7,12 @@ interface IReactAssociatedHubLinksProps {
   links: ILink[];
 }
 
-const ReactAssociatedHubLinks = (props: IReactAssociatedHubLinksProps) => {
+const ReactAssociatedHubLinks = (props: IReactAssociatedHubLinksProps): JSX.Element => {
   return (
     <section className={`tw-flex tw-gap-3 tw-flex-wrap`}>
       {props.links.map((link) => (
         <a
+          key={link.url}
           className={`
             tw-border tw-border-solid tw-border-[#dddddd] tw-text-lg tw-p-3 tw-no-underline 
             tw-flex tw-gap-4 tw-items-center tw-basis-[27%] hover:tw-bg-gray-100 tw-text-inherit

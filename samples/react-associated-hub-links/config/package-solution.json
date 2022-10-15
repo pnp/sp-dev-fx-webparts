@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-associated-hub-links-client-side-solution",
+    "name": "react-associated-hub-links",
     "id": "068997ff-c8bd-435c-9722-504f6877f319",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
