@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-associated-hub-links-client-side-solution",
+    "id": "068997ff-c8bd-435c-9722-504f6877f319",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-associated-hub-links description"
+      },
+      "longDescription": {
+        "default": "react-associated-hub-links description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-associated-hub-links Feature",
+        "description": "The feature that activates elements of the react-associated-hub-links solution.",
+        "id": "67a33029-caa7-4664-bd6b-db68310d79c7",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-associated-hub-links.sppkg"
+  }
+}

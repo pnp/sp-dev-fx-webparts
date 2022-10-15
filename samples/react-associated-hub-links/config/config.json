@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-associated-hub-links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactAssociatedHubLinks/ReactAssociatedHubLinksWebPart.js",
+          "manifest": "./src/webparts/reactAssociatedHubLinks/ReactAssociatedHubLinksWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactAssociatedHubLinksWebPartStrings": "lib/webparts/reactAssociatedHubLinks/loc/{locale}.js"
+  }
+}
