@@ -8,6 +8,8 @@ Current site should be a hub site.
 For instance, below is the result when there are 5 sites (React Zod, SPFx Samples, Tailwind, News Tracker, ListForm) registered to the current site:
 ![Web part](assets/result.png)
 
+>Please be reminded that this web part retrieving associated sites data using Search API so please wait a few minutes after you register sites until the links displayed on the web part.
+
 ## Compatibility
 
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
