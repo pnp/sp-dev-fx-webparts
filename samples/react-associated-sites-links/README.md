@@ -63,6 +63,7 @@ Version|Date|Comments
 ## Features
 
 - Display associated sites as button links
+- Display site logo on the link
 
 <!--
 RESERVED FOR REPO MAINTAINERS
