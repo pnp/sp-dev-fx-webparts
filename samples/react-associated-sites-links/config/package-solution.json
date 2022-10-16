@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "React Association Hub Links",
+    "name": "React Association Sites Links",
     "id": "068997ff-c8bd-435c-9722-504f6877f319",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -16,10 +16,10 @@
     },
     "metadata": {
       "shortDescription": {
-        "default": "react-associated-hub-links description"
+        "default": "react-associated-sites-links description"
       },
       "longDescription": {
-        "default": "react-associated-hub-links description"
+        "default": "react-associated-sites-links description"
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -27,14 +27,14 @@
     },
     "features": [
       {
-        "title": "react-associated-hub-links Feature",
-        "description": "The feature that activates elements of the react-associated-hub-links solution.",
+        "title": "react-associated-sites-links Feature",
+        "description": "The feature that activates elements of the react-associated-sites-links solution.",
         "id": "67a33029-caa7-4664-bd6b-db68310d79c7",
         "version": "1.0.0.0"
       }
     ]
   },
   "paths": {
-    "zippedPackage": "solution/React Association Hub Links.sppkg"
+    "zippedPackage": "solution/React Association Sites Links.sppkg"
   }
 }

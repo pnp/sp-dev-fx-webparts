@@ -12,20 +12,20 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { SPFI, spfi, SPFx } from "@pnp/sp";
 
 import {
-  IReactAssociatedHubLinksProps,
-  ReactAssociatedHubLinks,
-} from "./components/ReactAssociatedHubLinks";
+  IReactAssociatedSitesLinksProps,
+  ReactAssociatedSitesLinks,
+} from "./components/ReactAssociatedSitesLinks";
 
-export interface IReactAssociatedHubLinksWebPartProps {
+export interface IReactAssociatedSitesLinksWebPartProps {
   description: string;
 }
 
-export default class ReactAssociatedHubLinksWebPart extends BaseClientSideWebPart<IReactAssociatedHubLinksWebPartProps> {
+export default class ReactAssociatedSitesLinksWebPart extends BaseClientSideWebPart<IReactAssociatedSitesLinksWebPartProps> {
   private _sp: SPFI;
 
   public async render(): Promise<void> {
-    const element: React.ReactElement<IReactAssociatedHubLinksProps> =
-      React.createElement(ReactAssociatedHubLinks, {
+    const element: React.ReactElement<IReactAssociatedSitesLinksProps> =
+      React.createElement(ReactAssociatedSitesLinks, {
         sp: this._sp,
       });
 

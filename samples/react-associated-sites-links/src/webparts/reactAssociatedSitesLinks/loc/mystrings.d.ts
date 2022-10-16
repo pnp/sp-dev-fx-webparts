@@ -1,4 +1,4 @@
-declare interface IReactAssociatedHubLinksWebPartStrings {
+declare interface IReactAssociatedSitesLinksWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -8,7 +8,7 @@ declare interface IReactAssociatedHubLinksWebPartStrings {
   AppTeamsTabEnvironment: string;
 }
 
-declare module 'ReactAssociatedHubLinksWebPartStrings' {
-  const strings: IReactAssociatedHubLinksWebPartStrings;
+declare module 'ReactAssociatedSitesLinksWebPartStrings' {
+  const strings: IReactAssociatedSitesLinksWebPartStrings;
   export = strings;
 }

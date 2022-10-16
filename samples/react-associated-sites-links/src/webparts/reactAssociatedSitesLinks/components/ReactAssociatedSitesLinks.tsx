@@ -10,12 +10,12 @@ import { useEffect, useState } from "react";
 
 import { ILink } from "../utils/ILink";
 
-interface IReactAssociatedHubLinksProps {
+interface IReactAssociatedSitesLinksProps {
   sp: SPFI;
 }
 
-const ReactAssociatedHubLinks = (
-  props: IReactAssociatedHubLinksProps
+const ReactAssociatedSitesLinks = (
+  props: IReactAssociatedSitesLinksProps
 ): JSX.Element => {
   const shimmerElements = [
     { type: ShimmerElementType.line, width: 255.67, height: 66 },
@@ -84,4 +84,4 @@ const ReactAssociatedHubLinks = (
   );
 };
 
-export { IReactAssociatedHubLinksProps, ReactAssociatedHubLinks };
+export { IReactAssociatedSitesLinksProps, ReactAssociatedSitesLinks };

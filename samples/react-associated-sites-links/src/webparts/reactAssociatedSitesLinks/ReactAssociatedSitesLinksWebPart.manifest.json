@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "a8d7261e-2636-4378-b67c-6199242e49c5",
-  "alias": "ReactAssociatedHubLinksWebPart",
+  "alias": "ReactAssociatedSitesLinksWebPart",
   "componentType": "WebPart",
 
   // The "*" signifies that the version should be taken from the package.json
@@ -24,7 +24,7 @@
     {
       "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
       "group": { "default": "Advanced" },
-      "title": { "default": "React Associated Hub Links" },
+      "title": { "default": "React Associated Sites Links" },
       "description": { "default": "" },
       "officeFabricIconFontName": "Link",
       "properties": {}
