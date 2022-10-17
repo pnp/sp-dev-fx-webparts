@@ -1,4 +1,4 @@
-# Hide Lists WebPart
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Hide Lists WebPart
 
 ## Summary
 

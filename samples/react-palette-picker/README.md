@@ -1,4 +1,4 @@
-# Palette Picker
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Palette Picker
 
 ## Summary
 

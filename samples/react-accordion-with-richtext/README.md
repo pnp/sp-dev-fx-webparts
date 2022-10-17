@@ -1,4 +1,4 @@
----
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram---
 page_type: sample
 products:
 - office-sp

@@ -1,4 +1,4 @@
-# Adaptive Card Host control
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Adaptive Card Host control
 
 ## Summary
 

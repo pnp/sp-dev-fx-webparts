@@ -1,4 +1,4 @@
-# Property Pane Wrapper for HTML Controls
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Property Pane Wrapper for HTML Controls
 
 ## Applies to
 

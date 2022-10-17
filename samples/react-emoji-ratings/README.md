@@ -1,4 +1,4 @@
-# Emoji Ratings
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Emoji Ratings
 
 ## Summary
 
