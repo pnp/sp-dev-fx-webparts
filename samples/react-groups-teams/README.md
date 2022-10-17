@@ -1,3 +1,9 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 # All Microsoft 365 Groups and Teams with SPFx
 
 ## Summary
@@ -34,6 +40,8 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires API permissions")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Only after API permissions granted")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

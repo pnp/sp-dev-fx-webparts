@@ -27,8 +27,9 @@ Sample web part implementation that uses [Redux](https://github.com/reactjs/redu
 
 ![](https://i.gyazo.com/1981f22fa6a162931a29ce8dad9c2657.gif)
 
-
 ## Compatibility
+
+This sample is designed to be used in the following enviroments:
 
 ![SPFx 0.4.0](https://img.shields.io/badge/SPFx-0.4.0-orange.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
@@ -38,6 +39,8 @@ Sample web part implementation that uses [Redux](https://github.com/reactjs/redu
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 
 

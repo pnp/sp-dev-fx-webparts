@@ -1,3 +1,6 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 ---
 page_type: sample
 products:
@@ -36,6 +39,9 @@ The Section Theme web part illustrates how to use theme variant variables to sty
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

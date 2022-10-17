@@ -30,9 +30,9 @@ Please go to https://newsapi.org to get more information.
 
 ![picture of the web part in action](assets/GlobalNews01.png)
 
-
-
 ## Compatibility
+
+This sample is designed to be used in the following enviroments:
 
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
@@ -42,6 +42,8 @@ Please go to https://newsapi.org to get more information.
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

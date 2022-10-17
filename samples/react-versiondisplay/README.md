@@ -1,3 +1,9 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 ---
 page_type: sample
 products:
@@ -33,6 +39,9 @@ Display your SharePoint solution version within your web parts.
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

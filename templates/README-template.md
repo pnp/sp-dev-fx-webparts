@@ -40,6 +40,8 @@ You can add as many screen shots as you'd like to help users understand your web
 
 ## Compatibility
 
+This sample is optimally compatible with the following environment configuration:
+
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
 ![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)

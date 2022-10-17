@@ -1,3 +1,9 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 # Using Mobx with multiple stores
 
 ## Summary
@@ -17,6 +23,8 @@ A sample web part that uses the [Mobx](https://mobx.js.org/) library with multip
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

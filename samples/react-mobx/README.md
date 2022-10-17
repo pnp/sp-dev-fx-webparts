@@ -24,8 +24,9 @@ Sample web part implementation that uses [Mobx](https://github.com/mobxjs/mobx) 
 ### Non-Reactive
 ![](https://i.gyazo.com/876858e31cf14de1b6d1a281a0636029.gif)
 
-
 ## Compatibility
+
+This sample is designed to be used in the following enviroments:
 
 ![SPFx 0.5.1](https://img.shields.io/badge/SPFx-0.5.0-orange.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
@@ -35,6 +36,8 @@ Sample web part implementation that uses [Mobx](https://github.com/mobxjs/mobx) 
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 
 ## Applies to
