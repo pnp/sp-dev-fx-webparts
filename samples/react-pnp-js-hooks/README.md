@@ -56,6 +56,7 @@ react-pnp-js-hooks | [Beau Cameron](https://github.com/bcameron1231) ([@beau__ca
 Version|Date|Comments
 -------|----|--------
 1.0|Oct 09, 2022|Initial release
+1.1|Oct 18, 2022|Clean up in hook variables
 
 ## Minimal Path to Awesome
 
