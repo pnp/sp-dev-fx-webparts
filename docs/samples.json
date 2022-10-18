@@ -13468,7 +13468,7 @@
       "This solution builds off of the solution react-async-await-sp-pnp-js submitted by Jose Quinto, and re-work of the existing class based react-pnp-js-sample by Julie Turner. This implementation refactors to take aspects out and utilize and showcase PnPjs Version 3 using React Functional Components and Hooks."
     ],
     "creationDateTime": "2022-10-17",
-    "updateDateTime": "2022-10-17",
+    "updateDateTime": "2022-10-18",
     "products": [
       "SharePoint"
     ],
