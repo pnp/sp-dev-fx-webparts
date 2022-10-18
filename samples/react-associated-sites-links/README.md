@@ -62,8 +62,12 @@ Version|Date|Comments
 
 ## Features
 
-- Display associated sites as button links
-- Display site logo on the link
+This sample illustrates the following concepts:
+- Use [PnPJS](https://pnp.github.io/pnpjs/) for getting associated sites
+- Use [React](https://reactjs.org/) for displaying sites as link button
+- Display site logo on the link button
+- Use [Tailwind](https://tailwindcss.com/) for styling the link buttons
+- Use [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) for improving development productivity
 
 <!--
 RESERVED FOR REPO MAINTAINERS
