@@ -18,8 +18,6 @@ const useDocuments = () => {
 
   //side effect with empty depdency array, means to run once
   useEffect(() => {
-    //mount logic to prevent updates to state when unmounted. Typically we'd use AbortController with Fetch, just can't with PnPjs
-    let mounted = true;
     (async () => {
       try {
         // do PnP JS query, some notes:
@@ -39,7 +37,7 @@ const useDocuments = () => {
           .expand("File/Length")();
 
         // use map to convert IResponseItem[] into our internal object IFile[]
-        const documents: IFile[] = response.map((item: IResponseItem) => {
+        const items: IFile[] = response.map((item: IResponseItem) => {
           return {
             Id: item.Id,
             Title: item.Title || "Unknown",
@@ -48,37 +46,26 @@ const useDocuments = () => {
           };
         });
 
-        //only update state if we are still mounted
-        if (mounted) {
-          // Add the items and totalsize to the state of the hook
-          setDocuments(documents);
-          setTotalSize(
-            documents.length > 0
-              ? documents.reduce<number>((acc: number, item: IFile) => {
-                  return acc + Number(item.Size);
-                }, 0)
-              : 0
-          );
-        }
+        // Add the items and totalsize to the state of the hook
+        setDocuments(items);
+        setTotalSize(
+          items.length > 0
+            ? items.reduce<number>((acc: number, item: IFile) => {
+                return acc + Number(item.Size);
+              }, 0)
+            : 0
+        );
       } catch (err) {
-        if (mounted) {
-          setError(true);
-        }
+        setError(true);
         Logger.write(
           `${LOG_SOURCE} (getting files useEffect) - ${JSON.stringify(err)} - `,
           LogLevel.Error
         );
       }
-
-      //best practice to return a cleanup method in scenarios where component unmounts before completion
-      return () => (mounted = false);
     })();
   }, []);
 
   const updateDocuments = async () => {
-    //mount logic to prevent updates to state when unmounted. Typically we'd use AbortController with Fetch, just can't with PnPjs
-    let mounted = true;
-
     try {
       const [batchedSP, execute] = _sp.batched();
 
@@ -109,24 +96,16 @@ const useDocuments = () => {
         items[i].Name = item.Title;
       }
 
-      //only update state if we are still mounted
-      if (mounted) {
-        //Update the state
-        setDocuments(items);
-        setError(false);
-      }
+      //Update the state
+      setDocuments(items);
+      setError(false);
     } catch (err) {
-      if (mounted) {
-        setError(true);
-      }
+      setError(true);
       Logger.write(
         `${LOG_SOURCE} (updating titles) - ${JSON.stringify(err)} - `,
         LogLevel.Error
       );
     }
-
-    //best practice to return a cleanup method in scenarios where component unmounts before completion
-    return () => (mounted = false);
   };
 
   return [documents, updateDocuments, totalSize, isError] as const;
