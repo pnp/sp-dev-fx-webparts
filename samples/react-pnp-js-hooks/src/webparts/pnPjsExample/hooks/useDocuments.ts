@@ -37,7 +37,7 @@ const useDocuments = () => {
           .expand("File/Length")();
 
         // use map to convert IResponseItem[] into our internal object IFile[]
-        const documents: IFile[] = response.map((item: IResponseItem) => {
+        const items: IFile[] = response.map((item: IResponseItem) => {
           return {
             Id: item.Id,
             Title: item.Title || "Unknown",
@@ -47,10 +47,10 @@ const useDocuments = () => {
         });
 
         // Add the items and totalsize to the state of the hook
-        setDocuments(documents);
+        setDocuments(items);
         setTotalSize(
-          documents.length > 0
-            ? documents.reduce<number>((acc: number, item: IFile) => {
+          items.length > 0
+            ? items.reduce<number>((acc: number, item: IFile) => {
                 return acc + Number(item.Size);
               }, 0)
             : 0
