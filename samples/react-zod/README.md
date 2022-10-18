@@ -106,6 +106,15 @@ Contact|Person
   * `npm install`
   * `gulp serve`
 
+## Features
+This Web Part illustrates the following concepts:
+- Use [PnPJS](https://pnp.github.io/pnpjs/) for getting associated sites
+- Use [Zod](https://zod.dev/) to cast value type from SharePoint REST API
+- Use [Zod](https://zod.dev/) to validate value from SharePoint REST API
+- Use [Zod](https://zod.dev/) to transform value from SharePoint REST API
+- Use [DetailsList](https://developer.microsoft.com/en-us/fluentui#/controls/web/detailslist) component to display data
+- Use [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) for improving development productivity
+
 
 <!--
 RESERVED FOR REPO MAINTAINERS
