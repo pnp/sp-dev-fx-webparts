@@ -6,7 +6,7 @@ This web part lists all the public teams the current user is not yet a member of
 ![picture of the web part in action](./assets/js-public-unjoined-teams.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
@@ -15,6 +15,7 @@ This web part lists all the public teams the current user is not yet a member of
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -46,6 +47,8 @@ Version|Date|Comments
   - `gulp package solution --ship`
 - Deploy the solution package under \sharepoint\solution to the SharePoint app catalog
 - Approve the required Microsoft Graph permissions in the SharePoint admin center (Preview, API management)
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

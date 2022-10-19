@@ -12,7 +12,7 @@
       "websiteUrl": "https://nbdev.uk",
       "mpnId": "000000"
     },
-    "version": "1.0.2.1",
+    "version": "1.0.2.2",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [
@@ -31,6 +31,25 @@
       {
         "resource": "Microsoft Graph",
         "scope": "ChannelMember.ReadWrite.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "Populate a Team or Channel Membership from a CSV file"
+      },
+      "longDescription": {
+        "default": "Populate or update a Team or Channel Membership from a CSV file"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Channe/Team Membership Updating",
+        "description": "Updates/Populates a Team based on the values in a CSV file",
+        "id": "c7e4099a-153e-444f-a52f-c3bd3c137760",
+        "version": "1.0.2.1"
       }
     ]
   },

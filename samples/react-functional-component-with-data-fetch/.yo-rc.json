@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.8.2",
+    "version": "1.14.0",
     "libraryName": "teams-tracker",
     "libraryId": "f5a39f0e-c504-4969-8e47-1ed85d9f8a68",
     "environment": "spo",

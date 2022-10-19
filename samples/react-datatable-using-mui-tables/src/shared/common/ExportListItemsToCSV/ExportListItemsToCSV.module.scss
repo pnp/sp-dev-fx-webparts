@@ -1,0 +1,9 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.exportToCsv {
+  .btnCSV {
+    background-color: "[theme:themePrimary, default:#0078d7]";
+    border-color: "[theme: themePrimary, default: #0078d7]";
+    color: "[theme:white, default:white]" 
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "tab-accordion-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tabAccordion/TabAccordionWebPart.js",
+          "manifest": "./src/webparts/tabAccordion/TabAccordionWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {     
+    "tinymce": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.3/tinymce.min.js",
+      "globalName": "tinymce"
+    }
+  },
+  "localizedResources": {
+    "TabAccordionWebPartStrings": "lib/webparts/tabAccordion/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

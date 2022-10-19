@@ -38,6 +38,7 @@ Usage of following Technologies:
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs access to OneDrive documents")
 ![Hosted Workbench Compatible (requires permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(requires%20permissions)-yellow.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -78,6 +79,7 @@ Version|Date|Comments
 1.0|June 22, 2021|Initial release
 2.0|November 25, 2021|Change to use Microsoft Graph Follow
 3.0|January 13, 2022|Graph fixes
+3.1|May 17, 2022|Fixed issue when no items are returned
 
 ## Minimal Path to Awesome
 
@@ -89,6 +91,8 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - Add to AppCatalog and deploy
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

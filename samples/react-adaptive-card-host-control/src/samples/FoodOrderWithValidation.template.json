@@ -1,0 +1,152 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Your registration is almost complete",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "What type of food do you prefer?",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "medium",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "${hasMenu.hasMenuSection[0].image}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${hasMenu.hasMenuSection[0].hasMenuSection[0].image}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${hasMenu.hasMenuSection[0].hasMenuSection[1].image}"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "${hasMenu.hasMenuSection[0].name}",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "Input.ChoiceSet",
+                        "id": "SteakTemp",
+                        "style": "expanded",
+                        "label": "${hasMenu.hasMenuSection[0].description}",
+                        "isRequired": true,
+                        "errorMessage": "Please select one of the above options",
+                        "choices": [
+                            {
+                                "title": "Rare",
+                                "value": "rare"
+                            },
+                            {
+                                "title": "Medium-Rare",
+                                "value": "medium-rare"
+                            },
+                            {
+                                "title": "Well-done",
+                                "value": "well-done"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "SteakOther",
+                        "isMultiline": true,
+                        "label": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Steak"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "${hasMenu.hasMenuSection[0].hasMenuSection[0].name}",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "Input.Toggle",
+                        "id": "ChickenAllergy",
+                        "valueOn": "noPeanuts",
+                        "valueOff": "peanuts",
+                        "title": "I'm allergic to peanuts",
+                        "label": "${hasMenu.hasMenuSection[0].hasMenuSection[0].description}"
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "ChickenOther",
+                        "isMultiline": true,
+                        "label": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Chicken"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "${hasMenu.hasMenuSection[0].hasMenuSection[1].name}",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "Input.Toggle",
+                        "id": "Vegetarian",
+                        "title": "Please prepare it vegan",
+                        "label": "${hasMenu.hasMenuSection[0].hasMenuSection[1].description}",
+                        "valueOn": "vegan",
+                        "valueOff": "notVegan"
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "VegOther",
+                        "isMultiline": true,
+                        "label": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Vegetarian"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        }
+    ]
+}

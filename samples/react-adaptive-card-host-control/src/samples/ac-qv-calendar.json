@@ -1,0 +1,701 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.3",
+	"body": [{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": 26,
+					"items": [{
+						"type": "TextBlock",
+						"text": "« Previous",
+						"wrap": true,
+						"weight": "Bolder",
+						"size": "Default",
+						"fontType": "Default",
+						"color": "Accent",
+						"isSubtle": false
+					}],
+					"verticalContentAlignment": "Center"
+				},
+				{
+					"type": "Column",
+					"width": 48,
+					"items": [{
+						"type": "TextBlock",
+						"text": "Oct 2021",
+						"wrap": true,
+						"size": "Large",
+						"fontType": "Default",
+						"weight": "Bolder",
+						"color": "Default",
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": 26,
+					"items": [{
+						"type": "TextBlock",
+						"text": "Next »",
+						"wrap": true,
+						"horizontalAlignment": "Right",
+						"weight": "Bolder",
+						"fontType": "Default",
+						"size": "Default",
+						"color": "Accent"
+					}],
+					"verticalContentAlignment": "Center"
+				}
+			],
+			"style": "default"
+		},
+		{
+			"type": "Container",
+			"spacing": "Large"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "S",
+						"wrap": true,
+						"weight": "Bolder",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"items": [{
+						"type": "TextBlock",
+						"text": "M",
+						"wrap": true,
+						"weight": "Bolder",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}],
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "T",
+						"wrap": true,
+						"weight": "Bolder",
+						"isSubtle": true,
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "W",
+						"wrap": true,
+						"weight": "Bolder",
+						"color": "Default",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "T",
+						"wrap": true,
+						"weight": "Bolder",
+						"color": "Default",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "F",
+						"wrap": true,
+						"weight": "Bolder",
+						"color": "Default",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "S",
+						"wrap": true,
+						"weight": "Bolder",
+						"color": "Default",
+						"isSubtle": true,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			]
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "1",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "2",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			],
+			"style": "default",
+			"spacing": "Large"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "3",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "4",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "5",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "6",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "7",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "8",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "9",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			],
+			"style": "default",
+			"spacing": "Large"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "10",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}],
+					"horizontalAlignment": "Center"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "11",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}],
+					"horizontalAlignment": "Right"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "12",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "13",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "14",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "15",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "16",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			],
+			"style": "accent",
+			"height": "stretch",
+			"bleed": true,
+			"spacing": "Medium"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "17",
+						"wrap": true,
+						"color": "Default",
+						"weight": "Default",
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}],
+					"horizontalAlignment": "Center"
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "18",
+						"wrap": true,
+						"weight": "Default",
+						"color": "Default",
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "19",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "20",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "21",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "22",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "23",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			],
+			"style": "default",
+			"spacing": "Medium"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "24",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "25",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "26",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "27",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "28",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "29",
+						"wrap": true,
+						"horizontalAlignment": "Center"
+					}]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "30",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}]
+				}
+			],
+			"spacing": "Large"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [{
+					"type": "Column",
+					"width": "stretch",
+					"items": [{
+						"type": "TextBlock",
+						"text": "31",
+						"wrap": true,
+						"isSubtle": false,
+						"horizontalAlignment": "Center"
+					}],
+					"horizontalAlignment": "Center"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				},
+				{
+					"type": "Column",
+					"width": "stretch"
+				}
+			],
+			"spacing": "Large"
+		},
+		{
+			"type": "Container",
+			"spacing": "Large"
+		},
+		{
+			"type": "Container",
+			"items": [{
+					"type": "Container",
+					"spacing": "Medium"
+				},
+				{
+					"type": "TextBlock",
+					"text": "3 team members are out of office",
+					"wrap": true,
+					"size": "Medium",
+					"weight": "Bolder",
+					"spacing": "Medium"
+				},
+				{
+					"type": "ColumnSet",
+					"columns": [{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Oct 11-13",
+								"wrap": true,
+								"color": "Default",
+								"isSubtle": false
+							}],
+							"width": "80px"
+						},
+						{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Lynne on vacation",
+								"wrap": true
+							}],
+							"width": 100
+						}
+					],
+					"spacing": "Medium"
+				},
+				{
+					"type": "ColumnSet",
+					"columns": [{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Oct 12",
+								"wrap": true
+							}],
+							"width": "80px"
+						},
+						{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Lee away for doctor's appointment",
+								"wrap": true
+							}],
+							"width": 100
+						}
+					],
+					"spacing": "Medium"
+				},
+				{
+					"type": "ColumnSet",
+					"columns": [{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Oct 14",
+								"wrap": true
+							}],
+							"width": "80px"
+						},
+						{
+							"type": "Column",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Lidia out of office",
+								"wrap": true
+							}],
+							"width": 100
+						}
+					],
+					"spacing": "Medium"
+				},
+				{
+					"type": "Container",
+					"spacing": "Medium"
+				},
+				{
+					"type": "TextBlock",
+					"text": "1 report due",
+					"wrap": true,
+					"weight": "Bolder",
+					"size": "Medium"
+				},
+				{
+					"type": "ColumnSet",
+					"columns": [{
+							"type": "Column",
+							"width": "80px",
+							"items": [{
+								"type": "TextBlock",
+								"text": "Oct 15",
+								"wrap": true
+							}]
+						},
+						{
+							"type": "Column",
+							"width": 100,
+							"items": [{
+								"type": "TextBlock",
+								"text": "Team report due",
+								"wrap": true
+							}]
+						}
+					],
+					"spacing": "Medium"
+				}
+			],
+			"style": "emphasis"
+		}
+	]
+}

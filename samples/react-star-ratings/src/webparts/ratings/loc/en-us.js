@@ -4,7 +4,6 @@ define([], function() {
     "ActiveColorLabel": "Active Color",
     "InactiveColorLabel": "Inactive Color",
     "RateThisPageLabel": "Rate this page",
-    "AverageLabel": "Average",
-    "CountLabel": "Count"
+    "YourRatingLabel": "Your rating"
   }
 });

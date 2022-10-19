@@ -5,7 +5,6 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-import { sp } from "@pnp/sp/presets/all";
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'TaxonomyFileExplorerWebPartStrings';
@@ -18,18 +17,11 @@ export interface ITaxonomyFileExplorerWebPartProps {
 }
 
 export default class TaxonomyFileExplorerWebPart extends BaseClientSideWebPart<ITaxonomyFileExplorerWebPartProps> {
-  protected onInit(): Promise<void> {
-    return super.onInit().then(_ => {
-      sp.setup({
-        spfxContext: this.context
-      });
-    });
-  }
-
   public render(): void {
     const element: React.ReactElement<ITaxonomyFileExplorerProps> = React.createElement(
       TaxonomyFileExplorer,
       {
+        serviceScope: this.context.serviceScope,
         fieldName: this.properties.fieldName,
         listName: this.properties.listName
       }

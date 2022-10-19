@@ -7,9 +7,9 @@ import { IFileLabelProps } from './IFileLabelProps';
 initializeFileTypeIcons(undefined);
 
 export const FileLabel: React.FC<IFileLabelProps> = (props) => {
-  const drag = (ev) => {
+  const drag = React.useCallback((ev)=> {
     ev.dataTransfer.setData("text/plain", JSON.stringify(props.file));
-  };
+  }, [props.file]);
 
   return (
     <li className={styles.fileLabel} draggable={true} onDragStart={drag}>

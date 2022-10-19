@@ -66,6 +66,7 @@ This list search web part allows the user to show data from lists or libraries. 
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to SharePoint lists and libraries")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -85,10 +86,13 @@ Version|Date|Comments
 1.0.0|December 20, 2020|Initial release
 1.1.0|April 25, 2021|List item modern audience support
 1.2.0|January 01, 2022|Upgraded for SPFx v1.13.1
+1.3.0|July 11, 2022|Fixes CAML issues
 
 ## Minimal Path to Awesome
 
 ### Dev Mode
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
   * Clone this repository
   * In the command line run:

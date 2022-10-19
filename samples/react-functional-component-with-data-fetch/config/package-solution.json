@@ -3,9 +3,36 @@
   "solution": {
     "name": "teams-tracker-client-side-solution",
     "id": "f5a39f0e-c504-4969-8e47-1ed85d9f8a68",
-    "version": "1.0.0.0",
+    "version": "2.1.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "SPFx-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "teams-tracker description"
+      },
+      "longDescription": {
+        "default": "teams-tracker description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "teams-tracker Feature",
+        "description": "The feature that activates elements of the teams-tracker solution.",
+        "id": "8d5b3cd2-a043-40e6-9229-44ad307fd36f",
+        "version": "2.1.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/teams-tracker.sppkg"

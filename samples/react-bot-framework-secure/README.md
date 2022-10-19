@@ -19,7 +19,7 @@ This demo does not include any threat models and is designed for educational pur
 ![react-bot-framework-secure](./assets/sp-wp-secure.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg) 
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 

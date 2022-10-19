@@ -33,6 +33,7 @@ The web part allows configuring which list to use and if a form for adding a new
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to SharePoint content")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -70,6 +71,8 @@ You'll need to connect to a list before you can use this sample.
 | 1.0.8   | February 7, 2021   | Fixed dragging and dropping fields                                                                        |
 | 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
 | 1.0.10  | May 6, 2021        | Fixed "attachments are not cleared after submit" issue                                                    |
+| 1.0.11  | August 31, 2022        | Fixed Caret RichTextField issues                                                    |
+| 1.0.12  | Sept 5, 2022        | Fixed DateField does not support manually entering date                                                    |
 
 ## Minimal Path to Awesome
 
@@ -77,6 +80,8 @@ You'll need to connect to a list before you can use this sample.
 - in the command line run:
   - `npm install`
   - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
@@ -93,9 +98,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 [![Building a list editing web part with React](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=6HbtHVZ-3Js "Building a list editing web part with React")
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Help
 
@@ -110,5 +112,9 @@ If you encounter any issues while using this sample, [create a new issue](https:
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-list-form&template=question.yml&sample=react-list-form&authors=@DanyWyss%20@Harshagracy%20@sharepointknight%20@Abderahman88,%20@Kman1131%20@fthorild%20@AriGunawan&title=react-list-form%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-list-form&template=question.yml&sample=react-list-form&authors=@DanyWyss%20@Harshagracy%20@sharepointknight%20@Abderahman88,%20@Kman1131%20@fthorild%20@AriGunawan&title=react-list-form%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-form" />

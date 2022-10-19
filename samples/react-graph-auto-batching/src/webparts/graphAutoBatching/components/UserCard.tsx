@@ -20,7 +20,11 @@ export function UserCard(props: IUserCardProps){
         setUser({
             ...userResult,
             presence: presence.availability,
+<<<<<<< HEAD
             photo: photo.replace("\"","").replace("\"","")
+=======
+            photo: `data:image/png;base64,${photo.replace("\"","").replace("\"","")}`
+>>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
         });
         setLoading(false);
     };

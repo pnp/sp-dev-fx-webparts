@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-adaptive-card-host-control-client-side-solution",
+    "id": "f829f44a-9afb-4ec6-b1a3-bc4e22b43d30",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-adaptive-card-host-control description"
+      },
+      "longDescription": {
+        "default": "react-adaptive-card-host-control description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-adaptive-card-host-control Feature",
+        "description": "The feature that activates elements of the react-adaptive-card-host-control solution.",
+        "id": "23b4b6b5-f9c5-4fcd-b389-2bc97502b60b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-adaptive-card-host-control.sppkg"
+  }
+}

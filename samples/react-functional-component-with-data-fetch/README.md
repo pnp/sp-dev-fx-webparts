@@ -2,20 +2,21 @@
 
 ## Summary
 
-This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.
+This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.
 
-![Screenshot](Screenshot.png "Screenshot - Teams Tracker web part")
+![Screenshot](assets/Screenshot.png "Screenshot - Teams Tracker web part")
 
 
 ## Compatibility
 
-![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg 'Local workbench is no longer available as of SPFx 1.13 and above')
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -23,22 +24,21 @@ This web part demonstrates building a React functional component that uses data 
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 * [PnPJS library](https://github.com/pnp/pnpjs)
 
-## Prerequisites
-
-This sample was built with version 1.8.2 of the SharePoint Framework. It has been modified to use version 16.8 of the React framework (by default the version used is React 16.7). React 16.8 supports React Hooks which is required to support state management in a React functional component.
-With future versions of SPFx it will be possible to use the built-in React version, which avoids the need to add a specific version of React to the bundle. This sample also uses the PnPJS library to retrieve Microsoft Graph data.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-functional-component-with-data-fetch | Bill Ayers
+react-functional-component-with-data-fetch | Don Kirkham
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|June 14, 2019|Initial release
+2.0|February 15, 2022|Upgrade to SPFx v1.13.1
+2.1|February 21, 2022|Upgrade to SPFx v1.14.0
 
 ## Minimal Path to Awesome
 
@@ -50,11 +50,13 @@ Version|Date|Comments
   * Navigate to *https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*
   * Sign in to your account if needed
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 ## Features
 
 The purpose of this web part is to demonstrate building a React functional component that includes state and data fetched from a remote service. This is achieved using the recent React Hooks feature. The resulting code is cleaner and easier to follow than using a JavaScript/TypeScript class derived from React.Component. The example web part renders a list of the user's Teams and, if enabled, a list of the Teams channels for each Team with a link to the channel.
 
-![Screenshot](ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
+![Screenshot](assets/ShowChannels.png "Screenshot - Teams Tracker web part with Teams channels displayed")
 
 This is an extension of the approach used in the [React-Functional-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component) and [React-Functional-Stateful-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component) samples.
 
@@ -64,11 +66,7 @@ This is an extension of the approach used in the [React-Functional-Component](ht
 * Team.tsx Component
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />
 
-## TeamsTrackerWebPart.ts Simplification
-
-A number of simplifications have been made to the TeamsTrackerWebPart.ts file compared to the Yeoman generator starter project. The use of an external string collection has been removed - they are simply hard coded into the file to make it clear how the property pane configuration works.
-
-The properties interface is declared inline in TeamsTrackerWebPart.ts and the same properties are  passed to the component as props. The property will then be available to the component through its **props** collection.
+## TeamsTrackerWebPart.ts Initialise PnPJS
 
 The onInit method of BaseClientSideWebPart is overriden to initialise the PnPJS graph object. The web part is then able to get access to the Microsoft Graph using the PnPJS library. The User.Read.All permission is implicitly provided.
 
@@ -133,7 +131,7 @@ If this were a real application, rather than a demonstration, you would need to 
 
 ## Building and testing
 
-In the `react-functional-component` directory, run `npm install` to resolve all the dependencies. Once this has completed you can run `gulp serve --nobrowser` to test the web part in the workbench of your tenant (*https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*). You could run it in the local workbench, but the PnPJS promise will never return and so you will just see the loading spinner.
+In the `react-functional-component-with-data-fetch` directory, run `npm install` to resolve all the dependencies. Once this has completed you can run `gulp serve --nobrowser` to test the web part in the workbench of your tenant (*https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*). 
 
 
 ## Disclaimer

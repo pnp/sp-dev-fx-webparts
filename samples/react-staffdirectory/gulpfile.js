@@ -19,7 +19,14 @@ gulp.task('dist', gulpSequence('clean', 'bundle', 'package-solution'));
 gulp.task('dev', gulpSequence('clean', 'bundle', 'package-solution'));
 
 
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
 
+  result.set('serve', result.get('serve-deprecated'));
+
+  return result;
+};
 
 /**
  * Custom Framework Specific gulp tasks

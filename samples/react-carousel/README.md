@@ -34,6 +34,7 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs access to SharePoint content")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -92,6 +93,8 @@ Version|Date|Comments
 - Make sure you have at least one **Picture Library** on one of your site collections
 - Add the web part to a page
 - In the web part's property pane, enter the **Site Url** (if library is on a different site collect) and select a **Picture Library** from the **Library** drop-down.
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 
 ## Video

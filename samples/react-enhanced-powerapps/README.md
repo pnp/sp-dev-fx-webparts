@@ -11,14 +11,15 @@ It also resizes the app to fit the web part dimension:
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to Power Apps")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -41,6 +42,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|July 27, 2020|Initial release
 1.1|August 15, 2020|Added improved resize event handler
+1.2|January 20, 2022|Update to SPFx v1.13.1
 
 ## Minimal Path to Awesome
 
@@ -48,6 +50,9 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
+
 
 ### To Use
 

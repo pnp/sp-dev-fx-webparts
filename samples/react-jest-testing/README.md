@@ -70,6 +70,7 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -103,6 +104,8 @@ Version|Date|Comments
 - Open the command line, navigate to the web part folder and execute:
     - `npm i`
     - `npm test` **(NOT gulp test)**
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 Note: You might want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
 ``` 

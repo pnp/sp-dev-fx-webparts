@@ -1,0 +1,706 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "Container"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Microsoft HoloLens 2",
+                    "wrap": true,
+                    "size": "ExtraLarge",
+                    "weight": "Bolder",
+                    "spacing": "Large"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "An ergonomic, untethered self-contained holographic device with enterprise-ready applications to increase user accuracy and output.\n",
+                    "wrap": true
+                },
+                {
+                    "type": "Container",
+                    "spacing": "Large"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic1.jpg",
+                                "horizontalAlignment": "Center"
+                            },
+                            "minHeight": "240px",
+                            "bleed": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "56px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic2.jpg"
+                            },
+                            "bleed": true,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/chevron_right_white.png",
+                                    "width": "24px",
+                                    "height": "24px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Next",
+                                "targetElements": [
+                                    "img_set_1",
+                                    "img_set_2"
+                                ]
+                            }
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                }
+            ],
+            "minHeight": "1px",
+            "bleed": true,
+            "spacing": "None",
+            "id": "img_set_1"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic2.jpg",
+                                "horizontalAlignment": "Center"
+                            },
+                            "minHeight": "240px",
+                            "bleed": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "56px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic3.jpg"
+                            },
+                            "bleed": true,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/chevron_right_white.png",
+                                    "width": "24px",
+                                    "height": "24px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Next",
+                                "targetElements": [
+                                    "img_set_2",
+                                    "img_set_3"
+                                ]
+                            }
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                }
+            ],
+            "minHeight": "1px",
+            "bleed": true,
+            "spacing": "None",
+            "isVisible": false,
+            "id": "img_set_2"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic3.jpg",
+                                "horizontalAlignment": "Center"
+                            },
+                            "minHeight": "240px",
+                            "bleed": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "56px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic4.jpg"
+                            },
+                            "bleed": true,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/chevron_right_white.png",
+                                    "width": "24px",
+                                    "height": "24px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Next",
+                                "targetElements": [
+                                    "img_set_3",
+                                    "img_set_4"
+                                ]
+                            }
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                }
+            ],
+            "minHeight": "1px",
+            "bleed": true,
+            "spacing": "None",
+            "isVisible": false,
+            "id": "img_set_3"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic4.jpg",
+                                "horizontalAlignment": "Center"
+                            },
+                            "minHeight": "240px",
+                            "bleed": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "56px",
+                            "backgroundImage": {
+                                "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/hololens-pic1.jpg"
+                            },
+                            "bleed": true,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/chevron_right_white.png",
+                                    "width": "24px",
+                                    "height": "24px"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "selectAction": {
+                                "type": "Action.ToggleVisibility",
+                                "title": "Next",
+                                "targetElements": [
+                                    "img_set_4",
+                                    "img_set_1"
+                                ]
+                            }
+                        }
+                    ],
+                    "horizontalAlignment": "Center"
+                }
+            ],
+            "minHeight": "1px",
+            "bleed": true,
+            "spacing": "None",
+            "isVisible": false,
+            "id": "img_set_4"
+        },
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "Container",
+                    "spacing": "None",
+                    "minHeight": "16px"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "FEATURES",
+                    "wrap": true,
+                    "spacing": "Large",
+                    "size": "Default",
+                    "weight": "Bolder",
+                    "horizontalAlignment": "Center",
+                    "color": "Accent"
+                },
+                {
+                    "type": "Container",
+                    "spacing": "None",
+                    "minHeight": "8px"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 48,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/aim.png",
+                                    "horizontalAlignment": "Center",
+                                    "width": "40px",
+                                    "height": "40px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Precision\n",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Center"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Stay engaged heads-up, hands-free longer and more comfortably to safely complete tasks error-free.",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 2
+                        },
+                        {
+                            "type": "Column",
+                            "width": 48,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/team.png",
+                                    "horizontalAlignment": "Center",
+                                    "width": "40px",
+                                    "height": "40px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Collaborate",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Medium",
+                                    "weight": "Bolder"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Connect with remote colleagues – working together on holograms – to resolve issues in real time.\n",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "horizontalAlignment": "Center",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/pulp.png",
+                                    "width": "40px",
+                                    "height": "40px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Innovate",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Medium",
+                                    "weight": "Bolder"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Stay engaged heads-up, hands-free longer and more comfortably to safely complete tasks error-free.",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ],
+                            "width": 48
+                        },
+                        {
+                            "type": "Column",
+                            "width": 2
+                        },
+                        {
+                            "type": "Column",
+                            "width": 48,
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "horizontalAlignment": "Center",
+                                    "url": "https://raw.githubusercontent.com/pnp/AdaptiveCards-Templates/main/samples/image-carousel/assets/graph.png",
+                                    "width": "40px",
+                                    "height": "40px"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "App Ecosystem",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Medium",
+                                    "weight": "Bolder"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Choose from over 200 enterprise-ready mixed reality solutions from Dynamics 365 and Mixed Reality Partners.",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "size": "Small",
+                                    "isSubtle": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "minHeight": "16px",
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "Container",
+                    "spacing": "None",
+                    "minHeight": "16px"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "SPECS",
+                    "wrap": true,
+                    "weight": "Bolder",
+                    "horizontalAlignment": "Center",
+                    "spacing": "Large",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Display",
+                    "wrap": true,
+                    "spacing": "Large",
+                    "size": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Optics",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Left"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "See-through holographic lenses (waveguides)",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium",
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Resolution",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2k 3:2 light engines\n",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Holographic density",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "More than 2.5k radiants (light points per radian)",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Eye-based rendering",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Display optimization for 3D eye position",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "Container"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Sensors",
+                    "wrap": true,
+                    "size": "Medium",
+                    "spacing": "Large"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Head tracking",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "4 visible light camera",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium",
+                    "separator": true
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Eye tracking",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2 IR cameras",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Depth",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "1-MP time-of-flight (ToF) depth sensor",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "IMU",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Accelerometer, gyroscope, magnetometer",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Camera",
+                                    "wrap": true,
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "8-MP stills, 1080p30 video",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "Medium"
+                }
+            ],
+            "spacing": "None"
+        }
+    ]
+}

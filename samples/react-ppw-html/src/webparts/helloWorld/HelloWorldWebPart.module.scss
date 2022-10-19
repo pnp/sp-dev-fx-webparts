@@ -1,0 +1,170 @@
+  .urlInput {
+    width: 100%;
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: none;
+    background: none transparent;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    min-width: 0px;
+    text-overflow: ellipsis;
+    outline: 0px;
+    box-shadow: none;
+    margin: 0px;
+    box-sizing: border-box;
+    border: 1px solid rgb(208, 208, 208);
+    border-radius: 2px;
+    background: rgb(24, 37, 52);
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    &:invalid {
+      border: 1px solid red;
+    }
+  }
+
+.fieldset {
+  border: none;
+  padding: 0!important;
+  width: 100%;
+  input {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: none;
+    background: none transparent;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    min-width: 0px;
+    text-overflow: ellipsis;
+    outline: 0px;
+    box-shadow: none;
+    margin: 0px;
+    box-sizing: border-box;
+    border: 1px solid rgb(208, 208, 208);
+    border-radius: 2px;
+    background: rgb(24, 37, 52);
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    &:invalid {
+      border: 1px solid red;
+    }
+  }
+}
+
+.fieldsetDatesInput {
+  display: flex!important;
+  align-items: center;
+  justify-content: space-between;
+input[type=date] {
+  width: 139px!important;
+  padding: 4px!important;
+  &::-webkit-datetime-edit-text {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+  }
+  &::-webkit-calendar-picker-indicator {
+    background: teal; 
+  }
+}
+}
+
+.fieldsetColorInput {
+  input {
+    width:100%;
+  }
+}
+
+.fieldsetCheckbox {
+  width: 100%;
+  display: flex!important;
+  align-items: center;
+  input {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.fieldsetCheckboxDarkLight {
+  --black: #333333;
+  --white: #f5f5f5;
+  --backround: var(--white);
+  --foreground: var(--black);
+  --transition: 0.5s ease;
+  width: 100%;
+  display: flex!important;
+  align-items: center;
+  label {
+    display: block;
+  }
+  input[type="checkbox"] + div {
+    height: 37px;
+    width: 80px;
+    background: var(--black);
+    border-radius: 30px;
+    padding: 2px;
+    position: relative;
+    transition: background var(--transition);
+    cursor: pointer;
+    border: 1px solid var(--white);
+  }
+  input[type="checkbox"]:checked + div {
+    background: var(--white);
+  }
+  input[type="checkbox"] + div span::before {
+    content: "";
+    display: block;
+    height: 32px;
+    width: 32px;
+    border-radius: 30px;
+    padding: 2px;
+    background: var(--white);
+    position: absolute;
+    z-index: 2;
+    transform: translate(0);
+    transition: transform var(--transition), background var(--transition);
+  }
+  input[type="checkbox"]:checked + div span::before {
+    background: var(--black);
+  }
+  input[type="checkbox"]:checked + div span::before {
+    transform: translateX(44px);
+  }
+  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+  }
+  div div {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+  input[type="checkbox"] + div div svg {
+    padding: 6px;
+    fill: var(--white);
+    z-index: 0;
+  }
+  input[type="checkbox"]:checked + div div svg {
+    fill: var(--black);
+  }
+}

@@ -1,0 +1,92 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Site Lists - pocketSOAP</h3>
+<p>Isolated mode: &#9888; mandatory. Just for fun, a minimal implementation of the deprecated SharePoint SOAP API. Do not use in production!</p>
+<script type="text/javascript">
+
+    /********************************************************************************
+    
+        pocketSOAP
+    	
+        Copyright (c) 2009-2022 Christophe Humbert
+    
+    ********************************************************************************/
+
+    pS = {};
+
+    pS.cleanSpaces = function (string) { return string.replace(/^\s+|\s+$/g, "").replace(/\s+/g, " "); };
+    pS.cleanBreaks = function (string) { return string.replace(/[\r\n\t]/g, ""); };
+    pS.trim = function (string) { return string.replace(/^\s+|\s+$/g, ""); };
+    pS.htmlUnescape = function (str) {
+        return String(str)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+    };
+
+    pS.getWSProperties = function (site, service, operation) {
+        return fetch(site + "/" + '_vti_bin/' + service + '.asmx' + '?op=' + operation + '&_ts=' + new Date().getTime())
+            .then(result => result.text())
+            .then(text => {
+                var regexp = /Content-Type:([\s\S]*?)Content-Length:[\s\S]*?SOAPAction:\s*"(\S*?)"([\s\S]*?)\<\/pre\>/;
+                var results = regexp.exec(text);
+
+                let dv = document.createElement("div");
+
+                var spWS = {};
+
+                spWS.headers = {};
+                spWS.headers['Content-Type'] = pS.trim(results[1]).replace(/[\r\n]/g, "");
+                spWS.headers.SOAPAction = pS.trim(results[2]).replace(/[\r\n]/g, "");
+
+                spWS.soapEnvelope = results[3].replace(/&lt;xsd:schema&gt;[\s\S]+?&lt;\/xsd:schema&gt;/g, "");
+                spWS.soapEnvelope = spWS.soapEnvelope.replace(/&lt;([\S]+)&gt;[^;]+&lt;\/\1&gt;/g, '<$1/>');
+                spWS.soapEnvelope = pS.htmlUnescape(spWS.soapEnvelope);
+                // Trim and remove line breaks (\n,\r), tabs (\t), etc.
+                spWS.soapEnvelope = pS.trim(spWS.soapEnvelope).replace(/>\s+?</g, "><");
+
+                return spWS;
+            }); // end then
+    };
+
+    pS.soap = function (options) {
+        return pS.getWSProperties(options.site, options.service, options.operation)
+            .then(function (wsProperties) {
+                var wsURL = options.site + '/_vti_bin/' + options.service + '.asmx';
+
+                var wsData = wsProperties.soapEnvelope.replace(/<([\S]+?)\/>/g, function (m, key) {
+                    if (options[key]) { return ('<' + key + '>' + options[key] + '</' + key + '>') }
+                    else { return ""; }
+                });
+
+                options.method = 'POST'; // always POST for Web services
+                options.headers = wsProperties.headers;
+                options.body = wsData;
+
+                return fetch(wsURL, options);
+            }); // end then
+    }; // end pS.soap
+
+</script>
+
+<script type="text/javascript">
+    var currentScript = document.currentScript;
+    pS.soap({
+        // Service info
+        site: props.context.pageContext.web.absoluteUrl,
+        service: "Lists",
+        operation: "GetListCollection",
+        // Service parameters
+        viewFields: "<ViewFields><FieldRef Name='Title' /><FieldRef Name='ImageURL' /></ViewFields>"
+    })
+        .then(response => response.text())
+        .then(data => new DOMParser().parseFromString(data, "application/xml"))
+        .then(xml => {
+            const newDiv = document.createElement('div');
+            const items = [...xml.getElementsByTagName("List")].map(child => `<li><img src="${child.getAttribute("ImageUrl")}"/> ${child.getAttribute("Title")}</li>`);
+            newDiv.innerHTML = `<div>${items.length} lists found on this site:</div><ul style="list-style-type: none; columns: 2;">${items.join("")}</ul>`;
+            currentScript.insertAdjacentElement('afterend', newDiv);
+        });
+</script>
+</div>

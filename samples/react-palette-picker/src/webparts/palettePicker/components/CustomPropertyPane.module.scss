@@ -1,0 +1,389 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.CustomPropertyPane {
+
+
+/* PrismJS 1.23.0
+/* original inspiration used prism for formatting the css, these styles are mostly about that but unused in this solution
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=css+css-extras&plugins=line-numbers+inline-color+toolbar+copy-to-clipboard */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #ccc;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 2rem;
+  margin: 0;
+  overflow: auto;
+  outline: transparent;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999;
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em; /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+  .line-numbers-rows > span {
+    display: block;
+    counter-increment: linenumber;
+  }
+
+    .line-numbers-rows > span:before {
+      content: counter(linenumber);
+      color: #999;
+      display: block;
+      padding-right: 0.8em;
+      text-align: right;
+    }
+
+span.inline-color-wrapper {
+  /*
+   * The background image is the following SVG inline in base 64:
+   *
+   * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2">
+   *     <path fill="gray" d="M0 0h2v2H0z"/>
+   *     <path fill="white" d="M0 0h1v1H0zM1 1h1v1H1z"/>
+   * </svg>
+   *
+   * SVG-inlining explained:
+   * https://stackoverflow.com/a/21626701/7595472
+   */
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyIDIiPjxwYXRoIGZpbGw9ImdyYXkiIGQ9Ik0wIDBoMnYySDB6Ii8+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0wIDBoMXYxSDB6TTEgMWgxdjFIMXoiLz48L3N2Zz4=");
+  /* This is to prevent visual glitches where one pixel from the repeating pattern could be seen. */
+  background-position: center;
+  background-size: 110%;
+
+  display: inline-block;
+  height: 1.333ch;
+  width: 1.333ch;
+  margin: 0 .333ch;
+  box-sizing: border-box;
+  border: 1px solid white;
+  outline: 1px solid rgba(0,0,0,.5);
+  overflow: hidden;
+}
+
+span.inline-color {
+  display: block;
+  /* To prevent visual glitches again */
+  height: 120%;
+  width: 120%;
+}
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar > .toolbar {
+  position: absolute;
+  top: .3em;
+  right: .2em;
+  opacity: 1;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+/* Separate line b/c rules are thrown out if selector is invalid.
+   IE11 and old Edge versions don't support :focus-within. */
+div.code-toolbar:focus-within > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+  display: inline-block;
+}
+
+div.code-toolbar > .toolbar a {
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button {
+  color: #bbb;
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  background: hsl(0, 0%, 25%);
+  border-radius: .5em;
+  outline: transparent;
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar a:focus,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar button:focus,
+div.code-toolbar > .toolbar span:hover,
+div.code-toolbar > .toolbar span:focus {
+  background: hsl(0, 0%, 40%);
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  //background: 'hsl(%s, 50%, 98%)' % var(--hue, 0);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.scene {
+  display: flex;
+  width: 100vw;
+  align-items: start;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+#hue,
+#saturation,
+#lightness {
+  width: 200px;
+}
+
+label {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: hsl(0, 0%, 14%);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto auto;
+  align-items: center;
+  grid-gap: 2rem 2rem;
+  width: 50%;
+  max-width: 400px;
+  padding: 2rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2rem 3rem -2rem hsl(0, 0%, 10%);
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(0, -116px);
+}
+
+.palette {
+  display: grid;
+ // grid-template-rows: repeat(var(--shades, 8), 1fr);
+  height: 100%;
+ // background: linear-gradient(var(--color-1), var(--bg));
+}
+
+.palette__shade {
+ // background: var(--color, var(--color-one));
+  width: 41px;
+}
+
+.slider-thumb {
+  background: transparent;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+   // background: 'hsl(%s, 25%, 50%)' % var(--hue, 0);
+    height: 24px;
+    width: 24px;
+    //border: '2px solid hsl(%s, 25%, 50%)' % var(--hue, 0)
+  }
+
+  &:active {
+  //  border: '2px solid hsl(%s, 25%, 50%)' % var(--hue, 0);
+  }
+}
+
+.slider-track {
+  height: 10px;
+  width: 100%;
+  background: hsl(0, 0%, 90%);
+  border: 1px solid hsl(0, 0%, 70%);
+}
+
+.labelContainer {
+
+    height: 35px;
+}
+
+
+}

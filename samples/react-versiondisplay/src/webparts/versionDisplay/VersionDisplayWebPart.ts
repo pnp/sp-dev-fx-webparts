@@ -3,6 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -17,11 +18,8 @@ import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/
 const requirePackage: any = require("../../../config/package-solution.json");
 
 // Static import
-import * as packageSolution from '../../../config/package-solution.json';
-
-
+const packageSolution: any = require("../../../config/package-solution.json");
 export interface IVersionDisplayWebPartProps {
-  description: string;
 }
 
 export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersionDisplayWebPartProps> {

@@ -2,17 +2,16 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneSlider
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'ImageGalleryWebPartStrings';
 import ImageGallery from './components/ImageGallery';
 import { IImageGalleryProps } from './components/IImageGalleryProps';
 import ConfigureWebPart from './components/ConfigureWebPart/ConfigureWebPart';
-import { sp } from '@pnp/sp';
 import { ListService } from '../../Services/ListService';
 
 export interface IImageGalleryWebPartProps {
@@ -22,17 +21,12 @@ export interface IImageGalleryWebPartProps {
 }
 
 export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGalleryWebPartProps> {
-  private listService: ListService
-
+  private listService: ListService;
 
   protected async onInit(): Promise<void> {
     const _ = await super.onInit();
 
     this.listService = new ListService(this.context.spHttpClient);
-
-    sp.setup({
-      spfxContext: this.context
-    });
   }
 
   public render(): void {
@@ -43,17 +37,15 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
     //   }
     // );
 
-
     let element: any;
 
     if (this.properties.imageLibrary && this.properties.pageSize) {
-
       element = React.createElement<IImageGalleryProps>(
         ImageGallery,
         {
           listName: this.properties.imageLibrary,
           context: this.context,
-          siteUrl: this.context.pageContext.site.absoluteUrl,
+          siteUrl: this.context.pageContext.web.absoluteUrl,
           pageSize: this.properties.pageSize
 
         }
@@ -72,7 +64,6 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
       );
     }
 
-
     ReactDom.render(element, this.domElement);
   }
 
@@ -83,6 +74,7 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
+
   protected get disableReactivePropertyChanges(): boolean {
     return true;
   }
@@ -91,7 +83,6 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
     return {
       pages: [
         {
-
           groups: [
             {
               groupName: strings.BasicGroupName,

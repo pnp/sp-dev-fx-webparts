@@ -1,47 +1,44 @@
-import { ITerms, IOption } from "../../interfaces";
+import { ITerms, ICMMDDropdownOption } from "../../interfaces";
 import { MSGraph } from "./MSGraph";
 import { IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
+import { find } from '@microsoft/sp-lodash-subset';
 
 export class MMDService {
 
     private static _sessionStorageKey: string = "CMMD_Options";
     private static _logSource: string = "Cascading MMD Service -";
 
-    public static async GetTermsAsDropdownOptions(apiUrl: string, parent: string, tryFromCache: boolean): Promise<IDropdownOption[]> {
-
-        let options: IDropdownOption[] = [];
+    public static async GetTermsAsDropdownOptions(apiUrl: string, selectProperties: string[], parent: string, tryFromCache: boolean): Promise<ICMMDDropdownOption[]> {
         if (tryFromCache) {
-            let optionsFromCache: IOption[] = this._fetchFromSessionStorge();
+            let optionsFromCache: ICMMDDropdownOption[] = this._fetchFromSessionStorge();
+            
             if (optionsFromCache.length) {
                 let requiredOptionsFromCache = optionsFromCache.filter(o => o.parent == parent);
                 if (requiredOptionsFromCache.length) {
-                    options = requiredOptionsFromCache.map(r => ({ key: r.key, text: r.text }));
-                    return options;
+                    return requiredOptionsFromCache;
                 }
             }
         }
         //Get data using Graph
-        return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, parent);
+        return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, selectProperties, parent);
     }
 
-    private static async _getTermsAsDropdownOptionsUsingGraph(apiUrl: string, parent: string): Promise<IDropdownOption[]> {
+    private static async _getTermsAsDropdownOptionsUsingGraph(apiUrl: string, selectProperties: string[], parent: string): Promise<ICMMDDropdownOption[]> {
         try {
-            let terms: ITerms = await MSGraph.Get(apiUrl, "beta");
+            let terms: ITerms = await MSGraph.Call("get", apiUrl, "beta", {}, selectProperties);
             if (terms.value) {
-                //* Set key as description of the term
-                //* Description will be of the format latitude;longitude
-                //* This will be used to render maps
-                const options: IDropdownOption[] = terms.value.map(t => ({
-                    key: t.descriptions[0] ? t.descriptions[0].description : t.id,
-                    text: t.labels[0].name
-                }));
-                let optionsToStoreInCache: IOption[] = options.map(o => ({
-                    key: o.key.toString(),
-                    text: o.text,
+                const options: ICMMDDropdownOption[] = terms.value.map(t => ({
+                    key: t.id,
+                    text: t.labels[0].name,
+                    data: {
+                        latitude: Number(find(t.properties, p => p.key === "latitude")?.value) ?? null,
+                        longitude: Number(find(t.properties, p => p.key === "longitude")?.value) ?? null,
+                    },
                     parent
                 }));
-                let optionsFromCache: IOption[] = this._fetchFromSessionStorge();
-                optionsToStoreInCache = [...optionsFromCache, ...optionsToStoreInCache];
+
+                let optionsFromCache: ICMMDDropdownOption[] = this._fetchFromSessionStorge();
+                let optionsToStoreInCache: ICMMDDropdownOption[] = [...optionsFromCache, ...options];
                 window.sessionStorage.setItem(this._sessionStorageKey, JSON.stringify(optionsToStoreInCache));
                 console.debug("%s Data added in cache.", this._logSource);
                 return options;
@@ -55,8 +52,8 @@ export class MMDService {
 
     }
 
-    private static _fetchFromSessionStorge(): IOption[] {
-        let result: IOption[] = [];
+    private static _fetchFromSessionStorge(): ICMMDDropdownOption[] {
+        let result: ICMMDDropdownOption[] = [];
         let stringResult: string = window.sessionStorage.getItem(this._sessionStorageKey);
         if (stringResult) {
             try {

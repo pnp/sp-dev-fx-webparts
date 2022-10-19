@@ -23,9 +23,6 @@ const SPFieldRichTextEdit: React.SFC<ISPFormFieldProps> = (props) => {
     tinymce.init({});
     const { Name, RichTextMode } = props.fieldSchema;
     const value = props.value ? props.value : '';
-    if (tinymce.editors[`Editor-${Name}`] !== undefined) {
-        tinymce.editors[`Editor-${Name}`].setContent(value);
-    }
 
     const editorConfig = {
         "relative_urls": false, "convert_urls": false, "remove_script_host": false,
@@ -39,8 +36,8 @@ const SPFieldRichTextEdit: React.SFC<ISPFormFieldProps> = (props) => {
     return <Editor
         id={`Editor-${Name}`}
         init={editorConfig}
-        initialValue={props.value}
-        onChange={(event) => { props.valueChanged(event.target.getContent()); }}
+        value={value}
+        onEditorChange={props.valueChanged}
     />;
 };
 

@@ -24,7 +24,7 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.11.0",
+    "version": "1.14.0",
     "libraryName": "staff-directory",
     "libraryId": "89d7389c-be48-41e9-9f72-5eb9a1099c1f",
     "packageManager": "npm",

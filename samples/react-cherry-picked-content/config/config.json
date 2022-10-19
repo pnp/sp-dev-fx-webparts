@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cherry-picked-content-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cherryPickedContent/CherryPickedContentWebPart.js",
+          "manifest": "./src/webparts/cherryPickedContent/CherryPickedContentWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CherryPickedContentWebPartStrings": "lib/webparts/cherryPickedContent/loc/{locale}.js"
+  }
+}

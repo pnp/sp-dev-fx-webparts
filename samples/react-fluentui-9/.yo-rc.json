@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "react-fluentui-9",
+    "libraryId": "d955a989-7441-475a-b4eb-ff132968b3c5",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-fluentui-9",
+    "solutionShortDescription": "react-fluentui-9 description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

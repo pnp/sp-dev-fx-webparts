@@ -1,0 +1,16 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.copyViews {
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }  
+}
+
+.fieldSetLegend {
+  background-color: "[theme:themePrimary, default: lime]";
+  color: "[theme:white, default: #ffffff]";
+  padding: 3px 6px;
+}

@@ -2,10 +2,17 @@
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
         "name": "react-versiondisplay-client-side-solution",
-        "id": "826341a0-9c23-4f9f-9ed0-bc44ab43e2f6",
-        "version": "1.0.0.0",
+        "id": "f5045258-1b8e-4fb4-9609-f55c842deb6f",
+        "version": "2.0.0.0",
         "includeClientSideAssets": true,
-        "isDomainIsolated": false
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.13.1"
+        }
     },
     "paths": {
         "zippedPackage": "solution/react-versiondisplay.sppkg"

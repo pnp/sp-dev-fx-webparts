@@ -3,9 +3,36 @@
   "solution": {
     "name": "image-gallery-client-side-solution",
     "id": "876cbbe8-6974-4676-9da3-5c190ac8164f",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "image-gallery description"
+      },
+      "longDescription": {
+        "default": "image-gallery description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "image-gallery Feature",
+        "description": "The feature that activates elements of the image-gallery solution.",
+        "id": "afeca86e-a632-48ce-a9eb-b5a4a3e94d85",
+        "version": "1.0.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/image-gallery.sppkg"

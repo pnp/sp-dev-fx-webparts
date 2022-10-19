@@ -9,7 +9,7 @@
       "identify/follow user key documents from all Tenant and easily access them in Modern Pages and Microsoft Teams"
     ],
     "creationDateTime": "2021-06-21",
-    "updateDateTime": "2022-01-13",
+    "updateDateTime": "2022-05-17",
     "products": [
       "SharePoint"
     ],
@@ -27,7 +27,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-follow-document/Assets/FollowDocumentSample1.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-follow-document/assets/FollowDocumentSample1.gif",
         "alt": "react-follow-document"
       },
       {
@@ -42,6 +42,11 @@
         "gitHubAccount": "aaclage",
         "pictureUrl": "https://github.com/aaclage.png",
         "name": "André Lage"
+      },
+      {
+        "gitHubAccount": "Maya-Mostafa",
+        "pictureUrl": "https://github.com/Maya-Mostafa.png",
+        "name": "Mai Mostafa"
       }
     ],
     "references": [

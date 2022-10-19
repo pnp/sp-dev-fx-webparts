@@ -17,11 +17,12 @@ But you can synchronize the Birthdays list with other applications HR Systems, o
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20|%20v12-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -35,13 +36,13 @@ Existing list in tenant root site, with the Title "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
 --------------------|----|--------|----------
-JobTitle| Text| no|
-Birthday| DateTime | true|
-userAADGUID| Text| no | required if used Azure Function to get Birthdays from AAD
-Title| Text| true
-email| Text| true
+JobTitle | Text| no
+Birthday | DateTime | true
+userAADGUID | Text | no | required if used Azure Function to get Birthdays from AAD
+Title | Text | true
+email | Text | true
 
-> **IMPORTANT:** After create a column Index on column "Birthday"
+> **IMPORTANT:** Create index on column "Birthday".
 
 ## Solution
 
@@ -57,6 +58,7 @@ Version|Date|Comments
 1.0.0|November 6, 2018|Initial release
 1.1.0|July 23, 2019 | new version
 2.0.0|June 16, 2021 | Upgraded to SPFx 1.12.1
+3.0.0|April 7, 2022 | Upgraded to SPFx 1.14.0
 
 ## Minimal Path to Awesome
 
@@ -68,6 +70,8 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - Add and Deploy Package to AppCatalog
   - Go to API Management - from SharePoint Admin Center new experience,  and Approve the Permission Require to Use Graph API SCOPES
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 
 ## Features

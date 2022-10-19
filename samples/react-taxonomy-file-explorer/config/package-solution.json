@@ -7,12 +7,31 @@
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
+      "name": "Markus Moeller",
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.13.1"
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-taxonomy-file-explorer description"
+      },
+      "longDescription": {
+        "default": "react-taxonomy-file-explorer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-taxonomy-file-explorer Feature",
+        "description": "The feature that activates elements of the react-taxonomy-file-explorer solution.",
+        "id": "9804fbff-b443-42e1-86f4-fc261980d916",
+        "version": "1.0.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-taxonomy-file-explorer.sppkg"

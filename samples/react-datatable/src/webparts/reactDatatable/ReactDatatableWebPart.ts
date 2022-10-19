@@ -141,7 +141,7 @@ export default class ReactDatatableWebPart extends BaseClientSideWebPart<IReactD
                   baseTemplate: 100,
                   onPropertyChange: this.onChangeProperty.bind(this),
                   properties: this.properties,
-                  context: this.context,
+                  context: this.context as any,
                   onGetErrorMessage: null,
                   key: 'listPickerFieldId',
                 }),
