@@ -9,7 +9,7 @@ import { sp} from "@pnp/sp";
 import "@pnp/sp/webs";
 import  "@pnp/sp/user-custom-actions";
 import  "@pnp/sp/presets/all";
-import {TypedHash} from "@pnp/common";
+import {ITypedHash} from "@pnp/common";
 import { IUserCustomActionAddResult,IUserCustomActionUpdateResult,IUserCustomAction } from '@pnp/sp/user-custom-actions';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
@@ -53,7 +53,7 @@ export interface IAddJsCssReferenceState {
 
 export default class AddJsCssReference extends React.Component<IAddJsCssReferenceProps, IAddJsCssReferenceState> {
 
-  
+
   private viewFields: any[] = [
     {
       name: "Type",
@@ -67,7 +67,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
             <Stack horizontal  tokens={{childrenGap:20}}>
             <Icon iconName="Edit" className={"ms-IconExample" + styles.customicons}   onClick={()=> this.editClicked(item,index)} />
             <Icon iconName="Delete" className={"ms-IconExample" + styles.customicons}   onClick={()=> this.deleteClicked(item,index)} />
-            
+
             {/* <i className={"ms-Icon ms-Icon--Edit " + styles.customicons} onClick={()=> this.editClicked(item,index)} aria-hidden="true"></i>
             <i className={"ms-Icon ms-Icon--Delete " + styles.customicons} onClick={()=> this.deleteClicked(item,index)} aria-hidden="true"></i> */}
             </Stack>
@@ -92,14 +92,14 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     }
       // maxWidth:800
     }
-    
+
 
   ];
 
 
   constructor(props: IAddJsCssReferenceProps,state:IAddJsCssReferenceProps) {
     super(props);
-    this.state = { 
+    this.state = {
       disableRegisterButton:false,
       disableRemoveButton:false,
       jsfiles:[],
@@ -126,7 +126,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
 
 
   public render(): React.ReactElement<IAddJsCssReferenceProps> {
-    
+
     return (
       <React.Fragment>
 
@@ -141,7 +141,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
           <div className={ styles.column }>
             <span className={ styles.title }>SPFx JS CSS References WebPart</span>
             <p className={ styles.subTitle }>This webpart can be used to add reference to custom js files and css files via SPFx extension application customizer.</p>
-          
+
           </div>
           <div className={ styles.row }>
           <div className={ styles.column }>
@@ -156,15 +156,15 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
               We found you already have some custom js and css files references added via this customizer. Feel free to Edit or Remove references.
               </MessageBar>
           }
-          
-          
+
+
           <div id="jsfiles">
-          <Separator></Separator>    
+          <Separator></Separator>
           <Stack horizontal styles={stackStyles} tokens={stackTokens}>
                 <Text theme={theme}>Javascript Files</Text>
                 <CommandBarButton iconProps={{iconName: 'Add'}} text="Add JS Link" onClick={()=>this.openAddJSDailog()} />
           </Stack>
-          <Separator></Separator>    
+          <Separator></Separator>
               {/* <PrimaryButton text="Add New Item" }   /> */}
 
               {this.state.jsfiles.length ===  0  &&
@@ -172,7 +172,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
                 <MessageBar>
                 No  References Found.
                 <Link href="#" onClick={()=>this.openAddJSDailog()}>
-                  Click here 
+                  Click here
                 </Link>
                 <Text> to add new.</Text>
               </MessageBar>
@@ -202,7 +202,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
                         }}
                       >
 
-                      <TextField required onChange={evt => this.updateJSValue(evt)} value={this.state.currentjsRef} label="URL"  resizable={false} />   
+                      <TextField required onChange={evt => this.updateJSValue(evt)} value={this.state.currentjsRef} label="URL"  resizable={false} />
                         <DialogFooter>
                           <PrimaryButton onClick={()=>this._addJsReference()} text="Add" />
                           <DefaultButton onClick={this._closeJSDialog} text="Cancel" />
@@ -216,13 +216,13 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
                 <CommandBarButton iconProps={{iconName: 'Add'}} text="Add CSS Link" onClick={()=>this.openAddCSSDailog()} />
               </Stack>
               {/* <PrimaryButton text="Add New Item" onClick={()=>this.openAddCSSDailog()}  /> */}
-              <Separator></Separator>   
+              <Separator></Separator>
               {this.state.cssfiles.length ===  0  &&
               <React.Fragment>
                 <MessageBar>
                 No  References Found.
                 <Link href="#" onClick={()=>this.openAddCSSDailog()}>
-                  Click here 
+                  Click here
                 </Link>
                  <Text> to add new.</Text>
               </MessageBar>
@@ -230,15 +230,15 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
               </React.Fragment>
               }
               {this.state.cssfiles.length > 0 &&
-                
+
               <ListView
                 items={this.state.cssfiles}
                 viewFields={this.viewFields}
                 // iconFieldName="ServerRelativeUrl"
-                
+
                 // selectionMode={SelectionMode.multiple}
                 // selection={this._getSelection}
-                
+
                 />
               }
               <Dialog
@@ -257,7 +257,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
                         }}
                       >
 
-                      <TextField   required onChange={evt => this.updateCSSValue(evt)} value={this.state.currentcssRef} label="URL"   />   
+                      <TextField   required onChange={evt => this.updateCSSValue(evt)} value={this.state.currentcssRef} label="URL"   />
                         <DialogFooter>
                           <PrimaryButton onClick={()=>this._addCSSReference()} text="Add" />
                           <DefaultButton onClick={this._closeCSSDialog} text="Cancel" />
@@ -291,9 +291,9 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
   }
 
   public componentDidMount() {
-    
+
   this.checkPermisson();
-    
+
   }
 
 
@@ -306,10 +306,10 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     if(perms2){
       this.getCustomAction();
     }
-    
+
   }
 
- 
+
   private  _registerClicked(): void {
     this.setCustomAction();
   }
@@ -352,7 +352,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
         editIndex:index
       });
       }
-    
+
   }
 
   private deleteClicked (item,index){
@@ -385,7 +385,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
         FilePath:this.state.currentjsRef,
         Type: "js"
       };
-      
+
       let currentitems = this.state.jsfiles.map((x) => x);
       currentitems.push(item);
       currentitems[this.state.jsfiles.length] = item;
@@ -404,7 +404,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
       isEdit:false,editIndex:-1});
 
     }
-    
+
   }
 
   private _addCSSReference (){
@@ -414,7 +414,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
             FilePath:this.state.currentcssRef,
             Type:"css"
           };
-          
+
           let currentitems = this.state.cssfiles.map((x) => x);
           currentitems.push(item);
           currentitems[this.state.cssfiles.length] = item;
@@ -428,9 +428,9 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
         FilePath:this.state.currentcssRef,
         Type:"css"
       };
-      
+
       let currentitems = this.state.cssfiles.map((x) => x);
-      
+
       currentitems[this.state.editIndex] = item;
       this.setState({cssfiles:currentitems,
         hideCSSDailog:true,
@@ -438,7 +438,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
       editIndex:-1,isEdit:false});
 
     }
-    
+
   }
   private _closeJSDialog = (): void => {
     this.setState({ hideJSDailog: true });
@@ -467,14 +467,14 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
       this.setState({jsfiles:jsfileArray,cssfiles:cssfileArray});
 
     }
-    
+
 
   }
 
   protected async setCustomAction() {
     try {
-     
-    const payload: TypedHash<string> = {
+
+    const payload: ITypedHash<string> = {
       "Title": CustomActionTitle,
       "Description": description,
       "Location": 'ClientSideExtension.ApplicationCustomizer',
