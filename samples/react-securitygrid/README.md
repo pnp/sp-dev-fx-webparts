@@ -80,7 +80,7 @@ The admin can select lists and libraries below to have them included/excluded fr
 
 This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/russgove/SPSecurity.
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

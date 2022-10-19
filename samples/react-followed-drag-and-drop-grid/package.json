@@ -29,7 +29,7 @@
     "@microsoft/sp-module-interfaces": "1.13.0",
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
     "gulp": "~4.0.2",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "@types/webpack-env": "1.13.1"
   }
 }

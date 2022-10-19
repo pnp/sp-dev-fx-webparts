@@ -9,7 +9,7 @@ You can also find out how you can use React Hooks to manage the state of your ap
 ![react-provisioning-manager](./assets/screenshot.gif)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 

@@ -9,7 +9,7 @@
       "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user\u0027s Teams and, optionally, the channels in each Team."
     ],
     "creationDateTime": "2019-06-14",
-    "updateDateTime": "2019-06-14",
+    "updateDateTime": "2022-02-21",
     "products": [
       "SharePoint"
     ],
@@ -20,14 +20,14 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.8.2"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component-with-data-fetch/Screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component-with-data-fetch/assets/Screenshot.png",
         "alt": "React Functional Component web part with data fetch"
       }
     ],
@@ -38,6 +38,11 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/10207194?s=460\u0026v=4",
         "name": "Bill Ayers",
         "twitter": "SPDoctor"
+      },
+      {
+        "gitHubAccount": "DonKirkham",
+        "pictureUrl": "https://github.com/DonKirkham.png",
+        "name": "Don Kirkham"
       }
     ],
     "references": [

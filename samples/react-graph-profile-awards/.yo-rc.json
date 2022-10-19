@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "version": "1.15.0-beta.1",
+    "libraryName": "react-graph-profile-awards",
+    "libraryId": "a87cd7b4-ccbe-47ce-9ff4-4f2f1a686f8c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-graph-profile-awards",
+    "solutionShortDescription": "react-graph-profile-awards description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

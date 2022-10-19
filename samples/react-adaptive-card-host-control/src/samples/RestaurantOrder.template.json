@@ -1,0 +1,68 @@
+{ 
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "${FormInfo.title}",
+            "size": "Large",
+            "wrap": true,
+            "weight": "Bolder"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "EntreeSelectVal",
+            "label": "${Order.questions[0].question}",
+            "style": "filtered",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "placeholder": "Please choose",
+            "choices": [
+                {
+                    "$data": "${Order.questions[0].items}",
+                    "title": "${choice}",
+                    "value": "${value}"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "SideVal",
+            "label": "${Order.questions[1].question}",
+            "style": "filtered",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "placeholder": "Please choose",
+            "choices": [
+                {
+                    "$data": "${Order.questions[1].items}",
+                    "title": "${choice}",
+                    "value": "${value}"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "DrinkVal",
+            "label": "${Order.questions[2].question}",
+            "style": "filtered",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "placeholder": "Please choose",
+            "choices": [
+                {
+                    "$data": "${Order.questions[2].items}",
+                    "title": "${choice}",
+                    "value": "${value}"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Place Order"
+        }
+    ]
+}

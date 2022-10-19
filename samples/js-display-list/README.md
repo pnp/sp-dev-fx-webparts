@@ -28,6 +28,7 @@ This simplistic sample web part demonstrates the use of JavaScript in a SharePoi
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") ![Local Workbench (Partially)](https://img.shields.io/badge/Local%20Workbench-Partially-yellow.svg "Only basic functionality works on local workbench") ![Hosted Workbench](https://img.shields.io/badge/Hosted%20Workbench-Fully-green.svg "Hosted workbench fully supported")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Applies to
@@ -63,6 +64,8 @@ Version|Date|Comments
   - `gulp serve`
   - Open the *workbench* on your Office 365 Developer tenant
       - Basic functionality can be tested locally, data is only shown when used in context of SharePoint
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

@@ -1,9 +1,11 @@
 import { useReducer, useEffect, useState } from 'react';
-import { sp, PermissionKind } from '@pnp/sp/presets/all';
+import { PermissionKind, spfi, SPFx } from '@pnp/sp/presets/all';
 import { ErrorHelper, LogHelper, ListTitles, PageFields } from '@src/utilities';
 import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { INavLink } from 'office-ui-fabric-react';
 
 // state that we track
 interface PagesState {
@@ -11,6 +13,7 @@ interface PagesState {
   userCanManagePages: boolean;
   ancestorPages: IPage[];
   childrenPages: IPage[];
+  tree: INavLink | null;
   getRequest: GetRequest;
 }
 
@@ -26,7 +29,8 @@ interface PageApi {
 interface PageTreePayloadAction extends Action {
   payload: {
     childgrenPages: IPage[],
-    ancestorPages: IPage[]
+    ancestorPages: IPage[],
+    tree: INavLink
   };
 }
 interface ParentPageColumnExistAction extends Action {
@@ -55,6 +59,7 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
         ...state,
         childrenPages: arrayAction.payload.childgrenPages,
         ancestorPages: arrayAction.payload.ancestorPages,
+        tree: arrayAction.payload.tree,
         getRequest: { isLoading: false, hasError: false, errorMessage: "" }
       };
     case ActionTypes.GET_PAGES_ERRORED:
@@ -83,14 +88,17 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
   }
 }
 
-export function usePageApi(currentPageId: number, pageEditFinished: boolean): PageApi {
+export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext, treeTop: number, treeExpandTo: number): PageApi {
   const [pagesState, pagesDispatch] = useReducer(pagesReducer, {
     parentPageColumnExists: true,
     userCanManagePages: false,
     ancestorPages: [] = [],
     childrenPages: [] = [],
     getRequest: { isLoading: false, hasError: false, errorMessage: "" },
+    tree: null
   });
+
+  const sp = spfi().using(SPFx(context));
 
   // currentPageId is a dependency only because it can change when on the workbench, otherwise it really wouldn't change while on a page
   useEffect(() => {
@@ -126,8 +134,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
         PageFields.PARENTPAGELOOKUP
       )
       .top(5000)
-      .orderBy(PageFields.TITLE, true)
-      .get()
+      .orderBy(PageFields.TITLE, true)()
       .catch(e => {
         ErrorHelper.handleHttpError('getPages', e);
         pagesDispatch({ type: ActionTypes.GET_PAGES_ERRORED });
@@ -141,11 +148,12 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
 
     const ancestorPages: IPage[] = buildPageAncestors(pages, currentPageId).reverse();
     const childrenPages: IPage[] = buildPageChildren(pages, currentPageId);
+    const treeLink: INavLink = buildHierarchy(pages, currentPageId);
 
     // dispatch the GET_ALL action
     pagesDispatch({
       type: ActionTypes.GET_PAGES,
-      payload: { childgrenPages: childrenPages, ancestorPages: ancestorPages },
+      payload: { childgrenPages: childrenPages, ancestorPages: ancestorPages, tree: treeLink },
     } as PageTreePayloadAction);
   }
 
@@ -153,8 +161,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
     LogHelper.verbose('usePageApi', 'parentPageExists', ``);
 
     let parentPage = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
-      .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)
-      .get()
+      .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)()
       .catch(e => {
         // swallow the exception we'll handle below
       });
@@ -185,11 +192,10 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
   async function addParentPageFieldToSitePages(): Promise<void> {
     LogHelper.verbose('usePageApi', 'addParentPageFieldToSitePages', ``);
 
-    let list = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)
-      .get();
+    let list = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)();
 
     let lookup = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
-      .addLookup(PageFields.PARENTPAGELOOKUP, list.Id, PageFields.TITLE)
+      .addLookup(PageFields.PARENTPAGELOOKUP, { LookupListId: list.Id, LookupFieldName: PageFields.TITLE })
       .catch(e => {
         return null;
         ErrorHelper.handleHttpError('canUserUpdateSitePages', e);
@@ -247,6 +253,21 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
     return childPages;
   }
 
+  function buildHierarchy(allPages: IPage[], pageId: number): INavLink {
+    function recurse(id: number, l: number, ancestorPages: IPage[]): INavLink {
+      var item: IPage = allPages.filter(i => i.id === id)[0];
+
+      var links: INavLink[] = [];
+      links = links.concat(allPages.filter(i => i.parentPageId === id).map(it => recurse(it.id, l ? l + 1 : l, ancestorPages)));
+
+      return { name: item.title, url: item.url, key: item.id.toString(), links: links, isExpanded: treeExpandTo ? (treeExpandTo >= l) : (ancestorPages.find(f => f.id === id) ? true : false) };
+    }
+
+    const ancestorPages: IPage[] = buildPageAncestors(allPages, pageId).reverse();
+
+    return recurse(treeTop ? treeTop : ancestorPages[0].id, treeExpandTo ? 1 : treeExpandTo, ancestorPages);
+  }
+
   const addParentPageField = () => {
     addParentPageFieldToSitePages();
   };
@@ -262,6 +283,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean): Pa
         hasError: pagesState.getRequest.hasError,
         errorMessage: pagesState.getRequest.errorMessage
       },
+      tree: pagesState.tree
     },
     addParentPageField
   };

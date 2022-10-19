@@ -13,7 +13,6 @@ import {
 import * as strings from 'BirthdaysWebPartStrings';
 import Birthdays from './components/Birthdays';
 import { IBirthdaysProps } from './components/IBirthdaysProps';
-import { Version } from '@microsoft/sp-core-library';
 
 export interface IBirthdaysWebPartProps {
   title: string;

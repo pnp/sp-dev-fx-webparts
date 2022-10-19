@@ -34,6 +34,7 @@ This is a sample project that contains a web part which makes use of the PnP SPF
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-yellow.svg "This solution requires access to resources on the hosted site collection")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Which PnP SPFx controls are being used in this sample?
 
@@ -65,6 +66,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 To test out this web part, you need to have a library with a managed metadata field. In my case, I made use of a field called `Country`.
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ![Documents](./assets/documents.png)
 

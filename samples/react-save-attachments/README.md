@@ -18,6 +18,7 @@ This SPFx Outlook Add-In lets users save any email attachments to a OneDrive fol
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Partially](https://img.shields.io/badge/Hosted%20Workbench-Partially-yellow.svg "Designed to work in Outlook, but will display sample attachments while in workbench")
 ![Outlook Web Access Compatible ](https://img.shields.io/badge/Outlook%20Web%20Access-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
 ## Features

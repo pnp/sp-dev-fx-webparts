@@ -9,7 +9,7 @@
       "This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination."
     ],
     "creationDateTime": "2019-03-01",
-    "updateDateTime": "2019-03-01",
+    "updateDateTime": "2022-05-23",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.6.0"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [

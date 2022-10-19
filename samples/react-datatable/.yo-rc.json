@@ -1,8 +1,9 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.11.0",
+    "version": "1.14.0",
     "libraryName": "react-datatable",
     "libraryId": "35299377-f8c8-4721-bd53-05602fc0c4ee",
     "packageManager": "npm",

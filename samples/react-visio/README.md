@@ -16,6 +16,7 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to files on your SharePoint tenant")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -55,6 +56,8 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 - open the file on the Visio web client and copy the Url from the browser
 - navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/sites/test/_layouts/15/workbench.aspx
 - add the url on the web part properties field and the EmbeddedSession will start and display the diagram
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

@@ -30,7 +30,7 @@
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
     "@voitanos/jest-preset-spfx-react16": "^1.1.0",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "gulp-sequence": "^1.0.0",
     "jest": "^23.6.0"
   }

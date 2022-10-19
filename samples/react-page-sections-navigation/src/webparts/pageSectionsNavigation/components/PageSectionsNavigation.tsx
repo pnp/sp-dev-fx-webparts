@@ -94,12 +94,12 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
 
     const navItems: JSX.Element[] = this.props.anchors.map((anchor) => {
       return <li className={css(styles.navItem, 'psn-navItem')}>
-        <a className={css(styles.navItemLink, 'psn-navItemLink')} onClick={this._onClick.bind(this, anchor)}>{anchor.title}</a>
+        <a className={css(styles.navItemLink, 'psn-navItemLink')} onClick={() => { this._onClick(anchor); }}>{anchor.title}</a>
       </li>;
     });
     if (homeItem) {
       navItems.unshift(<li className={css(styles.navItem, 'psn-navItem')}>
-        <a className={css(styles.navItemLink, 'psn-navItemLink')} onClick={this._onHomeClick.bind(this)}>{homeItem}</a>
+        <a className={css(styles.navItemLink, 'psn-navItemLink')} onClick={this._onHomeClick}>{homeItem}</a>
       </li>);
     }
 
@@ -128,7 +128,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     );
   }
 
-  private _onHomeClick() {
+  private _onHomeClick = () => {
     // home click
     if (!this._scrollableParent) {
       this._initScrollParent();
@@ -139,7 +139,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     });
   }
 
-  private _onClick(anchor: IAnchorItem, index: number) {
+  private _onClick = (anchor: IAnchorItem) => {
 
     // click on one of anchor's nav items
     if (anchor.domElement) {
@@ -154,7 +154,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
    * creates layer element to host the navigation outside of normal DOM hierarchy
    * @param position - current position value
    */
-  private _getLayerElement(position?: NavPosition): HTMLElement | undefined {
+  private _getLayerElement = (position?: NavPosition): HTMLElement | undefined => {
     const host = this._getHost(position);
 
     if (host !== this._host) {
@@ -180,7 +180,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     return this._layerElement;
   }
 
-  private _removeLayerElement(): void {
+  private _removeLayerElement = (): void => {
     if (this._layerElement) {
 
       const parentNode = this._layerElement.parentNode;
@@ -195,7 +195,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
    * gets host DOM element based on position property
    * @param position - current position value
    */
-  private _getHost(position?: NavPosition): Node | undefined {
+  private _getHost = (position?: NavPosition): Node | undefined => {
 
     const navPos = position || this.props.position;
 
@@ -203,7 +203,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     if (!doc) {
       return undefined;
     }
-    
+
     let hostNode: Node;
 
     if (navPos === 'section') {
@@ -216,7 +216,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     return hostNode;
   }
 
-  private _initScrollParent() {
+  private _initScrollParent = () => {
     if (this._sectionHostSpanRef.current) {
       this._scrollableParent = Scrollparent(this._sectionHostSpanRef.current);
     }

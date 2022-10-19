@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-graph-profile-awards-client-side-solution",
+    "id": "a87cd7b4-ccbe-47ce-9ff4-4f2f1a686f8c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0-beta.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-graph-profile-awards description"
+      },
+      "longDescription": {
+        "default": "react-graph-profile-awards description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-graph-profile-awards Feature",
+        "description": "The feature that activates elements of the react-graph-profile-awards solution.",
+        "id": "bd1abcc5-5e4c-4e5b-972b-f0758adf4413",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-graph-profile-awards.sppkg"
+  }
+}

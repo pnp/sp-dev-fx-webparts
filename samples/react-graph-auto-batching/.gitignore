@@ -31,3 +31,10 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+<<<<<<< HEAD
+=======
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem
+>>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d

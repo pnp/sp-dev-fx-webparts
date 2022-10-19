@@ -27,6 +27,7 @@ Sample Todo web part demonstrating how you can utilize [Vue](https://vuejs.org/v
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -50,6 +51,7 @@ Version|Date|Comments
 0.0.5|November 15, 2017|Added data provider that demonstrates the CRUD operations
 0.0.6|December 11, 2018|Updated sample to SPFx 1.4 and Vue 2.5.x
 0.0.7|April 28, 2020|Updated sample to SPFx 1.10 and Vue 2.6.x, fixed issues with batch loader
+0.0.8|April 4, 2022|Replace node sass with sass
 
 ## Minimal Path to Awesome
 
@@ -57,6 +59,8 @@ Version|Date|Comments
 - In the command line run:
   - `npm i`
   - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 

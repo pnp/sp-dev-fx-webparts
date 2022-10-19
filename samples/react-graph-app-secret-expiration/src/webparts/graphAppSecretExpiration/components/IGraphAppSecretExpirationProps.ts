@@ -1,7 +1,7 @@
-import { MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
 
 export interface IGraphAppSecretExpirationProps {
-  graphClient: MSGraphClient;
+  graphClient: MSGraphClientV3;
   groupByColumn: string;
   expiringSoon: boolean;
   displaySampleData: boolean;

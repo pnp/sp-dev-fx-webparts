@@ -55,7 +55,7 @@ export default class DynamicBundlingExampleWebPart extends BaseClientSideWebPart
   protected async dynamicallyImportFunctions() {
     const importedTS = await import(
       './DynamicImportedFunctions'
-    )
+    );
     importedTS.default.executeDynamicLoad();
   }
 
@@ -63,7 +63,7 @@ export default class DynamicBundlingExampleWebPart extends BaseClientSideWebPart
   protected async dynamicallyImportFunctionsJQuery() {
     const importedJQueryTS = await import(
       './DynamicImportedFunctionsJQuery'
-    )
+    );
     importedJQueryTS.default.executeDynamicLoadJQuery();
     importedJQueryTS.default.addToDOM(this.domElement);
   }

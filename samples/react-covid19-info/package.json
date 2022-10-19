@@ -31,7 +31,7 @@
     "react-chartkick": "^0.4.0",
     "react-countup": "^4.3.3",
     "react-dom": "16.8.5",
-    "recharts": "^1.8.5"
+    "recharts": "^2.1.14"
   },
   "resolutions": {
     "@types/react": "16.8.8"

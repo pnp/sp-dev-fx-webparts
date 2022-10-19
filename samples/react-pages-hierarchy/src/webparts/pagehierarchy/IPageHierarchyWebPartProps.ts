@@ -4,4 +4,6 @@ export default interface IPageHierarchyWebPartProps {
   title: string;
   debugPageId?: number;
   pagesToDisplay: PagesToDisplay;
+  treeFrom: number;
+  treeExpandTo: number
 }

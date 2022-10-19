@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "complex-card-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/complexCard/ComplexCardAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/complexCard/ComplexCardAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ComplexCardAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/complexCard/loc/{locale}.js"
+  }
+}

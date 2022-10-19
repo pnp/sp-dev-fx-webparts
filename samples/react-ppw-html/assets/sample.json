@@ -1,0 +1,49 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-ppw-html",
+        "source": "pnp",
+        "title": "Property Pane Wrapper for HTML Controls",
+        "shortDescription": "Showcases the use of the Property Pane Wrap to embed HTML controls in the SPFx Property Pane",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppw-html",
+        "longDescription": [
+            "Showcases the use of the Property Pane Wrap to embed HTML controls in the SPFx Property Pane"
+        ],
+        "creationDateTime": "2022-02-10",
+        "updateDateTime": "2022-02-10",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.14"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppw-html/assets/React-PPW-HTML-Sample.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "PathToSharePoint",
+                "pictureUrl": "https://github.com/PathToSharePoint.png",
+                "name": "Christophe Humbert"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

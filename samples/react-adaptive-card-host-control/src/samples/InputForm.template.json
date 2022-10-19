@@ -1,0 +1,72 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.0",
+	"body": [
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"width": 2,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "${title}",
+							"weight": "Bolder",
+							"size": "Medium",
+							"wrap": true,
+							"style": "heading"
+						},
+						{
+							"type": "TextBlock",
+							"text": "${body}",
+							"isSubtle": true,
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "${disclaimer}",
+							"isSubtle": true,
+							"wrap": true,
+							"size": "Small"
+						},
+						{
+							"type": "Container",
+							"$data": "${properties}",
+							"items": [
+								{
+									"type": "TextBlock",
+									"text": "${title}",
+									"wrap": true
+								},
+								{
+									"type": "Input.Text",
+									"id": "${if(title == 'Your Name', 'myName', if(title == 'Your email', 'myEmail', 'myTel'))}",
+									"placeholder": "${placeholder}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": 1,
+					"items": [
+						{
+							"type": "Image",
+							"url": "${thumbnailUrl}",
+							"size": "auto"
+						}
+					]
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Submit"
+		}
+	]
+}

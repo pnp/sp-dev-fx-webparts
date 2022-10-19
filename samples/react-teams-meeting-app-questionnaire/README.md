@@ -2,13 +2,12 @@
 
 ## Summary
 
-SPFx v1.12.1 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.  
+SPFx v1.12.1 and later support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.  
 
 ![Web Part Preview](./assets/web-part-preview.gif)
 
 The Questionnaire meeting app displays the questions from attendees as pre-meeting app experience.
 ![Questionnaire Preview](./assets/questionnaire-preview.png)
-
 
 ### NPM Packages Used
 
@@ -47,18 +46,19 @@ spfx-react-teams-meeting-app-questionnaire
                     └── mystrings.d.ts
 ```
 
-## Compatibility
+
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
-![Microsoft Teams](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
-![Does not work with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Incompatible-red.svg)
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Needs Teams to work")
-![Hosted Workbench Incmpatible](https://img.shields.io/badge/Hosted%20Workbench-Incompatible-red.svg)
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 
 ## Applies to
 
@@ -95,11 +95,13 @@ MeetingID|MeetingID|Single line of text|N|
 
 ### SharePoint deployment
 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
 - Clone this repo
 - Navigate to the folder with current sample
-- Restore dependencies: `$ npm i`
-- Bundle the solution: `$ gulp bundle --ship`
-- Package the solution: `$ gulp package-solution --ship`
+- Restore dependencies: `npm i`
+- Bundle the solution: `gulp bundle --ship`
+- Package the solution: `gulp package-solution --ship`
 - Locate the solution at `./sharepoint/solution/spfx-ms-teams-questionnaire-meeting-app.sppkg` and upload it to SharePoint tenant app catalog
 
 ![Deploy SPFx solution](./assets/deploy-spfx-solution.png)
@@ -109,10 +111,10 @@ MeetingID|MeetingID|Single line of text|N|
 
 ### MS Teams deployment
 
-- Navigate to `teams` folder and zip the content (2 png files and manifest.json).
+- Navigate to `teams` folder and zip the content (2 `.png` files and `manifest.json`).
 - Open MS Teams.
-- Click `Apps`.
-- Click `Upload a custom app` > `Upload for <tenant>`.
+- Click **Apps**.
+- Click **Upload a custom app** > **Upload for <tenant>**.
 
 ![Deploy to MS Teams](./assets/deploy-to-ms-teams.png)
 

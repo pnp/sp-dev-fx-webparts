@@ -1,6 +1,7 @@
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IPageNavigatorProps {
-  description: string;
   anchorLinks: INavLink[];
+  themeVariant: IReadonlyTheme;
 }

@@ -1,4 +1,4 @@
-# Lead Assist Dashboard
+http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Lead Assist Dashboard
 
 ## Summary
 
@@ -7,7 +7,7 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 ![Lead Assist Dashboard](./assets/LeadAssistDashboard_overview.png)
 
 
-# Compatibility
+## Compatibility
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
@@ -16,6 +16,7 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -48,6 +49,8 @@ Version|Date|Comments
 - Select the SPPKG in the App Catalog and click on "Sync to Teams" button
 - Add the web part to a SharePoint page
 - In the first run the web part will ask for the target SharePoint site URL
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 If needed:
 - Using the control panel of the web part

@@ -1,0 +1,155 @@
+{
+  "schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.2",
+  "body": [
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "${title}"
+    },
+    {
+      "type": "Image",
+      "size": "Stretch",
+      "url": "${newsThumbnail}"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "${subTitle}",
+              "wrap": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "${description}",
+      "wrap": true
+    },
+    {
+      "type": "ColumnSet",
+      "$data": "${selectedNewsComments}",
+      "columns": [
+        {
+          "type": "Column",
+          "width": 40,
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "${author.name}",
+              "wrap": true,
+              "size": "Small",
+              "isSubtle": true
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": 50,
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "${text}",
+              "wrap": true,
+              "size": "Default"
+            }
+          ]
+        }
+      ],
+      "separator": true
+    },
+    {
+      "type": "Container",
+      "$when": "${commentInputVisible == true}",
+      "items": [
+          {
+              "type": "Input.Text",
+              "placeholder": "Your comment",
+              "label":"Comment",
+              "errorMessage": "Please enter comment",
+              "id":"newCommentInput",
+              "isRequired": true,
+              "inlineAction": {
+                  "type": "Action.Submit",
+                  "title": "Add",
+                  "id":"addComment"
+              }
+          }
+      ]
+  },
+  {
+      "type": "Input.ChoiceSet",
+      "$when": "${showTeams == true}",
+      "id": "selectTeamsDD",
+      "choices": "${joinedTeamsOptions}",
+      "placeholder": "Select a team",
+      "value":"${selectedTeamId}",
+      "separator": true,
+      "wrap": true
+  },
+  {
+      "type": "Input.ChoiceSet",
+      "$when": "${showChannels == true}",
+      "id": "selectChannelDD",
+      "choices": "${channelsOptions}",
+      "placeholder": "Select a team",
+      "separator": true,
+      "wrap": true
+  }
+  ],
+  "actions": [
+    {
+        "type": "Action.Submit",
+        "title": "Share in selected chanel",
+        "$when": "${showChannels == true}",
+        "id": "shareInSelectedChannel"
+    },
+    {
+        "type": "Action.Submit",
+        "title": "Select channel",
+        "$when": "${showTeams == true}",
+        "id": "showSelectChannel"
+    },
+    {
+        "type": "Action.Submit",
+        "title": "Like this post",
+        "$when": "${showTeams != true}",
+        "id": "likePost",
+        "data": "likePost"
+    },
+    {
+        "type": "Action.Submit",
+        "$when": "${showAddCommentInput != true && showTeams != true}",
+        "title": "Add a comment",
+        "id": "showAddCommentInput",
+        "data": "showAddCommentInput"
+    },
+    {
+        "type": "Action.Submit",
+        "title": "Share in teams",
+        "$when": "${showTeams != true}",
+        "id": "loadTeams",
+        "data": "loadTeams"
+    },
+    {
+        "type": "Action.Submit",
+        "title": "Previous",
+        "id": "previous",
+        "data":"previous"
+    },
+    {
+        "type": "Action.Submit",
+        "title": "Next",
+        "id": "next",
+        "data": "Next"
+    }
+  ]
+}

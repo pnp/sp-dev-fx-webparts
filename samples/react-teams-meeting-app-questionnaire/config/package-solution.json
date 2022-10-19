@@ -13,7 +13,26 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": ""
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-ms-teams-questionnaire-meeting-app description"
+      },
+      "longDescription": {
+        "default": "spfx-ms-teams-questionnaire-meeting-app description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-ms-teams-questionnaire-meeting-app Feature",
+        "description": "The feature that activates elements of the spfx-ms-teams-questionnaire-meeting-app solution.",
+        "id": "78085519-068b-45ed-9b7a-836e4042f42f",
+        "version": "1.0.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/spfx-ms-teams-questionnaire-meeting-app.sppkg"

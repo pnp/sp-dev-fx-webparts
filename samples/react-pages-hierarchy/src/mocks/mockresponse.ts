@@ -424,7 +424,7 @@ export class MockResponse {
 
                 let result: IItemUpdateResult = {
                     item: item,
-                    data: { 'odata.etag': '' }
+                    data: { 'etag': '' }
                 };
 
                 body = JSON.stringify(result);
