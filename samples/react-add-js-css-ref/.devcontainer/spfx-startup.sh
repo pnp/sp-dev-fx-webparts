@@ -26,7 +26,7 @@ if ! grep -Fxq '*.pem' ./.gitignore
     echo "# .PEM Certificates" >> .gitignore
     echo "*.pem" >> .gitignore
 fi
-npm i -g @pnp/cli-microsoft365
+
 echo
 echo -e "\e[1;92mReady!\e[0m"
 
