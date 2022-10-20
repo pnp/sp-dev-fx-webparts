@@ -105,7 +105,7 @@ gulp package-solution --ship
 
 Solution|Author(s)
 --------|---------
-react-add-js-css-ref | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (https://www.linkedin.com/in/siddharthvaghasia/)
+react-add-js-css-ref | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (https://www.linkedin.com/in/siddharthvaghasia/)  [Don Kirkham](https://github.com/donkirkham) (https://www.linkedin.com/in/donkirkham/)
 
 ## Version history
 
@@ -113,6 +113,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|Apr 24, 2020|Initial release
 2.0.0|June 09, 2020|Displaying access denied message,  added spinner to display on page load, fix edit, delete icons not displaying.
+2.1.0|Oct 20, 2022|Upgrade solution to SPFx v1.14.0
 
 
 ## Video
