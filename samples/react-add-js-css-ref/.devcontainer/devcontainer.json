@@ -34,6 +34,6 @@
 			"requireLocalPort": true
 		}
 	},
-	"postCreateCommand": "bash .devcontainer/spfx-startup.sh"//,
-	//"remoteUser": "node"
+	"postCreateCommand": "bash .devcontainer/spfx-startup.sh",
+	"remoteUser": "node"
 }
