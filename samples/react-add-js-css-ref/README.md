@@ -41,8 +41,8 @@ Path can be `/sites/mysc/style library/js/custom.js` or `/sites/mysc/style libra
 
 ## Compatibility
 
-![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
