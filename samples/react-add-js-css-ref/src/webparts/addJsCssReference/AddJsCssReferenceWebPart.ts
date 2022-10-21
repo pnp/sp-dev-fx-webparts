@@ -3,10 +3,10 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
-
 import * as strings from 'AddJsCssReferenceWebPartStrings';
 import AddJsCssReference from './components/AddJsCssReference';
 import { IAddJsCssReferenceProps } from './components/IAddJsCssReferenceProps';
+import { getSP } from './pnpjsConfig';
 
 export interface IAddJsCssReferenceWebPartProps {
   description: string;
@@ -25,7 +25,11 @@ export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAdd
 
     ReactDom.render(element, this.domElement);
   }
+protected async onInit(): Promise<void> {
+  await super.onInit();
+  getSP(this.context);
 
+}
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
   }

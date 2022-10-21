@@ -20,7 +20,6 @@
       "./node_modules/@microsoft"
     ],
     "types": [
-      "es6-promise",
       "webpack-env",
       "es6-promise"
     ],
