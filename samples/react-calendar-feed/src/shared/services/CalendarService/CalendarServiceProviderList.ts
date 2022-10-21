@@ -5,6 +5,8 @@ import { iCalCalendarService } from "./iCalCalendarService";
 import { ExchangePublicCalendarService } from "./ExchangePublicCalendarService";
 import { SharePointCalendarService } from "./SharePointCalendarService";
 
+const DEBUG:boolean = false;
+
 // Localization
 import * as strings from "CalendarServicesStrings";
 
