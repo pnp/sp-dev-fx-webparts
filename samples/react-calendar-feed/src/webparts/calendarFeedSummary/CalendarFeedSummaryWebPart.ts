@@ -326,7 +326,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       return strings.FeedUrlValidationNoUrl;
     }
 
-    if (!feedUrl.match(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/)) {
+    if (!feedUrl.match(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-/]))?/)) {
       return strings.FeedUrlValidationInvalidFormat;
     }
 
@@ -347,7 +347,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     } = this.properties;
 
     // get the first provider matching the type selected
-    let providerItem: any = this._providerList.filter(p => p.key === this.properties.feedType)[0];
+    const providerItem: any = this._providerList.filter(p => p.key === this.properties.feedType)[0];
 
     // make sure we got a valid provider
     if (!providerItem) {
@@ -356,7 +356,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     }
 
     // get an instance
-    let provider: ICalendarService = providerItem.initialize();
+    const provider: ICalendarService = providerItem.initialize();
 
     // pass props
     provider.Context = this.context;
