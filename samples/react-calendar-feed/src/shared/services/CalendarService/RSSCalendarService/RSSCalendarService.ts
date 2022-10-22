@@ -9,7 +9,7 @@
 import { ICalendarService } from "..";
 import { BaseCalendarService } from "../BaseCalendarService";
 import { ICalendarEvent } from "../ICalendarEvent";
-import RSSParser from 'rss-parser';
+import * as RSSParser from 'rss-parser';
 
 export class RSSCalendarService extends BaseCalendarService implements ICalendarService {
   constructor() {
