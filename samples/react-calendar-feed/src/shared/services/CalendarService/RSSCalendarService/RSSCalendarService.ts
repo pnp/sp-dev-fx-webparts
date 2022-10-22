@@ -20,11 +20,11 @@ export class RSSCalendarService extends BaseCalendarService implements ICalendar
   public getEvents = (): Promise<ICalendarEvent[]> => {
     const parameterizedFeedUrl: string = this.getCORSUrl(this.replaceTokens(this.FeedUrl, this.EventRange));
 
-    let parser = new RSSParser();
+    const parser = new RSSParser();
     return parser.parseURL(parameterizedFeedUrl).then(feed => {
 
-      let events: ICalendarEvent[] = feed.items.map(item => {
-        let pubDate: Date = this.convertToDate(item.isoDate);
+      const events: ICalendarEvent[] = feed.items.map(item => {
+        const pubDate: Date = this.convertToDate(item.isoDate);
         const eventItem: ICalendarEvent = {
           title: item.title,
           start: pubDate,

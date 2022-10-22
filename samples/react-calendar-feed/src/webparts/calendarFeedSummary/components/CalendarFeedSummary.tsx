@@ -14,10 +14,10 @@ import { FilmstripLayout } from "../../../shared/components/filmstripLayout/inde
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // the key used when caching events
-const CacheKey: string = "calendarFeedSummary";
+const CacheKey = "calendarFeedSummary";
 
 // this is the same width that the SharePoint events web parts use to render as narrow
-const MaxMobileWidth: number = 480;
+const MaxMobileWidth = 480;
 
 /**
  * Displays a feed summary from a given calendar feed provider. Renders a different view for mobile/narrow web parts.
@@ -47,7 +47,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    * @param prevProps The previous props before changes are applied
    * @param prevState The previous state before changes are applied
    */
-  public componentDidUpdate(prevProps: ICalendarFeedSummaryProps, prevState: ICalendarFeedSummaryState): void {
+  public componentDidUpdate(prevProps: ICalendarFeedSummaryProps): void {
     // only reload if the provider info has changed
     const prevProvider: ICalendarService = prevProps.provider;
     const currProvider: ICalendarService = this.props.provider;
@@ -240,7 +240,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     const isEditMode: boolean = this.props.displayMode === DisplayMode.Edit;
 
     let pagedEvents: ICalendarEvent[] = events;
-    let usePaging: boolean = false;
+    let usePaging = false;
 
     if (maxEvents > 0 && events.length > maxEvents) {
       // calculate the page size
@@ -261,6 +261,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
         items={pagedEvents}
         onRenderCell={(item, _index) => (
           <EventCard
+            key={'eventCard'+_index}
             isEditMode={isEditMode}
             event={item}
             isNarrow={true}
@@ -330,7 +331,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
     // load from cache if: 1) we said to use cache, and b) if we have something in cache
     if (useCacheIfPossible && localStorage.getItem(CacheKey)) {
-      let feedCache: IFeedCache = JSON.parse(localStorage.getItem(CacheKey));
+      const feedCache: IFeedCache = JSON.parse(localStorage.getItem(CacheKey));
 
       const { Name, FeedUrl } = this.props.provider;
       const cacheStillValid: boolean = moment().isBefore(feedCache.expiry);
