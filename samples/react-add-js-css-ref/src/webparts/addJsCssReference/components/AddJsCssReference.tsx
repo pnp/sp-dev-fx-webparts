@@ -290,20 +290,20 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     );
   }
 
-  public  componentDidMount(): void {
-     this.checkPermisson();
+  public componentDidMount() {
+    void this.checkPermisson();
   }
-
 
   private async checkPermisson() {
     const perms2 = await this._sp.web.currentUserHasPermissions(PermissionKind.ManageWeb);
-    this.setState({ userHasPermission: perms2 });
     console.log(perms2);
-    this.setState({ showspinner: false });
+    this.setState({
+      userHasPermission: perms2,
+      showspinner: false
+    });
     if (perms2) {
-      await this.getCustomAction();
+      void this.getCustomAction();
     }
-
   }
 
 

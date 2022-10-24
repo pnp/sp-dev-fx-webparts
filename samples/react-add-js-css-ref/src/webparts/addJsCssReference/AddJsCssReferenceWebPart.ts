@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
-import * as strings from 'AddJsCssReferenceWebPartStrings';
 import AddJsCssReference, { IAddJsCssReferenceProps } from './components/AddJsCssReference';
 import { getSP } from './pnpjsConfig';
 
