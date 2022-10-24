@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.0",
+    "libraryName": "react-add-formcustomizer-to-list",
+    "libraryId": "93fb58e4-6db3-4559-b98c-bd42f10a5fc6",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-add-formcustomizer-to-list",
+    "solutionShortDescription": "react-add-formcustomizer-to-list description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
