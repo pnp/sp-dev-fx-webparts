@@ -2,14 +2,12 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import * as strings from 'AddJsCssReferenceWebPartStrings';
-import AddJsCssReference from './components/AddJsCssReference';
-import { IAddJsCssReferenceProps } from './components/IAddJsCssReferenceProps';
+import AddJsCssReference, { IAddJsCssReferenceProps } from './components/AddJsCssReference';
 import { getSP } from './pnpjsConfig';
 
 export interface IAddJsCssReferenceWebPartProps {
-  description: string;
 }
 
 export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAddJsCssReferenceWebPartProps> {
@@ -18,7 +16,6 @@ export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAdd
     const element: React.ReactElement<IAddJsCssReferenceProps> = React.createElement(
       AddJsCssReference,
       {
-        description: this.properties.description,
         context: this.context
       }
     );
@@ -26,10 +23,9 @@ export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAdd
     ReactDom.render(element, this.domElement);
   }
 
-  protected async onInit(): Promise<void> {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    super.onInit();
+  protected onInit(): Promise<void> {
     getSP(this.context);
+    return super.onInit();
   }
 
   protected onDispose(): void {
@@ -45,16 +41,12 @@ export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAdd
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: ""
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
+              groupName: "No properties available",
+              groupFields: []
             }
           ]
         }

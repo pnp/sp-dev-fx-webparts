@@ -35,7 +35,6 @@ const theme: ITheme = createTheme({
 const stackStyles: Partial<IStackStyles> = { root: { height: 30 } };
 
 export interface IAddJsCssReferenceProps {
-  description: string;
   context: WebPartContext;
 }
 
