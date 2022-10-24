@@ -15,21 +15,23 @@ export interface IAddJsCssReferenceWebPartProps {
 export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAddJsCssReferenceWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IAddJsCssReferenceProps > = React.createElement(
+    const element: React.ReactElement<IAddJsCssReferenceProps> = React.createElement(
       AddJsCssReference,
       {
         description: this.properties.description,
-        context:this.context
+        context: this.context
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
-protected async onInit(): Promise<void> {
-  await super.onInit();
-  getSP(this.context);
 
-}
+  protected async onInit(): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    super.onInit();
+    getSP(this.context);
+  }
+
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
   }
