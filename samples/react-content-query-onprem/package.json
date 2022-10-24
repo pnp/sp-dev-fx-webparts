@@ -30,10 +30,10 @@
     "@types/webpack-env": ">=1.12.1 <1.14.0"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.1.0",
+    "@microsoft/sp-build-web": "~1.15.2",
     "@microsoft/sp-module-interfaces": "~1.1.0",
-    "@microsoft/sp-webpart-workbench": "~1.1.0",
-    "gulp": "~3.9.1",
+    "@microsoft/sp-webpart-workbench": "~1.12.1",
+    "gulp": "~4.0.2",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0",
     "ajv": "~5.2.2",
