@@ -50,7 +50,7 @@
     "@types/webpack-env": "1.13.1",
     "@voitanos/jest-preset-spfx-react16": "^1.1.0",
     "ajv": "~6.12.3",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "gulp-sequence": "1.0.0",
     "jest": "^23.6.0",
     "jest-junit": "^6.3.0",
