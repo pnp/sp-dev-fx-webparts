@@ -24,8 +24,8 @@ This sample creates an Adaptive Cards Host web part that you can use to display 
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -201,7 +201,7 @@ To use the web part, follow these simple steps:
 
 ### Adaptive Card Templating
 
-[Adaptive Card Templating](https://docs.microsoft.com/en-us/adaptive-cards/templating/) is a new feature that allows you to separate your Adaptive Card data from its layout. 
+[Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/) is a new feature that allows you to separate your Adaptive Card data from its layout. 
 
 The web part allows you to **Use Adaptive Card Templating** features with a simple toggle.
 
@@ -406,7 +406,7 @@ The web part also ensures that the Adaptive Cards resize according to the web pa
 
 ### Section Background Color Support
 
-In addition to theme color support, the web part uses the method described at [Supporting Section Background](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds) to adjust to changing section colors.
+In addition to theme color support, the web part uses the method described at [Supporting Section Background](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds) to adjust to changing section colors.
 
 ![Changing the section background color changes the Adaptive Card background as well](./assets/BackgroundColors.gif)
 
@@ -424,7 +424,7 @@ Our web part uses the [Property Field Code Editor](https://sharepoint.github.io/
 
 However, as you load more controls in your web part's property pane, you may notice that your web part takes longer to load. That is because the bundle sizes tend to increase with each new library you include in your solution.
 
-This web part uses `loadPropertyResources` to dynamically load some of its property pane controls when the property pane is shown, as described in the Microsoft documentation on [Dynamic loading](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading).
+This web part uses `loadPropertyResources` to dynamically load some of its property pane controls when the property pane is shown, as described in the Microsoft documentation on [Dynamic loading](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading).
 
 You can use `loadPropertyResources` in your web part to reduce the number of resources that are loaded when the web part renders, and only load resources when the property pane of your web part is shown.
 
@@ -443,12 +443,12 @@ This project contains a CodeTour that will walk you through the areas of interes
 If you'd like to read more about the various concepts illustrated in this sample, please refer to the following links:
 
 * [Adaptive Cards](https://adaptivecards.io/)
-* [Adaptive Card Templating](https://docs.microsoft.com/en-us/adaptive-cards/templating/)
+* [Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/)
 * [Adaptive Cards Designer](https://adaptivecards.io/designer/)
 * [Adaptive Cards Viewer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=tomlm.vscode-adaptivecards)
-* [Dynamic Loading of Property Pane Resources](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading)
-* [Supporting Section Background](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds)
-* [Use cascading dropdowns in web part properties](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties)
+* [Dynamic Loading of Property Pane Resources](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading)
+* [Supporting Section Background](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds)
+* [Use cascading dropdowns in web part properties](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties)
 * [Using the SharePoint RenderListDataAsStream API to fetch lookup and single managed metadata field values](https://www.eliostruyf.com/using-sharepoint-renderlistdataasstream-api-fetch-lookup-single-managed-metadata-field-values/)
 * [RenderListDataAsStream](https://pnp.github.io/pnpjs/sp/lists/#render-list-data-as-stream)
 * [Introduction to Adaptive Cards](https://poszytek.eu/en/microsoft-en/introduction-to-adaptive-cards/)

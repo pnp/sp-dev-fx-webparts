@@ -50,7 +50,7 @@ Version|Date|Comments
 * From your command line, change your current directory to the directory containing this sample (`react-save-attachments`, located under `samples`)
 * In the command line run:
   * Restore dependencies: `npm install`
-  From here you can also follow the deployment steps from the official [Microsoft Tutorial](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial#packaging-and-deploying-your-solution-to-sharepoint)
+  From here you can also follow the deployment steps from the official [Microsoft Tutorial](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial#packaging-and-deploying-your-solution-to-sharepoint)
   * Build solution `gulp build --ship`
   * Bundle solution: `gulp bundle --ship`
   * Package solution: `gulp package-solution --ship`

@@ -1,4 +1,4 @@
-﻿---
+---
 page_type: sample
 products:
 - office-sp
@@ -43,7 +43,7 @@ extensions:
 ## 適用対象
 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 Developer のテナント](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Office 365 Developer のテナント](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解決方法
 

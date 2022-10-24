@@ -27,7 +27,7 @@ Version|Date|Comments
 * `gulp package-solution --ship`
 * deploy package to SharePoint App Catalog (check tenant deploy)
 * `gulp package-teams` (custom gulp task to zip the Teams folder)
-* follow Teams deployment instructions from here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab)
+* follow Teams deployment instructions from here: [https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab)
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 

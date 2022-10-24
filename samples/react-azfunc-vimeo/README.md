@@ -18,8 +18,8 @@ This project contains two separate project folders:
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -45,7 +45,7 @@ This will install all the required NPM packages to run the Azure function
 
 ### Additional Configuration Vimeo Azure Function
 
-The folder [VimeoRequest](./VimeoRequest) contains a Azure Function generated with the [Azure Function Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local).
+The folder [VimeoRequest](./VimeoRequest) contains a Azure Function generated with the [Azure Function Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local).
 The access videos stored on this platform first a new application needs to be created first. To create a new Application navigate to the following website [https://developer.vimeo.com/apps/new?source=topnav](https://developer.vimeo.com/apps/new?source=topnav)
 After the creation of a new Application, the created AppID and Secret must get stored in the local Azure function configuration. This configuration file can be found in the root folder of the Azure Function Host and is named [local.settings.json](./VimeoRequest/local.settings.json).
 

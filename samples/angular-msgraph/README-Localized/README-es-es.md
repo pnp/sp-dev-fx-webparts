@@ -43,7 +43,7 @@ y luego mostrará todas las listas asociadas con el sitio seguidos de todos los 
 ## Se aplica a
 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Espacio empresarial de desarrollador de Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Espacio empresarial de desarrollador de Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solución
 
