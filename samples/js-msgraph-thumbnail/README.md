@@ -1,7 +1,7 @@
 # Thumbnail/preview of pages and files in SharePoint
 
 ## Summary
-A web part showcasing how to call the [Microsoft Graph Thumbnails API](https://docs.microsoft.com/en-us/graph/api/driveitem-list-thumbnails) to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.
+A web part showcasing how to call the [Microsoft Graph Thumbnails API](https://learn.microsoft.com/graph/api/driveitem-list-thumbnails) to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.
 
 _Note that a preview for all file formats (eg. Excel) might not currently be available._
 
@@ -22,7 +22,7 @@ The goal of the sample is to illustrate a single call calling pattern for the th
 |site id | Site object id - GUID. |
 |list id | List object id - GUID. |
 |item id | ListItem object id or unique id - Integer/GUID. |
-|custom size | See [Requesting custom thumbnail sizes](https://docs.microsoft.com/en-us/graph/api/driveitem-list-thumbnails?view=graph-rest-1.0&tabs=http#requesting-custom-thumbnail-sizes) in the official Microsoft Graph documentation.
+|custom size | See [Requesting custom thumbnail sizes](https://learn.microsoft.com/graph/api/driveitem-list-thumbnails?view=graph-rest-1.0&tabs=http#requesting-custom-thumbnail-sizes) in the official Microsoft Graph documentation.
 
 ## Compatibility
 
@@ -38,7 +38,7 @@ The goal of the sample is to illustrate a single call calling pattern for the th
 ## Applies to
 
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 

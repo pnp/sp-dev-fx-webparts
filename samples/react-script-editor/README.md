@@ -118,9 +118,9 @@ If your scripts rely on the classic_spPageContextInfo, you can enable that in th
 
 If you want to use the solution as a Teams tab, perform the changes to deploy to [non-script](#deploy-to-non-script-sites--modern-team-sites) sites and [tenant wide deployment](#deploy-tenant-wide).
 
-Next see the [Teams tab tutorial](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab) for steps needed to deploy the solution as a Teams tab.
+Next see the [Teams tab tutorial](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab) for steps needed to deploy the solution as a Teams tab.
 
-You can get access to the Teams context information via the global variable `_teamsContexInfo`. The available properties are documented at [Teams context interface](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.context?view=msteams-client-js-latest).
+You can get access to the Teams context information via the global variable `_teamsContexInfo`. The available properties are documented at [Teams context interface](https://learn.microsoft.com/javascript/api/@microsoft/teams-js/microsoftteams.context?view=msteams-client-js-latest).
 
 ### Sample
 
@@ -172,7 +172,7 @@ In order to make it available to absolutely all sites you need apply the *Deploy
 ## Applies to
 
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 

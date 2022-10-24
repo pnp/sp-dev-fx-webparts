@@ -23,7 +23,7 @@ export default class Broadcaster extends React.Component<IBroadcasterProps, IBro
         <div className={styles.container}>
           <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-              <h1>Important: The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use dynamic data https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data instead. See the README.md file for more details.</h1>
+              <h1>Important: The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use dynamic data https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data instead. See the README.md file for more details.</h1>
               <h2>Event Message: {this.state.eventNumber}</h2>
               <PrimaryButton onClick={this.broadcastData.bind(this)} id="BroadcastButton">
                 Broadcast message

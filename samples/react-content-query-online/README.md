@@ -23,8 +23,8 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -146,7 +146,7 @@ External scripts can be used to include either libraries such as *jQuery*, or ev
 
 ### Dynamic Data support
 
-You can configure the web part to be a provider of [Dynamic Data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data) for other web parts. You simply need to select the `ID` field in the list of **View Fields** and to include in the Handlebars template an HTML element with CSS class name `selectItem` and a custom `data-\*` attribute with name `data-itemId` providing the value of the `ID` field for every item. Here you can see a sample code excerpt of a selection button:
+You can configure the web part to be a provider of [Dynamic Data](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data) for other web parts. You simply need to select the `ID` field in the list of **View Fields** and to include in the Handlebars template an HTML element with CSS class name `selectItem` and a custom `data-\*` attribute with name `data-itemId` providing the value of the `ID` field for every item. Here you can see a sample code excerpt of a selection button:
 
 ```html
 <button class='selectItem' data-itemId='{{ID.textValue}}'>Select</button>
@@ -413,9 +413,9 @@ ReactContentQuery.ExternalScripts.MyCustomBlockHelper = {
 
 ### Using Microsoft Graph Toolkit
 
-The Content Query Web Part provides support for [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) (MGT) integration to easily query the [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) within your handlebars templates.
+The Content Query Web Part provides support for [Microsoft Graph Toolkit](https://learn.microsoft.com/graph/toolkit/overview) (MGT) integration to easily query the [Microsoft Graph](https://learn.microsoft.com/graph/overview) within your handlebars templates.
 
-You can use any of the MGT components without additional steps, although the MGT integration was designed specifically with [Person](https://docs.microsoft.com/en-us/graph/toolkit/components/person), [People](https://docs.microsoft.com/en-us/graph/toolkit/components/people), and [Person card](https://docs.microsoft.com/en-us/graph/toolkit/components/person-card) components.
+You can use any of the MGT components without additional steps, although the MGT integration was designed specifically with [Person](https://learn.microsoft.com/graph/toolkit/components/person), [People](https://learn.microsoft.com/graph/toolkit/components/people), and [Person card](https://learn.microsoft.com/graph/toolkit/components/person-card) components.
 
 #### Using MGT with a person field
 
@@ -432,7 +432,7 @@ For example, to use the `mgt-person` component with a person field called `MyPer
 
 MGT supports the use of custom templates to modify the content of a components.
 
-According to [MGT documentation](https://docs.microsoft.com/en-us/graph/toolkit/customize-components/templates), the binding syntax to inject dynamic content in a template uses a block delimited by `{{` and `}}` -- which conflicts with the Handlebars binding syntax.
+According to [MGT documentation](https://learn.microsoft.com/graph/toolkit/customize-components/templates), the binding syntax to inject dynamic content in a template uses a block delimited by `{{` and `}}` -- which conflicts with the Handlebars binding syntax.
 
 In order to use a custom MGT template in your Handlebars template, use `[[` and `]]` instead of `{{` and `}}` to bind to the MGT context.
 

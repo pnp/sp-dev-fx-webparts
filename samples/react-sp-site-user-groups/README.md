@@ -21,7 +21,7 @@ Note: Azure AD Groups are represented as Site Users in SharePoint.
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
@@ -88,7 +88,7 @@ See sample solution [react-check-user-group](../react-check-user-group) by [aaka
 
 ## References
 
-- [User profile synchronization](https://docs.microsoft.com/en-us/sharepoint/user-profile-sync)
+- [User profile synchronization](https://learn.microsoft.com/sharepoint/user-profile-sync)
 
 ## Help
 

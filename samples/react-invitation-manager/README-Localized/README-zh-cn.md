@@ -38,8 +38,8 @@ NB。我正在等待 HttpGraphClient 的 GA（权限方面有所限制）以在�
 
 ## 适用于
 
-* [SharePoint 框架](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint 框架](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 开发人员租户](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 

@@ -20,13 +20,13 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 
 ## Applies to
 
-- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Visio JavaScript APIs](https://docs.microsoft.com/office/dev/add-ins/reference/overview/visio-javascript-reference-overview)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online licence
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 

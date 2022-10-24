@@ -34,9 +34,9 @@ I wrote a blog post covering more if the inner workings, you can find it at [SPF
 
 ## Applies to
 
-* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) - Untested!!
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 

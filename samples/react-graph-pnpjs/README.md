@@ -1,8 +1,8 @@
 # Using PnPJS with Microsoft Graph
 
 ## Summary
-This web part demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with SharePoint Framework and how to query [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) with PnPJS.
-It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/api/group-list?view=graph-rest-1.0) at your tenant and shows them using [Office UI Fabric React](https://developer.microsoft.com/en-us/fabric#/components) list.
+This web part demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with SharePoint Framework and how to query [Microsoft Graph](https://learn.microsoft.com/graph/overview) with PnPJS.
+It requests a list of Azure AD [groups](https://learn.microsoft.com/graph/api/group-list?view=graph-rest-1.0) at your tenant and shows them using [Office UI Fabric React](https://developer.microsoft.com/en-us/fabric#/components) list.
 
 ![Main UI](./assets/summary.png)
 
@@ -21,8 +21,8 @@ It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/a
 
 
 ## Applies to
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -45,7 +45,7 @@ Version|Date|Comments
 - locate solution at `./sharepoint/solution/pn-p-graph-web-part.sppkg` and upload it to your tenant app catalog
 - you will see a message saying that solution has pending permissions which need to be approved:  
 ![Pending permission requests](./assets/approve.png)
-- you should approve permission requests from your SharePoint Framework web part. There are [different options available](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli. For the matter of this sample, the fastest way to do it is through new SharePoint Admin UI. Open Web API permission management page by navigating to the url `https://<org>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement` (changing `<org>` to your real organization name) or by going to the new Admin UI directly from old SharePoint Admin Center. Select Pending `Group.Read.All` request and approve it:
+- you should approve permission requests from your SharePoint Framework web part. There are [different options available](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli. For the matter of this sample, the fastest way to do it is through new SharePoint Admin UI. Open Web API permission management page by navigating to the url `https://<org>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement` (changing `<org>` to your real organization name) or by going to the new Admin UI directly from old SharePoint Admin Center. Select Pending `Group.Read.All` request and approve it:
 ![Approve request from new Admin UI](./assets/approve-request.png)
 - run `$ gulp serve` and open hosted workbench, i.e. `https://<org>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
 - add `PnPGraph` web part to see it in action

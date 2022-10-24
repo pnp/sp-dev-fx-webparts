@@ -31,9 +31,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
-* [MS Teams](https://docs.microsoft.com/en-us/microsoftteams/microsoft-teams)
+* [MS Teams](https://learn.microsoft.com/microsoftteams/microsoft-teams)
 
 ## Solution
 

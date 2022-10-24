@@ -1,0 +1,47 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.groupMembershipManager {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: 'nowrap';
+  gap: 5px;
+  width: auto;
+}
+
+.stackHoz {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.stretch {
+  align-items: stretch;
+}
+
+.spaceEven {
+  justify-content: space-evenly;
+}
+
+.spaceAround {
+  justify-content: space-around;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
