@@ -145,6 +145,24 @@ body:
       - label: not applicable
       - label: other (enter in the "Additional environment details" area below)
 
+- type: input
+  id: installed-node
+  validations:
+    required: true
+  attributes:
+    label:  What version of Node.js is currently installed on your workstation?
+    description: |
+        Run `node -v` and paste the results. 
+
+- type: input
+  id: required-node
+  validations:
+    required: true
+  attributes:
+    label:  What version of Node.js is required by the sample?
+    description: |
+        You can find the compatible versions of React in the sample's `README.md`, in the **Compatibility** section.
+        
 - type: textarea
   id: spfxdoctor
   validations:
@@ -152,7 +170,7 @@ body:
   attributes:
     label: Paste the results of SPFx doctor
     description: |
-        Run `m365 spfx doctor` and paste the results. 
+        Run `m365 spfx doctor -o text` and paste the results. 
         
         Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 
