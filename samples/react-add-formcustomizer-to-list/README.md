@@ -9,7 +9,7 @@ This web part serves as utility so the developers can use to associate single fo
 
 Note - This web part only serve to associate the Form customizer, so it is required that the actual SPFx Form Customizer solution is deployed and installed to targeted Site before association.
 
- WebPart in Action
+## WebPart in Action
 
 ![Web part in action](assets/webpartinaction-form.gif "Webpart in action")
 
@@ -31,11 +31,12 @@ Note - This web part only serve to associate the Form customizer, so it is requi
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ### Package and Deploy
 
@@ -89,7 +90,7 @@ You can copy the actual component ID of form customizer with from its `manifest.
 
 Solution|Author(s)
 --------|---------
-react-add-formcustomizer-to-list | [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/)
+react-add-formcustomizer-to-list | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)
 
 ## Version history
 
@@ -98,7 +99,6 @@ Version|Date|Comments
 1.0.0|September 04, 2022|Initial release
 
 ## Help
-
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
