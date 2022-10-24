@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styles from './AddJsCssReference.module.scss';
-import { IAddJsCssReferenceProps } from './IAddJsCssReferenceProps';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ListView } from "@pnp/spfx-controls-react/lib/ListView";
 import { MessageBarType, Link, Separator, CommandBarButton, IStackStyles, Text, MessageBar, PrimaryButton, DefaultButton, Dialog, DialogFooter, DialogType, Stack, IStackTokens, Icon, Spinner } from 'office-ui-fabric-react';
@@ -17,6 +16,7 @@ import { PermissionKind } from '@pnp/sp/presets/all';
 //import { render } from 'react-dom';
 import { getSP } from '../pnpjsConfig';
 import { IJsCssItem } from '../../../models/IJsCssItem';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 
 const stackTokens: IStackTokens = { childrenGap: 40 };
@@ -33,6 +33,11 @@ const theme: ITheme = createTheme({
 });
 
 const stackStyles: Partial<IStackStyles> = { root: { height: 30 } };
+
+export interface IAddJsCssReferenceProps {
+  description: string;
+  context: WebPartContext;
+}
 
 export interface IAddJsCssReferenceState {
   disableRegisterButton: boolean;
@@ -286,8 +291,8 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     );
   }
 
-  public async componentDidMount(): Promise<void> {
-    await this.checkPermisson();
+  public  componentDidMount(): void {
+     this.checkPermisson();
   }
 
 
@@ -295,7 +300,6 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     const perms2 = await this._sp.web.currentUserHasPermissions(PermissionKind.ManageWeb);
     this.setState({ userHasPermission: perms2 });
     console.log(perms2);
-    //  const temp = true;
     this.setState({ showspinner: false });
     if (perms2) {
       await this.getCustomAction();
@@ -447,8 +451,6 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
   }
 
   private async getCustomAction(): Promise<void> {
-    const web = await this._sp.web();
-    console.log(web);
     const customactions: any = await this._sp.web.userCustomActions();
     console.log(customactions);
     const found = customactions.filter(item => item.Title === CustomActionTitle);
