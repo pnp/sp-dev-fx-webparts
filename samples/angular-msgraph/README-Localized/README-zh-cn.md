@@ -43,7 +43,7 @@ extensions:
 ## 适用于
 
 * [SharePoint Framework 开发人员预览版](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Office 365 开发人员租户](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 
