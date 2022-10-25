@@ -1212,8 +1212,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   styles: { main: { maxWidth: 450 } }
                 }}
               >
-                TEST
-                {/*
                  <Label>{this.state.recurrenceSeriesEdited ? strings.ConfirmeDeleteAllRecurrrencesMessage : strings.ConfirmeDeleteOneRecurrenceMessage }</Label>
                 {
                   this.state.isDeleting &&
@@ -1223,7 +1221,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   <PrimaryButton onClick={this.confirmDelete} text={strings.DialogConfirmDeleteLabel} disabled={this.state.isDeleting} />
                   <DefaultButton onClick={this.closeDialog} text={strings.DialogCloseButtonLabel} />
                 </DialogFooter>
-              */}
               </Dialog>
             </div>
 
