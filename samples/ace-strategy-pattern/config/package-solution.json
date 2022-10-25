@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ace-strategy-pattern-client-side-solution",
+    "id": "7008c810-9588-43c3-b75c-e750cfe57fff",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "ace-strategy-pattern description"
+      },
+      "longDescription": {
+        "default": "ace-strategy-pattern description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "ace-strategy-pattern Feature",
+        "description": "The feature that activates elements of the ace-strategy-pattern solution.",
+        "id": "828528d0-7849-4e3f-9a1d-e9322e84963e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/ace-strategy-pattern.sppkg"
+  }
+}

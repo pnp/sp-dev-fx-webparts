@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, Guid } from '@microsoft/sp-core-library';
+import { BrowserUtilities } from '@microsoft/sp-core-library/lib-commonjs/BrowserUtilities';
 
 import {
   BaseClientSideWebPart,
@@ -43,8 +44,9 @@ export default class FaqsWebPart extends BaseClientSideWebPart<IFaqsWebPartProps
     super();
 
     //Initialize unique GUID
-    this.guid = this.getGuid();
-    this.isMobile = this.detectmob();
+    this.guid = Guid.newGuid().toString();
+    this.isMobile = BrowserUtilities.isMobileBrowser();
+
     //Hack: to invoke correctly the onPropertyChange function outside this class
     //we need to bind this object on it first
     this.onPropertyPaneFieldChanged = this.onPropertyPaneFieldChanged.bind(this);
@@ -73,6 +75,7 @@ export default class FaqsWebPart extends BaseClientSideWebPart<IFaqsWebPartProps
         displayMode: this.displayMode,
         guid: this.guid,
         title: this.properties.title,
+        categoryData: this.properties.categoryData,
         accordion:true,
         fUpdateProperty: (value: string) => {
           this.properties.title = value;
@@ -97,13 +100,7 @@ export default class FaqsWebPart extends BaseClientSideWebPart<IFaqsWebPartProps
     }
   }
 
-  private detectmob(): boolean {
-    if(window.innerWidth <= 480) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
@@ -111,25 +108,6 @@ export default class FaqsWebPart extends BaseClientSideWebPart<IFaqsWebPartProps
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
-  }
-
-  /**
-   * @function
-   * Generates a GUID
-   */
-  private getGuid(): string {
-    return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' +
-      this.s4() + '-' + this.s4() + this.s4() + this.s4();
-  }
-
-  /**
-   * @function
-   * Generates a GUID part
-   */
-  private s4(): string {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
   }
 
   //executes only before property pane is loaded.

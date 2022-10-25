@@ -5,8 +5,8 @@
 The FieldVisit demo is a SharePoint Framework (SPFx) implementation. It is intended to demonstrate key SPFx capabilities hosted in SharePoint as well as Microsoft Teams.
 Follow instructions from articles below to setup your Office 365 tenant and development environment
 
-*	[Set up Office 365 Tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-* [Set up development environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
+*	[Set up Office 365 Tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Set up development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## 2.	SharePoint and Teams Configuration
 The sample uses content from Teams and SharePoint to build the demo scenario. In this section we will walk through configuring Teams and SharePoint with demo content.
@@ -55,7 +55,7 @@ In this section we will make changes to the sample FieldVisit project
 3.	Open the folder where you've placed the demo code
 4.	This sample uses Weather and Bing Map API to display Weather and Map within the web part. In order for the weather and map APIs to work, you will need to generate API keys using the links below:
     * **[Open Weather Maps](https://openweathermap.org/api)**
-    * **[Bing Maps](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)**
+    * **[Bing Maps](https://learn.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)**
 5.	Copy file **constants.sample.ts** in src\webparts\fieldvisittab to **constants.ts**
 6.	Open constants.ts and update keys with your own keys. **NOTE:** These keys are used to retrieve map and weather from Bing. If you do not provide a valid key, maps and weather will not be displayed
 7.	In Visual Studio Code, click on menu **Terminal -> New Terminal**
@@ -99,7 +99,7 @@ In this section we will configure the web part on a SharePoint page.
 
 ## 6.	Deploying Solution in Teams
 
-In this section we will deploy the SPFx FieldVisit TAB web part in Microsoft Teams as a tab. For simplicity sake, we will sideload the solution to a particular Team. Ensure Teams is [configured to allow side loading](https://docs.microsoft.com/en-us/microsoftteams/enable-features-office-365).
+In this section we will deploy the SPFx FieldVisit TAB web part in Microsoft Teams as a tab. For simplicity sake, we will sideload the solution to a particular Team. Ensure Teams is [configured to allow side loading](https://learn.microsoft.com/microsoftteams/enable-features-office-365).
 
 1.	Open File Explorer and navigate to **FieldVisitDemo\SPFx\teams** folder
 2.	You will find 3 files – manifest.json, tab20x20.png and tab96x96.png. Select all 3 files and add them to a new compressed zip file

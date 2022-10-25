@@ -9,7 +9,7 @@
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
     "creationDateTime": "2019-09-05",
-    "updateDateTime": "2021-10-20",
+    "updateDateTime": "2022-08-17",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.14.0"
       }
     ],
     "thumbnails": [
@@ -38,13 +38,18 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460\u0026u=e780f4ef1da922c84f2c5c66c59cecbff2300581\u0026v=4",
         "name": "Aakash Bhardwaj",
         "twitter": "aakash_316"
+      },
+      {
+        "gitHubAccount": "Jwaegebaert",
+        "pictureUrl": "https://github.com/Jwaegebaert.png",
+        "name": "Jasey Waegebaert"
       }
     ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   }

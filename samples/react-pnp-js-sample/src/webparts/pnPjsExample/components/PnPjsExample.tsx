@@ -70,7 +70,7 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
               );
             })}
             <tr>
-              <td></td>
+              <td>&nbps;</td>
               <td><strong>Total:</strong></td>
               <td><strong>{(totalDocs / 1024).toFixed(2)}</strong></td>
             </tr>
@@ -128,7 +128,7 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
       //Clone items from the state
       const items = JSON.parse(JSON.stringify(this.state.items));
 
-      let res: IItemUpdateResult[] = [];
+      const res: IItemUpdateResult[] = [];
 
       for (let i = 0; i < items.length; i++) {
         // you need to use .then syntax here as otherwise the application will stop and await the result

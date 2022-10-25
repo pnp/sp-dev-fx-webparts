@@ -21,7 +21,7 @@ One way to find devs from the same stack near you.
 
 ## Applies to
 
-* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
 ## Solution

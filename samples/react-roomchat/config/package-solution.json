@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "roomchat-client-side-solution",
+    "id": "4e5de806-161a-4b66-8736-e82ac1edb967",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "roomchat description"
+      },
+      "longDescription": {
+        "default": "roomchat description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "roomchat Feature",
+        "description": "The feature that activates elements of the roomchat solution.",
+        "id": "e63c3fba-3b2b-4ed4-a406-4222e6602a1a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/roomchat.sppkg"
+  }
+}

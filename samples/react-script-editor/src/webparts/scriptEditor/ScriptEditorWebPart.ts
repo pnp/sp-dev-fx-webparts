@@ -66,7 +66,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         );
         ReactDom.render(element, this.domElement);
     }
-
+    
     protected get dataVersion(): Version {
         return Version.parse('1.0');
     }
@@ -144,7 +144,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         for (let i = 0; i < elem.attributes.length; i++) {
             const attr = elem.attributes[i];
             // Copies all attributes in case of loaded script relies on the tag attributes
-            if(attr.name.toLowerCase() === "onload"  ) continue; // onload handled after loading with SPComponentLoader
+            if (attr.name.toLowerCase() === "onload") continue; // onload handled after loading with SPComponentLoader
             scriptTag.setAttribute(attr.name, attr.value);
         }
 
@@ -178,9 +178,9 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         let scriptTags = headTag.getElementsByTagName("script");
         for (let i = 0; i < scriptTags.length; i++) {
             const scriptTag = scriptTags[i];
-            if(scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId ) {
+            if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {
                 headTag.removeChild(scriptTag);
-            }            
+            }
         }
 
         if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {

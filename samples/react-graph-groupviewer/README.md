@@ -17,9 +17,9 @@ This web part will provide the functionality to search for groups in your tenant
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-* [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft Graph](https://learn.microsoft.com/graph/overview)
 * [PnP React Controls](https://pnp.github.io/sp-dev-fx-controls-react/)
 
 ## Solution

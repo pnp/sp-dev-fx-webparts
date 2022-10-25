@@ -289,7 +289,7 @@ export class AnalysisDialogContent extends
   // }
 
   // Update photo using Graph.
-  // See https://docs.microsoft.com/en-us/graph/api/profilephoto-update?view=graph-rest-1.0&tabs=http
+  // See https://learn.microsoft.com/graph/api/profilephoto-update?view=graph-rest-1.0&tabs=http
   private async updateProfilePicUsingGraph(blob: Blob) {
     this.props.context.msGraphClientFactory
       .getClient().then((client: MSGraphClient) => {

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "group-membership-manager-client-side-solution",
+    "id": "2a487e9a-b62a-484a-9bc0-e78b65550b61",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "title": "Group Membership Manager",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nick Brown",
+      "websiteUrl": "https://nbdev.uk",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Group Membership Manager"
+      },
+      "longDescription": {
+        "default": "Provides access to manage groups the user is an owner of in Azure Active Directory"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "group-membership-manager Feature",
+        "description": "The feature that activates elements of the group-membership-manager solution.",
+        "id": "71885ec6-e024-402d-9845-4813c5ae15c7",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Directory.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "People.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/group-membership-manager.sppkg"
+  }
+}

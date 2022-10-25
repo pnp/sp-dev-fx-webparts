@@ -5,7 +5,8 @@ export interface IAccordionsProps {
   collectionData: IFaq[];
   displayMode: DisplayMode;
   title: string;
-  accordion: boolean;
+  accordion: boolean;  
+  categoryData : any;
   guid : string; 
   
   fUpdateProperty: (value: string) => void;

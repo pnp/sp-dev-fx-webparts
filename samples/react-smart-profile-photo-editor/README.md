@@ -36,7 +36,7 @@ To configure your key and endpoint, use the following steps:
 
 ### Using SharePoint Online Tenant Properties
 
-If you do not wish to reveal your Azure Cognitive Service API key (or prompt users to enter it), you can pre-configure values using [SharePoint Online Tenant Properties](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties?tabs=sprest).
+If you do not wish to reveal your Azure Cognitive Service API key (or prompt users to enter it), you can pre-configure values using [SharePoint Online Tenant Properties](https://learn.microsoft.com/sharepoint/dev/spfx/tenant-properties?tabs=sprest).
 
 To do so, follow these steps:
 1. If you don't already have an Azure Cognitive Services key, [create a cognitive service resource](https://azure.microsoft.com/en-us/try/cognitive-services/) and select **Get API Key** by the **Computer Vision**.

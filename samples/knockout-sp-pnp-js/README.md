@@ -34,7 +34,7 @@ This web part demonstrates how to integrate the @pnp/sp library into the SharePo
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365](https://docs.microsoft.com/sharepoint/)
 
 ## Solution

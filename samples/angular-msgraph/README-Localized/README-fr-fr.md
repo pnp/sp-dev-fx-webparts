@@ -42,8 +42,8 @@ puis affiche toutes les listes associées au site, suivies de tous les élément
 
 ## S’applique à
 
-* [Version préliminaire pour développeurs de SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Client de développeur Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Version préliminaire pour développeurs de SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Client de développeur Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

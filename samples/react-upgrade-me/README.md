@@ -9,6 +9,8 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 
 ## Compatibility
 
+This sample is designed to be used in the following enviroments:
+
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg "SPFx 1.4.1 works with SharePoint 2019 and SharePoint Online") 
 ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg "Node.js v6 or v8 is required to run SPFx 1.4.1")
 ![SharePoint 2019 | Online - It won't work with SharePoint 2016](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg "It won't work on SharePoint 2016")
@@ -17,10 +19,13 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
+
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites

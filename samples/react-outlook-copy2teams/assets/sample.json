@@ -33,6 +33,12 @@
         "order": 100,
         "url": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
         "alt": "Outlook to Teams"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/h4NXi-p2fEw",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
@@ -48,12 +54,12 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
         "name": "Create Outlook Add-ins using SharePoint Framework",
         "description": "Introduced in SharePoint Framework v1.10, you can implement an Outlook Web App add-in with the SharePoint Framework and use SharePoint as a host for your solution.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create"
       }
     ]
   }

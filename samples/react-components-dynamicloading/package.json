@@ -19,15 +19,15 @@
     "@types/react": "15.6.6",
     "@types/react-dom": "15.5.6",
     "@types/webpack-env": "1.13.1",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "office-ui-fabric-react": "^5.125.0",
     "react": "15.6.2",
     "react-dom": "15.6.2"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.6.0",
+    "@microsoft/sp-build-web": "1.15.2",
     "@microsoft/sp-module-interfaces": "1.6.0",
-    "@microsoft/sp-webpart-workbench": "1.6.0",
+    "@microsoft/sp-webpart-workbench": "1.12.1",
     "tslint-microsoft-contrib": "~5.0.0",
     "gulp": "~3.9.1",
     "@types/chai": "3.4.34",

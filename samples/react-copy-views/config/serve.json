@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "customActions": {
+        "8e99be83-ad7e-4706-a8e1-d72df435d7e9": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+          }
+        }
+      }
+    },
+    "extension": {
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/Shared Documents",
+      "customActions": {
+        "8e99be83-ad7e-4706-a8e1-d72df435d7e9": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+          }
+        }
+      }
+    }
+  }
+}

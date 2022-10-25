@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, DisplayMode } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneDropdown,
   PropertyPaneChoiceGroup,
   PropertyPaneCheckbox,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 //import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as strings from 'PageSectionsNavigationStrings';
 import { PageSectionsNavigation, IPageSectionsNavigationProps } from './components/PageSectionsNavigation';
@@ -120,9 +120,9 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
    * Manual handling of changed properties.
    * If position has been changed we need to notify subscribers
    * If custom css has been changed we need to add new CSS to the page
-   * @param propertyPath 
-   * @param oldValue 
-   * @param newValue 
+   * @param propertyPath
+   * @param oldValue
+   * @param newValue
    */
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any) {
     if (propertyPath === 'position') {

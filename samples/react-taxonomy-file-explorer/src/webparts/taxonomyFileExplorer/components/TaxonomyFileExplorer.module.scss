@@ -10,14 +10,17 @@
   .row {
     @include ms-Grid-row;
     color: "[theme: themePrimary, default: #0078d7]";
-    padding: 20px;
+    padding: 8px 20px;
   }
 
   .column {
     @include ms-Grid-col;
     @include ms-lg6;
   }
-  
+  .icon {
+    margin-right: 6px;
+    cursor: pointer;
+  }
   ul {
     list-style: none;
     padding-inline-start: 0px;
