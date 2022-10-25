@@ -45,7 +45,6 @@ import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
 import { getGUID } from '@pnp/common';
 import { toLocaleShortDateString } from '../../utils/dateUtils';
-import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 const format = require('string-format');
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -456,7 +455,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   private onDelete(ev: React.MouseEvent<HTMLDivElement>) {
-    debugger;
     ev.preventDefault();
     this.setState({ displayDialog: true });
   }
