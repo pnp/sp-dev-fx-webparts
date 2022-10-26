@@ -70,6 +70,7 @@ Version|Date|Comments
 5.0|August 17, 2019|Converted to SPFx 1.9.1; Refreshed carousel code; Addresses #735, #909. Also added **Convert from UTC** option to handle feeds which do not provide time zone information.
 5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behavior and styles to match OOB calendar view. Added support for themes and theme variants.
 5.2|July 15, 2020|Fixed issue to support IE11
+5.3|October 26, 2022|Upgrage SPFx version for fixing build issues (#3088)
 
 ## Minimal Path to Awesome
 
