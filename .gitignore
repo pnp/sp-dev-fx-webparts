@@ -52,3 +52,5 @@ samples/**/solution/
 samples/**/temp/
 samples/**/release/
 samples/**/node_modules
+samples/react-kiota-custom-api-client/TeamifiedApi/appsettings.Development.json
+samples/react-kiota-custom-api-client/teamified-client/package-lock.json
