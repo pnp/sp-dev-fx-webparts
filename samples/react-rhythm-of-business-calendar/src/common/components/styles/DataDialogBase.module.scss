@@ -1,0 +1,40 @@
+@import 'common.module';
+
+.dataDialogBase {
+    @include md-down {
+        // need to remove justify center when on a small screen so dialog can use full width
+        :global(.ms-Dialog) { justify-content: initial; }
+    }
+    
+    :global(.ms-Dialog-main) {
+        // override built-in max-width so dialog can grow wider
+        max-width: 500px !important;
+
+        // 100% width on medium and below
+        & { min-width: 100%; } 
+
+        // 80% width on medium to large
+        @include md-up {
+            & { min-width: 80%; }
+        }
+
+        // 500px width on large and above
+        @include lg-up {
+            & { min-width: 500px; }
+        }
+    }
+
+    &.wide :global(.ms-Dialog-main) {
+        // override built-in max-width so dialog can grow wider
+        max-width: 800px !important;
+
+        // 80% width on medium to xx-large
+        @include md-up {
+            & { min-width: 80%; }
+        }
+        // 800px width on x-large and above
+        @include lg-up {
+            & { min-width: 800px; }
+        }
+    }
+}

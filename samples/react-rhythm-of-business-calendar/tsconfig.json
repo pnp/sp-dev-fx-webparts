@@ -1,0 +1,39 @@
+{
+    "extends": "./node_modules/@microsoft/rush-stack-compiler-4.5/includes/tsconfig-web.json",
+    "compilerOptions": {
+        "target": "es2018",
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "jsx": "react",
+        "downlevelIteration": true,
+        "declaration": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "allowUnreachableCode": false,
+        "noUnusedLocals": false,
+        "inlineSources": false,
+        "strictNullChecks": false,
+        "outDir": "lib",
+        "baseUrl": "./src",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules/@microsoft"
+        ],
+        "lib": [
+            "DOM",
+            "ESNext"
+        ],
+        "types": [
+            "node",
+            "sharepoint"
+        ]
+    },
+    "include": [
+        "src/**/*.ts*"
+    ]
+}

@@ -1,0 +1,11 @@
+@import '../common.module';
+
+.pill {
+    @include ms-fontSize-12;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1px 6px 2px 6px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}

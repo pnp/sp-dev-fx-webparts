@@ -1,0 +1,8 @@
+@import 'common.module';
+
+.pane {
+    position: relative;
+    transition: top .35s ease-in-out;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
