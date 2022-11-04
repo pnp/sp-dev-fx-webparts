@@ -8,8 +8,8 @@ This web part demonstrates displaying the list of approval requests of Power Aut
 
 ## Compatibility
 
-![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -48,6 +48,7 @@ react-my-approvals|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0]
 
 Version|Date|Comments
 -------|----|--------
+1.3|November 2, 2022|Updated to support responsive layouts<br/>Upgraded to SPFx v1.15.2
 1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 22, 2022|Updated to allow multiple environments to be selected
 1.0|January 11, 2022|Initial release
