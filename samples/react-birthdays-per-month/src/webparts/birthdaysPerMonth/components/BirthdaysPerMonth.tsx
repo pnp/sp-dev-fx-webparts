@@ -14,7 +14,7 @@ export default class BirthdaysPerMonth extends React.Component<IBirthdaysPerMont
     } = this.props;
 
     return (
-      <section className={`${styles.birthdaysPerMonth} ${hasTeamsContext ? styles.teams : ''}`}>
+      <section className={`tw-text-red-700`}>
         <div className={styles.welcome}>
           <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           <h2>Well done, {escape(userDisplayName)}!</h2>

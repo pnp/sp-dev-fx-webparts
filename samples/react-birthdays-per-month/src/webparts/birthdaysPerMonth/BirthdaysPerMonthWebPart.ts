@@ -10,6 +10,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'BirthdaysPerMonthWebPartStrings';
 import BirthdaysPerMonth from './components/BirthdaysPerMonth';
 import { IBirthdaysPerMonthProps } from './components/IBirthdaysPerMonthProps';
+import '../../../assets/dist/tailwind.css';
 
 export interface IBirthdaysPerMonthWebPartProps {
   description: string;
