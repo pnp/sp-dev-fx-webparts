@@ -87,7 +87,7 @@ export class SPService {
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.zoneGroupMetadata && webPart.zoneGroupMetadata.type === 1) {
-          const headingIsEmpty: boolean = webPart.zoneGroupMetadata.displayName === '';
+          const headingIsEmpty: boolean = !webPart.zoneGroupMetadata.displayName;
           const headingValue: string = headingIsEmpty ? 'Empty Heading' : webPart.zoneGroupMetadata.displayName ;
           const anchorUrl: string = this.GetAnchorUrl(headingValue);
           this.allUrls.push(anchorUrl);
@@ -104,7 +104,7 @@ export class SPService {
           const hasCollapsableHeader: boolean = webPart.zoneGroupMetadata && 
             webPart.zoneGroupMetadata.type === 1 && 
             ( anchorLinks.filter(x => x.name === webPart.zoneGroupMetadata.displayName).length === 1 || 
-            webPart.zoneGroupMetadata.displayName === '' );
+            !webPart.zoneGroupMetadata.displayName );
 
           const htmlObject: HTMLDivElement = document.createElement('div');
           htmlObject.innerHTML = HTMLString;
