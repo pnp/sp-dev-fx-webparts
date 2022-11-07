@@ -31,7 +31,7 @@
     "@types/mocha": "2.2.38",
     "ajv": "~6.12.3",
     "css-loader": "^3.5.3",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "sass": "^1.49.11",
     "sass-loader": "~8.0.2",
     "tslint-microsoft-contrib": "5.0.0",
