@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-azurefunction-sql",
+    "libraryId": "dfceb4ae-e27d-4baf-be15-8c0d1e4966b3",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-azurefunction-sql",
+    "solutionShortDescription": "react-azurefunction-sql description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
