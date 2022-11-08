@@ -1,32 +1,30 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
-
-import * as strings from 'AddJsCssReferenceWebPartStrings';
-import AddJsCssReference from './components/AddJsCssReference';
-import { IAddJsCssReferenceProps } from './components/IAddJsCssReferenceProps';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import AddJsCssReference, { IAddJsCssReferenceProps } from './components/AddJsCssReference';
+import { getSP } from './pnpjsConfig';
 
 export interface IAddJsCssReferenceWebPartProps {
-  description: string;
 }
 
 export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAddJsCssReferenceWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IAddJsCssReferenceProps > = React.createElement(
+    const element: React.ReactElement<IAddJsCssReferenceProps> = React.createElement(
       AddJsCssReference,
       {
-        description: this.properties.description,
-        context:this.context
+        context: this.context
       }
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected onInit(): Promise<void> {
+    getSP(this.context);
+    return super.onInit();
   }
 
   protected onDispose(): void {
@@ -42,16 +40,12 @@ export default class AddJsCssReferenceWebPart extends BaseClientSideWebPart<IAdd
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: ""
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
+              groupName: "No properties available",
+              groupFields: []
             }
           ]
         }
