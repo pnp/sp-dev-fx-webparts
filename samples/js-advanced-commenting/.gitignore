@@ -12,6 +12,7 @@ lib
 solution
 temp
 *.sppkg
+release
 
 # Coverage directory used by tools like istanbul
 coverage
@@ -30,3 +31,5 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+.heft

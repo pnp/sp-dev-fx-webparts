@@ -1,0 +1,90 @@
+@import '../../common.module';
+
+$eventBorderRadius: 6px;
+
+@mixin event-font() {
+    color: white;
+    @include ms-fontSize-12;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.header {
+    &.full {
+        @include hidden-md-down;
+    }
+
+    &.short {
+        @include hidden-sm;
+        @include hidden-lg-up;
+    }
+
+    &.min {
+        @include hidden-md-up;
+    }
+
+    & > * {
+        @include ms-fontSize-12;
+        @include ms-fontWeight-semibold;
+        line-height: 30px;
+        text-align: center;
+    }
+}
+
+.week {
+    position: relative;
+    padding-top: 22px;
+    padding-bottom: 2px;
+    min-height: 60px;
+
+    .background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .date {
+            &:not(:hover) .newEventButton {
+                display: none;
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+    }
+}
+
+.event {
+    @include event-font();
+    margin-top: 1px;
+    padding: 1px 6px 2px 6px;
+    cursor: pointer;
+
+    &.unapproved {
+        font-style: italic;
+    }
+
+    &.rejected {
+        text-decoration: line-through;
+    }
+
+    &.startsInWeek {
+        border-top-left-radius: $eventBorderRadius;
+        border-bottom-left-radius: $eventBorderRadius;
+    }
+
+    &.endsInWeek {
+        border-top-right-radius: $eventBorderRadius;
+        border-bottom-right-radius: $eventBorderRadius;
+        margin-right: 1px;
+    }
+
+    .title {
+        @include event-font();
+        text-overflow: ellipsis;
+        margin-right: 6px;
+    }
+}

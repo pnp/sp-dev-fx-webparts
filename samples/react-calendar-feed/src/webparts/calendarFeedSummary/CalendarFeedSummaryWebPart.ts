@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
@@ -35,7 +36,7 @@ import CalendarFeedSummary from "./components/CalendarFeedSummary";
 import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.types";
 
 // Support for theme variants
-import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 /**
  * Calendar Feed Summary Web Part
@@ -56,7 +57,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
   }
 
   protected onInit(): Promise<void> {
-    return new Promise<void>((resolve, _reject) => {
+    return new Promise<void>((resolve) => {
       // Consume the new ThemeProvider service
       this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
 
@@ -270,6 +271,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
   /**
    * If we get resized, call the Render method so that we can switch between the narrow view and the regular view
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected onAfterResize(newWidth: number): void {
     // redraw the web part
     this.render();
@@ -324,7 +326,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       return strings.FeedUrlValidationNoUrl;
     }
 
-    if (!feedUrl.match(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/)) {
+    if (!feedUrl.match(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-/]))?/)) {
       return strings.FeedUrlValidationInvalidFormat;
     }
 
@@ -345,7 +347,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     } = this.properties;
 
     // get the first provider matching the type selected
-    let providerItem: any = this._providerList.filter(p => p.key === this.properties.feedType)[0];
+    const providerItem: any = this._providerList.filter(p => p.key === this.properties.feedType)[0];
 
     // make sure we got a valid provider
     if (!providerItem) {
@@ -354,7 +356,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     }
 
     // get an instance
-    let provider: ICalendarService = providerItem.initialize();
+    const provider: ICalendarService = providerItem.initialize();
 
     // pass props
     provider.Context = this.context;

@@ -1,0 +1,61 @@
+{
+  "name": "react-react-query",
+  "version": "0.0.1",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.15.2",
+    "@microsoft/sp-lodash-subset": "1.15.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.15.2",
+    "@microsoft/sp-property-pane": "1.15.2",
+    "@microsoft/sp-webpart-base": "1.15.2",
+    "mgwdev-m365-helpers": "0.0.13",
+    "office-ui-fabric-react": "7.185.7",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-query": "^3.39.2",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.15.2",
+    "@microsoft/eslint-plugin-spfx": "1.15.2",
+    "@microsoft/rush-stack-compiler-4.5": "0.2.2",
+    "@microsoft/sp-build-web": "1.15.2",
+    "@microsoft/sp-module-interfaces": "1.15.2",
+    "@rushstack/eslint-config": "2.5.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^29.2.0",
+    "@types/react": "16.9.51",
+    "@types/react-dom": "16.9.8",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.2.0",
+    "jest-environment-jsdom": "^29.2.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "4.5.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testEnvironment": "jsdom",
+    "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(ts?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@microsoft/*|@microsoft/sp-http|))"
+    ]
+  }
+}

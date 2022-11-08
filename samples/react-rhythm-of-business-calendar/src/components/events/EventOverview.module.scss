@@ -1,0 +1,26 @@
+@import '../common.module';
+
+.root {
+    position: relative;
+
+    .title {
+        @include ms-fontWeight-semibold;
+        padding-bottom: 2px;
+
+        @include lg-up {
+            @include ms-fontSize-18;
+        }
+
+        @include md-down {
+            @include ms-fontSize-16;
+        }
+
+        &.unapproved {
+            font-style: italic;
+        }
+
+        &.rejected {
+            text-decoration: line-through;
+        }
+    }
+}

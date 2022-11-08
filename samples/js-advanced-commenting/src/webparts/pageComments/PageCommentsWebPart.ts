@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
@@ -12,7 +8,8 @@ import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import * as _ from "lodash";
 import * as moment from 'moment';
-
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import styles from './PageCommentsWebPart.module.scss';
 import * as strings from 'PageCommentsWebPartStrings';
 

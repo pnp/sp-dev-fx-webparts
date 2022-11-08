@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-pnpjs-spsite-er-diagram",
+    "libraryId": "d0130471-1806-4c7d-a504-9af696d7ed0f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-pnpjs-spsite-er-diagram",
+    "solutionShortDescription": "react-pnpjs-spsite-er-diagram description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

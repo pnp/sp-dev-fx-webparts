@@ -1,0 +1,351 @@
+<div style="background-color: CadetBlue; padding: 20px;">
+<h3>Find a Meeting Time and Schedule a Meeting - Microsoft Graph Toolkit</h3>
+<p>Isolated mode: &#9888; mandatory. Adapted from a <a href="https://www.freecodecamp.org/news/find-meeting-time-schedule-meeting-microsoft-365/">code sample written by Waldek Mastykarz</a>. Find more MGT samples on <a href="https://mgt.dev/?path=/story/overview--page" target="_blank">MGT Playground</a>. MGT components require API permissions, see the <a href="https://docs.microsoft.com/en-us/graph/toolkit/overview">Microsoft docs</a> for more info.</p>
+</div>
+<script src="https://unpkg.com/@microsoft/mgt@2/dist/bundle/mgt-loader.js"></script>
+  <style>
+    html,
+    select,
+    input,
+    button {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    html {
+      font-size: 0.875em;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+
+    .title {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .login {
+      display: grid;
+      grid-area: 1 / 2 / 2 / 3;
+      align-content: center;
+      justify-content: end;
+    }
+
+    .body {
+      grid-area: 2 / 1 / 3 / 3;
+      width: 40em;
+    }
+
+    .field {
+      margin-bottom: 1em;
+      clear: both;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.2em;
+    }
+
+    select {
+      padding: 0.25em;
+    }
+
+    input {
+      width: 50%;
+    }
+
+    button {
+      padding: 0.5em 1em;
+    }
+
+    input {
+      padding: 0.5em;
+    }
+
+    #result ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 10px;
+    }
+
+    #result li {
+      display: grid;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    #result li.selected {
+      border-color: rgb(14, 164, 234);
+      background-color: #eee;
+    }
+
+    #result li label {
+      cursor: pointer;
+      padding: 0.75em 1em;
+    }
+
+    #result li input {
+      display: none;
+    }
+
+    #result li .date {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
+    #schedule {
+      display: none;
+    }
+
+    #schedule button {
+      display: block;
+      margin-bottom: 1em;
+    }
+  </style>
+
+  <div class="grid">
+    <div class="title">
+      <h1>Find meeting times</h1>
+    </div>
+    <div class="login">
+      <mgt-login></mgt-login>
+    </div>
+    <div class="body">
+      <div class="field">
+        <label>Invite attendees</label>
+        <mgt-people-picker></mgt-people-picker>
+      </div>
+      <div class="field">
+        <label for="duration">Meeting duration</label>
+        <select id="duration">
+          <option value="25M">25 minutes</option>
+          <option value="55M">55 minutes</option>
+          <option value="1H">1 hour</option>
+        </select>
+      </div>
+      <div class="field" id="findMeetingTimes">
+        <button disabled>Find available meeting times</button>
+      </div>
+      <div class="field" id="result">
+      </div>
+      <div id="schedule">
+        <div class="field">
+          <label for="subject">Meeting subject</label>
+          <input id="subject" type="text" required>
+        </div>
+        <div class="field">
+          <label for="location">Meeting location</label>
+          <input id="location" type="text" required>
+        </div>
+        <div class="field">
+          <button disabled>Schedule meeting</button>
+          <span id="status"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      function findTimes() {
+      let availableMeetingTimes = null;
+      let selectedMeetingTime = null;
+      let graphClient;
+
+      // set up auth
+      mgt.Providers.globalProvider = new mgt.SharePointProvider(props.context)
+
+      // show body when logged in
+      mgt.Providers.onProviderUpdated(() => {
+        document.querySelector('.body').style.display =
+          mgt.Providers.globalProvider.state === mgt.ProviderState.SignedIn ? 'block' : 'none';
+        graphClient = mgt.Providers.globalProvider.graph.client;
+      });
+
+      function clearMeetingTimes() {
+        availableMeetingTimes = null;
+        selectedMeetingTime = null;
+        document.querySelector('#result').innerHTML = '';
+        document.querySelector('#schedule').style.display = 'none';
+        document.querySelector('#status').innerHTML = '';
+      }
+
+      function toggleFindMeetingTimes() {
+        const people = document.querySelector('mgt-people-picker').selectedPeople;
+        document
+          .querySelector('#findMeetingTimes button')
+          .disabled = people.length === 0;
+        clearMeetingTimes();
+      }
+
+      function toggleInputForm(props) {
+        document.querySelector('mgt-people-picker').disabled = !props.enabled;
+        document.querySelector('#duration').disabled = !props.enabled;
+        document.querySelector('#findMeetingTimes button').disabled = !props.enabled;
+        document.querySelector('#subject').disabled = !props.enabled;
+        document.querySelector('#location').disabled = !props.enabled;
+
+        if (props.enabled) {
+          // we can't just enable the schedule button, because we might be
+          // missing required subject and location fields
+          toggleScheduleMeeting();
+        }
+        else {
+          document.querySelector('#schedule button').disabled = true;
+        }
+      }
+
+      function toggleScheduleMeeting() {
+        document.querySelector('#schedule button').disabled =
+          selectedMeetingTime === 'null' ||
+          document.querySelector('#subject').value.length === 0 ||
+          document.querySelector('#location').value.length === 0;
+      }
+
+      function selectMeetingTime(event) {
+        // clear previously selected meeting time
+        const previouslySelected = document.querySelector('#result .selected');
+        if (previouslySelected) {
+          previouslySelected.classList.remove('selected');
+        }
+
+        // mark selected meeting time
+        const input = event.target;
+        input.parentElement.parentElement.classList.add('selected');
+        selectedMeetingTime = input.value;
+
+        document.querySelector('#schedule').style.display = 'block';
+      }
+
+      function getTimeString(date) {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+      }
+
+      function showMeetingTimes(meetingTimes) {
+        const result = document.querySelector('#result');
+
+        if (meetingTimes.length > 0) {
+          result.innerHTML = '<label>Select meeting time</label>';
+
+          const ul = document.createElement('ul');
+          result.appendChild(ul);
+
+          meetingTimes.forEach((meetingTime, index) => {
+            const li = document.createElement('li');
+            const startDateTime = new Date(meetingTime.meetingTimeSlot.start.dateTime + 'Z');
+            const endDateTime = new Date(meetingTime.meetingTimeSlot.end.dateTime + 'Z');
+            li.innerHTML = `<label>
+              <input type="radio" name="meetingTime" value="${index}">
+              <span class="date">${startDateTime.toLocaleDateString()}</span>
+              <span class="time">${getTimeString(startDateTime)} - ${getTimeString(endDateTime)}</span>
+            </label>`;
+            ul.appendChild(li);
+          });
+
+          // listen to selecting a meeting time
+          ul.querySelectorAll('input')
+            .forEach(input => input.addEventListener('change', selectMeetingTime));
+        }
+        else {
+          result.innerHTML = '⚠️ No meeting times available. Change the duration and try again';
+        }
+      }
+
+      async function findMeetingTimes() {
+        clearMeetingTimes();
+        toggleInputForm({ enabled: false });
+        document.querySelector('#result').innerHTML = '<em>Finding available meeting times...</em>';
+
+        try {
+          const meetingTimes = await graphClient
+            .api('/me/findMeetingTimes')
+            .post({
+              attendees: document.querySelector('mgt-people-picker').selectedPeople.map(p => {
+                return {
+                  emailAddress: {
+                    address: p.userPrincipalName,
+                    name: p.displayName
+                  },
+                  type: 'required'
+                };
+              }),
+              maxCandidates: 3,
+              meetingDuration: `PT${document.querySelector('#duration').value}`,
+              returnSuggestionReasons: true,
+              minimumAttendeePercentage: 100
+            });
+          availableMeetingTimes = meetingTimes.meetingTimeSuggestions;
+          showMeetingTimes(meetingTimes.meetingTimeSuggestions);
+        }
+        catch (error) {
+          document.querySelector('#result').innerHTML = `<span class="error">🛑 Error finding meeting times: ${error}</span>`;
+        }
+        finally {
+          toggleInputForm({ enabled: true });
+        }
+      }
+
+      async function scheduleMeeting() {
+        toggleInputForm({ enabled: false });
+        document.querySelector('#status').innerHTML = '<em>Scheduling meeting...</em>';
+
+        const meetingTime = availableMeetingTimes[selectedMeetingTime].meetingTimeSlot;
+
+        try {
+          await graphClient
+            .api('/me/events')
+            .post({
+              subject: document.querySelector('#subject').value,
+              start: meetingTime.start,
+              end: meetingTime.end,
+              attendees: document.querySelector('mgt-people-picker').selectedPeople.map(p => {
+                return {
+                  emailAddress: {
+                    address: p.userPrincipalName,
+                    name: p.displayName
+                  },
+                  type: 'required'
+                };
+              })
+            });
+          document.querySelector('#status').innerHTML = '✅ Meeting scheduled!';
+        }
+        catch (error) {
+          document.querySelector('#status').innerHTML = `<span class="error">🛑 Error scheduling meeting: ${error}</span>`;
+        }
+        finally {
+          toggleInputForm({ enabled: true });
+        }
+      }
+
+      document
+        .querySelector('mgt-people-picker')
+        .addEventListener('selectionChanged', toggleFindMeetingTimes);
+      document
+        .querySelector('#duration')
+        .addEventListener('change', clearMeetingTimes);
+      document
+        .querySelector('#findMeetingTimes button')
+        .addEventListener('click', findMeetingTimes);
+      document
+        .querySelectorAll('#subject, #location')
+        .forEach(input => input.addEventListener('input', toggleScheduleMeeting));
+      document
+        .querySelector('#schedule button')
+        .addEventListener('click', scheduleMeeting);
+    }
+  </script>
+
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/wc/webcomponents-loader.js" type="text/javascript"></script>
+<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt.es6.js" type="text/javascript" onload="findTimes()"></script>
