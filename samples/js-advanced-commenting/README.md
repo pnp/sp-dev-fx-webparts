@@ -35,26 +35,30 @@
 
 9. **_Document Preview_** can be enabled or disabled for the office files and videos.
 
-
-## Preview
 ![Advanced-Comments-Box](./assets/Advanced-Comments-Box.gif)
 
 
 ## Compatibility
 
-![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "Requires access to SharePoint content")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to <https://aka.ms/spfx-matrix>
 
 ## Applies to
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
  
@@ -71,6 +75,7 @@ SPFxPageComments | [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](
 Version|Date|Comments
 -------|----|--------
 1.0.0.0|Feb 05 2020|Initial release
+1.1.0.0|Oct 06, 2022|Upgraded to 1.15.2
 
 
 ## Minimal Path to Awesome
@@ -85,22 +90,24 @@ Version|Date|Comments
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
+
 - Used [SharePoint Framework Property Controls](https://sharepoint.github.io/sp-dev-fx-property-controls/) to create the property pane controls(Text, ListPicker, Toggle) with callout.
 - Used [PnP](https://pnp.github.io/pnpjs/) for communication with SharePoint.
 - Used [jquery-comments](https://viima.github.io/jquery-comments/) for comments control with some customization.
 - Used [Moment.js](https://momentjs.com/) for datetime formatting.
 
 #### Local Mode
+
 This solution doesn't work on local mode.
 
-#### SharePoint Mode
+#### SharePoint Mode4
+
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
 
 ## Video
 
 [![Building an enhanced commenting web part with SPFx](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=ndHMdfFscsk "Building an enhanced commenting web part with SPFx")
-
 
 ## Help
 
