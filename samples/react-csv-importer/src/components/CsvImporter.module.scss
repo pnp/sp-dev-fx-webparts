@@ -1,0 +1,169 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.csvImporter {
+  :global {
+    .CSVImporter_TextButton {
+      background-color: "[theme: themePrimary, default: #0078d7]";
+      border-color: "[theme: themePrimary, default: #0078d7]";
+      color: "[theme: white, default: #ffffff]";
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .CSVImporter_TextButton:hover:not(:disabled) {
+      background-color: "[theme: themeDarkAlt, default: #106ebe]";
+      border-color: "[theme: themeDarkAlt, default: #106ebe]";
+    }
+
+    .CSVImporter_FileSelector {
+      border: .12em dashed;
+      border-color: "[theme: neutralPrimary, default: #323130]";
+      background: "[theme: neutralLight, default: #edebe9]";
+      color: var(--bodyText);
+      border-radius: 0;
+      padding: 5em;
+    }
+
+    .CSVImporter_ImporterFrame {
+      border: .12em solid;
+      border-color: "[theme: neutralQuaternary, default: #d2d0ce]";
+      padding: 1.2em;
+      border-radius: 0;
+      background: "[theme: neutralLighterAlt, default: #faf9f8]";
+    }
+
+    .CSVImporter_ColumnDragCard {
+      background: "[theme: white, default: #ffffff]";
+    }
+
+    .CSVImporter_ColumnDragCard__cardHeader>b {
+      background: "[theme: neutralQuaternaryAlt, default: #e1dfdd]";
+    }
+
+    .CSVImporter_ColumnDragCard[data-shadow=true] {
+      background: "[theme: neutralQuaternaryAlt, default: #e1dfdd]";
+      color: "[theme: neutralPrimaryAlt, default: #3b3a39]";
+    }
+
+    .CSVImporter_ColumnDragCard__cardHeader {
+      color: "[theme: neutralPrimaryAlt, default: #3b3a39]";
+    }
+
+    .CSVImporter_ColumnDragCard[data-shadow=true]>.CSVImporter_ColumnDragCard__cardValue[data-header=true] {
+      color: "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+    }
+
+    .CSVImporter_FileStep__header {
+      color: "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+    }
+
+    .CSVImporter_FormatDataRowPreview__table>thead>tr>th {
+      color: "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+    }
+
+    .CSVImporter_FormatDataRowPreview {
+      border-color: "[theme: neutralPrimaryAlt, default: #3b3a39]";
+    }
+
+    .CSVImporter_FormatRawPreview__pre {
+      margin: 0;
+      padding: .25em .25em;
+      line-height: 1.1;
+      font-size: 1em;
+    }
+
+    .CSVImporter_FormatRawPreview__scroll {
+      border-radius: 0;
+      background: "[theme: neutralPrimaryAlt, default: #3b3a39]";
+      color: "[theme: neutralLight, default: #edebe9]";
+    }
+
+    .CSVImporter_ProgressDisplay__progressBarIndicator {
+      background: "[theme: neutralPrimaryAlt, default: #3b3a39]";
+    }
+
+    .CSVImporter_ImporterFrame__headerCrumbSeparator>span {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_IconButton>span[data-type=arrowBack] {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_IconButton>span[data-type=back] {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_IconButton>span[data-type=forward] {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_IconButton>span[data-type=replay] {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_IconButton>span[data-type=close] {
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>');
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>');
+      background-image: none;
+      background-color: var(--bodyText);
+    }
+
+    .CSVImporter_FileStep__headerToggle {
+      color: var(--bodyText);
+    }
+
+    .CSVImporter_ImporterFrame__headerTitle {
+      color: var(--bodyText);
+    }
+
+    .CSVImporter_ImporterFrame__headerSubtitle {
+      color: var(--bodyText);
+    }
+
+    .CSVImporter_ColumnDragTargetArea__boxLabel {
+      color: var(--bodyText);
+    }
+
+    .CSVImporter_ColumnDragTargetArea__boxLabel>b {
+      color: "[theme: red, default: #d13438]";
+    }
+
+    .CSVImporter_ProgressDisplay__status {
+      color: var(--bodyText);
+    }
+
+    .CSVImporter_ProgressDisplay__count {
+      color: var(--bodyText);
+    }
+  }
+
+  .title {
+    @include ms-font-xl;
+  }
+
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
