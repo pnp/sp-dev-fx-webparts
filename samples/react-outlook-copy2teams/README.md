@@ -27,7 +27,7 @@ A detailed functionality and technical description can be found in the [author's
 
 ## Applies to
 
-* [Tutorial for creating Outlook Web Access extension using SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial)
+* [Tutorial for creating Outlook Web Access extension using SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial)
 
 ## Solution
 
@@ -47,7 +47,7 @@ Version|Date|Comments
 * Clone this repository
 * in the command line run:
   * restore dependencies: `npm install`
-  From here you can also follow the deployment steps from the official [Microsoft Tutorial](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial#packaging-and-deploying-your-solution-to-sharepoint)
+  From here you can also follow the deployment steps from the official [Microsoft Tutorial](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial#packaging-and-deploying-your-solution-to-sharepoint)
   * build solution `gulp build --ship`
   * bundle solution: `gulp bundle --ship`
   * package solution: `gulp package-solution --ship`

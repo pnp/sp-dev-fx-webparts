@@ -37,7 +37,7 @@ steps:
     pathtoPublish: '$(Build.SourcesDirectory)/sharepoint/solution/react-jest-testing.sppkg' 
     artifactName: 'SPFx sppkg' 
   displayName: 'Publish build SPFx artifacts'
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=vsts
+  # https://learn.microsoft.com/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=vsts
 
 # Publish Build Artifacts Office 365 CLI
 - task: PublishBuildArtifacts@1

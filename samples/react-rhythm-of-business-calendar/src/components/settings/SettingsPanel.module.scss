@@ -1,0 +1,23 @@
+@import '../panels.module';
+
+.refiners {
+    .refiner {
+        height: 32px;
+
+        .name {
+            @include ms-fontSize-14;
+            @include ms-fontWeight-semibold;
+        }
+
+        .edit {
+            display: none;
+        }
+
+        &:hover,
+        &:focus-within {
+            .edit {
+                display: block;
+            }
+        }
+    }
+}

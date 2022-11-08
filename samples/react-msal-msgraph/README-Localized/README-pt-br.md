@@ -38,8 +38,8 @@ Depois de ter concedido as permissões, as seguintes informações serão exibid
 
 ## Aplicável a
 
-* [Estrutura do SharePoint](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Locatário de desenvolvedor do Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Estrutura do SharePoint](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Locatário de desenvolvedor do Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solução
 

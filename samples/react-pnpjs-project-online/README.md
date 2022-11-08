@@ -23,14 +23,14 @@ Custom PnPjs module: [pnpjs-project-online-package](https://www.npmjs.com/packag
 
 ## Applies to
 
-- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-- [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-- [Project Online](<https://docs.microsoft.com/en-us/previous-versions/office/project-javascript-api/jj712612(v%3Doffice.15)>)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [Project Online](<https://learn.microsoft.com/previous-versions/office/project-javascript-api/jj712612(v%3Doffice.15)>)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online and Project Online licence
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 - Project site with sample data available.
 
 ## Solution

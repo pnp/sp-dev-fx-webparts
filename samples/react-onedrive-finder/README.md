@@ -2,11 +2,11 @@
 
 ## Summary
 
-This sample access drives from OneDrive and navigate between his content using **Graph OneDrive and Site API and [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) react controls "@microsoft/mgt-react**" with the addition of new controls **Mgt-File-List [FileList](https://docs.microsoft.com/en-us/graph/toolkit/components/file-list)** and **Mgt-File [File](https://docs.microsoft.com/en-us/graph/toolkit/components/file)** . This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file.
+This sample access drives from OneDrive and navigate between his content using **Graph OneDrive and Site API and [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) react controls "@microsoft/mgt-react**" with the addition of new controls **Mgt-File-List [FileList](https://learn.microsoft.com/graph/toolkit/components/file-list)** and **Mgt-File [File](https://learn.microsoft.com/graph/toolkit/components/file)** . This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file.
 
-**[FileList](https://docs.microsoft.com/en-us/graph/toolkit/components/file-list)** control allow to load files base on graph querys or parameters ids.
+**[FileList](https://learn.microsoft.com/graph/toolkit/components/file-list)** control allow to load files base on graph querys or parameters ids.
 
-**[File](https://docs.microsoft.com/en-us/graph/toolkit/components/file)** control allow to File component is used to represent an individual file/folder from OneDrive or SharePoint base on graph querys or parameters ids.
+**[File](https://learn.microsoft.com/graph/toolkit/components/file)** control allow to File component is used to represent an individual file/folder from OneDrive or SharePoint base on graph querys or parameters ids.
 
 Below a draw resuming the custom query's made and what control uses to retrieve associated folders and files from different locations.
 ![Demo](./assets/OneDrivefinderSample4.PNG)
@@ -39,7 +39,7 @@ Below a draw resuming the custom query's made and what control uses to retrieve 
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Solution
@@ -95,8 +95,8 @@ This extension illustrates the following concepts:
 - Filter by File Extension
 - Change theme of control and Localization
 - Caching refresh
-- **[FileList](https://docs.microsoft.com/en-us/graph/toolkit/components/file-list)** New mgt-file-list control.
-- **[File](https://docs.microsoft.com/en-us/graph/toolkit/components/file)** New mgt-file control.
+- **[FileList](https://learn.microsoft.com/graph/toolkit/components/file-list)** New mgt-file-list control.
+- **[File](https://learn.microsoft.com/graph/toolkit/components/file)** New mgt-file control.
 
 ## Video
 

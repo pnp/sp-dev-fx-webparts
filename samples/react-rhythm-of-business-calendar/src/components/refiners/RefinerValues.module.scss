@@ -1,0 +1,19 @@
+@import '../common.module';
+
+.heading {
+    .editContainer {
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    .edit {
+        display: none;
+    }
+
+    &:hover,
+    &:focus-within {
+        .edit {
+            display: block;
+        }
+    }
+}

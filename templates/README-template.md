@@ -40,17 +40,26 @@ You can add as many screen shots as you'd like to help users understand your web
 
 ## Compatibility
 
-![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 <!--
+
+If using SPFX 1.14, update the SPFx and Node.js tags as per below:
+![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+
   If using SPFx 1.13.1, update the SPFx and Node.js tags accordingly:
-<!-- ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg) -->
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 
   If using SPFx 1.12.1, update the SPFx and Node.js tags accordingly:
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
@@ -99,10 +108,10 @@ Don't worry if you're unsure about the compatibility matrix above. We'll verify 
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Solution
 <!--

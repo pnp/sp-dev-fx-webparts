@@ -21,7 +21,7 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Applies to
 
-* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 

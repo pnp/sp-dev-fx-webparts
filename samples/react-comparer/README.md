@@ -68,8 +68,8 @@ The file picker includes the following tabs:
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -157,7 +157,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
 ### Resources
 
 * [Fluent for Fabric](https://fluentfabric.azurewebsites.net/#/components)
-* [Build custom controls for the property pane](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
+* [Build custom controls for the property pane](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
 * [Office UI Fabric](https://developer.microsoft.com/fluentui/)
   * [Button](https://developer.microsoft.com/en-us/fabric#/components/button)
   * [CommandBar](https://developer.microsoft.com/en-us/fabric#/components/commandbar)
@@ -173,7 +173,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
   * [Selection](https://developer.microsoft.com/en-us/fabric#/components/selection)
   * [Spinner](https://developer.microsoft.com/en-us/fabric#/components/spinner)
   * [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
-* [SharePoint Online tenant properties](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties)
+* [SharePoint Online tenant properties](https://learn.microsoft.com/sharepoint/dev/spfx/tenant-properties)
 * [@pnp/spfx-controls-react](https://sharepoint.github.io/sp-dev-fx-controls-react/)
   * [Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/)
   * [WebPartTitle](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/WebPartTitle/)

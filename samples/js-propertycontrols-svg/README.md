@@ -1,3 +1,4 @@
+
 # Dynamic Scalable Vector Graphics (SVG) image using properties
 
 ## Summary
@@ -9,6 +10,8 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 
 ## Compatibility
 
+This sample is designed to be used in the following enviroments:
+
 ![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg) 
 ![Node.js v6](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -18,6 +21,8 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Which PnP SPFx controls are being used in this sample?
 
 * [PropertyFieldSpinButton](https://github.com/pnp/sp-dev-fx-property-controls/wiki/PropertyFieldSpinButton)
@@ -25,7 +30,7 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [sp-dev-fx-property-controls](https://github.com/pnp/sp-dev-fx-property-controls)
 * [PnP Man](https://github.com/thechriskent/PnPMan)
 

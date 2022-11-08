@@ -10,7 +10,7 @@
 - The web part will automatically load all the properties in two dropdowns. One for Accordion Title and One for Accordion Content that must be html type.
 - This will generate an accordion with one section for each item in the list.
 - Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page.
-- To deploy to a Teams tab see current [Microsoft documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
+- To deploy to a Teams tab see current [Microsoft documentation](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
 
 ![Web Part in Action](./assets/react-accordion-section.gif)
 
@@ -44,8 +44,8 @@
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites

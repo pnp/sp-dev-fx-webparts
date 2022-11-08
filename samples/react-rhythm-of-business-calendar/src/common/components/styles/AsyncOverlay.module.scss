@@ -1,0 +1,13 @@
+@import 'common.module';
+
+.asyncOverlay {
+    &:global(.ms-Overlay) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    :global(.ms-Spinner) {
+        padding: 20px;
+    }
+}

@@ -22,7 +22,7 @@ This sample shows how to use the webpack [markdown-loader](https://www.npmjs.com
 
 Read the following documentation for detailed information on working with webpack loaders in SharePoint Framework:
 
-- [Extending webpack in the SharePoint Framework toolchain](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/extending-webpack-in-build-pipeline)
+- [Extending webpack in the SharePoint Framework toolchain](https://learn.microsoft.com/sharepoint/dev/spfx/toolchain/extending-webpack-in-build-pipeline)
 
 ## Compatibility
 
@@ -38,8 +38,8 @@ Read the following documentation for detailed information on working with webpac
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

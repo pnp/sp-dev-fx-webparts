@@ -2,7 +2,7 @@
 
 Bot Framework v4 bot authentication using Microsoft Graph sample
 
-This bot has been created using [Bot Framework](https://dev.botframework.com). It shows how to use the bot authentication capabilities of Azure Bot Service. In this sample we are assuming the OAuth 2 provider is Azure Active Directory v2 (AADv2) and are utilizing the Microsoft Graph API to retrieve data about the user. [Check here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0&tabs=csharp) for information about getting an AADv2
+This bot has been created using [Bot Framework](https://dev.botframework.com). It shows how to use the bot authentication capabilities of Azure Bot Service. In this sample we are assuming the OAuth 2 provider is Azure Active Directory v2 (AADv2) and are utilizing the Microsoft Graph API to retrieve data about the user. [Check here](https://learn.microsoft.com/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0&tabs=csharp) for information about getting an AADv2
 application setup for use in Azure Bot Service. The [scopes](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) used in this sample are the following:
 
 -  `User.Read`
@@ -75,7 +75,7 @@ This error may confusingly present itself if either of the following are true:
 
 ## Testing Direct Line token generation
 
-- [Connect to Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0)
+- [Connect to Direct Line](https://learn.microsoft.com/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0)
 
 - Add ‘Direct Line Secret’ to `.env`
 
@@ -114,14 +114,14 @@ This error may confusingly present itself if either of the following are true:
 -  [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
 -  [Microsoft Graph API](https://developer.microsoft.com/en-us/graph)
 -  [MS Graph Docs](https://developer.microsoft.com/en-us/graph/docs/concepts/overview) and [SDK](https://github.com/microsoftgraph/msgraph-sdk-dotnet)
--  [Activity processing](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
+-  [Activity processing](https://learn.microsoft.com/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
 -  [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 -  [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
--  [.NET Core CLI tools](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x)
+-  [.NET Core CLI tools](https://learn.microsoft.com/dotnet/core/tools/?tabs=netcore2x)
 -  [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 -  [Azure Portal](https://portal.azure.com)
--  [Language Understanding using LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/)
--  [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
+-  [Language Understanding using LUIS](https://learn.microsoft.com/azure/cognitive-services/luis/)
+-  [Channels and Bot Connector Service](https://learn.microsoft.com/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
 -  [Restify](https://www.npmjs.com/package/restify)
 -  [dotenv](https://www.npmjs.com/package/dotenv)
 

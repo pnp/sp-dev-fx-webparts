@@ -30,7 +30,7 @@ export default class ThumbnailWebPart extends BaseClientSideWebPart<void> {
         });
 
         // Thumbnail URL docs
-        // https://docs.microsoft.com/en-us/graph/api/driveitem-list-thumbnails
+        // https://learn.microsoft.com/graph/api/driveitem-list-thumbnails
 
         // When using custom thumbnails:
         // The thumbnail returned may not exactly match the pixel dimensions that was requested,
