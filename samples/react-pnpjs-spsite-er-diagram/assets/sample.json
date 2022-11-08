@@ -28,7 +28,13 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-spsite-er-diagram/assets/YOUR-IMAGE-NAME-HERE",
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPageFullScreen.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 200,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPage.png",
                 "alt": "Web Part Preview"
             }
         ],
