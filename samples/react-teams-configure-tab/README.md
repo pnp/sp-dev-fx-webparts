@@ -24,8 +24,8 @@ When the user selects one of the tab options, the tab is saved pointing to the c
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Solution
@@ -71,7 +71,7 @@ If you want all tab clicks to be redirected back through this page, select the R
 
 #### 3. Set up the app manifest
 
-Create a new app manifest in [Teams App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview), and add a Team Tab. Paste the URL of your configuration page into the Configuration URL field.
+Create a new app manifest in [Teams App Studio](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/app-studio-overview), and add a Team Tab. Paste the URL of your configuration page into the Configuration URL field.
 
 ![Create a Team Tab in App Studio](documentation/images/SPTabAppStudioTeamsTab001.png)
 

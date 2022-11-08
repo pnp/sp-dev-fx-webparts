@@ -21,8 +21,8 @@ The web part pulls in the current user's name and displays it on the page. The g
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 * [PnP SPFx Controls](https://sharepoint.github.io/sp-dev-fx-controls-react)
 * [PnP SPFx Property Controls](https://sharepoint.github.io/sp-dev-fx-property-controls)
 

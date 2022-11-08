@@ -1,0 +1,11 @@
+@import 'common.module';
+
+.callout {
+    @include ms-fontSize-16;
+
+    @include xl-up {
+        max-width: 800px
+    }
+
+    padding: 20px 24px;
+}

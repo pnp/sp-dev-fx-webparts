@@ -18,8 +18,8 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Applies to
 
-* [SharePoint Framework Web Parts](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
-* [Office 365 developer tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Web Parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
@@ -49,7 +49,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
         ],
     ```
 
-- Refer [Connect to Azure AD-secured APIs](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient) to publish and approve permissions from admin site
+- Refer [Connect to Azure AD-secured APIs](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient) to publish and approve permissions from admin site
 
 - In the command line run
 
@@ -65,7 +65,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Deploy
 
-If you want to deploy it follow [these steps](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
+If you want to deploy it follow [these steps](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
 
 ## Features
 

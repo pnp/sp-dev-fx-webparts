@@ -75,7 +75,7 @@ export default class ReactHtmWebPart extends BaseClientSideWebPart<IReactHtmWebP
 
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
       // https://remarkablemark.org/blog/2018/05/15/javascript-eval-vs-function/
-      // https://docs.microsoft.com/en-us/javascript/api/sp-loader/spcomponentloader
+      // https://learn.microsoft.com/javascript/api/sp-loader/spcomponentloader
       const evalFunction = new Function(this.properties.template);
       const evalFunctionContext = {
         html: html,

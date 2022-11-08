@@ -112,9 +112,9 @@ The web part helps to create new O365 group.
 ![New Group](./assets/new-group.gif)
 
 ## Applies to
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Online](https://docs.microsoft.com/en-us/sharepoint/sharepoint-online)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/sharepoint-online)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 # Web Part Properties
 Property|Type|Required|Comments
@@ -141,7 +141,7 @@ Version|Date|Comments
 - Set up Power Automate flow for approval to join private group. Please refer [Calling Graph API from Power Automate Flow](https://www.c-sharpcorner.com/article/calling-graph-api-from-power-automate-flow/)
 - SharePoint Online tenant 
 - Site Collection created under the **/sites/** or **/**- 
-- You need following set of permissions in order to manage Office 365 groups. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial)
+- You need following set of permissions in order to manage Office 365 groups. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial)
 ```
 "webApiPermissionRequests": [  
     {
@@ -185,7 +185,7 @@ Version|Date|Comments
 - Locate the solution at `./sharepoint/solution/react-manage-o365-groups.sppkg` and upload it to SharePoint tenant app catalog
 - You will see a message saying that solution has pending permissions which need to be approved:
 ![Pending permission requests](./assets/pending-permission-requests.png)
-- Approve the permission requests. There are [different options available](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli. 
+- Approve the permission requests. There are [different options available](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli. 
 - For the matter of this sample, the fastest way to do it is through new SharePoint Admin UI. 
 - Open Web API permission management page by navigating to the url `https://<tenant>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement` (change the `<tenant>` to your O365 tenant name) or by going to the new Admin UI directly from old SharePoint Admin Center. 
 - Select pending requests and approve it:

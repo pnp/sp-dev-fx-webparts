@@ -4388,11 +4388,12 @@
       "dev": true
     },
     "@tinymce/tinymce-react": {
-      "version": "3.0.1",
-      "resolved": "https://registry.npmjs.org/@tinymce/tinymce-react/-/tinymce-react-3.0.1.tgz",
-      "integrity": "sha512-19g2iHR6Bxp7FpnyA/71Aq5kzzM7D5adT87hL+QvcySH1NoqB2aTqBBdiF/0HoDVI/nXq7FbalmlIcVTen1WrQ==",
+      "version": "4.2.0",
+      "resolved": "https://registry.npmjs.org/@tinymce/tinymce-react/-/tinymce-react-4.2.0.tgz",
+      "integrity": "sha512-Oyi/hDvARR29oqUwTgYXDnMV9E/c7C8V+iK+gUj9tndVXsfSJRYVOw3MTK9CCC9f7alN/S4CYaPpIaA3f4VZzw==",
       "requires": {
-        "prop-types": "^15.6.2"
+        "prop-types": "^15.6.2",
+        "tinymce": "^6.0.0 || ^5.5.1"
       }
     },
     "@types/adal-angular": {
@@ -19127,9 +19128,9 @@
       }
     },
     "tinymce": {
-      "version": "5.0.1",
-      "resolved": "https://registry.npmjs.org/tinymce/-/tinymce-5.0.1.tgz",
-      "integrity": "sha512-bAKaEEtRd4BsXu6ySYflhO83Cg844LHrplcaWalbdeZjFXwkodtv3G6H1x2r6ThaOdyE4+otJtxPYlfzwyKDdw=="
+      "version": "5.10.5",
+      "resolved": "https://registry.npmjs.org/tinymce/-/tinymce-5.10.5.tgz",
+      "integrity": "sha512-nFKtLhmoRtExBxUfv06JlkbQWux5D+d115vxSRAqUmccZdrtpFvOIYwZmikvulLdM9pfEpvO0B+RQ2qFV/+R7w=="
     },
     "tmp": {
       "version": "0.0.33",

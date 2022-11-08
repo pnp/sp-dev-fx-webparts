@@ -23,7 +23,7 @@ This SPFx React web part sample demonstrates mobile touch slide swiper. By defau
 
 ## Solution packaging and bundle optimization considerations
 
-This sample uses the Swiper JavaScript library thought the npm packages, but just for the purpose of the sample so it can quicky be run without addional setup. It is highly recomended to add the Swiper library as SPFx solution [external reference](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/basics/add-an-external-library) to resize the solution bundle size and improve Site Page load times. 
+This sample uses the Swiper JavaScript library thought the npm packages, but just for the purpose of the sample so it can quicky be run without addional setup. It is highly recomended to add the Swiper library as SPFx solution [external reference](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/add-an-external-library) to resize the solution bundle size and improve Site Page load times. 
 
 
 ## Compatibility
@@ -38,13 +38,13 @@ This sample uses the Swiper JavaScript library thought the npm packages, but jus
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 

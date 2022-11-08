@@ -32,7 +32,7 @@ define([], function () {
     PlaceholderButtonLabel: "Configure",
     PlaceholderDescription: "To use this web part, you need to enter your template JSON.",
     PlaceholderIconText: "Configure Adaptive Card Host",
-    AdaptiveCardTemplatingMoreInfoLinkUrl: "https://docs.microsoft.com/en-us/adaptive-cards/templating/",
+    AdaptiveCardTemplatingMoreInfoLinkUrl: "https://learn.microsoft.com/adaptive-cards/templating/",
     AdaptiveCardTemplatingInfoLabel: "Adaptive Card Templating separates the data from the layout in an Adaptive Card. You can design your card once, then populate it with real data at runtime.",
     DataJSONFieldLabel: "Data JSON",
     UseAdaptiveTemplatingLabel: "Use Adaptive Card Templating",
