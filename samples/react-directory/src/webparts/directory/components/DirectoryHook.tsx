@@ -9,7 +9,7 @@ import {
     Spinner, SpinnerSize, MessageBar, MessageBarType, SearchBox, Icon, Label,
     Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, Dropdown, IDropdownOption
 } from "office-ui-fabric-react";
-import { Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack,  IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { debounce } from "throttle-debounce";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { ISPServices } from "../../../SPServices/ISPServices";
@@ -144,7 +144,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
                             } else {
                                 if(index == searchProps.length - 1) {
                                     qryText += `${srchprop}:${finalSearchText}*`;
-                                } else qryText += `${srchprop}:${finalSearchText}* OR `;                                
+                                } else qryText += `${srchprop}:${finalSearchText}* OR `;
                             }
                         });
                     } else {
@@ -356,8 +356,8 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
                                                         />
                                                     </Stack>
                                                 </div>
-                                                <Stack horizontal horizontalAlign="center" wrap tokens={wrapStackTokens}>
-                                                    <div>{diretoryGrid}</div>
+                                                <Stack horizontal horizontalAlign={props.useSpaceBetween?"space-between":"center"} wrap tokens={wrapStackTokens}>
+                                                    {diretoryGrid}
                                                 </Stack>
                                                 <div style={{ width: '100%', display: 'inline-block' }}>
                                                     <Paging
