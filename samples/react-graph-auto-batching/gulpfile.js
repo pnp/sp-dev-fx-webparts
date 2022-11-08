@@ -12,8 +12,6 @@ build.rig.getTasks = function () {
 
   return result;
 };
-<<<<<<< HEAD
-=======
 build.configureWebpack.mergeConfig({
   additionalConfiguration: (generatedConfiguration) => {
     generatedConfiguration.node = {
@@ -28,6 +26,5 @@ build.configureWebpack.mergeConfig({
     return generatedConfiguration;
   }
 });
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 
 build.initialize(require('gulp'));

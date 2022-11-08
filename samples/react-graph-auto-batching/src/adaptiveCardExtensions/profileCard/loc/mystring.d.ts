@@ -5,10 +5,8 @@ declare interface IProfileCardAdaptiveCardExtensionStrings {
   TitleFieldLabel: string;
   IconPropertyFieldLabel: string;
   Title: string;
-  SubTitle: string;
   Description: string;
   PrimaryText: string;
-  QuickViewButton: string;
 }
 
 declare module 'ProfileCardAdaptiveCardExtensionStrings' {

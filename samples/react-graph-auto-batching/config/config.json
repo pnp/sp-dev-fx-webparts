@@ -7,24 +7,17 @@
         {
           "entrypoint": "./lib/webparts/graphAutoBatching/GraphAutoBatchingWebPart.js",
           "manifest": "./src/webparts/graphAutoBatching/GraphAutoBatchingWebPart.manifest.json"
-<<<<<<< HEAD
-=======
         },
         {
           "entrypoint": "./lib/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.js",
           "manifest": "./src/adaptiveCardExtensions/profileCard/ProfileCardAdaptiveCardExtension.manifest.json"
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-<<<<<<< HEAD
-    "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js"
-=======
     "GraphAutoBatchingWebPartStrings": "lib/webparts/graphAutoBatching/loc/{locale}.js",
     "ProfileCardAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/profileCard/loc/{locale}.js"
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
   }
 }
