@@ -44,19 +44,19 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
     }
 
     // Load from site
-    let spSiteData: SPSiteData = {
+    const spSiteData: SPSiteData = {
         relations: [],
         tables: []
     }
-    let tmp_listNames: any = {};
+    const tmp_listNames: any = {};
 
     const sp = spfi().using(SPFx(spfxContext));
-    let lists = await sp.web.lists.filter("Hidden ne 1")();
+    const lists = await sp.web.lists.filter("Hidden ne 1")();
 
     const totalCount = lists.filter(l => !l.Hidden).length;
     let loadedCount = 0;
 
-    for(let list of lists) {
+    for(const list of lists) {
         if(!list.Hidden) {
             loadedCount++;
             progress && progress(loadedCount/totalCount * 100);
@@ -65,11 +65,11 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             tmp_listNames[`{${list.Id.toLocaleLowerCase()}}`] = list.Title;
 
             // Tables/Lists
-            let table: SPTable = { id: list.Id, title: list.Title, fields: [], alerts: [] };
+            const table: SPTable = { id: list.Id, title: list.Title, fields: [], alerts: [] };
             // Fields
-            let fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
-            .filter(f => !f.Hidden && (f as any).LookupList != "AppPrincipals" && 
-                ((f as any).CanBeDeleted || (f as any).InternalName == "Title" || (f as any).InternalName == "Id")
+            const fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
+            .filter(f => !f.Hidden && (f as any).LookupList !== "AppPrincipals" && 
+                ((f as any).CanBeDeleted || (f as any).InternalName === "Title" || (f as any).InternalName === "Id")
             )
             //.sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
             table.fields = fields.map(f => {
@@ -77,7 +77,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
                 return { 
                     name: f.InternalName, 
                     displayName: f.Title, 
-                    iskey: (f as any).TypeDisplayName == "Lookup" && (f as any).IsRelationship && (f as any).LookupList != '' && (f as any).LookupList != "AppPrincipals",
+                    iskey: (f as any).TypeDisplayName === "Lookup" && (f as any).IsRelationship && (f as any).LookupList !== '' && (f as any).LookupList !== "AppPrincipals",
                     isunique: f.EnforceUniqueValues,
                     type: f.TypeDisplayName
                     } 
@@ -97,9 +97,9 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             spSiteData.tables.push(table);
 
             // Links/Lookups
-            let relations: SPRelation[] = fields.filter(f => f.TypeDisplayName == "Lookup" && 
+            const relations: SPRelation[] = fields.filter(f => f.TypeDisplayName === "Lookup" && 
             (f as any).IsRelationship &&
-            (f as any).LookupList != '' && (f as any).LookupList != "AppPrincipals"
+            (f as any).LookupList !== '' && (f as any).LookupList !== "AppPrincipals"
             ).map<SPRelation>(f => 
             {
                 return {

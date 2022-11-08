@@ -30,26 +30,26 @@ const configByFieldType: any = {
     "Hyperlink or Picture": { color: colors.blue, figure: "Circle" }
 }
 const getNodeItemFromField = (f: SPTableField, fieldNameProperty: string = "name") : GoJSNodeItem => {
-    let c = configByFieldType[f.type] || configByFieldType['default'];
-    let prefix = f.type == "Counter" ? "PK | " : (f.iskey && f.type == "Lookup" ? "FK | " : "");
+    const c = configByFieldType[f.type] || configByFieldType['default'];
+    const prefix = f.type === "Counter" ? "PK | " : (f.iskey && f.type === "Lookup" ? "FK | " : "");
     return { 
         name: prefix + (f as any)[fieldNameProperty] + ` (${f.type})`, 
         iskey: f.iskey, 
         figure: c.figure, 
         color: f.iskey ? colors.keycolor : c.color,
-        order: f.type == "Counter" ? "1" :
-        f.type == "Lookup" && f.iskey ? "2" :
-        f.type == "Lookup" ? "3" :
+        order: f.type === "Counter" ? "1" :
+        f.type === "Lookup" && f.iskey ? "2" :
+        f.type === "Lookup" ? "3" :
         f.type
     };
 }
-const configByAlert: any = {
+const configByAlert = {
     'Info': { color: colors.lightblue, figure: "Rectangle" },
     'Warning': { color: colors.orange, figure: "Rectangle" },
     'Error': { color: colors.red, figure: "Rectangle" },
 }
 const getNodeItemFromAlert = (a: SPTableAlert) : GoJSNodeItem => {
-    let c = configByAlert[a.type];
+    const c = configByAlert[a.type];
     return { 
         name: "#" + a.type + " | " + a.title, 
         iskey: false, 

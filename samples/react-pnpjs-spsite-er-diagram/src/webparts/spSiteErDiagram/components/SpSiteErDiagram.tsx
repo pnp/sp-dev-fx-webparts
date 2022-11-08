@@ -23,16 +23,16 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
   const [alertsActive, setAlertsActive] = React.useState(true);
   const [fieldsActive, setFieldsActive] = React.useState(true);
 
-  const loadDiagram = async (refresh: boolean) => {
+  const loadDiagram = async (refresh: boolean):Promise<void> => {
     if(refresh) { setLoadingProgress(0); setNodeDataArray([]); }
     // Get SP SiteData for ER Diagram
-    let spSiteData = await getSPSiteData(props.context, refresh, (progress) => {setLoadingProgress(progress);});
+    const spSiteData = await getSPSiteData(props.context, refresh, (progress) => {setLoadingProgress(progress);});
     console.log("SPSiteData", spSiteData);
     // Transform to GoJS Model
-    let goJSNodes = getGoJSNodesFromSPSiteData(spSiteData, useInternalName ? "name" : "displayName", alertsActive, fieldsActive);
+    const goJSNodes = getGoJSNodesFromSPSiteData(spSiteData, useInternalName ? "name" : "displayName", alertsActive, fieldsActive);
     // Set State
     setNodeDataArray(goJSNodes.nodeDataArray.filter((n) => 
-      optionRelationOnly && goJSNodes.linkDataArray.some(l => l.from == n.key || l.to == n.key) || !optionRelationOnly // Filter optionRelationOnly
+      optionRelationOnly && goJSNodes.linkDataArray.some(l => l.from === n.key || l.to === n.key) || !optionRelationOnly // Filter optionRelationOnly
     ));
     setLinkDataArray(goJSNodes.linkDataArray);
   }
@@ -42,11 +42,11 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
     loadDiagram(false);
   }, [optionRelationOnly, useInternalName, alertsActive, fieldsActive]);
 
-  const downloadAsImage = () => {
+  const downloadAsImage = ():void => {
     if(diagramRef && diagramRef.current) {
-      let canvas = (diagramRef.current as any).divRef.current.firstChild;
+      const canvas = (diagramRef.current as any).divRef.current.firstChild;
       console.log((diagramRef.current as any).divRef.current);
-      var link = document.createElement('a');
+      const link = document.createElement('a');
       link.download = props.context.pageContext.web.title + '_ERDiagram.png';
       link.href = canvas.toDataURL()
       link.click();
@@ -64,7 +64,7 @@ const SpSiteErDiagram: React.FC<ISpSiteDiagramProps> = (props: ISpSiteDiagramPro
         {key: '4', text: "Download as image", iconProps: { iconName: 'Share' }, onClick: () => { downloadAsImage() }}
       ]} />
       <div className={styles.spSiteErDiagram} style={{height: "calc(100% - 44px)", padding: "0px"}}>
-        { loadingProgress != 100 && nodeDataArray.length == 0 ?
+        { loadingProgress !== 100 && nodeDataArray.length === 0 ?
         <div style={{ padding: "8%" }}>
           <ProgressIndicator label={`Loading Lists and Columns ${loadingProgress.toFixed(0)}%`} percentComplete={loadingProgress/100} />
         </div> : 
