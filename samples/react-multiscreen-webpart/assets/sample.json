@@ -9,10 +9,9 @@
       "This sample uses the popular React Router library to create tab, multi-screen or single page app (spa) experience in React SPFx web part. This is useful when the web part is more complex and to simplify the user experience multiple screens or tabs are needed. The same approach can be taken when a single page app (SPA) has to be migrated to modern SharePoint sites."
     ],
     "creationDateTime": "2019-07-03",
-    "updateDateTime": "2019-07-03",
+    "updateDateTime": "2021-10-03",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -21,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.8.2"
+        "value": "1.12.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -48,18 +47,24 @@
         "company": "",
         "pictureUrl": "https://github.com/VelinGeorgiev.png",
         "name": "Velin Georgiev"
+      },
+      {
+        "gitHubAccount": "AriGunawan",
+        "name": "Ari Gunawan",
+        "company": "",
+        "pictureUrl": "https://github.com/AriGunawan.png"
       }
     ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
         "name": "Building Microsoft Teams Tabs using SharePoint Framework",
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
     ]
   }

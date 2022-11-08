@@ -1,6 +1,12 @@
-## All Microsoft 365 Groups and Teams with SPFx
+## Compatibility
 
-### Summary
+This sample is designed to be used in the following enviroments:
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
+# All Microsoft 365 Groups and Teams with SPFx
+
+## Summary
 Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.
 1. The Microsoft Groups view has filter option for private or public groups and can switch between viewing all groups or just my groups. 
  - Group Name (hover for group description)
@@ -26,22 +32,27 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%210.x-green.svg)
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
-![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
-![Workbench Hosted: Only after API permissions granted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Only after API permissions granted")
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%202019-Not%20compatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%202016%20(Feature%20Pack%202)-Not%20compatible-red.svg)
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires API permissions")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Only after API permissions granted")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
+React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))  |
 
 ## Version history
 
@@ -49,10 +60,10 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
 | ------- | ---------------- | --------------- |
 | 1.0.0   | April 16, 2021 | Initial release |
 | 1.0.1   | August 1, 2021 | Fixed references to Office.com |
+| 1.1.0   | October 8, 2021 | Upgraded to SPFx 1.12.1 for higher compatibility and added Teams Tab deployment support. |
 
 
-
-# Prerequisites
+## Prerequisites
 
 - Administrative access to Azure AD of Microsoft 365 tenant
 - SharePoint Online tenant
@@ -68,7 +79,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
     }]
 ```
 
-# Minimal Path to Awesome
+## Minimal Path to Awesome
 
 - Clone this repo
 - Navigate to the folder with current sample
@@ -82,7 +93,9 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
 - Open hosted workbench, i.e. `https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
 - Search and add `O365 Groups Manager` web part to see it in action
 
-# Features
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+
+## Features
 
 This project contains sample client-side web part built on the SharePoint Framework illustrating possibilities to quickly gain access to features in Microsoft 365 Groups and Teams using React and MS Graph.
 
@@ -95,19 +108,29 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
 - Passing web part properties to React components 
 
-# Disclaimer
+## Video
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+[![Building a React groups and teams web part for aggregating detailed information for end users](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=MakgCyOq9tk "Building a React groups and teams web part for aggregating detailed information for end users")
 
-## Support
+## Help
 
-We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-groups-teams") to see if anybody else is having the same issues.
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-groups-teams) and see what the community is saying.
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-groups-teams&template=bug-report.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-groups-teams&template=question.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-groups-teams&template=question.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-groups-teams" />
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-groups-teams" />

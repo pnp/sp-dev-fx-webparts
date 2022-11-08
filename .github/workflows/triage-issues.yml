@@ -1,0 +1,48 @@
+name: 'Triage Issues'
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  Triage-New-Issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Verify that issue contains valid authors
+        id: valid-authors
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected')
+        uses: ./.github/actions/verify-author
+        with:
+          issue: "${{ toJson(github.event.issue) }}"
+      - name: Add label if missing author
+        uses: actions-ecosystem/action-add-labels@v1
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected') && steps.valid-authors.outputs.valid-authors == ''
+        with:
+          labels: status:wrong-author
+      - name: Notify when invalid authors
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected') && steps.valid-authors.outputs.valid-authors == ''
+        uses: actions/github-script@0.8.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs')
+            const issueBody = fs.readFileSync(".github/ISSUE_RESPONSES/wrong-author.md", "utf8")
+            github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: issueBody
+            })
+      - name: Add issue to project board
+        if: contains(github.event.issue.labels.*.name, 'type:bug-suspected')
+        uses: actions/github-script@0.8.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.projects.createCard({
+            column_id: 16754671,
+            content_id: context.payload.issue.id,
+            content_type: "Issue"
+            });

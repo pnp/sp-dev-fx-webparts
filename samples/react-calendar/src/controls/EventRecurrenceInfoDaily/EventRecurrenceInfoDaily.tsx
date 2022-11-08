@@ -81,9 +81,11 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-  private onStartDateChange(date: Date) {
-    this.setState({ startDate: date });
-    this.applyRecurrence();
+   private onStartDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete. 
+    this.setState({ startDate: date }, () => {
+      this.applyRecurrence();
+    });
   }
 
   /**
@@ -93,9 +95,11 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-  private onEndDateChange(date: Date) {
-    this.setState({ endDate: date });
-    this.applyRecurrence();
+   private onEndDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+      this.setState({ endDate: date}, () => {
+      this.applyRecurrence();
+    });
   }
 
   /**
@@ -153,23 +157,39 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoDaily
    */
-  private onDataRangeOptionChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
+   private onDataRangeOptionChange(
+    ev: React.SyntheticEvent<HTMLElement>,
+    option: IChoiceGroupOption
+  ): void {
     ev.preventDefault();
-
-    this.setState({
-      selectdateRangeOption: option.key,
-      disableNumberOcurrences: option.key == 'endAfter' ? false : true,
-      disableEndDate: option.key == 'endDate' ? false : true,
-    });
-    this.applyRecurrence();
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState(
+      {
+        selectdateRangeOption: option.key,
+        disableNumberOcurrences: option.key == "endAfter" ? false : true,
+        disableEndDate: option.key == "endDate" ? false : true,
+      },
+      () => {
+        this.applyRecurrence();
+      }
+    );
   }
-  private onPatternChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
+  
+  private onPatternChange(
+    ev: React.SyntheticEvent<HTMLElement>,
+    option: IChoiceGroupOption
+  ): void {
     ev.preventDefault();
-    this.setState({
-      selectPatern: option.key,
-      disableNumberOfDays: option.key == 'every' ? false : true,
-    });
-    this.applyRecurrence();
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState(
+      {
+        selectPatern: option.key,
+        disableNumberOfDays: option.key == "every" ? false : true,
+      },
+      () => {
+        this.applyRecurrence();
+      }
+    );
   }
 
   public async componentWillMount() {

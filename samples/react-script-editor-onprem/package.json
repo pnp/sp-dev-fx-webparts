@@ -30,7 +30,7 @@
         "@types/mocha": "2.2.38",
         "@types/prop-types": "ts2.4",
         "ajv": "~5.2.2",
-        "gulp": "~3.9.1",
+        "gulp": "~4.0.2",
         "webpack-bundle-analyzer": "^2.13.1"
     },
     "scripts": {

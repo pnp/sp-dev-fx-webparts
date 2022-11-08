@@ -3,27 +3,36 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  IPropertyPaneDropdownOption,
+  PropertyPaneDropdown,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'GraphAppSecretExpirationWebPartStrings';
 import GraphAppSecretExpiration from './components/GraphAppSecretExpiration';
 import { IGraphAppSecretExpirationProps } from './components/IGraphAppSecretExpirationProps';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IGraphAppSecretExpirationWebPartProps {
-  description: string;
+  groupByColumn: string;
+  expiringSoon: boolean;
+  displaySampleData: boolean;
+
 }
 
 export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPart<IGraphAppSecretExpirationWebPartProps> {
-  private graphClient: MSGraphClient;
+  private graphClient: MSGraphClientV3;
+  private dropdownOptions: IPropertyPaneDropdownOption[] = [
+    { key: "none", text: "None" },
+    { key: "applicationId", text: "Application ID" },
+    { key: "type", text: "Type" }];
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient("3")
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));
@@ -34,8 +43,10 @@ export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPa
     const element: React.ReactElement<IGraphAppSecretExpirationProps> = React.createElement(
       GraphAppSecretExpiration,
       {
-        description: this.properties.description,
-        graphClient: this.graphClient
+        graphClient: this.graphClient,
+        groupByColumn: this.properties.groupByColumn,
+        expiringSoon: this.properties.expiringSoon,
+        displaySampleData: this.properties.displaySampleData
       }
     );
 
@@ -61,8 +72,27 @@ export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPa
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneDropdown('groupByColumn', {
+                  label: strings.DefaultGroupColumnFieldLabel,
+                  options: this.dropdownOptions,
+                  selectedKey: "none"
+                }),
+                PropertyPaneToggle('expiringSoon', {
+                  label: strings.DisplayOnlySecretsFieldLabel,
+                  onText: "Yes",
+                  offText: "No"
+
+                })
+              ]
+            },
+            {
+              groupName: strings.OtherGroupName,
+              groupFields: [
+                PropertyPaneToggle('displaySampleData', {
+                  label: strings.DisplaySampleDataFieldLabel,
+                  onText: "Yes",
+                  offText: "No"
+
                 })
               ]
             }

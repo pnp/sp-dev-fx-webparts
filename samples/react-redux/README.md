@@ -27,14 +27,27 @@ Sample web part implementation that uses [Redux](https://github.com/reactjs/redu
 
 ![](https://i.gyazo.com/1981f22fa6a162931a29ce8dad9c2657.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+This sample is designed to be used in the following enviroments:
+
+![SPFx 0.4.0](https://img.shields.io/badge/SPFx-0.4.0-orange.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
+
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -48,20 +61,18 @@ Version|Date|Comments
 -------|----|--------
 1.0|October 28, 2016|Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
-```sh
+```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.sh
 $ git clone https://github.com/pnp/sp-dev-fx-webparts
 $ cd sp-dev-fx-webparts/samples/react-redux
 $ npm install
 $ gulp serve
 ```
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
@@ -71,4 +82,10 @@ $ gulp serve
   Web part reducer implementation follows the [ducks pattern](https://github.com/erikras/ducks-modular-redux).
 * Redux store configuration defined in `./store`
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-redux" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-redux" />

@@ -3,8 +3,17 @@
   "solution": {
     "name": "sharepoint-crud-client-side-solution",
     "id": "1409e8a2-1ce4-4888-87f8-1dc377b6b62e",
-    "version": "1.0.0.0",
-    "includeClientSideAssets": true
+    "version": "1.4.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/sharepoint-crud.sppkg"

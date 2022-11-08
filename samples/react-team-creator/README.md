@@ -12,14 +12,28 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 
 ![React Side Panel Client-Side Web Part](./assets/teams-creator.png)
 
-## Used SharePoint Framework Version 
-![1.7.0](https://img.shields.io/badge/drop-1.7.0-green.svg)
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
+
+![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
+![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
-* [MS Teams](https://docs.microsoft.com/en-us/microsoftteams/microsoft-teams)
+* [MS Teams](https://learn.microsoft.com/microsoftteams/microsoft-teams)
 
 ## Solution
 
@@ -33,9 +47,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|October 17, 2018|Initial release
 1.1|November 19, 2018|Upgrade to SPFx v1.7.0, updated to use v1.0 MS Graph endpoints
-
-## Disclaimer
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Features
 Sample features:
@@ -65,4 +76,4 @@ This package produces the following:
 * dist/* - the bundled script, along with other resources
 * deploy/* - all resources which should be uploaded to a CDN.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-team-creator" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-team-creator" />

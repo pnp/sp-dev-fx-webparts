@@ -34,8 +34,8 @@
     "@microsoft/sp-webpart-workbench": "1.11.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
-    "ajv": "~5.2.2",
-    "gulp": "~3.9.1"
+    "ajv": "~6.12.3",
+    "gulp": "~4.0.2"
   },
   "main": "lib/index.js"
 }

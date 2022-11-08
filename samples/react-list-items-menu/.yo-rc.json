@@ -24,7 +24,7 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.11.0",
+    "version": "1.13.0",
     "libraryName": "react-list-items-menu",
     "libraryId": "8b4a758d-a968-4e7c-a949-b42e7dd5ad14",
     "packageManager": "npm",

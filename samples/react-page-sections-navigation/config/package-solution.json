@@ -3,9 +3,35 @@
   "solution": {
     "name": "page-sections-navigation-client-side-solution",
     "id": "bf7b299c-3bac-47cc-9f44-43eb180335d8",
-    "version": "1.0.0.4",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "page-sections-navigation description"
+      },
+      "longDescription": {
+        "default": "page-sections-navigation description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "page-sections-navigation Feature",
+        "description": "The feature that activates elements of the page-sections-navigation solution.",
+        "id": "50df5ee0-812b-4221-8650-e4d769f2f755",
+        "version": "1.2.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/page-sections-navigation.sppkg"

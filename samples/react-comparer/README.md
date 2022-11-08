@@ -54,14 +54,22 @@ The file picker includes the following tabs:
 ![From a link tab](./assets/FromLinkTab.gif)
 
 
-## Used SharePoint Framework Version
 
-![SPFx v1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg)
+## Compatibility
+
+![SPFx 1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg) 
+![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -75,19 +83,17 @@ Version|Date|Comments
 -------|----|--------
 1.0|January 27, 2019|Initial release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
-* Clone this repository
+* Clone this repository  (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer) then unzip it)
 * In the command line run:
   * `npm i`
   * `gulp serve --nobrowser`
 * In the web browser navigate to the hosted version of the SharePoint workbench located in the same site as where the Tasks list is, eg. *https://contoso.sharepoint.com/sites/team/_layouts/15/workbench.aspx*.
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Optional Configuration - Bing Search
 
@@ -151,7 +157,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
 ### Resources
 
 * [Fluent for Fabric](https://fluentfabric.azurewebsites.net/#/components)
-* [Build custom controls for the property pane](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
+* [Build custom controls for the property pane](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
 * [Office UI Fabric](https://developer.microsoft.com/fluentui/)
   * [Button](https://developer.microsoft.com/en-us/fabric#/components/button)
   * [CommandBar](https://developer.microsoft.com/en-us/fabric#/components/commandbar)
@@ -167,7 +173,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
   * [Selection](https://developer.microsoft.com/en-us/fabric#/components/selection)
   * [Spinner](https://developer.microsoft.com/en-us/fabric#/components/spinner)
   * [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
-* [SharePoint Online tenant properties](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties)
+* [SharePoint Online tenant properties](https://learn.microsoft.com/sharepoint/dev/spfx/tenant-properties)
 * [@pnp/spfx-controls-react](https://sharepoint.github.io/sp-dev-fx-controls-react/)
   * [Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/)
   * [WebPartTitle](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/WebPartTitle/)
@@ -176,4 +182,10 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
 * [React-block-image](https://github.com/transitive-bullshit/react-block-image)
 * [StackExchange - SPFx calls blocked by CORS policy](https://sharepoint.stackexchange.com/questions/254050/spfx-calls-blocked-by-cors-policy)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-comparer" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-comparer" />

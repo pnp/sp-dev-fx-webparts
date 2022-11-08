@@ -1,6 +1,6 @@
 name: 🐞 Bug or error report
 description: Report an anomaly or unexpected behavior with a sample from this repository.
-labels: ['Needs: Triage :mag:', 'type:bug-suspected']
+labels: ['type:bug-suspected']
 
 body:
 - type: markdown
@@ -10,6 +10,9 @@ body:
 
       Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues. 
       
+      > **IMPORTANT**
+      > Before you submit an issue, please follow the **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)**. 
+
       - Follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues).
       - All bug reports are welcome - we want to fix them!
       - This repo is maintained by volunteers. Please be courteous and patient. 🙂
@@ -19,6 +22,15 @@ body:
 
       Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
 
+- type: dropdown
+  id: disclaimer
+  validations:
+    required: true
+  attributes:
+    label: Disclaimer
+    description: I have read and understood the **[support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md)**, and followed the steps listed in **[troubleshooting steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)** and **[how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)** before submitting this issue. I understand that my issue may be closed if I do not follow the guidelines.
+    options:
+    - "Yes"
 - type: input
   id: sample
   validations:
@@ -134,16 +146,33 @@ body:
       - label: other (enter in the "Additional environment details" area below)
 
 - type: input
-  id: Node
+  id: installed-node
   validations:
     required: true
   attributes:
-    label: Node.js version
-    placeholder: v10.23.1
+    label:  What version of Node.js is currently installed on your workstation?
     description: |
-        Which version of Node.js are you using?
+        Run `node -v` and paste the results. 
+
+- type: input
+  id: required-node
+  validations:
+    required: true
+  attributes:
+    label:  What version of Node.js is required by the sample?
+    description: |
+        You can find the compatible versions of React in the sample's `README.md`, in the **Compatibility** section.
         
-        TIP: To find out, run `node -v`
+- type: textarea
+  id: spfxdoctor
+  validations:
+    required: true
+  attributes:
+    label: Paste the results of SPFx doctor
+    description: |
+        Run `m365 spfx doctor -o text` and paste the results. 
+        
+        Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 
 - type: textarea
   id: moar

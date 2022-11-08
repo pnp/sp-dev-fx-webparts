@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.10.0",
+    "version": "1.13.0",
     "libraryName": "react-kanban-board",
     "libraryId": "cccbd72b-7b89-4128-9348-0a4850ded8fd",
     "packageManager": "npm",

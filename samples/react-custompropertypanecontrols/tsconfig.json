@@ -16,23 +16,21 @@
     "lib": [
       "es5",
       "dom",
-      "es2015.collection"
+      "es2015.collection",
+      "es2015.promise"
     ],
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
     ],
     "types": [
-      "es6-promise",
       "webpack-env"
     ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules",
-    "lib"
-  ],
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-2.7/includes/tsconfig-web.json"
+  "exclude": [],
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.9/includes/tsconfig-web.json"
 }

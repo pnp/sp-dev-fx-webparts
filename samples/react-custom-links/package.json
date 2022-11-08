@@ -42,7 +42,7 @@
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "gulp-sequence": "1.0.0",
     "lodash": "^4.17.15",
     "spfx-uifabric-themes": "^0.8.0",

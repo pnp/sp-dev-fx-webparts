@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a62fd5a8-90e0-4712-8569-57c0b11d9f89",
+  "alias": "MyAwardsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Awards" },
+    "description": { "default": "Show user profile awards. It uses Graph beta endpoint to get the profile awards of the selected user." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "layoutType": "Card",
+      "selectedUserOrigin": "CurrentUser"
+    }
+  }]
+}

@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.8.2",
+    "version": "1.12.1",
     "libraryName": "react-router-dom",
     "libraryId": "8aae1dc4-d74b-4ec4-ae2f-ebfd1e9ee7d0",
     "packageManager": "npm",

@@ -11,8 +11,7 @@
     "creationDateTime": "2019-10-30",
     "updateDateTime": "2019-10-30",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -36,6 +35,12 @@
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart.png?raw=true",
         "alt": "MS Teams Channels and Tabs from Modern Team site"
+      },
+      {
+        "type": "video",
+        "order": 102,
+        "url": "https://www.youtube.com/embed/jUesdAdHRng",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
@@ -50,7 +55,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   }

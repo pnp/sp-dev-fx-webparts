@@ -1,0 +1,78 @@
+@import '../panels.module';
+
+.header {
+    position: relative;
+
+    .text {
+        @include md-down {
+            @include ms-fontSize-16;
+        }
+
+        @include lg-up {
+            @include ms-fontSize-18;
+        }
+
+        @include ms-fontWeight-semibold;
+        padding: 24px 24px 12px 24px;
+    }
+
+    .liveUpdateMark {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+    }
+}
+
+.content {
+    .refinerValue {
+        position: relative;
+        padding: 12px 0;
+
+        .tag {
+            padding-right: 24px;
+        }
+
+        @include md-down {
+
+            .tag,
+            .color,
+            .commands {
+                padding-top: 12px;
+            }
+        }
+
+        .liveUpdateMark {
+            position: absolute;
+            left: -32px;
+            top: 16px;
+        }
+
+        .titleLiveUpdateMark {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .colorLiveUpdateMark {
+            top: 5px;
+        }
+
+        .tagLiveUpdateMark {
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+
+        .archiveToggle {
+            margin: 6px 0;
+        }
+    }
+}
+
+.colorPreview {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    border-color: $color-neutralSecondary;
+    border-radius: 15px;
+}

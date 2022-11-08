@@ -5,7 +5,14 @@
     "id": "21ba0db9-71ef-4f6b-8463-ce29e77e19f4",
     "version": "2.0.1.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.13.1"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-custompropertypanecontrols.sppkg"

@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.10.0",
+    "version": "1.14.0-beta.4",
     "isDomainIsolated": false,
     "isCreatingSolution": true,
     "packageManager": "npm",

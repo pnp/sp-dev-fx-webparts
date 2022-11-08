@@ -10,5 +10,8 @@ export interface IReactAccordionProps {
   maxItemsPerPage: number;
   enablePaging:boolean;
   totalItems:number;
+  customSortField:string;
+  sortById:boolean;
+  sortByModified:boolean;
   updateProperty: (value: string) => void;
 }

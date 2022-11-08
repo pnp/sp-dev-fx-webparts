@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "my-awards-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/myAwards/MyAwardsWebPart.js",
+          "manifest": "./src/webparts/myAwards/MyAwardsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MyAwardsWebPartStrings": "lib/webparts/myAwards/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

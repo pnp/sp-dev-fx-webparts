@@ -12,14 +12,21 @@ Sub folders represent the different stages of the migration process. Each folder
 | 02-added-configuration | Extended the code with support for configuring the web part through the property pane | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-datatables-script-to-spfx#add-support-for-configuring-the-web-part-through-web-part-properties)
 | 03-transformed-js-to-typescript | Transformed plain JavaScript to TypeScript | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-datatables-script-to-spfx#transform-the-plain-javascript-code-to-typescript)
 
-## Used SharePoint Framework Version
 
-![v1.10.0](https://img.shields.io/badge/SPFx-v1.10.0-green.svg)
+## Compatibility
+
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -33,12 +40,6 @@ Version | Date            | Comments
 --------| --------------- | --------
 1.0.0   | June 27, 2017   | Initial commit
 1.1.0   | June 28, 2017   | Updated tutorial code for SPFx v1.10
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
 
 ## Build and run the tutorials
 
@@ -82,4 +83,10 @@ Once the npm packages are installed, run the command to preview your web parts i
 gulp serve --nobrowser
 ```
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorial-migrate-datatables" />
+## Disclaimer
+
+**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/tutorial-migrate-datatables" />

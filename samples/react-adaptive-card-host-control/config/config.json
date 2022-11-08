@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "adaptive-card-host-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/adaptiveCardHostDemo/AdaptiveCardHostDemoWebPart.js",
+          "manifest": "./src/webparts/adaptiveCardHostDemo/AdaptiveCardHostDemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AdaptiveCardHostDemoWebPartStrings": "lib/webparts/adaptiveCardHostDemo/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

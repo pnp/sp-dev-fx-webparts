@@ -4,10 +4,9 @@ import { ISharePointStoriesProps } from "./ISharePointStoriesProps";
 import { ISharePointStoriesState } from "./ISharePointStoriesState";
 import Stories from "react-insta-stories";
 import { SPHttpClient} from '@microsoft/sp-http';
-import { Header, Renderer, Story } from "react-insta-stories/dist/interfaces";
-import { WithHeader } from 'react-insta-stories';
-import { Person } from '@microsoft/mgt-react';
-import { PersonViewType } from "@microsoft/mgt";
+import { Renderer, Story } from "react-insta-stories/dist/interfaces";
+import { Person } from '@microsoft/mgt-react/dist/es6/spfx';
+import { PersonViewType } from '@microsoft/mgt-spfx';
 import { WithSeeMore } from 'react-insta-stories';
 
 export default class SharePointStories extends React.Component<ISharePointStoriesProps, ISharePointStoriesState> {
@@ -63,9 +62,9 @@ export default class SharePointStories extends React.Component<ISharePointStorie
       padding: 0
     };
 
-    var storyRenderer: Renderer = ({ action, isPaused, story, config}) => {
-      return <WithSeeMore story={story} action={action}>
-        <div style={{ ...contentStyle, backgroundImage: `url("${story.url}")`, backgroundRepeat: 'no-repeat', paddingTop: '50px' }}>
+    var storyRenderer: Renderer = ({ action, isPaused, story: thisStory, config}) => {
+      return <WithSeeMore story={thisStory} action={action}>
+        <div style={{ ...contentStyle, backgroundImage: `url("${thisStory.url}")`, backgroundRepeat: 'no-repeat', paddingTop: '50px' }}>
         <div>
           <Person userId={authorId} avatarSize={'large'} view={PersonViewType.twolines} />
         </div>

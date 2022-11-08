@@ -208,8 +208,11 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
   private getUnique(data: Array<Object>, config: ChartConfiguration): Object {
     const chLabels: Object = { unique: [], labels: [] };
     data.forEach((item) => {
-      if (chLabels['unique'].indexOf(item[config.unique]) == -1 && item[config.unique] != null && item[config.unique] != "") {
-        chLabels['unique'].push(item[config.unique]);
+      var uniqueItem = item[config.unique];
+      var isTaxonomyField = item[config.unique].hasOwnProperty('TermGuid');
+
+      if ((isTaxonomyField ? !chLabels['unique'].some(field => field['TermGuid'] === uniqueItem['TermGuid']) : chLabels['unique'].indexOf(uniqueItem) == -1) && uniqueItem != null && uniqueItem != "") {
+        chLabels['unique'].push(uniqueItem);
         //if term use VAlue
         chLabels['labels'].push(this.getLabel(item, config.col1));
       }
@@ -234,14 +237,13 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
   }
 
   private getValues(data: Array<Object>, unique: Array<string>, config: ChartConfiguration): Array<Array<any>> {
-
     const values: Object = {};
     const vals: Array<Array<any>> = [[]];
     unique.forEach((col, i) => {
       values[col] = [];
       vals[i] = [];
       data.forEach((item, _i) => {
-        if (item[config.unique] == col) {
+        if (item[config.unique].hasOwnProperty('TermGuid') ? item[config.unique]["TermGuid"] == col["TermGuid"] : item[config.unique] == col) {
           vals[i].push(item[config.col2]);
         }
       });

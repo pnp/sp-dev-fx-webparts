@@ -1,0 +1,28 @@
+.pagination{   
+    padding-top: 10px; 
+    text-align: center;
+    float: right;
+
+    .rowsPerPage{
+      float: left;    
+    }
+
+    .buttonStyle {       
+        min-width: auto;
+        text-align: center;
+        border: 2px solid white;
+          &:not([class*="ms-Button--primary"]){
+            background-color: #f0f0f0;
+            &:hover{
+              background-color: #f7f7f7;
+            }
+          }  
+    }
+
+      .buttonStyle:disabled{
+        color: lightgray;
+        i{
+          color: lightgray
+        }
+      }
+}

@@ -7,10 +7,10 @@ import { IContainerProps } from './IContainerProps';
 import { PagesToDisplay } from '@src/utilities';
 import { usePageApi } from '@src/apiHooks/usePageApi';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
+import { TreeLayout } from '../Layouts/TreeLayout';
 
 export const Container: React.FunctionComponent<IContainerProps> = props => {
-  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished);
-
+  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, props.treeFrom, props.treeExpandTo);
   let controlToRender = undefined;
   switch (props.pagesToDisplay) {
     case PagesToDisplay.Ancestors:
@@ -18,6 +18,9 @@ export const Container: React.FunctionComponent<IContainerProps> = props => {
       break;
     case PagesToDisplay.Children:
       controlToRender = <ListLayout domElement={props.domElement} pages={pagesApi.state.childrenPages} themeVariant={props.themeVariant} />;
+      break;
+    case PagesToDisplay.Tree:
+      controlToRender = <TreeLayout domElement={props.domElement} pages={pagesApi.state.childrenPages} themeVariant={props.themeVariant} nav={pagesApi.state.tree} pageId={props.currentPageId} />
       break;
     default:
       controlToRender = <div>

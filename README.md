@@ -1,3 +1,4 @@
+<!--
 ---
 page_type: sample
 products:
@@ -10,7 +11,16 @@ extensions:
   - SharePoint Framework
   createdDate: 8/30/2016 10:21:43 AM
 ---
+-->
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
+
+![GitHub Repo stars](https://img.shields.io/github/stars/pnp/sp-dev-fx-webparts?style=social)
+![GitHub forks](https://img.shields.io/github/forks/pnp/sp-dev-fx-webparts?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/pnp/sp-dev-fx-webparts?style=social)
+[![Twitter Follow](https://img.shields.io/twitter/follow/m365pnp?style=social)](https://twitter.com/m365pnp?s=20)
+[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UC_mKdhw-V6CeCM7gTo_Iy7w?style=social)](https://www.youtube.com/channel/UC_mKdhw-V6CeCM7gTo_Iy7w)
+[![GitHub issues](https://img.shields.io/github/issues/pnp/sp-dev-fx-webparts)](https://github.com/pnp/sp-dev-fx-webparts/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/pnp/sp-dev-fx-webparts)](https://github.com/pnp/sp-dev-fx-webparts/pulls)
 
 This repository contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 
@@ -27,9 +37,9 @@ Please use following logic on submitting your questions or issues to right locat
 
 ## Additional resources
 
-* [Overview of the SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework development tools and libraries](https://docs.microsoft.com/sharepoint/dev/spfx/tools-and-libraries)
-* [Getting Started](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Overview of the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework development tools and libraries](https://learn.microsoft.com/sharepoint/dev/spfx/tools-and-libraries)
+* [Getting Started](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Using the samples
 

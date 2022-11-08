@@ -5,7 +5,7 @@ These samples show how to implement support for section backgrounds in your web 
 
 There are 3 web parts in this solution showing how to implement support for a background and 1 web part that shows what the fallback scenario looks like.
 
-For more details on the implementation, check out the documentation at https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/basics/supporting-section-backgrounds
+For more details on the implementation, check out the documentation at https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/supporting-section-backgrounds
 
 ## A basic web part
 This basic (no framework) web part implements support for backgrounds.
@@ -34,8 +34,8 @@ This web part implements a Office UI button which is inheriting its colors corre
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -52,4 +52,4 @@ Version|Date|Comments
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/section-backgrounds" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/section-backgrounds" />

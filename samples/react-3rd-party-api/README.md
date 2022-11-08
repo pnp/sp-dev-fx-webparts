@@ -21,12 +21,6 @@ You will need to publish the web application on a hosting environment (for examp
 | ------------- | ------------- | ------------- |
 | 1.0.0  | February 19th 2018   | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
-
 ## Build and run the sample
 
 To build and run this client-side project, you will need to clone and build the tutorials project.
@@ -69,5 +63,11 @@ Once the npm packages are installed, run the command to preview your web parts i
 ```
 gulp serve
 ```
+## Disclaimer
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-3rd-party-api" />
+**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/react-3rd-party-api" />

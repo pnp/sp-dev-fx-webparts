@@ -41,7 +41,7 @@ channels on the tenants Video Service, and allows the user to select a channel.
 
 The second web part used react-slick. The carousel is not as fancy as react-3d-carousel, but I was able to to swap out the 
 image and replace it with an Iframe playing the Video once a user clicked it. I had trouble with the css and getting the next and previous 
-buttons to show. If you run the webpart, the buttons are there to the left and the right of the image, they are just not visible.You can find them by moving the mouse along the left and right borders. Hopefully someone with better css skiils than I can fix this. You can also change videos by clicking the dots at the bottom of the webpart, A sample of the web part is shown below:
+buttons to show. If you run the web part, the buttons are there to the left and the right of the image, they are just not visible.You can find them by moving the mouse along the left and right borders. Hopefully someone with better css skiils than I can fix this. You can also change videos by clicking the dots at the bottom of the web part, A sample of the web part is shown below:
 
 ![react-slick](./src/assets/react-slick.PNG)
 And a sample of the webparts configuration:
@@ -62,13 +62,21 @@ metadata for the video and be anle to search/filter the videos using this metada
 See also https://github.com/russgove/O365VideoSync. It's a console app that you can schedule to run to synchronize an  Office 365 Video Channel with a sharepoint list (on prem or otherwise).
 
 
-## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+## Compatibility
+
+![SPFx 0.7.0](https://img.shields.io/badge/SPFx-0.7.0-orange.svg)
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 
@@ -89,18 +97,14 @@ Version|Date|Comments
 0.1|December 31, 2016|Initial version
 
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 - Clone this repository
 - in the command line run:
   - `npm install`
    - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 > Include any additional steps as needed.
 
@@ -109,7 +113,13 @@ A set of 3 SPFx webparts that use different open-source carousels (react-3d-caro
 to display videos stored on an O365 Video Channel.
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-videolibrary" />
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-videolibrary" />
 
 
 

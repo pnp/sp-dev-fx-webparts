@@ -1,0 +1,54 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here are some cool photos",
+            "size": "Large",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "Sorry some of them are repeats",
+            "size": "Medium",
+            "weight": "Lighter",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "medium",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "${value[0].contentUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${value[1].contentUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${queryExpansions[0].thumbnail.thumbnailUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${queryExpansions[1].thumbnail.thumbnailUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${pivotSuggestions[0].suggestions[0].thumbnail.thumbnailUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${pivotSuggestions[0].suggestions[1].thumbnail.thumbnailUrl}"
+                },
+                {
+                    "type": "Image",
+                    "url": "${value[2].thumbnailUrl}"
+                }
+            ]
+        }
+    ]
+}

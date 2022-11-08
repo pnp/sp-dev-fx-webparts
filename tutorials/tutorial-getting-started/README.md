@@ -15,12 +15,12 @@ This sub folder contains client-side projects includes the web parts detailed in
 You can also find other SharePoint Framework related videos from the [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
 
 ## Used SharePoint Framework Version
-![GA](https://img.shields.io/badge/version-GA-green.svg)
+![GA](https://img.shields.io/badge/SPFx-GA-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -85,4 +85,4 @@ Once the npm packages are installed, run the command to preview your web parts i
 ```
 gulp serve
 ```
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorials" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/tutorials" />

@@ -65,7 +65,7 @@ export default class CalendarTemplate {
 
   public static theme(): IPropertyPaneDropdownOption[] {
     var themes: IPropertyPaneDropdownOption[] = [];
-    CalendarTemplate.themeNames.forEach(function (name, index) {
+    CalendarTemplate.themeNames.forEach((name, index)=> {
       themes.push({
         key: CalendarTemplate.themeBase + name + "/jquery-ui.min.css",
         text: name.toLocaleUpperCase(),

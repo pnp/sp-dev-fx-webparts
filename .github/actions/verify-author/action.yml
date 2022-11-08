@@ -1,0 +1,9 @@
+name: 'Verify Author'
+description: 'Verifies that an issue author is specified'
+inputs:
+  issue: # change this
+    required: true
+    description: 'The issue to verify'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

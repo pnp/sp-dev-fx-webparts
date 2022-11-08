@@ -47,26 +47,21 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
   public getStartEndDate() {
     switch (this.props.dateRange) {
       case DateRange.AllUpcoming:
-        //this.endDate = moment().add(1, "years").format('YYYY-MM-DD');
         this.endDate = moment().endOf('week').day('Friday').add(1, 'years').format('YYYY-MM-DD');
         break;
       case DateRange.ThisWeek:
         this.endDate = moment().endOf('week').day('Friday').format('YYYY-MM-DD');
-        //this.endDate = moment().add(1, "weeks").format('YYYY-MM-DD');
         break;
       case DateRange.NextTwoWeeks:
-        //this.endDate = moment().add(3, "weeks").format('YYYY-MM-DD');
         this.endDate = moment().endOf('week').day('Friday').add(2, 'week').format('YYYY-MM-DD');
         break;
       case DateRange.Month:
-        //this.endDate = moment().add(1, "months").format('YYYY-MM-DD');
         this.endDate = moment().endOf('week').day('Friday').add(1, "months").format('YYYY-MM-DD');
         break;
       case DateRange.Quarter:
-        //this.endDate = moment().add(1, "quarters").format('YYYY-MM-DD');
         this.endDate = moment().endOf('week').day('Friday').add(1, "quarters").format('YYYY-MM-DD');
         break;
-    }   
+    }
   }
 
   public componentDidMount() {
@@ -105,6 +100,33 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
       });
   }
 
+
+  private _onPageUpdate = (pageNumber: number): void => {
+    this.setState({
+      currentPage: pageNumber
+    });
+  }
+
+  private _onRenderCompactItem = (item: any, _index: number): JSX.Element => {
+    return <div
+      data-is-focusable={true}
+      data-is-focus-item={true}
+      role="listitem"
+      aria-label={item.subject}
+    >
+      <EventCard
+        key={`eventCard${_index}`}
+        event={item}
+        isCompact={Layouts.compact}
+        layout={this.props.layout}
+        themeVariant={this.props.themeVariant} />
+    </div>;
+  }
+
+  private _onConfigure = () => {
+    this.props.context.propertyPane.open();
+  }
+
   private _renderFilmstripList(): JSX.Element {
     const {
       events } = this.state;
@@ -139,12 +161,6 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
     } = this.state;
 
     const { maxEvents } = this.props;
-
-
-    let pagedItems: any[] = this.state.events;
-    const totalItems: number = pagedItems.length;
-    let showPages: boolean = false;
-
     let pagedEvents: ICalendarEvent[] = events;
     let usePaging: boolean = false;
 
@@ -158,7 +174,6 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
     }
 
     return (
-
       <div className={styles.compact}>
         <CompactLayout
           items={pagedEvents}
@@ -175,32 +190,6 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
         }
       </div>
     );
-  }
-
-  private _onPageUpdate = (pageNumber: number): void => {
-    this.setState({
-      currentPage: pageNumber
-    });
-  }
-
-  private _onRenderCompactItem = (item: any, _index: number): JSX.Element => {
-    return <div
-      data-is-focusable={true}
-      data-is-focus-item={true}
-      role="listitem"
-      aria-label={item.subject}
-    >
-      <EventCard
-        key={`eventCard${_index}`}
-        event={item}
-        isCompact={Layouts.compact}
-        layout={this.props.layout}
-        themeVariant={this.props.themeVariant} />
-    </div>;
-  }
-
-  private _onConfigure = () => {
-    this.props.context.propertyPane.open();
   }
 
   private _renderContent(): JSX.Element {
@@ -224,11 +213,9 @@ export default class ReactMyEvents extends React.Component<IReactMyEventsProps, 
     }
 
     else if (events.length === 0) {
-      // we're done loading, no errors, but have no events
       return (<MessageBar
         messageBarType={MessageBarType.error}>{this.state.noEventsFoundMessage}</MessageBar>);
     }
-
   }
 
   public render(): React.ReactElement<IReactMyEventsProps> {

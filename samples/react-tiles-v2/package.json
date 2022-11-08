@@ -1,6 +1,6 @@
 {
   "name": "tiles",
-  "version": "0.0.1",
+  "version": "1.1.2",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -19,7 +19,7 @@
     "@microsoft/sp-webpart-base": "1.11.0",
     "@pnp/graph": "^2.2.0",
     "@pnp/sp": "^2.2.0",
-    "@pnp/spfx-controls-react": "2.5.0",
+    "@pnp/spfx-controls-react": "2.6.0",
     "@pnp/spfx-property-controls": "2.4.0",
     "office-ui-fabric-react": "^7.164.2",
     "typestyle": "^2.0.2"

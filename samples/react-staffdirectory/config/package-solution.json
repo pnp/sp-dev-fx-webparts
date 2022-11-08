@@ -3,10 +3,29 @@
   "solution": {
     "name": "staff-directory-client-side-solution",
     "id": "89d7389c-be48-41e9-9f72-5eb9a1099c1f",
-    "version": "1.0.2.0",
+    "version": "1.0.3.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "staff-directory description"
+      },
+      "longDescription": {
+        "default": "staff-directory description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "staff-directory Feature",
+        "description": "The feature that activates elements of the staff-directory solution.",
+        "id": "69f3d217-11d3-4c78-b883-20c2838885f5",
+        "version": "1.0.3.0"
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",

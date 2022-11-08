@@ -11,8 +11,7 @@
     "creationDateTime": "2021-02-23",
     "updateDateTime": "2021-08-02",
     "products": [
-      "SharePoint",
-      "Office"
+      "SharePoint"
     ],
     "metadata": [
       {
@@ -134,6 +133,12 @@
         "order": 116,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
         "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "video",
+        "order": 117,
+        "url": "https://www.youtube.com/embed/gWrvC-0HF4A",
+        "alt": "Demo of the web part in action"
       }
     ],
     "authors": [
@@ -149,12 +154,12 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
         "name": "Supporting section backgrounds",
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
     ]
   }

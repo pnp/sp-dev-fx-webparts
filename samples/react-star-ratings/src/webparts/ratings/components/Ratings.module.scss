@@ -1,0 +1,13 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.root {
+  .container {
+    width: 100%;
+    .flex {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      justify-content: left;
+    }
+  }
+}

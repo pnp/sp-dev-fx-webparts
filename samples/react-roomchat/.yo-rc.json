@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.0",
+    "libraryName": "roomchat",
+    "libraryId": "4e5de806-161a-4b66-8736-e82ac1edb967",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "roomchat",
+    "solutionShortDescription": "roomchat description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

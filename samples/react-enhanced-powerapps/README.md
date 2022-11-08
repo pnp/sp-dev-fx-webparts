@@ -9,14 +9,22 @@ Sample web part showing how to embed a Power App that resizes, adapts to themes,
 It also resizes the app to fit the web part dimension:
 ![Enhanced Power Apps reszing in Action](./assets/resize.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "This solution requires access to Power Apps")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -34,11 +42,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|July 27, 2020|Initial release
 1.1|August 15, 2020|Added improved resize event handler
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
+1.2|January 20, 2022|Update to SPFx v1.13.1
 
 ## Minimal Path to Awesome
 
@@ -46,6 +50,9 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
+
 
 ### To Use
 
@@ -111,4 +118,31 @@ Note that the web part always sends the current page's locale to Power Apps via 
 
 This sample includes a `PropertyPaneHTML` control that you can use to embed custom HTML in a property pane. I use it to highlight syntax using the `<pre>` tag and to make text bold.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-enhanced-powerapps" />
+## Video
+
+[![Enhanced Power App Web Part - Cool Power App integration scenarios with SharePoint](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=L_ArTxSQKgo "Enhanced Power App Web Part - Cool Power App integration scenarios with SharePoint")
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-enhanced-powerapps") to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-enhanced-powerapps) and see what the community is saying.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-enhanced-powerapps&template=bug-report.yml&sample=react-enhanced-powerapps&authors=@hugoabernier&title=react-enhanced-powerapps%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-enhanced-powerapps&template=question.yml&sample=react-enhanced-powerapps&authors=@hugoabernier&title=react-enhanced-powerapps%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-enhanced-powerapps&template=question.yml&sample=react-enhanced-powerapps&authors=@hugoabernier&title=react-enhanced-powerapps%20-%20).
+
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-enhanced-powerapps" />

@@ -6,14 +6,21 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 ![Word Game Preview](./assets/preview.gif)
 
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites
@@ -34,11 +41,6 @@ Version|Date|Comments
 1.0|May 27, 2020|Initial release
 2.0|Nov 4, 2020|Upgrade to SPFx v1.11.0 (Don Kirkham)
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -52,6 +54,8 @@ Version|Date|Comments
   * `gulp --ship`
   * `gulp package-solution --ship`
   * Upload the `.sppkg` file from the `sharepoint\solution` folder into your App Catalog
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
@@ -74,4 +78,9 @@ It also uses responsive design which works great on the SharePoint Mobile App:
 
 ![Mobile](./assets/wordgame_mobile.png)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-word-game" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-word-game" />

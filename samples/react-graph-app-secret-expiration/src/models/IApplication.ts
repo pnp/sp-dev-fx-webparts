@@ -12,7 +12,7 @@ export interface IApplication {
 export interface IPasswordCredential {
   customKeyIdentifier: string;
   displayName: string;
-  endDateTime: Date;
+  endDateTime: string;
   hint: string;
   keyId: string;
   secretText: string;
@@ -22,7 +22,7 @@ export interface IPasswordCredential {
 export interface IKeyCredential {
   customKeyIdentifier: string;
   displayName: string;
-  endDateTime: Date;
+  endDateTime: string;
   key: string;
   keyId: string;
   startDateTime: string;
@@ -37,4 +37,5 @@ export interface IFormattedApplication {
   daysLeft: number;
   type: string;
   expirationDate: string;
+  linkTitle: string;
 }

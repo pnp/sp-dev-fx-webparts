@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "ace-strategy-pattern",
+    "libraryId": "7008c810-9588-43c3-b75c-e750cfe57fff",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "ace-strategy-pattern",
+    "solutionShortDescription": "ace-strategy-pattern description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Basic"
+  }
+}

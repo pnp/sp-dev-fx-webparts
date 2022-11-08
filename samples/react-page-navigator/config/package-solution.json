@@ -1,11 +1,37 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": ""
+    },
     "name": "react-page-navigator",
     "id": "065ee566-e00d-4058-bbfd-356c8d9a8005",
-    "version": "1.0.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "navigator description"
+      },
+      "longDescription": {
+        "default": "navigator description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "navigator Feature",
+        "description": "The feature that activates elements of the navigator solution.",
+        "id": "021884c2-d7b3-4937-9d58-5ae47e1adfb7",
+        "version": "1.6.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-page-navigator.sppkg"

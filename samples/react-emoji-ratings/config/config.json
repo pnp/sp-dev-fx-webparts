@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-emoji-reaction-rating-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactEmojiReactionRating/ReactEmojiReactionRatingWebPart.js",
+          "manifest": "./src/webparts/reactEmojiReactionRating/ReactEmojiReactionRatingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactEmojiReactionRatingWebPartStrings": "lib/webparts/reactEmojiReactionRating/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

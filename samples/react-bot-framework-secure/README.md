@@ -2,7 +2,7 @@
 
 ## Summary
 
-[Web parts](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts) is a special kind of SharePoint controls that can be supported by the [Bot Framework](https://dev.botframework.com). This sample will show you how to embed a Bot Framework bot into a SharePoint web site with security consideration.
+[Web parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts) is a special kind of SharePoint controls that can be supported by the [Bot Framework](https://dev.botframework.com). This sample will show you how to embed a Bot Framework bot into a SharePoint web site with security consideration.
 
 There are two parts included in this sample:
 
@@ -18,14 +18,21 @@ This demo does not include any threat models and is designed for educational pur
 
 ![react-bot-framework-secure](./assets/sp-wp-secure.gif)
 
-## Used SharePoint Framework Version
 
-![1.0](https://img.shields.io/badge/version-1.0-green.svg)
+## Compatibility
+
+![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg) 
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 * [Microsoft Bot Framework](https://dev.botframework.com/)
 
 ## Prerequisites
@@ -50,11 +57,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|Nov 10, 2020|Initial release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -97,7 +100,7 @@ Version|Date|Comments
 
 - Register connections. You can get it done by [deploy your bot to Azure](https://aka.ms/azuredeployment). Save your bot service endpoint like: "https://YOUR_BOT.azurewebsites.net". Save your AAD Id as `YOUR_APP_ID` and secret as `YOUR_APP_PSW` also.
 
-- [Connect to direct line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0), copy one of the Secret Key values as YOUR_DIRECT_LINE_SECRET and store this for later. This is your ‘Direct Line Secret’.
+- [Connect to direct line](https://learn.microsoft.com/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0), copy one of the Secret Key values as YOUR_DIRECT_LINE_SECRET and store this for later. This is your ‘Direct Line Secret’.
 
 - Add `DirectLineSecret` to an `.env` config file under `./bot`
 
@@ -126,7 +129,7 @@ Version|Date|Comments
 
     Now web part is running locally in https://localhost:4321.
 
-- (Opt.) Publish the bot: follow the steps outlined in the [Deploy your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp) article.
+- (Opt.) Publish the bot: follow the steps outlined in the [Deploy your bot](https://learn.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp) article.
 
 - (Opt.) Config CORS \
   [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) must be set on bot app service to enable SharePoint client to get resource from bot service. Follow these steps to add your workbench to bot app service CORS configuration:
@@ -198,17 +201,24 @@ useEffect(() => {
 
 And enable "Enhanced authentication options" can help detect client user Id change then reject the change:
 ![bot framework client web part](./assets/EnhancedAuth.png)\
-For how to find this option, please refer [connect to direct line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0).
+For how to find this option, please refer [connect to direct line](https://learn.microsoft.com/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0).
 
 ## Further reading
 
-- [SharePoint Web Parts Development Basics](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
+- [SharePoint Web Parts Development Basics](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
 - [Bot Framework Documentation](https://docs.botframework.com)
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
 - [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 - [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
-- [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
+- [Channels and Bot Connector Service](https://learn.microsoft.com/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
 - [Restify](https://www.npmjs.com/package/restify)
 - [Using WebChat with Azure Bot Service’s Authentication](https://blog.botframework.com/2018/09/01/using-webchat-with-azure-bot-services-authentication/)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-secure" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />

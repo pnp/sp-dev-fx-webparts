@@ -33,5 +33,22 @@ obj
 *.scss.ts
 
 packages/
-samples/react-teams-send-notification/MyNotes.md
-samples/react-teams-send-notification/teams/teams.zip
+
+
+# Include distributable workflow actions
+!.github/actions/**/dist
+
+
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem
+
+
+# Exclude build artifacts from samples
+samples/**/dist/
+samples/**/lib/
+samples/**/solution/
+samples/**/temp/
+samples/**/release/
+samples/**/node_modules

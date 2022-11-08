@@ -55,9 +55,9 @@ export default class DateBox extends React.Component<IDateBoxProps, {}>{
           (this.props.size === IDateBoxSize.Small ? styles.boxIsSmall : styles.boxIsMedium), this.props.className
         )}
         data-automation-id="multipleDayBox">
-        <div className={styles.date} data-automation-id="multipleDayStartDateContainer">{startEvent.format("MMM D").toUpperCase()}</div>
-        <hr className={styles.separator} />
-        <div className={styles.date} data-automation-id="multipleDayEndDateContainer">{endEvent.format("MMM D").toUpperCase()}</div>
+        <div className={styles.month} data-automation-id="multipleDayStartDateContainer">{startEvent.format("MMM").toUpperCase()}</div>
+        <div className={styles.day}
+          data-automation-id="singleDayDayContainer">{startEvent.format("D") + "-" + endEvent.format("D")}</div>
       </div>);
   }
 }

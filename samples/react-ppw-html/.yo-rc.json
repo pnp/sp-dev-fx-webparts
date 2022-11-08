@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "version": "1.14.0-beta.5",
+    "libraryName": "react-ppw-html",
+    "libraryId": "32f04ff0-07c9-4fee-ab26-b488c8f651fa",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-ppw-html",
+    "solutionShortDescription": "react-ppw-html description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

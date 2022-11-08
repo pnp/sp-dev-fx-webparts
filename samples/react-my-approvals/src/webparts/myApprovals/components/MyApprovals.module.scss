@@ -1,0 +1,29 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.root {
+  width: 100%;
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    .count {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+    .items {
+      display: block;
+    }
+  }
+  .loading {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-content: center;
+  }
+}

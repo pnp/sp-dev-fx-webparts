@@ -8,11 +8,10 @@
         "longDescription": [
             "This web part provides loggedin user's outlook events with some advanced features"
         ],
-        "created": "2021-08-18",
-        "modified": "2021-08-18",
+        "creationDateTime": "2021-08-18",
+        "updateDateTime": "2022-03-28",
         "products": [
-            "SharePoint",
-            "Office"
+            "SharePoint"
         ],
         "metadata": [
             {
@@ -21,21 +20,25 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.11.0"
+                "value": "1.15.0"
+            },
+            {
+                "key": "PNPCONTROLS",
+                "value": "PropertyFieldNumber, WebPartTitle"
             }
         ],
         "thumbnails": [
             {
                 "type": "image",
-                "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.png",
                 "alt": "react-my-events"
             }
         ],
         "authors": [
             {
                 "gitHubAccount": "chandaniprajapati",
-                "company": "",
+                "company": "Rapid Circle",
                 "pictureUrl": "https://github.com/chandaniprajapati.png",
                 "name": "Chandani Prajapati",
                 "twitter": "Chandani_SPD"
@@ -45,7 +48,7 @@
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             }
         ]
     }

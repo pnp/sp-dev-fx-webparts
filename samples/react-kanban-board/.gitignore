@@ -11,6 +11,7 @@ dist
 lib
 solution
 temp
+release
 *.sppkg
 
 # Coverage directory used by tools like istanbul
@@ -30,3 +31,7 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem

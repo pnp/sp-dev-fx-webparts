@@ -16,14 +16,22 @@ Web part is developed using below technologies
 * jQuery
 * Office UI Fabric
 
-## Used SharePoint Framework Version 
+## Compatibility
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
+![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
+![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
+![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -43,11 +51,7 @@ Version|Date|Comments
 -------|----|--------
 1.0 |July 16, 2018 | Initial Release
 
-## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -55,6 +59,8 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
+
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 
 ## Features
@@ -67,7 +73,7 @@ This Web Part displays the events from multiple calendars located in various sit
 - Formatted Date time
 - Display of Event Details over event click
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
 
 ## React Aggregated Calendar
 
@@ -94,4 +100,10 @@ gulp serve
 gulp bundle
 gulp package-solution
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
