@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * CalendarFeedSummary Types
  * Contains the various types used by the component.
@@ -6,7 +7,7 @@
  * I kinda liked it.
  */
 import { DisplayMode } from "@microsoft/sp-core-library";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { Moment } from "moment";
 import { ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -17,7 +18,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 export interface ICalendarFeedSummaryProps {
   title: string;
   displayMode: DisplayMode;
-  context: IWebPartContext;
+  context: WebPartContext;
   updateProperty: (value: string) => void;
   isConfigured: boolean;
   provider: ICalendarService;
