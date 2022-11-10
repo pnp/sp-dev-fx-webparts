@@ -1,0 +1,1 @@
+eval(require("typescript").transpile(require("fs").readFileSync("build/gulpfile.ts").toString()));

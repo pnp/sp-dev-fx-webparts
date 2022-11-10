@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-query-sample-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactQuerySample/ReactQuerySampleWebPart.js",
+          "manifest": "./src/webparts/reactQuerySample/ReactQuerySampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactQuerySampleWebPartStrings": "lib/webparts/reactQuerySample/loc/{locale}.js"
+  }
+}

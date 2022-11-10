@@ -1,0 +1,537 @@
+[
+    {
+        "name": "(UTC-12:00) International Date Line West",
+        "momentId": "Etc/GMT+12",
+        "sharepointId": 39
+    },
+    {
+        "name": "(UTC-11:00) Coordinated Universal Time-11",
+        "momentId": "Etc/GMT+11",
+        "sharepointId": 95
+    },
+    {
+        "name": "(UTC-10:00) Hawaii",
+        "momentId": "Pacific/Honolulu",
+        "sharepointId": 15
+    },
+    {
+        "name": "(UTC-09:00) Alaska",
+        "momentId": "America/Anchorage",
+        "sharepointId": 14
+    },
+    {
+        "name": "(UTC-08:00) Baja California",
+        "momentId": "America/Tijuana",
+        "sharepointId": 78
+    },
+    {
+        "name": "(UTC-08:00) Pacific Time (US & Canada)",
+        "momentId": "America/Los_Angeles",
+        "sharepointId": 13
+    },
+    {
+        "name": "(UTC-07:00) Arizona",
+        "momentId": "America/Phoenix",
+        "sharepointId": 38
+    },
+    {
+        "name": "(UTC-07:00) Chihuahua, La Paz, Mazatlan",
+        "momentId": "America/Chihuahua",
+        "sharepointId": 77
+    },
+    {
+        "name": "(UTC-07:00) Mountain Time (US & Canada)",
+        "momentId": "America/Denver",
+        "sharepointId": 12
+    },
+    {
+        "name": "(UTC-06:00) Central America",
+        "momentId": "America/Guatemala",
+        "sharepointId": 55
+    },
+    {
+        "name": "(UTC-06:00) Central Time (US & Canada)",
+        "momentId": "America/Chicago",
+        "sharepointId": 11
+    },
+    {
+        "name": "(UTC-06:00) Guadalajara, Mexico City, Monterrey",
+        "momentId": "America/Mexico_City",
+        "sharepointId": 37
+    },
+    {
+        "name": "(UTC-06:00) Saskatchewan",
+        "momentId": "America/Regina",
+        "sharepointId": 36
+    },
+    {
+        "name": "(UTC-05:00) Bogota, Lima, Quito, Rio Branco",
+        "momentId": "America/Bogota",
+        "sharepointId": 35
+    },
+    {
+        "name": "(UTC-05:00) Eastern Time (US & Canada)",
+        "momentId": "America/New_York",
+        "sharepointId": 10
+    },
+    {
+        "name": "(UTC-05:00) Indiana (East)",
+        "momentId": "America/Indianapolis",
+        "sharepointId": 34
+    },
+    {
+        "name": "(UTC-04:00) Asuncion",
+        "momentId": "America/Asuncion",
+        "sharepointId": 91
+    },
+    {
+        "name": "(UTC-04:00) Atlantic Time (Canada)",
+        "momentId": "America/Halifax",
+        "sharepointId": 9
+    },
+    {
+        "name": "(UTC-04:00) Caracas",
+        "momentId": "America/Caracas",
+        "sharepointId": 88
+    },
+    {
+        "name": "(UTC-04:00) Cuiaba",
+        "momentId": "America/Cuiaba",
+        "sharepointId": 81
+    },
+    {
+        "name": "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan",
+        "momentId": "America/La_Paz",
+        "sharepointId": 33
+    },
+    {
+        "name": "(UTC-04:00) Santiago",
+        "momentId": "America/Santiago",
+        "sharepointId": 65
+    },
+    {
+        "name": "(UTC-03:30) Newfoundland",
+        "momentId": "America/St_Johns",
+        "sharepointId": 28
+    },
+    {
+        "name": "(UTC-03:00) Brasilia",
+        "momentId": "America/Sao_Paulo",
+        "sharepointId": 8
+    },
+    {
+        "name": "(UTC-03:00) Cayenne, Fortaleza",
+        "momentId": "America/Cayenne",
+        "sharepointId": 32
+    },
+    {
+        "name": "(UTC-03:00) City of Buenos Aires",
+        "momentId": "America/Buenos_Aires",
+        "sharepointId": 85
+    },
+    {
+        "name": "(UTC-03:00) Greenland",
+        "momentId": "America/Godthab",
+        "sharepointId": 60
+    },
+    {
+        "name": "(UTC-03:00) Montevideo",
+        "momentId": "America/Montevideo",
+        "sharepointId": 90
+    },
+    {
+        "name": "(UTC-03:00) Salvador",
+        "momentId": "America/Bahia",
+        "sharepointId": 103
+    },
+    {
+        "name": "(UTC-02:00) Coordinated Universal Time-02",
+        "momentId": "Etc/GMT+2",
+        "sharepointId": 96
+    },
+    {
+        "name": "(UTC-01:00) Azores",
+        "momentId": "Atlantic/Azores",
+        "sharepointId": 29
+    },
+    {
+        "name": "(UTC-01:00) Cabo Verde Is.",
+        "momentId": "Atlantic/Cape_Verde",
+        "sharepointId": 53
+    },
+    {
+        "name": "UTC",
+        "momentId": "Etc/GMT",
+        "sharepointId": 93
+    },
+    {
+        "name": "(UTC) Casablanca",
+        "momentId": "Africa/Casablanca",
+        "sharepointId": 86
+    },
+    {
+        "name": "(UTC+00:00) Dublin, Edinburgh, Lisbon, London",
+        "momentId": "Europe/London",
+        "sharepointId": 2
+    },
+    {
+        "name": "(UTC+00:00) Monrovia, Reykjavik",
+        "momentId": "Atlantic/Reykjavik",
+        "sharepointId": 31
+    },
+    {
+        "name": "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
+        "momentId": "Europe/Berlin",
+        "sharepointId": 4
+    },
+    {
+        "name": "(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague",
+        "momentId": "Europe/Budapest",
+        "sharepointId": 6
+    },
+    {
+        "name": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
+        "momentId": "Europe/Paris",
+        "sharepointId": 3
+    },
+    {
+        "name": "(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb",
+        "momentId": "Europe/Warsaw",
+        "sharepointId": 57
+    },
+    {
+        "name": "(UTC+01:00) West Central Africa",
+        "momentId": "Africa/Lagos",
+        "sharepointId": 69
+    },
+    {
+        "name": "(UTC+02:00) Amman",
+        "momentId": "Asia/Amman",
+        "sharepointId": 79
+    },
+    {
+        "name": "(UTC+02:00) Athens, Bucharest",
+        "momentId": "Europe/Bucharest",
+        "sharepointId": 5
+    },
+    {
+        "name": "(UTC+02:00) Beirut",
+        "momentId": "Asia/Beirut",
+        "sharepointId": 80
+    },
+    {
+        "name": "(UTC+02:00) Cairo",
+        "momentId": "Africa/Cairo",
+        "sharepointId": 49
+    },
+    {
+        "name": "(UTC+02:00) Damascus",
+        "momentId": "Asia/Damascus",
+        "sharepointId": 98
+    },
+    {
+        "name": "(UTC+02:00) Harare, Pretoria",
+        "momentId": "Africa/Johannesburg",
+        "sharepointId": 50
+    },
+    {
+        "name": "(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
+        "momentId": "Europe/Kiev",
+        "sharepointId": 59
+    },
+    {
+        "name": "(UTC+02:00) Jerusalem",
+        "momentId": "Asia/Jerusalem",
+        "sharepointId": 27
+    },
+    {
+        "name": "(UTC+02:00) Kaliningrad",
+        "momentId": "Europe/Kaliningrad",
+        "sharepointId": 100
+    },
+    {
+        "name": "(UTC+02:00) Windhoek",
+        "momentId": "Africa/Windhoek",
+        "sharepointId": 83
+    },
+    {
+        "name": "(UTC+03:00) Baghdad",
+        "momentId": "Asia/Baghdad",
+        "sharepointId": 26
+    },
+    {
+        "name": "(UTC+03:00) Istanbul",
+        "momentId": "Europe/Istanbul",
+        "sharepointId": 101
+    },
+    {
+        "name": "(UTC+03:00) Kuwait, Riyadh",
+        "momentId": "Asia/Riyadh",
+        "sharepointId": 74
+    },
+    {
+        "name": "(UTC+03:00) Minsk",
+        "momentId": "Europe/Minsk",
+        "sharepointId": 109
+    },
+    {
+        "name": "(UTC+03:00) Moscow, St. Petersburg",
+        "momentId": "Europe/Moscow",
+        "sharepointId": 51
+    },
+    {
+        "name": "(UTC+03:00) Nairobi",
+        "momentId": "Africa/Nairobi",
+        "sharepointId": 56
+    },
+    {
+        "name": "(UTC+03:30) Tehran",
+        "momentId": "Asia/Tehran",
+        "sharepointId": 25
+    },
+    {
+        "name": "(UTC+04:00) Abu Dhabi, Muscat",
+        "momentId": "Asia/Dubai",
+        "sharepointId": 24
+    },
+    {
+        "name": "(UTC+04:00) Astrakhan, Ulyanovsk",
+        "momentId": "Europe/Astrakhan",
+        "sharepointId": 110
+    },
+    {
+        "name": "(UTC+04:00) Baku",
+        "momentId": "Asia/Baku",
+        "sharepointId": 54
+    },
+    {
+        "name": "(UTC+04:00) Izhevsk, Samara",
+        "momentId": "Europe/Samara",
+        "sharepointId": 106
+    },
+    {
+        "name": "(UTC+04:00) Port Louis",
+        "momentId": "Indian/Mauritius",
+        "sharepointId": 89
+    },
+    {
+        "name": "(UTC+04:00) Tbilisi",
+        "momentId": "Asia/Tbilisi",
+        "sharepointId": 82
+    },
+    {
+        "name": "(UTC+04:00) Yerevan",
+        "momentId": "Asia/Yerevan",
+        "sharepointId": 84
+    },
+    {
+        "name": "(UTC+04:30) Kabul",
+        "momentId": "Asia/Kabul",
+        "sharepointId": 48
+    },
+    {
+        "name": "(UTC+05:00) Ashgabat, Tashkent",
+        "momentId": "Asia/Tashkent",
+        "sharepointId": 47
+    },
+    {
+        "name": "(UTC+05:00) Ekaterinburg",
+        "momentId": "Asia/Yekaterinburg",
+        "sharepointId": 58
+    },
+    {
+        "name": "(UTC+05:00) Islamabad, Karachi",
+        "momentId": "Asia/Karachi",
+        "sharepointId": 87
+    },
+    {
+        "name": "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi",
+        "momentId": "Asia/Calcutta",
+        "sharepointId": 23
+    },
+    {
+        "name": "(UTC+05:30) Sri Jayawardenepura",
+        "momentId": "Asia/Colombo",
+        "sharepointId": 66
+    },
+    {
+        "name": "(UTC+05:45) Kathmandu",
+        "momentId": "Asia/Katmandu",
+        "sharepointId": 62
+    },
+    {
+        "name": "(UTC+06:00) Astana",
+        "momentId": "Asia/Almaty",
+        "sharepointId": 71
+    },
+    {
+        "name": "(UTC+06:00) Dhaka",
+        "momentId": "Asia/Dhaka",
+        "sharepointId": 102
+    },
+    {
+        "name": "(UTC+06:00) Omsk",
+        "momentId": "Asia/Omsk",
+        "sharepointId": 115
+    },
+    {
+        "name": "(UTC+06:30) Yangon (Rangoon)",
+        "momentId": "Asia/Rangoon",
+        "sharepointId": 61
+    },
+    {
+        "name": "(UTC+07:00) Bangkok, Hanoi, Jakarta",
+        "momentId": "Asia/Bangkok",
+        "sharepointId": 22
+    },
+    {
+        "name": "(UTC+07:00) Barnaul, Gorno-Altaysk",
+        "momentId": "Asia/Barnaul",
+        "sharepointId": 111
+    },
+    {
+        "name": "(UTC+07:00) Krasnoyarsk",
+        "momentId": "Asia/Krasnoyarsk",
+        "sharepointId": 64
+    },
+    {
+        "name": "(UTC+07:00) Novosibirsk",
+        "momentId": "Asia/Novosibirsk",
+        "sharepointId": 46
+    },
+    {
+        "name": "(UTC+07:00) Tomsk",
+        "momentId": "Asia/Tomsk",
+        "sharepointId": 112
+    },
+    {
+        "name": "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi",
+        "momentId": "Asia/Shanghai",
+        "sharepointId": 45
+    },
+    {
+        "name": "(UTC+08:00) Irkutsk",
+        "momentId": "Asia/Irkutsk",
+        "sharepointId": 63
+    },
+    {
+        "name": "(UTC+08:00) Kuala Lumpur, Singapore",
+        "momentId": "Asia/Singapore",
+        "sharepointId": 21
+    },
+    {
+        "name": "(UTC+08:00) Perth",
+        "momentId": "Australia/Perth",
+        "sharepointId": 73
+    },
+    {
+        "name": "(UTC+08:00) Taipei",
+        "momentId": "Asia/Taipei",
+        "sharepointId": 75
+    },
+    {
+        "name": "(UTC+08:00) Ulaanbaatar",
+        "momentId": "Asia/Ulaanbaatar",
+        "sharepointId": 94
+    },
+    {
+        "name": "(UTC+09:00) Osaka, Sapporo, Tokyo",
+        "momentId": "Asia/Tokyo",
+        "sharepointId": 20
+    },
+    {
+        "name": "(UTC+09:00) Seoul",
+        "momentId": "Asia/Seoul",
+        "sharepointId": 72
+    },
+    {
+        "name": "(UTC+09:00) Yakutsk",
+        "momentId": "Asia/Yakutsk",
+        "sharepointId": 70
+    },
+    {
+        "name": "(UTC+09:30) Adelaide",
+        "momentId": "Australia/Adelaide",
+        "sharepointId": 19
+    },
+    {
+        "name": "(UTC+09:30) Darwin",
+        "momentId": "Australia/Darwin",
+        "sharepointId": 44
+    },
+    {
+        "name": "(UTC+10:00) Brisbane",
+        "momentId": "Australia/Brisbane",
+        "sharepointId": 18
+    },
+    {
+        "name": "(UTC+10:00) Canberra, Melbourne, Sydney",
+        "momentId": "Australia/Sydney",
+        "sharepointId": 76
+    },
+    {
+        "name": "(UTC+10:00) Guam, Port Moresby",
+        "momentId": "Pacific/Port_Moresby",
+        "sharepointId": 43
+    },
+    {
+        "name": "(UTC+10:00) Hobart",
+        "momentId": "Australia/Hobart",
+        "sharepointId": 42
+    },
+    {
+        "name": "(UTC+10:00) Vladivostok",
+        "momentId": "Asia/Vladivostok",
+        "sharepointId": 68
+    },
+    {
+        "name": "(UTC+11:00) Chokurdakh",
+        "momentId": "Asia/Srednekolymsk",
+        "sharepointId": 107
+    },
+    {
+        "name": "(UTC+11:00) Magadan",
+        "momentId": "Asia/Magadan",
+        "sharepointId": 99
+    },
+    {
+        "name": "(UTC+11:00) Sakhalin",
+        "momentId": "Asia/Sakhalin",
+        "sharepointId": 114
+    },
+    {
+        "name": "(UTC+11:00) Solomon Is., New Caledonia",
+        "momentId": "Pacific/Guadalcanal",
+        "sharepointId": 41
+    },
+    {
+        "name": "(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky",
+        "momentId": "Asia/Kamchatka",
+        "sharepointId": 108
+    },
+    {
+        "name": "(UTC+12:00) Auckland, Wellington",
+        "momentId": "Pacific/Auckland",
+        "sharepointId": 17
+    },
+    {
+        "name": "(UTC+12:00) Coordinated Universal Time+12",
+        "momentId": "Etc/GMT-12",
+        "sharepointId": 97
+    },
+    {
+        "name": "(UTC+12:00) Fiji",
+        "momentId": "Pacific/Fiji",
+        "sharepointId": 40
+    },
+    {
+        "name": "(UTC+13:00) Nuku'alofa",
+        "momentId": "Pacific/Tongatapu",
+        "sharepointId": 67
+    },
+    {
+        "name": "(UTC+13:00) Samoa",
+        "momentId": "Pacific/Apia",
+        "sharepointId": 16
+    }
+]

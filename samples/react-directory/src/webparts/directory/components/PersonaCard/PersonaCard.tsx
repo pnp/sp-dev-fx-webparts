@@ -67,7 +67,7 @@ export class PersonaCard extends React.Component<
       this.state.livePersonaCard,
       {
         serviceScope: this.props.context.serviceScope,
-        upn: this.props.profileProperties.Email,
+        legacyUpn: this.props.profileProperties.Email,
         onCardOpen: () => {
           console.log('LivePersonaCard Open');
         },

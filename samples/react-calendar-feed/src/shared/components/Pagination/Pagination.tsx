@@ -1,4 +1,4 @@
-import { ActionButton, IButtonProps } from "office-ui-fabric-react/lib/Button";
+import { ActionButton } from "office-ui-fabric-react/lib/Button";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import * as React from "react";
@@ -44,7 +44,7 @@ export const Pagination = (props: IPaginationProps) => {
   return (
     <div className={css(styles.Pagination, props.showPageNum ? null : styles.noPageNum)}>
       <ActionButton className={css(styles.prev, prevDisabled && styles.nogo)}
-        onRenderIcon={(_props: IButtonProps) => {
+        onRenderIcon={() => {
           // we use the render custom icon method to render the icon consistently with the right icon
           return (
             <Icon iconName="ChevronLeft" />
@@ -60,7 +60,7 @@ export const Pagination = (props: IPaginationProps) => {
       <ActionButton className={css(styles.next, nextDisabled && styles.nogo)}
         data-automation-id="nextPage"
         disabled={nextDisabled}
-        onRenderMenuIcon={(_props: IButtonProps) => {
+        onRenderMenuIcon={() => {
           // we use the render custom menu icon method to render the icon to the right of the text
           return (
             <Icon iconName="ChevronRight" />

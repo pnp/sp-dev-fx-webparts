@@ -1,0 +1,98 @@
+{
+    "dependencies": {},
+    "environments": {
+        "local": {
+            "environmentSymbol": "Environments.LOCAL",
+            "skipFeatureDeployment": false,
+            "package": {
+                "name": "LOCAL Rhythm of Business Calendar",
+                "id": "37df9a1c-b53e-46ad-9efb-2e4da77a724f",
+                "filename": "RhythmOfBusinessCalendar-LOCAL.sppkg"
+            },
+            "webparts": [
+                {
+                    "manifest": "RhythmOfBusinessCalendarWebPart.manifest.json",
+                    "id": "ff77b45a-483c-4fe7-94b4-b5fc8def29c0",
+                    "alias": "RhythmOfBusinessCalendarWebPartLOCAL",
+                    "title": "(LOCAL) Rhythm of Business Calendar"
+                }
+            ]
+        },
+        "dev": {
+            "deploySiteUrl": "https://contoso.sharepoint.com/sites/RhythmOfBusinessCalendar_DEV",
+            "deployScope": "Site",
+            "skipFeatureDeployment": false,
+            "environmentSymbol": "Environments.DEV",
+            "package": {
+                "name": "DEV Rhythm of Business Calendar",
+                "id": "54b89a4f-15c4-4007-942f-d1d9e8fc6871",
+                "filename": "RhythmOfBusinessCalendar-DEV.sppkg"
+            },
+            "webparts": [
+                {
+                    "manifest": "RhythmOfBusinessCalendarWebPart.manifest.json",
+                    "id": "8454e333-242f-45af-bd58-bd823010822a",
+                    "alias": "RhythmOfBusinessCalendarWebPartDEV",
+                    "title": "(DEV) Rhythm of Business Calendar"
+                }
+            ]
+        },
+        "test": {
+            "deploySiteUrl": "https://contoso.sharepoint.com/sites/appcatalog",
+            "deployScope": "Tenant",
+            "skipFeatureDeployment": true,
+            "environmentSymbol": "Environments.TEST",
+            "package": {
+                "name": "TEST Rhythm of Business Calendar",
+                "id": "839937b0-a90a-4665-8ed6-30dcde0cfa9e",
+                "filename": "RhythmOfBusinessCalendar-TEST.sppkg"
+            },
+            "webparts": [
+                {
+                    "manifest": "RhythmOfBusinessCalendarWebPart.manifest.json",
+                    "id": "0039f049-a62f-427e-830e-7b3de838f69e",
+                    "alias": "RhythmOfBusinessCalendarWebPartTEST",
+                    "title": "(TEST) Rhythm of Business Calendar"
+                }
+            ]
+        },
+        "stage": {
+            "deploySiteUrl": "https://contoso.sharepoint.com/sites/appcatalog",
+            "deployScope": "Tenant",
+            "skipFeatureDeployment": true,
+            "environmentSymbol": "Environments.STAGE",
+            "package": {
+                "name": "STG Rhythm of Business Calendar",
+                "id": "bf1f3d59-8ce2-4c98-9c92-a7a7bf36abb6",
+                "filename": "RhythmOfBusinessCalendar-STG.sppkg"
+            },
+            "webparts": [
+                {
+                    "manifest": "RhythmOfBusinessCalendarWebPart.manifest.json",
+                    "id": "b7aeb8c7-7819-4f06-8779-00dce2caeeab",
+                    "alias": "RhythmOfBusinessCalendarWebPartSTG",
+                    "title": "(STG) Rhythm of Business Calendar"
+                }
+            ]
+        },
+        "prod": {
+            "deploySiteUrl": "https://contoso.sharepoint.com/sites/appcatalog",
+            "deployScope": "Tenant",
+            "skipFeatureDeployment": true,
+            "environmentSymbol": "Environments.PROD",
+            "package": {
+                "name": "Rhythm of Business Calendar",
+                "id": "8588904e-d33f-40ac-9ee0-2fcfcfb0ebc2",
+                "filename": "RhythmOfBusinessCalendar.sppkg"
+            },
+            "webparts": [
+                {
+                    "manifest": "RhythmOfBusinessCalendarWebPart.manifest.json",
+                    "id": "077f5c4a-37bf-4531-ac24-6369ca0f5f51",
+                    "alias": "RhythmOfBusinessCalendarWebPart",
+                    "title": "Rhythm of Business Calendar"
+                }
+            ]
+        }
+    }
+}

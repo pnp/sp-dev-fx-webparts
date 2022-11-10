@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient, HttpClientResponse } from "@microsoft/sp-http";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import * as moment from "moment";
@@ -111,13 +112,8 @@ export abstract class BaseCalendarService implements ICalendarService {
    * @param feedUrl The URL where to retrieve the events
    */
   protected async fetchResponseAsJson(feedUrl: string): Promise<any> {
-    try {
       const response = await this.fetchResponse(feedUrl);
       return await response.json();
-    }
-    catch (error) {
-      throw error;
-    }
   }
 
   /**

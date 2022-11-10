@@ -1,0 +1,8 @@
+@import 'common.module';
+
+.webPartTitle {
+    & > h2 { 
+        @include ms-font-xxl;
+        margin-bottom: 36px;
+    }
+}

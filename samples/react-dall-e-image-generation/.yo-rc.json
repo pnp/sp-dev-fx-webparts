@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-dall-e-image-generation",
+    "libraryId": "dd009cf4-7f8a-4811-9697-0771da80e3ad",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-dall-e-image-generation",
+    "solutionShortDescription": "react-dall-e-image-generation description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
