@@ -41,7 +41,7 @@
     "ajv": "~6.12.3",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "22.4.3",
     "jest-junit": "5.2.0",

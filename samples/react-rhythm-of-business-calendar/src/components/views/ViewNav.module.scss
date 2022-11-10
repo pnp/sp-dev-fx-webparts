@@ -1,0 +1,7 @@
+@import '../common.module';
+
+.viewNavContainer {
+    overflow-x: scroll;
+    @include hide-scrollbar;
+    padding: 1px;
+}

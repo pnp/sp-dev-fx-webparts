@@ -1,0 +1,12 @@
+{
+    "@microsoft/generator-sharepoint": {
+        "isCreatingSolution": true,
+        "environment": "spo",
+        "version": "1.15.2",
+        "libraryName": "rhythm-of-business-calendar",
+        "libraryId": "58f92635-9ea6-43cc-a136-3daae0c68678",
+        "packageManager": "npm",
+        "isDomainIsolated": false,
+        "componentType": "webpart"
+    }
+}

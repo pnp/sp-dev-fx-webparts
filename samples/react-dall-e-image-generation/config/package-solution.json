@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-dall-e-image-generation-client-side-solution",
+    "id": "dd009cf4-7f8a-4811-9697-0771da80e3ad",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-dall-e-image-generation description"
+      },
+      "longDescription": {
+        "default": "react-dall-e-image-generation description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-dall-e-image-generation Feature",
+        "description": "The feature that activates elements of the react-dall-e-image-generation solution.",
+        "id": "a745537b-ef55-4ef4-9d30-3f00b0f129c8",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-dall-e-image-generation.sppkg"
+  }
+}

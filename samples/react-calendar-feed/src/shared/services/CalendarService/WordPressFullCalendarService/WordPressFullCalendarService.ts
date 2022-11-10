@@ -17,7 +17,7 @@ export class WordPressFullCalendarService extends BaseCalendarService implements
 
         try {
         const data = await this.fetchResponseAsJson(parameterizedFeedUrl);
-        let events: ICalendarEvent[] = data.map((e: IWordPressFullCalendarEventResponse) => {
+        const events: ICalendarEvent[] = data.map((e: IWordPressFullCalendarEventResponse) => {
           const startDate: Date = this.convertToDate(e.start);
           const endDate: Date = this.convertToDate(e.end);
           const eventItem: ICalendarEvent = {

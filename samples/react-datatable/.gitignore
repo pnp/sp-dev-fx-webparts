@@ -35,3 +35,4 @@ obj
 *.cer
 # .PEM Certificates
 *.pem
+*.scss.d.ts

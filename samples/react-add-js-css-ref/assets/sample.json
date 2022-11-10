@@ -9,7 +9,7 @@
       "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."
     ],
     "creationDateTime": "2020-06-11",
-    "updateDateTime": "2020-06-11",
+    "updateDateTime": "2022-10-24",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.9.1"
+        "value": "1.15.2"
       },
       {
         "key": "PNPCONTROLS",

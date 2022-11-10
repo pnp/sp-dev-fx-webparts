@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-react-query",
+    "libraryId": "0fa98b42-4f79-4e63-a028-9caa0de6b755",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-react-query",
+    "solutionShortDescription": "react-react-query description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

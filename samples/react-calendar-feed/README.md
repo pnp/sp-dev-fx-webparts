@@ -25,25 +25,31 @@ For more information about how this solution was built, including some design de
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Partially](https://img.shields.io/badge/Local%20Workbench-Partially-yellow.svg "Some functionality may not work on local workbech")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+For more information about SPFx compatibility, please refer to <https://aka.ms/spfx-matrix>
 
 ## Applies to
 
 - [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+
 ## Prerequisites
 
 Before you can use this web part example, you will need one of the following:
 
-- A publicly-accessible iCal feed (i.e.: .ics)
+- A publicly-accessible iCal feed (i.e.: `.ics`)
 - A publicly-accessible RSS feed of events (e.g.: Google calendar)
 - A WordPress WP-FullCalendar feed
 - An Exchange Public Calendar
@@ -70,6 +76,7 @@ Version|Date|Comments
 5.0|August 17, 2019|Converted to SPFx 1.9.1; Refreshed carousel code; Addresses #735, #909. Also added **Convert from UTC** option to handle feeds which do not provide time zone information.
 5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behavior and styles to match OOB calendar view. Added support for themes and theme variants.
 5.2|July 15, 2020|Fixed issue to support IE11
+5.3|October 21, 2022|Upgrade to 1.15 Security fixes Removed IE11 Support 
 
 ## Minimal Path to Awesome
 
@@ -85,7 +92,7 @@ Version|Date|Comments
 - Specify a maximum number of events to retrieve
 - If necessary, specify to use a proxy. Use this option if you encounter issues where your feed provider does not accept your tenant URL as a CORS origin.
 - If desired, specify how long (in minutes) you want to expire your users' local storage and refresh the events.
-- Exclude IE11 support with gulp parameter ```--NoIE11``` this is in-case-sensitive 
+
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 

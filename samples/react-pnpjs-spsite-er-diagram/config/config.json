@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sp-site-er-diagram-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spSiteErDiagram/SpSiteErDiagramWebPart.js",
+          "manifest": "./src/webparts/spSiteErDiagram/SpSiteErDiagramWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpSiteErDiagramWebPartStrings": "lib/webparts/spSiteErDiagram/loc/{locale}.js"
+  }
+}

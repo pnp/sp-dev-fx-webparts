@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-pnpjs-spsite-er-diagram-client-side-solution",
+    "id": "d0130471-1806-4c7d-a504-9af696d7ed0f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-pnpjs-spsite-er-diagram description"
+      },
+      "longDescription": {
+        "default": "react-pnpjs-spsite-er-diagram description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-pnpjs-spsite-er-diagram Feature",
+        "description": "The feature that activates elements of the react-pnpjs-spsite-er-diagram solution.",
+        "id": "de94efbd-4c84-4259-8847-8ffd802d8166",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-pnpjs-spsite-er-diagram.sppkg"
+  }
+}
