@@ -22,7 +22,7 @@ Note: This sample will not work in workbench as it loads the web part from curre
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 

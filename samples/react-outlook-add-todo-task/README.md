@@ -95,7 +95,7 @@ m365 spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-* deploy spfx solution as Outlook add-in following instructions here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
+* deploy spfx solution as Outlook add-in following instructions here: [https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
 
 ## Features
 

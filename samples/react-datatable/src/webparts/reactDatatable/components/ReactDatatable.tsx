@@ -7,14 +7,14 @@ import { SPService } from '../../../shared/service/SPService';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Grid } from '@material-ui/core';
-import { Link, Text } from 'office-ui-fabric-react';
+import Grid from '@material-ui/core/Grid';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { ExportListItemsToCSV } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSV';
 import { ExportListItemsToPDF } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDF';
 import { Pagination } from '../../../shared/common/Pagination/Pagination';
 import { RenderImageOrLink } from '../../../shared/common/RenderImageOrLink/RenderImageOrLink';
-import { DetailsList, DetailsListLayoutMode, DetailsRow, IDetailsRowStyles, IDetailsListProps, IColumn, MessageBar, SelectionMode } from 'office-ui-fabric-react';
+import { DetailsList, DetailsListLayoutMode, DetailsRow, IDetailsRowStyles, IDetailsListProps, IColumn, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { pdfCellFormatter } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDFFormatter';
 import { csvCellFormatter } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSVFormatter';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
@@ -66,7 +66,14 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
       /** Format list items for data grid */
       listItems = listItems && listItems.map(item => ({
         id: item.Id, ...fields.reduce((ob, f) => {
-          ob[f.key] = item[f.key] ? this.formatColumnValue(item[f.key], f.fieldType) : '-';
+          if (f.key === "Attachments") {
+            ob[f.key] = this.formatColumnValue(item["AttachmentFiles"], f.fieldType);
+          }
+          else {
+            if (item[f.key]) {
+              ob[f.key] = this.formatColumnValue(item[f.key], f.fieldType);
+            }
+          }
           return ob;
         }, {})
       }));
@@ -87,7 +94,6 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   private _onConfigure() {
     this.props.context.propertyPane.open();
   }
-
 
   public formatColumnValue(value: any, type: string) {
     if (!value) {
@@ -127,6 +133,9 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         break;
       case 'SP.FieldLocation':
         value = JSON.parse(value).DisplayName;
+        break;
+      case 'SP.Field':
+        value = value?.map(v => <><RenderImageOrLink key={v['odata.id']} url={v['ServerRelativeUrl']} description={v['FileName']}></RenderImageOrLink><br /></>);
         break;
       default:
         break;

@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "group-membership-manager",
+    "libraryId": "2a487e9a-b62a-484a-9bc0-e78b65550b61",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Group Membership Manager",
+    "solutionShortDescription": "Group Membership Manager description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

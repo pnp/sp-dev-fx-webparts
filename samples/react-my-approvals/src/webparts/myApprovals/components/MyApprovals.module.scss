@@ -2,21 +2,35 @@
 
 .root {
   width: 100%;
-  .container {
+  .large {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
-    align-items: flex-start;
-    justify-content: center;
     gap: 1rem;
     .count {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
+      display: grid;
       gap: 0.25rem;
+      width: 4rem;
+      text-align: center;
     }
     .items {
       display: block;
+      overflow-x: auto;
+      margin-top: -1rem;
+    }
+  }
+  .small {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    .count {
+      display: grid;
+      gap: 0.25rem;
+      text-align: center;
+    }
+    .items {
+      display: none;
     }
   }
   .loading {

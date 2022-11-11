@@ -3,9 +3,20 @@
 const gulp = require('gulp');
 const build = require('@microsoft/sp-build-web');
 const path = require('path');
-build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
+//build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
 
-let needIESupport = true;
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
+
+  result.set('serve', result.get('serve-deprecated'));
+
+  return result;
+};
+
+/*
+Only here For documentation
+let needIESupport = false;
 if (!!process.argv && process.argv.length > 0) {
   needIESupport = process.argv.findIndex(item => '--noie11' === item.toLowerCase()) === -1;
 }
@@ -32,10 +43,10 @@ if (needIESupport) {
     additionalConfiguration: (generatedConfiguration) => {
       generatedConfiguration.module.rules.push({
         test: /\.js$/,
-        /*
-        This selector increase the webpack(gulp serve) time 5 times then without
-          exclude: [/node_modules\/(?!(rss-parser))/],
-          */
+        //
+        //This selector increase the webpack(gulp serve) time 5 times then without
+        //  exclude: [/node_modules\/(?!(rss-parser))/],
+        //
         include: [
           path.resolve(__dirname, "node_modules/rss-parser"),
         ],
@@ -49,5 +60,5 @@ if (needIESupport) {
   process.stdout.write(`No IE11 Support is set \n`);
 }
 
-
+*/
 build.initialize(gulp);

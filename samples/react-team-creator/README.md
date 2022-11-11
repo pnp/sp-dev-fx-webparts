@@ -14,6 +14,8 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 
 ## Compatibility
 
+This sample is designed to be used in the following enviroments:
+
 ![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -24,11 +26,14 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
+
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
-* [MS Teams](https://docs.microsoft.com/en-us/microsoftteams/microsoft-teams)
+* [MS Teams](https://learn.microsoft.com/microsoftteams/microsoft-teams)
 
 ## Solution
 

@@ -17,8 +17,8 @@ A web part sample that uses the [botframework-webchat module](https://www.npmjs.
 
 ## Applies to
 
-* [SharePoint Framework Web Parts](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
-* [Office 365 developer tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Web Parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
@@ -42,7 +42,7 @@ A web part sample that uses the [botframework-webchat module](https://www.npmjs.
 
 ## Deploy
 
-If you want to deploy the bot follow the steps in the [Host your client-side web part from Microsoft 365 CDN](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) article
+If you want to deploy the bot follow the steps in the [Host your client-side web part from Microsoft 365 CDN](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) article
 
 ## Features
 

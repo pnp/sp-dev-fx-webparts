@@ -1,3 +1,6 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 # SPFx Web part Group members list with Presence information
 
 ## Summary
@@ -18,10 +21,12 @@ This sample shows how to get the members of a specific group, including their pr
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

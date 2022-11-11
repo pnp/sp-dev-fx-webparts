@@ -1,10 +1,37 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
+    "metadata": {
+      "shortDescription": {
+        "default": "react-calendar-feed description"
+      },
+      "longDescription": {
+        "default": "react-calendar-feed description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+
     "name": "react-calendar-feed-client-side-solution",
     "id": "25653136-fc83-4abe-b9d2-a4ac041959d5",
-    "version": "5.2.0.0",
-    "includeClientSideAssets": true
+    "version": "5.3.0.0",
+    "includeClientSideAssets": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "features": [
+      {
+        "title": "react-calendar-feed Feature",
+        "description": "The feature that activates elements of the react-calendar-feed solution.",
+        "id": "57a544de-10aa-4e29-91d9-fce0ac688566",
+        "version": "5.2.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-calendar-feed.sppkg"

@@ -136,7 +136,7 @@ protected async onInit() {
 
 ## Add components
 
-Now, you can start adding components to your web part. Simply add the components to the HTML inside of the `render()` method, and the components will use the SharePoint context to access Microsoft Graph. For example, to add the [Person component](https://docs.microsoft.com/en-us/graph/toolkit/components/person), your code will look like:
+Now, you can start adding components to your web part. Simply add the components to the HTML inside of the `render()` method, and the components will use the SharePoint context to access Microsoft Graph. For example, to add the [Person component](https://learn.microsoft.com/graph/toolkit/components/person), your code will look like:
 
 ```ts
 public render(): void {
@@ -162,7 +162,7 @@ Just below that line, add the following:
 "webApiPermissionRequests":[],
 ```
 
-The Microsoft Graph API permissions you need depends on the components you're using in the web part. Each component's documentation page provides [a list of the permissions](https://docs.microsoft.com/en-us/graph/toolkit/components/person#microsoft-graph-permissions) that component requires. You will need to add each permission required to `webApiPermissionRequests`. For example, if you're using the Person component and the Agenda component, your `webApiPermissionRequests` might look like:
+The Microsoft Graph API permissions you need depends on the components you're using in the web part. Each component's documentation page provides [a list of the permissions](https://learn.microsoft.com/graph/toolkit/components/person#microsoft-graph-permissions) that component requires. You will need to add each permission required to `webApiPermissionRequests`. For example, if you're using the Person component and the Agenda component, your `webApiPermissionRequests` might look like:
 
 ```json
 "webApiPermissionRequests": [
@@ -211,4 +211,4 @@ Your hosted workbench will automatically open in your browser. Add your web part
 
 ## Next Steps
 
-- You can try adding more [MGT components](https://docs.microsoft.com/en-us/graph/toolkit/overview) to your web part -- don't make sure to update your `webApiPermissionRequests` needed by each additional control.
+- You can try adding more [MGT components](https://learn.microsoft.com/graph/toolkit/overview) to your web part -- don't make sure to update your `webApiPermissionRequests` needed by each additional control.

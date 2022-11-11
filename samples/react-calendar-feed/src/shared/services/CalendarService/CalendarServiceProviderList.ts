@@ -1,9 +1,12 @@
-import { MockCalendarService } from "./MockCalendarService";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+//import { MockCalendarService } from "./MockCalendarService";
 import { RSSCalendarService } from "./RSSCalendarService";
 import { WordPressFullCalendarService } from "./WordPressFullCalendarService";
 import { iCalCalendarService } from "./iCalCalendarService";
 import { ExchangePublicCalendarService } from "./ExchangePublicCalendarService";
 import { SharePointCalendarService } from "./SharePointCalendarService";
+
+
 
 // Localization
 import * as strings from "CalendarServicesStrings";
@@ -48,13 +51,13 @@ export class CalendarServiceProviderList {
     ];
 
     // only include the Mock service provider in DEBUG
-    if (DEBUG) {
+    /*
       providers.push({
         label: strings.MockProviderName,
         key: CalendarServiceProviderType.Mock,
         initialize: () => new MockCalendarService()
       });
-    }
+    */
 
     return providers;
   }

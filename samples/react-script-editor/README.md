@@ -118,9 +118,9 @@ If your scripts rely on the classic_spPageContextInfo, you can enable that in th
 
 If you want to use the solution as a Teams tab, perform the changes to deploy to [non-script](#deploy-to-non-script-sites--modern-team-sites) sites and [tenant wide deployment](#deploy-tenant-wide).
 
-Next see the [Teams tab tutorial](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab) for steps needed to deploy the solution as a Teams tab.
+Next see the [Teams tab tutorial](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab) for steps needed to deploy the solution as a Teams tab.
 
-You can get access to the Teams context information via the global variable `_teamsContexInfo`. The available properties are documented at [Teams context interface](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.context?view=msteams-client-js-latest).
+You can get access to the Teams context information via the global variable `_teamsContexInfo`. The available properties are documented at [Teams context interface](https://learn.microsoft.com/javascript/api/@microsoft/teams-js/microsoftteams.context?view=msteams-client-js-latest).
 
 ### Sample
 
@@ -172,7 +172,7 @@ In order to make it available to absolutely all sites you need apply the *Deploy
 ## Applies to
 
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -206,6 +206,7 @@ Version|Date|Comments
 1.0.17.0|January 29th, 2021|Changed versioning to 3 parts. Updated npm packages, restructured documentation, minor change to webpack analyzer setup.
 1.0.18.0|June 14, 2022|Upgrade to SPFx v1.13.1
 1.0.19.0|August 31, 2022|Added support for section background color
+1.0.20.0|October 10, 2022|Added sample html/script with self-executing function
 
 ## Minimal Path to Awesome
 

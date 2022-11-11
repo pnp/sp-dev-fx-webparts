@@ -1,0 +1,32 @@
+{
+    "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "ff77b45a-483c-4fe7-94b4-b5fc8def29c0",
+    "alias": "RhythmOfBusinessCalendarWebPartLOCAL",
+    "componentType": "WebPart",
+    "version": "*",
+    "manifestVersion": 2,
+    "requiresCustomScript": false,
+    "supportedHosts": [
+        "SharePointWebPart",
+        "SharePointFullPage",
+        "TeamsTab"
+    ],
+    "supportsFullBleed": true,
+    "supportsThemeVariants": true,
+    "preconfiguredEntries": [
+        {
+            "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+            "group": {
+                "default": "Other"
+            },
+            "title": {
+                "default": "(LOCAL) Rhythm of Business Calendar"
+            },
+            "description": {
+                "default": "One calendar for managing and maintaining all team and organizational events"
+            },
+            "officeFabricIconFontName": "Calendar",
+            "properties": {}
+        }
+    ]
+}

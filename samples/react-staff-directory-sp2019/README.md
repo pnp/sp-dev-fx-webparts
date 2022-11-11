@@ -1,3 +1,6 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 ---
 page_type: sample
 products:
@@ -34,6 +37,9 @@ This web part shows the current user's colleagues, and allows the user to search
 ![Teams No: Not designed for Microsoft Teams](https://img.shields.io/badge/Teams-No-red.svg "Not designed for Microsoft Teams")
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
 ## Applies to
 

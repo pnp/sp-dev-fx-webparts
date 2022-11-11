@@ -1,0 +1,11 @@
+export { IAddListItemResult } from './IAddListItemResult';
+export { IChoiceFieldInfo } from './IChoiceFieldInfo';
+export { IRenderListDataAsStreamResult } from './IRenderListDataAsStreamResult';
+export { ICurrentChangeTokenResult } from './ICurrentChangeTokenResult';
+export { IFolderResult } from './IFolderResult';
+export { IListItemResult } from './IListItemResult';
+export { ILookupResult } from './ILookupResult';
+export { ITaxonomyResult } from './ITaxonomyResult';
+export { IUserInfoResult } from './IUserInfoResult';
+export { IThumbnailResult } from './IThumbnailResult';
+export { IWebAllPropertiesResult } from './IWebAllPropertiesResult';

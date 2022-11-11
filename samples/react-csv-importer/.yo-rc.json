@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-csv-importer",
+    "libraryId": "6f431978-38c4-492e-878b-4d818caf51ee",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-csv-importer",
+    "solutionShortDescription": "react-csv-importer description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

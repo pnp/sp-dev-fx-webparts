@@ -1,3 +1,6 @@
+## Compatibility
+
+This sample is designed to be used in the following enviroments:
 # Personal e-mail
 
 ## Summary
@@ -17,10 +20,12 @@ Sample React web part showing how to retrieve and display personal e-mail retrie
 ![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

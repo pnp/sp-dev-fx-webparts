@@ -38,8 +38,8 @@ The `React Content Query Web Part` is a modern version of the good old `Content 
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -117,7 +117,7 @@ External scripts can be used to include either libraries such as *jQuery*, or ev
 ### Adding the web part to your page
 
 To add the `React Content Query Web Part` to your site page you have two options : 
-- Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
+- Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
 - Or download the `react-content-query-webpart.sppkg` file available in the `sharepoint/solution` folder of the repository and add it directly in your app catalog in order to be able to use it in your site. 
 
 Note : The second method will only work for Office 365 sites, since the **.ppkg** file points to an Office 365 public CDN url which expects the referer to come from a valid https://**\*.sharepoint.com\*** url.

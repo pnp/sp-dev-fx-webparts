@@ -186,7 +186,7 @@ class SpUserGroupLookup {
   private async isUserNotFoundException(e): Promise<boolean> {
     if (this.isHttpRequestError(e)) {
       const json = await e.response.json();
-      // Error code documented at https://docs.microsoft.com/en-us/previous-versions/office/sharepoint-csom/ee540879(v=office.15)
+      // Error code documented at https://learn.microsoft.com/previous-versions/office/sharepoint-csom/ee540879(v=office.15)
       return (
         e.status === 500 &&
         typeof json["odata.error"] === "object" &&

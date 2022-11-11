@@ -10,7 +10,7 @@ define([], function () {
     TemplateUrlLabel: "Template url",
     AdaptiveCardTemplatingGroupName: "Adaptive Card Templating",
     AdaptiveCardTemplatingInfoLabel: "Adaptive Card Templating separates the data from the layout in an Adaptive Card. You can design your card once, then populate it with real data at runtime.",
-    AdaptiveCardTemplatingMoreInfoLinkUrl: "https://docs.microsoft.com/en-us/adaptive-cards/templating/",
+    AdaptiveCardTemplatingMoreInfoLinkUrl: "https://learn.microsoft.com/adaptive-cards/templating/",
     UseAdaptiveTemplatingLabel: "Use Adaptive Card Templating",
     DataSourceFieldLabel: "Data source",
     DataSourceFieldChoiceList: "List",

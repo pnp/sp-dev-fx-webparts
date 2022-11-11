@@ -6,7 +6,7 @@
 * Ideal for creating FAQs.
 * When adding the web part, you'll be prompted to select a list from a property panel dropdown (target list must have a Title column and Content column).  This will generate an accordion with one section for each item in the list.
 * Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page.
-* To deploy to a Teams tab see current [Microsoft documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
+* To deploy to a Teams tab see current [Microsoft documentation](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
 
 ![Web Part in Action](./assets/react-accordion-section.gif)
 
@@ -27,6 +27,8 @@
 
 ## Compatibility
 
+This sample is designed to be used in the following enviroments:
+
 ![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -36,10 +38,12 @@
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 

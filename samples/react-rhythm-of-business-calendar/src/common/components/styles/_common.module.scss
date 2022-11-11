@@ -1,0 +1,351 @@
+@import '~office-ui-fabric-react/dist/sass/_References.scss';
+
+// theme sass variables - adapted from https://n8d.at/how-to-use-theme-colors-in-spfx-web-parts/
+$color-themeAccent: "[theme:themeAccent, default:inherit]";
+$color-themeAccentTranslucent10: "[theme:themeAccentTranslucent10, default:inherit]";
+$color-themeDark: "[theme:themeDark, default:" + $ms-color-themeDark + "]";
+$color-themeDarkAlt: "[theme:themeDarkAlt, default:" + $ms-color-themeDarkAlt + "]";
+$color-themeDarker: "[theme:themeDarker, default:" + $ms-color-themeDarker + "]";
+$color-themeLight: "[theme:themeLight, default:" + $ms-color-themeLight + "]";
+$color-themeLighter: "[theme:themeLighter, default:" + $ms-color-themeLighter + "]";
+$color-themeLighterAlt: "[theme:themeLighterAlt, default:" + $ms-color-themeLighterAlt + "]";
+$color-themePrimary: "[theme:themePrimary, default:" + $ms-color-themePrimary + "]";
+$color-themeSecondary: "[theme:themeSecondary, default:" + $ms-color-themeSecondary + "]";
+$color-themeTertiary: "[theme:themeTertiary, default:" + $ms-color-themeTertiary + "]";
+$color-neutralDark: "[theme:neutralDark, default:" + $ms-color-neutralDark + "]";
+$color-neutralLight: "[theme:neutralLight, default:" + $ms-color-neutralLight + "]";
+$color-neutralLighter: "[theme:neutralLighter, default:" + $ms-color-neutralLighter + "]";
+$color-neutralLighterAlt: "[theme:neutralLighterAlt, default:" + $ms-color-neutralLighterAlt + "]";
+$color-neutralPrimary: "[theme:neutralPrimary, default:" + $ms-color-neutralPrimary + "]";
+$color-neutralPrimaryAlt: "[theme:neutralPrimaryAlt, default:" + $ms-color-neutralPrimaryAlt + "]";
+$color-neutralQuaternary: "[theme:neutralQuaternary, default:" + $ms-color-neutralQuaternary + "]";
+$color-neutralQuaternaryAlt: "[theme:neutralQuaternaryAlt, default:" + $ms-color-neutralQuaternaryAlt + "]";
+$color-neutralSecondary: "[theme:neutralSecondary, default:" + $ms-color-neutralSecondary + "]";
+$color-neutralSecondaryAlt: "[theme:neutralSecondaryAlt, default:" + $ms-color-neutralSecondaryAlt + "]";
+$color-neutralTertiary: "[theme:neutralTertiary, default:" + $ms-color-neutralTertiary + "]";
+$color-neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default:" + $ms-color-neutralTertiaryAlt + "]";
+$color-primaryBackground: "[theme:primaryBackground, default:" + $ms-color-white + "]";
+$color-primaryText: "[theme:primaryText, default:" + $ms-color-gray160 + "]";
+$color-white: "[theme:white, default:" + $ms-color-white + "]";
+$color-orange: "[theme:orange, default:" + $ms-color-orange + "]";
+$color-orangeLight: "[theme:orangeLight, default:" + $ms-color-orangeLight + "]";
+$color-orangeLighter: "[theme:orangeLighter, default:" + $ms-color-orangeLighter + "]";
+$color-greenLight: "[theme:greenLight, default:" + $ms-color-greenLight + "]";
+$color-magenta: "[theme:magenta, default:" + $ms-color-magenta + "]";
+$color-magentaDark: "[theme:magentaDark, default:" + $ms-color-magentaDark + "]";
+$color-magentaLight: "[theme:magentaLight, default:" + $ms-color-magentaLight + "]";
+$color-purple: "[theme:purple, default:" + $ms-color-purple + "]";
+$color-purpleDark: "[theme:purpleDark, default:" + $ms-color-purpleDark + "]";
+$color-purpleLight: "[theme:purpleLight, default:" + $ms-color-purpleLight + "]";
+$color-red: "[theme:red, default:" + $ms-color-red + "]";
+$color-redDark: "[theme:redDark, default:" + $ms-color-redDark + "]";
+$color-success: "[theme:success, default:" + $ms-color-success + "]";
+$color-successBackground: "[theme:successBackground, default:" + $ms-color-successBackground + "]";
+$color-teal: "[theme:teal, default:" + $ms-color-teal + "]";
+$color-tealDark: "[theme:tealDark, default:" + $ms-color-tealDark + "]";
+$color-tealLight: "[theme:tealLight, default:" + $ms-color-tealLight + "]";
+$color-white: "[theme:white, default:" + $ms-color-white + "]";
+$color-whiteTranslucent40: "[theme:whiteTranslucent40, default:rgba(255,255,255,.4)]";
+$color-yellow: "[theme:yellow, default:" + $ms-color-yellow + "]";
+$color-yellowLight: "[theme:yellowLight, default:" + $ms-color-yellowLight + "]";
+
+@mixin hide {
+    display: none !important;
+}
+
+$sm: (
+    max: $ms-screen-max-sm
+);
+$md: (
+    min: $ms-screen-min-md,
+    max: $ms-screen-max-md
+);
+$lg: (
+    min: $ms-screen-min-lg,
+    max: $ms-screen-max-lg
+);
+$xl: (
+    min: $ms-screen-min-xl,
+    max: $ms-screen-max-xl
+);
+$xxl: (
+    min: $ms-screen-min-xxl,
+    max: $ms-screen-max-xxl
+);
+$xxxl: (
+    min: $ms-screen-min-xxxl
+);
+
+$md-up: (
+    min: $ms-screen-min-md
+);
+$lg-up: (
+    min: $ms-screen-min-lg
+);
+$xl-up: (
+    min: $ms-screen-min-xl
+);
+$xxl-up: (
+    min: $ms-screen-min-xxl
+);
+
+$md-down: (
+    max: $ms-screen-max-md
+);
+$lg-down: (
+    max: $ms-screen-max-lg
+);
+$xl-down: (
+    max: $ms-screen-max-xl
+);
+$xxl-down: (
+    max: $ms-screen-max-xxl
+);
+
+// https://medium.com/developing-with-sass/refactoring-my-simple-sass-breakpoint-mixin-71205dd6badd
+@mixin breakpoint($map) {
+    $query: "";
+
+    @if map-has-key($map, min) {
+        $query: append($query, "(min-width: #{map-get($map, min)})")
+    }
+
+    @if map-has-key($map, min) and map-has-key($map, max) {
+        $query: append($query, "and")
+    }
+
+    @if map-has-key($map, max) {
+        $query: append($query, "(max-width: #{map-get($map, max)})")
+    }
+
+    @media screen and #{$query} {
+        @content;
+    }
+}
+
+@mixin sm() {
+    @include breakpoint($sm) {
+        @content;
+    }
+}
+
+@mixin md() {
+    @include breakpoint($md) {
+        @content;
+    }
+}
+
+@mixin lg() {
+    @include breakpoint($lg) {
+        @content;
+    }
+}
+
+@mixin xl() {
+    @include breakpoint($xl) {
+        @content;
+    }
+}
+
+@mixin xxl() {
+    @include breakpoint($xxl) {
+        @content;
+    }
+}
+
+@mixin xxxl() {
+    @include breakpoint($xxxl) {
+        @content;
+    }
+}
+
+@mixin md-down() {
+    @include breakpoint($md-down) {
+        @content;
+    }
+}
+
+@mixin lg-down() {
+    @include breakpoint($lg-down) {
+        @content;
+    }
+}
+
+@mixin xl-down() {
+    @include breakpoint($xl-down) {
+        @content;
+    }
+}
+
+@mixin xxl-down() {
+    @include breakpoint($xxl-down) {
+        @content;
+    }
+}
+
+@mixin md-up() {
+    @include breakpoint($md-up) {
+        @content;
+    }
+}
+
+@mixin lg-up() {
+    @include breakpoint($lg-up) {
+        @content;
+    }
+}
+
+@mixin xl-up() {
+    @include breakpoint($xl-up) {
+        @content;
+    }
+}
+
+@mixin xxl-up() {
+    @include breakpoint($xxl-up) {
+        @content;
+    }
+}
+
+@mixin hidden-sm() {
+    @include breakpoint($sm) {
+        @include hide;
+    }
+}
+
+@mixin hidden-md() {
+    @include breakpoint($md) {
+        @include hide;
+    }
+}
+
+@mixin hidden-lg() {
+    @include breakpoint($lg) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xl() {
+    @include breakpoint($xl) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xxl() {
+    @include breakpoint($xxl) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xxxl() {
+    @include breakpoint($xxxl) {
+        @include hide;
+    }
+}
+
+@mixin hidden-md-down() {
+    @include breakpoint($md-down) {
+        @include hide;
+    }
+}
+
+@mixin hidden-lg-down() {
+    @include breakpoint($lg-down) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xl-down() {
+    @include breakpoint($xl-down) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xxl-down() {
+    @include breakpoint($xxl-down) {
+        @include hide;
+    }
+}
+
+@mixin hidden-md-up() {
+    @include breakpoint($md-up) {
+        @include hide;
+    }
+}
+
+@mixin hidden-lg-up() {
+    @include breakpoint($lg-up) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xl-up() {
+    @include breakpoint($xl-up) {
+        @include hide;
+    }
+}
+
+@mixin hidden-xxl-up() {
+    @include breakpoint($xxl-up) {
+        @include hide;
+    }
+}
+
+
+@mixin nostyles() {
+    font: unset;
+}
+
+@mixin hide-scrollbar() {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+    /* Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// dev helper to make workbench canvas use full page width
+@mixin dev-workbench-wide() {
+    :global(#workbenchPageContent) {
+        max-width: initial;
+
+        :global(.CanvasZone) {
+            max-width: initial;
+        }
+    }
+}
+
+// dev helper to make workbench canvas simulate full-bleed
+@mixin dev-workbench-fullBleed() {
+    :global(#workbenchPageContent) {
+        max-width: initial;
+        left: 0px;
+        right: 0px;
+
+        :global(.CanvasZone) {
+            max-width: initial;
+
+            &:global(.CanvasZone--read) {
+                padding: 0px;
+            }
+
+            :global(.CanvasSection--read) {
+                padding-left: 0px;
+                padding-right: 0px;
+
+                :global(.ControlZone) {
+                    padding: 0px;
+                    margin: 0px;
+                }
+            }
+        }
+
+        :global([class^="content_"]) {
+            padding: 0px;
+        }
+    }
+}
