@@ -20,7 +20,7 @@ export class EventModerationStatus {
     ) {
     }
 
-    public clone(): EventModerationStatus {
+    public clone(): this {
         return this;
     }
 }

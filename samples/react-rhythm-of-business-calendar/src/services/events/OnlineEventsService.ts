@@ -3,7 +3,7 @@ import { IEmailProperties } from '@pnp/sp/sputilities';
 import { IMicrosoftTeams } from '@microsoft/sp-webpart-base';
 import { format } from '@fluentui/react';
 import { Color, Entity, humanizeFixedList, IAsyncData, multifilter, now, User } from 'common';
-import { ServiceContext, DeveloperService, DeveloperServiceProp, SharePointServiceProp, SharePointService, ISharePointService, TimeZoneServiceProp, TimeZoneService, ITimeZoneService, LiveUpdateServiceProp, LiveUpdateService, ILiveUpdateService, DirectoryService, DirectoryServiceProp, IDirectoryService, SpfxContext, TeamsJs } from 'common/services';
+import { ServiceContext, DeveloperService, DeveloperServiceProp, SharePointServiceProp, SharePointService, ISharePointService, TimeZoneServiceProp, TimeZoneService, ITimeZoneService, LiveUpdateServiceProp, LiveUpdateService, ILiveUpdateService, DirectoryService, DirectoryServiceProp, IDirectoryService, TeamsJs } from 'common/services';
 import { RoleType } from 'common/sharepoint';
 import { Approvers, Event, EventModerationStatus, humanizeDateRange, humanizeRecurrencePattern, ReadonlyEventMap, Refiner, RefinerValue } from 'model';
 import { ConfigurationService, IConfigurationService, ConfigurationServiceProp } from '../configuration';
@@ -18,7 +18,6 @@ import { Defaults } from './Defaults';
 import { AppName, ApprovalEmails as strings } from 'ComponentStrings';
 
 export class OnlineEventsService implements IEventsService {
-    private readonly _context: SpfxContext;
     private readonly _teams: IMicrosoftTeams;
     private readonly _timezones: ITimeZoneService;
     private readonly _liveUpdate: ILiveUpdateService;
@@ -32,7 +31,6 @@ export class OnlineEventsService implements IEventsService {
     private _approversLoader: ApproversLoader;
 
     constructor({
-        [SpfxContext]: context,
         [TeamsJs]: teams,
         [DeveloperService]: dev,
         [TimeZoneService]: timezones,
@@ -41,7 +39,6 @@ export class OnlineEventsService implements IEventsService {
         [SharePointService]: spo,
         [ConfigurationService]: configurations
     }: ServiceContext<DeveloperServiceProp & TimeZoneServiceProp & LiveUpdateServiceProp & DirectoryServiceProp & SharePointServiceProp & ConfigurationServiceProp>) {
-        this._context = context;
         this._teams = teams;
         this._timezones = timezones;
         this._liveUpdate = liveUpdate;
