@@ -10,19 +10,19 @@ This sample is the source code for the Rhythm of Business Calendar app published
 
 Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events.  Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events.
 
-Month view
+Month view  
 ![Screenshot of month view](./assets/screenshot-month-view.png)
 
-View event details
+View event details  
 ![Screenshot of view event panel](./assets/screenshot-view-event.png)
 
-Edit refiner
+Edit refiner  
 ![Screenshot of edit refiner panel](./assets/screenshot-edit-refiner.png)
 
 ## Compatibility
 
 ![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v16-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -77,15 +77,6 @@ TODO: add support for containers
 This sample is a complete app that demonstrates the "SPFx Solution Accelerator" framework, along with patterns and practices for building enterprise-class apps on SharePoint.  Inspired by Domain Driven Design and Onion Architecture, this accelerator has evolved since SPFx v1.0, and we want to share it with the world!
 
 At a high-level, the accelerator includes the following features:
-* Prescribed solution structure separates web parts, components, model, services, and schema (data) layers
-* Robust entity domain model with relationships, validation, change tracking, and text search
-* Robust schema provisioning and versioning; use SharePoint lists as a simple relational database
-* Services for interacting with SharePoint, timezones, domain isolation, and users and groups, plus patterns for building custom services for app-specific logic
-* Component library with customizable wizard, panel/dialog for quickly building view/edit screens, validation, and more
-* Live Update feature ensures users are always working with the latest data without manaually reloading the page
-* Built on the latest SPFx with TypeScript, React, and Fluent UI, plus PnPjs, Moment.js, Lodash, and Jest
-
-<!--
 * Prescribed [solution structure](./documentation/solution-structure.md) separates web parts, components, model, services, and schema (data) layers
 * Robust [entity domain model](./documentation/entities.md) with relationships, validation, change tracking, and text search
 * Robust [schema provisioning](./documentation/schema.md) and versioning; use SharePoint lists as a simple relational database
@@ -95,7 +86,6 @@ At a high-level, the accelerator includes the following features:
 * Built on the latest SPFx with TypeScript, React, and Fluent UI, plus PnPjs, Moment.js, Lodash, and Jest
 
 A deep dive into the various features of the accelerator can be found in the [documentation](./documentation/README.md) folder.
--->
 
 
 <!--
