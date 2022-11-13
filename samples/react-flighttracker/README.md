@@ -40,7 +40,7 @@ React-
 
 Solution|Author(s)
 --------|---------
-react-flighttracker |  [João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes)), StaffBase |
+react-flighttracker |  [João  Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes)), StaffBase |
 
 ## Version history
 
