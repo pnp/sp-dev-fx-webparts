@@ -7,6 +7,7 @@ The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) t
 
 ![SharePoint View](./src/assets/sharepoint.png "SharePoint View") 
 ![Teams View](./src/assets/teams.jpg "Teams View")
+![properties](./src/assets/properties.png "Teams View")
 
 React-
 
