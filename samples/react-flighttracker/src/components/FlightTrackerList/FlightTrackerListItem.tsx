@@ -7,9 +7,11 @@ import {
   IImageProps,
   Stack,
 } from 'office-ui-fabric-react';
+import { useRecoilState } from 'recoil';
 
 import { EInformationType } from '../../constants/EInformationType';
 import { IFlightTrackerListItem } from '../../models/IFlightTrackerListItem';
+import { globalState } from '../../recoil/atoms';
 import { FlightStatus } from '../FlightStatus/FlightStatus';
 import {
   FlightTrackerListItemAttribute,
@@ -27,11 +29,22 @@ export const FlightTrackerListItem: React.FunctionComponent<IFlightTrackerListIt
 ) => {
   const { flights, flightInformationType } = props;
   const { itemContainer, controlStyles } = useFlightTrackerStyles();
-
+  const [appState, setGlobalState] = useRecoilState(globalState);
   const imageProps: IImageProps = React.useMemo(() => {
     return { src: flights.flightCompanyImage, width: 22, height: 22 };
   }, [flights.flightCompanyImage]);
   const divRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (divRef.current) {
+      setGlobalState((prevState) => {
+        return {
+          ...prevState,
+          itemHeight: divRef.current.clientHeight,
+        };
+      });
+    }
+  },[divRef.current, setGlobalState]);
 
   return (
     <>

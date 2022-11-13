@@ -18,5 +18,5 @@ export interface IGlobalState {
   isScrolling: boolean;
   hasMore: boolean;
   webpartContainerWidth: number;
-
+  itemHeight:number;
 }

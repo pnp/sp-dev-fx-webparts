@@ -26,6 +26,8 @@ import { useSelectAirportStyles } from './useSelectAirportStyles';
 export interface ITagExtended extends ITag {
   airportData: IAirport;
 }
+const SELECTED_AIRPORT_SESSION_STORAGE_KEY = "___selectedAirport___";
+
 
 export const SelectAirportPicker: React.FunctionComponent = () => {
   const divRef = React.useRef<HTMLDivElement>(null);
@@ -34,7 +36,7 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
   const [selectedAirport, setSelectedAirports] = React.useState<ITag[]>([]);
   const { controlStyles, selecteAirportPickerStyles } = useSelectAirportStyles();
   const { context } = appState;
-  const SELECTED_AIRPORT_SESSION_STORAGE_KEY = "___selectedAirport___";
+
   const [getSelectedAirportFromSessionStorage, SetSelectedAirporttoSessionStorage] = useLocalStorage();
   const inputProps: IInputProps = React.useMemo(() => {
     return {

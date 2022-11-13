@@ -138,7 +138,7 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
                 PropertyPaneSlider("numberItemsPerPage", {
                   label: strings.NumberItemsPerPageLabel,
                   value: this.properties.numberItemsPerPage,
-                  min: 5,
+                  min: 1,
                   max: 20,
                   showValue: true,
                 })
