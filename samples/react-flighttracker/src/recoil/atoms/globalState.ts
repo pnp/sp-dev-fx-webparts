@@ -19,5 +19,6 @@ export const globalState = atom<IGlobalState>({
     isScrolling: false,
     hasMore: true,
     webpartContainerWidth: 0
+
   },
 });

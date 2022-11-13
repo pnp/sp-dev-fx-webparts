@@ -14,7 +14,6 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneSlider,
   PropertyPaneTextField,
-  PropertyPaneToggle,
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -34,17 +33,13 @@ export interface IFlightTrackerWebPartProps {
   displayMode: DisplayMode;
   updateProperty: (value: string) => void;
   numberItemsPerPage: number;
-  refreshInterval: number;
-  enableRefreshInterval: boolean;
+
 }
 
 export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightTrackerWebPartProps> {
-
   private _isDarkTheme: boolean = false;
   private containerWidth: number = 0;
   private _currentTheme: IReadonlyTheme | undefined;
-
-
 
   // Apply Teams Context
   private _applyTheme = (theme: string): void => {
@@ -53,66 +48,62 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
 
     if (theme === "dark") {
       loadTheme({
-        palette: teamsDarkTheme
+        palette: teamsDarkTheme,
       });
     }
 
     if (theme === "default") {
       loadTheme({
-        palette: teamsDefaultTheme
+        palette: teamsDefaultTheme,
       });
     }
 
     if (theme === "contrast") {
       loadTheme({
-        palette: teamsContrastTheme
+        palette: teamsContrastTheme,
       });
     }
-  }
+  };
 
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
+  }
 
   protected onAfterResize(newWidth: number): void {
     console.log("onAfterResize", newWidth);
-      this.containerWidth = newWidth;
-      this.render();
+    this.containerWidth = newWidth;
+    this.render();
   }
 
   public render(): void {
-    const element: React.ReactElement<IFlightTrackerProps> = React.createElement(
-      FlightTracker,
-      {
-        title: this.properties.title,
-        isDarkTheme: this._isDarkTheme,
-        context: this.context,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        currentTheme:  this._currentTheme ,
-        displayMode: this.displayMode,
-        numberItemsPerPage: this.properties.numberItemsPerPage,
-        updateProperty: (value: string) => {
-          this.properties.title = value;
-        },
-        webpartContainerWidth: this.containerWidth
-      }
-    );
+    const element: React.ReactElement<IFlightTrackerProps> = React.createElement(FlightTracker, {
+      title: this.properties.title,
+      isDarkTheme: this._isDarkTheme,
+      context: this.context,
+      hasTeamsContext: !!this.context.sdks.microsoftTeams,
+      currentTheme: this._currentTheme,
+      displayMode: this.displayMode,
+      numberItemsPerPage: this.properties.numberItemsPerPage,
+      updateProperty: (value: string) => {
+        this.properties.title = value;
+      },
+      webpartContainerWidth: this.containerWidth
+
+    });
 
     ReactDom.render(element, this.domElement);
   }
 
   protected onInit(): Promise<void> {
-
-
-    if (this.context.sdks.microsoftTeams ) {
+    if (this.context.sdks.microsoftTeams) {
       // in teams ?
       const teamsContext = this.context.sdks.microsoftTeams?.context;
       this._applyTheme(teamsContext.theme || "default");
-      this.context.sdks.microsoftTeams.teamsJs.registerOnThemeChangeHandler(
-        this._applyTheme
-      );
+      this.context.sdks.microsoftTeams.teamsJs.registerOnThemeChangeHandler(this._applyTheme);
     }
     this.containerWidth = this.domElement.clientWidth;
     return super.onInit();
   }
-
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
@@ -127,7 +118,7 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -135,40 +126,28 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.PropertyPaneDescription,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('title', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField("title", {
+                  label: strings.DescriptionFieldLabel,
                 }),
-                PropertyPaneSlider('numberItemsPerPage', {
+                PropertyPaneSlider("numberItemsPerPage", {
                   label: strings.NumberItemsPerPageLabel,
                   value: this.properties.numberItemsPerPage,
-                  min: 1,
+                  min: 5,
                   max: 20,
                   showValue: true,
-                }),
-                PropertyPaneToggle('enableRefreshInterval', {
-                  label: strings.RefreshIntervalLabel,
-                  checked: this.properties.enableRefreshInterval,
-                  offText: strings.RefreshIntervalOffText,
-                  onText: strings.RefreshIntervalOnText,
-                }),
-                PropertyPaneSlider('refreshInterval', {
-                  label: strings.RefreshIntervalLabel,
-                  value: this.properties.refreshInterval,
-                  min: 1,
-                  max: 5,
-                  showValue: true,
                 })
-              ]
-            }
-          ]
-        }
-      ]
+
+              ],
+            },
+          ],
+        },
+      ],
     };
   }
 }

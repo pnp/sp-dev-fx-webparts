@@ -16,6 +16,7 @@ import {
 import { useRecoilState } from 'recoil';
 
 import { useAirports } from '../../hooks/useAirports';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { IAirport } from '../../models/IAirport';
 import { globalState } from '../../recoil/atoms';
 import { Airport } from './Airport';
@@ -32,7 +33,9 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
   const { searchAirportsByText } = useAirports();
   const [selectedAirport, setSelectedAirports] = React.useState<ITag[]>([]);
   const { controlStyles, selecteAirportPickerStyles } = useSelectAirportStyles();
-
+  const { context } = appState;
+  const SELECTED_AIRPORT_SESSION_STORAGE_KEY = "___selectedAirport___";
+  const [getSelectedAirportFromSessionStorage, SetSelectedAirporttoSessionStorage] = useLocalStorage();
   const inputProps: IInputProps = React.useMemo(() => {
     return {
       placeholder: "Select an airport",
@@ -93,14 +96,11 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
   );
 
   const onRenderSuggestionsItem = React.useCallback(
-    (props:ITagExtended, itemProps: ISuggestionItemProps<ITagExtended>) => {
+    (props: ITagExtended, itemProps: ISuggestionItemProps<ITagExtended>) => {
       const { airportData } = props;
       return (
         <div className={controlStyles.pickerItemStyles}>
-          <Airport
-            airport={airportData}
-
-          />
+          <Airport airport={airportData} />
         </div>
       );
     },
@@ -118,30 +118,50 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
             airport={airport}
             onRemove={(airport) => {
               setSelectedAirports([]);
-              setAppState({ ...appState,  selectedAirPort: undefined });
+              setAppState({ ...appState, selectedAirPort: undefined });
             }}
           />
         </div>
       );
     },
-    [appState]
+    [appState,setSelectedAirports,setAppState]
   );
 
   const pickerCalloutPropsStyles = (props: ICalloutContentStyleProps) => {
     return { root: { width: divRef?.current?.offsetWidth } };
   };
 
-  const onPickerChange = React.useCallback((items: ITag[]) => {
-    setAppState({ ...appState, selectedAirPort: (items[0] as ITagExtended)?.airportData });
-  }, [appState]);
+  const onPickerChange = React.useCallback(
+    (items: ITag[]) => {
+      SetSelectedAirporttoSessionStorage(
+        `${SELECTED_AIRPORT_SESSION_STORAGE_KEY}${context.instanceId}`,
+        items[0] as ITagExtended
+      );
+      setAppState({ ...appState, selectedAirPort: (items[0] as ITagExtended)?.airportData });
+    },
+    [appState]
+  );
+
+  React.useEffect(() => {
+    if (context) {
+      const selectedAirportInSessionStorage = getSelectedAirportFromSessionStorage(
+        `${SELECTED_AIRPORT_SESSION_STORAGE_KEY}${context.instanceId}`
+      );
+      if (selectedAirportInSessionStorage) {
+        setSelectedAirports([selectedAirportInSessionStorage]);
+        setAppState({
+          ...appState,
+          selectedAirPort: (selectedAirportInSessionStorage  as ITagExtended)?.airportData,
+        });
+      }
+    }
+  }, [context]);
 
   return (
     <div>
-
       <div ref={divRef} className={controlStyles.searchContainerStyles}>
         <Label>Airport</Label>
         <TagPicker
-
           selectedItems={selectedAirport}
           styles={selecteAirportPickerStyles}
           resolveDelay={500}
@@ -160,7 +180,6 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
           }}
         />
       </div>
-
     </div>
   );
 };

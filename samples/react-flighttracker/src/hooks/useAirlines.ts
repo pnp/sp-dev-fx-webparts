@@ -9,21 +9,19 @@ import {
 import { IAirlines } from '../models/IAirlines';
 import { useLocalStorage } from './useLocalStorage';
 
-const  airlinesData  =  require("../mockData/airlines.json");
+const airlinesData = require("../mockData/airlines.json");
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 export const useAirlines = () => {
   const [error, setError] = useState<Error>(null);
   const [loading, setLoading] = useState(false);
-  const [airlines, setAirlines] = useState<IAirlines >({} as IAirlines);
+  const [airlines, setAirlines] = useState<IAirlines>({} as IAirlines);
 
-  const [airlinesLocalStorage, setAirLinesLocalStorage] = useLocalStorage("__airlines__", []);
+  const [getAirLinesFromSessionStorage, setAirLinesToSessionStorage] = useLocalStorage();
 
   const fetchAirlines = useCallback(async () => {
     try {
-
-      setAirLinesLocalStorage(airlinesData);
-
+      setAirLinesToSessionStorage("__airlines__",airlinesData);
     } catch (error) {
       if (DEBUG) {
         console.log("[useAirLines] error", error);
@@ -36,12 +34,13 @@ export const useAirlines = () => {
   useEffect(() => {
     (async () => {
       setLoading(true);
-     if (!airlinesLocalStorage?.rows?.length  ) {
+      const airlinesFromSessionStorage = getAirLinesFromSessionStorage("__airlines__");
+      if (!airlinesFromSessionStorage?.rows?.length) {
         await fetchAirlines();
         setAirlines(airlinesData);
         setError(undefined);
       } else {
-        setAirlines(airlinesLocalStorage);
+        setAirlines(airlinesFromSessionStorage);
       }
 
       setLoading(false);

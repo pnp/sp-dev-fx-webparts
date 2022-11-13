@@ -14,6 +14,7 @@ import { useRecoilState } from 'recoil';
 
 import { EInformationType } from '../../constants/EInformationType';
 import { EInformationTypesIcons } from '../../constants/EInformationTypesIcons';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { globalState } from '../../recoil/atoms';
 import { useSelectInformationStyles } from './useSelectInformationStyles';
 
@@ -22,8 +23,11 @@ export interface ISelectInformationTypeProps {}
 export const SelectInformationType: React.FunctionComponent<ISelectInformationTypeProps> = (
   props: React.PropsWithChildren<ISelectInformationTypeProps>
 ) => {
+  const SELECTED_INFORMATION_TYPE_SESSION_STORAGE_KEY = "___selectedInformationType___";
+  const [getSelectedInfTypeFromSessionStorage, setSelectedInfTypeToSessionStorage] = useLocalStorage();
   const [appState, setAppState] = useRecoilState(globalState);
-  const {  dropdownStyles, controlStyles } = useSelectInformationStyles();
+  const { context } = appState;
+  const { dropdownStyles, controlStyles } = useSelectInformationStyles();
   const options: IDropdownOption[] = React.useMemo(() => {
     return [
       { key: "Header", text: "Options", itemType: DropdownMenuItemType.Header },
@@ -79,6 +83,20 @@ export const SelectInformationType: React.FunctionComponent<ISelectInformationTy
     );
   }, []);
 
+  React.useEffect(() => {
+    if (context) {
+      const selectedInformationTypeInSessionStorage = getSelectedInfTypeFromSessionStorage(
+        `${SELECTED_INFORMATION_TYPE_SESSION_STORAGE_KEY}${context.instanceId}`
+      );
+      if (selectedInformationTypeInSessionStorage) {
+
+        setAppState( (prevState) => {
+          return {...prevState, selectedInformationType: selectedInformationTypeInSessionStorage};
+        });
+      }
+    }
+  }, [context ]);
+
   return (
     <>
       <Dropdown
@@ -89,9 +107,15 @@ export const SelectInformationType: React.FunctionComponent<ISelectInformationTy
         onRenderOption={onRenderOption}
         styles={dropdownStyles}
         options={options}
-        onChange={(event, option) =>
-          setAppState({ ...appState,  selectedInformationType: option.key as EInformationType })
-        }
+        onChange={(event, option) => {
+          if (option) {
+            setAppState( (prevState) => { return {...prevState, selectedInformationType: option.key as EInformationType};});
+            setSelectedInfTypeToSessionStorage(
+              `${SELECTED_INFORMATION_TYPE_SESSION_STORAGE_KEY}${context.instanceId}`,
+              option.key
+            );
+          }
+        }}
         selectedKey={appState.selectedInformationType}
       />
     </>

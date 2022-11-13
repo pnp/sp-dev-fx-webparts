@@ -25,6 +25,7 @@ export const FlightTrackerControl: React.FunctionComponent<IFlightTrackerProps> 
       context: context,
       numberItemsPerPage: numberItemsPerPage,
       webpartContainerWidth: webpartContainerWidth,
+
     });
   }, [isDarkTheme, hasTeamsContext, currentTheme, context, setGlobalState, webpartContainerWidth]);
 

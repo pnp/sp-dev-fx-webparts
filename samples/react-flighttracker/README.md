@@ -5,10 +5,10 @@
 This WebPart allows to track all flights from a selected airport, date and information type. 
 The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) to get data of flight, please see https://rapidapi.com/aedbx-aedbx/api/aerodatabox/ to get more information. There is some restritions on this API, the number of requests is limited (free version)
 
-![SharePoint View](assets/FQzNLB4XwAIFMRh.jpg "SharePoint View") 
-![Teams View](assets/FQzO9YjWUAgFlrU.jpg "Teams View")
+![SharePoint View](./src/assets/sharepoint.png "SharePoint View") 
+![Teams View](./src/assets/teams.jpg "Teams View")
 
-## Compatibility
+React-
 
 ![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
@@ -39,25 +39,36 @@ The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) t
 
 Solution|Author(s)
 --------|---------
-react-fluentui-9 | [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb) / [Jisc](https://jisc.ac.uk))
+react-flighttracker |  [João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes)), StaffBase |
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|April 20, 2022|Initial release
+1.0|November 11, 2022|Initial release
 
-- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
-- From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
-- in the command-line run:
-  - `npm install`
-  - `gulp serve`
+## Minimal Path to Awesome
 
-> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+- Clone this repository
+- Ensure that you are at the solution folder
+
+  - in the command line run:
+    - `npm install`
+      - `gulp build --ship`
+      - `gulp bundle --ship`
+      - `gulp package-solution --ship`
+    - Browse to your SharePoint app catalog and load the SPFx package.
+    - Browse to your SharePoint Admin Center and under advanced you will need to open Api Access and allow the requests for Microsoft Graph.
+- If you have the APIs permissions already allowed you can follow the below steps.
+
+  - in the command line run:
+    *`npm install`
+    * `gulp serve --nobrowser`
+    - browse to your hosted workbench [https://YOURTENANT.sharepoint.com/sites/_layouts/15/workbench.aspx](https://YOURTENANT.sharepoint.com/sites/_layouts/15/workbench.aspx) and add the adaptive card extension.
 
 ## Features
 
-Very simple demo, the handling of the theme provider is interesting implementing it and handling the custom themes SharePoint can use.
+ External API , Global State Management with Recoil Library, React Hooks , CCS-In-JS Styling 
 
 ## References
 
@@ -88,4 +99,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-fluentui-9" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-flighttracler" />

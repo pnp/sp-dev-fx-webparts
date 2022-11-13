@@ -15,7 +15,7 @@ import { globalState } from '../../recoil/atoms';
 
 export const useFlightTrackerStyles = () => {
   const [globalStateApp] = useRecoilState(globalState);
-  const { currentTheme } = globalStateApp;
+  const { currentTheme, numberItemsPerPage } = globalStateApp;
 
   const listHeaderStyles: ITextStyles = React.useMemo(() => {
     return { root: { fontWeight: FontWeights.semibold, color: currentTheme?.semanticColors?.bodyText } };
@@ -56,11 +56,11 @@ export const useFlightTrackerStyles = () => {
 
   const scollableContainerStyles: Partial<IScrollablePaneStyles> = React.useMemo(() => {
     return {
-      root: { position: "relative", height: 87 * 6 ,
+      root: { position: "relative", height: (87 *   numberItemsPerPage) - 50  ,
     },
     contentContainer: {  "::-webkit-scrollbar-thumb": {
 
-      backgroundColor: currentTheme?.semanticColors.bodyFrameBackground ,     },
+      backgroundColor: currentTheme?.palette.themeLight,     },
     "::-webkit-scrollbar": {
       height: 10,
       width: 7,
@@ -69,7 +69,7 @@ export const useFlightTrackerStyles = () => {
     "scrollbar-color": currentTheme?.semanticColors.bodyFrameBackground,
     "scrollbar-width": "thin", },
     };
-  }, [currentTheme]);
+  }, [currentTheme, numberItemsPerPage]);
 
   const stackContainerStyles: IStackStyles= React.useMemo(() => {
     return {

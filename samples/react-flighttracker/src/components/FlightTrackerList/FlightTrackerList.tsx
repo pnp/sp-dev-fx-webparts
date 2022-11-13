@@ -38,7 +38,14 @@ export const FlightTrackerList: React.FunctionComponent<IFlightTrackerListProps>
   const [appState, setGlobalState] = useRecoilState(globalState);
   const [airlineList, setAirlineList] = useRecoilState(airlineState);
   const { mapFlightSchedules } = useMappingFlightSchedules();
-  const { selectedAirPort, selectedInformationType, selectedDate, numberItemsPerPage, selectedTime } = appState;
+  const {
+    selectedAirPort,
+    selectedInformationType,
+    selectedDate,
+    numberItemsPerPage,
+    selectedTime,
+
+  } = appState;
   const [isLoadingItems, setIsLoadingItems] = React.useState<boolean>(true);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
   const [listItems, setListItems] = React.useState<IFlightTrackerListItem[]>([]);
@@ -51,6 +58,7 @@ export const FlightTrackerList: React.FunctionComponent<IFlightTrackerListProps>
   const [hasMore, setHasMore] = React.useState<boolean>(true);
   const pageIndex = React.useRef<number>(0);
   const currentInformationType = React.useRef(selectedInformationType);
+  const [timerId, setTimerId] = React.useState<number>(undefined);
 
   const checkTypeInformationToScroll = React.useCallback(() => {
     if (selectedInformationType !== currentInformationType.current) {
@@ -58,6 +66,20 @@ export const FlightTrackerList: React.FunctionComponent<IFlightTrackerListProps>
       currentInformationType.current = selectedInformationType;
     }
   }, [selectedInformationType]);
+
+  const onRefresh = React.useCallback(async () => {
+    pageIndex.current = 0;
+    const currentDateTime = new Date();
+    setGlobalState(
+      (prevState) =>
+        ({
+          ...prevState,
+          selectedDate: currentDateTime,
+          selectedTime: currentDateTime,
+        } as IGlobalState)
+    );
+    setIsRefreshing(true);
+  }, [appState]);
 
   React.useEffect(() => {
     if (!isEmpty(airlines)) {
@@ -138,17 +160,6 @@ export const FlightTrackerList: React.FunctionComponent<IFlightTrackerListProps>
   const showSpinner = React.useMemo((): boolean => {
     return (isLoadingFlightSchedules || loadingAirlines || isLoadingItems) && !showMessage;
   }, [isLoadingFlightSchedules, loadingAirlines, isLoadingItems, errorFlightSchedules]);
-
-  const onRefresh = React.useCallback(async () => {
-    pageIndex.current = 0;
-    const currentDateTime = new Date();
-    setGlobalState((prevState) => ({
-      ...prevState,
-      selectedDate: currentDateTime,
-      selectedTime: currentDateTime,
-    } as IGlobalState));
-    setIsRefreshing(true);
-  }, [appState]);
 
   if (!selectedAirPort || !selectedInformationType) {
     return null;

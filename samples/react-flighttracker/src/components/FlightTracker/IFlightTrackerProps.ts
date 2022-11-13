@@ -11,5 +11,6 @@ export interface IFlightTrackerProps {
   numberItemsPerPage: number;
   displayMode: DisplayMode;
     updateProperty: (value: string) => void;
-    webpartContainerWidth: number;
+  webpartContainerWidth: number;
+
 }

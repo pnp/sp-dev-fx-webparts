@@ -19,12 +19,16 @@ export interface ISelectDateProps {}
 export const SelectDate: React.FunctionComponent<ISelectDateProps> = (
   props: React.PropsWithChildren<ISelectDateProps>
 ) => {
+
   const { selectedDateStyle, textFieldStyles, labelDateStyles, labelTimeStyles } = useSelctedDateStyles();
   const [appState, setAppState] = useRecoilState(globalState);
-  const { selectedDate, selectedTime } = appState;
+  const { selectedDate,  selectedTime  } = appState;
+
 
   const onSelectDate = React.useCallback(
     (date: Date | null | undefined) => {
+
+
       setAppState({
         ...appState,
         selectedDate: date,
@@ -32,6 +36,9 @@ export const SelectDate: React.FunctionComponent<ISelectDateProps> = (
     },
     [appState, setAppState, selectedTime]
   );
+
+
+
 
   const datePickerRef = React.useRef<IDatePicker>(null);
   return (
