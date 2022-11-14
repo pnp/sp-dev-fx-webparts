@@ -33,7 +33,6 @@ export interface IFlightTrackerWebPartProps {
   displayMode: DisplayMode;
   updateProperty: (value: string) => void;
   numberItemsPerPage: number;
-
 }
 
 export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightTrackerWebPartProps> {
@@ -70,7 +69,6 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
   }
 
   protected onAfterResize(newWidth: number): void {
-    console.log("onAfterResize", newWidth);
     this.containerWidth = newWidth;
     this.render();
   }

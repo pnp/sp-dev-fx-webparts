@@ -9,7 +9,7 @@ The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) t
 ![Teams View](./src/assets/teams.jpg "Teams View")
 ![properties](./src/assets/properties.png "Teams View")
 
-React-
+ 
 
 ![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
@@ -28,13 +28,7 @@ React-
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+ 
 
 ## Solution
 
@@ -59,13 +53,7 @@ Version|Date|Comments
       - `gulp bundle --ship`
       - `gulp package-solution --ship`
     - Browse to your SharePoint app catalog and load the SPFx package.
-    - Browse to your SharePoint Admin Center and under advanced you will need to open Api Access and allow the requests for Microsoft Graph.
-- If you have the APIs permissions already allowed you can follow the below steps.
-
-  - in the command line run:
-    *`npm install`
-    * `gulp serve --nobrowser`
-    - browse to your hosted workbench [https://YOURTENANT.sharepoint.com/sites/_layouts/15/workbench.aspx](https://YOURTENANT.sharepoint.com/sites/_layouts/15/workbench.aspx) and add the adaptive card extension.
+  
 
 ## Features
 
