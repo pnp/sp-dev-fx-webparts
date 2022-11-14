@@ -82,7 +82,7 @@ export const useMappingFlightSchedules = (): IUseMappingFlightShedules => {
           :  sortBy((flightSchedules.arrivals as Arrivals[]) , ["arrival.scheduledTimeLocal"]);
       const pageIndex = getPageIndex(page, numberItemsPerPage);
       const items = flightsInfoToMap.slice(pageIndex, pageIndex + numberItemsPerPage);
-      console.log('items', items);
+
       for (const flightSchedule of items) {
         const mappedInfo =
           flightInformationType === EInformationType.DEPARTURES
