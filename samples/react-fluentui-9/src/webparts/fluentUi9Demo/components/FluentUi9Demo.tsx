@@ -2,9 +2,10 @@ import * as React from 'react';
 import styles from './FluentUi9Demo.module.scss';
 import { IFluentUi9DemoProps } from './IFluentUi9DemoProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Button, Link, Text, Caption, Body, Avatar, useId, ToggleButton, Slider, Menu, MenuTrigger, MenuButtonProps, MenuPopover, MenuList, MenuItem, SplitButton, Divider } from '@fluentui/react-components';
-import { Card, Tab, TabList, CardHeader, CardPreview, CardFooter, Label, Input, Checkbox, RadioGroup, Radio, Switch } from '@fluentui/react-components/unstable';
+import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, Menu, MenuTrigger, MenuButtonProps, MenuPopover, MenuList, MenuItem, SplitButton, Divider, Label, Input, Checkbox, RadioGroup, Radio, Switch, Body1, Caption1 } from '@fluentui/react-components';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
+import { ResponseType } from "@microsoft/microsoft-graph-clientV3";
 
 export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
   const { isDarkTheme, environmentMessage, hasTeamsContext, userDisplayName } = props;
@@ -14,10 +15,10 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
   const underlineId = useId('input-underline');
 
   React.useEffect(() => {
-    props.context.msGraphClientFactory.getClient().then(async (client) => {
+    props.context.msGraphClientFactory.getClient("3").then(async (client) => {
       await client
           .api('/me/photo/$value')
-          .responseType("blob")
+          .responseType(ResponseType.BLOB)
           .get()
           .then((blob: Blob) : Promise<any> => {
             return new Promise(resolve => {
@@ -150,11 +151,11 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
               <CardHeader
                 image={<Avatar name={userDisplayName} image={me ? {src: me } : null} />}
                 header={
-                  <Body>
+                  <Body1>
                     <b>{userDisplayName}</b> mentioned
-                  </Body>
+                  </Body1>
                 }
-                description={<Caption>5h ago · About us - Overview</Caption>}
+                description={<Caption1>5h ago · About us - Overview</Caption1>}
               />
 
               <CardPreview logo={<DocumentText24Regular />}>

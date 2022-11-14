@@ -8,6 +8,7 @@ import * as strings from 'FluentUi9DemoWebPartStrings';
 import FluentUi9Demo from './components/FluentUi9Demo';
 import { IFluentUi9DemoProps } from './components/IFluentUi9DemoProps';
 import { FluentProvider, FluentProviderProps, teamsDarkTheme, teamsLightTheme, webLightTheme, webDarkTheme, Theme } from '@fluentui/react-components';
+import { createv9Theme } from './shims/v9ThemeShim';
 
 export enum AppMode {
   SharePoint, SharePointLocal, Teams, TeamsLocal
@@ -64,27 +65,7 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
 
     //if the app mode is sharepoint, adjust the fluent ui 9 web light theme to use the sharepoint theme color, teams/dark mode should be fine on default
     if (this._appMode === AppMode.SharePoint || this._appMode === AppMode.SharePointLocal) {
-      this._theme = {...webLightTheme, 
-        colorBrandBackground: currentTheme.palette.themePrimary,
-        colorBrandBackgroundHover: currentTheme.palette.themeDark,
-        colorBrandBackgroundPressed: currentTheme.palette.themeDarker,
-        colorCompoundBrandForeground1: currentTheme.palette.themePrimary,
-        colorCompoundBrandForeground1Hover: currentTheme.palette.themeDark,
-        colorCompoundBrandForeground1Pressed: currentTheme.palette.themeDarker,
-        colorNeutralForeground2BrandHover: currentTheme.palette.themeSecondary,
-        colorNeutralForeground2BrandPressed: currentTheme.palette.themeDarkAlt,
-        colorNeutralForeground2BrandSelected: currentTheme.palette.themeDarkAlt,
-        colorBrandForeground1: currentTheme.palette.themeSecondary,
-        colorBrandStroke1: currentTheme.palette.themePrimary,
-        colorBrandStroke2: currentTheme.palette.themeSecondary,
-        colorCompoundBrandStroke: currentTheme.palette.themePrimary,
-        colorCompoundBrandStrokeHover: currentTheme.palette.themeSecondary,
-        colorCompoundBrandStrokePressed: currentTheme.palette.themeDarkAlt,
-        colorCompoundBrandBackground: currentTheme.palette.themePrimary,
-        colorCompoundBrandBackgroundHover: currentTheme.palette.themeDark,
-        colorCompoundBrandBackgroundPressed: currentTheme.palette.themeDarker,
-
-      };
+      this._theme = createv9Theme(currentTheme, webLightTheme);
     }
   }
 
@@ -94,12 +75,5 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
-  }
-
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-      ]
-    };
   }
 }

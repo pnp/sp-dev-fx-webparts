@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.14.0",
+    "version": "1.15.2",
     "libraryName": "react-fluentui-9",
     "libraryId": "d955a989-7441-475a-b4eb-ff132968b3c5",
     "environment": "spo",
