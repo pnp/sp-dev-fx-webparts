@@ -19,7 +19,7 @@ Tutorials
 * [SPFx Labs](http://bit.ly/SPFx-Labs)
 
 Teams
-* [Building Microsoft Teams Tabs using SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction)
+* [Building Microsoft Teams Tabs using SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction)
 * [Teams Labs](http://bit.ly/TeamsDevLabs)
 
 APIs

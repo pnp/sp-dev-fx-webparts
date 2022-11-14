@@ -97,8 +97,8 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Web Part Properties
@@ -145,6 +145,7 @@ Version|Date|Comments
 1.0.14|October 16, 2021|Resolve unhandled exception that happens clicking on recurrent events
 1.0.15|November 22, 2021|Fix All Day event issue that makes All Day events date expanded to another day instead of being full day event.
 1.0.16|December 21, 2021|Upgraded to SPFx 1.12.1
+1.0.17|October 25, 2022|Fixed issue deleting events (#2693)
 
 ## Minimal Path to Awesome
 

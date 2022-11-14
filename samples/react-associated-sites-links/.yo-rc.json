@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-associated-sites-links",
+    "libraryId": "068997ff-c8bd-435c-9722-504f6877f319",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-associated-sites-links",
+    "solutionShortDescription": "react-associated-sites-links description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -98,7 +98,7 @@ export class GraphHelper {
 
   private async saveToUploadSession(mimeStream: any, uploadUrl: string) {
     let minSize = 0;
-    let maxSize = 5 * 327680; //https://docs.microsoft.com/en-us/graph/api/driveitem-createuploadsession?view=graph-rest-1.0#upload-bytes-to-the-upload-session
+    let maxSize = 5 * 327680; //https://learn.microsoft.com/graph/api/driveitem-createuploadsession?view=graph-rest-1.0#upload-bytes-to-the-upload-session
     while (mimeStream.size > minSize) {
       const fileSlice = mimeStream.slice(minSize, maxSize);
       const resp = await this.uploadIndividualSlice(uploadUrl, minSize, maxSize, mimeStream.size, fileSlice);

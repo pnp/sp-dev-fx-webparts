@@ -21,9 +21,9 @@ The web part will fetch data from directory using Graph API and display in detai
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-* [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft Graph API](https://learn.microsoft.com/graph/overview)
 * [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/)
 * [PnP Controls](https://pnp.github.io/sp-dev-fx-controls-react/)
 

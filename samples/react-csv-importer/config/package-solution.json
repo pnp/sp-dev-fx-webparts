@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-csv-importer-client-side-solution",
+    "id": "6f431978-38c4-492e-878b-4d818caf51ee",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-csv-importer description"
+      },
+      "longDescription": {
+        "default": "react-csv-importer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-csv-importer Feature",
+        "description": "The feature that activates elements of the react-csv-importer solution.",
+        "id": "2130ba3a-4063-4ea5-89c4-cf64dbe9fea6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-csv-importer.sppkg"
+  }
+}

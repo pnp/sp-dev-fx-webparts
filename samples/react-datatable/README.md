@@ -29,8 +29,8 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -51,6 +51,7 @@ Version|Date|Comments
 1.5|June 2, 2021|Added feature to show image in dataTable and upgraded to the SPFx version 1.12.1.
 1.6|July 16, 2021|Changed library export-to-csv with react-csv
 1.7|Feb 22, 2022|Upgrade to SPFx v1.14.0
+1.8|November 01, 2022|Added support for list attachments
 
 ## Minimal Path to Awesome
 

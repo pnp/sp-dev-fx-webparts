@@ -38,8 +38,8 @@ NB Я ожидаю общедоступную версию от HttpGraphClient 
 
 ## Сфера применения
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [клиент разработчика приложений для Office 365;](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [клиент разработчика приложений для Office 365;](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Решение
 

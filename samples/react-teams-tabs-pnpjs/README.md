@@ -24,8 +24,8 @@ A SPFx web part using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -50,7 +50,7 @@ Version|Date|Comments
   * package solution: `gulp package-solution --ship`
   * locate solution at `.\sharepoint\solution\react-teams-tabs-pnpjs.sppkg` 
   * upload it to your tenant app catalog
-  * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
+  * [approve permission requests](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
   * add `react-teams-tabs-pnpjs` app to your site
   * add `react-teams-tabs-pnpjs` web part to your page to see it in action
 

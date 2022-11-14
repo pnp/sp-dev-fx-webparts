@@ -35,7 +35,7 @@ A simple todo web part built using react to showcase some of the SharePoint Fram
 
 ## Applies to
 
-* [SharePoint Framework Developer Documentation](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Documentation](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 

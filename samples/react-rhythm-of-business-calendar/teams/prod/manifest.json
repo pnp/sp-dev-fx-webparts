@@ -1,0 +1,48 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.13",
+    "packageName": "RhythmOfBusinessCalendar",
+    "id": "1e92a7c2-d849-4fa7-bd2d-8fb9f876609d",
+    "version": "1.0.0",
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "",
+        "privacyUrl": "",
+        "termsOfUseUrl": ""
+    },
+    "name": {
+        "short": "RoB Calendar",
+        "full": "Rhythm of Business Calendar"
+    },
+    "description": {
+        "short": "One calendar for managing and maintaining all team and organizational events",
+        "full": "Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events.  Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events."
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#004578",
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=false%26teams%26componentId=077f5c4a-37bf-4531-ac24-6369ca0f5f51%26forceLocale={locale}",
+            "canUpdateConfiguration": false,
+            "scopes": [
+                "team"
+            ]
+        }
+    ],
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}
