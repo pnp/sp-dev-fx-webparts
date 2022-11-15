@@ -1,7 +1,7 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.9",
-    "version": "1.0.0",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.14",
+    "version": "1.0.1",
     "showLoadingIndicator": false,
     "id": "1c198bf5-aae4-497a-ac0f-74b78a77b0aa",
     "packageName": "com.pnp.leadassistdashboard",
@@ -20,8 +20,8 @@
         "full": "PnP Lead Assist Dashboard"
     },
     "description": {
-        "short": "Example short description",
-        "full": "Exampe full description"
+        "short": "Lead Assist Dashboard",
+        "full": "Shows dashboard for helping the sales team"
     },
     "accentColor": "#FFFFFF",
     "staticTabs": [
