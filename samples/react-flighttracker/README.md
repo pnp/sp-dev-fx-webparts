@@ -57,7 +57,7 @@ Version|Date|Comments
 
 ## Features
 
- External API , Global State Management with Recoil Library, React Hooks , CCS-In-JS Styling 
+ External API , Global State Management with Jotai Library, React Hooks , CCS-In-JS Styling 
 
 ## References
 
