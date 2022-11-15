@@ -1,11 +1,11 @@
 import * as React from 'react';
 
+import { useAtom } from 'jotai';
 import { Stack } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 
-import { globalState } from '../../recoil/atoms/globalState';
+import { globalState } from '../../jotai/atoms/globalState';
 import { FlightSelector } from '../FlightSelector/FlightSelector';
 import { FlightTrackerList } from '../FlightTrackerList/FlightTrackerList';
 import { IFlightTrackerProps } from './IFlightTrackerProps';
@@ -14,11 +14,11 @@ export const FlightTrackerControl: React.FunctionComponent<IFlightTrackerProps> 
   props: React.PropsWithChildren<IFlightTrackerProps>
 ) => {
   const { isDarkTheme, hasTeamsContext, currentTheme, context, title, updateProperty, displayMode,numberItemsPerPage , webpartContainerWidth } = props;
-  const [appState, setGlobalState] = useRecoilState(globalState);
+  const  [,setGlobalState] = useAtom(globalState);
 
   React.useEffect(() => {
-    setGlobalState({
-      ...appState,
+    setGlobalState((prevState) =>  { return {
+     ...prevState,
       isDarkTheme: isDarkTheme,
       hasTeamsContext: hasTeamsContext,
       currentTheme: currentTheme,
@@ -26,8 +26,8 @@ export const FlightTrackerControl: React.FunctionComponent<IFlightTrackerProps> 
       numberItemsPerPage: numberItemsPerPage,
       webpartContainerWidth: webpartContainerWidth,
 
-    });
-  }, [isDarkTheme, hasTeamsContext, currentTheme, context, setGlobalState, webpartContainerWidth]);
+  }});
+  }, [isDarkTheme, hasTeamsContext, currentTheme, context,   webpartContainerWidth, numberItemsPerPage]);
 
   return (
     <>

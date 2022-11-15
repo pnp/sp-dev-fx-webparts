@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   FontWeights,
   IScrollablePaneStyles,
@@ -9,12 +10,11 @@ import {
   mergeStyles,
   mergeStyleSets,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 
 export const useFlightTrackerStyles = () => {
-  const [globalStateApp] = useRecoilState(globalState);
+  const globalStateApp = useAtomValue(globalState);
   const { currentTheme, numberItemsPerPage, itemHeight } = globalStateApp;
 
   const listHeaderStyles: ITextStyles = React.useMemo(() => {
@@ -42,7 +42,7 @@ export const useFlightTrackerStyles = () => {
         },
       },
     };
-  }, [currentTheme]);
+  }, [currentTheme,  ]);
 
   const attributeContainer: IStackStyles = React.useMemo(() => {
     return {

@@ -5,15 +5,15 @@ import * as React from 'react';
 import { format } from 'date-fns';
 import set from 'date-fns/set';
 import * as strings from 'FlightTrackerWebPartStrings';
+import { useSetAtom } from 'jotai';
 import {
   Dropdown,
   IDropdownOption,
 } from 'office-ui-fabric-react/lib/Dropdown';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { useRecoilState } from 'recoil';
 
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 import { useSelectTimeStyles } from './useSelectTimeStyles';
 
 interface IDropdownOptionExtended extends IDropdownOption {
@@ -25,7 +25,7 @@ export interface ISelectInformationTypeProps {}
 export const SelectTime: React.FunctionComponent<ISelectInformationTypeProps> = (
   props: React.PropsWithChildren<ISelectInformationTypeProps>
 ) => {
-  const [appState, setAppState] = useRecoilState(globalState);
+  const   setAppState = useSetAtom(globalState);
   const { dropdownStyles } = useSelectTimeStyles();
   const now = new Date();
   const [selectedOption, setSelectedOption] = React.useState<IDropdownOptionExtended | undefined>(undefined);

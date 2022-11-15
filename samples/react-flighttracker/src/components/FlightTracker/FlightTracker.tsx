@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { RecoilRoot } from 'recoil';
+import { Provider } from 'jotai';
 
 import {
   EnhancedThemeProvider,
@@ -16,9 +16,9 @@ export const FlightTracker: React.FunctionComponent<IFlightTrackerProps> = (
   return (
     <EnhancedThemeProvider context={props.context} theme={currentTheme}>
       <section>
-        <RecoilRoot>
+        <Provider>
           <FlightTrackerControl {...props} />
-        </RecoilRoot>
+        </Provider>
       </section>
     </EnhancedThemeProvider>
   );

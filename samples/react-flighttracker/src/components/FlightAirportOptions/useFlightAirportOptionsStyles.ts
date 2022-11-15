@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as react from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   IStackStyles,
   mergeStyleSets,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 
 export const useFlightAeroportOptionsStyles =  () => {
 
-const [ globalStateApp ] = useRecoilState(globalState);
+const  globalStateApp  = useAtomValue(globalState);
 const { currentTheme } = globalStateApp;
 
   const stackContainer : IStackStyles = react.useMemo(()=> {

@@ -1,14 +1,14 @@
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   Icon,
   Text,
 } from 'office-ui-fabric-react';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { useRecoilState } from 'recoil';
 
+import { globalState } from '../../jotai/atoms';
 import { IAttribute } from '../../models';
-import { globalState } from '../../recoil/atoms';
 import { useFlightTrackerStyles } from './useFlightTrackerStyles';
 
 export interface IFlightTrackerListItemAttributeProps {
@@ -20,7 +20,7 @@ export const FlightTrackerListItemAttribute: React.FunctionComponent<IFlightTrac
   props: React.PropsWithChildren<IFlightTrackerListItemAttributeProps>
 ) => {
   const { attribute } = props;
-  const [appState] = useRecoilState(globalState);
+  const appState = useAtomValue(globalState);
   const { controlStyles } = useFlightTrackerStyles();
   const { webpartContainerWidth } = appState;
   const [renderAttribute, setRenderAttribute] = React.useState<JSX.Element | null>(null);

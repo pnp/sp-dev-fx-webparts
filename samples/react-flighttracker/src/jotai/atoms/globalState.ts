@@ -1,11 +1,9 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
 import { EInformationType } from '../../constants/EInformationType';
 import { IGlobalState } from '../../models/IGlobalState';
 
 export const globalState = atom<IGlobalState>({
-  key: "globaltState",
-  default: {
     isDarkTheme: false,
     hasTeamsContext: false,
     context: undefined,
@@ -20,5 +18,5 @@ export const globalState = atom<IGlobalState>({
     hasMore: true,
     webpartContainerWidth: 0,
     itemHeight:87
-  },
+
 });

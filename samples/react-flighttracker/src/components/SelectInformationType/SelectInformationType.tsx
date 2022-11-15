@@ -2,6 +2,7 @@
 import * as React from 'react';
 
 import * as strings from 'FlightTrackerWebPartStrings';
+import { useAtom } from 'jotai';
 import {
   Dropdown,
   DropdownMenuItemType,
@@ -10,12 +11,11 @@ import {
 } from 'office-ui-fabric-react/lib/Dropdown';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { useRecoilState } from 'recoil';
 
 import { EInformationType } from '../../constants/EInformationType';
 import { EInformationTypesIcons } from '../../constants/EInformationTypesIcons';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 import { useSelectInformationStyles } from './useSelectInformationStyles';
 
 export interface ISelectInformationTypeProps {}
@@ -25,7 +25,7 @@ export const SelectInformationType: React.FunctionComponent<ISelectInformationTy
 ) => {
   const SELECTED_INFORMATION_TYPE_SESSION_STORAGE_KEY = "___selectedInformationType___";
   const [getSelectedInfTypeFromSessionStorage, setSelectedInfTypeToSessionStorage] = useLocalStorage();
-  const [appState, setAppState] = useRecoilState(globalState);
+  const [appState, setAppState] = useAtom(globalState);
   const { context } = appState;
   const { dropdownStyles, controlStyles } = useSelectInformationStyles();
   const options: IDropdownOption[] = React.useMemo(() => {

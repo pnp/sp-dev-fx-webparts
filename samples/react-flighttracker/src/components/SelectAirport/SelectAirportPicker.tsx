@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from 'react';
 
+import { useAtom } from 'jotai';
 import {
   IBasePickerSuggestionsProps,
   ICalloutContentStyleProps,
@@ -13,12 +14,11 @@ import {
   Label,
   TagPicker,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
 import { useAirports } from '../../hooks/useAirports';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { globalState } from '../../jotai/atoms';
 import { IAirport } from '../../models/IAirport';
-import { globalState } from '../../recoil/atoms';
 import { Airport } from './Airport';
 import { SelectedAirport } from './SelectedAirport';
 import { useSelectAirportStyles } from './useSelectAirportStyles';
@@ -31,7 +31,7 @@ const SELECTED_AIRPORT_SESSION_STORAGE_KEY = "___selectedAirport___";
 
 export const SelectAirportPicker: React.FunctionComponent = () => {
   const divRef = React.useRef<HTMLDivElement>(null);
-  const [appState, setAppState] = useRecoilState(globalState);
+  const [appState, setAppState] = useAtom(globalState);
   const { searchAirportsByText } = useAirports();
   const [selectedAirport, setSelectedAirports] = React.useState<ITag[]>([]);
   const { controlStyles, selecteAirportPickerStyles } = useSelectAirportStyles();

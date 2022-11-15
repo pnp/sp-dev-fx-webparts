@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as react from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   IBasePickerStyles,
   IContextualMenuStyles,
@@ -10,12 +11,11 @@ import {
   mergeStyles,
   mergeStyleSets,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 
 export const useSelectAirportStyles = () => {
-  const [appState] = useRecoilState(globalState);
+  const appState = useAtomValue(globalState);
 
   const { currentTheme, selectedAirPort } = appState;
 

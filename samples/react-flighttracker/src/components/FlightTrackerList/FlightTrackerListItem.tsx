@@ -3,15 +3,15 @@
 import * as React from 'react';
 
 import * as strings from 'FlightTrackerWebPartStrings';
+import { useAtom } from 'jotai';
 import {
   IImageProps,
   Stack,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
 import { EInformationType } from '../../constants/EInformationType';
+import { globalState } from '../../jotai/atoms';
 import { IFlightTrackerListItem } from '../../models/IFlightTrackerListItem';
-import { globalState } from '../../recoil/atoms';
 import { FlightStatus } from '../FlightStatus/FlightStatus';
 import {
   FlightTrackerListItemAttribute,
@@ -29,7 +29,7 @@ export const FlightTrackerListItem: React.FunctionComponent<IFlightTrackerListIt
 ) => {
   const { flights, flightInformationType } = props;
   const { itemContainer, controlStyles } = useFlightTrackerStyles();
-  const [appState, setGlobalState] = useRecoilState(globalState);
+  const [appState, setGlobalState] = useAtom(globalState);
   const imageProps: IImageProps = React.useMemo(() => {
     return { src: flights.flightCompanyImage, width: 22, height: 22 };
   }, [flights.flightCompanyImage]);
@@ -44,7 +44,7 @@ export const FlightTrackerListItem: React.FunctionComponent<IFlightTrackerListIt
         };
       });
     }
-  },[divRef.current, setGlobalState]);
+  }, [divRef.current, setGlobalState]);
 
   return (
     <>

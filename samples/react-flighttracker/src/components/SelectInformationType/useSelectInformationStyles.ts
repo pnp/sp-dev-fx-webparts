@@ -2,19 +2,19 @@
 
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   IIconStyles,
   mergeStyles,
   mergeStyleSets,
 } from 'office-ui-fabric-react';
 import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { useRecoilState } from 'recoil';
 
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 export const useSelectInformationStyles = () => {
-  const [appState] = useRecoilState(globalState);
+  const appState = useAtomValue(globalState);
   const { currentTheme } = appState;
   const iconStyles: IIconStyles = React.useMemo(() => {
     return { root: { width: "20px", height: "20px", fill: currentTheme?.semanticColors?.bodyText } };

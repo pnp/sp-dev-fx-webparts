@@ -6,18 +6,18 @@ import {
   isSameDay,
   parseISO,
 } from 'date-fns';
-import { useRecoilState } from 'recoil';
+import { useAtomValue } from 'jotai';
 
+import { airlineState } from '../jotai/atoms/airlineState';
+import { globalState } from '../jotai/atoms/globalState';
 import { IAirline } from '../models/IAirlines';
-import { airlineState } from '../recoil/atoms/airlineState';
-import { globalState } from '../recoil/atoms/globalState';
 
 const PHOTO_AIRLINE_URL = "https://r-xx.bstatic.com/data/airlines_logo/";
 
 export const useUtils = () => {
-  const [appState] = useRecoilState(globalState);
+  const appState = useAtomValue(globalState);
 
-  const [airlinesList] = useRecoilState(airlineState);
+  const airlinesList = useAtomValue(airlineState);
   const { currentTheme } = appState;
 
   const statusColors = new Map<string, string>([

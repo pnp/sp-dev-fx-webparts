@@ -19,4 +19,5 @@ export interface IGlobalState {
   hasMore: boolean;
   webpartContainerWidth: number;
   itemHeight:number;
+
 }

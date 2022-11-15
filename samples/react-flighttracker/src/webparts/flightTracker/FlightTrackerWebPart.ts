@@ -64,9 +64,7 @@ export default class FlightTrackerWebPart extends BaseClientSideWebPart<IFlightT
     }
   };
 
-  protected get disableReactivePropertyChanges(): boolean {
-    return true;
-  }
+
 
   protected onAfterResize(newWidth: number): void {
     this.containerWidth = newWidth;

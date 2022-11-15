@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 import * as strings from 'FlightTrackerWebPartStrings';
+import { useAtom } from 'jotai';
 import {
   DatePicker,
   IDatePicker,
   Label,
   Stack,
 } from 'office-ui-fabric-react';
-import { useRecoilState } from 'recoil';
 
 import { DayPickerStrings } from '../../constants';
-import { globalState } from '../../recoil/atoms';
+import { globalState } from '../../jotai/atoms';
 import { SelectTime } from '../SelectTime/SelectTime';
 import { useSelctedDateStyles } from './useSelectDateStyles';
 
@@ -21,7 +21,7 @@ export const SelectDate: React.FunctionComponent<ISelectDateProps> = (
 ) => {
 
   const { selectedDateStyle, textFieldStyles, labelDateStyles, labelTimeStyles } = useSelctedDateStyles();
-  const [appState, setAppState] = useRecoilState(globalState);
+  const [appState, setAppState] = useAtom(globalState);
   const { selectedDate,  selectedTime  } = appState;
 
 

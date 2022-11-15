@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   IconButton,
   ScrollablePane,
@@ -9,10 +10,9 @@ import {
   Text,
 } from 'office-ui-fabric-react';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { useRecoilState } from 'recoil';
 
+import { globalState } from '../../jotai/atoms';
 import { IFlightTrackerListItem } from '../../models';
-import { globalState } from '../../recoil/atoms';
 import {
   FlightTrackerListItem,
 } from '../FlightTrackerList/FlightTrackerListItem';
@@ -37,7 +37,7 @@ export const ShowList: React.FunctionComponent<IShowListProps> = (props: React.P
     stackContainerStyles,
   } = useFlightTrackerStyles();
 
-  const [appState] = useRecoilState(globalState);
+  const appState =useAtomValue(globalState);
   const { selectedAirPort, selectedInformationType,  } = appState;
   const scrollablePaneRef: any = React.createRef<HTMLDivElement>();
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
@@ -98,7 +98,7 @@ export const ShowList: React.FunctionComponent<IShowListProps> = (props: React.P
           onScroll={onScrollList}
           componentRef={scrollablePaneRef}
         >
-          {listItems && listItems.length > 0 ? (
+          {listItems && listItems.length  ? (
             listItems.map((item, index) => {
               return (
                 <FlightTrackerListItem key={index} flights={item} flightInformationType={selectedInformationType} />

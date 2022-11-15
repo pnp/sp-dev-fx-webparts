@@ -2,19 +2,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
 import {
   FontSizes,
   FontWeights,
 } from 'office-ui-fabric-react';
 import { ITextStyles } from 'office-ui-fabric-react/lib/components/Text';
 import { IImageStyles } from 'office-ui-fabric-react/lib/Image';
-import { useRecoilState } from 'recoil';
 
 import { useUtils } from '../../hooks/useUtils';
-import { globalState } from '../../recoil/atoms/globalState';
+import { globalState } from '../../jotai/atoms/globalState';
 
 export const useFlightStatusStyles = () => {
-  const [appState, setGlobalState] = useRecoilState(globalState);
+  const  appState  = useAtomValue(globalState);
   const { currentTheme } = appState;
   const { getFlightStatusColor } = useUtils();
   const imageStyles: Partial<IImageStyles> = {
