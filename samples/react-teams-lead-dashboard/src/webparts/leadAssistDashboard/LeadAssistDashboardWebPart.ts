@@ -14,16 +14,17 @@ import { ILeadAssistDashboardProps } from './components/ILeadAssistDashboardProp
 import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
 import { sp } from "@pnp/sp/presets/all";
 import DataService from '../../services/DataService';
-import { MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
 import SettingsService from '../../services/SettingsService';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ILeadAssistDashboardWebPartProps {
 }
 
 export default class LeadAssistDashboardWebPart extends BaseClientSideWebPart<ILeadAssistDashboardWebPartProps> {
   private isTeamsContext: boolean;
   private siteUrl: string;
-  private graphClient: MSGraphClient;
+  private graphClient: MSGraphClientV3;
 
   protected async onInit() {
     // Determine if we are in the Teams context
@@ -36,7 +37,7 @@ export default class LeadAssistDashboardWebPart extends BaseClientSideWebPart<IL
     }
 
     // Create the Microsoft Graph client
-    this.graphClient = await this.context.msGraphClientFactory.getClient();
+    this.graphClient = await this.context.msGraphClientFactory.getClient('3');
 
     // Get the settings
     const settings = await SettingsService.getSettings(this.graphClient, this.context.httpClient, 'lead_dashboard_settings.json');
@@ -57,7 +58,7 @@ export default class LeadAssistDashboardWebPart extends BaseClientSideWebPart<IL
     if (this.siteUrl && this.siteUrl.length > 0) {
       // Setup the SharePoint client
       sp.setup({
-        spfxContext: this.context,
+        spfxContext: this.context as any,
         sp: {
           baseUrl: this.siteUrl
         }
