@@ -10,7 +10,7 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 ## Compatibility
 
 ![SPFx 1.16.0-rc.0](https://img.shields.io/badge/SPFx-1.16.0--rc.0-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
+![Node.js >=16.13.0 <17.0.0](https://img.shields.io/badge/Node.js-%3E=16.13.0%20%3C17.0.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -48,6 +48,9 @@ Version|Date|Comments
   - `npm run package`
 - Upload the generated SPPKG file into the SharePoint App Catalog of your tenant
 - Select the SPPKG in the App Catalog and click on "Sync to Teams" button
+- Verify that you have the [latest version of the Microsoft Graph Toolkit SPFx package](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) installed in your app catalog. If you don't:
+  - Download the [mgt-spfx-v2.sppkg file](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases)
+  - Upload it to the SharePoint App Catalog and deploy it to all sites
 - Add the web part to a SharePoint page
 - In the first run the web part will ask for the target SharePoint site URL
 
