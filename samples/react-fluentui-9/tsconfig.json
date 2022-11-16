@@ -13,7 +13,6 @@
     "outDir": "lib",
     "inlineSources": false,
     "strictNullChecks": false,
-    "noUnusedLocals": false,
     "noImplicitAny": true,
 
     "typeRoots": [
