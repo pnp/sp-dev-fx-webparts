@@ -19,26 +19,16 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
   private _theme: Theme = webLightTheme;
 
   protected async onInit(): Promise<void> {
-    //on initalizational set the App Mode
-    // if running in Microsoft Teams, Outlook, or Office...
+    const _l = this.context.isServedFromLocalhost;
     if (!!this.context.sdks.microsoftTeams) {
       const teamsContext = await this.context.sdks.microsoftTeams.teamsJs.app.getContext();
       switch (teamsContext.app.host.name.toLowerCase()) {
-        case 'teams':
-          this._appMode = this.context.isServedFromLocalhost ? AppMode.TeamsLocal : AppMode.Teams;
-          break;
-        case 'office':
-          this._appMode = this.context.isServedFromLocalhost ? AppMode.OfficeLocal : AppMode.Office;
-          break;
-        case 'outlook':
-          this._appMode = this.context.isServedFromLocalhost ? AppMode.OutlookLocal : AppMode.Outlook;
-          break;
-        default:
-          throw new Error('Unknown host');
+        case 'teams': this._appMode = _l ? AppMode.TeamsLocal : AppMode.Teams; break;
+        case 'office': this._appMode = _l ? AppMode.OfficeLocal : AppMode.Office; break;
+        case 'outlook': this._appMode = _l ? AppMode.OutlookLocal : AppMode.Outlook; break;
+        default: throw new Error('Unknown host');
       }
-    } else {
-      this._appMode = (this.context.isServedFromLocalhost) ? AppMode.SharePointLocal : AppMode.SharePoint;
-    }
+    } else this._appMode = _l ? AppMode.SharePointLocal : AppMode.SharePoint;
     return super.onInit();
   }
 
