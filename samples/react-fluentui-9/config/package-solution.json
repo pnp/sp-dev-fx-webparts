@@ -4,7 +4,7 @@
     "name": "react-fluentui-9-client-side-solution",
     "title": "SPFX + Fluent UI 9 Demo",
     "id": "d955a989-7441-475a-b4eb-ff132968b3c5",
-    "version": "1.0.1.0",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
