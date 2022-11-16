@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.7.0",
-    "@microsoft/microsoft-graph-client": "^3.0.4",
     "@microsoft/sp-core-library": "1.16.0",
     "@microsoft/sp-lodash-subset": "1.16.0",
     "@microsoft/sp-office-ui-fabric-core": "1.16.0",

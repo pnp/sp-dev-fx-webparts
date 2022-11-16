@@ -6,7 +6,7 @@ import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, 
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
-import { ResponseType } from "@microsoft/microsoft-graph-client";
+import { ResponseType } from "@microsoft/microsoft-graph-clientv1";
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 

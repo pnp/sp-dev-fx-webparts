@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
-    "packageName": "{{SPFX_PACKAGE_NAME}}",
+    "packageName": "react-fluentui-9-client-side-solution",
     "id": "e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00",
     "version": "1.0.2",
     "developer": {
