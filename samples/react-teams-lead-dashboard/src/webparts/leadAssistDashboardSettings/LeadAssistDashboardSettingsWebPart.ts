@@ -12,6 +12,7 @@ import LeadAssistDashboardSettings from './components/LeadAssistDashboardSetting
 import { ILeadAssistDashboardSettingsProps } from './components/ILeadAssistDashboardSettingsProps';
 import SettingsService from '../../services/SettingsService';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ILeadAssistDashboardSettingsWebPartProps {
 }
 
@@ -25,7 +26,7 @@ export default class LeadAssistDashboardSettingsWebPart extends BaseClientSideWe
       this.context.sdks.microsoftTeams.teamsJs.registerOnThemeChangeHandler(this.applyTheme);
     }
 
-    const graphClient = await this.context.msGraphClientFactory.getClient();
+    const graphClient = await this.context.msGraphClientFactory.getClient('3');
 
     // Get the settings
     const settings = await SettingsService.getSettings(graphClient, this.context.httpClient, 'lead_dashboard_settings.json');
@@ -40,7 +41,7 @@ export default class LeadAssistDashboardSettingsWebPart extends BaseClientSideWe
     if (this.siteUrl && this.siteUrl.length > 0) {
       // Setup the SharePoint client
       sp.setup({
-        spfxContext: this.context,
+        spfxContext: this.context as any,
         sp: {
           baseUrl: this.siteUrl
         }
