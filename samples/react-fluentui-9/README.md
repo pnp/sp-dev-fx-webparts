@@ -9,8 +9,8 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 
 ## Compatibility
 
-![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.16.0](https://img.shields.io/badge/SPFx-1.16-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -45,6 +45,8 @@ react-fluentui-9 | [Nick Brown](https://github.com/techienickb) ([@techienickb](
 Version|Date|Comments
 -------|----|--------
 1.0|April 20, 2022|Initial release
+1.0.1|November 14, 2022|Updated to SPFx 15, latest Fluent UI 9, shim based theme mapping
+1.0.2|November 16, 2022| 
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
