@@ -39,7 +39,8 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
         isDarkTheme: this._isDarkTheme,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        context: this.context
+        context: this.context,
+        appMode: this._appMode
       }
     );
 
@@ -49,7 +50,9 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
       {
         theme: this._appMode === AppMode.Teams || this._appMode === AppMode.TeamsLocal ?
           this._isDarkTheme ? teamsDarkTheme : teamsLightTheme :
-          this._isDarkTheme ? webDarkTheme : this._theme
+          this._appMode === AppMode.SharePoint || this._appMode === AppMode.SharePointLocal ?
+            this._isDarkTheme ? webDarkTheme : this._theme :
+            this._isDarkTheme ? webDarkTheme : webLightTheme
       },
       element
     );
@@ -60,7 +63,6 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) return;
     this._isDarkTheme = !!currentTheme.isInverted;
-
     //if the app mode is sharepoint, adjust the fluent ui 9 web light theme to use the sharepoint theme color, teams/dark mode should be fine on default
     if (this._appMode === AppMode.SharePoint || this._appMode === AppMode.SharePointLocal) {
       this._theme = createv9Theme(currentTheme, webLightTheme);

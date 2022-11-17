@@ -7,15 +7,30 @@ import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui
 import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
 import { ResponseType } from "@microsoft/microsoft-graph-clientv1";
+import { AppMode } from '../FluentUi9DemoWebPart';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactElement<IFluentUi9DemoProps> {
-  const { isDarkTheme, hasTeamsContext, userDisplayName } = props;
+  const { isDarkTheme, hasTeamsContext, userDisplayName, appMode } = props;
   const [tab, setTab] = React.useState<string | unknown>("buttons");
   const [me, setMe] = React.useState<string | undefined>();
   const outlineId = useId('input-outline');
   const underlineId = useId('input-underline');
+
+  const am = (): string => {
+    switch (appMode) {
+      case AppMode.Office: return "Office";
+      case AppMode.OfficeLocal: return "Office Local";
+      case AppMode.Outlook: return "Outlook";
+      case AppMode.OutlookLocal: return "Outlook Local";
+      case AppMode.SharePoint: return "SharePoint";
+      case AppMode.SharePointLocal: return "SharePoint Local";
+      case AppMode.Teams: return "Teams";
+      case AppMode.TeamsLocal: return "Teams Local";
+    }
+    return "unknown";
+  }
 
   React.useEffect(() => {
     props.context.msGraphClientFactory.getClient("3").then(async (client) => {
@@ -38,6 +53,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
       <div className={styles.welcome}>
         <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
         <h2>Well done, {escape(userDisplayName)}!</h2>
+        <div>This app is running in {am()}</div>
       </div>
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
