@@ -4,7 +4,7 @@
     "name": "react-fluentui-9-client-side-solution",
     "title": "SPFX + Fluent UI 9 Demo",
     "id": "d955a989-7441-475a-b4eb-ff132968b3c5",
-    "version": "1.0.0.0",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -13,7 +13,7 @@
       "websiteUrl": "https://nbdev.uk",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.14.0"
+      "mpnId": "Undefined-1.16.0"
     },
     "metadata": {
       "shortDescription": {
@@ -34,7 +34,13 @@
         "title": "react-fluentui-9 Feature",
         "description": "Demos the use of Fluent UI 9 in SPFX",
         "id": "233521d9-d6d8-41ed-a43d-d30bb942c370",
-        "version": "1.0.0.0"
+        "version": "1.0.1.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
       }
     ]
   },

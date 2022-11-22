@@ -1,0 +1,63 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.14",
+    "packageName": "react-fluentui-9-client-side-solution",
+    "id": "e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00",
+    "version": "1.0.2",
+    "developer": {
+        "name": "Nick Brown",
+        "websiteUrl": "https://nbdev.uk",
+        "privacyUrl": "https://nbdev.uk",
+        "termsOfUseUrl": "https://nbdev.uk"
+    },
+    "name": {
+        "short": "Fluent UI 9",
+        "full": "Fluent UI 9 Demo"
+    },
+    "description": {
+        "short": "Fluent UI 9",
+        "full": "Fluent UI 9 Demo"
+    },
+    "icons": {
+        "outline": "e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00_outline.png",
+        "color": "e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00_color.png"
+    },
+    "accentColor": "#004578",
+    "staticTabs": [
+        {
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00%26forceLocale={locale}",
+            "name": "Fluent UI 9 Demo",
+            "scopes": ["personal"],
+            "entityId": "100001"
+        }
+    ],
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e27a9fe1-16cf-4f4b-adb7-6adb4d2d6c00%26forceLocale={locale}",
+            "canUpdateConfiguration": false,
+            "scopes": [
+                "team",
+                "groupchat"
+            ],
+            "context": [
+                "channelTab",
+                "privateChatTab",
+                "meetingSidePanel",
+                "meetingDetailsTab",
+                "meetingChatTab"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity"
+    ],
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "resourceseng.blob.core.windows.net"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}

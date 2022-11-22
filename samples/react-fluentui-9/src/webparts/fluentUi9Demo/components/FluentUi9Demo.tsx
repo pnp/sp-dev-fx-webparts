@@ -2,31 +2,50 @@ import * as React from 'react';
 import styles from './FluentUi9Demo.module.scss';
 import { IFluentUi9DemoProps } from './IFluentUi9DemoProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Button, Link, Text, Caption, Body, Avatar, useId, ToggleButton, Slider, Menu, MenuTrigger, MenuButtonProps, MenuPopover, MenuList, MenuItem, SplitButton, Divider } from '@fluentui/react-components';
-import { Card, Tab, TabList, CardHeader, CardPreview, CardFooter, Label, Input, Checkbox, RadioGroup, Radio, Switch } from '@fluentui/react-components/unstable';
+import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, Divider, Label, Input, Checkbox, RadioGroup, Radio, Switch, Body1, Caption1, CompoundButton, Menu, MenuButtonProps, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
+import { ResponseType } from "@microsoft/microsoft-graph-clientv1";
+import { AppMode } from '../FluentUi9DemoWebPart';
 
-export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
-  const { isDarkTheme, environmentMessage, hasTeamsContext, userDisplayName } = props;
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactElement<IFluentUi9DemoProps> {
+  const { isDarkTheme, hasTeamsContext, userDisplayName, appMode } = props;
   const [tab, setTab] = React.useState<string | unknown>("buttons");
-  const [me, setMe] = React.useState<string|undefined>();
+  const [me, setMe] = React.useState<string | undefined>();
   const outlineId = useId('input-outline');
   const underlineId = useId('input-underline');
 
+  const am = (): string => {
+    switch (appMode) {
+      case AppMode.Office: return "Office";
+      case AppMode.OfficeLocal: return "Office Local";
+      case AppMode.Outlook: return "Outlook";
+      case AppMode.OutlookLocal: return "Outlook Local";
+      case AppMode.SharePoint: return "SharePoint";
+      case AppMode.SharePointLocal: return "SharePoint Local";
+      case AppMode.Teams: return "Teams";
+      case AppMode.TeamsLocal: return "Teams Local";
+    }
+    return "unknown";
+  }
+
   React.useEffect(() => {
-    props.context.msGraphClientFactory.getClient().then(async (client) => {
+    props.context.msGraphClientFactory.getClient("3").then(async (client) => {
       await client
-          .api('/me/photo/$value')
-          .responseType("blob")
-          .get()
-          .then((blob: Blob) : Promise<any> => {
-            return new Promise(resolve => {
-              const url = URL.createObjectURL(blob);
-              setMe(url);
-              resolve(url);
-            });
+        .api('/me/photo/$value')
+        .responseType(ResponseType.BLOB)
+        .get()
+        .then((blob: Blob): Promise<unknown> => {
+          return new Promise(resolve => {
+            const url = URL.createObjectURL(blob);
+            setMe(url);
+            resolve(url);
           });
         });
+    }).catch(console.error);
   }, []);
 
   return (
@@ -34,12 +53,12 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
       <div className={styles.welcome}>
         <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
         <h2>Well done, {escape(userDisplayName)}!</h2>
-        <div>{environmentMessage}</div>
+        <div>This app is running in {am()}</div>
       </div>
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
         <p>
-          This demos the use of Fluent UI 9 instead of using FabircUI.  The new framework combines Northstar and FluentUI.  Below are some demo's and they should render in Teams style when inside Teams.
+          This demos the use of Fluent UI 9 instead of using FabircUI.  The new framework combines Northstar and FluentUI.  Below are some demo&rsquo;s and they should render in Teams style when inside Teams.
         </p>
         <Text as="h3">Demo components</Text>
         <div className={styles.stack}>
@@ -48,7 +67,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
             <Tab value="cards">Cards</Tab>
             <Tab value="inputs">Inputs</Tab>
           </TabList>
-          {tab === 'buttons' && <div className={styles.stack} style={{padding: 10}}>
+          {tab === 'buttons' && <div className={styles.stack} style={{ padding: 10 }}>
             <Divider appearance='brand'>Button</Divider>
             <div className={`${styles.stackHoz} ${styles.spaceBetween}`}>
               <Button>Default</Button><Button appearance="primary">Primary</Button><Button appearance="outline">Outline</Button><Button appearance="subtle">Subtle</Button><Button appearance="transparent">Transparent</Button>
@@ -61,10 +80,19 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
               <ToggleButton appearance="subtle">Subtle</ToggleButton>
               <ToggleButton appearance="transparent">Transparent</ToggleButton>
             </div>
+            <Divider appearance='brand'>Compond Button</Divider>
+            <div className={`${styles.stackHoz} ${styles.spaceBetween}`}>
+              <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />}>Default</CompoundButton>
+              <CompoundButton secondaryContent="Secondary content" appearance="primary" icon={<CalendarMonthRegular />}>Primary</CompoundButton>
+              <CompoundButton secondaryContent="Secondary content" appearance="outline" icon={<CalendarMonth />}>Outline</CompoundButton>
+              <CompoundButton secondaryContent="Secondary content" appearance="subtle" icon={<CalendarMonth />}>Subtle</CompoundButton>
+              <CompoundButton secondaryContent="Secondary content" appearance="transparent" icon={<CalendarMonth />}>Transparent</CompoundButton>
+            </div>
             <Divider appearance='brand'>Split Button</Divider>
             <div className={`${styles.stackHoz} ${styles.spaceBetween}`}>
+              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
                 </MenuTrigger>
 
@@ -75,9 +103,9 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
                   </MenuList>
                 </MenuPopover>
               </Menu>
-
+              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
                     <SplitButton menuButton={triggerProps} appearance="primary">
                       Primary
@@ -92,9 +120,9 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
                   </MenuList>
                 </MenuPopover>
               </Menu>
-
+              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
                     <SplitButton menuButton={triggerProps} appearance="outline">
                       Outline
@@ -109,9 +137,9 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
                   </MenuList>
                 </MenuPopover>
               </Menu>
-
+              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
                     <SplitButton menuButton={triggerProps} appearance="subtle">
                       Subtle
@@ -126,9 +154,9 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
                   </MenuList>
                 </MenuPopover>
               </Menu>
-
+              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
-                <MenuTrigger>
+                <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
                     <SplitButton menuButton={triggerProps} appearance="transparent">
                       Transparent
@@ -148,13 +176,13 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
           {tab === 'cards' && <>
             <Card>
               <CardHeader
-                image={<Avatar name={userDisplayName} image={me ? {src: me } : null} />}
+                image={<Avatar name={userDisplayName} image={me ? { src: me } : null} />}
                 header={
-                  <Body>
+                  <Body1>
                     <b>{userDisplayName}</b> mentioned
-                  </Body>
+                  </Body1>
                 }
-                description={<Caption>5h ago · About us - Overview</Caption>}
+                description={<Caption1>5h ago · About us - Overview</Caption1>}
               />
 
               <CardPreview logo={<DocumentText24Regular />}>
@@ -166,7 +194,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps) {
               </CardFooter>
             </Card>
           </>}
-          {tab === 'inputs' && <div style={{padding: 10}} className={styles.stack}>
+          {tab === 'inputs' && <div style={{ padding: 10 }} className={styles.stack}>
             <div><Label htmlFor={outlineId}>Outline (default)</Label><Input appearance="outline" id={outlineId} /></div>
             <div><Label htmlFor={underlineId}>Underline</Label><Input appearance="underline" id={underlineId} /></div>
             <Checkbox label="Option 1" /><Checkbox label="Option 2" checked /><Checkbox label="Option 3" checked="mixed" />
