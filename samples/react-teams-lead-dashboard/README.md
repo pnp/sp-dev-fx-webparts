@@ -36,6 +36,7 @@ Lead Assist Dashboard | [PnP](https://pnp.github.io/)
 
 Version|Date|Comments
 -------|----|--------
+1.0.2|November 22, 2022|Upgraded to SPFx v1.16.0
 1.0.1|November 15, 2022|Upgraded to SPFx v1.16.0-rc.0
 1.0.0|October 5, 2021|Initial release
 
