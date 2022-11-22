@@ -47,7 +47,7 @@ export default class ReactEmojiReactionRatingWebPart extends BaseClientSideWebPa
         enableComments: this.properties.propertyEnableComments,
         enableCount: this.properties.propertyEnableCount,
         selectedColor: this.properties.propertySelectedColor,
-		selectedEmojiColor: this.properties.propertySelectedEmojiColor,
+	selectedEmojiColor: this.properties.propertySelectedEmojiColor,
         listName: this.properties.propertyListName,
         displayMode: this.displayMode,
         listMessage: this.properties.propertyListOperationMessage,
@@ -178,7 +178,7 @@ export default class ReactEmojiReactionRatingWebPart extends BaseClientSideWebPa
                   iconName: 'Precipitation',
                   key: 'colorFieldId'
                 }),
-				PropertyFieldColorPicker('propertySelectedEmojiColor', {
+		PropertyFieldColorPicker('propertySelectedEmojiColor', {
                   label: 'Selected emoji background color',
                   selectedColor: this.properties.propertySelectedEmojiColor,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
