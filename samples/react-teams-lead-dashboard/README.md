@@ -9,7 +9,7 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 
 ## Compatibility
 
-![SPFx 1.16.0-rc.0](https://img.shields.io/badge/SPFx-1.16.0--rc.0-green.svg)
+![SPFx 1.16.0](https://img.shields.io/badge/SPFx-1.16.0.0-green.svg)
 ![Node.js >=16.13.0 <17.0.0](https://img.shields.io/badge/Node.js-%3E=16.13.0%20%3C17.0.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
