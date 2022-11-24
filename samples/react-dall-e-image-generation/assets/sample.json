@@ -28,7 +28,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dall-e-image-generation/assets/YOUR-IMAGE-NAME-HERE",
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-dall-e-image-generation/assets/react-dall-e-image-generation.gif",
                 "alt": "Web Part Preview"
             }
         ],
