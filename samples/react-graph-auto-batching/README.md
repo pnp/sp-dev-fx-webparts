@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# react-graph-auto-batching
-=======
 # Graph auto batching
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 
 ## Summary
 
@@ -18,11 +14,6 @@ Finally, let me know if You would like to see this auto batcher in some library 
 
 You may ask why I used AadHttpClient instead of MSGraphClient. AadHttpClient shares more similarity with a http client based on fetch api, this means it will be easier to adopt this solution to an implementation outside of SPFx. 
 
-<<<<<<< HEAD
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.13-green.svg)
-=======
 
 ## Compatibility
 
@@ -35,18 +26,12 @@ You may ask why I used AadHttpClient instead of MSGraphClient. AadHttpClient sha
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-<<<<<<< HEAD
-> Get your own free development tenant by subscribing to 
-
-=======
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 ## Prerequisites
 
 None
@@ -55,11 +40,7 @@ None
 
 Solution|Author(s)
 --------|---------
-<<<<<<< HEAD
-react-graph-auto-batching | Marcin Wojciechowski [@mgwojciech](https://twitter.com/mgwojciech)
-=======
 react-graph-auto-batching | [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 
 ## Version history
 
@@ -67,29 +48,6 @@ Version|Date|Comments
 -------|----|--------
 1.0|February 3, 2022|Initial release
 
-<<<<<<< HEAD
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-- Add Graph Auto Batching
-
-To run tests
- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **npx jest**
-=======
 ## Minimal Path to Awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching) then unzip it)
@@ -108,7 +66,6 @@ To run tests
 * in the command line run:
   * `npm install`
   * `npx jest`
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d
 
 ## Features
 
@@ -129,9 +86,6 @@ This extension illustrates the following concepts:
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-<<<<<<< HEAD
-- You can find more on unit testing on my [Blog](https://mgwdevcom.wordpress.com)
-=======
 - You can find more on unit testing on my [Blog](https://mgwdevcom.wordpress.com)
 
 
@@ -159,4 +113,3 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-graph-auto-batching" />
->>>>>>> 8b2829c8e2260f80fe22aee2a1ccfdd8745b853d

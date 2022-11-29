@@ -2,13 +2,13 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This sample shows how to configure authentication against Google services. In particular I focused on authentication and consuming document search.
+Important case here is authentication in Teams client, which requires a little more complex flow and some hacks to make it work correctly.
 
-[picture of the solution in action, if possible]
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.13-green.svg)
+![version](https://img.shields.io/badge/version-1.16-green.svg)
 
 ## Applies to
 
@@ -19,20 +19,19 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+> Setup an app in Google Developer Console to be able to consume Google Drive API.
 
 ## Solution
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| react-google-drive-client | [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech) |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | November 29, 2022 | Initial release |
 
 ## Disclaimer
 
@@ -43,26 +42,20 @@ Short summary on functionality and used technologies.
 ## Minimal Path to Awesome
 
 - Clone this repository
+- Register Your Google app in Google Developer Console
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
   - **gulp serve**
-
-> Include any additional steps as needed.
-
+- For Teams support You need to deploy this web part to any page and the set defaultCallbackPageUrl in src\webparts\googleDriveClient\GoogleDriveClientWebPart.ts
+  
 ## Features
-
-Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- Authentication to Google services from SharePoint
+- Authentication to Google services from MS Teams
+- Consuming Google Drive search service with obtained token.
 
 ## References
 
