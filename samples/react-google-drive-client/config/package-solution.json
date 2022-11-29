@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-google-drive-client-client-side-solution",
+    "id": "3ef3cc38-1fd6-4fcf-9a7f-4f8d7a0cd20e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.0-beta.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-google-drive-client description"
+      },
+      "longDescription": {
+        "default": "react-google-drive-client description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-google-drive-client Feature",
+        "description": "The feature that activates elements of the react-google-drive-client solution.",
+        "id": "5fdc2e7a-4ce4-4d2d-86d3-2d6aa8c145f4",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-google-drive-client.sppkg"
+  }
+}

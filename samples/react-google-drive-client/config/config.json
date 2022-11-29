@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "google-drive-client-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/googleDriveClient/GoogleDriveClientWebPart.js",
+          "manifest": "./src/webparts/googleDriveClient/GoogleDriveClientWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GoogleDriveClientWebPartStrings": "lib/webparts/googleDriveClient/loc/{locale}.js"
+  }
+}

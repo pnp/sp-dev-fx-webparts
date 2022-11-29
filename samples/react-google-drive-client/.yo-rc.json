@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.15.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.0-beta.2",
+    "libraryName": "react-google-drive-client",
+    "libraryId": "3ef3cc38-1fd6-4fcf-9a7f-4f8d7a0cd20e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-google-drive-client",
+    "solutionShortDescription": "react-google-drive-client description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
