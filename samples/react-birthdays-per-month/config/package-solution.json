@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-birthdays-per-month-client-side-solution",
+    "name": "React Birthdays Per Month",
     "id": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -35,6 +35,6 @@
     ]
   },
   "paths": {
-    "zippedPackage": "solution/react-birthdays-per-month.sppkg"
+    "zippedPackage": "solution/React Birthdays Per Month.sppkg"
   }
 }
