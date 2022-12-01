@@ -6,6 +6,7 @@ import {
   PropertyPaneTextField,
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { spfi, SPFx, SPFI } from "@pnp/sp";
 
 import * as strings from "BirthdaysPerMonthWebPartStrings";
 import "../../../assets/dist/tailwind.css";
@@ -13,29 +14,31 @@ import {
   BirthdaysPerMonth,
   IBirthdaysPerMonthProps,
 } from "./components/BirthdaysPerMonth";
+import { BirthdaysInMonth } from "../../models/BirthdaysInMonth";
+import { SharePointService } from "../../utils/SharePointService";
 
 export interface IBirthdaysPerMonthWebPartProps {
   description: string;
 }
 
 export default class BirthdaysPerMonthWebPart extends BaseClientSideWebPart<IBirthdaysPerMonthWebPartProps> {
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = "";
+  private _spfi: SPFI;
 
-  public render(): void {
+  public async render(): Promise<void> {
+    const sharePointService = new SharePointService(this._spfi);
+    const birthdays: Array<BirthdaysInMonth> =
+      await sharePointService.GetBirthdays();
+    const elementProps: IBirthdaysPerMonthProps = {
+      data: birthdays,
+    };
     const element: React.ReactElement<IBirthdaysPerMonthProps> =
-      React.createElement(BirthdaysPerMonth, {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName,
-      });
+      React.createElement(BirthdaysPerMonth, elementProps);
 
     ReactDom.render(element, this.domElement);
   }
 
   protected onInit(): Promise<void> {
+    this._spfi = spfi().using(SPFx(this.context));
     return super.onInit();
   }
 
