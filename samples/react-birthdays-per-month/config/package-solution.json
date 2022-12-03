@@ -3,7 +3,7 @@
   "solution": {
     "name": "React Birthdays Per Month",
     "id": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
-    "version": "1.1.0.0",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
