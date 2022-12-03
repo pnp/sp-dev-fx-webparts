@@ -21,7 +21,6 @@
     "title": { "default": "Birthdays Per Month" },
     "description": { "default": "" },
     "officeFabricIconFontName": "BirthdayCake",
-    "properties": {
-    }
+    "properties": {}
   }]
 }

@@ -3,12 +3,10 @@ import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { spfi, SPFx, SPFI } from "@pnp/sp";
 
-import * as strings from "BirthdaysPerMonthWebPartStrings";
 import "../../../assets/dist/tailwind.css";
 import {
   BirthdaysPerMonth,
@@ -17,9 +15,7 @@ import {
 import { BirthdaysInMonth } from "../../models/BirthdaysInMonth";
 import { SharePointService } from "../../utils/SharePointService";
 
-export interface IBirthdaysPerMonthWebPartProps {
-  description: string;
-}
+export interface IBirthdaysPerMonthWebPartProps {}
 
 export default class BirthdaysPerMonthWebPart extends BaseClientSideWebPart<IBirthdaysPerMonthWebPartProps> {
   private _spfi: SPFI;
@@ -54,19 +50,7 @@ export default class BirthdaysPerMonthWebPart extends BaseClientSideWebPart<IBir
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription,
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField("description", {
-                  label: strings.DescriptionFieldLabel,
-                }),
-              ],
-            },
-          ],
+          groups: [],
         },
       ],
     };
