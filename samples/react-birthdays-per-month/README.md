@@ -2,8 +2,8 @@
 
 ## Summary
 
-Display employees birth day per month in an accordion.
-The birth day data is stored in a SharePoint List.
+Display employees birthday per month in an accordion.
+The birthday data is stored in a SharePoint List.
 
 ![App](assets/app.png)
 
@@ -57,7 +57,7 @@ Employee|Person
 Month|Choice with month options (January, February, March, and so on)
 Date|Number (Minimum 1 and maximum 31)
 
-Insert employee birth day items into the list.
+Insert employee birthday items into the list.
 
 ## Minimal path to awesome
 
@@ -72,10 +72,10 @@ Insert employee birth day items into the list.
 ## Features
 
 Features of this web part:
-* Show grouped employees based on their birth day's month.
+* Show grouped employees based on their birthday's month.
 * Show photo of the employee
 * Button to send email to the selected employee
-* Show remaining days of the employee's birth day
+* Show remaining days of the employee's birthday
 * Show month section started from current month
 * Expand/Collapse month section
 * Initially expand current and next month section
