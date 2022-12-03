@@ -46,7 +46,7 @@ react-birthdays-per-month | [Ari Gunawan](https://github.com/AriGunawan) ([@AriG
 
 Version|Date|Comments
 -------|----|--------
-1.1|December 3, 2022|Initial version
+1.2|December 3, 2022|Initial version
 
 ## Prerequisites
 
