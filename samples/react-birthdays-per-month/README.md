@@ -75,7 +75,7 @@ Features of this web part:
 * Show grouped employees based on their birthday's month.
 * Show photo of the employee
 * Button to send email to the selected employee
-* Show remaining days of the employee's birthday
+* Show remaining days until the employee's birthday
 * Show month section started from current month
 * Expand/Collapse month section
 * Initially expand current and next month section
