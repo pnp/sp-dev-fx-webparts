@@ -2,7 +2,7 @@
     {
       "name": "pnp-sp-dev-fx-webparts-react-flighttracker",
       "source": "pnp",
-      "title": "React Flight Tracker Web Part",
+      "title": "Flight Tracker",
       "shortDescription": "Sample Web Part to track all flights from a selected airport, date and information type.",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flighttracker",
       "longDescription": [

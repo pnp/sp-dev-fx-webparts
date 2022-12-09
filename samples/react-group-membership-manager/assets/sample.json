@@ -30,13 +30,7 @@
                 "order": 100,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/YOUR-IMAGE-NAME-HERE",
                 "alt": "Web Part Preview"
-            },
-            // {
-            //   "type": "video",
-            //   "order": 101,
-            //   "url": "https://www.youtube.com/embed/FS-_0KENJkI",
-            //    "alt": "Community demo of the web part"
-            //  }
+            }
         ],
         "authors": [
             {
