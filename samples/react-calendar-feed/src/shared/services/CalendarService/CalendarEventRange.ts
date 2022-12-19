@@ -22,7 +22,8 @@ export class CalendarEventRange {
     private _getRangeEnd(): Date {
 
         let end: moment.Moment;
-
+ console.log("Daterange testing"+ DateRange)
+ 
         // add the appropriate number of days
         switch (this.DateRange) {
             case DateRange.OneWeek:

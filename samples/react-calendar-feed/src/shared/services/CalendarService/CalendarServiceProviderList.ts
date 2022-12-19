@@ -12,10 +12,10 @@ import { SharePointCalendarService } from "./SharePointCalendarService";
 import * as strings from "CalendarServicesStrings";
 
 export enum CalendarServiceProviderType {
-  SharePoint = "SharePoint",
+/*   SharePoint = "SharePoint",
   WordPress = "WordPress",
   Exchange = "Exchange",
-  iCal = "iCal",
+  iCal = "iCal", */
   RSS = "RSS",
   Mock = "Mock"
 }
@@ -23,7 +23,7 @@ export enum CalendarServiceProviderType {
 export class CalendarServiceProviderList {
   public static getProviders(): any[] {
     const providers: any[] = [
-      {
+/*       {
         label: strings.SharePointProviderName,
         key: CalendarServiceProviderType.SharePoint,
         initialize: () => new SharePointCalendarService()
@@ -42,7 +42,7 @@ export class CalendarServiceProviderList {
         label: strings.iCalProviderName,
         key: CalendarServiceProviderType.iCal,
         initialize: () => new iCalCalendarService()
-      },
+      }, */
       {
         label: strings.RSSProviderName,
         key: CalendarServiceProviderType.RSS,

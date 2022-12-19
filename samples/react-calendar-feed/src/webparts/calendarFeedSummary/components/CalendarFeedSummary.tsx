@@ -12,6 +12,8 @@ import styles from "./CalendarFeedSummary.module.scss";
 import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
 import { FilmstripLayout } from "../../../shared/components/filmstripLayout/index";
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import { ActionButton } from "office-ui-fabric-react/lib/Button";
+
 
 // the key used when caching events
 const CacheKey = "calendarFeedSummary";
@@ -111,10 +113,15 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     return (
       <div className={css(styles.calendarFeedSummary, styles.webPartChrome)} style={{ backgroundColor: semanticColors.bodyBackground }}>
         <div className={css(styles.webPartHeader, styles.headerSmMargin)}>
-          <WebPartTitle displayMode={this.props.displayMode}
+          <WebPartTitle className={css(styles.flexTitle)} displayMode={this.props.displayMode}
             title={this.props.title}
             updateProperty={this.props.updateProperty}
           />
+          <div>
+          <a  href="https://ems.bridgew.edu/MasterCalendar/AddEvent.aspx" target="_blank">
+          <ActionButton  className={css(styles.seeAll)  }> Add Event </ActionButton >
+          </a> 
+          </div>
         </div>
         <div className={styles.content}>
           {this._renderContent()}
@@ -123,6 +130,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     );
   }
 
+  
   /**
    * Render your web part content
    */
@@ -210,12 +218,14 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
               errorMsg = strings.ErrorRssNoChannel;
               break;
           }
-        } else if (provider.Name === CalendarServiceProviderType.iCal &&
+        } 
+/*         else if (provider.Name === CalendarServiceProviderType.iCal &&
           error.indexOf("Unable to get property 'property' of undefined or null reference") !== -1) {
           errorMsg = strings.ErrorInvalidiCalFeed;
-        } else if (provider.Name === CalendarServiceProviderType.WordPress && error.indexOf("Failed to read") !== -1) {
+        } 
+        else if (provider.Name === CalendarServiceProviderType.WordPress && error.indexOf("Failed to read") !== -1) {
           errorMsg = strings.ErrorInvalidWordPressFeed;
-        }
+        } */
     }
 
     return (<div className={styles.errorMessage} >
@@ -248,6 +258,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       const pageEndAt: number = (maxEvents * currentPage);
 
       pagedEvents = events.slice(pageStartAt, pageEndAt);
+      console.log("aaaaaa"+pagedEvents);
       usePaging = true;
     }
 
@@ -275,7 +286,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
           itemsCountPerPage={maxEvents}
           totalItems={events.length}
           onPageUpdate={this._onPageUpdate} />
-      }
+      }  
     </FocusZone>
     );
   }

@@ -18,8 +18,9 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: "Barrie, ON",
-    description: "This is a description"
-  },
+    description: "This is a description",
+    BannerUrl:{ Url:"www.google.com"} 
+    },
   {
     title: "This is a UTC event",
     start: moment().add(1, "d").utc(false).toDate(),
@@ -28,7 +29,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: false,
     category: "Meeting",
     location: "Barrie, ON",
-    description: "This is a description for a UTC event"
+    description: "This is a description for a UTC event",
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in one week",
@@ -38,7 +40,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: false,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will last two days",
@@ -48,7 +51,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in two weeks",
@@ -58,7 +62,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in one month",
@@ -68,7 +73,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in two months",
@@ -78,7 +84,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 1 quarter",
@@ -88,7 +95,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: undefined,
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 4 months",
@@ -98,7 +106,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: undefined,
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 5 months",
@@ -108,7 +117,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: undefined,
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 6 months",
@@ -118,7 +128,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: undefined,
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 9 months",
@@ -128,7 +139,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: undefined,
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 1 year",
@@ -138,7 +150,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Partayyyy!",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   },
   {
     title: "This event will be in 18 months",
@@ -148,7 +161,8 @@ const sampleEvents: ICalendarEvent[] = [
     allDay: true,
     category: "Meeting",
     location: undefined,
-    description: undefined
+    description: undefined,
+    BannerUrl:{ Url:"www.google.com"}
   }
 ];
 

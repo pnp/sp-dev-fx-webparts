@@ -16,6 +16,7 @@ export class iCalCalendarService extends BaseCalendarService implements ICalenda
 
   public getEvents = async (): Promise<ICalendarEvent[]> => {
     const parameterizedFeedUrl: string = this.replaceTokens(this.FeedUrl, this.EventRange);
+    console.log("Icalender start Alina");
 
     try {
       const response = await this.fetchResponse(parameterizedFeedUrl);
@@ -36,7 +37,8 @@ export class iCalCalendarService extends BaseCalendarService implements ICalenda
           allDay: event.startDate.icaltype === "date",
           category: event.category,
           description: event.description,
-          location: event.location
+          location: event.location,
+          BannerUrl:event.BannerUrl.Url,
         };
 
         return eventItem;

@@ -34,7 +34,9 @@ export abstract class BaseCalendarService implements ICalendarService {
       if (event.allDay) {
         const startMoment: moment.Moment = moment(event.start);
         const endMoment: moment.Moment = moment(event.end).add(-1, "minute");
-
+       // console.log("Basecalender start Alina");
+       // console.log(startMoment);
+        //console.log(endMoment);
         if (startMoment.isSame(endMoment, "day")) {
           event.end = event.start;
         }

@@ -20,21 +20,54 @@ export class RSSCalendarService extends BaseCalendarService implements ICalendar
   public getEvents = (): Promise<ICalendarEvent[]> => {
     const parameterizedFeedUrl: string = this.getCORSUrl(this.replaceTokens(this.FeedUrl, this.EventRange));
 
-    const parser = new RSSParser();
+    console.log("Alina range")
+  console.log(this.EventRange)
+    
+  console.log(this.EventRange.End)
+    const parser = new RSSParser({
+      customFields: {
+      //  feed: ['otherTitle', 'extendedDescription'],
+        item: 
+      //     ['mc:EventDate',  'EventDate' , {keepArray: true}],
+         [
+          'mc:AllDayEvent',  'mc:AllDayEvent' , {keepArray: true}          ] ,
+             
+          
+        // ['mc:EventDate',  'EventDate' , {keepArray: true}] 
+        }}
+      ); 
     return parser.parseURL(parameterizedFeedUrl).then(feed => {
-
+   //  console.log(parameterizedFeedUrl);
+   //  console.log(this);
+    // console.log("end of first test");
       const events: ICalendarEvent[] = feed.items.map(item => {
         const pubDate: Date = this.convertToDate(item.isoDate);
+        let allDayFlag= false;
+        if (item["mc:AllDayEvent"]=='True')
+        {
+          allDayFlag=true;
+        };
         const eventItem: ICalendarEvent = {
           title: item.title,
           start: pubDate,
           end: pubDate,
-          url: item.link,
-          allDay: false,
+          url: item.link, 
+          allDay:allDayFlag, 
           description: item.content,
           location: undefined, // no equivalent in RSS
-          category: item.categories && item.categories.length > 0 && item.categories[0]
-        };
+          category: item.categories && item.categories.length > 0 && item.categories[0],
+          BannerUrl:{ Url:"www.google.com"}
+        };   
+        //console.log("Alina Test1s with allevent")
+         
+    //    console.log(item)
+    //    console.log(item.title)
+    //    console.log(item["mc:AllDayEvent"])
+    //    console.log("new test4")
+         console.log(eventItem) 
+         //console.log(eventItem.start) 
+         
+         //console.log(eventItem.end)
         return eventItem;
       });
       return events;

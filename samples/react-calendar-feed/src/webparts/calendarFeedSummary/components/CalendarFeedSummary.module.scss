@@ -36,8 +36,17 @@
 .seeAll {
   white-space: nowrap;
   margin-left: auto;
+  //margin-left: 10px;
   position: relative;
+  //float: right;
+  color: #89191f;
+  :hover {text-decoration: underline;}
 }
+
+.flexTitle{
+  flex-grow: 1; 
+}
+
 
 .content {
   -ms-flex-order: 2;

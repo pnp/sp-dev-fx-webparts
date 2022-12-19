@@ -11,7 +11,8 @@ import { Text } from "@microsoft/sp-core-library";
 import { useCallback } from 'react';
 /**
  * Shows an event in a document card
- */
+ */ 
+
 export const EventCard = (props: IEventCardProps) => {
   const { isNarrow, themeVariant, isEditMode, event } = props;
 
@@ -24,9 +25,21 @@ export const EventCard = (props: IEventCardProps) => {
     category,
     location
   } = event;
+ // console.log("Event start Alinaaaaaaaaaaaaaaaaaa");
 
   const eventDate: moment.Moment = moment(start);
-  const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
+//  const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
+const dateString: string = allDay ?  eventDate.format(strings.LocalizedTimeFormat).substring(0, 17) + " All day" : eventDate.format(strings.LocalizedTimeFormat);
+
+//console.log('Date4: ' +eventDate );
+//let strDate=eventDate.format(strings.LocalizedTimeFormat) ;
+//console.log('manipulation225: ' + strDate.substring(0, 17));
+
+//console.log('alldat: ' +event.allDay );
+//console.log('end: '+ event.end );
+//const test=new Date(event.start.getFullYear(), event.start.getMonth()) ;
+//console.log('new date string1: '+ test);
+ 
 
   /**
    * Handle adding to calendar
@@ -90,10 +103,10 @@ export const EventCard = (props: IEventCardProps) => {
 
   if (isNarrow) {
     // Calculate the date and string format
-
+console.log("narrow box")
     // Define theme variant styles if themevariant was passed
     return (
-      <div>
+      <div>  
         <div
           className={css(styles.cardWrapper, styles.compactCard, styles.root, styles.rootIsCompact)}
           style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
@@ -140,6 +153,7 @@ export const EventCard = (props: IEventCardProps) => {
           <DocumentCard
             className={css(styles.root, !isEditMode && styles.rootIsActionable, styles.normalCard)}
             type={DocumentCardType.normal}
+            //onClickHref={isEditMode ? null : url}
             onClickHref={isEditMode ? null : url}
             style={themeVariant && { borderColor: themeVariant.semanticColors.bodyDivider }}
           >

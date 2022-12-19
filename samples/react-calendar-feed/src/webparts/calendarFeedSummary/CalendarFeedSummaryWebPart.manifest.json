@@ -15,7 +15,7 @@
         "default": "Text, media and content"
       },
       "title": {
-        "default": "Calendar Feed Summary"
+        "default": "BSU Event Calendars"
       },
       "description": {
         "default": "Shows a summary view of a list of calendar events retrieved from an external feed."

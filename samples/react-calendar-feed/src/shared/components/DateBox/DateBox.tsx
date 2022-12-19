@@ -24,7 +24,8 @@ export const DateBox = (props: IDateBoxProps) => {
   // If the background color matches the text color, it is probably a reversed section, use a different border color
   const borderColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ? themeVariant.semanticColors.bodyDivider : "[theme:neutralLight, default: #eaeaea]";
 
-  if (isSameDay) {
+  console.log("boxboxbox")
+  //if (isSameDay) {
     return (
       <div className={css(styles.box,
         styles.boxIsSingleDay,
@@ -47,7 +48,8 @@ export const DateBox = (props: IDateBoxProps) => {
             { color: textColor }}>{startMoment.format("D")}</div>
       </div>);
 
-  } else {
+  //} 
+/*   else {
     return (
       <div
         className={css(styles.box,
@@ -77,4 +79,5 @@ export const DateBox = (props: IDateBoxProps) => {
       </div>);
 
   }
+ */
 };
