@@ -100,7 +100,7 @@ export class SPService {
 
             // Add link to nav element
             const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true };
-            anchorLinks = navLinkBuilder.build<INavLink>(anchorLinks, newNavLink, headingOrder, hasCollapsableHeader ? 1 : 0);
+            navLinkBuilder.build<INavLink>(anchorLinks, newNavLink, headingOrder);
           });
         }
       });
