@@ -23,7 +23,7 @@
     "office-ui-fabric-react": "6.189.2",
     "@types/webpack-env": "1.13.1",
     "botframework-directlinejs": "^0.11.4",
-    "botframework-webchat": "^4.5.2",
+    "botframework-webchat": "^4.15.6",
     "react": "16.8.5",
     "react-dom": "16.8.5",
     "swagger-client": "^2.1.23"
