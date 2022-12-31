@@ -3719,7 +3719,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/YOUR-IMAGE-NAME-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png",
         "alt": "Web Part Preview"
       }
     ],
@@ -9077,7 +9077,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/YOUR-IMAGE-NAME-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/group-membership-manager.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/screenshot.png",
         "alt": "Web Part Preview"
       }
     ],
@@ -12974,14 +12980,8 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/example.png",
-        "alt": "Create To Do Task from Email (Outlook Add in)"
-      },
-      {
-        "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-outlook-add-todo-task/assets/spfx-todo-outlook.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-outlook-add-todo-task/assets/spfx-todo-outlook.gif",
         "alt": "Create To Do Task from Email (Outlook Add in)"
       }
     ],
