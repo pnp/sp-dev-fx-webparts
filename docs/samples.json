@@ -15309,19 +15309,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/main/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
         "alt": "Edit refiners"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/main/samples/react-rhythm-of-business-calendar/assets/screenshot-month-view.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-month-view.png",
         "alt": "Month view"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/main/samples/react-rhythm-of-business-calendar/assets/screenshot-view-event.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-view-event.png",
         "alt": "View event"
       }
     ],
