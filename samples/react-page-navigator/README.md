@@ -30,6 +30,7 @@ Version|Date|Comments
 1.4|June 29, 2022|Adds the capability to find collapsible section headers and insert them into the navigation
 1.5|July 19, 2022|Bug fixes
 1.6|August 8, 2022|Add theme provider and bug fixes
+1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
 
 ## Minimal Path to Awesome
 
