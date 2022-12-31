@@ -28,7 +28,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/YOUR-IMAGE-NAME-HERE",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png",
                 "alt": "Web Part Preview"
             }
         ],
