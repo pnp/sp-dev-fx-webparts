@@ -1,13 +1,13 @@
 [
     {
-      "name": "pnp-sp-dev-fx-webparts-react-flighttracker",
+      "name": "pnp-sp-dev-spfx-web-parts-react-flighttracker",
       "source": "pnp",
       "title": "Flight Tracker",
       "shortDescription": "Sample Web Part to track all flights from a selected airport, date and information type.",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flighttracker",
       "longDescription": [
         "This Web Part allows to track all flights from a selected airport, date and information type.",
-        "The SPFx use external API (<a href='https://aerodatabox.p.rapidapi.com/flights/number/'>https://aerodatabox.p.rapidapi.com/flights/number/</a>) to get data of flight, please see <a href='https://rapidapi.com/aedbx-aedbx/api/aerodatabox/'>https://rapidapi.com/aedbx-aedbx/api/aerodatabox/</a> to get more information. There is some restritions on this API, the number of requests is limited (free version)"
+        "The SPFx use external API to get data of flight. There are some restritions on this API, the number of requests is limited (free version)"
       ],
       "creationDateTime": "2022-11-14",
       "updateDateTime": "2022-11-14",
