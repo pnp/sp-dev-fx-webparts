@@ -1,13 +1,10 @@
-# Caml2Table
+# CAML to Table
 
 ## Summary
 
 Let's the user test CAML queries at ease.
 
-## See it in action.
-
 ![Sample gif](./assets/Demo.gif)
-
 
 ## Compatibility
 
@@ -32,21 +29,11 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Solution
-<!--
-We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
 
-We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-
-Provide a link to your GitHub profile to help others find more cool things you have done.
-
-If you provide a link to your Twitter profile, we'll promote your contribution on social media.
--->
-
-## Solution
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| react-Caml2Table | Dan Toft ([@Tanddant](https://dan-toft.dk/)) |
+| react-caml2table | Dan Toft ([@Tanddant](https://dan-toft.dk/)) |
 
 ## Version history
 
@@ -54,19 +41,18 @@ If you provide a link to your Twitter profile, we'll promote your contribution o
 | ------- | ---------------- | --------------- |
 | 1.0     | November 26, 2022 | Initial release |
 
-## Prerequisites
 
 ## Prerequisites
 
 This is a tool designed to help people who already know CAML to get going faster, not to help you build queries.
 
-I highly recommend checking out [the docs](https://learn.microsoft.com/en-us/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas) for more info
+I highly recommend checking out [the docs](https://learn.microsoft.com/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas) for more info
 
 
 ## Minimal path to awesome
 
-* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-Caml2Table) then unzip it)
-* From your command line, change your current directory to the directory containing this sample (`react-Caml2Table`, located under `samples`)
+* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-caml2table) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-caml2table`, located under `samples`)
 * in the command line run:
   * `npm install`
   * `gulp serve`
@@ -75,9 +61,9 @@ I highly recommend checking out [the docs](https://learn.microsoft.com/en-us/sha
 
 ## Features
 
-This is a simple Webpart that allows the user to input a [CAML Query](https://learn.microsoft.com/en-us/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas), select a list and run the query.
+This is a simple Web part that allows the user to input a [CAML Query](https://learn.microsoft.com/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas), select a list and run the query.
 
-I've been using PnP PowerShell to do this for a while, when you need to test a query real quick, but PowerShell can be dreading to some users, and is a whole new tool to learn, so in order to best help people whom are learning I made this __VERY__ simple Webpart.
+I've been using PnP PowerShell to do this for a while, when you need to test a query real quick, but PowerShell can be dreading to some users, and is a whole new tool to learn, so in order to best help people whom are learning I made this __VERY__ simple Web part.
 
 It also demonstrates several useful skill that a new SPFx Developer might find handy
 
@@ -92,25 +78,24 @@ It also demonstrates several useful skill that a new SPFx Developer might find h
 - [Camlex.Net](https://github.com/sadomovalex/camlex)
 
 
-
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-Caml2Table%22) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-caml2table%22) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-Caml2Table) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-caml2table) and see what the community is saying.
 
-If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-Caml2Table&template=bug-report.yml&sample=react-Caml2Table&authors=@Tanddant&title=react-Caml2Table%20-%20).
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-caml2table&template=bug-report.yml&sample=react-caml2table&authors=@Tanddant&title=react-caml2table%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-Caml2Table&template=question.yml&sample=react-Caml2Table&authors=@Tanddant&title=react-Caml2Table%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-caml2table&template=question.yml&sample=react-caml2table&authors=@Tanddant&title=react-caml2table%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-Caml2Table&template=suggestion.yml&sample=react-Caml2Table&authors=@Tanddant&title=react-Caml2Table%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-caml2table&template=suggestion.yml&sample=react-caml2table&authors=@Tanddant&title=react-caml2table%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-Caml2Table" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-caml2table" />
