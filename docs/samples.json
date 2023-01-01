@@ -18988,12 +18988,18 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/screens/4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png",
+        "alt": "Web/Mobile Camera Demo"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/3.png",
         "alt": "Web/Mobile Camera Demo"
       },
       {
         "type": "video",
-        "order": 101,
+        "order": 102,
         "url": "https://www.youtube.com/embed/YIaCEkjCTKc",
         "alt": "Community demo of the web part"
       }
