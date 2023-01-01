@@ -29,12 +29,12 @@ If you wish to directly use the package in your tenant here is [link](https://gi
 * User's rating data would be stored in SP List, below are list of columns and its relevance
 
 1. `Title`: To store user's display name (not required though)
-2. `Page Name`: To store page on which rating is given by particular user, this will have absolute url of page
+2. `Page Name`: To store page on which rating is given by particular user, this will have absolute URL of page
 3. `User`: To store user who has given feedback for particular page/news where web part is added
 4. `Comment`: To store comment provided by user while submitting reaction.
 5. Then there are 5 columns `Rating1`, `Rating2`, `Rating3`, `Rating4`, `Rating5` which will store the rating text configured by admin in web part... Only one of this 5 columns would be populated for single item in list, which is what user has selected as part of giving reaction
 
-* Below is how you can configure emoji's text and its image url
+* Below is how you can configure emoji's text and its image URL
 ![Web part in Action](./assets/EmojisConfigurations.png)
 
 I have added default emoji's images which can be used and uploaded to SharePoint library in the assets folder of this solution.
@@ -42,8 +42,8 @@ I have added default emoji's images which can be used and uploaded to SharePoint
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -76,6 +76,7 @@ react-emoji-ratings | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia
 Version|Date|Comments
 -------|----|--------
 1.0|Sep 04, 2021|Initial release
+2.0|Nov 22, 2022|Added support for background color
 
 ## Minimal Path to Awesome
 
