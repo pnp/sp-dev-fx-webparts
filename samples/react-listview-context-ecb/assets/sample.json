@@ -1,0 +1,55 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb",
+        "source": "pnp",
+        "title": "Employee ListView Contextual Menu",
+        "shortDescription": "This small sample illustrates how to extend the PnP React SPFx ListView control with a contextual menu.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-listview-context-ecb",
+        "longDescription": [
+            "This small sample illustrates how to extend the PnP React SPFx ListView control with a contextual menu."
+        ],
+        "creationDateTime": "2023-01-01",
+        "updateDateTime": "2023-01-01",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.16.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/02_employeelistview_ecb3.png",
+                "alt": "Context or ECB menu"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/03_employeelistview_ecb_clicked3.png",
+                "alt": "Context or ECB menu action clicked"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "mmsharepoint",
+                "pictureUrl": "https://github.com/mmsharepoint.png",
+                "name": "Markus Moeller"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]
