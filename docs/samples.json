@@ -6650,13 +6650,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-Edit-ApplicationCustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
-        "alt": "Edit Application Customizers"
-      },
-      {
-        "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif",
         "alt": "Edit Application Customizers"
       }
     ],
