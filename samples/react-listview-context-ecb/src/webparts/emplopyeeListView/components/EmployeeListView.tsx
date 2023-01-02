@@ -84,12 +84,12 @@ export default class EmployeeListView extends React.Component<IEmployeeListViewP
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // Load the items
     this.getListItems();
   }
 
-  private getListItems() {  
+  private getListItems(): void {  
     // if (Environment.type == EnvironmentType.SharePoint || 
     //   Environment.type == EnvironmentType.ClassicSharePoint) {
     //     this.getSPListItems();
@@ -113,7 +113,7 @@ export default class EmployeeListView extends React.Component<IEmployeeListViewP
   //   });
   // }
 
-  private getMockUpListItems () {
+  private getMockUpListItems (): void {
     this.items = [
       {
         Firstname : 'Hans',

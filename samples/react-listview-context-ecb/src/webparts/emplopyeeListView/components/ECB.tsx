@@ -13,7 +13,7 @@ export class ECB extends React.Component<IECBProps, {}> {
     };
   }
   
-  public render() {      
+  public render(): React.ReactElement<IECBProps> {      
     return  <div className={styles.ecb}>
               <IconButton
                 id='ContextualMenuButton1'
@@ -58,7 +58,7 @@ export class ECB extends React.Component<IECBProps, {}> {
       ;
   }
 
-  private handleClick(source: string, event: any) {
+  private handleClick(source: string, _event: any): void {
     alert(source + ' clicked');
   }
 }

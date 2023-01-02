@@ -1,4 +1,4 @@
-# react-listview-context-ecb
+# Employee ListView Contextual Menu
 
 ## Summary
 
@@ -44,22 +44,15 @@ react-listview-context-ecb| [Markus Moeller](https://github.com/mmsharepoint) ([
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 26, 2022|Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-
----
+1.0|January 1, 2022|Initial release
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 - With Mockup data you are good to go
 - Now you can start to adjust to your own custom list data
   - Uncomment the several blocks inside [EmployeeListView.tsx](src/webparts/emplopyeeListView/components/EmployeeListView.tsx)
@@ -74,7 +67,6 @@ This extension illustrates the following concepts:
   - [Add contextual menu](https://pnp.github.io/sp-dev-fx-controls-react/controls/ListView.ContextualMenu/)
 - [FluentUI Contextual Menu](https://developer.microsoft.com/en-us/fluentui#/controls/web/contextualmenu)
 
-
 ## References
 
 - [Getting started with SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant?WT.mc_id=M365-MVP-5004617)
@@ -86,14 +78,14 @@ We do not support samples, but this community is always willing to help, and we 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-taxonomy-file-explorer") to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-listview-context-ecb") to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-taxonomy-file-explorer) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-listview-context-ecb) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-taxonomy-file-explorer&template=bug-report.yml&sample=react-taxonomy-file-explorer&authors=@mmsharepoint&title=react-taxonomy-file-explorer%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-listview-context-ecb&template=bug-report.yml&sample=react-listview-context-ecb&authors=@mmsharepoint&title=react-listview-context-ecb%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-taxonomy-file-explorer&template=question.yml&sample=react-taxonomy-file-explorer&authors=@mmsharepoint&title=react-taxonomy-file-explorer%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-listview-context-ecb&template=question.yml&sample=react-listview-context-ecb&authors=@mmsharepoint&title=react-listview-context-ecb%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-taxonomy-file-explorer&template=suggestion.yml&sample=react-taxonomy-file-explorer&authors=@mmsharepoint&title=react-taxonomy-file-explorer%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-listview-context-ecb&template=suggestion.yml&sample=react-listview-context-ecb&authors=@mmsharepoint&title=react-listview-context-ecb%20-%20).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-listview-context-ecb" />
