@@ -28,15 +28,6 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Solution
-<!--
-We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-
-We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-
-Provide a link to your GitHub profile to help others find more cool things you have done.
-
-If you provide a link to your Twitter profile, we'll promote your contribution on social media.
--->
 
 Solution|Author(s)
 --------|---------
@@ -72,6 +63,7 @@ Insert employee birthday items into the list.
 ## Features
 
 Features of this web part:
+
 * Show grouped employees based on their birthday's month.
 * Show photo of the employee
 * Button to send email to the selected employee
@@ -81,11 +73,11 @@ Features of this web part:
 * Initially expand current and next month section
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
 * Get data from a SharePoint List
 * Create simple accordion component
 * Show user's photo
 * Use [Tailwind CSS](https://tailwindcss.com/) for styling component.
-
 
 ## Help
 
