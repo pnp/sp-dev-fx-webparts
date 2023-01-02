@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb",
         "source": "pnp",
-        "title": "Taxonomy File Explorer",
+        "title": "Emplopyee ListView Contextual Menu",
         "shortDescription": "This small sample illustrates how to extend the PnP React SPFx ListView control with a contextual menu.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-listview-context-ecb",
         "longDescription": [
@@ -28,13 +28,13 @@
                 "type": "image",
                 "order": 100,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/02_employeelistview_ecb3.png",
-                "alt": "Linking to a file"
+                "alt": "Context or ECB menu"
             },
             {
                 "type": "image",
                 "order": 101,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/03_employeelistview_ecb_clicked3.png",
-                "alt": "Moving a file"
+                "alt": "Context or ECB menu action clicked"
             }
         ],
         "authors": [
