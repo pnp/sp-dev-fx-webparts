@@ -28,7 +28,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/YOUR-IMAGE-NAME-HERE",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/app.png",
                 "alt": "Web Part Preview"
             }
         ],
