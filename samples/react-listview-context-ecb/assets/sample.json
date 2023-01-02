@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb",
         "source": "pnp",
-        "title": "Emplopyee ListView Contextual Menu",
+        "title": "Employee ListView Contextual Menu",
         "shortDescription": "This small sample illustrates how to extend the PnP React SPFx ListView control with a contextual menu.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-listview-context-ecb",
         "longDescription": [
