@@ -1,0 +1,43 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.2",
+  "body": [
+     
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "${holidayTitle}",
+              "size": "large",
+              "style": "default"
+             
+            },
+            {
+              "type": "TextBlock",
+              "text": "Some issue occurred",
+              "size": "Medium"
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "Back",
+          "data": {
+            "id": "back"
+          }
+        }
+      ]
+    }
+  ]
+}
