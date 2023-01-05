@@ -1,0 +1,62 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.13",
+    "id": "570b5f8e-de6f-4c82-9892-3d9f24897aa4",
+    "version": "1.0.0",
+    "packageName": "OfferCreationSpFxWebPart",
+    "developer": {
+      "name": "Markus Moeller",
+      "websiteUrl": "https://mmsharepoint.wordpress.com",
+      "privacyUrl": "https://mmsharepoint.wordpress.com",
+      "termsOfUseUrl": "https://mmsharepoint.wordpress.com"
+    },
+    "name": {
+      "short": "Offer Creation (SPFx)",
+      "full": "Offer Creation (SPFx)"
+    },
+    "description": {
+      "short": "A personal M365 app to create custom offer documents",
+      "full": "A personal Microsoft 365 app to create custom offer documents"
+    },
+    "icons": {
+      "outline": "570b5f8e-de6f-4c82-9892-3d9f24897aa4_outline.png",
+      "color": "570b5f8e-de6f-4c82-9892-3d9f24897aa4_color.png"
+    },
+    "accentColor": "#D85028",
+    "configurableTabs": [],
+    "staticTabs": [
+      {
+        "entityId": "108eec64-bd4b-4095-a02a-38ad1b2f848c",
+        "name": "Offer Creation",
+        "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=570b5f8e-de6f-4c82-9892-3d9f24897aa4%26forceLocale={locale}",
+        "scopes": [
+          "personal"
+        ]
+      },
+      {
+        "entityId": "cae9f67e-64d1-42ce-9cc7-69b0c9efcfb4",
+        "name": "Settings",
+        "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=ceead84d-216c-4bb1-8f33-7b838c46b2e1%26forceLocale={locale}",
+        "scopes": [
+          "personal"
+        ]
+      }
+
+    ],
+    "bots": [],
+    "connectors": [],
+    "composeExtensions": [],
+    "permissions": [
+      "identity",
+      "messageTeamMembers"
+    ],
+    "validDomains": [
+      "{teamSiteDomain}"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+  }
