@@ -10,7 +10,7 @@
             "We all know every organizations would be using SharePoint news features for company's internal communications from HR to IT updates and some time annoucements. News created in SharePoint are created as Pages in library. Idea behind this web part is to take employee/user's feedback as emoji reactions on particular news. This web part can also be used on wiki articles or blog posts to take similar reactions. Web part uses concept of 1 to 5 star based rating system(configurable), you can decide low to high based on your preference."
         ],
         "creationDateTime": "2021-09-24",
-        "updateDateTime": "2021-09-24",
+        "updateDateTime": "2022-11-22",
         "products": [
             "SharePoint"
         ],

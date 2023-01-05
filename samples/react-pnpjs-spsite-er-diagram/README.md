@@ -9,8 +9,8 @@ This web part loads all lists on a site and display it in a Entity Relationship 
 
 ## Compatibility
 
-![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -26,7 +26,6 @@ This web part loads all lists on a site and display it in a Entity Relationship 
 
 ## Solution
 
-
 Solution|Author(s)
 --------|---------
 react-pnpjs-spsite-er-diagram | [Niklas Wilhelm](https://github.com/ICTNiklasWilhelm) ([@NiklasWilhelm4](https://twitter.com/@NiklasWilhelm4)), NetForce 365 GmbH ([HubSite 365](https://www.hubsite365.com/) [@Hubsite365](https://twitter.com/@Hubsite365))
@@ -36,6 +35,7 @@ react-pnpjs-spsite-er-diagram | [Niklas Wilhelm](https://github.com/ICTNiklasWil
 Version|Date|Comments
 -------|----|--------
 1.0|October 07, 2022|Initial release
+1.1|December 21, 2022|Added ID field to diagram
 
 ## Minimal path to awesome
 
@@ -58,8 +58,6 @@ This project can be used as a starting point for any visualization of SharePoint
 * Download current canvas as image
 
 ## Help
-
-
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
