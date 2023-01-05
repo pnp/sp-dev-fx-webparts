@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample is a Teams personal Tab to act as a Microsoft 365 across application (Teams, Outlook, Office) including a search-based messaging extension to act in Teams and Outlook. It is realized with SharePoint Framework (SPFx).
+This sample is a Teams personal Tab to act as a Microsoft 365 across application (Teams, Outlook, Office) to generate docuemnts. It is realized with SharePoint Framework (SPFx).
 
 App live in action inside Teams
 
