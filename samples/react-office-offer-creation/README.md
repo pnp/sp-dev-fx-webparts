@@ -64,6 +64,14 @@ Version|Date|Author|Comments
         .\templates\deploy.ps1 -siteUrl <YourFullSiteUrl>
     
     - This should put the same site url to your tenant-property named 'CreateOfferSiteUrl'
+- Now you can run the webpart inside SharePoint. 
+- To use it as a Teams, Outlook, Microsoft 365 App as well:
+  - Bundle and Package the solution:
+    - **gulp bundle --ship**
+    - **gulp package-solution --ship**
+  - Upload the solution to your tenant's app catalog and "install" it tenant-wide
+  - Package the icons and your manifest from the solution's \teams folder in a ZIP
+  - Upload this ZIP as a custom solution or to your org's Teams' app catalog
 
 
 ## Features
