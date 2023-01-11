@@ -18658,10 +18658,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-tree-orgchart",
     "source": "pnp",
     "title": "Tree Organization Web Part",
-    "shortDescription": "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.",
+    "shortDescription": "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tree-orgchart",
     "longDescription": [
-      "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart."
+      "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart."
     ],
     "creationDateTime": "2021-02-28",
     "updateDateTime": "2021-10-28",
