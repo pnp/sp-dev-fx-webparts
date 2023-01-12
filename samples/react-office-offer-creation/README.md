@@ -57,6 +57,7 @@ Version|Date|Author|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-office-offer-creation`, located under `samples`)
 * Create the content-type for your offers in a site / default document library of your choice
   * With PnP-PowerShell for instance call the deploy script with your site URL as parameter
 
@@ -64,8 +65,8 @@ Version|Date|Author|Comments
     .\templates\deploy.ps1 -siteUrl <YourFullSiteUrl>
     ```
 
-    * This should put the same site URL to your tenant-property named 'CreateOfferSiteUrl'
-* From your command line, change your current directory to the directory containing this sample (`react-office-offer-creation`, located under `samples`)
+    > This should put the same site URL to your tenant-property named 'CreateOfferSiteUrl'
+
 * in the command line run:
   * `npm install`
   * `gulp serve`
@@ -79,7 +80,6 @@ Version|Date|Author|Comments
   * Upload this ZIP as a custom solution or to your org's Teams' app catalog
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
-
 
 ## Features
 
