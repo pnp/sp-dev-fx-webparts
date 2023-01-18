@@ -46,7 +46,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 20, 2022|Initial release
 1.0.1|November 14, 2022|Updated to SPFx 15, latest Fluent UI 9, shim based theme mapping
-1.0.2|November 16, 2022|Updated SPFx 16.1
+1.0.2|January 18, 2023|Updated SPFx 16.1
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
