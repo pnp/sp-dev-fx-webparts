@@ -1,4 +1,4 @@
-http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Cherry picked content
+# Cherry picked content
 
 ## Summary
 
