@@ -1,0 +1,59 @@
+{
+  "schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.2",
+   "body": [
+        {
+            "type": "Container",
+            "items": [
+                
+                {
+                    "type": "FactSet",
+                    "spacing": "Large",
+                    "facts": [
+                        {
+                            "title": "Drive Type",
+                            "value": "${driveType}"
+                        }, {
+                            "title": "Web Url",
+                            "value": "[Link](${webUrl})"
+                        },
+                        {
+                            "title": "Last Modified By",
+                            "value": "${lastModifiedBy}"
+                        },
+                        {
+                            "title": "Last Modified Time",
+                            "value": "${lastModifiedDateTime}"
+                        },
+                        {
+                            "title": "Total Size",
+                            "value": "${totalSize}"
+                        },
+                        {
+                            "title": "Recycle Bin Size",
+                            "value": "${deletedSize}"
+                        },
+                         {
+                            "title": "Used",
+                            "value": "${usedSize}"
+                        },
+                        {
+                            "title": "Remaining",
+                            "value": "${remainingSize}"
+                        },
+                        {
+                            "title": "State",
+                            "value": "${state}"
+
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+  "fallbackText": "This card requires Adaptive Cards v1.2 support to be rendered properly."
+
+
+}
