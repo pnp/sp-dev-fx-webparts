@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema https://raw.githubusercontent.com/pnp/PnP-Provisioning-Schema/master/PnP.ProvisioningSchema/ProvisioningSchema-2020-02.xsd">
+  <pnp:Preferences Generator="PnP.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <pnp:Parameters>
+      <pnp:Parameter Key="DocumentsUrl">Shared Documents</pnp:Parameter>      
+      <pnp:Parameter Key="DocumentsTitle">Documents</pnp:Parameter>
+    </pnp:Parameters>
+  </pnp:Preferences>
+  <pnp:Tenant>
+    <pnp:StorageEntities>
+      <pnp:StorageEntity Key="CreateOfferSiteUrl" Value="{hosturl}{sitecollection}" />
+    </pnp:StorageEntities>
+  </pnp:Tenant>
+  <pnp:Templates ID="CONTAINER-TEMPLATE-0EC4AF107C5C49A0BFED873E6CDAF0FC">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-0EC4AF107C5C49A0BFED873E6CDAF0FC" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
+      <pnp:SiteFields>
+        <Field ID="{58b34549-9623-4cdd-b60e-5fb87638f3c5}" Name="OfferingVAT" StaticName="OfferingVAT" DisplayName="Offering VAT" Type="Number" Percentage="TRUE" Decimals="1" Group="MM" />
+        <Field ID="{03f60e71-3844-448a-8629-3c6c8c7f603d}" Name="OfferingDescription" StaticName="OfferingDescription" DisplayName="Offering Description" Type="Note" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Group="MM" />
+        <Field ID="{8d00c581-8c5c-4703-955e-5cbfe59bafd5}" Name="OfferingDate" StaticName="OfferingDate" DisplayName="Offering Date" Type="DateTime" Format="DateOnly" Group="MM" FriendlyDisplayFormat="Disabled" />
+        <Field ID="{0331efb1-e3d0-4180-ac8d-d9ded4935e63}" Name="OfferingReviewer" StaticName="OfferingReviewer" Type="User" DisplayName="Offering Reviewer" List="UserInfo" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Group="MM" />
+		    <Field ID="{04724b89-1195-4437-ba6a-63ada783d1dc}" Name="OfferingReviewedDate" StaticName="OfferingReviewedDate" DisplayName="Reviewed On" Type="DateTime" Format="DateTime" Group="MM" />
+        <Field ID="{24bb4ff5-9a39-4423-8d4d-d9469af8afaa}" Name="OfferingNetPrice" StaticName="OfferingNetPrice" DisplayName="Offering Net Price" Type="Currency" Group="MM" />
+        <Field ID="{a80c4b46-1d74-4e11-a67c-dabd60717d94}" Name="OfferingSubmitter" StaticName="OfferingSubmitter" DisplayName="Offering Submitter" Type="User" List="UserInfo" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" Group="MM" />
+        <Field ID="{0c46d809-4a27-42a4-9c63-3251175b5340}" Name="SubmittedOn" StaticName="SubmittedOn" DisplayName="Submitted On" Type="DateTime" Format="DateTime" Group="MM" />
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0101003656A003937692408E62ADAA56A5AEEF" Name="Offering" Description="" Group="MM" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
+            <pnp:FieldRef ID="8553196d-ec8d-4564-9861-3dbe931050c8" Name="FileLeafRef" Required="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="8c06beca-0777-48f7-91c7-6da68bc07b69" Name="Created" Hidden="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" UpdateChildren="true" />
+            <pnp:FieldRef ID="28cf69c5-fa48-462a-b5cd-27b6f9d2bd5f" Name="Modified" Hidden="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="822c78e3-1ea9-4943-b449-57863ad33ca9" Name="Modified_x0020_By" UpdateChildren="true" />
+            <pnp:FieldRef ID="4dd7e525-8d6b-4cb4-9d3e-44ee25f973eb" Name="Created_x0020_By" UpdateChildren="true" />
+            <pnp:FieldRef ID="03f60e71-3844-448a-8629-3c6c8c7f603d" Name="OfferingDescription" UpdateChildren="true" />
+            <pnp:FieldRef ID="24bb4ff5-9a39-4423-8d4d-d9469af8afaa" Name="OfferingNetPrice" UpdateChildren="true" />
+            <pnp:FieldRef ID="58b34549-9623-4cdd-b60e-5fb87638f3c5" Name="OfferingVAT" UpdateChildren="true" />
+            <pnp:FieldRef ID="8d00c581-8c5c-4703-955e-5cbfe59bafd5" Name="OfferingDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="0331efb1-e3d0-4180-ac8d-d9ded4935e63" Name="OfferingReviewer" UpdateChildren="true" />
+			      <pnp:FieldRef ID="04724b89-1195-4437-ba6a-63ada783d1dc" Name="OfferingReviewedDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="{a80c4b46-1d74-4e11-a67c-dabd60717d94}" Name="OfferingSubmitter" UpdateChildren="true" />
+            <pnp:FieldRef ID="{0c46d809-4a27-42a4-9c63-3251175b5340}" Name="SubmittedOn" UpdateChildren="true" />
+          </pnp:FieldRefs>          
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+      <pnp:Lists>
+        <pnp:ListInstance Title="{parameter:DocumentsTitle}" Description="" OnQuickLaunch="true" TemplateType="101" Url="{parameter:DocumentsUrl}" ContentTypesEnabled="true" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" ListExperience="NewExperience" ImageUrl="/_layouts/15/images/itdl.png?rev=45" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0101003656A003937692408E62ADAA56A5AEEF" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0101" Remove="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{328B25FA-636E-4B5E-8831-78B302111024}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="FileLeafRef" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="DocIcon" />
+                <FieldRef Name="LinkFilename" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="Editor" />
+                <FieldRef Name="OfferingNetPrice" />
+                <FieldRef Name="OfferingVAT" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <ViewData />
+            </View>
+          </pnp:Views>
+        </pnp:ListInstance>
+      </pnp:Lists>      
+      <pnp:Files>
+        <pnp:File Src="Offering.dotx" Folder="_cts/Offering/" Overwrite="true" />
+      </pnp:Files>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

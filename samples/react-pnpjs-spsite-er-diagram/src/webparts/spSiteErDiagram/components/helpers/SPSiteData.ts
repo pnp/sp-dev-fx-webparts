@@ -69,7 +69,7 @@ const getSPSiteData = async (spfxContext: any, force?: boolean, progress?: (numb
             // Fields
             const fields = (await sp.web.lists.getById(list.Id).fields.filter("Hidden ne 1")())
             .filter(f => !f.Hidden && (f as any).LookupList !== "AppPrincipals" && 
-                ((f as any).CanBeDeleted || (f as any).InternalName === "Title" || (f as any).InternalName === "Id")
+                ((f as any).CanBeDeleted || (f as any).InternalName === "Title" || (f as any).InternalName === "ID")
             )
             //.sort((a,b) => a.InternalName.charCodeAt(0) - b.InternalName.charCodeAt(0) );
             table.fields = fields.map(f => {

@@ -1,15 +1,17 @@
- 
+# Flight Tracker
 
 ## Summary
 
 This WebPart allows to track all flights from a selected airport, date and information type. 
-The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) to get data of flight, please see https://rapidapi.com/aedbx-aedbx/api/aerodatabox/ to get more information. There is some restritions on this API, the number of requests is limited (free version)
+The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) to get data of flight, please see https://rapidapi.com/aedbx-aedbx/api/aerodatabox/ to get more information. There are some restrictions on this API, the number of requests is limited (free version)
 
-![SharePoint View](./src/assets/sharepoint.png "SharePoint View") 
+![SharePoint View](./src/assets/sharepoint.png "SharePoint View")
 ![Teams View](./src/assets/teams.jpg "Teams View")
 ![properties](./src/assets/properties.png "Teams View")
 
- 
+## Compatibility
+
+This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
@@ -20,15 +22,12 @@ The SPFx use external API (https://aerodatabox.p.rapidapi.com/flights/number/) t
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Applies to
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
- 
 
 ## Solution
 
@@ -44,15 +43,14 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- Ensure that you are at the solution folder
-
-  - in the command line run:
-    - `npm install`
-      - `gulp build --ship`
-      - `gulp bundle --ship`
-      - `gulp package-solution --ship`
-    - Browse to your SharePoint app catalog and load the SPFx package.
+* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flighttracker) then unzip it)
+* From your command line, change your current directory to the directory containing this sample (`react-flighttracker`, located under `samples`)
+* in the command line run:
+  - `npm install`
+  - `gulp build --ship`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
+* Browse to your SharePoint app catalog and load the SPFx package.
   
 
 ## Features
@@ -74,18 +72,18 @@ We do not support samples, but this community is always willing to help, and we 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-fluentui-9%22) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-flighttracker%22) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-fluentui-9) and see what the community is saying.
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-flighttracker) and see what the community is saying.
 
-If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-fluentui-9&template=bug-report.yml&sample=react-fluentui-9&authors=@techienickb&title=react-fluentui-9%20-%20).
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-flighttracker&template=bug-report.yml&sample=react-flighttracker&authors=@joaojmendes&title=react-flighttracker%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-fluentui-9&template=question.yml&sample=react-fluentui-9&authors=@techienickb&title=react-fluentui-9%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-flighttracker&template=question.yml&sample=react-flighttracker&authors=@joaojmendes&title=react-flighttracker%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-fluentui-9&template=suggestion.yml&sample=react-fluentui-9&authors=@techienickb&title=react-fluentui-9%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-flighttracker&template=suggestion.yml&sample=react-flighttracker&authors=@joaojmendes&title=react-flighttracker%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-flighttracler" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-flighttracker" />

@@ -254,7 +254,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
         <div className={`${styles.row} ${styles.padding5}`}>
           <div className={(this.props.isTeamsContext) ? styles.smallColumnTeams : styles.smallColumn}>
             <div>
-              <span className={styles.chartCallDot}></span>
+              <span className={styles.chartCallDot} />
               {strings.ActivityChartLegendCalls}
             </div>
             <div className={styles.chartNumber}>
@@ -263,7 +263,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
           </div>
           <div className={styles.smallColumn}>
             <div>
-                <span className={styles.chartEmailDot}></span>
+                <span className={styles.chartEmailDot} />
                 {strings.ActivityChartLegendEmails}
             </div>
             <div className={styles.chartNumber}>
@@ -272,7 +272,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
           </div>
           <div className={styles.smallColumn}>
             <div>
-                <span className={styles.chartTextDot}></span>
+                <span className={styles.chartTextDot} />
                 {strings.ActivityChartLegendTexts}
             </div>
             <div className={styles.chartNumber}>
@@ -411,7 +411,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
         displayName: " ",
         minWidth: 50,
         render: (item?: any, index?: number, column?: any) => {
-          let content = <div></div>;
+          let content = <div />;
           // If the element exists
           if (item) {
             // Create an clickable icon to open the SharePoint list item

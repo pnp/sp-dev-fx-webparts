@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-listview-context-ecb-client-side-solution",
+    "id": "8b85b94c-c3d1-47a6-8eff-955d4999151a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-listview-context-ecb description"
+      },
+      "longDescription": {
+        "default": "react-listview-context-ecb description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-listview-context-ecb Feature",
+        "description": "The feature that activates elements of the react-listview-context-ecb solution.",
+        "id": "dbfeadc2-fa16-4abe-8f62-883957ce4a4a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-listview-context-ecb.sppkg"
+  }
+}

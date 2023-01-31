@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "holidays-calendar",
+    "id": "c85f1137-142e-4570-b3c9-3cdc47580452",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "MailboxSettings.Read"
+      }
+    ],
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "https://github.com/HarminderSethi",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "holidays-calendar description"
+      },
+      "longDescription": {
+        "default": "holidays-calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+      
+    },
+    "features": [
+      {
+        "title": "holidays-calendar Feature",
+        "description": "The feature that activates elements of the holidays-calendar solution.",
+        "id": "182f7879-26d6-4fb6-b5ad-9f34a54ba79d",
+        "version": "1.0.0.0"
+        
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/holidays-calendar.sppkg"
+  }
+}
