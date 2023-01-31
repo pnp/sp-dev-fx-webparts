@@ -1,0 +1,7 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "ipAddress": "0.0.0.0",
+  "initialPage": "https://sscwebdev.sharepoint.com/sites/showroom/_layouts/workbench.aspx"
+}

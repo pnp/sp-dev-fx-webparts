@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "3f860b48-1dc3-496d-bd28-b145672289cc",
+  "alias": "MapWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportsFullBleed": true,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { 
+      "default": "Interactive Map",
+      "de-de": "Interaktive Karte"
+    },
+    "description": { 
+      "default": "An interactive map with which you can create markers",
+      "de-de": "Eine interactive Karte mit der man Markierungen erstellen kann" 
+    },
+    "officeFabricIconFontName": "MapPin",
+    "properties": {
+      "title": "",
+      "markerItems": [],
+      "markerCategories": [],
+      "center": [51.505, -0.09],
+      "startZoom": 13,
+      "maxZoom": 30,
+      "minZoom": 1,
+      "dragging": true,
+      "height": 400,
+      "scrollWheelZoom": true,
+      "plugins": {
+        "searchBox": false,
+        "markercluster": false,
+        "legend": false,
+        "zoomControl": true
+      },
+      "tileLayerUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "tileLayerAttribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    }
+  }]
+}
