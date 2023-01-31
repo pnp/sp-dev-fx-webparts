@@ -2,7 +2,7 @@
 
 ## Summary
 
-This webparts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually. It is possible to determine the color of the pin, the icon in the pin or what should happen when the pin is clicked. It is even possible to change the tile layer in the webpart properties.
+This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually. It is possible to determine the color of the pin, the icon in the pin or what should happen when the pin is clicked. It is even possible to change the tile layer in the web part properties.
 
 
 ![EditMode](assets/WPPreview.png)
@@ -13,7 +13,7 @@ This webparts displays a (world) map. An editor can set custom markers directly 
 
 ### Preview
 
-![Interactive Map webpart preview](assets/MapWPOverview.gif)
+![Interactive Map web part preview](assets/MapWPOverview.gif)
 
 ## Compatibility
 
@@ -35,15 +35,6 @@ This webparts displays a (world) map. An editor can set custom markers directly 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
 ## Solution
-<!--
-We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-
-We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-
-Provide a link to your GitHub profile to help others find more cool things you have done.
-
-If you provide a link to your Twitter profile, we'll promote your contribution on social media.
--->
 
 Solution|Author(s)
 --------|---------
@@ -53,15 +44,8 @@ react-interactive-map | [Sergej Schwabauer](https://github.com/SPFxAppDev) ([@sp
 
 Version|Date|Comments
 -------|----|--------
-1.0|March 4, 2022|Initial release
+1.0|January 19, 2023|Initial release
 
-
-<!--
-Any special pre-requisites? Include any lists, permissions, offerings to the demo gods, or whatever else needs to be done for this web part to work.
-
-Please describe the steps to configure the pre-requisites. Feel free to add screen shots, but make sure that there is a text description of the steps to perform.
- 
--->
 
 ## Minimal path to awesome
 
@@ -82,22 +66,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * [LeafletJS](https://leafletjs.com/) and the [react-leaflet](https://react-leaflet.js.org/) wrapper
 * [Leaflet Plugin "Marker cluster"](https://github.com/Leaflet/Leaflet.markercluster) ant the [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) wrapper
 
-<!--
-Note that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions in advance! You rock ❤.
--->
-
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
-
 ## Help
-
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
