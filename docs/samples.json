@@ -7547,7 +7547,7 @@
       "description"
     ],
     "creationDateTime": "2022-04-20",
-    "updateDateTime": "2022-11-16",
+    "updateDateTime": "2023-01-18",
     "products": [
       "SharePoint"
     ],
@@ -7558,7 +7558,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16"
+        "value": "1.16.1"
       }
     ],
     "thumbnails": [
@@ -9149,7 +9149,7 @@
       "This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9"
     ],
     "creationDateTime": "2022-08-25",
-    "updateDateTime": "2022-08-25",
+    "updateDateTime": "2023-01-18",
     "products": [
       "SharePoint"
     ],
@@ -9160,7 +9160,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14"
+        "value": "1.16.1"
       }
     ],
     "thumbnails": [
