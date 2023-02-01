@@ -9698,7 +9698,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-interactive-map/assets/YOUR-IMAGE-NAME-HERE",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
         "alt": "Web Part Preview"
       }
     ],
