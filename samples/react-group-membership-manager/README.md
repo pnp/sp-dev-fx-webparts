@@ -8,7 +8,7 @@ This app is an example of managing the membership of a group you own including t
 
 ## Compatibility
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 ![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -35,6 +35,7 @@ This app is an example of managing the membership of a group you own including t
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | August 25, 2022  | Initial release |
+| 1.1|    | Jan 18, 2022     | Updated to SPFx 1.16.1 |
 
 
 ## Minimal Path to Awesome

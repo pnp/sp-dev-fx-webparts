@@ -1,0 +1,60 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+
+.map-plugin-legend {
+    display: block;
+    
+
+    &-bottom {
+        top: 80px;
+    }
+
+    button {
+        outline: none;
+        border-radius: 2px;
+        height: 32px;
+        border: 2px solid rgba(0,0,0,0.2);
+        background-clip: padding-box;
+        font-size: 1.4em;
+        background: #fff;
+        cursor: pointer;
+    }
+}
+
+:global {
+    .map-legend {
+        margin: 10px;
+
+        &-title {
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        &-marker-item {
+            display: flex;
+            padding: 5px 10px;
+            align-items: center;
+
+            &-icon {
+                width: 35px;
+            }
+
+            label {
+                margin: 0 10px;
+                padding: 1px 0;
+                font-size: 12px;
+            }
+        }
+
+        &-marker-wrapper {
+            position: relative; 
+            height: 36px; 
+            //   float: left;
+            
+                & > div {
+                    position: absolute;
+                }    
+        }
+      }
+}

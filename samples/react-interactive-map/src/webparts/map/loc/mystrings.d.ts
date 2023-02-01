@@ -1,0 +1,68 @@
+declare interface IMapWebPartStrings {
+  WebPartPropertyGroupMapSettings: string;
+  WebPartPropertyGroupTileLayerSettings: string;
+  WebPartPropertyGroupPlugins: string;
+  WebPartPropertyGroupCategories: string;
+  WebPartPropertyGroupAbout: string;
+  WebPartPropertyPluginSearchboxLabel: string;
+  WebPartPropertyPluginMarkerClusterLabel: string;
+  WebPartPropertyPluginLegendLabel: string;
+  WebPartPropertyButtonManageCategories: string;
+  WebPartPropertyPluginZoomControlLabel: string;
+  WebPartPropertyScrollWheelZoomLabel: string;
+  WebPartPropertyMapDraggingLabel: string;
+  WebPartPropertyShowPopUpLabel: string;
+  WebPartPropertySettingsInfoLabel: string;
+  WebPartPropertyMinZoomLabel: string;
+  WebPartPropertyMaxZoomLabel: string;
+  WebPartPropertyHeightLabel: string;
+  WebPartPropertyTileLayerUrlInformationLabel: string;
+  WebPartPropertyTileLayerUrlLabel: string;
+  WebPartPropertyTileLayerAttributionLabel: string;
+  ContextMenuAddNewMarkerLabel: string;
+  ContextMenuSetStartPositionLabel: string;
+  LabelChangePosition: string;
+  SaveLabel: string;
+  CancelLabel: string;
+  CloseLabel: string;
+  LegendLabel: string;
+  ChoiceGroupPanelLabel: string;
+  ChoiceGroupDialogLabel: string;
+  ChoiceGroupUrlLabel: string;
+  ChoiceGroupNoneLabel: string;
+  ChoiceGroupTargetSelfLabel: string;
+  ChoiceGroupTargetBlankLabel: string;
+  ChoiceGroupTargetEmbeddedLabel: string;
+  PanelHeaderNewLabel: string;
+  PanelHeaderEditLabel: string;
+  LabelCategory: string;
+  LabelManage: string;
+  PlaceholderSelectACategory: string;
+  LabelMarkerType: string;
+  DeleteLabel: string;
+  ChangePositionLabel: string;
+  LabelMarkerColor: string;
+  LabelIcon: string;
+  LabelLeaveEmpty: string;
+  LabelIconColor: string;
+  LabelTooltip: string;
+  TooltipInfoCategory: string;
+  TooltipInfo: string;
+  LabelLeaveEmptyTooltip: string;
+  LabelPreview: string;
+  LabelPanelHeader: string;
+  LabelDialogHeader: string;
+  LabelContent: string;
+  LabelUrl: string;
+  DialogTitleManageCategories: string;
+  InfoTextNoCategories: string;
+  InfoTextCategories: string;
+  LabelCategoryHeaderName: string;
+  AddLabel: string;
+  NoSearchResultsLabel: string;
+}
+
+declare module 'MapWebPartStrings' {
+  const strings: IMapWebPartStrings;
+  export = strings;
+}

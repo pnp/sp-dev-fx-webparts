@@ -3,7 +3,7 @@
   "solution": {
     "name": "group-membership-manager-client-side-solution",
     "id": "2a487e9a-b62a-484a-9bc0-e78b65550b61",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "title": "Group Membership Manager",
     "skipFeatureDeployment": true,
@@ -13,7 +13,7 @@
       "websiteUrl": "https://nbdev.uk",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.15.2"
+      "mpnId": "Undefined-1.16.1"
     },
     "metadata": {
       "shortDescription": {
