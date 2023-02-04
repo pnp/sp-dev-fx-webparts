@@ -1,7 +1,8 @@
 import { round } from "@microsoft/sp-lodash-subset";
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace HelperService {
-	export const calculateSpace = (value: number) => {
+	export const calculateSpace = (value: number): { space: number; spaceString: string; } => {
 		let space = 0;
 		let spaceString = "";
 		if (value) {

@@ -12,7 +12,7 @@ export class GraphService {
 		return await this.context.msGraphClientFactory.getClient("3");
 	};
 
-	public getMyDriveInfo = async (): Promise<any> => {
+	public getMyDriveInfo = async (): Promise<Drive> => {
 		try {
 			const client = await this.getClient();
 			const request: GraphRequest = client.api("/me/drive");
