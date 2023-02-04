@@ -12387,7 +12387,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/YOUR-IMAGE-NAME-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/ACEScreenshot1.png",
         "alt": "Web Part Preview"
       }
     ],
