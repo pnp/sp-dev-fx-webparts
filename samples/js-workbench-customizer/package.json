@@ -19,7 +19,7 @@
     "@microsoft/sp-webpart-base": "1.10.0",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
-    "npm": "^6.7.0"
+    "npm": "^9.4.1"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
