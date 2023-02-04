@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { TimeSpan, TimeInterval, Segments } from '../enumHelper';
@@ -13,10 +8,9 @@ import SectionTitle from '../components/SectionTitle';
 import CustomPivot from './CustomPivot';
 import Helper from '../Helper';
 
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Icon, IconType } from 'office-ui-fabric-react/lib/Icon';
 import DataList from './DataList';
+import { addDays, IColumn, PivotItem, Icon, IconType, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
+import { IPageViewDetailProps } from '../CommonProps';
 
 const map: any = require('lodash/map');
 
@@ -46,12 +40,12 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     const [listCols, setListCols] = React.useState<IColumn[]>([]);
     const [items, setItems] = React.useState<any[]>([]);
 
-    const _loadMenus = () => {
+    const _loadMenus = (): void => {
         let tsMenus: any[] = props.helper.getTimeSpanMenu();
         setTimeSpanMenus(tsMenus);
         setSelTimeSpan(tsMenus[4].key);
     };
-    const handleTimeSpanMenuClick = (item: PivotItem) => {
+    const handleTimeSpanMenuClick = (item: PivotItem): void => {
         setMenuClick(true);
         setSelTimeSpan(item.props.itemKey);
         setStartDate(null);
@@ -63,7 +57,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     const handleEndDateChange = (selDate: Date | null | undefined): void => {
         setEndDate(selDate);
     };
-    const _loadUserStatistics = async () => {
+    const _loadUserStatistics = async (): Promise<void> => {
         if (menuClick) setLoadingChart(true);
         let query: string = ``;
         if (startDate && endDate) {
@@ -90,7 +84,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                     sum: res[1]
                 });
             });
-            const data: Chart.ChartData = {
+            const data = {//: Chart.ChartData 
                 labels: map(results, 'date'),
                 datasets: [
                     {
@@ -102,7 +96,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                 ]
             };
             setChartData(data);
-            const options: Chart.ChartOptions = {
+            const options = {//: Chart.ChartOptions
                 legend: {
                     display: false
                 },
@@ -135,7 +129,8 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
             setMenuClick(false);
         }
     };
-    const _generateColumns = () => {
+
+    const _generateColumns = ():void => {
         let cols: IColumn[] = [];
         cols.push({
             key: 'user', name: 'User', fieldName: 'user', minWidth: 100, maxWidth: 150,
@@ -145,8 +140,8 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                         {item.user ? (
                             <span>{item.user}</span>
                         ) : (
-                                <span>{strings.Msg_NoUser}</span>
-                            )}
+                            <span>{strings.Msg_NoUser}</span>
+                        )}
                     </div>
                 );
             }
@@ -162,8 +157,8 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                         {item.Url ? (
                             <a href={item.Url} target="_blank" className={styles.pageLink}>{item.Url}</a>
                         ) : (
-                                <span>{strings.Msg_NoUrl}</span>
-                            )}
+                            <span>{strings.Msg_NoUrl}</span>
+                        )}
                     </div>
                 );
             }
@@ -173,9 +168,10 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
         });
         setListCols(cols);
     };
-    const _loadUsersPageViewsList = async () => {
+
+    const _loadUsersPageViewsList = async (): Promise<void> => {
         if (menuClick) setLoadingList(true);
-        let response: any[] = [];
+        let response: IPageViewDetailProps[] = [];
         if (startDate && endDate) {
             response = await props.helper.getUserPageViews(`${props.helper.getFormattedDate(startDate.toUTCString(), 'YYYY-MM-DD')}/${props.helper.getFormattedDate(addDays(endDate, 1).toUTCString(), 'YYYY-MM-DD')}`,
                 TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
@@ -194,7 +190,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
         }
     };
 
-    React.useEffect(() => {
+    React.useEffect((): void => {
         if (selTimeSpan || (startDate && endDate)) {
             setNoData(false);
             setNoListData(false);
@@ -202,7 +198,8 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
             _loadUsersPageViewsList();
         }
     }, [selTimeSpan, startDate, endDate]);
-    React.useEffect(() => {
+
+    React.useEffect(():void => {
         if (props.helper) {
             _loadMenus();
         }
@@ -253,32 +250,32 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                     {loadingList ? (
                         <Spinner label={strings.Msg_LoadList} labelPosition={"bottom"} />
                     ) : (
-                            <>
-                                {!noListData ? (
-                                    <DataList Items={items} Columns={listCols} GroupBy={true} GroupByCol={"date"} CountCol={"count"} />
-                                ) : (
-                                        <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
-                                    )}
-                            </>
-                        )}
+                        <>
+                            {!noListData ? (
+                                <DataList Items={items} Columns={listCols} GroupBy={true} GroupByCol={"date"} CountCol={"count"} />
+                            ) : (
+                                <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
+                            )}
+                        </>
+                    )}
                 </div>
                 <div className={"ms-Grid-col ms-xxxl6 ms-xxl6 ms-xl6 ms-lg6"} style={{ minHeight: '358px' }}>
                     {loadingChart ? (
                         <Spinner label={strings.Msg_LoadChart} labelPosition={"bottom"} />
                     ) : (
-                            <>
-                                {!noData ? (
-                                    <ChartControl
-                                        type={ChartType.Bar}
-                                        data={chartData}
-                                        options={chartOptions}
-                                        className={styles.chart}
-                                    />
-                                ) : (
-                                        <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
-                                    )}
-                            </>
-                        )}
+                        <>
+                            {!noData ? (
+                                <ChartControl
+                                    type={ChartType.Bar}
+                                    data={chartData}
+                                    options={chartOptions}
+                                    className={styles.chart}
+                                />
+                            ) : (
+                                <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
         </div>

@@ -2,15 +2,11 @@ import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { IPerfDurationProps } from '../CommonProps';
 import SectionTitle from '../components/SectionTitle';
 import Helper from '../Helper';
+import { addDays, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
 
 const map: any = require('lodash/map');
 
@@ -75,7 +71,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                             PerDur_99: res[5]
                         });
                     });
-                    const data: Chart.ChartData = {
+                    const data= {//: Chart.ChartData 
                         labels: map(finalRes, 'PageName'),
                         datasets: [
                             {
@@ -116,7 +112,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                         ]
                     };
                     setChartData1(data);
-                    const options: Chart.ChartOptions = {
+                    const options = {//: Chart.ChartOptions
                         legend: {
                             display: false
                         },

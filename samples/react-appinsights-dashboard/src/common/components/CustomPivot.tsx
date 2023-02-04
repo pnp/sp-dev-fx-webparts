@@ -1,6 +1,6 @@
+import { PivotItem, Pivot } from '@fluentui/react';
 import * as React from 'react';
 import styles from '../CommonControl.module.scss';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export interface IPivotProps {
     ShowLabel: boolean;

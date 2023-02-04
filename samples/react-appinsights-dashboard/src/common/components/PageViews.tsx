@@ -1,13 +1,7 @@
 import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
-import { IconType, Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { TimeInterval, TimeSpan, Segments } from '../enumHelper';
 import { IPageViewDetailProps, IPageViewCountProps } from '../CommonProps';
@@ -15,6 +9,7 @@ import SectionTitle from '../components/SectionTitle';
 import CustomPivot from '../components/CustomPivot';
 import DataList from '../components/DataList';
 import Helper from '../Helper';
+import { IColumn, PivotItem, Icon, IconType, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
 
 const map: any = require('lodash/map');
 
@@ -58,7 +53,7 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
         if (menuClick) setLoadingChart(true);
         let response: IPageViewCountProps[] = await props.helper.getPageViewCount(TimeSpan[selTimeSpan], TimeInterval[selTimeInterval]);
         if (response.length > 0) {
-            const data: Chart.ChartData = {
+            const data = { //: Chart.ChartData
                 labels: map(response, 'date'),
                 datasets: [
                     {
@@ -73,7 +68,7 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
                 ]
             };
             setChartData(data);
-            const options: Chart.ChartOptions = {
+            const options= {//: Chart.ChartOptions 
                 legend: {
                     display: false
                 },

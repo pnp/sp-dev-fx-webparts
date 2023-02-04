@@ -45,7 +45,7 @@ export default class AppInsightsDashboardWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  public _onConfigure = () => {
+  public _onConfigure = ():void => {
     this.context.propertyPane.open();
   }
 

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styles from '../CommonControl.module.scss';
-import { DetailsList, IColumn, DetailsListLayoutMode, ConstrainMode, SelectionMode, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn, DetailsListLayoutMode, ConstrainMode, SelectionMode, IGroup, ShimmeredDetailsList } from '@fluentui/react';
+import { findIndex, groupBy } from '@microsoft/sp-lodash-subset';
 
-const groupBy: any = require('lodash/groupBy');
-const findIndex: any = require('lodash/findIndex');
+export interface Dictionary<T> {
+    [index: string]: T;
+  }
 
 export interface IDataListProps {
     Items: any[];
@@ -23,8 +25,8 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
         return findIndex(props.Items, (o) => { return o.date == key; });
     };
     const _buildGroups = () => {
-        let grouped: any[] = groupBy(props.Items, props.GroupByCol);
-        let groupsTemp: IGroup[] = [];
+        let grouped: Dictionary<string[]> = groupBy(props.Items, props.GroupByCol); //KK: any=> string
+        const groupsTemp: IGroup[] = [];
         Object.keys(grouped).map((key, index) => {
             groupsTemp.push({
                 key: key,
@@ -35,7 +37,7 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
         });
         setGroups(groupsTemp);
     };
-    const _loadDataList = () => {
+    const _loadDataList = ():void => {
         setColumns(props.Columns);
         if (props.GroupBy && props.GroupByCol.length > 0 && props.CountCol.length > 0) _buildGroups();
         setItems(props.Items);
@@ -50,7 +52,7 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
     return (
         <div className={styles.dataList}>
             {(groups.length > 0 && props.GroupBy && props.GroupByCol.length > 0 && props.CountCol.length > 0) ? (
-                <DetailsList
+                <ShimmeredDetailsList
                     items={items}
                     setKey="set"
                     columns={columns}
@@ -65,7 +67,7 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
                     selectionMode={SelectionMode.none}
                     enableShimmer={true} />
             ) : (
-                    <DetailsList
+                    <ShimmeredDetailsList
                         items={items}
                         setKey="set"
                         columns={columns}
