@@ -13432,7 +13432,7 @@
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
     "creationDateTime": "2019-09-05",
-    "updateDateTime": "2022-12-22",
+    "updateDateTime": "2023-01-20",
     "products": [
       "SharePoint"
     ],
