@@ -1,6 +1,6 @@
 define([], function() {
   return {
-    "ApiKeyFieldLabel": "Description Field",
+    "ApiKeyFieldLabel": "Chat GPT key",
     "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
     "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",
     "AppLocalEnvironmentOffice": "The app is running on your local environment in office.com",
