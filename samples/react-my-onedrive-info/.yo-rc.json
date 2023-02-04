@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-my-one-drive-info",
+    "libraryId": "a07f3777-40b2-413e-b024-23234e5142e3",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-my-one-drive-info",
+    "solutionShortDescription": "react-my-one-drive-info description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Basic"
+  }
+}
