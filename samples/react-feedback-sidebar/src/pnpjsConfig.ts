@@ -9,7 +9,7 @@ import "@pnp/sp/batching";
 let _sp: SPFI = null;
 
 export const getSP = (context?: WebPartContext): SPFI => {
-  if (_sp === null && context !== null) {
+  if (context != null) {
     _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
   }
   return _sp;
