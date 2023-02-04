@@ -1,0 +1,66 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.chatgpt {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+button {
+  margin-right: 10px;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.textfield{
+  margin-bottom: 10px;
+}
+
+.question {
+  background-color: lightgray;
+  padding: 20px;
+  margin-top: 5px;
+}
+
+.loadingContainer {
+  min-height: 90px
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.loader > div {
+  width: 20px;
+  height: 20px;
+  background: #03787c;
+  border-radius: 50%;
+  margin : 3px;
+  animation: loader 0.6s infinite alternate;
+}
+.loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes loader {
+  to {
+    opacity: 0.1;
+    transform: translate(0, -20px);
+    background : rgb(90, 90, 90);
+  }
+}
