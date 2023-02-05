@@ -4,6 +4,8 @@
 
 This webpart uses Chat GPT in an SPFx webpart. You can ask questions from the web part and you will see the answers, most recent answers first.
 
+![Example animated screen](assets/chatgpt.gif)
+
 ![Example loading screen](assets/example.png)
 
 ![Example screen](assets/example2.png)

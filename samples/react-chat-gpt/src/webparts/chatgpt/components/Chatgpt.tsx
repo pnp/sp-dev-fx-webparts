@@ -26,7 +26,6 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
       apiKey: this.props.apiKey,
     });
     Chatgpt.openai = new OpenAIApi(key);
-    console.log(Chatgpt.openai);
   }
 
   private updateQuestion(value: string): void{
@@ -34,8 +33,6 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
   }
 
   private async askQuestion(): Promise<void>{
-    console.log(Chatgpt.openai);
-    console.log(this.state);
     const currentQuestion = this.state.currentQuestion;
     this.setState({
       loading: true,
@@ -47,11 +44,9 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
       max_tokens: 2048
     });
 
-    console.log(response.data);
-    console.log(response.data.choices[0].text);
     const chatgpt: IChatgpt = {
       question: currentQuestion,
-      answer: response.data.choices[0].text
+      answer: response.data.choices[0].text.replace('\n\n','')
     }
 
     const oldChatgpt = this.state.chatgpt;
@@ -86,18 +81,24 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
           <TextField className={styles.textfield} label="Question: " onChange={((event,newValue) => this.updateQuestion(newValue))} value={this.state.currentQuestion}/>
           <PrimaryButton text='Ask ChatGPT' onClick={this.askQuestion.bind(this)}/>
           <PrimaryButton text='Clear answers' onClick={this.clearAnswers.bind(this)}/>
-          <section className="loadingContainer">
+          <section className={styles.loadingContainer}>
             {this.state.loading && <div className={styles.loader}>
               <div/>
               <div/>
               <div/>
             </div>}
           </section>
+          <section className={styles.container}>
           {chatgpt.map((chatgpt, key) => {return <section key={key}>
+            <section className={styles.questionContainer}>
               <section className={styles.question}>{chatgpt.question}</section>
-              <Interweave content={chatgpt.answer}/>
+            </section>
+            <section className={styles.answerContainer}>
+              <Interweave className={styles.answer} content={chatgpt.answer}/>
+            </section>
             </section>}
           )}
+          </section>
         </section>}
       </section>
     );

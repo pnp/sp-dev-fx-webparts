@@ -10,6 +10,23 @@
   }
 }
 
+.container {
+  border: 1px solid grey;
+  padding: 25px 35px;
+  margin-top: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient( to bottom, "[theme: themePrimary, default: #03787c]", rgba(0, 0, 0, 0) ) 1 100%;
+}
+
+.questionContainer {
+  display: flex;
+}
+
+.answerContainer{
+  display: flex
+}
+
 button {
   margin-right: 10px;
 }
@@ -28,13 +45,24 @@ button {
 }
 
 .question {
-  background-color: lightgray;
+  background-color: "[theme: themePrimary, default: #03787c]";
+  color: white;
   padding: 20px;
-  margin-top: 5px;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+  margin-bottom: 8px;
+}
+
+.answer {
+  background-color: #d2d2d2;
+  color: black;
+  padding: 20px;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+  margin-bottom: 8px;
+  margin-left: 25%;
 }
 
 .loadingContainer {
-  min-height: 90px
+  height: 90px
 }
 
 .loader {
@@ -46,7 +74,7 @@ button {
 .loader > div {
   width: 20px;
   height: 20px;
-  background: #03787c;
+  background: "[theme: themePrimary, default: #03787c]";
   border-radius: 50%;
   margin : 3px;
   animation: loader 0.6s infinite alternate;
@@ -61,6 +89,6 @@ button {
   to {
     opacity: 0.1;
     transform: translate(0, -20px);
-    background : rgb(90, 90, 90);
+    background : "[theme: themeSecondary, default: #5a5a5a]";
   }
 }
