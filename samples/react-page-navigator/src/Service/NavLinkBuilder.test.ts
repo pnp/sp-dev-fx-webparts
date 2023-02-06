@@ -15,6 +15,76 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
   const h3 = h2+1;
   const h4 = h3+1;
 
+  it("should nest correctly without h1", () => {
+    const linkH2: IMockLink = {
+        name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH2a: IMockLink = {
+      name: "another h2",
+    };
+    const linkH3a: IMockLink = {
+      name: "another h3",
+    };
+
+    const actual = [];
+    navLinkBuilder.build(actual, linkH2, h2);
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH2a, h2);
+    navLinkBuilder.build(actual, linkH3a, h3);
+
+    expect(actual).toMatchSnapshot();
+  });
+
+  
+  it("should nest correctly for wrong order headings", () => {
+    const linkH1: IMockLink = {
+        name: "h1",
+    };
+    const linkH2: IMockLink = {
+      name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH4: IMockLink = {
+      name: "h4",
+    };
+
+    const actual = [ ];
+    navLinkBuilder.build(actual, linkH4, h4);
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH2, h2);
+    navLinkBuilder.build(actual, linkH1, h1);
+
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("should nest correctly for headings with a jump", () => {
+    const linkH1: IMockLink = {
+        name: "h1",
+    };
+    const linkH2: IMockLink = {
+      name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH4: IMockLink = {
+      name: "h4",
+    };
+
+    const actual = [ ];
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH4, h4);
+    navLinkBuilder.build(actual, linkH1, h1);
+    navLinkBuilder.build(actual, linkH2, h2);
+
+    expect(actual).toMatchSnapshot();
+  });
+
   it("should add a single item to an empty list", () => {
     const lnk: IMockLink = {
         name: "xyz",
@@ -173,6 +243,75 @@ describe("The NavLinkBuilder with a collapsable header", () => {
     head = {
       name: "head",
     };
+  });
+
+  it("should nest correctly without h1", () => {
+    const linkH2: IMockLink = {
+        name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH2a: IMockLink = {
+      name: "another h2",
+    };
+    const linkH3a: IMockLink = {
+      name: "another h3",
+    };
+
+    const actual = [ head ];
+    navLinkBuilder.build(actual, linkH2, h2);
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH2a, h2);
+    navLinkBuilder.build(actual, linkH3a, h3);
+
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("should nest correctly for wrong order nestings", () => {
+    const linkH1: IMockLink = {
+        name: "h1",
+    };
+    const linkH2: IMockLink = {
+      name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH4: IMockLink = {
+      name: "h4",
+    };
+
+    const actual = [ head ];
+    navLinkBuilder.build(actual, linkH4, h4);
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH2, h2);
+    navLinkBuilder.build(actual, linkH1, h1);
+
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("should nest correctly for headings with a jump", () => {
+    const linkH1: IMockLink = {
+        name: "h1",
+    };
+    const linkH2: IMockLink = {
+      name: "h2",
+    };
+    const linkH3: IMockLink = {
+      name: "h3",
+    };
+    const linkH4: IMockLink = {
+      name: "h4",
+    };
+
+    const actual = [ ];
+    navLinkBuilder.build(actual, linkH3, h3);
+    navLinkBuilder.build(actual, linkH4, h4);
+    navLinkBuilder.build(actual, linkH1, h1);
+    navLinkBuilder.build(actual, linkH2, h2);
+
+    expect(actual).toMatchSnapshot();
   });
 
   it("should add a single item to the heading", () => {

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "birthdays-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/birthdays/BirthdaysWebPart.js",
+          "manifest": "./src/webparts/birthdays/BirthdaysWebPart.manifest.json"
+        }
+      ]
+    },
+    "birthdays-timeline-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/birthdaysTimeline/BirthdaysTimelineWebPart.js",
+          "manifest": "./src/webparts/birthdaysTimeline/BirthdaysTimelineWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BirthdaysWebPartStrings": "lib/webparts/birthdays/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "BirthdaysTimelineWebPartStrings": "lib/webparts/birthdaysTimeline/loc/{locale}.js"
+  }
+}

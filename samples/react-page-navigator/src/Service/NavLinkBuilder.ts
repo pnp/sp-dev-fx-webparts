@@ -12,8 +12,10 @@ export class navLinkBuilder {
  */
  public static build<T extends IHierarchyEntry<T>>(currentLinks: T[], newLink: T, order: number) {
   const lastIndex = currentLinks.length - 1;
+  const startorder:number = (currentLinks as any).__startorder || 0;
 
-  if (lastIndex < 0 || order <= 0) {
+  if (lastIndex < 0 || order <= startorder) {
+    (currentLinks as any).__startorder = order;
     currentLinks.push(newLink);
     return;
   }
