@@ -19,7 +19,7 @@
     "@microsoft/sp-property-pane": "1.15.2",
     "@microsoft/sp-webpart-base": "1.15.2",
     "@pnp/logging": "^3.6.0",
-    "@pnp/sp": "^3.6.0",
+    "@pnp/sp": "^3.11.0",
     "clsx": "^1.2.1",
     "office-ui-fabric-react": "7.185.7",
     "react": "16.13.1",

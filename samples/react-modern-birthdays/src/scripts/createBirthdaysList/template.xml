@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.11.83.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-270841F68E894A6EA82DBCA38EF92171">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-270841F68E894A6EA82DBCA38EF92171" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Birthdays" Description="Birthdays" DocumentTemplate="" TemplateType="100" Url="Lists/Birthdays" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="50" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Birthdays/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Birthdays/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Birthdays/NewForm.aspx" ImageUrl="{site}/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{128CADE7-E54C-4EB5-8D56-987EA4AD11B6}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Birthdays/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="{site}/_layouts/15/images/generic.png?rev=47">
+              <Query />
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="JobTitle" />
+                <FieldRef Name="Birthday" />
+                <FieldRef Name="userAADGUID" />
+                <FieldRef Name="email" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+              <CustomFormatter />
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Description="JobTitle" DisplayName="JobTitle" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="JobTitle" Title="JobTitle" Type="Text" ID="{578f3817-ca50-4cac-9a9a-b59ea6388e07}" SourceID="{{listid:Birthdays}}" StaticName="JobTitle" ColName="nvarchar4" RowOrdinal="0" />
+            <Field Description="Birthday" DisplayName="Birthday" FriendlyDisplayFormat="Disabled" Format="DateOnly" IsModern="TRUE" Name="Birthday" Required="TRUE" Title="Birthday" Type="DateTime" ID="{3772f750-3d02-4096-8971-eb2d1d9a8f4a}" SourceID="{{listid:Birthdays}}" StaticName="Birthday" ColName="datetime1" RowOrdinal="0" Indexed="TRUE" Version="1" />
+            <Field Description="userAADGUID" DisplayName="userAADGUID" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="userAADGUID" Title="userAADGUID" Type="Text" ID="{b7388871-f8a6-47ed-879d-8230dec5ee04}" SourceID="{{listid:Birthdays}}" StaticName="userAADGUID" ColName="nvarchar5" RowOrdinal="0" />
+            <Field Description="email" DisplayName="email" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="email" Required="TRUE" Title="email" Type="Text" ID="{e1c39bbf-9076-44cb-9dbd-1b465eb850fd}" SourceID="{{listid:Birthdays}}" StaticName="email" ColName="nvarchar6" RowOrdinal="0" />
+          </pnp:Fields>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" DisplayName="Title" />
+          </pnp:FieldRefs>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://northeurope1-0.pushnp.svc.ms/notifications?token=0f36650d-a415-4b55-a690-055ff17b1a39" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
