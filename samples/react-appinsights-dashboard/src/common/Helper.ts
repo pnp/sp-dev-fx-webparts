@@ -29,10 +29,8 @@ export default class Helper {
         const finalRes: IPageViewCountProps[] = [];
         const finalPostUrl: string = this._postUrl + `/metrics/pageViews/count?timespan=${timespan}&interval=${timeinterval}`;
         const response: HttpClientResponse = await this.httpClient.get(finalPostUrl, HttpClient.configurations.v1, this.httpClientOptions);
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const responseJson: any = await response.json();
         if (responseJson.value && responseJson.value.segments.length > 0) {
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const segments: any[] = responseJson.value.segments;
             segments.map((seg: any) => {
                 finalRes.push({
