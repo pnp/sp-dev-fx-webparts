@@ -154,7 +154,7 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
             }
         }
         fetchaData(selTimeSpan, selTimeInterval)
-            .catch(console.error);  //KK:todo:logger
+            .catch(console.error);  
     }, [selTimeSpan, selTimeInterval]);
 
     React.useEffect(() => {

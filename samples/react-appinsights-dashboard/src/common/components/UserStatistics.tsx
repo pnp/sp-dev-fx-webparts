@@ -203,7 +203,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
             }
         }
         fetchData(selTimeSpan, startDate, endDate)
-            .catch(console.error);  //KK:todo:logger
+            .catch(console.error);  
 
     }, [selTimeSpan, startDate, endDate]);
 

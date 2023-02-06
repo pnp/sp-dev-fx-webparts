@@ -163,7 +163,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
             }
         }
         fetchData(startDate, endDate)
-            .catch(console.error);  //KK:todo:logger
+            .catch(console.error);  
         
     }, [startDate, endDate]);
 
