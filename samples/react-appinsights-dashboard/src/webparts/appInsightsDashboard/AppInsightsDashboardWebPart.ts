@@ -22,8 +22,8 @@ export default class AppInsightsDashboardWebPart extends BaseClientSideWebPart<I
     const element: React.ReactElement<IAppInsightsDashboardProps> = React.createElement(
       AppInsightsDashboard,
       {
-        AppId: this.properties.AppId ?? '89ae2a2e-a9a1-480a-bcb1-f36116637d86',
-        AppKey: this.properties.AppKey ?? 'sgpmcdfvbjfd34imv6o2exx8s5x2ncjwahn8oewb',
+        AppId: this.properties.AppId ,
+        AppKey: this.properties.AppKey,
         DisplayMode: this.displayMode,
         onConfigure: this._onConfigure,
         httpClient: this.context.httpClient,
