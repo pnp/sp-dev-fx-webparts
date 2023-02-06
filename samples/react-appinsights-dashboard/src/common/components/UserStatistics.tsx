@@ -9,10 +9,11 @@ import CustomPivot from './CustomPivot';
 import Helper from '../Helper';
 
 import DataList from './DataList';
-import { addDays, IColumn, PivotItem, Icon, IconType, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
-import { IPageViewDetailProps } from '../CommonProps';
+import { addDays, IColumn, PivotItem, Icon, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
+import { Dictionary, IPageViewDetailProps } from '../CommonProps';
 
-const map: any = require('lodash/map');
+import {map} from 'lodash'
+import { ChartData, ChartOptions } from 'chart.js';
 
 const today: Date = new Date(Date.now());
 const startMaxDate: Date = addDays(today, -1);
@@ -28,20 +29,20 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     const mainProps = React.useContext(AppInsightsProps);
     const [loadingChart, setLoadingChart] = React.useState<boolean>(true);
     const [loadingList, setLoadingList] = React.useState<boolean>(true);
-    const [timespanMenus, setTimeSpanMenus] = React.useState<any[]>([]);
+    const [timespanMenus, setTimeSpanMenus] = React.useState<Dictionary<string>[]>([]);
     const [selTimeSpan, setSelTimeSpan] = React.useState<string>('');
     const [menuClick, setMenuClick] = React.useState<boolean>(false);
     const [noData, setNoData] = React.useState<boolean>(false);
     const [noListData, setNoListData] = React.useState<boolean>(false);
-    const [chartData, setChartData] = React.useState<any>(null);
-    const [chartOptions, setChartOptions] = React.useState<any>(null);
+    const [chartData, setChartData] = React.useState<ChartData>(null);
+    const [chartOptions, setChartOptions] = React.useState<ChartOptions>(null);
     const [startDate, setStartDate] = React.useState<Date>(null);
     const [endDate, setEndDate] = React.useState<Date>(null);
     const [listCols, setListCols] = React.useState<IColumn[]>([]);
-    const [items, setItems] = React.useState<any[]>([]);
+    const [items, setItems] = React.useState<IPageViewDetailProps[]>([]);
 
     const _loadMenus = (): void => {
-        let tsMenus: any[] = props.helper.getTimeSpanMenu();
+        const tsMenus: Dictionary<string>[] = props.helper.getTimeSpanMenu();
         setTimeSpanMenus(tsMenus);
         setSelTimeSpan(tsMenus[4].key);
     };
@@ -74,50 +75,50 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                 | order by timestamp asc
             `;
         }
-        let response: any[] = await props.helper.getResponseByQuery(query, (startDate && endDate) ? false : true, TimeSpan[selTimeSpan]);
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const response: any[] = await props.helper.getResponseByQuery(query, (startDate && endDate) ? false : true, TimeSpan[selTimeSpan as keyof typeof TimeSpan]);
         if (response.length > 0) {
-            let results: any[] = [];
-            response.map((res: any[]) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const results: any[] = [];
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            response.map((res: any) => {
                 results.push({
                     oriDate: res[0],
                     date: props.helper.getLocalTime(res[0]),
                     sum: res[1]
                 });
             });
-            const data = {//: Chart.ChartData 
+            const data: ChartData = {
                 labels: map(results, 'date'),
                 datasets: [
                     {
                         label: 'Total Users',
                         fill: true,
-                        lineTension: 0,
+                        tension:0,
                         data: map(results, 'sum'),
                     }
                 ]
             };
             setChartData(data);
-            const options = {//: Chart.ChartOptions
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: false,
-                    text: ""
-                },
+            const options :ChartOptions= {
                 responsive: true,
                 animation: {
                     easing: 'easeInQuad'
                 },
-                scales:
-                {
-                    yAxes: [
-                        {
-                            ticks:
-                            {
-                                beginAtZero: true
-                            }
-                        }
-                    ]
+                plugins:{
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: ""
+                    },
+                },
+                scales:{
+                    y: {
+                        min:0
+                    }
                 }
             };
             setChartOptions(options);
@@ -131,9 +132,10 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     };
 
     const _generateColumns = ():void => {
-        let cols: IColumn[] = [];
+        const cols: IColumn[] = [];
         cols.push({
             key: 'user', name: 'User', fieldName: 'user', minWidth: 100, maxWidth: 150,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onRender: (item: any, index: number, column: IColumn) => {
                 return (
                     <div className={styles.textWithIcon}>
@@ -148,11 +150,12 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
         });
         cols.push({
             key: 'Url', name: 'Url', fieldName: 'Url', minWidth: 100, maxWidth: 350,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onRender: (item: any, index: number, column: IColumn) => {
                 return (
                     <div className={styles.textWithIcon}>
                         <div className={styles.fileiconDiv}>
-                            <Icon iconName="FileASPX" ariaLabel={item.Url} iconType={IconType.Default} />
+                            <Icon iconName="FileASPX" aria-label={item.Url}/>
                         </div>
                         {item.Url ? (
                             <a href={item.Url} target="_blank" className={styles.pageLink}>{item.Url}</a>
@@ -176,7 +179,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
             response = await props.helper.getUserPageViews(`${props.helper.getFormattedDate(startDate.toUTCString(), 'YYYY-MM-DD')}/${props.helper.getFormattedDate(addDays(endDate, 1).toUTCString(), 'YYYY-MM-DD')}`,
                 TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
         } else {
-            response = await props.helper.getUserPageViews(TimeSpan[selTimeSpan], TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
+            response = await props.helper.getUserPageViews(TimeSpan[selTimeSpan as keyof typeof TimeSpan], TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
         }
         if (response.length > 0) {
             _generateColumns();
@@ -191,12 +194,17 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     };
 
     React.useEffect((): void => {
-        if (selTimeSpan || (startDate && endDate)) {
-            setNoData(false);
-            setNoListData(false);
-            _loadUserStatistics();
-            _loadUsersPageViewsList();
+        const fetchData= async(selTimeSpan:string, startDate:Date, endDate:Date): Promise<void>=>{
+            if (selTimeSpan || (startDate && endDate)) {
+                setNoData(false);
+                setNoListData(false);
+                await _loadUserStatistics();
+                await _loadUsersPageViewsList();
+            }
         }
+        fetchData(selTimeSpan, startDate, endDate)
+            .catch(console.error);  //KK:todo:logger
+
     }, [selTimeSpan, startDate, endDate]);
 
     React.useEffect(():void => {

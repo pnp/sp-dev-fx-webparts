@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { HttpClient, IHttpClientOptions, HttpClientResponse } from '@microsoft/sp-http';
 import { TimeInterval, TimeSpan, Segments } from './enumHelper';
 import { IPageViewCountProps, IPageViewDetailProps, defaultDateFormat, chartDateFormat, Dictionary } from './CommonProps';
 import moment from 'moment';
-
 
 export default class Helper {
     private _appid: string = '';
@@ -11,8 +12,9 @@ export default class Helper {
     private requestHeaders: Headers = new Headers();
     private httpClientOptions: IHttpClientOptions = {};
     private httpClient: HttpClient = null;
+    private cultureName:string=null;
 
-    constructor(appid: string, appkey: string, httpclient: HttpClient) {
+    constructor(appid: string, appkey: string, httpclient: HttpClient, cultureName:string) {
         this._appid = appid;
         this._appkey = appkey;
         this.httpClient = httpclient;
@@ -20,14 +22,17 @@ export default class Helper {
         this.requestHeaders.append('Content-type', 'application/json; charset=utf-8');
         this.requestHeaders.append('x-api-key', this._appkey);
         this.httpClientOptions = { headers: this.requestHeaders };
+        this.cultureName= cultureName;
     }
 
     public getPageViewCount = async (timespan: TimeSpan, timeinterval: TimeInterval): Promise<IPageViewCountProps[]> => {
         const finalRes: IPageViewCountProps[] = [];
         const finalPostUrl: string = this._postUrl + `/metrics/pageViews/count?timespan=${timespan}&interval=${timeinterval}`;
         const response: HttpClientResponse = await this.httpClient.get(finalPostUrl, HttpClient.configurations.v1, this.httpClientOptions);
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const responseJson: any = await response.json();
         if (responseJson.value && responseJson.value.segments.length > 0) {
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const segments: any[] = responseJson.value.segments;
             segments.map((seg: any) => {
                 finalRes.push({
@@ -53,9 +58,9 @@ export default class Helper {
                         finalRes.push({
                             oriStartDate: mainseg.start,
                             oriEndDate: mainseg.end,
-                            start: this.getFormattedDate(mainseg.start),
-                            end: this.getFormattedDate(mainseg.end),
-                            date: `${this.getFormattedDate(mainseg.start)} - ${this.getFormattedDate(mainseg.end)}`,
+                            start: this.getFormattedDate(mainseg.start, 'L'),
+                            end: this.getFormattedDate(mainseg.end, 'L'),
+                            date: `${this.getFormattedDate(mainseg.start, 'L')} - ${this.getFormattedDate(mainseg.end, 'L')}`,
                             Url: seg[segment[0]],
                             count: seg['pageViews/count'].sum
                         });
@@ -66,8 +71,8 @@ export default class Helper {
         return finalRes;
     }
 
-    public getResponseByQuery = async (query: string, useTimespan: boolean, timespan?: TimeSpan): Promise<any[]> => {
-        let finalRes: any[] = [];
+    public getResponseByQuery = async <T>(query: string, useTimespan: boolean, timespan?: TimeSpan): Promise<T[]> => {
+        let finalRes: T[] = [];
         const urlQuery: string = useTimespan ? `timespan=${timespan}&query=${encodeURIComponent(query)}` : `query=${encodeURIComponent(query)}`;
         const finalPostUrl: string = this._postUrl + `/query?${urlQuery}`;
         const responseJson: any = await this.getAPIResponse(finalPostUrl);
@@ -116,7 +121,7 @@ export default class Helper {
     }
 
     public getTimeSpanMenu = (): Dictionary<string>[] => {
-        const items: Dictionary<string>[] = [];  //KK: any=> string
+        const items: Dictionary<string>[] = [];  
         Object.keys(TimeSpan).map(key => {
             items.push({
                 text: key,
@@ -138,11 +143,12 @@ export default class Helper {
     }
 
     public getLocalTime = (utcTime: string): string => {
+        
         return moment(utcTime).local().format(chartDateFormat);
     }
 
-    public getFormattedDate = (datetime: string, format?: string): string => {
-        return moment(datetime).local().format(format ? format : defaultDateFormat);
+    public getFormattedDate = (datetime: string, format: string=defaultDateFormat): string => {
+        return moment(datetime).locale(this.cultureName).format(format ? format : defaultDateFormat);
     }
 
     public getQueryDateFormat = (datetime: string): string => {

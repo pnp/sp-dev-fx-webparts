@@ -2,13 +2,10 @@ import * as React from 'react';
 import styles from '../CommonControl.module.scss';
 import { IColumn, DetailsListLayoutMode, ConstrainMode, SelectionMode, IGroup, ShimmeredDetailsList } from '@fluentui/react';
 import { findIndex, groupBy } from '@microsoft/sp-lodash-subset';
-
-export interface Dictionary<T> {
-    [index: string]: T;
-  }
+import { Dictionary } from '../CommonProps';
 
 export interface IDataListProps {
-    Items: any[];
+    Items: any[];   // eslint-disable-line @typescript-eslint/no-explicit-any
     Columns: IColumn[];
     GroupBy: boolean;
     GroupByCol?: string;
@@ -18,14 +15,15 @@ export interface IDataListProps {
 const DataList: React.FunctionComponent<IDataListProps> = (props) => {
 
     const [columns, setColumns] = React.useState<IColumn[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [items, setItems] = React.useState<any[]>([]);
     const [groups, setGroups] = React.useState<IGroup[]>([]);
 
-    const _getItemIndex = (key): number => {
-        return findIndex(props.Items, (o) => { return o.date == key; });
+    const _getItemIndex = (key: string): number => {
+        return findIndex(props.Items, (o) => { return o.date === key; });
     };
-    const _buildGroups = () => {
-        let grouped: Dictionary<string[]> = groupBy(props.Items, props.GroupByCol); //KK: any=> string
+    const _buildGroups = ():void => {
+        const grouped: Dictionary<string[]> = groupBy(props.Items, props.GroupByCol);
         const groupsTemp: IGroup[] = [];
         Object.keys(grouped).map((key, index) => {
             groupsTemp.push({
@@ -65,7 +63,7 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
                     constrainMode={ConstrainMode.unconstrained}
                     isHeaderVisible={true}
                     selectionMode={SelectionMode.none}
-                    enableShimmer={true} />
+                    enableShimmer={!items} />
             ) : (
                     <ShimmeredDetailsList
                         items={items}
@@ -76,9 +74,8 @@ const DataList: React.FunctionComponent<IDataListProps> = (props) => {
                         constrainMode={ConstrainMode.unconstrained}
                         isHeaderVisible={true}
                         selectionMode={SelectionMode.none}
-                        enableShimmer={true} />
+                        enableShimmer={!items} />
                 )}
-
         </div>
     );
 };

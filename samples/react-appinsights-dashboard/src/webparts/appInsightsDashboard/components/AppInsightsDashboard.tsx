@@ -16,6 +16,7 @@ export interface IAppInsightsDashboardProps {
 	DisplayMode: DisplayMode;
 	onConfigure: () => void;
 	httpClient: HttpClient;
+    cultureName:string;
 }
 
 export const AppInsightsProps = React.createContext<IAppInsightsDashboardProps>(null);
@@ -25,7 +26,7 @@ const AppInsightsDashboard: React.FunctionComponent<IAppInsightsDashboardProps> 
 	const [helper, setHelper] = React.useState<Helper>(null);   //KK
 
 	React.useEffect(() => {
-		setHelper(new Helper(props.AppId, props.AppKey, props.httpClient));
+		setHelper(new Helper(props.AppId, props.AppKey, props.httpClient, props.cultureName));
 	}, [props.AppId, props.AppKey]);
 
 	return (

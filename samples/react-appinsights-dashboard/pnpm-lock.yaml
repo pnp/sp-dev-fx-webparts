@@ -20,14 +20,17 @@ specifiers:
   '@microsoft/sp-webpart-base': 1.16.1
   '@pnp/spfx-controls-react': ^3.12.0
   '@rushstack/eslint-config': 2.5.1
+  '@types/lodash': ~4.14.184
   '@types/react': 17.0.45
   '@types/react-dom': 17.0.17
   '@types/webpack-env': ~1.15.2
   ajv: ^6.12.5
+  chart.js: ^4.2.0
   eslint: 8.7.0
   eslint-plugin-react-hooks: 4.3.0
   gulp: 4.0.2
   history: ~5.3.0
+  lodash: ^4.17.21
   moment: ^2.29.4
   react: 17.0.1
   react-dom: 17.0.1
@@ -45,7 +48,9 @@ dependencies:
   '@microsoft/sp-property-pane': 1.16.1_lozypg5aq7ao6qbkylypqd4zei
   '@microsoft/sp-webpart-base': 1.16.1_lozypg5aq7ao6qbkylypqd4zei
   '@pnp/spfx-controls-react': 3.12.0_lozypg5aq7ao6qbkylypqd4zei
+  chart.js: 4.2.0
   history: 5.3.0
+  lodash: 4.17.21
   moment: 2.29.4
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
@@ -58,6 +63,7 @@ devDependencies:
   '@microsoft/sp-build-web': 1.16.1
   '@microsoft/sp-module-interfaces': 1.16.1
   '@rushstack/eslint-config': 2.5.1_j2dpqr3duszxwhwhg5puk5zm6e
+  '@types/lodash': 4.14.191
   '@types/react': 17.0.45
   '@types/react-dom': 17.0.17
   '@types/webpack-env': 1.15.3
@@ -1481,6 +1487,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@kurkle/color/0.3.2:
+    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
+    dev: false
 
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
@@ -3756,11 +3766,14 @@ packages:
   /@types/lodash.isequal/4.5.6:
     resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
     dependencies:
-      '@types/lodash': 4.14.117
+      '@types/lodash': 4.14.191
     dev: false
 
   /@types/lodash/4.14.117:
     resolution: {integrity: sha512-xyf2m6tRbz8qQKcxYZa7PA4SllYcay+eh25DN3jmNYY6gSTL7Htc/bttVdkqj2wfJGbeWlQiX8pIyJpKU+tubw==}
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
 
   /@types/lru-cache/5.1.1:
     resolution: {integrity: sha512-ssE3Vlrys7sdIzs5LOxCzTVMsU7i9oa/IaW92wF32JFb3CVczqOkru2xspuKczHEbG3nvmPY7IFqVmGGHdNbYw==}
@@ -5767,6 +5780,13 @@ packages:
     dependencies:
       chartjs-color: 2.4.1
       moment: 2.29.4
+    dev: false
+
+  /chart.js/4.2.0:
+    resolution: {integrity: sha512-wbtcV+QKeH0F7gQZaCJEIpsNriFheacouJQTVIjITi3eQA8bTlIBoknz0+dgV79aeKLNMAX+nDslIVE/nJ3rzA==}
+    engines: {pnpm: ^7.0.0}
+    dependencies:
+      '@kurkle/color': 0.3.2
     dev: false
 
   /chartjs-color-string/0.6.0:

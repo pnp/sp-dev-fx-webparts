@@ -6,7 +6,7 @@ export interface IPivotProps {
     ShowLabel: boolean;
     LabelText: string;
     SelectedKey: string;
-    Items: any[];
+    Items: any[];   // eslint-disable-line @typescript-eslint/no-explicit-any
     OnMenuClick: (item: PivotItem) => void;
 }
 
