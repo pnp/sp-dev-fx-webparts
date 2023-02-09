@@ -10,9 +10,9 @@ This solution enables a user to copy views from one list/library to another acro
 
 ## Used Versions
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 ![pnpjs](https://img.shields.io/badge/pnpjs-3.6-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![Node.js v16.13](https://img.shields.io/badge/Node.js-v16.13+-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Unknown-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Unknown-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -37,7 +37,8 @@ This solution enables a user to copy views from one list/library to another acro
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | August 29, 2022 | Initial release |
+| 1.0.2.0 | August 29, 2022 | Upgraded to SPFx version 1.16.1 |
+| 1.0.1.5 | August 29, 2022 | Initial release |
 
 ## Minimal Path to Awesome
 

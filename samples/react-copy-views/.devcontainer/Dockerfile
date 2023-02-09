@@ -31,7 +31,7 @@ WORKDIR /home/copy-views-container
 # * Anything else you want to do like clean up goes here *
 # ********************************************************
 
-RUN npm install -g gulp-cli@latest yo@4 @microsoft/generator-sharepoint@1.15.x spfx-fast-serve@3 @pnp/cli-microsoft365 --unsafe-perm 
+RUN npm install -g gulp-cli@latest yo@4 @microsoft/generator-sharepoint@1.16.1 spfx-fast-serve@3 @pnp/cli-microsoft365 --unsafe-perm 
 
 RUN zsh -c "$(curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended \
     && git clone https://github.com/denysdovhan/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt" --depth=1 \
