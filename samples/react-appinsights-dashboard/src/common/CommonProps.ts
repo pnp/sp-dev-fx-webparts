@@ -22,3 +22,6 @@ export interface IPerfDurationProps {
     PerDur_95: number;
     PerDur_99: number;
 }
+export interface Dictionary<T> {
+    [index: string]: T;
+  }

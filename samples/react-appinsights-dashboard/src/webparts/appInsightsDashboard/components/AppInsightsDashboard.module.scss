@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .appInsightsDashboard {
   .container {
@@ -7,7 +7,7 @@
   }
   .row {
     @include ms-Grid-row;
-    // background-color: $ms-color-themeDark;
+    background-color: $ms-color-themeDark;
     padding: 20px;
   }
 }
