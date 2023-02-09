@@ -3312,7 +3312,7 @@
       "This web part displays different statistics data captured in the Azure Application Insights in a graphical representation."
     ],
     "creationDateTime": "2020-06-17",
-    "updateDateTime": "2020-06-17",
+    "updateDateTime": "2023-02-06",
     "products": [
       "SharePoint"
     ],
@@ -3323,7 +3323,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.16.1"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
