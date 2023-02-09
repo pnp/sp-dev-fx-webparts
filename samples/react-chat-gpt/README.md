@@ -2,7 +2,7 @@
 
 ## Summary
 
-This webpart uses Chat GPT in an SPFx webpart. You can ask questions from the web part and you will see the answers, most recent answers first.
+This webpart uses Chat GPT in an SPFx web part. You can ask questions from the web part and you will see the answers, most recent answers first.
 
 ![Example animated screen](assets/chatgpt.gif)
 
@@ -52,18 +52,6 @@ You must then enter this api key in the web part properties
 
 ## Minimal path to awesome
 
-<!-- 
-PRO TIP:
-
-For commands, use the `code syntax`
-
-For button labels, page names, dialog names, etc. as they appear on the screen, use **Bold**
-
-Don't use "click", use "select" or "use"
-
-As tempting as it may be, don't just use images to describe the steps. Let's be as inclusive as possible and think about accessibility.
-
--->
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chat-gpt) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-chat-gpt`, located under `samples`)
@@ -73,14 +61,6 @@ As tempting as it may be, don't just use images to describe the steps. Let's be 
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-## Features
-
-Description of the web part with possible additional details than in short summary.
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
-
-* topic 1
-* topic 2
-* topic 3
 
 ## Help
 
@@ -92,11 +72,11 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-chat-gpt) and see what the community is saying.
 
-If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-chat-gpt&template=bug-report.yml&sample=react-chat-gpt&authors=@YOURGITHUBUSERNAME&title=react-chat-gpt%20-%20).
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-chat-gpt&template=bug-report.yml&sample=react-chat-gpt&authors=@nicodecleyre&title=react-chat-gpt%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-chat-gpt&template=question.yml&sample=react-chat-gpt&authors=@YOURGITHUBUSERNAME&title=react-chat-gpt%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-chat-gpt&template=question.yml&sample=react-chat-gpt&authors=@nicodecleyre&title=react-chat-gpt%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-chat-gpt&template=suggestion.yml&sample=react-chat-gpt&authors=@YOURGITHUBUSERNAME&title=react-chat-gpt%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-chat-gpt&template=suggestion.yml&sample=react-chat-gpt&authors=@nicodecleyre&title=react-chat-gpt%20-%20).
 
 ## Disclaimer
 
