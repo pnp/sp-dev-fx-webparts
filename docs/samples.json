@@ -5511,7 +5511,7 @@
       "The Copy Views solution enables a user to copy views from one list/library to another across site collections. It can be used as a webpart on a page, or as a ListView Command Set extension. The user can select multiple views to copy to multiple target lists."
     ],
     "creationDateTime": "2022-08-29",
-    "updateDateTime": "2022-09-12",
+    "updateDateTime": "2023-02-09",
     "products": [
       "SharePoint"
     ],
@@ -5522,7 +5522,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.16.1"
       }
     ],
     "thumbnails": [
