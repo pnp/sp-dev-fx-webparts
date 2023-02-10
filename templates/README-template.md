@@ -40,6 +40,11 @@ You can add as many screen shots as you'd like to help users understand your web
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
@@ -51,7 +56,6 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 <!--
 
 If using SPFX 1.14, update the SPFx and Node.js tags as per below:

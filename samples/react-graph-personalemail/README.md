@@ -1,6 +1,3 @@
-## Compatibility
-
-This sample is designed to be used in the following enviroments:
 # Personal e-mail
 
 ## Summary
@@ -11,6 +8,11 @@ Sample React web part showing how to retrieve and display personal e-mail retrie
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.6](https://img.shields.io/badge/SPFx-1.6.0-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 

@@ -6,7 +6,12 @@ Uses the MS Graph client to list the members of a group(s) and displays Person C
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 

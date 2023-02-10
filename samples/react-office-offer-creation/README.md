@@ -28,6 +28,11 @@ For further details see the author's [blog series](https://mmsharepoint.wordpres
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)

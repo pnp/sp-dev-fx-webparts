@@ -9,7 +9,12 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg "SPFx 1.4.1 works with SharePoint 2019 and SharePoint Online") 
 ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg "Node.js v6 or v8 is required to run SPFx 1.4.1")
