@@ -14459,6 +14459,59 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-pnp-js-sample",
+    "source": "pnp",
+    "title": "Using @pnp/js and ReactJS",
+    "shortDescription": "Shows how to use PnPjs in a React web part",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-js-sample",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-js-sample",
+    "longDescription": [
+      "Shows how to use PnPjs in a React web part"
+    ],
+    "creationDateTime": "2023-02-18",
+    "updateDateTime": "2023-02-18",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.15.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-sample/assets/react-pnp-js-sample.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "juliemturner",
+        "pictureUrl": "https://github.com/juliemturner.png",
+        "name": "Julie Turner"
+      },
+      {
+        "gitHubAccount": "bcameron1231",
+        "name": "Beau Cameron",
+        "pictureUrl": "https://github.com/bcameron1231.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online",
     "source": "pnp",
     "title": "PnPjs Project Online",
