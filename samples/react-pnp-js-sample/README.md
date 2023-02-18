@@ -37,7 +37,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 <!-- markdownlint-disable -->
 |[![Julie Turner](https://avatars.githubusercontent.com/u/7570936?v=4&s=100)](https://github.com/juliemturner)|[![Beau Cameron](https://avatars.githubusercontent.com/u/7944457?v=4&s=100)](https://github.com/bcameron1231)|
 |:--:|:--:|
-<sub>**[Julie Turner](https://github.com/juliemturner)**</sub>|<sub>**[Beau Cameron](https://github.com/bcameron1231)**</sub>|
+**[Julie Turner](https://github.com/juliemturner)**|**[Beau Cameron](https://github.com/bcameron1231)**|
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 <!-- CONTRIBUTORS-LIST:END -->
