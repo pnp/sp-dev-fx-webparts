@@ -54,9 +54,9 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 1. clone this repo
-1. `$ npm i`
+1. `npm i`
 1. Update online workbench URL in the `initialPage` property of the `config/serve.json` file.
-1. `$ gulp serve`
+1. `gulp serve`
 
 ## Features
 
