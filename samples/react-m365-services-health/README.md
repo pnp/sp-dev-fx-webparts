@@ -1,8 +1,8 @@
-# M365 Services Health
+# Microsoft 365 Services Health
 
 ## Summary
 
-M365ServicesHealth solution contains SPFx web part with below functionalities
+Contains SPFx web part with below functionalities
 
 1. Show the health status for all the M365 services
 2. Complete details including all the updates for all the impacted services
@@ -34,13 +34,13 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 - [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 > Any special pre-requisites?
 
-## Authors
+## Contributors
 
 [Harminder Singh](https://github.com/HarminderSethi) <https://www.linkedin.com/in/harmindersinghsethi/> |
 
