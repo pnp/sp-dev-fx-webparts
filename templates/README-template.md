@@ -130,7 +130,7 @@ If you provide a link to your Twitter profile, we'll promote your contribution o
 If you do not update this information, you will not be listed 😞
 -->
 
-- [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https://twitter.com/yourtwitterhandle)), Company
+* [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https://twitter.com/yourtwitterhandle)), Company
 
 ## Version history
 
