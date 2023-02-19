@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-chat-gpt-app-client-side-solution",
+    "id": "560953a2-d85c-41de-84f6-4def64002ea1",
+    "version": "1.0.0.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "OpenAIFunctionsApp",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ChatMessage.Send"
+      }
+
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-chat-gpt-app"
+      },
+      "longDescription": {
+        "default": "react-chat-gpt-app"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-chat-gpt-message-extension Feature",
+        "description": "The feature that activates elements of the react-chat-gpt-app solution.",
+        "id": "9ce00a62-2201-471b-a003-5b56389ea028",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-chat-gpt-app.sppkg"
+  }
+}
