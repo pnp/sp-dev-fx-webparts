@@ -17,6 +17,6 @@ export class GraphService {
 		const client = await this.getClient();
 		const request: GraphRequest = client.api("/admin/serviceAnnouncement/healthOverviews");
 		const response = await request.expand("issues").get();
-		return Promise.resolve(response.value as ServiceHealth[]);
+		return Promise.resolve(response.value);
 	};
 }
