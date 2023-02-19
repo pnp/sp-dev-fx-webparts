@@ -2,7 +2,7 @@ import { DefaultButton, DetailsList, IColumn, IPanelProps, IRenderFunction, Pane
 import { ServiceHealth, ServiceHealthIssue } from "@microsoft/microsoft-graph-types";
 import * as React from "react";
 import { IServiceHealthOverviewItem, IServiceHealthOverviewProps, IServiceHealthOverviewState } from "../../interfaces/ServiceHealthModels";
-import { ListViewHelperService } from "../../services/ListViewHelperService";
+import * as ListViewHelperService from "../../services/ListViewHelperService";
 import { backButtonStyles, cancelButtonStyle, issueDetailPanelStyles, issueListPanelStyles } from "./Constant";
 import { IssueDetail } from "./IssueDetail/IssueDetail";
 import { IssueList } from "./IssueList/IssueList";

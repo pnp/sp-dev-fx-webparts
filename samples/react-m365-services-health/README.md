@@ -1,4 +1,4 @@
-# Microsoft 365 Services Health
+# Service Health for Microsoft 365
 
 ## Summary
 
@@ -38,7 +38,18 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Prerequisites
 
-> Any special pre-requisites?
+- SharePoint Online tenant
+- You have to provide permission in SharePoint admin for accessing Graph API on behalf of your solution. You can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). You have to use API Access Page of SharePoint admin and add below permission for our use case.
+
+```
+ "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ServiceHealth.Read.All"
+      }
+    ]
+
+```
 
 ## Contributors
 

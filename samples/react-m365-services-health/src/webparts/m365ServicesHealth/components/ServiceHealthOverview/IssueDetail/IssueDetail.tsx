@@ -1,7 +1,7 @@
 import { ServiceHealthIssuePost } from "@microsoft/microsoft-graph-types";
 import Style from "./IssueDetail.module.scss";
 import * as React from "react";
-import { HelperService } from "../../../../../common/services/HelperService";
+import * as HelperService from "../../../../../common/services/HelperService";
 import { Icon, Label } from "@fluentui/react";
 import { IIssueDetailProps } from "../../../interfaces/ServiceHealthModels";
 

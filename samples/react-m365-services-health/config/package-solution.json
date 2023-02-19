@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "M365 Services Health",
+    "name": "Service Health for Microsoft 365",
     "id": "f4d4b329-f1c6-49c9-a2fa-12a9816ac717",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -22,10 +22,10 @@
     ],
     "metadata": {
       "shortDescription": {
-        "default": "M365 Services health"
+        "default": "Service Health for Microsoft 365"
       },
       "longDescription": {
-        "default": "M365 Services health"
+        "default": "Service Health for Microsoft 365"
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -34,7 +34,7 @@
     },    
     "features": [
       {
-        "title": "M365 Services Health Feature",
+        "title": "Service Health for Microsoft 365 Feature",
         "description": "The feature that activates elements of the react-m-365-services-health solution.",
         "id": "9d9e7584-45be-4df4-8023-5c271402cf87",
         "version": "1.0.0.0"

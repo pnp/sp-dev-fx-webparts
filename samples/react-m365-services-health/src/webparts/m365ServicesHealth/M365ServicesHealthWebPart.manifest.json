@@ -18,7 +18,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "M365 Services Health" },
+    "title": { "default": "Service Health for Microsoft 365" },
     "description": { "default": "m365-services-health description" },
     "officeFabricIconFontName": "HealthSolid",
     "properties": {
