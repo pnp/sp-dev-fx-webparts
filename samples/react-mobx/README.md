@@ -50,11 +50,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-mobx | Kevin Mees <kev.mees@gmail.com> (Experts Inside GmbH, @kmees)
+* Kevin Mees <kev.mees@gmail.com> (Experts Inside GmbH, @kmees)
 
 ## Version history
 

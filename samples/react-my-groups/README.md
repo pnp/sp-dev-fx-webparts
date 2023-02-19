@@ -50,11 +50,9 @@ You can change between the grid and compact layout through the settings in the p
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-my-groups | [Zach Roberts](https://github.com/zachroberts8668)
+* [Zach Roberts](https://github.com/zachroberts8668)
 
 ## Version history
 

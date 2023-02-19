@@ -27,12 +27,10 @@ The key differences between using Embed web part and current example are the str
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-facebook-plugin | [Andrew Koltyakov](https://github.com/koltyakov) ([@AndrewKoltyakov](https://twitter.com/AndrewKoltyakov))
-react-facebook-plugin | [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
+* [Andrew Koltyakov](https://github.com/koltyakov) ([@AndrewKoltyakov](https://twitter.com/AndrewKoltyakov))
+* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
 
 ## Version history
 

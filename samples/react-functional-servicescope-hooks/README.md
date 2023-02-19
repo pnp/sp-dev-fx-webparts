@@ -27,11 +27,9 @@ This web part is designed to help developers understand how to use the Context A
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-functional-servicescope-hooks | [Garry Trinder](https://github.com/garrytrinder)
+* [Garry Trinder](https://github.com/garrytrinder)
 
 ## Version history
 

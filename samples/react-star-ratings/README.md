@@ -49,11 +49,9 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-star-ratings|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+* [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
 
 ## Version history
 

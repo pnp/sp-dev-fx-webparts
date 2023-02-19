@@ -44,13 +44,12 @@ PnP JS library to get relevant SharePoint lists and libraries from current Site 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-## Solution
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+
+## Contributors
 
 
-Solution|Author(s)
---------|---------
-react-lists-hide | [Sandeep Unnikrishnan](https://github.com/SandeepDev365/)
+*  [Sandeep Unnikrishnan](https://github.com/SandeepDev365/)
 
 ## Version history
 

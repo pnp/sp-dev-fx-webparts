@@ -44,11 +44,9 @@ Sample Web Part illustrating
 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-knockout-taxonomy |  [Alex Terentiev](https://github.com/AJIXuMuK) ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* [Alex Terentiev](https://github.com/AJIXuMuK) ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
 
 ## Version history
 

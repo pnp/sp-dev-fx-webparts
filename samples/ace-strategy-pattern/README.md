@@ -48,11 +48,9 @@ With a better isolation and testability of our actions.
 
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-ace-strategy-pattern | [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
+* [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
 
 ## Version history
 

@@ -35,13 +35,11 @@ For more information about the component, please see the related page here: [htt
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-adaptive-card-host-control | [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), Apvee Solutions
+- [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), Apvee Solutions
 
 ## Version history
 

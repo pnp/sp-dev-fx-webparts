@@ -60,11 +60,9 @@ Simple Web Part that demonstrates the use of SharePoint Framework for show casin
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-employee-spotlight| SPS (Strategic Products and Services)
+* SPS (Strategic Products and Services)
 
 
 ## Version history

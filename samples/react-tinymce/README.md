@@ -47,14 +47,13 @@ editor is powered by the community.
 
 
 ## Prerequisites
+
 If you are going to use tinymce be aware of it's license, and you must
 agree to it.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-TinyMCE | @AustinBreslinDev
+* @AustinBreslinDev
 
 ## Version history
 

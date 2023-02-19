@@ -30,11 +30,9 @@ This listview command is used to show the past versions of the selected list ite
  
 > No pre-requisites
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-item-History|[Russell Gove](https://github.com/russgove)
+* [Russell Gove](https://github.com/russgove)
 
 
 ## Version history

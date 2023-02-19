@@ -87,11 +87,9 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 - Office 365 subscription with SharePoint Online.
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-jest-testing | [Velin Georgiev](https://github.com/VelinGeorgiev) ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
+* [Velin Georgiev](https://github.com/VelinGeorgiev) ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
 
 ## Version history
 

@@ -57,17 +57,15 @@ References to office-ui-fabric-react version 5.x because of SharePoint 2019 Supp
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 > SharePoint Online or SharePoint 2019
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-image-editor | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
 
 Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) to allow to share this code.
 

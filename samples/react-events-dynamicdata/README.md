@@ -25,11 +25,9 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-events-dynamicdata|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
 react-events-dynamicdata|[Hugo Bernier](https://github.com/hugoabernier) (MVP, [@bernierh](https://twitter.com/bernierh))
 
 ## Version history

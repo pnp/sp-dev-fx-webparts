@@ -26,12 +26,10 @@ A version of [react-adaptivecards](https://github.com/pnp/sp-dev-fx-webparts/tre
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-adaptivecards-hooks | Paul Schaeflein (http://www.schaeflein.net)
-react-adaptivecards-hooks | Hugo Bernier ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
+* Paul Schaeflein (<http://www.schaeflein.net>)
+* Hugo Bernier ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
 
 ## Version history
 

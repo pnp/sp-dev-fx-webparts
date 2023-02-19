@@ -33,11 +33,9 @@ This is an application that supports Questions & Answers through a web part that
 * Office 365 subscription with SharePoint Online
 * SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-questions-and-answers | Bo George ([@bo_george](https://twitter.com/bo_george)), Mike Homol ([@homol](https://twitter.com/homol))
+* Bo George ([@bo_george](https://twitter.com/bo_george)), Mike Homol ([@homol](https://twitter.com/homol))
 
 ## Version history
 

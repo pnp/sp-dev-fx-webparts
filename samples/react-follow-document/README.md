@@ -50,7 +50,7 @@ Usage of following Technologies:
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -71,11 +71,9 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Channe
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'ChannelMessage.Send'
 ```
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-follow-document | [André Lage](https://github.com/aaclage) (http://aaclage.blogspot.com, [@aaclage](https://twitter.com/aaclage))
+* [André Lage](https://github.com/aaclage) (http://aaclage.blogspot.com, [@aaclage](https://twitter.com/aaclage))
 
 ## Version history
 

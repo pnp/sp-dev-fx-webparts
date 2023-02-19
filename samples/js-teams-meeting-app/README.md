@@ -32,11 +32,9 @@ This project demonstrates a SPFx web part used as a Microsoft Teams meetings app
 
 - Administrative access to MS Teams to deploy the package
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-teams-meeting-app | [Andrew Connell](/andrewconnell) ([@andrewconnell](https://twitter.com/andrewconnell)), [Voitanos, LLC](https://www.voitanos.io)
+- [Andrew Connell](/andrewconnell) ([@andrewconnell](https://twitter.com/andrewconnell)), [Voitanos, LLC](https://www.voitanos.io)
 
 ## Version history
 

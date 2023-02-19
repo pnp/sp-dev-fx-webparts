@@ -40,11 +40,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 For being able to use the API, you first needs to register into the [DALL-E 2 website](https://labs.openai.com/auth/signup), and then, you must generate an [API Key](https://beta.openai.com/account/api-keys)
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-dall-e-image-generation | [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez)) |
+* [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez)) |
 
 ## Version history
 

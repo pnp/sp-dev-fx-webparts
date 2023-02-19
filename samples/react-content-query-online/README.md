@@ -31,12 +31,10 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Authors
---------|-----------
-react-content-query-web part (Online)|David Warner II ([Warner Digital](http://warner.digital), [@DavidWarnerII](https://twitter.com/davidwarnerii))
-react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
+* David Warner II ([Warner Digital](http://warner.digital), [@DavidWarnerII](https://twitter.com/davidwarnerii))
+* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part |Simon-Pierre Plante
 react-content-query-web part (Online)|Abderahman Moujahid

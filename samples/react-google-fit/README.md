@@ -62,11 +62,9 @@ Below NPM package is used to develop this sample.
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-google-fit|[Nanddeep Nachan](https://github.com/nanddeepn) https://www.linkedin.com/in/nanddeepnachan/ (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
+* [Nanddeep Nachan](https://github.com/nanddeepn) https://www.linkedin.com/in/nanddeepnachan/ (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
 
 ## Version history
 

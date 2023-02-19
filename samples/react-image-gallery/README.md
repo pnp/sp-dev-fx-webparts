@@ -26,12 +26,10 @@ This sample describes an SPFx application which implements an image gallery with
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-image-gallery | [Ejaz Hussain](https://github.com/ejazhussain)
-react-image-gallery | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Ejaz Hussain](https://github.com/ejazhussain)
+* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
 
 ## Version history
 

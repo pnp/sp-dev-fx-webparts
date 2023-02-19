@@ -32,11 +32,9 @@ This web part is intended to be easier to understand for new developers building
 
 This sample was built with version 1.82 of the SharePoint Framework. It has been modified to use version 16.8 of the React framework (by default the version used is React 16.7). React 16.8 supports React Hooks although this is not needed in the sample code because HelloWorld.tsx is a pure (or stateless) functional component.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-functional-component | Bill Ayers
+* Bill Ayers
 
 ## Version history
 

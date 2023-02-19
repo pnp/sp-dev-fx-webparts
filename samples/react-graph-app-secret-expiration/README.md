@@ -29,11 +29,9 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-app-secret-expiration | [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
+* [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
 
 ## Version history
 

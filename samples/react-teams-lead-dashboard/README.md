@@ -29,13 +29,11 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Microsoft Teams](https://www.microsoft.com/microsoft-teams)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-Lead Assist Dashboard | [PnP](https://pnp.github.io/)
+* [PnP](https://pnp.github.io/)
 
 ## Version history
 

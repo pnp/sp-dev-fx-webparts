@@ -31,10 +31,11 @@ This sample is optimally compatible with the following environment configuration
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Authors
-[Martin Lingstuyl](https://github.com/martinlingstuyl) ([@martinlingstuyl](https://twitter.com/martinlingstuyl)), I4-YOU Business Solutions b.v.
+## Contributors
+
+- [Martin Lingstuyl](https://github.com/martinlingstuyl) ([@martinlingstuyl](https://twitter.com/martinlingstuyl)), I4-YOU Business Solutions b.v.
 
 ## Version history
 

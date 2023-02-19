@@ -26,11 +26,9 @@ This project contains two separate project folders:
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-azfunc-vimeo | [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
+* [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
 
 ## Version history
 

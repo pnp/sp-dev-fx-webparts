@@ -40,11 +40,9 @@ This web part provides mui datatable features for your lists
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-datatable-using-mui-tables | [Jeffin Jacob](https://github.com/jeffinjacob)) (https://www.linkedin.com/in/drjeffinjacob/)
+* [Jeffin Jacob](https://github.com/jeffinjacob)) (https://www.linkedin.com/in/drjeffinjacob/)
 
 ## Version history
 

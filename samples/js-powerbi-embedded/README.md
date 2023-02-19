@@ -39,11 +39,9 @@ This sample SharePoint Framework client-side web part embedding a PowerBI report
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-powerbi-embedded|[Roland Oldengarm](https://github.com/rolandoldengarm) (Provoke Solutions, @rolandoldengarm)
+* [Roland Oldengarm](https://github.com/rolandoldengarm) (Provoke Solutions, @rolandoldengarm)
 
 ## Version history
 

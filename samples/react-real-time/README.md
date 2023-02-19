@@ -60,11 +60,9 @@ Before starting, you'll need to install some prerequisites:
 - Create a site collection with the developer template.
 - Go to the ".\client" folder and install all dependencies listed in the package.json file by running the `npm install` cmd.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-real-time | [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
+* [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
 
 ## Version history
 

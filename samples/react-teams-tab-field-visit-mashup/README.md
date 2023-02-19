@@ -44,11 +44,9 @@ The solution demonstrates:
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-field-visit-demo-tab | [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
+* [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
 
 Many thanks to [Arbindo Chattopadhyay](https://www.linkedin.com/in/arbindoc/) for writing the [detailed installation instructions ](./documentation/setup.md) and compiling [links to resources](./documentation/resources.md).
 

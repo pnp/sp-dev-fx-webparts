@@ -25,11 +25,9 @@ This web part shows news information as a Banner, this information come from a l
 
 - [SharePoint Framework](https://aka.ms/spfx)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-news-banner |[João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
+* [João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
 
 ## Version history
 

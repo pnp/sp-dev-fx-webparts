@@ -58,11 +58,9 @@ Please go to https://newsapi.org to get more information.
 
 > none
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-global-news | [João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

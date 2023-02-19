@@ -60,11 +60,9 @@ display all the lists associated with the site followed by all the items inside 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular-msgraph|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+* [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 

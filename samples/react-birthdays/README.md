@@ -49,12 +49,10 @@ email | Text | true
 
 > **IMPORTANT:** Create index on column "Birthday".
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react Birthday Web Part|[João Mendes](https://github.com/joaojmendes)
-react Birthday Web Part|[Sajal Maity](https://github.com/smaity)
+* [João Mendes](https://github.com/joaojmendes)
+* [Sajal Maity](https://github.com/smaity)
 
 ## Version history
 

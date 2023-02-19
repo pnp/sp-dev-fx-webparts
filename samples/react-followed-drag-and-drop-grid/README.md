@@ -45,11 +45,9 @@ Another cool feature is also done using MS Graph in order to save or update the 
 
 As this solution uses Microsoft Graph to get user followed sites it is required to approve all web api permission requests in SharePoint Admin page https://YourCoolTenantNameHere-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-followed-drag-and-drop-grid | [Adam Wójcik](https://github.com/Adam-it)
+* [Adam Wójcik](https://github.com/Adam-it)
 
 ## Version history
 

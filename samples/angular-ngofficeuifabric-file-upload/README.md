@@ -46,12 +46,10 @@ Edit web part properties to set Document library Name. Initially, It has been se
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular-ngofficeuifabric-file-upload | [Atish Kumar Dipongkor](https://github.com/dipongkor) (MVP, Office Development)
-angular-ngofficeuifabric-file-upload | [Gautam Sheth](https://github.com/gautamdsheth) (SharePoint Consultant,RapidCircle,@gautamdsheth)
+* [Atish Kumar Dipongkor](https://github.com/dipongkor) (MVP, Office Development)
+* [Gautam Sheth](https://github.com/gautamdsheth) (SharePoint Consultant,RapidCircle,@gautamdsheth)
 
 ## Version history
 

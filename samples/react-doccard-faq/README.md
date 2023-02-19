@@ -41,11 +41,9 @@ For detailed instructions on how to build this web part and the needed list plea
 4. Add items to your list making sure to set some to `yes` in the **Featured** column
 5. Navigate to your sites workbench (https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-doccard-faq | [Sam Collins](https://github.com/SamC148) ([@samc148](https://twitter.com/samc148))
+* [Sam Collins](https://github.com/SamC148) ([@samc148](https://twitter.com/samc148))
 
 ## Version history
 

@@ -34,12 +34,10 @@ This is an application that supports Feedback through a web part that can be use
 * SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
 * **Feedback Owners** SharePoint group (see below)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-feedback | [Perry Kankam](https://github.com/perr124)
-react-feedback | [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Perry Kankam](https://github.com/perr124)
+* [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 

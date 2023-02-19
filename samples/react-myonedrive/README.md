@@ -37,7 +37,7 @@ This web part can be useful on the Intranet home page which can be added as My O
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -58,11 +58,9 @@ This web part can be useful on the Intranet home page which can be added as My O
 
 ```
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-myonedrive | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
 
 ## Version history
 

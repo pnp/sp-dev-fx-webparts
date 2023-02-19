@@ -40,11 +40,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
 * [MS Teams](https://learn.microsoft.com/microsoftteams/microsoft-teams)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-teams-creator-client-side-solution | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
 
 ## Version history
 
@@ -54,6 +52,7 @@ Version|Date|Comments
 1.1|November 19, 2018|Upgrade to SPFx v1.7.0, updated to use v1.0 MS Graph endpoints
 
 ## Features
+
 Sample features:
 - O365 Group creation
 - MS Team creation

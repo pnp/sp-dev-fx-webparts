@@ -41,11 +41,9 @@ You may ask why I used AadHttpClient instead of MSGraphClient. AadHttpClient sha
 
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-auto-batching | [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
+* [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
 
 ## Version history
 

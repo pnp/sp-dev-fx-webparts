@@ -49,18 +49,16 @@ This project shows how to integrate [Tailwind CSS](https://tailwindcss.com/) fra
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 - Basic knowledge of [Tailwind CSS](https://tailwindcss.com/)
 - Basic knowledge of [GulpJs](https://gulpjs.com/)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-tailwindcss | Fabio Franzini, [@franzinifabio](https://twitter.com/franzinifabio)
+* Fabio Franzini, [@franzinifabio](https://twitter.com/franzinifabio)
 
 ## Version history
 

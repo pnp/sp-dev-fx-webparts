@@ -32,12 +32,10 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 
 - SharePoint Online Tenant or SharePoint 2019 On Prem
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-word-game | Neil Barkhina ([www.neilb.net](https://www.neilb.net/))
-react-word-game | Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham/))
+* Neil Barkhina ([www.neilb.net](https://www.neilb.net/))
+* Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham/))
 
 ## Version history
 

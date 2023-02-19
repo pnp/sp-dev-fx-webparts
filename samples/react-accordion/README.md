@@ -43,12 +43,10 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-accordion | Gautam Sheth (SharePoint Consultant, RapidCircle)
-react-accordion | Abhishek Garg
+* Gautam Sheth (SharePoint Consultant, RapidCircle)
+* Abhishek Garg
 
 ## Version history
 

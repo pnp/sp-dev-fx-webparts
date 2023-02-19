@@ -36,11 +36,9 @@ This web part illustrates the below features for creating Outlook Add-Ins using 
 * Use Microsoft Graph to retrieve complete mail `mimestream` by given `ID`
 * Use Microsoft Graph to save normal or big files (in size bigger 4MB) with different concepts
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-save-attachments | [Aakash Bhardwaj](https://github.com/aakashbhardwaj619) ([@aakash_316](https://twitter.com/aakash_316))
+* [Aakash Bhardwaj](https://github.com/aakashbhardwaj619) ([@aakash_316](https://twitter.com/aakash_316))
 
 ## Version history
 

@@ -32,11 +32,9 @@ This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx w
 
 None.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-minesweeper | [Pieter Heemeryck](https://github.com/PieterHeemeryck) ([@heemeryckpieter](https://twitter.com/heemeryckpieter))
+* [Pieter Heemeryck](https://github.com/PieterHeemeryck) ([@heemeryckpieter](https://twitter.com/heemeryckpieter))
 
 ## Version history
 

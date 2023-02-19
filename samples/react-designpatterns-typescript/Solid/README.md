@@ -31,11 +31,9 @@ Blog post here: https://dev.to/kayis/is-react-solid-630
  
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-designpatterns-typescript\solid | [Luis Valencia](https://github.com/levalencia) [@levalencia](https://www.twitter.com/levalencia)
+* [Luis Valencia](https://github.com/levalencia) [@levalencia](https://www.twitter.com/levalencia)
 
 ## Version history
 

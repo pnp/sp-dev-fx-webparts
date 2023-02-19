@@ -42,13 +42,10 @@ This web part demonstrates how to integrate the @pnp/sp library into the SharePo
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365](https://docs.microsoft.com/sharepoint/)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-spfx-sp-pnp-js-example|[Patrick Rodgers](https://github.com/patrick-rodgers) ([@mediocrebowler](https://twitter.com/mediocrebowler))
-
-Upgrade to v1.7.0|[Gautam Sheth](https://github.com/gautamdsheth) ([@gautamdsheth](https://twitter.com/gautamdsheth))
+* [Patrick Rodgers](https://github.com/patrick-rodgers) ([@mediocrebowler](https://twitter.com/mediocrebowler))
+* [Gautam Sheth](https://github.com/gautamdsheth) ([@gautamdsheth](https://twitter.com/gautamdsheth))
 
 ## Version history
 

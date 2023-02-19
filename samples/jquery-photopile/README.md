@@ -50,11 +50,9 @@ simulates a pile of photos scattered about on a surface. Thumbnail clicks remove
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-jquery-photopile|[Olivier Carpentier](https://github.com/OlivierCC) (@olivierc)
+* [Olivier Carpentier](https://github.com/OlivierCC) (@olivierc)
 
 ## Version history
 

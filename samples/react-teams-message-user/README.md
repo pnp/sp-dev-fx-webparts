@@ -76,11 +76,9 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Using react framework in SPFx web part
 * Calling Microsoft Graph API in SPFx web part
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-teams-messages| [David Ramalho](https://github.com/DRamalho92) ([@davRamalho](https://twitter.com/davRamalho))
+* [David Ramalho](https://github.com/DRamalho92) ([@davRamalho](https://twitter.com/davRamalho))
 
 
 ## Version history

@@ -52,15 +52,10 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
  
 > Is necessary to have a google developer API key in order to perform REST API call
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-YouTube|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](https://delucagiuliano.com))
-
-Solution|Contributor(s)
---------|---------
-react-YouTube|Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](https://netwoven.com))
+* Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](https://delucagiuliano.com))
+* Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](https://netwoven.com))
 
 ## Version history
 

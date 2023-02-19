@@ -30,11 +30,9 @@ The abstract factory pattern will allow to define an interface for the creation 
  
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-designpatterns-typescript\abstractfactory | [@levalencia](https://www.twitter.com/levalencia)
+* [@levalencia](https://www.twitter.com/levalencia)
 
 ## Version history
 

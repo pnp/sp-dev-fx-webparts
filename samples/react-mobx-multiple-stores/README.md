@@ -31,11 +31,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework Web part Samples](https://github.com/pnp/sp-dev-fx-webparts)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-mobx-multiple-stores | Kemal Sinanagic / [@kemicza](http://twitter.com/kemicza) / kemicza@gmail.com
+* Kemal Sinanagic / [@kemicza](http://twitter.com/kemicza) / kemicza@gmail.com
 
 ## Version history
 

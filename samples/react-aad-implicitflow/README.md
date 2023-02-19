@@ -48,11 +48,9 @@ Sample SharePoint Framework client-side web part built using React showing upcom
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-aad-implicitflow|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
 
 ## Version history
 

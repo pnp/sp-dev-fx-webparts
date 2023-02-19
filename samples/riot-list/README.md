@@ -45,11 +45,9 @@ Simplistic sample Web Part that demonstrates the use of RiotJS in creating a Sha
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-spfx-riot-list|[Sébastien Levert](https://github.com/sebastienlevert) (MVP, Valo Intranet, @sebastienlevert)
+* [Sébastien Levert](https://github.com/sebastienlevert) (MVP, Valo Intranet, @sebastienlevert)
 
 
 ## Version history

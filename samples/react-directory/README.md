@@ -64,16 +64,14 @@ Properties to search | text | No | By default **FirstName,LastName,WorkEmail,Dep
 Properties to sent as clear text | text | No | By default if the search key has empty spaces, its replaced with **+** before sending it to the search query. The search properties mentioned here will be sent without the empty space replacemnt.
 Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set. 
 
-## Solution
+## Contributors
 
 The web part use PnPjs library, Office-ui-fabric-react components
 
-Solution|Author(s)
---------|---------
-Directory Web Part|João Mendes
-Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
-Directory Web Part| Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
-Directory Web Part| Abderahman Moujahid
+* [João Mendes](https://github.com/joaojmendes)
+* Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
+* Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
+* Abderahman Moujahid
 
 ## Version history
 

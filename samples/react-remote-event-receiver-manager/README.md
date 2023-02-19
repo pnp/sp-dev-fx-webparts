@@ -29,11 +29,9 @@ A very simple web part that lets you add and delete remote event receivers to li
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react remote event receiver manager | [Dan Toft](https://github.com/Tanddant) ([@tanddant](https://twitter.com/tanddant))
+* [Dan Toft](https://github.com/Tanddant) ([@tanddant](https://twitter.com/tanddant))
 
 ## Version history
 

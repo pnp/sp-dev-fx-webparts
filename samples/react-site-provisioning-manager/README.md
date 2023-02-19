@@ -29,11 +29,9 @@ You can also find out how you can use React Hooks to manage the state of your ap
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-site-provisioning-manager | Ramin Ahmadi
+* Ramin Ahmadi
 
 ## Version history
 
@@ -42,6 +40,7 @@ Version|Date|Comments
 1.0|August 14, 2019|Initial release
 
 ## Features
+
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
 * Using React Hooks.

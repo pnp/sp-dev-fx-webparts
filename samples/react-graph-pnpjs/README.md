@@ -29,11 +29,9 @@ It requests a list of Azure AD [groups](https://learn.microsoft.com/graph/api/gr
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-pnpjs | Sergei Sergeev ([@sergeev_srg](https://twitter.com/sergeev_srg), [spblog.net](https://spblog.net/))
+* Sergei Sergeev ([@sergeev_srg](https://twitter.com/sergeev_srg), [spblog.net](https://spblog.net/))
 
 ## Version history
 

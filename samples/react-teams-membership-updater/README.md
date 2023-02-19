@@ -4,7 +4,6 @@
 
 Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.
 
-## Screen
 
 ![react-teams-membership-updater](./assets/Screenshot-2020-05-01.png "Preview")
 
@@ -28,19 +27,9 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 * [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the SharePoint Admin Center
-
-Uses:
-
-* PnP React Controls
-* PnP React Property Controls
-* React Papaparse (CSV parsing)
-
-Solution|Author(s)
---------|---------
-Teams Membership Updater  Web Part|[Nick Brown](https://github.com/techienickb)
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 
@@ -55,6 +44,17 @@ Version|Date|Comments
 1.2.0|August 17, 2021|Added support for populating private channels inside of a team, added support for paged list of teams from Graph, added sorting to the Team list
 1.2.1|September 21, 2021| Missing '/members' in the private channel membership url
 1.2.2|March, 24, 2022|Upgraded to SPFx v1.14 and v4 of react-papaparse
+
+## Features
+
+This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the SharePoint Admin Center
+
+Uses:
+
+* PnP React Controls
+* PnP React Property Controls
+* React Papaparse (CSV parsing)
+
 
 ## Minimal Path to Awesome
 

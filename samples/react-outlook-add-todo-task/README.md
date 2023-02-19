@@ -69,11 +69,9 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-outlook-add-todo-task|[Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 

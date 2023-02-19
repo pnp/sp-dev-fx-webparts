@@ -27,11 +27,9 @@ This web part will provide the functionality to search for groups in your tenant
 * [Microsoft Graph](https://learn.microsoft.com/graph/overview)
 * [PnP React Controls](https://pnp.github.io/sp-dev-fx-controls-react/)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-groupviewer | [Zach Roberts](https://github.com/zachroberts8668) ([@ZachSPODev](https://twitter.com/ZachSPODev))
+* [Zach Roberts](https://github.com/zachroberts8668) ([@ZachSPODev](https://twitter.com/ZachSPODev))
 
 ## Version history
 

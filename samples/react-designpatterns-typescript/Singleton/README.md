@@ -29,11 +29,9 @@ A singleton is a pattern that guarantees there is a single instance of an object
  
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-designpatterns-typescript\singleton | [@levalencia](https://www.twitter.com/levalencia)
+* [@levalencia](https://www.twitter.com/levalencia)
 
 ## Version history
 

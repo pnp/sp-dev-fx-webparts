@@ -45,11 +45,9 @@ The goal of the sample is to illustrate a single call calling pattern for the th
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-msgraph-thumbnail | [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
 
 ## Version history
 
@@ -58,6 +56,7 @@ Version|Date|Comments
 1.0|January 21st, 2020|Initial release
 
 ## Minimal Path to Awesome
+
 ### Local testing
 
 - Clone this repository

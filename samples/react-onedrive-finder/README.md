@@ -47,11 +47,9 @@ Below a draw resuming the custom query's made and what control uses to retrieve 
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-onedrive-finder | [André Lage](https://github.com/aaclage) ([http://aaclage.blogspot.com](http://aaclage.blogspot.com), [@aaclage](https://twitter.com/aaclage))
+* [André Lage](https://github.com/aaclage) ([http://aaclage.blogspot.com](http://aaclage.blogspot.com), [@aaclage](https://twitter.com/aaclage))
 
 ## Version history
 

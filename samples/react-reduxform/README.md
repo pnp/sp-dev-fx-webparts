@@ -36,11 +36,9 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 - Basic knowledge of react-redux concepts - reducer,actions and dispatch.
 - PnP PowerShell - to setup Fields and Lists to work with the web part.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-reduxform | Vipul Kelkar  @vipulkelkar
+* Vipul Kelkar  @vipulkelkar
 
 ## Version history
 

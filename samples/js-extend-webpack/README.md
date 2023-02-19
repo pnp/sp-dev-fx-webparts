@@ -46,12 +46,10 @@ Read the following documentation for detailed information on working with webpac
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-extend-webpack | [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
-Updated to GA Version| [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+- [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
+- [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
 
 ## Version history
 

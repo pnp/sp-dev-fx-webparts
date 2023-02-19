@@ -48,14 +48,11 @@ This web part shows the current user's colleagues, and allows the user to search
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-staffdirectory|[Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
-react-staffdirectory|[João Mendes](https://github.com/joaojmendes) ([joaojmendes](https://github.com/joaojmendes))
-react-staffdirectory|[Tristian O'brien](https://github.com/tristian2)
-react-staffdirectory|[Milan Holemans](https://github.com/milanholemans)
+* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [João Mendes](https://github.com/joaojmendes) ([joaojmendes](https://github.com/joaojmendes))
+* [Milan Holemans](https://github.com/milanholemans)
 
 
 ## Version history

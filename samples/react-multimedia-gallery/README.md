@@ -59,12 +59,11 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 
  
 
-## Solution
+## Contributors
+
 The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
 
-| Solution                     | Author(s)   |
-| ---------------------------- | ----------- |
-| Multimedia Gallery  Web Part | [João Mendes](https://github.com/joaojmendes) |
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

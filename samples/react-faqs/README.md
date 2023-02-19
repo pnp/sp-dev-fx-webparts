@@ -45,17 +45,15 @@ extensions:
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 There are no pre-requisites to use these samples.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-faqs | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/>
+* [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/>
 
 ## Version history
 

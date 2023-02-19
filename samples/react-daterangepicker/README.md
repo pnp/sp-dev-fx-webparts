@@ -28,11 +28,9 @@ This web part used the date range picker in the SharePoint Framework (SPFx) web 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-daterangepicker |Ravichandran Krishnasamy ([@ravichandran-blog](https://github.com/ravichandran-blog) [Know More](https://ravichandran.blog/))
+* Ravichandran Krishnasamy ([@ravichandran-blog](https://github.com/ravichandran-blog) [Know More](https://ravichandran.blog/))
 
 ## Version history
 

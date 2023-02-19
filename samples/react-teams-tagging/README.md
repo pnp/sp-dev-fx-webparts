@@ -27,11 +27,9 @@ This sample shows how read and update a custom Schema extension in MS Graph to T
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-tagging|Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 

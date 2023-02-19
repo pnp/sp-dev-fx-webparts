@@ -45,11 +45,9 @@ Sample Search Web Part with internal and external template support. This sample 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-search-wp|[Elio Struyf](https://github.com/estruyf) (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
+* [Elio Struyf](https://github.com/estruyf) (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
 
 ## Version history
 

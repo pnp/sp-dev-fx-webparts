@@ -36,11 +36,9 @@ Solution provides an enhancement to SitePages library that enables updating exis
  
 > If you plan on using included PowerShell script make sure you have [PnP PowerShell](https://github.com/pnp/PnP-PowerShell) installed
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-sitepages-metadata | [Oleg Rumiancev](https://github.com/olegrumiancev) ([LinkedIn](https://linkedin.com/in/olegrumiancev), [Twitter (olezhka_lt)](https://twitter.com/olezhka_lt))
+* [Oleg Rumiancev](https://github.com/olegrumiancev) ([LinkedIn](https://linkedin.com/in/olegrumiancev), [Twitter (olezhka_lt)](https://twitter.com/olezhka_lt))
 
 ## Version history
 
@@ -49,6 +47,7 @@ Version|Date|Comments
 1.0|April 17, 2018|Initial release
 
 ## Features
+
 Solution provides an enhancement to SitePages library that enables updating existing items with metadata (implemented as Lookup fields). 
 Relies heavily on Office UI Fabric. 
 

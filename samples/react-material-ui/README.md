@@ -29,11 +29,9 @@ This sample also includes RXJS DebounceTime, this feature allows you to wait for
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-material-ui | [Ramin Ahmadi](https://github.com/AhmadiRamin)
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 

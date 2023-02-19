@@ -34,11 +34,9 @@ The file upload web part allowing users to upload multiple files to a document l
 > Site Collection created under the **/sites/** Managed Path
 > Existing document library or a list
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-file-upload|[Ramin Ahmadi](https://github.com/AhmadiRamin)
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 

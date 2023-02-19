@@ -41,11 +41,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-check-flows|Aakash Bhardwaj
+* Aakash Bhardwaj
 
 ## Disclaimer
 

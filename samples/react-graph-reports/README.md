@@ -33,11 +33,9 @@ This sample describe a SPFx application which retrieve an office 365 usage repor
 > You need following set of permissions in order to retrieve office 365 usage reports. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial)<br><br>![Microsoft Graph API Permissions](./assets/graph-api-permissions-usage-reports.png) 
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-reports | [Ejaz Hussain](https://github.com/ejazhussain)
+* [Ejaz Hussain](https://github.com/ejazhussain)
 
 ## Version history
 

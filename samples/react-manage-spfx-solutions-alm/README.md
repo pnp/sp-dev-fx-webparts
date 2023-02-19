@@ -43,11 +43,9 @@ This web part is mainly build for tenant and SharePoint admins, since most of th
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-Manage-SPFx-Solutions-ALM|[Ramakrishnan Raman](https://github.com/Ramakrishnan24689)
+* [Ramakrishnan Raman](https://github.com/Ramakrishnan24689)
 
 
 ## Help

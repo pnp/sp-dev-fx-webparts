@@ -28,11 +28,9 @@ This web part shows an organization chart based on specified user, and user can 
 
 - [SharePoint Framework](https://aka.ms/spfx)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-organisation-chart |[João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
+* [João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
 
 ## Version history
 

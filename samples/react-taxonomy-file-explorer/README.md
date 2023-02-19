@@ -49,18 +49,16 @@ For further details see the author's [blog post](https://mmsharepoint.wordpress.
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 - A hierarchical Termset bound to a managed metadata column
 - A document library using that managed metadata column and several documents with selected terms
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-taxonomy-file-explorer| [Markus Moeller](https://github.com/mmsharepoint) ([@moeller2_0](http://www.twitter.com/moeller2_0))
+* [Markus Moeller](https://github.com/mmsharepoint) ([@moeller2_0](http://www.twitter.com/moeller2_0))
 
 ## Version history
 

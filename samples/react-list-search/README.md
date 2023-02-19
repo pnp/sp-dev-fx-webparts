@@ -78,11 +78,9 @@ This list search web part allows the user to show data from lists or libraries. 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-list-search | [Alberto Gutiérrez](https://github.com/albegut) ([@albertogperez](https://twitter.com/albertogperez))
+* [Alberto Gutiérrez](https://github.com/albegut) ([@albertogperez](https://twitter.com/albertogperez))
 
 ## Version history
 

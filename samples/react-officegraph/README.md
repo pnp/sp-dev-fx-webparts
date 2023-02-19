@@ -72,11 +72,9 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-officegraph| [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
 
 ## Version history
 

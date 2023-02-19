@@ -38,11 +38,9 @@ This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to g
 * Add 2 custom properties for the city terms `latitude` and `longitude` (as highlighted for the term `London` in the image below).
   ![Term store](./assets/termstore.png)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-cascading-managed-metadata| Anoop Tatti ([anoopt](https://github.com/anoopt), ([https://linktr.ee/anoopt](https://linktr.ee/anoopt))
+* Anoop Tatti ([anoopt](https://github.com/anoopt), ([https://linktr.ee/anoopt](https://linktr.ee/anoopt))
 
 ## Version history
 

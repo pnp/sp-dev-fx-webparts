@@ -35,11 +35,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 There are no pre-requisites.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-versiondisplay | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
 
 ## Version history
 
@@ -141,7 +139,7 @@ If you'd like to read more about the concepts illustrated in this sample, please
 * [Semantic Versioning](https://semver.org/)
 * [npm version](https://docs.npmjs.com/cli/version)
 * [PropertyPaneWebPartInformation](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyPaneWebPartInformation/)
-* [Displaying the solution version in your web part](https://tahoeninjas.blog/2020/03/30/display-the-solution-version-in-your-web-part/)
+* [Displaying the solution version in your web part](https://tahoeninja.blog/2020/03/30/display-the-solution-version-in-your-web-part/)
 * [How to version new SharePoint Framework projects](https://n8d.at/how-to-version-new-sharepoint-framework-projects/)
 
 

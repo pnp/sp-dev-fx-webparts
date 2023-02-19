@@ -42,11 +42,11 @@ This sample shows how we can use the SPFx Event Aggregator to communicate betwee
 - Office 365 subscription with SharePoint Online.
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-events-aggregator | Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) ), Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) ), Austin Breslin  ( [@AustinBreslin](https://www.linkedin.com/in/austin-breslin-84b4a74b/) )
+* Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) )
+* Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
+* Austin Breslin  ( [@AustinBreslin](https://www.linkedin.com/in/austin-breslin-84b4a74b/) )
 
 ## Version history
 

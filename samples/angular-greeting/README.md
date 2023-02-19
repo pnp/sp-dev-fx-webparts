@@ -30,18 +30,9 @@ Final outcome:
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-> We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-> We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-> Provide a link to your GitHub profile to help others find more cool things you have done.
-> If you provide a link to your Twitter profile, we'll promote your contribution on social media.
-> 
-> DELETE THE TEXT ABOVE BEFORE SUBMITTING
-
-Solution|Author(s)
---------|---------
-AngularJS Greeting | [Gaurav Goyal](https://github.com/gauravgoyal5) ([@gauravgoyal_5](https://twitter.com/gauravgoyal_5)), BizPortals 365
+* [Gaurav Goyal](https://github.com/gauravgoyal5) ([@gauravgoyal_5](https://twitter.com/gauravgoyal_5)), BizPortals 365
 
 ## Version history
 

@@ -46,14 +46,12 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-modern-calendar | [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) (MCP, PC Professional, Inc.)
-js-modern-calendar | [Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](twitter.com/NanddeepNachan))
-js-modern-calendar | [Ravi Chandra](https://github.com/Ravikadri)
-js-modern-calendar | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) (MCP, PC Professional, Inc.)
+* [Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](twitter.com/NanddeepNachan))
+* [Ravi Chandra](https://github.com/Ravikadri)
+* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
@@ -62,7 +60,7 @@ Version|Date|Comments
 1.0.0.0|February 11, 2017|Initial release
 1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
 1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies
-1.0.3.0|October 28, 2021|fixed issues with Timezones. The Browser Timezone Settings are now used
+1.0.3.0|October 28, 2021|fixed issues with Time zones. The Browser Time zone Settings are now used
 
 ## Minimal Path to Awesome
 

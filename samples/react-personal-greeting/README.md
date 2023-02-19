@@ -34,11 +34,9 @@ The web part pulls in the current user's name and displays it on the page. The g
 ## Prerequisites
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-personal-greeting|[Zach Roberts](https://github.com/zachroberts8668) - [SPODev](https://spodev.com)
+* [Zach Roberts](https://github.com/zachroberts8668) - [SPODev](https://spodev.com)
 
 ## Version history
 

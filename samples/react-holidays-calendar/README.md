@@ -49,11 +49,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 - Run **\_applyTemplates.ps1** from the **PowerShell** folder to create the **Holidays** list
 - **officelocation** property of user profile should have a valid value and holiday items for that location should be available in the **Holidays** list (created as part of previous step)
 
-## Solution
+## Contributors
 
-| Solution                | Author(s)                                                           |
-| ----------------------- | ------------------------------------------------------------------- |
-| react-holidays-calendar | [Harminder Singh](https://github.com/HarminderSethi) <https://www.linkedin.com/in/harmindersinghsethi/> |
+* [Harminder Singh](https://github.com/HarminderSethi) <https://www.linkedin.com/in/harmindersinghsethi/>
 
 ## Version history
 

@@ -39,11 +39,9 @@ This sample shows how to managed Microsoft Graph Open Extension in SPFx. This ap
 > You need following set of permissions in order to manage Microsoft Open Graph Extension.Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial)<br><br>![Microsoft Graph API Permissions](./assets/graph-extension-user-permissions.png) 
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-msgraph-extension | [Ejaz Hussain](https://github.com/ejazhussain)
+* [Ejaz Hussain](https://github.com/ejazhussain)
 
 ## Version history
 

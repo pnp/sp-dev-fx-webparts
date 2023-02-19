@@ -42,13 +42,11 @@ This simplistic sample web part demonstrates the use of JavaScript in a SharePoi
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-display-list| Naamat Al-Aswad, P.Eng.
-js-display-list| Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)) (Updated to GA Version)
-js-display-list| Ryan Schouten ([@ShrPntKnight](https://twitter.com/ShrPntKnight)) (Upgraded to SPFx 1.11.0)
+* Naamat Al-Aswad, P.Eng.
+* Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)) (Updated to GA Version)
+* Ryan Schouten ([@ShrPntKnight](https://twitter.com/ShrPntKnight)) (Upgraded to SPFx 1.11.0)
 
 
 

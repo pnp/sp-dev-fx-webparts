@@ -31,11 +31,9 @@ It also can be added to Microsoft Teams as Personal or Team Tabs.
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-yammer-praise|[Ramin Ahmadi](https://github.com/AhmadiRamin)
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 

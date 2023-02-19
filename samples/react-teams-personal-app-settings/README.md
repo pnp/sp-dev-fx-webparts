@@ -56,11 +56,9 @@ Downside of this approach is we need to additionally implement "app uninstalled"
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-personal-app-settings-client-side-solution|[AJIXuMuK](https://github.com/AJIXuMuK)
+* [AJIXuMuK](https://github.com/AJIXuMuK)
 
 ## Version history
 

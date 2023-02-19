@@ -49,11 +49,9 @@ Alternatively, you can add the output files for the web part to a custom SPFx pr
 * Office 365 subscription with SharePoint Online license
 * SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-workbench-customizer|[Joel Rodrigues](https://github.com/joelfmrodrigues)
+* [Joel Rodrigues](https://github.com/joelfmrodrigues)
 
 ## Version history
 

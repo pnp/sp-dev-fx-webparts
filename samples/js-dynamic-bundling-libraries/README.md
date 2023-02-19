@@ -31,11 +31,9 @@ Post Button Click that imports jQuery and additional functionality:
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-dynamic-bundling-libaries | [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+* [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
 
 ## Version history
 

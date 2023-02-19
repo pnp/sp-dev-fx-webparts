@@ -38,11 +38,9 @@ Custom PnPjs module: [pnpjs-project-online-package](https://www.npmjs.com/packag
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 - Project site with sample data available.
 
-## Solution
+## Contributors
 
-| Solution                   | Author(s)      |
-| -------------------------- | -------------- |
-| react-pnpjs-project-online | [Joel Rodrigues](https://github.com/joelfmrodrigues) |
+* [Joel Rodrigues](https://github.com/joelfmrodrigues)
 
 ## Version history
 

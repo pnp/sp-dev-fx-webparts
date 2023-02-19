@@ -39,9 +39,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Authors
+## Contributors
 
-[Nico De Cleyre](https://github.com/nicodecleyre) ([@NicoDeCleyre](https://twitter.com/NicoDeCleyre)), Ordina Belgium
+* [Nico De Cleyre](https://github.com/nicodecleyre) ([@NicoDeCleyre](https://twitter.com/NicoDeCleyre)), Ordina Belgium
 
 ## Version history
 

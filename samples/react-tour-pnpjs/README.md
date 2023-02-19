@@ -38,11 +38,9 @@ The property pane shows dinamically all webparts in the current page, using [PnP
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-tour-pnpjs |  [Federico Porceddu](https://www.federicoporceddu.com)
+* [Federico Porceddu](https://www.federicoporceddu.com)
 
 ## Version history
 

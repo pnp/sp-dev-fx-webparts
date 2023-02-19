@@ -54,11 +54,9 @@ This sample shows how we can provision Document Library, Custom List, Web and Li
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 - Tenant admin access to the Office 365 subscription and [App Catalog](https://support.office.com/en-ie/article/Use-the-App-Catalog-to-make-custom-business-apps-available-for-your-SharePoint-Online-environment-0b6ab336-8b83-423f-a06b-bcc52861cba0) already setup.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-provision-assets | Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+* Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
 
 ## Version history
 

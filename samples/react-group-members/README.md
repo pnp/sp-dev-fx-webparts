@@ -27,17 +27,15 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 > Any special pre-requisites?
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-group-members | [Nick Brown](https://github.com/techienickb)
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 

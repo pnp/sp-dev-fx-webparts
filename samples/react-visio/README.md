@@ -33,11 +33,9 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 - Office 365 subscription with SharePoint Online licence
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)      |
-| ----------- | -------------- |
-| react-visio | [Joel Rodrigues](https://github.com/joelfmrodrigues) |
+* [Joel Rodrigues](https://github.com/joelfmrodrigues)
 
 ## Version history
 

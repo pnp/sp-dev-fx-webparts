@@ -27,13 +27,11 @@ This web part loads all lists on a site and display it in a Entity Relationship 
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-pnpjs-spsite-er-diagram | [Niklas Wilhelm](https://github.com/ICTNiklasWilhelm) ([@NiklasWilhelm4](https://twitter.com/@NiklasWilhelm4)), NetForce 365 GmbH ([HubSite 365](https://www.hubsite365.com/) [@Hubsite365](https://twitter.com/@Hubsite365))
+* [Niklas Wilhelm](https://github.com/ICTNiklasWilhelm) ([@NiklasWilhelm4](https://twitter.com/@NiklasWilhelm4)), NetForce 365 GmbH ([HubSite 365](https://www.hubsite365.com/) [@Hubsite365](https://twitter.com/@Hubsite365))
 
 ## Version history
 

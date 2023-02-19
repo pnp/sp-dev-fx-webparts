@@ -58,12 +58,9 @@ Web Part Title | Text| no|
 
  
 
-## Solution
-The web part Use msflowsdk-1.1.js library
+## Contributors
 
-Solution|Author(s)
---------|---------
-My FLows Web Part|João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

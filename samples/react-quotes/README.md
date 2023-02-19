@@ -26,12 +26,10 @@ This web part displays a quote of the day by querying a third-party api or can d
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-quotes | [Zach Roberts](https://github.com/zachroberts8668)
-react-quotes | [Yves Habersaat](https://github.com/yhabersaat)
+* [Zach Roberts](https://github.com/zachroberts8668)
+* [Yves Habersaat](https://github.com/yhabersaat)
 
 ## Version history
 

@@ -74,12 +74,10 @@ gulp package-solution --ship
 - Upload or drag and drop the newly created client-side solution package to the app catalog in your tenant.
 - Based on your tenant settings, if you would not have CDN enabled in your tenant, and the `includeClientSideAssets` setting would be true in the `package-solution.json`, the loading URL for the assets would be dynamically updated and pointing directly to the `ClientSideAssets` folder located in the app catalog site collection.
 
-## Solution
+## Contributors
 
-| Solution          | Author(s)                                                                                                                          |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| react-pnpjsTester | [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) and [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) |
-| react-pnpjsTester | [Abderahman Moujahid](https://github.com/Abderahman88)|
+*[Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) and [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/)
+* [Abderahman Moujahid](https://github.com/Abderahman88)|
 
 ## Version history
 

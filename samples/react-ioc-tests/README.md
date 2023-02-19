@@ -38,11 +38,9 @@ The example also includes a pipeline definition .yaml file for Azure DevOps CI b
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-ioc-tests | [Paul Ryan](https://github.com/paulryan)
+* [Paul Ryan](https://github.com/paulryan)
 
 ## Version history
 

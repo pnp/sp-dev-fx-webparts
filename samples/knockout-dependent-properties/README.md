@@ -46,11 +46,9 @@ Sample Web Part illustrating
 
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-ko-dependent-properties | [Alex Terentiev](https://github.com/AJIXuMuK) (Sharepointalist Inc., @alexaterentiev)
+* [Alex Terentiev](https://github.com/AJIXuMuK) (Sharepointalist Inc., @alexaterentiev)
 
 ## Version history
 

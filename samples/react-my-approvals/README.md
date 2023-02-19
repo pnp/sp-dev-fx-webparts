@@ -43,11 +43,9 @@ For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-my-approvals|[Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+* [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
 
 ## Version history
 

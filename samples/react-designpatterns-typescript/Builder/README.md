@@ -29,11 +29,9 @@ Builder pattern builds a complex object using simple objects and using a step by
  
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-designpatterns-typescript\builder | [Luis Valencia](https://github.com/levalencia) [@levalencia](https://www.twitter.com/levalencia)
+* [Luis Valencia](https://github.com/levalencia) [@levalencia](https://www.twitter.com/levalencia)
 
 ## Version history
 

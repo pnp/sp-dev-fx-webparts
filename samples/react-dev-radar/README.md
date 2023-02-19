@@ -29,10 +29,14 @@ One way to find devs from the same stack near you.
 * [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
-## Solution
-The web part Use PnPjs library and Axios
+## Contributors
+
+* Saulo Oliveira
+
+## Prerequisites
 
 Create a list Devs with fields
+
 ```
 Field               Type
 ---------------------------
@@ -45,9 +49,6 @@ latitude            single line
 longitude           single line 
 ```
 
-Solution|Author(s)
---------|---------
-Dev Radar  Web Part|Saulo Oliveira
 
 ## Version history
 

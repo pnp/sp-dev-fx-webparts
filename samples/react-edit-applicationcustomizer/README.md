@@ -46,13 +46,11 @@ This web part will allow users to view/update application customizers properties
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-edit-applicationcustomizers | [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) and [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia) 
+* [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) and [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia) 
 
 ## Version history
 

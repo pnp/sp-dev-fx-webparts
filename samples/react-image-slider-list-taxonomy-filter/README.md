@@ -39,11 +39,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 - PhotoGalley list names "Photos" and Managed Metadata field attached to Site collection Terms
 - Upload few photos in the "Photos" library and tag it.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-ImageSlider-List-TaxonomyFilter | Sudhir Rawat 
+* Sudhir Rawat 
 
 ## Version history
 

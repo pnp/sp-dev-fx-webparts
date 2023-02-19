@@ -54,11 +54,9 @@ Cascading drop-downs in the property pane both using external data.
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-custompropertypanecontrols|Waldek Mastykarz (MVP, Rencore, @waldekm)
+* Waldek Mastykarz (MVP, Rencore, @waldekm)
 react-custompropertypanecontrols|[Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
 
 ## Version history

@@ -29,12 +29,11 @@ This web part allows users to import CSV files into an existing SharePoint list.
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
-Solution|Author(s)
---------|---------
-react-csv-importer | [Michał Romiszewski](https://github.com/mromiszewski) ([@romiszewski](https://twitter.com/romiszewski))
+## Contributors
+
+* [Michał Romiszewski](https://github.com/mromiszewski) ([@romiszewski](https://twitter.com/romiszewski))
 
 ## Version history
 

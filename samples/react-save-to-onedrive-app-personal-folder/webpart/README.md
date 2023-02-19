@@ -31,17 +31,15 @@ webpart added to teams
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-client-webpart | [Adam Wójcik](https://github.com/Adam-it)
+* [Adam Wójcik](https://github.com/Adam-it)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|Februaru 21, 2022|Initial release
+1.0|February 21, 2022|Initial release
 
 ## Minimal Path to Awesome
 

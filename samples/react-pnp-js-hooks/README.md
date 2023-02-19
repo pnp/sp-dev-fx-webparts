@@ -50,11 +50,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-pnp-js-hooks | [Beau Cameron](https://github.com/bcameron1231) ([@beau__cameron](https://twitter.com/Beau__Cameron))
+* [Beau Cameron](https://github.com/bcameron1231) ([@beau__cameron](https://twitter.com/Beau__Cameron))
 
 ## Version history
 

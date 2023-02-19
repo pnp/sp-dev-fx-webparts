@@ -53,11 +53,9 @@ This web part shows a Restaurant Menu, the user can select the options to show i
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-restaurant-menu|[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 
 ## Version history

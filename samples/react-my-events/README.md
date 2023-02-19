@@ -38,7 +38,7 @@ This web part provides loggedin user's outlook events with some advanced feature
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -58,11 +58,9 @@ This web part provides loggedin user's outlook events with some advanced feature
     ]
 ```
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-my-events | [Chandani Prajapati](https://github.com/chandaniprajapati) ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
+* [Chandani Prajapati](https://github.com/chandaniprajapati) ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
 
 ## Version history
 
