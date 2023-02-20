@@ -11,7 +11,7 @@ import {
 /* const APPID = "6b4a20b2-bf2f-4cbb-a162-af960a40c2dc";
 const AZURE_FUNCTION_URL = "https://openaifunctionsapp.azurewebsites.net/api/OpenAICompletion"; */
 
-export const useChatGpt = (context: BaseComponentContext, appId:string, AzureFunctionUrl:string) => {
+export const useChatGpt = (context: BaseComponentContext, appId: string, AzureFunctionUrl: string) => {
   const client = React.useMemo(() => {
     if (context) {
       return async () => {
@@ -32,10 +32,14 @@ export const useChatGpt = (context: BaseComponentContext, appId:string, AzureFun
           body: JSON.stringify({ prompt: query }),
           method: "POST",
         };
-
         const response = await (await client()).post(AzureFunctionUrl, AadHttpClient.configurations.v1, options);
         const answer = await response.json();
-        return answer.choices[0].text;
+        if (response.status === 200) {
+          return answer?.choices[0].text;
+        } else {
+          console.log("[getCompletion] error:", answer);
+          throw new Error("Error on executing the request, please try again later.");
+        }
       } catch (error) {
         if (!DEBUG) {
           console.log("[getCompletion] error:", error);
