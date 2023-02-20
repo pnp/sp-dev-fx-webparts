@@ -1,0 +1,87 @@
+.issueDetailRoot {
+	margin-top: 16px;
+	margin-bottom: 16px;
+	display: flex;
+	justify-content: center;
+}
+.serviceStatusIcon {
+	line-height: 16px;
+	display: flex;
+}
+.rowItem {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 12px;
+	font-weight: 400;
+	height: 1.25rem;
+}
+.issueDetailWrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.issueDetailTitle {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgb(0, 0, 0);
+	max-height: none;
+	overflow: hidden;
+	margin: 0px;
+}
+.subHeaderContainer {
+	padding-bottom: 40px;
+}
+.subHeaderText {
+	color: rgb(50, 49, 48);
+}
+.textLabel {
+	padding-bottom: 4px;
+	font-weight: 600;
+	color: rgb(50, 49, 48);
+}
+.flyoutTextStyle {
+	font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	padding-bottom: 24px;
+}
+
+.serviceIconStyles {
+	font-size: 16px;
+	margin-right: 4px;
+	vertical-align: sub;
+}
+
+.itemsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -10.5px 16px -10.5px -16px;
+}
+.itemContainer {
+	flex: 1 1 calc(50% - 32px);
+	margin: 10.5px 16px;
+	max-width: 100%;
+}
+
+.flyoutContentDivider {
+	border-bottom: 1px solid rgb(225, 223, 221);
+	margin-bottom: 12px;
+}
+
+.textLabelForHistory {
+	font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	padding-bottom: 8px;
+	color: rgb(50, 49, 48);
+	display: flex;
+	flex-direction: row;
+}
