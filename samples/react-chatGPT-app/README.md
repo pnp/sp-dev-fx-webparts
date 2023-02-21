@@ -1,8 +1,8 @@
-# React-ChatGPT-App
+# Chat GPT App
 
 ## Summary
 
-This App is a implemntation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as Personal or Teams App and Message Extension.
+This App is a implementation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as Personal or Teams App and Message Extension.
 
 ![React-ChatGPT-App](./assets/ChatGPT.png)
 ![React-ChatGPT-App](./assets/chatGPT.gif)
@@ -11,13 +11,18 @@ This App is a implemntation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as
 
 | :warning: Important          |
 |:---------------------------|
-| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
+This sample is optimally compatible with the following environment configuration:
+
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14](https://img.shields.io/badge/Node.js-v16%20|%20v14-green.svg)
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
-![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
@@ -25,13 +30,15 @@ This App is a implemntation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+
 ## Prerequisites
 
 The SPFx App has thisPrerequisites:
 
 * Azure Function Deployed to Azure 
 
-   In the directory **./OpenAIFunctionProject/OpenAI-azure-functions.zip**  you will found the project with AzureFunction ziped, please copy to local computer unzip and deploy. The Azure Function App needs to be configured with Authentication Provider Microsoft , please see the README.md file on the project.    
+   In the directory **./OpenAIFunctionProject/OpenAI-azure-functions.zip**  you will found the project with AzureFunction zip.ed, please copy to local computer unzip and deploy. The Azure Function App needs to be configured with Authentication Provider Microsoft , please see the README.md file on the project.
 
 * OpenAI KEY
 
@@ -44,7 +51,7 @@ The SPFx App has thisPrerequisites:
 
   * "OpenAIFunctionsAppId" this Tenant property has the Azure APPID used to secure your Azure Function APP (see README.md on OpenAIFunctionProject)
 
-      To add Tenant property you csan use M365 Cli or PowerShell to do it. 
+      To add Tenant property you can use M365 Cli or PowerShell to do it.
 
       sample M365 Cli  :
 
@@ -65,7 +72,7 @@ The SPFx App has thisPrerequisites:
          ``Set-PnPStorageEntity -Key OpenAIAzureFunctionUrl -Value  https://openaifunctionsapp.azurewebsites.net/api/OpenAICompletion``
 
 
-    * Uplaod APP to Teams catalogo 
+    * Upload APP to Teams catalog
 
       This App can be used has Teams Message Extension, please go to "teams" directory and upload the zip file to Teams App on M365 Teams Administration.
 
@@ -85,9 +92,6 @@ The SPFx App has thisPrerequisites:
 This assume you have a Azure App called "OpenAIFunctionsApp", you can change this before bundle and create the package to deploy and after you Azure Functions App configured. <https://admin.teams.microsoft.com/policies/manage-apps>
 
 
-
-
-
 ## Contributors
 
 * [João Mendes](https://github.com/joaojmendes)
@@ -96,7 +100,7 @@ This assume you have a Azure App called "OpenAIFunctionsApp", you can change thi
 
 Version|Date|Comments
 -------|----|--------
-1.0.0|Fev. 19, 2023|Initial release
+1.0.0|Feb 19, 2023|Initial release
 
 ## Minimal Path to Awesome
 
@@ -113,7 +117,7 @@ Version|Date|Comments
 
 ## Features
 
-This project shows how to use OpenAPI to ChastGPT and share informstion on teams message as adaptivecard 
+This project shows how to use OpenAPI to ChatGPT and share information on teams message as an adaptive card.
 
 * using React for building SharePoint Framework client-side web parts
 * using React components for building ChatGPT web part
@@ -123,7 +127,6 @@ This project shows how to use OpenAPI to ChastGPT and share informstion on teams
 * using Global State Management (JOTAI)
 * using localStorage
 * using Fluent UI FrameWork
-*
 
 ## References
 
@@ -140,14 +143,14 @@ We do not support samples, but we this community is always willing to help, and 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-birthdays&template=bug-report.yml&sample=react-birthdays&authors=@smaity%20@joaojmendes&title=react-birthdays%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-chatgpt-app&template=bug-report.yml&sample=react-chatgpt-app&authors=@smaity%20@joaojmendes&title=react-chatgpt-app%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-birthdays&template=question.yml&sample=react-birthdays&authors=@smaity%20@joaojmendes&title=react-birthdays%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-chatgpt-app&template=question.yml&sample=react-chatgpt-app&authors=@smaity%20@joaojmendes&title=react-chatgpt-app%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-birthdays&template=question.yml&sample=react-birthdays&authors=@smaity%20@joaojmendes&title=react-birthdays%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-chatgpt-app&template=question.yml&sample=react-chatgpt-app&authors=@smaity%20@joaojmendes&title=react-chatgpt-app%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-chatGPT-app" />
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-chatgpt-app" />
