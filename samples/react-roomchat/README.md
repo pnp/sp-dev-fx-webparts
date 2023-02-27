@@ -55,11 +55,9 @@ This sample needs the Azure communications services configured on the Azure, Ple
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-roomchat|[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 
 ## Version history

@@ -37,11 +37,9 @@ data saved on onedrive in application personal folder
 
 As this solution uses Microsoft Graph to manage data on user OneDrive it is required to approve all web api permission requests in SharePoint Admin page https://YourCoolTenantNameHere-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-manage-data | [Adam Wójcik](https://github.com/Adam-it)
+* [Adam Wójcik](https://github.com/Adam-it)
 
 ## Version history
 

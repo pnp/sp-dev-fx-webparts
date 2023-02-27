@@ -101,11 +101,9 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Usage of PnP Tree View  Control
 * Usage of Fluent UI/Office UI Fabric Controls
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-message | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (@siddh_me)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (@siddh_me)
 
 ## Version history
 

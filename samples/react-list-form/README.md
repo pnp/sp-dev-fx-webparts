@@ -49,17 +49,15 @@ The web part allows configuring which list to use and if a form for adding a new
 
 You'll need to connect to a list before you can use this sample.
 
-## Solution
+## Contributors
 
-| Solution        | Author(s)                                                           |
-| --------------- | -----------------------------------------------------------------   |
-| react-list-form | [Dany Wyss](https://github.com/DanyWyss)                            |
-| react-list-form | [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))   |
-| react-list-form | [Ryan Schouten](https://github.com/sharepointknight) ([@shrpntknight](https://twitter.com/shrpntknight))   |
-| react-list-form | [Abderahman Moujahid](https://github.com/Abderahman88)              |
-| react-list-form | [Kman1131](https://github.com/Kman1131)                             |
-| react-list-form | [Fredrik Thorild](https://github.com/fthorild) [@fthorild](https://twitter.com/fthorild)           |
-| react-list-form | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023)) |
+* [Dany Wyss](https://github.com/DanyWyss)
+* [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
+* [Ryan Schouten](https://github.com/sharepointknight) ([@shrpntknight](https://twitter.com/shrpntknight))
+* [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Kman1131](https://github.com/Kman1131)
+* [Fredrik Thorild](https://github.com/fthorild) [@fthorild](https://twitter.com/fthorild)
+* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023)) |
 
 ## Version history
 

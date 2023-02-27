@@ -46,12 +46,10 @@ This sample shows how to build web parts that display documents in accordance wi
 - Office 365 subscription with SharePoint Online.
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-documents|Dimcho Tsanov
-react-documents (v2.0)|[Harsha Vardhini](https://github.com/Harshagracy) ([harshagracy](https://twitter.com/harshagracy?s=20))
+* Dimcho Tsanov
+* [Harsha Vardhini](https://github.com/Harshagracy) ([harshagracy](https://twitter.com/harshagracy?s=20))
 
 ## Version history
 

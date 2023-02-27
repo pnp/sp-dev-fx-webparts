@@ -53,12 +53,10 @@ The sample makes use of the following controls:
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-pnp-controls|Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
-pnp-controls|Swaminathan Sriram ([@SwaminathanSri3](https://twitter.com/SwaminathanSri3))
+* Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
+* Swaminathan Sriram ([@SwaminathanSri3](https://twitter.com/SwaminathanSri3))
 
 ## Version history
 

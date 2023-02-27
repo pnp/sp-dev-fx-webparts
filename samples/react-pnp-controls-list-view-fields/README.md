@@ -25,11 +25,9 @@ Sample web part to display PnP [`ListView`](https://sharepoint.github.io/sp-dev-
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-pnp-controls-list-view-fields|[Alex Terentiev](https://github.com/AJIXuMuK)
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 

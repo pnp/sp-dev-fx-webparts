@@ -78,11 +78,9 @@ http://www.imagemagick.org/script/binary-releases.php
 
 Confirm that ImageMagick is properly set up by executing convert -help in a terminal.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-extend-gulp | [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
+- [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
 
 ## Version history
 

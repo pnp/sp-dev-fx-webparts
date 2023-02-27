@@ -64,13 +64,11 @@ For all available props, go [here](https://react-slick.neostack.com/docs/api/).
 
 For all available methods, go [here](https://react-slick.neostack.com/docs/api#methods)
 
-## Solution
+## Contributors
 
 The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
 
-Solution|Author(s)
---------|---------
-Carousel Image/Video  Web Part|[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 Carousel Image/Video  Web Part|[Rahul Suryawanshi](https://github.com/rahulsuryawanshi) ([@rahulsuryawansh](https://twitter.com/rahulsuryawansh))
 Carousel Image/Video  Web Part|[Don Kirkham](https://github.com/DonKirkham) ([@DonKirkham](https://twitter.com/DonKirkham))
 Carousel Image/Video  Web Part|[Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))

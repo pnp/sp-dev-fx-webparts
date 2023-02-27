@@ -40,11 +40,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-custom-links|João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 
 ## Version history

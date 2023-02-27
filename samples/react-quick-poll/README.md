@@ -63,12 +63,10 @@ Following are some of the features of this component.
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-quick-poll | [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](https://spknowledge.com/))
-react-quick-poll | [Dipen Shah](https://github.com/dips365) ([@Dips_365](https://twitter.com/Dips_365))
+* [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](https://spknowledge.com/))
+* [Dipen Shah](https://github.com/dips365) ([@Dips_365](https://twitter.com/Dips_365))
 
 ## Version history
 

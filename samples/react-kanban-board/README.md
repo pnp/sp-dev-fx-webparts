@@ -59,14 +59,12 @@ This web part reads the information from a Tasks list and uses the following OOB
 
 The Task list can be chosen using the web part properties (BaseTemplate 171 or 107)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-kanban-board | [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) ([@ram_meenavalli](https://twitter.com/ram_meenavalli))
-react-kanban-board | [Daniel Westerdale](https://github.com/westerdaled) ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
-react-kanban-board | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
-react-kanban-board | [Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
+* [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) ([@ram_meenavalli](https://twitter.com/ram_meenavalli))
+* [Daniel Westerdale](https://github.com/westerdaled) ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
+* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
 
 ## Version history
 

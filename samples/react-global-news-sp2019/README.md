@@ -61,11 +61,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 > none
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-global-news-sp2019 | João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

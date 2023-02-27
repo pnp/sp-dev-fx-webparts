@@ -46,11 +46,9 @@ More details in my post here: [Using Redux Async Actions and ImmutableJS in Shar
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-Redux-RESTAPI | Vardhaman Deshpande [@vrdmn](https://twitter.com/vrdmn)
+* Vardhaman Deshpande [@vrdmn](https://twitter.com/vrdmn)
 
 ## Version history
 

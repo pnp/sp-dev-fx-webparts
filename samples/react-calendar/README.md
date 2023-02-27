@@ -115,19 +115,17 @@ Calendar list| Choice/Dropdown | yes|  this is filled with all list of  type "ev
 Start Date | Date | yes | Event Date
 End Date| Date| yes | Event Date
 
-## Solution
+## Contributors
 
 The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Component
 
-Solution|Author(s)
---------|---------
-Calendar Web Part|[Abderahman Moujahid](https://github.com/Abderahman88)
-Calendar Web Part|[Eli H. Schei](https://github.com/Eli-Schei)
-Calendar Web Part|[Hugo Bernier](https://github.com/hugoabernier) ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
-Calendar Web Part|[João Mendes](https://github.com/joaojmendes)
-Calendar Web Part|[Mohamed Derhalli](https://github.com/derhallim)
-Calendar Web PArt|[Mohammed Amer](https://github.com/mohammadamer) ([@Mohammad3mer](https://twitter.com/Mohammad3mer), https://www.linkedin.com/in/mohammad3mer/)
-Calendar Web Part|[Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
+* [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Eli H. Schei](https://github.com/Eli-Schei)
+* [Hugo Bernier](https://github.com/hugoabernier) ([@bernier](https://twitter.com/bernierh), [Tahoe Ninja](https://tahoeninja.blog/))
+* [João Mendes](https://github.com/joaojmendes)
+* [Mohamed Derhalli](https://github.com/derhallim)
+* [Mohammed Amer](https://github.com/mohammadamer) ([@Mohammad3mer](https://twitter.com/Mohammad3mer), https://www.linkedin.com/in/mohammad3mer/)
+* [Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
 
 ## Version history
 

@@ -29,13 +29,11 @@ Built it to get an understanding of [Property Pane Portal](https://www.npmjs.com
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react Palette Picker Web Part | [Linda K](https://github.com/flowerbot)
+* [Linda K](https://github.com/flowerbot)
 
 
 ## Version history

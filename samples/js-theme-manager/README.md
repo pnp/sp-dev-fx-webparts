@@ -48,13 +48,10 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-theme-manager (Upgrade) | Hugo Bernier ([@bernierh](https://twitter.com/bernierh) / [Tahoe Ninjas](https://tahoeninjas.blog))
-js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
-js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
+* Hugo Bernier ([@bernierh](https://twitter.com/bernierh) / [Tahoe Ninja](https://tahoeninja.blog))
+* Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
 
 ## Version history
 

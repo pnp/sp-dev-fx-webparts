@@ -63,11 +63,9 @@ src
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-evalurl|[Stefan Bauer](https://github.com/n8design) (MVP, Stefan Bauer - N8D, [@stfbauer](https://twitter.com/stfbauer) )
+* [Stefan Bauer](https://github.com/n8design) (MVP, Stefan Bauer - N8D, [@stfbauer](https://twitter.com/stfbauer) )
 
 ## Version history
 

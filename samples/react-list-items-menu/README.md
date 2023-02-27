@@ -45,14 +45,12 @@ Select Document Library| dropdown|yes
 Select Field to Group By | dropdown|yes
  
 
-## Solution
+## Contributors
 
 The Web Part Use PnPjs library, Fluent-Ui-react components
 
-Solution|Author(s)
---------|---------
-React List Items Menu |[João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes))
-React List Items Menu |[Ravi Chandra](https://github.com/Ravikadri)
+* [João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes))
+* [Ravi Chandra](https://github.com/Ravikadri)
 
 
 ## Version history

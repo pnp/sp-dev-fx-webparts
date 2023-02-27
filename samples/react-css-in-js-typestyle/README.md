@@ -27,11 +27,9 @@ The web part demonstrates the usage of "CSS in JS" pattern with SharePoint Frame
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-css-in-js-typestyle|[@Sergei Sergeev](https://twitter.com/sergeev_srg) - [Mastaq](https://mastaq.com/)
+* [@Sergei Sergeev](https://twitter.com/sergeev_srg) - [Mastaq](https://mastaq.com/)
 
 ## Version history
 

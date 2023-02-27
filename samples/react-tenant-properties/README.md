@@ -57,13 +57,11 @@ Property |Type|Required| comments
 WebPart Title| Text| no|
  
 
-## Solution
+## Contributors
 
 The Web Part Use MSGraph API and need to SharePoint Administrator approve de scope "Directory.ReadWrite.All" in SharePoint Admin Center.
 
-Solution|Author(s)
---------|---------
-Tenant Properties Web Part|[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

@@ -46,11 +46,9 @@ The `React Content Query Web Part` is a modern version of the good old `Content 
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Authors
---------|-----------
-react-content-query-webpart|Simon-Pierre Plante
+* Simon-Pierre Plante
 
 ## Version history
 

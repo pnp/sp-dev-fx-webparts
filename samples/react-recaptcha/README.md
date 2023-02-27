@@ -51,11 +51,9 @@ On sucessfull submission, we get site key and secret key, copy site key somewher
 
 ![Google recaptcha registration](screens/2.png?raw=true "Google recaptcha registration")
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-recaptcha | Siddharth Vaghasia([siddh_me](https://twitter.com/siddh_me/))
+* Siddharth Vaghasia([siddh_me](https://twitter.com/siddh_me/))
 
 ## Version history
 

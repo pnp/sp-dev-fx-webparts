@@ -42,11 +42,9 @@ A sample web part illustrating how to use Angular Elements in the SharePoint Fra
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angularelements-html-templatefile| [Jayakumar Balasubramaniam](https://github.com/JayakumarB) (C# Corner MVP, Hubfly, [@jayakumrB](https://twitter.com/jayakumrB))
+* [Jayakumar Balasubramaniam](https://github.com/JayakumarB) (C# Corner MVP, Hubfly, [@jayakumrB](https://twitter.com/jayakumrB))
 
 ## Version history
 

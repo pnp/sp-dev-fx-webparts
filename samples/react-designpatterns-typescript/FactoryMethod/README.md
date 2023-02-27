@@ -34,11 +34,9 @@ Another definition which I liked more and fits perfectly my sample  is the follo
  
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-designpatterns-typescript\factorymethod | [@levalencia](https://www.twitter.com/levalencia)
+* [@levalencia](https://www.twitter.com/levalencia)
 
 ## Version history
 

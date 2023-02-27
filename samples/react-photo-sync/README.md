@@ -72,11 +72,9 @@ This web part will help the administrators to synchronize the **User Profile Pho
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-SPUPS Photo Sync | Sudharsan K.([@sudharsank](https://twitter.com/sudharsank), [SPKnowledge](https://spknowledge.com/))
+* Sudharsan K.([@sudharsank](https://twitter.com/sudharsank), [SPKnowledge](https://spknowledge.com/))
 
 ## Version history
 

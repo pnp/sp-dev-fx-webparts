@@ -52,11 +52,9 @@ The web part is currently returning project tasks as a simple proof of concept.
 - SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 -Project site with some tasks available.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-project-online|[Joel Rodrigues](https://github.com/joelfmrodrigues)
+* [Joel Rodrigues](https://github.com/joelfmrodrigues)
 
 
 ## Version history

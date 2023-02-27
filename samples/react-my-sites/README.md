@@ -59,11 +59,9 @@ If the Group has a microsoft team associated and user has permissions to access 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-my-sites|João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 
 ## Version history

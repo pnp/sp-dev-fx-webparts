@@ -29,11 +29,9 @@ It needs Globlal Administrator or SharePoint Online Administrator permissions in
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-admin-sc-catalog-pnpjs |  [Federico Porceddu](https://github.com/fredupstair) (https://www.federicoporceddu.com)
+* [Federico Porceddu](https://github.com/fredupstair) (<https://www.federicoporceddu.com>)
 
 ## Version history
 

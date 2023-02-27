@@ -66,13 +66,11 @@ Property |Type|Required| comments
 Web Part Title | Text| no|
 
 
-## Solution
+## Contributors
 
 The web part Use avataaars library for creating avatars and MS Graph with User.ReadWrite and User.ReadWriteAll for saving avatar as current users Profile Picture.FileSaver for downloading avatar image as png file.
 
-Solution|Author(s)
---------|---------
-react Avatar|Kunj Sangani
+* Kunj Sangani
 
 ## Version history
 

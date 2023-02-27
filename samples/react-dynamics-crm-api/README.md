@@ -26,11 +26,9 @@ This sample shows how to consume Dynamics CRM API using AadTokenProvider class.
 * [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-dynamics365-api|[Ramin Ahmadi](https://github.com/AhmadiRamin)
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 

@@ -93,11 +93,9 @@ Use the Undo icon to undo the changes made to an item.
 
 > React, Redux Office-UI-Fabric
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
- react-spfx-multilist-grid | Russell Gove
+* Russell Gove
 
 ## Version history
 

@@ -44,11 +44,9 @@ Before you can use this web part example, you will need at least one Out of the 
 
 It is required that the users have view access on the calendar.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-aggregated-calendar | [Dhaval Shah](https://www.linkedin.com/in/dhavalshah27) ([@beingdhavalshah](https://twitter.com/BeingDhavalShah))
+* [Dhaval Shah](https://www.linkedin.com/in/dhavalshah27) ([@beingdhavalshah](https://twitter.com/BeingDhavalShah))
 
 ## Version history
 

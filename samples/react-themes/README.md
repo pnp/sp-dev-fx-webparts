@@ -34,11 +34,11 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-Solution|Author(s)
---------|---------
-react-themes | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com)[AJIXuMuK](https://github.com/AJIXuMuK))
-react-themes | Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
-react-themes | Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
+## Contributors
+
+* Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com)[AJIXuMuK](https://github.com/AJIXuMuK))
+* Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
+* Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
 
 ## Version history
 

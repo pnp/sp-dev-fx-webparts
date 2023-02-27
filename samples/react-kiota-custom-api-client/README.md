@@ -25,7 +25,7 @@ kiota generate --openapi "my-api-swagger.yaml" --language typescript --namespace
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -49,11 +49,9 @@ Once the API is registered in Azure AD, we must configure permissions for SPFx t
 m365 spo serviceprincipal grant add --resource 'Teamified_Services' --scope 'Teams.Manage'
 ```
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-kiota-custom-api-client | [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez)) |
+* [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez))
 
 ## Version history
 

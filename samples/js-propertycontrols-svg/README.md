@@ -39,11 +39,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [sp-dev-fx-property-controls](https://github.com/pnp/sp-dev-fx-property-controls)
 * [PnP Man](https://github.com/thechriskent/PnPMan)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-propertycontrols-svg | Chris Kent ([thechriskent.com](https://thechriskent.com), [@thechriskent](https://twitter.com/thechriskent))
+* Chris Kent ([thechriskent.com](https://thechriskent.com), [@thechriskent](https://twitter.com/thechriskent))
 
 ## Version history
 

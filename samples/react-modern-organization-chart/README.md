@@ -56,11 +56,9 @@ Refresh Status Interval in minutes | number| no | default value 5 min
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-modern-organization-chart|[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

@@ -104,11 +104,9 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 > React, Office-UI-Fabric, sp-pnp-js, lodash
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
- react-securitygrid | [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
+* [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
 
 ## Version history
 

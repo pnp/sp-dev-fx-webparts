@@ -59,12 +59,10 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
  ShowOtherTeam = 4
  ```
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-Tree Organization Web Part|[João Mendes](https://github.com/joaojmendes)
-Tree Organization Web Part|[Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [João Mendes](https://github.com/joaojmendes)
+* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 

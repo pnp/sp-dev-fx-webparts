@@ -29,14 +29,12 @@ Use this Web Part to add a video banner with a text on top of it to your pages.
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-video-banner | [Mohamed Derhalli](https://github.com/derhallim), https://sharepoint-thoughts.com -  [@MohamedDerhalli](https://twitter.com/MohamedDerhalli)
+* [Mohamed Derhalli](https://github.com/derhallim), https://sharepoint-thoughts.com -  [@MohamedDerhalli](https://twitter.com/MohamedDerhalli)
 
 
 

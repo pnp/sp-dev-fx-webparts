@@ -36,14 +36,12 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 * SharePoint 2019 on-premises
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-theme-manager-2019 | [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
-js-theme-manager-2019 | [Beau Cameron](https://github.com/bcameron1231) ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
-js-theme-manager-2019 | Biju Basheer
-js-theme-manager-2019 | [Eric Skaggs](https://github.com/skaggej) ([@skaggej](https://twitter.com/skaggej) / [ericskaggs.net](http://www.ericskaggs.net/))
+* [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+* [Beau Cameron](https://github.com/bcameron1231) ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
+* Biju Basheer
+* [Eric Skaggs](https://github.com/skaggej) ([@skaggej](https://twitter.com/skaggej) / [ericskaggs.net](http://www.ericskaggs.net/))
 
 ## Version history
 

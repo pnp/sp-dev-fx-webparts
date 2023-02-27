@@ -57,11 +57,9 @@
 
 Please create the list as described above
 
-## Solution
+## Contributors
 
-| Solution              | Author(s)                                |
-| --------------------- | ---------------------------------------- |
-| World Clocks Web Part | [Jerry Yasir](https://github.com/jyasir) |
+* [Jerry Yasir](https://github.com/jyasir) |
 
 ## Version history
 

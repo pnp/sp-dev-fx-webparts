@@ -79,13 +79,11 @@ Property |Type|Required| comments
 WebPart Title| Text| no|
  
 
-## Solution
+## Contributors
 
 The Web Part Use PnPjs library, Office-ui-fabric-react components and MSGraph API's
 
-Solution|Author(s)
---------|---------
-My Tasks |[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 My Tasks |[Swaminathan Sriram](https://github.com/Swaminathan-Sriram)
 
 ## Version history

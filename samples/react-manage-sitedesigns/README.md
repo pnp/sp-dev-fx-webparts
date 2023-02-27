@@ -113,12 +113,11 @@ Property |Type|Required| comments
 WebPart Title| Text| no|
  
 
-## Solution
+## Contributors
+
 The Web Part Use PnPjs library, Office-ui-fabric-react components.
 
-Solution|Author(s)
---------|---------
-Site Design Manager Web Part|João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

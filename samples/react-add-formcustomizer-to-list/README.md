@@ -91,11 +91,9 @@ To do the association or removing the association , user needs to follow the bel
 
 You can copy the actual component ID of form customizer with from its `manifest.json` file.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-add-formcustomizer-to-list | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)
 
 ## Version history
 

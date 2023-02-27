@@ -63,11 +63,9 @@ spo storageentity list --appCatalogUrl <appCatalogUrl>
 6. Edit the `ProfilePhotoEditorWebPart.manifest.json` and set the `useStorageEntity` property to `true`. This will cause the web part to hide the Azure Cognitive Services property pane configuration group and use the tenant properties.
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-smart-profile-photo-editor | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), @bernierh)
 
 
 ## Version history

@@ -58,11 +58,9 @@ More details on the capability is available from the following article
  
 None.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-feature-framework | [Vesa Juvonen](https://github.com/VesaJuvonen)
+* [Vesa Juvonen](https://github.com/VesaJuvonen)
 
 ## Version history
 

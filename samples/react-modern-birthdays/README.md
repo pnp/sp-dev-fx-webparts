@@ -39,9 +39,9 @@ email | Text | true
 
 > **IMPORTANT:** Create index on column "Birthday".
 
-## Authors
+## Contributors
 
-[João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

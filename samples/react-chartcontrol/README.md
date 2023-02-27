@@ -194,11 +194,9 @@ This sample shows how to use X and Y coordinate data elements in a scatter chart
 
 There are no pre-requisites to use these samples.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
+* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 

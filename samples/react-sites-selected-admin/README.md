@@ -42,17 +42,15 @@ The web part uses the built in MSGraphClient and needs to be approved in API man
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 > One (or more) Azure AD app with Sites.Selected and the possibility to approve requests in API management (SharePoint Administrator). Site collection administrator is needed for the site(s) you want to give app access to.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-sites-selected-admin | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)
+* Fredrik Thorild [@fthorild](https://twitter.com/fthorild)
 
 ## Version history
 

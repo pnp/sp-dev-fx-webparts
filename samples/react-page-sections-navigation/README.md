@@ -25,11 +25,9 @@ Sample web parts allowing to add sections navigation to the SharePoint page.
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-page-sections-navigation|[Alex Terentiev](https://github.com/AJIXuMuK) (MVP, [Sharepointalist Inc.](http://www.sharepointalist.com), [@alexaterentiev](https://twitter.com/alexaterentiev))
+* [Alex Terentiev](https://github.com/AJIXuMuK) (MVP, [Sharepointalist Inc.](http://www.sharepointalist.com), [@alexaterentiev](https://twitter.com/alexaterentiev))
 
 ## Version history
 

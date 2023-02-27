@@ -33,12 +33,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-caml2table | Dan Toft ([@Tanddant](https://dan-toft.dk/)) |
+* Dan Toft ([@Tanddant](https://dan-toft.dk/)) |
 
 ## Version history
 

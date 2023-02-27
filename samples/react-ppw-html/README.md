@@ -5,7 +5,7 @@ http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devpro
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Summary
 
@@ -30,11 +30,9 @@ The React-PPW-HTML sample showcases the use of the [Property Pane Wrap](https://
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-PPW-HTML | [Christophe Humbert](https://github.com/PathToSharePoint)
+* [Christophe Humbert](https://github.com/PathToSharePoint)
 
 ## Version history
 

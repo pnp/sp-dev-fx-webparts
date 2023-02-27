@@ -34,11 +34,9 @@ A detailed functionality and technical description can be found in the [author's
 
 * [Tutorial for creating Outlook Web Access extension using SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/office-addins-tutorial)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-outlook-2-sp-spfx| Markus Moeller ([@moeller2_0](http://www.twitter.com/moeller2_0))
+* Markus Moeller ([@moeller2_0](http://www.twitter.com/moeller2_0))
 
 ## Version history
 

@@ -47,12 +47,10 @@ This web part allows you to add custom CSS on a page to enhance list formatting.
 
 To use this web part, you must be familiar with SharePoint list formatting and CSS.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-enhanced-list-formatting | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
-react-enhanced-list-formatting | [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
+* [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
 
 ## Version history
 

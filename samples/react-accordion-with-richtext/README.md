@@ -52,11 +52,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 There are no pre-requisites to use these samples.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-accordion-with-richtext | [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/> - Twitter: <https://twitter.com/arun_perumal16>
+- [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/> - Twitter: <https://twitter.com/arun_perumal16>
 
 ## Version history
 

@@ -57,14 +57,10 @@
 
 Please create the list as described above
 
-## Solution
+## Contributors
 
-| Solution                                   | Author(s)                                                                                            |
-| ------------------------------------------ | -----------------------------------------------------------------------------------------------------|
-| SPFx Collapsible Accordion Section         | [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))             |
-| SPFx Collapsible Accordion Section         | [Mike Zimmerman](https://github.com/mikezimm)                                                        |
-| Dynamic SPFx Collapsible Accordion Section | [Jerry Yasir](https://github.com/jyasir)                                                             |
-| Dynamic SPFx Collapsible Accordion Section | [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023)) |
+* [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))             * [Mike Zimmerman](https://github.com/mikezimm)                                                        * [Jerry Yasir](https://github.com/jyasir)                                                             
+* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023)) |
 
 ## Version history
 

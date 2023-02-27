@@ -25,17 +25,15 @@ This solution demonstrates how to use the OneDrive special folder **Apps** in or
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 In order to use this solution is necessary to approve the usage of Microsoft Graph API `Files.ReadWrite` in the SharePoint Admin Center
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-cross-device-data | [Giuliano De Luca](https://github.com/giuleon) ([@delucagiulian](https://twitter.com/delucagiulian))
+* [Giuliano De Luca](https://github.com/giuleon) ([@delucagiulian](https://twitter.com/delucagiulian))
 
 ## Version history
 

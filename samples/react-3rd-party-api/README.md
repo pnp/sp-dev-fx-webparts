@@ -9,11 +9,9 @@ This sub folder contains a client-side project that shows how to consume a 3rd p
 In subfolder _Server-API_ you can find the sample REST API built using ASP.NET MVC.
 You will need to publish the web application on a hosting environment (for example an Azure App Service), configure CORS, and configure the application in the Azure AD tenant under the cover of your target SharePoint Online tenant.
 
-## Solution
+## Contributors
 
-| Solution  | Author(s) |
-| ------------- | ------------- |
-| react-3rd-party-api  | Paolo Pialorsi (PiaSys.com - @PaoloPia)   |
+* Paolo Pialorsi (PiaSys.com - @PaoloPia)
 
 ## Version history
 

@@ -28,17 +28,15 @@ Note: Azure AD Groups are represented as Site Users in SharePoint.
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 Access to a SharePoint online site with various tenant users granted access to various site resources directly, via AAD groups and via SharePoint groups.
 
-## Solution
+## Contributors
 
-| Solution                  | Author(s)                                                                                               |
-| ------------------------- | ------------------------------------------------------------------------------------------------------- |
-| react-sp-site-user-groups | [Daniel Watford](https://github.com/danwatford) (https://twitter.com/DanWatford), Watford Consulting Ltd (https://watfordconsulting.com) |
+*  [Daniel Watford](https://github.com/danwatford) (https://twitter.com/DanWatford), Watford Consulting Ltd (https://watfordconsulting.com)
 
 ## Version history
 

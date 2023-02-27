@@ -41,12 +41,10 @@ Web part is developed using below technologies
  
 It is required that the users have view access on the underlying calendar.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-calendar | [Sébastien Levert](https://github.com/sebastienlevert) (https://www.linkedin.com/in/sebastienlevert) ([@sebastienlevert](https://twitter.com/sebastienlevert))
-react-graph-calendar | [Abderahman Moujahid](https://github.com/Abderahman88) (added support for recurring events and languages)
+* [Sébastien Levert](https://github.com/sebastienlevert) (https://www.linkedin.com/in/sebastienlevert) ([@sebastienlevert](https://twitter.com/sebastienlevert))
+* [Abderahman Moujahid](https://github.com/Abderahman88) (added support for recurring events and languages)
 
 ## Version history
 

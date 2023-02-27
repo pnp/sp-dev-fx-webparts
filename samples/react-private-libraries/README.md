@@ -40,11 +40,9 @@ The application manages all the security groups set up for the various libraries
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react Private Folder Manager | [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
+* [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
 
 ## Version history
 

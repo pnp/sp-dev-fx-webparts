@@ -42,11 +42,9 @@ Main features include:
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-rss-reader | [Eric Overfield](https://github.com/eoverfield) -[@ericoverfield](http://www.twitter.com/ericoverfield)
+* [Eric Overfield](https://github.com/eoverfield) -[@ericoverfield](http://www.twitter.com/ericoverfield)
 react-rss-reader | [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history

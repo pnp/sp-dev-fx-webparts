@@ -106,11 +106,10 @@ gulp package-solution --ship
 * Register Custom action with ClientSideComponentId of Extension component
 * Passes parameters to Extension with ClientSideComponentProperties
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-add-js-css-ref | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (https://www.linkedin.com/in/siddharthvaghasia/)  [Don Kirkham](https://github.com/donkirkham) (https://www.linkedin.com/in/donkirkham/)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)  
+* [Don Kirkham](https://github.com/donkirkham) (<https://www.linkedin.com/in/donkirkham/>)
 
 ## Version history
 

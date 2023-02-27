@@ -38,13 +38,11 @@ The web part will fetch data from directory using Graph API and display in detai
 
 ![Graph API Scope](./assets/Capture.PNG)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-telephonedirectory | [Dipen Shah](https://github.com/Dips365) ([@Dips_365](https://twitter.com/Dips_365))
-react-graph-telephonedirectory | [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
-react-graph-telephonedirectory | [mrkhandev](https://github.com/mrkhandev) 
+* [Dipen Shah](https://github.com/Dips365) ([@Dips_365](https://twitter.com/Dips_365))
+* [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
+* [mrkhandev](https://github.com/mrkhandev) 
 
 
 ## Version history

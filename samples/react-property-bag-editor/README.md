@@ -32,11 +32,9 @@ A set of webparts that lets you set property bag settings on site collections an
  
 > pnp-js-core
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-property-bag-editor| Russell Gove
+* Russell Gove
 
 ## Version history
 

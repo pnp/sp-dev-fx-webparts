@@ -42,13 +42,11 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm)
-sharepoint-crud|Gautam Sheth (SharePoint Consultant, RapidCircle)
-sharepoint-crud|[Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
+* Waldek Mastykarz (MVP, Rencore, @waldekm)
+* Gautam Sheth (SharePoint Consultant, RapidCircle)
+* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
 
 ## Version history
 

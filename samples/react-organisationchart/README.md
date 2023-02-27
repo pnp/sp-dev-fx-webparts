@@ -48,11 +48,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-OrganisationChart | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com))
+* Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com))
 
 ## Version history
 

@@ -33,7 +33,7 @@ __Note__: when adding a new award, ensure you set the field __allowedAudiences__
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -41,11 +41,9 @@ You need to grant these permissions to MS Graph API (from least to most privileg
 
 Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/)
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-graph-profile-awards | Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez) |
+* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 

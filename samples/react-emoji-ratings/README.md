@@ -63,18 +63,16 @@ I have added default emoji's images which can be used and uploaded to SharePoint
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 * SharePoint Online tenant
 * Permission to deploy package to Tenant or SharePoint Site collection app catalog
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-emoji-ratings | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
 
 ## Version history
 

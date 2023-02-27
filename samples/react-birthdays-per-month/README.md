@@ -32,11 +32,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-birthdays-per-month | [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/arigunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/arigunawan3023))
 
 ## Version history
 

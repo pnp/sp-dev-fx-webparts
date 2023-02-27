@@ -26,14 +26,12 @@ This solution creates a customisable Hero web part, it uses a stored collection 
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-hero-webpart | [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.spbytes.com
+* [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.spbytes.com
 
 ## Version history
 

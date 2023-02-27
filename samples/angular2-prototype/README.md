@@ -56,12 +56,10 @@ Sample To Do Web Part built with Angular2. This sample illustrates how you can u
 
 > Some familiarity of Angular2 architecture.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular2-prototype | Manish Garg
-angular2-prototype | [Daniel Gaeta](https://github.com/dgaeta)
+* Manish Garg
+* [Daniel Gaeta](https://github.com/dgaeta)
 
 ## Version history
 

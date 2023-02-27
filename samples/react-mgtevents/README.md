@@ -29,11 +29,9 @@ This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Flu
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-mgtevents | [João Mendes](https://github.com/joaojmendes)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

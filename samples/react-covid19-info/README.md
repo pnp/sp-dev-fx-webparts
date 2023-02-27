@@ -34,11 +34,9 @@ The following info is displayed:
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-covid19-info | [Robin Agten](https://twitter.com/AgtenRobin)
+* [Robin Agten](https://twitter.com/AgtenRobin)
 
 ## Web part properties
 

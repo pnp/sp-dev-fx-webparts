@@ -31,11 +31,9 @@ Displays information from GitHub for a specified user.
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-GitHubBadge | [Eric Skaggs](https://github.com/skaggej) [@skaggej](https://www.twitter.com/skaggej)
+* [Eric Skaggs](https://github.com/skaggej) [@skaggej](https://www.twitter.com/skaggej)
 
 ## Version history
 

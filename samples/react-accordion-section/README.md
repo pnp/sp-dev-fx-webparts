@@ -55,14 +55,12 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 Please create the list as described above
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
-SPFx Collapsible Accordion Section|[Mike Zimmerman](https://github.com/mikezimm)
-SPFx Collapsible Accordion Section|[Ravi Chandra](https://github.com/Ravikadri)
-SPFx Collapsible Accordion Section|[Jack Vinitsky](https://github.com/jack-vinitsky)
+* [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
+* [Mike Zimmerman](https://github.com/mikezimm)
+* [Ravi Chandra](https://github.com/Ravikadri)
+* [Jack Vinitsky](https://github.com/jack-vinitsky)
 
 ## Version history
 

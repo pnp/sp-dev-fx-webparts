@@ -32,11 +32,9 @@ This web part demonstrates building a React functional component that includes s
 
 This sample was built with version 1.82 of the SharePoint Framework. It has been modified to use version 16.8 of the React framework (by default the version used is React 16.7). React 16.8 supports React Hooks which is required to support state management in a React functional component.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-functional-stateful-component | Bill Ayers
+* Bill Ayers
 
 ## Version history
 

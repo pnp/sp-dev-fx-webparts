@@ -48,13 +48,11 @@ This web part allows users to create a faux page hierarchy in their pages librar
 * Office 365 subscription with SharePoint Online
 * SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
-react-pages-hierarchy|[Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
-react-pages-hierarchy|[SlowRobot](https://github.com/SlowRobot)
+* [Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
+* [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
+* [SlowRobot](https://github.com/SlowRobot)
 
 ## Version history
 

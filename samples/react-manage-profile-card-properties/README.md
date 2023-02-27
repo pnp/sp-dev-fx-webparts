@@ -49,13 +49,11 @@ Property |Type|Required| comments
 WebPart Title| Text| no|
  
 
-## Solution
+## Contributors
 
 The Web Part Use Microsoft Graph API, Fluent-UI components.
 
-Solution|Author(s)
---------|---------
-Manage Profile Card Properties |João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

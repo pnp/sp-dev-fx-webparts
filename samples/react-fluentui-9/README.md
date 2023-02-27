@@ -29,7 +29,7 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 
 ## Applies to
@@ -37,13 +37,11 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-fluentui-9 | [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb) / [Jisc](https://jisc.ac.uk))
+* [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb) / [Jisc](https://jisc.ac.uk))
 
 ## Version history
 

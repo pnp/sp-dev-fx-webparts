@@ -44,12 +44,10 @@ Displays page contributors in reverse chronological order.
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-PageContributors | [Stéphane Magne](https://github.com/SPParseError) ([@SPParse](https://twitter.com/SPParse))
-PageContributors | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Stéphane Magne](https://github.com/SPParseError) ([@SPParse](https://twitter.com/SPParse))
+* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
 
 ## Version history
 

@@ -37,11 +37,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 You'll need the [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/) in order to perform an upgrade.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-upgrade-me | Hugo Bernier ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
+* Hugo Bernier ([Tahoe Ninja](https://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 

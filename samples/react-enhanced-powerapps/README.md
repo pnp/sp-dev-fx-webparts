@@ -35,11 +35,9 @@ It also resizes the app to fit the web part dimension:
 
 You'll need at least one application in Power Apps that you wish to embed in SharePoint.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-enhanced-powerapps | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog/), [@bernierh](https://twitter.com/bernierh))
+* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog/), [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 

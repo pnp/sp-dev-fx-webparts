@@ -26,7 +26,7 @@ This web part allows you to add images to a SharePoint List, and renders them wi
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -39,11 +39,9 @@ See here for more information about using Microsoft Graph Toolkit components in 
 ![stories-list](./assets/stories-list.png)
 - Permission _User.ReadBasic.All_ to the Graph API
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-company-stories | Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 

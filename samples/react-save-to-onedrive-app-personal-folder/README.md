@@ -39,11 +39,9 @@ webpart added to teams
 - [SharePoint Framework](https://aka.ms/SPFx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-save-to-onedrive-app-personal-folder | [Adam Wójcik](https://github.com/Adam-it)
+* [Adam Wójcik](https://github.com/Adam-it)
 
 ## Version history
 

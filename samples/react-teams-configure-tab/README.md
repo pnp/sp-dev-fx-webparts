@@ -33,11 +33,9 @@ When the user selects one of the tab options, the tab is saved pointing to the c
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-Tab Configuration Web Part | [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
+* [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
 
 ## Version history
 

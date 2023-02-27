@@ -36,11 +36,9 @@ Column Internal Name|Type|Required|Comments
 Title| Text| true
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-hooks|[Adrián Díaz](https://github.com/AdrianDiaz81) [@AdrianDiaz81](https://www.twitter.com/adriandiaz81)
+* [Adrián Díaz](https://github.com/AdrianDiaz81) [@AdrianDiaz81](https://www.twitter.com/adriandiaz81)
 
 ## Version history
 

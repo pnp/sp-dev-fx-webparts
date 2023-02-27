@@ -36,11 +36,9 @@ This is sample web part to showcase how to open webcam and take photo in SPFx we
 
 > N/A
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-webcam | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (@siddh_me)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (@siddh_me)
 
 ## Version history
 

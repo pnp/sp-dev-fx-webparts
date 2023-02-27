@@ -89,11 +89,9 @@ See also https://github.com/russgove/O365VideoSync. It's a console app that you 
 
 > React, react-3d-carousel reactjs-coverface react-slick
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
- react-VideoLibrary | Russell Gove
+* Russell Gove
 
 ## Version history
 

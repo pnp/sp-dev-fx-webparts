@@ -38,11 +38,9 @@ This sample demonstrate how to set up SPFx to use [Handlebars](http://handlebars
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-handlebarsjs-webpack-loader | [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
+* [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
 
 ## Version history
 

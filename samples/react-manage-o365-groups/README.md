@@ -128,10 +128,8 @@ Flow URL|Text|No|URL of MS Flow (Power Automate) to join the private group
 
 # Solution
 
-Solution|Author(s)
---------|---------
-react-manage-o365-groups|[Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan) )
-&nbsp;|[Smita Nachan](https://github.com/SmitaNachan) (https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan) )
+* [Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan) )
+* [Smita Nachan](https://github.com/SmitaNachan) (https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan) )
 
 ## Version history
 

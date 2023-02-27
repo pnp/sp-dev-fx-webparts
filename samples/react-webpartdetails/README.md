@@ -29,11 +29,9 @@ Note: This sample will not work in workbench as it loads the web part from curre
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-webpartdetails| [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy) / [Harsha's Blog](https://harshagracy.com/))
+* [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy) / [Harsha's Blog](https://harshagracy.com/))
 
 
 ## Version history

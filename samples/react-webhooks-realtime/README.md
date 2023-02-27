@@ -54,11 +54,9 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 > * Create a new webhooks subscription for the SharePoint List **Events** (that will be installed by running the script **ProvisioningArtifacts.ps1**), as you prefer, across your solution or Postman, please read the following guideline to achieve this goal [https://learn.microsoft.com/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks](https://learn.microsoft.com/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
 > * The web part has been developed (GetChanges API) to notify new items added in the **Events** list
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-webhooks-realtime|[Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+* [Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
 
 
 ## Version history

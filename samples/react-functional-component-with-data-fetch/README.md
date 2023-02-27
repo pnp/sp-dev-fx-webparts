@@ -30,11 +30,9 @@ This web part demonstrates building a React functional component that uses data 
 * [PnPJS library](https://github.com/pnp/pnpjs)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-functional-component-with-data-fetch | Bill Ayers
+* Bill Ayers
 react-functional-component-with-data-fetch | Don Kirkham
 
 ## Version history

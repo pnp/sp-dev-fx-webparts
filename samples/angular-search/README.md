@@ -54,11 +54,9 @@ The logic for querying the SharePoint Content Types in the properties of the web
 * [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular-search|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+* [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 

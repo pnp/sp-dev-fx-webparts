@@ -50,12 +50,10 @@ Version|Date|Comments
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-page-navigator|[Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
-react-page-navigator|[Jasey Waegebaert](https://github.com/Jwaegebaert)
+* [Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
+* [Jasey Waegebaert](https://github.com/Jwaegebaert)
 
 ## Help
 

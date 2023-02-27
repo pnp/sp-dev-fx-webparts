@@ -33,11 +33,9 @@ This extension illustrates the following concepts:
 * Using MSGraphClient to call the `/users/${email}/memberOf` API to get all the groups a user is member of
 * Exporting the results to a CSV file using [**react-csv**](https://www.npmjs.com/package/react-csv) third party package
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-check-user-group | [Aakash Bhardwaj](https://twitter.com/aakash_316)
+* [Aakash Bhardwaj](https://twitter.com/aakash_316)
 
 ## Minimal Path to Awesome
 

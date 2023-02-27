@@ -36,12 +36,10 @@ This sample creates an Adaptive Cards Host web part that you can use to display 
 
 There are no pre-requisites, but you'll probably want to have some [Adaptive Cards samples](https://adaptivecards.io/samples/) ready to try out the web part.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-adaptivecards | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
-react-adaptivecards | Paul Schaeflein ([http://www.schaeflein.net](http://www.schaeflein.net), [@paulschaeflein](https://twitter.com/paulschaeflein))
+* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
+* Paul Schaeflein ([http://www.schaeflein.net](http://www.schaeflein.net), [@paulschaeflein](https://twitter.com/paulschaeflein))
 
 ## Version history
 

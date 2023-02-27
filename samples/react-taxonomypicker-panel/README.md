@@ -34,11 +34,9 @@ Sample web part with Single and Multi-select taxonomy pickers using Office UI Fa
 - @pnp/sp
 - Office UI Fabric React
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-taxonomypicker-panel | Vipul Kelkar  @vipulkelkar
+* Vipul Kelkar  @vipulkelkar
 
 ## Version history
 

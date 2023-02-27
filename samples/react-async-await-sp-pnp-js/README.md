@@ -29,12 +29,10 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-async-await-sp-pnp-js | Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
-Version 2 refactored as purely a PnPjs sample by Julie Turner ([@jfj1997](https://twitter.com/jfj1997))
+* Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
+* Julie Turner ([@jfj1997](https://twitter.com/jfj1997))
 
 ## Version history
 

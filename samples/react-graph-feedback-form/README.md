@@ -27,11 +27,9 @@ Sample SPFx React web part which allows sending emails using Microsoft Graph.
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-graph-feedback-form|Sergei Zheleznov (CollabStack)
+* Sergei Zheleznov (CollabStack)
 
 ## Version history
 

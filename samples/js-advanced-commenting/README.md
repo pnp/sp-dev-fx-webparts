@@ -69,11 +69,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-SPFxPageComments | [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
+* [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
 
 ## Version history
 

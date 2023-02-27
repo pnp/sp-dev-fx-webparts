@@ -31,11 +31,9 @@ This web part lists all the public teams the current user is not yet a member of
 
 To be able to pin this web part as a Teams tab, your tenant currently needs to be in the targeted release mode. If your tenant is not in targeted release, you can still use the web part in SharePoint as usual.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-public-unjoined-teams | [Laura Kokkarinen](https://github.com/LauraKokkarinen) ([laurakokkarinen.com](https://laurakokkarinen.com), [@LauraKokkarinen](https://twitter.com/LauraKokkarinen))
+* [Laura Kokkarinen](https://github.com/LauraKokkarinen) ([laurakokkarinen.com](https://laurakokkarinen.com), [@LauraKokkarinen](https://twitter.com/LauraKokkarinen))
 
 ## Version history
 

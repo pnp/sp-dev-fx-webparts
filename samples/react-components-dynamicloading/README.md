@@ -26,11 +26,9 @@ Load React components and third-party packages on demand in SPFx
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-components-dynamicloading | [Vardhaman Deshpande](https://github.com/vman) ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com)) 
+* [Vardhaman Deshpande](https://github.com/vman) ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com)) 
 
 ## Version history
 

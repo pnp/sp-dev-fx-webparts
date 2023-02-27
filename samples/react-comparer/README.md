@@ -76,11 +76,9 @@ The file picker includes the following tabs:
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-comparer | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), @bernierh)
 
 ## Version history
 

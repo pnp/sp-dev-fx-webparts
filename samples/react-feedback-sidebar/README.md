@@ -42,14 +42,12 @@ Place this web part on top of your page in order to show the Feedback button.
 - Add the app package to Site Collection App Catalog and install the App
 - Add the web part to a page
 
-## Solution
+## Contributors
 
-| Solution               | Author(s)                                                 |
-| ---------------------- | --------------------------------------------------------- |
-| react-feedback-sidebar | [Alessia De Martino](https://github.com/AlessiaDeMartino) |
-| react-feedback-sidebar | Andrea Bellini                                            |
-| react-feedback-sidebar | [Matteo Serpi](https://github.com/srpmtt)                 |
-| react-feedback-sidebar | [Michele Catena](https://github.com/10xMike)              |
+* [Alessia De Martino](https://github.com/AlessiaDeMartino)
+* Andrea Bellini
+* [Matteo Serpi](https://github.com/srpmtt)
+* [Michele Catena](https://github.com/10xMike)              |
 
 ## Help
 

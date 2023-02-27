@@ -179,12 +179,10 @@ In order to make it available to absolutely all sites you need apply the *Deploy
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-script-editor | [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
-react-script-editor | [Felix Bohnacker](https://github.com/felixbohnackerfelixbohnacker)
+* [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Felix Bohnacker](https://github.com/felixbohnackerfelixbohnacker)
 
 
 ## Version history

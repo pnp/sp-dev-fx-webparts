@@ -48,12 +48,9 @@
 
 None
 
-## Solution
+## Contributors
 
-| Solution              | Author(s)                                |
-| --------------------- | ---------------------------------------- |
-| Soccer Highlights Web Part | [Jerry Yasir](https://github.com/jyasir) |
-
+* [Jerry Yasir](https://github.com/jyasir)
 ## Version history
 
 | Version | Date               | Comments      |
