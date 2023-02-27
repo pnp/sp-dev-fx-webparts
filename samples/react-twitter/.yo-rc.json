@@ -8,12 +8,12 @@
       "@microsoft/teams-js": "2.4.1"
     },
     "version": "1.16.1",
-    "libraryName": "webpart-solution",
+    "libraryName": "react-twitter",
     "libraryId": "8f0cb18a-472f-49b2-9cff-07ab56f96cf6",
     "environment": "spo",
     "packageManager": "npm",
-    "solutionName": "webpart-solution",
-    "solutionShortDescription": "webpart-solution description",
+    "solutionName": "react-twitter",
+    "solutionShortDescription": "react-twitter description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
