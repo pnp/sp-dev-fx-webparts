@@ -1,11 +1,20 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
+    "nodeVersion": "16.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "webpart-solution",
+    "libraryId": "8f0cb18a-472f-49b2-9cff-07ab56f96cf6",
     "environment": "spo",
-    "version": "1.10.0",
-    "libraryName": "react-twitter",
-    "libraryId": "8c0ef02c-7f7d-4600-9ed0-b7620062c4ef",
     "packageManager": "npm",
+    "solutionName": "webpart-solution",
+    "solutionShortDescription": "webpart-solution description",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }
