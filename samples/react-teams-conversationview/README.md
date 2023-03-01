@@ -4,7 +4,7 @@
 
 Have you ever struggled to find or search the conversations from Microsoft Team's channel ?
 
-This sample webpart is developed to display the Microsoft Team's channel's conversation in a simpler way which makes easy to search and filters the new conversations and its replies. Please note that this webpart is designed to use in Microsoft Teams only.
+This sample web part is developed to display the Microsoft Team's channel's conversation in a simpler way which makes easy to search and filters the new conversations and its replies. Please note that this web part is designed to use in Microsoft Teams only.
 
 ## Features
 
@@ -81,7 +81,7 @@ This sample webpart is developed to display the Microsoft Team's channel's conve
   - **npm install**
   - **gulp serve**
 
-As this SPFx webpart only works with in Teams's context, please follow below links to deploy it to tenant and make it available in Microsoft Teams
+As this SPFx web part only works with in Teams's context, please follow below links to deploy it to tenant and make it available in Microsoft Teams
 
 [Package and Deploy](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#package-and-deploy-your-web-part-to-sharepoint)
 
