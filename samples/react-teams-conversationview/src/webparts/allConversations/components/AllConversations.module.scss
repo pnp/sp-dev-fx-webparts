@@ -1,0 +1,30 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.allConversations {
+    overflow: hidden;
+    padding: 1em;
+    color: "[theme:bodyText, default: #323130]";
+    color: var(--bodyText);
+    &.teams {
+        font-family: $ms-font-family-fallbacks;
+    }
+}
+
+.loadMoreWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    column-gap: 10px;
+    margin-top: 10px;
+}
+
+.PrimaryButtonNext {
+    font-size: 11px;
+    background: #444791;
+    border-radius: 10px;
+}
+
+.docWrapper {
+    display: flex;
+    flex-direction: column;
+}
