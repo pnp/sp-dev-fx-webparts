@@ -35,7 +35,7 @@ export const useChatGpt = (context: BaseComponentContext, appId: string, AzureFu
         const response = await (await client()).post(AzureFunctionUrl, AadHttpClient.configurations.v1, options);
         const answer = await response.json();
         if (response.status === 200) {
-          return answer?.choices[0].text;
+           return answer.choices[0].message.content;
         } else {
           console.log("[getCompletion] error:", answer);
           throw new Error("Error on executing the request, please try again later.");
