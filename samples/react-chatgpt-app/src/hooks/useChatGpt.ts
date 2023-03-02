@@ -8,9 +8,6 @@ import {
   IHttpClientOptions,
 } from '@microsoft/sp-http';
 
-/* const APPID = "6b4a20b2-bf2f-4cbb-a162-af960a40c2dc";
-const AZURE_FUNCTION_URL = "https://openaifunctionsapp.azurewebsites.net/api/OpenAICompletion"; */
-
 export const useChatGpt = (context: BaseComponentContext, appId: string, AzureFunctionUrl: string) => {
   const client = React.useMemo(() => {
     if (context) {
