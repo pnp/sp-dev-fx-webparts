@@ -1,3 +1,5 @@
+/* eslint-disable require-atomic-updates */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from 'react';
 
 import { useAtom } from 'jotai';
@@ -6,8 +8,12 @@ import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
+import { ChatMessage } from '@microsoft/microsoft-graph-types';
+
 import { globalState } from '../../atoms/globalState';
 import { useChatGpt } from '../../hooks';
+import { useGraphAPI } from '../../hooks/useGraphAPI';
+import { useHtmlUtils } from '../../hooks/useHtmlUtils';
 import { useChatGptStyles } from '../ChatGpt/useChatGptStyles';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { Loading } from '../LoadingAnswer/Loading';
@@ -23,7 +29,7 @@ export const RenderMessages: React.FunctionComponent<IRenderMessagesProps> = (
 ) => {
   const { isShowMessages } = props;
   const [appGlobalState] = useAtom(globalState);
-  const { context, appId, AzureFunctionUrl } = appGlobalState;
+  const { context, appId, AzureFunctionUrl, parentMessageId, chatId, teamsId, channelId } = appGlobalState;
   const { textFieldStyles, controlStyles, buttonIconStyles } = useChatGptStyles();
   const [conversation, setConversation] = React.useState<React.ReactNode[]>([]);
   const [textToAsk, setTextToAsk] = React.useState<string>("");
@@ -31,6 +37,12 @@ export const RenderMessages: React.FunctionComponent<IRenderMessagesProps> = (
   const { getCompletion } = useChatGpt(context, appId, AzureFunctionUrl);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [error, setError] = React.useState<Error | undefined>(undefined);
+  const { getChatParentMessage, getChannelParentMessage } = useGraphAPI(context);
+  const executeAutoGetComplete = React.useRef<boolean>(false);
+  const { getTextFromHtml } = useHtmlUtils();
+  
+  const hasParentMessage = React.useMemo(() => !!parentMessageId  , [parentMessageId]);
+  const isInChannel = React.useMemo(() => !!teamsId && !!channelId, [teamsId, channelId]);
 
   const hasError = React.useMemo(() => error !== undefined, [error]);
 
@@ -54,8 +66,8 @@ export const RenderMessages: React.FunctionComponent<IRenderMessagesProps> = (
   );
 
   const addAnswer = React.useCallback(
-    (answer: string) => {
-      const newAnswer = <RenderAnswer answer={answer} key={conversation.length + 1} />;
+    (answer: string, question?: string) => {
+      const newAnswer = <RenderAnswer answer={answer} question={question} key={conversation.length + 1} />;
       setConversation((prev) => {
         return [...prev, newAnswer];
       });
@@ -92,6 +104,44 @@ export const RenderMessages: React.FunctionComponent<IRenderMessagesProps> = (
     [onSubmit]
   );
 
+  const runAutoGetComplete = React.useCallback(async () => {
+    try {
+      let messageDetails: ChatMessage = undefined;
+      if (!isInChannel   ) {
+        messageDetails = await getChatParentMessage(chatId, parentMessageId);
+      } else {
+        messageDetails = await getChannelParentMessage(teamsId, channelId, parentMessageId);
+      }
+      const { body } = messageDetails;
+      if (body) {
+        setError(undefined);
+        const { content,  } = body;
+        console.log(body);
+
+          const text = getTextFromHtml(content);
+          if ( text  ) {
+          addQuestion(text);
+          setIsLoading(true);
+          const response = await getCompletion(text);
+          addAnswer(response, text);
+        }
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      if (hasParentMessage && !executeAutoGetComplete.current) {
+        executeAutoGetComplete.current = true;
+        await runAutoGetComplete();
+      }
+    })();
+  }, [hasParentMessage]);
+
   if (!isShowMessages) {
     return null;
   }
@@ -104,7 +154,7 @@ export const RenderMessages: React.FunctionComponent<IRenderMessagesProps> = (
 
       <Stack tokens={{ padding: 20, childrenGap: 10 }}>
         <Loading isLoading={isLoading} />
-        <Stack horizontal tokens={{ childrenGap: 5 }} >
+        <Stack horizontal tokens={{ childrenGap: 5 }}>
           {hasError ? (
             <ErrorMessage errorMessage={error?.message} showError={hasError} />
           ) : (

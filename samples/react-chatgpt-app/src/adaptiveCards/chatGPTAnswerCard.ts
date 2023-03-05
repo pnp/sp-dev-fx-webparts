@@ -1,7 +1,7 @@
 export const CARD = {
   "type": "AdaptiveCard",
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.2",
+  "version": "1.3",
   "body": [
       {
           "type": "ColumnSet",
@@ -55,6 +55,21 @@ export const CARD = {
                   ]
               }
           ]
+      },
+      {
+          "type": "Container",
+          "spacing": "medium",
+          "style": "emphasis",
+          "items": [
+              {
+                  "type": "TextBlock",
+                  "text": "${$root.question}",
+                  "wrap": true,
+                  "horizontalAlignment": "Right",
+                  "color": "Accent"
+              }
+          ],
+          "$when": "${length($root.question)>0}"
       },
       {
           "type": "Container",
