@@ -42,7 +42,7 @@ Version|Date|Comments
 1.2|November 04, 2021|Add group views
 1.3|March 14, 2022|Upgrade to SPFx v1.14.0
 1.4|July 07, 2022|Upgrade to SPFx v1.15.0
-1.5|July 07, 2022|Upgrade to SPFx v1.16.1
+1.5|March 06, 2023|Upgrade to SPFx v1.16.1
 
 
 ## Minimal path to awesome
