@@ -17,7 +17,7 @@ const Summarise: React.FC<ISummariseProps> = (props) => {
   const { callMicrosoftGraphAPI } = useMicrosoftGraph(msGraphClientFactory);
   const { getItem } = useSharePointRest(spHttpClient, siteUrl);
 
-  const formatSummary = (summary: string[]): void => {
+  const covertSummaryToSentences = (summary: string[]): void => {
 
     // if summary is empty, return
     if (isEmpty(summary)) return;
@@ -46,7 +46,21 @@ const Summarise: React.FC<ISummariseProps> = (props) => {
     setSentences(sentences);
   };
 
-  const getPageContent = async (): Promise<string> => {
+  const cleanPageContent = (pageContent: string): string => {
+
+    //remove html tags from the content
+    pageContent = pageContent.replace(/<[^>]*>?/gm, '');
+
+    //replace " with '
+    pageContent = pageContent.replace(/"/g, "'");
+
+    // remove all unicode characters
+    pageContent = pageContent.replace(/[^\x00-\x7F]/g, "");
+
+    return pageContent;
+  };
+
+  const getPageContentUsingGraphAPI = async (): Promise<string> => {
 
     // get the page content from the Microsoft Graph API
     const response = await callMicrosoftGraphAPI(
@@ -58,35 +72,7 @@ const Summarise: React.FC<ISummariseProps> = (props) => {
       ["webparts($filter=(isof('microsoft.graph.textWebPart')))"],
       null
     );
-    return response.webParts.map((webPart: any) => webPart.innerHtml).join(' ');
-  };
-
-  const getSummaryFromAPI = async (): Promise<string[]> => {
-
-    let pageContent = await getPageContent();
-
-    //remove html tags from the content
-    pageContent = pageContent.replace(/<[^>]*>?/gm, '');
-
-    //replace " with '
-    pageContent = pageContent.replace(/"/g, "'");
-
-    // remove all unicode characters
-    pageContent = pageContent.replace(/[^\x00-\x7F]/g, "");
-
-    // get summary from OpenAI
-    const summary = await getSummaryUsingOpenAI(pageContent);
-
-    // if summary is empty, return
-    if (summary === undefined || summary === null) {
-      return [];
-    }
-
-    // update the page with the summary
-    updatePagePnPPowerShell(siteUrl, pageItemId, SUMMARY_COLUMN_NAME, summary);
-
-    // return the summary by splitting it into sentences
-    return summary.split('.')?.filter((sentence: string) => sentence !== '') || [];
+    return response?.webParts?.map((webPart: any) => webPart.innerHtml)?.join(' ') || '';
   };
 
   const getSummaryFromPage = async (): Promise<string[]> => {
@@ -112,26 +98,55 @@ const Summarise: React.FC<ISummariseProps> = (props) => {
     return summary;
   };
 
-  const getSummary = async (): Promise<void> => {
+  const getSummaryFromAPI = async (): Promise<string[]> => {
+
+    let pageContent = await getPageContentUsingGraphAPI();
+
+    // if page content is empty, return
+    if (isEmpty(pageContent)) {
+      return [];
+    }
+
+    // clean the page content
+    pageContent = cleanPageContent(pageContent);
+
+    // get summary from OpenAI
+    const summary = await getSummaryUsingOpenAI(pageContent);
+
+    // if summary is empty, return
+    if (isEmpty(summary)) {
+      return [];
+    }
+
+    // return the summary by splitting it into sentences
+    return summary.split('.')?.filter((sentence: string) => sentence !== '') || [];
+  };
+
+  const executeSummaryTasksAndUpdatePage = async (): Promise<void> => {
     let summary: string[] = await getSummaryFromPage();
     if (summary === null) {
       summary = await getSummaryFromAPI();
+
+      if (!isEmpty(summary)) {
+        // update the page with the summary
+        updatePagePnPPowerShell(siteUrl, pageItemId, SUMMARY_COLUMN_NAME, summary.join('.'));
+      }
     }
-    formatSummary(summary);
+    covertSummaryToSentences(summary);
   };
 
   React.useEffect(() => {
-    // setTimeout(async () => {
-      getSummary().then(
+    executeSummaryTasksAndUpdatePage()
+      .then(
         () => setLoading(false)
-      ).catch(
+      )
+      .catch(
         (error) => {
           console.log("error", error);
           setSentences([]);
           setLoading(false);
         }
       );
-    // }, 200);
   }, []);
 
   return (
