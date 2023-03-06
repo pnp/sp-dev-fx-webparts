@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample conatins a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages. The web part uses the Microsoft Graph Pages API to get the page content and the Azure function uses the Open AI API to summarize the page content. The web part then displays the summary in the selected language.
+This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages. The web part uses the Microsoft Graph Pages API to get the page content and the Azure function uses the Open AI API to summarize the page content. The web part then displays the summary in the selected language.
 
 ![screenshot](./assets/page_summary.png)
 
@@ -136,10 +136,10 @@ This sample is optimally compatible with the following environment configuration
 The code illustrates the following concepts:
 
 * using React for building SharePoint Framework client-side web parts
-* using OpenAI API in Azure Function
+* using Open AI API in Azure Function
 * using Microsoft Graph API to get only the text content of the page
 * using custom React Hooks
-* using Fluent UI FrameWork
+* using Fluent UI Framework
 
 ## References
 
