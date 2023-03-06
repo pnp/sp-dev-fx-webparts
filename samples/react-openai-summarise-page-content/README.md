@@ -34,6 +34,7 @@ This sample is optimally compatible with the following environment configuration
 ## Prerequisites
 
 > Open AI API key. You can get a key from <https://platform.openai.com/account/api-keys>
+> See the [Minimal Path to Awesome section](#minimal-path-to-awesome) below for more details related app registration, Azure function and SharePoint site configuration.
 
 ## Solution
 
@@ -62,6 +63,7 @@ This sample is optimally compatible with the following environment configuration
 - Register an Azure AD application in your tenant
 - Get the client ID
 - Replace the `APP_ID` in the `/webpart/src/constants/constants.ts` file with the client ID
+- Copy the app name
 
 ### Azure Function
 
@@ -97,6 +99,7 @@ This sample is optimally compatible with the following environment configuration
   - Create a new column called "Summary" of type "Multiple lines of text"
 
 ### SPFx web part
+- Edit the `webpart/config/package-solution.json` file and replace the `APP_REG_NAME` with the app registration name created above
 - Open command prompt in the `webpart` folder
 - in the command line run:
   * `npm install`
@@ -104,6 +107,9 @@ This sample is optimally compatible with the following environment configuration
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
   * Add and Deploy Package to AppCatalog
+- In the API access page approve the following
+  - `user_impersonation` permission for the app registration created above
+  - `Sites.Read.All` permission for the Microsoft Graph API
 - Add the "Summarise" web part to a page in the SharePoint site
 
 ### Running the Azure function and web part locally
@@ -122,9 +128,20 @@ This sample is optimally compatible with the following environment configuration
   * `func start`
 
 #### SPFx web part
+- Edit the `webpart/config/package-solution.json` file and replace the `APP_REG_NAME` with the app registration name created above
 - Open command prompt in the `webpart` folder
 - in the command line run:
   * `npm install`
+  * `gulp build`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+  * Add and Deploy Package to AppCatalog
+- In the API access page approve the following
+  - `user_impersonation` permission for the app registration created above
+  - `Sites.Read.All` permission for the Microsoft Graph API
+- Add the "Summarise" web part to a page in the SharePoint site
+- Open command prompt in the `webpart` folder
+- in the command line run:
   * `gulp serve`
 
 - Open a page in the SharePoint site which has some text content
@@ -136,10 +153,10 @@ This sample is optimally compatible with the following environment configuration
 The code illustrates the following concepts:
 
 * using React for building SharePoint Framework client-side web parts
-* using Open AI API in Azure Function
+* using OpenAI API in Azure Function
 * using Microsoft Graph API to get only the text content of the page
 * using custom React Hooks
-* using Fluent UI Framework
+* using Fluent UI FrameWork
 
 ## References
 
