@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import { useState, useEffect, useRef } from 'react';
 import { PageProperty } from '../models';
 
-import { sp } from "@pnp/sp";
+import { getSP } from '../utilities/pnpjs-config';
 import { DateTimeFieldFormatType, DateTimeFieldFriendlyFormatType, FieldTypes, IField, IFieldInfo } from "@pnp/sp/fields/types";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
@@ -28,7 +28,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
 
   propsRef.current = props;
 
-  sp.setup({ spfxContext: props.context });
+  const _sp = getSP(propsRef.current.context);
 
   /**
    * refreshProperties
@@ -42,7 +42,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
 
       // Get the value(s) for the field from the list item itself
       var allValues: any = {};
-      const sitePagesList = await sp.web.lists.ensureSitePagesLibrary();
+      const sitePagesList = await _sp.web.lists.ensureSitePagesLibrary();
       if (props.context.pageContext.listItem !== undefined && props.context.pageContext.listItem !== null) {
         allValues = await sitePagesList.items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).fieldValuesAsText();
       }
