@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "open-ai-summarise-client-side-solution",
+    "id": "f15c9e3f-fcfe-4059-bf17-a2bfa7f49020",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "APP_REG_NAME",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "A webpart that uses Open AI to summarise text."
+      },
+      "longDescription": {
+        "default": "A webpart that uses Open AI to summarise text on a SharePoint page using the Open AI API and Microsoft graph pages API."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "open-ai-summarise Feature",
+        "description": "The feature that activates elements of the open-ai-summarise solution.",
+        "id": "92c9f7fc-92e7-435a-81f7-9d483adc99ff",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/open-ai-summarise.sppkg"
+  }
+}
