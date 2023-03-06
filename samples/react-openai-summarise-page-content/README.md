@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages. The web part uses the Microsoft Graph Pages API to get the page content and the Azure function uses the Open AI API to summarize the page content. The web part then displays the summary in the selected language.
+This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarise a SharePoint page in multiple languages. The web part uses the Microsoft Graph Pages API to get the page content and the Azure function uses the Open AI API to summarise the page content. The web part then displays the summary in the selected language.
 
 ![screenshot](./assets/page_summary.png)
 
