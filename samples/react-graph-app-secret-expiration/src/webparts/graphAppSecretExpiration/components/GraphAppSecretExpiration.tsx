@@ -180,7 +180,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     });
   }
 
-  private _filterApplication = (value, clear: boolean) => {
+  private _filterApplication = (value: string, clear: boolean) => {
     let searchResult: IFormattedApplication[] = [];
     if (clear) {
       this.state.applications.forEach(app => {
@@ -202,7 +202,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
 
   }
 
-  private _filterByProperties(application: IFormattedApplication, filterValue) {
+  private _filterByProperties(application: IFormattedApplication, filterValue: string) {
     if (application.applicationId.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
       return true;
     } else if (application.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {

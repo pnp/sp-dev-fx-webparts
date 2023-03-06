@@ -14,7 +14,7 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.15](https://img.shields.io/badge/SPFx-1.15-green.svg)
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -42,6 +42,7 @@ Version|Date|Comments
 1.2|November 04, 2021|Add group views
 1.3|March 14, 2022|Upgrade to SPFx v1.14.0
 1.4|July 07, 2022|Upgrade to SPFx v1.15.0
+1.5|July 07, 2022|Upgrade to SPFx v1.16.1
 
 
 ## Minimal path to awesome
