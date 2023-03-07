@@ -1,10 +1,12 @@
-# apimsal
+# Github Profile display Via API
 
 ## Summary
 
 This webpart loads the github profile  using SPHttp client in PnP v3.
+![Display Output](assets/OutputGithubProfile.png)
 
-To invoke your own API 
+To change the profile or to use your own API follow the below path
+![Changes to be made](assets/UpdateAPICall.png)
 
 ## Compatibility
 
@@ -13,13 +15,14 @@ To invoke your own API
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
+![PnpJS v3](https://img.shields.io/badge/PnPJS-V3-green.svg)
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 ![Node.js v16.18.1](https://img.shields.io/badge/Node.js-v16.18.1-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
-!(assets/SPERasAppPage.png)
+
 
 [picture of the solution in action, if possible]
 
@@ -83,4 +86,4 @@ This extension illustrates the following concepts:
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [PnPjs Transition guide] (https://pnp.github.io/pnpjs/transition-guide/) - Guidance for migrating to latest framework of pnpjs
+- [PnPjs Transition guide](https://pnp.github.io/pnpjs/transition-guide/) - Guidance for migrating to latest framework of pnpjs
