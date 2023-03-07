@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "apimsal",
+    "libraryId": "d040c045-331c-446e-8a59-59933b8b3037",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "APIMSAL",
+    "solutionShortDescription": "APIMSAL description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
