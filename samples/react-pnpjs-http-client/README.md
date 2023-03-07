@@ -24,8 +24,6 @@ To change the profile or to use your own API follow the below path
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
-[picture of the solution in action, if possible]
-
 ## Used SharePoint Framework Version
 
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
@@ -44,7 +42,7 @@ To change the profile or to use your own API follow the below path
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| react-pnpjs-http-client |* [Divya Akula](https://github.com/divya-akula/)  [@divya-akula](https://twitter.com/_divyaakula) 
+| react-pnpjs-http-client | [Divya Akula](https://github.com/divya-akula/)  [@divya-akula](https://twitter.com/_divyaakula) 
 
 ## Version history
 
@@ -75,7 +73,7 @@ Description of the extension that expands upon high-level summary above.
 This extension illustrates the following concepts:
 
 - invoking third party api
-- pnpjs v3
+- PnPjs v3
 - Document card layout
 
 
