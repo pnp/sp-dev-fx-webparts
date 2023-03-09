@@ -47,7 +47,7 @@
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 ![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -79,6 +79,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0.0|Feb 05 2020|Initial release
 1.1.0.0|Oct 06, 2022|Upgraded to 1.15.2
+1.2.0.0|Oct 06, 2022|Upgraded to 1.16.1
 
 
 ## Minimal Path to Awesome
