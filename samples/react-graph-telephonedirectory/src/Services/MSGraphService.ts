@@ -37,7 +37,7 @@ export class MSGraphService implements IMSGraphService{
             .version("v1.0")
             .filter(`(startswith(surname,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                res.value.map((_userProperty:any,_index:any)=>{
                     if(_userProperty.mail !== null){
                         userProperties.push({
                             businessPhone:_userProperty.businessPhones[0],
@@ -66,7 +66,7 @@ export class MSGraphService implements IMSGraphService{
             .version("v1.0")
             .filter(`(startswith(givenName,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                res.value.map((_userProperty:any,_index:any)=>{
                     if(_userProperty.mail !== null){
                         userProperties.push({
                             businessPhone:_userProperty.businessPhones[0],
@@ -94,7 +94,7 @@ export class MSGraphService implements IMSGraphService{
             .version("v1.0")
             .filter(`(startswith(displayName,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                res.value.map((_userProperty:any,_index:any)=>{
                     userProperties.push({
                         businessPhone:_userProperty.businessPhones[0],
                         displayName:_userProperty.displayName,
