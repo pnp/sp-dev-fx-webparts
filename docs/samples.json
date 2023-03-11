@@ -9316,7 +9316,7 @@
       "Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view."
     ],
     "creationDateTime": "2021-05-06",
-    "updateDateTime": "2021-10-08",
+    "updateDateTime": "2023-02-26",
     "products": [
       "SharePoint"
     ],
