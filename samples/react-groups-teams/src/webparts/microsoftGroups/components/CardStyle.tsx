@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import styles from './MicrosoftGroups.module.scss';
+import { DocumentCard, DocumentCardDetails, Modal, Stack, ThemeProvider, TooltipHostBase } from 'office-ui-fabric-react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { iconClass } from './MicrosoftGroupsTeams';
 
@@ -14,6 +15,7 @@ export interface IUserItem {
   Topic: string;
   DeliveryDate: Date;
 }
+
 export interface IGraphConsumerState {
   mode: string;
   title: string;
@@ -34,9 +36,9 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
       mode: 'All',
       title: 'Groups In My Organization',
       GroupResultsFiltered: [],
-      Next: 5,
+      Next: 6,
       Min: 0,
-      GroupDisplay: 5,
+      GroupDisplay: 6
     };
   }
   public SwitchGroupList() {
@@ -143,13 +145,9 @@ public componentDidUpdate(prevProps: Readonly<IGraphConsumerProps>): void {
     }
 }
 
-public render(): React.ReactElement<IGraphConsumerProps> {debugger;
-  var NextButton,
-  BackButton,
-  i = 0,
+public render(): React.ReactElement<IGraphConsumerProps> {
+  var i = 0,
   Replaceregex = /\s+/g;
-  this.state.Next >= this.state.GroupResultsFiltered.length ? NextButton = styles.DisButton : NextButton = styles.NavButton;
-  this.state.Next === (this.state.GroupDisplay) ? BackButton = styles.DisButton : BackButton = styles.NavButton;
   return <div className={styles.Container}>
     <div className={styles.tableCaptionStyle}>{this.state.title}
       <div>
@@ -167,55 +165,58 @@ public render(): React.ReactElement<IGraphConsumerProps> {debugger;
       'Groups in my Organization' : 'My Groups'}</button>
     </div>
     <div className={styles.tableStyle}>
-    <div className={styles.headerStyle}>
-          <div className={styles.Center}>Group</div>
-          <div className={styles.Center}>Mail</div>
-          <div className={styles.Center}>Site</div>
-          <div className={styles.Center}>Calendar</div>
-          <div className={styles.Center}>Planner</div>
-          <div className={styles.Center}>Teams</div>
-          <div className={styles.Center} style={{ borderRight: 'none' }}>Visibility</div>
-          </div>
-{   this.state.GroupResultsFiltered.map(Group => {
+{ this.state.GroupResultsFiltered.map(Group => {
         var GroupEmailSplit = Group.Mail.split("@");
         Group.Mail = GroupEmailSplit[0];
         i = i + 1;
         if ( i <= this.state.Next && i >= this.state.Min +1) {
-        return <div className={styles.rowStyle}>
-        <div className={styles.ToolTipName}>{Group.Name}<span className={styles.ToolTip}>{Group.Description}</span></div>
-        <a className={styles.Center} href={`https://outlook.office.com/mail/group/${this.TenantEmail}/${Group.Mail.toLowerCase()}/email`}>
-          <Icon className={iconClass} style={{ color: '#087CD7' }} iconName="OutlookLogo"></Icon>
+        return <DocumentCard
+        style={{boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1)',
+        width:'31.65%',
+        height: '144px',
+        paddingBottom: '15px',
+        float: 'left',
+        margin: '6px'
+        }}
+        >
+          <h3 style={{marginBottom: '5px'}}>{Group.Name}</h3>
+        <DocumentCardDetails>
+          <div style={{padding: '0px 4px 0px 4px'}}>{Group.Description}</div>
+
+        <div style={{display:'table-row'}}>
+        <a href={`https://outlook.office.com/mail/group/${this.TenantEmail}/${Group.Mail.toLowerCase()}/email`}>
+          <Icon className={iconClass} style={{ color: '#087CD7', margin:'2px', marginTop:'10px' }} iconName="OutlookLogo"></Icon>
         </a>
-        <a className={styles.Center} href={`https://${this.TenantPathname}/sites/${Group.Mail}`}>
-          <Icon className={iconClass} style={{ color: '#068B90' }} iconName="SharePointLogo"></Icon>
+        <a  href={`https://${this.TenantPathname}/sites/${Group.Mail}`}>
+          <Icon className={iconClass} style={{ color: '#068B90', margin:'2px', marginTop:'10px' }} iconName="SharePointLogo"></Icon>
         </a>
-        <a className={styles.Center} href={`https://outlook.office.com/calendar/group/${this.TenantEmail}/${Group.Name.replace(Replaceregex, '')}/view/week`}>
-          <Icon className={iconClass} style={{ color: '#119AE2' }} iconName="Calendar"></Icon>
+        <a  href={`https://outlook.office.com/calendar/group/${this.TenantEmail}/${Group.Name.replace(Replaceregex, '')}/view/week`}>
+          <Icon className={iconClass} style={{ color: '#119AE2', margin:'2px', marginTop:'10px' }} iconName="Calendar"></Icon>
         </a>
 
-        <div className={styles.Center}>
-          {Group.Planner === undefined ? <div></div> : <a href={Group.Planner}>
-            <Icon className={iconClass} style={{ color: '#077D3F' }} iconName="ViewListTree"></Icon></a>}
-        </div>
-        <div className={styles.Center}>{Group.WebUrl === undefined || Group.WebUrl === null ? <div></div> :
+        <>
+          {Group.Planner === undefined ? <></> : <a href={Group.Planner}>
+            <Icon className={iconClass} style={{ color: '#077D3F', margin:'2px', marginTop:'10px' }} iconName="ViewListTree"></Icon></a>}
+        </>
+        <>{Group.WebUrl === undefined || Group.WebUrl === null ? <></> :
           <a href={`${Group.WebUrl}`}>
-      <Icon className={iconClass} style={{ color: '#424AB5' }} iconName="TeamsLogo"></Icon>
-    </a>}</div>
-        <div className={styles.Center} style={{ borderRight: 'none' }}>{Group.Visibility}</div>
-      </div>;}})}
+      <Icon className={iconClass} style={{ color: '#424AB5', margin:'2px', marginTop:'10px' }} iconName="TeamsLogo"></Icon>
+    </a>}</>
+      </div></DocumentCardDetails>
+        </DocumentCard>;
+
+        }})}
       </div>
       {this.state.GroupResultsFiltered.length === 0 ? <div>There are no items with the selected filters</div>:<></>}
       <div className={styles.tableStyle}>
-          <div style={{display:'table-row'}}>
-            <div style={{position: 'relative', textAlign:'right', width:'45%', display:'table-cell'}}>
-              <button className={BackButton} disabled={this.state.Next === (this.state.GroupDisplay)} onClick={() => this.Back(this.state.GroupResultsFiltered)}>Back</button>
-            </div>
-            <div style={{padding: 8}}>{this.state.Next/this.state.GroupDisplay} of {Math.ceil(this.state.GroupResultsFiltered.length/this.state.GroupDisplay)}</div>
-            <div style={{position: 'relative', textAlign:'left', width:'45%', display:'table-cell'}}>
-              <button className={NextButton} disabled={this.state.Next >= this.state.GroupResultsFiltered.length} onClick={() => this.Next(this.state.GroupResultsFiltered)}>Next</button>
-            </div>
-          </div>
+ <div style={{display:'table-row'}}>
+ <div style={{position: 'relative', textAlign:'right', width:'45%', display:'table-cell'}}>
+  <button disabled={this.state.Next === (this.state.GroupDisplay)} onClick={() => this.Back(this.state.GroupResultsFiltered)}>Back</button>
        </div>
+       <div style={{padding: 8}}>{this.state.Next/this.state.GroupDisplay} of {Math.ceil(this.state.GroupResultsFiltered.length/this.state.GroupDisplay)}</div>
+       <div style={{position: 'relative', textAlign:'left', width:'45%', display:'table-cell'}}>
+       <button disabled={this.state.Next >= this.state.GroupResultsFiltered.length} onClick={() => this.Next(this.state.GroupResultsFiltered)}>Next</button>
+       </div> </div></div>
   </div>;
 }
 }
