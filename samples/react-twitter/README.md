@@ -19,6 +19,7 @@ Sample web part to display Twitter timeline
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
@@ -27,12 +28,14 @@ Sample web part to display Twitter timeline
 ## Contributors
 
 * [Alex Terentiev](https://github.com/AJIXuMuK)
+* [Reshmee Auckloo](https://github.com/reshmee011)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|January 20, 2020|Initial release
+1.1|February 27, 2023|Upgraded to SPFx 1.16.1
 
 
 ## Minimal Path to Awesome
