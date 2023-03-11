@@ -43,7 +43,7 @@ export default class MicrosoftGroups extends React.Component<IMicrosoftGroupsPro
       StyleToggle: false
     };
   }
-  
+
   public async GetPlanner() {
     this.state.MyGroupResults.map(async GroupId => {
       try {
@@ -67,7 +67,7 @@ export default class MicrosoftGroups extends React.Component<IMicrosoftGroupsPro
             }
           });
         }
-        
+
       this.setState({ MyGroupResults: this.state.MyGroupResults });
       } catch (error) {}
     });
@@ -190,25 +190,25 @@ public componentDidUpdate(prevProps: Readonly<IMicrosoftGroupsProps>): void {
     this.setState({GroupDisplayCard: this.props.GroupDisplayCard});
   }
   if (prevProps.StyleToggle !== this.props.StyleToggle && this.props.StyleToggle!== undefined){
-    this.setState({StyleToggle: this.props.StyleToggle})
+    this.setState({StyleToggle: this.props.StyleToggle});
   }
-  
+
 }
   public render(): React.ReactElement<IMicrosoftGroupsProps> {
-return <div>  
-  {this.state.StyleToggle === false ? 
-    <GraphConsumer 
-      context={this.props.context} 
-      GroupDisplay={this.state.GroupDisplayTable} 
-      Mygroups={this.state.MyGroupResults} 
+return <div>
+  {this.state.StyleToggle === false ?
+    <GraphConsumer
+      context={this.props.context}
+      GroupDisplay={this.state.GroupDisplayTable}
+      Mygroups={this.state.MyGroupResults}
       Allgroups={this.state.AllGroupsresults}/>
-  : 
-    <CardStyle 
-      context={this.props.context} 
-      GroupDisplay={this.props.GroupDisplayCard} 
-      Mygroups={this.state.MyGroupResults} 
+  :
+    <CardStyle
+      context={this.props.context}
+      GroupDisplay={this.props.GroupDisplayCard}
+      Mygroups={this.state.MyGroupResults}
       Allgroups={this.state.AllGroupsresults}/>
-  }   
-</div>
+  }
+</div>;
 }
 }

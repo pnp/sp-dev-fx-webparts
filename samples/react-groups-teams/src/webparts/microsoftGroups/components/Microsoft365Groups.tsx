@@ -47,7 +47,7 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
       this.setState({ title: 'Groups In My Organization' });
       this.SwitchGroupList2(this.state.mode, 'Groups In My Organization');
     }
-    
+
   }
   public SwitchGroupList2(Switch:string, title) {
     if (Switch === 'All') {
@@ -55,7 +55,7 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
         this.setState({ GroupResultsFiltered: this.props.Mygroups });
       } else{
         this.setState({ GroupResultsFiltered: this.props.Allgroups });
-      } 
+      }
     }
     else {
       var SwitchedValue;
@@ -66,10 +66,10 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
         SwitchedValue = this.props.Allgroups.filter(item => item.Visibility === Switch);
       }
       this.setState({ GroupResultsFiltered: SwitchedValue});
-    };
+    }
     var nextVariable;
     if(this.state.GroupDisplay != undefined) {
-      if(!(this.props.GroupDisplay === undefined)) {nextVariable = this.props.GroupDisplay} else {nextVariable = 5;}
+      if(!(this.props.GroupDisplay === undefined)) {nextVariable = this.props.GroupDisplay;} else {nextVariable = 5;}
       this.setState({ mode: Switch,  Next:nextVariable, Min: 0});
     }
     else {
@@ -79,10 +79,10 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
   public componentDidMount() {
     if (!(this.props.GroupDisplay === undefined || this.props.GroupDisplay ===null)){
       this.SwitchGroupList2(this.state.mode, this.state.title);
-      this.setState({GroupDisplay: this.props.GroupDisplay, Min:0, Next: this.props.GroupDisplay}) }
+      this.setState({GroupDisplay: this.props.GroupDisplay, Min:0, Next: this.props.GroupDisplay}); }
       else {
       this.SwitchGroupList2(this.state.mode, this.state.title);
-      this.setState({GroupDisplay: 5, Min: 0, Next: 5})
+      this.setState({GroupDisplay: 5, Min: 0, Next: 5});
     }
   }
 
@@ -111,18 +111,18 @@ public Back(GroupsFiltered) {
   ifull = i * (this.state.GroupDisplay), //we basically multiply it back out, finding how many pages of full groups we can have. 10
   Leftover = FilteredL - ifull, // Finding the difference/leftover when we do the math: 12 - 10 = 2
   difference = (this.state.GroupDisplay) - Leftover; // Finding how much we're missing in the last page: 5 - 2 = 3
-  if((this.state.Next + (this.state.GroupDisplay)) - difference > FilteredL){ 
+  if((this.state.Next + (this.state.GroupDisplay)) - difference > FilteredL){
 /*if 10 (remember we're on page 2) + 5 (the current display setting) - 3 (the difference between a full page) > Total Groups
 //This step matters if you are going back from the last page!! Remember, when we go to the next page we add in increments of 5
 That means if I were to go to the last page, my Next would be 15 and this statement would be true-
 15 + 5 - 3 = 17*/
     max = (FilteredL - Leftover) + 1; // 12 - 2 + 1. We get it back into the 5 increment setting.
-    min = max - this.state.GroupDisplay - 1; // Subtract 5 from the max so we can have a range of 5. 
+    min = max - this.state.GroupDisplay - 1; // Subtract 5 from the max so we can have a range of 5.
     /*We just add one because when we map through the Groups we don't have an "or equals to" so it has to be 1 above and under*/
   }
   else {
    // for when it's not the last page we're going back from
-    max = this.state.Next - this.state.GroupDisplay 
+    max = this.state.Next - this.state.GroupDisplay;
     min = max - this.state.GroupDisplay;
   }
   GroupsFiltered.map(Group => {
@@ -138,7 +138,7 @@ public componentDidUpdate(prevProps: Readonly<IGraphConsumerProps>): void {
   if(prevProps.GroupDisplay !== this.props.GroupDisplay) {
     this.setState({Next: this.props.GroupDisplay, Min: 0, GroupDisplay: this.props.GroupDisplay});
     }
-    if(prevProps.Allgroups !== this.props.Allgroups || prevProps.Mygroups !== this.props.Mygroups) { 
+    if(prevProps.Allgroups !== this.props.Allgroups || prevProps.Mygroups !== this.props.Mygroups) {
       this.SwitchGroupList2(this.state.mode, this.state.title);
     }
 }
@@ -153,17 +153,17 @@ public render(): React.ReactElement<IGraphConsumerProps> {debugger;
   return <div className={styles.Container}>
     <div className={styles.tableCaptionStyle}>{this.state.title}
       <div>
-        {this.state.mode === 'Public' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('Public', this.state.title)}>Public</button> : 
+        {this.state.mode === 'Public' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('Public', this.state.title)}>Public</button> :
         <button className={styles.Filters} onClick={() => this.SwitchGroupList2('Public', this.state.title)}>Public</button>}
 
-        {this.state.mode === 'All' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('All', this.state.title)}>All</button> : 
+        {this.state.mode === 'All' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('All', this.state.title)}>All</button> :
         <button className={styles.Filters} onClick={() => this.SwitchGroupList2('All', this.state.title)}>All</button>}
 
-        {this.state.mode === 'Private' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('Private', this.state.title)}>Private</button> : 
+        {this.state.mode === 'Private' ? <button className={styles.SelectedFilter} onClick={() => this.SwitchGroupList2('Private', this.state.title)}>Private</button> :
         <button className={styles.Filters} onClick={() => this.SwitchGroupList2('Private', this.state.title)}>Private</button>}
 
       </div>
-      <button className={styles.SwitchGroups} onClick={() => this.SwitchGroupList()}> View {this.state.title === 'My Groups' ? 
+      <button className={styles.SwitchGroups} onClick={() => this.SwitchGroupList()}> View {this.state.title === 'My Groups' ?
       'Groups in my Organization' : 'My Groups'}</button>
     </div>
     <div className={styles.tableStyle}>
@@ -197,23 +197,23 @@ public render(): React.ReactElement<IGraphConsumerProps> {debugger;
           {Group.Planner === undefined ? <div></div> : <a href={Group.Planner}>
             <Icon className={iconClass} style={{ color: '#077D3F' }} iconName="ViewListTree"></Icon></a>}
         </div>
-        <div className={styles.Center}>{Group.WebUrl === undefined || Group.WebUrl === null ? <div></div> : 
+        <div className={styles.Center}>{Group.WebUrl === undefined || Group.WebUrl === null ? <div></div> :
           <a href={`${Group.WebUrl}`}>
       <Icon className={iconClass} style={{ color: '#424AB5' }} iconName="TeamsLogo"></Icon>
     </a>}</div>
         <div className={styles.Center} style={{ borderRight: 'none' }}>{Group.Visibility}</div>
-      </div>}})}
+      </div>;}})}
       </div>
       {this.state.GroupResultsFiltered.length === 0 ? <div>There are no items with the selected filters</div>:<></>}
       <div className={styles.tableStyle}>
-          <div style={{display:'table-row'}}> 
+          <div style={{display:'table-row'}}>
             <div style={{position: 'relative', textAlign:'right', width:'45%', display:'table-cell'}}>
               <button className={BackButton} disabled={this.state.Next === (this.state.GroupDisplay)} onClick={() => this.Back(this.state.GroupResultsFiltered)}>Back</button>
-            </div> 
+            </div>
             <div style={{padding: 8}}>{this.state.Next/this.state.GroupDisplay} of {Math.ceil(this.state.GroupResultsFiltered.length/this.state.GroupDisplay)}</div>
             <div style={{position: 'relative', textAlign:'left', width:'45%', display:'table-cell'}}>
               <button className={NextButton} disabled={this.state.Next >= this.state.GroupResultsFiltered.length} onClick={() => this.Next(this.state.GroupResultsFiltered)}>Next</button>
-            </div> 
+            </div>
           </div>
        </div>
   </div>;
