@@ -19268,7 +19268,7 @@
       "Sample web part to display Twitter timeline."
     ],
     "creationDateTime": "2020-01-20",
-    "updateDateTime": "2020-01-20",
+    "updateDateTime": "2023-02-27",
     "products": [
       "SharePoint"
     ],
@@ -19279,7 +19279,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.16.1"
       }
     ],
     "thumbnails": [
@@ -19303,6 +19303,11 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460&u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f&v=4",
         "name": "Alex Terentiev",
         "twitter": "alexaterentiev"
+      },
+      {
+        "gitHubAccount": "reshmee011",
+        "name": "Reshmee Auckloo",
+        "pictureUrl": "https://github.com/reshmee011.png"
       }
     ],
     "references": [
