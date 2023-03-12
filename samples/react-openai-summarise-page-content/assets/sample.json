@@ -1,0 +1,50 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content",
+        "source": "pnp",
+        "title": "Multilingual SharePoint Page Summarization with Open AI API and Microsoft Graph Pages API",
+        "shortDescription": "This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-summarise-page-content",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-summarise-page-content",
+        "longDescription": [
+            "This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages."
+        ],
+        "creationDateTime": "2023-03-12",
+        "updateDateTime": "2023-03-12",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.16.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-summarise-page-content/assets/page_summary.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "anoopt",
+                "pictureUrl": "https://github.com/anoopt.png",
+                "name": "Anoop Tatti"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]
