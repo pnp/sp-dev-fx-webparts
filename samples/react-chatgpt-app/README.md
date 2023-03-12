@@ -101,6 +101,7 @@ This assume you have a Azure App called "OpenAIFunctionsApp", you can change thi
 Version|Date|Comments
 -------|----|--------
 1.0.0|Feb 19, 2023|Initial release
+1.1.0|March 2, 2023|Update ChatGPT-APP to use the latest API and model ChatGPT-3.5-turbo
 
 ## Minimal Path to Awesome
 
