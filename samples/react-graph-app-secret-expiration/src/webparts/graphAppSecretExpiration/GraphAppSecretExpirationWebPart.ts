@@ -29,6 +29,7 @@ export default class GraphAppSecretExpirationWebPart extends BaseClientSideWebPa
     { key: "type", text: "Type" }];
 
   public onInit(): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient("3")
