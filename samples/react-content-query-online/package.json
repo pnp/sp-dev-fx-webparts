@@ -43,7 +43,7 @@
     "lodash.mergewith": ">=4.6.2",
     "lodash.template": ">=4.5.0",
     "macaddress": ">=0.2.9",
-    "minimist": ">=1.2.3",
+    "minimist": ">=1.2.6",
     "mixin-deep": ">=1.3.2",
     "moment": ">=2.29.4",
     "morgan": ">=1.9.1",

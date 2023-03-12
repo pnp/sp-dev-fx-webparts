@@ -12,4 +12,7 @@ export interface IChatGptProps {
   context: BaseComponentContext;
   theme:  ITheme | IReadonlyTheme  ;
   chatId: string;
+  teamsId: string;
+  channelId: string;
+  parentMessageId: string;
 }

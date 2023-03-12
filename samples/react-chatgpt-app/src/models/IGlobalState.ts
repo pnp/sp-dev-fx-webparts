@@ -11,6 +11,9 @@ export  interface IGlobalState {
   isDarkTheme: boolean;
   hasTeamsContext: boolean;
   chatId: string;
+  teamsId: string;
+  channelId: string;
+  parentMessageId: string;
   appId: string;
   AzureFunctionUrl: string;
 }
