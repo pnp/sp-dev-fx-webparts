@@ -1,8 +1,8 @@
-# Github Profile display Via API
+# GitHub Profile display via API
 
 ## Summary
 
-This webpart loads the github profile  using SPHttp client in PnP v3.
+This web part loads the GitHub profile using SPHttp client in PnP v3.
 ![Display Output](assets/OutputGithubProfile.png)
 
 To change the profile or to use your own API follow the below path
@@ -36,13 +36,9 @@ To change the profile or to use your own API follow the below path
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
+## Contributors
 
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-pnpjs-http-client | [Divya Akula](https://github.com/divya-akula/)  [@divya-akula](https://twitter.com/_divyaakula) 
+- [Divya Akula](https://github.com/divya-akula/)  [@divya-akula](https://twitter.com/_divyaakula)
 
 ## Version history
 
@@ -50,21 +46,16 @@ To change the profile or to use your own API follow the below path
 | ------- | ---------------- | --------------- |
 | 1.0     | March 07, 2023   | Initial release  |
 
-## Disclaimer
+## Minimal path to awesome
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-http-client) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-pnpjs-http-client`, located under `samples`)
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
 
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
@@ -72,10 +63,9 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- invoking third party api
+- invoking third party API
 - PnPjs v3
 - Document card layout
-
 
 ## References
 
@@ -85,3 +75,25 @@ This extension illustrates the following concepts:
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 - [PnPjs Transition guide](https://pnp.github.io/pnpjs/transition-guide/) - Guidance for migrating to latest framework of pnpjs
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-pnpjs-http-client%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-pnpjs-http-client) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-pnpjs-http-client&template=bug-report.yml&sample=react-pnpjs-http-client&authors=@divya-akula&title=react-pnpjs-http-client%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-pnpjs-http-client&template=question.yml&sample=react-pnpjs-http-client&authors=@divya-akula&title=react-pnpjs-http-client%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-pnpjs-http-client&template=suggestion.yml&sample=react-pnpjs-http-client&authors=@divya-akula&title=react-pnpjs-http-client%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-pnpjs-http-client" />

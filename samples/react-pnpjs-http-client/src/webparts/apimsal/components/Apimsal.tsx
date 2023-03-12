@@ -24,21 +24,23 @@ export default class Apimsal extends React.Component<IApimsalProps,GitUser, {}> 
   
 //  public async componentDidMount() {
 
-public componentDidMount(): void {
+public async componentDidMount(): Promise<void> {
   // read all file sizes from Documents library
   console.log("loadedx");
-  this.state={
+  this.setState({
     "name": "",   
   "blog": "",   
   "followers":9,
   "imageUrl":""
-}
+});
 
-  this.fetchUserDetails();
+  await this.fetchUserDetails();
 }
 
 private fetchUserDetails= async (): Promise<void> => {
-  this.props.userService.getUserDetails("divya-akula","name").then((result:any)=>{
+  // @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await this.props.userService.getUserDetails("divya-akula","name").then((result:any)=>{
     this.setState({name: result.name,followers:result.followers,blog:result.blog,imageUrl:result.
       avatar_url}
     );
@@ -54,15 +56,14 @@ private fetchUserDetails= async (): Promise<void> => {
       isDarkTheme,
       hasTeamsContext,
     } = this.props;
-    if(this.state != null)
+    if(this.state !== null)
     {
       return (
         <section className={`${styles.apimsal} ${hasTeamsContext ? styles.teams : ''}`}>
           <div>
             {/* <h3>{this.state.user.name}</h3> */}
             <this.UserElement blog={this.state.blog} followers={this.state.followers} name={this.state.name} imageUrl={this.state.imageUrl}/>
-            <div >
-            </div>
+            <div />
           </div>
         </section>);
     }
@@ -71,14 +72,14 @@ private fetchUserDetails= async (): Promise<void> => {
         <div className={styles.welcome}>
           <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           <h2>Well done, !</h2>
-          <div></div>
+          <div/>
           <div>Web part property value: </div>
         </div>
         <div>
           <div className="ms-Grid">
             <div className="ms-Grid-row">
               <div className="ms-Grid-col">
-                I am empty <i className="ms-Icon ms-Icon--Sad" aria-hidden="true"></i>
+                I am empty <i className="ms-Icon ms-Icon--Sad" aria-hidden="true"/>
               </div>
             </div>
           </div>
@@ -109,9 +110,7 @@ private fetchUserDetails= async (): Promise<void> => {
             title={currentUser.name}
             shouldTruncate={true}
           />
-          <DocumentCardActivity people={[{ name: String( currentUser.followers), profileImageSrc: currentUser.imageUrl }]} activity={currentUser.blog}>
-
-          </DocumentCardActivity>
+          <DocumentCardActivity people={[{ name: String( currentUser.followers), profileImageSrc: currentUser.imageUrl }]} activity={currentUser.blog}/>
           
             </DocumentCardDetails>
           </DocumentCard>

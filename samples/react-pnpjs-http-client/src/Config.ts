@@ -13,11 +13,11 @@ import { AdalClient } from "@pnp/adaljsclient";
 import "@microsoft/sp-http";
 import { spfi, SPFx as spSPFx } from "@pnp/sp";
 import { graphfi, SPFx as graphSPFx} from "@pnp/graph";
-// eslint-disable-next-line no-var
-var _sp: SPFI = null;
-var _graph:GraphFI=null;
-var _SpHttpClient:SPHttpClient = null;
-var _adalClient: any = null;
+let _sp: SPFI = null;
+let _graph:GraphFI=null;
+let _SpHttpClient:SPHttpClient = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let _adalClient: any = null;
 
 export const getSP = (context?: WebPartContext): SPFI => {
   if (context != null) { // eslint-disable-line eqeqeq
@@ -41,21 +41,22 @@ export const getGraph = (context?: WebPartContext): GraphFI => {
   // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
   // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
   // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
-  if (context != null) { 
+  if (context !== null) { 
   _graph = graphfi().using(graphSPFx(context)).using(DefaultHeaders());
   }
 
 return _graph;
 };
 export const getSPHttpClient =(context?: WebPartContext):SPHttpClient=>{
-  if (context != null) {
+  if (context !== null) {
     _SpHttpClient = context.spHttpClient;
 
   }
   return _SpHttpClient;
 };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getAdalClient =(context?: WebPartContext):any=>{
-  if (context != null) {
+  if (context !== null) {
     _adalClient = AdalClient.fromSPFxContext(context);
 
   }

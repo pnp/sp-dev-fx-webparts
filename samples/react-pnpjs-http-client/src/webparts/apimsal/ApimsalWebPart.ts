@@ -28,7 +28,7 @@ export default class ApimsalWebPart extends BaseClientSideWebPart<IApimsalWebPar
   protected get isRenderAsync(): boolean {
     return true;
   }
-  public async render() {
+  public async render(): Promise<void> {
     const element: React.ReactElement<IApimsalProps> = React.createElement(
       Apimsal,
       {

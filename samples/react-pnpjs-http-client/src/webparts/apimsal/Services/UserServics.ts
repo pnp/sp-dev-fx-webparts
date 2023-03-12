@@ -24,8 +24,10 @@ export class UserServics implements IUserService {
              this._httpClient = serviceScope.consume(HttpClient.serviceKey);
          });
      }
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
      public async getUserDetails(upn: string,url:string): Promise<any> {
         const _client: HttpClient = await this._httpClient;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const httpClientOptions:any = {
             headers: { "Content-Type": "application/json"  },
             method:"GET"
@@ -33,10 +35,12 @@ export class UserServics implements IUserService {
           };
           let userDets= null;
        await  _client.fetch("https://api.github.com/users/divya-akula",HttpClient.configurations.v1,httpClientOptions).
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         then((res:any): Promise<any>=>{
           userDets=  res.json();
           return userDets;
         }).
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         catch((err:any)=>{
           console.warn(err);
         });
