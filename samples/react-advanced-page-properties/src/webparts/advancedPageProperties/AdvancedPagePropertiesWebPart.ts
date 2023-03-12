@@ -79,6 +79,7 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     this._availableProperties = [];
 
     Log.Write(`${_fields.length.toString()} fields retrieved!`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     _fields.forEach((field: any) => {
       if (!field.FromBaseType && !field.Hidden && field.SchemaXml.indexOf("ShowInListSettings=\"FALSE\"") === -1
           && field.TypeAsString !== "Boolean" && field.TypeAsString !== "Note") {
@@ -97,20 +98,23 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     return Version.parse('1.0');
   }
 
-  protected onAddButtonClick (value: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  protected onAddButtonClick (_value: any) {
     this.properties.selectedProperties.push(this._availableProperties[0].key.toString());
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected onDeleteButtonClick (value: any) {
     Log.Write(value.toString());
-    var removed = this.properties.selectedProperties.splice(value, 1);
+    const removed = this.properties.selectedProperties.splice(value, 1);
     Log.Write(`${removed[0]} removed.`);
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  protected onPropertyPaneFieldChanged(propertyPath: string, _oldValue: any, newValue: any): void {
     if (propertyPath.indexOf("selectedProperty") >= 0) {
       Log.Write('Selected Property identified');
-      let index: number = _.toInteger(propertyPath.replace("selectedProperty", ""));
+      const index: number = _.toInteger(propertyPath.replace("selectedProperty", ""));
       this.properties.selectedProperties[index] = newValue;
     }
   }
@@ -125,7 +129,8 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     Log.Write(`getPropertyPaneConfiguration`);
 
     // Initialize with the Title entry
-    var propDrops: IPropertyPaneField<any>[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const propDrops: IPropertyPaneField<any>[] = [];
     propDrops.push(PropertyPaneTextField('title', {
       label: strings.TitleFieldLabel
     }));
