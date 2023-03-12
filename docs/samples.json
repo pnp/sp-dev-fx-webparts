@@ -3129,7 +3129,7 @@
       "- Improved support for dates"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2022-01-12",
+    "updateDateTime": "2023-03-06",
     "products": [
       "SharePoint"
     ],
@@ -3140,7 +3140,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.16.1"
       }
     ],
     "thumbnails": [
@@ -3164,6 +3164,13 @@
       }
     ],
     "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "company": "Macaw",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/16476453?v=4",
+        "name": "Valeras Narbutas",
+        "twitter": "ValerasNarbutas"
+      },
       {
         "gitHubAccount": "mhomol",
         "company": "ThreeWill",
