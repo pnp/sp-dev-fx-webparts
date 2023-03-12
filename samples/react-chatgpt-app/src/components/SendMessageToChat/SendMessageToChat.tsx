@@ -18,7 +18,7 @@ export const SendMessageToChat: React.FunctionComponent<ISendMessageProps> = (
   props: React.PropsWithChildren<ISendMessageProps>
 ) => {
   const [appGlobalState] = useAtom(globalState);
-  const { hasTeamsContext, chatId,  } = appGlobalState;
+  const { hasTeamsContext, chatId,teamsId,channelId,   } = appGlobalState;
   const { onSendMessage } = props;
 
   const shareIcon: IIconProps = React.useMemo(() => {return  { iconName: "Share" }}, []);
@@ -26,8 +26,8 @@ export const SendMessageToChat: React.FunctionComponent<ISendMessageProps> = (
   const tooltipId = useId("tooltip");
 
   const isInChat = React.useMemo(() => {
-    return hasTeamsContext && chatId;
-  }, [chatId, hasTeamsContext]);
+    return hasTeamsContext && (chatId || teamsId || channelId);
+  }, [chatId,teamsId,channelId, hasTeamsContext]);
 
   if (!isInChat) {
     return null;

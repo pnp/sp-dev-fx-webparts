@@ -66,6 +66,9 @@ export default class ChatGptWebPart extends BaseClientSideWebPart<IChatGptProps>
       theme: this._currentTheme,
       context: this.context,
       chatId: this._chatId,
+      teamsId: this._teamId,
+      channelId: this._channelId,
+      parentMessageId: this._parentMessageId,
     });
 
     ReactDom.render(element, this.domElement);
@@ -83,6 +86,7 @@ export default class ChatGptWebPart extends BaseClientSideWebPart<IChatGptProps>
       this._teamId = teamsContext.team?.groupId;
       this._channelId = teamsContext.channel?.id;
       this._parentMessageId = teamsContext.app.parentMessageId;
+
 
       console.log("chatId", this._chatId);
       console.log("teamId", this._teamId);

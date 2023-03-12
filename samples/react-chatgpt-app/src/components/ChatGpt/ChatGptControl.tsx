@@ -26,14 +26,19 @@ export const ChatGptControl: React.FunctionComponent<IChatGptProps> = (
   const { context } = props;
   const [appGlobalState, setAppGlobalState] = useAtom(globalState);
   const { containerStyles } = useChatGptStyles();
-  const { hasTeamsContext, chatId } = appGlobalState;
+  const { hasTeamsContext, chatId,   channelId   } = appGlobalState;
   const { getTenantProperty } = useSpAPI(context);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<Error | undefined>(undefined);
 
   const isInChat = React.useMemo((): boolean => {
-    return hasTeamsContext && !!chatId;
-  }, [chatId, hasTeamsContext]);
+    if (hasTeamsContext && (chatId )) {
+      return true;
+    }
+    return false;
+  }, [chatId,  channelId, hasTeamsContext]);
+
+const isInChannel = React.useMemo(() =>  !!channelId, [ channelId]);
 
   const isPreviewChatId = React.useMemo((): boolean => {
     if (isInChat) {
@@ -91,7 +96,7 @@ export const ChatGptControl: React.FunctionComponent<IChatGptProps> = (
   return (
     <>
       <Stack tokens={{ childrenGap: 20 }} styles={containerStyles}>
-        <Header isInChat={isInChat} />
+        <Header isInChat={isInChat || isInChannel} />
         <RenderPreviewChatInfo isPreviewChatId={isPreviewChatId} />
         <RenderMessages isShowMessages={!isPreviewChatId} />
       </Stack>

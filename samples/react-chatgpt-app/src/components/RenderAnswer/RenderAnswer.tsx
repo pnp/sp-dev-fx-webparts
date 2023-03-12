@@ -14,7 +14,6 @@ import { showNotification } from '@mantine/notifications';
 import { CARD } from '../../adaptiveCards/chatGPTAnswerCard';
 import { globalState } from '../../atoms';
 import { useAdaptiveCardsUtils } from '../../hooks/useAdaptiveCardsUtils';
-import { useGraphAPI } from '../../hooks/useGraphAPI';
 import { useSendMessageToTeams } from '../../hooks/useSendMessageToTeams';
 import { IAdaptativeCardData } from '../../models/IAdaptivecardData';
 import { IRenderAnswerProps } from '../../models/IRenderAnswerProps';
@@ -26,24 +25,25 @@ import { SendMessageToChat } from '../SendMessageToChat/SendMessageToChat';
 export const RenderAnswer: React.FunctionComponent<IRenderAnswerProps> = (
   props: React.PropsWithChildren<IRenderAnswerProps>
 ) => {
-  const { answer } = props;
+  const { answer, question } = props;
   const { answerStyles, nameStyles, answerContainerStyles, controlStyles } = useChatGptStyles();
   const [appGlobalState] = useAtom(globalState);
-  const { lastConversation, context, chatId } = appGlobalState;
+  const { lastConversation, context, chatId, teamsId, channelId, parentMessageId, hasTeamsContext } = appGlobalState;
   const [error, setError] = React.useState<Error | undefined>(undefined);
-  const { sendMessage } = useGraphAPI(context);
+
   const { createAdaptiveCard } = useAdaptiveCardsUtils();
   const { sendAdativeCardToUsers } = useSendMessageToTeams(context);
   const hasError = React.useMemo(() => error !== undefined, [error]);
 
+
   const onSendMessageToChat = React.useCallback(async () => {
-    if (answer && chatId) {
+    if (answer &&  hasTeamsContext   ) {
       try {
-        const cardData: IAdaptativeCardData = { date: format(new Date(), "PPpp"), answer: answer };
+        const cardData: IAdaptativeCardData = { date: format(new Date(), "PPpp"), answer: answer, question: question ?? ""};
         const card = createAdaptiveCard(cardData, CARD);
         console.log("carddata", cardData);
         console.log("card", card);
-        await sendAdativeCardToUsers(card, cardData, chatId);
+        await sendAdativeCardToUsers(card, cardData, chatId, teamsId, channelId, parentMessageId);
 
         showNotification({
           title: strings.ChatGPTAppNotificationTitle,
@@ -57,7 +57,7 @@ export const RenderAnswer: React.FunctionComponent<IRenderAnswerProps> = (
         setError(error);
       }
     }
-  }, [answer, chatId, sendMessage, sendAdativeCardToUsers, createAdaptiveCard]);
+  }, [answer,teamsId,channelId, hasTeamsContext,  chatId, sendAdativeCardToUsers, createAdaptiveCard, question, parentMessageId]);
 
   const islastConversation = React.useMemo(() => lastConversation === "answer", [lastConversation]);
   return (
@@ -86,7 +86,6 @@ export const RenderAnswer: React.FunctionComponent<IRenderAnswerProps> = (
               <SendMessageToChat onSendMessage={onSendMessageToChat} />
             </Stack>
           </Stack>
-
           <Stack horizontalAlign="start" tokens={{ childrenGap: 10 }}>
             <div
               dangerouslySetInnerHTML={{ __html: answer?.replace("\n\n", " ") }}

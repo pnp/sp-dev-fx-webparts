@@ -4,17 +4,15 @@ import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { Guid } from '@microsoft/sp-core-library';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 
+import { useGraphAPI } from '../hooks/useGraphAPI';
 import { IAdaptativeCardData } from '../models/IAdaptivecardData';
 import { HostedContents } from '../models/IChatMessage';
 
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const useSendMessageToTeams = (context: BaseComponentContext) => {
-  const graphClient = React.useMemo(() => {
-    return async () => {
-      const client = await context.msGraphClientFactory.getClient("3");
-      return client;
-    };
-  }, [context]);
+
+const { sendMessageToChat, sendMessageToChannel, replyToMessage } = useGraphAPI(context);
+
 
   const getHostedContent = React.useCallback(async (adaptiveCard: object, adaptiveCardData: IAdaptativeCardData) => {
     try {
@@ -55,50 +53,17 @@ export const useSendMessageToTeams = (context: BaseComponentContext) => {
     []
   );
 
-/*   const createChatMembers = React.useCallback((receiverEmail: string) => {
-    try {
-      const currentUser = context.pageContext.user.email;
-      const chatMembers = [
-        {
-          "@odata.type": "#microsoft.graph.aadUserConversationMember",
-          roles: ["owner"],
-          "user@odata.bind": `https://graph.microsoft.com/v1.0/users('${currentUser}')`,
-        },
-        {
-          "@odata.type": "#microsoft.graph.aadUserConversationMember",
-          roles: ["owner"],
-          "user@odata.bind": `https://graph.microsoft.com/v1.0/users('${receiverEmail}')`,
-        },
-      ];
-      return chatMembers;
-    } catch (error) {
-      if (DEBUG) {
-        console.error(`[SendMessage.createChatMembers]: error=${error}`);
-        throw error;
-      }
-    }
-  }, []); */
-/*
-  const createChat = React.useCallback(
-    async (receiverEmail) => {
-      try {
-        const members = createChatMembers(receiverEmail);
-        const chat = await (await graphClient()).api("/chats").post({ chatType: "oneOnOne", members: members });
-        return chat;
-      } catch (error) {
-        if (DEBUG) {
-          console.error("[SendMessage.createChat]: error=", error);
-          throw error;
-        }
-      }
-    },
-    [graphClient]
-  );
- */
-  const sendMessage = React.useCallback(
-    async (adaptiveCard: object, adaptiveCardData: IAdaptativeCardData, chatId: string) => {
-      try {
 
+  const sendMessage = React.useCallback(
+    async (
+      adaptiveCard: object,
+      adaptiveCardData: IAdaptativeCardData,
+      chatId: string,
+      teamsId: string,
+      channelId: string,
+      parentMessageId: string
+    ) => {
+      try {
         const { body, attachments, hostedContents } = await getSendMessagePayload(adaptiveCard, adaptiveCardData);
         const chatMessagePayload = {
           subject: "OpenAI Answer",
@@ -106,8 +71,20 @@ export const useSendMessageToTeams = (context: BaseComponentContext) => {
           attachments: attachments,
           hostedContents: hostedContents,
         };
-        const chatMessage = await (await graphClient()).api(`/chats/${chatId}/messages`).post(chatMessagePayload);
-        return chatMessage;
+        if (chatId && !teamsId && !channelId) {
+          console.log('channelId', channelId);
+          console.log('teamsId', teamsId);
+          const chatMessage = await  sendMessageToChat(chatId, chatMessagePayload, );
+          return chatMessage;
+        }
+        if (teamsId && channelId && !parentMessageId) {
+          const channelMessage =  sendMessageToChannel(teamsId, channelId, chatMessagePayload);
+          return channelMessage;
+        }
+        if (teamsId && channelId && parentMessageId) {
+          const replyMessage = await replyToMessage(teamsId, channelId, parentMessageId, chatMessagePayload);
+          return replyMessage;
+        }
       } catch (error) {
         if (DEBUG) {
           console.error("[SendMessage]: error=", error);
@@ -115,13 +92,20 @@ export const useSendMessageToTeams = (context: BaseComponentContext) => {
         }
       }
     },
-    [graphClient]
+    [getSendMessagePayload, sendMessageToChannel, sendMessageToChat, replyToMessage,  ]
   );
 
   const sendAdativeCardToUsers = React.useCallback(
-    async (adaptiveCard: object, adaptiveCardData: IAdaptativeCardData, chatId: string) => {
+    async (
+      adaptiveCard: object,
+      adaptiveCardData: IAdaptativeCardData,
+      chatId: string,
+      teamsId: string,
+      channelId: string,
+      parentMessageId: string
+    ) => {
       try {
-        await sendMessage(adaptiveCard, adaptiveCardData, chatId);
+        await sendMessage(adaptiveCard, adaptiveCardData, chatId, teamsId, channelId, parentMessageId);
       } catch (error) {
         if (DEBUG) {
           console.error(`[SendMessage.sendAdativeCardToUsers]: error=${error.message}`);
@@ -129,7 +113,7 @@ export const useSendMessageToTeams = (context: BaseComponentContext) => {
         }
       }
     },
-    [graphClient]
+    [sendMessage]
   );
 
   return { sendAdativeCardToUsers };
