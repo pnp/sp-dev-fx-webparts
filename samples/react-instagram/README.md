@@ -37,7 +37,7 @@ Version|Date|Comments
 
 ## Prerequisites
 
-This web part needs an Instagram user token. An Instagram developer account is required to generate an access token, and using that token to fetch the feed data from Instagram's API [https://developers.facebook.com/docs/instagram-basic-display-api/overview#instagram-user-access-tokens](https://developers.facebook.com/docs/instagram-basic-display-api/overview#instagram-user-access-tokens) environment.
+This web part needs an Instagram user token. An Instagram developer account is required to generate an access token, and using that token to fetch the feed data from [Instagram's Basic Display API](https://developers.facebook.com/docs/instagram-basic-display-api/overview#instagram-user-access-tokens) environment.
 
 Follow the steps to generate your user access token.
 
