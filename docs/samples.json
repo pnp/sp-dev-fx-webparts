@@ -16533,7 +16533,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2022-08-31",
+    "updateDateTime": "2023-03-11",
     "products": [
       "SharePoint"
     ],
@@ -16544,7 +16544,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13.1"
+        "value": "1.16.1"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
