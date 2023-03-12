@@ -62,7 +62,7 @@ This web part demonstrates a couple of nice skillsets for an SPFx developer, the
 
 This demonstrates:
 
-* Dynamic propertypane that changes based on user input in the web part
+* Dynamic property pane that changes based on user input in the web part
 * Fluent Drag 'n drop using 'react-sortable-hoc'
 * Using PnP Reusable Controls (Icon picker and WebPartTitle)
 * Styling Fluent UI components (please don't look at the actual CSS, but the principals of how to do it)

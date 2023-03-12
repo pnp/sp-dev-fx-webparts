@@ -6,7 +6,6 @@ import {
   IPropertyPaneConfiguration,
   IPropertyPaneGroup,
   PropertyPaneButton,
-  PropertyPaneCheckbox,
   PropertyPaneChoiceGroup,
   PropertyPaneLabel,
   PropertyPaneTextField,
@@ -18,7 +17,6 @@ import { ILink } from './models/ILink';
 import { PropertyFieldIconPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldIconPicker';
 import { IPnPQuickLinksProps } from './components/IPnPQuickLinksProps';
 import { LayoutType, TileSize } from './models/enums';
-import { PropertyPaneDescription } from 'PnPQuickLinksWebPartStrings';
 
 
 
@@ -68,7 +66,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
         break;
 
       //Feel free to contribute here and add the other layouts so we can eventually have every layout supported!
-    };
+    }
 
     ReactDom.render(element, this.domElement);
   }
@@ -106,6 +104,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
                   PropertyFieldIconPicker(`links[${index}].IconName`,
                     {
                       key: `links[${index}].IconName`,
+                      // eslint-disable-next-line no-return-assign
                       onSave: name => this.properties.links[index].IconName = name,
                       onPropertyChange: this.onPropertyPaneFieldChanged,
                       properties: this.properties,
@@ -124,7 +123,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
                     text: "Delete",
                     icon: "Delete",
                     onClick: () => {
-                      this.properties.links = this.properties.links.filter(x => x.Id != this.SelectedItemId);
+                      this.properties.links = this.properties.links.filter(x => x.Id !== this.SelectedItemId);
                       this.onPropertyPaneFieldChanged("links", null, this.properties.links);
                       this.SelectedItemId = null;
                       this.context.propertyPane.refresh();
@@ -168,7 +167,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
                 }),
               ]
             },
-            ...(this.properties.type == LayoutType.Tiles ? this.TileLayoutFields() : []),
+            ...(this.properties.type === LayoutType.Tiles ? this.TileLayoutFields() : []),
             {
               groupName: "Filter",
               groupFields: [

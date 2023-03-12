@@ -6,12 +6,12 @@ export class Util {
         return uniqueId;
     }
 
-    public static CalculateNewSortWeight(arr: ILink[], newIndex: number, oldIndex?: number) {
+    public static CalculateNewSortWeight(arr: ILink[], newIndex: number, oldIndex?: number):number {
         const links = [...arr].sort((a, b) => a.SortWeight - b.SortWeight);
 
-        if (newIndex == 0)
+        if (newIndex === 0)
             return this.GetAverage(null, links[0]?.SortWeight);
-        if (newIndex == links.length)
+        if (newIndex === links.length)
             return this.GetAverage(links[links.length - 1].SortWeight, null);
 
         if (newIndex < oldIndex)
@@ -19,9 +19,9 @@ export class Util {
         return this.GetAverage(links[newIndex]?.SortWeight, links[newIndex + 1]?.SortWeight)
     }
 
-    private static GetAverage(prev: number, next: number) {
-        if (prev == null) prev = 0;
-        if (next == null) next = 1;
+    private static GetAverage(prev: number, next: number):number {
+        if (prev === null) prev = 0;
+        if (next === null) next = 1;
 
         return (prev + next) / 2
     }

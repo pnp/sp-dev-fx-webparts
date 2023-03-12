@@ -18,7 +18,7 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
   const { displayMode, webPartTitle, setWebpartTitle, links, setLinks, SelectedItemId, setSelectedItemId, hideText, size } = props;
   const theme = getTheme();
 
-  const AddLink = () => {
+  const AddLink = ():void => {
     setLinks([...links, {
       Id: Util.GenerateId(),
       SortWeight: Util.CalculateNewSortWeight(links, links.length),
@@ -37,7 +37,7 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
       text={link.Title}
       styles={{
         root: {
-          border: SelectedItemId == link.Id ? `3px solid ${theme.palette.themeSecondary}` : undefined,
+          border: SelectedItemId === link.Id ? `3px solid ${theme.palette.themeSecondary}` : undefined,
           width: size < TileSize.Large ? 85 + size : 130,
           minHeight: size < TileSize.Large ? 80 + size : 124,
           borderRadius: 3
@@ -50,10 +50,10 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
           textAlign: "center"
         },
       }}
-      href={displayMode == DisplayMode.Read && link.Link}
-      target={displayMode == DisplayMode.Read && link.Target}
+      href={displayMode === DisplayMode.Read && link.Link}
+      target={displayMode === DisplayMode.Read && link.Target}
 
-      onClick={displayMode == DisplayMode.Edit && (() => setSelectedItemId(link.Id))}
+      onClick={displayMode === DisplayMode.Edit && (() => setSelectedItemId(link.Id))}
       onRenderText={(props) => {
         return (
           <Stack styles={{ root: { gap: 10 } }}>
@@ -71,13 +71,13 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
           key={`${item.Id}`}
           index={index}
           link={item}
-          disabled={displayMode == DisplayMode.Read}
+          disabled={displayMode === DisplayMode.Read}
         />
       ))}
     </div>
   ));
 
-  const UpdateSortIndex = (indexToMove: number, newIndex: number) => {
+  const UpdateSortIndex = (indexToMove: number, newIndex: number):void => {
     const arr = [...links].sort((a, b) => a.SortWeight - b.SortWeight);
     const res = Util.CalculateNewSortWeight(links, newIndex, indexToMove);
     arr[indexToMove].SortWeight = res;
@@ -94,7 +94,7 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
         updateProperty={setWebpartTitle}
       />
 
-      {displayMode == DisplayMode.Edit && <ActionButton iconProps={{ iconName: "Add" }} onClick={() => AddLink()} >Add link</ActionButton>}
+      {displayMode === DisplayMode.Edit && <ActionButton iconProps={{ iconName: "Add" }} onClick={() => AddLink()} >Add link</ActionButton>}
 
       <SortableList
         items={[...links].sort((a, b) => a.SortWeight - b.SortWeight)}
