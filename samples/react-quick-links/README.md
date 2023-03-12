@@ -75,7 +75,7 @@ There are still loads of ideas that I would love to see implemented, but right n
 | ------------------------------------------------------------------------------------------------------------------------------------- | ---- |
 | Drag 'n drop                                                                                                                          | ✅    |
 | Dynamic property pane                                                                                                                 | ✅    |
-| Demonstrate PnP reusable consols                                                                                                      | ✅    |
+| Demonstrate PnP reusable controls                                                                                                     | ✅    |
 | Styling Fluent UI                                                                                                                     | ✅    |
 | Audience targeting                                                                                                                    | ❌    |
 | Several layouts                                                                                                                       | ❌    |
