@@ -41,54 +41,66 @@ This web part needs an Instagram user token. An Instagram developer account is r
 
 Follow the steps to generate your user access token.
 
-Step 1
+### Step 1
+
 Go to developers.facebook.com and sign in to your Facebook account. Click on the "My Apps" button on the top right.
 ![Step 1](./assets/usertoken-step1.png)
 
-Step 2 
+### Step 2
+
 Click on the "Create App" button.
 ![Step 2](./assets/usertoken-step2.png)
 
-Step 3
+### Step 3
+
 Select either "Consumer" or "None" as your application type.
 ![Step 3](./assets/usertoken-step3.png)
 
-Step 4
+### Step 4
+
 Give your application a name, enter your contact email, and create your app.
 ![Step 4](./assets/usertoken-step4.png)
 
-Step 5
+### Step 5
+
 Re-enter your Facebook account password
 ![Step 5](./assets/usertoken-step5.png)
 
-Step 6
-Click on the "Set Up" button in the "Instagram Basic Display" box. 
-![Step 6](./assets/usertoken-step6.png) 
+### Step 6
 
-Step 7
+Click on the "Set Up" button in the "Instagram Basic Display" box.
+![Step 6](./assets/usertoken-step6.png)
+
+### Step 7
+
 Click on "Create New App" and click on "Create App" from the pop up to create a new instagram app id.
-![Step 7](./assets/usertoken-step7.png) 
+![Step 7](./assets/usertoken-step7.png)
 
-Step 8
+### Step 8
+
 Save your changes. In the "User Token Generator" section, click on the "Add or Remove Instagram Testers" button, and follow the instructions.
-![Step 8](./assets/usertoken-step8.png) 
+![Step 8](./assets/usertoken-step8.png)
 
-Step 9
+### Step 9
+
 Click on the link "apps and websites" link to manage instagram tester invitations and click on accept.
-![Step 9](./assets/usertoken-step9.png) 
-![Step 10](./assets/usertoken-step10.png) 
+![Step 9](./assets/usertoken-step9.png)
+![Step 10](./assets/usertoken-step10.png)
 
-Step 11
+### Step 11
+
 Click on "Basic Display", click on "Generate Token" under "User Token Generator" and from the pop up click on "continue as <testername>".
-![Step 11](./assets/usertoken-step11.png) 
+![Step 11](./assets/usertoken-step11.png)
 
-Step 12
+### Step 12
+
 Click on "Allow" from the pop up to authorise the app to retrieve profile and media information about the instagram user.
-![Step 12](./assets/usertoken-step12.png) 
+![Step 12](./assets/usertoken-step12.png)
 
-Step 13
+### Step 13
+
 Copy the user token to be used on the webpart.
-![Step 13](./assets/usertoken-step13.png) 
+![Step 13](./assets/usertoken-step13.png)
 
 You must then enter this user token in the web part properties to display the instagram feeds from the user.
 
@@ -107,12 +119,12 @@ You must then enter this user token in the web part properties to display the in
   * add _Instagram Feed_ web part
   * configure web part
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
 This sample illustrates how to use [Instagram Basic Display API](https://developers.facebook.com/docs/instagram-basic-display-api) to display instagram posts of specific profile. Ajax (Asynchronous JavaScript and XML) is being used to authenticate with the Instagram API and retrieve the user's feed.
-It also uses [swiper](https://www.npmjs.com/package/swiper). The Swiper library is used to create a carousel effect for the Instagram feed, allowing users to swipe left or right to view the different posts. 
+It also uses [swiper](https://www.npmjs.com/package/swiper). The Swiper library is used to create a carousel effect for the Instagram feed, allowing users to swipe left or right to view the different posts.
 
 ## Help
 
@@ -130,10 +142,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-instagram&template=question.yml&sample=react-instagram&authors=@AJIXuMuK&title=react-instagram%20-%20).
 
-
 ## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-instagram" />
