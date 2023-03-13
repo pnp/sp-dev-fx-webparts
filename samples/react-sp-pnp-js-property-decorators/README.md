@@ -70,4 +70,4 @@ https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />

@@ -224,4 +224,4 @@ For how to find this option, please refer [connect to direct line](https://learn
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />

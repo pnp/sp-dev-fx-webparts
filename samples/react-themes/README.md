@@ -66,4 +66,4 @@ npm i -g gulp
 gulp
 ```
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-themes" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-themes" />

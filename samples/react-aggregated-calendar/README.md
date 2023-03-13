@@ -76,7 +76,7 @@ This Web Part displays the events from multiple calendars located in various sit
 - Formatted Date time
 - Display of Event Details over event click
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
 
 ## React Aggregated Calendar
 
@@ -109,4 +109,4 @@ gulp package-solution
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-aggregated-calendar" />

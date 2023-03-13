@@ -108,4 +108,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-organization-chart)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-organization-chart)
