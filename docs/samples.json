@@ -9796,6 +9796,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-instagram",
+    "source": "pnp",
+    "title": "Instagram Feed",
+    "shortDescription": "Sample web part to showcase an Instagram feed.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-instagram",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-instagram",
+    "longDescription": [
+      "Sample web part to showcase an Instagram feed."
+    ],
+    "creationDateTime": "2023-03-12",
+    "updateDateTime": "2023-03-12",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.16.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "reshmee011",
+        "pictureUrl": "https://github.com/reshmee011.png",
+        "name": "Reshmee Auckloo"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-interactive-map",
     "source": "pnp",
     "title": "Interactive Map",
