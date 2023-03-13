@@ -92,4 +92,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-soccer-highlights&template=question.yml&sample=react-soccer-highlights&authors=@jyasir&title=react-soccer-highlights%20-%20).
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-soccer-highlights" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-soccer-highlights" />

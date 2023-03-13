@@ -125,4 +125,4 @@ This error may confusingly present itself if either of the following are true:
 -  [Restify](https://www.npmjs.com/package/restify)
 -  [dotenv](https://www.npmjs.com/package/dotenv)
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-sso/bot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-sso/bot" />

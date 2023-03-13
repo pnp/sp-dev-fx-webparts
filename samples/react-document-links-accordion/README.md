@@ -699,6 +699,6 @@ Finally,
 
 <img 
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-documents-links-accordion" 
+>  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-documents-links-accordion" 
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions./>

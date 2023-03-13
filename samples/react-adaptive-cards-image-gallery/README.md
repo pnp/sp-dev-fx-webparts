@@ -135,4 +135,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-adaptive-cards-image-gallery" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-adaptive-cards-image-gallery" />

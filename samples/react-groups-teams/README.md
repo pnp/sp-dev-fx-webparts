@@ -4,37 +4,25 @@
 
 Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.
 
-1. The Microsoft Groups view has filter option for private or public groups and can switch between viewing all groups or just my groups.
-
+- Toggle- View groups signed in user is a member of or all groups
 - Group Name (hover for group description)
-- Link to email
+- Link to Group email
 - Link to SharePoint site
 - Link to calendar
 - Link to Planner plan (if available)
-- Group privacy
+- Group privacy filter (Private/Public/All)
+- Microsoft Teams team link for the Group
+- Pagination (breaks results into pages and displays page numbers)
+- Style toggle (Card/Table)
+- Group display selection
+    1. Select 5, 10, or 15 groups to display per page for the Table display style
+    2. Select 6, 9, and 12 groups to display per page for the Card display style
 
-2. The Microsoft Teams view has filter option for private or public Teams.
-
-- Team Name (hover for group description)
-- Link to email
-- Link to SharePoint site
-- Link to calendar
-- Link to Planner plan (if available)
-- Link to Team
-- Team privacy
-   Each Team o Uses SharePoint theme.
-
-![picture of the web part in action](./assets/Groups-in-my-organization.png)
-![picture of the web part in action](./assets/My-Teams-Teams-Side-By-Side-Theme.png)
-![picture of the web part in action](./assets/My-Groups-Public-Filter.png)
-![picture of the web part in action](./assets/My-Teams-Teams-With-Tooltip.png)
+![picture of the web part in action](./assets/Table-Display.png)
+![picture of the web part in action](./assets/Card-Display.png)
+![picture of the web part in action](./assets/Theme-Display.png)
 
 ## Compatibility
-
-| :warning: Important          |
-|:---------------------------|
-| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
-|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
@@ -45,16 +33,14 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-yellow.svg "Only after API permissions granted")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-For more information about SPFx compatibility, please refer to <https://aka.ms/spfx-matrix>
-
 ## Applies to
 
-- [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Contributors
 
-- [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))
+* [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))
 
 ## Version history
 
@@ -63,6 +49,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 | 1.0.0   | April 16, 2021 | Initial release |
 | 1.0.1   | August 1, 2021 | Fixed references to Office.com |
 | 1.1.0   | October 8, 2021 | Upgraded to SPFx 1.12.1 for higher compatibility and added Teams Tab deployment support. |
+| 2.0.0  | February 26, 2023 | Added new styles (card/table), added page display settings/pagination
 
 ## Prerequisites
 
@@ -132,4 +119,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-groups-teams" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-groups-teams" />

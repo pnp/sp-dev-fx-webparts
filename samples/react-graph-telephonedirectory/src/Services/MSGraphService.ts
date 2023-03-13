@@ -1,17 +1,16 @@
 import { IMSGraphService } from "./IMSGraphService";
-import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IUserProperties } from "./IUserProperties";
-import { MSGraphClient,MSGraphClientFactory } from "@microsoft/sp-http";
+import { MSGraphClient } from "@microsoft/sp-http";
 import { Log } from "@microsoft/sp-core-library";
 const LOG_SOURCE = "MSGraphService";
 export class MSGraphService implements IMSGraphService{
 
     public async getUserProperties(email:string,client:MSGraphClient):Promise<IUserProperties[]>{
-        let userProperties:IUserProperties[] = [];
+        const userProperties:IUserProperties[] = [];
         try {
             //let client:MSGraphClient = await context.msGraphClientFactory.getClient().then();
-            let endPoint:string = `/Users/${email}`;
-            let response = await client.api(`${endPoint}`).version("v1.0").get();
+            const endPoint = `/Users/${email}`;
+            const response = await client.api(`${endPoint}`).version("v1.0").get();
             if(response){
                 userProperties.push({
                    businessPhone:response.businessPhones[0],
@@ -31,13 +30,14 @@ export class MSGraphService implements IMSGraphService{
     }
 
     public async getUserPropertiesByLastName(searchFor:string,client:MSGraphClient):Promise<IUserProperties[]>{
-        let userProperties:IUserProperties[] = [];
+        const userProperties:IUserProperties[] = [];
         try {
-            let res = await client.api("users")
+            const res = await client.api("users")
             .version("v1.0")
             .filter(`(startswith(surname,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+                res.value.map((_userProperty:any,_index:any)=>{
                     if(_userProperty.mail !== null){
                         userProperties.push({
                             businessPhone:_userProperty.businessPhones[0],
@@ -60,13 +60,14 @@ export class MSGraphService implements IMSGraphService{
     }
 
     public async getUserPropertiesByFirstName(searchFor:string,client:MSGraphClient):Promise<IUserProperties[]>{
-        let userProperties:IUserProperties[] = [];
+        const userProperties:IUserProperties[] = [];
         try {
-            let res = await client.api("users")
+            const res = await client.api("users")
             .version("v1.0")
             .filter(`(startswith(givenName,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+                res.value.map((_userProperty:any,_index:any)=>{
                     if(_userProperty.mail !== null){
                         userProperties.push({
                             businessPhone:_userProperty.businessPhones[0],
@@ -88,13 +89,14 @@ export class MSGraphService implements IMSGraphService{
 
     }
     public async getUserPropertiesBySearch(searchFor:string,client:MSGraphClient):Promise<IUserProperties[]>{
-        let userProperties:IUserProperties[] = [];
+        const userProperties:IUserProperties[] = [];
         try {
-            let res = await client.api("users")
+            const res = await client.api("users")
             .version("v1.0")
             .filter(`(startswith(displayName,'${escape(searchFor)}'))`).get();
             if(res.value.length !== 0){
-                res.value.map((_userProperty,_index)=>{
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+                res.value.map((_userProperty:any,_index:any)=>{
                     userProperties.push({
                         businessPhone:_userProperty.businessPhones[0],
                         displayName:_userProperty.displayName,

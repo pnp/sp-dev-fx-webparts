@@ -63,7 +63,7 @@ This is an extension of the approach used in the [React-Functional-Component](ht
 * Functional Component
 * Adding State
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-stateful-component" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-stateful-component" />
 
 ## RomanNumeralsWebPart.ts Simplification
 
@@ -104,4 +104,4 @@ In the react-functional-component directory run `npm install` to resolve all the
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-stateful-component" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-stateful-component" />

@@ -332,4 +332,4 @@ This package produces the following:
 * deploy/* - all resources which should be uploaded to a CDN.
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />

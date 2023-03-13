@@ -68,4 +68,4 @@ gulp serve
 ----------
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/react-3rd-party-api" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/react-3rd-party-api" />

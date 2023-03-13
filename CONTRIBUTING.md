@@ -194,4 +194,4 @@ Thank you for your contribution.
 
 > Sharing is caring.
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/CONTRIBUTING.md" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/CONTRIBUTING.md" />

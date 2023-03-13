@@ -125,4 +125,4 @@ For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_
 
 > Sharing is caring!
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-add-formcustomizer-to-list" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-formcustomizer-to-list" />

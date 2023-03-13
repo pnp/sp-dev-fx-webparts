@@ -17,7 +17,7 @@
     "no-switch-case-fall-through": true,
     "no-unnecessary-semicolons": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
+    "no-use-before-declare": false,
     "no-with-statement": true,
     "semicolon": true,
     "trailing-comma": false,

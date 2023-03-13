@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "apimsal-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/apimsal/ApimsalWebPart.js",
+          "manifest": "./src/webparts/apimsal/ApimsalWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ApimsalWebPartStrings": "lib/webparts/apimsal/loc/{locale}.js"
+  }
+}

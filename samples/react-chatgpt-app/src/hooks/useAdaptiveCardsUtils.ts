@@ -19,7 +19,7 @@ const onProcessMarkdownHandler =  (md:any, result: { outputHtml: string; didProc
         result.didProcess = false;
     }
 };
-export const useAdaptiveCardsUtils = function () {
+export const useAdaptiveCardsUtils = () => {
 
   const createAdaptiveCard = React.useCallback((adaptiveCardData, card) => {
     const adaptiveCardToRender = new adaptiveCards.AdaptiveCard();

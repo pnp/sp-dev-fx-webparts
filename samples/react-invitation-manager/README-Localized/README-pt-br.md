@@ -88,4 +88,4 @@ A web part de exemplo nesta solução ilustra os seguintes conceitos sobre a est
 - comunicar-se com o Microsoft Graph usando sua API REST
 - usar a biblioteca do JS do ADAL com web parts do SharePoint Framework construída usando o React
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

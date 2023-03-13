@@ -89,4 +89,4 @@ gulp deploy-azure-storage
 ## Resources
 [Handling Multiple Editions of SPFx Solution](http://tricky-sharepoint.blogspot.com/2017/08/handling-multiple-editions-of-spfx.html)
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />
