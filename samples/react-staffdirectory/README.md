@@ -50,8 +50,8 @@ This web part shows the current user's colleagues, and allows the user to search
 
 ## Contributors
 
-* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
-* [João Mendes](https://github.com/joaojmendes) ([joaojmendes](https://github.com/joaojmendes))
+* [Ari Gunawan](https://github.com/AriGunawan) 
+* [João Mendes](https://github.com/joaojmendes) 
 * [Milan Holemans](https://github.com/milanholemans)
 
 

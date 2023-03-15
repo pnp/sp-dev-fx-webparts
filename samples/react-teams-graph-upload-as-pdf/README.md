@@ -37,7 +37,7 @@ A detailed functionality and technical description can be found in the [author's
 
 ## Contributors
 
-* [Markus Moeller](https://github.com/mmsharepoint) ([@moeller2_0](http://www.twitter.com/moeller2_0))
+* [Markus Moeller](https://github.com/mmsharepoint)
 
 ## Version history
 

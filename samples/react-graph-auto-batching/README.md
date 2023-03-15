@@ -43,7 +43,7 @@ None
 
 ## Contributors
 
-* [Marcin Wojciechowski](https://github.com/mgwojciech) [@mgwojciech](https://twitter.com/mgwojciech)
+* [Marcin Wojciechowski](https://github.com/mgwojciech)
 
 ## Version history
 

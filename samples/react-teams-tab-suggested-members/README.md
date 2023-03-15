@@ -10,7 +10,7 @@ This web part uses Graph API to suggest you members to add to a group (based on 
 
 ## Contributors
 
-* [Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

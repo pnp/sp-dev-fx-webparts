@@ -43,7 +43,7 @@ Suggest you to use the [Microsoft 365 CLI](https://blog.mastykarz.nl/grant-api-p
 
 ## Contributors
 
-* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+- [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

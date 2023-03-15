@@ -52,12 +52,12 @@ You'll need to connect to a list before you can use this sample.
 ## Contributors
 
 * [Dany Wyss](https://github.com/DanyWyss)
-* [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
-* [Ryan Schouten](https://github.com/sharepointknight) ([@shrpntknight](https://twitter.com/shrpntknight))
+* [Harsha Vardhini](https://github.com/Harshagracy)
+* [Ryan Schouten](https://github.com/sharepointknight)
 * [Abderahman Moujahid](https://github.com/Abderahman88)
 * [Kman1131](https://github.com/Kman1131)
-* [Fredrik Thorild](https://github.com/fthorild) [@fthorild](https://twitter.com/fthorild)
-* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023)) |
+* [Fredrik Thorild](https://github.com/fthorild)
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

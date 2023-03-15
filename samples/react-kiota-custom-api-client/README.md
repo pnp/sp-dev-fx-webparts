@@ -51,7 +51,7 @@ m365 spo serviceprincipal grant add --resource 'Teamified_Services' --scope 'Tea
 
 ## Contributors
 
-* [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez))
+* [Luis Mañez](https://github.com/luismanez) 
 
 ## Version history
 

@@ -44,7 +44,7 @@ A Taxonomy Picker control built with [React](https://facebook.github.io/react) b
 
 ## Contributors
 
-* Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
+* [Jose Quinto](https://github.com/jquintozamora)
 
 ## Version history
 

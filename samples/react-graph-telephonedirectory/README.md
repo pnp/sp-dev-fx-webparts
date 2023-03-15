@@ -40,8 +40,8 @@ The web part will fetch data from directory using Graph API and display in detai
 
 ## Contributors
 
-* [Dipen Shah](https://github.com/Dips365) ([@Dips_365](https://twitter.com/Dips_365))
-* [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
+* [Dipen Shah](https://github.com/Dips365) 
+* [Aimery Thomas](https://github.com/a1mery)
 * [mrkhandev](https://github.com/mrkhandev) 
 
 

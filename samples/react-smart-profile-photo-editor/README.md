@@ -65,7 +65,7 @@ spo storageentity list --appCatalogUrl <appCatalogUrl>
 
 ## Contributors
 
-* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), @bernierh)
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 
 ## Version history

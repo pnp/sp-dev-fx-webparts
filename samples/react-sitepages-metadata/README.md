@@ -38,7 +38,7 @@ Solution provides an enhancement to SitePages library that enables updating exis
 
 ## Contributors
 
-* [Oleg Rumiancev](https://github.com/olegrumiancev) ([LinkedIn](https://linkedin.com/in/olegrumiancev), [Twitter (olezhka_lt)](https://twitter.com/olezhka_lt))
+* [Oleg Rumiancev](https://github.com/olegrumiancev) 
 
 ## Version history
 

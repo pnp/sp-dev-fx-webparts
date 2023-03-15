@@ -48,7 +48,7 @@ More details in my post here: [Using Redux Async Actions and ImmutableJS in Shar
 
 ## Contributors
 
-* Vardhaman Deshpande [@vrdmn](https://twitter.com/vrdmn)
+* [Vardhaman Deshpande](https://github.com/vman)
 
 ## Version history
 

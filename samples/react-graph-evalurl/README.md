@@ -55,6 +55,7 @@ src
 
 
 ## Demo
+
 ![Evaluation of web site with current debug informations][figure3]
 
 ## Applies to
@@ -65,7 +66,7 @@ src
 
 ## Contributors
 
-* [Stefan Bauer](https://github.com/n8design) (MVP, Stefan Bauer - N8D, [@stfbauer](https://twitter.com/stfbauer) )
+* [Stefan Bauer](https://github.com/n8design)
 
 ## Version history
 

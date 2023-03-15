@@ -29,6 +29,7 @@ Hooks is a new feature included in React version 16.8, with the new version of *
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
+
 Existing list in tenant root site, with the Title "AvengersList"  and columns:
 
 Column Internal Name|Type|Required|Comments
@@ -38,7 +39,7 @@ Title| Text| true
 
 ## Contributors
 
-* [Adrián Díaz](https://github.com/AdrianDiaz81) [@AdrianDiaz81](https://www.twitter.com/adriandiaz81)
+* [Adrián Díaz](https://github.com/AdrianDiaz81)
 
 ## Version history
 

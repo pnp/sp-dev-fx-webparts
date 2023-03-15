@@ -31,7 +31,7 @@ This app is an example of managing the membership of a group you own including t
 
 ## Contributors
 
-* [Nick Brown](https://github.com/techienickb) ([Jisc](https://www.jisc.ac.uk), [@techienickb](https://twitter.com/techienickb))
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 

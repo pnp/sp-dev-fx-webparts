@@ -53,6 +53,10 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
+## Contributors
+
+* [Markus Moeller](https://github.com/mmsharepoint)
+
 ## Version history
 
 Version|Date|Author|Comments

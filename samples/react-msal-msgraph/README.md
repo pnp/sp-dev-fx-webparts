@@ -57,7 +57,7 @@ After you gave permissions, the following will information will get displayed:
 
 ## Contributors
 
-* [Elio Struyf](https://github.com/estruyf) (MVP, [U2U](https://www.u2u.be), [@eliostruyf](https://www.twitter.com/eliostruyf))
+* [Elio Struyf](https://github.com/estruyf)
 
 ## Version history
 

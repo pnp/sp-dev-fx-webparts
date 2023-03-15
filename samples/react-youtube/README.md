@@ -54,8 +54,8 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](https://delucagiuliano.com))
-* Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](https://netwoven.com))
+* [Giuliano De Luca](https://github.com/giuleon)
+* [Ravi Chandra](https://github.com/Ravikadri)
 
 ## Version history
 

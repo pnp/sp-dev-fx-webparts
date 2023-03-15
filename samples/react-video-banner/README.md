@@ -34,7 +34,7 @@ Use this Web Part to add a video banner with a text on top of it to your pages.
 
 ## Contributors
 
-* [Mohamed Derhalli](https://github.com/derhallim), https://sharepoint-thoughts.com -  [@MohamedDerhalli](https://twitter.com/MohamedDerhalli)
+* [Mohamed Derhalli](https://github.com/derhallim)
 
 
 

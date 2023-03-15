@@ -31,7 +31,7 @@ You can also find out how you can use React Hooks to manage the state of your ap
 
 ## Contributors
 
-* Ramin Ahmadi
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 

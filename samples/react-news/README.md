@@ -43,7 +43,7 @@ Web part pulls all SharePoint News Posts that the logged in user has access to v
 
 ## Contributors
 
-- [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))
+- [Alison Collins](https://github.com/ReactIntern) 
 
 ## Prerequisites
 

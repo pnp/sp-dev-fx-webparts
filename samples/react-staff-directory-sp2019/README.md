@@ -31,8 +31,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* [João Mendes](https://github.com/joaojmendes) ([joaojmendes](https://github.com/joaojmendes))
- 
+* [João Mendes](https://github.com/joaojmendes) 
 
 ## Version history
 

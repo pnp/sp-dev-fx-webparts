@@ -29,7 +29,7 @@ This Web Part provides an example of how to create a dynamic template system (co
 
 ## Contributors
 
-* [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), fabiofranzini.com
+* [Fabio Franzini](https://github.com/fabiofranzini) 
 
 ## Version history
 

@@ -78,7 +78,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 ## Contributors
 
-* [David Ramalho](https://github.com/DRamalho92) ([@davRamalho](https://twitter.com/davRamalho))
+* [David Ramalho](https://github.com/DRamalho92)
 
 
 ## Version history

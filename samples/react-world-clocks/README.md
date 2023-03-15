@@ -59,7 +59,7 @@ Please create the list as described above
 
 ## Contributors
 
-* [Jerry Yasir](https://github.com/jyasir) |
+* [Jerry Yasir](https://github.com/jyasir)
 
 ## Version history
 

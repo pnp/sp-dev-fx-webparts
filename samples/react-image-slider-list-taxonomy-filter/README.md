@@ -1,6 +1,7 @@
 # Image Slider from Photo Gallery using Taxonomy Filter
 
 ## Summary
+
 This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. This web part showcase 3 important implementation.
 
 - How to add the Terms in the propertypage and pass the values to react component
@@ -41,7 +42,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Sudhir Rawat 
+- [Sudhir Rawat](https://github.com/sudhir007rawat)
 
 ## Version history
 

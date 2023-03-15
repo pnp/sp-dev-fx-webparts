@@ -49,7 +49,7 @@ Below a draw resuming the custom query's made and what control uses to retrieve 
 
 ## Contributors
 
-* [André Lage](https://github.com/aaclage) ([http://aaclage.blogspot.com](http://aaclage.blogspot.com), [@aaclage](https://twitter.com/aaclage))
+* [André Lage](https://github.com/aaclage) 
 
 ## Version history
 

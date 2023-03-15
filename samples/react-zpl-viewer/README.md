@@ -33,7 +33,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Zach Roberts [spodev](https://spodev.com)
+* [Zach Roberts](https://github.com/zachroberts8668)
 
 ## Version history
 

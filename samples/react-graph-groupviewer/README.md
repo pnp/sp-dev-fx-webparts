@@ -29,7 +29,7 @@ This web part will provide the functionality to search for groups in your tenant
 
 ## Contributors
 
-* [Zach Roberts](https://github.com/zachroberts8668) ([@ZachSPODev](https://twitter.com/ZachSPODev))
+* [Zach Roberts](https://github.com/zachroberts8668)
 
 ## Version history
 
@@ -38,6 +38,7 @@ Version|Date|Comments
 1.0|September 27, 2021|Initial release
 
 ## Prerequisites
+
 There are no prerequisites to use this web part.
 
 

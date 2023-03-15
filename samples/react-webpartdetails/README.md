@@ -31,7 +31,7 @@ Note: This sample will not work in workbench as it loads the web part from curre
 
 ## Contributors
 
-* [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy) / [Harsha's Blog](https://harshagracy.com/))
+* [Harsha Vardhini](https://github.com/Harshagracy) 
 
 
 ## Version history

@@ -36,9 +36,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com)[AJIXuMuK](https://github.com/AJIXuMuK))
-* Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
-* Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
+* [Alex Terentiev](https://github.com/AJIXuMuK)
+* [Artur Kukharevich](https://github.com/Artur-WM)
+* [Don Kirkham](https://github.com/donkirkham)
 
 ## Version history
 

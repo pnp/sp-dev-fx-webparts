@@ -38,7 +38,7 @@ This web part illustrates the below features for creating Outlook Add-Ins using 
 
 ## Contributors
 
-* [Aakash Bhardwaj](https://github.com/aakashbhardwaj619) ([@aakash_316](https://twitter.com/aakash_316))
+* [Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
 
 ## Version history
 

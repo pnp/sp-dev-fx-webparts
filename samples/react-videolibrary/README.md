@@ -91,7 +91,7 @@ See also https://github.com/russgove/O365VideoSync. It's a console app that you 
 
 ## Contributors
 
-* Russell Gove
+* [Russell Gove](https://github.com/russgove)
 
 ## Version history
 

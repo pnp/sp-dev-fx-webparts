@@ -12,7 +12,9 @@ extensions:
   createdDate: 9/1/2017 12:00:00 AM
 ---
 # Handling Multiple Editions of SPFx Solution
+
 ## Summary
+
 This sample shows a possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution.
 
 ## Compatibility
@@ -47,14 +49,17 @@ Version|Date|Comments
 1.0|August 23, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Description
 
 ### Use Case
+
 You are an ISV and developing some product that has multiple editions, let's say, trial, lite, full. You want to have a separate package file (`.sppkg`) for each edition and also reference different CDNs based on the edition.
 
 ### Problems to address
+
 Thinking about the use case in details we can point several problems that should be addressed: 
 - When we're creating a new version we should create 3 separate `.sppkg` files
 - Each `.sppkg` file should contain manifest that references different CDN endpoints
@@ -62,6 +67,7 @@ Thinking about the use case in details we can point several problems that should
 - You should know current edition in the code to execute the logic based on the edition's restrictions
 
 ### Approach
+
 This sample shows the approach that is based on a custom Gulp task that should be run before bundling and packaging the solution.
 The name of the task is `change-build-edition`. Parameter: `edition`.
 The task updates SPFx solution configuration files to contain edition-specific information:
@@ -87,6 +93,7 @@ gulp deploy-azure-storage
 ```
 
 ## Resources
+
 [Handling Multiple Editions of SPFx Solution](http://tricky-sharepoint.blogspot.com/2017/08/handling-multiple-editions-of-spfx.html)
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />

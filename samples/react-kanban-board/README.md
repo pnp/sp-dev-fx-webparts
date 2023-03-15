@@ -61,10 +61,10 @@ The Task list can be chosen using the web part properties (BaseTemplate 171 or 1
 
 ## Contributors
 
-* [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) ([@ram_meenavalli](https://twitter.com/ram_meenavalli))
-* [Daniel Westerdale](https://github.com/westerdaled) ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
-* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
-* [Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
+* [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) 
+* [Daniel Westerdale](https://github.com/westerdaled) 
+* [Peter Paul Kirschner](https://github.com/petkir) 
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -78,6 +78,7 @@ Version|Date|Comments
 [Read More about the implementation of this Board](./src/kanban/README.md)
 
 ## Usage
+
 * PNP Placeholder control if not Configured
 * PNP WebpartTitle control  (toggle Show/Hide in property pane)
 * PNP OrderPropertyPane control  (change position of buckets)

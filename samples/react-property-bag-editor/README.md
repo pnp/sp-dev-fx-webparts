@@ -34,7 +34,7 @@ A set of webparts that lets you set property bag settings on site collections an
 
 ## Contributors
 
-* Russell Gove
+* [Russell Gove](https://github.com/russgove)
 
 ## Version history
 

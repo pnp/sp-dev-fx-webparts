@@ -89,7 +89,7 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 
 ## Contributors
 
-* [Velin Georgiev](https://github.com/VelinGeorgiev) ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 

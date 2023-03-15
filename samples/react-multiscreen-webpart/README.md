@@ -37,8 +37,9 @@ The web part utilizes the usage of hashes in the URL so different screen will be
 
 ## Contributors
 
-* [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev)), Stefan Bauer ([@StfBauer](https://twitter.com/stfbauer))
-* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
+* [Stefan Bauer](https://github.com/n8design)
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

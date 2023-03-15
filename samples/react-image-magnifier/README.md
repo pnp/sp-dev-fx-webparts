@@ -49,7 +49,7 @@ This web part allow to magnify an image, displaying a resolution more detailed t
 
 ## Contributors
 
-* [Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+* [Giuliano De Luca](https://github.com/giuleon)
 
 
 ## Version history

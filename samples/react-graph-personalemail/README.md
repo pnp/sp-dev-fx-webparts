@@ -31,7 +31,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Waldek Mastykarz (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)
 
 ## Version history
 

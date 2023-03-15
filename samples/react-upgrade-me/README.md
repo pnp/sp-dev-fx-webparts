@@ -39,7 +39,7 @@ You'll need the [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/)
 
 ## Contributors
 
-* Hugo Bernier ([Tahoe Ninja](https://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 ## Version history
 

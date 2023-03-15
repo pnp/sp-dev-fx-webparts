@@ -31,7 +31,7 @@ Targets SharePoint Groups only within the site.
 
 ## Contributors
 
-* Rabia Williams([@williamsrabia](https://twitter.com/williamsrabia) , [rabiawilliams.com](https://rabiawilliams.com))
+* [Rabia Williams](https://github.com/rabwill)
 
 ## Version history
 

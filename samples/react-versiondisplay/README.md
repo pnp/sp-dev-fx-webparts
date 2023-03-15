@@ -37,7 +37,7 @@ There are no pre-requisites.
 
 ## Contributors
 
-* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 ## Version history
 

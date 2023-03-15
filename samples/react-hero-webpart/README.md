@@ -31,7 +31,7 @@ This solution creates a customisable Hero web part, it uses a stored collection 
 
 ## Contributors
 
-* [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.spbytes.com
+* [Omar El-Anis](https://github.com/omarelanis) 
 
 ## Version history
 

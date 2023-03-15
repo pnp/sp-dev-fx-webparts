@@ -34,7 +34,7 @@ None.
 
 ## Contributors
 
-* [Pieter Heemeryck](https://github.com/PieterHeemeryck) ([@heemeryckpieter](https://twitter.com/heemeryckpieter))
+* [Pieter Heemeryck](https://github.com/PieterHeemeryck)
 
 ## Version history
 

@@ -36,7 +36,7 @@ Sample web part with Single and Multi-select taxonomy pickers using Office UI Fa
 
 ## Contributors
 
-* Vipul Kelkar  @vipulkelkar
+* [Vipul Kelkar](https://github.com/vipulkelkar)
 
 ## Version history
 

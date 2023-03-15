@@ -32,7 +32,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

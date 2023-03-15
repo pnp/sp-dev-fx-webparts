@@ -33,7 +33,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Kemal Sinanagic / [@kemicza](http://twitter.com/kemicza) / kemicza@gmail.com
+* Kemal Sinanagic
 
 ## Version history
 

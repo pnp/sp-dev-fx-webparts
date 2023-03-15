@@ -84,7 +84,7 @@ WebPart Title| Text| no|
 The Web Part Use PnPjs library, Office-ui-fabric-react components and MSGraph API's
 
 * [João Mendes](https://github.com/joaojmendes)
-My Tasks |[Swaminathan Sriram](https://github.com/Swaminathan-Sriram)
+* [Swaminathan Sriram](https://github.com/Swaminathan-Sriram)
 
 ## Version history
 

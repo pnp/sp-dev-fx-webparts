@@ -44,7 +44,7 @@ A simple todo web part built using react to showcase some of the SharePoint Fram
 
 ## Contributors
 
-* [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
+* [Chakkaradeep Chandran](https://github.com/chakkaradeep) 
 
 ## Version history
 

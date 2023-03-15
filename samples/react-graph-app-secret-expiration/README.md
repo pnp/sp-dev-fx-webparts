@@ -31,7 +31,7 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 
 ## Contributors
 
-* [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Version history
 

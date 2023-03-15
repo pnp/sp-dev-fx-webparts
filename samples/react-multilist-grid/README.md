@@ -95,7 +95,7 @@ Use the Undo icon to undo the changes made to an item.
 
 ## Contributors
 
-* Russell Gove
+* [Russell Gove](https://github.com/russgove)
 
 ## Version history
 

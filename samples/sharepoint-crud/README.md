@@ -44,9 +44,9 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 
 ## Contributors
 
-* Waldek Mastykarz (MVP, Rencore, @waldekm)
-* Gautam Sheth (SharePoint Consultant, RapidCircle)
-* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)
+* [Gautam Sheth](https://github.com/gautamdsheth)
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

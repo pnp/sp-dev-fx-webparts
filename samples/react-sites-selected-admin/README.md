@@ -50,7 +50,7 @@ The web part uses the built in MSGraphClient and needs to be approved in API man
 
 ## Contributors
 
-* Fredrik Thorild [@fthorild](https://twitter.com/fthorild)
+- [Fredrik Thorild](https://github.com/fthorild)
 
 ## Version history
 

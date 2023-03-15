@@ -56,7 +56,7 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 
 ## Contributors
 
-* [Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+* [Giuliano De Luca](https://github.com/giuleon) 
 
 
 ## Version history

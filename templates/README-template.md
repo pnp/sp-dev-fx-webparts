@@ -123,7 +123,7 @@ We use this section to recognize and promote your contributions. Please provide 
 
 We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
 
-Provide a link to your GitHub profile to help others find more cool things you have done.
+Provide a link to your GitHub profile to help others find more cool things you have done. The only link we'll accept is a link to your GitHub profile.
 
 If you want to provide links to your social media, blog, and employer name, make sure to update your GitHub profile.
 -->

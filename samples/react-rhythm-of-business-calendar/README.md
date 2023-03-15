@@ -46,7 +46,7 @@ Edit refiner
 ## Contributors
 
 
-* [Dan Turley](https://github.com/d-turley), Avanade
+* [Dan Turley](https://github.com/d-turley)
 
 ## Version history
 

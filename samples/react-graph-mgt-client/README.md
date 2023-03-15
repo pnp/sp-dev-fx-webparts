@@ -68,7 +68,7 @@ In the `package-solution.json` file, ensure that the scopes are available for th
 
 ## Contributors
 
-* [Sébastien Levert](https://www.linkedin.com/in/sebastienlevert), Microsoft ([@sebastienlevert](https://twitter.com/sebastienlevert))
+- [Sébastien Levert](https://github.com/sebastienlevert)
 
 ## Version history
 

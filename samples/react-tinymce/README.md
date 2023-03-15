@@ -53,7 +53,7 @@ agree to it.
 
 ## Contributors
 
-* @AustinBreslinDev
+* [Austin Breslin](https://github.com/AustinBreslinDev)
 
 ## Version history
 

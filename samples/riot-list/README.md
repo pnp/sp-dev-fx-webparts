@@ -47,7 +47,7 @@ Simplistic sample Web Part that demonstrates the use of RiotJS in creating a Sha
 
 ## Contributors
 
-* [Sébastien Levert](https://github.com/sebastienlevert) (MVP, Valo Intranet, @sebastienlevert)
+* [Sébastien Levert](https://github.com/sebastienlevert)
 
 
 ## Version history

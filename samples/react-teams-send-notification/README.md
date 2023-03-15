@@ -37,7 +37,7 @@ This web part allows you to send MS Teams feed notifications to a selected user.
 
 ## Contributors
 
-* [Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

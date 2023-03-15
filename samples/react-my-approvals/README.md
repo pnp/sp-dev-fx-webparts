@@ -45,7 +45,7 @@ For more information, see [docs](https://docs.microsoft.com/ja-jp/sharepoint/dev
 
 ## Contributors
 
-* [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+* [Takashi Shinohara](https://github.com/karamem0)
 
 ## Version history
 

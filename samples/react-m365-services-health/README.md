@@ -53,7 +53,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Contributors
 
-[Harminder Singh](https://github.com/HarminderSethi) <https://www.linkedin.com/in/harmindersinghsethi/> |
+[Harminder Singh](https://github.com/HarminderSethi)
 
 ## Version history
 

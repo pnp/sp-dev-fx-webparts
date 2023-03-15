@@ -66,8 +66,8 @@ Current Data Functions:
 
 ## Contributors
 
-* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) (MCP, PC Professional, Inc.)
-* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) 
+* [Peter Paul Kirschner](https://github.com/petkir) 
 * [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history

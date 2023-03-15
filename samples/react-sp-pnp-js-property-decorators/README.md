@@ -30,12 +30,13 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 
 ## Applies to
+
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Contributors
 
-* Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
+* [Jose Quinto](https://github.com/jquintozamora)
 
 ## Version history
 

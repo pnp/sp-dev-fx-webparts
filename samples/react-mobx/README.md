@@ -52,7 +52,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Kevin Mees <kev.mees@gmail.com> (Experts Inside GmbH, @kmees)
+* [Kevin Mees](https://github.com/kmees)
 
 ## Version history
 

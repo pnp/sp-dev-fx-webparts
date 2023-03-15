@@ -41,7 +41,8 @@ Sample Todo web part demonstrating how you can utilize [Vue](https://vuejs.org/v
 
 ## Contributors
 
-* [Sergei Sergeev](https://github.com/s-KaiNet) ([@sergeev_srg](https://twitter.com/sergeev_srg)), [Dimcho Tsanov](https://github.com/DimchoTsanov) ([Singens](http://singens.com))
+* [Sergei Sergeev](https://github.com/s-KaiNet)
+* [Dimcho Tsanov](https://github.com/DimchoTsanov)
 
 ## Version history
 

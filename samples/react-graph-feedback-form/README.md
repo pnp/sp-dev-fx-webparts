@@ -29,7 +29,7 @@ Sample SPFx React web part which allows sending emails using Microsoft Graph.
 
 ## Contributors
 
-* Sergei Zheleznov (CollabStack)
+* [Sergei Zheleznov](https://github.com/SergeiZheleznov)
 
 ## Version history
 

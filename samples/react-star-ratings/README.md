@@ -51,7 +51,7 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 ## Contributors
 
-* [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+* [Takashi Shinohara](https://github.com/karamem0)
 
 ## Version history
 

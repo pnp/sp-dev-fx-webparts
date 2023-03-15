@@ -38,7 +38,7 @@ Sample web part to demonstrate the use of [Redux-Form](https://github.com/erikra
 
 ## Contributors
 
-* Vipul Kelkar  @vipulkelkar
+* [Vipul Kelkar](https://github.com/vipulkelkar)
 
 ## Version history
 

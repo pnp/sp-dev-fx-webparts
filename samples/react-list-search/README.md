@@ -80,7 +80,7 @@ This list search web part allows the user to show data from lists or libraries. 
 
 ## Contributors
 
-* [Alberto Gutiérrez](https://github.com/albegut) ([@albertogperez](https://twitter.com/albertogperez))
+* [Alberto Gutiérrez](https://github.com/albegut) 
 
 ## Version history
 

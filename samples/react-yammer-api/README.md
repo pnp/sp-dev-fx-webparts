@@ -62,7 +62,7 @@ To enable Office 365 Identity Enforcement on `Office 365 Enterprise E3 Trial ten
 
 ## Contributors
 
-* Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)), Joseph King ([@7kingjoe3](https://twitter.com/7kingjoe3))
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 

@@ -40,7 +40,7 @@ This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to g
 
 ## Contributors
 
-* Anoop Tatti ([anoopt](https://github.com/anoopt), ([https://linktr.ee/anoopt](https://linktr.ee/anoopt))
+* [Anoop Tatti](https://github.com/anoopt)
 
 ## Version history
 

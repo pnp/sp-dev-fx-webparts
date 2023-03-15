@@ -53,7 +53,7 @@ This sample uses the Swiper JavaScript library thought the NPM packages, but jus
 
 ## Contributors
 
-* [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 

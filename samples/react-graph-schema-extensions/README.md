@@ -34,7 +34,7 @@ Office 365 Groups, for instance Sales information, and make it available in the 
 
 ## Contributors
 
-* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez) 
 
 ## Version history
 

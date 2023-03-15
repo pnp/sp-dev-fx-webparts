@@ -77,7 +77,7 @@ This component will help the administrators who are currently maintaining the us
 
 ## Contributors
 
-* [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
+* [Sudharsan K.](https://github.com/sudharsank)
 
 ## Version history
 

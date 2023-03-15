@@ -45,7 +45,7 @@ I wrote a blog post covering more if the inner workings, you can find it at [SPF
 
 ## Contributors
 
-* Yannick Reekmans ([YannickReekmans](https://twitter.com/YannickReekmans))
+- [Yannick Reekmans](https://github.com/YannickRe)
 
 ## Version history
 

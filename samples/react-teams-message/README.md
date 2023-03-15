@@ -103,7 +103,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 ## Contributors
 
-* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (@siddh_me)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 

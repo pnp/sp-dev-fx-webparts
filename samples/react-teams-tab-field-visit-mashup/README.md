@@ -46,7 +46,7 @@ The solution demonstrates:
 
 ## Contributors
 
-* [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
+* [Bob German](https://github.com/BobGerman)
 
 Many thanks to [Arbindo Chattopadhyay](https://www.linkedin.com/in/arbindoc/) for writing the [detailed installation instructions ](./documentation/setup.md) and compiling [links to resources](./documentation/resources.md).
 

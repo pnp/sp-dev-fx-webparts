@@ -44,8 +44,8 @@ Main features include:
 
 ## Contributors
 
-* [Eric Overfield](https://github.com/eoverfield) -[@ericoverfield](http://www.twitter.com/ericoverfield)
-react-rss-reader | [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Eric Overfield](https://github.com/eoverfield)
+* [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 

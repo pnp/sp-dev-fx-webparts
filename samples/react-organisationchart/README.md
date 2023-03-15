@@ -50,7 +50,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com))
+* [Vardhaman Deshpande](https://github.com/vman)
 
 ## Version history
 

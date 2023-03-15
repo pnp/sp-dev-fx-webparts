@@ -64,7 +64,7 @@ Below NPM package is used to develop this sample.
 
 ## Contributors
 
-* [Nanddeep Nachan](https://github.com/nanddeepn) https://www.linkedin.com/in/nanddeepnachan/ (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
+* [Nanddeep Nachan](https://github.com/nanddeepn) 
 
 ## Version history
 

@@ -34,7 +34,7 @@ A SPFx web part using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/
 
 ## Contributors
 
-*  [Federico Porceddu](https://github.com/fredupstair) https://www.federicoporceddu.com
+*  [Federico Porceddu](https://github.com/fredupstair) 
 
 ## Version history
 

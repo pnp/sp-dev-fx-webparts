@@ -95,6 +95,7 @@ You may add CSS via style tags or `link` tags.
 ```
 
 ## Support for classic _spPageContextInfo
+
 If your scripts rely on the classic _spPageContextInfo, you can enable that in the web part property pane.
 
 
@@ -121,7 +122,7 @@ If your scripts rely on the classic _spPageContextInfo, you can enable that in t
 
 ## Contributors
 
-* [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Mikael Svenson](https://github.com/wobba)
 
 ## Version history
 

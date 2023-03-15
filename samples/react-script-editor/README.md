@@ -169,7 +169,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-* [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Mikael Svenson](https://github.com/wobba) 
 * [Felix Bohnacker](https://github.com/felixbohnackerfelixbohnacker)
 
 ## Version history

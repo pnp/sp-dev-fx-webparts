@@ -58,7 +58,7 @@ For further details see the author's [blog post](https://mmsharepoint.wordpress.
 
 ## Contributors
 
-* [Markus Moeller](https://github.com/mmsharepoint) ([@moeller2_0](http://www.twitter.com/moeller2_0))
+* [Markus Moeller](https://github.com/mmsharepoint)
 
 ## Version history
 

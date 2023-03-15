@@ -41,7 +41,7 @@ This web parts displays a (world) map. An editor can set custom markers directly
 
 ## Contributors
 
-* [Sergej Schwabauer](https://github.com/SPFxAppDev) ([@spfxappdev](https://twitter.com/spfxappdev))
+* [Sergej Schwabauer](https://github.com/SPFxAppDev)
 
 ## Version history
 

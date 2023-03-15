@@ -36,7 +36,7 @@ Access to a SharePoint online site with various tenant users granted access to v
 
 ## Contributors
 
-*  [Daniel Watford](https://github.com/danwatford) (https://twitter.com/DanWatford), Watford Consulting Ltd (https://watfordconsulting.com)
+*  [Daniel Watford](https://github.com/danwatford) 
 
 ## Version history
 

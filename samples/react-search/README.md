@@ -47,7 +47,7 @@ Sample Search Web Part with internal and external template support. This sample 
 
 ## Contributors
 
-* [Elio Struyf](https://github.com/estruyf) (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
+* [Elio Struyf](https://github.com/estruyf)
 
 ## Version history
 

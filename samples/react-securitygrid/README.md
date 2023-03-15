@@ -106,7 +106,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 ## Contributors
 
-* [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
+* [Russell Gove](https://github.com/russgove)
 
 ## Version history
 

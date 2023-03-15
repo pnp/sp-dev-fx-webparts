@@ -35,7 +35,7 @@ This is a rebuild of the awesome project created by @hugoabernier [https://githu
 
 ## Contributors
 
-* [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.spbytes.com
+* [Omar El-Anis](https://github.com/omarelanis) 
 
 ## Version history
 

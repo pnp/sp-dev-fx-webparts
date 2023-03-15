@@ -51,6 +51,7 @@ None
 ## Contributors
 
 * [Jerry Yasir](https://github.com/jyasir)
+
 ## Version history
 
 | Version | Date               | Comments      |

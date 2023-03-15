@@ -38,7 +38,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-- Anoop Tatti ( [anoopt](https://github.com/anoopt), [https://linktr.ee/anoopt](https://linktr.ee/anoopt) )
+- [Anoop Tatti](https://github.com/anoopt)
 
 ## Version history
 

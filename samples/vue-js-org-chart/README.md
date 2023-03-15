@@ -1,6 +1,7 @@
 # Organization Chart using VueJS
 
 ## Summary
+
 A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.
 
 ![React Org Chart](./assets/preview.gif)

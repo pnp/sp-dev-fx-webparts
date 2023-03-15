@@ -34,8 +34,8 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 
 ## Contributors
 
-* Neil Barkhina ([www.neilb.net](https://www.neilb.net/))
-* Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham/))
+* [Neil Barkhina](https://github.com/nbarkhina)
+* [Don Kirkham](https://github.com/donkirkham)
 
 ## Version history
 

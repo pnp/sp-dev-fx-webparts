@@ -29,7 +29,7 @@ This sample describes an SPFx application which implements an image gallery with
 ## Contributors
 
 * [Ejaz Hussain](https://github.com/ejazhussain)
-* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan) 
 
 ## Version history
 

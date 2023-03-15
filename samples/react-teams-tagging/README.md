@@ -29,7 +29,7 @@ This sample shows how read and update a custom Schema extension in MS Graph to T
 
 ## Contributors
 
-* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

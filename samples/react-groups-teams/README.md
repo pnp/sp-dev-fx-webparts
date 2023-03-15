@@ -40,7 +40,7 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 ## Contributors
 
-* [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))
+* [Alison Collins](https://github.com/ReactIntern) 
 
 ## Version history
 

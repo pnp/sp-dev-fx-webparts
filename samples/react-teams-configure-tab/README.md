@@ -35,7 +35,7 @@ When the user selects one of the tab options, the tab is saved pointing to the c
 
 ## Contributors
 
-* [Bob German](https://github.com/BobGerman) ([@Bob1German](http://www.twitter.com/Bob1German))
+* [Bob German](https://github.com/BobGerman)
 
 ## Version history
 

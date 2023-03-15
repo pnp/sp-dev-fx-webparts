@@ -58,7 +58,7 @@ This project shows how to integrate [Tailwind CSS](https://tailwindcss.com/) fra
 
 ## Contributors
 
-* Fabio Franzini, [@franzinifabio](https://twitter.com/franzinifabio)
+- [Fabio Franzini](https://github.com/fabiofranzini)
 
 ## Version history
 

@@ -62,7 +62,7 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
 ## Contributors
 
 * [João Mendes](https://github.com/joaojmendes)
-* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 

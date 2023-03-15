@@ -40,7 +40,7 @@ The property pane shows dinamically all webparts in the current page, using [PnP
 
 ## Contributors
 
-* [Federico Porceddu](https://www.federicoporceddu.com)
+* [Federico Porceddu](https://github.com/fredupstair)
 
 ## Version history
 

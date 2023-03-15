@@ -57,7 +57,7 @@ Look at this to go deep:
 
 ## Contributors
 
-* [Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](http://www.delucagiuliano.com))
+* [Giuliano De Luca](https://github.com/giuleon) 
 
 ## Version history
 

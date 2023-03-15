@@ -27,7 +27,7 @@ This web part shows news information as a Banner, this information come from a l
 
 ## Contributors
 
-* [João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

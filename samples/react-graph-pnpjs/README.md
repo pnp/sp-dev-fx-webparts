@@ -31,7 +31,7 @@ It requests a list of Azure AD [groups](https://learn.microsoft.com/graph/api/gr
 
 ## Contributors
 
-* Sergei Sergeev ([@sergeev_srg](https://twitter.com/sergeev_srg), [spblog.net](https://spblog.net/))
+* [Sergei Sergeev](https://github.com/SergeevSergeiS) 
 
 ## Version history
 

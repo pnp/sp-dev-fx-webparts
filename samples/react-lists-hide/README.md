@@ -49,7 +49,7 @@ PnP JS library to get relevant SharePoint lists and libraries from current Site 
 ## Contributors
 
 
-*  [Sandeep Unnikrishnan](https://github.com/SandeepDev365/)
+* [Sandeep Unnikrishnan](https://github.com/SandeepDev365/)
 
 ## Version history
 

@@ -48,7 +48,7 @@ Select Field to Group By | dropdown|yes
 
 The Web Part Use PnPjs library, Fluent-Ui-react components
 
-* [João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes))
+* [João Mendes](https://github.com/joaojmendes) 
  
 
 

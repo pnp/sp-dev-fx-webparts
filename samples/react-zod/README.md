@@ -85,7 +85,7 @@ In this example, I used the parsed result data to be displayed on a [DetailsList
 
 ## Contributors
 
-* [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

@@ -60,7 +60,7 @@ This web part provides loggedin user's outlook events with some advanced feature
 
 ## Contributors
 
-* [Chandani Prajapati](https://github.com/chandaniprajapati) ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
+* [Chandani Prajapati](https://github.com/chandaniprajapati)
 
 ## Version history
 

@@ -31,7 +31,7 @@ None
 
 ## Contributors
 
-* [Dan Toft](https://github.com/Tanddant) ([@tanddant](https://twitter.com/tanddant))
+* [Dan Toft](https://github.com/Tanddant)
 
 ## Version history
 
