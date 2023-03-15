@@ -29,8 +29,8 @@ The key differences between using Embed web part and current example are the str
 
 ## Contributors
 
-* [Andrew Koltyakov](https://github.com/koltyakov) ([@AndrewKoltyakov](https://twitter.com/AndrewKoltyakov))
-* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
+* [Andrew Koltyakov](https://github.com/koltyakov)
+* [Ari Gunawan](https://github.com/AriGunawan) 
 
 ## Version history
 

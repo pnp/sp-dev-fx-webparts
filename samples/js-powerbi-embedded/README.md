@@ -41,7 +41,7 @@ This sample SharePoint Framework client-side web part embedding a PowerBI report
 
 ## Contributors
 
-* [Roland Oldengarm](https://github.com/rolandoldengarm) (Provoke Solutions, @rolandoldengarm)
+* [Roland Oldengarm](https://github.com/rolandoldengarm)
 
 ## Version history
 

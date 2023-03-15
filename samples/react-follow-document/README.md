@@ -73,7 +73,7 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Channe
 
 ## Contributors
 
-* [André Lage](https://github.com/aaclage) (http://aaclage.blogspot.com, [@aaclage](https://twitter.com/aaclage))
+* [André Lage](https://github.com/aaclage)
 
 ## Version history
 

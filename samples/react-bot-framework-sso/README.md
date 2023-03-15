@@ -58,8 +58,7 @@ This demo does not include any threat models and is designed for educational pur
 
 ## Contributors
 
-* [Stephan Bisser](https://github.com/stephanbisser) (@stephanbisser, bisser.io)
-bot | Bot Framework Discussions (msbots@service.microsoft.com)
+* [Stephan Bisser](https://github.com/stephanbisser)
 
 ## Version history
 

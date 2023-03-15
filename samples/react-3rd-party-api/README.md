@@ -11,7 +11,7 @@ You will need to publish the web application on a hosting environment (for examp
 
 ## Contributors
 
-* Paolo Pialorsi (PiaSys.com - @PaoloPia)
+* [Paolo Pialorsi](https://github.com/PaoloPia)
 
 ## Version history
 
@@ -47,7 +47,6 @@ Navigate to the `specific web part` folder:
 cd 'subfolder'
 ```
 
-
 Now run the following command to install the npm packages:
 
 ```
@@ -61,11 +60,11 @@ Once the npm packages are installed, run the command to preview your web parts i
 ```
 gulp serve
 ```
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/react-3rd-party-api" />

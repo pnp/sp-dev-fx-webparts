@@ -1,6 +1,7 @@
 # Thumbnail/preview of pages and files in SharePoint
 
 ## Summary
+
 A web part showcasing how to call the [Microsoft Graph Thumbnails API](https://learn.microsoft.com/graph/api/driveitem-list-thumbnails) to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.
 
 _Note that a preview for all file formats (eg. Excel) might not currently be available._
@@ -47,7 +48,7 @@ The goal of the sample is to illustrate a single call calling pattern for the th
 
 ## Contributors
 
-* [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Mikael Svenson](https://github.com/wobba) 
 
 ## Version history
 

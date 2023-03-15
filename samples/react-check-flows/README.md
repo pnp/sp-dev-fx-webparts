@@ -43,7 +43,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* Aakash Bhardwaj
+- [Aakash Bhardwaj](https://github.com/in8aakbh)
 
 ## Disclaimer
 

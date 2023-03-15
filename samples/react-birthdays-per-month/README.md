@@ -34,7 +34,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/arigunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

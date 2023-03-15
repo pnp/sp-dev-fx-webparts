@@ -43,7 +43,7 @@ For detailed instructions on how to build this web part and the needed list plea
 
 ## Contributors
 
-* [Sam Collins](https://github.com/SamC148) ([@samc148](https://twitter.com/samc148))
+* [Sam Collins](https://github.com/SamC148)
 
 ## Version history
 

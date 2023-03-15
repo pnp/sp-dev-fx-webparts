@@ -50,7 +50,8 @@ This web part will allow users to view/update application customizers properties
 
 ## Contributors
 
-* [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) and [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia) 
+- [Kunj Sangani](https://github.com/kunj-sangani)
+- [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 

@@ -66,13 +66,10 @@ For all available methods, go [here](https://react-slick.neostack.com/docs/api#m
 
 ## Contributors
 
-The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
-
 * [João Mendes](https://github.com/joaojmendes)
-Carousel Image/Video  Web Part|[Rahul Suryawanshi](https://github.com/rahulsuryawanshi) ([@rahulsuryawansh](https://twitter.com/rahulsuryawansh))
-Carousel Image/Video  Web Part|[Don Kirkham](https://github.com/DonKirkham) ([@DonKirkham](https://twitter.com/DonKirkham))
-Carousel Image/Video  Web Part|[Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
-Carousel Image/Video  Web Part|[Giuliano De Luca](https://github.com/giuleon) ([@delucagiulian](https://twitter.com/delucagiulian))
+- [Rahul Suryawanshi](https://github.com/Rahul)
+- [Harsha Vardhini](https://github.com/Harshagracy) 
+- [Giuliano De Luca](https://github.com/giuleon)
 
 ## Version history
 

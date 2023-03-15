@@ -42,7 +42,7 @@ This web part provides mui datatable features for your lists
 
 ## Contributors
 
-* [Jeffin Jacob](https://github.com/jeffinjacob)) (https://www.linkedin.com/in/drjeffinjacob/)
+* [Jeffin Jacob](https://github.com/jeffinjacob)
 
 ## Version history
 

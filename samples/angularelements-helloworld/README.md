@@ -44,7 +44,7 @@ Set of sample web parts illustrating how to use Angular Elements in the SharePoi
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm),
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) ,
 * [Sébastien Levert](https://github.com/sebastienlevert) (MVP, Valo, @sebastienlevert)
 
 ## Version history

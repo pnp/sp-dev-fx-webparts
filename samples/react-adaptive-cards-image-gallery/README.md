@@ -66,8 +66,8 @@ Below NPM packages are used to develop this sample.
 
 ## Contributors
 
-- [Nanddeep Nachan](https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://http://twitter.com/NanddeepNachan) )
-- [Ravi Kulkarni](https://www.linkedin.com/in/ravi-kulkarni-a5381723/) (SharePoint Consultant)
+- [Nanddeep Nachan](https://github.com/nanddeepn)
+- [Ravi Kulkarni](https://github.com/ravi16a87)
 
 ## Version history
 

@@ -196,7 +196,7 @@ There are no pre-requisites to use these samples.
 
 ## Contributors
 
-* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier) 
 
 ## Version history
 

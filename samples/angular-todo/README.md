@@ -46,7 +46,7 @@ Sample Web Part illustrating using Angular with the SharePoint Framework.
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 
 ## Version history
 

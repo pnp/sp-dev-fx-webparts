@@ -44,7 +44,7 @@ A sample web part illustrating how to use Angular Elements in the SharePoint Fra
 
 ## Contributors
 
-* [Jayakumar Balasubramaniam](https://github.com/JayakumarB) (C# Corner MVP, Hubfly, [@jayakumrB](https://twitter.com/jayakumrB))
+* [Jayakumar Balasubramaniam](https://github.com/JayakumarB)
 
 ## Version history
 

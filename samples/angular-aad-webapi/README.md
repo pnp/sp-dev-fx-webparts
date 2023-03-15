@@ -48,7 +48,7 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 ## Contributors
 
-- [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+- [David Hartman](https://github.com/davidhartman)
 
 ## Version history
 

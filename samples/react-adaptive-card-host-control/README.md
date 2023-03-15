@@ -39,7 +39,7 @@ For more information about the component, please see the related page here: [htt
 
 ## Contributors
 
-- [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), Apvee Solutions
+- [Fabio Franzini](https://github.com/fabiofranzini) 
 
 ## Version history
 

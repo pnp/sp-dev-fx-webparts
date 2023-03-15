@@ -45,8 +45,8 @@ This simplistic sample web part demonstrates the use of JavaScript in a SharePoi
 ## Contributors
 
 * Naamat Al-Aswad, P.Eng.
-* Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)) (Updated to GA Version)
-* Ryan Schouten ([@ShrPntKnight](https://twitter.com/ShrPntKnight)) (Upgraded to SPFx 1.11.0)
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
+* [Ryan Schouten](https://github.com/sharepointknight) 
 
 
 

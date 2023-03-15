@@ -33,7 +33,7 @@ For instance, below is the result when there are 5 sites (React Zod, SPFx Sample
 ## Contributors
 
 
-* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

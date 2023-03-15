@@ -55,7 +55,7 @@ Azure DevOps pipelines configurations are included to demonstrate how the AppSet
 
 ## Contributors
 
-* [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 

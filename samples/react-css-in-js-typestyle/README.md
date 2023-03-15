@@ -29,7 +29,7 @@ The web part demonstrates the usage of "CSS in JS" pattern with SharePoint Frame
 
 ## Contributors
 
-* [@Sergei Sergeev](https://twitter.com/sergeev_srg) - [Mastaq](https://mastaq.com/)
+* [Sergei Sergeev](https://github.com/SergeevSergeiS)
 
 ## Version history
 

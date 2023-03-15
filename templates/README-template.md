@@ -125,12 +125,10 @@ We'll only use the info you provided here. Make sure to include your full name, 
 
 Provide a link to your GitHub profile to help others find more cool things you have done.
 
-If you provide a link to your Twitter profile, we'll promote your contribution on social media.
-
-If you do not update this information, you will not be listed 😞
+If you want to provide links to your social media, blog, and employer name, make sure to update your GitHub profile.
 -->
 
-* [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https://twitter.com/yourtwitterhandle)), Company
+* [Author Name](LinkToYourGitHubProfile)
 
 ## Version history
 

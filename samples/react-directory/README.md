@@ -66,12 +66,10 @@ Results per page | number | Yes | Number of people result to be displayed per pa
 
 ## Contributors
 
-The web part use PnPjs library, Office-ui-fabric-react components
-
 * [João Mendes](https://github.com/joaojmendes)
-* Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
-* Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
-* Abderahman Moujahid
+* [Peter Paul Kirschner](https://github.com/petkir)
+* Sudharsan K
+* [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 

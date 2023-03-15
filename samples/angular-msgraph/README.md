@@ -62,7 +62,7 @@ display all the lists associated with the site followed by all the items inside 
 
 ## Contributors
 
-* [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+* [David Hartman](https://github.com/davidhartman)
 
 ## Version history
 

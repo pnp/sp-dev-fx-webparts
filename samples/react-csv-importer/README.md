@@ -33,7 +33,7 @@ This web part allows users to import CSV files into an existing SharePoint list.
 
 ## Contributors
 
-* [Michał Romiszewski](https://github.com/mromiszewski) ([@romiszewski](https://twitter.com/romiszewski))
+* [Michał Romiszewski](https://github.com/mromiszewski)
 
 ## Version history
 

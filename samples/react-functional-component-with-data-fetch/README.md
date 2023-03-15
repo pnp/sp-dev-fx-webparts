@@ -33,7 +33,7 @@ This web part demonstrates building a React functional component that uses data 
 ## Contributors
 
 * Bill Ayers
-react-functional-component-with-data-fetch | Don Kirkham
+* [Don Kirkham](https://github.com/DonKirkham)
 
 ## Version history
 

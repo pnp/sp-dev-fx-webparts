@@ -28,8 +28,8 @@ A version of [react-adaptivecards](https://github.com/pnp/sp-dev-fx-webparts/tre
 
 ## Contributors
 
-* Paul Schaeflein (<http://www.schaeflein.net>)
-* Hugo Bernier ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
+* [Paul Schaeflein](https://github.com/pschaeflein) 
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 ## Version history
 

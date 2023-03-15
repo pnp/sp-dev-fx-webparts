@@ -60,7 +60,7 @@ This web part can be useful on the Intranet home page which can be added as My O
 
 ## Contributors
 
-* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 

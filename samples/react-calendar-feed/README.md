@@ -65,8 +65,8 @@ If your feed supports filtering by dates, you can specify `{s}` in the URL where
 
 ## Contributors
 
-* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](http://tahoeninja.blog), @bernierh)
-* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 

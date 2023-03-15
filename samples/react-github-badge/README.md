@@ -32,8 +32,8 @@ Displays information about a GitHub user.
 
 ## Contributors
 
-* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://www.twitter.com/bernierh))
-* Eric Skaggs [@skaggej](https://www.twitter.com/skaggej)
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Eric Skaggs](https://github.com/skaggej)
 
 ## Version history
 
@@ -41,8 +41,6 @@ Version|Date|Comments
 -------|----|--------
 1.0 | April 18, 2019 | Initial release
 2.0 | June 06, 2019 | Upgraded to SPFx 1.8.2. Added GitHub Badge v2.
-
-
 
 ## Minimal Path to Awesome
 

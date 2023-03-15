@@ -93,7 +93,7 @@ You can copy the actual component ID of form customizer with from its `manifest.
 
 ## Contributors
 
-* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 

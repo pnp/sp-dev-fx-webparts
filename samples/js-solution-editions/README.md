@@ -38,7 +38,7 @@ This sample shows a possible approach of handling multiple editions (e.g. trial,
 
 ## Contributors
 
-* Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 

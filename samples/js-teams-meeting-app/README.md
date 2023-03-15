@@ -34,7 +34,7 @@ This project demonstrates a SPFx web part used as a Microsoft Teams meetings app
 
 ## Contributors
 
-- [Andrew Connell](/andrewconnell) ([@andrewconnell](https://twitter.com/andrewconnell)), [Voitanos, LLC](https://www.voitanos.io)
+- [Andrew Connell](https://github.com/andrewconnell)
 
 ## Version history
 

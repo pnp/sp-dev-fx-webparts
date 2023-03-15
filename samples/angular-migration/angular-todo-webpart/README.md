@@ -31,7 +31,7 @@ Sample SharePoint Framework client-side web part for managing tasks stored in a 
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 
 ## Version history
 

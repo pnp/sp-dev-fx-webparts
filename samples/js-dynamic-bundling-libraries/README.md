@@ -33,7 +33,7 @@ Post Button Click that imports jQuery and additional functionality:
 
 ## Contributors
 
-* [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+* [David Warner II](https://github.com/PopWarner)
 
 ## Version history
 

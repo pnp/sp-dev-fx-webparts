@@ -41,7 +41,7 @@ See here for more information about using Microsoft Graph Toolkit components in 
 
 ## Contributors
 
-* Luis Mañez (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+- [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 

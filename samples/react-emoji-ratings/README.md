@@ -72,7 +72,7 @@ I have added default emoji's images which can be used and uploaded to SharePoint
 
 ## Contributors
 
-* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) ([@siddh_me](https://twitter.com/siddh_me))
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 

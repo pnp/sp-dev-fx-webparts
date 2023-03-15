@@ -38,10 +38,10 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Contributors
 
-* [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
-* [Beau Cameron](https://github.com/bcameron1231) ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
+* [David Warner II](https://github.com/PopWarner)
+* [Beau Cameron](https://github.com/bcameron1231)
 * Biju Basheer
-* [Eric Skaggs](https://github.com/skaggej) ([@skaggej](https://twitter.com/skaggej) / [ericskaggs.net](http://www.ericskaggs.net/))
+* [Eric Skaggs](https://github.com/skaggej)
 
 ## Version history
 

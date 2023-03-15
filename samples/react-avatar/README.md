@@ -68,9 +68,7 @@ Web Part Title | Text| no|
 
 ## Contributors
 
-The web part Use avataaars library for creating avatars and MS Graph with User.ReadWrite and User.ReadWriteAll for saving avatar as current users Profile Picture.FileSaver for downloading avatar image as png file.
-
-* Kunj Sangani
+* [Kunj Sangani](https://github.com/kunj-sangani)
 
 ## Version history
 

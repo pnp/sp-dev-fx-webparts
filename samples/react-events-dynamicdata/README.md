@@ -27,7 +27,7 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 react-events-dynamicdata|[Hugo Bernier](https://github.com/hugoabernier) (MVP, [@bernierh](https://twitter.com/bernierh))
 
 ## Version history

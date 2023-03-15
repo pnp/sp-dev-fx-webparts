@@ -48,7 +48,7 @@ The `React Content Query Web Part` is a modern version of the good old `Content 
 
 ## Contributors
 
-* Simon-Pierre Plante
+* [Simon-Pierre Plante](https://github.com/spplante)
 
 ## Version history
 

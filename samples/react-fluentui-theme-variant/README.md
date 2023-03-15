@@ -27,7 +27,7 @@ In this way it is possible to implement the same mechanism that is currently imp
 
 ## Contributors
 
-* [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), fabiofranzini.com
+* [Fabio Franzini](https://github.com/fabiofranzini)
 
 ## Version history
 

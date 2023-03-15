@@ -44,7 +44,7 @@ None
 
 ## Contributors
 
-- [Mike Homol](https://github.com/mhomol), <https://homol.work> Principal> Consultant, [ThreeWill](https://threewill.com/)
+- [Mike Homol](https://github.com/mhomol)
 - [Abderahman Moujahid](https://github.com/Abderahman88)
 - [Valeras Narbutas](https://github.com/ValerasNarbutas)
 

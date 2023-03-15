@@ -16,6 +16,7 @@ extensions:
 # Employee Spotlight
 
 ## Summary
+
 Simple Web Part that demonstrates the use of SharePoint Framework for show casing Employee Spotlight. The web part pulls data from a configured list and User Profile service.
  The properties pane for this web part has 5 cascading dropdowns. 
  - A drop down list of sites(webs) in the current site collection.
@@ -30,11 +31,11 @@ Simple Web Part that demonstrates the use of SharePoint Framework for show casin
     * Set Auto slide - A switch to enable/disable auto slide for slider  
     * Slider Speed - A Slider control to select slider speed from 0sec - 7sec with 0.5sec as a step.
 
-![Screeshot of the Employee Spotlight web part options](./assets/Employee-spotlight-options.png).
+![Screenshot of the Employee Spotlight web part options](./assets/Employee-spotlight-options.png).
  
  Once the user selects all the configuration details, the web part displays the spotlight details from the configured list.
 
-![Screeshot of the Employee Spotlight web part](./assets/Employee-spotlight-priview.png).
+![Screenshot of the Employee Spotlight web part](./assets/Employee-spotlight-priview.png).
 
 > Data is displayed only when hosted in SharePoint. No mock data included at this point for local testing. 
 
@@ -56,6 +57,7 @@ Simple Web Part that demonstrates the use of SharePoint Framework for show casin
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
+
 * [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 

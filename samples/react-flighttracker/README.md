@@ -36,7 +36,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-* [João  Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes)), StaffBase
+* [João  Mendes](https://github.com/joaojmendes)
 
 ## Version history
 

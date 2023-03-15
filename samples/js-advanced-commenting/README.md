@@ -72,7 +72,7 @@ None
 
 ## Contributors
 
-* [Sudharsan K.](https://github.com/sudharsank) ([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
+* [Sudharsan K.](https://github.com/sudharsank) 
 * [Aimery Thomas](https://github.com/a1mery)
 
 ## Version history

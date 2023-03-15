@@ -48,7 +48,7 @@ This is a sample web Part that illustrates the use of jQuery and its plugins loa
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 
 ## Version history
 

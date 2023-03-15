@@ -44,8 +44,8 @@ This web part demonstrates how to integrate the @pnp/sp library into the SharePo
 
 ## Contributors
 
-* [Patrick Rodgers](https://github.com/patrick-rodgers) ([@mediocrebowler](https://twitter.com/mediocrebowler))
-* [Gautam Sheth](https://github.com/gautamdsheth) ([@gautamdsheth](https://twitter.com/gautamdsheth))
+* [Patrick Rodgers](https://github.com/patrick-rodgers)
+* [Gautam Sheth](https://github.com/gautamdsheth)
 
 ## Version history
 

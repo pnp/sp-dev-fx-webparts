@@ -28,7 +28,7 @@ Sample web part illustrating using the SharePoint Framework List subscription ca
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 
 ## Version history
 

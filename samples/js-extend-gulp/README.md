@@ -11,9 +11,10 @@ extensions:
   - SharePoint Framework
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Integrating custom gulp tasks to SharePoint Framwork toolchain
+# Integrating custom gulp tasks to SharePoint Framework toolchain
 
 ## Summary
+
 SharePoint client-side development tools use gulp as the build process task runner to:
 
 - Bundle and minify JavaScript and CSS files.
@@ -56,6 +57,7 @@ Read the following documentation for detailed information on integrating gulp ta
 ## Pre-requisites
 
 ### GraphicsMagick or ImageMagick
+
 Make sure GraphicsMagick or ImageMagick is installed on your system and properly set up in your PATH.
 
 #### Ubuntu:
@@ -80,7 +82,7 @@ Confirm that ImageMagick is properly set up by executing convert -help in a term
 
 ## Contributors
 
-- [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
+- [Chakkaradeep Chandran](https://github.com/chakkaradeep) 
 
 ## Version history
 

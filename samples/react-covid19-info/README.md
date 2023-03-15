@@ -36,7 +36,7 @@ The following info is displayed:
 
 ## Contributors
 
-* [Robin Agten](https://twitter.com/AgtenRobin)
+- [Robin Agten](https://github.com/agtenr)
 
 ## Web part properties
 

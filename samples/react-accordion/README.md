@@ -45,7 +45,7 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 
 ## Contributors
 
-* Gautam Sheth (SharePoint Consultant, RapidCircle)
+* [Gautam Sheth](https://github.com/gautamdsheth)
 * Abhishek Garg
 
 ## Version history

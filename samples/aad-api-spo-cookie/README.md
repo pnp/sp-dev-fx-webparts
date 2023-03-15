@@ -36,7 +36,7 @@ Sample web part showing the list of latest orders retrieved from a custom API se
 
 ## Contributors
 
-- [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+- [Waldek Mastykarz](https://github.com/waldekmastykarz)
 
 ## Version history
 

@@ -35,7 +35,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-- [Martin Lingstuyl](https://github.com/martinlingstuyl) ([@martinlingstuyl](https://twitter.com/martinlingstuyl)), I4-YOU Business Solutions b.v.
+- [Martin Lingstuyl](https://github.com/martinlingstuyl)
 
 ## Version history
 

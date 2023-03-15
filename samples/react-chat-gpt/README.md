@@ -41,7 +41,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-* [Nico De Cleyre](https://github.com/nicodecleyre) ([@NicoDeCleyre](https://twitter.com/NicoDeCleyre)), Ordina Belgium
+* [Nico De Cleyre](https://github.com/nicodecleyre)
 
 ## Version history
 

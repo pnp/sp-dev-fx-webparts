@@ -50,7 +50,7 @@ Sample bootstrap slider which pulls the slides from a list inside the SharePoint
 
 ## Contributors
 
-* [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+* [David Hartman](https://github.com/davidhartman)
 
 ## Version History
 

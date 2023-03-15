@@ -30,7 +30,7 @@ This web part used the date range picker in the SharePoint Framework (SPFx) web 
 
 ## Contributors
 
-* Ravichandran Krishnasamy ([@ravichandran-blog](https://github.com/ravichandran-blog) [Know More](https://ravichandran.blog/))
+* [Ravichandran Krishnasamy](https://github.com/ravichandran-blog)
 
 ## Version history
 

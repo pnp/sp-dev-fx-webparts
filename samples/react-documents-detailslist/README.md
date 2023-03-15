@@ -48,8 +48,8 @@ This sample shows how to build web parts that display documents in accordance wi
 
 ## Contributors
 
-* Dimcho Tsanov
-* [Harsha Vardhini](https://github.com/Harshagracy) ([harshagracy](https://twitter.com/harshagracy?s=20))
+* [Dimcho Tsanov](https://github.com/DimchoTsanov)
+* [Harsha Vardhini](https://github.com/Harshagracy)
 
 ## Version history
 

@@ -37,7 +37,7 @@ You can find a video recording walk-through this sample from [SharePoint PnP You
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)
 
 ## Version history
 

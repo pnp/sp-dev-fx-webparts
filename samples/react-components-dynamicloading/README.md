@@ -28,7 +28,7 @@ Load React components and third-party packages on demand in SPFx
 
 ## Contributors
 
-* [Vardhaman Deshpande](https://github.com/vman) ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com)) 
+* [Vardhaman Deshpande](https://github.com/vman)
 
 ## Version history
 

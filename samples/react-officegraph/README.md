@@ -74,7 +74,7 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) , Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
 
 ## Version history
 

@@ -38,8 +38,8 @@ There are no pre-requisites, but you'll probably want to have some [Adaptive Car
 
 ## Contributors
 
-* [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninja](https://tahoeninja.blog), [@bernier](https://twitter.com/bernierh))
-* Paul Schaeflein ([http://www.schaeflein.net](http://www.schaeflein.net), [@paulschaeflein](https://twitter.com/paulschaeflein))
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Paul Schaeflein](https://github.com/pschaeflein) 
 
 ## Version history
 

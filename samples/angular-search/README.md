@@ -56,7 +56,7 @@ The logic for querying the SharePoint Content Types in the properties of the web
 
 ## Contributors
 
-* [David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
+* [David Hartman](https://github.com/davidhartman) 
 
 ## Version history
 

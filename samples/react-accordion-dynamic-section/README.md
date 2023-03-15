@@ -59,8 +59,8 @@ Please create the list as described above
 
 ## Contributors
 
-* [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))             * [Mike Zimmerman](https://github.com/mikezimm)                                                        * [Jerry Yasir](https://github.com/jyasir)                                                             
-* [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023)) |
+* [Erik Benke](https://github.com/ejbenke)
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 

@@ -31,7 +31,7 @@ It needs Globlal Administrator or SharePoint Online Administrator permissions in
 
 ## Contributors
 
-* [Federico Porceddu](https://github.com/fredupstair) (<https://www.federicoporceddu.com>)
+* [Federico Porceddu](https://github.com/fredupstair)
 
 ## Version history
 

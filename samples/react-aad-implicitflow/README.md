@@ -50,7 +50,7 @@ Sample SharePoint Framework client-side web part built using React showing upcom
 
 ## Contributors
 
-* [Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz) 
 
 ## Version history
 

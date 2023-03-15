@@ -54,10 +54,6 @@ Property |Type|Required| comments
 --------------------|----|--------|----------
 Web Part Title | Text| no|
 
-
-
- 
-
 ## Contributors
 
 * [João Mendes](https://github.com/joaojmendes)
@@ -67,9 +63,6 @@ Web Part Title | Text| no|
 Version|Date|Comments
 -------|----|--------
 1.0.0|August 13, 2019|Initial release
-
-
-
 
 ## Minimal Path to Awesome
 

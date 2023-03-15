@@ -52,7 +52,7 @@ simulates a pile of photos scattered about on a surface. Thumbnail clicks remove
 
 ## Contributors
 
-* [Olivier Carpentier](https://github.com/OlivierCC) (@olivierc)
+* [Olivier Carpentier](https://github.com/OlivierCC)
 
 ## Version history
 

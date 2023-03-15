@@ -48,10 +48,10 @@ None
 
 ## Contributors
 
-* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) (MCP, PC Professional, Inc.)
-* [Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](twitter.com/NanddeepNachan))
+* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional)
+* [Nanddeep Nachan](https://github.com/nanddeepn) 
 * [Ravi Chandra](https://github.com/Ravikadri)
-* [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
@@ -80,6 +80,7 @@ Version|Date|Comments
   
 
 ## Features
+
 Renders a calendar from any list available on the selected site. Site, List, Start, End, Event Title,Event Details and Calendar Theme are user-definable in the web part properties, so that you could technically use a custom list as the source for calendar presentation.
 
 

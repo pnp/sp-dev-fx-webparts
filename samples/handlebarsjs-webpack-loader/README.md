@@ -40,7 +40,7 @@ This sample demonstrate how to set up SPFx to use [Handlebars](http://handlebars
 
 ## Contributors
 
-* [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
+* [Stefan Bauer](https://github.com/n8design)
 
 ## Version history
 

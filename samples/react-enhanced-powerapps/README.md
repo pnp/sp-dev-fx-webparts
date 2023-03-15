@@ -37,7 +37,7 @@ You'll need at least one application in Power Apps that you wish to embed in Sha
 
 ## Contributors
 
-* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog/), [@bernierh](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 ## Version history
 

@@ -35,7 +35,7 @@ This extension illustrates the following concepts:
 
 ## Contributors
 
-* [Aakash Bhardwaj](https://twitter.com/aakash_316)
+* [Aakash Bhardwaj](https://github.com/in8aakbh)
 
 ## Minimal Path to Awesome
 

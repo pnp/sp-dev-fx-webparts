@@ -1,6 +1,7 @@
 # GitHub Badge (JavaScript version)
 
 ## Summary
+
 Displays information from GitHub for a specified user.
 ![drop](./assets/1.png)
 
@@ -33,7 +34,7 @@ None
 
 ## Contributors
 
-* [Eric Skaggs](https://github.com/skaggej) [@skaggej](https://www.twitter.com/skaggej)
+* [Eric Skaggs](https://github.com/skaggej)
 
 ## Version history
 
@@ -53,6 +54,7 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
+
 It's not the prettiest thing in the world, but the goal here was to create a web part that demonstrates something a bit beyond the standard "Hello, World!" web part in which we change some HTML. This sample shows how to pull in data from somewhere without authentication and without over-complicating things.
 
 Future samples will refactor this into something more professional that follows recommended coding patterns and practices and leverage modern frameworks.

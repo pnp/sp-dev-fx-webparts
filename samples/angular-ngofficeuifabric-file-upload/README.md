@@ -48,8 +48,8 @@ Edit web part properties to set Document library Name. Initially, It has been se
 
 ## Contributors
 
-* [Atish Kumar Dipongkor](https://github.com/dipongkor) (MVP, Office Development)
-* [Gautam Sheth](https://github.com/gautamdsheth) (SharePoint Consultant,RapidCircle,@gautamdsheth)
+* [Atish Kumar Dipongkor](https://github.com/dipongkor)
+* [Gautam Sheth](https://github.com/gautamdsheth)
 
 ## Version history
 

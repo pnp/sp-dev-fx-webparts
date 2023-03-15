@@ -28,7 +28,7 @@ Challenges/Drawback with ONLY using SPFx extension for adding js and css file re
 * Different solution would be required for different site collections as we would definitely need different header js and css file references for each site collection(most of cases)
 * High maintenance and time consuming for simple task. 
 
-To overcome this drawbacks, this solution comes handy. This is reusable component which can be used by developers to eliminate creating Extension on thier own. Feel free to connect on twitter:@siddh_me for any details.
+To overcome this drawbacks, this solution comes handy. This is reusable component which can be used by developers to eliminate creating Extension on their own. Feel free to connect on twitter:@siddh_me for any details.
 
 ### Features of solution
 
@@ -108,8 +108,8 @@ gulp package-solution --ship
 
 ## Contributors
 
-* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)  
-* [Don Kirkham](https://github.com/donkirkham) (<https://www.linkedin.com/in/donkirkham/>)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
+* [Don Kirkham](https://github.com/donkirkham)
 
 ## Version history
 

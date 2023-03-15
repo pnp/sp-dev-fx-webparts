@@ -56,8 +56,8 @@ Cascading drop-downs in the property pane both using external data.
 
 ## Contributors
 
-* Waldek Mastykarz (MVP, Rencore, @waldekm)
-react-custompropertypanecontrols|[Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 

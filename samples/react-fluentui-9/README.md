@@ -41,7 +41,7 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 
 ## Contributors
 
-* [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb) / [Jisc](https://jisc.ac.uk))
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 

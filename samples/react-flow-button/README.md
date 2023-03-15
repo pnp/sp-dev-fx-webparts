@@ -43,7 +43,7 @@ This web part uses *Microsoft Graph* API and *Microsoft Flow Service* API. You n
 
 ## Contributors
 
-* [Takashi Shinohara](https://github.com/karamem0) ([@karamem0](https://twitter.com/karamem0))
+* [Takashi Shinohara](https://github.com/karamem0)
 
 ## Version history
 

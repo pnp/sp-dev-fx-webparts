@@ -38,7 +38,7 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 ## Contributors
 
-- [Chandani Prajapati](https://github.com/chandaniprajapati) ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
+- [Chandani Prajapati](https://github.com/chandaniprajapati) 
 - [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history

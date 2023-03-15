@@ -32,7 +32,7 @@ Final outcome:
 
 ## Contributors
 
-* [Gaurav Goyal](https://github.com/gauravgoyal5) ([@gauravgoyal_5](https://twitter.com/gauravgoyal_5)), BizPortals 365
+* [Gaurav Goyal](https://github.com/gauravgoyal5)
 
 ## Version history
 

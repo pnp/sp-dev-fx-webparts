@@ -33,7 +33,7 @@ To be able to pin this web part as a Teams tab, your tenant currently needs to b
 
 ## Contributors
 
-* [Laura Kokkarinen](https://github.com/LauraKokkarinen) ([laurakokkarinen.com](https://laurakokkarinen.com), [@LauraKokkarinen](https://twitter.com/LauraKokkarinen))
+* [Laura Kokkarinen](https://github.com/LauraKokkarinen) 
 
 ## Version history
 

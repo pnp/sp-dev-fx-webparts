@@ -38,7 +38,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Contributors
 
-* [Joao Livio](https://github.com/jtlivio) @jlivio |
+* [Joao Livio](https://github.com/jtlivio)
 
 ## Version history
 

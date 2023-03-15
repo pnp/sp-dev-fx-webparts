@@ -45,8 +45,8 @@ This sample shows how we can use the SPFx Event Aggregator to communicate betwee
 ## Contributors
 
 * Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) )
-* Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
-* Austin Breslin  ( [@AustinBreslin](https://www.linkedin.com/in/austin-breslin-84b4a74b/) )
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
+* [Austin Breslin](https://github.com/AustinBreslinDev)
 
 ## Version history
 

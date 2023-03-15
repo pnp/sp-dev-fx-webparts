@@ -46,7 +46,7 @@ It is required that the users have view access on the calendar.
 
 ## Contributors
 
-* [Dhaval Shah](https://www.linkedin.com/in/dhavalshah27) ([@beingdhavalshah](https://twitter.com/BeingDhavalShah))
+* [Dhaval Shah](https://github.com/dhavalshah01)
 
 ## Version history
 

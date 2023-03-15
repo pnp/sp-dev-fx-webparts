@@ -53,7 +53,7 @@ There are no pre-requisites to use these samples.
 
 ## Contributors
 
-* [Arun Kumar Perumal](https://github.com/arunkumarperumal) - LinkedIn:  <https://www.linkedin.com/in/arunkumarperumal/>
+* [Arun Kumar Perumal](https://github.com/arunkumarperumal) 
 
 ## Version history
 

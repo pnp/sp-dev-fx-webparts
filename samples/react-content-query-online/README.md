@@ -33,11 +33,11 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ## Contributors
 
-* David Warner II ([Warner Digital](http://warner.digital), [@DavidWarnerII](https://twitter.com/davidwarnerii))
-* Hugo Bernier ([Tahoe Ninja](http://tahoeninja.blog), [@bernierh](https://twitter.com/bernierh))
-react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
-react-content-query-web part |Simon-Pierre Plante
-react-content-query-web part (Online)|Abderahman Moujahid
+* [David Warner II](https://github.com/PopWarner)
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Paolo Pialorsi](https://github.com/PaoloPia)
+* [Simon-Pierre Plante](https://github.com/spplante)
+* [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 

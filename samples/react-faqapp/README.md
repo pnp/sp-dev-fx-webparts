@@ -46,8 +46,8 @@ extensions:
 
 ## Contributors
 
-- Ashok Swain - LinkedIn: <https://www.linkedin.com/in/ashok-kumar-swain-2627a514>
-- Abderahman Moujahid
+- [Ashok Swain](https://github.com/ashokswain27)
+- [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 

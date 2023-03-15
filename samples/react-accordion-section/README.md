@@ -57,7 +57,7 @@ Please create the list as described above
 
 ## Contributors
 
-* [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
+* [Erik Benke](https://github.com/ejbenke)
 * [Mike Zimmerman](https://github.com/mikezimm)
 * [Ravi Chandra](https://github.com/Ravikadri)
 * [Jack Vinitsky](https://github.com/jack-vinitsky)

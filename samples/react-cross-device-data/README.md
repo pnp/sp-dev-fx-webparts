@@ -33,7 +33,7 @@ In order to use this solution is necessary to approve the usage of Microsoft Gra
 
 ## Contributors
 
-* [Giuliano De Luca](https://github.com/giuleon) ([@delucagiulian](https://twitter.com/delucagiulian))
+* [Giuliano De Luca](https://github.com/giuleon)
 
 ## Version history
 

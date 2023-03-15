@@ -68,9 +68,9 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 
 ## Contributors
 
-* [Gary Pretty](https://github.com/garypretty) ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-|web part v4| [Stephan Bisser](https://github.com/stephanbisser) ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
-|Upgrade to SPFx 1.10.0| [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
+* [Gary Pretty](https://github.com/garypretty)
+* [Stephan Bisser](https://github.com/stephanbisser)
+* [Harsha Vardhini](https://github.com/Harshagracy)
 
 ## Version history
 
