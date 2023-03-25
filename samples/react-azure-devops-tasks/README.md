@@ -1,8 +1,8 @@
-# react-azure-devops-tasks
+# Azure DevOps Tasks
 
 ## Summary
 
-This Adaptive Card Extension demonstrates displaying the number of assined tasks of Azure DevOps.
+This Adaptive Card Extension demonstrates displaying the number of assigned tasks of Azure DevOps.
 
 ![](./assets/react-azure-devops-tasks.png)
 
