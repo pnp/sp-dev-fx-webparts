@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
+  "id": "20005ce7-a99d-46e0-9bf4-63eb9e2f8fea",
+  "alias": "AzureDevOpsTasksAdaptiveCardExtension",
+  "componentType": "AdaptiveCardExtension",
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "Dashboard"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "bd067b1e-3ad5-4d5d-a5fe-505f07d7f59c", // Dashboard
+      "group": {
+        "default": "Dashboard"
+      },
+      "title": {
+        "default": "Azure DevOps Tasks"
+      },
+      "description": {
+        "default": "View Azure DevOps Tasks"
+      },
+      "officeFabricIconFontName": "VSTSLogo",
+      "properties": {
+        "title": "Azure DevOps Tasks"
+      },
+      "cardSize": "Medium"
+    }
+  ]
+}

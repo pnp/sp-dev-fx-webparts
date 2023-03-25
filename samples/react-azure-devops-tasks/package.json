@@ -1,0 +1,32 @@
+{
+  "name": "react-azure-devops-tasks",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=16.13.0 <17.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "tslib": "2.3.1",
+    "@microsoft/sp-core-library": "1.16.1",
+    "@microsoft/sp-property-pane": "1.16.1",
+    "@microsoft/sp-adaptive-card-extension-base": "1.16.1"
+  },
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-4.5": "0.2.2",
+    "@rushstack/eslint-config": "2.5.1",
+    "@microsoft/eslint-plugin-spfx": "1.16.1",
+    "@microsoft/eslint-config-spfx": "1.16.1",
+    "@microsoft/sp-build-web": "1.16.1",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "gulp": "4.0.2",
+    "typescript": "4.5.5",
+    "@microsoft/sp-module-interfaces": "1.16.1"
+  }
+}
