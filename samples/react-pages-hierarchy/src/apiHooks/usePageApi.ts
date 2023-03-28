@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useState } from 'react';
 import { PermissionKind, spfi, SPFx } from '@pnp/sp/presets/all';
-import { ErrorHelper, LogHelper, ListTitles, PageFields } from '@src/utilities';
+import { ErrorHelper, LogHelper, PageFields } from '@src/utilities';
 import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
