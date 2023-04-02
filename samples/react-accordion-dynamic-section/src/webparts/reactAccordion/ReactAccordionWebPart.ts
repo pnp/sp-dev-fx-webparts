@@ -4,15 +4,11 @@ import { Version } from "@microsoft/sp-core-library";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
   PropertyPaneToggle,
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption,
 } from "@microsoft/sp-property-pane";
-import { sp } from "@pnp/sp/presets/all";
-import "core-js/es6/array";
-import "es6-map/implement";
-import "core-js/modules/es6.array.find";
+
 import {
   PropertyFieldListPicker,
   PropertyFieldListPickerOrderBy,
@@ -21,10 +17,10 @@ import {
 import * as strings from "ReactAccordionWebPartStrings";
 import ReactAccordion from "./components/ReactAccordion";
 import { IReactAccordionProps } from "./components/IReactAccordionProps";
-import { string } from "prop-types";
-import { Webs } from "@pnp/sp/webs";
-import { Lists } from "@pnp/sp/lists";
-import { IField, FieldTypes } from "@pnp/sp/fields";
+import { getSP } from "../../utils/pnpjs-config"
+import { SPFI } from "@pnp/sp";
+import { IField, IFieldInfo } from "@pnp/sp/fields";
+
 
 export interface IReactAccordionWebPartProps {
   listId: string;
@@ -42,19 +38,22 @@ export interface IReactAccordionWebPartProps {
 export default class ReactAccordionWebPart extends BaseClientSideWebPart<
   IReactAccordionWebPartProps
 > {
-  private listColumns: IPropertyPaneDropdownOption[];
+
+  private _sp: SPFI;
+  
+  private listColumns: IPropertyPaneDropdownOption[];spfxContext
   private allListColumns: IPropertyPaneDropdownOption[];
   private columnChoices: IPropertyPaneDropdownOption[];
 
-  private columnsDropdownDisabled: boolean = true;
-  private choicesDropdownDisabled: boolean = true;
+  private columnsDropdownDisabled = true;
+  private choicesDropdownDisabled = true;
 
-  public onInit(): Promise<void> {
-    return super.onInit().then((_) => {
-      sp.setup({
-        spfxContext: this.context,
-      });
-    });
+  protected async onInit(): Promise<void> {
+    super.onInit();
+  
+    //Initialize our _sp object that we can then use in other packages without having to pass around the context.
+    //  Check out pnpjsConfig.ts for an example of a project setup file.
+    this._sp = getSP(this.context);
   }
 
   public render(): void {
@@ -99,21 +98,21 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
     return new Promise<IPropertyPaneDropdownOption[]>(
       (
         resolve: (options: IPropertyPaneDropdownOption[]) => void,
-        reject: (error: any) => void
+        reject: (error) => void
       ) => {
         if (!this.properties.listId) {
           console.log("No List Selected");
           return null;
         }
 
-        var spListColumns = sp.web.lists
+        const spListColumns = this._sp.web.lists
           .getById(this.properties.listId)
           .fields.filter(
             "ReadOnlyField eq false and Hidden eq false and TypeAsString eq 'Choice'"
           )
-          .get();
+          ();
         spListColumns.then((columnResult) => {
-          let listColumns = [];
+          const listColumns = [];
           columnResult.forEach((column) => {
             listColumns.push({
               key: column.Title,
@@ -121,6 +120,8 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
             });
           });
           resolve(listColumns);
+        }).catch((error) => {
+          reject(error);
         });
       }
     );
@@ -129,19 +130,19 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
     return new Promise<IPropertyPaneDropdownOption[]>(
       (
         resolve: (options: IPropertyPaneDropdownOption[]) => void,
-        reject: (error: any) => void
+        reject: (error) => void
       ) => {
         if (!this.properties.listId) {
           console.log("No List Selected");
           return null;
         }
 
-        var spListColumns = sp.web.lists
+        const spListColumns = this._sp.web.lists
           .getById(this.properties.listId)
           .fields.filter("ReadOnlyField eq false and Hidden eq false")
-          .get();
+          ();
         spListColumns.then((columnResult) => {
-          let listColumns = [];
+          const listColumns = [];
           columnResult.forEach((column) => {
             listColumns.push({
               key: column.InternalName,
@@ -149,6 +150,8 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
             });
           });
           resolve(listColumns);
+        }).catch((error) => {
+          reject(error);
         });
       }
     );
@@ -158,21 +161,22 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
     return new Promise<IPropertyPaneDropdownOption[]>(
       (
         resolve: (options: IPropertyPaneDropdownOption[]) => void,
-        reject: (error: any) => void
+        reject: (error) => void
       ) => {
         if (!this.properties.columnTitle) {
           console.log("No Columns Selected");
           return null;
         }
 
-        const categoryField: IField = sp.web.lists
+        const categoryField: IField = this._sp.web.lists
           .getById(this.properties.listId)
           .fields.getByInternalNameOrTitle(this.properties.columnTitle);
-        let choices: any = categoryField.select("Choices")();
+          
+        const choices: Promise<IFieldInfo> = categoryField.select("Choices")();
         choices.then((result) => {
-          //console.clear();
-          //console.log(result.Choices);
-          let columnChoices = [];
+          // console.clear();
+          // console.log(result.Choices);
+          const columnChoices = [];
           result.Choices.forEach((choice) => {
             columnChoices.push({
               key: choice,
@@ -180,6 +184,8 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
             });
           });
           resolve(columnChoices);
+        }).catch((error) => {
+          reject(error);
         });
       }
     );
@@ -230,15 +236,7 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
     }
   }
 
-  protected onPropertyPaneFieldChanged(
-    propertyPath: string,
-    oldValue: any,
-    newValue: any
-  ): void {
-    // push new list value
-
-    // communicate loading items
-
+  protected onPropertyPaneFieldChanged(): void {
     if (this.properties.listId) {
       this.context.statusRenderer.displayLoadingIndicator(
         this.domElement,
