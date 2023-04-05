@@ -3,9 +3,38 @@
   "solution": {
     "name": "Accordion Section FAQ Builder",
     "id": "bf6fa974-fd40-45a3-80e9-e826abe025b9",
-    "version": "1.7.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-accordion description"
+      },
+      "longDescription": {
+        "default": "react-accordion description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-accordion ReactAccordionWebPart Feature",
+        "description": "The feature that activates ReactAccordionWebPart from the react-accordion solution.",
+        "id": "061da2cd-f680-4da5-ab30-40a8ba1aafd8",
+        "version": "2.0.0.0",
+        "componentIds": [
+          "061da2cd-f680-4da5-ab30-40a8ba1aafd8"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/DynamicFAQ-Accordion.sppkg"

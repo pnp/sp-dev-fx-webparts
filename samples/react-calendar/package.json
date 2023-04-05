@@ -33,7 +33,7 @@
     "draftjs-to-html": "^0.8.4",
     "globalize": "^1.4.2",
     "immutable": "^4.0.0-rc.12",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "moment": "^2.29.2",
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",

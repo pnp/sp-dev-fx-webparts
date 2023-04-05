@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-azure-devops-tasks",
+    "libraryId": "65f5c487-049f-4be9-8bc6-341886fa5a85",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-azure-devops-tasks",
+    "solutionShortDescription": "react-azure-devops-tasks description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Basic"
+  }
+}

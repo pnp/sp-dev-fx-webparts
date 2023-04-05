@@ -9,7 +9,7 @@
       "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022"
     ],
     "creationDateTime": "2019-07-23",
-    "updateDateTime": "2022-04-07",
+    "updateDateTime": "2023-03-06",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.16.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -220,6 +220,13 @@
       }
     ],
     "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "company": "Macaw",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas",
+        "twitter": "ValerasNarbutas"
+      },
       {
         "gitHubAccount": "joaojmendes",
         "company": "Storm Technology Ltd",

@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  - React
-  createdDate: 04/30/2020 12:00:00 AM
----
-
 # Pages Hierarchy
 
 ## Summary
@@ -53,6 +38,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 * [Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
 * [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
 * [SlowRobot](https://github.com/SlowRobot)
+* [ruslan-s](https://github.com/ruslan-s)
 
 ## Version history
 
@@ -62,7 +48,7 @@ Version|Date|Comments
 1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
 1.3|March 31, 2022|Added a Tree View
 1.4|July 29, 2022|Updated Tree View Functionality
-
+1.5|March 29, 2023|Added support for non-English SitePages library paths
 
 ## Minimal path to awesome
 
