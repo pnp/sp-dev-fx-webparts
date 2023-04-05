@@ -53,6 +53,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0 | Jan 21, 2019 | Initial release
 1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
+1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
 
 ## Minimal Path to Awesome
 
