@@ -198,7 +198,12 @@ export class RssXmlParserService {
       let item: any = {};
       Utils.copyFromXML(xmlItem, item, itemFields);
       if (xmlItem.enclosure) {
-        item.enclosure = xmlItem.enclosure[0].$;
+        if (Array.isArray(xmlItem.enclosure)) {
+          item.enclosure = xmlItem.enclosure[0].$;
+        }
+        else {
+          item.enclosure = xmlItem.enclosure.$;
+        }
       }
       if (xmlItem.description) {
         if (Array.isArray(xmlItem.description)) {
