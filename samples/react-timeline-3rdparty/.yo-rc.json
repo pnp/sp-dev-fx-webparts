@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.0",
+    "libraryName": "react-timeline-3-rdparty",
+    "libraryId": "b86f8d59-a682-4dd0-9325-26e9c873da42",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-timeline-3-rdparty",
+    "solutionShortDescription": "react-timeline-3-rdparty description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

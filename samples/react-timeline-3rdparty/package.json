@@ -1,0 +1,47 @@
+{
+  "name": "react-timeline-3-rdparty",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=16.13.0 <17.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@material-ui/icons": "^4.11.3",
+    "@microsoft/sp-core-library": "1.17.0",
+    "@microsoft/sp-lodash-subset": "1.17.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.17.0",
+    "@microsoft/sp-property-pane": "1.17.0",
+    "@microsoft/sp-webpart-base": "1.17.0",
+    "@pnp/logging": "^3.13.0",
+    "@pnp/sp": "^3.13.0",
+    "csstype": "^3.1.2",
+    "office-ui-fabric-react": "^7.199.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-vertical-timeline-component": "^3.6.0",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.17.0",
+    "@microsoft/eslint-plugin-spfx": "1.17.0",
+    "@microsoft/rush-stack-compiler-4.5": "0.4.0",
+    "@microsoft/sp-build-web": "1.17.0",
+    "@microsoft/sp-module-interfaces": "1.17.0",
+    "@rushstack/eslint-config": "2.5.1",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/react-vertical-timeline-component": "^3.3.3",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint": "8.7.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "typescript": "4.5.5"
+  }
+}

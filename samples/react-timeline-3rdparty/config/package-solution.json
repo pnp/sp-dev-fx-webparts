@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-timeline-3-rdparty-client-side-solution",
+    "id": "b86f8d59-a682-4dd0-9325-26e9c873da42",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-timeline-3-rdparty description"
+      },
+      "longDescription": {
+        "default": "react-timeline-3-rdparty description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-timeline-3-rdparty Feature",
+        "description": "The feature that activates elements of the react-timeline-3-rdparty solution.",
+        "id": "f2d0a8c9-0753-40a1-ac87-f893c91510f7",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-timeline-3-rdparty.sppkg"
+  }
+}
