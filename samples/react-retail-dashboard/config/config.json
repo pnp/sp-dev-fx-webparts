@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "retail-home-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/retailHome/RetailHomeWebPart.js",
+          "manifest": "./src/webparts/retailHome/RetailHomeWebPart.manifest.json"
+        }
+      ]
+    },
+    "retail-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/retailDashboard/RetailDashboardWebPart.js",
+          "manifest": "./src/webparts/retailDashboard/RetailDashboardWebPart.manifest.json"
+        }
+      ]
+    },
+    "retail-inventory-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/retailInventory/RetailInventoryWebPart.js",
+          "manifest": "./src/webparts/retailInventory/RetailInventoryWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RetailHomeWebPartStrings": "lib/webparts/retailHome/loc/{locale}.js",
+    "RetailDashboardWebPartStrings": "lib/webparts/retailDashboard/loc/{locale}.js",
+    "RetailInventoryWebPartStrings": "lib/webparts/retailInventory/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
