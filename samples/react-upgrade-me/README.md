@@ -1,5 +1,7 @@
 # Upgrade Me
-
+<picture>
+<img src="https://img.shields.io/badge/Test-does%20not%20cache-green" alt="Not cache" />
+</picture>
 ## Summary
 
 This web part does nothing, really. It is intended to be used to test upgrading SPFx web parts and demonstrating incompatibility issues between versions of SPFx and Node.js.
