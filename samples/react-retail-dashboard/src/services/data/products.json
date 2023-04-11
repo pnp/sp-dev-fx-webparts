@@ -1,0 +1,50 @@
+[
+    {
+        "code": "P01",
+        "description": "Contoso Denim Jacket Sales",
+        "price": "54",
+        "picture": "../assets/jeans-jacket.png",
+        "launchDate": "2023-02-01",
+        "sales": "20987"
+    },
+    {
+        "code": "P02",
+        "description": "Contoso Denim Jeans",
+        "price": "72",
+        "picture": "../assets/blue-jeans.png",
+        "launchDate": "2023-05-25",
+        "sales": "11238"
+    },
+    {
+        "code": "P03",
+        "description": "Cotton t-shirt",
+        "price": "35",
+        "picture": "../assets/peach-hoodie.png",
+        "launchDate": "2023-04-30",
+        "sales": "9567"
+    },
+    {
+        "code": "P04",
+        "description": "Contoso Black Jacket",
+        "price": "41",
+        "picture": "../assets/black-jacket.png",
+        "launchDate": "2023-02-01",
+        "sales": "12743"
+    },
+    {
+        "code": "P05",
+        "description": "Contoso Skirt",
+        "price": "38",
+        "picture": "../assets/skirt.png",
+        "launchDate": "2023-05-25",
+        "sales": "5843"
+    },
+    {
+        "code": "P06",
+        "description": "Cotton Blue Shirt",
+        "price": "52",
+        "picture": "../assets/blue-shirt.png",
+        "launchDate": "2023-04-30",
+        "sales": "3841"
+    }
+]

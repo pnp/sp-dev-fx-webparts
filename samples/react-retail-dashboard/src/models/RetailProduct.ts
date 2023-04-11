@@ -17,4 +17,7 @@ export interface RetailProduct {
 
     // The product launch date
     launchDate: Date;
+
+    // The sales of the product
+    sales: number;
 }

@@ -1,43 +1,87 @@
 import * as React from 'react';
 import styles from './RetailDashboard.module.scss';
+import * as strings from 'RetailDashboardWebPartStrings';
 import { IRetailDashboardProps } from './IRetailDashboardProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { IRetailDashboardState } from './IRetailDashboardState';
 
-export default class RetailDashboard extends React.Component<IRetailDashboardProps, {}> {
+import { WidgetSize, Dashboard } from '@pnp/spfx-controls-react/lib/Dashboard';
+import { Spinner, SpinnerSize, initializeIcons, Text } from 'office-ui-fabric-react';
+
+export default class RetailDashboard extends React.Component<IRetailDashboardProps, IRetailDashboardState> {
+
+  constructor(props: IRetailDashboardProps) {
+    super(props);
+
+    // Initialize Office UI Fabric icons
+    initializeIcons();
+    
+    // Initialize the state
+    this.state = {
+      isLoading: true,
+    };
+  }
+
   public render(): React.ReactElement<IRetailDashboardProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+
+    let content: JSX.Element = null;
+
+    content = <Dashboard widgets={[{
+      title: "Card 1",
+      desc: "Last updated Monday, April 4 at 11:15 AM (PT)",
+      size: WidgetSize.Triple,
+      body: [
+        {
+          id: "t1",
+          title: "Tab 1",
+          content: (
+            <Text>
+              Content #1
+            </Text>
+          ),
+        },
+        {
+          id: "t2",
+          title: "Tab 2",
+          content: (
+            <Text>
+              Content #2
+            </Text>
+          ),
+        },
+        {
+          id: "t3",
+          title: "Tab 3",
+          content: (
+            <Text>
+              Content #3
+            </Text>
+          ),
+        },
+      ],
+      link: { href: "#" },
+    },
+    {
+      title: "Card 2",
+      size: WidgetSize.Single,
+      link: { href: "#" },
+    },
+    {
+      title: "Card 3",
+      size: WidgetSize.Double,
+      link: { href: "#" },
+    }]} />;
+
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 500);
 
     return (
-      <section className={`${styles.retailDashboard} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+      <div className={styles.retailDashboard}>
+        {this.state.isLoading && <Spinner size={SpinnerSize.large} title={strings.Generic.Loading} className={styles.loader} />}
+        {!this.state.isLoading && content}
+      </div>
     );
   }
 }

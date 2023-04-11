@@ -45,7 +45,7 @@ export interface IRetailDataService {
     /**
      * Loads the list of Retail Products on launch
      */
-    ListProductOnLaunch: () => Promise<RetailProduct>;
+    ListProductOnLaunch: () => Promise<RetailProduct[]>;
 
     /**
      * Loads the list of Retail Products in the inventory

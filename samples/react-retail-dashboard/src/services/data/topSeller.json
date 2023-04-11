@@ -1,0 +1,8 @@
+{
+    "code": "P01",
+    "description": "Contoso Denim Jacket Sales",
+    "price": "54",
+    "picture": "../assets/jeans-jacket.png",
+    "launchDate": "2023-02-01",
+    "sales": "20987"
+}

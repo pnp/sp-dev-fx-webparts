@@ -11,16 +11,13 @@ import {
 
 // Import types for supporting SPFx with the service class
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
-import { MSGraphClientFactory, MSGraphClientV3 } from "@microsoft/sp-http";
 
 /**
  * Defines the concrete implementation of the interface for the Retail Data Service
  */
 export class FakeRetailDataService implements IRetailDataService {
 
-    public static readonly serviceKey: ServiceKey<IRetailDataService> = ServiceKey.create<IRetailDataService>('PnP:Retail:RetailDataService', FakeRetailDataService);
-    
-    private _msGraphClient: MSGraphClientV3 = null;
+    public static readonly serviceKey: ServiceKey<IRetailDataService> = ServiceKey.create<IRetailDataService>('PnP:Retail:FakeRetailDataService', FakeRetailDataService);
 
     /**
      * Constructor for the service class
@@ -30,8 +27,7 @@ export class FakeRetailDataService implements IRetailDataService {
 
         // Initialize the MSGraphClientV3 client
         serviceScope.whenFinished(async () => {
-            const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
-            this._msGraphClient = await msGraphClientFactory.getClient('3');
+            return;
         });
     }
 
@@ -39,55 +35,63 @@ export class FakeRetailDataService implements IRetailDataService {
      * Loads the Retail Return Volumes
      */
     public async LoadReturnVolumes(): Promise<RetailReturnVolumes> {
-        return null;
+        const returnVolumesData: RetailReturnVolumes = await require('./data/returnVolumes.json');
+        return returnVolumesData;
     }
 
     /**
      * Loads the Retail Return Reason stats
      */
     public async LoadReturnReasonStats(): Promise<RetailReturnReasonsStats> {
-        return null;
+        const returnReasonsData: RetailReturnReasonsStats = await require('./data/returnReasons.json');
+        return returnReasonsData;
     }
 
     /**
      * Loads the Retail Inventory
      */
     public async LoadInventory(): Promise<RetailInventory> {
-        return null;
+        const inventoryData: RetailInventory = await require('./data/inventory.json');
+        return inventoryData;
     }
 
     /**
      * Loads the Retail Customer Satisfaction stats
      */
     public async LoadCustomerSatisfactionStats(): Promise<RetailCustomerSatisfactionStats> {
-        return null;
+        const customerSatisfactionData: RetailCustomerSatisfactionStats = await require('./data/customerSatisfaction.json');
+        return customerSatisfactionData;
     }
 
     /**
      * Loads the Retail Quarterly Revenues stats (for the last 4 quarters)
      */
     public async LoadQuarterlyRevenues(): Promise<RetailQuarterlyRevenues[]> {
-        return null;
+        const quarterlyRevenues: RetailQuarterlyRevenues[] = await require('./data/quarterlyRevenues.json');
+        return quarterlyRevenues;
     }
 
     /**
      * Loads the Retail Top Seller Product
      */
     public async GetTopSellerProduct(): Promise<RetailProduct> {
-        return null;
+        const topSellerProduct: RetailProduct = await require('./data/topSeller.json');
+        return topSellerProduct;
     }
 
     /**
      * Loads the list of Retail Products on launch
      */
-    public async ListProductOnLaunch(): Promise<RetailProduct> {
-        return null;
+    public async ListProductOnLaunch(): Promise<RetailProduct[]> {
+        const productsOnLaunch: RetailProduct[] = await require('./data/productsOnLaunch.json');
+        return productsOnLaunch;
     }
 
     /**
      * Loads the list of Retail Products in the inventory
      */
     public async ListProductsInventory(): Promise<RetailProduct[]> {
-        return null;
+        const productsInventory: RetailProduct[] = await require('./data/products.json');
+        return productsInventory;
     }
 }

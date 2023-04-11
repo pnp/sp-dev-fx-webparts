@@ -1,0 +1,68 @@
+{
+    "maximumReturns": "6600",
+    "maximumInventory": "5500",
+    "currentReturns": "2930",
+    "currentInventory": "5293",
+    "monthlyReturns": [
+        {
+            "month": "1",
+            "returns": "543",
+            "inventory": "1024"
+        },
+        {
+            "month": "2",
+            "returns": "743",
+            "inventory": "1340"
+        },
+        {
+            "month": "3",
+            "returns": "254",
+            "inventory": "1510"
+        },
+        {
+            "month": "4",
+            "returns": "453",
+            "inventory": "940"
+        },
+        {
+            "month": "5",
+            "returns": "872",
+            "inventory": "924"
+        },
+        {
+            "month": "6",
+            "returns": "454",
+            "inventory": "692"
+        },
+        {
+            "month": "7",
+            "returns": "129",
+            "inventory": "514"
+        },
+        {
+            "month": "8",
+            "returns": "134",
+            "inventory": "741"
+        },
+        {
+            "month": "9",
+            "returns": "247",
+            "inventory": "643"
+        },
+        {
+            "month": "10",
+            "returns": "485",
+            "inventory": "872"
+        },
+        {
+            "month": "11",
+            "returns": "134",
+            "inventory": "512"
+        },
+        {
+            "month": "12",
+            "returns": "824",
+            "inventory": "923"
+        }
+    ]
+}

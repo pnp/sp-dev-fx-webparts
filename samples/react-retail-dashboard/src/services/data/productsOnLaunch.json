@@ -1,0 +1,18 @@
+[
+    {
+        "code": "P02",
+        "description": "Contoso Denim Jeans",
+        "price": "72",
+        "picture": "../assets/blue-jeans.png",
+        "launchDate": "2023-05-25",
+        "sales": "11238"
+    },
+    {
+        "code": "P03",
+        "description": "Cotton t-shirt",
+        "price": "35",
+        "picture": "../assets/peach-hoodie.png",
+        "launchDate": "2023-04-30",
+        "sales": "9567"
+    }
+]

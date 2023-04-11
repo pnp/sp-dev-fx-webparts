@@ -4,7 +4,7 @@ import { RetailSettings } from './RetailSettings';
 
 // Import types for supporting SPFx with the service class
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
-import { MSGraphClientFactory, MSGraphClientV3 } from "@microsoft/sp-http";
+// import { MSGraphClientFactory, MSGraphClientV3 } from "@microsoft/sp-http";
 
 /**
  * Defines the concrete implementation of the interface for the Settings Service
@@ -13,7 +13,7 @@ export class SettingsService implements ISettingsService {
 
     public static readonly serviceKey: ServiceKey<ISettingsService> = ServiceKey.create<ISettingsService>('PnP:Retail:SettingsService', SettingsService);
     
-    private _msGraphClient: MSGraphClientV3 = null;
+    // private _msGraphClient: MSGraphClientV3 = null;
 
     /**
      * Constructor for the service class
@@ -23,8 +23,8 @@ export class SettingsService implements ISettingsService {
 
         // Initialize the MSGraphClientV3 client
         serviceScope.whenFinished(async () => {
-            const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
-            this._msGraphClient = await msGraphClientFactory.getClient('3');
+            // const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
+            // this._msGraphClient = await msGraphClientFactory.getClient('3');
         });
     }
 
