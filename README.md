@@ -23,7 +23,7 @@ You can download the solution from here: https://github.com/SPFxAppDev/sp-passwo
 
 ## Used SharePoint Framework Version
 
-SPFx: 1.12.1 
+SPFx: 1.16.1 
 
 
 ## 
@@ -38,6 +38,7 @@ spfxappdev-simple-password-vault.sppkg | Seryoga https://spfx-app.dev/
 
 Version|Date|Comments
 -------|----|--------
+1.1.0| April 13, 2023| SPFx Version updated to 1.16.1. Design changes. Added "Modules" Functionality
 1.0.0| March 22, 2022| Initial release
 
 
