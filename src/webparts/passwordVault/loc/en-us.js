@@ -14,6 +14,13 @@ define([], function() {
     "OpenVaultLabel": "Open vault",
     "UsernameCopiedLabel": "Username copied",
     "PasswordCopiedLabel": "Password copied",
-    "DontLoseMasterpasswordLabel": "If you forget the master password, you will not be able to unlock the vault and all data will be lost. It is not possible to recover the password."
+    "DontLoseMasterpasswordLabel": "If you forget the master password, you will not be able to unlock the vault and all data will be lost. It is not possible to recover the password.",
+    "AddNewModuleLabel": "Add a new secured module",
+    "DeleteModuleLabel": "Delete",
+    "MoveUpLabel": "Move up",
+    "MoveDownLabel": "Move down",
+    "PasswordModuleLabel": "Password",
+    "UsernameModuleLabel": "Username",
+    "NoteModuleLabel": "Note",
   }
 });

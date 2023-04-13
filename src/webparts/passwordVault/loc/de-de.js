@@ -14,6 +14,13 @@ define([], function() {
         "OpenVaultLabel": "Tresor entsperren",
         "UsernameCopiedLabel": "Benutzername kopiert",
         "PasswordCopiedLabel": "Passwort kopiert",
-        "DontLoseMasterpasswordLabel": "Wenn Sie das Master passwort vergessen, können Sie den Tresor nicht mehr entsperren und alle Daten gehen verloren. Es ist nicht möglich das Passwort wiederherzustellen."
+        "DontLoseMasterpasswordLabel": "Wenn Sie das Master passwort vergessen, können Sie den Tresor nicht mehr entsperren und alle Daten gehen verloren. Es ist nicht möglich das Passwort wiederherzustellen.",
+        "AddNewModuleLabel": "Ein neues Modul hinzufügen",
+        "DeleteModuleLabel": "Modul löschen",
+        "MoveUpLabel": "Nach oben verschieben",
+        "MoveDownLabel": "Nach unten verschieben",
+        "PasswordModuleLabel": "Passwort",
+        "UsernameModuleLabel": "Benutzername",
+        "NoteModuleLabel": "Notiz",
     }
   });

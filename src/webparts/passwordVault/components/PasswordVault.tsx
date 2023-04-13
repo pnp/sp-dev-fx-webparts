@@ -3,10 +3,8 @@ import styles from './PasswordVault.module.scss';
 import { SPFxAppDevWebPartComponent, ISPFxAppDevWebPartComponentProps } from '@spfxappdev/framework';
 import PasswordVaultWebPart from '../PasswordVaultWebPart';
 import { IPasswordVaultService } from '@src/services/PasswordVaultService';
-import { Callout, DefaultButton, DirectionalHint, Icon, ITextField, Label, MessageBar, MessageBarType, PrimaryButton, TextField } from 'office-ui-fabric-react';
+import { DefaultButton, IconButton, MessageBar, MessageBarType, PrimaryButton, TextField } from 'office-ui-fabric-react';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
-import { IVaultData } from '@src/models/IVaultData';
 import * as strings from 'PasswordVaultWebPartStrings';
 import AddNewModule from './AddNewModule';
 import { IModule, ModuleType } from '@src/models';
@@ -31,11 +29,7 @@ export interface IPasswordVaultProps extends ISPFxAppDevWebPartComponentProps<Pa
   modules?: IModule[];
 }
 //TODO:
-// Header Module????
-// Filter/Search for combination?
 // "Change Password" as command button, only if vault already have set a master password
-// Delete Module
-// Change Order of module
 
 export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVaultWebPart, IPasswordVaultProps, IPasswordVaultState> {
   
@@ -150,8 +144,6 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   }
 
   private renderEditMode(): JSX.Element {
-    const wp: PasswordVaultWebPart = this.WebPart;
-
     const showForm: boolean = this.state.isVaultOpen;
 
     return (
@@ -250,26 +242,60 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
       </div>
       <div className="spfxappdev-grid-row" key={module.id}>
       <div className="spfxappdev-grid-col spfxappdev-sm12">
-        {module.type == ModuleType.UserField && 
-          <UserField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
-            this.decryptedModuleData[module.id] = newVal;
-          }} isDisplayMode={false} />
-        }
+        <div className={styles["edit-container"]}>
+            <div className={styles["edit-container--header"]}>
+              <IconButton 
+                className={styles["delete-btn"]} 
+                iconProps={{ iconName: "Delete"}} 
+                title={strings.DeleteModuleLabel}
+                onClick={() => {
+                  this.onDeleteModule(index);
+                }}
+               />
 
-        {module.type == ModuleType.PasswordField &&
-          <PasswordField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
-            this.decryptedModuleData[module.id] = newVal;
-          }} isDisplayMode={false} />
-        }
+              <IconButton 
+                iconProps={{ iconName: "Up"}} 
+                title={strings.MoveUpLabel} 
+                disabled={this.state.modules.length === 1 || index === 0} 
+                onClick={() => {
+                  this.onMoveUp(index);
+                }}
+              />
 
-        {module.type == ModuleType.NoteField &&
-          <NoteField defaultValue={this.decryptedModuleData[module.id]} onChange={(newVal: string) => {
+              <IconButton 
+                iconProps={{ iconName: "Down"}} 
+                title={strings.MoveDownLabel} 
+                disabled={this.state.modules.length === 1 || this.state.modules.length - 1 === index} 
+                onClick={() => {
+                  this.onMoveDown(index);
+                }}
+              />
+            </div>
 
-              this.decryptedModuleData[module.id] = newVal;
+            <div className={styles["edit-container--content"]}>
+          
+              {module.type == ModuleType.UserField && 
+                <UserField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
+                  this.decryptedModuleData[module.id] = newVal;
+                }} isDisplayMode={false} />
+              }
 
-              return newVal;
-          }} isDisplayMode={false} />
-        }
+              {module.type == ModuleType.PasswordField &&
+                <PasswordField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
+                  this.decryptedModuleData[module.id] = newVal;
+                }} isDisplayMode={false} />
+              }
+
+              {module.type == ModuleType.NoteField &&
+                <NoteField defaultValue={this.decryptedModuleData[module.id]} onChange={(newVal: string) => {
+
+                    this.decryptedModuleData[module.id] = newVal;
+
+                    return newVal;
+                }} isDisplayMode={false} />
+              }
+            </div>
+        </div>
       </div>
       </div>
       </>
@@ -387,7 +413,6 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   }
 
   private onAddNewModule(moduleType: ModuleType, index: number): void {
-    console.log("add new Module", moduleType);
 
     const module: IModule = {
       id: Guid.newGuid().toString(),
@@ -401,6 +426,36 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
 
     // this.state.modules.push(module);
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onDeleteModule(index: number): void {
+
+    this.state.modules.RemoveAt(index);
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onMoveUp(index: number): void {
+
+    const prevModule: IModule = this.state.modules[index-1];
+    this.state.modules[index-1] = this.state.modules[index];
+    this.state.modules[index] = prevModule;
+
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onMoveDown(index: number): void {
+
+    this.state.modules.RemoveAt(index);
 
     this.setState({
       modules: this.state.modules

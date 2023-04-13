@@ -27,7 +27,7 @@ export default class NoteField extends React.Component<INoteFieldProps, INoteFie
     }
 
     private renderDisplayMode(): JSX.Element {
-        return (<><Label>{strings.NoteLabel}</Label>
+        return (<>
         <RichText
           isEditMode={false}
           value={this.props.defaultValue}

@@ -3,6 +3,7 @@ import styles from './PasswordVault.module.scss';
 import { cssClasses, isNullOrEmpty } from '@spfxappdev/utility';
 import { ActionButton, Callout, Icon, TooltipHost, DirectionalHint } from 'office-ui-fabric-react';
 import { ModuleType } from '@src/models';
+import * as strings from 'PasswordVaultWebPartStrings';
 
 export interface IAddNewModuleProps {
     onModuleSelected(module: ModuleType): void;
@@ -29,14 +30,14 @@ export default class AddNewModule extends React.Component<IAddNewModuleProps, IA
             <div className={cssClasses(styles["separator-container"], isCallOutVisibleClass)}>
                 <button type="button"
                 aria-haspopup="true" 
-                aria-label="Add a new control" 
+                aria-label={strings.AddNewModuleLabel} 
                 ref={(ref: HTMLButtonElement) => { this.addNewButtonRef = ref }}
                 onClick={() => {
                 this.setState({
                     showAddNewCallout: true
                 });
                 }}>
-                <TooltipHost content="Add a new secured module" 
+                <TooltipHost content={strings.AddNewModuleLabel} 
                     // id={this.WebPart.instanceId + "_addNewControl"}
                 >
                     <Icon iconName="Add" />
@@ -70,15 +71,15 @@ export default class AddNewModule extends React.Component<IAddNewModuleProps, IA
             }}
             >
             <ActionButton iconProps={{iconName: "PasswordField"}} onClick={() => { this.onModuleSelected(ModuleType.PasswordField); }}>
-              <div>Password</div>
+              <div>{strings.PasswordModuleLabel}</div>
             </ActionButton>
 
             <ActionButton iconProps={{iconName: "UserOptional"}} onClick={() => { this.onModuleSelected(ModuleType.UserField); }}>
-              <div>Username</div>
+              <div>{strings.UsernameModuleLabel}</div>
             </ActionButton>
 
             <ActionButton iconProps={{iconName: "EditNote"}} onClick={() => { this.onModuleSelected(ModuleType.NoteField); }}>
-              <div>Note</div>
+              <div>{strings.NoteModuleLabel}</div>
             </ActionButton>
           </Callout>
           </>
