@@ -3,29 +3,35 @@ import styles from './PasswordVault.module.scss';
 import { SPFxAppDevWebPartComponent, ISPFxAppDevWebPartComponentProps } from '@spfxappdev/framework';
 import PasswordVaultWebPart from '../PasswordVaultWebPart';
 import { IPasswordVaultService } from '@src/services/PasswordVaultService';
-import { Callout, DefaultButton, DirectionalHint, Icon, ITextField, Label, MessageBar, MessageBarType, PrimaryButton, TextField } from 'office-ui-fabric-react';
+import { Dialog, DefaultButton, IconButton, MessageBar, MessageBarType, PrimaryButton, TextField, CommandBar, ICommandBarItemProps, DialogFooter, DialogType } from 'office-ui-fabric-react';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
-import { IVaultData } from '@src/interfaces/IVaultData';
 import * as strings from 'PasswordVaultWebPartStrings';
+import AddNewModule from './AddNewModule';
+import { IModule, ModuleType } from '@src/models';
+import { Guid } from '@microsoft/sp-core-library';
+import UserField from './UserField';
+import PasswordField from './PasswordField';
+import NoteField from './NoteField';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
 
 interface IPasswordVaultState {
   isVaultOpen: boolean;
   showWrongMasterInfo: boolean;
   isSaveButtonDisabled: boolean;
-  isCopyPasswordToClipboardCalloutHidden: boolean;
-  isCopyUsernameToClipboardCalloutHidden: boolean;
+  modules: IModule[];
+  showChangePasswordDialog: boolean;
 }
 
 export interface IPasswordVaultProps extends ISPFxAppDevWebPartComponentProps<PasswordVaultWebPart> {
   passwordVaultService: IPasswordVaultService;
   masterPW?: string;
-  username?: string;
-  password?: string;
-  note?: string;
   onTitleChanged?(value: string): void;
-  onVaultDataChanged?(vaultData: IVaultData): void;
+  onVaultDataChanged?(encryptedMaster: string, modules: IModule[]): void;
+  onVaultPasswordChanged?(encryptedMaster: string): void;
+  modules?: IModule[];
 }
+
 
 export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVaultWebPart, IPasswordVaultProps, IPasswordVaultState> {
   
@@ -39,8 +45,8 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
     isVaultOpen: this.isVaultOpen,
     showWrongMasterInfo: false,
     isSaveButtonDisabled: this.helper.functions.isNullOrEmpty(this.props.masterPW),
-    isCopyPasswordToClipboardCalloutHidden: true,
-    isCopyUsernameToClipboardCalloutHidden: true
+    modules: cloneDeep(this.props.modules),
+    showChangePasswordDialog: false
   };
 
   private get isVaultOpen(): boolean {
@@ -58,40 +64,25 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
   private enteredMasterPW: string = "";
 
-  private encryptedData: IVaultData = null;
+  private repeatedEnteredMasterPW: string = "";
 
-  private decryptedData: IVaultData = null;
+  private encryptedModuleData: Record<string, string> = {};
+
+  private decryptedModuleData: Record<string, string> = {};
 
   private isNewVault: boolean = true;
 
-  private editModeNote: string;
-
-  private editModePw: string;
-
-  private editModeUsername: string;
-
   private currentMasterPW: string = "";
-
-  private usernameTextFieldDomElement: HTMLInputElement = null;
-
-  private passwordTextFieldDomElement: HTMLInputElement = null;
 
   constructor(props: IPasswordVaultProps) {
     super(props);
-    this.encryptedData = {
-      masterPW: props.masterPW,
-      username: props.username,
-      password: props.password,
-      note: props.note
-    };
+
+    props.modules.forEach((module: IModule) => {
+      this.encryptedModuleData[module.id] = module.data;
+      this.decryptedModuleData[module.id] = this.props.passwordVaultService.decryptModuleData(module.type, module.data);
+    });
 
     this.currentMasterPW = props.masterPW;
-    this.decryptedData = this.props.passwordVaultService.decryptData(this.encryptedData);
-
-    this.editModeNote = this.helper.functions.getDeepOrDefault(this.decryptedData, "note", "");
-    this.editModePw = this.helper.functions.getDeepOrDefault(this.decryptedData, "password", "");
-    this.editModeUsername = this.helper.functions.getDeepOrDefault(this.decryptedData, "username", "");
-
     this.isNewVault = this.helper.functions.isNullOrEmpty(props.masterPW);
   }
 
@@ -121,7 +112,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   }
 
   private renderDisplayMode(): JSX.Element {
-    const showCopyToClipboard: boolean = this.helper.functions.issetDeep(window, "navigator.clipboard.writeText");
+    
 
     return (
       <>
@@ -135,87 +126,10 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
         {this.state.isVaultOpen &&
         <div className='spfxappdev-grid'>
-            {!this.helper.functions.isNullOrEmpty(this.decryptedData.username) &&
-              <div className="spfxappdev-grid-row">
-                <div className="spfxappdev-grid-col spfxappdev-sm12">
-                  <TextField
-                    label={strings.UsernameLabel}
-                    disabled={true}
-                    defaultValue={this.decryptedData.username}
-                    componentRef={(input: ITextField) => {
-                      this.usernameTextFieldDomElement = this.helper.functions.getDeepOrDefault(input, "_textElement.current", null);                      
-                    }}
-                    onRenderSuffix={() => {
 
-                      if(!showCopyToClipboard) {
-                        return <></>;
-                      }
-
-                      return (<Icon iconName={"Copy"} className="copy-icon" onClick={() => { this.copyToClipboard(this.decryptedData.username, false); }} />);
-                    }}
-                  />
-                   {showCopyToClipboard && this.helper.functions.isset(this.usernameTextFieldDomElement) &&
-                    <Callout
-                      hidden={this.state.isCopyUsernameToClipboardCalloutHidden}
-                      target={this.usernameTextFieldDomElement.parentElement}
-                      isBeakVisible={false}
-                      className={"clipboard-callout"}
-                      directionalHint={DirectionalHint.rightCenter}
-                    >
-                      {strings.UsernameCopiedLabel}
-                    </Callout>
-                  }
-                </div>
-              </div>
-            }
-
-            {!this.helper.functions.isNullOrEmpty(this.decryptedData.password) && 
-            <div className="spfxappdev-grid-row">
-              <div className="spfxappdev-grid-col spfxappdev-sm12">
-                <TextField
-                  label={strings.PasswordLabel}
-                  type="password"
-                  disabled={true}
-                  canRevealPassword={true}
-                  defaultValue={this.decryptedData.password}
-                  componentRef={(input: ITextField) => {
-                    this.passwordTextFieldDomElement = this.helper.functions.getDeepOrDefault(input, "_textElement.current", null);   
-                  }}
-                  onRenderSuffix={() => {
-                    
-                    if(!showCopyToClipboard) {
-                      return <></>;
-                    }
-
-                    return (<Icon iconName={"Copy"} className="copy-icon" onClick={() => { 
-                      this.copyToClipboard(this.decryptedData.password, true); 
-                    }} />);
-                  }}
-                />
-                {showCopyToClipboard && this.helper.functions.isset(this.passwordTextFieldDomElement) &&
-                <Callout
-                  hidden={this.state.isCopyPasswordToClipboardCalloutHidden}
-                  target={this.passwordTextFieldDomElement.parentElement}
-                  isBeakVisible={false}
-                  className={"clipboard-callout"}
-                  directionalHint={DirectionalHint.rightCenter}
-                >
-                  {strings.PasswordCopiedLabel}
-                </Callout>
-                }
-              </div>
-            </div>
-            }
-
-            {!this.helper.functions.isNullOrEmpty(this.decryptedData.note) && 
-            <>
-            <Label>{strings.NoteLabel}</Label>
-            <RichText
-              isEditMode={false}
-              value={this.decryptedData.note}
-            />
-            </>
-            }
+          {this.state.modules.map((module: IModule, index: number): JSX.Element => {
+            return this.renderModuleDisplayMode(module, index);
+          })}
 
           <div className="spfxappdev-grid-row grid-footer">
             <div className="spfxappdev-grid-col spfxappdev-sm12">
@@ -235,8 +149,6 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
   }
 
   private renderEditMode(): JSX.Element {
-    const wp: PasswordVaultWebPart = this.WebPart;
-
     const showForm: boolean = this.state.isVaultOpen;
 
     return (
@@ -245,103 +157,33 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
 
         {showForm &&
         <>
-        <MessageBar messageBarType={MessageBarType.warning}>
-          {strings.DontLoseMasterpasswordLabel}
-        </MessageBar>
+
+        {this.renderCommandBarButtons()}
+        {this.renderChangePasswordDialog()}
+
+        {this.isNewVault &&
+          <MessageBar messageBarType={MessageBarType.warning}>
+            {strings.DontLoseMasterpasswordLabel}
+          </MessageBar>
+        }
         <div className='spfxappdev-grid'>
-          <div className="spfxappdev-grid-row">
-            <div className="spfxappdev-grid-col spfxappdev-sm12">
-              <TextField
-                label={this.isNewVault ? strings.SetMasterPasswordLabel : strings.ChangeMasterPasswordLabel}
-                type="password"
-                required={this.isNewVault}
-                canRevealPassword={true}
-                onChange={(ev: any, newValue: string) => {
-                  this.enteredMasterPW = newValue;
-                  this.setState({
-                    isSaveButtonDisabled: this.isSaveButtonDisabled()
-                  });
-                }}
-              />
-            </div>
-          </div>
+          {this.isNewVault && this.renderMasterPasswordControls()}
 
-          <div className="spfxappdev-grid-row">
-            <div className="spfxappdev-grid-col spfxappdev-sm12">
-              <TextField
-                label={strings.UsernameLabel}
-                type="text"
-                onChange={(ev: any, newValue: string) => {
-                  this.editModeUsername = newValue;
-                  this.setState({
-                    isSaveButtonDisabled: this.isSaveButtonDisabled()
-                  });
-                }}
-                defaultValue={this.decryptedData.username}
-              />
-            </div>
-          </div>
+          {this.state.modules.map((module: IModule, index: number): JSX.Element => {
+              return this.renderModuleEditMode(module, index);
+          })}
 
-          <div className="spfxappdev-grid-row">
-            <div className="spfxappdev-grid-col spfxappdev-sm12">
-              <TextField
-                label={strings.PasswordLabel}
-                type="password"
-                canRevealPassword={true}
-                onChange={(ev: any, newValue: string) => {
-                  this.editModePw = newValue;
-                  this.setState({
-                    isSaveButtonDisabled: this.isSaveButtonDisabled()
-                  });
-                }}
-                defaultValue={this.decryptedData.password}
-              />
-            </div>
-          </div>
-
-          <div className="spfxappdev-grid-row">
-            <div className="spfxappdev-grid-col spfxappdev-sm12">
-              <Label>{strings.NoteLabel}</Label>
-              <RichText
-                isEditMode={wp.IsPageInEditMode}
-                value={this.decryptedData.note}
-                onChange={(note: string): string => {
-                  this.editModeNote = note;
-                  this.decryptedData.note = note;
-                  this.setState({
-                    isSaveButtonDisabled: this.isSaveButtonDisabled()
-                  });
-
-                  return note;
-                }}
-              />
-            </div>
+          <div className={"spfxappdev-grid-row"}>
+            <AddNewModule onModuleSelected={(module: ModuleType) => {
+              this.onAddNewModule(module, this.state.modules.length + 1);
+            }} />
           </div>
 
            
           <div className="spfxappdev-grid-row grid-footer">
             <div className="spfxappdev-grid-col spfxappdev-sm12">
               <PrimaryButton disabled={this.state.isSaveButtonDisabled} onClick={() => {
-                  this.isNewVault = false;
-                  let encryptedMaster = this.currentMasterPW;
-
-                  if(!this.enteredMasterPW.IsEmpty()) {
-                    encryptedMaster = this.props.passwordVaultService.setMasterPassword(this.enteredMasterPW);
-                    this.currentMasterPW = encryptedMaster;
-                  }
-
-                  
-
-                  this.encryptedData = this.props.passwordVaultService.encryptData({
-                    note: this.editModeNote,
-                    password: this.editModePw,
-                    username: this.editModeUsername
-                  });
-
-                  this.decryptedData = this.props.passwordVaultService.decryptData(this.encryptedData);
-
-                  this.props.onVaultDataChanged(this.encryptedData);
-                  
+                  this.onSaveButtonClick();
                 }}>
                   {strings.SaveLabel}
               </PrimaryButton>
@@ -360,6 +202,98 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
         }
       </>
     );
+  }
+
+  private renderModuleEditMode(module: IModule, index: number): JSX.Element {
+    return(
+      <>
+      <div className={"spfxappdev-grid-row"} key={module.id + '_addNewModuleContainer'}>
+            <AddNewModule onModuleSelected={(module: ModuleType) => {
+              this.onAddNewModule(module, index);
+            }} />
+      </div>
+      <div className="spfxappdev-grid-row" key={module.id}>
+      <div className="spfxappdev-grid-col spfxappdev-sm12">
+        <div className={styles["edit-container"]}>
+            <div className={styles["edit-container--header"]}>
+              <IconButton 
+                className={styles["delete-btn"]} 
+                iconProps={{ iconName: "Delete"}} 
+                title={strings.DeleteModuleLabel}
+                onClick={() => {
+                  this.onDeleteModule(index);
+                }}
+               />
+
+              <IconButton 
+                iconProps={{ iconName: "Up"}} 
+                title={strings.MoveUpLabel} 
+                disabled={this.state.modules.length === 1 || index === 0} 
+                onClick={() => {
+                  this.onMoveUp(index);
+                }}
+              />
+
+              <IconButton 
+                iconProps={{ iconName: "Down"}} 
+                title={strings.MoveDownLabel} 
+                disabled={this.state.modules.length === 1 || this.state.modules.length - 1 === index} 
+                onClick={() => {
+                  this.onMoveDown(index);
+                }}
+              />
+            </div>
+
+            <div className={styles["edit-container--content"]}>
+          
+              {module.type === ModuleType.UserField && 
+                <UserField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
+                  this.decryptedModuleData[module.id] = newVal;
+                }} isDisplayMode={false} />
+              }
+
+              {module.type === ModuleType.PasswordField &&
+                <PasswordField defaultValue={this.decryptedModuleData[module.id]} tabIndex={index} onChange={(newVal: string) => {
+                  this.decryptedModuleData[module.id] = newVal;
+                }} isDisplayMode={false} />
+              }
+
+              {module.type === ModuleType.NoteField &&
+                <NoteField defaultValue={this.decryptedModuleData[module.id]} onChange={(newVal: string) => {
+
+                    this.decryptedModuleData[module.id] = newVal;
+
+                    return newVal;
+                }} isDisplayMode={false} />
+              }
+            </div>
+        </div>
+      </div>
+      </div>
+      </>
+      );
+  }
+
+  private renderModuleDisplayMode(module: IModule, index: number): JSX.Element {
+    return(
+      <>
+      <div className="spfxappdev-grid-row" key={module.id}>
+      <div className="spfxappdev-grid-col spfxappdev-sm12">
+        {module.type === ModuleType.UserField && 
+          <UserField defaultValue={this.decryptedModuleData[module.id]} isDisplayMode={true} tabIndex={index} />
+        }
+
+        {module.type === ModuleType.PasswordField &&
+          <PasswordField defaultValue={this.decryptedModuleData[module.id]} isDisplayMode={true} tabIndex={index} />
+        }
+
+        {module.type === ModuleType.NoteField &&
+          <NoteField defaultValue={this.decryptedModuleData[module.id]} isDisplayMode={true} />
+        }
+      </div>
+      </div>
+      </>
+      );
   }
 
   private renderOpenVaultForm(): JSX.Element {
@@ -388,7 +322,7 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
                     this.enteredMasterPW = newValue;
                   }}
                   onKeyUp={(ev: React.KeyboardEvent<HTMLInputElement>) => {
-                    if(ev.keyCode == 13) {
+                    if(ev.keyCode === 13) {
                       this.onOpenVault();
                     }
                   }}
@@ -413,8 +347,123 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
     </>);
   }
 
+  private renderMasterPasswordControls(): JSX.Element {
+    return (
+    <div className="spfxappdev-grid-row">
+      <div className="spfxappdev-grid-col spfxappdev-sm12">
+        <TextField
+          label={this.isNewVault ? strings.SetMasterPasswordLabel : strings.ChangeMasterPasswordLabel}
+          type="password"
+          required={this.isNewVault}
+          canRevealPassword={true}
+          onChange={(ev: any, newValue: string) => {
+            this.enteredMasterPW = newValue;
+            this.setState({
+              isSaveButtonDisabled: this.isSaveButtonDisabled()
+            });
+          }}
+        />
+      </div>
+
+      <div className="spfxappdev-grid-col spfxappdev-sm12">
+        <TextField
+          label={strings.RepeatMasterPasswordLabel}
+          type="password"
+          required={this.isNewVault}
+          canRevealPassword={true}
+          onChange={(ev: any, newValue: string) => {
+            this.repeatedEnteredMasterPW = newValue;
+            this.setState({
+              isSaveButtonDisabled: this.isSaveButtonDisabled()
+            });
+          }}
+        />
+      </div>
+    </div>);
+  }
+
+  private renderChangePasswordDialog(): JSX.Element {
+    return (
+      <Dialog 
+        hidden={!this.state.showChangePasswordDialog}
+        dialogContentProps={{
+          title: strings.ChangeMasterPasswordDialogTitle,
+          type: DialogType.normal,
+        }}
+        onDismiss={() => { this.toggleChangePasswordDialogVisibility(); }}
+        >
+
+        <MessageBar messageBarType={MessageBarType.warning}>
+            {strings.DontLoseMasterpasswordLabel}
+        </MessageBar>
+
+        {this.renderMasterPasswordControls()}
+
+        <DialogFooter>
+          <PrimaryButton 
+            disabled={this.state.isSaveButtonDisabled}
+            onClick={() => { this.onChangePasswordClick(); }} 
+            text={strings.SaveLabel} />
+          <DefaultButton onClick={() => { this.toggleChangePasswordDialogVisibility(); }} text={strings.CancelLabel} />
+        </DialogFooter>
+      </Dialog>
+    );
+  }
+
+  private renderCommandBarButtons(): JSX.Element {
+    const buttons: ICommandBarItemProps[] = [];
+
+    const saveButton: ICommandBarItemProps = {
+      key: 'saveSettings',
+      text: strings.SaveLabel,
+      disabled: this.isSaveButtonDisabled(),
+      iconProps: { iconName: 'Save' },
+      onClick: () => {
+        this.onSaveButtonClick();
+      }
+    }
+
+    buttons.push(saveButton);
+
+    if(!this.isNewVault) {
+      const changeMasterPwButton: ICommandBarItemProps = {
+        key: 'changeMasterPassword',
+        text: strings.ChangeMasterPasswordButtonText,
+        iconProps: { iconName: 'PasswordField' },
+        onClick: () => {
+          this.toggleChangePasswordDialogVisibility();
+        },
+      }
+
+      buttons.push(changeMasterPwButton);
+    }
+
+    if(!this.helper.functions.isNullOrEmpty(this.currentMasterPW)) {
+      const closeButton: ICommandBarItemProps = {
+        key: 'closeVault',
+        text: strings.CloseVaultLabel,
+        iconProps: { iconName: 'Lock' },
+        onClick: () => {
+          this.closeVault();
+        }
+      }
+  
+      buttons.push(closeButton);
+    }
+
+    return (
+      <CommandBar
+        items={buttons}
+      />
+    );
+  }
+
   private isSaveButtonDisabled(): boolean {
-    if(this.isNewVault && this.helper.functions.isNullOrEmpty(this.enteredMasterPW)) {
+    if((this.isNewVault || this.state.showChangePasswordDialog) && this.helper.functions.isNullOrEmpty(this.enteredMasterPW)) {
+      return true;
+    }
+
+    if(!this.enteredMasterPW.Equals(this.repeatedEnteredMasterPW, false)) {
       return true;
     }
 
@@ -436,10 +485,9 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
     this.enteredMasterPW = "";
 
     if(isCorrectPW) {
-      this.decryptedData = props.passwordVaultService.decryptData(this.encryptedData);
-      this.editModeNote = this.decryptedData.note;
-      this.editModePw = this.decryptedData.password;
-      this.editModeUsername = this.decryptedData.username;
+      this.state.modules.forEach((module: IModule) => {
+        this.decryptedModuleData[module.id] = this.props.passwordVaultService.decryptModuleData(module.type, module.data);
+      });
     }
 
     this.setState({
@@ -448,21 +496,104 @@ export default class PasswordVault extends SPFxAppDevWebPartComponent<PasswordVa
     });
   }
 
-  private copyToClipboard(text: string, isPasswordField: boolean): void {
-    window.navigator.clipboard.writeText(text).then(() => {
+  private onAddNewModule(moduleType: ModuleType, index: number): void {
 
-      this.setState({
-        isCopyPasswordToClipboardCalloutHidden: !isPasswordField,
-        isCopyUsernameToClipboardCalloutHidden: isPasswordField
-      });
+    const module: IModule = {
+      id: Guid.newGuid().toString(),
+      type: moduleType,
+      data: ''
+    };
 
-      window.setTimeout(() => {
-        this.setState({
-          isCopyPasswordToClipboardCalloutHidden: true,
-          isCopyUsernameToClipboardCalloutHidden: true
-        });
-      }, 2000);
+    this.state.modules.AddAt(index, module);
+    this.decryptedModuleData[module.id] = module.data;
+    this.encryptedModuleData[module.id] = module.data;
 
+
+    // this.state.modules.push(module);
+
+    this.setState({
+      modules: this.state.modules
     });
   }
+
+  private onDeleteModule(index: number): void {
+
+    this.state.modules.RemoveAt(index);
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onMoveUp(index: number): void {
+
+    const prevModule: IModule = this.state.modules[index-1];
+    this.state.modules[index-1] = this.state.modules[index];
+    this.state.modules[index] = prevModule;
+
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onMoveDown(index: number): void {
+
+    this.state.modules.RemoveAt(index);
+
+    this.setState({
+      modules: this.state.modules
+    });
+  }
+
+  private onSaveButtonClick(): void {
+    this.isNewVault = false;
+    let encryptedMaster = this.currentMasterPW;
+
+    if(!this.enteredMasterPW.IsEmpty()) {
+      encryptedMaster = this.props.passwordVaultService.setMasterPassword(this.enteredMasterPW);
+      this.currentMasterPW = encryptedMaster;
+    }
+
+    const encryptedModules: IModule[] = [];
+    this.state.modules.forEach((module: IModule) => {
+        const encryptedValue: string = this.props.passwordVaultService.encryptModuleData(module.type, this.decryptedModuleData[module.id]);
+
+        encryptedModules.push({
+          id: module.id,
+          data: encryptedValue,
+          type: module.type
+        });
+    });
+
+    this.props.onVaultDataChanged(encryptedMaster, encryptedModules);
+
+    this.setState({
+      modules: encryptedModules
+    });
+
+    this.enteredMasterPW = '';
+    this.repeatedEnteredMasterPW = '';
+  }
+
+  private onChangePasswordClick(): void {
+    let encryptedMaster = this.currentMasterPW;
+
+    if(!this.enteredMasterPW.IsEmpty()) {
+      encryptedMaster = this.props.passwordVaultService.setMasterPassword(this.enteredMasterPW);
+      this.currentMasterPW = encryptedMaster;
+      this.props.onVaultPasswordChanged(encryptedMaster);
+    }
+
+    this.enteredMasterPW = '';
+    this.repeatedEnteredMasterPW = '';
+    this.toggleChangePasswordDialogVisibility();
+  }
+
+  private toggleChangePasswordDialogVisibility(): void {
+    this.setState({
+      showChangePasswordDialog: !this.state.showChangePasswordDialog,
+      isSaveButtonDisabled: !this.state.showChangePasswordDialog
+    });
+  } 
 }

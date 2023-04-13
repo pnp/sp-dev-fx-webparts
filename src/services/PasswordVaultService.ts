@@ -1,12 +1,12 @@
 import * as CryptoJS from 'crypto-js';
 import { isNullOrEmpty, toBoolean } from '@spfxappdev/utility';
 import { SessionStorage } from '@spfxappdev/storage';
-import { IVaultData } from '@src/interfaces/IVaultData';
+import { ModuleType } from '@src/models';
 
 
 export interface IPasswordVaultService {
-    encryptData(plainData: Omit<IVaultData, "masterPW">): IVaultData;
-    decryptData(encryptedData: IVaultData): IVaultData;
+    decryptModuleData(moduleType: ModuleType, encryptedData: string): string;
+    encryptModuleData(moduleType: ModuleType, plainData: string): string;
     open(masterPW: string, encryptedMasterPW: string): boolean;
     isOpen(): boolean;
     close(): void;
@@ -70,7 +70,7 @@ export class PasswordVaultService implements IPasswordVaultService {
 
         this.cache = new SessionStorage(cacheSettings);
         this.isVaultOpen = toBoolean(this.cache.get(this.encryptedInstanceId));
-        let pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
+        const pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
         this.encryptedMasterPw = isNullOrEmpty(pwFromCache) ? "" : pwFromCache;
 
         if(!isNullOrEmpty(this.encryptedMasterPw)) {
@@ -79,39 +79,30 @@ export class PasswordVaultService implements IPasswordVaultService {
         }
     }
 
-    public encryptData(plainData: Omit<IVaultData, "masterPW">): IVaultData {
-        
-        return {
-            masterPW: this.hashedMasterPw,
-            username: this.encryptUsername(plainData.username),
-            password: this.encryptPassword(plainData.password),
-            note: this.encryptNote(plainData.note)
-        };
+    public encryptModuleData(moduleType: ModuleType, plainData: string): string {
+        switch(moduleType) {
+            case ModuleType.UserField: return this.encryptUsername(plainData);
+            case ModuleType.PasswordField: return this.encryptPassword(plainData);
+            case ModuleType.NoteField: return this.encryptNote(plainData)
+        }
     }
 
-    public decryptData(encryptedData: IVaultData): IVaultData {
-
+    public decryptModuleData(moduleType: ModuleType, encryptedData: string): string {
         if(!this.isVaultOpen) {
-            return {
-                masterPW: "",
-                username: "",
-                password: "",
-                note: ""
-            };
+            return "";
         }
 
-        return {
-            masterPW: "",
-            username: this.decryptUsername(encryptedData.username),
-            password: this.decryptPassword(encryptedData.password),
-            note: this.decryptNote(encryptedData.note)
-        };
+        switch(moduleType) {
+            case ModuleType.UserField: return this.decryptUsername(encryptedData);
+            case ModuleType.PasswordField: return this.decryptPassword(encryptedData);
+            case ModuleType.NoteField: return this.decryptNote(encryptedData)
+        }
     }
 
     public open(masterPW: string, encryptedMasterPW: string): boolean {
         const masterPWEncrypted = CryptoJS.HmacSHA256(masterPW, this.masterSecretKey);
         
-        if(masterPWEncrypted.toString() == encryptedMasterPW) {
+        if(masterPWEncrypted.toString() === encryptedMasterPW) {
             this.isVaultOpen = true;
             this.cache.set(this.encryptedInstanceId, true);
             this.encryptedMasterPw = this.encrypt(masterPW, this.masterSecretKey);
@@ -123,7 +114,6 @@ export class PasswordVaultService implements IPasswordVaultService {
         return false;
     }
 
-    
     public isOpen(): boolean {
         return this.isVaultOpen;
     }
@@ -164,7 +154,7 @@ export class PasswordVaultService implements IPasswordVaultService {
             return null;
         }
 
-        var bytes  = CryptoJS.AES.decrypt(encryptedText, secret);
+        const bytes  = CryptoJS.AES.decrypt(encryptedText, secret);
         return bytes.toString(CryptoJS.enc.Utf8);
     }
 
