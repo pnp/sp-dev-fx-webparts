@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styles from './PasswordVault.module.scss';
-import { ActionButton, Callout, Icon, TooltipHost, DirectionalHint, TextField, ITextField } from 'office-ui-fabric-react';
+import { Callout, Icon, DirectionalHint, TextField, ITextField } from 'office-ui-fabric-react';
 import * as strings from 'PasswordVaultWebPartStrings';
 import { getDeepOrDefault, issetDeep, isset } from '@spfxappdev/utility';
 
@@ -30,8 +29,6 @@ export default class PasswordField extends React.Component<IPasswordFieldProps, 
         }
 
         return this.renderEditMode();
-
-        
     }
 
     public renderDisplayMode(): JSX.Element {

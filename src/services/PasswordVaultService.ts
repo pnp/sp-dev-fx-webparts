@@ -1,7 +1,6 @@
 import * as CryptoJS from 'crypto-js';
 import { isNullOrEmpty, toBoolean } from '@spfxappdev/utility';
 import { SessionStorage } from '@spfxappdev/storage';
-import { IVaultData } from '@src/models/IVaultData';
 import { ModuleType } from '@src/models';
 
 
@@ -71,7 +70,7 @@ export class PasswordVaultService implements IPasswordVaultService {
 
         this.cache = new SessionStorage(cacheSettings);
         this.isVaultOpen = toBoolean(this.cache.get(this.encryptedInstanceId));
-        let pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
+        const pwFromCache = this.cache.get(this.encryptedMasterPWInstanceId);
         this.encryptedMasterPw = isNullOrEmpty(pwFromCache) ? "" : pwFromCache;
 
         if(!isNullOrEmpty(this.encryptedMasterPw)) {
@@ -103,7 +102,7 @@ export class PasswordVaultService implements IPasswordVaultService {
     public open(masterPW: string, encryptedMasterPW: string): boolean {
         const masterPWEncrypted = CryptoJS.HmacSHA256(masterPW, this.masterSecretKey);
         
-        if(masterPWEncrypted.toString() == encryptedMasterPW) {
+        if(masterPWEncrypted.toString() === encryptedMasterPW) {
             this.isVaultOpen = true;
             this.cache.set(this.encryptedInstanceId, true);
             this.encryptedMasterPw = this.encrypt(masterPW, this.masterSecretKey);
@@ -115,7 +114,6 @@ export class PasswordVaultService implements IPasswordVaultService {
         return false;
     }
 
-    
     public isOpen(): boolean {
         return this.isVaultOpen;
     }

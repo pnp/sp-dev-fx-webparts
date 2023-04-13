@@ -4,6 +4,7 @@ declare interface IPasswordVaultWebPartStrings {
   PasswordLabel: string;
   MasterPasswordLabel: string;
   SetMasterPasswordLabel: string;
+  RepeatMasterPasswordLabel: string;
   ChangeMasterPasswordLabel: string;
   UsernameLabel: string;
   NoteLabel: string;
@@ -21,6 +22,9 @@ declare interface IPasswordVaultWebPartStrings {
   PasswordModuleLabel: string;
   UsernameModuleLabel: string;
   NoteModuleLabel: string;
+  ChangeMasterPasswordButtonText: string;
+  ChangeMasterPasswordDialogTitle: string;
+  CancelLabel: string;
 }
 
 declare module 'PasswordVaultWebPartStrings' {

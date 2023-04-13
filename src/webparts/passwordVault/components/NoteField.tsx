@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styles from './PasswordVault.module.scss';
 import * as strings from 'PasswordVaultWebPartStrings';
 import { Label } from 'office-ui-fabric-react';
 import { RichText } from "@pnp/spfx-controls-react/lib/RichText";

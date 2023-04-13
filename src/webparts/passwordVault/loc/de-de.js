@@ -5,6 +5,7 @@ define([], function() {
         "PasswordLabel": "Passwort",
         "MasterPasswordLabel": "Master Passwort",
         "SetMasterPasswordLabel": "Master Passwort",
+        "RepeatMasterPasswordLabel": "Master Passwort wiederholen",
         "ChangeMasterPasswordLabel": "Master Passwort ändern",
         "UsernameLabel": "Benutezrname",
         "NoteLabel": "Notiz",
@@ -22,5 +23,8 @@ define([], function() {
         "PasswordModuleLabel": "Passwort",
         "UsernameModuleLabel": "Benutzername",
         "NoteModuleLabel": "Notiz",
+        "ChangeMasterPasswordButtonText": "Master Passwort ändern",
+        "ChangeMasterPasswordDialogTitle": "Master Passwort ändern",
+        "CancelLabel": "Abbrechen"
     }
   });

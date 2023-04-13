@@ -39,15 +39,15 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
                 Title: this.properties.Title,
                 passwordVaultService: this.passwordVaultService,
                 masterPW: this.properties.masterPW,
-                // username: this.properties.username,
-                // password: this.properties.password,
-                // note: this.properties.note,
                 modules: this.properties.modules||[],
                 onTitleChanged: (title: string): void => {
                   this.onTitleChanged(title);
                 },
                 onVaultDataChanged: (encryptedMasterPw: string, modules: IModule[]): void => {
                   this.onVaultDataChanged(encryptedMasterPw, modules);
+                },
+                onVaultPasswordChanged: (encryptedMasterPw: string): void => {
+                  this.onMasterPasswordChanged(encryptedMasterPw);
                 }
             }
         );
@@ -66,7 +66,7 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
         });
       }
 
-      if (!this.helper.functions.isNullOrEmpty(oldProps.username)) {
+      if (!this.helper.functions.isNullOrEmpty(oldProps.password)) {
         this.properties.modules.push({
           id: Guid.newGuid().toString(),
           type: ModuleType.PasswordField,
@@ -81,6 +81,23 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
           data: oldProps.note
         });
       }
+
+      this.removePropertiesFromOldVersion();
+    }
+
+    private removePropertiesFromOldVersion(): void {
+      const oldProps: any = this.properties as any;
+      if (this.helper.functions.isset(oldProps.username)) {
+        delete oldProps.username;
+      }
+
+      if (this.helper.functions.isset(oldProps.password)) {
+        delete oldProps.password;
+      }
+
+      if (this.helper.functions.isset(oldProps.note)) {
+        delete oldProps.note;
+      }
     }
 
     public getLogCategory(): string {
@@ -94,9 +111,11 @@ export default class PasswordVaultWebPart extends SPFxAppDevClientSideWebPart<IP
     public onVaultDataChanged(encryptedMasterPW: string, modules: IModule[]): void {
       this.properties.masterPW = encryptedMasterPW;
       this.properties.modules = modules;
-      // this.properties.note = vaultData.note;
-      // this.properties.password = vaultData.password;
-      // this.properties.username = vaultData.username;
+      this.removePropertiesFromOldVersion();
+    }
+
+    private onMasterPasswordChanged(encryptedMasterPW: string): void {
+      this.properties.masterPW = encryptedMasterPW;
     }
 
     protected onDispose(): void {
