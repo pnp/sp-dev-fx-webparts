@@ -20,7 +20,7 @@ import "../../myTimeline/timelineStyle.css";
 import * as CSS from "csstype";
 import { Computer, NoteRounded, SquareFootOutlined } from '@material-ui/icons';
 
-var BackStyle: CSS.Properties<string | number> = {
+const BackStyle: CSS.Properties<string | number> = {
   background: 'rgb(227, 227, 227)'
 };
 
@@ -42,13 +42,19 @@ export default class MyTimeline extends React.Component<IMyTimelineProps, IMyTim
 
   public componentDidMount(): void {
     // read all items to Timeline
-    this._readTimeline();
+    this._readTimeline().then(
+      () => {
+        // resolve
+      },
+      () => {
+        // reject
+      },
+    );
   }
 
   public render(): React.ReactElement<IMyTimelineProps> {
 
     try {
-      styles
       const {
         description,
         isDarkTheme,
@@ -111,9 +117,9 @@ export default class MyTimeline extends React.Component<IMyTimelineProps, IMyTim
   private _readTimeline = async (): Promise<void> => {
     try {
       // do PnP JS query, some notes:
-      //   - .expand() method will retrive Item.File item but only Length property
+      //   - .expand() method will retrieve Item.File item but only Length property
       //   - .get() always returns a promise
-      //   - await resolves proimises making your code act syncronous, ergo Promise<IResponseItem[]> becomes IResponse[]
+      //   - await resolves promises making your code act synchronous, ergo Promise<IResponseItem[]> becomes IResponse[]
 
       //Extending our sp object to include caching behavior, this modification will add caching to the sp object itself
       //this._sp.using(Caching("session"));
