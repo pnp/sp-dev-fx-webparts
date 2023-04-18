@@ -39,7 +39,7 @@ This sample webpart shows list of Azure apps in your tenant. A new Azure applica
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | April 17, 2023   | Initial release |
+| 1.0     | April 18, 2023   | Initial release |
 
 ## Minimal Path to awesome
 
