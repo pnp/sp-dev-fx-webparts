@@ -51,8 +51,23 @@ export class FakeRetailDataService implements IRetailDataService {
      * Loads the Retail Inventory
      */
     public async LoadInventory(): Promise<RetailInventory> {
-        const inventoryData: RetailInventory = await require('./data/inventory.json');
-        return inventoryData;
+        const inventoryData: {
+            date: string; 
+            womens: number;
+            mens: number;
+            accessories: number;
+            handbags: number;
+            sales: number;
+        } = await require('./data/inventory.json');
+
+        return {
+            inventoryDate: new Date(inventoryData.date),
+            womensItems: inventoryData.womens,
+            mensItems: inventoryData.mens,
+            accessoriesItems: inventoryData.accessories,
+            handbagsItems: inventoryData.handbags,
+            salesItems: inventoryData.sales
+        };
     }
 
     /**
@@ -76,22 +91,71 @@ export class FakeRetailDataService implements IRetailDataService {
      */
     public async GetTopSellerProduct(): Promise<RetailProduct> {
         const topSellerProduct: RetailProduct = await require('./data/topSeller.json');
+        topSellerProduct.picture = await require('../assets/' + topSellerProduct.picture);
         return topSellerProduct;
     }
 
     /**
      * Loads the list of Retail Products on launch
      */
-    public async ListProductOnLaunch(): Promise<RetailProduct[]> {
-        const productsOnLaunch: RetailProduct[] = await require('./data/productsOnLaunch.json');
-        return productsOnLaunch;
+    public async ListProductsOnLaunch(): Promise<RetailProduct[]> {
+
+        const result: RetailProduct[] = [];
+
+        const productsOnLaunch: {
+            code: string;
+            description: string;
+            price: number;
+            picture: string;
+            launchDate: string;
+            sales: number;
+        }[] = await require('./data/productsOnLaunch.json');
+
+        // For each product, load the picture, fix the date and add it to the result
+        for (const p of productsOnLaunch) {
+            result.push(
+                {
+                    code: p.code,
+                    description: p.description,
+                    price: p.price,
+                    sales: p.sales,
+                    picture: await require('../assets/' + p.picture),
+                    launchDate: new Date(p.launchDate)
+                });
+        }
+
+        return result;
     }
 
     /**
      * Loads the list of Retail Products in the inventory
      */
     public async ListProductsInventory(): Promise<RetailProduct[]> {
-        const productsInventory: RetailProduct[] = await require('./data/products.json');
-        return productsInventory;
+
+        const result: RetailProduct[] = [];
+
+        const products: {
+            code: string;
+            description: string;
+            price: number;
+            picture: string;
+            launchDate: string;
+            sales: number;
+        }[] = await require('./data/products.json');
+
+        // For each product, load the picture, fix the date and add it to the result
+        for (const p of products) {
+            result.push(
+                {
+                    code: p.code,
+                    description: p.description,
+                    price: p.price,
+                    sales: p.sales,
+                    picture: await require('../assets/' + p.picture),
+                    launchDate: new Date(p.launchDate)
+                });
+        }
+
+        return result;
     }
 }

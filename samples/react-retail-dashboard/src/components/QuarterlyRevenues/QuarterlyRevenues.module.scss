@@ -1,0 +1,54 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.quarterlyRevenues {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  text-align: center;
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .currentQuarter {
+    text-align: center;
+    font-size: 20pt;
+
+    .trend {
+      font-size: 14pt;
+      font-weight: normal;
+      vertical-align: middle;
+    }
+
+    .trendUp {
+      color: green;
+    }
+  
+    .trendDown {
+      color: red;
+    }
+  }
+
+  .currentQuarterLabel {
+    text-align: center;
+    font-size: 12pt;
+    color: grey;
+    margin-bottom: 20px;
+  }
+
+  .historycalQuartersContainer {
+
+    .historycalQuarter {
+      text-align: left;
+      font-size: 14pt;
+      border-bottom: .5px solid lightgrey;  
+    }
+
+    .historycalQuarterLabel {
+      text-align: left;
+      font-size: 12pt;
+      color: grey;
+      text-transform: uppercase;
+    }  
+  }
+}

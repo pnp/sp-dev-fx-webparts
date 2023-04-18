@@ -13,7 +13,7 @@ export interface RetailReturnReasonsStats {
     wrongItem: number;
 
     // The number of returns for the reason "Dislike"
-    dislike: number;
+    disliked: number;
 
     // The number of returns for the reason "Wrong Size"
     wrongSize: number;

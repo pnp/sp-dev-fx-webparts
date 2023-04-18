@@ -1,0 +1,27 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.topSellerProduct {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  text-align: center;
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .productPicture {
+    height: 220px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .productSales {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .productDescription {
+    font-size: medium;
+  }
+}

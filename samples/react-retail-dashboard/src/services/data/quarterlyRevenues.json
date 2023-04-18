@@ -1,18 +1,18 @@
 [
     {
         "quarter": "1",
-        "revenues": "1176342"
+        "revenues": 1176342
     },
     {
         "quarter": "2",
-        "revenues": "15290086"
+        "revenues": 15290086
     },
     {
         "quarter": "3",
-        "revenues": "50343098"
+        "revenues": 50343098
     },
     {
         "quarter": "4",
-        "revenues": "76098003"
+        "revenues": 76098003
     }
 ]

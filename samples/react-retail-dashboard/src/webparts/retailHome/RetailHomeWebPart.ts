@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
+import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'RetailHomeWebPartStrings';
 import RetailHome from './components/RetailHome';
 import { IRetailHomeProps } from './components/IRetailHomeProps';
+import { IRetailDataService } from '../../services/IRetailDataService';
+import { ISettingsService } from '../../services/ISettingsService';
+import { FakeRetailDataService } from '../../services/FakeRetailDataService';
+import { SettingsService } from '../../services/SettingsService';
 
 export interface IRetailHomeWebPartProps {
-  description: string;
 }
 
 export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHomeWebPartProps> {
@@ -21,11 +21,15 @@ export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHome
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
+  private _retailDataService: IRetailDataService; 
+  private _settingsService: ISettingsService;
+
   public render(): void {
     const element: React.ReactElement<IRetailHomeProps> = React.createElement(
       RetailHome,
       {
-        description: this.properties.description,
+        retailDataService: this._retailDataService,
+        settingsService: this._settingsService,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -37,6 +41,11 @@ export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHome
   }
 
   protected onInit(): Promise<void> {
+
+    // Build the service instances and initialize them
+    this._retailDataService = this.context.serviceScope.consume(FakeRetailDataService.serviceKey);
+    this._settingsService = this.context.serviceScope.consume(SettingsService.serviceKey);
+
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
     });
@@ -51,13 +60,13 @@ export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHome
           let environmentMessage: string = '';
           switch (context.app.host.name) {
             case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
+              environmentMessage = this.context.isServedFromLocalhost ? strings.Generic.AppLocalEnvironmentOffice : strings.Generic.AppOfficeEnvironment;
               break;
             case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
+              environmentMessage = this.context.isServedFromLocalhost ? strings.Generic.AppLocalEnvironmentOutlook : strings.Generic.AppOutlookEnvironment;
               break;
             case 'Teams': // running in Teams
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+              environmentMessage = this.context.isServedFromLocalhost ? strings.Generic.AppLocalEnvironmentTeams : strings.Generic.AppTeamsTabEnvironment;
               break;
             default:
               throw new Error('Unknown host');
@@ -67,7 +76,7 @@ export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHome
         });
     }
 
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
+    return Promise.resolve(this.context.isServedFromLocalhost ? strings.Generic.AppLocalEnvironmentSharePoint : strings.Generic.AppSharePointEnvironment);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -98,23 +107,7 @@ export default class RetailHomeWebPart extends BaseClientSideWebPart<IRetailHome
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+      pages: []
     };
   }
 }

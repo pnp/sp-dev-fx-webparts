@@ -1,0 +1,28 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.productsOnLaunch {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  text-align: center;
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .productPicture {
+    height: 220px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .productLaunchDate {
+    text-align: left;
+    color: gray;
+    font-size: small;
+  }
+
+  .productDescription {
+    font-size: small;
+  }
+}
