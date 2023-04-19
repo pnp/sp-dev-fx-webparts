@@ -31,9 +31,7 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
         {
             name: "description",
             displayName: strings.Inventory.DescriptionLabel,
-            sorting: true,
-            minWidth: 300,
-            maxWidth: 400
+            sorting: true
         },
         {
             name: "price",
