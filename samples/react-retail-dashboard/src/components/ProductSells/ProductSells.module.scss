@@ -1,0 +1,16 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.productSells {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  text-align: center;
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  };
+
+  .chart {
+    height: 300px;
+  }
+}

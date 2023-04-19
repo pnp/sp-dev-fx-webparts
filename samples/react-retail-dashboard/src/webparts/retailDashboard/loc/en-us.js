@@ -15,13 +15,16 @@ define([], function() {
       AppOutlookEnvironment: "The app is running in Outlook"
     },
     Dashboard: {
-      ReturnVolumeWidgetTitle: "Global Return Volume",
-      CurrentInventoryWidgetTitle: "Current Inventory",
-      CustomerSatisfactionWidgetTitle: "Customer Satisfaction",
-      QuarterlyRevenuesWidgetTitle: "Quarterly Revenues",
-      TopSellerProductWidgetTitle: "Top Seller",
-      ProductsOnLaunchWidgetTitle: "Products on Launch",
+      GlobalReturnVolumeWidgetTitle: "Global Return Volume",
+      GlobalCustomerSatisfactionWidgetTitle: "Global Customer Satisfaction",
+      ProductsSellsWidgetTitle: "Product Sell",
       ReturnReasonsWidgetTitle: "Reasons for Return",
+    },
+    CustomerSatisfaction: {
+      DataSetTitle: "Customer Satisfaction",
+      CSTAT: "CSTAT",
+      NSTAT: "NSTAT",
+      TTS: "TTS"
     }
   }
 });

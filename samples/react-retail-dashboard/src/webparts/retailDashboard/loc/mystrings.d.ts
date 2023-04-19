@@ -14,13 +14,16 @@ declare interface IRetailDashboardWebPartStrings {
     AppOutlookEnvironment: string;
   },
   Dashboard: {
-    ReturnVolumeWidgetTitle: string;
-    CurrentInventoryWidgetTitle: string;
-    CustomerSatisfactionWidgetTitle: string;
-    QuarterlyRevenuesWidgetTitle: string;
-    TopSellerProductWidgetTitle: string;
-    ProductsOnLaunchWidgetTitle: string;
+    GlobalReturnVolumeWidgetTitle: string;
+    GlobalCustomerSatisfactionWidgetTitle: string;
+    ProductsSellsWidgetTitle: string;
     ReturnReasonsWidgetTitle: string;
+  },
+  CustomerSatisfaction: {
+    DataSetTitle: string;
+    CSTAT: string;
+    NSTAT: string;
+    TTS: string;
   }
 }
 

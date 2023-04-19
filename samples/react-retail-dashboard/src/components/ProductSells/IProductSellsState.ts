@@ -1,5 +1,5 @@
 import { RetailProduct } from "../../models";
 
-export interface IInventoryListState {
+export interface IProductSellsState {
     products: RetailProduct[];
 }

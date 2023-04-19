@@ -1,7 +1,9 @@
+import { IRetailDataService } from "../../../services/IRetailDataService";
+import { ISettingsService } from "../../../services/ISettingsService";
+
 export interface IRetailInventoryProps {
-  description: string;
+  retailDataService: IRetailDataService;
+  settingsService: ISettingsService;
   isDarkTheme: boolean;
-  environmentMessage: string;
   hasTeamsContext: boolean;
-  userDisplayName: string;
 }

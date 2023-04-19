@@ -8,6 +8,9 @@ import { WidgetSize, Dashboard, IWidget } from '@pnp/spfx-controls-react/lib/Das
 import { Spinner, SpinnerSize, initializeIcons } from 'office-ui-fabric-react';
 
 import { ReturnVolumes } from '../../../components/ReturnVolumes/ReturnVolumes';
+import { ReturnReasons } from '../../../components/ReturnReasons/ReturnReasons';
+import { ProductSells } from '../../../components/ProductSells/ProductSells';
+import { GlobalCustomerSatisfaction } from '../../../components/GlobalCustomerSatisfaction/GlobalCustomerSatisfaction';
 
 export default class RetailDashboard extends React.Component<IRetailDashboardProps, IRetailDashboardState> {
 
@@ -51,17 +54,56 @@ export default class RetailDashboard extends React.Component<IRetailDashboardPro
  private getHomeWidgets() : IWidget[] {
    return [
     {
-     title: strings.Dashboard.ReturnVolumeWidgetTitle,
-     size: WidgetSize.Box,
+     title: strings.Dashboard.GlobalReturnVolumeWidgetTitle,
+     size: WidgetSize.Double,
      body: [
        {
          id: "returnVolume",
-         title: strings.Dashboard.ReturnVolumeWidgetTitle,
+         title: strings.Dashboard.GlobalReturnVolumeWidgetTitle,
          content: (
            this.getReturnVolumes()
          )
        }
      ]
+    },
+    {
+      title: strings.Dashboard.GlobalCustomerSatisfactionWidgetTitle,
+      size: WidgetSize.Double,
+      body: [
+        {
+          id: "customerSatisfaction",
+          title: strings.Dashboard.GlobalCustomerSatisfactionWidgetTitle,
+          content: (
+            this.getGlobalCustomerSatisfaction()
+          )
+        }
+      ]
+    },
+    {
+      title: strings.Dashboard.ProductsSellsWidgetTitle,
+      size: WidgetSize.Double,
+      body: [
+        {
+          id: "productSells",
+          title: strings.Dashboard.ProductsSellsWidgetTitle,
+          content: (
+            this.getProductsSells()
+          )
+        }
+      ]
+    },
+    {
+      title: strings.Dashboard.ReturnReasonsWidgetTitle,
+      size: WidgetSize.Double,
+      body: [
+        {
+          id: "returnReasons",
+          title: strings.Dashboard.ReturnReasonsWidgetTitle,
+          content: (
+            this.getReturnReasons()
+          )
+        }
+      ]
     }
   ];
  }
@@ -76,6 +118,39 @@ export default class RetailDashboard extends React.Component<IRetailDashboardPro
       settingsService={this.props.settingsService}
       maxMonths={12}
       showDetails={false}
+    />;
+  }
+
+   /**
+ * Get the content for the Return Volume widget
+ * @returns Element representing the Return Volume widget
+ */
+   private getGlobalCustomerSatisfaction(): JSX.Element {
+    return <GlobalCustomerSatisfaction 
+      retailDataService={this.props.retailDataService}
+      settingsService={this.props.settingsService}
+    />;
+  }
+
+  /**
+   * Get the content for the Return Volume widget
+   * @returns Element representing the Return Volume widget
+   */
+  private getReturnReasons(): JSX.Element {
+    return <ReturnReasons 
+      retailDataService={this.props.retailDataService}
+      settingsService={this.props.settingsService}
+    />;
+  }
+
+  /**
+   * Get the content for the Return Volume widget
+   * @returns Element representing the Return Volume widget
+   */
+  private getProductsSells(): JSX.Element {
+    return <ProductSells
+      retailDataService={this.props.retailDataService}
+      settingsService={this.props.settingsService}
     />;
   }
 }
