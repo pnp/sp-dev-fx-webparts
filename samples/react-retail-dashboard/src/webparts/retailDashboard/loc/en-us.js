@@ -15,7 +15,7 @@ define([], function() {
       AppOutlookEnvironment: "The app is running in Outlook"
     },
     Dashboard: {
-      ReturnVolumeWidgetTitle: "Return Volume",
+      ReturnVolumeWidgetTitle: "Global Return Volume",
       CurrentInventoryWidgetTitle: "Current Inventory",
       CustomerSatisfactionWidgetTitle: "Customer Satisfaction",
       QuarterlyRevenuesWidgetTitle: "Quarterly Revenues",

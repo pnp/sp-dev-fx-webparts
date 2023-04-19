@@ -10,7 +10,7 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "package:prod": "gulp bundle --ship && gulp package-solution --ship"
+    "package": "gulp bundle --ship && gulp package-solution --ship"
   },
   "dependencies": {
     "@microsoft/mgt-spfx": "^2.10.0",

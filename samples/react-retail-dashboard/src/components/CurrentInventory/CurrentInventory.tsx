@@ -7,6 +7,7 @@ import { ICurrentInventoryState } from "./ICurrentInventoryState";
 import { RetailInventory } from "../../models";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { Spinner, SpinnerSize } from "office-ui-fabric-react";
 
 export class CurrentInventory extends React.Component<ICurrentInventoryProps, ICurrentInventoryState> {
 
@@ -51,7 +52,7 @@ export class CurrentInventory extends React.Component<ICurrentInventoryProps, IC
               ],
             datasets: [
               {
-                label: 'Current Inventory',
+                label: strings.CurrentInventory.DataSetTitle,
                 data:
                   [
                     inventory?.womensItems ?? 0,
@@ -85,7 +86,10 @@ export class CurrentInventory extends React.Component<ICurrentInventoryProps, IC
                             labelString: '',
                         },
                         ticks: {
-                            display: true
+                            display: false
+                        },
+                        gridLines: {
+                            display: false
                         }
                     }
                 ],
@@ -99,7 +103,14 @@ export class CurrentInventory extends React.Component<ICurrentInventoryProps, IC
                             labelString: '',
                         },
                         ticks: {
-                            display: true
+                            display: true,
+                            // padding: -50,
+                            // callback: function(value: string) {
+                            //     return (`\n${value}`);
+                            // }
+                        },
+                        gridLines: {
+                            display: false
                         }
                     }
                 ]
@@ -111,10 +122,12 @@ export class CurrentInventory extends React.Component<ICurrentInventoryProps, IC
             {inventory ? 
                 <div className={styles.currentInventory}>
                     <ChartControl
+                        className={styles.chart}
                         type={ChartType.HorizontalBar}
                         data={data}
                         options={options}
                         palette={ChartPalette.OfficeMonochromatic1}
+                        loadingtemplate={() => <Spinner size={SpinnerSize.large} label={strings.Generic.Loading} />}
                     />                        
                 </div>
                 :

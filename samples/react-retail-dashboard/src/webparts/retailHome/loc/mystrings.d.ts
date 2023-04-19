@@ -23,6 +23,7 @@ declare interface IRetailHomeWebPartStrings {
     ReturnReasonsWidgetTitle: string;
   },
   ReturnReasons: {
+    DataSetTitle: string;
     IncorrectFit: string;
     Defective: string;
     WrongItem: string;
@@ -30,6 +31,7 @@ declare interface IRetailHomeWebPartStrings {
     WrongSize: string;
   },
   CurrentInventory: {
+    DataSetTitle: string;
     Womens: string;
     Mens: string;
     Accessories: string;
@@ -43,6 +45,30 @@ declare interface IRetailHomeWebPartStrings {
   },
   QuarterlyRevenues: {
     RevenueAmount: string;
+  },
+  ReturnVolumes: {
+    Returns: string;
+    Inventory: string;
+    Months: {
+      January: string;
+      February: string;
+      March: string;
+      April: string;
+      May: string;
+      June: string;
+      July: string;
+      August: string;
+      September: string;
+      October: string;
+      November: string;
+      December: string;
+    },
+    MaxReturns: string;
+    MaxInventory: string;
+    MonthOfMaxReturns: string;
+    MonthOfMaxInventory: string;
+    CurrentReturnCount: string;
+    CurrentInventoryCount: string;
   }
 }
 

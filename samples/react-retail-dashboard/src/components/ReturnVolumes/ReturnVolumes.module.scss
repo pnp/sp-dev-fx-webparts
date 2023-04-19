@@ -1,0 +1,53 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+:export {
+  returnsRGBColor: rgb(87, 92, 193);
+  returnsRGBBgColor: rgba(87, 92, 193, 0.2);
+  inventoryRGBColor: rgb(85, 85, 85);
+  inventoryRGBBgColor: rgba(85, 85, 85, 0.2);
+}
+
+.returnVolumes {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  text-align: center;
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .grid {
+    @include ms-Grid;
+  }
+
+  .row {
+    @include ms-Grid-row;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-md6;
+    @include ms-lg5;
+    @include ms-xl4;
+    @include ms-xlPush1;
+    @include ms-lgPush1;
+    white-space: nowrap;
+    width: 50% !important;    
+    margin-bottom: 30px;
+  }
+
+  .chart {
+    height: 300px;
+  }
+
+  .volumeValue {
+    text-align: left;
+    font-size: 20pt;
+  }
+
+  .volumeDescription {
+    text-align: left;
+    font-size: 12pt;
+  }
+}

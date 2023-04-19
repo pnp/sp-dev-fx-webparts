@@ -13,6 +13,7 @@ import { ReturnReasons } from '../../../components/ReturnReasons/ReturnReasons';
 import { CurrentInventory } from '../../../components/CurrentInventory/CurrentInventory';
 import { CustomerSatisfaction } from '../../../components/CustomerSatisfaction/CustomerSatisfaction';
 import { QuarterlyRevenues } from '../../../components/QuarterlyRevenues/QuarterlyRevenues';
+import { ReturnVolumes } from '../../../components/ReturnVolumes/ReturnVolumes';
 
 export default class RetailHome extends React.Component<IRetailHomeProps, IRetailHomeState> {
 
@@ -63,7 +64,7 @@ export default class RetailHome extends React.Component<IRetailHomeProps, IRetai
          id: "returnVolume",
          title: strings.Home.ReturnVolumeWidgetTitle,
          content: (
-           this.getReturnVolume()
+           this.getReturnVolumes()
          )
        }
      ]
@@ -153,8 +154,13 @@ export default class RetailHome extends React.Component<IRetailHomeProps, IRetai
  * Get the content for the Return Volume widget
  * @returns Element representing the Return Volume widget
  */
-  private getReturnVolume(): JSX.Element {
-    return <div/>;
+  private getReturnVolumes(): JSX.Element {
+    return <ReturnVolumes 
+      retailDataService={this.props.retailDataService}
+      settingsService={this.props.settingsService}
+      maxMonths={5}
+      showDetails={true}
+    />;
   }
 
   /**

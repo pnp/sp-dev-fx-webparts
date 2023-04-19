@@ -24,6 +24,7 @@ define([], function() {
       ReturnReasonsWidgetTitle: "Reasons for Return",
     },
     ReturnReasons: {
+      DataSetTitle: "Return Reasons",
       IncorrectFit: "Incorrect Fit",
       Defective: "Defective",
       WrongItem: "Wrong Item",
@@ -31,6 +32,7 @@ define([], function() {
       WrongSize: "Wrong Size"
     },
     CurrentInventory: {
+      DataSetTitle: "Current Inventory",
       Womens: "Womens",
       Mens: "Mens",
       Accessories: "Accessories",
@@ -44,6 +46,30 @@ define([], function() {
     },
     QuarterlyRevenues: {
       RevenueAmount: "Revenue Amount"
-    }  
+    },
+    ReturnVolumes: {
+      Returns: "Returns",
+      Inventory: "Inventory",
+      Months: {
+        January: "Jan",
+        February: "Feb",
+        March: "Mar",
+        April: "Apr",
+        May: "May",
+        June: "Jun",
+        July: "Jul",
+        August: "Aug",
+        September: "Sep",
+        October: "Oct",
+        November: "Nov",
+        December: "Dec"
+      },
+      MaxReturns: "Maximum Number Returns",
+      MaxInventory: "Maximum Number Inventory",
+      MonthOfMaxReturns: "Month of Maximum Returns",
+      MonthOfMaxInventory: "Month of Maximum Inventory",
+      CurrentReturnCount: "Current Return Count",
+      CurrentInventoryCount: "Current Inventory Count"
+    }    
   }
 });

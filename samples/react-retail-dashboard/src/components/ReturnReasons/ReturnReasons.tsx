@@ -7,6 +7,7 @@ import { IReturnReasonsState } from "./IReturnReasonsState";
 import { RetailReturnReasonsStats } from "../../models";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { Spinner, SpinnerSize } from "office-ui-fabric-react";
 
 export class ReturnReasons extends React.Component<IReturnReasonsProps, IReturnReasonsState> {
 
@@ -51,7 +52,7 @@ export class ReturnReasons extends React.Component<IReturnReasonsProps, IReturnR
               ],
             datasets: [
               {
-                label: 'Reason for Return',
+                label: strings.ReturnReasons.DataSetTitle,
                 data:
                   [
                     returnReasons?.incorrectFit ?? 0,
@@ -81,10 +82,12 @@ export class ReturnReasons extends React.Component<IReturnReasonsProps, IReturnR
             {returnReasons ? 
                 <div className={styles.returnReasons}>
                     <ChartControl
+                        className={styles.chart}
                         type={ChartType.Doughnut}
                         data={data}
                         options={options}
                         palette={ChartPalette.OfficeMonochromatic8}
+                        loadingtemplate={() => <Spinner size={SpinnerSize.large} label={strings.Generic.Loading} />}
                     />                        
                 </div>
                 :

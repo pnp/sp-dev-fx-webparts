@@ -8,5 +8,9 @@
   text-align: center;
   &.teams {
     font-family: $ms-font-family-fallbacks;
+  };
+
+  .chart {
+    height: 300px;
   }
 }

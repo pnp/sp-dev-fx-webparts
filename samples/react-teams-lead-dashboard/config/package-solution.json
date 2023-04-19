@@ -3,7 +3,7 @@
   "solution": {
     "name": "lead-assist-client-side-solution",
     "id": "c311a0fc-3dcb-4316-a798-fd7d8a6d5344",
-    "version": "1.0.20.0",
+    "version": "1.0.21.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
