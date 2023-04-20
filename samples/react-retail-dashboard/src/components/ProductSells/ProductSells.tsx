@@ -15,7 +15,7 @@ export class ProductSells extends React.Component<IProductSellsProps, IProductSe
         super(props);
 
         this.state = {
-            products: null
+            products: undefined
         };
     }
 

@@ -30,7 +30,7 @@ export class ReturnVolumes extends React.Component<IReturnVolumesProps, IReturnV
         super(props);
 
         this.state = {
-            returnVolumes: null
+            returnVolumes: undefined
         };
     }
 

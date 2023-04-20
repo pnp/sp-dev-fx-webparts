@@ -15,7 +15,7 @@ export class ReturnReasons extends React.Component<IReturnReasonsProps, IReturnR
         super(props);
 
         this.state = {
-            returnReasons: null
+            returnReasons: undefined
         };
     }
 

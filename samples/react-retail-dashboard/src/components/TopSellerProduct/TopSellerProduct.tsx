@@ -11,7 +11,7 @@ export class TopSellerProduct extends React.Component<ITopSellerProductProps, IT
         super(props);
 
         this.state = {
-            product: null
+            product: undefined
         };
     }
 

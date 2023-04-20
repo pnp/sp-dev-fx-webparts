@@ -12,7 +12,7 @@ export class QuarterlyRevenues extends React.Component<IQuarterlyRevenuesProps, 
         super(props);
 
         this.state = {
-            quarterlyRevenues: null
+            quarterlyRevenues: undefined
         };
     }
 

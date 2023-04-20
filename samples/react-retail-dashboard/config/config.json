@@ -25,6 +25,14 @@
           "manifest": "./src/webparts/retailInventory/RetailInventoryWebPart.manifest.json"
         }
       ]
+    },
+    "inventory-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/inventory/InventoryAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/inventory/InventoryAdaptiveCardExtension.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -32,6 +40,7 @@
     "RetailHomeWebPartStrings": "lib/webparts/retailHome/loc/{locale}.js",
     "RetailDashboardWebPartStrings": "lib/webparts/retailDashboard/loc/{locale}.js",
     "RetailInventoryWebPartStrings": "lib/webparts/retailInventory/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "InventoryAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/inventory/loc/{locale}.js"
   }
 }

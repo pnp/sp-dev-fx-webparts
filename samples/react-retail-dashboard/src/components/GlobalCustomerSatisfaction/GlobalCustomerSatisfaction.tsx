@@ -15,7 +15,7 @@ export class GlobalCustomerSatisfaction extends React.Component<IGlobalCustomerS
         super(props);
 
         this.state = {
-          customerSatisfaction: null
+          customerSatisfaction: undefined
         };
     }
 

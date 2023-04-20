@@ -13,8 +13,8 @@ export class ProductsOnLaunch extends React.Component<IProductsOnLaunchProps, IP
         super(props);
 
         this.state = {
-            products: null,
-            currentProduct: null
+            products: undefined,
+            currentProduct: undefined
         };
     }
 

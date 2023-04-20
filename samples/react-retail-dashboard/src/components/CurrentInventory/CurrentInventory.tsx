@@ -15,7 +15,7 @@ export class CurrentInventory extends React.Component<ICurrentInventoryProps, IC
         super(props);
 
         this.state = {
-            inventory: null
+            inventory: undefined
         };
     }
 

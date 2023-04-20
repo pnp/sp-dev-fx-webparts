@@ -45,14 +45,14 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
             },
         },
         {
-          name: "sales",
-          displayName: strings.Inventory.SalesLabel,
-          render: (item?: any, index?: number, column?: any): JSX.Element => {
-            const salesValue: number = item.sales;
-            return <div className={styles.sales}>{`${salesValue?.toLocaleString('en-US')}`}</div>;
-        },
-          minWidth: 50,
-          maxWidth: 50
+            name: "sales",
+            displayName: strings.Inventory.SalesLabel,
+            render: (item?: any, index?: number, column?: any): JSX.Element => {
+                const salesValue: number = item.sales;
+                return <div className={styles.sales}>{`${salesValue?.toLocaleString('en-US')}`}</div>;
+            },
+            minWidth: 50,
+            maxWidth: 50
         }
     ];
 
@@ -60,7 +60,7 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
         super(props);
 
         this.state = {
-            products: null
+            products: undefined
         };
     }
 

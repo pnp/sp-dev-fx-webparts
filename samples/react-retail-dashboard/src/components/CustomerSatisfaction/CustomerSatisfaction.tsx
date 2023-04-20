@@ -12,7 +12,7 @@ export class CustomerSatisfaction extends React.Component<ICustomerSatisfactionP
         super(props);
 
         this.state = {
-            customerSatisfaction: null
+            customerSatisfaction: undefined
         };
     }
 

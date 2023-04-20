@@ -16,6 +16,7 @@
     "solutionShortDescription": "react-retail-dashboard description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Image"
   }
 }
