@@ -8,15 +8,10 @@
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
-}
 
-.welcome {
-  text-align: center;
-}
-
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
+  .loader {
+    padding: 30px;
+  }
 }
 
 .links {

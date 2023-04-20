@@ -23,13 +23,21 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
   private _settingsService: ISettingsService;
 
   public render(): void {
+
+    // Get the product code from the URL querystring
+    // const url: URL = new URL(window.location.href);
+    // const params: URLSearchParams = new URLSearchParams(url.search);
+    // const productCode: string = params.has('productCode') ? params.get('productCode') : undefined;
+    const productCode: string = "P03";
+
     const element: React.ReactElement<IRetailInventoryProps> = React.createElement(
       RetailInventory,
       {
         retailDataService: this._retailDataService,
         settingsService: this._settingsService,
         isDarkTheme: this._isDarkTheme,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams
+        hasTeamsContext: !!this.context.sdks.microsoftTeams,
+        productCode: productCode
       }
     );
 
@@ -38,10 +46,32 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
 
   protected async onInit(): Promise<void> {
 
+    await this._getTeamsQueryString();
+
     // Build the service instances and initialize them
     this._retailDataService = this.context.serviceScope.consume(FakeRetailDataService.serviceKey);
     this._settingsService = this.context.serviceScope.consume(SettingsService.serviceKey);
 
+    const packageSolution: any = await require('../../../config/package-solution.json');
+    console.log(`React-Retail-Dashboard.RetailInventoryWebPart: v.${packageSolution.solution.version}`);
+  }
+
+  private _getTeamsQueryString(): void {
+    const teamsContext = this.context.sdks?.microsoftTeams?.context;
+    this.context.sdks?.microsoftTeams?.teamsJs.app.getContext().then(context => {
+      console.log("context");
+      console.log(context);
+    }).catch(error => {console.log(error);});
+
+
+    // Get configuration from the Teams SDK
+    if (teamsContext) {
+      console.log("teamsContext");
+      console.log(teamsContext);
+      const subEntityId: any = teamsContext.subEntityId?.toString() ?? null; 
+      console.log("subEntityId");
+      console.log(subEntityId);
+    }
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {

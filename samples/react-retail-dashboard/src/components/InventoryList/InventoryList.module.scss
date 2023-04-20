@@ -1,7 +1,7 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 .inventoryList {
-  overflow: hidden;
+  overflow: scroll;
   padding: 1em;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);

@@ -17,7 +17,7 @@ export class InventoryCardView extends BaseImageCardView<IInventoryAdaptiveCardE
    * It will support up to two buttons for 'Large' card size.
    */
   public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
-    return [
+    return this.state.products.length > 0 ? [
       {
         title: strings.Generic.InventoryListQuickViewButton,
         action: {
@@ -27,13 +27,13 @@ export class InventoryCardView extends BaseImageCardView<IInventoryAdaptiveCardE
           }
         }
       }
-    ];
+    ] : undefined;
   }
 
   public get data(): IImageCardParameters {
     return {
-      primaryText: `'${this.state.currentProduct?.description}' reference price is ${this.state.currentProduct?.price}$ and sales so far are ${this.state.currentProduct?.sales.toLocaleString('en-US')} items`,
-      imageUrl: this.state.currentProduct?.picture ?? undefined,
+      primaryText: this.state.currentProduct ? `'${this.state.currentProduct?.description}' reference price is ${this.state.currentProduct?.price}$ and sales so far are ${this.state.currentProduct?.sales.toLocaleString('en-US')} items` : strings.Generic.Loading,
+      imageUrl: this.state.currentProduct?.picture ?? require('../../../assets/loading-square.gif'),
       title: strings.Generic.InventoryCardViewTitle
     };
   }

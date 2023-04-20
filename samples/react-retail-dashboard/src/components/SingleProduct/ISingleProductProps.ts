@@ -1,9 +1,8 @@
 import { IRetailDataService } from "../../services/IRetailDataService";
 import { ISettingsService } from "../../services/ISettingsService";
 
-export interface IInventoryListProps {
+export interface ISingleProductProps {
     retailDataService: IRetailDataService;
     settingsService: ISettingsService;
-    productSelected(productCode: string): void;
     productCode: string;
 }

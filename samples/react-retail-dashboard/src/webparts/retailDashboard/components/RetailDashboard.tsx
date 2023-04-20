@@ -29,7 +29,7 @@ export default class RetailDashboard extends React.Component<IRetailDashboardPro
   public render(): React.ReactElement<IRetailDashboardProps> {
     let content: JSX.Element = null;
 
-    content = <Dashboard widgets={this.getHomeWidgets()} />;
+    content = <Dashboard widgets={this.getDashboarWidgets()} />;
 
     return (
       <div className={styles.retailDashboard}>
@@ -48,10 +48,10 @@ export default class RetailDashboard extends React.Component<IRetailDashboardPro
   }
 
   /*
-  * Get the home dashboard widgets
-  * @returns An array of the widgets to be added to the home dashboard element
+  * Get the Dashboard widgets
+  * @returns An array of the widgets to be added to the Dashboard element
   */
- private getHomeWidgets() : IWidget[] {
+ private getDashboarWidgets() : IWidget[] {
    return [
     {
      title: strings.Dashboard.GlobalReturnVolumeWidgetTitle,

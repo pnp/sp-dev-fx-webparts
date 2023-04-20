@@ -8,6 +8,7 @@ export interface IInventoryListQuickViewData {
   title: string;
   products: RetailProduct[];
   imageRightUrl: string;
+  appUrl: string;
 }
 
 export class InventoryListQuickView extends BaseAdaptiveCardView<
@@ -20,6 +21,7 @@ export class InventoryListQuickView extends BaseAdaptiveCardView<
       title: strings.Generic.InventoryListQuickViewTitle,
       products: this.state.products,
       imageRightUrl: require('../../../assets/right.png'),
+      appUrl: `https://teams.microsoft.com/_#/apps/${this.properties.teamsAppId}/sections/70003`
     };
   }
 

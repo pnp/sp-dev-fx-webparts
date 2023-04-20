@@ -86,6 +86,10 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
           products
         } = this.state;
 
+        const selectedItem: number = this.props.productCode ?
+            products?.indexOf(products.filter(p => p.code === this.props.productCode)[0]) ?? -1
+            : -1;
+
         return (
             <div>
             {products ? 
@@ -95,7 +99,9 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
                         items={products}
                         viewFields={this.productsViewFields}
                         compact={true}
-                        selectionMode={SelectionMode.none}
+                        selectionMode={this.props.productSelected ? SelectionMode.single : SelectionMode.none}
+                        selection={this.getSelection}
+                        defaultSelection={[selectedItem]}
                         showFilter={false}
                         stickyHeader={true}
                     />
@@ -105,5 +111,9 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
             }
             </div>
         );
+    }
+
+    private getSelection = (items: any[]): void => {
+        this.props.productSelected(items[0].code);
     }
 }

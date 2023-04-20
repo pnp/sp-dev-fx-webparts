@@ -100,7 +100,12 @@
                             {
                                 "type": "Image",
                                 "url": "${$root.imageRightUrl}",
-                                "width": "20px"
+                                "width": "20px",
+                                "selectAction": {
+                                    "type": "Action.OpenUrl",
+                                    "title": "Open product's page",
+                                    "url": "${$root.appUrl}?context=%7B%22subEntityId%22:%20%22${code}%22%7D"
+                                }
                             }                      
                         ]
                     }

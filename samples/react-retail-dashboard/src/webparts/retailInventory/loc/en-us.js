@@ -11,7 +11,8 @@ define([], function() {
       AppSharePointEnvironment: "The app is running on SharePoint page",
       AppTeamsTabEnvironment: "The app is running in Microsoft Teams",
       AppOfficeEnvironment: "The app is running in office.com",
-      AppOutlookEnvironment: "The app is running in Outlook"
+      AppOutlookEnvironment: "The app is running in Outlook",
+      Loading: "Loading..."
     },
     Inventory: {
       CodeLabel: "Code",
@@ -19,7 +20,10 @@ define([], function() {
       PriceLabel: "Price",
       PictureLabel: "Picture",
       LaunchDateLabel: "Launch Date",
-      SalesLabel: "Sales"
+      SalesLabel: "Sales",
+      ListProductsWidgetTitle: "Products",
+      SingleProductWidgetTitle: "Selected Product",
+      SelectProduct: "Select a product ..."
     }  
   }
 });

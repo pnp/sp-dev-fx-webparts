@@ -11,6 +11,7 @@ declare interface IRetailInventoryWebPartStrings {
     AppTeamsTabEnvironment: string;
     AppOfficeEnvironment: string;
     AppOutlookEnvironment: string;
+    Loading: string;
   },
   Inventory: {
     CodeLabel: string;
@@ -19,6 +20,9 @@ declare interface IRetailInventoryWebPartStrings {
     PictureLabel: string;
     LaunchDateLabel: string;
     SalesLabel: string;
+    ListProductsWidgetTitle: string;
+    SingleProductWidgetTitle: string;
+    SelectProduct: string;
   }
 }
 

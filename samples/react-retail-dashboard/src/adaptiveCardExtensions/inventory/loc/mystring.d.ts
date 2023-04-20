@@ -3,6 +3,7 @@ declare interface IInventoryAdaptiveCardExtensionStrings {
     InventoryCardViewTitle: string;
     InventoryListQuickViewTitle: string;
     InventoryListQuickViewButton: string;
+    Loading: string;
   }
 }
 

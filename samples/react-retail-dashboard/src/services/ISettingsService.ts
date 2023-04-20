@@ -14,4 +14,9 @@ export interface ISettingsService {
      * Loads the settings
      */
     Load: () => Promise<RetailSettings>;
+
+    /**
+     * Retrieves the Teams App Id for deep linking
+     */
+    GetTeamsAppId: () => Promise<string>;
 }

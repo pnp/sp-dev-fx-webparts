@@ -97,8 +97,6 @@ export class ReturnVolumes extends React.Component<IReturnVolumesProps, IReturnV
               }
             ]
           };
-          
-        console.log(data);
 
         const options = {
             legend: {

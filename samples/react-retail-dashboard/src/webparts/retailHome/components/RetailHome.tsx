@@ -51,8 +51,8 @@ export default class RetailHome extends React.Component<IRetailHomeProps, IRetai
   }
 
   /*
-  * Get the home dashboard widgets
-  * @returns An array of the widgets to be added to the home dashboard element
+  * Get the Home Dashboard widgets
+  * @returns An array of the widgets to be added to the Home Dashboard element
   */
  private getHomeWidgets() : IWidget[] {
    return [

@@ -6,4 +6,5 @@ export interface IRetailInventoryProps {
   settingsService: ISettingsService;
   isDarkTheme: boolean;
   hasTeamsContext: boolean;
+  productCode?: string;
 }

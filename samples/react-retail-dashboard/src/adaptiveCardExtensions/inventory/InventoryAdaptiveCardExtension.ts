@@ -8,6 +8,8 @@ import { IInventoryAdaptiveCardExtensionProps } from './IInventoryAdaptiveCardEx
 import { IInventoryAdaptiveCardExtensionState } from './IInventoryAdaptiveCardExtensionState';
 import { IRetailDataService } from '../../services/IRetailDataService';
 import { FakeRetailDataService } from '../../services/FakeRetailDataService';
+import { SettingsService } from '../../services/SettingsService';
+import { ISettingsService } from '../../services/ISettingsService';
 
 const CARD_VIEW_REGISTRY_ID: string = 'Inventory_CARD_VIEW';
 export const QUICK_VIEW_INVENTORY_LIST_REGISTRY_ID: string = 'Inventory_List_QUICK_VIEW';
@@ -19,8 +21,9 @@ export default class InventoryAdaptiveCardExtension extends BaseAdaptiveCardExte
   private _deferredPropertyPane: InventoryPropertyPane | undefined;
 
   private _retailDataService: IRetailDataService; 
+  private _settingsService: ISettingsService;
 
-  public onInit(): Promise<void> {
+  public async onInit(): Promise<void> {
     this.state = { 
       products: [],
       currentProduct: undefined,
@@ -32,9 +35,16 @@ export default class InventoryAdaptiveCardExtension extends BaseAdaptiveCardExte
 
     // Build the service instances and initialize them
     this._retailDataService = this.context.serviceScope.consume(FakeRetailDataService.serviceKey);
+    this._settingsService = this.context.serviceScope.consume(SettingsService.serviceKey);
+
+    const packageSolution: any = await require('../../../config/package-solution.json');
+    console.log(`React-Retail-Dashboard.InventoryAdaptiveCardExtension: v.${packageSolution.solution.version}`);
 
     // Load the list of products after .5 seconds
     setTimeout(async () => {
+
+      // Get the Teams App Id
+      this.properties.teamsAppId = await this._settingsService.GetTeamsAppId();
 
       // Load the list of products
       const products = await this._retailDataService.ListProductsInventory();
@@ -82,5 +92,9 @@ export default class InventoryAdaptiveCardExtension extends BaseAdaptiveCardExte
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return this._deferredPropertyPane?.getPropertyPaneConfiguration();
+  }
+
+  protected get iconProperty(): string {
+    return require('../../assets/icon.png');
   }
 }

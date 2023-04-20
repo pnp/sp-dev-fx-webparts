@@ -40,11 +40,14 @@ export default class RetailDashboardWebPart extends BaseClientSideWebPart<IRetai
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
+  protected async onInit(): Promise<void> {
 
     // Build the service instances and initialize them
     this._retailDataService = this.context.serviceScope.consume(FakeRetailDataService.serviceKey);
     this._settingsService = this.context.serviceScope.consume(SettingsService.serviceKey);
+
+    const packageSolution: any = await require('../../../config/package-solution.json');
+    console.log(`React-Retail-Dashboard.RetailDashboardWebPart: v.${packageSolution.solution.version}`);
 
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
