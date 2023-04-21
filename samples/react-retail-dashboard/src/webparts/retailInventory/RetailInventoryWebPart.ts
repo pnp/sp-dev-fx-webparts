@@ -61,6 +61,7 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
     this.context.sdks?.microsoftTeams?.teamsJs.app.getContext().then(context => {
       console.log("context");
       console.log(context);
+      console.log(context.page.subPageId);
     }).catch(error => {console.log(error);});
 
 
