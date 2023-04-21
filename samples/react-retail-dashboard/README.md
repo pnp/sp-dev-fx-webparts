@@ -31,10 +31,6 @@ Last but not least, here you can see the ACE in action in Microsoft Viva Connect
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Prerequisites
-
-> Any special pre-requisites?
-
 ## Solution
 
 | Solution    | Author(s)                                               |
