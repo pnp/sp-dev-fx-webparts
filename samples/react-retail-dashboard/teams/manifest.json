@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.16",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "showLoadingIndicator": false,
     "id": "9bf46da7-eede-4bd6-b3e1-e6eb7bf1d186",
     "packageName": "com.pnp.retaildashboard",
@@ -16,8 +16,8 @@
         "outline": "icon_outline.png"
     },
     "name": {
-        "short": "PnP Retail Dashboard",
-        "full": "PnP Retail Dashboard"
+        "short": "Contoso Retail Dashboard",
+        "full": "Contoso Retail Dashboard"
     },
     "description": {
         "short": "Retail Dashboard",
