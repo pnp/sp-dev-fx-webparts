@@ -25,6 +25,7 @@ export class SettingsService implements ISettingsService {
         serviceScope.whenFinished(async () => {
             // const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
             // this._msGraphClient = await msGraphClientFactory.getClient('3');
+            return;
         });
     }
 
