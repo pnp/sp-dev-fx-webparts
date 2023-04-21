@@ -95,6 +95,7 @@ export class InventoryList extends React.Component<IInventoryListProps, IInvento
             {products ? 
                 <div className={styles.inventoryList}>
                     <ListView
+                        className={styles.inventoryListView}
                         iconFieldName="none"
                         items={products}
                         viewFields={this.productsViewFields}

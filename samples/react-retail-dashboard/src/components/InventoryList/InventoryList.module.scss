@@ -6,9 +6,14 @@
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
   text-align: center;
+  height: 100%;
   &.teams {
     font-family: $ms-font-family-fallbacks;
   };
+
+  .inventoryListView {
+    overflow: scroll;
+  }
 
   .productImageWrapper {
     text-align: center;

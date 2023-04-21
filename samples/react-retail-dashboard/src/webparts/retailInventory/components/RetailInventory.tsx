@@ -49,7 +49,7 @@ export default class RetailInventory extends React.Component<IRetailInventoryPro
     return [
      {
       title: strings.Inventory.ListProductsWidgetTitle,
-      size: WidgetSize.Triple,
+      size: WidgetSize.Box,
       body: [
         {
           id: "listProducts",
@@ -62,7 +62,7 @@ export default class RetailInventory extends React.Component<IRetailInventoryPro
      },
      {
       title: strings.Inventory.SingleProductWidgetTitle,
-      size: WidgetSize.Triple,
+      size: WidgetSize.Box,
       body: [
         {
           id: "singleProduct",

@@ -61,7 +61,11 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
   private async _getProductCodeFromContext(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
       const teamsContext = await this.context.sdks?.microsoftTeams?.teamsJs.app.getContext();
-      return teamsContext.page.subPageId;
+      if (teamsContext.page.subPageId) {
+        return (<any>teamsContext.page.subPageId)?.productCode;
+      } else {
+        return null;
+      }
     }
 
     return null;
