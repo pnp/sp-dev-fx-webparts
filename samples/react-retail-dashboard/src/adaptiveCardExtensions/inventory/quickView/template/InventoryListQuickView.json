@@ -104,7 +104,7 @@
                                 "selectAction": {
                                     "type": "Action.OpenUrl",
                                     "title": "Open product's page",
-                                    "url": "${$root.appUrl}?context=%7B%22subEntityId%22:%20%22${code}%22%7D"
+                                    "url": "${$root.appUrl}?context=%7B%22subEntityId%22:%7B%22productCode%22:%22${code}%22%7D%7D&deeplinkId=${$root.deeplinkId}}"
                                 }
                             }                      
                         ]

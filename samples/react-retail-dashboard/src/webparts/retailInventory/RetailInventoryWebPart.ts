@@ -22,13 +22,9 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
   private _retailDataService: IRetailDataService; 
   private _settingsService: ISettingsService;
 
-  public render(): void {
+  private _productCode: string;
 
-    // Get the product code from the URL querystring
-    // const url: URL = new URL(window.location.href);
-    // const params: URLSearchParams = new URLSearchParams(url.search);
-    // const productCode: string = params.has('productCode') ? params.get('productCode') : undefined;
-    const productCode: string = "P03";
+  public render(): void {
 
     const element: React.ReactElement<IRetailInventoryProps> = React.createElement(
       RetailInventory,
@@ -37,7 +33,7 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
         settingsService: this._settingsService,
         isDarkTheme: this._isDarkTheme,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        productCode: productCode
+        productCode: this._productCode
       }
     );
 
@@ -46,7 +42,13 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
 
   protected async onInit(): Promise<void> {
 
-    await this._getTeamsQueryString();
+    // Get the product code from the context
+    this._productCode = await this._getProductCodeFromContext();
+    if (this._productCode) {
+      console.log(`RetailInventoryWebPart => Received productCode: '${this._productCode}' from context`);
+    } else {
+      console.log(`RetailInventoryWebPart => No productCode received from context`);
+    }
 
     // Build the service instances and initialize them
     this._retailDataService = this.context.serviceScope.consume(FakeRetailDataService.serviceKey);
@@ -56,22 +58,13 @@ export default class RetailInventoryWebPart extends BaseClientSideWebPart<IRetai
     console.log(`React-Retail-Dashboard.RetailInventoryWebPart: v.${packageSolution.solution.version}`);
   }
 
-  private _getTeamsQueryString(): void {
-    const teamsContext = this.context.sdks?.microsoftTeams?.context;
-    this.context.sdks?.microsoftTeams?.teamsJs.app.getContext().then(context => {
-      console.log("context");
-      console.log(context);
-    }).catch(error => {console.log(error);});
-
-
-    // Get configuration from the Teams SDK
-    if (teamsContext) {
-      console.log("teamsContext");
-      console.log(teamsContext);
-      const subEntityId: any = teamsContext.subEntityId?.toString() ?? null; 
-      console.log("subEntityId");
-      console.log(subEntityId);
+  private async _getProductCodeFromContext(): Promise<string> {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      const teamsContext = await this.context.sdks?.microsoftTeams?.teamsJs.app.getContext();
+      return teamsContext.page.subPageId;
     }
+
+    return null;
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {

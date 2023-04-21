@@ -4,7 +4,7 @@ import { RetailSettings } from './RetailSettings';
 
 // Import types for supporting SPFx with the service class
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
-import { MSGraphClientFactory, MSGraphClientV3 } from "@microsoft/sp-http";
+// import { MSGraphClientFactory, MSGraphClientV3 } from "@microsoft/sp-http";
 
 /**
  * Defines the concrete implementation of the interface for the Settings Service
@@ -13,7 +13,7 @@ export class SettingsService implements ISettingsService {
 
     public static readonly serviceKey: ServiceKey<ISettingsService> = ServiceKey.create<ISettingsService>('PnP:Retail:SettingsService', SettingsService);
     
-    private _msGraphClient: MSGraphClientV3 = null;
+    // private _msGraphClient: MSGraphClientV3 = null;
 
     /**
      * Constructor for the service class
@@ -23,8 +23,8 @@ export class SettingsService implements ISettingsService {
 
         // Initialize the MSGraphClientV3 client
         serviceScope.whenFinished(async () => {
-            const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
-            this._msGraphClient = await msGraphClientFactory.getClient('3');
+            // const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
+            // this._msGraphClient = await msGraphClientFactory.getClient('3');
         });
     }
 
@@ -49,14 +49,16 @@ export class SettingsService implements ISettingsService {
 
         const manifest: { id: string } = await require("../../teams/manifest.json");
 
-        const response: { value: { id: string }[] } = await this._msGraphClient
-                                    .api("appCatalogs/teamsApps")
-                                    .version("v1.0")
-                                    .filter(`externalId eq '${manifest.id}'`)
-                                    .select("id")
-                                    .get();
+        // const response: { value: { id: string }[] } = await this._msGraphClient
+        //                             .api("appCatalogs/teamsApps")
+        //                             .version("v1.0")
+        //                             .filter(`externalId eq '${manifest.id}'`)
+        //                             .select("id")
+        //                             .get();
 
-        return response.value[0].id;
+        // return response.value[0].id;
+        
+        return manifest.id;
     }
 
 }
