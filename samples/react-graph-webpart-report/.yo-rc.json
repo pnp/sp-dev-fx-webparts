@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.18.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-graph-webpart-report",
+    "libraryId": "d5339db5-8abe-451a-8afe-57a16de5d286",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-graph-webpart-report",
+    "solutionShortDescription": "react-graph-webpart-report description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
