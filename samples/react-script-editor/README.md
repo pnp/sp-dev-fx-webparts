@@ -198,6 +198,7 @@ Version|Date|Comments
 1.0.19.0|August 31, 2022|Added support for section background color
 1.0.20.0|October 10, 2022|Added sample html/script with self-executing function
 1.0.21.0|March 11, 2023|Bump dependencies to allow react-script-editor to build under SPFx 1.16.1
+1.0.22.0|April 24, 2023|Added support for script in external template 
 
 
 ## Minimal Path to Awesome

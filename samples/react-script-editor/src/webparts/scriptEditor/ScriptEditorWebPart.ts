@@ -11,6 +11,7 @@ import PropertyPaneLogo from './PropertyPaneLogo';
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public _propertyPaneHelper;
     private _unqiueId;
+    private _externalScriptContent;
 
     constructor() {
         super();
@@ -20,6 +21,18 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     public scriptUpdate(_property: string, _oldVal: string, newVal: string) {
         this.properties.script = newVal;
         this._propertyPaneHelper.initialValue = newVal;
+    }
+
+    protected async onInit(): Promise<void> {
+        if (this.properties.useExternalScript) {
+            try {
+                const prefix = this.properties.externalScript.indexOf('?') === -1 ? '?' : '&';
+                const response = await fetch(`${this.properties.externalScript}${prefix}pnp=${new Date().getTime()}`);
+                this._externalScriptContent = await response.text();
+            } catch (e) {
+                this._externalScriptContent = 'Failed to load external script.';
+            }
+        }
     }
 
     public render(): void {
@@ -42,7 +55,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             }
 
             ReactDom.unmountComponentAtNode(this.domElement);
-            this.domElement.innerHTML = this.properties.script;
+            this.domElement.innerHTML = this.properties.useExternalScript ? this._externalScriptContent : this.properties.script;
             this.executeScript(this.domElement);
         } else {
             this.renderEditor();
@@ -66,7 +79,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         );
         ReactDom.render(element, this.domElement);
     }
-    
+
     protected get dataVersion(): Version {
         return Version.parse('1.0');
     }
@@ -108,8 +121,21 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 onText: "Enabled",
                 offText: "Disabled"
             }),
-            this._propertyPaneHelper
+            PropertyPaneToggle('useExternalScript', {
+                label: 'Use an external HTML Code instead of inline script',
+                onText: "Use external HTML Code",
+                offText: "Use inline script"
+            }),
         ];
+
+        if (this.properties.useExternalScript) {
+            webPartOptions.push(PropertyPaneTextField("externalScript", {
+                label: "External HTML Code URL",
+                value: this.properties.externalScript,
+            }));
+        } else {
+            webPartOptions.push(this._propertyPaneHelper);
+        }
 
         if (this.context.sdks.microsoftTeams) {
             let config = PropertyPaneToggle("teamsContext", {
@@ -173,7 +199,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     //
     // Argument element is an element in the dom.
     private async executeScript(element: HTMLElement) {
-        // clean up added script tags in case of smart re-load        
+        // clean up added script tags in case of smart re-load
         const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
         let scriptTags = headTag.getElementsByTagName("script");
         for (let i = 0; i < scriptTags.length; i++) {
