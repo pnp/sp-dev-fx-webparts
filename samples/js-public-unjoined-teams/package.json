@@ -19,7 +19,7 @@
     "@types/es6-promise": "0.0.33"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.15.2",
+    "@microsoft/sp-build-web": "1.16.1",
     "@microsoft/sp-tslint-rules": "1.7.1-plusbeta",
     "@microsoft/sp-module-interfaces": "1.7.1-plusbeta",
     "@microsoft/sp-webpart-workbench": "1.12.1",

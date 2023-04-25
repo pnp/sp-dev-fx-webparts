@@ -4,13 +4,17 @@
 
 Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.
 
-## Screen
 
 ![react-teams-membership-updater](./assets/Screenshot-2020-05-01.png "Preview")
 
 ![react-teams-membership-updater](./assets/teamsmembership.gif "Teams Membership Via Teams")
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
@@ -21,21 +25,11 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Applies to
 
-* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the SharePoint Admin Center
-
-Uses:
-
-* PnP React Controls
-* PnP React Property Controls
-* React Papaparse (CSV parsing)
-
-Solution|Author(s)
---------|---------
-Teams Membership Updater  Web Part|[Nick Brown](https://github.com/techienickb)
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 
@@ -50,6 +44,17 @@ Version|Date|Comments
 1.2.0|August 17, 2021|Added support for populating private channels inside of a team, added support for paged list of teams from Graph, added sorting to the Team list
 1.2.1|September 21, 2021| Missing '/members' in the private channel membership url
 1.2.2|March, 24, 2022|Upgraded to SPFx v1.14 and v4 of react-papaparse
+
+## Features
+
+This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the SharePoint Admin Center
+
+Uses:
+
+* PnP React Controls
+* PnP React Property Controls
+* React Papaparse (CSV parsing)
+
 
 ## Minimal Path to Awesome
 
@@ -84,4 +89,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="<https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-membership-updater> />
+<img src="<https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-membership-updater> />

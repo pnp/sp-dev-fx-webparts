@@ -1,0 +1,30 @@
+@import 'common.module';
+
+.wizard {
+    .header {
+        margin: 25px;
+    }
+
+    .progressBar {
+        background-color: $color-neutralLighterAlt;
+        padding: 15px 0;
+
+        .statusIndicator {
+            @include ms-font-m-plus;
+            flex: 1 auto;
+            padding: 0 10px;
+
+            &.futurePage {
+                color: $color-neutralPrimaryAlt;
+            }
+        }
+    }
+
+    .footer {
+        margin: 25px;
+
+        & :global(.ms-Button) {
+            min-width: 125px;
+        }
+    }
+}

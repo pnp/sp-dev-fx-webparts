@@ -7,6 +7,7 @@ export interface IReactEmojiReactionRatingProps {
   enableComments: boolean;
   enableCount: boolean;
   selectedColor: string;
+  selectedEmojiColor: string;
   listName: string;
   displayMode: any;
   listMessage: string;

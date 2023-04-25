@@ -1,0 +1,64 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-kiota-custom-api-client",
+    "source": "pnp",
+    "title": "React Kiota Custom API Client",
+    "shortDescription": "Using Kiota to generate a client to your AzureAd API and use it from a SPFx webpart.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kiota-custom-api-client",
+    "longDescription": [
+      "This sample shows how you can generate a client for your custom API using Kiota, and how to use that client in an SPFx webpart. The sample contains a custom API that is secured by Azure AD and interacts with Microsoft Graph API to do some basic operations with the Teams endpoint (it allows to list all the Teams in the tenant, to get detailed info for a given Team, and to Provision a new Team with some preconfigured channels)."
+    ],
+    "creationDateTime": "2022-11-11",
+    "updateDateTime": "2022-11-11",
+    "products": [
+      "SharePoint",
+      "Microsoft Teams",
+      "AzureAD",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.15.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kiota-custom-api-client/assets/react-kiota-custom-api-client.png",
+        "alt": "React Kiota Custom API Client architecture"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "luismanez",
+        "company": "ClearPeople",
+        "pictureUrl": "https://github.com/luismanez.png",
+        "name": "Luis Manez",
+        "twitter": "luismanez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Getting started with SharePoint Framework",
+        "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+      },
+      {
+        "name": "Microsoft Kiota",
+        "description": "Official documentation about Microsoft Kiota.",
+        "url": "https://microsoft.github.io/kiota/"
+      },
+      {
+        "name": "Microsoft 365 Patterns and Practices",
+        "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
+        "url": "https://aka.ms/m365pnp"
+      }
+    ]
+  }
+]

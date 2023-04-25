@@ -1,0 +1,26 @@
+@import 'common.module';
+
+.panel {
+    .headerCommands {
+        padding-right: 8px;
+        border-bottom: 1px solid;
+        border-bottom-color: $color-neutralQuaternary;
+    }
+
+    .heading {
+        @include md-down {
+            @include ms-fontSize-16;
+        }
+
+        @include lg-up {
+            @include ms-fontSize-18;
+        }
+
+        @include ms-fontWeight-semibold;
+        padding: 24px 24px 12px 24px;
+    }
+
+    :global(.ms-Panel-footer) :global(.ms-Button) {
+        margin-right: 8px;
+    }
+}

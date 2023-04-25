@@ -1,4 +1,4 @@
-﻿---
+---
 page_type: sample
 products:
 - office-sp
@@ -42,8 +42,8 @@ extensions:
 
 ## Область применения
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Клиент Office 365 для разработчиков](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Клиент Office 365 для разработчиков](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Решение
 
@@ -93,4 +93,4 @@ Angular-MSGraph|Дэвид Хартман ([Slalom](https://slalom.com))
 ## Настройка приложения
 1. Замените **aad** и **redirect_uri** на идентификатор приложения и URL-адрес перенаправления приложения, зарегистрированного в Azure, в файле GraphHelper.ts (src -> angularMsGraph -> GraphHelper.ts)
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

@@ -42,8 +42,8 @@ extensions:
 
 ## 适用于
 
-* [SharePoint Framework 开发人员预览版](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework 开发人员预览版](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 开发人员租户](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 
@@ -94,4 +94,4 @@ angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 1. 使用 src -> angularMsGraph -> GraphHelper.ts 下 GraphHelper.
 ts 文件中的已注册 Azure 应用的应用程序 ID 和重定向 url 替换 **aad** 和 **redirect\_uri** 占位符值
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

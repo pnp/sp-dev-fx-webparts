@@ -42,8 +42,8 @@ e exibirá todas as listas associadas ao site seguido por todos os itens da list
 
 ## Aplicável a
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Locatário de desenvolvedor do Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Locatário de desenvolvedor do Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solução
 
@@ -94,4 +94,4 @@ Versão | Data | Comentários
 1. Substitua os valores de espaço reservado **aad** e **redirect_uri** pela ID do aplicativo e URL de redirecionamento do aplicativo registrado do Azure no arquivo GraphHelper.ts Em
 src -> angularMsGraph -> GraphHelper.ts
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

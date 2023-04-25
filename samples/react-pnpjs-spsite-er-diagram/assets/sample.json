@@ -1,0 +1,56 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-spsite-er-diagram",
+        "source": "pnp",
+        "title": "SP Site ER Diagram",
+        "shortDescription": "This web part loads all lists on a site and display it in a Entity Relationship Diagram (ERD)",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-spsite-er-diagram",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-spsite-er-diagram",
+        "longDescription": [
+            "This web part loads all lists on a site and display it in a Entity Relationship Diagram (ERD)"
+        ],
+        "creationDateTime": "2022-11-07",
+        "updateDateTime": "2022-12-21",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.15.2"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPageFullScreen.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 200,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPage.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "ICTNiklasWilhelm",
+                "pictureUrl": "https://github.com/ICTNiklasWilhelm.png",
+                "name": "Niklas Wilhelm"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

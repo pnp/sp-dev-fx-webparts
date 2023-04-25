@@ -9,9 +9,10 @@
             "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app."
         ],
         "creationDateTime": "2021-10-05",
-        "updateDateTime": "2021-10-05",
+        "updateDateTime": "2023-04-07",
         "products": [
-            "SharePoint"
+            "SharePoint",
+            "Teams"
         ],
         "metadata": [
             {
@@ -20,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.12.0"
+                "value": "1.17.0"
             }
         ],
         "thumbnails": [
@@ -44,28 +45,34 @@
                 "company": "PiaSys.com",
                 "pictureUrl": "https://github.com/GuidoZam.png",
                 "name": "Guido Zambarda"
+            },
+            {
+                "gitHubAccount": "waldekmastykarz",
+                "company": "Microsoft",
+                "pictureUrl": "https://github.com/waldekmastykarz.png",
+                "name": "Waldek Mastykarz"
             }
         ],
         "references": [
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             },
             {
                 "name": "Building for Microsoft Teams",
                 "description": "Learn how to create SPFx web parts that integrate with the Microsoft Teams context.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview"
             },
             {
                 "name": "Use Microsoft Graph in your solution",
                 "description": "Learn how you can leverage the Microsoft Graph API from your custom developed SPFx web parts.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
             },
             {
                 "name": "Publish SharePoint Framework applications to the Marketplace",
                 "description": "Publishing your SharePoint Framework solutions to marketplace (also known as AppSource) and to SharePoint store, which allows you to reach other organizations and let them easily install your application in their Microsoft 365 tenant.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview"
             }
         ]
     }

@@ -6,12 +6,10 @@ import {
     IPropertyPaneConfiguration,
     PropertyPaneTextField,
     PropertyPaneToggle,
-    IPropertyPaneToggleProps,
     PropertyPaneSlider
 } from "@microsoft/sp-property-pane";
 
 import * as strings from "DirectoryWebPartStrings";
-import Directory from "./components/Directory";
 import DirectoryHook from "./components/DirectoryHook";
 import { IDirectoryProps } from "./components/IDirectoryProps";
 
@@ -21,6 +19,7 @@ export interface IDirectoryWebPartProps {
     searchProps: string;
     clearTextSearchProps: string;
     pageSize: number;
+    justifycontent:boolean;
 }
 
 export default class DirectoryWebPart extends BaseClientSideWebPart<
@@ -28,16 +27,6 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<
     > {
     public render(): void {
         const element: React.ReactElement<IDirectoryProps> = React.createElement(
-            // Directory,
-            // {
-            //     title: this.properties.title,
-            //     context: this.context,
-            //     searchFirstName: this.properties.searchFirstName,
-            //     displayMode: this.displayMode,
-            //     updateProperty: (value: string) => {
-            //         this.properties.title = value;
-            //     }
-            // },
             DirectoryHook,
             {
                 title: this.properties.title,
@@ -49,7 +38,8 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<
                 },
                 searchProps: this.properties.searchProps,
                 clearTextSearchProps: this.properties.clearTextSearchProps,
-                pageSize: this.properties.pageSize
+                pageSize: this.properties.pageSize,
+                useSpaceBetween:this.properties.justifycontent
             }
         );
 
@@ -86,6 +76,12 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<
                                     checked: false,
                                     label: "Search on First Name ?"
                                 }),
+                                PropertyPaneToggle("justifycontent", {
+                                  checked: false,
+                                  label: "Result Layout",
+                                  onText:"SpaceBetween",
+                                  offText:"Center"
+                              }),
                                 PropertyPaneTextField('searchProps', {
                                     label: strings.SearchPropsLabel,
                                     description: strings.SearchPropsDesc,

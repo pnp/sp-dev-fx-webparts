@@ -27,6 +27,11 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -38,9 +43,9 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 
 ## Applies to
 
-* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Web Part Properties
@@ -59,17 +64,12 @@ For all available props, go [here](https://react-slick.neostack.com/docs/api/).
 
 For all available methods, go [here](https://react-slick.neostack.com/docs/api#methods)
 
-## Solution
+## Contributors
 
-The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
-
-Solution|Author(s)
---------|---------
-Carousel Image/Video  Web Part|[João Mendes](https://github.com/joaojmendes)
-Carousel Image/Video  Web Part|[Rahul Suryawanshi](https://github.com/rahulsuryawanshi) ([@rahulsuryawansh](https://twitter.com/rahulsuryawansh))
-Carousel Image/Video  Web Part|[Don Kirkham](https://github.com/DonKirkham) ([@DonKirkham](https://twitter.com/DonKirkham))
-Carousel Image/Video  Web Part|[Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
-Carousel Image/Video  Web Part|[Giuliano De Luca](https://github.com/giuleon) ([@delucagiulian](https://twitter.com/delucagiulian))
+* [João Mendes](https://github.com/joaojmendes)
+- [Rahul Suryawanshi](https://github.com/Rahul)
+- [Harsha Vardhini](https://github.com/Harshagracy) 
+- [Giuliano De Luca](https://github.com/giuleon)
 
 ## Version history
 
@@ -123,4 +123,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-carousel" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-carousel" />

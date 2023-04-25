@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "react-birthdays-per-month",
+    "libraryId": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-birthdays-per-month",
+    "solutionShortDescription": "react-birthdays-per-month description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

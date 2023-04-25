@@ -8,6 +8,11 @@ This project contains two separate project folders:
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
 ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -18,14 +23,12 @@ This project contains two separate project folders:
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-azfunc-vimeo | [Stefan Bauer](https://github.com/n8design) - n8d ([@stfbauer](https://twitter.com/stfbauer))
+* [Stefan Bauer](https://github.com/n8design)
 
 ## Version history
 
@@ -45,7 +48,7 @@ This will install all the required NPM packages to run the Azure function
 
 ### Additional Configuration Vimeo Azure Function
 
-The folder [VimeoRequest](./VimeoRequest) contains a Azure Function generated with the [Azure Function Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local).
+The folder [VimeoRequest](./VimeoRequest) contains a Azure Function generated with the [Azure Function Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local).
 The access videos stored on this platform first a new application needs to be created first. To create a new Application navigate to the following website [https://developer.vimeo.com/apps/new?source=topnav](https://developer.vimeo.com/apps/new?source=topnav)
 After the creation of a new Application, the created AppID and Secret must get stored in the local Azure function configuration. This configuration file can be found in the root folder of the Azure Function Host and is named [local.settings.json](./VimeoRequest/local.settings.json).
 
@@ -119,5 +122,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-azfunc-vimeo" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-azfunc-vimeo" />
 

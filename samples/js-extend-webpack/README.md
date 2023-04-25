@@ -14,6 +14,7 @@ extensions:
 # Extending webpack in the SharePoint Framework toolchain
 
 ## Summary
+
 [Webpack](https://webpack.github.io/) is a JavaScript module bundler that takes your JavaScript files and its dependencies and generates one or more JavaScript bundles so you can load different bundles for different scenarios.
 
 One common task you would want to add to the SharePoint Framework toolchain is to extend the webpack configuration with custom loaders and plugins.
@@ -22,9 +23,14 @@ This sample shows how to use the webpack [markdown-loader](https://www.npmjs.com
 
 Read the following documentation for detailed information on working with webpack loaders in SharePoint Framework:
 
-- [Extending webpack in the SharePoint Framework toolchain](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/extending-webpack-in-build-pipeline)
+- [Extending webpack in the SharePoint Framework toolchain](https://learn.microsoft.com/sharepoint/dev/spfx/toolchain/extending-webpack-in-build-pipeline)
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.3.0](https://img.shields.io/badge/SPFx-1.3.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
@@ -38,15 +44,13 @@ Read the following documentation for detailed information on working with webpac
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-extend-webpack | [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
-Updated to GA Version| [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+- [Chakkaradeep Chandran](https://github.com/chakkaradeep)
+- [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 
@@ -86,4 +90,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-extend-webpack" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-extend-webpack" />

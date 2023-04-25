@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useState } from 'react';
 import { PermissionKind, spfi, SPFx } from '@pnp/sp/presets/all';
-import { ErrorHelper, LogHelper, ListTitles, PageFields } from '@src/utilities';
+import { ErrorHelper, LogHelper, PageFields } from '@src/utilities';
 import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
@@ -97,6 +97,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     getRequest: { isLoading: false, hasError: false, errorMessage: "" },
     tree: null
   });
+  const [spLibGuid, setSpLibGuid] = useState<string>();
 
   const sp = spfi().using(SPFx(context));
 
@@ -104,12 +105,20 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   useEffect(() => {
     LogHelper.verbose('usePageApi', 'useEffect', `[currentPageId, ${currentPageId}, pageEditFinished: ${pageEditFinished} ]`);
 
-    if (currentPageId) {
+    if (currentPageId && !!spLibGuid) {
       checkIfParentPageExists();
       getPagesAsync();
     }
 
-  }, [currentPageId, pageEditFinished]);
+  }, [currentPageId, pageEditFinished, spLibGuid]);
+
+  async function getSitePagesLibraryGuid() {
+    LogHelper.verbose('usePageApi', 'getSitePagesLibrary', ``);
+
+    const lib = await sp.web.lists.ensureSitePagesLibrary();
+    const libData = await lib();
+    await setSpLibGuid(libData.Id);
+  }
 
   async function getPagesAsync() {
     LogHelper.verbose('usePageApi', 'getPagesAsync', ``);
@@ -121,7 +130,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
 
     // add select and order by later.  Order by ID?
     let pages: IPage[] = [];
-    let items = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).items
+    let items = await sp.web.lists.getById(spLibGuid).items
       .select(
         PageFields.ID,
         PageFields.TITLE,
@@ -160,7 +169,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   async function checkIfParentPageExists() {
     LogHelper.verbose('usePageApi', 'parentPageExists', ``);
 
-    let parentPage = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
+    let parentPage = await sp.web.lists.getById(spLibGuid).fields
       .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)()
       .catch(e => {
         // swallow the exception we'll handle below
@@ -178,7 +187,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   }
 
   async function canCurrentUserManageSitePages(): Promise<void> {
-    let canManagePages = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)
+    let canManagePages = await sp.web.lists.getById(spLibGuid)
       .currentUserHasPermissions(PermissionKind.ManageLists)
       .catch(e => {
         ErrorHelper.handleHttpError('canUserUpdateSitePages', e);
@@ -192,16 +201,16 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   async function addParentPageFieldToSitePages(): Promise<void> {
     LogHelper.verbose('usePageApi', 'addParentPageFieldToSitePages', ``);
 
-    let list = await sp.web.lists.getByTitle(ListTitles.SITEPAGES)();
+    let list = await sp.web.lists.getById(spLibGuid)();
 
-    let lookup = await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
+    let lookup = sp.web.lists.getById(spLibGuid).fields
       .addLookup(PageFields.PARENTPAGELOOKUP, { LookupListId: list.Id, LookupFieldName: PageFields.TITLE })
       .catch(e => {
         return null;
         ErrorHelper.handleHttpError('canUserUpdateSitePages', e);
       });
 
-    await sp.web.lists.getByTitle(ListTitles.SITEPAGES).fields
+    await sp.web.lists.getById(spLibGuid).fields
       .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)
       .update({ Title: PageFields.PARENTPAGELOOKUP_DISPLAYNAME })
       .catch(e => {
@@ -271,6 +280,10 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   const addParentPageField = () => {
     addParentPageFieldToSitePages();
   };
+
+  useEffect(() => {
+    getSitePagesLibraryGuid();
+  }, []);
 
   return {
     state: {

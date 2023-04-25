@@ -1,4 +1,4 @@
-﻿---
+---
 page_type: sample
 products:
 - office-sp
@@ -42,8 +42,8 @@ extensions:
 
 ## 適用対象
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 Developer のテナント](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 Developer のテナント](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解決方法
 
@@ -94,4 +94,4 @@ angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 1. **aad** および **redirect_uri** プレースホルダー値をアプリケーション ID に置き換え、
 GraphHelper.ts ファイルの登録済み Azure アプリケーションの URL を src -> angularMsGraph -> GraphHelper.ts でリダイレクトします。
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

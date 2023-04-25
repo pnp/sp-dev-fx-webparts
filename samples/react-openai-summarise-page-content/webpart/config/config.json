@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "summarise-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/summarise/SummariseWebPart.js",
+          "manifest": "./src/webparts/summarise/SummariseWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SummariseWebPartStrings": "lib/webparts/summarise/loc/{locale}.js"
+  }
+}

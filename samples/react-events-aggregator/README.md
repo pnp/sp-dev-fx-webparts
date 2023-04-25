@@ -2,9 +2,9 @@
 
 > ## DEPRECATED 
 >
-> The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use [dynamic data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data) instead. #
+> The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use [dynamic data](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data) instead. #
 
-Following issue [#659](https://github.com/pnp/sp-dev-fx-webparts/issues/659), the event aggregator functionality is no longer working. This feature was in ALPHA state and never made it to general availability state. There is a replacement for the event aggregator. Please have a look at the dynamic data functionality and use it instead [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data). There is already a sample in this library [https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata)
+Following issue [#659](https://github.com/pnp/sp-dev-fx-webparts/issues/659), the event aggregator functionality is no longer working. This feature was in ALPHA state and never made it to general availability state. There is a replacement for the event aggregator. Please have a look at the dynamic data functionality and use it instead [https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data). There is already a sample in this library [https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata)
 
 ## Summary
 
@@ -18,6 +18,11 @@ This sample shows how we can use the SPFx Event Aggregator to communicate betwee
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -29,19 +34,19 @@ This sample shows how we can use the SPFx Event Aggregator to communicate betwee
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-events-aggregator | Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) ), Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) ), Austin Breslin  ( [@AustinBreslin](https://www.linkedin.com/in/austin-breslin-84b4a74b/) )
+* Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) )
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
+* [Austin Breslin](https://github.com/AustinBreslinDev)
 
 ## Version history
 
@@ -79,4 +84,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-events-aggregator" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-events-aggregator" />

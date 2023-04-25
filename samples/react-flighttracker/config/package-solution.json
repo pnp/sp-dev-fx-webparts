@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-flighttracker-client-side-solution",
+    "id": "9bc5376d-4151-495b-8249-ebcc27ddf392",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-flighttracker description"
+      },
+      "longDescription": {
+        "default": "react-flighttracker description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-flighttracker Feature",
+        "description": "The feature that activates elements of the react-flighttracker solution.",
+        "id": "22de90a6-9357-425b-921a-92f3b37d4a3b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-flighttracker.sppkg"
+  }
+}

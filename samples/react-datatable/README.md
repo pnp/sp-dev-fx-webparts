@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features. 
+This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features.
 
 ## Features
 
@@ -15,11 +15,15 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 ![Preview](assets/preview.png?raw=true "Preview")
 
-
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
+![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -29,15 +33,13 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-datatable | [Chandani Prajapati](https://github.com/chandaniprajapati) ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
-react-datatable | [Abderahman Moujahid](https://github.com/Abderahman88)
+- [Chandani Prajapati](https://github.com/chandaniprajapati) 
+- [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 
@@ -51,25 +53,23 @@ Version|Date|Comments
 1.5|June 2, 2021|Added feature to show image in dataTable and upgraded to the SPFx version 1.12.1.
 1.6|July 16, 2021|Changed library export-to-csv with react-csv
 1.7|Feb 22, 2022|Upgrade to SPFx v1.14.0
+1.8|November 01, 2022|Added support for list attachments
 
 ## Minimal Path to Awesome
 
 ### Local testing
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-* Clone the repository
-* `cd` to web part's project folder
-* In the command line run:
-  * `npm install`
-  * `gulp serve`
-
-
+- Clone the repository
+- `cd` to web part's project folder
+- In the command line run:
+  - `npm install`
+  - `gulp serve`
 
 ## Video
 
 [![DataTable web part for rendering data from lists with advance features](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=-i4EAmjKxpQ "DataTable web part for rendering data from lists with advance features")
-
 
 ## Help
 
@@ -91,5 +91,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-datatable" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-datatable" />

@@ -27,7 +27,19 @@ const MyApprovals = ({
 }: IMyApprovalsProps) => {
 
   const intl = useIntl();
+  const root = React.useRef<HTMLDivElement>();
+  const [width, setWidth] = React.useState<number>(0);
   const [approvals, setApprovals] = React.useState<IMyApprovalsState[]>();
+
+  const handleResize = React.useCallback(() => {
+    if (root.current) {
+      setWidth(root.current.offsetWidth);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   React.useEffect(() => {
     if (!httpService) return;
@@ -44,6 +56,7 @@ const MyApprovals = ({
             requestUser: value.properties.principals.filter((item) => item.id === value.properties.owner.id)[0].displayName,
           }))))
       );
+      handleResize();
     })();
   }, [
     httpService,
@@ -51,7 +64,9 @@ const MyApprovals = ({
   ]);
 
   return (
-    <div className={styles.root}>
+    <div
+      className={styles.root}
+      ref={root}>
       {
         environments.length
           ? (
@@ -63,9 +78,9 @@ const MyApprovals = ({
               {
                 approvals
                   ? (
-                    <div className={styles.container}>
+                    <div className={width <= 480 ? styles.small : styles.large}>
                       <div className={styles.count}>
-                        <Text variant='mega'>
+                        <Text variant='superLarge'>
                           {approvals.length}
                         </Text>
                         <Text variant='medium'>

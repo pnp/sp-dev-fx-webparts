@@ -1,19 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 4/10/2020 12:00:00 AM
-  description: Display your SharePoint solution version within your web parts
----
 # Version Display
 
 ## Summary
@@ -25,6 +9,11 @@ Display your SharePoint solution version within your web parts.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -34,20 +23,21 @@ Display your SharePoint solution version within your web parts.
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
 There are no pre-requisites.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-versiondisplay | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 ## Version history
 
@@ -149,7 +139,7 @@ If you'd like to read more about the concepts illustrated in this sample, please
 * [Semantic Versioning](https://semver.org/)
 * [npm version](https://docs.npmjs.com/cli/version)
 * [PropertyPaneWebPartInformation](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyPaneWebPartInformation/)
-* [Displaying the solution version in your web part](https://tahoeninjas.blog/2020/03/30/display-the-solution-version-in-your-web-part/)
+* [Displaying the solution version in your web part](https://tahoeninja.blog/2020/03/30/display-the-solution-version-in-your-web-part/)
 * [How to version new SharePoint Framework projects](https://n8d.at/how-to-version-new-sharepoint-framework-projects/)
 
 
@@ -175,4 +165,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-versiondisplay" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-versiondisplay" />

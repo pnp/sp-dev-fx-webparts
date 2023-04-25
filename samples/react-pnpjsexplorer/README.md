@@ -28,6 +28,11 @@ Feel free to connect on twitter:@siddh_me or twitter:@sanganikunj for any detail
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -69,12 +74,10 @@ gulp package-solution --ship
 - Upload or drag and drop the newly created client-side solution package to the app catalog in your tenant.
 - Based on your tenant settings, if you would not have CDN enabled in your tenant, and the `includeClientSideAssets` setting would be true in the `package-solution.json`, the loading URL for the assets would be dynamically updated and pointing directly to the `ClientSideAssets` folder located in the app catalog site collection.
 
-## Solution
+## Contributors
 
-| Solution          | Author(s)                                                                                                                          |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| react-pnpjsTester | [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) and [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) |
-| react-pnpjsTester | [Abderahman Moujahid](https://github.com/Abderahman88)|
+*[Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) and [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/)
+* [Abderahman Moujahid](https://github.com/Abderahman88)|
 
 ## Version history
 
@@ -107,4 +110,4 @@ For any issue or help, Buzz us on twitter:([siddh_me](https://twitter.com/siddh_
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-pnpjsexplorer" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-pnpjsexplorer" />

@@ -76,8 +76,8 @@ export default class DataService {
      * @returns Numeric array of demo data
      */
     public static generateNumericDemoData(length: number): number[] {
-        let demoData = [...Array(length)].map(() => {
-            let n = Math.floor(Math.random() * 9);
+        const demoData = [...Array(length)].map(() => {
+            const n = Math.floor(Math.random() * 9);
 
             return n;
         });
@@ -172,13 +172,13 @@ export default class DataService {
      */
     public static async generateGraphDemoData(): Promise<void> {
         if (confirm(strings.ConfirmAddGraphDemoData) == true) {
-            let provider = Providers.globalProvider;
+            const provider = Providers.globalProvider;
             if (provider) {
                 // Get the Graph client
-                let graphClient = provider.graph.client;
+                const graphClient = provider.graph.client;
 
                 // Add new task
-                let taskLists = await graphClient.api("me/todo/lists").get();
+                const taskLists = await graphClient.api("me/todo/lists").get();
 
                 // Simple task
                 await graphClient.api(`me/todo/lists/${taskLists.value[0].id}/tasks`).create({
@@ -193,7 +193,7 @@ export default class DataService {
                 });
 
                 // Task with due date
-                let taskDate = new Date();
+                const taskDate = new Date();
                 taskDate.setDate(taskDate.getDate() + 1);
                 await graphClient.api(`me/todo/lists/${taskLists.value[0].id}/tasks`).create({
                     "title": strings.DemoTaskWithDateTitle,
@@ -211,8 +211,8 @@ export default class DataService {
                 });
 
                 // Start and end date for events
-                let startDate = new Date();
-                let endDate = new Date();
+                const startDate = new Date();
+                const endDate = new Date();
 
                 // Set the start and end date to tomorrow
                 startDate.setDate(startDate.getDate() + 1);
@@ -331,7 +331,7 @@ export default class DataService {
      * @param typeKindId Type kind id of the field
      */
     private static async ensureWebField(fieldName: string, fieldType: string, typeKindId: number) {
-        var existingField = (await sp.web.fields.get()).filter(f => f.StaticName == fieldName);
+        const existingField = (await sp.web.fields.get()).filter(f => f.StaticName == fieldName);
         
         // If the field has not been added yet create it
         if (existingField && existingField.length == 0) {

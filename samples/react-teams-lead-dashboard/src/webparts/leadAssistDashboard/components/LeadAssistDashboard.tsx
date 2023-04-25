@@ -254,7 +254,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
         <div className={`${styles.row} ${styles.padding5}`}>
           <div className={(this.props.isTeamsContext) ? styles.smallColumnTeams : styles.smallColumn}>
             <div>
-              <span className={styles.chartCallDot}></span>
+              <span className={styles.chartCallDot} />
               {strings.ActivityChartLegendCalls}
             </div>
             <div className={styles.chartNumber}>
@@ -263,7 +263,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
           </div>
           <div className={styles.smallColumn}>
             <div>
-                <span className={styles.chartEmailDot}></span>
+                <span className={styles.chartEmailDot} />
                 {strings.ActivityChartLegendEmails}
             </div>
             <div className={styles.chartNumber}>
@@ -272,7 +272,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
           </div>
           <div className={styles.smallColumn}>
             <div>
-                <span className={styles.chartTextDot}></span>
+                <span className={styles.chartTextDot} />
                 {strings.ActivityChartLegendTexts}
             </div>
             <div className={styles.chartNumber}>
@@ -410,8 +410,8 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
         name: "buttonColumn",
         displayName: " ",
         minWidth: 50,
-        render: (item?: any, index?: number, column?: IColumn) => {
-          var content = <div></div>;
+        render: (item?: any, index?: number, column?: any) => {
+          let content = <div />;
           // If the element exists
           if (item) {
             // Create an clickable icon to open the SharePoint list item
@@ -420,7 +420,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
               onClick={() => {
                 const addSlash = this.props.siteUrl.endsWith("/") == false;
 
-                var tempLink = document.createElement('a');
+                const tempLink = document.createElement('a');
                 tempLink.href = this.props.siteUrl + ((addSlash == true) ? "/" : "") + "Lists/" + DataService.RecentlyDoneSalesContractsListName + "/DispForm.aspx?ID=" + item.id;
                 tempLink.target = "_blank";
                 tempLink.click();
@@ -544,8 +544,8 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
               return 0;
           }
 
-          var valueA = a[columnName];
-          var valueB = b[columnName];
+          let valueA = a[columnName];
+          let valueB = b[columnName];
           
           // If it's a complex property
           if (properties && properties.length > 0) {
@@ -553,8 +553,8 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
               valueB = b[properties[0]][properties[1]];
           }
           
-          var dateValueB = new Date(valueB.toString());
-          var dateValueA = new Date(valueA.toString());
+          const dateValueB = new Date(valueB.toString());
+          const dateValueA = new Date(valueA.toString());
 
           // Check if the value is a date
           if ((Object.prototype.toString.call(dateValueA) === "[object Date]" && !isNaN(dateValueA.getTime())) 

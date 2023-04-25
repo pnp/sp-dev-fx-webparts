@@ -1,0 +1,94 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.chatgpt {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.container {
+  border: 1px solid grey;
+  padding: 25px 35px;
+  margin-top: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient( to bottom, "[theme: themePrimary, default: #03787c]", rgba(0, 0, 0, 0) ) 1 100%;
+}
+
+.questionContainer {
+  display: flex;
+}
+
+.answerContainer{
+  display: flex
+}
+
+button {
+  margin-right: 10px;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.textfield{
+  margin-bottom: 10px;
+}
+
+.question {
+  background-color: "[theme: themePrimary, default: #03787c]";
+  color: white;
+  padding: 20px;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+  margin-bottom: 8px;
+}
+
+.answer {
+  background-color: #d2d2d2;
+  color: black;
+  padding: 20px;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+  margin-bottom: 8px;
+  margin-left: 25%;
+}
+
+.loadingContainer {
+  height: 90px
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.loader > div {
+  width: 20px;
+  height: 20px;
+  background: "[theme: themePrimary, default: #03787c]";
+  border-radius: 50%;
+  margin : 3px;
+  animation: loader 0.6s infinite alternate;
+}
+.loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes loader {
+  to {
+    opacity: 0.1;
+    transform: translate(0, -20px);
+    background : "[theme: themeSecondary, default: #5a5a5a]";
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "version": "1.15.2",
+    "libraryName": "react-flighttracker",
+    "libraryId": "9bc5376d-4151-495b-8249-ebcc27ddf392",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-flighttracker",
+    "solutionShortDescription": "react-flighttracker description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

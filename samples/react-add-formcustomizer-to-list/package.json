@@ -1,0 +1,39 @@
+{
+  "name": "react-add-formcustomizer-to-list",
+  "version": "0.0.1",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.15.2",
+    "@microsoft/sp-lodash-subset": "1.15.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.15.2",
+    "@microsoft/sp-property-pane": "1.15.2",
+    "@microsoft/sp-webpart-base": "1.15.2",
+    "@pnp/logging": "^3.5.1",
+    "@pnp/sp": "^3.5.1",
+    "@pnp/spfx-controls-react": "3.10.0",
+    "office-ui-fabric-react": "7.185.7",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-4.5": "0.2.2",
+    "@rushstack/eslint-config": "2.5.1",
+    "@microsoft/eslint-plugin-spfx": "1.15.2",
+    "@microsoft/eslint-config-spfx": "1.15.2",
+    "@microsoft/sp-build-web": "1.15.2",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "gulp": "4.0.2",
+    "@types/react": "16.9.51",
+    "@types/react-dom": "16.9.8",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "@microsoft/sp-module-interfaces": "1.15.2"
+  }
+}

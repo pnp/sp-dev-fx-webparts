@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-instagram",
+    "libraryId": "eb0da90b-40b2-46a2-8520-0e3d5edef4fc",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-instagram",
+    "solutionShortDescription": "react-instagram description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

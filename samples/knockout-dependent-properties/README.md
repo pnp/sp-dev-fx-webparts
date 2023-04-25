@@ -16,18 +16,24 @@ extensions:
 # Dependent Property Pane Properties
 
 ## Summary
+
 Sample Web Part illustrating
+
 * requesting Lists and Views data from SharePoint REST API
 * creating Knockout dropdown custom component with Fabric UI styling
 * creating dependent properties (dropdowns) in Client-Side Web Part Property Pane
 
 ![Sample Web Part implementing dependent properties in Property Pane](./assets/dep-props.png)
 
-
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.0.1](https://img.shields.io/badge/SPFx-1.0.1-green.svg)
-![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
@@ -35,17 +41,13 @@ Sample Web Part illustrating
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
-
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-ko-dependent-properties | [Alex Terentiev](https://github.com/AJIXuMuK) (Sharepointalist Inc., @alexaterentiev)
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -56,22 +58,23 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm i`
-  - `gulp serve`
+* Clone this repository
+* in the command line run:
+  * `npm i`
+  * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
+
 This project contains Client-Side Web Part built on the SharePoint Framework illustrating how to create dependent properties in Web Part Property Pane.
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- loading Lists and Views data from SharePoint REST API
-- creating custom Knockout data bindings
-- creating custom Knockout components
-- styling components to match Fabric UI experience
-- creating custom Property Pane fields (custom markup, logic) based on Knockout.js framework
+* loading Lists and Views data from SharePoint REST API
+* creating custom Knockout data bindings
+* creating custom Knockout components
+* styling components to match Fabric UI experience
+* creating custom Property Pane fields (custom markup, logic) based on Knockout.js framework
 
 ## Help
 
@@ -89,10 +92,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20knockout-dependent-properties&template=suggestion.yml&sample=knockout-dependent-properties&authors=@AJIXuMuK&title=knockout-dependent-properties%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/knockout-dependent-properties" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/knockout-dependent-properties" />

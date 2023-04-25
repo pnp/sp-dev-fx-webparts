@@ -8,6 +8,13 @@ You can also find more information in the [blog series about working with Custom
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
+
 ![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -18,17 +25,18 @@ You can also find more information in the [blog series about working with Custom
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 
 
 ## Applies to
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-Solution|Author(s)
---------|---------
-react-sp-pnp-js-property-decorators | Jose Quinto ([@jquintozamora](https://twitter.com/jquintozamora) , [blog.josequinto.com](https://blog.josequinto.com))
+## Contributors
+
+* [Jose Quinto](https://github.com/jquintozamora)
 
 ## Version history
 
@@ -63,4 +71,4 @@ https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-pnp-js-property-decorators" />

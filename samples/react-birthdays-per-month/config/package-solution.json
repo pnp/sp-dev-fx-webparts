@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "React Birthdays Per Month",
+    "id": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
+    "version": "1.2.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-birthdays-per-month description"
+      },
+      "longDescription": {
+        "default": "react-birthdays-per-month description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-birthdays-per-month Feature",
+        "description": "The feature that activates elements of the react-birthdays-per-month solution.",
+        "id": "d61e3b54-8033-4741-b55f-7f724cd7e65e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/React Birthdays Per Month.sppkg"
+  }
+}

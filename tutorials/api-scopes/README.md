@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sub-folder contains a client-side project that is related to the tutorial available at the following URL: https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial
+This sub-folder contains a client-side project that is related to the tutorial available at the following URL: https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial
 
 ![The UI of the sample application](./images/api-scopes.gif)
 

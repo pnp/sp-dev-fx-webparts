@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "spfxappdev-webparts-map",
+    "libraryId": "cc048abe-6531-4295-ab7a-12a1c95de606",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfxappdev.webparts.map",
+    "solutionShortDescription": "spfxappdev.webparts.map description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

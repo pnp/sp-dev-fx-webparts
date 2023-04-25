@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "aefb92b5-e547-49ea-97e7-a769ba7eacb4",
+  "alias": "PnPQuickLinksWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "PnP Quick links"
+      },
+      "description": {
+        "default": "PnP Quick links description"
+      },
+      "officeFabricIconFontName": "MiniLink",
+      "properties": {
+        "type": "Tiles",
+        "webpartTitle": "Awesome links",
+        "links": [
+          {
+            "Id": "leon69eyg85v7bsmek",
+            "Title": "Dans blog",
+            "IconName": "blog",
+            "Link": "https://blog.dan-toft.dk",
+            "SortWeight": 0.25,
+            "Target": "_blank"
+          },
+          {
+            "Id": "leoonn0xyr1cels2k6j",
+            "Title": "PnP",
+            "IconName": "SharedDatabase",
+            "Link": "https://pnp.github.io/",
+            "SortWeight": 0.5,
+            "Target": "_blank"
+          },
+          {
+            "Id": "leooo0weyww1ld0kzkf",
+            "Title": "Bing GPT",
+            "IconName": "BingLogo",
+            "Link": "https://bing.com/new",
+            "SortWeight": 0.75,
+            "Target": "_blank"
+          }
+        ],
+        "tile": {
+          "size": 30,
+          "hideText": false
+        }
+      }
+    }
+  ]
+}

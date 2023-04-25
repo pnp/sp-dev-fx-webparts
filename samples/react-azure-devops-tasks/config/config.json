@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "azure-dev-ops-tasks-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/azureDevOpsTasks/AzureDevOpsTasksAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/azureDevOpsTasks/AzureDevOpsTasksAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AzureDevOpsTasksAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/azureDevOpsTasks/loc/{locale}.js"
+  }
+}

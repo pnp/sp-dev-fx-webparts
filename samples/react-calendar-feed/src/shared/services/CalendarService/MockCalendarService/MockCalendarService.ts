@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * MockExtensionService
  * This provider will NOT be listed in the list of available providers when this solution is packaged with --ship.

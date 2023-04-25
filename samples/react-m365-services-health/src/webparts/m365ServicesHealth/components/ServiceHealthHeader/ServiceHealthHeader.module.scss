@@ -1,0 +1,28 @@
+.header {
+	border-bottom: 1px solid rgb(232, 232, 232);
+	padding-bottom: 20px;
+	position: sticky;
+	left: 0px;
+}
+.headerContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.headerText {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 24px;
+	font-weight: 700;
+	color: rgb(0, 0, 0);
+	margin-top: 24px;
+	margin-bottom: 14px;
+}
+.headerTimestamp {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 12px;
+	font-weight: 600;
+	color: rgb(72, 70, 68);
+}

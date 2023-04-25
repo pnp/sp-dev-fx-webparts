@@ -26,6 +26,11 @@ The `React Content Query Web Part` is a modern version of the good old `Content 
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -38,14 +43,12 @@ The `React Content Query Web Part` is a modern version of the good old `Content 
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Authors
---------|-----------
-react-content-query-webpart|Simon-Pierre Plante
+* [Simon-Pierre Plante](https://github.com/spplante)
 
 ## Version history
 
@@ -117,7 +120,7 @@ External scripts can be used to include either libraries such as *jQuery*, or ev
 ### Adding the web part to your page
 
 To add the `React Content Query Web Part` to your site page you have two options : 
-- Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
+- Either clone this repository, build the project yourself and connect it to SharePoint (see [officedev documentation](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
 - Or download the `react-content-query-webpart.sppkg` file available in the `sharepoint/solution` folder of the repository and add it directly in your app catalog in order to be able to use it in your site. 
 
 Note : The second method will only work for Office 365 sites, since the **.ppkg** file points to an Office 365 public CDN url which expects the referer to come from a valid https://**\*.sharepoint.com\*** url.
@@ -329,4 +332,4 @@ This package produces the following:
 * deploy/* - all resources which should be uploaded to a CDN.
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-webpart/onprem" />
