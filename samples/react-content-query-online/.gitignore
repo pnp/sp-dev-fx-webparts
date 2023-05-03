@@ -24,6 +24,9 @@ coverage
 bin
 obj
 
+#node stuff
+package-lock.json
+
 # Resx Generated Code
 *.resx.ts
 
