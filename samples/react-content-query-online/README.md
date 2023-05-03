@@ -81,14 +81,17 @@ Download & install all dependencies, build, bundle & package the project
 # download & install dependencies
 npm install
 
+#If you receive an error Cannot find module 'worker_threads' you will need to tell Node 10 to use the experiemental worker features via environment variable. In Powershell this is accomplished like this:
+$env:NODE_OPTIONS="--experimental-worker" 
+
 # transpile all TypeScript & SCSS => JavaScript & CSS
 gulp build
 
 # create component bundle & manifest
-gulp bundle
+gulp bundle --ship
 
 # create SharePoint package
-gulp package-solution
+gulp package-solution --ship
 ```
 
 These commands produce the following:
