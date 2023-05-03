@@ -5,9 +5,11 @@
 This sample webpart shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this webpart.
 
 **Add Azure App**
+
 ![Animated Sample](./assets/Add-New-App.gif)
 
 **Edit Azure App**
+
 ![Animated Sample](./assets/Edit-App.gif)
 
 ## Compatibility
@@ -39,7 +41,7 @@ This sample webpart shows list of Azure apps in your tenant. A new Azure applica
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | April 17, 2023   | Initial release |
+| 1.0     | April 18, 2023   | Initial release |
 
 ## Minimal Path to awesome
 
