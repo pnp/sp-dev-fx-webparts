@@ -1,3 +1,4 @@
+import moment from 'moment-timezone';
 import { ICachingOptions } from '@pnp/odata';
 import { extractWebUrl, sp } from '@pnp/sp';
 import "@pnp/sp/regional-settings";
@@ -51,6 +52,7 @@ export class OnlineTimeZoneService implements ITimeZoneService {
 
     private _timeZones: TimeZone[];
     private _timeZonesBySharePointId: Map<number, TimeZone>;
+    private _localTimeZone: ITimeZone;
 
     public get timeZones(): ITimeZone[] {
         return this._timeZones;
@@ -58,6 +60,10 @@ export class OnlineTimeZoneService implements ITimeZoneService {
 
     public get siteTimeZone(): ITimeZone {
         return this._siteTimeZoneCache.get(sp.web.toUrl());
+    }
+
+    public get localTimeZone(): ITimeZone {
+        return this._localTimeZone;
     }
 
     public timeZoneFromId(id: number): ITimeZone {
@@ -84,6 +90,7 @@ export class OnlineTimeZoneService implements ITimeZoneService {
 
         this._timeZones = timeZoneResults.map(TimeZone.fromTimeZoneResult).filter(tz => tz.hasMomentMapping);
         this._timeZonesBySharePointId = arrayToMap(this._timeZones, tz => tz.id);
+        this._localTimeZone = this._timeZones.find(tz => tz.momentId === moment.tz.guess());
 
         this._siteTimeZoneCache.set(sp.web.toUrl(), siteTimeZone);
 
