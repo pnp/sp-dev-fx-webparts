@@ -2,10 +2,10 @@
 
 ## Summary
 
-A RSS Reader original based on work completed by Olivier Carpentier's from:  https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader
-Root project: https://github.com/OlivierCC/spfx-40-fantastics
+A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-React RSS Reader utilizes SharePoint Framework v1.11.0 with no dependency on jQuery or a RSS Feed library. This project does utilize https://sharepoint.github.io/sp-dev-fx-property-controls/, and Moment React for date manipulation. Handlebar template option derived from React Search Refiners (PnP Modern Search): https://microsoft-search.github.io/pnp-modern-search/. Use NodeJS version 10 to compile or rebuild the SPFx solution.
+This RSS Reader utilizes SharePoint Framework v1.11.0 with no dependency on jQuery or a RSS Feed library. This project does utilize [	
+@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)) . Use NodeJS version 10 to compile or rebuild the SPFx solution.
 
 Main features include:
 
@@ -15,7 +15,7 @@ Main features include:
 - Optional View All link in header to point to custom feed source
 - Embedded feed rendering with optional parameters
 -- Feed result layout options including optional display of item publish date and description
--- Demostration of color picker property for color control of certain aspects of web part
+-- Demonstration of color picker property for color control of certain aspects of web part
 - Custom feed rendering using local or remote handlebar template
 
 ![RSS Reader](./assets/react-rss-reader.gif)
@@ -46,6 +46,7 @@ Main features include:
 
 * [Eric Overfield](https://github.com/eoverfield)
 * [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Kalle Mansikkaniemi](https://github.com/djsladi)
 
 ## Version history
 
@@ -54,6 +55,7 @@ Version|Date|Comments
 1.0.0 | Jan 21, 2019 | Initial release
 1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
 1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
+1.0.3 | April 21, 2023 | Added theme awareness
 
 ## Minimal Path to Awesome
 
@@ -66,7 +68,7 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
 
-- To bundle and package the installable .sppkg, run:
+- To bundle and package the installable *.sppkg*, run:
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 
@@ -81,7 +83,7 @@ Version|Date|Comments
 Setting | Description 
 -------|----
 Feed Url | The url of the RSS Feed for readers. Normally will url will return XML
-Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
+Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available.
 Feed Service Url | If using Feed2Json, the url of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
 Feed Service API Key | If using rss2json, an optional API key for paid services
 Max Count | The maximum results to return, default: 10
@@ -104,7 +106,7 @@ Disable CORS | Set request header mode to "no-cors", thus not requesting CORS re
 |View All Link Label | An optional label for the View All Link|
 
 
-**Default layout options**
+##### Default layout options
 |Setting | Description|
 -------|----
 Show Publication Date | Display the publication date
@@ -135,11 +137,11 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-rss-reader) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-rss-reader&template=bug-report.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield&title=react-rss-reader%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-rss-reader&template=bug-report.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield%20@djsladi&title=react-rss-reader%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-rss-reader&template=question.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield&title=react-rss-reader%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-rss-reader&template=question.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield%20@djsladi&title=react-rss-reader%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-rss-reader&template=question.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield&title=react-rss-reader%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-rss-reader&template=question.yml&sample=react-rss-reader&authors=@Abderahman88%20@eoverfield%20@djsladi&title=react-rss-reader%20-%20).
 
 ## Disclaimer
 
