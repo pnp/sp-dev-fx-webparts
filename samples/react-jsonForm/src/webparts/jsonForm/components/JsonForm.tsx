@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IForm } from '../model/FormField';
 import useObject from '../../../Hooks/UseObject';
 import { PrimaryButton, Stack, DialogFooter } from '@fluentui/react'
 import { Field } from './Fields/Field';
@@ -8,22 +7,42 @@ import { Placeholder, WebPartTitle } from '@pnp/spfx-controls-react';
 import { FormFieldCustomizer } from './Fields/FormFieldCustomizer';
 import { GetLookupFields, NewField } from '../../../Util/Util';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
-import { SPFxContext } from '../JsonFormWebPart';
+import { FILLED_FORM_QUERY_KEY, SPFxContext } from '../JsonFormWebPart';
+import { IForm } from '../../../Models/Form';
 
 export interface IJsonFormProps {
   Form: IForm;
   SaveForm: (updated: IForm) => void;
   Mode: DisplayMode;
+  ServerRelativeUrl?: string;
+  ListId: string;
 }
 
 export const JsonForm: React.FunctionComponent<IJsonFormProps> = (props: React.PropsWithChildren<IJsonFormProps>) => {
-  const { Mode } = props;
-  const { value: Form, updateValue: UpdateForm } = useObject<IForm>(props.Form);
-  const { value: filledForm, updateValue } = useObject<any>();
-  const { ListId } = React.useContext(SPFxContext);
+  const { Mode, ServerRelativeUrl } = props;
+  const { value: Form, updateValue: UpdateForm, overwriteData: __SETFORM } = useObject<IForm>(props.ServerRelativeUrl ? { Fields: [], Title: "" } : props.Form);
+  const { value: filledForm, updateValue, overwriteData: __SETFILLEDFORM } = useObject<any>();
+  const { provider } = React.useContext(SPFxContext);
 
-  console.log(ListId);
-  if (ListId == null || ListId == "")
+  React.useEffect(() => {
+    if (ServerRelativeUrl != null) {
+      const fetch = async () => {
+        const result = await provider.GetSubmission(ServerRelativeUrl);
+        __SETFILLEDFORM(result.response);
+        __SETFORM(result.form);
+      }
+      fetch();
+    }
+  }, [])
+
+  const saveForm = async () => {
+    const serverRelativeUrl = await provider.SaveSubmission({ form: Form, response: filledForm });
+    var searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(FILLED_FORM_QUERY_KEY, serverRelativeUrl);
+    window.location.search = searchParams.toString();
+  }
+
+  if (props.ListId == null || props.ListId == "")
     return <Placeholder description={'Open the property pane and select a list to store responses'} iconName={'Edit'} iconText={'Please configure web part'} />
 
   return (
@@ -34,12 +53,14 @@ export const JsonForm: React.FunctionComponent<IJsonFormProps> = (props: React.P
         <>
           <Stack tokens={{ childrenGap: 5 }}>
             {Form.Fields.map(field => {
-              return <Field field={field} onChange={updateValue} form={filledForm} />
+              return <Field readonly={props.ServerRelativeUrl != null} field={field} onChange={updateValue} form={filledForm} />
             })}
           </Stack>
-          <DialogFooter>
-            <PrimaryButton text='Submit' iconProps={{ iconName: "Accept" }} onClick={() => alert(JSON.stringify(filledForm, null, 2))} />
-          </DialogFooter>
+          {props.ServerRelativeUrl == null &&
+            <DialogFooter>
+              <PrimaryButton text='Submit' iconProps={{ iconName: "Accept" }} onClick={() => saveForm()} />
+            </DialogFooter>
+          }
         </>
       }
 
