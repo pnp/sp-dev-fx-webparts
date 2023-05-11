@@ -10,7 +10,10 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { TreeLayout } from '../Layouts/TreeLayout';
 
 export const Container: React.FunctionComponent<IContainerProps> = props => {
-  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, props.treeFrom, props.treeExpandTo);
+  // Use props.treeFrom / treeExpandTo value from settings only in display mode "tree"
+  const treeFrom = (props.pagesToDisplay === PagesToDisplay.Tree) ? props.treeFrom : undefined;
+  const treeExpandTo = (props.pagesToDisplay === PagesToDisplay.Tree) ? props.treeExpandTo : undefined;
+  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, treeFrom, treeExpandTo);
   let controlToRender = undefined;
   switch (props.pagesToDisplay) {
     case PagesToDisplay.Ancestors:
