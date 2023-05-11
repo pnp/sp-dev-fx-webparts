@@ -1,22 +1,18 @@
 import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
-import { IconType, Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { TimeInterval, TimeSpan, Segments } from '../enumHelper';
-import { IPageViewDetailProps, IPageViewCountProps } from '../CommonProps';
+import { IPageViewDetailProps, IPageViewCountProps, Dictionary } from '../CommonProps';
 import SectionTitle from '../components/SectionTitle';
 import CustomPivot from '../components/CustomPivot';
 import DataList from '../components/DataList';
 import Helper from '../Helper';
+import { IColumn, PivotItem, Icon, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
 
-const map: any = require('lodash/map');
+import {map} from 'lodash'
+import { ChartData, ChartOptions } from 'chart.js';
 
 export interface IPageViewsProps {
     helper: Helper;
@@ -28,43 +24,47 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
     const [loadingChart, setLoadingChart] = React.useState<boolean>(true);
     const [loadingList, setLoadingList] = React.useState<boolean>(true);
     const [noData, setNoData] = React.useState<boolean>(false);
-    const [timespanMenus, setTimeSpanMenus] = React.useState<any[]>([]);
-    const [timeintervalMenus, setTimeIntervalMenus] = React.useState<any[]>([]);
+    const [timespanMenus, setTimeSpanMenus] = React.useState<Dictionary<string>[]>([]);
+    const [timeintervalMenus, setTimeIntervalMenus] = React.useState<Dictionary<string>[]>([]);
     const [selTimeSpan, setSelTimeSpan] = React.useState<string>('');
     const [selTimeInterval, setSelTimeInterval] = React.useState<string>('');
     const [menuClick, setMenuClick] = React.useState<boolean>(false);
-    const [chartData, setChartData] = React.useState<any>(null);
-    const [chartOptions, setChartOptions] = React.useState<any>(null);
+    const [chartData, setChartData] = React.useState<ChartData>(null);
+    const [chartOptions, setChartOptions] = React.useState<ChartOptions>(null);
     const [listCols, setListCols] = React.useState<IColumn[]>([]);
-    const [items, setItems] = React.useState<any[]>([]);
+    const [items, setItems] = React.useState<IPageViewDetailProps[]>([]);
 
-    const _loadMenus = () => {
-        let tsMenus: any[] = props.helper.getTimeSpanMenu();
+    const _loadMenus = ():void => {
+        const tsMenus: Dictionary<string>[] = props.helper.getTimeSpanMenu();
         setTimeSpanMenus(tsMenus);
         setSelTimeSpan(tsMenus[4].key);
-        let tiMenus: any[] = props.helper.getTimeIntervalMenu();
+        const tiMenus: Dictionary<string>[] = props.helper.getTimeIntervalMenu();
         setTimeIntervalMenus(tiMenus);
         setSelTimeInterval(tiMenus[3].key);
     };
-    const handleTimeSpanMenuClick = (item: PivotItem) => {
+    const handleTimeSpanMenuClick = (item: PivotItem):void => {
         setMenuClick(true);
         setSelTimeSpan(item.props.itemKey);
     };
-    const handleTimeIntervalMenuClick = (item: PivotItem) => {
+    const handleTimeIntervalMenuClick = (item: PivotItem):void => {
         setMenuClick(true);
         setSelTimeInterval(item.props.itemKey);
     };
-    const _loadPageViewsCount = async () => {
+    const _loadPageViewsCount = async (selTimeSpan:string, selTimeInterval:string) :Promise<void>=> {
         if (menuClick) setLoadingChart(true);
-        let response: IPageViewCountProps[] = await props.helper.getPageViewCount(TimeSpan[selTimeSpan], TimeInterval[selTimeInterval]);
+        const response: IPageViewCountProps[] = await props.helper.getPageViewCount(
+            TimeSpan[selTimeSpan as keyof typeof TimeSpan], 
+            TimeInterval[selTimeInterval as keyof typeof TimeInterval]);
+            //'as keyof typeof' added above because of the error:
+            //error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'typeof xxx'
         if (response.length > 0) {
-            const data: Chart.ChartData = {
+            const data : ChartData= { //
                 labels: map(response, 'date'),
                 datasets: [
                     {
                         label: 'Total Page Views',
                         fill: true,
-                        lineTension: 0,
+                        tension:0,
                         data: map(response, 'sum'),
                         backgroundColor: 'rgba(255, 159, 64, 0.2)',
                         borderColor: 'rgb(255, 159, 64)',
@@ -73,13 +73,15 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
                 ]
             };
             setChartData(data);
-            const options: Chart.ChartOptions = {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: false,
-                    text: "Page Views"
+            const options:ChartOptions= {
+                plugins:{
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: "Page Views"
+                    }
                 },
                 responsive: true,
                 animation: {
@@ -95,15 +97,15 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
             setMenuClick(false);
         }
     };
-    const _generateColumns = () => {
-        let cols: IColumn[] = [];
+    const _generateColumns = ():void => {
+        const cols: IColumn[] = [];
         cols.push({
             key: 'Url', name: 'Url', fieldName: 'Url', minWidth: 100, maxWidth: 350,
-            onRender: (item: any, index: number, column: IColumn) => {
+            onRender: (item: IPageViewDetailProps, index: number, column: IColumn) => {
                 return (
                     <div className={styles.textWithIcon}>
                         <div className={styles.fileiconDiv}>
-                            <Icon iconName="FileASPX" ariaLabel={item.Url} iconType={IconType.Default} />
+                            <Icon iconName="FileASPX" aria-label={item.Url}/>
                         </div>
                         {item.Url ? (
                             <a href={item.Url} target="_blank" className={styles.pageLink}>{item.Url}</a>
@@ -125,9 +127,12 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
         });
         setListCols(cols);
     };
-    const _loadPageViews = async () => {
+    const _loadPageViews = async (selTimeSpan:string, selTimeInterval:string):Promise<void> => {
         if (menuClick) setLoadingList(true);
-        let response: IPageViewDetailProps[] = await props.helper.getPageViews(TimeSpan[selTimeSpan], TimeInterval[selTimeInterval], [Segments.PV_URL]);
+        const response: IPageViewDetailProps[] = await props.helper.getPageViews(
+            TimeSpan[selTimeSpan as keyof typeof TimeSpan], 
+            TimeInterval[selTimeInterval as keyof typeof TimeInterval], 
+            [Segments.PV_URL]);
         if (response.length > 0) {
             _generateColumns();
             setItems(response);
@@ -141,11 +146,15 @@ const PageViews: React.FunctionComponent<IPageViewsProps> = (props) => {
     };
 
     React.useEffect(() => {
-        if (selTimeSpan && selTimeInterval) {            
-            setNoData(false);
-            _loadPageViewsCount();
-            _loadPageViews();
+        const fetchaData=async(selTimeSpan:string, selTimeInterval:string):Promise<void> =>{
+            if (selTimeSpan && selTimeInterval) {            
+                setNoData(false);
+                await _loadPageViewsCount(selTimeSpan, selTimeInterval);
+                await _loadPageViews(selTimeSpan, selTimeInterval);
+            }
         }
+        fetchaData(selTimeSpan, selTimeInterval)
+            .catch(console.error);  
     }, [selTimeSpan, selTimeInterval]);
 
     React.useEffect(() => {

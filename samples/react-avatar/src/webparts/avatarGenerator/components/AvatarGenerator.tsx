@@ -1,3 +1,5 @@
+/* global _topvar, var2 */
+
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import styles from './AvatarGenerator.module.scss';
@@ -17,6 +19,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
+
 
 const options: IChoiceGroupOption[] = [
   { key: AvatarStyle.Circle, text: 'Circle' },
@@ -201,16 +205,20 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                           .map(type => {
                             return (<div className={styles.piece}
                               onClick={(ev) => {
+								
                                 var selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
-                              }}
+								this.optionContext.setData(selectedData as any);
+								let _topvar = "LongHairFro";
+								}}
                             ><Piece avatarStyle="Circle"
                               pieceType="top"
                               pieceSize="100"
-                              topType={type} /></div>);
-                          })}
+							  topType={type} /></div>);
+                          })						  }
+						  
                       </TabPanel>;
+					  					  break;
                     case "accessoriesType":
                       return <TabPanel value={this.state.value} index={internalcount}>
                         {optionState.options
@@ -227,7 +235,28 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                               accessoriesType={type} /></div>);
                           })}
                       </TabPanel>;
-                    case "hairColor":
+					  break;
+					case "hairColor":
+                      return <TabPanel value={this.state.value} index={internalcount}>
+                        {optionState.options
+                          .map(type => {
+                            return (<div className={styles.piece}
+                              onClick={(ev) => {
+                                var selectedData = this.optionContext["_data"];
+								selectedData[`${option.key}`] = type;
+                                this.optionContext.setData(selectedData as any);
+								
+                              }}
+                            > <Piece
+                                avatarStyle=""
+                                pieceType="top"
+                                pieceSize="100"
+								hairColor={type} />
+                            </div>); 
+                          })}
+                      </TabPanel>;
+					  break;
+					case "hatColor":
                       return <TabPanel value={this.state.value} index={internalcount}>
                         {optionState.options
                           .map(type => {
@@ -241,9 +270,8 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                                 avatarStyle=""
                                 pieceType="top"
                                 pieceSize="100"
-                                topType="LongHairFro"
-                                hairColor={type} />
-                            </div>);
+                                topType="WinterHat1"
+								hatColor={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
@@ -261,6 +289,24 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                               pieceType="facialHair"
                               pieceSize="100"
                               facialHairType={type} /></div>);
+                          })}
+                      </TabPanel>;
+                      break;
+					case "facialHairColor":
+                      return <TabPanel value={this.state.value} index={internalcount}>
+                        {optionState.options
+                          .map(type => {
+                            return (<div className={styles.piece}
+                              onClick={(ev) => {
+                                var selectedData = this.optionContext["_data"];
+                                selectedData[`${option.key}`] = type;
+                                this.optionContext.setData(selectedData as any);
+                              }}
+                            ><Piece avatarStyle=""
+                              pieceType="facialHair"
+                              pieceSize="100"
+							  facialHairType="BeardMajestic"
+                              facialHairColor={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
@@ -292,8 +338,9 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                                 this.optionContext.setData(selectedData as any);
                               }}
                             ><Piece avatarStyle=""
-                              pieceType="clotheColor"
+                              pieceType="clothe"
                               pieceSize="100"
+							  clotheType="ShirtCrewNeck"
                               clotheColor={type} /></div>);
                           })}
                       </TabPanel>;
@@ -310,7 +357,8 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                               }}
                             ><Piece avatarStyle=""
                               pieceType="graphics"
-                              pieceSize="100"
+                              pieceSize="200"
+							  style={{filter: 'invert(1)'}}
                               graphicType={type} /></div>);
                           })}
                       </TabPanel>;

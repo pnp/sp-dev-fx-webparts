@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "instagram-feed-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/instagramFeed/InstagramFeedWebPart.js",
+          "manifest": "./src/webparts/instagramFeed/InstagramFeedWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "InstagramFeedWebPartStrings": "lib/webparts/instagramFeed/loc/{locale}.js"
+  }
+}

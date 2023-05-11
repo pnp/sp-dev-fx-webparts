@@ -6,10 +6,8 @@ import { autobind } from "office-ui-fabric-react/lib/Utilities";
 import { PeoplePicker, PrincipalType } from '@pnp/spfx-controls-react/lib/PeoplePicker';
 import {  } from "@pnp/spfx-controls-react/";
 import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { DetailsList, DetailsListLayoutMode, IColumn, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
-const LOG_SOURCE = "ByFirstName";
+import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 const stackTokens = { childrenGap: 50 };
-const iconProps = { iconName: 'Calendar' };
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
@@ -28,20 +26,9 @@ export class ByEmail extends React.Component<ByEmailProps,ByEmailState>{
         };
     }
 
-    @autobind
-  private _getPeoplePickerItems(items: any[]) {
-    if(items.length == 1){
-      this.getUsers(items[0].secondaryText !== ""?items[0].secondaryText:items[0].id.split('|').pop());
-    }
-    else
-    {
-      this.setState({
-        userProperties:[]
-      });
-    }
-  }
 
   @autobind
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async getUsers(email:string) : Promise<any>{
    this.setState({loading:true},async()=>{
       await this.props.MSGraphServiceInstance
@@ -67,7 +54,7 @@ export class ByEmail extends React.Component<ByEmailProps,ByEmailState>{
 
   public render(): React.ReactElement<ByEmailProps> {
     return (
-    <div className={styles.telephonedirectory}> 
+    <div className={styles.telephonedirectory}>
       <div>
         <Stack horizontal tokens={stackTokens} styles={stackStyles}>
           <Stack {...columnProps}>
@@ -82,10 +69,9 @@ export class ByEmail extends React.Component<ByEmailProps,ByEmailState>{
                 resolveDelay={1000} />
           </Stack>
         </Stack>
-        <div>
-        </div>
+        <div/>
         <div id='detailedList'>
-            {this.state.userProperties.length !== 0 && 
+            {this.state.userProperties.length !== 0 &&
           <DetailsList
             items={this.state.userProperties}
             columns={this.props.columns}

@@ -1,7 +1,6 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
+    "PropertyPaneDescription": "Your Microsoft Groups and Teams",
     "DescriptionFieldLabel": "Description Field"
   }
 });

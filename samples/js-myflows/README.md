@@ -23,7 +23,12 @@
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
@@ -49,25 +54,15 @@ Property |Type|Required| comments
 --------------------|----|--------|----------
 Web Part Title | Text| no|
 
+## Contributors
 
-
- 
-
-## Solution
-The web part Use msflowsdk-1.1.js library
-
-Solution|Author(s)
---------|---------
-My FLows Web Part|João Mendes
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|August 13, 2019|Initial release
-
-
-
 
 ## Minimal Path to Awesome
 
@@ -89,5 +84,5 @@ Version|Date|Comments
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-myflows" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-myflows" />
 

@@ -21,6 +21,11 @@ This demo does not include any threat models and is designed for educational pur
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg) 
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -44,12 +49,9 @@ This demo does not include any threat models and is designed for educational pur
     node --version
     ```
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-webpart | Bot Framework Discussions (msbots@service.microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
-bot | Bot Framework Discussions (msbots@service.microsoft.com)
+- [Stephan Bisser](https://github.com/stephanbisser)
 
 ## Version history
 
@@ -221,4 +223,4 @@ For how to find this option, please refer [connect to direct line](https://learn
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-secure" />

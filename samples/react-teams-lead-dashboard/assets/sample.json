@@ -9,9 +9,10 @@
             "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app."
         ],
         "creationDateTime": "2021-10-05",
-        "updateDateTime": "2022-11-15",
+        "updateDateTime": "2023-04-07",
         "products": [
-            "SharePoint"
+            "SharePoint",
+            "Teams"
         ],
         "metadata": [
             {
@@ -20,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.0"
+                "value": "1.17.0"
             }
         ],
         "thumbnails": [

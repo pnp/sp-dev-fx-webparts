@@ -51,4 +51,4 @@ Version|Date|Comments
 1.0|May 2018|Initial release
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-followed-sites" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-followed-sites" />

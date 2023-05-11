@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "pn-p-quick-links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnPQuickLinks/PnPQuickLinksWebPart.js",
+          "manifest": "./src/webparts/pnPQuickLinks/PnPQuickLinksWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PnPQuickLinksWebPartStrings": "lib/webparts/pnPQuickLinks/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

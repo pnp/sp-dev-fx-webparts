@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "caml-2-table",
+    "libraryId": "200f7603-168b-484e-bc9b-941884b08097",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Caml2Table",
+    "solutionShortDescription": "Caml2Table description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

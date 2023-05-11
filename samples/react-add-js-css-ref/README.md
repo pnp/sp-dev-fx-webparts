@@ -28,7 +28,7 @@ Challenges/Drawback with ONLY using SPFx extension for adding js and css file re
 * Different solution would be required for different site collections as we would definitely need different header js and css file references for each site collection(most of cases)
 * High maintenance and time consuming for simple task. 
 
-To overcome this drawbacks, this solution comes handy. This is reusable component which can be used by developers to eliminate creating Extension on thier own. Feel free to connect on twitter:@siddh_me for any details.
+To overcome this drawbacks, this solution comes handy. This is reusable component which can be used by developers to eliminate creating Extension on their own. Feel free to connect on twitter:@siddh_me for any details.
 
 ### Features of solution
 
@@ -40,6 +40,11 @@ Path can be `/sites/mysc/style library/js/custom.js` or `/sites/mysc/style libra
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg) 
 ![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg) 
@@ -101,11 +106,10 @@ gulp package-solution --ship
 * Register Custom action with ClientSideComponentId of Extension component
 * Passes parameters to Extension with ClientSideComponentProperties
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-add-js-css-ref | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (https://www.linkedin.com/in/siddharthvaghasia/)  [Don Kirkham](https://github.com/donkirkham) (https://www.linkedin.com/in/donkirkham/)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
+* [Don Kirkham](https://github.com/donkirkham)
 
 ## Version history
 
@@ -145,4 +149,4 @@ For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-js-css-ref" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-js-css-ref" />

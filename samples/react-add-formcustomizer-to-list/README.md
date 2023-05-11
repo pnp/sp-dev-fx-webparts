@@ -22,6 +22,11 @@ Note - This web part only serve to associate the Form customizer, so it is requi
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.15.0](https://img.shields.io/badge/SPFx-1.15.0-green.svg)
 ![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -86,11 +91,9 @@ To do the association or removing the association , user needs to follow the bel
 
 You can copy the actual component ID of form customizer with from its `manifest.json` file.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-add-formcustomizer-to-list | [Siddharth Vaghasia](https://github.com/siddharth-vaghasia) (<https://www.linkedin.com/in/siddharthvaghasia/>)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 
@@ -122,4 +125,4 @@ For any issue or help, Buzz me on twitter:([siddh_me](https://twitter.com/siddh_
 
 > Sharing is caring!
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-add-formcustomizer-to-list" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-add-formcustomizer-to-list" />

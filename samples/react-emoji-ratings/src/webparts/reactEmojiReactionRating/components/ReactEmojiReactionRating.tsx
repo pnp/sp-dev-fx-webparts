@@ -11,6 +11,8 @@ import Badge from '@material-ui/core/Badge/Badge';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react';
 
+
+
 export default class ReactEmojiReactionRating extends React.Component<IReactEmojiReactionRatingProps, IReactEmojiReactionRatingState> {
   private _spService: spService = null;
   private _message = null;
@@ -354,8 +356,9 @@ public componentDidMount() {
     /* if (this.props.listMessage) {
       this.ShowDialogMessage("List Creation", this.props.listMessage);
     } */
-
+	
     return !(this.state.configLoaded) ? (
+
       <Placeholder iconName='Edit'
         iconText='Configure your web part'
         description='Please configure the web part.'
@@ -363,9 +366,12 @@ public componentDidMount() {
         hideButton={this.props.displayMode === DisplayMode.Read}
         onConfigure={this._onConfigure} />
     ) : (this.props.listMessage ? (
+
       <div>{this.props.listMessage}</div>
     ) :
       (
+	  
+	  
         <div className={styles.reactEmojiReactionRating} style={{
           backgroundColor: `${this.props.selectedColor
             }`
@@ -386,6 +392,7 @@ public componentDidMount() {
                         <Badge color="secondary" overlap="circular" badgeContent={this.state[tabIndex]}>
                           <img src={ratingItem.ImageUrl}
                             className={this.state.selectedRatingIndex == tabIndex ? styles.selectedEmoji : styles.stackImage}
+							style={this.state.selectedRatingIndex == tabIndex ? {backgroundColor: `${this.props.selectedEmojiColor}`} : {backgroundColor: 'rgba(0, 0, 0, 0)'}}
                             title={ratingItem.Title}
                             tabIndex={tabIndex}
                             id={tabIndex.toString()}
@@ -402,7 +409,8 @@ public componentDidMount() {
                           tabIndex={tabIndex}
                           id={tabIndex.toString()}
                           alt={ratingItem.Title}
-                          onClick={this.selectedRating} />
+                          onClick={this.selectedRating}
+						  />
                         <Label className={styles.labelClass}>{ratingItem.Title}</Label>
                       </>
                     )

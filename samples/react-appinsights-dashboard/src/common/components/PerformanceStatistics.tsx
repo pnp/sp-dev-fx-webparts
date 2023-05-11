@@ -2,17 +2,14 @@ import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { IPerfDurationProps } from '../CommonProps';
 import SectionTitle from '../components/SectionTitle';
 import Helper from '../Helper';
+import { addDays, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
 
-const map: any = require('lodash/map');
+import {map} from 'lodash'
+import { ChartData, ChartOptions } from 'chart.js';
 
 const today: Date = new Date(Date.now());
 const startMaxDate: Date = addDays(today, -1);
@@ -28,13 +25,13 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
     const mainProps = React.useContext(AppInsightsProps);
     const [menuClick, setMenuClick] = React.useState<boolean>(false);
     const [message, setMessage] = React.useState<string>('');
-    const [loadingChart1, setLoadingChart1] = React.useState<boolean>(true);
-    const [noDataChart1, setNoDataChart1] = React.useState<boolean>(false);
+    const [loadingChart, setloadingChart] = React.useState<boolean>(true);
+    const [noDataChart, setnoDataChart] = React.useState<boolean>(false);
     const [startDate, setStartDate] = React.useState<Date>(null);
     const [endDate, setEndDate] = React.useState<Date>(null);
 
-    const [chartData1, setChartData1] = React.useState<any>(null);
-    const [chartOptions1, setChartOptions1] = React.useState<any>(null);
+    const [chartData, setChartData] = React.useState<ChartData>(null);
+    const [chartOptions, setChartOptions] = React.useState<ChartOptions>(null);
 
     const handleStartDateChange = (selDate: Date | null | undefined): void => {
         setStartDate(selDate);
@@ -42,8 +39,8 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
     const handleEndDateChange = (selDate: Date | null | undefined): void => {
         setEndDate(selDate);
     };
-    const _loadOperationsDurations = async () => {
-        if (menuClick) setLoadingChart1(true);
+    const _loadOperationsDurations = async ():Promise<void> => {
+        if (menuClick) setloadingChart(true);
         let query: string = ``;
         if (startDate && endDate) {
             query += `let start=datetime("${props.helper.getQueryStartDateFormat(startDate.toUTCString())}");
@@ -58,13 +55,14 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                 | summarize count_=sum(itemCount), avg(duration), percentiles(duration, 50, 95, 99))                
                 | order by count_ desc            
             `;
-            let response: any[] = await props.helper.getResponseByQuery(query, false);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const response: any[] = await props.helper.getResponseByQuery(query, false);
             if (response.length > 0) {
-                if (response[0][1] == 0 && response[0][2] == 'NaN') {
+                if (response[0][1] === 0 && response[0][2] === 'NaN') {
                     setMessage(strings.Msg_InvalidDate);
-                    setNoDataChart1(true);
+                    setnoDataChart(true);
                 } else {
-                    let finalRes: IPerfDurationProps[] = [];
+                    const finalRes: IPerfDurationProps[] = [];
                     response.map(res => {
                         finalRes.push({
                             PageName: res[0] ? res[0].indexOf('ModernDev -') >= 0 ? res[0].replace('ModernDev -', '') : res[0] : 'OverAll',
@@ -75,91 +73,98 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                             PerDur_99: res[5]
                         });
                     });
-                    const data: Chart.ChartData = {
+                    const data: ChartData= {
                         labels: map(finalRes, 'PageName'),
                         datasets: [
                             {
                                 label: 'Count',
                                 fill: true,
-                                lineTension: 0,
+                                tension:0,
                                 data: map(finalRes, 'count'),
                                 backgroundColor: props.helper.getRandomColor()
                             },
                             {
-                                label: 'Avg Duration',
+                                label: 'Avg Duration [ms]',
                                 fill: true,
-                                lineTension: 0,
+                                tension:0,
                                 data: map(finalRes, 'AvgDuration'),
                                 backgroundColor: props.helper.getRandomColor()
                             },
                             {
                                 label: 'Percentile Duration 50',
                                 fill: true,
-                                lineTension: 0,
+                                tension:0,
                                 data: map(finalRes, 'PerDur_50'),
                                 backgroundColor: props.helper.getRandomColor()
                             },
                             {
                                 label: 'Percentile Duration 95',
                                 fill: true,
-                                lineTension: 0,
+                                tension:0,
                                 data: map(finalRes, 'PerDur_95'),
                                 backgroundColor: props.helper.getRandomColor()
                             },
                             {
                                 label: 'Percentile Duration 99',
                                 fill: true,
-                                lineTension: 0,
+                                tension:0,
                                 data: map(finalRes, 'PerDur_99'),
                                 backgroundColor: props.helper.getRandomColor()
                             }
                         ]
                     };
-                    setChartData1(data);
-                    const options: Chart.ChartOptions = {
-                        legend: {
-                            display: false
-                        },
-                        title: {
-                            display: false,
-                            text: ""
-                        },
+                    setChartData(data);
+                    const options :ChartOptions = {
                         responsive: true,
-                        animation: {
+                        animation:{
                             easing: 'easeInQuad'
+                        },
+                        plugins:{
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: false,
+                                text: ""
+                            },
                         },
                         scales:
                         {
-                            xAxes: [{
+                            x: {
                                 stacked: true
-                            }],
-                            yAxes: [{
-                                ticks: { beginAtZero: true },
+                            },
+                            y: {
+                                min: 0 ,
                                 stacked: true
-                            }],
+                            },
 
                         }
                     };
-                    setChartOptions1(options);
+                    setChartOptions(options);
                 }
             } else {
-                setNoDataChart1(true);
+                setnoDataChart(true);
             }
         } else {
             setMessage(strings.Msg_NoDate);
-            setNoDataChart1(true);
+            setnoDataChart(true);
         }
-        setLoadingChart1(false);
+        setloadingChart(false);
         setMenuClick(false);
     };
 
     React.useEffect(() => {
-        if (startDate && endDate) {
-            setMenuClick(true);
-            setNoDataChart1(false);
-            setMessage('');
-            _loadOperationsDurations();
+        const fetchData= async(startDate:Date, endDate:Date): Promise<void>=>{
+            if (startDate && endDate) {
+                setMenuClick(true);
+                setnoDataChart(false);
+                setMessage('');
+                await _loadOperationsDurations();
+            }
         }
+        fetchData(startDate, endDate)
+            .catch(console.error);  
+        
     }, [startDate, endDate]);
 
     React.useEffect(() => {
@@ -177,6 +182,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                         <label className={styles.dataLabel} style={{ paddingTop: '5px' }}>{"Date Range: "}</label>
                         <div style={{ paddingRight: '5px' }}>
                             <DatePicker
+
                                 isRequired={false}
                                 placeholder="Start Date..."
                                 ariaLabel="Select start date"
@@ -185,7 +191,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                                 allowTextInput={false}
                                 highlightSelectedMonth={true}
                                 initialPickerDate={startMaxDate}
-                                formatDate={(date?: Date) => { return props.helper.getFormattedDate(date.toUTCString()); }}
+                                formatDate={(date?: Date) => { return props.helper.getFormattedDate(date.toUTCString(),'L'); }}
                                 onSelectDate={handleStartDateChange}
                                 value={startDate}
                             />
@@ -199,7 +205,7 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
                                 maxDate={maxDate}
                                 allowTextInput={false}
                                 highlightSelectedMonth={true}
-                                formatDate={(date?: Date) => { return props.helper.getFormattedDate(date.toUTCString()); }}
+                                formatDate={(date?: Date) => { return props.helper.getFormattedDate(date.toUTCString(),'L'); }}
                                 onSelectDate={handleEndDateChange}
                                 value={endDate}
                             />
@@ -209,15 +215,15 @@ const PerformanceStatistics: React.FunctionComponent<IPerformanceProps> = (props
             </div>
             <div className={css("ms-Grid-row", styles.content)}>
                 <div style={{ minHeight: '450px', maxHeight: '450px' }}>
-                    {loadingChart1 ? (
+                    {loadingChart ? (
                         <Spinner label={strings.Msg_LoadChart} labelPosition={"bottom"} />
                     ) : (
                             <>
-                                {!noDataChart1 ? (
+                                {!noDataChart ? (
                                     <ChartControl
                                         type={ChartType.Bar}
-                                        data={chartData1}
-                                        options={chartOptions1}
+                                        data={chartData}
+                                        options={chartOptions}
                                     />
                                 ) : (
                                         <MessageBar messageBarType={MessageBarType.error}>{message ? message : strings.Msg_NoData}</MessageBar>

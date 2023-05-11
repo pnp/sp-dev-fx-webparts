@@ -1,0 +1,28 @@
+.rowItem {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 12px;
+	font-weight: 400;
+	height: 1.25rem;
+}
+.serviceStatusIcon {
+	line-height: 16px;
+	display: flex;
+}
+
+.healthStatusLink {
+	margin-top: 2px;
+	margin-left: 4px;
+}
+
+.serviceIconStyles {
+	font-size: 16px;
+	margin-right: 4px;
+	vertical-align: sub;
+}
+.message {
+	font-size: 12px;
+	font-weight: 400;
+	margin-left: 4px;
+	vertical-align: middle;
+}

@@ -1,7 +1,7 @@
 define([], function() {
   return {
-    AirLineLabel: "Air Line",
-    AirportLabel: "AirPort",
+    AirLineLabel: "Airline",
+    AirportLabel: "Airport",
     AirPortPlaceholder: "Search for an airport",
     DateLabel: "Date",
     FlightLabel: "Flight",
@@ -10,7 +10,7 @@ define([], function() {
     Remove: "Remove",
     SelectDate: "Select a date",
     SelecteAirport: "Select Airport",
-    SelectInformationType: "Select infomation type",
+    SelectInformationType: "Select information type",
     selectTime: "\"Time",
     StartTimeLabel: "Time",
     TerminalLabel: "Terminal",

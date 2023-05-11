@@ -27,6 +27,11 @@ The web part uses the default columns of the SharePoint Tasks list for showing t
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -54,14 +59,12 @@ This web part reads the information from a Tasks list and uses the following OOB
 
 The Task list can be chosen using the web part properties (BaseTemplate 171 or 107)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-kanban-board | [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) ([@ram_meenavalli](https://twitter.com/ram_meenavalli))
-react-kanban-board | [Daniel Westerdale](https://github.com/westerdaled) ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
-react-kanban-board | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
-react-kanban-board | [Alex Terentiev](https://github.com/AJIXuMuK) ([@alexaterentiev](https://twitter.com/alexaterentiev))
+* [Ram Prasad Meenavalli](https://github.com/RamPrasadMeenavalli) 
+* [Daniel Westerdale](https://github.com/westerdaled) 
+* [Peter Paul Kirschner](https://github.com/petkir) 
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -75,6 +78,7 @@ Version|Date|Comments
 [Read More about the implementation of this Board](./src/kanban/README.md)
 
 ## Usage
+
 * PNP Placeholder control if not Configured
 * PNP WebpartTitle control  (toggle Show/Hide in property pane)
 * PNP OrderPropertyPane control  (change position of buckets)
@@ -132,4 +136,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-kanban-board" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-kanban-board" />

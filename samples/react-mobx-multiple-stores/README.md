@@ -1,9 +1,3 @@
-## Compatibility
-
-This sample is designed to be used in the following enviroments:
-## Compatibility
-
-This sample is designed to be used in the following enviroments:
 # Using Mobx with multiple stores
 
 ## Summary
@@ -14,6 +8,11 @@ A sample web part that uses the [Mobx](https://mobx.js.org/) library with multip
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
@@ -32,11 +31,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [SharePoint Framework Web part Samples](https://github.com/pnp/sp-dev-fx-webparts)
 * [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-mobx-multiple-stores | Kemal Sinanagic / [@kemicza](http://twitter.com/kemicza) / kemicza@gmail.com
+* Kemal Sinanagic
 
 ## Version history
 
@@ -73,4 +70,4 @@ $ gulp serve
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-mobx-multiple-stores" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-mobx-multiple-stores" />

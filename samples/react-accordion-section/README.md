@@ -27,7 +27,12 @@
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
@@ -50,14 +55,12 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 Please create the list as described above
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
-SPFx Collapsible Accordion Section|[Mike Zimmerman](https://github.com/mikezimm)
-SPFx Collapsible Accordion Section|[Ravi Chandra](https://github.com/Ravikadri)
-SPFx Collapsible Accordion Section|[Jack Vinitsky](https://github.com/jack-vinitsky)
+* [Erik Benke](https://github.com/ejbenke)
+* [Mike Zimmerman](https://github.com/mikezimm)
+* [Ravi Chandra](https://github.com/Ravikadri)
+* [Jack Vinitsky](https://github.com/jack-vinitsky)
 
 ## Version history
 
@@ -110,4 +113,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-accordion-section" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-accordion-section" />

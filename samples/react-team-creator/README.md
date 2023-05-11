@@ -14,7 +14,12 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
@@ -35,11 +40,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
 * [MS Teams](https://learn.microsoft.com/microsoftteams/microsoft-teams)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-teams-creator-client-side-solution | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
 
 ## Version history
 
@@ -49,6 +52,7 @@ Version|Date|Comments
 1.1|November 19, 2018|Upgrade to SPFx v1.7.0, updated to use v1.0 MS Graph endpoints
 
 ## Features
+
 Sample features:
 - O365 Group creation
 - MS Team creation
@@ -76,4 +80,4 @@ This package produces the following:
 * dist/* - the bundled script, along with other resources
 * deploy/* - all resources which should be uploaded to a CDN.
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-team-creator" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-team-creator" />

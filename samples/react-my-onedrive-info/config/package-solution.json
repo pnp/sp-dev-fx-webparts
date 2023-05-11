@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-my-one-drive-info-client-side-solution",
+    "id": "a07f3777-40b2-413e-b024-23234e5142e3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "react-my-one-drive-info description"
+      },
+      "longDescription": {
+        "default": "react-my-one-drive-info description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-my-one-drive-info Feature",
+        "description": "The feature that activates elements of the react-my-one-drive-info solution.",
+        "id": "40974a81-f99e-469c-97b7-f9a9732ec63d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-my-one-drive-info.sppkg"
+  }
+}

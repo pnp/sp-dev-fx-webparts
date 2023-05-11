@@ -1,0 +1,223 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+
+.map {
+  display: block;
+  min-height: 400px;
+  position: relative;
+}
+
+:global {
+  .map-icon {
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    color: #fff;
+
+    i {
+      font-size: 12px;
+    }
+  }
+
+
+  .display-mode .marker-type-none {
+    cursor: default !important;
+  }
+
+  .manage-categories-label {
+    font-size: 10px;
+    color: #1190F4;
+    padding-left: 5px;
+    cursor: pointer;
+  }
+
+  .spfxappdev-grid {
+    box-sizing: border-box;
+    zoom: 1;
+    padding: 0 8px;
+
+    &::before,
+    &::after {
+        display: table;
+        content: '';
+        line-height: 0;
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+
+    &::after {
+        clear: both;
+    }
+
+    &-row {
+        margin: 0 -8px;
+        box-sizing: border-box;
+        zoom: 1;
+
+        &::before,
+        &::after {
+            display: table;
+            content: '';
+            line-height: 0;
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        &::after {
+            clear: both;
+        }
+        
+    }
+
+    &-col {
+        position: relative;
+        min-height: 1px;
+        // padding-left: 8px;
+        // padding-right: 8px;
+        box-sizing: border-box;
+        float: left;
+    }
+  }
+
+  .spfxappdev-sm1 {
+      width: 8.33%
+  }
+
+  .spfxappdev-sm2 {
+      width: 16.66%;
+  }
+
+  .spfxappdev-sm3 {
+      width: 25%;
+  }
+
+  .spfxappdev-sm4 {
+      width: 33.33%;
+  }
+
+  .spfxappdev-sm5 {
+      width: 41.66%;
+  }
+
+  .spfxappdev-sm6 {
+      width: 50%;
+  }
+
+  .spfxappdev-sm7 {
+      width: 58.33%;
+  }
+
+  .spfxappdev-sm8 {
+      width: 66.66%;
+  }
+
+  .spfxappdev-sm9 {
+      width:75%;
+  }
+
+  .spfxappdev-sm10 {
+      width: 83.33%;
+  }
+
+  .spfxappdev-sm11 {
+      width: 91.66%;
+  }
+
+  .spfxappdev-sm12 {
+      width: 100%;
+  }
+
+  .grid-header {
+    background: $ms-color-themePrimary;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .grid-footer {
+    margin-top: 10px
+  }
+
+  .categories-grid {
+    .spfxappdev-grid-col {
+      padding: 10px 2px;
+    }
+
+    &.spfxappdev-grid-row {
+      border-bottom: solid 1px #aeaeae;
+
+      &:nth-child(odd) {
+        background: $ms-color-themeLighter;
+      }
+    }
+  }
+
+  .iframe-dialog,
+  .categories-dialog {
+    .ms-Dialog-content .ms-Dialog-header {
+      display: none;
+    }
+  }
+
+  .iframe-dialog {
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .ql-editor[contenteditable='true'] {
+    border: solid 1px $ms-color-themeDarker !important;
+  }
+
+  .panel-footer {
+    button {
+      margin: 0 5px;
+    }
+  }
+
+  .leaflet-popup-close-button {
+    display: none;
+  }
+
+  .leaflet-popup-tip-container {
+    margin-top: -1px;
+  }
+
+  .change-position-popup {
+    text-align: center;
+
+    label {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+
+  }
+
+  .info-tooltip {
+    font-size: 10px;
+    padding-left: 4px;
+    vertical-align: middle;
+    cursor:help;
+  }
+
+  .wp-settings-info {
+    font-weight: 600;
+    padding: 20px 0;
+    color: $ms-color-themeDarker;
+  }
+
+  .category-messagebar {
+    margin-bottom: 10px;
+  }
+
+  .CanvasControlToolbar {
+    z-index: 2000 !important;
+  }
+}

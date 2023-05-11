@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "SPFx app dev - interactive map webpart",
+    "id": "cc048abe-6531-4295-ab7a-12a1c95de606",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Sergej Schwabauer",
+      "websiteUrl": "https://spfx-app.dev/",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Includes an interactive map module with which you can create markers"
+      },
+      "longDescription": {
+        "default": "Includes an interactive map module with which you can create markers"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfxappdev-webparts-map Feature",
+        "description": "The feature that activates elements of the spfxappdev-webparts-map solution.",
+        "id": "e90a5f60-6586-4a90-925e-70a78df55b29",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfxappdev-webparts-map.sppkg"
+  }
+}

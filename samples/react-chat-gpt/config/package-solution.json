@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-chat-gpt-client-side-solution",
+    "id": "af7f69c4-82a2-4a74-84f6-69ca6983779d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nico De Cleyre",
+      "websiteUrl": "https://www.nicodecleyre.com",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Chat GPT"
+      },
+      "longDescription": {
+        "default": "Chat GPT"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-chat-gpt Feature",
+        "description": "The feature that activates elements of the react-chat-gpt solution.",
+        "id": "a059ba54-ce24-4a1c-a494-b4aba67c913e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-chat-gpt.sppkg"
+  }
+}

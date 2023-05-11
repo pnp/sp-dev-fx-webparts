@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Service Health for Microsoft 365",
+    "id": "f4d4b329-f1c6-49c9-a2fa-12a9816ac717",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ServiceHealth.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "Service Health for Microsoft 365"
+      },
+      "longDescription": {
+        "default": "Service Health for Microsoft 365"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+      
+    },    
+    "features": [
+      {
+        "title": "Service Health for Microsoft 365 Feature",
+        "description": "The feature that activates elements of the react-m-365-services-health solution.",
+        "id": "9d9e7584-45be-4df4-8023-5c271402cf87",
+        "version": "1.0.0.0"
+        
+      }
+    
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/M365-Services-Health.sppkg"
+  }
+}

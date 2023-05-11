@@ -20,10 +20,15 @@ Like the SharePoint event web parts, this web part renders a film-strip view whe
 
 To improve performance, the web part caches the events to the user's local storage (so that it doesn't retrieve the events every time the user visits the page). You can turn off the cache by setting the cache duration to 0 minutes.
 
-For more information about how this solution was built, including some design decisions and information on how you can extend this example to allow additional event feed provider, visit https://tahoeninjas.blog/creating-a-calendar-feed-web-part.
+For more information about how this solution was built, including some design decisions and information on how you can extend this example to allow additional event feed provider, visit https://tahoeninja.blog/creating-a-calendar-feed-web-part.
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 This sample is optimally compatible with the following environment configuration:
 
@@ -58,12 +63,10 @@ This web part only supports anonymous external feeds. Also, make sure that your 
 
 If your feed supports filtering by dates, you can specify `{s}` in the URL where the start date should be inserted, and the web part will automatically replace the `{s}` placeholder with today's date. Similarly, you can specify `{e}` in the URL where you wish the end date to be inserted, and the web part will automatically replace the placeholder for the end date, as determined by the date range you select.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-calendar-feed | [Hugo Bernier](https://github.com/hugoabernier) ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
-react-calendar-feed | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
@@ -133,4 +136,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-calendar-feed" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-calendar-feed" />

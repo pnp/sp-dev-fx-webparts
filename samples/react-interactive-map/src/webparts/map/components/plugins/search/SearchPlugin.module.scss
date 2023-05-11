@@ -1,0 +1,61 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+
+.map-plugin-search {
+    display: block;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    position: absolute;
+
+    button {
+        outline: none;
+        border-radius: 2px;
+        height: 32px;
+        border: 2px solid rgba(0,0,0,0.2);
+        background-clip: padding-box;
+        font-size: 1.4em;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .textbox {
+        display: inline-block !important;
+        border-width: 0px;
+        padding: 0;
+
+        div {
+            border-width: 0px;
+        }
+    }
+}
+
+.suggesstion {
+    display: block;
+
+    &-item {
+        display: flex;
+        padding: 5px 20px;
+        border-bottom: solid 1px $ms-color-themeLighter;
+        border-top: solid 1px $ms-color-themeLighter;
+        align-items: center;
+        cursor: pointer;
+
+        &:first-child {
+            border-top-width: 0;
+        }
+
+        &:last-child {
+            border-bottom-width: 0;
+        }
+
+        i {
+            padding-right: 20px;
+            font-size: 2em;
+        }
+
+        span {
+            font-size: 1em;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "offer-creation-sp-fx-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/offerCreationSpFx/OfferCreationSpFxWebPart.js",
+          "manifest": "./src/webparts/offerCreationSpFx/OfferCreationSpFxWebPart.manifest.json"
+        }
+      ]
+    },
+    "create-offer-settings-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/createOfferSettings/CreateOfferSettingsWebPart.js",
+          "manifest": "./src/webparts/createOfferSettings/CreateOfferSettingsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "OfferCreationSpFxWebPartStrings": "lib/webparts/offerCreationSpFx/loc/{locale}.js",
+    "CreateOfferSettingsWebPartStrings": "lib/webparts/createOfferSettings/loc/{locale}.js"
+  }
+}

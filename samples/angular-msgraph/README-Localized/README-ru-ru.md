@@ -93,4 +93,4 @@ Angular-MSGraph|Дэвид Хартман ([Slalom](https://slalom.com))
 ## Настройка приложения
 1. Замените **aad** и **redirect_uri** на идентификатор приложения и URL-адрес перенаправления приложения, зарегистрированного в Azure, в файле GraphHelper.ts (src -> angularMsGraph -> GraphHelper.ts)
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

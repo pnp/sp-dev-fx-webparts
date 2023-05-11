@@ -1,6 +1,6 @@
 [
   {
-    "name": "pnp-sp-dev-fx-webparts-react-kiota-custom-api-client",
+    "name": "pnp-sp-dev-spfx-web-parts-react-kiota-custom-api-client",
     "source": "pnp",
     "title": "React Kiota Custom API Client",
     "shortDescription": "Using Kiota to generate a client to your AzureAd API and use it from a SPFx webpart.",
@@ -19,7 +19,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,React"
+        "value": "React"
       },
       {
         "key": "SPFX-VERSION",

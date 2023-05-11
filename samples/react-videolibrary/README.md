@@ -64,6 +64,11 @@ See also https://github.com/russgove/O365VideoSync. It's a console app that you 
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 0.7.0](https://img.shields.io/badge/SPFx-0.7.0-orange.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -84,11 +89,9 @@ See also https://github.com/russgove/O365VideoSync. It's a console app that you 
 
 > React, react-3d-carousel reactjs-coverface react-slick
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
- react-VideoLibrary | Russell Gove
+* [Russell Gove](https://github.com/russgove)
 
 ## Version history
 
@@ -119,7 +122,7 @@ to display videos stored on an O365 Video Channel.
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-videolibrary" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-videolibrary" />
 
 
 

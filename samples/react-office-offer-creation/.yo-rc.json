@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.0",
+    "libraryName": "react-office-offer-creation",
+    "libraryId": "455fb406-a609-4036-aeb2-1cffabf48af0",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-office-offer-creation",
+    "solutionShortDescription": "react-office-offer-creation description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

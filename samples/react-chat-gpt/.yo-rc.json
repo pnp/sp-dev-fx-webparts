@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-chat-gpt",
+    "libraryId": "af7f69c4-82a2-4a74-84f6-69ca6983779d",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-chat-gpt",
+    "solutionShortDescription": "Chat GPT",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -3,7 +3,7 @@
   "solution": {
     "name": "copy-views-client-side-solution",
     "id": "f9a94606-ce1c-487c-ab87-550b240421de",
-    "version": "1.0.1.5",
+    "version": "1.0.2.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

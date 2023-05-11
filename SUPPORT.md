@@ -38,4 +38,4 @@ We use GitHub issues to support user suggestions. To request an enhanced, [open 
 
 We use GitHub issues to support sample request. To request a new sample, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the sample request template. 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/SUPPORT.md" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/SUPPORT.md" />

@@ -9,7 +9,12 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 
 ## Compatibility
 
-![SPFx 1.16.0-rc.0](https://img.shields.io/badge/SPFx-1.16.0--rc.0-green.svg)
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.16.0](https://img.shields.io/badge/SPFx-1.16.0.0-green.svg)
 ![Node.js >=16.13.0 <17.0.0](https://img.shields.io/badge/Node.js-%3E=16.13.0%20%3C17.0.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
@@ -24,18 +29,17 @@ This sample shows how to integrate SharePoint Framework, PnP React Controls, and
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Microsoft Teams](https://www.microsoft.com/microsoft-teams)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-Lead Assist Dashboard | [PnP](https://pnp.github.io/)
+* [PnP](https://pnp.github.io/)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0.2|November 22, 2022|Upgraded to SPFx v1.16.0
 1.0.1|November 15, 2022|Upgraded to SPFx v1.16.0-rc.0
 1.0.0|October 5, 2021|Initial release
 

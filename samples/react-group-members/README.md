@@ -6,7 +6,12 @@ Uses the MS Graph client to list the members of a group(s) and displays Person C
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
@@ -22,17 +27,15 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 > Any special pre-requisites?
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-group-members | [Nick Brown](https://github.com/techienickb)
+* [Nick Brown](https://github.com/techienickb)
 
 ## Version history
 

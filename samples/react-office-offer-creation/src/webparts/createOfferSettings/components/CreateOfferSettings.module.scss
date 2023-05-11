@@ -1,0 +1,31 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.createOfferSettings {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.form {
+  @include ms-Grid-row;
+}
+.formField {
+  margin-bottom: 6px;
+  @include ms-Grid-col;
+  @include ms-md12;
+  @include ms-lg8;
+  @include ms-xl6;
+}

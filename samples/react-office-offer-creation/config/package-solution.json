@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-office-offer-creation-client-side-solution",
+    "id": "455fb406-a609-4036-aeb2-1cffabf48af0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Markus Moeller",
+      "websiteUrl": "https://mmsharepoint.wordpress.com",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-office-offer-creation description"
+      },
+      "longDescription": {
+        "default": "react-office-offer-creation description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.ReadWrite"
+      }
+    ],
+    "features": [
+      {
+        "title": "react-office-offer-creation Feature",
+        "description": "The feature that activates elements of the react-office-offer-creation solution.",
+        "id": "bd29483e-6ddd-4475-95f0-6aaf5e345e5d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-office-offer-creation.sppkg"
+  }
+}

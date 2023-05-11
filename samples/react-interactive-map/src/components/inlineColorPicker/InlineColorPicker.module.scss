@@ -1,0 +1,21 @@
+
+.inline-color-picker {
+    padding: 5px; 
+    background: rgb(255, 255, 255); 
+    border-radius: 1px; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px; 
+    display: inline-block; 
+    border: 1px solid rgb(166, 166, 166); 
+    cursor: pointer;
+
+    &-inner {
+        width: 36px; 
+        height: 14px; 
+        border-radius: 2px;
+    }
+
+    &.disabled {
+        background: darkgrey;
+        cursor: not-allowed;
+    }
+}

@@ -46,8 +46,8 @@ export const SelectAirportPicker: React.FunctionComponent = () => {
 
   const pickerSuggestionsProps: IBasePickerSuggestionsProps = React.useMemo(() => {
     return {
-      suggestionsHeaderText: "Suggested AirPorts",
-      noResultsFoundText: "No AirPort found",
+      suggestionsHeaderText: "Suggested airports",
+      noResultsFoundText: "No matching airports found",
     };
   }, []);
 

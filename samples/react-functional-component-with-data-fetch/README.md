@@ -9,6 +9,11 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -25,12 +30,10 @@ This web part demonstrates building a React functional component that uses data 
 * [PnPJS library](https://github.com/pnp/pnpjs)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-functional-component-with-data-fetch | Bill Ayers
-react-functional-component-with-data-fetch | Don Kirkham
+* Bill Ayers
+* [Don Kirkham](https://github.com/DonKirkham)
 
 ## Version history
 
@@ -64,7 +67,7 @@ This is an extension of the approach used in the [React-Functional-Component](ht
 * Functional Component
 * Fetching Data
 * Team.tsx Component
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />
 
 ## TeamsTrackerWebPart.ts Initialise PnPJS
 
@@ -139,4 +142,4 @@ In the `react-functional-component-with-data-fetch` directory, run `npm install`
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />
