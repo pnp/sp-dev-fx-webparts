@@ -15,10 +15,11 @@ export class SPService {
   private static GetAnchorUrl(headingValue: string): string {
     let anchorUrl = `#${headingValue
       .toLowerCase()
-      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s+]/g, " ")
+      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s]/g, " ")
       .replace(/^(-|\s)*|(-|\s)*$/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
       .replace(/-+/g, "-")
+      .replace(/[+]/g, "%2B") // https://github.com/pnp/sp-dev-fx-webparts/issues/3686
       .substring(0, 128)}`;
 
     let counter = 1;
