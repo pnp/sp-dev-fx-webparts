@@ -35,6 +35,7 @@ const _viewFields: IViewField[] = [
   }
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const options: any = {
   legend: {
     display: true,
@@ -50,7 +51,7 @@ const options: any = {
 let siteWebParts: WebPart[];
 let webPartsCounts: number[] = [];
 let webPartsTitles: string[] = [];
-let aggregatedWebPartData = new Map<string, number>();
+const aggregatedWebPartData = new Map<string, number>();
 
 export default class WebPartReport extends React.Component<IWebPartReportProps, IWebPartReportWebPartState> {
 
@@ -63,8 +64,8 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     };
   }
 
-  public async componentDidMount() {
-    this._setChartData();
+  public async componentDidMount():Promise<void> {
+    await this._setChartData();
   }
 
   private loadingData(): Promise<ChartData> {
@@ -83,7 +84,7 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     });
   }
 
-  public async _setChartData() {
+  public async _setChartData(): Promise<void> {
 
     webPartsCounts = [];
     webPartsTitles = [];
@@ -125,22 +126,22 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     return (
       <section className={`${styles.webPartReport} ${hasTeamsContext ? styles.teams : ''}`}>
         <div className={this.state.loading ? styles.hiddenComponent : ''}>
-          <div className={displayOption.toString() == "2" ? styles.hiddenComponent : ''}>
+          <div className={displayOption.toString() === "2" ? styles.hiddenComponent : ''}>
           <p className={styles.title}>Web parts list:</p>
             <ListView
               viewFields={_viewFields}
               items={siteWebParts}
-            ></ListView>
+            />
           </div>
           <ChartControl
             type={ChartType.Doughnut}
             datapromise={this.loadingData()}
             options={options}
-            className={displayOption.toString() == "1" ? styles.hiddenComponent : ''}
+            className={displayOption.toString() === "1" ? styles.hiddenComponent : ''}
           />
         </div>
         <div className={!this.state.loading ? styles.hiddenComponent : ''}>
-        <Spinner label="Loading webparts..." />
+        <Spinner label="Loading web parts..." />
         </div>
       </section>
     );

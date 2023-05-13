@@ -5,13 +5,16 @@ import { MSGraphClientV3 } from "@microsoft/sp-http";
 
 export async function _getSiteWebParts(graphClient: MSGraphClientV3, siteId: string): Promise<WebPart[]> {
     try {
-        let siteWebParts: any = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const siteWebParts: any = [];
         const sitePages: SitePage[] = await GraphServiceInstance.GetSitePages(graphClient, siteId);
         for (let i: number = 0; i<sitePages.length-1; i++){
-            let r: any = await GraphServiceInstance.GetWebParts(graphClient, siteId, sitePages[i].id);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const r: any = await GraphServiceInstance.GetWebParts(graphClient, siteId, sitePages[i].id);
             if (r !== null){
                 siteWebParts.push(
                 
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     r.value.flatMap((siteWebPart: any) => ([
                         {
                             siteId: siteId,
@@ -22,8 +25,8 @@ export async function _getSiteWebParts(graphClient: MSGraphClientV3, siteId: str
                     ]))
                 );  
             }
-         
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return siteWebParts.flatMap((t: any)=>t);
         
         
