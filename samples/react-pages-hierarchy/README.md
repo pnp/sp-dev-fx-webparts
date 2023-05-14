@@ -1,5 +1,5 @@
 
-(# Pages Hierarchy
+# Pages Hierarchy
 
 ## Summary
 
