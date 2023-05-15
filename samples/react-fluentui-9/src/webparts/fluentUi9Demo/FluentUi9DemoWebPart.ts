@@ -6,7 +6,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import FluentUi9Demo from './components/FluentUi9Demo';
 import { IFluentUi9DemoProps } from './components/IFluentUi9DemoProps';
 import { FluentProvider, FluentProviderProps, teamsDarkTheme, teamsLightTheme, webLightTheme, webDarkTheme, Theme } from '@fluentui/react-components';
-import { createv9Theme } from './shims/v9ThemeShim';
+import { createV9Theme } from "@fluentui/react-migration-v8-v9";
 
 export enum AppMode {
   SharePoint, SharePointLocal, Teams, TeamsLocal, Office, OfficeLocal, Outlook, OutlookLocal
@@ -65,7 +65,7 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
     this._isDarkTheme = !!currentTheme.isInverted;
     //if the app mode is sharepoint, adjust the fluent ui 9 web light theme to use the sharepoint theme color, teams/dark mode should be fine on default
     if (this._appMode === AppMode.SharePoint || this._appMode === AppMode.SharePointLocal) {
-      this._theme = createv9Theme(currentTheme, webLightTheme);
+      this._theme = createV9Theme(currentTheme as undefined, webLightTheme);
     }
   }
 
