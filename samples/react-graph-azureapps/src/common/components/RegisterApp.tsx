@@ -18,7 +18,7 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
         };
     }
 
-    private onNameChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
+    private onNameChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
         this.setState((prevState: IRegisterAppState, nextState: IRegisterAppState): IRegisterAppState => {
             nextState = cloneDeep(prevState);
             nextState.appName = newValue;
@@ -36,6 +36,7 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
     }
 
     private onRegisterApp = (): Promise<void> => {
+        // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {
             try {
 
@@ -43,12 +44,12 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
                     "displayName": this.state.appName,
                     "signInAudience": this.state.signInAudience
                 }
-                let result = await this.props.graphClient
+                const result = await this.props.graphClient
                     .api("/applications")
                     .post(newAppDetails);
 
                 if (result.id) {
-                    let app: IAppModel = {
+                    const app: IAppModel = {
                         Id: "",
                         appId: "",
                         displayName: "",
@@ -60,7 +61,7 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
                     app.appId = result.appId;
                     app.displayName = result.displayName;
                     app.createdDateTime = moment(new Date(result.createdDateTime)).format("llll");
-                    
+
                     this.props.callBack(app);
 
                     resolve();
@@ -70,12 +71,13 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
                 console.log(result);
             }
             catch (exception) {
-
+                // do nothing
             }
         })
     }
 
-    private handlerRegisterClick = () => {
+    private handlerRegisterClick = (): void => {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         this.onRegisterApp().then(
             this.props.modal()
         )
@@ -103,7 +105,7 @@ export default class RegisterApp extends React.Component<IRegisterAppProps, IReg
                 <ChoiceGroup defaultSelectedKey="AzureADMyOrg" options={options} onChange={this.onSupportedAccountChanged.bind(this)} />
 
                 <br />
-                <PrimaryButton text='Register' disabled={this.state.appName != "" ? false : true} onClick={this.handlerRegisterClick.bind(this)} />
+                <PrimaryButton text='Register' disabled={this.state.appName !== "" ? false : true} onClick={this.handlerRegisterClick.bind(this)} />
             </div>
         );
     }

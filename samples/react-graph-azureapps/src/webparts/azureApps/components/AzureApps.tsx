@@ -27,6 +27,7 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
 
   componentDidMount(): void {
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.getApps().then((retrievedApps) => {
 
       retrievedApps.forEach(async currentApp => {
@@ -49,19 +50,20 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
   }
 
   private getApps = (): Promise<IAppModel[]> => {
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise<IAppModel[]>(async (resolve, reject) => {
       try {
-        let retrievedApps: IAppModel[] = [];
-        let result = await this.props.graphClient
+        const retrievedApps: IAppModel[] = [];
+        const result = await this.props.graphClient
           .api("applications")
           .get();
 
         if (result && result.value && result.value.length > 0) {
 
           for (let index = 0; index < result.value.length; index++) {
-            let currApp = result.value[index];
-            if (currApp.createdDateTime != null) {
-              let app: IAppModel = {
+            const currApp = result.value[index];
+            if (currApp.createdDateTime !== null) {
+              const app: IAppModel = {
                 Id: "",
                 appId: "",
                 displayName: "",
@@ -93,24 +95,25 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
     })
   }
 
-  private getAllOwners = (id: string): Promise<any> => {
-    let users: IDocumentCardActivityPerson[] = [];
+  private getAllOwners = (id: string): Promise<IDocumentCardActivityPerson[]> => {
+    const users: IDocumentCardActivityPerson[] = [];
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        let result = await this.props.graphClient
+        const result = await this.props.graphClient
           .api("/applications/" + id + "/owners").
           get();
 
         if (result && result.value && result.value.length) {
           for (let index = 0; index < result.value.length; index++) {
-            let currentUser = result.value[index]
-            let userDetails: IDocumentCardActivityPerson = {
+            const currentUser = result.value[index]
+            const userDetails: IDocumentCardActivityPerson = {
               name: "",
               profileImageSrc: ""
             };
 
-            userDetails.name = currentUser.displayName,
-              userDetails.profileImageSrc = ''
+            userDetails.name = currentUser.displayName;
+            userDetails.profileImageSrc = '';
 
             users.push(userDetails);
           }
@@ -124,10 +127,11 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   public refreshCallback = async (latestapp: IAppModel) => {
-    let apps = this.state.apps;
+    const apps = this.state.apps;
     apps.push(latestapp);
-    console.log("Apps on callback: "+this.state.apps.length);
+    console.log("Apps on callback: " + this.state.apps.length);
     await this.setState((prevState: IAzureAppsState, newState: IAzureAppsState) => {
       newState = cloneDeep(prevState);
       newState.apps.push(latestapp);
@@ -135,10 +139,10 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
 
       return newState;
     })
-    
+
   }
 
-  public ModalAction() {
+  public ModalAction(): void {
     this.setState((prevState: IAzureAppsState, newState: IAzureAppsState) => {
       newState = cloneDeep(prevState);
       newState.isModalOpen = !this.state.isModalOpen;
@@ -147,10 +151,10 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
     })
   }
 
-  private handlerRefreshClick = ():void => {
+  private handlerRefreshClick = (): void => {
     window.location.reload();
 
-    this.setState((prevState: IAzureAppsState, newState:IAzureAppsState):IAzureAppsState => {
+    this.setState((prevState: IAzureAppsState, newState: IAzureAppsState): IAzureAppsState => {
       newState = cloneDeep(prevState);
 
       newState.isRefreshed = true;
@@ -171,11 +175,11 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
       },
     };
 
-    _.orderBy(this.state.apps, function(o){
+    _.orderBy(this.state.apps, function (o) {
       return moment(new Date(o.createdDateTime)).format("hh:mm:ss")
-    },['desc']);
+    }, ['desc']);
 
-    
+
     return (
       <div className={styles.mainarea}>
         {
@@ -188,10 +192,10 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
                 <DefaultButton text='Register App' onClick={this.ModalAction.bind(this)} />
               </Sticky>
               {
-                
+
                 this.state.apps.length ?
                   this.state.apps.map(currentApp => (
-                    <div>
+                    <div key={currentApp.Id}>
                       {currentApp.users.length ?
                         <DocumentCard
                           className={styles.documentCard}
@@ -204,7 +208,7 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
                           </DocumentCardDetails>
                         </DocumentCard>
                         :
-                        <div/>
+                        <div />
                       }
                     </div>
 
@@ -233,8 +237,7 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
               <RegisterApp
                 graphClient={this.props.graphClient}
                 modal={this.ModalAction.bind(this)}
-                callBack={this.refreshCallback.bind(this)}>
-              </RegisterApp>
+                callBack={this.refreshCallback.bind(this)} />
             </div>
           </Modal>
         </div>
@@ -243,15 +246,15 @@ export default class azureApps extends React.Component<IAzureAppsProps, IAzureAp
           <Dialog dialogContentProps={{
             title: "Refresh to get the latest app."
           }}
-          styles={{
-            main:{
-              maxHeight: '150px !important',
-              minHeight: '150px !important'
-            }
-          }}
-          hidden={this.state.isRefreshed}> 
+            styles={{
+              main: {
+                maxHeight: '150px !important',
+                minHeight: '150px !important'
+              }
+            }}
+            hidden={this.state.isRefreshed}>
             <DialogFooter>
-              <DefaultButton text='Refresh' onClick={this.handlerRefreshClick.bind(this)}/>
+              <DefaultButton text='Refresh' onClick={this.handlerRefreshClick.bind(this)} />
             </DialogFooter>
           </Dialog>
         </div>
