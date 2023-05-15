@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "azure-apps-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/azureApps/AzureAppsWebPart.js",
+          "manifest": "./src/webparts/azureApps/AzureAppsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AzureAppsWebPartStrings": "lib/webparts/azureApps/loc/{locale}.js"
+  }
+}

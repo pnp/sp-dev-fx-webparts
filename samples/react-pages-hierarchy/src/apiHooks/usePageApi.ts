@@ -88,7 +88,7 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
   }
 }
 
-export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext, treeTop: number, treeExpandTo: number): PageApi {
+export function usePageApi(currentPageId: number, pageEditFinished: boolean, context: WebPartContext, treeTop?: number, treeExpandTo?: number): PageApi {
   const [pagesState, pagesDispatch] = useReducer(pagesReducer, {
     parentPageColumnExists: true,
     userCanManagePages: false,

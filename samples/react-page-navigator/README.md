@@ -36,6 +36,7 @@ Version|Date|Comments
 1.5|July 19, 2022|Bug fixes
 1.6|August 8, 2022|Add theme provider and bug fixes
 1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
+1.8|May 13, 2023|Fixed issue when heading has a + symbol
 
 ## Minimal Path to Awesome
 
@@ -54,6 +55,7 @@ Version|Date|Comments
 
 * [Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
 * [Jasey Waegebaert](https://github.com/Jwaegebaert)
+* [Mike Zimmerman](https://github.com/mikezimm)
 
 ## Help
 

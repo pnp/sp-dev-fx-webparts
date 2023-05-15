@@ -9,7 +9,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2023-03-11",
+    "updateDateTime": "2023-04-24",
     "products": [
       "SharePoint"
     ],
@@ -57,7 +57,17 @@
         "gitHubAccount": "felixbohnacker",
         "pictureUrl": "https://github.com/felixbohnacker.png",
         "name": "Felix Bohnacker"
-      }
+      },
+      {
+        "gitHubAccount": "salascz",
+        "name": "salascz",
+        "pictureUrl": "https://github.com/salascz.png"
+      },
+      {
+          "gitHubAccount": "wobba",
+          "name": "Mikael Svenson",
+          "pictureUrl": "https://github.com/wobba.png"
+          }
     ],
     "references": [
       {

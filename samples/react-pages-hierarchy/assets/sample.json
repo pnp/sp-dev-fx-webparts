@@ -9,7 +9,7 @@
       "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
     ],
     "creationDateTime": "2020-04-30",
-    "updateDateTime": "2023-03-29",
+    "updateDateTime": "2023-05-11",
     "products": [
       "SharePoint"
     ],
@@ -53,7 +53,12 @@
           "gitHubAccount": "ruslan-s",
           "name": "ruslan-s",
           "pictureUrl": "https://github.com/ruslan-s.png"
-      }
+      },
+      {
+          "gitHubAccount": "SlowRobot",
+          "name": "SlowRobot",
+          "pictureUrl": "https://github.com/SlowRobot.png"
+          }
     ],
     "references": [
       {
