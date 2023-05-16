@@ -62,13 +62,28 @@ You'll need a document library to store the responses
 
 > PLEASE DON'T ACTUALLY USE THIS IN IT'S CURRENT STATE!
 >
-> The way this is setup to save it to save a .json file in a document library containing both the forms config and the values 
+> The way this is setup to save it to save a .json file in a document library containing both the forms config and the values, this is a very unstructured method of storing data! - you really should implement another save method!
+
+ ---
 
 You have the option to edit the raw JSON in the property pane, from here you'll also set the document library where the JSON files are stored
 
 ![property pane](assets/Raw%20JSON.png)
 
-There's support for conditional fields ()
+---
+
+Another feature is conditional fields (only for some of the field types)
+
+It allows you to show/hide fields based on other fields, for instance a "fill in" choice option!
+
+![conditional fields](assets/Conditional%20field.gif)
+
+
+---
+
+Lastly of the field types I'll call out here is the "Group" field this allows you to 'group' fields in either direction (is also a way to add several fields side a conditional field)
+
+![Group fields](assets/Group%20field.gif)
 
 
 ## Help
