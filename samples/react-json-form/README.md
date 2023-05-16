@@ -35,7 +35,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 ## Contributors
 
-*[Dan Toft](https://github.com/Tanddant)
+* [Dan Toft](https://github.com/Tanddant)
 
 ## Version history
 
