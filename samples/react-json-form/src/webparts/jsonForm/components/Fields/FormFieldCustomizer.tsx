@@ -17,7 +17,7 @@ const MAX_NUMBER_OF_ITEMS_IN_GROUP: number = 5;
 
 export const FormFieldCustomizer: React.FunctionComponent<IFormFieldCustomizer> = (props: React.PropsWithChildren<IFormFieldCustomizer>) => {
     const { field } = props;
-    const [shouldEdit, setShouldEdit] = React.useState<Boolean>(false);
+    const [shouldEdit, setShouldEdit] = React.useState<boolean>(false);
 
     const editDialog = <FieldEditorDialog
         allFieldsFlat={props.allFieldsFlat}
@@ -34,20 +34,21 @@ export const FormFieldCustomizer: React.FunctionComponent<IFormFieldCustomizer> 
     />
 
 
-    if (FieldType.FieldGroup == field.Type) {
+    if (FieldType.FieldGroup === field.Type) {
         const f = (field as IGroupField)
-        const AtCapacity = f.Fields.length == MAX_NUMBER_OF_ITEMS_IN_GROUP;
+        const AtCapacity = f.Fields.length === MAX_NUMBER_OF_ITEMS_IN_GROUP;
         return <div>
             {shouldEdit && editDialog}
             <div style={{ display: "flex" }}>
-                {(f.DisplayName != null || f.DisplayName != "") && <Label disabled>{f.DisplayName}</Label>}
+                {(f.DisplayName !== null || f.DisplayName !== "") && <Label disabled>{f.DisplayName}</Label>}
                 <ActionButton iconProps={{ iconName: "Edit" }} onClick={() => setShouldEdit(true)} />
                 <ActionButton iconProps={{ iconName: "Delete" }} onClick={() => props.delete()} />
             </div>
             <div
                 style={{
                     display: "grid",
-                    gridTemplateColumns: (field as IGroupField).Direction == GroupDirection.Horizontal ? `repeat(auto-fill,minmax(calc(${100 / ((field as any as IGroupField).Fields.length + (!AtCapacity ? 1 : 0))}% - 10px),1fr))` : '',
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    gridTemplateColumns: (field as IGroupField).Direction === GroupDirection.Horizontal ? `repeat(auto-fill,minmax(calc(${100 / ((field as any as IGroupField).Fields.length + (!AtCapacity ? 1 : 0))}% - 10px),1fr))` : '',
                     gap: 10
                 }}>
                 {f.Fields.map((child, index) => {
@@ -55,9 +56,9 @@ export const FormFieldCustomizer: React.FunctionComponent<IFormFieldCustomizer> 
                         key={child.Id}
                         allFieldsFlat={props.allFieldsFlat}
                         field={child}
-                        delete={() => props.update({ Fields: (field as IGroupField).Fields.filter(x => x.Id != child.Id) })}
+                        delete={() => props.update({ Fields: (field as IGroupField).Fields.filter(x => x.Id !== child.Id) })}
                         update={(val) => {
-                            let children = cloneDeep(f.Fields)
+                            const children = cloneDeep(f.Fields)
                             children[index] = { ...children[index], ...val };
                             props.update({ Fields: children });
                         }}
@@ -68,14 +69,14 @@ export const FormFieldCustomizer: React.FunctionComponent<IFormFieldCustomizer> 
         </div>;
     }
 
-    if (FieldType.Conditional == field.Type) {
+    if (FieldType.Conditional === field.Type) {
         const f = (field as IConditionalField);
-        const lookupField = props.allFieldsFlat.filter(x => x.Id == f.LookupFieldId)[0];
+        const lookupField = props.allFieldsFlat.filter(x => x.Id === f.LookupFieldId)[0];
         return <>
             {shouldEdit && editDialog}
             <div style={{ border: `1px solid ${getTheme().palette.themeDarkAlt}` }}>
                 <div style={{ display: "flex", background: getTheme().palette.themeLighter, alignItems: 'center', paddingLeft: "1em" }}>
-                    <Label>Visible if '{lookupField?.DisplayName}' is equal to '{f.MatchValue?.toString()}'</Label>
+                    <Label>Visible if &apos;{lookupField?.DisplayName}&apos; is equal to &apos;{f.MatchValue?.toString()}&apos;</Label>
                     <ActionButton iconProps={{ iconName: "Edit" }} onClick={() => setShouldEdit(true)} />
                     <ActionButton iconProps={{ iconName: "Delete" }} onClick={() => props.delete()} />
                 </div>
@@ -111,15 +112,15 @@ export const FormFieldCustomizer: React.FunctionComponent<IFormFieldCustomizer> 
             {shouldEdit && editDialog}
             <div className={styles.EditField} onClick={() => setShouldEdit(true)}>
 
-                {FieldType.Label == field.Type && <Label styles={{ root: { cursor: "pointer" } }} disabled>{field.DisplayName}</Label>}
-                {FieldType.Header == field.Type && <Text variant='xLarge'>{field.DisplayName}</Text>}
-                {FieldType.Text == field.Type && <TextField {...genericProps} />}
-                {FieldType.MultilineText == field.Type && <TextField {...genericProps} rows={5} multiline />}
-                {FieldType.Number == field.Type && <SpinButton {...genericProps} inputMode='numeric' labelPosition={Position.top} />}
-                {FieldType.Boolean == field.Type && <Checkbox {...genericProps} styles={{ root: { marginTop: "2.5em" } }} />}
-                {FieldType.Choice == field.Type && <Dropdown {...genericProps} options={[]} />}
-                {FieldType.MultiChoice == field.Type && <Dropdown {...genericProps} options={[]} multiSelect />}
-                {FieldType.PlaceHolder == field.Type && <MessageBar messageBarType={MessageBarType.info} styles={{ root: { marginTop: "2.1em" } }}>Press here to setup the field!</MessageBar>}
+                {FieldType.Label === field.Type && <Label styles={{ root: { cursor: "pointer" } }} disabled>{field.DisplayName}</Label>}
+                {FieldType.Header === field.Type && <Text variant='xLarge'>{field.DisplayName}</Text>}
+                {FieldType.Text === field.Type && <TextField {...genericProps} />}
+                {FieldType.MultilineText === field.Type && <TextField {...genericProps} rows={5} multiline />}
+                {FieldType.Number === field.Type && <SpinButton {...genericProps} inputMode='numeric' labelPosition={Position.top} />}
+                {FieldType.Boolean === field.Type && <Checkbox {...genericProps} styles={{ root: { marginTop: "2.5em" } }} />}
+                {FieldType.Choice === field.Type && <Dropdown {...genericProps} options={[]} />}
+                {FieldType.MultiChoice === field.Type && <Dropdown {...genericProps} options={[]} multiSelect />}
+                {FieldType.PlaceHolder === field.Type && <MessageBar messageBarType={MessageBarType.info} styles={{ root: { marginTop: "2.1em" } }}>Press here to setup the field!</MessageBar>}
 
             </div>
         </span>

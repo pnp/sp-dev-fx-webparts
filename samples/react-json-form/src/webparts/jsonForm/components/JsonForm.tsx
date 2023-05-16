@@ -21,42 +21,44 @@ export interface IJsonFormProps {
 export const JsonForm: React.FunctionComponent<IJsonFormProps> = (props: React.PropsWithChildren<IJsonFormProps>) => {
   const { Mode, ServerRelativeUrl } = props;
   const { value: Form, updateValue: UpdateForm, overwriteData: __SETFORM } = useObject<IForm>(props.ServerRelativeUrl ? { Fields: [], Title: "" } : props.Form);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { value: filledForm, updateValue, overwriteData: __SETFILLEDFORM } = useObject<any>();
   const { provider } = React.useContext(SPFxContext);
 
   React.useEffect(() => {
-    if (ServerRelativeUrl != null) {
-      const fetch = async () => {
+    if (ServerRelativeUrl !== null) {
+      const fetch = async (): Promise<void> => {
         const result = await provider.GetSubmission(ServerRelativeUrl);
         __SETFILLEDFORM(result.response);
         __SETFORM(result.form);
       }
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       fetch();
     }
   }, [])
 
-  const saveForm = async () => {
+  const saveForm = async (): Promise<void> => {
     const serverRelativeUrl = await provider.SaveSubmission({ form: Form, response: filledForm });
-    var searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
     searchParams.set(FILLED_FORM_QUERY_KEY, serverRelativeUrl);
     window.location.search = searchParams.toString();
   }
 
-  if (props.ListId == null || props.ListId == "")
+  if (props.ListId === null || props.ListId === "")
     return <Placeholder description={'Open the property pane and select a list to store responses'} iconName={'Edit'} iconText={'Please configure web part'} />
 
   return (
     <>
       <WebPartTitle displayMode={Mode} title={Form.Title} updateProperty={(val) => UpdateForm({ Title: val })} />
 
-      {Mode == DisplayMode.Read &&
+      {Mode === DisplayMode.Read &&
         <>
           <Stack tokens={{ childrenGap: 5 }}>
-            {Form.Fields.map(field => {
-              return <Field readonly={props.ServerRelativeUrl != null} field={field} onChange={updateValue} form={filledForm} />
+            {Form.Fields.map((field, index) => {
+              return <Field readonly={props.ServerRelativeUrl !== null} field={field} onChange={updateValue} form={filledForm} key={index} />
             })}
           </Stack>
-          {props.ServerRelativeUrl == null &&
+          {props.ServerRelativeUrl === null &&
             <DialogFooter>
               <PrimaryButton text='Submit' iconProps={{ iconName: "Accept" }} onClick={() => saveForm()} />
             </DialogFooter>
@@ -64,19 +66,20 @@ export const JsonForm: React.FunctionComponent<IJsonFormProps> = (props: React.P
         </>
       }
 
-      {Mode == DisplayMode.Edit &&
+      {Mode === DisplayMode.Edit &&
         <>
           <Stack tokens={{ childrenGap: 5 }}>
             {Form.Fields.map((Field, index) => {
               return <FormFieldCustomizer
+              key={index}
                 allFieldsFlat={GetLookupFields(Form.Fields)}
                 field={Field}
                 delete={() => {
-                  let fields = cloneDeep(Form.Fields).filter((x, i) => index != i);
+                  const fields = cloneDeep(Form.Fields).filter((x, i) => index !== i);
                   UpdateForm({ Fields: fields });
                 }}
                 update={(val) => {
-                  let fields = cloneDeep(Form.Fields)
+                  const fields = cloneDeep(Form.Fields)
                   fields[index] = { ...fields[index], ...val };
                   UpdateForm({ Fields: fields });
                 }}

@@ -13,11 +13,11 @@ const UNSUPPORTED_LOOKUP_FIELDTYPES: FieldType[] = [FieldType.PlaceHolder, Field
 export const GetLookupFields: (Fields: IField[]) => IField[] = (Fields: IField[]) => {
     const arr: IField[] = [];
 
-    for (let field of Fields) {
-        if (field.Type == FieldType.FieldGroup) {
+    for (const field of Fields) {
+        if (field.Type === FieldType.FieldGroup) {
             arr.push(...GetLookupFields((field as IGroupField).Fields))
-        } else if (field.Type == FieldType.Conditional) {
-            if ((field as IConditionalField).Field.Type == FieldType.FieldGroup) {
+        } else if (field.Type === FieldType.Conditional) {
+            if ((field as IConditionalField).Field.Type === FieldType.FieldGroup) {
                 arr.push(...GetLookupFields(((field as IConditionalField).Field as IGroupField).Fields))
             } else {
                 arr.push((field as IConditionalField).Field);
@@ -27,5 +27,5 @@ export const GetLookupFields: (Fields: IField[]) => IField[] = (Fields: IField[]
         }
     }
 
-    return arr.filter(x => x.DisplayName != null && !UNSUPPORTED_LOOKUP_FIELDTYPES.some(bannedType => bannedType == x.Type));;
+    return arr.filter(x => x.DisplayName !== null && !UNSUPPORTED_LOOKUP_FIELDTYPES.some(bannedType => bannedType === x.Type));
 }

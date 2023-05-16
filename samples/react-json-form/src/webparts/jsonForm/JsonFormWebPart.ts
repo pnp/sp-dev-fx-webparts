@@ -41,6 +41,7 @@ export default class JsonFormWebPart extends BaseClientSideWebPart<IJsonFormWebP
         JsonForm,
         {
           Form: JSON.parse(this.properties.formJson),
+          // eslint-disable-next-line no-return-assign
           SaveForm: (updated: IForm) => this.properties.formJson = JSON.stringify({ ...JSON.parse(this.properties.formJson), ...updated }, null, 2),
           Mode: this.displayMode,
           ListId: this.properties.listId,

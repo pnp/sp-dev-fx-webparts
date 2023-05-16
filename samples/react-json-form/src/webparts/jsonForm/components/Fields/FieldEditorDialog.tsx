@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from 'react';
 import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../../../Models/FormField';
 import { ActionButton, ChoiceGroup, DefaultButton, Dialog, DialogFooter, Dropdown, Label, Position, PrimaryButton, SpinButton, Stack, TextField } from '@fluentui/react';
@@ -42,16 +43,16 @@ export const FieldEditorDialog: React.FunctionComponent<IFieldEditorDialogProps>
                         const t = val.key as FieldType;
                         const updates: Partial<IField | IChoiceField | IGroupField | IConditionalField> = { Type: t }
 
-                        if (t == FieldType.Choice || t == FieldType.MultiChoice)
-                            if ((field as IChoiceField).Options == null)
+                        if (t === FieldType.Choice || t === FieldType.MultiChoice)
+                            if ((field as IChoiceField).Options === null)
                                 (updates as Partial<IChoiceField>).Options = [];
 
-                        if (t == FieldType.Conditional)
-                            if ((field as IConditionalField).Field == null)
+                        if (t === FieldType.Conditional)
+                            if ((field as IConditionalField).Field === null)
                                 (updates as Partial<IConditionalField>).Field = NewField();
 
-                        if (t == FieldType.FieldGroup)
-                            if ((field as IGroupField).Fields == null) {
+                        if (t === FieldType.FieldGroup)
+                            if ((field as IGroupField).Fields === null) {
                                 (updates as Partial<IGroupField>).Fields = [];
                                 (updates as Partial<IGroupField>).Direction = GroupDirection.Horizontal;
                             }
@@ -60,12 +61,12 @@ export const FieldEditorDialog: React.FunctionComponent<IFieldEditorDialogProps>
                     }}
                 />
 
-                {FieldType.Conditional != field.Type && <TextField label='Title' value={field.DisplayName} onChange={(_, val) => updateValue({ DisplayName: val })} />}
+                {FieldType.Conditional !== field.Type && <TextField label='Title' value={field.DisplayName} onChange={(_, val) => updateValue({ DisplayName: val })} />}
 
 
-                {[FieldType.Choice, FieldType.MultiChoice].some(x => x == field.Type) && <ChoiceFieldOptions field={field as IChoiceField} updateValue={updateValue} />}
-                {FieldType.Conditional == field.Type && <ConditionalFieldOptions field={field as IConditionalField} updateValue={updateValue} allFieldsFlat={props.allFieldsFlat} />}
-                {FieldType.FieldGroup == field.Type && <GroupFieldOptions field={field as IGroupField} updateValue={updateValue} />}
+                {[FieldType.Choice, FieldType.MultiChoice].some(x => x === field.Type) && <ChoiceFieldOptions field={field as IChoiceField} updateValue={updateValue} />}
+                {FieldType.Conditional === field.Type && <ConditionalFieldOptions field={field as IConditionalField} updateValue={updateValue} allFieldsFlat={props.allFieldsFlat} />}
+                {FieldType.FieldGroup === field.Type && <GroupFieldOptions field={field as IGroupField} updateValue={updateValue} />}
 
                 <DialogFooter>
                     <PrimaryButton text='Delete' iconProps={{ iconName: 'delete' }} onClick={() => props.delete()} styles={{ root: { backgroundColor: "#FF0000" }, rootHovered: { backgroundColor: "#D10000" }, rootChecked: { backgroundColor: "#A30000" } }} />
@@ -90,9 +91,12 @@ export const GroupFieldOptions: React.FunctionComponent<IGroupFieldOptionsProps>
                 label='Direction'
                 selectedKey={field.Direction}
                 options={[
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     { key: GroupDirection.Horizontal as any as string, text: "Horizontal", iconProps: { iconName: "AlignVerticalCenter" } },
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     { key: GroupDirection.Vertical as any as string, text: "Vertical", iconProps: { iconName: "AlignHorizontalCenter" } }
                 ]}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(_, val) => updateValue({ Direction: val.key as any as GroupDirection })}
             />
         </>
@@ -110,7 +114,7 @@ const ChoiceFieldOptions: React.FunctionComponent<IChoiceFieldOptionsProps> = (p
     return (<>
         <Label>Options</Label>
         {(field as IChoiceField).Options.map((val, index) => {
-            return <div style={{ display: "flex" }}>
+            return <div style={{ display: "flex" }} key={index}>
                 <TextField
                     styles={{ root: { flexGrow: 1 } }}
                     value={val} onChange={(_, val) => {
@@ -118,7 +122,7 @@ const ChoiceFieldOptions: React.FunctionComponent<IChoiceFieldOptionsProps> = (p
                         options[index] = val
                         updateValue({ Options: options });
                     }} />
-                <ActionButton iconProps={{ iconName: "Delete" }} onClick={() => updateValue({ Options: (field as IChoiceField).Options.filter((_, i) => i != index) })} />
+                <ActionButton iconProps={{ iconName: "Delete" }} onClick={() => updateValue({ Options: (field as IChoiceField).Options.filter((_, i) => i !== index) })} />
             </div>
         })}
         <PrimaryButton iconProps={{ iconName: "Add" }} text='Add option' onClick={() => {
@@ -136,7 +140,7 @@ interface IConditionalFieldOptionsProps {
 
 const ConditionalFieldOptions: React.FunctionComponent<IConditionalFieldOptionsProps> = (props: React.PropsWithChildren<IConditionalFieldOptionsProps>) => {
     const { allFieldsFlat, field, updateValue } = props
-    const targetField = allFieldsFlat.filter(x => x.Id == (field as IConditionalField).LookupFieldId)[0]
+    const targetField = allFieldsFlat.filter(x => x.Id === (field as IConditionalField).LookupFieldId)[0]
 
     return (
         <>
@@ -147,23 +151,23 @@ const ConditionalFieldOptions: React.FunctionComponent<IConditionalFieldOptionsP
                 onChange={(_, val) => updateValue({ LookupFieldId: val.key as string })}
             />
 
-            {targetField != null &&
+            {targetField !== null &&
                 <>
-                    {FieldType.Choice == targetField.Type && <Dropdown
+                    {FieldType.Choice === targetField.Type && <Dropdown
                         label='Show if is equal to'
                         options={(targetField as IChoiceField).Options.map(x => ({ key: x, text: x }))}
                         selectedKey={(field as IConditionalField).MatchValue as string}
                         onChange={(_, val) => updateValue({ MatchValue: val.text })}
                     />}
 
-                    {FieldType.Boolean == targetField.Type && <Dropdown
+                    {FieldType.Boolean === targetField.Type && <Dropdown
                         label='Show if is equal to'
                         options={[{ key: true.toString(), text: "Yes" }, { key: false.toString(), text: "No" }]}
                         selectedKey={(field as IConditionalField).MatchValue?.toString()}
-                        onChange={(_, val) => updateValue({ MatchValue: val.key == true.toString() })}
+                        onChange={(_, val) => updateValue({ MatchValue: val.key === true.toString() })}
                     />}
 
-                    {FieldType.Number == targetField.Type && <SpinButton
+                    {FieldType.Number === targetField.Type && <SpinButton
                         label='Show if is equal to'
                         inputMode='numeric'
                         labelPosition={Position.top}
@@ -172,7 +176,7 @@ const ConditionalFieldOptions: React.FunctionComponent<IConditionalFieldOptionsP
                     />
                     }
 
-                    {[FieldType.Text, FieldType.MultilineText].some(x => x == targetField.Type) && <TextField
+                    {[FieldType.Text, FieldType.MultilineText].some(x => x === targetField.Type) && <TextField
                         value={(field as IConditionalField).MatchValue as string}
                         label={"Value to look for"}
                         onChange={(_, val) => updateValue({ MatchValue: val })}
