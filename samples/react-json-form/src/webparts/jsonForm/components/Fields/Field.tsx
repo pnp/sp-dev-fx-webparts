@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../../../Models/FormField';
+import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../model/FormField';
 import { Position, SpinButton, TextField, Checkbox, Dropdown, MessageBar, MessageBarType, Text } from '@fluentui/react';
 import { Label } from 'office-ui-fabric-react';
 
@@ -8,52 +8,49 @@ export interface IFieldProps {
     onChange: (updates: object) => void;
     form: any;
     field: IField;
-    readonly: boolean;
 }
 
 export const Field: React.FunctionComponent<IFieldProps> = (props: React.PropsWithChildren<IFieldProps>) => {
-    const { field, onChange, form, readonly } = props;
+    const { field, onChange, form } = props;
     switch (field.Type) {
         case FieldType.Label: return <Label>{field.DisplayName}</Label>;
 
         case FieldType.Header: return <Text variant='xLarge'>{field.DisplayName}</Text>;
 
         case FieldType.Text: return <TextField
-            value={form[field.Id] ?? ""}
+            value={form[field.Id]}
             label={field.DisplayName}
-            readOnly={readonly}
             onChange={(_, val) => onChange({ [field.Id]: val })}
         />;
 
         case FieldType.MultilineText: return <TextField
-            value={form[field.Id] ?? ""}
+            value={form[field.Id]}
             label={field.DisplayName}
             rows={5}
             multiline
-            readOnly={readonly}
             onChange={(_, val) => onChange({ [field.Id]: val })}
         />;
 
         case FieldType.Number: return <SpinButton
             inputMode='numeric'
             labelPosition={Position.top}
-            value={form[field.Id] ?? ""}
+            value={form[field.Id]}
             label={field.DisplayName}
-            onChange={readonly ? null : (_, val) => onChange({ [field.Id]: Number(val) })}
+            onChange={(_, val) => onChange({ [field.Id]: Number(val) })}
         />;
 
         case FieldType.Boolean: return <Checkbox
             label={field.DisplayName}
-            checked={form[field.Id] ?? false}
-            onChange={readonly ? () => null : (_, val) => onChange({ [field.Id]: val })}
+            checked={form[field.Id]}
+            onChange={(_, val) => onChange({ [field.Id]: val })}
             styles={{ root: { alignItems: 'center', marginTop: "1.75em" } }}
         />;
 
         case FieldType.Choice: return <Dropdown
             options={(field as any as IChoiceField).Options.map(x => ({ key: x, text: x }))}
-            selectedKey={form[field.Id] ?? ""}
+            selectedKey={form[field.Id]}
             label={field.DisplayName}
-            onChange={readonly ? null : (_, option) => onChange({ [field.Id]: option.key })}
+            onChange={(_, option) => onChange({ [field.Id]: option.key })}
         />
 
         case FieldType.MultiChoice: return <Dropdown
@@ -61,7 +58,7 @@ export const Field: React.FunctionComponent<IFieldProps> = (props: React.PropsWi
             selectedKeys={form[field.Id] ?? []}
             label={field.DisplayName}
             multiSelect
-            onChange={readonly ? null : (_, val) => {
+            onChange={(_, val) => {
                 let selected: string[] = form[field.Id] ?? [];
                 selected = val.selected ? [...selected, val.key as string] : selected.filter(x => x != val.key);
                 onChange({ [field.Id]: selected })
@@ -84,7 +81,7 @@ export const Field: React.FunctionComponent<IFieldProps> = (props: React.PropsWi
             const f = (field as IConditionalField);
             const visible = form[f.LookupFieldId] == f.MatchValue
             if (!visible) return <></>
-            return <Field readonly={readonly} field={f.Field} form={form} onChange={onChange} />
+            return <Field field={f.Field} form={form} onChange={onChange} />
         }
     }
 
