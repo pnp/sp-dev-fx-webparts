@@ -9,8 +9,8 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { IJsonFormProps, JsonForm } from './components/JsonForm';
-import { IForm } from '../../Models/Form';
-import { IDataProvider, SharePointProvider } from '../../Providers/SharePointProvider';
+import { IForm } from './model/FormField';
+import { SPFI, SPFx, spfi } from '@pnp/sp/presets/all'
 
 export interface IJsonFormWebPartProps {
   formJson: string;
@@ -19,12 +19,12 @@ export interface IJsonFormWebPartProps {
 
 export interface AppContext {
   context: BaseComponentContext;
-  provider: IDataProvider;
+  SP: SPFI;
+  ListId: string;
+  ItemId?: number
 }
-
 export const SPFxContext = React.createContext<AppContext>(null);
 const urlSearchParams = new URLSearchParams(window.location.search);
-export const FILLED_FORM_QUERY_KEY = "FormServerRelativeUrl";
 
 export default class JsonFormWebPart extends BaseClientSideWebPart<IJsonFormWebPartProps> {
 
@@ -34,7 +34,9 @@ export default class JsonFormWebPart extends BaseClientSideWebPart<IJsonFormWebP
       {
         value: {
           context: this.context,
-          provider: new SharePointProvider(this.context, this.properties.listId)
+          SP: spfi().using(SPFx(this.context)),
+          ListId: urlSearchParams.get("ListId") ?? this.properties.listId,
+          ItemId: urlSearchParams.has("ItemId") ? parseInt(urlSearchParams.get("ItemId")) : null
         } as AppContext
       },
       React.createElement<IJsonFormProps>(
@@ -42,9 +44,7 @@ export default class JsonFormWebPart extends BaseClientSideWebPart<IJsonFormWebP
         {
           Form: JSON.parse(this.properties.formJson),
           SaveForm: (updated: IForm) => this.properties.formJson = JSON.stringify({ ...JSON.parse(this.properties.formJson), ...updated }, null, 2),
-          Mode: this.displayMode,
-          ListId: this.properties.listId,
-          ServerRelativeUrl: urlSearchParams.has(FILLED_FORM_QUERY_KEY) ? urlSearchParams.get(FILLED_FORM_QUERY_KEY) : null,
+          Mode: this.displayMode
         }
       )
     );

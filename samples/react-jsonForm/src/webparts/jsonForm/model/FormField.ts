@@ -37,3 +37,8 @@ export interface IGroupField extends IField {
     Fields: (IField | IChoiceField | IGroupField | IConditionalField)[]
     Direction: GroupDirection;
 }
+
+export interface IForm {
+    Title: string;
+    Fields: (IField | IChoiceField | IGroupField | IConditionalField)[];
+}

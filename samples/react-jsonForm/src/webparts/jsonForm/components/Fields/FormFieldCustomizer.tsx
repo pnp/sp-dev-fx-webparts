@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../../../Models/FormField';
+import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../model/FormField';
 import { ActionButton, Checkbox, Dropdown, Label, MessageBar, MessageBarType, Position, PrimaryButton, SpinButton, Text, TextField, getTheme } from '@fluentui/react';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { FieldEditorDialog } from './FieldEditorDialog';

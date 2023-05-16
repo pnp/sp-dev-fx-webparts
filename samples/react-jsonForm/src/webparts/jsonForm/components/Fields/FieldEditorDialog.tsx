@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../../../Models/FormField';
+import { FieldType, GroupDirection, IChoiceField, IConditionalField, IField, IGroupField } from '../../model/FormField';
 import { ActionButton, ChoiceGroup, DefaultButton, Dialog, DialogFooter, Dropdown, Label, Position, PrimaryButton, SpinButton, Stack, TextField } from '@fluentui/react';
 import useObject from '../../../../Hooks/UseObject';
 import { NewField } from '../../../../Util/Util';
