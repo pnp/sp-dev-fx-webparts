@@ -28,7 +28,19 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-webpart-report/assets/YOUR-IMAGE-NAME-HERE",
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/Animated.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 200,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/chartView.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 300,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/listView.png",
                 "alt": "Web Part Preview"
             }
         ],
