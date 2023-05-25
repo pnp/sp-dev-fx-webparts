@@ -12,7 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@fluentui/react": "^8.7.0",
+    "@fluentui/react": "^7.204.0",
     "@microsoft/sp-adaptive-card-extension-base": "1.16.1",
     "@microsoft/sp-core-library": "1.16.1",
     "@microsoft/sp-lodash-subset": "1.16.1",

@@ -17,13 +17,7 @@ abstract class BaseTemplateService {
     }
 
     private async LoadHandlebarsHelpers() {
-        let component = await import(
-            /* webpackChunkName: 'search-handlebars-helpers' */
-            'handlebars-helpers'
-        );
-        this._helper = component({
-            handlebars: Handlebars
-        });
+        this._helper = require('handlebars-helpers');       
     }
 
     /**

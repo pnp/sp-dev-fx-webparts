@@ -27,7 +27,7 @@
     "@types/handlebars": "4.0.39",
     "common-tags": "1.8.0",
     "handlebars": "4.0.12",
-    "handlebars-helpers": "0.8.4",
+    "handlebars-helpers": "^0.8.4",
     "moment": "2.22.2",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
