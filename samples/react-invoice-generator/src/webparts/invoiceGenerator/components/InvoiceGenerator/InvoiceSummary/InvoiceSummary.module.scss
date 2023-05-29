@@ -1,0 +1,25 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-left: 400px;
+}
+  
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-weight: bold;
+  color: #4d4d4d;
+}
+
+.value {
+  font-weight: normal;
+  color: #4d4d4d;
+}
