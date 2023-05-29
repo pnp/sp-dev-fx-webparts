@@ -1,5 +1,6 @@
 import { html } from               'common-tags';
 import * as Handlebars from        'handlebars';
+import * as HandlebarsHelpers from        'handlebars-helpers';
 
 import                             'core-js/modules/es7.array.includes.js';
 import                             'core-js/modules/es6.string.includes.js';
@@ -17,7 +18,9 @@ abstract class BaseTemplateService {
     }
 
     private async LoadHandlebarsHelpers() {
-        this._helper = require('handlebars-helpers');       
+        this._helper = HandlebarsHelpers({
+            handlebars: Handlebars
+        });
     }
 
     /**
