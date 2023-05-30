@@ -35,7 +35,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Authors
 
-Kinga Kazala (@kinga_kazala), ETHZ
+Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
 
 ## Version history
 
