@@ -39,15 +39,15 @@ status:wrong-repo:
 status:wrong-author:
   # Post a comment
   comment: |+
-    ## Wrong or missing author @mentions
+    ## Wrong or missing contributor @mentions
 
-    Thank you for your submission, but you appear to have forgotten to @mention the sample author(s).
+    Thank you for your submission, but you appear to have forgotten to @mention the sample contributor(s).
 
-    To help increase your chances of getting assistance from the original authors of the sample, you should make sure to @mention the actual authors (and not the repository maintainers).
+    To help increase your chances of getting assistance from the original contributors of the sample, you should make sure to @mention the actual contributors (and not the repository maintainers).
 
-    Please note that the sample authors will not get notified about this issue unless you update this issue accordingly.    
+    Please note that the sample contributors will not get notified about this issue unless you update this issue accordingly.    
 
-    You can find the author(s) of each sample in the sample's `README.md`, under **Solution**.
+    You can find the contributors of each sample in the sample's `README.md`, under the aptly-named **Contributors** section.
 
     We'll automatically close this issue in 7 days unless you update the issue.
 

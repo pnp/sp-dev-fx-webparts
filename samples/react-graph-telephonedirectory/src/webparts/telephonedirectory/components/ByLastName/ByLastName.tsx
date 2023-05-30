@@ -7,10 +7,9 @@ import * as strings from 'TelephonedirectoryWebPartStrings';
 import { Log } from "@microsoft/sp-core-library";
 import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { DetailsList, DetailsListLayoutMode, IColumn, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 const LOG_SOURCE = "ByFirstName";
 const stackTokens = { childrenGap: 50 };
-const iconProps = { iconName: 'Calendar' };
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
@@ -42,6 +41,7 @@ export class ByLastName extends React.Component<ByLastNameProps,ByLastNameState>
   }
 
   @autobind
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async getUsers(email:string) : Promise<any>{
    this.setState({loading:true},async()=>{
       await this.props.MSGraphServiceInstance
@@ -75,7 +75,7 @@ export class ByLastName extends React.Component<ByLastNameProps,ByLastNameState>
 
   public render(): React.ReactElement<ByLastNameProps> {
     return (
-    <div className={styles.telephonedirectory}> 
+    <div className={styles.telephonedirectory}>
       <div>
         <Stack horizontal tokens={stackTokens} styles={stackStyles}>
           <Stack {...columnProps}>
@@ -88,10 +88,9 @@ export class ByLastName extends React.Component<ByLastNameProps,ByLastNameState>
             />
           </Stack>
         </Stack>
-        <div>
-        </div>
+        <div/>
         <div id='detailedList'>
-            {this.state.userProperties.length !== 0 && 
+            {this.state.userProperties.length !== 0 &&
           <DetailsList
             items={this.state.userProperties}
             columns={this.props.columns}

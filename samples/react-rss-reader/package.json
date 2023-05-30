@@ -22,7 +22,7 @@
     "@microsoft/sp-webpart-base": "1.11.0",
     "@pnp/common": "1.2.6",
     "@pnp/logging": "1.2.6",
-    "@pnp/spfx-controls-react": "1.10.0",
+    "@pnp/spfx-controls-react": "^2.10.0",
     "@pnp/spfx-property-controls": "1.12.0",
     "@types/handlebars": "4.0.39",
     "common-tags": "1.8.0",

@@ -31,6 +31,11 @@ Search People from Organization Directory and show live persona card on hover.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -59,16 +64,12 @@ Properties to search | text | No | By default **FirstName,LastName,WorkEmail,Dep
 Properties to sent as clear text | text | No | By default if the search key has empty spaces, its replaced with **+** before sending it to the search query. The search properties mentioned here will be sent without the empty space replacemnt.
 Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set. 
 
-## Solution
+## Contributors
 
-The web part use PnPjs library, Office-ui-fabric-react components
-
-Solution|Author(s)
---------|---------
-Directory Web Part|João Mendes
-Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
-Directory Web Part| Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
-Directory Web Part| Abderahman Moujahid
+* [João Mendes](https://github.com/joaojmendes)
+* [Peter Paul Kirschner](https://github.com/petkir)
+* Sudharsan K
+* [Abderahman Moujahid](https://github.com/Abderahman88)
 
 ## Version history
 
@@ -139,4 +140,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-directory" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-directory" />

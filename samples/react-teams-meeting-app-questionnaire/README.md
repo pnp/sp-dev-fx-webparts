@@ -13,8 +13,8 @@ The Questionnaire meeting app displays the questions from attendees as pre-meeti
 
 Below NPM package(s) are used to develop this sample:
 
-1. @pnp/sp (https://pnp.github.io/pnpjs/sp/)
-2. moment (https://www.npmjs.com/package/moment)
+1. @pnp/sp (<https://pnp.github.io/pnpjs/sp/>)
+2. moment (<https://www.npmjs.com/package/moment>)
 
 ### Project setup and important files
 
@@ -46,9 +46,12 @@ spfx-react-teams-meeting-app-questionnaire
                     └── mystrings.d.ts
 ```
 
-
-
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
@@ -59,14 +62,13 @@ spfx-react-teams-meeting-app-questionnaire
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Applies to
 
 - [Microsoft Teams](https://aka.ms/microsoftteams)
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
@@ -95,7 +97,7 @@ MeetingID|MeetingID|Single line of text|N|
 
 ### SharePoint deployment
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 - Clone this repo
 - Navigate to the folder with current sample
@@ -118,14 +120,13 @@ MeetingID|MeetingID|Single line of text|N|
 
 ![Deploy to MS Teams](./assets/deploy-to-ms-teams.png)
 
+## Contributors
 
-## Solution
+- [Nanddeep Nachan](https://github.com/nanddeepn)
 
-Solution|Author(s)
---------|---------
-spfx-react-teams-meeting-app-questionnaire|[Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan))
-spfx-react-teams-meeting-app-questionnaire|[Ravi Kulkarni](https://www.linkedin.com/in/ravi-kulkarni-a5381723/) (SharePoint Consultant, [@RaviKul16a87](https://twitter.com/RaviKul16a87))
-spfx-react-teams-meeting-app-questionnaire|[Smita Nachan](https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan))
+- [Ravi Kulkarni](https://github.com/ravi16a87)
+
+* [Smita Nachan](https://github.com/SmitaNachan)
 
 ## Version history
 
@@ -165,7 +166,6 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-teams-meeting-app-questionnaire&template=question.yml&sample=react-teams-meeting-app-questionnaire&authors=@nanddeepn&title=react-teams-meeting-app-questionnaire%20-%20).
 
-
 ## References
 
 - [Getting started with SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
@@ -181,5 +181,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-meeting-app-questionnaire" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-meeting-app-questionnaire" />

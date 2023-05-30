@@ -27,21 +27,21 @@ The `Site Information` web part can be configured with the following properties:
 | Site Contact | siteContact | IPropertyFieldGroupOrPerson[] | no | A site contact based on a people picker |
 | Site Organization | siteOrganization | IPickerTerms | no | The site's organization, based on a taxonomy termset |
 
-# Installing the web part
+## Installing the web part
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
 You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
 
-# Screenshots
+## Screenshots
 
 ![Site Information](https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-site-information.png)
 
-# Source Code
+## Source Code
 
 https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/siteInformation
 
-# Minimal Path to Awesome
+## Minimal Path to Awesome
 
 - Clone this repository
 - Move to Solution folder
@@ -49,11 +49,11 @@ https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/siteInfo
   - `npm install`
   - `gulp serve`
 
-# Version history
+## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|May 2018|Initial release
 1.1|June 2018|Link web part to proper term group and term set
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-information" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-information" />

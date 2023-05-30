@@ -11,6 +11,11 @@ In this sample, we are calling the API asking for Base64 images format, while th
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
@@ -35,11 +40,9 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 For being able to use the API, you first needs to register into the [DALL-E 2 website](https://labs.openai.com/auth/signup), and then, you must generate an [API Key](https://beta.openai.com/account/api-keys)
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-dall-e-image-generation | [Luis Mañez](https://github.com/luismanez) ([MS MVP](https://mvp.microsoft.com/en-us/PublicProfile/5002617), [ClearPeople](https://www.clearpeople.com), [@luismanez](https://twitter.com/luismanez)) |
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 
@@ -97,4 +100,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-dall-e-image-generation" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-dall-e-image-generation" />

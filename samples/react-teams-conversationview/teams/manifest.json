@@ -1,0 +1,46 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.8",
+    "packageName": "AllConversations",
+    "id": "e17df70b-eff1-405c-ab34-4640d61c0050",
+    "version": "1.0.0.1",
+    "developer": {
+        "name": "SPFx + Teams Dev",
+        "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+        "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+        "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+    },
+    "name": {
+        "short": "AllConversations"
+    },
+    "description": {
+        "short": "AllConversations",
+        "full": "AllConversations"
+    },
+    "icons": {
+        "outline": "73727f41-acf2-4a97-9b29-8d911e9fdf34_outline.png",
+        "color": "73727f41-acf2-4a97-9b29-8d911e9fdf34_color.png"
+    },
+    "accentColor": "#004578",
+    "configurableTabs": [{
+        "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e17df70b-eff1-405c-ab34-4640d61c0050%26forceLocale={locale}",
+        "canUpdateConfiguration": true,
+        "scopes": [
+            "team"
+        ]
+    }],
+
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}

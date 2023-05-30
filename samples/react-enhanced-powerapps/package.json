@@ -43,7 +43,7 @@
         "gulp": "~4.0.2",
         "gulp-sequence": "1.0.0",
         "gulp-stylelint": "^13.0.0",
-        "stylelint": "^13.6.1",
+        "stylelint": "^15.6.0",
         "stylelint-config-css-modules": "^2.2.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",

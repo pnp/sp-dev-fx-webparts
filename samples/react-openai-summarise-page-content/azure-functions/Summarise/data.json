@@ -1,0 +1,14 @@
+{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+        {
+            "role": "user",
+            "content": "1 short sentence summary in English, French and Spanish of this: {{content}}. Output format: 'English: 'xxx' \n French: 'xxx' \n Spanish: 'xxx'"
+        }
+    ],
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "top_p": 1.0,
+    "frequency_penalty": 0.0,
+    "presence_penalty": 0.0
+}

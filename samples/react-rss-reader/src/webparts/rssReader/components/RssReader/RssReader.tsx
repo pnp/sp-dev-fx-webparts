@@ -24,6 +24,8 @@ import {
   IRssReaderRequest,
   FeedLayoutOption } from                                  '../../../../models';
 
+import { IReadonlyTheme } from                             '@microsoft/sp-component-base';
+
 export default class RssReader extends React.Component<IRssReaderProps, IRssReaderState> {
 
   private viewAllLinkLabel: string = strings.DefaultFeedViewAllLinkLabel;
@@ -51,18 +53,17 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
   }
 
   public render(): React.ReactElement<IRssReaderProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
     return (
-      <div className={ styles.rssReader }>
+      <div className={ styles.rssReader } style={{backgroundColor: semanticColors.bodyBackground}}>
         <div className={styles.rssReaderHeader}>
           <WebPartTitle displayMode={this.props.displayMode}
             title={this.props.title}
-            updateProperty={this.props.updateProperty} />
-
-          {this.state.rssFeedReady && this.state.rssFeed && this.props.feedViewAllLink && this.props.feedViewAllLink.length > 0 && (
-            <div className={styles.rssReaderListViewAll}>
-              <a href={this.props.feedViewAllLink}>{this.viewAllLinkLabel}</a>
-            </div>
-          )}
+            updateProperty={this.props.updateProperty}
+            themeVariant={this.props.themeVariant} 
+            moreLink={this.state.rssFeedReady && this.state.rssFeed && this.props.feedViewAllLink && this.props.feedViewAllLink.length > 0 && (
+              <Link style={{color: semanticColors.link}} href={this.props.feedViewAllLink}>{this.viewAllLinkLabel}</Link>
+            )}/>
         </div>
 
         {!this.props.feedUrl || this.props.feedUrl.length < 1 ? (
@@ -97,7 +98,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
                         className={styles.rssReaderList + (this.props.backgroundColor ? " " + styles.rssReaderListPadding : "")}
                         items={this.state.rssFeed.query.results.rss}
                         onRenderCell={this._onRenderListRow}
-                        style={this.props.backgroundColor ? {backgroundColor: this.props.backgroundColor} : {}}
+                        style={this.props.useThemeBackgroundColor ? {backgroundColor: semanticColors.bodyBackground} : this.props.backgroundColor ? {backgroundColor: this.props.backgroundColor} : {}}
                       />
                     )}
 
@@ -154,7 +155,10 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
       this.props.titleLinkTarget != nextProps.titleLinkTarget ||
       this.props.dateFormat != nextProps.dateFormat ||
       this.props.backgroundColor != nextProps.backgroundColor ||
-      this.props.fontColor != nextProps.fontColor
+      this.props.useThemeBackgroundColor != nextProps.useThemeBackgroundColor ||
+      this.props.useThemeFontColor != nextProps.useThemeFontColor ||
+      this.props.fontColor != nextProps.fontColor ||
+      this.props.themeVariant != nextProps.themeVariant
       ) {
       this.loadRssFeed();
     }
@@ -190,6 +194,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
     let div = document.createElement("div");
     div.innerHTML = displayDesc;
     displayDesc = (div.textContent || div.innerText || "").replace(/\&nbsp;/ig, "").trim();
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     return (
       <div className={styles.rssReaderListItem} data-is-focusable={true}>
@@ -197,7 +202,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
           <Link
             href={thisItem.link}
             target={this.props.titleLinkTarget ? this.props.titleLinkTarget : "_self"}
-            style={this.props.fontColor ? {color: this.props.fontColor} : {}}
+            style={this.props.useThemeFontColor ? {color: semanticColors.link} : this.props.fontColor ? {color: this.props.fontColor} : {}}
           >
             {this.decodeHtml(thisItem.title)}
           </Link>
@@ -205,7 +210,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
         </div>
 
         {this.props.showPubDate && (
-          <div className={styles.itemDate}>
+          <div className={styles.itemDate} style={{color: semanticColors.bodySubtext}}>
             {this.props.dateFormat && this.props.dateFormat.length > 0 ? (
               <Moment
                 format={this.props.dateFormat}
@@ -218,7 +223,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
         )}
 
         {this.props.showDesc && (
-          <div className={styles.itemContent}>
+          <div className={styles.itemContent} style={{color: semanticColors.bodyText}}>
             {this.props.descCharacterLimit && (displayDesc.length > this.props.descCharacterLimit) ? (
               <div>
                 {displayDesc.substring(0, this.props.descCharacterLimit) + '...'}

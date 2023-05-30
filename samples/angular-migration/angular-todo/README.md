@@ -6,11 +6,9 @@ Sample Angular application for managing tasks stored in a SharePoint list.
 
 ![Angular todo application](../assets/angular-todo-preview.png)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular-todo|[Waldek Mastykarz](https://github.com/waldekmastykarz)  (MVP, Rencore, @waldekm)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)  (MVP, Rencore, @waldekm)
 
 ## Version history
 
@@ -61,4 +59,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-todo/angular)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-todo/angular)

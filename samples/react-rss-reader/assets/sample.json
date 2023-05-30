@@ -9,7 +9,7 @@
       "A RSS Reader original based on work completed by Olivier Carpentier\u0027s"
     ],
     "creationDateTime": "2020-11-22",
-    "updateDateTime": "2020-11-22",
+    "updateDateTime": "2023-04-21",
     "products": [
       "SharePoint"
     ],
@@ -40,23 +40,25 @@
     "authors": [
       {
         "gitHubAccount": "eoverfield",
-        "company": "PixelMill",
         "pictureUrl": "https://github.com/eoverfield.png",
         "name": "Eric Overfield",
         "twitter": "EricOverfield"
       },
       {
         "gitHubAccount": "AbhishekGarg",
-        "company": "Atos",
         "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400\u0026v=4",
         "name": "Abhishek Garg",
         "twitter": "abhig89"
       },
       {
         "gitHubAccount": "Abderahman88",
-        "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
         "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "djsladi",
+        "pictureUrl": "https://github.com/djsladi.png",
+        "name": "Kalle Mansikkaniemi"
       }
     ],
     "references": [

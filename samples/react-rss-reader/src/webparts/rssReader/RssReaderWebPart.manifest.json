@@ -4,6 +4,8 @@
   "alias": "RssReaderWebPart",
   "componentType": "WebPart",
 
+  "supportsThemeVariants": true,
+
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,

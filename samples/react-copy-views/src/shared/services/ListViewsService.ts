@@ -43,7 +43,7 @@ export class ListViewsService implements IListViewsService {
 
         const web = Web([this._sp.web, siteUrl]);
 
-        const views = await web.lists.getById(listId).views.select("Id", "Title", "ServerRelativeUrl", "ViewType2")();
+        const views = await web.lists.getById(listId).views.orderBy("Title", true).select("Id", "Title", "ServerRelativeUrl", "ViewType2")();
 
         return views.map((view: IViewInfo) => {
             const viewFileName = view.ServerRelativeUrl.substring(view.ServerRelativeUrl.lastIndexOf('/') + 1);

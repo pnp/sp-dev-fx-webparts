@@ -51,7 +51,7 @@ export class ListsService implements IListsService {
             "EntityTypeName ne 'FormServerTemplates'" // Exclude the Form Templates library
         ];
 
-        const lists = await web.lists.expand("RootFolder").select("Id", "Title", "BaseType", "RootFolder/ServerRelativeUrl").filter(filterConditions.join(" and "))();
+        const lists = await web.lists.expand("RootFolder").select("Id", "Title", "BaseType", "RootFolder/ServerRelativeUrl").orderBy("Title", true).filter(filterConditions.join(" and "))();
 
         return lists
             .filter(l => l.BaseType === 1 || l.BaseType === 0)
@@ -105,8 +105,9 @@ export class ListsService implements IListsService {
             }
         });
 
+        // Sort on title to help list selection. Sorting on title is impossible serverside because Title is not sortable.
         return mappedResults.sort((a, b) => {
-            if (a.siteUrl < b.siteUrl) { return -1; } else if (a.siteUrl > b.siteUrl) { return 1; } else { return 0; }
+            if (a.title < b.title) { return -1; } else if (a.title > b.title) { return 1; } else { return 0; }
         });
     }
 

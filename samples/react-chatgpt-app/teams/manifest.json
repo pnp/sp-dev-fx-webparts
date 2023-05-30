@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.13",
+  "packageName": "ChatGPT",
+  "id": "63fc66c0-10be-43fc-a499-b4a7cc8c0cae",
+  "version": "1.0.0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "ChatGPT"
+  },
+  "description": {
+    "short": "ChatGPT",
+    "full": "ChatGPT"
+  },
+  "icons": {
+    "outline": "63fc66c0-10be-43fc-a499-b4a7cc8c0cae_outline.png",
+    "color": "63fc66c0-10be-43fc-a499-b4a7cc8c0cae_color.png"
+  },
+  "accentColor": "#004578",
+    "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=63fc66c0-10be-43fc-a499-b4a7cc8c0cae%26forceLocale={locale}",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+    "staticTabs": [
+    {
+      "entityId": "63fc66c0-10be-43fc-a499-b4a7cc8c0cae",
+      "name": "ChatGPT",
+      "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=63fc66c0-10be-43fc-a499-b4a7cc8c0cae%26forceLocale={locale}",
+      "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+      "scopes": ["personal"]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  },
+  "composeExtensions": [
+    {
+        "botId": "7b26d356-e7fd-4445-a5aa-b262aa718687",
+        "canUpdateConfiguration":true,
+        "commands": [
+            {
+                "id": "augOpenSPFxWebpart",
+                "type": "action",
+                "title": "OpenAI GPT-3",
+                "description": "OpenAI GPT-3",
+                "initialRun": false,
+                "fetchTask": false,
+                "context": [
+                    "message",
+                    "commandBox",
+                    "compose"
+                ],
+                "taskInfo": {
+                    "title": "OpenAI GPT-3",
+                    "height": "650",
+                    "width": "700",
+                    "url": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamstaskhostedapp.aspx%3Fteams%26personal%26componentId=63fc66c0-10be-43fc-a499-b4a7cc8c0cae%26forceLocale={locale}"
+                  }
+            }
+        ]
+    }
+]
+}

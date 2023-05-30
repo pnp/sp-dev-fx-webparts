@@ -11,6 +11,11 @@ Place this web part on top of your page in order to show the Feedback button.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.15.0](https://img.shields.io/badge/SPFx-1.15.0-green.svg)
 ![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Node.js v16 | v14 | v12 ](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
@@ -37,14 +42,12 @@ Place this web part on top of your page in order to show the Feedback button.
 - Add the app package to Site Collection App Catalog and install the App
 - Add the web part to a page
 
-## Solution
+## Contributors
 
-| Solution               | Author(s)                                                 |
-| ---------------------- | --------------------------------------------------------- |
-| react-feedback-sidebar | [Alessia De Martino](https://github.com/AlessiaDeMartino) |
-| react-feedback-sidebar | Andrea Bellini                                            |
-| react-feedback-sidebar | [Matteo Serpi](https://github.com/srpmtt)                 |
-| react-feedback-sidebar | [Michele Catena](https://github.com/10xMike)              |
+* [Alessia De Martino](https://github.com/AlessiaDeMartino)
+* Andrea Bellini
+* [Matteo Serpi](https://github.com/srpmtt)
+* [Michele Catena](https://github.com/10xMike)              |
 
 ## Help
 
@@ -66,4 +69,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-feedback-sidebar" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-feedback-sidebar" />

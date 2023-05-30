@@ -1,21 +1,3 @@
-## Compatibility
-
-This sample is designed to be used in the following enviroments:
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 5/1/2017 12:00:00 AM
----
 # SharePoint Themes 
 
 ## Summary
@@ -30,6 +12,11 @@ The Section Theme web part illustrates how to use theme variant variables to sty
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
@@ -47,11 +34,11 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-Solution|Author(s)
---------|---------
-react-themes | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com)[AJIXuMuK](https://github.com/AJIXuMuK))
-react-themes | Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
-react-themes | Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
+## Contributors
+
+* [Alex Terentiev](https://github.com/AJIXuMuK)
+* [Artur Kukharevich](https://github.com/Artur-WM)
+* [Don Kirkham](https://github.com/donkirkham)
 
 ## Version history
 
@@ -79,4 +66,4 @@ npm i -g gulp
 gulp
 ```
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-themes" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-themes" />

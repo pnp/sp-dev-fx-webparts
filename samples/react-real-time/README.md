@@ -60,11 +60,9 @@ Before starting, you'll need to install some prerequisites:
 - Create a site collection with the developer template.
 - Go to the ".\client" folder and install all dependencies listed in the package.json file by running the `npm install` cmd.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-real-time | [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
+* [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
 
 ## Version history
 
@@ -187,4 +185,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-real-time" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-real-time" />

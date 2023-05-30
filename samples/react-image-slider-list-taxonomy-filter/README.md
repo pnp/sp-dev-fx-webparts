@@ -1,6 +1,7 @@
 # Image Slider from Photo Gallery using Taxonomy Filter
 
 ## Summary
+
 This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. This web part showcase 3 important implementation.
 
 - How to add the Terms in the propertypage and pass the values to react component
@@ -12,7 +13,12 @@ This web part display the image in slider based on the filter of Taxonomy from P
 
 ## Compatibility
 
-This sample is designed to be used in the following enviroments:
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is designed to be used in the following environments:
 
 ![SPFx 1.6](https://img.shields.io/badge/SPFx-1.6.0-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
@@ -34,11 +40,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 - PhotoGalley list names "Photos" and Managed Metadata field attached to Site collection Terms
 - Upload few photos in the "Photos" library and tag it.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-ImageSlider-List-TaxonomyFilter | Sudhir Rawat 
+- [Sudhir Rawat](https://github.com/sudhir007rawat)
 
 ## Version history
 
@@ -72,4 +76,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-image-slider-list-taxonomy-filter" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-image-slider-list-taxonomy-filter" />
