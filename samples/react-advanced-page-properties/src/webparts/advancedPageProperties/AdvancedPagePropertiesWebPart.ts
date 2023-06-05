@@ -82,7 +82,8 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     _fields.forEach((field: any) => {
       if (!field.FromBaseType && !field.Hidden && field.SchemaXml.indexOf("ShowInListSettings=\"FALSE\"") === -1
-          && field.TypeAsString !== "Boolean" && field.TypeAsString !== "Note") {
+          //&& field.TypeAsString !== "Boolean" && field.TypeAsString !== "Note") {
+          && field.TypeAsString !== "Boolean") {
         const internalFieldName = field.InternalName == "LinkTitle" ? "Title" : field.InternalName;
         this._availableProperties.push({ key: internalFieldName, text: field.Title });
         Log.Write(field.TypeAsString);
