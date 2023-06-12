@@ -5,15 +5,15 @@
 SPFx Invoice Generator Webpart using PnP JS
 allows users to create invoices for different clients or customers. Users can add items to the invoice using add item button, and the application calculates the subtotal, tax, and total amount. The application also generates PDF versions of the invoices. To obtain customer names and addresses, the application retrieve data from a SharePoint list and present them in dropdown menus for use in the application. The user interface components are designed and implemented using the Fluent UI library. Additionally, the @react-pdf/renderer library is utilized to generate the PDF versions of the invoices. Compnay Logo, Company Name, Address and Tax rate can be updated using webpart properties.
 
-![Configure Invoice Generator](./src/webparts/assets/configureWebpart.PNG)
+![Configure Invoice Generator](./assets/configureWebpart.PNG)
 
-![Invoice Generator](./src/webparts/assets/invoice.PNG)
+![Invoice Generator](./assets/invoice.PNG)
 
 List needed to configure to make the app work
-![Invoice Generator List ](./src/webparts/assets/invoiceList.PNG)
+![Invoice Generator List ](./assets/invoiceList.PNG)
 
 PDF genreated using Downlaod Invoice PDF button
-![Invoice Generator PDF ](./src/webparts/assets/invoicePDF.PNG)
+![Invoice Generator PDF ](./assets/invoicePDF.PNG)
 
 
 ## Compatibility
