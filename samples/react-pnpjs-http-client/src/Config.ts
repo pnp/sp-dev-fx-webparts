@@ -27,7 +27,6 @@ export const getSP = (context?: WebPartContext): SPFI => {
       
     ).using(spSPFx(context)).using().using(PnPLogging(LogLevel.Warning));
     // );
-    // context.aadHttpClientFactory= new AdalClient("c87e47c6-5554-41a0-86b6-d92a11dfc8b9","fb6f17d5-3625-4013-8cd0-13d6ed4ba991","https://isbsharepointtest.sharepoint.com/sites/Test-Syntex-Document-Processor");
     // _SpHttpClient =context.spHttpClient;
     
   }
@@ -36,11 +35,7 @@ export const getSP = (context?: WebPartContext): SPFI => {
 
 export const getGraph = (context?: WebPartContext): GraphFI => {
   
-  // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
-  
-  // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
-  // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
-  // _sp = spfi().using(SPFx(context)).using(PnPLogging(LogLevel.Warning));
+
   if (context !== null) { 
   _graph = graphfi().using(graphSPFx(context)).using(DefaultHeaders());
   }

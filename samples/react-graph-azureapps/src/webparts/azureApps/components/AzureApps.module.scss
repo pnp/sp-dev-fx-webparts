@@ -1,0 +1,62 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.AzureApps {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.mainarea{
+  height: 200px;
+  width: 400px !important;
+}
+
+.scrollPane{
+  width: 400px;
+}
+
+.iconButtonStyles {
+  margin-left: 840px !important;
+  //padding: 20px 20px 0;
+  //@at-root: 750px !important;
+  color: black;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.documentCard{
+  width: 300px;
+  margin-top: 10px;
+}
+
+.refreshDialog{
+  height: 150px !important;
+}
+.documentCardTitle {
+  text-decoration: none;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color:inherit;
+    // color: "[theme:link, default:#03787c]";
+  color: #03787c;
+    //color: var(--link); 
+
+    &:hover {
+      text-decoration: underline;
+      color: #014446;//"[theme:linkHovered, default: #014446]";
+      //color: var(--linkHovered); 
+    }
+}

@@ -1,3 +1,4 @@
+
 # Pages Hierarchy
 
 ## Summary
@@ -35,8 +36,8 @@ This web part allows users to create a faux page hierarchy in their pages librar
 
 ## Contributors
 
-* [Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
-* [Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
+* [Bo George](https://github.com/bogeorge)
+* [Nick Brown](https://github.com/techienickb) 
 * [SlowRobot](https://github.com/SlowRobot)
 * [ruslan-s](https://github.com/ruslan-s)
 
@@ -49,6 +50,7 @@ Version|Date|Comments
 1.3|March 31, 2022|Added a Tree View
 1.4|July 29, 2022|Updated Tree View Functionality
 1.5|March 29, 2023|Added support for non-English SitePages library paths
+1.6|May 11, Uses treeFrom/expandTo web part properties
 
 ## Minimal path to awesome
 
