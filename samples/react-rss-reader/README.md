@@ -56,6 +56,7 @@ Version|Date|Comments
 1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
 1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
 1.0.3 | April 21, 2023 | Added theme awareness
+1.0.4 | May 25, 2023 | Fixed direct request issues
 
 ## Minimal Path to Awesome
 
@@ -63,7 +64,8 @@ Version|Date|Comments
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-### SPFx 
+### SPFx
+
 - In the command line, with a version of Node 10, i.e. 10.16.3, run:
   - `npm install`
   - `gulp serve`
@@ -82,9 +84,9 @@ Version|Date|Comments
 
 Setting | Description 
 -------|----
-Feed Url | The url of the RSS Feed for readers. Normally will url will return XML
-Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available.
-Feed Service Url | If using Feed2Json, the url of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
+Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XML
+Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
+Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
 Feed Service API Key | If using rss2json, an optional API key for paid services
 Max Count | The maximum results to return, default: 10
 Cache Results | Locally store results in browser local storage, default: no
@@ -92,14 +94,14 @@ Mins to Cache Results | If storing results in browser, number of minutes to stor
 Storage Key Prefix | An optional local storage key prefix to use when storing results
 Loading Message | An optional custom message to display while the RSS feed is being loaded
 Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no
-CORS Proxy Url | The url of a CORS proxy if allowed. {0} will be replaced with Feed Url, i.e. https://cors-anywhere.herokuapp.com/{0}
+CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. https://cors-anywhere.herokuapp.com/{0}
 Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no
 
 #### Styling Options
 
 |Setting | Description|
 |-------|----|
-|External Template Url | The url of an external handlebar template to use in place of the handlebar template editor for custom layouts|
+|External Template URL | The URL of an external handlebar template to use in place of the handlebar template editor for custom layouts|
 |Results Layout | The layout to use to display feed, Default (list) or Custom|
 |Template Editor | A handlebar editor for custom layouts|
 |View All Link | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none|
