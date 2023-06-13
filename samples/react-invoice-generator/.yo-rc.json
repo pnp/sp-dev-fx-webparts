@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "invoice-generator",
+    "libraryId": "05e5868d-2b90-44ba-82ea-0fcbd66b925a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "InvoiceGenerator",
+    "solutionShortDescription": "InvoiceGenerator description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
