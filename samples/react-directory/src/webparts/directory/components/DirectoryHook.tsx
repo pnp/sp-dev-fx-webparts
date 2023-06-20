@@ -48,7 +48,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
   const [pageSize, setPageSize] = useState<number>(props.pageSize ? props.pageSize : 10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const _onPageUpdate = async (pageno?: number) => {
+  const _onPageUpdate = async (pageno?: number):Promise<void> => {
     const currentPge = (pageno) ? pageno : currentPage;
     const startItem = ((currentPge - 1) * pageSize);
     const endItem = currentPge * pageSize;
@@ -80,7 +80,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
         );
       })
       : [];
-  const _loadAlphabets = () => {
+  const _loadAlphabets = ():void => {
     const alphabets: string[] = [];
     for (let i = 65; i < 91; i++) {
       alphabets.push(
@@ -90,12 +90,12 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     setaz(alphabets);
   };
 
-  const _alphabetChange = async (item?: PivotItem) => {
+  const _alphabetChange = async (item?: PivotItem):Promise<void> => {
     setstate({ ...state, searchText: "", indexSelectedKey: item.props.itemKey, isLoading: true });
     setalphaKey(item.props.itemKey);
     setCurrentPage(1);
   };
-  const _searchByAlphabets = async (initialSearch: boolean) => {
+  const _searchByAlphabets = async (initialSearch: boolean):Promise<void> => {
     setstate({ ...state, isLoading: true, searchText: '' });
     let users = null;
     if (initialSearch) {
@@ -121,7 +121,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     });
   };
 
-  const _searchUsers = async (searchText: string) => {
+  const _searchUsers = async (searchText: string):Promise<void> => {
     try {
       setstate({ ...state, searchText: searchText, isLoading: true });
       if (searchText.length > 0) {
@@ -134,27 +134,27 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
           if (tmpCTProps.length > 0) {
             searchProps.map((srchprop, index) => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const ctPresent: any[] = tmpCTProps.filter( (o) => { return o.toLowerCase() == srchprop.toLowerCase(); });
+              const ctPresent: any[] = tmpCTProps.filter( (o) => { return o.toLowerCase() === srchprop.toLowerCase(); });
               if (ctPresent.length > 0) {
-                if (index == searchProps.length - 1) {
+                if (index === searchProps.length - 1) {
                   qryText += `${srchprop}:${searchText}*`;
                 } else qryText += `${srchprop}:${searchText}* OR `;
               } else {
-                if (index == searchProps.length - 1) {
+                if (index === searchProps.length - 1) {
                   qryText += `${srchprop}:${finalSearchText}*`;
                 } else qryText += `${srchprop}:${finalSearchText}* OR `;
               }
             });
           } else {
             searchProps.map((srchprop, index) => {
-              if (index == searchProps.length - 1)
+              if (index === searchProps.length - 1)
                 qryText += `${srchprop}:${finalSearchText}*`;
               else qryText += `${srchprop}:${finalSearchText}* OR `;
             });
           }
         } else {
           searchProps.map((srchprop, index) => {
-            if (index == searchProps.length - 1)
+            if (index === searchProps.length - 1)
               qryText += `${srchprop}:${finalSearchText}*`;
             else qryText += `${srchprop}:${finalSearchText}* OR `;
           });
@@ -176,20 +176,21 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
         setalphaKey('0');
       } else {
         setstate({ ...state, searchText: '' });
-        _searchByAlphabets(true);
+        await _searchByAlphabets(true);
       }
     } catch (err) {
       setstate({ ...state, errorMessage: err.message, hasError: true });
     }
   };
+  const _debouncesearchUsers = debounce(500, _searchUsers);
 
   const _searchBoxChanged = (newvalue: string): void => {
     setCurrentPage(1);
     _debouncesearchUsers(newvalue);
   };
-  const _debouncesearchUsers = debounce(500, _searchUsers);
 
-  const _sortPeople = async (sortField: string) => {
+
+  const _sortPeople = async (sortField: string):Promise<void> => {
     let _users = [...state.users];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     _users = _users.sort((a: any, b: any) => {
@@ -227,15 +228,18 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
 
   useEffect(() => {
     setPageSize(props.pageSize);
-    if (state.users) _onPageUpdate();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    if (state.users) {  _onPageUpdate()}
   }, [state.users, props.pageSize]);
 
   useEffect(() => {
-    if (alphaKey.length > 0 && alphaKey != "0") _searchByAlphabets(false);
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    if (alphaKey.length > 0 && alphaKey !== "0") _searchByAlphabets(false);
   }, [alphaKey]);
 
   useEffect(() => {
     _loadAlphabets();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     _searchByAlphabets(true);
   }, [props]);
 
@@ -274,7 +278,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
             </div>
           ) : (
             <>
-              {!pagedItems || pagedItems.length == 0 ? (
+              {!pagedItems || pagedItems.length === 0 ? (
                 <div className={styles.noUsers}>
                   <Icon
                     iconName={"ProfileSearch"}
@@ -303,6 +307,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
                         options={orderOptions}
                         selectedKey={state.searchString}
                         onChange={(ev, value) => {
+                          // eslint-disable-next-line @typescript-eslint/no-floating-promises
                           _sortPeople(value.key.toString());
                         }}
                         styles={{ dropdown: { width: 200 } }}

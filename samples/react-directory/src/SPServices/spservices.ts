@@ -33,7 +33,7 @@ export class spservices implements ISPServices {
       });
       return users;
     } catch (error) {
-      Promise.reject(error);
+      throw new Error(error);
     }
   }
 
@@ -42,9 +42,9 @@ export class spservices implements ISPServices {
       const image = new Image();
       image.addEventListener("load", () => {
         const tempCanvas = document.createElement("canvas");
-        tempCanvas.width = image.width,
-          tempCanvas.height = image.height,
-          tempCanvas.getContext("2d").drawImage(image, 0, 0);
+        tempCanvas.width = image.width;
+        tempCanvas.height = image.height;
+        tempCanvas.getContext("2d").drawImage(image, 0, 0);
         let base64Str;
         try {
           base64Str = tempCanvas.toDataURL("image/png");
@@ -80,7 +80,7 @@ export class spservices implements ISPServices {
       if (users && users.PrimarySearchResults.length > 0) {
         for (let index = 0; index < users.PrimarySearchResults.length; index++) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          let user:any = users.PrimarySearchResults[index];
+          let user: any = users.PrimarySearchResults[index];
           if (user.PictureURL) {
             user = { ...user, PictureURL: `/_layouts/15/userphoto.aspx?size=M&accountname=${user.WorkEmail}` };
             users.PrimarySearchResults[index] = user;
@@ -89,7 +89,7 @@ export class spservices implements ISPServices {
       }
       return users;
     } catch (error) {
-      Promise.reject(error);
+      throw new Error (error);
     }
   }
 }

@@ -30,7 +30,7 @@ export class PersonaCard extends React.Component<
    *
    * @memberof PersonaCard
    */
-  public async componentDidMount() {
+  public async componentDidMount():Promise<void> {
     const sharedLibrary = await this._loadSPComponentById(
       LIVE_PERSONA_COMPONENT_ID
     );
@@ -48,7 +48,7 @@ export class PersonaCard extends React.Component<
    * @returns
    * @memberof PersonaCard
    */
-  private _LivePersonaCard() {
+  private _LivePersonaCard():JSX.Element {
     return React.createElement(
       this.state.livePersonaCard,
       {
@@ -128,8 +128,8 @@ export class PersonaCard extends React.Component<
       );
       return component;
     } catch (error) {
-      Promise.reject(error);
-      Log.error(EXP_SOURCE, error, this.props.context.serviceScope);
+      Log.error(EXP_SOURCE, error);
+      throw new Error(error);
     }
   }
 
