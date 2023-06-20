@@ -10,7 +10,7 @@ import {
   Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, Dropdown, IDropdownOption
 } from "office-ui-fabric-react";
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-//import { debounce } from "throttle-debounce";
+import { debounce } from "throttle-debounce";
 import { WebPartTitle } from "@pnp/spfx-controls-react";
 import { ISPServices } from "../../../SPServices/ISPServices";
 
@@ -185,9 +185,9 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
 
   const _searchBoxChanged = (newvalue: string): void => {
     setCurrentPage(1);
-    _searchUsers(newvalue);
+    _debouncesearchUsers(newvalue);
   };
-  //_searchUsers = debounce(500, _searchUsers);
+  const _debouncesearchUsers = debounce(500, _searchUsers);
 
   const _sortPeople = async (sortField: string) => {
     let _users = [...state.users];
@@ -211,10 +211,10 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
           break;
 
         default:
-          if ((a[sortField]||"").toUpperCase() < (a[sortField]||"").toUpperCase()) {
+          if ((a[sortField]||"").toUpperCase() < (b[sortField]||"").toUpperCase()) {
             return -1;
           }
-          if ((a[sortField]||"").toUpperCase() > (a[sortField]||"").toUpperCase()) {
+          if ((a[sortField]||"").toUpperCase() > (b[sortField]||"").toUpperCase()) {
             return 1;
           }
           return 0;
