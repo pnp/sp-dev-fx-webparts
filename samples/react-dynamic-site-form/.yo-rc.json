@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "16.15.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.3",
+    "libraryName": "react-dynamic-site-form",
+    "libraryId": "37fa8d3a-fb6e-461e-8041-5afe08636e91",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-dynamic-site-form",
+    "solutionShortDescription": "react-dynamic-site-form description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "FormCustomizer"
+  }
+}

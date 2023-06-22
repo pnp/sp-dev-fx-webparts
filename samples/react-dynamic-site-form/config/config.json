@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "new-site-form-form-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/newSiteForm/NewSiteFormFormCustomizer.js",
+          "manifest": "./src/extensions/newSiteForm/NewSiteFormFormCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "NewSiteFormFormCustomizerStrings": "lib/extensions/newSiteForm/loc/{locale}.js"
+  }
+}

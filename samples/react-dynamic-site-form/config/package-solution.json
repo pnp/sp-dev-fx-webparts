@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-dynamic-site-form-client-side-solution",
+    "id": "37fa8d3a-fb6e-461e-8041-5afe08636e91",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Martin Lingstuyl",
+      "websiteUrl": "https://www.blimped.nl",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form."
+      },
+      "longDescription": {
+        "default": "The Dynamic Site Form solution implements a Form Customizer with a SPFx Controls Dynamic Form to load the form. It has field overrides for URL and Group mailbox values to make the form look and act like the default SharePoint new site form."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-dynamic-site-form Feature",
+        "description": "The feature that activates elements of the react-dynamic-site-form solution.",
+        "id": "7e1ab9d3-d2ea-4fe1-855d-880d24cd3ea7",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-dynamic-site-form.sppkg"
+  }
+}

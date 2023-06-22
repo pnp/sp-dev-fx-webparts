@@ -1,0 +1,1 @@
+export const aliasPattern = /[^0-9a-zA-Z-_.']/g;

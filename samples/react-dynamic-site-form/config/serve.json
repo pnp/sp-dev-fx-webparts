@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://{tenantDomain}/_layouts/workbench.aspx",
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://{tenantDomain}/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 8,
+        "RootFolder": "/sites/mySite/Lists/MyList",
+        "properties": {
+          "emailDomain": "contoso.com",
+          "managedPath": "sites"
+        }
+      }
+    },
+    "newSiteForm_NewForm": {
+      "pageUrl": "https://{tenantDomain}/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 8,
+        "RootFolder": "/sites/mySite/Lists/MyList",
+        "properties": {
+          "emailDomain": "contoso.com",
+          "managedPath": "sites"
+        }
+      }
+    },
+    "blimped_newSiteForm_NewForm": {
+      "pageUrl": "https://blimped.sharepoint.com/sites/learning/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 8,
+        "RootFolder": "/sites/Learning/Lists/Site%20list",
+        "properties": {
+          "emailDomain": "blimped.nl",
+          "managedPath": "sites"
+        }
+      }
+    },
+    "blimped_newSiteForm_EditForm": {
+      "pageUrl": "https://blimped.sharepoint.com/sites/learning/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 6,
+        "RootFolder": "/sites/Learning/Lists/Site%20list",
+        "ID": 1,
+        "properties": {
+          "emailDomain": "blimped.nl",
+          "managedPath": "sites"
+        }
+      }
+    },
+    "newSiteForm_EditForm": {
+      "pageUrl": "https://{tenantDomain}/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 6,
+        "RootFolder": "/sites/mySite/Lists/MyList",
+        "ID": 1,
+        "properties": {
+          "emailDomain": "contoso.com",
+          "managedPath": "sites"
+        }
+      }
+    },
+    "newSiteForm_ViewForm": {
+      "pageUrl": "https://{tenantDomain}/_layouts/15/SPListForm.aspx",
+      "formCustomizer": {
+        "componentId": "d9792d4c-aeb8-498c-baf1-2b5c5c2e6bbd",
+        "PageType": 4,
+        "RootFolder": "/sites/mySite/Lists/MyList",
+        "ID": 1,
+        "properties": {
+          "emailDomain": "contoso.com",
+          "managedPath": "sites"
+        }
+      }
+    }
+  }
+}
