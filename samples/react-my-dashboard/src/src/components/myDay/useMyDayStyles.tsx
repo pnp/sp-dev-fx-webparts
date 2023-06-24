@@ -6,6 +6,7 @@ import {
 export const useMyDayStyles = makeStyles({
   myDayContainer: {
     width: "100%",
+    minWidth: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",
