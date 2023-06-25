@@ -15,7 +15,7 @@ export const useMgtAgendaStyles = makeStyles({
  /*   height: "calc(100vh - 320px)",    */
     justifyContent: "start",
 
-    
+
     "::-webkit-scrollbar-thumb": {
       ...shorthands.borderRadius("10px"),
       backgroundColor:  tokens.colorNeutralStroke1,
@@ -27,16 +27,18 @@ export const useMgtAgendaStyles = makeStyles({
     },
     "scrollbar-width": "thin",
     "@media only screen and (max-width: 1024px)": {
-      height: "600px",
+      width: "100%",
+      maxHeight: "600px !important",
+      height: "fit-content !important",
     },
-  
+
   },
   spinnerStyles: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",   
-  },  
+    height: "100%",
+  },
   agenda:{
     "--agenda-background-color": "transparent"
   }
