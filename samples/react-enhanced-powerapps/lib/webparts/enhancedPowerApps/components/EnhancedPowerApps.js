@@ -24,7 +24,7 @@ var EnhancedPowerApps = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     EnhancedPowerApps.prototype.render = function () {
-        var _a = this.props, dynamicProp = _a.dynamicProp, themeVariant = _a.themeVariant, themeValues = _a.themeValues, appWebLink = _a.appWebLink, useDynamicProp = _a.useDynamicProp, dynamicPropName = _a.dynamicPropName, locale = _a.locale, border = _a.border, height = _a.height;
+        var _a = this.props, dynamicProp = _a.dynamicProp, themeVariant = _a.themeVariant, themeValues = _a.themeValues, appWebLink = _a.appWebLink, useDynamicProp = _a.useDynamicProp, dynamicPropName = _a.dynamicPropName, locale = _a.locale, border = _a.border, isWebPartHiddenOnSmallDevices = _a.isWebPartHiddenOnSmallDevices, height = _a.height;
         // The only thing we need for this web part to be configured is an app link or app id
         var needConfiguration = !appWebLink;
         var semanticColors = themeVariant.semanticColors;
@@ -48,7 +48,7 @@ var EnhancedPowerApps = /** @class */ (function (_super) {
         }
         // Build the frame url
         var frameUrl = appUrl + "?source=SPClient-EnhancedPowerAppsWebPart&amp;locale=" + locale + "&amp;enableOnBehalfOf=true&amp;authMode=onbehalfof&amp;hideNavBar=true&amp;" + dynamicPropValue + themeParams + "&locale=" + locale;
-        return (React.createElement("div", { className: styles.enhancedPowerApps, style: needConfiguration ? { height: "315px" } : { height: height + "px" } },
+        return (React.createElement("div", { className: isWebPartHiddenOnSmallDevices ? styles.enhancedPowerApps && styles.hideOnMobileDevices : styles.enhancedPowerApps, style: needConfiguration ? { height: "315px" } : { height: height + "px" } },
             needConfiguration &&
                 React.createElement(Placeholder, { iconName: 'PowerApps', iconText: strings.PlaceholderIconText, description: strings.PlaceholderDescription, buttonLabel: strings.PlaceholderButtonLabel, onConfigure: this.props.onConfigure }),
             !needConfiguration &&
