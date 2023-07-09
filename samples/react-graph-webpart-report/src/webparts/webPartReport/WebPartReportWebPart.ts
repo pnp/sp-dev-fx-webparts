@@ -101,19 +101,24 @@ export default class WebPartReportWebPart extends BaseClientSideWebPart<IWebPart
         targetProperty: 'displayOption',
         properties: {
           options: [{
-            key: '1',
+            key: 'list',
             text: 'List',
-            checked: displayOption.toString() === "1" ? true : false
+            checked: displayOption === "list",
+            iconProps: {
+              officeFabricIconFontName: "List"
+            }
           }, {
-            key: '2',
+            key: 'chart',
             text: 'Chart',
-            checked: displayOption.toString() === "2" ? true : false
+            checked: displayOption === "chart",
+            iconProps: {
+              officeFabricIconFontName: "DonutChart"
+            }
           }]
         }
       }],
       onExecute: (actionName, newValue) =>{
         this.properties.displayOption = newValue;
-        console.log("test",displayOption.toString() === "1");
         this.render();
       }
     };

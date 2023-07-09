@@ -2,12 +2,12 @@ import * as React from 'react';
 import styles from './WebPartReport.module.scss';
 import { IWebPartReportProps } from './IWebPartReportProps';
 import { _getSiteWebParts } from '../../WebPartData';
-import { WebPart } from '../../types';
 import { ListView, IViewField } from "@pnp/spfx-controls-react/lib/ListView";
 import { IWebPartReportWebPartState } from './IWebPartReportWebPartState';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { ChartData } from 'chart.js';
 import { Spinner } from '@fluentui/react';
+import { Pagination } from "@pnp/spfx-controls-react/lib/Pagination";
 
 const _viewFields: IViewField[] = [
   {
@@ -48,7 +48,7 @@ const options: any = {
 };
 
 
-let siteWebParts: WebPart[];
+
 let webPartsCounts: number[] = [];
 let webPartsTitles: string[] = [];
 const aggregatedWebPartData = new Map<string, number>();
@@ -60,11 +60,12 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     this.state = {
       loading: true,
       webPartList: [],
-      aggregatedWebPartList: { titles: [], count: [] }
+      aggregatedWebPartList: { titles: [], count: [] },
+      page: 1
     };
   }
 
-  public async componentDidMount():Promise<void> {
+  public async componentDidMount(): Promise<void> {
     await this._setChartData();
   }
 
@@ -72,7 +73,7 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
 
     return new Promise<ChartData>((resolve, _reject) => {
 
-      let countWP:number[] = [];
+      let countWP: number[] = [];
       countWP = this.state.aggregatedWebPartList.count
       const data: ChartData =
       {
@@ -85,12 +86,11 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
   }
 
   public async _setChartData(): Promise<void> {
-
     webPartsCounts = [];
     webPartsTitles = [];
     aggregatedWebPartData.clear();
 
-    siteWebParts = await _getSiteWebParts(this.props.GraphService, this.props.siteId.toString());
+    const siteWebParts = await _getSiteWebParts(this.props.GraphService, this.props.siteId.toString());
     siteWebParts.forEach(e => {
       if (!aggregatedWebPartData.has(e.title)) {
         aggregatedWebPartData.set(e.title, 1);
@@ -116,6 +116,11 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     });
   }
 
+  private _getPage(selectedPage: number): void {
+    this.setState({
+      page: selectedPage
+    });
+  }
 
   public render(): React.ReactElement<IWebPartReportProps> {
     const {
@@ -126,22 +131,33 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     return (
       <section className={`${styles.webPartReport} ${hasTeamsContext ? styles.teams : ''}`}>
         <div className={this.state.loading ? styles.hiddenComponent : ''}>
-          <div className={displayOption.toString() === "2" ? styles.hiddenComponent : ''}>
-          <p className={styles.title}>Web parts list:</p>
+          <div className={displayOption === "chart" ? styles.hiddenComponent : ''}>
+            <p className={styles.title}>List of web parts:</p>
             <ListView
               viewFields={_viewFields}
-              items={siteWebParts}
+              items={this.state.webPartList.slice(this.state.page === 1 ? 0 : this.state.page * 10 - 10, this.state.page * 10)}
+              showFilter={true}
+              filterPlaceHolder="Search..."
+            />
+            <Pagination
+              currentPage={1}
+              totalPages={Math.floor(this.state.webPartList.length / 10) + 1}
+              onChange={(page) => this._getPage(page)}
+              limiter={3} // Optional - default value 3
+              hideFirstPageJump // Optional
+              hideLastPageJump // Optional
+              limiterIcon={"Emoji12"} // Optional
             />
           </div>
           <ChartControl
             type={ChartType.Doughnut}
             datapromise={this.loadingData()}
             options={options}
-            className={displayOption.toString() === "1" ? styles.hiddenComponent : ''}
+            className={displayOption === "list" ? styles.hiddenComponent : ''}
           />
         </div>
         <div className={!this.state.loading ? styles.hiddenComponent : ''}>
-        <Spinner label="Loading web parts..." />
+          <Spinner label="Loading web parts..." />
         </div>
       </section>
     );
