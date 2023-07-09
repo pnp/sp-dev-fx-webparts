@@ -1,62 +1,50 @@
 import { MSGraphClientV3 } from "@microsoft/sp-http";
-import { SitePage } from "./types";
-
+import { GraphSitePage, GraphSitePageCollection, GraphWebPartCollection } from "./types";
+import { BaseComponentContext } from "@microsoft/sp-component-base";
 
 export interface IGraphService {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  GetWebParts(client: MSGraphClientV3, siteId: string, pageId: string): Promise<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  GetSitePages(client: MSGraphClientV3, siteId: string): Promise<any>;
+  GetWebParts(siteId: string, pageId: string): Promise<GraphWebPartCollection>;
+  GetSitePages(siteId: string): Promise<GraphSitePage[]>;
 }
 
+export class GraphService implements IGraphService {
+  private MSGraphClient: MSGraphClientV3;
+  private Context: BaseComponentContext;
 
-
-class GraphService implements IGraphService {
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public async GetWebParts(client: MSGraphClientV3, siteId: string, pageId: string): Promise<any> {
-    try{
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const rawWebParts: any = await this.GET(client, "sites/" + siteId + "/pages/" + pageId + "/webparts","","");
-      return rawWebParts;
-    } catch (error){
-      return null;
-    }
-    
-    
+  constructor(Context: BaseComponentContext) {
+    this.Context = Context;
   }
 
-  public async GetSitePages(client: MSGraphClientV3, siteId: string): Promise<SitePage[]> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const rawPages: any = await this.GET(client, "sites/" + siteId + "/pages", "", "id,title");
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return rawPages.value.flatMap((rawPage: any) => (
-      [
+  private async Get_Client(): Promise<MSGraphClientV3> {
+    if (this.MSGraphClient === undefined)
+      this.MSGraphClient = await this.Context.msGraphClientFactory.getClient("3");
+    return this.MSGraphClient;
+  }
+
+  public async GetWebParts(siteId: string, pageId: string): Promise<GraphWebPartCollection> {
+    try {
+      const client = await this.Get_Client();
+      const rawWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/" + pageId + "/webparts").version('beta').get();
+      return rawWebParts;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  public async GetSitePages(siteId: string): Promise<GraphSitePage[]> {
+
+    const pages: GraphSitePage[] = [];
+    const client = await this.Get_Client();
+    const rawPages: GraphSitePageCollection = await client.api("sites/" + siteId + "/pages").select("id,title").version('beta').get();
+    rawPages.value.forEach(rawPage => {
+      pages.push(
         {
           id: rawPage.id,
           title: rawPage.title
         }
-      ]
-    ));
-  }
-
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private GET(client: MSGraphClientV3, api: string, filter?: string, select?: string, top?: number, responseType?: any): Promise<any> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return new Promise<any>((resolve, reject) => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      client.api(api).version("beta").select(select).filter(filter).responseType(responseType)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .get((error: any, response: any) => {
-          if (error) {
-            reject(error);
-            return;
-          }
-          resolve(response);
-        });
+      )
     });
+    return pages;
   }
 }
-export const GraphServiceInstance = new GraphService();
 

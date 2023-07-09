@@ -90,7 +90,7 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     webPartsTitles = [];
     aggregatedWebPartData.clear();
 
-    siteWebParts = await _getSiteWebParts(this.props.graphClient, this.props.siteId.toString());
+    siteWebParts = await _getSiteWebParts(this.props.GraphService, this.props.siteId.toString());
     siteWebParts.forEach(e => {
       if (!aggregatedWebPartData.has(e.title)) {
         aggregatedWebPartData.set(e.title, 1);
