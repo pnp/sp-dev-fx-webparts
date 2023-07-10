@@ -7,7 +7,7 @@ export async function _getSiteWebParts(service: IGraphService, siteId: string): 
     try {
         const siteWebParts: WebPart[] = [];
         const sitePages: SitePage[] = await service.GetSitePages(siteId);
-        for (let i: number = 0; i < sitePages.length - 1; i++) {
+        for (let i: number = 0; i <= sitePages.length - 1; i++) {
             const graphWebParts: GraphWebPartCollection | null = await service.GetWebParts(siteId, sitePages[i].id);
             if (graphWebParts !== null) {
                 graphWebParts.value.forEach(siteWebPart => {
