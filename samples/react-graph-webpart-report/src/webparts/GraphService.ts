@@ -24,23 +24,22 @@ export class GraphService implements IGraphService {
   public async GetWebParts(siteId: string, pageId: string): Promise<GraphWebPartCollection> {
     try {
       const client = await this.Get_Client();
-      const rawWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/" + pageId + "/webparts").version('beta').get();
-      return rawWebParts;
+      const retrievedWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/" + pageId + "/webparts").version('beta').get();
+      return retrievedWebParts;
     } catch (error) {
       return null;
     }
   }
 
   public async GetSitePages(siteId: string): Promise<GraphSitePage[]> {
-
     const pages: GraphSitePage[] = [];
     const client = await this.Get_Client();
-    const rawPages: GraphSitePageCollection = await client.api("sites/" + siteId + "/pages").select("id,title").version('beta').get();
-    rawPages.value.forEach(rawPage => {
+    const retrievedPages: GraphSitePageCollection = await client.api("sites/" + siteId + "/pages").select("id,title").version('beta').get();
+    retrievedPages.value.forEach(page => {
       pages.push(
         {
-          id: rawPage.id,
-          title: rawPage.title
+          id: page.id,
+          title: page.title
         }
       )
     });

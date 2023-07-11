@@ -49,9 +49,6 @@ const options: any = {
 
 
 
-let webPartsCounts: number[] = [];
-let webPartsTitles: string[] = [];
-const aggregatedWebPartData = new Map<string, number>();
 
 export default class WebPartReport extends React.Component<IWebPartReportProps, IWebPartReportWebPartState> {
 
@@ -60,57 +57,56 @@ export default class WebPartReport extends React.Component<IWebPartReportProps, 
     this.state = {
       loading: true,
       webPartList: [],
-      aggregatedWebPartList: { titles: [], count: [] },
+      chartWebPartList: { WPTitles: [], WPCount: [] },
       page: 1
     };
   }
 
   public async componentDidMount(): Promise<void> {
-    await this._setChartData();
+    await this._getWebParts();
   }
 
   private loadingData(): Promise<ChartData> {
-
     return new Promise<ChartData>((resolve, _reject) => {
-
-      let countWP: number[] = [];
-      countWP = this.state.aggregatedWebPartList.count
       const data: ChartData =
       {
-        labels: this.state.aggregatedWebPartList.titles.length > 0 ? this.state.aggregatedWebPartList.titles : [],
-        datasets: [{ label: "WebParts", data: countWP.length > 0 ? countWP : [] }]
+        labels: this.state.chartWebPartList.WPTitles.length > 0 ? this.state.chartWebPartList.WPTitles : [],
+        datasets: [{
+          label: "WebParts",
+          data: this.state.chartWebPartList.WPCount.length > 0 ? this.state.chartWebPartList.WPCount : []
+        }]
       };
       resolve(data);
-
     });
   }
 
-  public async _setChartData(): Promise<void> {
-    webPartsCounts = [];
-    webPartsTitles = [];
-    aggregatedWebPartData.clear();
+  public async _getWebParts(): Promise<void> {
+
+    const webPartsCounts: number[] = [];
+    const webPartsTitles: string[] = [];
+    const webPartMap = new Map<string, number>();
+
+    webPartMap.clear();
 
     const siteWebParts = await _getSiteWebParts(this.props.GraphService, this.props.siteId.toString());
     siteWebParts.forEach(e => {
-      if (!aggregatedWebPartData.has(e.title)) {
-        aggregatedWebPartData.set(e.title, 1);
+      if (!webPartMap.has(e.title)) {
+        webPartMap.set(e.title, 1);
       } else {
-        aggregatedWebPartData.set(e.title, aggregatedWebPartData.get(e.title) + 1)
+        webPartMap.set(e.title, webPartMap.get(e.title) + 1)
       }
     });
-    aggregatedWebPartData.forEach(a => {
-      webPartsCounts.push(a);
-    });
 
-    aggregatedWebPartData.forEach((value, key) => {
+    webPartMap.forEach((value, key) => {
+      webPartsCounts.push(value);
       webPartsTitles.push(key);
     });
 
     this.setState({
       webPartList: siteWebParts,
-      aggregatedWebPartList: {
-        titles: webPartsTitles,
-        count: webPartsCounts
+      chartWebPartList: {
+        WPTitles: webPartsTitles,
+        WPCount: webPartsCounts
       },
       loading: false
     });

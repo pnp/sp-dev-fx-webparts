@@ -2,7 +2,7 @@ import { AggredatedWebParts, WebPart } from "../../types";
 
 export interface IWebPartReportWebPartState {
   webPartList: WebPart[];
-  aggregatedWebPartList: AggredatedWebParts;
+  chartWebPartList: AggredatedWebParts;
   loading: boolean;
   page: number;
 }

@@ -28,8 +28,8 @@ export type GraphWebPartData = {
 }
 
 export type AggredatedWebParts = {
-    titles: string[];
-    count: number[];
+    WPTitles: string[];
+    WPCount: number[];
 }
 
 export type GraphSitePageCollection = {
