@@ -36,8 +36,8 @@ Search People from Organization Directory and show live persona card on hover.
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.17.3](https://img.shields.io/badge/SPFx-1.17.3-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -82,6 +82,7 @@ Version|Date|Comments
 3.0.1|March 4 2021|Bugfix 'Sort People by'
 3.0.2|Oct 3 2022|Minor styling fixes and people container position  
 3.0.3|Oct 4 2022|Fix for LivePersonaCard
+3.0.4|Jun 20 2023|Upgrade to SPFx 1.17.3
 
 ## Minimal Path to Awesome
 

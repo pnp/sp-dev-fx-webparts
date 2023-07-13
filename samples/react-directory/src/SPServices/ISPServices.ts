@@ -1,8 +1,9 @@
-import { PeoplePickerEntity } from '@pnp/sp';
+import {  SearchResults } from '@pnp/sp/search';
+
 
 export interface ISPServices {
 
-    searchUsers(searchString: string, searchFirstName: boolean);
-    searchUsersNew(searchString: string, srchQry: string, isInitialSearch: boolean, pageNumber?: number);
+    searchUsers(searchString: string, searchFirstName: boolean): Promise<SearchResults>;
+    searchUsersNew(searchString: string, srchQry: string, isInitialSearch: boolean): Promise<SearchResults>;
 
 }

@@ -1,6 +1,6 @@
 export interface IUserProperties {
   Department: string;
-  MobilePhone?: String;
+  MobilePhone?: string;
   PictureUrl: string;
   Title: string;
   DisplayName: string;
