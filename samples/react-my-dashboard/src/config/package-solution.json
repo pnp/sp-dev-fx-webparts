@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "my-dash-board-sp-fx",
+    "id": "300aa27b-51c6-4b0d-8f82-b9743c1f9257",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "My Dashboard"
+      },
+      "longDescription": {
+        "default": "My Dashboard"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "my-dash-board-sp-fx Feature",
+        "description": "The feature that activates elements of the my-dash-board-sp-fx solution.",
+        "id": "d2d72346-382b-4d70-bfd6-e2ef988ac8fc",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/my-dash-board-spfx.sppkg"
+  }
+}

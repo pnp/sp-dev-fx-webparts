@@ -1,0 +1,63 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
+    "packageName": "com.microsoft.teams.extension",
+    "id": "${{TEAMS_APP_ID}}",
+    "version": "1.0.0",
+    "developer": {
+        "name": "SPFx + Teams Dev",
+        "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+        "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+        "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+    },
+    "name": {
+        "short": "MyDashBoardSPFx-${{TEAMSFX_ENV}}",
+        "full": "Full name for MyDashBoardSPFx"
+    },
+    "description": {
+        "short": "Short description of MyDashBoardSPFx",
+        "full": "Full description of MyDashBoardSPFx"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "accentColor": "#004578",
+    "staticTabs": [
+        {
+            "entityId": "90a4a655-2864-4cda-bc53-f3d46b02f75d",
+            "name": "DashBoard",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=90a4a655-2864-4cda-bc53-f3d46b02f75d%26forceLocale={locale}",
+            "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=90a4a655-2864-4cda-bc53-f3d46b02f75d%26forceLocale={locale}",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}
