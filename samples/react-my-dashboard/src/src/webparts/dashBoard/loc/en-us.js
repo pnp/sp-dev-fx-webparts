@@ -6,7 +6,7 @@ define([], function() {
     "eventOrganizer":"Organizer",
     "Agenda":"Agenda",
     "Todo":"Todo",
-    "CompanyAnnoucements":"Company Annoucements",
+    "CompanyAnnouncements":"Company Announcements",
     "Trending":"Trending",
     "NoNews":"No News to show",
     "Files":"Files",

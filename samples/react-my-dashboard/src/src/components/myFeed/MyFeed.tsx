@@ -32,7 +32,7 @@ export const MyFeed: React.FunctionComponent<IFeedProps> = (props: React.PropsWi
   const tabs: ITab[] = [
     {
       id: "tab1",
-      name: strings.CompanyAnnoucements,
+      name: strings.CompanyAnnouncements,
       icon: <NewsIcon />,
     }
     

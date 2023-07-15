@@ -5,7 +5,7 @@ declare interface IDashBoardWebPartStrings {
   eventOrganizer:string;
   Agenda:string;
   Todo:string;
-  CompanyAnnoucements:string;
+  CompanyAnnouncements:string;
   Trending:string;
   NoNews:string;
   Files:string;
