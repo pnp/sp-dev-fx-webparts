@@ -4,8 +4,6 @@
 
 An example of integrating SharePoint lists with TinyMCE editors can be found in this sample. The web part allows users to insert column data from associated SharePoint lists using a split button on the toolbar. An editor preview plugin for TinyMce was developed in order to be able to preview changes before they are saved.
 
-## Demo
-
 ![Sample web part showing SharePoint list integration with TinyMce editor](./assets/demo.gif)
 
 ## Compatibility
@@ -38,7 +36,7 @@ Access to a SharePoint online site with various tenant users granted access to v
 
 ## Contributors
 
-*  [Ejaz Hussain](https://github.com/ejazhussain) 
+- [Ejaz Hussain](https://github.com/ejazhussain)
 
 ## Version history
 
@@ -74,12 +72,11 @@ An example of integrating SharePoint lists with TinyMCE editors can be found in 
 - Number
 - Note
 - Single taxonomy
-- Multi taxonomy 
-- User 
+- Multi taxonomy
+- User
 - User Multi
 - Choices
 - Hyperlink
-
 
 ## Help
 
@@ -87,15 +84,14 @@ We do not support samples, but we this community is always willing to help, and 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-sp-site-user-groups&template=bug-report.yml&sample=react-sp-site-user-groups&authors=@danwatford&title=react-sp-site-user-groups%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-sp-tinymce&template=bug-report.yml&sample=react-sp-tinymce&authors=@ejazhussain&title=react-sp-tinymce%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-sp-site-user-groups&template=question.yml&sample=react-sp-site-user-groups&authors=@danwatford&title=react-sp-site-user-groups%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-sp-tinymce&template=question.yml&sample=react-sp-tinymce&authors=@ejazhussain&title=react-sp-tinymce%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-sp-site-user-groups&template=question.yml&sample=react-sp-site-user-groups&authors=@danwatford&title=react-sp-site-user-groups%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-sp-tinymce&template=question.yml&sample=react-sp-tinymce&authors=@ejazhussain&title=react-sp-tinymce%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/YOUR-SOLUTION-NAME" />
