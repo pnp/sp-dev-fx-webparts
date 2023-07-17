@@ -7047,7 +7047,7 @@
       "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
     ],
     "creationDateTime": "2020-07-26",
-    "updateDateTime": "2022-01-29",
+    "updateDateTime": "2023-06-27",
     "products": [
       "SharePoint"
     ],
@@ -7108,10 +7108,14 @@
     "authors": [
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
         "name": "Hugo Bernier",
         "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "babakdanyal",
+        "pictureUrl": "https://github.com/babakdanyal.png",
+        "name": "Babak Danyal"
       },
       {
         "gitHubAccount": "kunj-sangani",
