@@ -100,6 +100,7 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
             height: clientHeight,
             themeVariant: this._themeVariant,
             border: this.properties.border,
+            isWebPartHiddenOnSmallDevices: this.properties.isWebPartHiddenOnSmallDevices,
             themeValues: this.properties.themeValues
         });
         ReactDom.render(element, this.domElement);
@@ -138,6 +139,9 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
                             groupFields: [
                                 PropertyPaneToggle('border', {
                                     label: strings.BorderFieldLabel
+                                }),
+                                PropertyPaneToggle('isWebPartHiddenOnSmallDevices', {
+                                    label: strings.IsWebPartHiddenOnSmallDevicesFieldLabel
                                 }),
                                 PropertyPaneChoiceGroup('layout', {
                                     label: strings.LayoutFieldLabel,
@@ -191,7 +195,7 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
                                 }),
                                 this.properties.layout === "AspectRatio" && this.properties.aspectratio === "Custom" && PropertyPaneTextField('height', {
                                     label: strings.HeightFieldLabel,
-                                }),
+                                })
                             ]
                         },
                         {
