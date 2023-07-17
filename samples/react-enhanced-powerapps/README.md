@@ -38,6 +38,7 @@ You'll need at least one application in Power Apps that you wish to embed in Sha
 ## Contributors
 
 * [Hugo Bernier](https://github.com/hugoabernier)
+* [Babak Danyal](https://github.com/babakdanyal)
 
 ## Version history
 
@@ -46,6 +47,7 @@ Version|Date|Comments
 1.0|July 27, 2020|Initial release
 1.1|August 15, 2020|Added improved resize event handler
 1.2|January 20, 2022|Update to SPFx v1.13.1
+1.3|June 27, 2023|Added Hide web part on small devices
 
 ## Minimal Path to Awesome
 

@@ -27,6 +27,6 @@ define([], function() {
     PropertyPaneDescription: "Add a custom business app by pasting its web link or ID below.",
     BasicGroupName: "Basic Configuration",
     AppWebLinkFieldLabel: "App web link or ID",
-    IsWebPartHiddenOnSmallDevicesFieldLabel: "Hide webpart on mobile devices"
+    IsWebPartHiddenOnSmallDevicesFieldLabel: "Hide on mobile devices"
   }
 });
