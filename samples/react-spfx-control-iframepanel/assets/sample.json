@@ -1,6 +1,6 @@
 [
   {
-    "name": "react-spfx-control-iframepanel",
+    "name": "pnp-sp-dev-spfx-web-parts-react-spfx-control-iframepanel",
     "source": "pnp",
     "title": "IFramePanel sample",
     "shortDescription": "This sample shows how to use the IFramePanel control in a SharePoint Framework web part.",
