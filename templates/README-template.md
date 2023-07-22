@@ -47,7 +47,7 @@ You can add as many screen shots as you'd like to help users understand your web
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.17.2](https://img.shields.io/badge/SPFx-1.17.2-green.svg)
+![SPFx 1.17.4](https://img.shields.io/badge/SPFx-1.17.4-green.svg)
 ![Node.js v16.13+](https://img.shields.io/badge/Node.js-v16.13+-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
