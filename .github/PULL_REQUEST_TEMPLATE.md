@@ -4,18 +4,35 @@
 
 > To submit a pull request with multiple authors, make sure that at least one commit is a co-authored commit by adding a `Co-authored-by:` trailer to the commit's message. E.g.: `Co-authored-by: name <name@example.com>`
 
-|        Q        |                    A                    |
-| --------------- | --------------------------------------- |
-| Bug fix?        | no - yes?                               |
-| New feature?    | no - yes?                               |
-| New sample?     | no - yes?                               |
-| Related issues? | fixes #X, partially #Y, mentioned in #Z |
+> Put an `x` in all the items that apply ([x], no spaces), make notes next to any that haven't been addressed.
+
+- [ ] Bug fix?
+- [ ] New sample?
+- Related issues: fixes #X, partially #Y, mentioned in #Z
+- Node version used to build this sample: (Use `node -v` to get the version of Node you used to build this sample)
+- [ ] Needs API permissions?
+- [ ] Has other prequisites? (E.g. requires a list, document library, etc.)
+
 
 ## What's in this Pull Request?
 
 > Please describe the changes in this PR. Sample description or details around bugs which are being fixed.
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
+
+## Checklist
+
+> This checklist is mostly useful as a reminder of small things that can easily be forgotten – it is meant as a helpful tool rather than hoops to jump through.
+> 
+> Put an `x` in all the items that apply ([x], no spaces), make notes next to any that haven't been addressed.
+
+
+- [ ] My pull request affects only ONE sample.
+- [ ] My sample does not build with any warnings
+- [ ] I have updated the README file.
+- [ ] My README has at least one screenshot 
+- [ ] My README contains complete setup instructions
+
 
 ## Submitter Guidance (DELETE AFTER READING)
 > 
@@ -26,6 +43,7 @@
 > *Please target your PR to `main` branch.*
 >
 > *Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.*
+>
 > _(DELETE THIS SECTION AFTER READING)_
 
 
