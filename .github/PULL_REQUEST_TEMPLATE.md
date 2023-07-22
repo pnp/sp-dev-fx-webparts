@@ -30,7 +30,7 @@
 - [ ] My pull request affects only ONE sample.
 - [ ] My sample does not build with any warnings
 - [ ] I have updated the README file.
-- [ ] My README has at least one screenshot 
+- [ ] My README has at least one static high-resolution screenshot (i.e. not a GIF)
 - [ ] My README contains complete setup instructions
 
 
