@@ -4,14 +4,14 @@
 
 > To submit a pull request with multiple authors, make sure that at least one commit is a co-authored commit by adding a `Co-authored-by:` trailer to the commit's message. E.g.: `Co-authored-by: name <name@example.com>`
 
-> Put an `x` in all the items that apply ([x], no spaces), make notes next to any that haven't been addressed.
+> Put an `x` in all the items that apply (`[x]`, without spaces), make notes next to any that haven't been addressed.
 
 - [ ] Bug fix?
 - [ ] New sample?
-- Related issues: fixes #X, partially #Y, mentioned in #Z
-- Node version used to build this sample: (Use `node -v` to get the version of Node you used to build this sample)
+- [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
 - [ ] Needs API permissions?
 - [ ] Has other prequisites? (E.g. requires a list, document library, etc.)
+- Node version used: (Use `node -v` to get the version of Node you used to build this sample)
 
 
 ## What's in this Pull Request?
@@ -31,8 +31,7 @@
 - [ ] My sample does not build with any warnings
 - [ ] I have updated the README file.
 - [ ] My README has at least one static high-resolution screenshot (i.e. not a GIF)
-- [ ] My README contains complete setup instructions
-
+- [ ] My README contains complete setup instructions, including pre-requisites and permissions required
 
 ## Submitter Guidance (DELETE AFTER READING)
 > 
