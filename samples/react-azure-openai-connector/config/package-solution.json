@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-azure-openai-connector-client-side-solution",
+    "id": "8825f8b6-a323-4c34-abf5-29009d24a929",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-azure-openai-connector description"
+      },
+      "longDescription": {
+        "default": "react-azure-openai-connector description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-azure-openai-connector Feature",
+        "description": "The feature that activates elements of the react-azure-openai-connector solution.",
+        "id": "165527dc-1fba-467c-b616-4982900a993a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-azure-openai-connector.sppkg"
+  }
+}
