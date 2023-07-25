@@ -2,39 +2,60 @@ import * as React from "react";
 //import styles from './OurHotelsFinder.module.scss';
 import { IOurHotelsFinderProps } from "./IOurHotelsFinderProps";
 import MessagesList from "./MessagesList";
-import { IChatMessage } from "../models/IChatMessage";
 import { DirectionalHint, Icon, Stack, Text, TooltipHost } from "@fluentui/react";
 import UserMessage from "./UserMessage";
+import { IOurHotelsFinderState } from "./IOurHotelsFinderState";
+import CompletionsService from "../services/CompletionsService";
+import { ICompletionsResponse } from "../models/ICompletionsResponse";
 
-export default class OurHotelsFinder extends React.Component<
-  IOurHotelsFinderProps,
-  {}
-> {
+export default class OurHotelsFinder extends React.Component<IOurHotelsFinderProps, IOurHotelsFinderState> {
+
+  constructor(props: IOurHotelsFinderProps) {
+    super(props);
+
+    this.state = {
+      userQuery: '',
+      sessionMessages: []
+    };
+  }
+
+  private _onUserQueryChange = (newQuery: string): void => {
+    this.setState({
+      userQuery: newQuery
+    });
+  }
+
+  private _onQuerySent = async (): Promise<void> => {
+    console.log(this.state.userQuery);
+    console.log(this.state.sessionMessages);
+
+    const completionsService: CompletionsService = new CompletionsService(this.props.httpClient);
+
+    const response: ICompletionsResponse =
+      await completionsService.getCompletions(this.state.sessionMessages, this.state.userQuery);
+
+    console.log(response);
+
+    const responseMessages = response.choices[0].messages.filter(m => {
+      return m.role === 'assistant';
+    });
+
+    const message = responseMessages[0];
+
+    const tempMessages = this.state.sessionMessages;
+    tempMessages.push({
+      role: 'user', text: this.state.userQuery
+    });
+    tempMessages.push({
+      role: 'assistant', text: message.content
+    });
+
+    this.setState({
+      sessionMessages: tempMessages
+    });
+  }
+
   public render(): React.ReactElement<IOurHotelsFinderProps> {
-    // const {
-    //   hasTeamsContext,
-    // } = this.props;
-
-    const fakeMessages: IChatMessage[] = [
-      {
-        role: "user",
-        text: "Do you know if using Fluent UI components, you can implement like the usual Chat interface? like the one uses ChatGPT website, or WhatsApp?",
-      },
-      {
-        role: "assistant",
-        text: "Glad you asked. This is a common question that I have no idea how to do... bye!",
-      },
-      {
-        role: "user",
-        text: "Icon looks a bit small, can I make it a bit bigger?",
-      },
-      {
-        role: "assistant",
-        text: "In this example, I have increased the size of the icon to 24 pixels. You can adjust the fontSize value to increase or decrease the size of the icon as needed.",
-      },
-      { role: "user", text: "Another question" },
-      { role: "assistant", text: "In this example alksfh ks" },
-    ];
 
     return (
       <Stack tokens={{ childrenGap: 20 }} style={{ minHeight: "100%" }}>
@@ -69,10 +90,10 @@ export default class OurHotelsFinder extends React.Component<
             root: { minHeight: "200px", height: "100%", position: "relative" },
           }}
         >
-          <MessagesList messages={fakeMessages} />
+          <MessagesList messages={this.state.sessionMessages} />
         </Stack.Item>
         <Stack.Item>
-          <UserMessage />
+          <UserMessage onMessageChange={this._onUserQueryChange} sendQuery={this._onQuerySent} />
         </Stack.Item>
       </Stack>
     );
