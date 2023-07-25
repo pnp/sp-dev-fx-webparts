@@ -24,7 +24,7 @@ export class GraphService implements IGraphService {
   public async GetWebParts(siteId: string, pageId: string): Promise<GraphWebPartCollection> {
     try {
       const client = await this.Get_Client();
-      const retrievedWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/" + pageId + "/webparts").version('beta').get();
+      const retrievedWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/microsoft.graph.sitePage/" + pageId + "/webparts").version('beta').get();
       return retrievedWebParts;
     } catch (error) {
       return null;
@@ -34,7 +34,7 @@ export class GraphService implements IGraphService {
   public async GetSitePages(siteId: string): Promise<GraphSitePage[]> {
     const pages: GraphSitePage[] = [];
     const client = await this.Get_Client();
-    const retrievedPages: GraphSitePageCollection = await client.api("sites/" + siteId + "/pages").select("id,title").version('beta').get();
+    const retrievedPages: GraphSitePageCollection = await client.api("sites/" + siteId + "/pages/microsoft.graph.sitePage").select("id,title").version('beta').get();
     retrievedPages.value.forEach(page => {
       pages.push(
         {
