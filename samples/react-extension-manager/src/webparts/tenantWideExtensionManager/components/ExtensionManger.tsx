@@ -4,9 +4,8 @@ import { Icon, Panel, Spinner, SpinnerSize, Text, Toggle, Stack, Dropdown, TextF
 import { ExtensionLocation, LocationStrings } from '../../../Models/Location';
 import { Locations } from '../../../Models/Location';
 import { ListType, ListTypeStrings, ListTypes } from '../../../Models/ListType';
-import { CodeEditorEditable } from 'react-code-editor-editable'
-import 'highlight.js/styles/stackoverflow-light.css';
 import { ApplicationContext } from '../../../Contexsts/ApplicationContext';
+import CodeEditor from '@uiw/react-textarea-code-editor';
 
 export interface IExtensionManagerProps {
     ExtensionId: number;
@@ -33,10 +32,20 @@ export const ExtensionManager: React.FunctionComponent<IExtensionManagerProps> =
                         <Toggle offText='Disabled' onText='Enabled' checked={!extension.TenantWideExtensionDisabled} onChange={(_, val) => update({ TenantWideExtensionDisabled: !val })} />
 
                         <Dropdown label='Location/type' options={Locations.map(loc => ({ key: loc, text: LocationStrings[loc] }))} selectedKey={extension.TenantWideExtensionLocation} onChange={(_, val) => update({ TenantWideExtensionLocation: val.key as ExtensionLocation })} />
-                        <Dropdown label='List type' options={ListTypes.map(listType => ({ key: parseInt(listType+""), text: ListTypeStrings[listType] }))} selectedKey={extension.TenantWideExtensionListTemplate} onChange={(_, val) => update({ TenantWideExtensionListTemplate: val.key as ListType })} />
+                        <Dropdown label='List type' options={ListTypes.map(listType => ({ key: parseInt(listType + ""), text: ListTypeStrings[listType] }))} selectedKey={extension.TenantWideExtensionListTemplate} onChange={(_, val) => update({ TenantWideExtensionListTemplate: val.key as ListType })} />
                         <div>
                             <Label>Component properties</Label>
-                            <CodeEditorEditable width='100%' height='20em' language="json" value={extension.TenantWideExtensionComponentProperties} setValue={(value: string) => { update({ TenantWideExtensionComponentProperties: value }) }} />
+                            <CodeEditor
+                                language='json'
+                                value={extension.TenantWideExtensionComponentProperties}
+                                onChange={(evn: React.FormEvent<HTMLInputElement>) => update({ TenantWideExtensionComponentProperties: (evn.target as HTMLInputElement).value })}
+                                padding={15}
+                                style={{
+                                    fontSize: 12,
+                                    backgroundColor: "#f5f5f5",
+                                    fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+                                }}
+                            />
                         </div>
 
                         <TextField type='number' value={extension.TenantWideExtensionSequence + ""} label='Sequence' onChange={(_, val) => update({ TenantWideExtensionSequence: parseInt(val) })} />

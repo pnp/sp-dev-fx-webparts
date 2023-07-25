@@ -22,9 +22,9 @@
     "@microsoft/sp-webpart-base": "1.17.2",
     "@pnp/graph": "^3.16.0",
     "@pnp/sp": "^3.16.0",
+    "@uiw/react-textarea-code-editor": "^2.1.7",
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
-    "react-code-editor-editable": "^0.6.3",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"
   },
