@@ -10,7 +10,7 @@
 - [ ] New sample?
 - [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
 - [ ] Needs API permissions?
-- [ ] Has other prequisites? (E.g. requires a list, document library, etc.)
+- [ ] Has other prerequisites? (E.g. requires a list, document library, etc.)
 - Node version used: (Use `node -v` to get the version of Node you used to build this sample)
 
 
