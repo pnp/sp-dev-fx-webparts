@@ -10,9 +10,9 @@ export default class CompletionsRequestBuilder {
             dataSources: [{
                 type: "AzureCognitiveSearch",
                 parameters: {
-                  endpoint: "https://srch-atlas-cp-dev.search.windows.net",
+                  endpoint: Constants.AzureSearchEndpoint,
                   key: Constants.AzureSearchKey,
-                  indexName: "hotels-openai-test-index-lml",
+                  indexName: Constants.AzureSearchIndexName,
                   semanticConfiguration: "",
                   queryType: "simple",
                   fieldsMapping: {

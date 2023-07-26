@@ -1,8 +1,7 @@
 import * as React from "react";
-//import styles from './OurHotelsFinder.module.scss';
 import { IOurHotelsFinderProps } from "./IOurHotelsFinderProps";
 import MessagesList from "./MessagesList";
-import { DirectionalHint, Icon, Stack, Text, TooltipHost } from "@fluentui/react";
+import { Stack } from "@fluentui/react";
 import UserMessage from "./UserMessage";
 import { IOurHotelsFinderState } from "./IOurHotelsFinderState";
 import CompletionsService from "../services/CompletionsService";
@@ -59,31 +58,6 @@ export default class OurHotelsFinder extends React.Component<IOurHotelsFinderPro
 
     return (
       <Stack tokens={{ childrenGap: 20 }} style={{ minHeight: "100%" }}>
-        <Stack.Item>
-          <Stack
-            horizontal
-            tokens={{ childrenGap: 10 }}
-            verticalAlign="center"
-            styles={{
-              root: {
-                backgroundColor: "#D4AF37",
-                color: "white",
-                padding: "10px",
-                borderRadius: "5px",
-              },
-            }}
-          >
-            <Icon iconName="Hotel" styles={{ root: { fontSize: "20px" } }} />
-            <Text variant="large" styles={{ root: { fontWeight: "bold" } }}>
-              Our Hotels
-            </Text>
-            <TooltipHost
-                content="This webpart allows you to find Hotels in our Database"
-                directionalHint={DirectionalHint.bottomCenter}>
-                  <Icon iconName="Info" styles={{ root: { fontSize: '16px', marginLeft: '10px' } }}/>
-            </TooltipHost>
-          </Stack>
-        </Stack.Item>
         <Stack.Item
           grow={1}
           styles={{
