@@ -1,34 +1,32 @@
-@import '~@fluentui/react/dist/sass/References.scss';
-
 .enhancedPageProperties {
-  overflow: hidden;
-  padding: 1em;
-  color: "[theme:bodyText, default: #323130]";
-  color: var(--bodyText);
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 18px;
   }
-}
 
-.welcome {
-  text-align: center;
-}
+  .content {
+    display: grid;
+    gap: 20px;
 
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
-}
+    .item {
+      h3 {
+        font-size: 17px;
+        font-weight: 300;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
 
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+      span {
+        background-color: #fafafa;
+        padding: 8px 13px;
+        display: block;
 
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
     }
   }
 }
