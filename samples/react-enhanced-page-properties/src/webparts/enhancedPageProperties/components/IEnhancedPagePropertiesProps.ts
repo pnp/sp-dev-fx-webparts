@@ -1,7 +1,6 @@
+import { propertyItem } from "../EnhancedPagePropertiesWebPart";
+
 export interface IEnhancedPagePropertiesProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  title: string;
+  items: propertyItem[];
 }

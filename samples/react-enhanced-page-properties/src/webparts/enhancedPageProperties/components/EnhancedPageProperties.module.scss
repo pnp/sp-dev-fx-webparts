@@ -26,7 +26,17 @@
         &:hover {
           background-color: #f0f0f0;
         }
+
+        &.errorMessage {
+          background-color: #fce100;
+          font-style: italic;
+        }
+
+        &.errorMessage:hover {
+          background-color: #fce100;
+        }
       }
+
     }
   }
 }

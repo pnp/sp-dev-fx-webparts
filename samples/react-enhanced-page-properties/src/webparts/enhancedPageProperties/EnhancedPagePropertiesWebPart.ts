@@ -1,91 +1,91 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import "@pnp/sp/fields";
+
+import * as React from "react";
+import * as ReactDom from "react-dom";
+
+import { Version } from "@microsoft/sp-core-library";
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { SPFI, spfi, SPFx } from "@pnp/sp";
 
-import * as strings from 'EnhancedPagePropertiesWebPartStrings';
-import EnhancedPageProperties from './components/EnhancedPageProperties';
-import { IEnhancedPagePropertiesProps } from './components/IEnhancedPagePropertiesProps';
+import EnhancedPageProperties from "./components/EnhancedPageProperties";
+import { IEnhancedPagePropertiesProps } from "./components/IEnhancedPagePropertiesProps";
 
 export interface IEnhancedPagePropertiesWebPartProps {
-  description: string;
+  title: string;
+  fields: string;
+}
+
+export interface propertyItem {
+  label: string;
+  field: string;
+  value: string;
+  isAvailable: boolean;
 }
 
 export default class EnhancedPagePropertiesWebPart extends BaseClientSideWebPart<IEnhancedPagePropertiesWebPartProps> {
+  private readonly docLibTitle = 'Site Pages';
+  private _sp: SPFI;
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
-
-  public render(): void {
-    const element: React.ReactElement<IEnhancedPagePropertiesProps> = React.createElement(
-      EnhancedPageProperties,
-      {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
-      }
-    );
+  public async render(): Promise<void> {
+    const items: propertyItem[] = await this.getCurrentPageProperties();
+    const element: React.ReactElement<IEnhancedPagePropertiesProps> =
+      React.createElement(EnhancedPageProperties, {
+        title: this.properties.title,
+        items,
+      });
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    this._sp = spfi().using(SPFx(this.context));
   }
 
-
-
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
-        .then(context => {
-          let environmentMessage: string = '';
-          switch (context.app.host.name) {
-            case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-              break;
-            case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-              break;
-            case 'Teams': // running in Teams
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              throw new Error('Unknown host');
-          }
-
-          return environmentMessage;
-        });
-    }
-
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
+  protected convertSelectedFieldsString(): string[] {
+    return this.properties.fields.split(",").map((field) => field.trim());
   }
 
-  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
-    if (!currentTheme) {
-      return;
+  protected async getCurrentPageProperties(): Promise<propertyItem[]> {
+    // Get available fields in the Document Library
+    const availableFields = await this._sp.web.lists
+      .getByTitle(this.docLibTitle)
+      .fields();
+    // Filter to only non hidden fields
+    const filteredAvailableFields: Map<string, string> = new Map();
+    for (let i = 0; i < availableFields.length; i++) {
+      const field = availableFields[i];
+      if (field.Hidden) continue;
+      filteredAvailableFields.set(field.InternalName, field.Title);
     }
 
-    this._isDarkTheme = !!currentTheme.isInverted;
-    const {
-      semanticColors
-    } = currentTheme;
-
-    if (semanticColors) {
-      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-      this.domElement.style.setProperty('--link', semanticColors.link || null);
-      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+    const selectedFields = this.convertSelectedFieldsString();
+    const propertyItems: propertyItem[] = [];
+    const currentPageId = this.context.pageContext.listItem?.id || 0;
+    const currentPageProperties = await this._sp.web.lists
+      .getByTitle(this.docLibTitle)
+      .items.getById(currentPageId)
+      .select(
+        ...selectedFields.filter((field) => filteredAvailableFields.has(field))
+      )();
+    for (let i = 0; i < selectedFields.length; i++) {
+      const field = selectedFields[i];
+      const isAvailable = filteredAvailableFields.has(field);
+      propertyItems.push({
+        field,
+        isAvailable,
+        label: isAvailable ? (filteredAvailableFields.get(field) || '') : field,
+        value: currentPageProperties[field],
+      });
     }
-
+    return propertyItems;
   }
 
   protected onDispose(): void {
@@ -93,28 +93,30 @@ export default class EnhancedPagePropertiesWebPart extends BaseClientSideWebPart
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+                PropertyPaneTextField("title", {
+                  label: "Title",
+                }),
+                PropertyPaneTextField("fields", {
+                  label: "Fields",
+                  description: "separate by comma",
+                  multiline: true,
+                  rows: 5,
+                }),
+              ],
+            },
+          ],
+        },
+      ],
     };
   }
 }
