@@ -5,11 +5,13 @@
 This web part demonstrates displaying the list of flows and perform some basic actions on the flow.
 
 Flow Dashboard
-![](./assets/Dashboard.mp4)
+![](./assets/Dashboard.gif)
+
 Flow run history
-![](./assets/Flowrunhistory.mp4)
+![](./assets/Flowrunhistory.gif)
+
 Enabling stopped or suspended flows
-![](./assets/Enablingflows.mp4)
+![](./assets/Enablingflows.gif)
 
 
 ## Compatibility
