@@ -5,13 +5,12 @@
 This web part demonstrates displaying the list of flows and perform some basic actions on the flow.
 
 Flow Dashboard
-
+![](./assets/Dashboard.mp4)
 Flow run history
-
+![](./assets/Flowrunhistory.mp4)
 Enabling stopped or suspended flows
+![](./assets/Enablingflows.mp4)
 
-
-![](./assets/react-flow-dashboard.gif)
 
 ## Compatibility
 
@@ -37,6 +36,12 @@ This web part uses *Microsoft Graph* API and *Microsoft Flow Service* API. You n
   - `User.ReadBasic.All`
 - Microsoft Flow Service
   - `Flows.Read.All`
+
+If the problem still persists, 
+- go to `App Registrations`
+- find `SharePoint Online Client Extensibility Web Application Principal`
+- make sure you have added the above permission levels
+![](./assets/APIPermissions.png)
 
 
 ## Minimal Path to Awesome
