@@ -24,9 +24,21 @@
         ],
         "thumbnails": [
             {
-                "type": "image",
+                "type": "video",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/react-flow-dashboard.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Dashboard.mp4",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "video",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Flow run history.mp4",
+                "alt": "Flow run history"
+            },
+            {
+                "type": "video",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Enablingflows.mp4",
                 "alt": "Web Part Preview"
             }
         ],

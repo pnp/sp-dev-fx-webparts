@@ -4,6 +4,11 @@
 
 This web part demonstrates displaying the list of flows and perform some basic actions on the flow.
 
+Flow Dashboard
+
+Flow run history
+
+Enabling stopped or suspended flows
 
 
 ![](./assets/react-flow-dashboard.gif)
