@@ -31,7 +31,7 @@ export default class ReactFlowDashboard extends React.Component<IReactFlowDashbo
     const columns : IColumn[] = [
       {
         key: 'id',
-        name: 'Flow Display name',
+        name: 'Display name',
         fieldName: 'flowDisplayName',
         minWidth: 100,
         maxWidth: 125,
@@ -47,7 +47,7 @@ export default class ReactFlowDashboard extends React.Component<IReactFlowDashbo
       },
       {
         key: 'id',
-        name: 'Flow Author',
+        name: 'Author',
         fieldName: 'flowAuthor',
         minWidth: 100,
         maxWidth: 125,
@@ -63,7 +63,7 @@ export default class ReactFlowDashboard extends React.Component<IReactFlowDashbo
       },
       {
         key: 'id',
-        name: 'Flow Name',
+        name: 'Name',
         fieldName: 'flowName',
         minWidth: 50,
         maxWidth: 125,
