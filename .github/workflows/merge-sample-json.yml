@@ -1,6 +1,9 @@
 name: Merge sample metadata
 
 on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
   push:
     branches:
       # When someone push to `main` branch
@@ -28,9 +31,15 @@ jobs:
         with:
           ref: Docs
           path: Docs
+      - name: Download Extension samples
+        run: |
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3.raw" \
+          -o ./main/.metadata/extension-samples.json \
+          https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/extension-samples.json
       - name: Join samples  
         run: |
-          jq -s '[.[][]]' ./main/samples/**/assets/sample.json > ./Docs/docs/samples.json
+          jq -s '[.[][]]' ./main/samples/**/assets/sample.json  ./main/.metadata/extension-samples.json > ./Docs/docs/samples.json
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
