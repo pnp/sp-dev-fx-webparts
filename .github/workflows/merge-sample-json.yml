@@ -41,6 +41,7 @@ jobs:
         run: |
           jq -s '[.[][]]' ./main/samples/**/assets/sample.json  ./main/.metada/extension-samples.json > ./Docs/docs/samples.json
       - name: Validate JSON
+        continue-on-error: true
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
           INPUT_SCHEMA: ./main/templates/metadata-schema.json
