@@ -31,7 +31,13 @@
         "alt": "LOB Integration web part"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "pnp",
+        "pictureUrl": "https://github.com/pnp.png",
+        "name": "Microsoft 365 & Power Platform Community"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
