@@ -11271,7 +11271,13 @@
         "alt": "LOB Integration web part"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "pnp",
+        "pictureUrl": "https://github.com/pnp.png",
+        "name": "Microsoft 365 & Power Platform Community"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
@@ -24701,7 +24707,7 @@
     "authors": [
       {
         "gitHubAccount": "na",
-        "pictureUrl": "https://githob.com/Rodrigo Silva.png",
+        "pictureUrl": "https://github.com/RodrigoSilva.png",
         "name": "Rodrigo Silva"
       }
     ],
@@ -25834,7 +25840,13 @@
         "alt": "Get a direct link to a document or folder"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "JonasBjerke89",
+        "pictureUrl": "https://github.com/JonasBjerke89.png",
+        "name": "Jonas Bjerke Hansen"
+      }
+    ],
     "references": [
       {
         "name": "Overview of SharePoint Framework Extensions",
@@ -27225,6 +27237,16 @@
       {
         "key": "SPFX-VERSION",
         "value": "1.15.2"
+      }
+    ],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AriGunawan",
+        "pictureUrl": "https://github.com/AriGunawan.png",
+        "name": "Ari Gunawan"
       }
     ],
     "thumbnails": [
