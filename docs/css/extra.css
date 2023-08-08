@@ -55,13 +55,17 @@
   }
 }
 
-#noresults {
+#noresults, #loading {
     color:#797673;
     animation: fadeIn ease 3s;
   -webkit-animation: fadeIn ease 3s;
   -moz-animation: fadeIn ease 3s;
   -o-animation: fadeIn ease 3s;
   -ms-animation: fadeIn ease 3s;
+}
+
+#noresults {
+    display:none;
 }
 
 .md-footer-nav__link--prev, .md-footer__link--prev {
@@ -531,8 +535,10 @@ li.md-nav__item .md-nav__link:active, li.md-nav__item .md-nav__link:hover {
     line-height: 42px;
     font-size: 14px;
     color: #7D7A9E;
-    margin-left: 10px;
+    margin-left: 8px;
     position: relative;
+        padding-left: 8px;
+            padding-right: 8px;
 }
 
 .producttype-item:hover::after, .sampletype-item:hover::after {
@@ -558,25 +564,6 @@ li.md-nav__item .md-nav__link:active, li.md-nav__item .md-nav__link:hover {
     pointer-events: none;
     white-space: nowrap;
 }
-/* 
-.sampletype-item::after {
-    content: attr(title);
-    background-color: #0067B8;
-    color: #ffffff;
-    font-size: 14px;
-    border-radius: 2px;
-    box-shadow: rgb(0 0 0 / 13%) 0px 6.4px 14.4px 0px, rgb(0 0 0 / 11%) 0px 1.2px 3.6px 0px;
-    position: absolute;
-    bottom: 40px;
-    height: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 15px;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
-    white-space: nowrap;
-} */
 
 .producttype-item, .sampletype-item {
     background-size: 24px 24px;
@@ -938,25 +925,13 @@ TODO: Move styles
 .sample-details .producttype-item {
     border: 1px solid #EBEBF2;
     position: absolute;
-    left: 0;
+    left: 58px;
     top: -22px;
     font-size: 0;
 }
 
-.sample-details .producttype-item::after {
-    background-color: #0067B8;
-    color: #ffffff;
-    font-size: 14px;
-    border-radius: 5px;
-    box-shadow: 1px 14px 18px -15px #232e4c;
-    position: absolute;
-    bottom: 40px;
-    height: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 15px;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+div#filters {
+    margin-bottom: 16px;
 }
 
 .sample-details .producttype-item {

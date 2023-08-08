@@ -30,7 +30,7 @@ filteroptions:
       filter: '[data-framework=''Other'']'
 ---
 
-You can build client-side web parts using the frameworks you're already familiar with. Use the filters below to find samples by framework.
+You can build client-side [web parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts) and [extensions](https://learn.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions) using the frameworks you're already familiar with. Use the filters below to find samples by framework.
 
 You can also search by keyword, author or tags.
 

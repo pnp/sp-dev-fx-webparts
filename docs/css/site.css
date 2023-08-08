@@ -1,4 +1,3 @@
-
 .sampletype-item.angular {
     background-image: url(../img/frameworks/angularjs.svg);
 }
@@ -35,6 +34,30 @@
     background-image: url(../img/products/outlook.svg);
 }
 
+.sampletype-item.appcustomizer {
+    background-image: url(../img/types/application.svg);
+}
+
+.sampletype-item.commandset {
+    background-image: url(../img/types/toolbar.svg);
+}
+
+.sampletype-item.field {
+    background-image: url(../img/types/field.svg);
+}
+
+.sampletype-item.search {
+    background-image: url(../img/types/search.svg);
+}
+
+.sampletype-item.form {
+    background-image: url(../img/types/form.svg);
+}
+
+.sampletype-item.webpart {
+    background-image: url(../img/types/webpart.svg);
+}
+
 .sample-details .producttype-item.angular {
     background-image: url(../img/frameworks/angularjs.svg);
 }
@@ -61,4 +84,187 @@
 
 .sample-details .producttype-item.other {
     background-image: url(../img/frameworks/other.svg);
+}
+
+.sample-details .sample-item.webpart {
+    background-image: url(../img/types/webpart.svg);
+}
+
+.sample-details .sample-item.appcustomizer {
+    background-image: url(../img/types/application.svg);
+}
+
+.sample-details .sample-item.command {
+    background-image: url(../img/types/toolbar.svg);
+}
+
+.sample-details .sample-item.field {
+    background-image: url(../img/types/field.svg);
+}
+
+.sample-details .sample-item.search {
+    background-image: url(../img/types/search.svg);
+}
+
+.sample-details .sample-item.form {
+    background-image: url(../img/types/form.svg);
+}
+
+.sample-details .sample-item {
+    min-width: 42px;
+    height: 42px;
+    width: 42px;
+    background-color: #F7F7FC;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 42px;
+    font-size: 14px;
+    color: #7D7A9E;
+    margin-left: 8px;
+    position: relative;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.sample-details .sample-item:hover::after, .sample-details .producttype-item:hover::after {
+    opacity: 1;
+    bottom: 45px;
+}
+
+.sample-details .producttype-item::after, .sample-item::after {
+    content: attr(title);
+    background-color: #0067B8;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: rgb(0 0 0 / 13%) 0px 6.4px 14.4px 0px, rgb(0 0 0 / 11%) 0px 1.2px 3.6px 0px;
+    position: absolute;
+    bottom: 40px;
+    height: auto;
+    padding: 0 15px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 100;
+} 
+
+
+.sample-item::after {
+ left: 0px;
+}
+
+.sample-details .producttype-item::after {
+    left: 44px;
+}
+
+.sample-details .sample-item {
+    border: 1px solid #EBEBF2;
+    background-color: white;
+    position: absolute;
+    left: 8px;
+    top: -22px;
+    font-size: 0;
+    margin-left: 8px;
+        background-size: 24px 24px;
+            background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 42px;
+}
+
+.shimmer {
+    background: #f6f7f8;
+    /* fallback
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-repeat: no-repeat;
+  */
+    animation: shim infinite 1.2s linear;
+}
+
+@keyframes shim {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+#loading { 
+    display: flex;
+    gap: 12px;
+ }
+
+#loading .sample-preview {
+    background-color: #f6f7f8;;
+}
+
+#loading .sample-title {
+    width: 75%;
+    width: 200px;
+}
+
+#loading .sample-author{
+    width: 80px;
+    margin-bottom: 4px;
+}
+
+#loading .sample-description {
+    width:240px;
+}
+#loading .sample-date {
+    width: 145px;
+}
+
+.shimmer .author-image {
+    width: 32px;
+        height: 32px;
+        border-radius: 32px;
+}
+
+.shimmer_circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 42px;
+
+}
+
+
+.shimmer_circle_heading .shimmer_heading {
+    width: 90%;
+    margin-left: 3%
+}
+
+.shimmer_circle_heading {
+    display: flex;
+    align-items: center
+}
+
+.shimmer_preview {
+    width: 318px;
+    height: 250px;
+}
+.shimmer_heading {
+    width: 50%;
+    height: 20px;
+}
+
+.shimmer_small_para {
+    height: 24px;
+}
+
+.shimmer_large_para {
+    height: 48px;
+}
+
+.shimmer {
+    background: #e2e3e4;
+    background-image: linear-gradient(to right, #e2e3e4 0%, #f6f7f8 20%, #e2e3e4 40%, #e2e3e4 100%);
+    background-repeat: no-repeat
 }

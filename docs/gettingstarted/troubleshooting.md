@@ -31,7 +31,7 @@ For example, if you have SPFx 1.12.1 installed on your workstation, samples mark
 
 Conversely, if you plan on using a sample in a SharePoint 2019 environment, you'll want to make sure to use only samples that run on SPFx ![1.4.1](https://img.shields.io/badge/1.4.1-orange.svg) or lower; SharePoint 2016 Feature Pack 2 will only work with ![1.1.0](https://img.shields.io/badge/1.0.0-orange.svg).
 
-You can find more information about SPFx compatibility on the [Tools and libraries compatibility](https://docs.microsoft.com/sharepoint/dev/spfx/compatibility) page on the [SharePoint Framework documentation](https://docs.microsoft.com/sharepoint/dev/spfx).
+You can find more information about SPFx compatibility on the [Tools and libraries compatibility](https://learn.microsoft.com/sharepoint/dev/spfx/compatibility) page on the [SharePoint Framework documentation](https://learn.microsoft.com/sharepoint/dev/spfx).
 
 ### Minimal Path to Awesome
 

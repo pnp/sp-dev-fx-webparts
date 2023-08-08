@@ -1,16 +1,13 @@
-// external js: isotope.pkgd.js
+$(document).ready(function () {
 
-/***
- * This is a generic isotope filter for samples
- */
 
- $(document).ready(function () {
-  var filterText = $('#sample-listing').data("filter");
+  const filterText = $('#sample-listing').data("filter");
+  const txtSearch = $('#post-search-input');
   var qsRegex = new Array();
   var buttonFilter;
 
   // init Isotope
-  var $grid = $('#sample-listing').isotope({
+  const $grid = $('#sample-listing').isotope({
     itemSelector: '.sample-thumbnail',
     layoutMode: 'fitRows',
     sortBy: 'modified',
@@ -27,10 +24,7 @@
           searchResult = false;
         }
       })
-      var buttonResult = buttonFilter ? $(this).is(buttonFilter) : true;
-      if (!(searchResult && buttonResult)) {
-        console.log('FALSE!');
-      }
+      const buttonResult = buttonFilter ? $(this).is(buttonFilter) : true;
       return searchResult && buttonResult;
     },
     fitRows: {
@@ -42,10 +36,12 @@
   $grid.on('arrangeComplete', function (_event, filteredItems) {
     if (filteredItems.length > 0) {
       // hide message 
+      $("#loading").hide();
       $("#noresults").hide();
     } else {
       // show message; 
       $("#noresults").show();
+      $("#loading").hide();
     }
   });
 
@@ -84,8 +80,7 @@
   // Get the list of filters to use
   var filter = $('#filters .filter-choice');
 
-  // Get the search box
-  var search = $('#post-search-input');
+
 
   $('.filter-list').each(function (_i, buttonGroup) {
     var $buttonGroup = $(buttonGroup);
@@ -105,20 +100,32 @@
     });
   });
 
-  search.on('change keyup paste', debounce(function () {
-    var query = search.val().toString();
+  txtSearch.on('change keyup paste', debounce(function () {
+    var searchQuery = txtSearch.val().toString();
+    searchResult(searchQuery);
+  }, 200));
+
+  //retrieve the q querystring parameter; if it exists, use it to filter the samples
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('q')) {
+    const searchQuery = urlParams.get('q');
+    txtSearch.val(searchQuery);
+    searchResult(searchQuery);
+  }
+
+
+  function searchResult(query) {
     if (!query) {
       qsRegex = new Array();
     } else {
-      qsRegex = query.match(/\w+|"[^"]+"/gi); 
+      qsRegex = query.match(/\w+|"[^"]+"/gi);
       let i = qsRegex.length;
       while (i--) {
         qsRegex[i] = qsRegex[i].replace(/"/gi, "");
       }
     }
     $grid.isotope();
-  }, 200));
-
+  }
   // debounce so filtering doesn't happen every millisecond
   function debounce(fn, threshold) {
     var timeout;
@@ -134,15 +141,5 @@
     };
   }
 
-  // See if there are any passed parameters
-  try {
-    var urlParams = new URLSearchParams(window.location.search);
-    var query = urlParams.get('query');
-    if (query !== "") {
-      search.val(query).change();
-    }
 
-  } catch (error) {
-    // Be vewy vewy quiet
-  }
 });

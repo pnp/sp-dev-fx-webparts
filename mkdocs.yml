@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-site_name: SharePoint Framework Client-Side Web Part Samples
+site_name: SharePoint Framework (SPFx) Samples
 plugins:
     - macros
     - markdownextradata
@@ -11,9 +11,10 @@ plugins:
             # 'samples/framework': 'https://pnp.github.io/sp-dev-fx-webparts/'
 nav:
   - Samples:
-    - By Framework: index.md
+    - By framework: index.md
+    - By type: samples/type.md
     - By SPFx Version: samples/spfx.md
-    - By Compatibility: samples/compatibility.md
+    - By compatibility: samples/compatibility.md
   - Getting Started:
     - Using the Samples: gettingstarted/index.md
     - Troubleshooting: gettingstarted/troubleshooting.md

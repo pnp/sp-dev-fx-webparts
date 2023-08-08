@@ -1,5 +1,5 @@
 ---
-title: Samples by SPFx Version
+title: Samples by SPFx version
 template: filter.html
 filteroptions:
     - name: all
@@ -7,6 +7,10 @@ filteroptions:
       displayname: All
       filter: '*'
       active: true
+    - name: 117
+      title: 1.17.x
+      displayname: 1.17
+      filter: '[data-spfx^=''1.17.'']'
     - name: 116
       title: 1.16.x
       displayname: 1.16
@@ -28,12 +32,12 @@ filteroptions:
       displayname: 1.12
       filter: '[data-spfx^=''1.12.'']'
     - name: 111
-      title: 1.11.x
+      title: 1.11.0
       displayname: 1.11
       filter: '[data-spfx^=''1.11.'']'
     - name: 110
-      title: 1.10.x
-      displayname: 1.10
+      title: 1.10.0
+      displayname: '1.10'
       filter: '[data-spfx^=''1.10.'']'
     - name: 190
       title: 1.9.x
@@ -48,7 +52,7 @@ filteroptions:
       displayname: 1.7
       filter: '[data-spfx^=''1.7.'']'
     - name: 160
-      title: 1.6.x
+      title: 1.6.0
       displayname: 1.6
       filter: '[data-spfx^=''1.6.'']'
     - name: 150
@@ -56,21 +60,13 @@ filteroptions:
       displayname: 1.5
       filter: '[data-spfx^=''1.5.'']'
     - name: 140
-      title: 1.4.x
+      title: 1.4.x or earlier
       displayname: 1.4
-      filter: '[data-spfx^=''1.4.'']'
-    - name: 130
-      title: 1.3.x
-      displayname: 1.3
-      filter: '[data-spfx^=''1.3.'']'
-    - name: GA
-      title: GA
-      displayname: GA
-      filter: '[data-spfx=''GA'']'
+      filter: '[data-spfx^=''1.4.''],[data-spfx^=''1.3.''],[data-spfx=''GA'']'
 ---
 
 You can use the filters below to find samples by SharePoint Framework versions.
 
-To learn more about SPFx compatibility, visit the [SharePoint Framework development tools and libraries compatibility](https://docs.microsoft.com/sharepoint/dev/spfx/compatibility) on Microsoft Documentation.
+To learn more about SPFx compatibility, visit the [SharePoint Framework development tools and libraries compatibility](https://learn.microsoft.com/sharepoint/dev/spfx/compatibility) on Microsoft Documentation.
 
 To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
