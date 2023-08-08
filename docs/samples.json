@@ -9579,25 +9579,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Groups-in-my-organization.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png",
         "alt": "Web Part Preview"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/My-Groups-Public-Filter.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Table-Display.png",
         "alt": "Web Part Preview"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/My-Teams-Teams-Side-By-Side-Theme.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Theme-Display.png",
         "alt": "Web Part Preview"
       },
       {
-        "type": "image",
-        "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/My-Teams-Teams-With-Tooltip.png",
+        "type": "video",
+        "order": 103,
+        "url": "https://www.youtube.com/watch?v=MakgCyOq9tk",
         "alt": "Web Part Preview"
       }
     ],
