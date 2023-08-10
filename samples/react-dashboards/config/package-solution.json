@@ -2,8 +2,9 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "Application Insights and Cost Management dashboards",
+    "iconPath": "assets/appLogo.png",
     "id": "09af0554-67db-4a65-baa6-872dee7117a8",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -16,14 +17,6 @@
         "resource": "Application Insights API",
         "scope": "user_impersonation"
       }
-      // {
-      //   "resource": "Microsoft Graph", //Microsoft Graph
-      //   "scope": "user_impersonation"
-      // },
-      // {
-      //   "resource": "Office 365 SharePoint Online", //Office 365 SharePoint Online
-      //   "scope": "user_impersonation"
-      // }
     ],
     "developer": {
       "name": "Kinga Kazala (ETHZ)",

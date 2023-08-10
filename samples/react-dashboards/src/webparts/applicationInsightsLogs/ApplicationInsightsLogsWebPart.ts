@@ -11,6 +11,7 @@ import { AppInsights, setLogger } from 'pnp-appinsights-listener';
 import * as React from 'react';
 import { ThemedPalette } from '../../common/ColorsHelper';
 import { CacheExpiration, IAppInsightsQuery, IAppInsightsWebPartProps } from '../../common/CommonProps';
+import { teamsPadding } from '../../common/ComponentStyles';
 import { ChartStyles, LayoutStyles, ListStyles } from '../../common/DashboardHelper';
 import ApplicationInsightsLogs from './components/ApplicationInsightsLogs';
 import { IApplicationInsightsLogsProps } from './components/IApplicationInsightsLogsProps';
@@ -39,6 +40,7 @@ export default class ApplicationInsightsLogsWebPart extends BaseClientSideWebPar
   }
 
   public render(): void {
+    let dashboard: React.ReactElement;
 
     const element: React.ReactElement<IApplicationInsightsLogsProps> = React.createElement(ApplicationInsightsLogs, {
       ...this.properties,
@@ -56,7 +58,14 @@ export default class ApplicationInsightsLogsWebPart extends BaseClientSideWebPar
       onConfigureTimePicker: this._onConfigureTimePicker,
       onConfigureLayoutSettings: this._onConfigureLayoutSettings,
     });
-    ReactDom.render(element, this.domElement);
+
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      dashboard = React.createElement('div', { style: { padding: teamsPadding }}, element);
+    }
+    else{
+      dashboard=element
+    }
+    ReactDom.render(dashboard, this.domElement);
   }
   //#region WebPart Properties
   public _onPivotItemChange = (key: string): void => {
@@ -104,7 +113,6 @@ export default class ApplicationInsightsLogsWebPart extends BaseClientSideWebPar
         text: CacheExpiration[value as keyof typeof CacheExpiration]
       };
     });
-    console.log(this.properties.cacheDuration)
 
     return {
       pages: [

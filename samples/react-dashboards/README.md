@@ -198,6 +198,11 @@ All permissions are granted to the whole tenant and not to a specific applicatio
 - `f5c26e74-f226-4ae8-85f0-b4af0080ac9e` Application Insights API
 - `797f4846-ba00-4fd7-ba43-dac1f8f63013` Windows Azure Service Management API
 
+#### Developer resources
+
+- [Build your first app with SPFx (Teams)](https://learn.microsoft.com/en-us/microsoftteams/platform/sbs-gs-spfx?tabs=vscode%2Cviscode)
+- [Microsoft 365 Developer Proxy](https://github.com/microsoft/m365-developer-proxy)
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

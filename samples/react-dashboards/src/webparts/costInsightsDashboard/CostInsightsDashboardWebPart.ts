@@ -8,6 +8,7 @@ import React from 'react';
 import * as ReactDom from 'react-dom';
 import { ThemedPalette } from '../../common/ColorsHelper';
 import { ICostManagementConfig, ICostManagementQuery, ICostManagementWebPartProps } from '../../common/CommonProps';
+import { teamsPadding } from '../../common/ComponentStyles';
 import { ChartStyles, LayoutStyles, ListStyles } from '../../common/DashboardHelper';
 import CostInsightsDashboard from './components/CostInsightsDashboard';
 import { ICostInsightsDashboardProps } from './components/ICostInsightsDashboardProps';
@@ -36,6 +37,8 @@ export default class CostInsightsWebPart extends BaseClientSideWebPart<ICostMana
   }
 
   public render(): void {
+    let dashboard: React.ReactElement;
+
     const element: React.ReactElement<ICostInsightsDashboardProps> = React.createElement(
       CostInsightsDashboard,
       {
@@ -55,7 +58,13 @@ export default class CostInsightsWebPart extends BaseClientSideWebPart<ICostMana
         onConfigureLayoutSettings: this._onConfigureLayoutSettings,
       }
     );
-    ReactDom.render(element, this.domElement);
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      dashboard = React.createElement('div', { style: { padding: teamsPadding } }, element);
+    }
+    else {
+      dashboard = element
+    }
+    ReactDom.render(dashboard, this.domElement);
   }
   public _onPivotItemChange = (key: string): void => {
     this.properties.pivotKey = key
