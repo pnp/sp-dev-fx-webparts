@@ -129,6 +129,19 @@ By default, caching duration is set to:
 
 Cache duration for **Application Insights Dashboard** may be extended or disabled using web part properties panel. In case you want to delete the cache manually, the key names for this solution start with **spfxDashboard**.
 
+### Rate Limit
+
+This solution is using `clienttype` header to avoid using general tenant limits and to avoid the error 429 `Too many requests. Please retry.`
+
+The **default rate limits** when querying cost management API **with/without** the `clienttype` parameter are:
+
+| Response header |without `clienttype`| with `clienttype`|
+|-|-|-|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`clienttype-requests`|0|1995|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`entity-requests`|2|0|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`tenant-requests`|18|15|
+
+The Cost Management API requests are still a subject to the rate limits. The above response headers, along with `x-ms-ratelimit-microsoft.costmanagement-qpu-consumed` (QPUs consumed by an API call) and `x-ms-ratelimit-microsoft.costmanagement-qpu-remaining` (list of remaining quotas) are printed in the browser console whenever a request to the API has been made
 
 ## Accessing Application Insights Data
 

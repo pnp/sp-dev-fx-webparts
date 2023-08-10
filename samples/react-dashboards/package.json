@@ -28,6 +28,7 @@
     "chart.js": "2.9.4",
     "color": "4.2.3",
     "moment": "^2.29.4",
+    "pnp-appinsights-listener": "^1.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

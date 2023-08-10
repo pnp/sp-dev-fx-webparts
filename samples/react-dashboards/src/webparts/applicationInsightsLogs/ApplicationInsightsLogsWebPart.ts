@@ -5,9 +5,9 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as ReactDom from 'react-dom';
 
-import { ConsoleListener, Logger } from '@pnp/logging';
 import PnPTelemetry from "@pnp/telemetry-js";
 import strings from 'AppInsightsDasboardWebPartStrings';
+import { AppInsights, setLogger } from 'pnp-appinsights-listener';
 import * as React from 'react';
 import { ThemedPalette } from '../../common/ColorsHelper';
 import { CacheExpiration, IAppInsightsQuery, IAppInsightsWebPartProps } from '../../common/CommonProps';
@@ -17,26 +17,24 @@ import { IApplicationInsightsLogsProps } from './components/IApplicationInsights
 
 const telemetry = PnPTelemetry.getInstance();
 telemetry.optOut();
-const LOG_SOURCE: string = 'Application Insights Logs WebPart';
 
 export default class ApplicationInsightsLogsWebPart extends BaseClientSideWebPart<IAppInsightsWebPartProps> {
 
   public onInit(): Promise<void> {
-    const _setLogger = (): void => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      Logger.subscribe(new (ConsoleListener as any)());
-
-      //default is 2 - Warning
-      if (this.properties.logLevel && this.properties.logLevel in [0, 1, 2, 3, 99]) {
-        Logger.activeLogLevel = this.properties.logLevel;
-      }
-
-      Logger.write(`${LOG_SOURCE} ${this.manifest.version} activated`);
-      Logger.write(`${LOG_SOURCE} Initialized with properties:`);
-      Logger.write(`${LOG_SOURCE} ${JSON.stringify(this.properties, undefined, 2)}`);
-
+    if (this.properties.appInsightsConnString) {
+      const ai = AppInsights(this.properties.appInsightsConnString);
+      setLogger({
+        appInsights: ai,
+        logLevel: this.properties.logLevel,
+        console: true
+      });
     }
-    _setLogger();
+    else {
+      setLogger({
+        logLevel: this.properties.logLevel,
+        console: true
+      });
+    }
     return Promise.resolve();
   }
 

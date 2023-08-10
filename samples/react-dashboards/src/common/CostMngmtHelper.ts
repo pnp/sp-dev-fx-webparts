@@ -26,6 +26,7 @@ export default class CostMngmtHelper {
         }
         );
         this.requestHeaders.append("Content-type", "application/json; charset=utf-8");
+        this.requestHeaders.append("clienttype", "pnp.apps.costmanagement");
         this.httpClientOptions = { headers: this.requestHeaders };
         this.cacheDuration = cache.cacheDuration;
         this.cacheKey = `${config.subscriptionId ?? ''}-${config.resourceGroupName ?? ''}-${config.managementGroupId ?? ''}-${cache.userLoginName}`

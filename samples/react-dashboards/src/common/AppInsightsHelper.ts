@@ -19,6 +19,7 @@ export class AppInsightsHelperSSO {
         this.aadHttpClientFactory = config.aadHttpClientFactory;
         this._postUrl = AppInsightsQueryHelper.GetAPIEndpoint(config.appId, config.endpoint);
         this.requestHeaders.append("Content-type", "application/json; charset=utf-8");
+        this.requestHeaders.append("clienttype", "pnp.apps.appinsights");
         this.httpClientOptions = { headers: this.requestHeaders };
         this.endpointType = config.endpoint;
         this.cacheDuration = cache.cacheDuration;
@@ -105,6 +106,7 @@ export default class AppInsightsHelper {
         this._postUrl = AppInsightsQueryHelper.GetAPIEndpoint(config.appId, config.endpoint);
         this.requestHeaders.append("Content-type", "application/json; charset=utf-8");
         this.requestHeaders.append("x-api-key", config.appKey);
+        this.requestHeaders.append("clienttype", "pnp.apps.appinsights");
         this.httpClientOptions = { headers: this.requestHeaders };
         this.endpointType = config.endpoint;
         this.cacheDuration = cache.cacheDuration;
