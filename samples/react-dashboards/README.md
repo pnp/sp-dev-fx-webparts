@@ -42,6 +42,7 @@ Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | May 30, 2023     | Initial release |
+|1.0.1    | August 10, 2023  | `clienttype` header to avoid using tenant rate limits |
 
 ## Prerequisites
 
@@ -52,6 +53,13 @@ Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
 - Global Administrator permissions to approve required API access:
   - Windows Azure Service Management API: user_impersonation
   - Application Insights API: user_impersonation
+
+### Required Permissions
+
+| resource | scope|
+|-|-|
+|Windows Azure Service Management API|user_impersonation|
+|Application Insights API|user_impersonation|
 
 ## Minimal Path to Awesome
 
@@ -202,6 +210,7 @@ All permissions are granted to the whole tenant and not to a specific applicatio
 
 - [Build your first app with SPFx (Teams)](https://learn.microsoft.com/en-us/microsoftteams/platform/sbs-gs-spfx?tabs=vscode%2Cviscode)
 - [Microsoft 365 Developer Proxy](https://github.com/microsoft/m365-developer-proxy)
+- [How to use SPFx powered Microsoft Teams apps in Outlook and Office](https://pnp.github.io/blog/post/spfx-08-spfx-powered-teams-solutions-outlook-office/)
 
 ## Disclaimer
 
