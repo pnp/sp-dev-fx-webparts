@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Azure OpenAI Data Connector sample",
+    "id": "8825f8b6-a323-4c34-abf5-29009d24a929",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Luis Mañez",
+      "websiteUrl": "https://github.com/luismanez",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Using Azure OpenAI with Data connectors"
+      },
+      "longDescription": {
+        "default": "The webpart is calling the Azure OpenAI API, with a specific Data source configured to an existing Azure Search service that contains the Hotels index provided by Microsoft."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-azure-openai-connector Feature",
+        "description": "The feature that activates elements of the react-azure-openai-connector solution.",
+        "id": "165527dc-1fba-467c-b616-4982900a993a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-azure-openai-connector.sppkg"
+  }
+}
