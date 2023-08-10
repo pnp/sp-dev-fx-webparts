@@ -1,4 +1,4 @@
-import { MSGraphClientV3 } from "@microsoft/sp-http";
+import { IGraphService } from "../../GraphService";
 
 export interface IWebPartReportProps {
   description: string;
@@ -7,5 +7,6 @@ export interface IWebPartReportProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   siteId: string;
-  graphClient: MSGraphClientV3;
+  GraphService: IGraphService;
+  
 }

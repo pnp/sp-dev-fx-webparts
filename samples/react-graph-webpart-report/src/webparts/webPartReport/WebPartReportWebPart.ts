@@ -11,7 +11,7 @@ import * as strings from 'WebPartReportWebPartStrings';
 import WebPartReport from './components/WebPartReport';
 import { IWebPartReportProps } from './components/IWebPartReportProps';
 import { ITopActions, TopActionsFieldType } from '@microsoft/sp-top-actions';
-import { MSGraphClientV3 } from "@microsoft/sp-http";
+import {GraphService} from "./../GraphService"
 
 export interface IWebPartReportWebPartProps {
   description: string;
@@ -20,7 +20,6 @@ export interface IWebPartReportWebPartProps {
 }
 
 export default class WebPartReportWebPart extends BaseClientSideWebPart<IWebPartReportWebPartProps> {
-  private graphClient: MSGraphClientV3;
   private _isDarkTheme: boolean = false;
 
   public render(): void {
@@ -33,24 +32,15 @@ export default class WebPartReportWebPart extends BaseClientSideWebPart<IWebPart
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
         siteId:  this.context.pageContext.site.id.toString(),
-        graphClient: this.graphClient
+        GraphService: new GraphService(this.context),
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected async onInit(): Promise<void> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
-      this.context.msGraphClientFactory
-        .getClient("3")
-        .then((client: MSGraphClientV3): void => {
-          this.graphClient = client;
-          resolve();
-        }, err => reject(err));
-    }); 
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  protected async onInit(): Promise<void> {}
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
@@ -111,19 +101,24 @@ export default class WebPartReportWebPart extends BaseClientSideWebPart<IWebPart
         targetProperty: 'displayOption',
         properties: {
           options: [{
-            key: '1',
+            key: 'list',
             text: 'List',
-            checked: displayOption.toString() === "1" ? true : false
+            checked: displayOption === "list",
+            iconProps: {
+              officeFabricIconFontName: "List"
+            }
           }, {
-            key: '2',
+            key: 'chart',
             text: 'Chart',
-            checked: displayOption.toString() === "2" ? true : false
+            checked: displayOption === "chart",
+            iconProps: {
+              officeFabricIconFontName: "DonutChart"
+            }
           }]
         }
       }],
       onExecute: (actionName, newValue) =>{
         this.properties.displayOption = newValue;
-        console.log("test",displayOption.toString() === "1");
         this.render();
       }
     };
