@@ -52,8 +52,6 @@ Microsoft Graph permission:
 | 1.0     | March 23, 2023 | Initial release |
 | 2.0     | July 11, 2023  | Add minor features|
 
-
-
 ## Minimal Path to Awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-webpart-report) then unzip it)
