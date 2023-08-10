@@ -26,6 +26,7 @@ declare interface IEnhancedPowerAppsWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   AppWebLinkFieldLabel: string;
+  IsWebPartHiddenOnSmallDevicesFieldLabel:string;
 }
 
 declare module 'EnhancedPowerAppsWebPartStrings' {

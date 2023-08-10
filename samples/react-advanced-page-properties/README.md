@@ -1,4 +1,4 @@
-http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Advanced Page Properties
+# Advanced Page Properties
 
 ## Summary
 
@@ -10,6 +10,7 @@ Attempts to replicate the functionality of Page Properties with the following im
 - Support for hyperlink fields
 - Support for currency
 - Improved support for dates
+- Support for Multiline text fields
 
 ![see the difference](./assets/diff-screencap.png)
 
@@ -47,6 +48,7 @@ None
 - [Mike Homol](https://github.com/mhomol)
 - [Abderahman Moujahid](https://github.com/Abderahman88)
 - [Valeras Narbutas](https://github.com/ValerasNarbutas)
+- [Nishkalank Bezawada](https://github.com/NishkalankBezawada)
 
 ## Version history
 
@@ -56,6 +58,8 @@ Version|Date|Comments
 1.0.1|September 22, 2021|Added support for multi-language sites
 1.0.2|December 24, 2021|Fix retrieving fields from SitePages
 1.0.3|January 12, 2022|Fix formatting of date, number and currency values
+1.0.5|June 05, 2023|Support for Multiline text fields
+
 
 ## Minimal Path to Awesome
 

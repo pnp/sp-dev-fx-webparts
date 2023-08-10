@@ -50,8 +50,7 @@ Microsoft Graph permission:
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | March 23, 2023 | Initial release |
-
-
+| 2.0     | July 11, 2023  | Add minor features|
 
 ## Minimal Path to Awesome
 

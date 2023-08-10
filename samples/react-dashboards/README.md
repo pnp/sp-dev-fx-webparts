@@ -29,13 +29,13 @@ This sample is optimally compatible with the following environment configuration
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://docs.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
 ## Authors
 
-Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
+* [Kinga Kazala](https://github.com/kkazala)
 
 ## Version history
 
@@ -48,7 +48,7 @@ Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
 
 - Azure tenant
 - Application Insights resource (for Application Insights web part)
-- Read access to Cost Management data (for Cost Insights web part), see **Required access to view data** in the [Azure EA subscription scopes](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/assign-access-acm-data#azure-ea-subscription-scopes) table
+- Read access to Cost Management data (for Cost Insights web part), see **Required access to view data** in the [Azure EA subscription scopes](https://learn.microsoft.com//azure/cost-management-billing/costs/assign-access-acm-data#azure-ea-subscription-scopes) table
 - SharePoint Administrator or Global Administrator to install the solution
 - Global Administrator permissions to approve required API access:
   - Windows Azure Service Management API: user_impersonation
@@ -66,11 +66,11 @@ Kinga Kazala [@kinga_kazala](https://twitter.com/kinga_kazala), ETHZ
 - Clone this repository
 - Ensure that you are at the solution folder
 - to debug, in the command-line run:
-  - **npm install** / **pnpm install**
-  - **gulp serve --nobrowser**
+  - `npm install` / `pnpm install`
+  - `gulp serve --nobrowser`
 - to deploy, in the command-line run:
-  - **gulp bundle --ship**
-  - **gulp package-solution --ship**
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 
 ## Configuration
 
@@ -98,9 +98,9 @@ Both web parts have example queries that you may use to test the solution, or to
 In case you want to refer to the _time range_ defined in the web part, type `{TimeRange:start}` in the Kusto query:
 ![Time Range](./assets/TimeRange.png)
 
-> Please **test** your query using either [Application Insights / Query - Get](https://learn.microsoft.com/en-us/rest/api/application-insights/query/get?tabs=HTTP#code-0) or query editor in Azure portal (Application Insights / Logs) to ensure the query is correct. Some expression you may use in Workspaces will not work in Application Insights Logs API and therefore, will also fail when executed using this web part.
+> Please **test** your query using either [Application Insights / Query - Get](https://learn.microsoft.com//rest/api/application-insights/query/get?tabs=HTTP#code-0) or query editor in Azure portal (Application Insights / Logs) to ensure the query is correct. Some expression you may use in Workspaces will not work in Application Insights Logs API and therefore, will also fail when executed using this web part.
 
-**Cost information** is retrieved using the **Cost Management Usage API** and your custom JSON request. Please test it using [Cost Management / Query - Usage](https://learn.microsoft.com/en-us/rest/api/cost-management/query/usage?tabs=HTTP#code-try-0)
+**Cost information** is retrieved using the **Cost Management Usage API** and your custom JSON request. Please test it using [Cost Management / Query - Usage](https://learn.microsoft.com//rest/api/cost-management/query/usage?tabs=HTTP#code-try-0)
 
 ### Rendering results
 
@@ -117,18 +117,18 @@ Chart is rendered using [Chart Control](https://pnp.github.io/sp-dev-fx-controls
 
 ### Authentication
 
-User impersonation is executed using [AadHttpClient](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient). To call the APIs, the solution requires the following **Application** API permissions:
+User impersonation is executed using [AadHttpClient](https://learn.microsoft.com//sharepoint/dev/spfx/use-aadhttpclient). To call the APIs, the solution requires the following **Application** API permissions:
 
 - Windows Azure Service Management API: user_impersonation
 - Application Insights API: user_impersonation
 
-These permissions will be requested automatically once the solution is deployed, and must be granted by a Global Admin using [API access](https://kingasws1e5-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement) page in SharePoint Administration
+These permissions will be requested automatically once the solution is deployed, and must be granted by a Global Admin using [API access](https://yoursharepoint-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement) page in SharePoint Administration
 
 Authentication with `Application ID` and `API key` is also allowed for Application Insights dashboard (see _Api Connection_ above)
 
 ### Caching
 
-`PnPClientStorage` is used to cache query results in local storage to avoid [throttling](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling). This is especially important when querying cost management APIs (see more information below).
+`PnPClientStorage` is used to cache query results in local storage to avoid [throttling](https://learn.microsoft.com//azure/azure-resource-manager/management/request-limits-and-throttling). This is especially important when querying cost management APIs (see more information below).
 
 By default, caching duration is set to:
 
@@ -156,7 +156,7 @@ The Cost Management API requests are still a subject to the rate limits. The abo
 To query Application Insights using the Application Insights Data Access API, you must **authenticate**:
 
 - To query your workspaces, use Azure Active Directory (Azure AD) authentication.
-- To quickly explore the API without using Azure AD authentication, you can use an API key to query sample data in a non-production environment.  You may try it here [here](https://learn.microsoft.com/en-us/rest/api/application-insights/query/get?tabs=HTTP#code-0), by adding **x-api-key** header set to **ApiKey** value
+- To quickly explore the API without using Azure AD authentication, you can use an API key to query sample data in a non-production environment.  You may try it here [here](https://learn.microsoft.com/rest/api/application-insights/query/get?tabs=HTTP#code-0), by adding **x-api-key** header set to **ApiKey** value
 
 The Log Analytics API supports Azure AD authentication with three different Azure AD OAuth2 flows: authorization code, **implicit**, client credentials.
 Client-side applications that are incapable of storing a secret, such as SharePoint Framework solutions, use **OAuth implicit flow**. In SharePoint Framework solutions, authorization by using the OAuth implicit flow is  done as part of the framework through MSGraphClient and AadHttpClient, both of which are introduced in SharePoint Framework v1.4.1.
@@ -169,35 +169,35 @@ All permissions are granted to the whole tenant and not to a specific applicatio
 
 ### Application Insights
 
-- [Application Insights overview](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview)
-- [Application Insights API](https://learn.microsoft.com/en-us/rest/api/application-insights/)
+- [Application Insights overview](https://learn.microsoft.com//azure/azure-monitor/app/app-insights-overview)
+- [Application Insights API](https://learn.microsoft.com//rest/api/application-insights/)
 - [Application Insights demo data](https://aka.ms/AIAnalyticsDemo)
-- [KQL quick reference](https://learn.microsoft.com/en-us/azure/data-explorer/kql-quick-reference)
+- [KQL quick reference](https://learn.microsoft.com//azure/data-explorer/kql-quick-reference)
 -[Fun With KQL – Variants Of Project](https://arcanecode.com/2022/06/06/fun-with-kql-variants-of-project/)
-- [Resources, roles, and access control in Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control) - Assign access to users in the resource group or subscription to which your application resource belongs, not in the resource itself.
+- [Resources, roles, and access control in Application Insights](https://learn.microsoft.com//azure/azure-monitor/app/resources-roles-access-control) - Assign access to users in the resource group or subscription to which your application resource belongs, not in the resource itself.
 
 ### Cost Management
 
-- [Cost Management API](https://learn.microsoft.com/en-us/rest/api/cost-management/)
-- [Cost Management Dimensions](https://learn.microsoft.com/en-us/rest/api/cost-management/dimensions/list?tabs=HTTP#code-try-0)
-- [How to optimize your cloud investment with Cost Management](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices)
-- [Retrieve large cost datasets recurringly with exports](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/ingest-azure-usage-at-scale)
-- [Manage costs with automation](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/manage-automation
+- [Cost Management API](https://learn.microsoft.com//rest/api/cost-management/)
+- [Cost Management Dimensions](https://learn.microsoft.com//rest/api/cost-management/dimensions/list?tabs=HTTP#code-try-0)
+- [How to optimize your cloud investment with Cost Management](https://learn.microsoft.com//azure/cost-management-billing/costs/cost-mgt-best-practices)
+- [Retrieve large cost datasets recurringly with exports](https://learn.microsoft.com//azure/cost-management-billing/costs/ingest-azure-usage-at-scale)
+- [Manage costs with automation](https://learn.microsoft.com//azure/cost-management-billing/costs/manage-automation
 )
 
 >If you want to get the latest cost data, query at most once per day. Reports are refreshed every four hours. If you call more frequently, you'll receive identical data.
 >The data in Usage Details is provided on a per meter basis, per day.
 >
->If you want to get large amounts of exported data regularly, see [Retrieve large cost datasets recurringly with exports](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/ingest-azure-usage-at-scale).
+>If you want to get large amounts of exported data regularly, see [Retrieve large cost datasets recurringly with exports](https://learn.microsoft.com//azure/cost-management-billing/costs/ingest-azure-usage-at-scale).
 >
 >
 >If you have scopes with a large amount of usage data (for example a Billing Account), consider placing multiple calls to child scopes so you get more manageable files that you can download. If your dataset is more than 2 GB month-to-month, consider using exports as a more scalable solution.
 
 ### Using Azure APIs
 
-- [Connect to Azure AD-secured APIs in SharePoint Framework solutions](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient)
-- [Application IDs of commonly used Microsoft applications](https://learn.microsoft.com/en-us/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-of-commonly-used-microsoft-applications)
-- [Throttling](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling) - The resource provider requests are also throttled per principal user ID and per hour.
+- [Connect to Azure AD-secured APIs in SharePoint Framework solutions](https://learn.microsoft.com//sharepoint/dev/spfx/use-aadhttpclient)
+- [Application IDs of commonly used Microsoft applications](https://learn.microsoft.com//troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-of-commonly-used-microsoft-applications)
+- [Throttling](https://learn.microsoft.com//azure/azure-resource-manager/management/request-limits-and-throttling) - The resource provider requests are also throttled per principal user ID and per hour.
 
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
@@ -205,6 +205,22 @@ All permissions are granted to the whole tenant and not to a specific applicatio
 
 - `f5c26e74-f226-4ae8-85f0-b4af0080ac9e` Application Insights API
 - `797f4846-ba00-4fd7-ba43-dac1f8f63013` Windows Azure Service Management API
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-dashboards%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-dashboards) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-dashboards&template=bug-report.yml&sample=react-dashboards&authors=@kkazala&title=react-dashboards%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-dashboards&template=question.yml&sample=react-dashboards&authors=@kkazala&title=react-dashboards%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-dashboards&template=suggestion.yml&sample=react-dashboards&authors=@kkazala&title=react-dashboards%20-%20).
 
 #### Developer resources
 
@@ -215,3 +231,5 @@ All permissions are granted to the whole tenant and not to a specific applicatio
 ## Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-dashboards" />

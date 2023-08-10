@@ -179,7 +179,12 @@ export class RssXmlParserService {
     let feedFields: any = Fields.feed.concat(this.options.customFields.feed);
     let itemFields: any = Fields.item.concat(this.options.customFields.item);
 
-    if (channel['atom:link']) feed.feedUrl = channel['atom:link'][0].$.href;
+    if (Array.isArray(channel['atom:link'])) {
+      feed.feedUrl = channel['atom:link'][0].$;
+    }
+    else {
+      feed.feedUrl = channel['atom:link'].$;
+    }
 
     //if there is an image, then get additional properties
     if (channel.image && channel.image[0] && channel.image[0].url) {

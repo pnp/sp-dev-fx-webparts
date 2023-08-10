@@ -662,7 +662,7 @@ packages:
     resolution: {integrity: sha512-P/qfyMIF1aWPVaZvgAE0u166Rp1Rfpymv63/NKQT1o56cc5LzfWTzjD2Ey1GyA+tn6dCf7g1ZXTpKo5H+CuM4Q==}
     dependencies:
       '@fluentui/set-version': 8.2.5
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/dom-utilities@1.1.2:
@@ -685,7 +685,7 @@ packages:
       '@fluentui/set-version': 8.2.5
       '@fluentui/style-utilities': 8.9.5(@types/react@17.0.45)(react@17.0.1)
       '@fluentui/utilities': 8.13.8(@types/react@17.0.45)(react@17.0.1)
-      tslib: 2.4.1
+      tslib: 2.3.1
     transitivePeerDependencies:
       - '@types/react'
       - react
@@ -703,7 +703,7 @@ packages:
       '@fluentui/utilities': 8.13.8(@types/react@17.0.45)(react@17.0.1)
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/keyboard-key@0.2.17:
@@ -722,7 +722,7 @@ packages:
     resolution: {integrity: sha512-i9Wy+7V+lKfX+UWRTrrK+3xm4aa8jl9tK2/7Ku696yWJ5v3D6xjRcMevfxUZDrZ3xS4/GRFfWKPHkAjzz/BQoQ==}
     dependencies:
       '@fluentui/set-version': 8.2.5
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/react-bindings@0.66.4(react-dom@17.0.1)(react@17.0.1)(scheduler@0.20.2):
@@ -813,7 +813,7 @@ packages:
       '@fluentui/style-utilities': 8.9.5(@types/react@17.0.45)(react@17.0.1)
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/react-focus@7.18.17(@types/react-dom@17.0.17)(@types/react@17.0.45)(react-dom@17.0.1)(react@17.0.1):
@@ -849,7 +849,7 @@ packages:
       '@fluentui/utilities': 8.13.8(@types/react@17.0.45)(react@17.0.1)
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/react-hooks@8.6.19(@types/react@17.0.45)(react@17.0.1):
@@ -961,7 +961,7 @@ packages:
     dependencies:
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/react-proptypes@0.66.4:
@@ -1032,7 +1032,7 @@ packages:
       '@fluentui/set-version': 8.2.5
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/react@7.204.0(@types/react-dom@17.0.17)(@types/react@17.0.45)(react-dom@17.0.1)(react@17.0.1):
@@ -1085,7 +1085,7 @@ packages:
     dependencies:
       '@fluentui/set-version': 8.2.5
       '@fluentui/theme': 2.6.24(@types/react@17.0.45)(react@17.0.1)
-      tslib: 2.4.1
+      tslib: 2.3.1
     transitivePeerDependencies:
       - '@types/react'
       - react
@@ -1094,7 +1094,7 @@ packages:
   /@fluentui/set-version@8.2.5:
     resolution: {integrity: sha512-DwJq9wIXLc8WkeJ/lqYM4Sv+R0Ccb6cy3cY1Bqaa5POsroVKIfL6W+njvAMOj3LO3+DaXo2aDeiUnnw70M8xIw==}
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/state@0.66.4:
@@ -1111,7 +1111,7 @@ packages:
       '@fluentui/theme': 2.6.24(@types/react@17.0.45)(react@17.0.1)
       '@fluentui/utilities': 8.13.8(@types/react@17.0.45)(react@17.0.1)
       '@microsoft/load-themed-styles': 1.10.295
-      tslib: 2.4.1
+      tslib: 2.3.1
     transitivePeerDependencies:
       - '@types/react'
       - react
@@ -1154,7 +1154,7 @@ packages:
       '@fluentui/utilities': 8.13.8(@types/react@17.0.45)(react@17.0.1)
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/utilities@8.13.8(@types/react@17.0.45)(react@17.0.1):
@@ -1168,7 +1168,7 @@ packages:
       '@fluentui/set-version': 8.2.5
       '@types/react': 17.0.45
       react: 17.0.1
-      tslib: 2.4.1
+      tslib: 2.3.1
     dev: false
 
   /@fluentui/web-components@0.22.1:
@@ -11575,7 +11575,7 @@ packages:
       levn: 0.3.0
       prelude-ls: 1.1.2
       type-check: 0.3.2
-      word-wrap: 1.2.3
+      word-wrap: 1.2.4
     dev: true
 
   /optionator@0.9.1:
@@ -11587,7 +11587,7 @@ packages:
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
-      word-wrap: 1.2.3
+      word-wrap: 1.2.4
     dev: true
 
   /orchestrator@0.3.8:
@@ -15333,8 +15333,8 @@ packages:
     hasBin: true
     dev: true
 
-  /word-wrap@1.2.3:
-    resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
+  /word-wrap@1.2.4:
+    resolution: {integrity: sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==}
     engines: {node: '>=0.10.0'}
     dev: true
 
