@@ -9,6 +9,7 @@
             "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow."
         ],
         "creationDateTime": "2023-08-03",
+        "updateDateTime": "2023-08-03",
         "products": [
             "SharePoint"
         ],
