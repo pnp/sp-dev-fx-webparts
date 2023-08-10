@@ -3758,6 +3758,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector",
+    "source": "pnp",
+    "title": "Using Azure OpenAI Connectors API",
+    "shortDescription": "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
+    "longDescription": [
+      "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part."
+    ],
+    "creationDateTime": "2023-07-26",
+    "updateDateTime": "2023-07-26",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.17.4"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-connector.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "luismanez",
+        "pictureUrl": "https://github.com/luismanez.png",
+        "name": "Luis Mañez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2",
     "source": "pnp",
     "title": "Consume Northwind Microsoft database from Azure using a Function App ",
@@ -7839,6 +7887,7 @@
       "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow."
     ],
     "creationDateTime": "2023-08-03",
+    "updateDateTime": "2023-08-03",
     "products": [
       "SharePoint"
     ],
