@@ -161,7 +161,7 @@ export class RssXmlParserService {
 
   public static buildRSS2(xmlObj) {
     let channel:any = Array.isArray(xmlObj.rss.channel) ? xmlObj.rss.channel[0] : xmlObj.rss.channel;
-    let items = channel.item;
+    let items = Array.isArray(channel.item) ? channel.item : [channel.item];
     let feed = this.buildRSS(channel, items);
     if (xmlObj.rss.$ && xmlObj.rss.$['xmlns:itunes']) {
       this.decorateItunes(feed, channel);
