@@ -37,6 +37,8 @@ Main features include:
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+Tested with: Node.js v10.16.3
+
 ## Applies to
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
@@ -44,9 +46,10 @@ Main features include:
 
 ## Contributors
 
-* [Eric Overfield](https://github.com/eoverfield)
 * [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Eric Overfield](https://github.com/eoverfield)
 * [Kalle Mansikkaniemi](https://github.com/djsladi)
+* [Lauri Koskimies](https://github.com/koskimiesl)
 
 ## Version history
 
