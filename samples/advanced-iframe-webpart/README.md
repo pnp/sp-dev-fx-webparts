@@ -15,7 +15,8 @@ Main features include:
     - Information about the logged in user
     - Information about the current page and site
 
-![Advanced Iframe Webpart](./images/advancediframewebpart.gif)
+![Advanced Iframe Webpart](./images/iframewebpart.png)
+
 
 ## Compatibility
 
@@ -97,6 +98,8 @@ Add the "Advanced Iframe Webpart" here and configure it with the PowerApp url. A
 ```
 
 Publish the Page
+
+![Advanced Iframe Webpart](./images/advancediframewebpart.gif)
 
 
 
