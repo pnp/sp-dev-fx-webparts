@@ -1,13 +1,14 @@
 import { Version } from '@microsoft/sp-core-library';
 import { IPropertyPaneConfiguration, PropertyPaneLabel } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { ConsoleListener, Logger } from '@pnp/logging';
 import PnPTelemetry from "@pnp/telemetry-js";
 import stringsCommon from 'CommonDasboardWebPartStrings';
+import { AppInsights, setLogger } from 'pnp-appinsights-listener';
 import React from 'react';
 import * as ReactDom from 'react-dom';
 import { ThemedPalette } from '../../common/ColorsHelper';
 import { ICostManagementConfig, ICostManagementQuery, ICostManagementWebPartProps } from '../../common/CommonProps';
+import { teamsPadding } from '../../common/ComponentStyles';
 import { ChartStyles, LayoutStyles, ListStyles } from '../../common/DashboardHelper';
 import CostInsightsDashboard from './components/CostInsightsDashboard';
 import { ICostInsightsDashboardProps } from './components/ICostInsightsDashboardProps';
@@ -15,30 +16,29 @@ import { ICostInsightsDashboardProps } from './components/ICostInsightsDashboard
 const telemetry = PnPTelemetry.getInstance();
 telemetry.optOut();
 
-const LOG_SOURCE: string = 'Cost Insights WebPart';
-
 export default class CostInsightsWebPart extends BaseClientSideWebPart<ICostManagementWebPartProps> {
 
   public onInit(): Promise<void> {
-    const _setLogger = (): void => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      Logger.subscribe(new (ConsoleListener as any)());
-
-      //default is 2 - Warning
-      if (this.properties.logLevel && this.properties.logLevel in [0, 1, 2, 3, 99]) {
-        Logger.activeLogLevel = this.properties.logLevel;
-      }
-
-      Logger.write(`${LOG_SOURCE} ${this.manifest.version} activated`);
-      Logger.write(`${LOG_SOURCE} Initialized with properties:`);
-      Logger.write(`${LOG_SOURCE} ${JSON.stringify(this.properties, undefined, 2)}`);
-
+    if (this.properties.appInsightsConnString) {
+      const ai = AppInsights(this.properties.appInsightsConnString);
+      setLogger({
+        appInsights: ai,
+        logLevel: this.properties.logLevel,
+        console: true
+      });
     }
-    _setLogger();
+    else {
+      setLogger({
+        logLevel: this.properties.logLevel,
+        console: true
+      });
+    }
     return Promise.resolve();
   }
 
   public render(): void {
+    let dashboard: React.ReactElement;
+
     const element: React.ReactElement<ICostInsightsDashboardProps> = React.createElement(
       CostInsightsDashboard,
       {
@@ -58,7 +58,13 @@ export default class CostInsightsWebPart extends BaseClientSideWebPart<ICostMana
         onConfigureLayoutSettings: this._onConfigureLayoutSettings,
       }
     );
-    ReactDom.render(element, this.domElement);
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      dashboard = React.createElement('div', { style: { padding: teamsPadding } }, element);
+    }
+    else {
+      dashboard = element
+    }
+    ReactDom.render(dashboard, this.domElement);
   }
   public _onPivotItemChange = (key: string): void => {
     this.properties.pivotKey = key

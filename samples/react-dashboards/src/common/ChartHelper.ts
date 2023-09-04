@@ -1,8 +1,8 @@
 ﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cloneDeep, merge, uniq } from "@microsoft/sp-lodash-subset";
 import { ChartType, PaletteGenerator } from "@pnp/spfx-controls-react";
-import { ChartData, ChartDataSets, ChartOptions, TimeUnit } from "chart.js";
 import stringsCommon from "CommonDasboardWebPartStrings";
+import { ChartData, ChartDataSets, ChartOptions, TimeUnit } from "chart.js";
 import moment from "moment";
 import { ColumnsInfo, DataTypesInfo } from "../components/InsightsChart/IInsightsChartProps";
 import ApiHelper from "./ApiHelper";
@@ -214,7 +214,6 @@ export default class ChartHelper {
                     }
                     dataSets.push(dataSet);
                 });
-                console.log(dataSets);
                 return {
                     datasets: dataSets
                 }

@@ -83,9 +83,11 @@ export interface IDashboardConfig{
 export interface IAppInsightsWebPartProps extends IAppInsightsConfig, IAppInsightsQuery, ICacheConfig, ILayoutConfig, IDashboardConfig {
     isDevMode: boolean;
     logLevel?: number;
+    appInsightsConnString?: string;
 }
 
 export interface ICostManagementWebPartProps extends ICostManagementConfig, ICostManagementQuery, ICacheConfig, ILayoutConfig, IDashboardConfig {
     logLevel?: number;
+    appInsightsConnString?: string;
 }
 

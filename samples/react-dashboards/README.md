@@ -26,6 +26,8 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+Tested with Node 16.14.2
+
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
@@ -42,6 +44,7 @@ This sample is optimally compatible with the following environment configuration
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | May 30, 2023     | Initial release |
+|1.0.1    | August 10, 2023  | `clienttype` header to avoid using tenant rate limits |
 
 ## Prerequisites
 
@@ -52,6 +55,13 @@ This sample is optimally compatible with the following environment configuration
 - Global Administrator permissions to approve required API access:
   - Windows Azure Service Management API: user_impersonation
   - Application Insights API: user_impersonation
+
+### Required Permissions
+
+| resource | scope|
+|-|-|
+|Windows Azure Service Management API|user_impersonation|
+|Application Insights API|user_impersonation|
 
 ## Minimal Path to Awesome
 
@@ -129,6 +139,19 @@ By default, caching duration is set to:
 
 Cache duration for **Application Insights Dashboard** may be extended or disabled using web part properties panel. In case you want to delete the cache manually, the key names for this solution start with **spfxDashboard**.
 
+### Rate Limit
+
+This solution is using `clienttype` header to avoid using general tenant limits and to avoid the error 429 `Too many requests. Please retry.`
+
+The **default rate limits** when querying cost management API **with/without** the `clienttype` parameter are:
+
+| Response header |without `clienttype`| with `clienttype`|
+|-|-|-|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`clienttype-requests`|0|1995|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`entity-requests`|2|0|
+|x-ms-ratelimit-remaining-microsoft.costmanagement-`tenant-requests`|18|15|
+
+The Cost Management API requests are still a subject to the rate limits. The above response headers, along with `x-ms-ratelimit-microsoft.costmanagement-qpu-consumed` (QPUs consumed by an API call) and `x-ms-ratelimit-microsoft.costmanagement-qpu-remaining` (list of remaining quotas) are printed in the browser console whenever a request to the API has been made
 
 ## Accessing Application Insights Data
 
@@ -200,6 +223,12 @@ If you encounter any issues using this sample, [create a new issue](https://gith
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-dashboards&template=question.yml&sample=react-dashboards&authors=@kkazala&title=react-dashboards%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-dashboards&template=suggestion.yml&sample=react-dashboards&authors=@kkazala&title=react-dashboards%20-%20).
+
+#### Developer resources
+
+- [Build your first app with SPFx (Teams)](https://learn.microsoft.com/en-us/microsoftteams/platform/sbs-gs-spfx?tabs=vscode%2Cviscode)
+- [Microsoft 365 Developer Proxy](https://github.com/microsoft/m365-developer-proxy)
+- [How to use SPFx powered Microsoft Teams apps in Outlook and Office](https://pnp.github.io/blog/post/spfx-08-spfx-powered-teams-solutions-outlook-office/)
 
 ## Disclaimer
 

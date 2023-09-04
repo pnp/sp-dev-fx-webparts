@@ -7,8 +7,12 @@ const theme = (process.env.NODE_ENV !== 'production')
     })
     : getTheme();
 
-const padding4px = theme.spacing.s2;
-const padding8px = theme.spacing.s1;
+const spacing4px = theme.spacing.s2;
+const spacing8px = theme.spacing.s1;
+const spacing16px = theme.spacing.m;
+const spacing20px = theme.spacing.l1;
+// const spacing32px = theme.spacing.l2;
+
 const fontSmall = theme.fonts.small.fontSize;
 const minWidth=280;
 
@@ -21,7 +25,9 @@ const getColorRGBA = (color: string, opacity: string | number): string => {
     return `rgba(${col.r},${col.g},${col.b},${opacity})`;
 }
 
-const stackTokens: IStackTokens = { childrenGap: `${padding8px} ${padding8px}` }; //rowGap columnGap 8px 4px
+const teamsPadding = `0px ${spacing16px} 0px ${spacing20px}`
+
+const stackTokens: IStackTokens = { childrenGap: `${spacing8px} ${spacing8px}` }; //rowGap columnGap 8px 4px
 const stackStylesMain: Partial<IStackStyles> = {
     root: {
         backgroundColor: 'inherit'
@@ -40,8 +46,8 @@ const stackStylesDatePicker: Partial<IStackStyles> = {
         backgroundColor: theme.palette.neutralQuaternary,
         paddingTop: 1,
         paddingBottom: 1,
-        paddingLeft: padding8px,
-        paddingRight: padding8px
+        paddingLeft: spacing8px,
+        paddingRight: spacing8px
     },
 }
 
@@ -62,17 +68,17 @@ const stackItemStyles100: Partial<IStackItemStyles> = {
 }
 const stackItemStyles50: Partial<IStackItemStyles> = {
     root: {
-        width: `calc(50% - ${padding8px})`,
+        width: `calc(50% - ${spacing8px})`,
     }
 }
 const stackItemStyles66: Partial<IStackItemStyles> = {
     root: {
-        width: `calc(60% - ${padding4px})`,
+        width: `calc(60% - ${spacing4px})`,
     }
 }
 const stackItemStyles33: Partial<IStackItemStyles> = {
     root: {
-        width: `calc(30% - ${padding4px})`,
+        width: `calc(30% - ${spacing4px})`,
     }
 }
 
@@ -95,7 +101,7 @@ const pivotStylesDashboard: Partial<IPivotStyles> = {
         flexFlow:'wrap'
     },
     itemContainer: {
-        padding: padding8px,
+        padding: spacing8px,
         paddingTop:0,
         backgroundColor: theme.palette.neutralTertiaryAlt
     }
@@ -184,20 +190,8 @@ const colorPickerStyles: Partial<IChoiceGroupStyles> = {
 }
 
 export {
-    theme,
-    stackTokens,
-    heatmapStyles,
-    datePickerStyles,
-    dashboardStyles,
-    stackStyles,
-    stackStylesMain,
-    shimmerStyleChart,
-    transparentTheme,
-    chartTheme,
-    disabledPickerStyle,
-    colorPickerStyles,
-    linkStyles,
-    getColorRGB,
-    getColorRGBA,
+    chartTheme, colorPickerStyles, dashboardStyles, datePickerStyles, disabledPickerStyle, getColorRGB,
+    getColorRGBA, heatmapStyles, linkStyles, shimmerStyleChart, stackStyles,
+    stackStylesMain, stackTokens, teamsPadding, theme, transparentTheme
 };
 
