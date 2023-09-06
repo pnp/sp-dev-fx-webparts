@@ -4,6 +4,10 @@
 
 This sample empowers users to effortlessly download multiple documents as a single compressed ZIP file.
 
+![screenshot](./assets/screenshot1.png)
+
+## Demo
+
 ![demo](./assets/MultipleDownloadsWebPartDemo.gif)
 
 ## Used SharePoint Framework Version
