@@ -104,7 +104,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-        let webPartOptions: IPropertyPaneField<any>[] = [
+        const webPartOptions: IPropertyPaneField<any>[] = [
             PropertyPaneTextField("title", {
                 label: "Title to show in edit mode",
                 value: this.properties.title
@@ -122,15 +122,15 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 offText: "Disabled"
             }),
             PropertyPaneToggle('useExternalScript', {
-                label: 'Use an external HTML Code instead of inline script',
-                onText: "Use external HTML Code",
+                label: 'Use script from an external URL instead of inline script',
+                onText: "Use external script",
                 offText: "Use inline script"
             }),
         ];
 
         if (this.properties.useExternalScript) {
             webPartOptions.push(PropertyPaneTextField("externalScript", {
-                label: "External HTML Code URL",
+                label: "Script URL",
                 value: this.properties.externalScript,
             }));
         } else {
@@ -138,7 +138,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         }
 
         if (this.context.sdks.microsoftTeams) {
-            let config = PropertyPaneToggle("teamsContext", {
+            const config = PropertyPaneToggle("teamsContext", {
                 label: "Enable teams context as _teamsContexInfo",
                 checked: this.properties.teamsContext,
                 onText: "Enabled",
@@ -201,7 +201,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     private async executeScript(element: HTMLElement) {
         // clean up added script tags in case of smart re-load
         const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        let scriptTags = headTag.getElementsByTagName("script");
+        const scriptTags = headTag.getElementsByTagName("script");
         for (let i = 0; i < scriptTags.length; i++) {
             const scriptTag = scriptTags[i];
             if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {

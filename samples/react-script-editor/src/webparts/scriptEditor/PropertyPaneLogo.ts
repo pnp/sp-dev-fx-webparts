@@ -15,7 +15,7 @@ export class PropertyPaneLogo implements IPropertyPaneField<IPropertyPaneCustomF
     private onRender(elem: HTMLElement): void {
         elem.innerHTML = `
     <div style="margin-top: 30px">
-      <div style="float:right">Author: <a href="https://twitter.com/mikaelsvenson" tabindex="-1">Mikael Svenson</a></div>
+      <div style="float:right">Web part developer: <a href="https://twitter.com/mikaelsvenson" tabindex="-1">Mikael Svenson</a></div>
     </div>`;
     }
 }
