@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O3C - Azure Connect",
+    "id": "57102b15-17aa-4b28-86f6-eceffda7bcec",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "O3C - Azure Connect description"
+      },
+      "longDescription": {
+        "default": "O3C - Azure Connect description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O3C - Azure Connect Feature",
+        "description": "The feature that activates elements of the O3C - Azure Connect solution.",
+        "id": "6b21c147-a385-4793-bf80-3ceb691deae4",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "o3c-apim-chatpoc-sp",
+        "scope": "user_impersonation"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o3c-azureconnect.sppkg"
+  }
+}
