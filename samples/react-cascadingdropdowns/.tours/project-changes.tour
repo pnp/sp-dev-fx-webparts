@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Project changes",
+  "steps": [
+    {
+      "file": ".nvmrc",
+      "description": "Using an `.nvmrc` will help store the version of Node.js we used to build this project and automatically load the right version if using nvm, or nvs.\r\n\r\nIf using *nvm*, use the following command:\r\n\r\n>> nvm use\r\n\r\nIf using *nvs*, the command is similar:\r\n\r\n>> nvs use",
+      "line": 1,
+      "title": "Auto-change Node version"
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Same thing for `_environmentMessage`, we renamed it to follow coding standards.",
+      "line": 24,
+      "title": "Rename _environmentMessage"
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "The generated code uses `_isDarkTheme`, but [TypeScript coding guidelines](https://github.com/microsoft/TypeScript/wiki/Coding-guidelines) says not to use `_` for private variables or methods, so we're renaming it to `isDarkTheme`.",
+      "line": 23,
+      "title": "Rename scaffolded variables"
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "We also renamed `_getEnvironmentMessage` to follow conventions.",
+      "line": 176,
+      "title": "Rename _getEnvironmentMessage method"
+    },
+    {
+      "file": ".devcontainer/devcontainer.json",
+      "description": "Added a remote container to make it easier to test without changing Node.js.",
+      "line": 3,
+      "title": "Added remote container"
+    }
+  ]
+}

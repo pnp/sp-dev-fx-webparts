@@ -1,0 +1,208 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Cascading Dropdowns",
+  "steps": [
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.manifest.json",
+      "description": "Replace the default `description` property with a new parent property (we named ours `listName`)",
+      "line": 25
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Define a web part property to store your parent property",
+      "line": 18
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Update the render method to pass the parent property to the child component",
+      "line": 35
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Change the default `description` property to a `PropertyPaneDropdown` pointing to your parent property",
+      "selection": {
+        "start": {
+          "line": 88,
+          "character": 17
+        },
+        "end": {
+          "line": 92,
+          "character": 20
+        }
+      }
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Change the `PropertyPaneTextField` import to a `PropertyPaneDropdown` (unless, of course, you are using a `PropertyPaneTextField` somewhere else in your code). Also add an import for `IPropertyPaneDropdownOption` to load your options.",
+      "selection": {
+        "start": {
+          "line": 11,
+          "character": 1
+        },
+        "end": {
+          "line": 15,
+          "character": 38
+        }
+      }
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add a new variable to store information about all available choices in the parent dropdown",
+      "line": 25
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "This variable determines whether the parent dropdown is enabled or not. Until the web part retrieves the information about the choices available for the parent dropdown, it should be disabled.",
+      "line": 27
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add a function to load the choices for your parent dropdown.",
+      "line": 162
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "We use a timeout to make it look like we're retrieving data -- for demo purposes only. You would load your data using any method you wish to use. Making the method asynchronous ensures that the web part does not \"freeze\" while we're loading.",
+      "line": 165
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add a method to load the data when the property pane is displayed.",
+      "line": 107
+    },
+    {
+      "file": "src/webparts/listItems/components/IListItemsProps.ts",
+      "description": "Add your parent property to your child component's props so you can pass it",
+      "line": 2
+    },
+    {
+      "file": "src/webparts/listItems/loc/mystrings.d.ts",
+      "description": "Add a localized string for the parent property",
+      "line": 4
+    },
+    {
+      "file": "src/webparts/listItems/loc/en-us.js",
+      "description": "Add the label you want to show for the parent property",
+      "line": 6
+    },
+    {
+      "file": "src/webparts/listItems/components/ListItems.tsx",
+      "description": "We display the parent property in the web part only for demo purposes",
+      "line": 23
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.manifest.json",
+      "description": "Add a child property for your child dropdown. We used `itemName` for our child property.",
+      "line": 26
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add the child property to your web part props",
+      "line": 19
+    },
+    {
+      "file": "src/webparts/listItems/components/IListItemsProps.ts",
+      "description": "Add the child property to your child component props so you can pass it to the child component.",
+      "line": 3
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Pass the child prop to the child component",
+      "line": 36
+    },
+    {
+      "file": "src/webparts/listItems/loc/mystrings.d.ts",
+      "description": "Add a field label for your child dropdown.",
+      "line": 5
+    },
+    {
+      "file": "src/webparts/listItems/loc/en-us.js",
+      "description": "Define the text for your child dropdown.",
+      "line": 7
+    },
+    {
+      "file": "src/webparts/listItems/components/ListItems.tsx",
+      "description": "Optional: render the child value in your web part.",
+      "line": 24
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add a variable to store the possible choices for you child dropdown.",
+      "line": 26
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Disable your child dropdown until it is populated.",
+      "line": 28
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add your child dropdown.",
+      "selection": {
+        "start": {
+          "line": 93,
+          "character": 17
+        },
+        "end": {
+          "line": 98,
+          "character": 19
+        }
+      }
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Add method to load items for your child dropdown.",
+      "line": 216
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Again, we're using a timeout to make it look like we're loading data dynamically. Use your own method to load choices.",
+      "line": 226
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Load the child dropdowns choices.",
+      "line": 129
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Show the spinning wheel while we're loading data.",
+      "line": 120
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Refresh the property pane to display changes.",
+      "line": 121
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Use `onPropertyPaneFieldChanged` to react to the changing parent dropdown.",
+      "line": 139
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Show the spinning wheel to indicate we're working.",
+      "line": 142
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Show the spinning wheel to indicate we're working.",
+      "line": 142
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "If the parent dropdown changes, make sure to reset the value for the child dropdown.",
+      "line": 148
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Normally, you wouldn't need to bind the selected key, but you definitely need to bind the `selectedKey` property of the child dropdown to the value of the child property to ensure the changes to the parent dropdown are reflected to the child dropdown in the property pane.",
+      "line": 97
+    },
+    {
+      "file": "src/webparts/listItems/ListItemsWebPart.ts",
+      "description": "Normally, you'd want to use `undefined` to handle variables that are not yet set, but dropdowns don't seem to update when you set their `selectedKey` to `undefined`; an empty string, however, works.",
+      "line": 24
+    }
+  ]
+}
