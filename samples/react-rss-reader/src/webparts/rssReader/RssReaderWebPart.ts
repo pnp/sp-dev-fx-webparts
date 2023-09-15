@@ -259,9 +259,6 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
    */
   private initializeRequiredProperties() {
 
-    //require an initial feed service
-    this.properties.feedService = this.properties.feedService ? this.properties.feedService : FeedServiceOption.Rss2Json;
-
     this.properties.useCorsProxy = this.properties.useCorsProxy ? true : false;
     this.properties.corsProxyUrl = this.properties.corsProxyUrl ? this.properties.corsProxyUrl : "";
     this.properties.disableCorsMode = this.properties.disableCorsMode ? true : false;

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-graph-webpart-report",
+        "source": "pnp",
+        "title": "Web Part Report",
+        "shortDescription": "This sample web part shows a report of the web parts used on the current site.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-webpart-report",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-webpart-report",
+        "longDescription": [
+            "This sample web part shows a report of the web parts used on the current site."
+        ],
+        "creationDateTime": "2023-05-13",
+        "updateDateTime": "2023-07-11",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.17.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/Animated.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 200,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/chartView.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 300,
+                "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/listView.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "a1mery",
+                "pictureUrl": "https://github.com/a1mery.png",
+                "name": "Aimery Thomas"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

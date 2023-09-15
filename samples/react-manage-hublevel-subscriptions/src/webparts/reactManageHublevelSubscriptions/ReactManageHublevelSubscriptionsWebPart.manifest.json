@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "dd98f5af-57c7-47fc-ac58-a754206f7cf2",
+  "alias": "ReactManageHublevelSubscriptionsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "react-manage-hublevel-list-subscriptions" },
+    "description": { "default": "react-manage-hublevel-list-subscriptions description" },
+    "officeFabricIconFontName": "AzureServiceEndpoint",
+    "properties": {
+      "description": "react-manage-hublevel-list-subscriptions",
+      "WebpartTitle": "Subscriptions Manager"
+    }
+  }]
+}

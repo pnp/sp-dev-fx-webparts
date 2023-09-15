@@ -48,7 +48,11 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
 
   protected async onInit(): Promise<void> {
     await super.onInit();
-    sp.setup(this.context);
+
+    sp.setup({
+      spfxContext: this.context as any
+    }
+    );
   }
 
   public constructor() {
@@ -259,7 +263,7 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
                   orderBy: PropertyFieldListPickerOrderBy.Title,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  context: this.context,
+                  context: this.context as any,
                   onGetErrorMessage: this.checkForDocumentLibrary.bind(this),
                   deferredValidationTime: 0,
                   key: 'docLibFieldId',

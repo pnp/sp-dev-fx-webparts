@@ -12,7 +12,8 @@
       "- Support for image fields",
       "- Support for hyperlink fields",
       "- Support for currency",
-      "- Improved support for dates"
+      "- Improved support for dates",
+      "- Support for Multiline text fields"
     ],
     "creationDateTime": "2021-03-30",
     "updateDateTime": "2023-03-06",
@@ -69,6 +70,12 @@
         "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
         "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "company": "Tietoevry, Sweden",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/47456098?v=4",
+        "name": "Nishkalank Bezawada"
       }
     ],
     "references": [

@@ -9,7 +9,7 @@
       "A RSS Reader original based on work completed by Olivier Carpentier\u0027s"
     ],
     "creationDateTime": "2020-11-22",
-    "updateDateTime": "2023-04-21",
+    "updateDateTime": "2023-08-18",
     "products": [
       "SharePoint"
     ],
@@ -56,10 +56,10 @@
         "name": "Abderahman Moujahid"
       },
       {
-        "gitHubAccount": "djsladi",
-        "pictureUrl": "https://github.com/djsladi.png",
-        "name": "Kalle Mansikkaniemi"
-      }
+          "gitHubAccount": "djsladi",
+          "name": "Kalle Mansikkaniemi",
+          "pictureUrl": "https://github.com/djsladi.png"
+          }
     ],
     "references": [
       {

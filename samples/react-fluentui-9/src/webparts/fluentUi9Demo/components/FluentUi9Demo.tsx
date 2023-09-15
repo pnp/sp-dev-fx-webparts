@@ -2,9 +2,8 @@ import * as React from 'react';
 import styles from './FluentUi9Demo.module.scss';
 import { IFluentUi9DemoProps } from './IFluentUi9DemoProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, Divider, Label, Input, Checkbox, RadioGroup, Radio, Switch, Body1, Caption1, CompoundButton, Menu, MenuButtonProps, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, Divider, Label, Input, Checkbox, RadioGroup, Radio, Switch, Body1, Caption1, CompoundButton, Menu, MenuButtonProps, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton, Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
 import { ResponseType } from "@microsoft/microsoft-graph-clientv1";
 import { AppMode } from '../FluentUi9DemoWebPart';
@@ -12,7 +11,7 @@ import { AppMode } from '../FluentUi9DemoWebPart';
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactElement<IFluentUi9DemoProps> {
-  const { isDarkTheme, hasTeamsContext, userDisplayName, appMode } = props;
+  const { isDarkTheme, userDisplayName, appMode } = props;
   const [tab, setTab] = React.useState<string | unknown>("buttons");
   const [me, setMe] = React.useState<string | undefined>();
   const outlineId = useId('input-outline');
@@ -49,7 +48,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
   }, []);
 
   return (
-    <section className={`${styles.fluentUi9Demo} ${hasTeamsContext ? styles.teams : ''}`}>
+    <section>
       <div className={styles.welcome}>
         <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
         <h2>Well done, {escape(userDisplayName)}!</h2>

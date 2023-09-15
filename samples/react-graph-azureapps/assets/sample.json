@@ -1,0 +1,56 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-graph-azureapps",
+        "source": "pnp",
+        "title": "Azure Apps",
+        "shortDescription": "This sample web part shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this web part.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",
+        "longDescription": [
+            "This sample web part shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this web part."
+        ],
+        "creationDateTime": "2023-05-07",
+        "updateDateTime": "2023-05-07",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.16.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-azureapps/assets/Add-New-App.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-azureapps/assets/Edit-App.gif",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "Diksha-Bhura",
+                "pictureUrl": "https://github.com/Diksha-Bhura.png",
+                "name": "Diksha Bhura"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

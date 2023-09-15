@@ -9,7 +9,7 @@
       "The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more."
     ],
     "creationDateTime": "2021-01-07",
-    "updateDateTime": "2021-01-07",
+    "updateDateTime": "2023-05-04",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.11.0"
       }
     ],
     "thumbnails": [
@@ -136,7 +136,12 @@
         "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
         "name": "Abderahman Moujahid"
-      }
+      },
+      {
+          "gitHubAccount": "ChrisLizon",
+          "name": "Chris Lizon",
+          "pictureUrl": "https://github.com/ChrisLizon.png"
+          }
     ],
     "references": [
       {

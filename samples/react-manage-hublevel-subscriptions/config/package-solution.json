@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-manage-hublevel-list-subscriptions-client-side-solution",
+    "id": "e2c0325f-7b70-4738-b4cf-568be2bdf627",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nishkalank Bezawada",
+      "websiteUrl": "https://github.com/NishkalankBezawada",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-manage-hublevel-list-subscriptions description"
+      },
+      "longDescription": {
+        "default": "react-manage-hublevel-list-subscriptions description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-manage-hublevel-list-subscriptions Feature",
+        "description": "The feature that activates elements of the react-manage-hublevel-list-subscriptions solution.",
+        "id": "668cceeb-581c-4f11-b14d-2510726c7f2a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-manage-hublevel-list-subscriptions.sppkg"
+  }
+}
