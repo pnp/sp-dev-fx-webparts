@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-enhanced-page-properties-client-side-solution",
+    "name": "Enhanced Page Properties",
     "id": "54ea24ef-5714-4f81-a9e6-e22f70e0c644",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -35,6 +35,6 @@
     ]
   },
   "paths": {
-    "zippedPackage": "solution/react-enhanced-page-properties.sppkg"
+    "zippedPackage": "solution/Enhanced Page Properties.sppkg"
   }
 }
