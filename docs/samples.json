@@ -3119,6 +3119,55 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-advanced-iframe",
+    "source": "pnp",
+    "title": "Advanced IFrame",
+    "shortDescription": "This web part allows users to add a webpage in an IFrame to a modern SharePoint page.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-iframe",
+    "longDescription": [
+      "This web part demonstrates the following features: Adding a web part to  a 'Full-Width' section, resizing the web part to fit the given space of the page, fetching dynamic parameters like the current theme or querystring and passing them to the IFrame."
+    ],
+    "creationDateTime": "2024-08-27",
+    "updateDateTime": "2024-08-27",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.13.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-iframe/assets/advancediframewebpart.gif",
+        "alt": "Advanced IFrame Web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "365knoten",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/365knoten.png",
+        "name": "Sven Sieverding",
+        "twitter": "365knoten"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
     "source": "pnp",
     "title": "Advanced Page Properties",
