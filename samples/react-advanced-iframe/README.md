@@ -1,22 +1,21 @@
-# Advanced IFrame Webpart
+# Advanced IFrame web part
 
 ## Summary
 
-This webpart allows users to add a webpage in an iframe to a modern SharePoint page.
+This web part allows users to add a webpage in an IFrame to a modern SharePoint page.
 
 Main features include:
 
-- The webpart can be embedded in a "Full-Width" section.
-- The webpart only allows pages to be embedded that have been added to the "Allow external iframes" in "HTML Field Security"
-- The webpart resizes the iframe to automatically fit the given space on the page. It keeps the aspect ratio.
-- The webpart can add additional dynamic parameters to the iframe url. These parameters include
-    - Color codes of the current color scheme
-    - Query string parameters
-    - Information about the logged in user
-    - Information about the current page and site
+- The web part can be embedded in a "Full-Width" section.
+- The web part only allows pages to be embedded that have been added to the "Allow external iframes" in "HTML Field Security"
+- The web part resizes the IFrame to automatically fit the given space on the page. It keeps the aspect ratio.
+- The web part can add additional dynamic parameters to the IFrame URL. These parameters include
+  - Color codes of the current color scheme
+  - Query string parameters
+  - Information about the logged in user
+  - Information about the current page and site
 
-![Advanced Iframe Webpart](./images/iframewebpart.png)
-
+![Advanced IFrame web part](./images/iframeweb part.png)
 
 ## Compatibility
 
@@ -39,13 +38,12 @@ Tested with: Node.js v14.21.2
 
 ## Applies to
 
-* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Contributors
 
-* [Sven Sieverding](https://github.com/365knoten)
-
+- [Sven Sieverding](https://github.com/365knoten)
 
 ## Version history
 
@@ -68,7 +66,8 @@ Version|Date|Comments
   - `gulp package-solution --ship`
 
 ### Create a sample PowerApp to test the functions
-First create a new canvas app, then set "Screen1.Fill" to 
+
+First create a new canvas app, then set "Screen1.Fill" to
 
 ```PowerFX
 ColorValue("#"&Param("bodyBackground"))
@@ -80,64 +79,58 @@ This will set the background color of the app to the same color as the section i
 "Hello "&Param("greeting")
 ```
 
-and it's "Color" property to 
+and it's "Color" property to
 
 ```PowerFX
 ColorValue("#"&Param("bodySubtext"))
 ```
 
 This will set the text color of the label to the text color in the section in SharePoint and the value of the label to "Hello" concatenated with what has been passed with the query string parameter "greeting".
-Finally publish the app and copy the app url. 
-
+Finally publish the app and copy the app URL.
 
 Create a new page in SharePoint and add a new Full-Width section. Set the background color of your section to anything else but white.
-Add the "Advanced Iframe Webpart" here and configure it with the PowerApp url. Append this to the URL
+Add the "Advanced IFrame web part" here and configure it with the PowerApp URL. Append this to the URL
 
-```Url
+```url
 &bodyBackground={{color.bodyBackground}}&bodySubtext={{color.bodySubtext}}&greeting={{query.greeting}}
 ```
 
 Publish the Page
 
-![Advanced Iframe Webpart](./images/advancediframewebpart.gif)
-
-
+![Advanced IFrame web part](./images/advancediframeweb part.gif)
 
 ## Web Parts Configuration
 
-### Advanced IFrame Webpart
+### Advanced IFrame web part
 
 ![Property Pane](./images/propertypane.png)
 
 #### Settings
 
-Remember that only urls are supported that have been allowed by the site collection administrator in "HTML Field Security"
+Remember that only URLs are supported that have been allowed by the site collection administrator in "HTML Field Security"
 
-Setting | Description 
+Setting | Description
 -------|----
-Aspect Ratio | The aspect ratio that the iframe should use. Valid values are "16/09" (Default) and "09/16"
-Iframe Url | Enter the url to the page you want to embed using this webpart. You can use Handlebars syntax to pass additional parameters to the url 
-
+Aspect Ratio | The aspect ratio that the IFrame should use. Valid values are "16/09" (Default) and "09/16"
+IFrame URL | Enter the URL to the page you want to embed using this web part. You can use Handlebars syntax to pass additional parameters to the URL
 
 #### Query string parameters
 
-You can append any query string parameter "param" as "{{query.param}}" to the url
-
+You can append any query string parameter "param" as "{{query.param}}" to the URL
 
 #### User parameters
 
-You can add these parameters to the url to pass information about the current user to the page
+You can add these parameters to the URL to pass information about the current user to the page
 
 |Key | Example |
 -------|----
 {{user.name}} |Sven Sieverding
-{{user.email}} |Sven@domain.com
-{{user.loginName}} | sven@domain.com
-
+{{user.email}} |<Sven@domain.com>
+{{user.loginName}} | <sven@domain.com>
 
 #### Site parameters
 
-You can add these parameters to the url to pass information about the current site to the page
+You can add these parameters to the URL to pass information about the current site to the page
 
 |Key | Example |
 -------|----
@@ -146,16 +139,15 @@ You can add these parameters to the url to pass information about the current si
 
 #### UI culture parameters
 
-You can add these parameters to the url to pass information about the current ui culture to the page
+You can add these parameters to the URL to pass information about the current ui culture to the page
 
 |Key | Example |
 -------|----
 {{culture.currentCultureName}} | de-DE
 
-
 #### Theme parameters
 
-You can add these parameters to the url to pass information about the current ui theme to the page
+You can add these parameters to the URL to pass information about the current ui theme to the page
 
 |Key | Example |
 -------|----
@@ -263,20 +255,17 @@ You can add these parameters to the url to pass information about the current ui
 {{color.listTextColor}} | 323130
 {{color.warningText}} | 323130
 
-
-
 ## Features
+
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Get the current section theme and react to theme changes.
-- Get the current webpart width and react to width changes.
+- Get the current web part width and react to width changes.
 - Retrieve information about the current user from the page context.
 - Retrieve information about the current UI culture from the page context.
 - Retrieve information about the current site from the page context.
 - Creating and using a service
-- Fetching the "ScriptSaveDomains", the collection of all domains where iframes are allowed from.
-
-
+- Fetching the "ScriptSaveDomains", the collection of all domains where IFrames are allowed from.
 
 ## Help
 
@@ -284,18 +273,18 @@ We do not support samples, but we this community is always willing to help, and 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/labels/advanced-iframe-webpart) to see if anybody else is having the same issues.
+You can try looking at [issues related to this sample](<https://github.com/pnp/sp-dev-fx-webparts/labels/react-advanced-iframe) to see if anybody else is having the same issues.
 
-You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=advanced-iframe-webpart) and see what the community is saying.
+You can also try looking at [discussions related to this sample](<https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-advanced-iframe) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20advanced-iframe-webpart&template=bug-report.yml&sample=advanced-iframe-webpart&authors=@365knoten&title=advanced-iframe-webpart%20-%20).
+If you encounter any issues while using this sample, [create a new issue](<https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-advanced-iframe-&template=bug-report.yml&sample=react-advanced-iframe&authors=@365knoten&title=react-advanced-iframe%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20advanced-iframe-webpart&template=question.yml&sample=advanced-iframe-webpart&authors=@365knoten&title=advanced-iframe-webpart%20-%20).
+For questions regarding this sample, [create a new question](<https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-advanced-iframe-web&template=question.yml&sample=react-advanced-iframe&authors=@365knoten&title=react-advanced-iframe%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20advanced-iframe-webpart&template=question.yml&sample=advanced-iframe-webpart&authors=@365knoten&title=advanced-iframe-webpart%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](<https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-advanced-iframe&template=question.yml&sample=react-advanced-iframe&authors=@365knoten&title=react-advanced-iframe%20-%20).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/advanced-iframe-webpart" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-web parts/samples/react-advanced-iframe" />
