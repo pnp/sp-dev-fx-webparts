@@ -2,13 +2,13 @@
 
 ## Summary
 
-This SharePoint Framework (SPFx) web part allows you to access securely Azure stroage table data directly from a SharePoint Framework (SPFx) web part using Azure API Management (APIM). This scenario is useful when you want to provide a seamless user experience for your application without exposing your backend services or credentials. This is a great way to simplify and secure your web app’s communication with the cloud.
+This SharePoint Framework (SPFx) web part allows you to access securely Azure storage table data directly from a SharePoint Framework (SPFx) web part using Azure API Management (APIM). This scenario is useful when you want to provide a seamless user experience for your application without exposing your backend services or credentials. This is a great way to simplify and secure your web app’s communication with the cloud.
 
 ## Solution Architecture
 
 The basic flow is as follows:
 
-- The SharePoint Framework (SPFx) webpart authenticates with Azure Active Directory (AAD) and obtains an access token.
+- The SharePoint Framework (SPFx) web part authenticates with Azure Active Directory (AAD) and obtains an access token.
 - The SharePoint Framework (SPFx) makes a request to APIM with the access token in the header.
 - APIM validates the access token using AAD token validation and CORS policies.
 - APIM accesses the Azure resource via Azure managed identities and returns the response to the SharePoint Framework (SPFx) webpart.
@@ -56,13 +56,13 @@ Let's go through each step in detail.
 
 ### 1. Create an Azure API Management resource
 
-Create an Azure API Management resource [Click here for more detail](https://learn.microsoft.com/en-us/azure/api-management/get-started-create-service-instance)
+Create an Azure API Management resource [Click here for more detail](https://learn.microsoft.com/azure/api-management/get-started-create-service-instance)
 
-### 2. Create a Azure storge account
+### 2. Create a Azure storage account
 
-Create a Azure storge account [Click here for more detail](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal).
+Create a Azure storage account [Click here for more detail](https://learn.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal).
 
-### 3. Configure Azure Managed Identities.
+### 3. Configure Azure Managed Identities
 
 The next step is to configure Azure Managed Identities. This will allow our API to access our Azure resources without storing any credentials or secrets in our code. To do this, follow these steps:
 
@@ -76,22 +76,22 @@ The next step is to configure Azure Managed Identities. This will allow our API 
 
 The next step is to create an Azure AD app. This will allow us to authenticate our users with Azure AD and get an access token that we can use to call our Azure API management endpoint. To do this, follow these steps:
 
-1.  In the Azure portal, search for and select App registrations.
-2.  Select New Registration.
-3.  When the Register an application page appears, enter your application's registration information:
+1. In the Azure portal, search for and select App registrations.
+2. Select New Registration.
+3. When the Register an application page appears, enter your application's registration information:
     • In the Name section, enter a meaningful application name that will be displayed to users of the app, such as the backend-app.
     • In the Supported Account Types section, select an option that suits your scenario.
-4.  Leave the Redirect URI section empty. Later, you'll add a redirect URI generated in the OAuth 2.0 configuration in API Management.
-5.  Select Register to create the application.
-6.  On the app Overview page, find the Application (client) ID value and record it for later.
-7.  Under the Manage section of the side menu, select Expose an API and set the Application ID URI as below. Record this value for later.
+4. Leave the Redirect URI section empty. Later, you'll add a redirect URI generated in the OAuth 2.0 configuration in API Management.
+5. Select Register to create the application.
+6. On the app Overview page, find the Application (client) ID value and record it for later.
+7. Under the Manage section of the side menu, select Expose an API and set the Application ID URI as below. Record this value for later.
     `api://[Client ID]/[Tenant Name].sharepoint.com`
-8.  Select the Add a Scope button to display the Add a Scope page:
+8. Select the Add a Scope button to display the Add a Scope page:
     a. Enter a Scope name for a scope that's supported by the API (for example, **user_impersonation**).
     b. In Who can consent? Make a selection for your scenario, such as Admins and users. Select Admins only for higher privileged scenarios.
     c. Enter the Admin consent display name and Admin consent description.
     d. Make sure the Enabled scope state is selected.
-9.  Select the Add Scope button to create the scope.
+9. Select the Add Scope button to create the scope.
 10. Repeat the previous two steps to add all scopes supported by your API.
 11. Once the scopes are created, make a note of them for use in a subsequent step.
 
@@ -103,9 +103,9 @@ The next step is to create an API for our Azure Storage account in our API Manag
 2. From the left menu, select + Add API.
 3. Select HTTP from the list.
 
-![Manually define HTTP API](./assets/blank-api-1.png "Manually define HTTP API")
+    ![Manually define HTTP API](./assets/blank-api-1.png "Manually define HTTP API")
 
-4. Enter the backend Web service URL (In our case, Azure storage table URI, `https://[storageaccountname].table.core.windows.net/`) and other settings for the API. The settings are explained in the [Import and publish your first API](https://learn.microsoft.com/en-us/azure/api-management/import-and-publish#import-and-publish-a-backend-api) tutorial.
+4. Enter the backend Web service URL (In our case, Azure storage table URI, `https://[storageaccountname].table.core.windows.net/`) and other settings for the API. The settings are explained in the [Import and publish your first API](https://learn.microsoft.com/azure/api-management/import-and-publish#import-and-publish-a-backend-api) tutorial.
 5. Select Create.
 
 At this point, you have no operations in API Management that map to the operations in your backend API. If you call an operation that is exposed through the back end but not through the API Management, you get a 404.
@@ -223,37 +223,60 @@ return String.Format("https://[AzureStorageName].table.core.windows.net/{0}()", 
 2. From your command line, change your current directory to the directory containing this sample (`react-apim-tablestroage`, located under `samples`)
 3. In the command line run:
 
-```cmd
-  `npm install`
-  `gulp bundle`
-  `gulp package-solution`
-```
+    ```cmd
+    npm install
+    gulp bundle
+    gulp package-solution
+    ```
 
 4. Deploy the package to your app catalog
 5. Approve the following API permission request from the SharePoint admin
 
-```JSON
-      {
-        "resource": "o3c-apim-sp",   //name of the Azure AD app
-        "scope": "user_impersonation"
-      }
-```
+    ```JSON
+        {
+            "resource": "o3c-apim-sp",   //name of the Azure AD app
+            "scope": "user_impersonation"
+        }
+    ```
 
-7. In the command-line run:
+6. In the command-line run:
 
-```cmd
-  gulp serve --nobrowser
-```
+    ```cmd
+    gulp serve --nobrowser
+    ```
 
-8. Open the hosted workbench on a SharePoint site - i.e. https://_tenant_.sharepoint.com/site/_sitename_/_layouts/workbench.aspx
+7. Open the hosted workbench on a SharePoint site - i.e. https://_tenant_.sharepoint.com/site/_sitename_/_layouts/workbench.aspx
 
 - Add the [O3C] Azure Connect web part to the page.
 - In the web part properties, configure the following properties
   1. Add Subscription Key (e.g. `2a80a80cf8f7878485588ba887ad85`)
   2. Add AAD App Scope URL (e.g. `api://88784ee-44eee-4b8e-ad72-9918e7777/tenantname.sharepoint.com`)
-  3. Azure Table Storage Endpoint (e.g. https://myapim.azure-api.net/tablestorage)-
+  3. Azure Table Storage Endpoint (e.g. <https://myapim.azure-api.net/tablestorage)->
 - Close the web part properties pane and save and reload the page
 
 ## Features
 
-This SharePoint Framework (SPFx) web part allows you to access securely Azure stroage table data directly from a SharePoint Framework (SPFx) web part using Azure API Management (APIM). This scenario is useful when you want to provide a seamless user experience for your application without exposing your backend services or credentials
+This SharePoint Framework (SPFx) web part allows you to access securely Azure storage table data directly from a SharePoint Framework (SPFx) web part using Azure API Management (APIM). This scenario is useful when you want to provide a seamless user experience for your application without exposing your backend services or credentials
+
+## Help
+
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-apim-tablestorage%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-apim-tablestorage) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-apim-tablestorage&template=bug-report.yml&sample=react-apim-tablestorage&authors=@ejazhussain&title=react-apim-tablestorage%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-apim-tablestorage&template=question.yml&sample=react-apim-tablestorage&authors=@ejazhussain&title=react-apim-tablestorage%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-apim-tablestorage&template=suggestion.yml&sample=react-apim-tablestorage&authors=@ejazhussain&title=react-apim-tablestorage%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-apim-tablestorage" />
