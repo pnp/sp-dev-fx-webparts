@@ -101,7 +101,7 @@ const getEventTypeValue = (event: Event) => {
     return 3; // 3 = cancelled this one occurrence of a series
 }
 
-const toUpdateListItem = (event: Event): IEventUpdateListItem => {
+const toUpdateListItem = (event: Event, siteTimeZone: ITimeZone): IEventUpdateListItem => {
     const { isNew, isAllDay, isRecurring, isSeriesMaster, isSeriesException } = event;
     return {
         Title: event.title,
@@ -109,20 +109,20 @@ const toUpdateListItem = (event: Event): IEventUpdateListItem => {
         Location: event.location,
         ContactsId: SPField.fromUsers(event.contacts),
         RefinerValuesId: SPField.toLookupMulti(event.refinerValues.get()),
-        EventDate: isAllDay ? SPField.toDateOnly(event.start) : SPField.toDateTime(event.start),
-        EndDate: isAllDay ? SPField.toDateOnly(event.end) : SPField.toDateTime(event.end),
+        EventDate: isAllDay ? SPField.toDateOnly(event.start) : SPField.toDateTime(event.start, siteTimeZone),
+        EndDate: isAllDay ? SPField.toDateOnly(event.end) : SPField.toDateTime(event.end, siteTimeZone),
         fAllDayEvent: event.isAllDay,
         IsConfidential: event.isConfidential,
         RestrictedToAccountsId: SPField.fromUsers(event.restrictedToAccounts),
         ModerationStatus: event.moderationStatus?.name || EventModerationStatus.Pending.name,
         ModeratorId: SPField.fromUser(event.moderator),
-        ModerationTimestamp: SPField.toDateTime(event.moderationTimestamp),
+        ModerationTimestamp: SPField.toDateTime(event.moderationTimestamp, siteTimeZone),
         ModerationMessage: event.moderationMessage,
         fRecurrence: SPField.tofRecurrence(isRecurring),
         EventType: getEventTypeValue(event),
         RecurrenceData: isSeriesMaster ? RecurrenceData.serialize(event.recurrence) : undefined,
         MasterSeriesItemID: isSeriesException ? event.seriesMaster.get()?.id : undefined,
-        RecurrenceID: isSeriesException ? SPField.toDateTime(event.recurrenceExceptionInstanceDate) : undefined,
+        RecurrenceID: isSeriesException ? SPField.toDateTime(event.recurrenceExceptionInstanceDate, siteTimeZone) : undefined,
         UID: isRecurring && isNew ? event.recurrenceUID?.toString() : undefined,
         Duration: event.duration.asSeconds()
     };
@@ -137,6 +137,6 @@ export class EventLoader extends PagedViewLoader<Event> {
 
     protected readonly extractReferencedUsers = (event: Event) => [...event.contacts, ...event.restrictedToAccounts, event.moderator];
     protected readonly toEntity = (row: IEventListItemResult, event: Event) => toEvent(row, event, this.timezones.siteTimeZone, this._refinerValueLoader, this._entitiesById);
-    protected readonly updateListItem = toUpdateListItem;
+    protected readonly updateListItem = (event: Event) => toUpdateListItem(event, this.timezones.siteTimeZone);
     protected readonly diagnosePersistError = (error: any) => ErrorHandler.is_412_PRECONDITION_FAILED(error) ? ErrorDiagnosis.Propogate : ErrorDiagnosis.Critical;
 }

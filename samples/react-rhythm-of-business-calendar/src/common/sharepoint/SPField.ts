@@ -98,8 +98,8 @@ export const fromDateTime = <T>(row: T, fieldName: PropsOfType<T, Query_DateTime
     return value ? moment.tz(value, [moment.ISO_8601, sharepointDateTimeFormat], momentId) : null;
 };
 
-export const toDateTime = (dateTime: Moment): Update_DateTime => {
-    return dateTime ? dateTime.toISOString() : null;
+export const toDateTime = (dateTime: Moment, { momentId }: ITimeZone): Update_DateTime => {
+    return dateTime ? dateTime.tz(momentId, true).toISOString() : null;
 };
 
 export const toDateOnly = (dateTime: Moment): Update_DateTime => {

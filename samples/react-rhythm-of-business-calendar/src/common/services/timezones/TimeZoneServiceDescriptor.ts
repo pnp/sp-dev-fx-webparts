@@ -16,6 +16,7 @@ export interface ITimeZone {
 export interface ITimeZoneService extends IService {
     readonly timeZones: ITimeZone[];
     readonly siteTimeZone: ITimeZone;
+    readonly localTimeZone: ITimeZone;
     timeZoneFromId(id: number): ITimeZone;
     timeZoneForWeb(web?: IWeb): Promise<ITimeZone>;
 }
