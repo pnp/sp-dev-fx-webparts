@@ -24,6 +24,11 @@ Web part pulls all SharePoint News Posts that the logged in user has access to v
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.12](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
@@ -33,16 +38,14 @@ Web part pulls all SharePoint News Posts that the logged in user has access to v
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-News | [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))  |
+- [Alison Collins](https://github.com/ReactIntern) 
 
-# Prerequisites
+## Prerequisites
 
 - Administrative access to Azure AD of Microsoft 365 tenant
 - SharePoint Online tenant
@@ -108,4 +111,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-news&template=question.yml&sample=react-news&authors=@ReactIntern&title=react-news%20-%20).
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/React-News" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/React-News" />

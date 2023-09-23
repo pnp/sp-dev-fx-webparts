@@ -38,8 +38,8 @@ extensions:
 
 ## 適用対象
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 Developer のテナント](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 Developer のテナント](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解決方法
 
@@ -89,4 +89,4 @@ react-msal-msgraph|Elio Struyf (MVP、[U2U](https://www.u2u.be)、[@eliostruyf](
 - REST API を使用した Microsoft Graph との通信
 - React を使用して構築された SharePoint Framework Web パーツを使用した MSAL JS ライブラリの使用
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-msal-msgraph)

@@ -34,6 +34,12 @@ import {
   MockTemplateService } from                               '../../services/TemplateService';
 import { FeedLayoutOption, FeedServiceOption } from        '../../models';
 
+import {
+  ThemeProvider,
+  ThemeChangedEventArgs,
+  IReadonlyTheme
+} from                                                     '@microsoft/sp-component-base';
+
 export interface IRssReaderWebPartProps {
   title: string;
 
@@ -72,11 +78,15 @@ export interface IRssReaderWebPartProps {
   dateFormatLang: string;
   backgroundColor: string;
   fontColor: string;
+  useThemeFontColor: boolean;
+  useThemeBackgroundColor: boolean;
 }
 
 export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWebPartProps> {
   private _templateService: BaseTemplateService;
   private _propertyPage = null;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   /**
    * The template to display at render time
@@ -84,6 +94,15 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
   private _templateContentToDisplay: string;
 
   public onInit(): Promise<void> {
+
+    // Consume the new ThemeProvider service
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+    // If it exists, get the theme variant
+    this._themeVariant = this._themeProvider.tryGetTheme();
+
+    // Register a handler to be notified if the theme variant changes
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
     //Initialize a redux store that uses our custom Reducer & state
     RssHttpClientService.init(this.context);
@@ -141,6 +160,8 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
         backgroundColor: this.properties.backgroundColor,
         fontColor: this.properties.fontColor,
+        useThemeFontColor: this.properties.useThemeFontColor,
+        useThemeBackgroundColor: this.properties.useThemeBackgroundColor,
 
         propertyPane: this.context.propertyPane,
 
@@ -152,7 +173,9 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
         updateProperty: (value: string) => {
           this.properties.title = value;
-        }
+        },
+
+        themeVariant: this._themeVariant
       }
     );
 
@@ -235,9 +258,6 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
    * Initializes the Web Part required properties if there are not present in the manifest (i.e. during an update scenario)
    */
   private initializeRequiredProperties() {
-
-    //require an initial feed service
-    this.properties.feedService = this.properties.feedService ? this.properties.feedService : FeedServiceOption.Rss2Json;
 
     this.properties.useCorsProxy = this.properties.useCorsProxy ? true : false;
     this.properties.corsProxyUrl = this.properties.corsProxyUrl ? this.properties.corsProxyUrl : "";
@@ -516,6 +536,11 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
         iconName: 'Precipitation',
         key: 'rssReaderFontColorField'
       }));
+
+      layoutFields.push(PropertyPaneToggle('useThemeFontColor', {
+        label: strings.UseThemeFontColor
+      }));
+
       layoutFields.push(PropertyFieldColorPicker('backgroundColor', {
         label: strings.BackgroundColorLabel,
         selectedColor: this.properties.backgroundColor,
@@ -526,6 +551,10 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
         style: PropertyFieldColorPickerStyle.Full,
         iconName: 'Precipitation',
         key: 'rssReaderBgColorField'
+      }));
+
+      layoutFields.push(PropertyPaneToggle('useThemeBackgroundColor', {
+        label: strings.UseThemeBackgroundColor
       }));
 
       /*
@@ -603,5 +632,15 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
     }
 
     this._templateContentToDisplay = templateContent;
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 }

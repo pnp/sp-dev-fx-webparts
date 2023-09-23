@@ -35,7 +35,7 @@
     "scriptResources": {
       "microsoft-groups-web-part": {
         "type": "path",
-        "path": "microsoft-groups-web-part_da003a7fb7fd1f14fcb7.js"
+        "path": "microsoft-groups-web-part_c5a309120605c5a62341.js"
       },
       "@microsoft/sp-core-library": {
         "type": "component",
@@ -59,7 +59,7 @@
       },
       "MicrosoftGroupsWebPartStrings": {
         "type": "path",
-        "path": "MicrosoftGroupsWebPartStrings_en-us_b41dd8b4c7f5f69692bd8f24e2b83745.js"
+        "path": "MicrosoftGroupsWebPartStrings_en-us_9cea220c7c0b6131e752012a44ddee44.js"
       }
     }
   }

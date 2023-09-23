@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "react-download-multiple-documents",
+    "libraryId": "75ab4de7-3224-449a-b914-7d0b420598b5",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-download-multiple-documents",
+    "solutionShortDescription": "react-download-multiple-documents description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

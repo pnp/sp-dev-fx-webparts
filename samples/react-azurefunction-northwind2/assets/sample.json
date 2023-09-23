@@ -1,0 +1,50 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2",
+        "source": "pnp",
+        "title": "Consume Northwind Microsoft database from Azure using a Function App ",
+        "shortDescription": "This web part consume an anonymous Function App from an HTTP Trigger using the templates from the Northwind Microsoft DBs",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azurefunction-northwind2",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azurefunction-northwind2",
+        "longDescription": [
+            "This web part consume an anonymous Function App from an HTTP Trigger using the templates from the Northwind Microsoft DBs"
+        ],
+        "creationDateTime": "2022-08-15",
+        "updateDateTime": "2022-08-15",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.15.2"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "jtlivio",
+                "pictureUrl": "https://github.com/jtlivio.png",
+                "name": "Joao Livio"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

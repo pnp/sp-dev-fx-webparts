@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-listview-context-ecb",
+    "libraryId": "8b85b94c-c3d1-47a6-8eff-955d4999151a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-listview-context-ecb",
+    "solutionShortDescription": "react-listview-context-ecb description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

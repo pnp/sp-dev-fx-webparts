@@ -1,0 +1,87 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 1rem;
+  width: -webkit-fill-available;
+}
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px 0px 15px 0px;
+}
+
+.companyName {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.companyAddress {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+.customerDetails {
+  margin-top: 1rem;
+}
+
+.Amount {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.amountDue {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.customerName {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.customerAddress {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 2rem;
+  display: block;
+  white-space: pre-wrap;
+
+}
+
+.customerAddress span {
+  display: block;
+}
+
+.invoiceDate {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.invoiceDetails {
+  text-align: right;
+  margin-left: auto;
+}
+
+.invoiceTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.invoiceNumber {
+  font-size: .9rem;
+  color: #777;
+  margin-bottom: 1.9rem;
+  margin-left: auto;
+}

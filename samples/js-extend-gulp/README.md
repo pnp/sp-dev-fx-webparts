@@ -11,9 +11,10 @@ extensions:
   - SharePoint Framework
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Integrating custom gulp tasks to SharePoint Framwork toolchain
+# Integrating custom gulp tasks to SharePoint Framework toolchain
 
 ## Summary
+
 SharePoint client-side development tools use gulp as the build process task runner to:
 
 - Bundle and minify JavaScript and CSS files.
@@ -32,6 +33,11 @@ Read the following documentation for detailed information on integrating gulp ta
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 0.7.0](https://img.shields.io/badge/SPFx-0.7.0-orange.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -45,12 +51,13 @@ Read the following documentation for detailed information on integrating gulp ta
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 First Release Tenants](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 First Release Tenants](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Pre-requisites
 
 ### GraphicsMagick or ImageMagick
+
 Make sure GraphicsMagick or ImageMagick is installed on your system and properly set up in your PATH.
 
 #### Ubuntu:
@@ -73,11 +80,9 @@ http://www.imagemagick.org/script/binary-releases.php
 
 Confirm that ImageMagick is properly set up by executing convert -help in a terminal.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-extend-gulp | [Chakkaradeep Chandran](https://github.com/chakkaradeep) (@chakkaradeep)
+- [Chakkaradeep Chandran](https://github.com/chakkaradeep) 
 
 ## Version history
 
@@ -115,4 +120,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-extend-gulp" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-extend-gulp" />

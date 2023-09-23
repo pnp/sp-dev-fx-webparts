@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "teams-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/teamsList/TeamsListWebPart.js",
+          "manifest": "./src/webparts/teamsList/TeamsListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TeamsListWebPartStrings": "lib/webparts/teamsList/loc/{locale}.js"
+  }
+}

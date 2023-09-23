@@ -16,7 +16,7 @@ export default class CustomTodoTemplate {
         const title: string = task.title;
         const dueDateTime: Date = (task.dueDateTime) ? new Date(task.dueDateTime.dateTime) : undefined;
         
-        let result: JSX.Element = <div></div>;
+        let result: JSX.Element = <div />;
 
         // If task is not completed
         if (task.status != "completed") {

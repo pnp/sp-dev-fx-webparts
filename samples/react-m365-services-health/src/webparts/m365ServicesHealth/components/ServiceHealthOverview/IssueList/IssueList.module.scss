@@ -1,0 +1,91 @@
+.rowItem {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 12px;
+	font-weight: 400;
+	height: 1.25rem;
+}
+.serviceStatusIcon {
+	line-height: 16px;
+	display: flex;
+}
+
+.healthStatusLink {
+	margin-top: 2px;
+	margin-left: 4px;
+}
+
+.headerText {
+	font-family: inherit;
+	-webkit-font-smoothing: antialiased;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgb(50, 49, 48);
+	line-height: 27px;
+	overflow-wrap: break-word;
+	word-break: break-word;
+	hyphens: none;
+}
+.tableHeaderRow {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	&:hover {
+		cursor: pointer;
+	}
+}
+.content {
+	grid-column-start: 1;
+	grid-row-start: 1;
+	color: rgb(72, 70, 68);
+	text-align: left;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	outline: none;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-image-width: 0px;
+	text-decoration: none;
+	font-size: 12px;
+	background-color: rgb(255, 255, 255);
+	border-bottom: 1px solid rgb(225, 225, 225);
+	vertical-align: baseline;
+	padding: 15px 22px 14px 2px;
+	font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+}
+
+.primaryColumnContainer {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	color: rgb(72, 70, 68);
+	text-align: left;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	outline: none;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-image-width: 0px;
+	text-decoration: none;
+	font-size: 12px;
+	background-color: rgb(255, 255, 255);
+	border-bottom: 1px solid rgb(225, 225, 225);
+	vertical-align: baseline;
+	padding: 15px 22px 14px 2px;
+	font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+}

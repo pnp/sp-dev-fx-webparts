@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import styles from '../CommonControl.module.scss';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { AppInsightsProps } from '../../webparts/appInsightsDashboard/components/AppInsightsDashboard';
 import { TimeSpan, TimeInterval, Segments } from '../enumHelper';
@@ -13,12 +8,12 @@ import SectionTitle from '../components/SectionTitle';
 import CustomPivot from './CustomPivot';
 import Helper from '../Helper';
 
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Icon, IconType } from 'office-ui-fabric-react/lib/Icon';
 import DataList from './DataList';
+import { addDays, IColumn, PivotItem, Icon, DatePicker, css, Spinner, MessageBar, MessageBarType } from '@fluentui/react';
+import { Dictionary, IPageViewDetailProps } from '../CommonProps';
 
-const map: any = require('lodash/map');
+import {map} from 'lodash'
+import { ChartData, ChartOptions } from 'chart.js';
 
 const today: Date = new Date(Date.now());
 const startMaxDate: Date = addDays(today, -1);
@@ -34,24 +29,24 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     const mainProps = React.useContext(AppInsightsProps);
     const [loadingChart, setLoadingChart] = React.useState<boolean>(true);
     const [loadingList, setLoadingList] = React.useState<boolean>(true);
-    const [timespanMenus, setTimeSpanMenus] = React.useState<any[]>([]);
+    const [timespanMenus, setTimeSpanMenus] = React.useState<Dictionary<string>[]>([]);
     const [selTimeSpan, setSelTimeSpan] = React.useState<string>('');
     const [menuClick, setMenuClick] = React.useState<boolean>(false);
     const [noData, setNoData] = React.useState<boolean>(false);
     const [noListData, setNoListData] = React.useState<boolean>(false);
-    const [chartData, setChartData] = React.useState<any>(null);
-    const [chartOptions, setChartOptions] = React.useState<any>(null);
+    const [chartData, setChartData] = React.useState<ChartData>(null);
+    const [chartOptions, setChartOptions] = React.useState<ChartOptions>(null);
     const [startDate, setStartDate] = React.useState<Date>(null);
     const [endDate, setEndDate] = React.useState<Date>(null);
     const [listCols, setListCols] = React.useState<IColumn[]>([]);
-    const [items, setItems] = React.useState<any[]>([]);
+    const [items, setItems] = React.useState<IPageViewDetailProps[]>([]);
 
-    const _loadMenus = () => {
-        let tsMenus: any[] = props.helper.getTimeSpanMenu();
+    const _loadMenus = (): void => {
+        const tsMenus: Dictionary<string>[] = props.helper.getTimeSpanMenu();
         setTimeSpanMenus(tsMenus);
         setSelTimeSpan(tsMenus[4].key);
     };
-    const handleTimeSpanMenuClick = (item: PivotItem) => {
+    const handleTimeSpanMenuClick = (item: PivotItem): void => {
         setMenuClick(true);
         setSelTimeSpan(item.props.itemKey);
         setStartDate(null);
@@ -63,7 +58,7 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
     const handleEndDateChange = (selDate: Date | null | undefined): void => {
         setEndDate(selDate);
     };
-    const _loadUserStatistics = async () => {
+    const _loadUserStatistics = async (): Promise<void> => {
         if (menuClick) setLoadingChart(true);
         let query: string = ``;
         if (startDate && endDate) {
@@ -80,50 +75,50 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                 | order by timestamp asc
             `;
         }
-        let response: any[] = await props.helper.getResponseByQuery(query, (startDate && endDate) ? false : true, TimeSpan[selTimeSpan]);
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const response: any[] = await props.helper.getResponseByQuery(query, (startDate && endDate) ? false : true, TimeSpan[selTimeSpan as keyof typeof TimeSpan]);
         if (response.length > 0) {
-            let results: any[] = [];
-            response.map((res: any[]) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const results: any[] = [];
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            response.map((res: any) => {
                 results.push({
                     oriDate: res[0],
                     date: props.helper.getLocalTime(res[0]),
                     sum: res[1]
                 });
             });
-            const data: Chart.ChartData = {
+            const data: ChartData = {
                 labels: map(results, 'date'),
                 datasets: [
                     {
                         label: 'Total Users',
                         fill: true,
-                        lineTension: 0,
+                        tension:0,
                         data: map(results, 'sum'),
                     }
                 ]
             };
             setChartData(data);
-            const options: Chart.ChartOptions = {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: false,
-                    text: ""
-                },
+            const options :ChartOptions= {
                 responsive: true,
                 animation: {
                     easing: 'easeInQuad'
                 },
-                scales:
-                {
-                    yAxes: [
-                        {
-                            ticks:
-                            {
-                                beginAtZero: true
-                            }
-                        }
-                    ]
+                plugins:{
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: ""
+                    },
+                },
+                scales:{
+                    y: {
+                        min:0
+                    }
                 }
             };
             setChartOptions(options);
@@ -135,35 +130,38 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
             setMenuClick(false);
         }
     };
-    const _generateColumns = () => {
-        let cols: IColumn[] = [];
+
+    const _generateColumns = ():void => {
+        const cols: IColumn[] = [];
         cols.push({
             key: 'user', name: 'User', fieldName: 'user', minWidth: 100, maxWidth: 150,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onRender: (item: any, index: number, column: IColumn) => {
                 return (
                     <div className={styles.textWithIcon}>
                         {item.user ? (
                             <span>{item.user}</span>
                         ) : (
-                                <span>{strings.Msg_NoUser}</span>
-                            )}
+                            <span>{strings.Msg_NoUser}</span>
+                        )}
                     </div>
                 );
             }
         });
         cols.push({
             key: 'Url', name: 'Url', fieldName: 'Url', minWidth: 100, maxWidth: 350,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onRender: (item: any, index: number, column: IColumn) => {
                 return (
                     <div className={styles.textWithIcon}>
                         <div className={styles.fileiconDiv}>
-                            <Icon iconName="FileASPX" ariaLabel={item.Url} iconType={IconType.Default} />
+                            <Icon iconName="FileASPX" aria-label={item.Url}/>
                         </div>
                         {item.Url ? (
                             <a href={item.Url} target="_blank" className={styles.pageLink}>{item.Url}</a>
                         ) : (
-                                <span>{strings.Msg_NoUrl}</span>
-                            )}
+                            <span>{strings.Msg_NoUrl}</span>
+                        )}
                     </div>
                 );
             }
@@ -173,14 +171,15 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
         });
         setListCols(cols);
     };
-    const _loadUsersPageViewsList = async () => {
+
+    const _loadUsersPageViewsList = async (): Promise<void> => {
         if (menuClick) setLoadingList(true);
-        let response: any[] = [];
+        let response: IPageViewDetailProps[] = [];
         if (startDate && endDate) {
             response = await props.helper.getUserPageViews(`${props.helper.getFormattedDate(startDate.toUTCString(), 'YYYY-MM-DD')}/${props.helper.getFormattedDate(addDays(endDate, 1).toUTCString(), 'YYYY-MM-DD')}`,
                 TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
         } else {
-            response = await props.helper.getUserPageViews(TimeSpan[selTimeSpan], TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
+            response = await props.helper.getUserPageViews(TimeSpan[selTimeSpan as keyof typeof TimeSpan], TimeInterval["1 Hour"], [Segments.Cust_UserTitle, Segments.PV_URL]);
         }
         if (response.length > 0) {
             _generateColumns();
@@ -194,15 +193,21 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
         }
     };
 
-    React.useEffect(() => {
-        if (selTimeSpan || (startDate && endDate)) {
-            setNoData(false);
-            setNoListData(false);
-            _loadUserStatistics();
-            _loadUsersPageViewsList();
+    React.useEffect((): void => {
+        const fetchData= async(selTimeSpan:string, startDate:Date, endDate:Date): Promise<void>=>{
+            if (selTimeSpan || (startDate && endDate)) {
+                setNoData(false);
+                setNoListData(false);
+                await _loadUserStatistics();
+                await _loadUsersPageViewsList();
+            }
         }
+        fetchData(selTimeSpan, startDate, endDate)
+            .catch(console.error);  
+
     }, [selTimeSpan, startDate, endDate]);
-    React.useEffect(() => {
+
+    React.useEffect(():void => {
         if (props.helper) {
             _loadMenus();
         }
@@ -253,32 +258,32 @@ const UserStatistics: React.FunctionComponent<IUserStatisticsProps> = (props) =>
                     {loadingList ? (
                         <Spinner label={strings.Msg_LoadList} labelPosition={"bottom"} />
                     ) : (
-                            <>
-                                {!noListData ? (
-                                    <DataList Items={items} Columns={listCols} GroupBy={true} GroupByCol={"date"} CountCol={"count"} />
-                                ) : (
-                                        <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
-                                    )}
-                            </>
-                        )}
+                        <>
+                            {!noListData ? (
+                                <DataList Items={items} Columns={listCols} GroupBy={true} GroupByCol={"date"} CountCol={"count"} />
+                            ) : (
+                                <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
+                            )}
+                        </>
+                    )}
                 </div>
                 <div className={"ms-Grid-col ms-xxxl6 ms-xxl6 ms-xl6 ms-lg6"} style={{ minHeight: '358px' }}>
                     {loadingChart ? (
                         <Spinner label={strings.Msg_LoadChart} labelPosition={"bottom"} />
                     ) : (
-                            <>
-                                {!noData ? (
-                                    <ChartControl
-                                        type={ChartType.Bar}
-                                        data={chartData}
-                                        options={chartOptions}
-                                        className={styles.chart}
-                                    />
-                                ) : (
-                                        <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
-                                    )}
-                            </>
-                        )}
+                        <>
+                            {!noData ? (
+                                <ChartControl
+                                    type={ChartType.Bar}
+                                    data={chartData}
+                                    options={chartOptions}
+                                    className={styles.chart}
+                                />
+                            ) : (
+                                <MessageBar messageBarType={MessageBarType.error}>{strings.Msg_NoData}</MessageBar>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
         </div>

@@ -6,8 +6,7 @@ import * as _ from 'lodash';
 import { useState, useEffect, useRef } from 'react';
 import { PageProperty } from '../models';
 
-import { sp } from "@pnp/sp";
-import { DateTimeFieldFormatType, DateTimeFieldFriendlyFormatType, FieldTypes, IField, IFieldInfo } from "@pnp/sp/fields/types";
+import { getSP } from '../utilities/pnpjs-config';
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/fields";
@@ -28,21 +27,22 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
 
   propsRef.current = props;
 
-  sp.setup({ spfxContext: props.context });
+  const _sp = getSP(propsRef.current.context);
 
   /**
    * refreshProperties
    * @description Gets the actual values for any selected properties, along with critical field metadata and ultimately re-sets the pagePropValues state
    */
   async function refreshProperties () {
-    var newSetOfValues: PageProperty[] = [];
+    const newSetOfValues: PageProperty[] = [];
 
     if (props.selectedProperties !== undefined && props.selectedProperties !== null) {
       Log.Write(`${props.selectedProperties.length.toString()} properties used.`);
 
       // Get the value(s) for the field from the list item itself
-      var allValues: any = {};
-      const sitePagesList = await sp.web.lists.ensureSitePagesLibrary();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let allValues: any = {};
+      const sitePagesList = await _sp.web.lists.ensureSitePagesLibrary();
       if (props.context.pageContext.listItem !== undefined && props.context.pageContext.listItem !== null) {
         allValues = await sitePagesList.items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).fieldValuesAsText();
       }
@@ -56,7 +56,9 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
         const field = await sitePagesList.fields.getByInternalNameOrTitle(prop)();
 
         // Establish the values array
-        var values: any[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let values: any[] = [];
+        // eslint-disable-next-line no-prototype-builtins
         if (allValues.hasOwnProperty(field.InternalName)) {
           switch (field.TypeAsString) {
             case "UserMulti":
@@ -102,7 +104,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
    */
   const RenderPageProperties = () => {
     if (pagePropValues !== undefined && pagePropValues !== null) {
-      var retVal = _.map(pagePropValues, (prop) => {
+      const retVal = _.map(pagePropValues, (prop) => {
         return (
             <>
               <div className={styles.propNameRow}>{prop.info.Title}<span style={{display: 'none'}}> - {prop.info.TypeAsString}</span></div>
@@ -125,10 +127,11 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
    * @returns
    */
    const RenderPagePropValue = (prop: PageProperty) => {
-    var retVal = _.map(prop.values, (val) => {
+    const retVal = _.map(prop.values, (val) => {
       if (val !== null && val !== "") {
         switch (prop.info.TypeAsString) {
           case "URL":
+            // eslint-disable-next-line no-case-declarations
             const url_parts = val.split(",");
             return (
               <span className={styles.urlValue}><a href={url_parts[0]} target="_blank" rel="noopener noreferrer" style={{color: semanticColors.link}}>{url_parts[1]}</a></span>
@@ -147,6 +150,10 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
           case "TaxonomyFieldType":
             return (
               <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
+            );
+          case "Note":
+            return (
+              <span className={styles.multiTextCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
             );
           default:
             return (

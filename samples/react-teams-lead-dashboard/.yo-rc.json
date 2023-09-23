@@ -1,12 +1,17 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.12.1",
+    "version": "1.17.0",
     "libraryName": "lead-assist",
     "libraryId": "c311a0fc-3dcb-4316-a798-fd7d8a6d5344",
     "environment": "spo",
+    "nodeVersion": "16.17.0",
     "packageManager": "npm",
     "isCreatingSolution": false,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    }
   }
 }

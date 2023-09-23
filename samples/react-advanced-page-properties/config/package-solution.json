@@ -3,7 +3,7 @@
   "solution": {
     "name": "Advanced Page Properties",
     "id": "daae06a2-8599-445c-93c0-3bd739305f56",
-    "version": "1.0.3.0",
+    "version": "1.0.4.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -12,7 +12,29 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": "990019737"
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "advanced-page-properties description"
+      },
+      "longDescription": {
+        "default": "advanced-page-properties description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "advanced-page-properties AdvancedPagePropertiesWebPart Feature",
+        "description": "The feature that activates AdvancedPagePropertiesWebPart from the advanced-page-properties solution.",
+        "id": "bdbcb04e-9c90-4adb-b0f0-d025e4eb6cb5",
+        "version": "1.0.3.0",
+        "componentIds": [
+          "bdbcb04e-9c90-4adb-b0f0-d025e4eb6cb5"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/advanced-page-properties.sppkg"

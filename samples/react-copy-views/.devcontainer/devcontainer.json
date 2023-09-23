@@ -1,42 +1,39 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/typescript-node
+// For more information on how to run this SPFx project in a VS Code Remote Container, please visit https://aka.ms/spfx-devcontainer
 {
-	"name": "copy-views-container",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 12, 14, 16
-		"args": { 
-			"VARIANT": "14"
-		}
-	},
-
+	"name": "SPFx 1.16.1",
+	"image": "docker.io/m365pnp/spfx:1.16.1",
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.profiles.linux": {
-			"zsh": {
-                "path": "/bin/zsh",
-                "args": [
-                  "-l"
-                ]
-              }
-		},
-		"terminal.integrated.defaultProfile.linux": "zsh"
-	},
-
-
+	"settings": {},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"mhutchie.git-graph",
-		"eamodio.gitlens"
+		"editorconfig.editorconfig",
+		"dbaeumer.vscode-eslint"
 	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [5432, 4321, 35729],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": "npm install",
-
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "copy-views-container"
+	"forwardPorts": [
+		4321,
+		35729
+	],
+	"portsAttributes": {
+		"4321": {
+			"protocol": "https",
+			"label": "Manifest",
+			"onAutoForward": "silent",
+			"requireLocalPort": true
+		},
+		// Not needed for SPFx>= 1.12.1 
+		// "5432": {
+		// 	"protocol": "https",
+		// 	"label": "Workbench",
+		// 	"onAutoForward": "silent"
+		// },
+		"35729": {
+			"protocol": "https",
+			"label": "LiveReload",
+			"onAutoForward": "silent",
+			"requireLocalPort": true
+		}
+	},
+	"postCreateCommand": "bash .devcontainer/spfx-startup.sh",
+	"remoteUser": "node"
 }

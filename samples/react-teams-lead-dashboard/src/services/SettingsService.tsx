@@ -1,4 +1,4 @@
-import { HttpClient, MSGraphClient } from "@microsoft/sp-http";
+import { HttpClient, MSGraphClientV3 } from "@microsoft/sp-http";
 
 export default class SettingsService {
     /**
@@ -8,7 +8,7 @@ export default class SettingsService {
      * @param settingsFilename Name of the file to read the settings from
      * @returns Object representing the JSON settings file
      */
-    public static async getSettings(graphClient: MSGraphClient, httpClient: HttpClient, settingsFilename: string): Promise<any> {
+    public static async getSettings(graphClient: MSGraphClientV3, httpClient: HttpClient, settingsFilename: string): Promise<any> {
         // Get approot files
         const approotFiles = await graphClient
         .api(`/me/drive/special/approot/children?$filter=name%20eq%20'${settingsFilename}'`)
@@ -36,7 +36,7 @@ export default class SettingsService {
      * @param settings Object representing the settings to be saved on the JSON settings file
      * @param settingsFilename Name of the file to store the settings on
      */
-    public static async saveSettings(graphClient: MSGraphClient, settings: any, settingsFilename: string) {
+    public static async saveSettings(graphClient: MSGraphClientV3, settings: any, settingsFilename: string) {
         // Save the settings in the application dedicated folder
         await graphClient
             .api(`/me/drive/special/approot:/${settingsFilename}:/content`)

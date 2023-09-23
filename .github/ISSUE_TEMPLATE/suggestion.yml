@@ -41,13 +41,13 @@ body:
   validations:
     required: true
   attributes:
-    label: Author(s)
+    label: Contributor(s)
     description: |
         Who wrote the sample?
         
-        Because of the way this repository is configured, samples authors do not get a notification when you create an issue. 
+        Because of the way this repository is configured, samples contributors do not get a notification when you create an issue. 
         
-        For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "Solution" section. 
+        For the section above **@mention any of the sample contributors**. Contributors' GitHub handle can be found on the main sample documentation page, under the "Contributors" section. 
         
         **NOTE:** Don't @mention the repo maintainers, they already get notified.
 

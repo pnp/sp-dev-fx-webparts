@@ -1,12 +1,14 @@
 ## Manage Office 365 Groups with SPFx
 
-### Summary 
+### Summary
+
 Office 365 Groups is the foundational membership service, that drives all teamwork across Microsoft 365. Once in a group, we can get the benefits of the group-connected services like shared Outlook inbox, shared calendar, SharePoint site, Planner, Power BI, Yammer, and Teams.
 
 Is there a way to see all Office 365 Groups in a tenant?
-*Yes, partially. You can view and manage your own groups in Outlook on the web.* 
+*Yes, partially. You can view and manage your own groups in Outlook on the web.*
 
 This SPFx solution goes beyond this limitation and provides below functionalities using MS Graph APIs:
+
 1. List all public and private groups with basic information (name, description, privacy, logo, etc.)
 2. Search the group
 3. Join and leave public groups
@@ -18,11 +20,14 @@ This SPFx solution goes beyond this limitation and provides below functionalitie
 ![WebPart Preview](./assets/web-part-preview.gif)
 
 ### NPM Packages Used
+
 Below NPM package(s) are used to develop this sample:
-1. PnP/PnPjs (https://pnp.github.io/pnpjs/)
-2. @pnp/spfx-controls-react (https://sharepoint.github.io/sp-dev-fx-controls-react/)
+
+1. PnP/PnPjs (<https://pnp.github.io/pnpjs/>)
+2. @pnp/spfx-controls-react (<https://sharepoint.github.io/sp-dev-fx-controls-react/>)
 
 ### Project setup and important files
+
 ```txt
 react-manage-o365-groups
     ├── Power Automate Flow                                 <-- Power Automate Flow Templates
@@ -59,11 +64,15 @@ react-manage-o365-groups
                     └── mystrings.d.ts
 ```
 
-
 ## Compatibility
 
-![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -72,13 +81,14 @@ react-manage-o365-groups
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Demo
+
 The SPFx solution provides below functionalities:
 
 ### O365 Group Listing and Search
+
 The web part lists all public and private O365 groups and helps to search the group by name.
 
 ![Group Listing and Search](./assets/group-listing-search.gif)
-
 
 Below are the list of options available for user based on the role.
 
@@ -92,41 +102,45 @@ Private|Member|Leave Group
 Private|-|Request to Join Group
 
 ### Join the Public Group
+
 Clicking "Join Group" icon against the O365 group helps to join the public group.
 
 ![Join Public Group](./assets/join-group.gif)
 
 ### Join the Private Group
+
 Clicking "Request to Join Group" icon against the O365 group helps to send the approval request to the owners of the private group. The approval takes place using Power Automate.
 
 ![Join Private Group](./assets/join-private-group.gif)
 
 ### Leave the Group
+
 Clicking "Leave Group" icon against the O365 group helps to leave the public and private group.
 
 ![Leave Group](./assets/leave-group.gif)
 
 ### Create New Group
+
 The web part helps to create new O365 group.
 
 ![New Group](./assets/new-group.gif)
 
 ## Applies to
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Online](https://docs.microsoft.com/en-us/sharepoint/sharepoint-online)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Online](https://learn.microsoft.com/sharepoint/sharepoint-online)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 # Web Part Properties
+
 Property|Type|Required|Comments
 --------|----|--------|--------
 Flow URL|Text|No|URL of MS Flow (Power Automate) to join the private group
 
 # Solution
 
-Solution|Author(s)
---------|---------
-react-manage-o365-groups|[Nanddeep Nachan](https://github.com/nanddeepn) (https://www.linkedin.com/in/nanddeepnachan/) (SharePoint Consultant, [@NanddeepNachan](https://twitter.com/NanddeepNachan) )
-&nbsp;|[Smita Nachan](https://github.com/SmitaNachan) (https://www.linkedin.com/in/smitanachan/) (SharePoint Consultant, [@SmitaNachan](https://twitter.com/SmitaNachan) )
+* [Nanddeep Nachan](https://github.com/nanddeepn)
+* [Smita Nachan](https://github.com/SmitaNachan)
 
 ## Version history
 
@@ -136,12 +150,13 @@ Version|Date|Comments
 
 # Prerequisites
 
-- Administrative access to Azure AD of Office 365 tenant
-- Permissions to create a flow in Power Automate (prior MS Flow)
-- Set up Power Automate flow for approval to join private group. Please refer [Calling Graph API from Power Automate Flow](https://www.c-sharpcorner.com/article/calling-graph-api-from-power-automate-flow/)
-- SharePoint Online tenant 
-- Site Collection created under the **/sites/** or **/**- 
-- You need following set of permissions in order to manage Office 365 groups. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial)
+* Administrative access to Azure AD of Office 365 tenant
+* Permissions to create a flow in Power Automate (prior MS Flow)
+* Set up Power Automate flow for approval to join private group. Please refer [Calling Graph API from Power Automate Flow](https://www.c-sharpcorner.com/article/calling-graph-api-from-power-automate-flow/)
+* SharePoint Online tenant
+* Site Collection created under the **/sites/** or **/**-
+* You need following set of permissions in order to manage Office 365 groups. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial)
+
 ```
 "webApiPermissionRequests": [  
     {
@@ -177,37 +192,37 @@ Version|Date|Comments
 
 # Minimal Path to Awesome
 
-- Clone this repo
-- Navigate to the folder with current sample
-- Restore dependencies: `$ npm i`
-- Bundle the solution: `$ gulp bundle --ship`
-- Package the solution: `$ gulp package-solution --ship`
-- Locate the solution at `./sharepoint/solution/react-manage-o365-groups.sppkg` and upload it to SharePoint tenant app catalog
-- You will see a message saying that solution has pending permissions which need to be approved:
+* Clone this repo
+* Navigate to the folder with current sample
+* Restore dependencies: `$ npm i`
+* Bundle the solution: `$ gulp bundle --ship`
+* Package the solution: `$ gulp package-solution --ship`
+* Locate the solution at `./sharepoint/solution/react-manage-o365-groups.sppkg` and upload it to SharePoint tenant app catalog
+* You will see a message saying that solution has pending permissions which need to be approved:
 ![Pending permission requests](./assets/pending-permission-requests.png)
-- Approve the permission requests. There are [different options available](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli. 
-- For the matter of this sample, the fastest way to do it is through new SharePoint Admin UI. 
-- Open Web API permission management page by navigating to the url `https://<tenant>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement` (change the `<tenant>` to your O365 tenant name) or by going to the new Admin UI directly from old SharePoint Admin Center. 
-- Select pending requests and approve it:
+* Approve the permission requests. There are [different options available](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) - new SharePoint Admin UI, PowerShell, [`$o365`](https://pnp.github.io/office365-cli/) cli.
+* For the matter of this sample, the fastest way to do it is through new SharePoint Admin UI.
+* Open Web API permission management page by navigating to the url `https://<tenant>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement` (change the `<tenant>` to your O365 tenant name) or by going to the new Admin UI directly from old SharePoint Admin Center.
+* Select pending requests and approve it:
 ![Approve request from new Admin UI](./assets/approve-request.gif)
-- Run `$ gulp serve --nobrowser`
-- Open hosted workbench, i.e. `https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
-- Search and add `O365 Groups Manager` web part to see it in action
+* Run `$ gulp serve --nobrowser`
+* Open hosted workbench, i.e. `https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
+* Search and add `O365 Groups Manager` web part to see it in action
 
 # Features
+
 This project contains sample client-side web part built on the SharePoint Framework illustrating possibilities to manage Office 365 Groups using React and MS Graph.
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
-- Using PnP/PnPjs
-- Creating extensible services
-- Explore MS Graph APIs for Office 365 Group
-- Using the MSGraphClient in a SharePoint Framework web part
-- Requesting API permissions in a SharePoint Framework package
-- Communicating with the Microsoft Graph using its REST API
-- Using Office UI Fabric controls for building SharePoint Framework client-side web parts
-- Passing web part properties to React components
-- Call MS Flow (Power Automate) flow from SharePoint Framework web part
-
+* Using PnP/PnPjs
+* Creating extensible services
+* Explore MS Graph APIs for Office 365 Group
+* Using the MSGraphClient in a SharePoint Framework web part
+* Requesting API permissions in a SharePoint Framework package
+* Communicating with the Microsoft Graph using its REST API
+* Using Office UI Fabric controls for building SharePoint Framework client-side web parts
+* Passing web part properties to React components
+* Call MS Flow (Power Automate) flow from SharePoint Framework web part
 
 ## Video
 
@@ -229,10 +244,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-manage-o365-groups&template=question.yml&sample=react-manage-o365-groups&authors=@nanddeepn%20@SmitaNachan&title=react-manage-o365-groups%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-manage-o365-groups" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-manage-o365-groups" />

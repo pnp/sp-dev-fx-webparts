@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "application-insights-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/applicationInsightsLogs/ApplicationInsightsLogsWebPart.js",
+          "manifest": "./src/webparts/applicationInsightsLogs/ApplicationInsightsLogsWebPart.manifest.json"
+        }
+      ]
+    },
+    "cost-insights-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/costInsightsDashboard/CostInsightsDashboardWebPart.js",
+          "manifest": "./src/webparts/costInsightsDashboard/CostInsightsDashboardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "CommonDasboardWebPartStrings": "lib/loc/{locale}.js",
+    "AppInsightsDasboardWebPartStrings": "lib/webparts/applicationInsightsLogs/loc/{locale}.js",
+    "CostInsightsWebPartStrings": "lib/webparts/costInsightsDashboard/loc/{locale}.js",
+    "ApplicationInsightsMetricsWebPartStrings": "lib/webparts/applicationInsightsMetrics/loc/{locale}.js"
+  }
+}

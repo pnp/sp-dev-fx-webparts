@@ -8,11 +8,9 @@ This web part uses Graph API to suggest you members to add to a group (based on 
 
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-tab-suggested-members|[Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 
@@ -27,7 +25,7 @@ Version|Date|Comments
 * `gulp package-solution --ship`
 * deploy package to SharePoint App Catalog (check tenant deploy)
 * `gulp package-teams` (custom gulp task to zip the Teams folder)
-* follow Teams deployment instructions from here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab)
+* follow Teams deployment instructions from here: [https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab#packaging-and-deploying-your-web-part-as-a-microsoft-teams-tab)
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
@@ -65,4 +63,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-tab-suggested-members" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-tab-suggested-members" />

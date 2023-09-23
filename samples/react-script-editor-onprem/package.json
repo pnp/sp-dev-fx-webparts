@@ -12,7 +12,7 @@
     "dependencies": {
         "@microsoft/load-themed-styles": "^1.4.1",
         "@microsoft/sp-core-library": "1.4.1",
-        "@microsoft/sp-loader": "^1.4.1",
+        "@microsoft/sp-loader": "^1.16.1",
         "@microsoft/sp-webpart-base": "1.4.1",
         "@types/es6-promise": "0.0.33",
         "@types/react": "15.6.6",
@@ -23,14 +23,14 @@
         "react-dom": "15.6.2"
     },
     "devDependencies": {
-        "@microsoft/sp-build-web": "1.15.2",
+        "@microsoft/sp-build-web": "1.16.1",
         "@microsoft/sp-module-interfaces": "1.4.1",
         "@microsoft/sp-webpart-workbench": "1.12.1",
         "@types/chai": "3.4.34",
         "@types/mocha": "2.2.38",
         "@types/prop-types": "ts2.4",
         "ajv": "~5.2.2",
-        "gulp": "~3.9.1",
+        "gulp": "~4.0.2",
         "webpack-bundle-analyzer": "^2.13.1"
     },
     "scripts": {

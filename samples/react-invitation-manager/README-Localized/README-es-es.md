@@ -38,8 +38,8 @@ Consulte este documento para profundizar:
 
 ## Se aplica a
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Espacio empresarial de desarrollador de Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Espacio empresarial de desarrollador de Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solución
 
@@ -88,4 +88,4 @@ El elemento web de ejemplo en esta solución ilustra los siguientes conceptos en
 - La comunicación con Microsoft Graph mediante la API de REST.
 - Cómo usar la biblioteca ADAL JS con elementos web de SharePoint Framework creados con React.
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

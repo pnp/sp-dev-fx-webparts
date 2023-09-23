@@ -23,8 +23,13 @@ This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) li
 
 ## Compatibility
 
-![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
-![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg)
+![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -34,19 +39,17 @@ This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) li
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
-- Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+* Office 365 subscription with SharePoint Online.
+* SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-rxjs-event-emitter | [Velin Georgiev](https://github.com/VelinGeorgiev) ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) )
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 
@@ -58,27 +61,26 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository.
-- Open the command line, navigate to the web part folder and execute:
-    - `npm i`
-    - `gulp serve`
+* Clone this repository.
+* Open the command line, navigate to the web part folder and execute:
+  * `npm i`
+  * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- Using React for building SharePoint Framework client-side web parts.
-- Using Office UI Fabric React styles for building user experience consistent with SharePoint and Office.
-- The use the ReactiveX (RxJs) Event Emitter to broadcast messages (events).
-- The use the ReactiveX (RxJs) Event Emitter to subscribe and receive broadcasted messages (events).
+* Using React for building SharePoint Framework client-side web parts.
+* Using Office UI Fabric React styles for building user experience consistent with SharePoint and Office.
+* The use the ReactiveX (RxJs) Event Emitter to broadcast messages (events).
+* The use the ReactiveX (RxJs) Event Emitter to subscribe and receive broadcasted messages (events).
 
-## Making the RxJsEventEmitter external SPFx library.
+## Making the RxJsEventEmitter external SPFx library
 
 The RxJsEventEmitter library can be turned into external library so it can be used by multiple SPFx solutions.
 There is a very good [blog post](https://blog.mastykarz.nl/dll-code-sharepoint-framework/) by @waldekmastykarz how this can be done.
-
 
 ## Help
 
@@ -96,10 +98,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-rxjs-event-emitter&template=question.yml&sample=react-rxjs-event-emitter&authors=@VelinGeorgiev&title=react-rxjs-event-emitter%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-rxjs-event-emitter" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-rxjs-event-emitter" />

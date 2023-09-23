@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "open-ai-summarise",
+    "libraryId": "f15c9e3f-fcfe-4059-bf17-a2bfa7f49020",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "open-ai-summarise",
+    "solutionShortDescription": "open-ai-summarise description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

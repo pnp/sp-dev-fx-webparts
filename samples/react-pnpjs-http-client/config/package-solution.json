@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-apimsal-http-client",
+    "id": "d040c045-331c-446e-8a59-59933b8b3037",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "webApiPermissionRequests": [
+      {
+      "resource": "Microsoft Graph",
+      "scope": "USers.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "USers.ReadBasic.All"
+        },
+        {
+          "resource": "Microsoft Graph",
+          "scope": "Directory.Read.All"
+          }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "APIMSAL description"
+      },
+      "longDescription": {
+        "default": "APIMSAL description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "apimsal Feature",
+        "description": "The feature that activates elements of the apimsal solution.",
+        "id": "5376478e-09fe-455e-9e07-d392a432b047",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/apimsal.sppkg"
+  }
+  
+  
+}

@@ -11,6 +11,11 @@ Final outcome:
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
@@ -21,22 +26,13 @@ Final outcome:
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## Solution
+## Contributors
 
-> We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-> We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-> Provide a link to your GitHub profile to help others find more cool things you have done.
-> If you provide a link to your Twitter profile, we'll promote your contribution on social media.
-> 
-> DELETE THE TEXT ABOVE BEFORE SUBMITTING
-
-Solution|Author(s)
---------|---------
-AngularJS Greeting | [Gaurav Goyal](https://github.com/gauravgoyal5) ([@gauravgoyal_5](https://twitter.com/gauravgoyal_5)), BizPortals 365
+* [Gaurav Goyal](https://github.com/gauravgoyal5)
 
 ## Version history
 
@@ -91,4 +87,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-greeting" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-greeting" />

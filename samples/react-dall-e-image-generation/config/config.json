@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dalle-image-generator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dalleImageGenerator/DalleImageGeneratorWebPart.js",
+          "manifest": "./src/webparts/dalleImageGenerator/DalleImageGeneratorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DalleImageGeneratorWebPartStrings": "lib/webparts/dalleImageGenerator/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "react-birthdays",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=16.13.0 <17.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.10.2",
+    "@mantine/hooks": "^5.10.2",
+    "@mantine/styles": "^5.10.2",
+    "@microsoft/sp-core-library": "1.16.1",
+    "@microsoft/sp-lodash-subset": "1.16.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.16.1",
+    "@microsoft/sp-property-pane": "1.16.1",
+    "@microsoft/sp-webpart-base": "1.16.1",
+    "@pnp/spfx-controls-react": "3.12.0",
+    "@pnp/spfx-property-controls": "^3.11.0",
+    "date-fns": "^2.29.3",
+    "html-to-image": "^1.11.4",
+    "jotai": "^1.12.1",
+    "office-ui-fabric-react": "^7.199.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.16.1",
+    "@microsoft/eslint-plugin-spfx": "1.16.1",
+    "@microsoft/rush-stack-compiler-4.5": "0.2.2",
+    "@microsoft/sp-build-web": "1.16.1",
+    "@microsoft/sp-module-interfaces": "1.16.1",
+    "@rushstack/eslint-config": "2.5.1",
+    "@types/markdown-it": "^12.2.3",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webfontloader": "^1.6.35",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "typescript": "4.5.5"
+  }
+}

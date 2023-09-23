@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "azure-devops-tasks",
+    "id": "65f5c487-049f-4be9-8bc6-341886fa5a85",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Azure DevOps Tasks"
+      },
+      "longDescription": {
+        "default": "Azure DevOps Tasks"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Azure DevOps Tasks Feature",
+        "description": "The feature that activates elements of the Azure DevOps Tasks solution.",
+        "id": "5c6b1a0f-54d7-496a-a206-3c00a934604b",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Azure DevOps",
+        "scope": "user_impersonation"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/azure-devops-tasks.sppkg"
+  }
+}

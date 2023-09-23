@@ -11,6 +11,11 @@ It also resizes the app to fit the web part dimension:
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
 ![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -23,18 +28,17 @@ It also resizes the app to fit the web part dimension:
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
 You'll need at least one application in Power Apps that you wish to embed in SharePoint.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-enhanced-powerapps | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog/), [@bernierh](https://twitter.com/bernierh))
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Babak Danyal](https://github.com/babakdanyal)
 
 ## Version history
 
@@ -43,6 +47,7 @@ Version|Date|Comments
 1.0|July 27, 2020|Initial release
 1.1|August 15, 2020|Added improved resize event handler
 1.2|January 20, 2022|Update to SPFx v1.13.1
+1.3|June 27, 2023|Added Hide web part on small devices
 
 ## Minimal Path to Awesome
 
@@ -145,4 +150,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-enhanced-powerapps" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-enhanced-powerapps" />

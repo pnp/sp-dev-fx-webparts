@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "react-manage-hublevel-list-subscriptions",
+    "libraryId": "e2c0325f-7b70-4738-b4cf-568be2bdf627",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-manage-hublevel-list-subscriptions",
+    "solutionShortDescription": "react-manage-hublevel-list-subscriptions description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

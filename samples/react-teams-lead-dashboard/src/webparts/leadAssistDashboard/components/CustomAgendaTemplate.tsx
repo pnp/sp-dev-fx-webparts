@@ -50,7 +50,7 @@ export default class CustomAgendaTemplate {
      * @returns The element to display the loading state
      */
     public static loadingTemplate = (props: MgtTemplateProps): JSX.Element => {
-        return <Spinner label="Loading..."></Spinner>;
+        return <Spinner label="Loading..." />;
     }
 
     /**

@@ -22,11 +22,12 @@ export default class AppInsightsDashboardWebPart extends BaseClientSideWebPart<I
     const element: React.ReactElement<IAppInsightsDashboardProps> = React.createElement(
       AppInsightsDashboard,
       {
-        AppId: this.properties.AppId,
+        AppId: this.properties.AppId ,
         AppKey: this.properties.AppKey,
         DisplayMode: this.displayMode,
         onConfigure: this._onConfigure,
-        httpClient: this.context.httpClient
+        httpClient: this.context.httpClient,
+        cultureName: this.context.pageContext.legacyPageContext.currentCultureName
       }
     );
 
@@ -45,7 +46,7 @@ export default class AppInsightsDashboardWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  public _onConfigure = () => {
+  public _onConfigure = ():void => {
     this.context.propertyPane.open();
   }
 

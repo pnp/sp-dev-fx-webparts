@@ -37,9 +37,10 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
       
       if(evt.target.id === '')
       {
+        /* see issue https://github.com/pnp/sp-dev-fx-webparts/issues/3292
         evt.target.children[0].children[0].focus();
         evt.target.children[0].children[0].click();
-       
+       */
        
       }
       else 

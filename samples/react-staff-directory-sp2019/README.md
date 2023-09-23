@@ -1,21 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  - Msgraph
-  - Fluent UI React Controls
-  platforms:
-  - React
-  createdDate: 4/9/2020 12:00:00 AM
----
-
 # Staff Directory (Search Directory) Version 2019
 
 ## Summary
@@ -28,6 +10,11 @@ This web part shows the current user's colleagues, and allows the user to search
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
@@ -35,16 +22,16 @@ This web part shows the current user's colleagues, and allows the user to search
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
+
+For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+
 ## Applies to
 
 [SharePoint Framework](https://aka.ms/spfx)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-staff-directory-sp2019|João Mendes ([joaojmendes](https://github.com/joaojmendes))
- 
+* [João Mendes](https://github.com/joaojmendes) 
 
 ## Version history
 
@@ -72,4 +59,4 @@ Please follow all the steps:
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-staff-directory-sp2019" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-staff-directory-sp2019" />

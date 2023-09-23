@@ -1,0 +1,61 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-flow-dashboard",
+        "source": "pnp",
+        "title": "Flow Dashboard",
+        "shortDescription": "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-dashboard",
+        "longDescription": [
+            "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow."
+        ],
+        "creationDateTime": "2023-08-03",
+        "updateDateTime": "2023-08-03",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.17.4"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Dashboard.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Flowrunhistory.gif",
+                "alt": "Flow run history preview"
+            },
+            {
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Enablingflows.gif",
+                "alt": "Enabling flows Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "NishkalankBezawada",
+                "pictureUrl": "https://github.com/NishkalankBezawada.png",
+                "name": "NIshkalank Bezawada"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

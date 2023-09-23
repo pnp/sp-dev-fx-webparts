@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { css } from '@uifabric/utilities/lib/css';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
@@ -19,12 +20,12 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; the
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 
-  let topElem: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-  let _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
+  const topElem: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
 
   const [isSmall, isMedium] = useBreakpoints(props.clientWidth, [696, 928]);
 
-  let numSlides: number = 3;
+  let numSlides = 3;
   if (isSmall) {
     numSlides = 2;
   } else if (isMedium) {
@@ -33,8 +34,9 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; the
     numSlides = 4;
   }
 
-  var isInfinite: boolean = React.Children.count(props.children) > numSlides;
-  var settings: any = {
+  const isInfinite: boolean = React.Children.count(props.children) > numSlides;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const settings: any = {
     accessibility: true,
     arrows: false,
     autoplaySpeed: 5000,
@@ -43,7 +45,7 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; the
       return (
         <a>
           <div role="button" className={styles.carouselDotsContainer} aria-label={`Carousel Dot ${i}`} data-is-focusable={true} tabIndex={0}>
-            <span className={styles.carouselDot} tabIndex={-1}></span>
+            <span className={styles.carouselDot} tabIndex={-1} />
           </div>
         </a>
       );

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.0",
+    "libraryName": "react-spfx-control-iframepanel",
+    "libraryId": "987f5e02-b7a2-47c2-a128-3710f6333a5d",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-spfx-control-iframepanel",
+    "solutionShortDescription": "react-spfx-control-iframepanel description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

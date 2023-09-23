@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-graph-webpart-report-client-side-solution",
+    "id": "d5339db5-8abe-451a-8afe-57a16de5d286",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "react-graph-webpart-report description"
+      },
+      "longDescription": {
+        "default": "react-graph-webpart-report description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-graph-webpart-report Feature",
+        "description": "The feature that activates elements of the react-graph-webpart-report solution.",
+        "id": "92ec592f-2701-406a-8984-3f9229c345a6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-graph-webpart-report.sppkg"
+  }
+}

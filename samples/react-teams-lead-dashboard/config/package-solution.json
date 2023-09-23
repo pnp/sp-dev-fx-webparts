@@ -3,7 +3,7 @@
   "solution": {
     "name": "lead-assist-client-side-solution",
     "id": "c311a0fc-3dcb-4316-a798-fd7d8a6d5344",
-    "version": "1.0.13.0",
+    "version": "1.0.20.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -18,7 +18,7 @@
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Files.ReadWrite.AppFolder"
+        "scope": "Files.ReadWrite.All"
       }
     ],
     "developer": {
@@ -27,6 +27,17 @@
       "privacyUrl": "https://pnp.github.io/",
       "termsOfUseUrl": "https://pnp.github.io/",
       "mpnId": ""
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "lead-assist description"
+      },
+      "longDescription": {
+        "default": "lead-assist description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
     }
   },
   "paths": {

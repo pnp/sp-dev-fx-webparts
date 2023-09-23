@@ -17,16 +17,21 @@ extensions:
 
 ## Summary
 
-This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called [Swiper](https://github.com/nolimits4web/swiper).
+This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easily be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called [Swiper](https://github.com/nolimits4web/swiper).
 
 ![SPFx React Slide Swiper, can also be used as carousel](./assets/SPFx-React-Slider-Swiper.gif)
 
-## Solution packaging and bundle optimization considerations
+### Solution packaging and bundle optimization considerations
 
-This sample uses the Swiper JavaScript library thought the npm packages, but just for the purpose of the sample so it can quicky be run without addional setup. It is highly recomended to add the Swiper library as SPFx solution [external reference](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/basics/add-an-external-library) to resize the solution bundle size and improve Site Page load times. 
+This sample uses the Swiper JavaScript library thought the NPM packages, but just for the purpose of the sample so it can quickly be run without additional setup. It is highly recommended to add the Swiper library as SPFx solution [external reference](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/add-an-external-library) to resize the solution bundle size and improve Site Page load times. 
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.7.0](https://img.shields.io/badge/SPFx-1.7.0-green.svg) 
 ![Node.js v8](https://img.shields.io/badge/Node.js-v8-green.svg) 
@@ -38,19 +43,17 @@ This sample uses the Swiper JavaScript library thought the npm packages, but jus
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-slide-swiper | [Velin Georgiev](https://github.com/VelinGeorgiev) ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
 
 ## Version history
 
@@ -104,6 +107,6 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-slide-swiper" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-slide-swiper" />
 
 

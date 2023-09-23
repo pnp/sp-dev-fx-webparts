@@ -26,6 +26,7 @@ define([], function() {
     PlaceholderIconText: "Enhanced Microsoft Power Apps",
     PropertyPaneDescription: "Add a custom business app by pasting its web link or ID below.",
     BasicGroupName: "Basic Configuration",
-    AppWebLinkFieldLabel: "App web link or ID"
+    AppWebLinkFieldLabel: "App web link or ID",
+    IsWebPartHiddenOnSmallDevicesFieldLabel: "Hide on mobile devices"
   }
 });

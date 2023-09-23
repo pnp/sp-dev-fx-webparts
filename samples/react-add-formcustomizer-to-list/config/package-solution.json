@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-add-formcustomizer-to-list-client-side-solution",
+    "id": "93fb58e4-6db3-4559-b98c-bd42f10a5fc6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-add-formcustomizer-to-list description"
+      },
+      "longDescription": {
+        "default": "react-add-formcustomizer-to-list description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-add-formcustomizer-to-list Feature",
+        "description": "The feature that activates elements of the react-add-formcustomizer-to-list solution.",
+        "id": "b16b826f-d607-4f4a-a67e-0f42ed12f031",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-add-formcustomizer-to-list.sppkg"
+  }
+}

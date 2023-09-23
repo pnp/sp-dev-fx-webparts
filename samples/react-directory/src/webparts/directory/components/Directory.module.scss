@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .directory {
   .dropDownSortBy {
@@ -103,7 +103,11 @@
     padding-right: 10px;
     white-space: normal;
     text-align: center;
+    &>div>div{
+      white-space: normal !important;
+    }
   }
+
   .searchTextBox {
       min-width: 180px;
       max-width: 300px;
@@ -111,4 +115,5 @@
       margin-right: auto;
       margin-bottom: 25px;
   }
+
 }

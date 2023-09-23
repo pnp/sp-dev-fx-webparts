@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-flow-dashboard-client-side-solution",
+    "id": "a55dc82b-3833-4250-9563-c6ab960ec7ae",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nishkalank Bezawada",
+      "websiteUrl": "https://github.com/NishkalankBezawada",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Flow Service",
+        "scope": "Flows.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "React-Flow-Dashboard description"
+      },
+      "longDescription": {
+        "default": "React-Flow-Dashboard description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-flow-dashboard Feature",
+        "description": "The feature that activates elements of the react-flow-dashboard solution.",
+        "id": "6302f19a-1bd1-4021-8c94-6fe9ce9f3410",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-flow-dashboard.sppkg"
+  }
+}

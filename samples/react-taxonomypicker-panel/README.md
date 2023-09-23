@@ -9,6 +9,11 @@ Sample web part with Single and Multi-select taxonomy pickers using Office UI Fa
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.5.1](https://img.shields.io/badge/SPFx-1.5.1-green.svg)
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-LTS%208%20%7C%20v6-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -21,19 +26,17 @@ Sample web part with Single and Multi-select taxonomy pickers using Office UI Fa
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
 - @pnp/sp
 - Office UI Fabric React
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-taxonomypicker-panel | Vipul Kelkar  @vipulkelkar
+* [Vipul Kelkar](https://github.com/vipulkelkar)
 
 ## Version history
 
@@ -88,4 +91,4 @@ Version|Date|Comments
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-taxonomypicker-panel" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-taxonomypicker-panel" />

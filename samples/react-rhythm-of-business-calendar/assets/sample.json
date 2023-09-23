@@ -1,0 +1,69 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-rhythm-of-business-calendar",
+        "source": "pnp",
+        "title": "Rhythm of Business Calendar",
+        "shortDescription": "This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar",
+        "longDescription": [
+            "This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.",
+            "Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events. Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events."
+        ],
+        "creationDateTime": "2022-09-26",
+        "updateDateTime": "2022-11-12",
+        "products": [
+            "SharePoint",
+            "Microsoft Teams"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "TypeScript"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.15.2"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
+                "alt": "Edit refiners"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-month-view.png",
+                "alt": "Month view"
+            },
+            {
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-view-event.png",
+                "alt": "View event"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "d-turley",
+                "company": "Avanade",
+                "pictureUrl": "https://github.com/d-turley.png",
+                "name": "Dan Turley"
+            }
+        ],
+        "references": [
+            {
+                "name": "Getting started with SharePoint Framework",
+                "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+            },
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Learn how to develop your first Web Part using SharePoint Framework (SPFx).",
+                "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

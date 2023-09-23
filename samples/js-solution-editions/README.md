@@ -12,10 +12,17 @@ extensions:
   createdDate: 9/1/2017 12:00:00 AM
 ---
 # Handling Multiple Editions of SPFx Solution
+
 ## Summary
+
 This sample shows a possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution.
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
@@ -29,13 +36,11 @@ This sample shows a possible approach of handling multiple editions (e.g. trial,
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-solution-editions | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -44,14 +49,17 @@ Version|Date|Comments
 1.0|August 23, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Description
 
 ### Use Case
+
 You are an ISV and developing some product that has multiple editions, let's say, trial, lite, full. You want to have a separate package file (`.sppkg`) for each edition and also reference different CDNs based on the edition.
 
 ### Problems to address
+
 Thinking about the use case in details we can point several problems that should be addressed: 
 - When we're creating a new version we should create 3 separate `.sppkg` files
 - Each `.sppkg` file should contain manifest that references different CDN endpoints
@@ -59,6 +67,7 @@ Thinking about the use case in details we can point several problems that should
 - You should know current edition in the code to execute the logic based on the edition's restrictions
 
 ### Approach
+
 This sample shows the approach that is based on a custom Gulp task that should be run before bundling and packaging the solution.
 The name of the task is `change-build-edition`. Parameter: `edition`.
 The task updates SPFx solution configuration files to contain edition-specific information:
@@ -84,6 +93,7 @@ gulp deploy-azure-storage
 ```
 
 ## Resources
+
 [Handling Multiple Editions of SPFx Solution](http://tricky-sharepoint.blogspot.com/2017/08/handling-multiple-editions-of-spfx.html)
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-solution-editions" />

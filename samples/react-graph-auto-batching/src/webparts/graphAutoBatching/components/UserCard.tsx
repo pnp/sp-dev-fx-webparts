@@ -40,7 +40,7 @@ export function UserCard(props: IUserCardProps){
             tertiaryText={user.presence}
             presence={StringUtilities.getPresence(user.presence)}
             size={PersonaSize.size100}
-            imageAlt="Annie Lindqvist, status is blocked"
+            imageAlt={user.displayName}
       />
     );
 }

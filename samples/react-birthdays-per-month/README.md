@@ -9,6 +9,14 @@ The birthday data is stored in a SharePoint List.
 
 ## Compatibility
 
+<<<<<<< HEAD
+=======
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+>>>>>>> main
 This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
@@ -27,6 +35,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
+<<<<<<< HEAD
 ## Solution
 <!--
 We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
@@ -41,6 +50,11 @@ If you provide a link to your Twitter profile, we'll promote your contribution o
 Solution|Author(s)
 --------|---------
 react-birthdays-per-month | [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/arigunawan3023))
+=======
+## Contributors
+
+* [Ari Gunawan](https://github.com/AriGunawan)
+>>>>>>> main
 
 ## Version history
 
@@ -72,6 +86,10 @@ Insert employee birthday items into the list.
 ## Features
 
 Features of this web part:
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 * Show grouped employees based on their birthday's month.
 * Show photo of the employee
 * Button to send email to the selected employee
@@ -81,12 +99,19 @@ Features of this web part:
 * Initially expand current and next month section
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 * Get data from a SharePoint List
 * Create simple accordion component
 * Show user's photo
 * Use [Tailwind CSS](https://tailwindcss.com/) for styling component.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
@@ -107,4 +132,8 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
+<<<<<<< HEAD
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-birthdays-per-month" />
+=======
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-birthdays-per-month" />
+>>>>>>> main

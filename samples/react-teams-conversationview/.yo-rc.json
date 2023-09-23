@@ -1,0 +1,21 @@
+{
+    "@microsoft/generator-sharepoint": {
+        "plusBeta": false,
+        "isCreatingSolution": true,
+        "nodeVersion": "16.19.0",
+        "sdksVersions": {
+            "@microsoft/microsoft-graph-client": "3.0.2",
+            "@microsoft/teams-js": "2.4.1"
+        },
+        "version": "1.16.1",
+        "libraryName": "react-tab-conversationview",
+        "libraryId": "e17df70b-eff1-405c-ab34-4640d61c0050",
+        "environment": "spo",
+        "packageManager": "npm",
+        "solutionName": "react-tab-conversationview",
+        "solutionShortDescription": "react-tab-conversationview description",
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "componentType": "webpart"
+    }
+}

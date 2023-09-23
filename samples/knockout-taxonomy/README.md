@@ -16,7 +16,9 @@ extensions:
 # Taxonomy
 
 ## Summary
+
 Sample Web Part illustrating
+
 * Reading taxonomy term stores' hierarchy from SharePoint
 * Loading JavaScript Object Model scripts
 * creating Knockout components
@@ -25,8 +27,13 @@ Sample Web Part illustrating
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.0.0](https://img.shields.io/badge/SPFx-1.0.0-green.svg)
-![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
+![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Compatible SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
 ![Compatible with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Compatible-green.svg)
@@ -34,16 +41,13 @@ Sample Web Part illustrating
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-knockout-taxonomy |  [Alex Terentiev](https://github.com/AJIXuMuK) ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
+* [Alex Terentiev](https://github.com/AJIXuMuK)
 
 ## Version history
 
@@ -54,21 +58,22 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm i`
-  - `gulp serve`
+* Clone this repository
+* in the command line run:
+  * `npm i`
+  * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
+
 This project contains Client-Side Web Part built on the SharePoint Framework illustrating how to request Taxonomy Term Stores' hierarchy from SharePoint.
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- Reading taxonomy term stores' hierarchy from SharePoint
-- Loading JavaScript Object Model scripts (init.js, sp.runtime.js, sp.js, taxonomy.js)
-- creating custom Knockout components
-- styling HTML elements to match Fabric UI experience
+* Reading taxonomy term stores' hierarchy from SharePoint
+* Loading JavaScript Object Model scripts (init.js, sp.runtime.js, sp.js, taxonomy.js)
+* creating custom Knockout components
+* styling HTML elements to match Fabric UI experience
 
 ## Help
 
@@ -86,10 +91,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20knockout-taxonomy&template=suggestion.yml&sample=knockout-taxonomy&authors=@AJIXuMuK&title=knockout-taxonomy%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/knockout-taxonomy" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/knockout-taxonomy" />

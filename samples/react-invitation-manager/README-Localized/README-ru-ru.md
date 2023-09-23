@@ -38,8 +38,8 @@ NB Я ожидаю общедоступную версию от HttpGraphClient 
 
 ## Сфера применения
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [клиент разработчика приложений для Office 365;](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [клиент разработчика приложений для Office 365;](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Решение
 
@@ -88,4 +88,4 @@ react-invitation-manager | Гиулиано де-Лука ([@giuleon](https://tw
 - взаимодействие с Microsoft Graph с помощью REST API
 - использование библиотеки ADAL JS с веб-частями SharePoint Framework, созданными с помощью React
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

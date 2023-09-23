@@ -30,7 +30,7 @@ export function RenderImageOrLink(props: IImageOrLinkProps) {
                         alt={description}
                         height={50}
                         width={50}
-                        onClick={() => window.location.href =  url }
+                        onClick={() => window.location.href = url}
                         imageFit={ImageFit.cover}
                     />
                 ) :
@@ -40,5 +40,4 @@ export function RenderImageOrLink(props: IImageOrLinkProps) {
             )
         }
     </>;
-
 }

@@ -1,0 +1,48 @@
+@import '../../common.module';
+
+.header {
+    &.full {
+        @include hidden-md-down;
+    }
+
+    &.short {
+        @include hidden-sm;
+        @include hidden-lg-up;
+    }
+
+    &.min {
+        @include hidden-md-up;
+    }
+
+    & > * {
+        @include ms-fontSize-12;
+        @include ms-fontWeight-semibold;
+        line-height: 30px;
+        text-align: center;
+    }
+}
+
+.week {
+    position: relative;
+    padding-top: 22px;
+    padding-bottom: 2px;
+    min-height: 60px;
+
+    .background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .date {
+            &:not(:hover) .newEventButton {
+                display: none;
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+    }
+}

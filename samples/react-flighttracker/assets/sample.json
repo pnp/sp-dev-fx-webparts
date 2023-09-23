@@ -1,0 +1,69 @@
+[
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-flighttracker",
+      "source": "pnp",
+      "title": "Flight Tracker",
+      "shortDescription": "Sample Web Part to track all flights from a selected airport, date and information type.",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flighttracker",
+      "longDescription": [
+        "This Web Part allows to track all flights from a selected airport, date and information type.",
+        "The SPFx use external API to get data of flight. There are some restritions on this API, the number of requests is limited (free version)"
+      ],
+      "creationDateTime": "2022-11-14",
+      "updateDateTime": "2022-11-14",
+      "products": [
+        "SharePoint",
+        "Microsoft Teams"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "React"
+        },
+        {
+          "key": "SPFX-VERSION",
+          "value": "1.15.2"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "image",
+            "order": 100,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png",
+            "alt": "Flight tracker preview"
+        },
+        {
+            "type": "image",
+            "order": 200,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-02.png",
+            "alt": "Flight tracker preview"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "joaojmendes",
+          "company": "StaffBase",
+          "pictureUrl": "https://github.com/joaojmendes.png",
+          "name": "João  Mendes",
+          "twitter": "joaojmendes"
+        }
+      ],
+      "references": [
+        {
+          "name": "Getting started with SharePoint Framework",
+          "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+          "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+        },
+        {
+            "name": "Build your first SharePoint client-side web part",
+            "description": "Learn how to build a SharePoint Framework Web Part.",
+            "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        },
+        {
+          "name": "Microsoft 365 Patterns and Practices",
+          "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
+          "url": "https://aka.ms/m365pnp"
+        }
+      ]
+    }
+  ]

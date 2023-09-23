@@ -1,0 +1,82 @@
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-Slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.postImage,
+.postVideo {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: 2px solid #bbb2a6;
+  width: 256.6px;
+  height: 254.66px;
+}
+.postImageFull,
+.postVideoFull {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: 2px solid #bbb2a6;
+  height: 379px;
+}
+.content div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 123px;
+}
+
+/* Hover on Parent Container */
+.content:hover {
+  cursor: pointer;
+}
+
+.content:hover div {
+  width: 205px;
+  padding: 8px 23px;
+  visibility: visible;
+  opacity: 0.7;
+}
+.instagramFeed {
+  border: 2px solid #bbb2a6;
+}
+.ms-Persona {
+  margin-left: 10px;
+  margin-top: 10px;
+}

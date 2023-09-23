@@ -8,6 +8,11 @@ Uses [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cogni
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -36,7 +41,7 @@ To configure your key and endpoint, use the following steps:
 
 ### Using SharePoint Online Tenant Properties
 
-If you do not wish to reveal your Azure Cognitive Service API key (or prompt users to enter it), you can pre-configure values using [SharePoint Online Tenant Properties](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tenant-properties?tabs=sprest).
+If you do not wish to reveal your Azure Cognitive Service API key (or prompt users to enter it), you can pre-configure values using [SharePoint Online Tenant Properties](https://learn.microsoft.com/sharepoint/dev/spfx/tenant-properties?tabs=sprest).
 
 To do so, follow these steps:
 1. If you don't already have an Azure Cognitive Services key, [create a cognitive service resource](https://azure.microsoft.com/en-us/try/cognitive-services/) and select **Get API Key** by the **Computer Vision**.
@@ -58,11 +63,9 @@ spo storageentity list --appCatalogUrl <appCatalogUrl>
 6. Edit the `ProfilePhotoEditorWebPart.manifest.json` and set the `useStorageEntity` property to `true`. This will cause the web part to hide the Azure Cognitive Services property pane configuration group and use the tenant properties.
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-smart-profile-photo-editor | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+* [Hugo Bernier](https://github.com/hugoabernier)
 
 
 ## Version history
@@ -119,4 +122,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-smart-profile-photo-editor" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-smart-profile-photo-editor" />

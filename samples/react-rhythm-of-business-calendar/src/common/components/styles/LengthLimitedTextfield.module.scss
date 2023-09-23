@@ -1,0 +1,24 @@
+@import 'common.module';
+
+.lengthLimitedTextField {
+    .labelContainer {
+        .toolTipIcon {
+            cursor: default;
+            @include ms-fontSize-xl;
+            margin: 5px;
+        }
+    }
+
+    .remainingCharCountTop {
+        color: $color-neutralPrimary;
+        display: block;
+        margin-left: auto;
+    }
+
+    .remainingCharCountBottom {
+        color: $color-neutralPrimary;
+        text-align: left;
+        padding: 0px;
+        font-size: 12px;
+    }
+}

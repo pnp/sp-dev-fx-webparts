@@ -27,6 +27,11 @@ Edit web part properties to set Document library Name. Initially, It has been se
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.1.0](https://img.shields.io/badge/SPFx-1.1.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -38,15 +43,13 @@ Edit web part properties to set Document library Name. Initially, It has been se
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-angular-ngofficeuifabric-file-upload | [Atish Kumar Dipongkor](https://github.com/dipongkor) (MVP, Office Development)
-angular-ngofficeuifabric-file-upload | [Gautam Sheth](https://github.com/gautamdsheth) (SharePoint Consultant,RapidCircle,@gautamdsheth)
+* [Atish Kumar Dipongkor](https://github.com/dipongkor)
+* [Gautam Sheth](https://github.com/gautamdsheth)
 
 ## Version history
 
@@ -90,4 +93,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20angular-ngofficeuifabric-file-upload&template=question.yml&sample=angular-ngofficeuifabric-file-upload&authors=@@waldekmastykarz&title=angular-ngofficeuifabric-file-upload%20-%20).
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-ngofficeuifabric-file-upload" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-ngofficeuifabric-file-upload" />

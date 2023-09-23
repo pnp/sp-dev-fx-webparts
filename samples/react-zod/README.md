@@ -5,6 +5,7 @@
 This sample shows the usage of [Zod](https://zod.dev/) to eliminate manual cast and validation of the data coming from external API (e.g. SharePoint REST API, Graph API, etc.).
 
 I have a `Form Results` list that has these columns:
+
 Column|Type
 -------|----
 Title|Single line of text
@@ -16,7 +17,7 @@ Status|Choice
 PublishDate|Date
 Contact|Person
 
-When we get list items data from SharePoint REST API. It would be better to have fully typed data to eliminate runtime error and also make it easier to process the data in TypeScript. 
+When we get list items data from SharePoint REST API. It would be better to have fully typed data to eliminate runtime error and also make it easier to process the data in TypeScript.
 
 So I used [Zod](https://zod.dev/) to automatically cast and validate type of the data.
 
@@ -61,22 +62,30 @@ In this example, I used the parsed result data to be displayed on a [DetailsList
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
 ![Node.js v14 | v16](https://img.shields.io/badge/Node.js-v14%20%7C%20v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-zod | [Ari Gunawan](https://github.com/AriGunawan) ([@arigunawan3023](https://twitter.com/arigunawan3023))
+* [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 
@@ -107,6 +116,7 @@ Contact|Person
   * `gulp serve`
 
 ## Features
+
 This Web Part illustrates the following concepts:
 - Use [PnPJS](https://pnp.github.io/pnpjs/) for getting associated sites
 - Use [Zod](https://zod.dev/) to cast value type from SharePoint REST API
@@ -115,16 +125,6 @@ This Web Part illustrates the following concepts:
 - Use [DetailsList](https://developer.microsoft.com/en-us/fluentui#/controls/web/detailslist) component to display data
 - Use [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) for improving development productivity
 
-
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
 
 ## Help
 
@@ -146,4 +146,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-zod" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-zod" />

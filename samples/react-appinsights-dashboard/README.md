@@ -22,8 +22,13 @@ This web part displays different statistics data captured in the **Azure Applica
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg) 
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -37,7 +42,7 @@ This web part displays different statistics data captured in the **Azure Applica
 * [Injecting JavaScript with SharePoint Framework Extensions - Azure Application Insights](https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-appinsights)
 * [JS Application AppInsights Advanced](https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-appinsights-advanced)
 
-Following are required to access the data using **[App Insights API](https://dev.applicationinsights.io/)**. The API has been provided in a very simple way with **[API Explorer](https://dev.applicationinsights.io/apiexplorer)** for the developers to play around the API to understand the schema and the methods that can used.
+Following are required to access the data using **[App Insights API](https://learn.microsoft.com/en-us/rest/api/application-insights/)**. To try the API without writing any code, see [Trying the Log Analytics API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/overview#trying-the-log-analytics-api)
 * **Application ID** of the Application Insights
 * **API Key** for the data access
 
@@ -69,19 +74,18 @@ Following are required to access the data using **[App Insights API](https://dev
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-appinsights-dashboard | [Sudharsan K.](https://github.com/sudharsank)([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
+* [Sudharsan K.](https://github.com/sudharsank)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0.1.0| February 06, 2023 | Upgrade to SPFx 1.16
 1.0.0.0|May 10, 2020|Initial release
 1.0.0.1|June 16, 2020|Initial release
 
@@ -90,7 +94,7 @@ Version|Date|Comments
 - Clone this repository
 - From your command line, change your current directory to the directory containing this sample (`react-appinsights-dashboard`, located under `samples`)
 - in the command line run:
-  - `npm install`
+  - `npm install` (or even better, `pnpm install` )
   - `gulp bundle --ship && gulp package-solution --ship`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
@@ -124,4 +128,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-appinsights-dashboard" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-appinsights-dashboard" />

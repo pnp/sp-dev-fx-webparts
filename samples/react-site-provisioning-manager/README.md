@@ -11,6 +11,11 @@ You can also find out how you can use React Hooks to manage the state of your ap
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -21,14 +26,12 @@ You can also find out how you can use React Hooks to manage the state of your ap
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-site-provisioning-manager | Ramin Ahmadi
+* [Ramin Ahmadi](https://github.com/AhmadiRamin)
 
 ## Version history
 
@@ -37,6 +40,7 @@ Version|Date|Comments
 1.0|August 14, 2019|Initial release
 
 ## Features
+
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
 * Using React Hooks.
@@ -166,4 +170,4 @@ Open the web part configurations and set the values:
 2. Get provisioning function URL: Go to the Azure functions in Azure portal and click on "GetProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 3. Apply provisioning function URL: Go to the Azure functions in Azure portal and click on "ApplyProvisioningTemplate" and then "Get function Url". Copy-paste that value in this field.
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-provisioning-manager" />

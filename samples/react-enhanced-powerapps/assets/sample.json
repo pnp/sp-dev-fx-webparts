@@ -9,7 +9,7 @@
       "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
     ],
     "creationDateTime": "2020-07-26",
-    "updateDateTime": "2022-01-29",
+    "updateDateTime": "2023-06-27",
     "products": [
       "SharePoint"
     ],
@@ -70,10 +70,14 @@
     "authors": [
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
         "name": "Hugo Bernier",
         "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "babakdanyal",
+        "pictureUrl": "https://github.com/babakdanyal.png",
+        "name": "Babak Danyal"
       },
       {
         "gitHubAccount": "kunj-sangani",
@@ -85,7 +89,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   }

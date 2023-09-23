@@ -19,7 +19,7 @@
     "@microsoft/sp-property-pane": "1.10.0",
     "@microsoft/sp-webpart-base": "1.10.0",
     "@pnp/spfx-controls-react": "^1.19.0",
-    "@tinymce/tinymce-react": "^3.0.1",
+    "@tinymce/tinymce-react": "^4.2.0",
     "@types/es6-promise": "0.0.33",
     "@types/react-dnd": "~2.0.34",
     "@types/webpack-env": "1.13.1",

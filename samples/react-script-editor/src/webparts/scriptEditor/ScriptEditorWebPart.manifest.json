@@ -9,6 +9,7 @@
     "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
     "requiresCustomScript": true,
     "supportsThemeVariants": true,
+    "hiddenFromToolbox": false,
     "preconfiguredEntries": [{
         "groupId": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",
         "group": {

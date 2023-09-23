@@ -1,0 +1,27 @@
+define([], function() {
+  return {
+    AirLineLabel: "Airline",
+    AirportLabel: "Airport",
+    AirPortPlaceholder: "Search for an airport",
+    DateLabel: "Date",
+    FlightLabel: "Flight",
+    InformationTypeLabel: "Information type",
+    NoDataAvailableForAirport: "No data available for this airport",
+    Remove: "Remove",
+    SelectDate: "Select a date",
+    SelecteAirport: "Select Airport",
+    SelectInformationType: "Select information type",
+    selectTime: "\"Time",
+    StartTimeLabel: "Time",
+    TerminalLabel: "Terminal",
+    TimeLabel: "Time",
+    "PropertyPaneDescription": "Flight Tracker",
+    "BasicGroupName": "Properties",
+    "DescriptionFieldLabel": "Title",
+    "NumberItemsPerPageLabel": "Number of items per page",
+    RefreshIntervalLabel: "Refresh interval (in seconds)",
+    EnablerRefreshIntervalLabel: "Enable refresh interval ?",
+    RefreshIntervalOffText: "Off",
+    RefreshIntervalOnText: "On",
+  }
+});

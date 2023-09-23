@@ -12,6 +12,11 @@ Custom PnPjs module: [pnpjs-project-online-package](https://www.npmjs.com/packag
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg)
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -23,21 +28,19 @@ Custom PnPjs module: [pnpjs-project-online-package](https://www.npmjs.com/packag
 
 ## Applies to
 
-- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-- [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-- [Project Online](<https://docs.microsoft.com/en-us/previous-versions/office/project-javascript-api/jj712612(v%3Doffice.15)>)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [Project Online](<https://learn.microsoft.com/previous-versions/office/project-javascript-api/jj712612(v%3Doffice.15)>)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online and Project Online licence
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 - Project site with sample data available.
 
-## Solution
+## Contributors
 
-| Solution                   | Author(s)      |
-| -------------------------- | -------------- |
-| react-pnpjs-project-online | [Joel Rodrigues](https://github.com/joelfmrodrigues) |
+* [Joel Rodrigues](https://github.com/joelfmrodrigues)
 
 ## Version history
 
@@ -78,4 +81,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-pnpjs-project-online&template=question.yml&sample=react-pnpjs-project-online&authors=@joelfmrodrigues&title=react-pnpjs-project-online%20-%20).
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-pnpjs-project-online" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-pnpjs-project-online" />

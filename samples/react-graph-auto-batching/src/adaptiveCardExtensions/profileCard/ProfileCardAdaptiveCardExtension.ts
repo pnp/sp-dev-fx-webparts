@@ -1,7 +1,6 @@
 import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension-base';
 import { CardView } from './cardView/CardView';
-import { QuickView } from './quickView/QuickView';
 import { ProfileCardPropertyPane } from './ProfileCardPropertyPane';
 import { BatchGraphClient } from '../../dal/http/BatchGraphClient';
 import { SPFxHttpClient } from '../../dal/http/SPFxHttpClient';
@@ -22,7 +21,6 @@ export interface IProfileCardAdaptiveCardExtensionState {
 }
 
 const CARD_VIEW_REGISTRY_ID: string = 'ProfileCard_CARD_VIEW';
-export const QUICK_VIEW_REGISTRY_ID: string = 'ProfileCard_QUICK_VIEW';
 
 export default class ProfileCardAdaptiveCardExtension extends BaseAdaptiveCardExtension<
   IProfileCardAdaptiveCardExtensionProps,
@@ -33,7 +31,7 @@ export default class ProfileCardAdaptiveCardExtension extends BaseAdaptiveCardEx
   public async onInit(): Promise<void> {
     let client = await this.context.aadHttpClientFactory.getClient('https://graph.microsoft.com');
     this.httpClient = new BatchGraphClient(new SPFxHttpClient(client));
-    let userQuery = this.properties.userId ? `/users/${this.properties.userId}` : "/me"
+    let userQuery = this.properties.userId ? `/users/${this.properties.userId}` : "/me";
     const [userInfoRequest, userPhotoRequest, presenceInfo] = await Promise.all([this.httpClient.get(userQuery),
       this.httpClient.get(userQuery+ "/photo/$value"),
       this.httpClient.get(userQuery+ "/presence")]);
@@ -46,7 +44,6 @@ export default class ProfileCardAdaptiveCardExtension extends BaseAdaptiveCardEx
     };
 
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
-    this.quickViewNavigator.register(QUICK_VIEW_REGISTRY_ID, () => new QuickView());
 
     return Promise.resolve();
   }

@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .advancedPageProperties {
   .container {
@@ -39,6 +39,25 @@
     white-space: nowrap;
     margin: 4px 4px 4px 4px;
     width: max-content;
+  }
+
+  .multiTextCapsule{
+    width: 100%;
+    display: -webkit-box !important;
+    word-break: break-word;
+    line-height: 1.4;
+    max-height: 50%;
+    max-width: 100%;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 4px 8px 5px 8px;
+    border-radius: 16px;
+    -ms-flex-align: center;
+    align-items: center;
+
   }
 
   .urlValue {
