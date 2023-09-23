@@ -2,7 +2,9 @@
 
 ## Summary
 
-Shows how to use Cascading Dropdowns in property panes. Based on the instructions found at [Use cascading dropdowns in web part properties](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties).
+Shows how to use Cascading Dropdowns in property panes. Based on the instructions found at [Use cascading dropdowns in web part properties](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties). 
+
+For a version of this sample which demonstrates how to load dropdown choices from an API, please see the [react-custompropertypanecontrols](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custompropertypanecontrols) sample.
 
 
 ![Web part preview](assets/webpartpreview.png)
