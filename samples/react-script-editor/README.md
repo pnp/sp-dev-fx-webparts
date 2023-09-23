@@ -206,6 +206,7 @@ Version|Date|Comments
 1.0.17.0|January 29th, 2021|Changed versioning to 3 parts. Updated npm packages, restructured documentation, minor change to webpack analyzer setup.
 1.0.18.0|June 14, 2022|Upgrade to SPFx v1.13.1
 1.0.19.0|August 31, 2022|Added support for section background color
+1.0.20.0|October 10, 2022|Added sample html/script with self-executing function
 
 ## Minimal Path to Awesome
 
