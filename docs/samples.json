@@ -27113,19 +27113,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
         "alt": "Manage Subscriptions"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions/assets/SubscriptionPanel.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/SubscriptionPanel.gif",
         "alt": "Subscription Panel"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions/assets/RenewSubscription.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/RenewSubscription.gif",
         "alt": "Renewing webhook subscriptions"
       }
     ],
@@ -27625,13 +27625,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
         "alt": "Dynamic Form with location picker solution"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker-screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker-screenshot.png",
         "alt": "Dynamic Form with location picker solution"
       }
     ],
