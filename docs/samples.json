@@ -3127,8 +3127,8 @@
     "longDescription": [
       "This web part demonstrates the following features: Adding a web part to  a 'Full-Width' section, resizing the web part to fit the given space of the page, fetching dynamic parameters like the current theme or querystring and passing them to the IFrame."
     ],
-    "creationDateTime": "2024-08-27",
-    "updateDateTime": "2024-08-27",
+    "creationDateTime": "2023-08-27",
+    "updateDateTime": "2023-08-27",
     "products": [
       "SharePoint"
     ],
