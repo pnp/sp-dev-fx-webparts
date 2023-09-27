@@ -5,10 +5,12 @@
 This is a web part that goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations. Effortlessly display key page details based on metadata files, providing a comprehensive view of your content. Streamline information management and enhance user interaction with this versatile and customizable web part.
 
 ### Configuration
-- **Title**: Allow to set the displayed title. The built in SharePoint Page Properties web part doesn't allow user to chenga the displayed title. It will always be **Properties**
+
+- **Title**: Allow to set the displayed title. The built in SharePoint Page Properties web part doesn't allow user to change the displayed title. It will always be **Properties**
 - **Fields**: Allow to display multiple fields separated by comma (this will be improved in the future). It's already support multiple line type. The built in SharePoint Page Properties web part doesn't support it.
 
 ### Plan for next version
+
 - Support choice field view
 - Support people field view
 - Support date time field view
@@ -25,16 +27,14 @@ This is a web part that goes beyond the standard SharePoint Page Properties web 
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-enhanced-page-properties | [Ari Gunawan](https://github.com/AriGunawan) ([@AriDev3023](https://twitter.com/AriDev3023))
+- [Ari Gunawan](https://github.com/AriGunawan)
 
 ## Version history
 
@@ -44,20 +44,20 @@ Version|Date|Comments
 
 ## Minimal path to awesome
 
-* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-page-properties) then unzip it)
-* From your command line, change your current directory to the directory containing this sample (`react-enhanced-page-properties`, located under `samples`)
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-page-properties) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-enhanced-page-properties`, located under `samples`)
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
-* Show page metadata
-* Set displayed title
-* Set displayed fields
-* Show warning message if the fields is not exist
+- Show page metadata
+- Set displayed title
+- Set displayed fields
+- Show warning message if the fields is not exist
 
 ## Help
 
@@ -79,4 +79,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-enhanced-page-properties" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-enhanced-page-properties" />
