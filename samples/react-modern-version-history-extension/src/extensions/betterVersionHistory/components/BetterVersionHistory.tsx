@@ -39,7 +39,8 @@ export const BetterVersionHistory: React.FunctionComponent<IBetterVersionHistory
             text: "Clear selection",
             disabled: selectedVersions.length === 0,
             iconProps: { iconName: 'Clear' },
-            onClick: () => { setSelectedVersions([]), setFilters({ VersionNumbers: [] }) }
+            // ES-lint-disable-next-line
+            onClick: () => { setSelectedVersions([]); setFilters({ VersionNumbers: [] }) }
           }
         ]}
       />

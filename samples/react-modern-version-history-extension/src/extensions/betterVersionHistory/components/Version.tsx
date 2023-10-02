@@ -59,6 +59,7 @@ export const Version: React.FunctionComponent<IVersionProps> = (props: React.Pro
         ]
     };
 
+    // ES-lint-disable-next-line
     const fileSize: number = ((versionMetadata as any)?.Size ?? 0) ? ((versionMetadata as any)?.Size ?? 0) / 1024 : Version.FileSize / 1024;
     const fileSizeText = fileSize > 10**3 ? `${(fileSize / 10**3).toFixed(2)} MB` : fileSize > 10**6 ? `${(fileSize / 10**6).toFixed(2)} GB` : `${fileSize.toFixed(2)} KB`;
 
