@@ -1,0 +1,32 @@
+:root {
+    div.ms-CommandBar {
+        background-color: unset;
+    }
+
+    @media screen and (min-width: 1170px) {
+        .vertical-timeline {
+            width: 100%;
+            padding: 0;
+
+            .vertical-timeline-element {
+                margin: 2em 0;
+            }
+
+            .vertical-timeline-element-content {
+                margin-left: 0px;
+            }
+
+            .vertical-timeline-element-date {
+                display: none;
+            }
+
+            .version {
+                border: 1px solid lightgrey;
+                width: fit-content;
+                background-color: white;
+                height: 26px;
+                padding: 0 4px;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-modern-version-history",
+        "source": "pnp",
+        "title": "Modern Version History",
+        "shortDescription": "An extension modernizing the version history experience in SharePoint Online.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history",
+        "longDescription": [
+            "This is an extension of the version history experience in SharePoint Online. It allows you to see the version history of a file in a modern experience, compare different versions, and restore a previous version."
+        ],
+        "creationDateTime": "2023-09-01",
+        "updateDateTime": "2023-09-01",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.17.4"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-version-history/assets/Demo.gif",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "Tanddant",
+                "pictureUrl": "https://github.com/Tanddant.png",
+                "name": "Dan Toft"
+            },
+            {
+                "gitHubAccount": "kasuken",
+                "pictureUrl": "https://github.com/kasuken.png",
+                "name": "Emanuele Bartolesi"
+            },
+            {
+                "gitHubAccount": "tmaestrini",
+                "pictureUrl": "https://github.com/tmaestrini.png",
+                "name": "Tobias Maestrini"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

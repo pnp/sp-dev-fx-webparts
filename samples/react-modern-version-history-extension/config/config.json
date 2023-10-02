@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "better-version-history-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/betterVersionHistory/BetterVersionHistoryCommandSet.js",
+          "manifest": "./src/extensions/betterVersionHistory/BetterVersionHistoryCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BetterVersionHistoryCommandSetStrings": "lib/extensions/betterVersionHistory/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
