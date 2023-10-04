@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "preferences-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/preferences/PreferencesWebPart.js",
+          "manifest": "./src/webparts/preferences/PreferencesWebPart.manifest.json"
+        }
+      ]
+    },
+    "curated-news-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/curatedNews/CuratedNewsWebPart.js",
+          "manifest": "./src/webparts/curatedNews/CuratedNewsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PreferencesWebPartStrings": "lib/webparts/preferences/loc/{locale}.js",
+    "CuratedNewsWebPartStrings": "lib/webparts/curatedNews/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
