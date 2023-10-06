@@ -5,6 +5,8 @@
 This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date.
 I got the idea from this great article [Use Power Automate to Notify of Upcoming Azure AD App Client Secrets and Certificate Expirations](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145) and thought it would be nice to have a SPFx web part version of it.
 
+![Static sample](./assets/react-graph-app-secret-expiration-static.png)
+
 ![Animated sample](./assets/react-graph-app-secret-expiration-animated.gif)
 
 ## Compatibility
@@ -43,6 +45,7 @@ Version|Date|Comments
 1.3|March 14, 2022|Upgrade to SPFx v1.14.0
 1.4|July 07, 2022|Upgrade to SPFx v1.15.0
 1.5|March 06, 2023|Upgrade to SPFx v1.16.1
+1.6|October 06, 2023|Upgrade to SPFx v1.18
 
 
 ## Minimal path to awesome
