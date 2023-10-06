@@ -13,17 +13,19 @@ export default class CompletionsRequestBuilder {
                   endpoint: Constants.AzureSearchEndpoint,
                   key: Constants.AzureSearchKey,
                   indexName: Constants.AzureSearchIndexName,
-                  semanticConfiguration: "",
+                  //semanticConfiguration: "hotels-index-semantic-config",
+                  //queryType: "semantic",
                   queryType: "simple",
                   fieldsMapping: {
                     contentFieldsSeparator: "\n",
-                    contentFields: ["Description", "HotelName", "Category"],
-                    filepathField: "HotelName",
+                    contentFields: ["Description", "HotelName", "Description_fr", "Category"],
+                    filepathField: "HotelId",
                     titleField: "HotelName",
-                    urlField: "HotelName"
+                    urlField: undefined
                   },
                   inScope: true,
                   roleInformation: "You are an AI assistant that helps users of a travel agency to find Hotels in our internal company database for our customers."
+                  // "filter": "Tags/any(g:search.in(g, 'pool, view'))",
                 }
               }],
             messages: [{

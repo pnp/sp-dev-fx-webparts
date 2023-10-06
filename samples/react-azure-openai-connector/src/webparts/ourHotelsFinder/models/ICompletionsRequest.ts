@@ -16,7 +16,7 @@ export interface ICompletionsDataSourceParameters {
   endpoint: string;
   key: string;
   indexName: string;
-  semanticConfiguration: string;
+  semanticConfiguration?: string;
   queryType: string;
   fieldsMapping: ICompletionsDataSourceFieldsMapping;
   inScope: boolean;
@@ -28,7 +28,7 @@ export interface ICompletionsDataSourceFieldsMapping {
   contentFields: string[];
   filepathField: string;
   titleField: string;
-  urlField: string;
+  urlField: string | undefined;
 }
 
 export interface ICompletionsMessage {

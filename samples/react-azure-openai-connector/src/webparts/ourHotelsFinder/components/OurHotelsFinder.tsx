@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IOurHotelsFinderProps } from "./IOurHotelsFinderProps";
 import MessagesList from "./MessagesList";
-import { Stack } from "@fluentui/react";
+import { Spinner, SpinnerSize, Stack } from "@fluentui/react";
 import UserMessage from "./UserMessage";
 import { IOurHotelsFinderState } from "./IOurHotelsFinderState";
 import CompletionsService from "../services/CompletionsService";
@@ -14,7 +14,8 @@ export default class OurHotelsFinder extends React.Component<IOurHotelsFinderPro
 
     this.state = {
       userQuery: '',
-      sessionMessages: []
+      sessionMessages: [],
+      findingHotels: false
     };
   }
 
@@ -27,6 +28,10 @@ export default class OurHotelsFinder extends React.Component<IOurHotelsFinderPro
   private _onQuerySent = async (): Promise<void> => {
     console.log(this.state.userQuery);
     console.log(this.state.sessionMessages);
+
+    this.setState({
+      findingHotels: true
+    });
 
     const completionsService: CompletionsService = new CompletionsService(this.props.httpClient);
 
@@ -50,7 +55,9 @@ export default class OurHotelsFinder extends React.Component<IOurHotelsFinderPro
     });
 
     this.setState({
-      sessionMessages: tempMessages
+      sessionMessages: tempMessages,
+      userQuery: '',
+      findingHotels: false
     });
   }
 
@@ -66,8 +73,17 @@ export default class OurHotelsFinder extends React.Component<IOurHotelsFinderPro
         >
           <MessagesList messages={this.state.sessionMessages} />
         </Stack.Item>
+        {this.state.findingHotels && (
+          <Stack.Item>
+            <Spinner size={SpinnerSize.large} label="Wait till our super cool AI system is finding you the best hotels..." ariaLive="assertive" labelPosition="right" />
+          </Stack.Item>
+        )}
         <Stack.Item>
-          <UserMessage onMessageChange={this._onUserQueryChange} sendQuery={this._onQuerySent} />
+          <UserMessage
+            textFieldValue={this.state.userQuery}
+            onMessageChange={this._onUserQueryChange}
+            sendQuery={this._onQuerySent}
+          />
         </Stack.Item>
       </Stack>
     );

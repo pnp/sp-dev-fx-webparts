@@ -2,6 +2,8 @@
 
 ## Summary
 
+__UPDATE__: I demo-ed this sample in the Community call. Recording available here: [https://t.co/Ew4XSpU6Yh](https://t.co/Ew4XSpU6Yh)
+
 This (__experimental__) webpart, shows how to use the new feature (_in preview at the moment of building this sample_) Azure OpenAI Data Connectors.
 
 ![./assets/react-azure-openai-connector.gif](./assets/react-azure-openai-connector.gif)
