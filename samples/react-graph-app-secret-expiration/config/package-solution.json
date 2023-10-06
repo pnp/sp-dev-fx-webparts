@@ -17,12 +17,12 @@
         "title": "react-graph-app-secret-expiration Feature",
         "description": "The feature that activates elements of the react-graph-app-secret-expiration solution.",
         "id": "ca58f355-9872-4025-8ad5-763ad6076034",
-        "version": "1.5.0.0"
+        "version": "1.6.0.0"
       }
     ],
     "name": "react-graph-app-secret-expiration-client-side-solution",
     "id": "b25d85a4-7310-408a-a263-25959b0a5b1b",
-    "version": "1.5.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "skipFeatureDeployment": true,

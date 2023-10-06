@@ -1,12 +1,11 @@
 import * as React from 'react';
 import styles from './GraphAppSecretExpiration.module.scss';
 import { IGraphAppSecretExpirationProps } from './IGraphAppSecretExpirationProps';
-import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
+import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping, Pagination } from "@pnp/spfx-controls-react";
 import { IApplications, IApplication, IFormattedApplication } from '../../../models/IApplication';
 import { IGraphAppSecretExpirationState } from './GraphAppSecretExpirationState';
 import * as moment from 'moment';
 import { Spinner, mergeStyles, SearchBox } from '@fluentui/react';
-import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
 import sampleApplications from '../../../models/SampleApplications.json';
 
 const stackItemHidden = mergeStyles({
@@ -86,6 +85,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
       return;
     }
 
+    /* eslint-disable @typescript-eslint/no-floating-promises */
     this.props.graphClient
       .api("applications")
       .version("v1.0")
@@ -113,6 +113,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
         }
       });
   }
+  /* eslint-disable @typescript-eslint/no-floating-promises */
 
 
   private _getSelection(items: []):void {
