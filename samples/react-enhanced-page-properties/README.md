@@ -4,6 +4,12 @@
 
 This is a web part that goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations. Effortlessly display key page details based on metadata files, providing a comprehensive view of your content. Streamline information management and enhance user interaction with this versatile and customizable web part.
 
+Currently support following types:
+- Single line text
+- Multiple line text
+- Choice
+- Date
+
 ### Configuration
 
 - **Title**: Allow to set the displayed title. The built in SharePoint Page Properties web part doesn't allow user to change the displayed title. It will always be **Properties**
@@ -11,9 +17,12 @@ This is a web part that goes beyond the standard SharePoint Page Properties web 
 
 ### Plan for next version
 
-- Support choice field view
+- Support taxonomy field view
 - Support people field view
-- Support date time field view
+- Support lookup field view
+- Support currency field view
+- Support hyperlink field view
+- Support image field view
 - Improve web part configuration
 
 ![Web part](assets/app.png)
@@ -40,6 +49,7 @@ This is a web part that goes beyond the standard SharePoint Page Properties web 
 
 Version|Date|Comments
 -------|----|--------
+1.1|October 23, 2023|Add support for choice and date fields
 1.0|September 23, 2023|Initial release
 
 ## Minimal path to awesome

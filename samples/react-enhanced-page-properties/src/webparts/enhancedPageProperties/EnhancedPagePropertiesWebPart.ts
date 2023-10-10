@@ -16,6 +16,7 @@ import { SPFI, spfi, SPFx } from "@pnp/sp";
 
 import EnhancedPageProperties from "./components/EnhancedPageProperties";
 import { IEnhancedPagePropertiesProps } from "./components/IEnhancedPagePropertiesProps";
+import { IFieldInfo } from "@pnp/sp/fields";
 
 export interface IEnhancedPagePropertiesWebPartProps {
   title: string;
@@ -23,14 +24,13 @@ export interface IEnhancedPagePropertiesWebPartProps {
 }
 
 export interface propertyItem {
+  field?: IFieldInfo;
+  value: string | string[];
   label: string;
-  field: string;
-  value: string;
-  isAvailable: boolean;
 }
 
 export default class EnhancedPagePropertiesWebPart extends BaseClientSideWebPart<IEnhancedPagePropertiesWebPartProps> {
-  private readonly docLibTitle = 'Site Pages';
+  private readonly docLibTitle = "Site Pages";
   private _sp: SPFI;
 
   public async render(): Promise<void> {
@@ -59,11 +59,11 @@ export default class EnhancedPagePropertiesWebPart extends BaseClientSideWebPart
       .getByTitle(this.docLibTitle)
       .fields();
     // Filter to only non hidden fields
-    const filteredAvailableFields: Map<string, string> = new Map();
+    const filteredAvailableFields: Map<string, IFieldInfo> = new Map();
     for (let i = 0; i < availableFields.length; i++) {
       const field = availableFields[i];
       if (field.Hidden) continue;
-      filteredAvailableFields.set(field.InternalName, field.Title);
+      filteredAvailableFields.set(field.InternalName, field);
     }
 
     const selectedFields = this.convertSelectedFieldsString();
@@ -76,13 +76,12 @@ export default class EnhancedPagePropertiesWebPart extends BaseClientSideWebPart
         ...selectedFields.filter((field) => filteredAvailableFields.has(field))
       )();
     for (let i = 0; i < selectedFields.length; i++) {
-      const field = selectedFields[i];
-      const isAvailable = filteredAvailableFields.has(field);
+      const internalName = selectedFields[i];
+      const field = filteredAvailableFields.get(internalName);
       propertyItems.push({
         field,
-        isAvailable,
-        label: isAvailable ? (filteredAvailableFields.get(field) || '') : field,
-        value: currentPageProperties[field],
+        label: field ? field.Title : internalName,
+        value: currentPageProperties[internalName],
       });
     }
     return propertyItems;
