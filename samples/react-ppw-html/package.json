@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/react": "16.9.51",
     "@types/react-dom": "16.9.8",
-    "@microsoft/sp-build-web": "1.14.0-beta.5",
+    "@microsoft/sp-build-web": "1.18.0",
     "@microsoft/sp-tslint-rules": "1.14.0-beta.5",
     "@microsoft/sp-module-interfaces": "1.14.0-beta.5",
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
