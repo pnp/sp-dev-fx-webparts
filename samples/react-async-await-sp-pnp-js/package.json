@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-4.2": "^0.1.1",
-    "@microsoft/sp-build-web": "1.14.0-beta.4",
+    "@microsoft/sp-build-web": "1.18.0",
     "@microsoft/sp-module-interfaces": "1.14.0-beta.4",
     "@microsoft/sp-tslint-rules": "1.14.0-beta.4",
     "@types/es6-promise": "0.0.33",
