@@ -23,7 +23,7 @@
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
     "@microsoft/sp-tslint-rules": "1.15.0-beta.1",
-    "@microsoft/sp-build-web": "1.15.0-beta.1",
+    "@microsoft/sp-build-web": "1.18.0",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "gulp": "4.0.2",
