@@ -1,13 +1,19 @@
 import * as React from 'react';
 import { graph } from '@pnp/graph';
 
-export default function Team({ channelID, displayName, showChannels }) {
+export default function Team({ channelID, displayName, showChannels }): JSX.Element {
   const [channelsList, setChannelsList] = React.useState([]);
   React.useEffect(() => {
-    if (showChannels)
-      graph.teams.getById(channelID).channels.get().then(channels => { setChannelsList(channels); });
-    else
-      setChannelsList([]);
+    (async (): Promise<void> => {
+      if (showChannels) {
+        const channels = await graph.teams.getById(channelID).channels.get();
+        setChannelsList(channels);
+      } else {
+        setChannelsList([]);
+      }
+    })().catch(err => {
+      console.error(err);
+    });
   }, [showChannels]);
 
   return (
