@@ -12772,64 +12772,6 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-modern-version-history",
-    "source": "pnp",
-    "title": "Modern Version History",
-    "shortDescription": "An extension modernizing the version history experience in SharePoint Online.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history",
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history",
-    "longDescription": [
-      "This is an extension of the version history experience in SharePoint Online. It allows you to see the version history of a file in a modern experience, compare different versions, and restore a previous version."
-    ],
-    "creationDateTime": "2023-09-01",
-    "updateDateTime": "2023-10-02",
-    "products": [
-      "SharePoint"
-    ],
-    "metadata": [
-      {
-        "key": "CLIENT-SIDE-DEV",
-        "value": "React"
-      },
-      {
-        "key": "SPFX-VERSION",
-        "value": "1.17.4"
-      }
-    ],
-    "thumbnails": [
-      {
-        "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-version-history/assets/Demo.gif",
-        "alt": "Web Part Preview"
-      }
-    ],
-    "authors": [
-      {
-        "gitHubAccount": "Tanddant",
-        "pictureUrl": "https://github.com/Tanddant.png",
-        "name": "Dan Toft"
-      },
-      {
-        "gitHubAccount": "kasuken",
-        "pictureUrl": "https://github.com/kasuken.png",
-        "name": "Emanuele Bartolesi"
-      },
-      {
-        "gitHubAccount": "tmaestrini",
-        "pictureUrl": "https://github.com/tmaestrini.png",
-        "name": "Tobias Maestrini"
-      }
-    ],
-    "references": [
-      {
-        "name": "Build your first SharePoint client-side web part",
-        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
-      }
-    ]
-  },
-  {
     "name": "pnp-sp-dev-spfx-web-parts-react-msal-msgraph",
     "source": "pnp",
     "title": "Microsoft Authentication Library (MSAL JS) authentication sample",
@@ -28711,6 +28653,68 @@
         "name": "Use page placeholders from Application Customizer",
         "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
         "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-modern-version-history",
+    "source": "pnp",
+    "title": "Modern Version History",
+    "shortDescription": "An extension modernizing the version history experience in SharePoint Online.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-modern-version-history",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-modern-version-history",
+    "longDescription": [
+      "This is an extension of the version history experience in SharePoint Online. It allows you to see the version history of a file in a modern experience, compare different versions, and restore a previous version."
+    ],
+    "creationDateTime": "2023-09-01",
+    "updateDateTime": "2023-10-02",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.17.4"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-modern-version-history/assets/Demo.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Tanddant",
+        "pictureUrl": "https://github.com/Tanddant.png",
+        "name": "Dan Toft"
+      },
+      {
+        "gitHubAccount": "kasuken",
+        "pictureUrl": "https://github.com/kasuken.png",
+        "name": "Emanuele Bartolesi"
+      },
+      {
+        "gitHubAccount": "tmaestrini",
+        "pictureUrl": "https://github.com/tmaestrini.png",
+        "name": "Tobias Maestrini"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
       }
     ]
   },
