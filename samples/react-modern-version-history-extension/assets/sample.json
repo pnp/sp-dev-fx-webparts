@@ -10,7 +10,7 @@
             "This is an extension of the version history experience in SharePoint Online. It allows you to see the version history of a file in a modern experience, compare different versions, and restore a previous version."
         ],
         "creationDateTime": "2023-09-01",
-        "updateDateTime": "2023-09-01",
+        "updateDateTime": "2023-10-02",
         "products": [
             "SharePoint"
         ],

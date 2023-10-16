@@ -38,14 +38,13 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Not%20Tested-yellow.svg)
 
-For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+For more information about SPFx compatibility, please refer to <https://aka.ms/spfx-matrix>
   
 ## Contributors
 
-* [Dan Toft](https://github.com/Tanddant)
-* [Emanuele Bartolesi](https://github.com/kasuken)
-* [Tobias Maestrini](https://twitter.com/tmaestrini)
-
+- [Dan Toft](https://github.com/Tanddant)
+- [Emanuele Bartolesi](https://github.com/kasuken)
+- [Tobias Maestrini](https://github.com/tmaestrini)
 
 ## Version history
 
@@ -59,11 +58,11 @@ A SharePoint Tenant with list or library with versioning enabled.
 
 ## Minimal path to awesome
 
-* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history) then unzip it)
-* From your command line, change your current directory to the directory containing this sample (`react-modern-version-history`, located under `samples`)
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-version-history) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-modern-version-history`, located under `samples`)
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 **
@@ -73,8 +72,8 @@ A SharePoint Tenant with list or library with versioning enabled.
 - Clone this repository
 - Ensure that you are in the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 ## Help
 
@@ -86,11 +85,11 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-modern-version-history) and see what the community is saying.
 
-If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-modern-version-history&template=bug-report.yml&sample=react-modern-version-history&authors=@Tanddant&title=react-modern-version-history%20-%20).
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-modern-version-history&template=bug-report.yml&sample=react-modern-version-history&authors=@Tanddant%20@tmaestrini%20@kasuken&title=react-modern-version-history%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-modern-version-history&template=question.yml&sample=react-modern-version-history&authors=@Tanddant&title=react-modern-version-history%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-modern-version-history&template=question.yml&sample=react-modern-version-history&authors=@Tanddant%20@tmaestrini%20@kasuken&title=react-modern-version-history%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-modern-version-history&template=suggestion.yml&sample=react-modern-version-history&authors=@Tanddant&title=react-modern-version-history%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-modern-version-history&template=suggestion.yml&sample=react-modern-version-history&authors=@Tanddant%20@tmaestrini%20@kasuken&title=react-modern-version-history%20-%20).
 
 ## Disclaimer
 
