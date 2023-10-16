@@ -14,8 +14,8 @@ This web part demonstrates building a React functional component that uses data 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
+![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg) 
+![Node.js v18 | v16 (https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -42,6 +42,7 @@ Version|Date|Comments
 1.0|June 14, 2019|Initial release
 2.0|February 15, 2022|Upgrade to SPFx v1.13.1
 2.1|February 21, 2022|Upgrade to SPFx v1.14.0
+2.2|October 16, 2022|Upgrade to SPFx v1.18.0
 
 ## Minimal Path to Awesome
 
@@ -89,7 +90,7 @@ If we were writing a React component class, we would need to use various lifecyc
 
 ```
   React.useEffect(() => {
-    graph.me.joinedTeams.get().then(teams => { setTeamsList(teams); });
+    await graph.me.joinedTeams.get().then(teams => { setTeamsList(teams); });
   }, []);
 ```
 We use the PnPJS library to get a list of Teams from the Microsoft Graph, and then use the setTeamsList method (which you may remember was the second element in the array returned by the React.useState function) to set the value of the state variable. Calling setTeamsList is very similar to calling *setState()* when doing things the 'old way'. It will result in the component being re-rendered to reflect the changes to the state variable.
@@ -122,7 +123,7 @@ Again we use state to manage a list of channels and initialise it to an empty ar
   const [channelsList, setChannelsList] = React.useState([]);
   React.useEffect(() => {
     if (showChannels)
-      graph.teams.getById(channelID).channels.get().then(channels => { setChannelsList(channels); });
+      await graph.teams.getById(channelID).channels.get().then(channels => { setChannelsList(channels); });
     else
       setChannelsList([]);
   }, [showChannels]);
