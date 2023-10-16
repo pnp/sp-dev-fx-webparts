@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="BetterVersionHistory"
+        RegistrationId="100"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.ContextMenu"
+        ClientSideComponentId="4dc2355b-e74a-4cac-9e4a-cf1cc28ef90c"
+        ClientSideComponentProperties="{}">
+    </CustomAction>
+        <CustomAction
+        Title="BetterVersionHistory"
+        RegistrationId="101"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.ContextMenu"
+        ClientSideComponentId="4dc2355b-e74a-4cac-9e4a-cf1cc28ef90c"
+        ClientSideComponentProperties="{}">
+    </CustomAction>
+</Elements>
