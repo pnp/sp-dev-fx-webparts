@@ -207,7 +207,7 @@ export const Picker: React.FC<IPickerProps> = (props) => {
             title="Success!"
             color="green"
           >
-            Your preferences have been successfully updated. You're good to go!
+            Your preferences have been successfully updated. You&apos;re good to go!
           </Alert>
         )}
       </Modal>

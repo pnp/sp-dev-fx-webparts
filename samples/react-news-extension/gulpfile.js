@@ -3,7 +3,7 @@
 const build = require('@microsoft/sp-build-web');
 
 build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
-
+build.addSuppression(`Warning - [sass] The local CSS class 'news-container' is not camelCase and will not be type-safe.`);
 var getTasks = build.rig.getTasks;
 build.rig.getTasks = function () {
   var result = getTasks.call(build.rig);

@@ -14,6 +14,7 @@ class CachingService {
   }
 
   // Retrieve data from the cache by key.
+  // eslint-disable-next-line @rushstack/no-new-null
   public static get<T>(key: string): T | null {
     const data = this._storage.getItem(key);
     if (data !== null) {
