@@ -14056,6 +14056,66 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-news-extension",
+    "source": "pnp",
+    "title": "Targeted News using Microsoft Graph Open Extension",
+    "shortDescription": "This sample contains two SPFx web parts: User preferences web part and Curated news web part",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",
+    "longDescription": [
+      "This sample contains two SPFx web parts: User preferences web part and Curated news web part"
+    ],
+    "creationDateTime": "2023-10-04",
+    "updateDateTime": "2023-10-04",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.17.4"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png",
+        "alt": "Curated news"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/user-preferences-model.png",
+        "alt": "User preferences model"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/demo.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-news",
     "source": "pnp",
     "title": "News",
