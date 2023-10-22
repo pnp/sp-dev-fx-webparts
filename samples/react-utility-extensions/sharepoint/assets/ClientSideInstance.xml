@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance Title="CopyDocumentName" Location="ClientSideExtension.ListViewCommandSet" ListTemplateId="100" Properties="{&quot;sampleTextOne&quot;:&quot;One item is selected in the list.&quot;, &quot;sampleTextTwo&quot;:&quot;This command is always visible.&quot;}" ComponentId="306727ae-4076-467f-9759-b14756d60889" />
+</Elements>
