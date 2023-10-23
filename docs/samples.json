@@ -3865,7 +3865,7 @@
       "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part."
     ],
     "creationDateTime": "2023-07-26",
-    "updateDateTime": "2023-07-26",
+    "updateDateTime": "2023-10-06",
     "products": [
       "SharePoint"
     ],
@@ -3885,6 +3885,12 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-connector.gif",
         "alt": "Web Part Preview"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://youtu.be/VVjNkwh2W3U?si=tYSpsBdcn5abiC-m&t=1750",
+        "alt": "Community demo of the web part"
       }
     ],
     "authors": [
