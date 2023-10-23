@@ -11,7 +11,6 @@
 - [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
 - [ ] Needs API permissions?
 - [ ] Has other prerequisites? (E.g. requires a list, document library, etc.)
-- Node version used: (Use `node -v` to get the version of Node you used to build this sample)
 
 
 ## What's in this Pull Request?
@@ -19,6 +18,11 @@
 > Please describe the changes in this PR. Sample description or details around bugs which are being fixed.
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
+
+## Node Version
+> (Use `node -v` to get the version of Node you used to build this sample)
+
+Node version used:
 
 ## Checklist
 
