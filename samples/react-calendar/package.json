@@ -3,9 +3,6 @@
   "main": "lib/index.js",
   "version": "1.0.12",
   "private": true,
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
     "build": "gulp bundle",
     "clean": "gulp clean",
