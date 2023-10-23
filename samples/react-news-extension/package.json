@@ -1,0 +1,56 @@
+{
+  "name": "o-3-c-spfx-preferences",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=16.13.0 <17.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
+  },
+  "dependencies": {
+    "@fluentui/react": "^7.199.1",
+    "@mantine/core": "^6.0.21",
+    "@mantine/hooks": "^6.0.21",
+    "@microsoft/sp-component-base": "1.17.4",
+    "@microsoft/sp-core-library": "1.17.4",
+    "@microsoft/sp-lodash-subset": "1.17.4",
+    "@microsoft/sp-office-ui-fabric-core": "1.17.4",
+    "@microsoft/sp-property-pane": "1.17.4",
+    "@microsoft/sp-webpart-base": "1.17.4",
+    "@pnp/core": "^3.18.0",
+    "@pnp/logging": "^3.18.0",
+    "@pnp/queryable": "^3.18.0",
+    "@pnp/sp": "^3.18.0",
+    "@pnp/spfx-controls-react": "3.15.0",
+    "@tabler/icons-react": "^2.35.0",
+    "antd": "^4.24.13",
+    "office-ui-fabric-react": "^7.199.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "recoil": "^0.7.7",
+    "styled-components": "^6.0.8",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.17.4",
+    "@microsoft/eslint-plugin-spfx": "1.17.4",
+    "@microsoft/rush-stack-compiler-4.5": "0.5.0",
+    "@microsoft/sp-build-web": "1.17.4",
+    "@microsoft/sp-module-interfaces": "1.17.4",
+    "@rushstack/eslint-config": "2.5.1",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint": "8.7.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "spfx-fast-serve-helpers": "~1.17.0",
+    "typescript": "4.5.5"
+  }
+}

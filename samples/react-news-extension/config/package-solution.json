@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O3C Preferences",
+    "id": "30d84e8b-961a-4ef2-87a6-819fa1222ac3",
+    "version": "1.1.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadWrite"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "O3C Preferences description"
+      },
+      "longDescription": {
+        "default": "O3C Preferences description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O3C Preferences Feature",
+        "description": "The feature that activates elements of the O3C Preferences solution.",
+        "id": "17816985-2fdf-443e-b9ed-8e9569dbb78c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o3c-preferences.sppkg"
+  }
+}
