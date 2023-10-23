@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import styles from './EnhancedPageProperties.module.scss';
 import { IEnhancedPagePropertiesProps } from './IEnhancedPagePropertiesProps';
+import Value from './Value/Value';
 
 export default function EnhancedPageProperties(
   props: IEnhancedPagePropertiesProps
@@ -11,10 +12,10 @@ export default function EnhancedPageProperties(
       <h2>{props.title}</h2>
       <div className={styles.content}>
         {props.items.map((item) => (
-          <div key={item.field} className={styles.item}>
+          <div key={item.field?.Id} className={styles.item}>
             <h3>{item.label}</h3>
-            {item.isAvailable ? (
-              <span>{item.value || "-"}</span>
+            {item.field ? (
+              <Value field={item.field} value={item.value} />
             ) : (
               <span className={styles.errorMessage}>
                 Field not available in the Library metadata. Please check again the

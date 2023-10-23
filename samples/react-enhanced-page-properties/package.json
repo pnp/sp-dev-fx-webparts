@@ -21,6 +21,7 @@
     "@microsoft/sp-property-pane": "1.17.4",
     "@microsoft/sp-webpart-base": "1.17.4",
     "@pnp/sp": "^3.17.0",
+    "date-fns": "^2.30.0",
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",

@@ -18,6 +18,11 @@
         margin-bottom: 10px;
       }
 
+      .choice {
+        display: flex;
+        gap: 5px;
+      }
+
       span {
         background-color: #fafafa;
         padding: 8px 13px;
@@ -36,7 +41,6 @@
           background-color: #fce100;
         }
       }
-
     }
   }
 }
