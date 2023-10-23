@@ -6,7 +6,7 @@ export interface IAssistantResponseProps {
   message: string;
 }
 
-export default class AssitantResponse extends React.Component<
+export default class AssistantResponse extends React.Component<
   IAssistantResponseProps,
   {}
 > {

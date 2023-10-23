@@ -6,7 +6,7 @@ This (__experimental__) web part, shows how to use the new feature (_in preview 
 
 ![./assets/react-azure-openai-connector.gif](./assets/react-azure-openai-connector.gif)
 
-The web part is calling the Azure OpenAI API, with a specific Data source configured to an existing Azure Search service that contains the Hotels index provided by Microsoft. The following screenshots shows how you can configure the connector through the new Azure OpenAI Studio. This is **NOT required** for the sample, but helps to understand what the web part is doing behind the scenes.
+The web part is calling the Azure OpenAI API, with a specific Data source configured to an existing Azure Search service that contains the Hotels index provided by Microsoft. The following screenshots shows how you can configure the connector through the new Azure OpenAI Studio. This is __NOT required__ for the sample, but helps to understand what the web part is doing behind the scenes.
 
 First, you have configured your Search service (any tier except the free one) importing the Hotels data sample provided by Microsoft
 
@@ -42,39 +42,37 @@ __Note__: this is an experimental sample, based on the preview of the Azure Open
 
 ## Prerequisites
 
-  - Your Azure Subscription has the Azure OpenAI service available. You will see this message if you try to add Azure OpenAI service in your Subscription (follow the link in the Azure portal to request access).
+- Your Azure Subscription has the Azure OpenAI service available. You will see this message if you try to add Azure OpenAI service in your Subscription (follow the link in the Azure portal to request access).
 
 > Azure OpenAI Service is currently available to customers via an application form. The selected subscription has not been enabled for use of the service and does not have quota for any pricing tiers. Click here to request access to Azure OpenAI service.
 
-  - You have created an Azure OpenAI service in your subscription (create it in a US region, as some features may not be available in other regions)
-  - Grab the Azure OpenAI Key (go to your _Azure OpenAI service -> Keys and Endpoint_)
-  - You have configured an Azure Search service with at least a Basic plan (Free tier is not working with the Azure OpenAI Connectors feature), and have deployed the "Hotels" index that is provided as sample by Microsoft.
-  - Grab the Azure Search endpoint URL (you can see it in the _Overview_ section)
-  - Grab the Azure Search API key (_Keys_ section)
+- You have created an Azure OpenAI service in your subscription (create it in a US region, as some features may not be available in other regions)
+- Grab the Azure OpenAI Key (go to your _Azure OpenAI service -> Keys and Endpoint_)
+- You have configured an Azure Search service with at least a Basic plan (Free tier is not working with the Azure OpenAI Connectors feature), and have deployed the "Hotels" index that is provided as sample by Microsoft.
+- Grab the Azure Search endpoint URL (you can see it in the _Overview_ section)
+- Grab the Azure Search API key (_Keys_ section)
 
 ## Contributors
 
-- [Luis Mañez](https://github.com/luismanez) 
-
+- [Luis Mañez](https://github.com/luismanez)
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | July 26, 2023 | Initial release |
-
+| 1.1     | October 6, 2023 | Ctrl + enter to submit the query. Auto-scroll in the Messages list. |
 
 ## Minimal Path to Awesome
 
 - Install the MS Graph Toolkit for SPFx package. [Follow this](https://learn.microsoft.com/graph/toolkit/get-started/mgt-spfx)
 - Clone this repository
 - Ensure that you are at the solution folder
-- Edit the file __Constants.ts__ with your values (see _prerequisites_ section)
+- Edit the file `Constants.ts` with your values (see _prerequisites_ section)
 - in the command-line run:
   - `npm install`
   - `gulp serve`
-- Add the web part in the SharePoint workbench or any SharePoint page (appending _?debug=true&noredir=true&debugManifestsFile=https://localhost:4321/temp/manifests.js_ to the page URL)
-
+- Add the web part in the SharePoint workbench or any SharePoint page (appending _?debug=true&noredir=true&debugManifestsFile=<https://localhost:4321/temp/manifests.js>_ to the page URL)
 
 ## Features
 
@@ -94,7 +92,9 @@ This extension illustrates the following concepts:
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
-## Help
+## Video
+
+[![Using Azure Open AI custom data sources with SPFx](./assets/video-thumbnail.png)](https://youtu.be/VVjNkwh2W3U?si=tYSpsBdcn5abiC-m&t=1750 "Using Azure Open AI custom data sources with SPFx")
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
