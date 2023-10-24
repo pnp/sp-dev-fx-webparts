@@ -6,8 +6,8 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "~1.1.0",
-    "@microsoft/sp-webpart-base": "~1.1.1",
+    "@microsoft/sp-core-library": "~1.18.0",
+    "@microsoft/sp-webpart-base": "~1.18.0",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
