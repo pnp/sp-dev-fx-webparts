@@ -18,7 +18,7 @@
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
     "@pnp/sp": "^2.0.4",
-    "@pnp/spfx-controls-react": "^1.17.0",
+    "@pnp/spfx-controls-react": "^1.21.3",
     "@pnp/spfx-property-controls": "^1.17.0",
     "adaptivecards": "^1.2.6",
     "adaptivecards-fabric": "^1.0.4",
@@ -44,6 +44,6 @@
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1"
+    "gulp": "~4.0.2"
   }
 }
