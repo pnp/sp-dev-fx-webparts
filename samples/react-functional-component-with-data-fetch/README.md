@@ -32,7 +32,7 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Contributors
 
-* Bill Ayers
+* [Bill Ayers (SPDoctor)](https://github.com/SPDoctor)
 * [Don Kirkham](https://github.com/DonKirkham)
 
 ## Version history
@@ -72,7 +72,7 @@ This is an extension of the approach used in the [React-Functional-Component](ht
 
 ## TeamsTrackerWebPart.ts Initialise PnPJS
 
-The onInit method of BaseClientSideWebPart is overriden to initialise the PnPJS graph object. The web part is then able to get access to the Microsoft Graph using the PnPJS library. The User.Read.All permission is implicitly provided.
+The onInit method of BaseClientSideWebPart is overridden to initialise the PnPJS graph object. The web part is then able to get access to the Microsoft Graph using the PnPJS library. The User.Read.All permission is implicitly provided.
 
 ## Functional Component with state
 
@@ -82,7 +82,7 @@ The TeamsTracker.tsx React Component is a React functional component. This simpl
   const initialTeamsList: MSGraph.Group[] = null;
   const [teamsList, setTeamsList] = React.useState(initialTeamsList);
 ```
-React.useState takes an initial value for the state variable, which we initialise to *null* but by means of a strongly typed const. This means that we will get type checking and intellisense for the state object. React.useState returns an array of two objects. The first is a variable containing the state value, and the second is a setter function for the value, and the convention is to use the array destructuring operator to unpack them into local constants.  Whenever we need to use the current value of the teamsList we just use it as a normal variable, and wherever we need to change the value we call *setTeamsList(newValue)*.
+React.useState takes an initial value for the state variable, which we initialize to *null* but by means of a strongly typed const. This means that we will get type checking and intellisense for the state object. React.useState returns an array of two objects. The first is a variable containing the state value, and the second is a setter function for the value, and the convention is to use the array destructuring operator to unpack them into local constants.  Whenever we need to use the current value of the teamsList we just use it as a normal variable, and wherever we need to change the value we call *setTeamsList(newValue)*.
 
 ## Fetching Data
 
@@ -117,7 +117,7 @@ The `Teams.tsx` component is only responsible for rendering an individual team, 
 ```
 export default function Team({ channelID, displayName, showChannels }) {
 ```
-Again we use state to manage a list of channels and initialise it to an empty array. But in this case we have a property *showChannels* that is the flag set by the user in the property pane. If this is enabled we retrieve the channels from the Microsoft Graph using the PnPJS library, and if not we set it to an empty array. We need to explicitly reset the array in case the user enables and then subsequently disables the *showChannels* option. Finally, notice that we now need to include a dependency for the second argument of *useEffect* so that the framework knows to call the method again if the value of showChannels changes.
+Again we use state to manage a list of channels and initialize it to an empty array. But in this case we have a property *showChannels* that is the flag set by the user in the property pane. If this is enabled we retrieve the channels from the Microsoft Graph using the PnPJS library, and if not we set it to an empty array. We need to explicitly reset the array in case the user enables and then subsequently disables the *showChannels* option. Finally, notice that we now need to include a dependency for the second argument of *useEffect* so that the framework knows to call the method again if the value of showChannels changes.
 
 ```
   const [channelsList, setChannelsList] = React.useState([]);
