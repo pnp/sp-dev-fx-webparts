@@ -1,0 +1,3060 @@
+{
+  "departures": [
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:15+01:00",
+        "actualTimeLocal": "2022-10-08 17:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:15Z",
+        "actualTimeUtc": "2022-10-08 16:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "name": "Basel"
+        },
+        "quality": []
+      },
+      "number": "EC 1134",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:05+01:00",
+        "actualTimeLocal": "2022-10-08 18:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:05Z",
+        "actualTimeUtc": "2022-10-08 17:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "name": "Paris, Ch. de Gaulle"
+        },
+        "quality": []
+      },
+      "number": "EC 3776",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:20+01:00",
+        "actualTimeLocal": "2022-10-08 19:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:20Z",
+        "actualTimeUtc": "2022-10-08 18:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "name": "Lyon, St. Exupery"
+        },
+        "quality": []
+      },
+      "number": "EC 4450",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:30+01:00",
+        "actualTimeLocal": "2022-10-08 16:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:30Z",
+        "actualTimeUtc": "2022-10-08 15:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EDDF",
+          "iata": "FRA",
+          "name": "Frankfurt-am-Main"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:10+02:00",
+        "actualTimeLocal": "2022-10-08 20:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:10Z",
+        "actualTimeUtc": "2022-10-08 18:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "LH 1179",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "D-AIRC",
+        "modeS": "3C6643",
+        "model": "Airbus A321"
+      },
+      "airline": {
+        "name": "Lufthansa"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:40+01:00",
+        "actualTimeLocal": "2022-10-08 16:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:40Z",
+        "actualTimeUtc": "2022-10-08 15:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EDDH",
+          "iata": "HAM",
+          "name": "Hamburg"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:35+02:00",
+        "actualTimeLocal": "2022-10-08 20:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:35Z",
+        "actualTimeUtc": "2022-10-08 18:35Z",
+        "terminal": "2",
+        "baggageBelt": "8",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 9204",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:05+01:00",
+        "actualTimeLocal": "2022-10-08 17:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:05Z",
+        "actualTimeUtc": "2022-10-08 16:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EDDK",
+          "iata": "CGN",
+          "name": "Cologne"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:35Z",
+        "terminal": "2",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 9972",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:45+01:00",
+        "actualTimeLocal": "2022-10-08 18:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:45Z",
+        "actualTimeUtc": "2022-10-08 17:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EDDL",
+          "iata": "DUS",
+          "name": "Duesseldorf"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:25+02:00",
+        "actualTimeLocal": "2022-10-08 22:25+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:25Z",
+        "actualTimeUtc": "2022-10-08 20:25Z",
+        "terminal": "A",
+        "gate": "B91",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EW 9641",
+      "callSign": "EWG61FJ",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "D-AEWM",
+        "modeS": "3C56ED",
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Eurowings"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:50+01:00",
+        "actualTimeLocal": "2022-10-08 17:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:50Z",
+        "actualTimeUtc": "2022-10-08 16:50Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EGGP",
+          "iata": "LPL",
+          "name": "Liverpool"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 19:05Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 9203",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:05+01:00",
+        "actualTimeLocal": "2022-10-08 18:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:05Z",
+        "actualTimeUtc": "2022-10-08 17:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EGKK",
+          "iata": "LGW",
+          "name": "London"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 19:20Z",
+        "terminal": "N",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "TP 1332",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:55+01:00",
+        "actualTimeLocal": "2022-10-08 17:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:55Z",
+        "actualTimeUtc": "2022-10-08 16:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EGSS",
+          "iata": "STN",
+          "name": "London"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:20+01:00",
+        "actualTimeLocal": "2022-10-08 20:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 19:20Z",
+        "actualTimeUtc": "2022-10-08 19:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 8348",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:25+01:00",
+        "actualTimeLocal": "2022-10-08 16:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:25Z",
+        "actualTimeUtc": "2022-10-08 15:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EHAM",
+          "iata": "AMS",
+          "name": "Amsterdam"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:05+02:00",
+        "actualTimeLocal": "2022-10-08 19:57+02:00",
+        "runwayTimeLocal": "2022-10-08 19:57+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:05Z",
+        "actualTimeUtc": "2022-10-08 17:57Z",
+        "runwayTimeUtc": "2022-10-08 17:57Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "KL 1714",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Embraer 190"
+      },
+      "airline": {
+        "name": "KLM"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 15:55+01:00",
+        "actualTimeLocal": "2022-10-08 16:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:55Z",
+        "actualTimeUtc": "2022-10-08 15:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "EPMO",
+          "iata": "WMI",
+          "name": "Warsaw"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 4534",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 15:45+01:00",
+        "actualTimeLocal": "2022-10-08 15:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:45Z",
+        "actualTimeUtc": "2022-10-08 14:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEBL",
+          "iata": "BCN",
+          "name": "Barcelona"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:30+02:00",
+        "actualTimeLocal": "2022-10-08 18:23+02:00",
+        "scheduledTimeUtc": "2022-10-08 16:30Z",
+        "actualTimeUtc": "2022-10-08 16:23Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "VY 8479",
+      "status": "Boarding",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Vueling"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:30+01:00",
+        "actualTimeLocal": "2022-10-08 18:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:30Z",
+        "actualTimeUtc": "2022-10-08 17:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEIB",
+          "iata": "IBZ",
+          "name": "Ibiza Town"
+        },
+        "scheduledTimeLocal": "2022-10-08 21:10+02:00",
+        "actualTimeLocal": "2022-10-08 21:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 19:10Z",
+        "actualTimeUtc": "2022-10-08 19:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 7595",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEIB",
+          "iata": "IBZ",
+          "name": "Ibiza Town"
+        },
+        "scheduledTimeLocal": "2022-10-08 21:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 19:10Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 7595",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:35+01:00",
+        "actualTimeLocal": "2022-10-08 16:35+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:35Z",
+        "actualTimeUtc": "2022-10-08 15:35Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:55+02:00",
+        "actualTimeLocal": "2022-10-08 18:50+02:00",
+        "scheduledTimeUtc": "2022-10-08 16:55Z",
+        "actualTimeUtc": "2022-10-08 16:50Z",
+        "terminal": "4",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "IB 8665",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Bombardier CRJ1000"
+      },
+      "airline": {
+        "name": "Iberia"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:00+01:00",
+        "actualTimeLocal": "2022-10-08 16:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:00Z",
+        "actualTimeUtc": "2022-10-08 15:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:10+02:00",
+        "actualTimeLocal": "2022-10-08 18:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 16:10Z",
+        "actualTimeUtc": "2022-10-08 16:10Z",
+        "terminal": "2",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "UX 1140",
+      "status": "Boarding",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Embraer 190"
+      },
+      "airline": {
+        "name": "Air Europa"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:05+01:00",
+        "actualTimeLocal": "2022-10-08 18:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:05Z",
+        "actualTimeUtc": "2022-10-08 17:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LEPA",
+          "iata": "PMI",
+          "name": "Palma De Mallorca"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:50+02:00",
+        "actualTimeLocal": "2022-10-08 20:50+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:50Z",
+        "actualTimeUtc": "2022-10-08 18:50Z",
+        "terminal": "N",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 7802",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:20Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFLL",
+          "iata": "LYS",
+          "name": "Lyon"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:20+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 4450",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 15:40+01:00",
+        "actualTimeLocal": "2022-10-08 15:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:40Z",
+        "actualTimeUtc": "2022-10-08 14:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFML",
+          "iata": "MRS",
+          "name": "Marseille"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 16:35Z",
+        "terminal": "2",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 6532",
+      "status": "GateClosed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:55+01:00",
+        "actualTimeLocal": "2022-10-08 18:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:55Z",
+        "actualTimeUtc": "2022-10-08 17:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFOB",
+          "iata": "BVA",
+          "name": "Beauvais/Tillé"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:00+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:00Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 7474",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:20+01:00",
+        "actualTimeLocal": "2022-10-08 16:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:20Z",
+        "actualTimeUtc": "2022-10-08 15:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFPG",
+          "iata": "CDG",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 19:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 17:35Z",
+        "terminal": "2F",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "AF 1529",
+      "status": "Boarding",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A319"
+      },
+      "airline": {
+        "name": "Air France"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:05Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFPG",
+          "iata": "CDG",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 21:15+02:00",
+        "scheduledTimeUtc": "2022-10-08 19:15Z",
+        "terminal": "2B",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 3776",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:30+01:00",
+        "actualTimeLocal": "2022-10-08 19:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:30Z",
+        "actualTimeUtc": "2022-10-08 18:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFPO",
+          "iata": "ORY",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:40+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:40Z",
+        "terminal": "3",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "TO 7609",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Transavia France"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:45+01:00",
+        "actualTimeLocal": "2022-10-08 19:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:45Z",
+        "actualTimeUtc": "2022-10-08 18:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFPO",
+          "iata": "ORY",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:55+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "TP 458",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LFSB",
+          "iata": "BSL",
+          "name": "Bâle/Mulhouse"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:40+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:40Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 1134",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:35+01:00",
+        "actualTimeLocal": "2022-10-08 18:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:35Z",
+        "actualTimeUtc": "2022-10-08 17:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LHBP",
+          "iata": "BUD",
+          "name": "Budapest"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:55+02:00",
+        "actualTimeLocal": "2022-10-08 20:55+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:55Z",
+        "actualTimeUtc": "2022-10-08 18:55Z",
+        "terminal": "2A",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 8864",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:50+01:00",
+        "actualTimeLocal": "2022-10-08 17:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:50Z",
+        "actualTimeUtc": "2022-10-08 16:50Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LIPH",
+          "iata": "TSF",
+          "name": "Treviso"
+        },
+        "scheduledTimeLocal": "2022-10-08 21:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 19:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "FR 2160",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:25+01:00",
+        "actualTimeLocal": "2022-10-08 16:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:25Z",
+        "actualTimeUtc": "2022-10-08 15:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LIRA",
+          "iata": "CIA",
+          "name": "Roma"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:00+02:00",
+        "actualTimeLocal": "2022-10-08 20:00+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:00Z",
+        "actualTimeUtc": "2022-10-08 18:00Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 9133",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:15+01:00",
+        "actualTimeLocal": "2022-10-08 18:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:15Z",
+        "actualTimeUtc": "2022-10-08 17:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LPMA",
+          "iata": "FNC",
+          "name": "Funchal"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:15+01:00",
+        "actualTimeLocal": "2022-10-08 20:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 19:15Z",
+        "actualTimeUtc": "2022-10-08 19:15Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 7587",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LPMA",
+          "iata": "FNC",
+          "name": "Funchal"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 19:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 7587",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 15:20+01:00",
+        "actualTimeLocal": "2022-10-08 16:10+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:20Z",
+        "actualTimeUtc": "2022-10-08 15:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LPPD",
+          "iata": "PDL",
+          "name": "Ponta Delgada"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:15+00:00",
+        "actualTimeLocal": "2022-10-08 17:15+00:00",
+        "scheduledTimeUtc": "2022-10-08 17:15Z",
+        "actualTimeUtc": "2022-10-08 17:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 1861",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Embraer 195"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:15+01:00",
+        "actualTimeLocal": "2022-10-08 19:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:15Z",
+        "actualTimeUtc": "2022-10-08 18:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LPPD",
+          "iata": "PDL",
+          "name": "Ponta Delgada"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:40+00:00",
+        "actualTimeLocal": "2022-10-08 20:40+00:00",
+        "scheduledTimeUtc": "2022-10-08 20:40Z",
+        "actualTimeUtc": "2022-10-08 20:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "S4 173",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Azores"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 18:00+01:00",
+        "actualTimeLocal": "2022-10-08 18:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:00Z",
+        "actualTimeUtc": "2022-10-08 17:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LPPT",
+          "iata": "LIS",
+          "name": "Lisbon"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:55+01:00",
+        "actualTimeLocal": "2022-10-08 18:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:55Z",
+        "actualTimeUtc": "2022-10-08 17:55Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 1951",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A319"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:30+01:00",
+        "actualTimeLocal": "2022-10-08 17:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:30Z",
+        "actualTimeUtc": "2022-10-08 16:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:40+02:00",
+        "actualTimeLocal": "2022-10-08 20:40+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:40Z",
+        "actualTimeUtc": "2022-10-08 18:40Z",
+        "baggageBelt": "3",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 1460",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320 (sharklets)"
+      },
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 17:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 20:40+02:00",
+        "scheduledTimeUtc": "2022-10-08 18:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 1460",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:25+01:00",
+        "actualTimeLocal": "2022-10-08 19:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:25Z",
+        "actualTimeUtc": "2022-10-08 18:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:35+02:00",
+        "actualTimeLocal": "2022-10-08 22:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:35Z",
+        "actualTimeUtc": "2022-10-08 20:35Z",
+        "baggageBelt": "5",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "DS 1464",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Easyjet Switzerland"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:25Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:35Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 1464",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 19:30+01:00",
+        "actualTimeLocal": "2022-10-08 19:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:30Z",
+        "actualTimeUtc": "2022-10-08 18:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LSZH",
+          "iata": "ZRH",
+          "name": "Zurich"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:55+02:00",
+        "actualTimeLocal": "2022-10-08 22:55+02:00",
+        "scheduledTimeUtc": "2022-10-08 20:55Z",
+        "actualTimeUtc": "2022-10-08 20:55Z",
+        "terminal": "2",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "LX 2065",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "HB-JDB",
+        "modeS": "4B1813",
+        "model": "Airbus A320 NEO"
+      },
+      "airline": {
+        "name": "SWISS"
+      }
+    },
+    {
+      "departure": {
+        "scheduledTimeLocal": "2022-10-08 16:10+01:00",
+        "actualTimeLocal": "2022-10-08 16:10+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:10Z",
+        "actualTimeUtc": "2022-10-08 15:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "airport": {
+          "icao": "LTFM",
+          "iata": "IST",
+          "name": "Istanbul"
+        },
+        "scheduledTimeLocal": "2022-10-08 22:45+03:00",
+        "scheduledTimeUtc": "2022-10-08 19:45Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "TK 1450",
+      "status": "Boarding",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737"
+      },
+      "airline": {
+        "name": "Turkish"
+      }
+    }
+  ],
+  "arrivals": [
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEZL",
+          "iata": "SVQ",
+          "name": "Seville"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:45+02:00",
+        "actualTimeLocal": "2022-10-08 15:02+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:45Z",
+        "actualTimeUtc": "2022-10-08 13:02Z",
+        "terminal": "1",
+        "checkInDesk": "M06-M10",
+        "gate": "A2",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 14:55+01:00",
+        "actualTimeLocal": "2022-10-08 15:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 13:55Z",
+        "actualTimeUtc": "2022-10-08 14:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 5466",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFOT",
+          "iata": "TUF",
+          "name": "Tours/Val de Loire (Loire Valley)"
+        },
+        "scheduledTimeLocal": "2022-10-08 13:50+02:00",
+        "scheduledTimeUtc": "2022-10-08 11:50Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 14:50+01:00",
+        "actualTimeLocal": "2022-10-08 17:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 13:50Z",
+        "actualTimeUtc": "2022-10-08 16:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 7465",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "EGKK",
+          "iata": "LGW",
+          "name": "London"
+        },
+        "scheduledTimeLocal": "2022-10-08 12:00+01:00",
+        "actualTimeLocal": "2022-10-08 12:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 11:00Z",
+        "actualTimeUtc": "2022-10-08 11:00Z",
+        "terminal": "S",
+        "gate": "12",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 14:25+01:00",
+        "actualTimeLocal": "2022-10-08 15:31+01:00",
+        "scheduledTimeUtc": "2022-10-08 13:25Z",
+        "actualTimeUtc": "2022-10-08 14:31Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 1331",
+      "callSign": "TAP1331",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "CS-TTW",
+        "modeS": "495297",
+        "model": "Embraer 195"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFPG",
+          "iata": "CDG",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:15+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:15Z",
+        "terminal": "2F",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:30+01:00",
+        "actualTimeLocal": "2022-10-08 15:18+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "actualTimeUtc": "2022-10-08 14:18Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "AF 1528",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A319"
+      },
+      "airline": {
+        "name": "Air France"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPPD",
+          "iata": "PDL",
+          "name": "Ponta Delgada"
+        },
+        "scheduledTimeLocal": "2022-10-08 12:20+00:00",
+        "actualTimeLocal": "2022-10-08 13:12+00:00",
+        "scheduledTimeUtc": "2022-10-08 12:20Z",
+        "actualTimeUtc": "2022-10-08 13:12Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:30+01:00",
+        "actualTimeLocal": "2022-10-08 16:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "actualTimeUtc": "2022-10-08 15:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 2632",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "ELLX",
+          "iata": "LUX",
+          "name": "Luxembourg"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:15+02:00",
+        "actualTimeLocal": "2022-10-08 14:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:15Z",
+        "actualTimeUtc": "2022-10-08 12:35Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:45+01:00",
+        "actualTimeLocal": "2022-10-08 16:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:45Z",
+        "actualTimeUtc": "2022-10-08 15:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 2863",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFGJ",
+          "iata": "DLE",
+          "name": "Dole/Tavaux"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:45+01:00",
+        "actualTimeLocal": "2022-10-08 17:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:45Z",
+        "actualTimeUtc": "2022-10-08 16:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 9139",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:35+02:00",
+        "actualTimeLocal": "2022-10-08 15:43+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:35Z",
+        "actualTimeUtc": "2022-10-08 13:43Z",
+        "terminal": "4",
+        "checkInDesk": "850-859",
+        "gate": "K72",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:55+01:00",
+        "actualTimeLocal": "2022-10-08 15:37+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:55Z",
+        "actualTimeUtc": "2022-10-08 14:37Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "IB 8664",
+      "callSign": "IBE8664",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "EC-LJR",
+        "modeS": "34364E",
+        "model": "Bombardier CRJ1000"
+      },
+      "airline": {
+        "name": "Iberia"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "EHAM",
+          "iata": "AMS",
+          "name": "Amsterdam"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:05+02:00",
+        "actualTimeLocal": "2022-10-08 14:22+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:05Z",
+        "actualTimeUtc": "2022-10-08 12:22Z",
+        "terminal": "1",
+        "checkInDesk": "6-8",
+        "gate": "B32",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:40+01:00",
+        "actualTimeLocal": "2022-10-08 15:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:40Z",
+        "actualTimeUtc": "2022-10-08 14:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "KL 1713",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "PH-EZX",
+        "modeS": "484F80",
+        "model": "Embraer 190"
+      },
+      "airline": {
+        "name": "KLM"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "EDDF",
+          "iata": "FRA",
+          "name": "Frankfurt-am-Main"
+        },
+        "scheduledTimeLocal": "2022-10-08 13:55+02:00",
+        "actualTimeLocal": "2022-10-08 14:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 11:55Z",
+        "actualTimeUtc": "2022-10-08 12:10Z",
+        "terminal": "1",
+        "checkInDesk": "263-461",
+        "gate": "A54",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:40+01:00",
+        "actualTimeLocal": "2022-10-08 15:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:40Z",
+        "actualTimeUtc": "2022-10-08 14:50Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "LH 1178",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "D-AIRC",
+        "modeS": "3C6643",
+        "model": "Airbus A321"
+      },
+      "airline": {
+        "name": "Lufthansa"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LTFM",
+          "iata": "IST",
+          "name": "Istanbul"
+        },
+        "scheduledTimeLocal": "2022-10-08 12:15+03:00",
+        "scheduledTimeUtc": "2022-10-08 09:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:10+01:00",
+        "actualTimeLocal": "2022-10-08 15:11+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:10Z",
+        "actualTimeUtc": "2022-10-08 14:11Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TK 1449",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737"
+      },
+      "airline": {
+        "name": "Turkish"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:00+02:00",
+        "actualTimeLocal": "2022-10-08 15:04+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:00Z",
+        "actualTimeUtc": "2022-10-08 13:04Z",
+        "terminal": "2",
+        "checkInDesk": "505-532",
+        "gate": "D64",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:15+01:00",
+        "actualTimeLocal": "2022-10-08 15:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:15Z",
+        "actualTimeUtc": "2022-10-08 14:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "UX 1143",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Embraer 190"
+      },
+      "airline": {
+        "name": "Air Europa"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEBL",
+          "iata": "BCN",
+          "name": "Barcelona"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:15+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:15Z",
+        "terminal": "1",
+        "checkInDesk": "411-512",
+        "gate": "B56",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 15:10+01:00",
+        "actualTimeLocal": "2022-10-08 15:08+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:10Z",
+        "actualTimeUtc": "2022-10-08 14:08Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "VY 8478",
+      "status": "Arrived",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Vueling"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:10+02:00",
+        "actualTimeLocal": "2022-10-08 16:05+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:10Z",
+        "actualTimeUtc": "2022-10-08 14:05Z",
+        "checkInDesk": "1-12",
+        "gate": "A1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:25+01:00",
+        "actualTimeLocal": "2022-10-08 17:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:25Z",
+        "actualTimeUtc": "2022-10-08 16:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 1455",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "name": "Nantes"
+        },
+        "quality": []
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:55+01:00",
+        "actualTimeLocal": "2022-10-08 16:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:55Z",
+        "actualTimeUtc": "2022-10-08 15:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 7590",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFBH",
+          "iata": "LRH",
+          "name": "La Rochelle/Île de Ré"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:15+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:50+01:00",
+        "actualTimeLocal": "2022-10-08 16:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:50Z",
+        "actualTimeUtc": "2022-10-08 15:50Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 7459",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFOB",
+          "iata": "BVA",
+          "name": "Beauvais/Tillé"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:40+01:00",
+        "actualTimeLocal": "2022-10-08 17:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:40Z",
+        "actualTimeUtc": "2022-10-08 16:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 7479",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LIRA",
+          "iata": "CIA",
+          "name": "Roma"
+        },
+        "scheduledTimeLocal": "2022-10-08 14:05+02:00",
+        "actualTimeLocal": "2022-10-08 14:05+02:00",
+        "scheduledTimeUtc": "2022-10-08 12:05Z",
+        "actualTimeUtc": "2022-10-08 12:05Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:00+01:00",
+        "actualTimeLocal": "2022-10-08 15:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:00Z",
+        "actualTimeUtc": "2022-10-08 14:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 9132",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEPA",
+          "iata": "PMI",
+          "name": "Palma De Mallorca"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:30+02:00",
+        "actualTimeLocal": "2022-10-08 16:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "actualTimeUtc": "2022-10-08 14:30Z",
+        "terminal": "N",
+        "checkInDesk": "078-085",
+        "gate": "C68",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:30+01:00",
+        "actualTimeLocal": "2022-10-08 17:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:30Z",
+        "actualTimeUtc": "2022-10-08 16:30Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 3626",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320 (sharklets)"
+      },
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "ELLX",
+          "iata": "LUX",
+          "name": "Luxembourg"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:30+02:00",
+        "actualTimeLocal": "2022-10-08 16:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "actualTimeUtc": "2022-10-08 14:30Z",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:55+01:00",
+        "actualTimeLocal": "2022-10-08 17:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:55Z",
+        "actualTimeUtc": "2022-10-08 16:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 7584",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPMA",
+          "iata": "FNC",
+          "name": "Funchal"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:45+01:00",
+        "actualTimeLocal": "2022-10-08 16:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:45Z",
+        "actualTimeUtc": "2022-10-08 15:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:40+01:00",
+        "actualTimeLocal": "2022-10-08 17:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:40Z",
+        "actualTimeUtc": "2022-10-08 16:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 7586",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:25Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 1455",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFRS",
+          "iata": "NTE",
+          "name": "Nantes"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:15+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 16:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:55Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 7590",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "GMAD",
+          "iata": "AGA",
+          "name": "Agadir"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:15Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:25+01:00",
+        "actualTimeLocal": "2022-10-08 17:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:25Z",
+        "actualTimeUtc": "2022-10-08 16:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 3352",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFQQ",
+          "iata": "LIL",
+          "name": "Lille/Lesquin"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:20+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:20Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:40+01:00",
+        "actualTimeLocal": "2022-10-08 17:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:40Z",
+        "actualTimeUtc": "2022-10-08 16:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 4503",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPPT",
+          "iata": "LIS",
+          "name": "Lisbon"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:00+01:00",
+        "actualTimeLocal": "2022-10-08 16:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 15:00Z",
+        "actualTimeUtc": "2022-10-08 15:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:00+01:00",
+        "actualTimeLocal": "2022-10-08 17:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:00Z",
+        "actualTimeUtc": "2022-10-08 16:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 1960",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A319"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSZH",
+          "iata": "ZRH",
+          "name": "Zurich"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:40+02:00",
+        "actualTimeLocal": "2022-10-08 16:55+02:00",
+        "scheduledTimeUtc": "2022-10-08 13:40Z",
+        "actualTimeUtc": "2022-10-08 14:55Z",
+        "checkInDesk": "2(3)",
+        "gate": "A67",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:20+01:00",
+        "actualTimeLocal": "2022-10-08 18:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:20Z",
+        "actualTimeUtc": "2022-10-08 17:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 923",
+      "status": "Delayed",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "CS-TNU",
+        "modeS": "4951D5",
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEPA",
+          "iata": "PMI",
+          "name": "Palma De Mallorca"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:30+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 3626",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "ELLX",
+          "iata": "LUX",
+          "name": "Luxembourg"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:30+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:30Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:55Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 7584",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPMA",
+          "iata": "FNC",
+          "name": "Funchal"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:45Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 17:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 16:40Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 7586",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:35+02:00",
+        "actualTimeLocal": "2022-10-08 18:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:35Z",
+        "actualTimeUtc": "2022-10-08 16:10Z",
+        "checkInDesk": "1-12",
+        "gate": "D71",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:50+01:00",
+        "actualTimeLocal": "2022-10-08 18:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:50Z",
+        "actualTimeUtc": "2022-10-08 17:50Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "DS 1463",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320 NEO"
+      },
+      "airline": {
+        "name": "Easyjet Switzerland"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "name": "Lyon, St. Exupery"
+        },
+        "quality": []
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:45+01:00",
+        "actualTimeLocal": "2022-10-08 18:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:45Z",
+        "actualTimeUtc": "2022-10-08 17:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EC 4449",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "EasyJet Europe"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "EGSS",
+          "iata": "STN",
+          "name": "London"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:55+01:00",
+        "actualTimeLocal": "2022-10-08 15:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 14:55Z",
+        "actualTimeUtc": "2022-10-08 14:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:20+01:00",
+        "actualTimeLocal": "2022-10-08 18:20+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:20Z",
+        "actualTimeUtc": "2022-10-08 17:20Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "FR 7965",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Ryanair"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSZH",
+          "iata": "ZRH",
+          "name": "Zurich"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:10+02:00",
+        "actualTimeLocal": "2022-10-08 17:10+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:10Z",
+        "actualTimeUtc": "2022-10-08 15:10Z",
+        "checkInDesk": "1",
+        "gate": "A64",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:45+01:00",
+        "actualTimeLocal": "2022-10-08 18:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:45Z",
+        "actualTimeUtc": "2022-10-08 17:45Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "LX 2064",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "HB-JDB",
+        "modeS": "4B1813",
+        "model": "Airbus A320 NEO"
+      },
+      "airline": {
+        "name": "SWISS"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPPD",
+          "iata": "PDL",
+          "name": "Ponta Delgada"
+        },
+        "scheduledTimeLocal": "2022-10-08 15:10+00:00",
+        "actualTimeLocal": "2022-10-08 15:10+00:00",
+        "scheduledTimeUtc": "2022-10-08 15:10Z",
+        "actualTimeUtc": "2022-10-08 15:10Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:25+01:00",
+        "actualTimeLocal": "2022-10-08 18:25+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:25Z",
+        "actualTimeUtc": "2022-10-08 17:25Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "S4 174",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Azores"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFPO",
+          "iata": "ORY",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:40+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:40Z",
+        "terminal": "3",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:55+01:00",
+        "actualTimeLocal": "2022-10-08 18:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:55Z",
+        "actualTimeUtc": "2022-10-08 17:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TO 7608",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Boeing 737-800"
+      },
+      "airline": {
+        "name": "Transavia France"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "EDDL",
+          "iata": "DUS",
+          "name": "Duesseldorf"
+        },
+        "scheduledTimeLocal": "2022-10-08 16:15+02:00",
+        "actualTimeLocal": "2022-10-08 16:30+02:00",
+        "runwayTimeLocal": "2022-10-08 16:42+02:00",
+        "scheduledTimeUtc": "2022-10-08 14:15Z",
+        "actualTimeUtc": "2022-10-08 14:30Z",
+        "runwayTimeUtc": "2022-10-08 14:42Z",
+        "terminal": "B",
+        "checkInDesk": "153,170",
+        "gate": "A40",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:00+01:00",
+        "actualTimeLocal": "2022-10-08 18:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:00Z",
+        "actualTimeUtc": "2022-10-08 17:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "EW 9640",
+      "callSign": "EWG66WU",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "reg": "D-AEWM",
+        "modeS": "3C56ED",
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "Eurowings"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LSGG",
+          "iata": "GVA",
+          "name": "Geneva"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:35Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:50+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:50Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 1463",
+      "status": "CanceledUncertain",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFLL",
+          "iata": "LYS",
+          "name": "Lyon"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:35Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 18:45+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:45Z",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "number": "U2 4449",
+      "status": "Unknown",
+      "codeshareStatus": "Unknown",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "easyJet"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 19:35+02:00",
+        "actualTimeLocal": "2022-10-08 19:35+02:00",
+        "scheduledTimeUtc": "2022-10-08 17:35Z",
+        "actualTimeUtc": "2022-10-08 17:35Z",
+        "terminal": "4",
+        "checkInDesk": "850-859",
+        "gate": "K",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 19:55+01:00",
+        "actualTimeLocal": "2022-10-08 19:55+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:55Z",
+        "actualTimeUtc": "2022-10-08 18:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "IB 8744",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Bombardier CRJ1000"
+      },
+      "airline": {
+        "name": "Iberia"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "name": "Sal"
+        },
+        "quality": []
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 19:40+01:00",
+        "actualTimeLocal": "2022-10-08 19:40+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:40Z",
+        "actualTimeUtc": "2022-10-08 18:40Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "P6 1842",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "airline": {
+        "name": "Privilege Style"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LPPT",
+          "iata": "LIS",
+          "name": "Lisbon"
+        },
+        "scheduledTimeLocal": "2022-10-08 18:00+01:00",
+        "actualTimeLocal": "2022-10-08 18:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 17:00Z",
+        "actualTimeUtc": "2022-10-08 17:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 19:00+01:00",
+        "actualTimeLocal": "2022-10-08 19:00+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:00Z",
+        "actualTimeUtc": "2022-10-08 18:00Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 1920",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LFPO",
+          "iata": "ORY",
+          "name": "Paris"
+        },
+        "scheduledTimeLocal": "2022-10-08 17:55+02:00",
+        "scheduledTimeUtc": "2022-10-08 15:55Z",
+        "terminal": "1",
+        "quality": [
+          "Basic"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 19:05+01:00",
+        "actualTimeLocal": "2022-10-08 19:05+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:05Z",
+        "actualTimeUtc": "2022-10-08 18:05Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "TP 457",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Airbus A320"
+      },
+      "airline": {
+        "name": "TAP Air Portugal"
+      }
+    },
+    {
+      "departure": {
+        "airport": {
+          "icao": "LEMD",
+          "iata": "MAD",
+          "name": "Madrid"
+        },
+        "scheduledTimeLocal": "2022-10-08 19:00+02:00",
+        "actualTimeLocal": "2022-10-08 19:00+02:00",
+        "scheduledTimeUtc": "2022-10-08 17:00Z",
+        "actualTimeUtc": "2022-10-08 17:00Z",
+        "terminal": "2",
+        "checkInDesk": "516-532",
+        "gate": "D",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "arrival": {
+        "scheduledTimeLocal": "2022-10-08 19:15+01:00",
+        "actualTimeLocal": "2022-10-08 19:15+01:00",
+        "scheduledTimeUtc": "2022-10-08 18:15Z",
+        "actualTimeUtc": "2022-10-08 18:15Z",
+        "terminal": "1",
+        "quality": [
+          "Basic",
+          "Live"
+        ]
+      },
+      "number": "UX 1141",
+      "status": "Expected",
+      "codeshareStatus": "IsOperator",
+      "isCargo": false,
+      "aircraft": {
+        "model": "Embraer 190"
+      },
+      "airline": {
+        "name": "Air Europa"
+      }
+    }
+  ]
+}

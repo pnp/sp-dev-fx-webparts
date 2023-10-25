@@ -1,0 +1,98 @@
+[
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
+        "source": "pnp",
+        "title": "Birthdays Timeline",
+        "shortDescription": "Shows upcoming birthdays in the company in a timeline",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+        "longDescription": [
+            "Shows upcoming birthdays in the company, laid out in a timeline"
+        ],
+        "creationDateTime": "2023-01-31",
+        "updateDateTime": "2023-01-31",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.16.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "joaojmendes",
+                "pictureUrl": "https://github.com/joaojmendes.png",
+                "name": "João Mendes"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    },
+    {
+        "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays",
+        "source": "pnp",
+        "title": "Birthdays",
+        "shortDescription": "Shows upcoming birthdays in the company",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+        "longDescription": [
+            "The Web Part shows the upcoming birthdays in the company, the web parts reads birthdays from a list located on the tenant's root site with title \"Birthdays.\""
+        ],
+        "creationDateTime": "2023-01-31",
+        "updateDateTime": "2023-01-31",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.16.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "joaojmendes",
+                "pictureUrl": "https://github.com/joaojmendes.png",
+                "name": "João Mendes"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    }
+]

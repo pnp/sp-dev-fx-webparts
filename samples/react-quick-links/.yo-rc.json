@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "quick-links",
+    "libraryId": "0c275940-be10-4d18-a29a-0329c9ecd3ff",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Quick Links",
+    "solutionShortDescription": "Quick Links description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

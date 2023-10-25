@@ -10,6 +10,11 @@ When added to a Vertical Section it can be used as a Contents table for the page
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -30,6 +35,8 @@ Version|Date|Comments
 1.4|June 29, 2022|Adds the capability to find collapsible section headers and insert them into the navigation
 1.5|July 19, 2022|Bug fixes
 1.6|August 8, 2022|Add theme provider and bug fixes
+1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
+1.8|May 13, 2023|Fixed issue when heading has a + symbol
 
 ## Minimal Path to Awesome
 
@@ -44,12 +51,11 @@ Version|Date|Comments
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-page-navigator|[Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
-react-page-navigator|[Jasey Waegebaert](https://github.com/Jwaegebaert)
+* [Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
+* [Jasey Waegebaert](https://github.com/Jwaegebaert)
+* [Mike Zimmerman](https://github.com/mikezimm)
 
 ## Help
 
@@ -72,4 +78,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-page-navigator" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-page-navigator" />

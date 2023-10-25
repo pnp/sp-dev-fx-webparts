@@ -29,6 +29,11 @@ where sample was demonstrated.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -40,8 +45,8 @@ where sample was demonstrated.
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
@@ -56,18 +61,16 @@ See more details on how to create a bot from following locations.
 * [Getting started with the Connector](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html) - MS Bot Framework documentation
 * [Creating your first bot with the Microsoft Bot Framework – Part 1 – Build and test locally](http://www.garypretty.co.uk/2016/07/14/creating-your-first-bot-with-the-microsoft-bot-framework-part-1/) - [@GaryPretty](https://twitter.com/GaryPretty)
 * [Creating your first bot with the Microsoft Bot Framework – Part 2 – publishing and chatting through Skype](http://www.garypretty.co.uk/2016/07/16/creating-your-first-bot-with-the-microsoft-bot-framework-part-2/)- [@GaryPretty](https://twitter.com/GaryPretty)
-* [Create a QnA Bot with Azure Bot Service v4](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/tutorials/create-qna-bot)
+* [Create a QnA Bot with Azure Bot Service v4](https://learn.microsoft.com/azure/cognitive-services/qnamaker/tutorials/create-qna-bot)
 
 > Notice that you can find simplistic bot implemented with Visual Studio 2015 using the bot templates (Oct 2016)
 under the [vs2015-bot-application](./vs2015-bot-application) folder. This is simplistic bot based on above blog posts, which responses random string back.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-bot-framework | [Gary Pretty](https://github.com/garypretty) ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-|web part v4| [Stephan Bisser](https://github.com/stephanbisser) ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
-|Upgrade to SPFx 1.10.0| [Harsha Vardhini](https://github.com/Harshagracy) ([@harshagracy](https://twitter.com/harshagracy))
+* [Gary Pretty](https://github.com/garypretty)
+* [Stephan Bisser](https://github.com/stephanbisser)
+* [Harsha Vardhini](https://github.com/Harshagracy)
 
 ## Version history
 
@@ -145,4 +148,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework" />

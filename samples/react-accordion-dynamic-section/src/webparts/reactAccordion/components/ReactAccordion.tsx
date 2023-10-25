@@ -1,7 +1,6 @@
 import * as React from "react";
 import styles from "./ReactAccordion.module.scss";
 import { IReactAccordionProps } from "./IReactAccordionProps";
-import { sp } from "@pnp/sp/presets/all";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import "./reactAccordion.css";
@@ -13,10 +12,12 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import { getSP } from "../../../utils/pnpjs-config";
+import { SPFI } from "@pnp/sp";
 
 export interface IReactAccordionState {
-  items: Array<any>;
-  choices: Array<any>;
+  items: Array<string>;
+  choices: Array<string>;
   allowMultipleExpanded: boolean;
   allowZeroExpanded: boolean;
 }
@@ -25,15 +26,20 @@ export default class ReactAccordion extends React.Component<
   IReactAccordionProps,
   IReactAccordionState
 > {
+
+  private _sp: SPFI;
+
   constructor(props: IReactAccordionProps) {
     super(props);
 
     this.state = {
-      items: new Array<any>(),
-      choices: new Array<any>(),
+      items: new Array<string>(),
+      choices: new Array<string>(),
       allowMultipleExpanded: this.props.allowMultipleExpanded,
       allowZeroExpanded: this.props.allowZeroExpanded,
     };
+
+    this._sp = getSP();
     this.getListItems();
   }
 
@@ -53,7 +59,7 @@ export default class ReactAccordion extends React.Component<
         </OrderBy>`;
       }
 
-      let query = `<View>
+      const query = `<View>
         <Query>
           <Where>
             <Eq>
@@ -65,17 +71,17 @@ export default class ReactAccordion extends React.Component<
         </Query>
       </View>`;
 
-      let theAccordianList = sp.web.lists.getById(this.props.listId);
+      const theAccordianList = this._sp.web.lists.getById(this.props.listId);
       theAccordianList
         .getItemsByCAMLQuery({
           ViewXml: query,
         }) //.select("Title", "Answer", "Category")
-        .then((results: Array<any>) => {
+        .then((results: Array<string>) => {
           this.setState({
             items: results,
           });
         })
-        .catch((error: any) => {
+        .catch((error) => {
           console.log("Failed to get list items!");
           console.log(error);
         });
@@ -124,9 +130,9 @@ export default class ReactAccordion extends React.Component<
               allowZeroExpanded={allowZeroExpanded}
               allowMultipleExpanded={allowMultipleExpanded}
             >
-              {this.state.items.map((item: any) => {
+              {this.state.items.map((item: string) => {
                 return (
-                  <AccordionItem>
+                  <AccordionItem key={item}>
                     <AccordionItemHeading>
                       <AccordionItemButton
                         title={item[this.props.accordianTitleColumn]}

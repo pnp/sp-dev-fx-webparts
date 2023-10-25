@@ -1,9 +1,10 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClientV3  } from "@microsoft/sp-http";
 import * as moment from 'moment';
+import { version } from "react";
 
 export class SPService {
-  private graphClient: MSGraphClient = null;
+  private graphClient: MSGraphClientV3  = null;
   private  birthdayListTitle: string = "Birthdays";
   constructor(private _context: WebPartContext) {
 
@@ -44,7 +45,7 @@ export class SPService {
         _filter = "fields/Birthday ge '" + _today + "' and fields/Birthday le '" + _FinalDate + "'";
       }
 
-      this.graphClient = await this._context.msGraphClientFactory.getClient();
+      this.graphClient = await this._context.msGraphClientFactory.getClient('3');
       _results = await this.graphClient.api(`sites/root/lists('${this.birthdayListTitle}')/items?orderby=Fields/Birthday`)
         .version('v1.0')
         .expand('fields')

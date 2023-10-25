@@ -17,6 +17,11 @@ When the user clicks on the header it dynamically load documents.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v6 | v8](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20v8-green.svg)
 ![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
@@ -39,13 +44,11 @@ Select Document Library| dropdown|yes
 Select Field to Group By | dropdown|yes
  
 
-## Solution
+## Contributors
 
 The Web Part Use PnPjs library, Fluent-Ui-react components
 
-Solution|Author(s)
---------|---------
-React List Items Menu |[João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes))
+* [João Mendes](https://github.com/joaojmendes) 
  
 
 
@@ -89,4 +92,4 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-list-items-menu-sp2019&template=question.yml&sample=react-list-items-menu-sp2019&authors=@joaojmendes&title=react-list-items-menu-sp2019%20-%20).
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-items-menu-SP2019" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-items-menu-SP2019" />

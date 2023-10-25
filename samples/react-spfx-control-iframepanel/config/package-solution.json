@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-spfx-control-iframepanel-client-side-solution",
+    "id": "987f5e02-b7a2-47c2-a128-3710f6333a5d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-spfx-control-iframepanel description"
+      },
+      "longDescription": {
+        "default": "react-spfx-control-iframepanel description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-spfx-control-iframepanel Feature",
+        "description": "The feature that activates elements of the react-spfx-control-iframepanel solution.",
+        "id": "b42ae7fd-9283-4a36-b5e9-1286659d5a43",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-spfx-control-iframepanel.sppkg"
+  }
+}

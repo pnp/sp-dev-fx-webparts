@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.15.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "react-enhanced-page-properties",
+    "libraryId": "54ea24ef-5714-4f81-a9e6-e22f70e0c644",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-enhanced-page-properties",
+    "solutionShortDescription": "react-enhanced-page-properties description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

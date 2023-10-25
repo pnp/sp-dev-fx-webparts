@@ -1,0 +1,42 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "react-tab-conversationview-client-side-solution",
+        "id": "e17df70b-eff1-405c-ab34-4640d61c0050",
+        "version": "1.0.0.1",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.16.1"
+        },
+        "webApiPermissionRequests": [{
+            "resource": "Microsoft Graph",
+            "scope": "ChannelMessage.Read.All"
+        }],
+        "metadata": {
+            "shortDescription": {
+                "default": "react-tab-conversationview description"
+            },
+            "longDescription": {
+                "default": "react-tab-conversationview description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "react-tab-conversationview Feature",
+            "description": "The feature that activates elements of the react-tab-conversationview solution.",
+            "id": "bd9341cb-ae86-4cbf-b8e0-4caf2cbdd641",
+            "version": "1.0.0.0"
+        }]
+    },
+    "paths": {
+        "zippedPackage": "solution/react-tab-conversationview.sppkg"
+    }
+}

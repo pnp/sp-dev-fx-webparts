@@ -13,6 +13,11 @@ A SPFx web part using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -24,14 +29,12 @@ A SPFx web part using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-tabs-pnpjs |  [Federico Porceddu](https://github.com/fredupstair) https://www.federicoporceddu.com
+*  [Federico Porceddu](https://github.com/fredupstair) 
 
 ## Version history
 
@@ -50,7 +53,7 @@ Version|Date|Comments
   * package solution: `gulp package-solution --ship`
   * locate solution at `.\sharepoint\solution\react-teams-tabs-pnpjs.sppkg` 
   * upload it to your tenant app catalog
-  * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
+  * [approve permission requests](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
   * add `react-teams-tabs-pnpjs` app to your site
   * add `react-teams-tabs-pnpjs` web part to your page to see it in action
 
@@ -90,4 +93,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/react-teams-tabs-pnpjs" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/react-teams-tabs-pnpjs" />

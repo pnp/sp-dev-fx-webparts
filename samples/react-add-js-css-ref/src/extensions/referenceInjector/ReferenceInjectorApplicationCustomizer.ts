@@ -3,11 +3,12 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
+//import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'ReferenceInjectorApplicationCustomizerStrings';
+import { IJsCssItem } from '../../models/IJsCssItem';
 
-const LOG_SOURCE: string = 'ReferenceInjectorApplicationCustomizer';
+const LOG_SOURCE = 'ReferenceInjectorApplicationCustomizer';
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -15,9 +16,8 @@ const LOG_SOURCE: string = 'ReferenceInjectorApplicationCustomizer';
  * You can define an interface to describe it.
  */
 export interface IReferenceInjectorApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  jsfiles:any[];
-  cssfiles:any[];
+  jsfiles: IJsCssItem[];
+  cssfiles: IJsCssItem[];
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -31,25 +31,25 @@ export default class ReferenceInjectorApplicationCustomizer
     if(this.properties.jsfiles)
     {
       this.properties.jsfiles.forEach(element => {
-        let JsTag: HTMLScriptElement = document.createElement("script");
+        const JsTag: HTMLScriptElement = document.createElement("script");
          JsTag.src = element.FilePath;
-         
+
         JsTag.type = "text/javascript";
-       document.body.appendChild(JsTag);  
+       document.body.appendChild(JsTag);
       });
-      
+
     }
 
     if(this.properties.cssfiles){
 
       this.properties.cssfiles.forEach(element => {
-        let cssLink: HTMLLinkElement = document.createElement("link");
+        const cssLink: HTMLLinkElement = document.createElement("link");
         cssLink.href = element.FilePath;
         cssLink.type = "text/css";
         cssLink.rel = "stylesheet";
         document.body.appendChild(cssLink);
       });
-     
+
     }
     return Promise.resolve();
   }

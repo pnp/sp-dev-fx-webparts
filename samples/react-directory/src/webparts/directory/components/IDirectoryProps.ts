@@ -9,4 +9,5 @@ export interface IDirectoryProps {
   searchProps?: string;
   clearTextSearchProps?: string;
   pageSize?: number;
+  useSpaceBetween?:boolean;
 }

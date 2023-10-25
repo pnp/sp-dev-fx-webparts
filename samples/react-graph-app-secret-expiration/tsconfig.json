@@ -15,6 +15,7 @@
     "strictNullChecks": false,
     "noUnusedLocals": false,
     "resolveJsonModule": true,
+    "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./node_modules/@types",

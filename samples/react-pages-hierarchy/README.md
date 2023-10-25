@@ -1,17 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  - React
-  createdDate: 04/30/2020 12:00:00 AM
----
 
 # Pages Hierarchy
 
@@ -24,6 +10,11 @@ This web part allows users to create a faux page hierarchy in their pages librar
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
 ![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -35,21 +26,20 @@ This web part allows users to create a faux page hierarchy in their pages librar
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 Developer Tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 Developer Tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
 * Office 365 subscription with SharePoint Online
-* SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
+* SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-pages-hierarchy|[Bo George](https://github.com/bogeorge) ([@bo_george](https://twitter.com/bo_george))
-react-pages-hierarchy|[Nick Brown](https://github.com/techienickb) ([@techienickb](https://twitter.com/techienickb))
-react-pages-hierarchy|[SlowRobot](https://github.com/SlowRobot)
+* [Bo George](https://github.com/bogeorge)
+* [Nick Brown](https://github.com/techienickb) 
+* [SlowRobot](https://github.com/SlowRobot)
+* [ruslan-s](https://github.com/ruslan-s)
 
 ## Version history
 
@@ -59,7 +49,8 @@ Version|Date|Comments
 1.2|March 24, 2022|Updated to SPFX v1.14 and PnP packages to v3
 1.3|March 31, 2022|Added a Tree View
 1.4|July 29, 2022|Updated Tree View Functionality
-
+1.5|March 29, 2023|Added support for non-English SitePages library paths
+1.6|May 11, Uses treeFrom/expandTo web part properties
 
 ## Minimal path to awesome
 
@@ -102,4 +93,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-pages-hierarchy" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-pages-hierarchy" />

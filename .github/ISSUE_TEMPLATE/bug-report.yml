@@ -47,15 +47,15 @@ body:
   validations:
     required: true
   attributes:
-    label: Author(s)
+    label: Contributor(s)
     description: |
         Who wrote the sample?
         
-        Because of the way this repository is configured, samples authors do not get a notification when you create an issue. 
+        Because of the way this repository is configured, samples contributors do not get a notification when you create an issue. 
         
-        For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "Solution" section. 
+        For the section above **@mention any of the sample contributors**. Contributors' GitHub handle can be found on the main sample documentation page, under the "Contributors" section. 
         
-        Issues without an @mention will be closed automatically, as authors won't get notified.
+        Issues without an @mention will be closed automatically, as contributors won't get notified.
         
         **NOTE:** Don't @mention the repo maintainers, they already get notified.
 
@@ -99,7 +99,7 @@ body:
 - type: markdown
   attributes:
     value: |
-      When solving bugs, most time is spent going back and forth with the issue author asking for more information about their environment. 
+      When solving bugs, most time is spent going back and forth with the issue contributors asking for more information about their environment. 
       
       Save yourself some time (and those who are trying to help you); provide us with your environment information so we can reproduce the issue.
       
@@ -145,6 +145,24 @@ body:
       - label: not applicable
       - label: other (enter in the "Additional environment details" area below)
 
+- type: input
+  id: installed-node
+  validations:
+    required: true
+  attributes:
+    label:  What version of Node.js is currently installed on your workstation?
+    description: |
+        Run `node -v` and paste the results. 
+
+- type: input
+  id: required-node
+  validations:
+    required: true
+  attributes:
+    label:  What version of Node.js is required by the sample?
+    description: |
+        You can find the compatible versions of React in the sample's `README.md`, in the **Compatibility** section.
+        
 - type: textarea
   id: spfxdoctor
   validations:
@@ -152,7 +170,7 @@ body:
   attributes:
     label: Paste the results of SPFx doctor
     description: |
-        Run `m365 spfx doctor` and paste the results. 
+        Run `m365 spfx doctor -o text` and paste the results. 
         
         Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 

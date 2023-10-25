@@ -15,6 +15,11 @@ A detailed functionality and technical description can be found in the [author's
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.13.0](https://img.shields.io/badge/SPFx-1.13.0-green.svg)
 ![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -28,13 +33,11 @@ A detailed functionality and technical description can be found in the [author's
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-teams-graph-upload-as-pdf| [Markus Moeller](https://github.com/mmsharepoint) ([@moeller2_0](http://www.twitter.com/moeller2_0))
+* [Markus Moeller](https://github.com/mmsharepoint)
 
 ## Version history
 
@@ -63,8 +66,8 @@ Version|Date|Comments
 This web part illustrates the following concepts:
 
 - Use HTML5 drag and drop event handling
-- [Writing normal files smaller 4MB](https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http)
-- Retrieving files with [format=pdf](https://docs.microsoft.com/en-us/graph/api/driveitem-get-content-format?view=graph-rest-1.0&tabs=http) conversion
+- [Writing normal files smaller 4MB](https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http)
+- Retrieving files with [format=pdf](https://learn.microsoft.com/graph/api/driveitem-get-content-format?view=graph-rest-1.0&tabs=http) conversion
 - [FluentUI Progress Indicator](https://developer.microsoft.com/en-us/fluentui#/controls/web/progressindicator)
 
 ## Alternative
@@ -97,4 +100,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-graph-upload-as-pdf" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-teams-graph-upload-as-pdf" />

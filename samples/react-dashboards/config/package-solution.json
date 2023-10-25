@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Application Insights and Cost Management dashboards",
+    "iconPath": "assets/appLogo.png",
+    "id": "09af0554-67db-4a65-baa6-872dee7117a8",
+    "version": "1.0.1.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Windows Azure Service Management API",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Application Insights API",
+        "scope": "user_impersonation"
+      }
+    ],
+    "developer": {
+      "name": "Kinga Kazala (ETHZ)",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Display data and charts from Application Insights and Cost Management"
+      },
+      "longDescription": {
+        "default": "Display data and charts from Application Insights and Cost Management. \n\n The solution uses REST API endpoints: \n\n - Application Insights: https://learn.microsoft.com/en-us/rest/api/application-insights/query/get \n\n - Cost Management: https://learn.microsoft.com/en-us/rest/api/cost-management/query/usage"
+      },
+      "screenshotPaths": [
+        "assets/Cost.png",
+        "assets/OperationsPerformance.png",
+        "assets/PagesViews.png",
+        "assets/PagesViewTrend.png",
+        "assets/EditKusto.png"
+      ],
+      "videoUrl": ""
+    },
+    "features": [
+      {
+        "title": "SPFx ApplicationInsights and Cost Management Dashboards Feature",
+        "description": "The feature that activates elements of the spfx-applicationinsights solution.",
+        "id": "b3316c57-f3f8-4d2b-9b95-7250831dc33f",
+        "version": "1.0.0.0"
+      }
+    ],
+    "supportedLocales": [
+      "en-us"
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-applicationinsights.sppkg"
+  }
+}

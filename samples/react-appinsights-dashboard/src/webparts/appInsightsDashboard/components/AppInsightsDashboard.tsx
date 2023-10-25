@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styles from './AppInsightsDashboard.module.scss';
 import * as strings from 'AppInsightsDashboardWebPartStrings';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { DisplayMode } from '@microsoft/sp-core-library';
@@ -8,6 +7,8 @@ import PageViews from '../../../common/components/PageViews';
 import UserStatistics from '../../../common/components/UserStatistics';
 import PerformanceStatistics from '../../../common/components/PerformanceStatistics';
 import Helper from '../../../common/Helper';
+import styles from './AppInsightsDashboard.module.scss';
+
 
 export interface IAppInsightsDashboardProps {
 	AppId: string;
@@ -15,16 +16,17 @@ export interface IAppInsightsDashboardProps {
 	DisplayMode: DisplayMode;
 	onConfigure: () => void;
 	httpClient: HttpClient;
+    cultureName:string;
 }
 
 export const AppInsightsProps = React.createContext<IAppInsightsDashboardProps>(null);
 
 const AppInsightsDashboard: React.FunctionComponent<IAppInsightsDashboardProps> = (props) => {
 
-	const [helper, setHelper] = React.useState<any>(null);
+	const [helper, setHelper] = React.useState<Helper>(null);   //KK
 
 	React.useEffect(() => {
-		setHelper(new Helper(props.AppId, props.AppKey, props.httpClient));
+		setHelper(new Helper(props.AppId, props.AppKey, props.httpClient, props.cultureName));
 	}, [props.AppId, props.AppKey]);
 
 	return (

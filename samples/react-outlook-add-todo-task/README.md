@@ -54,6 +54,11 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -64,11 +69,9 @@ POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-outlook-add-todo-task|[Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
+* [Luis Mañez](https://github.com/luismanez) (MVP, [ClearPeople](http://www.clearpeople.com), @luismanez)
 
 ## Version history
 
@@ -95,7 +98,7 @@ m365 spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-* deploy spfx solution as Outlook add-in following instructions here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
+* deploy spfx solution as Outlook add-in following instructions here: [https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
 
 ## Features
 
@@ -133,4 +136,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-outlook-add-todo-task" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-outlook-add-todo-task" />

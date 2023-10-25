@@ -10,10 +10,32 @@
     },
     "name": "Search Directory",
     "id": "5b62bc16-3a71-461d-be2f-16bfcb011e8a",
-    "version": "3.0.1.0",
+    "version": "3.0.4.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "react-directory description"
+      },
+      "longDescription": {
+        "default": "react-directory description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-directory DirectoryWebPart Feature",
+        "description": "The feature that activates DirectoryWebPart from the react-directory solution.",
+        "id": "fae479bf-405f-4f80-a086-eea22eff3d6f",
+        "version": "3.0.4.0",
+        "componentIds": [
+          "fae479bf-405f-4f80-a086-eea22eff3d6f"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-directory.sppkg"

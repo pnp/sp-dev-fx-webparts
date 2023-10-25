@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "react-m-365-services-health",
+    "libraryId": "f4d4b329-f1c6-49c9-a2fa-12a9816ac717",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-m365-services-health",
+    "solutionShortDescription": "react-m365-services-health description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

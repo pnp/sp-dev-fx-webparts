@@ -38,8 +38,8 @@ NB。我正在等待 HttpGraphClient 的 GA（权限方面有所限制）以在�
 
 ## 适用于
 
-* [SharePoint 框架](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint 框架](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 开发人员租户](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 
@@ -88,4 +88,4 @@ react-invitation-manager|Giuliano De Luca ([@giuleon](https://twitter.com/giuleo
 - 使用 REST API 与 Microsoft Graph 通信
 - 使用 ADAL JS 库及使用“回应”创建的 SharePoint 框架 web 部件
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-invitation-manager)

@@ -10,9 +10,9 @@ import * as strings from 'AdvancedPagePropertiesWebPartStrings';
 import AdvancedPageProperties from './components/AdvancedPageProperties';
 import { IAdvancedPagePropertiesProps } from './components/IAdvancedPagePropertiesProps';
 //import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
-import "@pnp/sp/fields";
-import "@pnp/sp/fields/list";
-import { FieldTypes, sp } from "@pnp/sp/presets/all";
+import { getSP } from './utilities/pnpjs-config';
+import { SPFI } from '@pnp/sp';
+
 import { Log } from './utilities/Log';
 import * as _ from 'lodash';
 import {
@@ -28,7 +28,8 @@ export interface IAdvancedPagePropertiesWebPartProps {
 
 export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart<IAdvancedPagePropertiesWebPartProps> {
 
-  private availableProperties: IPropertyPaneDropdownOption[] = [];
+  private _availableProperties: IPropertyPaneDropdownOption[] = [];
+
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 
@@ -37,8 +38,13 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     this.render();
   }
 
+  /**
+   * Private variable to store the SharePoint Factory Instance
+   */
+  private _sp: SPFI;
+
   protected async onInit(): Promise<void> {
-    sp.setup({ spfxContext: this.context });
+    this._sp = getSP(this.context);
 
       // Consume the new ThemeProvider service
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
@@ -68,17 +74,19 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
 
   private async getPageProperties(): Promise<void> {
     Log.Write("Getting Site Page fields...");
-    const list = await sp.web.lists.ensureSitePagesLibrary();
-    const fi = await list.fields();
+    const list = await this._sp.web.lists.ensureSitePagesLibrary();
+    const _fields = await list.fields();
+    this._availableProperties = [];
 
-    this.availableProperties = [];
-    Log.Write(`${fi.length.toString()} fields retrieved!`);
-    fi.forEach((f) => {
-      if (!f.FromBaseType && !f.Hidden && f.SchemaXml.indexOf("ShowInListSettings=\"FALSE\"") === -1
-          && f.TypeAsString !== "Boolean" && f.TypeAsString !== "Note") {
-        const internalFieldName = f.InternalName == "LinkTitle" ? "Title" : f.InternalName;
-        this.availableProperties.push({ key: internalFieldName, text: f.Title });
-        Log.Write(f.TypeAsString);
+    Log.Write(`${_fields.length.toString()} fields retrieved!`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    _fields.forEach((field: any) => {
+      if (!field.FromBaseType && !field.Hidden && field.SchemaXml.indexOf("ShowInListSettings=\"FALSE\"") === -1
+          //&& field.TypeAsString !== "Boolean" && field.TypeAsString !== "Note") {
+          && field.TypeAsString !== "Boolean") {
+        const internalFieldName = field.InternalName == "LinkTitle" ? "Title" : field.InternalName;
+        this._availableProperties.push({ key: internalFieldName, text: field.Title });
+        Log.Write(field.TypeAsString);
       }
     });
   }
@@ -91,20 +99,23 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     return Version.parse('1.0');
   }
 
-  protected onAddButtonClick (value: any) {
-    this.properties.selectedProperties.push(this.availableProperties[0].key.toString());
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  protected onAddButtonClick (_value: any) {
+    this.properties.selectedProperties.push(this._availableProperties[0].key.toString());
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected onDeleteButtonClick (value: any) {
     Log.Write(value.toString());
-    var removed = this.properties.selectedProperties.splice(value, 1);
+    const removed = this.properties.selectedProperties.splice(value, 1);
     Log.Write(`${removed[0]} removed.`);
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  protected onPropertyPaneFieldChanged(propertyPath: string, _oldValue: any, newValue: any): void {
     if (propertyPath.indexOf("selectedProperty") >= 0) {
       Log.Write('Selected Property identified');
-      let index: number = _.toInteger(propertyPath.replace("selectedProperty", ""));
+      const index: number = _.toInteger(propertyPath.replace("selectedProperty", ""));
       this.properties.selectedProperties[index] = newValue;
     }
   }
@@ -119,7 +130,8 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
     Log.Write(`getPropertyPaneConfiguration`);
 
     // Initialize with the Title entry
-    var propDrops: IPropertyPaneField<any>[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const propDrops: IPropertyPaneField<any>[] = [];
     propDrops.push(PropertyPaneTextField('title', {
       label: strings.TitleFieldLabel
     }));
@@ -129,7 +141,7 @@ export default class AdvancedPagePropertiesWebPart extends BaseClientSideWebPart
       propDrops.push(PropertyPaneDropdown(`selectedProperty${index.toString()}`,
         {
           label: strings.SelectedPropertiesFieldLabel,
-          options: this.availableProperties,
+          options: this._availableProperties,
           selectedKey: prop,
         }));
       // Every drop down gets its own delete button

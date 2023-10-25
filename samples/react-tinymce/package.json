@@ -22,12 +22,12 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-html-parser": "^2.0.2",
-    "tinymce": "^5.10.0"
+    "tinymce": "^5.10.7"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.4.1",
+    "@microsoft/sp-build-web": "~1.16.1",
     "@microsoft/sp-module-interfaces": "~1.4.1",
-    "@microsoft/sp-webpart-workbench": "~1.4.1",
+    "@microsoft/sp-webpart-workbench": "~1.12.1",
     "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0",

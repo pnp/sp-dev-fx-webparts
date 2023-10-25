@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mysc/_layouts/15/viewlsts.aspx",
+      "pageUrl": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
       "customActions": {
         "38afa8d7-b498-4529-9f99-6279392f9309": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "referenceInjector": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mysc/_layouts/15/viewlsts.aspx",
+      "pageUrl": "https://enter-your-SharePoint-site/_layouts/15/viewlsts.aspx",
       "customActions": {
         "38afa8d7-b498-4529-9f99-6279392f9309": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -25,10 +25,5 @@
         }
       }
     }
-  },
-  "initialPage": "https://localhost:5432/workbench",
-  "api": {
-    "port": 5432,
-    "entryPath": "node_modules/@microsoft/sp-webpart-workbench/lib/api/"
   }
 }

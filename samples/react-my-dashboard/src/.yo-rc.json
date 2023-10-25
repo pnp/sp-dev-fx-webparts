@@ -1,0 +1,24 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "MyDashBoardSPFx",
+    "environment": "spo",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "DashBoard",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.15.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.2",
+    "libraryName": "my-dash-board-sp-fx",
+    "libraryId": "300aa27b-51c6-4b0d-8f82-b9743c1f9257",
+    "packageManager": "npm",
+    "solutionShortDescription": "MyDashBoardSPFx description"
+  }
+}

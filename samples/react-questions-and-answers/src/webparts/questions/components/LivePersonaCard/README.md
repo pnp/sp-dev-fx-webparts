@@ -92,4 +92,4 @@ The `LivePersonaCard` component can be configured with the following properties:
 | isExternalGuestUser | boolean | no | Returns if the current user is an anonymous guest. Reserved for future use |
 | loginName | string | no | The login name for current user. E.g.: on-premise user: `"domain\user"`, online user: `"user@domain.com"`. You must specify either a `loginName`' or an `email`|
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-controls-react/wiki/controls/LivePersonaCard)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-controls-react/wiki/controls/LivePersonaCard)

@@ -95,10 +95,16 @@ You may add CSS via style tags or `link` tags.
 ```
 
 ## Support for classic _spPageContextInfo
+
 If your scripts rely on the classic _spPageContextInfo, you can enable that in the web part property pane.
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
 ![Node.js v8 | v6](https://img.shields.io/badge/Node.js-v8%20%7C%20v6-green.svg) 
@@ -112,13 +118,11 @@ If your scripts rely on the classic _spPageContextInfo, you can enable that in t
 ## Applies to
 
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-script-editor-onprem | [Mikael Svenson](https://github.com/wobba) ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+* [Mikael Svenson](https://github.com/wobba)
 
 ## Version history
 
@@ -204,4 +208,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-script-editor" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-script-editor" />

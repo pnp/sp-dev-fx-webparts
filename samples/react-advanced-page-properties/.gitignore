@@ -5,6 +5,8 @@ npm-debug.log*
 
 # Dependency directories
 node_modules
+.heft
+release
 
 # Build generated files
 dist

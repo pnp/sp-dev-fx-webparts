@@ -42,8 +42,8 @@ puis affiche toutes les listes associées au site, suivies de tous les élément
 
 ## S’applique à
 
-* [Version préliminaire pour développeurs de SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Client de développeur Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Version préliminaire pour développeurs de SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Client de développeur Office 365](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -94,4 +94,4 @@ Version|Date|Commentaires
 1. Remplacez les valeurs d’espace réservé **aad**et **redirect_uri** par l’ID d’application et
 redirigez l’URL de votre application Azure inscrit dans le fichier GraphHelper.ts sous src-> angularMsGraph-> GraphHelper.ts
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/angular-msgraph" /> 

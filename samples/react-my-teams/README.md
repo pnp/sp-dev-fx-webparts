@@ -7,11 +7,15 @@ The web part can be configured to open the team on the web browser or client app
 
 ![Demo](./assets/Preview.png)
 
-
 ## Compatibility
 
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg) 
-![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
+![Node.js v14](https://img.shields.io/badge/Node.js-v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Compatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Compatible-green.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -19,20 +23,17 @@ The web part can be configured to open the team on the web browser or client app
 
 ## Applies to
 
-- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Prerequisites
 
 - Microsoft 365 subscription with SharePoint Online license
-- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
-## Solution
+## Contributors
 
-| Solution       | Author(s)      |
-| -------------- | -------------- |
-| react-my-teams | Joel Rodrigues |
-| react-my-teams | [Yves Habersaat](https://github.com/yhabersaat) |
-
+- [Joel Rodrigues](https://github.com/joelfmrodrigues)
+- [Yves Habersaat](https://github.com/yhabersaat)
 
 ## Version history
 
@@ -40,7 +41,6 @@ The web part can be configured to open the team on the web browser or client app
 | ------- | ----------------- | ------------------------- |
 | 1.1     | December 18, 2021 | Upgraded for SPFx v1.13.1 |
 | 1.0     | February 26, 2019 | Initial release           |
-
 
 ## Minimal Path to Awesome
 
@@ -53,9 +53,9 @@ npm install
 gulp serve --nobrowser
 ```
 
-Navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
+Navigate to the hosted version of SharePoint workbench, eg. <https://contoso.sharepoint.com/_layouts/15/workbench.aspx>
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for more information.
 
 ### Grant the service principal permission to the Microsoft Graph API
 
@@ -74,7 +74,6 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.
 
 This Web Part lists all the teams the current user is a member of.
 
-
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
@@ -91,10 +90,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-my-teams&template=suggestion.yml&sample=react-my-teams&authors=@joelfmrodrigues @yhabersaat&title=react-my-teams%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-my-teams" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-my-teams" />

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-azurefunction-sql-client-side-solution",
+    "id": "dfceb4ae-e27d-4baf-be15-8c0d1e4966b3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-azurefunction-sql description"
+      },
+      "longDescription": {
+        "default": "react-azurefunction-sql description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-azurefunction-sql Feature",
+        "description": "The feature that activates elements of the react-azurefunction-sql solution.",
+        "id": "e0f2b630-e120-47bd-ae5f-0c35ee1ce5b9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-azurefunction-sql.sppkg"
+  }
+}

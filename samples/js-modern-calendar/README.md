@@ -23,6 +23,11 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -35,20 +40,18 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-modern-calendar | [Jeremy Coleman](https://github.com/jcoleman-pcprofessional) (MCP, PC Professional, Inc.)
-js-modern-calendar | [Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](twitter.com/NanddeepNachan))
-js-modern-calendar | [Ravi Chandra](https://github.com/Ravikadri)
-js-modern-calendar | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at))
+* [Jeremy Coleman](https://github.com/jcoleman-pcprofessional)
+* [Nanddeep Nachan](https://github.com/nanddeepn) 
+* [Ravi Chandra](https://github.com/Ravikadri)
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
@@ -57,7 +60,7 @@ Version|Date|Comments
 1.0.0.0|February 11, 2017|Initial release
 1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
 1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies
-1.0.3.0|October 28, 2021|fixed issues with Timezones. The Browser Timezone Settings are now used
+1.0.3.0|October 28, 2021|fixed issues with Time zones. The Browser Time zone Settings are now used
 
 ## Minimal Path to Awesome
 
@@ -77,6 +80,7 @@ Version|Date|Comments
   
 
 ## Features
+
 Renders a calendar from any list available on the selected site. Site, List, Start, End, Event Title,Event Details and Calendar Theme are user-definable in the web part properties, so that you could technically use a custom list as the source for calendar presentation.
 
 
@@ -102,4 +106,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-![](https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-modern-calendar)
+![](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-modern-calendar)

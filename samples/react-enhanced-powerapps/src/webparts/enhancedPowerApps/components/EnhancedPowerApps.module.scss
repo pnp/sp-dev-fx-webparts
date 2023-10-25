@@ -22,3 +22,9 @@
   }
   // END
 }
+
+.hideOnMobileDevices{
+  @include ms-screen-md-down {
+    display: none !important;
+}
+}

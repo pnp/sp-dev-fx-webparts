@@ -1,11 +1,17 @@
 # GitHub Badge (JavaScript version)
 
 ## Summary
+
 Displays information from GitHub for a specified user.
 ![drop](./assets/1.png)
 
 
 ## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.8.0](https://img.shields.io/badge/SPFx-1.8.0-green.svg)
 ![Node.js v6 | v5](https://img.shields.io/badge/Node.js-v6%20%7C%20v5-green.svg) 
@@ -18,19 +24,17 @@ Displays information from GitHub for a specified user.
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites
  
 None
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-GitHubBadge | [Eric Skaggs](https://github.com/skaggej) [@skaggej](https://www.twitter.com/skaggej)
+* [Eric Skaggs](https://github.com/skaggej)
 
 ## Version history
 
@@ -50,6 +54,7 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
+
 It's not the prettiest thing in the world, but the goal here was to create a web part that demonstrates something a bit beyond the standard "Hello, World!" web part in which we change some HTML. This sample shows how to pull in data from somewhere without authentication and without over-complicating things.
 
 Future samples will refactor this into something more professional that follows recommended coding patterns and practices and leverage modern frameworks.
@@ -78,4 +83,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-gitHubBadge" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-gitHubBadge" />

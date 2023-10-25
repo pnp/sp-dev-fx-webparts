@@ -24,6 +24,11 @@ This simplistic sample web part demonstrates the use of JavaScript in a SharePoi
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
@@ -33,17 +38,15 @@ This simplistic sample web part demonstrates the use of JavaScript in a SharePoi
 
 ## Applies to
 
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-display-list| Naamat Al-Aswad, P.Eng.
-js-display-list| Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)) (Updated to GA Version)
-js-display-list| Ryan Schouten ([@ShrPntKnight](https://twitter.com/ShrPntKnight)) (Upgraded to SPFx 1.11.0)
+* Naamat Al-Aswad, P.Eng.
+* [Velin Georgiev](https://github.com/VelinGeorgiev)
+* [Ryan Schouten](https://github.com/sharepointknight) 
 
 
 
@@ -97,4 +100,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-display-list" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-display-list" />

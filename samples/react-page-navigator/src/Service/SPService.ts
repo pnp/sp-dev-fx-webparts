@@ -1,6 +1,7 @@
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { SPHttpClient } from '@microsoft/sp-http';
+import { navLinkBuilder } from './NavLinkBuilder';
 
 export class SPService {
   /* Array to store all unique anchor URLs */
@@ -14,10 +15,11 @@ export class SPService {
   private static GetAnchorUrl(headingValue: string): string {
     let anchorUrl = `#${headingValue
       .toLowerCase()
-      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s+]/g, " ")
+      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s]/g, " ")
       .replace(/^(-|\s)*|(-|\s)*$/g, "")
       .replace(/\'|\?|\\|\/| |\&/g, "-")
       .replace(/-+/g, "-")
+      .replace(/[+]/g, "%2B") // https://github.com/pnp/sp-dev-fx-webparts/issues/3686
       .substring(0, 128)}`;
 
     let counter = 1;
@@ -35,33 +37,6 @@ export class SPService {
     });
 
     return anchorUrl;
-  }
-
-  /**
-   * Nests a new nav link within the nav links tree
-   * @param currentLinks current nav links
-   * @param newLink the new nav link to be added to the structure
-   * @param order place order of the new link
-   * @param depth sequence depth
-   * @returns navLinks
-   */
-  public static navLinkBuilder(currentLinks: INavLink[], newLink: INavLink, order: number, depth: number): INavLink[] {
-    const lastIndex = currentLinks.length - 1;
-
-    if (lastIndex === -1) {
-      currentLinks.push(newLink);
-    } else if (currentLinks[lastIndex].links.length === 0 || order === depth) {
-      if (order !== depth || depth !== 0) {
-        currentLinks[lastIndex].links.push(newLink);
-      } else {
-        currentLinks.push(newLink);
-      }
-    } else {
-      depth++;
-      currentLinks[lastIndex].links.concat(this.navLinkBuilder(currentLinks[lastIndex].links, newLink, order, depth));
-    }
-
-    return currentLinks;
   }
 
   /**
@@ -87,7 +62,7 @@ export class SPService {
       /* Traverse through all the Text web parts in the page */
       canvasContent1JSON.map((webPart) => {
         if (webPart.zoneGroupMetadata && webPart.zoneGroupMetadata.type === 1) {
-          const headingIsEmpty: boolean = webPart.zoneGroupMetadata.displayName === '';
+          const headingIsEmpty: boolean = !webPart.zoneGroupMetadata.displayName;
           const headingValue: string = headingIsEmpty ? 'Empty Heading' : webPart.zoneGroupMetadata.displayName ;
           const anchorUrl: string = this.GetAnchorUrl(headingValue);
           this.allUrls.push(anchorUrl);
@@ -104,7 +79,7 @@ export class SPService {
           const hasCollapsableHeader: boolean = webPart.zoneGroupMetadata && 
             webPart.zoneGroupMetadata.type === 1 && 
             ( anchorLinks.filter(x => x.name === webPart.zoneGroupMetadata.displayName).length === 1 || 
-            webPart.zoneGroupMetadata.displayName === '' );
+            !webPart.zoneGroupMetadata.displayName );
 
           const htmlObject: HTMLDivElement = document.createElement('div');
           htmlObject.innerHTML = HTMLString;
@@ -126,7 +101,7 @@ export class SPService {
 
             // Add link to nav element
             const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true };
-            anchorLinks = this.navLinkBuilder(anchorLinks, newNavLink, headingOrder, hasCollapsableHeader ? 1 : 0);
+            navLinkBuilder.build<INavLink>(anchorLinks, newNavLink, headingOrder);
           });
         }
       });

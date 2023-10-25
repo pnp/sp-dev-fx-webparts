@@ -37,9 +37,9 @@ Please use following logic on submitting your questions or issues to right locat
 
 ## Additional resources
 
-* [Overview of the SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework development tools and libraries](https://docs.microsoft.com/sharepoint/dev/spfx/tools-and-libraries)
-* [Getting Started](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Overview of the SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework development tools and libraries](https://learn.microsoft.com/sharepoint/dev/spfx/tools-and-libraries)
+* [Getting Started](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Using the samples
 
@@ -97,3 +97,4 @@ Please have a look on our [Contribution Guidance](./CONTRIBUTING.md) before subm
 This repository has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 > Sharing is caring!
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/README.md" />

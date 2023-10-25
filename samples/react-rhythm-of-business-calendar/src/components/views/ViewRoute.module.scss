@@ -1,0 +1,11 @@
+@import '../common.module';
+
+.root {
+    @include md-down {
+        padding-right: 10px;
+    }
+
+    @include lg-up {
+        padding-right: 20px;
+    }
+}

@@ -10,7 +10,7 @@
 - The web part will automatically load all the properties in two dropdowns. One for Accordion Title and One for Accordion Content that must be html type.
 - This will generate an accordion with one section for each item in the list.
 - Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page.
-- To deploy to a Teams tab see current [Microsoft documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
+- To deploy to a Teams tab see current [Microsoft documentation](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
 
 ![Web Part in Action](./assets/react-accordion-section.gif)
 
@@ -33,8 +33,13 @@
 
 ## Compatibility
 
-![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -44,22 +49,19 @@
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites
 
 Please create the list as described above
 
-## Solution
+## Contributors
 
-| Solution                                   | Author(s)                                                                                            |
-| ------------------------------------------ | -----------------------------------------------------------------------------------------------------|
-| SPFx Collapsible Accordion Section         | [Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))             |
-| SPFx Collapsible Accordion Section         | [Mike Zimmerman](https://github.com/mikezimm)                                                        |
-| Dynamic SPFx Collapsible Accordion Section | [Jerry Yasir](https://github.com/jyasir)                                                             |
-| Dynamic SPFx Collapsible Accordion Section | [Ari Gunawan](https://github.com/AriGunawan) ([@AriGunawan3023](https://twitter.com/AriGunawan3023)) |
+* [Erik Benke](https://github.com/ejbenke)
+* [Ari Gunawan](https://github.com/AriGunawan)
+* [Valeras Narbutas](https://github.com/ValerasNarbutas)
 
 ## Version history
 
@@ -68,6 +70,7 @@ Please create the list as described above
 | 1.0     | September 20, 2020 | Reused [Erik Benke] and [Mike Zimmerman] web part                                                   |
 | 1.1     | September 20, 2020 | Added Support for Dynamic Column selection for reuseability, Dynamic Property Selection for Columns |
 | 1.8     | August 8, 2021     | Add configuration for sorting the items                                                             |
+| 2.0     | April 2, 2023      | Upgarde to SPFX 1.16.1                                                                               |
 
 
 
@@ -104,5 +107,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-accordion-dynamic-section" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-accordion-dynamic-section" />
 

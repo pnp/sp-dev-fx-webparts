@@ -22,7 +22,8 @@
     "@types/webpack-env": "1.13.1",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
-    "react-dom": "16.8.5"
+    "react-dom": "16.8.5",
+    "tslint-microsoft-contrib": "^6.2.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"

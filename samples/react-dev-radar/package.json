@@ -15,8 +15,8 @@
     "@microsoft/sp-core-library": "1.10.0",
     "@microsoft/sp-lodash-subset": "1.10.0",
     "@microsoft/sp-office-ui-fabric-core": "1.10.0",
-    "@microsoft/sp-property-pane": "1.10.0",
-    "@microsoft/sp-webpart-base": "1.10.0",
+    "@microsoft/sp-property-pane": "1.16.1",
+    "@microsoft/sp-webpart-base": "1.16.1",
     "@pnp/common": "^1.3.7",
     "@pnp/logging": "^1.3.7",
     "@pnp/odata": "^1.3.7",
@@ -34,12 +34,12 @@
     "@types/react": "16.8.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.15.2",
+    "@microsoft/sp-build-web": "1.16.1",
     "@microsoft/sp-tslint-rules": "1.10.0",
     "@microsoft/sp-module-interfaces": "1.10.0",
     "@microsoft/sp-webpart-workbench": "1.12.1",
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~6.12.3"

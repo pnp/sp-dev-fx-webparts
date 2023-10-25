@@ -3,7 +3,7 @@
   "solution": {
     "name": "my-approvals",
     "id": "35ebc939-0c57-456f-9fea-bc8f2bae3e58",
-    "version": "1.2.0.0",
+    "version": "1.3.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

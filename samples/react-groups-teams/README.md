@@ -1,33 +1,31 @@
 # All Microsoft 365 Groups and Teams with SPFx
 
 ## Summary
-Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.
-1. The Microsoft Groups view has filter option for private or public groups and can switch between viewing all groups or just my groups. 
- - Group Name (hover for group description)
- - Link to email
- - Link to SharePoint site
- - Link to calendar
- - Link to Planner plan (if available) 
- - Group privacy
-2. The Microsoft Teams view has filter option for private or public Teams.
- - Team Name (hover for group description)
- - Link to email
- - Link to SharePoint site
- - Link to calendar
- - Link to Planner plan (if available)
- - Link to Team
- - Team privacy
-   Each Team o Uses SharePoint theme. 
 
-![picture of the web part in action](./assets/Groups-in-my-organization.png)
-![picture of the web part in action](./assets/My-Teams-Teams-Side-By-Side-Theme.png)
-![picture of the web part in action](./assets/My-Groups-Public-Filter.png)
-![picture of the web part in action](./assets/My-Teams-Teams-With-Tooltip.png)
+Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.
+
+- Toggle- View groups signed in user is a member of or all groups
+- Group Name (hover for group description)
+- Link to Group email
+- Link to SharePoint site
+- Link to calendar
+- Link to Planner plan (if available)
+- Group privacy filter (Private/Public/All)
+- Microsoft Teams team link for the Group
+- Pagination (breaks results into pages and displays page numbers)
+- Style toggle (Card/Table)
+- Group display selection
+    1. Select 5, 10, or 15 groups to display per page for the Table display style
+    2. Select 6, 9, and 12 groups to display per page for the Card display style
+
+![picture of the web part in action](./assets/Table-Display.png)
+![picture of the web part in action](./assets/Card-Display.png)
+![picture of the web part in action](./assets/Theme-Display.png)
 
 ## Compatibility
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%202019-Not%20compatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%202016%20(Feature%20Pack%202)-Not%20compatible-red.svg)
@@ -37,14 +35,12 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))  |
+* [Alison Collins](https://github.com/ReactIntern) 
 
 ## Version history
 
@@ -53,7 +49,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](ht
 | 1.0.0   | April 16, 2021 | Initial release |
 | 1.0.1   | August 1, 2021 | Fixed references to Office.com |
 | 1.1.0   | October 8, 2021 | Upgraded to SPFx 1.12.1 for higher compatibility and added Teams Tab deployment support. |
-
+| 2.0.0  | February 26, 2023 | Added new styles (card/table), added page display settings/pagination
 
 ## Prerequisites
 
@@ -85,7 +81,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](ht
 - Open hosted workbench, i.e. `https://<tenant>.sharepoint.com/sites/<your site>/_layouts/15/workbench.aspx`
 - Search and add `O365 Groups Manager` web part to see it in action
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
 
@@ -98,7 +94,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Requesting API permissions in a SharePoint Framework package
 - Communicating with the Microsoft Graph using its REST API
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
-- Passing web part properties to React components 
+- Passing web part properties to React components
 
 ## Video
 
@@ -119,10 +115,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-groups-teams&template=question.yml&sample=react-groups-teams&authors=@ReactIntern&title=react-groups-teams%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-groups-teams" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-groups-teams" />

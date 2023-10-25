@@ -1,0 +1,11 @@
+export * from './IElementDefinitions';
+export { AddListFieldUpgradeAction } from './AddListFieldUpgradeAction';
+export { UpdateListFieldUpgradeAction } from './UpdateListFieldUpgradeAction';
+export { DeleteListFieldUpgradeAction } from './DeleteListFieldUpgradeAction';
+export { DeleteSiteFieldUpgradeAction } from './DeleteSiteFieldUpgradeAction';
+export { DeleteListViewUpgradeAction } from './DeleteListViewUpgradeAction';
+export { AddOrUpdateViewUpgradeAction } from './AddOrUpdateViewUpgradeAction';
+export { CreateListUpgradeAction } from './CreateListUpgradeAction';
+export { UpdateUserRolesUpgradeAction } from './UpdateUserRolesUpgradeAction';
+export { ElementProvisioner } from './ElementProvisioner';
+export { IUpgradeAction } from './IUpgradeAction';

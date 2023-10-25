@@ -8,6 +8,11 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 ![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -18,8 +23,8 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Applies to
 
-* [SharePoint Framework Web Parts](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
-* [Office 365 developer tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Web Parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
@@ -49,7 +54,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
         ],
     ```
 
-- Refer [Connect to Azure AD-secured APIs](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient) to publish and approve permissions from admin site
+- Refer [Connect to Azure AD-secured APIs](https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient) to publish and approve permissions from admin site
 
 - In the command line run
 
@@ -65,7 +70,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Deploy
 
-If you want to deploy it follow [these steps](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
+If you want to deploy it follow [these steps](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
 
 ## Features
 
@@ -99,4 +104,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-sso/webpart" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-bot-framework-sso/webpart" />

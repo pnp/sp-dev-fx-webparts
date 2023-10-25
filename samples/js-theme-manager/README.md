@@ -1,35 +1,43 @@
 # Modern Experience Theme Manager
 
 ## Summary
+
 This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.
 
-The Theme Palette can be generated using the UI Fabric Theme Generator at: https://developer.microsoft.com/en-us/fabric#/styles/themegenerator
+The Theme Palette can be generated using the UI Fabric Theme Generator at: <https://developer.microsoft.com/en-us/fabric#/styles/themegenerator>
 
-### The following four features are available within this sample:
+### The following four features are available within this sample
 
-#### Create a theme:
+#### Create a theme
+
 Using a provided theme name and theme color palette a Modern Experience them is created and available at the tenant level.
 ![preview](./assets/create-a-theme.png)
 
-#### Update a theme:
-By selecting a pre-existing theme from the dropdown, the theme at the tenant level will be updated with the palette provided in the Theme Palette texbox.
+#### Update a theme
+
+By selecting a pre-existing theme from the dropdown, the theme at the tenant level will be updated with the palette provided in the Theme Palette textbox.
 ![preview](./assets/update-a-theme.png)
 
-#### Delete a theme:
+#### Delete a theme
+
 By selecting a pre-existing theme from the dropdown, the theme will be deleted from the tenant level.
 ![preview](./assets/delete-a-theme.png)
 
-#### Apply a theme:
+#### Apply a theme
+
 By providing a Site Collection URL, along with a theme name and palette, the theme will be applied to the Site Collection directly without being added to the tenant Company Theme options.<br>
 NOTE: This is a great option to provide theme management of a Site Collection without adding a theme to the "Company Themes" choices within the "Change the Look" options at the tenant level. The web part could be added to a Site Collection App Catalog to ensure availability of the web part is only available to those approved for theme management.
 ![preview](./assets/apply-a-theme.png)
 
-
-
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
+![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -39,17 +47,13 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
+## Contributors
 
-## Solution
-
-Solution|Author(s)
---------|---------
-js-theme-manager (Upgrade) | Hugo Bernier ([@bernierh](https://twitter.com/bernierh) / [Tahoe Ninjas](https://tahoeninjas.blog))
-js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
-js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [Beau Cameron](https://github.com/bcameron1231)
 
 ## Version history
 
@@ -60,24 +64,22 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm install`
-  - `gulp serve`
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
-
-
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Features
+
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- Using the SharePoint Online REST API to manage Modern Experience Themes
+* Using the SharePoint Online REST API to manage Modern Experience Themes
 
-## Additional Information:
+## Additional Information
 
-- [Office UI Fabric Theme Palette Generator](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator)
-
+* [Office UI Fabric Theme Palette Generator](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator)
 
 ## Help
 
@@ -95,10 +97,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20js-theme-manager&template=question.yml&sample=js-theme-manager&authors=@bcameron1231%20@hugoabernier&title=js-theme-manager%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-theme-manager" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-theme-manager" />

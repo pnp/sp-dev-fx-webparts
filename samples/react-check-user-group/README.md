@@ -8,6 +8,11 @@ This web part finds all the Office 365 or AAD Security groups a user is a member
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -28,11 +33,9 @@ This extension illustrates the following concepts:
 * Using MSGraphClient to call the `/users/${email}/memberOf` API to get all the groups a user is member of
 * Exporting the results to a CSV file using [**react-csv**](https://www.npmjs.com/package/react-csv) third party package
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-check-user-group | [Aakash Bhardwaj](https://twitter.com/aakash_316)
+* [Aakash Bhardwaj](https://github.com/in8aakbh)
 
 ## Minimal Path to Awesome
 
@@ -68,4 +71,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-check-user-group" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-check-user-group" />

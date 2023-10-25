@@ -1,23 +1,8 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 04/25/2017 12:00:00 AM
----
 # Calendar
 
 ## Summary
 
-This Web Part allows you to manage events in a calendar. 
+This Web Part allows you to manage events in a calendar.
 Uses a list of existing calendars on any website.
 The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
 
@@ -25,18 +10,13 @@ Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
 
-![calendar](assets/animatevideo.gif) 
+![calendar](assets/animatevideo.gif)
 
+![calendar](assets/weekly_moderncalendar.gif)
 
-![calendar](assets/weekly_moderncalendar.gif) 
+![calendar](assets/modercalendar_monthly.gif)
 
-![calendar](assets/modercalendar_monthly.gif) 
-
-
-![calendar](assets/moderncalendar_yearly.gif) 
-
-
-##  Web Part  - Screenshots
+![calendar](assets/moderncalendar_yearly.gif)
 
 ![calendar](assets/calendar_teams.jpg)
 
@@ -44,50 +24,41 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 
 ![calendar](assets/screen1.png)
 
-
 ![calendar](assets/screen1.0.png)
-
 
 ![calendar](assets/screen1.1.png)
 
-
 ![calendar](assets/screen1.2.png)
-
 
 ![calendar](assets/screen1.3.png)
 
-
 ![calendar](assets/screen1.4.png)
-
 
 ![calendar](assets/screen2.png)
 
-
 ![calendar](assets/screen3.png)
-
 
 ![calendar](assets/screen4.png)
 
-
 ![calendar](assets/screen5.png)
-
 
 ![calendar](assets/screen6.png)
 
-
 ![calendar](assets/screen7.png)
 
-
 ![calendar](assets/screen8.png)
-
-
 
 ![calendar](assets/screen9.png)
 
 ## Compatibility
 
-![SPFx 1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -97,32 +68,29 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Web Part Properties
- 
+
 Property |Type|Required| comments
 --------------------|----|--------|----------
-Site Url of Calendar List | Text| yes|
+Site URL of Calendar List | Text| yes|
 Calendar list| Choice/Dropdown | yes|  this is filled with all list of  type "event list" created
 Start Date | Date | yes | Event Date
 End Date| Date| yes | Event Date
 
-## Solution
+## Contributors
 
 The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Component
 
-Solution|Author(s)
---------|---------
-Calendar Web Part|[Abderahman Moujahid](https://github.com/Abderahman88)
-Calendar Web Part|[Eli H. Schei](https://github.com/Eli-Schei)
-Calendar Web Part|[Hugo Bernier](https://github.com/hugoabernier) ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
-Calendar Web Part|[João Mendes](https://github.com/joaojmendes)
-Calendar Web Part|[Mohamed Derhalli](https://github.com/derhallim)
-Calendar Web PArt|[Mohammed Amer](https://github.com/mohammadamer) ([@Mohammad3mer](https://twitter.com/Mohammad3mer), https://www.linkedin.com/in/mohammad3mer/)
-Calendar Web Part|[Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
+* [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Eli H. Schei](https://github.com/Eli-Schei)
+* [Hugo Bernier](https://github.com/hugoabernier)
+* [João Mendes](https://github.com/joaojmendes)
+* [Mohamed Derhalli](https://github.com/derhallim)
+* [Mohammed Amer](https://github.com/mohammadamer)
+* [Nanddeep Nachan](https://github.com/nanddeepn)
 
 ## Version history
 
@@ -145,19 +113,19 @@ Version|Date|Comments
 1.0.14|October 16, 2021|Resolve unhandled exception that happens clicking on recurrent events
 1.0.15|November 22, 2021|Fix All Day event issue that makes All Day events date expanded to another day instead of being full day event.
 1.0.16|December 21, 2021|Upgraded to SPFx 1.12.1
+1.0.17|October 25, 2022|Fixed issue deleting events (#2693)
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm install`
-  - `gulp build`
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
-  - Add to **AppCatalog** and deploy
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp build`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+  * Add to **AppCatalog** and deploy
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
-
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Help
 
@@ -179,5 +147,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-calendar" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-calendar" />

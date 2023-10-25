@@ -1,4 +1,5 @@
-import { IItemUpdateResult, IContextInfo } from '@pnp/sp/presets/all';
+import { IItemUpdateResult } from '@pnp/sp/presets/all';
+import { IContextInfo } from '@pnp/sp/context-info';
 import { IFetchOptions } from '@pnp/common';
 import { FilterParser } from './filterParser';
 import { MockListFactory } from './mocklistfactory';
@@ -658,7 +659,7 @@ export class MockResponse {
     }
 
     private getContextInfo(): Response {
-        let contexInfo: IContextInfo = {
+        let contexInfo: Partial<IContextInfo> = {
             FormDigestTimeoutSeconds: 100,
             FormDigestValue: 100
         };

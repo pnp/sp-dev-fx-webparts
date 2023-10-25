@@ -2,9 +2,7 @@ import * as React from 'react';
 import styles from './PersonaCard.module.scss';
 import { IPersonaCardProps } from './IPersonaCardProps';
 import { IPersonaCardState } from './IPersonaCardState';
-import {
-  Log, Environment, EnvironmentType,
-} from '@microsoft/sp-core-library';
+import { Log } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {
@@ -15,14 +13,13 @@ import {
   Icon,
 } from 'office-ui-fabric-react';
 
-const EXP_SOURCE: string = 'SPFxDirectory';
-const LIVE_PERSONA_COMPONENT_ID: string =
-  '914330ee-2df2-4f6e-a858-30c23a812408';
+const EXP_SOURCE = 'SPFxDirectory';
+const LIVE_PERSONA_COMPONENT_ID = '914330ee-2df2-4f6e-a858-30c23a812408';
 
 export class PersonaCard extends React.Component<
   IPersonaCardProps,
   IPersonaCardState
-  > {
+> {
   constructor(props: IPersonaCardProps) {
     super(props);
 
@@ -33,27 +30,16 @@ export class PersonaCard extends React.Component<
    *
    * @memberof PersonaCard
    */
-  public async componentDidMount() {
-    if (Environment.type !== EnvironmentType.Local) {
-      const sharedLibrary = await this._loadSPComponentById(
-        LIVE_PERSONA_COMPONENT_ID
-      );
-      const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-      this.setState({ livePersonaCard: livePersonaCard });
-    }
+  public async componentDidMount():Promise<void> {
+    const sharedLibrary = await this._loadSPComponentById(
+      LIVE_PERSONA_COMPONENT_ID
+    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const livePersonaCard: any = sharedLibrary.LivePersonaCard;
+    this.setState({ livePersonaCard: livePersonaCard });
   }
 
-  /**
-   *
-   *
-   * @param {IPersonaCardProps} prevProps
-   * @param {IPersonaCardState} prevState
-   * @memberof PersonaCard
-   */
-  public componentDidUpdate(
-    prevProps: IPersonaCardProps,
-    prevState: IPersonaCardState
-  ): void { }
+
 
   /**
    *
@@ -62,12 +48,12 @@ export class PersonaCard extends React.Component<
    * @returns
    * @memberof PersonaCard
    */
-  private _LivePersonaCard() {
+  private _LivePersonaCard():JSX.Element {
     return React.createElement(
       this.state.livePersonaCard,
       {
         serviceScope: this.props.context.serviceScope,
-        upn: this.props.profileProperties.Email,
+        legacyUpn: this.props.profileProperties.Email,
         onCardOpen: () => {
           console.log('LivePersonaCard Open');
         },
@@ -111,8 +97,8 @@ export class PersonaCard extends React.Component<
                 </span>
               </div>
             ) : (
-                ''
-              )}
+              ''
+            )}
             {this.props.profileProperties.Location ? (
               <div className={styles.textOverflow}>
                 <Icon iconName="Poi" style={{ fontSize: '12px' }} />
@@ -122,8 +108,8 @@ export class PersonaCard extends React.Component<
                 </span>
               </div>
             ) : (
-                ''
-              )}
+              ''
+            )}
           </Persona>
         </div>
       </DocumentCard>
@@ -133,15 +119,17 @@ export class PersonaCard extends React.Component<
    * Load SPFx component by id, SPComponentLoader is used to load the SPFx components
    * @param componentId - componentId, guid of the component library
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _loadSPComponentById(componentId: string): Promise<any> {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const component: any = await SPComponentLoader.loadComponentById(
         componentId
       );
       return component;
     } catch (error) {
-      Promise.reject(error);
-      Log.error(EXP_SOURCE, error, this.props.context.serviceScope);
+      Log.error(EXP_SOURCE, error);
+      throw new Error(error);
     }
   }
 

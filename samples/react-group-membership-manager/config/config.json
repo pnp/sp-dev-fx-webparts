@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "group-membership-manager-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/groupMembershipManager/GroupMembershipManagerWebPart.js",
+          "manifest": "./src/webparts/groupMembershipManager/GroupMembershipManagerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GroupMembershipManagerWebPartStrings": "lib/webparts/groupMembershipManager/loc/{locale}.js"
+  }
+}

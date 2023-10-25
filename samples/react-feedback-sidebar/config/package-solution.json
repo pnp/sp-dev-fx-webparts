@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Feedback",
+    "id": "a526cb38-54b1-4704-bb86-295189772026",
+    "version": "0.0.0.3",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Feedback"
+      },
+      "longDescription": {
+        "default": "Feedback"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "feedback-webpart Feature",
+        "description": "The feature that activates elements of the feedback-webpart solution.",
+        "id": "a53db913-bbd2-4186-89bf-17a55febf935",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/feedback-webpart.sppkg"
+  }
+}

@@ -26,6 +26,11 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.3.0](https://img.shields.io/badge/SPFx-1.3.0-green.svg)
 ![Node.js v6](https://img.shields.io/badge/Node.js-v6-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -38,22 +43,20 @@ The libraries used by this web part are Socket.io, sp pnp js, moment.
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
 > In order to use properly this web part is necessary follow these steps:
 > * Istall a webserver that will receive the webhooks, for this PoC I created a NodeJs Application hosted on Azure take a look on my solution [https://github.com/giuleon/SharePoint-Webhooks-Broadcaster](https://github.com/giuleon/SharePoint-Webhooks-Broadcaster)
 > * run the Powershell script **ProvisioningArtifacts.ps1** in order to provision the list Events which is required for this web part
-> * Create a new webhooks subscription for the SharePoint List **Events** (that will be installed by running the script **ProvisioningArtifacts.ps1**), as you prefer, across your solution or Postman, please read the following guideline to achieve this goal [https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks](https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
+> * Create a new webhooks subscription for the SharePoint List **Events** (that will be installed by running the script **ProvisioningArtifacts.ps1**), as you prefer, across your solution or Postman, please read the following guideline to achieve this goal [https://learn.microsoft.com/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks](https://learn.microsoft.com/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
 > * The web part has been developed (GetChanges API) to notify new items added in the **Events** list
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-webhooks-realtime|[Giuliano De Luca](https://github.com/giuleon) ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+* [Giuliano De Luca](https://github.com/giuleon) 
 
 
 ## Version history
@@ -97,4 +100,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-webhooks-realtime" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-webhooks-realtime" />

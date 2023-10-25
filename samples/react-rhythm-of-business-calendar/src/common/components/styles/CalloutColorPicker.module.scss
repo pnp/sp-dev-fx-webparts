@@ -1,0 +1,14 @@
+@import 'common.module';
+
+$size: 30px;
+
+.calloutColorPicker {
+    .colorPreview {
+        cursor: pointer;
+        height: $size;
+        width: $size;
+        border: 1px solid;
+        border-color: $color-neutralSecondary;
+        border-radius: calc($size / 2);
+    }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-cascadingdropdowns-client-side-solution",
+    "id": "e048026b-fcab-4361-b0b8-5f48c67ebfcd",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-cascadingdropdowns description"
+      },
+      "longDescription": {
+        "default": "react-cascadingdropdowns description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-cascadingdropdowns Feature",
+        "description": "The feature that activates elements of the react-cascadingdropdowns solution.",
+        "id": "3292a144-8f19-4de3-892a-153b8c564a5e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-cascadingdropdowns.sppkg"
+  }
+}

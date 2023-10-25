@@ -1,0 +1,14 @@
+@import 'common.module';
+
+.content {
+    @include ms-fontSize-16;
+
+    & > :global(.ms-Grid-row) > :global(.ms-Grid-col) {
+        margin-top: 16px;
+
+        :global(.ms-Label) {
+            @include ms-fontSize-12;
+            @include ms-fontWeight-bold;
+        }
+    }
+}

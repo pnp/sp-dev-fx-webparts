@@ -16,6 +16,11 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Compatibility
 
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
 ![SPFx 1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg) 
 ![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -27,18 +32,16 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * SharePoint 2019 on-premises
 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-js-theme-manager-2019 | [David Warner II](https://github.com/PopWarner) ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
-js-theme-manager-2019 | [Beau Cameron](https://github.com/bcameron1231) ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
-js-theme-manager-2019 | Biju Basheer
-js-theme-manager-2019 | [Eric Skaggs](https://github.com/skaggej) ([@skaggej](https://twitter.com/skaggej) / [ericskaggs.net](http://www.ericskaggs.net/))
+* [David Warner II](https://github.com/PopWarner)
+* [Beau Cameron](https://github.com/bcameron1231)
+* Biju Basheer
+* [Eric Skaggs](https://github.com/skaggej)
 
 ## Version history
 
@@ -87,4 +90,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/js-theme-manager-2019" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-theme-manager-2019" />

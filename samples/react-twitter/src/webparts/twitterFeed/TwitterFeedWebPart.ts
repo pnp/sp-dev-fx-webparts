@@ -21,7 +21,7 @@ export interface ITwitterFeedWebPartProps extends ITwittweTimelineSettings {
 }
 
 export default class TwitterFeedWebPart extends BaseClientSideWebPart<ITwitterFeedWebPartProps> {
-
+  private _rootElement: HTMLElement;
   public onInit(): Promise<void> {
     if (!this.properties.sourceType) {
       this.properties.sourceType = 'profile';
@@ -47,20 +47,24 @@ export default class TwitterFeedWebPart extends BaseClientSideWebPart<ITwitterFe
         }
       }
     );
+    if (!this._rootElement) {
+      this._rootElement = document.createElement("div");
+      this.domElement.appendChild(this._rootElement);
+    }
 
-    ReactDom.unmountComponentAtNode(this.domElement);
-    ReactDom.render(element, this.domElement);
+    ReactDom.render(element, this._rootElement);
   }
 
   protected onDispose(): void {
-    ReactDom.unmountComponentAtNode(this.domElement);
+    ReactDom.unmountComponentAtNode(this._rootElement);
+    this._rootElement.remove();
   }
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
 
-  protected onBeforeSerialize() {
+  protected onBeforeSerialize():void {
     const {
       sourceType,
       autoHeight,
@@ -112,7 +116,7 @@ export default class TwitterFeedWebPart extends BaseClientSideWebPart<ITwitterFe
     return true;
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any) {
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: number, newValue: number):void {
     const value = newValue as number;
     if (propertyPath === 'tweetLimit') {
       if (value === 0) {

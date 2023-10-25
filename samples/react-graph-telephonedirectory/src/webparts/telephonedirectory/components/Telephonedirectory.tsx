@@ -9,7 +9,6 @@ import { ByLastName } from "./ByLastName/ByLastName";
 import { ByEmail } from "./ByEmail/ByEmail";
 import { Pivot, PivotItem,PivotLinkFormat, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-const LOG_SOURCE = "TelephoneDirectory";
 export default class Telephonedirectory extends React.Component<ITelephoneDirectoryProps, ITelephoneDirectoryState> {
   private headers = [
     { label: 'Name', key: 'displayName' },
@@ -88,7 +87,7 @@ export default class Telephonedirectory extends React.Component<ITelephoneDirect
         isResizable: true
       }
     ];
-    
+
     this.state={
       loading:false,
       selectedKey:"byFirstName",
@@ -112,7 +111,7 @@ export default class Telephonedirectory extends React.Component<ITelephoneDirect
             <WebPartTitle displayMode={this.props.DisplayMode}
               title={this.props.WebpartTitle}
               updateProperty={this.props.updateProperty} />
-            
+
             <Pivot headersOnly={true}
               selectedKey ={this.state.selectedKey}
               onLinkClick = {this._handleLinkClick}
@@ -121,36 +120,36 @@ export default class Telephonedirectory extends React.Component<ITelephoneDirect
                 <PivotItem
                 headerText='Search User By First Name'
                 itemKey='byFirstName'
-                itemIcon="Group" ></PivotItem>
+                itemIcon="Group" />
                 <PivotItem
                   headerText='Search User By Last Name'
                   itemKey='byLastName'
-                  itemIcon="Group"></PivotItem>
+                  itemIcon="Group"/>
                 <PivotItem
                   headerText='Search User By Email'
                   itemKey="byEmail"
-                  itemIcon="Group"></PivotItem>
+                  itemIcon="Group"/>
               </Pivot><br/>
               {this.state.selectedKey === "byFirstName" &&
-               <ByFirstName 
-                  MSGraphClient={this.props.MsGraphClient} 
+               <ByFirstName
+                  MSGraphClient={this.props.MsGraphClient}
                   MSGraphServiceInstance={this.props.MSGraphServiceInstance}
                   context={this.props.context}
-                  Columns={this.state.columns}></ByFirstName>
+                  Columns={this.state.columns}/>
               }
               {this.state.selectedKey === "byLastName" &&
                <ByLastName
                   MSGraphClient = {this.props.MsGraphClient}
                   MSGraphServiceInstance= {this.props.MSGraphServiceInstance}
                   context={this.props.context}
-                  columns={this.state.columns}></ByLastName>
+                  columns={this.state.columns}/>
               }
               {this.state.selectedKey === "byEmail" &&
                <ByEmail
                   MSGraphClient = {this.props.MsGraphClient}
                   MSGraphServiceInstance= {this.props.MSGraphServiceInstance}
                   context={this.props.context}
-                  columns={this.state.columns}></ByEmail>
+                  columns={this.state.columns}/>
               }
           </div>
         </div>

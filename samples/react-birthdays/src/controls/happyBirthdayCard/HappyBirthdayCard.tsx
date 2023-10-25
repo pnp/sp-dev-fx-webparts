@@ -16,7 +16,13 @@ const img: string = require('../../../assets/cof11.png');
 const IMG_WIDTH: number = 200;
 const IMG_HEIGTH: number = 190;
 
-const imageTemplate: { imageUrl: string }[] = [{
+interface IImageTemplate {
+  [key: string]: {
+    imageUrl: string
+  }
+}
+
+const imageTemplate: IImageTemplate[] = [{
   imageUrl: require('.../../../assets/cof.png')
 },
 {
@@ -115,9 +121,9 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
         <div className={styles.documentCardWrapper}>
           <div className={styles.documentCard}>
             <Image
-
               imageFit={ImageFit.cover}
-              src={imageTemplate[this.props.imageTemplate].imageUrl}
+              // @ts-ignore: Object is possibly 'null'.
+              src={imageTemplate[this.props.imageTemplate]?.imageUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGTH}
             />

@@ -1,0 +1,57 @@
+@import "ThemeColours.module";
+
+// override font-family for tinymce editor UI
+.renderContent {
+  :global {
+    .tox.tox-tinymce,
+    .tox.tox-tinymce :not(svg) {
+      font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue,
+        sans-serif;
+    }
+  }
+}
+
+// override font and primary colour for editor dialogs
+:global {  
+  .tox.tox-tinymce-aux .tox-dialog-wrap {
+    font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue,
+      sans-serif;
+
+    .tox-dialog__body-nav-item--active {
+      border-bottom-color: $themePrimary;
+      color: $themePrimary;
+    }
+
+    .tox-button:not(.tox-button--secondary):not(.tox-button--icon):not(.tox-button--naked) {
+      border-color: $themePrimary;
+      background-color: $themePrimary;
+    }
+
+    textarea.tox-textarea:focus,
+    input.tox-textfield:focus,
+    .tox-selectfield select:focus {
+      border-color: $themePrimary;
+    }
+
+    input.tox-textfield,
+    .tox-selectfield select,
+    textarea.tox-textarea {
+      font-size: 14px;
+    }
+
+    textarea.tox-textarea {
+      min-height: 8em;
+    }
+
+    label {
+      margin-bottom: 0.5em;
+      color: #666;
+    }
+  }
+  // .tox-dialog__content-js .tox-dialog__body .tox-dialog__body-content .tox-form .tox-form__group {
+  //   color: red !important;
+  // }
+  // .tox-dialog__content-js .tox-dialog__body .tox-dialog__body-content .tox-form .tox-form__group .panel-styles p {
+  //   font-weight: bold !important;
+  // }
+}

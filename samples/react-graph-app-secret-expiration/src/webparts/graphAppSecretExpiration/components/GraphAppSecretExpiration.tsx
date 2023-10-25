@@ -7,7 +7,6 @@ import { IGraphAppSecretExpirationState } from './GraphAppSecretExpirationState'
 import * as moment from 'moment';
 import { Spinner, mergeStyles, SearchBox } from '@fluentui/react';
 import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
-import * as strings from 'GraphAppSecretExpirationWebPartStrings';
 import sampleApplications from '../../../models/SampleApplications.json';
 
 const stackItemHidden = mergeStyles({
@@ -31,14 +30,14 @@ const _viewFields: IViewField[] = [
     displayName: "Days left",
     minWidth: 80,
     sorting: true,
-    render: (app: any) => {
+    render: (app) => {
       let fontColor;
-      if (app.daysLeft == 0) {
+      if (app.daysLeft === 0) {
         fontColor = "Red";
       } else if (app.daysLeft < 30) {
         fontColor = "Orange";
       }
-      const element: any = React.createElement("span", { style: { color: fontColor } }, app.daysLeft);
+      const element = React.createElement("span", { style: { color: fontColor } }, app.daysLeft);
       return element;
     }
   },
@@ -91,15 +90,15 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
       .api("applications")
       .version("v1.0")
       .select("appId,displayName,passwordCredentials,keyCredentials")
-      .get((err: any, res: IApplications): void => {
+      .get((err: { message: string; }, res: IApplications): void => {
         if (err) {
           this.setState({
-            error: err.message ? err.message : "An error occured",
+            error: err.message ? err.message : "An error occurred",
             loading: false
           });
           return;
         }
-        // applications retrived successfully
+        // applications retrieved successfully
         if (res && res.value && res.value.length > 0) {
           this.setState({
             loading: false
@@ -116,19 +115,19 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
   }
 
 
-  private _getSelection(items: any[]) {
+  private _getSelection(items: []):void {
     console.log('Selected items:', items);
   }
 
 
-  private _propertiesMapping = (applications: IApplication[]) => {
-    let displayedApplication: IFormattedApplication[] = [];
-    var today = (moment(Date.now())).format('DD-MMM-YYYY');
+  private _propertiesMapping = (applications: IApplication[]):void => {
+    const displayedApplication: IFormattedApplication[] = [];
+    const today = (moment(Date.now())).format('DD-MMM-YYYY');
     try {
       applications.forEach(app => {
         app.passwordCredentials.forEach(pswd => {
-          let daysBeforeExpiration = moment.duration((moment(pswd.endDateTime)).diff(today, 'days'), 'days').asDays();
-          let formatedApp: IFormattedApplication = {
+          const daysBeforeExpiration = moment.duration((moment(pswd.endDateTime)).diff(today, 'days'), 'days').asDays();
+          const formattedApp: IFormattedApplication = {
             applicationId: app.appId,
             displayName: app.displayName,
             type: "Secret",
@@ -138,15 +137,15 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
           };
           if (this.props.expiringSoon) {
             if (daysBeforeExpiration < 30) {
-              displayedApplication.push(formatedApp);
+              displayedApplication.push(formattedApp);
             }
           } else {
-            displayedApplication.push(formatedApp);
+            displayedApplication.push(formattedApp);
           }
         });
         app.keyCredentials.forEach(keyCred => {
-          let daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
-          let formatedApp: IFormattedApplication = {
+          const daysBeforeExpiration = moment.duration((moment(keyCred.endDateTime)).diff(today, 'days'), 'days').asDays();
+          const formattedApp: IFormattedApplication = {
             applicationId: app.appId,
             displayName: app.displayName,
             type: "Certificate",
@@ -156,10 +155,10 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
           };
           if (this.props.expiringSoon) {
             if (daysBeforeExpiration < 30) {
-              displayedApplication.push(formatedApp);
+              displayedApplication.push(formattedApp);
             }
           } else {
-            displayedApplication.push(formatedApp);
+            displayedApplication.push(formattedApp);
           }
         });
       });
@@ -174,14 +173,14 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     this._groupView();
   }
 
-  private _getPage(selectedPage: number) {
+  private _getPage(selectedPage: number):void {
     this.setState({
       page: selectedPage
     });
   }
 
-  private _filterApplication = (value, clear: boolean) => {
-    let searchResult: IFormattedApplication[] = [];
+  private _filterApplication = (value: string, clear: boolean):void => {
+    const searchResult: IFormattedApplication[] = [];
     if (clear) {
       this.state.applications.forEach(app => {
         if (this._filterByProperties(app, value)) {
@@ -202,7 +201,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
 
   }
 
-  private _filterByProperties(application: IFormattedApplication, filterValue) {
+  private _filterByProperties(application: IFormattedApplication, filterValue: string): boolean {
     if (application.applicationId.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
       return true;
     } else if (application.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
@@ -216,9 +215,9 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     }
   }
 
-  private _groupView = () => {
+  private _groupView = ():void => {
     if (this.props.groupByColumn !== "none") {
-      let groupByFields: IGrouping[] = [
+      const groupByFields: IGrouping[] = [
         {
           name: this.props.groupByColumn,
           order: GroupOrder.ascending

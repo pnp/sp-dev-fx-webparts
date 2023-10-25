@@ -44,8 +44,8 @@ Here is the solution overview:
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
@@ -56,15 +56,13 @@ Before starting, you'll need to install some prerequisites:
 - Install the latest release of [PnP PowerShell cmdlets 'SharePointPnPPowerShellOnline'](https://github.com/OfficeDev/PnP-PowerShell/releases) or a version compatible with the 201605 PnP schema version.
 - Install [Node.js](https://nodejs.org/en/) on your machine.
 - Install [Git for Windows](https://git-scm.com/download/win).
-- Get the [latest version](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) of the SharePoint Framework yeoman generator (in this case **SPFx Drop 5**) and make sure TypeScript 2.0 is available on your machine (`npm install -g typescript@latest`).
+- Get the [latest version](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) of the SharePoint Framework yeoman generator (in this case **SPFx Drop 5**) and make sure TypeScript 2.0 is available on your machine (`npm install -g typescript@latest`).
 - Create a site collection with the developer template.
 - Go to the ".\client" folder and install all dependencies listed in the package.json file by running the `npm install` cmd.
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-real-time | [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
+* [Franck Cornu](https://github.com/FranckyC) (MVP, [@franckcornu](https://twitter.com/FranckCornu))
 
 ## Version history
 
@@ -148,7 +146,7 @@ Version|Date|Comments
     
 
 7. Go back to your list and add initial items in the list.
-8. In your SharePoint site, [upload the workbench.aspx page](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
+8. In your SharePoint site, [upload the workbench.aspx page](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
 ![](./assets/spfx-initial.png)
     
 
@@ -187,4 +185,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/react-real-time" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-real-time" />

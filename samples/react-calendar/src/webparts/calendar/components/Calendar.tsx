@@ -315,7 +315,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
    */
   public render(): React.ReactElement<ICalendarProps> {
     return (
-      <Customizer {...FluentCustomizations}>
+      <Customizer>
 
 
         <div className={styles.calendar} style={{ backgroundColor: 'white', padding: '20px' }}>
