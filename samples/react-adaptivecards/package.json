@@ -16,7 +16,7 @@
     "@microsoft/sp-property-pane": "1.12.1",
     "@microsoft/sp-webpart-base": "1.12.1",
     "@pnp/sp": "^2.0.3",
-    "@pnp/spfx-controls-react": "1.16.0",
+    "@pnp/spfx-controls-react": "3.15.0",
     "@pnp/spfx-property-controls": "^1.18.0",
     "adaptive-expressions": "^4.20.0",
     "adaptivecards": "^2.9.0",
