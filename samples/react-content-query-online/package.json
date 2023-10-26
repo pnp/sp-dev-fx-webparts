@@ -39,7 +39,7 @@
     "hoek": ">=4.2.1",
     "is-my-json-valid": ">=2.17.2",
     "js-yaml": ">=3.13.1",
-    "lodash": ">=4.17.12",
+    "lodash": ">=4.17.21",
     "lodash.merge": ">=4.6.2",
     "lodash.mergewith": ">=4.6.2",
     "lodash.template": ">=4.5.0",
