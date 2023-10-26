@@ -18927,7 +18927,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss",
+    "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss3",
     "source": "pnp",
     "title": "Tailwind 3",
     "shortDescription": "This project showcases an integration of Tailwind CSS into an SPFx project.",
