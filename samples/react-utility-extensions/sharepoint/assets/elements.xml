@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction Title="CopyDocumentName" RegistrationId="101" RegistrationType="List" Location="ClientSideExtension.ListViewCommandSet" ClientSideComponentId="306727ae-4076-467f-9759-b14756d60889" ClientSideComponentProperties="{&quot;sampleTextOne&quot;:&quot;One item is selected in the list.&quot;, &quot;sampleTextTwo&quot;:&quot;This command is always visible.&quot;}">
+    </CustomAction>
+</Elements>
