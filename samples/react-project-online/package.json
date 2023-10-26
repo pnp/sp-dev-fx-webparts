@@ -19,7 +19,7 @@
     "@microsoft/sp-webpart-base": "1.16.1",
     "@pnp/logging": "^2.0.4",
     "@pnp/sp": "^2.0.4",
-    "@pnp/spfx-controls-react": "^1.17.0",
+    "@pnp/spfx-controls-react": "^3.15.0",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
