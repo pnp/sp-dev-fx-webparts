@@ -3,7 +3,7 @@
   "solution": {
     "name": "SPFx app dev Simple Password Vault",
     "id": "d091b369-f63d-459c-846e-5a4323e31745",
-    "version": "1.1.0.0",
+    "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -20,9 +20,7 @@
         "description": "The feature that activates PasswordVaultWebPart from the SPFxAppDev PasswordVaultWebPart solution.",
         "id": "2c2420ee-ffdf-4dce-800f-d0d09f02bffd",
         "version": "1.0.0.0",
-        "componentIds": [
-          "2c2420ee-ffdf-4dce-800f-d0d09f02bffd"
-        ]
+        "componentIds": ["2c2420ee-ffdf-4dce-800f-d0d09f02bffd"]
       }
     ]
   },
