@@ -1,0 +1,43 @@
+.webPartHeader {
+  border-top: 0px;
+  margin-bottom: 10px;
+  border-bottom: 0.0625rem solid rgb(222, 226, 230);
+  .webPartTitle {
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    h2 {
+      margin: 0;
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-start;
+      color: #183453;
+      font-family: "Segoe UI";
+      font-size: 1.875rem;
+      line-height: 1.55;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+
+  .webpartDescription {
+    margin-bottom: 5px;
+    margin-top: 0px;
+    font-size: 0.85rem;
+  }
+
+  // View mode
+  span {
+    // Nothing at the moment
+
+    a:link {
+      text-decoration: none;
+    }
+  }
+
+  .moreLink {
+    margin-bottom: 11px;
+  }
+}

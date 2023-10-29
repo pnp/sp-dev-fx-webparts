@@ -1,0 +1,42 @@
+{
+  "@type": "MessageCard",
+  "@context": "http://schema.org/extensions",
+  "summary": "A critical incident reported",
+  "sections": [
+    {
+      "title": "${Title}",
+      "image": "https://o365clinicstorage.blob.core.windows.net/images/icon_task_yellow.png",
+      "facts": [       
+        {
+          "name": "Title:",
+          "value": "${Title}"
+        },
+        {
+          "name": "Description:",
+          "value": "${Description}"
+        },
+        {
+          "name": "Priority:",
+          "value": "${Priority}"
+        },
+        {
+          "name": "Date reported:",
+          "value": "${DateReported}"
+        },
+        {
+          "name": "Reported by:",
+          "value": "${Issueloggedby}"
+        }
+      ]
+    }
+  ],
+  "potentialAction": [
+    {
+      "@context": "http://schema.org",
+      "@type": "ViewAction",
+      "name": "View Task Details",
+      "target": [ "${IncidentURL}" ]
+    }   
+
+  ]
+}
