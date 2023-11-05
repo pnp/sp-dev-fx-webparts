@@ -15,6 +15,7 @@ import {
   Link,
   TableCellLayout,
   TableColumnDefinition,
+  tokens,
 } from '@fluentui/react-components';
 
 import { IOrder } from '../../models/IOrder';
@@ -88,7 +89,11 @@ const columns: TableColumnDefinition<IOrder>[] = [
       return <span style={{ fontWeight: 700 }}>Total</span>;
     },
     renderCell: (item) => {
-      return <TableCellLayout truncate>{` $ ${item.total} `} </TableCellLayout>;
+      return (
+        <TableCellLayout style={{ color: tokens.colorBrandForeground1, fontWeight: tokens.fontWeightMedium }} truncate>
+          {` $ ${item.total} `}
+        </TableCellLayout>
+      );
     },
   }),
   createTableColumn<IOrder>({
@@ -160,14 +165,14 @@ const columnSizingOptions = {
     idealWidth: 70,
   },
   total: {
-    defaultWidth:100,
+    defaultWidth: 100,
     minWidth: 100,
     idealWidth: 100,
   },
   orderDate: {
     defaultWidth: 100,
     minWidth: 100,
-    idealWidth:120,
+    idealWidth: 120,
   },
   status: {
     defaultWidth: 180,
