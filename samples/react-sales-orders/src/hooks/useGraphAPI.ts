@@ -23,85 +23,90 @@ export const useGraphAPI = (context: BaseComponentContext): IuseGraphAPI => {
     return await context.msGraphClientFactory.getClient("3");
   }, [context]);
 
+  const mappingOrders = React.useCallback(
+    (result: SearchHit[]): IOrder[] => {
+      const ordersList: IOrder[] = [];
+      for (const item of result) {
+        const { resource } = item;
+        if (resource) {
+          const { properties } = resource as any;
+          if (properties) {
+            const {
+              id,
+              custcode,
+              custname,
+              email,
+              state,
+              country,
+              orders,
+              orderdates,
+              ordertotals,
+              orderstatus,
+            } = properties as any;
 
-  const mappingOrders = React.useCallback((result: SearchHit[]): IOrder[] => {
-    const ordersList: IOrder[] = [];
-    for (const item of result) {
-      const { resource } = item;
-      if (resource) {
-        const { properties } = resource as any;
-        if (properties) {
-          const {
-            id,
-            custcode,
-            custname,
-            email,
-            state,
-            country,
-            orders,
-            orderdates,
-            ordertotals,
-            orderstatus,
-          } = properties as any;
-
-          for (let i = 0; i < orders.length; i++) {
-            const order: IOrder = {
-              customer: custname,
-              city: `${state} ${country}`,
-              order: orders[i],
-              total: ordertotals[i],
-              orderDate: orderdates[i],
-              status: orderstatus[i],
-              customerCode: custcode,
-              custmoerEmail: email,
-              customerState: state,
-              id: id,
-            };
-            ordersList.push(order);
+            for (let i = 0; i < orders.length; i++) {
+              const order: IOrder = {
+                customer: custname,
+                city: `${state} ${country}`,
+                order: orders[i],
+                total: ordertotals[i],
+                orderDate: orderdates[i],
+                status: orderstatus[i],
+                customerCode: custcode,
+                custmoerEmail: email,
+                customerState: state,
+                id: id,
+              };
+              ordersList.push(order);
+            }
           }
         }
       }
-    }
-    return ordersList;
-  }, [ graphClient]);
+      return ordersList;
+    },
+    [graphClient]
+  );
 
-  const mappingCustomers = React.useCallback((result: SearchHit[]): ICustomer[] => {
-    const customersList: ICustomer[] = [];
-    for (const item of result) {
-      const { resource } = item;
-      if (resource) {
-        const { properties } = resource as any;
-        if (properties) {
-          const {
-            custcode,
-            custname,
-            email,
-            state,
-            country,
-            orders,
-            orderdates,
-            ordertotals,
-            orderstatus,
-          } = properties as any;
+  const mappingCustomers = React.useCallback(
+    (result: SearchHit[]): ICustomer[] => {
+      const customersList: ICustomer[] = [];
+      for (const item of result) {
+        const { resource } = item;
+        if (resource) {
+          const { properties } = resource as any;
+          if (properties) {
+            const {
+              custcode,
+              custname,
+              email,
+              state,
+              country,
+              orders,
+              orderdates,
+              ordertotals,
+              orderstatus,
+            } = properties as any;
 
-          const customer: ICustomer = {
-            customerName: custname,
-            customerCode: custcode,
-            customerEmail: email,
-            customerState: state,
-            customerCountry: country,
-            lastOrder: orders[orders.length - 1],
-            totalOrders: orders.length,
-            lastOrderDate: orderdates[orderdates.length - 1],
-            lastOrderTotal: ordertotals[ordertotals.length - 1],
-            lastOrderStatus: orderstatus[orderstatus.length - 1],
-          };
-          customersList.push(customer);
+            const customer: ICustomer = {
+              customerName: custname,
+              customerCode: custcode,
+              customerEmail: email,
+              customerState: state,
+              customerCountry: country,
+              lastOrder: orders[orders.length - 1],
+              totalOrders: orders.length,
+              lastOrderDate: orderdates[orderdates.length - 1],
+              lastOrderTotal: ordertotals[ordertotals.length - 1],
+              lastOrderStatus: orderstatus[orderstatus.length - 1],
+            };
+            customersList.push(customer);
+          }
         }
       }
-    }
-    return customersList;
-  }, [ graphClient]);
+      return customersList;
+    },
+    [graphClient]
+  );
 
   const searchOrders = React.useCallback(
     async (searchText: string): Promise<any> => {
