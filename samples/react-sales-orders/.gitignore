@@ -1,34 +1,20 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Dependency directories
-node_modules
-
-# Build generated files
-dist
-lib
-release
-solution
-temp
-*.sppkg
-.heft
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# OSX
+# TeamsFx files
+env/.env.*.user
+env/.env.local
 .DS_Store
+build
+appPackage/build
 
-# Visual Studio files
-.ntvs_analysis.dat
-.vs
-bin
-obj
+# dependencies
+/node_modules
 
-# Resx Generated Code
-*.resx.ts
+# testing
+/coverage
 
-# Styles Generated Code
-*.scss.ts
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.deployment

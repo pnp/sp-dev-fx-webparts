@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
+
 import {
   Avatar,
   Badge,
@@ -18,6 +20,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 
+import { appGlobalStateAtom } from '../../atoms/appGlobalStateAtom';
 import { IOrder } from '../../models/IOrder';
 import { useOrdersGridStyles } from './useOrdersGridStyles';
 
@@ -176,9 +179,9 @@ const columnSizingOptions = {
     idealWidth: 120,
   },
   status: {
-    defaultWidth: 180,
+    defaultWidth: 120,
     minWidth: 120,
-    idealWidth: 180,
+    idealWidth: 120,
   },
 };
 
@@ -190,6 +193,8 @@ export const OrdersGrid: React.FunctionComponent<IOrdersGridProps> = (
   props: React.PropsWithChildren<IOrdersGridProps>
 ) => {
   const { items } = props;
+  const appGlobalState = useAtomValue(appGlobalStateAtom);
+   const {hasTeamsContext } = appGlobalState;
   const [sortState, setSortState] = React.useState<Parameters<NonNullable<DataGridProps["onSortChange"]>>[1]>({
     sortColumn: "customer",
     sortDirection: "ascending",
@@ -201,7 +206,7 @@ export const OrdersGrid: React.FunctionComponent<IOrdersGridProps> = (
   const styles = useOrdersGridStyles();
 
   return (
-    <div  className={styles.gridContainer}>
+      <div className={styles.gridContainer} style={{height: !hasTeamsContext ? 'calc(100vh - 420px': 'calc(100vh - 240px' }}>
       <DataGrid
         items={items}
         columns={columns}
@@ -224,6 +229,6 @@ export const OrdersGrid: React.FunctionComponent<IOrdersGridProps> = (
           )}
         </DataGridBody>
       </DataGrid>
-    </div>
+      </div>
   );
 };

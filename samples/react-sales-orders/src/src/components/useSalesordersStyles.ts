@@ -7,16 +7,18 @@ import {
 export const useSalesordersStyles = makeStyles({
   mainContainer: {
     width: "100%",
-    height:  'calc(100vh - 200px)',
+    height: "100vh",
+ 
     backgroundColor: tokens.colorNeutralBackground2,
-
+    overflowY: "auto",
+    overflowX: "hidden",
   },
 
   contentContainer: {
    display: "grid",
     gridTemplateColumns: "min(100%, 300px) 1fr 1fr 1fr",
     gridTemplateRows: "1fr",
-    height:  'calc(100vh - 200px)',
+    height: "100vh",
   },
 
   leftContainer : {

@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from 'react';
 
@@ -34,7 +35,7 @@ import { useSalesordersStyles } from './useSalesordersStyles';
 export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
   props: React.PropsWithChildren<ISalesordersProps>
 ) => {
-  const { context } = props;
+  const { context, hasTeamsContext } = props;
   const [appglobalState, setAppglobalState] = useAtom(appGlobalStateAtom);
   const styles = useSalesordersStyles();
   const divContainer = React.useRef<HTMLDivElement>(null);
@@ -50,12 +51,14 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [customers, setCustomers] = React.useState<ICustomer[]>([]);
   const [error, setError] = React.useState<Error>((undefined as unknown) as Error);
-
+  
+ 
   React.useEffect(() => {
     setAppglobalState({ ...appglobalState, ...props });
     // bug,gridtemplateareas is not reconized as CSS property
     if (divContainer.current) {
-      divContainer.current.setAttribute("style", "grid-template-areas: 'left right right right';");
+      const height = !hasTeamsContext ? "calc(100vh - 147px)" : "100vh";
+      divContainer.current.setAttribute("style", `grid-template-areas: 'left right right right'; height:   ${height}`);
     }
     setIsLoading(true);
   }, [props]);
@@ -74,6 +77,7 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
             break;
         }
       } catch (error) {
+      debugger;
         setError(error);
       } finally {
         setIsLoading(false);
@@ -83,7 +87,7 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
       setOrders(orders ); */
       /* setIsLoading(false); */
     })();
-  }, [searchText, selectedItem]);
+  }, [searchText, selectedItem, props, searchOrders, getCustomers]);
 
   const totalOrders = React.useMemo(() => {
     return orders.length;
@@ -167,8 +171,8 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
 
   return (
     <>
-      <main className={styles.mainContainer}>
-        <div className={styles.contentContainer} ref={divContainer}>
+      <main className={styles.mainContainer} style={{ height: !hasTeamsContext ? "calc(100vh - 147px)" : "100vh"}}>
+        <div className={styles.contentContainer}   ref={divContainer}>
           <Left>
             <CompanyInfo />
             <Menu currentItem={selectedItem as IMenuItem} onItemClick={(item) => setSelectedItem(item)} />
@@ -194,13 +198,6 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
               />
             </div>
             <RenderRightContent />
-            {/*  {isLoading ? (
-              <div style={{ paddingTop: 60 }}>
-                <Spinner />
-              </div>
-            ) : (
-              <>{!hasOrders ? <NoOrders /> : renderSelectedContent()}</>
-            )} */}
           </Right>
         </div>
       </main>

@@ -5,7 +5,8 @@
  This Sample show how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.
 
 ![react-sales-orders](./src/assets/salesOrders.gif)
-![react-sales-orders](./src/assets/salesOrders01.png)
+![react-sales-orders](./src/assets/teams01.png)
+![react-sales-orders](./src/assets/salesOrders02.png)
  
 
 ## Compatibility

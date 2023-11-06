@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as React from 'react';
 
+import { useAtomValue } from 'jotai';
+
 import {
   Avatar,
   Badge,
@@ -18,7 +20,9 @@ import {
   tokens,
 } from '@fluentui/react-components';
 
+import { appGlobalStateAtom } from '../../atoms/appGlobalStateAtom';
 import { ICustomer } from '../../models/ICustomer';
+import { useCustomerGridStyles } from './useCustomerGridStyles';
 
 const columns: TableColumnDefinition<ICustomer>[] = [
   createTableColumn<ICustomer>({
@@ -220,17 +224,22 @@ export const CustomersGrid: React.FunctionComponent<ICustomersGridProps> = (
   props: React.PropsWithChildren<ICustomersGridProps>
 ) => {
   const { items } = props;
+   const appGlobalState = useAtomValue(appGlobalStateAtom);
+   const {hasTeamsContext } = appGlobalState;
   const [sortState, setSortState] = React.useState<Parameters<NonNullable<DataGridProps["onSortChange"]>>[1]>({
     sortColumn: "customer",
     sortDirection: "ascending",
   });
 
+
   const onSortChange = React.useCallback((e, nextSortState) => {
     setSortState(nextSortState);
   }, []);
 
+  const styles = useCustomerGridStyles();
+
   return (
-    <div style={{ paddingTop: 30 }}>
+    <div className={styles.gridContainer} style={{height: !hasTeamsContext ? 'calc(100vh - 397px': 'calc(100vh - 240px' }}>
       <DataGrid
         items={items}
         columns={columns}
@@ -257,3 +266,5 @@ export const CustomersGrid: React.FunctionComponent<ICustomersGridProps> = (
     </div>
   );
 };
+ 
+
