@@ -1,73 +1,63 @@
-# SPFx (SharePoint Framework) App
+#  Sales Orders Web Part
 
 ## Summary
 
-The SharePoint Framework (SPFx) is a page and web part model that provides full support for client-side SharePoint development, easy integration with SharePoint data, and extending Microsoft Teams. This project applies SPFx to Teams personal tab and group tab support.
+ This Sample show how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.
+
+![react-sales-orders](./src/assets/salesOrders.gif)
+![react-sales-orders](./src/assets/salesOrders01.png)
+ 
+
+## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.18.1](https://img.shields.io/badge/SPFx-1.18.1-green.svg)
+![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20|%20v16-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-> - [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)
-> - An Microsoft 365 account. Get your own free Microsoft 365 tenant from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+#### This Sample required the Microsoft Graph Connector [nodejs-javascript-IBMDB2](https://github.com/pnp/graph-connectors-samples/tree/main/samples/nodejs-javascript-IBMDB2) to be installed in your tenant.  Please see  for more information. [graph-connectors-samples](https://github.com/pnp/graph-connectors-samples)
 
+> -  Please approve the required Microsoft Graph Permissions required (ExternalItem.Read.All). 
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-folder name | Author details (name, company, twitter alias with link)
+* [João Mendes](https://github.com/joaojmendes)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
+1.0.0|November 6, 2023|Initial release
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
-
 ## Minimal Path to Awesome
 
-1. Open the project with VSCode, click `Provision` in LIFECYCLE panel of Teams Toolkit extension.
+The project was created with Visual Studio Teams Toolkit.  
 
-    Or you can use TeamsFx CLI with running this cmd under your project path:
-    `teamsfx provision`
-
-    It will provision an app in Teams App Studio. You may need to login with your Microsoft 365 tenant admin account.
-
-2. Build and Deploy your SharePoint Package.
-    - Click `Deploy` in LIFECYCLE panel of Teams Toolkit extension, or run `Teams: Deploy` from command palette. This will generate a SharePoint package (*.sppkg) under sharepoint/solution folder.
-  
-    Or you can use TeamsFx CLI with running this cmd under your project path:
-        `teamsfx deploy`
-
-    - After building the *.sppkg, the Teams Toolkit extension will upload and deploy it to your tenant App Catalog. Only tenant App Catalog site admin has permission to do it. You can create your test tenant following [Setup your Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-3. Go back to Teams Toolkit extension, click `Teams: Publish` in LIFECYCLE panel.
-
-    Or you can use TeamsFx CLI with running this cmd under your project path:
-        `teamsfx publish`
-
-    You will find your app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps). Enter your app name in the search box. Click the item and select `Publish` in the Publishing status.
-
-4. You may need to wait for a few minutes after publishing your teams app. And then login to Teams, and you will find your app in the `Apps - Built for {your-tenant-name}` category.
-
-5. Click "Add" to use the app as a personal tab. Click "Add to a team" to use the app as a group tab.
-
-## Debug
-
-Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
-
-- `Teams workbench` is the default debug configuration. Using this configuration, you can install the SPFx app within Teams context as a Teams app.
-- `Hosted workbench`. You need to navigate to [launch.json](../.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}/_layouts/workbench.aspx`. You can also use root site if you haven't created one, eg. `https://{your-tenant-name}.sharepoint.com/_layouts/workbench.aspx`.
+* Clone this repository
+* Navigate to `src` folder
+* in the command line run:
+  * `npm install`
+  * `gulp build`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+  * Add and Deploy Package to AppCatalog
 
 ## References
 

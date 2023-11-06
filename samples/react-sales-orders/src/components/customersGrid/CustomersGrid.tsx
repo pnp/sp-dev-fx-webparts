@@ -100,7 +100,7 @@ const columns: TableColumnDefinition<ICustomer>[] = [
       return <span style={{ fontWeight: 700 }}>Total Orders</span>;
     },
     renderCell: (item) => {
-      return <TableCellLayout truncate>$ {item.totalOrders}</TableCellLayout>;
+      return <TableCellLayout truncate>{item.totalOrders}</TableCellLayout>;
     },
   }),
   createTableColumn<ICustomer>({
@@ -138,7 +138,7 @@ const columns: TableColumnDefinition<ICustomer>[] = [
     renderCell: (item) => {
       return (
         <TableCellLayout truncate>
-          <span style={{ color: tokens.colorBrandForeground1 }}>{item.lastOrderTotal}</span>
+          <span style={{ color: tokens.colorBrandForeground1 }}>$ {item.lastOrderTotal}</span>
         </TableCellLayout>
       );
     },
