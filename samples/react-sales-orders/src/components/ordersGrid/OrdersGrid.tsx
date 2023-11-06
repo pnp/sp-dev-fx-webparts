@@ -19,6 +19,7 @@ import {
 } from '@fluentui/react-components';
 
 import { IOrder } from '../../models/IOrder';
+import { useOrdersGridStyles } from './useOrdersGridStyles';
 
 const columns: TableColumnDefinition<IOrder>[] = [
   createTableColumn<IOrder>({
@@ -197,8 +198,10 @@ export const OrdersGrid: React.FunctionComponent<IOrdersGridProps> = (
     setSortState(nextSortState);
   }, []);
 
+  const styles = useOrdersGridStyles();
+
   return (
-    <div style={{ paddingTop: 30 }}>
+    <div  className={styles.gridContainer}>
       <DataGrid
         items={items}
         columns={columns}

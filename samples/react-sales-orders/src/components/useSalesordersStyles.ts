@@ -6,30 +6,17 @@ import {
 
 export const useSalesordersStyles = makeStyles({
   mainContainer: {
-   
     width: "100%",
-    height: "100vh",
+    height:  'calc(100vh - 200px)',
     backgroundColor: tokens.colorNeutralBackground2,
-    overflowY: "auto",
-    overflowX: "hidden",
-    "scrollbar-color":  tokens.colorNeutralBackground1,
-    "scrollbar-width": "thin",
-    "::-webkit-scrollbar-thumb": {
-      backgroundColor: tokens?.colorBrandStroke2,
-      ...shorthands.borderRadius("10px"),
-      ...shorthands.borderWidth("1px"),
-    },
-    "::-webkit-scrollbar": {
-      height: "10px",
-      width: "7px",
-    },
+
   },
 
   contentContainer: {
    display: "grid",
     gridTemplateColumns: "min(100%, 300px) 1fr 1fr 1fr",
     gridTemplateRows: "1fr",
-    height: "100vh",
+    height:  'calc(100vh - 200px)',
   },
 
   leftContainer : {
@@ -74,6 +61,6 @@ export const useSalesordersStyles = makeStyles({
       justifyContent: "space-between",
       rowGap: "20px",
       ...shorthands.padding("20px 0px"),
-   
+
    } ,
 });

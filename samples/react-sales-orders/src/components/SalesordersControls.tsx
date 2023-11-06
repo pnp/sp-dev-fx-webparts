@@ -14,10 +14,12 @@ import { SearchBox } from '@fluentui/react-search-preview';
 import { Icon } from '@iconify/react';
 
 import { appGlobalStateAtom } from '../atoms/appGlobalStateAtom';
+import { EMessageType } from '../constants/EMessageTypes';
 import { useGraphAPI } from '../hooks/useGraphAPI';
 import { ICustomer } from '../models/ICustomer';
 import { IMenuItem } from '../models/IMenuItem';
 import { IOrder } from '../models/IOrder';
+import { ShowMessage } from '../showMessage/ShowMessage';
 import { CompanyInfo } from './companyInfo/CompanyInfo';
 import { CustomersGrid } from './customersGrid/CustomersGrid';
 import { ISalesordersProps } from './ISalesordersProps';
@@ -47,6 +49,7 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
   const [searchText, setSearchText] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [customers, setCustomers] = React.useState<ICustomer[]>([]);
+  const [error, setError] = React.useState<Error>((undefined as unknown) as Error);
 
   React.useEffect(() => {
     setAppglobalState({ ...appglobalState, ...props });
@@ -59,13 +62,28 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
 
   React.useEffect(() => {
     (async () => {
-      const orders = await searchOrders(searchText);
-      const customers = await getCustomers(searchText);
+      try {
+        switch (selectedItem.id) {
+          case 1:
+            setOrders(await searchOrders(searchText));
+            break;
+          case 2:
+            setCustomers(await getCustomers(searchText));
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+      /*  const customers = await getCustomers(searchText);
       setCustomers(customers);
-      setOrders(orders );
-      setIsLoading(false);
+      setOrders(orders ); */
+      /* setIsLoading(false); */
     })();
-  }, [searchText]);
+  }, [searchText, selectedItem]);
 
   const totalOrders = React.useMemo(() => {
     return orders.length;
@@ -107,9 +125,8 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
               pendingOrders={totalPeding}
               processingOrders={totalProcessing}
             />
-            
-              <OrdersGrid items={orders} />
-           
+
+            <OrdersGrid items={orders} />
           </>
         );
       case 2:
@@ -130,6 +147,24 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
     }
   }, [selectedItem]);
 
+  const hasError = React.useMemo(() => {
+    return !error ? false : true;
+  }, [error]);
+
+  const RenderRightContent = React.useCallback(() => {
+    if (hasError) {
+      return <ShowMessage isShow={hasError} messageType={EMessageType.ERROR} message={error.message} />;
+    }
+    if (isLoading) {
+      return (
+        <div style={{ paddingTop: 60 }}>
+          <Spinner />
+        </div>
+      );
+    }
+    return <>{!hasOrders ? <NoOrders /> : renderSelectedContent()}</>;
+  }, [ hasError, error, isLoading, hasOrders, renderSelectedContent]);
+
   return (
     <>
       <main className={styles.mainContainer}>
@@ -146,7 +181,7 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
                 style={{ fontSize: tokens.fontSizeBase200, width: 300 }}
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
                   if (data.value.trim().length > 2) {
-                  setSearchText(data.value);
+                    setSearchText(data.value);
                   }
                 }}
                 dismiss={
@@ -158,13 +193,14 @@ export const SalesordersControl: React.FunctionComponent<ISalesordersProps> = (
                 }
               />
             </div>
-            {isLoading ? (
+            <RenderRightContent />
+            {/*  {isLoading ? (
               <div style={{ paddingTop: 60 }}>
                 <Spinner />
               </div>
             ) : (
               <>{!hasOrders ? <NoOrders /> : renderSelectedContent()}</>
-            )}
+            )} */}
           </Right>
         </div>
       </main>
