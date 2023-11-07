@@ -50,6 +50,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 The project was created with Visual Studio Teams Toolkit.  
+This Application was deleveloped  and is optimized to use as FullPage Application  
 
 * Clone this repository
 * Navigate to `src` folder
