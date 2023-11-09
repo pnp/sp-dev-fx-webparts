@@ -3,7 +3,7 @@
   "solution": {
     "name": "ratings",
     "id": "1fac5bb8-6a05-4c52-aee3-496f6921ac1a",
-    "version": "1.3.0.0",
+    "version": "1.4.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -13,7 +13,26 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": ""
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "This web part demonstrates Star Ratings capabilities to SharePoint News."
+      },
+      "longDescription": {
+        "default": "This web part demonstrates Star Ratings capabilities to SharePoint News. The \"Ratings\" site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Ratings",
+        "description": "The feature that activates elements of the ratings solution.",
+        "id": "6f19fff7-a71c-47bd-a5d0-c1d6c147acae",
+        "version": "1.4.0.0"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/ratings.sppkg"
