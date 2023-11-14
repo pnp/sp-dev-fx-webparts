@@ -13,7 +13,6 @@
     "outDir": "lib",
     "inlineSources": false,
     "noImplicitAny": true,
-
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
@@ -26,7 +25,8 @@
       "dom",
       "es2015.collection",
       "es2015.promise"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",
