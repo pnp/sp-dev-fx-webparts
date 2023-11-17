@@ -1,0 +1,24 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "AwardRecognition",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "AwardRecognition",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "award-recognition",
+    "libraryId": "45e061b8-13f5-423f-bedb-12fc2a44fa89",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "AwardRecognition description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
