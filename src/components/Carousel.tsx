@@ -7,117 +7,97 @@ import "swiper/swiper.scss";
 import "swiper/modules/navigation/navigation.scss";
 import "swiper/modules/pagination/pagination.scss";
 import "swiper/modules/effect-coverflow/effect-coverflow.scss";
-import { Card } from "@fluentui/react-components";
+import { Card, CardPreview } from "@fluentui/react-components";
+import { useEffect, useState } from "react";
+import { useListItems } from "pnp-react-hooks/hooks/sp/useListItems";
+import { ListOptions } from "pnp-react-hooks/types/options/ListOptions";
+import { AwardItems } from "../types/AwardItems";
+import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss";
+import { Content } from "./Content";
 
 export const Carousel = () => {
+  const [awardList, setAwardList] = useState<AwardItems[]>([]);
+  const [selectedUser, setSelectedUser] = useState<AwardItems | null>(null);
+
+  const listItems = useListItems<AwardItems>("Award Recognition", {
+    query: {
+      select: ["ID", "Title", "Designation", "UserImage"],
+    },
+    mode: ListOptions.All,
+  });
+
+  useEffect(() => {
+    if (listItems && listItems.length > 0) {
+      const parsedData = listItems.map((item) => {
+        const AppImageUrl = JSON.parse(item.UserImage);
+        const ImageUrl = `https://m365x24002320.sharepoint.com/sites/Aban/Lists/Award%20Recognition/Attachments/${item.ID}/${AppImageUrl.fileName}`;
+        return { ...item, ImageUrl };
+      });
+      setAwardList(parsedData);
+      if (selectedUser === null) {
+        setSelectedUser(parsedData[0]);
+      }
+    }
+  }, [listItems, selectedUser]);
+
+  console.log(awardList);
+
+  const handleSlideChange = (swiper: any) => {
+    const activeIndex = swiper.activeIndex;
+    setSelectedUser(awardList[activeIndex]);
+  };
+
   return (
-    <div>
-      <Swiper
-        effect="coverflow"
-        grabCursor={true}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        keyboard={{ enabled: true }}
-        mousewheel={{
-          thresholdDelta: 70,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        }}
-        slidesPerView={2}
-        modules={[EffectCoverflow]}
-        centeredSlides
-        spaceBetween={30}
-        loop={false}
-      >
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-1.jpg)",
-            }}
-          >
-            Slide 1
-          </Card>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-3.jpg)",
-            }}
-          >
-            Slide 3
-          </Card>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-4.jpg)",
-            }}
-          >
-            Slide 4
-          </Card>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-5.jpg)",
-            }}
-          >
-            Slide 5
-          </Card>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-6.jpg)",
-            }}
-          >
-            Slide 6
-          </Card>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            style={{
-              width: "300px",
-              height: "400px",
-              borderRadius: "8px",
-              backgroundImage:
-                "url(https://swiperjs.com/demos/images/nature-7.jpg)",
-            }}
-          >
-            Slide 7
-          </Card>
-        </SwiperSlide>
-      </Swiper>
+    <div className={styles.container}>
+      <aside className={styles.asideWrapper}>
+        <Content user={selectedUser} />
+      </aside>
+      <aside className={styles.carouselWrapper}>
+        <Swiper
+          effect="coverflow"
+          grabCursor={true}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+          }}
+          keyboard={{ enabled: true }}
+          mousewheel={{
+            thresholdDelta: 70,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          slidesPerView={2}
+          modules={[EffectCoverflow]}
+          centeredSlides
+          spaceBetween={30}
+          loop={false}
+          onSlideChange={(swiper) => handleSlideChange(swiper)}
+        >
+          {awardList?.map((user) => (
+            <SwiperSlide>
+              <Card
+                style={{
+                  width: "300px",
+                  height: "400px",
+                  borderRadius: "8px",
+                }}
+              >
+                <CardPreview>
+                  <img src={user.ImageUrl} />
+                </CardPreview>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </aside>
     </div>
   );
 };
