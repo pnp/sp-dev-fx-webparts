@@ -1,7 +1,9 @@
 declare interface IAwardRecognitionWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ContentDescriptionFieldLabel: string;
+  ContentTitleFieldLabel: string;
+  WebpartFieldLabel: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppLocalEnvironmentOffice: string;
@@ -12,7 +14,7 @@ declare interface IAwardRecognitionWebPartStrings {
   AppOutlookEnvironment: string;
 }
 
-declare module 'AwardRecognitionWebPartStrings' {
+declare module "AwardRecognitionWebPartStrings" {
   const strings: IAwardRecognitionWebPartStrings;
   export = strings;
 }

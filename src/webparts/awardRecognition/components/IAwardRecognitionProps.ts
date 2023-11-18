@@ -1,5 +1,7 @@
 export interface IAwardRecognitionProps {
-  description: string;
+  webpartTitle: string;
+  contentTitle: string;
+  contentDescription: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;

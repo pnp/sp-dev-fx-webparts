@@ -12,8 +12,14 @@ import * as strings from "AwardRecognitionWebPartStrings";
 import { AwardRecognition } from "./components/AwardRecognition";
 import { IAwardRecognitionProps } from "./components/IAwardRecognitionProps";
 
+import { PnpHookGlobalOptions, createProviderElement } from "pnp-react-hooks";
+import { spfi, SPFx } from "@pnp/sp";
+
 export interface IAwardRecognitionWebPartProps {
-  description: string;
+  webpartTitle: string;
+  contentTitle: string;
+  contentDescription: string;
+  hookOptions: PnpHookGlobalOptions;
 }
 
 export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwardRecognitionWebPartProps> {
@@ -23,19 +29,34 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
   public render(): void {
     const element: React.ReactElement<IAwardRecognitionProps> =
       React.createElement(AwardRecognition, {
-        description: this.properties.description,
+        webpartTitle: this.properties.webpartTitle,
+        contentTitle: this.properties.contentTitle,
+        contentDescription: this.properties.contentDescription,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
       });
 
-    ReactDom.render(element, this.domElement);
+    // Use helper function to create React elements.
+    const rootElement = createProviderElement(
+      this.properties.hookOptions,
+      element
+    );
+
+    // Render root element.
+    ReactDom.render(rootElement, this.domElement);
   }
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then((message) => {
       this._environmentMessage = message;
+      const sp = spfi().using(SPFx(this.context));
+
+      this.properties.hookOptions = {
+        sp: sp,
+        disabled: "auto",
+      };
     });
   }
 
@@ -117,8 +138,15 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("description", {
-                  label: strings.DescriptionFieldLabel,
+                PropertyPaneTextField("webpartTitle", {
+                  label: strings.WebpartFieldLabel,
+                }),
+                PropertyPaneTextField("contentTitle", {
+                  label: strings.ContentTitleFieldLabel,
+                }),
+                PropertyPaneTextField("contentDescription", {
+                  label: strings.ContentDescriptionFieldLabel,
+                  multiline: true,
                 }),
               ],
             },
