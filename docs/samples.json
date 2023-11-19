@@ -15071,6 +15071,73 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-password-vault",
+    "source": "pnp",
+    "title": "Password Vault",
+    "shortDescription": "This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault",
+    "longDescription": [
+      "This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.",
+      "The data is encrypted and stored in the properties of the web part. This means that the data is not in plain text and can only be decrypted by entering the master password. You can also use this web part in SharePoint and Microsoft Teams (as a tab)"
+    ],
+    "creationDateTime": "2023-10-27",
+    "updateDateTime": "2023-10-27",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PWVaultEditMode.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PWVaultMaintenanceMode.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "video",
+        "order": 101,
+        "url": "https://www.youtube.com/embed/y38RFnrrxrI?si=EWoEglXZfqiKCs3V",
+        "alt": "Community demo of the web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SPFxAppDev",
+        "pictureUrl": "https://github.com/SPFxAppDev.png",
+        "name": "Sergej Schwabauer"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-people-directory",
     "source": "pnp",
     "title": "People Directory",
