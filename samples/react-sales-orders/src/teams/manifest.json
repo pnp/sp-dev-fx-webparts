@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "packageName": "Sales Orders",
+  "id": "750d6853-1282-450a-b080-37aef954d745",
+  "version": "1.0.0.0",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Sales Orders"
+  },
+  "description": {
+    "short": "Sales Orders",
+    "full": "Sales Orders"
+  },
+  "icons": {
+    "outline": "750d6853-1282-450a-b080-37aef954d745_outline.png",
+    "color": "750d6853-1282-450a-b080-37aef954d745_color.png"
+  },
+  "accentColor": "#004578",
+    "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=750d6853-1282-450a-b080-37aef954d745%26forceLocale={locale}",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+    "staticTabs": [
+    {
+      "entityId": "750d6853-1282-450a-b080-37aef954d745",
+      "name": "Sales Orders",
+      "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=750d6853-1282-450a-b080-37aef954d745%26forceLocale={locale}",
+      "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+      "scopes": ["personal"]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
