@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-environment-settings-client-side-solution",
+    "id": "9b50a758-8ca3-4dea-94e1-ed93b1c3f695",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-environment-settings description"
+      },
+      "longDescription": {
+        "default": "react-environment-settings description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-environment-settings Feature",
+        "description": "The feature that activates elements of the react-environment-settings solution.",
+        "id": "4e7f78d0-6a05-479c-808f-428bda9d8187",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-environment-settings.sppkg"
+  }
+}
