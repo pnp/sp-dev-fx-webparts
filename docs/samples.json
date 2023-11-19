@@ -18909,7 +18909,7 @@
       "This web part demonstrates Star Ratings capabilities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
     ],
     "creationDateTime": "2021-10-07",
-    "updateDateTime": "2022-11-09",
+    "updateDateTime": "2023-11-09",
     "products": [
       "SharePoint"
     ],
