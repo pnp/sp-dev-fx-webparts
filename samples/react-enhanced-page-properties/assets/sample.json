@@ -10,7 +10,7 @@
       "This is a web part that goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations. Effortlessly display key page details based on metadata files, providing a comprehensive view of your content. Streamline information management and enhance user interaction with this versatile and customizable web part."
     ],
     "creationDateTime": "2023-09-23",
-    "updateDateTime": "2023-10-10",
+    "updateDateTime": "2023-10-28",
     "products": [
       "SharePoint"
     ],
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.18.0"
       }
     ],
     "thumbnails": [

@@ -5,6 +5,7 @@
 This is a web part that goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations. Effortlessly display key page details based on metadata files, providing a comprehensive view of your content. Streamline information management and enhance user interaction with this versatile and customizable web part.
 
 Currently support following types:
+
 - Single line text
 - Multiple line text
 - Choice
