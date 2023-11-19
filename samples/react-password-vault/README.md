@@ -1,16 +1,16 @@
 # Password vault
 
-
 ## Summary
 
-This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself. 
+This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.
 The data is encrypted and stored in the properties of the web part. This means that the data is not in plain text and can only be decrypted by entering the master password. You can also use this web part in SharePoint and Microsoft Teams (as a tab)
 
-
 ### Edit Mode
+
 ![Edit Mode](assets/PWVaultEditMode.png)
 
 ### Display Mode
+
 ![Display Mode](assets/PasswordVaultDisplayMode.png)
 
 ### Maintenance Mode
@@ -52,21 +52,8 @@ Version|Date|Comments
 -------|----|--------
 1.0|October 27, 2023|Initial release
 
-
 ## Minimal path to awesome
 
-<!-- 
-PRO TIP:
-
-For commands, use the `code syntax`
-
-For button labels, page names, dialog names, etc. as they appear on the screen, use **Bold**
-
-Don't use "click", use "select" or "use"
-
-As tempting as it may be, don't just use images to describe the steps. Let's be as inclusive as possible and think about accessibility.
-
--->
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault) then unzip it)
 * From your command line, change your current directory to the directory containing this sample (`react-password-vault`, located under `samples`)
@@ -84,6 +71,7 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * [CryptoJS](https://cryptojs.gitbook.io/docs/)
 
 The web part comes with this features
+
 * Protect all data with a master password
 * store as many usernames, passwords and notes as you want (similar "look and feel" as in SharePoint Standard, when you want to place a new web part)
 * Copy username and password to clipboard
@@ -92,19 +80,9 @@ The web part comes with this features
 * No possibility to "reset" the master password if the password is forgotten
 * The data is NOT stored in plain text
 
-<!--
-Note that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions in advance! You rock ❤.
--->
-
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
--->
 ## Video
 
 [![Building SPFx Password Vault Web Part](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=y38RFnrrxrI "Building SPFx Password Vault Web Part")
-
 
 ## Help
 
