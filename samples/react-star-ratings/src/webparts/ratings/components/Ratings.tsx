@@ -2,12 +2,11 @@ import * as React from 'react';
 import {
   MessageBar,
   MessageBarType,
-  IRatingStyleProps,
   IRatingStyles,
   Rating,
   RatingSize,
   TooltipHost
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import styles from './Ratings.module.scss';
 import * as strings from 'RatingsWebPartStrings';
 import { IRatingsProps } from './IRatingsProps';
@@ -19,15 +18,20 @@ interface IRatings {
   average: number;
 }
 
-export const Ratings = ({ context, properties }: IRatingsProps) => {
+export const Ratings: React.FC<IRatingsProps> = (props: IRatingsProps) => {
 
-  const ratingStyles = React.useMemo(() => (props: IRatingStyleProps): Partial<IRatingStyles> => ({
+  const {
+    webPartContext,
+    webPartProps
+  } = props;
+
+  const ratingStyles = React.useMemo(() => (): Partial<IRatingStyles> => ({
     root: {
       selectors: {
         '&:hover': {
           selectors: {
             '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
+              color: webPartProps.inactiveColor,
             }
           }
         }
@@ -38,48 +42,48 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
         '&:hover ~ .ms-Rating-button': {
           selectors: {
             '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
+              color: webPartProps.inactiveColor,
             },
             '.ms-RatingStar-front': {
-              color: properties.inactiveColor,
+              color: webPartProps.inactiveColor,
             }
           }
         },
         '&:hover': {
           selectors: {
             '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
+              color: webPartProps.inactiveColor,
             },
             '.ms-RatingStar-front': {
-              color: properties.inactiveColor,
+              color: webPartProps.inactiveColor,
             }
           }
         }
       }
     },
     ratingStarFront: {
-      color: properties.activeColor
+      color: webPartProps.activeColor
     },
     ratingStarBack: {
-      color: properties.activeColor
+      color: webPartProps.activeColor
     }
   }), [
-    properties.activeColor,
-    properties.inactiveColor
+    webPartProps.activeColor,
+    webPartProps.inactiveColor
   ]);
 
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string>();
   const [value, setValue] = React.useState<IRatings>();
 
-  const getRating = React.useCallback(async (): Promise<IRatings> => {
-    if (!context.pageContext.list) {
+  const getRating = React.useCallback(async (): Promise<IRatings | undefined> => {
+    if (!webPartContext.pageContext.list) {
       return;
     }
-    if (!context.pageContext.listItem) {
+    if (!webPartContext.pageContext.listItem) {
       return;
     }
-    const service = new SPHttpClientService(context);
+    const service = new SPHttpClientService(webPartContext);
     await service.ensureFeatureEnabled();
     const user = await service.getCurrentUser();
     const [average, count, rating] = await service.getRating(user.LoginName);
@@ -88,32 +92,30 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
       count: count,
       average: average
     };
-  }, [context]);
+  }, [webPartContext]);
 
   const setRating = React.useCallback(async (rating: number): Promise<void> => {
-    if (!context.pageContext.list) {
+    if (!webPartContext.pageContext.list) {
       return;
     }
-    if (!context.pageContext.listItem) {
+    if (!webPartContext.pageContext.listItem) {
       return;
     }
-    const service = new SPHttpClientService(context);
+    const service = new SPHttpClientService(webPartContext);
     await service.setRating(rating);
-  }, [context]);
+  }, [webPartContext]);
 
-  const handleOnChange = React.useCallback((_, rating?: number) => {
+  const handleOnChange = React.useCallback(async (_, rating?: number) => {
     if (!rating) {
       return;
     }
-    (async () => {
-      try {
-        await setRating(rating);
-        setValue(await getRating());
-      } catch (error) {
-        setError(error.toString());
-        console.error(error);
-      }
-    })();
+    try {
+      await setRating(rating);
+      setValue(await getRating());
+    } catch (error) {
+      setError(error.toString());
+      console.error(error);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -147,7 +149,7 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
                 </MessageBar>
               );
             }
-            return (
+            return value ? (
               <div className={styles.flex}>
                 <div>{strings.RateThisPageLabel}: </div>
                 <TooltipHost content={`${strings.YourRatingLabel}: ${value.rating}`}>
@@ -160,7 +162,7 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
                 </TooltipHost>
                 <div>{value.count}</div>
               </div>
-            );
+            ) : null;
           })()
         }
       </div>
