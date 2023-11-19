@@ -7460,7 +7460,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-environment-settings/assets/Demo.gif",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-environment-settings/assets/demo.gif",
         "alt": "Web Part Preview"
       }
     ],
