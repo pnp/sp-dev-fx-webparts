@@ -3,13 +3,13 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-star-ratings",
     "source": "pnp",
     "title": "Star Ratings",
-    "shortDescription": "Demonstrates Star Ratings capablities to SharePoint News.",
+    "shortDescription": "Demonstrates Star Ratings capabilities to SharePoint News.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings",
     "longDescription": [
-      "This web part demonstrates Star Ratings capablities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
+      "This web part demonstrates Star Ratings capabilities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
     ],
     "creationDateTime": "2021-10-07",
-    "updateDateTime": "2022-03-28",
+    "updateDateTime": "2022-11-09",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.18.0"
       }
     ],
     "thumbnails": [
