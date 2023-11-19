@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.0",
+    "libraryName": "incident-dashbaord",
+    "libraryId": "2d3d9ea6-eef2-419e-8eeb-682c38aadd41",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "incident-dashbaord",
+    "solutionShortDescription": "incident-dashbaord description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

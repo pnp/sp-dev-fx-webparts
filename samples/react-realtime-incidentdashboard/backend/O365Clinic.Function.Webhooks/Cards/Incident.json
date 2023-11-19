@@ -1,0 +1,118 @@
+{
+
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "contentUrl": null,
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "msteams": {
+          "width": "Full"
+        },
+        "body": [
+          {
+            "type": "ColumnSet",
+            "style": "default",
+            "columns": [
+              {
+                "type": "Column",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "size": "ExtraLarge",
+                    "weight": "Bolder",
+                    "text": "${Title}",
+                    "wrap": true,
+                    "fontType": "Default",
+                    "color": "Attention",
+                    "isSubtle": false
+                  }
+                ],
+                "width": "stretch",
+                "padding": "None"
+              }
+            ],
+            "padding": "Default",
+            "spacing": "None",
+            "bleed": true
+          },
+          {
+            "type": "Container",
+            "id": "",
+            "padding": "Large",
+            "items": [
+              {
+                "type": "ColumnSet",
+                "columns": [
+                  {
+                    "type": "Column",
+                    "items": [
+                      {
+                        "type": "Image",
+                        "style": "Default",
+                        "url": "https://o365clinicstorage.blob.core.windows.net/images/Images/it-support-ticket.jpeg",
+                        "size": "Stretch"
+                      }
+                    ],
+                    "width": "150px",
+                    "padding": "None",
+                    "separator": true,
+                    "style": "default",
+                    "bleed": true
+                  },
+                  {
+                    "type": "Column",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "${Description}",
+                        "wrap": true,
+                        "spacing": "Medium",
+                        "style": "default",
+                        "size": "Medium",
+                        "weight": "Bolder"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "spacing": "Small",
+                        "isSubtle": true,
+                        "text": "${Priority}",
+                        "wrap": true,
+                        "size": "Small"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "[More info](${ItemDisplayUrl})",
+                        "wrap": true,
+                        "color": "Accent",
+                        "isSubtle": false,
+                        "fontType": "Default",
+                        "weight": "Bolder",
+                        "spacing": "Small"
+                      }
+                    ],
+                    "width": "stretch",
+                    "padding": "None"
+                  }
+                ],
+                "spacing": "Large",
+                "padding": "None",
+                "style": "default",
+                "bleed": false,
+                "separator": true
+              }
+            
+            ],
+            "spacing": "Medium",
+            "separator": true,
+            "style": "emphasis",
+            "bleed": true
+          }
+        ]
+      }
+    }
+  ]
+}
