@@ -7432,6 +7432,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
+    "source": "pnp",
+    "title": "SPFx environment settings management",
+    "shortDescription": "Easily swap between environments when building SPFx solutions",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
+    "longDescription": [
+      "Have you ever been building SPFx solutions, and wanted to use different settings for different environments? This web part allows you to easily swap between different environment settings, and even add your own custom settings."
+    ],
+    "creationDateTime": "2023-11-14",
+    "updateDateTime": "2023-11-14",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-environment-settings/assets/Demo.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Tanddant",
+        "pictureUrl": "https://github.com/Tanddant.png",
+        "name": "Dan Toft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-events-aggregator",
     "source": "pnp",
     "title": "Event Aggregator Sample (DEPRECATED)",
@@ -16716,52 +16764,54 @@
       }
     ]
   },
-  "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard",
-  "pnp",
-  "List notifications + Microsoft Teams Integrations",
-  "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data",
-  "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
-  "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
-  [
-    "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data"
-  ],
-  "2023-10-23",
-  "2023-10-23",
-  [
-    "SharePoint"
-  ],
-  [
-    {
-      "key": "CLIENT-SIDE-DEV",
-      "value": "React"
-    },
-    {
-      "key": "SPFX-VERSION",
-      "value": "1.18.0"
-    }
-  ],
-  [
-    {
-      "type": "image",
-      "order": 100,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
-      "alt": "Web Part Preview"
-    }
-  ],
-  [
-    {
-      "gitHubAccount": "ejazhussain",
-      "pictureUrl": "https://github.com/ejazhussain.png",
-      "name": "Ejaz Hussain"
-    }
-  ],
-  [
-    {
-      "name": "Build your first SharePoint client-side web part",
-      "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-      "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
-    }
-  ],
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard",
+    "source": "pnp",
+    "title": "List notifications + Microsoft Teams Integrations",
+    "shortDescription": "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
+    "longDescription": [
+      "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data"
+    ],
+    "creationDateTime": "2023-10-23",
+    "updateDateTime": "2023-10-23",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-recaptcha",
     "source": "pnp",
@@ -17489,74 +17539,76 @@
       }
     ]
   },
-  "pnp-sp-dev-spfx-web-parts-react-sales-orders",
-  "pnp",
-  "Sales Orders",
-  "Shows how how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.",
-  "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
-  "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
-  [
-    "This Sample show how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list."
-  ],
-  "2023-11-06",
-  "2023-11-06",
-  [
-    "SharePoint"
-  ],
-  [
-    {
-      "key": "CLIENT-SIDE-DEV",
-      "value": "React"
-    },
-    {
-      "key": "SPFX-VERSION",
-      "value": "1.18.0"
-    }
-  ],
-  [
-    {
-      "name": "salesOrders.gif",
-      "type": "image",
-      "order": 100,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders.gif",
-      "alt": "Web Part Preview"
-    },
-    {
-      "name": "salesOrders01.png",
-      "type": "image",
-      "order": 101,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders01.png",
-      "alt": "Web Part Preview"
-    },
-    {
-      "name": "salesOrders02.png",
-      "type": "image",
-      "order": 102,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders02.png",
-      "alt": "Web Part Preview"
-    },
-    {
-      "name": "teams01.png",
-      "type": "image",
-      "order": 103,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/teams01.png",
-      "alt": "Web Part Preview"
-    }
-  ],
-  [
-    {
-      "gitHubAccount": "YOUR-GITHUB-ACCOUNT",
-      "pictureUrl": "https://github.com/YOUR-GITHUB-ACCOUNT.png",
-      "name": "YOUR-NAME"
-    }
-  ],
-  [
-    {
-      "name": "Build your first SharePoint client-side web part",
-      "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-      "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
-    }
-  ],
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sales-orders",
+    "source": "pnp",
+    "title": "Sales Orders",
+    "shortDescription": "Shows how how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
+    "longDescription": [
+      "This Sample show how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list."
+    ],
+    "creationDateTime": "2023-11-06",
+    "updateDateTime": "2023-11-06",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "salesOrders.gif",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "salesOrders01.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders01.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "salesOrders02.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders02.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "teams01.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/teams01.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "YOUR-GITHUB-ACCOUNT",
+        "pictureUrl": "https://github.com/YOUR-GITHUB-ACCOUNT.png",
+        "name": "YOUR-NAME"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-save-attachments",
     "source": "pnp",
