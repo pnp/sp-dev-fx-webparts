@@ -32,7 +32,7 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Not%20Tested-yellow.svg)
 
-For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
+For more information about SPFx compatibility, please refer to <https://aka.ms/spfx-matrix>
 
 ## Applies to
 
@@ -51,7 +51,6 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 | ------- | ----------------- | --------------- |
 | 1.0     | November 14, 2023 | Initial release |
 
-
 ## Prerequisites
 
 Experience with SPFx web parts
@@ -68,9 +67,9 @@ Experience with SPFx web parts
 
 ## Features
 
-- Manage your tenant wide extensions
-- Easily enable/disable extensions
-- Easily update the extension properties
+* Manage your tenant wide extensions
+* Easily enable/disable extensions
+* Easily update the extension properties
 
 ## Help
 
