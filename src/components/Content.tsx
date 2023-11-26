@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text } from "@fluentui/react-components";
 import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss";
-import { ContentProps } from "../types/ContentProps";
+import { ContentProps } from "../types/ContentProps"
 import { useContext } from "react";
 import { WebpartContext } from "../webparts/awardRecognition/components/AwardRecognition";
 
