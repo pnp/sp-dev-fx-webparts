@@ -9191,14 +9191,15 @@ packages:
     resolution: {integrity: sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==}
     dev: true
 
-  /handlebars@4.1.2:
-    resolution: {integrity: sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==}
+  /handlebars@4.7.8:
+    resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
     engines: {node: '>=0.4.7'}
     hasBin: true
     dependencies:
-      neo-async: 2.6.1
-      optimist: 0.6.1
+      minimist: 1.2.8
+      neo-async: 2.6.2
       source-map: 0.6.1
+      wordwrap: 1.0.0
     optionalDependencies:
       uglify-js: 3.6.0
     dev: true
@@ -10563,7 +10564,7 @@ packages:
   /istanbul-reports@1.5.1:
     resolution: {integrity: sha512-+cfoZ0UXzWjhAdzosCPP3AN8vvef8XDkWtTfgaN+7L3YTpNYITnCaEkceo5SEYy644VkHka/P1FvkWvrG/rrJw==}
     dependencies:
-      handlebars: 4.1.2
+      handlebars: 4.7.8
     dev: true
 
   /istanbul-reports@3.1.6:
@@ -12615,12 +12616,8 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /minimist@0.0.10:
-    resolution: {integrity: sha512-iotkTvxc+TwOm5Ieim8VnSNvCDjCK9S8G3scJ50ZthspSxa7jx50jkhYduuAtAjvfDUwSgOwf8+If99AlOEhyw==}
-    dev: true
-
   /minimist@0.0.8:
-    resolution: {integrity: sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=}
+    resolution: {integrity: sha512-miQKw5Hv4NS1Psg2517mV4e4dYNaO3++hjAvLOAzKqZ61rH8NS1SK+vbfBWZ5PY/Me/bEWhUwqMghEW5Fb9T7Q==}
 
   /minimist@1.1.3:
     resolution: {integrity: sha512-2RbeLaM/Hbo9vJ1+iRrxzfDnX9108qb2m923U+s+Ot2eMey0IYGdSjzHmvtg2XsxoCuMnzOMw7qc573RvnLgwg==}
@@ -12870,6 +12867,10 @@ packages:
 
   /neo-async@2.6.1:
     resolution: {integrity: sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==}
+    dev: true
+
+  /neo-async@2.6.2:
+    resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
   /next-tick@1.0.0:
@@ -13469,13 +13470,6 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       is-wsl: 1.1.0
-    dev: true
-
-  /optimist@0.6.1:
-    resolution: {integrity: sha1-2j6nRob6IaGaERwybpDrFaAZZoY=}
-    dependencies:
-      minimist: 0.0.10
-      wordwrap: 0.0.3
     dev: true
 
   /optionator@0.8.2:
@@ -18617,11 +18611,6 @@ packages:
     resolution: {integrity: sha512-UD7d8HFA2+PZsbKyaOCEy8gMh1oDtHgJh1LfgjQ4zVXmYjAT/kvz3PueITKuqDiIXQe7yzpPnxX3lNc+AhQMyw==}
     engines: {node: '>= 0.10.0'}
     hasBin: true
-    dev: true
-
-  /wordwrap@0.0.3:
-    resolution: {integrity: sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==}
-    engines: {node: '>=0.4.0'}
     dev: true
 
   /wordwrap@1.0.0:
