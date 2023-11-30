@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Governor Sharing",
+    "id": "81a9fd71-f423-4420-8a6d-393fba93dc95",
+    "iconPath": "530be57e-cc29-49a2-9596-2068462b6d9a_96_color.png",
+    "version": "2.0.0.6",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Robin Meure",
+      "websiteUrl": "http://github.com/robinmeure",
+      "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+      "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "App that shows explicit sharing on a site or team."
+      },
+      "longDescription": {
+        "default": "App that shows explicit sharing on a site or a team."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "governor-sharing Feature",
+        "description": "The feature that activates elements of the governor-sharing solution.",
+        "id": "75e0dfb2-a990-45a2-b138-53bb431534c8",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/governor-sharing.sppkg"
+  }
+}
