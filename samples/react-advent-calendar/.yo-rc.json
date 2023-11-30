@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.3",
+    "libraryName": "react-advent-calendar",
+    "libraryId": "d83564aa-8508-4313-b690-1f48f0f4fdf6",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-advent-calendar",
+    "solutionShortDescription": "react-advent-calendar description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
