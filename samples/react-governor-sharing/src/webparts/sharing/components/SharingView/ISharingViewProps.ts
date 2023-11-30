@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import IDataProvider from "./DataProvider";
 
 export interface ISharingViewProps {

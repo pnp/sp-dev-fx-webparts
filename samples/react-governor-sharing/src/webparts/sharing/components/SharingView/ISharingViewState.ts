@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISharingResult } from "./ISharingResult";
 import { IContextualMenuProps } from '@fluentui/react';
 

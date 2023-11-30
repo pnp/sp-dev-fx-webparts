@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DialogType,
   Facepile,
@@ -209,6 +212,7 @@ export default class SharingViewSingle extends React.Component<ISharingViewProps
 
   // Handle Item Invoked - Item Invoked is when user selects a row
   // and presses the ENTER key
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private _handleItemInvoked = (item: ISharingResult): void => {
   }
 
@@ -245,9 +249,10 @@ export default class SharingViewSingle extends React.Component<ISharingViewProps
   };
 
   // needs to be here for the iframe to be rendered that holds the manage access page
-  private _onIframeLoaded() { }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private _onIframeLoaded():void {}
 
-  private _onDialogDismiss() {
+  private _onDialogDismiss(): void {
     this.setState(
       {
         hideSharingSettingsDialog: true
@@ -315,7 +320,7 @@ export default class SharingViewSingle extends React.Component<ISharingViewProps
     this.setState({ loadingComplete: true });
   }
 
-  public componentDidMount() {
+  public componentDidMount():void {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     (async () => {
       // get the default group titles, this is used to later determine if documents have inherited permissions

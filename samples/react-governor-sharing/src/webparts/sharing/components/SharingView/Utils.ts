@@ -1,3 +1,7 @@
+/* eslint-disable dot-notation */
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-prototype-builtins */
 
 import { IColumn, IContextualMenuItem, IFacepilePersona } from '@fluentui/react';
 import { IdentitySet } from '@microsoft/microsoft-graph-types';
