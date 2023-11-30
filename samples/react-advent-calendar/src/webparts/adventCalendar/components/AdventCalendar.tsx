@@ -44,7 +44,7 @@ export default class AdventCalendar extends React.Component<IAdventCalendarProps
     };
   }
 
-  private openDay = (day: number) => {
+  private openDay = (day: number):void => {
     this.setState(prevState => ({
       openedDays: prevState.openedDays.add(day), 
       contents: prevState.contents,
@@ -54,12 +54,10 @@ export default class AdventCalendar extends React.Component<IAdventCalendarProps
 
 
   public render(): React.ReactElement<IAdventCalendarProps> {
-    const {
 
-    } = this.props;
     const { openedDays, contents } = this.state;
 
-    let days = [];
+    const days = [];
     for (let i = 1; i <= 24; i++) {
       days.push(i);
     }
