@@ -1,4 +1,4 @@
-{
+[{
     "name": "pnp-sp-dev-spfx-web-parts-react-governor-sharing",
     "source": "pnp",
     "title": "Governor Sharing",
@@ -179,4 +179,4 @@
             "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
         }
     ]
-}
+}]
