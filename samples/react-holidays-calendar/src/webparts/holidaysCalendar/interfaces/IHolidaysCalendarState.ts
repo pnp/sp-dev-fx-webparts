@@ -1,20 +1,20 @@
-import { ColumnDefinition } from "@fluentui/react-components/unstable";
+import { TableColumnDefinition } from "@fluentui/react-components";
 import { IHolidayItem, IHoliday } from "../../../common/interfaces/HolidaysCalendar";
 
 export interface IEmployeeInfo {
-	eMail: string;
-	id: string;
-	officeLocation: string;
-	timezone: string;
-	displayName: string;
+  eMail: string;
+  id: string;
+  officeLocation: string;
+  timezone: string;
+  displayName: string;
 }
 export interface IHolidaysCalendarState {
-	listItems: IHoliday[];
-	holidayListItems: IHolidayItem[];
-	message: {
-		show: boolean;
-		intent: "success" | "error";
-	};
-	employeeInfo: IEmployeeInfo;
-	columns: ColumnDefinition<IHolidayItem>[];
+  listItems: IHoliday[];
+  holidayListItems: IHolidayItem[];
+  message: {
+    show: boolean;
+    intent: "success" | "error";
+  };
+  employeeInfo: IEmployeeInfo;
+  columns: TableColumnDefinition<IHolidayItem>[];
 }
