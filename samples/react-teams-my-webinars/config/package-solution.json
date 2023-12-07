@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Teams Webinars Virtual Events",
+    "id": "633573bf-ea82-4607-a64c-ff68856efe2c",
+    "title": "Teams Webinars Virtual Events",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "VirtualEvent.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Team.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OnlineMeetings.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.Read.All"
+      }
+    ],
+    "developer": {
+      "name": "Nick Brown",
+      "websiteUrl": "https://nbdev.uk",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Teams Webinars Virtual Events description"
+      },
+      "longDescription": {
+        "default": "Displays a list of your up coming Webinars, allows you to auto approve registrants based on an Entra group or sync them to a SharePoint list"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "List My Teams Webinars",
+        "description": "Displays a list of Webinars you have organized or are organizing",
+        "id": "acfa9985-28d2-42ab-bf26-d0afc29cb6d3",
+        "version": "1.0.0.0"
+      },
+      {
+        "title": "Sync Webinars to a SharePoint List",
+        "description": "Based on selected webinars Sync those into a SharePoint list for showing in a Team",
+        "id": "26e47f10-6862-4af8-9ef3-8c557b4c871f",
+        "version": "1.0.0.0"
+      },
+      {
+        "title": "Approve pending registrants based on group membership",
+        "description": "Go though pending registrants and approve them based on an Entra Group membership",
+        "id": "6714ae2f-9d6a-429d-a23d-fc4ee575fef6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/teams-virtual-events.sppkg"
+  }
+}
