@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.1",
+    "libraryName": "react-environment-settings",
+    "libraryId": "9b50a758-8ca3-4dea-94e1-ed93b1c3f695",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-environment-settings",
+    "solutionShortDescription": "react-environment-settings description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

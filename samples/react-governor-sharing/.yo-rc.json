@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.20.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.0",
+    "libraryName": "microsoft-governor-sharing",
+    "libraryId": "4502d2aa-3b7f-46ec-886a-f5346da9e16c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "governor-sharing",
+    "solutionShortDescription": "governor-sharing description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

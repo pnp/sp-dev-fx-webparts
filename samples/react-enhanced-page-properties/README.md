@@ -5,6 +5,7 @@
 This is a web part that goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations. Effortlessly display key page details based on metadata files, providing a comprehensive view of your content. Streamline information management and enhance user interaction with this versatile and customizable web part.
 
 Currently support following types:
+
 - Single line text
 - Multiple line text
 - Choice
@@ -29,8 +30,8 @@ Currently support following types:
 
 ## Compatibility
 
-![SPFx 1.17.4](https://img.shields.io/badge/SPFx-1.17.4-green.svg)
-![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
+![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 
@@ -49,6 +50,7 @@ Currently support following types:
 
 Version|Date|Comments
 -------|----|--------
+1.2|October 29, 2023|Upgrade SPFx version to 1.18
 1.1|October 23, 2023|Add support for choice and date fields
 1.0|September 23, 2023|Initial release
 

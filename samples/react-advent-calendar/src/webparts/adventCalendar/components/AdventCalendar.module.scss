@@ -1,0 +1,89 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+$christmas-red: #C0392B;
+$christmas-green: #27AE60;
+$christmas-gold: #F1C40F;
+$christmas-white: #ECF0F1;
+
+body {
+  background-image: url('../assets/snowflakespng.png');
+  background-color: $christmas-white;
+  font-family: 'HolidayFont', sans-serif; 
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // 4 columns grid
+  gap: 10px;
+  background-color: $christmas-green;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.calendarDay {
+  background-color: $christmas-red;
+  color: $christmas-white;
+  border: 2px solid $christmas-gold;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.opened {
+    background-color: $christmas-gold;
+    color: $christmas-green;
+    display: block;
+  }
+}
+
+
+.calendarDayNumber {
+  font-size: 20px;
+  font-weight: bold;
+  color: $christmas-white;
+  background-color: $christmas-green;
+  padding: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+.calendarContent {
+  display: none; 
+  img {
+    max-width: 230px; 
+    max-height: 230px; 
+    object-fit: contain; 
+  }
+
+  &.opened {
+    display: block;
+    font-size: x-large;
+    animation: fadeIn 0.3s;
+   
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+@media (max-width: 600px) {
+  .calendarGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
