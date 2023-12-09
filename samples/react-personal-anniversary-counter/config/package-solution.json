@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-personal-anniversary-counter-client-side-solution",
+    "id": "e20ea32b-2a26-47da-9ed6-7a183a0381b4",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-personal-anniversary-counter description"
+      },
+      "longDescription": {
+        "default": "react-personal-anniversary-counter description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-personal-anniversary-counter Feature",
+        "description": "The feature that activates elements of the react-personal-anniversary-counter solution.",
+        "id": "84190ac5-e906-4ac4-ae70-dab5202221f9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-personal-anniversary-counter.sppkg"
+  }
+}
