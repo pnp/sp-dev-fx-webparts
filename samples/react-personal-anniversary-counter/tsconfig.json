@@ -12,8 +12,7 @@
     "skipLibCheck": true,
     "outDir": "lib",
     "inlineSources": false,
-    "noImplicitAny": true,
-
+    "noImplicitAny": false,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
@@ -26,7 +25,9 @@
       "dom",
       "es2015.collection",
       "es2015.promise"
-    ]
+    ],
+    "strictNullChecks": false,
+    "noUnusedLocals": false
   },
   "include": [
     "src/**/*.ts",
