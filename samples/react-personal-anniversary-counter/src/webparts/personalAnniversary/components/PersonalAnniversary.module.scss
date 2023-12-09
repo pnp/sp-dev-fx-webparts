@@ -1,0 +1,19 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+
+.wrapper {
+    background:
+        radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 6px, transparent 6px) 0% 0%/11px 11px no-repeat,
+        radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 6px, transparent 6px) 100% 0%/11px 11px no-repeat,
+        radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 6px, transparent 6px) 0% 100%/11px 11px no-repeat,
+        radial-gradient(circle at 0 0, #ffffff 0, #ffffff 6px, transparent 6px) 100% 100%/11px 11px no-repeat,
+        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 10px) calc(100% - 22px) no-repeat,
+        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 22px) calc(100% - 10px) no-repeat,
+        linear-gradient(325deg, #dfc5e4 0%, #cae4f0 100%);
+    border-radius: 11px;
+    padding: 15px;
+    box-sizing: content-box;
+    align-items: "center";
+    display: "flex";
+    flex-direction: "column";
+}
