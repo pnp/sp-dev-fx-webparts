@@ -31,8 +31,8 @@ Alternatively, you can add the output files for the web part to a custom SPFx pr
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg) 
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%202019-Not%20compatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%202016%20(Feature%20Pack%202)-Not%20compatible-red.svg)
@@ -63,6 +63,7 @@ Version|Date|Comments
 1.3|July 07, 2020|Simplified web part
 1.4|July 28, 2020|Update styles to minimise toolbar overlap
 1.5|July 30, 2020|Update styles to improve full-width mode
+1.6|December 21, 2023|Update to SPFx 1.18.2 and fix issue with browser crashing
 
 ## Minimal Path to Awesome
 
@@ -71,7 +72,7 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Video
 

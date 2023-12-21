@@ -3,16 +3,39 @@
   "solution": {
     "name": "workbench-customizer-client-side-solution",
     "id": "5d6f4a5a-9d2b-4a93-a283-16b8f5ea75d6",
-    "version": "1.5.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
     "developer": {
       "name": "Contoso",
+      "websiteUrl": "https://contoso.com/my-app",
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
-      "websiteUrl": "https://contoso.com/my-app",
       "mpnId": "m365pnp"
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "workbench-customizer description"
+      },
+      "longDescription": {
+        "default": "workbench-customizer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "workbench-customizer Feature",
+        "description": "The feature that activates elements of the workbench-customizer solution.",
+        "id": "19882113-30db-44bd-8ed7-15c951fc2323",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "19882113-30db-44bd-8ed7-15c951fc2323"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/workbench-customizer.sppkg"
