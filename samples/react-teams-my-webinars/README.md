@@ -29,7 +29,7 @@ Displays a list of Teams Webinars you are an organizer of, allows you to sync th
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
-![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")

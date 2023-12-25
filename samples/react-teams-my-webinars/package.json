@@ -16,8 +16,6 @@
     "@fluentui/react-migration-v8-v9": "^9.4.41",
     "@fluentui/react-popover": "9.8.23",
     "@fluentui/react-positioning": "9.10.2",
-    "@microsoft/microsoft-graph-types": "^2.40.0",
-    "@microsoft/microsoft-graph-types-beta": "^0.42.0-preview",
     "@microsoft/sp-component-base": "1.18.2",
     "@microsoft/sp-core-library": "1.18.2",
     "@microsoft/sp-lodash-subset": "1.18.2",
@@ -30,6 +28,8 @@
     "tslib": "2.3.1"
   },
   "devDependencies": {
+    "@microsoft/microsoft-graph-types": "^2.40.0",
+    "@microsoft/microsoft-graph-types-beta": "^0.42.0-preview",
     "@microsoft/eslint-config-spfx": "1.18.2",
     "@microsoft/eslint-plugin-spfx": "1.18.2",
     "@microsoft/rush-stack-compiler-4.7": "0.1.0",
