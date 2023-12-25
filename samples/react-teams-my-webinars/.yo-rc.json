@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.1",
+    "libraryName": "teams-virtual-events",
+    "libraryId": "38997de3-1140-4a1b-b50d-fe43cd8c1404",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Teams Virtual Events",
+    "solutionShortDescription": "Teams Virtual Events description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
