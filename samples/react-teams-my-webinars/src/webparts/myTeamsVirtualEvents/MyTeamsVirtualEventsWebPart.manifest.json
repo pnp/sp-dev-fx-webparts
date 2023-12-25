@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "26c11d2f-c74a-4d93-91ed-054bdea6aad8",
+  "id": "1adde89a-07fd-403f-9067-4d44b40a4892",
   "alias": "MyTeamsVirtualEventsWebPart",
   "componentType": "WebPart",
 

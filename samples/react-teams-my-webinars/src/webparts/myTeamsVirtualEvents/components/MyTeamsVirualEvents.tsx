@@ -128,7 +128,7 @@ export default function MyTeamsVirtualEvents(props: IMyTeamsVirtualEventsProps):
           </Skeleton>
         </div>
       </div>}
-      <OverlayDrawer size='medium' open={drawState !== DrawState.Closed} onOpenChange={(_, { open }) => !open && setDrawState(DrawState.Closed)}>
+      <OverlayDrawer className={styles.myTeamsVirualEventsDrawer} size='medium' open={drawState !== DrawState.Closed} onOpenChange={(_, { open }) => !open && setDrawState(DrawState.Closed)}>
         <DrawerHeader>
           <DrawerHeaderTitle action={<Button appearance="subtle" aria-label={strings.Close} icon={<DismissIcon />} onClick={() => setDrawState(DrawState.Closed)} />}>
             {drawState === DrawState.OpenSync ? strings.DrawHeaderSync : strings.DrawHeaderApprove}
