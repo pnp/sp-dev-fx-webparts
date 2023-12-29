@@ -114,6 +114,7 @@ Version|Date|Comments
 1.0.15|November 22, 2021|Fix All Day event issue that makes All Day events date expanded to another day instead of being full day event.
 1.0.16|December 21, 2021|Upgraded to SPFx 1.12.1
 1.0.17|October 25, 2022|Fixed issue deleting events (#2693)
+1.0.18|December 29, 2022|Fixed stylelint issue (#4029)| Cleaned up old Type script versions and Upgraded Type script version
 
 ## Minimal Path to Awesome
 
