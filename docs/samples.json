@@ -20263,6 +20263,67 @@
       }
     ]
   },
+  "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars",
+  "pnp",
+  "Teams My Webinars",
+  "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team.",
+  "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
+  "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
+  [
+    "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team."
+  ],
+  "2023-12-25",
+  "2023-12-31",
+  [
+    "SharePoint"
+  ],
+  [
+    {
+      "key": "CLIENT-SIDE-DEV",
+      "value": "React"
+    },
+    {
+      "key": "SPFX-VERSION",
+      "value": "1.18.2"
+    }
+  ],
+  [
+    {
+      "name": "Screenshot 2023-12-25-main.png",
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
+      "alt": "Web Part Preview"
+    },
+    {
+      "name": "Screenshot 2023-12-25-addtolist.png",
+      "type": "image",
+      "order": 101,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-addtolist.png",
+      "alt": "Web Part Preview"
+    },
+    {
+      "name": "Screenshot 2023-12-25.png",
+      "type": "image",
+      "order": 102,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25.png",
+      "alt": "Web Part Preview"
+    }
+  ],
+  [
+    {
+      "gitHubAccount": "techienickb",
+      "pictureUrl": "https://github.com/techienickb.png",
+      "name": "Nick Brown"
+    }
+  ],
+  [
+    {
+      "name": "Build your first SharePoint client-side web part",
+      "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+      "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+    }
+  ],
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings",
     "source": "pnp",
