@@ -5,6 +5,7 @@ declare interface IWorkbenchCustomizerWebPartStrings {
   customWorkbenchStylesFullWidthFieldLabel: string;
   PreviewModeFieldLabel: string;
   TitleLabel: string;
+  ThemeLabel: string;
   RequestPageRefresh: string;
 }
 
