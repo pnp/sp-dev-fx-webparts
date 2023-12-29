@@ -104,7 +104,7 @@ Version|Date|Comments
 1.0.5|October 21, 2020|Added Year view
 1.0.6|December 3, 2020|Fixed all-day events (#1623)
 1.0.7|December 4, 2020|Fixed styling Year view + Dutch localization
-1.0.8|December 24, 2020|Fixed timezone difference (#1646)
+1.0.8|December 24, 2020|Fixed time zone difference (#1646)
 1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
 1.0.11|May 10, 2021|Optimized page refresh using local storage
