@@ -4,7 +4,7 @@
 
 This webpart shows how you can call Azure OpenAI API in Streaming mode, so the webpart shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations).
 
-[picture of the solution in action, if possible]
+![./assets/react-azure-openai-api-stream.gif](./assets/react-azure-openai-api-stream.gif)
 
 ## Used SharePoint Framework Version
 
