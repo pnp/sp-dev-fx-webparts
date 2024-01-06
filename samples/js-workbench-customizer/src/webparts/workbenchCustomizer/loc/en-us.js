@@ -6,6 +6,7 @@ define([], function() {
     "customWorkbenchStylesFullWidthFieldLabel": "Enable custom styles for full-width",
     "PreviewModeFieldLabel": "Enable Preview mode by default",
     "TitleLabel": "Workbench Customizer web part",
+    "ThemeLabel": "Theme",
     "RequestPageRefresh": "IMPORTANT: Please refresh the page after you click the Apply button to update workbench styles",
   }
 });
