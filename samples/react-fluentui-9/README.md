@@ -7,6 +7,8 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 ![SharePoint View](assets/FQzNLB4XwAIFMRh.jpg "SharePoint View") 
 ![Teams View](assets/FQzO9YjWUAgFlrU.jpg "Teams View")
 
+⚠️ AS of Fluent UI 9.40+ you will need to temporarily override some Fluent UI 9 components for webpack to run ⚠️
+
 ## Compatibility
 
 | :warning: Important          |
@@ -14,8 +16,8 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.17.2](https://img.shields.io/badge/SPFx-1.17.2-green.svg)
-![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -51,6 +53,7 @@ Version|Date|Comments
 1.0.1|November 14, 2022|Updated to SPFx 1.15, latest Fluent UI 9, shim based theme mapping
 1.0.2|January 18, 2023|Updated SPFx 1.16.1
 1.0.2|May 15, 2023|Updated SPFx 1.17.2, latest Fluent UI 9
+1.0.4|January 6, 2023|Updated SPFx 1.18.2, latest Fluent UI 9, override to get package builds working
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
