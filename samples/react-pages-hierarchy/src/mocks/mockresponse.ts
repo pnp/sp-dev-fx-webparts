@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { IItemUpdateResult } from '@pnp/sp/presets/all';
 import { IContextInfo } from '@pnp/sp/context-info';
 import { IFetchOptions } from '@pnp/common';
@@ -20,62 +21,62 @@ export class MockResponse {
         this.listTitle = this.getListTitleFromUrl(url);
         this.currentUser = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION)[0];
 
-        if (options.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('_api/web/currentuser') !== -1) {
+        if (options.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('_api/web/currentuser') !== -1) {
             response = this.getCurrentUser(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers(@v)?') !== -1) {
+        else if (options?.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers(@v)?') !== -1) {
             response = this.getSiteUser(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers/getbyid') !== -1) {
+        else if (options?.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers/getbyid') !== -1) {
             response = this.getSiteUserById(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers/getbyemail') !== -1) {
+        else if (options?.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/siteusers/getbyemail') !== -1) {
             response = this.getSiteUserByEmail(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && this.endsWith(url, '/_api/web')) {
+        else if (options?.method?.toUpperCase() === 'GET' && this.endsWith(url, '/_api/web')) {
             response = this.getWeb(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && this.endsWith(url, '/attachmentfiles')) {
+        else if (options?.method?.toUpperCase() === 'GET' && this.endsWith(url, '/attachmentfiles')) {
             response = this.getAttachments(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/getfilebyserverrelativeurl') !== -1) {
+        else if (options?.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/_api/web/getfilebyserverrelativeurl') !== -1) {
             response = await this.getFileByServerRelativeUrl(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/items') === -1) {
+        else if (options?.method?.toUpperCase() === 'GET' && url.toLowerCase().indexOf('/items') === -1) {
             response = this.getListProperties(url);
         }
-        else if (options!.method!.toUpperCase() === 'GET') {
+        else if (options?.method?.toUpperCase() === 'GET') {
             response = this.getListItems(url);
         }
-        else if (options!.method!.toUpperCase() === 'POST' && this.endsWith(url, '_api/contextinfo')) {
+        else if (options?.method?.toUpperCase() === 'POST' && this.endsWith(url, '_api/contextinfo')) {
             response = this.getContextInfo();
         }
-        else if (options!.method!.toUpperCase() === 'POST' && this.endsWith(url, '_api/$batch')) {
+        else if (options?.method?.toUpperCase() === 'POST' && this.endsWith(url, '_api/$batch')) {
             response = await this.processBatch(url, options);
         }
-        else if (options!.method!.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.utilities.utility.searchprincipalsusingcontextweb')) {
+        else if (options?.method?.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.utilities.utility.searchprincipalsusingcontextweb')) {
             response = this.searchPrincipals(url, options);
         }
-        else if (options!.method!.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.ui.applicationpages.clientpeoplepickerwebserviceinterface.clientpeoplepickersearchuser')) {
+        else if (options?.method?.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.ui.applicationpages.clientpeoplepickerwebserviceinterface.clientpeoplepickersearchuser')) {
             response = this.clientPeoplePickerSearchUser(url, options);
         }
-        else if (options!.method!.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.utilities.utility.sendemail')) {
+        else if (options?.method?.toLocaleUpperCase() === 'POST' && this.endsWith(url, '/_api/sp.utilities.utility.sendemail')) {
             response = this.sendEmail(url, options);
         }
-        else if (options!.method!.toUpperCase() === 'POST' && this.endsWith(url, '_api/web/ensureuser')) {
+        else if (options?.method?.toUpperCase() === 'POST' && this.endsWith(url, '_api/web/ensureuser')) {
             response = this.ensureUser(url, options);
         }
-        else if (options!.method!.toUpperCase() === 'POST' && url.toLowerCase().indexOf('/attachmentfiles') !== -1) {
+        else if (options?.method?.toUpperCase() === 'POST' && url.toLowerCase().indexOf('/attachmentfiles') !== -1) {
             // add, updates and deletes
             response = this.saveAttachmentChanges(url, options);
         }
-        else if (options!.method!.toUpperCase() === 'POST' && url.toLowerCase().indexOf('_api/web/sitegroups/') !== -1) {
+        else if (options?.method?.toUpperCase() === 'POST' && url.toLowerCase().indexOf('_api/web/sitegroups/') !== -1) {
             response = new Response('', { status: 200 });
         }
-        else if (options!.method!.toUpperCase() === 'POST' && this.endsWith(url, '/getitems')) {
+        else if (options?.method?.toUpperCase() === 'POST' && this.endsWith(url, '/getitems')) {
             response = this.getListItemsCamlQuery(url, options);
         }
-        else if (options!.method!.toUpperCase() === 'POST' && url.toLowerCase().indexOf('/files/add') !== -1) {
+        else if (options?.method?.toUpperCase() === 'POST' && url.toLowerCase().indexOf('/files/add') !== -1) {
             // add, updates and deletes
             response = this.saveFile(url, options);
         }
@@ -96,7 +97,7 @@ export class MockResponse {
     private getListItems(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getListItems', urlString);
 
-        let url = parse(urlString, true, true);
+        const url = parse(urlString, true, true);
         let body: string | undefined;
         let totalItemsCount: number = 0;
 
@@ -117,7 +118,7 @@ export class MockResponse {
 
             // revisit to figure out how the source is telling us to page
             if (items.length < totalItemsCount) {
-                let skipParts = urlString.split('&$skip=');
+                const skipParts = urlString.split('&$skip=');
                 let nextUrl = '';
                 if (skipParts.length === 1) {
                     nextUrl = `${urlString}"&$skip=${items.length}`;
@@ -126,7 +127,7 @@ export class MockResponse {
                     nextUrl = `${urlString}"&$skip=${+skipParts[1] + items.length}`;
                 }
 
-                let result = {
+                const result = {
                     'd': {
                         'results': items,
                         '__next': nextUrl
@@ -137,10 +138,10 @@ export class MockResponse {
             }
         }
         else if (url.pathname.endsWith(')')) {
-            let index = url.pathname.lastIndexOf('(');
-            let id = url.pathname.slice(index + 1, url.pathname.length - 1);
+            const index = url.pathname.lastIndexOf('(');
+            const id = url.pathname.slice(index + 1, url.pathname.length - 1);
 
-            let item = items.filter(i => i.ID === +id)[0];
+            const item = items.filter(i => i.ID === +id)[0];
             body = JSON.stringify(item);
         }
         else {
@@ -153,7 +154,7 @@ export class MockResponse {
     private getListProperties(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getListProperties', urlString);
 
-        let body = {
+        const body = {
             'RootFolder': {
                 'ServerRelativeUrl': `/${this.listTitle}`
             },
@@ -170,7 +171,7 @@ export class MockResponse {
     private getListItemsCamlQuery(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'getListItemsCamlQuery', urlString);
 
-        let url = parse(urlString, true, true);
+        const url = parse(urlString, true, true);
         let body: string | undefined;
 
         // try to get the data from local storage and then from mock data
@@ -178,29 +179,29 @@ export class MockResponse {
 
         // tslint:disable-next-line:max-line-length
         // {"query":{"__metadata":{"type":"SP.CamlQuery"},"ViewXml":"<View><ViewFields><FieldRef Name='Group1'/><FieldRef Name='ProductGroup'/>...</ViewFields><Query><Where><Eq><FieldRef Name='AppliesTo'/><Value Type='Choice'>Cost</Value></Eq></Where></Query><RowLimit>1000</RowLimit></View>"}}
-        let camlQuery = JSON.parse(options.body);
+        const camlQuery = JSON.parse(options.body);
 
-        let viewXml: string = camlQuery.query.ViewXml;
-        let viewFieldsStart = viewXml.indexOf('<ViewFields>') + 12;
-        let viewFieldsEnd = viewXml.indexOf('</ViewFields>');
-        let queryStart = viewXml.indexOf('<Query>') + 7;
-        let queryEnd = viewXml.indexOf('</Query>');
-        let rowLimitStart = viewXml.indexOf('<RowLimit>') + 10;
-        let rowLimitEnd = viewXml.indexOf('</RowLimit>');
+        const viewXml: string = camlQuery.query.ViewXml;
+        const viewFieldsStart = viewXml.indexOf('<ViewFields>') + 12;
+        const viewFieldsEnd = viewXml.indexOf('</ViewFields>');
+        const queryStart = viewXml.indexOf('<Query>') + 7;
+        const queryEnd = viewXml.indexOf('</Query>');
+        const rowLimitStart = viewXml.indexOf('<RowLimit>') + 10;
+        const rowLimitEnd = viewXml.indexOf('</RowLimit>');
 
-        let viewFields = viewXml.substring(viewFieldsStart, viewFieldsEnd);
-        let query = viewXml.substring(queryStart, queryEnd);  // <Where><Eq><FieldRef Name='AppliesTo'/><Value Type='Choice'>Cost</Value></Eq></Where>
-        let rowLimit = viewXml.substring(rowLimitStart, rowLimitEnd);
+        const viewFields = viewXml.substring(viewFieldsStart, viewFieldsEnd);
+        const query = viewXml.substring(queryStart, queryEnd);  // <Where><Eq><FieldRef Name='AppliesTo'/><Value Type='Choice'>Cost</Value></Eq></Where>
+        const rowLimit = viewXml.substring(rowLimitStart, rowLimitEnd);
 
-        let select = viewFields.split(`<FieldRef Name='`).join('').split(`'/>`).join(',');
+        const select = viewFields.split(`<FieldRef Name='`).join('').split(`'/>`).join(',');
 
         // WARNING - currently this assumes only one clause with an Eq
-        let whereStart = query.indexOf('<Where>') + 7;
-        let whereEnd = query.indexOf('</Where>');
+        const whereStart = query.indexOf('<Where>') + 7;
+        const whereEnd = query.indexOf('</Where>');
         let where = query.substring(whereStart, whereEnd); // <Eq><FieldRef Name='AppliesTo'/><Value Type='Choice'>Cost</Value></Eq>
-        let compare = where.startsWith('<Eq>') ? 'eq' : null; // add other checks for future compares
+        const compare = where.startsWith('<Eq>') ? 'eq' : null; // add other checks for future compares
         where = where.split('<Eq>').join('').split('</Eq>').join(''); // <FieldRef Name='AppliesTo'/><Value Type='Choice'>Cost</Value>
-        let filter = where.split(`<FieldRef Name='`).join('').split(`'/>`).join(` ${compare} `)
+        const filter = where.split(`<FieldRef Name='`).join('').split(`'/>`).join(` ${compare} `)
             .split(`<Value Type='Choice'>`).join(`'`).split('</Value>').join(`'`);
 
         items = this.applyFilter(items, filter);
@@ -211,10 +212,10 @@ export class MockResponse {
             body = JSON.stringify(items);
         }
         else if (url.pathname.endsWith(')')) {
-            let index = url.pathname.lastIndexOf('(');
-            let id = url.pathname.slice(index + 1, url.pathname.length - 1);
+            const index = url.pathname.lastIndexOf('(');
+            const id = url.pathname.slice(index + 1, url.pathname.length - 1);
 
-            let item = items.filter(i => i.ID === +id)[0];
+            const item = items.filter(i => i.ID === +id)[0];
             body = JSON.stringify(item);
         }
         else {
@@ -227,17 +228,17 @@ export class MockResponse {
     private getAttachments(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getAttachments', urlString);
 
-        let url = parse(urlString, true, true);
+        const url = parse(urlString, true, true);
         let body: string;
 
         // try to get the data from local storage and then from mock data
-        let items = this.mockListFactory.getListItems(this.listTitle);
+        const items = this.mockListFactory.getListItems(this.listTitle);
 
         // _api/web/lists/getByTitle([list name])/items([id])/AttachmentFiles
-        let index = url.pathname.lastIndexOf('(');
-        let id = url.pathname.slice(index + 1, url.pathname.length - 17);
+        const index = url.pathname.lastIndexOf('(');
+        const id = url.pathname.slice(index + 1, url.pathname.length - 17);
 
-        let item = items.filter(i => i.ID === +id)[0];
+        const item = items.filter(i => i.ID === +id)[0];
 
         if (item.AttachmentFiles !== undefined) {
             body = JSON.stringify(item.AttachmentFiles);
@@ -255,10 +256,10 @@ export class MockResponse {
         return new Promise((resolve) => {
             let response;
 
-            let startIndex = urlString.lastIndexOf(`(`) + 2;
-            let endIndex = urlString.lastIndexOf(`)`) - 1;
+            const startIndex = urlString.lastIndexOf(`(`) + 2;
+            const endIndex = urlString.lastIndexOf(`)`) - 1;
 
-            let filePath = urlString.substring(startIndex, endIndex);
+            const filePath = urlString.substring(startIndex, endIndex);
             /* TODO Revisit
             if (filePath.indexOf(ApplicationValues.Path) !== -1) {
                 filePath = filePath.split(ApplicationValues.Path)[1];
@@ -267,7 +268,7 @@ export class MockResponse {
             */
 
             if (this.endsWith(urlString, '$value')) {
-                let xmlhttp = new XMLHttpRequest();
+                const xmlhttp = new XMLHttpRequest();
                 xmlhttp.responseType = 'arraybuffer';
                 // tslint:disable-next-line:no-function-expression
                 xmlhttp.onreadystatechange = function () {
@@ -287,8 +288,8 @@ export class MockResponse {
 
     private getWeb(urlString: string): Response {
         // only have a method for this stuff in case we need to do more mock stuff in the future
-        let url = parse(urlString, true, true);
-        let body = {
+        const url = parse(urlString, true, true);
+        const body = {
             'Url': `${url.protocol}//${url.host}/`,
             'ServerRelativeUrl': ''
         };
@@ -305,12 +306,12 @@ export class MockResponse {
     private getSiteUser(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getSiteUser', urlString);
 
-        let url = parse(urlString, true, true);
-        let search = decodeURIComponent(url.search);
-        let loginName = search.substring(5, search.length - 1);
+        const url = parse(urlString, true, true);
+        const search = decodeURIComponent(url.search);
+        const loginName = search.substring(5, search.length - 1);
 
-        let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
-        let user = users.filter(i => {
+        const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+        const user = users.filter(i => {
             return (i.LoginName && i.LoginName.toLowerCase().indexOf(loginName.toLowerCase()) !== -1);
         })[0];
 
@@ -321,12 +322,12 @@ export class MockResponse {
     private getSiteUserById(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getSiteUserById', urlString);
 
-        let url = parse(urlString, true, true);
-        let index = url.pathname.lastIndexOf('(');
-        let id = url.pathname.slice(index + 1, url.pathname.length - 1);
+        const url = parse(urlString, true, true);
+        const index = url.pathname.lastIndexOf('(');
+        const id = url.pathname.slice(index + 1, url.pathname.length - 1);
 
-        let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
-        let user = users.filter(i => {
+        const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+        const user = users.filter(i => {
             return (i.ID === +id);
         })[0];
 
@@ -337,14 +338,15 @@ export class MockResponse {
     private getSiteUserByEmail(urlString: string): Response {
         LogHelper.verbose(this.constructor.name, 'getSiteUserByEmail', urlString);
 
-        let url = parse(urlString, true, true);
-        let pathName = decodeURIComponent(url.pathname); // get rid of encoded characters
-        let index = pathName.lastIndexOf(`('`);
-        let email = pathName.slice(index + 2, pathName.length - 2);
+        const url = parse(urlString, true, true);
+        const pathName = decodeURIComponent(url.pathname); // get rid of encoded characters
+        const index = pathName.lastIndexOf(`('`);
+        const email = pathName.slice(index + 2, pathName.length - 2);
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let user: any;
         if (email.length > 0) {
-            let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+            const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
             // To better work with SharePoint and mock data...
             // User Profile uses "Email"
             // User Information uses "EMail"
@@ -360,21 +362,24 @@ export class MockResponse {
     private saveListItemChanges(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'saveListItemChanges', urlString);
 
-        let url = parse(urlString, true, true);
+        const url = parse(urlString, true, true);
         let body: string | undefined;
 
         let items = this.mockListFactory.getListItems(this.listTitle);
 
         if (url.pathname.endsWith('/items')) {
             // add a new item
-            let item: any = {};
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const item: any = {};
 
-            let storageKey = this.listTitle + '_ItemCount';
+            const storageKey = this.listTitle + '_ItemCount';
             let maxId: number = 0;
             if (localStorage.getItem(storageKey) !== null) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 maxId = +localStorage.getItem(storageKey)!;
-                if (maxId === NaN || maxId === 0) {
+                if (Number.isNaN(maxId) || maxId === 0) {
                     if (items.length > 0) {
+                        // eslint-disable-next-line prefer-spread
                         maxId = Math.max.apply(Math, items.map(i => i.ID));
                     }
                     else {
@@ -383,16 +388,17 @@ export class MockResponse {
                 }
                 maxId = maxId + 1;
 
-                item['ID'] = maxId;
+                item.ID = maxId;
             }
 
-            let requestBody = JSON.parse(options.body);
+            const requestBody = JSON.parse(options.body);
             Object.keys(requestBody).map(
+                // eslint-disable-next-line no-return-assign
                 (e) => item[e] = requestBody[e]
             );
 
             // Common to all SharePoint List Items
-            let now = new Date();
+            const now = new Date();
             item.Created = now;
             item.Modified = now;
             item.AuthorId = this.currentUser.ID;
@@ -406,24 +412,25 @@ export class MockResponse {
         }
         else if (url.pathname.endsWith(')')) {
             // update
-            let index = url.pathname.lastIndexOf('(');
-            let id = url.pathname.slice(index + 1, url.pathname.length - 1);
+            const index = url.pathname.lastIndexOf('(');
+            const id = url.pathname.slice(index + 1, url.pathname.length - 1);
 
-            let item = items.filter(i => i.ID === +id)[0];
+            const item = items.filter(i => i.ID === +id)[0];
 
             if (options.body !== undefined) {
                 // update an item
-                let requestBody = JSON.parse(options.body);
+                const requestBody = JSON.parse(options.body);
                 Object.keys(requestBody).map(
+                    // eslint-disable-next-line no-return-assign
                     (e) => item[e] = requestBody[e]
                 );
 
                 // Common to all SharePoint List Items
-                let now = new Date();
+                const now = new Date();
                 item.Modified = now;
                 item.EditorId = this.currentUser.ID;
 
-                let result: IItemUpdateResult = {
+                const result: IItemUpdateResult = {
                     item: item,
                     data: { 'etag': '' }
                 };
@@ -447,19 +454,19 @@ export class MockResponse {
     private saveAttachmentChanges(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'saveAttachmentChanges', urlString);
 
-        let url = parse(urlString, true, true);
+        const url = parse(urlString, true, true);
         let body: string | undefined;
-        let items = this.mockListFactory.getListItems(this.listTitle);
+        const items = this.mockListFactory.getListItems(this.listTitle);
         // '/reqdocs/BR/4/attachments/_api/web/lists/getByTitle(%27Requirement%20Documents%27)/items(4)/AttachmentFiles/add(FileName=%27AA%20Template.docx%27)'
 
-        let decodedPath = decodeURI(url.pathname);
-        let index = decodedPath.lastIndexOf('(');
-        let fileName = decodedPath.slice(index + 2, decodedPath.length - 2);
-        let startIndex = decodedPath.lastIndexOf('/items(');
-        let endIndex = decodedPath.lastIndexOf(')/AttachmentFiles');
-        let id = decodedPath.slice(startIndex + 7, endIndex);
+        const decodedPath = decodeURI(url.pathname);
+        const index = decodedPath.lastIndexOf('(');
+        const fileName = decodedPath.slice(index + 2, decodedPath.length - 2);
+        const startIndex = decodedPath.lastIndexOf('/items(');
+        const endIndex = decodedPath.lastIndexOf(')/AttachmentFiles');
+        const id = decodedPath.slice(startIndex + 7, endIndex);
 
-        let item = items.filter(i => i.ID === +id)[0];
+        const item = items.filter(i => i.ID === +id)[0];
         if (item.AttachmentFiles === undefined) {
             item.AttachmentFiles = [];
         }
@@ -474,7 +481,8 @@ export class MockResponse {
             });
             */
 
-            let fileReader = new FileReader();
+            const fileReader = new FileReader();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             fileReader.onload = (evt: any) => {
                 this.fileLoaded(evt, items, item, options);
             };
@@ -496,29 +504,28 @@ export class MockResponse {
     private saveFile(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'saveFile', urlString);
 
-        let url = parse(urlString, true, true);
-        let body: string;
+        const url = parse(urlString, true, true);
         // /files/add(overwrite=true,url='Authorized%20Retail%20Pricing%20(effective%2004.27.18).xlsx')
 
-        let decodedPath = decodeURI(url.pathname);
-        let index = decodedPath.lastIndexOf('url=');
-        let fileName = decodedPath.slice(index + 5, decodedPath.length - 2);
+        const decodedPath = decodeURI(url.pathname);
+        const index = decodedPath.lastIndexOf('url=');
+        const fileName = decodedPath.slice(index + 5, decodedPath.length - 2);
 
         //        FileSaver.saveAs(options.body, fileName);
 
-        let result = {
+        const result = {
             file: options.body,
             ServerRelativeUrl: fileName
         };
 
-        body = JSON.stringify(result);
+        const body = JSON.stringify(result);
 
         return new Response(body, { status: 200 });
     }
 
-
-    private fileLoaded(evt: any, items: any, item: any, options: any) {
-        let data = evt.target.result;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    private fileLoaded(evt: any, items: any, item: any, options: any): void {
+        const data = evt.target.result;
         item.AttachmentFiles.push({
             FileName: options.body.name,
             ServerRelativeUrl: data
@@ -530,24 +537,23 @@ export class MockResponse {
     private searchPrincipals(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'searchPrincipals', urlString);
 
-        let body: string;
-        let searchOptions = JSON.parse(options.body);
+        const searchOptions = JSON.parse(options.body);
 
-        let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
-        let items = users.filter(i => {
+        const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+        const items = users.filter(i => {
             return ((i.DisplayName && i.DisplayName.toLowerCase().indexOf(searchOptions.input.toLowerCase()) !== -1) ||
                 (i.LoginName && i.LoginName.toLowerCase().indexOf(searchOptions.input.toLowerCase()) !== -1) ||
                 (i.Email && i.Email.toLowerCase().indexOf(searchOptions.input.toLowerCase()) !== -1)
             );
         });
 
-        let result = {
+        const result = {
             'SearchPrincipalsUsingContextWeb': {
                 'results': items
             }
         };
 
-        body = JSON.stringify(result);
+        const body = JSON.stringify(result);
 
         return new Response(body, { status: 200 });
     }
@@ -555,20 +561,20 @@ export class MockResponse {
     private clientPeoplePickerSearchUser(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'clientpeoplepickersearchuser', urlString);
 
-        let body: string;
-        let postBody = JSON.parse(options.body);
-        let query = postBody.queryParams.QueryString.toLowerCase();
+        const postBody = JSON.parse(options.body);
+        const query = postBody.queryParams.QueryString.toLowerCase();
 
-        let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
-        let items = users.filter(i => {
+        const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+        const items = users.filter(i => {
             return ((i.DisplayName && i.DisplayName.toLowerCase().indexOf(query) !== -1) ||
                 (i.LoginName && i.LoginName.toLowerCase().indexOf(query) !== -1) ||
                 (i.Email && i.Email.toLowerCase().indexOf(query) !== -1)
             );
         });
 
-        let results: any[] = [];
-        for (let item of items) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const results: any[] = [];
+        for (const item of items) {
             results.push({
                 Key: item.Key,
                 Description: item.Title,
@@ -588,13 +594,13 @@ export class MockResponse {
             });
         }
 
-        let result = {
+        const result = {
             d: {
                 ClientPeoplePickerSearchUser: JSON.stringify(results)
             }
         };
 
-        body = JSON.stringify(result);
+        const body = JSON.stringify(result);
 
         return new Response(body, { status: 200 });
     }
@@ -602,7 +608,6 @@ export class MockResponse {
     private sendEmail(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'sendEmail', urlString);
 
-        let body: string;
         /*
         let emailOptions = JSON.parse(options.body);
 
@@ -630,7 +635,7 @@ export class MockResponse {
         FileSaver.saveAs(data, emailOptions.properties.Subject + '.eml');
         */
 
-        body = JSON.stringify('');
+        const body = JSON.stringify('');
 
         return new Response(body, { status: 200 });
     }
@@ -638,43 +643,42 @@ export class MockResponse {
     private ensureUser(urlString: string, options: IFetchOptions): Response {
         LogHelper.verbose(this.constructor.name, 'ensureUser', urlString);
 
-        let url = parse(urlString, true, true);
-        let body: string;
-        let ensureOptions = JSON.parse(options.body);
+        const url = parse(urlString, true, true);
+        const ensureOptions = JSON.parse(options.body);
 
-        let users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
-        let user = users.filter(i => {
+        const users = this.mockListFactory.getListItems(ListTitles.USERS_INFORMATION);
+        const user = users.filter(i => {
             return (i.LoginName && i.LoginName.toLowerCase().indexOf(ensureOptions.logonName.toLowerCase()) !== -1);
         })[0];
 
         user['__metadata'] = { id: `${url.protocol}${url.host}/_api/Web/GetUserById(${user.ID})` };
         user.Id = user.ID;  // because... SharePoint
 
-        let result = {
+        const result = {
             'd': user
         };
 
-        body = JSON.stringify(result);
+        const body = JSON.stringify(result);
         return new Response(body, { status: 200 });
     }
 
     private getContextInfo(): Response {
-        let contexInfo: Partial<IContextInfo> = {
+        const contexInfo: Partial<IContextInfo> = {
             FormDigestTimeoutSeconds: 100,
             FormDigestValue: 100
         };
 
-        let body = JSON.stringify({ d: { GetContextWebInformation: contexInfo } });
+        const body = JSON.stringify({ d: { GetContextWebInformation: contexInfo } });
         return new Response(body, { status: 200 });
     }
 
     private async processBatch(urlString: string, options: IFetchOptions): Promise<Response> {
-        let linesInBody = options.body.split('\n');
-        let getRequests: string[] = [];
-        for (let line of linesInBody) {
+        const linesInBody = options.body.split('\n');
+        const getRequests: string[] = [];
+        for (const line of linesInBody) {
             if (line.startsWith('GET')) {
-                let httpIndex = line.indexOf('http://');
-                let protocolIndex = line.indexOf('HTTP/1.1');
+                const httpIndex = line.indexOf('http://');
+                const protocolIndex = line.indexOf('HTTP/1.1');
                 let requestUrl = line.substring(httpIndex, protocolIndex);
                 requestUrl = requestUrl.split('/#/').join('/');
 
@@ -684,9 +688,9 @@ export class MockResponse {
 
         // Creating response lines to look like what should be processed here
         // https://github.com/pnp/pnpjs/blob/dev/packages/sp/src/batch.ts
-        let responseLines: string[] = [];
-        for (let requestUrl of getRequests) {
-            let getResponse = await this.fetch(requestUrl, { method: 'GET' });
+        const responseLines: string[] = [];
+        for (const requestUrl of getRequests) {
+            const getResponse = await this.fetch(requestUrl, { method: 'GET' });
 
             responseLines.push('--batchresponse_1234');
             responseLines.push('Content-Type: application/http');
@@ -695,7 +699,7 @@ export class MockResponse {
             responseLines.push('HTTP/1.1 200 OK');
             responseLines.push('CONTENT-TYPE: application/json;odata=verbose;charset=utf-8');
             responseLines.push('');
-            let text = await getResponse.text();
+            const text = await getResponse.text();
             // TODO - Revisit this as it assumes we are only batching a set of results
             responseLines.push(`{"d":{"results":${text}}}`);
         }
@@ -703,17 +707,18 @@ export class MockResponse {
         responseLines.push('--batchresponse_1234--');
         responseLines.push('');
 
-        let r = responseLines.join('\n');
+        const r = responseLines.join('\n');
 
         return new Response(r, { status: 200 });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private applyOrderBy(items: any[], orderby: string): any[] {
         // Logger.write(`applyOrderBy`);
         let sortKey: string;
         let sortOrder: string;
-        if (orderby != null && orderby !== undefined && orderby.length > 0) {
-            let keys = orderby.split(' ');
+        if (orderby !== null && orderby !== undefined && orderby.length > 0) {
+            const keys = orderby.split(' ');
             sortKey = keys[0];
             sortOrder = keys[1].toLocaleLowerCase();
             // https://medium.com/@pagalvin/sort-arrays-using-typescript-592fa6e77f1
@@ -728,19 +733,21 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private applySelect(items: any[], select: string): any[] {
         // Logger.write(`applySelect`);
-        let newItems: any[] = [];
-        if (select != null && select.length > 0) {
-            let keys = select.split(',');
-            for (let item of items) {
-                let newItem = {};
-                for (let key of keys) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const newItems: any[] = [];
+        if (select !== null && select.length > 0) {
+            const keys = select.split(',');
+            for (const item of items) {
+                const newItem = {};
+                for (const key of keys) {
                     if (key.indexOf('/') === -1) {
                         newItem[key] = item[key];
                     }
                     else {
-                        let partKeys = key.split('/');
+                        const partKeys = key.split('/');
                         this.expandedSelect(item, newItem, partKeys);
                     }
                 }
@@ -753,9 +760,10 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private applySkip(items: any[], skip: string): any[] {
         // Logger.write(`applySkip`);
-        if (skip != null && +skip !== NaN) {
+        if (skip !== null && !Number.isNaN(+skip)) {
             return items.slice(+skip);
         }
         else {
@@ -763,9 +771,10 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private applyTop(items: any[], top: string): any[] {
         // Logger.write(`applyTop`);
-        if (top != null && +top !== NaN) {
+        if (top !== null && !Number.isNaN(+top)) {
             return items.slice(0, +top);
         }
         else {
@@ -777,11 +786,12 @@ export class MockResponse {
         This is intended for lookups but is a little 'hokey' and the moment since it really grabs the whole lookup object
         rather than just the requested properties of the lookup.  To be revisited.
     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private expandedSelect(parentItem: any, parentNewItem: any, partKeys: string[]): any {
         // Logger.write(`expandedSelect [${partKeys}]`);
         try {
             if (partKeys.length === 0) { return; }
-            let partKey = partKeys.shift();
+            const partKey = partKeys.shift();
             if (parentNewItem && partKey) {
                 parentNewItem[partKey] = parentItem[partKey];
                 this.expandedSelect(parentItem[partKey], parentNewItem[partKey], partKeys);
@@ -792,14 +802,16 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private applyFilter(items: any[], filter: string): any[] {
         // Logger.write(`applyFilter`);
-        let newItems: any[] = [];
-        if (filter != null && filter.length > 0) {
-            let parseResult = new FilterParser().parse(filter);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const newItems: any[] = [];
+        if (filter !== null && filter.length > 0) {
+            const parseResult = new FilterParser().parse(filter);
 
-            for (let item of items) {
-                let match: boolean = this.getMatchResult(item, parseResult);
+            for (const item of items) {
+                const match: boolean = this.getMatchResult(item, parseResult);
                 if (match) {
                     newItems.push(item);
                 }
@@ -811,6 +823,7 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult(item: any, parseResult: any): boolean {
         switch (parseResult.operator.toLowerCase()) {
             case FilterParser.Operators.EQUALS:
@@ -828,9 +841,10 @@ export class MockResponse {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult_EQUALS(item: any, parseResult: any): boolean {
         let propertyValue = item;
-        for (let property of parseResult.property) {
+        for (const property of parseResult.property) {
             propertyValue = propertyValue[property];
 
             // if our property is undefined or null no reason to keep looping into it
@@ -839,15 +853,16 @@ export class MockResponse {
             }
 
             // hack that for multi
-            if (propertyValue['results'] !== undefined) {
+            if (propertyValue.results !== undefined) {
                 LogHelper.verbose(this.constructor.name, 'ensureUser', `getMatchResult_EQUALS ${property} - hack based on assumption this is a multiLookup`);
                 // if (property.toLowerCase().indexOf('multilookup') !== -1) {
                 // take the results collection and map to a single array of just the property we are matching on
-                propertyValue = propertyValue['results'].map(r => r[parseResult.property[1]]);
+                propertyValue = propertyValue.results.map(r => r[parseResult.property[1]]);
                 break;
             }
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let filterValue: any;
         if (typeof (propertyValue) === 'number') {
             filterValue = +parseResult.value;
@@ -871,12 +886,14 @@ export class MockResponse {
         return false;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult_NOTEQUALS(item: any, parseResult: any): boolean {
         let propertyValue = item;
-        for (let property of parseResult.property) {
+        for (const property of parseResult.property) {
             propertyValue = propertyValue[property];
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let filterValue: any;
         if (typeof (propertyValue) === 'number') {
             filterValue = +parseResult.value;
@@ -900,12 +917,14 @@ export class MockResponse {
         return false;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult_SUBSTRINGOF(item: any, parseResult: any): boolean {
         let propertyValue = item;
-        for (let property of parseResult.property) {
+        for (const property of parseResult.property) {
             propertyValue = propertyValue[property];
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let filterValue: any;
         if (typeof (propertyValue) === 'number') {
             filterValue = +parseResult.value;
@@ -922,9 +941,10 @@ export class MockResponse {
     }
 
     // This assumes just one 'AND'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult_AND(item: any, parseResult: any): boolean {
-        let parseResult1 = this.getMatchResult(item, parseResult.property);
-        let parseResult2 = this.getMatchResult(item, parseResult.value);
+        const parseResult1 = this.getMatchResult(item, parseResult.property);
+        const parseResult2 = this.getMatchResult(item, parseResult.value);
 
         if (parseResult1 === true && parseResult2 === true) {
             return true;
@@ -935,9 +955,10 @@ export class MockResponse {
     }
 
     // This assumes just one 'OR'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getMatchResult_OR(item: any, parseResult: any): boolean {
-        let parseResult1 = this.getMatchResult(item, parseResult.property);
-        let parseResult2 = this.getMatchResult(item, parseResult.value);
+        const parseResult1 = this.getMatchResult(item, parseResult.property);
+        const parseResult2 = this.getMatchResult(item, parseResult.value);
 
         if (parseResult1 === true || parseResult2 === true) {
             return true;

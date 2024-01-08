@@ -5,7 +5,7 @@ import { Action } from "./action";
 import { GetRequest } from './getRequest';
 import { IPage } from '@src/models/IPage';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { INavLink } from 'office-ui-fabric-react';
+import { INavLink } from '@fluentui/react';
 
 // state that we track
 interface PagesState {
@@ -13,7 +13,7 @@ interface PagesState {
   userCanManagePages: boolean;
   ancestorPages: IPage[];
   childrenPages: IPage[];
-  tree: INavLink | null;
+  tree?: INavLink;
   getRequest: GetRequest;
 }
 
@@ -54,7 +54,8 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
     case ActionTypes.GET_PAGES_LOADING:
       return { ...state, getRequest: { isLoading: true, hasError: false, errorMessage: "" } };
     case ActionTypes.GET_PAGES:
-      var arrayAction: PageTreePayloadAction = action as PageTreePayloadAction;
+      // eslint-disable-next-line no-case-declarations
+      const arrayAction: PageTreePayloadAction = action as PageTreePayloadAction;
       return {
         ...state,
         childrenPages: arrayAction.payload.childgrenPages,
@@ -72,16 +73,14 @@ function pagesReducer(state: PagesState, action: Action): PagesState {
         }
       };
     case ActionTypes.PARENT_PAGE_COLUMN_EXISTS:
-      var parentPageColumnExistAction: ParentPageColumnExistAction = action as ParentPageColumnExistAction;
       return {
         ...state,
-        parentPageColumnExists: parentPageColumnExistAction.payload
+        parentPageColumnExists: (action as ParentPageColumnExistAction).payload
       };
     case ActionTypes.CAN_USER_MANAGE_PAGES:
-      var canUserManagePagesAction: CanUserManagePagesAction = action as CanUserManagePagesAction;
       return {
         ...state,
-        userCanManagePages: canUserManagePagesAction.payload
+        userCanManagePages: (action as CanUserManagePagesAction).payload
       };
     default:
       throw new Error();
@@ -92,7 +91,9 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   const [pagesState, pagesDispatch] = useReducer(pagesReducer, {
     parentPageColumnExists: true,
     userCanManagePages: false,
+    // eslint-disable-next-line no-empty-pattern
     ancestorPages: [] = [],
+    // eslint-disable-next-line no-empty-pattern
     childrenPages: [] = [],
     getRequest: { isLoading: false, hasError: false, errorMessage: "" },
     tree: null
@@ -106,13 +107,13 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     LogHelper.verbose('usePageApi', 'useEffect', `[currentPageId, ${currentPageId}, pageEditFinished: ${pageEditFinished} ]`);
 
     if (currentPageId && !!spLibGuid) {
-      checkIfParentPageExists();
-      getPagesAsync();
+      checkIfParentPageExists().catch(console.error);
+      getPagesAsync().catch(console.error);
     }
 
   }, [currentPageId, pageEditFinished, spLibGuid]);
 
-  async function getSitePagesLibraryGuid() {
+  async function getSitePagesLibraryGuid(): Promise<void> {
     LogHelper.verbose('usePageApi', 'getSitePagesLibrary', ``);
 
     const lib = await sp.web.lists.ensureSitePagesLibrary();
@@ -120,7 +121,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     await setSpLibGuid(libData.Id);
   }
 
-  async function getPagesAsync() {
+  async function getPagesAsync(): Promise<void> {
     LogHelper.verbose('usePageApi', 'getPagesAsync', ``);
 
     // check local storage first and return these and then refresh it in the background
@@ -129,8 +130,8 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     pagesDispatch({ type: ActionTypes.GET_PAGES_LOADING });
 
     // add select and order by later.  Order by ID?
-    let pages: IPage[] = [];
-    let items = await sp.web.lists.getById(spLibGuid).items
+    const pages: IPage[] = [];
+    const items = await sp.web.lists.getById(spLibGuid).items
       .select(
         PageFields.ID,
         PageFields.TITLE,
@@ -150,7 +151,7 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
       });
 
     if (items) {
-      for (let item of items) {
+      for (const item of items) {
         pages.push(mapPage(item));
       }
     }
@@ -166,10 +167,10 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     } as PageTreePayloadAction);
   }
 
-  async function checkIfParentPageExists() {
+  async function checkIfParentPageExists(): Promise<void> {
     LogHelper.verbose('usePageApi', 'parentPageExists', ``);
 
-    let parentPage = await sp.web.lists.getById(spLibGuid).fields
+    const parentPage = await sp.web.lists.getById(spLibGuid).fields
       .getByInternalNameOrTitle(PageFields.PARENTPAGELOOKUP)()
       .catch(e => {
         // swallow the exception we'll handle below
@@ -180,14 +181,14 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
       pagesDispatch({ type: ActionTypes.PARENT_PAGE_COLUMN_EXISTS, payload: true } as ParentPageColumnExistAction);
     }
     else {
-      canCurrentUserManageSitePages();
+      canCurrentUserManageSitePages().catch(console.error);
       // dispatch the action
       pagesDispatch({ type: ActionTypes.PARENT_PAGE_COLUMN_EXISTS, payload: false } as ParentPageColumnExistAction);
     }
   }
 
   async function canCurrentUserManageSitePages(): Promise<void> {
-    let canManagePages = await sp.web.lists.getById(spLibGuid)
+    const canManagePages = await sp.web.lists.getById(spLibGuid)
       .currentUserHasPermissions(PermissionKind.ManageLists)
       .catch(e => {
         ErrorHelper.handleHttpError('canUserUpdateSitePages', e);
@@ -201,9 +202,9 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   async function addParentPageFieldToSitePages(): Promise<void> {
     LogHelper.verbose('usePageApi', 'addParentPageFieldToSitePages', ``);
 
-    let list = await sp.web.lists.getById(spLibGuid)();
+    const list = await sp.web.lists.getById(spLibGuid)();
 
-    let lookup = sp.web.lists.getById(spLibGuid).fields
+    const lookup = sp.web.lists.getById(spLibGuid).fields
       .addLookup(PageFields.PARENTPAGELOOKUP, { LookupListId: list.Id, LookupFieldName: PageFields.TITLE })
       .catch(e => {
         return null;
@@ -224,8 +225,9 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
   }
 
   // map a SharePoint List Item to an IPage
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function mapPage(item: any): IPage {
-    let page: IPage = {
+    const page: IPage = {
       id: item.ID,
       title: item.Title,
       etag: item['odata.etag'] ? item['odata.etag'] : new Date().toISOString(),
@@ -264,9 +266,9 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
 
   function buildHierarchy(allPages: IPage[], pageId: number): INavLink {
     function recurse(id: number, l: number, ancestorPages: IPage[]): INavLink {
-      var item: IPage = allPages.filter(i => i.id === id)[0];
+      const item: IPage = allPages.filter(i => i.id === id)[0];
 
-      var links: INavLink[] = [];
+      let links: INavLink[] = [];
       links = links.concat(allPages.filter(i => i.parentPageId === id).map(it => recurse(it.id, l ? l + 1 : l, ancestorPages)));
 
       return { name: item.title, url: item.url, key: item.id.toString(), links: links, isExpanded: treeExpandTo ? (treeExpandTo >= l) : (ancestorPages.find(f => f.id === id) ? true : false) };
@@ -277,12 +279,12 @@ export function usePageApi(currentPageId: number, pageEditFinished: boolean, con
     return recurse(treeTop ? treeTop : ancestorPages[0].id, treeExpandTo ? 1 : treeExpandTo, ancestorPages);
   }
 
-  const addParentPageField = () => {
-    addParentPageFieldToSitePages();
+  const addParentPageField = (): void => {
+    addParentPageFieldToSitePages().catch(console.error);
   };
 
   useEffect(() => {
-    getSitePagesLibraryGuid();
+    getSitePagesLibraryGuid().catch(console.error);
   }, []);
 
   return {

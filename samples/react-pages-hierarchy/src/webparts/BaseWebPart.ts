@@ -1,17 +1,9 @@
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { Logger, ConsoleListener, LogLevel } from "@pnp/logging";
-import { CustomFetchClient } from '@src/mocks/customfetchclient';
 
 export default class BaseWebPart<TProperties> extends BaseClientSideWebPart<TProperties> {
 
     protected async onInit(): Promise<void> {
-        let isUsingSharePoint = true;
-
-        if (Environment.type === EnvironmentType.Local || Environment.type === EnvironmentType.Test) {
-            isUsingSharePoint = false;
-        }
-
         return super.onInit().then(_ => {
             // subscribe a listener
             Logger.subscribe(new ConsoleListener());
@@ -23,5 +15,6 @@ export default class BaseWebPart<TProperties> extends BaseClientSideWebPart<TPro
     }
 
     public render(): void {
+        Logger.write("Render");
     }
 }
