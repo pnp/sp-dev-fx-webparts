@@ -12,8 +12,8 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.44.0",
-    "@fluentui/react-migration-v8-v9": "^9.4.42",
+    "@fluentui/react-components": "^9.44.1",
+    "@fluentui/react-migration-v8-v9": "^9.4.43",
     "@microsoft/sp-component-base": "1.18.2",
     "@microsoft/sp-core-library": "1.18.2",
     "@microsoft/sp-lodash-subset": "1.18.2",
@@ -39,12 +39,5 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "gulp": "4.0.2",
     "typescript": "4.7.4"
-  },
-  "overrides": {
-    "@fluentui/react-positioning": "9.10.2",
-    "@fluentui/react-combobox": "9.5.35",
-    "@fluentui/react-popover": "9.8.23",
-    "@fluentui/react-menu": "9.12.37",
-    "@fluentui/react-tooltip": "9.4.3"
   }
 }
