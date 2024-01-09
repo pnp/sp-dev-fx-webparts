@@ -50,8 +50,8 @@ Version|Date|Comments
 1.3|March 31, 2022|Added a Tree View
 1.4|July 29, 2022|Updated Tree View Functionality
 1.5|March 29, 2023|Added support for non-English SitePages library paths
-1.6|May 11, Uses treeFrom/expandTo web part properties
-1.7|January 08, Updated to SPFX 1.18.2 + Node 18
+1.6|May 11,2023|Uses treeFrom/expandTo web part properties
+1.7|January 08|Updated to SPFX 1.18.2 + Node 18
 
 ## Minimal path to awesome
 
