@@ -2,13 +2,27 @@
 
 ## Summary
 
-This webpart shows how you can call Azure OpenAI API in Streaming mode, so the webpart shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations).
+This web part shows how you can call Azure OpenAI API in Streaming mode, so the web part shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations).
 
 ![./assets/react-azure-openai-api-stream.gif](./assets/react-azure-openai-api-stream.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![version](https://img.shields.io/badge/version-1.18.2-green.svg)
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -28,11 +42,9 @@ This webpart shows how you can call Azure OpenAI API in Streaming mode, so the w
 - Grab the Azure OpenAI Key, Endpoint and the deployment model created in previous step (go to your _Azure OpenAI service -> Keys and Endpoint_)
 
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| react-azure-openai-api-stream | [Luis Mañez](https://github.com/luismanez) |
+- [Luis Mañez](https://github.com/luismanez) |
 
 ## Version history
 
@@ -40,22 +52,17 @@ This webpart shows how you can call Azure OpenAI API in Streaming mode, so the w
 | ------- | ---------------- | --------------- |
 | 1.0     | January 2, 2024 | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
-- Install the MS Graph Toolkit for SPFx package. [Follow this](https://learn.microsoft.com/graph/toolkit/get-started/mgt-spfx)
+- [Install the MS Graph Toolkit for SPFx package](https://learn.microsoft.com/graph/toolkit/get-started/mgt-spfx).
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
   - `gulp serve`
 - Add the web part in the SharePoint workbench or any SharePoint page (appending _?debug=true&noredir=true&debugManifestsFile=<https://localhost:4321/temp/manifests.js>_ to the page URL)
-- Edit the webpart with your Azure OpenAI API values (see _prerequisites_ section)
+- Edit the web part with your Azure OpenAI API values (see _prerequisites_ section)
 
 ## Features
 

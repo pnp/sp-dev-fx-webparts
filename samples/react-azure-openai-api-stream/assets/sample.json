@@ -3,11 +3,11 @@
         "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream",
         "source": "pnp",
         "title": "Calling Azure OpenAI API in stream mode",
-        "shortDescription": "This webpart shows how you can call Azure OpenAI API in Streaming mode",
+        "shortDescription": "This web part shows how you can call Azure OpenAI API in Streaming mode",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
         "longDescription": [
-            "This webpart shows how you can call Azure OpenAI API in Streaming mode, so the webpart shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations)."
+            "This web part shows how you can call Azure OpenAI API in Streaming mode, so the web part shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations)."
         ],
         "creationDateTime": "2024-01-02",
         "updateDateTime": "2024-01-02",
