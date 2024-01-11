@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-azure-openai-api-stream-client-side-solution",
+    "id": "81a244d6-89dc-4a40-9e88-87a2565e6104",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-azure-openai-api-stream description"
+      },
+      "longDescription": {
+        "default": "react-azure-openai-api-stream description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-azure-openai-api-stream Feature",
+        "description": "The feature that activates elements of the react-azure-openai-api-stream solution.",
+        "id": "edb1b265-356e-4aec-9a12-0cabfbba9700",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-azure-openai-api-stream.sppkg"
+  }
+}
