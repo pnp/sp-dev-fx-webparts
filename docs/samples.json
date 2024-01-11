@@ -3926,7 +3926,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-api-stream.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/react-azure-openai-api-stream.gif",
         "alt": "Web Part Preview"
       }
     ],
