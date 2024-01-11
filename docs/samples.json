@@ -390,13 +390,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67",
-        "alt": "File Upload using AngularJs"
-      },
-      {
-        "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG File Upload.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
         "alt": "File Upload using AngularJs"
       }
     ],
@@ -3926,7 +3920,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/react-azure-openai-api-stream.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
         "alt": "Web Part Preview"
       }
     ],
@@ -23454,7 +23448,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-starter-kit/raw/main/assets/images/components/ext-redirects.gif?raw=true",
+        "url": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
         "alt": "Redirect Application Customizers"
       }
     ],
@@ -26508,7 +26502,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-teams-chats-sharepoint/assets/assets/Microsoft Teams chat in SharePoint sites.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
         "alt": "Preview"
       }
     ],
