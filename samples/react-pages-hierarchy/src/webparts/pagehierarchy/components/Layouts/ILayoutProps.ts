@@ -1,6 +1,6 @@
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { IPage } from '@src/models/IPage';
-import { INavLink } from 'office-ui-fabric-react';
+import { INavLink } from '@fluentui/react';
 
 export interface ILayoutProps {
   domElement: HTMLElement;

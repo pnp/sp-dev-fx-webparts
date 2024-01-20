@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import { ThemeProvider, IReadonlyTheme, ThemeChangedEventArgs } from '@microsoft/sp-component-base';
 import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import { IPropertyPaneConfiguration, IPropertyPaneGroup, PropertyPaneChoiceGroup, PropertyPaneLabel } from '@microsoft/sp-property-pane';
-import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import BaseWebPart from '@src/webparts/BaseWebPart';
 import { Parameters, PagesToDisplay, LogHelper } from '@src/utilities';
@@ -80,9 +79,9 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
   We'll allow user to test with a property and also using mock data allow them to navigate when on local host with a querystring
   */
   private getDebugPageId(): number {
-    let queryParms = new UrlQueryParameterCollection(window.location.href);
+    const queryParms = new URLSearchParams(window.location.href);
     let debugPageId = this.properties.debugPageId;
-    if (queryParms.getValue(Parameters.DEBUGPAGEID)) { debugPageId = Number(queryParms.getValue(Parameters.DEBUGPAGEID)); }
+    if (queryParms.get(Parameters.DEBUGPAGEID)) { debugPageId = Number(queryParms.get(Parameters.DEBUGPAGEID)); }
 
     return debugPageId;
   }
@@ -90,7 +89,7 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
    when page edit goes from edit to read we start a timer so that we can wait for the save to occur
    Things like the page title and page parent page property changing affect us
   */
-  protected onDisplayModeChanged(oldDisplayMode: DisplayMode) {
+  protected onDisplayModeChanged(oldDisplayMode: DisplayMode): void {
     if (oldDisplayMode === DisplayMode.Edit) {
       setTimeout(() => {
         this.pageEditFinished = true;
@@ -109,7 +108,7 @@ export default class PageHierarchyWebPart extends BaseWebPart<IPageHierarchyWebP
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
-    let propertyPaneGroups: IPropertyPaneGroup[] = [];
+    const propertyPaneGroups: IPropertyPaneGroup[] = [];
 
     // If this webpart isn't on a page, we don't have a list item so let us provide our own to debug
     if (this.context.pageContext.listItem === undefined) {

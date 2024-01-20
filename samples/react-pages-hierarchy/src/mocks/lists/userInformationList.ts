@@ -8,6 +8,7 @@ import { BaseList } from '../mocklistfactory';
 */
 export class UsersInformationList implements BaseList {
     public listTitle = ListTitles.USERS_INFORMATION;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     public items: any[] = [
         {
             ID: 1,

@@ -39,18 +39,13 @@ export const Container: React.FunctionComponent<IContainerProps> = props => {
 
   // if the parent page column was never created or it was deleted force them to recreate it
   if (!pagesApi.state.parentPageColumnExists) {
-    var description = strings.ParentPageMissing_Placeholder_Description;
-    if(!pagesApi.state.userCanManagePages) {
-      description = strings.ParentPageMissing_Placeholder_Description_NoPermissions;
-    }
-
     controlToRender =
       <div>
         <Placeholder
           iconName='FieldRequired'
           hideButton={!pagesApi.state.userCanManagePages}
           iconText={strings.ParentPageMissing_Placeholder_IconText}
-          description={description}
+          description={!pagesApi.state.userCanManagePages ? strings.ParentPageMissing_Placeholder_Description_NoPermissions : strings.ParentPageMissing_Placeholder_Description}
           buttonLabel={strings.ParentPageMissing_Placeholder_ButtonLabel}
           onConfigure={pagesApi.addParentPageField} />
       </div>;
