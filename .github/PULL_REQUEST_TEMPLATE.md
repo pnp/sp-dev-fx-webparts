@@ -4,13 +4,11 @@
 
 > To submit a pull request with multiple authors, make sure that at least one commit is a co-authored commit by adding a `Co-authored-by:` trailer to the commit's message. E.g.: `Co-authored-by: name <name@example.com>`
 
-> Put an `x` in all the items that apply (`[x]`, without spaces), make notes next to any that haven't been addressed.
+> Put an `x` in all the items that apply (`[x]`, no spaces between the `[`, the `x`, and the `]` ), make notes next to any that haven't been addressed.
 
-- [ ] Bug fix?
-- [ ] New sample?
+- [ ] New sample
+- [ ] Bug fix/update
 - [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
-- [ ] Needs API permissions?
-- [ ] Has other prerequisites? (E.g. requires a list, document library, etc.)
 
 
 ## What's in this Pull Request?
@@ -26,16 +24,16 @@ Node version used:
 
 ## Checklist
 
-> This checklist is mostly useful as a reminder of small things that can easily be forgotten – it is meant as a helpful tool rather than hoops to jump through.
+> This checklist is used to automatically pre-process your pull request; It is meant to help process pull requests in a timely manner, rather than hoops to jump through.
 > 
-> Put an `x` in all the items that apply ([x], no spaces), make notes next to any that haven't been addressed.
-
+> Put an `x` in all the items that apply (`[x]`, no spaces between the `[`, the `x`, and the `]` ). Make notes next to any that haven't been addressed.
 
 - [ ] My pull request affects only ONE sample.
 - [ ] My sample does not build with any warnings
-- [ ] I have updated the README file.
-- [ ] My README has at least one static high-resolution screenshot (i.e. not a GIF)
-- [ ] My README contains complete setup instructions, including pre-requisites and permissions required
+- [ ] I have updated the `README.md` file's **Version history**. For new samples, created a new `README.md` file matching [this template](templates/README-template.md)
+- [ ] My `README.md` has at least one static high-resolution screenshot (i.e. not a GIF) located in the `assets` folder.
+- [ ] My `README.md` contains complete setup instructions, including pre-requisites and permissions required
+- [ ] My solution includes a `.nvmrc` file indicating the version of Node.js
 
 ## Submitter Guidance (DELETE AFTER READING)
 > 
