@@ -1,0 +1,15 @@
+name: External validation
+
+on:
+  pull_request_target:
+    branches:
+      - "main"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate
+        uses: pnp/pnp-sample-validation@main
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
