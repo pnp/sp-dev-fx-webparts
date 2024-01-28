@@ -2,6 +2,7 @@ import * as React from "react";
 import UserQuestion from "./UserQuestion";
 import AssistantResponse from "./AssistantResponse";
 import { IChatMessage } from "../models/IChatMessage";
+import styles from "./ChatStreaming.module.scss";
 
 import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react';
 
@@ -30,8 +31,8 @@ export default class MessagesList extends React.Component<IMessagesListProps, {}
         });
 
         return (
-            <div style= {{ backgroundColor: '#f3f3f3', minHeight: '200px' }}>
-                <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto} style={{ padding: '20px' }}>
+            <div className={styles.messagesList}>
+                <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto} className={styles.scrollablePane}>
                     {output}
                 </ScrollablePane>
             </div>

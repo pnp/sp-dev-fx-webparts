@@ -1,5 +1,6 @@
 import { IconButton, Stack, TextField } from '@fluentui/react';
 import * as React from 'react';
+import styles from './ChatStreaming.module.scss';
 
 export interface IUserMessageProps {
     onMessageChange: (query: string) => void;
@@ -31,8 +32,8 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
 
   public render(): React.ReactElement<IUserMessageProps> {
     return (
-      <Stack horizontal tokens={{ childrenGap: 5 }}>
-        <Stack.Item grow={1}>
+      <Stack horizontal className={styles.userMessage}>
+        <Stack.Item grow>
           <TextField
             multiline
             autoAdjustHeight
@@ -43,7 +44,7 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             placeholder="Type user query here."
           />
         </Stack.Item>
-        <Stack.Item align="end">
+        <Stack verticalAlign='end'>
           <IconButton
             iconProps={{ iconName: "Send" }}
             title="Send"
@@ -56,7 +57,7 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             ariaLabel="Stop"
             onClick={() => this.props.controller.abort()}
           />
-        </Stack.Item>
+        </Stack>
       </Stack>
     );
   }

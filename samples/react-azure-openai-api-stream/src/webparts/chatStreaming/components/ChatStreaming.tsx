@@ -1,11 +1,11 @@
 import * as React from 'react';
-//import styles from './ChatStreaming.module.scss';
+import styles from './ChatStreaming.module.scss';
 import type { IChatStreamingProps } from './IChatStreamingProps';
 import { IChatStreamingState } from './IChatStreamingState';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import CompletionsRequestBuilder from '../models/CompletionsRequestBuilder';
-import { Spinner, SpinnerSize, Stack } from '@fluentui/react';
+import { Spinner, SpinnerSize, Stack, css } from '@fluentui/react';
 import MessagesList from './MessagesList';
 import UserMessage from './UserMessage';
 import { IChatMessage } from '../models/IChatMessage';
@@ -32,13 +32,8 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
   public render(): React.ReactElement<IChatStreamingProps> {
 
     const content = this._validateWebPartProperties() ? (
-      <Stack tokens={{ childrenGap: 20 }} style={{ minHeight: "100%" }}>
-        <Stack.Item
-          grow={1}
-          styles={{
-            root: { minHeight: "200px", height: "100%", position: "relative" },
-          }}
-        >
+      <Stack className={css(styles.chatStreaming, this.props.hasTeamsContext && styles.teams)}>
+        <Stack.Item grow className={styles.messagesContainer}>
           <MessagesList messages={this.state.sessionMessages} />
         </Stack.Item>
         {this.state.thinking && (

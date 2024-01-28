@@ -4,30 +4,80 @@
   overflow: hidden;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+  min-height: 100%;
+  gap: 20px;
+
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
-}
 
-.welcome {
-  text-align: left;
-}
-
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
-}
-
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
-
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
-    }
+  .messagesContainer {
+    min-height: 200px;
+    height: 100%;
+    position: relative;
   }
+}
+
+.messagesList {
+  background-color: "[theme:neutralLighter, default: #f3f2f1]";
+  min-height: 200px;
+
+  .scrollablePane {
+    padding: 20px;
+  }
+}
+
+.userQuestion {
+  padding: 5px;
+  gap: 30px;
+
+  .beak {
+    right: -10px;
+    border-left: 10px solid "[theme:white, default: #ffffff]";
+  }
+}
+
+.assistantResponse {
+  padding: 10px;
+  gap: 30px;
+
+  i {
+    font-size: 22px;
+  }
+
+  .beak {
+    left: -10px;
+    border-right: 10px solid "[theme:white, default: #ffffff]";
+  }
+}
+
+.messageBox {
+  position: relative;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: "[theme:white, default: #ffffff]";
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 85%;
+  min-width: 350px;
+
+  .message {
+    min-width: 100px;
+  }
+
+  .beak {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+}
+
+.userMessage {
+  gap: 5px;
 }
