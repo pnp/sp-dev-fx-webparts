@@ -20,19 +20,14 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
     await this.props.sendQuery();
   };
 
-  private _keyDownHandler = async (e: KeyboardEvent): Promise<void> => {
-    if (e.ctrlKey && e.code === "Enter") {
-      await this._handleClick();
+
+  private _keyDownHandler = async (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>): Promise<void> => {
+    if(!event.shiftKey && event.key === "Enter") {
+      //Submits message when a user hits return (but still allows newlines for shift+enter)
+      event.preventDefault();
+      return this._handleClick();
     }
   };
-
-  public componentDidMount(): void {
-    window.addEventListener("keydown", this._keyDownHandler);
-  }
-
-  public componentWillUnmount(): void {
-    window.removeEventListener("keydown", this._keyDownHandler);
-  }
 
   public render(): React.ReactElement<IUserMessageProps> {
     return (
@@ -43,6 +38,7 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             autoAdjustHeight
             value={this.props.textFieldValue}
             onChange={this._onChange}
+            onKeyDown={this._keyDownHandler}
             label="User message"
             placeholder="Type user query here."
           />
