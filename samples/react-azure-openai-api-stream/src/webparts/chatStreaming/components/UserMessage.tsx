@@ -40,8 +40,7 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             value={this.props.textFieldValue}
             onChange={this._onChange}
             onKeyDown={this._keyDownHandler}
-            label="User message"
-            placeholder="Type user query here."
+            placeholder={'Talk to our super cool AI system!\n(Shift + Enter for new line)'}
           />
         </Stack.Item>
         <Stack verticalAlign='end'>

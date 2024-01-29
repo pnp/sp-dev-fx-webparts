@@ -14,7 +14,9 @@ export default class AssistantResponse extends React.Component<
   public render(): React.ReactElement<IAssistantResponseProps> {
     return (
       <Stack horizontal className={styles.assistantResponse}>
-        <Icon iconName="Robot" />
+        <div className={styles.avatar}>
+          <Icon iconName="Robot" />
+        </div>
         <div className={styles.messageBox}>
           <p className={styles.message}>{this.props.message}</p>
           <div className={styles.beak}/>

@@ -19,7 +19,7 @@ export default class UserQuestion extends React.Component<
           <p className={styles.message}>{this.props.message}</p>
           <div className={styles.beak} />
         </div>
-        <Person personQuery="me" view={ViewType.image} avatarSize="auto" />
+        <Person className={styles.avatar} personQuery="me" view={ViewType.image} avatarSize="auto" />
       </Stack>
     );
   }
