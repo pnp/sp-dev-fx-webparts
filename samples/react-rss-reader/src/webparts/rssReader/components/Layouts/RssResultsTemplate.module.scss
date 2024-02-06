@@ -5,7 +5,7 @@
 :global {
   .template_root {
     /*include fabric here to surpress warnings*/
-    @import '~office-ui-fabric-react/dist/sass/References.scss';
+    @import '~@fluentui/react/dist/sass/References.scss';
 
     .template_rss_tileList {
       .singleCard {

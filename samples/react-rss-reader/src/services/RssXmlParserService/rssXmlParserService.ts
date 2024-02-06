@@ -15,7 +15,7 @@ export class RssXmlParserService {
 
   private static options: any;
 
-  public static async init(options: any = {}) {
+  public static async init(options: any = {}): Promise<void> {
     options.headers = options.headers || {};
     options.customFields = options.customFields || {};
     options.customFields.item = options.customFields.item || [];
@@ -29,15 +29,15 @@ export class RssXmlParserService {
   }
 
   public static async parse(xmlFeed: string, options?: any): Promise<any> {
-    var p = new Promise<string>(async (resolve, reject) => {
+    const p = new Promise<string>(async (resolve, reject) => {
       //ensure that we have some options
       options = options ? options : {};
 
       //we want the string items to not have to be an array
-      var xmlParser = new Parser({explicitArray: false});
+      const xmlParser = new Parser({explicitArray: false});
 
       //parse the xml
-      xmlParser.parseString(xmlFeed, (err, result) => {
+      xmlParser.parseString(xmlFeed, (err: any, result: any) => {
         //console.log("parser called");
         //console.log(result);
 
@@ -84,8 +84,8 @@ export class RssXmlParserService {
     return p;
   }
 
-  private static buildAtomFeed(xmlObj) {
-    let feed: any = {items: []};
+  private static buildAtomFeed(xmlObj: any): void {
+    const feed: any = {items: []};
 
     Utils.copyFromXML(xmlObj.feed, feed, this.options.customFields.feed);
     if (xmlObj.feed.link) {
@@ -104,7 +104,7 @@ export class RssXmlParserService {
     }
 
     (xmlObj.feed.entry || []).forEach(entry => {
-      let item:any = {};
+      const item:any = {};
       Utils.copyFromXML(entry, item, this.options.customFields.item);
 
       if (entry.title) {
@@ -146,38 +146,38 @@ export class RssXmlParserService {
     return feed;
   }
 
-  public static buildRSS0_9(xmlObj) {
-    var channel = xmlObj.rss.channel[0];
-    var items = channel.item;
+  public static buildRSS0_9(xmlObj: any): void {
+    const channel = xmlObj.rss.channel[0];
+    const items = channel.item;
     return this.buildRSS(channel, items);
   }
 
-  public static buildRSS1(xmlObj) {
+  public static buildRSS1(xmlObj: any): void {
     xmlObj = xmlObj['rdf:RDF'];
-    let channel = xmlObj.channel[0];
-    let items = xmlObj.item;
+    const channel = xmlObj.channel[0];
+    const items = xmlObj.item;
     return this.buildRSS(channel, items);
   }
 
-  public static buildRSS2(xmlObj) {
-    let channel:any = Array.isArray(xmlObj.rss.channel) ? xmlObj.rss.channel[0] : xmlObj.rss.channel;
-    let items = Array.isArray(channel.item) ? channel.item : [channel.item];
-    let feed = this.buildRSS(channel, items);
+  public static buildRSS2(xmlObj: any): void {
+    const channel:any = Array.isArray(xmlObj.rss.channel) ? xmlObj.rss.channel[0] : xmlObj.rss.channel;
+    const items = Array.isArray(channel.item) ? channel.item : [channel.item];
+    const feed = this.buildRSS(channel, items);
     if (xmlObj.rss.$ && xmlObj.rss.$['xmlns:itunes']) {
       this.decorateItunes(feed, channel);
     }
     return feed;
   }
 
-  public static buildRSS(channel, items) {
+  public static buildRSS(channel: any, items: any): void {
     items = items || [];
-    let feed: any = {
+    const feed: any = {
       items: [] as Array<any>
     };
 
     //set up lists of fields and items keys
-    let feedFields: any = Fields.feed.concat(this.options.customFields.feed);
-    let itemFields: any = Fields.item.concat(this.options.customFields.item);
+    const feedFields: any = Fields.feed.concat(this.options.customFields.feed);
+    const itemFields: any = Fields.item.concat(this.options.customFields.item);
 
     if (Array.isArray(channel['atom:link'])) {
       feed.feedUrl = channel['atom:link'][0].$;
@@ -189,7 +189,7 @@ export class RssXmlParserService {
     //if there is an image, then get additional properties
     if (channel.image && channel.image[0] && channel.image[0].url) {
       feed.image = {};
-      let image = channel.image[0];
+      const image = channel.image[0];
       if (image.link) feed.image.link = image.link[0];
       if (image.url) feed.image.url = image.url[0];
       if (image.title) feed.image.title = image.title[0];
@@ -200,7 +200,7 @@ export class RssXmlParserService {
     Utils.copyFromXML(channel, feed, feedFields);
 
     items.forEach(xmlItem => {
-      let item: any = {};
+      const item: any = {};
       Utils.copyFromXML(xmlItem, item, itemFields);
       if (xmlItem.enclosure) {
         if (Array.isArray(xmlItem.enclosure)) {
@@ -239,15 +239,15 @@ export class RssXmlParserService {
    * @param {object} feed extracted
    * @param {object} channel parsed XML
    */
-  public static decorateItunes(feed, channel) {
-    let items:any = channel.item || [];
+  public static decorateItunes(feed: any, channel: any): void {
+    const items:any = channel.item || [];
     let entry:any = {};
 
     feed.itunes = {};
 
     if (channel['itunes:owner']) {
-      let owner:any = {},
-          image;
+      const owner:any = {};
+      let image: string;
 
       if(channel['itunes:owner'][0]['itunes:name']) {
         owner.name = channel['itunes:owner'][0]['itunes:name'][0];
@@ -256,7 +256,7 @@ export class RssXmlParserService {
         owner.email = channel['itunes:owner'][0]['itunes:email'][0];
       }
       if(channel['itunes:image']) {
-        let hasImageHref = (channel['itunes:image'][0] &&
+        const hasImageHref = (channel['itunes:image'][0] &&
                               channel['itunes:image'][0].$ &&
                               channel['itunes:image'][0].$.href);
         image = hasImageHref ? channel['itunes:image'][0].$.href : null;
@@ -274,15 +274,15 @@ export class RssXmlParserService {
       entry = feed.items[index];
       entry.itunes = {};
       Utils.copyFromXML(item, entry.itunes, Fields.podcastItem);
-      let image = item['itunes:image'];
+      const image = item['itunes:image'];
       if (image && image[0] && image[0].$ && image[0].$.href) {
         entry.itunes.image = image[0].$.href;
       }
     });
   }
 
-  public static setISODate(item) {
-    let date = item.pubDate || item.date;
+  public static setISODate(item: any): void {
+    const date = item.pubDate || item.date;
     if (date) {
       try {
         item.isoDate = new Date(date.trim()).toISOString();

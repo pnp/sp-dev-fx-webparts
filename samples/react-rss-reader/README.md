@@ -4,8 +4,8 @@
 
 A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-This RSS Reader utilizes SharePoint Framework v1.11.0 with no dependency on jQuery or a RSS Feed library. This project does utilize [	
-@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)) . Use NodeJS version 10 to compile or rebuild the SPFx solution.
+This RSS Reader utilizes SharePoint Framework v1.18.2 with no dependency on jQuery or a RSS Feed library. This project does utilize [	
+@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 18 (validated using v18.17.1) to compile or rebuild the SPFx solution.
 
 Main features include:
 
@@ -27,17 +27,16 @@ Main features include:
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
-![Local Workbench Compatible](https://img.shields.io/badge/Local%20Workbench-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-Tested with: Node.js v10.16.3
+Tested with: Node.js v18.17.1
 
 ## Applies to
 
@@ -60,6 +59,7 @@ Version|Date|Comments
 1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
 1.0.3 | April 21, 2023 | Added theme awareness
 1.0.4 | May 25, 2023 | Fixed direct request issues
+1.1.0 | February 6, 2024 | Upgraded to SPFx 1.18.2
 
 ## Minimal Path to Awesome
 
@@ -69,7 +69,7 @@ Version|Date|Comments
 
 ### SPFx
 
-- In the command line, with a version of Node 10, i.e. 10.16.3, run:
+- In the command line, with a version of Node 18, i.e. 18.17.1, run:
   - `npm install`
   - `gulp serve`
 
@@ -91,13 +91,13 @@ Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XM
 Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
 Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
 Feed Service API Key | If using rss2json, an optional API key for paid services
-Max Count | The maximum results to return, default: 10
+Max Count | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services.
 Cache Results | Locally store results in browser local storage, default: no
 Mins to Cache Results | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60
 Storage Key Prefix | An optional local storage key prefix to use when storing results
 Loading Message | An optional custom message to display while the RSS feed is being loaded
 Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no
-CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. https://cors-anywhere.herokuapp.com/{0}
+CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. https://cors-anywhere.herokuapp.com/{0}. To use CORS anywhere by Herokuapp for testing, be sure to visit ![https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing.
 Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no
 
 #### Styling Options

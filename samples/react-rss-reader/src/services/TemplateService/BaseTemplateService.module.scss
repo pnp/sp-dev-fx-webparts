@@ -1,3 +1,5 @@
-﻿.hoverIcon {
+﻿@import '~@fluentui/react/dist/sass/References.scss';
+
+.hoverIcon {
     color: '[theme:themeDarker, default:#0078d7]';
 }
