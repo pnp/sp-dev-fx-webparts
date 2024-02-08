@@ -29,7 +29,7 @@ Node version used:
 > Put an `x` in all the items that apply (`[x]`, no spaces between the `[`, the `x`, and the `]` ). Make notes next to any that haven't been addressed.
 
 - [ ] My pull request affects only ONE sample.
-- [ ] My sample does not build with any warnings
+- [ ] My sample builds without any warnings
 - [ ] I have updated the `README.md` file's **Version history**. For new samples, created a new `README.md` file matching [this template](templates/README-template.md)
 - [ ] My `README.md` has at least one static high-resolution screenshot (i.e. not a GIF) located in the `assets` folder.
 - [ ] My `README.md` contains complete setup instructions, including pre-requisites and permissions required
