@@ -29,7 +29,13 @@
                 "type": "image",
                 "order": 100,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
-                "alt": "Web Part Preview"
+                "alt": "Sample in action"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+                "alt": "Screenshot"
             }
         ],
         "authors": [
