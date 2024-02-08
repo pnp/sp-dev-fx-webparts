@@ -67,6 +67,10 @@
     justify-content: center;
   }
 
+  .message {
+    margin: 14px 0;
+  }
+
   .beak {
     left: -15px;
     border-right: 15px solid "[theme:white, default: #ffffff]";
@@ -103,4 +107,45 @@
 
 .userMessage {
   gap: 5px;
+}
+
+.markdownContent {
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    margin: 14px 0;
+    width: max-content;
+    max-width: fit-content;
+    overflow: auto;
+  }
+  
+  tr {
+    background-color: "[theme: white, default: #ffffff]";
+    border-top: 1px solid "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+  }
+  
+  tr:nth-child(2n) {
+    background-color: "[theme: neutralLight, default: #edebe9]";
+  }
+  
+  td,
+  th {
+    padding: 6px 13px;
+    border: 1px solid "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+  }
+  
+  th {
+    font-weight: 600;
+  }
+  
+  table img {
+    background-color: transparent;
+  }
+
+  pre {
+    background-color: "[theme: neutralLight, default: #edebe9]";
+    padding: 8px;
+    border-radius: 4px;
+  }
 }

@@ -44,13 +44,15 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-- [Luis Mañez](https://github.com/luismanez) |
+- [Luis Mañez](https://github.com/luismanez)
+- [Chris Kent](https://twitter.com/thechriskent)
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | January 2, 2024 | Initial release |
+| 1.1     | January 29, 2024 | Things and Stuff |
 
 
 ## Minimal Path to Awesome
