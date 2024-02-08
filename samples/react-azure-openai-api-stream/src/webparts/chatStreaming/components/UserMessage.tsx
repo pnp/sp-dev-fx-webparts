@@ -7,6 +7,8 @@ export interface IUserMessageProps {
     sendQuery: () => Promise<void>;
     controller: AbortController;
     textFieldValue: string;
+    disableMarkdown?: boolean;
+    toggleMarkdown: () => void;
 }
 
 export default class UserMessage extends React.Component<IUserMessageProps, {}> {
@@ -37,6 +39,7 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
           <TextField
             multiline
             autoAdjustHeight
+            rows={5}
             value={this.props.textFieldValue}
             onChange={this._onChange}
             onKeyDown={this._keyDownHandler}
@@ -56,6 +59,13 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             ariaLabel="Stop"
             onClick={() => this.props.controller.abort()}
           />
+          <IconButton
+            toggle
+            checked={!this.props.disableMarkdown}
+            onClick={this.props.toggleMarkdown}
+            title="Toggle Markdown"
+            ariaLabel="Markdown"
+            iconProps={{iconName:'MarkDownLanguage'}}/>
         </Stack>
       </Stack>
     );

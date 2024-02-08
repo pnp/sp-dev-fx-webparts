@@ -4,4 +4,5 @@ export interface IChatStreamingState {
   userQuery: string;
   sessionMessages: IChatMessage[];
   thinking: boolean;
+  disableMarkdown: boolean;
 }

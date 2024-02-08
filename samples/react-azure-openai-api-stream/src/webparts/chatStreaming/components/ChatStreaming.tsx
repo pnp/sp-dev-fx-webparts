@@ -25,7 +25,8 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
         role: 'assistant',
         text: 'Hello! I am your AI assistant. How can I help you today?'
       }],
-      thinking: false
+      thinking: false,
+      disableMarkdown: false,
     }
 
     this._controller = new AbortController();
@@ -37,7 +38,7 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
     const content = this._validateWebPartProperties() ? (
       <Stack className={css(styles.chatStreaming, this.props.hasTeamsContext && styles.teams)}>
         <Stack.Item grow className={styles.messagesContainer}>
-          <MessagesList messages={this.state.sessionMessages} />
+          <MessagesList messages={this.state.sessionMessages} disableMarkdown={this.state.disableMarkdown} />
         </Stack.Item>
         {this.state.thinking && (
           <Stack.Item>
@@ -52,9 +53,11 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
         <Stack.Item>
           <UserMessage
             textFieldValue={this.state.userQuery}
-            onMessageChange={this._onUserQueryChange}
-            sendQuery={this._onQuerySent}
+            onMessageChange={this._onUserQueryChange.bind(this)}
+            sendQuery={this._onQuerySent.bind(this)}
             controller={this._controller}
+            disableMarkdown={this.state.disableMarkdown}
+            toggleMarkdown={this._toggleMarkdown.bind(this)}
           />
         </Stack.Item>
       </Stack>
@@ -174,5 +177,11 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
     }
 
     return true;
+  }
+
+  private _toggleMarkdown(): void {
+    this.setState({
+      disableMarkdown: !this.state.disableMarkdown
+    });
   }
 }

@@ -6,6 +6,7 @@ import MarkdownContent from "./MarkdownContent";
 
 export interface IAssistantResponseProps {
   message: string;
+  disableMarkdown?: boolean;
 }
 
 export default class AssistantResponse extends React.Component<
@@ -19,7 +20,12 @@ export default class AssistantResponse extends React.Component<
           <Icon iconName="Robot" />
         </div>
         <div className={styles.messageBox}>
-          <MarkdownContent className={styles.message}>{this.props.message}</MarkdownContent>
+          {this.props.disableMarkdown && 
+            <p className={styles.message}>{this.props.message}</p>
+          }
+          {!this.props.disableMarkdown &&
+            <MarkdownContent className={styles.message}>{this.props.message}</MarkdownContent>
+          }
           <div className={styles.beak}/>
         </div>
       </Stack>
