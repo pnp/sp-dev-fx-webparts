@@ -149,3 +149,75 @@
     border-radius: 4px;
   }
 }
+
+$dotSize: 8px;
+$jumpHeight: 14px;
+
+.thinkingIndicator {
+    padding-top: 6px;
+
+    .allDots {
+        margin-top: $jumpHeight;
+        display: flex;
+        gap: calc($dotSize / 2);
+
+        .dot {
+            position: relative;
+            width: $dotSize;
+            height: $dotSize;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bouncedelay 2.0s infinite cubic-bezier(.62, .28, .23, .99) both;
+        }
+
+        .dot1 {
+            animation-delay: -.16s;
+        }
+
+        .dot2 {
+            animation-delay: -.08s;
+        }
+
+        .dot3 {
+            color: inherit;
+        }
+    }
+}
+
+
+@keyframes bouncedelay {
+    0% {
+        bottom: 0;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+
+    16.66% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themeDark, default: #005a9e]";
+    }
+
+    33.33% {
+        bottom: 0px;
+        background-color: "[theme: themeDark, default: #005a9e]";
+    }
+
+    50% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themeLight, default: #c7e0f4]";
+    }
+
+    66.66% {
+        bottom: 0px;
+        background-color: "[theme: themeLight, default: #c7e0f4]";
+    }
+
+    83.33% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+
+    100% {
+        bottom: 0;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+}

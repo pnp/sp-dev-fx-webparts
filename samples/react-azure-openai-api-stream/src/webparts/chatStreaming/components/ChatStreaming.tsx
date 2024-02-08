@@ -5,7 +5,7 @@ import { IChatStreamingState } from './IChatStreamingState';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import CompletionsRequestBuilder from '../models/CompletionsRequestBuilder';
-import { Spinner, SpinnerSize, Stack, css } from '@fluentui/react';
+import { Stack, css } from '@fluentui/react';
 import MessagesList from './MessagesList';
 import UserMessage from './UserMessage';
 import { IChatMessage } from '../models/IChatMessage';
@@ -38,18 +38,8 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
     const content = this._validateWebPartProperties() ? (
       <Stack className={css(styles.chatStreaming, this.props.hasTeamsContext && styles.teams)}>
         <Stack.Item grow className={styles.messagesContainer}>
-          <MessagesList messages={this.state.sessionMessages} disableMarkdown={this.state.disableMarkdown} />
+          <MessagesList messages={this.state.sessionMessages} disableMarkdown={this.state.disableMarkdown} thinking={this.state.thinking} />
         </Stack.Item>
-        {this.state.thinking && (
-          <Stack.Item>
-            <Spinner
-              size={SpinnerSize.large}
-              label="Wait till our super cool AI system answers your question..."
-              ariaLive="assertive"
-              labelPosition="right"
-            />
-          </Stack.Item>
-        )}
         <Stack.Item>
           <UserMessage
             textFieldValue={this.state.userQuery}
@@ -77,6 +67,10 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
 
     this.state.sessionMessages.push({
       role: 'user', text: this.state.userQuery
+    });
+
+    this.state.sessionMessages.push({
+      role: 'assistant', text: ''
     });
 
     await this._chatAsStream();

@@ -9,6 +9,7 @@ import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react';
 export interface IMessagesListProps {
     messages: IChatMessage[];
     disableMarkdown?: boolean;
+    thinking?: boolean;
 }
 
 export default class MessagesList extends React.Component<IMessagesListProps, {}> {
@@ -28,7 +29,7 @@ export default class MessagesList extends React.Component<IMessagesListProps, {}
             if (m.role === 'user') {
                 return <UserQuestion key={i} message={m.text} />
             }
-            return <AssistantResponse key={i} message={m.text} disableMarkdown={this.props.disableMarkdown} />
+            return <AssistantResponse key={i} message={m.text} disableMarkdown={this.props.disableMarkdown} thinking={this.props.thinking} />
         });
 
         return (
