@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-personal-tools-list-client-side-solution",
+    "id": "a3e5be1e-1aab-4209-a4a9-130bf9856f4e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-personal-tools-list description"
+      },
+      "longDescription": {
+        "default": "react-personal-tools-list description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-personal-tools-list Feature",
+        "description": "The feature that activates elements of the react-personal-tools-list solution.",
+        "id": "79158938-954e-44c6-8bf0-b9406d3618d2",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-personal-tools-list.sppkg"
+  }
+}
