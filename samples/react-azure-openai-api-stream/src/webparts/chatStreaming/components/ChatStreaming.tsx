@@ -21,7 +21,10 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
 
     this.state = {
       userQuery: '',
-      sessionMessages: [],
+      sessionMessages: [{
+        role: 'assistant',
+        text: 'Hello! I am your AI assistant. How can I help you today?'
+      }],
       thinking: false
     }
 
