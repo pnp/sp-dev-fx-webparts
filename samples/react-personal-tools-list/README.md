@@ -2,22 +2,33 @@
 
 
 ## Summary
-
 This webpart allows users to select tools from a predefined list and save them in their own personalized view.
-It has the fundamental functionality - a great starting point to build upon if you need something more advanced.
+This webpart has the fundamental functionallity - a great starting point to build upon if you need something more advanced.
 
-The available tools are added to a list
+<video width="600" height="" controls>
+  <source src="./assets/video-demo1.mp4" type="video/mp4">
+</video>
+
+* The user can select from this list what link(s) he/she wants to be displayed for them.
+![](./assets/mytoold.png)
+
+* Select tools
+![](./assets/selecttools.png)
+![](./assets/savetools.png)
+
+* The tools will be displayed like this:
+![](./assets/savedtools.png)
+
+* The webpart title can be changed from the property pane, here you can also select to display the tools in two columns (defaults to 1 column if this is not selected)
+![](./assets/settings.png)
+
+#### In the background
+The available tools are added to a list to show up in the webpart
 ![](./assets/availableTools.png)
-
-And the user can select from this list what link(s) he/she wants to be displayed for them.
-
-![](./assets/MyToolsDemo1.gif)
-
 The webpart saves to another list..
 ![](./assets/mytoolslist.png)
 
-The webpart title can be changed from the property pane, here you can also select to display the tools in two columns (defaults to 1 column if this is not selected)
-![](./assets/MyToolsDemo2.gif)
+
 
 ## Compatibility
 
