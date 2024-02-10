@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-rssreader-client-side-solution",
+    "name": "PnP Sample - React RssReader",
     "id": "fcb53167-e0d5-4ed1-9648-149146649aa1",
-    "version": "1.0.2.0",
+    "version": "1.1.0.0",
     "developer": {
       "name": "Eric Overfield",
       "privacyUrl": "https://contoso.com/privacy",
@@ -13,7 +13,29 @@
     },
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "react-rssreader description"
+      },
+      "longDescription": {
+        "default": "react-rssreader description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "PnP Sample - React RssReader Webpart Feature",
+        "description": "The feature that activates RssReaderWebPart from the PnP Sample - React RssReader solution.",
+        "id": "f489b1fd-98bf-4b41-8db0-85d5018ba484",
+        "version": "1.1.0.0",
+        "componentIds": [
+          "f489b1fd-98bf-4b41-8db0-85d5018ba484"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-rssreader.sppkg"

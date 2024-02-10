@@ -2,22 +2,22 @@ import { html } from               'common-tags';
 import * as Handlebars from        'handlebars';
 import * as HandlebarsHelpers from        'handlebars-helpers';
 
-import                             'core-js/modules/es7.array.includes.js';
-import                             'core-js/modules/es6.string.includes.js';
-import                             'core-js/modules/es6.number.is-nan.js';
+// import                             'core-js/modules/es7.array.includes.js';
+// import                             'core-js/modules/es6.string.includes.js';
+// import                             'core-js/modules/es6.number.is-nan.js';
 
 import templateStyles from         './BaseTemplateService.module.scss';
 
 abstract class BaseTemplateService {
-    private _helper = null;
-    public CurrentLocale = "en";
+    private _helper: any = null;
+    public CurrentLocale: string = "en";
 
     constructor() {
         // Registers all helpers
         this.registerTemplateServices();
     }
 
-    private async LoadHandlebarsHelpers() {
+    private async LoadHandlebarsHelpers(): Promise<void> {
         this._helper = HandlebarsHelpers({
             handlebars: Handlebars
         });
@@ -92,11 +92,11 @@ abstract class BaseTemplateService {
     /**
      * Registers useful helpers for search results templates
      */
-    private registerTemplateServices() {
+    private registerTemplateServices(): void {
         // Return the URL or Title part of a URL automatic managed property
         // <p>{{getUrlField MyLinkOWSURLH "Title"}}</p>
         Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title") => {
-            let separatorPos = urlField.indexOf(",");
+            const separatorPos = urlField.indexOf(",");
             if (value === "URL") {
                 return urlField.substr(0, separatorPos);
             }
@@ -107,7 +107,7 @@ abstract class BaseTemplateService {
         // <p>{{getDate Created "LL"}}</p>
         Handlebars.registerHelper("getDate", (date: string, format: string) => {
           try {
-              let d = this._helper.moment(date, format, { lang: this.CurrentLocale, datejs: false });
+            const d = this._helper.moment(date, format, { lang: this.CurrentLocale, datejs: false });
               return d;
           } catch (error) {
               return;
@@ -123,9 +123,9 @@ abstract class BaseTemplateService {
 
           //remove Html tags if necessary
           if (ignoreHtml) {
-            let div = document.createElement("div");
+            const div = document.createElement("div");
             div.innerHTML = inputString;
-            inputString = (div.textContent || div.innerText || "").replace(/\&nbsp;/ig, "").trim();
+            inputString = (div.textContent || div.innerText || "").replace(/&nbsp;/ig, "").trim();
           }
 
           if (inputString.length < maxLength) {
@@ -298,15 +298,16 @@ abstract class BaseTemplateService {
         for (let i = 0; i < handlebarFunctionNames.length; i++) {
             const element = handlebarFunctionNames[i];
 
-            let regEx = new RegExp("{{#?.*?" + element + ".*?}}", "m");
+            const regExString: string = "{{#?.*?" + element + ".*?}}";
+            const regEx = new RegExp(regExString, "m");
             if (regEx.test(templateContent)) {
                 await this.LoadHandlebarsHelpers();
                 break;
             }
         }
 
-        let template = Handlebars.compile(templateContent);
-        let result = template(templateContext);
+        const template = Handlebars.compile(templateContent);
+        const result = template(templateContext);
 
         return result;
     }
@@ -317,9 +318,9 @@ abstract class BaseTemplateService {
      */
     public static isValidTemplateFile(filePath: string): boolean {
 
-        let path = filePath.toLowerCase().trim();
-        let pathExtension = path.substring(path.lastIndexOf('.'));
-        return (pathExtension == '.htm' || pathExtension == '.html');
+        const path = filePath.toLowerCase().trim();
+        const pathExtension = path.substring(path.lastIndexOf('.'));
+        return (pathExtension === '.htm' || pathExtension === '.html');
     }
 
     public abstract getFileContent(fileUrl: string): Promise<string>;

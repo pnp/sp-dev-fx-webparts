@@ -1,8 +1,8 @@
 import * as React                               from 'react';
 import AceEditor 							                	from 'react-ace';
-import { Dialog, DialogType, DialogFooter } 	  from 'office-ui-fabric-react/lib/Dialog';
-import { Button, ButtonType } 			            from 'office-ui-fabric-react/lib/Button';
-import { Label } 							                  from 'office-ui-fabric-react/lib/Label';
+import { Dialog, DialogType, DialogFooter } 	  from '@fluentui/react/lib/Dialog';
+import { Button, ButtonType } 			            from '@fluentui/react/lib/Button';
+import { Label } 							                  from '@fluentui/react/lib/Label';
 import { ITextDialogProps }                    	from './ITextDialogProps';
 import { ITextDialogState }                    	from './ITextDialogState';
 import styles                                   from './TextDialog.module.scss';
@@ -29,7 +29,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 	/*************************************************************************************
 	 * Shows the dialog
 	 *************************************************************************************/
-	private showDialog() {
+	private showDialog(): void {
 		this.setState({ dialogText: this.state.dialogText, showDialog: true });
 	}
 
@@ -37,7 +37,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 	/*************************************************************************************
 	 * Notifies the parent with the dialog's latest value, then closes the dialog
 	 *************************************************************************************/
-	private saveDialog() {
+	private saveDialog(): void {
 		this.setState({ dialogText: this.state.dialogText, showDialog: false });
 
 		if(this.props.onChanged) {
@@ -49,7 +49,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 	/*************************************************************************************
 	 * Closes the dialog without notifying the parent for any changes
 	 *************************************************************************************/
-	private cancelDialog() {
+	private cancelDialog(): void {
 		this.setState({ dialogText: this.state.dialogText, showDialog: false });
 	}
 
@@ -57,7 +57,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 	/*************************************************************************************
 	 * Updates the dialog's value each time the textfield changes
 	 *************************************************************************************/
-	private onDialogTextChanged(newValue: string) {
+	private onDialogTextChanged(newValue: string): void {
 		this.setState({ dialogText: newValue, showDialog: this.state.showDialog });
 	}
 
@@ -75,7 +75,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
     /*************************************************************************************
      * Renders the the TextDialog component
      *************************************************************************************/
-    public render() {
+    public render(): any {
       return (
         <div>
           <Label>{ this.props.strings.dialogButtonLabel }</Label>
