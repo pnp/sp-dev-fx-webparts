@@ -2,11 +2,14 @@ import * as React from "react";
 import UserQuestion from "./UserQuestion";
 import AssistantResponse from "./AssistantResponse";
 import { IChatMessage } from "../models/IChatMessage";
+import styles from "./ChatStreaming.module.scss";
 
 import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react';
 
 export interface IMessagesListProps {
     messages: IChatMessage[];
+    disableMarkdown?: boolean;
+    thinking?: boolean;
 }
 
 export default class MessagesList extends React.Component<IMessagesListProps, {}> {
@@ -26,12 +29,12 @@ export default class MessagesList extends React.Component<IMessagesListProps, {}
             if (m.role === 'user') {
                 return <UserQuestion key={i} message={m.text} />
             }
-            return <AssistantResponse key={i} message={m.text} />
+            return <AssistantResponse key={i} message={m.text} disableMarkdown={this.props.disableMarkdown} thinking={this.props.thinking} />
         });
 
         return (
-            <div style= {{ backgroundColor: '#f3f3f3', minHeight: '200px' }}>
-                <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto} style={{ padding: '20px' }}>
+            <div className={styles.messagesList}>
+                <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto} className={styles.scrollablePane}>
                     {output}
                 </ScrollablePane>
             </div>

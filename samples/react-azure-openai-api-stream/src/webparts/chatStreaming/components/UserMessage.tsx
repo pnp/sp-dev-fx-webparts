@@ -1,11 +1,14 @@
 import { IconButton, Stack, TextField } from '@fluentui/react';
 import * as React from 'react';
+import styles from './ChatStreaming.module.scss';
 
 export interface IUserMessageProps {
     onMessageChange: (query: string) => void;
     sendQuery: () => Promise<void>;
     controller: AbortController;
     textFieldValue: string;
+    disableMarkdown?: boolean;
+    toggleMarkdown: () => void;
 }
 
 export default class UserMessage extends React.Component<IUserMessageProps, {}> {
@@ -20,34 +23,30 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
     await this.props.sendQuery();
   };
 
-  private _keyDownHandler = async (e: KeyboardEvent): Promise<void> => {
-    if (e.ctrlKey && e.code === "Enter") {
-      await this._handleClick();
+
+  private _keyDownHandler = async (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>): Promise<void> => {
+    if(!event.shiftKey && event.key === "Enter") {
+      //Submits message when a user hits return (but still allows newlines for shift+enter)
+      event.preventDefault();
+      return this._handleClick();
     }
   };
 
-  public componentDidMount(): void {
-    window.addEventListener("keydown", this._keyDownHandler);
-  }
-
-  public componentWillUnmount(): void {
-    window.removeEventListener("keydown", this._keyDownHandler);
-  }
-
   public render(): React.ReactElement<IUserMessageProps> {
     return (
-      <Stack horizontal tokens={{ childrenGap: 5 }}>
-        <Stack.Item grow={1}>
+      <Stack horizontal className={styles.userMessage}>
+        <Stack.Item grow>
           <TextField
             multiline
             autoAdjustHeight
+            rows={5}
             value={this.props.textFieldValue}
             onChange={this._onChange}
-            label="User message"
-            placeholder="Type user query here."
+            onKeyDown={this._keyDownHandler}
+            placeholder={'Talk to our super cool AI system!\n(Shift + Enter for new line)'}
           />
         </Stack.Item>
-        <Stack.Item align="end">
+        <Stack verticalAlign='end'>
           <IconButton
             iconProps={{ iconName: "Send" }}
             title="Send"
@@ -60,7 +59,14 @@ export default class UserMessage extends React.Component<IUserMessageProps, {}> 
             ariaLabel="Stop"
             onClick={() => this.props.controller.abort()}
           />
-        </Stack.Item>
+          <IconButton
+            toggle
+            checked={!this.props.disableMarkdown}
+            onClick={this.props.toggleMarkdown}
+            title="Toggle Markdown"
+            ariaLabel="Markdown"
+            iconProps={{iconName:'MarkDownLanguage'}}/>
+        </Stack>
       </Stack>
     );
   }

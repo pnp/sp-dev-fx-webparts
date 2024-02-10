@@ -1,11 +1,11 @@
 import * as React from 'react';
-//import styles from './ChatStreaming.module.scss';
+import styles from './ChatStreaming.module.scss';
 import type { IChatStreamingProps } from './IChatStreamingProps';
 import { IChatStreamingState } from './IChatStreamingState';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import CompletionsRequestBuilder from '../models/CompletionsRequestBuilder';
-import { Spinner, SpinnerSize, Stack } from '@fluentui/react';
+import { Stack, css } from '@fluentui/react';
 import MessagesList from './MessagesList';
 import UserMessage from './UserMessage';
 import { IChatMessage } from '../models/IChatMessage';
@@ -21,8 +21,12 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
 
     this.state = {
       userQuery: '',
-      sessionMessages: [],
-      thinking: false
+      sessionMessages: [{
+        role: 'assistant',
+        text: 'Hello! I am your AI assistant. How can I help you today?'
+      }],
+      thinking: false,
+      disableMarkdown: false,
     }
 
     this._controller = new AbortController();
@@ -32,31 +36,18 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
   public render(): React.ReactElement<IChatStreamingProps> {
 
     const content = this._validateWebPartProperties() ? (
-      <Stack tokens={{ childrenGap: 20 }} style={{ minHeight: "100%" }}>
-        <Stack.Item
-          grow={1}
-          styles={{
-            root: { minHeight: "200px", height: "100%", position: "relative" },
-          }}
-        >
-          <MessagesList messages={this.state.sessionMessages} />
+      <Stack className={css(styles.chatStreaming, this.props.hasTeamsContext && styles.teams)}>
+        <Stack.Item grow className={styles.messagesContainer}>
+          <MessagesList messages={this.state.sessionMessages} disableMarkdown={this.state.disableMarkdown} thinking={this.state.thinking} />
         </Stack.Item>
-        {this.state.thinking && (
-          <Stack.Item>
-            <Spinner
-              size={SpinnerSize.large}
-              label="Wait till our super cool AI system answers your question..."
-              ariaLive="assertive"
-              labelPosition="right"
-            />
-          </Stack.Item>
-        )}
         <Stack.Item>
           <UserMessage
             textFieldValue={this.state.userQuery}
-            onMessageChange={this._onUserQueryChange}
-            sendQuery={this._onQuerySent}
+            onMessageChange={this._onUserQueryChange.bind(this)}
+            sendQuery={this._onQuerySent.bind(this)}
             controller={this._controller}
+            disableMarkdown={this.state.disableMarkdown}
+            toggleMarkdown={this._toggleMarkdown.bind(this)}
           />
         </Stack.Item>
       </Stack>
@@ -76,6 +67,10 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
 
     this.state.sessionMessages.push({
       role: 'user', text: this.state.userQuery
+    });
+
+    this.state.sessionMessages.push({
+      role: 'assistant', text: ''
     });
 
     await this._chatAsStream();
@@ -176,5 +171,11 @@ export default class ChatStreaming extends React.Component<IChatStreamingProps, 
     }
 
     return true;
+  }
+
+  private _toggleMarkdown(): void {
+    this.setState({
+      disableMarkdown: !this.state.disableMarkdown
+    });
   }
 }

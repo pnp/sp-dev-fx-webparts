@@ -1,10 +1,10 @@
-# Calling Azure OpenAI API in Stream mode
+# Calling Azure OpenAI API in Streaming Mode
 
 ## Summary
 
-This web part shows how you can call Azure OpenAI API in Streaming mode, so the web part shows the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to safe some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations).
+This web part shows how you can call Azure OpenAI API in Streaming mode. The web part will show the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to save some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations). AI responses render Markdown but there is a toggle to disable so you can compare Markdown rendering of responses with Streaming and without.
 
-![./assets/react-azure-openai-api-stream.gif](./assets/react-azure-openai-api-stream.gif)
+![Sample in action](./assets/screenshot.gif)
 
 ## Compatibility
 
@@ -44,13 +44,15 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-- [Luis Mañez](https://github.com/luismanez) |
+- [Luis Mañez](https://github.com/luismanez)
+- [Chris Kent](https://twitter.com/thechriskent)
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | January 2, 2024 | Initial release |
+| 1.1     | February 8, 2024 | Theme enhancements & markdown support |
 
 
 ## Minimal Path to Awesome
@@ -73,10 +75,7 @@ This sample illustrates the following concepts:
 - How to cancel an streaming request
 - Using MS Graph toolkit with the Person component
 - Multiple FluentUI components
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- Markdown rendering of AI responses
 
 ## References
 
@@ -85,3 +84,26 @@ This sample illustrates the following concepts:
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+## Help
+
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-azure-openai-api-stream%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-azure-openai-api-stream) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-azure-openai-api-stream&template=bug-report.yml&sample=react-azure-openai-api-stream&authors=@luismanez%20@thechriskent&title=react-azure-openai-api-stream%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-azure-openai-api-stream&template=question.yml&sample=react-azure-openai-api-stream&authors=@luismanez%20@thechriskent&title=react-azure-openai-api-stream%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-azure-openai-api-stream&template=suggestion.yml&sample=react-azure-openai-api-stream&authors=@luismanez%20@thechriskent&title=react-azure-openai-api-stream%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-azure-openai-api-stream" />

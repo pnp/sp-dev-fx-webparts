@@ -16,7 +16,7 @@
     "group": { "default": "Advanced" },
     "title": { "default": "OpenAi Chat in streaming" },
     "description": { "default": "This webpart provides an OpenAI chat in streaming mode." },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "OfficeChat",
     "properties": {
       "openAiApiKey": "",
       "openAiApiEndpoint": "",
