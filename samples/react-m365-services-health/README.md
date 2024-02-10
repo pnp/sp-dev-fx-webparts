@@ -2,12 +2,14 @@
 
 ## Summary
 
-Contains SPFx web part with below functionalities
+Contains SPFx web part & Azure Function with below functionalities
 
-1. Show the health status for all the M365 services
-2. Complete details including all the updates for all the impacted services
-   ![M365 Services Health List](./assets/M365ServiceHealthList.png)
-   ![Service Health Detail](./assets/M365ServiceHealthDetail.png)
+1. Azure Function to get the health status of all the M365 services using delegate or application permission.
+2. SPFx web part shows the health status for all the M365 services.
+3. SPFx web part shows the complete details including all the updates for all the impacted services.
+
+![M365 Services Health List](./assets/M365ServiceHealthList.png)
+![Service Health Detail](./assets/M365ServiceHealthDetail.png)
 
 ## Compatibility
 
@@ -18,8 +20,8 @@ Contains SPFx web part with below functionalities
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](<https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg> "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -34,22 +36,67 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 - [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
 ## Prerequisites
 
 - SharePoint Online tenant
-- You have to provide permission in SharePoint admin for accessing Graph API on behalf of your solution. You can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). You have to use API Access Page of SharePoint admin and add below permission for our use case.
+- Valid Azure subscription
 
-```
- "webApiPermissionRequests": [
-      {
-        "resource": "Microsoft Graph",
-        "scope": "ServiceHealth.Read.All"
-      }
-    ]
+Steps to follow:
 
-```
+- Entra ID App Registration:
+
+  1. Register new Entra ID App in [Azure portal](https://portal.azure.com/).
+  2. Select App registrations.
+  3. Select New registration.
+  4. For Supported account types, select Accounts in this organization directory only. Leave the other options as is.
+  5. Select Register.
+
+  ![Azure Entra ID app registration](./assets/AppRegistration.png)
+
+  6. After registering the application, you can find the application (client) ID and Directory (tenant) ID from the overview menu option of Entra ID App. Make a note of the values for use later.
+  7. Select Certificates & Secrets in the manage section of Entra ID app created and select New Client Secret. Select Recommended 6 months in the Expires field. This new secret will be valid for six months. You can also choose different values such as:
+
+      - 03 months
+      - 12 months
+      - 24 months
+      - Custom start date and end date.
+
+  8. Select API Permissions option of Entra ID app created.
+  9. Select Add a permission.
+  10. Select Microsoft Graph and add permissions as per below:
+
+      - Select Delegate permissions and then select ServiceHealth.Read.All, if you want to run the Service health web part based on user permssions. User must have 'Message center Reader' role to access the service health status.
+      - Select Application permissions and then select ServiceHealth.Read.All, if you want to run the Service health web part in elevated permissions mode.
+
+  11. Select Expose an API and Select Add next to Application ID URI. You can use the default value of api://<application-client-id> or another supported [App ID URI pattern](https://learn.microsoft.com/en-us/entra/identity-platform/reference-app-manifest#identifieruris-attribute).Make a note of the applicaiton ID URI for use later.
+
+- Azure Function App Deployment:
+  Azure Function can be deployed using Visual Studio or Visual Studio code. Alternatively PowerShell can be used to deploy the Azure Function and to configure the required configuration settings. Below are the steps required to deploy Azure function:
+
+  1. Open [AzureFunctionDeployment.ps1](./PowerShell/AzureFunctionDeployment.ps1).
+  2. Update the required variables and execute the PowerShell script. Please note that provided PowerShell use [Azure-CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli) commands.
+
+- SPFx configuration
+
+  1. You have to provide permission in SharePoint admin for accessing azure function on behalf of your solution. You can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). You have to use API Access Page of SharePoint admin and add below permission for our use case.
+
+  ```
+  "webApiPermissionRequests": [
+        {
+          "resource": <Replace with Application ID URI created during `Expose an API' step>,
+          "scope": "ServiceHealth.Read.All"
+        }
+      ]
+
+  ```
+
+  2. Provide the values in web part properties as per below
+      - Provide the Azure function app URL(without /api/m365servicehealth) in API Base URL property
+      - Provide Application ID URI(created during 'Expose an API' step) in Audience property
+
+      ![Web Part Properties](./assets/WebPartProperties.png)
 
 ## Contributors
 
@@ -57,9 +104,10 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Version history
 
-| Version | Date              | Comments        |
-| ------- | ----------------- | --------------- |
-| 1.0     | February 15, 2023 | Initial release |
+| Version | Date              | Comments                            |
+| ------- | ----------------- | ----------------------------------- |
+| 1.0     | February 15, 2023 | Initial release                     |
+| 2.0     | February 10, 2024 | Implementation using Azure Function |
 
 ## Minimal Path to Awesome
 
