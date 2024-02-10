@@ -4,12 +4,12 @@
 
 A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-This RSS Reader utilizes SharePoint Framework v1.18.2 with no dependency on jQuery or a RSS Feed library. This project does utilize [	
+This RSS Reader utilizes SharePoint Framework v1.18.2 with no dependency on jQuery or a RSS Feed library. This project does utilize [ 
 @pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 18 (validated using v18.17.1) to compile or rebuild the SPFx solution.
 
 Main features include:
 
-- Three different RSS Feed retrieval services, direct, https://feed2json.org, https://rss2json.com
+- Three different RSS Feed retrieval services, direct, <https://feed2json.org>, <https://rss2json.com>
 - Optionally store RSS feed results to local storage for quick reload with configurable timeout window
 - Optional CORS proxy service for cross origin feeds
 - Optional View All link in header to point to custom feed source
@@ -18,7 +18,7 @@ Main features include:
 -- Demonstration of color picker property for color control of certain aspects of web part
 - Custom feed rendering using local or remote handlebar template
 
-![RSS Reader](./assets/react-rss-reader.gif)
+![RSS Reader](./assets/react-rss-reader-original.gif)
 
 ## Compatibility
 
@@ -40,15 +40,15 @@ Tested with: Node.js v18.17.1
 
 ## Applies to
 
-* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Contributors
 
-* [Abderahman Moujahid](https://github.com/Abderahman88)
-* [Eric Overfield](https://github.com/eoverfield)
-* [Kalle Mansikkaniemi](https://github.com/djsladi)
-* [Lauri Koskimies](https://github.com/koskimiesl)
+- [Abderahman Moujahid](https://github.com/Abderahman88)
+- [Eric Overfield](https://github.com/eoverfield)
+- [Kalle Mansikkaniemi](https://github.com/djsladi)
+- [Lauri Koskimies](https://github.com/koskimiesl)
 
 ## Version history
 
@@ -65,7 +65,7 @@ Version|Date|Comments
 
 - Clone this repository
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ### SPFx
 
@@ -85,11 +85,11 @@ Version|Date|Comments
 
 #### RSS Reader Settings
 
-Setting | Description 
+Setting | Description
 -------|----
 Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XML
-Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
-Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
+Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at <https://github.com/appsattic/feed2json.org>. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available.
+Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at <https://github.com/appsattic/feed2json.org>
 Feed Service API Key | If using rss2json, an optional API key for paid services
 Max Count | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services.
 Cache Results | Locally store results in browser local storage, default: no
@@ -97,7 +97,7 @@ Mins to Cache Results | If storing results in browser, number of minutes to stor
 Storage Key Prefix | An optional local storage key prefix to use when storing results
 Loading Message | An optional custom message to display while the RSS feed is being loaded
 Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no
-CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. https://cors-anywhere.herokuapp.com/{0}. To use CORS anywhere by Herokuapp for testing, be sure to visit ![https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing.
+CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. <https://cors-anywhere.herokuapp.com/{0}>. To use CORS anywhere by Herokuapp for testing, be sure to visit ![https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing.
 Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no
 
 #### Styling Options
@@ -110,8 +110,8 @@ Disable CORS | Set request header mode to "no-cors", thus not requesting CORS re
 |View All Link | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none|
 |View All Link Label | An optional label for the View All Link|
 
-
 ##### Default layout options
+
 |Setting | Description|
 -------|----
 Show Publication Date | Display the publication date
@@ -123,6 +123,7 @@ Title Color | Color override for a listing title
 Background Color | Color override for the web part background
 
 ## Features
+
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Use HttpClient to retrieve data from an outside data source using different services
@@ -130,7 +131,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Demonstrate different method to address CORS / CORB issues
 - Handlebar based rendering with inline editor or remote template retrieval
 - Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic).
-
 
 ## Help
 
