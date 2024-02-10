@@ -10,8 +10,8 @@ export class DomHelper {
      * @param callback the callback function
      * @param scope the scope 
      */
-    public static forEach(array, callback, scope?) {
-        for (var i = 0; i < array.length; i++) {
+    public static forEach(array: any, callback: any, scope?: any): void {
+        for (let i = 0; i < array.length; i++) {
             callback.call(scope, i, array[i]); 
         }
     }
@@ -21,7 +21,7 @@ export class DomHelper {
      * @param el the dom element to insert 
      * @param referenceNode the parent node to insert after
      */
-    public static insertAfter(el, referenceNode) {
+    public static insertAfter(el: any, referenceNode: any): void {
         referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
     }
 }

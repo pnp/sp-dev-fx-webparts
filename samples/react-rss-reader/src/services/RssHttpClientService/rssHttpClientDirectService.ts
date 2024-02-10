@@ -21,7 +21,7 @@ import { RssXmlParserService } from                        '../../services/RssXm
 export class RssHttpClientDirectService implements IRssHttpClientComponentService {
   public async get(feedRequest: IRssReaderRequest): Promise<IRssReaderResponse> {
 
-    var p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
+    const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
       let rawFeedOutput: any = null;
       let response: IRssReaderResponse = null;
@@ -47,7 +47,7 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
         RssXmlParserService.init();
 
         try {
-          let feedOutput = await RssXmlParserService.parse(rawFeedOutput);
+          const feedOutput = await RssXmlParserService.parse(rawFeedOutput);
 
           if (feedOutput) {
             response = this.convertRssFeedToRssReaderResponse(feedOutput, feedRequest.maxCount);
@@ -73,7 +73,7 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
   }
 
   public convertRssFeedToRssReaderResponse(input: any, maxCount: number) : IRssReaderResponse {
-    var response: IRssReaderResponse = {query: null} as IRssReaderResponse;
+    const response: IRssReaderResponse = {query: null} as IRssReaderResponse;
 
     if (!input) {
       return null;
@@ -109,7 +109,7 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
       } as IRssQueryResults;
 
       input.items.map((item: any) => {
-        let newItem: IRssResult = {} as IRssResult;
+        const newItem: IRssResult = {} as IRssResult;
 
         newItem.channel = {} as IRssChannel;
         newItem.channel.item = {} as IRssItem;

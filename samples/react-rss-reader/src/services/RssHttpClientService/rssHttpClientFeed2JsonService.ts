@@ -21,7 +21,7 @@ import {
 export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentService {
   public async get(feedRequest: IRssReaderRequest): Promise<IRssReaderResponse> {
 
-    var p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
+    const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
       let rawFeedOutput: any = null;
       let response: IRssReaderResponse = null;
@@ -29,7 +29,7 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
       try {
 
         //Create the url to the feed2json service url per documentation at: https://feed2json.org/
-        let rssUrl: string = (feedRequest.feedServiceUrl ? feedRequest.feedServiceUrl : "https://feed2json.org/convert") + "?url=" + feedRequest.url;
+        const rssUrl: string = (feedRequest.feedServiceUrl ? feedRequest.feedServiceUrl : "https://www.toptal.com/developers/feed2json/convert") + "?url=" + feedRequest.url;
 
         rawFeedOutput = await RssHttpClientService.getRssJson(rssUrl, feedRequest.useCorsProxy ? feedRequest.corsProxyUrl : "", feedRequest.disableCorsMode);
 
@@ -65,7 +65,7 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
   }
 
   public convertRssFeedToRssReaderResponse(input: any, maxCount: number) : IRssReaderResponse {
-    var response: IRssReaderResponse = {query: null} as IRssReaderResponse;
+    const response: IRssReaderResponse = {query: null} as IRssReaderResponse;
 
     if (!input) {
       return null;
@@ -101,7 +101,7 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
       } as IRssQueryResults;
 
       input.items.map((item: any) => {
-        let newItem: IRssResult = {} as IRssResult;
+        const newItem: IRssResult = {} as IRssResult;
 
         newItem.channel = {} as IRssChannel;
         newItem.channel.item = {} as IRssItem;
