@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-graph-webpart-report-client-side-solution",
     "id": "d5339db5-8abe-451a-8afe-57a16de5d286",
-    "version": "2.1.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
