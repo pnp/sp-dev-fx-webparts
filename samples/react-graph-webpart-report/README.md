@@ -51,6 +51,7 @@ Microsoft Graph permission:
 | ------- | ---------------- | --------------- |
 | 1.0     | March 23, 2023 | Initial release |
 | 2.0     | July 11, 2023  | Add minor features|
+| 3.0     | February 12, 2024 | Upgrade to SPFx 1.18.2 |
 
 ## Minimal Path to Awesome
 
