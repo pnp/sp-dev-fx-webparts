@@ -122,7 +122,7 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    public static setSPProperty(name: string, value: string, siteUrl: string) { 
+    public static setSPProperty(name: string, value: string, siteUrl: string) {
         return new Promise((resolve, reject) => {
             let webProps;
             const clientContext = new SP.ClientContext(siteUrl);
@@ -134,7 +134,7 @@ export default class utils {
             clientContext.load(web);
             clientContext.load(webProps);
             clientContext.executeQueryAsync(
-                (sender, args) => { resolve(); },
+                (sender, args) => { resolve(webProps); },
                 (sender, args) => { reject(args.get_message()); }
             );
 
@@ -246,7 +246,7 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    
+
     public static parseMultilineTextToArray(value: string): Array<string> {
         if (!value) {
             return [];

@@ -1,30 +1,12 @@
-import * as React from 'react';
-import { IPropertyBagGlobalNavProps } from './IPropertyBagGlobalNavProps';
-import pnp from "sp-pnp-js";
-import { SortDirection } from "sp-pnp-js";
 import * as _ from "lodash";
-import { SearchQuery, SearchResults } from "sp-pnp-js";
-import { css } from "office-ui-fabric-react";
+import * as React from 'react';
+import pnp, { SearchQuery, SearchResults } from "sp-pnp-js";
+import { IPropertyBagGlobalNavProps } from './IPropertyBagGlobalNavProps';
 
-import { Label } from "office-ui-fabric-react/lib/Label";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { Link } from "office-ui-fabric-react/lib/Link";
-import { List } from "office-ui-fabric-react/lib/List";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as md from "../../shared/MessageDisplay";
 import utils from "../../shared/utils";
-import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
-import {
-  DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
-} from "office-ui-fabric-react/lib/DetailsList";
-import {
-  GroupedList
-} from "office-ui-fabric-react/lib/GroupedList";
-import {
-  IViewport
-} from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
-import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export class PropertyBagGlobalNavState {
   public menuitems: Array<IContextualMenuItem>; // The menuItems to display
   public errorMessages: Array<md.Message>;// any error messages
@@ -43,28 +25,29 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
    * 
    * @memberOf PropertyBagGlobalNav
    */
-  public addMenuItem(r: any): void {
+  public addMenuItem(items: Array<IContextualMenuItem>, r: any): Array<IContextualMenuItem> {
     let currentItem: IContextualMenuItem;
-    let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
-    debugger;
+    let currentSet: Array<IContextualMenuItem> = items;
+
     for (const managedProperty of this.props.managedProperties) {
       if (r[managedProperty]) {// if site does not have this property set
         const value = r[managedProperty].trim();
         currentItem = _.find(currentSet, i => { return i.key === value; });
         if (!currentItem) {
-          const idx = currentSet.push({ key: value, name: value, items: [] });
+          const idx = currentSet.push({ key: value, name: value, subMenuProps: { items: [] } });
           currentItem = currentSet[idx - 1];
         }
-        currentSet = currentItem.items;
+        currentSet = currentItem.subMenuProps.items;
       }
     }
     if (currentItem) {  // should have it if  site does  have this property set
-      currentItem.items.push({
+      currentItem.subMenuProps.items.push({
         key: r['Title'],
         name: r['Title'],
         href: r['SPSiteUrl']
       });
     }
+    return items;
   }
   /**
    * Gets the list of sites to be displayed in the Menu using the filters specified in
@@ -107,12 +90,20 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      this.state.menuitems = [];
+      // this.state.menuitems = [];
+      // for (const r of results.PrimarySearchResults) {
+      //   this.addMenuItem(r);
+      // }
+      // this.setState(this.state);
+      let menuitems = [];
       for (const r of results.PrimarySearchResults) {
-        this.addMenuItem(r);
+        this.addMenuItem(menuitems, r);
       }
+      debugger;
+      this.setState((current) => ({ ...current, menuitems: menuitems }));
 
-      this.setState(this.state);
+
+
     }).catch(err => {
       debugger;
       this.state.errorMessages.push(new md.Message(err));

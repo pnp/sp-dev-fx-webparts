@@ -12,7 +12,7 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+import { ButtonType, PrimaryButton, DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import * as md from "../../shared/MessageDisplay";
 import MessageDisplay from "../../shared/MessageDisplay";
@@ -127,7 +127,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
             hideMessage={this.removePanelMessage.bind(this)} />
 
           <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
-          <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
+          <span> <Label >Site Url</Label> {this.state.workingStorage.Url}</span>
           <table>
             <thead>
               <tr>
@@ -155,7 +155,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                   <td>
                     <Toggle label=""
                       checked={dp.searchable}
-                      onChanged={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
+                      onChange={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
                     />
                   </td>
                 </tr>);
@@ -164,10 +164,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           </table>
           <Toggle label="Force Crawl"
             checked={this.state.workingStorage.forceCrawl}
-            onChanged={this.onForceCrawlChange.bind(this)}
+            onChange={this.onForceCrawlChange.bind(this)}
           />
-          <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
-          <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
+          <DefaultButton default={true} iconProps={{ iconName: "Save" }} value="Save" onClick={this.onSave.bind(this)} >Save</DefaultButton>
+          <PrimaryButton iconProps={{ iconName: "Cancel" }} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</PrimaryButton>
 
         </Panel>
       );
@@ -248,8 +248,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public stopediting() {
-    this.state.isediting = false;
-    this.setState(this.state);
+    this.setState((current) => ({
+      ...current,
+      isediting: false,
+
+    }));
   }
   /**
    * Caled by the Details list to render a column as a URL rather than text
@@ -329,18 +332,26 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public componentWillMount() {
-    this.state.columns = this.setupColumns();
-    this.state.managedToCrawedMapping = [];
-    this.state.managedPropNames = [];
+    // this.state.columns = this.setupColumns();
+    // this.state.managedToCrawedMapping = [];
+    // this.state.managedPropNames = [];
+    var initState = {
+
+      columns: this.setupColumns(),
+      managedToCrawedMapping: [],
+      managedPropNames: [],
+      sites: [],
+      errorMessages: []
+    };
     for (const prop of this.props.propertiesToDisplay) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
-      this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
-      this.state.managedPropNames.push(names[1]);
+      initState.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
+      initState.managedPropNames.push(names[1]);
     }
-    this.state.managedPropNames.unshift("Title");
-    this.state.managedPropNames.unshift("Url");
-    this.state.managedPropNames.unshift("SiteTemplate");
-    this.state.managedPropNames.unshift("SiteTemplateId");
+    initState.managedPropNames.unshift("Title");
+    initState.managedPropNames.unshift("Url");
+    initState.managedPropNames.unshift("SiteTemplate");
+    initState.managedPropNames.unshift("SiteTemplateId");
     let querytext = "contentclass:STS_Site ";
     if (this.props.siteTemplatesToInclude) {
       if (this.props.siteTemplatesToInclude.length > 0) {
@@ -353,8 +364,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           else {
             querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
           }
-          if (this.props.siteTemplatesToInclude.indexOf(siteTemplate) !== this.props.siteTemplatesToInclude.length - 1)
-          { querytext += " OR "; }
+          if (this.props.siteTemplatesToInclude.indexOf(siteTemplate) !== this.props.siteTemplatesToInclude.length - 1) { querytext += " OR "; }
         }
         querytext += " )";
       }
@@ -362,26 +372,26 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     console.log("Using Query " + querytext);
     const q: SearchQuery = {
       Querytext: querytext,
-      SelectProperties: this.state.managedPropNames,
+      SelectProperties: initState.managedPropNames,
       RowLimit: 999,
       TrimDuplicates: false
     };
     pnp.sp.search(q).then((results: SearchResults) => {
       for (const r of results.PrimarySearchResults) {
         const obj: any = {};
-        for (const dp of this.state.managedPropNames) {
+        for (const dp of initState.managedPropNames) {
           obj[dp] = r[dp];
         }
         obj.SiteTemplate = obj.SiteTemplate + "#" + obj.SiteTemplateId;
-        this.state.sites.push(obj);
+        initState.sites.push(obj);
       }
       debugger;
-      this.state.errorMessages.push(new md.Message("Items Recieved"));
-      this.setState(this.state);
+      initState.errorMessages.push(new md.Message("Items Recieved"));
+      this.setState({ ...initState });
     }).catch(err => {
       debugger;
-      this.state.errorMessages.push(new md.Message(err));
-      this.setState(this.state);
+      initState.errorMessages.push(new md.Message(err));
+      this.setState({ ...initState });
     });
   }
   /** Event Handlers */
@@ -394,8 +404,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public onActiveItemChanged(item?: any, index?: number) {
-    this.state.selectedIndex = index;
-    this.setState(this.state);
+    //this.state.selectedIndex = index;
+    this.setState((current) => ({ ...current, selectedIndex: index }));
   }
 
   /**
@@ -419,8 +429,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         if (this.state.workingStorage.forceCrawl) {
           utils.forceCrawl(this.state.workingStorage.Url);
         }
-        this.state.workingStorage = null;
-        this.state.isediting = false;
+        // this.state.workingStorage = null;
+        // this.state.isediting = false;
+        this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
 
         this.setState(this.state);
       }).catch((err) => {
@@ -438,9 +449,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public onCancel(e?: MouseEvent): void {
-    this.state.isediting = false;
-    this.state.workingStorage = null;
-    this.setState(this.state);
+    // this.state.isediting = false;
+    // this.state.workingStorage = null;
+    this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
   }
   /**
    * Set the ForceCrawl Value in working storage which can be used to force a crawl of the site
@@ -450,7 +461,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  
+
   public onForceCrawlChange(newValue: boolean) {
     this.state.workingStorage.forceCrawl = newValue;
     this.setState(this.state);
@@ -474,7 +485,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     dp.searchable = value;
     this.setState(this.state);
   }
- 
+
   /**
    * Called when user wishes to edit an item.
    * The List displayes the values from the search index. 
@@ -485,6 +496,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public onEditItemClicked(e?: MouseEvent): void {
+    debugger;
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
     const web = new Web(selectedSite.Url);
@@ -492,17 +504,20 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       const crawledProps: Array<string> = this.props.propertiesToDisplay.map(item => {
         return item.split("|")[0];
       });
-      this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-      this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
-      this.state.workingStorage.errorMessages = new Array<md.Message>();
+      let temp = _.clone(this.state.sites[this.state.selectedIndex]);
+      temp.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
+      temp.errorMessages = new Array<md.Message>();
       // now add in the managed Prop
       for (const dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =
           _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
       }
-      this.state.isediting = true;
-      this.setState(this.state);
+      this.setState((current) => ({
+        ...current,
+        workingStorage: temp, isediting: true
+
+      }));
     });
     console.log("out onEditItemClicked");
   }
@@ -526,15 +541,19 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       column.isSortedDescending = false;
     }
     // Sort the items.
-    this.state.sites = _.orderBy(this.state.sites, [(site, x, y, z) => {
+    let temp = _.orderBy(this.state.sites, (site) => {
       if (site[column.fieldName]) {
         return site[column.fieldName].toLowerCase();
       }
       else {
         return "";
       }
-    }], [column.isSortedDescending ? "desc" : "asc"]);
-    this.setState(this.state);
+    }, [column.isSortedDescending ? "desc" : "asc"]);
+    this.setState((current) => ({
+      ...current,
+      sites: temp
+
+    }));
   }
 
 

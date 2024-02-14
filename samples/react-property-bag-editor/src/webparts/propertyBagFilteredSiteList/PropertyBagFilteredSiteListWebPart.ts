@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneToggle, PropertyPaneChoiceGroup
-} from '@microsoft/sp-webpart-base';
-
+// import {
+//   BaseClientSideWebPart,
+//   IPropertyPaneConfiguration,
+//   PropertyPaneTextField,
+//   PropertyPaneToggle, PropertyPaneChoiceGroup
+// } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle, PropertyPaneChoiceGroup } from "@microsoft/sp-property-pane";
 import * as strings from 'propertyBagFilteredSiteListStrings';
 import PropertyBagFilteredSiteList from './components/PropertyBagFilteredSiteList';
 import { IPropertyBagFilteredSiteListProps } from './components/IPropertyBagFilteredSiteListProps';

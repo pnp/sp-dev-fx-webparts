@@ -10,8 +10,8 @@ import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBa
  * @class Message
  */
 export class Message {
-   public Id: string;
-   public text: string;
+    public Id: string;
+    public text: string;
     public constructor(msg: string) {
         this.text = msg;
         this.Id = Guid.newGuid().toString();
@@ -37,15 +37,16 @@ export default class MessageDisplay extends React.Component<IMessageDisplayProps
      * @memberOf MessageDisplay
      */
     public createDismissHandler = (messageId) => (vale) => {
-            this.props.hideMessage(messageId);
+        this.props.hideMessage(messageId);
     }
     public render(): React.ReactElement<IMessageDisplayProps> {
-           return (
+
+        return (
             <div>
                 {this.props.messages.map((message, y, z) => {
                     return (
                         <MessageBar
-                            messageBarType={MessageBarType.remove}
+                            messageBarType={MessageBarType.error}
                             isMultiline={true}
                             onDismiss={this.createDismissHandler(message.Id)}>
                             {message.text}

@@ -1,35 +1,14 @@
-import * as React from "react";
-import pnp from "sp-pnp-js";
-import { SortDirection } from "sp-pnp-js";
 import * as _ from "lodash";
+import * as React from "react";
+import pnp, { SearchQuery, SearchResults } from "sp-pnp-js";
 import DisplayProp from "../../shared/DisplayProp";
-import { SearchQuery, SearchResults } from "sp-pnp-js";
-import { css } from "office-ui-fabric-react";
 //import styles from "./PropertyBagFilteredSiteList.module.scss";
-import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
+import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { Link } from "office-ui-fabric-react/lib/Link";
-import { List } from "office-ui-fabric-react/lib/List";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import * as md from "../../shared/MessageDisplay";
+import MessageDisplay, * as md from "../../shared/MessageDisplay";
 import utils from "../../shared/utils";
-import MessageDisplay from "../../shared/MessageDisplay";
-import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
-import {
-  DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
-} from "office-ui-fabric-react/lib/DetailsList";
-import {
-  GroupedList
-} from "office-ui-fabric-react/lib/GroupedList";
-import {
-  IViewport
-} from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
+import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
 
-import {
-  Panel, PanelType
-} from "office-ui-fabric-react/lib/Panel";
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
@@ -71,8 +50,7 @@ export class AppliedUserFilter {
    */
   public constructor(
     public managedPropertyName: string,
-    public value: string)
-  { }
+    public value: string) { }
 }
 export class UserFilter {
 
@@ -91,7 +69,7 @@ export class UserFilter {
 }
 export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
   public constructor(props) {
-      console.log(JSON.stringify("in constructor"));
+    console.log(JSON.stringify("in constructor"));
     super(props);
     this.state = { sites: [], filteredSites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
@@ -119,11 +97,17 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public setupUserFilters(userFilterNames: Array<string>) {
-      console.log(JSON.stringify("in extractUserFilterValues"));
-    this.state.userFilters = [];
+    console.log(JSON.stringify("in extractUserFilterValues"));
+    // this.state.userFilters = [];
+    // for (const userFilterName of userFilterNames) {
+    //   this.state.userFilters.push(new UserFilter(userFilterName));
+    // }
+    let userFilters = [];
     for (const userFilterName of userFilterNames) {
-      this.state.userFilters.push(new UserFilter(userFilterName));
+      userFilters.push(new UserFilter(userFilterName));
     }
+    this.setState((current) => ({ ...current, userFilters: userFilters }));
+
   }
 
   /**
@@ -134,7 +118,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public extractUserFilterValues(r) {
-     console.log(JSON.stringify("in extractUserFilterValues"));
+    console.log(JSON.stringify("in extractUserFilterValues"));
     for (const userFilter of this.state.userFilters) {
       const value = r[userFilter.managedPropertyName].trim();
       if (_.find(userFilter.values, v => { return v === value; })) {
@@ -157,14 +141,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public getSites(siteTemplatesToInclude: Array<string>, filters:Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
- console.log(JSON.stringify("in getSites"));
+  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
+    console.log(JSON.stringify("in getSites"));
     const userFilterNameArray = [];
     if (userFilters) {
       for (const userFilter of userFilters) {
-        
-          userFilterNameArray.push(userFilter);
-      
+
+        userFilterNameArray.push(userFilter);
+
       }
     }
     let querytext = "contentclass:STS_Site ";
@@ -201,19 +185,34 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      this.state.sites = [];
+      // this.state.sites = [];
+      // debugger;
+      // this.setupUserFilters(userFilterNameArray);
+      // for (const r of results.PrimarySearchResults) {
+      //   const index = this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+
+      //   for (const mp of this.props.userFilters) {
+      //     this.state.sites[index-1][mp] = r[mp];
+      //   }
+      //   this.extractUserFilterValues(r);
+      // }
+      // this.filterSites();
+      // this.setState(this.state);
+      let sites = [];
       debugger;
       this.setupUserFilters(userFilterNameArray);
       for (const r of results.PrimarySearchResults) {
-        const index = this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+        debugger;
+        const index = sites.push(new Site(r.Title, r.Description, r["SPSiteUrl"]));
 
         for (const mp of this.props.userFilters) {
-          this.state.sites[index-1][mp] = r[mp];
+          sites[index - 1][mp] = r[mp];
         }
         this.extractUserFilterValues(r);
       }
-      this.filterSites();
-      this.setState(this.state);
+      debugger;
+      let filteredSites = this.filterSites(sites);// need to pass sites iun here and return the filtered array!!!
+      this.setState((current) => ({ ...current, filteredSites: filteredSites, sites: sites }));
     }).catch(err => {
       debugger;
       this.state.errorMessages.push(new md.Message(err));
@@ -228,7 +227,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public componentWillMount() {
-  console.log(JSON.stringify("in componentWillMount"));
+    console.log(JSON.stringify("in componentWillMount"));
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
   /**
@@ -241,7 +240,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
-   console.log(JSON.stringify("in componentWillReceiveProps"));
+    console.log(JSON.stringify("in componentWillReceiveProps"));
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
   /**
@@ -255,7 +254,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public conditionallyRenderDescription(site: Site) {
-       console.log(JSON.stringify("in conditionallyRenderDescription"));
+    console.log(JSON.stringify("in conditionallyRenderDescription"));
     if (this.props.showSiteDescriptions) {
       return (<Label>{site.description}</Label>);
     }
@@ -273,19 +272,19 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   private SetupFilters(): Array<IContextualMenuItem> {
-       console.log(JSON.stringify("in SetupFilters"));
+    console.log(JSON.stringify("in SetupFilters"));
     const items = new Array<IContextualMenuItem>();
     for (const uf of this.state.userFilters) {
       const item: IContextualMenuItem = {
         key: uf.managedPropertyName,
         name: uf.managedPropertyName,
         title: uf.managedPropertyName,
-        href:null,
-      
+        href: null,
+
       }
-      item.items = [];
+      item.subMenuProps = { items: [] };
       for (const value of uf.values) {
-        item.items.push({
+        item.subMenuProps.items.push({
           key: value,
           data: {
             managedPropertyName: uf.managedPropertyName,
@@ -311,16 +310,16 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
-     console.log(JSON.stringify("in AppliedFilterExists"));
- 
+    console.log(JSON.stringify("in AppliedFilterExists"));
+
     const selectedFilter = _.find(this.state.appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
-    if (selectedFilter) { 
+    if (selectedFilter) {
       return true;
-     } else {
-        return false; 
-      }
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -331,14 +330,24 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public ToggleAppliedUserFilter(item: IContextualMenuItem) {
-      console.log(JSON.stringify("in ToggleAppliedUserFilter"));
+    console.log(JSON.stringify("in ToggleAppliedUserFilter"));
     if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
-      this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
-        return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
-      });
+      // this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
+      //   return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
+      // });
+      this.setState((current) => ({
+        ...current,
+        appliedUserFilters: current.appliedUserFilters.filter(af => {
+          return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
+        })
+
+      }))
     }
     else {
-      this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
+      // this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
+      let temp = this.state.appliedUserFilters;
+      temp.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
+      this.setState((current) => ({ ...current, appliedUserFilters: temp }))
     }
 
   }
@@ -351,22 +360,24 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public filterSites() {
-        console.log(JSON.stringify("in filterSites"));
+  public filterSites(sites: Site[]): Site[] {
+    console.log(JSON.stringify("in filterSites"));
     if (this.state.appliedUserFilters.length === 0) {
-      this.state.filteredSites = this.state.sites;
+      return sites;
     }
     else {
 
-      this.state.filteredSites = this.state.sites.filter(site => {
+      let filteredSites = sites.filter(site => {
         debugger;
         for (const auf of this.state.appliedUserFilters) {
-          if (site[auf.managedPropertyName] !== auf.value) {
-            return false;
+          if (site[auf.managedPropertyName] === auf.value) {
+            return true;
           }
         }
-        return true;
+        return false;
+
       });
+      return filteredSites;
     }
   }
   /**
@@ -381,16 +392,17 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-      console.log(JSON.stringify("in filterOnMetadata"));
+    console.log(JSON.stringify("in filterOnMetadata"));
     this.ToggleAppliedUserFilter(item);
-    this.filterSites();
-    this.setState(this.state);
+    // this.filterSites();
+    // this.setState(this.state);
+    this.setState((current) => ({ ...current, filteredSites: this.filterSites(current.sites) }));
   }
 
-   public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-           console.log(JSON.stringify("in doNothing"));
-           ev.stopPropagation();
-           return false;
+  public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+    console.log(JSON.stringify("in doNothing"));
+    ev.stopPropagation();
+    return false;
 
   }
 
@@ -411,11 +423,13 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       </li>
     );
     const commandItems: Array<IContextualMenuItem> = this.SetupFilters();
-        console.log(JSON.stringify("commandItems follow"));
+    console.log(JSON.stringify("commandItems follow"));
     console.log(JSON.stringify(commandItems));
     return (
       <div >
         <Label>{this.props.description}</Label>
+        <Label>Sites:{this.state.sites.length}</Label>
+        <Label>FoltererdSites:{this.state.filteredSites.length}</Label>
         <CommandBar items={commandItems} />
         <MessageDisplay
           messages={this.state.errorMessages}

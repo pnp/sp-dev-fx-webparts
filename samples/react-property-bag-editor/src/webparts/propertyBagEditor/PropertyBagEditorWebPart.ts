@@ -2,12 +2,8 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version, UrlQueryParameterCollection } from "@microsoft/sp-core-library";
 
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from "@microsoft/sp-webpart-base";
-
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import * as strings from "propertyBagEditorStrings";
 import PropertyBagEditor from "./components/PropertyBagEditor";
 import { IPropertyBagEditorProps } from "./components/IPropertyBagEditorProps";

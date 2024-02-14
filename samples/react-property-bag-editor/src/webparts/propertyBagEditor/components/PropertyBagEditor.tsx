@@ -17,7 +17,7 @@ import { Dialog, DialogType } from "office-ui-fabric-react/lib/Dialog";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+import { PrimaryButton, DefaultButton, ButtonType } from "office-ui-fabric-react/lib/Button";
 import DisplayProp from "../../shared/DisplayProp";
 
 export interface IPropertyBagEditorState {
@@ -31,7 +31,7 @@ export interface IPropertyBagEditorState {
 export default class PropertyBagEditor extends React.Component<IPropertyBagEditorProps, IPropertyBagEditorState> {
   public refs: {
     [key: string]: React.ReactInstance;
-    list: DetailsList
+    list: any //DetailsList
   };
   public constructor(props: IPropertyBagEditorProps) {
     super(props);
@@ -77,22 +77,26 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
+      debugger;
       const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit, sp);
-      this.state.searchableProps = sp;
-      this.state.displayProps = dp;
-      this.setState(this.state);
+      // this.state.searchableProps = sp;
+      // this.state.displayProps = dp;
+
+      this.setState((current) => ({ ...current, searchableProps: sp, displayProps: dp }))
+
+
     });
   }
 
   /** event hadlers */
   public stopediting() {
-    this.state.isediting = false;
-    this.setState(this.state);
+    //this.state.isediting = false;
+    this.setState((current) => ({ ...current, isediting: false }))
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    this.state.selectedIndex = index;
-    this.setState(this.state);
+    //this.state.selectedIndex = index;
+    this.setState((current) => ({ ...current, selectedIndex: index }))
   }
   /**
    *  Gets fired when the user changes the 'Searchable' value in the ui.
@@ -127,9 +131,10 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onEditItemClicked(e?: MouseEvent): void {
-    this.state.isediting = true;
-    this.state.workingStorage = _.clone(this.state.displayProps[this.state.selectedIndex]);
-    this.setState(this.state);
+    //this.state.isediting = true;
+    //this.state.workingStorage = _.clone(this.state.displayProps[this.state.selectedIndex]);
+    //this.setState(this.state);
+    this.setState((current) => ({ ...current, isediting: true, workingStorage: _.clone(current.displayProps[current.selectedIndex]) }))
   }
   /**
    * Saves the item in workingStorage back to sharepoint, then clears workingStorage and stops editing.
@@ -139,14 +144,16 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onSave(e?: MouseEvent): void {
+    debugger;
     utils.setSPProperty(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.value, this.props.siteUrl)
       .then(value => {
         this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
             this.state.displayProps[this.state.selectedIndex] = this.state.workingStorage;
-            this.state.workingStorage = null;
-            this.state.isediting = false;
-            this.setState(this.state);
+            // this.state.workingStorage = null;
+            // this.state.isediting = false;
+            // this.setState(this.state);
+            this.setState((current) => ({ ...current, isediting: false, workingStorage: null }))
           });
       });
   }
@@ -158,9 +165,10 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onCancel(e?: MouseEvent): void {
-    this.state.isediting = false;
-    this.state.workingStorage = null;
-    this.setState(this.state);
+    // this.state.isediting = false;
+    // this.state.workingStorage = null;
+    // this.setState(this.state);
+    this.setState((current) => ({ ...current, isediting: false, workingStorage: null }))
   }
 
 
@@ -245,8 +253,8 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
           />
 
 
-          <Button default={true} icon="Save" buttonType={ButtonType.icon} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
-          <Button icon="Cancel" buttonType={ButtonType.icon} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
+          <DefaultButton default={true} iconProps={{ iconName: "Save" }} value="Save" onClick={this.onSave.bind(this)} >Save</DefaultButton>
+          <PrimaryButton iconProps={{ iconName: "Cancel" }} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</PrimaryButton>
 
 
         </Dialog>

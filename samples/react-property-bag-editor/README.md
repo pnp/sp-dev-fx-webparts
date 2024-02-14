@@ -47,6 +47,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+- This project uses the JSOM to interact with the property bag. Therefore in config/config.js you need to change the paths
+   on the externals sp-init,microsoft-ajax,sp-runtime, and sharepoint to point to your tenant.
 - in the command line run:
   - `npm install`
   - `gulp serve`
