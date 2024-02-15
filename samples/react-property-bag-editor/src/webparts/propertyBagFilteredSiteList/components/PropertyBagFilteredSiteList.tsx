@@ -10,6 +10,7 @@ import utils from "../../shared/utils";
 import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
 
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
+import { DetailsList } from "office-ui-fabric-react";
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
@@ -101,19 +102,19 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public setupUserFilters(userFilterNames: Array<string>): void {
-    console.log("in extractUserFilterValues");
-    // this.state.userFilters = [];
-    // for (const userFilterName of userFilterNames) {
-    //   this.state.userFilters.push(new UserFilter(userFilterName));
-    // }
-    let userFilters = [];
-    for (const userFilterName of userFilterNames) {
-      userFilters.push(new UserFilter(userFilterName));
-    }
-    this.setState((current) => ({ ...current, userFilters: userFilters }));
+  // public setupUserFilters(userFilterNames: Array<string>): void {
 
-  }
+  //   // this.state.userFilters = [];
+  //   // for (const userFilterName of userFilterNames) {
+  //   //   this.state.userFilters.push(new UserFilter(userFilterName));
+  //   // }
+  //   let userFilters = [];
+  //   for (const userFilterName of userFilterNames) {
+  //     userFilters.push(new UserFilter(userFilterName));
+  //   }
+  //   this.setState((current) => ({ ...current, userFilters: userFilters }));
+
+  // }
 
   /**
    * Adds values to All the UserFilters for a given SearchResults.
@@ -122,15 +123,17 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public extractUserFilterValues(r): void {
+  public extractUserFilterValues(userFilters: Array<UserFilter>, r): void {
 
-    for (const userFilter of this.state.userFilters) {
-      const value = r[userFilter.managedPropertyName].trim();
-      if (_.find(userFilter.values, v => { return v === value; })) {
-        // already there
-      }
-      else {
-        userFilter.values.push(value);
+    for (const userFilter of userFilters) {
+      if (r[userFilter.managedPropertyName]) {
+        const value = r[userFilter.managedPropertyName].trim();
+        if (_.find(userFilter.values, v => { return v === value; })) {
+          // already there
+        }
+        else {
+          userFilter.values.push(value);
+        }
       }
     }
 
@@ -205,23 +208,28 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       // this.setState(this.state);
       let sites = [];
       debugger;
-      this.setupUserFilters(userFilterNameArray);
+      let userFilters: UserFilter[] = [];
+      for (const userFilterName of this.props.userFilters) {
+        userFilters.push(new UserFilter(userFilterName));
+      }
+      // this.setupUserFilters(userFilterNameArray);
       for (const r of results.PrimarySearchResults) {
-        debugger;
+
         const index = sites.push(new Site(r.Title, r.Description, r["SPSiteUrl"]));
 
         for (const mp of this.props.userFilters) {
           sites[index - 1][mp] = r[mp];
         }
-        this.extractUserFilterValues(r);
+        this.extractUserFilterValues(userFilters, r);
       }
       debugger;
-      let filteredSites = this.filterSites(sites);// need to pass sites iun here and return the filtered array!!!
-      this.setState((current) => ({ ...current, filteredSites: filteredSites, sites: sites }));
+      let filteredSites = this.filterSites([], sites);// need to pass sites iun here and return the filtered array!!!
+      this.setState((current) => ({ ...current, filteredSites: filteredSites, sites: sites, userFilters: userFilters }));
     }).catch(err => {
       debugger;
-      this.state.errorMessages.push(new md.Message(err));
-      this.setState(this.state);
+      let errorMessages = this.state.errorMessages;
+      errorMessages.push(new md.Message(err));
+      this.setState((current => ({ ...current, errorMessages: errorMessages })));
     });
   }
   /** react lifecycle */
@@ -245,10 +253,10 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public componentDidUpdate(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any): void {
-    debugger;
-    this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
-  }
+  // public component(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any): void {
+  //   debugger;
+  //   this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
+  // }
   /**
    * Called by the Render method.
    * Displayes the Site Description if requested in the PropertyPane.
@@ -295,7 +303,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
             managedPropertyName: uf.managedPropertyName,
             value: value
           },
-          checked: this.AppliedFilterExists(uf.managedPropertyName, value),
+          checked: this.AppliedFilterExists(this.state.appliedUserFilters, uf.managedPropertyName, value),
           name: value,
           title: value,
           onClick: this.filterOnMetadata.bind(this)
@@ -314,8 +322,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
-    const selectedFilter = _.find(this.state.appliedUserFilters, af => {
+  public AppliedFilterExists(appliedUserFilters: AppliedUserFilter[], managedPropertyName: string, value: string): boolean {
+    const selectedFilter = _.find(appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
     if (selectedFilter) {
@@ -332,24 +340,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public ToggleAppliedUserFilter(item: IContextualMenuItem): void {
-    if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
-      // this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
-      //   return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
-      // });
-      this.setState((current) => ({
-        ...current,
-        appliedUserFilters: current.appliedUserFilters.filter(af => {
-          return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
-        })
-
-      }))
+  public ToggleAppliedUserFilter(appliedUserFilters: AppliedUserFilter[], item: IContextualMenuItem): AppliedUserFilter[] {
+    if (this.AppliedFilterExists(appliedUserFilters, item.data.managedPropertyName, item.data.value)) {
+      return appliedUserFilters.filter(af => {
+        return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
+      })
     }
+
     else {
-      // this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
-      let temp = this.state.appliedUserFilters;
-      temp.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
-      this.setState((current) => ({ ...current, appliedUserFilters: temp }))
+      return [...appliedUserFilters, new AppliedUserFilter(item.data.managedPropertyName, item.data.value)]
     }
 
   }
@@ -362,15 +361,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public filterSites(sites: Site[]): Site[] {
-    if (this.state.appliedUserFilters.length === 0) {
+  public filterSites(appliedUserFilters: AppliedUserFilter[], sites: Site[]): Site[] {
+    if (appliedUserFilters.length === 0) {
       return sites;
     }
     else {
-
+      debugger;
       const filteredSites = sites.filter(site => {
-        debugger;
-        for (const auf of this.state.appliedUserFilters) {
+
+        for (const auf of appliedUserFilters) {
           if (site[auf.managedPropertyName] === auf.value) {
             return true;
           }
@@ -393,10 +392,10 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-    this.ToggleAppliedUserFilter(item);
+    const newFilters = this.ToggleAppliedUserFilter(this.state.appliedUserFilters, item);
     // this.filterSites();
     // this.setState(this.state);
-    this.setState((current) => ({ ...current, filteredSites: this.filterSites(current.sites) }));
+    this.setState((current) => ({ ...current, appliedUserFilters: newFilters, filteredSites: this.filterSites(newFilters, current.sites) }));
   }
 
   public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
@@ -417,7 +416,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     debugger;
     const listItems = this.state.filteredSites.map((site) =>
       <li >
-        <a href={site.url} target={this.props.linkTarget}>{site.title}</a>
+        <a href={site.url} target={this.props.linkTarget}>{site.title} --{site["AreaName"]}  --{site["Continent"]} </a>
         {this.conditionallyRenderDescription(site)}
       </li>
     );
@@ -446,7 +445,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
           }}
         >
         </List>*/}
-
+        <DetailsList items={this.state.appliedUserFilters} />
       </div >
     );
   }

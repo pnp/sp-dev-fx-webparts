@@ -20,10 +20,8 @@
       "sharepoint"
     ],
     "lib": [
-      "es2015.promise",
-      "es5",
-      "dom",
-      "es2015.collection"
+      "es2015",
+      "dom"
     ],
     "outDir": "lib",
     "typeRoots": [

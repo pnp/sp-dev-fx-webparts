@@ -140,7 +140,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                     <TextField
                       data-crawledPropertyName={dp.crawledPropertyName}
                       value={dp.value}
-                      onBlur={this.onPropertyValueChanged.bind(this)}
+                      onChange={(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
+                        const selectedProperty = dp.crawledPropertyName;
+                        const temp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
+                        dp.value = newValue;
+                        this.setState(this.state);
+                      }}
                     />
                   </td>
                   <td>
@@ -464,8 +469,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
-    const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
+  public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>, newValue: string) {
+    const selectedProperty = newValue;//event.currentTarget.attributes["data-crawledpropertyname"].value;
     const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
     dp.value = event.currentTarget.value;
     this.setState(this.state);
