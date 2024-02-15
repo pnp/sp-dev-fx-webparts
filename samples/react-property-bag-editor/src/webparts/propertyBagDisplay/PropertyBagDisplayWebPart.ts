@@ -4,7 +4,7 @@ import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
 
 
-import * as strings from "propertyBagDisplayStrings";
+//import * as strings from "propertyBagDisplayStrings";
 import PropertyBagDisplay from "./components/PropertyBagDisplay";
 import { IPropertyBagDisplayProps } from "./components/IPropertyBagDisplayProps";
 import { IPropertyBagDisplayWebPartProps } from "./IPropertyBagDisplayWebPartProps";
@@ -54,21 +54,21 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "strings.PropertyPaneDescription"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "strings.BasicGroupName",
               groupFields: [
                 PropertyPaneTextField("description", {
-                  label: strings.DescriptionFieldLabel
+                  label: "strings.DescriptionFieldLabel"
                 }),
                 PropertyPaneTextField("propertiesToDisplay", {
-                  label: strings.PropertiesToDisplayFieldLabel,
+                  label: "strings.PropertiesToDisplayFieldLabel",
                   multiline: true
                 }),
                 PropertyPaneTextField("siteTemplatesToInclude", {
-                  label: strings.SiteTemplatesToIncludeFieldLabel,
+                  label: "strings.SiteTemplatesToIncludeFieldLabel",
                   multiline: true
                 }),
 

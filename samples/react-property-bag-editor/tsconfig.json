@@ -31,11 +31,7 @@
       "./node_modules/@microsoft"
     ]
   },
-  "include": [
-    "src/**/*.tsx"
-  ],
   "exclude": [
-    "node_modules",
-    "lib"
+    "node_modules"
   ],
 }

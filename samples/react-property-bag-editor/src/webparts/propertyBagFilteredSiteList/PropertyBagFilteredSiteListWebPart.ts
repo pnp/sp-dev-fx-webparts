@@ -15,7 +15,6 @@ import { IPropertyBagFilteredSiteListProps } from './components/IPropertyBagFilt
 import { IPropertyBagFilteredSiteListWebPartProps } from './IPropertyBagFilteredSiteListWebPartProps';
 import utils from "../shared/utils";
 export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWebPart<IPropertyBagFilteredSiteListWebPartProps> {
-
   /**
    *   Renders the component. 
    * 

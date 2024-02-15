@@ -9,7 +9,6 @@ declare interface IPropertyBagGlobalNavStrings {
   ManagedPropertiesFieldLabel: string;
   ManagedPropertiesFieldDescription: string;
 }
-
 declare module 'propertyBagGlobalNavStrings' {
   const strings: IPropertyBagGlobalNavStrings;
   export = strings;
