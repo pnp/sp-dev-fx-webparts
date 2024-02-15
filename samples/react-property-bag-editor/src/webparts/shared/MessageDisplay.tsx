@@ -46,6 +46,7 @@ export default class MessageDisplay extends React.Component<IMessageDisplayProps
                 {this.props.messages.map((message, y, z) => {
                     return (
                         <MessageBar
+                            key={message.Id}
                             messageBarType={MessageBarType.error}
                             isMultiline={true}
                             onDismiss={this.createDismissHandler(message.Id)}>

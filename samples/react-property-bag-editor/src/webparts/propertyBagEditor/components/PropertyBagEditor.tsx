@@ -1,24 +1,24 @@
-import * as React from "react";
-import { css } from "office-ui-fabric-react"; import { IPropertyBagEditorProps } from "./IPropertyBagEditorProps";
-import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
-import utils from "../../shared/utils";
-require("sp-init");
-require("microsoft-ajax");
-require("sp-runtime");
-require("sharepoint");
-import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
+import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-import { MessageBar } from "office-ui-fabric-react/lib/MessageBar";
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 import {
-  DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
+  CheckboxVisibility,
+  DetailsList, DetailsListLayoutMode, IColumn, SelectionMode,
 } from "office-ui-fabric-react/lib/DetailsList";
 import { Dialog, DialogType } from "office-ui-fabric-react/lib/Dialog";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { PrimaryButton, DefaultButton, ButtonType } from "office-ui-fabric-react/lib/Button";
+import * as React from "react";
+import { Web } from "sp-pnp-js";
 import DisplayProp from "../../shared/DisplayProp";
+import utils from "../../shared/utils";
+import { IPropertyBagEditorProps } from "./IPropertyBagEditorProps";
+require("sp-init");
+require("microsoft-ajax");
+require("sp-runtime");
+require("sharepoint");
 
 export interface IPropertyBagEditorState {
   displayProps: Array<DisplayProp>; // The list of properties displayed in the webpart
@@ -78,7 +78,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
       debugger;
-      const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      const sp = utils.decodeSearchableProps(r.AllProperties.vti_x005f_indexedpropertykeys);
       const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit, sp);
       // this.state.searchableProps = sp;
       // this.state.displayProps = dp;

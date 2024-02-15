@@ -24,7 +24,7 @@
       "officeFabricIconFontName": "Page",
       "properties": {
         "description": "propertyBagDisplay",
-        "propertiesToDisplay": "CUSTOMNAVAreaName|AreaName\nCUSTOMNAVBusinessUnit|BusinessUnit\nCUSTOMNAVContinent|Continent\nCUSTOMNAVLocation|Location",
+        "propertiesToDisplay": "CUSOMNAVAreaName|AreaName\nCUSOMNAVBusinessUnit|BusinessUnit\nCUSOMNAVContinent|Continent\nCUSOMNAVLocation|Location",
         "siteTemplatesToInclude": "STS\nPUBLISHING"
       }
     }

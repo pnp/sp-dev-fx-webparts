@@ -69,7 +69,7 @@ export class UserFilter {
 }
 export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
   public constructor(props) {
-    console.log(JSON.stringify("in constructor"));
+
     super(props);
     this.state = { sites: [], filteredSites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
@@ -82,10 +82,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public removeMessage(messageId: string) {
-    _.remove(this.state.errorMessages, {
+    // _.remove(this.state.errorMessages, {
+    //   Id: messageId
+    // });
+    // this.setState(this.state);
+    const messages = this.state.errorMessages;
+    _.remove(messages, {
       Id: messageId
     });
-    this.setState(this.state);
+    this.setState((current) => ({ ...current, errorMessages: messages }));
   }
 
   /**
@@ -96,8 +101,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public setupUserFilters(userFilterNames: Array<string>) {
-    console.log(JSON.stringify("in extractUserFilterValues"));
+  public setupUserFilters(userFilterNames: Array<string>): void {
+    console.log("in extractUserFilterValues");
     // this.state.userFilters = [];
     // for (const userFilterName of userFilterNames) {
     //   this.state.userFilters.push(new UserFilter(userFilterName));
@@ -117,8 +122,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public extractUserFilterValues(r) {
-    console.log(JSON.stringify("in extractUserFilterValues"));
+  public extractUserFilterValues(r): void {
+
     for (const userFilter of this.state.userFilters) {
       const value = r[userFilter.managedPropertyName].trim();
       if (_.find(userFilter.values, v => { return v === value; })) {
@@ -141,8 +146,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
-    console.log(JSON.stringify("in getSites"));
+  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean): void {
+
     const userFilterNameArray = [];
     if (userFilters) {
       for (const userFilter of userFilters) {
@@ -226,21 +231,22 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public componentWillMount() {
-    console.log(JSON.stringify("in componentWillMount"));
+  public componentDidMount() {
+
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
   /**
    * Called whe Properties are changed in the PropertyPane
    * Gets the sites and builds the userFilters using the new Properties
    * 
+   * 
    * @param {IPropertyBagFilteredSiteListProps} nextProps 
    * @param {*} nextContext 
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
-    console.log(JSON.stringify("in componentWillReceiveProps"));
+  public componentDidUpdate(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any): void {
+    debugger;
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
   /**
@@ -253,8 +259,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public conditionallyRenderDescription(site: Site) {
-    console.log(JSON.stringify("in conditionallyRenderDescription"));
+  public conditionallyRenderDescription(site: Site): JSX.Element {
     if (this.props.showSiteDescriptions) {
       return (<Label>{site.description}</Label>);
     }
@@ -272,7 +277,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   private SetupFilters(): Array<IContextualMenuItem> {
-    console.log(JSON.stringify("in SetupFilters"));
+
     const items = new Array<IContextualMenuItem>();
     for (const uf of this.state.userFilters) {
       const item: IContextualMenuItem = {
@@ -310,8 +315,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
-    console.log(JSON.stringify("in AppliedFilterExists"));
-
     const selectedFilter = _.find(this.state.appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
@@ -329,8 +332,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public ToggleAppliedUserFilter(item: IContextualMenuItem) {
-    console.log(JSON.stringify("in ToggleAppliedUserFilter"));
+  public ToggleAppliedUserFilter(item: IContextualMenuItem): void {
     if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
       // this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
       //   return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
@@ -361,13 +363,12 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterSites(sites: Site[]): Site[] {
-    console.log(JSON.stringify("in filterSites"));
     if (this.state.appliedUserFilters.length === 0) {
       return sites;
     }
     else {
 
-      let filteredSites = sites.filter(site => {
+      const filteredSites = sites.filter(site => {
         debugger;
         for (const auf of this.state.appliedUserFilters) {
           if (site[auf.managedPropertyName] === auf.value) {
@@ -392,7 +393,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-    console.log(JSON.stringify("in filterOnMetadata"));
     this.ToggleAppliedUserFilter(item);
     // this.filterSites();
     // this.setState(this.state);
@@ -400,7 +400,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
 
   public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-    console.log(JSON.stringify("in doNothing"));
     ev.stopPropagation();
     return false;
 
@@ -423,8 +422,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       </li>
     );
     const commandItems: Array<IContextualMenuItem> = this.SetupFilters();
-    console.log(JSON.stringify("commandItems follow"));
-    console.log(JSON.stringify(commandItems));
+
     return (
       <div >
         <Label>{this.props.description}</Label>

@@ -42,9 +42,9 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     }
     if (currentItem) {  // should have it if  site does  have this property set
       currentItem.subMenuProps.items.push({
-        key: r['Title'],
-        name: r['Title'],
-        href: r['SPSiteUrl']
+        key: r.Title,
+        name: r.Title,
+        href: r.SPSiteUrl
       });
     }
     return items;
@@ -59,7 +59,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
    * 
    * @memberOf PropertyBagGlobalNav
    */
-  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>) {
+  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>): void {
 
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {
@@ -111,11 +111,11 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     });
   }
   /** react lifecycle */
-  public componentWillMount() {
+  public componentDidMount(): void {
 
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.managedProperties);
   }
-  public componentWillReceiveProps(nextProps: IPropertyBagGlobalNavProps, nextContext: any) {
+  public componentDidUpdate(nextProps: IPropertyBagGlobalNavProps, nextContext: any): void {
 
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.managedProperties);
   }

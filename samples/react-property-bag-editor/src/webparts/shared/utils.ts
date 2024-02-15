@@ -26,13 +26,13 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    public static EncodePropertyKey(propKey) {
-        var bytes = [];
-        for (var i = 0; i < propKey.length; ++i) {
+    public static EncodePropertyKey(propKey): string {
+        let bytes = [];
+        for (let i = 0; i < propKey.length; ++i) {
             bytes.push(propKey.charCodeAt(i));
             bytes.push(0);
         }
-        var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
+        const b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
         return b64encoded;
     }
 
@@ -46,7 +46,7 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    public static DecodePropertyKey(propKey) {
+    public static DecodePropertyKey(propKey): string {
         const encoded = window.atob(propKey);
         let decoded = "";
         for (let x = 0; x < encoded.length; x = x + 2) {
@@ -122,7 +122,7 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    public static setSPProperty(name: string, value: string, siteUrl: string) {
+    public static setSPProperty(name: string, value: string, siteUrl: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let webProps;
             const clientContext = new SP.ClientContext(siteUrl);
@@ -153,7 +153,7 @@ export default class utils {
     public static saveSearchablePropertiesToSharePoint(siteUrl: string, propnames: Array<string>): Promise<any> {
         const encodedPropNames: Array<string> = [];
         for (const propname of propnames) {
-            if (propname != "") {
+            if (propname !== "") {
                 encodedPropNames.push(this.EncodePropertyKey(propname));
             }
         }
@@ -169,14 +169,18 @@ export default class utils {
      * 
      * @memberOf utils
      */
-    public static forceCrawl(siteUrl: string): Promise<any> {
+    public static forceCrawl(siteUrl: string): Promise<void> {
         const web = new Web(siteUrl);
 
         return web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-            let version: number = r.AllProperties["vti_x005f_searchversion"];
+            //let version: number = r.AllProperties["vti_x005f_searchversion"];
+            let version: number = r.AllProperties.vti_x005f_searchversion;
             if (version) {
                 version++;
-                this.setSPProperty("AllProperties", version.toString(), siteUrl);
+                return this.setSPProperty("vti_searchversion", version.toString(), siteUrl);
+            }
+            else {
+                return this.setSPProperty("vti_searchversion", "1", siteUrl);
             }
         });
     }
@@ -251,6 +255,6 @@ export default class utils {
         if (!value) {
             return [];
         }
-        return value.split('\n').filter(val => { return val.trim() != ""; });
+        return value.split('\n').filter(val => { return val.trim() !== ""; });
     }
 }

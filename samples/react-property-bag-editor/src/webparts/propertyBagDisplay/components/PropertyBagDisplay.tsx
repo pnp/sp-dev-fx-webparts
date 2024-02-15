@@ -1,35 +1,26 @@
-import * as React from "react";
-import pnp from "sp-pnp-js";
-import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
-import utils from "../../shared/utils";
+import * as React from "react";
+import pnp, { SearchQuery, SearchResults, Web } from "sp-pnp-js";
 import DisplayProp from "../../shared/DisplayProp";
-import { SearchQuery, SearchResults } from "sp-pnp-js";
-import { css } from "office-ui-fabric-react";
+import utils from "../../shared/utils";
 //import styles from "./PropertyBagDisplay.module.scss";
-import { IPropertyBagDisplayProps } from "./IPropertyBagDisplayProps";
+import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import {
+  CheckboxVisibility,
+  DetailsList, DetailsListLayoutMode, IColumn,
+  SelectionMode
+} from "office-ui-fabric-react/lib/DetailsList";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { ButtonType, PrimaryButton, DefaultButton } from "office-ui-fabric-react/lib/Button";
-import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import * as md from "../../shared/MessageDisplay";
-import MessageDisplay from "../../shared/MessageDisplay";
-import {
-  DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
-} from "office-ui-fabric-react/lib/DetailsList";
-import {
-  GroupedList
-} from "office-ui-fabric-react/lib/GroupedList";
-import {
-  IViewport
-} from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
+import MessageDisplay, * as md from "../../shared/MessageDisplay";
+import { IPropertyBagDisplayProps } from "./IPropertyBagDisplayProps";
 
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 import {
   Panel, PanelType
 } from "office-ui-fabric-react/lib/Panel";
-import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagDisplayState {
   selectedIndex: number; // the currently selected site
   managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;// Determines which Carwled propeties are mapped to which Managed Properties
@@ -99,7 +90,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         icon: "Edit",
 
       }];
-  };
+  }
   get ItemIsSelected(): boolean {
     if (!this.state) { return false; }
     return (this.state.selectedIndex !== -1);
@@ -112,7 +103,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public renderPopup() {
+  public renderPopup(): JSX.Element {
 
     if (!this.state.workingStorage) {
       return (<div />);
@@ -181,11 +172,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removeMessage(messageList: Array<md.Message>, messageId: string) {
+  public removeMessage(messageList: Array<md.Message>, messageId: string): void {
     _.remove(messageList, {
       Id: messageId
     });
-    this.setState(this.state);
+    this.setState((current) => ({ ...current, errorMessages: messageList }));
   }
   /**
    * Removes a massage from the main windo
@@ -194,7 +185,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removeMainMessage(messageId: string) {
+  public removeMainMessage(messageId: string): void {
     this.removeMessage(this.state.errorMessages, messageId);
   }
   /**
@@ -204,7 +195,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removePanelMessage(messageId: string) {
+  public removePanelMessage(messageId: string): void {
     this.removeMessage(this.state.workingStorage.errorMessages, messageId);
   }
   /**
@@ -247,7 +238,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public stopediting() {
+  public stopediting(): void {
     this.setState((current) => ({
       ...current,
       isediting: false,
@@ -265,7 +256,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  private renderSiteUrl(item?: any, index?: number, column?: IColumn): any {
+  private renderSiteUrl(item?: any, index?: number, column?: IColumn): JSX.Element {
     return (<a href={item[column.fieldName]}>{item[column.fieldName]} </a>);
   }
   /**
@@ -331,11 +322,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public componentWillMount() {
+  public componentDidMount(): void {
     // this.state.columns = this.setupColumns();
     // this.state.managedToCrawedMapping = [];
     // this.state.managedPropNames = [];
-    var initState = {
+    let initState = {
 
       columns: this.setupColumns(),
       managedToCrawedMapping: [],
@@ -386,7 +377,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         initState.sites.push(obj);
       }
       debugger;
-      initState.errorMessages.push(new md.Message("Items Recieved"));
+      //initState.errorMessages.push(new md.Message("Items Recieved"));
       this.setState({ ...initState });
     }).catch(err => {
       debugger;
@@ -403,7 +394,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onActiveItemChanged(item?: any, index?: number) {
+  public onActiveItemChanged(item?: any, index?: number): void {
     //this.state.selectedIndex = index;
     this.setState((current) => ({ ...current, selectedIndex: index }));
   }
@@ -420,7 +411,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     for (const prop of this.state.workingStorage.DisplayProps) {
       const promise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
         .then(value => {
-          this.changeSearchable(this.state.workingStorage.Url, prop.crawledPropertyName, prop.searchable);
+          return this.changeSearchable(this.state.workingStorage.Url, prop.crawledPropertyName, prop.searchable);
         });
       promises.push(promise);
     }
@@ -429,8 +420,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         if (this.state.workingStorage.forceCrawl) {
           utils.forceCrawl(this.state.workingStorage.Url);
         }
-        // this.state.workingStorage = null;
-        // this.state.isediting = false;
+
         this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
 
         this.setState(this.state);
@@ -500,20 +490,23 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
     const web = new Web(selectedSite.Url);
-    web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      const crawledProps: Array<string> = this.props.propertiesToDisplay.map(item => {
+    let context = this;
+    web.select("Title", "AllProperties").expand("AllProperties").get().then((r) => {
+      console.log(context.context);
+      const crawledProps: Array<string> = context.props.propertiesToDisplay.map(item => {
         return item.split("|")[0];
       });
-      let temp = _.clone(this.state.sites[this.state.selectedIndex]);
+      let temp = _.clone(selectedSite);
       temp.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
+      //  temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, context.state.workingStorage.searchableProps);
+      temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, temp.searchableProps);
       temp.errorMessages = new Array<md.Message>();
       // now add in the managed Prop
-      for (const dp of this.state.workingStorage.DisplayProps) {
+      for (const dp of temp.DisplayProps) {
         dp.managedPropertyName =
-          _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
+          _.find(context.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
       }
-      this.setState((current) => ({
+      context.setState((current) => ({
         ...current,
         workingStorage: temp, isediting: true
 
