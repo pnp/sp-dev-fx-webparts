@@ -25,7 +25,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
    * 
    * @memberOf PropertyBagGlobalNav
    */
-  public addMenuItem(items: Array<IContextualMenuItem>, r: any): Array<IContextualMenuItem> {
+  private addMenuItem(items: Array<IContextualMenuItem>, r: any): Array<IContextualMenuItem> {
     let currentItem: IContextualMenuItem;
     let currentSet: Array<IContextualMenuItem> = items;
 
@@ -59,7 +59,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
    * 
    * @memberOf PropertyBagGlobalNav
    */
-  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>): void {
+  private getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>): void {
 
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {

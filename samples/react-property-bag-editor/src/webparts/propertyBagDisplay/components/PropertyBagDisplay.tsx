@@ -103,7 +103,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public renderPopup(): JSX.Element {
+  private renderPopup(): JSX.Element {
 
     if (!this.state.workingStorage) {
       return (<div />);
@@ -176,7 +176,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removeMessage(messageList: Array<md.Message>, messageId: string): void {
+  private removeMessage(messageList: Array<md.Message>, messageId: string): void {
     _.remove(messageList, {
       Id: messageId
     });
@@ -189,7 +189,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removeMainMessage(messageId: string): void {
+  private removeMainMessage(messageId: string): void {
     this.removeMessage(this.state.errorMessages, messageId);
   }
   /**
@@ -199,7 +199,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public removePanelMessage(messageId: string): void {
+  private removePanelMessage(messageId: string): void {
     this.removeMessage(this.state.workingStorage.errorMessages, messageId);
   }
   /**
@@ -212,7 +212,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
+  private changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
         console.log(propname + "was not searchable, now it is ");
@@ -242,7 +242,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public stopediting(): void {
+  private stopediting(): void {
     this.setState((current) => ({
       ...current,
       isediting: false,
@@ -263,6 +263,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   private renderSiteUrl(item?: any, index?: number, column?: IColumn): JSX.Element {
     return (<a href={item[column.fieldName]}>{item[column.fieldName]} </a>);
   }
+
+
   /**
    * Sets the columns to be displayed in the list.
    * These are SiteTemplate, Title and Url, plus any properties specified in 
@@ -394,7 +396,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onActiveItemChanged(item?: any, index?: number): void {
+  private onActiveItemChanged(item?: any, index?: number): void {
     this.setState((current) => ({ ...current, selectedIndex: index }));
   }
 
@@ -405,7 +407,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onSave(e?: MouseEvent): void {
+  private onSave(e?: MouseEvent): void {
     const promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
       const promise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
@@ -437,7 +439,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onCancel(e?: MouseEvent): void {
+  private onCancel(e?: MouseEvent): void {
     this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
   }
   /**
@@ -449,11 +451,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
 
-  public onForceCrawlChange(newValue: boolean): void {
+  private onForceCrawlChange(newValue: boolean): void {
     this.setState(current => ({ ...current, workingStorage: ({ ...current.workingStorage, forceCrawl: newValue }) }));
   }
 
-  public createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
+  private createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
     const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
     dp.searchable = value;
     this.setState(this.state);
@@ -468,7 +470,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * 
    * @memberOf PropertyBagDisplay
    */
-  public onEditItemClicked(e?: MouseEvent): void {
+  private onEditItemClicked(e?: MouseEvent): void {
     debugger;
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];

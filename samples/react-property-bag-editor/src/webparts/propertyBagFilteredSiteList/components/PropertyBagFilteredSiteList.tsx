@@ -81,7 +81,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public removeMessage(messageId: string) {
+  private removeMessage(messageId: string): void {
     const messages = this.state.errorMessages;
     _.remove(messages, {
       Id: messageId
@@ -98,7 +98,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public extractUserFilterValues(userFilters: Array<UserFilter>, r): void {
+  private extractUserFilterValues(userFilters: Array<UserFilter>, r): void {
 
     for (const userFilter of userFilters) {
       if (r[userFilter.managedPropertyName]) {
@@ -124,7 +124,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean): void {
+  private getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean): void {
 
     const userFilterNameArray = [];
     if (userFilters) {
@@ -201,7 +201,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
@@ -216,7 +216,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public conditionallyRenderDescription(site: Site): JSX.Element {
+  private conditionallyRenderDescription(site: Site): JSX.Element {
     if (this.props.showSiteDescriptions) {
       return (<Label>{site.description}</Label>);
     }
@@ -272,7 +272,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public AppliedFilterExists(appliedUserFilters: AppliedUserFilter[], managedPropertyName: string, value: string): boolean {
+  private AppliedFilterExists(appliedUserFilters: AppliedUserFilter[], managedPropertyName: string, value: string): boolean {
     debugger;
     const selectedFilter = _.find(appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
@@ -291,7 +291,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public ToggleAppliedUserFilter(appliedUserFilters: AppliedUserFilter[], item: IContextualMenuItem): AppliedUserFilter[] {
+  private ToggleAppliedUserFilter(appliedUserFilters: AppliedUserFilter[], item: IContextualMenuItem): AppliedUserFilter[] {
     if (this.AppliedFilterExists(appliedUserFilters, item.data.managedPropertyName, item.data.value)) {
       return appliedUserFilters.filter(af => {
         return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
@@ -312,7 +312,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public filterSites(appliedUserFilters: AppliedUserFilter[], sites: Site[]): Site[] {
+  private filterSites(appliedUserFilters: AppliedUserFilter[], sites: Site[]): Site[] {
     if (appliedUserFilters.length === 0) {
       return sites;
     }
@@ -342,24 +342,18 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * 
    * @memberOf PropertyBagFilteredSiteList
    */
-  public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+  private filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
     const newFilters = this.ToggleAppliedUserFilter(this.state.appliedUserFilters, item);
     this.setState((current) => ({ ...current, appliedUserFilters: newFilters, filteredSites: this.filterSites(newFilters, current.sites) }));
   }
 
-  public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-    ev.stopPropagation();
-    return false;
-
-  }
-
   /**
-   * Renders the list of sites in this.state.filteredSites.
-   * 
-   * @returns {React.ReactElement<IPropertyBagFilteredSiteListProps>} 
-   * 
-   * @memberOf PropertyBagFilteredSiteList
-   */
+  * Renders the list of sites in this.state.filteredSites.
+  * 
+  * @returns {React.ReactElement<IPropertyBagFilteredSiteListProps>} 
+  * 
+  * @memberOf PropertyBagFilteredSiteList
+  */
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
 
     debugger;

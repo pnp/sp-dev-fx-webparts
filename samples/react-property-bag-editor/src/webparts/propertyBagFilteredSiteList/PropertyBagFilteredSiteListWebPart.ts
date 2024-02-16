@@ -59,7 +59,7 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
-                }),
+                })
                 ,
                 PropertyPaneTextField("filters", {
                   label: strings.FiltersFieldLabel,
