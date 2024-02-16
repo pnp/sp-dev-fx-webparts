@@ -304,6 +304,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
             value: value
           },
           checked: this.AppliedFilterExists(this.state.appliedUserFilters, uf.managedPropertyName, value),
+          canCheck: true,
           name: value,
           title: value,
           onClick: this.filterOnMetadata.bind(this)
@@ -323,6 +324,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public AppliedFilterExists(appliedUserFilters: AppliedUserFilter[], managedPropertyName: string, value: string): boolean {
+    debugger;
     const selectedFilter = _.find(appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
