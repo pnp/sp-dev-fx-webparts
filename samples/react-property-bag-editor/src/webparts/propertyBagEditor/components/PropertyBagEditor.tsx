@@ -106,9 +106,13 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * 
    * @memberOf PropertyBagEditor
    */
-  public onSearchableValueChanged(newValue: boolean) {
-    this.state.workingStorage.searchable = newValue;
-    this.setState(this.state);
+  public onSearchableValueChanged(e: Event, newValue: boolean) {
+
+    //this.state.workingStorage.searchable = newValue;
+    //this.setState(this.state);
+    //this.state.workingStorage.searchable = newValue;
+    debugger;
+    this.setState((current) => ({ ...current, workingStorage: ({ ...current.workingStorage, searchable: newValue }) }));
   }
   /**
    * Gets fired when the user changes the proprty value in the ui
@@ -119,8 +123,16 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onPropertyValueChanged(event) {
-    this.state.workingStorage.value = event.target.value;
-    this.setState(this.state);
+    debugger;
+    //this.state.workingStorage.value = event.target.value;
+    this.setState((current) => ({
+      ...current,
+      workingStorage: ({
+        ...current.workingStorage,
+        value: event.target.value
+      })
+    }
+    ));
   }
 
   /**
@@ -149,11 +161,11 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       .then(value => {
         this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
-            this.state.displayProps[this.state.selectedIndex] = this.state.workingStorage;
-            // this.state.workingStorage = null;
-            // this.state.isediting = false;
+            //this.state.displayProps[this.state.selectedIndex] = this.state.workingStorage;
+            const temp = _.clone(this.state.displayProps);// this.state.workingStorage = null;
+            temp[this.state.selectedIndex] = this.state.workingStorage;// this.state.isediting = false;
             // this.setState(this.state);
-            this.setState((current) => ({ ...current, isediting: false, workingStorage: null }))
+            this.setState((current) => ({ ...current, isediting: false, workingStorage: null, displayProps: temp }))
           });
       });
   }
@@ -184,8 +196,11 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   public changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
-        this.state.searchableProps.push(propname);
-        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, this.state.searchableProps);
+        //this.state.searchableProps.push(propname);
+        const temp = _.clone(this.state.searchableProps);
+        temp.push(propname);
+        this.setState(current => ({ ...current, searchableProps: temp }));
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, temp);
       }
       else {
         return Promise.resolve();
@@ -193,8 +208,11 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     }
     else { // make prop not searchablke
       if (_.indexOf(this.state.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
-        _.remove(this.state.searchableProps, p => { return p === propname; });
-        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, this.state.searchableProps);
+        const temp = _.clone(this.state.searchableProps);
+
+        _.remove(temp, p => { return p === propname; });
+        this.setState(current => ({ ...current, searchableProps: temp }));
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, temp);
       }
       else {
         return Promise.resolve();
@@ -221,7 +239,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       { isResizable: true, key: "value", name: "Propert Value", fieldName: "value", minWidth: 150 },
       { key: "searchable", name: "searchable", fieldName: "searchable", minWidth: 150, onRender: this.RenderBoolean },
     ];
-
+    debugger;
     return (
       <div>
         <CommandBar items={this.CommandItems} />
@@ -234,7 +252,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
         >
         </DetailsList>
         <Dialog
-          isOpen={this.state.isediting} type={DialogType.close}
+          hidden={!this.state.isediting} type={DialogType.close}
           onDismiss={this.stopediting.bind(this)}
           title={(this.state.workingStorage) ? this.state.workingStorage.crawledPropertyName : ""}        >
 
@@ -242,14 +260,14 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
           <TextField
             value={(this.state.workingStorage) ? this.state.workingStorage.value : ""}
-            onBlur={this.onPropertyValueChanged.bind(this)}
+            onChange={this.onPropertyValueChanged.bind(this)}
           />
 
 
 
           <Toggle label="Searchable"
             checked={(this.state.workingStorage) ? this.state.workingStorage.searchable : undefined}
-            onChanged={this.onSearchableValueChanged.bind(this)}
+            onChange={this.onSearchableValueChanged.bind(this)}
           />
 
 
