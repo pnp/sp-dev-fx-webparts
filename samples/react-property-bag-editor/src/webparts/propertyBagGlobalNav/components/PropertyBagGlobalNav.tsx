@@ -112,10 +112,10 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
 
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.managedProperties);
   }
-  public componentDidUpdate(nextProps: IPropertyBagGlobalNavProps, nextContext: any): void {
+  // public componentDidUpdate(nextProps: IPropertyBagGlobalNavProps, nextContext: any): void {
 
-    this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.managedProperties);
-  }
+  //   this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.managedProperties);
+  // }
   public render(): React.ReactElement<IPropertyBagGlobalNavProps> {
     return (
       <CommandBar items={this.state.menuitems} />
