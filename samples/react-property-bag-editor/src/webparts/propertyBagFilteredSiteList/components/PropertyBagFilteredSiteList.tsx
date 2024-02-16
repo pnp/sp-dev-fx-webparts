@@ -8,9 +8,8 @@ import { Label } from "office-ui-fabric-react/lib/Label";
 import MessageDisplay, * as md from "../../shared/MessageDisplay";
 import utils from "../../shared/utils";
 import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
-
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
-import { DetailsList } from "office-ui-fabric-react";
+
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
@@ -83,10 +82,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public removeMessage(messageId: string) {
-    // _.remove(this.state.errorMessages, {
-    //   Id: messageId
-    // });
-    // this.setState(this.state);
     const messages = this.state.errorMessages;
     _.remove(messages, {
       Id: messageId
@@ -94,27 +89,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     this.setState((current) => ({ ...current, errorMessages: messages }));
   }
 
-  /**
-   * Initializes the list of user filters.
-   * A user filter is created for each UserFilter name specified in the props.
-   * 
-   * @param {Array<string>} userFilterNames 
-   * 
-   * @memberOf PropertyBagFilteredSiteList
-   */
-  // public setupUserFilters(userFilterNames: Array<string>): void {
 
-  //   // this.state.userFilters = [];
-  //   // for (const userFilterName of userFilterNames) {
-  //   //   this.state.userFilters.push(new UserFilter(userFilterName));
-  //   // }
-  //   let userFilters = [];
-  //   for (const userFilterName of userFilterNames) {
-  //     userFilters.push(new UserFilter(userFilterName));
-  //   }
-  //   this.setState((current) => ({ ...current, userFilters: userFilters }));
-
-  // }
 
   /**
    * Adds values to All the UserFilters for a given SearchResults.
@@ -193,19 +168,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      // this.state.sites = [];
-      // debugger;
-      // this.setupUserFilters(userFilterNameArray);
-      // for (const r of results.PrimarySearchResults) {
-      //   const index = this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
-
-      //   for (const mp of this.props.userFilters) {
-      //     this.state.sites[index-1][mp] = r[mp];
-      //   }
-      //   this.extractUserFilterValues(r);
-      // }
-      // this.filterSites();
-      // this.setState(this.state);
       let sites = [];
       debugger;
       let userFilters: UserFilter[] = [];
@@ -243,20 +205,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
-  /**
-   * Called whe Properties are changed in the PropertyPane
-   * Gets the sites and builds the userFilters using the new Properties
-   * 
-   * 
-   * @param {IPropertyBagFilteredSiteListProps} nextProps 
-   * @param {*} nextContext 
-   * 
-   * @memberOf PropertyBagFilteredSiteList
-   */
-  // public component(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any): void {
-  //   debugger;
-  //   this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
-  // }
+
   /**
    * Called by the Render method.
    * Displayes the Site Description if requested in the PropertyPane.
@@ -395,8 +344,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
     const newFilters = this.ToggleAppliedUserFilter(this.state.appliedUserFilters, item);
-    // this.filterSites();
-    // this.setState(this.state);
     this.setState((current) => ({ ...current, appliedUserFilters: newFilters, filteredSites: this.filterSites(newFilters, current.sites) }));
   }
 

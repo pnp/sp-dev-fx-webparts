@@ -132,19 +132,18 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
             <tbody>
               {this.state.workingStorage.DisplayProps.map((dp, i) => {
-                return (<tr>
+                return (<tr key={dp.managedPropertyName}>
                   <td>{dp.managedPropertyName}</td>
                   <td>{this.state.workingStorage[dp.managedPropertyName]}</td>
                   <td>{dp.crawledPropertyName}</td>
                   <td>
                     <TextField
-                      data-crawledPropertyName={dp.crawledPropertyName}
                       value={dp.value}
                       onChange={(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-                        const selectedProperty = dp.crawledPropertyName;
-                        const temp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
-                        dp.value = newValue;
-                        this.setState(this.state);
+                        debugger;
+                        const ws = _.clone(this.state.workingStorage);
+                        _.find(ws.DisplayProps, p => { return p.crawledPropertyName === dp.crawledPropertyName; }).value = newValue;
+                        this.setState((current) => ({ ...current, workingStorage: ws }));
                       }}
                     />
                   </td>
@@ -328,9 +327,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public componentDidMount(): void {
-    // this.state.columns = this.setupColumns();
-    // this.state.managedToCrawedMapping = [];
-    // this.state.managedPropNames = [];
     let initState = {
 
       columns: this.setupColumns(),
@@ -382,7 +378,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         initState.sites.push(obj);
       }
       debugger;
-      //initState.errorMessages.push(new md.Message("Items Recieved"));
       this.setState({ ...initState });
     }).catch(err => {
       debugger;
@@ -400,7 +395,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public onActiveItemChanged(item?: any, index?: number): void {
-    //this.state.selectedIndex = index;
     this.setState((current) => ({ ...current, selectedIndex: index }));
   }
 
@@ -425,15 +419,15 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         if (this.state.workingStorage.forceCrawl) {
           utils.forceCrawl(this.state.workingStorage.Url);
         }
-
+        debugger;
         this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
 
-        this.setState(this.state);
       }).catch((err) => {
         debugger;
-        this.state.workingStorage.errorMessages.push(new md.Message(err));
-        this.setState(this.state);
         console.log(err);
+        const temp = _.clone(this.state.workingStorage);
+        temp.errorMessages.push(new md.Message(err));
+        this.setState(current => ({ ...current, workingStorage: temp }))
       });
   }
   /**
@@ -444,8 +438,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
   public onCancel(e?: MouseEvent): void {
-    // this.state.isediting = false;
-    // this.state.workingStorage = null;
     this.setState((current) => ({ ...current, workingStorage: null, isediting: false }));
   }
   /**
@@ -457,24 +449,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
    * @memberOf PropertyBagDisplay
    */
 
-  public onForceCrawlChange(newValue: boolean) {
-    this.state.workingStorage.forceCrawl = newValue;
-    this.setState(this.state);
+  public onForceCrawlChange(newValue: boolean): void {
+    this.setState(current => ({ ...current, workingStorage: ({ ...current.workingStorage, forceCrawl: newValue }) }));
   }
-  /**
-   * Called when the value of a property i schanged in the display. 
-   * Saves the new value in workingStarage,
-   * 
-   * @param {React.FormEvent<HTMLInputElement>} event 
-   * 
-   * @memberOf PropertyBagDisplay
-   */
-  public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>, newValue: string) {
-    const selectedProperty = newValue;//event.currentTarget.attributes["data-crawledpropertyname"].value;
-    const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
-    dp.value = event.currentTarget.value;
-    this.setState(this.state);
-  }
+
   public createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
     const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
     dp.searchable = value;
@@ -495,23 +473,21 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
     const web = new Web(selectedSite.Url);
-    let context = this;
+    // let context = this;
     web.select("Title", "AllProperties").expand("AllProperties").get().then((r) => {
-      console.log(context.context);
-      const crawledProps: Array<string> = context.props.propertiesToDisplay.map(item => {
+      const crawledProps: Array<string> = this.props.propertiesToDisplay.map(item => {
         return item.split("|")[0];
       });
       let temp = _.clone(selectedSite);
       temp.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      //  temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, context.state.workingStorage.searchableProps);
       temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, temp.searchableProps);
       temp.errorMessages = new Array<md.Message>();
       // now add in the managed Prop
       for (const dp of temp.DisplayProps) {
         dp.managedPropertyName =
-          _.find(context.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
+          _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
       }
-      context.setState((current) => ({
+      this.setState((current) => ({
         ...current,
         workingStorage: temp, isediting: true
 

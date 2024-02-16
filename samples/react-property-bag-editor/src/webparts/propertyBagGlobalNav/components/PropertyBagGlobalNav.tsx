@@ -90,11 +90,6 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      // this.state.menuitems = [];
-      // for (const r of results.PrimarySearchResults) {
-      //   this.addMenuItem(r);
-      // }
-      // this.setState(this.state);
       let menuitems = [];
       for (const r of results.PrimarySearchResults) {
         this.addMenuItem(menuitems, r);
@@ -106,11 +101,13 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
 
     }).catch(err => {
       debugger;
-      this.state.errorMessages.push(new md.Message(err));
-      this.setState(this.state);
+
+      const em = this.state.errorMessages;
+      em.push(new md.Message(err));
+      this.setState(current => ({ ...current, errorMessages: em }));
     });
   }
-  /** react lifecycle */
+
   public componentDidMount(): void {
 
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.managedProperties);

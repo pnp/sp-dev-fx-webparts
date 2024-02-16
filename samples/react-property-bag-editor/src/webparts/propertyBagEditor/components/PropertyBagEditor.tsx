@@ -80,22 +80,16 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       debugger;
       const sp = utils.decodeSearchableProps(r.AllProperties.vti_x005f_indexedpropertykeys);
       const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit, sp);
-      // this.state.searchableProps = sp;
-      // this.state.displayProps = dp;
-
       this.setState((current) => ({ ...current, searchableProps: sp, displayProps: dp }))
-
-
     });
   }
 
   /** event hadlers */
   public stopediting() {
-    //this.state.isediting = false;
+
     this.setState((current) => ({ ...current, isediting: false }))
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    //this.state.selectedIndex = index;
     this.setState((current) => ({ ...current, selectedIndex: index }))
   }
   /**
@@ -107,10 +101,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onSearchableValueChanged(e: Event, newValue: boolean) {
-
-    //this.state.workingStorage.searchable = newValue;
-    //this.setState(this.state);
-    //this.state.workingStorage.searchable = newValue;
     debugger;
     this.setState((current) => ({ ...current, workingStorage: ({ ...current.workingStorage, searchable: newValue }) }));
   }
@@ -124,7 +114,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    */
   public onPropertyValueChanged(event) {
     debugger;
-    //this.state.workingStorage.value = event.target.value;
     this.setState((current) => ({
       ...current,
       workingStorage: ({
@@ -143,9 +132,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onEditItemClicked(e?: MouseEvent): void {
-    //this.state.isediting = true;
-    //this.state.workingStorage = _.clone(this.state.displayProps[this.state.selectedIndex]);
-    //this.setState(this.state);
     this.setState((current) => ({ ...current, isediting: true, workingStorage: _.clone(current.displayProps[current.selectedIndex]) }))
   }
   /**
@@ -161,10 +147,8 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       .then(value => {
         this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
-            //this.state.displayProps[this.state.selectedIndex] = this.state.workingStorage;
             const temp = _.clone(this.state.displayProps);// this.state.workingStorage = null;
             temp[this.state.selectedIndex] = this.state.workingStorage;// this.state.isediting = false;
-            // this.setState(this.state);
             this.setState((current) => ({ ...current, isediting: false, workingStorage: null, displayProps: temp }))
           });
       });
@@ -177,9 +161,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
    * @memberOf PropertyBagEditor
    */
   public onCancel(e?: MouseEvent): void {
-    // this.state.isediting = false;
-    // this.state.workingStorage = null;
-    // this.setState(this.state);
     this.setState((current) => ({ ...current, isediting: false, workingStorage: null }))
   }
 
@@ -196,7 +177,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   public changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
-        //this.state.searchableProps.push(propname);
         const temp = _.clone(this.state.searchableProps);
         temp.push(propname);
         this.setState(current => ({ ...current, searchableProps: temp }));
