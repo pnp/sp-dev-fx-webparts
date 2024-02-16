@@ -446,8 +446,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
             );
           }}
         >
-        </List>*/}
-        <DetailsList items={this.state.appliedUserFilters} />
+        </List>
+        <DetailsList items={this.state.appliedUserFilters} />*/}
       </div >
     );
   }
