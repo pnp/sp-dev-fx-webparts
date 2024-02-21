@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
-  "initialPage": "https://{tenantDomain}/_layouts/workbench.aspx",
+  "initialPage": "https://rgove3.sharepoint.com/sites/ReactPropertyBagEditor",
   "https": true
 }

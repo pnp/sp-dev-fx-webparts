@@ -41,6 +41,7 @@ A set of webparts that lets you set property bag settings on site collections an
 Version|Date|Comments
 -------|----|--------
 1.0|march 19, 2017|Initial release
+2.0|Feb 21, 2024|Upgraded to SPFX 1.17.1
 
 
 
@@ -48,14 +49,15 @@ Version|Date|Comments
 
 - Clone this repository
 - This project uses the JSOM to interact with the property bag. Therefore in config/config.js you need to change the paths
-   on the externals sp-init,microsoft-ajax,sp-runtime, and sharepoint to point to your tenant.
+   on the externals sp-init,microsoft-ajax,sp-runtime, and sharepoint to point to your tenant. 
 - in the command line run:
   - `npm install`
   - `gulp serve`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-> Include any additional steps as needed.
+> Note that using the JSOM to updates the propertybag of a site is not supported on 'NoScript' sites.    You can enable scripts on all sites using the admnin center or via powershell:
+   Set-PnPTenantSite -Identity {SiteUrl} -DenyAddAndCustomizePages:$false
 
 ## Features
 This project consists of four webparts that can be used to manage the Property Bags for SharePoint sites and display navigational components from those Properties.
@@ -73,6 +75,7 @@ Here you can change the value of the property and specify if the property should
 The Properties that can be edited are specified in the web part&#39;s Property Pane:
 
 ![PropertyBagEditorEdur](./src/images/PropertyBagEditorConfig.PNG)
+
 
 The Properties set in the Property Pane of this web part are crawled properties, and should be mapped to managed properties so that can be used by the other webparts in this project. 
 
