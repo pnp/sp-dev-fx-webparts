@@ -25,30 +25,15 @@ const MyTools: React.FC<
   const [selectableTools, setSelectableTools] = React.useState<Array<ITool>>(
     []
   );
-  
+
   /** === VARIABLES === */
   const errorMsgNotFound = "Could not find any tools saved for your user. Select 'Edit' to add some tools to this list.";
   const errorMsgOnSave = "Something went wrong when saving your tools. Please try again or contact support.";
-  
+
   /** === USE EFFECT HOOKS === */
   React.useEffect(() => {
     (async () => {
-      if (props.wpLists?.personalToolsList && props.wpSite?.url) {
-        const tmpTools = await getUsersTools(props.context, props.userEmail, { list: props.wpLists.personalToolsList, siteUrl: props.wpSite.url });
-        if (tmpTools) {
-          setMyTools(tmpTools);
-        } else {
-          setErrorMessage(
-            errorMsgNotFound
-          );
-        }
-      }
-      if (props.wpLists?.availableToolsList && props.wpSite?.url) {
-        const tmpSelectTools = await getSelectableTools(props.context, { list: props.wpLists.availableToolsList, siteUrl: props.wpSite.url });
-        if (tmpSelectTools) {
-          setSelectableTools(tmpSelectTools);
-        }
-      }
+      await initListData();
     })();
   }, [props]);
 
@@ -64,9 +49,29 @@ const MyTools: React.FC<
   }, [myTools]);
 
   /** === FUNCTIONS === */
+  async function initListData(): Promise<void> {
+    if (props.wpLists?.personalToolsList && props.wpSite?.url) {
+      const tmpTools = await getUsersTools(props.context, props.userEmail, { list: props.wpLists.personalToolsList, siteUrl: props.wpSite.url });
+      if (tmpTools) {
+        setMyTools(tmpTools);
+      } else {
+        setErrorMessage(
+          errorMsgNotFound
+        );
+      }
+    }
+    if (props.wpLists?.availableToolsList && props.wpSite?.url) {
+      const tmpSelectTools = await getSelectableTools(props.context, { list: props.wpLists.availableToolsList, siteUrl: props.wpSite.url });
+      if (tmpSelectTools) {
+        setSelectableTools(tmpSelectTools);
+      }
+    }
+  }
+
   const handleClickOpen = (): void => {
     setOpen(true);
   };
+
   const handleClose = (): void => {
     setOpen(false);
   };

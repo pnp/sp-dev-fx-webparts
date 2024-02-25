@@ -40,7 +40,6 @@ export const getSelectableTools = async (
   context: WebPartContext,
   availableToolsList: ListDefintion,
 ): Promise<Array<ITool>> => {
-  console.log([context, availableToolsList]);
   const sourceWeb = await getSourceWeb(context, availableToolsList?.siteUrl ?? '');
   const sourceList = sourceWeb.lists.getById(availableToolsList?.list?.id ?? '');
   const requestRes = await sourceList.items();
