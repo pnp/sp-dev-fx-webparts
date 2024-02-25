@@ -124,15 +124,16 @@ export default class MyToolsWebPart extends BaseClientSideWebPart<IMyToolsWebPar
                 PropertyPaneCheckbox('twoColumns', {
                   checked: false,
                   disabled: false,
-                  text: "Show links in two columns? (Defaults to 1column if this is not checked)"
+                  text: "Show links in two columns? (defaults to 1 column if this is not checked)"
                 })
               ]
             }, {
-              groupName: "List settings",
+              groupName: "Lists settings",
               groupFields: [
                 PropertyFieldSitePicker('wpSites', {
-                  label: 'Select site that contains the tools list',
-                  initialSites: this.properties.wpSites?.length > 0 ? this.properties.wpSites : [{ url: this.context.pageContext.web.serverRelativeUrl, title: this.context.pageContext.web.title }],
+                  label: 'Select site that contains the tools lists',
+                  // initialSites: this.properties.wpSites?.length > 0 ? this.properties.wpSites : [{ url: this.context.pageContext.web.serverRelativeUrl, title: this.context.pageContext.web.title }],
+                  initialSites: this.properties.wpSites,
                   context: this.context as any,
                   deferredValidationTime: 500,
                   multiSelect: false,
