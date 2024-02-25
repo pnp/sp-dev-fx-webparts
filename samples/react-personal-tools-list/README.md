@@ -9,6 +9,9 @@ This web part has the fundamental functionality - a great starting point to buil
   <source src="./assets/video-demo1.mp4" type="video/mp4">
 </video>
 
+
+### Usage
+
 * The user can select from this list what link(s) he/she wants to be displayed for them.
 ![](./assets/mytoold.png)
 
@@ -19,8 +22,14 @@ This web part has the fundamental functionality - a great starting point to buil
 * The tools will be displayed like this:
 ![](./assets/savedtools.png)
 
-* The web part title can be changed from the property pane, here you can also select to display the tools in two columns (defaults to 1 column if this is not selected)
+
+### Configuration
+
+* The web part title can be changed from the property pane, here you can also select to display the tools in two columns (defaults to 1 column if this is not selected):
 ![](./assets/settings.png)
+
+* Make sure you set the site that contains the two relevant lists ("Available Tools" and "Personal Tools") and set the reference to the lists accordingly:
+![](./assets/settings-siteAndLists.png)
 
 ### In the background
 
@@ -57,26 +66,28 @@ This sample is optimally compatible with the following environment configuration
 ## Contributors
 
 * [Eli Schei](https://github.com/Eli-Schei/)
+* [Tobias Maestrini](https://github.com/tmaestrini)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 | 1.0     | February 08, 2024 | Initial release |
+| 1.1     | February 25, 2024 | Dynamic lists selection |
 
 ## Prerequisites
 
-You need to run the script in the env-setup folder to create the content types and lists used in the code. If you create them manually you might need to change the code to use the correct list and field names.
+You need to run the script in the `env-setup` folder to create the content types and lists used in the code. If you create them manually you might need to change the code to use the correct list and field names.
 
 For manual creation here is what you need:
 
-* List named "AvailableTools", needs to have fields "tool_name" and "tool_url" (both text fields);
-* List named:"PersonalTools", needs to have fields "tool_username" (text) and "tool_usertools" (note / multi line text field)
+* List named "AvailableTools", needs to have fields `tool_name` and `tool_url` (both text fields);
+* List named "PersonalTools", needs to have fields `tool_username` (text) and `tool_usertools` (note / multi line text field)
 
 ## Minimal path to awesome
 
 * Clone this repository
-* Run the script in the "env-setup" folder ([you need pnp-poweshell to run this](https://pnp.github.io/powershell/))
+* Run the script `CreateLists.ps1` in the [`env-setup` folder](./env-setup/CreateLists.ps1) ([you need pnp-powershell to run this](https://pnp.github.io/powershell/))
 * In your CLI navigate to the solution folder (the folder where this readme file lives)
 * in the command-line run:
   * `npm install`
