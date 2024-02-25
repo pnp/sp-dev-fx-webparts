@@ -87,7 +87,7 @@ For manual creation here is what you need:
 ## Minimal path to awesome
 
 * Clone this repository
-* Run the script `CreateLists.ps1` in the [`env-setup` folder](./env-setup/CreateLists.ps1) ([you need pnp-powershell to run this](https://pnp.github.io/powershell/))
+* Run the script `CreateLists.ps1` in the [`env-setup` folder](./src/webparts/myTools/env-setup/CreateLists.ps1) ([you need pnp-powershell to run this](https://pnp.github.io/powershell/))
 * In your CLI navigate to the solution folder (the folder where this readme file lives)
 * in the command-line run:
   * `npm install`
