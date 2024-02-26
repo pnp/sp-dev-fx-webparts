@@ -12,7 +12,8 @@ import { IPersonProperties } from "../models/IPersonProperties";
 type getUserProfileFunc = (
   currentUser: string,
   startUser?: string,
-  showAllManagers?: boolean
+  showAllManagers?: boolean,
+  showGuestUsers?: boolean
 ) => Promise<ProfileDataResponse>;
 
 type ProfileDataResponse = Maybe<{
@@ -28,7 +29,8 @@ export const useGetUserProperties = (): {
     async (
       currentUser: string,
       startUser?: string,
-      showAllManagers: boolean = false
+      showAllManagers: boolean = false,
+      showGuestUsers: boolean = false
     ): Promise<ProfileDataResponse> => {
       if (!currentUser) return;
       const loginName = currentUser;
@@ -55,14 +57,15 @@ export const useGetUserProperties = (): {
 
       // Get Direct Reports if exists
       if (wDirectReports && wDirectReports.length > 0) {
-        reportsLists = await getDirectReports(wDirectReports);
+        reportsLists = await getDirectReports(wDirectReports, showGuestUsers);
       }
       // Get Managers if exists
       if (startUser && wExtendedManagers && wExtendedManagers.length > 0) {
         managersList = await getExtendedManagers(
           wExtendedManagers,
           loginNameStartUser!,
-          showAllManagers
+          showAllManagers,
+          showGuestUsers
         );
       }
 
@@ -75,7 +78,8 @@ export const useGetUserProperties = (): {
 };
 
 const getDirectReports = async (
-  directReports: string[]
+  directReports: string[],
+  showGuestUsers: boolean
 ): Promise<IUserInfo[]> => {
   const _reportsList: IUserInfo[] = [];
   const batch: SPBatch = sp.createBatch();
@@ -88,11 +92,17 @@ const getDirectReports = async (
         .inBatch(batch)
         .getPropertiesFor(userReport)
         .then(async (directReport: IPersonProperties) => {
-          _reportsList.push(await manpingUserProperties(directReport));
+          const userInfo = await manpingUserProperties(directReport);
+          if (!showGuestUsers && userInfo.userType === "Guest") return;
+
+          _reportsList.push(userInfo);
           await set(`${userReport}__orgchart__`, directReport);
         });
     } else {
-      _reportsList.push(await manpingUserProperties(cacheDirectReport));
+      const userInfo = await manpingUserProperties(cacheDirectReport);
+      if (!showGuestUsers && userInfo.userType === "Guest") continue;
+
+      _reportsList.push(userInfo);
     }
   }
   await batch.execute();
@@ -102,7 +112,8 @@ const getDirectReports = async (
 const getExtendedManagers = async (
   extendedManagers: string[],
   startUser: string,
-  showAllManagers: boolean
+  showAllManagers: boolean,
+  showGuestUsers: boolean
 ): Promise<IUserInfo[]> => {
   const wManagers: IUserInfo[] = [];
   const batch: SPBatch = sp.createBatch();
@@ -111,26 +122,47 @@ const getExtendedManagers = async (
     if (!showAllManagers && manager !== startUser) {
       continue;
     }
-    const cacheManager: Maybe<IPersonProperties> = await get(`${manager}__orgchart__`);
+    const cacheManager: Maybe<IPersonProperties> = await get(
+      `${manager}__orgchart__`
+    );
     if (!cacheManager) {
       sp.profiles
         .inBatch(batch)
         .getPropertiesFor(manager)
         .then(async (_profile: IPersonProperties) => {
-          wManagers.push(await manpingUserProperties(_profile));
+          const userInfo = await manpingUserProperties(_profile);
+          if (!showGuestUsers && userInfo.userType === "Guest") return;
+
+          wManagers.push(userInfo);
           await set(`${manager}__orgchart__`, _profile);
         });
     } else {
-      wManagers.push(await manpingUserProperties(cacheManager));
+      const userInfo = await manpingUserProperties(cacheManager);
+      if (!showGuestUsers && userInfo.userType === "Guest") continue;
+
+      wManagers.push(userInfo);
     }
   }
   await batch.execute();
   return wManagers;
 };
 
+function userTypeMapper(userType: string) {
+  switch (userType) {
+    case "0":
+      return "Employee";
+    case "1":
+      return "Guest";
+    default:
+      return "Unknown";
+  }
+}
+
 export const manpingUserProperties = async (
   userProperties: IPersonProperties
 ): Promise<IUserInfo> => {
+  console.log(userProperties);
+
   return {
     displayName: userProperties.DisplayName as string,
     email: userProperties.Email as string,
@@ -160,6 +192,10 @@ export const manpingUserProperties = async (
     manager:
       filter(userProperties?.UserProfileProperties, { Key: "Manager" })[0]
         .Value ?? "",
+    userType: userTypeMapper(
+      filter(userProperties?.UserProfileProperties, { Key: "SPS-UserType" })[0]
+        .Value
+    ),
     loginName: userProperties.loginName,
   };
 };

@@ -58,6 +58,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
   const {
     context,
     showAllManagers,
+    showGuestUsers,
     startFromUser,
     showActionsBar,
     title,
@@ -85,7 +86,8 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         const profileResponse = await getUserProfile(
           selectedUser,
           startFromUserId,
-          showAllManagers
+          showAllManagers,
+          showGuestUsers,
         );
         if (profileResponse) {
           for (const managerInfo of profileResponse.managersList) {
@@ -147,6 +149,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
       getUserProfile,
       startFromUserId,
       showAllManagers,
+      showGuestUsers,
       onUserSelected,
       currentUser,
       showActionsBar,

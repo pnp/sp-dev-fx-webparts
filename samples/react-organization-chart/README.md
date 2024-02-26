@@ -37,7 +37,7 @@ This web part shows an organization chart based on specified user, and user can 
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.1|Feb, 2024|Updated to latest sharepoint template|
+|1.1|Feb, 2024|Guest user filter + update to latest sharepoint template|
 |1.0|May, 2021|Initial release|
 
 ## Prerequisites

@@ -22,6 +22,7 @@ export interface IOrganizationChartWebPartProps {
   currentUser: string;
   selectedUser: IPropertyFieldGroupOrPerson[];
   showAllManagers: boolean;
+  showGuestUsers: boolean;
   showActionsBar: boolean;
 }
 
@@ -40,6 +41,7 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrg
         defaultUser: this.properties.currentUser,
         startFromUser: this.properties.selectedUser,
         showAllManagers: this.properties.showAllManagers,
+        showGuestUsers: this.properties.showGuestUsers,
         context: this.context,
         showActionsBar: this.properties.showActionsBar,
       }
@@ -83,6 +85,9 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrg
                 }),
                 PropertyPaneToggle("showAllManagers", {
                   label: strings.showAllManagers,
+                }),
+                PropertyPaneToggle("showGuestUsers", {
+                  label: strings.showGuestUsers,
                 }),
                 PropertyPaneToggle("showActionsBar", {
                   label: strings.showactionsLabel,

@@ -23,6 +23,7 @@
     "properties": {
       "title": "Organization Chart",
       "showAllManagers": true,
+      "showGuestUsers": false,
       "showActionsBar": true
     }
   }]
