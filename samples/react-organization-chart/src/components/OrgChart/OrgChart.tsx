@@ -6,7 +6,7 @@ import {
   useGetUserProperties,
   manpingUserProperties,
 } from "../../hooks/useGetUserProperties";
-import { IStackStyles, Stack } from "office-ui-fabric-react/lib/Stack";
+import { IStackStyles, Stack } from "@fluentui/react/lib/Stack";
 import { PersonCard } from "../PersonCard/PersonCard";
 import { IUserInfo } from "../../models/IUserInfo";
 import { EOrgChartTypes } from "./EOrgChartTypes";
@@ -17,12 +17,14 @@ import {
   Spinner,
   SpinnerSize,
   Text,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
 import { getGUID } from "@pnp/common";
 import { useOrgChartStyles } from "./useOrgChartStyles";
+
+import "./OrgChart.module.scss";
 
 const initialState: IOrgChartState = {
   isLoading: true,
@@ -62,7 +64,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
   }: IOrgChartProps = props;
 
 
-  const startFromUserId: string = React.useMemo(
+  const startFromUserId: Maybe<string> = React.useMemo(
     () => startFromUser && startFromUser[0].id,
     [startFromUser]
   );
@@ -80,13 +82,13 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
       const wRenderDirectReports: JSX.Element[] = [];
 
       try {
-        const { managersList, reportsLists } = await getUserProfile(
+        const profileResponse = await getUserProfile(
           selectedUser,
           startFromUserId,
           showAllManagers
         );
-        if (managersList) {
-          for (const managerInfo of managersList) {
+        if (profileResponse) {
+          for (const managerInfo of profileResponse.managersList) {
             wRenderManagers.push(
               <>
                 <PersonCard
@@ -104,7 +106,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
             );
           }
 
-          for (const directReport of reportsLists) {
+          for (const directReport of profileResponse.reportsLists) {
             wRenderDirectReports.push(
               <>
                 <PersonCard
@@ -170,9 +172,9 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
           });
           return;
         }
-        const { currentUserProfile } = await getUserProfile(startFromUserId);
+        const profileResponse = await getUserProfile(startFromUserId);
         const wCurrentUser: IUserInfo = await manpingUserProperties(
-          currentUserProfile
+          profileResponse!.currentUserProfile
         );
         dispatch({
           type: EOrgChartTypes.SET_CURRENT_USER,
@@ -201,7 +203,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
 
   React.useEffect(() => {
     (async () => {
-      if (!currentUser) return;
+      if (!currentUser || !currentUser.id) return;
       dispatch({
         type: EOrgChartTypes.SET_IS_LOADING,
         payload: true,
@@ -279,7 +281,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
           {renderManagers}
           <PersonCard
             key={getGUID()}
-            userInfo={currentUser}
+            userInfo={currentUser!}
             onUserSelected={onUserSelected}
             selectedUser={currentUser}
             showActionsBar={showActionsBar}

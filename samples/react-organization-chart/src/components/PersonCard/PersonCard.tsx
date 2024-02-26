@@ -5,7 +5,7 @@ import {
   DocumentCardActions,
   DocumentCardDetails,
   IDocumentCard,
-} from "office-ui-fabric-react/lib/DocumentCard";
+} from "@fluentui/react/lib/DocumentCard";
 
 import {
   Stack,
@@ -15,7 +15,7 @@ import {
   IExpandingCardProps,
   PersonaSize,
   DirectionalHint,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 import { Person } from "../Person/Person";
 import { IUserInfo } from "../../models/IUserInfo";
 import { ExpandedCard, CompactCard } from "../HoverCard";
@@ -29,7 +29,7 @@ export const PersonCard: React.FunctionComponent<IPersonCardProps> = (
 ) => {
   const { userInfo, onUserSelected, showActionsBar } = props;
 
-  const documentCardRef = React.useRef<IDocumentCard>(undefined);
+  const documentCardRef = React.useRef<IDocumentCard>(null);
   const {
     personaCardStyles,
     documentCardActionStyles,

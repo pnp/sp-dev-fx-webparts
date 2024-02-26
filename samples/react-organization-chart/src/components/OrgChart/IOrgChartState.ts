@@ -5,8 +5,8 @@ export interface IErrorInfo {
 }
 export interface IOrgChartState {
   isLoading: boolean;
-  error:IErrorInfo;
-  renderManagers:JSX.Element[];
+  renderManagers: JSX.Element[];
   renderDirectReports: JSX.Element[];
-  currentUser:IUserInfo;
+  error?: IErrorInfo;
+  currentUser?: IUserInfo;
 }

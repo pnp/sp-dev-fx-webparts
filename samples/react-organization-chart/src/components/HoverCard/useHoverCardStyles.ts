@@ -1,7 +1,6 @@
-import { IButtonStyles, IDocumentCardActionsStyles, IStackStyles, mergeStyles, mergeStyleSets } from "office-ui-fabric-react";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import Theme from "spfx-uifabric-themes";
-const currentTheme = window.__themeState__.theme;
+import { IButtonStyles, IDocumentCardActionsStyles, IStackStyles, mergeStyles, mergeStyleSets } from "@fluentui/react";
+import type { Theme } from "spfx-uifabric-themes";
+const currentTheme: Theme = window.__themeState__.theme;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useHoverCardStyles = () => {

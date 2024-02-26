@@ -36,7 +36,7 @@ export const getUserPhoto = async (userId: string): Promise<string> => {
  * Get MD5Hash for the image url to verify whether user has default image or custom image
  * @param url
  */
-export const getMd5HashForUrl = async (url: string): Promise<string> => {
+export const getMd5HashForUrl = async (url: string): Promise<Maybe<string>> => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const library : any = await loadSPComponentById(MD5_MODULE_ID) ;
   try {
@@ -73,7 +73,7 @@ export const getImageBase64 = async (pictureUrl: string): Promise<string> => {
       const tempCanvas = document.createElement("canvas");
       (tempCanvas.width = image.width),
         (tempCanvas.height = image.height),
-        tempCanvas.getContext("2d").drawImage(image, 0, 0);
+        tempCanvas.getContext("2d")?.drawImage(image, 0, 0);
       let base64Str;
       try {
         base64Str = tempCanvas.toDataURL("image/png");

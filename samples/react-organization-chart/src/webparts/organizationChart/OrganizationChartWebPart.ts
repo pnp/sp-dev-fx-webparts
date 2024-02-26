@@ -1,19 +1,19 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneToggle,
+} from "@microsoft/sp-property-pane";
 import {
   PropertyFieldPeoplePicker,
   PrincipalType,
   IPropertyFieldGroupOrPerson,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
-import * as strings from 'OrganizationChartWebPartStrings';
-import {OrgChart} from '../../components/OrgChart/OrgChart';
+import * as strings from "OrganizationChartWebPartStrings";
+import { OrgChart } from "../../components/OrgChart/OrgChart";
 
 import { IOrgChartProps } from "../../components/OrgChart/IOrgChartProps";
 import { sp } from "@pnp/sp";
@@ -27,13 +27,13 @@ export interface IOrganizationChartWebPartProps {
 
 export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrganizationChartWebPartProps> {
   public async onInit(): Promise<void> {
-   sp.setup({
+    sp.setup({
       spfxContext: this.context,
     });
-return Promise.resolve();
+    return Promise.resolve();
   }
   public render(): void {
-    const element: React.ReactElement<IOrgChartProps > = React.createElement(
+    const element: React.ReactElement<IOrgChartProps> = React.createElement(
       OrgChart,
       {
         title: this.properties.title,
@@ -41,7 +41,7 @@ return Promise.resolve();
         startFromUser: this.properties.selectedUser,
         showAllManagers: this.properties.showAllManagers,
         context: this.context,
-        showActionsBar: this.properties.showActionsBar
+        showActionsBar: this.properties.showActionsBar,
       }
     );
 
@@ -53,7 +53,7 @@ return Promise.resolve();
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -80,7 +80,6 @@ return Promise.resolve();
                   principalType: [PrincipalType.Users],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  onGetErrorMessage: null,
                 }),
                 PropertyPaneToggle("showAllManagers", {
                   label: strings.showAllManagers,
@@ -95,5 +94,4 @@ return Promise.resolve();
       ],
     };
   }
-
 }

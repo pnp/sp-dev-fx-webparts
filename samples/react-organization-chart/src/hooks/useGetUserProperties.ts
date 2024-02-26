@@ -1,5 +1,4 @@
-
-import { sp, SPBatch} from "@pnp/sp/";
+import { sp, SPBatch } from "@pnp/sp/";
 import { IUserInfo } from "../models/IUserInfo";
 import * as React from "react";
 import { get, set } from "idb-keyval";
@@ -10,28 +9,37 @@ import { IPersonProperties } from "../models/IPersonProperties";
 // Hook to get user profile information
 // *************************************************************************************/
 
-type getUserProfileFunc = ( currentUser: string,
+type getUserProfileFunc = (
+  currentUser: string,
   startUser?: string,
-  showAllManagers?: boolean) => Promise<returnProfileData>;
+  showAllManagers?: boolean
+) => Promise<ProfileDataResponse>;
 
-type returnProfileData =  { managersList:IUserInfo[], reportsLists:IUserInfo[], currentUserProfile :IPersonProperties} ;
+type ProfileDataResponse = Maybe<{
+  managersList: IUserInfo[];
+  reportsLists: IUserInfo[];
+  currentUserProfile: IPersonProperties;
+}>;
 
-export const useGetUserProperties  =  ():  { getUserProfile:getUserProfileFunc }  => {
-
+export const useGetUserProperties = (): {
+  getUserProfile: getUserProfileFunc;
+} => {
   const getUserProfile = React.useCallback(
     async (
       currentUser: string,
       startUser?: string,
-      showAllManagers?: boolean
-    ): Promise<returnProfileData> => {
+      showAllManagers: boolean = false
+    ): Promise<ProfileDataResponse> => {
       if (!currentUser) return;
       const loginName = currentUser;
-      const loginNameStartUser: string = startUser && startUser;
-      const cacheCurrentUser:IPersonProperties = await get(`${loginName}__orgchart__`);
-      let currentUserProfile:IPersonProperties   = undefined;
+      const loginNameStartUser: Maybe<string> = startUser && startUser;
+      const cacheCurrentUser: Maybe<IPersonProperties> = await get(
+        `${loginName}__orgchart__`
+      );
+      let currentUserProfile: IPersonProperties;
       if (!cacheCurrentUser) {
         currentUserProfile = await sp.profiles.getPropertiesFor(loginName);
-       // console.log(currentUserProfile);
+        // console.log(currentUserProfile);
         await set(`${loginName}__orgchart__`, currentUserProfile);
       } else {
         currentUserProfile = cacheCurrentUser;
@@ -40,9 +48,9 @@ export const useGetUserProperties  =  ():  { getUserProfile:getUserProfileFunc }
       let reportsLists: IUserInfo[] = [];
       let managersList: IUserInfo[] = [];
 
-      const wDirectReports: string[] =
+      const wDirectReports: Maybe<string[]> =
         currentUserProfile && currentUserProfile.DirectReports;
-      const wExtendedManagers: string[] =
+      const wExtendedManagers: Maybe<string[]> =
         currentUserProfile && currentUserProfile.ExtendedManagers;
 
       // Get Direct Reports if exists
@@ -53,17 +61,17 @@ export const useGetUserProperties  =  ():  { getUserProfile:getUserProfileFunc }
       if (startUser && wExtendedManagers && wExtendedManagers.length > 0) {
         managersList = await getExtendedManagers(
           wExtendedManagers,
-          loginNameStartUser,
+          loginNameStartUser!,
           showAllManagers
         );
       }
 
-      return   { managersList, reportsLists, currentUserProfile } ;
+      return { managersList, reportsLists, currentUserProfile };
     },
     []
   );
 
-  return   { getUserProfile }  ;
+  return { getUserProfile };
 };
 
 const getDirectReports = async (
@@ -72,7 +80,9 @@ const getDirectReports = async (
   const _reportsList: IUserInfo[] = [];
   const batch: SPBatch = sp.createBatch();
   for (const userReport of directReports) {
-    const cacheDirectReport: IPersonProperties = await get(`${userReport}__orgchart__`);
+    const cacheDirectReport: Maybe<IPersonProperties> = await get(
+      `${userReport}__orgchart__`
+    );
     if (!cacheDirectReport) {
       sp.profiles
         .inBatch(batch)
@@ -101,7 +111,7 @@ const getExtendedManagers = async (
     if (!showAllManagers && manager !== startUser) {
       continue;
     }
-    const cacheManager: IPersonProperties = await get(`${manager}__orgchart__`);
+    const cacheManager: Maybe<IPersonProperties> = await get(`${manager}__orgchart__`);
     if (!cacheManager) {
       sp.profiles
         .inBatch(batch)
@@ -121,7 +131,6 @@ const getExtendedManagers = async (
 export const manpingUserProperties = async (
   userProperties: IPersonProperties
 ): Promise<IUserInfo> => {
-
   return {
     displayName: userProperties.DisplayName as string,
     email: userProperties.Email as string,
@@ -133,12 +142,24 @@ export const manpingUserProperties = async (
     hasDirectReports: userProperties.DirectReports.length > 0 ? true : false,
     hasPeers: userProperties.Peers.length > 0 ? true : false,
     numberPeers: userProperties.Peers.length,
-    department: filter(userProperties?.UserProfileProperties,{"Key": "Department"})[0].Value ?? '',
-    workPhone: filter(userProperties?.UserProfileProperties,{"Key": "WorkPhone"})[0].Value ?? '',
-    cellPhone: filter(userProperties?.UserProfileProperties,{"Key": "CellPhone"})[0].Value ?? '',
-    location: filter(userProperties?.UserProfileProperties,{"Key": "SPS-Location"})[0].Value ?? '',
-    office: filter(userProperties?.UserProfileProperties,{"Key": "Office"})[0].Value ?? '',
-    manager: filter(userProperties?.UserProfileProperties,{"Key": "Manager"})[0].Value ?? '',
-    loginName: userProperties.loginName
+    department:
+      filter(userProperties?.UserProfileProperties, { Key: "Department" })[0]
+        .Value ?? "",
+    workPhone:
+      filter(userProperties?.UserProfileProperties, { Key: "WorkPhone" })[0]
+        .Value ?? "",
+    cellPhone:
+      filter(userProperties?.UserProfileProperties, { Key: "CellPhone" })[0]
+        .Value ?? "",
+    location:
+      filter(userProperties?.UserProfileProperties, { Key: "SPS-Location" })[0]
+        .Value ?? "",
+    office:
+      filter(userProperties?.UserProfileProperties, { Key: "Office" })[0]
+        .Value ?? "",
+    manager:
+      filter(userProperties?.UserProfileProperties, { Key: "Manager" })[0]
+        .Value ?? "",
+    loginName: userProperties.loginName,
   };
 };

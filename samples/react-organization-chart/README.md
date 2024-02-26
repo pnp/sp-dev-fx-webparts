@@ -30,13 +30,15 @@ This web part shows an organization chart based on specified user, and user can 
 
 ## Contributors
 
-* [João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
+- [João Mendes](https://github.com/joaojmendes), Storm Technology, ([@joaojmendes](https://twitter.com/joaojmendes))
+- [Passoli Mirko](https://github.com/Paxol), Sicim S.p.A., ([Linkedin](https://www.linkedin.com/in/mirko-passoli))
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.0|May, 2021|Initial release
+|Version|Date|Comments|
+|-------|----|--------|
+|1.1|Feb, 2024|Updated to latest sharepoint template|
+|1.0|May, 2021|Initial release|
 
 ## Prerequisites
 

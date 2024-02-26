@@ -5,7 +5,7 @@ import {
   IStackTokens,
   PersonaSize,
   Link,
-} from  "office-ui-fabric-react"
+} from  "@fluentui/react"
 import * as React from "react";
 import { Person } from "../Person/Person";
 import { IExpandedCardProps } from "./IExpandedCardProps";
@@ -35,10 +35,12 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
     }
 
     (async () => {
-      const { currentUserProfile } = await getUserProfile(user.manager);
-      const wManager: IUserInfo = await manpingUserProperties(
-        currentUserProfile
-      );
+      if (!user.manager) return;
+
+      const userProfileResponse = await getUserProfile(user.manager);
+      if (!userProfileResponse) return;
+
+      const wManager: IUserInfo = await manpingUserProperties(userProfileResponse.currentUserProfile);
       setManager(wManager);
     })();
   }, [getUserProfile, user.manager]);

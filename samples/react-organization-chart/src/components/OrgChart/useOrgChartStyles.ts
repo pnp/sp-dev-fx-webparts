@@ -1,4 +1,4 @@
-import { mergeStyles, mergeStyleSets } from "office-ui-fabric-react";
+import { mergeStyles, mergeStyleSets } from "@fluentui/react";
 
 const currentTheme = window.__themeState__.theme;
 
