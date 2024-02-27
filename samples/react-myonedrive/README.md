@@ -70,7 +70,7 @@ This web part can be useful on the Intranet home page which can be added as My O
 Version|Date|Comments
 -------|----|--------
 1.0|Aug 12, 2021|Initial release
-1.1|Feb 27, 2024|Correct case issue
+1.1|Feb 27, 2024|Fix case issue
 
 
 
