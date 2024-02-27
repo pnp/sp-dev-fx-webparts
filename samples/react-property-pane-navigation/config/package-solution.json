@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "property-pane-navigation-client-side-solution",
+    "id": "73a5e16a-4b79-44ab-a5a1-21096dac51a3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "property-pane-navigation description"
+      },
+      "longDescription": {
+        "default": "property-pane-navigation description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "property-pane-navigation Feature",
+        "description": "The feature that activates elements of the property-pane-navigation solution.",
+        "id": "e63d13bd-9905-42e4-908a-d5c2e32b954a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/property-pane-navigation.sppkg"
+  }
+}

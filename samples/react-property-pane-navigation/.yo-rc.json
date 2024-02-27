@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "property-pane-navigation",
+    "libraryId": "73a5e16a-4b79-44ab-a5a1-21096dac51a3",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "property-pane-navigation",
+    "solutionShortDescription": "property-pane-navigation description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
