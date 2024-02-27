@@ -5,6 +5,8 @@ https://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/
 This is a sample web part that displays currently logged in user's OneDrive's file,
 This web part can be useful on the Intranet home page which can be added as My OneDrive files for quick reference of user's OneDrive files.
 
+![Demo](./assets/demo-static-img.png)
+
 ![Web Part in Action](./assets/MyOneDriveInAction.gif)
 
 
@@ -67,6 +69,7 @@ This web part can be useful on the Intranet home page which can be added as My O
 Version|Date|Comments
 -------|----|--------
 1.0|Aug 12, 2021|Initial release
+1.1|Feb 27, 2024|Correct case issue
 
 
 
