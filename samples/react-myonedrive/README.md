@@ -63,6 +63,7 @@ This web part can be useful on the Intranet home page which can be added as My O
 ## Contributors
 
 * [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Version history
 
