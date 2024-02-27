@@ -90,7 +90,7 @@ export const usePersonaCardStyles = () => {
         },
         "@media((min-width : 481px) and (max-width : 12480px))": {
           maxWidth: 260,
-          minWidth: "50%",
+          minWidth: "min(50%, 260px)",
         },
       }
     }),
