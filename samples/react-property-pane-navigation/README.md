@@ -14,7 +14,7 @@ This sample showcase how to handle the navigation between property pane pages.
 
 ## Compatibility
 
-| :warning: Important          |
+| :warning: Important |
 |:---------------------------|
 | Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
