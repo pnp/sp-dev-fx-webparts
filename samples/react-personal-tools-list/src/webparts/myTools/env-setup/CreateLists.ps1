@@ -27,8 +27,10 @@ Add-PnPFieldToContentType -Field "tool_usertools" -ContentType "PersonalTools"
 #Create list and add CT
 New-PnPList -Title "AvailableTools" -Url "lists/availabletools" -Template GenericList
 Add-PnPContentTypeToList -List "AvailableTools" -ContentType "ToolItem" 
+Remove-PnPContentTypeFromList -List "AvailableTools" -ContentType "Item"
 
 
 #Create list and add CT
 New-PnPList -Title "PersonalTools" -Url "lists/personaltools" -Template GenericList
 Add-PnPContentTypeToList -List "PersonalTools" -ContentType "PersonalTools"
+Remove-PnPContentTypeFromList -List "PersonalTools" -ContentType "Item"

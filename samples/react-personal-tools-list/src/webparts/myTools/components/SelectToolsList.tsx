@@ -53,18 +53,18 @@ const SelectToolList: React.FC<ISelectToolList> = (props) => {
   return (
     <>
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        {tools.length > 0 ? tools : "Fant ingen verktøy. Kontakt support."}
+        {tools.length > 0 ? tools : "No tools found. Please contact support."}
       </List>
-      <DialogActions>
+      {tools.length > 0 && <DialogActions>
         <Button
           autoFocus
           onClick={() => {
             props.handleSave(checked);
           }}
         >
-         Save changes
+          Save changes
         </Button>
-      </DialogActions>
+      </DialogActions>}
     </>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -11,10 +12,13 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'MyToolsWebPartStrings';
 import MyTools from './components/MyTools';
 import { IMyToolsProps } from './models';
+import { IPropertyFieldSite, PropertyFieldListPicker, PropertyFieldListPickerOrderBy, PropertyFieldSitePicker } from '@pnp/spfx-property-controls';
 
 
 export interface IMyToolsWebPartProps {
   wpTitle: string;
+  wpSites: IPropertyFieldSite[];
+  wpLists: { personalToolsList: { id: string, title: string, url: string }, availableToolsList: { id: string, title: string, url: string } };
   twoColumns: boolean;
 }
 
@@ -28,6 +32,8 @@ export default class MyToolsWebPart extends BaseClientSideWebPart<IMyToolsWebPar
       MyTools,
       {
         wpTitle: this.properties.wpTitle,
+        wpSite: (this.properties.wpSites?.length > 0) ? this.properties.wpSites[0] : undefined,
+        wpLists: this.properties.wpLists,
         isDarkTheme: this._isDarkTheme,
         context: this.context,
         environmentMessage: this._environmentMessage,
@@ -45,8 +51,6 @@ export default class MyToolsWebPart extends BaseClientSideWebPart<IMyToolsWebPar
       this._environmentMessage = message;
     });
   }
-
-
 
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
@@ -115,13 +119,60 @@ export default class MyToolsWebPart extends BaseClientSideWebPart<IMyToolsWebPar
                 PropertyPaneTextField('wpTitle', {
                   label: "Title",
                   description:
-                  "If this is not set the title will be shown as 'My tools'",
+                    "If this is not set the title will be shown as 'My tools'",
                 }),
                 PropertyPaneCheckbox('twoColumns', {
                   checked: false,
                   disabled: false,
-                  text: "Show links in two columns? (Defaults to 1column if this is not checked)"
+                  text: "Show links in two columns? (defaults to 1 column if this is not checked)"
                 })
+              ]
+            }, {
+              groupName: "Lists settings",
+              groupFields: [
+                PropertyFieldSitePicker('wpSites', {
+                  label: 'Select site that contains the tools lists',
+                  // initialSites: this.properties.wpSites?.length > 0 ? this.properties.wpSites : [{ url: this.context.pageContext.web.serverRelativeUrl, title: this.context.pageContext.web.title }],
+                  initialSites: this.properties.wpSites,
+                  context: this.context as any,
+                  deferredValidationTime: 500,
+                  multiSelect: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  key: 'wpSites'
+                }),
+                PropertyFieldListPicker('wpLists.personalToolsList', {
+                  label: "Select the 'Personal tools' list",
+                  selectedList: this.properties.wpLists?.personalToolsList,
+                  includeHidden: false,
+                  baseTemplate: 100,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  includeListTitleAndUrl: true,
+                  disabled: (this.properties.wpSites && this.properties.wpSites.length > 0) ? false : true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context as any,
+                  multiSelect: false,
+                  webAbsoluteUrl: (this.properties.wpSites && this.properties.wpSites.length > 0) ? this.properties.wpSites[0].url : this.context.pageContext.web.absoluteUrl,
+                  deferredValidationTime: 0,
+                  key: 'wpLists.personalToolsList'
+                }),
+                PropertyFieldListPicker('wpLists.availableToolsList', {
+                  label: "Select the 'Available tools' list",
+                  selectedList: this.properties.wpLists?.availableToolsList,
+                  includeHidden: false,
+                  baseTemplate: 100,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  includeListTitleAndUrl: true,
+                  disabled: (this.properties.wpSites && this.properties.wpSites.length > 0) ? false : true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context as any,
+                  multiSelect: false,
+                  webAbsoluteUrl: (this.properties.wpSites && this.properties.wpSites.length > 0) ? this.properties.wpSites[0].url : this.context.pageContext.web.absoluteUrl,
+                  deferredValidationTime: 0,
+                  key: 'wpLists.availableToolsList'
+                }),
               ]
             }
           ]

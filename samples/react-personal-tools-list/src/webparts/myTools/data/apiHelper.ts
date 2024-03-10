@@ -1,16 +1,29 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { SPFx, spfi } from "@pnp/sp";
 import { ITool } from "../models";
 import { getSP } from "./pnpjs-config";
+import { IWeb, Web } from '@pnp/sp/presets/all';
+
+type ListDefintion = {
+  siteUrl?: string;
+  list?: { id: string, title: string, url: string };
+}
+
+const getSourceWeb = async (context: WebPartContext, siteUrl: string): Promise<IWeb> => {
+  const sp = getSP(context);
+  const { WebFullUrl } = await sp.web.getContextInfo(siteUrl);
+  const sourceWeb = Web([sp.web, decodeURI(WebFullUrl)]);
+  return sourceWeb;
+}
 
 export const getUsersTools = async (
   context: WebPartContext,
-  currentUserMail: string
+  currentUserMail: string,
+  personalToolsList: ListDefintion,
 ): Promise<Array<ITool> | undefined> => {
-  const sp = getSP(context);
-  const requestRes = await sp.web.lists
-    .getByTitle("PersonalTools")
-    .items();
+  const sourceWeb = await getSourceWeb(context, personalToolsList?.siteUrl ?? '');
+  const sourceList = sourceWeb.lists.getById(personalToolsList?.list?.id ?? '');
+  const requestRes = await sourceList.items();
+
   const userTools = requestRes.filter(
     (userTools) => userTools.tool_username === currentUserMail
   );
@@ -24,10 +37,13 @@ export const getUsersTools = async (
 };
 
 export const getSelectableTools = async (
-  context: WebPartContext
+  context: WebPartContext,
+  availableToolsList: ListDefintion,
 ): Promise<Array<ITool>> => {
-  const sp = spfi().using(SPFx(context));
-  const requestRes = await sp.web.lists.getByTitle("AvailableTools").items();
+  const sourceWeb = await getSourceWeb(context, availableToolsList?.siteUrl ?? '');
+  const sourceList = sourceWeb.lists.getById(availableToolsList?.list?.id ?? '');
+  const requestRes = await sourceList.items();
+
   const tools = requestRes.map((tool) => {
     return {
       toolName: tool.tool_name,
@@ -41,13 +57,13 @@ export const getSelectableTools = async (
 export const updateUsersTools = async (
   context: WebPartContext,
   userTools: Array<ITool>,
-  currentUserMail: string
+  currentUserMail: string,
+  personalToolsList?: ListDefintion,
 ): Promise<boolean> => {
+  const sourceWeb = await getSourceWeb(context, personalToolsList?.siteUrl ?? '');
+  const sourceList = sourceWeb.lists.getById(personalToolsList?.list?.id ?? '');
+  const requestRes = await sourceList.items();
 
-  const sp = spfi().using(SPFx(context));
-  const requestRes = await sp.web.lists
-    .getByTitle("PersonalTools")
-    .items();
   const tmpTools = requestRes.filter(
     (userTools) => userTools.tool_username === currentUserMail
   );
@@ -59,8 +75,7 @@ export const updateUsersTools = async (
     tool_username: currentUserMail,
   };
   if (tmpTools.length === 1) {
-    const update = await sp.web.lists
-      .getByTitle("PersonalTools")
+    const update = await sourceList
       .items.getById(tmpTools[0].ID)
       .update(userToolsObject)
       .then((res) => {
@@ -72,8 +87,7 @@ export const updateUsersTools = async (
       });
     return update;
   } else if (tmpTools.length === 0) {
-    const addItem = await sp.web.lists
-      .getByTitle("PersonalTools")
+    const addItem = await sourceList
       .items.add(userToolsObject)
       .then((res) => {
         return true;
@@ -82,7 +96,7 @@ export const updateUsersTools = async (
         console.log(error);
         return false;
       });
-      return addItem;
+    return addItem;
   }
   return false;
 };

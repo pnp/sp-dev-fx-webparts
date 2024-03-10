@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from "react";
 import styles from "../styles/PersonalToolsListWebpart.module.scss";
-import type {IMyToolsProps, ITool } from "../models";
+import type { IMyToolsProps, ITool } from "../models";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
@@ -14,7 +14,7 @@ import Dialog from "@mui/material/Dialog";
 import { getSelectableTools, getUsersTools, updateUsersTools } from "../data/apiHelper";
 
 const MyTools: React.FC<
-IMyToolsProps
+  IMyToolsProps
 > = (props) => {
   /** === USE STATE HOOKS === */
   const [open, setOpen] = React.useState(false);
@@ -33,7 +33,25 @@ IMyToolsProps
   /** === USE EFFECT HOOKS === */
   React.useEffect(() => {
     (async () => {
-      const tmpTools = await getUsersTools(props.context, props.userEmail);
+      await initListData();
+    })();
+  }, [props]);
+
+  React.useEffect(() => {
+    if (myTools.length > 0 && errorMessage) {
+      setErrorMessage(undefined);
+    }
+    if (myTools.length === 0) {
+      setErrorMessage(
+        errorMsgNotFound
+      );
+    }
+  }, [myTools]);
+
+  /** === FUNCTIONS === */
+  async function initListData(): Promise<void> {
+    if (props.wpLists?.personalToolsList && props.wpSite?.url) {
+      const tmpTools = await getUsersTools(props.context, props.userEmail, { list: props.wpLists.personalToolsList, siteUrl: props.wpSite.url });
       if (tmpTools) {
         setMyTools(tmpTools);
       } else {
@@ -41,28 +59,19 @@ IMyToolsProps
           errorMsgNotFound
         );
       }
-      const tmpSelectTools = await getSelectableTools(props.context);
+    }
+    if (props.wpLists?.availableToolsList && props.wpSite?.url) {
+      const tmpSelectTools = await getSelectableTools(props.context, { list: props.wpLists.availableToolsList, siteUrl: props.wpSite.url });
       if (tmpSelectTools) {
         setSelectableTools(tmpSelectTools);
       }
-    })();
-  }, []);
-
-  React.useEffect(() => {
-    if (myTools.length > 0 && errorMessage) {
-      setErrorMessage(undefined);
     }
-    if(myTools.length === 0){
-      setErrorMessage(
-        errorMsgNotFound
-      );
-    }
-  }, [myTools]);
+  }
 
-    /** === FUNCTIONS === */
   const handleClickOpen = (): void => {
     setOpen(true);
   };
+
   const handleClose = (): void => {
     setOpen(false);
   };
@@ -73,12 +82,13 @@ IMyToolsProps
       const updateSucess = await updateUsersTools(
         props.context,
         checked,
-        props.userEmail
+        props.userEmail,
+        { list: props.wpLists?.personalToolsList, siteUrl: props.wpSite?.url }
       );
       if (updateSucess) {
-        const tmpTools = await getUsersTools(props.context, props.userEmail);
-        if (tmpTools) {
-          setMyTools(tmpTools);
+        const userTools = await getUsersTools(props.context, props.userEmail, { list: props.wpLists?.personalToolsList, siteUrl: props.wpSite?.url });
+        if (userTools) {
+          setMyTools(userTools);
         } else {
           setErrorMessage(
             errorMsgNotFound
@@ -95,9 +105,8 @@ IMyToolsProps
   /** === TSX === */
   return (
     <section
-      className={`${styles.personalToolsListWebpart} ${
-        props.hasTeamsContext ? styles.teams : ""
-      }`}
+      className={`${styles.personalToolsListWebpart} ${props.hasTeamsContext ? styles.teams : ""
+        }`}
     >
       <Grid style={{ width: "100%", borderBottom: "1px solid #333" }} container>
         <Grid item xs={12} md={8}>
