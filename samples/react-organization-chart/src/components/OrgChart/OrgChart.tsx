@@ -99,11 +99,11 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
                   onUserSelected={onUserSelected}
                   selectedUser={currentUser}
                   showActionsBar={showActionsBar}
-                ></PersonCard>
+                 />
                 <div
                   key={getGUID()}
                   className={orgChartClasses.separatorVertical}
-                ></div>
+                 />
               </>
             );
           }
@@ -117,7 +117,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
                   onUserSelected={onUserSelected}
                   selectedUser={currentUser}
                   showActionsBar={showActionsBar}
-                ></PersonCard>
+                 />
               </>
             );
           }
@@ -158,6 +158,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
   );
 
   React.useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     (async () => {
       try {
         if (startFromUserId === undefined)  return;
@@ -177,6 +178,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         }
         const profileResponse = await getUserProfile(startFromUserId);
         const wCurrentUser: IUserInfo = await manpingUserProperties(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           profileResponse!.currentUserProfile
         );
         dispatch({
@@ -205,6 +207,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
   }, [getUserProfile, startFromUserId]);
 
   React.useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     (async () => {
       if (!currentUser || !currentUser.id) return;
       dispatch({
@@ -251,7 +254,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
             size={SpinnerSize.large}
             label={"loading Organization Chart..."}
             labelPosition={"bottom"}
-          ></Spinner>
+           />
         </Stack>
       </Overlay>
     );
@@ -284,15 +287,16 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
           {renderManagers}
           <PersonCard
             key={getGUID()}
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             userInfo={currentUser!}
             onUserSelected={onUserSelected}
             selectedUser={currentUser}
             showActionsBar={showActionsBar}
-          ></PersonCard>
+           />
           {renderDirectReports.length && (
             <>
-              <div className={orgChartClasses.separatorVertical}></div>
-              <div className={orgChartClasses.separatorHorizontal}></div>
+              <div className={orgChartClasses.separatorVertical} />
+              <div className={orgChartClasses.separatorHorizontal} />
             </>
           )}
         </Stack>

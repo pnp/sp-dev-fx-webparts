@@ -2,7 +2,7 @@ import { IButtonStyles, IDocumentCardActionsStyles, IStackStyles, mergeStyles, m
 import type { Theme } from "spfx-uifabric-themes";
 const currentTheme: Theme = window.__themeState__.theme;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
 export const usePersonaCardStyles = () => {
 
   const stackPersonaStyles: Partial<IStackStyles> = {

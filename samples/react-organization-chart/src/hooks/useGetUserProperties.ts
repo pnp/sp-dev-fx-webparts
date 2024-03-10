@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { sp, SPBatch } from "@pnp/sp/";
 import { IUserInfo } from "../models/IUserInfo";
 import * as React from "react";
@@ -57,10 +58,12 @@ export const useGetUserProperties = (): {
 
       // Get Direct Reports if exists
       if (wDirectReports && wDirectReports.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         reportsLists = await getDirectReports(wDirectReports, showGuestUsers);
       }
       // Get Managers if exists
       if (startUser && wExtendedManagers && wExtendedManagers.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         managersList = await getExtendedManagers(
           wExtendedManagers,
           loginNameStartUser!,
@@ -88,10 +91,12 @@ const getDirectReports = async (
       `${userReport}__orgchart__`
     );
     if (!cacheDirectReport) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       sp.profiles
         .inBatch(batch)
         .getPropertiesFor(userReport)
         .then(async (directReport: IPersonProperties) => {
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
           const userInfo = await manpingUserProperties(directReport);
           if (!showGuestUsers && userInfo.userType === "Guest") return;
 
@@ -99,6 +104,7 @@ const getDirectReports = async (
           await set(`${userReport}__orgchart__`, directReport);
         });
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       const userInfo = await manpingUserProperties(cacheDirectReport);
       if (!showGuestUsers && userInfo.userType === "Guest") continue;
 
@@ -126,10 +132,12 @@ const getExtendedManagers = async (
       `${manager}__orgchart__`
     );
     if (!cacheManager) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       sp.profiles
         .inBatch(batch)
         .getPropertiesFor(manager)
         .then(async (_profile: IPersonProperties) => {
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
           const userInfo = await manpingUserProperties(_profile);
           if (!showGuestUsers && userInfo.userType === "Guest") return;
 
@@ -137,6 +145,7 @@ const getExtendedManagers = async (
           await set(`${manager}__orgchart__`, _profile);
         });
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       const userInfo = await manpingUserProperties(cacheManager);
       if (!showGuestUsers && userInfo.userType === "Guest") continue;
 
@@ -147,6 +156,7 @@ const getExtendedManagers = async (
   return wManagers;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function userTypeMapper(userType: string) {
   switch (userType) {
     case "0":
