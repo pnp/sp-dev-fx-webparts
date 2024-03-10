@@ -15870,7 +15870,7 @@
     "This web part has the fundamental functionality - a great starting point to build upon if you need something more advanced."
   ],
   "2024-02-08",
-  "2024-02-08",
+  "2024-02-25",
   [
     "SharePoint"
   ],
@@ -25447,7 +25447,7 @@
       "A react Message Banner sample, allows to add a custom banner message to your SharePoint Online modern sites. Can target either Site or Web Scoped. Allows a site owner to modify the text, font size, colours and height of the banner. Specify a start date to control when the banner is visible to members of a site. Uses the latest v1.15.2 of SPFX framework."
     ],
     "creationDateTime": "2022-11-09",
-    "updateDateTime": "2022-11-09",
+    "updateDateTime": "2024-01-10",
     "products": [
       "SharePoint"
     ],
@@ -25458,7 +25458,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.18.2"
       }
     ],
     "thumbnails": [
@@ -25820,7 +25820,7 @@
       "SPFx application extension acting as top level search driven navigation and permission checker on the right within a panel."
     ],
     "creationDateTime": "2023-07-27",
-    "updateDateTime": "2023-07-27",
+    "updateDateTime": "2024-01-20",
     "products": [
       "SharePoint"
     ],
@@ -25831,7 +25831,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.18.2"
       }
     ],
     "tags": [],
