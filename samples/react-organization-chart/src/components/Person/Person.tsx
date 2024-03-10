@@ -3,8 +3,8 @@ import {
   IPersonaSharedProps,
   Persona,
   PersonaSize,
-} from "office-ui-fabric-react/lib/Persona";
-import { Text } from "office-ui-fabric-react/lib/Text";
+} from "@fluentui/react/lib/Persona";
+import { Text } from "@fluentui/react/lib/Text";
 import { IPersonProps } from "./IPersonProps";
 
 export const Person: React.FunctionComponent<IPersonProps> = (
