@@ -14918,7 +14918,7 @@
       "Can be installed on SharePoint Server 2019, and SharePoint Online."
     ],
     "creationDateTime": "2021-05-03",
-    "updateDateTime": "2021-05-03",
+    "updateDateTime": "2024-02-25",
     "products": [
       "SharePoint"
     ],
@@ -14929,7 +14929,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.4.1"
+        "value": "1.18.2"
       }
     ],
     "thumbnails": [
@@ -14959,6 +14959,10 @@
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes",
         "twitter": "joaojmendes"
+      },
+      {
+        "gitHubAccount": "Paxol",
+        "pictureUrl": "https://github.com/Paxol.png"
       }
     ],
     "references": [
