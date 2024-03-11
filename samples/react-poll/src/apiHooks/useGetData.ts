@@ -8,13 +8,14 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IQuestion, IAnswer } from "../models/models";
 import { Fields, ListsUrl } from "../Constants/Constants";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function useGetData(
   context: WebPartContext,
   userEmail: string,
   webServerRelativeUrl: string
 ) {
 
-  //Delare States
+  //Declare States
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [questions, setQuestions] = useState<IQuestion[]>([]);
@@ -46,6 +47,7 @@ export function useGetData(
   };
 
   //Map Question with Options and Answer
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapQuestion = async (item: any): Promise<IQuestion> => {
     const question: IQuestion = {
       id: item.ID,

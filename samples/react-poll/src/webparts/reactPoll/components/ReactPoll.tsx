@@ -145,7 +145,7 @@ const ReactPoll: React.FunctionComponent<IReactPollProps> = (props) => {
                       <PrimaryButton
                         text="Submit"
                         disabled={
-                          question.selectedOption == null || isSubmitting 
+                          question.selectedOption === null || isSubmitting 
                         }
                         onClick={() => handleSubmitClick(question)}
                       />

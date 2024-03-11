@@ -1,68 +1,61 @@
   
-
 # React Poll
-
-  
 
 ## Summary
 
 This web part allow User to add New Poll Questions and their options. End users can submit his/her response to the poll. After Submission, user can see all responses count with Bar chart.
   
-
 ![React-Poll](./assets/react-poll.gif)
 
 **Following are some of the features of this component.**  
 
- - These 2  lists will be provisioned automatically with necessary columns.
- - Poll Questions : User can add New poll question and their options. Also, user can set to keep it active or not.
+- These 2  lists will be provisioned automatically with necessary columns.
+- Poll Questions : User can add New poll question and their options. Also, user can set to keep it active or not.
   ![Poll Questions](./assets/poll-questions.png)
- 
- - Poll Answers: This list will hold all Answers give by End users with his/her email id.
+
+- Poll Answers: This list will hold all Answers give by End users with his/her email id.
     ![Poll Answers](./assets/poll-answers.png)
   
- -  Poll response can be viewed via Bar chart.
- - Easy to configure.
-	 
-
-## Used SharePoint Framework Version
-
+- Poll response can be viewed via Bar chart.
+- Easy to configure.
   
+## Compatibility
 
-![version](https://img.shields.io/badge/version-1.17.1-green.svg)
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-  
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.17.1](https://img.shields.io/badge/SPFx-1.17.1-green.svg)
+![Node.js v16.13+](https://img.shields.io/badge/Node.js-v16.13+-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 
 ## Applies to
 
-  
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-- [SharePoint Framework](https://aka.ms/spfx)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-  
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-  
 
 ## Prerequisites
 
-  
-
--   Office 365 subscription with SharePoint Online
--   SharePoint Framework  [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)  set up
+- Office 365 subscription with SharePoint Online
+- SharePoint Framework  [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)  set up
 
 ## Contributors
 
--   [Harsh Bhavsar](https://github.com/Harsh24491)
-
-
-  
+- [Harsh Bhavsar](https://github.com/Harsh24491)
 
 ## Version history
-
-  
 
 | Version | Date | Comments |
 
@@ -70,23 +63,15 @@ This web part allow User to add New Poll Questions and their options. End users 
 
 | 1.0 | March 02, 2024 | Initial release |
 
-  
-
-
-
-  
-
 ## Minimal Path to Awesome
 
-  
 - Clone this repository (or  [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-poll)  then unzip it)
--   From your command line, change your current directory to the directory containing this sample (`react-poll`, located under  `samples`)* in the command line run:
-    -   `npm install`
-    -   `gulp serve`
+- From your command line, change your current directory to the directory containing this sample (`react-poll`, located under  `samples`)* in the command line run:
+  - `npm install`
+  - `gulp serve`
 
 > This sample can also be opened with  [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit  [https://aka.ms/spfx-devcontainer](https://aka.ms/spfx-devcontainer)  for further instructions.
 
-  
 ## Help
 
 We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
