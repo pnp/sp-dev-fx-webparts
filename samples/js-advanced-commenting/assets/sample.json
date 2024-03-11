@@ -9,7 +9,7 @@
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
     "creationDateTime": "2020-02-05",
-    "updateDateTime": "2023-06-09",
+    "updateDateTime": "2024-03-11",
     "products": [
       "SharePoint"
     ],
@@ -53,6 +53,11 @@
         "gitHubAccount": "a1mery",
         "name": "Aimery Thomas",
         "pictureUrl": "https://github.com/a1mery.png"
+      },
+      {
+        "gitHubAccount": "wideserg",
+        "name": "Sergey Shiroky",
+        "pictureUrl": "https://github.com/wideserg.png"
       }
     ],
     "references": [
