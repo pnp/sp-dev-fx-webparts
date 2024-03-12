@@ -60,10 +60,10 @@ Version|Date|Comments
    Set-PnPTenantSite -Identity {SiteUrl} -DenyAddAndCustomizePages:$false
 
 ## Features
-This project consists of four webparts that can be used to manage the Property Bags for SharePoint sites and display navigational components from those Properties.
+This project consists of two  webparts that can be used to manage the Property Bags for SharePoint sites and two webparts that can be used to display navigational components from those Properties.
 
 - PropertyBagEditor
-This web part allows an administrator to edit selected items in a site&#39;s Property Bag. A sample display is shown below:
+This web part allows a site owner/administrator to edit selected items in a site&#39;s Property Bag. It edits the properties of the current site. A sample display is shown below:
 ![PropertyBagEditorDisplay](./src/images/PropertyBagEditorDisplay.PNG)
 
 Selecting a Property and clicking the Edit button will bring up the Edit Panel:
