@@ -1,4 +1,4 @@
-# connected-web-parts
+# Connected Web Parts
 
 ## Summary
 
@@ -30,10 +30,6 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.18.2-green.svg)
-
 ## Applies to
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
@@ -41,17 +37,7 @@ This sample is optimally compatible with the following environment configuration
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-
 ## Contributors
-<!--
-We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-
-We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-
-Provide a link to your GitHub profile to help others find more cool things you have done. The only link we'll accept is a link to your GitHub profile.
-
-If you want to provide links to your social media, blog, and employer name, make sure to update your GitHub profile.
--->
 
 * [Guido Zambarda](https://github.com/guidozam)
 
@@ -61,14 +47,6 @@ Version|Date|Comments
 -------|----|--------
 |1.0|March 16, 2024|Initial release|
 
-## Prerequisites
-
-<!--
-Any special pre-requisites? Include any lists, permissions, offerings to the demo gods, or whatever else needs to be done for this web part to work.
-
-Please describe the steps to configure the pre-requisites. Feel free to add screen shots, but make sure that there is a text description of the steps to perform.
- 
--->
 ## Minimal path to awesome
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-connected-web-parts) then unzip it)
@@ -105,6 +83,7 @@ public getPropertyDefinitions(): ReadonlyArray<IDynamicDataPropertyDefinition> {
   ];
 }
 ```
+
 This define the properties that the provider web part exposes to the consumer web part.
 
 The other method that the provider web part must implement is the following:
@@ -123,6 +102,7 @@ public getPropertyValue(propertyId: string): string | IPreferences {
   throw new Error(strings.BadPropertyId);
 }
 ```
+
 This method returns the value of the property identified by the `propertyId` parameter.
 
 In the provider web part the properties are updated by the user through the UI, and the consumer web part is automatically updated with the new values, to enable the automatic update the provider web part must call the `notifyPropertyChanged` method every time a property is updated, for example the following code is called every time the first name is updated:
@@ -153,41 +133,12 @@ firstName: DynamicProperty<string>;
 
 The last step to display the value of the connected property in the consumer web part control is to use the property as the following:
 
-```typescript 
+```typescript
 const firstNameValue = this.props.firstName?.tryGetValue();
 ```
 
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
-
 ## Help
 
-<!--
-You can just search and replace this page with the following values:
-
-Search for:
-react-connected-web-parts
-
-Replace with your sample folder name. E.g.: react-my-cool-sample
-
-Search for:
-@YOURGITHUBUSERNAME
-
-Replace with your GitHub username, prefixed with an "@". If you have more than one author, use %20 to separate them, making sure to prefix everyone's username individually with an "@".
-
-Example:
-@hugoabernier
-
-Or:
-@hugoabernier%20@VesaJuvonen%20@PopWarner
--->
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 

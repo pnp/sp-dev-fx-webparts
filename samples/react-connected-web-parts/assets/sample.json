@@ -2,7 +2,7 @@
 	{
 		"name": "pnp-sp-dev-spfx-web-parts-react-connected-web-parts",
 		"source": "pnp",
-		"title": "React Connected web parts",
+		"title": "Connected web parts",
 		"shortDescription": "This samples showcase how to connect two web parts together.",
 		"url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-connected-web-parts",
 		"longDescription": [
@@ -50,10 +50,8 @@
 		"authors": [
 			{
 				"gitHubAccount": "guidozam",
-				"company": "PiaSys",
 				"pictureUrl": "https://github.com/guidozam.png",
-				"name": "Guido Zambarda",
-				"twitter": "iamguidozam"
+				"name": "Guido Zambarda"
 			}
 		],
 		"references": [
@@ -65,17 +63,17 @@
 			{
 				"name": "Integrate web part properties with SharePoint",
 				"description": "Learn how to integrate web part properties with SharePoint.",
-				"url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/integrate-web-part-properties-with-sharepoint"
+				"url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/integrate-web-part-properties-with-sharepoint"
 			},
 			{
 				"name": "Make your SharePoint client-side web part configurable",
 				"description": "Learn how to make your SharePoint client-side web part configurable.",
-				"url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/basics/integrate-with-property-pane"
+				"url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/integrate-with-property-pane"
 			},
 			{
 				"name": "Connect SharePoint Framework components using dynamic data",
 				"description": "Learn how to connect SharePoint Framework components using dynamic data.",
-				"url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data"
+				"url": "https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-data"
 			}
 		]
 	}
