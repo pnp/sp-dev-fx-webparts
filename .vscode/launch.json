@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "Hosted workbench",
-      "type": "pwa-chrome",
+      "type": "msedge",
       "request": "launch",
-      "url": "https://m365x24002320.sharepoint.com/_layouts/workbench.aspx",
+      "url": "https://{tenantDomain}/_layouts/workbench.aspx",
       "webRoot": "${workspaceRoot}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
@@ -14,10 +14,7 @@
         "webpack:///../../../../src/*": "${webRoot}/src/*",
         "webpack:///../../../../../src/*": "${webRoot}/src/*"
       },
-      "runtimeArgs": [
-        "--remote-debugging-port=9222",
-        "-incognito"
-      ]
+      "runtimeArgs": ["--remote-debugging-port=9222", "-incognito"]
     }
   ]
 }
