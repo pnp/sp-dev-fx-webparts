@@ -8,10 +8,10 @@ import { ListOptions } from "pnp-react-hooks/types/options/ListOptions"
 import { useSite } from "pnp-react-hooks/hooks/sp/useSite"
 
 // Import Swiper styles
-import "swiper/swiper.scss"
-import "swiper/modules/navigation/navigation.scss"
-import "swiper/modules/pagination/pagination.scss"
-import "swiper/modules/effect-coverflow/effect-coverflow.scss"
+import "swiper/swiper.min.css"
+import "swiper/modules/navigation/navigation.min.css"
+import "swiper/modules/pagination/pagination.min.css"
+import "swiper/modules/effect-coverflow/effect-coverflow.min.css"
 
 import { AwardItems } from "../types/AwardItems"
 import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss"
