@@ -1,0 +1,38 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+$primaryColor: "[theme: themePrimary, default: #0078d7]";
+
+:global {
+  #workbenchPageContent,
+  .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.contentWrapper {
+  display: grid;
+  gap: 3rem;
+}
+.contentTitle,
+.userName {
+  color: $primaryColor;
+}
+.asideWrapper {
+  width: 30%;
+}
+.carouselWrapper {
+  width: 70%;
+}
+.contentDescriptionWrapper {
+  display: grid;
+  gap: 1rem;
+  width: 85%;
+}
+.userInfo {
+  display: grid;
+  gap: 0.2rem;
+}
