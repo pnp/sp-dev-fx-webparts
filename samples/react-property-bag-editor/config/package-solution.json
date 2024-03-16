@@ -1,5 +1,64 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Russell Gove",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-property-bag-editor description"
+      },
+      "longDescription": {
+        "default": "react-property-bag-editor description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-property-bag-editor PropertyBagDisplayWebPart Feature",
+        "description": "The feature that activates PropertyBagDisplayWebPart from the react-property-bag-editor solution.",
+        "id": "fa63037d-d7bd-4d52-894a-b40127773283",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "fa63037d-d7bd-4d52-894a-b40127773283"
+        ]
+      },
+      {
+        "title": "react-property-bag-editor PropertyBagEditorWebPart Feature",
+        "description": "The feature that activates PropertyBagEditorWebPart from the react-property-bag-editor solution.",
+        "id": "f3ac8a07-2a9b-47a1-8a7e-a093cad63f98",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "f3ac8a07-2a9b-47a1-8a7e-a093cad63f98"
+        ]
+      },
+      {
+        "title": "react-property-bag-editor PropertyBagFilteredSiteListWebPart Feature",
+        "description": "The feature that activates PropertyBagFilteredSiteListWebPart from the react-property-bag-editor solution.",
+        "id": "b81a6789-e93b-4be5-baa7-59f34004694a",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "b81a6789-e93b-4be5-baa7-59f34004694a"
+        ]
+      },
+      {
+        "title": "react-property-bag-editor PropertyBagGlobalNavWebPart Feature",
+        "description": "The feature that activates PropertyBagGlobalNavWebPart from the react-property-bag-editor solution.",
+        "id": "8634e32b-eda4-483d-8fe9-5f2075339eb8",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "8634e32b-eda4-483d-8fe9-5f2075339eb8"
+        ]
+      }
+    ],
     "name": "react-property-bag-editor-client-side-solution",
     "id": "12dac38e-b255-44ce-9f06-050571b34d39",
     "version": "1.0.0.0"

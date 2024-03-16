@@ -1,13 +1,35 @@
 {
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.5/includes/tsconfig-web.json",
   "compilerOptions": {
+    "skipLibCheck": true,
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "microsoft-ajax",
+      "sharepoint"
+    ],
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "outDir": "lib",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ],
 }

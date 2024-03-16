@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-property-bag-editor",
     "source": "pnp",
-    "title": "Property Bag Navigation Webparts",
-    "shortDescription": "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.",
+    "title": "Property Bag Navigation Web parts",
+    "shortDescription": "A set of web parts that lets you set property bag settings on site collections and enable navigation using those properties.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-bag-editor",
     "longDescription": [
-      "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties."
+      "A set of web parts that lets you set property bag settings on site collections and enable navigation using those properties."
     ],
     "creationDateTime": "2017-03-19",
-    "updateDateTime": "2017-03-19",
+    "updateDateTime": "2024-02-21",
     "products": [
       "SharePoint"
     ],
@@ -27,14 +27,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG",
-        "alt": "Property Bag Navigation Webparts"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG",
+        "alt": "Property Bag Navigation Web parts"
       }
     ],
     "authors": [
       {
         "gitHubAccount": "russgove",
-        "company": "",
         "pictureUrl": "https://github.com/russgove.png",
         "name": "Russell Gove"
       }
