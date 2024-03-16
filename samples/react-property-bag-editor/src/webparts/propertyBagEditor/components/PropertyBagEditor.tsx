@@ -1,3 +1,5 @@
+/* eslint-disable react/no-deprecated */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as _ from "lodash";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
@@ -31,6 +33,7 @@ export interface IPropertyBagEditorState {
 export default class PropertyBagEditor extends React.Component<IPropertyBagEditorProps, IPropertyBagEditorState> {
   public refs: {
     [key: string]: React.ReactInstance;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     list: any //DetailsList
   };
   public constructor(props: IPropertyBagEditorProps) {
@@ -41,7 +44,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   /**
    *  Get's the commands to be displayed in the CommandBar. There is only one command (Edit).
    *  If no item is selected the command is disabled
-   * 
+   *
    * @readonly
    * @type {Array<IContextualMenuItem>}
    * @memberOf PropertyBagEditor
@@ -58,24 +61,25 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
         onClick: this.onEditItemClicked.bind(this),
         icon: "Edit"
       }];
-  };
+  }
 
   /**
    *  Determines if an item is selected.
-   * 
+   *
    * @readonly
    * @type {boolean}
    * @memberOf PropertyBagEditor
    */
   get ItemIsSelected(): boolean {
     if (!this.state) { return false; }
-    return (this.state.selectedIndex != -1);
+    return (this.state.selectedIndex !== -1);
   }
 
   /** react lifecycle */
   public componentWillMount() {
 
     const web = new Web(this.props.siteUrl);
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
       debugger;
       const sp = utils.decodeSearchableProps(r.AllProperties.vti_x005f_indexedpropertykeys);
@@ -84,20 +88,21 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     });
   }
 
-  /** event hadlers */
+  /** event handlers */
   private stopediting() {
 
     this.setState((current) => ({ ...current, isediting: false }))
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onActiveItemChanged(item?: any, index?: number) {
     this.setState((current) => ({ ...current, selectedIndex: index }))
   }
   /**
    *  Gets fired when the user changes the 'Searchable' value in the ui.
    *  Saves the value in workingStorage
-   * 
-   * @param {boolean} newValue 
-   * 
+   *
+   * @param {boolean} newValue
+   *
    * @memberOf PropertyBagEditor
    */
   private onSearchableValueChanged(e: Event, newValue: boolean) {
@@ -107,9 +112,9 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   /**
    * Gets fired when the user changes the proprty value in the ui
    * Saves the value in workingStorage
-   * 
-   * @param {any} event 
-   * 
+   *
+   * @param {any} event
+   *
    * @memberOf PropertyBagEditor
    */
   private onPropertyValueChanged(event) {
@@ -126,9 +131,9 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
   /**
    * Copies the selected item into workingStorage and sets the webpart into edit mode.
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagEditor
    */
   private onEditItemClicked(e?: MouseEvent): void {
@@ -136,15 +141,17 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
   /**
    * Saves the item in workingStorage back to sharepoint, then clears workingStorage and stops editing.
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagEditor
    */
   private onSave(e?: MouseEvent): void {
     debugger;
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     utils.setSPProperty(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.value, this.props.siteUrl)
       .then(value => {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
             const temp = _.clone(this.state.displayProps);// this.state.workingStorage = null;
@@ -155,9 +162,9 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
   /**
    * Clears workingStorage and stops editing
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagEditor
    */
   private onCancel(e?: MouseEvent): void {
@@ -167,13 +174,14 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
   /**
    * Makes a propety Searchable or non-Searchable in the sharepoint site
-   * 
-   * @param {string} propname The property to be made Searchable or non-Searchable 
-   * @param {boolean} newValue Whether to make it Searchable or non-Searchable 
-   * @returns {Promise<any>} 
-   * 
+   *
+   * @param {string} propname The property to be made Searchable or non-Searchable
+   * @param {boolean} newValue Whether to make it Searchable or non-Searchable
+   * @returns {Promise<any>}
+   *
    * @memberOf PropertyBagEditor
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
@@ -199,6 +207,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       }
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private RenderBoolean(item?: any, index?: number, column?: IColumn): any {
     if (item[column.fieldName]) {
       return (<div>Yes</div>);
@@ -208,9 +217,9 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
   /**
    * Renders the webpart
-   * 
-   * @returns {React.ReactElement<IPropertyBagEditorProps>} 
-   * 
+   *
+   * @returns {React.ReactElement<IPropertyBagEditorProps>}
+   *
    * @memberOf PropertyBagEditor
    */
   public render(): React.ReactElement<IPropertyBagEditorProps> {
@@ -229,8 +238,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
           checkboxVisibility={CheckboxVisibility.hidden}
           items={this.state.displayProps}
           onActiveItemChanged={this.onActiveItemChanged.bind(this)}
-        >
-        </DetailsList>
+        />
         <Dialog
           hidden={!this.state.isediting} type={DialogType.close}
           onDismiss={this.stopediting.bind(this)}

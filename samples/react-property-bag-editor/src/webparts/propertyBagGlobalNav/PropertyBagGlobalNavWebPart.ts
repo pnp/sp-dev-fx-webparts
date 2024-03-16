@@ -22,6 +22,7 @@ export default class PropertyBagGlobalNavWebPart extends BaseClientSideWebPart<I
       }
     );
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
 

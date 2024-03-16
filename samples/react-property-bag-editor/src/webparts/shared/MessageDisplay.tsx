@@ -5,7 +5,7 @@ import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBa
 
 /**
  *  A helper class used to hold messages to be displayed in a MessageBar
- * 
+ *
  * @export
  * @class Message
  */
@@ -24,18 +24,20 @@ export interface IMessageDisplayProps {
 
 /**
  * A class used to Display Messages in the webpart.
- * 
+ *
  * @export
  * @class MessageDisplay
  * @extends {React.Component<IMessageDisplayProps, any>}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default class MessageDisplay extends React.Component<IMessageDisplayProps, any> {
     /**
-     * 
-     * 
-     * 
+     *
+     *
+     *
      * @memberOf MessageDisplay
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     public createDismissHandler = (messageId) => (vale) => {
         this.props.hideMessage(messageId);
     }

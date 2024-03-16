@@ -16,13 +16,13 @@ import { IPropertyBagFilteredSiteListWebPartProps } from './IPropertyBagFiltered
 import utils from "../shared/utils";
 export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWebPart<IPropertyBagFilteredSiteListWebPartProps> {
   /**
-   *   Renders the component. 
-   * 
-   *  converts the new-line (\n) separated strings to an array of 
+   *   Renders the component.
+   *
+   *  converts the new-line (\n) separated strings to an array of
    * strings to be passed to the component.
-   * 
-   * 
-   * 
+   *
+   *
+   *
    * @memberOf PropertyBagFilteredSiteListWebPart
    */
   public render(): void {
@@ -39,6 +39,7 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
         showQueryText: this.properties.showQueryText
       }
     );
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
 

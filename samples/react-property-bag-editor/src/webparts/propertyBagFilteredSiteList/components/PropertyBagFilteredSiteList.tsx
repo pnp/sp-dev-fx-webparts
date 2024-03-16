@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import * as _ from "lodash";
 import * as React from "react";
 import pnp, { SearchQuery, SearchResults } from "sp-pnp-js";
@@ -45,7 +46,7 @@ export class AppliedUserFilter {
    * An AppliedUserFilter is created when a user oerforms a filtering operation
    * @param {string} managedPropertyName  The property the user filtered on
    * @param {string} value The value the user selected for the filter
-   * 
+   *
    * @memberOf AppliedUserFilter
    */
   public constructor(
@@ -56,9 +57,9 @@ export class UserFilter {
 
   /**
    * A UserFilter lets the use filter the list of displayed sites based on a metadata value.
-   * The ManagedProperty name is displayed in a CommandBar as a dropdown, with the values as 
+   * The ManagedProperty name is displayed in a CommandBar as a dropdown, with the values as
    * dropdown options.
-   * 
+   *
    * @type {Array<string>}
    * @memberOf UserFilter
    */
@@ -76,9 +77,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   /** Utility Functions */
   /**
    * Removes a message from the MessageDisplay
-   * 
+   *
    * @param {string} messageId the ID of the message to remove
-   * 
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private removeMessage(messageId: string): void {
@@ -93,9 +94,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   /**
    * Adds values to All the UserFilters for a given SearchResults.
-   * 
+   *
    * @param {any} r The Searchresult
-   * 
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private extractUserFilterValues(userFilters: Array<UserFilter>, r): void {
@@ -121,7 +122,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @param {boolean} showQueryText Whether to display the queryText in the MessageDisplay
    * @param {Array<string>} userFilters the list of user filters to be built from the searchresults
    * @param {boolean} showSiteDescriptions Include site descroptions in search results
-   * 
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean): void {
@@ -168,9 +169,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      let sites = [];
+      const sites = [];
       debugger;
-      let userFilters: UserFilter[] = [];
+      const userFilters: UserFilter[] = [];
       for (const userFilterName of this.props.userFilters) {
         userFilters.push(new UserFilter(userFilterName));
       }
@@ -185,11 +186,11 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         this.extractUserFilterValues(userFilters, r);
       }
       debugger;
-      let filteredSites = this.filterSites([], sites);// need to pass sites iun here and return the filtered array!!!
+      const filteredSites = this.filterSites([], sites);// need to pass sites iun here and return the filtered array!!!
       this.setState((current) => ({ ...current, filteredSites: filteredSites, sites: sites, userFilters: userFilters }));
     }).catch(err => {
       debugger;
-      let errorMessages = this.state.errorMessages;
+      const errorMessages = this.state.errorMessages;
       errorMessages.push(new md.Message(err));
       this.setState((current => ({ ...current, errorMessages: errorMessages })));
     });
@@ -198,7 +199,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   /**
    * Called whe component loads.
    * Gets the sites and builds the userFilters
-   * 
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   public componentDidMount(): void {
@@ -208,12 +209,12 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   /**
    * Called by the Render method.
-   * Displayes the Site Description if requested in the PropertyPane.
+   * Displays the Site Description if requested in the PropertyPane.
    * Otherwise displays an empty Div
-   * 
-   * @param {Site} site 
-   * @returns 
-   * 
+   *
+   * @param {Site} site
+   * @returns
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private conditionallyRenderDescription(site: Site): JSX.Element {
@@ -227,10 +228,10 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   /**
    * Called by the Render Method
    * Sets up the ContentualMenuItems based on the FilterData extracted from the SearchResults
-   * 
+   *
    * @private
-   * @returns {Array<IContextualMenuItem>} 
-   * 
+   * @returns {Array<IContextualMenuItem>}
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private SetupFilters(): Array<IContextualMenuItem> {
@@ -265,11 +266,11 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
   /**
    *  Determines if the specified managedProperty and value are currently being filtered on
-   * 
-   * @param {string} managedPropertyName 
-   * @param {string} value 
-   * @returns {boolean} 
-   * 
+   *
+   * @param {string} managedPropertyName
+   * @param {string} value
+   * @returns {boolean}
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private AppliedFilterExists(appliedUserFilters: AppliedUserFilter[], managedPropertyName: string, value: string): boolean {
@@ -286,9 +287,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   /**
    * Togles the userFIlter fpr the managedProperty and value in the specified MenuItem
-   * 
-   * @param {IContextualMenuItem} item 
-   * 
+   *
+   * @param {IContextualMenuItem} item
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private ToggleAppliedUserFilter(appliedUserFilters: AppliedUserFilter[], item: IContextualMenuItem): AppliedUserFilter[] {
@@ -309,7 +310,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * this.state.sites holds all sites after filtering based on propertypane filters.
    * this.state.filteredSites hods the likst of sites after userFilters are applied and
    * is shown in the display
-   * 
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
   private filterSites(appliedUserFilters: AppliedUserFilter[], sites: Site[]): Site[] {
@@ -336,29 +337,31 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * Toggles the filter
    * Applies the new Filters.
    * re-deiplays the list
-   * 
-   * @param {React.MouseEvent<HTMLElement>} [ev] 
-   * @param {IContextualMenuItem} [item] 
-   * 
+   *
+   * @param {React.MouseEvent<HTMLElement>} [_ev]
+   * @param {IContextualMenuItem} [item]
+   *
    * @memberOf PropertyBagFilteredSiteList
    */
-  private filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  private filterOnMetadata(_ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
     const newFilters = this.ToggleAppliedUserFilter(this.state.appliedUserFilters, item);
     this.setState((current) => ({ ...current, appliedUserFilters: newFilters, filteredSites: this.filterSites(newFilters, current.sites) }));
   }
 
   /**
   * Renders the list of sites in this.state.filteredSites.
-  * 
-  * @returns {React.ReactElement<IPropertyBagFilteredSiteListProps>} 
-  * 
+  *
+  * @returns {React.ReactElement<IPropertyBagFilteredSiteListProps>}
+  *
   * @memberOf PropertyBagFilteredSiteList
   */
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
 
     debugger;
     const listItems = this.state.filteredSites.map((site) =>
-      <li >
+      // eslint-disable-next-line react/jsx-key
+      <li>
         <a href={site.url} target={this.props.linkTarget}>{site.title} --{site["AreaName"]}  --{site["Continent"]} </a>
         {this.conditionallyRenderDescription(site)}
       </li>
@@ -376,9 +379,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
           hideMessage={this.removeMessage.bind(this)}
         />
         <ul > {listItems}</ul>
-        {/*<List items={sites} startIndex={0} 
+        {/*<List items={sites} startIndex={0}
           onRenderCell={(site, index) => {
-        
+
             return (
               <div >
                 <Link href={site.url}>{site.title}</Link>

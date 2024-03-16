@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as _ from "lodash";
 import * as React from "react";
 import pnp, { SearchQuery, SearchResults, Web } from "sp-pnp-js";
@@ -23,9 +24,10 @@ import {
 } from "office-ui-fabric-react/lib/Panel";
 export interface IPropertyBagDisplayState {
   selectedIndex: number; // the currently selected site
-  managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;// Determines which Carwled propeties are mapped to which Managed Properties
+  managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;// Determines which Crawled properties are mapped to which Managed Properties
   errorMessages: Array<md.Message>; // a list of error massages displayed on the page
   isediting?: boolean; //Determines if the edit panel is displayed
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sites: Array<any>; // the list of sites displayed in the component
   workingStorage?: DisplaySite;// A working copy of the site being edited
   managedPropNames?: Array<string>; // the list of managed properties to be displayed
@@ -42,14 +44,14 @@ export class ManagedToCrawledMappingEntry {
 export class DisplaySite {
   /**
    * Creates an instance of DisplaySite to be used in workingStorage when editing a site
-   * @param {string} Title 
-   * @param {string} Url 
-   * @param {string} SiteTemplate 
-   * @param {Array<md.Message>} errorMessages 
-   * @param {Array<DisplayProp>} [DisplayProps] 
-   * @param {Array<string>} [searchableProps] 
-   * @param {boolean} [forceCrawl] 
-   * 
+   * @param {string} Title
+   * @param {string} Url
+   * @param {string} SiteTemplate
+   * @param {Array<md.Message>} errorMessages
+   * @param {Array<DisplayProp>} [DisplayProps]
+   * @param {Array<string>} [searchableProps]
+   * @param {boolean} [forceCrawl]
+   *
    * @memberOf DisplaySite
    */
   constructor(
@@ -73,8 +75,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /**
    *  Get's the commands to be displayed in the CommandBar. There is only one command (Edit).
    *  If no item is selected the command is disabled
-   * 
-   * 
+   *
+   *
    * @readonly
    * @type {Array<IContextualMenuItem>}
    * @memberOf PropertyBagDisplay
@@ -98,9 +100,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /** Utility Functions */
   /**
    * Renders the Panel used to edit a site's properties
-   * 
-   * @returns 
-   * 
+   *
+   * @returns
+   *
    * @memberOf PropertyBagDisplay
    */
   private renderPopup(): JSX.Element {
@@ -170,10 +172,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * Removes a message from the MessageDIsplay when the user click the 'x'
-   * 
-   * @param {Array<md.Message>} messageList  The list to remove the masseg from (the 'main' window of the Panel)
-   * @param {string} messageId The Id of the massge to remove
-   * 
+   *
+   * @param {Array<md.Message>} messageList  The list to remove the message from (the 'main' window of the Panel)
+   * @param {string} messageId The Id of the message to remove
+   *
    * @memberOf PropertyBagDisplay
    */
   private removeMessage(messageList: Array<md.Message>, messageId: string): void {
@@ -183,10 +185,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.setState((current) => ({ ...current, errorMessages: messageList }));
   }
   /**
-   * Removes a massage from the main windo
-   * 
-   * @param {string} messageId 
-   * 
+   * Removes a massage from the main window
+   *
+   * @param {string} messageId
+   *
    * @memberOf PropertyBagDisplay
    */
   private removeMainMessage(messageId: string): void {
@@ -194,9 +196,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * removes a message from the popup Panel
-   * 
-   * @param {string} messageId 
-   * 
+   *
+   * @param {string} messageId
+   *
    * @memberOf PropertyBagDisplay
    */
   private removePanelMessage(messageId: string): void {
@@ -204,17 +206,18 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * Makes the  specified property either searchable or non-searchable in sharepoint
-   * 
+   *
    * @param {string} siteUrl The site to se it on
    * @param {string} propname the managed property to set
    * @param {boolean} newValue Searchable or not
-   * @returns {Promise<any>} 
-   * 
+   * @returns {Promise<any>}
+   *
    * @memberOf PropertyBagDisplay
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
-      if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
+      if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// was not searchable, now it is
         console.log(propname + "was not searchable, now it is ");
         this.state.workingStorage.searchableProps.push(propname);
         return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
@@ -224,8 +227,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         return Promise.resolve();
       }
     }
-    else { // make prop not searchablke
-      if (_.indexOf(this.state.workingStorage.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
+    else { // make prop not searchable
+      if (_.indexOf(this.state.workingStorage.searchableProps, propname) !== -1) {// was not searchable, now it is
         console.log(propname + "was searchable, now it is  not");
         _.remove(this.state.workingStorage.searchableProps, p => { return p === propname; });
         return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
@@ -238,8 +241,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * Switches component out of edit mode
-   * 
-   * 
+   *
+   *
    * @memberOf PropertyBagDisplay
    */
   private stopediting(): void {
@@ -250,16 +253,17 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }));
   }
   /**
-   * Caled by the Details list to render a column as a URL rather than text
-   * 
+   * Called by the Details list to render a column as a URL rather than text
+   *
    * @private
-   * @param {*} [item] 
-   * @param {number} [index] 
-   * @param {IColumn} [column] 
-   * @returns {*} 
-   * 
+   * @param {*} [item]
+   * @param {number} [index]
+   * @param {IColumn} [column]
+   * @returns {*}
+   *
    * @memberOf PropertyBagDisplay
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private renderSiteUrl(item?: any, index?: number, column?: IColumn): JSX.Element {
     return (<a href={item[column.fieldName]}>{item[column.fieldName]} </a>);
   }
@@ -267,12 +271,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   /**
    * Sets the columns to be displayed in the list.
-   * These are SiteTemplate, Title and Url, plus any properties specified in 
-   * the propertypane
-   * 
+   * These are SiteTemplate, Title and Url, plus any properties specified in
+   * the property pane
+   *
    * @private
-   * @returns {Array<IColumn>} 
-   * 
+   * @returns {Array<IColumn>}
+   *
    * @memberOf PropertyBagDisplay
    */
   private setupColumns(): Array<IColumn> {
@@ -321,15 +325,15 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   /**
-   * Called when the componet loads.
-   * Builds the query to search sharepoint for the list of sites to display and formates
+   * Called when the component loads.
+   * Builds the query to search sharepoint for the list of sites to display and formats
    * the results to be displayed in the list
-   * 
-   * 
+   *
+   *
    * @memberOf PropertyBagDisplay
    */
   public componentDidMount(): void {
-    let initState = {
+    const initState = {
 
       columns: this.setupColumns(),
       managedToCrawedMapping: [],
@@ -338,7 +342,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       errorMessages: []
     };
     for (const prop of this.props.propertiesToDisplay) {
-      const names: Array<string> = prop.split('|');// crawledpropety/managed property
+      const names: Array<string> = prop.split('|');// crawled property/managed property
       initState.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
       initState.managedPropNames.push(names[1]);
     }
@@ -372,6 +376,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     };
     pnp.sp.search(q).then((results: SearchResults) => {
       for (const r of results.PrimarySearchResults) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const obj: any = {};
         for (const dp of initState.managedPropNames) {
           obj[dp] = r[dp];
@@ -390,24 +395,26 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /** Event Handlers */
   /**
    * Changes the selected item
-   * 
-   * @param {*} [item] 
-   * @param {number} [index] 
-   * 
+   *
+   * @param {*} [item]
+   * @param {number} [index]
+   *
    * @memberOf PropertyBagDisplay
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onActiveItemChanged(item?: any, index?: number): void {
     this.setState((current) => ({ ...current, selectedIndex: index }));
   }
 
   /**
    * Saves the item in workingStorage back to SharePoint
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagDisplay
    */
   private onSave(e?: MouseEvent): void {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
       const promise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
@@ -417,8 +424,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       promises.push(promise);
     }
     Promise.all(promises)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((results: Array<any>) => {
         if (this.state.workingStorage.forceCrawl) {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           utils.forceCrawl(this.state.workingStorage.Url);
         }
         debugger;
@@ -434,9 +443,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * Clears workingStorage and exits edit mode
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagDisplay
    */
   private onCancel(e?: MouseEvent): void {
@@ -445,9 +454,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /**
    * Set the ForceCrawl Value in working storage which can be used to force a crawl of the site
    * after the item is saved
-   * 
-   * @param {boolean} newValue 
-   * 
+   *
+   * @param {boolean} newValue
+   *
    * @memberOf PropertyBagDisplay
    */
 
@@ -463,11 +472,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   /**
    * Called when user wishes to edit an item.
-   * The List displayes the values from the search index. 
+   * The List displays the values from the search index.
    * This method gets the values from the actual PropertyBag so that they can be edited.
-   * 
-   * @param {MouseEvent} [e] 
-   * 
+   *
+   * @param {MouseEvent} [e]
+   *
    * @memberOf PropertyBagDisplay
    */
   private onEditItemClicked(e?: MouseEvent): void {
@@ -476,11 +485,13 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     const selectedSite = this.state.sites[this.state.selectedIndex];
     const web = new Web(selectedSite.Url);
     // let context = this;
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     web.select("Title", "AllProperties").expand("AllProperties").get().then((r) => {
       const crawledProps: Array<string> = this.props.propertiesToDisplay.map(item => {
         return item.split("|")[0];
       });
-      let temp = _.clone(selectedSite);
+      const temp = _.clone(selectedSite);
+      // eslint-disable-next-line dot-notation
       temp.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       temp.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, temp.searchableProps);
       temp.errorMessages = new Array<md.Message>();
@@ -499,13 +510,14 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**
    * Sorts a column when the user clicks on the header
-   * 
+   *
    * @private
-   * @param {*} event 
-   * @param {IColumn} column 
-   * 
+   * @param {*} event
+   * @param {IColumn} column
+   *
    * @memberOf PropertyBagDisplay
    */
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
   private _onColumnClick(event: any, column: IColumn) {
     column = _.find(this.state.columns, c => c.fieldName === column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
@@ -517,7 +529,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       column.isSortedDescending = false;
     }
     // Sort the items.
-    let temp = _.orderBy(this.state.sites, (site) => {
+    const temp = _.orderBy(this.state.sites, (site) => {
       if (site[column.fieldName]) {
         return site[column.fieldName].toLowerCase();
       }
@@ -535,9 +547,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   /**
    * Renders the component
-   * 
-   * @returns {React.ReactElement<IPropertyBagDisplayProps>} 
-   * 
+   *
+   * @returns {React.ReactElement<IPropertyBagDisplayProps>}
+   *
    * @memberOf PropertyBagDisplay
    */
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
@@ -558,8 +570,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           checkboxVisibility={CheckboxVisibility.hidden}
           onActiveItemChanged={this.onActiveItemChanged.bind(this)
           }
-        >
-        </DetailsList>
+        />
         {this.renderPopup.bind(this)()}
       </div >
     );

@@ -14,12 +14,12 @@ import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp
 export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPropertyBagDisplayWebPartProps> {
 
   /**
-   * Renders the component. 
-   * 
-   *  converts the new-line (\n) separated strings to an array of 
+   * Renders the component.
+   *
+   *  converts the new-line (\n) separated strings to an array of
    * strings to be passed to the component.
-   * 
-   * 
+   *
+   *
    * @memberOf PropertyBagDisplayWebPart
    */
   public render(): void {
@@ -32,6 +32,7 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       }
     );
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
   public onInit(): Promise<void> {

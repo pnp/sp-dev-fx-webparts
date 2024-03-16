@@ -22,9 +22,10 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
    * each managedProperty in managedProperties represents a level in the menu. The actial sites
    * are added below the last level.
    * @param {*} r -- a searchresult
-   * 
+   *
    * @memberOf PropertyBagGlobalNav
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private addMenuItem(items: Array<IContextualMenuItem>, r: any): Array<IContextualMenuItem> {
     let currentItem: IContextualMenuItem;
     let currentSet: Array<IContextualMenuItem> = items;
@@ -52,11 +53,11 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
   /**
    * Gets the list of sites to be displayed in the Menu using the filters specified in
    * the PropertyPane
-   * 
+   *
    * @param {Array<string>} siteTemplatesToInclude  Site Templates to be included in the menu
    * @param {Array<string>} filters Additional metadata filters to be applid to the list of sites
    * @param {Array<string>} managedProperties -- the list of properties used to build the menu
-   * 
+   *
    * @memberOf PropertyBagGlobalNav
    */
   private getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>): void {
@@ -90,7 +91,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      let menuitems = [];
+      const menuitems = [];
       for (const r of results.PrimarySearchResults) {
         this.addMenuItem(menuitems, r);
       }
