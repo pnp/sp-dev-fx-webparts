@@ -13,7 +13,7 @@ import {
   ChartControl,
   ChartType,
 } from "@pnp/spfx-controls-react/lib/ChartControl";
-import { ShimmerLoadder } from "./Loadder";
+import { ShimmerLoadder } from "./Loader";
 
 const ReactPoll: React.FunctionComponent<IReactPollProps> = (props) => {
   const {
@@ -145,7 +145,7 @@ const ReactPoll: React.FunctionComponent<IReactPollProps> = (props) => {
                       <PrimaryButton
                         text="Submit"
                         disabled={
-                          question.selectedOption === null || isSubmitting 
+                          question.selectedOption === undefined || isSubmitting
                         }
                         onClick={() => handleSubmitClick(question)}
                       />
