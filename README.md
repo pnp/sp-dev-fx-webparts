@@ -2,9 +2,9 @@
 
 ## Summary
 
-This SharePoint Framework (SPFx) web part offers a modern carousel component using Swiper, enabling smooth navigation through content within a SharePoint site.
+This SharePoint Framework (SPFx) webpart introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment.
 
-![Award Recognition](assets/AwardRecognition.png)
+![Award Recognition](src/webparts/awardRecognition/assets/AwardRecognition.png)
 
 ## Compatibility
 
@@ -15,12 +15,12 @@ This SharePoint Framework (SPFx) web part offers a modern carousel component usi
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.16.1-green.svg)
+![version](https://img.shields.io/badge/version-1.18.2-green.svg)
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -83,7 +83,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 Key features demonstrated by this solution:
 
 - Property pane controls usage
-- Pnp react hooks usage
+- PnP react hooks usage
 - Type checking
 
 ## References
