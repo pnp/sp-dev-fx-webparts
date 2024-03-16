@@ -59,7 +59,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | November 26, 2023   | Initial release  |
+| 1.0     | March 16, 2024   | Initial release  |
 
 ## Minimal Path to Awesome⚡
 
