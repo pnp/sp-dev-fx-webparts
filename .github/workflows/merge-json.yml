@@ -37,7 +37,5 @@ jobs:
         with:
           default_author: github_actions
           cwd: ./gh-pages
-          branch: gh-pages
           add: 'samples.json --force'
-          push: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          push: origin gh-pages --force
