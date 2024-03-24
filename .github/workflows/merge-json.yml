@@ -39,6 +39,21 @@ jobs:
           file_pattern: samples.json
           push_options: '--force'
 
+      - name: Checkout gh-pages branch
+        run: |
+            git fetch
+            git checkout gh-pages
+      - name: Copy samples.json to gh-pages branch
+        run: cp samples.json ./samples.json
+  
+        # - name: Commit samples.json to gh-pages branch
+        #   run: |
+        #     git config --local user.email "${{ secrets.USER_EMAIL }}"
+        #     git config --local user.name "${{ secrets.USER_NAME }}"
+        #     git add ./samples.json
+        #     git commit -m "Update samples.json in gh-pages branch"
+        #     git push origin gh-pages
+
       - name: Commit to gh-pages branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
