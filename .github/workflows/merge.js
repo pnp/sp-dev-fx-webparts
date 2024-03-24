@@ -2,26 +2,33 @@ const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 
-let result = {};
+// Initialize an empty array to store the merged nodes
+let mergedNodes = [];
 
-function getDirectories(path) {
-  return fs.readdirSync(path, { withFileTypes: true })
+function getDirectories(dirPath) {
+  return fs.readdirSync(dirPath, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name);
 }
 
-let directories = getDirectories('samples');
+const baseDirectory = 'samples';
+const directories = getDirectories(baseDirectory);
+
 directories.forEach(directory => {
-  let assetsPath = path.join('samples', directory, 'assets');
+  const assetsPath = path.join(baseDirectory, directory, 'assets');
   if (fs.existsSync(assetsPath)) {
-    let files = fs.readdirSync(assetsPath);
+    const files = fs.readdirSync(assetsPath);
     files.forEach(file => {
       if (file === 'sample.json') {
-        let data = JSON.parse(fs.readFileSync(path.join(assetsPath, file)));
-        result = _.merge(result, data);
+        const data = JSON.parse(fs.readFileSync(path.join(assetsPath, file), 'utf8'));
+        // Assuming data is an array of nodes, concatenate it to the mergedNodes array
+        mergedNodes = mergedNodes.concat(data);
       }
     });
   }
 });
 
-fs.writeFileSync('samples.json', JSON.stringify(result));
+// Write the merged nodes to a new JSON file
+fs.writeFileSync('samples.json', JSON.stringify(mergedNodes, null, 2));
+
+console.log('Merged nodes saved to samples.json');
