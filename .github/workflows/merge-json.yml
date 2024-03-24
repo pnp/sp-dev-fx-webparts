@@ -27,7 +27,7 @@ jobs:
         run: wget https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
 
       - name: Install dependencies
-        run: npm install glob lodash
+        run: npm install lodash
 
       - name: Merge JSON files
         run: node .github/workflows/merge.js
