@@ -28,42 +28,42 @@
       "name": "react-poll.gif",
       "type": "image",
       "order": 100,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\react-poll.gif",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/react-poll.gif",
       "alt": "Web Part Preview"
     },
     {
       "name": "add-poll.png",
       "type": "image",
       "order": 101,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\add-poll.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/add-poll.png",
       "alt": "Web Part Preview"
     },
     {
       "name": "poll-answers.png",
       "type": "image",
       "order": 102,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\poll-answers.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/poll-answers.png",
       "alt": "Web Part Preview"
     },
     {
       "name": "poll-questions.png",
       "type": "image",
       "order": 103,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\poll-questions.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/poll-questions.png",
       "alt": "Web Part Preview"
     },
     {
       "name": "wp1.png",
       "type": "image",
       "order": 104,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\wp1.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/wp1.png",
       "alt": "Web Part Preview"
     },
     {
       "name": "wp2.png",
       "type": "image",
       "order": 105,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-poll\\assets\\wp2.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/wp2.png",
       "alt": "Web Part Preview"
     }
   ],
