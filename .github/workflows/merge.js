@@ -21,14 +21,16 @@ directories.forEach(directory => {
     files.forEach(file => {
       if (file === 'sample.json') {
         const data = JSON.parse(fs.readFileSync(path.join(assetsPath, file), 'utf8'));
-        // Assuming data is an array of nodes, concatenate it to the mergedNodes array
-        mergedNodes = mergedNodes.concat(data);
+        // Assuming data is an array of nodes, merge it into the mergedNodes array
+        Array.prototype.push.apply(mergedNodes, data);
+        // Or using spread operator
+        // mergedNodes.push(...data);
       }
     });
   }
 });
 
 // Write the merged nodes to a new JSON file
-fs.writeFileSync('samples.json', JSON.stringify(mergedNodes, null, 2));
+fs.writeFileSync('sample.json', JSON.stringify(mergedNodes, null, 2));
 
-console.log('Merged nodes saved to samples.json');
+console.log('Merged nodes saved to samples_merged.json');

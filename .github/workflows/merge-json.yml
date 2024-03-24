@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -40,13 +40,19 @@ jobs:
           push_options: '--force'
           
       - name: Checkout main branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
             ref: 'main'
             path: 'main'
-  
+ 
+      - name: Checkout Docs branch
+        uses: actions/checkout@v4
+        with:
+            ref: 'Docs'
+            path: 'Docs'
+
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
             ref: 'gh-pages'
             path: 'gh-pages'
@@ -54,11 +60,21 @@ jobs:
       - name: Copy samples.json to gh-pages branch
         run: cp main/samples.json gh-pages/samples.json
   
+      - name: Copy samples.json to Docs branch
+        run: cp main/samples.json Docs/samples.json
 
       - name: Commit to gh-pages branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Update samples.json'
           branch: 'gh-pages'
+          file_pattern: samples.json
+          push_options: '--force'
+
+      - name: Commit to Docs branch
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update samples.json'
+          branch: 'Docs'
           file_pattern: samples.json
           push_options: '--force'
