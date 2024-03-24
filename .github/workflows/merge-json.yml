@@ -1,0 +1,45 @@
+name: Merge JSON files
+
+on:
+  push:
+    paths:
+      - '/samples/**/assets/sample.json'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Download samples.json
+        run: wget https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
+
+      - name: Install dependencies
+        run: npm install glob lodash
+
+      - name: Merge JSON files
+        run: node .github/workflows/merge.js
+
+      - name: Commit to Docs branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout Docs
+          git add docs/samples.json
+          git commit -m "Update samples.json"
+          git push
+
+      - name: Commit to gh-pages branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout gh-pages
+          git add samples.json
+          git commit -m "Update samples.json"
+          git push
