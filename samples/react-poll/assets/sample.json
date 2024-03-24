@@ -1,4 +1,5 @@
-{
+[
+  {
   "name": "pnp-sp-dev-spfx-web-parts-react-poll",
   "source": "pnp",
   "title": "Poll",
@@ -82,3 +83,4 @@
     }
   ]
 }
+]
