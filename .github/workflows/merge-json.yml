@@ -32,6 +32,13 @@ jobs:
       - name: Merge JSON files
         run: node .github/workflows/merge.js
 
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update samples.json'
+          file_pattern: samples.json
+          push_options: '--force'
+
       - name: Commit to gh-pages branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
