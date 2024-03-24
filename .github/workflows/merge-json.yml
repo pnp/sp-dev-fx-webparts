@@ -38,3 +38,4 @@ jobs:
           commit_message: 'Update samples.json'
           branch: 'gh-pages'
           file_pattern: samples.json
+          push_options: '--force'
