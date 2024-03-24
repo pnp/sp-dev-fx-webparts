@@ -32,15 +32,6 @@ jobs:
       - name: Merge JSON files
         run: node .github/workflows/merge.js
 
-      - name: Commit to Docs branch
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git checkout Docs
-          git add docs/samples.json
-          git commit -m "Update samples.json"
-          git push
-
       - name: Commit to gh-pages branch
         run: |
           git config --local user.email "action@github.com"
