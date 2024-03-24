@@ -18,21 +18,18 @@ jobs:
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
-        uses: actions/setup-node@v4
         with:
           node-version: '20'
           ref: main
           path: main
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
-        uses: actions/setup-node@v4
         with:
           node-version: '20'
           ref: gh-pages
           path: gh-pages
       - name: Checkout Docs branch
         uses: actions/checkout@v4
-        uses: actions/setup-node@v4
         with:
           node-version: '20'
           ref: Docs
