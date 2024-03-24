@@ -1,4 +1,4 @@
-name: Merge JSON files
+name: Merge Sample JSON files
 
 on:
     schedule:
