@@ -32,10 +32,12 @@ jobs:
       - name: Merge JSON files
         run: node .github/workflows/merge.js
 
-      - name: Commit samples.json to gh-pages
-        uses: EndBug/add-and-commit@v9
+      - name: Commit to gh-pages branch
+        uses: ad-m/github-push-action@master
         with:
-          default_author: github_actions
-          cwd: ./gh-pages
-          add: 'samples.json --force'
-          push: origin gh-pages --force
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'gh-pages'
+          commit_message: 'Update samples.json'
+          commit_user_name: ${{ secrets.USER_NAME }}
+          commit_user_email: ${{ secrets.USER_EMAIL }}
+          force: true
