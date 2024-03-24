@@ -32,12 +32,14 @@ jobs:
       - name: Merge JSON files
         run: node .github/workflows/merge.js
 
+      - name: Commit files
+        run: |
+          git config --local user.email ${{ secrets.USER_EMAIL }}
+          git config --local user.name "${{ secrets.USER_NAME }}
+          git commit -a -m "Add samples.json"
       - name: Commit to gh-pages branch
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'gh-pages'
-          commit_message: 'Update samples.json'
-          commit_user_name: ${{ secrets.USER_NAME }}
-          commit_user_email: ${{ secrets.USER_EMAIL }}
           force: true
