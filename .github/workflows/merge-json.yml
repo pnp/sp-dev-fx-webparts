@@ -1,9 +1,15 @@
 name: Merge JSON
 
 on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
   push:
     branches:
+      # When someone push to `main` branch
       - main
+    paths:
+      - 'samples/**/assets/sample.json'
 
 jobs:
   merge:
