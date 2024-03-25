@@ -23,6 +23,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+            ref: 'main'
+            path: 'main'
       - name: Download samples.json
         run: wget https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
 
@@ -38,12 +43,6 @@ jobs:
           commit_message: 'Update samples.json'
           file_pattern: samples.json
           push_options: '--force'
-          
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-        with:
-            ref: 'main'
-            path: 'main'
  
       - name: Checkout Docs branch
         uses: actions/checkout@v4
