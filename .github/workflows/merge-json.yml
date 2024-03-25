@@ -68,13 +68,13 @@ jobs:
         with:
           commit_message: 'Update samples.json'
           branch: 'gh-pages'
-          file_pattern: samples.json
           push_options: '--force'
+          skip_dirty_check: true    
 
       - name: Commit to Docs branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Update samples.json'
           branch: 'Docs'
-          file_pattern: samples.json
           push_options: '--force'
+          skip_dirty_check: true    
