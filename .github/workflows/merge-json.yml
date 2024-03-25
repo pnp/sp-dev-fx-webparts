@@ -47,9 +47,10 @@ jobs:
           -o ./main/.metada/extension-samples.json \
           https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
 
-      - name: Merge JSON files
-        run: node .github/workflows/merge.js
-        
+      - name: Join samples  
+        run: |
+            jq -s '[.[][]]' ./main/samples/**/assets/sample.json  ./main/.metada/extension-samples.json > ./Docs/docs/samples.json
+
       - name: copy file to gh-pages
         uses: canastro/copy-file-action@master
         with:
