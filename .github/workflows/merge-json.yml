@@ -1,79 +1,69 @@
-name: Merge Sample JSON files
+name: Merge sample metadata
 
 on:
-    schedule:
-        - cron: "0 0 * * *"
-    workflow_dispatch:
-    push:
-        branches:
-        # When someone push to `main` branch
-        - main
-        paths:
-        - 'samples/**/assets/sample.json'
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      # When someone push to `main` branch
+      - main
+    paths:
+      - 'samples/**/assets/sample.json'
 
 jobs:
-  merge:
+  build:
+    name: 'Merge all sample.json files to samples.json'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Checkout Docs branch
+        uses: actions/checkout@v4
+        with:
+          ref: Docs
+          path: Docs
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
 
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-        with:
-            ref: 'main'
-            path: 'main'
-      - name: Download samples.json
-        run: wget https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
-
       - name: Install dependencies
         run: npm install lodash
 
+      - name: Download Extension samples
+        run: |
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3.raw" \
+          -o ./main/.metada/extension-samples.json \
+          https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/.metadata/samples.json
+
       - name: Merge JSON files
         run: node .github/workflows/merge.js
-
-      - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        
+      - name: copy file to gh-pages
+        uses: canastro/copy-file-action@master
         with:
-          commit_message: 'Update samples.json'
-          file_pattern: samples.json
-          push_options: '--force'
- 
-      - name: Checkout Docs branch
-        uses: actions/checkout@v4
+          source: "./Docs/docs/samples.json" 
+          target: "./gh-pages/samples.json"     
+      - name: Commit samples.json to gh-pages
+        uses: EndBug/add-and-commit@v9
         with:
-            ref: 'Docs'
-            path: 'Docs'
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
+          cwd: ./gh-pages
+          add: 'samples.json --force'
+          push: true
+      - name: Commit samples.json to Docs
+        uses: EndBug/add-and-commit@v9
         with:
-            ref: 'gh-pages'
-            path: 'gh-pages'
-  
-      - name: Copy samples.json to gh-pages branch
-        run: cp main/samples.json gh-pages/samples.json
-  
-      - name: Copy samples.json to Docs branch
-        run: cp main/samples.json Docs/samples.json
-
-      - name: Commit to gh-pages branch
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Update samples.json'
-          branch: 'gh-pages'
-          push_options: '--force'
-          skip_dirty_check: true    
-
-      - name: Commit to Docs branch
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Update samples.json'
-          branch: 'Docs'
-          push_options: '--force'
-          skip_dirty_check: true    
+          cwd: ./Docs
+          add: 'docs/samples.json --force'
+          push: true
