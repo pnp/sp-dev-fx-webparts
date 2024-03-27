@@ -2,15 +2,16 @@ import * as React from 'react';
 import styles from './Tour.module.scss';
 import { ITourProps } from './ITourProps';
 import Tours from 'reactour';
-import { CompoundButton } from 'office-ui-fabric-react';
+import { CompoundButton } from '@fluentui/react';
 import { TourHelper } from './TourHelper';
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import ITourStep from '../model/ITourStep';
 
 
 
 export interface ITourState {
   isTourOpen: boolean;
-  steps: any[];
+  steps: ITourStep[];
   tourDisabled: boolean;
 }
 
@@ -25,17 +26,17 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
-    if (this.props.collectionData != undefined && this.props.collectionData.length > 0) {
+    if (this.props.collectionData !== undefined && this.props.collectionData.length > 0) {
       this.setState({ tourDisabled: false });
     }
   }
 
-  public componentDidUpdate(newProps) {
-    if (JSON.stringify(this.props.collectionData) != JSON.stringify(newProps.collectionData)) {
+  public componentDidUpdate(newProps: ITourProps): void {
+    if (JSON.stringify(this.props.collectionData) !== JSON.stringify(newProps.collectionData)) {
       this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
-      if (this.props.collectionData != undefined && this.props.collectionData.length > 0) {
+      if (this.props.collectionData !== undefined && this.props.collectionData.length > 0) {
         this.setState({ tourDisabled: false });
       } else {
         this.setState({ tourDisabled: true });
@@ -49,9 +50,7 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
       <div className={styles.tour}>
         <CompoundButton primary text={this.props.actionValue} secondaryText={this.props.description}
           disabled={this.state.tourDisabled} onClick={this._openTour} checked={this.state.isTourOpen}
-          className={styles.tutorialButton}>
-
-      </CompoundButton>
+          className={styles.tutorialButton} />
         <Tours
           onRequestClose={this._closeTour}
           startAt={0}
@@ -68,14 +67,14 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
     );
   }
 
-  private _disableBody = target => disableBodyScroll(target);
-  private _enableBody = target => enableBodyScroll(target);
+  private _disableBody = (target: HTMLDivElement): void => disableBodyScroll(target);
+  private _enableBody = (target: HTMLDivElement): void => enableBodyScroll(target);
 
-  private _closeTour = () => {
+  private _closeTour = (): void => {
     this.setState({ isTourOpen: false });
   }
 
-  private _openTour = () => {
+  private _openTour = (): void => {
     this.setState({ isTourOpen: true });
   }
 }

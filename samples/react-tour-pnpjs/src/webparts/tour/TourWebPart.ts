@@ -1,23 +1,24 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'TourWebPartStrings';
 import Tour from './components/Tour';
-import { ITourProps } from './components/ITourProps';
+import { ITourProps, ITourStepConfig } from './components/ITourProps';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-import { sp, ClientSidePage, ClientSideWebpart, IClientControlEmphasis } from '@pnp/sp';
+import { spfi, SPFx, SPFI  } from '@pnp/sp';
+import { ClientsidePageFromFile } from "@pnp/sp/clientside-pages";
+import "@pnp/sp/webs";
+import "@pnp/sp/files/web";
+import IWebPartInfo from './model/IWebPartInfo';
 
 
 export interface ITourWebPartProps {
   actionValue: string;
   description: string;
-  collectionData: any[];
+  collectionData: ITourStepConfig[];
 
 }
 
@@ -25,14 +26,12 @@ export interface ITourWebPartProps {
 export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps> {
 
   private loadIndicator: boolean = true;
-  private webpartList: any[] = new Array<any[]>();
-
+  private webpartList: IWebPartInfo[] = new Array<IWebPartInfo>();
+  private sp: SPFI;
   public onInit(): Promise<void> {
 
     return super.onInit().then(_ => {
-      sp.setup({
-        spfxContext: this.context
-      });
+      this.sp = spfi().using(SPFx(this.context));
     });
   }
 
@@ -58,20 +57,19 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
     return Version.parse('1.0');
   }
 
-  public async GetAllWebpart(): Promise<any[]> {
+  public async GetAllWebpart(): Promise<IWebPartInfo[]> {
     // page file
-    const file = sp.web.getFileByServerRelativePath(this.context.pageContext.site.serverRequestPath);
+    const file = this.sp.web.getFileByServerRelativePath(this.context.pageContext.site.serverRequestPath);
+    const page = await ClientsidePageFromFile(file);
 
-    const page = await ClientSidePage.fromFile(file);
-
-    const wpData: any[] = [];
+    const wpData: IWebPartInfo[] = [];
 
     page.sections.forEach(section => {
       section.columns.forEach(column => {
         column.controls.forEach(control => {
-          var wpName = {}
-          var wp = {};
-          if (control.data.webPartData != undefined) {
+          let wpName: string = "";
+          let wp: IWebPartInfo;
+          if (control.data.webPartData !== undefined) {
             wpName = `sec[${section.order}] col[${column.order}] wp[${control.order}] - ${control.data.webPartData.title}`;
             wp = { text: wpName, key: control.data.webPartData.instanceId };
             wpData.push(wp);
@@ -80,7 +78,6 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
             wp = { text: wpName, key: control.data.id };
           }
           wpData.push(wp);
-
         });
 
       });
@@ -88,14 +85,11 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
     return wpData;
   }
 
-  protected onPropertyPaneConfigurationStart(): void {
-    var self = this;
-    this.GetAllWebpart().then(res => {
-      self.webpartList = res;
-      self.loadIndicator = false;
-      self.context.propertyPane.refresh();
-
-    });
+  protected async onPropertyPaneConfigurationStart(): Promise<void> {
+    const result = await this.GetAllWebpart();
+    this.webpartList = result;
+    this.loadIndicator = false;
+    this.context.propertyPane.refresh();
   }
 
 
@@ -144,7 +138,6 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
                                 key: itemId,
                                 value: value,
                                 onChange: (event: React.FormEvent<HTMLTextAreaElement>) => {
-                                  console.log(event);
                                   onUpdate(field.id, event.currentTarget.value);
                                 }
                               })
