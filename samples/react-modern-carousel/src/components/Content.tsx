@@ -5,7 +5,7 @@ import { ContentProps } from "../types/ContentProps"
 import { useContext } from "react";
 import { WebpartContext } from "../webparts/awardRecognition/components/AwardRecognition";
 
-export const Content = ({ user }: ContentProps) => {
+export const Content = ({ user }: ContentProps): JSX.Element => {
   const contextInfo = useContext(WebpartContext);
 
   return (

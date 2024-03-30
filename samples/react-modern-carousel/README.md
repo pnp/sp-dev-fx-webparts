@@ -1,10 +1,10 @@
-# React Modern Carousel Web Part
+# Modern Carousel
 
 ## Summary
 
-This SharePoint Framework (SPFx) webpart introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment.
+This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment.
 
-![Award Recognition](src/webparts/awardRecognition/assets/AwardRecognition.png)
+![Award Recognition](./assets/AwardRecognition.png)
 
 ## Compatibility
 
@@ -49,7 +49,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| react-modern-carousel| Sandeep P S ( [Linkedin](https://www.linkedin.com/in/sandeepps1299/) ) / Quadrasystems.net ( [Twitter](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) / [Linkedin](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) ) |
+| react-modern-carousel| Sandeep P S ( [LinkedIn](https://www.linkedin.com/in/sandeepps1299/) ) / Quadrasystems.net ( [Twitter](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) / [LinkedIn](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) ) |
 
 ## Contributors🧑‍💻
 
@@ -91,7 +91,7 @@ Key features demonstrated by this solution:
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development.
 - [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [PnP JS](https://pnp.github.io/pnpjs/)
-- [Pnp React Hooks](https://superioone.github.io/pnp-react-hooks/)
+- [PnP React Hooks](https://superioone.github.io/pnp-react-hooks/)
 - [SwiperJS](https://swiperjs.com)
 - [React Docs](https://react.dev/learn)
 

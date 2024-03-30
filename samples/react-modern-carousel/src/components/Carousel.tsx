@@ -17,7 +17,7 @@ import { AwardItems } from "../types/AwardItems"
 import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss"
 import { Content } from "./Content"
 
-export const Carousel = () => {
+export const Carousel = (): JSX.Element => {
   const [awardList, setAwardList] = useState<AwardItems[]>([])
   const [selectedUser, setSelectedUser] = useState<AwardItems | null>(null)
 
@@ -44,7 +44,8 @@ export const Carousel = () => {
     }
   }, [listItems, selectedUser, siteInfo])
 
-  const handleSlideChange = (swiper: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSlideChange = (swiper: any): void => {
     const activeIndex = swiper.activeIndex
     setSelectedUser(awardList[activeIndex])
   }
@@ -83,8 +84,8 @@ export const Carousel = () => {
           loop={false}
           onSlideChange={(swiper) => handleSlideChange(swiper)}
         >
-          {awardList?.map((user) => (
-            <SwiperSlide>
+          {awardList?.map((user, index) => (
+            <SwiperSlide key={index}>
               <Card
                 style={{
                   width: "300px",
@@ -93,7 +94,7 @@ export const Carousel = () => {
                 }}
               >
                 <CardPreview>
-                  <img src={user.ImageUrl} />
+                  <img src={user.ImageUrl} alt={user.Title}/>
                 </CardPreview>
               </Card>
             </SwiperSlide>

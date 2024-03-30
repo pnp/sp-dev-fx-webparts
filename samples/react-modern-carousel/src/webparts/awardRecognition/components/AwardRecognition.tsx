@@ -6,7 +6,7 @@ import { createContext } from "react";
 
 export const WebpartContext = createContext<IAwardRecognitionProps>(null);
 
-export const AwardRecognition = (props: IAwardRecognitionProps) => {
+export const AwardRecognition = (props: IAwardRecognitionProps): JSX.Element => {
   return (
     <WebpartContext.Provider value={props}>
       <FluentProvider
