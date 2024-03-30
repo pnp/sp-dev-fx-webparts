@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "award-recognition-client-side-solution",
+    "id": "45e061b8-13f5-423f-bedb-12fc2a44fa89",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "AwardRecognition description"
+      },
+      "longDescription": {
+        "default": "AwardRecognition description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "award-recognition Feature",
+        "description": "The feature that activates elements of the award-recognition solution.",
+        "id": "475edc5c-974e-43d2-874b-0262da790739",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/award-recognition.sppkg"
+  }
+}
