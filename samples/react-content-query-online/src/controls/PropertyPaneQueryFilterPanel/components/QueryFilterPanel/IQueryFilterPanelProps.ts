@@ -1,4 +1,4 @@
-import { IPersonaProps, ITag }      from 'office-ui-fabric-react';
+import { IPersonaProps, ITag }      from '@fluentui/react';
 import { IQueryFilter }             from '../QueryFilter/IQueryFilter';
 import { IQueryFilterField }        from '../QueryFilter/IQueryFilterField';
 import { IQueryFilterPanelStrings } from './IQueryFilterPanelStrings';

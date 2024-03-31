@@ -1,7 +1,7 @@
 import * as React                                   from 'react';
 import * as Handlebars                              from "handlebars";
 import * as strings                                 from 'contentQueryStrings';
-import { Spinner }                                  from 'office-ui-fabric-react';
+import { Spinner }                                  from '@fluentui/react';
 import { isEmpty }                                  from '@microsoft/sp-lodash-subset';
 import { Text }                                     from '@microsoft/sp-core-library';
 import { IContentQueryProps }                       from './IContentQueryProps';
@@ -10,7 +10,7 @@ import { IContentQueryTemplateContext }             from './IContentQueryTemplat
 import { SPComponentLoader }                        from '@microsoft/sp-loader';
 import styles                                       from './ContentQuery.module.scss';
 import { Placeholder }                              from "@pnp/spfx-controls-react/lib/Placeholder";
-import { Icon }                                     from 'office-ui-fabric-react/lib/components/Icon';
+import { Icon }                                     from '@fluentui/react';
 import { IMandatoryFieldsStatus }                   from './IMandatoryFieldsStatus';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
@@ -80,7 +80,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
             });
         }
         else {
-          resolve();
+          resolve(null);
         }
       }
       next();

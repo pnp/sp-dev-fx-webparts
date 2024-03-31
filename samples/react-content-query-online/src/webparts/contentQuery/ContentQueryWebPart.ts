@@ -11,7 +11,7 @@ import { IPropertyPaneToggleProps, PropertyPaneToggle } from "@microsoft/sp-prop
 import { IPropertyPaneLabelProps, PropertyPaneLabel } from "@microsoft/sp-property-pane";
 import { IPropertyPaneButtonProps, PropertyPaneButton, PropertyPaneButtonType } from "@microsoft/sp-property-pane";
 import { update, get, isEmpty } from '@microsoft/sp-lodash-subset';
-import { IDropdownOption, IPersonaProps, ITag } from 'office-ui-fabric-react';
+import { IDropdownOption, IPersonaProps, ITag } from '@fluentui/react';
 import ContentQuery from './components/ContentQuery';
 import { IContentQueryProps } from './components/IContentQueryProps';
 import { IQuerySettings } from './components/IQuerySettings';

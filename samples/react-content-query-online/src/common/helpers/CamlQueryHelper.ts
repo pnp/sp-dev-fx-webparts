@@ -1,7 +1,7 @@
 import * as moment                                              from 'moment';
 import { Text }                                                 from '@microsoft/sp-core-library';
 import { isEmpty }                                              from '@microsoft/sp-lodash-subset';
-import { IPersonaProps, ITag }                                  from 'office-ui-fabric-react';
+import { IPersonaProps, ITag }                                  from '@fluentui/react';
 import { IQuerySettings }                                       from '../../webparts/contentQuery/components/IQuerySettings';
 import { IQueryFilter }                                         from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilter';
 import { QueryFilterOperator }                                  from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/QueryFilterOperator';

@@ -1,6 +1,6 @@
 import * as React                               from 'react';
 import { Text }                                 from '@microsoft/sp-core-library';
-import { Dropdown, IDropdownOption, Spinner }   from 'office-ui-fabric-react';
+import { Dropdown, IDropdownOption, Spinner }   from '@fluentui/react';
 import { IAsyncDropdownProps }                  from './IAsyncDropdownProps';
 import { IAsyncDropdownState }                  from './IAsyncDropdownState';
 import { cloneDeep }                            from '@microsoft/sp-lodash-subset';
@@ -10,8 +10,8 @@ export class AsyncDropdown extends React.Component<IAsyncDropdownProps, IAsyncDr
 
     /*************************************************************************************
      * Component's constructor
-     * @param props 
-     * @param state 
+     * @param props
+     * @param state
      *************************************************************************************/
     constructor(props: IAsyncDropdownProps, state: IAsyncDropdownState) {
         super(props);
@@ -102,7 +102,7 @@ export class AsyncDropdown extends React.Component<IAsyncDropdownProps, IAsyncDr
      * Renders the the AsyncDropdown component
      *************************************************************************************/
     public render() {
-        
+
         const loading = !this.state.processed ? <Spinner label={this.props.loadingLabel} /> : <div />;
         const error = this.state.error != null ? <div className="ms-TextField-errorMessage ms-u-slideDownIn20">{ Text.format(this.props.errorLabelFormat, this.state.error) }</div> : <div />;
 

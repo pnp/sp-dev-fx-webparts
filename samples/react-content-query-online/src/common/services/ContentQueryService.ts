@@ -1,5 +1,5 @@
 import * as strings from 'contentQueryStrings';
-import { IDropdownOption, IPersonaProps, ITag } from 'office-ui-fabric-react';
+import { IDropdownOption, IPersonaProps, ITag } from '@fluentui/react';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
@@ -447,7 +447,7 @@ export class ContentQueryService implements IContentQueryService {
     return new Promise<boolean>((resolve, reject) => {
       this.spHttpClient.get(filePath, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
         if (response.ok) {
-          resolve();
+          resolve(true);
         }
         else {
           reject(response.statusText);
