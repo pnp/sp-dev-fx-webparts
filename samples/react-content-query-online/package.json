@@ -59,7 +59,7 @@
     "set-value": ">=3.0.3",
     "sshpk": ">=1.13.2",
     "stringstream": ">=0.0.6",
-    "tar": ">=2.2.2",
+    "tar": ">=6.2.1",
     "underscore.string": ">=3.3.5",
     "ws": ">=1.1.5"
   },
