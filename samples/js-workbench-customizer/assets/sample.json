@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-workbench-customizer",
     "source": "pnp",
-    "title": "Workbench customizer",
+    "title": "Workbench customizer Web Part",
     "shortDescription": "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-workbench-customizer",
     "longDescription": [

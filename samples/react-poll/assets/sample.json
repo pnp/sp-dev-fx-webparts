@@ -2,7 +2,7 @@
   {
   "name": "pnp-sp-dev-spfx-web-parts-react-poll",
   "source": "pnp",
-  "title": "Poll",
+  "title": "Poll Web Part",
   "shortDescription": "Add new poll questions and their options. End users can submit his/her response to the poll. After Submission, user can see all responses count with Bar chart.",
   "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-poll",
   "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-poll",

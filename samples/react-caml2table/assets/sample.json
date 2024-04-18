@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-caml2table",
         "source": "pnp",
-        "title": "CAML to Table",
+        "title": "CAML to Table Web Part",
         "shortDescription": "Let's the user test CAML queries at ease.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-caml2table",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-caml2table",

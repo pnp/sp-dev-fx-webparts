@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
         "source": "pnp",
-        "title": "Group Membership Manager",
+        "title": "Group Membership Manager Web Part",
         "shortDescription": "This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",

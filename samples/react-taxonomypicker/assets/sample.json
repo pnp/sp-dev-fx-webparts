@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker",
     "source": "pnp",
-    "title": "Taxonomy Picker",
+    "title": "Taxonomy Picker Web Part",
     "shortDescription": "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker",
     "longDescription": [

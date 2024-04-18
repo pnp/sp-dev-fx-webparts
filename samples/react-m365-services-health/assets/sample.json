@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-m365-services-health",
         "source": "pnp",
-        "title": "Service Health for Microsoft 365",
+        "title": "Service Health for Microsoft 365 Web Part",
         "shortDescription": "Service Health for Microsoft 365 solution show the health status for all the Microsoft 365 services",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-services-health",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-services-health",

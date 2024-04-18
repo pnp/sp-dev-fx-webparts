@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-spupsproperty-sync",
     "source": "pnp",
-    "title": "SPUPS Property Sync",
+    "title": "SPUPS Property Sync Web Part",
     "shortDescription": "This component will help the administrators who are currently maintaining the user profiles in their organization.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spupsproperty-sync",
     "longDescription": [

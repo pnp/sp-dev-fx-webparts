@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-reports",
     "source": "pnp",
-    "title": "Graph Usage Reports",
+    "title": "Graph Usage Reports Web Part",
     "shortDescription": "This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-reports",
     "longDescription": [

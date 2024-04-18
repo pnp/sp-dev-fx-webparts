@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-multimedia-gallery",
     "source": "pnp",
-    "title": "Image Gallery",
+    "title": "Image Gallery Web Part",
     "shortDescription": "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multimedia-gallery",
     "longDescription": [

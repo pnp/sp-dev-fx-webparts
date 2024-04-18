@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-taxonomy-file-explorer",
         "source": "pnp",
-        "title": "Taxonomy File Explorer",
+        "title": "Taxonomy File Explorer Web Part",
         "shortDescription": "This solution renders a given Termset as a Tree and incorporates files similar than a folder structure in file explorer.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomy-file-explorer",
         "longDescription": [

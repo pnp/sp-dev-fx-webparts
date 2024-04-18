@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-private-libraries",
     "source": "pnp",
-    "title": "Private Library/Folder Manager",
+    "title": "Private Library/Folder Manager Web Part",
     "shortDescription": "This sample provides a webpart that can be used to manage Document Libraries with Secured Subfolders.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-private-libraries",
     "longDescription": [

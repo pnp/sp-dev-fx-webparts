@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-feedback-form",
     "source": "pnp",
-    "title": "Feedback Form",
+    "title": "Feedback Form Web Part",
     "shortDescription": "Sample SPFx React web part which allows sending emails using Microsoft Graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-feedback-form",
     "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-onedrive-finder",
     "source": "pnp",
-    "title": "OneDrive Finder",
+    "title": "OneDrive Finder Web Part",
     "shortDescription": "This sample access drives from OneDrive and navigate between his content using Graph OneDrive and Site API and Microsoft Graph Toolkit React controls with the addition of new FileList control.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-onedrive-finder",
     "longDescription": [

@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-my-events",
         "source": "pnp",
-        "title": "My Events",
+        "title": "My Events Web Part",
         "shortDescription": "This web part provides loggedin user's outlook events with some advanced features",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-events",
         "longDescription": [

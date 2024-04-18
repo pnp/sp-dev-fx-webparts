@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members",
     "source": "pnp",
-    "title": "Group members suggestion",
+    "title": "Group members suggestion Web Part",
     "shortDescription": "This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-suggested-members",
     "longDescription": [

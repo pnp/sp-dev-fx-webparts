@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-cherry-picked-content",
         "source": "pnp",
-        "title": "Cherry picked content",
+        "title": "Cherry picked content web part",
         "shortDescription": "The Cherry-Picked Content Web Part is a modern replacement for the classic Content Editor Web Part, with a twist: code snippets can only be picked from approved document libraries.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cherry-picked-content",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cherry-picked-content",

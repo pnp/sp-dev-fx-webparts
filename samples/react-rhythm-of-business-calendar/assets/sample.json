@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-rhythm-of-business-calendar",
         "source": "pnp",
-        "title": "Rhythm of Business Calendar",
+        "title": "Rhythm of Business Calendar Web Part",
         "shortDescription": "This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar",
         "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-organisationchart",
     "source": "pnp",
-    "title": "Organisation Chart",
+    "title": "Organisation Chart Web Part",
     "shortDescription": "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organisationchart",
     "longDescription": [

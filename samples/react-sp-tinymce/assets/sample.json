@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-sp-tinymce",
         "source": "pnp",
-        "title": "List Integration with TinyMCE Editor",
+        "title": "List Integration with TinyMCE Editor Web Part",
         "shortDescription": "The web part allows users to insert column data from associated SharePoint lists using a split button on the toolbar",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-tinymce",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-tinymce",

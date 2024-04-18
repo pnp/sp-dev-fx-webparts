@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-stock-information",
     "source": "pnp",
-    "title": "Stock Information",
+    "title": "Stock Information Web Part",
     "shortDescription": "This web part provides you the ability to display basic stock information for one publicly traded stock on a web page. The web part may be configured to display a stock based on stock symbol as well as be set to automatically refresh the stock information every 60 (sixty) seconds.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-stock-information",
     "longDescription": [

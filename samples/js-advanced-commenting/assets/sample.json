@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-advanced-commenting",
     "source": "pnp",
-    "title": "Advanced Comments Box",
+    "title": "Advanced Comments Box Web Part",
     "shortDescription": "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-advanced-commenting",
     "longDescription": [

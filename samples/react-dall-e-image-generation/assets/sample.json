@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-dall-e-image-generation",
         "source": "pnp",
-        "title": "Image generation using DALL-E API",
+        "title": "Image Generation using DALL-E API Web Part",
         "shortDescription": "This web part allows you to generate some images using the recently released API of DALL-E image generation.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dall-e-image-generation",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dall-e-image-generation",

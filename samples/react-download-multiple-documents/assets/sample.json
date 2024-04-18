@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-download-multiple-documents",
     "source": "pnp",
-    "title": "Download Multiple Documents",
+    "title": "Download Multiple Documents Web Part",
     "shortDescription": "This sample empowers users to effortlessly download multiple documents as a single compressed ZIP file.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-download-multiple-documents",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-download-multiple-documents",

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-personal-email",
     "source": "pnp",
-    "title": "Personal Email",
+    "title": "Personal Email Web Part",
     "shortDescription": "This web part provides you the ability to add a particular user\u0027s personal email on a web page. The web part may be configured to display a pre-defined number of emails at a time and includes a link to the user\u0027s Outlook to view all email. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-email",
     "longDescription": [

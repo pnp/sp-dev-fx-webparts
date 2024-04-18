@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-check-flows",
     "source": "pnp",
-    "title": "Check Flows",
+    "title": "Check Flows Web Part",
     "shortDescription": "This web part lists all the automated Flows associated with a SharePoint List/ Library. Basic flow information like Flow Name, Flow Trigger, Flow shared Type and Flow URL are displayed.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-check-flows",
     "longDescription": [

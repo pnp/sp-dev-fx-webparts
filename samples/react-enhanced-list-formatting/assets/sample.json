@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting",
     "source": "pnp",
-    "title": "Enhanced List Formatting",
+    "title": "Enhanced List Formatting Web Part",
     "shortDescription": "This web part allows you to add custom CSS on a page to enhance list formatting.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-list-formatting",
     "longDescription": [

@@ -1,7 +1,7 @@
 {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars",
     "source": "pnp",
-    "title": "Teams My Webinars",
+    "title": "Teams My Webinars Web Part",
     "shortDescription": "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",

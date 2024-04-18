@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-tour-pnpjs",
     "source": "pnp",
-    "title": "Tour Sample",
+    "title": "Tour Sample Web Part",
     "shortDescription": "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tour-pnpjs",
     "longDescription": [

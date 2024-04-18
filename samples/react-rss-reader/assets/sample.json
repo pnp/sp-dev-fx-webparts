@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-rss-reader",
     "source": "pnp",
-    "title": "SharePoint Framework RSS Reader",
+    "title": "SharePoint Framework RSS Reader Web Part",
     "shortDescription": "A RSS Reader original based on work completed by Olivier Carpentier\u0027s",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
     "longDescription": [

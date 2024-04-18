@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-message-user",
     "source": "pnp",
-    "title": "Message Teams User",
+    "title": "Message Teams User Web Part",
     "shortDescription": "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message-user",
     "longDescription": [

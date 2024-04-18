@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload",
     "source": "pnp",
-    "title": "File Upload using AngularJs",
+    "title": "File Upload web part using AngularJs",
     "shortDescription": "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload",
     "longDescription": [

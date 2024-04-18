@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content",
         "source": "pnp",
-        "title": "Multilingual SharePoint Page Summarization with Open AI API and Microsoft Graph Pages API",
+        "title": "Multilingual SharePoint Page Summarization Web Part with Open AI API and Microsoft Graph Pages API",
         "shortDescription": "This sample contains a SharePoint Framework web part and an Azure function that uses the Open AI API to summarize a SharePoint page in multiple languages.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-summarise-page-content",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-summarise-page-content",

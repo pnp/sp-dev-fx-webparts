@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-sites",
     "source": "pnp",
-    "title": "My Sites",
+    "title": "My Sites Web Part",
     "shortDescription": "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
     "longDescription": [

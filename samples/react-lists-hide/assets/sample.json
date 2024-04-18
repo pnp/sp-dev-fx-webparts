@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-lists-hide",
         "source": "pnp",
-        "title": "Hide Lists",
+        "title": "Hide Lists Web Part",
         "shortDescription": "SPFx Web part to Hide/UnHide lists in a Site Collection's Site Contents Page.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lists-hide",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lists-hide",

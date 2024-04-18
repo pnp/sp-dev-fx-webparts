@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-visio",
     "source": "pnp",
-    "title": "Visio Embed",
+    "title": "Visio Embed Web Part",
     "shortDescription": "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-visio",
     "longDescription": [

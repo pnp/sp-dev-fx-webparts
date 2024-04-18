@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-company-stories",
     "source": "pnp",
-    "title": "Company Stories",
+    "title": "Company Stories Web Part",
     "shortDescription": "This web part allows you to add images to a SharePoint List, and renders them with a UX very similar to Instagram Stories (or Twitter Reels, or [Place your Social network here]). It is a way to engage employees, showing relevant content in a well-known visual appearance.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",

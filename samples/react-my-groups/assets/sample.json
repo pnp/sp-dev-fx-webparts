@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-groups",
     "source": "pnp",
-    "title": "My Groups",
+    "title": "My Groups Web Part",
     "shortDescription": "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-groups",
     "longDescription": [

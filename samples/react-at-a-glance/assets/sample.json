@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-at-a-glance",
     "source": "pnp",
-    "title": "At a Glance",
+    "title": "At a Glance Web Part",
     "shortDescription": "This sample shows a web part to show the first few sentences of an article in a SharePoint site, so that the article can be looked at a glance.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-at-a-glance",
     "longDescription": [

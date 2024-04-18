@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-cross-device-data",
     "source": "pnp",
-    "title": "Cross-Device Data",
+    "title": "Cross-Device Data Web Part",
     "shortDescription": "This solution demonstrates how to use the OneDrive special folder Apps in order to save user's preferencies cross-device.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cross-device-data",
     "longDescription": [

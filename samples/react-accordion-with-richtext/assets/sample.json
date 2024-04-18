@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext",
         "source": "pnp",
-        "title": "Tab Accordion",
+        "title": "Tab Accordion Web Part",
         "shortDescription": "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",

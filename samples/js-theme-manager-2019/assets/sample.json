@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-theme-manager-2019",
     "source": "pnp",
-    "title": "Modern Experience Theme Manager 2019",
+    "title": "Modern Experience Theme Manager 2019 Web Part",
     "shortDescription": "This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager-2019",
     "longDescription": [

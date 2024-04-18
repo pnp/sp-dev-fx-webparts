@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
     "source": "pnp",
-    "title": "Copy Views",
+    "title": "Copy Views Web Part",
     "shortDescription": "The Copy Views solution enables a user to copy views from one list/library to another across site collections.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copy-views",
     "longDescription": [

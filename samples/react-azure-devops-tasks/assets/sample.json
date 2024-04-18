@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-azure-devops-tasks",
         "source": "pnp",
-        "title": "Azure DevOps Tasks",
+        "title": "Azure DevOps Tasks Adaptive Card Extension",
         "shortDescription": "This Adaptive Card Extension demonstrates displaying the number of assigned tasks of Azure DevOps.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-devops-tasks",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-devops-tasks",

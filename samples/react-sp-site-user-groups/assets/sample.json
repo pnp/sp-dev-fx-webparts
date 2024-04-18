@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups",
     "source": "pnp",
-    "title": "Site User and Group Information",
+    "title": "Site User and Group Information Web Part",
     "shortDescription": "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-site-user-groups",
     "longDescription": [

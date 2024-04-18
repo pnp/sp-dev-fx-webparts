@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-manage-profile-card-properties",
     "source": "pnp",
-    "title": "Manage Profile Card Properties",
+    "title": "Manage Profile Card Properties Web Part",
     "shortDescription": "This web part allows tenant administrators to manage profile card properties.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-profile-card-properties",
     "longDescription": [

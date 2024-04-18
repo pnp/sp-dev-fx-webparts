@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-global-news",
     "source": "pnp",
-    "title": "Global News",
+    "title": "Global News Web Part",
     "shortDescription": "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-global-news",
     "longDescription": [

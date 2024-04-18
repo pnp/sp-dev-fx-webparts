@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-weather-information",
     "source": "pnp",
-    "title": "Weather Information",
+    "title": "Weather Information Web Part",
     "shortDescription": "This web part provides you the ability to display basic weather information for one location on a web page. The web part depends on a service provided by Yahoo Weather API.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-weather-information",
     "longDescription": [

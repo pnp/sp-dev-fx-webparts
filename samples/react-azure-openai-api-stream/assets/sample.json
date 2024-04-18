@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream",
         "source": "pnp",
-        "title": "Calling Azure OpenAI API in streaming mode",
+        "title": "Calling Azure OpenAI API in streaming mode web part",
         "shortDescription": "This web part shows how you can call Azure OpenAI API in Streaming mode",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",

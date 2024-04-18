@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy",
     "source": "pnp",
-    "title": "Page Hierarchy",
+    "title": "Page Hierarchy Web Part",
     "shortDescription": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy",
     "longDescription": [

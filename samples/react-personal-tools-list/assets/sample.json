@@ -1,7 +1,7 @@
 {
     "name": "pnp-sp-dev-spfx-web-parts-react-personal-tools-list",
     "source": "pnp",
-    "title": "Personal tools list",
+    "title": "Personal tools list Web Part",
     "shortDescription": "Allows users to select tools from a predefined list and save them in their own personalized view.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",

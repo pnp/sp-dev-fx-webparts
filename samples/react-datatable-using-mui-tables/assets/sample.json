@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-datatable-using-mui-tables",
     "source": "pnp",
-    "title": "DataTable Using MUI table",
+    "title": "DataTable Web Part Using MUI table",
     "shortDescription": "This web part provides mui datatable features for your lists.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable-using-mui-tables",
     "longDescription": [

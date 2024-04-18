@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-github-badge",
     "source": "pnp",
-    "title": "GitHub Badge (React)",
+    "title": "GitHub Badge Web Part (React)",
     "shortDescription": "Displays information about a GitHub user.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-github-badge",
     "longDescription": [

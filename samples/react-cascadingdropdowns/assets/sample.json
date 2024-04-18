@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns",
     "source": "pnp",
-    "title": "Cascading Dropdowns",
+    "title": "Cascading Dropdowns Web Part",
     "shortDescription": "Shows how to use Cascading Dropdowns in property panes.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns",

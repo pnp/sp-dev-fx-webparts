@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-twitter",
     "source": "pnp",
-    "title": "Twitter Timeline",
+    "title": "Twitter Timeline Web Part",
     "shortDescription": "Sample web part to display Twitter timeline.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-twitter",
     "longDescription": [

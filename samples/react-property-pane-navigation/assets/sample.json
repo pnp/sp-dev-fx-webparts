@@ -2,7 +2,7 @@
 	{
 		"name": "pnp-sp-dev-spfx-web-parts-react-property-pane-navigation",
 		"source": "pnp",
-		"title": "React Property Pane Navigation",
+		"title": "Property Pane Navigation Web Part",
 		"shortDescription": "This sample showcase how to handle the navigation between property pane pages.",
 		"url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-pane-navigation",
 		"longDescription": [

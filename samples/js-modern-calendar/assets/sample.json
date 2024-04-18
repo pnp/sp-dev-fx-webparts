@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-modern-calendar",
     "source": "pnp",
-    "title": "Modern Calendar",
+    "title": "Modern Calendar Web Part",
     "shortDescription": "This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-modern-calendar",
     "longDescription": [

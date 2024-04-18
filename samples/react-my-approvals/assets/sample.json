@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-my-approvals",
         "source": "pnp",
-        "title": "My Approvals",
+        "title": "My Approvals Web Part",
         "shortDescription": "This web part demonstrates displaying the list of approval requests of Power Automate. Power Automate provides a new workflow feature that replaces SharePoint workflows, but it is a Power Platform feature, not a Microsoft 365 feature. You can display approval requests from only Power Automate site. This web part enable to display approval requests from SharePoint site.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-approvals",
         "longDescription": [

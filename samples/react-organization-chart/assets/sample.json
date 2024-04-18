@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-organization-chart",
     "source": "pnp",
-    "title": "Organization Chart (SP2019 and Online)",
+    "title": "Organization Chart Web Part (SP2019 and Online)",
     "shortDescription": "Shows an organization chart based on specified user, and user can navigate to show company organization",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
     "longDescription": [

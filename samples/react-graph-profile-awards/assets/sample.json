@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-graph-profile-awards",
         "source": "pnp",
-        "title": "My Awards",
+        "title": "My Awards Web Part",
         "shortDescription": "This web part is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this web part could include the ability to add new awards to your profile.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-profile-awards",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-profile-awards",

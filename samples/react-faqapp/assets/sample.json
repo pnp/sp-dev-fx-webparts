@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-faqapp",
     "source": "pnp",
-    "title": "Frequently Asked Questions",
+    "title": "Frequently Asked Questions Web Part",
     "shortDescription": "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqapp",
     "longDescription": [

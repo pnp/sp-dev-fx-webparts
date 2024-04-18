@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge",
     "source": "pnp",
-    "title": "GitHub Badge",
+    "title": "GitHub Badge Web Part",
     "shortDescription": "",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubbadge",
     "longDescription": [

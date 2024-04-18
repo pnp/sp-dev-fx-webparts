@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-real-time",
     "source": "pnp",
-    "title": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io",
+    "title": "Real Time News Feed Web Part using Azure Logic Apps, Node.js and socket.io",
     "shortDescription": "This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and socket.io.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-real-time",
     "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-save-attachments",
     "source": "pnp",
-    "title": "Save Attachments",
+    "title": "Save Attachments Web Part",
     "shortDescription": "This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments",
     "longDescription": [

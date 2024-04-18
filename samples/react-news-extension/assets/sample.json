@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-news-extension",
     "source": "pnp",
-    "title": "Targeted News using Microsoft Graph Open Extension",
+    "title": "Targeted News Web Part using Microsoft Graph Open Extension",
     "shortDescription": "This sample contains two SPFx web parts: User preferences web part and Curated news web part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",

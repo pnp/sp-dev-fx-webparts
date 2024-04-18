@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-zod",
         "source": "pnp",
-        "title": "Zod",
+        "title": "Zod Web Part",
         "shortDescription": "This sample shows the usage of Zod to eliminate manual cast and validation of the data coming from external API.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zod",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zod",

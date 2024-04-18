@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory",
     "source": "pnp",
-    "title": "Telephone Directory using React, Ms Graph and SPFx",
+    "title": "Telephone Directory Web Part using React, Ms Graph and SPFx",
     "shortDescription": "This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-telephonedirectory",
     "longDescription": [

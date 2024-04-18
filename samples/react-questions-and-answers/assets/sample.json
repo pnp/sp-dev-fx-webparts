@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
     "source": "pnp",
-    "title": "React Questions and Answers",
+    "title": "Questions and Answers Web Part",
     "shortDescription": "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers",
     "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-htm-templating",
     "source": "pnp",
-    "title": "HTM (Hyperscript Tagged Markup) Templating",
+    "title": "HTM (Hyperscript Tagged Markup) Templating Web Part",
     "shortDescription": "Provides an example of how to create a dynamic template system (configurable via Web Part properties) that can not only render HTML but also React controls, such as Fluent UI, without the need to use Handlebars.js + Web Components",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-htm-templating",
     "longDescription": [
