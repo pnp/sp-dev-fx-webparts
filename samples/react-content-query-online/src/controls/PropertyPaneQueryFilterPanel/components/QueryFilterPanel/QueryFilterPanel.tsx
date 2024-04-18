@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 import * as React                               from 'react';
 import { cloneDeep }                            from '@microsoft/sp-lodash-subset';
 import { Text }                                 from '@microsoft/sp-core-library';

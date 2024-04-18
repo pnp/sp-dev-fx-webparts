@@ -73,6 +73,7 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
      * Loads the checklist items asynchronously
      *************************************************************************************/
     private loadItems() {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         let _this_ = this;
 
         _this_.checkedItems = this.getDefaultCheckedItems();

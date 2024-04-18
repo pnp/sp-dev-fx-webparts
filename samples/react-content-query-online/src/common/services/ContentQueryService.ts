@@ -295,6 +295,7 @@ export class ContentQueryService implements IContentQueryService {
       this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'Sortable'], 'Title').then((data: any) => {
         const sortableFields: any[] = data.value.filter((field) => { return field.Sortable == true; });
         let options: IDropdownOption[] = [{ key: "", text: strings.queryFilterPanelStrings.queryFilterStrings.fieldSelectLabel }];
+        // eslint-disable-next-line no-useless-escape
         const orderByOptions: IDropdownOption[] = sortableFields.map((field) => { return { key: field.InternalName, text: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName) }; });
         options = options.concat(orderByOptions);
         this.orderByOptions = options;
@@ -371,7 +372,8 @@ export class ContentQueryService implements IContentQueryService {
         let items: IChecklistItem[] = fields.map((field) => {
           return {
             id: field.InternalName,
-            label: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName)
+            // eslint-disable-next-line no-useless-escape
+            label: Text.format("{0} \{\{{1}\}}", field.Title, field.InternalName)
           };
         });
         this.viewFields = items;
@@ -479,6 +481,7 @@ export class ContentQueryService implements IContentQueryService {
    * @param itemSelectorEnabled: Defines whether to render the item selector element in the template
    *************************************************************************************************/
   public generateDefaultTemplate(viewFields: string[], itemSelectorEnabled: boolean): string {
+    // eslint-disable-next-line no-useless-escape
     let viewFieldsStr = viewFields.map((field) => { return Text.format("                    <span class='ms-DetailsRow-cell'><strong>{0}: </strong>\{\{{0}.textValue\}\}</span>", field); }).join("\n");
     let selectItemStr = "\n                    <span><button class='selectItem' data-itemId='{{ID.textValue}}'>Select</button></span>";
     let template = Text.format(`<style type="text/css">

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 import * as React                                                                   from 'react';
 import * as moment                                                                  from 'moment';
 import { cloneDeep, isEmpty }                                                       from '@microsoft/sp-lodash-subset';
@@ -104,6 +105,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * When the NormalPeoplePicker value changes
      *************************************************************************************/
     private onTaxonomyPickerResolve(items: ITag[]) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.filter.value = items;
         this.onAnyChange();
     }
@@ -126,6 +128,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
     private onDateExpressionChange(newValue: string): string {
 
         // Validates the picker
+        // eslint-disable-next-line no-useless-escape
         let regex = new RegExp(/^\[Today\](\s{0,}[\+-]\s{0,}\[{0,1}\d{1,4}\]{0,1}){0,1}$/);
         let isValid = regex.test(newValue) || isEmpty(newValue);
         let errorMsg = isValid ? '' : this.props.strings.datePickerExpressionError;
@@ -133,7 +136,9 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
         if(isValid) {
             // If the change is NOT triggered by the date picker change
             if(!(isEmpty(newValue) && this.state.filter.value != null)) {
+                // eslint-disable-next-line react/no-direct-mutation-state
                 this.state.filter.value = null;
+                // eslint-disable-next-line react/no-direct-mutation-state
                 this.state.filter.expression = newValue;
                 this.setState({ filter: this.state.filter, pickersKey: this.state.pickersKey });
                 this.onAnyChange();
@@ -150,6 +155,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * @param checked : Whether the checkbox is not checked or not
      *************************************************************************************/
     private onDateIncludeTimeChange(ev?: React.FormEvent<HTMLInputElement>, checked?: boolean) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.filter.includeTime = checked;
         this.onAnyChange();
     }
@@ -160,6 +166,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      *************************************************************************************/
     private onJoinChoiceChange(ev?: React.FormEvent<HTMLInputElement>, option?: IChoiceGroupOption) {
         if(option) {
+            // eslint-disable-next-line react/no-direct-mutation-state
             this.state.filter.join = QueryFilterJoin[option.key];
             this.onAnyChange();
         }
@@ -185,6 +192,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
         ];
 
         for(let field of this.props.fields) {
+            // eslint-disable-next-line no-useless-escape
             let option:IDropdownOption = { key: field.internalName, text: Text.format("{0} \{\{{1}\}\}", field.displayName, field.internalName) };
             options.push(option);
         }

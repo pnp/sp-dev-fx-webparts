@@ -291,7 +291,9 @@ export class CamlQueryHelper {
         if (!url) {
             url = window.location.href;
         }
+        // eslint-disable-next-line no-useless-escape
         name = name.replace(/[\[\]]/g, "\\$&");
+        // eslint-disable-next-line @rushstack/security/no-unsafe-regexp
         var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
             results = regex.exec(url);
         if (!results) return null;
