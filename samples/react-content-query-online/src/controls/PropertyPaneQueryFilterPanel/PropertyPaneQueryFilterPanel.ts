@@ -70,6 +70,7 @@ export class PropertyPaneQueryFilterPanel implements IPropertyPaneField<IPropert
       stateKey: new Date().toString()
     });
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(queryFilterpanel, elem);
   }
 

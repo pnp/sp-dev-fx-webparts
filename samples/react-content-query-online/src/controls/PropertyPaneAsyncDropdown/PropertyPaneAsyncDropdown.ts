@@ -3,7 +3,7 @@ import * as ReactDom                                    from 'react-dom';
 import {  } from "@microsoft/sp-webpart-base";
 import {  } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-property-pane";
-import { IDropdownOption }                              from 'office-ui-fabric-react';
+import { IDropdownOption }                              from '@fluentui/react';
 import { IPropertyPaneAsyncDropdownProps }              from './IPropertyPaneAsyncDropdownProps';
 import { IPropertyPaneAsyncDropdownInternalProps }      from './IPropertyPaneAsyncDropdownInternalProps';
 import { AsyncDropdown }                                from './components/AsyncDropdown/AsyncDropdown';
@@ -20,8 +20,8 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
 
   /*****************************************************************************************
    * Property pane's contructor
-   * @param targetProperty 
-   * @param properties 
+   * @param targetProperty
+   * @param properties
    *****************************************************************************************/
   constructor(targetProperty: string, properties: IPropertyPaneAsyncDropdownProps) {
     this.targetProperty = targetProperty;
@@ -70,6 +70,7 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
       stateKey: new Date().toString()
     });
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(asyncDropDown, elem);
   }
 
