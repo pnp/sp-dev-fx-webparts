@@ -74,11 +74,11 @@ status:node-compatibility:
 
 
 # Dealing with people asking for app packages
-status:app-package-request
+status:app-package-request:
   # Post a comment
   comment: |+
   ## Requests for packaged solutions
-  
+
   Thank you for reaching out! Please note that the samples in this repository are intended solely for educational purposes. Unfortunately, we are unable to provide a built or packaged solution.
   
   For your safety and security, we strongly advise against downloading or installing any packaged solutions from the internet without thoroughly reviewing their contents first. Additionally, please ensure to consult your organization’s security guidelines before employing any samples from this repository in a production environment.
