@@ -71,3 +71,21 @@ status:node-compatibility:
 
   # Close the issue
   close: true
+
+
+# Dealing with people asking for app packages
+status:app-package-request
+  # Post a comment
+  comment: |+
+  Thank you for reaching out! Please note that the samples in this repository are intended solely for educational purposes. Unfortunately, we are unable to provide a built or packaged solution.
+  
+  For your safety and security, we strongly advise against downloading or installing any packaged solutions from the internet without thoroughly reviewing their contents first. Additionally, please ensure to consult your organization’s security guidelines before employing any samples from this repository in a production environment.
+  
+  For more detailed information, please review our [support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md).
+
+  Feel free to open a new issue if you'd like to request for help building the solution. Make sure to provide all the requested information so that we can help you as quickly as possible.
+  
+  We appreciate your understanding and cooperation!
+
+  # Close the issue
+  close: true
