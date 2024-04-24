@@ -91,3 +91,19 @@ status:app-package-request:
 
   # Close the issue
   close: true
+
+  # Dealing with people asking for app packages
+status:spfx-doctor:
+  # Post a comment
+  comment: |+
+    ## No SPFx Doctor information
+    Thank you for reaching out! Unfortunately, we cannot proceed further without information from SPFx doctor to diagnose potential dependency issues with your enviroment and/or project.
+
+    Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
+
+    Feel free to open a new issue with the full SPFx doctor results. Make sure to provide all the requested information so that we can help you as quickly as possible.
+    
+    We appreciate your understanding and cooperation!
+
+  # Close the issue
+  close: true
