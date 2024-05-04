@@ -33,6 +33,6 @@
     "gulp": "4.0.2",
     "gulp-sequence": "1.0.0",
     "sp-pnp-js": "^3.0.10",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
