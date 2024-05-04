@@ -69,7 +69,7 @@
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.11.1",
     "typescript": "~3.3.x",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^4.10.2"
   },
   "jest-junit": {
     "output": "temp/test/junit/junit.xml",
