@@ -57,12 +57,11 @@ Add the connection stirng of this Service to the the variable ```AIConnectionStr
 - Clone this repository
 - Ensure that you are at the solution folder
 - Create or use Existing Azure Application Insights
-- Update ```src/EnvProps.ts``` and Set AIConnectionString
+- Update ```src/EnvProps.ts``` and set ```AIConnectionString``` 
 - in the command-line run:
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
 
 ## Features
 
