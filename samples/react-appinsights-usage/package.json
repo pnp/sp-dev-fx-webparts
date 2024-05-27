@@ -21,6 +21,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.18.2",
     "@microsoft/sp-property-pane": "1.18.2",
     "@microsoft/sp-webpart-base": "1.18.2",
+    "@pnp/logging": "^4.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

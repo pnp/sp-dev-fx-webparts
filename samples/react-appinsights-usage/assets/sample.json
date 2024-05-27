@@ -1,0 +1,112 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage",
+    "source": "pnp",
+    "title": "React AppInsights Usage WebParts",
+    "shortDescription": "This web parts shows different use cases for capuring data in your application and store it into the Azure Application Insights service.",  
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-usage",
+    "longDescription": [
+      "This web parts shows different use cases for capuring data in your application. Azure Application Insights is more than only Logging and Tracing. It can be used to analyse data and display them in a graphical representation."
+    ],
+    "creationDateTime": "2024-05-26",
+    "updateDateTime": "2024-05-26",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.2"
+      },
+      {
+        "key": "SPFX-FULLPAGEAPP",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": ""
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
+        "alt": "React AppInsights Dashboard"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/ABEvaluation.png?raw=true",
+        "alt": "AppInsights AB Test Chart"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/ABTextUI.png?raw=true",
+        "alt": "AppInsights AB Test UI"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/PNPJSLogger.png?raw=true",
+        "alt": "Logger in Terminal"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/SampleRouterDurationEvaluation.png?raw=true",
+        "alt": "AppInsights Page visit average duration Chart"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/SampleRouterEvaluation.png?raw=true",
+        "alt": "AppInsights Page visit count Chart"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/SampleRouterUserFlow.png?raw=true",
+        "alt": "AppInsights User Flow"
+      }
+      
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "petkir",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Using single part app pages in SharePoint Online",
+        "description": "Single part app pages provide a capability to host SharePoint Framework web parts or Microsoft Teams applications in SharePoint Online with a locked layout. End users cannot modify or configure the page that is using the Single Part App Page layout.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/single-part-app-pages?tabs=pnpposh"
+      },
+      {
+        "name": "PNPJS Understanding the Logging Framework",
+        "description": "The logging framework is centered on the Logger class to which any number of listeners can be subscribed. Each of these listeners will receive each of the messages logged. Each listener must implement the ILogListener interface",
+        "url": "https://pnp.github.io/pnpjs/logging/"
+      },
+      {
+        "name": "Application Insights",
+        "description": "Application Insights provides many experiences to enhance the performance, reliability, and quality of your applications.",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview"
+      }
+      
+    ]
+  }
+]

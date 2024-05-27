@@ -1,10 +1,23 @@
-# app-insights-spfx-webparts
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 5/26/2024 12:00:00 AM
+---
+
+# Application Insights usage
 
 ## Summary
 
-Short summary on functionality and used technologies.
-
-[picture of the solution in action, if possible]
+Application Insights provides telemetry data to monitor and improve application performance and user experience, while AB Testing, user flow analysis, and logging help in optimizing and debugging applications by comparing different versions, mapping user paths, and recording significant events. The 3 Sample Webpart demonstrates webpart functionalities to aid developers in integrating customizable components effectively.
 
 ## Used SharePoint Framework Version
 
@@ -22,11 +35,10 @@ Short summary on functionality and used technologies.
 Application Insight Service on Azure
 Add the connection stirng of this Service to the the variable ```AIConnectionString``` at ```src/EnvProps.ts```
 
-## Solution
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+## Contributors
+
+* [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
@@ -44,6 +56,8 @@ Add the connection stirng of this Service to the the variable ```AIConnectionStr
 
 - Clone this repository
 - Ensure that you are at the solution folder
+- Create or use Existing Azure Application Insights
+- Update ```src/EnvProps.ts``` and Set AIConnectionString
 - in the command-line run:
   - **npm install**
   - **gulp serve**
@@ -63,8 +77,7 @@ This extension illustrates the following concepts:
     - Logging
 - PnP JS Logger
     - Logging with PnPJS
-- Custom Logger
-    - Logging with PnPJS
+
 
 # Sample Router WebPart
 
@@ -115,6 +128,10 @@ customEvents
 ```
 ![AB Evaluation](assets/ABEvaluation.png)
 
+# PnPJS Logger WebPart
+
+![Logoutput with Browser Log Level Filter](assets/PNPJSLogger.png)
+
 > Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
 
 > Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
@@ -126,3 +143,5 @@ customEvents
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [PnPJS/Logging](https://pnp.github.io/pnpjs/logging/) 
+- [Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) Application Insights provides many experiences to enhance the performance, reliability, and quality of your applications.

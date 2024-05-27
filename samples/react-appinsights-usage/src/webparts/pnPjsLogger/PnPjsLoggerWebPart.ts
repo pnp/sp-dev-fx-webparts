@@ -11,6 +11,10 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'PnPjsLoggerWebPartStrings';
 import PnPjsLogger from './components/PnPjsLogger';
 import { IPnPjsLoggerProps } from './components/IPnPjsLoggerProps';
+import { ApplicationInsights, DistributedTracingModes, ITelemetryItem } from '@microsoft/applicationinsights-web';
+import { ConsoleListener, LogLevel, Logger } from '@pnp/logging';
+import { AppInsightListener } from './listener/appinsight-loglistener';
+import { AIConnectionString } from '../../EnvProps';
 
 export interface IPnPjsLoggerWebPartProps {
   description: string;
@@ -20,7 +24,8 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
-
+  private _appInsights: ApplicationInsights;
+  
   public render(): void {
     const element: React.ReactElement<IPnPjsLoggerProps> = React.createElement(
       PnPjsLogger,
@@ -37,11 +42,57 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
   }
 
   protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
+    const allAsynCalls = []
+    allAsynCalls.push(this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
+    })
+    )
+
+    const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
+
+    // App Insights JS Documentation: https://github.com/microsoft/applicationinsights-js
+    this._appInsights = new ApplicationInsights({
+      config: {
+        connectionString: AIConnectionString,
+        accountId: userId,
+        disableFetchTracking: false,
+        enableRequestHeaderTracking: true,
+        enableResponseHeaderTracking: true,
+        enableAjaxErrorStatusText: true,
+        enableAjaxPerfTracking: true,
+        enableUnhandledPromiseRejectionTracking: true,
+        enableCorsCorrelation: true,
+        disableExceptionTracking: false,
+        distributedTracingMode: DistributedTracingModes.AI
+      }
+    });
+
+    this._appInsights.loadAppInsights();
+    this._appInsights.addTelemetryInitializer(this._appInsightsInitializer);
+    this._appInsights.setAuthenticatedUserContext(userId, userId, true);
+    this._appInsights.trackPageView();
+
+    Logger.subscribe(new AppInsightListener(this._appInsights));
+    Logger.subscribe( ConsoleListener("pnpjs"));
+    Logger.activeLogLevel =  LogLevel.Info;
+
+    return Promise.all(allAsynCalls).then(() => {
+      return super.onInit();
     });
   }
 
+  private _appInsightsInitializer = (telemetryItem: ITelemetryItem): boolean | void => {
+    if (telemetryItem) {
+      if (!telemetryItem.tags) telemetryItem.tags = {};
+      telemetryItem.tags['ai.cloud.role'] = "app-insights-spfx-webparts";
+      telemetryItem.tags['ai.cloud.roleInstance'] = "PnPjsLoggerWebPart";
+
+      if (telemetryItem.baseType === 'RemoteDependencyData' && telemetryItem.baseData?.target) {
+        const isExcluded = telemetryItem.baseData.target.toLowerCase().indexOf('my_un_monitored_api ') !== -1;
+        if (isExcluded) return false; // don't track
+      }
+    }
+  }
 
 
   private _getEnvironmentMessage(): Promise<string> {
