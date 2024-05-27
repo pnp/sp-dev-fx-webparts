@@ -79,11 +79,14 @@ This extension illustrates the following concepts:
     - Logging with PnPJS
 
 
-# Sample Router WebPart
+## Sample Router WebPart
 
 How is your application used by Users
-![Sample WebPart Screen](assets/SampleRouterUI.png.png)
+
+![Sample WebPart Screen](assets/SampleRouterUI.png)
+
 Analyse in Application Insight
+
 ![UserFlow by Session](assets/SampleRouterUserFlow.png)
 
 Query in Application Insights Count PageViews
@@ -111,9 +114,10 @@ customMetrics
 ```
 ![Page visit duration evaluation](assets/SampleRouterDurationEvaluation.png)
 
-# AB-Test WebPart
+## AB-Test WebPart
 
 How users add new items?
+
 ![AB UI Screen](assets/ABTextUI.png)
 
 Query in Application Insights
@@ -132,9 +136,6 @@ customEvents
 
 ![Logoutput with Browser Log Level Filter](assets/PNPJSLogger.png)
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
 ## References
 
