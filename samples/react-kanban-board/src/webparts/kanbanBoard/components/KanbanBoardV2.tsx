@@ -14,8 +14,7 @@ import {KanbanComponent,IKanbanBucket,IKanbanTask} from '../../../kanban';
 
 import { mergeBucketsWithChoices } from './helper';
 import { ISPKanbanService } from '../services/ISPKanbanService';
-import SPKanbanService from '../services/SPKanbanService';
-import MockKanbanService from '../services/MockKanbanService';
+
 import { Spinner } from '@fluentui/react';
 
 export interface IKanbanBoardV2Props {

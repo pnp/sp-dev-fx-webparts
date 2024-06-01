@@ -74,7 +74,7 @@ Version|Date|Comments
 1.0.1.0|April 21, 2020|Added support for Teams hosts
 2.0.0.0|July 10, 2020| jqwidgets replaced with a custom Kanban Board based on Office UI Component and IE11 Support
 3.0.0.0|October 29, 2021| SPFx 1.13, PnPJS v2, PnP Controls v3
-4.0.0.0|Jun 1, 2024| SPFx 1.19, Node 18
+4.0.0.0|Jun 1, 2024| SPFx 1.19, PnPJS v4, Node 18
 
 [Read More about the implementation of this Board](./src/kanban/README.md)
 
