@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
@@ -11,7 +12,7 @@ import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
 import * as strings from 'KanbanBoardWebPartStrings';
-import { spfi, SPFI, SPFx } from "@pnp/sp";
+import { spfi,  SPFx } from "@pnp/sp";
 
 import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
 import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
@@ -106,7 +107,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             onPropertyChange: this.listConfigurationChanged.bind(this),
             properties: this.properties,
             context: (this.context as any),
-            onGetErrorMessage: null,
+            onGetErrorMessage: ()=>'', //TODO
             deferredValidationTime: 0,
             key: 'listPickerFieldId',
             onListsRetrieved: (lists) => {

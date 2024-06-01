@@ -67,7 +67,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 {allowAddTask && (<ActionButton
                     iconProps={{ iconName: 'Add' }}
                     allowDisabledFocus={true}
-                    onClick={() => this.props.addTask(bucket)}
+                    onClick={() => this.props.addTask && this.props.addTask(bucket)}
                 >
                     {strings.AddTask}
                 </ActionButton>)}
@@ -85,7 +85,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                                     {...merge}
                                     toggleCompleted={this.props.toggleCompleted}
                                     isMoving={isMoving}
-                                    openDetails={this.props.openDetails}
+                                    openDetails={(taskId)=> this.props.openDetails&&this.props.openDetails(taskId)}
                                     onDragStart={(event) => this.props.onDragStart(event, t.taskId, t.bucket)}
                                     onDragEnd={(event) => this.props.onDragEnd(event, t.taskId, t.bucket)}
                                 /></div>

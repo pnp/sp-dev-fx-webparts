@@ -14,9 +14,9 @@ interface IFieldChoiceInfo extends IFieldInfo {
 }
 
 export default class SPKanbanService implements ISPKanbanService {
-    private sp:SPFI = null;
+    private sp:SPFI;
  constructor(sp:SPFI) {
-    sp=sp;
+    this.sp=sp;
  }
 
     public updateTaskBucketMove(listid: string, taskId: number, bucket: string): Promise<boolean> {
@@ -62,7 +62,7 @@ export default class SPKanbanService implements ISPKanbanService {
     }
     public getBuckets(listId: string, ): Promise<string[]> {
         return this.sp.web.lists.getById(listId).fields.getByInternalNameOrTitle("Status")()
-            .then((status: IFieldChoiceInfo) => status.Choices.map((val, index) => {
+            .then((status: IFieldChoiceInfo) => status.Choices.map((val) => {
                 return val;
             }));
     }

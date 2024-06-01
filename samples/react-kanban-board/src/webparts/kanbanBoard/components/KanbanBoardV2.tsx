@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as strings from 'KanbanBoardWebPartStrings';
 
-import { DisplayMode, Guid, Environment, EnvironmentType } from '@microsoft/sp-core-library';
+import { DisplayMode } from '@microsoft/sp-core-library';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { findIndex, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
 
