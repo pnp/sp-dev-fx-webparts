@@ -7,9 +7,9 @@
   "configurations": [
     {
       "name": "Hosted workbench",
-      "type": "chrome",
+      "type": "msedge",
       "request": "launch",
-      "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
+      "url": "https://{tenantDomain}/_layouts/workbench.aspx",
       "webRoot": "${workspaceRoot}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {

@@ -3,12 +3,10 @@ import styles from './KanbanBucket.module.scss';
 import { IKanbanBucket } from './IKanbanBucket';
 import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
-import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { ActionButton } from 'office-ui-fabric-react';
+
 import KanbanTask from './KanbanTask';
-import classNames from 'classnames';
 import * as strings from 'KanbanBoardStrings';
+import { ActionButton, ProgressIndicator } from '@fluentui/react';
 
 export interface IKanbanBucketProps extends IKanbanBucket {
 
@@ -19,9 +17,9 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     toggleCompleted?: (taskId: string) => void;
     addTask?: (bucket: string) => void;
 
-    onDragStart: (event, taskId: string, bucket: string) => void;
+    onDragStart: (event: any, taskId: string, bucket: string) => void;
 
-    onDragEnd: (event, taskId: string, bucket: string) => void;
+    onDragEnd: (event: any, taskId: string, bucket: string) => void;
 
 
 

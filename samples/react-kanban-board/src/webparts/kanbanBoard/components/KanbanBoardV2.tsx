@@ -5,7 +5,6 @@ import * as strings from 'KanbanBoardWebPartStrings';
 import { DisplayMode, Guid, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { findIndex, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 
 
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
@@ -17,6 +16,7 @@ import { mergeBucketsWithChoices } from './helper';
 import { ISPKanbanService } from '../services/ISPKanbanService';
 import SPKanbanService from '../services/SPKanbanService';
 import MockKanbanService from '../services/MockKanbanService';
+import { Spinner } from '@fluentui/react';
 
 export interface IKanbanBoardV2Props {
     hideWPTitle: boolean;
@@ -27,6 +27,7 @@ export interface IKanbanBoardV2Props {
     listId: string;
     configuredBuckets: IKanbanBucket[]; // need mearge with current readed
     statekey: string; // force refresh ;)
+    dataService: ISPKanbanService;
 }
 
 export interface IKanbanBoardV2State {
@@ -43,7 +44,7 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
     private dataService: ISPKanbanService;
     constructor(props: IKanbanBoardV2Props) {
         super(props);
-
+        this.dataService= this.props.dataService; 
         this.state = {
             loading: false,
             isConfigured: false,
@@ -52,11 +53,6 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         };
     }
     public componentDidMount(): void {
-        if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
-            this.dataService=  new MockKanbanService();
-        } else {
-            this.dataService = new SPKanbanService();
-        }
         this._getData();
     }
     public shouldComponentUpdate(nextProps: IKanbanBoardV2Props, nextState: IKanbanBoardV2State): boolean {

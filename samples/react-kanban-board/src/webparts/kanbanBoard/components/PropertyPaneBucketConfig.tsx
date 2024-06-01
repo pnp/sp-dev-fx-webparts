@@ -16,7 +16,7 @@ export interface IPropertyPaneBucketConfig {
 
 export interface IPropertyPaneBucketConfigInternal extends IPropertyPaneBucketConfig {
     targetProperty: string;
-    onRender(elem: HTMLElement, ctx, changeCallback): void;
+    onRender(elem: HTMLElement, ctx:any, changeCallback:(targetProperty: string, value: any) => void): void;
     onDispose(elem: HTMLElement): void;
     onChanged(targetProperty: string, value: IKanbanBucket): void;
 }
@@ -44,7 +44,7 @@ class PropertyPaneBucketConfigBuilder implements IPropertyPaneField<IPropertyPan
         this.properties.onDispose = this.dispose;
     }
 
-    private render(elem: HTMLElement, ctx?, changeCallback?: (targetProperty: string, value: any) => void): void {
+    private render(elem: HTMLElement, ctx?:any, changeCallback?: (targetProperty: string, value: any) => void): void {
         if (!this.elem) {
             this.elem = elem;
         }

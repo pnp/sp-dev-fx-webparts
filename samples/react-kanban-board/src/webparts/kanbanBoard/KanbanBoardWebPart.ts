@@ -11,7 +11,7 @@ import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
 import * as strings from 'KanbanBoardWebPartStrings';
-import { sp } from '@pnp/sp';
+import { spfi, SPFI, SPFx } from "@pnp/sp";
 
 import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
 import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
@@ -34,20 +34,19 @@ export interface IKanbanBoardWebPartProps {
 }
 
 export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoardWebPartProps> {
-  private kanbanComponent = null;
+  //private kanbanComponent = null;
   private dataService: ISPKanbanService;
   private statekey: string = Date.now().toString();
   public onInit(): Promise<void> {
 
     return super.onInit().then(_ => {
 
-      sp.setup({
-        spfxContext: this.context
-      });
-      if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
+      const sp = spfi().using(SPFx( this.context));
+      //.using(PnPLogging(LogLevel.Warning));
+      if ( Environment.type == EnvironmentType.Test) {
         this.dataService = new MockKanbanService();
       } else {
-        this.dataService = new SPKanbanService();
+        this.dataService = new SPKanbanService(sp);
       }
 
     });
@@ -66,12 +65,13 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         statekey: this.statekey,
         context: this.context,
         listId: this.properties.listId,
-        configuredBuckets: this.properties.buckets
+        configuredBuckets: this.properties.buckets,
+        dataService: this.dataService
       }
     );
 
 
-    this.kanbanComponent = ReactDom.render(element, this.domElement);
+    ReactDom.render(element, this.domElement);
 
   }
 
@@ -105,7 +105,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             disabled: false,
             onPropertyChange: this.listConfigurationChanged.bind(this),
             properties: this.properties,
-            context: this.context,
+            context: (this.context as any),
             onGetErrorMessage: null,
             deferredValidationTime: 0,
             key: 'listPickerFieldId',

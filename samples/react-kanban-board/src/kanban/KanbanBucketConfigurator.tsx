@@ -3,25 +3,12 @@ import * as React from 'react';
 //import styles from './KanbanBucketConfigurator.module.scss';
 
 import * as strings from 'KanbanBoardStrings';
-import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { cloneDeep, clone, isEqual } from '@microsoft/sp-lodash-subset';
-import {
-    ColorPicker,
-    ChoiceGroup,
-    IChoiceGroupOption,
-    getColorFromString,
-    IColor,
-    IColorPickerStyles,
-    IColorPickerProps,
-    PrimaryButton,
-    DefaultButton,
-    ThemeSettingName,
-} from 'office-ui-fabric-react/lib/index';
+
+import { clone, isEqual } from '@microsoft/sp-lodash-subset';
+
 
 import { IKanbanBucket } from './IKanbanBucket';
+import { ColorPicker, DefaultButton, IColor, PrimaryButton, Slider, Stack, TextField, Toggle } from '@fluentui/react';
 
 
 export interface IKanbanBucketConfiguratorProps {

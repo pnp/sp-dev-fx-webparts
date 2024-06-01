@@ -11,14 +11,8 @@ import { IKanbanBucket } from './IKanbanBucket';
 import KanbanBucket from './KanbanBucket';
 import KanbanTaskManagedProp from './KanbanTaskManagedProp';
 
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IStackStyles, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { clone } from '@microsoft/sp-lodash-subset';
-
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-
-import { TooltipHost, findIndex } from 'office-ui-fabric-react';
+import { CommandBar, DefaultButton, Dialog, DialogFooter, DialogType, PrimaryButton, Stack, findIndex } from '@fluentui/react';
 
 export interface IKanbanComponentProps {
     buckets: IKanbanBucket[];
@@ -65,16 +59,16 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
 
         };
         this.bucketsref = [];
-       
-        }
-  
+
+    }
+
     public render(): React.ReactElement<IKanbanComponentProps> {
         const { buckets, tasks, tasksettings, taskactions, showCommandbar } = this.props;
         const { openDialog } = this.state;
         const bucketwidth: number = buckets.length > 0 ? 100 / buckets.length : 100;
         const { leavingBucket, leavingTaskId } = this.state;
-const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).length >0;
-        
+        const hasprocessIndicator = buckets.filter((b) => b.showPercentageHeadline).length > 0;
+
         return (
             <div style={{ overflowX: 'auto' }}>
                 {showCommandbar && <CommandBar
@@ -89,12 +83,12 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
                         buckets.map((b, i) => {
                             const merge = { ...b, ...this.state };
                             return (<div
-                            
-                                style={{ 
-                                    flexBasis: bucketwidth ? bucketwidth + '%' : '100%' ,
+
+                                style={{
+                                    flexBasis: bucketwidth ? bucketwidth + '%' : '100%',
                                     maxWidth: bucketwidth ? bucketwidth + '%' : '100%'
                                 }}
-                                
+
                                 className={styles.bucketwrapper}
                                 ref={bucketContent => this.bucketsref[i] = bucketContent}
                                 key={'BucketWrapper' + b.bucket + i}
@@ -310,7 +304,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
         }
     }
 
-    private onDragLeave(event, bucket): void {
+    private onDragLeave(event: any, bucket: string): void {
         const index = findIndex(this.props.buckets, element => element.bucket == bucket);
         if (index != -1 && this.bucketsref.length > index) {
 
@@ -320,7 +314,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     }
 
-    private onDragEnd(event): void {
+    private onDragEnd(event: any): void {
 
         this.dragelement = undefined;
         this.setState({
@@ -330,7 +324,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
         });
     }
 
-    private onDragStart(event, taskId: string, bucket: string): void {
+    private onDragStart(event: any, taskId: string, bucket: string): void {
         console.log('onDragStart');
         const taskitem = this.props.tasks.filter(p => p.taskId === taskId);
         if (taskitem.length === 1) {
@@ -352,7 +346,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     }
 
-    private onDragOver(event, targetbucket: string): void {
+    private onDragOver(event: any, targetbucket: string): void {
         event.preventDefault();
         console.log('onDragOver');
 
@@ -366,7 +360,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     }
 
-    private onDrop(event, targetbucket: string): void {
+    private onDrop(event: any, targetbucket: string): void {
         if (this.bucketsref && this.bucketsref.length > 0) {
             this.bucketsref.forEach(x => { x.classList.remove(styles.dragover); });
         }
@@ -398,7 +392,7 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     }
 
-  
+
 
     private getItems = () => {
         if (this.props.allowAdd) {

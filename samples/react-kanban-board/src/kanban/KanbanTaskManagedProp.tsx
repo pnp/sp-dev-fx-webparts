@@ -4,9 +4,9 @@
 import * as React from 'react';
 import styles from './KanbanTaskManagedProp.module.scss';
 import { IKanbanTaskManagedProps, KanbanTaskMamagedPropertyType } from './IKanbanTask';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import ReactHtmlParser from 'react-html-parser';
-import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react';
+import { IPersonaProps, Persona, PersonaSize, Stack } from '@fluentui/react';
+import HTMLReactParser from 'html-react-parser';
+
 
 export interface IKanbanTaskManagedPropProps extends IKanbanTaskManagedProps { }
 
@@ -44,7 +44,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 //TODO  maybe better Formater
                 break;
             case KanbanTaskMamagedPropertyType.html:
-                return (<span>{ReactHtmlParser(value)}</span>);
+                return (<span>{HTMLReactParser(value)}</span>);
                 break;
             case KanbanTaskMamagedPropertyType.person:
 
