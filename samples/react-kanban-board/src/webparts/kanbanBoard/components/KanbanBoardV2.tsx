@@ -10,7 +10,7 @@ import { findIndex, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
-import {KanbanComponent,IKanbanBucket,IKanbanTask} from '../../../kanban';
+import { KanbanComponent, IKanbanBucket, IKanbanTask } from '../../../kanban';
 
 import { mergeBucketsWithChoices } from './helper';
 import { ISPKanbanService } from '../services/ISPKanbanService';
@@ -43,7 +43,7 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
     private dataService: ISPKanbanService;
     constructor(props: IKanbanBoardV2Props) {
         super(props);
-        this.dataService= this.props.dataService; 
+        this.dataService = this.props.dataService;
         this.state = {
             loading: false,
             isConfigured: false,
@@ -63,7 +63,7 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
 
         return false;
     }
-    public componentDidUpdate(prevProps: IKanbanBoardV2Props) {
+    public componentDidUpdate(prevProps: IKanbanBoardV2Props): void {
         if (this.props.listId !== prevProps.listId) {
             this._getData();
         }
@@ -117,14 +117,14 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         );
     }
 
-    private _onConfigure = () => {
+    private _onConfigure = (): void => {
         this.props.context.propertyPane.open();
     }
 
 
     private _moved(taskId: string, targetBucket: IKanbanBucket): void {
-        const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
-        let newArray = [...this.state.tasks]; // same as Clone
+        const elementsIndex = findIndex(this.state.tasks, element => element.taskId === taskId);
+        const newArray = [...this.state.tasks]; // same as Clone
         newArray[elementsIndex].bucket = targetBucket.bucket;
         this.dataService.updateTaskBucketMove(this.props.listId, +taskId, targetBucket.bucket)
             .then(res => {
@@ -139,28 +139,31 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
 
 
     private _getData(): void {
-        if (!this.props.listId || this.props.listId.length == 0) {
+        if (!this.props.listId || this.props.listId.length === 0) {
             this.setState({ isConfigured: false, loading: false });
         } else {
             const listId: string = this.props.listId;
-            this.dataService.getBuckets(listId).then((choices) => {
-                this.choices = choices;
-                const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
-                if (!currentbuckets) {
-                    this.setState({ isConfigured: false, loading: false, errorMessage: 'No Buckets found' });
-                    return;
-                }
-                this.dataService.getAllTasks(listId).then((tasks) => {
-                    this.setState({
-                        isConfigured: true,
-                        loading: false,
-                        errorMessage: undefined,
-                        buckets: currentbuckets,
-                        tasks: tasks
-                    });
-                });
+            this.dataService.getBuckets(listId)
+                .then((choices) => {
+                    this.choices = choices;
+                    const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
+                    if (!currentbuckets) {
+                        this.setState({ isConfigured: false, loading: false, errorMessage: 'No Buckets found' });
+                        return;
+                    }
+                    this.dataService.getAllTasks(listId).then((tasks) => {
+                        this.setState({
+                            isConfigured: true,
+                            loading: false,
+                            errorMessage: undefined,
+                            buckets: currentbuckets,
+                            tasks: tasks
+                        });
+                    }, (reject) => { throw new Error(reject) })
+                        .catch(error => { throw new Error('Error loading Tasks') });
 
-            });
+                })
+                .catch(error => { throw new Error('Error loading Buckets') });
             this.setState({ isConfigured: true, loading: true });
         }
 

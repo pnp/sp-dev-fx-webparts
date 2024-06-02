@@ -44,7 +44,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
 
       const sp = spfi().using(SPFx( this.context));
       //.using(PnPLogging(LogLevel.Warning));
-      if ( Environment.type == EnvironmentType.Test) {
+      if ( Environment.type === EnvironmentType.Test) {
         this.dataService = new MockKanbanService();
       } else {
         this.dataService = new SPKanbanService(sp);
@@ -113,7 +113,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             onListsRetrieved: (lists) => {
               //TODO Check from TS Definition it should be a string but i get a number
               // with Typesafe equal it fails
-              if (Environment.type == EnvironmentType.Test) {
+              if (Environment.type === EnvironmentType.Test) {
                 return lists;
               } else {
                 const alists = lists.filter((l: any) => {
@@ -174,12 +174,12 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
     };
   }
 
-  private listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any) {
+  private listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any):void {
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
     this.refreshBucket();
 
   }
-  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any) {
+  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any):void {
     //its an array part !!!!!
     if (propertyPath.indexOf('bucket_') !== -1) {
       const oribuckets: IKanbanBucket[] = cloneDeep(this.properties.buckets);
@@ -193,7 +193,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       this.context.propertyPane.refresh();
       this.render();
     } else {
-      throw "propertypath is not a bucket";
+      throw new Error("propertypath is not a bucket");
     }
   }
 
@@ -208,7 +208,8 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       this.properties.buckets = currentbuckets;
       this.context.propertyPane.refresh();
     }
-    );
+    )
+    .catch(error => { throw new Error('Error loading Buckets by refreshBucket') });
   }
 
 }

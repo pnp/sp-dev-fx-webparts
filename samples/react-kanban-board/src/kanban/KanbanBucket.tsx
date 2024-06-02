@@ -59,10 +59,10 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 key={bucket}>
                 <div className={styles.headline}>
                     <div className={styles.headlineText}>{bucketheadline}</div>
-                    {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}></div>}
+                    {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}/>}
                     {showPercentageHeadline ? 
                     (<ProgressIndicator percentComplete={percentageComplete / 100} />):
-                    (hasOneProcessIndicator?(<div className={styles.processIndicatorHeight}></div>):(<div></div>))}
+                    (hasOneProcessIndicator?(<div className={styles.processIndicatorHeight} />):(<div />))}
                 </div>
                 {allowAddTask && (<ActionButton
                     iconProps={{ iconName: 'Add' }}

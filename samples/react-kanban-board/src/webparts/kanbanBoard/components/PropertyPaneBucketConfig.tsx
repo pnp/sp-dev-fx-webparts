@@ -65,19 +65,21 @@ class PropertyPaneBucketConfigBuilder implements IPropertyPaneField<IPropertyPan
             this.onPropertyChange(this.targetProperty, this.customProperties, value);
         }
     }
-    private dispose(elem: HTMLElement): void { }
+    private dispose(elem: HTMLElement): void {
+        ReactDom.unmountComponentAtNode(elem);
+     }
 }
 
 export default function PropertyPaneBucketConfigComponent(targetProperty: string, properties: IPropertyPaneBucketConfig):
     IPropertyPaneField<IPropertyPaneBucketConfigInternal> {
-    var newProperties: IPropertyPaneBucketConfigInternal = {
+    const newProperties: IPropertyPaneBucketConfigInternal = {
         key: properties.key,
         properties: properties.properties,
         targetProperty: targetProperty,
         onPropertyChange: properties.onPropertyChange,
-        onDispose: null,
-        onRender: null,
-        onChanged: null
+        onDispose: () =>{ return null },
+        onRender: () =>{ return null },
+        onChanged: () =>{ return null }
     };
     return new PropertyPaneBucketConfigBuilder(targetProperty, newProperties);
 }

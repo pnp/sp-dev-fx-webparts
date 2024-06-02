@@ -26,7 +26,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
             </Stack>
         );
     }
-    private renderValue() {
+    private renderValue():JSX.Element {
         const { name, type, value } = this.props;
         if (this.props.renderer) {
             return this.props.renderer(name, value, type);
@@ -75,7 +75,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 return (<span>{JSON.stringify(value)}</span>);
                 break;
             default:
-                throw "Unknow KanbanTaskMamagedPropertyType";
+                throw new Error("Unknow KanbanTaskMamagedPropertyType");
                 break;
         }
     }
