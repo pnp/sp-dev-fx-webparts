@@ -36,7 +36,25 @@
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanofficeUI.gif",
-        "alt": "Kanban Board Web part"
+        "alt": "Kanban Board Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg1.png",
+        "alt": "Kanban Board Web part configuration of a bucket"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg2.png",
+        "alt": "Kanban Board Web part item View"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg3.png",
+        "alt": "Kanban Board Web part task list selection and status column order as bucket"
       }
     ],
     "authors": [

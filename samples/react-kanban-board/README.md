@@ -24,6 +24,10 @@ The web part uses the default columns of the SharePoint Tasks list for showing t
 
 ![picture of the web part in action](assets/kanbanofficeUI.gif)
 
+![Kanban Board Settings: bucket Layout](assets/kanbanimg1.png)
+![Kanban Board View Items](assets/kanbanimg2.png)
+![Kanban Board Settings: list selection and status column order as bucket](assets/kanbanimg3.png)
+
 
 ## Compatibility
 
@@ -50,6 +54,7 @@ The web part uses the default columns of the SharePoint Tasks list for showing t
 ## Prerequisites
 
 This web part reads the information from a Tasks list and uses the following OOB columns
+
 * Task Name
 * Assigned To
 * % Complete
