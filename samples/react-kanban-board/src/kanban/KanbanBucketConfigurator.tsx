@@ -44,20 +44,7 @@ export class KanbanBucketConfigurator extends React.Component<IKanbanBucketConfi
     }
 
     public render(): React.ReactElement<IKanbanBucketConfiguratorProps> {
-        /*
-        const columnProps: Partial<IStackProps> = {
-            gap: 15,
-            styles: { root: { width: 300 } },
-        };*/
-        /*
-        const colorPickerStyles: Partial<IColorPickerStyles> = {
-            panel: { padding: 12 },
-            root: {
-                maxWidth: 352,
-                minWidth: 352,
-            },
-            colorRectangle: { height: 268 },
-        };*/
+     
         const statebucket = this.state.bucket;
         if (!statebucket) {
             return (<div />);

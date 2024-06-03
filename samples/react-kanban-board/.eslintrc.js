@@ -79,7 +79,7 @@ module.exports = {
         //                    This rule should be suppressed only in very special cases such as JSON.stringify()
         //                    where the type really can be anything.  Even if the type is flexible, another type
         //                    may be more appropriate such as "unknown", "{}", or "Record<k,V>".
-        '@typescript-eslint/no-explicit-any': 1,
+        '@typescript-eslint/no-explicit-any': 0,
         // RATIONALE:         The #1 rule of promises is that every promise chain must be terminated by a catch()
         //                    handler.  Thus wherever a Promise arises, the code must either append a catch handler,
         //                    or else return the object to a caller (who assumes this responsibility).  Unterminated

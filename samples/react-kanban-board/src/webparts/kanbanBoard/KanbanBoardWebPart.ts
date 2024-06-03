@@ -9,14 +9,18 @@ import {
 } from '@microsoft/sp-property-pane';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
-import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
+//import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls';
+
 import * as strings from 'KanbanBoardWebPartStrings';
-import { spfi,  SPFx } from "@pnp/sp";
+import { spfi, SPFx } from "@pnp/sp";
 
 import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
 import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
+
 import { bucketOrder } from './components/bucketOrder';
+import { PropertyFieldOrder } from './components/PropertyOrderField/PropertyFieldOrder';
+
+
 import { mergeBucketsWithChoices } from './components/helper';
 
 import { IKanbanBucket } from '../../kanban';
@@ -24,6 +28,7 @@ import { IKanbanBucket } from '../../kanban';
 import { ISPKanbanService } from './services/ISPKanbanService';
 import SPKanbanService from './services/SPKanbanService';
 import MockKanbanService from './services/MockKanbanService';
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from './components/PropertyListPicker';
 
 export interface IKanbanBoardWebPartProps {
   hideWPTitle: boolean;
@@ -42,9 +47,9 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
 
     return super.onInit().then(_ => {
 
-      const sp = spfi().using(SPFx( this.context));
+      const sp = spfi().using(SPFx(this.context));
       //.using(PnPLogging(LogLevel.Warning));
-      if ( Environment.type === EnvironmentType.Test) {
+      if (Environment.type === EnvironmentType.Test) {
         this.dataService = new MockKanbanService();
       } else {
         this.dataService = new SPKanbanService(sp);
@@ -107,7 +112,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             onPropertyChange: this.listConfigurationChanged.bind(this),
             properties: this.properties,
             context: (this.context as any),
-            onGetErrorMessage: ()=>'', //TODO
+            onGetErrorMessage: () => '', //TODO
             deferredValidationTime: 0,
             key: 'listPickerFieldId',
             onListsRetrieved: (lists) => {
@@ -132,14 +137,14 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         {
           groupName: strings.propertyPaneLabelOrderBuckets,
           groupFields: [
-            PropertyFieldOrder("buckets", {
+           PropertyFieldOrder("buckets", {
               key: "orderedItems",
               label: strings.propertyPaneLabelOrderBuckets,
               items: this.properties.buckets,
               properties: this.properties,
               onPropertyChange: this.onPropertyPaneFieldChanged,
               onRenderItem: bucketOrder,
-            })
+            }) 
           ]
         }
       );
@@ -174,12 +179,14 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
     };
   }
 
-  private listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any):void {
+  public listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    console.log('listConfigurationChanged');
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+    
     this.refreshBucket();
 
   }
-  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any):void {
+  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any): void {
     //its an array part !!!!!
     if (propertyPath.indexOf('bucket_') !== -1) {
       const oribuckets: IKanbanBucket[] = cloneDeep(this.properties.buckets);
@@ -209,7 +216,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       this.context.propertyPane.refresh();
     }
     )
-    .catch(error => { throw new Error('Error loading Buckets by refreshBucket') });
+      .catch(error => { throw new Error('Error loading Buckets by refreshBucket') });
   }
 
 }

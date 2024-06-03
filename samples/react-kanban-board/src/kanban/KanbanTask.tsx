@@ -83,6 +83,7 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
 
     private _openDetails(): void {
+        console.log('openDetails');
         if (this.props.openDetails) {
             this.props.openDetails(this.props.taskId);
         }

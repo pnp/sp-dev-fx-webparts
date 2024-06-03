@@ -40,11 +40,11 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 //TODO  maybe Formater
                 break;
             case KanbanTaskMamagedPropertyType.percent:
-                return (<span>{`${(value as any) * 100}%`} </span>);
+                return (value?<span>{`${(value as any) * 100}%`} </span>:<span/>);
                 //TODO  maybe better Formater
                 break;
             case KanbanTaskMamagedPropertyType.html:
-                return (<span>{HTMLReactParser(value)}</span>);
+                return (value?<span>{HTMLReactParser(value)}</span>:<span/>);
                 break;
             case KanbanTaskMamagedPropertyType.person:
 
