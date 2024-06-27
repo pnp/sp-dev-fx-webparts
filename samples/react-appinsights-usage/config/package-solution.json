@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "app-insights-spfx-webparts-client-side-solution",
+    "id": "27b8ab0e-bb2e-4ba5-90e7-ee50b5419c0f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "app-insights-spfx-webparts description"
+      },
+      "longDescription": {
+        "default": "app-insights-spfx-webparts description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "app-insights-spfx-webparts Feature",
+        "description": "The feature that activates elements of the app-insights-spfx-webparts solution.",
+        "id": "f6d484c8-f321-4c90-bc8b-58578c4c3431",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/app-insights-spfx-webparts.sppkg"
+  }
+}

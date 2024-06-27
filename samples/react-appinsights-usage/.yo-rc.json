@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "app-insights-spfx-webparts",
+    "libraryId": "27b8ab0e-bb2e-4ba5-90e7-ee50b5419c0f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "app-insights-spfx-webparts",
+    "solutionShortDescription": "app-insights-spfx-webparts description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

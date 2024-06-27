@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sample-router-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sampleRouter/SampleRouterWebPart.js",
+          "manifest": "./src/webparts/sampleRouter/SampleRouterWebPart.manifest.json"
+        }
+      ]
+    },
+    "ab-test-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/abTest/AbTestWebPart.js",
+          "manifest": "./src/webparts/abTest/AbTestWebPart.manifest.json"
+        }
+      ]
+    },
+    "pn-pjs-logger-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnPjsLogger/PnPjsLoggerWebPart.js",
+          "manifest": "./src/webparts/pnPjsLogger/PnPjsLoggerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SampleRouterWebPartStrings": "lib/webparts/sampleRouter/loc/{locale}.js",
+    "AbTestWebPartStrings": "lib/webparts/abTest/loc/{locale}.js",
+    "PnPjsLoggerWebPartStrings": "lib/webparts/pnPjsLogger/loc/{locale}.js"
+  }
+}
