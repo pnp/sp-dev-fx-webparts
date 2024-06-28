@@ -10,6 +10,9 @@ import * as moment from 'moment';
 import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
 import parseRecurrentEvent from './parseRecurrentEvent';
+import { IComboBoxOption } from '@fluentui/react';
+import { Constants } from "../common/Constants";
+import { Text } from "@microsoft/sp-core-library";
 
 // Class Services
 export default class spservices {
@@ -450,7 +453,7 @@ export default class spservices {
    * @returns {Promise< IEventData[]>}
    * @memberof spservices
    */
-  public async getEvents(siteUrl: string, listId: string, eventStartDate: Date, eventEndDate: Date): Promise<IEventData[]> {
+  public async getEvents(siteUrl: string, listId: string, eventStartDate: Date, eventEndDate: Date, categories: IComboBoxOption[]): Promise<IEventData[]> {
 
     let events: IEventData[] = [];
     if (!siteUrl) {
@@ -463,28 +466,13 @@ export default class spservices {
       for (const cat of categoryDropdownOption) {
         categoryColor.push({ category: cat.text, color: await this.colorGenerate() });
       }
+      let camlQueryExpression = this.setUpQueryExpression(eventStartDate, eventEndDate, categories);
 
       const web = new Web(siteUrl);
       const results = await web.lists.getById(listId).usingCaching().renderListDataAsStream(
         {
           DatesInUtc: true,
-          ViewXml: `<View><ViewFields><FieldRef Name='RecurrenceData'/><FieldRef Name='Duration'/><FieldRef Name='Author'/><FieldRef Name='Category'/><FieldRef Name='Description'/><FieldRef Name='ParticipantsPicker'/><FieldRef Name='Geolocation'/><FieldRef Name='ID'/><FieldRef Name='EndDate'/><FieldRef Name='EventDate'/><FieldRef Name='ID'/><FieldRef Name='Location'/><FieldRef Name='Title'/><FieldRef Name='fAllDayEvent'/><FieldRef Name='EventType'/><FieldRef Name='UID' /><FieldRef Name='fRecurrence' /></ViewFields>
-          <Query>
-          <Where>
-            <And>
-              <Geq>
-                <FieldRef Name='EventDate' />
-                <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventStartDate).format('YYYY-MM-DD')}</Value>
-              </Geq>
-              <Leq>
-                <FieldRef Name='EventDate' />
-                <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventEndDate).format('YYYY-MM-DD')}</Value>
-              </Leq>
-              </And>
-          </Where>
-          </Query>
-          <RowLimit Paged=\"FALSE\">2000</RowLimit>
-          </View>`
+          ViewXml: camlQueryExpression
         }
       );
 
@@ -569,6 +557,86 @@ export default class spservices {
       console.dir(error);
       return Promise.reject(error);
     }
+  }
+
+  /**
+   *
+   * @private
+   * @param {Date} eventStartDate
+   * @param {Date} eventEndDate
+   * @param {IOption[]} departments
+   * @returns {string} camlQuery
+   * @memberof spservices
+   */
+  private setUpQueryExpression(
+    eventStartDate: Date,
+    eventEndDate: Date,
+    categories: IComboBoxOption[]
+  ) {
+    let camlQuery = `
+    <View>
+    <ViewFields>
+      <FieldRef Name='RecurrenceData'/>
+      <FieldRef Name='Duration'/>
+      <FieldRef Name='Author'/>
+      <FieldRef Name='Category'/>
+      <FieldRef Name='Description'/>
+      <FieldRef Name='ParticipantsPicker'/>
+      <FieldRef Name='Geolocation'/>
+      <FieldRef Name='ID'/>
+      <FieldRef Name='EndDate'/>
+      <FieldRef Name='EventDate'/>
+      <FieldRef Name='Location'/>
+      <FieldRef Name='Title'/>
+      <FieldRef Name='fAllDayEvent'/>
+      <FieldRef Name='EventType'/>
+      <FieldRef Name='UID' />
+      <FieldRef Name='fRecurrence' />
+    </ViewFields>
+      <Query>
+        <Where>
+          <And>
+            <Geq>
+              <FieldRef Name='EventDate' />
+              <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventStartDate).format("YYYY-MM-DD")}</Value>
+            </Geq>
+              {0}
+                <Leq>
+                  <FieldRef Name='EventDate' />
+                  <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventEndDate).format("YYYY-MM-DD")}</Value>
+                </Leq>
+                {1}
+              {2}
+          </And>
+        </Where>
+      </Query>
+      <RowLimit Paged=\"FALSE\">2000</RowLimit>
+      </View>`;
+
+    let categoryCondition = `
+        <Eq>
+          <FieldRef Name='Category' />
+          <Value Type='Choice'>{0}</Value>
+        </Eq>`;
+
+    const deptsLength: number = categories.length;
+    let queryResult: string = "";
+
+    if (deptsLength > 0) {
+      if (deptsLength == 1) {
+        return Text.format(camlQuery, Constants.AndConditionStart, Text.format(categoryCondition, categories[0].key), Constants.AndConditionEnd);
+      } else {
+        let orCondition: string = `${Constants.OrConditionStart}{0}{1}${Constants.OrConditionEnd}`;
+        queryResult = Text.format(orCondition, Text.format(categoryCondition, categories[0].key), Text.format(categoryCondition, categories[1]));
+
+        for (let i = 2; i < categories.length; i++) {
+          const category = categories[i];
+          queryResult = Text.format(orCondition, Text.format(categoryCondition, category.key), queryResult);
+        }
+      }
+      return Text.format(camlQuery, Constants.AndConditionStart, queryResult, Constants.AndConditionEnd);
+    }
+    return Text.format(camlQuery, "", queryResult, "");
   }
 
   /**
