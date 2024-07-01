@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ReactHierarchyView.module.scss';
 import { IReactHierarchyViewProps } from './IReactHierarchyViewProps';
 import { IHierarchyService } from '../interfaces';
-import { HierarchyItem } from '../interfaces/IHierarchyItem';
+import { HierarchyItem, ISPHierarchyItem } from '../interfaces/IHierarchyItem';
 import OrgChart from 'react-orgchart';
 import { MessageBar, MessageBarType, Spinner } from '@fluentui/react';
 import { HierarchyService } from '../services';
@@ -32,8 +32,8 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
     this.loadHierarchyView(this.props.listName);
   }
 
-  public componentWillReceiveProps(nextProps: IReactHierarchyViewProps): void {
-    this.loadHierarchyView(nextProps.listName);
+  public componentDidUpdate(newProps: IReactHierarchyViewProps): void {
+    this.loadHierarchyView(newProps.listName);
   }
 
   private loadHierarchyView(listName: string): void {
@@ -42,11 +42,11 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
     // Mapping to be used when web part runs in SharePoint.
     this.HierarchyServiceInstance = serviceScope.consume(HierarchyService.serviceKey);
 
-    this.HierarchyServiceInstance.getHierarchyInfo(listName).then((hierarchyItems: any) => {
+    this.HierarchyServiceInstance.getHierarchyInfo(listName).then((hierarchyItems: ISPHierarchyItem[]) => {
       if (hierarchyItems.length > 0) {
         const hierarchyNodes: Array<HierarchyItem> = [];
         for (let count = 0; count < hierarchyItems.length; count++) {
-          hierarchyNodes.push(new HierarchyItem(hierarchyItems[count].Id, hierarchyItems[count].Title, hierarchyItems[count].Url, hierarchyItems[count].Parent ? hierarchyItems[count].Parent.Id : undefined));
+          hierarchyNodes.push(new HierarchyItem(hierarchyItems[count].Id, hierarchyItems[count].Title, hierarchyItems[count].Url!, hierarchyItems[count].Parent ? hierarchyItems[count].Parent.Id : undefined));
         }
 
         const arrayToTree: any = require('array-to-tree');
@@ -75,7 +75,6 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
         showErrorMessage: true
       })
     );
-
   }
 
   public render(): React.ReactElement<IReactHierarchyViewProps> {
