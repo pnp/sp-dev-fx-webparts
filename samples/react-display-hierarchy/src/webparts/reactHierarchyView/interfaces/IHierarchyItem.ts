@@ -1,4 +1,4 @@
-export interface IHierarchyItem {
+export interface ISPHierarchyItem {
     Title: string;
     Id: number;
     parent_id: number;
@@ -6,11 +6,12 @@ export interface IHierarchyItem {
     Parent: any;
 }
 
-export class Item {
-    private id: number;
-    private title: string;
-    private url: string;
-    private parent_id?: number;
+export class HierarchyItem {
+    id: number;
+    title: string;
+    url: string;
+    parent_id?: number;
+    children?: HierarchyItem[];
 
     constructor(id: number, title: string, url: string, parent_id?: number) {
         this.id = id;
