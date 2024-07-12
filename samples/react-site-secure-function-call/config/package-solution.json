@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-site-secure-function-call-smpl-client-side-solution",
+    "id": "4c840868-01ef-4d2a-9168-5b10524c0096",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-site-secure-function-call-smpl description"
+      },
+      "longDescription": {
+        "default": "react-site-secure-function-call-smpl description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-site-secure-function-call-smpl Feature",
+        "description": "The feature that activates elements of the react-site-secure-function-call-smpl solution.",
+        "id": "b95485a2-0f8a-4027-9091-383c9138841d",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "0a8dfbc9-0423-495b-a1e6-1055f0ca69c2",
+        "scope": "user_impersonation"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-site-secure-function-call-smpl.sppkg"
+  }
+}
