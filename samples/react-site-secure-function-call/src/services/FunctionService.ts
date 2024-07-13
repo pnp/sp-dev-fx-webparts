@@ -1,6 +1,7 @@
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
 import { AadHttpClientFactory, AadHttpClient, HttpClientResponse } from "@microsoft/sp-http";
-const config: any = require('./azFunct.json')
+
+const config = require('./azFunct.json');
 
 export default class FunctionService {
   private aadHttpClientFactory: AadHttpClientFactory;
@@ -15,13 +16,13 @@ export default class FunctionService {
     });
   }
 
-  public async setNewSiteDescreption(siteUrl: string, siteDescreption: string): Promise<any[]> {
+  public async setNewSiteDescreption(siteUrl: string, siteDescreption: string): Promise<boolean> {
     this.client = await this.aadHttpClientFactory.getClient(`${config.appIdUri}`);    
     const requestUrl = `${config.hostUrl}/api/SiteFunction?URL=${siteUrl}&Descreption=${siteDescreption}`;    
     return this.client
       .get(requestUrl, AadHttpClient.configurations.v1)
       .then((response: HttpClientResponse) => {
-        return response.json();
+        return response.ok;
       });
 
     // POST alternative

@@ -18,8 +18,7 @@ export const SampleSiteFunction: React.FC<ISampleSiteFunctionProps> = (props) =>
     setDescription(value);
   };
 
-  const assignPermissions = async () => {    
-    console.log('Action');
+  const assignPermissions = async (): Promise<void> => {    
     const graphService = new FunctionService(props.serviceScope);
 
     const resp = await graphService.setNewSiteDescreption(url, description);
@@ -30,12 +29,7 @@ export const SampleSiteFunction: React.FC<ISampleSiteFunctionProps> = (props) =>
     <section className={`${styles.sampleSiteFunction} ${props.hasTeamsContext ? styles.teams : ''}`}>
       <div className={styles.field}>          
         <h2>{strings.HeaderLabel}</h2>
-      </div>
-      {/* <div>
-        {
-          props.isAdminMode?<div className={styles.field}><SelectSite serviceScope={props.serviceScope} siteSelectedCallback={retrieveSiteID} /></div>:<div className={styles.field}><h3>Current site is used</h3></div>
-        }
-      </div> */}
+      </div>      
       <div className={styles.field}>
         <TextField
             label={strings.URLLabel}

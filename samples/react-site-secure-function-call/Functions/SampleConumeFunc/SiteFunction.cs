@@ -33,8 +33,7 @@ namespace SampleConsumeFunc
 
       var bearerToken = await _tokenValidationService
           .ValidateAuthorizationHeaderAsync(req);
-      _logger.LogInformation("Bootstrap token: " + bearerToken); // not nessesary
-
+      
       string siteUrl = req.Query["URL"];
       string siteDescreption = req.Query["Descreption"];
 
@@ -53,8 +52,8 @@ namespace SampleConsumeFunc
       //string siteUrl = body.URL;
       //string siteDescreption = body.Descreption;
 
-      bool siteDescreptionUpdated = await _graphClientService.UpdateSiteDescreption(bearerToken, siteUrl, siteDescreption);      
-      return new OkObjectResult("Welcome to Azure Functions!");
+      bool siteDescreptionUpdated = await _graphClientService.UpdateSiteDescreption(bearerToken, siteUrl, siteDescreption);
+      return siteDescreptionUpdated ? new OkObjectResult("") : new BadRequestResult();
     }
   }
 }
