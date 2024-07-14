@@ -31,7 +31,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "styled-components": "^6.0.0-rc.3",
-    "tinymce": "^7.0.0",
+    "tinymce": "^7.2.0",
     "tslib": "2.3.1"
   },
   "devDependencies": {
