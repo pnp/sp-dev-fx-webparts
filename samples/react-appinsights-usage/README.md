@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 5/26/2024 12:00:00 AM
----
-
 # Application Insights not only a Dev Tool
 
 ## Summary
@@ -61,7 +46,7 @@ This sample is optimally compatible with the following environment configuration
 ## Prerequisites
 
 Application Insight Service on Azure
-Add the connection stirng of this Service to the the variable ```AIConnectionString``` at ```src/EnvProps.ts```
+Add the connection string of this Service to the the variable ```AIConnectionString``` at ```src/EnvProps.ts```
 
 
 
@@ -70,10 +55,10 @@ Add the connection stirng of this Service to the the variable ```AIConnectionStr
 - Clone this repository
 - Ensure that you are at the solution folder
 - Create or use Existing Azure Application Insights
-- Update ```src/EnvProps.ts``` and set ```AIConnectionString``` 
+- Update `src/EnvProps.ts` and set `AIConnectionString`
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 
 ## Features
@@ -97,11 +82,12 @@ How is your application used by Users
 
 ![Sample WebPart Screen](assets/SampleRouterUI.png)
 
-Analyse in Application Insight
+Analyze in Application Insight
 
 ![UserFlow by Session](assets/SampleRouterUserFlow.png)
 
 Query in Application Insights Count PageViews
+
 ```
 pageViews 
 | where name contains "Page"
@@ -111,9 +97,11 @@ pageViews
 | summarize count()  by name
 | render barchart 
 ```
+
 ![Page visit count evaluation](assets/SampleRouterEvaluation.png)
 
-Query in Application Insights Avarage Page visit duration by PageName
+Query in Application Insights Average Page visit duration by PageName
+
 ```
 customMetrics 
 | where name contains "PageVisitTime"
@@ -124,6 +112,7 @@ customMetrics
 | summarize avg(value)  by tostring(customDimensions.PageName)
 | render barchart 
 ```
+
 ![Page visit duration evaluation](assets/SampleRouterDurationEvaluation.png)
 
 ## AB-Test WebPart
@@ -133,6 +122,7 @@ How users add new items?
 ![AB UI Screen](assets/ABTextUI.png)
 
 Query in Application Insights
+
 ```
 customEvents 
 | where name contains "AddItem"
@@ -142,6 +132,7 @@ customEvents
 | summarize  count()  by name
 | render barchart 
 ```
+
 ![AB Evaluation](assets/ABEvaluation.png)
 
 ## PnPJS Logger WebPart
