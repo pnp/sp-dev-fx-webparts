@@ -26,13 +26,13 @@
   "devDependencies": {
     "@types/react": "16.8.8",
     "@types/react-dom": "^17.0.11",
-    "@microsoft/sp-build-web": "1.18.0",
+    "@microsoft/sp-build-web": "1.20.1",
     "@microsoft/sp-module-interfaces": "1.13.1",
     "@microsoft/sp-tslint-rules": "1.13.1",
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
     "ajv": "~6.12.3",
-    "gulp": "4.0.2"
+    "gulp": "5.0.0"
   }
 }
