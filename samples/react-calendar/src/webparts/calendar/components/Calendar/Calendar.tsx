@@ -8,7 +8,7 @@ import * as strings from 'CalendarWebPartStrings';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 require('./calendar.css');
 import { CommunicationColors, FluentCustomizations, FluentTheme } from '@uifabric/fluent-theme';
-import Year from './Year';
+import Year from '../Year/Year';
 
 import { Calendar as MyCalendar, momentLocalizer } from 'react-big-calendar';
 
@@ -36,22 +36,23 @@ import {
   Spinner,
   SpinnerSize,
   MessageBar,
-  MessageBarType,
-
-
+  MessageBarType
 } from 'office-ui-fabric-react';
+import { IComboBoxOption, SelectableOptionMenuItemType } from '@fluentui/react';
 import { EnvironmentType } from '@microsoft/sp-core-library';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { DisplayMode } from '@microsoft/sp-core-library';
-import spservices from '../../../services/spservices';
+import spservices from '../../../../services/spservices';
 import { stringIsNullOrEmpty } from '@pnp/common';
-import { Event } from '../../../controls/Event/event';
-import { IPanelModelEnum } from '../../../controls/Event/IPanelModeEnum';
-import { IEventData } from './../../../services/IEventData';
-import { IUserPermissions } from './../../../services/IUserPermissions';
+import { Event } from '../../../../controls/Event/event';
+import { IPanelModelEnum } from '../../../../controls/Event/IPanelModeEnum';
+import { IEventData } from './../../../../services/IEventData';
+import { IUserPermissions } from './../../../../services/IUserPermissions';
+import Category from '../Category/Category';
+import { IOption } from '../../../../services/IOption';
 
 
 //const localizer = BigCalendar.momentLocalizer(moment);
@@ -64,11 +65,14 @@ const localizer = momentLocalizer(moment);
 export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
   private spService: spservices = null;
   private userListPermissions: IUserPermissions = undefined;
+
   public constructor(props) {
     super(props);
-
+    
     this.state = {
       showDialog: false,
+      categories: [],
+      selectedCategories: [],
       eventData: [],
       selectedEvent: undefined,
       isloading: true,
@@ -79,11 +83,31 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     this.onDismissPanel = this.onDismissPanel.bind(this);
     this.onSelectEvent = this.onSelectEvent.bind(this);
     this.onSelectSlot = this.onSelectSlot.bind(this);
+    this.onChangeCategories = this.onChangeCategories.bind(this);
     this.spService = new spservices(this.props.context);
     moment.locale(this.props.context.pageContext.cultureInfo.currentUICultureName);
-
   }
 
+  /**
+   * @private
+   * @param {*} selectedCatogries
+   * @memberof Calendar
+   */
+  private async onChangeCategories(selectedCategories: IComboBoxOption[]) {
+    try {
+      this.setState({
+        selectedCategories: selectedCategories
+      });
+      await this.loadEvents();
+    } catch (error) {
+      this.setState({
+        hasError: true,
+        errorMessage: error.message,
+        isloading: false,
+      });
+    }
+  }
+   
   private onDocumentCardClick(ev: React.SyntheticEvent<HTMLElement, Event>) {
     ev.preventDefault();
     ev.stopPropagation();
@@ -118,12 +142,20 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
    */
   private async loadEvents() {
     try {
-      // Teste Properties
       if (!this.props.list || !this.props.siteUrl || !this.props.eventStartDate.value || !this.props.eventEndDate.value) return;
 
       this.userListPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.list);
-      
-      const eventsData: IEventData[] = await this.spService.getEvents(escape(this.props.siteUrl), escape(this.props.list), this.props.eventStartDate.value, this.props.eventEndDate.value);
+
+      let eventsData: IEventData[] = [];
+      if (this.state.selectedCategories.length > 0) { 
+        eventsData = await this.spService.getEvents(
+          escape(this.props.siteUrl),
+          escape(this.props.list),
+          this.props.eventStartDate.value,
+          this.props.eventEndDate.value,
+          this.state.selectedCategories
+        );
+      }
 
       this.setState({ eventData: eventsData, hasError: false, errorMessage: "" });
     } catch (error) {
@@ -134,7 +166,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
    * @memberof Calendar
    */
   public async componentDidMount() {
-    this.setState({ isloading: true });
+    const categories: IOption[] = await this.spService.getChoiceFieldOptions(this.props.siteUrl, this.props.list, 'Category');
+
+    this.setState({ isloading: true, categories: categories, selectedCategories: categories});
     await this.loadEvents();
     this.setState({ isloading: false });
   }
@@ -296,7 +330,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     };
   }
 
-
   /**
     *
     * @param {*} date
@@ -342,6 +375,11 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 <div>
                   {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
                     <div className={styles.container}>
+                      <Category 
+                        catogries={this.state.categories}
+                        selectedCategories={this.state.selectedCategories}
+                        onChangeCategories={this.onChangeCategories}
+                      ></Category>
                       <MyCalendar
                         dayPropGetter={this.dayPropGetter}
                         localizer={localizer}
