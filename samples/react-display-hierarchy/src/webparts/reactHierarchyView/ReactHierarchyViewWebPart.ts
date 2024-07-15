@@ -3,29 +3,17 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
-
 import * as strings from 'ReactHierarchyViewWebPartStrings';
 import ReactHierarchyView from './components/ReactHierarchyView';
 import { IReactHierarchyViewProps } from './components/IReactHierarchyViewProps';
-import {
-  Environment,
-  EnvironmentType,
-  ServiceScope
-} from '@microsoft/sp-core-library';
-import { sp } from "@pnp/sp/presets/all";
 
 export interface IReactHierarchyViewWebPartProps {
   listName: string;
 }
 
 export default class ReactHierarchyViewWebPart extends BaseClientSideWebPart<IReactHierarchyViewWebPartProps> {
-
   public async onInit(): Promise<void> {
-    return super.onInit().then(_ => {
-      sp.setup({
-        spfxContext: this.context
-      });
-    });
+    await super.onInit();
   }
 
   public render(): void {

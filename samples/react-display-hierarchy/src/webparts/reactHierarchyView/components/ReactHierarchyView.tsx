@@ -1,16 +1,12 @@
 import * as React from 'react';
 import styles from './ReactHierarchyView.module.scss';
 import { IReactHierarchyViewProps } from './IReactHierarchyViewProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { IHierarchyService } from '../interfaces';
-import { IHierarchyItem, Item } from '../interfaces/IHierarchyItem';
+import { HierarchyItem, ISPHierarchyItem } from '../interfaces/IHierarchyItem';
 import OrgChart from 'react-orgchart';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-
+import { MessageBar, MessageBarType, Spinner } from '@fluentui/react';
 import { HierarchyService } from '../services';
-import { MockHierarchyService } from '../mocks';
-import { ServiceScope, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { ServiceScope } from '@microsoft/sp-core-library';
 
 export interface IReactHierarchyState {
   hierarchyItems: any;
@@ -32,74 +28,53 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
     };
   }
 
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     this.loadHierarchyView(this.props.listName);
   }
 
-  public componentWillReceiveProps(nextProps: IReactHierarchyViewProps) {
-    this.loadHierarchyView(nextProps.listName);
+  public componentDidUpdate(newProps: IReactHierarchyViewProps): void {
+    this.loadHierarchyView(newProps.listName);
   }
 
   private loadHierarchyView(listName: string): void {
-    let serviceScope: ServiceScope = this.props.serviceScope;
+    const serviceScope: ServiceScope = this.props.serviceScope;
 
-    // Based on the type of environment, return the correct instance of the IHierarchyServiceInstance interface
-    if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
-      // Mapping to be used when webpart runs in SharePoint.
-      this.HierarchyServiceInstance = serviceScope.consume(HierarchyService.serviceKey);
-    }
-    else {
-      // This means webpart is running in the local workbench or from a unit test.
-      // So we will need a non default implementation of the IHierarchyServiceInstance i.e. MockHierarchyService
-      this.HierarchyServiceInstance = serviceScope.consume(MockHierarchyService.serviceKey);
-    }
+    // Mapping to be used when web part runs in SharePoint.
+    this.HierarchyServiceInstance = serviceScope.consume(HierarchyService.serviceKey);
 
-    this.HierarchyServiceInstance.getHierarchyInfo(listName).then((hierarchyItems: any) => {
-      if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
-        if (hierarchyItems.length > 0) {
-          let hierarchyNodes: Array<Item> = [];
-          var count: number;
-
-          for (count = 0; count < hierarchyItems.length; count++) {
-            hierarchyNodes.push(new Item(hierarchyItems[count].Id, hierarchyItems[count].Title, hierarchyItems[count].Url, hierarchyItems[count].Parent ? hierarchyItems[count].Parent.Id : undefined));
-          }
-
-          var arrayToTree: any = require('array-to-tree');
-          var orgChartHierarchyNodes: any = arrayToTree(hierarchyNodes);
-
-          var output: any = JSON.stringify(orgChartHierarchyNodes[0]);
-
-          this.setState({
-            hierarchyItems: JSON.parse(output),
-            isLoading: false,
-            showErrorMessage: false
-          });
+    this.HierarchyServiceInstance.getHierarchyInfo(listName).then((hierarchyItems: ISPHierarchyItem[]) => {
+      if (hierarchyItems.length > 0) {
+        const hierarchyNodes: Array<HierarchyItem> = [];
+        for (let count = 0; count < hierarchyItems.length; count++) {
+          hierarchyNodes.push(new HierarchyItem(hierarchyItems[count].Id, hierarchyItems[count].Title, hierarchyItems[count].Url!, hierarchyItems[count].Parent ? hierarchyItems[count].Parent.Id : undefined));
         }
-        else {
-          this.setState({
-            hierarchyItems: [],
-            isLoading: false,
-            showErrorMessage: true,
-            errorMessage: "No records to be displayed"
-          });
-        }
-      }
-      else {
+
+        const arrayToTree: any = require('array-to-tree');
+        const orgChartHierarchyNodes: any = arrayToTree(hierarchyNodes);
+        const output: any = JSON.stringify(orgChartHierarchyNodes[0]);
+
         this.setState({
-          hierarchyItems: JSON.parse(hierarchyItems),
+          hierarchyItems: JSON.parse(output),
           isLoading: false,
           showErrorMessage: false
         });
       }
-    })
-      .catch((error) =>
+      else {
         this.setState({
           hierarchyItems: [],
-          errorMessage: "Please verify web part configuration. Error details: " + error.message,
           isLoading: false,
-          showErrorMessage: true
-        })
-      );
+          showErrorMessage: true,
+          errorMessage: "No records to be displayed"
+        });
+      }
+    }).catch((error) =>
+      this.setState({
+        hierarchyItems: [],
+        errorMessage: "Please verify web part configuration. Error details: " + error.message,
+        isLoading: false,
+        showErrorMessage: true
+      })
+    );
   }
 
   public render(): React.ReactElement<IReactHierarchyViewProps> {
@@ -123,7 +98,7 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
     );
   }
 
-  private MyNodeComponent = ({ node }) => {
+  private MyNodeComponent = ({ node }: { node: any }): React.ReactElement => {
     if (node.url) {
       return (
         <div className="initechNode">
