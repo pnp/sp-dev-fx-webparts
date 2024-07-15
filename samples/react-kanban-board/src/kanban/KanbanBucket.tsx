@@ -3,12 +3,10 @@ import styles from './KanbanBucket.module.scss';
 import { IKanbanBucket } from './IKanbanBucket';
 import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
-import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { ActionButton } from 'office-ui-fabric-react';
+
 import KanbanTask from './KanbanTask';
-import classNames from 'classnames';
 import * as strings from 'KanbanBoardStrings';
+import { ActionButton, ProgressIndicator } from '@fluentui/react';
 
 export interface IKanbanBucketProps extends IKanbanBucket {
 
@@ -19,9 +17,9 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     toggleCompleted?: (taskId: string) => void;
     addTask?: (bucket: string) => void;
 
-    onDragStart: (event, taskId: string, bucket: string) => void;
+    onDragStart: (event: any, taskId: string, bucket: string) => void;
 
-    onDragEnd: (event, taskId: string, bucket: string) => void;
+    onDragEnd: (event: any, taskId: string, bucket: string) => void;
 
 
 
@@ -61,15 +59,15 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 key={bucket}>
                 <div className={styles.headline}>
                     <div className={styles.headlineText}>{bucketheadline}</div>
-                    {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}></div>}
+                    {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}/>}
                     {showPercentageHeadline ? 
                     (<ProgressIndicator percentComplete={percentageComplete / 100} />):
-                    (hasOneProcessIndicator?(<div className={styles.processIndicatorHeight}></div>):(<div></div>))}
+                    (hasOneProcessIndicator?(<div className={styles.processIndicatorHeight} />):(<div />))}
                 </div>
                 {allowAddTask && (<ActionButton
                     iconProps={{ iconName: 'Add' }}
                     allowDisabledFocus={true}
-                    onClick={() => this.props.addTask(bucket)}
+                    onClick={() => this.props.addTask && this.props.addTask(bucket)}
                 >
                     {strings.AddTask}
                 </ActionButton>)}
@@ -87,7 +85,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                                     {...merge}
                                     toggleCompleted={this.props.toggleCompleted}
                                     isMoving={isMoving}
-                                    openDetails={this.props.openDetails}
+                                    openDetails={(taskId)=> this.props.openDetails&&this.props.openDetails(taskId)}
                                     onDragStart={(event) => this.props.onDragStart(event, t.taskId, t.bucket)}
                                     onDragEnd={(event) => this.props.onDragEnd(event, t.taskId, t.bucket)}
                                 /></div>

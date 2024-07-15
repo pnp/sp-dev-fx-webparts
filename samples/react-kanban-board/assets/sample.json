@@ -6,10 +6,10 @@
     "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
     "longDescription": [
-      "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks."
+      "This solution contains an SPFx web part which shows a Kanban board. The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks."
     ],
     "creationDateTime": "2020-07-02",
-    "updateDateTime": "2020-07-02",
+    "updateDateTime": "2024-05-26",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13.0"
+        "value": "1.19.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -36,7 +36,25 @@
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanofficeUI.gif",
-        "alt": "Kanban Board Web part"
+        "alt": "Kanban Board Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg1.png",
+        "alt": "Kanban Board Web part configuration of a bucket"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg2.png",
+        "alt": "Kanban Board Web part item View"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg3.png",
+        "alt": "Kanban Board Web part task list selection and status column order as bucket"
       }
     ],
     "authors": [
@@ -56,7 +74,7 @@
       },
       {
         "gitHubAccount": "petkir",
-        "company": "Cubido Business Solutions GmbH",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
