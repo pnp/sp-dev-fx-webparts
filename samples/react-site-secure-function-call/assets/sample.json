@@ -2,11 +2,11 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call",
         "source": "pnp",
-        "title": "",
-        "shortDescription": "This combined SharpPoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Famework to any kind of third party API or Microsoft Graph.",
+        "title": "Site Secure Function Call",
+        "shortDescription": "This combined SharePoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Framework to any kind of third party API or Microsoft Graph.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
         "longDescription": [
-            "This combined SharpPoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Famework to any kind of third party API, in fact here Microsoft Graph. It shows that AadHttpClient should be preferred over MSGraphClient."
+            "This combined SharePoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Framework to any kind of third party API, in fact here Microsoft Graph. It shows that AadHttpClient should be preferred over MSGraphClient."
         ],
         "creationDateTime": "2024-07-12",
         "updateDateTime": "2024-07-12",
@@ -20,7 +20,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.19.0"
+                "value": "1.18.2"
             }
         ],
         "thumbnails": [
