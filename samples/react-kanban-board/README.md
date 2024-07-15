@@ -1,19 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 7/17/2019 12:00:00 AM
----
-
 # Kanban Board
 
 ## Summary
