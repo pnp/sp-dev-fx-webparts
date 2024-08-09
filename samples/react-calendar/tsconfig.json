@@ -14,13 +14,14 @@
     "inlineSources": false,
     "strictNullChecks": false,
     "noUnusedLocals": false,
-    "allowSyntheticDefaultImports":true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "@types/jest"
     ],
     "lib": [
       "es5",

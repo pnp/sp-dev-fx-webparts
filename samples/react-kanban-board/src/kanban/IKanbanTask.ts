@@ -1,4 +1,4 @@
-import { IPersonaProps } from "office-ui-fabric-react/lib/Persona";
+import { IPersonaProps } from "@fluentui/react";
 
 export interface IKanbanTask {
     taskId: string;

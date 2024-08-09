@@ -102,8 +102,7 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
         );
     }
 
-    private updateBucket(index: number, value: IKanbanBucket) {
-        debugger;
+    private updateBucket(index: number, value: IKanbanBucket):void {
         const cstate = cloneDeep(this.state);
         cstate.buckets[index] = clone(value);
         this.setState(cstate);
@@ -120,8 +119,8 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
     }
 
     private _moved(taskId: string, targetBucket: IKanbanBucket): void {
-        const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
-        let newArray = [...this.state.tasks];
+        const elementsIndex = findIndex(this.state.tasks, element => element.taskId === taskId);
+        const newArray = [...this.state.tasks];
         newArray[elementsIndex].bucket = targetBucket.bucket;
         this.setState({ tasks: newArray });
 

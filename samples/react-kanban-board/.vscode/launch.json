@@ -1,15 +1,11 @@
 {
-  /**
-   * Install Chrome Debugger Extension for Visual Studio Code to debug your components with the
-   * Chrome browser: https://aka.ms/spfx-debugger-extensions
-   */
   "version": "0.2.0",
   "configurations": [
     {
       "name": "Hosted workbench",
-      "type": "chrome",
+      "type": "msedge",
       "request": "launch",
-      "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
+      "url": "https://{tenantDomain}/_layouts/workbench.aspx",
       "webRoot": "${workspaceRoot}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
