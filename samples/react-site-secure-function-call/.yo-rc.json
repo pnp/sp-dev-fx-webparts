@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "react-site-secure-function-call-smpl",
+    "libraryId": "4c840868-01ef-4d2a-9168-5b10524c0096",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-site-secure-function-call-smpl",
+    "solutionShortDescription": "react-site-secure-function-call-smpl description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
