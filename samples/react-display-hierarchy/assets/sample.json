@@ -9,7 +9,7 @@
       "At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list."
     ],
     "creationDateTime": "2020-11-21",
-    "updateDateTime": "2020-11-21",
+    "updateDateTime": "2024-06-28",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.18.2"
       }
     ],
     "thumbnails": [
