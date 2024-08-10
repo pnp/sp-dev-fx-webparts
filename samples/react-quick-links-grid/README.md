@@ -41,7 +41,7 @@ This project is a SharePoint Framework (SPFx) WebPart that displays a set of qui
 1. Clone the repository:
    git clone <repository-url>
 2. Navigate to the project directory:
-   cd quick-links-webpart
+   cd react-quick-links-grid
 3. Install the dependencies:
    npm install
 
@@ -67,9 +67,9 @@ Open the SharePoint Workbench to add the WebPart and configure the property pane
 
 The project includes the following key files:
 
-QuickLinksWebPart.ts: Defines the main WebPart class and handles rendering and property pane configuration.
-QuickLinks.tsx: Defines the React component that fetches and displays the quick links.
-QuickLinksWebPart.module.scss: Contains the CSS styles for the QuickLinks component.
+PnPQuickLinksGridWebPart.ts: Defines the main WebPart class and handles rendering and property pane configuration.
+QuickLinksGrid.tsx: Defines the React component that fetches and displays the quick links.
+PnPQuickLinksGridWebPart.module.scss: Contains the CSS styles for the QuickLinks component.
 
 ## Building the Project
 
@@ -83,13 +83,13 @@ gulp build
 
 | Solution    | Author(s)               |
 | ----------- | ----------------------- |
-| folder name | Venkadesh Sundaramurthy |
+| react-quick-links-grid | Venkadesh Sundaramurthy |
 
 ## Version history
 
 | Version | Date            | Comments        |
 | ------- | --------------- | --------------- |
-| 1.0     | August 05, 2024 | Initial release |
+| 1.0     | August 11, 2024 | Initial release |
 
 ## Disclaimer
 
