@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-emoji-ratings",
         "source": "pnp",
-        "title": "Emoji Ratings",
+        "title": "Emoji Ratings Web Part",
         "shortDescription": "Take emoji-based reactions or feedback for a given news/article/post",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-emoji-ratings",
         "longDescription": [

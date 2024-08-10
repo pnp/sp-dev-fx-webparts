@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-videolibrary",
     "source": "pnp",
-    "title": "Video Library",
+    "title": "Video Library Web Part",
     "shortDescription": "A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-videolibrary",
     "longDescription": [

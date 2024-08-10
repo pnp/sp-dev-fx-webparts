@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation",
         "source": "pnp",
-        "title": "SharePoint document generator - Offer Creation (SPFx)",
+        "title": "SharePoint document generator - Offer Creation Web Part",
         "shortDescription": "This sample is a Teams personal Tab to act as a Microsoft 365 across application (Teams, Outlook, Office) to generate docuemnts.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
         "longDescription": [

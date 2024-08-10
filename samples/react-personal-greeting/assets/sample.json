@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-personal-greeting",
     "source": "pnp",
-    "title": "Personal Greeting",
+    "title": "Personal Greeting Web Part",
     "shortDescription": "The web part pulls in the current user\u0027s name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-greeting",
     "longDescription": [

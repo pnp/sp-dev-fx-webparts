@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import utils from "../shared/utils";
 import * as strings from 'propertyBagGlobalNavStrings';
 import PropertyBagGlobalNav from './components/PropertyBagGlobalNav';
@@ -19,12 +16,13 @@ export default class PropertyBagGlobalNavWebPart extends BaseClientSideWebPart<I
       PropertyBagGlobalNav,
       {
         description: this.properties.description,
-        managedProperties: utils.parseMultilineTextToArray( this.properties.managedProperties),
+        managedProperties: utils.parseMultilineTextToArray(this.properties.managedProperties),
         siteTemplatesToInclude: utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude),
         filters: utils.parseMultilineTextToArray(this.properties.filters),
       }
     );
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
 

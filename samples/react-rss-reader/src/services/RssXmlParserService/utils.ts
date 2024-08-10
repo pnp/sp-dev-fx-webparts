@@ -3,19 +3,17 @@
 import { Builder } from 'xml2js';
 
 export class Utils {
-  public static async init() {
-  }
 
-  public static stripHtml(str) {
+  public static stripHtml(str: string): string {
     return str.replace(/<(?:.|\n)*?>/gm, '');
   }
 
-  public static getSnippet(str) {
+  public static getSnippet(str: string): string {
     //return entities.decode(this.stripHtml(str)).trim();
     return this.stripHtml(str).trim();
   }
 
-  public static getLink (links, rel, fallbackIdx) {
+  public static getLink (links: any, rel: string, fallbackIdx: number): string {
     if (!links) return;
     for (let i = 0; i < links.length; ++i) {
       if (links[i].$.rel === rel) {
@@ -28,7 +26,7 @@ export class Utils {
     }
   }
 
-  public static copyFromXML(xml, dest, fields) {
+  public static copyFromXML(xml: any, dest: any, fields: any): void {
     fields.forEach((f) => {
       let from = f;
       let to = f;
@@ -47,12 +45,12 @@ export class Utils {
     });
   }
 
-  public static getContent(content) {
+  public static getContent(content: any): any {
     if (typeof content._ === 'string') {
       return content._;
     }
     else if (typeof content === 'object') {
-      let builder = new Builder({headless: true, explicitRoot: true, rootName: 'div', renderOpts: {pretty: false}});
+      const builder = new Builder({headless: true, explicitRoot: true, rootName: 'div', renderOpts: {pretty: false}});
       return builder.buildObject(content);
     }
     else {

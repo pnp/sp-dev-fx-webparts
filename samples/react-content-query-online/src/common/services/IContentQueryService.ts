@@ -1,4 +1,4 @@
-import { IDropdownOption, IPersonaProps, ITag } from 'office-ui-fabric-react';
+import { IDropdownOption, IPersonaProps, ITag } from '@fluentui/react';
 import { IQueryFilterField }                    from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilterField';
 import { IChecklistItem }                       from '../../controls/PropertyPaneAsyncChecklist/components/AsyncChecklist/IChecklistItem';
 import { IContentQueryTemplateContext }         from '../../webparts/contentQuery/components/IContentQueryTemplateContext';

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-doccard-faq",
     "source": "pnp",
-    "title": "Document Card FAQ",
+    "title": "Document Card FAQ Web Part",
     "shortDescription": "React FAQ Document Card Web Part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-doccard-faq",
     "longDescription": [

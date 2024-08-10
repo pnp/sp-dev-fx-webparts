@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-holidays-calendar",
         "source": "pnp",
-        "title": "Holiday calendar",
+        "title": "Holiday Calendar Web Part",
         "shortDescription": "Holiday calendar solution contains SPFx web part and Adaptive card extension for Viva connections.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-holidays-calendar",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-holidays-calendar",
@@ -10,7 +10,7 @@
             "Holiday calendar solution contains SPFx web part and Adaptive card extension for Viva connections."
         ],
         "creationDateTime": "2023-01-09",
-        "updateDateTime": "2023-01-09",
+        "updateDateTime": "2023-11-30",
         "products": [
             "SharePoint"
         ],
@@ -21,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.1"
+                "value": "1.18.2"
             }
         ],
         "thumbnails": [

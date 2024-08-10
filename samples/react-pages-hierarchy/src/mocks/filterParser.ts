@@ -39,13 +39,14 @@ export class FilterParser {
       substringof: /^substringof[(](.*),(.*)[)]/
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public parse(filterString: string): any {
       // LoggingService.getLogger(this.constructor.name).info(`parse - filter=[${filterString}]`);
 
       if (!filterString || filterString === '') {
           return null;
       }
-      let filter = filterString.trim();
+      const filter = filterString.trim();
       let obj = {};
       if (filter.length > 0) {
           obj = this.parseFragment(filter);
@@ -53,18 +54,19 @@ export class FilterParser {
       return obj;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private parseFragment(filter): any {
       // LoggingService.getLogger(this.constructor.name).info(`parseFragment - filter=[${filter}]`);
 
       let found: boolean = false;
       let obj: Predicate = new Predicate();
-      // tslint:disable-next-line:forin
-      for (let key in this.REGEX) {
-          let regex = this.REGEX[key];
+      // eslint-disable-next-line guard-for-in
+      for (const key in this.REGEX) {
+          const regex = this.REGEX[key];
           if (found) {
               break;
           }
-          let match = filter.match(regex);
+          const match = filter.match(regex);
           if (match) {
               switch (regex) {
                   case this.REGEX.parenthesis:
@@ -84,15 +86,16 @@ export class FilterParser {
                       break;
                   case this.REGEX.lookupop:
                   case this.REGEX.op:
-                      let property = match[1].split('/');
+                      // eslint-disable-next-line no-case-declarations
+                      const property = match[1].split('/');
                       obj = {
                           property: property,
                           operator: match[2],
                           value: (match[3].indexOf('\'') === -1) ? +match[3] : match[3]
                       };
                       if (typeof obj.value === 'string') {
-                          let quoted = obj.value.match(/^'(.*)'$/);
-                          let m = obj.value.match(/^datetimeoffset'(.*)'$/);
+                          const quoted = obj.value.match(/^'(.*)'$/);
+                          const m = obj.value.match(/^datetimeoffset'(.*)'$/);
                           if (quoted && quoted.length > 1) {
                               obj.value = quoted[1];
                           } else if (m && m.length > 1) {
@@ -124,7 +127,7 @@ export class FilterParser {
   }
 
   private buildLike(match, key): Predicate {
-      let right = (key === 'startsWith') ? match[2] + '*' : (key === 'endsWith') ? '*' + match[2] : '*' + match[2] + '*';
+      const right = (key === 'startsWith') ? match[2] + '*' : (key === 'endsWith') ? '*' + match[2] : '*' + match[2] + '*';
       return {
           property: match[1],
           operator: FilterParser.Operators.LIKE,

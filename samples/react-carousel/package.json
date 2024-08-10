@@ -59,7 +59,7 @@
     "jest": "^23.6.0",
     "jest-junit": "^6.3.0",
     "typescript": "~3.3.x",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "webpack-bundle-analyzer": "^4.10.2"
   },
   "jest-junit": {
     "output": "temp/test/junit/junit.xml",

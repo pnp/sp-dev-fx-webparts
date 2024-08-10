@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion",
     "source": "pnp",
-    "title": "Documents Links Accordion",
+    "title": "Documents Links Accordion Web Part",
     "shortDescription": "This web part allows user create a accordion with documents links grouped by any column of document library.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-links-accordion",
     "longDescription": [

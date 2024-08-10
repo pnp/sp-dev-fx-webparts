@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-realtime-documents",
     "source": "pnp",
-    "title": "List subscription",
+    "title": "List Subscription Web Part",
     "shortDescription": "Sample web part illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to documents in a SharePoint Document Library and refresh the displayed data.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-documents",
     "longDescription": [

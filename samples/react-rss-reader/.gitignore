@@ -9,9 +9,10 @@ node_modules
 # Build generated files
 dist
 lib
-solution
 temp
-*.sppkg
+.heft
+release
+package-lock.json
 
 # Coverage directory used by tools like istanbul
 coverage

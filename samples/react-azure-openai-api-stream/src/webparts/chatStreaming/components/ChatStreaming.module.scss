@@ -1,0 +1,223 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.chatStreaming {
+  overflow: hidden;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  min-height: 100%;
+  gap: 20px;
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .messagesContainer {
+    min-height: 200px;
+    height: 100%;
+    position: relative;
+  }
+}
+
+.messagesList {
+  background-color: "[theme:neutralLighter, default: #f3f2f1]";
+  min-height: 400px;
+  border-radius: 8px;
+
+  .scrollablePane {
+    
+    :global {
+      .ms-ScrollablePane--contentContainer {
+        padding: 8px;
+      }
+    }
+
+  }
+}
+
+.userQuestion {
+  padding-bottom: 8px;
+  gap: 12px;
+
+  .avatar {
+    --person-avatar-size: 32px;
+    margin-top: 8px;
+  }
+
+  .beak {
+    right: -15px;
+    border-left: 15px solid "[theme:white, default: #ffffff]";
+    margin-right: 5px;
+  }
+}
+
+.assistantResponse {
+  padding-bottom: 8px;
+  gap: 12px;
+
+  .avatar {
+    margin-top: 8px;
+    background-color: "[theme:white, default: #ffffff]";
+    color: "[theme:neutralPrimary, default: #323130]";
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .message {
+    margin: 14px 0;
+  }
+
+  .beak {
+    left: -15px;
+    border-right: 15px solid "[theme:white, default: #ffffff]";
+    margin-left: 5px;
+  }
+}
+
+.messageBox {
+  position: relative;
+  border-radius: 8px;
+  padding: 0 12px;
+  background-color: "[theme:white, default: #ffffff]";
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 85%;
+  min-width: 350px;
+
+  .message {
+    min-width: 100px;
+  }
+
+  .beak {
+    content: "";
+    position: absolute;
+    top: 9px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+}
+
+.userMessage {
+  gap: 5px;
+}
+
+.markdownContent {
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    margin: 14px 0;
+    width: max-content;
+    max-width: fit-content;
+    overflow: auto;
+  }
+  
+  tr {
+    background-color: "[theme: white, default: #ffffff]";
+    border-top: 1px solid "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+  }
+  
+  tr:nth-child(2n) {
+    background-color: "[theme: neutralLight, default: #edebe9]";
+  }
+  
+  td,
+  th {
+    padding: 6px 13px;
+    border: 1px solid "[theme: neutralTertiaryAlt, default: #c8c6c4]";
+  }
+  
+  th {
+    font-weight: 600;
+  }
+  
+  table img {
+    background-color: transparent;
+  }
+
+  pre {
+    background-color: "[theme: neutralLight, default: #edebe9]";
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+
+$dotSize: 8px;
+$jumpHeight: 14px;
+
+.thinkingIndicator {
+    padding-top: 6px;
+
+    .allDots {
+        margin-top: $jumpHeight;
+        display: flex;
+        gap: calc($dotSize / 2);
+
+        .dot {
+            position: relative;
+            width: $dotSize;
+            height: $dotSize;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bouncedelay 2.0s infinite cubic-bezier(.62, .28, .23, .99) both;
+        }
+
+        .dot1 {
+            animation-delay: -.16s;
+        }
+
+        .dot2 {
+            animation-delay: -.08s;
+        }
+
+        .dot3 {
+            color: inherit;
+        }
+    }
+}
+
+
+@keyframes bouncedelay {
+    0% {
+        bottom: 0;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+
+    16.66% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themeDark, default: #005a9e]";
+    }
+
+    33.33% {
+        bottom: 0px;
+        background-color: "[theme: themeDark, default: #005a9e]";
+    }
+
+    50% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themeLight, default: #c7e0f4]";
+    }
+
+    66.66% {
+        bottom: 0px;
+        background-color: "[theme: themeLight, default: #c7e0f4]";
+    }
+
+    83.33% {
+        bottom: $jumpHeight;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+
+    100% {
+        bottom: 0;
+        background-color: "[theme: themePrimary, default: #0078d4]";
+    }
+}

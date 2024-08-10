@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores",
     "source": "pnp",
-    "title": "Using multiple stores with React and Mobx",
+    "title": "Using multiple stores with React and Mobx Web Part",
     "shortDescription": "A sample web part that uses the Mobx library with multiple stores to keep track of the applications state.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx-multiple-stores",
     "longDescription": [

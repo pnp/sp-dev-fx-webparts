@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-propertycontrols-svg",
     "source": "pnp",
-    "title": "JS Property Controls SVG",
+    "title": "JS Property Controls SVG Web Part",
     "shortDescription": "An SPFx web part that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The web part utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-propertycontrols-svg",
     "longDescription": [

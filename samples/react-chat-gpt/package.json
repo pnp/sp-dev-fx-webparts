@@ -19,7 +19,7 @@
     "@microsoft/sp-webpart-base": "1.16.1",
     "interweave": "^13.0.0",
     "office-ui-fabric-react": "^7.199.1",
-    "openai": "^3.1.0",
+    "openai": "^4.17.4",
     "react": "^17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

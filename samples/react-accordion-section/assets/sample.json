@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-accordion-section",
     "source": "pnp",
-    "title": "Accordion Section FAQ Builder",
+    "title": "Accordion Section FAQ Builder Web Part",
     "shortDescription": "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-section",
     "longDescription": [

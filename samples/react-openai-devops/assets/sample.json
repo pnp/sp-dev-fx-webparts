@@ -2,7 +2,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-openai-devops",
       "source": "pnp",
-      "title": "OpenAI Azure DevOps Bot",
+      "title": "OpenAI Azure DevOps Bot Web Part",
       "shortDescription": "The SPFx web part is a SharePoint Framework web part that allows users to view recent tasks, bugs, and commits assigned to them from a specific project in Azure DevOps",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-devops",
       "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-devops",

@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-graph-groupviewer",
         "source": "pnp",
-        "title": "Graph Group Viewer",
+        "title": "Graph Group Viewer Web Part",
         "shortDescription": "Search for groups in your tenant and allow you to view the details of the selected group as well as view a list of group members and export the list of members to a CSV file",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-groupviewer",
         "longDescription": [

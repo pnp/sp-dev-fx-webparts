@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "personal-anniversary-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalAnniversary/PersonalAnniversaryWebPart.js",
+          "manifest": "./src/webparts/personalAnniversary/PersonalAnniversaryWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PersonalAnniversaryWebPartStrings": "lib/webparts/personalAnniversary/loc/{locale}.js"
+  }
+}

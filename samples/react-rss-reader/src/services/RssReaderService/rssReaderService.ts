@@ -18,9 +18,6 @@ export interface IRssReaderService {
 export class RssReaderService implements IRssReaderService {
   private static storageKeyPrefix: string = 'rssFeed';
 
-	constructor() {
-  }
-
   /*
   given a feedRequest, determine the specific local storage keyname
   */
@@ -44,15 +41,15 @@ export class RssReaderService implements IRssReaderService {
   return a resolved IRssReaderResponse or reject message
   */
   public async getFeed(feedRequest: IRssReaderRequest): Promise<IRssReaderResponse> {
-    var p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
+    const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
-      let localStorageService: ILocalStorageService = new LocalStorageService();
+      const localStorageService: ILocalStorageService = new LocalStorageService();
 
       //attempt to get local storage if needed
       if (feedRequest.useLocalStorage && feedRequest.useLocalStorageTimeout >= 0) {
 
         //set up the local storage key to search in local storage for valid stored results
-        let localStorageKey:ILocalStorageKey = {
+        const localStorageKey:ILocalStorageKey = {
           keyName: RssReaderService.getFeedStorageKeyName(feedRequest),
           keyPrefix: RssReaderService.getFeedStorageKeyPrefix(feedRequest),
           timeOutInMinutes: feedRequest.useLocalStorageTimeout
@@ -61,7 +58,7 @@ export class RssReaderService implements IRssReaderService {
         try {
 
           //try and get cached results from local storage
-          let cachedResults: IRssReaderResponse = await localStorageService.get(localStorageKey);
+          const cachedResults: IRssReaderResponse = await localStorageService.get(localStorageKey);
 
           if (cachedResults) {
 
@@ -92,16 +89,16 @@ export class RssReaderService implements IRssReaderService {
 
       try {
         //set up the base rssHttpClient object
-        var rssHttpClient: IRssHttpClientComponentService;
+        let rssHttpClient: IRssHttpClientComponentService;
 
         //set up the http client service for each particular feed service
-        if (feedRequest.feedService == FeedServiceOption.Default) {
+        if (feedRequest.feedService === FeedServiceOption.Default) {
           rssHttpClient = new RssHttpClientDirectService();
         }
-        else if (feedRequest.feedService == FeedServiceOption.Feed2Json) {
+        else if (feedRequest.feedService === FeedServiceOption.Feed2Json) {
           rssHttpClient = new RssHttpClientFeed2JsonService();
         }
-        else if (feedRequest.feedService == FeedServiceOption.Rss2Json) {
+        else if (feedRequest.feedService === FeedServiceOption.Rss2Json) {
           rssHttpClient = new RssHttpClientRss2JsonService();
         }
 
@@ -126,13 +123,13 @@ export class RssReaderService implements IRssReaderService {
 
         if (feedRequest.useLocalStorage && feedRequest.useLocalStorageTimeout >= 0) {
 
-          let localStorageKeyValue: ILocalStorageKey = {
+          const localStorageKeyValue: ILocalStorageKey = {
             keyName: RssReaderService.getFeedStorageKeyName(feedRequest),
             keyPrefix: RssReaderService.getFeedStorageKeyPrefix(feedRequest),
             keyValue: response
           } as ILocalStorageKey;
 
-          let storedResult: any = await localStorageService.set(localStorageKeyValue);
+          const storedResult: any = await localStorageService.set(localStorageKeyValue);
 
         }
 

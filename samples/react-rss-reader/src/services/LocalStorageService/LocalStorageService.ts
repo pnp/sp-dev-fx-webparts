@@ -1,4 +1,8 @@
-import { Logger, LogLevel, ConsoleListener } from          '@pnp/logging';
+import {
+  Logger,
+  ConsoleListener,
+  LogLevel
+} from "@pnp/logging";
 
 import {
   ILocalStorageService,
@@ -11,10 +15,7 @@ import {Md5} from                                          'ts-md5/dist/md5';
 class LocalStorageService implements ILocalStorageService {
     public constructor() {
         // Setup the Logger
-        const consoleListener = new ConsoleListener();
-        Logger.subscribe(consoleListener);
-
-
+        Logger.subscribe(ConsoleListener());
     }
 
     /**
@@ -24,15 +25,15 @@ class LocalStorageService implements ILocalStorageService {
      */
     public async get(keyToken: ILocalStorageKey): Promise<any> {
 
-      var p = new Promise<any>(async (resolve, reject) => {
+      const p = new Promise<any>((resolve, reject): void => {
         try {
 
-          var returnValue: any;
+          let returnValue: any;
 
           //get the hash of the local storage token based on value
           //var keyHash: string = md5(keyToken.keyName);
           //var keyHash: string = ObjectHash.MD5(keyToken.keyName);
-          var keyHash: string | Int32Array = Md5.hashStr(JSON.stringify(keyToken.keyName));
+          const keyHash: string | Int32Array = Md5.hashStr(JSON.stringify(keyToken.keyName));
           console.log("LS get: keyhash - " + keyHash);
 
 
@@ -103,13 +104,13 @@ class LocalStorageService implements ILocalStorageService {
      */
     public async set(keyToken: ILocalStorageKey): Promise<boolean> {
 
-      var p = new Promise<any>(async (resolve, reject) => {
+      const p = new Promise<any>((resolve, reject): void => {
         try {
 
           //get the hash of the local storage token based on value
           //var keyHash: string = md5(keyToken.keyName);
           //var keyHash: string = ObjectHash.MD5(keyToken.keyName);
-          var keyHash: string | Int32Array = Md5.hashStr(JSON.stringify(keyToken.keyName));
+          const keyHash: string | Int32Array = Md5.hashStr(JSON.stringify(keyToken.keyName));
           console.log("LS set: keyhash - " + keyHash);
 
           //create the corrrect storage key based on keyHash and possible prefix

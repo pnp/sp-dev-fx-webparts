@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-avatar",
     "source": "pnp",
-    "title": "SPFx Avatar",
+    "title": "SPFx Avatar Web Part",
     "shortDescription": "This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This web part can be useful in Intranet to help user create their avatar and save it as profile picture.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-avatar",
     "longDescription": [

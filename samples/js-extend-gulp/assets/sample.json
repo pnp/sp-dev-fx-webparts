@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-extend-gulp",
     "source": "pnp",
-    "title": "Integrating custom gulp tasks to SharePoint Framwork toolchain",
+    "title": "Integrating custom gulp tasks to SharePoint Framework toolchain",
     "shortDescription": "SharePoint client-side development tools use gulp as the build process task runner to...",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-extend-gulp",
     "longDescription": [

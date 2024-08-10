@@ -2,11 +2,16 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.14.0",
+    "version": "1.18.2",
     "libraryName": "react-pages-hierarchy",
     "libraryId": "89758fb6-85e2-4e2b-ac88-4f4e7e5f60cb",
     "packageManager": "npm",
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.12.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "18.19.0"
   }
 }

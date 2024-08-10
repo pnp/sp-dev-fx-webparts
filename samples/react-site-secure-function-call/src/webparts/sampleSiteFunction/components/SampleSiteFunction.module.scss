@@ -1,0 +1,20 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.sampleSiteFunction {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.field {
+  text-align: center;
+  padding: 12px;
+}

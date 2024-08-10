@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation",
     "source": "pnp",
-    "title": "Page Sections Navigation",
+    "title": "Page Sections Navigation Web Part",
     "shortDescription": "Sample web parts allowing to add sections navigation to the SharePoint page.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-sections-navigation",
     "longDescription": [

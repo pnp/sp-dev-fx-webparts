@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "connected-web-parts-client-side-solution",
+    "id": "9548bb33-c24b-4601-af93-8edd4334e657",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "connected-web-parts description"
+      },
+      "longDescription": {
+        "default": "connected-web-parts description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "connected-web-parts Feature",
+        "description": "The feature that activates elements of the connected-web-parts solution.",
+        "id": "aaec1348-d792-4117-9191-ae7478bfc7f5",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/connected-web-parts.sppkg"
+  }
+}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as _ from "lodash";
 import { Web } from "sp-pnp-js";
 require("sp-init");
@@ -7,8 +8,8 @@ require("sharepoint");
 import DisplayProp from "./DisplayProp";
 
 /**
- * Various utilitty functions used by the React-ProprtyBag* Webparts
- * 
+ * Various utility functions used by the React-PropertyBag* Web parts
+ *
  * @export
  * @class utils
  */
@@ -19,34 +20,34 @@ export default class utils {
     /**
      * See ://http://vipulkelkar.blogspot.com/2015/09/index-web-property-bag-using-javascript.html
      * Encodes a PropertyKey so that it can be included in the Sharepoint vti_indexedpropertykeys property
-     * 
+     *
      * @static
      * @param {any} propKey The unencoded Property Key
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf utils
      */
-    public static EncodePropertyKey(propKey) {
-        var bytes = [];
-        for (var i = 0; i < propKey.length; ++i) {
+    public static EncodePropertyKey(propKey): string {
+        const bytes = [];
+        for (let i = 0; i < propKey.length; ++i) {
             bytes.push(propKey.charCodeAt(i));
             bytes.push(0);
         }
-        var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
+        const b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
         return b64encoded;
     }
 
     /**
      * See ://http://vipulkelkar.blogspot.com/2015/09/index-web-property-bag-using-javascript.html
      * Decodes  a PropertyKey retrieved from  the Sharepoint vti_indexedpropertykeys property
-     * 
+     *
      * @static
      * @param {any} propKey The encoded Property Key
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf utils
      */
-    public static DecodePropertyKey(propKey) {
+    public static DecodePropertyKey(propKey): string {
         const encoded = window.atob(propKey);
         let decoded = "";
         for (let x = 0; x < encoded.length; x = x + 2) {
@@ -56,11 +57,11 @@ export default class utils {
     }
     /**
      *  Decodes all the searchable Properities recived from Sharepoint
-     * 
+     *
      * @static
      * @param {string} sp The encoded Sarchable Properties String
      * @returns {Array<string>} An array of the names of all the searchable properties
-     * 
+     *
      * @memberOf utils
      */
     public static decodeSearchableProps(sp: string): Array<string> {
@@ -74,21 +75,21 @@ export default class utils {
         return searchableprops;
     }
     /**
-     * AllProperties- the resullsts from web.select("Title", "AllProperties").expand("AllProperties").get()
-     * propertiesToSelect- The properties you waant to select out of AllProperties
-     * searchableProperties-- and araay of properties which are known to be searchjable
-     * 
+     * AllProperties- the results from web.select("Title", "AllProperties").expand("AllProperties").get()
+     * propertiesToSelect- The properties you want to select out of AllProperties
+     * searchableProperties-- and array of properties which are known to be searchable
+     *
      */
     /**
-     *  Extracts a Array of DisplayProp's from AllProperties  
-     * 
+     *  Extracts a Array of DisplayProp's from AllProperties
+     *
      * @static
-     * @param {*} AllProperties 
+     * @param {*} AllProperties
      * @param {Array<string>} propertiesToSelect The Properties to Select from AllProperties
-     * @param {Array<string>} searchableProperties An Array of Searchable Properties. These will be marked as seartchable in the results
+     * @param {Array<string>} searchableProperties An Array of Searchable Properties. These will be marked as searchable in the results
      * @param {boolean} [addMissingProps] Indicates if the method should add a empty property if it is in propertiesToSelect but not in AllProperties
-     * @returns {Array<DisplayProp>} 
-     * 
+     * @returns {Array<DisplayProp>}
+     *
      * @memberOf utils
      */
     public static SelectProperties(AllProperties: any, propertiesToSelect: Array<string>, searchableProperties: Array<string>, addMissingProps?: boolean): Array<DisplayProp> {
@@ -113,16 +114,16 @@ export default class utils {
 
     /**
      * Saves a Property into the SharePoint PropertyBag
-     * 
+     *
      * @static
-     * @param {string} name  The name of the property to set 
+     * @param {string} name  The name of the property to set
      * @param {string} value  The value to set
      * @param {string} siteUrl The SPSite to set it in
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf utils
      */
-    public static setSPProperty(name: string, value: string, siteUrl: string) { 
+    public static setSPProperty(name: string, value: string, siteUrl: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let webProps;
             const clientContext = new SP.ClientContext(siteUrl);
@@ -134,7 +135,7 @@ export default class utils {
             clientContext.load(web);
             clientContext.load(webProps);
             clientContext.executeQueryAsync(
-                (sender, args) => { resolve(); },
+                (sender, args) => { resolve(webProps); },
                 (sender, args) => { reject(args.get_message()); }
             );
 
@@ -142,18 +143,18 @@ export default class utils {
     }
     /**
      * Sets the values of the propnames parameter to be searchable in the selected site
-     * 
+     *
      * @static
-     * @param {string} siteUrl 
-     * @param {Array<string>} propnames 
-     * @returns {Promise<any>} 
-     * 
+     * @param {string} siteUrl
+     * @param {Array<string>} propnames
+     * @returns {Promise<any>}
+     *
      * @memberOf utils
      */
     public static saveSearchablePropertiesToSharePoint(siteUrl: string, propnames: Array<string>): Promise<any> {
         const encodedPropNames: Array<string> = [];
         for (const propname of propnames) {
-            if (propname != "") {
+            if (propname !== "") {
                 encodedPropNames.push(this.EncodePropertyKey(propname));
             }
         }
@@ -162,33 +163,37 @@ export default class utils {
     }
     /**
      * Forces a full crawl of a site by incrementing the vti_searchversion property
-     * 
+     *
      * @static
      * @param {string} siteUrl The site to force a full crawl on
-     * @returns {Promise<any>} 
-     * 
+     * @returns {Promise<any>}
+     *
      * @memberOf utils
      */
-    public static forceCrawl(siteUrl: string): Promise<any> {
+    public static forceCrawl(siteUrl: string): Promise<void> {
         const web = new Web(siteUrl);
 
         return web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-            let version: number = r.AllProperties["vti_x005f_searchversion"];
+            //let version: number = r.AllProperties["vti_x005f_searchversion"];
+            let version: number = r.AllProperties.vti_x005f_searchversion;
             if (version) {
                 version++;
-                this.setSPProperty("AllProperties", version.toString(), siteUrl);
+                return this.setSPProperty("vti_searchversion", version.toString(), siteUrl);
+            }
+            else {
+                return this.setSPProperty("vti_searchversion", "1", siteUrl);
             }
         });
     }
 
     /**
      * Adds the siteTemplates as filter parameters to queryText
-     * 
+     *
      * @static
      * @param {Array<string>} siteTemplates  The Site templates to be included
      * @param {string} querytext  The queryText to add the filter to
      * @returns {string}  The new queryText with the filter included
-     * 
+     *
      * @memberOf utils
      */
     public static addSiteTemplatesToSearchQuery(siteTemplates: Array<string>, querytext: string): string {
@@ -213,12 +218,12 @@ export default class utils {
     }
     /**
      *  Adds filters to the querytext. Filters are OR'd together
-     * 
+     *
      * @static
      * @param {Array<string>} filters The filters to add (in the form ManagedPropertyName=Value)
-     * @param {string} querytext 
-     * @returns {string} 
-     * 
+     * @param {string} querytext
+     * @returns {string}
+     *
      * @memberOf utils
      */
     public static addFiltersToSearchQuery(filters: Array<string>, querytext: string): string {
@@ -238,19 +243,19 @@ export default class utils {
     /**
      *  Parses a string that is returned from an SPFX Multiline Input Paramater inito an array of strings,
      * removinng blank entries
-     * 
-     * 
+     *
+     *
      * @static
      * @param {string} value The value from the SPFX Multiline Input Paramater
-     * @returns {Array<string>} 
-     * 
+     * @returns {Array<string>}
+     *
      * @memberOf utils
      */
-    
+
     public static parseMultilineTextToArray(value: string): Array<string> {
         if (!value) {
             return [];
         }
-        return value.split('\n').filter(val => { return val.trim() != ""; });
+        return value.split('\n').filter(val => { return val.trim() !== ""; });
     }
 }

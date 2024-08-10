@@ -3,7 +3,7 @@
     "solution": {
         "name": "react-kanban-board-client-side-solution",
         "id": "cccbd72b-7b89-4128-9348-0a4850ded8fd",
-        "version": "3.0.0.0",
+        "version": "4.0.0.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
         "isDomainIsolated": false,
@@ -12,8 +12,28 @@
             "privacyUrl": "",
             "termsOfUseUrl": "",
             "websiteUrl": "",
-            "mpnId": ""
-          }
+            "mpnId": "Undefined-1.19.0"
+          },
+          "metadata": {
+            "shortDescription": {
+              "default": "react-kanban-board description"
+            },
+            "longDescription": {
+              "default": "react-kanban-board description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+          },
+          "features": [
+            {
+              "title": "react-kanban-board KanbanBoardWebPart Feature",
+              "description": "The feature that activates KanbanBoardWebPart from the react-kanban-board solution.",
+              "id": "67cd5938-806b-4c79-b589-501f7f26998e",
+              "version": "4.0.0.0"
+            }
+          ]
+      
     },
     "paths": {
         "zippedPackage": "solution/react-kanban-board.sppkg"

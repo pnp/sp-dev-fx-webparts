@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "chat-streaming-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/chatStreaming/ChatStreamingWebPart.js",
+          "manifest": "./src/webparts/chatStreaming/ChatStreamingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ChatStreamingWebPartStrings": "lib/webparts/chatStreaming/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

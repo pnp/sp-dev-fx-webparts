@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-photo-sync",
     "source": "pnp",
-    "title": "SPUPS Photo Sync",
+    "title": "SPUPS Photo Sync Web Part",
     "shortDescription": "This web part will help the administrators to synchronize the User Profile Photos from Azure AD or from the local file system to SharePoint User Profile Store.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-photo-sync",
     "longDescription": [

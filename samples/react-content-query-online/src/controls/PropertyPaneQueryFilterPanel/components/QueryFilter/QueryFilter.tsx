@@ -1,11 +1,12 @@
+/* eslint-disable react/no-direct-mutation-state */
 import * as React                                                                   from 'react';
 import * as moment                                                                  from 'moment';
 import { cloneDeep, isEmpty }                                                       from '@microsoft/sp-lodash-subset';
 import { Text }                                                                     from '@microsoft/sp-core-library';
-import { Dropdown, IDropdownOption, TextField, ChoiceGroup, IChoiceGroupOption }    from 'office-ui-fabric-react';
-import { NormalPeoplePicker, IPersonaProps, IBasePickerSuggestionsProps, Label }    from 'office-ui-fabric-react';
-import { TagPicker, ITag }                                                          from 'office-ui-fabric-react';
-import { DatePicker, Checkbox }                                                     from 'office-ui-fabric-react';
+import { Dropdown, IDropdownOption, TextField, ChoiceGroup, IChoiceGroupOption }    from '@fluentui/react';
+import { NormalPeoplePicker, IPersonaProps, IBasePickerSuggestionsProps, Label }    from '@fluentui/react';
+import { TagPicker, ITag }                                                          from '@fluentui/react';
+import { DatePicker, Checkbox }                                                     from '@fluentui/react';
 import { IQueryFilter }                                                             from './IQueryFilter';
 import { QueryFilterOperator }                                                      from './QueryFilterOperator';
 import { QueryFilterJoin }                                                          from './QueryFilterJoin';
@@ -17,26 +18,26 @@ import styles                                                                   
 export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilterState> {
 
     /*************************************************************************************
-     * Stores the IQueryFilter config of the current filter 
+     * Stores the IQueryFilter config of the current filter
      *************************************************************************************/
     private filter:IQueryFilter;
 
 
     /*************************************************************************************
      * Component's constructor
-     * @param props 
-     * @param state 
+     * @param props
+     * @param state
      *************************************************************************************/
     constructor(props: IQueryFilterProps, state: IQueryFilterState) {
         super(props);
 
         moment.locale(this.props.strings.datePickerLocale);
 
-        this.state = { 
+        this.state = {
             filter: (this.props.filter ? cloneDeep(this.props.filter) : { index: 0, field: null, operator: QueryFilterOperator.Eq, value: '', join: QueryFilterJoin.Or }),
             pickersKey: Math.random()
         };
-        
+
         this.onAnyChange = this.onAnyChange.bind(this);
     }
 
@@ -44,7 +45,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
     /*************************************************************************************
      * When the field Dropdown changes
      *************************************************************************************/
-    private onFieldDropdownChange(option: IDropdownOption, index?: number) {
+    private onFieldDropdownChange(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) {
          let field = this.props.fields.filter((f) => { return f.internalName == option.key; });
          this.state.filter.field = field != null && field.length > 0 ? field[0] : null;
          this.state.filter.operator = (this.state.filter.field && (this.state.filter.field.type == QueryFilterFieldType.User || this.state.filter.field.type == QueryFilterFieldType.Taxonomy) ? QueryFilterOperator.ContainsAny : QueryFilterOperator.Eq);
@@ -60,7 +61,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
     /*************************************************************************************
      * When the operator Dropdown changes
      *************************************************************************************/
-    private onOperatorDropdownChange(option: IDropdownOption, index?: number) {
+    private onOperatorDropdownChange(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) {
         this.state.filter.operator = QueryFilterOperator[option.key];
         this.setState({ filter: this.state.filter, pickersKey: this.state.pickersKey });
         this.onAnyChange();
@@ -70,7 +71,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
     /*************************************************************************************
      * When the TextField value changes
      *************************************************************************************/
-    private onValueTextFieldChange(newValue: string): string {
+    private onValueTextFieldChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): string {
         if(this.state.filter.value != newValue) {
             this.state.filter.value = newValue;
             this.onAnyChange();
@@ -104,6 +105,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * When the NormalPeoplePicker value changes
      *************************************************************************************/
     private onTaxonomyPickerResolve(items: ITag[]) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.filter.value = items;
         this.onAnyChange();
     }
@@ -118,7 +120,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
         this.setState({ filter: this.state.filter, pickersKey: this.state.pickersKey });
         this.onAnyChange();
     }
-    
+
 
     /*************************************************************************************
      * When the date expression text field value changes
@@ -126,14 +128,17 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
     private onDateExpressionChange(newValue: string): string {
 
         // Validates the picker
+        // eslint-disable-next-line no-useless-escape
         let regex = new RegExp(/^\[Today\](\s{0,}[\+-]\s{0,}\[{0,1}\d{1,4}\]{0,1}){0,1}$/);
         let isValid = regex.test(newValue) || isEmpty(newValue);
         let errorMsg = isValid ? '' : this.props.strings.datePickerExpressionError;
-        
+
         if(isValid) {
             // If the change is NOT triggered by the date picker change
             if(!(isEmpty(newValue) && this.state.filter.value != null)) {
+                // eslint-disable-next-line react/no-direct-mutation-state
                 this.state.filter.value = null;
+                // eslint-disable-next-line react/no-direct-mutation-state
                 this.state.filter.expression = newValue;
                 this.setState({ filter: this.state.filter, pickersKey: this.state.pickersKey });
                 this.onAnyChange();
@@ -150,6 +155,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * @param checked : Whether the checkbox is not checked or not
      *************************************************************************************/
     private onDateIncludeTimeChange(ev?: React.FormEvent<HTMLInputElement>, checked?: boolean) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.filter.includeTime = checked;
         this.onAnyChange();
     }
@@ -160,6 +166,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      *************************************************************************************/
     private onJoinChoiceChange(ev?: React.FormEvent<HTMLInputElement>, option?: IChoiceGroupOption) {
         if(option) {
+            // eslint-disable-next-line react/no-direct-mutation-state
             this.state.filter.join = QueryFilterJoin[option.key];
             this.onAnyChange();
         }
@@ -185,6 +192,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
         ];
 
         for(let field of this.props.fields) {
+            // eslint-disable-next-line no-useless-escape
             let option:IDropdownOption = { key: field.internalName, text: Text.format("{0} \{\{{1}\}\}", field.displayName, field.internalName) };
             options.push(option);
         }
@@ -240,11 +248,18 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * Returns the options for the operator Dropdown component
      *************************************************************************************/
     private getJoinGroupOptions(): IChoiceGroupOption[] {
+        /*
         let options:IChoiceGroupOption[] = [
             { key: QueryFilterJoin[QueryFilterJoin.And], text: this.props.strings.andLabel, checked: (this.state.filter.join == QueryFilterJoin.And) },
             { key: QueryFilterJoin[QueryFilterJoin.Or], text: this.props.strings.orLabel, checked: (this.state.filter.join == QueryFilterJoin.Or) }
         ];
         return options;
+        */
+        let options:IChoiceGroupOption[] = [
+          { key: QueryFilterJoin[QueryFilterJoin.And], text: this.props.strings.andLabel},
+          { key: QueryFilterJoin[QueryFilterJoin.Or], text: this.props.strings.orLabel}
+      ];
+      return options;
     }
 
 
@@ -338,20 +353,21 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
                 <div className={styles.paddingContainer}>
                     <Dropdown label={this.props.strings.fieldLabel}
                             disabled={this.props.disabled}
-                            onChanged={this.onFieldDropdownChange.bind(this)}
+                            onChange={this.onFieldDropdownChange.bind(this)}
                             selectedKey={filterFieldKey}
                             options={this.getFieldDropdownOptions()} />
 
                     <Dropdown label={this.props.strings.operatorLabel}
                             disabled={this.props.disabled}
-                            onChanged={this.onOperatorDropdownChange.bind(this)}
+                            onChange={this.onOperatorDropdownChange.bind(this)}
                             selectedKey={QueryFilterOperator[this.state.filter.operator]}
                             options={this.getOperatorDropdownOptions()} />
 
                     { showTextField &&
                         <TextField label={this.props.strings.valueLabel}
                             disabled={this.props.disabled}
-                            onGetErrorMessage={ this.onValueTextFieldChange.bind(this) }
+                            //onGetErrorMessage={ this.onValueTextFieldChange.bind(this) }
+                            onChange={this.onValueTextFieldChange.bind(this)}
                             deferredValidationTime={500}
                             value={ this.state.filter.value != null ? this.state.filter.value as string : '' } />
                     }
@@ -390,7 +406,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
 
                     {  showDatePicker &&
                         <div>
-                            <DatePicker 
+                            <DatePicker
                                 label={ this.props.strings.valueLabel }
                                 placeholder={ this.props.strings.datePickerDatePlaceholder }
                                 allowTextInput={ true }
@@ -399,7 +415,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
                                 parseDateFromString={ this.onDatePickerParse.bind(this) }
                                 onSelectDate={ this.onDatePickerChange.bind(this) }
                                 strings={ this.props.strings.datePickerStrings } />
-                            <TextField 
+                            <TextField
                                 placeholder={ this.props.strings.datePickerExpressionPlaceholder }
                                 onGetErrorMessage={ this.onDateExpressionChange.bind(this) }
                                 deferredValidationTime={ 500 }
@@ -411,7 +427,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
                         </div>
                     }
 
-                    <ChoiceGroup options={this.getJoinGroupOptions()} 
+                    <ChoiceGroup options={this.getJoinGroupOptions()}
                                  onChange={this.onJoinChoiceChange.bind(this)}
                                  disabled={this.props.disabled} />
                 </div>

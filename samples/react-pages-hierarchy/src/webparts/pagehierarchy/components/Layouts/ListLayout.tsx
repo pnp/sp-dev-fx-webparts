@@ -2,12 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import styles from './Layouts.module.scss';
 import { IPage } from '@src/models/IPage';
-import { Icon, ActionButton } from 'office-ui-fabric-react';
+import { ActionButton } from '@fluentui/react';
 import { ILayoutProps } from './ILayoutProps';
 import ReactResizeDetector from 'react-resize-detector';
 import * as strings from 'PageHierarchyWebPartStrings';
 
 export const ListLayout: React.FunctionComponent<ILayoutProps> = props => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [elementWidth, setElementWidth] = useState(props.domElement.getBoundingClientRect().width);
 
   /*
@@ -26,11 +27,7 @@ export const ListLayout: React.FunctionComponent<ILayoutProps> = props => {
   Horizontal Stack - Wrapping - Advanced
   */
 
-  if (elementWidth < 380) {
-
-  }
-
-  const renderPage = (page: IPage, index: number, pages: IPage[]) => {
+  const renderPage = (page: IPage, index: number, pages: IPage[]): React.ReactElement => {
     if (page) {
       return (
         <li className={styles.listLayoutItem}>
@@ -53,11 +50,11 @@ export const ListLayout: React.FunctionComponent<ILayoutProps> = props => {
     }
   };
 
-  const renderPages = (pages: IPage[], ) => {
+  const renderPages = (pages: IPage[], ): React.ReactElement[] => {
     return pages.map((value, index, array) => renderPage(value, index, array));
   };
 
-  const onResize = () => {
+  const onResize = (): void => {
     setElementWidth(props.domElement.getBoundingClientRect().width);
   };
 

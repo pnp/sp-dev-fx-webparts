@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-functional-component",
     "source": "pnp",
-    "title": "React Functional Component web part",
+    "title": "React Functional Component Web Part",
     "shortDescription": "This web part is intended to be easier to understand for new developers building their first SPFx web part. It is a refactoring of the HelloWorld web part that is created by the @microsoft/generator-sharepoint Yeoman generator, and introduces React Functional Components.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component",
     "longDescription": [

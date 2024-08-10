@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-image-magnifier",
     "source": "pnp",
-    "title": "Image Magnifier",
+    "title": "Image Magnifier Web Part",
     "shortDescription": "This web part allow to magnify an image, displaying a resolution more detailed through a lens.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-magnifier",
     "longDescription": [

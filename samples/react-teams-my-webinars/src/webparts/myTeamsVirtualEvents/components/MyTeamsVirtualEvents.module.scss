@@ -1,0 +1,14 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.myTeamsVirualEvents {
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+//Overrides the drawer's z-index
+:global(.fui-FluentProvider):has(> .myTeamsVirualEventsDrawer) {
+  z-index: 100000;
+}

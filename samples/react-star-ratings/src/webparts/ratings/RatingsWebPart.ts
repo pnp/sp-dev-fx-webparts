@@ -22,8 +22,8 @@ export default class RatingsWebPart extends BaseClientSideWebPart<IRatingsWebPar
     const element: React.ReactElement<IRatingsProps> = React.createElement(
       Ratings,
       {
-        context: this.context,
-        properties: this.properties
+        webPartContext: this.context,
+        webPartProps: this.properties
       }
     );
     ReactDom.render(element, this.domElement);
@@ -34,7 +34,7 @@ export default class RatingsWebPart extends BaseClientSideWebPart<IRatingsWebPar
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.1');
+    return Version.parse('1.4');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

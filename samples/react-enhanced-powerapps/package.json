@@ -48,6 +48,6 @@
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",
         "typescript": "^3.9.10",
-        "webpack-bundle-analyzer": "^3.8.0"
+        "webpack-bundle-analyzer": "^4.10.2"
     }
 }

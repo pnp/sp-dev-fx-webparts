@@ -1,0 +1,66 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.root {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .container {
+    outline: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    box-shadow:
+      rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem,
+      rgba(0, 0, 0, 0.05) 0px 0.625rem 0.9375rem -0.3125rem,
+      rgba(0, 0, 0, 0.04) 0px 0.4375rem 0.4375rem -0.3125rem;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+  }
+  :global {
+    .ant-avatar-image {
+      width: 60px;
+      height: 60px;
+      background: inherit;
+    }
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(
+      --link
+    ); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(
+        --linkHovered
+      ); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}

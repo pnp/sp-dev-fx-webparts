@@ -104,7 +104,7 @@ Version|Date|Comments
 1.0.5|October 21, 2020|Added Year view
 1.0.6|December 3, 2020|Fixed all-day events (#1623)
 1.0.7|December 4, 2020|Fixed styling Year view + Dutch localization
-1.0.8|December 24, 2020|Fixed timezone difference (#1646)
+1.0.8|December 24, 2020|Fixed time zone difference (#1646)
 1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
 1.0.11|May 10, 2021|Optimized page refresh using local storage
@@ -114,6 +114,8 @@ Version|Date|Comments
 1.0.15|November 22, 2021|Fix All Day event issue that makes All Day events date expanded to another day instead of being full day event.
 1.0.16|December 21, 2021|Upgraded to SPFx 1.12.1
 1.0.17|October 25, 2022|Fixed issue deleting events (#2693)
+1.0.18|December 29, 2022|Fixed stylelint issue (#4029)| Cleaned up old Type script versions and Upgraded Type script version
+1.0.19|June 28, 2024| added filter by category | fixed the packages.json issues which prevent solution to build successfully.
 
 ## Minimal Path to Awesome
 

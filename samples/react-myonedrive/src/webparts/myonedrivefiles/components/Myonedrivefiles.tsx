@@ -7,7 +7,7 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spin
 import { MessageBar, MessageBarType, } from '@fluentui/react';
 import * as strings from 'MyonedrivefilesWebPartStrings';
 import Link from '@material-ui/core/Link';
-import styles from './MyOnedrivefiles.module.scss';
+import styles from './Myonedrivefiles.module.scss';
 export default class Myonedrivefiles extends React.Component<IMyonedrivefilesProps, IMyonedrivefilesState> {
 
   public constructor(props: IMyonedrivefilesProps, state: IMyonedrivefilesState) {

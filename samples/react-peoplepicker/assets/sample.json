@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-peoplepicker",
     "source": "pnp",
-    "title": "People Picker",
+    "title": "People Picker Web Part",
     "shortDescription": "SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-peoplepicker",
     "longDescription": [

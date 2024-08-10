@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-message",
     "source": "pnp",
-    "title": "React Teams Messages",
+    "title": "Teams Messages Web Part",
     "shortDescription": "This is a sample web part that displays currently logged in user\u0027s Microsoft Teams(user is member of), its channels and will allow sending messages to any Team\u0027s channel.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message",
     "longDescription": [

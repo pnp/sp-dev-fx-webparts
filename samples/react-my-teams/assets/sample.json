@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-teams",
     "source": "pnp",
-    "title": "My Teams",
+    "title": "My Teams Web Part",
     "shortDescription": "This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-teams",
     "longDescription": [

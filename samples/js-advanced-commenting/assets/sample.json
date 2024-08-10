@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-advanced-commenting",
     "source": "pnp",
-    "title": "Advanced Comments Box",
+    "title": "Advanced Comments Box Web Part",
     "shortDescription": "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-advanced-commenting",
     "longDescription": [
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
     "creationDateTime": "2020-02-05",
-    "updateDateTime": "2023-06-09",
+    "updateDateTime": "2024-03-11",
     "products": [
       "SharePoint"
     ],
@@ -53,6 +53,11 @@
         "gitHubAccount": "a1mery",
         "name": "Aimery Thomas",
         "pictureUrl": "https://github.com/a1mery.png"
+      },
+      {
+        "gitHubAccount": "wideserg",
+        "name": "Sergey Shiroky",
+        "pictureUrl": "https://github.com/wideserg.png"
       }
     ],
     "references": [

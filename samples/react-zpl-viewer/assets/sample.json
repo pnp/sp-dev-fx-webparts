@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-zpl-viewer",
     "source": "pnp",
-    "title": "ZPL Viewer",
+    "title": "ZPL Viewer Web Part",
     "shortDescription": "This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zpl-viewer",
     "longDescription": [

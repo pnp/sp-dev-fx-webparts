@@ -29,3 +29,6 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+.heft
+release

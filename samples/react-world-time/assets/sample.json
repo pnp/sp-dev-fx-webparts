@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-world-time",
     "source": "pnp",
-    "title": "World Time",
+    "title": "World Time Web Part",
     "shortDescription": "This web part provides you the ability to display basic clock for a given time zone on a web page. The clock is based on the user\u0027s workstation time with an offset from UTC to the selected time zone.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-world-time",
     "longDescription": [

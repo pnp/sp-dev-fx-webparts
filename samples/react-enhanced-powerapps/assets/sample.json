@@ -1,7 +1,7 @@
 [
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
-    "title": "Enhanced Power Apps",
+    "title": "Enhanced Power Apps Web Part",
     "source": "pnp",
     "shortDescription": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",

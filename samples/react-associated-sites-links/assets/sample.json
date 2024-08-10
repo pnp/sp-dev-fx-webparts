@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-associated-sites-links",
     "source": "pnp",
-    "title": "Associated Sites Links",
+    "title": "Associated Sites Links Web Part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-associated-sites-links",
     "shortDescription": "Web part that will display links to all associated sites that registered to the current site. Current site should be a hub site.",
     "longDescription": [

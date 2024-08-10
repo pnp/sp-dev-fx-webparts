@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-instagram",
         "source": "pnp",
-        "title": "Instagram Feed",
+        "title": "Instagram Feed Web Part",
         "shortDescription": "Sample web part to showcase an Instagram feed.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-instagram",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-instagram",

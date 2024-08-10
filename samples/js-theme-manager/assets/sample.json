@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-theme-manager",
     "source": "pnp",
-    "title": "Modern Experience Theme Manager",
+    "title": "Modern Experience Theme Manager Web Part",
     "shortDescription": "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager",
     "longDescription": [

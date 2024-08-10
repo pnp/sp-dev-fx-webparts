@@ -11,7 +11,7 @@ import { IPropertyPaneToggleProps, PropertyPaneToggle } from "@microsoft/sp-prop
 import { IPropertyPaneLabelProps, PropertyPaneLabel } from "@microsoft/sp-property-pane";
 import { IPropertyPaneButtonProps, PropertyPaneButton, PropertyPaneButtonType } from "@microsoft/sp-property-pane";
 import { update, get, isEmpty } from '@microsoft/sp-lodash-subset';
-import { IDropdownOption, IPersonaProps, ITag } from 'office-ui-fabric-react';
+import { IDropdownOption, IPersonaProps, ITag } from '@fluentui/react';
 import ContentQuery from './components/ContentQuery';
 import { IContentQueryProps } from './components/IContentQueryProps';
 import { IQuerySettings } from './components/IQuerySettings';
@@ -139,6 +139,7 @@ export default class ContentQueryWebPart
     if (this.properties.enableMGT)
     {
       // Add MGT dependencies
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const MGT:any = require('@microsoft/mgt');
 
       // We only need to re-register the SharePoint provider if we didn't register it before
@@ -168,6 +169,7 @@ export default class ContentQueryWebPart
         themeVariant: this._themeVariant
       }
     );
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
 
@@ -548,7 +550,7 @@ export default class ContentQueryWebPart
   /***************************************************************************
    * Validates the templateUrl property
    ***************************************************************************/
-  private onTemplateUrlChange(value: string): Promise<String> {
+  private onTemplateUrlChange(value: string): Promise<string> {
     Log.verbose(this.logSource, "WebPart property 'templateUrl' has changed, refreshing WebPart...", this.context.serviceScope);
 
     return new Promise<string>((resolve, reject) => {
@@ -576,7 +578,7 @@ export default class ContentQueryWebPart
   /***************************************************************************
    * Validates the itemLimit property
    ***************************************************************************/
-  private onItemLimitChange(value: string): Promise<String> {
+  private onItemLimitChange(value: string): Promise<string> {
     Log.verbose(this.logSource, "WebPart property 'itemLimit' has changed, refreshing WebPart...", this.context.serviceScope);
 
     return new Promise<string>((resolve, reject) => {

@@ -23,14 +23,14 @@ export default class SPHttpClientService {
 
   private client: SPHttpClient;
   private url: string;
-  private listId: Guid;
-  private itemId: number;
+  private listId: Guid | undefined;
+  private itemId: number | undefined;
 
   public constructor(context: WebPartContext) {
     this.client = context.spHttpClient;
     this.url = context.pageContext.web.absoluteUrl;
-    this.listId = context.pageContext.list.id;
-    this.itemId = context.pageContext.listItem.id;
+    this.listId = context.pageContext.list?.id;
+    this.itemId = context.pageContext.listItem?.id;
   }
 
   public async ensureFeatureEnabled(): Promise<void> {
@@ -41,7 +41,7 @@ export default class SPHttpClientService {
       throw new Error('Failed to fetch data.');
     }
     const json = await response.json();
-    const value = json['Ratings_x005f_VotingExperience'];
+    const value = json.Ratings_x005f_VotingExperience;
     if (value !== 'Ratings') {
       throw new Error('"Ratings" site collection feature is not enabled.');
     }

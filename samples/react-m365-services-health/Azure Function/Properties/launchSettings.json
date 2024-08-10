@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "M365ServiceHealth": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7097",
+      "launchBrowser": false
+    }
+  }
+}

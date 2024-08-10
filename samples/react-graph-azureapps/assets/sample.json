@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-graph-azureapps",
         "source": "pnp",
-        "title": "Azure Apps",
+        "title": "Azure Apps Web Part",
         "shortDescription": "This sample web part shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this web part.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",

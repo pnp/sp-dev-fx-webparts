@@ -1,17 +1,3 @@
-<!--
----
-page_type: sample
-products:
-- office-sp
-languages:
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  createdDate: 8/30/2016 10:21:43 AM
----
--->
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/pnp/sp-dev-fx-webparts?style=social)
@@ -64,13 +50,24 @@ cd samples
 cd sample-folder-name
 ```
 
-and for the tutorials, use the following command:
+Ensure that you are using the right version of node for the solution. You can do so by consulting the `README.md` file in the sample folder you are interested in. You will see a node version recommendation; you can also consult the SPFx Compatibility Matrix at <https://aka.ms/spfx-matrix> to find the supported versions of node for the version of SPFx used by the sample.
+
+The sample folder may also contain a `.nvmrc` file, which is a version specifier that can be used with a node version manager such as [nvm](https://github.com/coreybutler/nvm-windows) or [nvs](https://github.com/jasongin/nvs), ensure that you are using the right version of node for the project.
+
+To switch to the correct version of node using nvm, run the following command in the folder containing the `.nvmrc` file:
 
 ```shell
-cd tutorials
+nvm use
 ```
 
-Now run the following command to install the npm packages:
+If using nvs, run the following command in the folder containing the `.nvmrc` file:
+
+```shell
+nvs use
+```
+
+Once the correct version of node is in use, run the following command to install the npm packages:
+
 
 ```shell
 npm install
@@ -85,15 +82,17 @@ gulp serve
 ```
 
 ## Authors
+
 This repository's contributors are all community members who volunteered their time to share code samples. Work is done as an open source community project, with each sample contained in their own solution.
 
 ## Contributions
 
-These samples are direct from the feature teams, SharePoint PnP core team (http://aka.ms/m365pnp) or shared by the community. We welcome your input on issues and suggestions for new samples. We do also welcome community contributions around the client-side web parts. If you have any questions, just let us know.
+These samples are direct from the feature teams, SharePoint PnP core team (<http://aka.ms/m365pnp>) or shared by the community. We welcome your input on issues and suggestions for new samples. We do also welcome community contributions around the client-side web parts. If you have any questions, just let us know.
 
 Please have a look on our [Contribution Guidance](./CONTRIBUTING.md) before submitting your pull requests, so that we can get your contribution processed as fast as possible.
 
 ## Code of Conduct
+
 This repository has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 > Sharing is caring!

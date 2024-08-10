@@ -93,12 +93,12 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
         </div>
       </div>`;
     var self = this;
+    this.pageurl = this.context.pageContext.legacyPageContext.serverRequestPath;
     if (this.properties.enableAttachments) {
       await this.helper.getDocLibInfo();
       this.postAttachmentPath = await this.helper.getPostAttachmentFilePath(this.pageurl);
       this.pageFolderExists = await this.helper.checkForPageFolder(this.postAttachmentPath);
     }
-    this.pageurl = this.context.pageContext.legacyPageContext.serverRequestPath;
     this.currentUserInfo = await this.helper.getCurrentUserInfo();
     this.siteUsers = await this.helper.getSiteUsers(self.currentUserInfo.ID);
     require(['jquery', './js/jquery-comments.min'], (jQuery, comments) => {

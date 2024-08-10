@@ -42,7 +42,7 @@ class TemplateService extends BaseTemplateService {
             if(response.ok) {
 
                 if(response.url.indexOf('AccessDenied.aspx') > -1){
-                    throw 'Access Denied';
+                    throw new Error('Access Denied');
                 }
 
                 return;

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-custom-links",
     "source": "pnp",
-    "title": "Custom Links",
+    "title": "Custom Links Web Part",
     "shortDescription": "In this web part you can full customize the background and foreground color, font size, width and height of links.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-links",
     "longDescription": [

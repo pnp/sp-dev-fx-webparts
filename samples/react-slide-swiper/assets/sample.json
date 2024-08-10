@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-slide-swiper",
     "source": "pnp",
-    "title": "Slide Swiper",
+    "title": "Slide Swiper Web Part",
     "shortDescription": "This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-slide-swiper",
     "longDescription": [

@@ -8,10 +8,11 @@ export class ErrorHelper {
     this.logError(methodName, error);
   }
 
-  public static logError(methodName: string, error: Error) {
+  public static logError(methodName: string, error: Error): void {
     LogHelper.exception(this.constructor.name, methodName, error);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public static logPnpError(methodName: string, error: HttpRequestError | any): string | undefined {
     let msg: string | undefined;
     if (error instanceof HttpRequestError) {
@@ -23,10 +24,10 @@ export class ErrorHelper {
         LogHelper.exception(this.constructor.name, methodName, error);
       }
     }
-    else if (error.data != null && error.data.responseBody && error.data.responseBody.error && error.data.responseBody.error.message) {
+    else if (error.data !== null && error.data.responseBody && error.data.responseBody.error && error.data.responseBody.error.message) {
       // for email exceptions they weren't coming in as "instanceof HttpRequestError"
       msg = error.data.responseBody.error.message.value;
-      LogHelper.error(this.constructor.name, methodName, msg!);
+      LogHelper.error(this.constructor.name, methodName, msg);
     }
     else if (error instanceof Error) {
       if (error.message.indexOf('[412] Precondition Failed') !== -1) {

@@ -1,6 +1,8 @@
 
 /* tslint:disable */
 import { IUser } from "./IUser";
+import { UserType } from "./UserType";
+
 export interface IUserInfo extends  IUser {
   title:string;
   pictureUrl?: string;
@@ -16,5 +18,5 @@ export interface IUserInfo extends  IUser {
   cellPhone?:string;
   location?:string;
   office?: string;
-
- }
+  userType: UserType;
+}

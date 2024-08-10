@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter",
     "source": "pnp",
-    "title": "Image Slider from Photo Gallery using Taxonomy Filter",
+    "title": "Image Slider from Photo Gallery using Taxonomy Filter Web Part",
     "shortDescription": "This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-slider-list-taxonomy-filter",
     "longDescription": [

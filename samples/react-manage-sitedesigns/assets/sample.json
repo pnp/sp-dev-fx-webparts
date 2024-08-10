@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns",
     "source": "pnp",
-    "title": "Site Designs Manager",
+    "title": "Site Designs Manager Web Part",
     "shortDescription": "This web part allows tenant administrators to manage site designs through a graphical interface.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-sitedesigns",
     "longDescription": [

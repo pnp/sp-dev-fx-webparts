@@ -1,0 +1,182 @@
+[{
+    "name": "pnp-sp-dev-spfx-web-parts-react-governor-sharing",
+    "source": "pnp",
+    "title": "Governor Sharing Web Part",
+    "shortDescription": "Shows documents which have been (explicitly) shared within a SharePoint site or Team.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governor-sharing",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governor-sharing",
+    "longDescription": [
+        "Shows documents which have been (explicitly) shared within a SharePoint site or Team."
+    ],
+    "creationDateTime": "2023-11-24",
+    "updateDateTime": "2023-11-24",
+    "products": [
+        "SharePoint"
+    ],
+    "metadata": [
+        {
+            "key": "CLIENT-SIDE-DEV",
+            "value": "React"
+        },
+        {
+            "key": "SPFX-VERSION",
+            "value": "1.18.0"
+        }
+    ],
+    "thumbnails": [
+        {
+            "name": "Govenor_Sharing_SharedItemsExample.png",
+            "type": "image",
+            "order": 100,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "debug.png",
+            "type": "image",
+            "order": 108,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/debug.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddedtoTeam.png",
+            "type": "image",
+            "order": 101,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddedtoTeam.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoSharePointSite.png",
+            "type": "image",
+            "order": 102,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoSharePointSite.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoTeam.png",
+            "type": "image",
+            "order": 103,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoTeam.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoTeamTab.png",
+            "type": "image",
+            "order": 104,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoTeamTab.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoTeam_Save.png",
+            "type": "image",
+            "order": 105,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoTeam_Save.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoTeam_Search.png",
+            "type": "image",
+            "order": 106,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoTeam_Search.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Govenor_Sharing_AddtoTeam_SelectTeam.png",
+            "type": "image",
+            "order": 107,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_AddtoTeam_SelectTeam.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "screenshot.png",
+            "type": "image",
+            "order": 109,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/screenshot.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "screenshot2.png",
+            "type": "image",
+            "order": 110,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/screenshot2.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "SharePoint_Admin_Center_API_Consent.png",
+            "type": "image",
+            "order": 111,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/SharePoint_Admin_Center_API_Consent.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "SharePoint_Admin_Center_API_Consent_Approve.png",
+            "type": "image",
+            "order": 112,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/SharePoint_Admin_Center_API_Consent_Approve.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "SharePoint_Admin_Center_Enable_app.png",
+            "type": "image",
+            "order": 113,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/SharePoint_Admin_Center_Enable_app.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "SharePoint_Admin_Center_Manage_apps.png",
+            "type": "image",
+            "order": 114,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/SharePoint_Admin_Center_Manage_apps.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "SharePoint_Admin_Center__Remove_API_Consent.png",
+            "type": "image",
+            "order": 115,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/SharePoint_Admin_Center__Remove_API_Consent.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Teams_Admin_Center_Manage_apps.png",
+            "type": "image",
+            "order": 116,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Teams_Admin_Center_Manage_apps.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Teams_Admin_Center_Manage_apps_Upload.png",
+            "type": "image",
+            "order": 117,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Teams_Admin_Center_Manage_apps_Upload.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Teams_Admin_Center_Manage_apps_Uploaded.png",
+            "type": "image",
+            "order": 118,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Teams_Admin_Center_Manage_apps_Uploaded.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "Troubleshooting_Teams_App_Already_Exists.png",
+            "type": "image",
+            "order": 119,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Troubleshooting_Teams_App_Already_Exists.png",
+            "alt": "Web Part Preview"
+        }
+    ],
+    "authors": [
+        {
+            "gitHubAccount": "robinmeure",
+            "pictureUrl": "https://github.com/robinmeure.png",
+            "name": "Robin Meure"
+        }
+    ],
+    "references": [
+        {
+            "name": "Build your first SharePoint client-side web part",
+            "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+            "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        }
+    ]
+}]

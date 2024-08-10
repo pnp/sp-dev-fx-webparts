@@ -229,7 +229,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
     };
   }
 
-  protected async onPropertyPaneFieldChanged(propertyPath: string) {
+  protected async onPropertyPaneFieldChanged(propertyPath: string): Promise<void> {
 
     if (propertyPath === 'selectedLayout') {
 
@@ -257,7 +257,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
   /**
    * Initializes the Web Part required properties if there are not present in the manifest (i.e. during an update scenario)
    */
-  private initializeRequiredProperties() {
+  private initializeRequiredProperties(): void {
 
     this.properties.useCorsProxy = this.properties.useCorsProxy ? true : false;
     this.properties.corsProxyUrl = this.properties.corsProxyUrl ? this.properties.corsProxyUrl : "";
@@ -332,7 +332,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
 
     // Sets up styling fields
-    let feedFields: IPropertyPaneField<any>[] = [
+    const feedFields: IPropertyPaneField<any>[] = [
       PropertyPaneTextField('feedUrl', {
         label: strings.FeedUrlLabel
       }),
@@ -342,14 +342,14 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
       })
     ];
 
-    if (this.properties.feedService == FeedServiceOption.Feed2Json) {
+    if (this.properties.feedService === FeedServiceOption.Feed2Json) {
       feedFields.push(PropertyPaneTextField('feedServiceUrl', {
         label: strings.FeedServiceUrlLabel,
         description: strings.FeedServiceUrlDescription
       }));
     }
 
-    if (this.properties.feedService == FeedServiceOption.Rss2Json) {
+    if (this.properties.feedService === FeedServiceOption.Rss2Json) {
       feedFields.push(PropertyPaneTextField('feedServiceApiKey', {
         label: strings.FeedServiceApiKeyLabel,
         description: strings.FeedServiceApiKeyDescription
@@ -404,7 +404,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
    */
   private _getCorsSettingsFields(): IPropertyPaneField<any>[] {
     // Sets up styling fields
-    let feedFields: IPropertyPaneField<any>[] = [
+    const feedFields: IPropertyPaneField<any>[] = [
       PropertyPaneToggle('useCorsProxy', {
         label: strings.UseCorsProxyLabel,
         checked: this.properties.useCorsProxy,
@@ -457,7 +457,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
     const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === FeedLayoutOption.Custom ? false : true;
 
     // Sets up styling fields
-    let layoutFields: IPropertyPaneField<any>[] = [
+    const layoutFields: IPropertyPaneField<any>[] = [
       PropertyPaneChoiceGroup('selectedLayout', {
         label: strings.SelectedLayoutLabel,
         options: layoutOptions
@@ -572,7 +572,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
    * from https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search-refiners
    * @param value the template file URL value
    */
-  private async _onTemplateUrlChange(value: string): Promise<String> {
+  private async _onTemplateUrlChange(value: string): Promise<string> {
 
     try {
 

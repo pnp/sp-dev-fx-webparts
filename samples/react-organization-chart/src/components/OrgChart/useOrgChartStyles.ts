@@ -1,8 +1,8 @@
-import { mergeStyles, mergeStyleSets } from "office-ui-fabric-react";
+import { mergeStyles, mergeStyleSets } from "@fluentui/react";
 
 const currentTheme = window.__themeState__.theme;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
 export const useOrgChartStyles = () => {
 
   const orgChartClasses = mergeStyleSets({

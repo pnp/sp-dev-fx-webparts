@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O365C Incident Dashbaord",
+    "id": "2d3d9ea6-eef2-419e-8eeb-682c38aadd41",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "O365C Incident Dashbaord description"
+      },
+      "longDescription": {
+        "default": "O365C Incident Dashbaord description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O365C Incident DashbaordFeature",
+        "description": "The feature that activates elements of the incident-dashbaord solution.",
+        "id": "78ea4350-7b84-4c43-978b-4999534d87e7",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o365c-incident-dashbaord.sppkg"
+  }
+}

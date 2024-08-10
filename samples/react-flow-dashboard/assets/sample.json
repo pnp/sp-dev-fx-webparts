@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-flow-dashboard",
         "source": "pnp",
-        "title": "Flow Dashboard",
+        "title": "Flow Dashboard Web Part",
         "shortDescription": "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-dashboard",
         "longDescription": [

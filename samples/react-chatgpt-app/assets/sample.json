@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-chatgpt-app",
         "source": "pnp",
-        "title": "Chat GPT App",
+        "title": "Chat GPT App Web Part",
         "shortDescription": "This App is a implementation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as Personal or Teams App and Message Extension.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chatgpt-app",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chatgpt-app",

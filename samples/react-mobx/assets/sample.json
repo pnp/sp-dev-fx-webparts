@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-mobx",
     "source": "pnp",
-    "title": "Using React and Mobx",
+    "title": "Using React and Mobx Web Part",
     "shortDescription": "Sample web part implementation that uses Mobx to keep track of its state.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx",
     "longDescription": [

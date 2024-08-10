@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
     "source": "pnp",
-    "title": "Data Table",
+    "title": "Data Table Web Part",
     "shortDescription": "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
     "longDescription": [

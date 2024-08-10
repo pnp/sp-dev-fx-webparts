@@ -1,0 +1,16 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "Azure Storage Account Key",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "TenantBaseUrl": "https://TenantName.sharepoint.com",
+    "SiteUrl": "https://TenantName.sharepoint.com/sites/incident-mgmt/",
+    "TenantId": "zzzzzzz-9ebc-4eb1-xxxx-xxxxxxxx",
+    "ClientId": "xxxxxxx-1178-xxxxx-xxx-db04e3b5586f",
+    "CertificateThumbPrint": "zxxxxxx3A7DE372AC7FC5C5ED2xxx",
+    "WebhookUrl": "https://TenantName.webhook.office.com/webhookb2/xxxxx-7bf1-410f-ad41-xxxxxxxx@xxxxxxx-9ebc-4eb1-8304-xxxxxxx/IncomingWebhook/xxxxxxxxxxxxxxxxxxxxxxxxxxx/2a5de346-1d63-4c7a-897f-xxxxxxxxxxxxxxxx"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}

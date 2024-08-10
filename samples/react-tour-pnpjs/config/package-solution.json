@@ -3,9 +3,38 @@
   "solution": {
     "name": "react-tour-pnpjs-client-side-solution",
     "id": "9060fda4-14af-4588-aa3a-b746b46420d8",
-    "version": "1.0.1.9",
+    "version": "1.0.1.10",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-tour-pnpjs description"
+      },
+      "longDescription": {
+        "default": "react-tour-pnpjs description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-tour-pnpjs TourWebPart Feature",
+        "description": "The feature that activates TourWebPart from the react-tour-pnpjs solution.",
+        "id": "ca659f89-c656-43a6-a0e8-d0bdba90123f",
+        "version": "1.0.1.9",
+        "componentIds": [
+          "ca659f89-c656-43a6-a0e8-d0bdba90123f"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-tour-pnpjs.sppkg"

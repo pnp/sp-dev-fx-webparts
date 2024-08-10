@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
     "source": "pnp",
-    "title": "Advanced Page Properties",
+    "title": "Advanced Page Properties Web Part",
     "shortDescription": "Replicates the functionality of Page Properties with improvements",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties",
     "longDescription": [

@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector",
         "source": "pnp",
-        "title": "Using Azure OpenAI Connectors API",
+        "title": "Using Azure OpenAI Connectors API web part",
         "shortDescription": "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
