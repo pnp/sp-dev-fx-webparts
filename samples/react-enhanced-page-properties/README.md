@@ -50,6 +50,7 @@ Currently support following types:
 
 Version|Date|Comments
 -------|----|--------
+1.3|August 10, 2024|Upgrade SPFx version to 1.19
 1.2|October 29, 2023|Upgrade SPFx version to 1.18
 1.1|October 23, 2023|Add support for choice and date fields
 1.0|September 23, 2023|Initial release
