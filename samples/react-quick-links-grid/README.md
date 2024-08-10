@@ -4,7 +4,12 @@
 
 This project is a SharePoint Framework (SPFx) WebPart that displays a set of quick links fetched from a SharePoint list. The quick links are displayed with icons and titles in a responsive grid layout.
 
-[picture of the solution in action, if possible]
+
+https://github.com/user-attachments/assets/90ab66f0-e26f-4838-9803-131b42cbdc65
+
+
+
+![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/d23f6f9c-0a00-42c1-8f68-b06337244f2b)
 
 ## Features
 
