@@ -8,7 +8,7 @@ Currently support following types:
 
 - Single line text
 - Multiple line text
-- Choice
+- Choice (should enable multiple choices)
 - Date
 
 ### Configuration
@@ -30,7 +30,7 @@ Currently support following types:
 
 ## Compatibility
 
-![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg)
+![SPFx 1.19.0](https://img.shields.io/badge/SPFx-1.19.0-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
@@ -44,7 +44,7 @@ Currently support following types:
 
 ## Contributors
 
-- [Ari Gunawan](https://github.com/AriGunawan)
+- [Ari Gunawan](https://github.com/AriGunawan) ([@AriDev3023](https://twitter.com/AriDev3023))
 
 ## Version history
 

@@ -10,17 +10,17 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
+    "serve": "fast-serve"
   },
   "dependencies": {
     "@fluentui/react": "8.106.4",
-    "@microsoft/sp-adaptive-card-extension-base": "1.18.0",
-    "@microsoft/sp-component-base": "1.18.0",
-    "@microsoft/sp-core-library": "1.18.0",
-    "@microsoft/sp-lodash-subset": "1.18.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.18.0",
-    "@microsoft/sp-property-pane": "1.18.0",
-    "@microsoft/sp-webpart-base": "1.18.0",
+    "@microsoft/sp-adaptive-card-extension-base": "1.19.0",
+    "@microsoft/sp-component-base": "1.19.0",
+    "@microsoft/sp-core-library": "1.19.0",
+    "@microsoft/sp-lodash-subset": "1.19.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.19.0",
+    "@microsoft/sp-property-pane": "1.19.0",
+    "@microsoft/sp-webpart-base": "1.19.0",
     "@pnp/sp": "^3.17.0",
     "date-fns": "^2.30.0",
     "react": "17.0.1",
@@ -28,12 +28,11 @@
     "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "1.18.0",
-    "@microsoft/eslint-plugin-spfx": "1.18.0",
-    "@microsoft/rush-stack-compiler-4.5": "0.5.0",
+    "@microsoft/eslint-config-spfx": "1.20.1",
+    "@microsoft/eslint-plugin-spfx": "1.20.1",
     "@microsoft/rush-stack-compiler-4.7": "0.1.0",
-    "@microsoft/sp-build-web": "1.18.0",
-    "@microsoft/sp-module-interfaces": "1.18.0",
+    "@microsoft/sp-build-web": "1.20.1",
+    "@microsoft/sp-module-interfaces": "1.20.1",
     "@rushstack/eslint-config": "2.5.1",
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
@@ -42,7 +41,7 @@
     "eslint": "8.7.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "gulp": "4.0.2",
-    "spfx-fast-serve-helpers": "~1.18.0",
+    "spfx-fast-serve-helpers": "~1.19.0",
     "typescript": "4.7.4"
   }
 }
