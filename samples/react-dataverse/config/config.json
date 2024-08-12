@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dataverse-client-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dataverseClient/DataverseClientWebPart.js",
+          "manifest": "./src/webparts/dataverseClient/DataverseClientWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DataverseClientWebPartStrings": "lib/webparts/dataverseClient/loc/{locale}.js"
+  }
+}
