@@ -75,7 +75,14 @@ This proactive approach ensures that potential threats or unauthorized activitie
     -   **pnpm install**
     -   **gulp serve**
 
-> Include any additional steps as needed.
+In order to deploy the solution:
+
+-   in the command-line run:
+    -   **gulp bundle --ship**
+    -   **gulp package-solution --ship**
+    -   you will find your newly created \*.sppkg file in the **sharepoint/solution** folder.
+-   Upload or drag and drop the newly created client-side solution package to the **app catalog in your tenant**.
+-   By default, the **Enable this app and add it to all sites check box** is selected. Click **Enable app** to add this application customizer to all modern SPO sites in your tenant.
 
 ## References
 
