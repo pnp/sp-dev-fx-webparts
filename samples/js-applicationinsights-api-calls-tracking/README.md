@@ -75,6 +75,8 @@ This proactive approach ensures that potential threats or unauthorized activitie
     -   **pnpm install**
     -   **gulp serve**
 
+## Install and configure
+
 In order to deploy the solution:
 
 -   in the command-line run:
@@ -83,6 +85,36 @@ In order to deploy the solution:
     -   you will find your newly created \*.sppkg file in the **sharepoint/solution** folder.
 -   Upload or drag and drop the newly created client-side solution package to the **app catalog in your tenant**.
 -   By default, the **Enable this app and add it to all sites check box** is selected. Click **Enable app** to add this application customizer to all modern SPO sites in your tenant.
+
+After deploying the solution, configure its properties:
+
+-   Navigate to the **app catalog in your tenant** and open the **Tenant Wide Extensions** list. You will find it under the **https://{yourorg}.sharepoint.com/sites/appcatalog/Lists/TenantWideExtensions/** URL
+-   Select the \*\*Application Insights" item and click edit.
+-   Update the **connectionString** parameter with the [connection string](https://learn.microsoft.com/en-us/azure/azure-monitor/app/sdk-connection-string?tabs=dotnet5#find-your-connection-string) to the Application Insights instance you want to use
+-   Update the **whitelist** parameter to exclude any additional endpoints you want to ignore. This list is semicolon-delimited: `url1;url2`
+-   If you want to temporarily disable tracking, set **enabled** to `false`
+
+### Example Component Properties
+
+```json
+{
+	"connectionString": "InstrumentationKey=xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;IngestionEndpoint=https://switzerlandnorth-0.in.applicationinsights.azure.com/;LiveEndpoint=https://switzerlandnorth.livediagnostics.monitor.azure.com/;ApplicationId=xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+	"whitelist": "",
+	"enabled": true
+}
+```
+
+The **following endpoints are ignored** by default:
+
+-   "browser.pipe.aria.microsoft.com",
+-   "business.bing.com",
+-   "measure.office.com",
+-   "officeapps.live.com",
+-   "outlook.office365.com",
+-   "outlook.office.com",
+-   "nleditor.osi.office.net",
+-   "js.monitor.azure.com",
+-   "thor.aesir.office.com",
 
 ## References
 
