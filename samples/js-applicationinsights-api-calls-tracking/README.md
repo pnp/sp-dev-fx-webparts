@@ -24,11 +24,10 @@ The logs collected include the called endpoints, methods (GET/POST), the origina
 Results can be reviewed using the **Application Map** in Application Insights or by executing **KUSTO query** against the Application Insights logs, offering powerful tools for analyzing and understanding API usage patterns.
 ![KUSTO query in Application Insights](./assets/kusto.png)
 
-For a more proactive approach, you may set up an alert based that automatically triggers when a new external API call is detected.
-![](./assets/alerttule.png)
+For a more proactive approach, you may set up an alert that automatically triggers when a new external API call is detected.
+![Alert rule using KUSTO query](./assets/alerttule.png)
 
-This alerting mechanism allows you to stay informed in real-time whenever an unfamiliar API request occurs.
-If the alert conditions are met, an email notification will be sent to designated administrators or security personnel.
+This mechanism allows you to get informed whenever an unfamiliar API request occurs. If the alert conditions are met, an email notification will be sent to designated administrators or security personnel.
 
 This proactive approach ensures that potential threats or unauthorized activities are quickly identified, allowing for prompt investigation and response before any damage can occur.
 
