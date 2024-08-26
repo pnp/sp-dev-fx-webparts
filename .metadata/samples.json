@@ -6199,11 +6199,11 @@
   {
     "name": "pnp-sp-dev-spfx-extensions-react-field-reporting",
     "source": "pnp",
-    "title": "TODO: TITLE-GOES-HERE",
-    "shortDescription": "DESCRIPTION-GOES-HERE",
+    "title": "React Document Reporting Field Customizer",
+    "shortDescription": "A React-based SPFx application for monitoring user activity within SharePoint documents.",
     "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-reporting",
     "longDescription": [
-      "TODO: LONG-DESCRIPTION-GOES-HERE"
+      "This application logs details about who has opened a document into Application Insights and displays real-time reporting data in tabular and chart formats."
     ],
     "creationDateTime": "2023-12-25",
     "updateDateTime": "2023-12-31",
