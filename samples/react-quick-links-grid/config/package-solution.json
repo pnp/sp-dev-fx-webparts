@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "Enhanced Page Properties",
-    "id": "54ea24ef-5714-4f81-a9e6-e22f70e0c644",
-    "version": "1.3.0.0",
+    "name": "react-quick-links-grid-client-side-solution",
+    "id": "676f926c-fcfa-4921-a624-a6e16aaa511a",
+    "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,14 +12,14 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.17.4"
+      "mpnId": "Undefined-1.19.0"
     },
     "metadata": {
       "shortDescription": {
-        "default": "react-enhanced-page-properties description"
+        "default": "react-quick-links-grid description"
       },
       "longDescription": {
-        "default": "react-enhanced-page-properties description"
+        "default": "react-quick-links-grid description"
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -27,14 +27,14 @@
     },
     "features": [
       {
-        "title": "react-enhanced-page-properties Feature",
-        "description": "The feature that activates elements of the react-enhanced-page-properties solution.",
-        "id": "dd7f5d5b-9d01-417e-826d-915403ce2703",
+        "title": "react-quick-links-grid Feature",
+        "description": "The feature that activates elements of the react-quick-links-grid solution.",
+        "id": "69ff4e37-7786-4f7a-8292-4ab644856d66",
         "version": "1.0.0.0"
       }
     ]
   },
   "paths": {
-    "zippedPackage": "solution/Enhanced Page Properties.sppkg"
+    "zippedPackage": "solution/react-quick-links-grid.sppkg"
   }
 }

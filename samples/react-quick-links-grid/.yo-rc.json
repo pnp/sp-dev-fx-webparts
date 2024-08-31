@@ -2,18 +2,18 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "16.15.1",
+    "nodeVersion": "18.20.4",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.12.0"
     },
     "version": "1.19.0",
-    "libraryName": "react-enhanced-page-properties",
-    "libraryId": "54ea24ef-5714-4f81-a9e6-e22f70e0c644",
+    "libraryName": "react-quick-links-grid",
+    "libraryId": "676f926c-fcfa-4921-a624-a6e16aaa511a",
     "environment": "spo",
     "packageManager": "npm",
-    "solutionName": "react-enhanced-page-properties",
-    "solutionShortDescription": "react-enhanced-page-properties description",
+    "solutionName": "react-quick-links-grid",
+    "solutionShortDescription": "react-quick-links-grid description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
