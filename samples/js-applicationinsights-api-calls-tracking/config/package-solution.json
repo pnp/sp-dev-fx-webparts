@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-security-application-insights",
+    "title": "Aplication Insights Dependencies tracking",
+    "id": "eac452f9-9e08-4048-832c-2662e7840074",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Kinga Kazala",
+      "websiteUrl": "https://dev.to/kkazala",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Monitor and track API calls executed within SharePoint Online (SPO) site."
+      },
+      "longDescription": {
+        "default": "Monitor and track API calls executed within SharePoint Online (SPO) site."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Application Extension - SPFx Application Insights application customizer",
+        "description": "Deploys a custom action with ClientSideComponentId association",
+        "id": "11e0b97e-34d0-43d6-9fbd-ddc405f4ac61",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-security-application-insights.sppkg"
+  }
+}
