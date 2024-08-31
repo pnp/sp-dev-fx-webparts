@@ -1,92 +1,32 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
 import {
+  PropertyPaneDropdown,
+  PropertyPaneTextField,
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+} from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 
-import * as strings from 'EnhancedButtonWebPartStrings';
-import EnhancedButton from './components/EnhancedButton';
-import { IEnhancedButtonProps } from './components/IEnhancedButtonProps';
+import EnhancedButton from "./components/EnhancedButton";
 
 export interface IEnhancedButtonWebPartProps {
-  description: string;
+  label: string;
+  link: string;
+  buttonAlignment: string;
+  containerStyles: string;
+  buttonStyles: string;
+  buttonOnHoverStyles: string;
 }
 
 export default class EnhancedButtonWebPart extends BaseClientSideWebPart<IEnhancedButtonWebPartProps> {
-
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
-
   public render(): void {
-    const element: React.ReactElement<IEnhancedButtonProps> = React.createElement(
+    const element: React.ReactElement = React.createElement(
       EnhancedButton,
-      {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
-      }
+      this.properties
     );
 
     ReactDom.render(element, this.domElement);
-  }
-
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
-  }
-
-
-
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
-        .then(context => {
-          let environmentMessage: string = '';
-          switch (context.app.host.name) {
-            case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-              break;
-            case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-              break;
-            case 'Teams': // running in Teams
-            case 'TeamsModern':
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              environmentMessage = strings.UnknownEnvironment;
-          }
-
-          return environmentMessage;
-        });
-    }
-
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
-  }
-
-  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
-    if (!currentTheme) {
-      return;
-    }
-
-    this._isDarkTheme = !!currentTheme.isInverted;
-    const {
-      semanticColors
-    } = currentTheme;
-
-    if (semanticColors) {
-      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-      this.domElement.style.setProperty('--link', semanticColors.link || null);
-      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
-    }
-
   }
 
   protected onDispose(): void {
@@ -94,28 +34,59 @@ export default class EnhancedButtonWebPart extends BaseClientSideWebPart<IEnhanc
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Basic",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+                PropertyPaneTextField("label", {
+                  label: "Label",
+                }),
+                PropertyPaneTextField("link", {
+                  label: "Link",
+                }),
+                PropertyPaneDropdown("buttonAlignment", {
+                  label: "Button Alignment",
+                  options: [
+                    { key: "flex-start", text: "Left" },
+                    { key: "center", text: "Center" },
+                    { key: "flex-end", text: "Right" },
+                  ],
+                }),
+              ],
+            },
+            {
+              groupName: "Advanced",
+              groupFields: [
+                PropertyPaneTextField("containerStyles", {
+                  label: "Container Styles",
+                  description: "CSS styles to apply to the container",
+                  multiline: true,
+                  rows: 5,
+                }),
+                PropertyPaneTextField("buttonStyles", {
+                  label: "Button Styles",
+                  description: "CSS styles to apply to the button",
+                  multiline: true,
+                  rows: 5,
+                }),
+                PropertyPaneTextField("buttonOnHoverStyles", {
+                  label: "Button On Hover Styles",
+                  description: "CSS styles to apply to the button on hover",
+                  multiline: true,
+                  rows: 5,
+                }),
+              ],
+            },
+          ],
+        },
+      ],
     };
   }
 }

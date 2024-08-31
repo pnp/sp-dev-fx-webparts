@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-enhanced-button-client-side-solution",
+    "name": "React Enhanced Button",
     "id": "84804705-0fca-4c5b-8b6f-e9b01c02d820",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -35,6 +35,6 @@
     ]
   },
   "paths": {
-    "zippedPackage": "solution/react-enhanced-button.sppkg"
+    "zippedPackage": "solution/React Enhanced Button.sppkg"
   }
 }
