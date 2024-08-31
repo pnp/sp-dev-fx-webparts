@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-dataverse-client-side-solution",
+    "id": "230bb7cd-1729-4134-b94b-484d993c986a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-dataverse description"
+      },
+      "longDescription": {
+        "default": "react-dataverse description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-dataverse Feature",
+        "description": "The feature that activates elements of the react-dataverse solution.",
+        "id": "a7fe046e-d5ad-446a-96dc-4e100b1eb7a9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-dataverse.sppkg"
+  }
+}
