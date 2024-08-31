@@ -10,8 +10,8 @@
             "Displays a set of quick links fetched from a SharePoint list.",
             "The quick links are displayed with icons and titles in a responsive grid layout."
         ],
-        "creationDateTime": "2024-08-10",
-        "updateDateTime": "2024-08-10",
+        "creationDateTime": "2024-08-11",
+        "updateDateTime": "2024-08-11",
         "products": [
             "SharePoint"
         ],
