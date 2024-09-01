@@ -1,4 +1,5 @@
 import { css } from "@fluentui/react";
+import { useId } from "@fluentui/react-hooks";
 import * as React from "react";
 import { IEnhancedButtonWebPartProps } from "../EnhancedButtonWebPart";
 import styles from "./EnhancedButton.module.scss";
@@ -6,27 +7,37 @@ import styles from "./EnhancedButton.module.scss";
 export default function EnhancedButton(
   props: IEnhancedButtonWebPartProps
 ): React.ReactElement {
+  const id = useId();
+
   return (
     <>
       <style>
         {`
-        .${styles.enhancedButton} {
+        #${id}.${styles.enhancedButton} {
           --justify-content: ${props.buttonAlignment};
+          --width: ${props.width || "auto"};
+          --height: ${props.height || "auto"};
+          --border-radius: ${props.borderRadius || "4px"};
         }
-        .${styles.enhancedButton}.customCss {
+        #${id}.${styles.enhancedButton}.customCss {
           ${props.containerStyles}
         }
-        .customCss .${styles.link} {
+        #${id}.customCss .${styles.link} {
           ${props.buttonStyles}
         }
 
-        .customCss .${styles.link}:hover {
+        #${id}.customCss .${styles.link}:hover {
           ${props.buttonOnHoverStyles}
         }
       `}
       </style>
-      <div className={css(styles.enhancedButton, "customCss")}>
-        <a href={props.link} className={styles.link}>
+      <div id={id} className={css(styles.enhancedButton, "customCss")}>
+        <a
+          rel="noopener noreferrer"
+          href={props.link}
+          className={styles.link}
+          target={props.linkBehaviour}
+        >
           {props.label}
         </a>
       </div>
