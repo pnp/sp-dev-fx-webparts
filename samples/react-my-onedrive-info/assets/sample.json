@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-my-onedrive-info",
         "source": "pnp",
-        "title": "My OneDrive Info Web Part",
+        "title": "My OneDrive Info",
         "shortDescription": "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-onedrive-info",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-onedrive-info",
@@ -10,7 +10,7 @@
             "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities"
         ],
         "creationDateTime": "2023-02-03",
-        "updateDateTime": "2023-02-03",
+        "updateDateTime": "2024-08-26",
         "products": [
             "SharePoint"
         ],
@@ -21,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.1"
+                "value": "1.19.0"
             }
         ],
         "thumbnails": [
