@@ -26,7 +26,7 @@
       "websiteUrl": "https://github.com/HarminderSethi",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.16.1"
+      "mpnId": "Undefined-1.19.0"
     },
     "metadata": {
       "shortDescription": {
@@ -38,7 +38,6 @@
       "screenshotPaths": [],
       "videoUrl": "",
       "categories": []
-      
     },
     "features": [
       {
@@ -46,7 +45,6 @@
         "description": "The feature that activates elements of the holidays-calendar solution.",
         "id": "182f7879-26d6-4fb6-b5ad-9f34a54ba79d",
         "version": "1.1.0.0"
-        
       }
     ]
   },
