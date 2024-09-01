@@ -6199,11 +6199,11 @@
   {
     "name": "pnp-sp-dev-spfx-extensions-react-field-reporting",
     "source": "pnp",
-    "title": "TODO: TITLE-GOES-HERE",
-    "shortDescription": "DESCRIPTION-GOES-HERE",
+    "title": "React Document Reporting Field Customizer",
+    "shortDescription": "A React-based SPFx application for monitoring user activity within SharePoint documents.",
     "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-reporting",
     "longDescription": [
-      "TODO: LONG-DESCRIPTION-GOES-HERE"
+      "This application logs details about who has opened a document into Application Insights and displays real-time reporting data in tabular and chart formats."
     ],
     "creationDateTime": "2023-12-25",
     "updateDateTime": "2023-12-31",
@@ -8304,6 +8304,69 @@
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-applicationinsights-api-calls-tracking",
+    "source": "pnp",
+    "title": "External API calls tracking with Application Insights",
+    "shortDescription": "This SPFx solution is designed to monitor and track API calls executed within any SharePoint Online (SPO) site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-applicationinsights-api-calls-tracking",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-applicationinsights-api-calls-tracking",
+    "longDescription": [
+      "This SPFx solution is designed to monitor and track API calls executed within any SharePoint Online (SPO) site."
+    ],
+    "creationDateTime": "2024-08-10",
+    "updateDateTime": "2024-08-10",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.19.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "alerttule.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/alerttule.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "ApiCalls.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/ApiCalls.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "kusto.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/kusto.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "kkazala",
+        "pictureUrl": "https://github.com/kkazala.png",
+        "name": "Kinga Kazala"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -13994,6 +14057,56 @@
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-dataverse",
+    "source": "pnp",
+    "title": "Consuming Dataverse API using SPFx",
+    "shortDescription": "Enhance the potential of SharePoint by integrating it with Dataverse, a low-code data platform from Microsoft",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dataverse",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dataverse",
+    "longDescription": [
+      "This project entails the development of a SharePoint Framework (SPFx) solution, designed to bridge the gap between Microsoft SharePoint and Dataverse. The main goal of the project is to enhance the potential of SharePoint by integrating it with Dataverse, a low-code data platform from Microsoft.",
+      "The SPFx solution will allow users to interact with data in the Dataverse environment directly from their SharePoint user interface. This allows for a more seamless and intuitive experience for end-users, who can access, manipulate, and analyze data without needing to switch between different platforms or applications."
+    ],
+    "creationDateTime": "2024-08-12",
+    "updateDateTime": "2024-08-12",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "dataverseclient.PNG",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dataverse/assets/dataverseclient.PNG",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "mgwojciech",
+        "pictureUrl": "https://github.com/mgwojciech.png",
+        "name": "Marcin Wojciechowski"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -21326,7 +21439,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-onedrive-info",
     "source": "pnp",
-    "title": "My OneDrive Info Web Part",
+    "title": "My OneDrive Info",
     "shortDescription": "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-onedrive-info",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-onedrive-info",
@@ -21334,7 +21447,7 @@
       "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities"
     ],
     "creationDateTime": "2023-02-03",
-    "updateDateTime": "2023-02-03",
+    "updateDateTime": "2024-08-26",
     "products": [
       "SharePoint"
     ],
@@ -21345,7 +21458,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.19.0"
       }
     ],
     "thumbnails": [
@@ -24624,6 +24737,77 @@
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-quick-links-grid",
+    "source": "pnp",
+    "title": "Quick Links Grid",
+    "shortDescription": "Displays a set of quick links fetched from a SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-grid",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-grid",
+    "longDescription": [
+      "Displays a set of quick links fetched from a SharePoint list.",
+      "The quick links are displayed with icons and titles in a responsive grid layout."
+    ],
+    "creationDateTime": "2024-08-11",
+    "updateDateTime": "2024-08-11",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.19.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "preview.gif",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-grid/assets/preview.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "356854637-e68afa9a-0e48-40bf-abc0-f0fa12f154c7.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-grid/assets/356854637-e68afa9a-0e48-40bf-abc0-f0fa12f154c7.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "356854684-bae0b02d-aaa8-47ba-b3c1-57e684260fd1.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-grid/assets/356854684-bae0b02d-aaa8-47ba-b3c1-57e684260fd1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "react-quick-links-grid-sample-screenshot.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-grid/assets/react-quick-links-grid-sample-screenshot.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "VenkadeshSundaramurthy",
+        "pictureUrl": "https://github.com/VenkadeshSundaramurthy.png",
+        "name": "Venkadesh Sundaramurthy"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },

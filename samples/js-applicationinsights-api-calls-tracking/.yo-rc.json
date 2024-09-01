@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "packageManager": "pnpm",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.19.0",
+    "libraryName": "sp-fx-security-application-insights",
+    "libraryId": "eac452f9-9e08-4048-832c-2662e7840074",
+    "environment": "spo",
+    "solutionName": "sp-fx-security-application-insights",
+    "solutionShortDescription": "sp-fx-security-application-insights description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}
