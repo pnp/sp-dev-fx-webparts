@@ -15,6 +15,6 @@
     "license": "MIT",
     "dependencies": {
         "gulp": "^4.0.2",
-        "webpack": "^5.84.1"
+        "webpack": "^5.94.0"
     }
 }
