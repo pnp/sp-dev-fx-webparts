@@ -9,9 +9,11 @@ import { ImageManipulation, IImageManipulationSettings } from '../../../componen
 
 export interface IReactImageEditorBaseProps {
   showTitle: boolean;
+  showEditIcon: boolean;
   title: string;
   url?: string;
   settings?: IImageManipulationSettings[];
+  altText?:string;
 
 }
 
@@ -21,6 +23,7 @@ export interface IReactImageEditorProps extends IReactImageEditorBaseProps {
   updateTitleProperty: (value: string) => void;
   updateUrlProperty: (value: string) => void;
   updateManipulationSettingsProperty: (value: IImageManipulationSettings[]) => void;
+
 }
 
 export interface IReactImageEditorState {
@@ -46,10 +49,12 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
     return (
 
       <div className={styles.reactImageEditor}>
-        <WebPartTitle displayMode={this.props.displayMode}
-          title={this.props.title}
-          updateProperty={this.props.updateTitleProperty} />
-        {(isFilePickerOpen || isConfigured) && Environment.type !== EnvironmentType.Local &&
+        {this.props.showTitle &&
+          <WebPartTitle displayMode={this.props.displayMode}
+            title={this.props.title}
+            updateProperty={this.props.updateTitleProperty} />
+        }
+        {(isFilePickerOpen || isConfigured) && Environment.type !== EnvironmentType.Local && this.props.showEditIcon &&
           <FilePicker
             isPanelOpen={isFilePickerOpen}
             accepts={['.gif', '.jpg', '.jpeg', '.png']}
@@ -65,6 +70,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
 
             }}
             context={this.props.context}
+
           />}
 
         {!isConfigured ? (<Placeholder iconName='Edit'
@@ -73,16 +79,16 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
           buttonLabel='Configure'
           onConfigure={this._onConfigure} />) :
           (
-          <ImageManipulation
-            settings={this.props.settings}
-            configSettings={{
-              rotateButtons: [-90, -45, -30, 0, 30, 45, 90]
-            }
-            }
-            displayMode={this.props.displayMode}
-            settingsChanged={this._onSettingsChanged}
-            src={this.props.url}
-          />
+            <ImageManipulation
+              settings={this.props.settings}
+              configSettings={{
+                rotateButtons: [-90, -45, -30, 0, 30, 45, 90]
+              }
+              }
+              displayMode={this.props.displayMode}
+              settingsChanged={this._onSettingsChanged}
+              src={this.props.url} altText={this.props.altText}
+            />
           )}
 
       </div >
@@ -95,7 +101,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
         this._onUrlChanged(
           'https://media.gettyimages.com/photos/'
           + 'whitewater-paddlers-descend-vertical-waterfall-in-kayak-picture-id1256321293?s=2048x2048'
-          );
+        );
       });
     } else {
       this.setState({ isFilePickerOpen: true });

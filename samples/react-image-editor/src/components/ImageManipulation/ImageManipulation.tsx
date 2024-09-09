@@ -59,6 +59,7 @@ export interface IImageManipulationProps {
   editMode?: (mode: boolean) => void;
   configSettings: IImageManipulationConfig;
   displayMode: DisplayMode;
+  altText:string;
 }
 
 export interface IImageManipulationState {
@@ -109,6 +110,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     this.img = new Image();
     this.img.src = url;
     this.img.crossOrigin = 'Anonymous';
+    this.img.alt=this.props.altText?this.props.altText:'Untitled image';
     this.img.onload = () => {
 
       this.applySettings();
@@ -305,7 +307,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
           <canvas className={this.getMaxWidth()}
             style={{ display: 'none' }}
             ref={this.setManipulateRef}></canvas>
-          <canvas className={this.getMaxWidth()} ref={this.setCanvasRef} ></canvas>
+          <canvas className={this.getMaxWidth()} ref={this.setCanvasRef} aria-label={this.props.altText} role='img' >Your browser does not support displaying canvas elements.</canvas>
           {this.state.settingPanel === SettingPanelType.Crop && (this.getCropGrid())}
           {this.state.settingPanel === SettingPanelType.Resize && (this.getResizeGrid())}
 

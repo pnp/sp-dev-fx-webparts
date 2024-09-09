@@ -1,7 +1,10 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "ShowTitleFieldLabel": "Show webpart title"
+    "PropertyPaneDescription": "",
+    "BasicGroupName": "Web part configuration",
+    "ShowTitleFieldLabel": "Show webpart title",
+    "showEditIcon": "Show edit icon",
+    "AltTextFieldLabel":"Alt Text"
+
   }
 });
