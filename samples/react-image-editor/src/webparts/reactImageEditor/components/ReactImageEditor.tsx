@@ -13,7 +13,7 @@ export interface IReactImageEditorBaseProps {
   title: string;
   url?: string;
   settings?: IImageManipulationSettings[];
-  altText?:string;
+  altText?: string;
 
 }
 
