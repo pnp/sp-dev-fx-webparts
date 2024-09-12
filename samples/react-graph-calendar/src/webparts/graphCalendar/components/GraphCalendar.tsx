@@ -10,16 +10,17 @@ import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 import styles from './GraphCalendar.module.scss';
 import { IGraphCalendarProps } from './IGraphCalendarProps';
+import * as microsoftTeams from '@microsoft/teams-js';
 
 const { range } = extendMoment(moment);
 
 interface IGraphCalendarState {
   events: EventInput[];
   height: number;
-  currentActiveStartDate: Date | null;
-  currentActiveEndDate: Date | null;
+  currentActiveStartDate: Date | undefined;
+  currentActiveEndDate: Date | undefined;
   isEventDetailsOpen: boolean;
-  currentSelectedEvent: EventInput | null;
+  currentSelectedEvent: EventInput | undefined;
   groupId: string | undefined;
   tabType: TabType;
 }
@@ -42,10 +43,10 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
 
     // If this is running in Teams, embed the specific Teams styling
     if (this._isRunningInTeams()) {
-      import("./GraphCalendar.Teams.module.scss");
+      import(/* webpackChunkName: 'LightTheme' */"./GraphCalendar.Teams.module.scss");
 
       if (this.props.teamsContext.app.theme === "dark") {
-        import("./GraphCalendar.Teams.Dark.module.scss");
+        import(/* webpackChunkName: 'DarkTheme' */"./GraphCalendar.Teams.Dark.module.scss");
       }
     }
 
@@ -68,10 +69,10 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
     this.state = {
       events: [],
       height: this._calculateHeight(),
-      currentActiveStartDate: null,
-      currentActiveEndDate: null,
+      currentActiveStartDate: undefined,
+      currentActiveEndDate: undefined,
       isEventDetailsOpen: false,
-      currentSelectedEvent: null,
+      currentSelectedEvent: undefined,
       groupId: resolvedGroupId,
       tabType: this._isRunningInTeams() ? (this._isPersonalTab() ? TabType.PersonalTab : TabType.TeamsTab) : TabType.TeamsTab
     };
@@ -153,14 +154,14 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Validates if the current web part is running in Teams
    */
-  private _isRunningInTeams() {
+  private _isRunningInTeams(): microsoftTeams.app.Context {
     return this.props.teamsContext;
   }
 
   /**
    * Validates if the current web part is running in a Personal Tab
    */
-  private _isPersonalTab() {
+  private _isPersonalTab(): boolean {
     let _isPersonalTab: boolean = false;
 
     if (this._isRunningInTeams() && !this.props.teamsContext.team?.internalId) {
@@ -174,7 +175,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * Handles the click event and opens the OUIF Panel
    * @param eventClickInfo The information about the selected event
    */
-  private _openEventPanel(eventClickInfo: any) {
+  private _openEventPanel(eventClickInfo: any): void {
     this.setState({
       isEventDetailsOpen: true,
       currentSelectedEvent: eventClickInfo.event
@@ -184,10 +185,10 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Handles the click event on the dismiss from the Panel and closes the OUIF Panel
    */
-  private _closeEventPanel() {
+  private _closeEventPanel(): void {
     this.setState({
       isEventDetailsOpen: true,
-      currentSelectedEvent: null
+      currentSelectedEvent: undefined
     });
   }
 
@@ -195,7 +196,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * If the view changed, reload the events based on the active view
    * @param info Information about the current active view
    */
-  private _datesRender(info: any) {
+  private _datesRender(info: any): void {
     if (this.calendar.current) {
 
       // If the active view has changed  
@@ -208,7 +209,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Handles the resize event when in Microsoft Teams to ensure a proper responsive behaviour
    */
-  private _handleResize() {
+  private _handleResize(): void {
     if (this._isRunningInTeams()) {
       this.setState({
         height: window.innerHeight - 30
@@ -354,7 +355,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
               this.setState({
                 currentActiveStartDate: startDate,
                 currentActiveEndDate: endDate,
-                currentSelectedEvent: null
+                currentSelectedEvent: undefined
               });
             });
         });

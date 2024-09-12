@@ -117,7 +117,7 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
                   checked: true
                 }),
                 PropertyFieldPeoplePicker('group', {
-                  label: 'PropertyFieldPeoplePicker',
+                  label: 'Group',
                   initialData: this.properties.group,
                   allowDuplicate: false,
                   multiSelect: false,
