@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IComponent, parseIntOrDefault } from "common";
 import { Event } from "model";
 import { useEventsService, useTeamsJS } from "services";
+import { useTimeZoneService } from "services";
 
 const eventIdParam = 'eventid';
 const recurrenceDateParam = 'recurrencedate';
@@ -15,6 +16,7 @@ export const useExecuteEventDeepLink = (displayEvent: (event: Event) => Promise<
     const [eventId, setEventId] = useState<number>();
     const [recurrenceDate, setRecurrenceDate] = useState<Moment>();
     const [event, setEvent] = useState<Event>();
+    const { isDifferenceInTimezone } = useTimeZoneService();
 
     useEffect(() => {
         const { search } = location;
@@ -63,8 +65,8 @@ export const useExecuteEventDeepLink = (displayEvent: (event: Event) => Promise<
     useEffect(() => {
         if (event) {
             console.debug('deep linking to event with ID:', eventId, 'and recurrence date', recurrenceDate?.format());
-
-            const eventToDisplay = (recurrenceDate && event.findOrCreateExceptionForDate(recurrenceDate)) || event;
+            //const { isDifferenceInTimezone } = useTimeZoneService();
+            const eventToDisplay = (recurrenceDate && event.findOrCreateExceptionForDate(recurrenceDate, isDifferenceInTimezone)) || event;
             displayEvent(eventToDisplay).finally(eraseEventFromQueryString);
         }
     }, [event, eventId, recurrenceDate]);

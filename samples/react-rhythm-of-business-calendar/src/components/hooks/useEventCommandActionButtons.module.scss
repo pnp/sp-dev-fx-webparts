@@ -1,0 +1,19 @@
+@import '../common.module';
+
+.save_btn{
+    top:2px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.cancel_btn{
+    top:0px;  
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.container_message{
+    height: 32px;
+    opacity: 0;
+    overflow: hidden 
+}

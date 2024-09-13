@@ -3,7 +3,8 @@ import { Moment } from "moment-timezone";
 import { IIconProps } from "@fluentui/react";
 import { useCallback, useState } from "react";
 import { Configuration } from "schema";
-import { useConfigurationService } from "services";
+import { useConfigurationService, useTimeZoneService } from "services";
+import moment from "moment";
 
 export interface IDateRotatorController {
     previousIconProps: IIconProps;
@@ -14,9 +15,13 @@ export interface IDateRotatorController {
 }
 
 export const useDataRotatorController = (controller: IDateRotatorController) => {
-    const [anchorDate, setAnchorDate] = useState(now());
+    //const [anchorDate, setAnchorDate] = useState(now());
+    const { siteTimeZone } = useTimeZoneService();
+    const [anchorDate, setAnchorDate] = useState(moment().tz(siteTimeZone.momentId));
 
     const { active: config } = useConfigurationService();
+    //const { siteTimeZone } = useTimeZoneService();
+    //console.log("siteTimeZone",siteTimeZone);
 
     const onRotatePreviousDate = useCallback(() => {
         setAnchorDate(controller.previousDate(anchorDate, config));

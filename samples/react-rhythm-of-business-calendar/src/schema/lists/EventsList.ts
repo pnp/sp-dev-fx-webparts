@@ -147,6 +147,13 @@ const Field_ModerationMessage: ITextFieldDefinition = {
     required: false
 };
 
+const Field_TeamsGroupChatId: ITextFieldDefinition = {
+    type: FieldType.Text,
+    name: 'TeamsGroupChatId',
+    displayName: 'Teams Group Chat Id',
+    required: false
+};
+
 const View_AllEvents: IViewDefinition = {
     title: "All RoB Events",
     rowLimit: 600,
@@ -172,7 +179,8 @@ const View_AllEvents: IViewDefinition = {
         Field_ModerationStatus,
         Field_Moderator,
         Field_ModerationTimestamp,
-        Field_ModerationMessage
+        Field_ModerationMessage,
+        Field_TeamsGroupChatId
     ),
     // need to sort by ID ascending in order to ensure the series master is loaded before any exceptions to the series
     query: `
@@ -220,7 +228,8 @@ export const EventsList: IEventsListDefinition = {
         Field_ModerationStatus,
         Field_Moderator,
         Field_ModerationTimestamp,
-        Field_ModerationMessage
+        Field_ModerationMessage,
+        Field_TeamsGroupChatId
     ],
     views: [
         View_AllEvents

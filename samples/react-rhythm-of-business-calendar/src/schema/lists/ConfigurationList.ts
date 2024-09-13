@@ -1,6 +1,7 @@
 import { IListDefinition, FieldType, IViewDefinition, includeStandardViewFields, INumberFieldDefinition, ListTemplateType, IChoiceFieldDefinition, IBooleanFieldDefinition, RoleOperation, RoleType } from "common/sharepoint";
-import { ViewKeys } from "model";
+import { ListViewKeys, ViewKeys, ViewYearFYKeys } from "model";
 import { Defaults } from "../Defaults";
+import { TemplateViewKeys } from "model/TemplateViewKeys";
 
 const Field_SchemaVersion: INumberFieldDefinition = {
     type: FieldType.Number,
@@ -23,6 +24,54 @@ const Field_FiscalYearSartMonth: INumberFieldDefinition = {
     max: 12,
     required: true,
     default: "1"
+};
+
+const Field_FiscalYearStartYear: IChoiceFieldDefinition = {
+    type: FieldType.Choice,
+    name: 'FiscalYearStartYear',
+    displayName: "Fiscal Year Start Year",
+    choices: Object.keys(ViewYearFYKeys),
+    default: ViewYearFYKeys["Next Year"]
+};
+
+const Field_ListViewColumn: IChoiceFieldDefinition = {
+    type: FieldType.Choice,
+    name: 'ListViewColumn',
+    displayName: "List View Column",
+    choices: Object.keys(ListViewKeys),
+    default: ListViewKeys["displayName"],
+    multi: true
+};
+
+
+const Field_UseApprovalsEmailNotification: IBooleanFieldDefinition = {
+    type: FieldType.Boolean,
+    name: 'UseApprovalsEmailNotification',
+    displayName: "Use Approvals Email Notification",
+    default: "No"
+};
+
+const Field_TemplateView: IChoiceFieldDefinition = {
+    type: FieldType.Choice,
+    name: 'TemplateView',
+    displayName: "Template View",
+    choices: Object.keys(TemplateViewKeys),
+    default: TemplateViewKeys["eventTitle"],
+    multi: true
+};
+
+const Field_UseApprovalsTeamsNotification: IBooleanFieldDefinition = {
+    type: FieldType.Boolean,
+    name: 'UseApprovalsTeamsNotification',
+    displayName: "Use Approvals Teams Notification",
+    default: "No"
+};
+
+const Field_UseAddToOutlook: IBooleanFieldDefinition = {
+    type: FieldType.Boolean,
+    name: 'UseAddToOutlook',
+    displayName: "Use Add To Outlook",
+    default: "Yes"
 };
 
 const Field_DefaultView: IChoiceFieldDefinition = {
@@ -82,7 +131,13 @@ const View_AllItems: IViewDefinition = {
         Field_RefinerRailInitiallyExpanded,
         Field_QuarterViewGroupByRefinerId,
         Field_UseApprovals,
-        Field_AllowConfidentialEvents
+        Field_AllowConfidentialEvents,
+        Field_FiscalYearStartYear,
+        Field_UseApprovalsEmailNotification,
+        Field_UseApprovalsTeamsNotification,
+        Field_UseAddToOutlook,
+        Field_ListViewColumn,
+        Field_TemplateView
     )
 };
 
@@ -112,7 +167,13 @@ export const ConfigurationList: IConfigurationListDefinition = {
         Field_RefinerRailInitiallyExpanded,
         Field_QuarterViewGroupByRefinerId,
         Field_UseApprovals,
-        Field_AllowConfidentialEvents
+        Field_AllowConfidentialEvents,
+        Field_FiscalYearStartYear,
+        Field_UseApprovalsEmailNotification,
+        Field_UseApprovalsTeamsNotification,
+        Field_UseAddToOutlook,
+        Field_ListViewColumn,
+        Field_TemplateView
     ],
     views: [View_AllItems],
     view_AllItems: View_AllItems

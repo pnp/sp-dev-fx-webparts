@@ -1,7 +1,7 @@
 import moment, { Moment } from 'moment-timezone';
 import React, { useCallback } from 'react';
 import { DatePicker, IDatePickerProps, Label, Stack } from '@fluentui/react';
-import { ValidationRule, PropsOfType } from 'common';
+import { ValidationRule, PropsOfType, now } from 'common';
 import { ListItemEntity } from 'common/sharepoint';
 import LiveUpdate from './LiveUpdate';
 import { getCurrentValue, LiveType, setValue } from './LiveUtils';
@@ -33,6 +33,27 @@ const LiveDatePicker = <E extends ListItemEntity<any>, P extends PropsOfType<E, 
     } = props;
 
     const value = getCurrentValue(entity, propertyName) as T;
+    //const Datenow = moment(now()).tz(value.tz()).format();
+   
+    const date1String = value && value.toString();
+    const date2String = value && value.toDate().toString();
+
+    // Create Moment objects with Moment Timezone
+
+    const date1 = date1String && moment.tz(date1String, 'ddd MMM DD YYYY HH:mm:ss [GMT]Z');
+    const date2 = date2String && moment.tz(date2String, 'ddd MMM DD YYYY HH:mm:ss [GMT]Z');
+    let totalTime = 0;  
+    // Calculate the time difference
+    if(date1 && date2){ 
+
+        const duration = moment.duration(date1.diff(date2));
+        // Get the difference in hours, minutes, and seconds
+        const hours = duration && duration.hours();
+        const minutes = duration && duration.minutes();
+        const seconds = duration && duration.seconds(); 
+  
+         totalTime= (hours * 3600 + minutes*60 + seconds)
+    }
     const updateValue = useCallback((val: LiveType<E, P>) => updateField(e => setValue(e, propertyName, val)), [updateField, propertyName]);
     const renderValue = useCallback((val: LiveType<E, P>) => <span>{(val as DataType)?.isValid() ? (val as DataType).format('dddd, MMMM DD, YYYY') : ''}</span>, []);
     const formatDate = useCallback((val: Date) => formatMoment(moment(val)), [formatMoment]);
@@ -52,7 +73,7 @@ const LiveDatePicker = <E extends ListItemEntity<any>, P extends PropsOfType<E, 
                         ariaLabel={ariaLabel}
                         isRequired={!label && required}
                         formatDate={formatDate}
-                        value={value?.isValid() && value?.toDate()}
+                        value={value?.isValid() && totalTime > 0 ? value && value.add(totalTime,'seconds').toDate() : value && value.add(totalTime,'seconds').toDate() }
                         onSelectDate={onChange}
                     />
                     {!label && renderLiveUpdateMark()}

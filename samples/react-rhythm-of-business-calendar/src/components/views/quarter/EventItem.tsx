@@ -4,14 +4,15 @@ import { IEvent } from "model";
 import { EventBar, EventBarSize } from "../../events";
 import { EventItemInfo } from "./Builder";
 
-import { QuarterView as strings } from "ComponentStrings";
+import { QuarterView as strings, ViewNames as _strings } from "ComponentStrings";
 
 interface IProps {
     eventInfos: EventItemInfo[];
     onActivate: (event: IEvent, target: HTMLElement) => void;
+    selectedTemplateKeys?: string[];
 }
 
-export const EventItem: FC<IProps> = ({ eventInfos, onActivate }) => {
+export const EventItem: FC<IProps> = ({ eventInfos, onActivate, selectedTemplateKeys }) => {
     const { event, startsInMonth, isRecurring } = first(eventInfos);
     const { endsInMonth } = last(eventInfos);
     const { start, isAllDay } = event;
@@ -35,6 +36,8 @@ export const EventItem: FC<IProps> = ({ eventInfos, onActivate }) => {
                 endsIn={endsInMonth}
                 timeStringOverride={startTimeString}
                 size={EventBarSize.Compact}
+                type= {_strings.Quarter}
+                selectedTemplateKeys={selectedTemplateKeys}
             />
         </div>
     );

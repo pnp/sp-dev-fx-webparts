@@ -356,7 +356,7 @@ export class RecurrenceData {
             }
             case RecurUntilType.date: {
                 const windowEndNode = doc.createElement('windowEnd');
-                windowEndNode.textContent = until.date?.clone().utc().format();
+                windowEndNode.textContent = until.date?.clone().format();
                 ruleNode.appendChild(windowEndNode);
                 break;
             }
