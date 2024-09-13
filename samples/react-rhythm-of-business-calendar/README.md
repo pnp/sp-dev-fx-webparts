@@ -66,7 +66,7 @@ Edit refiner
 ## Contributors
 
 -   [Dan Turley](https://github.com/d-turley)
-    co- author [Mrigango Deb]
+-   Co-authored-by [Mrigango Deb](https://github.com/Mrigango)
 
 ## Version history
 
