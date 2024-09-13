@@ -1,11 +1,25 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "LOCAL Rhythm of Business Calendar",
-        "id": "37df9a1c-b53e-46ad-9efb-2e4da77a724f",
-        "version": "1.0.0.0",
+        "name": "Rhythm of Business Calendar",
+        "id": "8588904e-d33f-40ac-9ee0-2fcfcfb0ebc2",
+        "version": "5.0.1.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
+        "webApiPermissionRequests": [
+            {
+                "resource": "Microsoft Graph",
+                "scope": "ChatMessage.Send"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Chat.Create"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "ChannelMessage.Send"
+            }
+        ],
         "developer": {
             "name": "",
             "websiteUrl": "",
@@ -15,6 +29,6 @@
         }
     },
     "paths": {
-        "zippedPackage": "solution/RhythmOfBusinessCalendar-LOCAL.sppkg"
+        "zippedPackage": "solution/RhythmOfBusinessCalendar.sppkg"
     }
 }
