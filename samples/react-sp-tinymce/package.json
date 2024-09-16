@@ -25,7 +25,7 @@
     "@pnp/spfx-property-controls": "^3.14.0-beta.4786980",
     "@tinymce/tinymce-react": "4.3.0",
     "antd": "^5.0.0",
-    "dompurify": "^2.4.5",
+    "dompurify": "^2.5.4",
     "html-react-parser": "^4.0.0",
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
