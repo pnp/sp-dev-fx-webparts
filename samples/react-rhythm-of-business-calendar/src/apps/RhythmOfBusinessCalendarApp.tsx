@@ -81,7 +81,7 @@ class RhythmOfBusinessCalendarApp extends Component<IProps> {
         return (
             <SharePointApp
                 appName="RhythmOfBusinessCalendar"
-                companyName="Microsoft"
+                companyName="Contoso"
                 spfxComponent={webpart}
                 spfxContext={webpart.context}
                 teams={webpart.context.sdks.microsoftTeams}
