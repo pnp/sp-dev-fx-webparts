@@ -29,7 +29,7 @@
     "@types/react": "16.8.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.18.0",
+    "@microsoft/sp-build-web": "1.20.1",
     "@microsoft/sp-module-interfaces": "1.14.0",
     "@microsoft/sp-tslint-rules": "1.14.0",
     "@types/es6-promise": "0.0.33",
@@ -38,8 +38,8 @@
     "@types/webpack-env": "1.13.1",
     "@voitanos/jest-preset-spfx-react16": "^1.1.0",
     "ajv": "~5.2.2",
-    "gulp": "4.0.2",
+    "gulp": "5.0.0",
     "gulp-sequence": "1.0.0",
-    "jest": "^23.6.0"
+    "jest": "^29.7.0"
   }
 }
