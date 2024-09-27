@@ -30,7 +30,7 @@ export class EventOccurrence implements IEvent {
     public get isConfidential() { return this.event.isConfidential; }
     public get refinerValues() { return this.event.refinerValues; }
     public get contacts() { return this.event.contacts; }
-    public get description() { return this.event.description ? this.parseHTML(this.event.description) : undefined; }
+    public get description() { return this.event.description ? this.event.description : undefined; }
     public get recurrenceExceptionInstanceDate() { return this.event.recurrenceExceptionInstanceDate; }
     public get created(){ return this.event.created; }
     public get createdBy(){ return this.event.creator; }

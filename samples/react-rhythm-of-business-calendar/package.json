@@ -1,6 +1,6 @@
 {
     "name": "rhythm-of-business-calendar",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "main": "lib/index.js",
     "private": true,
     "scripts": {

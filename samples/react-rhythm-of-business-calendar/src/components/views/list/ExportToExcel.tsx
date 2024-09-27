@@ -6,6 +6,7 @@ import { Refiner, humanizeRecurrencePattern } from 'model';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react';
 import { Humanize as _strings } from 'ComponentStrings';
 import { EventOccurrence } from 'model';
+import { renderSanitizedHTML } from "common/components/LiveUtils";
 interface IExportToExcelProps {
   items: any[];
   _refiners:readonly Refiner[]
@@ -84,7 +85,7 @@ const ExportToExcel: React.FC<any> = forwardRef(( props: IExportToExcelProps, re
               <td style={{ border: '1px solid black', padding: '8px' }}>{item.title}</td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{formatDate(item.start)}</td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{formatDate(item.end)}</td>
-              <td style={{ border: '1px solid black', padding: '8px' }}>{item.description}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }} dangerouslySetInnerHTML={{ __html: renderSanitizedHTML(item.description) }}></td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{item.isRecurring ? 'Yes' : 'No'}</td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{item.isAllDay ? 'Yes' : 'No'}</td>
               {_refiners.map((refiner, index) => (

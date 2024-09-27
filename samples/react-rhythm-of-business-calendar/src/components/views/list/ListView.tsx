@@ -10,6 +10,7 @@ import moment from "moment";
 import {humanizeRecurrencePattern } from 'model';
 import { Humanize as _strings } from "ComponentStrings";
 import ExportToExcel from './ExportToExcel';
+import { renderSanitizedHTML } from "common/components/LiveUtils";
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -228,8 +229,14 @@ export class ListView extends React.Component<IViewProps, IDetailsListState> {
             isResizable: true,
             data: 'string',
             onRender: (item: any) => {
-              return <span>{item.description}</span>;
-            },
+              return (
+                  <div 
+                      dangerouslySetInnerHTML={{ 
+                          __html: renderSanitizedHTML(item.description) 
+                      }} 
+                  />
+              );
+          },
             isPadded: true,
           });
           this.setState({ columns: newColumns });

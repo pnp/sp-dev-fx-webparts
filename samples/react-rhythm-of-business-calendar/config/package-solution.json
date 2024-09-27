@@ -3,7 +3,7 @@
     "solution": {
         "name": "Rhythm of Business Calendar",
         "id": "37df9a1c-b53e-46ad-9efb-2e4da77a724f",
-        "version": "5.0.1.0",
+        "version": "5.0.2.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
         "webApiPermissionRequests": [
