@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-tab-field-visit-mashup",
     "source": "pnp",
-    "title": "Teams Tab - Field Visit Demo (Mashup)",
+    "title": "Teams Tab - Field Visit Web Part (Mashup)",
     "shortDescription": "A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-field-visit-mashup",
     "longDescription": [

@@ -1,0 +1,66 @@
+name: Merge and Distribute Samples
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'samples/**'
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  process_samples:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Merge samples
+        run: node .github/scripts/merge-samples/index.js
+
+      - name: Commit merged samples.json on main
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "Automated samples.json update"
+          git push
+
+      - name: Checkout Docs branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'Docs'
+          path: 'docs-branch'
+
+      - name: Copy samples.json to Docs branch
+        run: |
+          cp .metadata/samples.json docs-branch/docs/samples.json
+          cd docs-branch
+          git add -A
+          git diff --staged --quiet || git commit -m "Update samples.json in Docs branch"
+          git push
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'gh-pages'
+          path: 'gh-pages-branch'
+
+      - name: Copy samples.json to gh-pages branch
+        run: |
+          cp .metadata/samples.json gh-pages-branch/samples.json
+          cd gh-pages-branch
+          git add -A
+          git diff --staged --quiet || git commit -m "Update samples.json in gh-pages branch"
+          git push

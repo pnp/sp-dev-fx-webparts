@@ -64,7 +64,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Prerequisites
 
@@ -72,8 +72,9 @@ None
 
 ## Contributors
 
-* [Sudharsan K.](https://github.com/sudharsank) 
 * [Aimery Thomas](https://github.com/a1mery)
+* [Sergey Shiroky](https://github.com/wideserg)
+* [Sudharsan K.](https://github.com/sudharsank)
 
 ## Version history
 
@@ -83,6 +84,7 @@ Version|Date|Comments
 1.1.0.0|Oct 06, 2022|Upgraded to 1.15.2
 1.2.0.0|March 09, 2023|Upgraded to 1.16.1
 1.3.0.0|June 10, 2023|Upgraded to 1.17.0
+1.3.0.1|March 11, 2024|`this.pageurl` must be initialized before building `this.pastAtachmentPath`
 
 ## Minimal Path to Awesome
 
@@ -101,7 +103,6 @@ Version|Date|Comments
 * Used [PnP](https://pnp.github.io/pnpjs/) for communication with SharePoint.
 * Used [jquery-comments](https://viima.github.io/jquery-comments/) for comments control with some customization.
 * Used [Moment.js](https://momentjs.com/) for datetime formatting.
-
 
 ## Video
 

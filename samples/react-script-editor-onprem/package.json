@@ -31,7 +31,7 @@
         "@types/prop-types": "ts2.4",
         "ajv": "~5.2.2",
         "gulp": "~4.0.2",
-        "webpack-bundle-analyzer": "^2.13.1"
+        "webpack-bundle-analyzer": "^4.10.2"
     },
     "scripts": {
         "build": "gulp bundle",

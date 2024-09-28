@@ -118,7 +118,7 @@ export default class WebPartReportWebPart extends BaseClientSideWebPart<IWebPart
         }
       }],
       onExecute: (actionName, newValue) =>{
-        this.properties.displayOption = newValue;
+        this.properties.displayOption = newValue.toString();
         this.render();
       }
     };

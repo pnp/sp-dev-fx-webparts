@@ -170,7 +170,9 @@ body:
   attributes:
     label: Paste the results of SPFx doctor
     description: |
-        Run `m365 spfx doctor -o text` and paste the results. 
+        Run `m365 spfx doctor -o text` and paste the results. If you cannot run SPFx doctor, provide the error message or an explanation why you were not able to provide the information that is crucial to being able to help you.
+
+        Issues without SPFx doctor results may be closed automatically.
         
         Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
 

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-quotes",
     "source": "pnp",
-    "title": "Quote of the Day",
+    "title": "Quote of the Day Web Part",
     "shortDescription": "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quotes",
     "longDescription": [

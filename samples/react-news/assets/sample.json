@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-news",
     "source": "pnp",
-    "title": "News",
+    "title": "News Web Part",
     "shortDescription": "SPFx Webpart to display News from SharePoint site(s)",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news",
     "longDescription": [

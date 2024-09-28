@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-angularelements-helloworld",
     "source": "pnp",
-    "title": "Angular Elements in SharePoint Framework",
+    "title": "Angular Elements in SPFx web parts",
     "shortDescription": "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-helloworld",
     "longDescription": [

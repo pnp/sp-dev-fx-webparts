@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs",
     "source": "pnp",
-    "title": "Using PnPJS with MS Graph",
+    "title": "Web Part Using PnPJS with MS Graph",
     "shortDescription": "This web part demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-pnpjs",
     "longDescription": [

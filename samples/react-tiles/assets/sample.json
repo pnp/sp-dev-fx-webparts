@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-tiles",
     "source": "pnp",
-    "title": "Tiles",
+    "title": "Tiles Web Part",
     "shortDescription": "This web part provides you the ability to add a per instance listing of tiled links. Tiles are stored as a collection of tiles within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles",
     "longDescription": [

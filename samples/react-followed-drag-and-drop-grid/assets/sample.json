@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-followed-drag-and-drop-grid",
         "source": "pnp",
-        "title": "Followed Drag and Drop Grid",
+        "title": "Followed Drag and Drop Grid Web Part",
         "shortDescription": "This web part is a good example (starting point) for a solution to implement alternative view for user followed sites (or any kind of links). The web part uses Microsoft Graph so it presents how to define needed web api permissions in package-solution and use MS Graph API endpoints.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-followed-drag-and-drop-grid",
         "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams",
     "source": "pnp",
-    "title": "Outlook to Teams",
+    "title": "Outlook to Teams Web Part",
     "shortDescription": "This SPFx Outlook Add-In lets you browse your OneDrive, joined Teams or Groups and select a folder to save your complete mail in there.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-outlook-copy2teams",
     "longDescription": [

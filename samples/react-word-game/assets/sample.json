@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-word-game",
     "source": "pnp",
-    "title": "Word Game",
+    "title": "Word Game Web Part",
     "shortDescription": "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-word-game",
     "longDescription": [

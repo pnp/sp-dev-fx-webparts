@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-apim-tablestorage",
     "source": "pnp",
-    "title": "Accessing Azure table storage data using Azure API Management",
+    "title": "Accessing Azure table storage data using Azure API Management Web Part",
     "shortDescription": "Allows you to access securely Azure storage table data using Azure API Management (APIM)",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-apim-tablestorage",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-apim-tablestorage",

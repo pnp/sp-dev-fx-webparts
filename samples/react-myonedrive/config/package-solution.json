@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-myonedrive-client-side-solution",
     "id": "d09a20ba-afd6-4f37-ba4f-f07fa9cf3ed2",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [

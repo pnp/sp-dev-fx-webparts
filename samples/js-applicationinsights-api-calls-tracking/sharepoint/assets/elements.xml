@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="Aplication Insights Dependencies tracking"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="d7aed3bb-3773-4e9e-9f46-dbcd9872d3c5"
+        ClientSideComponentProperties="{&quot;connectionString&quot;:&quot;&quot;,&quot;whitelist&quot;:&quot;&quot;,&quot;enabled&quot;:true}">
+    </CustomAction>
+</Elements>

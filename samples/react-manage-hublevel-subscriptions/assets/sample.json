@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
         "source": "pnp",
-        "title": "Subscription Manager",
+        "title": "Subscription Manager Web Part",
         "shortDescription": "This sample web part demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
         "longDescription": [

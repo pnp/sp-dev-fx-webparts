@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-sitepages-metadata",
     "source": "pnp",
-    "title": "Sitepages Metadata",
+    "title": "Sitepages Metadata Web Part",
     "shortDescription": "Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup Web Part to display them.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sitepages-metadata",
     "longDescription": [

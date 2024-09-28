@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-sales-orders",
         "source": "pnp",
-        "title": "Sales Orders",
+        "title": "Sales Orders Web Part",
         "shortDescription": "Shows how how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",

@@ -4,9 +4,9 @@
 import * as React from 'react';
 import styles from './KanbanTaskManagedProp.module.scss';
 import { IKanbanTaskManagedProps, KanbanTaskMamagedPropertyType } from './IKanbanTask';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import ReactHtmlParser from 'react-html-parser';
-import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react';
+import { IPersonaProps, Persona, PersonaSize, Stack } from '@fluentui/react';
+import HTMLReactParser from 'html-react-parser';
+
 
 export interface IKanbanTaskManagedPropProps extends IKanbanTaskManagedProps { }
 
@@ -26,7 +26,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
             </Stack>
         );
     }
-    private renderValue() {
+    private renderValue():JSX.Element {
         const { name, type, value } = this.props;
         if (this.props.renderer) {
             return this.props.renderer(name, value, type);
@@ -40,11 +40,11 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 //TODO  maybe Formater
                 break;
             case KanbanTaskMamagedPropertyType.percent:
-                return (<span>{`${(value as any) * 100}%`} </span>);
+                return (value?<span>{`${(value as any) * 100}%`} </span>:<span/>);
                 //TODO  maybe better Formater
                 break;
             case KanbanTaskMamagedPropertyType.html:
-                return (<span>{ReactHtmlParser(value)}</span>);
+                return (value?<span>{HTMLReactParser(value)}</span>:<span/>);
                 break;
             case KanbanTaskMamagedPropertyType.person:
 
@@ -75,7 +75,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 return (<span>{JSON.stringify(value)}</span>);
                 break;
             default:
-                throw "Unknow KanbanTaskMamagedPropertyType";
+                throw new Error("Unknow KanbanTaskMamagedPropertyType");
                 break;
         }
     }

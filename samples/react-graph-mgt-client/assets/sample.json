@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-mgt-client",
     "source": "pnp",
-    "title": "Graph MGT Client",
+    "title": "Graph MGT Client Web Part",
     "shortDescription": "This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client. ",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-mgt-client",
     "longDescription": [

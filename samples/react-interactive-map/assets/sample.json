@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-interactive-map",
     "source": "pnp",
-    "title": "Interactive Map",
+    "title": "Interactive Map Web Part",
     "shortDescription": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",

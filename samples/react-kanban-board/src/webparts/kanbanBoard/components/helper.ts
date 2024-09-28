@@ -24,6 +24,6 @@ export function mergeBucketsWithChoices(inB: IKanbanBucket[], choices: string[])
         return currentbuckets;
     } else {
 
-        return undefined;
+        return []
     }
 }

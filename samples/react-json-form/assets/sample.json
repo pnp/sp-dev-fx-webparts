@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-json-form",
         "source": "pnp",
-        "title": "JSON form builder",
+        "title": "JSON form builder Web Part",
         "shortDescription": "Build a custom form with ease",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",

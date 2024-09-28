@@ -2,26 +2,24 @@ import * as React from "react";
 import pnp from "sp-pnp-js";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from "@microsoft/sp-webpart-base";
+
 
 import * as strings from "propertyBagDisplayStrings";
 import PropertyBagDisplay from "./components/PropertyBagDisplay";
 import { IPropertyBagDisplayProps } from "./components/IPropertyBagDisplayProps";
 import { IPropertyBagDisplayWebPartProps } from "./IPropertyBagDisplayWebPartProps";
 import utils from "../shared/utils";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPropertyBagDisplayWebPartProps> {
 
   /**
-   * Renders the component. 
-   * 
-   *  converts the new-line (\n) separated strings to an array of 
+   * Renders the component.
+   *
+   *  converts the new-line (\n) separated strings to an array of
    * strings to be passed to the component.
-   * 
-   * 
+   *
+   *
    * @memberOf PropertyBagDisplayWebPart
    */
   public render(): void {
@@ -30,10 +28,11 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       {
         description: this.properties.description,
         propertiesToDisplay: utils.parseMultilineTextToArray(this.properties.propertiesToDisplay),
-        siteTemplatesToInclude:utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude)
+        siteTemplatesToInclude: utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude)
       }
     );
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
   public onInit(): Promise<void> {
@@ -56,7 +55,7 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "strings.PropertyPaneDescription"
           },
           groups: [
             {

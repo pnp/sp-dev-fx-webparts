@@ -18,8 +18,10 @@ export const getUserPhoto = async (userId: string): Promise<string> => {
   const personaImgUrl = PROFILE_IMAGE_URL + userId;
 
   // tslint:disable-next-line: no-use-before-declare
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const url: string = await getImageBase64(personaImgUrl);
 
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const newHash = await getMd5HashForUrl(url);
 
   if (
@@ -36,8 +38,8 @@ export const getUserPhoto = async (userId: string): Promise<string> => {
  * Get MD5Hash for the image url to verify whether user has default image or custom image
  * @param url
  */
-export const getMd5HashForUrl = async (url: string): Promise<string> => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getMd5HashForUrl = async (url: string): Promise<Maybe<string>> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-use-before-define
   const library : any = await loadSPComponentById(MD5_MODULE_ID) ;
   try {
     const md5Hash = library.Md5Hash;
@@ -71,9 +73,10 @@ export const getImageBase64 = async (pictureUrl: string): Promise<string> => {
     const image = new Image();
     image.addEventListener("load", () => {
       const tempCanvas = document.createElement("canvas");
+      // eslint-disable-next-line no-unused-expressions, no-sequences
       (tempCanvas.width = image.width),
         (tempCanvas.height = image.height),
-        tempCanvas.getContext("2d").drawImage(image, 0, 0);
+        tempCanvas.getContext("2d")?.drawImage(image, 0, 0);
       let base64Str;
       try {
         base64Str = tempCanvas.toDataURL("image/png");

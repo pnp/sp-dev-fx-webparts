@@ -1,0 +1,112 @@
+{
+    "name": "pnp-sp-dev-spfx-web-parts-react-personal-tools-list",
+    "source": "pnp",
+    "title": "Personal tools list Web Part",
+    "shortDescription": "Allows users to select tools from a predefined list and save them in their own personalized view.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",
+    "longDescription": [
+        "This web part allows users to select tools from a predefined list and save them in their own personalized view.",
+        "This web part has the fundamental functionality - a great starting point to build upon if you need something more advanced."
+    ],
+    "creationDateTime": "2024-02-08",
+    "updateDateTime": "2024-02-25",
+    "products": [
+        "SharePoint"
+    ],
+    "metadata": [
+        {
+            "key": "CLIENT-SIDE-DEV",
+            "value": "React"
+        },
+        {
+            "key": "SPFX-VERSION",
+            "value": "1.18.0"
+        }
+    ],
+    "thumbnails": [
+        {
+            "name": "MyToolsDemo1.gif",
+            "type": "image",
+            "order": 100,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/MyToolsDemo1.gif",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "MyToolsDemo2.gif",
+            "type": "image",
+            "order": 101,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/MyToolsDemo2.gif",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "availableTools.png",
+            "type": "image",
+            "order": 102,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/availableTools.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "mytoold.png",
+            "type": "image",
+            "order": 103,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/mytoold.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "mytoolslist.png",
+            "type": "image",
+            "order": 104,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/mytoolslist.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "savedtools.png",
+            "type": "image",
+            "order": 105,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/savedtools.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "savetools.png",
+            "type": "image",
+            "order": 106,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/savetools.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "selecttools.png",
+            "type": "image",
+            "order": 107,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/selecttools.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "settings.png",
+            "type": "image",
+            "order": 108,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/settings.png",
+            "alt": "Web Part Preview"
+        },
+        {
+            "name": "video-demo1.mp4",
+            "type": "video",
+            "order": 109,
+            "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/video-demo1.mp4"
+        }
+    ],
+    "authors": [
+        {
+            "gitHubAccount": "Eli-Schei",
+            "pictureUrl": "https://github.com/Eli-Schei.png",
+            "name": "Eli Schei"
+        }
+    ],
+    "references": [
+        {
+            "name": "Build your first SharePoint client-side web part",
+            "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+            "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        }
+    ]
+}

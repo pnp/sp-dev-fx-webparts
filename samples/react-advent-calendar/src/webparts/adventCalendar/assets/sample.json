@@ -2,7 +2,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
       "source": "pnp",
-      "title": "Advent Calendar",
+      "title": "Advent Calendar Web Part",
       "shortDescription": "This project shows how to create an Advent Calendar using SPFx and React.",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
       "longDescription": [

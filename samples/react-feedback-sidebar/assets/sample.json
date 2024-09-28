@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-feedback-sidebar",
         "source": "pnp",
-        "title": "Feedback Sidebar",
+        "title": "Feedback Sidebar Web Part",
         "shortDescription": "This web part displays a sidebar that allows users to provide feedback on various sections of your site.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback-sidebar",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback-sidebar",

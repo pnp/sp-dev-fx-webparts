@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant",
     "source": "pnp",
-    "title": "Fluent UI Theme Variant",
+    "title": "Fluent UI Theme Variant Web Part",
     "shortDescription": "An example of how to apply a custom theme or a variation of the current SharePoint theme directly to the web part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-theme-variant",
     "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-page-properties",
     "source": "pnp",
-    "title": "Enhanced Page Properties",
+    "title": "Enhanced Page Properties Web Part",
     "shortDescription": "Goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-page-properties",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-page-properties",

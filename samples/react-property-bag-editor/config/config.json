@@ -1,26 +1,6 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/propertyBagEditor/PropertyBagEditorWebPart.js",
-      "manifest": "./src/webparts/propertyBagEditor/PropertyBagEditorWebPart.manifest.json",
-      "outputPath": "./dist/property-bag-editor.bundle.js"
-    },
-    {
-      "entry": "./lib/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.js",
-      "manifest": "./src/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.manifest.json",
-      "outputPath": "./dist/property-bag-display.bundle.js"
-    },
-    {
-      "entry": "./lib/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.js",
-      "manifest": "./src/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.manifest.json",
-      "outputPath": "./dist/property-bag-filtered-site-list.bundle.js"
-    },
-    {
-      "entry": "./lib/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.js",
-      "manifest": "./src/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.manifest.json",
-      "outputPath": "./dist/property-bag-global-nav.bundle.js"
-    }
-  ],
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
   "externals": {
     "sp-pnp-js": "https://cdnjs.cloudflare.com/ajax/libs/sp-pnp-js/2.0.1/pnp.min.js",
     "sp-init": {
@@ -50,9 +30,43 @@
     }
   },
   "localizedResources": {
-    "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js",
-    "propertyBagDisplayStrings": "webparts/propertyBagDisplay/loc/{locale}.js",
-    "propertyBagFilteredSiteListStrings": "webparts/propertyBagFilteredSiteList/loc/{locale}.js",
-    "propertyBagGlobalNavStrings": "webparts/propertyBagGlobalNav/loc/{locale}.js"
+    "propertyBagEditorStrings": "lib/webparts/propertyBagEditor/loc/{locale}.js",
+    "propertyBagDisplayStrings": "lib/webparts/propertyBagDisplay/loc/{locale}.js",
+    "propertyBagFilteredSiteListStrings": "lib/webparts/propertyBagFilteredSiteList/loc/{locale}.js",
+    "propertyBagGlobalNavStrings": "lib/webparts/propertyBagGlobalNav/loc/{locale}.js"
+  },
+  "bundles": {
+    "property-bag-editor-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/propertyBagEditor/PropertyBagEditorWebPart.js",
+          "manifest": "./src/webparts/propertyBagEditor/PropertyBagEditorWebPart.manifest.json"
+        }
+      ]
+    },
+    "property-bag-display-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.js",
+          "manifest": "./src/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.manifest.json"
+        }
+      ]
+    },
+    "property-bag-filtered-site-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.js",
+          "manifest": "./src/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.manifest.json"
+        }
+      ]
+    },
+    "property-bag-global-nav-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.js",
+          "manifest": "./src/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.manifest.json"
+        }
+      ]
+    }
   }
 }

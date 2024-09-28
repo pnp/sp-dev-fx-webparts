@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-groups-teams",
     "source": "pnp",
-    "title": "All Microsoft 365 Groups and Teams",
+    "title": "All Microsoft 365 Groups and Teams Web Part",
     "shortDescription": "Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-groups-teams",
     "longDescription": [

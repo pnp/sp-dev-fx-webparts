@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-star-ratings",
     "source": "pnp",
-    "title": "Star Ratings",
+    "title": "Star Ratings Web Part",
     "shortDescription": "Demonstrates Star Ratings capabilities to SharePoint News.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings",
     "longDescription": [

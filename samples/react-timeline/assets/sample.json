@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-timeline",
     "source": "pnp",
-    "title": "Timeline",
+    "title": "Timeline Web Part",
     "shortDescription": "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-timeline",
     "longDescription": [

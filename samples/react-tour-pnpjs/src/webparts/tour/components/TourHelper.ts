@@ -1,18 +1,13 @@
-import {
-  sp
-} from "@pnp/sp";
-import { graph } from "@pnp/graph";
-
-
-
+import ITourStep from "../model/ITourStep";
+import { ITourStepConfig } from "./ITourProps";
 
 export class TourHelper {
 
-  public static getTourSteps(settings: any[]): any[] {
+  public static getTourSteps(settings: ITourStepConfig[]): ITourStep[] {
 
-    var result: any[] = new Array<any>();
+    const result: ITourStep[] = new Array<ITourStep>();
 
-    if (settings != undefined) {
+    if (settings !== undefined) {
       settings.forEach(ele => {
         if (ele.Enabled) {
           result.push(

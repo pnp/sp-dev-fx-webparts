@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework-sso",
     "source": "pnp",
-    "title": "Single-Sign On Bot Framework",
+    "title": "Single-Sign On Bot Framework Web Part",
     "shortDescription": "The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework-sso",
     "longDescription": [

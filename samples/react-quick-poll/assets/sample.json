@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-quick-poll",
     "source": "pnp",
-    "title": "Quick Poll",
+    "title": "Quick Poll Web Part",
     "shortDescription": "This component is developed for the users who really need to create a Poll within a minute and with less maintenance.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-poll",
     "longDescription": [

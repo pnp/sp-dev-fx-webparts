@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-quick-links",
         "source": "pnp",
-        "title": "Quick Links",
+        "title": "Quick Links Web Part",
         "shortDescription": "A demonstration of how one could build SharePoints Quick Links web part",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links",

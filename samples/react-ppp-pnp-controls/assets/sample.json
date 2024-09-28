@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls",
         "source": "pnp",
-        "title": "Property Pane Portal PnP Controls",
+        "title": "Property Pane Portal PnP Controls Web Part",
         "shortDescription": "The React-PPP-PnP-Controls sample showcases the use of the Property Pane Portal to display the PnP SPFx React controls in the SPFx Property Pane.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",

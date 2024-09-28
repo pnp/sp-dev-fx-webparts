@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "fafa2d64-5329-4cc6-a5e6-cd098c9fe406",
+  "alias": "AwardRecognitionWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Advanced" },
+      "title": { "default": "Award Recognition" },
+      "description": { "default": "AwardRecognition description" },
+      "officeFabricIconFontName": "Medal",
+      "properties": {
+        "description": "Award Recognition"
+      }
+    }
+  ]
+}

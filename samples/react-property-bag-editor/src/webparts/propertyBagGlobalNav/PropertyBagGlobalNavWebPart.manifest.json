@@ -1,10 +1,14 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "8634e32b-eda4-483d-8fe9-5f2075339eb8",
   "alias": "PropertyBagGlobalNavWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "*",
   "manifestVersion": 2,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "safeWithCustomScriptDisabled": false,
   "preconfiguredEntries": [
     {
       "groupId": "8634e32b-eda4-483d-8fe9-5f2075339eb8",

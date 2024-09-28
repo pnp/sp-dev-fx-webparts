@@ -1,7 +1,7 @@
 import * as React                                   from 'react';
 import * as Handlebars                              from "handlebars";
 import * as strings                                 from 'contentQueryStrings';
-import { Spinner }                                  from 'office-ui-fabric-react';
+import { Spinner }                                  from '@fluentui/react';
 import { isEmpty }                                  from '@microsoft/sp-lodash-subset';
 import { Text }                                     from '@microsoft/sp-core-library';
 import { IContentQueryProps }                       from './IContentQueryProps';
@@ -10,7 +10,7 @@ import { IContentQueryTemplateContext }             from './IContentQueryTemplat
 import { SPComponentLoader }                        from '@microsoft/sp-loader';
 import styles                                       from './ContentQuery.module.scss';
 import { Placeholder }                              from "@pnp/spfx-controls-react/lib/Placeholder";
-import { Icon }                                     from 'office-ui-fabric-react/lib/components/Icon';
+import { Icon }                                     from '@fluentui/react';
 import { IMandatoryFieldsStatus }                   from './IMandatoryFieldsStatus';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
@@ -41,6 +41,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
     super(props);
 
     // Imports the handlebars-helpers
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     let helpers = require<any>('handlebars-helpers')({
       handlebars: Handlebars
     });
@@ -65,6 +66,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
    *************************************************************************************/
   private loadExternalScriptsSequentially(scriptUrls: string[]): Promise<{}> {
     var index = 0;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     var _this_ = this;
 
     return new Promise((resolve, reject) => {
@@ -80,7 +82,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
             });
         }
         else {
-          resolve();
+          resolve(null);
         }
       }
       next();
@@ -386,7 +388,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
 
         {/* Shows the query results once loaded */}
         {mandatoryFieldsConfigured && !this.state.loading && !this.state.error &&
-          <div dangerouslySetInnerHTML={this.createMarkup(this.state.processedTemplateResult)}></div>
+          <div dangerouslySetInnerHTML={this.createMarkup(this.state.processedTemplateResult)} />
         }
 
       </div>

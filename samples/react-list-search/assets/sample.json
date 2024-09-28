@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-list-search",
     "source": "pnp",
-    "title": "List Search",
+    "title": "List Search Web Part",
     "shortDescription": "This list search web part allows the user to show data from lists or libraries.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-search",
     "longDescription": [

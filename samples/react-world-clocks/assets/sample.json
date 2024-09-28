@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-world-clocks",
     "source": "pnp",
-    "title": "React World Clocks",
+    "title": "World Clocks Web Part",
     "shortDescription": "This sample is extension of the single World time clock sample that was provided in SP Starter Kit.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-world-clocks",
     "longDescription": [

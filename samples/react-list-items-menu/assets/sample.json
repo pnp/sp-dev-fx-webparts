@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-list-items-menu",
     "source": "pnp",
-    "title": "List Items Menu",
+    "title": "List Items Menu Web Part",
     "shortDescription": "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-items-menu",
     "longDescription": [

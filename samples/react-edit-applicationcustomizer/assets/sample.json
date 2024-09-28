@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-edit-applicationcustomizer",
     "source": "pnp",
-    "title": "Edit Application Customizers",
+    "title": "Edit Application Customizers Web Part",
     "shortDescription": "This web part will allow users to view/update application customizers properties across any web where the current user has access to.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-edit-applicationcustomizer",
     "longDescription": [

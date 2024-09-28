@@ -8,5 +8,6 @@ export interface IOrgChartProps {
   context: WebPartContext;
   startFromUser: IPropertyFieldGroupOrPerson[];
   showAllManagers: boolean;
+  showGuestUsers: boolean;
   showActionsBar:boolean;
 }

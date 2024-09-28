@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-adaptivecards-hooks",
     "source": "pnp",
-    "title": "Adaptive Cards Viewer using Hooks",
+    "title": "Adaptive Cards Viewer Web Parts using Hooks",
     "shortDescription": "A version of react-adaptivecards using React Hooks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards-hooks",
     "longDescription": [

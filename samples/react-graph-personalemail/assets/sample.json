@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-personalemail",
     "source": "pnp",
-    "title": "Personal e-mail",
+    "title": "Personal e-mail Web Part",
     "shortDescription": "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-personalemail",
     "longDescription": [

@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-http-client",
         "source": "pnp",
-        "title": "GitHub Profile display via API",
+        "title": "GitHub Profile Web Part Display via API",
         "shortDescription": "This web part loads the GitHub profile using SPHttp client in PnP v3.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-http-client",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-http-client",

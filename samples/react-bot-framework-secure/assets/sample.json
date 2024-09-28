@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework-secure",
     "source": "pnp",
-    "title": "Secure Bot Framework",
+    "title": "Secure Bot Framework Web Part",
     "shortDescription": "This sample shows how to secure your conversation including the use of a Direct Line token instead of secret, for user id, generate it inside client side and detect if the client has changed the user ID and reject the change.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework-secure",
     "longDescription": [

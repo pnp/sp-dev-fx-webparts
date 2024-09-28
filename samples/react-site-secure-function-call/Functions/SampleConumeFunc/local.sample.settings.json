@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "tenantId": "",
+    "clientId": "",
+    "clientSecret": "",
+    "domain": "xxx.azurewebsites.net"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}

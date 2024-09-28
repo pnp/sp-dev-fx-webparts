@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-staffdirectory",
     "source": "pnp",
-    "title": "Staff Directory",
+    "title": "Staff Directory Web Part",
     "shortDescription": "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staffdirectory",
     "longDescription": [

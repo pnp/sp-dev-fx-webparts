@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api",
     "source": "pnp",
-    "title": "Using Dynamics CRM API",
+    "title": "Web Part Using Dynamics CRM API",
     "shortDescription": "This sample shows how to consume Dynamics CRM API using AadTokenProvider class.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api",
     "longDescription": [

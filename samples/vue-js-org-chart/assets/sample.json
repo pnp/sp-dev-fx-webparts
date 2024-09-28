@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-vue-js-org-chart",
     "source": "pnp",
-    "title": "VueJS Org Chart",
+    "title": "VueJS Org Chart Web Part",
     "shortDescription": "A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vue-js-org-chart",
     "longDescription": [

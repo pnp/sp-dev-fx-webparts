@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-send-notification",
     "source": "pnp",
-    "title": "Send Notifications in Teams",
+    "title": "Send Notifications in Teams Web Part",
     "shortDescription": "This web part allows you to send MS Teams feed notifications to a selected user",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-send-notification",
     "longDescription": [

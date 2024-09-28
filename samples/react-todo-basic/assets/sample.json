@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-todo-basic",
     "source": "pnp",
-    "title": "Todo Basic",
+    "title": "Todo Basic Web Part",
     "shortDescription": "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic",
     "longDescription": [

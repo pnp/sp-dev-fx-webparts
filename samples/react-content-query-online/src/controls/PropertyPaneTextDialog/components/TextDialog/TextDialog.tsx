@@ -1,7 +1,7 @@
 import * as React                               from 'react';
-import { Dialog, DialogType, DialogFooter } 	from 'office-ui-fabric-react';
-import { Button, ButtonType, Label } 			from 'office-ui-fabric-react';
-import { TextField } 							from 'office-ui-fabric-react';
+import { Dialog, DialogType, DialogFooter } 	from '@fluentui/react';
+import { Button, ButtonType, Label } 			from '@fluentui/react';
+import { TextField } 							from '@fluentui/react';
 import { ITextDialogProps }                  	from './ITextDialogProps';
 import { ITextDialogState }                  	from './ITextDialogState';
 import AceEditor 								from 'react-ace';
@@ -17,8 +17,8 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 
     /*************************************************************************************
      * Component's constructor
-     * @param props 
-     * @param state 
+     * @param props
+     * @param state
      *************************************************************************************/
     constructor(props: ITextDialogProps, state: ITextDialogState) {
         super(props);
@@ -79,7 +79,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
         return (
             <div>
 				<Label>{ this.props.strings.dialogButtonLabel }</Label>
-				
+
                 <Button label={ this.props.strings.dialogButtonLabel } onClick={ this.showDialog.bind(this) }>{ this.props.strings.dialogButtonText }</Button>
 
 				<Dialog type={ DialogType.normal }
@@ -89,7 +89,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 						subText={ this.props.strings.dialogSubText }
 						isBlocking={ true }
 						containerClassName={ 'ms-dialogMainOverride ' + styles.textDialog }>
-				
+
 					<AceEditor
 						width="100%"
 						mode="html"

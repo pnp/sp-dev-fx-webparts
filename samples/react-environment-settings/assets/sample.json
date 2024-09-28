@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
         "source": "pnp",
-        "title": "SPFx environment settings management",
+        "title": "SPFx environment settings management web part",
         "shortDescription": "Easily swap between environments when building SPFx solutions",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",

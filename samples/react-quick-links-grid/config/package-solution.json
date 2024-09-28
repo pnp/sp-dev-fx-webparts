@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-quick-links-grid-client-side-solution",
+    "id": "676f926c-fcfa-4921-a624-a6e16aaa511a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-quick-links-grid description"
+      },
+      "longDescription": {
+        "default": "react-quick-links-grid description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-quick-links-grid Feature",
+        "description": "The feature that activates elements of the react-quick-links-grid solution.",
+        "id": "69ff4e37-7786-4f7a-8292-4ab644856d66",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-quick-links-grid.sppkg"
+  }
+}

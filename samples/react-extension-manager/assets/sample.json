@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-extension-manager",
         "source": "pnp",
-        "title": "Tenant wide extension manager",
+        "title": "Tenant wide extension manager web part",
         "shortDescription": "Manage those tenant wide extensions",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-extension-manager",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-extension-manager",

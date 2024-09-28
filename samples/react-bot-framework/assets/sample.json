@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework",
     "source": "pnp",
-    "title": "Microsoft Bot Framework Web Chat",
+    "title": "Microsoft Bot Framework Web Chat Web Part",
     "shortDescription": "A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework",
     "longDescription": [

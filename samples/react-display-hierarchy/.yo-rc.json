@@ -1,12 +1,21 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "spfx-new",
+    "libraryId": "d89e19bf-7bf0-4ca2-b131-ba9b8f2e5754",
     "environment": "spo",
-    "version": "1.11.0",
-    "isDomainIsolated": false,
-    "libraryName": "spfx-react-hierarchy-view",
-    "libraryId": "2fd9a018-0cd9-4cca-9e84-4fac64b83333",
     "packageManager": "npm",
+    "solutionName": "spfx-new",
+    "solutionShortDescription": "spfx-new description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
     "componentType": "webpart"
   }
 }

@@ -1,7 +1,7 @@
 import { IQueryFilterField }    from './IQueryFilterField';
 import { QueryFilterOperator }  from './QueryFilterOperator';
 import { QueryFilterJoin }      from './QueryFilterJoin';
-import { IPersonaProps, ITag }  from 'office-ui-fabric-react';
+import { IPersonaProps, ITag }  from '@fluentui/react';
 
 export interface IQueryFilter {
    index: number;

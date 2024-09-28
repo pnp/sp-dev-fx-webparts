@@ -8,7 +8,7 @@ Currently support following types:
 
 - Single line text
 - Multiple line text
-- Choice
+- Choice (should enable multiple choices)
 - Date
 
 ### Configuration
@@ -30,7 +30,7 @@ Currently support following types:
 
 ## Compatibility
 
-![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg)
+![SPFx 1.19.0](https://img.shields.io/badge/SPFx-1.19.0-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
@@ -40,16 +40,17 @@ Currently support following types:
 - [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 
-- [Ari Gunawan](https://github.com/AriGunawan)
+- [Ari Gunawan](https://github.com/AriGunawan) ([@AriDev3023](https://twitter.com/AriDev3023))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.3|August 10, 2024|Upgrade SPFx version to 1.19
 1.2|October 29, 2023|Upgrade SPFx version to 1.18
 1.1|October 23, 2023|Add support for choice and date fields
 1.0|September 23, 2023|Initial release

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-members-with-presence",
     "source": "pnp",
-    "title": "Group members list with Presence information",
+    "title": "Group members list with Presence information web part",
     "shortDescription": "This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API).",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-members-with-presence",
     "longDescription": [

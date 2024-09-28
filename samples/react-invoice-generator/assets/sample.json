@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-invoice-generator",
         "source": "pnp",
-        "title": "Invoice Generator",
+        "title": "Invoice Generator Web Part",
         "shortDescription": "SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",

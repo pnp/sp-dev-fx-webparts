@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-upgrade-me",
     "source": "pnp",
-    "title": "Upgrade Me",
+    "title": "Upgrade Me Web Part",
     "shortDescription": "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me",
     "longDescription": [

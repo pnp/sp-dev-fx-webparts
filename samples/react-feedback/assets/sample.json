@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-feedback",
     "source": "pnp",
-    "title": "Feedback",
+    "title": "Feedback Web Part",
     "shortDescription": "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback",
     "longDescription": [

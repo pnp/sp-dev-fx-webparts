@@ -5,6 +5,7 @@ define([], function() {
     "TitleFieldLabel": "Title",
     "startFromUserLabel": "Start from user",
     "showactionsLabel": "Show actions bar",
-    "showAllManagers": "Show all managers"
+    "showAllManagers": "Show all managers",
+    "showGuestUsers": "Show guest users",
   }
 });

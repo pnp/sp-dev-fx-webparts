@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-video-banner",
     "source": "pnp",
-    "title": "Video Banner",
+    "title": "Video Banner Web Part",
     "shortDescription": "Use this Web Part to add a video banner with a text on top of it to your pages. ",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-video-banner",
     "longDescription": [

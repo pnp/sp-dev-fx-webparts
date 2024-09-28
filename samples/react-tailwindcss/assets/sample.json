@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss",
     "source": "pnp",
-    "title": "Tailwind CSS",
+    "title": "Tailwind CSS Web Part",
     "shortDescription": "This project shows how to integrate Tailwind CSS framework into a SPFx React project.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
     "longDescription": [

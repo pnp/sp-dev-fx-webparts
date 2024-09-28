@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-daterangepicker",
     "source": "pnp",
-    "title": "Date range picker in SPFx",
+    "title": "Date range picker in SPFx Web Part",
     "shortDescription": "This web part used the date range picker in the SharePoint Framework (SPFx) web part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-daterangepicker",
     "longDescription": [

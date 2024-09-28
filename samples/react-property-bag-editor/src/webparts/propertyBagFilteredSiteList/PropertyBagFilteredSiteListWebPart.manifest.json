@@ -1,15 +1,23 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "b81a6789-e93b-4be5-baa7-59f34004694a",
   "alias": "PropertyBagFilteredSiteListWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "*",
   "manifestVersion": 2,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "safeWithCustomScriptDisabled": false,
   "preconfiguredEntries": [
     {
       "groupId": "b81a6789-e93b-4be5-baa7-59f34004694a",
-       "group": { "default": "Property Bag Navigation" },
-    "title": { "default": "Property Bag Site List" },
+      "group": {
+        "default": "Property Bag Navigation"
+      },
+      "title": {
+        "default": "Property Bag Site List"
+      },
       "description": {
         "default": "Displays a list of sites with the selected properties"
       },

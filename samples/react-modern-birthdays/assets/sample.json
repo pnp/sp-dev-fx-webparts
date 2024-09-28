@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
         "source": "pnp",
-        "title": "Birthdays Timeline",
+        "title": "Birthdays Timeline Web Part",
         "shortDescription": "Shows upcoming birthdays in the company in a timeline",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
@@ -50,7 +50,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays",
         "source": "pnp",
-        "title": "Birthdays",
+        "title": "Birthdays Web Part",
         "shortDescription": "Shows upcoming birthdays in the company",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",

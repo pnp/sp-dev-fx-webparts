@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styles from './KanbanTask.module.scss';
 import * as strings from 'KanbanBoardStrings';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+
 import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
 import classNames from 'classnames';
-import {  Persona, PersonaSize } from 'office-ui-fabric-react';
+import { IconButton, Persona, PersonaSize } from '@fluentui/react';
 
 export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings {
 
     toggleCompleted?: (taskId: string) => void;
     openDetails: (taskId: string) => void;
-    onDragStart: (event) => void;
-    onDragEnd: (event) => void;
+    onDragStart: (event:any) => void;
+    onDragEnd: (event:any) => void;
     isMoving: boolean;
 }
 
@@ -83,6 +83,7 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
 
     private _openDetails(): void {
+        console.log('openDetails');
         if (this.props.openDetails) {
             this.props.openDetails(this.props.taskId);
         }

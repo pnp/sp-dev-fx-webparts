@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-comparer",
     "source": "pnp",
-    "title": "Comparer with File Picker",
+    "title": "Comparer Web Part with File Picker",
     "shortDescription": "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer",
     "longDescription": [

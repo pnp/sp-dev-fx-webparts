@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-news-banner",
     "source": "pnp",
-    "title": "News Banner",
+    "title": "News Banner Web Part",
     "shortDescription": "Shows news information as a Banner, this information come from a list defined in any site.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-banner",
     "longDescription": [

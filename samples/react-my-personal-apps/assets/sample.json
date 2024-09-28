@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-personal-apps",
     "source": "pnp",
-    "title": "My Personal Apps",
+    "title": "My Personal Apps Web Part",
     "shortDescription": "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-personal-apps",
     "longDescription": [

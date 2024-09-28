@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
     "source": "pnp",
-    "title": "Security Grid",
+    "title": "Security Grid Web Part",
     "shortDescription": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
     "longDescription": [

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-tiles-v2",
     "source": "pnp",
-    "title": "Tiles V2",
+    "title": "Tiles V2 Web Part",
     "shortDescription": "This solution creates a customizable Tiles Web part, it uses a stored collection from the PnP `PropertyFieldCollectionData` control and allows the user to choose the color scheme (theme or custom) and to set the size of the tiles.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles-v2",
     "longDescription": [

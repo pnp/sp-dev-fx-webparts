@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-adaptivecards",
     "source": "pnp",
-    "title": "Adaptive Cards Host",
+    "title": "Adaptive Cards Host Web Part",
     "shortDescription": "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards",
     "longDescription": [

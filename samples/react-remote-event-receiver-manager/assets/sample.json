@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-remote-event-receiver-manager",
     "source": "pnp",
-    "title": "Remote Event Receiver Manager",
+    "title": "Remote Event Receiver Manager Web Part",
     "shortDescription": "Lets you add and delete remote event receivers to lists",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-remote-event-receiver-manager",
     "longDescription": [

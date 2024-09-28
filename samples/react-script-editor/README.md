@@ -202,6 +202,8 @@ Version|Date|Comments
 1.0.21.0|March 11, 2023|Bump dependencies to allow react-script-editor to build under SPFx 1.16.1
 1.0.22.0|April 24, 2023|Added support for script in external template 
 1.0.23.0|September 7, 2023|Upgrade to SPFx 1.17.4
+1.0.24.0|March 8, 2024|Upgrade to SPFx 1.18.2
+1.0.25.0|September 25, 2024|Upgrade to SPFx 1.19.0, added support for audience targeting using SharePoint Groups, Entra Groups and individuals.
 
 
 ## Minimal Path to Awesome

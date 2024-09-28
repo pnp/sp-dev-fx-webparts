@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater",
     "source": "pnp",
-    "title": "Teams Membership Updater",
+    "title": "Teams Membership Updater Web Part",
     "shortDescription": "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-membership-updater",
     "longDescription": [

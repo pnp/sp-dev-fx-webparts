@@ -20,7 +20,7 @@ import {
 export class RssHttpClientRss2JsonService implements IRssHttpClientComponentService {
   public async get(feedRequest: IRssReaderRequest): Promise<IRssReaderResponse> {
 
-    var p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
+    const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
       let rawFeedOutput: any = null;
       let response: IRssReaderResponse = null;
@@ -28,7 +28,7 @@ export class RssHttpClientRss2JsonService implements IRssHttpClientComponentServ
       try {
 
         //Create the url to the rss2json service per documentation at: https://rss2json.com/docs
-        let rssUrl: string = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feedRequest.url)
+        const rssUrl: string = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feedRequest.url)
           + (feedRequest.feedServiceApiKey ? "&api_key=" + encodeURIComponent(feedRequest.feedServiceApiKey) : "")
           + ((feedRequest.maxCount && feedRequest.feedServiceApiKey) ? "&count=" + feedRequest.maxCount : ""); //a valid API key is required to use count
 
@@ -65,7 +65,7 @@ export class RssHttpClientRss2JsonService implements IRssHttpClientComponentServ
   }
 
   public convertRssFeedToRssReaderResponse(input: any, maxCount?: number) : IRssReaderResponse {
-    var response: IRssReaderResponse = {query: null} as IRssReaderResponse;
+    const response: IRssReaderResponse = {query: null} as IRssReaderResponse;
 
     if (!input) {
       return null;
@@ -101,7 +101,7 @@ export class RssHttpClientRss2JsonService implements IRssHttpClientComponentServ
       } as IRssQueryResults;
 
       input.items.map((item: any) => {
-        let newItem: IRssResult = {} as IRssResult;
+        const newItem: IRssResult = {} as IRssResult;
 
         newItem.channel = {} as IRssChannel;
         newItem.channel.item = {} as IRssItem;

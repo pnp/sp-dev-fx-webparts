@@ -6,6 +6,7 @@ export class PagesList implements BaseList {
   public lookups = [
     { itemProperty: PageFields.PARENTPAGELOOKUP, itemKey: PageFields.PARENTPAGELOOKUPID, lookupListTitle: ListTitles.SITEPAGES },
   ];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public items: any[] = [
     {
       ID: 1,

@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-soccer-highlights",
     "source": "pnp",
-    "title": "Soccer Highlights",
+    "title": "Soccer Highlights Web Part",
     "shortDescription": "This react web part sample displays Soccer Highlights from a public Soccer API.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-soccer-highlights",
     "longDescription": [

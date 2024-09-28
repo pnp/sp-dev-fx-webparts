@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-site-information",
     "source": "pnp",
-    "title": "Site Information",
+    "title": "Site Information Web Part",
     "shortDescription": "This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-information",
     "longDescription": [

@@ -52,30 +52,6 @@ build.configureWebpack.mergeConfig({
 
 });
 
-
-/**
- * StyleLinter configuration
- * Reference and custom gulp task
- */
-const stylelint = require('gulp-stylelint');
-
-/* Stylelinter sub task */
-let styleLintSubTask = build.subTask('stylelint', (gulp) => {
-
-    return gulp
-        .src('src/**/*.scss')
-        .pipe(stylelint({
-            failAfterError: false,
-            reporters: [{
-                formatter: 'string',
-                console: true
-            }]
-        }));
-});
-/* end sub task */
-
-build.rig.addPreBuildTask(styleLintSubTask);
-
 /**
  * Custom Framework Specific gulp tasks
  */

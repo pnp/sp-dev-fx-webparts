@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor",
     "source": "pnp",
-    "title": "Smart Profile Photo Editor",
+    "title": "Smart Profile Photo Editor Web Part",
     "shortDescription": "Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-smart-profile-photo-editor",
     "longDescription": [

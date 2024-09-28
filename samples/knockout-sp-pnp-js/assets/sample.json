@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js",
     "source": "pnp",
-    "title": "Sample showing the use of @pnp/sp library with Knockoutjs",
+    "title": "Sample web part showing the use of @pnp/sp library with Knockoutjs",
     "shortDescription": "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-sp-pnp-js",
     "longDescription": [

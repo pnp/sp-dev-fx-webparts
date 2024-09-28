@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-people-directory",
     "source": "pnp",
-    "title": "People Directory",
+    "title": "People Directory Web Part",
     "shortDescription": "This web part provides you the ability to add a searchable people directory. A people search box and alphabet list are provided to enable both searching by name as well as selecting a specific letter. This web part requires no configuration and utilizes the people search API to surface people results.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-people-directory",
     "longDescription": [

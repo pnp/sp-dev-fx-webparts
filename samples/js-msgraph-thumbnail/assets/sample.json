@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail",
     "source": "pnp",
-    "title": "Thumbnail/preview of pages and files",
+    "title": "Thumbnail/preview of pages and files web part",
     "shortDescription": "A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-msgraph-thumbnail",
     "longDescription": [

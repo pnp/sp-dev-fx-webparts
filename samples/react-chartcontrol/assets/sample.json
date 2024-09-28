@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-chartcontrol",
     "source": "pnp",
-    "title": "Chart Control Samples",
+    "title": "Chart Control Sample Web Parts",
     "shortDescription": "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
     "longDescription": [

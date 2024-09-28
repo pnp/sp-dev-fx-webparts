@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-graph-app-secret-expiration",
         "source": "pnp",
-        "title": "Applications Secrets Expiration",
+        "title": "Applications Secrets Expiration Web Part",
         "shortDescription": "This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-app-secret-expiration",
         "longDescription": [

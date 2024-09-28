@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-flow-button",
         "source": "pnp",
-        "title": "Flow Button",
+        "title": "Flow Button Web Part",
         "shortDescription": "This web part demonstrates displaying the list of flow button of Power Automate.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-button",
         "longDescription": [

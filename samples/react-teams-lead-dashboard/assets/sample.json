@@ -2,7 +2,7 @@
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard",
         "source": "pnp",
-        "title": "Lead Dashboard",
+        "title": "Lead Dashboard Web Part",
         "shortDescription": "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app.",
         "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-lead-dashboard",
         "longDescription": [
