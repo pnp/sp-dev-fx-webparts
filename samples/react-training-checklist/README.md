@@ -52,7 +52,7 @@ Version|Date|Comments
 
   > Any special pre-requisites?
 
-  Powershell script to create the SharePoint list with the required columns:
+  PowerShell script to create the SharePoint list with the required columns:
 
   ```powershell
   # Connect to SharePoint Online
