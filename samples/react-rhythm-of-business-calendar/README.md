@@ -4,18 +4,18 @@
 
 This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.
 
-This application requires below Graph Api Permissions-
+This application requires below Graph API Permissions-
 
-# Send Approval notifications to approvers over teams in personal chat
+### Send Approval notifications to approvers over teams in personal chat
 
 1. Chat.Create - It is required for creating the chat and getting the chat id for sending an adaptive card to the approver.
 2. ChatMessage.Send - It is required for sending the adaptive card (with @mention activity feed) to all the approvers whenever any event is created with approval rule applied for any refiner.
 
-# Share event details to teams channel where the app is installed
+### Share event details to teams channel where the app is installed
 
 1. ChannelMessage.Send - It is required for sharing the event details on click of "Share" button into the same teams channel in which the app is added.
 
-Note: Sharing events details to teams channel feature will be disbled if the webpart is installed on a SharePoint page.
+Note: Sharing events details to teams channel feature will be disabled if the web part is installed on a SharePoint page.
 
 ### versions
 
@@ -23,10 +23,6 @@ node v16.15.1
 npm 8.13.2
 spfx 1.15.0
 TypeScript 4.5
-
-<!-- TODO: link to the app once published
-This sample is the source code for the Rhythm of Business Calendar app published in [AppSource](https://appsource.microsoft.com/en-us/marketplace/apps?product=sharepoint) and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.
- -->
 
 Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events. Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events.
 
@@ -58,15 +54,15 @@ Edit refiner
 
 ## Applies to
 
--   [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
--   [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 
--   [Dan Turley](https://github.com/d-turley)
--   Co-authored-by [Mrigango Deb](https://github.com/Mrigango)
+- [Dan Turley](https://github.com/d-turley)
+- Co-authored-by [Mrigango Deb](https://github.com/Mrigango)
 
 ## Version history
 
@@ -77,11 +73,11 @@ Edit refiner
 
 ## Minimal path to awesome
 
--   Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar) then unzip it)
--   From your command line, change your current directory to the directory containing this sample (`react-rhythm-of-business-calendar`, located under `samples`)
--   in the command line run:
-    -   `npm install`
-    -   `gulp serve --nobrowser`
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-rhythm-of-business-calendar`, located under `samples`)
+- in the command line run:
+  - `npm install`
+  - `gulp serve --nobrowser`
 
 <!--
 TODO: add support for containers
@@ -94,25 +90,16 @@ This sample is a complete app that demonstrates the "SPFx Solution Accelerator" 
 
 At a high-level, the accelerator includes the following features:
 
--   Prescribed [solution structure](./documentation/solution-structure.md) separates web parts, components, model, services, and schema (data) layers
--   Robust [entity domain model](./documentation/entities.md) with relationships, validation, change tracking, and text search
--   Robust [schema provisioning](./documentation/schema.md) and versioning; use SharePoint lists as a simple relational database
--   [Services](./documentation/services.md) for interacting with SharePoint, timezones, domain isolation, and users and groups, plus patterns for building custom services for app-specific logic
--   [Component library](./documentation/components.md) with customizable wizard, panel/dialog for quickly building view/edit screens, validation, and more
--   [Live Update](./documentation/live-update.md) feature ensures users are always working with the latest data without manaually reloading the page
--   Built on the latest SPFx with TypeScript, React, and Fluent UI, plus PnPjs, Moment.js, Lodash, and Jest
+- Prescribed [solution structure](./documentation/solution-structure.md) separates web parts, components, model, services, and schema (data) layers
+- Robust [entity domain model](./documentation/entities.md) with relationships, validation, change tracking, and text search
+- Robust [schema provisioning](./documentation/schema.md) and versioning; use SharePoint lists as a simple relational database
+- [Services](./documentation/services.md) for interacting with SharePoint, timezones, domain isolation, and users and groups, plus patterns for building custom services for app-specific logic
+- [Component library](./documentation/components.md) with customizable wizard, panel/dialog for quickly building view/edit screens, validation, and more
+- [Live Update](./documentation/live-update.md) feature ensures users are always working with the latest data without manually reloading the page
+- Built on the latest SPFx with TypeScript, React, and Fluent UI, plus PnPjs, Moment.js, Lodash, and Jest
 
 A deep dive into the various features of the accelerator can be found in the [documentation](./documentation/README.md) folder.
 
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
 
 ## Help
 
