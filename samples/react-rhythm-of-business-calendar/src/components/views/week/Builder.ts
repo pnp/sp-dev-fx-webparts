@@ -56,7 +56,6 @@ export class ContentRowInfo {
         const startPosition = startsInWeek ? start.day() : 0;
         const endPosition = endsInWeek ? end.day() + 1 : 7;
         const duration = endPosition - startPosition;
-
         const shimDuration = startPosition - this.lastUsedPosition();
         if (shimDuration > 0) {
             this.items.push(new ShimItemInfo(shimDuration));
