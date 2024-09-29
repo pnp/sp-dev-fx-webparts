@@ -1,3 +1,5 @@
+import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls";
+
 export interface IScriptEditorWebPartProps {
   script: string;
   useExternalScript: boolean;
@@ -6,4 +8,6 @@ export interface IScriptEditorWebPartProps {
   removePadding: boolean;
   spPageContextInfo: boolean;
   teamsContext: boolean;
+  audiences: IPropertyFieldGroupOrPerson[];
+  audienceCacheDuration: number;
 }
