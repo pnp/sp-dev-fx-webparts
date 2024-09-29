@@ -65,28 +65,20 @@ Version|Date|Comments
 This web part offers the following enhanced configuration options:
 
 Basic configuration options:
-- **Label**: Customize the button text
-- **Link**: Specify the URL to link to
-- **Link Behaviour**: Configure how the button link opens (e.g., same tab, new tab)
-- **Button Alignment**: Align the button horizontally (left, center, right)
-- **Width**: Customize the button width
-- **Height**: Adjust the button height
-- **Border Radius**: Set the corner roundness of the button
+
+* **Label**: Customize the button text
+* **Link**: Specify the URL to link to
+* **Link Behaviour**: Configure how the button link opens (e.g., same tab, new tab)
+* **Button Alignment**: Align the button horizontally (left, center, right)
+* **Width**: Customize the button width
+* **Height**: Adjust the button height
+* **Border Radius**: Set the corner roundness of the button
 
 Advanced configuration options:
-- **Container Styles**: Apply custom styles to the button container using raw CSS value
-- **Button Styles**: Customize the button's appearance using raw CSS value
-- **Button Hover Styles**: Define styles for when users hover over the button using raw CSS value
 
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
+* **Container Styles**: Apply custom styles to the button container using raw CSS value
+* **Button Styles**: Customize the button's appearance using raw CSS value
+* **Button Hover Styles**: Define styles for when users hover over the button using raw CSS value
 
 ## Help
 
