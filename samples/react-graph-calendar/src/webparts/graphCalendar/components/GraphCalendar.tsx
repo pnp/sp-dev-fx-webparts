@@ -1,27 +1,27 @@
-import * as React from 'react';
-import { createRef } from "office-ui-fabric-react/lib/Utilities";
-import styles from './GraphCalendar.module.scss';
-import * as strings from "GraphCalendarWebPartStrings";
-import { IGraphCalendarProps } from './IGraphCalendarProps';
-import { MSGraphClient } from "@microsoft/sp-http";
-import FullCalendar from '@fullcalendar/react';
 import { EventInput } from '@fullcalendar/core';
+import allLocales from '@fullcalendar/core/locales-all';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import FullCalendar from '@fullcalendar/react';
+import { MSGraphClientV3 } from "@microsoft/sp-http";
+import * as strings from "GraphCalendarWebPartStrings";
+import { extendMoment } from 'moment-range';
 import * as moment from 'moment-timezone';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { extendMoment } from 'moment-range';
-import allLocales from '@fullcalendar/core/locales-all';
+import * as React from 'react';
+import styles from './GraphCalendar.module.scss';
+import { IGraphCalendarProps } from './IGraphCalendarProps';
+import * as microsoftTeams from '@microsoft/teams-js';
 
 const { range } = extendMoment(moment);
 
 interface IGraphCalendarState {
   events: EventInput[];
   height: number;
-  currentActiveStartDate: Date;
-  currentActiveEndDate: Date;
+  currentActiveStartDate: Date | undefined;
+  currentActiveEndDate: Date | undefined;
   isEventDetailsOpen: boolean;
-  currentSelectedEvent: EventInput;
-  groupId: string;
+  currentSelectedEvent: EventInput | undefined;
+  groupId: string | undefined;
   tabType: TabType;
 }
 
@@ -31,8 +31,8 @@ enum TabType {
 }
 
 export default class GraphCalendar extends React.Component<IGraphCalendarProps, IGraphCalendarState> {
-  private calendar = createRef<FullCalendar>();
-  private calendarLang: string = null;
+  private calendar = React.createRef<FullCalendar>();
+  private calendarLang: string = '';
 
   /**
    * Builds the Component with the provided properties
@@ -43,29 +43,37 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
 
     // If this is running in Teams, embed the specific Teams styling
     if (this._isRunningInTeams()) {
-      import("./GraphCalendar.Teams.module.scss");
+      import(/* webpackChunkName: 'LightTheme' */"./GraphCalendar.Teams.module.scss");
 
-      if (this.props.teamsContext.theme == "dark") {
-        import("./GraphCalendar.Teams.Dark.module.scss");
+      if (this.props.teamsContext.app.theme === "dark") {
+        import(/* webpackChunkName: 'DarkTheme' */"./GraphCalendar.Teams.Dark.module.scss");
       }
     }
 
     //Set language of the calendar (if language is unknown, use english as default)
     const allLanguages: Map<string, string> = this._createLangMap();
     if (this._isRunningInTeams()) {
-      this.calendarLang = allLanguages.get(this.props.teamsContext.locale) || "en";
+      this.calendarLang = allLanguages.get(this.props.teamsContext.app.locale) || "en";
     } else {
       this.calendarLang = allLanguages.get(this.props.context.pageContext.cultureInfo.currentCultureName) || "en";
+    }
+
+    let resolvedGroupId = this.props.group && this.props.group.length ? this.props.group[0].id : "";
+    if (resolvedGroupId) {
+      const match = resolvedGroupId.match(/\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/);
+      resolvedGroupId = match ? match[0] : '';
+    } else {
+      resolvedGroupId = this._isRunningInTeams() ? this.props.teamsContext.team?.groupId : this.props.context.pageContext.site.group ? this.props.context.pageContext.site.group.id : "";
     }
 
     this.state = {
       events: [],
       height: this._calculateHeight(),
-      currentActiveStartDate: null,
-      currentActiveEndDate: null,
+      currentActiveStartDate: undefined,
+      currentActiveEndDate: undefined,
       isEventDetailsOpen: false,
-      currentSelectedEvent: null,
-      groupId: this._isRunningInTeams() ? this.props.teamsContext.groupId : this.props.context.pageContext.site.group ? this.props.context.pageContext.site.group.id : "",
+      currentSelectedEvent: undefined,
+      groupId: resolvedGroupId,
       tabType: this._isRunningInTeams() ? (this._isPersonalTab() ? TabType.PersonalTab : TabType.TeamsTab) : TabType.TeamsTab
     };
   }
@@ -75,25 +83,27 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    */
   public componentDidMount(): void {
     // Gets the calendar current Active dates
-    let calendarStartDate = this.calendar.value.getApi().view.activeStart;
-    let calendarEndDate = this.calendar.value.getApi().view.activeEnd;
+    const calendarStartDate = this.calendar.current?.getApi().view.activeStart;
+    const calendarEndDate = this.calendar.current?.getApi().view.activeEnd;
 
-    // Loads the events
-    this._loadEvents(calendarStartDate, calendarEndDate);
+    if (calendarStartDate && calendarEndDate) {
+      // Loads the events
+      this._loadEvents(calendarStartDate, calendarEndDate);
+    }
   }
-
-  /**
+  
+   /**
    * Renders the web part
    */
-  public render(): React.ReactElement<IGraphCalendarProps> {
+   public render(): React.ReactElement<IGraphCalendarProps> {
     return (
       <div className={styles.graphCalendar}>
         <FullCalendar
           ref={this.calendar}
-          defaultView="dayGridMonth"
+          initialView="dayGridMonth"
           plugins={[dayGridPlugin]}
           windowResize={this._handleResize.bind(this)}
-          datesRender={this._datesRender.bind(this)}
+          datesSet={this._datesRender.bind(this)}
           eventClick={this._openEventPanel.bind(this)}
           height={this.state.height}
           events={this.state.events}
@@ -111,16 +121,16 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
             <span>{moment(this.state.currentSelectedEvent.start).format('MMMM Do YYYY [at] h:mm:ss a')}</span>
             <h3>{strings.EndTime}</h3>
             <span>{moment(this.state.currentSelectedEvent.end).format('MMMM Do YYYY [at] h:mm:ss a')}</span>
-            {this.state.currentSelectedEvent.extendedProps["location"] &&
+            {this.state.currentSelectedEvent.extendedProps && this.state.currentSelectedEvent.extendedProps.location &&
               <div>
                 <h3>{strings.Location}</h3>
-                <span>{this.state.currentSelectedEvent.extendedProps["location"]}</span>
+                <span>{this.state.currentSelectedEvent.extendedProps.location}</span>
               </div>
             }
-            {this.state.currentSelectedEvent.extendedProps["body"] &&
+            {this.state.currentSelectedEvent.extendedProps && this.state.currentSelectedEvent.extendedProps.body &&
               <div>
                 <h3>{strings.Body}</h3>
-                <span>{this.state.currentSelectedEvent.extendedProps["body"]}</span>
+                <span>{this.state.currentSelectedEvent.extendedProps.body}</span>
               </div>
             }
           </Panel>
@@ -128,7 +138,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
       </div>
     );
   }
-
+  
   /**
    * Calculates the dynamic height of the surface to render.
    * Mainly used for Teams validation so it renders "full-screen" in Teams
@@ -144,17 +154,17 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Validates if the current web part is running in Teams
    */
-  private _isRunningInTeams() {
+  private _isRunningInTeams(): microsoftTeams.app.Context {
     return this.props.teamsContext;
   }
 
   /**
    * Validates if the current web part is running in a Personal Tab
    */
-  private _isPersonalTab() {
-    let _isPersonalTab: Boolean = false;
+  private _isPersonalTab(): boolean {
+    let _isPersonalTab: boolean = false;
 
-    if (this._isRunningInTeams() && !this.props.teamsContext.teamId) {
+    if (this._isRunningInTeams() && !this.props.teamsContext.team?.internalId) {
       _isPersonalTab = true;
     }
 
@@ -165,7 +175,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * Handles the click event and opens the OUIF Panel
    * @param eventClickInfo The information about the selected event
    */
-  private _openEventPanel(eventClickInfo: any) {
+  private _openEventPanel(eventClickInfo: any): void {
     this.setState({
       isEventDetailsOpen: true,
       currentSelectedEvent: eventClickInfo.event
@@ -175,10 +185,10 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Handles the click event on the dismiss from the Panel and closes the OUIF Panel
    */
-  private _closeEventPanel() {
+  private _closeEventPanel(): void {
     this.setState({
       isEventDetailsOpen: true,
-      currentSelectedEvent: null
+      currentSelectedEvent: undefined
     });
   }
 
@@ -186,11 +196,11 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * If the view changed, reload the events based on the active view
    * @param info Information about the current active view
    */
-  private _datesRender(info: any) {
-    if (this.calendar.value) {
+  private _datesRender(info: any): void {
+    if (this.calendar.current) {
 
       // If the active view has changed  
-      if ((this.state.currentActiveStartDate && this.state.currentActiveEndDate) && this.state.currentActiveStartDate.toString() != info.view.activeStart.toString() && this.state.currentActiveEndDate.toString() != info.view.activeEnd.toString()) {
+      if ((this.state.currentActiveStartDate && this.state.currentActiveEndDate) && this.state.currentActiveStartDate.toString() !== info.view.activeStart.toString() && this.state.currentActiveEndDate.toString() !== info.view.activeEnd.toString()) {
         this._loadEvents(info.view.activeStart, info.view.activeEnd);
       }
     }
@@ -199,7 +209,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   /**
    * Handles the resize event when in Microsoft Teams to ensure a proper responsive behaviour
    */
-  private _handleResize() {
+  private _handleResize(): void {
     if (this._isRunningInTeams()) {
       this.setState({
         height: window.innerHeight - 30
@@ -212,11 +222,11 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * @param data Events from API
    */
   private _transformEvents(data: any): Array<EventInput> {
-    let events: Array<EventInput> = new Array<EventInput>();
+    const events: Array<EventInput> = new Array<EventInput>();
     data.value.map((item: any) => {
       // Build a Timezone enabled Date
-      let currentStartDate = moment.tz(item.start.dateTime, item.start.timeZone);
-      let currentEndDate = moment.tz(item.end.dateTime, item.end.timeZone);
+      const currentStartDate = moment.tz(item.start.dateTime, item.start.timeZone);
+      const currentEndDate = moment.tz(item.end.dateTime, item.end.timeZone);
 
       // Adding all retrieved events to the result array
       events.push({
@@ -245,23 +255,22 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * @param endDate The last visible date on the calendar
    */
   private _filterRecEvents(data: any, startDate: Date, endDate: Date): Array<EventInput> {
-    let events: Array<EventInput> = new Array<EventInput>();
+    const events: Array<EventInput> = new Array<EventInput>();
     //Range of the Calendar
-    var r1 = range(startDate, endDate);
+    const r1 = range(startDate, endDate);
 
     data.value.map((item: any) => {
       // Build a Timezone enabled Date
-      let currentStartDate = moment.tz(item.start.dateTime, item.start.timeZone);
-      let currentEndDate = moment.tz(item.end.dateTime, item.end.timeZone);
+      const currentStartDate = moment.tz(item.start.dateTime, item.start.timeZone);
+      const currentEndDate = moment.tz(item.end.dateTime, item.end.timeZone);
 
-      var d1 = item.recurrence.range.startDate;
-      var d2 = item.recurrence.range.endDate;
-      var recStartDate = moment(d1).toDate();
-      var recEndDate = moment(d2).toDate();
+      const d1 = item.recurrence.range.startDate;
+      const d2 = item.recurrence.range.endDate;
+      const recStartDate = moment(d1).toDate();
+      const recEndDate = moment(d2).toDate();
 
       //Range of the recurring event item
-      var r2 = range(recStartDate, recEndDate);
-
+      const r2 = range(recStartDate, recEndDate);
 
       //Check if both ranges overlap
       if (!!r1.overlaps(r2)) {
@@ -291,12 +300,12 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   private _loadEvents(startDate: Date, endDate: Date): void {
 
     // If a Group was found or running in the context of a Personal tab, execute the query. If not, do nothing.
-    if (this.state.groupId || this.state.tabType == TabType.PersonalTab) {
-      var events: Array<EventInput> = new Array<EventInput>();
+    if (this.state.groupId || this.state.tabType === TabType.PersonalTab) {
+      let events: Array<EventInput> = new Array<EventInput>();
 
       this.props.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           let apiUrl: string = `/groups/${this.state.groupId}/events`;
           if (this._isPersonalTab()) {
             apiUrl = '/me/events';
@@ -346,7 +355,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
               this.setState({
                 currentActiveStartDate: startDate,
                 currentActiveEndDate: endDate,
-                currentSelectedEvent: null
+                currentSelectedEvent: undefined
               });
             });
         });
@@ -362,11 +371,11 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   private _getRecurrentEvents(events: Array<EventInput>, startDate: Date, endDate: Date): Promise<Array<EventInput>> {
     return new Promise<Array<EventInput>>((resolve, reject) => {
       this.props.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
-          var recEvents: Array<EventInput> = new Array<EventInput>();
-          var count = 0;
-          events.map((item: any) => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
+          let recEvents: Array<EventInput> = new Array<EventInput>();
+          let count = 0;
+          events.map((item: EventInput) => {
             let apiUrl: string = `/groups/${this.state.groupId}/events/${item.id}/instances?startDateTime=${startDate.toISOString()}&endDateTime=${endDate.toISOString()}`;
             if (this._isPersonalTab()) {
               apiUrl = `/me/events/${item.id}/instances?startDateTime=${startDate.toISOString()}&endDateTime=${endDate.toISOString()}`;
@@ -381,7 +390,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
                 }
                 recEvents = recEvents.concat(this._transformEvents(res));
                 count += 1;
-                if (count == events.length) {
+                if (count === events.length) {
                   resolve(recEvents);
                 }
               });
@@ -400,8 +409,8 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   private _getRecurringMaster(startDate: Date, endDate: Date): Promise<Array<EventInput>> {
     return new Promise<Array<EventInput>>((resolve, reject) => {
       this.props.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           let apiUrl: string = `/groups/${this.state.groupId}/events`;
           if (this._isPersonalTab()) {
             apiUrl = '/me/events';
@@ -416,7 +425,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
                 reject(err);
               }
               else {
-                var recEvents: Array<EventInput> = new Array<EventInput>();
+                let recEvents: Array<EventInput> = new Array<EventInput>();
                 recEvents = this._filterRecEvents(res, startDate, endDate);
                 resolve(recEvents);
               }
@@ -429,7 +438,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    * Mapping for SharePoint languages with Fullcalendar languages
    */
   private _createLangMap(): Map<string, string> {
-    var languages = new Map();
+    const languages = new Map();
 
     languages.set("en-US", "en"); //English
     languages.set("ar-SA", "ar"); //Arabic

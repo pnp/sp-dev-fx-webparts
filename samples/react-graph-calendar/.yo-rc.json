@@ -1,11 +1,20 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "spo",
-    "version": "1.9.1",
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.19.0",
     "libraryName": "react-graph-calendar",
     "libraryId": "42fe0a0f-c4d9-4b05-806c-3857decb3d71",
+    "environment": "spo",
     "packageManager": "npm",
+    "solutionName": "react-graph-calendar",
+    "solutionShortDescription": "react-graph-calendar description",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }
