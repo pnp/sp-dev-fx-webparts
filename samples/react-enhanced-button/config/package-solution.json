@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "React Enhanced Button",
+    "id": "84804705-0fca-4c5b-8b6f-e9b01c02d820",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-enhanced-button description"
+      },
+      "longDescription": {
+        "default": "react-enhanced-button description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-enhanced-button Feature",
+        "description": "The feature that activates elements of the react-enhanced-button solution.",
+        "id": "219523c6-69fa-4dfb-8824-5a0f695b69f6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/React Enhanced Button.sppkg"
+  }
+}
