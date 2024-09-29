@@ -1,0 +1,38 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "on-boarding-client-side-solution",
+        "id": "2f1e9f0d-4c50-49fa-90c3-ed2a73555b89",
+        "version": "1.0.0.0",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.19.0"
+        },
+        "metadata": {
+            "shortDescription": {
+                "default": "OnBoarding description"
+            },
+            "longDescription": {
+                "default": "OnBoarding description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "on-boarding Feature",
+            "description": "The feature that activates elements of the on-boarding solution.",
+            "id": "f105bfaa-b923-4872-96ac-2f5f5989a2b1",
+            "version": "1.0.0.0"
+        }]
+    },
+    "paths": {
+        "zippedPackage": "solution/on-boarding.sppkg"
+    }
+}
