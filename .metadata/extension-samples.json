@@ -7237,7 +7237,7 @@
       "2. Copy Name allows to copy the name of the document without using the currently available rename functionality."
     ],
     "creationDateTime": "2023-10-04",
-    "updateDateTime": "2023-10-04",
+    "updateDateTime": "2024-08-28",
     "products": [
       "SharePoint"
     ],
@@ -7248,7 +7248,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.0"
+        "value": "1.19.0"
       }
     ],
     "tags": [],

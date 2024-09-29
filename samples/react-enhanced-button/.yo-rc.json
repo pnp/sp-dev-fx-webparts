@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.19.0",
+    "libraryName": "react-enhanced-button",
+    "libraryId": "84804705-0fca-4c5b-8b6f-e9b01c02d820",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-enhanced-button",
+    "solutionShortDescription": "react-enhanced-button description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
