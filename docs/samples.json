@@ -17210,7 +17210,7 @@
       "This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.)."
     ],
     "creationDateTime": "2020-11-06",
-    "updateDateTime": "2020-11-06",
+    "updateDateTime": "2024-09-12",
     "products": [
       "SharePoint"
     ],
@@ -17221,7 +17221,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.19.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -17255,14 +17255,12 @@
     "authors": [
       {
         "gitHubAccount": "sebastienlevert",
-        "company": "Microsoft",
         "pictureUrl": "https://github.com/sebastienlevert.png",
         "name": "Sébastien Levert",
         "twitter": "sebastienlevert"
       },
       {
         "gitHubAccount": "Abderahman88",
-        "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
       }
