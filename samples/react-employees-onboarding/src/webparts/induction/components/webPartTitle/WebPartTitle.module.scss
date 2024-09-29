@@ -1,0 +1,36 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+.webPartHeader {
+    .webPartTitle {
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            flex-grow: 1;
+            display: flex;
+            align-items: flex-start;
+            color: "[theme: themePrimary, default: #0078d7]";
+        }
+    }
+    .webpartDescription {
+        margin-bottom: 20px;
+        margin-top: 5px;
+        font-size: 14px;
+        color: "[theme:bodyText, default: #323130]";
+        color: var(--bodyText);
+    }
+    // View mode
+    span {
+        // Nothing at the moment
+        a:link {
+            text-decoration: none;
+        }
+    }
+    .moreLink {
+        margin-bottom: 11px;
+    }
+}

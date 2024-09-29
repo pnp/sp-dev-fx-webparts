@@ -7,6 +7,9 @@ import { IPropertyPaneConfiguration, IPropertyPaneField, PropertyPaneTextField, 
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
+import { PrincipalType, PropertyFieldNumber, PropertyFieldPeoplePicker } from '@pnp/spfx-property-controls';
+import { UserGroupCheck } from './AccessCheck';
+import { sp } from '@pnp/sp/presets/all';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public _propertyPaneHelper;
@@ -33,9 +36,14 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 this._externalScriptContent = 'Failed to load external script.';
             }
         }
+
+        await super.onInit();
+        sp.setup({
+            spfxContext: this.context as any
+        });
     }
 
-    public render(): void {
+    public async render(): Promise<void> {
         this._unqiueId = this.context.instanceId;
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
@@ -55,6 +63,12 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             }
 
             ReactDom.unmountComponentAtNode(this.domElement);
+            if (this.properties.audiences) {
+                const checker = new UserGroupCheck(this.properties.audiences, this.properties.audienceCacheDuration, this.context);
+                const isInAudience = await checker.CheckAudiences();
+                if (!isInAudience) return;
+            }
+
             this.domElement.innerHTML = this.properties.useExternalScript ? this._externalScriptContent : this.properties.script;
             this.executeScript(this.domElement);
         } else {
@@ -126,6 +140,25 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 onText: "Use external script",
                 offText: "Use inline script"
             }),
+            PropertyFieldPeoplePicker('audiences', {
+                label: 'Target Audience',
+                initialData: this.properties.audiences,
+                allowDuplicate: false,
+                principalType: [PrincipalType.SharePoint, PrincipalType.Users, PrincipalType.Security],
+                onPropertyChange: this.onPropertyPaneFieldChanged,
+                context: this.context,
+                properties: this.properties,
+                onGetErrorMessage: null,
+                deferredValidationTime: 0,
+                key: 'audienceTargeting'
+            }),
+            PropertyFieldNumber('audienceCacheDuration', {
+                key: 'audienceCacheDuration',
+                label: 'Audience cache duration in hours',
+                description: 'Duration in hours to cache the audience information',
+                value: this.properties.audienceCacheDuration || 24,
+                minValue: 1,
+            })
         ];
 
         if (this.properties.useExternalScript) {

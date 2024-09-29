@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "trainning-checklist-web-part-client-side-solution",
+    "id": "f9745724-d01a-4022-bbf5-cc4b89981c67",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0-beta.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Trainning checklist web part"
+      },
+      "longDescription": {
+        "default": "Trainning checklist web part to display a list of trainning items"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "trainning-checklist-web-part Feature",
+        "description": "The feature that activates elements of the trainning-checklist-web-part solution.",
+        "id": "531af3dd-6259-43e7-b5ce-6d77d1995ead",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/trainning-checklist-web-part.sppkg"
+  }
+}
