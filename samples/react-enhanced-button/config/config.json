@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "enhanced-button-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/enhancedButton/EnhancedButtonWebPart.js",
+          "manifest": "./src/webparts/enhancedButton/EnhancedButtonWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "EnhancedButtonWebPartStrings": "lib/webparts/enhancedButton/loc/{locale}.js"
+  }
+}
