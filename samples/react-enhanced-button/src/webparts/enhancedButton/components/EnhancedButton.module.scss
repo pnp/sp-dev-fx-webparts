@@ -1,0 +1,21 @@
+.enhancedButton {
+  display: flex;
+  justify-content: var(--justify-content);
+}
+
+.link {
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: "[theme:themePrimary, default:#0078d7]";
+  color: "[theme:white, default:#ffffff]";
+  cursor: pointer;
+
+  &:hover {
+    background-color: "[theme:themeDark, default:#005a9e]";
+  }
+}

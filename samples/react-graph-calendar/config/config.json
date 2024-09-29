@@ -13,6 +13,8 @@
   },
   "externals": {},
   "localizedResources": {
-    "GraphCalendarWebPartStrings": "lib/webparts/graphCalendar/loc/{locale}.js"
+    "GraphCalendarWebPartStrings": "lib/webparts/graphCalendar/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }
