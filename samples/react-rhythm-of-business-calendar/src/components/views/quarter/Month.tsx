@@ -16,6 +16,7 @@ interface IProps {
     selectedRefinerValues: Set<RefinerValue>;
     onActivate: (cccurrence: EventOccurrence, target: HTMLElement) => void;
     viewCommands: IViewCommands;
+    selectedTemplateKeys?: string[];
 }
 
 export const Month: FC<IProps> = ({
@@ -23,7 +24,8 @@ export const Month: FC<IProps> = ({
     columnWidth,
     selectedRefinerValues,
     onActivate,
-    viewCommands: { setAnchorDate }
+    viewCommands: { setAnchorDate },
+    selectedTemplateKeys
 }) => {
     const navigate = useNavigate();
     const { palette: { themeDarkAlt, neutralLighter, neutralPrimary } } = useTheme();
@@ -48,18 +50,18 @@ export const Month: FC<IProps> = ({
                         }
                     })}
                 >
-                    {start.format("MMMM")}
+                    {start.format("MMMM")+ " " +start.format("YYYY")}
                 </ActionButton>
             </div>
             <Stack horizontal wrap>
                 {(!refiner || selectedRefinerValues.has(refiner.blankValue) || (refiner.required && blankValue.eventCount > 0)) &&
                     <StackItem styles={styles}>
-                        <RefinerValueEvents showTitle={!!refiner} refinerValue={blankValue} onActivate={onActivate} />
+                        <RefinerValueEvents showTitle={!!refiner} refinerValue={blankValue} onActivate={onActivate} selectedTemplateKeys={selectedTemplateKeys} />
                     </StackItem>
                 }
                 {refiner && refiner.values.filter(Entity.NotDeletedFilter).filter(value => selectedRefinerValues.has(value)).map(value => refinerValues.get(value)).map((value, idx) =>
                     <StackItem key={idx} styles={styles}>
-                        <RefinerValueEvents showTitle refinerValue={value} onActivate={onActivate} />
+                        <RefinerValueEvents showTitle refinerValue={value} onActivate={onActivate} selectedTemplateKeys={selectedTemplateKeys} />
                     </StackItem>
                 )}
             </Stack>

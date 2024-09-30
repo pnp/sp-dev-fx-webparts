@@ -31,6 +31,7 @@ interface IState {
     moderator: User | undefined;
     moderationTimestamp: Moment | undefined;
     moderationMessage: string;
+    teamsGroupChatId: string;
 }
 
 export class Event extends ListItemEntity<IState> implements IEvent {
@@ -75,6 +76,10 @@ export class Event extends ListItemEntity<IState> implements IEvent {
     public static readonly Count_Until_Recurrence_Validations = [
         new Count_Until_Recurrence_Required_ValidationRule()
     ];
+    // public static readonly TeamsGroupChatId_Validations = [
+    //     new RequiredValidationRule<Event>(e => e.teamsGroupChatId),
+    //     new MaxLengthValidationRule<Event>(e => e.teamsGroupChatId, 255)
+    // ];
 
     public static ApprovedFilter = ({ isApproved }: Event): boolean => isApproved;
     public static PendingFilter = ({ isPendingApproval }: Event): boolean => isPendingApproval;
@@ -104,6 +109,7 @@ export class Event extends ListItemEntity<IState> implements IEvent {
         this.state.moderator = undefined;
         this.state.moderationTimestamp = undefined;
         this.state.moderationMessage = "";
+        this.state.teamsGroupChatId = "";
 
         this.refinerValues = ManyToManyRelationship.create<Event, RefinerValue>(this, 'events', { comparer: Event.RefinerValueOrderAscComparer });
         this.includeInBoundedContext(this.refinerValues);
@@ -310,6 +316,9 @@ export class Event extends ListItemEntity<IState> implements IEvent {
     public get moderationMessage(): string { return this._seriesMasterOrThisState.moderationMessage; }
     public set moderationMessage(val: string) { if (!this.isSeriesException) this.state.moderationMessage = val; }
 
+    public get teamsGroupChatId(): string { return this.state.teamsGroupChatId; }
+    public set teamsGroupChatId(val: string) { this.state.teamsGroupChatId = val; }
+
     public get creator(): User { return (this.isSeriesException ? this.seriesMaster.get() : this).author; }
 
     private get _seriesMasterOrThisState(): IState {
@@ -332,9 +341,23 @@ export class Event extends ListItemEntity<IState> implements IEvent {
         return this.usersDifference('restrictedToAccounts');
     }
 
-    public expandOccurrences(range?: MomentRange): EventOccurrence[] {
+    public expandOccurrences(isDifferenceInTimezone: boolean, range?: MomentRange, viewType?: string, siteTimeZone?:string): EventOccurrence[] {
         if (this.isSeriesMaster) {
-            const cadence = new Cadence(this.start, this.recurrence);
+            if(viewType === 'list'){
+               
+                const originalStart = range.start; 
+                const convertedStartMoment = originalStart && originalStart.clone().tz(siteTimeZone,true);
+                convertedStartMoment.startOf('day');
+                range.start = convertedStartMoment;
+
+                const originalEnd = range.end; 
+                const convertedEndMoment = originalEnd && originalEnd.clone().tz(siteTimeZone,true);
+                convertedEndMoment.endOf('day');
+                range.end = convertedEndMoment;
+
+                //return (!range || MomentRange.overlaps(this, range)) ? (!this.recurrenceInstanceCancelled ? [new EventOccurrence(this)]:[] ): [];  
+            }
+            const cadence = new Cadence(this.start, this.recurrence, isDifferenceInTimezone);
             const dates = Array.from(cadence.generate(range));
             const exceptionsInRange = multifilter(this.exceptions.get(), inverseFilter(Entity.NewAndGhostableFilter), e => MomentRange.overlaps(range, e));
 
@@ -358,18 +381,38 @@ export class Event extends ListItemEntity<IState> implements IEvent {
                         date.startOf('day');
                         const start = date.clone().add(this.startTime);
                         const end = start.clone().add(this.duration);
+                        const startOffset = start && start.utcOffset();
+                        const endOffset = end && end.utcOffset();
+                        const startdst = start && start.isDST();
+                        const enddst = end && end.isDST();
+                        const dateOffset = date && date.utcOffset();
+        
+                        if(startdst !== enddst)
+                        {
+                            startOffset-endOffset < 0 ? end.add(startOffset-endOffset,'minutes'): end.add(startOffset-endOffset,'minutes')// for handling daylight saving scenario
+                           // console.log(end.add(-1,'hour'))
+                        }
+                        if(dateOffset !== startOffset){
+                        start.add(dateOffset - startOffset,'minutes');
+                        end.add(dateOffset - startOffset,'minutes');
+                        }
                         return new EventOccurrence(this, start, end);
                     }
                 })
                 .filter(Boolean)
                 .concat(exceptionsInRange.map(e => new EventOccurrence(e)));
         } else {
-            return (!range || MomentRange.overlaps(this, range)) ? [new EventOccurrence(this)] : [];
+            if(viewType === 'list'){
+                return (!range || MomentRange.overlaps(this, range)) ? (!this.recurrenceInstanceCancelled ? [new EventOccurrence(this)]:[] ): [];  
+            }
+            else{
+                return (!range || MomentRange.overlaps(this, range)) ? [new EventOccurrence(this)] : [];
+            }
         }
     }
 
-    public findOrCreateExceptionForDate(date: Moment): Event {
-        const occurrence = first(this.expandOccurrences({ start: date, end: date }));
+    public findOrCreateExceptionForDate(date: Moment, isDifferenceInTimezone: boolean): Event {
+        const occurrence = first(this.expandOccurrences(isDifferenceInTimezone, { start: date, end: date }));
         return occurrence ? this.createSeriesException(occurrence.start, occurrence.end) : undefined;
     }
 
@@ -407,6 +450,7 @@ export class Event extends ListItemEntity<IState> implements IEvent {
             ...Event.Date_YearlyByDate_Recurrence_Validations,
             ...Event.EndDate_Until_Recurrence_Validations,
             ...Event.Count_Until_Recurrence_Validations
+            //...Event.TeamsGroupChatId_Validations
         ];
     }
 }

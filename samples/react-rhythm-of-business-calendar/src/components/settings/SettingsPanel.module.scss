@@ -1,5 +1,15 @@
 @import '../panels.module';
 
+.templateView {
+    // position: absolute; 
+    background-color: "[theme: themePrimary, default: #005a9e]";
+    color: #ffffff;
+//     width:  184px;
+//     padding: 5px;
+//    border-radius: 5px;
+//    font-size: 14px; 
+}
+
 .refiners {
     .refiner {
         height: 32px;
@@ -21,3 +31,4 @@
         }
     }
 }
+

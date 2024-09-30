@@ -46,7 +46,7 @@ export const CalendarPicker: FC<IProps> = ({
 
     return (
         <span ref={buttonRef}>
-            <ActionButton iconProps={iconProps} disabled={disabled} onClick={toggleCalendar}>
+            <ActionButton className="btnDateLabel" iconProps={iconProps} disabled={disabled} onClick={toggleCalendar}>
                 {buttonLabel}
             </ActionButton>
             {showCalendar &&

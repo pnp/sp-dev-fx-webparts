@@ -13,6 +13,7 @@ export interface IEventDetailsCallout {
 interface IProps {
     componentRef: RefObject<IEventDetailsCallout>;
     commands: IEventCommands;
+   // channels: readonly ChannelsConfigurations[];  enable for share event
 }
 
 export const EventDetailsCallout: FC<IProps> = ({ componentRef, commands }) => {
@@ -50,6 +51,7 @@ export const EventDetailsCallout: FC<IProps> = ({ componentRef, commands }) => {
         viewCommand,
         addToOutlookCommand,
         getLinkCommand
+       // shareCommand  //uncomment to share functionality 
     ] = useEventCommandActionButtons(commands, event);
 
     return (isOpen &&
@@ -67,6 +69,7 @@ export const EventDetailsCallout: FC<IProps> = ({ componentRef, commands }) => {
                     {viewCommand}
                     {addToOutlookCommand}
                     {getLinkCommand}
+                    {/* {shareCommand} */}
                 </Stack>
             </FocusZone>
         </FocusTrapCallout>

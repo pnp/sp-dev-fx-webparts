@@ -14913,6 +14913,124 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-employees-onboarding",
+    "source": "pnp",
+    "title": "Employee Onboarding",
+    "shortDescription": "This project is an SPFx (SharePoint Framework) application designed for employee onboarding.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-employees-onboarding",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-employees-onboarding",
+    "longDescription": [
+      "This project is an SPFx (SharePoint Framework) application designed for employee onboarding. It automates various tasks for each employee, such as updating their department, joining the team, and sending notification emails. The application utilizes the Microsoft Graph SDK's batch requests approach to efficiently manage these operations within a .NET-based Azure function. Additionally, the system logs information into a SharePoint list for auditing purposes."
+    ],
+    "creationDateTime": "2024-09-01",
+    "updateDateTime": "2024-09-01",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.19.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "demo1.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "demo2.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo2.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "demo3.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo3.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "demo4.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo4.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-button",
+    "source": "pnp",
+    "title": "Enhanced Button",
+    "shortDescription": "Extends the functionality of the native button web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-button",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-button",
+    "longDescription": [
+      "The Enhanced Button Web Part is a custom SharePoint web part that extends the functionality of the native button web part. It provides additional configuration options to create more customizable and flexible buttons within your SharePoint pages."
+    ],
+    "creationDateTime": "2024-09-01",
+    "updateDateTime": "2024-09-01",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.19.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-button/assets/app.jpeg",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AriGunawan",
+        "pictureUrl": "https://github.com/AriGunawan.png",
+        "name": "Ari Gunawan"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting",
     "source": "pnp",
     "title": "Enhanced List Formatting Web Part",
@@ -17092,7 +17210,7 @@
       "This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.)."
     ],
     "creationDateTime": "2020-11-06",
-    "updateDateTime": "2020-11-06",
+    "updateDateTime": "2024-09-12",
     "products": [
       "SharePoint"
     ],
@@ -17103,7 +17221,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.19.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -17137,14 +17255,12 @@
     "authors": [
       {
         "gitHubAccount": "sebastienlevert",
-        "company": "Microsoft",
         "pictureUrl": "https://github.com/sebastienlevert.png",
         "name": "Sébastien Levert",
         "twitter": "sebastienlevert"
       },
       {
         "gitHubAccount": "Abderahman88",
-        "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
       }
@@ -19642,7 +19758,7 @@
       "Service Health for Microsoft 365 solution show the health status for all the M365 services"
     ],
     "creationDateTime": "2023-02-03",
-    "updateDateTime": "2024-02-10",
+    "updateDateTime": "2024-09-05",
     "products": [
       "SharePoint"
     ],
@@ -19653,7 +19769,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.19.0"
       }
     ],
     "thumbnails": [
@@ -25657,7 +25773,7 @@
       "Rhythm of Business (RoB) Calendar keeps you on top of your business goals by managing all team and organizational events seamlessly. Simplify and expedite the coordination and planning process for your team and subgroups with the help of color-coded events, approval workflow, refiners and confidential events. Ideal for Chiefs of Staff, Executive Assistants, or anyone who manages a team calendar, you can empower your teams by enabling better insights on your business goals and team events."
     ],
     "creationDateTime": "2022-09-26",
-    "updateDateTime": "2022-11-12",
+    "updateDateTime": "2024-09-13",
     "products": [
       "SharePoint",
       "Microsoft Teams"
@@ -29297,6 +29413,55 @@
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-training-checklist",
+    "source": "pnp",
+    "title": "Training Checklist",
+    "shortDescription": "YSample web part to display a training checklist in a SharePoint page.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-training-checklist",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-training-checklist",
+    "longDescription": [
+      "YSample web part to display a training checklist in a SharePoint page."
+    ],
+    "creationDateTime": "2024-09-12",
+    "updateDateTime": "2024-09-12",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "trainingchecklist.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-training-checklist/assets/trainingchecklist.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },

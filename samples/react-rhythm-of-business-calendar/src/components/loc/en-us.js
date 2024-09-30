@@ -27,7 +27,8 @@ define([], function () {
             Day: "Day",
             Week: "Week",
             Month: "Month",
-            Quarter: "Quarter"
+            Quarter: "Quarter",
+            List: "List View"
         },
         ViewRoute: {
             Command_NewEvent: { Text: "New event" },
@@ -136,6 +137,8 @@ define([], function () {
             Command_AddToOutlook_Recurring_Series: { Text: "Entire series" },
             Command_AddToOutlook_Recurring_Instance: { Text: "Just this occurence" },
             Command_GetLink: { Text: "Get link" },
+            Command_Share: { Text: "Share" },
+            Command_Shared: { Text: "Shared" }
         },
         EventPanel: {
             NewEvent: "New event",
@@ -182,6 +185,7 @@ define([], function () {
             Command_AddToOutlook_Recurring_Series: { Text: "Entire series" },
             Command_AddToOutlook_Recurring_Instance: { Text: "Just this occurence" },
             Command_GetLink: { Text: "Get link" },
+            Command_Share: { Text: "Share" },
             Command_Approval: { Text: "Approval" },
             Command_Approval_Approve: { Text: "Approve" },
             Command_Approval_Reject: { Text: "Decline" },
@@ -192,16 +196,23 @@ define([], function () {
         },
         ApprovalEmails: {
             RequestEmail: {
-                Subject: "Your approval is requested",
+                Subject: "Event Approval Requested",
                 Intro: "An event requiring your approval has been submitted to the {0} by {1}.",
                 EventLinkText: "Please approve or decline this event.",
                 EventDetailsHeading: "Event details:"
             },
             RejectedEmail: {
-                Subject: "Your event was declined",
+                Subject: "Event Declined",
                 Intro: "An event you submitted to the {0} has been declined by {1}",
                 EventLinkText: "View event in the calendar",
                 NoReasonGiven: "(none given)",
+                EventDetailsHeading: "Event details:"
+            },
+            ApprovedEmail: {
+                Subject: "Event Approved",
+                Intro: "An event you submitted to the {0} has been approved by {1}",
+                EventLinkText: "View event in the calendar",
+                CommentGiven: "(none given)",
                 EventDetailsHeading: "Event details:"
             },
             EventDetails: {
@@ -241,6 +252,29 @@ define([], function () {
             Command_Discard: { Text: "Discard changes" },
             Command_Delete: { Text: "Delete" }
         },
+        // ChannelsPanel: {
+        //     Field_ChannelName_DisplayMode: {Label: "Name"},
+        //     Field_ChannelName_EditMode: {Label: "Please provide a descriptive name (append teams and channel name for identification)"},
+        //     Field_TeamsId_DisplayMode: { Label: "Teams Id" },
+        //     Field_TeamsId_EditMode: { Label: "Please provide the id of the teams" },
+        //     Field_ChannelId_DisplayMode: { Label: "Channel Id" },
+        //     Field_ChannelId__EditMode: { Label: "Please provide the id of the channel" },
+        //     Field_TeamsName_DisplayMode: { Label: "Teams Name" },
+        //     Field_ActualChannelName_DisplayMode: { Label: "Channel Name" },
+        //     Field_Users: { Label: "Users" },
+        //     ApprovalExplanation: "These users can approve events with:",
+        //     AnyValue: "Any value",
+        //     AnyRefinerValue: "Any {0}",
+        //     ValueForRefiner: "{0} for {1}",
+        //     ValueListConjunction: "or",
+        //     Command_Edit: { Text: "Edit" },
+        //     Command_Save: { Text: "Save" },
+        //     Command_Discard: { Text: "Discard changes" },
+        //     Command_Delete: { Text: "Delete" },
+        //     GetTeams_Info: "1.Click on the three dots near the channel name within the Microsoft Teams. '\n' 2. Select 'Get a link to the channel' and copy the link. '\n' 3. Select the 'groupId' value from the copied link and paste it for the teams id field",
+        //     GetChannel_Info: "1. Click on the three dots near the channel name within the Microsoft Teams. '\n' 2. Select 'Get a link to the channel' and copy the link.'\n' 3. Copy the text staring after the 'channel/' from the copy link and select till the.tacv2. '\n' 4. Now paste the link within the channelId field",
+        //     GetName_Info: "Please provide a name to identify the channel from the dropdown selection which appears if click on share button from the event"
+        // },
         ConfigureApproversPanel: {
             HeaderText: "Configure Approvers",
             Column_Title: "Name",
@@ -255,6 +289,21 @@ define([], function () {
             Command_Edit: { Text: "Edit" },
             Command_View: { Text: "View" },
         },
+        // ConfigureChannelsPanel: {
+        //     HeaderText: "Configure Teams Channel",
+        //     Column_ChannelName: "Name",
+        //     Column_TeamsId: "Teams Id",
+        //     Column_ChannelId: "Channel Id",
+        //     Column_TeamsName: "Teams Name",
+        //     Column_ActualChannelName: "Channel Name",
+        //     ValueListConjunction: "or",
+        //     Message_Teams: "The configured teams/channel id should be provided correctly to successfully share the events. Also the teams name and channel name will be auto populated based on the provided ids if necessary permissions are granted from the Admin centre of SharePoint",
+        //     NoChannelsDefined: "You have not configured any channels.",
+        //     Command_Close: { Text: "Close", Tooltip: "Close", AriaLabel: "close" },
+        //     Command_Add: { Text: "New" },
+        //     Command_Edit: { Text: "Edit" },
+        //     Command_View: { Text: "View" },
+        // },
         MyApprovalsPanel: {
             HeaderText: "Events needing your approval",
             NoEventsToApprove: "You're all caught up. There are no events pending approval.",
@@ -287,21 +336,34 @@ define([], function () {
         },
         SettingsPanel: {
             Heading: "Settings",
-            Field_FiscalYear: { Label: "First month of your fiscal year", Tooltip: "Determines the fiscal quarter for the calendar view" },
+            Field_FiscalYear: { Label: "First month of fiscal year", Tooltip: "Determines the fiscal quarter for the calendar view" },
             Field_DefaultView: { Label: "Initial view", Tooltip: "Default view that should appear to all users when the app starts" },
             Field_UseRefiners: { Label: "Use refiners", OnText: "Yes", OffText: "No", Tooltip: "Turn refiners on or off" },
             Field_RefinerRailInitialDisplay: { Label: "Refiners rail initial display", OnText: "Expanded", OffText: "Collapsed", Tooltip: "Whether the refiner rail will initially display expanded or collapsed when the app starts" },
             Field_QuarterViewGroupByRefiner: { Label: "Quarter view - group by", Tooltip: "Determines how events are grouped in the quarter view" },
             Field_UseApprovals: { Label: "Use approvals", OnText: "Yes", OffText: "No", Tooltip: "Turn on or off approval workflow for events" },
+            // Field_UseChannels: { Label: "Use Channels to Share", OnText: "Yes", OffText: "No", Tooltip: "Turn on or off channel to share events" },
             Field_AllowConfidentialEvents: { Label: "Allow confidential events", OnText: "Yes", OffText: "No", Tooltip: "Turn on or off the ability for users to create events that are only visible to specific people or groups" },
             Field_Refiners: { Label: "Refiners" },
             Command_ConfigureApprovers: { Text: "Configure Approvers", Tooltip: "Create an approval matrix to define who will approve which events" },
+            Command_ConfigureChannels: { Text: "Configure Channel", Tooltip: "Create a channel matrix to define which teams and channel can be configure" },
+            Heading_ChannelsSettings: "Teams Channel Settings",
+            Heading_ApprovalSettings: "Approval Settings",
+            Heading_GeneralSettings: "General Settings",
+            Heading_TemplateSettings: "Template View Settings (for Month and Quarter)",
             Command_AddRefiner: { Text: "Add refiner" },
             Command_EditRefiner: { Text: "Edit refiner", Tooltip: "Edit refiner", AriaLabel: "edit refiner" },
             Command_ReorderRefiner: { AriaLabel: "reorder this refiner" },
             Command_Edit: { Text: "Edit" },
             Command_Save: { Text: "Save" },
-            Command_Back: { Text: "Back" }
+            Command_Back: { Text: "Back" },
+            Field_ShowFiscalYear: { Label: "Show fiscal year as", Tooltip: "Determines the fiscal year for the calendar view" },
+            Field_UseApprovalsTeamsNotification: { Label: "Teams notification", OnText: "Yes", OffText: "No", Tooltip: "Turn on or off approval team notification for events" },
+            Field_UseApprovalsEmailNotification: { Label: "Email notification", OnText: "Yes", OffText: "No", Tooltip: "Turn on or off approval email notification for events" },
+            TeamsChannel_MessageInfo : "This screen can be used to configure the teams channel into which the user can share the event details by selecting the channel from the dropdown which appears on click of the event",
+            Field_UseAddToOutlook: { Label: "Enable Add to Outlook", OnText: "Yes", OffText: "No", Tooltip: "Enable the add to outlook feature for downloading the ics file and add as an outlook invite" },
+            Field_ListViewColumn: { Label: "Select List column view", Tooltip: "Select columns to display for list view" },
+            Field_TemplateView: { Label: "Select template view", Tooltip: "Select template to display for month view" }
         },
         CopyLinkDialog: {
             Title: "Copy a link to \"{0}\"",
@@ -335,6 +397,10 @@ define([], function () {
                 NotValid: "Refiner selections are not valid",
                 Required: "This is required"
             }
+        },
+        ProductivityStudioLogo: {
+            Command_ProductivityLogoLink: "Microsoft Productivity Studio"
+          
         }
     };
 });

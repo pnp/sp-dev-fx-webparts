@@ -32,7 +32,14 @@ class ApprovalDialog extends EntityDialogBase<Event, IProps, IState> implements 
         try {
             this.entity.moderator = currentUser;
             this.entity.moderationTimestamp = now();
-
+            const itemUrl = events.createEventDeepLink(this.entity);
+            const chatID: { chat_Id: string, rxUser: any }[] = [];
+            chatID.push({chat_Id: this.entity.teamsGroupChatId.replace("#", "@"), rxUser: []});
+            if(this.entity.moderationStatus === EventModerationStatus.Approved ){
+                 await events.sendNotification_EventApproved(chatID, this.entity, itemUrl);
+            } else {
+                 await events.sendNotification_EventRejected(chatID , this.entity, itemUrl);
+            }
             await events.persist();
         } catch (e) {
             if (ErrorHandler.is_412_PRECONDITION_FAILED(e)) {

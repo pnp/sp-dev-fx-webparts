@@ -45,6 +45,23 @@ $eventBorderRadius: 6px;
         text-overflow: ellipsis;
     }
 
+    .text_overflow {
+            white-space: nowrap;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+            width: auto;
+
+    }
+    .icon {
+        display: flex;
+        align-items: center;
+      }
+      
     .recur {
         text-align: end;
     }

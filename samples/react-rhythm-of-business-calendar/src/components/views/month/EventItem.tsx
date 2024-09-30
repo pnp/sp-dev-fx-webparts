@@ -6,9 +6,10 @@ import { EventItemInfo } from "./Builder";
 interface IProps {
     eventInfo: EventItemInfo;
     onActivate: (cccurrence: EventOccurrence, target: HTMLElement) => void;
+    selectedTemplateKeys?: string[];
 }
 
-export const EventItem: FC<IProps> = ({ eventInfo, onActivate }) => {
+export const EventItem: FC<IProps> = ({ eventInfo, onActivate, selectedTemplateKeys }) => {
     const { cccurrence, startsInWeek, endsInWeek } = eventInfo;
 
     const root = useRef<HTMLDivElement>();
@@ -24,6 +25,7 @@ export const EventItem: FC<IProps> = ({ eventInfo, onActivate }) => {
                 startsIn={startsInWeek}
                 endsIn={endsInWeek}
                 size={EventBarSize.Compact}
+                selectedTemplateKeys={selectedTemplateKeys}
             />
         </div>
     );
