@@ -1,4 +1,4 @@
-import { ISPFXContext, spfi, SPFI, SPFx } from "@pnp/sp";
+import { spfi, SPFI, SPFx } from "@pnp/sp";
 import { AssignFrom } from "@pnp/core";
 import { InjectHeaders, Caching } from "@pnp/queryable";
 import { dateAdd } from "@pnp/core";
@@ -7,24 +7,22 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/views";
 import "@pnp/sp/fields";
-import IListService from "./IListService";
 import { ICamlQuery } from "@pnp/sp/lists";
-import { ICamlQueryXml } from '../model/ICamlQueryXml';
-import XMLParser from 'react-xml-parser';
-import { IWeb, Web } from '@pnp/sp/webs';
+import XMLParser, { XMLElement } from 'react-xml-parser';
 import { SharePointType } from '../model/ISharePointFieldTypes';
 import IResult from '../model/IResult';
 import { intersection, isEmpty } from '@microsoft/sp-lodash-subset';
 import { ListField, SiteList } from '../model/IListConfigProps';
-import { IListSearchListQuery } from '../model/IMapQuery';
+import { IListSearchListQuery, IListSearchListQueryItem } from '../model/IMapQuery';
 import GraphService from './GraphService';
 import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { getKeyValue, setKeyValue } from "../utils/ObjectUtils";
 
 export interface QueryHelperEntity {
   viewFields: string[];
   expandFields: string[];
 }
-export default class ListService implements IListService {
+export default class ListService {
   private static sourceSP: SPFI;
   private baseUrl: string;
   private _sp: SPFI;
@@ -42,7 +40,7 @@ export default class ListService implements IListService {
       if (useCache) {
         ListService.sourceSP.using((Caching({
           store: cacheType,
-          expireFunc: (url) => dateAdd(new Date, "minute", cacheTime)
+          expireFunc: () => dateAdd(new Date, "minute", cacheTime)
         })));
       }
     }
@@ -57,19 +55,23 @@ export default class ListService implements IListService {
   public async getListItems(listQueryOptions: IListSearchListQuery, listPropertyName: string, sitePropertyName: string, sitePropertyValue: string, rowLimit: number, graphService?: GraphService): Promise<Array<IResult>> {
     try {
       const camlQuery = false;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let items: any = undefined;
       const queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName), false);
       if (listQueryOptions.camlQuery) {
         const query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
         items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
-        items = items.map(m => m.FieldValuesAsText);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        items = items.map((m: { FieldValuesAsText: any; }) => m.FieldValuesAsText);
       }
       else {
         if (listQueryOptions.viewName) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const viewInfo: any = await this._sp.web.lists.getById(listQueryOptions.list.Id).views.getByTitle(listQueryOptions.viewName).select("ViewQuery")();
           const query = this.getCamlQueryWithViewFieldsAndRowLimit(`<View><Query>${viewInfo.ViewQuery}</Query></View>`, queryConfig, rowLimit);
           items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
-          items = items.map(m => m.FieldValuesAsText);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          items = items.map((m: { FieldValuesAsText: any; }) => m.FieldValuesAsText);
         }
         else {
           items = await this._sp.web.lists.getById(listQueryOptions.list.Id).items
@@ -95,10 +97,12 @@ export default class ListService implements IListService {
         });
 
         if (listPropertyName) {
-          i[listPropertyName] = listQueryOptions.list.Title;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          setKeyValue(i, listPropertyName as any, listQueryOptions.list.Title);
         }
         if (sitePropertyName) {
-          i[sitePropertyName] = sitePropertyValue;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          setKeyValue(i, sitePropertyName as any, sitePropertyValue);
         }
         return i;
       });
@@ -108,6 +112,7 @@ export default class ListService implements IListService {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public async getListItemById(listQueryOptions: IListSearchListQuery, itemId: number): Promise<any> {
     try {
       const queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, false, true);
@@ -219,15 +224,17 @@ export default class ListService implements IListService {
     return result;
   }
 
-  private GetItemValue(item: any, field: any, fromCamlQuery: boolean): any {
+  private GetItemValue(item: IResult, field: IListSearchListQueryItem, fromCamlQuery: boolean): IResult {
     switch (field.fieldType) {
       case SharePointType.Lookup:
       case SharePointType.LookupMulti:
         if (fromCamlQuery) {
-          item[field.newField] = item['FieldValuesAsText'][field.originalField];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          setKeyValue(item, field.newField as any, getKeyValue(item, `FieldValuesAsText.${field.originalField}` as any));
         }
         else {
-          item[field.newField] = item[field.originalField];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          setKeyValue(item, field.newField as any, getKeyValue(item, field.originalField as any));
           if (field.newField !== field.originalField) {
             delete item[field.originalField];
           }
@@ -268,7 +275,7 @@ export default class ListService implements IListService {
           }
           else {
             const taxonomyValues = item["TaxCatchAll"];
-            const taxonomyTerm = taxonomyValues.find(t => t.ID === item[field.originalField].WssId);
+            const taxonomyTerm = taxonomyValues.find((t: { ID: number; }) => t.ID === item[field.originalField].WssId);
             if (taxonomyTerm) {
               item[field.newField] = taxonomyTerm;
             }
@@ -302,6 +309,7 @@ export default class ListService implements IListService {
     return item;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async getListItemsByCamlQuery(listId: string, camlQuery: string, queryConfig: QueryHelperEntity): Promise<Array<any>> {
     try {
       const caml: ICamlQuery = {
@@ -316,23 +324,23 @@ export default class ListService implements IListService {
   private getCamlQueryWithViewFieldsAndRowLimit(camlQuery: string, queryConfig: QueryHelperEntity, rowLimit: number): string {
     try {
       const XmlParser = new XMLParser();
-      const xml: ICamlQueryXml = XmlParser.parseFromString(camlQuery);
+      const xml: XMLElement = XmlParser.parseFromString(camlQuery);
 
-      let rowLimitXml: ICamlQueryXml = { name: "RowLimit", value: rowLimit ? rowLimit.toString() : "0", attributes: undefined, children: [] };
+      const rowLimitXml: XMLElement = { name: "RowLimit", value: rowLimit ? rowLimit.toString() : "0", attributes: undefined, children: [] };
 
-      const viewFieldsChildren: ICamlQueryXml[] = queryConfig.viewFields.map(viewField => {
+      const viewFieldsChildren: XMLElement[] = queryConfig.viewFields.map(viewField => {
         return { name: "FieldRef", attributes: { Name: viewField }, value: "", children: [] };
       });
-      const viewFieldsXml: ICamlQueryXml = { name: "ViewFields", value: "", children: viewFieldsChildren, attributes: undefined };
+      const viewFieldsXml: XMLElement = { name: "ViewFields", value: "", children: viewFieldsChildren, attributes: undefined };
 
-      let queryXml: ICamlQueryXml;
+      let queryXml: XMLElement;
       xml.children.map(child => {
         if (child.name == "Query") {
-          queryXml = child;
+          queryXml.value = child.value;
         }
 
         if (child.name == "RowLimit") { //If the user set a camlquery with row limit or the view has row limit, it is not override
-          rowLimitXml = child;
+          rowLimitXml.value = child.value;
         }
       });
 

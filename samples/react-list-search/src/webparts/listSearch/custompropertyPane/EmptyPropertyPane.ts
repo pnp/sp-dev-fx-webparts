@@ -2,7 +2,7 @@
 //Code from https://kaboodlesoftware.com/2019/10/04/a-rather-useful-empty-spfx-property-pane-control/
 import { IPropertyPaneField, PropertyPaneFieldType, IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 
-export class EmptyPropertyPane implements IPropertyPaneField<any> {
+export class EmptyPropertyPane implements IPropertyPaneField<IPropertyPaneCustomFieldProps> {
 
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;

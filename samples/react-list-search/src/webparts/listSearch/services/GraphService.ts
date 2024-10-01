@@ -3,11 +3,10 @@ import "@pnp/graph/users";
 import "@pnp/graph/groups";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { PnPClientStorage } from "@pnp/common";
-import IGraphService from "./IGraphService";
 
 
 let _graph: GraphFI
-export default class GraphService implements IGraphService {
+export default class GraphService {
 
   private _storage: PnPClientStorage;
   private _localStorageKey = 'userGroups';

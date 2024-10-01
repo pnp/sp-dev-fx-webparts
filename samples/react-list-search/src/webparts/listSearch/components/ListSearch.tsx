@@ -47,6 +47,8 @@ import IResult from '../model/IResult';
 import { IListSearchListQuery, IMapQuery } from '../model/IMapQuery';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import GraphService from '../services/GraphService';
+import { List } from 'lodash';
+import { getKeyValue } from '../utils/ObjectUtils';
 
 
 const LOG_SOURCE = "IListdSearchWebPart";
@@ -57,7 +59,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   private keymapQuerys: IMapQuery = {};
   private _graphService: GraphService;
 
-  constructor(props: IListSearchProps, state: IListSearchState) {
+  constructor(props: IListSearchProps) {
     super(props);
     this.state = {
       activePage: 1,
@@ -81,7 +83,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   }
 
-  public componentDidUpdate(prevProps: Readonly<IListSearchProps>, prevState: Readonly<IListSearchState>, snapshot?: any): void {
+  public componentDidUpdate(prevProps: Readonly<IListSearchProps>): void {
     if (prevProps != this.props) {
       this.setState({ items: null, filterItems: null, isLoading: true, columns: [] });
       this.getData();
@@ -92,12 +94,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     this.getData();
   }
 
-  public componentDidCatch(error, info) {
-    Log.warn(LOG_SOURCE, `Component throw exception ${info}`, this.props.Context.serviceScope);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    Log.warn(LOG_SOURCE, `Component throw exception ${errorInfo}`, this.props.Context.serviceScope);
     this.SetError(error, "ComponentDidCatch");
   }
 
-  private SetError(error: any, methodName: string) {
+  private SetError(error: Error, methodName: string) {
     Log.warn(LOG_SOURCE, `${methodName} set an error`, this.props.Context.serviceScope);
     Log.error(LOG_SOURCE, error, this.props.Context.serviceScope);
     this.setState({
@@ -109,13 +111,13 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private async getData() {
     try {
-      let result: any[] = await this.readListsItems();
+      let result: Array<IResult> = await this.readListsItems();
 
       if (this.props.ItemLimit) {
         result = result.slice(0, this.props.ItemLimit);
       }
 
-      let groupedItems = [];
+      let groupedItems: IGroupedItems[] = [];
       if (this.props.groupByField) {
         groupedItems = this._groupBy(result, this.props.groupByField, this.props.groupByFieldType);
       }
@@ -131,26 +133,27 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     }
   }
 
-  private async readListsItems(): Promise<Array<any>> {
+  private async readListsItems(): Promise<Array<IResult>> {
     this.generateKeymap();
-    const itemPromise: Array<Promise<Array<any>>> = [];
+    const itemPromise: Array<Promise<Array<IResult>>> = [];
 
     Object.keys(this.keymapQuerys).map(site => {
       const listService: ListService = new ListService(this.props.Context, site, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
-      const siteProperties = this.props.Sites.filter(siteInformation => siteInformation.url === site);
+      const siteProperties = find(this.props.Sites, siteInformation => siteInformation.url === site);
       Object.keys(this.keymapQuerys[site]).map(listQuery => {
         itemPromise.push(listService.getListItems(
           this.keymapQuerys[site][listQuery],
           this.props.ListNameTitle,
           this.props.SiteNameTitle,
-          siteProperties[0][this.props.SiteNamePropertyToShow],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          getKeyValue(siteProperties, this.props.SiteNamePropertyToShow as any),
           this.props.ItemLimit,
           this._graphService));
       });
     });
 
     const items = await Promise.all(itemPromise);
-    const result = [];
+    const result: IResult[] = [];
     items.map(partialResult => {
       result.push(...partialResult);
     });
@@ -168,6 +171,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return columns;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private setNewFilterState(items: any[], generalFilter: string, collapseAllGroups: boolean, columnFilters: IColumnFilter[]) {
     if (this.props.groupByField) {
       const groupedItems = this._groupBy(items, this.props.groupByField, this.props.groupByFieldType);
@@ -220,7 +224,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           camlQuery: listQueryInfo && listQueryInfo.Query,
           viewName: listQueryInfo && listQueryInfo.ListView
         };
-        this.keymapQuerys[item.SiteCollectionSource] = [];
+        this.keymapQuerys[item.SiteCollectionSource] = {};
         this.keymapQuerys[item.SiteCollectionSource][item.ListSourceField] = newQueryListItem;
       }
     });
@@ -258,8 +262,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public filterListItemsByColumnsFilter(itemsToRefine: any[], newFilters: IColumnFilter[], isFromClearGeneralFilter: boolean) {
     if (this.props.IndividualColumnFilter) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const newItems: Array<any> = [];
       itemsToRefine.map(item => {
         let itemFounded = true;
@@ -281,12 +287,14 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public filterListItemsByGeneralFilter(valueToFilter: string, isClearFilter: boolean, reloadComponents: boolean, allItems: IResult[], filteredItems: IResult[]) {
     if (valueToFilter && valueToFilter.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const filterItems: Array<any> = [];
       const itemsToFilter = (isClearFilter || valueToFilter.length < this.state.generalFilter.length) ? allItems : filteredItems;
       itemsToFilter.map(item => {
         this.props.GeneralSearcheableFields.map(field => {
           if (filterItems.indexOf(item) < 0) {
-            if (item[field.ColumnTitle] && item[field.ColumnTitle].toString().toLowerCase().indexOf(valueToFilter.toLowerCase()) > -1) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if (getKeyValue(item, field.ColumnTitle as any) && getKeyValue(item, field.ColumnTitle as any).toString().toLowerCase().indexOf(valueToFilter.toLowerCase()) > -1) {
               filterItems.push(item);
               return item;
             }
@@ -355,7 +363,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     }
   }
 
-  private handlePageChange(pageNumber) {
+  private handlePageChange(pageNumber: number) {
     this.setState({ activePage: pageNumber });
   }
 
@@ -367,8 +375,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return this.props.IndividualColumnFilter && this.props.IndividualFilterPosition && this.props.IndividualFilterPosition.indexOf(position) > -1;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getItems(): Array<any> {
-    let result = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let result: any[] = [];
     if (this.state.filterItems) {
       if (this.props.groupByField) {
         this.state.groupedItems.map(group => { result = [...result, ...group.Items]; });
@@ -569,6 +579,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getOnRowClickRender(detailrow: any, defaultRender: any): JSX.Element {
     return this.props.clickEnabled ?
       this.props.oneClickOption ?
@@ -585,10 +596,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       </>;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _renderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
     return this.GetJSXElementByType(item, column.fieldName, column.data);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private GetModalBodyRenderByFieldType(item: any, propertyName: string, fieldType: SharePointType): JSX.Element {
     let result = this.GetJSXElementByType(item, propertyName, fieldType, true);
 
@@ -679,10 +692,11 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private GetJSXElementByType(item: any, fieldName: string, fieldType: SharePointType, ommitCamlQuery = false): JSX.Element {
-    const value: any = this.GetItemValueFieldByFieldType(item, fieldName, fieldType, ommitCamlQuery);
+    const value = this.GetItemValueFieldByFieldType(item, fieldName, fieldType, ommitCamlQuery);
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
-    let result: JSX.Element = <span></span>;
+    let result: JSX.Element = <span/>;
     switch (fieldType) {
       case SharePointType.FileIcon:
         {
@@ -707,7 +721,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
               />;
             }
             else {
-              result = <span></span>;
+              result = <span/>;
             }
           }
           break;
@@ -715,12 +729,13 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       case SharePointType.UserMulti:
         {
           if (this.props.AnyCamlQuery && !ommitCamlQuery && value && value.length > 0) {
-            result = <span>{value.map((val, index) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            result = <span>{value.map((val: any, index: number) => {
               if (index + 1 == value.length) {
                 return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
               }
             })}
             </span>;
@@ -740,7 +755,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
               />;
             }
             else {
-              result = <span></span>;
+              result = <span/>;
             }
           }
           break;
@@ -748,18 +763,19 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       case SharePointType.TaxonomyMulti:
         {
           if (value) {
-            result = <span>{value.map((val, index) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            result = <span>{value.map((val: any, index: number) => {
               if (index + 1 == value.length) {
                 return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
               }
             })}
             </span>;
           }
           else {
-            result = <span></span>;
+            result = <span/>;
           }
           break;
         }
@@ -768,39 +784,41 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           result = <Link style={{ color: semanticColors.bodyText }} href="#">{value}</Link>;
         }
         else {
-          result = <span></span>;
+          result = <span/>;
         }
         break;
       case SharePointType.ChoiceMulti:
         if (value) {
-          result = <span>{value.map((val, index) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
               return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
             }
             else {
-              return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
+              return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
             }
           })}
           </span>;
         }
         else {
-          result = <span></span>;
+          result = <span/>;
         }
         break;
       case SharePointType.LookupMulti:
         if (value) {
-          result = <span>{value.map((val, index) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
               return <Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
             }
             else {
-              return <span><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br></br></span>;
+              return <span><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br/></span>;
             }
           })}
           </span>;
         }
         else {
-          result = <span></span>;
+          result = <span/>;
         }
         break;
       case SharePointType.Url:
@@ -808,7 +826,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           result = <Link href={value.Url} style={{ color: semanticColors.bodyText }}>{value.Description}</Link>;
         }
         else {
-          result = <span></span>;
+          result = <span/>;
         }
         break;
       case SharePointType.Image:
@@ -828,17 +846,17 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             />;
           }
           else {
-            result = <span></span>;
+            result = <span/>;
           }
           break;
         }
       case SharePointType.NoteFullHtml:
         {
           if (value) {
-            result = <span dangerouslySetInnerHTML={{ __html: value }}></span>;
+            result = <span dangerouslySetInnerHTML={{ __html: value }}/>;
           }
           else {
-            result = <span></span>;
+            result = <span/>;
           }
           break;
         }
@@ -850,7 +868,9 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private GetItemValueFieldByFieldType(item: any, field: string, type: SharePointType, ommitCamlQuery = false, setGroupByEmptyValue = false): any {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let result: any;
     const value = item[field];
     switch (type) {
@@ -915,7 +935,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
           else {
             if (value && value.length > 0) {
-              const personas: IFacepilePersona[] = value.map(user => {
+              const personas: IFacepilePersona[] = value.map((user: { Name: string; Title: string; }) => {
                 const email = StringUtils.GetUserEmail(user.Name);
                 return { imageUrl: email ? `/_layouts/15/userphoto.aspx?UserName=${email}` : undefined, personaName: user.Title, imageInitials: StringUtils.GetUserInitials(user.Title), };
               });
@@ -950,7 +970,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             result = value ? value.split(';') : "";
           }
           else {
-            result = value && value.map(val => { return val.Title; });
+            result = value && value.map((val: { Title: string; }) => { return val.Title; });
           }
           break;
         }
@@ -994,7 +1014,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         }
       case SharePointType.TaxonomyMulti:
         {
-          result = value && value.map(tax => { return tax.Label; });
+          result = value && value.map((tax: { Label: string; }) => { return tax.Label; });
           break;
         }
       default:
@@ -1007,7 +1027,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result || (setGroupByEmptyValue ? strings.GroupByEmptyValue : result);
   }
 
-  private _groupBy(array, groupByField: string, groupByFieldType: SharePointType): IGroupedItems[] {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _groupBy(array: List<any>, groupByField: string, groupByFieldType: SharePointType): IGroupedItems[] {
     let resArray: IGroupedItems[] = [];
     try {
       const elementsInGroups = groupBy(array, item => this.GetItemValueFieldByFieldType(item, groupByField, groupByFieldType, false, true));
@@ -1043,10 +1064,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     });
 
     if (this.props.groupByField) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const newGroupedElements = this.state.groupedItems.map(group => { return { GroupName: group.GroupName, Items: this._copyAndSort(group.Items, currColumn.fieldName!, currColumn.isSortedDescending) }; });
       this.setState({ columns: newColumns, groupedItems: newGroupedElements });
     }
     else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const newItems = this._copyAndSort(this.state.filterItems, currColumn.fieldName!, currColumn.isSortedDescending);
       this.setState({ columns: newColumns, filterItems: newItems });
     }
@@ -1056,13 +1079,13 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public render(): React.ReactElement<IListSearchProps> {
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
-    const clearAllButton = this.props.ClearAllFiltersBtnColor == "white" ? <DefaultButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} /> :
-      <PrimaryButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} />;
+    const clearAllButton = this.props.ClearAllFiltersBtnColor == "white" ? <DefaultButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={() => this._clearAllFilters()} /> :
+      <PrimaryButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={() => this._clearAllFilters()} />;
     return (
       <div className={styles.listSearch} style={{ backgroundColor: semanticColors.bodyBackground, color: semanticColors.bodyText }}>
         <div className={styles.row}>
           <div className={styles.column}>
-            <WebPartTitle title={this.props.title} updateProperty={(value: string) => this.props.updateTitle(value)} displayMode={this.props.displayMode} placeholder={strings.WebPartTitlePlaceHolder}></WebPartTitle>
+            <WebPartTitle title={this.props.title} updateProperty={(value: string) => this.props.updateTitle(value)} displayMode={this.props.displayMode} placeholder={strings.WebPartTitlePlaceHolder}/>
             {this.state.errorMsg ?
               <MessageBar
                 messageBarType={MessageBarType.error}

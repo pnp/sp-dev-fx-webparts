@@ -1,7 +1,7 @@
 {
   "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "target": "es6",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
