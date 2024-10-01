@@ -13,30 +13,30 @@ import {
   IGroup,
   DetailsHeader,
   DetailsListLayoutMode,
-} from 'office-ui-fabric-react/lib/DetailsList';
+} from '@fluentui/react';
 import {
   getTheme,
   IconButton,
   MessageBar,
   MessageBarType,
   ShimmeredDetailsList
-} from 'office-ui-fabric-react';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+} from '@fluentui/react';
+import { SearchBox } from '@fluentui/react';
 import Pagination from "react-js-pagination";
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react';
-import { Icon, ITheme } from 'office-ui-fabric-react';
-import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
-import { Modal } from 'office-ui-fabric-react/lib/Modal';
+import { IIconProps } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react';
+import { Icon, ITheme } from '@fluentui/react';
+import { Shimmer } from '@fluentui/react';
+import { Modal } from '@fluentui/react';
 import { Log } from '@microsoft/sp-core-library';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle } from '@fluentui/react';
 import { SharePointType } from '../model/ISharePointFieldTypes';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Facepile, OverflowButtonType, IFacepilePersona } from 'office-ui-fabric-react/lib/Facepile';
+import { Persona, PersonaSize } from '@fluentui/react';
+import { Facepile, OverflowButtonType, IFacepilePersona } from '@fluentui/react';
 import StringUtils from '../services/Utils';
-import { Image, IImageProps, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Link } from 'office-ui-fabric-react';
+import { Image, IImageProps, ImageFit } from '@fluentui/react';
+import { Link } from '@fluentui/react';
 import { FileTypeIcon, ApplicationType, IconType, ImageSize } from "@pnp/spfx-controls-react/lib/FileTypeIcon";
 import IUserField from '../model/IUserField';
 import IUrlField from '../model/IUrlField';
@@ -133,11 +133,11 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private async readListsItems(): Promise<Array<any>> {
     this.generateKeymap();
-    let itemPromise: Array<Promise<Array<any>>> = [];
+    const itemPromise: Array<Promise<Array<any>>> = [];
 
     Object.keys(this.keymapQuerys).map(site => {
-      let listService: ListService = new ListService(site, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
-      let siteProperties = this.props.Sites.filter(siteInformation => siteInformation.url === site);
+      const listService: ListService = new ListService(this.props.Context, site, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
+      const siteProperties = this.props.Sites.filter(siteInformation => siteInformation.url === site);
       Object.keys(this.keymapQuerys[site]).map(listQuery => {
         itemPromise.push(listService.getListItems(
           this.keymapQuerys[site][listQuery],
@@ -149,8 +149,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       });
     });
 
-    let items = await Promise.all(itemPromise);
-    let result = [];
+    const items = await Promise.all(itemPromise);
+    const result = [];
     items.map(partialResult => {
       result.push(...partialResult);
     });
@@ -159,9 +159,9 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   private AddColumnsToDisplay(): IColumn[] {
-    let columns: IColumn[] = [];
+    const columns: IColumn[] = [];
     this.props.detailListFieldsCollectionData.sort().map(column => {
-      let mappingType = this.props.mappingFieldsCollectionData.find(e => e.TargetField === column.ColumnTitle);
+      const mappingType = this.props.mappingFieldsCollectionData.find(e => e.TargetField === column.ColumnTitle);
       columns.push({ key: column.ColumnTitle, name: column.ColumnTitle, fieldName: column.ColumnTitle, minWidth: column.MinColumnWidth || 50, maxWidth: column.MaxColumnWidth, isResizable: true, data: mappingType ? mappingType.SPFieldType : (column.IsFileIcon ? SharePointType.FileIcon : SharePointType.Text), onColumnClick: this._onColumnClick, isIconOnly: column.IsFileIcon });
     });
 
@@ -170,7 +170,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private setNewFilterState(items: any[], generalFilter: string, collapseAllGroups: boolean, columnFilters: IColumnFilter[]) {
     if (this.props.groupByField) {
-      let groupedItems = this._groupBy(items, this.props.groupByField, this.props.groupByFieldType);
+      const groupedItems = this._groupBy(items, this.props.groupByField, this.props.groupByFieldType);
       if (collapseAllGroups) {
         this.groups.map(group => group.isCollapsed = true);
       }
@@ -182,9 +182,9 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   private _getDetailListGroups(groupedItems: IGroupedItems[]) {
-    let groupedElements: number = 0;
+    let groupedElements = 0;
     this.groups = this.props.groupByField && groupedItems && groupedItems.map(group => {
-      let result = { key: group.GroupName, name: group.GroupName, startIndex: groupedElements, count: group.Items.length, level: 0 };
+      const result = { key: group.GroupName, name: group.GroupName, startIndex: groupedElements, count: group.Items.length, level: 0 };
       groupedElements += group.Items.length;
       return result;
     });
@@ -200,8 +200,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
         }
         else {
-          let listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
-          let newQueryListItem: IListSearchListQuery = {
+          const listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
+          const newQueryListItem: IListSearchListQuery = {
             list: { Id: item.ListSourceField, Title: item.ListSourceFieldName },
             audienceEnabled: listQueryInfo.AudienceEnabled,
             fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }],
@@ -212,8 +212,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         }
       }
       else {
-        let listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
-        let newQueryListItem: IListSearchListQuery = {
+        const listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
+        const newQueryListItem: IListSearchListQuery = {
           list: { Id: item.ListSourceField, Title: item.ListSourceFieldName },
           audienceEnabled: listQueryInfo.AudienceEnabled,
           fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }],
@@ -228,10 +228,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public filterColumnListItems(propertyName: string, propertyValue: string, columnType: SharePointType) {
     try {
-      let isNewFilter: boolean = true;
-      let clearFilter: boolean = false;
-      let isMoreRestricted: boolean = false;
-      let newFitlers: IColumnFilter[] = this.state.columnFilters.filter(filter => {
+      let isNewFilter = true;
+      let clearFilter = false;
+      let isMoreRestricted = false;
+      const newFitlers: IColumnFilter[] = this.state.columnFilters.filter(filter => {
         if (filter.columnName === propertyName) {
           isMoreRestricted = filter.filterToApply.length < propertyValue.length;
           filter.filterToApply = propertyValue;
@@ -248,7 +248,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
       if (isNewFilter) newFitlers.push({ columnName: propertyName, filterToApply: propertyValue, columnType });
 
-      let itemsToRefine = (clearFilter || this.state.generalFilter) ? this.filterListItemsByGeneralFilter(this.state.generalFilter, true, false, this.state.items, this.state.filterItems)
+      const itemsToRefine = (clearFilter || this.state.generalFilter) ? this.filterListItemsByGeneralFilter(this.state.generalFilter, true, false, this.state.items, this.state.filterItems)
         : (isMoreRestricted ? this.state.filterItems : this.state.items);
 
       this.filterListItemsByColumnsFilter(itemsToRefine, newFitlers, false);
@@ -260,11 +260,11 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public filterListItemsByColumnsFilter(itemsToRefine: any[], newFilters: IColumnFilter[], isFromClearGeneralFilter: boolean) {
     if (this.props.IndividualColumnFilter) {
-      let newItems: Array<any> = [];
+      const newItems: Array<any> = [];
       itemsToRefine.map(item => {
-        let itemFounded: boolean = true;
+        let itemFounded = true;
         newFilters.map(filter => {
-          let value = this.GetItemValueFieldByFieldType(item, filter.columnName, filter.columnType);
+          const value = this.GetItemValueFieldByFieldType(item, filter.columnName, filter.columnType);
           if (value == undefined || value == "" || value.toString().toLowerCase().indexOf(filter.filterToApply.toLowerCase()) < 0) {
             itemFounded = false;
           }
@@ -281,8 +281,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public filterListItemsByGeneralFilter(valueToFilter: string, isClearFilter: boolean, reloadComponents: boolean, allItems: IResult[], filteredItems: IResult[]) {
     if (valueToFilter && valueToFilter.length > 0) {
-      let filterItems: Array<any> = [];
-      let itemsToFilter = (isClearFilter || valueToFilter.length < this.state.generalFilter.length) ? allItems : filteredItems;
+      const filterItems: Array<any> = [];
+      const itemsToFilter = (isClearFilter || valueToFilter.length < this.state.generalFilter.length) ? allItems : filteredItems;
       itemsToFilter.map(item => {
         this.props.GeneralSearcheableFields.map(field => {
           if (filterItems.indexOf(item) < 0) {
@@ -323,12 +323,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private _onRenderDetails(detailsFooterProps: IDetailsFooterProps, showSearchBox: boolean, isHeader: boolean): JSX.Element {
     if (this.props.IndividualColumnFilter) {
-      let _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
-        let filter: IColumnFilter = this.state.columnFilters.find(colFilter => colFilter.columnName == column.name);
+      const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
+        const filter: IColumnFilter = this.state.columnFilters.find(colFilter => colFilter.columnName == column.name);
         if (this.props.IndividualColumnFilter && showSearchBox && column.data != SharePointType.FileIcon) {
           return (
             <SearchBox placeholder={column.name} iconProps={filterIcon} value={filter ? filter.filterToApply : ""}
-              underlined={true} onChange={(ev, value) => this.filterColumnListItems(column.name, value, column.data)} onClear={(ev) => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
+              underlined={true} onChange={(_, value) => this.filterColumnListItems(column.name, value, column.data)} onClear={() => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
           );
         }
         else {
@@ -375,7 +375,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       }
       else {
         if (this.props.ShowPagination) {
-          let start = this.props.ItemsInPage * (this.state.activePage - 1);
+          const start = this.props.ItemsInPage * (this.state.activePage - 1);
           result = this.state.filterItems.slice(start, start + this.props.ItemsInPage);
         }
         else {
@@ -399,16 +399,16 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   private async GetCompleteItemData(item: IResult) {
-    let listService: ListService = new ListService(item.SiteUrl, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
+    const listService: ListService = new ListService(this.props.Context, item.SiteUrl, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
 
-    let completeItemQueryOptions: IListSearchListQuery = {
+    const completeItemQueryOptions: IListSearchListQuery = {
       list: item.List,
       audienceEnabled: true,
       fields: this.props.completeModalFields && this.props.completeModalFields.filter(field => field.SiteCollectionSource == item.SiteUrl &&
         field.ListSourceField == item.List.Id).map(field => { return { originalField: field.SourceField, newField: field.TargetField, fieldType: field.SPFieldType }; })
     };
 
-    let completeItem = await listService.getListItemById(completeItemQueryOptions, item.Id);
+    const completeItem = await listService.getListItemById(completeItemQueryOptions, item.Id);
     if (completeItem) {
       completeItem.SiteUrl = item.SiteUrl;
       completeItem.ListName = item.ListName;
@@ -428,10 +428,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
         case IModalType.Redirect:
           {
-            let config = this.props.redirectData.filter(f => f.SiteCollectionSource == this.state.selectedItem.SiteUrl && f.ListSourceField == this.state.selectedItem.List.Id);
+            const config = this.props.redirectData.filter(f => f.SiteCollectionSource == this.state.selectedItem.SiteUrl && f.ListSourceField == this.state.selectedItem.List.Id);
             if (config && config.length > 0) {
               if (this.props.onRedirectIdQuery) {
-                var url = new URL(config[0].Url);
+                const url = new URL(config[0].Url);
                 url.searchParams.append(this.props.onRedirectIdQuery, this.state.selectedItem.Id.toString());
                 window.location.replace(url.toString());
               }
@@ -605,8 +605,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private GetFileIconByFileType(extesion: string): JSX.Element {
     let result;
-    let size = ImageSize.small;
-    let type = IconType.image;
+    const size = ImageSize.small;
+    const type = IconType.image;
     switch (extesion) {
       case "doc":
       case "docm":
@@ -679,7 +679,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result;
   }
 
-  private GetJSXElementByType(item: any, fieldName: string, fieldType: SharePointType, ommitCamlQuery: boolean = false): JSX.Element {
+  private GetJSXElementByType(item: any, fieldName: string, fieldType: SharePointType, ommitCamlQuery = false): JSX.Element {
     const value: any = this.GetItemValueFieldByFieldType(item, fieldName, fieldType, ommitCamlQuery);
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
     let result: JSX.Element = <span></span>;
@@ -850,9 +850,9 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return result;
   }
 
-  private GetItemValueFieldByFieldType(item: any, field: string, type: SharePointType, ommitCamlQuery: boolean = false, setGroupByEmptyValue: boolean = false): any {
+  private GetItemValueFieldByFieldType(item: any, field: string, type: SharePointType, ommitCamlQuery = false, setGroupByEmptyValue = false): any {
     let result: any;
-    let value = item[field];
+    const value = item[field];
     switch (type) {
       case SharePointType.FileIcon:
         {
@@ -873,7 +873,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
           else {
             if (!isEmpty(value)) {
-              let user: IUserField = { Name: value.Title, Email: StringUtils.GetUserEmail(value.Name) };
+              const user: IUserField = { Name: value.Title, Email: StringUtils.GetUserEmail(value.Name) };
               result = user;
             }
           }
@@ -883,7 +883,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       case SharePointType.Image:
         {
           if (!isEmpty(value)) {
-            let url: IUrlField = { Url: value.Url, Description: value.Description };
+            const url: IUrlField = { Url: value.Url, Description: value.Description };
             result = url;
           }
           break;
@@ -915,8 +915,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
           else {
             if (value && value.length > 0) {
-              let personas: IFacepilePersona[] = value.map(user => {
-                let email = StringUtils.GetUserEmail(user.Name);
+              const personas: IFacepilePersona[] = value.map(user => {
+                const email = StringUtils.GetUserEmail(user.Name);
                 return { imageUrl: email ? `/_layouts/15/userphoto.aspx?UserName=${email}` : undefined, personaName: user.Title, imageInitials: StringUtils.GetUserInitials(user.Title), };
               });
               result = personas;
@@ -1010,7 +1010,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   private _groupBy(array, groupByField: string, groupByFieldType: SharePointType): IGroupedItems[] {
     let resArray: IGroupedItems[] = [];
     try {
-      let elementsInGroups = groupBy(array, item => this.GetItemValueFieldByFieldType(item, groupByField, groupByFieldType, false, true));
+      const elementsInGroups = groupBy(array, item => this.GetItemValueFieldByFieldType(item, groupByField, groupByFieldType, false, true));
       resArray = Object.keys(elementsInGroups).sort().map(group => {
         return { GroupName: group, Items: elementsInGroups[group] };
       });
@@ -1056,7 +1056,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   public render(): React.ReactElement<IListSearchProps> {
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
-    let clearAllButton = this.props.ClearAllFiltersBtnColor == "white" ? <DefaultButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} /> :
+    const clearAllButton = this.props.ClearAllFiltersBtnColor == "white" ? <DefaultButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} /> :
       <PrimaryButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} />;
     return (
       <div className={styles.listSearch} style={{ backgroundColor: semanticColors.bodyBackground, color: semanticColors.bodyText }}>
@@ -1089,7 +1089,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                 <div className={styles.rowData}>
                   <div className={styles.colData}>
                     {this.props.ShowItemCount &&
-                      <Shimmer isDataLoaded={!this.state.isLoading} width={"25%"}><div className={styles.template_resultCount}>{this.props.ItemCountText.replace("{itemCount}", `${this.state.filterItems ? this.state.filterItems.length : 0}`)}</div></Shimmer>
+                      <Shimmer isDataLoaded={!this.state.isLoading} width={"25%"}><div className={styles.template_resultCount}>{this.props.ItemCountText?.replace("{itemCount}", `${this.state.filterItems ? this.state.filterItems.length : 0}`)}</div></Shimmer>
                     }
                     <ShimmeredDetailsList
                       enableShimmer={this.state.isLoading}

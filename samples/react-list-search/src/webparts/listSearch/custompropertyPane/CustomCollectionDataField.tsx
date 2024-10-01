@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown } from '@fluentui/react';
 import { ICustomCollectionField } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
+import { TextField } from '@fluentui/react';
 import { IMappingFieldData, IListData, ICustomOption, SiteList, ListField, IBaseFieldData } from '../model/IListConfigProps';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
 import styles from '../ListSearchWebPart.module.scss';
-import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
+import { Checkbox } from '@fluentui/react';
 
 
 

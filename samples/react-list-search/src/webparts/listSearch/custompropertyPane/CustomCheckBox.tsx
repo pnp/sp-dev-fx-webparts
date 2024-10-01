@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown } from '@fluentui/react';
 import { ICustomCollectionField } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
 
