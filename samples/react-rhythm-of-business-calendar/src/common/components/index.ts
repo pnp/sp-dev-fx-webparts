@@ -34,4 +34,5 @@ export { UserList } from './UserList';
 export { default as UserPicker, UserPickerDisplayOption } from './UserPicker';
 export { Validation } from './Validation';
 export { WebPartTitle } from './WebPartTitle';
+export { default as LiveMultiTextField } from './LiveMultiTextField';
 export { Wizard, IWizardPageProps, IWizardStepProps, IButtonRenderProps, PageRenderer, StepRenderer } from './Wizard';

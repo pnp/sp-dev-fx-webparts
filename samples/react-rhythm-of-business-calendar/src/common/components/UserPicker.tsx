@@ -1,21 +1,33 @@
 import { isEmpty } from "lodash";
-import React, { FC, useCallback, useMemo } from "react";
+import React, { FC, useCallback, useMemo, useRef, useEffect } from "react";
 import { PrincipalType } from "@pnp/sp";
-import { IPeoplePickerProps, ListPeoplePicker, NormalPeoplePicker, CompactPeoplePicker, IPersonaProps, Label, css, useTheme, PeoplePickerItem, IPeoplePickerItemSelectedProps, IPeoplePickerItemSelectedStyles } from '@fluentui/react';
-import { IDirectoryService, useDirectoryService } from 'common/services';
+import {
+    IPeoplePickerProps,
+    ListPeoplePicker,
+    NormalPeoplePicker,
+    CompactPeoplePicker,
+    IPersonaProps,
+    Label,
+    css,
+    useTheme,
+    PeoplePickerItem,
+    IPeoplePickerItemSelectedProps,
+    IPeoplePickerItemSelectedStyles,
+} from "@fluentui/react";
+import { IDirectoryService, useDirectoryService } from "common/services";
 import { SharePointGroup } from "common/sharepoint";
-import { User } from '../User';
+import { User } from "../User";
 import { InfoTooltip } from "./InfoTooltip";
 
-import * as cstrings from 'CommonStrings';
-import styles from './styles/UserPicker.module.scss';
+import * as cstrings from "CommonStrings";
+import styles from "./styles/UserPicker.module.scss";
 
 const maximumSuggestions = 10;
 
 export enum UserPickerDisplayOption {
     Normal,
     List,
-    Compact
+    Compact,
 }
 
 export type OnChangedCallback = (users: User[]) => void;
@@ -32,6 +44,7 @@ export interface IUserPickerProps {
     onChanged: OnChangedCallback;
     restrictPrincipalType?: PrincipalType;
     restrictToGroupMembers?: SharePointGroup;
+    setComponentRef?: boolean;
 }
 
 interface IUserPersonaProps extends IPersonaProps {
@@ -43,16 +56,16 @@ const userToUserPersona = (user: User): IUserPersonaProps => {
         imageUrl: user.picture,
         text: user.title,
         secondaryText: user.email,
-        user: user
+        user: user,
     };
 };
 
 const containsUser = (list: User[], user: User) => {
-    return list.some(item => item.email === user.email);
+    return list.some((item) => item.email === user.email);
 };
 
 const removeDuplicateUsers = (suggestedUsers: User[], currentUsers: User[]) => {
-    return suggestedUsers.filter(user => !containsUser(currentUsers, user));
+    return suggestedUsers.filter((user) => !containsUser(currentUsers, user));
 };
 
 const extractEmailAddress = (input: string): string => {
@@ -65,48 +78,70 @@ const extractEmailAddress = (input: string): string => {
     }
 };
 const extractEmailAddresses = (input: string): string[] => {
-    return input.split(';').map(extractEmailAddress).filter(Boolean).map(e => e.toLocaleLowerCase());
+    return input
+        .split(";")
+        .map(extractEmailAddress)
+        .filter(Boolean)
+        .map((e) => e.toLocaleLowerCase());
 };
 
 const isListOfEmailAddresses = (input: string): boolean => {
-    return input.indexOf(';') !== -1 && input.length > 10;
+    return input.indexOf(";") !== -1 && input.length > 10;
 };
 
-const resolveSuggestions = async (searchText: string, currentUserPersonas: IUserPersonaProps[], directoryService: IDirectoryService, onChangedFn: OnChangedCallback, restrictToGroupMembers?: SharePointGroup, restrictPrincipalType?: PrincipalType): Promise<IUserPersonaProps[]> => {
+const resolveSuggestions = async (
+    searchText: string,
+    currentUserPersonas: IUserPersonaProps[],
+    directoryService: IDirectoryService,
+    onChangedFn: OnChangedCallback,
+    restrictToGroupMembers?: SharePointGroup,
+    restrictPrincipalType?: PrincipalType
+): Promise<IUserPersonaProps[]> => {
     if (!searchText) return [];
     searchText = searchText.toLocaleLowerCase();
 
-    const currentUsers = currentUserPersonas.map(userPersona => userPersona.user);
+    const currentUsers = currentUserPersonas.map(
+        (userPersona) => userPersona.user
+    );
 
     if (isListOfEmailAddresses(searchText)) {
         const extractedEmails = extractEmailAddresses(searchText);
         let resolvedUsers: User[];
 
         if (restrictToGroupMembers)
-            resolvedUsers = restrictToGroupMembers.members.filter(member => extractedEmails.some(email => member.email === email));
-        else
-            resolvedUsers = await directoryService.resolve(extractedEmails);
+            resolvedUsers = restrictToGroupMembers.members.filter((member) =>
+                extractedEmails.some((email) => member.email === email)
+            );
+        else resolvedUsers = await directoryService.resolve(extractedEmails);
 
         const nextUsers = [
             ...currentUsers,
-            ...removeDuplicateUsers(resolvedUsers, currentUsers)
+            ...removeDuplicateUsers(resolvedUsers, currentUsers),
         ];
 
         onChangedFn(nextUsers);
 
         return [];
-    }
-    else {
+    } else {
         let suggestedUsers: User[];
 
         if (restrictToGroupMembers)
-            suggestedUsers = restrictToGroupMembers.members.filter(member => member.title?.toLocaleLowerCase().includes(searchText) || member.email?.toLocaleLowerCase().includes(searchText));
+            suggestedUsers = restrictToGroupMembers.members.filter(
+                (member) =>
+                    member.title?.toLocaleLowerCase().includes(searchText) ||
+                    member.email?.toLocaleLowerCase().includes(searchText)
+            );
         else
-            suggestedUsers = await directoryService.search(searchText, restrictPrincipalType);
+            suggestedUsers = await directoryService.search(
+                searchText,
+                restrictPrincipalType
+            );
 
         suggestedUsers = suggestedUsers.slice(0, maximumSuggestions);
 
-        return removeDuplicateUsers(suggestedUsers, currentUsers).map(userToUserPersona);
+        return removeDuplicateUsers(suggestedUsers, currentUsers).map(
+            userToUserPersona
+        );
     }
 };
 
@@ -121,29 +156,58 @@ const UserPicker: FC<IUserPickerProps> = ({
     users,
     onChanged,
     restrictToGroupMembers,
-    restrictPrincipalType
+    restrictPrincipalType,
+    setComponentRef,
 }) => {
-    const { palette: { neutralLight } } = useTheme();
+    const {
+        palette: { neutralLight },
+    } = useTheme();
     const directory = useDirectoryService();
     const userPersonas = users.map(userToUserPersona);
     const role = !isEmpty(userPersonas) ? "list" : "none";
 
     const onChange = (items: IPersonaProps[]) => {
         if (!disabled)
-            onChanged((items as IUserPersonaProps[]).map(userPersona => userPersona.user));
+            onChanged(
+                (items as IUserPersonaProps[]).map(
+                    (userPersona) => userPersona.user
+                )
+            );
     };
 
-    const onResolveSuggestions = (filter: string, selectedItems: IPersonaProps[]) =>
-        resolveSuggestions(filter, selectedItems as IUserPersonaProps[], directory, onChanged, restrictToGroupMembers, restrictPrincipalType);
+    const onResolveSuggestions = (
+        filter: string,
+        selectedItems: IPersonaProps[]
+    ) =>
+        resolveSuggestions(
+            filter,
+            selectedItems as IUserPersonaProps[],
+            directory,
+            onChanged,
+            restrictToGroupMembers,
+            restrictPrincipalType
+        );
 
     const fixHighContrastPeoplePickerItemStyles = useMemo(() => {
-        return { root: { backgroundColor: neutralLight } } as IPeoplePickerItemSelectedStyles;
+        return {
+            root: { backgroundColor: neutralLight },
+        } as IPeoplePickerItemSelectedStyles;
     }, [neutralLight]);
 
     const onRenderItem = useCallback(
-        (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} styles={fixHighContrastPeoplePickerItemStyles} />,
+        (props: IPeoplePickerItemSelectedProps) => (
+            <PeoplePickerItem
+                {...props}
+                styles={fixHighContrastPeoplePickerItemStyles}
+            />
+        ),
         [fixHighContrastPeoplePickerItemStyles]
     );
+
+    const dropDownRef = useRef<any>();
+    useEffect(() => {
+        if (setComponentRef) dropDownRef.current?.focus();
+    }, [setComponentRef]);
 
     const renderPicker = () => {
         const peoplePickerProps: IPeoplePickerProps = {
@@ -151,9 +215,10 @@ const UserPicker: FC<IUserPickerProps> = ({
             onResolveSuggestions,
             onChange,
             disabled,
-            inputProps: { 'aria-label': ariaLabel || label },
+            inputProps: { "aria-label": ariaLabel || label },
             removeButtonAriaLabel: cstrings.UserPicker.RemoveAriaLabel,
-            onRenderItem
+            onRenderItem,
+            componentRef: dropDownRef,
         };
 
         switch (display) {
@@ -167,12 +232,18 @@ const UserPicker: FC<IUserPickerProps> = ({
     };
 
     return (
-        <div className={css(styles.userPicker, className)} aria-label={ariaLabel || label} role={role}>
-            {label &&
+        <div
+            className={css(styles.userPicker, className)}
+            aria-label={ariaLabel || label}
+            role={role}
+        >
+            {label && (
                 <InfoTooltip text={tooltip}>
-                    <Label className={styles.label} required={required}>{label}</Label>
+                    <Label className={styles.label} required={required}>
+                        {label}
+                    </Label>
                 </InfoTooltip>
-            }
+            )}
             {renderPicker()}
         </div>
     );

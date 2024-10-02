@@ -11,9 +11,10 @@ interface IProps {
     showTitle?: boolean;
     refinerValue: RefinerValueInfo;
     onActivate: (cccurrence: EventOccurrence, target: HTMLElement) => void;
+    selectedTemplateKeys?: string[];
 }
 
-export const RefinerValueEvents: FC<IProps> = ({ showTitle = false, refinerValue: { title, itemsByEvent }, onActivate }) => {
+export const RefinerValueEvents: FC<IProps> = ({ showTitle = false, refinerValue: { title, itemsByEvent }, onActivate, selectedTemplateKeys }) => {
     const titleStyles: ITextStyles = useConst({ root: { margin: '5px 0', fontWeight: FontWeights.semibold } });
     const eventItemStyles: IStackItemStyles = useConst({ root: { marginRight: 10 } });
 
@@ -25,7 +26,7 @@ export const RefinerValueEvents: FC<IProps> = ({ showTitle = false, refinerValue
             }
             {[...itemsByEvent.values()].map((items, idx) =>
                 <StackItem key={idx} styles={eventItemStyles}>
-                    <EventItem eventInfos={items} onActivate={onActivate} />
+                    <EventItem eventInfos={items} onActivate={onActivate} selectedTemplateKeys={selectedTemplateKeys} />
                 </StackItem>
             )}
         </Stack>

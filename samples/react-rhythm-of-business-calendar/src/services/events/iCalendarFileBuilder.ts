@@ -2,25 +2,29 @@ import { Event, RecurDay, RecurPattern, RecurPatternOption, Recurrence, RecurUnt
 import { Cadence } from "model/Cadence";
 
 export class iCalendarFileBuilder {
-    public build(event: Event) {
-        const { start, startTime, end, duration, isAllDay, isSeriesMaster, recurrence, location, title, description } = event;
+    public build(event: Event, timeZoneDiff?: any) {
+        const { start, startTime, end, duration, isAllDay, isSeriesMaster, recurrence, location, title, description, isRecurring } = event;
 
         let adjustedStart = start;
         let adjustedEnd = end;
-
         // iCalendar format requires the DTSTART/DTEND date to be a valid meeting occurence date or it will not load in Outlook
         if (isSeriesMaster) {
-            const cadence = new Cadence(start, recurrence);
+            const isDifferenceInTimezone = timeZoneDiff;
+            const cadence = new Cadence(start, recurrence, isDifferenceInTimezone);
             const dates = cadence.generate({ start, end: start.clone().add(3, 'years') });
             const firstDate = dates.next().value;
             if (firstDate) {
                 adjustedStart = firstDate.clone().startOf('day').add(startTime);
-                adjustedEnd = firstDate.clone().startOf('day').add(duration);
+                adjustedEnd = adjustedStart.clone().add(duration, 'seconds');
             }
         }
 
         const dtstart = adjustedStart.format(isAllDay ? "YYYYMMDD" : "YYYYMMDD[T]HHmmss");
-        const dtend = adjustedEnd.format(isAllDay ? "YYYYMMDD" : "YYYYMMDD[T]HHmmss");
+        let dtend = adjustedEnd.format(isAllDay ? "YYYYMMDD" : "YYYYMMDD[T]HHmmss");
+
+        if(isAllDay){
+            dtend = end.clone().add(1, "day").format("YYYYMMDD");
+        }
 
         const ics = `BEGIN:VCALENDAR
 PRODID:-//Microsoft Corporation//SharePoint MIMEDIR//EN
@@ -30,7 +34,7 @@ BEGIN:VEVENT
 UID;TYPE=SharePoint:321
 DTSTART:${dtstart}
 DTEND:${dtend}
-${isSeriesMaster ? this._buildRRule(recurrence) : ''}
+${isSeriesMaster ? this._buildRRule(recurrence, isAllDay, isRecurring) : ''}
 LOCATION;ENCODING=8BIT;CHARSET=utf-8:${location}
 TRANSP:OPAQUE
 SEQUENCE:1
@@ -44,7 +48,7 @@ END:VCALENDAR`;
         return ics;
     }
 
-    private _buildRRule(recurrence: Recurrence): string {
+    private _buildRRule(recurrence: Recurrence, isAllDay:boolean, isRecurring:boolean): string {
         const rrule = 'RRULE:' + [
             this._freq(recurrence),
             this._interval(recurrence),
@@ -53,7 +57,7 @@ END:VCALENDAR`;
             this._byMonth(recurrence),
             this._byMonthDay(recurrence),
             this._untilCount(recurrence),
-            this._untilDate(recurrence)
+            this._untilDate(recurrence, isAllDay, isRecurring)
         ].filter(Boolean).join(';');
 
         return rrule;
@@ -155,7 +159,7 @@ END:VCALENDAR`;
         return type === RecurUntilType.count ? "COUNT=" + count : '';
     }
 
-    private _untilDate({ until: { type, date } }: Recurrence): string {
-        return type === RecurUntilType.date ? "UNTIL=" + date.clone().add(1, 'day').format('YYYYMMDD[T]HHmmss') : '';
+    private _untilDate({ until: { type, date } }: Recurrence, isAllDay:boolean, isRecurring:boolean): string {
+        return type === RecurUntilType.date ? "UNTIL=" + (isAllDay && isRecurring? date.clone().set({hours: 0, minutes: 0, seconds: 0}).format('YYYYMMDD[T]HHmmss') : date.clone().format('YYYYMMDD[T]HHmmss')) : '';
     }
 }

@@ -9,7 +9,7 @@ import { useConfigurationService } from 'services';
 import { RefinerValuePill } from '../refiners';
 
 import { EventOverview as strings } from 'ComponentStrings';
-
+import { Humanize as _strings } from "ComponentStrings";
 import styles from './EventOverview.module.scss';
 
 interface IProps {
@@ -71,7 +71,7 @@ export const EventOverview: FC<IProps> = ({ event, className }) => {
                 {isRecurring &&
                     <Stack horizontal verticalAlign='center' tokens={iconTextStackTokens}>
                         <Text><RepeatAllIcon /></Text>
-                        <Text data-is-focusable>{event.getSeriesMaster().start.format('LT')} - {event.getSeriesMaster().end.format('LT')}, {humanizeRecurrencePattern(start, recurrence)}</Text>
+                        <Text data-is-focusable>{ isAllDay ? `${_strings.AllDay}, ${humanizeRecurrencePattern(event.getSeriesMaster().start, recurrence)}` : `${event.getSeriesMaster().start.format('LT')} - ${event.getSeriesMaster().end.format('LT')}, ${humanizeRecurrencePattern(event.getSeriesMaster().start, recurrence)}`}</Text>
                     </Stack>
                 }
                 {location &&

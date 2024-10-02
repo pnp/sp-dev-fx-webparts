@@ -10,4 +10,10 @@ export interface IViewProps {
     selectedRefinerValues: Set<RefinerValue>;
     eventCommands: IEventCommands;
     viewCommands: IViewCommands;
+    siteTimeZone?: string;
+    selectedKeys?: string[];
+    selectedTemplateKeys?: string[];
+    onStateChange?: (stateVariable: any) => void;
+
+  //  channels: readonly ChannelsConfigurations[];
 }

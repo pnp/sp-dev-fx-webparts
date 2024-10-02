@@ -20,9 +20,12 @@ interface IProps {
     endsIn: boolean;
     timeStringOverride?: string;
     size?: EventBarSize;
+    selectedTemplateKeys?: string[];
+
+    type?: string;
 }
 
-export const EventBar: FC<IProps> = ({ event, startsIn, endsIn, timeStringOverride, size = EventBarSize.Compact }) => {
+export const EventBar: FC<IProps> = ({ event, startsIn, endsIn, timeStringOverride, size = EventBarSize.Compact, type, selectedTemplateKeys }) => {
     const { palette: { themePrimary } } = useTheme();
     const { active: { useApprovals } } = useConfigurationService();
 
@@ -47,21 +50,42 @@ export const EventBar: FC<IProps> = ({ event, startsIn, endsIn, timeStringOverri
 
     const startTimeString = timeStringOverride ||
         (size === EventBarSize.Compact
-            ? (!isAllDay && start?.format('LT'))
+            ? (!isAllDay ? `${start?.format('LT')} - ${end?.format('LT')}`: strings.AllDay)
             : isAllDay ? strings.AllDay : `${start?.format('LT')} - ${end?.format('LT')}`
         );
+    const showLockIcon = isConfidential;
+    const showRepeatIcon = isRecurring;
+    const growTitle = !isConfidential && !isRecurring;    
 
     return (
         <Stack className={eventClassName} style={style} tokens={useConst({ childrenGap: 2 })}>
             <Stack horizontal verticalAlign="center" title={title} tokens={useConst({ childrenGap: 6 })}>
-                {tag && <span>[{tag}]</span>}
+                {selectedTemplateKeys && selectedTemplateKeys.includes('tag') && size === EventBarSize.Compact && tag && <span>[{tag}]</span>}
+                {/* {((size == EventBarSize.Compact && type=== "Quarter") || (size !== EventBarSize.Compact)) && tag && <span>[{tag}]</span>} */}
+                {(size !== EventBarSize.Compact) && tag && <span>[{tag}]</span>}
                 <StackItem className={styles.text}>
-                    {size === EventBarSize.Compact && startTimeString && `${startTimeString}, `}
-                    {title}
+                    {selectedTemplateKeys && selectedTemplateKeys.includes('starttime') && size === EventBarSize.Compact && startTimeString && `${startTimeString} `}
                 </StackItem>
-                {isConfidential && <LockIcon />}
-                <StackItem grow className={styles.recur}>
-                    {isRecurring && <RepeatAllIcon />}
+               
+            </Stack>
+            <Stack horizontal verticalAlign="center" title={title} tokens={useConst({ childrenGap: 4 })}>
+                <StackItem grow={growTitle} className={styles.text}>
+                   <span className={styles.text_overflow}> {title} </span>
+                </StackItem>
+                {isConfidential && (<StackItem className={styles.icon}>
+                    <LockIcon />
+                </StackItem>)}
+                {isRecurring && (
+                <StackItem className={styles.icon}>
+                    <RepeatAllIcon />
+                </StackItem>)}
+            </Stack>
+            <Stack horizontal verticalAlign="center" title={title} tokens={useConst({ childrenGap: 4 })}>
+                <StackItem className={styles.text}>
+                        {selectedTemplateKeys && selectedTemplateKeys.includes('location') && size === EventBarSize.Compact &&
+                        <> <POIIcon />
+                        <span className={styles.text}>{location || '-'}</span>
+                        </> }
                 </StackItem>
             </Stack>
             {size === EventBarSize.Large && <>

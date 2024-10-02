@@ -1,19 +1,22 @@
-import { last } from 'lodash';
-import React, { useCallback } from 'react';
-import { ILabelStyles, Label, Stack } from '@fluentui/react';
-import { PropsOfType, ValidationRule, User } from 'common';
-import { ListItemEntity } from 'common/sharepoint';
-import { InfoTooltip } from './InfoTooltip';
-import LiveUpdate from './LiveUpdate';
-import { getCurrentValue, LiveType, setValue } from './LiveUtils';
-import { Validation } from './Validation';
-import UserPicker, { IUserPickerProps } from './UserPicker';
+import { last } from "lodash";
+import React, { useCallback } from "react";
+import { ILabelStyles, Label, Stack } from "@fluentui/react";
+import { PropsOfType, ValidationRule, User } from "common";
+import { ListItemEntity } from "common/sharepoint";
+import { InfoTooltip } from "./InfoTooltip";
+import LiveUpdate from "./LiveUpdate";
+import { getCurrentValue, LiveType, setValue } from "./LiveUtils";
+import { Validation } from "./Validation";
+import UserPicker, { IUserPickerProps } from "./UserPicker";
 
 const labelStyles: ILabelStyles = {
-    root: { display: 'inline-block' }
+    root: { display: "inline-block" },
 };
 
-interface IProps<E extends ListItemEntity<any>, P extends PropsOfType<E, User> | PropsOfType<E, User[]>> extends Omit<IUserPickerProps, 'users' | 'onChanged'> {
+interface IProps<
+    E extends ListItemEntity<any>,
+    P extends PropsOfType<E, User> | PropsOfType<E, User[]>
+> extends Omit<IUserPickerProps, "users" | "onChanged"> {
     entity: E;
     propertyName: P;
     rules?: ValidationRule<E>[];
@@ -22,10 +25,16 @@ interface IProps<E extends ListItemEntity<any>, P extends PropsOfType<E, User> |
     tooltip?: string;
     required?: boolean;
     onUsersChanging?: (users: User[]) => User[];
+    setComponentRef?: boolean;
     updateField: (update: (data: E) => void, callback?: () => any) => void;
 }
 
-const LiveUserPicker = <E extends ListItemEntity<any>, P extends PropsOfType<E, User> | PropsOfType<E, User[]>>(props: IProps<E, P>) => {
+const LiveUserPicker = <
+    E extends ListItemEntity<any>,
+    P extends PropsOfType<E, User> | PropsOfType<E, User[]>
+>(
+    props: IProps<E, P>
+) => {
     const {
         entity,
         propertyName,
@@ -34,36 +43,85 @@ const LiveUserPicker = <E extends ListItemEntity<any>, P extends PropsOfType<E, 
         label,
         tooltip,
         required,
-        onUsersChanging = users => users,
-        updateField
+        onUsersChanging = (users) => users,
+        updateField,
+        setComponentRef,
     } = props;
 
-    const value = getCurrentValue(entity, propertyName) as (User | User[]);
-    const updateValue = useCallback((val: LiveType<E, P>) => updateField(e => setValue(e, propertyName, val)), [updateField, propertyName]);
-    const renderValue = useCallback((val: LiveType<E, P>) => Array.isArray(val) ? (val as User[]).map((v, idx) => <span key={idx}>{idx > 0 ? '; ' : ''}{v.title}</span>) : (val as User)?.title || '', []);
-    const onChanged = useCallback((users: User[]) => {
-        users = onUsersChanging(users);
-        updateField(e => setValue(e, propertyName, (Array.isArray(value) ? users : last(users)) as LiveType<E, P>));
-    }, [onUsersChanging, updateField, propertyName, value]);
+    const value = getCurrentValue(entity, propertyName) as User | User[];
+    const updateValue = useCallback(
+        (val: LiveType<E, P>) =>
+            updateField((e) => setValue(e, propertyName, val)),
+        [updateField, propertyName]
+    );
+    const renderValue = useCallback(
+        (val: LiveType<E, P>) =>
+            Array.isArray(val)
+                ? (val as User[]).map((v, idx) => (
+                      <span key={idx}>
+                          {idx > 0 ? "; " : ""}
+                          {v.title}
+                      </span>
+                  ))
+                : (val as User)?.title || "",
+        []
+    );
+    const onChanged = useCallback(
+        (users: User[]) => {
+            users = onUsersChanging(users);
+            updateField((e) =>
+                setValue(
+                    e,
+                    propertyName,
+                    (Array.isArray(value) ? users : last(users)) as LiveType<
+                        E,
+                        P
+                    >
+                )
+            );
+        },
+        [onUsersChanging, updateField, propertyName, value]
+    );
 
     return (
-        <Validation entity={entity} rules={rules} active={showValidationFeedback}>
-            <LiveUpdate entity={entity} propertyName={propertyName} updateValue={updateValue} renderValue={renderValue}>
-                {(renderLiveUpdateMark) => <>
-                    {label && <Stack horizontal>
-                        <InfoTooltip text={tooltip}><Label required={required} styles={labelStyles}>{label}</Label></InfoTooltip>
-                        {renderLiveUpdateMark()}
-                    </Stack>}
-                    <UserPicker
-                        {...props}
-                        label={undefined}
-                        ariaLabel={label}
-                        required={required}
-                        users={Array.isArray(value) ? value : [value]}
-                        onChanged={onChanged}
-                    />
-                    {!label && renderLiveUpdateMark()}
-                </>}
+        <Validation
+            entity={entity}
+            rules={rules}
+            active={showValidationFeedback}
+        >
+            <LiveUpdate
+                entity={entity}
+                propertyName={propertyName}
+                updateValue={updateValue}
+                renderValue={renderValue}
+            >
+                {(renderLiveUpdateMark) => (
+                    <>
+                        {label && (
+                            <Stack horizontal>
+                                <InfoTooltip text={tooltip}>
+                                    <Label
+                                        required={required}
+                                        styles={labelStyles}
+                                    >
+                                        {label}
+                                    </Label>
+                                </InfoTooltip>
+                                {renderLiveUpdateMark()}
+                            </Stack>
+                        )}
+                        <UserPicker
+                            {...props}
+                            setComponentRef={setComponentRef}
+                            label={undefined}
+                            ariaLabel={label}
+                            required={required}
+                            users={Array.isArray(value) ? value : [value]}
+                            onChanged={onChanged}
+                        />
+                        {!label && renderLiveUpdateMark()}
+                    </>
+                )}
             </LiveUpdate>
         </Validation>
     );

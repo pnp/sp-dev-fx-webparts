@@ -27,6 +27,7 @@ export interface IDirectoryService extends IService {
     findGroupByTitle(title: string, web?: IWeb): Promise<SharePointGroup>;
     persistGroup(group: SharePointGroup, web?: IWeb): Promise<void>;
     changeGroupOwner(group: SharePointGroup, owner: SharePointGroup | User): Promise<void>;
+    readonly userHasEditPermisison?: boolean;
 }
 
 export type DirectoryServiceProp = {

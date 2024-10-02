@@ -14,17 +14,24 @@ export interface IEventsService extends IService {
     readonly refinerValuesAsync: IAsyncData<readonly RefinerValue[]>;
 
     readonly approversAsync: IAsyncData<readonly Approvers[]>;
+    //readonly channelsConfigurationsAsync: IAsyncData<readonly ChannelsConfigurations[]>;
 
     track(event: Event): void;
     track(refiner: Refiner): void;
     track(refinerValue: RefinerValue): void;
     track(approver: Approvers): void;
+   // track(channelsConfiguration: ChannelsConfigurations): void;
 
     persist(): Promise<void>;
 
-    addToOutlook(event: Event): void;
+    addToOutlook(event: Event, isDifferenceInTimezoneVal?: boolean): void;
 
     createEventDeepLink(event: Event): string;
+   // sendDetailinPost(event: Event, itemUrl: string, channelId: string, groupId: string): Promise<void>;
+    sendNotification_EventApproved(chatId: { chat_Id: string, rxUser: any }[], event: any, itemUrl: string): any;
+    sendNotification_EventRejected(chatId: { chat_Id: string, rxUser: any }[], event: any, itemUrl: string): any;
+    getTeamsNameById(teamsId: string): Promise<string>;
+    getActualChannelNameById(teamsId: string, channelId: string): Promise<string>;
 }
 
 export type EventsServiceProp = {

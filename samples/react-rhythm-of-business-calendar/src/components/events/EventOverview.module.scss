@@ -1,5 +1,13 @@
 @import '../common.module';
 
+@mixin eventDayView-font() {
+    color: black;
+    @include ms-fontSize-12;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .root {
     position: relative;
 
@@ -23,4 +31,11 @@
             text-decoration: line-through;
         }
     }
+    .textDayView {
+        @include eventDayView-font();
+        text-overflow: ellipsis;
+        display: block;
+    }
+   
 }
+
