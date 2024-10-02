@@ -1,5 +1,5 @@
 export interface IHappyBirthdayCardProps {
-  userName?:string;
+  userName?:string | undefined;
   jobDescription?: string;
   birthday: string;
   anniversary: boolean;

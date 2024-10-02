@@ -22,67 +22,67 @@ export interface IBirthdaysWebPartProps {
 
 
 const imageTemplate: { imageUrl: string }[] = [{
-  imageUrl: require('.../../../assets/cof.svg')
+  imageUrl: require('../../assets/cof.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof5.svg')
+  imageUrl: require('../../assets/cof5.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof1.svg')
+  imageUrl: require('../../assets/cof1.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof3.svg')
+  imageUrl: require('../../assets/cof3.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof8.svg')
+  imageUrl: require('../../assets/cof8.svg')
 },
 {
-  imageUrl: require('.../../../assets/ballons.svg')
+  imageUrl: require('../../assets/ballons.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof2.svg')
+  imageUrl: require('../../assets/cof2.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof10.svg')
+  imageUrl: require('../../assets/cof10.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof11.svg')
+  imageUrl: require('../../assets/cof11.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof12.svg')
+  imageUrl: require('../../assets/cof12.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof14.svg')
+  imageUrl: require('../../assets/cof14.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof14_1.svg')
+  imageUrl: require('../../assets/cof14_1.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof18.svg')
+  imageUrl: require('../../assets/cof18.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof17.svg')
+  imageUrl: require('../../assets/cof17.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof19.svg')
+  imageUrl: require('../../assets/cof19.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof20.svg')
+  imageUrl: require('../../assets/cof20.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof22.svg')
+  imageUrl: require('../../assets/cof22.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof24.svg')
+  imageUrl: require('../../assets/cof24.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof28.svg')
+  imageUrl: require('../../assets/cof28.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof29.svg')
+  imageUrl: require('../../assets/cof29.svg')
 },
 {
-  imageUrl: require('.../../../assets/cof30.svg')
+  imageUrl: require('../../assets/cof30.svg')
 },
 ];
 
