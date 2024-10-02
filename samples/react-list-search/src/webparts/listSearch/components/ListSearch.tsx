@@ -732,10 +732,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             result = <span>{value.map((val: any, index: number) => {
               if (index + 1 == value.length) {
-                return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
+                return <span key={index} style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+                return <span key={index} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
               }
             })}
             </span>;
@@ -766,10 +766,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             result = <span>{value.map((val: any, index: number) => {
               if (index + 1 == value.length) {
-                return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
+                return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+                return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
               }
             })}
             </span>;
@@ -792,10 +792,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
-              return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
+              return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
             }
             else {
-              return <span style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+              return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
             }
           })}
           </span>;
@@ -809,10 +809,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
-              return <Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
+              return <Link key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
             }
             else {
-              return <span><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br/></span>;
+              return <span key={`${fieldType}-${index}`}><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br/></span>;
             }
           })}
           </span>;

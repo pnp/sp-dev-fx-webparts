@@ -140,18 +140,20 @@ export default class ListService {
 
   private getAudienceItems(itemsToFilter: IResult[], userGroups: string[]) {
     const results: IResult[] = [];
-    userGroups && itemsToFilter.map(item => {
-      const itemAudiencesIds: string[] = item.OData__ModernAudienceTargetUserField && item.OData__ModernAudienceTargetUserField.map(audience => { return audience.Name.split("|")[2]; });
-      if (itemAudiencesIds) {
-        const matches: string[] = intersection(itemAudiencesIds, userGroups);
-        if (matches && matches.length > 0) {
+    if (userGroups) {
+      itemsToFilter.map(item => {
+        const itemAudiencesIds: string[] = item.OData__ModernAudienceTargetUserField && item.OData__ModernAudienceTargetUserField.map(audience => { return audience.Name.split("|")[2]; });
+        if (itemAudiencesIds) {
+          const matches: string[] = intersection(itemAudiencesIds, userGroups);
+          if (matches && matches.length > 0) {
+            results.push(item);
+          }
+        }
+        else {
           results.push(item);
         }
-      }
-      else {
-        results.push(item);
-      }
-    });
+      });
+    }
 
     return results;
   }
