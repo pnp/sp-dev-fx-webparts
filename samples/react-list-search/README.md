@@ -90,6 +90,7 @@ Version|Date|Comments
 1.1.0|April 25, 2021|List item modern audience support
 1.2.0|January 01, 2022|Upgraded for SPFx v1.13.1
 1.3.0|July 11, 2022|Fixes CAML issues
+1.4.0|October 2, 2024|Upgraded for SPFx v1.20.0
 
 ## Minimal Path to Awesome
 
