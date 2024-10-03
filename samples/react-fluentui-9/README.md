@@ -45,6 +45,7 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 
 * [Nick Brown](https://github.com/techienickb)
 
+
 ## Version history
 
 Version|Date|Comments
@@ -54,6 +55,7 @@ Version|Date|Comments
 1.0.2|January 18, 2023|Updated SPFx 1.16.1
 1.0.2|May 15, 2023|Updated SPFx 1.17.2, latest Fluent UI 9
 1.0.4|January 6, 2023|Updated SPFx 1.18.2, latest Fluent UI 9, override to get package builds working
+1.0.5|October 3, 2024|Updated to SPFx 1.20.0, latest Fluent UI 9 (9.54.17)
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
