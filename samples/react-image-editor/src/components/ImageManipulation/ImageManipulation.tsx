@@ -59,12 +59,14 @@ export interface IImageManipulationProps {
   editMode?: (mode: boolean) => void;
   configSettings: IImageManipulationConfig;
   displayMode: DisplayMode;
-  altText:string;
+  altText: string;
 }
 
 export interface IImageManipulationState {
   settingPanel: SettingPanelType;
   redosettings: IImageManipulationSettings[];
+  lockAspectCrop: boolean;
+  lockAspectResize: boolean;
 }
 
 export class ImageManipulation extends React.Component<IImageManipulationProps, IImageManipulationState> {
@@ -82,7 +84,9 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
 
     this.state = {
       settingPanel: SettingPanelType.Closed,
-      redosettings: []
+      redosettings: [],
+      lockAspectCrop: true,
+      lockAspectResize: true
     };
     this.openPanel = this.openPanel.bind(this);
     this.setRotate = this.setRotate.bind(this);
@@ -110,7 +114,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     this.img = new Image();
     this.img.src = url;
     this.img.crossOrigin = 'Anonymous';
-    this.img.alt=this.props.altText?this.props.altText:'Untitled image';
+    this.img.alt = this.props.altText ? this.props.altText : 'Untitled image';
     this.img.onload = () => {
 
       this.applySettings();
@@ -602,17 +606,20 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     return (<div>
       <Checkbox
         label={strings.LockAspect}
-        checked={!isNaN(crop.aspect)}
-        onChange={() => {
-          if (isNaN(crop.aspect)) {
-            this.setCrop(undefined, undefined, undefined, undefined, this.getAspect());
-          } else {
-            this.setCrop(undefined, undefined, undefined, undefined, undefined);
-          }
-
+        checked={this.state.lockAspectCrop}
+        onChange={(e, checked) => {
+          // Toggle the lockAspect state when checkbox is checked/unchecked
+          this.setState({ lockAspectCrop: checked }, () => {
+            // Call the setCrop function with appropriate arguments based on the new state
+            if (this.state.lockAspectCrop) {
+              this.setCrop(undefined, undefined, undefined, undefined, this.getAspect());
+            } else {
+              this.setCrop(undefined, undefined, undefined, undefined, undefined);
+            }
+          });
         }}
-
       />
+
       <TextField
         label={strings.SourceX}
         value={'' + crop.sx}
@@ -642,13 +649,16 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
 
       <Checkbox
         label={strings.LockAspect}
-        checked={!isNaN(resize.aspect)}
+        checked={this.state.lockAspectResize}
         onChange={() => {
-          if (isNaN(resize.aspect)) {
-            this.setResize(undefined, undefined, this.getAspect());
-          } else {
-            this.setResize(undefined, undefined, undefined);
-          }
+          this.setState({ lockAspectResize: !this.state.lockAspectResize }, () => {
+            if (isNaN(resize.aspect)) {
+              this.setResize(undefined, undefined, this.getAspect());
+            } else {
+              this.setResize(undefined, undefined, undefined);
+            }
+          })
+
 
         }}
 

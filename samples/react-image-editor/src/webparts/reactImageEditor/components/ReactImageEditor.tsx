@@ -54,11 +54,11 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             title={this.props.title}
             updateProperty={this.props.updateTitleProperty} />
         }
-        {(isFilePickerOpen || isConfigured) && Environment.type !== EnvironmentType.Local && this.props.showEditIcon &&
+        {(isFilePickerOpen || (isConfigured && this.props.displayMode === DisplayMode.Edit)) && Environment.type !== EnvironmentType.Local &&
           <FilePicker
             isPanelOpen={isFilePickerOpen}
             accepts={['.gif', '.jpg', '.jpeg', '.png']}
-            buttonIcon='FileImage'
+            buttonIcon={'FileImage'}
             onSave={(filePickerResult: IFilePickerResult) => {
               this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl));
             }}

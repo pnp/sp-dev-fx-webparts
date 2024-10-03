@@ -79,7 +79,7 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
                 })
                 ,
                 PropertyPaneToggle('showEditIcon', {
-                  label: strings.ShowTitleFieldLabel
+                  label: strings.ShowEditIconFieldLabel
                 }),
                 PropertyPaneLabel('urlInfo',{text:`The selected image is at ${this.properties.url?this.properties.url:'Not yet selected'} `})
                 
