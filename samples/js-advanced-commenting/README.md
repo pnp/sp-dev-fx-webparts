@@ -85,6 +85,7 @@ Version|Date|Comments
 1.2.0.0|March 09, 2023|Upgraded to 1.16.1
 1.3.0.0|June 10, 2023|Upgraded to 1.17.0
 1.3.0.1|March 11, 2024|`this.pageurl` must be initialized before building `this.pastAtachmentPath`
+1.4.0.0|October 03, 2024|Upgraded to 1.30.0
 
 ## Minimal Path to Awesome
 
