@@ -48,6 +48,7 @@ export const getMd5HashForUrl = async (url: string): Promise<Maybe<string>> => {
       return convertedHash;
     }
   } catch (error) {
+    console.error(error);
     return url;
   }
 };
@@ -80,7 +81,8 @@ export const getImageBase64 = async (pictureUrl: string): Promise<string> => {
       let base64Str;
       try {
         base64Str = tempCanvas.toDataURL("image/png");
-      } catch (e) {
+      } catch (error) {
+        console.error(error);
         return "";
       }
       base64Str = base64Str.replace(/^data:image\/png;base64,/, "");
