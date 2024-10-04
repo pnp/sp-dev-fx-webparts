@@ -1,29 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
   IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
-  IPropertyPaneTextFieldProps,
   PropertyPaneTextField,
   PropertyPaneDropdown,
-  IPropertyPaneDropdownProps,
+  
 } from "@microsoft/sp-property-pane";
 
 import { Version } from "@microsoft/sp-core-library";
 
-import { escape } from "@microsoft/sp-lodash-subset";
-import styles from "./ModernCalendar.module.scss";
 import * as strings from "modernCalendarStrings";
 import { IModernCalendarWebPartProps } from "./IModernCalendarWebPartProps";
 import CalendarTemplate from "./CalendarTemplate";
+
 import * as jQuery from "jquery";
-import "fullcalendar";
 import * as moment from "moment";
-import * as swal2 from "sweetalert2";
+//import * as swal2 from "sweetalert2";
 import { SPComponentLoader } from "@microsoft/sp-loader";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
-import { Environment, EnvironmentType } from "@microsoft/sp-core-library";
-import { EventObjectInput, OptionsInput } from "fullcalendar";
-import { Default as View } from "fullcalendar/View";
+
+import { Calendar, EventSourceInput } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 export interface ISPLists {
   value: ISPList[];
@@ -34,20 +32,20 @@ export interface ISPList {
   Id: string;
 }
 
-export interface EventObjects {
-  value: EventObjectInput[];
-}
+
 
 export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModernCalendarWebPartProps> {
   public constructor() {
     super();
     // Modify with your a CDN or local path
+    /*
     SPComponentLoader.loadCss(
       "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css"
     );
     SPComponentLoader.loadCss(
       "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"
     );
+    */
   }
 
   public render(): void {
@@ -62,15 +60,18 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
     //Check required properties before rendering list
     if (
       this.properties.listTitle == null ||
-      this.properties.start == null ||
+      this.properties.start==null||
       this.properties.end == null ||
       this.properties.title == null ||
       this.properties.detail == null
     ) {
+      console.log("Missing required properties");
+      console.log(this.properties);
       this.domElement.innerHTML = CalendarTemplate.emptyHtml(
         this.properties.description
       );
     } else {
+      console.log("All required properties are set");
       this.domElement.innerHTML = CalendarTemplate.templateHtml;
       this._renderListAsync();
     }
@@ -119,13 +120,13 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       );
       this._getSiteRootWeb().then((response0) => {
         this._getSites(response0["Url"]).then((response) => {
-          var sites: IPropertyPaneDropdownOption[] = [];
+          const sites: IPropertyPaneDropdownOption[] = [];
           sites.push({
             key: this.context.pageContext.web.absoluteUrl,
             text: "This Site",
           });
           sites.push({ key: "other", text: "Other Site (Specify Url)" });
-          for (var _key in response.value) {
+          for (const _key in response.value) {
             if (
               this.context.pageContext.web.absoluteUrl !=
               response.value[_key]["Url"]
@@ -145,12 +146,13 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                   text: list.Title,
                 };
               });
+              console.log("this.properties.site: "+this.properties.site );
               this._getListColumns(
-                this.properties.listTitle,
+                this.properties.listTitle!,
                 this.properties.site
               ).then((response3) => {
-                var col: IPropertyPaneDropdownOption[] = [];
-                for (var _innerKey in response3.value) {
+                const col: IPropertyPaneDropdownOption[] = [];
+                for (const _innerKey in response3.value) {
                   col.push({
                     key: response3.value[_innerKey]["InternalName"],
                     text: response3.value[_innerKey]["Title"],
@@ -196,14 +198,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
     if ((propertyPath === "site" || propertyPath === "siteOther") && newValue) {
       this.colsDisabled = true;
       this.listDisabled = true;
-      var siteUrl = newValue;
-      if (this.properties.other) {
+      let siteUrl = newValue;
+      if (this.properties.other && this.properties.siteOther) {
         siteUrl = this.properties.siteOther;
       } else {
         jQuery("input[aria-label=hide-col]").parent().hide();
       }
       if (
-        (this.properties.other && this.properties.siteOther.length > 25) ||
+        (this.properties.other && this.properties.siteOther && this.properties.siteOther.length > 25) ||
         !this.properties.other
       ) {
         this._getListTitles(siteUrl).then((response) => {
@@ -213,21 +215,25 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
               text: list.Title,
             };
           });
+        
           this.listDisabled = false;
           this.context.propertyPane.refresh();
           this.context.statusRenderer.clearLoadingIndicator(this.domElement);
           this.render();
+        }).catch(() => {
+          console.log("Error loading lists");
         });
       }
     } else if (propertyPath === "listTitle" && newValue) {
       // tslint:disable-next-line:no-duplicate-variable
-      var siteUrl = newValue;
-      if (this.properties.other) {
+      let siteUrl = newValue;
+      if (this.properties.other && this.properties.siteOther) {
         siteUrl = this.properties.siteOther;
       }
+      console.log("siteUrl: "+siteUrl );
       this._getListColumns(newValue, siteUrl).then((response) => {
-        var col: IPropertyPaneDropdownOption[] = [];
-        for (var _key in response.value) {
+        const col: IPropertyPaneDropdownOption[] = [];
+        for (const _key in response.value) {
           col.push({
             key: response.value[_key]["InternalName"],
             text: response.value[_key]["Title"],
@@ -249,7 +255,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
   private listDisabled: boolean = true;
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    var otherSiteAria = "hide-col";
+    let otherSiteAria = "hide-col";
     if (this.properties.other) {
       otherSiteAria = "";
     }
@@ -316,12 +322,9 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
   private _dropdownOptions: IPropertyPaneDropdownOption[] = [];
   private _columnOptions: IPropertyPaneDropdownOption[] = [];
 
-  public onInit<T>(): Promise<T> {
-    //this._siteOptions.push({key:this.context.pageContext.web.absoluteUrl, text:'This Site'});
-    return Promise.resolve();
-  }
 
-  private _getSiteRootWeb(): Promise<ISPLists> {
+
+  private _getSiteRootWeb(): Promise<any> {
     return this.context.spHttpClient
       .get(
         this.context.pageContext.web.absoluteUrl +
@@ -333,7 +336,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       });
   }
 
-  private _getSites(rootWebUrl: string): Promise<ISPLists> {
+  private _getSites(rootWebUrl: string): Promise<any> {
     return this.context.spHttpClient
       .get(
         rootWebUrl + `/_api/web/webs?$select=Title,Url`,
@@ -344,13 +347,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       });
   }
 
-  private _getListTitles(site: string): Promise<ISPLists> {
+  private _getListTitles(site: string): Promise<any> {
     return this.context.spHttpClient
       .get(
         site + `/_api/web/lists?$filter=Hidden eq false and BaseType eq 0`,
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
+        console.log("response get List Titles ");
         return response.json();
       });
   }
@@ -366,11 +370,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
+        console.log("listsite");
+    console.log(listsite);
         return response.json();
       });
   }
 
   private _getListData(listName: string, site: string): Promise<any> {
+    console.log("listName: "+listName);
     return this.context.spHttpClient
       .get(
         site +
@@ -384,12 +391,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
+        console.log("response get List Data ");
+        console.log(response);
         return response.json();
       });
   }
 
   private _renderList(items: any[]): void {
-    var calItems: EventObjectInput[] = items.map((list: any) => {
+    const calItems:EventSourceInput = items.map((list: any) => {
       const start = list[this.properties.start];
       const end = list[this.properties.end];
       return {
@@ -401,33 +410,53 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       };
     });
     this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-    const calendarOptions: EventObjectInput = {
+ /* const calendarOptions: EventObjectInput = {
       title: "test",
       theme: true,
       events: calItems,
-      eventClick: (_event) => {
-        var eventDetail =
-        moment.utc(_event["start"]).local().format('YYYY-MM-DD hh:mm A') +
+      eventClick: (ev:{start:string,end:string,detail:string,title:string}) => {
+        const eventDetail =
+        moment.utc(ev.start).local().format('YYYY-MM-DD hh:mm A') +
         " - " +
-        moment.utc(_event["end"]).local().format('YYYY-MM-DD hh:mm A') +
+        moment.utc(ev.end).local().format('YYYY-MM-DD hh:mm A') +
           "<br>" +
-          _event["detail"];
-        swal2.default(_event.title, eventDetail, "info");
+          ev.detail;
+        swal2.default(ev.title, eventDetail, "info");
       },
-    };
-    jQuery(".spfxcalendar", this.domElement).fullCalendar(calendarOptions);
+    };*/
+    const calendarEl = document.getElementById('spfxcalendar');
+    if(calendarEl){
+const calendar = new Calendar(calendarEl, {
+  plugins: [ dayGridPlugin ],
+  initialView: 'dayGridMonth',
+  eventSources: [
+    {
+      events: calItems,
+      
+    }
+  ],
+
+  headerToolbar: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,listWeek'
+  }
+});
+calendar.render();
+    }
+    //jQuery(".spfxcalendar", this.domElement).fullCalendar(calendarOptions);
   }
 
   private _getSitesAsync(): void {
     this._getSiteRootWeb().then((response) => {
       this._getSites(response["Url"]).then((response1) => {
-        var sites: IPropertyPaneDropdownOption[] = [];
+        const sites: IPropertyPaneDropdownOption[] = [];
         sites.push({
           key: this.context.pageContext.web.absoluteUrl,
           text: "This Site",
         });
         sites.push({ key: "other", text: "Other Site (Specify Url)" });
-        for (var _key in response1.value) {
+        for (const _key in response1.value) {
           sites.push({
             key: response1.value[_key]["Url"],
             text: response1.value[_key]["Title"],
@@ -435,9 +464,9 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         }
         this._siteOptions = sites;
         this.context.propertyPane.refresh();
-        var siteUrl = this.properties.site;
-        if (this.properties.other) {
-          siteUrl = this.properties.siteOther;
+        let siteUrl = this.properties.site;
+        if (this.properties.other && this.properties.siteOther) {
+          siteUrl = this.properties.siteOther
         }
         this._getListTitles(siteUrl).then((response2) => {
           this._dropdownOptions = response2.value.map((list: ISPList) => {
@@ -448,12 +477,13 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
           });
           this.context.propertyPane.refresh();
           if (this.properties.listTitle) {
+            console.log("this.properties.site: "+this.properties.site );
             this._getListColumns(
               this.properties.listTitle,
               this.properties.site
             ).then((response3) => {
-              var col: IPropertyPaneDropdownOption[] = [];
-              for (var _innerKey in response3.value) {
+              const col: IPropertyPaneDropdownOption[] = [];
+              for (const _innerKey in response3.value) {
                 col.push({
                   key: response3.value[_innerKey]["InternalName"],
                   text: response3.value[_innerKey]["Title"],
@@ -475,15 +505,20 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
   }
 
   private _renderListAsync(): void {
-    var siteUrl = this.properties.site;
-    if (this.properties.other) {
+    let siteUrl = this.properties.site;
+    if (this.properties.other && this.properties.siteOther) {
       siteUrl = this.properties.siteOther;
     }
-    this._getListData(this.properties.listTitle, siteUrl)
+    console.log("siteUrl");
+    console.log(siteUrl);
+    this._getListData(this.properties.listTitle!, siteUrl)
       .then((response) => {
+        console.log("response");
         this._renderList(response.value);
       })
       .catch((err) => {
+        console.log("Error loading list data");
+        console.log(err);
         this.context.statusRenderer.clearLoadingIndicator(this.domElement);
         this.context.statusRenderer.renderError(
           this.domElement,
