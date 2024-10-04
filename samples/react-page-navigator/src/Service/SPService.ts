@@ -1,6 +1,6 @@
-import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink } from '@fluentui/react/lib/Nav';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { SPHttpClient } from '@microsoft/sp-http';
+import { SPHttpClient } from '@microsoft/sp-http'; // Ensure correct import
 import { navLinkBuilder } from './NavLinkBuilder';
 
 export class SPService {
