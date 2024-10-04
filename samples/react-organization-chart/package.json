@@ -1,6 +1,6 @@
 {
   "name": "react-organization-chart",
-  "version": "0.0.1",
+  "version": "1.2.0.0",
   "private": true,
   "engines": {
     "node": ">=18.17.1 <19.0.0"
