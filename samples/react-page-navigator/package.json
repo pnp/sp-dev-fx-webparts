@@ -40,7 +40,6 @@
     "@types/react": "16.9.51",
     "@types/react-dom": "16.9.8",
     "@types/webpack-env": "1.13.1",
-    "@voitanos/jest-preset-spfx-react16": "^1.1.0",
     "ajv": "~5.2.2",
     "eslint": "8.57.0",
     "gulp": "5.0.0",
