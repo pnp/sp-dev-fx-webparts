@@ -74,7 +74,7 @@ export const getImageBase64 = async (pictureUrl: string): Promise<string> => {
     const image = new Image();
     image.addEventListener("load", () => {
       const tempCanvas = document.createElement("canvas");
-      // eslint-disable-next-line no-unused-expressions, no-sequences
+      // eslint-disable-next-line no-unused-expressions, no-sequences, @typescript-eslint/no-unused-expressions
       (tempCanvas.width = image.width),
         (tempCanvas.height = image.height),
         tempCanvas.getContext("2d")?.drawImage(image, 0, 0);
