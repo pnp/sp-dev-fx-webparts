@@ -47,6 +47,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 Version|Date|Comments
 -------|----|--------
+1.3|Oct 5, 2024|Updated to SPFx 1.20
 1.2|Feb 14, 2023|Fixed context handling
 1.1|Aug 29, 2022|Bug fix & dependency updates
 1.0|Jan 13, 2022|Initial release
