@@ -1,5 +1,10 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { graph } from "@pnp/graph";
+
+import { getGraph } from "../webparts/treeOrgChart/components/pnpjsConfig";
+import { ISPFXContext, spfi, SPFI, SPFx as spSPFx } from "@pnp/sp";
+import { graphfi, GraphFI, SPFx as graphSPFx } from "@pnp/graph";
+
+import { Caching } from "@pnp/queryable";
 
 export interface IGraphUser {
     mail?: string;
@@ -12,21 +17,21 @@ const graphUserSelect: string[] = ['displayName', 'mail', 'jobTitle', 'userPrinc
 
 export default class GraphService {
 
+    private graph: GraphFI;
 
     constructor(private context: WebPartContext) {
-        graph.setup({
-            spfxContext: this.context
-        });
+       this.graph=getGraph(this.context);
     }
 
     public async getUser(upn: string): Promise<IGraphUser> {
-
-        return await graph.users.getById(upn).select(...graphUserSelect).get() as IGraphUser;
+        const graphCache = graphSPFx(this.context).using(Caching({ store: "session"}));
+        return await graphCache.get().users.getById(upn).select(...graphUserSelect).get() as IGraphUser;;
     }
 
     public async getUserManger(upn: string): Promise<IGraphUser> {
-
-        return await graph.users.getById(upn).manager.select(...graphUserSelect).get() as IGraphUser;
+        const graphCache = graphSPFx(this.context).using(Caching({ store: "session"}));
+        
+        return await graphCache.get().users.getById(upn).manager.select(...graphUserSelect).get() as IGraphUser;
     }
     public async getUserDirectReports(upn: string, excludefilter?: boolean, filter?: string) {
 
@@ -35,7 +40,9 @@ export default class GraphService {
          "code": "Request_UnsupportedQuery",
         "message": "The specified filter to the reference property query is currently not supported.",
         */
-        const directReports = await graph.users.getById(upn).directReports.select(...graphUserSelect).get() as IGraphUser[];
+        const graphCache = graphSPFx(this.context).using();
+        graphCache.get().users.getById(upn).directReports.select(...graphUserSelect).get() as IGraphUser[];
+        const directReports = await graphCache.get().users.getById(upn).directReports.select(...graphUserSelect).get() as IGraphUser[];
         if (filter && filter.length > 0) {
             if (excludefilter) {
                 return directReports.filter((user) => 
@@ -55,4 +62,5 @@ export default class GraphService {
     }
 
 }
+
 

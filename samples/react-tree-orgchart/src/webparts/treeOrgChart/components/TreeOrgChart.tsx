@@ -6,27 +6,24 @@ import * as React from "react";
 import styles from "./TreeOrgChart.module.scss";
 import { ITreeOrgChartProps } from "./ITreeOrgChartProps";
 import { ITreeOrgChartState } from "./ITreeOrgChartState";
-import SortableTree from "react-sortable-tree";
 import "react-sortable-tree/style.css";
-import {
-  IPersonaSharedProps,
-  Persona,
-  PersonaSize
-} from "office-ui-fabric-react/lib/Persona";
-import { IconButton } from "office-ui-fabric-react/lib/Button";
+
+
+
+
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SPService from "../../../services/SPServices";
 import { ITreeData } from "./ITreeData";
-import {
-  Spinner,
-  SpinnerSize
-} from "office-ui-fabric-react/lib/components/Spinner";
-import { DisplayMode, Environment, EnvironmentType } from "@microsoft/sp-core-library";
+
+import { DisplayMode } from "@microsoft/sp-core-library";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as strings from 'TreeOrgChartWebPartStrings';
 import GraphServices, { IGraphUser } from "../../../services/GraphService";
 import GraphService from "../../../services/GraphService";
+import { IconButton, IPersonaSharedProps, Persona, PersonaSize, Spinner, SpinnerSize } from "@fluentui/react";
+import SortableTree from "@nosferatu500/react-sortable-tree";
+
 
 
 export enum TreeOrgChartType {
@@ -44,7 +41,7 @@ export default class TreeOrgChart extends React.Component<
   private SPService: SPService;
   private GraphService: GraphService;
 
-  constructor(props) {
+  constructor(props:ITreeOrgChartProps) {
     super(props);
 
     this.SPService = new SPService(this.props.context);
@@ -55,7 +52,7 @@ export default class TreeOrgChart extends React.Component<
     };
   }
   //
-  private handleTreeOnChange(treeData) {
+  private handleTreeOnChange(treeData:ITreeOrgChartState) {
     this.setState({ treeData });
   }
 
@@ -76,13 +73,12 @@ export default class TreeOrgChart extends React.Component<
   }
 
   public async componentDidMount() {
-    if (Environment.type !== EnvironmentType.Local) {
       const sharedLibrary = await this._loadSPComponentById(
         LIVE_PERSONA_COMPONENT_ID
       );
       const livePersonaCard: any = sharedLibrary.LivePersonaCard;
       this.setState({ livePersonaCard: livePersonaCard });
-    }
+    
 
     await this.loadOrgchart();
   }
@@ -293,7 +289,11 @@ export default class TreeOrgChart extends React.Component<
         selectedTeamleader = this.props.teamLeader;
       }
     }
-
+    const peoplePickerContext: IPeoplePickerContext = {
+      absoluteUrl: this.props.context.pageContext.web.absoluteUrl,
+      msGraphClientFactory: this.props.context.msGraphClientFactory,
+      spHttpClient: this.props.context.spHttpClient
+  };
     return (
       <div className={styles.treeOrgChart}>
         <WebPartTitle
@@ -303,14 +303,13 @@ export default class TreeOrgChart extends React.Component<
         />
         {showEditOther && (<div>
           <PeoplePicker
-            context={this.props.context}
+            context={peoplePickerContext}
             titleText={strings.TeamLeaderHeadline}
             personSelectionLimit={1}
             groupName={""} // Leave this blank in case you want to filter from all users
-            isRequired={true}
             disabled={false}
             defaultSelectedUsers={selectedTeamleader ? [selectedTeamleader] : undefined}
-            selectedItems={(items: any) => {
+            onChange={(items: any) => {
               if (this.props.updateTeamLeader) {
                 if (items.length > 0) {
                   const teamleaderupn: string | undefined = this.claimUserToUPN(items[0].loginName);
@@ -322,7 +321,7 @@ export default class TreeOrgChart extends React.Component<
                 this.props.updateTeamLeader('');
               }
             }}
-            showHiddenInUI={false}
+            
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000} />
         </div>)}
@@ -337,7 +336,6 @@ export default class TreeOrgChart extends React.Component<
           <SortableTree
             treeData={this.state.treeData}
             onChange={this.handleTreeOnChange.bind(this)}
-            canDrag={false}
             rowHeight={70}
             maxDepth={this.props.maxLevels}
             generateNodeProps={rowInfo => {

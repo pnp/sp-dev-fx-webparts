@@ -1,15 +1,19 @@
 import {WebPartContext} from "@microsoft/sp-webpart-base";
-import {sp} from "@pnp/sp";
+import { ISPFXContext, spfi, SPFI, SPFx as spSPFx } from "@pnp/sp";
+import { graphfi, GraphFI, SPFx as graphSPFx } from "@pnp/graph";
+import { Caching } from "@pnp/queryable";
+import { getSP } from "../webparts/treeOrgChart/components/pnpjsConfig";
 
 export default class SPServices {
+  private sp: SPFI;
   constructor(private context: WebPartContext) {
-    sp.setup({
-      spfxContext: this.context
-    });
+    this.sp = getSP();
   }
 
   public async getUserProperties(user: string) {
-    return await sp.profiles.getPropertiesFor(user);
+    const spCache = spfi(this.sp).using(Caching({ store: "session" }));
+
+    return await spCache.profiles.getPropertiesFor(user);
   }
 
   /**
