@@ -2,8 +2,8 @@ import * as React from 'react';
 import styles from './PageNavigator.module.scss';
 import { IPageNavigatorProps } from './IPageNavigatorProps';
 import { IPageNavigatorState } from './IPageNavigatorState';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { ITheme } from 'office-ui-fabric-react';
+import { Nav, INavLink } from '@fluentui/react/lib/Nav';
+import { ITheme } from '@fluentui/react';
 
 export default class PageNavigator extends React.Component<IPageNavigatorProps, IPageNavigatorState> {
   constructor(props: IPageNavigatorProps) {
