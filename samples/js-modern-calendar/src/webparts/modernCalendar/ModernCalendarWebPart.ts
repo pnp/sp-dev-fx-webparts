@@ -16,12 +16,14 @@ import CalendarTemplate from "./CalendarTemplate";
 
 import * as jQuery from "jquery";
 import * as moment from "moment";
-//import * as swal2 from "sweetalert2";
+import Swal from "sweetalert2";
 import { SPComponentLoader } from "@microsoft/sp-loader";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 
-import { Calendar, EventSourceInput } from '@fullcalendar/core';
+import { Calendar, EventClickArg, EventSourceInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+
+
 
 export interface ISPLists {
   value: ISPList[];
@@ -37,15 +39,6 @@ export interface ISPList {
 export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModernCalendarWebPartProps> {
   public constructor() {
     super();
-    // Modify with your a CDN or local path
-    /*
-    SPComponentLoader.loadCss(
-      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css"
-    );
-    SPComponentLoader.loadCss(
-      "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"
-    );
-    */
   }
 
   public render(): void {
@@ -65,13 +58,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       this.properties.title == null ||
       this.properties.detail == null
     ) {
-      console.log("Missing required properties");
-      console.log(this.properties);
       this.domElement.innerHTML = CalendarTemplate.emptyHtml(
         this.properties.description
       );
     } else {
-      console.log("All required properties are set");
       this.domElement.innerHTML = CalendarTemplate.templateHtml;
       this._renderListAsync();
     }
@@ -98,7 +88,25 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         !this.properties.title ||
         !this.properties.detail)
     ) {
-      //this._getColumnsAsync();
+     console.log("this.properties.listTitle: "+this.properties.listTitle);
+
+      this._getListColumns(this.properties.listTitle, this.properties.site).then((response3) => {
+        const col: IPropertyPaneDropdownOption[] = [];
+        for (const _innerKey in response3.value) {
+          col.push({
+            key: response3.value[_innerKey]["InternalName"],
+            text: response3.value[_innerKey]["Title"],
+          });
+        }
+        this._columnOptions = col;
+        this.colsDisabled = false;
+        this.listDisabled = false;
+        this.context.propertyPane.refresh();
+        this.context.statusRenderer.clearLoadingIndicator(
+          this.domElement
+        );
+        this.render();
+      });
     }
 
     if (!this.properties.other) {
@@ -226,7 +234,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       }
     } else if (propertyPath === "listTitle" && newValue) {
       // tslint:disable-next-line:no-duplicate-variable
-      let siteUrl = newValue;
+      let siteUrl = this.properties.site;
       if (this.properties.other && this.properties.siteOther) {
         siteUrl = this.properties.siteOther;
       }
@@ -410,23 +418,27 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       };
     });
     this.context.statusRenderer.clearLoadingIndicator(this.domElement);
- /* const calendarOptions: EventObjectInput = {
-      title: "test",
-      theme: true,
-      events: calItems,
-      eventClick: (ev:{start:string,end:string,detail:string,title:string}) => {
-        const eventDetail =
-        moment.utc(ev.start).local().format('YYYY-MM-DD hh:mm A') +
-        " - " +
-        moment.utc(ev.end).local().format('YYYY-MM-DD hh:mm A') +
-          "<br>" +
-          ev.detail;
-        swal2.default(ev.title, eventDetail, "info");
-      },
-    };*/
+
     const calendarEl = document.getElementById('spfxcalendar');
     if(calendarEl){
 const calendar = new Calendar(calendarEl, {
+  eventClick: (args:EventClickArg) => {
+    const calEvent = args.event;
+    const eventDetail =
+    moment.utc(calEvent.start).local().format('YYYY-MM-DD hh:mm A') +
+    " - " +
+    moment.utc(calEvent.end).local().format('YYYY-MM-DD hh:mm A') +
+      "<br>" +
+      args.event.extendedProps.detail;
+    //swal2.default(calEvent.title, eventDetail, "info");
+    Swal.fire({
+      title: calEvent.title,
+      html: eventDetail, 
+      icon: 'info',
+
+    });
+    
+  },
   plugins: [ dayGridPlugin ],
   initialView: 'dayGridMonth',
   eventSources: [

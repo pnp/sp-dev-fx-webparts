@@ -15,10 +15,10 @@
     "@microsoft/sp-office-ui-fabric-core": "1.20.0",
     "@microsoft/sp-property-pane": "1.20.0",
     "@microsoft/sp-webpart-base": "1.20.0",
-    "fullcalendar": "3.9.0",
+    "fullcalendar": "6.1.15",
     "jquery": "^3.7.1",
     "moment": "2.30.1",
-    "sweetalert2": "6.11.5"
+    "sweetalert2": "11.14.1"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.20.2",
