@@ -15,13 +15,14 @@
     "noImplicitAny": true,
     "strictNullChecks": false,
     "noUnusedLocals": false,
+    "esModuleInterop": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
     ],
     "types": [
       "webpack-env",
-      "@types/jest"
+      "jest"
     ],
     "lib": [
       "es5",

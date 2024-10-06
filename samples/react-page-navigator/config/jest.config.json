@@ -1,5 +1,12 @@
 {
-  "preset": "@voitanos/jest-preset-spfx-react16",
-  "rootDir": "../src",
-  "collectCoverage": false
+  // Test root
+  "roots": ["../src"],
+  // used within ts-jest for transpiling
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  // find test files matching this pattern
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "verbose": true
 }
