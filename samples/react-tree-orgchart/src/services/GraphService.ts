@@ -35,15 +35,8 @@ export default class GraphService {
     }
     public async getUserDirectReports(upn: string, excludefilter?: boolean, filter?: string): Promise<IGraphUser[]> {
 
-        /*
-        odata filter 
-         "code": "Request_UnsupportedQuery",
-        "message": "The specified filter to the reference property query is currently not supported.",
-        */
-        const graphCache = graphfi(this.graph).using(Caching({ store: "session" }));
-        //graphCache.users.getById(upn).directReports.select(...graphUserSelect) as IGraphUser[];
+         const graphCache = graphfi(this.graph).using(Caching({ store: "session" }));
         const directReports = await graphCache.users.getById(upn).directReports.select(...graphUserSelect)();
-        
        if (filter && filter.length > 0) {
             if (excludefilter) {
                    return directReports.filter((person) => 

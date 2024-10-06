@@ -56,7 +56,7 @@
       url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48cGF0aCBkPSJNOSA0LjV2OSIvPjwvZz4KPC9zdmc+')
       no-repeat center;
   }
-
+  .linetop,
   .line{
  
     width: 10px;
@@ -71,10 +71,17 @@
     top: -10px;
     height: calc( 100% - 27px );
   }
+  .linetop::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    left: 50%;
+    top: -10px;
+    height: 35px;
+  }
 
-  .middleStyle,
-  .fistStyle,
-  .lastStyle
+  .middleStyle
   { 
         height: 100%;
         display: inline-block;
@@ -108,9 +115,9 @@
 
 */
 
-  .lastStyle::before ,
-  .middleStyle::before,
-  .fistStyle::before {
+
+  .middleStyle::before
+ {
     content: '';
     position: absolute;
     background-color: black;

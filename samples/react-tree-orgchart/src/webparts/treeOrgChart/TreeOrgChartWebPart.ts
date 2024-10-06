@@ -27,7 +27,8 @@ export interface ITreeOrgChartWebPartProps {
 
 export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgChartWebPartProps> {
   public onInit(): Promise<void> {
-
+console.log("TreeOrgChartWebPart onInit");
+console.log(this.context.pageContext.web.absoluteUrl);
     getSP(this.context);
     getGraph(this.context);
     //Migration old Config Settings

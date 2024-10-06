@@ -345,7 +345,6 @@ export default class TreeOrgChart extends React.Component<
     );
   }
   private renderNode(node: any):JSX.Element{
-    console.log(node);
     return (<div> 
       <div className={styles.treeContents}>
         <div style={{marginRight:'30px',display:'inline-block'}}>

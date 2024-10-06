@@ -7,11 +7,15 @@ import { getSP } from "../webparts/treeOrgChart/components/pnpjsConfig";
 
 export default class SPServices {
   private sp: SPFI;
-  constructor(private context: WebPartContext) {
-    this.sp = getSP(this.context);
+  private wpcontext: WebPartContext;
+  constructor(private wpctx: WebPartContext) {
+    console.log(this.wpctx.pageContext.web.absoluteUrl);
+    this.wpcontext = this.wpctx;
+    this.sp = getSP(this.wpcontext);
   }
 
   public async getUserProperties(user: string):Promise<any> {
+   
     const spCache = spfi(this.sp).using(Caching({ store: "session" }));
 
     return await spCache.profiles.getPropertiesFor(user);

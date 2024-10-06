@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-tree-orgchart-client-side-solution",
     "id": "d76a0c4f-d669-42eb-9533-68d5cec5e9d3",
-    "version": "1.2.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "react-tree-orgchart TreeOrgChartWebPart Feature",
         "description": "The feature that activates TreeOrgChartWebPart from the react-tree-orgchart solution.",
         "id": "4f45c562-805c-42da-81cc-8e84bf7834b0",
-        "version": "1.2.0.0",
+        "version": "2.0.0.0",
         "componentIds": [
           "4f45c562-805c-42da-81cc-8e84bf7834b0"
         ]
