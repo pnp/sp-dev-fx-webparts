@@ -2,8 +2,9 @@
 
 ## Summary
 
-This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.
-When added to a Vertical Section it can be used as a Contents table for the page:
+This web part fetches all the automatically added header anchor tags in a SharePoint page and displays them in a navigation component.
+
+When added to a vertical section it can be used as a contents table for the page:
 
 ![Page Navigator](./assets/PageNavigator.gif)
 
