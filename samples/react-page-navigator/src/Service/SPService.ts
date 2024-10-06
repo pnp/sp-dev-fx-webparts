@@ -15,9 +15,9 @@ export class SPService {
   private static GetAnchorUrl(headingValue: string): string {
     let anchorUrl = `#${headingValue
       .toLowerCase()
-      .replace(/[{}|\[\]\<\>#@"'^%`?;:\/=~\\\s\s]/g, " ")
+      .replace(/[{}|[\]<>#@"'^%`?;:/=~\\\s\s]/g, " ")
       .replace(/^(-|\s)*|(-|\s)*$/g, "")
-      .replace(/\'|\?|\\|\/| |\&/g, "-")
+      .replace(/'|\?|\\|\/| |&/g, "-")
       .replace(/-+/g, "-")
       .replace(/[+]/g, "%2B") // https://github.com/pnp/sp-dev-fx-webparts/issues/3686
       .substring(0, 128)}`;
@@ -56,6 +56,7 @@ export class SPService {
       const data = await context.spHttpClient.get(`${context.pageContext.web.absoluteUrl}/_api/sitepages/pages?$select=CanvasContent1&$filter=Url eq '${currentPageUrl}'`, SPHttpClient.configurations.v1);
       const jsonData = await data.json();
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let canvasContent1JSON: any[];
       try {
         const canvasContent1 = jsonData.value?.[0].CanvasContent1;

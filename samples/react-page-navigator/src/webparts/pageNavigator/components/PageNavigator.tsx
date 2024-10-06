@@ -17,17 +17,17 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
     this.onLinkClick = this.onLinkClick.bind(this);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.setState({ anchorLinks: this.props.anchorLinks, selectedKey: this.props.anchorLinks[0] ? this.props.anchorLinks[0].key : '' });
   }
 
-  public componentDidUpdate(prevProps: IPageNavigatorProps) {
+  public componentDidUpdate(prevProps: IPageNavigatorProps): void {
     if (JSON.stringify(prevProps.anchorLinks) !== JSON.stringify(this.props.anchorLinks)) {
       this.setState({ anchorLinks: this.props.anchorLinks, selectedKey: this.props.anchorLinks[0] ? this.props.anchorLinks[0].key : '' });
     }
   }
 
-  private onLinkClick(ev: React.MouseEvent<HTMLElement>, item?: INavLink) {
+  private onLinkClick(ev: React.MouseEvent<HTMLElement>, item?: INavLink): void {
     this.setState({ selectedKey: item.key });
   }
 
