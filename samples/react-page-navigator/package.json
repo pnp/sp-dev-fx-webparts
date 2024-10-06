@@ -1,6 +1,6 @@
 {
   "name": "navigator",
-  "version": "0.0.1",
+  "version": "1.9.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
