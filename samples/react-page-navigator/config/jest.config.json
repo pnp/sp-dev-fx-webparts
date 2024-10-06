@@ -1,4 +1,9 @@
 {
+  /**
+   * Setup refers to this resource:
+   * https://titolivio.eu/2024/04/30/testing-sharepoint-framework-spfx-components-with-jest-and-react-testing-library/
+   */
+
   // Test root
   "roots": ["../src"],
   // used within ts-jest for transpiling
@@ -8,5 +13,6 @@
   // find test files matching this pattern
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  // set output to erbose mode
   "verbose": true
 }
