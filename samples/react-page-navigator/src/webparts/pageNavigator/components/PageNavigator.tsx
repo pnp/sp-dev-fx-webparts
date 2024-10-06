@@ -39,11 +39,7 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
             <div className={styles.column}>
               <Nav selectedKey={this.state.selectedKey}
                 onLinkClick={this.onLinkClick}
-                groups={[
-                  {
-                    links: this.state.anchorLinks
-                  }
-                ]}
+                groups={[{ links: this.state.anchorLinks }]}
                 theme={this.props.themeVariant as ITheme}
               />
             </div>
