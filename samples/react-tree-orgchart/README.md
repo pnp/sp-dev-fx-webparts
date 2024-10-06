@@ -9,7 +9,7 @@ You can configure in the web part properties:
 * show Organization Chart by picking up user
  
 
-![Organization Chart Web Part](./assets/react-tree-orgchart.gif)
+![Organization Chart Web Part](./assets/react-tree-orgchart-2.gif)
 
 ![Organization Chart Web Part](./assets/Screenshot1.png)
 ![Organization Chart Web Part](./assets/Screenshot2.png)
@@ -69,7 +69,7 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
 
 Version|Date|Comments
 -------|----|--------
-1.2.0|October 05, 2024|Update to SPFx 1.20, minor fixes.
+2.0.0|October 06, 2024|Update to SPFx 1.20, removed react-sortable-tree(no updates any more) and replaced with custom control
 1.1.2|October 28, 2021|Fixes the Issue with different TimeZones.
 1.1.1|October 5, 2021|Added missing Graph permissions in manifest
 1.1.0|Feb 28, 2021|Added <ul><li>Show Other Team</li><li>Live Contact Card</li><li>Filter user by userPrincipalName</li><li>Graph API</li><li>PNPJS updates</li></ul> 
