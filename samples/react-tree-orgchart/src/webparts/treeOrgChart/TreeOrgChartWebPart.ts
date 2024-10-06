@@ -7,10 +7,10 @@ import * as strings from 'TreeOrgChartWebPartStrings';
 import TreeOrgChart, { TreeOrgChartType } from './components/TreeOrgChart';
 import { ITreeOrgChartProps } from './components/ITreeOrgChartProps';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
-import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IPropertyPaneConfiguration, PropertyPaneDropdown, PropertyPaneTextField, PropertyPaneToggle} from '@microsoft/sp-property-pane';
 
-import { getSP } from './components/pnpjsConfig';
+import { getSP,getGraph } from './components/pnpjsConfig';
 
 export interface ITreeOrgChartWebPartProps {
   title: string;
@@ -29,7 +29,7 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
   public onInit(): Promise<void> {
 
     getSP(this.context);
-    getgetGraph(this.context);
+    getGraph(this.context);
     //Migration old Config Settings
     if (!this.properties.viewType) {
       const treetype = this.properties.currentUserTeam ? TreeOrgChartType.MyTeam : TreeOrgChartType.CompanyHierarchy;
@@ -136,7 +136,5 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
     };
   }
 }
-function getgetGraph(context: WebPartContext) {
-  throw new Error('Function not implemented.');
-}
+
 

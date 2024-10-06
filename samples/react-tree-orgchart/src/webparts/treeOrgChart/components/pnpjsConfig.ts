@@ -6,6 +6,7 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { ISPFXContext, spfi, SPFI, SPFx as spSPFx } from "@pnp/sp";
 import { graphfi, GraphFI, SPFx as graphSPFx } from "@pnp/graph";
 import "@pnp/sp/profiles";
+import "@pnp/graph/users";
 
 
 var _sp: SPFI;

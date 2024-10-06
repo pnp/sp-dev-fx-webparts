@@ -18,11 +18,11 @@
     "@microsoft/sp-office-ui-fabric-core": "1.20.0",
     "@microsoft/sp-property-pane": "1.20.0",
     "@microsoft/sp-webpart-base": "1.20.0",
-    "@nosferatu500/react-sortable-tree": "^4.4.0",
     "@pnp/graph": "^4.5.0",
     "@pnp/sp": "^4.5.0",
     "@pnp/spfx-controls-react": "^4.0.0-beta.6059091",
-    "@pnp/spfx-property-controls": "^3.18",
+    "@pnp/spfx-property-controls": "^4.0.0-beta.6059131",
+    "@types/react-sortable-tree": "^0.3.23",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

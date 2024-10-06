@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {WebPartContext} from "@microsoft/sp-webpart-base";
-import { ISPFXContext, spfi, SPFI, SPFx as spSPFx } from "@pnp/sp";
-import { graphfi, GraphFI, SPFx as graphSPFx } from "@pnp/graph";
+import {  spfi, SPFI,  } from "@pnp/sp";
+
 import { Caching } from "@pnp/queryable";
 import { getSP } from "../webparts/treeOrgChart/components/pnpjsConfig";
 
 export default class SPServices {
   private sp: SPFI;
   constructor(private context: WebPartContext) {
-    this.sp = getSP();
+    this.sp = getSP(this.context);
   }
 
-  public async getUserProperties(user: string) {
+  public async getUserProperties(user: string):Promise<any> {
     const spCache = spfi(this.sp).using(Caching({ store: "session" }));
 
     return await spCache.profiles.getPropertiesFor(user);
@@ -20,8 +21,9 @@ export default class SPServices {
    * async GetUserProfileProperty
    * user:string
    */
-  public async getUserProfileProperty(user: string, property: string) {
-    let UserProperty: any = await sp.profiles.getUserProfilePropertyFor(
+  public async getUserProfileProperty(user: string, property: string): Promise<string> {
+    const spCache = spfi(this.sp).using(Caching({ store: "session" }));
+    const UserProperty: string = await spCache.profiles.getUserProfilePropertyFor(
       user,
       property
     );
