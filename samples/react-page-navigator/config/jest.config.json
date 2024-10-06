@@ -14,5 +14,7 @@
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   // set output to erbose mode
-  "verbose": true
+  "verbose": true,
+  // handle coverage report
+  "collectCoverage": false
 }
