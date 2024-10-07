@@ -8,7 +8,7 @@
     "isCreatingSolution": false,
     "isDomainIsolated": false,
     "componentType": "webpart",
-    "nodeVersion": "20.17.0",
+    "nodeVersion": "18.19.0",
     "sdkVersions": {
       "@microsoft/teams-js": "2.24.0",
       "@microsoft/microsoft-graph-client": "3.0.2"
