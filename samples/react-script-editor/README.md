@@ -173,6 +173,7 @@ This sample is optimally compatible with the following environment configuration
 * [Felix Bohnacker](https://github.com/felixbohnackerfelixbohnacker)
 * [salascz](https://github.com/salascz)
 * [Waldek Mastykarz](https://github.com/waldekmastykarz)
+* [Luccas Castro](https://github.com/devpio)
 
 ## Version history
 
