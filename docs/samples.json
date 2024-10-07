@@ -3936,7 +3936,7 @@
       "Sample SharePoint Framework application customizer showing how to create a tenant global NavBar and Footer NavBar for modern sites, reading menu items from the Term Store."
     ],
     "creationDateTime": "2017-09-28",
-    "updateDateTime": "2017-09-28",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -3947,7 +3947,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.3"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -26211,7 +26211,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2023-04-24",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -26222,7 +26222,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
