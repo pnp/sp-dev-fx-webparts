@@ -66,7 +66,7 @@ If the problem still persists,
 Version|Date|Comments
 -------|----|--------
 1.0|August 3, 2023|Initial release
-2.0|October 10, 2024|Upgraded to SharePoint Framework v1.20.0
+2.0|October 01, 2024|Upgraded to SharePoint Framework v1.20.0
 
 ## Help
 
