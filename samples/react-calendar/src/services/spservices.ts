@@ -1,13 +1,9 @@
-// João Mendes
-// March 2019
-
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { sp, Web, PermissionKind, RegionalSettings } from '@pnp/sp';
+import { sp, Web, PermissionKind, RegionalSettings, ISiteUser, IRegionalSettings} from "@pnp/sp/presets/all";
 import { graph, } from "@pnp/graph";
 import * as $ from 'jquery';
 import { IEventData } from './IEventData';
 import * as moment from 'moment';
-import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
 import parseRecurrentEvent from './parseRecurrentEvent';
 import { IComboBoxOption } from '@fluentui/react';
@@ -17,15 +13,14 @@ import { Text } from "@microsoft/sp-core-library";
 // Class Services
 export default class spservices {
 
-
   constructor(private context: WebPartContext) {
     // Setuo Context to PnPjs and MSGraph
     sp.setup({
-      spfxContext: this.context
+      spfxContext: this.context as any
     });
 
     graph.setup({
-      spfxContext: this.context
+      spfxContext: this.context as any
     });
     // Init
     this.onInit();
@@ -77,7 +72,7 @@ export default class spservices {
   public async addEvent(newEvent: IEventData, siteUrl: string, listId: string) {
     let results = null;
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
 
       results = await web.lists.getById(listId).items.add({
         Title: newEvent.title,
@@ -103,7 +98,6 @@ export default class spservices {
     return results;
   }
 
-
   /**
    *
    *
@@ -116,9 +110,7 @@ export default class spservices {
   public async getEvent(siteUrl: string, listId: string, eventId: number): Promise<IEventData> {
     let returnEvent: IEventData = undefined;
     try {
-      const web = new Web(siteUrl);
-
-      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
+      const web = sp.web;
       const event = await web.lists.getById(listId).items.usingCaching().getById(eventId)
         .select("RecurrenceID", "MasterSeriesItemID", "Id", "ID", "ParticipantsPickerId", "EventType", "Title", "Description", "EventDate", "EndDate", "Location", "Author/SipAddress", "Author/Title", "Geolocation", "fAllDayEvent", "fRecurrence", "RecurrenceData", "RecurrenceData", "Duration", "Category", "UID")
         .expand("Author")
@@ -173,11 +165,10 @@ export default class spservices {
       // delete all recursive extentions before update recurrence event
       if (updateEvent.EventType.toString() == "1") await this.deleteRecurrenceExceptions(updateEvent, siteUrl, listId);
 
-      const web = new Web(siteUrl);
+      const web = sp.web;
       const eventDate = await this.getUtcTime(updateEvent.EventDate);
       const endDate = await this.getUtcTime(updateEvent.EndDate);
 
-      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
       let newItem: any = {
         Title: updateEvent.title,
         Description: updateEvent.Description,
@@ -211,7 +202,7 @@ export default class spservices {
   public async deleteRecurrenceExceptions(event: IEventData, siteUrl: string, listId: string) {
     let results = null;
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       results = await web.lists.getById(listId).items
         .select('Id')
         .filter(`EventType eq '3' or EventType eq '4' and MasterSeriesItemID eq '${event.Id}' `)
@@ -238,7 +229,7 @@ export default class spservices {
   public async deleteEvent(event: IEventData, siteUrl: string, listId: string, recurrenceSeriesEdited: boolean) {
     let results = null;
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       // Exception Recurrence eventtype = 4 ?  update to deleted Recurrence eventtype=3
       switch (event.EventType.toString()) {
         case '4': // Exception Recurrence Event
@@ -279,20 +270,19 @@ export default class spservices {
    *
    * @param {number} userId
    * @param {string} siteUrl
-   * @returns {Promise<SiteUser>}
+   * @returns {Promise<ISiteUser>}
    * @memberof spservices
    */
-  public async getUserById(userId: number, siteUrl: string): Promise<SiteUser> {
-    let results: SiteUser = null;
+  public async getUserById(userId: number, siteUrl: string): Promise<ISiteUser> {
+    let results: ISiteUser = null;
 
     if (!userId && !siteUrl) {
       return null;
     }
 
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       results = await web.siteUsers.getById(userId).get();
-      //results = await web.siteUsers.getByLoginName(userId).get();
     } catch (error) {
       return Promise.reject(error);
     }
@@ -304,21 +294,20 @@ export default class spservices {
    *
    * @param {string} loginName
    * @param {string} siteUrl
-   * @returns {Promise<SiteUser>}
+   * @returns {Promise<ISiteUser>}
    * @memberof spservices
    */
-  public async getUserByLoginName(loginName: string, siteUrl: string): Promise<SiteUser> {
-    let results: SiteUser = null;
+  public async getUserByLoginName(loginName: string, siteUrl: string): Promise<ISiteUser> {
+    let results: ISiteUser = null;
 
     if (!loginName && !siteUrl) {
       return null;
     }
 
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       await web.ensureUser(loginName);
       results = await web.siteUsers.getByLoginName(loginName).get();
-      //results = await web.siteUsers.getByLoginName(userId).get();
     } catch (error) {
       return Promise.reject(error);
     }
@@ -354,9 +343,9 @@ export default class spservices {
     let hasPermissionView: boolean = false;
     let userPermissions: IUserPermissions = undefined;
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       const userEffectivePermissions = await web.lists.getById(listId).effectiveBasePermissions.get();
-      // ...
+      
       hasPermissionAdd = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.AddListItems);
       hasPermissionDelete = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.DeleteListItems);
       hasPermissionEdit = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.EditListItems);
@@ -383,7 +372,7 @@ export default class spservices {
     }
 
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       results = await web.lists.select("Title", "ID").filter('BaseTemplate eq 106').get();
 
     } catch (error) {
@@ -424,14 +413,14 @@ export default class spservices {
   public async getChoiceFieldOptions(siteUrl: string, listId: string, fieldInternalName: string): Promise<{ key: string, text: string }[]> {
     let fieldOptions: { key: string, text: string }[] = [];
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       const results = await web.lists.getById(listId)
         .fields
         .getByInternalNameOrTitle(fieldInternalName)
         .select("Title", "InternalName", "Choices")
         .get();
-      if (results && results.Choices.length > 0) {
-        for (const option of results.Choices) {
+      if (results && results["Choices"].length > 0) {
+        for (const option of results["Choices"]) {
           fieldOptions.push({
             key: option,
             text: option
@@ -468,7 +457,7 @@ export default class spservices {
       }
       let camlQueryExpression = this.setUpQueryExpression(eventStartDate, eventEndDate, categories);
 
-      const web = new Web(siteUrl);
+      const web = sp.web;
       const results = await web.lists.getById(listId).usingCaching().renderListDataAsStream(
         {
           DatesInUtc: true,
@@ -647,9 +636,9 @@ export default class spservices {
    * @memberof spservices
    */
   public async getSiteRegionalSettingsTimeZone(siteUrl: string) {
-    let regionalSettings: RegionalSettings;
+    let regionalSettings: IRegionalSettings;
     try {
-      const web = new Web(siteUrl);
+      const web = sp.web;
       regionalSettings = await web.regionalSettings.timeZone.usingCaching().get();
 
     } catch (error) {
@@ -1201,7 +1190,4 @@ export default class spservices {
     string = string.replace(/&amp;/g, '&');
     return string;
   }
-
-
-
 }
