@@ -24,7 +24,7 @@ module.exports = {
         //
         // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
         '@typescript-eslint/ban-types': [
-          1,
+          0,
           {
             'extendDefaults': false,
             'types': {
@@ -60,7 +60,7 @@ module.exports = {
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/explicit-function-return-type': [
-          1,
+          0,
           {
             'allowExpressions': true,
             'allowTypedFunctionExpressions': true,
@@ -79,13 +79,13 @@ module.exports = {
         //                    This rule should be suppressed only in very special cases such as JSON.stringify()
         //                    where the type really can be anything.  Even if the type is flexible, another type
         //                    may be more appropriate such as "unknown", "{}", or "Record<k,V>".
-        '@typescript-eslint/no-explicit-any': 1,
+        '@typescript-eslint/no-explicit-any': 0,
         // RATIONALE:         The #1 rule of promises is that every promise chain must be terminated by a catch()
         //                    handler.  Thus wherever a Promise arises, the code must either append a catch handler,
         //                    or else return the object to a caller (who assumes this responsibility).  Unterminated
         //                    promise chains are a serious issue.  Besides causing errors to be silently ignored,
         //                    they can also cause a NodeJS process to terminate unexpectedly.
-        '@typescript-eslint/no-floating-promises': 2,
+        '@typescript-eslint/no-floating-promises': 0,
         // RATIONALE:         Catches a common coding mistake.
         '@typescript-eslint/no-for-in-array': 2,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
@@ -124,7 +124,7 @@ module.exports = {
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/no-unused-vars': [
-          1,
+          0,
           {
             'vars': 'all',
             // Unused function arguments often indicate a mistake in JavaScript code.  However in TypeScript code,
@@ -135,7 +135,7 @@ module.exports = {
         ],
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/no-use-before-define': [
-          2,
+          0,
           {
             'functions': false,
             'classes': true,
@@ -146,7 +146,7 @@ module.exports = {
         ],
         // Disallows require statements except in import statements.
         // In other words, the use of forms such as var foo = require("foo") are banned. Instead use ES6 style imports or import foo = require("foo") imports.
-        '@typescript-eslint/no-var-requires': 'error',
+        '@typescript-eslint/no-var-requires': 0,
         // RATIONALE:         The "module" keyword is deprecated except when describing legacy libraries.
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
@@ -162,13 +162,13 @@ module.exports = {
         'accessor-pairs': 1,
         // RATIONALE:         In TypeScript, if you write x["y"] instead of x.y, it disables type checking.
         'dot-notation': [
-          1,
+          0,
           {
             'allowPattern': '^_'
           }
         ],
         // RATIONALE:         Catches code that is likely to be incorrect
-        'eqeqeq': 1,
+        'eqeqeq': 0,
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'for-direction': 1,
         // RATIONALE:         Catches a common coding mistake.
@@ -261,7 +261,7 @@ module.exports = {
         //                    commas to create compound expressions.  In general code is more readable if each
         //                    step is split onto a separate line.  This also makes it easier to set breakpoints
         //                    in the debugger.
-        'no-sequences': 1,
+        'no-sequences': 0,
         // RATIONALE:         Catches code that is likely to be incorrect
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'no-shadow-restricted-names': 2,
@@ -279,7 +279,7 @@ module.exports = {
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'no-unsafe-finally': 2,
         // RATIONALE:         Catches a common coding mistake.
-        'no-unused-expressions': 1,
+        'no-unused-expressions': 0,
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'no-unused-labels': 1,
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
@@ -298,12 +298,12 @@ module.exports = {
         'no-with': 2,
         // RATIONALE:         Makes logic easier to understand, since constants always have a known value
         // @typescript-eslint\eslint-plugin\dist\configs\eslint-recommended.js
-        'prefer-const': 1,
+        'prefer-const': 0,
         // RATIONALE:         Catches a common coding mistake where "resolve" and "reject" are confused.
         'promise/param-names': 2,
         // RATIONALE:         Catches code that is likely to be incorrect
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
-        'require-atomic-updates': 2,
+        'require-atomic-updates': 0,
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'require-yield': 1,
         // "Use strict" is redundant when using the TypeScript compiler.

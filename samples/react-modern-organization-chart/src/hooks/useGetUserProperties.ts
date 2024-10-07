@@ -55,7 +55,7 @@ export const useGetUserProperties = async (
       let image = new Image();
       image.addEventListener("load", () => {
         let tempCanvas = document.createElement("canvas");
-        (tempCanvas.width = image.width),
+        (tempCanvas.width = image.width),// eslint-disable-line
           (tempCanvas.height = image.height),
           tempCanvas.getContext("2d").drawImage(image, 0, 0);
         let base64Str;
