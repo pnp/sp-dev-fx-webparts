@@ -27,10 +27,6 @@ export interface IMappingFieldData extends IBaseFieldData {
   sortIdx: number;
 }
 
-export interface ICompleteModalData extends IBaseFieldData {
-
-}
-
 export interface IRedirectData {
   SiteCollectionSource: string;
   ListSourceField: string;
@@ -60,7 +56,7 @@ export interface SiteList {
 }
 
 export interface SitesFields {
-  [siteName: string]: Array<ListsFields>;
+  [siteName: string]: ListsFields;
 }
 
 export interface ListsFields {
