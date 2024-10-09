@@ -1,5 +1,4 @@
 import styles from "./CalendarTemplate.module.scss";
-import { escape } from "@microsoft/sp-lodash-subset";
 import { IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 export interface ISPLists {
@@ -12,7 +11,7 @@ export interface ISPList {
 }
 export default class CalendarTemplate {
   public static templateHtml: string = `
-    <div class='spfxcalendar'></div>
+    <div id='spfxcalendar' class='spfxcalendar'></div>
     `;
 
   public static emptyHtml(title: string): string {
@@ -64,8 +63,8 @@ export default class CalendarTemplate {
   ];
 
   public static theme(): IPropertyPaneDropdownOption[] {
-    var themes: IPropertyPaneDropdownOption[] = [];
-    CalendarTemplate.themeNames.forEach((name, index)=> {
+    const themes: IPropertyPaneDropdownOption[] = [];
+    CalendarTemplate.themeNames.forEach((name)=> {
       themes.push({
         key: CalendarTemplate.themeBase + name + "/jquery-ui.min.css",
         text: name.toLocaleUpperCase(),
