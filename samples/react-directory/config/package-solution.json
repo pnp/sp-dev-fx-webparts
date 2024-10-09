@@ -10,7 +10,7 @@
     },
     "name": "Search Directory",
     "id": "5b62bc16-3a71-461d-be2f-16bfcb011e8a",
-    "version": "3.0.4.0",
+    "version": "3.0.5.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "react-directory DirectoryWebPart Feature",
         "description": "The feature that activates DirectoryWebPart from the react-directory solution.",
         "id": "fae479bf-405f-4f80-a086-eea22eff3d6f",
-        "version": "3.0.4.0",
+        "version": "3.0.5.0",
         "componentIds": [
           "fae479bf-405f-4f80-a086-eea22eff3d6f"
         ]
