@@ -11,7 +11,7 @@ import {
   DetailsList, DetailsListLayoutMode, SelectionMode, 
   IColumn, mergeStyles, Spinner, 
   ProgressIndicator,ITooltipHostStyles, Link
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import FlowService from '../../services/FlowService';
 import GraphService from '../../services/GraphService';
 import { AadTokenProvider } from '@microsoft/sp-http-base';

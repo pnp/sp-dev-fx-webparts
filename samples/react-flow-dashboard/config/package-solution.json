@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-flow-dashboard-client-side-solution",
     "id": "a55dc82b-3833-4250-9563-c6ab960ec7ae",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
       "websiteUrl": "https://github.com/NishkalankBezawada",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.17.4"
+      "mpnId": "Undefined-1.20.0"
     },
     "webApiPermissionRequests": [
       {
@@ -40,7 +40,7 @@
         "title": "react-flow-dashboard Feature",
         "description": "The feature that activates elements of the react-flow-dashboard solution.",
         "id": "6302f19a-1bd1-4021-8c94-6fe9ce9f3410",
-        "version": "1.0.0.0"
+        "version": "2.0.0.0"
       }
     ]
   },
