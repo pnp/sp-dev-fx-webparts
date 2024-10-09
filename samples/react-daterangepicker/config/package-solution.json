@@ -3,10 +3,39 @@
   "solution": {
     "name": "spfx-react-daterangepicker-client-side-solution",
     "id": "ec6a42cc-ddb4-48f2-8ed2-1dd716424dd5",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-react-daterangepicker description"
+      },
+      "longDescription": {
+        "default": "spfx-react-daterangepicker description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-react-daterangepicker SpfxReactDaterangepickerWebPart Feature",
+        "description": "The feature that activates SpfxReactDaterangepickerWebPart from the spfx-react-daterangepicker solution.",
+        "id": "4c56d238-26d6-4fae-a30f-6b6ab3cc9d52",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "4c56d238-26d6-4fae-a30f-6b6ab3cc9d52"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/spfx-react-daterangepicker.sppkg"

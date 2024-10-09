@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  IPropertyPaneConfiguration,
+  type IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -15,14 +15,14 @@ export interface ISpfxReactDaterangepickerWebPartProps {
   description: string;
 }
 
-export default class SpfxReactDaterangepickerWebPart extends BaseClientSideWebPart <ISpfxReactDaterangepickerWebPartProps> {
+export default class SpfxReactDaterangepickerWebPart extends BaseClientSideWebPart<ISpfxReactDaterangepickerWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<ISpfxReactDaterangepickerProps> = React.createElement(
       SpfxReactDaterangepicker,
       {
         description: this.properties.description,
-        context:this.context
+        context: this.context
       }
     );
 

@@ -4,7 +4,7 @@
   "private": true,
   "main": "lib/index.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=16.13.0 <17.0.0 || >=18.17.1 <19.0.0"
   },
   "scripts": {
     "build": "gulp bundle",
@@ -12,33 +12,37 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.10.0",
-    "@microsoft/sp-lodash-subset": "1.10.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.10.0",
-    "@microsoft/sp-property-pane": "1.16.1",
-    "@microsoft/sp-webpart-base": "1.16.1",
-    "@pnp/sp": "^2.0.6",
-    "@types/es6-promise": "0.0.33",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.3",
-    "@types/webpack-env": "1.13.1",
-    "office-ui-fabric-react": "6.189.2",
-    "react": "16.8.5",
-    "react-date-range": "^1.0.0-beta",
-    "react-dom": "16.8.5"
-  },
-  "resolutions": {
-    "@types/react": "16.8.8"
+    "@fluentui/react": "8.106.4",
+    "@microsoft/sp-adaptive-card-extension-base": "1.20.0",
+    "@microsoft/sp-core-library": "1.20.0",
+    "@microsoft/sp-lodash-subset": "1.20.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.20.0",
+    "@microsoft/sp-property-pane": "^1.20.0",
+    "@microsoft/sp-webpart-base": "1.20.0",
+    "@pnp/sp": "^4.5.0",
+    "date-fns": "^2.30.0",
+    "office-ui-fabric-react": "^7.204.0",
+    "react": "^17.0.1",
+    "react-date-range": "^1.4.0",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.16.1",
-    "@microsoft/sp-tslint-rules": "1.10.0",
-    "@microsoft/sp-module-interfaces": "1.10.0",
-    "@microsoft/sp-webpart-workbench": "1.12.1",
+    "@microsoft/eslint-config-spfx": "1.20.2",
+    "@microsoft/eslint-plugin-spfx": "1.20.2",
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
-    "gulp": "~4.0.2",
-    "@types/chai": "3.4.34",
-    "@types/mocha": "2.2.38",
-    "ajv": "~5.2.2"
+    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
+    "@microsoft/sp-build-web": "1.20.2",
+    "@microsoft/sp-module-interfaces": "1.20.2",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "1.15.2",
+    "ajv": "6.12.5",
+    "eslint": "8.57.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "typescript": "4.7.4"
   }
 }
