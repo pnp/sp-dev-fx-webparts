@@ -3,16 +3,16 @@
   "solution": {
     "name": "happy-birthday-anniversary-client-side-solution",
     "id": "474e78f8-113f-4057-a9a9-640241137620",
-    "version": "4.0.0.0",
+    "version": "5.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
       "name": "",
+      "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "websiteUrl": "",
-      "mpnId": "Undefined-1.16.1"
+      "mpnId": "Undefined-1.20.0"
     },
     "metadata": {
       "shortDescription": {

@@ -25,8 +25,8 @@ But you can synchronize the Birthdays list with other applications HR Systems, o
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -60,6 +60,7 @@ email | Text | true
 
 * [João Mendes](https://github.com/joaojmendes)
 * [Sajal Maity](https://github.com/smaity)
+* [Valeras Narbutas](https://github.com/ValerasNarbutas)
 
 ## Version history
 
@@ -70,6 +71,7 @@ Version|Date|Comments
 2.0.0|June 16, 2021 | Upgraded to SPFx 1.12.1
 3.0.0|April 7, 2022 | Upgraded to SPFx 1.14.0
 4.0.0|March 6, 2023 | Upgraded to SPFx 1.16.1
+5.0.0|October 2, 2024 | Upgraded to SPFx 1.20.0
 
 ## Minimal Path to Awesome
 

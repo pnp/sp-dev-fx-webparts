@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { IBirthdayState } from './IBirthdaysState';
 import SPService from '../../../services/SPService';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-const imgBackgroundBallons: string = require('../../../../assets/ballonsBackgroud.png');
+const imgBackgroundBallons: string = require('../../../assets/ballonsBackgroud.png');
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as strings from 'ControlStrings';
