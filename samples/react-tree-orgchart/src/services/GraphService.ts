@@ -1,5 +1,10 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { graph } from "@pnp/graph";
+
+import { getGraph } from "../webparts/treeOrgChart/components/pnpjsConfig";
+
+import { graphfi, GraphFI } from "@pnp/graph";
+
+import { Caching } from "@pnp/queryable";
 
 export interface IGraphUser {
     mail?: string;
@@ -12,47 +17,42 @@ const graphUserSelect: string[] = ['displayName', 'mail', 'jobTitle', 'userPrinc
 
 export default class GraphService {
 
+    private graph: GraphFI;
 
     constructor(private context: WebPartContext) {
-        graph.setup({
-            spfxContext: this.context
-        });
+        this.graph = getGraph(this.context);
     }
 
     public async getUser(upn: string): Promise<IGraphUser> {
-
-        return await graph.users.getById(upn).select(...graphUserSelect).get() as IGraphUser;
+        const graphCache = graphfi(this.graph).using(Caching({ store: "session" }));
+        return await graphCache.users.getById(upn).select(...graphUserSelect)() as IGraphUser;
     }
 
     public async getUserManger(upn: string): Promise<IGraphUser> {
+        const graphCache = graphfi(this.graph).using(Caching({ store: "session" }));
 
-        return await graph.users.getById(upn).manager.select(...graphUserSelect).get() as IGraphUser;
+        return await graphCache.users.getById(upn).manager.select(...graphUserSelect) as IGraphUser;
     }
-    public async getUserDirectReports(upn: string, excludefilter?: boolean, filter?: string) {
+    public async getUserDirectReports(upn: string, excludefilter?: boolean, filter?: string): Promise<IGraphUser[]> {
 
-        /*
-        odata filter 
-         "code": "Request_UnsupportedQuery",
-        "message": "The specified filter to the reference property query is currently not supported.",
-        */
-        const directReports = await graph.users.getById(upn).directReports.select(...graphUserSelect).get() as IGraphUser[];
-        if (filter && filter.length > 0) {
+         const graphCache = graphfi(this.graph).using(Caching({ store: "session" }));
+        const directReports = await graphCache.users.getById(upn).directReports.select(...graphUserSelect)();
+       if (filter && filter.length > 0) {
             if (excludefilter) {
-                return directReports.filter((user) => 
-                    user.userPrincipalName?.toLowerCase().indexOf(filter.toLowerCase()) === -1
-                );
+                   return directReports.filter((person) => 
+                        
+                        person.userPrincipalName?.toLowerCase().indexOf(filter.toLowerCase()) === -1
+                    ) as IGraphUser[]; 
 
             } else {
-                return directReports.filter((user) => 
-                    user.userPrincipalName?.toLowerCase().indexOf(filter.toLowerCase()) !== -1
-                );
-
+             return directReports.filter((user) => 
+                      user.userPrincipalName?.toLowerCase().indexOf(filter.toLowerCase()) !== -1
+                  )as IGraphUser[];
+  
             }
-
         }
-        return directReports;
-
+        return directReports as IGraphUser[];
     }
-
 }
+
 

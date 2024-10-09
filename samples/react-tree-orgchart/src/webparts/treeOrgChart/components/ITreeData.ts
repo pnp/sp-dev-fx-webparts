@@ -1,6 +1,6 @@
 
 export interface ITreeData {
-   title: any;
+   title: JSX.Element;
    expanded ?: boolean;
-   children ? : ITreeData[]|null;
+   children ? : ITreeData[];
 }

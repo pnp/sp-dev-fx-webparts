@@ -9,7 +9,7 @@
       "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart."
     ],
     "creationDateTime": "2021-02-28",
-    "updateDateTime": "2021-10-28",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -37,7 +37,7 @@
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/react-tree-orgchart.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/react-tree-orgchart-2.gif?raw=true",
         "alt": "Tree Organization Web Part"
       },
       {
