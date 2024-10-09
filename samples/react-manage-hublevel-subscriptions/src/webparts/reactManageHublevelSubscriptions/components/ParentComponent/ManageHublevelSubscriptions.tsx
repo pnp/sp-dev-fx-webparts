@@ -7,13 +7,13 @@ import { IManageHublevelSubscriptionsProps,
 from './IManageHublevelSubscriptions';
 import {
 Spinner
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { SearchService } from '../../Services/SearchService';
 import { RestService } from '../../Services/RestService';
 import HubSiteMapper from '../../Mapper/HubSiteMapper';
 import SubscriptionDashboard from '../DashboardComponent/SubscriptionDashboard';
 import { WebPartTitle } from '@pnp/spfx-controls-react';
-import {MessageBar, MessageBarType} from 'office-ui-fabric-react';
+import {MessageBar, MessageBarType} from '@fluentui/react';
 
 export default class ReactManageHublevelSubscriptions 
   extends React.Component<IManageHublevelSubscriptionsProps, IManageHublevelSubscriptionsState> {
