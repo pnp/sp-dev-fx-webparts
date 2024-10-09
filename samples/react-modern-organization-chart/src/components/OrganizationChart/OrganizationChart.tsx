@@ -22,7 +22,7 @@ import {
   Label,
   MessageBar,
   MessageBarType,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 
 //import { AppContext } from "../../Entities/AppContext";
 import { IAppContext } from "../../Entities/IAppContext";
