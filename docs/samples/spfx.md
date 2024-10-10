@@ -7,6 +7,10 @@ filteroptions:
       displayname: All
       filter: '*'
       active: true
+    - name: 120
+      title: 1.20.x
+      displayname: 1.20
+      filter: '[data-spfx^=''1.20.'']'
     - name: 119
       title: 1.19.x
       displayname: 1.19
