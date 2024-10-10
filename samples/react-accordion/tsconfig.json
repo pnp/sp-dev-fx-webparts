@@ -24,6 +24,7 @@
       "webpack-env",
     ],
     "lib": [
+      "es2015",
       "es2015.promise",
       "es5",
       "dom",

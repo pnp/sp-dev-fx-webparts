@@ -54,19 +54,21 @@ export default class ReactAccordion extends React.Component<
     );
   }
 
-  private searchTextChange(event) {
-    if (event === undefined || event === null || event === "") {
+  private searchTextChange(event: any, newValue?: string): void {
+    // If newValue is null, undefined, or an empty string, reset the items
+    if (!newValue || newValue.trim() === "") {
       let listItemsCollection = [...this.state.listItems];
       this.setState({
         items: listItemsCollection,
         pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage),
       });
     } else {
-      var updatedList = [...this.state.listItems];
-      updatedList = updatedList.filter((item) => {
+      // Filter list based on search query
+      const updatedList = this.state.listItems.filter((item) => {
+        // Ensure item.Title and item.Description exist and are strings
         return (
-          item.Title.toLowerCase().search(event.toLowerCase()) !== -1 ||
-          item.Description.toLowerCase().search(event.toLowerCase()) !== -1
+          item.Title?.toLowerCase().includes(newValue.toLowerCase()) ||
+          item.Description?.toLowerCase().includes(newValue.toLowerCase())
         );
       });
       this.setState({
@@ -75,6 +77,8 @@ export default class ReactAccordion extends React.Component<
       });
     }
   }
+  
+  
 
   private readItems(): void {
     const orders = [];
@@ -210,6 +214,7 @@ export default class ReactAccordion extends React.Component<
       for (let i = 0; i < pageCount; i++) {
         pageButtons.push(
           <PrimaryButton
+          style={{ margin: "0 8px" }} 
             onClick={() => {
               _pagedButtonClick(i + 1, items);
             }}
