@@ -4,7 +4,6 @@ import { IReactAccordionProps } from "./IReactAccordionProps";
 import {
   SPHttpClient,
   SPHttpClientResponse,
-  ISPHttpClientOptions,
 } from "@microsoft/sp-http";
 import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
@@ -171,18 +170,12 @@ export default class ReactAccordion extends React.Component<
       (item: IAccordionListItem, i: number): JSX.Element => {
         return (
           <AccordionItem>
-            <AccordionItemHeading className="accordion__title">
-              <AccordionItemButton>
-                <h3 className="u-position-relative ms-fontColor-white">
+            <AccordionItemHeading>
+              <AccordionItemButton >
                   {item.Title}
-                </h3>
-                <div
-                  className="accordion__arrow ms-fontColor-white"
-                  role="presentation"
-                />
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className="accordion__body">
+            <AccordionItemPanel >
               <div
                 className=""
                 dangerouslySetInnerHTML={{ __html: item.Description }}
