@@ -384,10 +384,20 @@ export class ElementProvisioner {
         }
 
         // we do not allow creating or changing built-in fields
+        // if (AutomaticListFields.allLists.includes(name) ||
+        //     AutomaticListFields[fieldDefinition[ParentList].template].includes(name)) {
+        //     return;
+        // }
+        
         if (AutomaticListFields.allLists.includes(name) ||
-            AutomaticListFields[fieldDefinition[ParentList].template].includes(name)) {
+            (fieldDefinition[ParentList] &&
+                AutomaticListFields[
+                    fieldDefinition[ParentList].template
+                ].includes(name))
+        ) {
             return;
         }
+        
 
         const batchedFields = fields.inBatch(batch);
 

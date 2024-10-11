@@ -9,7 +9,7 @@
       "This list search web part allows the user to show data from lists or libraries."
     ],
     "creationDateTime": "2020-12-20",
-    "updateDateTime": "2022-07-11",
+    "updateDateTime": "2024-10-02",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -84,7 +84,7 @@
     "authors": [
       {
         "gitHubAccount": "albegut",
-        "company": "Minsait",
+        "company": "Hiberus",
         "pictureUrl": "https://github.com/albegut.png",
         "name": "Alberto Gutierrez perez",
         "twitter": "albertogperez"

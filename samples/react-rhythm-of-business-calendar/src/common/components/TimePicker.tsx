@@ -22,9 +22,17 @@ const HoursOptions: IDropdownOption[] = [
 
 const MinutesOptions: IDropdownOption[] = [
     { key: 0, text: '00' },
+    { key: 5, text: '05' },
+    { key: 10, text: '10' },
     { key: 15, text: '15' },
+    { key: 20, text: '20' },
+    { key: 25, text: '25' },
     { key: 30, text: '30' },
+    { key: 35, text: '35' },
+    { key: 40, text: '40' },
     { key: 45, text: '45' },
+    { key: 50, text: '50' },
+    { key: 55, text: '55' },
 ];
 
 export interface ITimePickerProps {
@@ -50,7 +58,7 @@ export const TimePicker: FC<ITimePickerProps> = ({
     const time = useMemo(() => {
         return {
             hour: value.hours() % 12,
-            minute: Math.floor(value.minutes() / 15) * 15, // round down to the closest 15-minute increment
+            minute: Math.floor(value.minutes() / 5) * 5, // round down to the closest 15-minute increment
             ampm: value.hours() >= 12
         };
     }, [value]);

@@ -1,7 +1,7 @@
 {
     "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-    "id": "ff77b45a-483c-4fe7-94b4-b5fc8def29c0",
-    "alias": "RhythmOfBusinessCalendarWebPartLOCAL",
+    "id": "077f5c4a-37bf-4531-ac24-6369ca0f5f51",
+    "alias": "RhythmOfBusinessCalendarWebPart",
     "componentType": "WebPart",
     "version": "*",
     "manifestVersion": 2,
@@ -20,7 +20,7 @@
                 "default": "Other"
             },
             "title": {
-                "default": "(LOCAL) Rhythm of Business Calendar"
+                "default": "Rhythm of Business Calendar"
             },
             "description": {
                 "default": "One calendar for managing and maintaining all team and organizational events"

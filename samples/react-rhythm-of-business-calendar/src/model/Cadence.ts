@@ -1,6 +1,8 @@
 import { min, Moment } from "moment-timezone";
 import { MomentRange } from "common";
 import { DailyRecurrence, MonthlyRecurrence, RecurDay, RecurPattern, RecurPatternOption, Recurrence, RecurUntilType, RecurWeekOfMonth, WeeklyRecurrence, YearlyRecurrence } from "./Recurrence";
+import moment from "moment";
+import { useConfigurationService } from "services";
 
 const isWeekend = (date: Moment): boolean =>
     date.day() === 0 || date.day() === 6
@@ -70,8 +72,19 @@ const gotoDateByRecurDay = (current: Moment, weekOf: RecurWeekOfMonth, recurDay:
         default: {
             if (weekOf === RecurWeekOfMonth.last) current.add(1, 'month');
             const month = current.month();
+            const originalTime = current.clone();
             current.startOf('month');
+            current.hour(originalTime.hour());
+            current.minute(originalTime.minute());
+            current.second(originalTime.second());
+            current.millisecond(originalTime.millisecond());
+
             current.day(recurDay); // sets the date to be the specified day of the week within the current Sunday-Saturday week
+            if(originalTime.year() > current.year()){
+                current.add(1, 'week');
+                current.day(recurDay);
+            }
+            
             if (current.month() < month) current.add(1, 'week'); // if that moved the date backwards to the previous month, add a week to move forward to the current month
             current.add(weekOf === RecurWeekOfMonth.last ? -1 : weekOf, 'weeks');
         }
@@ -103,6 +116,7 @@ class DailyCadenceGenerator implements ICadenceGenerator {
             yield current.clone();
 
             current.add(weekdaysOnly ? 1 : every, 'days');
+           // current.add(!weekdaysOnly ? 1 : every, 'days');
         }
     }
 }
@@ -234,7 +248,8 @@ class YearlyByDayCadenceGenerator implements ICadenceGenerator {
 export class Cadence {
     constructor(
         private readonly _start: Moment,
-        private readonly _recurrence: Recurrence
+        private readonly _recurrence: Recurrence,
+        private readonly _isDifferenceInTimezone: boolean
     ) { }
 
     public *generate(range?: MomentRange): Generator<Moment, undefined> {
@@ -253,15 +268,36 @@ export class Cadence {
             ? min(range.end, until.date)
             : range.end;
 
+
         do {
             const { done, value: date } = dates.next();
 
+            const _date = moment(date);
+            const _range = moment(range.start);
+            
+            // Get time zone identifiers for both dates
+            const timeZone_date = _date.tz();
+            const timeZone_range = _range.tz();
+         //  const convertedMoment = _date.clone().tz(targetTimeZoneId);
             if (done || !date.isValid() || date.isAfter(end, 'day'))
                 break;
 
-            if (date.isSameOrAfter(range.start, 'day'))
+            // if (!this._isDifferenceInTimezone) {
+            //     if (date.isSameOrAfter(range.start, 'day'))
+            //         yield date;
+            // }
+            // else {
+            //     if (date.isAfter(range.start, 'day'))
+            //         yield date;
+            // }
+            if (timeZone_date !== timeZone_range) {
+                if (date.isAfter(range.start, 'day'))
                 yield date;
-
+            }
+            else{
+                if (date.isSameOrAfter(range.start, 'day'))
+                        yield date;
+            }
             count++;
         } while (until.type !== RecurUntilType.count || count < until.count);
     }

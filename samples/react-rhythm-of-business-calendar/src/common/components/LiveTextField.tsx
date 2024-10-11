@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { CSSProperties, useCallback } from 'react';
 import { ITextFieldProps, TextField, Stack } from '@fluentui/react';
 import { ValidationRule, PropsOfType } from 'common';
 import { ListItemEntity } from 'common/sharepoint';
@@ -6,7 +6,7 @@ import { InfoTooltip } from './InfoTooltip';
 import LiveUpdate from './LiveUpdate';
 import { getCurrentValue, LiveType, setValue } from './LiveUtils';
 import { Validation } from './Validation';
-
+import styles from "./styles/LiveTextField.module.scss";
 type DataType = string | number;
 
 interface IConverter<T> {
@@ -27,12 +27,14 @@ interface IProps<E extends ListItemEntity<any>, P extends PropsOfType<E, DataTyp
     showValidationFeedback?: boolean;
     liveUpdateMarkClassName?: string;
     tooltip?: string;
+    isCssClassName?: boolean;
     updateField: (update: (data: E) => void, callback?: () => any) => void;
 }
 
 const LiveTextField = <E extends ListItemEntity<any>, P extends PropsOfType<E, DataType>>(props: IProps<E, P>) => {
     const {
         entity,
+        isCssClassName = false,
         propertyName,
         converter = new NonConverter() as unknown as IConverter<LiveType<E, P>>,
         rules,
@@ -59,7 +61,7 @@ const LiveTextField = <E extends ListItemEntity<any>, P extends PropsOfType<E, D
                         ariaLabel={ariaLabel}
                         onRenderLabel={(textFieldProps, defaultRender) => {
                             return label && <Stack horizontal>
-                                <InfoTooltip text={tooltip}>{defaultRender(textFieldProps)}</InfoTooltip>
+                                <InfoTooltip text={tooltip} isCssClassName={isCssClassName}>{defaultRender(textFieldProps)}</InfoTooltip>
                                 {renderLiveUpdateMark({ className: liveUpdateMarkClassName })}
                             </Stack>;
                         }}

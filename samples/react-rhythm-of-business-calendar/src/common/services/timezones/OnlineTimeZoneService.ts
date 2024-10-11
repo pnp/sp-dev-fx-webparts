@@ -1,21 +1,29 @@
-import moment from 'moment-timezone';
-import { ICachingOptions } from '@pnp/odata';
-import { extractWebUrl, sp } from '@pnp/sp';
+import { ICachingOptions } from "@pnp/odata";
+import { extractWebUrl, sp } from "@pnp/sp";
 import "@pnp/sp/regional-settings";
-import { IWeb } from '@pnp/sp/webs/types';
-import { arrayToMap, cloneWeb, now, } from '../../Utils';
-import { DeveloperService, DeveloperServiceProp, IDeveloperService } from '../developer';
-import { ServiceContext } from '../IService';
-import { SpfxContext } from '../SpfxContext';
-import { ITimeZone, ITimeZoneService } from './TimeZoneServiceDescriptor';
+import { IWeb } from "@pnp/sp/webs/types";
+import moment from "moment-timezone";
+import { arrayToMap, cloneWeb, now } from "../../Utils";
+import {
+    DeveloperService,
+    DeveloperServiceProp,
+    IDeveloperService,
+} from "../developer";
+import { ServiceContext } from "../IService";
+import { SpfxContext } from "../SpfxContext";
+import { ITimeZone, ITimeZoneService } from "./TimeZoneServiceDescriptor";
 
 interface TimeZoneMapping {
     readonly name: string;
     readonly momentId: string;
     readonly sharepointId: number;
 }
-const timezoneMappings = require('./timezone-mappings.json') as TimeZoneMapping[];
-const timezoneMappingsBySharePointId = arrayToMap(timezoneMappings, tz => tz.sharepointId);
+const timezoneMappings =
+    require("./timezone-mappings.json") as TimeZoneMapping[];
+const timezoneMappingsBySharePointId = arrayToMap(
+    timezoneMappings,
+    (tz) => tz.sharepointId
+);
 
 class TimeZoneResult {
     public Id: number;
@@ -34,8 +42,12 @@ class TimeZone implements ITimeZone {
 
     private readonly _mapping: TimeZoneMapping;
 
-    public get hasMomentMapping(): boolean { return !!this._mapping; }
-    public get momentId(): string { return this._mapping.momentId; }
+    public get hasMomentMapping(): boolean {
+        return !!this._mapping;
+    }
+    public get momentId(): string {
+        return this._mapping.momentId;
+    }
 
     constructor(
         public readonly id: number,
@@ -62,6 +74,10 @@ export class OnlineTimeZoneService implements ITimeZoneService {
         return this._siteTimeZoneCache.get(sp.web.toUrl());
     }
 
+    public get isDifferenceInTimezone(): boolean {
+        return this.siteTimeZone.momentId !== moment.tz.guess();
+    }
+
     public get localTimeZone(): ITimeZone {
         return this._localTimeZone;
     }
@@ -72,7 +88,7 @@ export class OnlineTimeZoneService implements ITimeZoneService {
 
     constructor({
         [DeveloperService]: dev,
-        [SpfxContext]: context
+        [SpfxContext]: context,
     }: ServiceContext<DeveloperServiceProp>) {
         this._dev = dev;
         this._currentWebUrl = context.pageContext.web.absoluteUrl;
@@ -80,17 +96,23 @@ export class OnlineTimeZoneService implements ITimeZoneService {
     }
 
     public async initialize(): Promise<void> {
-        const [
-            timeZoneResults,
-            siteTimeZone
-        ] = await Promise.all([
-            sp.web.regionalSettings.timeZones.usingCaching(this._cacheOptions(sp.web, 'timezones'))(),
-            this._getTimeZone(sp.web)
+        const [timeZoneResults, siteTimeZone] = await Promise.all([
+            sp.web.regionalSettings.timeZones.usingCaching(
+                this._cacheOptions(sp.web, "timezones")
+            )(),
+            this._getTimeZone(sp.web),
         ]);
 
-        this._timeZones = timeZoneResults.map(TimeZone.fromTimeZoneResult).filter(tz => tz.hasMomentMapping);
-        this._timeZonesBySharePointId = arrayToMap(this._timeZones, tz => tz.id);
-        this._localTimeZone = this._timeZones.find(tz => tz.momentId === moment.tz.guess());
+        this._timeZones = timeZoneResults
+            .map(TimeZone.fromTimeZoneResult)
+            .filter((tz) => tz.hasMomentMapping);
+        this._timeZonesBySharePointId = arrayToMap(
+            this._timeZones,
+            (tz) => tz.id
+        );
+        this._localTimeZone = this._timeZones.find(
+            (tz) => tz.momentId === moment.tz.guess()
+        );
 
         this._siteTimeZoneCache.set(sp.web.toUrl(), siteTimeZone);
 
@@ -110,12 +132,16 @@ export class OnlineTimeZoneService implements ITimeZoneService {
     }
 
     private async _getTimeZone(web: IWeb): Promise<TimeZone> {
-        const timeZoneResult = await web.regionalSettings.timeZone.usingCaching(this._cacheOptions(web, 'timezone'))();
+        const timeZoneResult = await web.regionalSettings.timeZone.usingCaching(
+            this._cacheOptions(web, "timezone")
+        )();
         const timeZone = TimeZone.fromTimeZoneResult(timeZoneResult);
 
         const { hasMomentMapping, id, description } = timeZone;
         if (!hasMomentMapping) {
-            console.warn(`Site time zone (${id} - ${description}) cannot be mapped to an IANA time zone for moment library.`);
+            console.warn(
+                `Site time zone (${id} - ${description}) cannot be mapped to an IANA time zone for moment library.`
+            );
         }
 
         return timeZone;
@@ -123,25 +149,26 @@ export class OnlineTimeZoneService implements ITimeZoneService {
 
     private readonly _cacheOptions = (web: IWeb, key: string) => {
         return {
-            expiration: now().add(1, 'day').toDate(),
-            storeName: 'local',
-            key: `${extractWebUrl(web.toUrl()) || this._currentWebUrl}-${key}`
+            expiration: now().add(1, "day").toDate(),
+            storeName: "local",
+            key: `${extractWebUrl(web.toUrl()) || this._currentWebUrl}-${key}`,
         } as ICachingOptions;
-    }
+    };
 
     private readonly _devScripts = {
         timezones: {
             list: () => {
                 console.log(`Listing known timezones`);
 
-                const tzToString = (tz: ITimeZone) => `'${tz.description}' (SPO ID: ${tz.id}, Moment ID: ${tz.momentId})`;
+                const tzToString = (tz: ITimeZone) =>
+                    `'${tz.description}' (SPO ID: ${tz.id}, Moment ID: ${tz.momentId})`;
 
                 this._timeZones.forEach((tz, idx) => {
                     console.log(`${idx} ${tzToString(tz)}`);
                 });
 
                 console.log(`Site time zone: ${tzToString(this.siteTimeZone)}`);
-            }
-        }
+            },
+        },
     };
 }
