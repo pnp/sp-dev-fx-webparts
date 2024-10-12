@@ -40,6 +40,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 //TODO  maybe Formater
                 break;
             case KanbanTaskMamagedPropertyType.percent:
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 return (value?<span>{`${(value as any) * 100}%`} </span>:<span/>);
                 //TODO  maybe better Formater
                 break;
