@@ -20,11 +20,12 @@ module.exports = {
         '@rushstack/security/no-unsafe-regexp': 1,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/adjacent-overload-signatures': 1,
+        '@typescript-eslint/no-unused-expressions': 0,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         //
         // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
         '@typescript-eslint/ban-types': [
-          1,
+          0,
           {
             'extendDefaults': false,
             'types': {
