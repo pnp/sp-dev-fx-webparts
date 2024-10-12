@@ -16,7 +16,7 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -45,6 +45,7 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 
 * [Nick Brown](https://github.com/techienickb)
 
+
 ## Version history
 
 Version|Date|Comments
@@ -54,6 +55,7 @@ Version|Date|Comments
 1.0.2|January 18, 2023|Updated SPFx 1.16.1
 1.0.2|May 15, 2023|Updated SPFx 1.17.2, latest Fluent UI 9
 1.0.4|January 6, 2023|Updated SPFx 1.18.2, latest Fluent UI 9, override to get package builds working
+1.0.5|October 3, 2024|Updated to SPFx 1.20.0, latest Fluent UI 9 (9.54.17)
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)

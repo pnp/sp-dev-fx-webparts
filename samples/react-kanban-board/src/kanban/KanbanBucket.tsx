@@ -17,9 +17,9 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     toggleCompleted?: (taskId: string) => void;
     addTask?: (bucket: string) => void;
 
-    onDragStart: (event: any, taskId: string, bucket: string) => void;
+    onDragStart: (event: React.DragEvent<HTMLDivElement>, taskId: string, bucket: string) => void;
 
-    onDragEnd: (event: any, taskId: string, bucket: string) => void;
+    onDragEnd: (event: React.DragEvent<HTMLDivElement>, taskId: string, bucket: string) => void;
 
 
 

@@ -11,8 +11,8 @@ export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings 
 
     toggleCompleted?: (taskId: string) => void;
     openDetails: (taskId: string) => void;
-    onDragStart: (event:any) => void;
-    onDragEnd: (event:any) => void;
+    onDragStart: (event:React.DragEvent<HTMLDivElement>) => void;
+    onDragEnd: (event:React.DragEvent<HTMLDivElement>) => void;
     isMoving: boolean;
 }
 
