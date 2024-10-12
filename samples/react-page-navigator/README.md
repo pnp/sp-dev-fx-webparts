@@ -37,7 +37,7 @@ Version|Date|Comments
 1.6|August 8, 2022|Add theme provider and bug fixes
 1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
 1.8|May 13, 2023|Fixed issue when heading has a + symbol
-1.9|October 6, 2023|SPFx Upgraded to 1.20.0 and code refactored
+1.9|October 6, 2024|SPFx Upgraded to 1.20.0 and code refactored
 
 ## Minimal Path to Awesome
 
