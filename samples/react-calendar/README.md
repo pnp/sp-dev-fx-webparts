@@ -57,8 +57,8 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg)
+![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -116,6 +116,7 @@ Version|Date|Comments
 1.0.17|October 25, 2022|Fixed issue deleting events (#2693)
 1.0.18|December 29, 2022|Fixed stylelint issue (#4029)| Cleaned up old Type script versions and Upgraded Type script version
 1.0.19|June 28, 2024| added filter by category | fixed the packages.json issues which prevent solution to build successfully.
+1.0.20|October 1, 2024| upgraded to SPFx 1.16.1
 
 ## Minimal Path to Awesome
 
