@@ -3,7 +3,7 @@
   "solution": {
     "name": "Advanced Comments Box",
     "id": "cfa8dbcf-b32d-4de0-a6ba-af486007c2f2",
-    "version": "1.3.0.0",
+    "version": "1.4.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

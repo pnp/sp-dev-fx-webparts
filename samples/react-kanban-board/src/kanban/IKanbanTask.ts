@@ -16,6 +16,7 @@ export interface IKanbanTaskManagedProps {
     name: string;
     displayName?: string;
     type: KanbanTaskMamagedPropertyType;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: string | number | IPersonaProps | IPersonaProps[] | any;
     renderer?: (name: string, value: object, type: KanbanTaskMamagedPropertyType) => JSX.Element;
 }

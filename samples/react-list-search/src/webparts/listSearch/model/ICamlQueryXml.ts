@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface ICamlQueryXml {
   name: string;
   attributes: IViewField | undefined;

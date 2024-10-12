@@ -146,7 +146,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 allowDuplicate: false,
                 principalType: [PrincipalType.SharePoint, PrincipalType.Users, PrincipalType.Security],
                 onPropertyChange: this.onPropertyPaneFieldChanged,
-                context: this.context,
+                context: this.context as any,
                 properties: this.properties,
                 onGetErrorMessage: null,
                 deferredValidationTime: 0,
