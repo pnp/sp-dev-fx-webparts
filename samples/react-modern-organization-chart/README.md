@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 8/7/2020 12:00:00 AM
----
 # Modern Organization Chart
 
 ## Summary
