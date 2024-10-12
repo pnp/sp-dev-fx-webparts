@@ -8,7 +8,7 @@ Now is possible to the user select an image for the background in the properties
 
 
 There is an Azure function available that get AAD user birthdays, this function creates a list on the tenant root site, if it does not exist.
-See the local.settings.json for details on the required application variable located in SyncUsersBirthdaysFunction folder.
+See the `local.settings.json` for details on the required application variable located in SyncUsersBirthdaysFunction folder.
 
 But you can synchronize the Birthdays list with other applications HR Systems, or other sources
 
@@ -88,9 +88,11 @@ Version|Date|Comments
 
 
 ## Features
+
 This project contains sample Birthday web parts built on the SharePoint Framework using React
 and an Azure Function to get user Birthdays from AAD.
 This sample illustrates the following concepts on top of the SharePoint Framework:
+
 - using React for building SharePoint Framework client-side web parts
 - using React components for building Birthday web part
 - using MSGraph API to get data from SharePoint Lists 
