@@ -1,4 +1,4 @@
-import { IColumn } from 'office-ui-fabric-react';
+import { IColumn } from '@fluentui/react';
 import IResult from '../model/IResult';
 import { SharePointType } from '../model/ISharePointFieldTypes';
 
