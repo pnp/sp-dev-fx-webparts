@@ -11,6 +11,8 @@ import { IECBProps } from './IECBProps';
 import { IEmployeeListViewProps } from './IEmployeeListViewProps';
 import { IEmployeeListViewState } from './IEmployeeListViewState';
 
+import { SPHpttClient, SPHttpClientResponse } from "@microsoft/sp-http";
+
 export default class EmployeeListView extends React.Component<IEmployeeListViewProps, IEmployeeListViewState> {
   private items : IListItem[];
 
@@ -103,7 +105,7 @@ export default class EmployeeListView extends React.Component<IEmployeeListViewP
   //   var self: EmployeeListView = this;
   //   const apiUrl = `${this.props.siteUrl}/_api/web/lists/GetByTitle('Employees')/Items?$select=Firstname,Lastname,Street,StreetNo,Salary,EmployeeLocation/Title&$expand=EmployeeLocation`;
   //   this.props.spHttpClient.get(apiUrl, SPHttpClient.configurations.v1)
-  //     .then((response: HttpClientResponse) => {
+  //     .then((response: SPHttpClientResponse) => {
   //       return response.json();
   //     })
   //     .then((response: { value: IListItem[] }): void => {    
