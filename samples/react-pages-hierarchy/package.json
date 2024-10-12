@@ -1,6 +1,6 @@
 {
   "name": "react-pages-hierarchy",
-  "version": "1.0.2",
+  "version": "1.8.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
