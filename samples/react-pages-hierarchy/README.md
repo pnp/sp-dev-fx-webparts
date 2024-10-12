@@ -40,6 +40,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 * [Nick Brown](https://github.com/techienickb) 
 * [SlowRobot](https://github.com/SlowRobot)
 * [ruslan-s](https://github.com/ruslan-s)
+* [Tobias Maestrini](https://github.com/tmaestrini)
 
 ## Version history
 
@@ -52,6 +53,7 @@ Version|Date|Comments
 1.5|March 29, 2023|Added support for non-English SitePages library paths
 1.6|May 11,2023|Uses treeFrom/expandTo web part properties
 1.7|January 08|Updated to SPFX 1.18.2 + Node 18
+1.8|October 13, 2024|Updated to SPFX 1.20.0
 
 ## Minimal path to awesome
 

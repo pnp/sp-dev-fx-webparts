@@ -58,7 +58,12 @@
           "gitHubAccount": "SlowRobot",
           "name": "SlowRobot",
           "pictureUrl": "https://github.com/SlowRobot.png"
-          }
+      },
+      {
+        "gitHubAccount": "tmaestrini",
+        "name": "Tobias Maestrini",
+        "pictureUrl": "https://github.com/tmaestrini.png"
+      }
     ],
     "references": [
       {
