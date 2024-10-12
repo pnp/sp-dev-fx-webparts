@@ -1,20 +1,21 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
-    "version": "2.0",
-    "bundles": {
-        "rhythm-of-business-web-parts": {
-            "components": [
-                {
-                    "entrypoint": "./lib/webparts/rhythmOfBusinessCalendar/RhythmOfBusinessCalendarWebPart.js",
-                    "manifest": "./src/webparts/rhythmOfBusinessCalendar/RhythmOfBusinessCalendarWebPart.manifest.json"
-                }
-            ]
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "rhythm-of-business-web-parts": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rhythmOfBusinessCalendar/RhythmOfBusinessCalendarWebPart.js",
+          "manifest": "./src/webparts/rhythmOfBusinessCalendar/RhythmOfBusinessCalendarWebPart.manifest.json"
         }
-    },
-    "externals": { },
-    "localizedResources": {
-        "CommonStrings": "lib/common/components/loc/{locale}.js",
-        "ComponentStrings": "lib/components/loc/{locale}.js",
-        "RhythmOfBusinessCalendarWebPartStrings": "lib/webparts/rhythmOfBusinessCalendar/loc/{locale}.js"
+      ]
     }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CommonStrings": "lib/common/components/loc/{locale}.js",
+    "ComponentStrings": "lib/components/loc/{locale}.js",
+    "RhythmOfBusinessCalendarWebPartStrings": "lib/webparts/rhythmOfBusinessCalendar/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
 }

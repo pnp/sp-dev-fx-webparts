@@ -1,52 +1,138 @@
-import { PrincipalType } from '@pnp/sp';
-import { Guid } from '@microsoft/sp-core-library';
-import React from 'react';
-import { FocusZone, format, ICommandBarItemProps, IDropdownOption, Label, Link, MessageBar, MessageBarType, Stack, Text } from "@fluentui/react";
-import { Entity, ErrorHandler, humanizeDuration, mapToArray, now, User, ValidationRule } from 'common';
-import { EntityPanelBase, IEntityPanelProps, IDataPanelBaseState, ResponsiveGrid, GridRow, GridCol, LiveText, LiveUpdate, IDataPanelBase, LiveToggle, LiveUserPicker, LiveTextField, LiveTimePicker, LiveDatePicker, Validation, ITransformer, LiveMultiselectDropdown, LiveDropdown } from "common/components";
-import { Event, Refiner, RefinerValue, RecurPattern, EventModerationStatus, Approvers, humanizeRecurrencePattern } from "model";
-import { withServices, ServicesProp, EventsServiceProp, EventsService, ConfigurationServiceProp, ConfigurationService, DirectoryServiceProp, DirectoryService } from 'services';
-import { EventOverview } from '../events';
-import { RefinerValuePill } from '../refiners';
-import { ListItemTechnicals } from '../shared';
-import { PatternChoiceGroup, DailyEditor, WeeklyEditor, MonthlyEditor, YearlyEditor, UntilEditor } from '../recurrence';
-import { IEventCommands } from './IEventCommands';
+import { PrincipalType } from "@pnp/sp";
+import { Guid } from "@microsoft/sp-core-library";
+import React from "react";
+import {
+    FocusZone,
+    format,
+    ICommandBarItemProps,
+    IDropdownOption,
+    Label,
+    Link,
+    MessageBar,
+    MessageBarType,
+    Stack,
+    Text,
+} from "@fluentui/react";
+import {
+    Entity,
+    ErrorHandler,
+    humanizeDuration,
+    mapToArray,
+    now,
+    User,
+    ValidationRule,
+} from "common";
+import {
+    EntityPanelBase,
+    IEntityPanelProps,
+    IDataPanelBaseState,
+    ResponsiveGrid,
+    GridRow,
+    GridCol,
+    LiveText,
+    LiveUpdate,
+    IDataPanelBase,
+    LiveToggle,
+    LiveUserPicker,
+    LiveTextField,
+    LiveTimePicker,
+    LiveDatePicker,
+    Validation,
+    ITransformer,
+    LiveMultiselectDropdown,
+    LiveDropdown,
+    LiveMultiTextField,
+} from "common/components";
+import {
+    Event,
+    Refiner,
+    RefinerValue,
+    RecurPattern,
+    EventModerationStatus,
+    Approvers,
+    humanizeRecurrencePattern,
+} from "model";
+import {
+    withServices,
+    ServicesProp,
+    EventsServiceProp,
+    EventsService,
+    ConfigurationServiceProp,
+    ConfigurationService,
+    DirectoryServiceProp,
+    DirectoryService,
+    TimeZoneService,
+    TimeZoneServiceProp
+} from "services";
+import { EventOverview } from "../events";
+import { RefinerValuePill } from "../refiners";
+import { ListItemTechnicals } from "../shared";
+import {
+    PatternChoiceGroup,
+    DailyEditor,
+    WeeklyEditor,
+    MonthlyEditor,
+    YearlyEditor,
+    UntilEditor,
+} from "../recurrence";
+import { IEventCommands } from "./IEventCommands";
 
-import { PersistConcurrencyFailureMessage, Validation as validationStrings, EventPanel as strings } from "ComponentStrings";
+import {
+    PersistConcurrencyFailureMessage,
+    Validation as validationStrings,
+    EventPanel as strings,
+} from "ComponentStrings";
 
-import styles from './EventPanel.module.scss';
+import styles from "./EventPanel.module.scss";
+import { renderSanitizedHTML } from "common/components/LiveUtils";
+import moment from "moment-timezone";
 
 export class RefinerValueValidationRule extends ValidationRule<Event> {
-    constructor(
-        private _refiner: Refiner
-    ) {
-        super((e: Event) => this._isValid(e), validationStrings.Refiners.Required);
+    constructor(private _refiner: Refiner) {
+        super(
+            (e: Event) => this._isValid(e),
+            validationStrings.Refiners.Required
+        );
     }
 
     private _isValid({ refinerValues }: Event): boolean {
-        return !this._refiner.required || refinerValues.get().some(v => v.refiner.get() === this._refiner);
+        return (
+            !this._refiner.required ||
+            refinerValues.get().some((v) => v.refiner.get() === this._refiner)
+        );
     }
 }
 
-export interface IEventPanel extends IDataPanelBase<Event> {
-}
+export interface IEventPanel extends IDataPanelBase<Event> {}
 
 interface IOwnProps {
     commands: IEventCommands;
+    timeZoneDiff?: any;
 }
-type IProps = IOwnProps & IEntityPanelProps<Event> & ServicesProp<DirectoryServiceProp & ConfigurationServiceProp & EventsServiceProp>;
+type IProps = IOwnProps &
+    IEntityPanelProps<Event> &
+    ServicesProp<
+        DirectoryServiceProp & ConfigurationServiceProp & EventsServiceProp & TimeZoneServiceProp
+    >;
 
 interface IOwnState {
     refinerValueOptionsByRefiner: Map<Refiner, IDropdownOption[]>;
     refiners: readonly Refiner[];
+    shiftFocus: boolean;
 }
 type IState = IOwnState & IDataPanelBaseState<Event>;
 
-class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEventPanel {
-    private readonly _refinerValueValidationRulesByRefiner = new Map<Refiner, RefinerValueValidationRule>();
+class EventPanel
+    extends EntityPanelBase<Event, IProps, IState>
+    implements IEventPanel
+{
+    private readonly _refinerValueValidationRulesByRefiner = new Map<
+        Refiner,
+        RefinerValueValidationRule
+    >();
 
     protected get title() {
-        return this.entity?.displayName || (this.isNew ? strings.NewEvent : '');
+        return this.entity?.displayName || (this.isNew ? strings.NewEvent : "");
     }
 
     protected resetState(): IState {
@@ -56,13 +142,17 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
         return {
             ...super.resetState(),
             refinerValueOptionsByRefiner: new Map(),
-            refiners: []
+            refiners: [],
+            shiftFocus: false,
         };
     }
 
     protected validate(): boolean {
         const rules = mapToArray(this._refinerValueValidationRulesByRefiner);
-        return super.validate() && rules.every(rule => rule.validate(this.entity));
+        return (
+            super.validate() &&
+            rules.every((rule) => rule.validate(this.entity))
+        );
     }
 
     public componentShouldRender() {
@@ -71,8 +161,14 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
         this._buildRefinerValueValidationRules();
     }
 
+    public shiftFocusToNextEle(shoudShift: boolean) {
+        this.setState({ shiftFocus: shoudShift });
+    }
+
     private async _buildRefinerValueOptions() {
-        const { [EventsService]: { refinersAsync } } = this.props.services;
+        const {
+            [EventsService]: { refinersAsync },
+        } = this.props.services;
 
         await refinersAsync.promise;
 
@@ -84,7 +180,10 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
             return { key, text, data: value } as IDropdownOption;
         };
 
-        const refinerValueOptionsByRefiner = new Map<Refiner, IDropdownOption[]>();
+        const refinerValueOptionsByRefiner = new Map<
+            Refiner,
+            IDropdownOption[]
+        >();
         for (const refiner of refiners) {
             const { required, allowMultiselect, blankValue } = refiner;
             const options: IDropdownOption[] = [];
@@ -93,7 +192,11 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                 options.push(refinerValueToDropdownOption(blankValue));
             }
 
-            options.push(...refiner.values.filter(Entity.NotDeletedFilter).map(refinerValueToDropdownOption));
+            options.push(
+                ...refiner.values
+                    .filter(Entity.NotDeletedFilter)
+                    .map(refinerValueToDropdownOption)
+            );
 
             refinerValueOptionsByRefiner.set(refiner, options);
         }
@@ -102,7 +205,9 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
     }
 
     private async _buildRefinerValueValidationRules() {
-        const { [EventsService]: { refinersAsync } } = this.props.services;
+        const {
+            [EventsService]: { refinersAsync },
+        } = this.props.services;
 
         await refinersAsync.promise;
 
@@ -119,32 +224,51 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
     protected async persistChangesCore() {
         const {
             [DirectoryService]: { currentUserIsSiteAdmin, currentUser },
-            [ConfigurationService]: { active: { useApprovals } },
-            [EventsService]: events
+            [ConfigurationService]: {
+                active: { useApprovals },
+            },
+            [EventsService]: events,
+            [TimeZoneService]:{siteTimeZone}
         } = this.props.services;
-        const { isApproved, isRejected, isDeleted, isConfidential } = this.entity;
+        const { isApproved, isRejected, isDeleted, isConfidential } =
+            this.entity;
 
-        const userCanApprove = currentUserIsSiteAdmin || this._currentUserIsAnApprover();
+        const userCanApprove =
+            currentUserIsSiteAdmin || this._currentUserIsAnApprover();
 
         try {
             if (isRejected && !userCanApprove) {
                 this.entity.moderationStatus = EventModerationStatus.Pending;
-            }
-            else if (!isApproved && (!useApprovals || userCanApprove)) {
+            } else if (!isApproved && (!useApprovals || userCanApprove)) {
                 this.entity.moderationStatus = EventModerationStatus.Approved;
                 this.entity.moderator = currentUser;
                 this.entity.moderationTimestamp = now();
             }
 
             if (this.entity.hasRecurrenceChanges() && !isDeleted) {
-                this.entity.exceptions.forEach(e => e.delete());
+                this.entity.exceptions.forEach((e) => e.delete());
                 this.entity.recurrenceUID = Guid.newGuid();
             }
 
             if (!isConfidential) {
                 this.entity.restrictedToAccounts = [];
             }
+            console.log(siteTimeZone);
+            const originalMomentStart = moment(this.entity.start);
+            const originalMomentEnd = moment(this.entity.end);
+            
+            //Converting event time to site timezone from local time
+            const convertedMoment = originalMomentStart && originalMomentStart.clone().tz(siteTimeZone.momentId,true);
+            const convertedMomentend = originalMomentEnd && originalMomentEnd.clone().tz(siteTimeZone.momentId,true);
+            
 
+            this.entity.start = convertedMoment;
+            this.entity.end = convertedMomentend;
+            if (this.entity.recurrence && this.entity.recurrence.until && this.entity.recurrence.until.date) {
+                const originalRecurrance = moment(this.entity.recurrence.until.date);
+                const convertedRecurrance = originalRecurrance && originalRecurrance.clone().tz(siteTimeZone.momentId,true);
+                this.entity.recurrence.until.date = convertedRecurrance;
+            }
             events.track(this.entity);
             await events.persist();
         } catch (e) {
@@ -161,165 +285,370 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
     private _renderModerationStatus() {
         const {
             [DirectoryService]: { currentUserIsSiteAdmin, currentUser },
-            [ConfigurationService]: { active: { useApprovals } }
+            [ConfigurationService]: {
+                active: { useApprovals },
+            },
         } = this.props.services;
-        const { creator, isApproved, isPendingApproval, isRejected, moderator, moderationMessage, moderationTimestamp } = this.entity
+        const {
+            creator,
+            isApproved,
+            isPendingApproval,
+            isRejected,
+            moderator,
+            moderationMessage,
+            moderationTimestamp,
+        } = this.entity;
 
         if (!useApprovals) return <></>;
 
-        const userCanApprove = currentUserIsSiteAdmin || this._currentUserIsAnApprover();
+        const userCanApprove =
+            currentUserIsSiteAdmin || this._currentUserIsAnApprover();
         const userIsCreator = this.isNew || User.equal(creator, currentUser);
 
-        return <>
-            {this.inDisplayMode && isPendingApproval && <>
-                <MessageBar messageBarType={MessageBarType.warning} data-is-focusable>
-                    {strings.Moderation.EventIsPendingApproval}
-                </MessageBar>
-            </>}
-            {this.inEditMode && isPendingApproval && !userCanApprove && <>
-                <MessageBar messageBarType={MessageBarType.warning} data-is-focusable>
-                    {strings.Moderation.EventWillNeedApproval}
-                </MessageBar>
-            </>}
-            {this.inEditMode && isPendingApproval && userCanApprove && <>
-                <MessageBar messageBarType={MessageBarType.success} data-is-focusable>
-                    {strings.Moderation.EventWillBeAutoApproved}
-                </MessageBar>
-            </>}
-            {isApproved && (userIsCreator || userCanApprove) && <>
-                <MessageBar messageBarType={MessageBarType.success} data-is-focusable>
-                    {format(strings.Moderation.EventIsApproved, moderator.title, moderationTimestamp.format('LLL'))}
-                    {moderationMessage && <>
-                        <Label>{strings.Moderation.ModeratorMessage}</Label>
-                        <Text>{moderationMessage}</Text>
-                    </>}
-                </MessageBar>
-            </>}
-            {isRejected && (userIsCreator || userCanApprove) && <>
-                <MessageBar messageBarType={MessageBarType.severeWarning} data-is-focusable>
-                    {format(strings.Moderation.EventIsRejected, moderator.title, moderationTimestamp.format('LLL'))}
-                    {moderationMessage && <>
-                        <Label>{strings.Moderation.ModeratorMessage}</Label>
-                        <Text>{moderationMessage}</Text>
-                    </>}
-                </MessageBar>
-            </>}
-        </>;
+        return (
+            <>
+                {this.inDisplayMode && isPendingApproval && (
+                    <>
+                        <MessageBar
+                            messageBarType={MessageBarType.warning}
+                            data-is-focusable
+                        >
+                            {strings.Moderation.EventIsPendingApproval}
+                        </MessageBar>
+                    </>
+                )}
+                {this.inEditMode && isPendingApproval && !userCanApprove && (
+                    <>
+                        <MessageBar
+                            messageBarType={MessageBarType.warning}
+                            data-is-focusable
+                        >
+                            {strings.Moderation.EventWillNeedApproval}
+                        </MessageBar>
+                    </>
+                )}
+                {this.inEditMode && isPendingApproval && userCanApprove && (
+                    <>
+                        <MessageBar
+                            messageBarType={MessageBarType.success}
+                            data-is-focusable
+                        >
+                            {strings.Moderation.EventWillBeAutoApproved}
+                        </MessageBar>
+                    </>
+                )}
+                {isApproved && (userIsCreator || userCanApprove) && (
+                    <>
+                        <MessageBar
+                            messageBarType={MessageBarType.success}
+                            data-is-focusable
+                        >
+                            {format(
+                                strings.Moderation.EventIsApproved,
+                                moderator.title,
+                                moderationTimestamp.format("LLL")
+                            )}
+                            {moderationMessage && (
+                                <>
+                                    <Label>
+                                        {strings.Moderation.ModeratorMessage}
+                                    </Label>
+                                    <Text>{moderationMessage}</Text>
+                                </>
+                            )}
+                        </MessageBar>
+                    </>
+                )}
+                {isRejected && (userIsCreator || userCanApprove) && (
+                    <>
+                        <MessageBar
+                            messageBarType={MessageBarType.severeWarning}
+                            data-is-focusable
+                        >
+                            {format(
+                                strings.Moderation.EventIsRejected,
+                                moderator.title,
+                                moderationTimestamp.format("LLL")
+                            )}
+                            {moderationMessage && (
+                                <>
+                                    <Label>
+                                        {strings.Moderation.ModeratorMessage}
+                                    </Label>
+                                    <Text>{moderationMessage}</Text>
+                                </>
+                            )}
+                        </MessageBar>
+                    </>
+                )}
+            </>
+        );
     }
 
     protected renderDisplayContent(): JSX.Element {
-        const { [ConfigurationService]: { active: config } } = this.props.services;
+        const {
+            [ConfigurationService]: { active: config },
+        } = this.props.services;
         const { refiners } = this.state;
         const event = this.entity;
         const liveProps = {
-            entity: event
+            entity: event,
         };
-        const { isAllDay, start, isConfidential, isRecurring, isSeriesMaster, isSeriesException, seriesMaster } = event;
-        const isConfidentialPrevious = event.hasPrevious && event.previousValue<boolean>('isConfidential');
-        const isConfidentialSnapshot = event.hasSnapshot && event.snapshotValue<boolean>('isConfidential');
-        const confidentialFieldEnabled = (isConfidential || isConfidentialSnapshot || isConfidentialPrevious || config.allowConfidentialEvents);
+        const {
+            isAllDay,
+            isConfidential,
+            isRecurring,
+            isSeriesMaster,
+            isSeriesException,
+            seriesMaster,
+        } = event;
+        const isConfidentialPrevious =
+            event.hasPrevious && event.previousValue<boolean>("isConfidential");
+        const isConfidentialSnapshot =
+            event.hasSnapshot && event.snapshotValue<boolean>("isConfidential");
+        const confidentialFieldEnabled =
+            isConfidential ||
+            isConfidentialSnapshot ||
+            isConfidentialPrevious ||
+            config.allowConfidentialEvents;
 
         return (
             <FocusZone>
                 <ResponsiveGrid className={styles.content}>
                     <GridRow>
                         <GridCol sm={12}>
-                            <LiveText label={strings.Field_Title.Label} {...liveProps} propertyName='title'>
-                                {val => <Text data-is-focusable>{val || "-"}</Text>}
+                            <LiveText
+                                label={strings.Field_Title.Label}
+                                {...liveProps}
+                                propertyName="title"
+                            >
+                                {(val) => (
+                                    <Text data-is-focusable>{val || "-"}</Text>
+                                )}
                             </LiveText>
                         </GridCol>
                     </GridRow>
                     <GridRow>
-                        {!isSeriesMaster &&
+                        {!isSeriesMaster && (
                             <GridCol sm={7} lg={5}>
-                                <LiveText label={strings.Field_StartDate.Label} {...liveProps} propertyName='start'>
-                                    {start => <Text data-is-focusable>{start.format('dddd, MMMM DD, YYYY')}</Text>}
+                                <LiveText
+                                    label={strings.Field_StartDate.Label}
+                                    {...liveProps}
+                                    propertyName="start"
+                                >
+                                    {(start) => (
+                                        <Text data-is-focusable>
+                                            {start.format(
+                                                "dddd, MMMM DD, YYYY"
+                                            )}
+                                        </Text>
+                                    )}
                                 </LiveText>
                             </GridCol>
-                        }
+                        )}
                         <GridCol sm={5} lg={6}>
-                            <LiveText label={strings.Field_StartTime.Label} {...liveProps} propertyName='start'>
+                            <LiveText
+                                label={strings.Field_StartTime.Label}
+                                {...liveProps}
+                                propertyName="start"
+                            >
                                 {(start, state) => {
                                     let isAllDay = false;
                                     switch (state) {
-                                        case 'current': isAllDay = this.entity.currentValue<boolean>('isAllDay'); break;
-                                        case 'snapshot': isAllDay = this.entity.snapshotValue<boolean>('isAllDay'); break;
-                                        case 'previous': isAllDay = this.entity.previousValue<boolean>('isAllDay'); break;
+                                        case "current":
+                                            isAllDay =
+                                                this.entity.currentValue<boolean>(
+                                                    "isAllDay"
+                                                );
+                                            break;
+                                        case "snapshot":
+                                            isAllDay =
+                                                this.entity.snapshotValue<boolean>(
+                                                    "isAllDay"
+                                                );
+                                            break;
+                                        case "previous":
+                                            isAllDay =
+                                                this.entity.previousValue<boolean>(
+                                                    "isAllDay"
+                                                );
+                                            break;
                                     }
-                                    return <Text data-is-focusable>{isAllDay ? strings.AllDay : start.format('LT')}</Text>;
+                                    return (
+                                        <Text data-is-focusable>
+                                            {isAllDay
+                                                ? strings.AllDay
+                                                : start.format("LT")}
+                                        </Text>
+                                    );
                                 }}
                             </LiveText>
                         </GridCol>
-                        {!isSeriesMaster &&
+                        {!isSeriesMaster && (
                             <GridCol sm={7} lg={5}>
-                                <LiveText label={strings.Field_EndDate.Label} {...liveProps} propertyName='end'>
-                                    {end => <Text data-is-focusable>{end.format('dddd, MMMM DD, YYYY')}</Text>}
+                                <LiveText
+                                    label={strings.Field_EndDate.Label}
+                                    {...liveProps}
+                                    propertyName="end"
+                                >
+                                    {(end) => (
+                                        <Text data-is-focusable>
+                                            {end.format("dddd, MMMM DD, YYYY")}
+                                        </Text>
+                                    )}
                                 </LiveText>
                             </GridCol>
-                        }
+                        )}
                         <GridCol sm={5} lg={6}>
-                            {!isAllDay &&
-                                <LiveText label={strings.Field_EndTime.Label} {...liveProps} propertyName='end'>
+                            {!isAllDay && (
+                                <LiveText
+                                    label={strings.Field_EndTime.Label}
+                                    {...liveProps}
+                                    propertyName="end"
+                                >
                                     {(end, state) => {
                                         let isAllDay = false;
                                         switch (state) {
-                                            case 'current': isAllDay = this.entity.currentValue<boolean>('isAllDay'); break;
-                                            case 'snapshot': isAllDay = this.entity.snapshotValue<boolean>('isAllDay'); break;
-                                            case 'previous': isAllDay = this.entity.previousValue<boolean>('isAllDay'); break;
+                                            case "current":
+                                                isAllDay =
+                                                    this.entity.currentValue<boolean>(
+                                                        "isAllDay"
+                                                    );
+                                                break;
+                                            case "snapshot":
+                                                isAllDay =
+                                                    this.entity.snapshotValue<boolean>(
+                                                        "isAllDay"
+                                                    );
+                                                break;
+                                            case "previous":
+                                                isAllDay =
+                                                    this.entity.previousValue<boolean>(
+                                                        "isAllDay"
+                                                    );
+                                                break;
                                         }
-                                        return <Text data-is-focusable>{isAllDay ? strings.AllDay : end.format('LT')}</Text>;
+                                        return (
+                                            <Text data-is-focusable>
+                                                {isAllDay
+                                                    ? strings.AllDay
+                                                    : end.format("LT")}
+                                            </Text>
+                                        );
                                     }}
                                 </LiveText>
-                            }
+                            )}
                         </GridCol>
                     </GridRow>
-                    {isRecurring &&
+                    {isRecurring && (
                         <GridRow>
                             <GridCol>
-                                <LiveText label={strings.Field_Recurring.Label} {...liveProps} propertyName='recurrence'>
-                                    {recurrence => <Text data-is-focusable>{humanizeRecurrencePattern(start, recurrence)}</Text>}
+                                <LiveText
+                                    label={strings.Field_Recurring.Label}
+                                    {...liveProps}
+                                    propertyName="recurrence"
+                                >
+                                    {(recurrence) => (
+                                        <Text data-is-focusable>
+                                            {humanizeRecurrencePattern(
+                                                event.getSeriesMaster().start,
+                                                recurrence
+                                            )}
+                                        </Text>
+                                    )}
                                 </LiveText>
                             </GridCol>
                         </GridRow>
-                    }
+                    )}
                     <GridRow>
                         <GridCol sm={12}>
-                            <LiveText label={strings.Field_Location.Label} {...liveProps} propertyName='location'>
-                                {val => <Text data-is-focusable>{val || "-"}</Text>}
+                            <LiveText
+                                label={strings.Field_Location.Label}
+                                {...liveProps}
+                                propertyName="location"
+                            >
+                                {(val) => (
+                                    <Text data-is-focusable>{val || "-"}</Text>
+                                )}
                             </LiveText>
                         </GridCol>
                     </GridRow>
                     <GridRow>
                         <GridCol sm={12}>
-                            <LiveText label={strings.Field_Description.Label} {...liveProps} propertyName='description'>
-                                {val => <Text data-is-focusable>{val || "-"}</Text>}
+                            <LiveText
+                                label={strings.Field_Description.Label}
+                                {...liveProps}
+                                propertyName="description"
+                            >
+                                {(val) => (
+                                    <p
+                                        data-is-focusable
+                                        dangerouslySetInnerHTML={{
+                                            __html: renderSanitizedHTML(val),
+                                        }}
+                                    />
+                                )}
                             </LiveText>
                         </GridCol>
                     </GridRow>
                     <GridRow>
                         <GridCol sm={12}>
-                            <LiveText label={strings.Field_Contacts.Label} {...liveProps} propertyName='contacts' tooltip={strings.Field_Contacts.Tooltip}>
-                                {val => <Text data-is-focusable>{val.map(({ title }) => title).join(', ') || "-"}</Text>}
+                            <LiveText
+                                label={strings.Field_Contacts.Label}
+                                {...liveProps}
+                                propertyName="contacts"
+                                tooltip={strings.Field_Contacts.Tooltip}
+                            >
+                                {(val) => (
+                                    <Text data-is-focusable>
+                                        {val
+                                            .map(({ title }) => title)
+                                            .join(", ") || "-"}
+                                    </Text>
+                                )}
                             </LiveText>
                         </GridCol>
                     </GridRow>
                     <GridRow>
-                        {refiners.map(refiner => {
+                        {refiners.map((refiner) => {
                             const transformer = {
-                                transform: (values: RefinerValue[]) => values.filter(v => v.refiner.get() === refiner),
-                                reverse: (values: RefinerValue[]) => values
+                                transform: (values: RefinerValue[]) =>
+                                    values.filter(
+                                        (v) => v.refiner.get() === refiner
+                                    ),
+                                reverse: (values: RefinerValue[]) => values,
                             };
 
                             return (
-                                <GridCol key={refiner.key} sm={12} md={6} lg={4}>
-                                    <LiveText label={refiner.displayName} {...liveProps} propertyName='refinerValues' transformer={transformer}>
-                                        {val =>
-                                            <Stack horizontal wrap verticalAlign="center" tokens={{ childrenGap: 6 }}>
-                                                {val.map(refinerValue =>
-                                                    <RefinerValuePill key={refinerValue.key} refinerValue={refinerValue} />
-                                                )}
+                                <GridCol
+                                    key={refiner.key}
+                                    sm={12}
+                                    md={6}
+                                    lg={4}
+                                >
+                                    <LiveText
+                                        label={refiner.displayName}
+                                        {...liveProps}
+                                        propertyName="refinerValues"
+                                        transformer={transformer}
+                                    >
+                                        {(val) => (
+                                            <Stack
+                                                horizontal
+                                                wrap
+                                                verticalAlign="center"
+                                                tokens={{ childrenGap: 6 }}
+                                            >
+                                                {val.map((refinerValue) => (
+                                                    <RefinerValuePill
+                                                        key={refinerValue.key}
+                                                        refinerValue={
+                                                            refinerValue
+                                                        }
+                                                    />
+                                                ))}
                                             </Stack>
-                                        }
+                                        )}
                                     </LiveText>
                                 </GridCol>
                             );
@@ -330,25 +659,59 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                             {this._renderModerationStatus()}
                         </GridCol>
                     </GridRow>
-                    {confidentialFieldEnabled &&
+                    {confidentialFieldEnabled && (
                         <GridRow>
                             <GridCol sm={3}>
-                                <LiveText label={strings.Field_Confidential.Label} {...liveProps} propertyName='isConfidential' tooltip={strings.Field_Confidential.Tooltip}>
-                                    {val => <Text data-is-focusable>{val ? strings.Field_Confidential.OnText : strings.Field_Confidential.OffText}</Text>}
+                                <LiveText
+                                    label={strings.Field_Confidential.Label}
+                                    {...liveProps}
+                                    propertyName="isConfidential"
+                                    tooltip={strings.Field_Confidential.Tooltip}
+                                >
+                                    {(val) => (
+                                        <Text data-is-focusable>
+                                            {val
+                                                ? strings.Field_Confidential
+                                                      .OnText
+                                                : strings.Field_Confidential
+                                                      .OffText}
+                                        </Text>
+                                    )}
                                 </LiveText>
                             </GridCol>
                             <GridCol sm={9}>
-                                {isConfidential &&
-                                    <LiveText label={strings.Field_RestrictedToAccounts_Display.Label} {...liveProps} propertyName='restrictedToAccounts'>
-                                        {val => <Text data-is-focusable>{val.map(({ title }) => title).join(', ') || "-"}</Text>}
+                                {isConfidential && (
+                                    <LiveText
+                                        label={
+                                            strings
+                                                .Field_RestrictedToAccounts_Display
+                                                .Label
+                                        }
+                                        {...liveProps}
+                                        propertyName="restrictedToAccounts"
+                                    >
+                                        {(val) => (
+                                            <Text data-is-focusable>
+                                                {val
+                                                    .map(({ title }) => title)
+                                                    .join(", ") || "-"}
+                                            </Text>
+                                        )}
                                     </LiveText>
-                                }
+                                )}
                             </GridCol>
                         </GridRow>
-                    }
+                    )}
                     <GridRow>
                         <GridCol sm={12}>
-                            <ListItemTechnicals entity={(this.isNew && isSeriesException && seriesMaster.get()) || event} />
+                            <ListItemTechnicals
+                                entity={
+                                    (this.isNew &&
+                                        isSeriesException &&
+                                        seriesMaster.get()) ||
+                                    event
+                                }
+                            />
                         </GridCol>
                     </GridRow>
                 </ResponsiveGrid>
@@ -357,17 +720,39 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
     }
 
     protected renderEditContent(): JSX.Element {
-        const { [ConfigurationService]: { active: config } } = this.props.services;
-        const { refiners, refinerValueOptionsByRefiner, showValidationFeedback } = this.state;
+        const {
+            [ConfigurationService]: { active: config },
+            [TimeZoneService]:{siteTimeZone}
+        } = this.props.services;
+        const {
+            refiners,
+            refinerValueOptionsByRefiner,
+            showValidationFeedback,
+        } = this.state;
         const event = this.entity;
-        const { isAllDay, start, isConfidential, isRecurring, isSeriesException, recurrence, recurrenceExceptionInstanceDate } = event;
-        const isConfidentialPrevious = event.hasPrevious && event.previousValue<boolean>('isConfidential');
-        const isConfidentialSnapshot = event.hasSnapshot && event.snapshotValue<boolean>('isConfidential');
-        const confidentialFieldEnabled = (isConfidential || isConfidentialSnapshot || isConfidentialPrevious || config.allowConfidentialEvents);
+        const {
+            isAllDay,
+            start,
+            isConfidential,
+            isRecurring,
+            isSeriesException,
+            recurrence,
+            recurrenceExceptionInstanceDate,
+        } = event;
+        const isConfidentialPrevious =
+            event.hasPrevious && event.previousValue<boolean>("isConfidential");
+        const isConfidentialSnapshot =
+            event.hasSnapshot && event.snapshotValue<boolean>("isConfidential");
+        const confidentialFieldEnabled =
+            isConfidential ||
+            isConfidentialSnapshot ||
+            isConfidentialPrevious ||
+            config.allowConfidentialEvents;
         const liveProps = {
             entity: event,
             showValidationFeedback,
-            updateField: this.updateField
+            updateField: this.updateField,
+            siteTimeZoneId:siteTimeZone.momentId,
         };
 
         return (
@@ -377,7 +762,7 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                         <LiveTextField
                             {...liveProps}
                             label={strings.Field_Title.Label}
-                            propertyName='title'
+                            propertyName="title"
                             required
                             rules={Event.TitleValidations}
                         />
@@ -387,23 +772,25 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                     <GridCol sm={12}>
                         <ResponsiveGrid>
                             <GridRow>
-                                {(!isRecurring || isSeriesException) &&
+                                {(!isRecurring || isSeriesException) && (
                                     <GridCol sm={12} lg={4}>
                                         <LiveDatePicker
                                             {...liveProps}
-                                            label={strings.Field_StartDate.Label}
-                                            propertyName='startDate'
+                                            label={
+                                                strings.Field_StartDate.Label
+                                            }
+                                            propertyName="startDate"
                                             rules={Event.StartDateValidations}
                                             required
                                             allowTextInput
                                         />
                                     </GridCol>
-                                }
+                                )}
                                 <GridCol sm={8} lg={5}>
                                     <LiveTimePicker
                                         {...liveProps}
                                         label={strings.Field_StartTime.Label}
-                                        propertyName='startTime'
+                                        propertyName="startTime"
                                         required
                                         disabled={isAllDay}
                                     />
@@ -412,55 +799,72 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                                     <LiveToggle
                                         {...liveProps}
                                         label={strings.Field_AllDayEvent.Label}
-                                        onText={strings.Field_AllDayEvent.OnText}
-                                        offText={strings.Field_AllDayEvent.OffText}
-                                        propertyName='isAllDay'
+                                        onText={
+                                            strings.Field_AllDayEvent.OnText
+                                        }
+                                        offText={
+                                            strings.Field_AllDayEvent.OffText
+                                        }
+                                        propertyName="isAllDay"
                                     />
                                 </GridCol>
                             </GridRow>
                             <GridRow>
-                                {(!isRecurring || isSeriesException) &&
+                                {(!isRecurring || isSeriesException) && (
                                     <GridCol sm={12} lg={4}>
                                         <LiveDatePicker
                                             {...liveProps}
                                             label={strings.Field_EndDate.Label}
-                                            propertyName='endDate'
+                                            propertyName="endDate"
                                             rules={Event.EndDateValidations}
                                             required
                                             allowTextInput
                                         />
                                     </GridCol>
-                                }
+                                )}
                                 <GridCol sm={8} lg={5}>
                                     <LiveTimePicker
                                         {...liveProps}
                                         label={strings.Field_EndTime.Label}
-                                        propertyName='endTime'
+                                        propertyName="endTime"
                                         required
                                         disabled={isAllDay}
                                     />
                                 </GridCol>
                                 <GridCol sm={4} lg={3}>
-                                    {!isAllDay && <>
-                                        <Label>Duration</Label>
-                                        <Text>{humanizeDuration(this.entity.duration)}</Text>
-                                    </>}
+                                    {!isAllDay && (
+                                        <>
+                                            <Label>Duration</Label>
+                                            <Text>
+                                                {humanizeDuration(
+                                                    this.entity.duration
+                                                )}
+                                            </Text>
+                                        </>
+                                    )}
                                 </GridCol>
                             </GridRow>
                         </ResponsiveGrid>
                     </GridCol>
                 </GridRow>
-                {isSeriesException &&
+                {isSeriesException && (
                     <GridRow>
                         <GridCol>
                             <Label>{strings.Field_Recurring.Label}</Label>
-                            <Text>{format(strings.ThisInstanceOccursOn, recurrenceExceptionInstanceDate.format('LL'))}</Text>
+                            <Text>
+                                {format(
+                                    strings.ThisInstanceOccursOn,
+                                    recurrenceExceptionInstanceDate.format("LL")
+                                )}
+                            </Text>
                             <br />
-                            <Text>{humanizeRecurrencePattern(start, recurrence)}</Text>
+                            <Text>
+                                {humanizeRecurrencePattern(start, recurrence)}
+                            </Text>
                         </GridCol>
                     </GridRow>
-                }
-                {!isSeriesException &&
+                )}
+                {!isSeriesException && (
                     <GridRow>
                         <GridCol sm={12} lg={3}>
                             <LiveToggle
@@ -468,72 +872,119 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                                 label={strings.Field_Recurring.Label}
                                 onText={strings.Field_Recurring.OnText}
                                 offText={strings.Field_Recurring.OffText}
-                                propertyName='isRecurring'
+                                propertyName="isRecurring"
                             />
                         </GridCol>
                         <GridCol sm={12} lg={9}>
-                            {isRecurring &&
-                                <LiveUpdate entity={event} propertyName='recurrence' renderValue={recur => humanizeRecurrencePattern(start, recur)} updateValue={recurrence => this.updateField(e => e.recurrence = recurrence)}>{renderLiveUpdateMark => {
-                                    const { pattern } = recurrence;
-                                    return (
-                                        <Stack tokens={{ childrenGap: 16 }} styles={{ root: { marginTop: 6 } }}>
-                                            {renderLiveUpdateMark()}
-                                            <PatternChoiceGroup
-                                                selectedKey={pattern.toString()}
-                                                onChange={(ev, opt) => this.updateField(e => e.recurrence.pattern = parseInt(opt.key))}
-                                            />
-                                            {pattern === RecurPattern.daily &&
-                                                <DailyEditor {...liveProps} />
-                                            }
-                                            {pattern === RecurPattern.weekly &&
-                                                <WeeklyEditor {...liveProps} />
-                                            }
-                                            {pattern === RecurPattern.monthly &&
-                                                <MonthlyEditor {...liveProps} />
-                                            }
-                                            {pattern === RecurPattern.yearly &&
-                                                <YearlyEditor {...liveProps} />
-                                            }
-                                            <LiveDatePicker
-                                                {...liveProps}
-                                                label={strings.Field_StartDate.Label}
-                                                propertyName='startDate'
-                                                rules={Event.StartDateValidations}
-                                                required
-                                                allowTextInput
-                                            />
-                                            <UntilEditor {...liveProps} />
-                                        </Stack>
-                                    );
-                                }}
+                            {isRecurring && (
+                                <LiveUpdate
+                                    entity={event}
+                                    propertyName="recurrence"
+                                    renderValue={(recur) =>
+                                        humanizeRecurrencePattern(start, recur)
+                                    }
+                                    updateValue={(recurrence) =>
+                                        this.updateField(
+                                            (e) => (e.recurrence = recurrence)
+                                        )
+                                    }
+                                >
+                                    {(renderLiveUpdateMark) => {
+                                        const { pattern } = recurrence;
+                                        return (
+                                            <Stack
+                                                tokens={{ childrenGap: 16 }}
+                                                styles={{
+                                                    root: { marginTop: 6 },
+                                                }}
+                                            >
+                                                {renderLiveUpdateMark()}
+                                                <PatternChoiceGroup
+                                                    selectedKey={pattern.toString()}
+                                                    onChange={(ev, opt) =>
+                                                        this.updateField(
+                                                            (e) =>
+                                                                (e.recurrence.pattern =
+                                                                    parseInt(
+                                                                        opt.key
+                                                                    ))
+                                                        )
+                                                    }
+                                                />
+                                                {pattern ===
+                                                    RecurPattern.daily && (
+                                                    <DailyEditor
+                                                        {...liveProps}
+                                                    />
+                                                )}
+                                                {pattern ===
+                                                    RecurPattern.weekly && (
+                                                    <WeeklyEditor
+                                                        {...liveProps}
+                                                    />
+                                                )}
+                                                {pattern ===
+                                                    RecurPattern.monthly && (
+                                                    <MonthlyEditor
+                                                        {...liveProps}
+                                                    />
+                                                )}
+                                                {pattern ===
+                                                    RecurPattern.yearly && (
+                                                    <YearlyEditor
+                                                        {...liveProps}
+                                                    />
+                                                )}
+                                                <LiveDatePicker
+                                                    {...liveProps}
+                                                    label={
+                                                        strings.Field_StartDate
+                                                            .Label
+                                                    }
+                                                    propertyName="startDate"
+                                                    rules={
+                                                        Event.StartDateValidations
+                                                    }
+                                                    required
+                                                    allowTextInput
+                                                />
+                                                <UntilEditor {...liveProps} />
+                                            </Stack>
+                                        );
+                                    }}
                                 </LiveUpdate>
-                            }
+                            )}
                         </GridCol>
                         <GridCol sm={12}>
-                            {this.entity.hasRecurrenceChanges() &&
-                                <MessageBar messageBarType={MessageBarType.warning}>{strings.Recurrence.UpdateWarning}</MessageBar>
-                            }
+                            {this.entity.hasRecurrenceChanges() && (
+                                <MessageBar
+                                    messageBarType={MessageBarType.warning}
+                                >
+                                    {strings.Recurrence.UpdateWarning}
+                                </MessageBar>
+                            )}
                         </GridCol>
                     </GridRow>
-                }
+                )}
                 <GridRow>
                     <GridCol sm={12}>
                         <LiveTextField
                             {...liveProps}
                             label={strings.Field_Location.Label}
-                            propertyName='location'
+                            propertyName="location"
                             rules={Event.LocationValidations}
                         />
                     </GridCol>
                 </GridRow>
                 <GridRow>
                     <GridCol sm={12}>
-                        <LiveTextField
+                        <LiveMultiTextField
                             {...liveProps}
                             label={strings.Field_Description.Label}
-                            propertyName='description'
+                            propertyName="description"
                             multiline
                             rows={3}
+                            nextFocusComponent={this.shiftFocusToNextEle}
                         />
                     </GridCol>
                 </GridRow>
@@ -541,97 +992,161 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                     <GridCol sm={12}>
                         <LiveUserPicker
                             {...liveProps}
+                            setComponentRef={this.state.shiftFocus}
                             label={strings.Field_Contacts.Label}
                             tooltip={strings.Field_Contacts.Tooltip}
-                            propertyName='contacts'
+                            propertyName="contacts"
                             restrictPrincipalType={PrincipalType.User}
                         />
                     </GridCol>
                 </GridRow>
                 <GridRow>
-                    {refiners.filter(Entity.NotDeletedFilter).map(refiner => {
-                        const { displayName, required, allowMultiselect } = refiner;
-                        const rules = [this._refinerValueValidationRulesByRefiner.get(refiner)];
+                    {refiners.filter(Entity.NotDeletedFilter).map((refiner) => {
+                        const { displayName, required, allowMultiselect } =
+                            refiner;
+                        const rules = [
+                            this._refinerValueValidationRulesByRefiner.get(
+                                refiner
+                            ),
+                        ];
 
                         const transformer: ITransformer<RefinerValue[]> = {
                             transform: (values: RefinerValue[]) => {
-                                return values.filter(v => v.refiner.get() === refiner);
+                                return values.filter(
+                                    (v) => v.refiner.get() === refiner
+                                );
                             },
-                            reverse: (values: RefinerValue | RefinerValue[]) => {
+                            reverse: (
+                                values: RefinerValue | RefinerValue[]
+                            ) => {
                                 return [
-                                    ...event.refinerValues.filter(v => v.refiner.get() !== refiner),
-                                    ...(values instanceof Array ? values : [values]).filter(v => v !== refiner.blankValue)
+                                    ...event.refinerValues.filter(
+                                        (v) => v.refiner.get() !== refiner
+                                    ),
+                                    ...(values instanceof Array
+                                        ? values
+                                        : [values]
+                                    ).filter((v) => v !== refiner.blankValue),
                                 ].filter(Boolean);
-                            }
+                            },
                         };
 
                         const livePropsForRefinerDropdowns = {
                             entity: event,
                             showValidationFeedback,
                             updateField: (update: (event: Event) => void) => {
-                                this.updateField(event => {
+                                this.updateField((event) => {
                                     update(event);
-                                    event.moderationStatus = EventModerationStatus.Pending;
+                                    event.moderationStatus =
+                                        EventModerationStatus.Pending;
                                 });
-                            }
-                        }
+                            },
+                        };
 
                         return (
                             <GridCol key={refiner.key} sm={12} md={6} lg={4}>
-                                <Validation entity={event} rules={rules} active={showValidationFeedback}>
-                                    {allowMultiselect
-                                        ? <LiveMultiselectDropdown
+                                <Validation
+                                    entity={event}
+                                    rules={rules}
+                                    active={showValidationFeedback}
+                                >
+                                    {allowMultiselect ? (
+                                        <LiveMultiselectDropdown
                                             {...livePropsForRefinerDropdowns}
                                             transformer={transformer}
-                                            propertyName='refinerValues'
+                                            propertyName="refinerValues"
                                             label={displayName}
                                             required={required}
-                                            options={refinerValueOptionsByRefiner.get(refiner)}
-                                            getKeyFromValue={val => val.key}
-                                            renderValue={vals =>
-                                                <Stack horizontal wrap verticalAlign="center" tokens={{ childrenGap: 6 }}>
-                                                    {vals.map(v => <RefinerValuePill key={v.key} refinerValue={v} />)}
+                                            options={refinerValueOptionsByRefiner.get(
+                                                refiner
+                                            )}
+                                            getKeyFromValue={(val) => val.key}
+                                            renderValue={(vals) => (
+                                                <Stack
+                                                    horizontal
+                                                    wrap
+                                                    verticalAlign="center"
+                                                    tokens={{ childrenGap: 6 }}
+                                                >
+                                                    {vals.map((v) => (
+                                                        <RefinerValuePill
+                                                            key={v.key}
+                                                            refinerValue={v}
+                                                        />
+                                                    ))}
                                                 </Stack>
+                                            )}
+                                        />
+                                    ) : (
+                                        <LiveDropdown
+                                            {...livePropsForRefinerDropdowns}
+                                            transformer={transformer}
+                                            propertyName="refinerValues"
+                                            label={displayName}
+                                            required={required}
+                                            options={refinerValueOptionsByRefiner.get(
+                                                refiner
+                                            )}
+                                            getKeyFromValue={(val) =>
+                                                val?.key || 0
+                                            }
+                                            renderValue={(val) =>
+                                                val &&
+                                                val.length > 0 && (
+                                                    <RefinerValuePill
+                                                        refinerValue={val[0]}
+                                                    />
+                                                )
                                             }
                                         />
-                                        : <LiveDropdown
-                                            {...livePropsForRefinerDropdowns}
-                                            transformer={transformer}
-                                            propertyName='refinerValues'
-                                            label={displayName}
-                                            required={required}
-                                            options={refinerValueOptionsByRefiner.get(refiner)}
-                                            getKeyFromValue={val => val?.key || 0}
-                                            renderValue={val => val && val.length > 0 && <RefinerValuePill refinerValue={val[0]} />}
-                                        />
-                                    }
+                                    )}
                                 </Validation>
                             </GridCol>
                         );
                     })}
                 </GridRow>
                 <GridRow>
-                    <GridCol sm={12}>
-                        {this._renderModerationStatus()}
-                    </GridCol>
+                    <GridCol sm={12}>{this._renderModerationStatus()}</GridCol>
                 </GridRow>
                 {confidentialFieldEnabled &&
-                    (isSeriesException
-                        ? <GridRow>
+                    (isSeriesException ? (
+                        <GridRow>
                             <GridCol sm={3}>
-                                <LiveText label={strings.Field_Confidential.Label} {...liveProps} propertyName='isConfidential' tooltip={strings.Field_Confidential.Tooltip}>
-                                    {val => val ? strings.Field_Confidential.OnText : strings.Field_Confidential.OffText}
+                                <LiveText
+                                    label={strings.Field_Confidential.Label}
+                                    {...liveProps}
+                                    propertyName="isConfidential"
+                                    tooltip={strings.Field_Confidential.Tooltip}
+                                >
+                                    {(val) =>
+                                        val
+                                            ? strings.Field_Confidential.OnText
+                                            : strings.Field_Confidential.OffText
+                                    }
                                 </LiveText>
                             </GridCol>
                             <GridCol sm={9}>
-                                {isConfidential &&
-                                    <LiveText label={strings.Field_RestrictedToAccounts_Display.Label} {...liveProps} propertyName='restrictedToAccounts'>
-                                        {val => val.map(({ title }) => title).join(', ') || "-"}
+                                {isConfidential && (
+                                    <LiveText
+                                        label={
+                                            strings
+                                                .Field_RestrictedToAccounts_Display
+                                                .Label
+                                        }
+                                        {...liveProps}
+                                        propertyName="restrictedToAccounts"
+                                    >
+                                        {(val) =>
+                                            val
+                                                .map(({ title }) => title)
+                                                .join(", ") || "-"
+                                        }
                                     </LiveText>
-                                }
+                                )}
                             </GridCol>
                         </GridRow>
-                        : <GridRow>
+                    ) : (
+                        <GridRow>
                             <GridCol sm={12} lg={3}>
                                 <LiveToggle
                                     {...liveProps}
@@ -639,20 +1154,24 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
                                     onText={strings.Field_Confidential.OnText}
                                     offText={strings.Field_Confidential.OffText}
                                     tooltip={strings.Field_Confidential.Tooltip}
-                                    propertyName='isConfidential'
+                                    propertyName="isConfidential"
                                 />
                             </GridCol>
                             <GridCol sm={12} lg={9}>
-                                {isConfidential &&
+                                {isConfidential && (
                                     <LiveUserPicker
                                         {...liveProps}
-                                        label={strings.Field_RestrictedToAccounts_Edit.Label}
-                                        propertyName='restrictedToAccounts'
+                                        label={
+                                            strings
+                                                .Field_RestrictedToAccounts_Edit
+                                                .Label
+                                        }
+                                        propertyName="restrictedToAccounts"
                                     />
-                                }
+                                )}
                             </GridCol>
                         </GridRow>
-                    )}
+                    ))}
                 <GridRow>
                     <GridCol sm={12}>
                         <ListItemTechnicals entity={this.entity} />
@@ -668,19 +1187,37 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
 
     protected renderEditHeader(): JSX.Element {
         const event = this.entity;
-        const { isSeriesException, recurrenceExceptionInstanceDate, seriesMaster } = event;
-        const onEditSeries = () => { this.edit(seriesMaster.get()); };
+        const {
+            isSeriesException,
+            recurrenceExceptionInstanceDate,
+            seriesMaster,
+        } = event;
+        const onEditSeries = () => {
+            this.edit(seriesMaster.get());
+        };
 
-        return <>
-            <EventOverview className={styles.header} event={this.entity} />
-            {isSeriesException &&
-                <MessageBar delayedRender={false} role='alert' messageBarType={MessageBarType.info}>
-                    {format(strings.Recurrence.EditingInstanceWarning, recurrenceExceptionInstanceDate.format('LL'))}.
-                    &nbsp;
-                    <Link onClick={onEditSeries}>{strings.Recurrence.Command_EditSeries.Text}</Link> {strings.Recurrence.EditSeriesButtonExplanation}
-                </MessageBar>
-            }
-        </>;
+        return (
+            <>
+                <EventOverview className={styles.header} event={this.entity} />
+                {isSeriesException && (
+                    <MessageBar
+                        delayedRender={false}
+                        role="alert"
+                        messageBarType={MessageBarType.info}
+                    >
+                        {format(
+                            strings.Recurrence.EditingInstanceWarning,
+                            recurrenceExceptionInstanceDate.format("LL")
+                        )}
+                        . &nbsp;
+                        <Link onClick={onEditSeries}>
+                            {strings.Recurrence.Command_EditSeries.Text}
+                        </Link>{" "}
+                        {strings.Recurrence.EditSeriesButtonExplanation}
+                    </MessageBar>
+                )}
+            </>
+        );
     }
 
     protected markEntityDeleted(): void {
@@ -688,8 +1225,7 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
 
         if (this.entity.isSeriesException)
             this.entity.recurrenceInstanceCancelled = true;
-        else
-            this.entity.delete();
+        else this.entity.delete();
     }
 
     private _currentUserIsAnApprover(): boolean {
@@ -698,204 +1234,285 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
             [EventsService]: { approversAsync },
         } = this.props.services;
 
-        const currentUserApprovers = approversAsync.data?.filter(a => a.userIsAnApprover(currentUser)) || [];
+        const currentUserApprovers =
+            approversAsync.data?.filter((a) =>
+                a.userIsAnApprover(currentUser)
+            ) || [];
 
-        return Approvers.appliesToAny(currentUserApprovers, this.entity.valuesByRefiner());
+        return Approvers.appliesToAny(
+            currentUserApprovers,
+            this.entity.valuesByRefiner()
+        );
     }
 
     protected buildDisplayHeaderCommands(): ICommandBarItemProps[] {
         const {
-            commands: { approve, reject, addToOutlook, addSeriesToOutlook, getLink },
-            services: { [DirectoryService]: { currentUserIsSiteAdmin, currentUser } }
+            commands: {
+                approve,
+                reject,
+                addToOutlook,
+                addSeriesToOutlook,
+                getLink,
+            },
+            services: {
+                [DirectoryService]: { currentUserIsSiteAdmin, currentUser },
+            },
         } = this.props;
-        const { isRecurring, isSeriesException, isSeriesMaster, seriesMaster, isDeleted, isNew, isApproved, creator } = this.entity;
-        const onEdit = () => { this.edit(); };
-        const onEditSeries = () => { this.edit(seriesMaster.get(), false); };
-        const onDelete = () => { this.confirmDelete(); };
+        const {
+            isRecurring,
+            isSeriesException,
+            isSeriesMaster,
+            seriesMaster,
+            isDeleted,
+            isNew,
+            isApproved,
+            creator,
+        } = this.entity;
+        const onEdit = () => {
+            this.edit();
+        };
+        const onEditSeries = () => {
+            this.edit(seriesMaster.get(), false);
+        };
+        const onDelete = () => {
+            this.confirmDelete();
+        };
         const onDeleteSeries = () => {
             this.edit(seriesMaster.get(), false);
             this.confirmDelete();
         };
-        const onApprove = () => { approve(this.entity); };
-        const onReject = () => { reject(this.entity); };
-        const onAddToOutlook = () => { addToOutlook(this.entity); };
-        const onAddSeriesToOutlook = () => { addSeriesToOutlook(this.entity); };
-        const onGetLink = () => { getLink(this.entity); };
+        const onApprove = () => {
+            if (isRecurring && isSeriesException) {
+                approve(seriesMaster.get());
+                //this.entity.moderationStatus = EventModerationStatus.Approved;
+            }
+            else {
+                approve(this.entity);
+            }
+        };
+        const onReject = () => {
+            if (isRecurring && isSeriesException) {
+                reject(seriesMaster.get());
+            }
+            else {
+                reject(this.entity);
+            }
+        };
+        const onAddToOutlook = () => {
+            addToOutlook(this.entity, this.props.timeZoneDiff);
+        };
+        const onAddSeriesToOutlook = () => {
+            addSeriesToOutlook(this.entity);
+        };
+        const onGetLink = () => {
+            getLink(this.entity);
+        };
 
         const editSingleCommand: ICommandBarItemProps = {
-            key: 'edit',
+            key: "edit",
             text: strings.Command_Edit.Text,
-            iconProps: { iconName: 'Edit' },
+            iconProps: { iconName: "Edit" },
             disabled: isDeleted,
-            onClick: onEdit
+            onClick: onEdit,
         };
 
         const editSeriesCommand: ICommandBarItemProps = {
-            key: 'edit',
+            key: "edit",
             text: "Edit series",
-            iconProps: { iconName: 'Edit' },
+            iconProps: { iconName: "Edit" },
             disabled: isDeleted,
-            onClick: onEdit
+            onClick: onEdit,
         };
 
         const editRecurringCommand: ICommandBarItemProps = {
-            key: 'edit',
+            key: "edit",
             text: strings.Command_Edit.Text,
-            iconProps: { iconName: 'Edit' },
+            iconProps: { iconName: "Edit" },
             disabled: isDeleted,
             subMenuProps: {
-                items: [{
-                    key: 'edit-series',
-                    text: strings.Command_Edit_Recurring_Series.Text,
-                    onClick: onEditSeries
-                }, {
-                    key: 'edit-occurrence',
-                    text: strings.Command_Edit_Recurring_Instance.Text,
-                    onClick: onEdit
-                }]
-            }
+                items: [
+                    {
+                        key: "edit-series",
+                        text: strings.Command_Edit_Recurring_Series.Text,
+                        onClick: onEditSeries,
+                    },
+                    {
+                        key: "edit-occurrence",
+                        text: strings.Command_Edit_Recurring_Instance.Text,
+                        onClick: onEdit,
+                    },
+                ],
+            },
         };
 
         const moderationCommand: ICommandBarItemProps = {
-            key: 'moderation',
+            key: "moderation",
             text: strings.Command_Approval.Text,
-            iconProps: { iconName: 'EventAccepted' },
+            iconProps: { iconName: "EventAccepted" },
             disabled: isDeleted,
             subMenuProps: {
-                items: [{
-                    key: 'approve',
-                    iconProps: { iconName: 'Accept' },
-                    text: strings.Command_Approval_Approve.Text,
-                    onClick: onApprove
-                }, {
-                    key: 'decline',
-                    iconProps: { iconName: 'Clear' },
-                    text: strings.Command_Approval_Reject.Text,
-                    onClick: onReject
-                }]
-            }
+                items: [
+                    {
+                        key: "approve",
+                        iconProps: { iconName: "Accept" },
+                        text: strings.Command_Approval_Approve.Text,
+                        onClick: onApprove,
+                    },
+                    {
+                        key: "decline",
+                        iconProps: { iconName: "Clear" },
+                        text: strings.Command_Approval_Reject.Text,
+                        onClick: onReject,
+                    },
+                ],
+            },
         };
 
         const deleteSingleCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
-            onClick: onDelete
+            onClick: onDelete,
         };
 
         const deleteSeriesMasterCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete_Series.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
-            onClick: onDelete
+            onClick: onDelete,
         };
 
         const deleteRecurringCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
             subMenuProps: {
-                items: [{
-                    key: 'delete-series',
-                    text: strings.Command_Delete_Recurring_Series.Text,
-                    onClick: onDeleteSeries
-                }, {
-                    key: 'delete-occurrence',
-                    text: strings.Command_Delete_Recurring_Instance.Text,
-                    onClick: onDelete
-                }]
-            }
+                items: [
+                    {
+                        key: "delete-series",
+                        text: strings.Command_Delete_Recurring_Series.Text,
+                        onClick: onDeleteSeries,
+                    },
+                    {
+                        key: "delete-occurrence",
+                        text: strings.Command_Delete_Recurring_Instance.Text,
+                        onClick: onDelete,
+                    },
+                ],
+            },
         };
 
         const addToOutlookSingleCommand: ICommandBarItemProps = {
-            key: 'add-to-outlook',
+            key: "add-to-outlook",
             text: strings.Command_AddToOutlook.Text,
-            iconProps: { iconName: 'AddEvent' },
+            iconProps: { iconName: "AddEvent" },
             disabled: isDeleted,
-            onClick: onAddToOutlook
+            onClick: onAddToOutlook,
         };
 
         const addToOutlookSeriesCommand: ICommandBarItemProps = {
-            key: 'add-to-outlook',
+            key: "add-to-outlook",
             text: strings.Command_AddToOutlook.Text,
-            iconProps: { iconName: 'AddEvent' },
+            iconProps: { iconName: "AddEvent" },
             disabled: isDeleted,
-            onClick: onAddSeriesToOutlook
+            onClick: onAddSeriesToOutlook,
         };
 
         const addToOutlookRecurringCommand: ICommandBarItemProps = {
-            key: 'add-to-outlook',
+            key: "add-to-outlook",
             text: strings.Command_AddToOutlook.Text,
-            iconProps: { iconName: 'AddEvent' },
+            iconProps: { iconName: "AddEvent" },
             disabled: isDeleted,
             subMenuProps: {
-                items: [{
-                    key: 'add-to-outlook-series',
-                    text: strings.Command_AddToOutlook_Recurring_Series.Text,
-                    onClick: onAddSeriesToOutlook
-                }, {
-                    key: 'add-to-outlook-occurrence',
-                    text: strings.Command_AddToOutlook_Recurring_Instance.Text,
-                    onClick: onAddToOutlook
-                }]
-            }
+                items: [
+                    {
+                        key: "add-to-outlook-series",
+                        text: strings.Command_AddToOutlook_Recurring_Series
+                            .Text,
+                        onClick: onAddSeriesToOutlook,
+                    },
+                    {
+                        key: "add-to-outlook-occurrence",
+                        text: strings.Command_AddToOutlook_Recurring_Instance
+                            .Text,
+                        onClick: onAddToOutlook,
+                    },
+                ],
+            },
         };
 
         const getLinkCommand: ICommandBarItemProps = {
-            key: 'get-link',
+            key: "get-link",
             text: strings.Command_GetLink.Text,
-            iconProps: { iconName: 'Link' },
+            iconProps: { iconName: "Link" },
             disabled: isDeleted,
-            onClick: onGetLink
+            onClick: onGetLink,
         };
 
-        const userCanApprove = currentUserIsSiteAdmin || this._currentUserIsAnApprover();
+        const {
+            [ConfigurationService]: { active: config },
+        } = this.props.services;
+
+        
+
+        const userCanApprove =
+            currentUserIsSiteAdmin || this._currentUserIsAnApprover();
         const userIsCreator = User.equal(creator, currentUser);
         const canEdit = userIsCreator || userCanApprove;
         const canModerate = !isApproved && userCanApprove;
         const canDelete = (!isNew || isSeriesException) && canEdit;
         const canAddToOutlook = (!isNew || isSeriesException) && isApproved;
+        const enableAddToOutlook = config && config.useAddToOutlook; 
 
         return [
-            canEdit && (
-                isRecurring
-                    ? (isSeriesMaster
+            canEdit &&
+                (isRecurring
+                    ? isSeriesMaster
                         ? editSeriesCommand
                         : editRecurringCommand
-                    )
-                    : editSingleCommand
-            ),
+                    : editSingleCommand),
             canModerate && moderationCommand,
-            canDelete && (
-                isRecurring
-                    ? (isSeriesMaster
+            canDelete &&
+                (isRecurring
+                    ? isSeriesMaster
                         ? deleteSeriesMasterCommand
                         : deleteRecurringCommand
-                    )
-                    : deleteSingleCommand
-            ),
-            canAddToOutlook && (
-                isRecurring
-                    ? (isSeriesMaster
+                    : deleteSingleCommand),
+            enableAddToOutlook && canAddToOutlook &&
+                (isRecurring
+                    ? isSeriesMaster
                         ? addToOutlookSeriesCommand
                         : addToOutlookRecurringCommand
-                    )
-                    : addToOutlookSingleCommand
-            ),
-            getLinkCommand
+                    : addToOutlookSingleCommand),
+            getLinkCommand,
         ].filter(Boolean);
     }
 
     protected buildEditHeaderCommands(): ICommandBarItemProps[] {
-        const { [DirectoryService]: { currentUserIsSiteAdmin, currentUser } } = this.props.services;
+        const {
+            [DirectoryService]: { currentUserIsSiteAdmin, currentUser },
+        } = this.props.services;
         const { submitting } = this.state;
-        const { isRecurring, isSeriesException, isSeriesMaster, seriesMaster, isDeleted, isNew, creator } = this.entity;
-        const onSubmit = () => this.submit(() => { this.display(); });
+        const {
+            isRecurring,
+            isSeriesException,
+            isSeriesMaster,
+            seriesMaster,
+            isDeleted,
+            isNew,
+            creator,
+        } = this.entity;
+        const onSubmit = () =>
+            this.submit(() => {
+                this.display();
+            });
         const onConfirmDiscard = () => this.confirmDiscard();
-        const onDelete = () => { this.confirmDelete(); };
+        const onDelete = () => {
+            this.confirmDelete();
+        };
         const onDeleteSeries = () => {
             this.entity.revert();
             this.edit(seriesMaster.get(), false);
@@ -903,65 +1520,69 @@ class EventPanel extends EntityPanelBase<Event, IProps, IState> implements IEven
         };
 
         const deleteSingleCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
-            onClick: onDelete
+            onClick: onDelete,
         };
 
         const deleteSeriesMasterCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete_Series.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
-            onClick: onDelete
+            onClick: onDelete,
         };
 
         const deleteRecurringCommand: ICommandBarItemProps = {
-            key: 'delete',
+            key: "delete",
             text: strings.Command_Delete.Text,
-            iconProps: { iconName: 'Delete' },
+            iconProps: { iconName: "Delete" },
             disabled: isDeleted,
             subMenuProps: {
-                items: [{
-                    key: 'delete-series',
-                    text: strings.Command_Delete_Recurring_Series.Text,
-                    onClick: onDeleteSeries
-                }, {
-                    key: 'delete-occurrence',
-                    text: strings.Command_Delete_Recurring_Instance.Text,
-                    onClick: onDelete
-                }]
-            }
+                items: [
+                    {
+                        key: "delete-series",
+                        text: strings.Command_Delete_Recurring_Series.Text,
+                        onClick: onDeleteSeries,
+                    },
+                    {
+                        key: "delete-occurrence",
+                        text: strings.Command_Delete_Recurring_Instance.Text,
+                        onClick: onDelete,
+                    },
+                ],
+            },
         };
 
-        const userCanApprove = currentUserIsSiteAdmin || this._currentUserIsAnApprover();
+        const userCanApprove =
+            currentUserIsSiteAdmin || this._currentUserIsAnApprover();
         const userIsCreator = User.equal(creator, currentUser);
         const canEdit = userIsCreator || userCanApprove;
         const canDelete = (!isNew || isSeriesException) && canEdit;
 
-        return [{
-            key: 'save',
-            text: strings.Command_Save.Text,
-            iconProps: { iconName: 'Save' },
-            disabled: submitting || isDeleted,
-            onClick: onSubmit
-        }, {
-            key: 'discard',
-            text: strings.Command_Discard.Text,
-            iconProps: { iconName: 'Cancel' },
-            disabled: isDeleted,
-            onClick: onConfirmDiscard
-        },
-        canDelete && (
-            isRecurring
-                ? (isSeriesMaster
-                    ? deleteSeriesMasterCommand
-                    : deleteRecurringCommand
-                )
-                : deleteSingleCommand
-        )
+        return [
+            {
+                key: "save",
+                text: strings.Command_Save.Text,
+                iconProps: { iconName: "Save" },
+                disabled: submitting || isDeleted,
+                onClick: onSubmit,
+            },
+            {
+                key: "discard",
+                text: strings.Command_Discard.Text,
+                iconProps: { iconName: "Cancel" },
+                disabled: isDeleted,
+                onClick: onConfirmDiscard,
+            },
+            canDelete &&
+                (isRecurring
+                    ? isSeriesMaster
+                        ? deleteSeriesMasterCommand
+                        : deleteRecurringCommand
+                    : deleteSingleCommand),
         ].filter(Boolean);
     }
 }

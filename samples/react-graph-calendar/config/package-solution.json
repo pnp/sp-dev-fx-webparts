@@ -16,6 +16,32 @@
         "resource": "Microsoft Graph",
         "scope": "Calendars.Read"
       }
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-graph-calendar description"
+      },
+      "longDescription": {
+        "default": "react-graph-calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-graph-calendar Feature",
+        "description": "The feature that activates elements of the react-graph-calendar solution.",
+        "id": "8a9284e7-7271-4ead-b323-b23ea37a68f5",
+        "version": "1.0.0.0"
+      }
     ]
   },
   "paths": {

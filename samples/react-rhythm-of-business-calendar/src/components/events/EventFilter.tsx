@@ -2,6 +2,7 @@ import { FC, ReactElement } from "react";
 import { Entity, MomentRange, User } from "common";
 import { Approvers, Event, EventOccurrence, Refiner, RefinerValue } from "model";
 import { useConfigurationService, useDirectoryService } from "services";
+import { useTimeZoneService } from "services";
 
 interface IProps {
     events: readonly Event[];
@@ -9,17 +10,46 @@ interface IProps {
     refiners: readonly Refiner[];
     selectedRefinerValues: Set<RefinerValue>;
     approvers: readonly Approvers[];
+    searchText: string;
+    viewType?: string;
+    exactMatch: boolean;
+    selectedItem: any;
+    siteTimeZone?: string;
     children: (cccurrences: readonly EventOccurrence[]) => ReactElement;
+  
+
 }
 
-export const EventFilter: FC<IProps> = ({ events, dateRange, refiners, selectedRefinerValues, approvers, children }) => {
+export const EventFilter: FC<IProps> = ({ events, dateRange, refiners, selectedRefinerValues, approvers, searchText, viewType, exactMatch, selectedItem, siteTimeZone, children}) => {
     const { currentUser, currentUserIsSiteAdmin } = useDirectoryService();
     const { active: { useApprovals, useRefiners } } = useConfigurationService();
     const currentUserApprovers = approvers.filter(a => a.userIsAnApprover(currentUser));
-
+    const { isDifferenceInTimezone } = useTimeZoneService();
     const filteredEventOccurrences = events
-        .filter(event => !event.isSeriesException)
-        .filter(Entity.NotDeletedFilter)
+        .filter(event => {
+            //if (viewType !== 'list') {
+                return !event.isSeriesException;
+           // }
+          //  return true;
+        })
+        .filter(Entity.NotDeletedFilter)       
+        // .filter(event => {
+        //     if(searchText !== ""){
+        //        if(event.displayName.toLowerCase().includes(searchText.toLowerCase()) || event.description.toLowerCase().includes(searchText.toLowerCase()) || event.location.toLowerCase().includes(searchText.toLowerCase())){
+        //         return event.displayName !== undefined;
+        //        }
+        //        if (event.contacts.length > 0){
+        //             for(var i=0; i<event.contacts.length; i++){
+        //                 if((event.contacts[i].title.toLowerCase().includes(searchText.toLowerCase())) || (event.contacts[i].email.toLowerCase().includes(searchText.toLowerCase()))){
+        //                     return event.displayName !== undefined;
+        //                 }
+        //             }
+        //         }
+        //     }           
+        //     else{
+        //         return event.displayName !== undefined; 
+        //     }
+        // })          
         .filter(event => {
             if (event.isApproved) {
                 return true;
@@ -38,7 +68,24 @@ export const EventFilter: FC<IProps> = ({ events, dateRange, refiners, selectedR
                     return false;
             }
         })
-        .flatMap(event => event.expandOccurrences(dateRange))
+        .flatMap(event => event.expandOccurrences(isDifferenceInTimezone, dateRange, viewType, siteTimeZone))
+        .filter(occurrence => {
+            if(searchText !== ""){
+               if(occurrence.event.displayName.toLowerCase().includes(searchText.toLowerCase()) || occurrence.event.description.toLowerCase().includes(searchText.toLowerCase()) || occurrence.event.location.toLowerCase().includes(searchText.toLowerCase())){
+                return occurrence.event.displayName !== undefined;
+               }
+               if (occurrence.event.contacts.length > 0){
+                    for(var i=0; i<occurrence.event.contacts.length; i++){
+                        if((occurrence.event.contacts[i].title.toLowerCase().includes(searchText.toLowerCase())) || (occurrence.event.contacts[i].email.toLowerCase().includes(searchText.toLowerCase()))){
+                            return occurrence.event.displayName !== undefined;
+                        }
+                    }
+                }
+            }           
+            else{
+                return occurrence.event.displayName !== undefined; 
+            }
+        }) 
         .filter(occurrence => {
             const valuesByRefiner = occurrence.event.valuesByRefiner();
             return !useRefiners || refiners.every(refiner => {

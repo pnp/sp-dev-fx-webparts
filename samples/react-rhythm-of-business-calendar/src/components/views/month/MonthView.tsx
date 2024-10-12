@@ -9,9 +9,13 @@ import { Week } from './Week';
 
 import { ViewNames as strings } from 'ComponentStrings';
 import { FocusZone } from '@fluentui/react';
+import { useTimeZoneService } from "services";
 
-const MonthView: FC<IViewProps> = ({ anchorDate, eventCommands, viewCommands, cccurrences }) => {
-    const weeks = Builder.build(cccurrences, anchorDate);
+const MonthView: FC<IViewProps> = ({ anchorDate, eventCommands, viewCommands, cccurrences, selectedTemplateKeys }) => {
+    const { siteTimeZone } = useTimeZoneService();
+    anchorDate = anchorDate.tz(siteTimeZone.momentId,true);
+    const weeks = Builder.build(cccurrences, anchorDate); 
+    //console.log("weeks", weeks);
     const detailsCallout = useRef<IEventDetailsCallout>();
 
     const onActivate = useCallback((cccurrence: EventOccurrence, target: HTMLElement) => {
@@ -28,11 +32,13 @@ const MonthView: FC<IViewProps> = ({ anchorDate, eventCommands, viewCommands, cc
                     anchorDate={anchorDate}
                     onActivate={onActivate}
                     viewCommands={viewCommands}
+                    selectedTemplateKeys={selectedTemplateKeys}
                 />
             )}
             <EventDetailsCallout
                 commands={eventCommands}
                 componentRef={detailsCallout}
+               // channels ={channels}
             />
         </FocusZone>
     );

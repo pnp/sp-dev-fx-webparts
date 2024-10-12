@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "O365C.FuncApp.Induction": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7032",
+      "launchBrowser": false
+    }
+  }
+}
