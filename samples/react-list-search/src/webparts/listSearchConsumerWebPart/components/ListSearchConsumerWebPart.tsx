@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ListSearchConsumerWebPart.module.scss';
 import { IListSearchConsumerProps } from './IListSearchConsumerProps';
 
-export default class ListSearchConsumer extends React.Component<IListSearchConsumerProps, {}> {
+export default class ListSearchConsumer extends React.Component<IListSearchConsumerProps, undefined> {
   public render(): React.ReactElement<IListSearchConsumerProps> {
     return (
       <div className={styles.listSearchConsumerWebPart}>

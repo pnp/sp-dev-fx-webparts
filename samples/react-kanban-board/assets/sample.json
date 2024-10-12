@@ -3,13 +3,13 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-kanban-board",
     "source": "pnp",
     "title": "Kanban Board Web part",
-    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks.",
+    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using Fluent UI. The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
     "longDescription": [
       "This solution contains an SPFx web part which shows a Kanban board. The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks."
     ],
     "creationDateTime": "2020-07-02",
-    "updateDateTime": "2024-05-26",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.19.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",

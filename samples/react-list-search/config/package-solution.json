@@ -3,10 +3,21 @@
   "solution": {
     "name": "list-search-webpart",
     "id": "8277f088-9c30-4f95-9c15-9c18a9d40a26",
-    "version": "1.2.0.0",
+    "version": "1.4.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "list-search-webpart description"
+      },
+      "longDescription": {
+        "default": "list-search-webpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
     "developer": {
       "name": "Alberto Gutierrez Perez",
       "websiteUrl": "",
@@ -14,6 +25,26 @@
       "termsOfUseUrl": "",
       "mpnId": ""
     },
+    "features": [
+      {
+        "title": "list-search-webpart ListSearchWebPart Feature",
+        "description": "The feature that activates ListSearchWebPart from the list-search-webpart solution.",
+        "id": "292daaa0-2474-445b-98f8-afa6ad4a9c92",
+        "version": "1.2.0.0",
+        "componentIds": [
+          "292daaa0-2474-445b-98f8-afa6ad4a9c92"
+        ]
+      },
+      {
+        "title": "list-search-webpart ListSearchConsumerWebPartWebPart Feature",
+        "description": "The feature that activates ListSearchConsumerWebPartWebPart from the list-search-webpart solution.",
+        "id": "306e0650-db3c-443a-a698-12be6e6de1ad",
+        "version": "1.2.0.0",
+        "componentIds": [
+          "306e0650-db3c-443a-a698-12be6e6de1ad"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",

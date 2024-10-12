@@ -27,8 +27,8 @@ This sample web part demonstrates managing the list subscriptions (sharepoint we
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.17.4](https://img.shields.io/badge/SPFx-1.17.4-green.svg)
-![Node.js v16 | v14](https://img.shields.io/badge/Node.js-v16%20%7C%20v14-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18.18.2-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -52,6 +52,10 @@ This web part requires access to lists and libraries to perform renewing the web
 - in the command-line run:
   - `npm install`
   - `gulp serve`
+- if you use spfx-fast-serve, in the command-line run:
+  - `spfx-fast-serve`
+  - `npm install`
+  - `npm run serve`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
@@ -64,6 +68,7 @@ This web part requires access to lists and libraries to perform renewing the web
 Version|Date|Comments
 -------|----|--------
 1.0|September 9, 2023|Initial release
+2.0|October 02, 2024|Initial release
 
 ## Help
 
