@@ -1,5 +1,5 @@
-import { IColumn,IGroup } from 'office-ui-fabric-react';
-import {MessageBarType } from 'office-ui-fabric-react';
+import { IColumn,IGroup } from '@fluentui/react';
+import {MessageBarType } from '@fluentui/react';
 import { Items } from './IReactFlowDashboardProps';
 import { IFlow } from './IReactFlowDashboardProps';
 import { IFlowRun } from '../RunHistory/IReactFlowRunHistoryProps';

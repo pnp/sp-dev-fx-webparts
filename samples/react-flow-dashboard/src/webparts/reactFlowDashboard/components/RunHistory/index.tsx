@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Panel, PanelType } from 'office-ui-fabric-react';
+import { Panel, PanelType } from '@fluentui/react';
 import { IReactFlowRunHistoryProps } from './IReactFlowRunHistoryProps';
 
 
