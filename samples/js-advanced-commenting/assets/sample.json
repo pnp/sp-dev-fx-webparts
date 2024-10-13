@@ -9,7 +9,7 @@
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
     "creationDateTime": "2020-02-05",
-    "updateDateTime": "2024-03-11",
+    "updateDateTime": "2024-10-03",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",

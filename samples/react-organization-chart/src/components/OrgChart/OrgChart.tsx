@@ -19,12 +19,14 @@ import {
   Text,
 } from "@fluentui/react";
 
-import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
+
 
 import { getGUID } from "@pnp/common";
 import { useOrgChartStyles } from "./useOrgChartStyles";
 
 import "./OrgChart.module.scss";
+import { Placeholder } from "../Placeholder/PlaceholderComponent";
+
 
 const initialState: IOrgChartState = {
   isLoading: true,
@@ -236,14 +238,16 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
   if (!startFromUser) {
     return (
       <Placeholder
-        iconName="Edit"
-        iconText="Configure your Organization Chart Web Part"
-        description={"Please configure web part"}
-        buttonLabel="Configure"
-        onConfigure={context.propertyPane.open}
-      />
+      iconName="Edit"
+      iconText="Configure your Organization Chart Web Part"
+      description={"Please configure web part"}
+      buttonLabel="Configure"
+      onConfigure={context.propertyPane.open}
+    />
+     
     );
   }
+
 
   if (isLoading) {
     return (

@@ -1,6 +1,6 @@
 {
-    "name":  "SPFx 1.18.2",
-    "image":  "docker.io/m365pnp/spfx:1.18.2",
+    "name":  "SPFx 1.20.2",
+    "image":  "docker.io/m365pnp/spfx:1.20.2",
     "customizations":  {
                            "vscode":  {
                                           "extensions":  [
