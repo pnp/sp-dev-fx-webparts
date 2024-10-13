@@ -4,7 +4,7 @@
     "name": "react-pages-hierarchy",
     "id": "89758fb6-85e2-4e2b-ac88-4f4e7e5f60cb",
     "title": "Pages Hierarchy",
-    "version": "1.0.7.0",
+    "version": "1.8.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -12,7 +12,7 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": "https://github.com/bogeorge",
-      "mpnId": "Undefined-1.18.2"
+      "mpnId": "Undefined-1.20.0"
     },
     "metadata": {
       "shortDescription": {
