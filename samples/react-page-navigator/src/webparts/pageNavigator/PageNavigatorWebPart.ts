@@ -4,7 +4,7 @@ import { ServiceKey, Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import PageNavigator from './components/PageNavigator';
 import { IPageNavigatorProps } from './components/IPageNavigatorProps';
-import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink } from '@fluentui/react/lib/Nav';
 import { SPService } from '../../Service/SPService';
 import { IReadonlyTheme, ThemeChangedEventArgs, ThemeProvider } from '@microsoft/sp-component-base';
 

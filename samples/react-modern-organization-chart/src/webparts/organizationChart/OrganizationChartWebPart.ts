@@ -16,13 +16,12 @@ import {
 import * as strings from "OrganizationChartWebPartStrings";
 import { OrganizationChart } from "../../components/OrganizationChart/OrganizationChart";
 import { IOrganizationChartProps } from "../../components/OrganizationChart/IOrganizationChartProps";
-import { loadTheme } from "office-ui-fabric-react";
+import { loadTheme } from "@fluentui/react";
 import { DisplayMode } from "@microsoft/sp-core-library";
-import { sp } from "@pnp/sp";
-
-const teamsDefaultTheme = require("../../common/TeamsDefaultTheme.json");
-const teamsDarkTheme = require("../../common/TeamsDarkTheme.json");
-const teamsContrastTheme = require("../../common/TeamsContrastTheme.json");
+import { SPFI, spfi, SPFx as spSPFx } from "@pnp/sp";
+const teamsDefaultTheme = require("../../Common/TeamsDefaultTheme.json");
+const teamsDarkTheme = require("../../Common/TeamsDarkTheme.json");
+const teamsContrastTheme = require("../../Common/TeamsContrastTheme.json");
 
 export interface IOrganizationChartWebPartProps {
   title: string;
@@ -37,9 +36,7 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
   protected async onInit(): Promise<void> {
-    sp.setup({
-      spfxContext: this.context,
-    });
+    //const sp = spfi().using(spSPFx(this.context));
 
     this._themeProvider = this.context.serviceScope.consume(
       ThemeProvider.serviceKey
