@@ -3,15 +3,45 @@
   "solution": {
     "name": "react-modern-organization-chart",
     "id": "d28b8c44-5df1-4315-a6eb-a5be13ba4b88",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [{
       "resource": "Microsoft Graph",
       "scope": "Presence.Read.All"
-    }]
+    }],
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-organization-chart description"
+      },
+      "longDescription": {
+        "default": "react-organization-chart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-organization-chart OrganizationChartWebPart Feature",
+        "description": "The feature that activates OrganizationChartWebPart from the react-organization-chart solution.",
+        "id": "ea67ede9-e4e7-411c-aee1-843dca97a4a8",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "ea67ede9-e4e7-411c-aee1-843dca97a4a8"
+        ]
+      }
+    ]
   },
+
 
   "paths": {
     "zippedPackage": "solution/react-modern-organization-chart.sppkg"

@@ -66,6 +66,7 @@ References to office-ui-fabric-react version 5.x because of SharePoint 2019 Supp
 ## Contributors
 
 * [Peter Paul Kirschner](https://github.com/petkir) 
+* [Ishai Sagi] (http://github.com/ishaisagi-hns)
 
 Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) to allow to share this code.
 
@@ -73,6 +74,7 @@ Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) t
 
 Version|Date|Comments
 -------|----|--------
+1.1.0.0|Sep 09, 2024|Added properties and accessibility
 1.0.0.0|Mar 17, 2021|Initial release
 
 ## Minimal Path to Awesome
