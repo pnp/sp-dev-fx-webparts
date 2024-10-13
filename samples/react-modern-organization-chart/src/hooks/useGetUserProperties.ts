@@ -1,8 +1,8 @@
-import { sp } from "@pnp/sp";
+import { SPFI, spfi, SPFx as spSPFx } from "@pnp/sp";
 import "@pnp/sp/profiles";
 import { IUserInfo } from "../Entities/IUserInfo";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
 import { IUserPresence } from "../Entities/IUserPresence";
 import * as _ from "lodash";
 import { PnPClientStorage } from "@pnp/common";
@@ -17,15 +17,15 @@ export const useGetUserProperties = async (
   /*************************************************************************************/
   //  vars and const
   //*************************************************************************************/
-  const _MSGraphClient: MSGraphClient = await context.msGraphClientFactory.getClient();
+  const _MSGraphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
   const loginName: string = `i:0#.f|membership|${userEmail}`;
 
   const storage = new PnPClientStorage();
   let _managersList: IUserInfo[] = [];
   let _reportsList: IUserInfo[] = [];
 
-
- /*  sp.setup({
+  const sp = spfi().using(spSPFx(context));
+ /*  spfi.setup({
     spfxContext: context
   }); */
   /*************************************************************************************/
@@ -55,7 +55,7 @@ export const useGetUserProperties = async (
       let image = new Image();
       image.addEventListener("load", () => {
         let tempCanvas = document.createElement("canvas");
-        (tempCanvas.width = image.width),
+        (tempCanvas.width = image.width),// eslint-disable-line
           (tempCanvas.height = image.height),
           tempCanvas.getContext("2d").drawImage(image, 0, 0);
         let base64Str;
@@ -94,7 +94,6 @@ export const useGetUserProperties = async (
     for (const _manager of extendedManagers) {
       // get Profile for Manager
       const _profile: any = await sp.profiles
-        .usingCaching()
         .getPropertiesFor(_manager);
 
       // Get Object Id from userProperties
@@ -153,7 +152,6 @@ export const useGetUserProperties = async (
     let _userReportObjIds: string[] = [];
     for (const _userReport of directReports) {
       const _profile: any = await sp.profiles
-        .usingCaching()
         .getPropertiesFor(_userReport);
 
       const _userReportObjId: string = await getUserId(
@@ -248,7 +246,6 @@ const updateDirectReportsPresence = async (directReportsPresences: IUserPresence
   //  MAIN - Get Current User Profile
   //*************************************************************************************//
   const _currentUserProfile: any = await sp.profiles
-    .usingCaching()
     .getPropertiesFor(loginName);
   console.log(_currentUserProfile);
   // get Managers and Direct Reports

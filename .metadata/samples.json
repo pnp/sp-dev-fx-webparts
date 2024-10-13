@@ -10363,7 +10363,7 @@
       "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."
     ],
     "creationDateTime": "2020-06-11",
-    "updateDateTime": "2022-10-24",
+    "updateDateTime": "2024-10-09",
     "products": [
       "SharePoint"
     ],
@@ -14120,7 +14120,7 @@
       "This web part used the date range picker in the SharePoint Framework (SPFx) web part"
     ],
     "creationDateTime": "2020-07-04",
-    "updateDateTime": "2020-07-04",
+    "updateDateTime": "2024-10-07",
     "products": [
       "SharePoint"
     ],
@@ -14131,7 +14131,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20817,7 +20817,7 @@
       "This web part show organization chart for current user, shows, managers and direct reports and there available status."
     ],
     "creationDateTime": "2020-07-09",
-    "updateDateTime": "2020-07-09",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -20828,7 +20828,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -21563,7 +21563,7 @@
       "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities"
     ],
     "creationDateTime": "2023-02-03",
-    "updateDateTime": "2024-08-26",
+    "updateDateTime": "2024-10-11",
     "products": [
       "SharePoint"
     ],
@@ -21574,7 +21574,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.19.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
