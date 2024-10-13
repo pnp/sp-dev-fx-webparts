@@ -9,7 +9,7 @@
       "This web part show organization chart for current user, shows, managers and direct reports and there available status."
     ],
     "creationDateTime": "2020-07-09",
-    "updateDateTime": "2020-07-09",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",

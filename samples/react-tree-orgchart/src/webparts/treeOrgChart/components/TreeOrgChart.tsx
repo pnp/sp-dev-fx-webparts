@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // SPFx  React-tree-Organization-Chart
 // Author: João Mendes
 // Fev 2019
@@ -6,27 +7,24 @@ import * as React from "react";
 import styles from "./TreeOrgChart.module.scss";
 import { ITreeOrgChartProps } from "./ITreeOrgChartProps";
 import { ITreeOrgChartState } from "./ITreeOrgChartState";
-import SortableTree from "react-sortable-tree";
-import "react-sortable-tree/style.css";
-import {
-  IPersonaSharedProps,
-  Persona,
-  PersonaSize
-} from "office-ui-fabric-react/lib/Persona";
-import { IconButton } from "office-ui-fabric-react/lib/Button";
+
+
+
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SPService from "../../../services/SPServices";
 import { ITreeData } from "./ITreeData";
-import {
-  Spinner,
-  SpinnerSize
-} from "office-ui-fabric-react/lib/components/Spinner";
-import { DisplayMode, Environment, EnvironmentType } from "@microsoft/sp-core-library";
+
+import { DisplayMode } from "@microsoft/sp-core-library";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as strings from 'TreeOrgChartWebPartStrings';
 import GraphServices, { IGraphUser } from "../../../services/GraphService";
 import GraphService from "../../../services/GraphService";
+import {   IconButton, IPersonaSharedProps, Persona, PersonaSize, Spinner, SpinnerSize } from "@fluentui/react";
+import Tree from "./Tree/Tree";
+
+
+
 
 
 export enum TreeOrgChartType {
@@ -44,7 +42,7 @@ export default class TreeOrgChart extends React.Component<
   private SPService: SPService;
   private GraphService: GraphService;
 
-  constructor(props) {
+  constructor(props:ITreeOrgChartProps) {
     super(props);
 
     this.SPService = new SPService(this.props.context);
@@ -54,15 +52,18 @@ export default class TreeOrgChart extends React.Component<
       isLoading: true
     };
   }
-  //
-  private handleTreeOnChange(treeData) {
-    this.setState({ treeData });
+  
+  /*
+  private handleTreeOnChange(treeData:ITreeOrgChartState):void {
+    this.setState({...treeData });
   }
+    */
+  
 
   public async componentDidUpdate(
     prevProps: ITreeOrgChartProps,
     prevState: ITreeOrgChartState
-  ) {
+  ): Promise<void> {
     if (
       this.props.viewType !== prevProps.viewType ||
       this.props.maxLevels !== prevProps.maxLevels ||
@@ -75,26 +76,24 @@ export default class TreeOrgChart extends React.Component<
     }
   }
 
-  public async componentDidMount() {
-    if (Environment.type !== EnvironmentType.Local) {
-      const sharedLibrary = await this._loadSPComponentById(
+  public async componentDidMount(): Promise<void> {
+      const sharedLibrary = await this._loadSPComponentById<any>(
         LIVE_PERSONA_COMPONENT_ID
       );
-      const livePersonaCard: any = sharedLibrary.LivePersonaCard;
+      const livePersonaCard: unknown = sharedLibrary.LivePersonaCard;
       this.setState({ livePersonaCard: livePersonaCard });
-    }
-
-    await this.loadOrgchart();
+      await this.loadOrgchart();
+    return Promise.resolve();
   }
 
-  private async _loadSPComponentById(componentId: string): Promise<any> {
+  private async _loadSPComponentById<TComponent>(componentId: string): Promise<TComponent> {
     try {
-      const component: any = await SPComponentLoader.loadComponentById(
+      const component: TComponent = await SPComponentLoader.loadComponentById(
         componentId
       );
       return component;
     } catch (error) {
-      Promise.reject(error);
+     return Promise.reject(error);
     }
   }
 
@@ -118,57 +117,65 @@ export default class TreeOrgChart extends React.Component<
   /*
   // Load Organization Chart
   */
-  public async loadOrgchart() {
+  public loadOrgchart(): void{
 
-    this.setState({ treeData: [], isLoading: true });
-    const currentUser = this.props.context.pageContext.user.loginName;
-    let currentUserProperties = null;
-    this.treeData = [];
-    // Test if show only my Team or All Organization Chart
-    switch (this.props.viewType) {
-      case TreeOrgChartType.CompanyHierarchy:
-        const spcurrentlogin = `i:0#.f|membership|${currentUser}`;
-        currentUserProperties = await this.SPService.getUserProperties(
-          spcurrentlogin
-        );
-        const treeManagers = await this.buildOrganizationChart(
-          currentUserProperties
-        );
-        if (treeManagers) this.treeData.push(treeManagers);
-        break;
-      case TreeOrgChartType.MyTeam:
-        const myteam = await this.buildMyTeamOrganizationChart(
-          currentUser
-        );
-        if (myteam)
-          this.treeData = [{ ...myteam }];
-        break;
-      case TreeOrgChartType.ShowOtherTeam:
-        if (this.props.teamLeader && this.props.teamLeader.length > 0) {
-
-          const otherteam = await this.buildTeamLeaderOrganizationChart(
-            this.props.teamLeader
+    this.setState({ treeData: [], isLoading: true }, async () => {
+      const currentUser = this.props.context.pageContext.user.loginName;
+      let currentUserProperties = undefined;
+      this.treeData = [];
+      // Test if show only my Team or All Organization Chart
+      switch (this.props.viewType) {
+        case TreeOrgChartType.CompanyHierarchy: {
+        
+          const spcurrentlogin = `i:0#.f|membership|${currentUser}`;
+          currentUserProperties = await this.SPService.getUserProperties(
+            spcurrentlogin
           );
-          if (otherteam)
-            this.treeData = [{ ...otherteam }];
+          const treeManagers = await this.buildOrganizationChart(
+            currentUserProperties
+          );
+          if (treeManagers) this.treeData.push(treeManagers);
+          break;
         }
-        break;
-    }
+        case TreeOrgChartType.MyTeam: {
+          const myteam = await this.buildMyTeamOrganizationChart(
+            currentUser
+          );
+          if (myteam)
+            this.treeData = [{ ...myteam }];
+          break;
+        }
+        case TreeOrgChartType.ShowOtherTeam:
+          if (this.props.teamLeader && this.props.teamLeader.length > 0) {
+  
+            const otherteam = await this.buildTeamLeaderOrganizationChart(
+              this.props.teamLeader
+            );
+            if (otherteam)
+              this.treeData = [{ ...otherteam }];
+          }
+          break;
+      }
+  
+      this.setState({ treeData: this.treeData, isLoading: false });
 
-    this.setState({ treeData: this.treeData, isLoading: false });
+    });
+    
   }
 
   /*
     Build Organization Chart from currentUser
     @parm : currentUserProperties
   */
-  public async buildOrganizationChart(currentUserProperties: any) {
+  public async buildOrganizationChart(currentUserProperties: any):Promise<ITreeData | undefined> {
     // Get Managers
-    let treeManagers: ITreeData | null = null;
+    let treeManagers: ITreeData | undefined = undefined;
     if (
       currentUserProperties.ExtendedManagers &&
       currentUserProperties.ExtendedManagers.length > 0
     ) {
+      //get directManager currentUserProperties.ExtendedManagers.length  -1
+      //get orgmanager 0
       const upn: string | undefined = this.claimUserToUPN(currentUserProperties.ExtendedManagers[0]);
       if (upn) {
         treeManagers = await this.getUsers(
@@ -205,8 +212,8 @@ export default class TreeOrgChart extends React.Component<
 
   public buildDefaultPersonaCard(user: IGraphUser): JSX.Element {
 
-    let spUser: IPersonaSharedProps = {};
-    let imageInitials: string[] = user.displayName ? user.displayName.split(" ") : [];
+    const spUser: IPersonaSharedProps = {};
+    const imageInitials: string[] = user.displayName ? user.displayName.split(" ") : [];
     //https://graph.microsoft.com/v1.0/users/${upn}/photo/$value
     // Persona Card Properties
     spUser.imageUrl = user.userPrincipalName ? `/_layouts/15/userphoto.aspx?size=L&username=${user.userPrincipalName}` : undefined;
@@ -227,7 +234,7 @@ export default class TreeOrgChart extends React.Component<
   }
 
 
-  private async getUsers(upn: string): Promise<ITreeData | null> {
+  private async getUsers(upn: string): Promise<ITreeData | undefined> {
     const managerUser = await this.GraphService.getUser(upn);
     const person = this.buildPersonaCard(managerUser);
     if (managerUser.userPrincipalName) {
@@ -241,15 +248,14 @@ export default class TreeOrgChart extends React.Component<
     }
   }
 
-  private async getDirectReportsUsers(upn?: string, level: number = 1, expanded: boolean = false): Promise<ITreeData[] | null> {
-    if (!upn) { return null; }
+  private async getDirectReportsUsers(upn?: string, level: number = 1, expanded: boolean = false): Promise<ITreeData[] | undefined> {
+    if (!upn) { return undefined; }
 
-   
     const directReportsUser = await this.GraphService.getUserDirectReports(upn,this.props.excludefilter,this.props.filter);
     //this is already level 1
     if (directReportsUser && directReportsUser.length > 0) {
       return await Promise.all(directReportsUser.map(async (dr) => {
-        const children = ((level +1) <= this.props.maxLevels) ? await this.getDirectReportsUsers(dr.userPrincipalName, level + 1) : null;
+        const children = ((level +1) <= this.props.maxLevels) ? await this.getDirectReportsUsers(dr.userPrincipalName, level + 1) : undefined;
         return ({
           title: this.buildPersonaCard(dr),
           expanded: expanded,
@@ -258,13 +264,13 @@ export default class TreeOrgChart extends React.Component<
 
       }));
     }
-    return null;
+    return undefined;
   }
 
 
 
   //buildTeamLeaderOrganizationChart
-  private async buildTeamLeaderOrganizationChart(upn: string): Promise<ITreeData | null> {
+  private async buildTeamLeaderOrganizationChart(upn: string): Promise<ITreeData | undefined> {
 
     const tmpupn: string | undefined = this.claimUserToUPN(upn);
 
@@ -275,7 +281,7 @@ export default class TreeOrgChart extends React.Component<
       Build My Team Organization Chart
       @parm: currentUserProperties
   */
-  private async buildMyTeamOrganizationChart(upn: string): Promise<ITreeData | null> {
+  private async buildMyTeamOrganizationChart(upn: string): Promise<ITreeData | undefined> {
 
     const mymanager = await this.GraphService.getUserManger(upn);
     if (mymanager && mymanager.userPrincipalName) {
@@ -293,7 +299,7 @@ export default class TreeOrgChart extends React.Component<
         selectedTeamleader = this.props.teamLeader;
       }
     }
-
+  
     return (
       <div className={styles.treeOrgChart}>
         <WebPartTitle
@@ -303,14 +309,13 @@ export default class TreeOrgChart extends React.Component<
         />
         {showEditOther && (<div>
           <PeoplePicker
-            context={this.props.context}
+          context={ this.props.context as any}
             titleText={strings.TeamLeaderHeadline}
             personSelectionLimit={1}
             groupName={""} // Leave this blank in case you want to filter from all users
-            isRequired={true}
             disabled={false}
             defaultSelectedUsers={selectedTeamleader ? [selectedTeamleader] : undefined}
-            selectedItems={(items: any) => {
+            onChange={(items: any) => {
               if (this.props.updateTeamLeader) {
                 if (items.length > 0) {
                   const teamleaderupn: string | undefined = this.claimUserToUPN(items[0].loginName);
@@ -322,47 +327,42 @@ export default class TreeOrgChart extends React.Component<
                 this.props.updateTeamLeader('');
               }
             }}
-            showHiddenInUI={false}
+            
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000} />
         </div>)}
 
-        {this.state.isLoading ? (
+        {this.state.isLoading && (
           <Spinner
             size={SpinnerSize.large}
             label="Loading Organization Chart ..."
-          ></Spinner>
-        ) : null}
+          />)}
         <div className={styles.treeContainer}>
-          <SortableTree
-            treeData={this.state.treeData}
-            onChange={this.handleTreeOnChange.bind(this)}
-            canDrag={false}
-            rowHeight={70}
-            maxDepth={this.props.maxLevels}
-            generateNodeProps={rowInfo => {
-              return !this.props.detailBehavoir ?
-                ({
-                  buttons: [
-                    <IconButton
-                      disabled={false}
-                      checked={false}
-                      iconProps={{ iconName: "ContactInfo" }}
-                      title={strings.ContactInfoTitle}
-                      ariaLabel={strings.ContactInfoTitle}
-                      onClick={() => {
-                        window.open(
-                          `https://eur.delve.office.com/?p=${rowInfo.node.title.props.tertiaryText}&v=work`
-                        );
-                      }}
-                    />
-                  ]
-                }) : undefined;
-            }
-            }
-          />
+          
+          <Tree data={this.state.treeData} renderNode={this.renderNode.bind(this)} />
         </div>
       </div>
     );
+  }
+  private renderNode(node: any):JSX.Element{
+    return (<div> 
+      <div className={styles.treeContents}>
+        <div style={{marginRight:'30px',display:'inline-block'}}>
+        {node.title}
+        </div>
+        {this.props.detailBehavoir  &&(   <IconButton
+                        disabled={false}
+                        checked={false}
+                        iconProps={{ iconName: "ContactInfo" }}
+                        title={strings.ContactInfoTitle}
+                        ariaLabel={strings.ContactInfoTitle}
+                        onClick={() => {
+                          window.open(
+                            `https://eur.delve.office.com/?p=${node.title.props.tertiaryText}&v=work`
+                          );
+                        }}
+                      />)}
+      </div>
+    </div>);
   }
 }
