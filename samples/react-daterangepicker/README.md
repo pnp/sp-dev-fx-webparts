@@ -4,7 +4,7 @@
 
 This web part used the date range picker in the SharePoint Framework (SPFx) web part
 
-![Sample of the offline first webpart](./assets/daterange1.png)
+![Sample of the offline first web part](./assets/daterange1.png)
 
 
 ## Compatibility
