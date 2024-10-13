@@ -1,10 +1,10 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { MSGraphClientV3  } from "@microsoft/sp-http";
 import * as moment from 'moment';
-import { version } from "react";
 
 export class SPService {
-  private graphClient: MSGraphClientV3  = null;
+  // private graphClient: MSGraphClientV3  = null;
+  private graphClient: MSGraphClientV3;
   private  birthdayListTitle: string = "Birthdays";
   constructor(private _context: WebPartContext) {
 
