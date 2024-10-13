@@ -1,4 +1,4 @@
-import { INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink } from '@fluentui/react/lib/Nav';
 
 export interface IPageNavigatorState {
   anchorLinks: INavLink[];
