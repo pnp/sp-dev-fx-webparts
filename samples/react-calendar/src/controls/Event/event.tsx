@@ -1167,12 +1167,12 @@ export class Event extends React.Component<IEventProps, IEventState> {
                 <div>
                   <PeoplePicker
                     webAbsoluteUrl={this.props.siteUrl}
-                    context={this.props.context}
+                    context={this.props.context as any}
                     titleText={strings.AttendeesLabel}
                     principalTypes={[PrincipalType.User]}
                     resolveDelay={1000}
                     showtooltip={true}
-                    selectedItems={this.getPeoplePickerItems}
+                    //selectedItems={this.getPeoplePickerItems}
                     personSelectionLimit={10}
                     defaultSelectedUsers={this.state.selectedUsers}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}

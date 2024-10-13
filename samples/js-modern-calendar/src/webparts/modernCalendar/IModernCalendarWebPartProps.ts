@@ -1,9 +1,9 @@
 export interface IModernCalendarWebPartProps {
   description: string;
   site: string;
-  siteOther: string;
+  siteOther: string|null;
   other: boolean;
-  listTitle: string;
+  listTitle: string|null;
   theme: string;
   start: string;
   end: string;

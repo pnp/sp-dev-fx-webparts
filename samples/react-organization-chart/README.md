@@ -19,8 +19,8 @@ This web part shows an organization chart based on specified user, and user can 
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
-![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -34,13 +34,16 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
+
 - [João Mendes](https://github.com/joaojmendes)
 - [Passoli Mirko](https://github.com/Paxol)
+- [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
 |Version|Date|Comments|
 |-------|----|--------|
+|1.2|Oct, 2024|SPFx 1.20.0|
 |1.1|Feb, 2024|Guest user filter + update to SPFx 1.18.2|
 |1.0|May, 2021|Initial release|
 
