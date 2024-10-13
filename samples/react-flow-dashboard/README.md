@@ -54,6 +54,10 @@ If the problem still persists,
 - in the command-line run:
   - `npm install`
   - `gulp serve`
+- if using spfx-fast-serve, in the command-line run:
+  - `spfx-fast-serve`
+  - `Press enter if prompted to install node modules (will run npm install)`
+  - `npm run serve`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
