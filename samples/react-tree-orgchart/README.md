@@ -9,7 +9,7 @@ You can configure in the web part properties:
 * show Organization Chart by picking up user
  
 
-![Organization Chart Web Part](./assets/react-tree-orgchart.gif)
+![Organization Chart Web Part](./assets/react-tree-orgchart-2.gif)
 
 ![Organization Chart Web Part](./assets/Screenshot1.png)
 ![Organization Chart Web Part](./assets/Screenshot2.png)
@@ -23,8 +23,8 @@ You can configure in the web part properties:
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LTS 10 | LTS 8](https://img.shields.io/badge/Node.js-LTS%2010%20%7C%20LTS%208-green.svg) 
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 18](https://img.shields.io/badge/Node.js-LTS%2018-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -63,11 +63,13 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
 
 * [João Mendes](https://github.com/joaojmendes)
 * [Peter Paul Kirschner](https://github.com/petkir)
+* [Thomas Daly](https://github.com/tom-daly)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+2.0.0|October 06, 2024|Update to SPFx 1.20, removed react-sortable-tree(no updates any more) and replaced with custom control
 1.1.2|October 28, 2021|Fixes the Issue with different TimeZones.
 1.1.1|October 5, 2021|Added missing Graph permissions in manifest
 1.1.0|Feb 28, 2021|Added <ul><li>Show Other Team</li><li>Live Contact Card</li><li>Filter user by userPrincipalName</li><li>Graph API</li><li>PNPJS updates</li></ul> 

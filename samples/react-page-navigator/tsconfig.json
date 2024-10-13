@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.2/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -12,15 +12,17 @@
     "skipLibCheck": true,
     "outDir": "lib",
     "inlineSources": false,
+    "noImplicitAny": true,
     "strictNullChecks": false,
     "noUnusedLocals": false,
+    "esModuleInterop": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
     ],
     "types": [
       "webpack-env",
-      "@types/jest"
+      "jest"
     ],
     "lib": [
       "es5",
