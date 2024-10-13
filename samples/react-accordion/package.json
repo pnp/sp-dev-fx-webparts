@@ -1,6 +1,6 @@
 {
   "name": "react-accordion",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
