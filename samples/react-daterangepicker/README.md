@@ -4,7 +4,7 @@
 
 This web part used the date range picker in the SharePoint Framework (SPFx) web part
 
-![Sample of the offline first webpart](./assets/daterange1.png)
+![Sample of the offline first web part](./assets/daterange1.png)
 
 
 ## Compatibility
@@ -14,8 +14,8 @@ This web part used the date range picker in the SharePoint Framework (SPFx) web 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
+![Node.js v18.20.2](https://img.shields.io/badge/Node.js-v18.20.2-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -31,12 +31,14 @@ This web part used the date range picker in the SharePoint Framework (SPFx) web 
 ## Contributors
 
 * [Ravichandran Krishnasamy](https://github.com/ravichandran-blog)
+* [Dinesh Girase](https://github.com/dgirase)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0   |July 04, 2020  | Initial release.
+1.0.1.0 |Oct 07, 2024 | Version Upgrade.
 
 
 ## Minimal Path to Awesome

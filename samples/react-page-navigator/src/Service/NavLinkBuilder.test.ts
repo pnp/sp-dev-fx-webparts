@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { IHierarchyEntry, navLinkBuilder } from "./NavLinkBuilder";
 
 interface IMockLink extends IHierarchyEntry<IMockLink> {
@@ -11,13 +13,13 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
 
   const depth = DEPTH_NO_COLLAPSABLE_HEADER;
   const h1 = depth;
-  const h2 = h1+1;
-  const h3 = h2+1;
-  const h4 = h3+1;
+  const h2 = h1 + 1;
+  const h3 = h2 + 1;
+  const h4 = h3 + 1;
 
   it("should nest correctly without h1", () => {
     const linkH2: IMockLink = {
-        name: "h2",
+      name: "h2",
     };
     const linkH3: IMockLink = {
       name: "h3",
@@ -29,7 +31,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "another h3",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, linkH2, h2);
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH2a, h2);
@@ -38,10 +40,10 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
     expect(actual).toMatchSnapshot();
   });
 
-  
+
   it("should nest correctly for wrong order headings", () => {
     const linkH1: IMockLink = {
-        name: "h1",
+      name: "h1",
     };
     const linkH2: IMockLink = {
       name: "h2",
@@ -53,7 +55,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [ ];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, linkH4, h4);
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH2, h2);
@@ -64,7 +66,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
 
   it("should nest correctly for headings with a jump", () => {
     const linkH1: IMockLink = {
-        name: "h1",
+      name: "h1",
     };
     const linkH2: IMockLink = {
       name: "h2",
@@ -76,7 +78,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [ ];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH4, h4);
     navLinkBuilder.build(actual, linkH1, h1);
@@ -87,10 +89,10 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
 
   it("should add a single item to an empty list", () => {
     const lnk: IMockLink = {
-        name: "xyz",
+      name: "xyz",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk, h1);
 
     expect(actual).toMatchSnapshot();
@@ -104,7 +106,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "abc",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h1);
 
@@ -119,7 +121,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "abc",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
 
@@ -140,7 +142,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "abc.1",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk11, h2);
     navLinkBuilder.build(actual, lnk2, h1);
@@ -163,7 +165,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "geh",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
     navLinkBuilder.build(actual, lnk3, h3);
@@ -186,7 +188,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "h3",
     };
 
-    const actual = []
+    const actual: any[] = []
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
     navLinkBuilder.build(actual, lnk3, h2);
@@ -218,7 +220,7 @@ describe("The NavLinkBuilder without a preceding collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, lnk0, h1);
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
@@ -235,9 +237,9 @@ describe("The NavLinkBuilder with a collapsable header", () => {
   let head: IMockLink;
   const depth = DEPTH_COLLAPSABLE_HEADER;
   const h1 = depth;
-  const h2 = h1+1;
-  const h3 = h2+1;
-  const h4 = h3+1;
+  const h2 = h1 + 1;
+  const h3 = h2 + 1;
+  const h4 = h3 + 1;
 
   beforeEach(() => {
     head = {
@@ -247,7 +249,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
 
   it("should nest correctly without h1", () => {
     const linkH2: IMockLink = {
-        name: "h2",
+      name: "h2",
     };
     const linkH3: IMockLink = {
       name: "h3",
@@ -259,7 +261,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "another h3",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, linkH2, h2);
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH2a, h2);
@@ -270,7 +272,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
 
   it("should nest correctly for wrong order nestings", () => {
     const linkH1: IMockLink = {
-        name: "h1",
+      name: "h1",
     };
     const linkH2: IMockLink = {
       name: "h2",
@@ -282,7 +284,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, linkH4, h4);
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH2, h2);
@@ -293,7 +295,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
 
   it("should nest correctly for headings with a jump", () => {
     const linkH1: IMockLink = {
-        name: "h1",
+      name: "h1",
     };
     const linkH2: IMockLink = {
       name: "h2",
@@ -305,7 +307,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [ ];
+    const actual: any[] = [];
     navLinkBuilder.build(actual, linkH3, h3);
     navLinkBuilder.build(actual, linkH4, h4);
     navLinkBuilder.build(actual, linkH1, h1);
@@ -319,7 +321,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "xyz",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, lnk, h1);
 
     expect(actual).toMatchSnapshot();
@@ -333,7 +335,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "abc",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h1);
 
@@ -351,7 +353,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "def",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
     navLinkBuilder.build(actual, lnk3, h2);
@@ -373,7 +375,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "h3",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);
     navLinkBuilder.build(actual, lnk3, h2);
@@ -405,7 +407,7 @@ describe("The NavLinkBuilder with a collapsable header", () => {
       name: "h4",
     };
 
-    const actual = [ head ];
+    const actual = [head];
     navLinkBuilder.build(actual, lnk0, h1);
     navLinkBuilder.build(actual, lnk1, h1);
     navLinkBuilder.build(actual, lnk2, h2);

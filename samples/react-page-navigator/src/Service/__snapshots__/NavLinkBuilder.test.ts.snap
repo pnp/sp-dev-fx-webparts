@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The NavLinkBuilder with a collapsable header should add a one item in a collapsable section two inside that one 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
-        "links": Array [
-          Object {
+[
+  {
+    "links": [
+      {
+        "links": [
+          {
             "name": "abc",
           },
-          Object {
+          {
             "name": "def",
           },
         ],
@@ -22,10 +22,10 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should add a single item to the heading 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "xyz",
       },
     ],
@@ -35,13 +35,13 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should add a two items on the same level 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "xyz",
       },
-      Object {
+      {
         "name": "abc",
       },
     ],
@@ -51,18 +51,18 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should nest correctly for headings with a jump 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h4",
       },
     ],
     "name": "h3",
   },
-  Object {
-    "links": Array [
-      Object {
+  {
+    "links": [
+      {
         "name": "h2",
       },
     ],
@@ -72,19 +72,19 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should nest correctly for wrong order nestings 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h4",
       },
-      Object {
+      {
         "name": "h3",
       },
-      Object {
+      {
         "name": "h2",
       },
-      Object {
+      {
         "name": "h1",
       },
     ],
@@ -94,20 +94,20 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should nest correctly without h1 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
-        "links": Array [
-          Object {
+[
+  {
+    "links": [
+      {
+        "links": [
+          {
             "name": "h3",
           },
         ],
         "name": "h2",
       },
-      Object {
-        "links": Array [
-          Object {
+      {
+        "links": [
+          {
             "name": "another h3",
           },
         ],
@@ -120,17 +120,17 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should not nest two h2 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
-        "links": Array [
-          Object {
+[
+  {
+    "links": [
+      {
+        "links": [
+          {
             "name": "h2",
           },
-          Object {
-            "links": Array [
-              Object {
+          {
+            "links": [
+              {
                 "name": "h3",
               },
             ],
@@ -146,25 +146,25 @@ Array [
 `;
 
 exports[`The NavLinkBuilder with a collapsable header should not nest two h3 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h1",
       },
-      Object {
-        "links": Array [
-          Object {
+      {
+        "links": [
+          {
             "name": "h2",
           },
-          Object {
-            "links": Array [
-              Object {
+          {
+            "links": [
+              {
                 "name": "h3",
               },
-              Object {
-                "links": Array [
-                  Object {
+              {
+                "links": [
+                  {
                     "name": "h4",
                   },
                 ],
@@ -183,14 +183,14 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should add a four items on different levels 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
-        "links": Array [
-          Object {
-            "links": Array [
-              Object {
+[
+  {
+    "links": [
+      {
+        "links": [
+          {
+            "links": [
+              {
                 "name": "geh",
               },
             ],
@@ -206,18 +206,18 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should add a single item to an empty list 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "xyz",
   },
 ]
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should add a two items on different levels 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "abc",
       },
     ],
@@ -227,29 +227,29 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should add a two items on the same level 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "xyz",
   },
-  Object {
+  {
     "name": "abc",
   },
 ]
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should add a two items on the same level and two items on different levels 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "xyz.1",
       },
     ],
     "name": "xyz",
   },
-  Object {
-    "links": Array [
-      Object {
+  {
+    "links": [
+      {
         "name": "abc.1",
       },
     ],
@@ -259,18 +259,18 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should nest correctly for headings with a jump 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h4",
       },
     ],
     "name": "h3",
   },
-  Object {
-    "links": Array [
-      Object {
+  {
+    "links": [
+      {
         "name": "h2",
       },
     ],
@@ -280,35 +280,35 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should nest correctly for wrong order headings 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "h4",
   },
-  Object {
+  {
     "name": "h3",
   },
-  Object {
+  {
     "name": "h2",
   },
-  Object {
+  {
     "name": "h1",
   },
 ]
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should nest correctly without h1 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h3",
       },
     ],
     "name": "h2",
   },
-  Object {
-    "links": Array [
-      Object {
+  {
+    "links": [
+      {
         "name": "another h3",
       },
     ],
@@ -318,15 +318,15 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should not nest two h2 1`] = `
-Array [
-  Object {
-    "links": Array [
-      Object {
+[
+  {
+    "links": [
+      {
         "name": "h2",
       },
-      Object {
-        "links": Array [
-          Object {
+      {
+        "links": [
+          {
             "name": "h3",
           },
         ],
@@ -339,23 +339,23 @@ Array [
 `;
 
 exports[`The NavLinkBuilder without a preceding collapsable header should not nest two h3 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "h1",
   },
-  Object {
-    "links": Array [
-      Object {
+  {
+    "links": [
+      {
         "name": "h2",
       },
-      Object {
-        "links": Array [
-          Object {
+      {
+        "links": [
+          {
             "name": "h3",
           },
-          Object {
-            "links": Array [
-              Object {
+          {
+            "links": [
+              {
                 "name": "h4",
               },
             ],

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HolidaysListColumns, HolidaysListSelectColumns } from "../constants/constant";
-import { ListName } from "../constants/constant";
+import { HolidaysListColumns, HolidaysListSelectColumns, ListName } from "../constants/constant";
+
 import { GraphService } from "./GraphService";
 import { SPService } from "./SPService";
 
@@ -10,8 +10,8 @@ import { IEmployeeInfo } from "../../webparts/holidaysCalendar/interfaces/IHolid
 import { IHolidayItem, IHoliday } from "../interfaces/HolidaysCalendar";
 
 export class HolidaysCalendarService {
-  private spService: SPService;
-  private graphService: GraphService;
+  private readonly spService: SPService;
+  private readonly graphService: GraphService;
   constructor(spService: SPService, graphService: GraphService) {
     this.spService = spService;
     this.graphService = graphService;
@@ -83,6 +83,7 @@ export class HolidaysCalendarService {
       });
       return Promise.resolve(holidays);
     } catch (ex) {
+      console.log(ex);
       return Promise.reject(holidays);
     }
   };
@@ -122,6 +123,7 @@ export class HolidaysCalendarService {
       await this.graphService.createEvent(eventDetail);
       return Promise.resolve(true);
     } catch (ex) {
+      console.log(ex);
       return Promise.reject(false);
     }
   };

@@ -5,7 +5,6 @@ import { IFetchOptions } from '@pnp/common';
 import { FilterParser } from './filterParser';
 import { MockListFactory } from './mocklistfactory';
 import { parse } from 'url';
-// import * as FileSaver from 'file-saver';
 import { LogHelper, ListTitles } from '@src/utilities';
 
 export class MockResponse {

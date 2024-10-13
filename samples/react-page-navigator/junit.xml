@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="18" failures="0" errors="0" time="2.678">
+  <testsuite name="The NavLinkBuilder without a preceding collapsable header" errors="0" failures="0" skipped="0" timestamp="2024-10-06T09:59:45" time="2.331" tests="18">
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should nest correctly without h1" name="The NavLinkBuilder without a preceding collapsable header should nest correctly without h1" time="0.004">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should nest correctly for wrong order headings" name="The NavLinkBuilder without a preceding collapsable header should nest correctly for wrong order headings" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should nest correctly for headings with a jump" name="The NavLinkBuilder without a preceding collapsable header should nest correctly for headings with a jump" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should add a single item to an empty list" name="The NavLinkBuilder without a preceding collapsable header should add a single item to an empty list" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should add a two items on the same level" name="The NavLinkBuilder without a preceding collapsable header should add a two items on the same level" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should add a two items on different levels" name="The NavLinkBuilder without a preceding collapsable header should add a two items on different levels" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should add a two items on the same level and two items on different levels" name="The NavLinkBuilder without a preceding collapsable header should add a two items on the same level and two items on different levels" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should add a four items on different levels" name="The NavLinkBuilder without a preceding collapsable header should add a four items on different levels" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should not nest two h2" name="The NavLinkBuilder without a preceding collapsable header should not nest two h2" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder without a preceding collapsable header should not nest two h3" name="The NavLinkBuilder without a preceding collapsable header should not nest two h3" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should nest correctly without h1" name="The NavLinkBuilder with a collapsable header should nest correctly without h1" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should nest correctly for wrong order nestings" name="The NavLinkBuilder with a collapsable header should nest correctly for wrong order nestings" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should nest correctly for headings with a jump" name="The NavLinkBuilder with a collapsable header should nest correctly for headings with a jump" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should add a single item to the heading" name="The NavLinkBuilder with a collapsable header should add a single item to the heading" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should add a two items on the same level" name="The NavLinkBuilder with a collapsable header should add a two items on the same level" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should add a one item in a collapsable section two inside that one" name="The NavLinkBuilder with a collapsable header should add a one item in a collapsable section two inside that one" time="0.001">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should not nest two h2" name="The NavLinkBuilder with a collapsable header should not nest two h2" time="0">
+    </testcase>
+    <testcase classname="The NavLinkBuilder with a collapsable header should not nest two h3" name="The NavLinkBuilder with a collapsable header should not nest two h3" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

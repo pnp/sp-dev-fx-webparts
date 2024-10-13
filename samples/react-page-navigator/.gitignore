@@ -31,3 +31,6 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+# special folders
+.heft

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface IHierarchyEntry<T extends IHierarchyEntry<T>> {
   links?: IHierarchyEntry<T>[];
 }
@@ -10,7 +12,7 @@ export class navLinkBuilder {
  * @param order place order of the new link
  * @returns navLinks
  */
- public static build<T extends IHierarchyEntry<T>>(currentLinks: T[], newLink: T, order: number) {
+ public static build<T extends IHierarchyEntry<T>>(currentLinks: T[], newLink: T, order: number): void {
   const lastIndex = currentLinks.length - 1;
   const startorder:number = (currentLinks as any).__startorder || 0;
 

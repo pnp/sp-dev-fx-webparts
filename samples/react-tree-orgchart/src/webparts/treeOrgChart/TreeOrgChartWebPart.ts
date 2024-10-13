@@ -7,9 +7,10 @@ import * as strings from 'TreeOrgChartWebPartStrings';
 import TreeOrgChart, { TreeOrgChartType } from './components/TreeOrgChart';
 import { ITreeOrgChartProps } from './components/ITreeOrgChartProps';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
-import { setup as pnpSetup } from '@pnp/common';
-import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneDropdown, PropertyPaneTextField, PropertyPaneToggle } from '@microsoft/sp-webpart-base';
-import { graph } from "@pnp/graph";
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneConfiguration, PropertyPaneDropdown, PropertyPaneTextField, PropertyPaneToggle} from '@microsoft/sp-property-pane';
+
+import { getSP,getGraph } from './components/pnpjsConfig';
 
 export interface ITreeOrgChartWebPartProps {
   title: string;
@@ -26,11 +27,10 @@ export interface ITreeOrgChartWebPartProps {
 
 export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgChartWebPartProps> {
   public onInit(): Promise<void> {
-
-    pnpSetup({
-      spfxContext: this.context
-    });
-    graph.setup(this.context as any);
+console.log("TreeOrgChartWebPart onInit");
+console.log(this.context.pageContext.web.absoluteUrl);
+    getSP(this.context);
+    getGraph(this.context);
     //Migration old Config Settings
     if (!this.properties.viewType) {
       const treetype = this.properties.currentUserTeam ? TreeOrgChartType.MyTeam : TreeOrgChartType.CompanyHierarchy;
@@ -137,3 +137,5 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
     };
   }
 }
+
+
