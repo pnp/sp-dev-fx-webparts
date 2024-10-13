@@ -28,6 +28,9 @@ obj
 # Resx Generated Code
 *.resx.ts
 
+.heft
+.release
+
 # Styles Generated Code
 *.scss.ts
 # .CER Certificates

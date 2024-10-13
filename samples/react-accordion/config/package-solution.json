@@ -3,9 +3,31 @@
   "solution": {
     "name": "react-accordion-client-side-solution",
     "id": "6d6cf05b-cfe5-4d12-af19-19ec3aedcaf9",
-    "version": "2.3.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "react-accordion description"
+      },
+      "longDescription": {
+        "default": "react-accordion description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+        {
+          "title": "react-accordion ReactAccordionWebPart Feature",
+          "description": "The feature that activates ReactAccordionWebPart from the react-accordion solution.",
+          "id": "97a28c00-64ee-4ec7-b373-723e39069a96",
+          "version": "3.0.0.0",
+          "componentIds": [
+            "97a28c00-64ee-4ec7-b373-723e39069a96"
+          ]
+        }
+      ]
   },
   "paths": {
     "zippedPackage": "solution/react-accordion.sppkg"
