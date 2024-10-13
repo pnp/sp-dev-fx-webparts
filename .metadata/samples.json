@@ -23067,7 +23067,7 @@
       "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
     ],
     "creationDateTime": "2020-04-30",
-    "updateDateTime": "2024-01-11",
+    "updateDateTime": "2024-10-12",
     "products": [
       "SharePoint"
     ],
@@ -23078,7 +23078,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -23116,6 +23116,11 @@
         "gitHubAccount": "SlowRobot",
         "name": "SlowRobot",
         "pictureUrl": "https://github.com/SlowRobot.png"
+      },
+      {
+        "gitHubAccount": "tmaestrini",
+        "name": "Tobias Maestrini",
+        "pictureUrl": "https://github.com/tmaestrini.png"
       }
     ],
     "references": [
