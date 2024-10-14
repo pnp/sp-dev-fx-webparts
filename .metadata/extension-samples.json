@@ -3936,7 +3936,7 @@
       "Sample SharePoint Framework application customizer showing how to create a tenant global NavBar and Footer NavBar for modern sites, reading menu items from the Term Store."
     ],
     "creationDateTime": "2017-09-28",
-    "updateDateTime": "2017-09-28",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -3947,7 +3947,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.3"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -5323,7 +5323,7 @@
       "With the use of Rest calls, this sample command set shows how to manage list subscriptions (SharePoint webhooks) and take action to extend the webhook expiration date. The commandset will be added to the lists and libraries and will only be shown if there are any list subscriptions available on the list. The subscriptions that are accessible are shown when you click on the Commandset. The 'Renew subscription' action can be used in accordance with the subscription's expiration date. Given that the default number of days is 180, the subscription's (webhook expiration renewal date) renewal date is set to 179 days. "
     ],
     "creationDateTime": "2023-09-12",
-    "updateDateTime": "2023-09-12",
+    "updateDateTime": "2024-10-03",
     "products": [
       "SharePoint"
     ],
@@ -5334,7 +5334,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "tags": [],

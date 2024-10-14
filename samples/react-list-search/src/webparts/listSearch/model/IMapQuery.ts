@@ -2,11 +2,11 @@ import { SiteList } from "./IListConfigProps";
 import { SharePointType } from "./ISharePointFieldTypes";
 
 export interface IMapQuery {
-  [site: string]: Array<IMapQueryList>;
+  [site: string]: IMapQueryList;
 }
 
 export interface IMapQueryList {
-  [list: string]: Array<IListSearchListQuery>;
+  [list: string]: IListSearchListQuery;
 }
 
 export interface IListSearchListQuery {
@@ -14,6 +14,12 @@ export interface IListSearchListQuery {
   audienceEnabled: boolean;
   camlQuery?: string;
   viewName?: string;
-  fields: Array<{ originalField: string, newField: string, fieldType: SharePointType }>;
+  fields: Array<IListSearchListQueryItem>;
+}
+
+export interface IListSearchListQueryItem{
+  originalField: string;
+  newField: string;
+  fieldType: SharePointType;
 }
 

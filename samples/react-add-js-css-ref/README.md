@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 04/24/2020 12:00:00 AM
----
 # Add JS and CSS reference on Modern Pages via SPFx application customizer extension
 
 This repo is a react based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site. This web part provides an interface to JS and CSS file references so that we don't have to modify code when we need to change references or add new references in the future. As part of security measures, this actions on web part can be only accessed by users who have Manage web permission on site.
@@ -22,6 +7,7 @@ Web Part in Action
 ![Web part in action](assets/webpartinaction.gif?raw=true "web part in action")
 
 Challenges/Drawback with ONLY using SPFx extension for adding js and css file references.
+
 * JS and CSS file references links needs to be hardcoded in solution
 * Changes to code required if we need to change add new reference or remove existing reference.
 * Redeployment of package and installation

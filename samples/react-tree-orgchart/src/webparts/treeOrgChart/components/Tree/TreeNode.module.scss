@@ -1,0 +1,128 @@
+
+.tree { 
+    margin-left: 40px;
+}
+
+.treenode {
+    
+    position: relative;
+    margin-left: 20px;
+ }
+    
+ .treechildren {
+    position: relative;
+    display: flex;
+    flex-direction: row ;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 10px;
+}
+.nodes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    
+}
+
+.collapseButton,
+.expandButton {
+    appearance: none;
+    border: none;
+    z-index: 99;
+    position: absolute;
+    border-radius: 100%;
+    box-shadow: 0 0 0 1px #000;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    top: 25px;
+    left: -25px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    background-size: 24px;
+  height: 20px;
+  width: 20px;
+  }
+
+  .collapseButton {
+    background: #fff
+      url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48L2c+Cjwvc3ZnPg==')
+      no-repeat center;
+  }
+  
+  .expandButton {
+    background: #fff
+      url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48cGF0aCBkPSJNOSA0LjV2OSIvPjwvZz4KPC9zdmc+')
+      no-repeat center;
+  }
+  .linetop,
+  .line{
+ 
+    width: 10px;
+    position: relative;
+  }
+  .line::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    left: 50%;
+    top: -10px;
+    height: calc( 100% - 27px );
+  }
+  .linetop::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    left: 50%;
+    top: -10px;
+    height: 35px;
+  }
+
+  .middleStyle
+  { 
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        top:-11px;
+        left:-15px
+     
+  }
+/*
+.middleStyle::after,
+.fistStyle::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    left: 50%;
+    top: 0;
+    height: 65px;
+  }
+*/
+  /*
+.lastStyle::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    left: 50%;
+    top: 0;
+    height: 35px;
+  }
+
+*/
+
+
+  .middleStyle::before
+ {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 25px;
+    left: -10px;
+    top: 35px;
+    height: 1px;
+  }

@@ -10,7 +10,7 @@
             "description"
         ],
         "creationDateTime": "2022-04-20",
-        "updateDateTime": "2024-01-06",
+        "updateDateTime": "2024-10-03",
         "products": [
             "SharePoint"
         ],
@@ -21,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.17.2"
+                "value": "1.20.0"
             }
         ],
         "thumbnails": [

@@ -49,7 +49,7 @@ export enum DialogState {
 
 export class KanbanComponent extends React.Component<IKanbanComponentProps, IKanbanComponentState> {
     private dragelement?: IKanbanTask;
-    private bucketsref: any[];
+    private bucketsref: (HTMLDivElement|null)[];
     constructor(props: IKanbanComponentProps) {
         super(props);
 
@@ -302,17 +302,15 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
         }
     }
 
-    private onDragLeave(event: any, bucket: string): void {
+    private onDragLeave(event: React.DragEvent<HTMLDivElement>, bucket: string): void {
         const index = findIndex(this.props.buckets, element => element.bucket === bucket);
-        if (index !== -1 && this.bucketsref.length > index) {
-
-            //&& this.bucketsref[index].classList.contains(styles.dragover)) {
-            this.bucketsref[index].classList.remove(styles.dragover);
+        if (index !== -1 && this.bucketsref.length > index && this.bucketsref[index] !== null) {
+            this.bucketsref[index]?.classList.remove(styles.dragover);
         }
 
     }
 
-    private onDragEnd(event: any): void {
+    private onDragEnd(event:React.DragEvent<HTMLDivElement>): void {
 
         this.dragelement = undefined;
         this.setState({
@@ -322,7 +320,7 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
         });
     }
 
-    private onDragStart(event: any, taskId: string, bucket: string): void {
+    private onDragStart(event: React.DragEvent<HTMLDivElement>, taskId: string, bucket: string): void {
         console.log('onDragStart');
         const taskitem = this.props.tasks.filter(p => p.taskId === taskId);
         if (taskitem.length === 1) {
@@ -344,23 +342,22 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
 
     }
 
-    private onDragOver(event: any, targetbucket: string): void {
+    private onDragOver(event: React.DragEvent<HTMLDivElement>, targetbucket: string): void {
         event.preventDefault();
         console.log('onDragOver');
 
         if (this.dragelement && this.dragelement?.bucket !== targetbucket) {
             const index = findIndex(this.props.buckets, element => element.bucket === targetbucket);
-            if (index > -1 && this.bucketsref.length > index) {
-                //&& this.bucketsref[index].classList.contains(styles.dragover)) {
-                this.bucketsref[index].classList.add(styles.dragover);
+            if (index > -1 && this.bucketsref.length > index && this.bucketsref[index] !== null) {
+                this.bucketsref[index]?.classList.add(styles.dragover);
             }
         }
 
     }
 
-    private onDrop(event: any, targetbucket: string): void {
+    private onDrop(event: React.DragEvent<HTMLDivElement>, targetbucket: string): void {
         if (this.bucketsref && this.bucketsref.length > 0) {
-            this.bucketsref.forEach(x => { x.classList.remove(styles.dragover); });
+            this.bucketsref.forEach(x => { if(x!== null){ x.classList.remove(styles.dragover);} });
         }
         if (this.dragelement && this.dragelement?.bucket !== targetbucket) {
             //event.dataTransfer.getData("text");

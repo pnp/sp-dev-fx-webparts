@@ -2,15 +2,15 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-organization-chart",
     "source": "pnp",
-    "title": "Organization Chart Web Part (SP2019 and Online)",
+    "title": "Organization Chart Web Part",
     "shortDescription": "Shows an organization chart based on specified user, and user can navigate to show company organization",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
     "longDescription": [
       "This web part shows an organization chart based on specified user, and user can navigate to show company organization.",
-      "Can be installed on SharePoint Server 2019, and SharePoint Online."
+      "Can be installed on SharePoint Online."
     ],
     "creationDateTime": "2021-05-03",
-    "updateDateTime": "2024-02-25",
+    "updateDateTime": "2024-10-04",
     "products": [
       "SharePoint"
     ],
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -55,6 +55,13 @@
       {
         "gitHubAccount": "Paxol",
         "pictureUrl": "https://github.com/Paxol.png"
+      },
+      {
+        "gitHubAccount": "petkir",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
       }
     ],
     "references": [

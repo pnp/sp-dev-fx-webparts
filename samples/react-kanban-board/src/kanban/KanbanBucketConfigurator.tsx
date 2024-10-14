@@ -88,7 +88,7 @@ export class KanbanBucketConfigurator extends React.Component<IKanbanBucketConfi
                     onChange={(ev, checked) => { this.setState({ useColor: checked?checked:false }); }} />
                 {this.state.useColor && (<ColorPicker
                     color={statebucket.color?statebucket.color:'white'}
-                    onChange={(ev: any, colorObj: IColor) => {
+                    onChange={(ev, colorObj: IColor) => {
                         if (this.state.bucket) {
                             const bucket = clone(this.state.bucket);
                             bucket.color = colorObj.str;

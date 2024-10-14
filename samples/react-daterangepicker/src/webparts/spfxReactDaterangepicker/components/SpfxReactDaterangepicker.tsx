@@ -2,31 +2,39 @@ import * as React from 'react';
 import styles from './SpfxReactDaterangepicker.module.scss';
 import { ISpfxReactDaterangepickerProps } from './ISpfxReactDaterangepickerProps';
 import { ISpfxReactDaterangepickerState } from './ISpfxReactDaterangepickerState';
-import { DateRange } from 'react-date-range';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import { sp } from "@pnp/sp";
+import { DateRange, DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import { SPFx, spfi, SPFI } from "@pnp/sp/presets/all";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
-import "@pnp/sp/items";
+import "@pnp/sp/files";
+import "@pnp/sp/folders";
+import "@pnp/sp/batching";
 import { PrimaryButton } from 'office-ui-fabric-react';
 
 export default class SpfxReactDaterangepicker extends React.Component<ISpfxReactDaterangepickerProps, ISpfxReactDaterangepickerState> {
+  private _SPFI: SPFI;
   constructor(props: ISpfxReactDaterangepickerProps, state: ISpfxReactDaterangepickerState) {
     super(props);
-    sp.setup({ spfxContext: this.props.context });
-    this.state = { 
-      startDate: new Date(), 
-      endDate: null, 
-      key: 'selection' 
+    this._SPFI = spfi().using(SPFx(this.props.context));
+
+    this.state = {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection'
     };
     this.getValuesFromSP();
   }
 
   private async getValuesFromSP() {
-    const item: any = await sp.web.lists.getByTitle("DateRangeList").items.getById(1).get();
-    this.setState({ endDate: item.DateFrom, startDate: item.DateTo });
+    try {
+      const item: any = await this._SPFI.web.lists.getByTitle("DateRangeList").items.getById(1)();
+      this.setState({ endDate: new Date(item.DateFrom), startDate: new Date(item.DateTo) });
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   public render(): React.ReactElement<ISpfxReactDaterangepickerProps> {
@@ -45,9 +53,8 @@ export default class SpfxReactDaterangepicker extends React.Component<ISpfxReact
     );
   }
 
-  @autobind
-  private async _SaveIntoSP() {
-    let list = sp.web.lists.getByTitle("DateRangeList");
+  private _SaveIntoSP = async () => {
+    let list = this._SPFI.web.lists.getByTitle("DateRangeList");
     const i = await list.items.getById(1).update({
       DateFrom: this.state.startDate,
       DateTo: this.state.endDate

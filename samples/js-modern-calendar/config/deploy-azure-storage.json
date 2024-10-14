@@ -1,6 +1,7 @@
 {
-  "workingDir": "./temp/deploy/",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/deploy-azure-storage.schema.json",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "document-card-web-part",
-  "accessKey": "<!-- ACCESS KEY -->"
+  "container": "react-organization-chart",
+  "accessKey": "<!-- ACCESS KEY -->",
+  "workingDir": "./release/assets/"  
 }

@@ -1,7 +1,7 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import {IDropdownOption} from '@fluentui/react';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import {MessageBarType} from 'office-ui-fabric-react';
+import {MessageBarType} from '@fluentui/react';
 
 export interface IManageHublevelSubscriptionsProps {
   _context: WebPartContext;

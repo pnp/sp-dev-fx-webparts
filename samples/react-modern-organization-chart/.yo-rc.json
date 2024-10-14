@@ -22,11 +22,16 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.10.0",
+    "version": "1.20.0",
     "libraryName": "react-organization-chart",
     "libraryId": "d28b8c44-5df1-4315-a6eb-a5be13ba4b88",
     "packageManager": "npm",
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "18.18.0"
   }
 }

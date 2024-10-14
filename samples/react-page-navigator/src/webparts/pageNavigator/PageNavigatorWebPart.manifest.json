@@ -18,8 +18,8 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PageNavigator" },
-    "description": { "default": "PageNavigator description" },
+    "title": { "default": "Page Navigator" },
+    "description": { "default": "Page Navigator builds a navigation structure on the page, based on the headers in your text." },
     "officeFabricIconFontName": "BulletedTreeList",
     "properties": { }
   }]

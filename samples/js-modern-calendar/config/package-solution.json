@@ -2,7 +2,7 @@
   "solution": {
     "name": "SPFx Modern Calendar",
     "id": "3d593a2f-73f1-486f-9dae-555c6f6b584d",
-    "version": "1.0.3.0",
+    "version": "1.0.4.0",
     "includeClientSideAssets": true,
     "developer": {
       "name": "",
@@ -10,7 +10,29 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": ""
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "modern-calendar description"
+      },
+      "longDescription": {
+        "default": "modern-calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "modern-calendar ModernCalendarWebPart Feature",
+        "description": "The feature that activates ModernCalendarWebPart from the modern-calendar solution.",
+        "id": "c2a397d3-8c8f-47ab-b731-897178313c15",
+        "version": "1.0.4.0",
+        "componentIds": [
+          "c2a397d3-8c8f-47ab-b731-897178313c15"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/modern-calendar.sppkg"
