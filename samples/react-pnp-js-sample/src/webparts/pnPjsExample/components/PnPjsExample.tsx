@@ -9,8 +9,9 @@ import { Caching } from "@pnp/queryable";
 import { getSP } from "../pnpjsConfig";
 import { SPFI, spfi } from "@pnp/sp";
 import { Logger, LogLevel } from "@pnp/logging";
-import { IItemUpdateResult } from "@pnp/sp/items";
-import { Label, PrimaryButton } from '@microsoft/office-ui-fabric-react-bundle';
+import "@pnp/sp/items";
+import { IItemUpdateResultData } from "@pnp/sp/items/types"; // Corrected import
+import { Label, Button } from "@fluentui/react-components";
 
 export interface IAsyncAwaitPnPJsProps {
   description: string;
@@ -51,34 +52,36 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
         : 0;
       return (
         <div className={styles.pnPjsExample}>
-          <Label>Welcome to PnP JS Version 3 Demo!</Label>
-          <PrimaryButton onClick={this._updateTitles}>Update Item Titles</PrimaryButton>
-          <Label>List of documents:</Label>
-          <table width="100%">
-            <tr>
-              <td><strong>Title</strong></td>
-              <td><strong>Name</strong></td>
-              <td><strong>Size (KB)</strong></td>
-            </tr>
-            {this.state.items.map((item, idx) => {
-              return (
-                <tr key={idx}>
-                  <td>{item.Title}</td>
-                  <td>{item.Name}</td>
-                  <td>{(item.Size / 1024).toFixed(2)}</td>
-                </tr>
-              );
-            })}
-            <tr>
-              <td>&nbps;</td>
-              <td><strong>Total:</strong></td>
-              <td><strong>{(totalDocs / 1024).toFixed(2)}</strong></td>
-            </tr>
-          </table>
-        </div >
-      );
-    } catch (err) {
-      Logger.write(`${this.LOG_SOURCE} (render) - ${JSON.stringify(err)} - `, LogLevel.Error);
+        <Label>Welcome to PnP JS Version 3 Demo!</Label>
+        <div className={styles.buttonSection}>
+          <Button className={styles.demoButton} onClick={this._updateTitles}>Update Item Titles</Button>
+        </div>
+        <Label>List of documents:</Label>
+        <table width="100%">
+          <tr>
+            <td><strong>Title</strong></td>
+            <td><strong>Name</strong></td>
+            <td><strong>Size (KB)</strong></td>
+          </tr>
+          {this.state.items.map((item, idx) => {
+            return (
+              <tr key={idx}>
+                <td>{item.Title}</td>
+                <td>{item.Name}</td>
+                <td>{(item.Size / 1024).toFixed(2)}</td>
+              </tr>
+            );
+          })}
+          <tr>
+            <td>&nbsp;</td>
+            <td><strong>Total:</strong></td>
+            <td><strong>{(totalDocs / 1024).toFixed(2)}</strong></td>
+          </tr>
+        </table>
+      </div>
+    );
+  } catch (err) {
+    Logger.write(`${this.LOG_SOURCE} (render) - ${JSON.stringify(err)} - `, LogLevel.Error);
     }
     return null;
   }
@@ -121,14 +124,14 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
 
   private _updateTitles = async (): Promise<void> => {
     try {
-      //Will create a batch call that will update the title of each item
-      //  in the library by adding `-Updated` to the end. 
+      // Will create a batch call that will update the title of each item
+      // in the library by adding `-Updated` to the end.
       const [batchedSP, execute] = this._sp.batched();
 
-      //Clone items from the state
+      // Clone items from the state
       const items = JSON.parse(JSON.stringify(this.state.items));
 
-      const res: IItemUpdateResult[] = [];
+      const res: IItemUpdateResultData[] = [];
 
       for (let i = 0; i < items.length; i++) {
         // you need to use .then syntax here as otherwise the application will stop and await the result
@@ -144,13 +147,18 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
 
       // Results for all batched calls are available
       for (let i = 0; i < res.length; i++) {
-        //If the result is successful update the item
-        //NOTE: This code is over simplified, you need to make sure the Id's match
-        const item = await res[i].item.select("Id, Title")<{ Id: number, Title: string }>();
-        items[i].Name = item.Title;
+        // If the result is successful update the item
+        // NOTE: This code is over simplified, you need to make sure the Id's match
+        const updatedItem = await this._sp.web.lists
+          .getByTitle(this.LIBRARY_NAME)
+          .items
+          .getById(items[i].Id)
+          .select("Id", "Title")<{ Id: number, Title: string }>();
+
+        items[i].Name = updatedItem.Title;
       }
 
-      //Update the state which rerenders the component
+      // Update the state which rerenders the component
       this.setState({ items });
     } catch (err) {
       Logger.write(`${this.LOG_SOURCE} (_updateTitles) - ${JSON.stringify(err)} - `, LogLevel.Error);

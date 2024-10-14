@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .pnPjsExample {
   overflow: hidden;
@@ -8,6 +8,21 @@
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
+}
+
+
+.demoButton {
+  background-color: "[theme:primaryButtonBackground, default: #0078d4]";
+  color: "[theme:primaryButtonText, default: #ffffff]";
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: "[theme:primaryButtonBackgroundHovered, default: #005a9e]";
+  }
+}
+.buttonSection {
+  margin-top: 10px;
 }
 
 .welcome {
