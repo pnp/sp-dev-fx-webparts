@@ -16,14 +16,14 @@
     "@microsoft/sp-property-pane": "^1.20.0",
     "@microsoft/sp-webpart-base": "^1.20.0",
     "@pnp/logging": "^3.26.0",
-    "@pnp/sp": "^4.5.0",
+    "@pnp/sp": "^4.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "^1.20.1",
-    "@microsoft/eslint-plugin-spfx": "^1.20.2",
+    "@microsoft/eslint-config-spfx": "^1.20.0",
+    "@microsoft/eslint-plugin-spfx": "^1.20.0",
     "@microsoft/rush-stack-compiler-4.5": "^0.2.2",
     "@microsoft/sp-build-web": "1.20.1",
     "@microsoft/sp-module-interfaces": "^1.20.2",
