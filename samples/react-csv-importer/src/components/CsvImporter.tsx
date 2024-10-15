@@ -12,23 +12,29 @@ import * as strings from 'CsvImporterWebPartStrings';
 import { useList } from "../hooks";
 
 export const CsvImporter: React.FunctionComponent<ICsvImporterProps> = ({
-  title, listId, showListTitle, displayMode, updateProperty, onConfigure, hasTeamsContext
+  title, listId, showListTitle, displayMode, updateProperty, onConfigure, hasTeamsContext, chunkSize
 }) => {
   const LOG_SOURCE = 'CsvImporter';
 
   const [error, setError] = React.useState<string>("");
   const [key, setKey] = React.useState(0);
-  const { addListItems, listTitle, fields } = useList(listId);
+  const { addListItems, listTitle, fields } = useList(listId, chunkSize);
 
   const handleOnstart = (info: ImportInfo): void => {
     const { file, fields } = info;
     Logger.write(`${LOG_SOURCE} - handleOnstart - Starting import of file ${file.name} (${file.size} bytes), with fields: ${fields}`, LogLevel.Info);
   }
 
-  const handleProcessChunk = async (rows: BaseRow[]): Promise<void> => {
-    Logger.write(`${LOG_SOURCE} - handleProcessChunk - Received batch of ${rows.length} rows`, LogLevel.Info);
-    const result = await addListItems(listId, rows);
-    if (!isEmpty(result)) setError(JSON.stringify(result));
+  const handleProcessChunk = async (rows: BaseRow[], { startIndex, endIndex, totalRows }: { startIndex: number; endIndex: number; totalRows: number }): Promise<void> => {
+    Logger.write(`${LOG_SOURCE} - handleProcessChunk - Processing rows ${startIndex} to ${endIndex} of ${totalRows}`, LogLevel.Info);
+    try {
+      const result = await addListItems(listId, rows);
+      if (!isEmpty(result)) {
+        setError(JSON.stringify(result));
+      }
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   const handleOnClose = (): void => {
@@ -60,6 +66,7 @@ export const CsvImporter: React.FunctionComponent<ICsvImporterProps> = ({
             onStart={handleOnstart}
             dataHandler={handleProcessChunk}
             onClose={handleOnClose}
+            chunkSize={chunkSize}
           >
             {fields?.map(({ InternalName, Title, Required }, i) => (<ImporterField key={i} name={InternalName} label={Title} optional={!Required} />))}
           </Importer>

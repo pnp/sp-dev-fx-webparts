@@ -5,9 +5,9 @@ import { ISpoFiled } from '../entities';
 import { getSp } from "../utils";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const useList = (listId: string) => {
+export const useList = (listId: string, chunkSize: number) => {
     const LOG_SOURCE = 'useList';
-    const MAX_BATCH_OPERATIONS = 1000;
+    const MAX_BATCH_OPERATIONS = chunkSize;
 
     const sp: SPFI = React.useMemo(() => getSp(), []);
 
@@ -82,7 +82,7 @@ export const useList = (listId: string) => {
             Logger.write(`${LOG_SOURCE} - addListItems - ${error.message}`, LogLevel.Error);
         }
         return result;
-    }, [sp]);
+    }, [sp, MAX_BATCH_OPERATIONS]);
 
     React.useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
