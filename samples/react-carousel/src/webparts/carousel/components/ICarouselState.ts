@@ -1,4 +1,3 @@
-import { ICarouselImages } from './ICarouselmages';
 export interface ICarouselState {
   carouselImages: any[];
   isLoading: boolean;

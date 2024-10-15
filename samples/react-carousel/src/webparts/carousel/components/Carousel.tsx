@@ -2,18 +2,16 @@ import * as React from 'react';
 import styles from './Carousel.module.scss';
 import { ICarouselProps } from './ICarouselProps';
 import { ICarouselState } from './ICarouselState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import spservices from '../../../spservices/spservices';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICarouselImages } from './ICarouselmages';
-import 'video-react/dist/video-react.css'; // import css
+import 'video-react/dist/video-react.css';
 import { Player, BigPlayButton } from 'video-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import * as $ from 'jquery';
 import { FontSizes, } from '@uifabric/fluent-theme/lib/fluent/FluentType';
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import * as strings from 'CarouselWebPartStrings';
 import { DisplayMode } from '@microsoft/sp-core-library';
@@ -81,7 +79,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 
 				if (image.FileSystemObjectType == 1) continue; // by pass folder item
 				const pURL = `${tenantUrl}/_api/v2.0/sharePoint:${image.File.ServerRelativeUrl}:/driveItem/thumbnails/0/large/content?preferNoRedirect=true `;
-				const thumbnailUrl = `${tenantUrl}/_api/v2.0/sharePoint:${image.File.ServerRelativeUrl}:/driveItem/thumbnails/0/c240x240/content?preferNoRedirect=true `;
+				//const thumbnailUrl = `${tenantUrl}/_api/v2.0/sharePoint:${image.File.ServerRelativeUrl}:/driveItem/thumbnails/0/c240x240/content?preferNoRedirect=true `;
 
 				let mediaType: string = '';
 				switch (image.File_x0020_Type) {
@@ -112,20 +110,19 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 				);
 
 				// Create Carousel Slides from Images
-
 				carouselImages = galleryImages.map((galleryImage, i) => {
 					return (
 						<div className='slideLoading' >
 
 							{galleryImage.mediaType == 'video' ?
 								<div >
-									<Player
-										poster={galleryImage.imageUrl}
-										style={{ width: '100%', height: '400px' }}>
-										<BigPlayButton position="center" />
-										<source src={galleryImage.serverRelativeUrl}
-										/>
-									</Player>
+									<div style={{ width: '100%', height: '400px' }}>
+										<Player
+											poster={galleryImage.imageUrl}>
+											<BigPlayButton position="center" />
+											<source src={galleryImage.serverRelativeUrl} />
+										</Player>
+									</div>
 								</div>
 								:
 								<div>
@@ -182,7 +179,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 			speed: 500,
 			slidesToShow: 1,
 			slidesToScroll: 1,
-			lazyLoad: 'progressive',
+			lazyLoad: 'progressive' as 'ondemand' | 'progressive',
 			autoplaySpeed: 3000,
 			initialSlide: this.state.photoIndex,
 			arrows: true,
@@ -237,7 +234,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 										</div>
 										{
 											this.state.loadingImage &&
-											<Spinner size={SpinnerSize.small} label={'Loading...'} style={{ verticalAlign: 'middle', right: '30%', top: 20, position: 'absolute', fontSize: FontSizes.size18, color: CommunicationColors.primary }}></Spinner>
+											<Spinner size={SpinnerSize.small} label={'Loading...'} style={{ verticalAlign: 'middle', right: '30%', top: 20, position: 'absolute', fontSize: FontSizes.size18, color: CommunicationColors.primary }} />
 										}
 									</div>
 				}
