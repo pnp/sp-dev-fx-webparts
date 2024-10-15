@@ -7,16 +7,17 @@ import { Logger, LogLevel } from '@pnp/logging';
 import { WebPartTitle } from '@pnp/spfx-controls-react';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
+import { MessageBar, MessageBarType } from '@fluentui/react';
 import * as strings from 'CsvImporterWebPartStrings';
 import { useList } from "../hooks";
 
-export const CsvImporter: React.FunctionComponent<ICsvImporterProps> = (props) => {
-  const LOG_SOURCE: string = 'CsvImporter';
+export const CsvImporter: React.FunctionComponent<ICsvImporterProps> = ({
+  title, listId, showListTitle, displayMode, updateProperty, onConfigure, hasTeamsContext
+}) => {
+  const LOG_SOURCE = 'CsvImporter';
 
   const [error, setError] = React.useState<string>("");
   const [key, setKey] = React.useState(0);
-  const { title, listId, showListTitle, displayMode, updateProperty, onConfigure, hasTeamsContext } = props;
   const { addListItems, listTitle, fields } = useList(listId);
 
   const handleOnstart = (info: ImportInfo): void => {
@@ -54,19 +55,19 @@ export const CsvImporter: React.FunctionComponent<ICsvImporterProps> = (props) =
         <>
           <Importer
             key={key}
-            assumeNoHeaders={false}
+            defaultNoHeader={false}
             restartable={false}
             onStart={handleOnstart}
-            processChunk={handleProcessChunk}
+            dataHandler={handleProcessChunk}
             onClose={handleOnClose}
           >
-            {fields?.map((field, i) => (<ImporterField key={i} name={field.InternalName} label={field.Title} optional={!field.Required} />))}
+            {fields?.map(({ InternalName, Title, Required }, i) => (<ImporterField key={i} name={InternalName} label={Title} optional={!Required} />))}
           </Importer>
           {!isEmpty(error) ?
             <MessageBar
               messageBarType={MessageBarType.error}
               dismissButtonAriaLabel={strings.MessageBarDismissButtonAriaLabel}
-              overflowButtonAriaLabel={strings.MessageBarOverflowButtonAriaLabel}
+              expandButtonProps={{ ariaLabel: strings.MessageBarOverflowButtonAriaLabel }}
               isMultiline={false}
               truncated={true}
             >

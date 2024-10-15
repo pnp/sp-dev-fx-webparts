@@ -20,39 +20,6 @@ module.exports = {
         '@rushstack/security/no-unsafe-regexp': 1,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/adjacent-overload-signatures': 1,
-        // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
-        //
-        // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
-        '@typescript-eslint/ban-types': [
-          1,
-          {
-            'extendDefaults': false,
-            'types': {
-              'String': {
-                'message': 'Use \'string\' instead',
-                'fixWith': 'string'
-              },
-              'Boolean': {
-                'message': 'Use \'boolean\' instead',
-                'fixWith': 'boolean'
-              },
-              'Number': {
-                'message': 'Use \'number\' instead',
-                'fixWith': 'number'
-              },
-              'Object': {
-                'message': 'Use \'object\' instead, or else define a proper TypeScript type:'
-              },
-              'Symbol': {
-                'message': 'Use \'symbol\' instead',
-                'fixWith': 'symbol'
-              },
-              'Function': {
-                'message': 'The \'Function\' type accepts any function-like value.\nIt provides no type safety when calling the function, which can be a common source of bugs.\nIt also accepts things like class declarations, which will throw at runtime as they will not be called with \'new\'.\nIf you are expecting the function to accept certain arguments, you should explicitly define the function shape.'
-              }
-            }
-          }
-        ],
         // RATIONALE:         Code is more readable when the type of every variable is immediately obvious.
         //                    Even if the compiler may be able to infer a type, this inference will be unavailable
         //                    to a person who is reviewing a GitHub diff.  This rule makes writing code harder,
@@ -118,7 +85,7 @@ module.exports = {
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         // Set to 1 (warning) or 2 (error) to enable the rule
-        '@typescript-eslint/no-parameter-properties': 0,
+        '@typescript-eslint/parameter-properties': 0,
         // RATIONALE:         When left in shipping code, unused variables often indicate a mistake.  Dead code
         //                    may impact performance.
         //
@@ -346,33 +313,7 @@ module.exports = {
         '**/test/*.ts',
         '**/test/*.tsx'
       ],
-      rules: {
-        'no-new': 0,
-        'class-name': 0,
-        'export-name': 0,
-        forin: 0,
-        'label-position': 0,
-        'member-access': 2,
-        'no-arg': 0,
-        'no-console': 0,
-        'no-construct': 0,
-        'no-duplicate-variable': 2,
-        'no-eval': 0,
-        'no-function-expression': 2,
-        'no-internal-module': 2,
-        'no-shadowed-variable': 2,
-        'no-switch-case-fall-through': 2,
-        'no-unnecessary-semicolons': 2,
-        'no-unused-expression': 2,
-        'no-with-statement': 2,
-        semicolon: 2,
-        'trailing-comma': 0,
-        typedef: 0,
-        'typedef-whitespace': 0,
-        'use-named-parameter': 2,
-        'variable-name': 0,
-        whitespace: 0
-      }
+      rules: {}
     }
   ]
 };

@@ -6,7 +6,7 @@ import { getSp } from "../utils";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useList = (listId: string) => {
-    const LOG_SOURCE: string = 'useList';
+    const LOG_SOURCE = 'useList';
     const MAX_BATCH_OPERATIONS = 1000;
 
     const sp: SPFI = React.useMemo(() => getSp(), []);
@@ -28,32 +28,27 @@ export const useList = (listId: string) => {
             .getById(listId)
             .fields();
 
-        const fieldArray: ISpoFiled[] = [];
-        fields.map(field => {
-            if (field.ReadOnlyField === false &&
-                field.Hidden === false &&
+        return fields
+            .filter((field) => !field.ReadOnlyField &&
+                !field.Hidden &&
                 field.FieldTypeKind !== FieldTypes.Attachments &&
-                field.FieldTypeKind !== FieldTypes.Computed
-            ) {
-                fieldArray.push({
-                    InternalName: field.InternalName,
-                    Title: field.Title,
-                    Required: field.Required,
-                    Type: field.TypeAsString
-                })
-            }
-        });
-        return fieldArray;
+                field.FieldTypeKind !== FieldTypes.Computed)
+            .map((field) => ({
+                InternalName: field.InternalName,
+                Title: field.Title,
+                Required: field.Required,
+                Type: field.TypeAsString
+            }));
     }, [sp]);
 
     const addListItemsWithBatching = React.useCallback(async (listInfo: IListInfo, items: { [name: string]: unknown; }[]): Promise<IListItemFormUpdateValue[][]> => {
         if (!sp) return;
         const [batchedWeb, execute] = sp.web.batched();
         const result: IListItemFormUpdateValue[][] = [];
-        items.map(async row => {
+        items.forEach((row) => {
             const formValues: IListItemFormUpdateValue[] = [];
-            Object.keys(row).map(async key => formValues.push({ FieldName: key, FieldValue: row[key].toString() }));
-            await batchedWeb.lists
+            Object.keys(row).forEach((key) => formValues.push({ FieldName: key, FieldValue: row[key]?.toString() ?? "" }));
+            batchedWeb.lists
                 .getById(listId)
                 .addValidateUpdateItemUsingPath(formValues,
                     `${listInfo.ParentWebUrl !== '/' ? listInfo.ParentWebUrl : ''}/Lists/${listInfo.Title}`)
