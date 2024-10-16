@@ -20,6 +20,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
 
   const [lists, setLists] = useState<IDropdownOption[]>([]);
   const [selectedList, setSelectedList] = useState<string | null>(null);
+  const [selectedListName, setSelectedListName] = useState<string | null>(null); // New state for list name
   const [columns, setColumns] = useState<IDropdownOption[]>([]);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
@@ -77,7 +78,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         const entries = xmlDoc.getElementsByTagName('entry');
         
         // Extract list IDs and titles and update state
-        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Site Assets", "Site Pages", "Style Library", "Teams Wiki Data"];
+        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Form Templates", "Site Assets", "Site Pages", "Style Library", "Teams Wiki Data"];
         const listOptions: IDropdownOption[] = Array.from(entries).map(entry => {
           const idElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Id')[0];
           const titleElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Title')[0];
@@ -99,6 +100,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const handleListChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): Promise<void> => {
     if (option) {
       setSelectedList(option.key as string);
+      setSelectedListName(option.text as string); // Set the list name
       try {
         const response = await fetch(`/sites/TECH/_api/web/lists(guid'${option.key}')/fields`);
         if (!response.ok) {
@@ -192,6 +194,10 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
 
       setMessage('Column formatting applied successfully!');
       setMessageType(MessageBarType.success);
+
+      // Open the list in a new tab using the list name
+      const listUrl = `/sites/TECH/Lists/${selectedListName}/AllItems.aspx`;
+      window.open(listUrl, '_blank');
     } catch (error) {
       console.error('Error applying column formatting:', error);
       setMessage(`Error applying column formatting: ${error.message}`);
@@ -222,11 +228,11 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       setMessageType(MessageBarType.error);
       return;
     }
-  
+
     const parser = new DOMParser();
     const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
     const paths = Array.from(svgDoc.getElementsByTagName('path'));
-  
+
     const result: IJsonResult = {
       elmType: "div",
       attributes: {},
@@ -237,18 +243,19 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
           attributes: {
             xmlns: "http://www.w3.org/2000/svg",
             viewBox: svgDoc.documentElement.getAttribute('viewBox'),
-            width: "50px", // You can set a fixed or relative width
-            height: "50px" // Set height to control the size of the SVG
+            style: "max-width: 16px; max-height: 16px;" // Limit the size of the SVG
           },
           style: {
-            width: "50px", // Apply CSS style to set width
-            height: "50px" // Apply CSS style to set height
+            width: "50%",
+            height: "50%",
+            maxWidth: "32px", // Limit the width of the SVG
+            maxHeight: "32px" // Limit the height of the SVG
           },
           children: []
         }
       ]
     };
-  
+
     // Process each <path> element and add it to the JSON structure
     paths.forEach((path: SVGPathElement) => {
       const pathObj: IJsonResult = {
@@ -263,12 +270,12 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       };
       result.children[0].children.push(pathObj);
     });
-  
+
     setJsonResult(JSON.stringify(result, null, 2));
     setMessage(null);
     setShowToggle(true); // Show the toggle and label
   };
-  
+
   // Copy JSON result to clipboard
   const copyToClipboard = (): void => {
     navigator.clipboard.writeText(jsonResult).then(() => {
@@ -300,7 +307,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         text="Convert to JSON"
         onClick={convertSvgToJson}
         className={styles.button}
-        disabled={!svgContent} // Disable if no SVG is selected
         styles={{
           root: {
             backgroundColor: svgContent ? 'var(--primary-color) !important' : 'lightgrey !important',

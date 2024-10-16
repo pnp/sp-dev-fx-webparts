@@ -38,26 +38,34 @@ $primary-color: #ff69b4;
     margin-bottom: 20px;
   }
 
-  .svgPreview {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    color: pink; // Example of custom style
-    margin-bottom: 20px;
-    width: 500px; // Set absolute width
-    max-height: 300px; // Limit the height of the SVG preview
-    overflow: auto; // Add scrollbars if the SVG is too large
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
-  .svgPreview svg {
-    width: 100%;
-    height: 100%;
-    max-width: 100%; // Ensure SVGs have the same size
-    max-height: 300px; // Ensure SVGs have the same size
-  }
+
+.svgPreview {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  width: 150px; // Adjusted width to make it smaller
+  max-height: 150px; // Adjusted height to make it smaller
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svgPreview svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%; // Ensure SVGs have the same size
+  max-height: 100%; // Ensure SVGs have the same size
+}
+
+.button {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  margin-top: 10px;
+}
 
   .button {
     background-color: var(--primary-color);
@@ -80,7 +88,7 @@ $primary-color: #ff69b4;
     justify-content: center;
     width: 100%;
   }
-}
+
 .toggleContainer {
   display: flex;
   align-items: center;
@@ -99,4 +107,10 @@ $primary-color: #ff69b4;
   .ms-Toggle-thumb {
     background-color: white !important; /* White circle */
   }
+}
+
+.svgContainer {
+  max-width: 300px; // Adjust the width as needed
+  max-height: 300px; // Adjust the height as needed
+  overflow: auto;
 }
