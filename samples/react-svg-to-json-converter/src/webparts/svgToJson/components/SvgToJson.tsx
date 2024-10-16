@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { PrimaryButton, TextField, MessageBar, MessageBarType, IconButton, Dropdown, IDropdownOption } from '@fluentui/react';
+import { PrimaryButton, TextField, MessageBar, MessageBarType, Dropdown, IDropdownOption } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps'; // Import the props interface
 
+interface IJsonResult {
+  elmType: string;
+  attributes: { [key: string]: string | null };
+  style: { [key: string]: string };
+  children: IJsonResult[];
+}
+
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [svgFiles, setSvgFiles] = useState<IDropdownOption[]>([]);
-  const [selectedFile, setSelectedFile] = useState<string | undefined>(undefined);
   const [svgContent, setSvgContent] = useState<string>('');
   const [jsonResult, setJsonResult] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
@@ -28,130 +34,87 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         console.log('Parsed XML Document:', xmlDoc); 
   
         const entries = xmlDoc.getElementsByTagName('entry');
-        console.log('Entries:', entries); 
-  
-        const options: IDropdownOption[] = [];
-  
-        for (let i = 0; i < entries.length; i++) {
-          const fileLeafRef = entries[i].getElementsByTagName('d:FileLeafRef')[0]?.textContent;
-          if (fileLeafRef) {
-            options.push({ key: fileLeafRef, text: fileLeafRef });
-          }
-        }
-  
-        console.log('Parsed SVG files:', options);
-        setSvgFiles(options);
+        console.log('Entries:', entries);
+
+        // Extract SVG file names and update state
+        const svgOptions: IDropdownOption[] = Array.from(entries).map(entry => {
+          const fileLeafRefElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'FileLeafRef')[0];
+          const fileName = fileLeafRefElement ? fileLeafRefElement.textContent : '';
+          console.log('File name:', fileName); // Log file name for debugging
+          return { key: fileName || '', text: fileName || '' };
+        });
+        setSvgFiles(svgOptions);
       } catch (error) {
-        console.error('Failed to fetch SVG files:', error); 
-        setMessage('Failed to fetch SVG files.');
+        console.error('Error fetching SVG files:', error);
+        setMessage(`Error fetching SVG files: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
     };
-  
-    fetchSvgFiles().catch(error => {
-      console.error('Failed to fetch SVG files:', error); 
-      setMessage('Failed to fetch SVG files.');
-      setMessageType(MessageBarType.error);
-    });
+
+    fetchSvgFiles();
   }, []);
 
-  // Handle file selection change
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): Promise<void> => {
     if (option) {
-      setSelectedFile(option.key as string);
       try {
-        // Get file content
-        const fileName = option.key as string;
-        const url = `/sites/TECH/_api/web/GetFileByServerRelativeUrl('/sites/TECH/Approved%20SVGs/${encodeURIComponent(fileName)}')/$value`;
-        console.log('Constructed URL:', url); 
-
-        const response = await fetch(url);
+        const response = await fetch(`/sites/TECH/_api/web/getfilebyserverrelativeurl('/sites/TECH/Approved SVGs/${option.key}')/$value`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const svgText = await response.text();
-        console.log('Fetched SVG content:', svgText); 
         setSvgContent(svgText);
       } catch (error) {
-        console.error('Failed to fetch SVG content:', error); 
-        setMessage('Failed to fetch SVG content.');
+        console.error('Error fetching SVG content:', error);
+        setMessage(`Error fetching SVG content: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
     }
   };
 
-  // Convert SVG content to JSON
-  const processSvgToJson = (): void => {
-    if (!svgContent.includes('<svg')) {
-      setMessage('Please provide valid SVG content.');
+  const convertSvgToJson = (): void => {
+    if (!svgContent) {
+      setMessage('No SVG content to convert.');
       setMessageType(MessageBarType.error);
       return;
     }
 
     const parser = new DOMParser();
     const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
-    const paths = Array.from(svgDoc.querySelectorAll('path')) as Element[];
+    const paths = Array.from(svgDoc.getElementsByTagName('path'));
 
-    if (!paths.length) {
-      setMessage('No <path> elements found in the SVG.');
-      setMessageType(MessageBarType.error);
-      return;
-    }
-
-    const result: {
-      "$schema": string;
-      "elmType": string;
-      "children": [
+    const result: IJsonResult = {
+      elmType: "div",
+      attributes: {},
+      style: {},
+      children: [
         {
-          "elmType": string;
-          "txtContent": string;
-        },
-        {
-          "elmType": string;
-          "attributes": {
-            "viewBox": string | null;
-          };
-          "children": {
-            "elmType": string;
-            "attributes": {
-              "d": string | null;
-            };
-            "style": {
-              "fill": string;
-            };
-          }[];
-        }
-      ];
-    } = {
-      "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
-      "elmType": "div",
-      "children": [
-        {
-          "elmType": "span",
-          "txtContent": "@currentField"
-        },
-        {
-          "elmType": "svg",
-          "attributes": {
-            "viewBox": svgDoc.documentElement.getAttribute("viewBox")
+          elmType: "svg",
+          attributes: {
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: svgDoc.documentElement.getAttribute('viewBox')
           },
-          "children": []
+          style: {
+            width: "100%",
+            height: "100%"
+          },
+          children: []
         }
       ]
     };
 
     // Process each <path> element and add it to the JSON structure
-    paths.forEach(path => {
-      const pathObj = {
-        "elmType": "path",
-        "attributes": {
-          "d": path.getAttribute('d')
+    paths.forEach((path: SVGPathElement) => {
+      const pathObj: IJsonResult = {
+        elmType: "path",
+        attributes: {
+          d: path.getAttribute('d')
         },
-        "style": {
-          "fill": path.getAttribute('fill') || "#000000" 
-        }
+        style: {
+          fill: path.getAttribute('fill') || "#000000" 
+        },
+        children: []
       };
-      result.children[1].children.push(pathObj);
+      result.children[0].children.push(pathObj);
     });
 
     setJsonResult(JSON.stringify(result, null, 2));
@@ -173,52 +136,32 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
 
   return (
     <div className={styles.svgToJson}>
-      <h2>SVG to JSON Converter</h2>
+      {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
         placeholder="Select an SVG file"
         options={svgFiles}
         onChange={handleFileChange}
-        selectedKey={selectedFile}
-        className={styles['ms-Dropdown']}
+        className={styles.dropdown}
       />
-      <TextField
-        className={styles['ms-TextField']}
-        placeholder="SVG content will appear here"
-        multiline
-        rows={10}
-        value={svgContent}
-        readOnly
-      />
-      <PrimaryButton className={styles['ms-Button']} onClick={processSvgToJson}>
-        Convert
-      </PrimaryButton>
-      {message && (
-        <MessageBar
-          messageBarType={messageType}
-          isMultiline={false}
-          onDismiss={() => setMessage(null)}
-          className={styles.messageBar}
-        >
-          {message}
-        </MessageBar>
+      {svgContent && (
+        <div className={styles.svgPreview}>
+          <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+        </div>
       )}
+      <PrimaryButton text="Convert to JSON" onClick={convertSvgToJson} className={styles.button} />
       {jsonResult && (
-        <div className={styles.outputContainer}>
+        <div>
+          <h3>JSON Result:</h3>
           <TextField
-            className={styles['ms-TextField']}
-            label="JSON Result"
             multiline
             rows={10}
             readOnly
             value={jsonResult}
+            className={styles.outputBox}
           />
-          <IconButton
-            iconProps={{ iconName: 'Copy' }}
-            title="Copy to clipboard"
-            ariaLabel="Copy to clipboard"
-            onClick={copyToClipboard}
-            className={styles.copyButton}
-          />
+          <div className={styles.buttonContainer}>
+            <PrimaryButton text="Copy to Clipboard" onClick={copyToClipboard} className={styles.button} />
+          </div>
         </div>
       )}
     </div>

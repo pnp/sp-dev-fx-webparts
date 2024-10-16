@@ -6,7 +6,6 @@
   --secondary-color: #fff;
   --font-size-large: 24px;
   --padding-large: 20px;
-  --textfield-width: 80%; // Define a variable for the TextField width
   --success-color: #d4edda; // Light green background for success messages
 }
 
@@ -30,51 +29,55 @@ $primary-color: #ff69b4;
     margin-bottom: var(--padding-large);
   }
 
-  .ms-TextField, .ms-Dropdown {
-    margin-bottom: var(--padding-large);
-    width: var(--textfield-width); // Use the variable for the width
-    max-width: 800px; // Set a max-width to ensure it doesn't get too wide
+  .ms-TextField, .outputBox {
+    width: 500px; // Set absolute width
   }
 
-  .ms-Button {
+  .dropdown {
+    width: 500px; // Set absolute width
+    margin-bottom: 20px;
+  }
+
+  .svgPreview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    color: pink; // Example of custom style
+    margin-bottom: 20px;
+    width: 500px; // Set absolute width
+    max-height: 300px; // Limit the height of the SVG preview
+    overflow: auto; // Add scrollbars if the SVG is too large
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .svgPreview svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100%; // Ensure SVGs have the same size
+    max-height: 300px; // Ensure SVGs have the same size
+  }
+
+  .button {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: var(--padding-large); // Add margin-top to create space between the input field and the button
+    border-color: var(--primary-color);
+    color: white;
+    margin-top: 10px;
+    transition: background-color 0.3s, filter 0.3s; // Smooth transition for hover effect
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: darken($primary-color, 20%); // 20% darker than hot-pink
     }
   }
 
-  .outputContainer {
-    position: relative; // Make the container relative for absolute positioning of the button
-    width: var(--textfield-width); // Ensure the container is as wide as the input field
-    max-width: 800px; // Set a max-width to ensure it doesn't get too wide
-
-    .ms-TextField {
-      width: 100%;
-    }
-
-    .copyButton {
-      position: absolute;
-      top: 0; // Align to the top of the output field
-      right: -40px; // Position the button to the right of the output field with padding
-      background-color: var(--primary-color); // Make the copy icon hot-pink
-      color: var(--secondary-color);
-
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
-    }
+  .outputBox {
+    margin-top: 20px;
   }
 
-  .messageBar {
-    background-color: var(--success-color); // Light green background for success messages
-    color: #155724; // Dark green text color for success messages
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
