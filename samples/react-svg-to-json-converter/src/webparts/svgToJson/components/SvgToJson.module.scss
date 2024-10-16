@@ -1,0 +1,80 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+// Define CSS variables for theming
+:root {
+  --primary-color: #ff69b4;
+  --secondary-color: #fff;
+  --font-size-large: 24px;
+  --padding-large: 20px;
+  --textfield-width: 80%; // Define a variable for the TextField width
+  --success-color: #d4edda; // Light green background for success messages
+}
+
+// Define Sass variables for color manipulation
+$primary-color: #ff69b4;
+
+.svgToJson {
+  padding: var(--padding-large);
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  h2 {
+    font-size: var(--font-size-large);
+    margin-bottom: var(--padding-large);
+  }
+
+  .ms-TextField, .ms-Dropdown {
+    margin-bottom: var(--padding-large);
+    width: var(--textfield-width); // Use the variable for the width
+    max-width: 800px; // Set a max-width to ensure it doesn't get too wide
+  }
+
+  .ms-Button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: var(--padding-large); // Add margin-top to create space between the input field and the button
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .outputContainer {
+    position: relative; // Make the container relative for absolute positioning of the button
+    width: var(--textfield-width); // Ensure the container is as wide as the input field
+    max-width: 800px; // Set a max-width to ensure it doesn't get too wide
+
+    .ms-TextField {
+      width: 100%;
+    }
+
+    .copyButton {
+      position: absolute;
+      top: 0; // Align to the top of the output field
+      right: -40px; // Position the button to the right of the output field with padding
+      background-color: var(--primary-color); // Make the copy icon hot-pink
+      color: var(--secondary-color);
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .messageBar {
+    background-color: var(--success-color); // Light green background for success messages
+    color: #155724; // Dark green text color for success messages
+  }
+}

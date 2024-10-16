@@ -1,0 +1,24 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "svg-converter-solution",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "svg-to-json",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "svg-converter-solution",
+    "libraryId": "42e52dfa-95dd-4cbd-8ba3-9cfb4ba4a644",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "svg-converter-solution description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
