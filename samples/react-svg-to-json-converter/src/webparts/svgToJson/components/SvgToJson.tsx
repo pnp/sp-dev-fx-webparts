@@ -2,7 +2,10 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { PrimaryButton, TextField, MessageBar, MessageBarType, Dropdown, IDropdownOption, Toggle } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
-import { ISvgToJsonProps } from './ISvgToJsonProps'; // Import the props interface
+import { ISvgToJsonProps } from './ISvgToJsonProps'; 
+
+
+
 
 interface IJsonResult {
   elmType: string;
@@ -17,7 +20,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [jsonResult, setJsonResult] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
-
   const [lists, setLists] = useState<IDropdownOption[]>([]);
   const [selectedList, setSelectedList] = useState<string | null>(null);
   const [selectedListName, setSelectedListName] = useState<string | null>(null); // New state for list name
@@ -29,7 +31,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   useEffect((): void => {
     const fetchSvgFiles = async (): Promise<void> => {
       try {
-        const response = await fetch("/sites/TECH/_api/web/lists/getbytitle('Approved SVGs')/items?$select=FileLeafRef,Status");
+        const response = await fetch(`${props.siteUrl}/_api/web/lists/getbytitle('${props.libraryName}')/items?$select=FileLeafRef,Status`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -60,12 +62,12 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     };
 
     fetchSvgFiles();
-  }, []);
+  }, [props.siteUrl, props.libraryName]);
 
   useEffect((): void => {
     const fetchLists = async (): Promise<void> => {
       try {
-        const response = await fetch("/sites/TECH/_api/web/lists?$filter=Hidden eq false");
+        const response = await fetch(`${props.siteUrl}/_api/web/lists?$filter=Hidden eq false`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -78,7 +80,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         const entries = xmlDoc.getElementsByTagName('entry');
         
         // Extract list IDs and titles and update state
-        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Form Templates", "Site Assets", "Site Pages", "Style Library", "Teams Wiki Data"];
+        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Site Assets", "Style Library", "Teams Wiki Data", "Form Templates","Site Pages"];
         const listOptions: IDropdownOption[] = Array.from(entries).map(entry => {
           const idElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Id')[0];
           const titleElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Title')[0];
@@ -95,14 +97,14 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     };
 
     fetchLists();
-  }, []);
+  }, [props.siteUrl]);
 
   const handleListChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): Promise<void> => {
     if (option) {
       setSelectedList(option.key as string);
       setSelectedListName(option.text as string); // Set the list name
       try {
-        const response = await fetch(`/sites/TECH/_api/web/lists(guid'${option.key}')/fields`);
+        const response = await fetch(`${props.siteUrl}/_api/web/lists(guid'${option.key}')/fields`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -156,7 +158,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       });
 
       // Fetch the form digest value
-      const digestResponse = await fetch("/sites/TECH/_api/contextinfo", {
+      const digestResponse = await fetch(`${props.siteUrl}/_api/contextinfo`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json;odata=verbose',
@@ -172,7 +174,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       const digestData = await digestResponse.json();
       const formDigestValue = digestData.d.GetContextWebInformation.FormDigestValue;
 
-      const response = await fetch(`/sites/TECH/_api/web/lists(guid'${selectedList}')/fields/getbyinternalnameortitle('${selectedColumn}')`, {
+      const response = await fetch(`${props.siteUrl}/_api/web/lists(guid'${selectedList}')/fields/getbyinternalnameortitle('${selectedColumn}')`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json;odata=verbose',
@@ -196,7 +198,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       setMessageType(MessageBarType.success);
 
       // Open the list in a new tab using the list name
-      const listUrl = `/sites/TECH/Lists/${selectedListName}/AllItems.aspx`;
+      const listUrl = `${props.siteUrl}/Lists/${selectedListName}/AllItems.aspx`;
       window.open(listUrl, '_blank');
     } catch (error) {
       console.error('Error applying column formatting:', error);
@@ -208,11 +210,23 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): Promise<void> => {
     if (option) {
       try {
-        const response = await fetch(`/sites/TECH/_api/web/getfilebyserverrelativeurl('/sites/TECH/Approved SVGs/${option.key}')/$value`);
+        // Extract the server-relative URL of the site
+        const siteRelativeUrl = new URL(props.siteUrl).pathname;
+        // Construct the server-relative URL
+        const fileUrl = `${siteRelativeUrl}/${props.libraryName}/${option.key}`;
+        const apiUrl = `${props.siteUrl}/_api/web/getfilebyserverrelativeurl('${fileUrl}')/$value`;
+        console.log('Attempting to fetch SVG content from URL:', apiUrl); // Log the URL being fetched
+
+        const response = await fetch(apiUrl);
+        console.log('Fetch response status:', response.status); // Log the response status
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const svgText = await response.text();
+        console.log('Fetched SVG content:', svgText); // Log the fetched SVG content
+
         setSvgContent(svgText);
       } catch (error) {
         console.error('Error fetching SVG content:', error);
@@ -243,13 +257,13 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
           attributes: {
             xmlns: "http://www.w3.org/2000/svg",
             viewBox: svgDoc.documentElement.getAttribute('viewBox'),
-            style: "max-width: 16px; max-height: 16px;" // Limit the size of the SVG
+            style: "max-width: 48px; max-height: 48px;" // Limit the size of the SVG
           },
           style: {
-            width: "50%",
-            height: "50%",
-            maxWidth: "32px", // Limit the width of the SVG
-            maxHeight: "32px" // Limit the height of the SVG
+            width: "100%",
+            height: "100%",
+            maxWidth: "48px", // Limit the width of the SVG
+            maxHeight: "48px" // Limit the height of the SVG
           },
           children: []
         }
@@ -307,6 +321,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         text="Convert to JSON"
         onClick={convertSvgToJson}
         className={styles.button}
+        disabled={!svgContent} // Disable button if no SVG content
         styles={{
           root: {
             backgroundColor: svgContent ? 'var(--primary-color) !important' : 'lightgrey !important',

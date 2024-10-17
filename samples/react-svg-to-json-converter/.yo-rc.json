@@ -4,7 +4,7 @@
     "solutionName": "svg-converter-solution",
     "componentType": "webpart",
     "template": "react",
-    "componentName": "svg-to-json",
+    "componentName": "SVG to JSON for SharePoint List formatter",
     "plusBeta": false,
     "isCreatingSolution": true,
     "nodeVersion": "18.20.4",

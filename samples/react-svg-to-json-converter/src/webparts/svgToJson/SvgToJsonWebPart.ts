@@ -1,22 +1,30 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-
 import SvgToJson from './components/SvgToJson';
 import { ISvgToJsonProps } from './components/ISvgToJsonProps';
 
 export interface ISvgToJsonWebPartProps {
-  description: string;
+  siteUrl: string;
+  libraryName: string;
 }
 
 export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWebPartProps> {
   public render(): void {
+    if (!this.properties.siteUrl || !this.properties.libraryName) {
+      this.domElement.innerHTML = `
+        <div style="background-color: white; padding: 10px;">
+          Please select the edit icon to configure your Web Part.
+        </div>`;
+      return;
+    }
+
     const element: React.ReactElement<ISvgToJsonProps> = React.createElement(
       SvgToJson,
       {
-        description: this.properties.description,
+        siteUrl: this.properties.siteUrl,
+        libraryName: this.properties.libraryName,
         isDarkTheme: this.context.sdks.microsoftTeams ? this.context.sdks.microsoftTeams.context.theme === 'dark' : false,
         environmentMessage: this._getEnvironmentMessage(),
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -27,31 +35,22 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
     ReactDom.render(element, this.domElement);
   }
 
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) {
-      return this.context.isServedFromLocalhost ? "Running in Microsoft Teams" : "Running in Microsoft Teams";
-    }
-
-    return this.context.isServedFromLocalhost ? "Running in SharePoint Online" : "Running in SharePoint Online";
-  }
-
-  protected onDispose(): void {
-    ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
           header: {
-            description: "SVG Converter Settings"
+            description: "Configure your web part by providing the Site URL and library name you want your SVGs to select from."
           },
           groups: [
             {
               groupName: "Settings",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: 'Description'
+                PropertyPaneTextField('siteUrl', {
+                  label: "Site URL"
+                }),
+                PropertyPaneTextField('libraryName', {
+                  label: "Library Name"
                 })
               ]
             }
@@ -59,5 +58,13 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
         }
       ]
     };
+  }
+
+  private _getEnvironmentMessage(): string {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams
+      return this.context.isServedFromLocalhost ? 'Local environment (Teams)' : 'Teams tab';
+    }
+
+    return this.context.isServedFromLocalhost ? 'Local environment (SharePoint)' : 'SharePoint';
   }
 }

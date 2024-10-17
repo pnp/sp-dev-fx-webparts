@@ -1,5 +1,6 @@
 export interface ISvgToJsonProps {
-  description: string;
+  siteUrl: string;
+  libraryName: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;

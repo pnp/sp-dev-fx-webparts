@@ -114,3 +114,34 @@ $primary-color: #ff69b4;
   max-height: 300px; // Adjust the height as needed
   overflow: auto;
 }
+
+.svgToJson {
+  // existing styles...
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f3f2f1;
+}
+
+.modalBody {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.dismissIcon {
+  color: #ff69b4; /* Primary color */
+}
+
+.modalContainer {
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
