@@ -2,44 +2,80 @@
 
 // Define CSS variables for theming
 :root {
-  --primary-color: #ff69b4;
-  --secondary-color: #fff;
   --font-size-large: 24px;
   --padding-large: 20px;
+  --primary-color: #ff69b4;
+  --secondary-color: #fff;
   --success-color: #d4edda; // Light green background for success messages
 }
 
 // Define Sass variables for color manipulation
 $primary-color: #ff69b4;
 
-.svgToJson {
-  padding: var(--padding-large);
-  background-color: var(--secondary-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: background-color 0.3s ease;
+.button {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  margin-top: 10px;
+  transition: background-color 0.3s, filter 0.3s; // Smooth transition for hover effect
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: darken($primary-color, 20%); // 20% darker than hot-pink
   }
-
-  h2 {
-    font-size: var(--font-size-large);
-    margin-bottom: var(--padding-large);
-  }
-
-  .ms-TextField, .outputBox {
-    width: 500px; // Set absolute width
-  }
-
-  .dropdown {
-    width: 500px; // Set absolute width
-    margin-bottom: 20px;
-  }
-
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.dismissIcon {
+  color: #ff69b4; /* Primary color */
+}
+
+.dropdown {
+  margin-bottom: 20px;
+  width: 500px; // Set absolute width
+}
+
+.modalBody {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.modalContainer {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  padding: 20px;
+  width: 400px;
+}
+
+.modalHeader {
+  align-items: center;
+  background-color: #f3f2f1;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.previewContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.svgContent {
+  height: 100% !important; /* Ensure the SVG stays within the container */
+  max-height: 96px !important; /* Ensure the SVG stays within the container */
+  max-width: 96px !important; /* Ensure the SVG stays within the container */
+  object-fit: contain !important; /* Contain the SVG within the container */
+  width: 100% !important; /* Ensure the SVG stays within the container */
+}
 
 .svgPreview {
   border: 1px solid #ccc;
@@ -60,44 +96,27 @@ $primary-color: #ff69b4;
   max-height: 100%; // Ensure SVGs have the same size
 }
 
-.button {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  margin-top: 10px;
-}
 
-  .button {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    margin-top: 10px;
-    transition: background-color 0.3s, filter 0.3s; // Smooth transition for hover effect
-
-    &:hover {
-      background-color: darken($primary-color, 20%); // 20% darker than hot-pink
-    }
-  }
-
-  .outputBox {
-    margin-top: 20px;
-  }
-
-  .buttonContainer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-.toggleContainer {
-  display: flex;
+.svgToJson {
   align-items: center;
-  margin-bottom: 10px;
-  visibility: hidden; /* Initially hidden */
-}
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-large);
+  transition: background-color 0.3s ease;
 
-.toggleContainer.visible {
-  visibility: visible; /* Make visible when needed */
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  .ms-TextField {
+    width: 500px; // Set absolute width
+  }
+
+  .dropdown {
+    margin-bottom: 20px;
+    width: 500px; // Set absolute width
+  }
 }
 
 .toggle {
@@ -109,39 +128,13 @@ $primary-color: #ff69b4;
   }
 }
 
-.svgContainer {
-  max-width: 300px; // Adjust the width as needed
-  max-height: 300px; // Adjust the height as needed
-  overflow: auto;
-}
-
-.svgToJson {
-  // existing styles...
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
+.toggleContainer {
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  background-color: #f3f2f1;
+  display: flex;
+  margin-top: 10px;
+  visibility: hidden; /* Initially hidden */
 }
 
-.modalBody {
-  padding: 20px;
-  background-color: #ffffff;
-}
-
-.dismissIcon {
-  color: #ff69b4; /* Primary color */
-}
-
-.modalContainer {
-  width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.toggleContainer.visible {
+  visibility: visible; /* Make visible when needed */
 }
