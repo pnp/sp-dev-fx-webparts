@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.16.1",
+    "version": "1.20.0",
     "nodeVersion": "14.18.1",
     "libraryName": "advanced-page-properties",
     "libraryId": "daae06a2-8599-445c-93c0-3bd739305f56",
@@ -11,7 +11,7 @@
     "componentType": "webpart",
     "sdkVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.4.1"
+      "@microsoft/teams-js": "2.24.0"
     }
   }
 }
