@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { IDropdownOption, MessageBarType } from '@fluentui/react';
+import { IDropdownOption, MessageBarType, MessageBar } from '@fluentui/react';
+import { spfi, SPFx } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
@@ -33,26 +37,22 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   useEffect((): void => {
     const fetchSvgFiles = async (): Promise<void> => {
       try {
-        const response = await fetch(`${props.siteUrl}/_api/web/lists/getbytitle('${props.libraryName}')/items?$select=FileLeafRef,Status`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseText = await response.text();
-        console.log('Response text:', responseText);
+        // Extract the site name from the full URL
+        const siteName = props.siteUrl.split('/').pop();
+        const fullSiteUrl = `https://hscluise.sharepoint.com/sites/${siteName}`;
+        console.log('Fetching SVG files from site:', fullSiteUrl);
+        console.log('Using library name:', props.libraryName);
 
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(responseText, 'application/xml');
-        console.log('Parsed XML Document:', xmlDoc);
+        // Initialize PnPjs with the full site URL
+        const sp = spfi(fullSiteUrl).using(SPFx(props.context));
 
-        const entries = xmlDoc.getElementsByTagName('entry');
-        console.log('Entries:', entries);
+        const items = await sp.web.lists.getByTitle(props.libraryName).items.select("FileLeafRef")();
+        console.log('Fetched items:', items);
 
-        const svgOptions: IDropdownOption[] = Array.from(entries).map(entry => {
-          const fileLeafRefElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'FileLeafRef')[0];
-          const fileName = fileLeafRefElement ? fileLeafRefElement.textContent : '';
-          console.log('File name:', fileName);
-          return { key: fileName || '', text: fileName || '' };
-        });
+        const svgOptions: IDropdownOption[] = items.map((item: { FileLeafRef: string }) => ({
+          key: item.FileLeafRef,
+          text: item.FileLeafRef
+        }));
         setSvgFiles(svgOptions);
       } catch (error) {
         console.error('Error fetching SVG files:', error);
@@ -61,8 +61,10 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       }
     };
 
-    fetchSvgFiles();
-  }, [props.siteUrl, props.libraryName]);
+    if (props.siteUrl && props.libraryName) {
+      fetchSvgFiles();
+    }
+  }, [props.siteUrl, props.libraryName, props.context]);
 
   const handleListChange = (listId: string, listName: string): void => {
     setSelectedList(listId);
@@ -226,6 +228,14 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       setMessageType(MessageBarType.error);
     }
   };
+
+  if (!props.siteUrl || !props.libraryName) {
+    return (
+      <MessageBar messageBarType={MessageBarType.warning}>
+        Please configure the web part in the property pane.
+      </MessageBar>
+    );
+  }
 
   return (
     <div className={styles.svgToJson}>

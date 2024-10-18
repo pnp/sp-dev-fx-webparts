@@ -1,7 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
+import { Version } from '@microsoft/sp-core-library';
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+
+import * as strings from 'SvgToJsonWebPartStrings';
 import SvgToJson from './components/SvgToJson';
 import { ISvgToJsonProps } from './components/ISvgToJsonProps';
 
@@ -11,28 +17,26 @@ export interface ISvgToJsonWebPartProps {
 }
 
 export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWebPartProps> {
-  public render(): void {
-    if (!this.properties.siteUrl || !this.properties.libraryName) {
-      this.domElement.innerHTML = `
-        <div>
-          Please select the edit icon to configure your Web Part.
-        </div>`;
-      return;
-    }
 
+  public render(): void {
     const element: React.ReactElement<ISvgToJsonProps> = React.createElement(
       SvgToJson,
       {
         siteUrl: this.properties.siteUrl,
         libraryName: this.properties.libraryName,
-        isDarkTheme: this.context.sdks.microsoftTeams ? this.context.sdks.microsoftTeams.context.theme === 'dark' : false,
-        environmentMessage: this._getEnvironmentMessage(),
+        isDarkTheme: this.context.pageContext.legacyPageContext.isDarkTheme,
+        environmentMessage: this.context.pageContext.legacyPageContext.environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context: this.context // Pass the context
       }
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -40,17 +44,17 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
       pages: [
         {
           header: {
-            description: "Configure your web part by providing the Site URL and library name you want your SVGs to select from."
+            description: strings.PropertyPaneDescription
           },
           groups: [
             {
-              groupName: "Settings",
+              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('siteUrl', {
-                  label: "Site URL"
+                  label: strings.SiteUrlFieldLabel
                 }),
                 PropertyPaneTextField('libraryName', {
-                  label: "Library Name"
+                  label: strings.LibraryNameFieldLabel
                 })
               ]
             }
@@ -58,13 +62,5 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
         }
       ]
     };
-  }
-
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? 'Local environment (Teams)' : 'Teams tab';
-    }
-
-    return this.context.isServedFromLocalhost ? 'Local environment (SharePoint)' : 'SharePoint';
   }
 }

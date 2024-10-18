@@ -11,6 +11,8 @@ define([], function() {
     "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
     "AppOfficeEnvironment": "The app is running in office.com",
     "AppOutlookEnvironment": "The app is running in Outlook",
-    "UnknownEnvironment": "The app is running in an unknown environment"
+    "UnknownEnvironment": "The app is running in an unknown environment",
+    "SiteUrlFieldLabel": "Site URL",
+    "LibraryNameFieldLabel": "Library Name"
   }
 });

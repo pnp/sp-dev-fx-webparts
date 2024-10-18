@@ -11,6 +11,8 @@ declare interface ISvgToJsonWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
+  SiteUrlFieldLabel: string;
+  LibraryNameFieldLabel: string;
 }
 
 declare module 'SvgToJsonWebPartStrings' {
