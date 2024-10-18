@@ -14,7 +14,7 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
   public render(): void {
     if (!this.properties.siteUrl || !this.properties.libraryName) {
       this.domElement.innerHTML = `
-        <div style="background-color: white; padding: 10px;">
+        <div>
           Please select the edit icon to configure your Web Part.
         </div>`;
       return;

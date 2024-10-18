@@ -80,7 +80,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         const entries = xmlDoc.getElementsByTagName('entry');
         
         // Extract list IDs and titles and update state
-        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Site Assets", "Style Library", "Teams Wiki Data", "Form Templates","Site Pages"];
+        const excludedTitles = ["TaxonomyHiddenList", "Master Page Gallery", "Web Part Gallery", "Documents","Site Assets", "Style Library", "Teams Wiki Data", "Form Templates","Site Pages"];
         const listOptions: IDropdownOption[] = Array.from(entries).map(entry => {
           const idElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Id')[0];
           const titleElement = entry.getElementsByTagNameNS('http://schemas.microsoft.com/ado/2007/08/dataservices', 'Title')[0];
