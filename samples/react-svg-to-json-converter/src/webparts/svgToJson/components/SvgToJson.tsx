@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { IDropdownOption, MessageBarType, MessageBar } from '@fluentui/react';
+import { IDropdownOption, MessageBarType, MessageBar } from '@fluentui/react'; // Removed MessageBar
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import "@pnp/sp/fields";
+import "@pnp/sp/context-info";
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
@@ -32,30 +34,24 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [selectedListName, setSelectedListName] = useState<string | null>(null);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
-  const [isConverted, setIsConverted] = useState<boolean>(false); // New state to track conversion
+  const [isConverted, setIsConverted] = useState<boolean>(false); 
 
   useEffect((): void => {
     const fetchSvgFiles = async (): Promise<void> => {
       try {
-        // Extract the site name from the full URL
-        const siteName = props.siteUrl.split('/').pop();
-        const fullSiteUrl = `https://hscluise.sharepoint.com/sites/${siteName}`;
+        const fullSiteUrl = props.siteUrl;
         console.log('Fetching SVG files from site:', fullSiteUrl);
         console.log('Using library name:', props.libraryName);
 
-        // Initialize PnPjs with the full site URL
         const sp = spfi(fullSiteUrl).using(SPFx(props.context));
 
         const items = await sp.web.lists.getByTitle(props.libraryName).items.select("FileLeafRef")();
-        console.log('Fetched items:', items);
-
         const svgOptions: IDropdownOption[] = items.map((item: { FileLeafRef: string }) => ({
           key: item.FileLeafRef,
           text: item.FileLeafRef
         }));
         setSvgFiles(svgOptions);
       } catch (error) {
-        console.error('Error fetching SVG files:', error);
         setMessage(`Error fetching SVG files: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
@@ -66,13 +62,13 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     }
   }, [props.siteUrl, props.libraryName, props.context]);
 
-  const handleListChange = (listId: string, listName: string): void => {
-    setSelectedList(listId);
+  const handleListChange = (listId: string | number, listName: string): void => {
+    setSelectedList(`${listId}`); 
     setSelectedListName(listName);
   };
 
-  const handleColumnChange = (columnName: string): void => {
-    setSelectedColumn(columnName);
+  const handleColumnChange = (columnName: string | number): void => {
+    setSelectedColumn(String(columnName)); 
   };
 
   const applyColumnFormatting = async (): Promise<void> => {
@@ -83,55 +79,21 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     }
 
     try {
-      console.log('Applying column formatting:', {
-        selectedList,
-        selectedColumn,
-        jsonResult
-      });
+      const fullSiteUrl = props.siteUrl;
+      const sp = spfi(fullSiteUrl).using(SPFx(props.context));
 
-      const digestResponse = await fetch(`${props.siteUrl}/_api/contextinfo`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json;odata=verbose',
-          'Content-Type': 'application/json;odata=verbose'
-        }
-      });
-
-      if (!digestResponse.ok) {
-        const errorText = await digestResponse.text();
-        throw new Error(`HTTP error! status: ${digestResponse.status}, response: ${errorText}`);
-      }
-
-      const digestData = await digestResponse.json();
-      const formDigestValue = digestData.d.GetContextWebInformation.FormDigestValue;
-
-      const response = await fetch(`${props.siteUrl}/_api/web/lists(guid'${selectedList}')/fields/getbyinternalnameortitle('${selectedColumn}')`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json;odata=verbose',
-          'Content-Type': 'application/json;odata=verbose',
-          'X-HTTP-Method': 'MERGE',
-          'IF-MATCH': '*',
-          'X-RequestDigest': formDigestValue
-        },
-        body: JSON.stringify({
-          __metadata: { type: 'SP.Field' },
-          CustomFormatter: jsonResult
-        })
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP error! status: ${response.status}, response: ${errorText}`);
-      }
-
+      const {FormDigestValue: formDigestValue} = await sp.web.getContextInfo();
+      console.log(formDigestValue);
+      await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
+        CustomFormatter: jsonResult
+      }, `${formDigestValue}`);
+    
       setMessage('Column formatting applied successfully!');
       setMessageType(MessageBarType.success);
 
       const listUrl = `${props.siteUrl}/Lists/${selectedListName}/AllItems.aspx`;
       window.open(listUrl, '_blank');
     } catch (error) {
-      console.error('Error applying column formatting:', error);
       setMessage(`Error applying column formatting: ${error.message}`);
       setMessageType(MessageBarType.error);
     }
@@ -140,25 +102,20 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
     if (option) {
       try {
+        const fileKey = String(option.key); // Ensure key is treated as a string
         const siteRelativeUrl = new URL(props.siteUrl).pathname;
-        const fileUrl = `${siteRelativeUrl}/${props.libraryName}/${option.key}`;
+        const fileUrl = `${siteRelativeUrl}/${props.libraryName}/${fileKey}`;
         const apiUrl = `${props.siteUrl}/_api/web/getfilebyserverrelativeurl('${fileUrl}')/$value`;
-        console.log('Attempting to fetch SVG content from URL:', apiUrl);
 
         const response = await fetch(apiUrl);
-        console.log('Fetch response status:', response.status);
-
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const svgText = await response.text();
-        console.log('Fetched SVG content:', svgText);
-
         setSvgContent(svgText);
         setIsConverted(false); // Reset conversion state
       } catch (error) {
-        console.error('Error fetching SVG content:', error);
         setMessage(`Error fetching SVG content: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
@@ -216,7 +173,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     const jsonString = JSON.stringify(result, null, 2);
     setJsonResult(jsonString);
     setMessage(null);
-    setIsConverted(true); // Set conversion state to true
+    setIsConverted(true); 
 
     // Copy JSON result to clipboard
     try {
@@ -240,9 +197,9 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   return (
     <div className={styles.svgToJson}>
       <Message message={message} messageType={messageType} />
-      <div style={{ marginBottom: '20px' }} /> {/* Added margin */}
+      <div style={{ marginBottom: '20px' }} />
       <SVGInput svgFiles={svgFiles} onChange={handleFileChange} />
-      <div style={{ marginBottom: '10px' }} /> {/* Added margin */}
+      <div style={{ marginBottom: '10px' }} />
       <SVGOutput svgContent={svgContent} />
       <ConvertButton
         isConverted={isConverted}

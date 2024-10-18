@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react';
-import styles from './SvgToJson.module.scss'; // Import the styles
+import styles from './SvgToJson.module.scss'; 
 
 interface ApplyButtonProps {
   applyColumnFormatting: () => void;
