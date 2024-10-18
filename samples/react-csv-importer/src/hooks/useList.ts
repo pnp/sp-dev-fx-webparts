@@ -15,14 +15,14 @@ export const useList = (listId: string, chunkSize: number) => {
     const [fields, setFields] = React.useState<ISpoFiled[]>([]);
 
     const getList = React.useCallback(async (listId: string): Promise<IListInfo> => {
-        if (!sp) return undefined;
+        if (!sp || !listId) return undefined;
         return await sp.web.lists
             .getById(listId)
             .select("Title", "ParentWebUrl")();
     }, [sp]);
 
     const getListColumns = React.useCallback(async (listId: string): Promise<ISpoFiled[]> => {
-        if (!sp) return undefined;
+        if (!sp || !listId) return undefined;
         const fields: IFieldInfo[] = await sp.web
             .lists
             .getById(listId)
@@ -42,7 +42,7 @@ export const useList = (listId: string, chunkSize: number) => {
     }, [sp]);
 
     const addListItemsWithBatching = React.useCallback(async (listInfo: IListInfo, items: { [name: string]: unknown; }[]): Promise<IListItemFormUpdateValue[][]> => {
-        if (!sp) return;
+        if (!sp || !listId) return undefined;
         const [batchedWeb, execute] = sp.web.batched();
         const result: IListItemFormUpdateValue[][] = [];
         items.forEach((row) => {
