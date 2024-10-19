@@ -38,6 +38,19 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setSelectedColumn(columnName);
   };
 
+  const resetInputs = (): void => {
+    setSvgContent('');
+    setJsonResult('');
+    setMessage(null);
+    setMessageType(MessageBarType.info);
+    setSelectedSite(props.siteUrl);
+    setSelectedList(null);
+    setSelectedListName(null);
+    setSelectedColumn(null);
+    setApplyToColumn(false);
+    setIsConverted(false);
+  };
+
   if (!props.siteUrl || !props.libraryName) {
     return (
       <MessageBar messageBarType={MessageBarType.warning}>
@@ -90,6 +103,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             setMessage={setMessage}
             setMessageType={setMessageType}
             selectedListName={selectedListName}
+            resetInputs={resetInputs} // Pass the reset function
           />
         </>
       )}

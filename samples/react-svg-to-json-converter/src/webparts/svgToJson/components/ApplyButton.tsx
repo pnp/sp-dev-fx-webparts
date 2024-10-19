@@ -12,9 +12,10 @@ interface ApplyButtonProps {
   setMessage: React.Dispatch<React.SetStateAction<string | null>>;
   setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
   selectedListName: string | null;
+  resetInputs: () => void; // Add the reset function prop
 }
 
-const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName }) => {
+const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName, resetInputs }) => {
   const applyColumnFormatting = async (): Promise<void> => {
     if (!selectedList || !selectedColumn || !jsonResult) {
       setMessage('Please select a list, column, and generate JSON result before applying formatting.');
@@ -35,6 +36,8 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
 
       const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
       window.open(listUrl, '_blank');
+
+      resetInputs(); // Call the reset function
     } catch (error) {
       console.error('Error applying column formatting:', error);
       setMessage(`Error applying column formatting: ${error.message}`);
