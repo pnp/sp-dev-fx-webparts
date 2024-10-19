@@ -38,8 +38,8 @@
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v16](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -62,6 +62,7 @@ Please create the list as described above
 * [Erik Benke](https://github.com/ejbenke)
 * [Ari Gunawan](https://github.com/AriGunawan)
 * [Valeras Narbutas](https://github.com/ValerasNarbutas)
+* [Ervin Gayle](https://github.com/ErvinGayle)
 
 ## Version history
 
@@ -70,8 +71,8 @@ Please create the list as described above
 | 1.0     | September 20, 2020 | Reused [Erik Benke] and [Mike Zimmerman] web part                                                   |
 | 1.1     | September 20, 2020 | Added Support for Dynamic Column selection for reuseability, Dynamic Property Selection for Columns |
 | 1.8     | August 8, 2021     | Add configuration for sorting the items                                                             |
-| 2.0     | April 2, 2023      | Upgarde to SPFX 1.16.1                                                                               |
-
+| 2.0     | April 2, 2023      | Upgrade to SPFX 1.16.1                                                                               |
+| 2.0     | October 10, 2024      | Upgrade to SPFX 1.20.1                                                                               |
 
 
 ## Minimal Path to Awesome
