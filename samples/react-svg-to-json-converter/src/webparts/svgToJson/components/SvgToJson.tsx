@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { IDropdownOption, MessageBarType, MessageBar } from '@fluentui/react';
+import { useState } from 'react';
+import { MessageBarType, MessageBar } from '@fluentui/react';
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
@@ -26,7 +26,6 @@ interface IJsonResult {
 }
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
-  const [svgFiles, setSvgFiles] = useState<IDropdownOption[]>([]);
   const [svgContent, setSvgContent] = useState<string>('');
   const [jsonResult, setJsonResult] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
@@ -37,32 +36,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
   const [isConverted, setIsConverted] = useState<boolean>(false); // New state to track conversion
-
-  useEffect((): void => {
-    const fetchSvgFiles = async (): Promise<void> => {
-      try {
-        const fullSiteUrl = props.siteUrl;
-        console.log('Fetching SVG files from site:', fullSiteUrl);
-        console.log('Using library name:', props.libraryName);
-
-        const sp = spfi(fullSiteUrl).using(SPFx(props.context));
-
-        const items = await sp.web.lists.getByTitle(props.libraryName).items.select("FileLeafRef")();
-        const svgOptions: IDropdownOption[] = items.map((item: { FileLeafRef: string }) => ({
-          key: item.FileLeafRef,
-          text: item.FileLeafRef
-        }));
-        setSvgFiles(svgOptions);
-      } catch (error) {
-        setMessage(`Error fetching SVG files: ${error.message}`);
-        setMessageType(MessageBarType.error);
-      }
-    };
-
-    if (props.siteUrl && props.libraryName) {
-      fetchSvgFiles();
-    }
-  }, [props.siteUrl, props.libraryName, props.context]);
 
   const handleSiteChange = (siteUrl: string): void => {
     setSelectedSite(siteUrl);
@@ -103,29 +76,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       console.error('Error applying column formatting:', error);
       setMessage(`Error applying column formatting: ${error.message}`);
       setMessageType(MessageBarType.error);
-    }
-  };
-
-  const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
-    if (option) {
-      const fileKey = String(option.key); // Ensure key is treated as a string
-      const siteRelativeUrl = new URL(props.siteUrl).pathname;
-      const fileUrl = `${siteRelativeUrl}/${props.libraryName}/${fileKey}`;
-      const apiUrl = `${props.siteUrl}/_api/web/getfilebyserverrelativeurl('${fileUrl}')/$value`;
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const svgText = await response.text();
-        setSvgContent(svgText);
-      } catch (error) {
-        console.error('Error fetching SVG content:', error);
-        setMessage(`Error fetching SVG content: ${error.message}`);
-        setMessageType(MessageBarType.error);
-      }
     }
   };
 
@@ -204,9 +154,14 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   return (
     <div className={styles.svgToJson}>
       <Message message={message} messageType={messageType} />
-      <div style={{ marginBottom: '10px' }} /> {/* Added margin */}
-      <SVGInput svgFiles={svgFiles} onChange={handleFileChange} />
-      <div style={{ marginBottom: '10px' }} /> {/* Added margin */}
+      <SVGInput
+        siteUrl={props.siteUrl}
+        libraryName={props.libraryName}
+        context={props.context}
+        setSvgContent={setSvgContent}
+        setMessage={setMessage}
+        setMessageType={setMessageType}
+      />
       <SVGOutput svgContent={svgContent} />
       <ConvertButton
         isConverted={isConverted}
@@ -218,12 +173,12 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         <>
           <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
           <ListColumnSelector
-            siteUrl={selectedSite!} 
+            siteUrl={selectedSite!}
             context={props.context}
             onListChange={handleListChange}
             onColumnChange={handleColumnChange}
             className={styles.dropdown}
-/>
+          />
           <ApplyButton applyColumnFormatting={applyColumnFormatting} />
         </>
       )}
