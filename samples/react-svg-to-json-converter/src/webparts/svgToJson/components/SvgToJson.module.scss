@@ -96,7 +96,6 @@ $primary-color: #ff69b4;
   max-height: 100%; // Ensure SVGs have the same size
 }
 
-
 .svgToJson {
   align-items: center;
   background-color: var(--secondary-color);
@@ -138,3 +137,4 @@ $primary-color: #ff69b4;
 .toggleContainer.visible {
   visibility: visible; /* Make visible when needed */
 }
+
