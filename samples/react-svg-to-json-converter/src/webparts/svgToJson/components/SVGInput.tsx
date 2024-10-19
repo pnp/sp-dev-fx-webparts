@@ -19,6 +19,7 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
   const [svgFiles, setSvgFiles] = useState<IDropdownOption[]>([]);
 
   useEffect((): void => {
+      // Function to fetch SVG files from the specified library
     const fetchSvgFiles = async (): Promise<void> => {
       try {
         const fullSiteUrl = siteUrl;
@@ -45,6 +46,7 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
     }
   }, [siteUrl, libraryName, context]);
 
+    // Handle file selection change
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
     if (option) {
       const fileKey = String(option.key); // Ensure key is treated as a string
@@ -53,6 +55,7 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
       const apiUrl = `${siteUrl}/_api/web/getfilebyserverrelativeurl('${fileUrl}')/$value`;
 
       try {
+      // Fetch the SVG content from the selected file
         const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
