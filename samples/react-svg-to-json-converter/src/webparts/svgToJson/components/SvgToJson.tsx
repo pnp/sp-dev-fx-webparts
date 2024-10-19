@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageBarType, MessageBar } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
 import SVGOutput from './SVGOutput';
 import ConvertButton from './ConvertButton';
+import ResetButton from './ResetButton'; // Import the ResetButton component
 import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import Message from './Message';
@@ -24,6 +25,13 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
   const [isConverted, setIsConverted] = useState<boolean>(false); // New state to track conversion
+  const [isTeams, setIsTeams] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (props.context.sdks.microsoftTeams) {
+      setIsTeams(true);
+    }
+  }, [props.context]);
 
   const handleSiteChange = (siteUrl: string): void => {
     setSelectedSite(siteUrl);
@@ -52,6 +60,13 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   };
 
   if (!props.siteUrl || !props.libraryName) {
+    if (isTeams) {
+      return (
+        <MessageBar messageBarType={MessageBarType.warning}>
+          Please configure the web part in SharePoint before adding it to Teams.
+        </MessageBar>
+      );
+    }
     return (
       <MessageBar messageBarType={MessageBarType.warning}>
         Please configure the web part in the property pane.
@@ -71,14 +86,17 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
         setMessageType={setMessageType}
       />
       <SVGOutput svgContent={svgContent} />
-      <ConvertButton
-        isConverted={isConverted}
-        svgContent={svgContent}
-        setJsonResult={setJsonResult}
-        setMessage={setMessage}
-        setMessageType={setMessageType}
-        setIsConverted={setIsConverted}
-      />
+      <div className={styles.buttonContainer}>
+        <ResetButton resetInputs={resetInputs} className={styles.buttonMargin} /> {/* Add the ResetButton component with margin */}
+        <ConvertButton
+          isConverted={isConverted}
+          svgContent={svgContent}
+          setJsonResult={setJsonResult}
+          setMessage={setMessage}
+          setMessageType={setMessageType}
+          setIsConverted={setIsConverted}
+        />
+      </div>
       <ToggleSwitch applyToColumn={applyToColumn} setApplyToColumn={setApplyToColumn} />
       {applyToColumn && (
         <>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
-import { spfi, SPFx } from "@pnp/sp";
+import { spfi, SPFx } from '@pnp/sp';
 import styles from './SvgToJson.module.scss';
 
 interface ApplyButtonProps {
@@ -12,7 +12,7 @@ interface ApplyButtonProps {
   setMessage: React.Dispatch<React.SetStateAction<string | null>>;
   setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
   selectedListName: string | null;
-  resetInputs: () => void; // Add the reset function prop
+  resetInputs: () => void;
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName, resetInputs }) => {
@@ -37,7 +37,7 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
       const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
       window.open(listUrl, '_blank');
 
-      resetInputs(); // Call the reset function
+      resetInputs(); // Reset inputs after applying formatting
     } catch (error) {
       console.error('Error applying column formatting:', error);
       setMessage(`Error applying column formatting: ${error.message}`);

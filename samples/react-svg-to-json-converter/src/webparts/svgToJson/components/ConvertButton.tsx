@@ -4,7 +4,7 @@ import styles from './SvgToJson.module.scss';
 
 interface IJsonResult {
   elmType: string;
-  attributes: { [key: string]: string | null };
+  attributes: { [key: string]: string };
   style: { [key: string]: string };
   children: IJsonResult[];
 }
@@ -12,10 +12,10 @@ interface IJsonResult {
 interface ConvertButtonProps {
   isConverted: boolean;
   svgContent: string;
-  setJsonResult: React.Dispatch<React.SetStateAction<string>>;
-  setMessage: React.Dispatch<React.SetStateAction<string | null>>;
-  setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
-  setIsConverted: React.Dispatch<React.SetStateAction<boolean>>;
+  setJsonResult: (json: string) => void;
+  setMessage: (message: string | null) => void;
+  setMessageType: (type: MessageBarType) => void;
+  setIsConverted: (isConverted: boolean) => void;
 }
 
 const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, setJsonResult, setMessage, setMessageType, setIsConverted }) => {
@@ -30,6 +30,8 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
     const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
     const paths = Array.from(svgDoc.getElementsByTagName('path'));
 
+    const viewBox = svgDoc.documentElement.getAttribute('viewBox') || '0 0 100 100'; // Fallback value for viewBox
+
     const result: IJsonResult = {
       elmType: "div",
       attributes: {},
@@ -39,7 +41,7 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
           elmType: "svg",
           attributes: {
             xmlns: "http://www.w3.org/2000/svg",
-            viewBox: svgDoc.documentElement.getAttribute('viewBox'),
+            viewBox: viewBox,
             style: "max-width: 48px; max-height: 48px;"
           },
           style: {
@@ -57,7 +59,7 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
       const pathObj: IJsonResult = {
         elmType: "path",
         attributes: {
-          d: path.getAttribute('d')
+          d: path.getAttribute('d') || '' // Ensure d attribute is a string
         },
         style: {
           fill: path.getAttribute('fill') || "#000000"
@@ -83,26 +85,12 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
     }
   };
 
-  if (isConverted) {
-    return null;
-  }
-
   return (
     <PrimaryButton
-      text="Convert and copy to clipboard"
+      text="Convert to JSON"
       onClick={convertSvgToJson}
       className={styles.button}
-      aria-label="Convert SVG to JSON"
-      disabled={!svgContent}
-      styles={{
-        root: {
-          backgroundColor: svgContent ? 'var(--primary-color) !important' : 'lightgrey !important',
-          borderColor: svgContent ? 'var(--primary-color) !important' : 'lightgrey !important',
-          color: svgContent ? 'white !important' : 'grey !important',
-          visibility: isConverted ? 'hidden' : 'visible', // Maintain the button's space in the layout
-
-        },
-      }}
+      aria-label="Convert to JSON"
     />
   );
 };

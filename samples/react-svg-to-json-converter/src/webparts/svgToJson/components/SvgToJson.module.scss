@@ -16,7 +16,7 @@ $primary-color: #ff69b4;
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: white;
-  margin-top: 10px;
+  // margin-top: 10px;
   transition: background-color 0.3s, filter 0.3s; // Smooth transition for hover effect
 
   &:hover {
@@ -27,41 +27,23 @@ $primary-color: #ff69b4;
 .buttonContainer {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  align-items: center;
+  margin-top: 0px;
+  
   width: 100%;
 }
 
-.dismissIcon {
-  color: #ff69b4; /* Primary color */
+.buttonMargin {
+  margin-right: 20px;
 }
+
 
 .dropdown {
   margin-bottom: 20px;
   width: 500px; // Set absolute width
 }
 
-.modalBody {
-  background-color: #ffffff;
-  padding: 20px;
-}
 
-.modalContainer {
-  background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  margin: auto;
-  padding: 20px;
-  width: 400px;
-}
-
-.modalHeader {
-  align-items: center;
-  background-color: #f3f2f1;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
 
 .previewContainer {
   display: flex;
