@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { MessageBarType, MessageBar } from '@fluentui/react';
-import { spfi, SPFx } from "@pnp/sp";
-import "@pnp/sp/webs";
-import "@pnp/sp/lists";
-import "@pnp/sp/items";
-import "@pnp/sp/fields";
-import "@pnp/sp/context-info";
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
@@ -17,13 +11,6 @@ import Message from './Message';
 import ToggleSwitch from './ToggleSwitch';
 import ApplyButton from './ApplyButton';
 import SiteSelector from './SiteSelector';
-
-interface IJsonResult {
-  elmType: string;
-  attributes: { [key: string]: string | null };
-  style: { [key: string]: string };
-  children: IJsonResult[];
-}
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [svgContent, setSvgContent] = useState<string>('');
@@ -50,99 +37,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setSelectedColumn(columnName);
   };
 
-  const applyColumnFormatting = async (): Promise<void> => {
-    if (!selectedList || !selectedColumn || !jsonResult) {
-      setMessage('Please select a list, column, and generate JSON result before applying formatting.');
-      setMessageType(MessageBarType.error);
-      return;
-    }
-
-    try {
-      const fullSiteUrl = selectedSite!;
-      const sp = spfi(fullSiteUrl).using(SPFx(props.context));
-
-      const { FormDigestValue: formDigestValue } = await sp.web.getContextInfo();
-      console.log(formDigestValue);
-      await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
-        CustomFormatter: jsonResult
-      }, `${formDigestValue}`);
-
-      setMessage('Column formatting applied successfully!');
-      setMessageType(MessageBarType.success);
-
-      const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
-      window.open(listUrl, '_blank');
-    } catch (error) {
-      console.error('Error applying column formatting:', error);
-      setMessage(`Error applying column formatting: ${error.message}`);
-      setMessageType(MessageBarType.error);
-    }
-  };
-
-  const convertSvgToJson = async (): Promise<void> => {
-    if (!svgContent) {
-      setMessage('No SVG content to convert.');
-      setMessageType(MessageBarType.error);
-      return;
-    }
-
-    const parser = new DOMParser();
-    const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
-    const paths = Array.from(svgDoc.getElementsByTagName('path'));
-
-    const result: IJsonResult = {
-      elmType: "div",
-      attributes: {},
-      style: {},
-      children: [
-        {
-          elmType: "svg",
-          attributes: {
-            xmlns: "http://www.w3.org/2000/svg",
-            viewBox: svgDoc.documentElement.getAttribute('viewBox'),
-            style: "max-width: 48px; max-height: 48px;"
-          },
-          style: {
-            width: "100%",
-            height: "100%",
-            maxWidth: "48px",
-            maxHeight: "48px"
-          },
-          children: []
-        }
-      ]
-    };
-
-    paths.forEach((path: SVGPathElement) => {
-      const pathObj: IJsonResult = {
-        elmType: "path",
-        attributes: {
-          d: path.getAttribute('d')
-        },
-        style: {
-          fill: path.getAttribute('fill') || "#000000"
-        },
-        children: []
-      };
-      result.children[0].children.push(pathObj);
-    });
-
-    const jsonString = JSON.stringify(result, null, 2);
-    setJsonResult(jsonString);
-    setMessage(null);
-    setIsConverted(true); // Set conversion state to true
-
-    // Copy JSON result to clipboard
-    try {
-      await navigator.clipboard.writeText(jsonString);
-      setMessage('Converted to JSON and copied to clipboard!');
-      setMessageType(MessageBarType.success);
-    } catch (error) {
-      setMessage('Failed to copy to clipboard.');
-      setMessageType(MessageBarType.error);
-    }
-  };
-
   if (!props.siteUrl || !props.libraryName) {
     return (
       <MessageBar messageBarType={MessageBarType.warning}>
@@ -166,7 +60,10 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       <ConvertButton
         isConverted={isConverted}
         svgContent={svgContent}
-        convertSvgToJson={convertSvgToJson}
+        setJsonResult={setJsonResult}
+        setMessage={setMessage}
+        setMessageType={setMessageType}
+        setIsConverted={setIsConverted}
       />
       <ToggleSwitch applyToColumn={applyToColumn} setApplyToColumn={setApplyToColumn} />
       {applyToColumn && (
@@ -179,7 +76,16 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             onColumnChange={handleColumnChange}
             className={styles.dropdown}
           />
-          <ApplyButton applyColumnFormatting={applyColumnFormatting} />
+          <ApplyButton
+            selectedList={selectedList}
+            selectedColumn={selectedColumn}
+            jsonResult={jsonResult}
+            selectedSite={selectedSite}
+            context={props.context}
+            setMessage={setMessage}
+            setMessageType={setMessageType}
+            selectedListName={selectedListName}
+          />
         </>
       )}
     </div>

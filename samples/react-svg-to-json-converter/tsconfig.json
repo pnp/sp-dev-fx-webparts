@@ -2,7 +2,7 @@
   "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "es2016",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -26,7 +26,8 @@
       "dom",
       "es2015",
       "es2015.collection",
-      "es2015.promise"
+      "es2015.promise",
+      "es2016"
     ]
   },
   "include": [

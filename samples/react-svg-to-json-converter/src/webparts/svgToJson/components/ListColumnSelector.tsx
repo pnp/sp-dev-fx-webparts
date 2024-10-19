@@ -31,13 +31,24 @@ const ListColumnSelector: React.FC<IListColumnSelectorProps> = ({ siteUrl, conte
         const sp = spfi(siteUrl).using(SPFx(context)); 
         const fetchedLists: any[] = await sp.web.lists();
 
-        const listOptions: IDropdownOption[] = fetchedLists.map(list => ({
-          key: list.Id,
-          text: list.Title,
-        }));
+        // List of titles to exclude
+        const excludedTitles = [
+          'appdata', 'appfiles', 'Composed Looks', 'Converted Forms', 'Documents', 
+          'Form Templates', 'List Template Gallery','Style Library', 'Master Page Gallery', 'Site Assets', 
+          'Site Pages', 'Solution Gallery', 'TaxonomyHiddenList', 'Theme Gallery', 
+          'User Information List', 'Web Part Gallery', 'Web Template Extensions'
+        ];
+
+        const listOptions: IDropdownOption[] = fetchedLists
+          .filter(list => excludedTitles.indexOf(list.Title) === -1)
+          .map(list => ({
+            key: list.Id,
+            text: list.Title
+          }));
+
         setLists(listOptions);
-        setMessage(null);
       } catch (error) {
+        console.error('Error fetching lists:', error);
         setMessage(`Error fetching lists: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
@@ -49,43 +60,47 @@ const ListColumnSelector: React.FC<IListColumnSelectorProps> = ({ siteUrl, conte
   const handleListChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): Promise<void> => {
     if (option) {
       onListChange(option.key as string, option.text as string);
-
       try {
-        const sp = spfi(siteUrl).using(SPFx(context));
-        const fields = await sp.web.lists.getById(option.key as string).fields();
+        const sp = spfi(siteUrl).using(SPFx(context)); 
+        const fetchedColumns: any[] = await sp.web.lists.getById(option.key as string).fields();
 
-        const excludedInternalNames = ["ID", "ContentType", "Modified", "Created", "Author", "Editor"];
-        const columnOptions: IDropdownOption[] = fields.map(field => ({
-          key: field.InternalName,
-          text: field.Title,
-          readOnlyField: field.ReadOnlyField,
-        })).filter(option => excludedInternalNames.indexOf(option.key) === -1 && !option.readOnlyField);
+        const columnOptions: IDropdownOption[] = fetchedColumns
+          .filter(column => !column.Hidden && !column.ReadOnlyField)
+          .map(column => ({
+            key: column.InternalName,
+            text: column.Title
+          }));
 
         setColumns(columnOptions);
       } catch (error) {
-        setMessage(`Error fetching fields: ${error.message}`);
+        console.error('Error fetching columns:', error);
+        setMessage(`Error fetching columns: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
     }
   };
 
+  const handleColumnChange = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
+    if (option) {
+      onColumnChange(option.key as string);
+    }
+  };
+
   return (
-    <div>
+    <div className={className}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
         placeholder="Select a list"
         label="Lists"
         options={lists}
         onChange={handleListChange}
-        styles={{ dropdown: { width: 500 } }} // Consistent width for the list dropdown
         className={styles.dropdown}
       />
       <Dropdown
         placeholder="Select a column"
         label="Columns"
         options={columns}
-        onChange={(event, option) => onColumnChange(option?.key as string)}
-        styles={{ dropdown: { width: 500 } }} // Consistent width for the column dropdown
+        onChange={handleColumnChange}
         className={styles.dropdown}
       />
     </div>

@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react';
 import { spfi, SPFx } from '@pnp/sp';
-
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 
 interface SVGInputProps {
   siteUrl: string;
@@ -33,6 +35,8 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
         setSvgFiles(svgOptions);
       } catch (error) {
         console.error(`Error fetching SVG files: ${error.message}`);
+        setMessage(`Error fetching SVG files: ${error.message}`);
+        setMessageType(MessageBarType.error);
       }
     };
 
