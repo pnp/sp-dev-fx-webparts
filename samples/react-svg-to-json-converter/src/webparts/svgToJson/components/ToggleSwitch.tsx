@@ -14,6 +14,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ applyToColumn, setApplyToCo
       <Toggle
         onText="Yes"
         offText="No"
+        aria-label="Apply to column"
         checked={applyToColumn}
         onChange={(e, checked) => setApplyToColumn(!!checked)}
         styles={{

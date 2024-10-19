@@ -71,8 +71,10 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
   return (
     <Dropdown
       placeholder="Select an SVG file"
+      label="SVG Files"
       options={svgFiles}
       onChange={handleFileChange}
+      aria-label="Select a list"
     />
   );
 };

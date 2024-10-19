@@ -92,6 +92,7 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
       text="Convert and copy to clipboard"
       onClick={convertSvgToJson}
       className={styles.button}
+      aria-label="Convert SVG to JSON"
       disabled={!svgContent}
       styles={{
         root: {
@@ -99,6 +100,7 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
           borderColor: svgContent ? 'var(--primary-color) !important' : 'lightgrey !important',
           color: svgContent ? 'white !important' : 'grey !important',
           visibility: isConverted ? 'hidden' : 'visible', // Maintain the button's space in the layout
+
         },
       }}
     />

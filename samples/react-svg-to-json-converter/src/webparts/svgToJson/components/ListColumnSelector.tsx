@@ -34,7 +34,7 @@ const ListColumnSelector: React.FC<IListColumnSelectorProps> = ({ siteUrl, conte
         // List of titles to exclude
         const excludedTitles = [
           'appdata', 'appfiles', 'Composed Looks', 'Converted Forms', 'Documents', 
-          'Form Templates', 'List Template Gallery','Style Library', 'Master Page Gallery', 'Site Assets', 
+          'Form Templates', 'List Template Gallery', 'Master Page Gallery', 'Site Assets', 
           'Site Pages', 'Solution Gallery', 'TaxonomyHiddenList', 'Theme Gallery', 
           'User Information List', 'Web Part Gallery', 'Web Template Extensions'
         ];
@@ -95,6 +95,7 @@ const ListColumnSelector: React.FC<IListColumnSelectorProps> = ({ siteUrl, conte
         options={lists}
         onChange={handleListChange}
         className={styles.dropdown}
+        aria-label="Select a list"
       />
       <Dropdown
         placeholder="Select a column"
@@ -102,6 +103,7 @@ const ListColumnSelector: React.FC<IListColumnSelectorProps> = ({ siteUrl, conte
         options={columns}
         onChange={handleColumnChange}
         className={styles.dropdown}
+        aria-label="Select a column"
       />
     </div>
   );

@@ -47,6 +47,7 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
       text="Apply Column Formatting"
       onClick={applyColumnFormatting}
       className={styles.button}
+      aria-label="Apply Column Formatting"
     />
   );
 };
