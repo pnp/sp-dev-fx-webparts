@@ -6,7 +6,8 @@ import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
 import SVGOutput from './SVGOutput';
 import ConvertButton from './ConvertButton';
-import ListColumnSelector from './ListColumnSelector';
+import ListSelector from './ListSelector';
+import ColumnSelector from './ColumnSelector';
 import Message from './Message';
 import ToggleSwitch from './ToggleSwitch';
 import ApplyButton from './ApplyButton';
@@ -69,12 +70,16 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       {applyToColumn && (
         <>
           <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
-          <ListColumnSelector
+          <ListSelector
             siteUrl={selectedSite!}
             context={props.context}
             onListChange={handleListChange}
+          />
+          <ColumnSelector
+            siteUrl={selectedSite!}
+            context={props.context}
+            listId={selectedList}
             onColumnChange={handleColumnChange}
-            className={styles.dropdown}
           />
           <ApplyButton
             selectedList={selectedList}
