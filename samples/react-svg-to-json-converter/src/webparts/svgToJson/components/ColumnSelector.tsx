@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Dropdown, IDropdownOption, MessageBarType, MessageBar } from '@fluentui/react';
-import { spfi, SPFx } from '@pnp/sp';
+import { Dropdown, MessageBar, IDropdownOption } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
-import "@pnp/sp/webs";
-import "@pnp/sp/lists";
-import "@pnp/sp/fields";
+import useFetchFields from './useFetchFields';
 
 interface ColumnSelectorProps {
   siteUrl: string;
@@ -15,38 +11,7 @@ interface ColumnSelectorProps {
 }
 
 const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listId, onColumnChange }) => {
-  const [columns, setColumns] = useState<IDropdownOption[]>([]);
-  const [message, setMessage] = useState<string | null>(null);
-  const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
-
-  useEffect(() => {
-    const fetchColumns = async (): Promise<void> => {
-      if (!siteUrl || !listId) {
-        return;
-      }
-
-      try {
-        const sp = spfi(siteUrl).using(SPFx(context)); 
-        const list = await sp.web.lists.getById(listId);
-        const fetchedColumns = await list.fields();
-
-        const columnOptions: IDropdownOption[] = fetchedColumns
-          .filter(column => !column.Hidden && !column.ReadOnlyField)
-          .map(column => ({
-            key: column.InternalName,
-            text: column.Title
-          }));
-
-        setColumns(columnOptions);
-      } catch (error) {
-        console.error('Error fetching columns:', error);
-        setMessage(`Error fetching columns: ${error.message}`);
-        setMessageType(MessageBarType.error);
-      }
-    };
-
-    fetchColumns();
-  }, [siteUrl, context, listId]);
+  const { fields, message, messageType } = useFetchFields(siteUrl, context, listId);
 
   const handleColumnChange = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
     if (option) {
@@ -60,7 +25,7 @@ const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listI
       <Dropdown
         placeholder="Select a column"
         label="Columns"
-        options={columns}
+        options={fields}
         onChange={handleColumnChange}
         className={styles.dropdown}
         aria-label="Select a column"
