@@ -2,9 +2,9 @@
 
 ## Summary
 
-This web part allows users to read SVGs from a library `Approved SVGs`, select one of them and have the code converted into a JSON format that is ready to be used in a SharePoint List in advanced formatting. Users can both copy the JSON to their clipboard or select a list from a given site and then directly apply the format to a column of their choice.
+This web part allows users to read SVGs from a SharePoint library, select one of them and have the code converted into a JSON format that is ready to be used in a SharePoint List in advanced formatting. Users can both copy the JSON to their clipboard or select a list from a given site and then directly apply the format to a column of of a Site of a Library of their choice
 
-![svg converter in action](../react-svg-to-json-converter/assets/webpart.png)
+![svg converter in action](../react-svg-to-json-converter/assets/webpart-with-site-selector.png)
 
 ## Used SharePoint Framework Version
 
