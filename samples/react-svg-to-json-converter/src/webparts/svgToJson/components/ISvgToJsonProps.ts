@@ -10,3 +10,4 @@ export interface ISvgToJsonProps {
   context: WebPartContext; 
   
 }
+

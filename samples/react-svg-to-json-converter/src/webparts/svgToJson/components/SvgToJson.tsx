@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { MessageBarType, MessageBar } from '@fluentui/react';
+import { MessageBarType, MessageBar, TextField, PrimaryButton } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
 import SVGOutput from './SVGOutput';
 import ConvertButton from './ConvertButton';
-import ResetButton from './ResetButton'; // Import the ResetButton component
+import ResetButton from './ResetButton';
+import ApplyButton from './ApplyButton';
 import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import Message from './Message';
 import ToggleSwitch from './ToggleSwitch';
-import ApplyButton from './ApplyButton';
 import SiteSelector from './SiteSelector';
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
@@ -19,12 +19,13 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [jsonResult, setJsonResult] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
-  const [selectedSite, setSelectedSite] = useState<string | null>(props.siteUrl); // Initialize with props.siteUrl
+  const [selectedSite, setSelectedSite] = useState<string | null>(props.siteUrl);
+  const [libraryName, setLibraryName] = useState<string | null>(props.libraryName); // Use state for libraryName
   const [selectedList, setSelectedList] = useState<string | null>(null);
   const [selectedListName, setSelectedListName] = useState<string | null>(null);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
-  const [isConverted, setIsConverted] = useState<boolean>(false); // New state to track conversion
+  const [isConverted, setIsConverted] = useState<boolean>(false);
   const [isTeams, setIsTeams] = useState<boolean>(false);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setMessage(null);
     setMessageType(MessageBarType.info);
     setSelectedSite(props.siteUrl);
+    setLibraryName(props.libraryName); // Reset libraryName state
     setSelectedList(null);
     setSelectedListName(null);
     setSelectedColumn(null);
@@ -59,12 +61,40 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setIsConverted(false);
   };
 
+  const handleSaveConfiguration = (): void => {
+    // Save the configuration to web part properties
+    props.context.propertyPane.refresh();
+    props.context.propertyPane.open();
+    props.context.propertyPane.refresh();
+    props.context.propertyPane.close();
+    props.siteUrl = selectedSite!;
+    props.libraryName = libraryName!;
+    props.context.propertyPane.refresh();
+    setMessage('Configuration saved successfully.');
+    setMessageType(MessageBarType.success);
+  };
+
   if (!props.siteUrl || !props.libraryName) {
     if (isTeams) {
       return (
-        <MessageBar messageBarType={MessageBarType.warning}>
-          Please configure the web part in SharePoint before adding it to Teams.
-        </MessageBar>
+        <div className={styles.svgToJson}>
+          <MessageBar messageBarType={MessageBarType.warning}>
+            Please configure this app first.
+          </MessageBar>
+          <TextField
+            label="Site URL"
+            value={selectedSite || ''}
+            onChange={(e, newValue) => setSelectedSite(newValue || '')}
+            className={styles.inputField} // Add class for styling
+          />
+          <TextField
+            label="Library Name"
+            value={libraryName || ''}
+            onChange={(e, newValue) => setLibraryName(newValue || '')}
+            className={styles.inputField} // Add class for styling
+          />
+          <PrimaryButton text="Save Configuration" onClick={handleSaveConfiguration} className={styles.saveButton} />
+        </div>
       );
     }
     return (
@@ -87,7 +117,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
       />
       <SVGOutput svgContent={svgContent} />
       <div className={styles.buttonContainer}>
-        <ResetButton resetInputs={resetInputs} className={styles.buttonMargin} /> {/* Add the ResetButton component with margin */}
+        <ResetButton resetInputs={resetInputs} className={styles.buttonMargin} />
         <ConvertButton
           isConverted={isConverted}
           svgContent={svgContent}
@@ -121,7 +151,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             setMessage={setMessage}
             setMessageType={setMessageType}
             selectedListName={selectedListName}
-            resetInputs={resetInputs} // Pass the reset function
+            resetInputs={resetInputs}
           />
         </>
       )}
