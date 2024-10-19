@@ -48,7 +48,7 @@ export default class SvgToJsonWebPart extends BaseClientSideWebPart<ISvgToJsonWe
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+  
               groupFields: [
                 PropertyPaneTextField('siteUrl', {
                   label: strings.SiteUrlFieldLabel
