@@ -16,6 +16,8 @@ interface ConvertButtonProps {
   setMessage: (message: string | null) => void;
   setMessageType: (type: MessageBarType) => void;
   setIsConverted: (isConverted: boolean) => void;
+  className?: string;
+  text: string;
 }
 
 const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, setJsonResult, setMessage, setMessageType, setIsConverted }) => {

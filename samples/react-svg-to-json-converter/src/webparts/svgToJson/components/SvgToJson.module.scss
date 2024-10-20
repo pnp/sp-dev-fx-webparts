@@ -80,3 +80,18 @@
 .toggleLabel {
   margin-right: 10px;
 }
+
+.advancedOptionsButton {
+  background: none;
+  border: none;
+  padding: 0;
+  height: auto;
+  min-width: auto;
+  margin-top: 10px;
+  &:hover {
+    background: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}

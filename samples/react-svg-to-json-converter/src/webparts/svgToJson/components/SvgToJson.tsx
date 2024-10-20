@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { MessageBarType, MessageBar, TextField, PrimaryButton } from '@fluentui/react';
+import { MessageBarType, MessageBar, TextField, PrimaryButton, DefaultButton } from '@fluentui/react';
 import { getTheme, ThemeProvider } from '@fluentui/react';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
@@ -11,7 +11,6 @@ import ApplyButton from './ApplyButton';
 import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import Message from './Message';
-import ToggleSwitch from './ToggleSwitch';
 import SiteSelector from './SiteSelector';
 import styles from './SvgToJson.module.scss';
 
@@ -25,9 +24,9 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [selectedList, setSelectedList] = useState<string | null>(null);
   const [selectedListName, setSelectedListName] = useState<string | null>(null);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
-  const [applyToColumn, setApplyToColumn] = useState<boolean>(false);
   const [isConverted, setIsConverted] = useState<boolean>(false);
   const [isTeams, setIsTeams] = useState<boolean>(false);
+  const [isAccordionExpanded, setIsAccordionExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     if (props.context.sdks.microsoftTeams) {
@@ -58,7 +57,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setSelectedList(null);
     setSelectedListName(null);
     setSelectedColumn(null);
-    setApplyToColumn(false);
     setIsConverted(false);
   };
 
@@ -110,6 +108,8 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.svgToJson}>
+        <h2>SVG to JSON for SharePoint List formatter</h2>
+        <p>Select an approved SVG and either copy it to your clipboard for further manipulation or apply it directly to a column of your choice - Made with 💖 by Luise</p>
         <Message message={message} messageType={messageType} />
         <SVGInput
           siteUrl={props.siteUrl}
@@ -129,37 +129,46 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             setMessageType={setMessageType}
             setIsConverted={setIsConverted}
             isConverted={isConverted}
+            text="Convert and Copy to Clipboard"
           />
         </div>
-        <ToggleSwitch applyToColumn={applyToColumn} setApplyToColumn={setApplyToColumn} />
-        {applyToColumn && (
-          <>
-           
-            <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
-            <ListSelector
-              siteUrl={selectedSite!}
-              context={props.context}
-              onListChange={handleListChange}
-            />
-            <ColumnSelector
-              siteUrl={selectedSite!}
-              context={props.context}
-              listId={selectedList}
-              onColumnChange={handleColumnChange}
-            />
-            <ApplyButton
-              selectedList={selectedList}
-              selectedColumn={selectedColumn}
-              jsonResult={jsonResult}
-              selectedSite={selectedSite}
-              context={props.context}
-              setMessage={setMessage}
-              setMessageType={setMessageType}
-              selectedListName={selectedListName}
-              resetInputs={resetInputs}
-            />
-          </>
-        )}
+        <div>
+          <DefaultButton
+            text="Advanced options to apply column format"
+            onClick={() => setIsAccordionExpanded(!isAccordionExpanded)}
+            aria-expanded={isAccordionExpanded}
+            aria-controls="advancedOptions"
+            iconProps={{ iconName: isAccordionExpanded ? 'ChevronUp' : 'ChevronDown' }}
+            className={styles.advancedOptionsButton}
+          />
+          {isAccordionExpanded && (
+            <div id="advancedOptions">
+              <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
+              <ListSelector
+                siteUrl={selectedSite!}
+                context={props.context}
+                onListChange={handleListChange}
+              />
+              <ColumnSelector
+                siteUrl={selectedSite!}
+                context={props.context}
+                listId={selectedList}
+                onColumnChange={handleColumnChange}
+              />
+              <ApplyButton
+                selectedList={selectedList}
+                selectedColumn={selectedColumn}
+                jsonResult={jsonResult}
+                selectedSite={selectedSite}
+                context={props.context}
+                setMessage={setMessage}
+                setMessageType={setMessageType}
+                selectedListName={selectedListName}
+                resetInputs={resetInputs}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </ThemeProvider>
   );
