@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { MessageBarType, MessageBar, TextField, PrimaryButton } from '@fluentui/react';
-import styles from './SvgToJson.module.scss';
+import { getTheme, ThemeProvider } from '@fluentui/react';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
 import SVGOutput from './SVGOutput';
@@ -13,6 +13,7 @@ import ColumnSelector from './ColumnSelector';
 import Message from './Message';
 import ToggleSwitch from './ToggleSwitch';
 import SiteSelector from './SiteSelector';
+import styles from './SvgToJson.module.scss';
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [svgContent, setSvgContent] = useState<string>('');
@@ -63,10 +64,6 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
 
   const handleSaveConfiguration = (): void => {
     // Save the configuration to web part properties
-    props.context.propertyPane.refresh();
-    props.context.propertyPane.open();
-    props.context.propertyPane.refresh();
-    props.context.propertyPane.close();
     props.siteUrl = selectedSite!;
     props.libraryName = libraryName!;
     props.context.propertyPane.refresh();
@@ -74,88 +71,97 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setMessageType(MessageBarType.success);
   };
 
+  const theme = getTheme();
+
   if (!props.siteUrl || !props.libraryName) {
     if (isTeams) {
       return (
-        <div className={styles.svgToJson}>
-          <MessageBar messageBarType={MessageBarType.warning}>
-            Please configure this app first.
-          </MessageBar>
-          <TextField
-            label="Site URL"
-            value={selectedSite || ''}
-            onChange={(e, newValue) => setSelectedSite(newValue || '')}
-            className={styles.inputField} // Add class for styling
-          />
-          <TextField
-            label="Library Name"
-            value={libraryName || ''}
-            onChange={(e, newValue) => setLibraryName(newValue || '')}
-            className={styles.inputField} // Add class for styling
-          />
-          <PrimaryButton text="Save Configuration" onClick={handleSaveConfiguration} className={styles.saveButton} />
-        </div>
+        <ThemeProvider theme={theme}>
+          <div className={styles.svgToJson}>
+            <MessageBar messageBarType={MessageBarType.warning}>
+              Let's configure this app first.
+            </MessageBar>
+            <TextField
+              label="Site URL"
+              value={selectedSite || ''}
+              onChange={(e, newValue) => setSelectedSite(newValue || '')}
+              className={styles.inputField}
+            />
+            <TextField
+              label="Library Name"
+              value={libraryName || ''}
+              onChange={(e, newValue) => setLibraryName(newValue || '')}
+              className={styles.inputField}
+            />
+            <PrimaryButton text="Save Configuration" onClick={handleSaveConfiguration} className={styles.saveButton} />
+          </div>
+        </ThemeProvider>
       );
     }
     return (
-      <MessageBar messageBarType={MessageBarType.warning}>
-        Please configure the web part in the property pane.
-      </MessageBar>
+      <ThemeProvider theme={theme}>
+        <MessageBar messageBarType={MessageBarType.warning}>
+          Please configure the web part in the property pane.
+        </MessageBar>
+      </ThemeProvider>
     );
   }
 
   return (
-    <div className={styles.svgToJson}>
-      <Message message={message} messageType={messageType} />
-      <SVGInput
-        siteUrl={props.siteUrl}
-        libraryName={props.libraryName}
-        context={props.context}
-        setSvgContent={setSvgContent}
-        setMessage={setMessage}
-        setMessageType={setMessageType}
-      />
-      <SVGOutput svgContent={svgContent} />
-      <div className={styles.buttonContainer}>
-        <ResetButton resetInputs={resetInputs} className={styles.buttonMargin} />
-        <ConvertButton
-          isConverted={isConverted}
-          svgContent={svgContent}
-          setJsonResult={setJsonResult}
+    <ThemeProvider theme={theme}>
+      <div className={styles.svgToJson}>
+        <Message message={message} messageType={messageType} />
+        <SVGInput
+          siteUrl={props.siteUrl}
+          libraryName={props.libraryName}
+          context={props.context}
+          setSvgContent={setSvgContent}
           setMessage={setMessage}
           setMessageType={setMessageType}
-          setIsConverted={setIsConverted}
         />
-      </div>
-      <ToggleSwitch applyToColumn={applyToColumn} setApplyToColumn={setApplyToColumn} />
-      {applyToColumn && (
-        <>
-          <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
-          <ListSelector
-            siteUrl={selectedSite!}
-            context={props.context}
-            onListChange={handleListChange}
-          />
-          <ColumnSelector
-            siteUrl={selectedSite!}
-            context={props.context}
-            listId={selectedList}
-            onColumnChange={handleColumnChange}
-          />
-          <ApplyButton
-            selectedList={selectedList}
-            selectedColumn={selectedColumn}
-            jsonResult={jsonResult}
-            selectedSite={selectedSite}
-            context={props.context}
+        <SVGOutput svgContent={svgContent} />
+        <div className={styles.buttonContainer}>
+          <ResetButton resetInputs={resetInputs} className={styles.buttonMargin} />
+          <ConvertButton
+            svgContent={svgContent}
+            setJsonResult={setJsonResult}
             setMessage={setMessage}
             setMessageType={setMessageType}
-            selectedListName={selectedListName}
-            resetInputs={resetInputs}
+            setIsConverted={setIsConverted}
+            isConverted={isConverted}
           />
-        </>
-      )}
-    </div>
+        </div>
+        <ToggleSwitch applyToColumn={applyToColumn} setApplyToColumn={setApplyToColumn} />
+        {applyToColumn && (
+          <>
+           
+            <SiteSelector context={props.context} onSiteChange={handleSiteChange} className={styles.dropdown} />
+            <ListSelector
+              siteUrl={selectedSite!}
+              context={props.context}
+              onListChange={handleListChange}
+            />
+            <ColumnSelector
+              siteUrl={selectedSite!}
+              context={props.context}
+              listId={selectedList}
+              onColumnChange={handleColumnChange}
+            />
+            <ApplyButton
+              selectedList={selectedList}
+              selectedColumn={selectedColumn}
+              jsonResult={jsonResult}
+              selectedSite={selectedSite}
+              context={props.context}
+              setMessage={setMessage}
+              setMessageType={setMessageType}
+              selectedListName={selectedListName}
+              resetInputs={resetInputs}
+            />
+          </>
+        )}
+      </div>
+    </ThemeProvider>
   );
 };
 

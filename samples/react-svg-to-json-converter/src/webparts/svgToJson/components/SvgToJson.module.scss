@@ -1,57 +1,42 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
-// Define CSS variables for theming
-:root {
-  --font-size-large: 24px;
-  --padding-large: 20px;
-  --primary-color: #ff69b4;
-  --secondary-color: #fff;
-  --success-color: #d4edda; // Light green background for success messages
+.svgToJson {
+  padding: 20px;
+  background-color: var(--white);
 }
 
-// Define Sass variables for color manipulation
-$primary-color: #ff69b4;
+.inputField {
+  margin-bottom: 10px;
+}
 
-.button {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  // margin-top: 10px;
-  transition: background-color 0.3s, filter 0.3s; // Smooth transition for hover effect
-
-  &:hover {
-    background-color: darken($primary-color, 20%); // 20% darker than hot-pink
-  }
+.saveButton {
+  margin-top: 10px;
 }
 
 .buttonContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 0px;
-  
-  width: 100%;
+  margin-top: 10px;
 }
 
 .buttonMargin {
   margin-right: 20px;
 }
 
-
 .dropdown {
   margin-bottom: 20px;
-  width: 500px; // Set absolute width
+  width: 500px;
 }
 
-.inputField {
-  margin-bottom: 10px; /* Add margin between input fields and button */
+.label {
+  margin-bottom: 10px;
 }
 
-.saveButton {
-  margin-top: 10px; /* Add margin above the button */
+.teamsContainer,
+.sharepointContainer {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
-
-
 
 .previewContainer {
   display: flex;
@@ -60,11 +45,11 @@ $primary-color: #ff69b4;
 }
 
 .svgContent {
-  height: 100% !important; /* Ensure the SVG stays within the container */
-  max-height: 96px !important; /* Ensure the SVG stays within the container */
-  max-width: 96px !important; /* Ensure the SVG stays within the container */
-  object-fit: contain !important; /* Contain the SVG within the container */
-  width: 100% !important; /* Ensure the SVG stays within the container */
+  height: 100% !important;
+  max-height: 96px !important;
+  max-width: 96px !important;
+  object-fit: contain !important;
+  width: 100% !important;
 }
 
 .svgPreview {
@@ -72,8 +57,8 @@ $primary-color: #ff69b4;
   padding: 10px;
   background-color: #f9f9f9;
   margin-bottom: 20px;
-  width: 150px; // Adjusted width to make it smaller
-  max-height: 150px; // Adjusted height to make it smaller
+  width: 150px;
+  max-height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,49 +67,16 @@ $primary-color: #ff69b4;
 .svgPreview svg {
   width: 100%;
   height: 100%;
-  max-width: 100%; // Ensure SVGs have the same size
-  max-height: 100%; // Ensure SVGs have the same size
-}
-
-.svgToJson {
-  align-items: center;
-  background-color: var(--secondary-color);
-  display: flex;
-  flex-direction: column;
-  padding: var(--padding-large);
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
-
-  .ms-TextField {
-    width: 500px; // Set absolute width
-  }
-
-  .dropdown {
-    margin-bottom: 20px;
-    width: 500px; // Set absolute width
-  }
-}
-
-.toggle {
-  .ms-Toggle-background {
-    background-color: #ff69b4 !important; /* Hot pink background */
-  }
-  .ms-Toggle-thumb {
-    background-color: white !important; /* White circle */
-  }
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .toggleContainer {
-  align-items: center;
   display: flex;
+  align-items: center;
   margin-top: 10px;
-  visibility: hidden; /* Initially hidden */
 }
 
-.toggleContainer.visible {
-  visibility: visible; /* Make visible when needed */
+.toggleLabel {
+  margin-right: 10px;
 }
-

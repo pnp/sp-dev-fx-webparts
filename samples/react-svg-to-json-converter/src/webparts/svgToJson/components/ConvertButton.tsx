@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
-import styles from './SvgToJson.module.scss';
+
 
 interface IJsonResult {
   elmType: string;
@@ -89,8 +89,9 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ isConverted, svgContent, 
     <PrimaryButton
       text="Convert to JSON"
       onClick={convertSvgToJson}
-      className={styles.button}
+ 
       aria-label="Convert to JSON"
+      disabled={isConverted} // Disable button if already converted
     />
   );
 };

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
 import { spfi, SPFx } from '@pnp/sp';
-import styles from './SvgToJson.module.scss';
 
 interface ApplyButtonProps {
   selectedList: string | null;
@@ -27,9 +26,21 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
       const fullSiteUrl = selectedSite!;
       const sp = spfi(fullSiteUrl).using(SPFx(context));
 
+      // Fetch the FormDigestValue using the SharePoint REST API
+      const response = await fetch(`${fullSiteUrl}/_api/contextinfo`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json;odata=verbose',
+          'Content-Type': 'application/json;odata=verbose'
+        }
+      });
+      const data = await response.json();
+      const formDigestValue = data.d.GetContextWebInformation.FormDigestValue;
+      console.log(formDigestValue);
+
       await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
         CustomFormatter: jsonResult
-      });
+      }, `${formDigestValue}`);
 
       setMessage('Column formatting applied successfully!');
       setMessageType(MessageBarType.success);
@@ -49,7 +60,6 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
     <PrimaryButton
       text="Apply Column Formatting"
       onClick={applyColumnFormatting}
-      className={styles.button}
       aria-label="Apply Column Formatting"
     />
   );
