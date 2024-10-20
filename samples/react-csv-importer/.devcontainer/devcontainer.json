@@ -1,7 +1,7 @@
 // For more information on how to run this SPFx project in a VS Code Remote Container, please visit https://aka.ms/spfx-devcontainer
 {
-    "name": "SPFx 1.18.0",
-    "image": "docker.io/m365pnp/spfx:1.18.0",
+    "name": "SPFx 1.20.0",
+    "image": "docker.io/m365pnp/spfx:1.20.0",
     "customizations": {
         "vscode": {
             "extensions": [

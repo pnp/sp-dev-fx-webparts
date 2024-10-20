@@ -4,9 +4,9 @@
 
 This web part allows users to import CSV files into an existing SharePoint list.
 
-![CSV Importer preview](assets/react-csv-importer.gif)
-
 ![CSV Importer preview](assets/react-csv-importer.png)
+
+![CSV Importer preview](assets/react-csv-importer.gif)
 
 ## Compatibility
 
@@ -15,8 +15,8 @@ This web part allows users to import CSV files into an existing SharePoint list.
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -40,6 +40,7 @@ This web part allows users to import CSV files into an existing SharePoint list.
 Version|Date|Comments
 -------|----|--------
 1.0|October 11, 2022|Initial release
+1.1|October 20, 2024|Updated to SPFx 1.20 and added capability for chunk size configuration
 
 ## Minimal path to awesome
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-csv-importer) then unzip it)
@@ -60,16 +61,6 @@ Version|Date|Comments
 * Automatically map fields to SharePoint list column names
 
 This sample uses [PnP/PnPjs](https://pnp.github.io/pnpjs/) library, [@pnp/spfx-controls-react](https://pnp.github.io/sp-dev-fx-controls-react/), @pnp/[spfx-property-controls](https://pnp.github.io/sp-dev-fx-property-controls/) and [React CSV Importer](https://github.com/beamworks/react-csv-importer) component.
-
-<!--
-RESERVED FOR REPO MAINTAINERS
-
-We'll add the video from the community call recording here
-
-## Video
-
-[![YouTube video title](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=XXXXX "YouTube video title")
--->
 
 ## Help
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
