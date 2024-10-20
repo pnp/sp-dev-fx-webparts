@@ -9794,7 +9794,7 @@
       "This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format."
     ],
     "creationDateTime": "2020-06-22",
-    "updateDateTime": "2021-09-30",
+    "updateDateTime": "2024-10-13",
     "products": [
       "SharePoint"
     ],
@@ -9823,17 +9823,13 @@
     "authors": [
       {
         "gitHubAccount": "gautamdsheth",
-        "company": "Valo Intranet",
         "pictureUrl": "https://github.com/gautamdsheth.png",
-        "name": "Gautam Sheth",
-        "twitter": "gautamdsheth"
+        "name": "Gautam Sheth"
       },
       {
         "gitHubAccount": "AbhishekGarg",
-        "company": "Atos",
         "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400&v=4",
-        "name": "Abhishek Garg",
-        "twitter": "abhig89"
+        "name": "Abhishek Garg"
       }
     ],
     "references": [
