@@ -1,19 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 1/8/2018 12:00:00 AM
----
-
 # Using React Accordion plugin with SPFx
 
 ## Summary
@@ -30,7 +14,7 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
-![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg) 
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
