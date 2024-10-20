@@ -21,7 +21,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
   const [selectedSite, setSelectedSite] = useState<string | null>(props.siteUrl);
-  const [libraryName, setLibraryName] = useState<string | null>(props.libraryName); // Use state for libraryName
+  const [libraryName, setLibraryName] = useState<string | null>(props.libraryName);
   const [selectedList, setSelectedList] = useState<string | null>(null);
   const [selectedListName, setSelectedListName] = useState<string | null>(null);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
@@ -54,15 +54,14 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setMessage(null);
     setMessageType(MessageBarType.info);
     setSelectedSite(props.siteUrl);
-    setLibraryName(props.libraryName); // Reset libraryName state
+    setLibraryName(props.libraryName);
     setSelectedList(null);
     setSelectedListName(null);
     setSelectedColumn(null);
-    setIsConverted(false);
+    setIsConverted(false); // Reset isConverted state
   };
 
   const handleSaveConfiguration = (): void => {
-    // Save the configuration to web part properties
     props.siteUrl = selectedSite!;
     props.libraryName = libraryName!;
     props.context.propertyPane.refresh();
@@ -99,7 +98,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     <ThemeProvider theme={theme}>
       <div className={styles.svgToJson}>
         <h2>SVG to JSON for SharePoint List formatter</h2>
-        <p>Select an approved SVG and either copy it to your clipboard for further manipulation or apply it directly to a column of your choice - Made with 💖 by Luise</p>
+        <p>Please select an approved SVG and either copy the JSON format to your clipboard for further manipulation or apply it directly to a column of your choice - made with 💖 by Luise</p>
         <Message message={message} messageType={messageType} />
         <SVGInput
           siteUrl={props.siteUrl}
@@ -120,6 +119,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             setIsConverted={setIsConverted}
             isConverted={isConverted}
             text="Convert and Copy to Clipboard"
+            className={isTeams ? styles.teamsButton : styles.sharepointButton}
           />
         </div>
         <div>
@@ -155,6 +155,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
                 setMessageType={setMessageType}
                 selectedListName={selectedListName}
                 resetInputs={resetInputs}
+                className={isTeams ? styles.teamsButton : styles.sharepointButton}
               />
             </div>
           )}

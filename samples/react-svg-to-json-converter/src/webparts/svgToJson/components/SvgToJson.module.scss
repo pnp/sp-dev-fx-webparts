@@ -97,22 +97,20 @@
 }
 
 
-.teamsButton {
-  background-color: #6264a7; /* Teams purple */
-  border-color: #6264a7;
-  color: white;
-  &:hover {
-    background-color: #4b4a9b; /* Darker Teams purple */
-    border-color: #4b4a9b;
+.sharepointButton {
+  border: none; /* Remove any border */
+  outline: none; /* Remove outline */
+  &:focus {
+    border: none; /* Ensure no border on focus */
+    outline: none; /* Ensure no outline on focus */
   }
 }
 
-.sharepointButton {
-  background-color: var(--themePrimary); /* SharePoint blue */
-  border-color: var(--themePrimary);
-  color: white;
-  &:hover {
-    background-color: var(--themeDarkAlt); /* Darker SharePoint blue */
-    border-color: var(--themeDarkAlt);
+.teamsButton {
+  border: none; /* Remove any border */
+  outline: none; /* Remove outline */
+  &:focus {
+    border: none; /* Ensure no border on focus */
+    outline: none; /* Ensure no outline on focus */
   }
 }

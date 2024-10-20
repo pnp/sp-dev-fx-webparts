@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
 import { spfi, SPFx } from '@pnp/sp';
 
+
 interface ApplyButtonProps {
   selectedList: string | null;
   selectedColumn: string | null;
@@ -12,9 +13,10 @@ interface ApplyButtonProps {
   setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
   selectedListName: string | null;
   resetInputs: () => void;
+  className?: string; // Add className prop
 }
 
-const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName, resetInputs }) => {
+const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName, resetInputs, className }) => {
   const applyColumnFormatting = async (): Promise<void> => {
     if (!selectedList || !selectedColumn || !jsonResult) {
       setMessage('Please select a list, column, and generate JSON result before applying formatting.');
@@ -60,6 +62,7 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
     <PrimaryButton
       text="Apply Column Formatting"
       onClick={applyColumnFormatting}
+      className={className} // Use className prop
       aria-label="Apply Column Formatting"
     />
   );
