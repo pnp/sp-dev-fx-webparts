@@ -3936,7 +3936,7 @@
       "Sample SharePoint Framework application customizer showing how to create a tenant global NavBar and Footer NavBar for modern sites, reading menu items from the Term Store."
     ],
     "creationDateTime": "2017-09-28",
-    "updateDateTime": "2017-09-28",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -3947,7 +3947,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.3"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -5323,7 +5323,7 @@
       "With the use of Rest calls, this sample command set shows how to manage list subscriptions (SharePoint webhooks) and take action to extend the webhook expiration date. The commandset will be added to the lists and libraries and will only be shown if there are any list subscriptions available on the list. The subscriptions that are accessible are shown when you click on the Commandset. The 'Renew subscription' action can be used in accordance with the subscription's expiration date. Given that the default number of days is 180, the subscription's (webhook expiration renewal date) renewal date is set to 179 days. "
     ],
     "creationDateTime": "2023-09-12",
-    "updateDateTime": "2023-09-12",
+    "updateDateTime": "2024-10-03",
     "products": [
       "SharePoint"
     ],
@@ -5334,7 +5334,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -8248,7 +8248,7 @@
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
     "creationDateTime": "2020-02-05",
-    "updateDateTime": "2024-03-11",
+    "updateDateTime": "2024-10-03",
     "products": [
       "SharePoint"
     ],
@@ -8259,7 +8259,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -8702,7 +8702,7 @@
       "This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it."
     ],
     "creationDateTime": "2020-06-05",
-    "updateDateTime": "2021-10-28",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -8713,7 +8713,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -10363,7 +10363,7 @@
       "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."
     ],
     "creationDateTime": "2020-06-11",
-    "updateDateTime": "2022-10-24",
+    "updateDateTime": "2024-10-09",
     "products": [
       "SharePoint"
     ],
@@ -12079,7 +12079,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2024-06-28",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -12090,7 +12090,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.16.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -14120,7 +14120,7 @@
       "This web part used the date range picker in the SharePoint Framework (SPFx) web part"
     ],
     "creationDateTime": "2020-07-04",
-    "updateDateTime": "2020-07-04",
+    "updateDateTime": "2024-10-07",
     "products": [
       "SharePoint"
     ],
@@ -14131,7 +14131,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -14265,7 +14265,7 @@
       "Search People from Organization Directory and show live persona card on hover."
     ],
     "creationDateTime": "2021-03-04",
-    "updateDateTime": "2023-06-20",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -14276,7 +14276,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.3"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -16056,7 +16056,7 @@
       "description"
     ],
     "creationDateTime": "2022-04-20",
-    "updateDateTime": "2024-01-06",
+    "updateDateTime": "2024-10-03",
     "products": [
       "SharePoint"
     ],
@@ -16067,7 +16067,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -19040,13 +19040,13 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-kanban-board",
     "source": "pnp",
     "title": "Kanban Board Web part",
-    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
+    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using Fluent UI. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
     "longDescription": [
       "This solution contains an SPFx web part which shows a Kanban board. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks."
     ],
     "creationDateTime": "2020-07-02",
-    "updateDateTime": "2024-05-26",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -19057,7 +19057,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.19.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -19499,7 +19499,7 @@
       "This list search web part allows the user to show data from lists or libraries."
     ],
     "creationDateTime": "2020-12-20",
-    "updateDateTime": "2022-07-11",
+    "updateDateTime": "2024-10-02",
     "products": [
       "SharePoint"
     ],
@@ -19510,7 +19510,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -19574,7 +19574,7 @@
     "authors": [
       {
         "gitHubAccount": "albegut",
-        "company": "Minsait",
+        "company": "Hiberus",
         "pictureUrl": "https://github.com/albegut.png",
         "name": "Alberto Gutierrez perez",
         "twitter": "albertogperez"
@@ -19805,7 +19805,7 @@
       "This sample web part demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls. The webpart is to be added at Hubsite level or the sites associated to the hubsite, on selection of the site, it will list out the lists available. On list/library selection, the available subscriptions is displayed. Depending upon the expiry date of the subscription, 'Renew subscription' action can be performed. The subscription (webhook expiry renewal date) renewal date is set to 179 days, as the default days are 180. "
     ],
     "creationDateTime": "2023-09-01",
-    "updateDateTime": "2023-09-01",
+    "updateDateTime": "2024-10-02",
     "products": [
       "SharePoint",
       "WebHooks",
@@ -19820,7 +19820,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20817,7 +20817,7 @@
       "This web part show organization chart for current user, shows, managers and direct reports and there available status."
     ],
     "creationDateTime": "2020-07-09",
-    "updateDateTime": "2020-07-09",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -20828,7 +20828,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -21563,7 +21563,7 @@
       "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities"
     ],
     "creationDateTime": "2023-02-03",
-    "updateDateTime": "2024-08-26",
+    "updateDateTime": "2024-10-11",
     "products": [
       "SharePoint"
     ],
@@ -21574,7 +21574,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.19.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -22688,15 +22688,15 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-organization-chart",
     "source": "pnp",
-    "title": "Organization Chart Web Part (SP2019 and Online)",
+    "title": "Organization Chart Web Part",
     "shortDescription": "Shows an organization chart based on specified user, and user can navigate to show company organization",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
     "longDescription": [
       "This web part shows an organization chart based on specified user, and user can navigate to show company organization.",
-      "Can be installed on SharePoint Server 2019, and SharePoint Online."
+      "Can be installed on SharePoint Online."
     ],
     "creationDateTime": "2021-05-03",
-    "updateDateTime": "2024-02-25",
+    "updateDateTime": "2024-10-04",
     "products": [
       "SharePoint"
     ],
@@ -22707,7 +22707,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -22741,6 +22741,13 @@
       {
         "gitHubAccount": "Paxol",
         "pictureUrl": "https://github.com/Paxol.png"
+      },
+      {
+        "gitHubAccount": "petkir",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
       }
     ],
     "references": [
@@ -22882,7 +22889,7 @@
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
     "creationDateTime": "2019-09-05",
-    "updateDateTime": "2023-05-23",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -22893,7 +22900,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -23060,7 +23067,7 @@
       "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
     ],
     "creationDateTime": "2020-04-30",
-    "updateDateTime": "2024-01-11",
+    "updateDateTime": "2024-10-12",
     "products": [
       "SharePoint"
     ],
@@ -23071,7 +23078,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -23109,6 +23116,11 @@
         "gitHubAccount": "SlowRobot",
         "name": "SlowRobot",
         "pictureUrl": "https://github.com/SlowRobot.png"
+      },
+      {
+        "gitHubAccount": "tmaestrini",
+        "name": "Tobias Maestrini",
+        "pictureUrl": "https://github.com/tmaestrini.png"
       }
     ],
     "references": [
@@ -26211,7 +26223,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2023-04-24",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -26222,7 +26234,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
@@ -29475,7 +29487,7 @@
       "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart."
     ],
     "creationDateTime": "2021-02-28",
-    "updateDateTime": "2021-10-28",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -29486,7 +29498,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -29503,7 +29515,7 @@
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/react-tree-orgchart.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/react-tree-orgchart-2.gif?raw=true",
         "alt": "Tree Organization Web Part"
       },
       {

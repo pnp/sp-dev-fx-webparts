@@ -4,6 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
+  PropertyPaneLabel,
+  PropertyPaneTextField,
   PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
@@ -28,6 +30,10 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
         title: this.properties.title,
         url: this.properties.url,
         settings: this.properties.settings,
+        showEditIcon:this.properties.showEditIcon,
+        altText:this.properties.altText,
+        
+      
 
         updateTitleProperty: (value: string) => { this.properties.title = value; },
         updateUrlProperty: (value: string) => {
@@ -67,9 +73,16 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
             {
               groupName: strings.BasicGroupName,
               groupFields: [
+                PropertyPaneTextField('altText',{label:strings.AltTextFieldLabel}),
                 PropertyPaneToggle('showTitle', {
                   label: strings.ShowTitleFieldLabel
                 })
+                ,
+                PropertyPaneToggle('showEditIcon', {
+                  label: strings.ShowEditIconFieldLabel
+                }),
+                PropertyPaneLabel('urlInfo',{text:`The selected image is at ${this.properties.url?this.properties.url:'Not yet selected'} `})
+                
               ]
             }
           ]
