@@ -6,7 +6,7 @@ This web part allows users to read SVGs from a SharePoint library, select one of
 
 For usage in SharePoint, the Property Pane is used to define the Site URL and the library Name where the SVGs come from, for usage in Microsoft Teams there is a basic form to save the configuration.
 
-![svg converter in action](../assets/webpart-sp.png)
+![svg converter in action](../react-svg-to-json-converter/assets/webpart-sp.png)
 
 If you want to read more about this Web Part, [this blog post series is for you](https://m365princess.com/blogs/spfx-1)
 
