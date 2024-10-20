@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { MessageBarType, MessageBar, TextField, PrimaryButton, DefaultButton } from '@fluentui/react';
+import { MessageBarType, MessageBar, DefaultButton } from '@fluentui/react';
 import { getTheme, ThemeProvider } from '@fluentui/react';
 import { ISvgToJsonProps } from './ISvgToJsonProps';
 import SVGInput from './SVGInput';
@@ -12,6 +12,7 @@ import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import Message from './Message';
 import SiteSelector from './SiteSelector';
+import TeamsSaveConfiguration from './TeamsSaveConfiguration';
 import styles from './SvgToJson.module.scss';
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
@@ -74,26 +75,15 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   if (!props.siteUrl || !props.libraryName) {
     if (isTeams) {
       return (
-        <ThemeProvider theme={theme}>
-          <div className={styles.svgToJson}>
-            <MessageBar messageBarType={MessageBarType.warning}>
-              Let's configure this app first.
-            </MessageBar>
-            <TextField
-              label="Site URL"
-              value={selectedSite || ''}
-              onChange={(e, newValue) => setSelectedSite(newValue || '')}
-              className={styles.inputField}
-            />
-            <TextField
-              label="Library Name"
-              value={libraryName || ''}
-              onChange={(e, newValue) => setLibraryName(newValue || '')}
-              className={styles.inputField}
-            />
-            <PrimaryButton text="Save Configuration" onClick={handleSaveConfiguration} className={styles.saveButton} />
-          </div>
-        </ThemeProvider>
+        <TeamsSaveConfiguration
+          selectedSite={selectedSite}
+          setSelectedSite={setSelectedSite}
+          libraryName={libraryName}
+          setLibraryName={setLibraryName}
+          handleSaveConfiguration={handleSaveConfiguration}
+          message={message}
+          messageType={messageType}
+        />
       );
     }
     return (

@@ -95,3 +95,24 @@
     outline: none;
   }
 }
+
+
+.teamsButton {
+  background-color: #6264a7; /* Teams purple */
+  border-color: #6264a7;
+  color: white;
+  &:hover {
+    background-color: #4b4a9b; /* Darker Teams purple */
+    border-color: #4b4a9b;
+  }
+}
+
+.sharepointButton {
+  background-color: var(--themePrimary); /* SharePoint blue */
+  border-color: var(--themePrimary);
+  color: white;
+  &:hover {
+    background-color: var(--themeDarkAlt); /* Darker SharePoint blue */
+    border-color: var(--themeDarkAlt);
+  }
+}
