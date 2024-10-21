@@ -1,10 +1,10 @@
 define([], function () {
   return {
-    PropertyPaneDescription: "Description",
-    BasicGroupName: "Configure this webpart",
-    WebpartFieldLabel: "Webpart Title",
-    ContentTitleFieldLabel: "Content Title",
-    ContentDescriptionFieldLabel: "Content Description",
+    PropertyPaneDescription: "Configure this webpart",
+    BasicGroupName: "Basic Settings",
+    WebpartFieldLabel: "Header",
+    ContentTitleFieldLabel: "Sub heading",
+    ContentDescriptionFieldLabel: "Sub heading description",
     AppLocalEnvironmentSharePoint:
       "The app is running on your local environment as SharePoint web part",
     AppLocalEnvironmentTeams:
