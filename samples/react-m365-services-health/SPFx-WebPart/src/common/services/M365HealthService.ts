@@ -46,6 +46,7 @@ export class M365HealthService {
       try {
         return await response.clone().json();
       } catch (error) {
+        console.log(error);
         return await response.text();
       }
     } else {

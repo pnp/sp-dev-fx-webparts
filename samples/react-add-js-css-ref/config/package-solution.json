@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-add-js-css-ref-client-side-solution",
     "id": "d9c30e1a-bf06-46fa-807d-ce5182d9c91c",
-    "version": "2.1.0",
+    "version": "2.1.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

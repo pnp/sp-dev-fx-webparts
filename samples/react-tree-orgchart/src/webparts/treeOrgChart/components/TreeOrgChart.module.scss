@@ -1,4 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .treeOrgChart {
   .container {
@@ -6,10 +6,12 @@
     margin: 0px auto;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
- .treeContainer{
-  height: 450px;
+ 
+  .treeContainer{
+  height: auto;
   overflow: auto;
  }
+  
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
@@ -74,4 +76,22 @@
       display: inline-block;
     }
   }
+}
+
+.treeContents {
+  position: relative;
+  height: 50px;
+  border: solid #bbb 1px;
+  box-shadow: 0 2px 2px -2px;
+  padding: 0 5px 0 10px;
+  border-radius: 2px;
+  min-width: 230px;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 0 10px 0 5px;
+  width: fit-content;
 }

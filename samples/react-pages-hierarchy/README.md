@@ -15,7 +15,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2.0-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0.0-green.svg) 
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
@@ -40,6 +40,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 * [Nick Brown](https://github.com/techienickb) 
 * [SlowRobot](https://github.com/SlowRobot)
 * [ruslan-s](https://github.com/ruslan-s)
+* [Tobias Maestrini](https://github.com/tmaestrini)
 
 ## Version history
 
@@ -52,6 +53,7 @@ Version|Date|Comments
 1.5|March 29, 2023|Added support for non-English SitePages library paths
 1.6|May 11,2023|Uses treeFrom/expandTo web part properties
 1.7|January 08|Updated to SPFX 1.18.2 + Node 18
+1.8|October 13, 2024|Updated to SPFX 1.20.0
 
 ## Minimal path to awesome
 
