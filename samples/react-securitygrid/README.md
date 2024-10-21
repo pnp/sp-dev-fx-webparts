@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 12/1/2017 12:00:00 AM
----
 # Security Grid
 
 ## Summary
@@ -88,7 +73,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
-![Node.js v18.20.4](https://img.shields.io/badge/Node.js-%20v18.20.4-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-%20v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
