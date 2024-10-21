@@ -24,7 +24,8 @@
     "properties": {
       "title": "CSV Importer",
       "listId": "",
-      "showListTitle": true
+      "showListTitle": true,
+      "chunkSize": 600
     }
   }]
 }
