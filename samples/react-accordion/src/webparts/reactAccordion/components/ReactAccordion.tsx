@@ -1,37 +1,42 @@
-import * as React from 'react';
-import styles from './ReactAccordion.module.scss';
-import { IReactAccordionProps } from './IReactAccordionProps';
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import * as React from "react";
+import styles from "./ReactAccordion.module.scss";
+import { IReactAccordionProps } from "./IReactAccordionProps";
 import {
-  Spinner,
-  SpinnerSize
-} from 'office-ui-fabric-react/lib/Spinner';
+  SPHttpClient,
+  SPHttpClientResponse,
+} from "@microsoft/sp-http";
+import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
+import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
+import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import {
   Accordion,
   AccordionItem,
-  AccordionItemTitle,
-  AccordionItemBody,
-} from 'react-accessible-accordion';
-import 'react-accessible-accordion/dist/react-accessible-accordion.css';
+  AccordionItemButton,
+  AccordionItemHeading,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+import "react-accessible-accordion/dist/fancy-example.css";
 import { IReactAccordionState } from "./IReactAccordionState";
 import IAccordionListItem from "../models/IAccordionListItem";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import './accordion.css';
+import "./accordion.css";
 
-export default class ReactAccordion extends React.Component<IReactAccordionProps, IReactAccordionState> {
-
+export default class ReactAccordion extends React.Component<
+  IReactAccordionProps,
+  IReactAccordionState
+> {
   constructor(props: IReactAccordionProps, state: IReactAccordionState) {
     super(props);
     this.state = {
-      status: this.listNotConfigured(this.props) ? 'Please configure list in Web Part properties' : 'Ready',
+      status: this.listNotConfigured(this.props)
+        ? "Please configure list in Web Part properties"
+        : "Ready",
       pagedItems: [],
       items: [],
       listItems: [],
       isLoading: false,
-      loaderMessage: '',
-      error: ''
+      loaderMessage: "",
+      error: "",
     };
 
     if (!this.listNotConfigured(this.props)) {
@@ -39,97 +44,112 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     }
 
     this.searchTextChange = this.searchTextChange.bind(this);
-
   }
 
   private listNotConfigured(props: IReactAccordionProps): boolean {
-    return props.listName === undefined ||
+    return (
+      props.listName === undefined ||
       props.listName === null ||
-      props.listName.length === 0;
+      props.listName.length === 0
+    );
   }
 
-  private searchTextChange(event) {
-
-    if (event === undefined ||
-      event === null ||
-      event === "") {
+  private searchTextChange(event: any, newValue?: string): void {
+    // If newValue is null, undefined, or an empty string, reset the items
+    if (!newValue || newValue.trim() === "") {
       let listItemsCollection = [...this.state.listItems];
       this.setState({
         items: listItemsCollection,
-        pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage)
+        pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage),
       });
-    }
-    else {
-      var updatedList = [...this.state.listItems];
-      updatedList = updatedList.filter((item) => {
-        return item.Title.toLowerCase().search(
-          event.toLowerCase()) !== -1 || item.Description.toLowerCase().search(
-            event.toLowerCase()) !== -1;
+    } else {
+      // Filter list based on search query
+      const updatedList = this.state.listItems.filter((item) => {
+        // Ensure item.Title and item.Description exist and are strings
+        return (
+          item.Title?.toLowerCase().includes(newValue.toLowerCase()) ||
+          item.Description?.toLowerCase().includes(newValue.toLowerCase())
+        );
       });
       this.setState({
         items: updatedList,
-        pagedItems: updatedList.slice(0, this.props.maxItemsPerPage)
+        pagedItems: updatedList.slice(0, this.props.maxItemsPerPage),
       });
     }
   }
+  
+  
 
   private readItems(): void {
-
     const orders = [];
     if (this.props.customSortField) {
       orders.push(this.props.customSortField);
     }
     if (this.props.sortById) {
-      orders.push('ID');
+      orders.push("ID");
     }
     if (this.props.sortByModified) {
-      orders.push('Modified');
+      orders.push("Modified");
     }
 
-    const selects = `select=Title,Description${this.props.customSortField ? `,${this.props.customSortField}` : ''}`;
+    const selects = `select=Title,Description${
+      this.props.customSortField ? `,${this.props.customSortField}` : ""
+    }`;
 
-    const restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?` +
+    const restAPI =
+      this.props.siteUrl +
+      `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?` +
       `$${selects}` +
-      `${orders.length > 0 ? '&$orderby=' + orders.join(',') : ''}` +
+      `${orders.length > 0 ? "&$orderby=" + orders.join(",") : ""}` +
       `&$top=${this.props.totalItems}`;
 
-    this.props.spHttpClient.get(restAPI, SPHttpClient.configurations.v1, {
-      headers: {
-        'Accept': 'application/json;odata=nometadata',
-        'odata-version': ''
-      }
-    })
-      .then((response: SPHttpClientResponse): Promise<{ value: IAccordionListItem[] }> => {
-        return response.json();
+    this.props.spHttpClient
+      .get(restAPI, SPHttpClient.configurations.v1, {
+        headers: {
+          Accept: "application/json;odata=nometadata",
+          "odata-version": "",
+        },
       })
-      .then((response: { value: IAccordionListItem[] }): void => {
-        if (!response.value) {
+      .then(
+        (
+          response: SPHttpClientResponse
+        ): Promise<{ value: IAccordionListItem[] }> => {
+          return response.json();
+        }
+      )
+      .then(
+        (response: { value: IAccordionListItem[] }): void => {
+          if (!response.value) {
+            this.setState({
+              error: `No items were found, check the list Title and/or custom sort order field internal name`,
+            });
+          }
+
+          let listItemsCollection = [...response.value];
+
           this.setState({
-            error: `No items were found, check the list Title and/or custom sort order field internal name`
+            status: "",
+            pagedItems: listItemsCollection.slice(
+              0,
+              this.props.maxItemsPerPage
+            ),
+            items: response.value,
+            listItems: response.value,
+            isLoading: false,
+            loaderMessage: "",
+            error: "",
+          });
+        },
+        (error: any): void => {
+          this.setState({
+            status: "Loading all items failed with error: " + error,
+            pagedItems: [],
+            isLoading: false,
+            loaderMessage: "",
+            error: `Loading failed. Validate that you have entered a valid List Title and/or internal field name for the custom sort order ${error}`,
           });
         }
-
-        let listItemsCollection = [...response.value];
-
-        this.setState({
-          status: "",
-          pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage),
-          items: response.value,
-          listItems: response.value,
-          isLoading: false,
-          loaderMessage: '',
-          error: ''
-        });
-      }, (error: any): void => {
-        this.setState({
-          status: 'Loading all items failed with error: ' + error,
-          pagedItems: [],
-          isLoading: false,
-          loaderMessage: "",
-          error: `Loading failed. Validate that you have entered a valid List Title and/or internal field name for the custom sort order ${error}`
-        });
-      });
-
+      );
   }
 
   public render(): React.ReactElement<IReactAccordionProps> {
@@ -145,33 +165,46 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       let startIndex: number = (pageNumber - 1) * pageCountDivisor;
       let endIndex = startIndex + pageCountDivisor;
       let listItemsCollection = [...listData];
-      this.setState({ pagedItems: listItemsCollection.slice(startIndex, endIndex) });
+      this.setState({
+        pagedItems: listItemsCollection.slice(startIndex, endIndex),
+      });
     };
 
-    const pagedItems: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
-      return (
-        <AccordionItem>
-          <AccordionItemTitle className="accordion__title">
-            <h3 className="u-position-relative ms-fontColor-white">{item.Title}</h3>
-            <div className="accordion__arrow ms-fontColor-white" role="presentation" />
-          </AccordionItemTitle>
-          <AccordionItemBody className="accordion__body">
-            <div className="" dangerouslySetInnerHTML={{ __html: item.Description }}>
-            </div>
-          </AccordionItemBody>
-        </AccordionItem>
-      );
-    });
+    const pagedItems: JSX.Element[] = this.state.pagedItems.map(
+      (item: IAccordionListItem, i: number): JSX.Element => {
+        return (
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton >
+                  {item.Title}
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel >
+              <div
+                className=""
+                dangerouslySetInnerHTML={{ __html: item.Description }}
+              ></div>
+            </AccordionItemPanel>
+          </AccordionItem>
+        );
+      }
+    );
 
     if (this.state.isLoading) {
-      displayLoader = (<div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-        <div className='ms-Grid-col ms-u-lg12'>
-          <Spinner size={SpinnerSize.large} label={this.state.loaderMessage} />
+      displayLoader = (
+        <div
+          className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}
+        >
+          <div className="ms-Grid-col ms-u-lg12">
+            <Spinner
+              size={SpinnerSize.large}
+              label={this.state.loaderMessage}
+            />
+          </div>
         </div>
-      </div>);
-    }
-    else {
-      displayLoader = (null);
+      );
+    } else {
+      displayLoader = null;
     }
 
     if (this.props.enablePaging) {
@@ -179,7 +212,17 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         pageCount = Math.ceil(items.length / pageCountDivisor);
       }
       for (let i = 0; i < pageCount; i++) {
-        pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
+        pageButtons.push(
+          <PrimaryButton
+          style={{ margin: "0 8px" }} 
+            onClick={() => {
+              _pagedButtonClick(i + 1, items);
+            }}
+          >
+            {" "}
+            {i + 1}{" "}
+          </PrimaryButton>
+        );
       }
     }
 
@@ -192,28 +235,24 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         <div className={styles.container}>
           {faqTitle}
           {displayLoader}
-          <WebPartTitle displayMode={this.props.displayMode}
+          <WebPartTitle
+            displayMode={this.props.displayMode}
             title={this.props.title}
-            updateProperty={this.props.updateProperty} />
-          <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-lg12'>
-              <SearchBox
-                onChange={this.searchTextChange}
-              />
+            updateProperty={this.props.updateProperty}
+          />
+          <div className="ms-Grid-row">
+            <div className="ms-Grid-col ms-u-lg12">
+              <SearchBox onChange={this.searchTextChange} />
             </div>
           </div>
           <div className={`ms-Grid-row`}>
-            <div className='ms-Grid-col ms-u-lg12'>
+            <div className="ms-Grid-col ms-u-lg12">
               {this.state.status}
-              <Accordion>
-                {pagedItems}
-              </Accordion>
+              <Accordion>{pagedItems}</Accordion>
             </div>
           </div>
-          <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-lg12'>
-              {pageButtons}
-            </div>
+          <div className="ms-Grid-row">
+            <div className="ms-Grid-col ms-u-lg12">{pageButtons}</div>
           </div>
         </div>
         {errorMessage}

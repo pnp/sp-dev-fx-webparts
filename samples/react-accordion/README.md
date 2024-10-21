@@ -1,19 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 1/8/2018 12:00:00 AM
----
-
 # Using React Accordion plugin with SPFx
 
 ## Summary
@@ -29,8 +13,8 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -47,6 +31,7 @@ This is a sample web Part that illustrates the use of React Accessible Accordion
 
 * [Gautam Sheth](https://github.com/gautamdsheth)
 * Abhishek Garg
+* [Sandeep P S](https://github.com/Sandeep-FED)
 
 ## Version history
 
@@ -57,6 +42,7 @@ Version|Date|Comments
 2.1|June 22, 2020|Added pagination (Abhishek Garg)
 2.2|October 1, 2020 | Added new Pagination Configuration (@beau__cameron)
 2.3|September 30, 2021 | Added sorting (@fthorild)
+3.0|October 13, 2024 | Upgrade to SPFx 1.20.0 & includes bug fixes
 
 ## Minimal Path to Awesome
 
