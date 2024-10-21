@@ -1,20 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-- sharepoint
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 06/17/2016 12:00:00 AM
----
-
 # Images and Videos in a Carousel
 
 ## Summary
