@@ -1,86 +1,66 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react';
 import { spfi, SPFx } from '@pnp/sp';
-import "@pnp/sp/webs";
-import "@pnp/sp/lists";
-import "@pnp/sp/items";
-import styles from './SvgToJson.module.scss'; // Import styles
+import '@pnp/sp/webs';
+import '@pnp/sp/lists';
+import '@pnp/sp/items';
+import '@pnp/sp/files'; // Import the files module
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react'; // Import from @fluentui/react
 
 interface SVGInputProps {
   siteUrl: string;
   libraryName: string;
   context: any;
-  setSvgContent: React.Dispatch<React.SetStateAction<string>>;
-  setMessage: React.Dispatch<React.SetStateAction<string | null>>;
-  setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
+  setSvgContent: (content: string) => void;
+  setMessage: (message: string) => void;
+  setMessageType: (type: MessageBarType) => void;
 }
 
 const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setSvgContent, setMessage, setMessageType }) => {
-  const [svgFiles, setSvgFiles] = useState<IDropdownOption[]>([]);
+  const [files, setFiles] = useState<{ name: string; url: string }[]>([]);
 
   useEffect((): void => {
-    // Function to fetch SVG files from the specified library
-    const fetchSvgFiles = async (): Promise<void> => {
+    const fetchSvgFiles = async (libraryName: string): Promise<{ name: string; url: string }[]> => {
       try {
-        const fullSiteUrl = siteUrl;
-        console.log('Fetching SVG files from site:', fullSiteUrl);
-        console.log('Using library name:', libraryName);
-
-        const sp = spfi(fullSiteUrl).using(SPFx(context));
-
-        const items = await sp.web.lists.getByTitle(libraryName).items.select("FileLeafRef")();
-        const svgOptions: IDropdownOption[] = items.map((item: { FileLeafRef: string }) => ({
-          key: item.FileLeafRef,
-          text: item.FileLeafRef
+        const sp = spfi(siteUrl).using(SPFx(context));
+        const files = await sp.web.lists.getByTitle(libraryName).items.select('FileLeafRef', 'FileRef')();
+        return files.map((file: { FileLeafRef: string; FileRef: string }) => ({
+          name: file.FileLeafRef,
+          url: file.FileRef
         }));
-        setSvgFiles(svgOptions);
       } catch (error) {
-        console.error(`Error fetching SVG files: ${error.message}`);
-        setMessage(`Error fetching SVG files: ${error.message}`);
-        setMessageType(MessageBarType.error);
+        console.error('Error fetching SVG files:', error);
+        return [];
       }
     };
 
     if (siteUrl && libraryName) {
-      fetchSvgFiles();
+      fetchSvgFiles(libraryName).then(fetchedFiles => setFiles(fetchedFiles));
     }
   }, [siteUrl, libraryName, context]);
 
-  // Handle file selection change
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
     if (option) {
-      const fileKey = String(option.key); // Ensure key is treated as a string
-      const siteRelativeUrl = new URL(siteUrl).pathname;
-      const fileUrl = `${siteRelativeUrl}/${libraryName}/${fileKey}`;
-      const apiUrl = `${siteUrl}/_api/web/getfilebyserverrelativeurl('${fileUrl}')/$value`;
-
       try {
-        // Fetch the SVG content from the selected file
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const svgContent = await response.text();
-        setSvgContent(svgContent);
+        const sp = spfi(siteUrl).using(SPFx(context));
+        const fileContent = await sp.web.getFileByServerRelativePath(option.key as string).getText();
+        setSvgContent(fileContent);
       } catch (error) {
-        console.error(`Error fetching SVG content: ${error.message}`);
-        setMessage(`Error fetching SVG content: ${error.message}`);
+        console.error('Error fetching file content:', error);
+        setMessage('Error fetching file content');
         setMessageType(MessageBarType.error);
       }
     }
   };
 
   return (
-    <div className={styles.dropdown}> {/* Apply the same class as other dropdowns */}
+    <div>
       <Dropdown
         placeholder="Select an SVG file"
-        label="SVG Files"
-        options={svgFiles}
-        onChange={handleFileChange} // Use handleFileChange for the dropdown change event
-        className={styles.dropdown} // Apply the same class as other dropdowns
-        aria-label="Select an SVG file"
+        options={files.map(file => ({ key: file.url, text: file.name }))}
+        onChange={handleFileChange}
       />
+      {/* Your component JSX here */}
     </div>
   );
 };

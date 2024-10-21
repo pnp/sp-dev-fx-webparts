@@ -104,9 +104,9 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
           siteUrl={props.siteUrl}
           libraryName={props.libraryName}
           context={props.context}
-          setSvgContent={setSvgContent}
-          setMessage={setMessage}
-          setMessageType={setMessageType}
+          setSvgContent={setSvgContent} 
+          setMessage={setMessage} 
+          setMessageType={setMessageType} 
         />
         <SVGOutput svgContent={svgContent} />
         <div className={styles.buttonContainer}>

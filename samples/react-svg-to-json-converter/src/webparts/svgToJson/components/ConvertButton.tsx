@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
 
-
 interface IJsonResult {
   elmType: string;
   attributes: { [key: string]: string };
