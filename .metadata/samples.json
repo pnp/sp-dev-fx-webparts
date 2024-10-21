@@ -12524,7 +12524,7 @@
       "This web part show images and videos in carousel"
     ],
     "creationDateTime": "2020-10-31",
-    "updateDateTime": "2020-06-12",
+    "updateDateTime": "2024-10-15",
     "products": [
       "SharePoint"
     ],
@@ -12535,7 +12535,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
