@@ -13,6 +13,19 @@ declare interface ISvgToJsonWebPartStrings {
   UnknownEnvironment: string;
   SiteUrlFieldLabel: string;
   LibraryNameFieldLabel: string;
+  SelectSVGFile: string;
+  SVGToJsonTitle: string;
+  SVGToJsonDescription: string;
+  ConfigureWebPart: string;
+  AdvancedOptions: string;
+  ProvideSVGContent: string;
+  ConvertedToJSON: string;
+  FailedToCopy: string;
+  FailedToConvert: string;
+  SelectListColumn: string;
+  ColumnFormattingApplied: string;
+  ErrorApplyingFormatting: string;
+  ApplyColumnFormatting: string;
 }
 
 declare module 'SvgToJsonWebPartStrings' {
