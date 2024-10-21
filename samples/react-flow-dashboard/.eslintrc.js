@@ -26,7 +26,7 @@ module.exports = {
         //
         // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
         '@typescript-eslint/ban-types': [
-          1,
+          0,
           {
             'extendDefaults': false,
             'types': {
@@ -126,7 +126,7 @@ module.exports = {
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/no-unused-vars': [
-          1,
+          0,
           {
             'vars': 'all',
             // Unused function arguments often indicate a mistake in JavaScript code.  However in TypeScript code,
@@ -160,6 +160,7 @@ module.exports = {
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         // Rationale to disable: declaration of empty interfaces may be helpful for generic types scenarios
         '@typescript-eslint/no-empty-interface': 0,
+        '@typescript-eslint/no-unused-expressions': 0,
         // RATIONALE:         This rule warns if setters are defined without getters, which is probably a mistake.
         'accessor-pairs': 1,
         // RATIONALE:         In TypeScript, if you write x["y"] instead of x.y, it disables type checking.
