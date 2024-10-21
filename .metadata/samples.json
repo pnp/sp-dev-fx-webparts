@@ -10637,7 +10637,7 @@
       "- Support for Multiline text fields"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2023-03-06",
+    "updateDateTime": "2024-10-08",
     "products": [
       "SharePoint"
     ],
@@ -10648,7 +10648,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -10694,7 +10694,7 @@
       },
       {
         "gitHubAccount": "NishkalankBezawada",
-        "company": "Tietoevry, Sweden",
+        "company": "Bravero AB, Sweden",
         "pictureUrl": "https://avatars.githubusercontent.com/u/47456098?v=4",
         "name": "Nishkalank Bezawada"
       }
