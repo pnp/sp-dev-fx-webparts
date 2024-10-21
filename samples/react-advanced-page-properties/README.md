@@ -23,8 +23,8 @@ Attempts to replicate the functionality of Page Properties with the following im
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18.18.2](https://img.shields.io/badge/Node.js-v18.18.2-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -59,6 +59,7 @@ Version|Date|Comments
 1.0.2|December 24, 2021|Fix retrieving fields from SitePages
 1.0.3|January 12, 2022|Fix formatting of date, number and currency values
 1.0.5|June 05, 2023|Support for Multiline text fields
+1.0.6|October 18, 2024|Upgraded to SPFx v1.20.0
 
 
 ## Minimal Path to Awesome
