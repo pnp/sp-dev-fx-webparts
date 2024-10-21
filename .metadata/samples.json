@@ -26538,7 +26538,7 @@
       "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web"
     ],
     "creationDateTime": "2021-03-06",
-    "updateDateTime": "2021-03-06",
+    "updateDateTime": "2024-10-20",
     "products": [
       "SharePoint"
     ],
@@ -26549,7 +26549,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
