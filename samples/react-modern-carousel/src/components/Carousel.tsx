@@ -1,54 +1,54 @@
 import * as React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
-import { Card, CardPreview } from "@fluentui/react-components"
-import { useEffect, useState } from "react"
-import { useListItems } from "pnp-react-hooks/hooks/sp/useListItems"
-import { ListOptions } from "pnp-react-hooks/types/options/ListOptions"
-import { useSite } from "pnp-react-hooks/hooks/sp/useSite"
+import { Card, CardPreview } from "@fluentui/react-components";
+import { useEffect, useState } from "react";
+import { useListItems } from "pnp-react-hooks/hooks/sp/useListItems";
+import { ListOptions } from "pnp-react-hooks/types/options/ListOptions";
+import { useSite } from "pnp-react-hooks/hooks/sp/useSite";
 
 // Import Swiper styles
-import "swiper/swiper.min.css"
-import "swiper/modules/navigation/navigation.min.css"
-import "swiper/modules/pagination/pagination.min.css"
-import "swiper/modules/effect-coverflow/effect-coverflow.min.css"
+import "swiper/swiper.min.css";
+import "swiper/modules/navigation/navigation.min.css";
+import "swiper/modules/pagination/pagination.min.css";
+import "swiper/modules/effect-coverflow/effect-coverflow.min.css";
 
-import { AwardItems } from "../types/AwardItems"
-import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss"
-import { Content } from "./Content"
+import { AwardItems } from "../types/AwardItems";
+import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss";
+import { Content } from "./Content";
 
 export const Carousel = (): JSX.Element => {
-  const [awardList, setAwardList] = useState<AwardItems[]>([])
-  const [selectedUser, setSelectedUser] = useState<AwardItems | null>(null)
+  const [awardList, setAwardList] = useState<AwardItems[]>([]);
+  const [selectedUser, setSelectedUser] = useState<AwardItems | null>(null);
 
   const listItems = useListItems<AwardItems>("Award Recognition", {
     query: {
       select: ["ID", "Title", "Designation", "UserImage"],
     },
     mode: ListOptions.All,
-  })
+  });
 
-  const siteInfo = useSite()
+  const siteInfo = useSite();
 
   useEffect(() => {
     if (listItems && listItems.length > 0) {
       const parsedData = listItems.map((item) => {
-        const AppImageUrl = JSON.parse(item.UserImage)
-        const ImageUrl = `${siteInfo.Url}/Lists/Award%20Recognition/Attachments/${item.ID}/${AppImageUrl.fileName}`
-        return { ...item, ImageUrl }
-      })
-      setAwardList(parsedData)
+        const AppImageUrl = JSON.parse(item.UserImage);
+        const ImageUrl = `${siteInfo.Url}/Lists/Award%20Recognition/Attachments/${item.ID}/${AppImageUrl.fileName}`;
+        return { ...item, ImageUrl };
+      });
+      setAwardList(parsedData);
       if (selectedUser === null) {
-        setSelectedUser(parsedData[0])
+        setSelectedUser(parsedData[0]);
       }
     }
-  }, [listItems, selectedUser, siteInfo])
+  }, [listItems, selectedUser, siteInfo]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSlideChange = (swiper: any): void => {
-    const activeIndex = swiper.activeIndex
-    setSelectedUser(awardList[activeIndex])
-  }
+    const activeIndex = swiper.activeIndex;
+    setSelectedUser(awardList[activeIndex]);
+  };
 
   return (
     <div className={styles.container}>
@@ -56,8 +56,10 @@ export const Carousel = (): JSX.Element => {
         <Content user={selectedUser} />
       </aside>
       <aside className={styles.carouselWrapper}>
+        <div className={styles.fade_left}></div>
+        <div className={styles.fade_right}></div>
         <Swiper
-          effect='coverflow'
+          effect="coverflow"
           grabCursor={true}
           coverflowEffect={{
             rotate: 0,
@@ -93,8 +95,8 @@ export const Carousel = (): JSX.Element => {
                   borderRadius: "8px",
                 }}
               >
-                <CardPreview>
-                  <img src={user.ImageUrl} alt={user.Title}/>
+                <CardPreview style={{ height: "inherit" }}>
+                  <img src={user.ImageUrl} alt={user.Title} />
                 </CardPreview>
               </Card>
             </SwiperSlide>
@@ -102,5 +104,5 @@ export const Carousel = (): JSX.Element => {
         </Swiper>
       </aside>
     </div>
-  )
-}
+  );
+};

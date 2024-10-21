@@ -1,12 +1,11 @@
 import { SPSiteUser } from "../../SPSecurityService";
-import { SPPermission } from "@microsoft/sp-page-context";
 import {  } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneDropdownOption, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
+import { IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 import { AadHttpClient } from "@microsoft/sp-http";
 import {ISelectedPermission} from "../ISpSecurityWebPartProps";
+
 export interface ISpSecurityProps {
   users: SPSiteUser[];
-  //permission: string;
   selectedPermissions:ISelectedPermission[];
   showHiddenLists: boolean;
   showCatalogs:boolean;
@@ -22,7 +21,6 @@ export interface ISpSecurityProps {
   showSecurityGroups:boolean; // show PrincipalType=4
   showUsers:boolean; // show PrincipalType=1
   showOnlyUsersWithPermission:boolean; //// toggle to show everyone, or justy the users who have the permissions
-  domElement:any; // needed to disable button postback after render on classic pages
-  
+  //domElement:any; // needed to disable button postback after render on classic pages
   
 }

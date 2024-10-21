@@ -3,9 +3,40 @@
   "solution": {
     "name": "react-organization-chart",
     "id": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
-    "version": "1.1.0.0",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-organization-chart description"
+      },
+      "longDescription": {
+        "default": "react-organization-chart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-organization-chart OrganizationChartWebPart Feature",
+        "description": "The feature that activates OrganizationChartWebPart from the react-organization-chart solution.",
+        "id": "0338da15-07f9-4a53-b267-d790fb495cca",
+        "version": "1.2.0.0",
+        "componentIds": [
+          "0338da15-07f9-4a53-b267-d790fb495cca"
+        ]
+      }
+    ]
+
   },
   "paths": {
     "zippedPackage": "solution/react-organization-chart.sppkg"
