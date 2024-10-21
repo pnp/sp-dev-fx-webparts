@@ -9,7 +9,7 @@
       "Sample SharePoint Framework application customizer extension that shows toast notifications configured from a SharePoint list. Demonstrates jQuery module loading, barrel configuration, promise chaining, and localStorage caching."
     ],
     "creationDateTime": "2018-02-01",
-    "updateDateTime": "2018-02-01",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.4.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -1899,6 +1899,62 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-alert-banner",
+    "source": "pnp",
+    "title": "Alert Banner",
+    "shortDescription": "Designed to display alert notifications prominently in the Banner of Modern SharePoint sites",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-alert-banner",
+    "longDescription": [
+      "The Alert Banner SPFx Extension is a custom SharePoint Framework (SPFx) extension designed to display alert notifications prominently in the Banner of Modern SharePoint sites. These alerts are dynamically retrieved from a SharePoint list using the Microsoft Graph API, ensuring users receive important updates and information seamlessly integrated with Microsoft 365 services."
+    ],
+    "creationDateTime": "2023-12-25",
+    "updateDateTime": "2024-10-11",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-alert-banner/assets/Screenshot2024-08-17170932.png",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nicolasKheirallah",
+        "pictureUrl": "https://github.com/nicolasKheirallah.png",
+        "name": "Nicolas Kheirallah"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      },
+      {
+        "name": "Use page placeholders from Application Customizer",
+        "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-application-alerts",
     "source": "pnp",
     "title": "Alerts Application Customizers",
@@ -1972,7 +2028,7 @@
       "SharePoint Framework application customizer displaying an information banner using office-fabric-ui MessageBar."
     ],
     "creationDateTime": "2020-06-18",
-    "updateDateTime": "2024-03-12",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -1983,7 +2039,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -2644,7 +2700,7 @@
       "A react Message Banner sample, allows to add a custom banner message to your SharePoint Online modern sites. Can target either Site or Web Scoped. Allows a site owner to modify the text, font size, colours and height of the banner. Specify a start date to control when the banner is visible to members of a site. Uses the latest v1.15.2 of SPFX framework."
     ],
     "creationDateTime": "2022-11-09",
-    "updateDateTime": "2024-01-10",
+    "updateDateTime": "2024-10-06",
     "products": [
       "SharePoint"
     ],
@@ -2655,7 +2711,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -3539,6 +3595,62 @@
         "gitHubAccount": "na",
         "pictureUrl": "https://github.com/RodrigoSilva.png",
         "name": "Rodrigo Silva"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      },
+      {
+        "name": "Use page placeholders from Application Customizer",
+        "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-quick-create",
+    "source": "pnp",
+    "title": "Application Customizer Quick Create",
+    "shortDescription": "Injects a button to the command bar which shows all the lists in the site and have the ability to quickly create an item by showing the NewForm.aspx inside a panel.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-quick-create",
+    "longDescription": [
+      "SharePoint Framework Application Customizer that injects a button to the command bar which shows all the lists in the site and have the ability to quickly create an item by showing the NewForm.aspx inside a panel. Inspired by Quick Create functionality by popular CRMs."
+    ],
+    "creationDateTime": "2023-12-25",
+    "updateDateTime": "2024-09-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.2"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-create/assets/QuickCreateDemo.gif",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "alecwantstobattle",
+        "pictureUrl": "https://github.com/alecwantstobattle.png",
+        "name": "Alec Tecson"
       }
     ],
     "references": [
@@ -5715,7 +5827,7 @@
       "Custom Command Set that set a Page layout to use the Single App Part page Layout"
     ],
     "creationDateTime": "2019-01-29",
-    "updateDateTime": "2022-01-12",
+    "updateDateTime": "2024-10-09",
     "products": [
       "SharePoint"
     ],
@@ -5726,7 +5838,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -9682,7 +9794,7 @@
       "This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format."
     ],
     "creationDateTime": "2020-06-22",
-    "updateDateTime": "2021-09-30",
+    "updateDateTime": "2024-10-13",
     "products": [
       "SharePoint"
     ],
@@ -9711,17 +9823,13 @@
     "authors": [
       {
         "gitHubAccount": "gautamdsheth",
-        "company": "Valo Intranet",
         "pictureUrl": "https://github.com/gautamdsheth.png",
-        "name": "Gautam Sheth",
-        "twitter": "gautamdsheth"
+        "name": "Gautam Sheth"
       },
       {
         "gitHubAccount": "AbhishekGarg",
-        "company": "Atos",
         "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400&v=4",
-        "name": "Abhishek Garg",
-        "twitter": "abhig89"
+        "name": "Abhishek Garg"
       }
     ],
     "references": [
@@ -9742,7 +9850,7 @@
       "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."
     ],
     "creationDateTime": "2021-01-05",
-    "updateDateTime": "2021-08-08",
+    "updateDateTime": "2024-10-19",
     "products": [
       "SharePoint"
     ],
@@ -9753,7 +9861,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -15996,7 +16104,7 @@
       "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow."
     ],
     "creationDateTime": "2023-08-03",
-    "updateDateTime": "2023-08-03",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -16007,7 +16115,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20702,7 +20810,7 @@
       "This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment."
     ],
     "creationDateTime": "2024-03-16",
-    "updateDateTime": "2024-03-16",
+    "updateDateTime": "2024-10-10",
     "products": [
       "SharePoint"
     ],
@@ -20713,7 +20821,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.2"
       }
     ],
     "thumbnails": [
