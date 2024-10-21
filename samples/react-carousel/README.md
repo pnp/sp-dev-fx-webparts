@@ -1,20 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-- sharepoint
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - React
-  createdDate: 06/17/2016 12:00:00 AM
----
-
 # Images and Videos in a Carousel
 
 ## Summary
@@ -32,8 +15,8 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v20 ](https://img.shields.io/badge/Node.js-v20-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -66,10 +49,11 @@ For all available methods, go [here](https://react-slick.neostack.com/docs/api#m
 
 ## Contributors
 
-* [João Mendes](https://github.com/joaojmendes)
+- [João Mendes](https://github.com/joaojmendes)
 - [Rahul Suryawanshi](https://github.com/Rahul)
 - [Harsha Vardhini](https://github.com/Harshagracy) 
 - [Giuliano De Luca](https://github.com/giuleon)
+- [Mohammad Amer](https://github.com/mohammadamer)
 
 ## Version history
 
@@ -79,7 +63,7 @@ Version|Date|Comments
 2.0.0|June 17, 2020|Upgraded to SPFx v1.10.0 (Rahul Suryawanshi)
 3.0.0|October 31, 2020|Upgraded to SPFx v1.11.0 (Don Kirkham)
 4.0.0|June 10, 2021|Upgraded to SPFx v1.12.1 (Giuliano De Luca)
-
+5.0.0|October 15, 2024|Upgraded to SPFx v1.20.0 (Mohammad Amer)
 
 ## Minimal Path to Awesome
 
