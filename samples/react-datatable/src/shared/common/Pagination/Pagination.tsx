@@ -135,7 +135,7 @@ export class Pagination extends React.Component<IPaginationProps, IPaginationSta
         this.props.onChange(page, this.state.rowsPerPage);
     }
 
-    private renderPageNumber(pageNumber) {
+    private renderPageNumber(pageNumber: any) {
         if (pageNumber === this.state.currentPage) {
             return (
                 <PrimaryButton

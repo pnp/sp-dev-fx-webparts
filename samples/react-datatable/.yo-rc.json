@@ -1,9 +1,16 @@
 {
-  "@microsoft/generator-sharepoint": {
+    "@microsoft/generator-sharepoint": {
+      "@microsoft/generator-sharepoint": {
+        "nodeVersion": "20.16.0"
+      },
+      "sdksVersions": {
+        "@microsoft/microsoft-graph-client": "3.0.2",
+        "@microsoft/teams-js": "2.24.0"
+      },
     "plusBeta": false,
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.14.0",
+    "version": "1.20.0",
     "libraryName": "react-datatable",
     "libraryId": "35299377-f8c8-4721-bd53-05602fc0c4ee",
     "packageManager": "npm",
