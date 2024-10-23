@@ -1,7 +1,7 @@
 {
     "@microsoft/generator-sharepoint": {
       "@microsoft/generator-sharepoint": {
-        "nodeVersion": "20.16.0"
+        "nodeVersion": "18.19.1"
       },
       "sdksVersions": {
         "@microsoft/microsoft-graph-client": "3.0.2",
