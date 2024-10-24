@@ -771,7 +771,7 @@
       "Microsoft Clarity will gives you the recording of the sessions and heat maps of the user interaction with the site, this will help to find and fix the areas of your pages that are not working as you expect."
     ],
     "creationDateTime": "2021-11-23",
-    "updateDateTime": "2021-11-23",
+    "updateDateTime": "2024-10-19",
     "products": [
       "SharePoint"
     ],
@@ -782,7 +782,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -802,6 +802,11 @@
         "gitHubAccount": "joaoferreira",
         "pictureUrl": "https://github.com/joaoferreira.png",
         "name": "João Ferreira"
+      },
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "pictureUrl": "https://github.com/NishkalankBezawada.png",
+        "name": "NIshkalank Bezawada (MVP)"
       }
     ],
     "references": [
@@ -14118,7 +14123,7 @@
       "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
     ],
     "creationDateTime": "2021-03-01",
-    "updateDateTime": "2022-11-01",
+    "updateDateTime": "2024-10-20",
     "products": [
       "SharePoint"
     ],
@@ -14129,7 +14134,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -24181,7 +24186,7 @@
       "Shows how to use PnPjs in a React web part"
     ],
     "creationDateTime": "2023-02-18",
-    "updateDateTime": "2023-02-18",
+    "updateDateTime": "2024-10-23",
     "products": [
       "SharePoint"
     ],
@@ -24192,7 +24197,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -24213,6 +24218,11 @@
         "gitHubAccount": "bcameron1231",
         "name": "Beau Cameron",
         "pictureUrl": "https://github.com/bcameron1231.png"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "name": "Gretchun Kim",
+        "pictureUrl": "https://github.com/gretchunkim.png"
       }
     ],
     "references": [
