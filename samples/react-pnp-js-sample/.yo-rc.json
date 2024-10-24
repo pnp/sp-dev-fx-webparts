@@ -3,12 +3,17 @@
     "plusBeta": true,
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.15.2",
+    "version": "1.20.0",
+    "nodeVersion": "18.20.3",
     "libraryName": "spfx-pnp-js-example",
     "libraryId": "d20ceaf6-094b-4086-b7a0-85761bc8be23",
     "packageManager": "npm",
     "solutionShortDescription": "spfx-pnp-js-example description",
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
   }
 }
