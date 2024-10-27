@@ -22,7 +22,7 @@ import {
 /**
  * Creates v9 color tokens from a v8 palette.
  */
-const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
+const mapAliasColors = (palette: IPalette, inverted: boolean): Partial<ColorTokens> => {
   return {
     colorNeutralForeground1: palette.neutralPrimary,
     colorNeutralForeground1Hover: palette.neutralPrimary,

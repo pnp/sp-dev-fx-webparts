@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import * as strings from 'DashBoardWebPartStrings';
-import { Theme } from 'office-ui-fabric-react';
+
 
 import {
   Providers,
@@ -24,6 +24,7 @@ import { EAppHostName } from '../../models/EAppHostName';
 import { getSP } from '../../pnpjs/pnpjsConfig';
 import { Dashboard } from './DashBoard';
 import { IDashBoardProps } from './IDashBoardProps';
+import { Theme } from '@fluentui/react';
 
 export interface IDashBoardWebPartProps {
   title: string;
