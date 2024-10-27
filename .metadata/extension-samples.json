@@ -771,7 +771,7 @@
       "Microsoft Clarity will gives you the recording of the sessions and heat maps of the user interaction with the site, this will help to find and fix the areas of your pages that are not working as you expect."
     ],
     "creationDateTime": "2021-11-23",
-    "updateDateTime": "2021-11-23",
+    "updateDateTime": "2024-10-19",
     "products": [
       "SharePoint"
     ],
@@ -782,7 +782,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -802,6 +802,11 @@
         "gitHubAccount": "joaoferreira",
         "pictureUrl": "https://github.com/joaoferreira.png",
         "name": "João Ferreira"
+      },
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "pictureUrl": "https://github.com/NishkalankBezawada.png",
+        "name": "NIshkalank Bezawada (MVP)"
       }
     ],
     "references": [
