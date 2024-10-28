@@ -1,6 +1,4 @@
-# Contribution Guidance (Sharing is Caring Edition)
-
-> **NOTE:** This contribution guidance is intended for participants of the Sharing is Caring workshops. If you are not contributing via a Sharing is Caring workshop, please refer to the [standard contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).
+# Contribution Guidance 
 
 If you'd like to contribute to this repository, please read the following guidelines. Contributors are more than welcome to share their learnings with others in this centralized location.
 
