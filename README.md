@@ -1,6 +1,6 @@
-# SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
+# SharePoint Framework Client-Side Web Part Samples (Sharing is Caring Edition)
 
-> This branch is to be used only for Sharing is Caring sample contributions. Do not use this branch unless you are being guided to do so.
+> **NOTE:** This branch is to be used only for Sharing is Caring sample contributions. Do not use this branch unless you are being guided to do so.
 
 This repository contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 
