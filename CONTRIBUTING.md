@@ -41,7 +41,7 @@ When you submit a new sample, please follow these guidelines:
     - Your solution's source code
     - An `assets` folder, containing screenshots
     - A `README.md` file
-    - A '.nvmrc` file
+    - A `.nvmrc` file
 * You must only submit samples for which you have the rights to share. Make sure that you asked for permission from your employer and/or clients before committing the code to an open-source repository, because once you submit a pull request, the information is public and _cannot be removed_.
 * If your sample is a SharePoint Framework Extensions, please consider adding it to the [sp-dev-fx-extensions](https://github.com/pnp/sp-dev-fx-extensions) repository instead
 * If your sample is an Adaptive Card Extension (ACE), consider adding it to the [sp-dev-fx-aces](https://github.com/pnp/sp-dev-fx-aces) repository instead.
@@ -49,10 +49,8 @@ When you submit a new sample, please follow these guidelines:
 ### Sample Folder
 
 * When submitting a new sample solution, please name the sample solution folder accordingly
-* Folder should start by identifying JS library used - like `react-`, `angular-`, `knockout-`
-* If you are not using any specific JS library, please use `js-` as the prefix for your sample
+* Your folder must begin by your GitHub user name, followed by a dash (`-`) and your sample name
 * Do not use words such as `sample`, `webpart` or `wp` in the folder or sample name - these are samples for client-side web parts repository
-* If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
 * Do not use period/dot in the folder name of the provided sample
 
 ### Source Code
@@ -62,7 +60,7 @@ When you submit a new sample, please follow these guidelines:
 
 ### README.md
 
-* You will need to have a `README.md` file for your contribution, which is based on [the provided template](../main/templates/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
+* You will need to have a `README.md` file for your contribution, which is based on [the provided template](./templates/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
 * You will need to have a screenshot picture of your sample in action in the `README.md` file ("pics or it didn't happen"). The preview image must be located in the `assets` folder in the root of your sample folder.
     * All screen shots must be located in the `assets` folder. Do not point to your own repository or any other external source
 
