@@ -21571,7 +21571,7 @@
       "This SPFx app allows quick access to user agenda, ToDo Tasks, Files and  News and Relevant People related to user."
     ],
     "creationDateTime": "2023-06-23",
-    "updateDateTime": "2023-06-23",
+    "updateDateTime": "2024-10-22",
     "products": [
       "SharePoint"
     ],
@@ -21582,7 +21582,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
