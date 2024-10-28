@@ -44,6 +44,7 @@ Please add the required Microsoft Graph Permissions.  Please see [Microsoft Grap
 
 * [João Mendes](https://github.com/joaojmendes)
 * [Luccas Castro](https://github.com/DevPio)
+
 ## Version history
 
 Version|Date|Comments
