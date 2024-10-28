@@ -1,4 +1,4 @@
-name: Prevent SIC-Main to Main Merge # SIC-main is only used for Sharing is Caring sessions
+name: Branch Protection # SIC-main is only used for Sharing is Caring sessions
 on:
   pull_request:
     types: [opened, synchronize]
@@ -20,8 +20,7 @@ jobs:
           curl -s -X PATCH -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{"state": "closed"}' \
-          "${{ github.event.pull_request.url }"
-
+          "${{ github.event.pull_request.url }}"
         env:
           PR_SOURCE_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
