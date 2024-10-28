@@ -117,8 +117,7 @@ Each version of SPFx supports only a limited number of Node.js versions. To help
 
 Here's a high-level process for submitting new samples or updates to existing ones.
 
-1. Sign the Contributor License Agreement (see below)
-2. Fork this repository [pnp/sp-dev-fx-webparts](https://github.com/pnp/sp-dev-fx-webparts) to your GitHub account
+1. Fork this repository [pnp/sp-dev-fx-webparts](https://github.com/pnp/sp-dev-fx-webparts) to your GitHub account
 3. Create a new branch from the `sic-main` branch for your fork for the contribution
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message
