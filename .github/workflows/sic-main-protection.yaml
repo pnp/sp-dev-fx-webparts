@@ -1,0 +1,15 @@
+name: Prevent Sic-Main to Main Merge
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  prevent_merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch names
+        if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'sic-main'
+        run: exit 1
+        env:
+          PR_SOURCE_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
