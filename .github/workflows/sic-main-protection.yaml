@@ -1,4 +1,4 @@
-name: Prevent Sic-Main to Main Merge
+name: Prevent SIC-Main to Main Merge # SIC-main is only used for Sharing is Caring sessions
 on:
   pull_request:
     types: [opened, synchronize]
@@ -9,7 +9,19 @@ jobs:
     steps:
       - name: Check branch names
         if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'sic-main'
-        run: exit 1
+        run: |
+          # Post a comment on the PR
+          curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"body": "Merging from `sic-main` to `main` is not allowed. This pull request will be automatically closed."}' \
+          "${{ github.event.pull_request.url }}/comments"
+
+          # Close the PR
+          curl -s -X PATCH -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"state": "closed"}' \
+          "${{ github.event.pull_request.url }"
+
         env:
           PR_SOURCE_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
