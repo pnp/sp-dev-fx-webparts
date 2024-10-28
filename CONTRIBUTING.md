@@ -1,5 +1,7 @@
 # Contribution Guidance
 
+> NOTE: This is a special version of the contribution guidance intended for Sharing is Caring attendees.
+
 If you'd like to contribute to this repository, please read the following guidelines. Contributors are more than welcome to share their learnings with others in this centralized location.
 
 ## Code of Conduct

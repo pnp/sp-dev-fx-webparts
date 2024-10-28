@@ -1,12 +1,6 @@
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
 
-![GitHub Repo stars](https://img.shields.io/github/stars/pnp/sp-dev-fx-webparts?style=social)
-![GitHub forks](https://img.shields.io/github/forks/pnp/sp-dev-fx-webparts?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/pnp/sp-dev-fx-webparts?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/m365pnp?style=social)](https://twitter.com/m365pnp?s=20)
-[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UC_mKdhw-V6CeCM7gTo_Iy7w?style=social)](https://www.youtube.com/channel/UC_mKdhw-V6CeCM7gTo_Iy7w)
-[![GitHub issues](https://img.shields.io/github/issues/pnp/sp-dev-fx-webparts)](https://github.com/pnp/sp-dev-fx-webparts/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/pnp/sp-dev-fx-webparts)](https://github.com/pnp/sp-dev-fx-webparts/pulls)
+> This branch is to be used only for Sharing is Caring sample contributions. Do not use this branch unless you are being guided to do so.
 
 This repository contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 
