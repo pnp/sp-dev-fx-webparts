@@ -143,10 +143,10 @@ If you want to provide links to your social media, blog, and employer name, make
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.1|November 1, 2022|Update comment
-1.0|October 29, 2022|Initial release
+|Version|Date|Comments|
+|-------|----|--------|
+|1.1|November 1, 2024|Update comment|
+|1.0|October 28, 2024|Initial release|
 
 ## Prerequisites
 
