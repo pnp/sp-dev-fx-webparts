@@ -39,7 +39,7 @@ When you submit a new sample, please follow these guidelines:
     - Your solution's source code
     - An `assets` folder, containing screenshots
     - A `README.md` file
-    - A '.nvmrc` file
+    - An `.nvmrc` file
 * You must only submit samples for which you have the rights to share. Make sure that you asked for permission from your employer and/or clients before committing the code to an open-source repository, because once you submit a pull request, the information is public and _cannot be removed_.
 * If your sample is a SharePoint Framework Extensions, please consider adding it to the [sp-dev-fx-extensions](https://github.com/pnp/sp-dev-fx-extensions) repository instead
 * If your sample is an Adaptive Card Extension (ACE), consider adding it to the [sp-dev-fx-aces](https://github.com/pnp/sp-dev-fx-aces) repository instead.
