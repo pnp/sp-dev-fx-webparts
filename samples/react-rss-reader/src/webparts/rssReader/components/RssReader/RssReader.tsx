@@ -279,7 +279,6 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
         const rssFeed: IRssReaderResponse = await rssReaderService.getFeed(feedRequest);
 
         if (rssFeed && rssFeed.query && rssFeed.query.results) {
-
           this.setState({
             rssFeedReady: true,
             rssFeed: rssFeed,
@@ -288,7 +287,6 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
 
         }
         else {
-
           this.setState({
             rssFeedReady: true,
             rssFeed: null,
@@ -298,7 +296,6 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
 
       }
       catch (error) {
-
         this.setState({
           rssFeedReady: false,
           rssFeed: null,
