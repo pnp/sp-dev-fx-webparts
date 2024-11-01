@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Dropdown, IDropdownOption, MessageBar, MessageBarType } from '@fluentui/react';
 import { SPHttpClient } from '@microsoft/sp-http'; // Remove ISPHttpClientOptions and keep SPHttpClient for making API calls
 import styles from './SvgToJson.module.scss';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface SiteSelectorProps {
   context: any; // Should be your SPFx context
@@ -61,8 +62,8 @@ const SiteSelector: React.FC<SiteSelectorProps> = ({ context, onSiteChange, clas
     <div>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
-        placeholder="Select a site"
-        label="Sites"
+        placeholder={strings.SelectSite}
+        label={strings.Sites}
         options={sites}
         onChange={handleSiteChange}
         className={styles.dropdown}

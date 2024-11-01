@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
 import { spfi, SPFx } from '@pnp/sp';
-
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface ApplyButtonProps {
   selectedList: string | null;
@@ -13,13 +13,13 @@ interface ApplyButtonProps {
   setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
   selectedListName: string | null;
   resetInputs: () => void;
-  className?: string; // Add className prop
+  className?: string; 
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn, jsonResult, selectedSite, context, setMessage, setMessageType, selectedListName, resetInputs, className }) => {
   const applyColumnFormatting = async (): Promise<void> => {
     if (!selectedList || !selectedColumn || !jsonResult) {
-      setMessage('Please select a list, column, and generate JSON result before applying formatting.');
+      setMessage(strings.SelectListColumn);
       setMessageType(MessageBarType.error);
       return;
     }
@@ -28,7 +28,7 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
       const fullSiteUrl = selectedSite!;
       const sp = spfi(fullSiteUrl).using(SPFx(context));
 
-      // Fetch the FormDigestValue using the SharePoint REST API
+      // Fetch the FormDigestValue using the SharePoint REST API because the PnPjs library does not support it or I am just not smart enough to understand this. argh. 
       const response = await fetch(`${fullSiteUrl}/_api/contextinfo`, {
         method: 'POST',
         headers: {
@@ -44,26 +44,26 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({ selectedList, selectedColumn,
         CustomFormatter: jsonResult
       }, `${formDigestValue}`);
 
-      setMessage('Column formatting applied successfully!');
+      setMessage(strings.ColumnFormattingApplied);
       setMessageType(MessageBarType.success);
 
       const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
       window.open(listUrl, '_blank');
 
-      resetInputs(); // Reset inputs after applying formatting
+      resetInputs(); 
     } catch (error) {
-      console.error('Error applying column formatting:', error);
-      setMessage(`Error applying column formatting: ${error.message}`);
+
+      setMessage(strings.ErrorApplyingFormatting.replace('{0}', error.message));
       setMessageType(MessageBarType.error);
     }
   };
 
   return (
     <PrimaryButton
-      text="Apply Column Formatting"
+      text={strings.ApplyColumnFormatting}
       onClick={applyColumnFormatting}
-      className={className} // Use className prop
-      aria-label="Apply Column Formatting"
+      className={className} 
+      aria-label={strings.ApplyColumnFormatting}
     />
   );
 };

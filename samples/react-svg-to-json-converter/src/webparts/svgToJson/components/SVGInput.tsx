@@ -5,7 +5,8 @@ import '@pnp/sp/items';
 import '@pnp/sp/files'; // Import the files module
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react'; // Import from @fluentui/react
+import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface SVGInputProps {
   siteUrl: string;
@@ -29,7 +30,6 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
           url: file.FileRef
         }));
       } catch (error) {
-        console.error('Error fetching SVG files:', error);
         return [];
       }
     };
@@ -46,8 +46,7 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
         const fileContent = await sp.web.getFileByServerRelativePath(option.key as string).getText();
         setSvgContent(fileContent);
       } catch (error) {
-        console.error('Error fetching file content:', error);
-        setMessage('Error fetching file content');
+        setMessage(strings.ErrorFetchingFileContent);
         setMessageType(MessageBarType.error);
       }
     }
@@ -56,11 +55,11 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
   return (
     <div>
       <Dropdown
-        placeholder="Select an SVG file"
+        placeholder={strings.SelectSVGFile}
         options={files.map(file => ({ key: file.url, text: file.name }))}
         onChange={handleFileChange}
       />
-      {/* Your component JSX here */}
+  
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton, MessageBarType } from '@fluentui/react';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface IJsonResult {
   elmType: string;
@@ -22,7 +23,7 @@ interface ConvertButtonProps {
 const ConvertButton: React.FC<ConvertButtonProps> = ({ svgContent, setJsonResult, setMessage, setMessageType, setIsConverted, isConverted, className, text }) => {
   const convertSvgToJson = async (): Promise<void> => {
     if (!svgContent) {
-      setMessage('Please provide SVG content before converting.');
+      setMessage(strings.NoSvgContent);
       setMessageType(MessageBarType.error);
       return;
     }
@@ -78,14 +79,14 @@ const ConvertButton: React.FC<ConvertButtonProps> = ({ svgContent, setJsonResult
 
       try {
         await navigator.clipboard.writeText(jsonString);
-        setMessage('Converted to JSON and copied to clipboard!');
+        setMessage(strings.CopiedToClipboard);
         setMessageType(MessageBarType.success);
       } catch (error) {
-        setMessage('Failed to copy to clipboard.');
+        setMessage(strings.FailedToCopyToClipboard);
         setMessageType(MessageBarType.error);
       }
     } catch (error) {
-      setMessage('Failed to convert SVG to JSON.');
+      setMessage(strings.ErrorConvertingSvg);
       setMessageType(MessageBarType.error);
     }
   };

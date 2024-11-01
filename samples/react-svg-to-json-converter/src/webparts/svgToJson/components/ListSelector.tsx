@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dropdown, MessageBar, IDropdownOption } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
 import useFetchLists from './useFetchLists';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface ListSelectorProps {
   siteUrl: string;
@@ -22,12 +23,12 @@ const ListSelector: React.FC<ListSelectorProps> = ({ siteUrl, context, onListCha
     <div className={styles.dropdown}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
-        placeholder="Select a list"
-        label="Lists"
+        placeholder={strings.SelectList}
+        label={strings.Lists}
         options={lists}
         onChange={handleListChange}
         className={styles.dropdown}
-        aria-label="Select a list"
+        aria-label={strings.SelectList}
       />
     </div>
   );

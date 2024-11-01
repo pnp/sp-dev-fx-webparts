@@ -26,6 +26,31 @@ declare interface ISvgToJsonWebPartStrings {
   ColumnFormattingApplied: string;
   ErrorApplyingFormatting: string;
   ApplyColumnFormatting: string;
+  FailedToCopyToClipboard: string;
+  ErrorConvertingSvg: string;
+  CopiedToClipboard: string;
+  NoSvgContent: string;
+  CopiedToClipboard:string;
+  SelectList: string;
+  Lists: string;
+  saveConfiguration: string;
+  libraryName: string;
+  SiteURL: string;
+  ConfigureAppFirst:string;
+  column:string;
+  selectColumn:string;
+  reset:string;
+  Sites: string;
+  SelectSite:string;
+  ConfigurationSaved: string;
+  ErrorFetchingFileContent: string;
+  ConvertAndCopyToClipboard: string;
+
+
+
+
+
+
 }
 
 declare module 'SvgToJsonWebPartStrings' {

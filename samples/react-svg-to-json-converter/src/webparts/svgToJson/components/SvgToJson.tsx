@@ -14,6 +14,7 @@ import Message from './Message';
 import SiteSelector from './SiteSelector';
 import TeamsSaveConfiguration from './TeamsSaveConfiguration';
 import styles from './SvgToJson.module.scss';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   const [svgContent, setSvgContent] = useState<string>('');
@@ -58,14 +59,14 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     setSelectedList(null);
     setSelectedListName(null);
     setSelectedColumn(null);
-    setIsConverted(false); // Reset isConverted state
+    setIsConverted(false); 
   };
 
   const handleSaveConfiguration = (): void => {
     props.siteUrl = selectedSite!;
     props.libraryName = libraryName!;
     props.context.propertyPane.refresh();
-    setMessage('Configuration saved successfully.');
+    setMessage(strings.ConfigurationSaved);
     setMessageType(MessageBarType.success);
   };
 
@@ -88,7 +89,7 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
     return (
       <ThemeProvider theme={theme}>
         <MessageBar messageBarType={MessageBarType.warning}>
-          Please configure the web part in the property pane.
+          {strings.ConfigureWebPart}
         </MessageBar>
       </ThemeProvider>
     );
@@ -97,8 +98,8 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.svgToJson}>
-        <h2>SVG to JSON for SharePoint List formatter</h2>
-        <p>Please select an approved SVG and either copy the JSON format to your clipboard for further manipulation or apply it directly to a column of your choice - made with 💖 by Luise</p>
+      <h2>{strings.SVGToJsonTitle}</h2>
+<p>{strings.SVGToJsonDescription}</p>
         <Message message={message} messageType={messageType} />
         <SVGInput
           siteUrl={props.siteUrl}
@@ -118,16 +119,16 @@ const SvgToJson: React.FC<ISvgToJsonProps> = (props) => {
             setMessageType={setMessageType}
             setIsConverted={setIsConverted}
             isConverted={isConverted}
-            text="Convert and Copy to Clipboard"
+            text={strings.ConvertAndCopyToClipboard}
             className={isTeams ? styles.teamsButton : styles.sharepointButton}
           />
         </div>
         <div>
           <DefaultButton
-            text="Advanced options to apply column format"
+            text={strings.AdvancedOptions}
             onClick={() => setIsAccordionExpanded(!isAccordionExpanded)}
             aria-expanded={isAccordionExpanded}
-            aria-controls="advancedOptions"
+            aria-controls={strings.AdvancedOptions}
             iconProps={{ iconName: isAccordionExpanded ? 'ChevronUp' : 'ChevronDown' }}
             className={styles.advancedOptionsButton}
           />

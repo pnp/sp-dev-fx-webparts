@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField, PrimaryButton, MessageBar, MessageBarType } from '@fluentui/react';
 import { ThemeProvider, getTheme } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface TeamsSaveConfigurationProps {
   selectedSite: string | null;
@@ -27,23 +28,23 @@ const TeamsSaveConfiguration: React.FC<TeamsSaveConfigurationProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.svgToJson}>
-        <MessageBar messageBarType={MessageBarType.info}>
-          Let's configure this app first.
+      <MessageBar messageBarType={MessageBarType.info}>
+          {strings.ConfigureAppFirst}
         </MessageBar>
         {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
         <TextField
-          label="Site URL"
-          value={selectedSite || ''}
-          onChange={(e, newValue) => setSelectedSite(newValue || '')}
-          className={styles.inputField}
+     label={strings.SiteURL}
+     value={selectedSite || ''}
+     onChange={(e, newValue) => setSelectedSite(newValue || '')}
+     className={styles.inputField}
         />
         <TextField
-          label="Library Name"
+          label={strings.libraryName}
           value={libraryName || ''}
           onChange={(e, newValue) => setLibraryName(newValue || '')}
           className={styles.inputField}
         />
-        <PrimaryButton text="Save Configuration" onClick={handleSaveConfiguration} className={styles.teamsButton} />
+        <PrimaryButton text={strings.saveConfiguration} onClick={handleSaveConfiguration} className={styles.teamsButton} />
       </div>
     </ThemeProvider>
   );

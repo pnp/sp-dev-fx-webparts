@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dropdown, MessageBar, IDropdownOption } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
 import useFetchFields from './useFetchFields';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 interface ColumnSelectorProps {
   siteUrl: string;
@@ -23,12 +24,12 @@ const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listI
     <div className={styles.dropdown}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
-        placeholder="Select a column"
-        label="Columns"
+        placeholder={strings.selectColumn}
+        label={strings.column}
         options={fields}
         onChange={handleColumnChange}
         className={styles.dropdown}
-        aria-label="Select a column"
+        aria-label={strings.selectColumn}
       />
     </div>
   );
