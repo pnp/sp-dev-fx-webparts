@@ -6,10 +6,11 @@ This web part allows users to read SVGs from a SharePoint library, select one of
 
 For usage in SharePoint, the Property Pane is used to define the Site URL and the library Name where the SVGs come from, for usage in Microsoft Teams there is a basic form to save the configuration.
 
+![svg converter in action](../react-svg-to-json-converter/assets/webpart-sp.png)
+
 ## Overview of the Web Part
 
 This Web Part is designed to allow users to select an SVG file from a SharePoint library, convert it to JSON format, and apply that JSON format to a SharePoint List column. The Web Part is built using React and leverages the PnPjs library.
-
 
 ```mermaid
 graph TD
@@ -55,8 +56,6 @@ graph TD
 
 This web part provides a user-friendly interface for selecting, converting, and applying SVG files to SharePoint list columns. It leverages React for the UI and PnPjs for SharePoint operations, to ensure a seamless integration with SharePoint. By breaking down the functionality into modular components, the web part is easy to maintain and extend.
 
-![svg converter in action](../react-svg-to-json-converter/assets/webpart-sp.png)
-
 If you want to read more about this Web Part, [this blog post series is for you](https://m365princess.com/blogs/spfx-1)
 
 ## Used SharePoint Framework Version
@@ -84,7 +83,7 @@ In the property pane, you can enter a SharePoint Site URL and a library name on 
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | October 16 | Initial release |
+| 1.0     | November 1 | Initial release |
 
 ## Disclaimer
 
