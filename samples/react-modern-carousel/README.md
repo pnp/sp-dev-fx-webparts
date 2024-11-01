@@ -61,6 +61,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 | ------- | ---------------- | ----------------------------------- |
 | 1.0     | March 16, 2024   | Initial release                     |
 | 1.1     | October 19, 2024 | Upgrade to SPFx 1.20 & misc changes |
+| 2.0     | November 1, 2024 | New feature: card styles & animations |
 
 ## Minimal Path to Awesome⚡
 
