@@ -219,7 +219,7 @@
       "In this sample is possible to see how to implement Google Analytics through SPFx Extensions Application Customizers"
     ],
     "creationDateTime": "2020-10-07",
-    "updateDateTime": "2021-07-01",
+    "updateDateTime": "2024-10-23",
     "products": [
       "SharePoint"
     ],
@@ -230,7 +230,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -771,7 +771,7 @@
       "Microsoft Clarity will gives you the recording of the sessions and heat maps of the user interaction with the site, this will help to find and fix the areas of your pages that are not working as you expect."
     ],
     "creationDateTime": "2021-11-23",
-    "updateDateTime": "2021-11-23",
+    "updateDateTime": "2024-10-19",
     "products": [
       "SharePoint"
     ],
@@ -782,7 +782,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -802,6 +802,11 @@
         "gitHubAccount": "joaoferreira",
         "pictureUrl": "https://github.com/joaoferreira.png",
         "name": "João Ferreira"
+      },
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "pictureUrl": "https://github.com/NishkalankBezawada.png",
+        "name": "NIshkalank Bezawada (MVP)"
       }
     ],
     "references": [
@@ -2141,7 +2146,7 @@
       "This sample shows how to create a breadcrumb element and append it to your site via the SharePoint Framework Application Customizer extension."
     ],
     "creationDateTime": "2020-10-03",
-    "updateDateTime": "2020-10-03",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -2152,7 +2157,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -2498,7 +2503,7 @@
       "This sample shows how to inject a custom Cascading Style Sheet (CSS) on modern pages."
     ],
     "creationDateTime": "2018-03-28",
-    "updateDateTime": "2018-03-28",
+    "updateDateTime": "2024-10-05",
     "products": [
       "SharePoint"
     ],
@@ -2509,7 +2514,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.8"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -3135,7 +3140,7 @@
       "An SPFx Extension that displays news as a running text at the top of every modern page."
     ],
     "creationDateTime": "2021-04-19",
-    "updateDateTime": "2022-11-11",
+    "updateDateTime": "2024-10-24",
     "products": [
       "SharePoint"
     ],
@@ -3146,7 +3151,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -4522,7 +4527,7 @@
       "A global list customizer which adds functionality to all document libraries in SharePoint Online to convert one or more documents in-place to PDF, or download one or more documents as a PDF. When selecting multiple documents for download they will be downloaded as a zip file. The converter uses built in API's of converting to PDF."
     ],
     "creationDateTime": "2021-02-23",
-    "updateDateTime": "2021-11-11",
+    "updateDateTime": "2024-10-23",
     "products": [
       "SharePoint"
     ],
@@ -4533,7 +4538,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -6679,7 +6684,7 @@
       "If the current user hasn't been voted, the button will become Vote button but if the current user has been voted, it will become Unvote button."
     ],
     "creationDateTime": "2021-04-19",
-    "updateDateTime": "2023-10-08",
+    "updateDateTime": "2024-10-29",
     "products": [
       "SharePoint"
     ],
@@ -6690,7 +6695,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.20.0"
       }
     ],
     "categories": [
