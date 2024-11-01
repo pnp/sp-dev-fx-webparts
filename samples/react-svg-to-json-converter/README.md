@@ -16,15 +16,18 @@ graph TD
     A[SvgToJson.tsx] --> B[SVGInput.tsx]
     A --> C[SVGOutput.tsx]
     A --> D[ConvertButton.tsx]
-    A --> E[ApplyButton.tsx]
+    A --> E[SiteSelector.tsx]
     A --> F[ListColumnSelector.tsx]
+    A --> G[ColumnSelector.tsx]
+    A --> H[ApplyButton.tsx]
 
-    B --> G[Fetch SVG files from SharePoint library]
-    D --> H[Convert SVG to JSON]
-    D --> I[Copy JSON to clipboard]
-    E --> J[Apply JSON to SharePoint list column]
-    F --> K[Fetch available lists from site]
-    F --> L[Fetch available columns from selected list]
+    B --> I[Fetch SVG files from SharePoint library]
+    D --> J[Convert SVG to JSON]
+    D --> K[Copy JSON to clipboard]
+    E --> L[Fetch available sites]
+    F --> M[Fetch available lists from site]
+    G --> N[Fetch available columns from selected list]
+    H --> O[Apply JSON to SharePoint list column]
 ```
 
 ## Key Components
@@ -32,14 +35,12 @@ graph TD
 * SvgToJson.tsx: This is the main component of the web part. It orchestrates the overall functionality by integrating other components like SVGInput, SVGOutput, ConvertButton, ApplyButton, and ListColumnSelector.
 
 * SVGInput.tsx: This component is responsible for fetching and displaying the list of SVG files from the specified SharePoint library. It uses a dropdown to allow users to select an SVG file.
-
 * SVGOutput.tsx: This component displays the content of the selected SVG file. It provides a visual preview of the SVG.
-
 * ConvertButton.tsx: This component provides a button to convert the selected SVG content to JSON format. It also copies the JSON to the clipboard.
-
-* ApplyButton.tsx: This component provides a button to apply the JSON format to a specified SharePoint List column. It handles the logic for updating the column formatting.
-
-* ListColumnSelector.tsx: This component allows users to select a SharePoint List and a column within that list. It fetches the available lists and columns from the specified site.
+* SiteSelector.tsx: This component allows users to select a SharePoint Site. It fetches all Site Collections in the tenant.
+* ListSelector.tsx: This component allows users to select a SharePoint List. It fetches the available lists from the specified site.
+* ColumnSelector.tsx: This component allows users to select a Column. It fetches the available columns from the specified site.
+* ApplyButton.tsx: This component provides a button to apply the JSON format to the specified SharePoint List column. It handles the logic for updating the column formatting.
 
 ## Example Workflow
 
