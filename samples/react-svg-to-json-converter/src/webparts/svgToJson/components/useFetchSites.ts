@@ -33,7 +33,7 @@ export const useFetchSites = (context: WebPartContext) => {
         setMessage(null); 
       } catch (error) {
         console.error('Error fetching site collections:', error);
-        setMessage(`Error fetching site collections: ${error.message}`);
+        setMessage(`${strings.errorFetchingSites}: ${error.message}`);
         setMessageType(MessageBarType.error);
       }
     };

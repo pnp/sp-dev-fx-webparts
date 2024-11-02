@@ -42,7 +42,8 @@ define([], function() {
     "Sites": "Sites",
     "ConfigurationSaved": "Configuration saved successfully.",
     "ErrorFetchingFileContent": "Error fetching file content",
- 
+    "errorFetchingSites": "Error fetching site collections",
+    "errorFetchingFields": "Error fetching columns",
  
 
   }

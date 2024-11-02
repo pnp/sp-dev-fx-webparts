@@ -18,7 +18,7 @@ const SiteSelector: React.FC<SiteSelectorProps> = ({ context, onSiteChange, clas
     <div className={className}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
-        placeholder="Select a site"
+        placeholder={strings.selectSite}
         options={sites}
         onChange={(event, option) => onSiteChange(option?.key as string)}
       />

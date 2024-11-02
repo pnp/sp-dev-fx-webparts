@@ -35,8 +35,8 @@ const useFetchFields = (siteUrl: string, context: any, listId: string | null) =>
 
       } catch (error) {
         console.error('Error fetching fields:', error);
-        setMessage(`Error fetching fields: ${error.message}`);
-        setMessageType(MessageBarType.error);
+        setMessage(`${strings.errorFetchingFields}: ${error.message}`);
+               setMessageType(MessageBarType.error);
       }
     };
 
