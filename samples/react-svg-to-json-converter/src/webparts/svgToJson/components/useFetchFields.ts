@@ -4,8 +4,9 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/fields";
 import { MessageBarType } from '@fluentui/react';
+import * as strings from 'SvgToJsonWebPartStrings';
 
-// Export the Field interface to be used externally
+
 export interface Field {
   InternalName: string;
   Title: string;

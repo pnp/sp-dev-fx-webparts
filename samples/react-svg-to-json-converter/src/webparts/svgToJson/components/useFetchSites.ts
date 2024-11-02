@@ -3,6 +3,7 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { IDropdownOption } from '@fluentui/react';
 import { MessageBarType } from '@fluentui/react';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 export const useFetchSites = (context: WebPartContext) => {
   const [sites, setSites] = useState<IDropdownOption[]>([]);

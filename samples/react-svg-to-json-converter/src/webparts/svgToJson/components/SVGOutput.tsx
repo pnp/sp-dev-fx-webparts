@@ -13,7 +13,7 @@ const SVGOutput: React.FC<SVGOutputProps> = ({ svgContent }) => {
           <div
             className={styles.svgContent}
             dangerouslySetInnerHTML={{ __html: svgContent }}
-            style={{ width: '100%', height: '100%', maxWidth: '96px', maxHeight: '96px', objectFit: 'contain' }}
+            style={{ width: '100%', height: '100%', maxWidth: '48px', maxHeight: '48px', objectFit: 'contain' }}
           />
         </div>
       )}

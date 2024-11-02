@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useFetchSites } from './useFetchSites';
 
 import { Dropdown, MessageBar } from '@fluentui/react';
+import * as strings from 'SvgToJsonWebPartStrings';
 
 
 
@@ -18,7 +19,7 @@ const SiteSelector: React.FC<SiteSelectorProps> = ({ context, onSiteChange, clas
     <div className={className}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <Dropdown
-        placeholder={strings.selectSite}
+        placeholder={strings.SelectSite}
         options={sites}
         onChange={(event, option) => onSiteChange(option?.key as string)}
       />

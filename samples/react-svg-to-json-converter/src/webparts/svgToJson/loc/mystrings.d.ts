@@ -48,6 +48,7 @@ declare interface ISvgToJsonWebPartStrings {
   errorFetchingSites: string;
   errorFetchingFields: string;
   
+  
 
 
 
