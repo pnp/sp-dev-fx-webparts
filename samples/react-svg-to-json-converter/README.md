@@ -6,6 +6,8 @@ This web part allows users to read SVGs from a SharePoint library, select one of
 
 For usage in SharePoint, the Property Pane is used to define the Site URL and the library Name where the SVGs come from, for usage in Microsoft Teams there is a basic form to save the configuration.
 
+Web Part works in both english and german and can easily be extended to work in more languages.
+
 ![svg converter in action](../react-svg-to-json-converter/assets/webpart-sp.png)
 
 ## Overview of the Web Part
