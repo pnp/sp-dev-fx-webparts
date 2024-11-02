@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, MessageBar, IDropdownOption } from '@fluentui/react';
 import styles from './SvgToJson.module.scss';
-import useFetchFields from './useFetchFields';
+import useFetchFields, { Field } from './useFetchFields';  // Import Field here
 import * as strings from 'SvgToJsonWebPartStrings';
 
 interface ColumnSelectorProps {
@@ -13,6 +13,11 @@ interface ColumnSelectorProps {
 
 const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listId, onColumnChange }) => {
   const { fields, message, messageType } = useFetchFields(siteUrl, context, listId);
+
+  const fieldOptions: IDropdownOption[] = fields.map((field: Field) => ({
+    key: field.InternalName,
+    text: field.Title,
+  }));
 
   const handleColumnChange = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
     if (option) {
@@ -26,7 +31,7 @@ const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listI
       <Dropdown
         placeholder={strings.selectColumn}
         label={strings.column}
-        options={fields}
+        options={fieldOptions}
         onChange={handleColumnChange}
         className={styles.dropdown}
         aria-label={strings.selectColumn}

@@ -3,10 +3,18 @@ import { spfi, SPFx } from '@pnp/sp';
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/fields";
-import { IDropdownOption, MessageBarType } from '@fluentui/react';
+import { MessageBarType } from '@fluentui/react';
+
+// Export the Field interface to be used externally
+export interface Field {
+  InternalName: string;
+  Title: string;
+  Hidden: boolean;
+  ReadOnlyField: boolean;
+}
 
 const useFetchFields = (siteUrl: string, context: any, listId: string | null) => {
-  const [fields, setFields] = useState<IDropdownOption[]>([]);
+  const [fields, setFields] = useState<Field[]>([]);  // Use Field[] as the type here
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
 
@@ -17,18 +25,14 @@ const useFetchFields = (siteUrl: string, context: any, listId: string | null) =>
       }
 
       try {
-        const sp = spfi(siteUrl).using(SPFx(context)); 
+        const sp = spfi(siteUrl).using(SPFx(context));
         const list = await sp.web.lists.getById(listId);
         const fetchedFields = await list.fields();
 
-        const fieldOptions: IDropdownOption[] = fetchedFields
-          .filter(field => !field.Hidden && !field.ReadOnlyField)
-          .map(field => ({
-            key: field.InternalName,
-            text: field.Title
-          }));
+        // Filter and set the fields directly in the state
+        const availableFields = fetchedFields.filter(field => !field.Hidden && !field.ReadOnlyField);
+        setFields(availableFields);
 
-        setFields(fieldOptions);
       } catch (error) {
         console.error('Error fetching fields:', error);
         setMessage(`Error fetching fields: ${error.message}`);

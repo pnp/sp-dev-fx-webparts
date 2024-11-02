@@ -1,43 +1,21 @@
-import { spfi, SPFx } from '@pnp/sp';
-import '@pnp/sp/webs';
-import '@pnp/sp/lists';
-import '@pnp/sp/items';
-import '@pnp/sp/files'; // Import the files module
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Dropdown, IDropdownOption, MessageBarType } from '@fluentui/react';
+import { Dropdown, IDropdownOption, MessageBar, MessageBarType } from '@fluentui/react';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { useSvgFiles } from './useSvgFiles';
 import * as strings from 'SvgToJsonWebPartStrings';
+import { spfi, SPFx } from "@pnp/sp";
 
 interface SVGInputProps {
   siteUrl: string;
   libraryName: string;
-  context: any;
-  setSvgContent: (content: string) => void;
-  setMessage: (message: string) => void;
-  setMessageType: (type: MessageBarType) => void;
+  context: WebPartContext;
+  setSvgContent: React.Dispatch<React.SetStateAction<string>>;
+  setMessage: React.Dispatch<React.SetStateAction<string | null>>;
+  setMessageType: React.Dispatch<React.SetStateAction<MessageBarType>>;
 }
 
 const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setSvgContent, setMessage, setMessageType }) => {
-  const [files, setFiles] = useState<{ name: string; url: string }[]>([]);
-
-  useEffect((): void => {
-    const fetchSvgFiles = async (libraryName: string): Promise<{ name: string; url: string }[]> => {
-      try {
-        const sp = spfi(siteUrl).using(SPFx(context));
-        const files = await sp.web.lists.getByTitle(libraryName).items.select('FileLeafRef', 'FileRef')();
-        return files.map((file: { FileLeafRef: string; FileRef: string }) => ({
-          name: file.FileLeafRef,
-          url: file.FileRef
-        }));
-      } catch (error) {
-        return [];
-      }
-    };
-
-    if (siteUrl && libraryName) {
-      fetchSvgFiles(libraryName).then(fetchedFiles => setFiles(fetchedFiles));
-    }
-  }, [siteUrl, libraryName, context]);
+  const { files, error } = useSvgFiles(siteUrl, libraryName, context);
 
   const handleFileChange = async (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
     if (option) {
@@ -52,14 +30,19 @@ const SVGInput: React.FC<SVGInputProps> = ({ siteUrl, libraryName, context, setS
     }
   };
 
+  const options: IDropdownOption[] = files.map((file: { name: string; url: string }) => ({
+    key: file.url,
+    text: file.name
+  }));
+
   return (
     <div>
+      {error && <MessageBar messageBarType={MessageBarType.error}>{error}</MessageBar>}
       <Dropdown
         placeholder={strings.SelectSVGFile}
-        options={files.map(file => ({ key: file.url, text: file.name }))}
+        options={options}
         onChange={handleFileChange}
       />
-  
     </div>
   );
 };

@@ -36,8 +36,7 @@ const useFetchLists = (siteUrl: string, context: any) => {
 
         setLists(listOptions);
       } catch (error) {
-        console.error('Error fetching lists:', error);
-        setMessage(`Error fetching lists: ${error.message}`);
+        setMessage(error.message);
         setMessageType(MessageBarType.error);
       }
     };
