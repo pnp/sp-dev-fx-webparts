@@ -31,15 +31,16 @@ define([], function() {
       "ApplyColumnFormatting": "Spaltenformatierung anwenden",
       "ConfigureAppFirst": "Konfigurieren Sie zuerst diese App.",
       "SiteURL": "Site-URL",
-      "LibraryName": "Bibliotheksname",
       "InvalidUrlErrorMessage": "Bitte geben Sie eine gültige URL ein.",
       "InvalidListTitleErrorMessage": "Bitte geben Sie einen gültigen Listen-Namen ein.",
       "SelectSite": "Wählen Sie eine SharePoint Seite",
       "Lists": "Liste",
       "SelectList": "Wählen Sie eine Liste",
       "Sites": "Seite",
-      "column": "Spalte",
       "reset": "Zurücksetzen",
+      "saveConfiguration": "Konfiguration speichern",
+      "LibraryName": "Bibliotheksname",
+      "column": "Spalte",
       "selectColumn": "Wählen Sie eine Spalte",
 
       

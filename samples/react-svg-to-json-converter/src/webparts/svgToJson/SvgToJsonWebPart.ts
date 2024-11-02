@@ -23,7 +23,7 @@ const validateUrl = (value: string): string => {
 const validateListTitle = (value: string): string => {
   const listTitlePattern = /^[a-zA-Z0-9\s]+$/;
   if (!listTitlePattern.test(value)) {
-    return listTitlePattern.test(value) ? '' : strings.InvalidListTitleErrorMessage; // Use the localized string here
+    return listTitlePattern.test(value) ? '' : strings.InvalidListTitleErrorMessage; 
   }
   return '';
 };
