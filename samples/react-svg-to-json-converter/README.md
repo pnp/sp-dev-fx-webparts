@@ -100,14 +100,7 @@ In the property pane, you can enter a SharePoint Site URL and a library name on 
 - in the command-line run:
   - **npm install**
   - **gulp serve**
-
 > Include any additional steps as needed.
-
-## Features
-
-1. Reads SVGs from a Sharepoint Document Library and displays their name in a dropdown
-2. Allows users to select an SVG, the SVG code will now be visible in an output box
-3. Allows users to convert this SVG code to a JSON format that is accepted by a SharePoint List column.
 
 ## References
 
