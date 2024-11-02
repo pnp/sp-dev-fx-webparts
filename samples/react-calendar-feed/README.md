@@ -32,8 +32,8 @@ For more information about how this solution was built, including some design de
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.2-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -80,6 +80,7 @@ Version|Date|Comments
 5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behavior and styles to match OOB calendar view. Added support for themes and theme variants.
 5.2|July 15, 2020|Fixed issue to support IE11
 5.3|October 21, 2022|Upgrade to 1.15 Security fixes Removed IE11 Support 
+6.0|October 11, 2024|Upgrade to 1.20 
 
 ## Minimal Path to Awesome
 
