@@ -32,18 +32,21 @@ define([], function() {
     "ConfigureAppFirst": "Let's configure this app first.",
     "SiteURL": "Site URL",
     "SelectList": "Select a list",
-    "Lists": "Lists",
+    "Lists": "List",
     "saveConfiguration": "Save configuration",
     "libraryName": "Library name",
     "column": "Column",
     "selectColumn": "Select a column",
     "reset": "Reset",
     "SelectSite": "Select a site",
-    "Sites": "Sites",
+    "Sites": "Site",
     "ConfigurationSaved": "Configuration saved successfully.",
     "ErrorFetchingFileContent": "Error fetching file content",
     "errorFetchingSites": "Error fetching site collections",
     "errorFetchingFields": "Error fetching columns",
+    "InvalidUrlErrorMessage": "Please enter a valid URL.",
+    "InvalidListTitleErrorMessage": "Please enter a valid list name.",
+ 
     
  
 

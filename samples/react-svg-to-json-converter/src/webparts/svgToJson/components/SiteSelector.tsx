@@ -21,6 +21,7 @@ const SiteSelector: React.FC<SiteSelectorProps> = ({ context, onSiteChange, clas
       <Dropdown
         placeholder={strings.SelectSite}
         options={sites}
+        label={strings.Sites}
         onChange={(event, option) => onSiteChange(option?.key as string)}
       />
     </div>

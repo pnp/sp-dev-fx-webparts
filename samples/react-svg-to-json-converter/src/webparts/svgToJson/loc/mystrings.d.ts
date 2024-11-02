@@ -47,6 +47,8 @@ declare interface ISvgToJsonWebPartStrings {
   ConvertAndCopyToClipboard: string;
   errorFetchingSites: string;
   errorFetchingFields: string;
+InvalidUrlErrorMessage: string;
+InvalidListTitleErrorMessage: string;
   
   
 
