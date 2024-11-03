@@ -43,7 +43,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
   useEffect(() => {
     const fetchSamples = async (): Promise<void> => {
-      const token = "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"; // Hardcoded token for testing
+      const token = process.env.GITHUB_TOKEN;
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);
