@@ -32,3 +32,5 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+.env

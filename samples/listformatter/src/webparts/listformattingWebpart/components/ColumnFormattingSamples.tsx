@@ -11,7 +11,9 @@ interface ColumnFormattingSamplesProps {
 }
 
 const ColumnFormattingSamples: React.FC<ColumnFormattingSamplesProps> = ({ columnType, includeGenericSamples, onSampleChange }) => {
-  const { samples, message, messageType } = useFetchColumnFormattingSamples(columnType, includeGenericSamples);
+  const currentPage = 1; // Default to the first page
+  const pageSize = 10; // Number of samples per page
+  const { samples, message, messageType } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, currentPage, pageSize);
 
   const handleSampleChange = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
     if (option) {

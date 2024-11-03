@@ -33,10 +33,55 @@
 .columnTypeDisplay {
   margin-top: 10px;
 }
-.samplePreview { // Add this class
+.sampleGallery {
   margin-top: 10px;
 }
-.previewImage { // Add this class
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.galleryItem {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: 4px; // Add border radius
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.galleryItem:hover {
+  transform: scale(1.05);
+}
+.galleryItem.selected {
+  border-color: #ff69b4;
+}
+.previewImage {
   max-width: 100%;
   height: auto;
+  aspect-ratio: 1; // Ensure consistent aspect ratio
+}
+.sampleTitle {
+  font-weight: bold;
+  margin-top: 5px;
+}
+.sampleColumnType {
+  color: #666;
+  margin-top: 5px;
+}
+.applyButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.paginationControls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.samplePreview { // Add this class
+  margin-top: 10px;
 }

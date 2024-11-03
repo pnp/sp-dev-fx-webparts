@@ -14,10 +14,15 @@ interface Sample {
   metadata: Metadata[];
 }
 
+interface ExtendedDropdownOption extends IDropdownOption {
+  url: string;
+}
+
 interface UseFetchColumnFormattingSamplesResult {
-  samples: IDropdownOption[];
+  samples: ExtendedDropdownOption[];
   message: string | undefined;
   messageType: MessageBarType;
+  totalSamples: number;
 }
 
 const columnTypeMapping: { [key: string]: string } = {
@@ -30,36 +35,76 @@ const columnTypeMapping: { [key: string]: string } = {
   'User': 'Person'
 };
 
-const useFetchColumnFormattingSamples = (columnType: string, includeGenericSamples: boolean): UseFetchColumnFormattingSamplesResult => {
-  const [samples, setSamples] = useState<IDropdownOption[]>([]);
+const useFetchColumnFormattingSamples = (columnType: string, includeGenericSamples: boolean, currentPage: number, pageSize: number): UseFetchColumnFormattingSamplesResult => {
+  const [samples, setSamples] = useState<ExtendedDropdownOption[]>([]);
   const [message, setMessage] = useState<string | undefined>(undefined);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
+  const [totalSamples, setTotalSamples] = useState<number>(0);
 
   useEffect(() => {
     const fetchSamples = async (): Promise<void> => {
+      const token = "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"; // Hardcoded token for testing
+      const headers = new Headers();
+      if (token) {
+        headers.append('Authorization', `token ${token}`);
+      }
+
+      console.log('Token:', token);
+      console.log('Headers:', headers);
+
       try {
-        const response = await fetch('https://api.github.com/repos/pnp/List-Formatting/contents/column-samples');
-        const data: { name: string, path: string }[] = await response.json();
+        const response = await fetch('http://localhost:3000/github/repos/pnp/List-Formatting/contents/column-samples', { headers });
+        const data = await response.json();
         console.log('Fetched data:', data);
 
-        const sampleOptions: IDropdownOption[] = [];
+        if (data.message && data.message.includes('API rate limit exceeded')) {
+          setMessage(data.message);
+          setMessageType(MessageBarType.error);
+          return;
+        }
 
-        for (const item of data) {
+        setTotalSamples(data.length);
+
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const paginatedData = data.slice(startIndex, endIndex);
+
+        console.log(`Fetching samples for page ${currentPage} with page size ${pageSize}`);
+        console.log('Paginated data:', paginatedData);
+
+        const sampleOptions: ExtendedDropdownOption[] = [];
+
+        for (const item of paginatedData) {
           try {
-            const metadataResponse = await fetch(`https://raw.githubusercontent.com/pnp/List-Formatting/master/column-samples/${item.name}/assets/sample.json`);
-            const metadataText = await metadataResponse.text();
-            console.log(`Fetched sample.json for ${item.name}:`, metadataText);
+            // Check if the item is a directory
+            if (item.type === 'dir') {
+              // Fetch the sample.json file from within the directory
+              const metadataResponse = await fetch(`http://localhost:3000/github/repos/pnp/List-Formatting/contents/${item.path}/assets/sample.json`, { headers });
+              const metadata = await metadataResponse.json();
+              console.log(`Fetched sample.json for ${item.name}:`, metadata);
 
-            const sampleData: Sample[] = JSON.parse(metadataText);
-            console.log(`Parsed sample.json for ${item.name}:`, sampleData);
+              // Decode base64 content
+              const decodedContent = atob(metadata.content);
+              const sampleData: Sample[] = JSON.parse(decodedContent);
+              console.log(`Parsed sample.json for ${item.name}:`, sampleData);
 
-            for (const sample of sampleData) {
-              const sampleColumnType = sample.metadata.find((meta: Metadata) => meta.key === 'LIST-COLUMN-TYPE')?.value || 'General';
-              if (sampleColumnType === columnTypeMapping[columnType] || (includeGenericSamples && sampleColumnType === 'General')) {
-                sampleOptions.push({
-                  key: sample.name,
-                  text: sample.title
-                });
+              for (const sample of sampleData) {
+                const sampleColumnType = sample.metadata.find((meta: Metadata) => meta.key === 'LIST-COLUMN-TYPE')?.value || 'General';
+                console.log(`Sample column type for ${sample.name}: ${sampleColumnType}`);
+                if (sampleColumnType === columnTypeMapping[columnType] || (includeGenericSamples && sampleColumnType === 'General')) {
+                  // Fetch the list of files in the assets folder
+                  const assetsResponse = await fetch(`http://localhost:3000/github/repos/pnp/List-Formatting/contents/${item.path}/assets`, { headers });
+                  const assetsData = await assetsResponse.json();
+                  const imageFile = assetsData.find((file: { name: string }) => /\.(png|gif|jpg|jpeg)$/i.test(file.name));
+                  const imageUrl = imageFile ? imageFile.download_url : '';
+
+                  sampleOptions.push({
+                    key: sample.name,
+                    text: sample.title,
+                    url: imageUrl // Use the image URL
+                  });
+                  console.log(`Added sample option: ${sample.name}`);
+                }
               }
             }
           } catch (sampleError) {
@@ -78,9 +123,9 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
     };
 
     fetchSamples().catch(error => console.error('Error in fetchSamples:', error));
-  }, [columnType, includeGenericSamples]);
+  }, [columnType, includeGenericSamples, currentPage, pageSize]);
 
-  return { samples, message, messageType };
+  return { samples, message, messageType, totalSamples };
 };
 
 export default useFetchColumnFormattingSamples;
