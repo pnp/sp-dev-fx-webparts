@@ -5,7 +5,8 @@ import { IEventRecurrenceInfoMonthlyProps } from './IEventRecurrenceInfoMonthlyP
 import { IEventRecurrenceInfoMonthlyState } from './IEventRecurrenceInfoMonthlyState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import * as moment from 'moment';
-import { parseString, Builder } from "xml2js";
+//import { parseString, Builder } from "xml2js";
+import { XMLParser } from "fast-xml-parser";
 import {
   ChoiceGroup,
   IChoiceGroupOption,
@@ -95,7 +96,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-   private onStartDateChange(date: Date) {
+  private onStartDateChange(date: Date) {
     //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
     this.setState({ startDate: date }, () => {
       this.applyRecurrence();
@@ -109,11 +110,11 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-   private onEndDateChange(date: Date) {
+  private onEndDateChange(date: Date) {
     //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
-      this.setState({ endDate: date}, () => {
-        this.applyRecurrence();
-      }
+    this.setState({ endDate: date }, () => {
+      this.applyRecurrence();
+    }
     );
   }
 
@@ -202,7 +203,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {string} value
    * @memberof EventRecurrenceInfoDaily
    */
-   private onNumberOfOcurrencesChange(
+  private onNumberOfOcurrencesChange(
     ev: React.SyntheticEvent<HTMLElement>,
     value: string
   ) {
@@ -220,7 +221,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoDaily
    */
-   private onDataRangeOptionChange(
+  private onDataRangeOptionChange(
     ev: React.SyntheticEvent<HTMLElement>,
     option: IChoiceGroupOption
   ): void {
@@ -246,7 +247,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoMonthly
    */
-   private onPaternChange(
+  private onPaternChange(
     ev: React.SyntheticEvent<HTMLElement>,
     option: IChoiceGroupOption
   ): void {
@@ -276,7 +277,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoMonthly
    */
-   private onWeekOrderMonthChange(
+  private onWeekOrderMonthChange(
     ev: React.FormEvent<HTMLDivElement>,
     item: IDropdownOption
   ): void {
@@ -295,7 +296,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoMonthly
    */
-   private onSelectedWeekDayChange(
+  private onSelectedWeekDayChange(
     ev: React.FormEvent<HTMLDivElement>,
     item: IDropdownOption
   ): void {
@@ -319,25 +320,28 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
     let recurrenceRule: string;
 
     if (this.props.recurrenceData) {
+      const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", });
+      const result = parser.parse(this.props.recurrenceData);
 
-      parseString(this.props.recurrenceData, { explicitArray: false }, (error, result) => {
+      let pattern;
+      let dateRange;
 
-        if (result.recurrence.rule.repeat) {
-          patern = result.recurrence.rule.repeat;
-        }
+      if (result.recurrence.rule.repeat) {
+        pattern = result.recurrence.rule.repeat;
+      }
 
-        //
-        if (result.recurrence.rule.repeatForever) {
-          dateRange = { repeatForever: result.recurrence.rule.repeatForever };
-        }
-        if (result.recurrence.rule.repeatInstances) {
-          dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
-        }
-        if (result.recurrence.rule.windowEnd) {
-          dateRange = { windowEnd: result.recurrence.rule.windowEnd };
-        }
+      if (result.recurrence.rule.repeatForever) {
+        dateRange = { repeatForever: result.recurrence.rule.repeatForever };
+      }
 
-      });
+      if (result.recurrence.rule.repeatInstances) {
+        dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
+      }
+
+      if (result.recurrence.rule.windowEnd) {
+        dateRange = { windowEnd: result.recurrence.rule.windowEnd };
+      }
+
       // monthly Patern
       if (patern.monthly) {
         recurrenceRule = 'monthly';
@@ -383,10 +387,10 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
         selectedRecurrenceRule: recurrenceRule,
         selectPatern: patern.monthly ? 'monthly' : 'monthlyByDay',
         dayOfMonth: monthlyPatern.day ? monthlyPatern.day : '1',
-        everyNumberOfMonths: monthlyPatern.monthFrequency ?  monthlyPatern.monthFrequency : monthlyByDayPatern.monthFrequency ,
-        everyNumberOfMonthsWeekDay: monthlyByDayPatern.monthFrequency ?  monthlyByDayPatern.monthFrequency : '1',
+        everyNumberOfMonths: monthlyPatern.monthFrequency ? monthlyPatern.monthFrequency : monthlyByDayPatern.monthFrequency,
+        everyNumberOfMonthsWeekDay: monthlyByDayPatern.monthFrequency ? monthlyByDayPatern.monthFrequency : '1',
         selectedWeekOrderMonth: monthlyByDayPatern.weekdayOfMonth ? monthlyByDayPatern.weekdayOfMonth : 'first',
-        selectedWeekDay: monthlyByDayPatern.weekDay ?  monthlyByDayPatern.weekDay : 'day',
+        selectedWeekDay: monthlyByDayPatern.weekDay ? monthlyByDayPatern.weekDay : 'day',
         disableDayOfMonth: patern.monthly ? false : true,
         selectdateRangeOption: selectDateRangeOption,
         numberOcurrences: dateRange.repeatInstances ? dateRange.repeatInstances : '10',
@@ -481,7 +485,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
 
     const recurrenceXML = `<recurrence><rule><firstDayOfWeek>su</firstDayOfWeek><repeat>` + recurrencePatern;
 
-   // console.log(recurrenceXML);
+    // console.log(recurrenceXML);
     this.props.returnRecurrenceData(this.state.startDate, recurrenceXML);
   }
   /**
@@ -499,14 +503,14 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
 
             </div>
             <div style={{ width: '100%', paddingTop: '10px' }}>
-              <Label>{ strings.patternLabel }</Label>
+              <Label>{strings.patternLabel}</Label>
               <ChoiceGroup
                 selectedKey={this.state.selectPatern}
                 options={[
                   {
                     key: 'monthly',
                     text: strings.dayLable,
-                    ariaLabel:  strings.dayLable,
+                    ariaLabel: strings.dayLable,
 
                     onRenderField: (props, render) => {
                       return (
@@ -548,7 +552,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                               disabled={!this.state.disableDayOfMonth}
                               options={[
                                 { key: 'first', text: strings.firstLabel },
-                                { key: 'second', text: strings.secondLabel},
+                                { key: 'second', text: strings.secondLabel },
                                 { key: 'third', text: strings.thirdLabel },
                                 { key: 'fourth', text: strings.fourthLabel },
                                 { key: 'last', text: strings.lastLabel },
@@ -564,12 +568,12 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                               options={[
                                 { key: 'day', text: strings.dayLable },
                                 { key: 'weekday', text: strings.weekDayLabel },
-                                { key: 'weekendday', text:strings.weekEndDay },
-                                { key: 'sunday', text: strings.Sunday},
+                                { key: 'weekendday', text: strings.weekEndDay },
+                                { key: 'sunday', text: strings.Sunday },
                                 { key: 'monday', text: strings.Monday },
                                 { key: 'tuesday', text: strings.Tuesday },
                                 { key: 'wednesday', text: strings.Wednesday },
-                                { key: 'thursday', text: strings.Thursday},
+                                { key: 'thursday', text: strings.Thursday },
                                 { key: 'friday', text: strings.Friday },
                                 { key: 'saturday', text: strings.Saturday },
                               ]}
@@ -608,7 +612,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
-                  formatDate= {toLocaleShortDateString}
+                  formatDate={toLocaleShortDateString}
                 />
 
               </div>
