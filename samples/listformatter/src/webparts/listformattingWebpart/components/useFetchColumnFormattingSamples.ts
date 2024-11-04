@@ -18,12 +18,16 @@ interface Sample {
   name: string;
   title: string;
   url: string;
-  metadata: Metadata[];  // Now required for filtering
-  thumbnails: Thumbnail[]; // Now required for gallery display
+  metadata: Metadata[];
+  thumbnails: Thumbnail[];
+  author: string; // Add the author property
+  authorPictureUrl: string; // Add the author picture URL property
 }
 
 interface ExtendedDropdownOption extends IDropdownOption {
   url: string;
+  author: string; // Add the author property
+  authorPictureUrl: string; // Add the author picture URL property
 }
 
 interface UseFetchColumnFormattingSamplesResult {
@@ -58,6 +62,8 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
       const title = sampleData[0]?.title;
       const metadata = sampleData[0]?.metadata;
       const thumbnails = sampleData[0]?.thumbnails;
+      const author = sampleData[0]?.authors?.[0]?.name || 'Unknown'; // Extract the author's name
+      const authorPictureUrl = sampleData[0]?.authors?.[0]?.pictureUrl || ''; // Extract the author's picture URL
 
       // Ensure the sample has title, metadata array, and at least one thumbnail URL
       if (!title || !Array.isArray(metadata) || !Array.isArray(thumbnails) || thumbnails.length === 0) {
@@ -67,7 +73,7 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
 
       // Extract the first thumbnail URL
       const imageUrl = thumbnails[0]?.url;
-      return { name: sampleData[0].name, title, url: imageUrl, metadata, thumbnails };
+      return { name: sampleData[0].name, title, url: imageUrl, metadata, thumbnails, author, authorPictureUrl };
     } else {
       console.warn(`No metadata content found for ${path}`);
     }
@@ -77,12 +83,7 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
   return undefined;
 };
 
-const useFetchColumnFormattingSamples = (
-  columnType: string,
-  includeGenericSamples: boolean,
-  currentPage: number,
-  pageSize: number
-): UseFetchColumnFormattingSamplesResult => {
+const useFetchColumnFormattingSamples = (columnType: string, includeGenericSamples: boolean, currentPage: number, pageSize: number): UseFetchColumnFormattingSamplesResult => {
   const [samples, setSamples] = useState<ExtendedDropdownOption[]>([]);
   const [message, setMessage] = useState<string | undefined>(undefined);
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
@@ -112,39 +113,37 @@ const useFetchColumnFormattingSamples = (
           return;
         }
 
-        // Fetch all samples and log each result
-        const allSamples: Sample[] = (await Promise.all(
-          data.map(async (item) => {
-            if (item.type === 'dir') {
-              return await fetchSampleData(item.path, headers);
+        const allSamples: Sample[] = (await Promise.all(data.map(async (item) => {
+          if (item.type === 'dir') {
+            try {
+              const sample = await fetchSampleData(item.path, headers);
+              return sample ? [sample] : [];
+            } catch (sampleError) {
+              console.error(`Error parsing sample.json for ${item.name}:`, sampleError);
+              return [];
             }
-            return undefined;
-          })
-        )).filter((sample): sample is Sample => sample !== undefined);
+          }
+          return [];
+        }))).reduce((acc, val) => acc.concat(val), []);
 
-        console.log("All fetched samples:", allSamples);
-
-        // Filter samples based on column type using metadata
         const filteredSamples = allSamples.filter(sample => {
-          const sampleColumnType = sample.metadata?.find(meta => meta.key === 'LIST-COLUMN-TYPE')?.value || 'General';
+          const sampleColumnType = sample.metadata.find((meta: Metadata) => meta.key === 'LIST-COLUMN-TYPE')?.value || 'General';
           return sampleColumnType === columnTypeMapping[columnType] || (includeGenericSamples && sampleColumnType === 'General');
         });
 
-        console.log("Filtered samples based on column type:", filteredSamples);
-        
         setTotalSamples(filteredSamples.length);
 
-        // Paginate samples
         const startIndex = (currentPage - 1) * pageSize;
-        const paginatedSamples = filteredSamples.slice(startIndex, startIndex + pageSize);
+        const endIndex = startIndex + pageSize;
+        const paginatedSamples = filteredSamples.slice(startIndex, endIndex);
 
         const sampleOptions: ExtendedDropdownOption[] = paginatedSamples.map(sample => ({
           key: sample.name,
           text: sample.title,
-          url: sample.url // Image URL from thumbnails
+          url: sample.thumbnails[0]?.url || '', // Use the first thumbnail URL
+          author: sample.author, // Include the author
+          authorPictureUrl: sample.authorPictureUrl // Include the author picture URL
         }));
-
-        console.log("Paginated samples:", sampleOptions);
 
         setSamples(sampleOptions);
         setMessage(undefined);

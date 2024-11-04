@@ -38,7 +38,7 @@
 }
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 .galleryItem {
@@ -52,10 +52,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 300px; // Set a fixed height for the card
 }
+
 .galleryItem:hover {
   transform: scale(1.05);
 }
+
 .galleryItem.selected {
   border-color: $ms-color-teal;
   border-width: 2px;
@@ -63,13 +66,36 @@
 }
 .previewImage {
   max-width: 100%;
-  height: auto;
-  aspect-ratio: 1; // Ensure consistent aspect ratio
+  height: 150px; // Set a fixed height for the sample image
+  object-fit: cover; // Ensure the image covers the area without distortion
 }
+
+.sampleAuthor {
+  display: flex;
+  align-items: center;
+  color: #666;
+  margin-top: 5px;
+  height: 32px; // Set a fixed height for the author information
+}
+
+.authorPicture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 .sampleTitle {
   font-weight: bold;
   margin-top: 5px;
+  height: 40px; // Set a fixed height for the sample title
+  overflow: hidden; // Ensure long titles do not overflow
+  text-overflow: ellipsis; // Add ellipsis for long titles
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Limit to 2 lines
+  -webkit-box-orient: vertical;
 }
+
 .sampleColumnType {
   color: #666;
   margin-top: 5px;
@@ -84,6 +110,6 @@
   justify-content: space-between;
   margin-top: 10px;
 }
-.samplePreview { // Add this class
+.samplePreview { 
   margin-top: 10px;
 }
