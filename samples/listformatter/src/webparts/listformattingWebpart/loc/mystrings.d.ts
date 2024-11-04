@@ -24,6 +24,9 @@ declare interface IListformattingWebpartWebPartStrings {
   ColumnFormattingApplied: string;
   ErrorApplyingFormatting: string;
   SelectListColumn: string;
+  Description: string;
+  PoweredBy: string;
+  GitHubRepo: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppLocalEnvironmentOffice: string;

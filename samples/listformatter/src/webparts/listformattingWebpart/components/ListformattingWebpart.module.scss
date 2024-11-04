@@ -57,7 +57,9 @@
   transform: scale(1.05);
 }
 .galleryItem.selected {
-  border-color: #ff69b4;
+  border-color: $ms-color-teal;
+  border-width: 2px;
+  border-style: solid;
 }
 .previewImage {
   max-width: 100%;

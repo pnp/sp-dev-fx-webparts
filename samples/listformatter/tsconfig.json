@@ -25,7 +25,7 @@
       "dom",
       "es2015.collection",
       "es2015.promise",
-      "es2015" // Add this line
+      "es2015"
     ]
   },
   "include": [

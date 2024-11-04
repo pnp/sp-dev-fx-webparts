@@ -20,7 +20,7 @@ export default class ListformattingWebpart extends React.Component<IListformatti
       selectedColumnName: '',
       selectedColumnType: '',
       selectedSampleName: '',
-      includeGenericSamples: true, // Default to YES
+      includeGenericSamples: false, // Default to NO
       message: undefined,
       messageType: MessageBarType.info,
       successMessage: undefined
@@ -57,6 +57,9 @@ export default class ListformattingWebpart extends React.Component<IListformatti
 
   private handleApplySuccess = (message: string): void => {
     this.setState({ successMessage: message });
+    setTimeout(() => {
+      this.setState({ successMessage: undefined });
+    }, 3000); // Disappear after 3 seconds
   }
 
   public render(): React.ReactElement<IListformattingWebpartProps> {
@@ -73,6 +76,11 @@ export default class ListformattingWebpart extends React.Component<IListformatti
         )}
         <div>
           <h2>{strings.Title}</h2>
+          <p>
+            {strings.Description}
+            <br />
+            {strings.PoweredBy} <a href="https://github.com/pnp/sp-dev-list-formatting" target="_blank" rel="noopener noreferrer">{strings.GitHubRepo}</a>
+          </p>
           <SiteSelector context={this.props.context} onSiteChange={this.handleSiteChange} />
           <ListSelector siteUrl={this.state.selectedSiteUrl} context={this.props.context} onListChange={this.handleListChange} />
           <ColumnSelector siteUrl={this.state.selectedSiteUrl} context={this.props.context} listId={this.state.selectedListId} onColumnChange={this.handleColumnChange} />

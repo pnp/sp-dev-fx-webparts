@@ -1,6 +1,5 @@
 import * as React from 'react';
-// import { useState } from 'react';
-import { DefaultButton} from '@fluentui/react';
+import { PrimaryButton} from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import * as strings from 'ListformattingWebpartWebPartStrings';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -11,11 +10,11 @@ interface ApplyButtonProps {
   selectedColumn: string;
   selectedSample: string;
   selectedSite: string;
-  context: WebPartContext; // Replace with the correct type for WebPartContext
+  context: WebPartContext;
   selectedListName: string;
   resetInputs: () => void;
   disabled: boolean;
-  onSuccess: (message: string) => void; // Add this line
+  onSuccess: (message: string) => void; 
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({
@@ -28,16 +27,16 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({
   selectedListName,
   resetInputs,
   disabled,
-  onSuccess // Add this line
+  onSuccess 
 }) => {
   const handleApplyClick = (): void => {
     onApply();
-    onSuccess(strings.ColumnFormattingApplied); // Use the callback to set the success message
+    onSuccess(strings.ColumnFormattingApplied); 
   };
 
   return (
     <div className={styles.applyButtonContainer}>
-      <DefaultButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} />
+      <PrimaryButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} />
     </div>
   );
 };

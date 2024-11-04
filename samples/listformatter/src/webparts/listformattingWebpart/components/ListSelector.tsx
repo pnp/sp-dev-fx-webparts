@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Dropdown, MessageBar, IDropdownOption } from '@fluentui/react';
-import styles from './ListformattingWebpart.module.scss';
+import { Dropdown, IDropdownOption, MessageBar } from '@fluentui/react';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 import useFetchLists from './useFetchLists';
 import * as strings from 'ListformattingWebpartWebPartStrings';
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import styles from './ListformattingWebpart.module.scss';
 
 interface ListSelectorProps {
   siteUrl: string;
@@ -26,7 +26,7 @@ const ListSelector: React.FC<ListSelectorProps> = ({ siteUrl, context, onListCha
       <Dropdown
         placeholder={siteUrl ? strings.SelectList : strings.SelectSiteFirst}
         label={strings.Lists}
-        options={siteUrl ? lists : []}
+        options={lists}
         onChange={handleListChange}
         className={styles.dropdown}
         aria-label={siteUrl ? strings.SelectList : strings.SelectSiteFirst}

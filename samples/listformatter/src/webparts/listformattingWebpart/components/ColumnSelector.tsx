@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption, MessageBar, MessageBarType} from '@fluentui/react';
+import { Dropdown, IDropdownOption, MessageBar } from '@fluentui/react';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import useFetchFields from './useFetchFields';
 import * as strings from 'ListformattingWebpartWebPartStrings';
@@ -32,18 +32,13 @@ const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listI
   return (
     <div>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
-      {listId ? (
-        <Dropdown
-          placeholder={strings.SelectColumn}
-          label={strings.Columns}
-          options={fields.map(field => ({ key: field.key, text: field.text }))}
-          onChange={handleChange}
-        />
-      ) : (
-        <MessageBar messageBarType={MessageBarType.info}>
-          {strings.SelectListFirst}
-        </MessageBar>
-      )}
+      <Dropdown
+        placeholder={strings.SelectColumn}
+        label={strings.Columns}
+        options={fields.map(field => ({ key: field.key, text: field.text }))}
+        onChange={handleChange}
+        disabled={!listId}
+      />
     </div>
   );
 };
