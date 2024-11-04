@@ -27,7 +27,7 @@ define([], function() {
     "AppOfficeEnvironment": "The app is running in office.com",
     "AppOutlookEnvironment": "The app is running in Outlook",
     "UnknownEnvironment": "The app is running in an unknown environment",
-    "Title": "List formatting Web Part ❤️",
+    "Title": "List formatting Web Part 💛",
     "IncludeGenericSamples": "Include generic samples as well", 
     "errorFetchingPreviewImage": "Error fetching preview image", 
     "SamplePreviewAltText": "Sample preview image",
