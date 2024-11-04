@@ -90,7 +90,7 @@ const useFetchColumnFormattingSamples = (
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const token = "your token in here"; // Replace with your actual token
+      const token = "your token here"; // Replace with your actual token
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);

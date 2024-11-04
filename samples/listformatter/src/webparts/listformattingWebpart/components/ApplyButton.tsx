@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { PrimaryButton} from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import * as strings from 'ListformattingWebpartWebPartStrings';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface ApplyButtonProps {
-  onApply: () => void;
+  onApply: () => Promise<void>;
   selectedList: string;
   selectedColumn: string;
   selectedSample: string;
@@ -14,7 +14,7 @@ interface ApplyButtonProps {
   selectedListName: string;
   resetInputs: () => void;
   disabled: boolean;
-  onSuccess: (message: string) => void; 
+  onSuccess: (message: string) => void;
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({
@@ -27,11 +27,11 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({
   selectedListName,
   resetInputs,
   disabled,
-  onSuccess 
+  onSuccess
 }) => {
-  const handleApplyClick = (): void => {
-    onApply();
-    onSuccess(strings.ColumnFormattingApplied); 
+  const handleApplyClick = async (): Promise<void> => {
+    await onApply();
+    onSuccess(strings.ColumnFormattingApplied);
   };
 
   return (

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Toggle, MessageBar, MessageBarType } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import type { IListformattingWebpartProps } from './IListformattingWebpartProps';
@@ -8,107 +9,112 @@ import ColumnSelector from './ColumnSelector';
 import ColumnTypeDisplay from './ColumnTypeDisplay';
 import SampleGallery from './SampleGallery';
 import ApplyButton from './ApplyButton';
+import useApplyColumnFormatting from './useApplyColumnFormatting';
 import * as strings from 'ListformattingWebpartWebPartStrings';
 
-export default class ListformattingWebpart extends React.Component<IListformattingWebpartProps, { selectedSiteUrl: string, selectedListId: string, selectedListName: string, selectedColumnName: string, selectedColumnType: string, selectedSampleName: string, includeGenericSamples: boolean, message: string | undefined, messageType: MessageBarType, successMessage: string | undefined }> {
-  constructor(props: IListformattingWebpartProps) {
-    super(props);
-    this.state = {
-      selectedSiteUrl: '',
-      selectedListId: '',
-      selectedListName: '',
-      selectedColumnName: '',
-      selectedColumnType: '',
-      selectedSampleName: '',
-      includeGenericSamples: false, // Default to NO
-      message: undefined,
-      messageType: MessageBarType.info,
-      successMessage: undefined
-    };
-  }
+const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => {
+  const [selectedSiteUrl, setSelectedSiteUrl] = useState<string>('');
+  const [selectedListId, setSelectedListId] = useState<string>('');
+  const [selectedListName, setSelectedListName] = useState<string>('');
+  const [selectedColumnName, setSelectedColumnName] = useState<string>('');
+  const [selectedColumnType, setSelectedColumnType] = useState<string>('');
+  const [selectedSampleName, setSelectedSampleName] = useState<string>('');
+  const [includeGenericSamples, setIncludeGenericSamples] = useState<boolean>(false);
+  // const [message, setMessage] = useState<string | undefined>(undefined);
+  // const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
+  const [successMessage, setSuccessMessage] = useState<string | undefined>(undefined);
 
-  private handleSiteChange = (siteUrl: string): void => {
-    this.setState({ selectedSiteUrl: siteUrl });
-  }
+  const handleSiteChange = (siteUrl: string): void => {
+    setSelectedSiteUrl(siteUrl);
+  };
 
-  private handleListChange = (listId: string, listName: string): void => {
-    this.setState({ selectedListId: listId, selectedListName: listName });
-  }
+  const handleListChange = (listId: string, listName: string): void => {
+    setSelectedListId(listId);
+    setSelectedListName(listName);
+  };
 
-  private handleColumnChange = (columnName: string, columnType: string): void => {
-    this.setState({ selectedColumnName: columnName, selectedColumnType: columnType });
-  }
+  const handleColumnChange = (columnName: string, columnType: string): void => {
+    setSelectedColumnName(columnName);
+    setSelectedColumnType(columnType);
+  };
 
-  private handleColumnTypeChange = (columnType: string): void => {
-    this.setState({ selectedColumnType: columnType });
-  }
+  const handleColumnTypeChange = (columnType: string): void => {
+    setSelectedColumnType(columnType);
+  };
 
-  private handleSampleSelect = (sampleName: string): void => {
-    this.setState({ selectedSampleName: sampleName });
-  }
+  const handleSampleSelect = (sampleName: string): void => {
+    setSelectedSampleName(sampleName);
+  };
 
-  private handleToggleChange = (event: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
-    this.setState({ includeGenericSamples: checked ?? true });
-  }
+  const handleToggleChange = (event: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
+    setIncludeGenericSamples(checked ?? true);
+  };
 
-  private resetInputs = (): void => {
-    this.setState({ selectedColumnName: '', selectedSampleName: '' });
-  }
+  const resetInputs = (): void => {
+    setSelectedColumnName('');
+    setSelectedSampleName('');
+  };
 
-  private handleApplySuccess = (message: string): void => {
-    this.setState({ successMessage: message });
+  const handleApplySuccess = (message: string): void => {
+    setSuccessMessage(message);
     setTimeout(() => {
-      this.setState({ successMessage: undefined });
+      setSuccessMessage(undefined);
     }, 3000); // Disappear after 3 seconds
-  }
+  };
 
-  public render(): React.ReactElement<IListformattingWebpartProps> {
-    const {
-      hasTeamsContext
-    } = this.props;
+  const { applyColumnFormatting } = useApplyColumnFormatting(
+    selectedListId,
+    selectedColumnName,
+    selectedSampleName,
+    selectedSiteUrl,
+    props.context,
+    selectedListName,
+    resetInputs
+  );
 
-    return (
-      <section className={`${styles.listformattingWebpart} ${hasTeamsContext ? styles.teams : ''}`}>
-        {this.state.successMessage && (
-          <MessageBar messageBarType={MessageBarType.success} onDismiss={() => this.setState({ successMessage: undefined })}>
-            {this.state.successMessage}
-          </MessageBar>
+  return (
+    <section className={`${styles.listformattingWebpart} ${props.hasTeamsContext ? styles.teams : ''}`}>
+      {successMessage && (
+        <MessageBar messageBarType={MessageBarType.success} onDismiss={() => setSuccessMessage(undefined)}>
+          {successMessage}
+        </MessageBar>
+      )}
+      <div>
+        <h2>{strings.Title}</h2>
+        <p>
+          {strings.Description}
+          <br />
+          {strings.PoweredBy} <a href="https://github.com/pnp/sp-dev-list-formatting" target="_blank" rel="noopener noreferrer">{strings.GitHubRepo}</a>
+        </p>
+        <SiteSelector context={props.context} onSiteChange={handleSiteChange} />
+        <ListSelector siteUrl={selectedSiteUrl} context={props.context} onListChange={handleListChange} />
+        <ColumnSelector siteUrl={selectedSiteUrl} context={props.context} listId={selectedListId} onColumnChange={handleColumnChange} />
+        <ColumnTypeDisplay siteUrl={selectedSiteUrl} context={props.context} listId={selectedListId} columnName={selectedColumnName} onColumnTypeChange={handleColumnTypeChange} />
+        <Toggle
+          label={strings.IncludeGenericSamples}
+          checked={includeGenericSamples}
+          onChange={handleToggleChange}
+        />
+        {selectedColumnName && (
+          <SampleGallery columnType={selectedColumnType} includeGenericSamples={includeGenericSamples} onSampleSelect={handleSampleSelect} />
         )}
-        <div>
-          <h2>{strings.Title}</h2>
-          <p>
-            {strings.Description}
-            <br />
-            {strings.PoweredBy} <a href="https://github.com/pnp/sp-dev-list-formatting" target="_blank" rel="noopener noreferrer">{strings.GitHubRepo}</a>
-          </p>
-          <SiteSelector context={this.props.context} onSiteChange={this.handleSiteChange} />
-          <ListSelector siteUrl={this.state.selectedSiteUrl} context={this.props.context} onListChange={this.handleListChange} />
-          <ColumnSelector siteUrl={this.state.selectedSiteUrl} context={this.props.context} listId={this.state.selectedListId} onColumnChange={this.handleColumnChange} />
-          <ColumnTypeDisplay siteUrl={this.state.selectedSiteUrl} context={this.props.context} listId={this.state.selectedListId} columnName={this.state.selectedColumnName} onColumnTypeChange={this.handleColumnTypeChange} />
-          <Toggle
-            label={strings.IncludeGenericSamples}
-            checked={this.state.includeGenericSamples}
-            onChange={this.handleToggleChange}
+        <div className={styles.applyButtonContainer}>
+          <ApplyButton
+            onApply={applyColumnFormatting}
+            selectedList={selectedListId}
+            selectedColumn={selectedColumnName}
+            selectedSample={selectedSampleName}
+            selectedSite={selectedSiteUrl}
+            context={props.context}
+            selectedListName={selectedListName}
+            resetInputs={resetInputs}
+            disabled={!selectedListId || !selectedColumnName || !selectedSampleName}
+            onSuccess={handleApplySuccess}
           />
-          {this.state.selectedColumnName && (
-            <SampleGallery columnType={this.state.selectedColumnType} includeGenericSamples={this.state.includeGenericSamples} onSampleSelect={this.handleSampleSelect} />
-          )}
-          <div className={styles.applyButtonContainer}>
-            <ApplyButton
-              onApply={() => console.log('Apply button clicked')}
-              selectedList={this.state.selectedListId}
-              selectedColumn={this.state.selectedColumnName}
-              selectedSample={this.state.selectedSampleName}
-              selectedSite={this.state.selectedSiteUrl}
-              context={this.props.context}
-              selectedListName={this.state.selectedListName}
-              resetInputs={this.resetInputs}
-              disabled={false}
-              onSuccess={this.handleApplySuccess}
-            />
-          </div>
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
+
+export default ListformattingWebpart;
