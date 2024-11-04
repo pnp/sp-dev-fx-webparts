@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { MessageBar, DefaultButton } from '@fluentui/react';
+import { MessageBar, DefaultButton, TextField } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import useFetchColumnFormattingSamples from './useFetchColumnFormattingSamples';
 
@@ -12,6 +12,7 @@ interface SampleGalleryProps {
 
 const SampleGallery: React.FC<SampleGalleryProps> = ({ columnType, includeGenericSamples, onSampleSelect }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
   const pageSize = 10; // Number of samples per page
   const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, currentPage, pageSize);
   const [selectedSample, setSelectedSample] = useState<string | null>(null);
@@ -35,12 +36,27 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({ columnType, includeGeneri
     }
   };
 
+  const handleSearchChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+    setSearchQuery(newValue || '');
+  };
+
+  const filteredSamples = samples.filter(sample => 
+    sample.text.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    sample.author.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={styles.sampleGallery}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
       <h3>Select a sample</h3>
+      <TextField
+        placeholder="Search by sample name or author"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className={styles.searchField}
+      />
       <div className={styles.galleryGrid}>
-        {samples.map(sample => {
+        {filteredSamples.map(sample => {
           const imageUrl = sample.url;
           return (
             <div
