@@ -23,7 +23,11 @@ const useApplyColumnFormatting = (
   const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
 
   const applyColumnFormatting = async (): Promise<void> => {
+    console.log('applyColumnFormatting called'); // Log function entry
+    console.log('Parameters:', { selectedList, selectedColumn, selectedSample, selectedSite, context, selectedListName }); // Log parameters
+
     if (!selectedList || !selectedColumn || !selectedSample) {
+      console.log('Missing required parameters'); // Log missing parameters
       setMessage(strings.SelectListColumn);
       setMessageType(MessageBarType.error);
       return;
@@ -37,6 +41,7 @@ const useApplyColumnFormatting = (
       const formattedSampleName = selectedSample.replace('pnp-list-formatting-', '');
 
       // Fetch the list of files in the root of the sample folder
+      console.log(`Fetching files from: https://api.github.com/repos/pnp/List-Formatting/contents/column-samples/${formattedSampleName}`);
       const filesResponse = await fetch(`https://api.github.com/repos/pnp/List-Formatting/contents/column-samples/${formattedSampleName}`);
       const filesData = await filesResponse.json();
       console.log('Fetched files:', filesData);
@@ -48,11 +53,14 @@ const useApplyColumnFormatting = (
       }
 
       // Fetch the JSON format from the selected sample
+      console.log(`Fetching JSON format from: ${jsonFile.download_url}`);
       const sampleResponse = await fetch(jsonFile.download_url);
       const sampleData = await sampleResponse.json();
       const jsonResult = JSON.stringify(sampleData);
+      console.log('Fetched JSON format:', jsonResult);
 
       // Fetch the FormDigestValue using the SharePoint REST API
+      console.log(`Fetching FormDigestValue from: ${fullSiteUrl}/_api/contextinfo`);
       const response = await fetch(`${fullSiteUrl}/_api/contextinfo`, {
         method: 'POST',
         headers: {
@@ -60,24 +68,36 @@ const useApplyColumnFormatting = (
           'Content-Type': 'application/json;odata=verbose'
         }
       });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch context info: ${response.statusText}`);
+      }
+
       const data = await response.json();
       const formDigestValue = data.d.GetContextWebInformation.FormDigestValue;
+      console.log('FormDigestValue:', formDigestValue); // Log the FormDigestValue
 
-      await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
+      console.log('Updating field with CustomFormatter');
+      const updateResponse = await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
         CustomFormatter: jsonResult
       }, `${formDigestValue}`);
+      console.log('API response:', updateResponse); // Log the API response
 
       setMessage(strings.ColumnFormattingApplied);
       setMessageType(MessageBarType.success);
 
       const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
+      console.log('Opening new tab with URL:', listUrl); // Log the URL being opened
       window.open(listUrl, '_blank');
 
       resetInputs();
     } catch (error) {
+      console.error('Error applying column formatting:', error);
       setMessage(strings.ErrorApplyingFormatting.replace('{0}', error.message));
       setMessageType(MessageBarType.error);
     }
+
+    console.log('applyColumnFormatting completed'); // Log function exit
   };
 
   return { applyColumnFormatting, message, messageType };

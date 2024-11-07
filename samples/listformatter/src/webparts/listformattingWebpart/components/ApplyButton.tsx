@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react';
-import styles from './ListformattingWebpart.module.scss';
 import * as strings from 'ListformattingWebpartWebPartStrings';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import useApplyColumnFormatting from './useApplyColumnFormatting';
 
 interface ApplyButtonProps {
-  onApply: () => Promise<void>;
   selectedList: string;
   selectedColumn: string;
   selectedSample: string;
@@ -15,10 +14,10 @@ interface ApplyButtonProps {
   resetInputs: () => void;
   disabled: boolean;
   onSuccess: (message: string) => void;
+  className?: string; // Add className prop
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({
-  onApply,
   selectedList,
   selectedColumn,
   selectedSample,
@@ -27,17 +26,31 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({
   selectedListName,
   resetInputs,
   disabled,
-  onSuccess
+  onSuccess,
+  className // Add className prop
 }) => {
+  const { applyColumnFormatting } = useApplyColumnFormatting(
+    selectedList,
+    selectedColumn,
+    selectedSample,
+    selectedSite,
+    context,
+    selectedListName,
+    resetInputs
+  );
+
   const handleApplyClick = async (): Promise<void> => {
-    await onApply();
-    onSuccess(strings.ColumnFormattingApplied);
+    console.log('Apply button in ApplyButton component clicked'); // Log when the apply button is clicked
+    try {
+      await applyColumnFormatting();
+      onSuccess(strings.ColumnFormattingApplied);
+    } catch (error) {
+      console.error('Error in ApplyButton handleApplyClick:', error);
+    }
   };
 
   return (
-    <div className={styles.applyButtonContainer}>
-      <PrimaryButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} />
-    </div>
+    <PrimaryButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} className={className} />
   );
 };
 

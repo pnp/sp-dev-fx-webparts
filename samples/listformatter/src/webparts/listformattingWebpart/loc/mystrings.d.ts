@@ -27,6 +27,7 @@ declare interface IListformattingWebpartWebPartStrings {
   Description: string;
   PoweredBy: string;
   GitHubRepo: string;
+  OpenInGitHub: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppLocalEnvironmentOffice: string;

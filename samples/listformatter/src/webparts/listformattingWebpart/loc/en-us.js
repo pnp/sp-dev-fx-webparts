@@ -37,6 +37,7 @@ define([], function() {
     "SelectListColumn": "Please select a list and column.",
     "Description": "Allows you to first select a column in a SharePoint List on a Site and then directly apply a format to it.",
     "PoweredBy": "Powered by the Microsoft 365 PnP List Formatting repo on GitHub, made with 💖 by Luise Freese.",
-    "GitHubRepo": "github.com/pnp/sp-dev-list-formatting"
+    "GitHubRepo": "github.com/pnp/sp-dev-list-formatting",
+    "OpenInGitHub": "Open in GitHub",
   }
 });

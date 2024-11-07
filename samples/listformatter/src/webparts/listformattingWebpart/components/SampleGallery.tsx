@@ -3,23 +3,70 @@ import { useState } from 'react';
 import { MessageBar, DefaultButton, TextField } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import useFetchColumnFormattingSamples from './useFetchColumnFormattingSamples';
+import SampleModal from './SampleModal';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface SampleGalleryProps {
   columnType: string;
   includeGenericSamples: boolean;
-  onSampleSelect: (sampleName: string) => void;
+  onSampleSelect: (sampleName: string) => Promise<void>;
+  selectedList: string;
+  selectedColumn: string;
+  selectedSample: string;
+  selectedSite: string;
+  context: WebPartContext;
+  selectedListName: string;
+  resetInputs: () => void;
+  disabled: boolean;
+  onSuccess: (message: string) => void;
 }
 
-const SampleGallery: React.FC<SampleGalleryProps> = ({ columnType, includeGenericSamples, onSampleSelect }) => {
+interface SampleDetails {
+  key: string;
+  text: string;
+  url: string; // This should be the sample URL, not the image URL
+  shortDescription: string;
+  author: string;
+  authorPictureUrl: string;
+  imageUrl: string; // Add a new property for the image URL
+}
+
+const SampleGallery: React.FC<SampleGalleryProps> = ({
+  columnType,
+  includeGenericSamples,
+  onSampleSelect,
+  selectedList,
+  selectedColumn,
+  selectedSample,
+  selectedSite,
+  context,
+  selectedListName,
+  resetInputs,
+  disabled,
+  onSuccess
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSampleDetails, setSelectedSampleDetails] = useState<SampleDetails | null>(null);
   const pageSize = 10; // Number of samples per page
   const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, currentPage, pageSize);
-  const [selectedSample, setSelectedSample] = useState<string | null>(null);
 
   const handleSampleClick = (sampleName: string): void => {
-    setSelectedSample(sampleName);
-    onSampleSelect(sampleName);
+    const sample = samples.find(s => s.key === sampleName);
+    if (sample) {
+      console.log(`Sample selected: ${sampleName}`); // Log the sample name that is selected
+      setSelectedSampleDetails({
+        key: sample.key.toString(), // Convert the key to a string
+        text: sample.text,
+        url: sample.url, // Use the correct URL from the sample JSON
+        shortDescription: sample.shortDescription,
+        author: sample.author,
+        authorPictureUrl: sample.authorPictureUrl,
+        imageUrl: sample.url // Use the image URL
+      });
+      setIsModalOpen(true);
+    }
   };
 
   const handleNextPage = (): void => {
@@ -38,6 +85,10 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({ columnType, includeGeneri
 
   const handleSearchChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     setSearchQuery(newValue || '');
+  };
+
+  const handleCloseModal = (): void => {
+    setIsModalOpen(false);
   };
 
   const filteredSamples = samples.filter(sample => 
@@ -86,6 +137,23 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({ columnType, includeGeneri
           iconProps={{ iconName: 'ChevronRight' }}
         />
       </div>
+
+      {selectedSampleDetails && (
+        <SampleModal
+          isOpen={isModalOpen}
+          onDismiss={handleCloseModal}
+          sample={selectedSampleDetails}
+          selectedList={selectedList}
+          selectedColumn={selectedColumn}
+          selectedSample={selectedSample}
+          selectedSite={selectedSite}
+          context={context}
+          selectedListName={selectedListName}
+          resetInputs={resetInputs}
+          disabled={disabled}
+          onSuccess={onSuccess}
+        />
+      )}
     </div>
   );
 };

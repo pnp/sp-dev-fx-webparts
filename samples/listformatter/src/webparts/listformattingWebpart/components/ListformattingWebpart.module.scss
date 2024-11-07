@@ -117,3 +117,73 @@
 .searchField {
   margin-bottom: 10px;
 }
+
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  width: 800px; // Set a fixed width for the modal
+  height: 420px; // Reduce the height by about 30%
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.rightContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalImage {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+/* Add styles for the buttons */
+.buttonContainer {
+  display: flex;
+  gap: 10px; /* Add some space between the buttons */
+  align-items: center; /* Align buttons vertically */
+}
+
+.buttonContainer .button {
+  height: 40px; /* Ensure both buttons have the same height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -6,5 +6,5 @@ export interface IListformattingWebpartProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  context: WebPartContext; // Add this line
+  context: WebPartContext;
 }

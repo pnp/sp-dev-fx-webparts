@@ -10,7 +10,6 @@ export interface IListformattingWebpartWebPartProps {
 }
 
 export default class ListformattingWebpartWebPart extends BaseClientSideWebPart<IListformattingWebpartWebPartProps> {
-
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
@@ -23,15 +22,11 @@ export default class ListformattingWebpartWebPart extends BaseClientSideWebPart<
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        context: this.context // Ensure context is passed correctly
+        context: this.context
       }
     );
 
     ReactDom.render(element, this.domElement);
-  }
-
-  protected onDispose(): void {
-    ReactDom.unmountComponentAtNode(this.domElement);
   }
 
   protected onInit(): Promise<void> {
@@ -46,5 +41,9 @@ export default class ListformattingWebpartWebPart extends BaseClientSideWebPart<
     }
 
     return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+  }
+
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
   }
 }

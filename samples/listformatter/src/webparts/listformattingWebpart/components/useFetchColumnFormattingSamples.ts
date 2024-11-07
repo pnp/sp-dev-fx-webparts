@@ -18,6 +18,7 @@ interface Sample {
   name: string;
   title: string;
   url: string;
+  shortDescription: string; // Add the short description property
   metadata: Metadata[];
   thumbnails: Thumbnail[];
   author: string; // Add the author property
@@ -28,6 +29,7 @@ interface ExtendedDropdownOption extends IDropdownOption {
   url: string;
   author: string; // Add the author property
   authorPictureUrl: string; // Add the author picture URL property
+  shortDescription: string; // Add the short description property
 }
 
 interface UseFetchColumnFormattingSamplesResult {
@@ -60,6 +62,7 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
 
       // Validate and extract required fields
       const title = sampleData[0]?.title;
+      const shortDescription = sampleData[0]?.shortDescription; // Extract the short description
       const metadata = sampleData[0]?.metadata;
       const thumbnails = sampleData[0]?.thumbnails;
       const author = sampleData[0]?.authors?.[0]?.name || 'Unknown'; // Extract the author's name
@@ -73,7 +76,7 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
 
       // Extract the first thumbnail URL
       const imageUrl = thumbnails[0]?.url;
-      return { name: sampleData[0].name, title, url: imageUrl, metadata, thumbnails, author, authorPictureUrl };
+      return { name: sampleData[0].name, title, url: imageUrl, shortDescription, metadata, thumbnails, author, authorPictureUrl };
     } else {
       console.warn(`No metadata content found for ${path}`);
     }
@@ -91,7 +94,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const token = "your token here"; // Replace with your actual token
+      const token = ""; // Replace with your actual token
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);
@@ -142,7 +145,8 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
           text: sample.title,
           url: sample.thumbnails[0]?.url || '', // Use the first thumbnail URL
           author: sample.author, // Include the author
-          authorPictureUrl: sample.authorPictureUrl // Include the author picture URL
+          authorPictureUrl: sample.authorPictureUrl, // Include the author picture URL
+          shortDescription: sample.shortDescription // Include the short description
         }));
 
         setSamples(sampleOptions);

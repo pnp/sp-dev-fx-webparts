@@ -2,15 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Toggle, MessageBar, MessageBarType } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
-import type { IListformattingWebpartProps } from './IListformattingWebpartProps';
 import SiteSelector from './SiteSelector';
 import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import ColumnTypeDisplay from './ColumnTypeDisplay';
 import SampleGallery from './SampleGallery';
-import ApplyButton from './ApplyButton';
-import useApplyColumnFormatting from './useApplyColumnFormatting';
 import * as strings from 'ListformattingWebpartWebPartStrings';
+import { IListformattingWebpartProps } from './IListformattingWebpartProps';
 
 const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => {
   const [selectedSiteUrl, setSelectedSiteUrl] = useState<string>('');
@@ -20,8 +18,6 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
   const [selectedColumnType, setSelectedColumnType] = useState<string>('');
   const [selectedSampleName, setSelectedSampleName] = useState<string>('');
   const [includeGenericSamples, setIncludeGenericSamples] = useState<boolean>(false);
-  // const [message, setMessage] = useState<string | undefined>(undefined);
-  // const [messageType, setMessageType] = useState<MessageBarType>(MessageBarType.info);
   const [successMessage, setSuccessMessage] = useState<string | undefined>(undefined);
 
   const handleSiteChange = (siteUrl: string): void => {
@@ -42,7 +38,7 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
     setSelectedColumnType(columnType);
   };
 
-  const handleSampleSelect = (sampleName: string): void => {
+  const handleSampleSelect = async (sampleName: string): Promise<void> => {
     setSelectedSampleName(sampleName);
   };
 
@@ -61,16 +57,6 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
       setSuccessMessage(undefined);
     }, 3000); // Disappear after 3 seconds
   };
-
-  const { applyColumnFormatting } = useApplyColumnFormatting(
-    selectedListId,
-    selectedColumnName,
-    selectedSampleName,
-    selectedSiteUrl,
-    props.context,
-    selectedListName,
-    resetInputs
-  );
 
   return (
     <section className={`${styles.listformattingWebpart} ${props.hasTeamsContext ? styles.teams : ''}`}>
@@ -96,11 +82,10 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
           onChange={handleToggleChange}
         />
         {selectedColumnName && (
-          <SampleGallery columnType={selectedColumnType} includeGenericSamples={includeGenericSamples} onSampleSelect={handleSampleSelect} />
-        )}
-        <div className={styles.applyButtonContainer}>
-          <ApplyButton
-            onApply={applyColumnFormatting}
+          <SampleGallery
+            columnType={selectedColumnType}
+            includeGenericSamples={includeGenericSamples}
+            onSampleSelect={handleSampleSelect}
             selectedList={selectedListId}
             selectedColumn={selectedColumnName}
             selectedSample={selectedSampleName}
@@ -111,7 +96,7 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
             disabled={!selectedListId || !selectedColumnName || !selectedSampleName}
             onSuccess={handleApplySuccess}
           />
-        </div>
+        )}
       </div>
     </section>
   );
