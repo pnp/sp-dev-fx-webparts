@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MessageBar, DefaultButton, TextField } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import useFetchColumnFormattingSamples from './useFetchColumnFormattingSamples';
 import SampleModal from './SampleModal';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import usePagination from './usePagination';
+import useModal from './useModal';
+import useSampleSelection from './useSampleSelection';
 
 interface SampleGalleryProps {
   columnType: string;
@@ -21,17 +24,6 @@ interface SampleGalleryProps {
   onSuccess: (message: string) => void;
 }
 
-interface SampleDetails {
-  key: string;
-  text: string;
-  path: string;
-  url: string;
-  shortDescription: string;
-  author: string;
-  authorPictureUrl: string;
-  imageUrl: string;
-}
-
 const SampleGallery: React.FC<SampleGalleryProps> = ({
   columnType,
   includeGenericSamples,
@@ -46,24 +38,20 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   disabled,
   onSuccess
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSampleDetails, setSelectedSampleDetails] = useState<SampleDetails | null>(null);
-  const pageSize = 10; // Number of samples per page
   const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, searchQuery);
+  const { currentPage, handleNextPage, handlePreviousPage, resetPage } = usePagination(totalSamples, 10);
+  const { isModalOpen, openModal, closeModal } = useModal();
+  const { selectedSampleDetails, selectSample } = useSampleSelection();
 
   useEffect(() => {
-    console.log('Samples fetched:', samples);
-    console.log('Total samples:', totalSamples);
-    setCurrentPage(1); // Reset to page 1 when samples change
+    resetPage(); // Reset to page 1 when samples change
   }, [samples]);
 
   const handleSampleClick = (sampleName: string): void => {
     const sample = samples.find(s => s.key === sampleName);
     if (sample) {
-      console.log(`Sample selected: ${sampleName}`);
-      setSelectedSampleDetails({
+      selectSample({
         key: sample.key.toString(),
         text: sample.text,
         path: sample.path,
@@ -73,38 +61,16 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
         authorPictureUrl: sample.authorPictureUrl,
         imageUrl: sample.url
       });
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleNextPage = (): void => {
-    if (currentPage < Math.ceil(totalSamples / pageSize)) {
-      setCurrentPage(currentPage + 1);
-      console.log(`Navigated to page ${currentPage + 1}`);
-    }
-  };
-
-  const handlePreviousPage = (): void => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-      console.log(`Navigated to page ${currentPage - 1}`);
+      openModal();
     }
   };
 
   const handleSearchChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     setSearchQuery(newValue || '');
-    setCurrentPage(1);
+    resetPage();
   };
 
-  const handleCloseModal = (): void => {
-    setIsModalOpen(false);
-  };
-
-  const paginatedSamples = samples.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
-  useEffect(() => {
-    console.log('Current page:', currentPage);
-  }, [currentPage]);
+  const paginatedSamples = samples.slice((currentPage - 1) * 10, currentPage * 10);
 
   return (
     <div className={styles.sampleGallery}>
@@ -141,10 +107,10 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
           disabled={currentPage === 1}
           iconProps={{ iconName: 'ChevronLeft' }}
         />
-        <span>{`Page ${currentPage} of ${Math.ceil(totalSamples / pageSize)}`}</span>
+        <span>{`Page ${currentPage} of ${Math.ceil(totalSamples / 10)}`}</span>
         <DefaultButton
           onClick={handleNextPage}
-          disabled={currentPage * pageSize >= totalSamples}
+          disabled={currentPage * 10 >= totalSamples}
           iconProps={{ iconName: 'ChevronRight' }}
         />
       </div>
@@ -152,7 +118,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
       {selectedSampleDetails && (
         <SampleModal
           isOpen={isModalOpen}
-          onDismiss={handleCloseModal}
+          onDismiss={closeModal}
           sample={selectedSampleDetails}
           selectedList={selectedList}
           selectedColumn={selectedColumn}
