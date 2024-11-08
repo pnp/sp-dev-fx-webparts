@@ -17,16 +17,18 @@ interface Thumbnail {
 interface Sample {
   name: string;
   title: string;
-  url: string;
+  path: string; // Add the path property
   shortDescription: string; // Add the short description property
   metadata: Metadata[];
   thumbnails: Thumbnail[];
   author: string; // Add the author property
   authorPictureUrl: string; // Add the author picture URL property
+  imageUrl: string; // Add the image URL property
 }
 
 interface ExtendedDropdownOption extends IDropdownOption {
-  url: string;
+  path: string; // Add the path property
+  url: string; // Add the url property
   author: string; // Add the author property
   authorPictureUrl: string; // Add the author picture URL property
   shortDescription: string; // Add the short description property
@@ -76,7 +78,7 @@ const fetchSampleData = async (path: string, headers: Headers): Promise<Sample |
 
       // Extract the first thumbnail URL
       const imageUrl = thumbnails[0]?.url;
-      return { name: sampleData[0].name, title, url: imageUrl, shortDescription, metadata, thumbnails, author, authorPictureUrl };
+      return { name: sampleData[0].name, title, path, shortDescription, metadata, thumbnails, author, authorPictureUrl, imageUrl };
     } else {
       console.warn(`No metadata content found for ${path}`);
     }
@@ -94,7 +96,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const token = ""; // Replace with your actual token
+      const token = "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"; // Replace with your actual token
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);
@@ -143,7 +145,8 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
         const sampleOptions: ExtendedDropdownOption[] = paginatedSamples.map(sample => ({
           key: sample.name,
           text: sample.title,
-          url: sample.thumbnails[0]?.url || '', // Use the first thumbnail URL
+          path: sample.path, // Use the correct path from the sample JSON
+          url: sample.imageUrl, // Include the URL
           author: sample.author, // Include the author
           authorPictureUrl: sample.authorPictureUrl, // Include the author picture URL
           shortDescription: sample.shortDescription // Include the short description

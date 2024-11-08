@@ -24,7 +24,8 @@ interface SampleGalleryProps {
 interface SampleDetails {
   key: string;
   text: string;
-  url: string; // This should be the sample URL, not the image URL
+  path: string; // Add the path property
+  url: string; // Add the url property
   shortDescription: string;
   author: string;
   authorPictureUrl: string;
@@ -59,6 +60,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
       setSelectedSampleDetails({
         key: sample.key.toString(), // Convert the key to a string
         text: sample.text,
+        path: sample.path, // Use the correct path from the sample JSON
         url: sample.url, // Use the correct URL from the sample JSON
         shortDescription: sample.shortDescription,
         author: sample.author,

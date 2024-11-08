@@ -7,6 +7,7 @@ import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import ColumnTypeDisplay from './ColumnTypeDisplay';
 import SampleGallery from './SampleGallery';
+
 import * as strings from 'ListformattingWebpartWebPartStrings';
 import { IListformattingWebpartProps } from './IListformattingWebpartProps';
 

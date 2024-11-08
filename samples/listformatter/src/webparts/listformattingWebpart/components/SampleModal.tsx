@@ -10,7 +10,7 @@ interface SampleModalProps {
   sample: {
     key: string;
     text: string;
-    url: string; // This should be the sample URL, not the image URL
+    path: string; // Use the path property
     shortDescription: string;
     author: string;
     authorPictureUrl: string;
@@ -43,6 +43,8 @@ const SampleModal: React.FC<SampleModalProps> = ({
   disabled,
   onSuccess
 }) => {
+  const githubUrl = `https://github.com/pnp/List-Formatting/tree/master/${sample.path}`;
+
   return (
     <Modal
       isOpen={isOpen}
@@ -69,7 +71,7 @@ const SampleModal: React.FC<SampleModalProps> = ({
           <div className={styles.buttonContainer}>
             <DefaultButton
               text="Open in GitHub"
-              href={sample.url}
+              href={githubUrl} // Use the constructed GitHub URL
               target="_blank"
               rel="noopener noreferrer"
               className={styles.button} // Apply the button class
