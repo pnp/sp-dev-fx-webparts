@@ -171,6 +171,26 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
     fetchData().catch(error => console.error('Error in fetchData:', error));
   }, [columnType, includeGenericSamples]);
 
+  useEffect(() => {
+    if (searchQuery) {
+      const filteredSamples = samples.filter(sample =>
+        sample.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        sample.author.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSamples(filteredSamples);
+      setTotalSamples(filteredSamples.length);
+    } else {
+      // Reset to all samples if search query is empty
+      const cacheKey = `samples_${columnType}_${includeGenericSamples}`;
+      const cachedSamples = localStorage.getItem(cacheKey);
+      if (cachedSamples) {
+        const parsedSamples = JSON.parse(cachedSamples);
+        setSamples(parsedSamples);
+        setTotalSamples(parsedSamples.length);
+      }
+    }
+  }, [searchQuery, columnType, includeGenericSamples]);
+
   return { samples, message, messageType, totalSamples };
 };
 

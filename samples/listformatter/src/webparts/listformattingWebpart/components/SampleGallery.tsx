@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageBar, DefaultButton, TextField } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import useFetchColumnFormattingSamples from './useFetchColumnFormattingSamples';
@@ -52,7 +52,12 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   const [selectedSampleDetails, setSelectedSampleDetails] = useState<SampleDetails | null>(null);
   const pageSize = 10; // Number of samples per page
   const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, searchQuery);
-  const observer = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    console.log('Samples fetched:', samples);
+    console.log('Total samples:', totalSamples);
+    setCurrentPage(1); // Reset to page 1 when samples change
+  }, [samples]);
 
   const handleSampleClick = (sampleName: string): void => {
     const sample = samples.find(s => s.key === sampleName);
@@ -73,7 +78,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   };
 
   const handleNextPage = (): void => {
-    if (currentPage < totalSamples / pageSize) {
+    if (currentPage < Math.ceil(totalSamples / pageSize)) {
       setCurrentPage(currentPage + 1);
       console.log(`Navigated to page ${currentPage + 1}`);
     }
@@ -97,25 +102,9 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
 
   const paginatedSamples = samples.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-  const lastSampleElementRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
-    if (observer.current) observer.current.disconnect();
-
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && currentPage * pageSize < totalSamples) {
-        setCurrentPage(prevPage => prevPage + 1);
-      }
-    });
-
-    if (lastSampleElementRef.current) {
-      observer.current.observe(lastSampleElementRef.current);
-    }
-
-    return () => {
-      if (observer.current) observer.current.disconnect();
-    };
-  }, [currentPage, pageSize, totalSamples]);
+    console.log('Current page:', currentPage);
+  }, [currentPage]);
 
   return (
     <div className={styles.sampleGallery}>
@@ -128,40 +117,22 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
         className={styles.searchField}
       />
       <div className={styles.galleryGrid}>
-        {paginatedSamples.map((sample, index) => {
+        {paginatedSamples.map((sample) => {
           const imageUrl = sample.url;
-          if (paginatedSamples.length === index + 1) {
-            return (
-              <div
-                key={sample.key}
-                ref={lastSampleElementRef}
-                className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
-                onClick={() => handleSampleClick(sample.key as string)}
-              >
-                {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
-                <div className={styles.sampleTitle}>{sample.text}</div>
-                <div className={styles.sampleAuthor}>
-                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} />
-                  {sample.author}
-                </div>
+          return (
+            <div
+              key={sample.key}
+              className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
+              onClick={() => handleSampleClick(sample.key as string)}
+            >
+              {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
+              <div className={styles.sampleTitle}>{sample.text}</div>
+              <div className={styles.sampleAuthor}>
+                <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} />
+                {sample.author}
               </div>
-            );
-          } else {
-            return (
-              <div
-                key={sample.key}
-                className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
-                onClick={() => handleSampleClick(sample.key as string)}
-              >
-                {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
-                <div className={styles.sampleTitle}>{sample.text}</div>
-                <div className={styles.sampleAuthor}>
-                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} />
-                  {sample.author}
-                </div>
-              </div>
-            );
-          }
+            </div>
+          );
         })}
       </div>
       <div className={styles.paginationControls}>
