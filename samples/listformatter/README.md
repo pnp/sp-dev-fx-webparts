@@ -5,6 +5,7 @@
  SharePoint Framework (SPFx) web part designed to help users format SharePoint Lists using predefined samples. It leverages React for the UI, PnPjs for SharePoint data operations, and Octokit for GitHub API interactions.
 
 ```mermaid
+```mermaid
 graph TD
     A[ListformattingWebpart]
     A --> B[SiteSelector]
@@ -21,7 +22,10 @@ graph TD
     D --> L[useFetchFields]
     E --> M[useFetchColumnTypes]
     F --> N[useFetchColumnFormattingSamples]
-    H --> O[useApplyColumnFormatting]
+    F --> O[usePagination]
+    F --> P[useModal]
+    F --> Q[useSampleSelection]
+    H --> R[useApplyColumnFormatting]
 ```
 
 ## Features
