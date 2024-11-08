@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MessageBar, DefaultButton, TextField } from '@fluentui/react';
 import styles from './ListformattingWebpart.module.scss';
 import useFetchColumnFormattingSamples from './useFetchColumnFormattingSamples';
@@ -52,6 +52,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   const [selectedSampleDetails, setSelectedSampleDetails] = useState<SampleDetails | null>(null);
   const pageSize = 10; // Number of samples per page
   const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, currentPage, pageSize);
+  const observer = useRef<IntersectionObserver | null>(null);
 
   const handleSampleClick = (sampleName: string): void => {
     const sample = samples.find(s => s.key === sampleName);
@@ -98,6 +99,26 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
     sample.author.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const lastSampleElementRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && currentPage * pageSize < totalSamples) {
+        setCurrentPage(prevPage => prevPage + 1);
+      }
+    });
+
+    if (lastSampleElementRef.current) {
+      observer.current.observe(lastSampleElementRef.current);
+    }
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [currentPage, pageSize, totalSamples]);
+
   return (
     <div className={styles.sampleGallery}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
@@ -109,22 +130,40 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
         className={styles.searchField}
       />
       <div className={styles.galleryGrid}>
-        {filteredSamples.map(sample => {
+        {filteredSamples.map((sample, index) => {
           const imageUrl = sample.url;
-          return (
-            <div
-              key={sample.key}
-              className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
-              onClick={() => handleSampleClick(sample.key as string)}
-            >
-              {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
-              <div className={styles.sampleTitle}>{sample.text}</div>
-              <div className={styles.sampleAuthor}>
-                <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} /> {/* Display the author's picture */}
-                {sample.author}
+          if (filteredSamples.length === index + 1) {
+            return (
+              <div
+                key={sample.key}
+                ref={lastSampleElementRef}
+                className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
+                onClick={() => handleSampleClick(sample.key as string)}
+              >
+                {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
+                <div className={styles.sampleTitle}>{sample.text}</div>
+                <div className={styles.sampleAuthor}>
+                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} /> {/* Display the author's picture */}
+                  {sample.author}
+                </div>
               </div>
-            </div>
-          );
+            );
+          } else {
+            return (
+              <div
+                key={sample.key}
+                className={`${styles.galleryItem} ${selectedSample === sample.key ? styles.selected : ''}`}
+                onClick={() => handleSampleClick(sample.key as string)}
+              >
+                {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
+                <div className={styles.sampleTitle}>{sample.text}</div>
+                <div className={styles.sampleAuthor}>
+                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} /> {/* Display the author's picture */}
+                  {sample.author}
+                </div>
+              </div>
+            );
+          }
         })}
       </div>
       <div className={styles.paginationControls}>

@@ -55,7 +55,7 @@ const columnTypeMapping: { [key: string]: string } = {
 const fetchSampleData = async (path: string, headers: Headers): Promise<Sample | undefined> => {
   try {
     console.log(`Fetching sample data for path: ${path}`);
-    const metadataResponse = await fetch(`http://localhost:3000/github/repos/pnp/List-Formatting/contents/${path}/assets/sample.json`, { headers });
+    const metadataResponse = await fetch(`https://api.github.com/repos/pnp/List-Formatting/contents/${path}/assets/sample.json`, { headers });
     const metadataData = await metadataResponse.json();
 
     if (metadataData && metadataData.content) {
@@ -96,7 +96,15 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const token = "your token goes here"; // Add your GitHub token here
+      const cacheKey = `samples_${columnType}_${includeGenericSamples}_${currentPage}_${pageSize}`;
+      const cachedSamples = localStorage.getItem(cacheKey);
+
+      if (cachedSamples) {
+        setSamples(JSON.parse(cachedSamples));
+        return;
+      }
+
+      const token = "your token here"; // Add your GitHub token here
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);
@@ -104,7 +112,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
       try {
         console.log("Fetching all samples from GitHub...");
-        const response = await fetch('http://localhost:3000/github/repos/pnp/List-Formatting/contents/column-samples', { headers });
+        const response = await fetch('https://api.github.com/repos/pnp/List-Formatting/contents/column-samples', { headers });
         
         if (response.status === 401) {
           throw new Error('Unauthorized: Invalid or expired token');
@@ -153,6 +161,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
         }));
 
         setSamples(sampleOptions);
+        localStorage.setItem(cacheKey, JSON.stringify(sampleOptions));
         setMessage(undefined);
       } catch (error) {
         console.error('Error fetching samples:', error);
