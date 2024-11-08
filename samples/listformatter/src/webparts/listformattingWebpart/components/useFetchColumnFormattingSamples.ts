@@ -96,7 +96,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const token = "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"; // Replace with your actual token
+      const token = "your token goes here"; // Add your GitHub token here
       const headers = new Headers();
       if (token) {
         headers.append('Authorization', `token ${token}`);
