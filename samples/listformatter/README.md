@@ -1,10 +1,36 @@
-# listformatter
+# react-listformatter
 
 ## Summary
 
-Short summary on functionality and used technologies.
+ SharePoint Framework (SPFx) web part designed to help users format SharePoint Lists using predefined samples. It leverages React for the UI, PnPjs for SharePoint data operations, and Octokit for GitHub API interactions.
 
-[picture of the solution in action, if possible]
+```mermaid
+graph TD
+    A[ListformattingWebpart]
+    A --> B[SiteSelector]
+    A --> C[ListSelector]
+    A --> D[ColumnSelector]
+    A --> E[ColumnTypeDisplay]
+    A --> F[SampleGallery]
+    F --> G[SampleModal]
+    G --> H[ApplyButton]
+    G --> I[SamplePreview]
+
+    B --> J[useFetchSites]
+    C --> K[useFetchLists]
+    D --> L[useFetchFields]
+    E --> M[useFetchColumnTypes]
+    F --> N[useFetchColumnFormattingSamples]
+    H --> O[useApplyColumnFormatting]
+```
+
+## Features
+
+- Select a SharePoint site, list, and column
+- Display the type of the selected column
+- Browse and search formatting samples
+- Display a preview of the samples, including the author and their profile picture
+- Apply the column format directly to the selected column or open the sample in GitHub
 
 ## Used SharePoint Framework Version
 
@@ -13,7 +39,7 @@ Short summary on functionality and used technologies.
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
@@ -25,14 +51,13 @@ Short summary on functionality and used technologies.
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| react-formatter | [Luise Freese](https://linkedin.com/in/luisefreese) |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | November 8, 2024 | Initial release |
 
 ## Disclaimer
 
