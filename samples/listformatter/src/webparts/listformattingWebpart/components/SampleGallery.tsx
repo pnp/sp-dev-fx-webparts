@@ -24,12 +24,12 @@ interface SampleGalleryProps {
 interface SampleDetails {
   key: string;
   text: string;
-  path: string; // Add the path property
-  url: string; // Add the url property
+  path: string;
+  url: string;
   shortDescription: string;
   author: string;
   authorPictureUrl: string;
-  imageUrl: string; // Add a new property for the image URL
+  imageUrl: string;
 }
 
 const SampleGallery: React.FC<SampleGalleryProps> = ({
@@ -51,29 +51,29 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSampleDetails, setSelectedSampleDetails] = useState<SampleDetails | null>(null);
   const pageSize = 10; // Number of samples per page
-  const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, currentPage, pageSize);
+  const { samples, message, messageType, totalSamples } = useFetchColumnFormattingSamples(columnType, includeGenericSamples, searchQuery);
   const observer = useRef<IntersectionObserver | null>(null);
 
   const handleSampleClick = (sampleName: string): void => {
     const sample = samples.find(s => s.key === sampleName);
     if (sample) {
-      console.log(`Sample selected: ${sampleName}`); // Log the sample name that is selected
+      console.log(`Sample selected: ${sampleName}`);
       setSelectedSampleDetails({
-        key: sample.key.toString(), // Convert the key to a string
+        key: sample.key.toString(),
         text: sample.text,
-        path: sample.path, // Use the correct path from the sample JSON
-        url: sample.url, // Use the correct URL from the sample JSON
+        path: sample.path,
+        url: sample.url,
         shortDescription: sample.shortDescription,
         author: sample.author,
         authorPictureUrl: sample.authorPictureUrl,
-        imageUrl: sample.url // Use the image URL
+        imageUrl: sample.url
       });
       setIsModalOpen(true);
     }
   };
 
   const handleNextPage = (): void => {
-    if (currentPage * pageSize < totalSamples) {
+    if (currentPage < totalSamples / pageSize) {
       setCurrentPage(currentPage + 1);
       console.log(`Navigated to page ${currentPage + 1}`);
     }
@@ -88,16 +88,14 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
 
   const handleSearchChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     setSearchQuery(newValue || '');
+    setCurrentPage(1);
   };
 
   const handleCloseModal = (): void => {
     setIsModalOpen(false);
   };
 
-  const filteredSamples = samples.filter(sample => 
-    sample.text.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    sample.author.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const paginatedSamples = samples.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   const lastSampleElementRef = useRef<HTMLDivElement | null>(null);
 
@@ -130,9 +128,9 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
         className={styles.searchField}
       />
       <div className={styles.galleryGrid}>
-        {filteredSamples.map((sample, index) => {
+        {paginatedSamples.map((sample, index) => {
           const imageUrl = sample.url;
-          if (filteredSamples.length === index + 1) {
+          if (paginatedSamples.length === index + 1) {
             return (
               <div
                 key={sample.key}
@@ -143,7 +141,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
                 {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
                 <div className={styles.sampleTitle}>{sample.text}</div>
                 <div className={styles.sampleAuthor}>
-                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} /> {/* Display the author's picture */}
+                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} />
                   {sample.author}
                 </div>
               </div>
@@ -158,7 +156,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
                 {imageUrl && <img src={imageUrl} alt={sample.text} className={styles.previewImage} />}
                 <div className={styles.sampleTitle}>{sample.text}</div>
                 <div className={styles.sampleAuthor}>
-                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} /> {/* Display the author's picture */}
+                  <img src={sample.authorPictureUrl} alt={sample.author} className={styles.authorPicture} />
                   {sample.author}
                 </div>
               </div>
@@ -172,6 +170,7 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
           disabled={currentPage === 1}
           iconProps={{ iconName: 'ChevronLeft' }}
         />
+        <span>{`Page ${currentPage} of ${Math.ceil(totalSamples / pageSize)}`}</span>
         <DefaultButton
           onClick={handleNextPage}
           disabled={currentPage * pageSize >= totalSamples}
