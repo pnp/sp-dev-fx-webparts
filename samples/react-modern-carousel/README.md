@@ -45,12 +45,6 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 | Designation | Text  |
 | UserImage   | Image |
 
-## Solution
-
-| Solution              | Author(s)                                                                                                                                                                                                                                                 |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| react-modern-carousel | Sandeep P S ( [LinkedIn](https://www.linkedin.com/in/sandeepps1299/) ) / Quadrasystems.net ( [Twitter](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) / [LinkedIn](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) ) |
-
 ## Contributors🧑‍💻
 
 - [Sandeep P S](https://github.com/Sandeep-FED)

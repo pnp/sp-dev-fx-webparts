@@ -3,12 +3,9 @@ import * as ReactDom from "react-dom"
 import { Version } from "@microsoft/sp-core-library"
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneButtonType,
   PropertyPaneChoiceGroup,
   PropertyPaneHorizontalRule,
-  PropertyPaneSlider,
   PropertyPaneTextField,
-  PropertyPaneToggle,
 } from "@microsoft/sp-property-pane"
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base"
 import { IReadonlyTheme } from "@microsoft/sp-component-base"

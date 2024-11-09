@@ -54,7 +54,7 @@ export const Carousel = (): JSX.Element => {
     setSelectedUser(awardList[realIndex])
   }
 
-  let moduleType =
+  const moduleType =
     contextInfo.cardType === "coverEffect" ? EffectCoverflow : EffectCards
 
   console.log("module type", moduleType)
@@ -65,8 +65,8 @@ export const Carousel = (): JSX.Element => {
         <Content user={selectedUser} />
       </aside>
       <aside className={styles.carouselWrapper}>
-        <div className={styles.fade_left}></div>
-        <div className={styles.fade_right}></div>
+        <div className={styles.fade_left} />
+        <div className={styles.fade_right} />
         <Swiper
           effect={
             contextInfo.cardType === "coverEffect" ? "coverflow" : "cards"
