@@ -110,7 +110,7 @@ const useFetchColumnFormattingSamples = (columnType: string, includeGenericSampl
       }
 
       const octokit = new Octokit({
-        auth: 'your sample goes in here' // please replace with your token
+        auth: 'your token goes in here' // please replace with your token
       });
 
       try {

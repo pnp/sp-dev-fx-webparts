@@ -15,16 +15,18 @@ graph TD
     F --> G[SampleModal]
     G --> H[ApplyButton]
     G --> I[SamplePreview]
+    G --> J[FeedbackForm]
 
-    B --> J[useFetchSites]
-    C --> K[useFetchLists]
-    D --> L[useFetchFields]
-    E --> M[useFetchColumnTypes]
-    F --> N[useFetchColumnFormattingSamples]
-    F --> O[usePagination]
-    F --> P[useModal]
-    F --> Q[useSampleSelection]
-    H --> R[useApplyColumnFormatting]
+    B --> K[useFetchSites]
+    C --> L[useFetchLists]
+    D --> M[useFetchFields]
+    E --> N[useFetchColumnTypes]
+    F --> O[useFetchColumnFormattingSamples]
+    F --> P[usePagination]
+    F --> Q[useModal]
+    F --> R[useSampleSelection]
+    H --> S[useApplyColumnFormatting]
+    J --> T[useSaveFeedback]
 ```
 
 ## Features
@@ -34,6 +36,7 @@ graph TD
 - Browse and search formatting samples
 - Display a preview of the samples, including the author and their profile picture
 - Apply the column format directly to the selected column or open the sample in GitHub
+- Submit feedback on the samples, including a rating and additional comments
 
 ## Used SharePoint Framework Version
 
