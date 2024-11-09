@@ -8,6 +8,7 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 import usePagination from './usePagination';
 import useModal from './useModal';
 import useSampleSelection from './useSampleSelection';
+import * as strings from 'ListformattingWebpartWebPartStrings';
 
 interface SampleGalleryProps {
   columnType: string;
@@ -75,13 +76,13 @@ const SampleGallery: React.FC<SampleGalleryProps> = ({
   return (
     <div className={styles.sampleGallery}>
       {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
-      <h3>Select a sample</h3>
-      <TextField
-        placeholder="Search by sample name or author"
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className={styles.searchField}
-      />
+      <h3>{strings.SelectSample}</h3>
+<TextField
+  placeholder={strings.SearchPlaceholder}
+  value={searchQuery}
+  onChange={handleSearchChange}
+  className={styles.searchField}
+/>
       <div className={styles.galleryGrid}>
         {paginatedSamples.map((sample) => {
           const imageUrl = sample.url;

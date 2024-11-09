@@ -56,7 +56,7 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
     setSuccessMessage(message);
     setTimeout(() => {
       setSuccessMessage(undefined);
-    }, 3000); // Disappear after 3 seconds
+    }, 3000); 
   };
 
   return (

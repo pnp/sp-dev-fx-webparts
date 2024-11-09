@@ -40,7 +40,7 @@ const SamplePreview: React.FC<SamplePreviewProps> = ({ sampleName }) => {
         } else {
           console.error('Unexpected response format:', data);
           setImageUrl(undefined);
-          setMessage(`${strings.errorFetchingPreviewImage}: Unexpected response format`);
+          setMessage(`${strings.errorFetchingPreviewImage}: ${strings.UnexpectedResponseFormat}`);
           setMessageType(MessageBarType.warning);
         }
       } catch (error) {

@@ -24,7 +24,7 @@ const ColumnSelector: React.FC<ColumnSelectorProps> = ({ siteUrl, context, listI
     if (option) {
       const selectedField = fields.find((field: Field) => field.key === option.key);
       if (selectedField) {
-        onColumnChange(selectedField.text, selectedField.columnType); // Pass both column name and type
+        onColumnChange(selectedField.text, selectedField.columnType); 
       }
     }
   };

@@ -39,5 +39,13 @@ define([], function() {
     "PoweredBy": "Powered by the Microsoft 365 PnP List Formatting repo on GitHub, made with 💖 by Luise Freese.",
     "GitHubRepo": "github.com/pnp/sp-dev-list-formatting",
     "OpenInGitHub": "Open in GitHub",
+    "CloseModal": "Close popup modal",
+    "FeedbackSubmittedSuccessfully": "Feedback submitted successfully!",
+    "RateExperience": "This worked! How would you rate this experience?",
+    "AdditionalFeedback": "Additional Feedback",
+    "SubmitFeedback": "Submit Feedback",
+    "SearchPlaceholder": "Search by sample name or author",
+    "UnexpectedResponseFormat": "Unexpected response format",
+
   }
 });

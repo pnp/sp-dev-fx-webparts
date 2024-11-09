@@ -75,29 +75,23 @@ const useApplyColumnFormatting = (
 
       const data = await response.json();
       const formDigestValue = data.d.GetContextWebInformation.FormDigestValue;
-      console.log('FormDigestValue:', formDigestValue); // Log the FormDigestValue
+      console.log('FormDigestValue:', formDigestValue); 
 
       console.log('Updating field with CustomFormatter');
       const updateResponse = await sp.web.lists.getById(selectedList!).fields.getByInternalNameOrTitle(selectedColumn!).update({
         CustomFormatter: jsonResult
       }, `${formDigestValue}`);
-      console.log('API response:', updateResponse); // Log the API response
+      console.log('API response:', updateResponse); 
 
       setMessage(strings.ColumnFormattingApplied);
       setMessageType(MessageBarType.success);
-
-      const listUrl = `${selectedSite}/Lists/${selectedListName}/AllItems.aspx`;
-      console.log('Opening new tab with URL:', listUrl); // Log the URL being opened
-      window.open(listUrl, '_blank');
-
-      resetInputs();
     } catch (error) {
       console.error('Error applying column formatting:', error);
       setMessage(strings.ErrorApplyingFormatting.replace('{0}', error.message));
       setMessageType(MessageBarType.error);
     }
 
-    console.log('applyColumnFormatting completed'); // Log function exit
+    console.log('applyColumnFormatting completed'); 
   };
 
   return { applyColumnFormatting, message, messageType };

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { PrimaryButton } from '@fluentui/react';
+import { PrimaryButton, MessageBar } from '@fluentui/react';
 import * as strings from 'ListformattingWebpartWebPartStrings';
-import { WebPartContext } from '@microsoft/sp-webpart-base';
 import useApplyColumnFormatting from './useApplyColumnFormatting';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface ApplyButtonProps {
   selectedList: string;
@@ -14,7 +14,7 @@ interface ApplyButtonProps {
   resetInputs: () => void;
   disabled: boolean;
   onSuccess: (message: string) => void;
-  className?: string; // Add className prop
+  className?: string;
 }
 
 const ApplyButton: React.FC<ApplyButtonProps> = ({
@@ -27,9 +27,9 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({
   resetInputs,
   disabled,
   onSuccess,
-  className // Add className prop
+  className
 }) => {
-  const { applyColumnFormatting } = useApplyColumnFormatting(
+  const { applyColumnFormatting, message, messageType } = useApplyColumnFormatting(
     selectedList,
     selectedColumn,
     selectedSample,
@@ -44,13 +44,17 @@ const ApplyButton: React.FC<ApplyButtonProps> = ({
     try {
       await applyColumnFormatting();
       onSuccess(strings.ColumnFormattingApplied);
+      // Remove the logic to open a new tab and reset inputs here
     } catch (error) {
       console.error('Error in ApplyButton handleApplyClick:', error);
     }
   };
 
   return (
-    <PrimaryButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} className={className} />
+    <div>
+      <PrimaryButton onClick={handleApplyClick} text={strings.ApplyColumnFormatting} disabled={disabled} className={className} />
+      {message && <MessageBar messageBarType={messageType}>{message}</MessageBar>}
+    </div>
   );
 };
 

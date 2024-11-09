@@ -38,6 +38,17 @@ declare interface IListformattingWebpartWebPartStrings {
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
   Title: string;
+  CloseModal: string;
+  FeedbackSubmittedSuccessfully: string;
+  RateExperience: string;
+  AdditionalFeedback: string;
+  SubmitFeedback: string;
+  PoweredBy: string;
+  GitHubRepo: string;
+  SelectSample: string;
+SearchPlaceholder: string;
+UnexpectedResponseFormat: string;
+  
 }
 
 declare module 'ListformattingWebpartWebPartStrings' {
