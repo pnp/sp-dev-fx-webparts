@@ -27,7 +27,7 @@ define([], function() {
     "AppOfficeEnvironment": "The app is running in office.com",
     "AppOutlookEnvironment": "The app is running in Outlook",
     "UnknownEnvironment": "The app is running in an unknown environment",
-    "Title": "List formatting Web Part 💛",
+    "Title": "List formatting Web Part",
     "IncludeGenericSamples": "Include generic samples as well", 
     "errorFetchingPreviewImage": "Error fetching preview image", 
     "SamplePreviewAltText": "Sample preview image",
@@ -35,8 +35,10 @@ define([], function() {
     "ColumnFormattingApplied": "Column formatting applied successfully.",
     "ErrorApplyingFormatting": "Error applying formatting: {0}",
     "SelectListColumn": "Please select a list and column.",
-    "Description": "Allows you to first select a column in a SharePoint List on a Site and then directly apply a format to it.",
-    "PoweredBy": "Powered by the Microsoft 365 PnP List Formatting repo on GitHub, made with 💖 by Luise Freese.",
+    "Description": "Allows you to first select a column in a SharePoint List on a Site and then directly apply a format to it. ",
+    "PoweredBy": "Powered by the ",
+    "Credits": "Microsoft 365 PnP List Formatting repo on GitHub",
+    "MadeBy": ", made with 💖 by ",
     "GitHubRepo": "github.com/pnp/sp-dev-list-formatting",
     "OpenInGitHub": "Open in GitHub",
     "CloseModal": "Close popup modal",
@@ -46,6 +48,6 @@ define([], function() {
     "SubmitFeedback": "Submit Feedback",
     "SearchPlaceholder": "Search by sample name or author",
     "UnexpectedResponseFormat": "Unexpected response format",
-
+"Author": "Luise Freese"
   }
 });

@@ -7,7 +7,6 @@ import ListSelector from './ListSelector';
 import ColumnSelector from './ColumnSelector';
 import ColumnTypeDisplay from './ColumnTypeDisplay';
 import SampleGallery from './SampleGallery';
-
 import * as strings from 'ListformattingWebpartWebPartStrings';
 import { IListformattingWebpartProps } from './IListformattingWebpartProps';
 
@@ -47,16 +46,16 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
     setIncludeGenericSamples(checked ?? true);
   };
 
-  const resetInputs = (): void => {
-    setSelectedColumnName('');
-    setSelectedSampleName('');
-  };
-
   const handleApplySuccess = (message: string): void => {
     setSuccessMessage(message);
     setTimeout(() => {
       setSuccessMessage(undefined);
     }, 3000); 
+  };
+
+  const resetInputs = (): void => {
+    setSelectedColumnName('');
+    setSelectedSampleName('');
   };
 
   return (
@@ -69,9 +68,10 @@ const ListformattingWebpart: React.FC<IListformattingWebpartProps> = (props) => 
       <div>
         <h2>{strings.Title}</h2>
         <p>
-          {strings.Description}
-          <br />
-          {strings.PoweredBy} <a href="https://github.com/pnp/sp-dev-list-formatting" target="_blank" rel="noopener noreferrer">{strings.GitHubRepo}</a>
+          {strings.Description}{strings.PoweredBy}
+          <a href="https://github.com/pnp/sp-dev-list-formatting" target="_blank" rel="noopener noreferrer">{strings.Credits}</a>
+          {strings.MadeBy}
+          <a href="https://linkedin.com/in/luisefreese" target="_blank" rel="noopener noreferrer">{strings.Author}</a>
         </p>
         <SiteSelector context={props.context} onSiteChange={handleSiteChange} />
         <ListSelector siteUrl={selectedSiteUrl} context={props.context} onListChange={handleListChange} />

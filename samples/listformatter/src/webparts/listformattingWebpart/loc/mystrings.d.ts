@@ -48,6 +48,9 @@ declare interface IListformattingWebpartWebPartStrings {
   SelectSample: string;
 SearchPlaceholder: string;
 UnexpectedResponseFormat: string;
+Credits: string;
+MadeBy:string;
+Author: string;
   
 }
 
