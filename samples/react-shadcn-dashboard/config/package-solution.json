@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-shadcn-ui-client-side-solution",
+    "id": "c12856f1-6713-43f2-9cbc-1a0c4186d57c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-shadcn-ui description"
+      },
+      "longDescription": {
+        "default": "react-shadcn-ui description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-shadcn-ui Feature",
+        "description": "The feature that activates elements of the react-shadcn-ui solution.",
+        "id": "ae831b77-e0f4-44f6-8ab6-8a87f4dcf68c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-shadcn-ui.sppkg"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-shadcn-ui-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactShadCN/reactShadCNWebPart.js",
+          "manifest": "./src/webparts/reactShadCN/reactShadCNWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "reactShadCNWebPartStrings": "lib/webparts/reactShadCN/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,11 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+:global {
+  #workbenchPageContent,
+  .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+  }
+}
+.main{
+	box-sizing: border-box;
+}
