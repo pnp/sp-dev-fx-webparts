@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "bluesky-viewer-client-side-solution",
+    "id": "e6645216-311a-4108-b981-19acbaf75ca8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "BlueskyViewer description"
+      },
+      "longDescription": {
+        "default": "BlueskyViewer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "bluesky-viewer Feature",
+        "description": "The feature that activates elements of the bluesky-viewer solution.",
+        "id": "d7842dc3-5ef1-4cf8-a806-99143273c9ba",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/bluesky-viewer.sppkg"
+  }
+}
