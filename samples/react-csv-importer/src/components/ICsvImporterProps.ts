@@ -11,4 +11,5 @@ export interface ICsvImporterProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  chunkSize: number;
 }

@@ -3,9 +3,8 @@ import styles from './EventRecurrenceInfoYearly.module.scss';
 import * as strings from 'CalendarWebPartStrings';
 import { IEventRecurrenceInfoYearlyProps } from './IEventRecurrenceInfoYearlyProps';
 import { IEventRecurrenceInfoYearlyState } from './IEventRecurrenceInfoYearlyState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import * as moment from 'moment';
-import { parseString, Builder } from "xml2js";
+import { XMLParser } from "fast-xml-parser";
 import {
   ChoiceGroup,
   IChoiceGroupOption,
@@ -15,7 +14,7 @@ import {
   MaskedTextField
 } from 'office-ui-fabric-react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { toLocaleShortDateString }  from '../../utils/dateUtils';
+import { toLocaleShortDateString } from '../../utils/dateUtils';
 import spservices from '../../services/spservices';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -85,33 +84,33 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
     this.spService = new spservices(this.props.context);
   }
 
-    /**
+  /**
+ *
+ *
+ * @private
+ * @param {Date} date
+ * @memberof EventRecurrenceInfoDaily
+ */
+  private onStartDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ startDate: date }, () => {
+      this.applyRecurrence();
+    });
+  }
+
+  /**
    *
    *
    * @private
    * @param {Date} date
    * @memberof EventRecurrenceInfoDaily
    */
-     private onStartDateChange(date: Date) {
-      //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
-      this.setState({ startDate: date }, () => {
-        this.applyRecurrence();
-      });
-    }
-  
-    /**
-     *
-     *
-     * @private
-     * @param {Date} date
-     * @memberof EventRecurrenceInfoDaily
-     */
-    private onEndDateChange(date: Date) {
-      //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
-      this.setState({ endDate: date }, () => {
-        this.applyRecurrence();
-      });
-    }
+  private onEndDateChange(date: Date) {
+    //Put the applyRecurrence() function in the callback of the setState() method to make sure that applyRecurrence() applied after the state change is complete.
+    this.setState({ endDate: date }, () => {
+      this.applyRecurrence();
+    });
+  }
 
   /**
    *
@@ -156,7 +155,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {string} value
    * @memberof EventRecurrenceInfoDaily
    */
-   private onNumberOfOcurrencesChange(
+  private onNumberOfOcurrencesChange(
     ev: React.SyntheticEvent<HTMLElement>,
     value: string
   ) {
@@ -175,7 +174,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoDaily
    */
-   private onDataRangeOptionChange(
+  private onDataRangeOptionChange(
     ev: React.SyntheticEvent<HTMLElement>,
     option: IChoiceGroupOption
   ): void {
@@ -201,7 +200,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {IChoiceGroupOption} option
    * @memberof EventRecurrenceInfoYearly
    */
-   private onPaternChange(
+  private onPaternChange(
     ev: React.SyntheticEvent<HTMLElement>,
     option: IChoiceGroupOption
   ): void {
@@ -234,7 +233,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoYearly
    */
-   private onWeekOrderMonthChange(
+  private onWeekOrderMonthChange(
     ev: React.FormEvent<HTMLDivElement>,
     item: IDropdownOption
   ): void {
@@ -252,7 +251,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoYearly
    */
-   private onYearlyByDayMonthChange(
+  private onYearlyByDayMonthChange(
     ev: React.FormEvent<HTMLDivElement>,
     item: IDropdownOption
   ): void {
@@ -270,7 +269,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @param {IDropdownOption} item
    * @memberof EventRecurrenceInfoYearly
    */
-   private onSelectedWeekDayChange(
+  private onSelectedWeekDayChange(
     ev: React.FormEvent<HTMLDivElement>,
     item: IDropdownOption
   ): void {
@@ -280,7 +279,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
     });
   }
 
-  public async  componentDidUpdate(prevProps: IEventRecurrenceInfoYearlyProps, prevState: IEventRecurrenceInfoYearlyState) {
+  public async componentDidUpdate(prevProps: IEventRecurrenceInfoYearlyProps, prevState: IEventRecurrenceInfoYearlyState) {
 
   }
 
@@ -298,25 +297,28 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
     let recurrenceRule: string;
 
     if (this.props.recurrenceData) {
+      const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", });
+      const result = parser.parse(this.props.recurrenceData);
 
-      parseString(this.props.recurrenceData, { explicitArray: false }, (error, result) => {
+      let pattern;
+      let dateRange;
 
-        if (result.recurrence.rule.repeat) {
-          patern = result.recurrence.rule.repeat;
-        }
+      if (result.recurrence.rule.repeat) {
+        pattern = result.recurrence.rule.repeat;
+      }
 
-        //
-        if (result.recurrence.rule.repeatForever) {
-          dateRange = { repeatForever: result.recurrence.rule.repeatForever };
-        }
-        if (result.recurrence.rule.repeatInstances) {
-          dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
-        }
-        if (result.recurrence.rule.windowEnd) {
-          dateRange = { windowEnd: result.recurrence.rule.windowEnd };
-        }
+      if (result.recurrence.rule.repeatForever) {
+        dateRange = { repeatForever: result.recurrence.rule.repeatForever };
+      }
 
-      });
+      if (result.recurrence.rule.repeatInstances) {
+        dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
+      }
+
+      if (result.recurrence.rule.windowEnd) {
+        dateRange = { windowEnd: result.recurrence.rule.windowEnd };
+      }
+
       // yearly Patern
       if (patern.yearly) {
         recurrenceRule = 'yearly';
@@ -567,7 +569,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
                               ]}
                             />
                           </div>
-                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '30px', paddingLeft: '10px' } }}>{ strings.ofMonthLabel} </Label>
+                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '30px', paddingLeft: '10px' } }}>{strings.ofMonthLabel} </Label>
                           <div style={{ display: 'inline-block', verticalAlign: 'top', width: '100px', paddingLeft: '5px' }}>
                             <Dropdown
                               selectedKey={this.state.selectedYearlyByDayMonth}
@@ -602,7 +604,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
             </div>
 
             <div style={{ paddingTop: '22px' }}>
-              <Label>{ strings.dateRangeLabel }</Label>
+              <Label>{strings.dateRangeLabel}</Label>
               <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: '35px', paddingTop: '10px' }}>
 
                 <DatePicker

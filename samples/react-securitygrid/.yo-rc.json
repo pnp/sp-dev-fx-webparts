@@ -3,10 +3,15 @@
     "isDomainIsolated": false,
     "isCreatingSolution": false,
     "packageManager": "npm",
-    "version": "1.10.0",
+    "version": "1.20.0",
     "libraryName": "spsecurity-webpart-3",
     "libraryId": "788271fb-ee9b-40df-8381-eb3dc70d1982",
     "environment": "spo",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "nodeVersion": "18.20.4"
+  },
+  "sdkVersions": {
+    "@microsoft/teams-js": "2.24.0",
+    "@microsoft/microsoft-graph-client": "3.0.2"
   }
 }

@@ -9742,7 +9742,7 @@
       "This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format."
     ],
     "creationDateTime": "2020-06-22",
-    "updateDateTime": "2021-09-30",
+    "updateDateTime": "2024-10-13",
     "products": [
       "SharePoint"
     ],
@@ -9771,17 +9771,13 @@
     "authors": [
       {
         "gitHubAccount": "gautamdsheth",
-        "company": "Valo Intranet",
         "pictureUrl": "https://github.com/gautamdsheth.png",
-        "name": "Gautam Sheth",
-        "twitter": "gautamdsheth"
+        "name": "Gautam Sheth"
       },
       {
         "gitHubAccount": "AbhishekGarg",
-        "company": "Atos",
         "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400&v=4",
-        "name": "Abhishek Garg",
-        "twitter": "abhig89"
+        "name": "Abhishek Garg"
       }
     ],
     "references": [
@@ -9802,7 +9798,7 @@
       "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."
     ],
     "creationDateTime": "2021-01-05",
-    "updateDateTime": "2021-08-08",
+    "updateDateTime": "2024-10-19",
     "products": [
       "SharePoint"
     ],
@@ -9813,7 +9809,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -10589,7 +10585,7 @@
       "- Support for Multiline text fields"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2023-03-06",
+    "updateDateTime": "2024-10-08",
     "products": [
       "SharePoint"
     ],
@@ -10600,7 +10596,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -10646,7 +10642,7 @@
       },
       {
         "gitHubAccount": "NishkalankBezawada",
-        "company": "Tietoevry, Sweden",
+        "company": "Bravero AB, Sweden",
         "pictureUrl": "https://avatars.githubusercontent.com/u/47456098?v=4",
         "name": "Nishkalank Bezawada"
       }
@@ -11631,7 +11627,7 @@
       "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title \"Birthdays.\""
     ],
     "creationDateTime": "2019-07-23",
-    "updateDateTime": "2023-03-06",
+    "updateDateTime": "2024-10-02",
     "products": [
       "SharePoint"
     ],
@@ -11642,7 +11638,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.2"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -12139,7 +12135,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2024-10-01",
+    "updateDateTime": "2024-11-03",
     "products": [
       "SharePoint"
     ],
@@ -12150,7 +12146,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -12476,7 +12472,7 @@
       "This web part show images and videos in carousel"
     ],
     "creationDateTime": "2020-10-31",
-    "updateDateTime": "2020-06-12",
+    "updateDateTime": "2024-10-15",
     "products": [
       "SharePoint"
     ],
@@ -12487,7 +12483,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.12.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -13759,6 +13755,62 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-csv-importer",
+    "source": "pnp",
+    "title": "CSV Importer",
+    "shortDescription": "This web part allows users to import CSV files into an existing SharePoint list",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-csv-importer",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-csv-importer",
+    "longDescription": [
+      "This web part allows users to import CSV files into an existing SharePoint list"
+    ],
+    "creationDateTime": "2022-10-11",
+    "updateDateTime": "2024-10-20",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "react-csv-importer.gif",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "react-csv-importer.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "mromiszewski",
+        "pictureUrl": "https://github.com/mromiszewski.png",
+        "name": "Michał Romiszewski"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-custom-links",
     "source": "pnp",
     "title": "Custom Links Web Part",
@@ -14014,7 +14066,7 @@
       "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
     ],
     "creationDateTime": "2021-03-01",
-    "updateDateTime": "2022-11-01",
+    "updateDateTime": "2024-10-20",
     "products": [
       "SharePoint"
     ],
@@ -14025,7 +14077,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.20.0"
       },
       {
         "key": "PNPCONTROLS",
@@ -16056,7 +16108,7 @@
       "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow."
     ],
     "creationDateTime": "2023-08-03",
-    "updateDateTime": "2023-08-03",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -16067,7 +16119,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20762,7 +20814,7 @@
       "This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment."
     ],
     "creationDateTime": "2024-03-16",
-    "updateDateTime": "2024-03-16",
+    "updateDateTime": "2024-11-01",
     "products": [
       "SharePoint"
     ],
@@ -20773,7 +20825,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.2"
       }
     ],
     "thumbnails": [
@@ -21462,7 +21514,7 @@
       "This SPFx app allows quick access to user agenda, ToDo Tasks, Files and  News and Relevant People related to user."
     ],
     "creationDateTime": "2023-06-23",
-    "updateDateTime": "2023-06-23",
+    "updateDateTime": "2024-10-22",
     "products": [
       "SharePoint"
     ],
@@ -21473,7 +21525,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -24077,7 +24129,7 @@
       "Shows how to use PnPjs in a React web part"
     ],
     "creationDateTime": "2023-02-18",
-    "updateDateTime": "2023-02-18",
+    "updateDateTime": "2024-10-23",
     "products": [
       "SharePoint"
     ],
@@ -24088,7 +24140,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -24109,6 +24161,11 @@
         "gitHubAccount": "bcameron1231",
         "name": "Beau Cameron",
         "pictureUrl": "https://github.com/bcameron1231.png"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "name": "Gretchun Kim",
+        "pictureUrl": "https://github.com/gretchunkim.png"
       }
     ],
     "references": [
@@ -25965,7 +26022,7 @@
       "A RSS Reader original based on work completed by Olivier Carpentier's"
     ],
     "creationDateTime": "2020-11-22",
-    "updateDateTime": "2023-08-18",
+    "updateDateTime": "2024-10-30",
     "products": [
       "SharePoint"
     ],
@@ -25976,7 +26033,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -26490,7 +26547,7 @@
       "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web"
     ],
     "creationDateTime": "2021-03-06",
-    "updateDateTime": "2021-03-06",
+    "updateDateTime": "2024-10-20",
     "products": [
       "SharePoint"
     ],
@@ -26501,7 +26558,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [

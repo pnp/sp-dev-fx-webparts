@@ -1,0 +1,158 @@
+/* BlueSky.module.scss */
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 20px;
+  text-overflow: ellipsis;
+  transition: transform 0.2s ease;
+  white-space: pre-wrap;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.cardAuthor {
+  color: #0078d4;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 10px; /* Add margin to separate the avatar and the name */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardAuthorContainer {
+  align-items: center;
+  display: flex;
+}
+
+.cardAvatar {
+  border-radius: 50%;
+  height: 40px;
+  object-fit: cover;
+  width: 40px;
+}
+
+.cardContent {
+  color: #000; /* Ensure text is always black */
+  font-size: 1.1rem;
+  font-weight: 400; /* Regular font weight for content */
+  overflow: hidden;
+  text-decoration: none !important; /* No underline */
+  text-overflow: ellipsis;
+  white-space: pre-wrap; /* Allows text to wrap */
+
+  a {
+    color: #000 !important; /* Ensure links inside content are black */
+    text-decoration: none !important; /* No underline */
+
+    &:hover,
+    &:visited,
+    &:link {
+      color: #000 !important; /* Ensure color remains black on hover, visited, and link */
+    }
+  }
+}
+
+.cardImage {
+  border-radius: 8px;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.cardImageWrapper {
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+}
+
+.cardImagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cardLink {
+  text-decoration: none !important; /* No underline */
+}
+
+.cardTimestamp {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 20px;
+}
+
+.hashtag {
+  color: #0078d4 !important; /* Ensure the color is blue */
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+  text-decoration: none !important; /* No underline */
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:visited {
+    color: #0078d4 !important; /* Ensure the color remains the same for visited links */
+  }
+}
+
+.linkDescription {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.linkImage {
+  border-radius: 8px;
+  height: auto;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.linkPreview {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.linkTitle {
+  color: #333;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.postStats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.statItem {
+  align-items: center;
+  display: flex;
+}
+

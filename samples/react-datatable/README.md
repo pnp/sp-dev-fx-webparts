@@ -22,8 +22,8 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18 ](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -40,6 +40,7 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 - [Chandani Prajapati](https://github.com/chandaniprajapati) 
 - [Abderahman Moujahid](https://github.com/Abderahman88)
+- [Mohammad Amer](https://github.com/mohammadamer)
 
 ## Version history
 
@@ -54,6 +55,7 @@ Version|Date|Comments
 1.6|July 16, 2021|Changed library export-to-csv with react-csv
 1.7|Feb 22, 2022|Upgrade to SPFx v1.14.0
 1.8|November 01, 2022|Added support for list attachments
+1.9|October 20, 2024|Upgraded to SPFx v1.20.0
 
 ## Minimal Path to Awesome
 

@@ -3,7 +3,7 @@
   "solution": {
     "name": "my-dash-board-sp-fx",
     "id": "300aa27b-51c6-4b0d-8f82-b9743c1f9257",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "my-dash-board-sp-fx Feature",
         "description": "The feature that activates elements of the my-dash-board-sp-fx solution.",
         "id": "d2d72346-382b-4d70-bfd6-e2ef988ac8fc",
-        "version": "1.0.0.0"
+        "version": "1.0.1.0"
       }
     ]
   },

@@ -1,9 +1,13 @@
 {
   "@microsoft/generator-sharepoint": {
+    "version": "1.20.0",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0"
+    },
+     "nodeVersion": "18.18.2",
     "isCreatingSolution": true,
     "isDomainIsolated": false,
     "environment": "spo",
-    "version": "1.10.0",
     "libraryName": "react-accordion",
     "libraryId": "6d6cf05b-cfe5-4d12-af19-19ec3aedcaf9",
     "packageManager": "npm",

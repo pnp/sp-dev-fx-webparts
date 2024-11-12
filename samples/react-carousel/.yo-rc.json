@@ -1,6 +1,13 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.12.1",
+    "@microsoft/generator-sharepoint": {
+      "nodeVersion": "20.16.0"
+    },
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
     "libraryName": "react-carousel",
     "libraryId": "263a1d21-f4c7-4a46-a364-e5f995286b9b",
     "environment": "spo",

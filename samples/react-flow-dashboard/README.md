@@ -4,15 +4,11 @@
 
 This web part demonstrates displaying the list of flows and perform some basic actions on the flow.
 
-# Flow Dashboard
+![Flow Dashboard](./assets/Dashboard.gif)
 
-![](./assets/Dashboard.gif)
+![Flow run history](./assets/Flowrunhistory.gif)
 
-# Flow run history
-![](./assets/Flowrunhistory.gif)
-
-# Enabling stopped or suspended flows
-![](./assets/Enablingflows.gif)
+![Enabling stopped or suspended flows](./assets/Enablingflows.gif)
 
 
 ## Compatibility
@@ -22,8 +18,8 @@ This web part demonstrates displaying the list of flows and perform some basic a
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.17.4](https://img.shields.io/badge/SPFx-1.17.4-green.svg)
-![Node.js v16 | v14](https://img.shields.io/badge/Node.js-v16%20%7C%20v14-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -40,11 +36,12 @@ This web part uses *Microsoft Graph* API and *Microsoft Flow Service* API. You n
 - Microsoft Flow Service
   - `Flows.Read.All`
 
-If the problem still persists, 
+If the problem still persists,
+
 - go to `App Registrations`
 - find `SharePoint Online Client Extensibility Web Application Principal`
 - make sure you have added the above permission levels
-![](./assets/APIPermissions.png)
+  ![](./assets/APIPermissions.png)
 
 
 ## Minimal Path to Awesome
@@ -54,18 +51,23 @@ If the problem still persists,
 - in the command-line run:
   - `npm install`
   - `gulp serve`
+- if using spfx-fast-serve, in the command-line run:
+  - `spfx-fast-serve`
+  - `Press enter if prompted to install node modules (will run npm install)`
+  - `npm run serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Contributors
 
-* [Nishkalank Bezawada](https://github.com/NishkalankBezawada)
+- [Nishkalank Bezawada](https://github.com/NishkalankBezawada)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|August 3, 2023|Initial release
+2.0|October 01, 2024|Upgraded to SharePoint Framework v1.20.0
 
 ## Help
 

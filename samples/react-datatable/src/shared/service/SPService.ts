@@ -4,7 +4,7 @@ import { sp } from '@pnp/sp/presets/all';
 export class SPService {
     constructor(private context: WebPartContext) {
         sp.setup({
-            spfxContext: this.context
+            spfxContext: this.context as any
         });
     }
 

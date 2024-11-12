@@ -278,7 +278,6 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
    * @param newValue the new value for this property
    */
   private async _onCustomPropertyPaneChange(propertyPath: string, newValue: any): Promise<void> {
-
     // Stores the new value in web part properties
     update(this.properties, propertyPath, (): any => { return newValue; });
 
