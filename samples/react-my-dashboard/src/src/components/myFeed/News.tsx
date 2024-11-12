@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Spinner } from '@fluentui/react-components';
 import {
   SearchResults,
-} from '@microsoft/mgt-react/dist/es6/generated/react-preview';
+} from '@microsoft/mgt-react/dist/es6/generated/react';
 import {
   MgtTemplateProps,
 } from '@microsoft/mgt-react/dist/es6/MgtTemplateProps';

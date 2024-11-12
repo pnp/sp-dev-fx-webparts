@@ -1,10 +1,11 @@
 define([], function () {
   return {
-    PropertyPaneDescription: "Description",
-    BasicGroupName: "Configure this webpart",
-    WebpartFieldLabel: "Webpart Title",
-    ContentTitleFieldLabel: "Content Title",
-    ContentDescriptionFieldLabel: "Content Description",
+    PropertyPaneDescription: "Configure this webpart",
+    BasicGroupName: "Basic settings",
+    CarouselControlsGroupName: "Control carousel settings",
+    WebpartFieldLabel: "Heading",
+    ContentTitleFieldLabel: "Sub heading",
+    ContentDescriptionFieldLabel: "Sub heading description",
     AppLocalEnvironmentSharePoint:
       "The app is running on your local environment as SharePoint web part",
     AppLocalEnvironmentTeams:
@@ -17,5 +18,5 @@ define([], function () {
     AppTeamsTabEnvironment: "The app is running in Microsoft Teams",
     AppOfficeEnvironment: "The app is running in office.com",
     AppOutlookEnvironment: "The app is running in Outlook",
-  };
-});
+  }
+})

@@ -4,7 +4,7 @@
 
 A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-This RSS Reader utilizes SharePoint Framework v1.18.2 with no dependency on jQuery or a RSS Feed library. This project does utilize [ 
+This RSS Reader utilizes SharePoint Framework v1.20.0 with no dependency on jQuery or a RSS Feed library. This project does utilize [ 
 @pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 18 (validated using v18.17.1) to compile or rebuild the SPFx solution.
 
 Main features include:
@@ -27,7 +27,7 @@ Main features include:
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -36,7 +36,7 @@ Main features include:
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-Tested with: Node.js v18.17.1
+Tested with: Node.js v18.20.4
 
 ## Applies to
 
@@ -60,6 +60,7 @@ Version|Date|Comments
 1.0.3 | April 21, 2023 | Added theme awareness
 1.0.4 | May 25, 2023 | Fixed direct request issues
 1.1.0 | February 6, 2024 | Upgraded to SPFx 1.18.2
+1.2.0 | October 30, 2024 | Upgraded to SPFx 1.20.0
 
 ## Minimal Path to Awesome
 

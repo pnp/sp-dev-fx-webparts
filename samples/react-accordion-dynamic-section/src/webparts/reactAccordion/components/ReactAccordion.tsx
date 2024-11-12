@@ -33,8 +33,8 @@ export default class ReactAccordion extends React.Component<
     super(props);
 
     this.state = {
-      items: new Array<string>(),
-      choices: new Array<string>(),
+      items: [],
+      choices: [],
       allowMultipleExpanded: this.props.allowMultipleExpanded,
       allowZeroExpanded: this.props.allowZeroExpanded,
     };

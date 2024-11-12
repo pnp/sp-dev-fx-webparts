@@ -43,7 +43,7 @@ export default class ReactDatatableWebPart extends BaseClientSideWebPart<IReactD
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
       sp.setup({
-        spfxContext: this.context
+        spfxContext: this.context as any
       });
       this._services = new SPService(this.context);
     });
@@ -51,13 +51,13 @@ export default class ReactDatatableWebPart extends BaseClientSideWebPart<IReactD
 
   private mapFieldsToObjects = () => {
     let { fields = [], fieldDetails = [] } = this.properties;
-    return fields.map(f => fieldDetails.find(fDetails => fDetails.key === f));
+    return fields.map((f: string) => fieldDetails.find((fDetails: { key: string }) => fDetails.key === f));
   }
 
   public async getSelectedListFields() {
     if (this.properties.list) {
       let allFields = await this._services.getFields(this.properties.list);
-      this.properties.fieldDetails = allFields.map(field => ({ key: field.InternalName, text: field.Title, fieldType: field['odata.type'] }));
+      this.properties.fieldDetails = allFields.map((field: { InternalName: string; Title: string; 'odata.type': string }) => ({ key: field.InternalName, text: field.Title, fieldType: field['odata.type'] }));
       this.context.propertyPane.refresh();
     }
   }

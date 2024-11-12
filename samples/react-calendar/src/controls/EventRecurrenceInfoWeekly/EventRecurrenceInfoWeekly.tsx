@@ -3,9 +3,8 @@ import styles from './EventRecurrenceInfoWeekly.module.scss';
 import * as strings from 'CalendarWebPartStrings';
 import { IEventRecurrenceInfoWeeklyProps } from './IEventRecurrenceInfoWeeklyProps';
 import { IEventRecurrenceInfoWeeklyState } from './IEventRecurrenceInfoWeeklyState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import * as moment from 'moment';
-import { parseString, Builder } from "xml2js";
+import { XMLParser } from "fast-xml-parser";
 import {
   ChoiceGroup,
   IChoiceGroupOption,
@@ -218,25 +217,28 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
 
 
     if (this.props.recurrenceData) {
+      const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", });
+      const result = parser.parse(this.props.recurrenceData);
 
-      parseString(this.props.recurrenceData, { explicitArray: false }, (error, result) => {
+      let pattern;
+      let dateRange;
 
-        if (result.recurrence.rule.repeat) {
-          patern = result.recurrence.rule.repeat;
-        }
+      if (result.recurrence.rule.repeat) {
+        pattern = result.recurrence.rule.repeat;
+      }
 
-        //
-        if (result.recurrence.rule.repeatForever) {
-          dateRange = { repeatForever: result.recurrence.rule.repeatForever };
-        }
-        if (result.recurrence.rule.repeatInstances) {
-          dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
-        }
-        if (result.recurrence.rule.windowEnd) {
-          dateRange = { windowEnd: result.recurrence.rule.windowEnd };
-        }
+      if (result.recurrence.rule.repeatForever) {
+        dateRange = { repeatForever: result.recurrence.rule.repeatForever };
+      }
 
-      });
+      if (result.recurrence.rule.repeatInstances) {
+        dateRange = { repeatInstances: result.recurrence.rule.repeatInstances };
+      }
+
+      if (result.recurrence.rule.windowEnd) {
+        dateRange = { windowEnd: result.recurrence.rule.windowEnd };
+      }
+
       // daily Patern
       if (patern.weekly) {
 
