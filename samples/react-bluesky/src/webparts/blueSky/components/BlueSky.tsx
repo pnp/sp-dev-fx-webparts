@@ -14,7 +14,7 @@ import { IBlueSkyProps } from './IBlueSkyProps';
 initializeIcons();
 
 const BlueSky: React.FC<IBlueSkyProps> = (props) => {
-    const { accessToken, error: tokenError } = useAccessToken('luisedev.bsky.social', 'w5sn-i7oa-3rys-jcjm');
+    const { accessToken, error: tokenError } = useAccessToken('your handle goes here', 'your app password goes here');
     const { posts, loading, error: postsError } = useBlueSkyPosts(accessToken);
 
     return (

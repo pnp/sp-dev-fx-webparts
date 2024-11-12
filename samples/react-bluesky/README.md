@@ -1,10 +1,29 @@
-# bluesky-viewer
+# BlueSky Viewer
 
 ## Summary
 
-Short summary on functionality and used technologies.
+The BlueSky Viewer is a SharePoint Framework (SPFx) web part designed to display posts from the Bluesky social network. It leverages React and Fluent UI to provide a modern and responsive user interface. The Web Part fetches posts using the Bluesky API and displays them in a card format, including the author's information, content, images, and timestamp.
 
-[picture of the solution in action, if possible]
+## Features
+
+- **Fetch and Display Posts**: Retrieves posts from the BlueSky API and displays them in a card layout.
+- **Author Information**: Shows the author's avatar and display name.
+- **Content Rendering**: Displays the post content with support for hashtags.
+- **Image Section**: Renders images associated with the post.
+- **Timestamp**: Shows the timestamp of when the post was created.
+- **Error Handling**: Displays error messages if there are issues fetching the posts.
+
+## Component Structure
+
+```mermaid
+graph TD
+    BlueSky --> BlueSkyAuthorSection
+    BlueSky --> BlueSkyContentSection
+    BlueSky --> BlueSkyImageSection
+    BlueSky --> BlueSkyTimestampSection
+    BlueSky --> useAccessToken
+    BlueSky --> useBlueSkyPosts
+```
 
 ## Used SharePoint Framework Version
 
