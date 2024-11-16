@@ -13,9 +13,6 @@ This SharePoint Framework (SPFx) web part serves as a foundational solution for 
 | Every SPFx version is optimally compatible with specific versions of Node.js. To build this sample, ensure that the version of Node on your workstation matches one of the versions listed in this section.                 |
 | Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                     |
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.19.0-green.svg)
 
 This sample is optimized for the following environment configuration:
 
@@ -30,11 +27,6 @@ This sample is optimized for the following environment configuration:
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Solution
-
-| Solution            | Author(s)                                                                                                                                                                                                                                                 |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| react-shadcn-dashboard | Sandeep P S ( [LinkedIn](https://www.linkedin.com/in/sandeepps1299/) ) / Quadrasystems.net ( [Twitter](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) / [LinkedIn](https://www.linkedin.com/company/quadrasystems.net-india-pvt-ltd) ) |
 
 ## Contributors🧑‍💻
 
@@ -52,7 +44,7 @@ Key features demonstrated by this solution:
 
 - Enables ShadCN component integration within SPFx projects
 - Utilizes Tailwind CSS for efficient, responsive styling
-- Empowers developers to create modern, modular, and user-friendly webparts in SharePoint
+- Empowers developers to create modern, modular, and user-friendly web parts in SharePoint
 
 ## Minimal Path to Awesome⚡
 
