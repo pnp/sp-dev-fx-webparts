@@ -7,7 +7,7 @@
     "supportsFullBleed": true,
     "manifestVersion": 2,
     "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
-    "requiresCustomScript": true,
+    "requiresCustomScript": false,
     "supportsThemeVariants": true,
     "hiddenFromToolbox": false,
     "preconfiguredEntries": [{
