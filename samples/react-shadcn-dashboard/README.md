@@ -68,6 +68,13 @@ Key features demonstrated by this solution:
 ## Deploy Package Solution 🚀
 
 - Ensure that you are in the solution folder
+- Create lib/util.ts under src/utilities with following code:
+  `import { clsx, type ClassValue } from "clsx"
+    import { twMerge } from "tailwind-merge"
+    export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs))
+    }
+    `
 - Run these commands:
   - `gulp build --ship`
   - `gulp bundle --ship`
