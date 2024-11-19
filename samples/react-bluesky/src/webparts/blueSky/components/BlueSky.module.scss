@@ -1,0 +1,108 @@
+/* BlueSky.module.scss */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 20px; /* Consistent gap between cards */
+  grid-auto-rows: minmax(100px, auto); /* Ensure consistent row height */
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-overflow: ellipsis;
+  transition: transform 0.2s ease;
+  white-space: pre-wrap;
+  word-wrap: break-word; /* Handle long words or links */
+  overflow-wrap: break-word; /* Handle long words or links */
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.cardLink {
+  text-decoration: none;
+}
+
+.cardAuthorContainer {
+  display: flex;
+  align-items: center;
+}
+
+.cardAvatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.cardAuthor {
+  color: #0078d4; /* Blue color */
+  font-weight: bold;
+}
+
+.cardContent {
+  margin-top: 10px;
+  color: black; /* Set post text color to black */
+}
+
+.cardImagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cardImageWrapper {
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  height: 100px;
+  width: 100px;
+}
+
+.cardTimestamp {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.postStats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.statItem {
+  align-items: center;
+  display: flex;
+}
+
+.statIcon {
+  color: #0078d4;
+  margin-right: 5px;
+  font-size: 10px; 
+}
+
+.statText {
+  color: #0078d4; 
+  margin-right: 10px;
+}
+
+.hashtag {
+  color: #0078d4;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: #0078d4; /* Ensure the color remains the same for visited links */
+  }
+}
