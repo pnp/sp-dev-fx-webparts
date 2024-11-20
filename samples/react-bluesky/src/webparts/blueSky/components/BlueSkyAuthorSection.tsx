@@ -8,7 +8,7 @@ interface BlueSkyAuthorSectionProps {
 }
 
 const BlueSkyAuthorSection: React.FC<BlueSkyAuthorSectionProps> = ({ avatar, author }) => {
-    console.log('Author:', author); // Log the author prop to the console
+
 
     return (
         <div className={styles.cardAuthorContainer}>

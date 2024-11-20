@@ -3,11 +3,12 @@ import { Card, CardSection } from '@fluentui/react-cards';
 import { initializeIcons } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import BlueSkyImageSection from './BlueSkyImageSection';
-import BlueSkyAuthorSection from './BlueSkyAuthorSection';
 import BlueSkyContentSection from './BlueSkyContentSection';
 import BlueSkyTimestampSection from './BlueSkyTimestampSection';
 import useAccessToken from './useAccessToken';
 import useBlueSkyPosts from './useBlueSkyPosts';
+import useLikePost from './useLikePost';
+import usePostMetrics from './usePostMetrics';
 import styles from './BlueSky.module.scss';
 import { IBlueSkyProps } from './IBlueSkyProps';
 import axios from 'axios';
@@ -16,61 +17,32 @@ import axios from 'axios';
 initializeIcons();
 
 const pdsUrl = "https://bsky.social";
-const getPostThreadEndpoint = `${pdsUrl}/xrpc/app.bsky.feed.getPostThread`;
-
-const getPostMetrics = async (accessToken: string, postUri: string): Promise<{ likeCount: number; shareCount: number; replyCount: number }> => {
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    const params = { uri: postUri };
-
-    try {
-        const response = await axios.get(getPostThreadEndpoint, { headers, params });
-        const data = response.data;
-
-        console.log('API Response:', data); // Log the full API response
-
-        const thread = data.thread || {};
-        const post = thread.post || {};
-
-        console.log('Post Data:', post); // Log the post data
-
-        const likeCount = post.likeCount || 0;
-        const shareCount = post.reshareCount || 0;
-        const replyCount = post.replyCount || 0;
-
-        return { likeCount, shareCount, replyCount };
-    } catch (error) {
-        console.error(`Failed to fetch metrics for post ${postUri}`, error);
-        throw error;
-    }
-};
 
 const BlueSky: React.FC<IBlueSkyProps> = (props) => {
-    const { accessToken, error: tokenError } = useAccessToken('luisefreese.bsky.social', 'txmo-2fvo-vwb3-3vwa');
+    const { accessToken, error: tokenError } = useAccessToken('<your handle>.bsky.social', 'your app password'); // replace!
     const { posts, loading, error: postsError } = useBlueSkyPosts(accessToken);
-
-    const [metrics, setMetrics] = useState<{ [key: string]: { likeCount: number, shareCount: number, replyCount: number } }>({});
+    const [did, setDid] = useState<string>('');
 
     useEffect(() => {
-        const fetchMetrics = async (): Promise<void> => {
+        const fetchDid = async (): Promise<void> => {
             if (accessToken) {
-                const newMetrics: { [key: string]: { likeCount: number, shareCount: number, replyCount: number } } = {};
-                for (const post of posts) {
-                    const postUri = post.uri.startsWith('at://') ? post.uri : `at://${post.uri}`;
-                    try {
-                        const postMetrics = await getPostMetrics(accessToken, postUri);
-                        newMetrics[post.id] = postMetrics;
-                    } catch (error) {
-                        console.error(`Failed to fetch metrics for post ${post.id}`, error);
-                    }
+                try {
+                    const response = await axios.get(
+                        `${pdsUrl}/xrpc/com.atproto.identity.resolveHandle?handle=<your handle>.bsky.social`,
+                        { headers: { Authorization: `Bearer ${accessToken}` } }
+                    );
+                    setDid(response.data.did);
+                } catch (error) {
+                    console.error('Failed to fetch DID', error);
                 }
-                setMetrics(newMetrics);
             }
         };
 
-        fetchMetrics()
-            .then(() => console.log("Metrics fetched successfully"))
-            .catch((error) => console.error("Error fetching metrics:", error));
-    }, [accessToken, posts]);
+        fetchDid().catch((error) => console.error('Error fetching DID:', error));
+    }, [accessToken]);
+
+    const { likedPosts, handleLikeClick } = useLikePost(accessToken || '', did || '');
+    const metrics = usePostMetrics(accessToken || '', posts);
 
     return (
         <div>
@@ -82,41 +54,46 @@ const BlueSky: React.FC<IBlueSkyProps> = (props) => {
                 {posts.map((post) => {
                     const lastUriSegment = post.uri.split('/').pop();
                     const postUrl = `https://bsky.app/profile/${post.author.handle}/post/${lastUriSegment}`;
+                    const profileUrl = `https://bsky.app/profile/${post.author.handle}`;
                     const postMetrics = metrics[post.id] || { likeCount: 0, shareCount: 0, replyCount: 0 };
+                    const isLiked = likedPosts.has(post.id);
 
                     return (
-                        <a key={post.id} href={postUrl} target="_blank" rel="noopener noreferrer" className={styles.cardLink}>
-                            <Card className={styles.card}>
-                                <CardSection>
-                                    <BlueSkyAuthorSection avatar={post.author.avatar || ''} author={post.author.displayName} />
-                                </CardSection>
-                                <CardSection>
+                        <Card key={post.id} className={styles.card}>
+                            <CardSection>
+                                <div className={styles.cardAuthorContainer} onClick={() => window.open(profileUrl, '_blank')}>
+                                    <img src={post.author.avatar || ''} alt={post.author.displayName} className={styles.cardAvatar} />
+                                    <span className={styles.cardAuthor}>{post.author.displayName}</span>
+                                </div>
+                            </CardSection>
+                            <CardSection>
+                                <div onClick={() => window.open(postUrl, '_blank')}>
                                     <BlueSkyContentSection content={post.content} />
-                                </CardSection>
-                                <CardSection>
-                                    <BlueSkyImageSection images={post.images || []} did={post.did} />
-                                </CardSection>
-                                <CardSection>
-                                    <BlueSkyTimestampSection timestamp={post.timestamp} />
-                                </CardSection>
-                                <CardSection>
-                                    <div className={styles.postStats}>
-                                        <div className={styles.statItem}>
-                                            <Icon iconName="Heart" className={styles.statIcon} />
-                                            <span className={styles.statText}>{postMetrics.likeCount}</span>
-                                        </div>
-                                        <div className={styles.statItem}>
-                                            <Icon iconName="Share" className={styles.statIcon} />
-                                            <span className={styles.statText}>{postMetrics.shareCount}</span>
-                                        </div>
-                                        <div className={styles.statItem}>
-                                            <Icon iconName="Comment" className={styles.statIcon} />
-                                            <span className={styles.statText}>{postMetrics.replyCount}</span>
-                                        </div>
+                                </div>
+                            </CardSection>
+                            <CardSection>
+                                <BlueSkyImageSection images={post.images || []} did={post.did} />
+                            </CardSection>
+                            <CardSection>
+                                <BlueSkyTimestampSection timestamp={post.timestamp} />
+                            </CardSection>
+                            <CardSection>
+                                <div className={styles.postStats}>
+                                    <div className={`${styles.statItem} ${isLiked ? styles.liked : ''}`} onClick={() => handleLikeClick(post.uri, post.id).catch((error) => console.error('Error liking post:', error))}>
+                                        <Icon iconName="Heart" className={styles.statIcon} />
+                                        <span className={styles.statText}>{postMetrics.likeCount + (isLiked ? 1 : 0)}</span>
                                     </div>
-                                </CardSection>
-                            </Card>
-                        </a>
+                                    <div className={styles.statItem}>
+                                        <Icon iconName="Share" className={styles.statIcon} />
+                                        <span className={styles.statText}>{postMetrics.shareCount}</span>
+                                    </div>
+                                    <div className={styles.statItem}>
+                                        <Icon iconName="Comment" className={styles.statIcon} />
+                                        <span className={styles.statText}>{postMetrics.replyCount}</span>
+                                    </div>
+                                </div>
+                            </CardSection>
+                        </Card>
                     );
                 })}
             </div>

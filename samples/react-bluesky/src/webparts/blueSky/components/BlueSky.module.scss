@@ -5,6 +5,7 @@
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   gap: 20px; /* Consistent gap between cards */
   grid-auto-rows: minmax(100px, auto); /* Ensure consistent row height */
+  grid-auto-flow: dense; /* Fill in gaps with smaller items */
 }
 
 .card {
@@ -47,6 +48,9 @@
 .cardContent {
   margin-top: 10px;
   color: black; /* Set post text color to black */
+  white-space: pre-wrap; /* Ensure text wraps properly */
+  word-wrap: break-word; /* Handle long words or links */
+  overflow-wrap: break-word; /* Handle long words or links */
 }
 
 .cardImagesContainer {
@@ -78,21 +82,23 @@
 .statItem {
   align-items: center;
   display: flex;
+  cursor: pointer; /* Add cursor pointer for clickable items */
 }
 
 .statIcon {
-  color: #0078d4;
+  color: #0078d4; /* Blue color */
   margin-right: 5px;
-  font-size: 10px; 
+  font-size: 14px; /* Make icons smaller */
+  transition: color 0.2s ease; /* Add transition for color change */
 }
 
 .statText {
-  color: #0078d4; 
+  color: #0078d4; /* Blue color */
   margin-right: 10px;
 }
 
 .hashtag {
-  color: #0078d4;
+  color: #0078d4; /* Blue color */
   cursor: pointer;
   font-weight: 500;
   margin-right: 5px;
@@ -105,4 +111,44 @@
   &:visited {
     color: #0078d4; /* Ensure the color remains the same for visited links */
   }
+}
+
+.liked {
+  color: red; /* Change color to red when liked */
+}
+
+.statItem:hover .statIcon {
+  color: red; /* Change color to red on hover */
+}
+
+.linkPreview {
+  display: flex;
+  margin-top: 10px;
+}
+
+.linkImage {
+  border-radius: 8px;
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.linkDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkTitle {
+  color: #0078d4; /* Blue color */
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.linkDescription {
+  color: #555;
+  font-size: 0.9rem;
 }

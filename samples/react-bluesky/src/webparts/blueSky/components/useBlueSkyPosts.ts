@@ -10,85 +10,59 @@ interface BlueSkyPost {
         did: string;
         handle: string;
     };
-    images?: {
-        alt: string;
-        aspectRatio: {
-            height: number;
-            width: number;
-        };
-        image: {
-            $type: string;
-            mimeType: string;
-            ref: {
-                $link: string;
-            };
-            size: number;
-        };
-    }[]; // Include the images property
+    images?: BlueSkyImage[];
     did: string;
     uri: string;
     replyCount: number;
     reshareCount: number;
     likeCount: number;
+    parent?: string; // Add parent property to identify replies
 }
 
-interface BlueSkyApiResponse {
-    feed: { post: BlueSkyPostItem }[];
-    cursor?: string;
+interface BlueSkyImage {
+    alt: string;
+    aspectRatio: {
+        height: number;
+        width: number;
+    };
+    image: {
+        $type: string;
+        mimeType: string;
+        ref: {
+            $link: string;
+        };
+        size: number;
+    };
 }
 
 interface BlueSkyPostItem {
-    cid: string;
-    uri: string;
-    record: {
-        text: string;
-        createdAt: string;
-        embed?: {
-            images?: {
-                alt: string;
-                aspectRatio: {
-                    height: number;
-                    width: number;
-                };
-                image: {
-                    $type: string;
-                    mimeType: string;
-                    ref: {
-                        $link: string;
-                    };
-                    size: number;
-                };
-            }[];
+    post: {
+        cid: string;
+        record: {
+            text: string;
+            createdAt: string;
+            parent?: string;
+            embed?: {
+                images?: BlueSkyImage[];
+            };
         };
+        author: {
+            displayName: string;
+            avatar?: string;
+            did: string;
+            handle: string;
+        };
+        uri: string;
+        replyCount: number;
+        reshareCount: number;
+        likeCount: number;
     };
-    author: {
-        displayName: string;
-        avatar?: string;
-        did: string;
-        handle: string;
-    };
-    replyCount: number;
-    reshareCount: number;
-    likeCount: number;
 }
 
-const fetchWithRateLimitRetry = async (url: string, options: RequestInit, retries = 3, delay = 2000): Promise<unknown> => {
-    try {
-        const response = await fetch(url, options);
-        if (response.status === 429) throw new Error("Rate Limit Exceeded");
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-        const jsonData = await response.json();
-        return jsonData;
-    } catch (error: unknown) {
-        if (retries > 0 && error instanceof Error && error.message === "Rate Limit Exceeded") {
-            await new Promise((resolve) => setTimeout(resolve, delay));
-            return fetchWithRateLimitRetry(url, options, retries - 1, delay * 2);
-        } else {
-            throw error;
-        }
-    }
-};
+interface BlueSkyApiResponse {
+    feed: BlueSkyPostItem[];
+    cursor?: string;
+}
 
 const useBlueSkyPosts = (accessToken: string | undefined): { posts: BlueSkyPost[], loading: boolean, error: string | undefined } => {
     const [posts, setPosts] = useState<BlueSkyPost[]>([]);
@@ -102,40 +76,26 @@ const useBlueSkyPosts = (accessToken: string | undefined): { posts: BlueSkyPost[
             setLoading(true);
             setError(undefined);
 
-            const cacheKey = 'blueSkyPosts';
-            const cacheExpiryKey = 'blueSkyPostsExpiry';
-            const cacheExpiryTime = 60 * 60 * 1000; // 1 hour
-
-            const cachedPosts = localStorage.getItem(cacheKey);
-            const cachedExpiry = localStorage.getItem(cacheExpiryKey);
-
-            if (cachedPosts && cachedExpiry && Date.now() < parseInt(cachedExpiry, 10)) {
-                setPosts(JSON.parse(cachedPosts));
-                setLoading(false);
-                return;
-            }
-
-            const hashtags = ["#Microsoft365", "#SPFx", "#SharePoint", "#MSIgnite", "PowerPlatform", "Microsoft365Dev", "#SharingIsCaring"]; // Add the #SharingIsCaring hashtag
-            const filteredPosts: BlueSkyPost[] = [];
-            let cursor: string | undefined = undefined;
-
             try {
-                while (filteredPosts.length < 10) {  // Limit to 10 posts
-                    const url: string = `https://bsky.social/xrpc/app.bsky.feed.getTimeline${cursor ? `?cursor=${cursor}` : ''}`;
-                    const data = await fetchWithRateLimitRetry(url, {
-                        method: 'GET',
+                let allPosts: BlueSkyPost[] = [];
+                let cursor: string | undefined = undefined;
+                const postIds = new Set<string>(); // Track unique post IDs
+                const hashtags = ["#SharePoint", "#Microsoft365", "#Microsoft365Dev", "Microsoft", "#MicrosoftTeams", "#SPFx", "#SharingIsCaring", "#MsIgnite", "PowerPlatform", "Azure"];
+                const desiredPostCount = 10; // Set the desired number of posts to fetch
+
+                while (allPosts.length < desiredPostCount) {
+                    const response = await fetch(`https://bsky.social/xrpc/app.bsky.feed.getTimeline${cursor ? `?cursor=${cursor}` : ''}`, {
                         headers: {
-                            'Authorization': `Bearer ${accessToken}`,
-                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
                         },
-                    }) as BlueSkyApiResponse;
+                    });
+                    const data: BlueSkyApiResponse = await response.json();
 
-                    const feed = data.feed;
-
-                    // Filter posts that contain specified hashtags
-                    const matchingPosts = feed
-                        .filter(item => hashtags.some(tag => item.post.record.text.includes(tag)))
-                        .map(item => ({
+                    const newPosts: BlueSkyPost[] = data.feed
+                        .filter((item: BlueSkyPostItem) => {
+                            return !item.post.record.parent && hashtags.some(tag => item.post.record.text.includes(tag));
+                        })
+                        .map((item: BlueSkyPostItem) => ({
                             id: item.post.cid,
                             content: item.post.record.text,
                             timestamp: item.post.record.createdAt,
@@ -145,24 +105,33 @@ const useBlueSkyPosts = (accessToken: string | undefined): { posts: BlueSkyPost[
                                 did: item.post.author.did,
                                 handle: item.post.author.handle,
                             },
-                            images: item.post.record.embed?.images || [], // Map images
+                            images: item.post.record.embed?.images || [],
                             did: item.post.author.did,
                             uri: item.post.uri,
                             replyCount: item.post.replyCount,
                             reshareCount: item.post.reshareCount,
                             likeCount: item.post.likeCount,
-                        }));
+                        }))
+                        .filter(post => {
+                            const isDuplicate = postIds.has(post.id);
+                            console.log(`Post ID: ${post.id}, Is Duplicate: ${isDuplicate}`);
+                            return !isDuplicate;
+                        });
 
-                    filteredPosts.push(...matchingPosts);
+                    newPosts.forEach(post => {
+                        console.log(`Adding Post ID: ${post.id} to Set`);
+                        postIds.add(post.id);
+                    });
 
-                    if (filteredPosts.length >= 10) break;
+                    allPosts = [...allPosts, ...newPosts];
                     cursor = data.cursor;
-                    if (!cursor) break;
+
+                    if (!cursor) break; // Exit loop if no more posts are available
                 }
 
-                setPosts(filteredPosts.slice(0, 10));
-                localStorage.setItem(cacheKey, JSON.stringify(filteredPosts.slice(0, 10)));
-                localStorage.setItem(cacheExpiryKey, (Date.now() + cacheExpiryTime).toString());
+                console.log('Filtered Posts:', allPosts.map(post => post.id)); // Log the filtered post IDs
+
+                setPosts(allPosts.slice(0, desiredPostCount)); // Limit to the desired number of posts
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
@@ -173,6 +142,10 @@ const useBlueSkyPosts = (accessToken: string | undefined): { posts: BlueSkyPost[
         };
 
         fetchBlueSkyPosts().catch((err) => console.error("Failed to fetch posts:", err));
+
+        const intervalId = setInterval(fetchBlueSkyPosts, 30000); // Reload every 30 seconds
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
     }, [accessToken]);
 
     return { posts, loading, error };
