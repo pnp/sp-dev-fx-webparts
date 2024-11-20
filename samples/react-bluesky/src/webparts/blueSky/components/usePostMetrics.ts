@@ -16,7 +16,9 @@ const fetchPostMetrics = async (accessToken: string, postUri: string): Promise<{
         const post = thread.post || {};
 
         const likeCount = post.likeCount || 0;
-        const shareCount = post.reshareCount || 0;
+        const repostCount = post.repostCount || 0;
+        const quoteCount = post.quoteCount || 0;
+        const shareCount = repostCount + quoteCount; 
         const replyCount = post.replyCount || 0;
         const cid = post.cid || '';
 

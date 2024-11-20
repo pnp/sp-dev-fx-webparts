@@ -19,7 +19,7 @@ initializeIcons();
 const pdsUrl = "https://bsky.social";
 
 const BlueSky: React.FC<IBlueSkyProps> = (props) => {
-    const { accessToken, error: tokenError } = useAccessToken('<your handle>.bsky.social', 'your app password'); // replace!
+    const { accessToken, error: tokenError } = useAccessToken('<handle>.bsky.social', 'password'); //change <handle> to your handle and password to your password
     const { posts, loading, error: postsError } = useBlueSkyPosts(accessToken);
     const [did, setDid] = useState<string>('');
 
@@ -28,7 +28,7 @@ const BlueSky: React.FC<IBlueSkyProps> = (props) => {
             if (accessToken) {
                 try {
                     const response = await axios.get(
-                        `${pdsUrl}/xrpc/com.atproto.identity.resolveHandle?handle=<your handle>.bsky.social`,
+                        `${pdsUrl}/xrpc/com.atproto.identity.resolveHandle?handle=<handle>.bsky.social`, //change to your handle
                         { headers: { Authorization: `Bearer ${accessToken}` } }
                     );
                     setDid(response.data.did);
