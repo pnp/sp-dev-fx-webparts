@@ -61,6 +61,7 @@ Version|Date|Comments
 1.0.4 | May 25, 2023 | Fixed direct request issues
 1.1.0 | February 6, 2024 | Upgraded to SPFx 1.18.2
 1.2.0 | October 30, 2024 | Upgraded to SPFx 1.20.0
+1.2.1 | November 20, 2024 | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain any items.
 
 ## Minimal Path to Awesome
 
@@ -74,7 +75,7 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
 
-- To bundle and package the installable *.sppkg*, run:
+- To bundle and package the installable `.sppkg`, run:
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 
