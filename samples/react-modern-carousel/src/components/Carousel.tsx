@@ -57,7 +57,20 @@ export const Carousel = (): JSX.Element => {
   const moduleType =
     contextInfo.cardType === "coverEffect" ? EffectCoverflow : EffectCards
 
-  console.log("module type", moduleType)
+  console.log("card style", contextInfo.cardStyle)
+
+  const cardStyles =
+    contextInfo.cardStyle === "rounded"
+      ? {
+          width: "400px",
+          height: "400px",
+          borderRadius: "100%",
+        }
+      : {
+          width: "300px",
+          height: "400px",
+          borderRadius: "9px",
+        }
 
   return (
     <div className={styles.container}>
@@ -76,8 +89,8 @@ export const Carousel = (): JSX.Element => {
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
-            depth: 100,
-            modifier: 2.5,
+            depth: 120,
+            modifier: 3.5,
           }}
           keyboard={{ enabled: true }}
           mousewheel={{
@@ -100,13 +113,7 @@ export const Carousel = (): JSX.Element => {
         >
           {awardList?.map((user, index) => (
             <SwiperSlide key={index}>
-              <Card
-                style={{
-                  width: "300px",
-                  height: "400px",
-                  borderRadius: "8px",
-                }}
-              >
+              <Card style={cardStyles}>
                 <CardPreview style={{ height: "inherit" }}>
                   <img src={user.ImageUrl} alt={user.Title} />
                 </CardPreview>

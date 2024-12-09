@@ -2,6 +2,7 @@ declare interface IAwardRecognitionWebPartStrings {
   PropertyPaneDescription: string
   BasicGroupName: string
   CarouselControlsGroupName: string
+  CardsStyleGroupName: string
   ContentDescriptionFieldLabel: string
   ContentTitleFieldLabel: string
   WebpartFieldLabel: string
