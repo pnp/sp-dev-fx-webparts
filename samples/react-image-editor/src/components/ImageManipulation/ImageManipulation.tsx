@@ -85,9 +85,10 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     this.state = {
       settingPanel: SettingPanelType.Closed,
       redosettings: [],
-      lockAspectCrop: true,
-      lockAspectResize: true
+      lockAspectCrop: true, // Initialized as true
+      lockAspectResize: true, // Initialized as true
     };
+
     this.openPanel = this.openPanel.bind(this);
     this.setRotate = this.setRotate.bind(this);
     this.calcRotate = this.calcRotate.bind(this);
@@ -100,7 +101,35 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
 
   public componentDidMount(): void {
     this.imageChanged(this.props.src);
+
+    const aspect = this.getAspect();
+
+    if (this.state.lockAspectCrop) {
+      const cropSettings: ICropSettings = {
+        type: ManipulationType.Crop,
+        sx: 0,
+        sy: 0,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.canvasRef ? this.canvasRef.height : 0,
+        aspect,
+      };
+      this.addOrUpdateLastManipulation(cropSettings);
+      console.log('Applied initial crop settings:', cropSettings);
+    }
+
+    if (this.state.lockAspectResize) {
+      const resizeSettings: IResizeSettings = {
+        type: ManipulationType.Resize,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.canvasRef ? this.canvasRef.height : 0,
+        aspect,
+      };
+      this.addOrUpdateLastManipulation(resizeSettings);
+      console.log('Applied initial resize settings:', resizeSettings);
+    }
   }
+
+
 
   public componentDidUpdate(prevProps: IImageManipulationProps): void {
     if (prevProps.src !== this.props.src) {
@@ -321,37 +350,78 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
   }
   private getCropGrid(): JSX.Element {
     const lastset: ICropSettings = this.getLastManipulation() as ICropSettings;
-    let lastdata: ICrop = { sx: 0, sy: 0, width: 0, height: 0 };
+    let lastdata: ICrop;
 
+    // Initialize crop data based on the current settings or default to aspect ratio
     if (lastset && lastset.type === ManipulationType.Crop) {
       lastdata = lastset;
+    } else {
+      const aspect = this.state.lockAspectCrop ? this.getAspect() : undefined;
+      lastdata = {
+        sx: 0,
+        sy: 0,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.state.lockAspectCrop && this.canvasRef && this.canvasRef.width && aspect
+          ? this.canvasRef.width / aspect
+          : this.canvasRef ? this.canvasRef.height : 0,
+      };
+      lastdata.aspect = aspect; // Set the aspect if the lock is enabled
     }
-    return (<ImageCrop
-      crop={lastdata}
-      showRuler
-      sourceHeight={this.img.height}
-      sourceWidth={this.img.width}
-      onChange={(crop) => {
-        this.setCrop(crop.sx, crop.sy, crop.width, crop.height, crop.aspect);
-      }
-      }
-    />);
+
+    console.log('Crop data passed to ImageCrop:', lastdata);
+
+    return (
+      <ImageCrop
+        crop={lastdata}
+        showRuler
+        sourceHeight={this.img.height}
+        sourceWidth={this.img.width}
+        onChange={(crop) => {
+          this.setCrop(crop.sx, crop.sy, crop.width, crop.height, crop.aspect);
+        }}
+      />
+    );
   }
+
 
   private getResizeGrid(): JSX.Element {
     const lastset: IResizeSettings = this.getLastManipulation() as IResizeSettings;
+    let lastdata: IResizeSettings;
+  
     if (lastset && lastset.type === ManipulationType.Resize) {
-      return (<ImageGrid
-        width={lastset.width} height={lastset.height}
-        aspect={lastset.aspect}
-        onChange={(size) => this.setResize(size.width, size.height, lastset.aspect)}
-      />);
+      lastdata = lastset;
+    } else {
+      const aspect = this.state.lockAspectResize ? this.getAspect() : undefined;
+      lastdata = {
+        type: ManipulationType.Resize,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.state.lockAspectResize && this.canvasRef && this.canvasRef.width && aspect
+          ? this.canvasRef.width / aspect
+          : this.canvasRef ? this.canvasRef.height : 0,
+        aspect: aspect,
+      };
     }
-    return (<ImageGrid
-      onChange={(size) => this.setResize(size.width, size.height, undefined)}
-      // aspect={this.getAspect()}
-      width={this.canvasRef.width} height={this.canvasRef.height} />);
+  
+    // Ensure minimum dimensions
+    lastdata.width = Math.max(lastdata.width, 1);
+    lastdata.height = Math.max(lastdata.height, 1);
+  
+    console.log('Resize data passed to ImageGrid:', lastdata);
+  
+    return (
+      <ImageGrid
+        width={lastdata.width}
+        height={lastdata.height}
+        aspect={lastdata.aspect}
+        onChange={(size) => {
+          const aspect = this.state.lockAspectResize ? this.getAspect() : undefined;
+          this.setResize(size.width, size.height, aspect);
+        }}
+      />
+    );
   }
+  
+
 
   private getMaxWidth(): string {
     const { settingPanel } = this.state;
@@ -722,23 +792,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     return values;
   }
 
-  private setResize(width: number, height: number, aspect: number): void {
-    const values: IResizeSettings = this.getResizeValues();
-    if (width) {
-      values.width = width;
-      if (aspect) {
-        values.height = values.width / aspect;
-      }
-    }
-    if (height) {
-      values.height = height;
-      if (aspect) {
-        values.width = values.height * aspect;
-      }
-    }
-    values.aspect = aspect;
-    this.addOrUpdateLastManipulation(values);
-  }
+
 
   private getCropValues(): ICropSettings {
     const state: IImageManipulationSettings = this.getLastManipulation();
@@ -759,70 +813,54 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     const values: ICropSettings = this.getCropValues();
     const currentheight: number = this.bufferRef.height;
     const currentwidth: number = this.bufferRef.width;
+
     if (!isNaN(sx) && sx >= 0) {
-      if (sx >= currentwidth) {
-        values.sx = currentwidth - 1;
-      } else {
-        values.sx = sx;
-      }
-
-      // limit max width
-      if ((values.width + values.sx) > currentwidth) {
-        values.width = currentwidth - values.sx;
-      }
-
+      values.sx = Math.min(sx, currentwidth - 1);
     }
     if (!isNaN(sy) && sy >= 0) {
-      if (sy >= currentheight) {
-        values.sy = currentheight - 1;
-      } else {
-        values.sy = sy;
-      }
-
-      // limit max height
-      if ((values.height + values.sy) > currentheight) {
-        values.height = currentheight - values.sy;
-      }
+      values.sy = Math.min(sy, currentheight - 1);
     }
     if (!isNaN(width) && width >= 0) {
-      if ((width + values.sx) > currentwidth) {
-        values.width = currentwidth - values.sx;
-      } else {
-        values.width = width;
+      values.width = Math.min(width, currentwidth - values.sx);
+      if (aspect) {
+        values.height = values.width / aspect;
       }
     }
     if (!isNaN(height) && height >= 0) {
-      if ((height + values.sy) > currentheight) {
-        values.height = currentheight - values.sy;
-      } else {
-        values.height = height;
-      }
-    }
-    if (isNaN(values.aspect) && !isNaN(aspect)) {
-      // aspect added
-
-      // limit w
-      if ((values.width + values.sx) > currentwidth) {
-        values.width = currentwidth - values.sx;
-      }
-
-      values.height = values.width / aspect;
-      // limit h adn recalulate w
-      if ((values.height + values.sy) > currentheight) {
-        values.height = currentheight - values.sy;
+      values.height = Math.min(height, currentheight - values.sy);
+      if (aspect) {
         values.width = values.height * aspect;
       }
     }
-
     values.aspect = aspect;
-    if (aspect && (!isNaN(sx) || !isNaN(width))) {
-      values.height = values.width / aspect;
-    }
-    if (aspect && (!isNaN(sy) || !isNaN(height))) {
-      values.width = values.height * aspect;
-    }
     this.addOrUpdateLastManipulation(values);
   }
+
+  private setResize(width: number, height: number, aspect: number): void {
+    const values: IResizeSettings = this.getResizeValues();
+  
+    if (width && width > 0) {
+      values.width = width;
+      if (aspect) {
+        values.height = width / aspect;
+      }
+    }
+    if (height && height > 0) {
+      values.height = height;
+      if (aspect) {
+        values.width = height * aspect;
+      }
+    }
+  
+    // Ensure minimum dimensions
+    values.width = Math.max(values.width, 1);
+    values.height = Math.max(values.height, 1);
+  
+    values.aspect = aspect;
+    this.addOrUpdateLastManipulation(values);
+  }
+  
+
 
   private setRotate(value: number): void {
     this.addOrUpdateLastManipulation({
@@ -890,25 +928,23 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     if (!state) {
       state = [];
     }
-
+  
+    // Update or add the new manipulation
     if (state.length > 0 && state[state.length - 1].type === changed.type) {
       state[state.length - 1] = changed;
     } else {
       state.push(changed);
     }
-
-    if (this.state.redosettings && this.state.redosettings.length > 0) {
-      this.setState({ redosettings: [] }, () => {
-        if (this.props.settingsChanged) {
-          this.props.settingsChanged(state);
-        }
-      });
-    } else {
+  
+    // Clear redo settings and trigger the settingsChanged callback
+    this.setState({ redosettings: [] }, () => {
       if (this.props.settingsChanged) {
+        console.log('Updating settings:', state); // Debugging
         this.props.settingsChanged(state);
       }
-    }
+    });
   }
+  
 
   private removeLastManipulation(): void {
     if (this.props.settings && this.props.settings.length > 0) {

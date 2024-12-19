@@ -54,7 +54,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             title={this.props.title}
             updateProperty={this.props.updateTitleProperty} />
         }
-        {(isFilePickerOpen || (isConfigured && this.props.displayMode === DisplayMode.Edit)) && Environment.type !== EnvironmentType.Local &&
+        {(isFilePickerOpen &&
           <FilePicker
             isPanelOpen={isFilePickerOpen}
             accepts={['.gif', '.jpg', '.jpeg', '.png']}
@@ -71,7 +71,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             }}
             context={this.props.context}
 
-          />}
+          />)}
 
         {!isConfigured ? (<Placeholder iconName='Edit'
           iconText='Configure your web part'
