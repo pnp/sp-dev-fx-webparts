@@ -1,6 +1,6 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { SPHttpClient, SPHttpClientResponse, MSGraphClientV3 } from "@microsoft/sp-http";
-import { IWebPropertiesResult, IChannel, ITab } from "./ReactTeamsTabsGraph";
+import { IWebPropertiesResult, IChannel, ITab } from "./IReactTeamsTabsGraphProps";
 
 
 export class ReactTeamsTabsHelper {

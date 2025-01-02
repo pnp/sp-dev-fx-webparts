@@ -5,7 +5,7 @@ import { MessageBar, MessageBarType } from "@fluentui/react/lib/MessageBar";
 import { Spinner, SpinnerSize } from "@fluentui/react/lib/Spinner";
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
 
-import { IReactTeamsTabsgraphProps } from "./ReactTeamsTabsGraph";
+import { IReactTeamsTabsgraphProps } from "./IReactTeamsTabsGraphProps";
 import { ReactTeamsTabsHelper, IChannel, ITab } from "./ReactTeamsTabsHelper";
 
 import styles from "./ReactTeamsTabsGraph.module.scss";

@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample is **derived** from the original [react-teams-tabs-graph](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tabs-graph) project but is **updated** to:
+This sample is **derived** from the original [react-teams-tabs-graph](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tabs-graph) project but is **rewritten and refactored** to use:
 
 - **SPFx 1.20+** (compatible with Node 14/16)
 - **React 17**
@@ -15,14 +15,6 @@ Also added features:
 - **Modernized and futureproofed code**
 
 
-## Preview
-
-![WebPartInAction](./assets/modern-react-teams-tabs.png)
-
-*(Replace the above image path with your own screenshot.)*
-
----
-
 ## Features
 
 - **Graph HTTP** to call Microsoft Graph endpoints for:
@@ -31,6 +23,7 @@ Also added features:
 - **React 17** for a modern UI experience
 - **Fluent UI (Office UI Fabric)** Nav or list components to display channels/tabs
 - **SPFx 1.20** – align with the latest versions
+- **Search for Channel** – align with the latest versions
 
 ---
 

@@ -9,8 +9,8 @@ import {
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
-import { IReactTeamsTabsgraphWebPartProps } from "./IReactTeamsTabsPnpjsWebPartProps";
-import { IReactTeamsTabsgraphProps } from "./components/ReactTeamsTabsGraph";
+import { IReactTeamsTabsgraphWebPartProps } from "./IReactTeamsTabsGraphWebPartProps";
+import { IReactTeamsTabsgraphProps } from "./components/IReactTeamsTabsGraphProps";
 import ReactTeamsTabsgraph from "./components/ReactTeamsTabsGraph";
 
 export default class ReactTeamsTabsgraphWebPart
