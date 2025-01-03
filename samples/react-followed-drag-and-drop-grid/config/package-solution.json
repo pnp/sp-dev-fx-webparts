@@ -17,7 +17,7 @@
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
-        "scope": "Sites.ReadWrite.All"
+        "scope": "Files.ReadWrite.All"
       }
     ]
   },
