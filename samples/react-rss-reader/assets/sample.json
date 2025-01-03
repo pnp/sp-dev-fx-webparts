@@ -9,7 +9,7 @@
       "A RSS Reader original based on work completed by Olivier Carpentier\u0027s"
     ],
     "creationDateTime": "2020-11-22",
-    "updateDateTime": "2023-08-18",
+    "updateDateTime": "2024-11-20",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [

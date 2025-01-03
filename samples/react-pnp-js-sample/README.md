@@ -15,8 +15,8 @@ This implementation refactors to take aspects out and utilize and showcase PnPjs
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
-![Node.js v14 | v12| v16](https://img.shields.io/badge/Node.js-v12%20%7C%20v14%20%7C%20v16-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Incompatible with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -35,9 +35,14 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 <!-- CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-|[![Julie Turner](https://avatars.githubusercontent.com/u/7570936?v=4&s=100)](https://github.com/juliemturner)|[![Beau Cameron](https://avatars.githubusercontent.com/u/7944457?v=4&s=100)](https://github.com/bcameron1231)|
-|:--:|:--:|
-**[Julie Turner](https://github.com/juliemturner)**|**[Beau Cameron](https://github.com/bcameron1231)**|
+|[![Julie Turner](https://avatars.githubusercontent.com/u/7570936?v=4&s=100)](https://github.com/juliemturner)|[![Beau Cameron](https://avatars.githubusercontent.com/u/7944457?v=4&s=100)](https://github.com/bcameron1231) 
+|:--:|:--:| 
+**[Julie Turner](https://github.com/juliemturner)**|**[Beau Cameron](https://github.com/bcameron1231)**
+[![Gretchun Kim](https://avatars.githubusercontent.com/u/8564035?v=4&s=100)](https://github.com/juliemturner)
+**[Gretchun Kim](https://github.com/gretchunkim)**
+
+
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 <!-- CONTRIBUTORS-LIST:END -->
@@ -47,6 +52,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 Version|Date|Comments
 -------|----|--------
+1.3| Oct 23, 2024| Upgraded SPFx to 1.20.0 
 1.2|Feb 14, 2023|Fixed context handling
 1.1|Aug 29, 2022|Bug fix & dependency updates
 1.0|Jan 13, 2022|Initial release

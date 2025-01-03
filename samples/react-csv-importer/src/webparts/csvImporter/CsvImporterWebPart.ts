@@ -4,7 +4,9 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneToggle,
+  PropertyPaneSlider,
+  PropertyPaneLabel
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -19,6 +21,7 @@ export interface ICsvImporterWebPartProps {
   title: string;
   listId: string;
   showListTitle: boolean;
+  chunkSize: number;
 }
 
 export default class CsvImporterWebPart extends BaseClientSideWebPart<ICsvImporterWebPartProps> {
@@ -39,7 +42,8 @@ export default class CsvImporterWebPart extends BaseClientSideWebPart<ICsvImport
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        chunkSize: this.properties.chunkSize
       }
     );
 
@@ -96,7 +100,7 @@ export default class CsvImporterWebPart extends BaseClientSideWebPart<ICsvImport
           },
           groups: [
             {
-              isGroupNameHidden: true,
+              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyFieldListPicker('listId', {
                   label: strings.PropertyFieldListPickerLabel,
@@ -114,12 +118,28 @@ export default class CsvImporterWebPart extends BaseClientSideWebPart<ICsvImport
                   key: 'listPickerFieldId'
                 }),
                 PropertyPaneToggle('showListTitle', {
-                  label: null,
+                  label: strings.PropertyPaneToggleLabel,
                   onText: strings.PropertyPaneToggleShowListText,
                   offText: strings.PropertyPaneToggleHideListText
                 }),
                 PropertyPaneTextField('title', {
                   label: strings.PropertyPaneTextFieldTitleLabel
+                })
+              ]
+            },
+            {
+              groupName: strings.AdvancedGroupName,
+              groupFields: [
+                PropertyPaneLabel('chunkSizeDescription', {
+                  text: strings.PropertyPaneChunkSizeDescription
+                }),
+                PropertyPaneSlider('chunkSize', {
+                  label: strings.PropertyPaneChunkSizeLabel,
+                  min: 100,
+                  max: 1000,
+                  step: 100,
+                  showValue: true,
+                  value: this.properties.chunkSize
                 })
               ]
             }

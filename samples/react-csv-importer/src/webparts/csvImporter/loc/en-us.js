@@ -1,10 +1,15 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Web Part Configuration",
+    "PropertyPaneDescription": "Configure the CSV Importer Web Part",
+    "BasicGroupName": "Basic Settings",
+    "AdvancedGroupName": "Advanced Settings",
     "PropertyPaneTextFieldTitleLabel": "Web Part Title",
     "PropertyFieldListPickerLabel": "Select a list",
+    "PropertyPaneToggleLabel": "List Title Visibility",
     "PropertyPaneToggleShowListText": "Show list title",
-    "PropertyPaneToggleHideListText": "Hide list tile",
+    "PropertyPaneToggleHideListText": "Hide list title",
+    "PropertyPaneChunkSizeLabel": "Chunk Size",
+    "PropertyPaneChunkSizeDescription": "Chunk size determines the number of rows processed in each batch during import.",
     "PlaceholderIconText": "Configure your web part",
     "PlaceholderDescription": "Please configure the web part.",
     "PlaceholderButtonLabel": "Configure",
