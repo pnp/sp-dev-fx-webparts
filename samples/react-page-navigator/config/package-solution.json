@@ -10,15 +10,15 @@
     },
     "name": "react-page-navigator",
     "id": "065ee566-e00d-4058-bbfd-356c8d9a8005",
-    "version": "1.7.0.0",
+    "version": "1.9.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "metadata": {
       "shortDescription": {
-        "default": "navigator description"
+        "default": "This web part fetches all the automatically added header anchor tags in a SharePoint page and displays them in a navigation component."
       },
       "longDescription": {
-        "default": "navigator description"
+        "default": "This web part fetches all the automatically added header anchor tags in a SharePoint page and displays them in a navigation component. When added to a vertical section it can be used as a contents table for the page."
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -26,10 +26,10 @@
     },
     "features": [
       {
-        "title": "navigator Feature",
+        "title": "Page navigator",
         "description": "The feature that activates elements of the navigator solution.",
         "id": "021884c2-d7b3-4937-9d58-5ae47e1adfb7",
-        "version": "1.7.0.0"
+        "version": "1.9.0.0"
       }
     ]
   },

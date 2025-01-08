@@ -1,4 +1,3 @@
-//import '@pnp/polyfill-ie11';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -67,9 +66,8 @@ export default class CarouselWebPart extends BaseClientSideWebPart<ICarouselWebP
         this.listsDropdownDisabled = false;
         this.context.propertyPane.refresh();
       }
-
     } catch (error) {
-
+      console.log('error', error);
     }
   }
 

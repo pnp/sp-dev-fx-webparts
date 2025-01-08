@@ -184,7 +184,7 @@ class Year extends React.Component<IYearProps> {
     let { date, ...props } = this.props;
     let range = this.range(date);
     const months = [];
-    const firstMonth = dates.startOf(date, 'year');
+    const firstMonth = dates.startOf(new Date(this.props.date), 'year');
 
     for (let i = 0; i < 12; i++) {
       months.push(

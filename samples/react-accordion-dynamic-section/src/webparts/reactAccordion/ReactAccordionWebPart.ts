@@ -319,7 +319,7 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<
                   disabled: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  context: this.context,
+                  context: this.context as any,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: "listPickerFieldId",

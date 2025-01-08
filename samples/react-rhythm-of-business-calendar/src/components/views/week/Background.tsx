@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ActionButton, css, FontSizes, FontWeights, IButtonProps, IButtonStyles, IconButton, IStackItemStyles, mergeStyleSets, Stack, StackItem, useTheme } from '@fluentui/react';
 import { MomentRange, now } from 'common';
 import { ViewKeys } from 'model';
-import { useWindowSize } from '../../hooks';
+import { useSettings, useWindowSize } from '../../hooks';
 import { IViewCommands } from '../IViewCommands';
 import { blockStyles } from './blockStyles';
 
@@ -89,6 +89,10 @@ export const Background: FC<IProps> = ({ anchorDate, commands: { newEvent, setAn
 
                 const { width } = useWindowSize();
 
+                const [
+                    userHasEditPermisison
+                ] = useSettings();
+
                 const newEventButtonProps: IButtonProps = useMemo(() => {
                     return {
                         className: css(styles.newEventButton, 'ms-motion-fadeIn'),
@@ -108,8 +112,8 @@ export const Background: FC<IProps> = ({ anchorDate, commands: { newEvent, setAn
                                 </ActionButton>
                             </StackItem>
                             {width >= 640
-                                ? <ActionButton {...newEventButtonProps}>{strings.Command_NewEvent.Text}</ActionButton>
-                                : <IconButton {...newEventButtonProps} />
+                                ? userHasEditPermisison && <ActionButton {...newEventButtonProps}>{strings.Command_NewEvent.Text}</ActionButton>
+                                : userHasEditPermisison && <IconButton {...newEventButtonProps} />
                             }
                         </Stack>
                     </StackItem>

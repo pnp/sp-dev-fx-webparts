@@ -10,5 +10,6 @@ export interface IViewDescriptor {
     title: string;
     dateRotatorController: IDateRotatorController;
     dateRange: (anchorDate: Moment, config: Configuration) => MomentRange;
-    renderer: (props: IViewProps) => JSX.Element;
+    renderer: ((props: IViewProps) => JSX.Element) | React.ComponentClass<IViewProps>;
+    
 }

@@ -20,7 +20,7 @@ Contains SPFx web part & Azure Function with below functionalities
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
 ![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -58,10 +58,10 @@ Steps to follow:
   6. After registering the application, you can find the application (client) ID and Directory (tenant) ID from the overview menu option of Entra ID App. Make a note of the values for use later.
   7. Select Certificates & Secrets in the manage section of Entra ID app created and select New Client Secret. Select Recommended 6 months in the Expires field. This new secret will be valid for six months. You can also choose different values such as:
 
-      - 03 months
-      - 12 months
-      - 24 months
-      - Custom start date and end date.
+     - 03 months
+     - 12 months
+     - 24 months
+     - Custom start date and end date.
 
   8. Select API Permissions option of Entra ID app created.
   9. Select Add a permission.
@@ -93,10 +93,11 @@ Steps to follow:
   ```
 
   2. Provide the values in web part properties as per below
-      - Provide the Azure function app URL(without /api/m365servicehealth) in API Base URL property
-      - Provide Application ID URI(created during 'Expose an API' step) in Audience property
 
-      ![Web Part Properties](./assets/WebPartProperties.png)
+     - Provide the Azure function app URL(without /api/m365servicehealth) in API Base URL property
+     - Provide Application ID URI(created during 'Expose an API' step) in Audience property
+
+     ![Web Part Properties](./assets/WebPartProperties.png)
 
 ## Contributors
 
@@ -104,10 +105,12 @@ Steps to follow:
 
 ## Version history
 
-| Version | Date              | Comments                            |
-| ------- | ----------------- | ----------------------------------- |
-| 1.0     | February 15, 2023 | Initial release                     |
-| 2.0     | February 10, 2024 | Implementation using Azure Function |
+| Version | Date               | Comments                            |
+| ------- | ------------------ | ----------------------------------- |
+| 1.0     | February 15, 2023  | Initial release                     |
+| 2.0     | February 10, 2024  | Implementation using Azure Function |
+| 3.0     | September 05, 2024 | Bug fix and SPFx version upgrade    |
+| 3.1     | October 05, 2024   | SPFx version upgrade                |
 
 ## Minimal Path to Awesome
 

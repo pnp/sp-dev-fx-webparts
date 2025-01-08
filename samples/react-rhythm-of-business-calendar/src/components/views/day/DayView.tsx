@@ -23,6 +23,7 @@ const eventCommandsStackItemStyles: IStackItemStyles = {
 interface IEventCardProps {
     occurrence: EventOccurrence;
     commands: IEventCommands,
+    //channels: readonly ChannelsConfigurations[];
 }
 
 const EventCard: FC<IEventCardProps> = ({ occurrence, commands }) => {
@@ -54,7 +55,7 @@ const EventCard: FC<IEventCardProps> = ({ occurrence, commands }) => {
 
 const DayView: FC<IViewProps> = ({
     cccurrences,
-    eventCommands,
+    eventCommands
 }) => {
     if (cccurrences.length === 0) {
         return <Text variant='large'>{strings.DayView.NoEventsMessage}</Text>
@@ -68,6 +69,7 @@ const DayView: FC<IViewProps> = ({
                         key={`${occurrence.event.id}-${occurrence.start.format('L')}`}
                         occurrence={occurrence}
                         commands={eventCommands}
+                       // channels ={channels}
                     />
                 )}
             </FocusZone>

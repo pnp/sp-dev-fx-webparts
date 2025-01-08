@@ -2,10 +2,9 @@ import * as React from "react";
 import { IHolidaysCalendarState } from "../interfaces/IHolidaysCalendarState";
 import { HolidaysCalendarService } from "../../../common/services/HolidaysCalendarService";
 import HolidaysList from "./HolidaysList/HolidaysList";
-import { Alert } from "@fluentui/react-components/unstable";
 import { IHolidaysCalendarProps } from "./IHolidaysCalendarProps";
-import { FluentProvider, webLightTheme } from "@fluentui/react-components";
-import { DismissCircleRegular } from "@fluentui/react-icons";
+import { Button, FluentProvider, MessageBar, MessageBarActions, MessageBarBody, webLightTheme } from "@fluentui/react-components";
+import { DismissRegular } from "@fluentui/react-icons";
 import csvDownload from "json-to-csv-export";
 const HolidaysCalendar = (props: IHolidaysCalendarProps): JSX.Element => {
   const [service] = React.useState<HolidaysCalendarService>(new HolidaysCalendarService(props.spService, props.graphService));
@@ -27,6 +26,7 @@ const HolidaysCalendar = (props: IHolidaysCalendarProps): JSX.Element => {
       await service.addLeaveInCalendar(state.employeeInfo, selectedItem[0]);
       setState((prevState: IHolidaysCalendarState) => ({ ...prevState, message: { show: true, intent: "success" } }));
     } catch (ex) {
+      console.log(ex);
       setState((prevState: IHolidaysCalendarState) => ({ ...prevState, message: { show: true, intent: "error" } }));
     }
   };
@@ -52,25 +52,26 @@ const HolidaysCalendar = (props: IHolidaysCalendarProps): JSX.Element => {
     })();
   }, []);
   return (
-    <>
-      <FluentProvider theme={webLightTheme}>
-        {state.message.show && (
-          <Alert intent={state.message.intent} action={{ icon: <DismissCircleRegular aria-label="dismiss message" onClick={handleDismissClick} /> }}>
-            {state.message.intent === "success" ? "Holiday added in calendar" : "Some error occurred"}
-          </Alert>
-        )}
-        {state.holidayListItems.length > 0 && (
-          <HolidaysList
-            items={state.holidayListItems}
-            onCalendarAddClick={handleCalenderAddClick}
-            onDownloadItems={handleDownload}
-            showDownload={props.showDownload}
-            title={props.title}
-            showFixedOptional={props.showFixedOptional}
-          />
-        )}
-      </FluentProvider>
-    </>
+    <FluentProvider theme={webLightTheme}>
+      {state.message.show && (
+        <MessageBar intent={state.message.intent}>
+          <MessageBarBody>{state.message.intent === "success" ? "Holiday added in calendar" : "Some error occurred"}</MessageBarBody>
+          <MessageBarActions
+            containerAction={<Button aria-label="dismiss" appearance="transparent" icon={<DismissRegular />} onClick={handleDismissClick} />}
+          ></MessageBarActions>
+        </MessageBar>
+      )}
+      {state.holidayListItems.length > 0 && (
+        <HolidaysList
+          items={state.holidayListItems}
+          onCalendarAddClick={handleCalenderAddClick}
+          onDownloadItems={handleDownload}
+          showDownload={props.showDownload}
+          title={props.title}
+          showFixedOptional={props.showFixedOptional}
+        />
+      )}
+    </FluentProvider>
   );
 };
 

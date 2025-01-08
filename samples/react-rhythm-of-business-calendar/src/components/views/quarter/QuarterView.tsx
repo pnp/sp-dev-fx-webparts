@@ -14,7 +14,7 @@ import { getFiscalQuarter, getFiscalYear } from './Utils';
 
 import { ViewNames as strings } from 'ComponentStrings';
 
-const QuarterView: FC<IViewProps> = ({ anchorDate, cccurrences, refiners, selectedRefinerValues, viewCommands, eventCommands }) => {
+const QuarterView: FC<IViewProps> = ({ anchorDate, cccurrences, refiners, selectedRefinerValues, viewCommands, eventCommands, selectedTemplateKeys }) => {
     const { active: config } = useConfigurationService();
 
     const groupByRefiner = config.useRefiners ? refiners.find(r => r.id === config.quarterViewGroupByRefinerId) : undefined;
@@ -48,6 +48,7 @@ const QuarterView: FC<IViewProps> = ({ anchorDate, cccurrences, refiners, select
                             selectedRefinerValues={selectedRefinerValues}
                             onActivate={onActivate}
                             viewCommands={viewCommands}
+                            selectedTemplateKeys={selectedTemplateKeys}
                         />
                     </StackItem>
                 )}
@@ -55,6 +56,7 @@ const QuarterView: FC<IViewProps> = ({ anchorDate, cccurrences, refiners, select
             <EventDetailsCallout
                 commands={eventCommands}
                 componentRef={detailsCallout}
+                // channels={channels}
             />
         </div>
     );
@@ -69,8 +71,8 @@ export const QuarterViewDescriptor: IViewDescriptor = {
         nextIconProps: { iconName: 'ChevronDown' },
         previousDate: date => date.clone().subtract(3, 'months'),
         nextDate: date => date.clone().add(3, 'months'),
-        dateString: (date, { fiscalYearSartMonth }) => {
-            const fy = getFiscalYear(date, fiscalYearSartMonth);
+        dateString: (date, { fiscalYearSartMonth, fiscalYearStartYear }) => {
+            const fy = getFiscalYear(date, fiscalYearSartMonth,fiscalYearStartYear);
             const qtr = getFiscalQuarter(date, fiscalYearSartMonth);
             return `FY${fy} Q${qtr}`;
         }

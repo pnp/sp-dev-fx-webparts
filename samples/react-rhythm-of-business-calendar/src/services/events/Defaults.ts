@@ -8,7 +8,7 @@ const Environments = {
     PROD: { TeamsAppId: Guid.parse('1e92a7c2-d849-4fa7-bd2d-8fb9f876609d') }
 };
 
-const Environment = Environments.LOCAL;
+const Environment = Environments.PROD;
 
 export const Defaults = {
     TeamsAppId: Environment.TeamsAppId

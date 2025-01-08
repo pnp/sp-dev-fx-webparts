@@ -64,8 +64,8 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     if (fields.length) {
       let listItems = await this._services.getListItems(this.props.list, fields);
       /** Format list items for data grid */
-      listItems = listItems && listItems.map(item => ({
-        id: item.Id, ...fields.reduce((ob, f) => {
+      listItems = listItems && listItems.map((item: any) => ({
+        id: item.Id, ...fields.reduce((ob: { [key: string]: any }, f) => {
           if (f.key === "Attachments") {
             ob[f.key] = this.formatColumnValue(item["AttachmentFiles"], f.fieldType);
           }
@@ -135,7 +135,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         value = JSON.parse(value).DisplayName;
         break;
       case 'SP.Field':
-        value = value?.map(v => <><RenderImageOrLink key={v['odata.id']} url={v['ServerRelativeUrl']} description={v['FileName']}></RenderImageOrLink><br /></>);
+        value = value?.map((v: any) => <><RenderImageOrLink key={v['odata.id']} url={v['ServerRelativeUrl']} description={v['FileName']}></RenderImageOrLink><br /></>);
         break;
       default:
         break;
@@ -165,7 +165,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
 
   private exportDataFormatter(fields: Array<IPropertyPaneDropdownOption & { fieldType: string }>, listItems: any[], cellFormatterFn: (value: any, type: string) => any) {
     return listItems && listItems.map(item => ({
-      ...fields.reduce((ob, f) => {
+      ...fields.reduce((ob: { [key: string]: any }, f) => {
         ob[f.text] = item[f.key] ? cellFormatterFn(item[f.key], f.fieldType) : '-';
         return ob;
       }, {})
@@ -200,7 +200,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     const { sortingFields, sortDirection } = this.state;
     const isAsc = sortDirection === 'asc' ? 1 : -1;
     let sortFieldDetails = this.props.fields.filter(f => f.key === sortingFields)[0];
-    let sortFn: (a, b) => number;
+    let sortFn: (a: any, b: any) => number;
     switch (sortFieldDetails.fieldType) {
       case 'SP.FieldDateTime':
         sortFn = (a, b) => ((new Date(a[sortingFields]).getTime() > new Date(b[sortingFields]).getTime()) ? 1 : -1) * isAsc;

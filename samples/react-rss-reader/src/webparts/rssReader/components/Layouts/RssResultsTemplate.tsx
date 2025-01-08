@@ -39,14 +39,16 @@ export default class RssResultsTemplate extends React.Component<IRssResultsTempl
 
   }
 
-  // public componentWillReceiveProps(nextProps: IRssResultsTemplateProps): void {
-  public componentDidUpdate(prevProps: any): void {
-
-    this._updateTemplate(this.props);
-
+  public componentDidUpdate(prevProps: IRssResultsTemplateProps): void {
+    // Only update template if props have changed
+    if (
+      prevProps.templateContent !== this.props.templateContent ||
+      prevProps.templateContext !== this.props.templateContext
+    ) {
+      this._updateTemplate(this.props);
+    }
   }
-
-  private async _updateTemplate(props: IRssResultsTemplateProps): Promise<void> {
+    private async _updateTemplate(props: IRssResultsTemplateProps): Promise<void> {
 
     const templateContent = props.templateContent;
 

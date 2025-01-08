@@ -6,7 +6,7 @@ const Environments = {
     PROD: { Prefix: '' }
 };
 
-const Environment = Environments.LOCAL;
+const Environment = Environments.PROD;
 const AppPrefix = "RoB Calendar";
 
 const combine = (...segments: string[]) => segments.join(' ').trim();
@@ -18,6 +18,7 @@ export const Defaults = {
         Events: title('Events'),
         Refiners: title('Refiners'),
         RefinerValues: title('Refiner Values'),
-        Approvers: title('Approvers')
+        Approvers: title('Approvers'),
+       // ChannelsConfigurations: title('ChannelsConfigurations')
     }
 };

@@ -6,7 +6,8 @@
         "name": "spsecurity-webpart-3-client-side-solution",
         "id": "788271fb-ee9b-40df-8381-eb3dc70d1982",
         "version": "1.0.4.0",
-        "webApiPermissionRequests": [{
+        "webApiPermissionRequests": [
+            {
                 "resource": "Microsoft Graph",
                 "scope": "Group.Read.All"
             },
@@ -14,7 +15,37 @@
                 "resource": "Microsoft Graph",
                 "scope": "GroupMember.Read.All"
             }
-        ]
+        ],
+        "developer": {
+            "name": "Russel Gove",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "websiteUrl": "https://github.com/russgove",
+            "mpnId": "Undefined-1.20.0"
+        },
+        "metadata": {
+            "shortDescription": {
+              "default": "Security Grid Web Part"
+            },
+            "longDescription": {
+              "default": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+          },
+          "features": [
+            {
+              "title": "Security Grid Web Part Feature",
+              "description": "The feature that activates Security Grid Web Part from the react-securitygrid solution.",
+              "id": "41e37f03-2ea8-4f19-b77a-f2121a1e7c45",
+              "version": "1.0.4.0",
+              "componentIds": [
+                "41e37f03-2ea8-4f19-b77a-f2121a1e7c45"
+              ]
+            }
+          ]
+            
     },
     "paths": {
         "zippedPackage": "solution/spsecurity-webpart-3.sppkg"

@@ -9,3 +9,95 @@
         padding-right: 20px;
     }
 }
+
+// .hellotest {
+//     border:1px solid red;
+// }
+
+.shadow{
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.6);
+}
+.search {
+    float: right;
+  width: 22%;
+  min-width: 180px;
+}
+// .filterDropdown{
+//     float: right;
+//   width: 22%;
+// //   margin-right: 5.5px;
+//   margin-right: 8px;
+//   margin-top: -28px;
+//   margin-bottom: 14px;
+
+// }
+.blankSearch{
+    float: left;
+  width: 52%;
+}
+.searchRow{
+    width: 100%;
+}
+.searchRow:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+// .exactMatchRow{
+//     width: 100%;
+//     margin-top: -26px !important;
+//     margin-bottom: 26px;
+// }
+.blankMatch{
+    float: left;
+    width: 90%;
+}
+.exactMatchCol{
+    float: right;
+    width: 10%;
+}
+.exactMatchBtn:hover {
+    background-color: rgb(123, 115, 115);
+    //color: black ;
+}
+.exactMatchBtn{
+    height: 16px;
+    width: 15px !important;
+    background-color: white ;
+}
+.normalMatchBtn{
+    height: 16px;
+    width: 15px !important;
+    background-color: #0078d4 !important;
+}
+.showDropdown{
+    display: block;
+}
+.hideDropdown{
+    display: none;
+}
+
+.searchRow {
+    // display: flex;
+    align-items: center;
+}
+
+.filterDropdown {
+    margin-right: 10px; /* Adjust as necessary to create space between dropdown and search box */
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+}
+
+.datePickerList {
+    margin-right: 10px;
+    width: 160px;
+}

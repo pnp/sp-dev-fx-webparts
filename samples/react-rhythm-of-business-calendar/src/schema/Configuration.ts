@@ -1,9 +1,10 @@
 import { Guid } from "@microsoft/sp-core-library";
 import { User } from "common";
 import { ListItemEntity } from "common/sharepoint";
-import { ViewKeys } from "model";
+import { ViewKeys, ViewYearFYKeys, ListViewKeys } from "model";
 import { Moment } from "moment-timezone";
 import { CurrentSchemaVersion, IRhythmOfBusinessCalendarSchema, RhythmOfBusinessCalendarSchema } from "./RhythmOfBusinessCalendarSchema";
+import { TemplateViewKeys } from "model/TemplateViewKeys";
 
 interface IState {
     schemaVersion: number;
@@ -15,6 +16,12 @@ interface IState {
     quarterViewGroupByRefinerId: number;
     useApprovals: boolean;
     allowConfidentialEvents: boolean;
+    useApprovalsTeamsNotification: boolean;
+    useApprovalsEmailNotification: boolean;
+    fiscalYearStartYear: ViewYearFYKeys;
+    listViewColumn: ListViewKeys[];
+    templateView: TemplateViewKeys[];
+    useAddToOutlook: boolean;
 }
 
 export class Configuration extends ListItemEntity<IState> {
@@ -32,6 +39,12 @@ export class Configuration extends ListItemEntity<IState> {
         this.state.quarterViewGroupByRefinerId = undefined;
         this.state.useApprovals = false;
         this.state.allowConfidentialEvents = false;
+        this.state.useApprovalsTeamsNotification = false;
+        this.state.useApprovalsEmailNotification = false;
+        this.state.fiscalYearStartYear = ViewYearFYKeys["Next Year"];
+        this.state.listViewColumn = [ListViewKeys["displayName"]];
+        this.state.useAddToOutlook = false;
+        this.state.templateView = [TemplateViewKeys["eventTitle"]];
 
         this._schema = RhythmOfBusinessCalendarSchema;
     }
@@ -66,6 +79,25 @@ export class Configuration extends ListItemEntity<IState> {
 
     public get allowConfidentialEvents(): boolean { return this.state.allowConfidentialEvents; }
     public set allowConfidentialEvents(val: boolean) { this.state.allowConfidentialEvents = val; }
+    
+    public get useApprovalsTeamsNotification(): boolean { return this.state.useApprovalsTeamsNotification; }
+    public set useApprovalsTeamsNotification(val: boolean) { this.state.useApprovalsTeamsNotification = val; }
+    
+    public get useApprovalsEmailNotification(): boolean { return this.state.useApprovalsEmailNotification; }
+    public set useApprovalsEmailNotification(val: boolean) { this.state.useApprovalsEmailNotification = val; }
+
+    public get fiscalYearStartYear(): ViewYearFYKeys { return this.state.fiscalYearStartYear; }
+    public set fiscalYearStartYear(val: ViewYearFYKeys) { this.state.fiscalYearStartYear = val; }
+
+    public get listViewColumn(): ListViewKeys[] { return this.state.listViewColumn; }
+    public set listViewColumn(val: ListViewKeys[]) { this.state.listViewColumn = val; }
+
+    public get templateView(): TemplateViewKeys[] { return this.state.templateView; }
+    public set templateView(val: TemplateViewKeys[]) { this.state.templateView = val; }
+    
+    public get useAddToOutlook(): boolean { return this.state.useAddToOutlook; }
+    public set useAddToOutlook(val: boolean) { this.state.useAddToOutlook = val; }
+
 }
 
 export type ConfigurationMap = Map<number, Configuration>;

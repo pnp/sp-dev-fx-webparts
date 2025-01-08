@@ -5,9 +5,9 @@ import { ISpoFiled } from '../entities';
 import { getSp } from "../utils";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const useList = (listId: string) => {
-    const LOG_SOURCE: string = 'useList';
-    const MAX_BATCH_OPERATIONS = 1000;
+export const useList = (listId: string, chunkSize: number) => {
+    const LOG_SOURCE = 'useList';
+    const MAX_BATCH_OPERATIONS = chunkSize;
 
     const sp: SPFI = React.useMemo(() => getSp(), []);
 
@@ -15,45 +15,40 @@ export const useList = (listId: string) => {
     const [fields, setFields] = React.useState<ISpoFiled[]>([]);
 
     const getList = React.useCallback(async (listId: string): Promise<IListInfo> => {
-        if (!sp) return undefined;
+        if (!sp || !listId) return undefined;
         return await sp.web.lists
             .getById(listId)
             .select("Title", "ParentWebUrl")();
     }, [sp]);
 
     const getListColumns = React.useCallback(async (listId: string): Promise<ISpoFiled[]> => {
-        if (!sp) return undefined;
+        if (!sp || !listId) return undefined;
         const fields: IFieldInfo[] = await sp.web
             .lists
             .getById(listId)
             .fields();
 
-        const fieldArray: ISpoFiled[] = [];
-        fields.map(field => {
-            if (field.ReadOnlyField === false &&
-                field.Hidden === false &&
+        return fields
+            .filter((field) => !field.ReadOnlyField &&
+                !field.Hidden &&
                 field.FieldTypeKind !== FieldTypes.Attachments &&
-                field.FieldTypeKind !== FieldTypes.Computed
-            ) {
-                fieldArray.push({
-                    InternalName: field.InternalName,
-                    Title: field.Title,
-                    Required: field.Required,
-                    Type: field.TypeAsString
-                })
-            }
-        });
-        return fieldArray;
+                field.FieldTypeKind !== FieldTypes.Computed)
+            .map((field) => ({
+                InternalName: field.InternalName,
+                Title: field.Title,
+                Required: field.Required,
+                Type: field.TypeAsString
+            }));
     }, [sp]);
 
     const addListItemsWithBatching = React.useCallback(async (listInfo: IListInfo, items: { [name: string]: unknown; }[]): Promise<IListItemFormUpdateValue[][]> => {
-        if (!sp) return;
+        if (!sp || !listId) return undefined;
         const [batchedWeb, execute] = sp.web.batched();
         const result: IListItemFormUpdateValue[][] = [];
-        items.map(async row => {
+        items.forEach((row) => {
             const formValues: IListItemFormUpdateValue[] = [];
-            Object.keys(row).map(async key => formValues.push({ FieldName: key, FieldValue: row[key].toString() }));
-            await batchedWeb.lists
+            Object.keys(row).forEach((key) => formValues.push({ FieldName: key, FieldValue: row[key]?.toString() ?? "" }));
+            batchedWeb.lists
                 .getById(listId)
                 .addValidateUpdateItemUsingPath(formValues,
                     `${listInfo.ParentWebUrl !== '/' ? listInfo.ParentWebUrl : ''}/Lists/${listInfo.Title}`)
@@ -87,7 +82,7 @@ export const useList = (listId: string) => {
             Logger.write(`${LOG_SOURCE} - addListItems - ${error.message}`, LogLevel.Error);
         }
         return result;
-    }, [sp]);
+    }, [sp, MAX_BATCH_OPERATIONS]);
 
     React.useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises

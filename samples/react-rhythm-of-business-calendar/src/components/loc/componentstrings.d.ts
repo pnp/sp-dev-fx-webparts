@@ -29,6 +29,7 @@ declare module 'ComponentStrings' {
         Week: string;
         Month: string;
         Quarter: string;
+        List: string;
     }
 
     interface IViewRouteStrings {
@@ -125,6 +126,8 @@ declare module 'ComponentStrings' {
         Command_AddToOutlook_Recurring_Series: IButtonStrings;
         Command_AddToOutlook_Recurring_Instance: IButtonStrings;
         Command_GetLink: IButtonStrings;
+        Command_Share: IButtonStrings;
+        Command_Shared: IButtonStrings;
     }
 
     interface IEventPanelStrings {
@@ -195,6 +198,13 @@ declare module 'ComponentStrings' {
             NoReasonGiven: string;
             EventDetailsHeading: string;
         },
+        ApprovedEmail: {
+            Subject: string;
+            Intro: string;
+            EventLinkText: string;
+            CommentGiven: string;
+            EventDetailsHeading: string;
+        },
         EventDetails: {
             EventName: string;
             Location: string;
@@ -234,6 +244,33 @@ declare module 'ComponentStrings' {
         Command_Discard: IButtonStrings;
         Command_Delete: IButtonStrings;
     }
+     //enable to share event
+
+    // interface IChannelsConfigurationPanelStrings {
+    //     //Field_Title_DisplayMode: ITextFieldStrings;
+    //    // Field_Title_EditMode: ITextFieldStrings;
+    //     Field_ChannelName_DisplayMode: ITextFieldStrings;               //Newly added
+    //     Field_ChannelName_EditMode: ITextFieldStrings;                  // Newly added
+    //     Field_TeamsId_DisplayMode: ITextFieldStrings;
+    //     Field_TeamsId_EditMode: ITextFieldStrings;
+    //     Field_ChannelId_DisplayMode: ITextFieldStrings;
+    //     Field_ChannelId__EditMode: ITextFieldStrings;
+    //     Field_TeamsName_DisplayMode: ITextFieldStrings;
+    //     Field_ActualChannelName_DisplayMode: ITextFieldStrings;
+    //     Field_Users: IFieldStrings;
+    //     ApprovalExplanation: string;
+    //     AnyValue: string;
+    //     AnyRefinerValue: string;
+    //     ValueForRefiner: string;
+    //     ValueListConjunction: string;
+    //     Command_Edit: IButtonStrings;
+    //     Command_Save: IButtonStrings;
+    //     Command_Discard: IButtonStrings;
+    //     Command_Delete: IButtonStrings;
+    //     GetTeams_Info: string;
+    //     GetChannel_Info: string;
+    //     GetName_Info: string;
+    // }
 
     interface IConfigureApproversPanelStrings {
         HeaderText: string;
@@ -249,7 +286,25 @@ declare module 'ComponentStrings' {
         Command_Edit: IButtonStrings;
         Command_View: IButtonStrings;
     }
-
+    // interface IConfigureChannelsPanelStrings {
+    //     HeaderText: string;
+    //     //Column_Title: string;
+    //     Column_ChannelName: string;         //Newly added
+    //     Column_TeamsId: string;             //Newly added
+    //     Column_ChannelId: string;           //Newly added
+    //     Column_TeamsName: string;
+    //     Column_ActualChannelName: string;          //Newly added
+    //     Column_Users: string;
+    //     AnyValue: string;
+    //     ValueListConjunction: string;
+    //     Message_Teams: string;
+    //    // AdminApproversMessage_SharePoint: string;
+    //     NoChannelsDefined: string;
+    //     Command_Close: IButtonStrings;
+    //     Command_Add: IButtonStrings;
+    //     Command_Edit: IButtonStrings;
+    //     Command_View: IButtonStrings;
+    // }
     interface IMyApprovalsPanelStrings {
         HeaderText: string;
         NoEventsToApprove: string;
@@ -293,12 +348,24 @@ declare module 'ComponentStrings' {
         Field_AllowConfidentialEvents: IToggleFieldStrings;
         Field_Refiners: IFieldStrings;
         Command_ConfigureApprovers: IButtonStrings;
+       // Command_ConfigureChannels: IButtonStrings;
         Command_AddRefiner: IButtonStrings;
         Command_EditRefiner: IButtonStrings;
         Command_ReorderRefiner: IButtonStrings;
         Command_Edit: IButtonStrings;
         Command_Save: IButtonStrings;
         Command_Back: IButtonStrings;
+        Field_ShowFiscalYear: IFieldStrings;
+        Field_UseApprovalsEmailNotification:IToggleFieldStrings;
+        Field_UseApprovalsTeamsNotification:IToggleFieldStrings;
+       // Heading_ChannelsSettings: string;
+        Heading_ApprovalSettings: string;
+        Heading_GeneralSettings: string;
+        Heading_TemplateSettings: string
+        TeamsChannel_MessageInfo: string;
+        Field_UseAddToOutlook: IToggleFieldStrings;
+        Field_ListViewColumn: IFieldStrings;
+        Field_TemplateView: IFieldStrings;
     }
 
     interface ICopyLinkDialogStrings {
@@ -358,11 +425,18 @@ declare module 'ComponentStrings' {
         ApprovalDialog: IApprovalDialogStrings;
         ApproversPanel: IApproversPanelStrings;
         ConfigureApproversPanel: IConfigureApproversPanelStrings;
+      //  ConfigureChannelsPanel: IConfigureChannelsPanelStrings;
         MyApprovalsPanel: IMyApprovalsPanelStrings;
         RefinerPanel: IRefinerPanelStrings;
         SettingsPanel: ISettingsPanelStrings;
         CopyLinkDialog: ICopyLinkDialogStrings;
         Validation: IValidationStrings;
+      //  ChannelsPanel: IChannelsConfigurationPanelStrings;
+      ProductivityStudioLogo : IProductivityStudioLogoStrings;
+    }
+
+    interface IProductivityStudioLogoStrings {
+        Command_ProductivityLogoLink: string;
     }
 
     const strings: IComponentStrings;

@@ -10,7 +10,7 @@
             "Service Health for Microsoft 365 solution show the health status for all the M365 services"
         ],
         "creationDateTime": "2023-02-03",
-        "updateDateTime": "2024-02-10",
+        "updateDateTime": "2024-09-05",
         "products": [
             "SharePoint"
         ],
@@ -21,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.1"
+                "value": "1.19.0"
             }
         ],
         "thumbnails": [

@@ -1,5 +1,6 @@
 import { IManyToManyRelationship, IManyToOneRelationship, IOneToManyRelationship, ManyToManyRelationship, ManyToOneRelationship, OneToManyRelationship } from "common"
 import { ListItemEntity } from "common/sharepoint";
+import sanitizeHTML from 'sanitize-html';
 
 const isOneToManyRelationship = <T>(obj: any): obj is IOneToManyRelationship<T> =>
     obj instanceof OneToManyRelationship
@@ -100,4 +101,18 @@ export const setValue = <E extends ListItemEntity<any>, P extends keyof E>(entit
     } else {
         entity[propertyName] = val as E[P];
     }
+};
+
+export const renderSanitizedHTML = (value: string) => {
+    return sanitizeHTML(value, {
+        allowedTags: ['div', 'span', 'strong', 'b', 'p', 'a', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'u',
+            'strike', 'ol', 'ul', 'li', 'font', 'br', 'hr', 's', 'em', 'img', "em", "small",
+            "table", "tbody", "td", "tfoot", "th", "thead", "tr"],
+        selfClosing: ['img', 'br', 'hr'],
+        allowedAttributes: {
+            a: ['href', 'target', 'data-interception'],
+            img: ['src'],
+            '*': ['style']
+        }
+    });
 };
