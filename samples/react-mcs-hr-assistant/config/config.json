@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hr-assistant-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hrAssistant/HrAssistantWebPart.js",
+          "manifest": "./src/webparts/hrAssistant/HrAssistantWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HrAssistantWebPartStrings": "lib/webparts/hrAssistant/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
