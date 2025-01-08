@@ -82,96 +82,37 @@ When configuring the canvas app registration, pay attention to the following det
 
 
 
-## Step 3 - Download and configure the SharePoint SPFx component
+## Step 3 - Download and configure the SharePoint SPFx web part
 
-At this point you have a choice whether to configure and build the component yourself, or use the pre-built package that is included with this sample. Since this is only a reference sample, we encourage you to build the component yourself, but if you choose to deploy the pre-built package, skip ahead to **step 4**
 
-1. Make sure your development environment includes the following tools and libraries:
+Make sure your development environment includes the following tools and libraries:
    1. VS Code (or a similar code editor)
-   2. A version of Node.JS which is [supported by the SPFx framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/compatibility#spfx-development-environment-compatibility) (for this sample, use either v16 or v18)
+   2. A version of Node.JS which is [supported by the SPFx framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/compatibility#spfx-development-environment-compatibility) (for this sample, use v18)
    3. A [Git](https://git-scm.com/downloads)  client for your OS
-2. If the prerequisites above are satisfied, clone [CopilotStudioSamples (github.com)](https://github.com/microsoft/CopilotStudioSamples) into a local folder. 
-
-   In this repo, you will find the SharePointSSOComponent project, which is a code sample for a SharePoint SPFx component (an Application Customizer), which renders a copilot at the bottom of all pages on a specific site. This SPFx component uses the MSAL library to perform a silent login and shares the user’s token with Microsoft Copilot Studio, providing a seamless single sign-on experience.
-3. Using Visual Studio Code, open the local folder to which you have cloned the repository. The folder structure should look like below:
-
-<p align="center">
-  <img src="./images/folderStructure.png" alt="The project folder structure">
-  <br>
-  <em>The Project Folder Structure</em>
-</p>
+   4. Clone this repo 
+   5. Run the following commands to package the solution
+      1. `npm install`
+      2. `gulp bundle --shp`
+      3. `gulp package-solution --ship`
 
 
-1. Locate elements.xml under SharePointSSOComponent/sharepoint/assets, and update the values in the file, using one of the two following options:
 
-   *Option 1*: run the following python script and provide values based values from Steps 1 & 2 
-   
-   ```python
-   python .\populate_elements_xml.py
-   ```
-    
-   *Option 2*: manually replace placeholders in elements.xml with actual values. ClientSideComponentProperties accepts an escaped JSON string. 
-
-    ```xml
-    ClientSideComponentProperties="{&quot;botURL&quot;:&quot;YOUR_BOT_URL&quot;,&quot;customScope&quot;:&quot;YOUR_CUSTOM_SCOPE&quot;,&quot;clientID&quot;:&quot;YOU_CLIENT_ID&quot;,&quot;authority&quot;:&quot;YOUR_AAD_LOGIN_URL&quot;,&quot;greet&quot;:TRUE,&quot;buttonLabel&quot;:&quot;CHAT_BUTTON_LABEL&quot;,&quot;botName&quot;:&quot;BOT_NAME&quot;}"
-    ```
+### Web part properties configurations
 
 
-    *Option 3*: leave elements.xml without changing any details, build and deploy the component on a site, and later configure the component by running [Configure-MCSForSite.ps1](./Configure-MCSForSite.ps1) (see instructions on how to run this script in step 4)
-
-
-    ### Property details
-
-    |Property Name|Explanation|Mandatory?|
-    | :- | :- | :- |
-    |botURL|The token endpoint for MCS. This can be found in the MCS designer, under Settings -> Channels -> Mobile App|Yes|
-    |customScope|<p>The scope defined for the custom API in the copilot app registration (Step 1). For example:</p><p></p><p>api://35337616-eee1-4049-9d37-a78b24c3bef2/SPO.Read</p>|Yes|
-    |clientID|The Application ID from the Canvas app registration configured in step 2|Yes|
-    |authority|<p>The login URL for your tenant. For example:<br>https://login.microsoftonline.com/mytenant.onmicrosoft.com|Yes|
-    |greet|Should the copilot greet users at the beginning of the conversation|No|
-    |buttonLabel|The label for the button opening the chat dialog|No|
-    |botName|The title for the copilot dialog|No|
+|Property Name|Explanation|Mandatory?|
+| :- | :- | :- |
+|BotURL|The token endpoint for MCS. This can be found in the MCS designer, under Settings -> Channels -> Mobile App|Yes|
+|API Scope|<p>The scope defined for the custom API in the copilot app registration (Step 1). For example:</p><p></p><p>api://35337616-eee1-4049-9d37-a78b24c3bef2/SPO.Read</p>|Yes|
+|Client ID|The Application ID from the Canvas app registration configured in step 2|Yes|
+|Tenant Name|<p>The name of the tenant. For example:mytenant|Yes|
+|greet|Should the copilot greet users at the beginning of the conversation|No|
+|Avatar image used for bot|Direct link for the avatar image|No|
+|Avatar initials used for bot||bot inititals used when no image present|
 
 <br/>
 
-5. after populating properties in elements.xml, or if you left elements.xml untouched and plan to run Configure-MCSForSite.ps1 after building and deploying the component, open a new terminal in VS Code and navigate to the solution folder (the SharePointSSOComponent folder). Run the following commands:
+After adding the web part on the page and configure with required properties, you will see the chat canvas for your copilot. Based on the logic of your copilot, users will be signed in automatically at the beginning of the conversation, or when a specific event occurs. 
 
-    ```shell
-    npm install
-    gulp bundle --ship
-    gulp package-solution --ship
-    ```
-
-    if gulp is not available, install it by running:
-
-    ```shell
-    npm install gulp-cli --global
-    ```
-
-6. The gulp package-solution command should create a packaged solution (.sppkg) in the sharepoint/solution folder
-
-## Step 4 – Upload the component to SharePoint
-
-1. Whether you have built the component yourself, or opted to use the pre-built package, you should see a file called **pva-extension-sso.sppkg** under [sharepoint/solution](./sharepoint/solution/). Follow the instructions in [Manage apps using the Apps site - SharePoint - SharePoint in Microsoft 365 | Microsoft Learn](https://learn.microsoft.com/en-us/sharepoint/use-app-catalog#add-custom-apps) to upload the sppkg file using your SharePoint admin center. After uploading the sppkg file, choose **Enable App** and not **Enable this app and add it to all sites**. 
-
-   Once the app has been successfully uploaded and enabled, it will be visible under “Apps for SharePoint”
-
-2. Add the app to a site where your copilot should be available for users. This should be the same site as the one you provided for “Redirect URI” in step 2. 
-
-   To add an app to your site, follow the instructions in: [Add an app to a site - Microsoft Support](https://support.microsoft.com/en-us/office/add-an-app-to-a-site-ef9c0dbd-7fe1-4715-a1b0-fe3bc81317cb?ui=en-us&rs=en-us&ad=us).
-
-3. If you left elements.xml untouched, or if you are uploading the pre-built package, or even in case you would like to override the values configured in elements.xml for the site on which the component has been deployed, you can now run [Configure-MCSForSite.ps1](./Configure-MCSForSite.ps1):
-
-```PowerShell
-.\Configure-McsForSite.ps1 -siteUrl "<siteUrl>" -botUrl "<botUrl>" -botName "<botName>" -greet $True -customScope "<customScope>" -clientId "<clientId>" -authority "<authority>" -buttonLabel "<buttonLabel>"
-```
-
-4. After adding the app (and running Configure-MCSForSite.ps1 in case elements.xml has been left untouched), a button will be appear at the bottom of all the pages under the target site. Clicking on the button will open a dialog with a chat canvas for your copilot. Based on the logic of your copilot, users will be signed in automatically at the beginning of the conversation, or when a specific event occurs. 
-
-    <p align="center">
-      <img src="./images/SharePointSSOComponent.png" alt="Copilot Component">
-      <br>
-      <em>The Copilot Component Dialog</em>
-    </p>
-
+![Application UI](assets/demo-1.png)
     

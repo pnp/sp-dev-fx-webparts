@@ -1,14 +1,17 @@
-# copilot-hr-assistant
+# Copilot Agent - HR Assistant
 
 ## Summary
 
-Short summary on functionality and used technologies.
+HR Assistant SPFx web part app integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online modern pages. It features a chat interface with Single Sign-On, simplifying HR processes, answering employee queries, and supporting tasks like onboarding, benefits, and performance management—boosting efficiency and enhancing employee experiences.
 
-[picture of the solution in action, if possible]
+
+![Application UI](assets/demo-1.png)
+
+![Webpart Properties](assets/demo-2.png)
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.20.0--rc.1-yellow.svg)
+![version](https://img.shields.io/badge/version-1.20.0-yellow.svg)
 
 ## Applies to
 
@@ -17,22 +20,23 @@ Short summary on functionality and used technologies.
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
+
 ## Prerequisites
 
-> Any special pre-requisites?
+For detailed setup instructions, please refer to the [SETUP.md](SETUP.md) file.
+
 
 ## Solution
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| react-mcs-hr-assistant | Ejaz Hussain - Advania UK - https://x.com/EjazHussain_ |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | January 08, 2025 | Initial release |
 
 ## Disclaimer
 
@@ -42,32 +46,22 @@ Short summary on functionality and used technologies.
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+For detailed setup instructions, please refer to the [SETUP.md](SETUP.md) file.
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- **Microsoft Copilot Integration**: Seamlessly integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online modern pages.
+- **Chat Interface**: Provides an intuitive chat interface for users to interact with the HR Assistant.
+- **Single Sign-On (SSO)**: Supports Single Sign-On for a seamless user experience.
+- **Employee Query Resolution**: Efficiently answers employee queries related to HR policies and procedures.
+- **Customizable**: Allows customization to fit specific organizational needs and branding.
+- **Secure**: Ensures secure communication and data handling within the SharePoint environment.
+- **User-Friendly**: Easy to deploy and use, enhancing the overall employee experience.
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [Overview of the SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview?wt.mc_id=MVP_326658)
+
+- [Extend Microsoft 365 Copilot with Copilot agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/microsoft-copilot-extend-copilot-extensions?wt.mc_id=MVP_326658)
+
+- [Copilot Studio - SPFx Custom Action sample](https://github.com/microsoft/CopilotStudioSamples/tree/master/SharePointSSOComponent?wt.mc_id=MVP_326658) 
