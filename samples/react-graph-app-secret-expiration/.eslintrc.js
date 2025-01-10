@@ -22,42 +22,6 @@ require('@rushstack/eslint-config/patch/modern-module-resolution');
       '@typescript-eslint/adjacent-overload-signatures': 1,
       // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
       //
-      // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
-      '@typescript-eslint/ban-types': [
-        1,
-        {
-          'extendDefaults': false,
-          'types': {
-            'String': {
-              'message': 'Use \'string\' instead',
-              'fixWith': 'string'
-            },
-            'Boolean': {
-              'message': 'Use \'boolean\' instead',
-              'fixWith': 'boolean'
-            },
-            'Number': {
-              'message': 'Use \'number\' instead',
-              'fixWith': 'number'
-            },
-            'Object': {
-              'message': 'Use \'object\' instead, or else define a proper TypeScript type:'
-            },
-            'Symbol': {
-              'message': 'Use \'symbol\' instead',
-              'fixWith': 'symbol'
-            },
-            'Function': {
-              'message': 'The \'Function\' type accepts any function-like value.'
-            }
-          }
-        }
-      ],
-      // RATIONALE:         Code is more readable when the type of every variable is immediately obvious.
-      //                    Even if the compiler may be able to infer a type, this inference will be unavailable
-      //                    to a person who is reviewing a GitHub diff.  This rule makes writing code harder,
-      //                    but writing code is a much less important activity than reading it.
-      //
       // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
       '@typescript-eslint/explicit-function-return-type': [
         1,
