@@ -8,4 +8,5 @@ export interface IAwardRecognitionProps {
   userDisplayName: string
   animationChoice: string
   cardType: string
+  cardStyle: string
 }
