@@ -54,7 +54,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 | Version | Date             | Comments                            |
 | ------- | ---------------- | ----------------------------------- |
 | 1.0     | March 16, 2024   | Initial release                     |
-| 1.1     | October 19, 2024 | Upgrade to SPFx 1.20 & misc changes |
+| 1.1     | October 19, 2024 | Upgrade to SPFx 1.20 & misc. changes |
 | 2.0     | November 1, 2024 | New feature: card styles & animations |
 
 ## Minimal Path to Awesome⚡
@@ -85,7 +85,7 @@ Key features demonstrated by this solution:
 ## References
 
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development.
-- [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [PnP JS](https://pnp.github.io/pnpjs/)
 - [PnP React Hooks](https://superioone.github.io/pnp-react-hooks/)
 - [SwiperJS](https://swiperjs.com)

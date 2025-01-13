@@ -1,0 +1,116 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.svgToJson {
+  padding: 20px;
+  background-color: var(--white);
+}
+
+.inputField {
+  margin-bottom: 10px;
+}
+
+.saveButton {
+  margin-top: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.buttonMargin {
+  margin-right: 20px;
+}
+
+.dropdown {
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.teamsContainer,
+.sharepointContainer {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.previewContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.svgContent {
+  height: 100% !important;
+  max-height: 96px !important;
+  max-width: 96px !important;
+  object-fit: contain !important;
+  width: 100% !important;
+}
+
+.svgPreview {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  width: 150px;
+  max-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svgPreview svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.toggleLabel {
+  margin-right: 10px;
+}
+
+.advancedOptionsButton {
+  background: none;
+  border: none;
+  padding: 0;
+  height: auto;
+  min-width: auto;
+  margin-top: 10px;
+  &:hover {
+    background: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.sharepointButton {
+  border: none; /* Remove any border */
+  outline: none; /* Remove outline */
+  &:focus {
+    border: none; /* Ensure no border on focus */
+    outline: none; /* Ensure no outline on focus */
+  }
+}
+
+.teamsButton {
+  border: none; /* Remove any border */
+  outline: none; /* Remove outline */
+  &:focus {
+    border: none; /* Ensure no border on focus */
+    outline: none; /* Ensure no outline on focus */
+  }
+}

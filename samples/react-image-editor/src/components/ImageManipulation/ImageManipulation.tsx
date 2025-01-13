@@ -321,37 +321,70 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
   }
   private getCropGrid(): JSX.Element {
     const lastset: ICropSettings = this.getLastManipulation() as ICropSettings;
-    let lastdata: ICrop = { sx: 0, sy: 0, width: 0, height: 0 };
+    let lastdata: ICrop;
 
+    // Initialize crop data based on the current settings or default to aspect ratio
     if (lastset && lastset.type === ManipulationType.Crop) {
       lastdata = lastset;
+    } else {
+      const aspect = this.state.lockAspectCrop ? this.getAspect() : undefined;
+      lastdata = {
+        sx: 0,
+        sy: 0,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.state.lockAspectCrop && this.canvasRef && this.canvasRef.width && aspect
+          ? this.canvasRef.width / aspect
+          : this.canvasRef ? this.canvasRef.height : 0,
+      };
+      lastdata.aspect = aspect; // Set the aspect if the lock is enabled
     }
-    return (<ImageCrop
-      crop={lastdata}
-      showRuler
-      sourceHeight={this.img.height}
-      sourceWidth={this.img.width}
-      onChange={(crop) => {
-        this.setCrop(crop.sx, crop.sy, crop.width, crop.height, crop.aspect);
-      }
-      }
-    />);
+
+    console.log('Crop data passed to ImageCrop:', lastdata);
+
+    return (
+      <ImageCrop
+        crop={lastdata}
+        showRuler
+        sourceHeight={this.img.height}
+        sourceWidth={this.img.width}
+        onChange={(crop) => {
+          this.setCrop(crop.sx, crop.sy, crop.width, crop.height, crop.aspect);
+        }}
+      />
+    );
   }
 
   private getResizeGrid(): JSX.Element {
     const lastset: IResizeSettings = this.getLastManipulation() as IResizeSettings;
+    let lastdata: IResizeSettings;
+
+    // Initialize resize data based on the current settings or default to aspect ratio
     if (lastset && lastset.type === ManipulationType.Resize) {
-      return (<ImageGrid
-        width={lastset.width} height={lastset.height}
-        aspect={lastset.aspect}
-        onChange={(size) => this.setResize(size.width, size.height, lastset.aspect)}
-      />);
+      lastdata = lastset;
+    } else {
+      const aspect = this.state.lockAspectResize ? this.getAspect() : undefined;
+      lastdata = {
+        type: ManipulationType.Resize,
+        width: this.canvasRef ? this.canvasRef.width : 0,
+        height: this.state.lockAspectResize && this.canvasRef && this.canvasRef.width && aspect
+          ? this.canvasRef.width / aspect
+          : this.canvasRef ? this.canvasRef.height : 0,
+        aspect: aspect,
+      };
     }
-    return (<ImageGrid
-      onChange={(size) => this.setResize(size.width, size.height, undefined)}
-      // aspect={this.getAspect()}
-      width={this.canvasRef.width} height={this.canvasRef.height} />);
+
+    console.log('Resize data passed to ImageGrid:', lastdata);
+
+    return (
+      <ImageGrid
+        width={lastdata.width}
+        height={lastdata.height}
+        aspect={lastdata.aspect}
+        onChange={(size) => this.setResize(size.width, size.height, lastdata.aspect)}
+      />
+    );
   }
+
 
   private getMaxWidth(): string {
     const { settingPanel } = this.state;

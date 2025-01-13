@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "svg-converter-solution-client-side-solution",
+    "id": "42e52dfa-95dd-4cbd-8ba3-9cfb4ba4a644",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Luise Freese",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Reads SVGs from a library and converts them into JSON format for SharePoint List formatting"
+      },
+      "longDescription": {
+        "default": "Reads SVGs from a library and converts them into JSON format for SharePoint List formatting"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "svg-converter-solution Feature",
+        "description": "The feature that activates elements of the svg-converter-solution solution.",
+        "id": "b03b219c-5a08-4175-b2e3-bb8c0ac08487",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/svg-converter-solution.sppkg"
+  }
+}
