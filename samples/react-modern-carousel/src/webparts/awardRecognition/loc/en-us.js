@@ -3,6 +3,7 @@ define([], function () {
     PropertyPaneDescription: "Configure this webpart",
     BasicGroupName: "Basic settings",
     CarouselControlsGroupName: "Control carousel settings",
+    CardsStyleGroupName: "Card styles",
     WebpartFieldLabel: "Heading",
     ContentTitleFieldLabel: "Sub heading",
     ContentDescriptionFieldLabel: "Sub heading description",

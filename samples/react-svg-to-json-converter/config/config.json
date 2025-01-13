@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "svg-to-json-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/svgToJson/SvgToJsonWebPart.js",
+          "manifest": "./src/webparts/svgToJson/SvgToJsonWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SvgToJsonWebPartStrings": "lib/webparts/svgToJson/loc/{locale}.js"
+  }
+}

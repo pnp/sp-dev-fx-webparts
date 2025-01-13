@@ -12,7 +12,7 @@ import * as ReactDom from "react-dom";
 import { ISpSecurityProps } from "./components/ISpSecurityProps";
 import SpSecurity from "./components/SpSecurity";
 import { PropertyFieldSelectedPermissions } from "./containers/PropertyFieldSelectedPermissions";
-import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
+import { ISelectedPermission, ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   private _sp: SPFI = null;
@@ -70,18 +70,22 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     return perms;
   }
 
-  private onPropertyChange(propertyPath: string, newValue: unknown): void {
+  private onPropertyChange(propertyPath: string, oldValue: ISelectedPermission[], newValue: ISelectedPermission[]): void {
     switch (propertyPath) {
-      case "SelectedPermissions":
-        this.properties.selectedPermissions = newValue as ISpSecurityWebPartProps['selectedPermissions'];
+      case "SelectedPermissions": {
+        const updatedPermissions = newValue.map(newPerm => {
+          const existingPermission = this.properties.selectedPermissions.find(permission => permission.permission === newPerm.permission);
+          return existingPermission ? { ...existingPermission, ...newPerm } : newPerm;
+        });
+        this.properties.selectedPermissions = updatedPermissions;
         this.context.propertyPane.refresh();
         this.render();
         break;
+      }
       default:
         break;
     }
   }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
