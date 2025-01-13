@@ -1,0 +1,72 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "SVGtoJsonWEbPart",
+  "steps": [
+    {
+      "file": "README.md",
+      "description": "Start in the ReadMe and get an overview of the architecture of the Web  Part. It consists of a Parent component, several child components and some React hooks. ",
+      "line": 1
+    },
+    {
+      "file": "src/webparts/svgToJson/SvgToJsonWebPart.ts",
+      "description": "We first take care of the Property pane by letting our user define on which Site URL and Library Name we can find the SVGs",
+      "line": 59
+    },
+    {
+      "file": "src/webparts/svgToJson/components/SvgToJson.tsx",
+      "description": "When in SharePoint, we now use the Parent component as an orchestrator for all other child components. ",
+      "line": 98
+    },
+    {
+      "file": "src/webparts/svgToJson/components/SVGInput.tsx",
+      "description": "The SVG Input will take care of displaying the dropdown menu with our SVGs - it does so by calling the useSVGFiles hook",
+      "line": 16
+    },
+    {
+      "file": "src/webparts/svgToJson/components/useSvgFiles.ts",
+      "description": "we fetch the Files from the specified SiteUrl and library",
+      "line": 9
+    },
+    {
+      "file": "src/webparts/svgToJson/components/ConvertButton.tsx",
+      "description": "with the convert button, we extract all the 'd' and 'fill' attributes from the SVG code and wrap it into the json format that will be accepted by a SharePoint List column.",
+      "line": 23
+    },
+    {
+      "file": "src/webparts/svgToJson/components/SiteSelector.tsx",
+      "description": "We will now in the SiteSelector call the useFetchSites hook",
+      "line": 15
+    },
+    {
+      "file": "src/webparts/svgToJson/components/useFetchSites.ts",
+      "description": "to populate the dropdown menu with all Site Collections",
+      "line": 13
+    },
+    {
+      "file": "src/webparts/svgToJson/components/ListSelector.tsx",
+      "description": "then we will use the ListSelector and call the useFetchLists hook...",
+      "line": 13
+    },
+    {
+      "file": "src/webparts/svgToJson/components/useFetchLists.ts",
+      "description": "to populate the Lists dropdown menue (while excluding all the lists that shouldn't show up)",
+      "line": 12
+    },
+    {
+      "file": "src/webparts/svgToJson/components/ColumnSelector.tsx",
+      "description": "In the ColumnSelector finally, we show the columns in the selected List by calling the useFetchFields hook...",
+      "line": 14
+    },
+    {
+      "file": "src/webparts/svgToJson/components/useFetchFields.ts",
+      "description": "so that all the fields get populated in the ColumnSelector",
+      "line": 17
+    },
+    {
+      "file": "src/webparts/svgToJson/components/ApplyButton.tsx",
+      "description": "as a last step, we will apply the format we created previously to the selected column in the selected list on the selected site and open the spedcified list in a new tab so that we can verify the format has been applied correctly",
+      "line": 43
+    }
+  ],
+  "ref": "main"
+}
