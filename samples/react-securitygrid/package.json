@@ -1,7 +1,7 @@
 {
     "main": "lib/index.js",
     "name": "spsecurity-webpart-3",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "private": true,
     "engines": {
         "node": ">=16.13.0 <17.0.0 || >=18.17.1 <19.0.0"
