@@ -24,6 +24,7 @@ export interface IAwardRecognitionWebPartProps {
   hookOptions: PnpHookGlobalOptions
   animationChoice: string
   cardType: string
+  cardStyle: string
 }
 
 export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwardRecognitionWebPartProps> {
@@ -42,6 +43,7 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
         userDisplayName: this.context.pageContext.user.displayName,
         animationChoice: this.properties.animationChoice,
         cardType: this.properties.cardType,
+        cardStyle: this.properties.cardStyle,
       })
 
     // Use helper function to create React elements.
@@ -173,6 +175,18 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
                     { key: "loop", text: "Loop" },
                     { key: "rewind", text: "Rewind" },
                     { key: "off", text: "Off" },
+                  ],
+                }),
+              ],
+            },
+            {
+              groupName: strings.CardsStyleGroupName,
+              groupFields: [
+                PropertyPaneChoiceGroup("cardStyle", {
+                  label: "Choose card styles",
+                  options: [
+                    { key: "rounded", text: "Rounded" },
+                    { key: "roundedSquare", text: "Rounded Square" },
                   ],
                 }),
               ],

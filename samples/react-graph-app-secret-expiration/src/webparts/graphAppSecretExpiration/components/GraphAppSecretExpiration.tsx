@@ -6,7 +6,7 @@ import { IApplications, IApplication, IFormattedApplication } from '../../../mod
 import { IGraphAppSecretExpirationState } from './GraphAppSecretExpirationState';
 import * as moment from 'moment';
 import { Spinner, mergeStyles, SearchBox } from '@fluentui/react';
-import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
+import { Pagination } from "@pnp/spfx-controls-react";
 import sampleApplications from '../../../models/SampleApplications.json';
 
 const stackItemHidden = mergeStyles({
@@ -85,7 +85,7 @@ export default class GraphAppSecretExpiration extends React.Component<IGraphAppS
     if (!this.props.graphClient) {
       return;
     }
-
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.props.graphClient
       .api("applications")
       .version("v1.0")

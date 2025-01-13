@@ -97,6 +97,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 Version|Date|Comments
 -------|----|--------
+1.0.7.0|Nov 28, 2024 | Property pane didn't refresh fixed, added multiple permissions display
 1.0.6.0|Oct 20, 2024 | Upgrade to SPFx 1.20
 1.0.5.0|March 6, 2021 | Added webApiPermission request
 1.0.0.4|February 22, 2021 | Added support for AD groups
