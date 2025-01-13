@@ -114,13 +114,16 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
         <SelectedPermissionsPanel
           isOpen={this.state.openPanel}
           onPropertyChange={(prop: string, oldval: ISelectedPermission[], newval: ISelectedPermission[]) => {
-            this.setState({ SelectedPermissions: [...newval] });
-            this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, newval);
+            const updatedPermissions = newval.map(newPerm => {
+              const existingPermission = this.state.SelectedPermissions.find(permission => permission.permission === newPerm.permission);
+              return existingPermission ? { ...existingPermission, ...newPerm } : newPerm;
+            });
+            this.setState({ SelectedPermissions: updatedPermissions });
+            this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, updatedPermissions);
           }}
           closePanel={() => { this.onClosePanel(); }}
           SelectedPermissions={this.props.SelectedPermissions}
-        />
-      </div>
+        />      </div>
     );
   }
 }
