@@ -82,7 +82,7 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
           <div className={styles.documentCard}>
             <Image
               imageFit={ImageFit.cover}
-              // @ts-ignore: Object is possibly 'null'.
+              // @ts-expect-error: Object is possibly 'null'.
               src={imageTemplate[this.props.imageTemplate]?.imageUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGTH}
