@@ -1,0 +1,83 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.reactTeamsTabsgraph {
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .row {
+    @include ms-Grid-row;
+    margin-bottom: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .itemContent {
+    margin-left: 10px;
+    overflow: hidden;
+  }
+
+  .itemName {
+    font-size: initial;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .itemCell {
+    margin: 2px;
+    min-height: 54px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    background: rgb(196, 195, 195);
+    // Uncomment if needed:
+    // border: 1px solid;
+    // background: $ms-color-themeDarkAlt;
+  }
+
+  .itemCell:hover {
+    background: rgb(160, 160, 160);
+    color: white;
+  }
+
+  .tablink {
+    margin-bottom: 10px;
+    color: rgb(77, 77, 77);
+    font-weight: bold;
+    // Uncomment if needed:
+    // color: $ms-color-neutralTertiary;
+  }
+
+  .tablink:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  .title {
+    @include ms-font-xl;
+    // Uncomment if needed:
+    // @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    // Uncomment if needed:
+    // @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    // Uncomment if needed:
+    // @include ms-fontColor-white;
+  }
+}
