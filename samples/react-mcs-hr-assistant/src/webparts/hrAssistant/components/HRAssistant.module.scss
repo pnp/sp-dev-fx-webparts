@@ -1,0 +1,69 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+.chatAgent {
+    overflow: hidden;
+    padding: 1em;
+    color: "[theme:bodyText, default: #323130]";
+    color: var(--bodyText);
+    &.teams {
+        font-family: $ms-font-family-fallbacks;
+    }
+    .container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1em;
+        margin: 2em auto;
+        position: relative;
+        z-index: 1000;
+    }
+    .title {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+        color: "[theme:bodyText, default: #323130]";
+        color: var(--bodyText);
+    }
+    .description {
+        font-size: 1em;
+        margin-bottom: 1em;
+        color: "[theme:bodyText, default: #323130]";
+        color: var(--bodyText);
+    }
+    .main{
+        width: 100%; 
+        height: 0rem;
+
+        :global {
+            .webchat__basic-transcript {
+                background-color: #f0f6fa;
+            }
+          }
+
+        // div:first-child {
+        //     background-color: #f0f0f0; // Replace with your desired background color
+        // }
+        
+    }
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcomeImage {
+    width: 100%;
+    max-width: 420px;
+}
+
+.links {
+    a {
+        text-decoration: none;
+        color: "[theme:link, default:#03787c]";
+        color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+        &:hover {
+            text-decoration: underline;
+            color: "[theme:linkHovered, default: #014446]";
+            color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+        }
+    }
+}
