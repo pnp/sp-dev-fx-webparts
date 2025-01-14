@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MessageBar, MessageBarType, PrimaryButton } from '@fluentui/react';
+import { Log } from '@microsoft/sp-core-library';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ const FunctionalErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => 
 
   // Error handler function
   const handleError = (error: Error) => {
-    console.error('Caught error:', error);
+    Log.error('Caught error:', error);
     setHasError(true);
     setErrorMessage(error.message || 'An unexpected error occurred.');
   };

@@ -8,6 +8,8 @@ import { CardHelper } from '../helpers/CardHelper';
 import styles from './HRAssistant.module.scss';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/controls/placeholder';
 import { DisplayMode } from '@microsoft/sp-core-library';
+import { Log } from '@microsoft/sp-core-library';
+
 
 const HRAssistant: React.FC<IHRAssistantProps> = (props) => {
   const { title, description, clientId, tenantName, scope, userEmail, userDisplayName, botURL, greet, botAvatarImage, botAvatarInitials, context, themeVariant, webPartDisplayMode } = props;
@@ -31,7 +33,7 @@ const HRAssistant: React.FC<IHRAssistantProps> = (props) => {
   
       return responseToken.accessToken;
     } catch (error) {
-      console.error('Error fetching token:', error);
+      Log.error('Error fetching token:', error);
       setIsTokenExpired(true); // Show dialog for expired token
       throw error; // Rethrow to let ErrorBoundary handle it
     }
@@ -71,7 +73,7 @@ const HRAssistant: React.FC<IHRAssistantProps> = (props) => {
         domain: `${regionalChannelURL}v3/directline`,
       });
     } catch (error) {
-      console.error('Failed to create DirectLine:', error);
+      Log.error('Failed to create DirectLine:', error);
       setIsTokenExpired(true); // Show dialog for expired token
       throw error; // Pass the error up to the boundary
     }
