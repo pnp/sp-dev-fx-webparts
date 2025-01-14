@@ -8,35 +8,47 @@ export class SPService {
 
   constructor(private _context: WebPartContext) {}
 
-  // Get Profiles
+  // Get Birthdays ignoring the year
   public async getPBirthdays(upcomingDays: number): Promise<any[]> {
-    let _results: any[] = [];
     try {
-      const currentYear = new Date().getFullYear();
-      const today = moment().format(`${currentYear}-MM-DD`);
-      const futureDate = moment().add(upcomingDays, 'days').format(`${currentYear}-MM-DD`);
-
-      // Construct the filter to find birthdays in the current year
-      const _filter = `fields/Birthday ge '${today}' and fields/Birthday le '${futureDate}'`;
-
+      const today = moment();
+      const todayMMDD = today.format('MM-DD'); // Get today's date as MM-DD
+      const futureMMDD = today.add(upcomingDays, 'days').format('MM-DD'); // Calculate future date
+  
       this.graphClient = await this._context.msGraphClientFactory.getClient('3');
-
-      // Fetch birthdays from the Graph API
+  
+      // Fetch all birthdays without filtering
       const response = await this.graphClient
-        .api(`sites/root/lists('${this.birthdayListTitle}')/items?orderby=Fields/Birthday`)
+        .api(`sites/root/lists('Birthdays')/items?orderby=fields/Birthday`)
         .version('v1.0')
         .expand('fields')
-        .filter(_filter)
         .get();
-
-      _results = response.value;
-
-      return _results;
+  
+      // Filter results locally
+      const filteredItems = response.value.filter((item: any) => {
+        const birthday = item.fields.Birthday;
+        if (!birthday) return false; // Skip if Birthday is missing
+  
+        const birthdayMMDD = moment(birthday).format('MM-DD'); // Extract MM-DD
+        if (todayMMDD > futureMMDD) {
+          // Handle year transition (December to January)
+          return (
+            birthdayMMDD >= todayMMDD || // Later in the current year
+            birthdayMMDD <= futureMMDD   // Earlier in the next year
+          );
+        } else {
+          // Normal case (same year)
+          return birthdayMMDD >= todayMMDD && birthdayMMDD <= futureMMDD;
+        }
+      });
+  
+      return filteredItems;
     } catch (error) {
       console.error("Error fetching birthdays:", error);
       return Promise.reject(error);
     }
   }
+  
 }
 
 export default SPService;
