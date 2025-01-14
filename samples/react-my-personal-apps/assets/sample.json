@@ -9,7 +9,7 @@
       "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access."
     ],
     "creationDateTime": "2020-04-28",
-    "updateDateTime": "2020-04-28",
+    "updateDateTime": "2025-01-13",
     "products": [
       "SharePoint"
     ],
@@ -134,6 +134,12 @@
         "company": "",
         "pictureUrl": "https://github.com/zachroberts8668.png",
         "name": "Zach Roberts"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "company": "",
+        "pictureUrl": "https://github.com/gretchunkim.png",
+        "name": "Azores"
       }
     ],
     "references": [
