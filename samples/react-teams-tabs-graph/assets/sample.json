@@ -27,13 +27,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png",
         "alt": "MS Teams Channels and Tabs from Modern Team site"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart2.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart2.png",
         "alt": "MS Teams Channels and Tabs from Modern Team site"
       }
     ],
