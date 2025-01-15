@@ -107,7 +107,8 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     setState({ ...state });
   };
 
-  const expandCollapseList = (item: SPList | SPListItem): void => {
+  const expandCollapseList = (item: SPList | SPListItem, event: React.MouseEvent): void => {
+    event.stopPropagation();
     if (item.itemCount === 0) return;
 
     if (item.isExpanded) {
@@ -130,7 +131,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const renderListTitle = (item: SPList): JSX.Element => {
     const iconName = item.itemCount > 0 ? 'FabricFormLibrary' : 'FabricFolder';
     return (
-      <div className={styles.itemTitle} onClick={() => expandCollapseList(item)}>
+      <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
         <Icon iconName={iconName} className={styles.themecolor} />
         <span>&nbsp;{item.title}</span>
       </div>
@@ -141,7 +142,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     const style = { marginLeft: `${item.level * 20}px` };
     const iconName = item.itemCount > 0 ? 'FabricFormLibrary' : 'FabricFolder';
     return (
-      <div className={styles.itemTitle} onClick={() => expandCollapseList(item)}>
+      <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
         <Icon iconName={iconName} style={style} className={styles.themecolor} />
         <span>&nbsp;{item.title}</span>
       </div>
@@ -160,8 +161,8 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   };
 
   const addUserColumns = (
-    columns: IColumn[], 
-    users: SPSiteUser[], 
+    columns: IColumn[],
+    users: SPSiteUser[],
     effectivePermissions: ISelectedPermission[]
   ): IColumn[] => {
     for (const user of users) {
@@ -252,11 +253,12 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     column: IColumn,
     effectivePermissions: ISelectedPermission[]
   ): JSX.Element => {
+  
     const user = find(state.securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
-
-    for (const selectedPermission of effectivePermissions) {
+  
+    const icons = effectivePermissions.map((selectedPermission) => {
       const permissionKey = selectedPermission.permission as keyof typeof SPPermission;
-
+  
       if (user && Helpers.doesUserHavePermission(
         item,
         user,
@@ -266,20 +268,36 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         state.securityInfo.adGroups
       )) {
         return (
-          <Icon
-            iconName={selectedPermission.iconName}
-            style={{ color: selectedPermission.color }}
-            onClick={() => expandCollapseList(item)}
-          />
+          <div key={selectedPermission.permission} style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
+        {icons}
+            <Icon
+              iconName={selectedPermission.iconName}
+              style={{ color: selectedPermission.color}}
+            />
+          </div>
         );
       }
-    }
-
+  
+      return null;
+    });
+  
     return (
-      <Icon iconName={item.iconName} onClick={() => expandCollapseList(item)} />
+      <div style={{ display: 'block' } } onClick={(event) => expandCollapseList(item, event)}>
+        {icons}
+        <div style={{ display: 'block' }}>
+          <Icon iconName={item.iconName}/>
+        </div>
+      </div>
     );
   };
-
+  
+  if (!state.securityInfoLoaded) {
+    return (
+      <div>
+        <Spinner label={'Fetching security information, please wait...'} />
+      </div>
+    );
+  }
   if (!state.securityInfoLoaded) {
     return (
       <div>

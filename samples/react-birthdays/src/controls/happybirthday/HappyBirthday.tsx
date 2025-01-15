@@ -12,23 +12,21 @@ export class HappyBirthday extends React.Component<IHappyBirthdayProps, IHappbir
     return (
       <div className={styles.happyBirthday}>
         {
-          this.props.users.map((user: IUser) => {
-            return (
-              <div className={styles.container}>
-                <HappyBirthdayCard userName={user.userName}
-                  jobDescription={user.jobDescription}
-                  birthday={moment(user.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('Do MMMM')}
-                  anniversary={user.anniversary}
-                  congratulationsMsg={user.message}
-                  userEmail={user.userEmail}
-                  imageTemplate={this.props.imageTemplate}
-                />
-              </div>
-            );
-          })
+          this.props.users.map((user: IUser, index: number) => (
+            <div className={styles.container} key={user.key || index}>
+              <HappyBirthdayCard
+                userName={user.userName}
+                jobDescription={user.jobDescription || "No Job Description"}
+                birthday={moment(user.birthday).format('Do MMMM')}
+                anniversary={!!user.anniversary}
+                congratulationsMsg={user.message}
+                userEmail={user.userEmail}
+                imageTemplate={Number(this.props.imageTemplate)} // Ensure this is a number
+              />
+            </div>
+          ))
         }
       </div>
     );
   }
 }
-export default HappyBirthday;

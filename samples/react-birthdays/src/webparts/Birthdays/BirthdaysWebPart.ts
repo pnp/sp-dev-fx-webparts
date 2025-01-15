@@ -17,6 +17,7 @@ import { IBirthdaysProps } from './components/IBirthdaysProps';
 export interface IBirthdaysWebPartProps {
   title: string;
   numberUpcomingDays: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   template: any;
 }
 

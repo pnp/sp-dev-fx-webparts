@@ -1,0 +1,30 @@
+{
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
+  "compilerOptions": {
+    "target": "ES6", // Modern JavaScript target
+    "module": "ESNext", // Enables support for ES modules
+    "moduleResolution": "node", // Resolves modules in Node.js style
+    "jsx": "react", // Ensures compatibility with React JSX
+    "declaration": true, // Generates `.d.ts` files
+    "sourceMap": true, // Generates source maps
+    "experimentalDecorators": true, // Allows usage of decorators
+    "skipLibCheck": true, // Skips type checking of declaration files for performance
+    "outDir": "lib", // Output directory
+    "inlineSources": false, // Does not inline sources into the source map
+    "strict": true, // Enables all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Enforces consistent casing in file names
+    "resolveJsonModule": true, // Allows importing JSON files
+    "allowSyntheticDefaultImports": true, // Allows default imports for modules without default exports
+    "typeRoots": ["./node_modules/@types", "./node_modules/@microsoft"], // Type definition roots
+    "types": ["webpack-env"], // Specific type definitions
+    "lib": ["ES6", "DOM", "ES2015.Collection", "ES2015.Promise"], // Library files
+    "noUnusedLocals": true, // Ensures unused local variables are flagged
+    "noUnusedParameters": true, // Ensures unused function parameters are flagged
+    "strictNullChecks": true, // Enforces null safety
+    "noImplicitReturns": true, // Ensures all code paths in a function return a value
+    "esModuleInterop": true // Enables compatibility with CommonJS modules
+    
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"], // Include all TypeScript and TSX files in src
+  "exclude": ["node_modules", "lib", "dist"] // Exclude directories
+}

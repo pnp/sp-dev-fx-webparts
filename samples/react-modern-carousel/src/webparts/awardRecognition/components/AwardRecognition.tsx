@@ -13,7 +13,7 @@ export const AwardRecognition = (
     <WebpartContext.Provider value={props}>
       <FluentProvider
         theme={webLightTheme}
-        style={{ width: "100%", background: "none" }}
+        style={{ width: "100%", background: "none", margin: "0 2rem" }}
       >
         <Carousel />
       </FluentProvider>

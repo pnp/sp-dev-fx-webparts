@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a19ee11a-0490-435a-8f93-e777db19d602",
+  "alias": "ReactTeamsTabsgraphWebPart",
+  "componentType": "WebPart",
+  "supportedHosts": ["SharePointWebPart"],
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "react-teams-tabs-graph" },
+    "description": { "default": "react-teams-tabs-graph description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "react-teams-tabs-graph"
+    }
+  }]
+}

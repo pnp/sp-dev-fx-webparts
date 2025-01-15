@@ -1,24 +1,27 @@
-import { MSGraphClient } from '@microsoft/sp-http';
+import { SPHttpClient } from '@microsoft/sp-http';
 
 export default class FollowedSitesService {
 
-    private graphClient: MSGraphClient = null;
+    private client: SPHttpClient = null;
+    private url: string = '';
 
-    constructor(graphClient: MSGraphClient) {
-        this.graphClient = graphClient;
+    constructor(client: SPHttpClient, url: string) {
+        this.client = client;
+        this.url = url;
     }
 
     public async getMyFollowedSites(): Promise<any> {
         return new Promise<any>((resolve, reject) =>
-            this.graphClient
-                .api('/me/followedSites?$top=1000')
-                .version('v1.0')
-                .get((error, response: any, rawResponse?: any) => {
-                    if (error) {
-                        resolve(error);
+            this.client
+                .get(`${this.url}/_api/social.following/my/followed(types=4)`, SPHttpClient.configurations.v1)
+                .then((response) => {
+                    if (response.ok) {
+                        response.json().then((data) => {
+                            if (data && data.value) {
+                                resolve(data.value);
+                            }
+                        });
                     }
-
-                    resolve(response);
                 }));
     }
 }
