@@ -26,17 +26,10 @@
         ],
         "thumbnails": [
             {
-                "name": "Example1.gif",
-                "type": "gif",
+                "name": "SPFxUI.png",
+                "type": "png",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/images/Example1.gif",
-                "alt": "Web Part Preview"
-            },
-            {
-                "name": "Example2.gif",
-                "type": "image",
-                "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/images/Example2.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/images/SPFxUI.png",
                 "alt": "Web Part Preview"
             }
         ],
