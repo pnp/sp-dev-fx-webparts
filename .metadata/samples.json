@@ -11627,7 +11627,7 @@
       "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title \"Birthdays.\""
     ],
     "creationDateTime": "2019-07-23",
-    "updateDateTime": "2024-10-02",
+    "updateDateTime": "2025-01-13",
     "products": [
       "SharePoint"
     ],
@@ -11653,187 +11653,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays/assets/birthdays.gif",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/ballonsBackgroud.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/baloons.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-birthdays/assets/birthdays.gif",
         "alt": "Birthdays Web Part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/birthdays.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/birthdays2.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof1.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof10.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof11.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof12.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof14.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof14_1.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof17.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 113,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof18.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 114,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof181.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 115,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof19.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 116,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof2.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 117,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof20.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 118,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof21.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 119,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof22.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 120,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof24.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 121,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof28.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 122,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof29.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 123,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof3.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 124,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof30.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 125,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof4.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 126,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof5.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 127,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof6.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 128,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof7.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 129,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof8.png?raw=true",
-        "alt": "Birthdays Web Part"
-      },
-      {
-        "type": "image",
-        "order": 130,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof9.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-birthdays/assets/birthdays.png",
         "alt": "Birthdays Web Part"
       }
     ],
@@ -11857,6 +11683,11 @@
         "company": "JP Morgan Chase",
         "pictureUrl": "https://github.com/smaity.png",
         "name": "Sajal Maity"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "pictureUrl": "https://github.com/gretchunkim.png",
+        "name": "Azores"
       }
     ],
     "references": [
