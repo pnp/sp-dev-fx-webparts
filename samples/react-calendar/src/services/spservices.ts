@@ -616,7 +616,7 @@ export default class spservices {
         return Text.format(camlQuery, Constants.AndConditionStart, Text.format(categoryCondition, categories[0].key), Constants.AndConditionEnd);
       } else {
         let orCondition: string = `${Constants.OrConditionStart}{0}{1}${Constants.OrConditionEnd}`;
-        queryResult = Text.format(orCondition, Text.format(categoryCondition, categories[0].key), Text.format(categoryCondition, categories[1]));
+        queryResult = Text.format(orCondition, Text.format(categoryCondition, categories[0].key), Text.format(categoryCondition, categories[1].key));
 
         for (let i = 2; i < categories.length; i++) {
           const category = categories[i];

@@ -10,6 +10,8 @@ Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
 
+![calendar](assets/react-calendar-categories.mp4)
+
 ![calendar](assets/animatevideo.gif)
 
 ![calendar](assets/weekly_moderncalendar.gif)
@@ -118,6 +120,7 @@ Version|Date|Comments
 1.0.19|June 28, 2024| added filter by category | fixed the packages.json issues which prevent solution to build successfully.
 1.0.20|October 1, 2024| upgraded to SPFx 1.16.1
 1.0.21|November 03, 2024| upgraded to SPFx 1.20.0
+1.0.22|January 15, 2025| Fixed categories filter issues
 
 ## Minimal Path to Awesome
 
