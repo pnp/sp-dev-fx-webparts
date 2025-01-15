@@ -9,7 +9,7 @@
       "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022"
     ],
     "creationDateTime": "2019-07-23",
-    "updateDateTime": "2024-10-02",
+    "updateDateTime": "2025-01-13",
     "products": [
       "SharePoint"
     ],
@@ -239,6 +239,11 @@
         "company": "JP Morgan Chase",
         "pictureUrl": "https://github.com/smaity.png",
         "name": "Sajal Maity"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "pictureUrl": "https://github.com/gretchunkim.png",
+        "name": "Azores"
       }
     ],
     "references": [

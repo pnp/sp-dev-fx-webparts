@@ -73,7 +73,7 @@ Version|Date|Comments
 3.0.0|April 7, 2022 | Upgraded to SPFx 1.14.0
 4.0.0|March 6, 2023 | Upgraded to SPFx 1.16.1
 5.0.0|October 2, 2024 | Upgraded to SPFx 1.20.0
-5.1.0|January 13,2024 | Edited SPService to ensure current year is used to pull upcoming birthdays
+5.1.0|January 13,2025 | Edited SPService to ensure current year is used to pull upcoming birthdays
 
 ## Minimal Path to Awesome
 

@@ -108,6 +108,7 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
                 actions={[
                   {
                     iconProps: { iconName: 'Mail' },
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onClick: (ev: any) => {
                       ev.preventDefault();
                       ev.stopPropagation();
