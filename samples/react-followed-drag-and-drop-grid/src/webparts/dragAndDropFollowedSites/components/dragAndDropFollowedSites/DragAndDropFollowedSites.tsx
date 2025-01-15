@@ -37,7 +37,7 @@ export default class DragAndDropFollowedSites extends React.Component<IDragAndDr
     this.props.context.msGraphClientFactory
       .getClient()
       .then((client: MSGraphClient): void => {
-        const followedSitesService: FollowedSitesService = new FollowedSitesService(client);
+        const followedSitesService: FollowedSitesService = new FollowedSitesService(this.props.context.spHttpClient, this.props.context.pageContext.web.absoluteUrl);
         const myDataServiceInput: IMyDataServiceInput = {
           mSGraphClient: client,
           httpClient: this.props.context.httpClient,
@@ -141,7 +141,7 @@ export default class DragAndDropFollowedSites extends React.Component<IDragAndDr
           return;
         }
         this.state.followedSitesService.getMyFollowedSites().then(followedSites => {
-          const followedUrls: IFollowedSite[] = followedSites.value.map(element => {
+          const followedUrls: IFollowedSite[] = followedSites.map(element => {
             return {
               name: element[Constants.nameFollowedSites],
               url: element[Constants.urlFollowedSites]
