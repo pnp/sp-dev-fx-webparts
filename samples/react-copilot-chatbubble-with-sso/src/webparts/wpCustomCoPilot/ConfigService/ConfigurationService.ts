@@ -21,7 +21,7 @@ export interface ICoPilotConfiguration {
 
 export class ConfigurationService {
   private context: WebPartContext;
-  private static CONFIG_LIST_NAME = 'CopilotChatbot';
+  private static CONFIG_LIST_NAME = 'CopilotAgentConfig';
   private static CACHE_KEY = 'CHATBOT_CONFIG_CACHE';
   private static DEFAULT_CACHE_TIMEOUT = 30;
   private static DEFAULT_RETRY_ATTEMPTS = 3;
@@ -197,7 +197,7 @@ export class ConfigurationService {
   private mapListItemToConfig(fields: any): ICoPilotConfiguration {
     return {
       botURL: fields.BotURL,
-      botName: fields.BotName,
+      botName: fields.Title,
       buttonLabel: fields.ButtonLabel,
       botAvatarImage: fields.BotAvatarImage,
       botAvatarInitials: fields.BotAvatarInitials,

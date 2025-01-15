@@ -8,4 +8,7 @@ export interface IWpCustomCoPilotProps {
   userFriendlyName: string;
   greet: boolean;
   userDisplayName: string;
+  botAvatarImage: string;
+  botAvatarInitials: string;
+  welcomeMessage:string;
 }

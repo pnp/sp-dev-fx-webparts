@@ -15,14 +15,7 @@ $chat-border-color: var(--neutralQuaternaryAlt);
   }
 
   .chatContainer {
-   /* border: 1px solid #ccc;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: #f9f9f9;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;*/
+    width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -32,6 +25,10 @@ $chat-border-color: var(--neutralQuaternaryAlt);
     background-color: white;
     border-top: 1px solid $chat-border-color;
   }
+  .webChat {
+    width: 100%;
+    height: 100%;
+}
 }
 
 .welcome {

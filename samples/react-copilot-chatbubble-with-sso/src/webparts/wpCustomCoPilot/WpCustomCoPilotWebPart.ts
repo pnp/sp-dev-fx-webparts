@@ -3,14 +3,14 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'WpCustomCoPilotWebPartStrings';
 import WpCustomCoPilot from './components/WpCustomCoPilot';
 import { IWpCustomCoPilotProps } from './components/IWpCustomCoPilotProps';
+import { ConfigurationService } from './ConfigService/ConfigurationService';
 
 
 export interface IWpCustomCoPilotWebPartProps {
@@ -21,35 +21,46 @@ export interface IWpCustomCoPilotWebPartProps {
   customScope: string;
   greet: boolean;
   userDisplayName: string;
+  webpartHeader: string;
 }
 
 export default class WpCustomCoPilotWebPart extends BaseClientSideWebPart<IWpCustomCoPilotWebPartProps> {
 
   private _environmentMessage: string = '';
+  private _configurationService: ConfigurationService;
+  private _configuration : any;
 
   public render(): void {
     console.log(this._environmentMessage);
     const element: React.ReactElement<IWpCustomCoPilotProps> = React.createElement(
       WpCustomCoPilot,
       {
-        botName: this.properties.botName ,
-        botURL: this.properties.botURL,
-        clientID: this.properties.clientID,
-        authority: this.properties.authority,
-        customScope: this.properties.customScope,
+        botName: this._configuration.botName,
+        botURL: this._configuration.botURL,
+        clientID: this._configuration.clientID,
+        authority: this._configuration.authority,
+        customScope: this._configuration.customScope,
         userEmail: this.context.pageContext.user.email,
         userFriendlyName: this.context.pageContext.user.displayName,
-        greet: this.properties.greet,
+        greet: this._configuration.greet,
         userDisplayName: this.context.pageContext.user.displayName,
+        botAvatarImage: this._configuration.botAvatarImage,
+        botAvatarInitials: this._configuration.botAvatarInitials,
+        welcomeMessage: this.properties.webpartHeader ? this.properties.webpartHeader : 'Ask CoPilot a question'
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
+  protected async onInit(): Promise<void> {
+    this._configurationService = new ConfigurationService(this.context);
+    const configuration = await this._configurationService.getConfiguration();
+    console.log(configuration);
+
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
+      this._configuration = configuration;
     });
   }
 
@@ -100,28 +111,9 @@ export default class WpCustomCoPilotWebPart extends BaseClientSideWebPart<IWpCus
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('botName', {
-                  label: 'Bot Name',
-                  value: this.properties.botName
-                }),
-                PropertyPaneTextField('botURL', {
-                  label: 'Bot URL',
-                  value: this.properties.botURL ? btoa(this.properties.botURL) : ''
-                }),
-                PropertyPaneTextField('clientID', {
-                  label: 'Client ID',
-                  value: this.properties.clientID ? btoa(this.properties.clientID) : ''
-                }),
-                PropertyPaneTextField('authority', {
-                  label: 'Authority',
-                  value: this.properties.authority ? btoa(this.properties.authority) : ''
-                }),
-                PropertyPaneTextField('customScope', {
-                  label: 'Custom Scope',
-                  value: this.properties.customScope ? btoa(this.properties.customScope) : ''
-                }),
-                PropertyPaneToggle('greet', {
-                  label: 'Greet User on Start?'
+                PropertyPaneTextField('webpartHeader', {
+                  label: 'Welcome Message',
+                  value: this.properties.webpartHeader
                 })
               ]
             }

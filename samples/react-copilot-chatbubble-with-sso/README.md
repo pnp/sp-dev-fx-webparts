@@ -1,11 +1,43 @@
-# Copilot Chat Bubble
+# Copilot Chat Bubble - With SSO which summarizes sessions at ESPC 2024
 
 ## Summary
 
-TODO: Nishkalank to update with screenshots
-Short summary on functionality and used technologies.
+This web part integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online featuring Single Sign-on and a chat interface.  
 
-[picture of the solution in action, if possible]
+For sample purpose, I have built a CoPilot agent which will summarize sessions at ESPC 2024, and Provides a concise summary of all sessions and topics covered at ESPC 2024, including key take aways and speakers insights.
+
+![Webpart UI](images/SPFxUI.png)
+
+![Example1](images/Example1.gif)
+
+![Example2](images/Example2.gif)
+
+The webpart uses Cache management to store the webpart properties, which is fetched from the list. 
+
+![Webpart Properties](images/Cache.png)
+
+### Webpart properties
+
+This webpart reads the configuration from a configuration list as CopilotAgentConfig.
+- Create the "CopilotAgentConfig" list with below columns
+
+
+|Property Name|Column type|Explanation|Mandatory?|
+| :- | :- | :- | :- |
+|BotName|Single line of text|Name of the Bot|No|
+|BotURL|Single line of text|The token endpoint for MCS. This can be found in the CoPilot studio, under Settings -> Channels -> Mobile App (Screenshot below)|Yes|
+|BotAvatarImage|Single line of text|Direct link for the avatar image|No|
+|BotAvatarInitials|Single line of text|bot initials used when no image present|No|
+|Greet|Yes/No|Should the copilot greet users at the beginning of the conversation|No|
+|CustomScope|Single line of text|<p>The scope defined for the custom API in the copilot app registration (Step 1). For example:</p><p></p><p>api://35337616-eee1-4049-9d37-a78b24c3bef2/SPO.Read</p>|Yes|
+|ClientID|Single line of text|The Application ID from the Canvas app registration configured in step 2|Yes|
+|Authority|Single line of text|<p>The login URL for your tenant. For example:<br>https://login.microsoftonline.com/mytenant.onmicrosoft.com|Yes|
+|ErrorRetryAttempts|Single line of text|Number of retry attempts made to get the properties from the List|Yes|No|
+
+
+
+![BotURL](images/BotURL.png)
+
 
 ## Compatibility
 
@@ -47,36 +79,23 @@ This sample is optimally compatible with the following environment configuration
 
 ## Minimal path to awesome
 
-- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso) then unzip it)
-- From your command line, change your current directory to the directory containing this sample (`react-copilot-chatbubble-with-sso`, located under `samples`)
-- in the command line run:
-  - `npm install`
-  - `gulp serve`
-
-> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+For details setup instructions, please refer to the [Setup.md](Setup.md) file.
 
 ## Features
 
-TODO: Nishkalank to update
-Description of the extension that expands upon high-level summary above.
+This sample illustrates the following concepts:
 
-This extension illustrates the following concepts:
+- Microsoft CoPilot Integration
+- Chat Interface
+- Single Sign-On (SSO)
+- Customizable according to organizational needs
+- Secure
 
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [Copilot Studio - Building SharePoint SSO Component](https://github.com/microsoft/CopilotStudioSamples/tree/master/SharePointSSOComponent?wt.mc_id=MVP_331342) 
+
 
 ## Help
 

@@ -11,7 +11,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 const CoPilotCustomWP: React.FC<IWpCustomCoPilotProps> = (props) => {
 
-  const { botURL, clientID, authority, customScope, userDisplayName } = props;
+  const { botURL, clientID, authority, customScope, userDisplayName, botAvatarImage, botAvatarInitials, userEmail, welcomeMessage } = props;
 
   // Check for required properties
   if (!botURL || !clientID || !authority || !customScope) {
@@ -45,27 +45,6 @@ const CoPilotCustomWP: React.FC<IWpCustomCoPilotProps> = (props) => {
         
     const MSALWrapperInstance = new MSALWrapper(props.clientID, props.authority);
 
-    const styleOptions = ReactWebChat.createStyleSet({
-      backgroundColor: '#f7f8fa',
-      bubbleBackground: '#0078d7',
-      bubbleTextColor: '#ffffff',
-      bubbleBorderColor: '#0078d7',
-      bubbleBorderRadius: 10,
-      bubbleBorderStyle: 'solid',
-      bubbleFromUserBackground: '#e1e1e1',
-      bubbleFromUserBorderRadius: 10,
-      bubbleFromUserBorderColor: '#e1e1e1',
-      bubbleFromUserTextColor: '#333333',
-      sendBoxBackground: '#ffffff',
-      sendBoxTextColor: '#333333',
-      sendBoxButtonColor: '#0078d7',
-      sendBoxButtonColorOnHover: '#005a9e',
-      suggestedActionBackground: '#ffffff',
-      suggestedActionBorderColor: '#0078d7',
-      suggestedActionTextColor: '#0078d7',
-      suggestedActionBorderRadius: 5,
-      hideUploadButton: true
-    });
     // Trying to get token if user is already signed-in
     let responseToken = await MSALWrapperInstance.handleLoggedInUser([props.customScope], props.userEmail);
 
@@ -176,10 +155,19 @@ const CoPilotCustomWP: React.FC<IWpCustomCoPilotProps> = (props) => {
             }
         );
 
+        const avatarOptions = botAvatarImage && botAvatarInitials ? {
+          botAvatarImage: botAvatarImage,
+          botAvatarInitials: botAvatarInitials,
+          userAvatarImage: `/_layouts/15/userphoto.aspx?size=S&username=${userEmail}`,
+          userAvatarInitials: userDisplayName.charAt(0)
+        } : {};
         // hide the upload button - other style options can be added here
-        //const canvasStyleOptions = {
-          //  hideUploadButton: true
-        //}
+        const canvasStyleOptions = {
+            hideUploadButton: true,
+            rootHeight: '100%',
+            rootWidth: '100%',
+            ...avatarOptions
+        }
     
         // Render webchat
         if (token && directline) {
@@ -190,8 +178,10 @@ const CoPilotCustomWP: React.FC<IWpCustomCoPilotProps> = (props) => {
                     {
                         directLine: directline,
                         store: store,
-                        styleOptions: styleOptions,
+                        username: userDisplayName,
+                        styleOptions: canvasStyleOptions,
                         userID: props.userEmail,
+                        sendTypingIndicator: true,
                     },
                 webChatRef.current
                 );
@@ -213,9 +203,9 @@ const CoPilotCustomWP: React.FC<IWpCustomCoPilotProps> = (props) => {
   return (
     <section className={`${styles.wpCustomCoPilot}`}>
       <div>
-      <h2>Welcome {escape(userDisplayName)}, ask CoPilot about PnP M365 CLI anything:</h2>
+      <h2>Welcome {escape(userDisplayName)}, {welcomeMessage}:</h2>
         <div className={styles.chatContainer} id="chatContainer">
-          <div ref={webChatRef} role="main" style={{ width: "100%", height: "0rem" }}></div>
+          <div ref={webChatRef} role="main" className={styles.webChat}></div>
           <div ref={loadingSpinnerRef}><Spinner label="Loading..." style={{ paddingTop: "1rem", paddingBottom: "1rem" }} /></div>
         </div>
       </div>
@@ -236,3 +226,6 @@ export default class WpCustomCoPilot extends React.Component<IWpCustomCoPilotPro
     );
   }
 }
+
+
+ 
