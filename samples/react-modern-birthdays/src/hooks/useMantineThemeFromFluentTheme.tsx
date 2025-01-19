@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
   Depths,
   MotionTimings,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { MantineThemeOverride } from '@mantine/core';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';

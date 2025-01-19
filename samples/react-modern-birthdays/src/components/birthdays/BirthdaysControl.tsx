@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import { useAtom } from 'jotai';
-import { Stack } from 'office-ui-fabric-react';
+import { Stack } from '@fluentui/react';
 
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 

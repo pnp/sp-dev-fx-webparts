@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 import {
   MessageBarType,
   SpinnerSize,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { Stack } from '@fluentui/react';
 
