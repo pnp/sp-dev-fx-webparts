@@ -14,8 +14,8 @@ The Web Part(s) shows the upcoming birthdays in the company, the web parts reads
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14](https://img.shields.io/badge/Node.js-v16%20|%20v14-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
@@ -42,12 +42,14 @@ email | Text | true
 ## Contributors
 
 * [João Mendes](https://github.com/joaojmendes)
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|January 31, 2023|Initial release
+1.1.0|January 19, 2025|Upgrade to SPFx v1.20.0
 
 ## Minimal Path to Awesome
 

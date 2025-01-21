@@ -36,19 +36,20 @@ export const useBirthdays = (context: BaseComponentContext, upcomingDays?: numbe
         if (dataChached) {
           return dataChached;
         }
-      const today = format(new Date(), "2000-MM-dd");
+      const currentYear = new Date().getFullYear();
+      const today = format(new Date(), currentYear+"-MM-dd");
       const todayMonth = format(new Date(), "MM");
       const upcomingDate = addDays(new Date(), upcomingDays);
       const upcomingMonth = format(upcomingDate, "MM");
-      const newYear = "2000-01-01";
+      const newYear = currentYear+"-01-01";
       let filter = "";
       if (Number(upcomingMonth) < Number(todayMonth)) {
         filter = `fields/Birthday ge '${today}' or (fields/Birthday ge '${newYear}' and fields/Birthday le '${format(
           upcomingDate,
-          "2000-MM-dd"
+          currentYear+"-MM-dd"
         )}')`;
       } else {
-        filter = `fields/Birthday ge '${today}' and fields/Birthday le '${format(upcomingDate, "2000-MM-dd")}'`;
+        filter = `fields/Birthday ge '${today}' and fields/Birthday le '${format(upcomingDate, currentYear+"-MM-dd")}'`;
       }
 
       const graphClient = await  msGraphClientFactory.getClient("3");

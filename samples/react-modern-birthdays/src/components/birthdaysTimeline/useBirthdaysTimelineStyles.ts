@@ -2,11 +2,11 @@
 import React from 'react';
 
 import { useAtom } from 'jotai';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IStackStyles } from 'office-ui-fabric-react/lib/components/Stack';
-import { IIconStyles } from 'office-ui-fabric-react/lib/Icon';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { ITextStyles } from 'office-ui-fabric-react/lib/Text';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
+import { IStackStyles } from '@fluentui/react/lib/components/Stack';
+import { IIconStyles } from '@fluentui/react/lib/Icon';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { ITextStyles } from '@fluentui/react/lib/Text';
 
 import {
   IDocumentCardDetailsStyles,

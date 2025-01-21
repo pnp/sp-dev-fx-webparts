@@ -4,7 +4,7 @@ import {
   Stack,
   StackItem,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { IUser } from '../../models';
 import { useBirthdaysTimelineStyles } from './useBirthdaysTimelineStyles';

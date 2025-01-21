@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import strings from 'BirthdaysWebPartStrings';
 import { Provider } from 'jotai';
-import { ThemeProvider } from 'office-ui-fabric-react';
+import { ThemeProvider } from '@fluentui/react';
 
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 
