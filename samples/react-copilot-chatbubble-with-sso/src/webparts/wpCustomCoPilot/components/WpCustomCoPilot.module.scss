@@ -1,0 +1,55 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+
+$chat-background-color: var(--neutralLighterAlt);
+$chat-border-color: var(--neutralQuaternaryAlt);
+
+
+.wpCustomCoPilot {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .chatContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: white;
+    border-top: 1px solid $chat-border-color;
+  }
+  .webChat {
+    width: 100%;
+    height: 100%;
+}
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
