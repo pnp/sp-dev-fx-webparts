@@ -112,8 +112,8 @@ This webpart reads the configuration from a configuration list as CopilotAgentCo
 
 After adding the web part on the page and configure with required properties, you will see the chat canvas for your copilot. Based on the logic of your copilot, users will be signed in automatically at the beginning of the conversation, or when a specific event occurs.
 
-![Webpart UI](assets/SPFxUI.png)
+![Webpart UI](images/SPFxUI.png)
 
-![Example1](assets/Example1.gif)
+![Example1](images/Example1.gif)
 
-![Example2](assets/Example2.gif)
+![Example2](images/Example2.gif)
