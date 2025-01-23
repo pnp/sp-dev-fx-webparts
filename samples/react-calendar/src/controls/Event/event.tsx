@@ -816,48 +816,55 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event 
    */
   private async returnExceptionRecurrenceInfo(recurrenceData: string) {
-    const parser = new XMLParser();
+    // Configure the XML parser
+    const parser = new XMLParser({
+      ignoreAttributes: false, // Include attributes in the parsed JSON
+      attributeNamePrefix: "", // Do not prefix attributes with @
+      isArray: (name) => ["rule", "repeat", "daily", "weekly", "monthly", "monthlyByDay", "yearly", "yearlyByDay"].includes(name), // Explicitly set nodes to be arrays
+    });
+  
     try {
-      // Parse the XML string into a JSON object
-      const promise = parser.parse(recurrenceData);
-
-      const recurrenceInfo: any = await promise;
-      if (recurrenceInfo != null) {
-        let keys = Object.keys(recurrenceInfo.recurrence.rule[0].repeat[0]);
+      // Parse the XML string
+      const recurrenceInfo: any = parser.parse(recurrenceData);
+  
+      // Check if parsed data contains expected structure
+      if (recurrenceInfo?.recurrence?.rule?.[0]?.repeat?.[0]) {
+        // Access repeat keys
+        const repeat = recurrenceInfo.recurrence.rule[0].repeat[0];
+        const keys = Object.keys(repeat);
+  
+        // Supported recurrence types
         const recurrenceTypes = ["daily", "weekly", "monthly", "monthlyByDay", "yearly", "yearlyByDay"];
-        for (var key of keys) {
-          const rule = recurrenceInfo.recurrence.rule[0].repeat[0][key][0]['$'];
+  
+        for (const key of keys) {
+          const rule = repeat[key]?.[0]?.["$"];
+          if (!rule) continue; // Skip if the rule is not present
+  
           switch (recurrenceTypes.indexOf(key)) {
             case 0:
               return this.parseDailyRule(rule);
-              break;
             case 1:
               return this.parseWeeklyRule(rule);
-              break;
             case 2:
               return this.parseMonthlyRule(rule);
-              break;
             case 3:
               return this.parseMonthlyByDayRule(rule);
-              break;
             case 4:
               return this.parseYearlyRule(rule);
-              break;
             case 5:
               return this.parseYearlyByDayRule(rule);
-              break;
             default:
               continue;
           }
         }
+      } else {
+        return "Invalid recurrence format";
       }
-
     } catch (error) {
-      // Handle parsing errors by rejecting the promise
+      // Handle parsing errors
       throw new Error(`Error parsing recurrence data: ${error.message}`);
     }
   }
-
 
   /**
    *
@@ -868,8 +875,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
    */
   public async returnRecurrenceInfo(startDate: Date, recurrenceData: string) {
     this.returnedRecurrenceInfo = { recurrenceData: recurrenceData, eventDate: startDate, endDate: moment().add(20, 'years').toDate() };
-    //this.setState({ editRecurrenceSeries:false})
-    //console.log(this.returnedRecurrenceInfo);
   }
 
 
