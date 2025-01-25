@@ -8,7 +8,7 @@ This SPFx web part demonstrates how to use the **React useReducer hook** with th
 
 ## Prerequisites
 
-- **Node.js**: v18.9.x or higher is recommended.
+- **Node.js**: v18.19.1 or higher is recommended.
 - **PnP.js**: This sample uses PnP.js to connect to SharePoint data.
 - **SPFx Development Environment**: [Set up your SPFx environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) before running the web part.
 
