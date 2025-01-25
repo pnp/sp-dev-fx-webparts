@@ -54,13 +54,54 @@ This sample is optimally compatible with the following environment configuration
 
 ---
 
-## Using tthe solution
-- Clone this repository
-- Navigate to the solution folder:
-  - **cd react-usereducer-hook-webpart**
-- In the command-line run:
-  - **npm install**
-  - **gulp serve**
+ ## Running the solution
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-repo/faq-search-ace.git
+   cd faq-search-ace
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install 
+
+3. **Install dependencies:**
+   ```bash
+   gulp serve 
+   
+## Deployment
+
+Follow these steps to deploy the web part:
+
+1. **Pre-requisites:**
+   - Ensure you have the correct [SPFx development environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) set up.
+   - Install Node.js LTS (v18.x).
+
+2. **Build the solution:**
+   - Clone the repository to your local machine.
+   - Navigate to the project folder in your terminal and run:
+     ```bash
+     npm install
+     gulp build
+     ```
+
+3. **Package the solution:**
+   - Once built, package the solution with:
+     ```bash
+     gulp bundle --ship
+     gulp package-solution --ship
+     ```
+
+4. **Upload the package:**
+   - Upload the `.sppkg` file located in the `sharepoint/solution` folder to your SharePoint App Catalog.
+
+5. **Deploy the solution:**
+   - Once uploaded, select the package in the App Catalog and click on "Deploy".
+
+6. Add the web part to any SharePoint page
+
 
 ## Features
 
