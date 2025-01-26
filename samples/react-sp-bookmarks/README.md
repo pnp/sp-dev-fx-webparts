@@ -73,6 +73,7 @@ Version|Date|Comments
 
 1. **Bookmark Management**:
    - Add new bookmarks with a title, URL, and icon.
+   - The webpart supports FluentUI icon names (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)
    - Edit existing bookmarks to update their details.
    - Delete bookmarks from the list.
 
