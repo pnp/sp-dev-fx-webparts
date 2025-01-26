@@ -9,6 +9,13 @@ The **Bookmarks Manager** web part allows users to manage and organize bookmarks
 
 ![Bookmarks Manager](./assets/BookmarksManager.gif)
 
+## Prerequisites
+
+A SharePoint list to store the bookmarks. The list must have the following columns:
+- Title (Single line of text)
+- URL (Single line of text)
+- Icon (Single line of text)
+
 ## Compatibility
 
 | :warning: Important          |
