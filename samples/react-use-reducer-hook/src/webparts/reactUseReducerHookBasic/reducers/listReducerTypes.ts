@@ -14,6 +14,5 @@ export type ListAction =
   | { type: typeof ActionTypes.FETCH_START }
   | { type: typeof ActionTypes.FETCH_SUCCESS; payload: any[] }
   | { type: typeof ActionTypes.FETCH_ERROR; payload: string }
-  | { type: typeof ActionTypes.WEB_PART_NOT_CONFIGURED; payload: string }
-  | { type: typeof ActionTypes.SET_CONFIGURED; payload: boolean };
+
 

@@ -31,6 +31,8 @@ const ReactUseReducerHookBasic: React.FC<IReactUseReducerHookBasicProps> = (prop
   const [state, dispatch] = React.useReducer(listReducer, initialState);
 
   React.useEffect(() => {
+    console.log('ReactUseReducerHookBasic: useEffect');
+    
     if (!isConfigured) return;
 
     const loadItems = async () => {

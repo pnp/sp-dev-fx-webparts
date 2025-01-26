@@ -52,21 +52,6 @@ export const listReducer = (state: IListState, action: ListAction): IListState =
         error: action.payload, // string
       };
 
-    case ActionTypes.WEB_PART_NOT_CONFIGURED:
-      // Set loading to false and update the error message for configuration issues
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-
-    case ActionTypes.SET_CONFIGURED:
-      // Update the isConfigured state
-      return {
-        ...state,
-        isConfigured: action.payload,
-      };
-
     default:
       // Log an error for unknown actions
       Logger.write(
