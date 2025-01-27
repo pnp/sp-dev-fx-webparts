@@ -10,7 +10,7 @@ Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
 
-![calendar](assets/react-calendar-categories.mp4)
+![calendar](assets/react-calendar-categories.png)
 
 ![calendar](assets/animatevideo.gif)
 
