@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ThemeProvider } from 'office-ui-fabric-react';
+import { ThemeProvider } from '@fluentui/react';
 
 import { MantineProvider } from '@mantine/core';
 

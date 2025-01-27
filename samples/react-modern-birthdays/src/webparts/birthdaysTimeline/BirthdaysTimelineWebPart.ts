@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import * as strings from 'BirthdaysTimelineWebPartStrings';
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme } from '@fluentui/react/lib/Styling';
 
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { Version } from '@microsoft/sp-core-library';

@@ -54,6 +54,10 @@ export class EditorPanel extends React.Component<IEditorPanelProps, IEditorPanel
     this._delayedChange = this._async.debounce(this._handleOnChanged, this.props.deferredValidationTime ? this.props.deferredValidationTime : 200);
   }
 
+  public componentWillUnmount(): void {
+    this._async.dispose();
+  }
+
   // public componentDidMount(): void {
   //   if (this.props.customMode !== undefined) {
   //     try {

@@ -11966,7 +11966,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2024-11-03",
+    "updateDateTime": "2025-01-15",
     "products": [
       "SharePoint"
     ],
@@ -11990,129 +11990,135 @@
     ],
     "thumbnails": [
       {
-        "type": "image",
+        "type": "video",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams2.jpg?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/calendar_teams.jpg",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/modercalendar_monthly.gif?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/calendar_teams2.jpg",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/moderncalendar_yearly.gif?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/modercalendar_monthly.gif",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.jpg?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/moderncalendar_yearly.gif",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.0.jpg",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.1.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.0.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.2.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.1.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.3.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.2.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.4.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.3.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.4.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen2.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen1.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 113,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen3.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen2.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 114,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen4.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen3.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 115,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen5.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen4.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 116,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen6.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen5.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 117,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen7.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen6.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 118,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen8.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen7.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 119,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen9.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen8.png",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 120,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/weekly_moderncalendar.gif?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/screen9.png",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 121,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/weekly_moderncalendar.gif",
         "alt": "Calendar"
       }
     ],
@@ -13353,6 +13359,65 @@
       }
     ],
     "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant",
+    "source": "pnp",
+    "title": "Copilot Chat Bubble - With SSO integrated to SharePoint which summarizes sessions at ESPC 2024",
+    "shortDescription": "This web part integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online featuring Single Sign-on and a chat interface.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
+    "longDescription": [
+      "For sample purpose, I have built a CoPilot agent which will summarize sessions at ESPC 2024, and Provides a concise summary of all sessions and topics covered at ESPC 2024, including key take aways and speakers insights."
+    ],
+    "creationDateTime": "2025-01-09",
+    "updateDateTime": "2025-01-10",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/assets/Example1.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/assets/Example2.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "pictureUrl": "https://github.com/NishkalankBezawada.png",
+        "name": "Nishkalank Bezawada"
+      }
+    ],
+    "references": [
+      {
+        "name": "SharePoint SSO Component",
+        "description": "his code sample demonstrates how to create a SharePoint SPFx component which is a wrapper for a copilot, created with Microsoft Copilot Studio. The SPFx component included in the sample supports SSO, providing seamless authentication for users interacting with the copilot.",
+        "url": "https://github.com/microsoft/CopilotStudioSamples/tree/master/SharePointSSOComponent#sharepoint-sso-component"
+      },
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
@@ -20605,7 +20670,7 @@
       "Shows upcoming birthdays in the company, laid out in a timeline"
     ],
     "creationDateTime": "2023-01-31",
-    "updateDateTime": "2023-01-31",
+    "updateDateTime": "2025-01-19",
     "products": [
       "SharePoint"
     ],
@@ -20616,7 +20681,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20632,6 +20697,11 @@
         "gitHubAccount": "joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes"
+      },
+      {
+        "gitHubAccount": "a1mery",
+        "pictureUrl": "https://github.com/a1mery.png",
+        "name": "Aimery Thomas"
       }
     ],
     "references": [
@@ -20653,7 +20723,7 @@
       "The Web Part shows the upcoming birthdays in the company, the web parts reads birthdays from a list located on the tenant's root site with title \"Birthdays.\""
     ],
     "creationDateTime": "2023-01-31",
-    "updateDateTime": "2023-01-31",
+    "updateDateTime": "2025-01-19",
     "products": [
       "SharePoint"
     ],
@@ -20664,7 +20734,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -20680,6 +20750,11 @@
         "gitHubAccount": "joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes"
+      },
+      {
+        "gitHubAccount": "a1mery",
+        "pictureUrl": "https://github.com/a1mery.png",
+        "name": "Aimery Thomas"
       }
     ],
     "references": [
@@ -27492,7 +27567,7 @@
       "This web part demonstrates Star Ratings capabilities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
     ],
     "creationDateTime": "2021-10-07",
-    "updateDateTime": "2023-11-09",
+    "updateDateTime": "2025-01-22",
     "products": [
       "SharePoint"
     ],
@@ -27503,7 +27578,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { Stack } from 'office-ui-fabric-react/lib/components/Stack';
+import { Stack } from '@fluentui/react';
 import {
   MessageBar,
   MessageBarType,
-} from 'office-ui-fabric-react/lib/MessageBar';
+} from '@fluentui/react/lib/MessageBar';
 
 export interface IShowMessageProps {
   message?: string;

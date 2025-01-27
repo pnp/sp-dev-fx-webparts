@@ -7,11 +7,11 @@ import {
   MessageBarType,
   SpinnerSize,
   Stack,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import {
   DocumentCard,
   DocumentCardDetails,
-} from 'office-ui-fabric-react/lib/DocumentCard';
+} from '@fluentui/react/lib/DocumentCard';
 
 import {
   Timeline,
