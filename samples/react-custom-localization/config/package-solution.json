@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-custom-localization-client-side-solution",
+    "id": "91806bc6-7c52-46d4-9480-f26762d53621",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-custom-localization description"
+      },
+      "longDescription": {
+        "default": "react-custom-localization description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-custom-localization Feature",
+        "description": "The feature that activates elements of the react-custom-localization solution.",
+        "id": "8315d343-86de-4fae-8252-52c6a85af8a8",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-custom-localization.sppkg"
+  }
+}
