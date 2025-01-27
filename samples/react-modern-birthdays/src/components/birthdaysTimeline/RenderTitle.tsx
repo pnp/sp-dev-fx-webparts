@@ -4,7 +4,7 @@ import { useAtom } from 'jotai';
 import {
   Stack,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { globalState } from '../../jotai/atoms/birthdaysTimeline';
 import { IGlobalState } from '../../models/birthdaysTimeline';

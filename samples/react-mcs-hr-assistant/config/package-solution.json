@@ -1,0 +1,38 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "O365C - Copilot HR Assistant",
+        "id": "5235de52-9295-4deb-bbe6-654bc1f088d6",
+        "version": "1.1.0.0",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.20.0-rc.1"
+        },
+        "metadata": {
+            "shortDescription": {
+                "default": "O365C - Copilot HR Assistant description"
+            },
+            "longDescription": {
+                "default": "O365C - Copilot HR Assistant description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "O365C - Copilot HR Assistant Feature",
+            "description": "The feature that activates elements of the O365C - Copilot HR Assistant solution.",
+            "id": "601ef4de-d48c-4f46-8999-d347a08f076e",
+            "version": "1.0.0.0"
+        }]
+    },
+    "paths": {
+        "zippedPackage": "solution/o356c-copilot-hr-assistant.sppkg"
+    }
+}

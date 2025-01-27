@@ -12,7 +12,9 @@ $primaryColor: "[theme: themePrimary, default: #0078d7]";
 .container {
   display: flex;
 }
-
+.webpartTitle {
+  font-family: var(--fontFamilyCustomFont1500, var(--fontFamilyBase));
+}
 .contentWrapper {
   display: grid;
   gap: 3rem;
@@ -20,6 +22,11 @@ $primaryColor: "[theme: themePrimary, default: #0078d7]";
 .contentTitle,
 .userName {
   color: $primaryColor;
+  font-family: var(--fontFamilyCustomFont1500, var(--fontFamilyBase));
+}
+.contentDescription,
+.designation {
+  font-family: var(--fontFamilyCustomFont800, var(--fontFamilyBase));
 }
 .asideWrapper {
   width: 30%;

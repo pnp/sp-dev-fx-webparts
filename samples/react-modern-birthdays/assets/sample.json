@@ -10,7 +10,7 @@
             "Shows upcoming birthdays in the company, laid out in a timeline"
         ],
         "creationDateTime": "2023-01-31",
-        "updateDateTime": "2023-01-31",
+        "updateDateTime": "2025-01-19",
         "products": [
             "SharePoint"
         ],
@@ -21,7 +21,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.1"
+                "value": "1.20.0"
             }
         ],
         "thumbnails": [
@@ -37,6 +37,11 @@
                 "gitHubAccount": "joaojmendes",
                 "pictureUrl": "https://github.com/joaojmendes.png",
                 "name": "João Mendes"
+            },
+            {
+                "gitHubAccount": "a1mery",
+                "pictureUrl": "https://github.com/a1mery.png",
+                "name": "Aimery Thomas"
             }
         ],
         "references": [
@@ -58,7 +63,7 @@
             "The Web Part shows the upcoming birthdays in the company, the web parts reads birthdays from a list located on the tenant's root site with title \"Birthdays.\""
         ],
         "creationDateTime": "2023-01-31",
-        "updateDateTime": "2023-01-31",
+        "updateDateTime": "2025-01-19",
         "products": [
             "SharePoint"
         ],
@@ -69,7 +74,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.16.1"
+                "value": "1.20.0"
             }
         ],
         "thumbnails": [
@@ -85,6 +90,11 @@
                 "gitHubAccount": "joaojmendes",
                 "pictureUrl": "https://github.com/joaojmendes.png",
                 "name": "João Mendes"
+            },
+            {
+                "gitHubAccount": "a1mery",
+                "pictureUrl": "https://github.com/a1mery.png",
+                "name": "Aimery Thomas"
             }
         ],
         "references": [

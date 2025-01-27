@@ -98,7 +98,7 @@ export function ManageApps(appProps: IManageAppsProps) {
         )
       },
       {
-        title: "Derscription",
+        title: "Description",
         field: "description",
         editComponent: props => (
           <TextField

@@ -4,8 +4,8 @@ import {
   Spinner,
   SpinnerLabelPosition,
   SpinnerSize,
-} from 'office-ui-fabric-react/lib/Spinner';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/Spinner';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 export interface IShowSpinnerProps {
   size?: SpinnerSize;

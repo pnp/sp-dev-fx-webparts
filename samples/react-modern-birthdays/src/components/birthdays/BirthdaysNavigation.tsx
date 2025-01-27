@@ -9,7 +9,7 @@ import {
   Stack,
   Text,
   TooltipHost,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { useId } from '@fluentui/react-hooks';
 

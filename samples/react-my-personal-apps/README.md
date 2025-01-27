@@ -1,20 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  - Microsoft Graph
-  platforms:
-  - React
-  createdDate: 4/9/2020 12:00:00 AM
----
-
 # My Personal Apps (Links)
 
 ## Summary
@@ -73,6 +56,8 @@ This Web Part uses MSgraph Open Extension to save the personal information on us
 ## Contributors
 
 * [João Mendes](https://github.com/joaojmendes)
+* [Zach Roberts](https://github.com/zachroberts8668)
+* [Azores](https://github.com/gretchunkim)
 
 
 ## Version history
@@ -81,6 +66,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|April 9, 2020|Initial release
 1.0.1|April 28, 2020| Bug fix URL Links - [Zach Roberts](https://github.com/zachroberts8668) [SPODev](https://spodev.com)
+1.0.2|January 13, 2025| [Azores](https://github.com/gretchunkim) fixed typo
 
 ## Minimal Path to Awesome
 

@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { IBirthdayState } from './IBirthdaysState';
 import SPService from '../../../services/SPService';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const imgBackgroundBallons: string = require('../../../assets/ballonsBackgroud.png');
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -23,8 +24,8 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
     };
   }
 
-  public componentDidMount(): void {
-    this.GetUsers();
+  public async componentDidMount(): Promise<void> {
+    await this.GetUsers();
   }
 
   public componentDidUpdate(prevProps: IBirthdaysProps, prevState: IBirthdayState): void {
@@ -32,7 +33,7 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
   }
   // Render
   public render(): React.ReactElement<IBirthdaysProps> {
-    let _center: any = !this.state.showBirthdays ? "center" : "";
+    const _center: React.CSSProperties['textAlign'] = !this.state.showBirthdays ? "center" : undefined;
     return (
       <div className={styles.happyBirthday}
         style={{ textAlign: _center }} >
@@ -60,7 +61,7 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
   }
 
   // Sort Array of Birthdays
-  private SortBirthdays(users: IUser[]) {
+  private SortBirthdays(users: IUser[]): IUser[] {
     return users.sort( (a, b) => {
       if (a.birthday > b.birthday) {
         return 1;
@@ -72,7 +73,7 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
     });
   }
   // Load List Of Users
-  private async GetUsers() {
+  private async GetUsers(): Promise<void> {
     let _otherMonthsBirthdays: IUser[], _dezemberBirthdays: IUser[];
     const listItems = await this._spServices.getPBirthdays(this.props.numberUpcomingDays);
     if (listItems && listItems.length > 0) {
@@ -86,14 +87,14 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
       //  first select all bithdays of Dezember to sort this must be the first to show
       if (moment().format('MM') === '12') {
         _dezemberBirthdays = this._users.filter( (v) => {
-          var _currentMonth = moment(v.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('MM');
+          const _currentMonth = moment(v.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('MM');
           return (_currentMonth === '12');
         });
         // Sort by birthday date in Dezember month
         _dezemberBirthdays = this.SortBirthdays(_dezemberBirthdays);
         // select birthdays != of month 12
         _otherMonthsBirthdays = this._users.filter((v) => {
-          var _currentMonth = moment(v.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('MM');
+          const _currentMonth = moment(v.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('MM');
           return (_currentMonth !== '12');
         });
         // sort by birthday date

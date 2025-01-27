@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 
 import {
   BaseComponentContext,
