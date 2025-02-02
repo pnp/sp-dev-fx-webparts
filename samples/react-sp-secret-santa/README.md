@@ -7,7 +7,7 @@ The **Secret Santa** is a fun and interactive tool designed to manage a Secret S
 ---
 
 
-![Bookmarks Manager](./assets/SecreatSanta.gif)
+![Secret Santa](./assets/SecretSanta.gif)
 
 ## Prerequisites
 
