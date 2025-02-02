@@ -2,19 +2,22 @@
 
 ## Summary
 
-The **Bookmarks Manager** web part allows users to manage and organize bookmarks in a SharePoint list. Users can add, edit, and delete bookmarks, which are displayed in a grid layout. The web part supports both **light** and **dark** themes and integrates seamlessly with SharePoint.
+The **Secret Santa** is a fun and interactive tool designed to manage a Secret Santa gift exchange directly on your SharePoint site.
 
 ---
 
 
-![Bookmarks Manager](./assets/BookmarksManager.gif)
+![Bookmarks Manager](./assets/SecreatSanta.gif)
 
 ## Prerequisites
 
 A SharePoint list to store the information. The list must have the following columns:
-- Title (Single line of text)
-- URL (Single line of text)
-- Icon (Single line of text)
+ - Title (Single line of text)
+ - Image (Hyperlink)
+ - Opened (Boolean)
+ - OpenedBy (Person or Group)
+ - GiftTitle (Single line of text)
+
 
 ## Compatibility
 
@@ -46,7 +49,7 @@ A SharePoint list to store the information. The list must have the following col
 
 Version|Date|Comments
 -------|----|--------
-1.0|January 27, 2025|Initial release
+1.0|January 31, 2025|Initial release
 
 
 ## Minimal Path to Awesome
@@ -78,26 +81,18 @@ Version|Date|Comments
 
 ## Features
 
-1. **Bookmark Management**:
-   - Add new bookmarks with a title, URL, and icon.
-   - The webpart supports FluentUI icon names (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)
-   - Edit existing bookmarks to update their details.
-   - Delete bookmarks from the list.
+1. **Displays Gift Boxes**:
+   - Shows a grid of gift boxes, each representing a gift from your SharePoint list.
+   - Unopened boxes display a placeholder (🎁) and the recipient's name.
+   - Opened boxes reveal the gift details, including the gift title, image, and who opened it.
 
-2. **Grid Layout**:
-   - Displays bookmarks in a responsive grid layout.
-   - Each bookmark includes a title, icon, and link.
+2. **Interactive Experience**:
+   - Click on an unopened gift box to "open" it and reveal the gift inside.
+   - Once opened, the system records who opened the gift and updates the display in real time.
 
-3. **Theming**:
-   - Supports **light** and **dark** themes for better user experience.
-   - Automatically adapts to the SharePoint site's theme.
-
-4. **SharePoint Integration**:
-   - Stores bookmarks in a SharePoint list.
-   - Uses PnP JS for seamless interaction with SharePoint APIs.
-
-5. **User-Friendly UI**:
-   - Intuitive interface with a modal dialog for adding/editing bookmarks.
+3. **Customizable**:
+   - Choose between **light** and **dark** themes to match your site’s design.
+   - The title of the web part can be customized to fit your event.
 
 
 ## Help
