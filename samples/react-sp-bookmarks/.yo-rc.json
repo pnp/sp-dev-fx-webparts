@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-sp-bookmarks",
+    "libraryId": "e4cd35b5-7269-45f8-a471-177c7f8fd1f1",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-sp-bookmarks",
+    "solutionShortDescription": "react-sp-bookmarks description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
