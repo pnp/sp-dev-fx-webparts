@@ -1,0 +1,20 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "nodeVersion": "18.18.0",
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.20.0",
+    "libraryName": "spfx-tailwind",
+    "libraryId": "32d20565-ce71-49e4-ac49-ec8dd74a44fa",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "plusBeta": false,
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.13.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
+  }
+}
+  
