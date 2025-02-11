@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-use-reducer-hook-basic-client-side-solution",
+    "id": "ac159f5d-7392-44a7-88ed-6b1474ad0ca1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-use-reducer-hook-basic description"
+      },
+      "longDescription": {
+        "default": "react-use-reducer-hook-basic description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-use-reducer-hook-basic Feature",
+        "description": "The feature that activates elements of the react-use-reducer-hook-basic solution.",
+        "id": "f38f3ef7-177f-4d5d-9beb-3a7afede72df",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-use-reducer-hook-basic.sppkg"
+  }
+}
