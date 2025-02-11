@@ -1,0 +1,67 @@
+@import './EditorStyles.module.scss';
+.editorWrapper {
+    overflow: hidden;
+    color: '#323130 !important';
+}
+
+.displayContainer {
+    min-height: 200px;
+    padding: 5px;
+    b,
+    strong {
+        font-weight: 600;
+    }
+    a{
+        cursor: pointer;
+    }
+
+    @extend %editorStyles;
+}
+
+.editContainer {
+    min-height: 200px;
+    color: inherit !important;
+    padding: 5px;
+    b,
+    strong {
+        font-weight: 600;
+    }
+    .editor {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        min-height: 200px;
+        overflow: auto;
+        @extend %editorStyles;      
+    }
+    .focus {
+        border: 1px solid #ccc !important;
+        color: inherit !important;
+        outline: none;
+    }
+    .focused {
+        border: 1px solid #ccc !important;
+    }
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcomeImage {
+    width: 100%;
+    max-width: 420px;
+}
+
+.links {
+    a {
+        text-decoration: none;
+        color: "[theme:link, default:#03787c]";
+        color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+        &:hover {
+            text-decoration: underline;
+            color: "[theme:linkHovered, default: #014446]";
+            color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+        }
+    }
+}

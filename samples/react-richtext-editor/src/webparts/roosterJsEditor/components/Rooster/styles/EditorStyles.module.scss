@@ -1,0 +1,107 @@
+// Define global variables
+$font-family: 'Segoe UI Web (West European)',
+Segoe UI,
+-apple-system,
+BlinkMacSystemFont,
+Roboto,
+Helvetica Neue,
+sans-serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-size-base: 18px;
+$line-height-base: 1.4;
+$color-primary: '[theme: themePrimary, default: #666666]';
+$background-color-inline-boundary: rgba(0, 0, 0, 0.05);
+$aspect-ratio-16-9: 56.25%;
+$padding-bottom-player-controls: 36px;
+$margin-bottom-video: 16px;
+$background-color-video: black;
+%editorStyles {
+    body {
+        font-weight: $font-weight-light !important;
+        font-family: $font-family !important;
+    }
+    p:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child {
+        margin-top: 0 !important;
+    }
+    table {
+        margin-bottom: 1em !important;
+    }
+    p,
+    li {
+        font-weight: $font-weight-regular !important;
+        font-size: $font-size-base !important;
+        line-height: $line-height-base !important;
+    }
+    h2 {
+        font-weight: 600 !important;
+        font-size: 28px !important;
+        margin: 0 0 12px !important;
+        &,
+        & * {
+            font-weight: 600 !important;
+            font-size: 28px !important;
+            margin: 0 0 12px !important;
+        }
+    }
+    h3 {
+        font-weight: 600 !important;
+        font-size: 24px !important;
+        margin: 0 0 12px !important;
+        &,
+        & * {
+            font-weight: 600 !important;
+            font-size: 24px !important;
+            margin: 0 0 12px !important;
+        }
+    }
+    h4 {
+        font-weight: 600 !important;
+        font-size: 20px !important;
+        margin: 0 0 12px !important;
+        &,
+        & * {
+            font-weight: 600 !important;
+            font-size: 20px !important;
+            margin: 0 0 12px !important;
+        }
+    }
+    td,
+    th {
+        font-weight: $font-weight-regular !important;
+        font-size: $font-size-base !important;
+    }
+    a {
+        color: $color-primary !important;     
+    }
+    [data-mce-selected='inline-boundary'] {
+        background-color: $background-color-inline-boundary !important;
+    }
+    img,
+    video,
+    embed {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    [data-content-component='video-embed'] {
+        position: relative !important;
+        padding-top: $aspect-ratio-16-9 !important;
+        padding-bottom: $padding-bottom-player-controls !important;
+        margin-bottom: $margin-bottom-video !important;
+        background-color: $background-color-video !important;
+    }
+    [data-content-component='video-embed'] iframe,
+    [data-content-component='video-embed']>[data-mce-object='iframe'] {
+        border: 0 !important;
+        margin: 0 !important;
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "53508f24-850e-485e-9272-0c29dcb16cc5",
+    "alias": "RoosterJsEditorWebPart",
+    "componentType": "WebPart",    
+    "version": "*",
+    "manifestVersion": 2,
+    "requiresCustomScript": false,
+    "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+    "supportsThemeVariants": true,
+    "preconfiguredEntries": [{
+        "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+        "group": { "default": "Advanced" },
+        "title": { "default": "[O365C] RichText Editor" },
+        "description": { "default": "[O365C] RichText Editor description" },
+        "officeFabricIconFontName": "Page",
+        "properties": {
+            "description": "[O365C] RichText Editor"
+        }
+    }]
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "o-365-c-editor-roosterjs",
+    "libraryId": "a480a902-33d3-4bb2-b121-fa8f652b3df3",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "o365c-editor-roosterjs",
+    "solutionShortDescription": "o365c-editor-roosterjs description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
