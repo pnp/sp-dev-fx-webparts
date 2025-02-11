@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8e2d8f8c-f694-4818-8aa5-89a9a7c3efda",
+  "alias": "ReactSpBookmarksWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [
+    {
+      "title": {
+        "default": "Bookmarks Manager"
+      }, 
+      "description": {
+        "default": "Manage your bookmarks effectively"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {}
+    }
+  ]
+}
