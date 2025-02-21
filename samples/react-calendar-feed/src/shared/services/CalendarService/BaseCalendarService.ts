@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HttpClient, HttpClientResponse } from "@microsoft/sp-http";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import * as moment from "moment";
 import { CalendarEventRange } from ".";
@@ -22,7 +21,9 @@ export abstract class BaseCalendarService implements ICalendarService {
   public MaxTotal: number;
   public ConvertFromUTC: boolean;
 
-  public getEvents: () => Promise<ICalendarEvent[]>;
+  public getEvents() : Promise<ICalendarEvent[]> {
+    throw new Error("Method not implemented in the BaseCalendarService");
+  }
   /**
    * Solves an issue where some providers (I'm looking at you, WordPress) returns all-day events
    * as starting from midight on the first day, and ending at midnight on the second day, making events
@@ -88,12 +89,16 @@ export abstract class BaseCalendarService implements ICalendarService {
    * Retrieves the response using a CORS proxy or directly, depending on the settings
    * @param feedUrl The URL where to retrieve the events
    */
-  protected fetchResponse(feedUrl: string): Promise<HttpClientResponse> {
+  protected fetchResponse(feedUrl: string): Promise<Response> {
     // would love to use a different approach to workaround CORS issues
     const requestUrl: string = this.getCORSUrl(feedUrl);
+    //fetch(requestUrl,{mode: 'no-cors'})
+    const options:RequestInit = {
+   //   mode: this.UseCORS ?'no-cors':'cors',
+      
+    }
+    return fetch(requestUrl,options);
 
-    return this.Context.httpClient.fetch(requestUrl,
-      HttpClient.configurations.v1, {});
   }
 
   /**
@@ -102,8 +107,10 @@ export abstract class BaseCalendarService implements ICalendarService {
    */
   protected getCORSUrl(feedUrl: string): string {
     // would love to use a different approach to workaround CORS issues
+    // https://cors-anywhere.herokuapp.com/corsdemo not workign for me, so I'm using corsproxy.io
+    
     return this.UseCORS ?
-      `https://cors-anywhere.herokuapp.com/${feedUrl}` :
+      `https://corsproxy.io/?source=npm-package&url=${encodeURIComponent(feedUrl)}` :
       feedUrl;
   }
 
@@ -113,6 +120,7 @@ export abstract class BaseCalendarService implements ICalendarService {
    */
   protected async fetchResponseAsJson(feedUrl: string): Promise<any> {
       const response = await this.fetchResponse(feedUrl);
+    
       return await response.json();
   }
 

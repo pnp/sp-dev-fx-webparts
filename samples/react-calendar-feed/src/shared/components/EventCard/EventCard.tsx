@@ -1,6 +1,6 @@
 import { Guid } from "@microsoft/sp-core-library";
 import * as strings from "CalendarFeedSummaryWebPartStrings";
-import * as ICS from "ics-js";
+import ical from "ical-generator";
 import * as moment from "moment";
 import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from "office-ui-fabric-react";
 import * as React from "react";
@@ -9,21 +9,15 @@ import { DateBox, DateBoxSize } from "../DateBox";
 import styles from "./EventCard.module.scss";
 import { Text } from "@microsoft/sp-core-library";
 import { useCallback } from 'react';
+
 /**
  * Shows an event in a document card
  */
-export const EventCard = (props: IEventCardProps) => {
+export const EventCard = (props: IEventCardProps):JSX.Element => {
   const { isNarrow, themeVariant, isEditMode, event } = props;
 
   // Get the cell information
-  const { start,
-    end,
-    allDay,
-    title,
-    url,
-    category,
-    location
-  } = event;
+  const { start, end, allDay, title, url, category, location } = event;
 
   const eventDate: moment.Moment = moment(start);
   const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
@@ -32,61 +26,44 @@ export const EventCard = (props: IEventCardProps) => {
    * Handle adding to calendar
    */
   const _onAddToMyCalendar = useCallback((): void => {
-
     // create a calendar to hold the event
-    const cal: ICS.VCALENDAR = new ICS.VCALENDAR();
-    cal.addProp("VERSION", 2.0);
-    cal.addProp("PRODID", "//SPFX//NONSGML v1.0//EN");
-
+    const cal = ical({ 
+      name: 'My Calendar' ,
+      prodId: '//SPFX//NONSGML v1.0//EN'
+    });
+    
+   
     // create an event
-    const icsEvent: ICS.VEVENT = new ICS.VEVENT();
+    cal.createEvent({
+      id: Guid.newGuid().toString(),
+      start: allDay ? moment(start).startOf('day').toDate() : new Date(start),
+      end: allDay ? moment(end).endOf('day').toDate() : new Date(end),
+      
+      summary: title,
+      url: url,
+      description: event.description,
+      location: location,
+      allDay: allDay
+    });
+// export the calendar
+const icalString = cal.toString();
+const blob = new Blob([icalString], { type: 'text/calendar;charset=utf8' });
+const urlBlob = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = urlBlob;
+a.download = 'event.ics';
+a.click();
+URL.revokeObjectURL(urlBlob);
+}, [event, allDay, end, start, title, url, event.description, location]);
 
-    // generate a unique id
-    icsEvent.addProp("UID", Guid.newGuid().toString());
 
-    // if the event is all day, just pass the date component
-    if (event.allDay) {
-      icsEvent.addProp("DTSTAMP", event.start, { VALUE: "DATE" });
-      icsEvent.addProp("DTSTART", event.start, { VALUE: "DATE" });
-    } else {
-      icsEvent.addProp("DTSTAMP", event.start, { VALUE: "DATE-TIME" });
-      icsEvent.addProp("DTSTART", event.start, { VALUE: "DATE-TIME" });
-      icsEvent.addProp("DTEND", event.start, { VALUE: "DATE-TIME" });
-    }
-
-    // add a title
-    icsEvent.addProp("SUMMARY", event.title);
-
-    // add a url if there is one
-    if (event.url !== undefined) {
-      icsEvent.addProp("URL", event.url);
-    }
-
-    // add a description if there is one
-    if (event.description !== undefined) {
-      icsEvent.addProp("DESCRIPTION", event.description);
-    }
-
-    // add a location if there is one
-    if (event.location !== undefined) {
-      icsEvent.addProp("LOCATION", event.location);
-    }
-
-    // add the event to the calendar
-    cal.addComponent(icsEvent);
-
-    // export the calendar
-    // my spidey senses are telling me that there are sitaations where this isn't going to work, but none of my tests could prove it.
-    // i suspect we're not encoding events properly
-    window.open("data:text/calendar;charset=utf8," + encodeURIComponent(cal.toString()));
-  }, [event]);
 
   //Unfortunately, themes don't always populate all the palette/semantic colors.
   //Detect if background color is the same as the foreground and find default
-  const backgroundColor: string = themeVariant && (isNarrow ? themeVariant.semanticColors.bodyBackground : themeVariant.palette["primaryBackground"]);
-  const textColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ?
-    themeVariant.semanticColors.bodyText : themeVariant.palette["primaryText"];
-  const subTextColor: string = themeVariant && themeVariant.semanticColors.bodySubtext && backgroundColor != themeVariant.semanticColors.bodySubtext ? themeVariant.semanticColors.bodySubtext : textColor;
+  const backgroundColor: string = themeVariant && (isNarrow ? themeVariant.semanticColors.bodyBackground : themeVariant.palette.white);
+  const textColor: string = themeVariant && backgroundColor !== themeVariant.semanticColors.bodyText ?
+    themeVariant.semanticColors.bodyText : themeVariant.palette.black;
+  const subTextColor: string = themeVariant && themeVariant.semanticColors.bodySubtext && backgroundColor !== themeVariant.semanticColors.bodySubtext ? themeVariant.semanticColors.bodySubtext : textColor;
 
   if (isNarrow) {
     // Calculate the date and string format

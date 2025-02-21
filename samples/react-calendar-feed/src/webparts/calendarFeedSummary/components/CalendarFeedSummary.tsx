@@ -38,7 +38,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    */
   public componentDidMount(): void {
     if (this.props.isConfigured) {
-      this._loadEvents(true);
+      this._loadEvents(true).catch((error) => {console.log("Exception returned by getEvents", error.message);});
     }
   }
 
@@ -60,7 +60,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     // if we didn't have a provider and now we do, we definitely need to update
     if (prevProvider === undefined) {
       if (currProvider !== undefined) {
-        this._loadEvents(false);
+        this._loadEvents(false).catch((error) => {console.log("Exception returned by getEvents", error.message);});
       }
 
       // there's nothing to do because there isn't a provider
@@ -78,7 +78,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
     if (settingsHaveChanged) {
       // only load from cache if the providers haven't changed, otherwise reload.
-      this._loadEvents(false);
+      this._loadEvents(false).catch((error) => {console.log("Exception returned by getEvents", error.message);});
     }
   }
 
@@ -319,7 +319,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
   /**
    * When users click on the Configure button, we display the property pane
    */
-  private _onConfigure = () => {
+  private _onConfigure = (): void => {
     this.props.context.propertyPane.open();
   }
 

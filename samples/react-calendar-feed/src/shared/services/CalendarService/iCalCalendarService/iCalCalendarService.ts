@@ -2,7 +2,8 @@
 /**
  * ExtensionService
  */
-import * as ICAL from "ical.js";
+import { parseFile } from '@filecage/ical/parser';
+
 import { ICalendarService } from "..";
 import { BaseCalendarService } from "../BaseCalendarService";
 import { ICalendarEvent } from "../ICalendarEvent";
@@ -14,27 +15,32 @@ export class iCalCalendarService extends BaseCalendarService implements ICalenda
     this.Name = "iCal";
   }
 
-  public getEvents = async (): Promise<ICalendarEvent[]> => {
+  public async getEvents(): Promise<ICalendarEvent[]>  {
     const parameterizedFeedUrl: string = this.replaceTokens(this.FeedUrl, this.EventRange);
 
     try {
       const response = await this.fetchResponse(parameterizedFeedUrl);
-      const data = await response.text();
-      const jsonified: any = ICAL.parse(data);
-      const comp: any = new ICAL.Component(jsonified);
-      const veventList: any[] = comp.getAllSubcomponents("vevent");
-      const events: ICalendarEvent[] = veventList.map((vevent: any) => {
-        const event: ICAL.Event = new ICAL.Event(vevent);
-        const startDate = this.convertToDate(event.startDate);
-        const endDate = this.convertToDate(event.endDate);
+     
+      let data ="";
+      if(response.type === 'opaque') {
+        alert("CORS error: The feed URL is not accessible due to CORS restrictions. Please check the feed URL and make sure it is CORS-enabled.");
+      }
+      else {
+         data = await response.text();
+      }
+      
+      const parsedData = await parseFile(data);
+      const events: ICalendarEvent[] = Object.values(parsedData).filter((item: any) => item.type === 'VEVENT').map((event: any) => {
+        const startDate = this.convertToDate(event.start);
+        const endDate = this.convertToDate(event.end);
 
         const eventItem: ICalendarEvent = {
           title: event.summary,
           start: startDate,
           end: endDate,
           url: event.url,
-          allDay: event.startDate.icaltype === "date",
-          category: event.category,
+          allDay: event.start.icaltype === "date",
+          category: event.categories ? event.categories.join(', ') : '',
           description: event.description,
           location: event.location
         };

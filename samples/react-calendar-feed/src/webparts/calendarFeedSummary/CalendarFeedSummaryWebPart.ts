@@ -56,6 +56,11 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     this._providerList = CalendarServiceProviderList.getProviders();
   }
 
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
+    super.onDispose();
+  }
+  
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve) => {
       // Consume the new ThemeProvider service
