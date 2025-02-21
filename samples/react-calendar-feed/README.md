@@ -78,7 +78,7 @@ Version|Date|Comments
 5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behavior and styles to match OOB calendar view. Added support for themes and theme variants.
 5.2|July 15, 2020|Fixed issue to support IE11
 5.3|October 21, 2022|Upgrade to 1.15 Security fixes Removed IE11 Support 
-6.0|October 11, 2024|Upgrade to 1.20 removed Exchange Public Calendar support because of CORS
+6.0|February 21, 2025|Upgrade to 1.20 removed Exchange Public Calendar support because of CORS
 
 ## Minimal Path to Awesome
 
