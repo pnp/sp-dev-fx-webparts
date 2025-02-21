@@ -54,10 +54,7 @@ export class SharePointCalendarService extends BaseCalendarService
    
     const web =  Web(siteUrl).using(SPFx(this.Context));
     
-    debugger;
-
-    // Get the web
-    const webInfo = await web();
+   
     // Build a filter so that we don't retrieve every single thing unless necesssary
     const dateFilter: string = "EventDate ge datetime'" + this.EventRange.Start.toISOString() + "' and EndDate lt datetime'" + this.EventRange.End.toISOString() + "'";
     try {
