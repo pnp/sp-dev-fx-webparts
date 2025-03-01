@@ -3,7 +3,7 @@
 import { RSSCalendarService } from "./RSSCalendarService";
 import { WordPressFullCalendarService } from "./WordPressFullCalendarService";
 import { iCalCalendarService } from "./iCalCalendarService";
-import { ExchangePublicCalendarService } from "./ExchangePublicCalendarService";
+
 import { SharePointCalendarService } from "./SharePointCalendarService";
 
 
@@ -14,7 +14,6 @@ import * as strings from "CalendarServicesStrings";
 export enum CalendarServiceProviderType {
   SharePoint = "SharePoint",
   WordPress = "WordPress",
-  Exchange = "Exchange",
   iCal = "iCal",
   RSS = "RSS",
   Mock = "Mock"
@@ -27,11 +26,6 @@ export class CalendarServiceProviderList {
         label: strings.SharePointProviderName,
         key: CalendarServiceProviderType.SharePoint,
         initialize: () => new SharePointCalendarService()
-      },
-      {
-        label: strings.ExchangeProviderName,
-        key: CalendarServiceProviderType.Exchange,
-        initialize: () => new ExchangePublicCalendarService()
       },
       {
         label: strings.WordPressProviderName,
