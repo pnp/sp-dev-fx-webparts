@@ -25,15 +25,11 @@ export const getCurrentUserDetails = async () => {
   return await sp.web.currentUser()
 }
 
-export const createFolder = async (pageContext: any) => {
+export const createFolder = async (folderPath: any) => {
   let sp: SPFI = getSP()
 
-  let userInfo = await getCurrentUserDetails()
-
-  const url = `${pageContext._site.serverRelativeUrl}/Discussion Point Gallery/${userInfo.UserId.NameId}`
-
   // creates a new folder for web with specified server relative url
-  await sp.web.folders.addUsingPath(url)
+  await sp.web.folders.addUsingPath(folderPath)
 }
 
 export const generateRandomGUID = () => {
@@ -46,6 +42,6 @@ export const ensureFolder = async (uploadPath: string) => {
     .getFolderByServerRelativePath(uploadPath)
     .select("Exists")()
   if (!folder.Exists) {
-    await sp.web.folders.addUsingPath(uploadPath)
+    await createFolder(uploadPath)
   }
 }
