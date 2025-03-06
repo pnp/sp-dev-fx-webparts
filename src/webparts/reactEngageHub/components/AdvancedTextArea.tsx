@@ -51,15 +51,11 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
     }
   }
 
-  const handlePostSubmit = () => {
-    setPost((prevPost) => {
-      const updatedPost = { ...prevPost, postTitle: prevPost.postDescription }
+  const handlePostSubmit = async () => {
+    // Call addNewPost with the updated post inside the state update
+    await addNewPost(post, props.context.pageContext)
 
-      // Call addNewPost with the updated post inside the state update
-      addNewPost(updatedPost, props.context.pageContext)
-
-      return updatedPost
-    })
+    setPost({ postTitle: "", postDescription: "", imageUrl: new File([], "") })
   }
 
   return (
@@ -77,7 +73,11 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
           className={fluentStyles.text}
           value={post.postDescription}
           onChange={(e) =>
-            setPost({ ...post, postDescription: e.target.value })
+            setPost({
+              ...post,
+              postDescription: e.target.value,
+              postTitle: e.target.value,
+            })
           }
           placeholder="What's on your mind?"
         />
@@ -85,6 +85,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
           icon={<Send24Color />}
           className={fluentStyles.button}
           onClick={handlePostSubmit}
+          disabled={!post.postDescription}
         />
       </div>
     </>
