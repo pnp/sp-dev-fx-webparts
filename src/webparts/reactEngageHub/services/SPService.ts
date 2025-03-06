@@ -7,16 +7,32 @@ export const addNewPost = async (
   pageContext: any
 ) => {
   let sp: SPFI = getSP()
-  // add an item to the list
-  createFolder(pageContext)
 
   let userInfo = await getCurrentUserDetails()
+
+  let postUUID = crypto.randomUUID()
+
+  let imageResult: any
+  if (post.imageUrl) {
+    imageResult = await uploadImage(
+      post.imageUrl,
+      pageContext,
+      userInfo,
+      postUUID
+    )
+  }
+
+  let image = {
+    serverRelativeUrl: imageResult.ServerRelativeUrl,
+    fileName: imageResult.Name,
+  }
 
   await sp.web.lists.getByTitle("Discussion Point").items.add({
     Title: post.postTitle,
     Description: post.postDescription,
     UserID: userInfo.UserId.NameId,
-    PostID: crypto.randomUUID(),
+    PostID: postUUID,
+    Image: JSON.stringify(image),
   })
 }
 
@@ -32,10 +48,6 @@ export const createFolder = async (folderPath: any) => {
   await sp.web.folders.addUsingPath(folderPath)
 }
 
-export const generateRandomGUID = () => {
-  return crypto.randomUUID()
-}
-
 export const ensureFolder = async (uploadPath: string) => {
   let sp: SPFI = getSP()
   const folder = await sp.web
@@ -44,4 +56,57 @@ export const ensureFolder = async (uploadPath: string) => {
   if (!folder.Exists) {
     await createFolder(uploadPath)
   }
+}
+
+export const uploadImage = async (
+  image: File,
+  pageContext: any,
+  userInfo: any,
+  postUUID: string
+) => {
+  let sp: SPFI = getSP()
+
+  const fileNamePath = encodeURI(image.name)
+
+  let path = `${pageContext._site.serverRelativeUrl}/Discussion Point Gallery/${userInfo.UserId.NameId}`
+
+  let result: any
+
+  if (image.size <= 10485760) {
+    // small upload
+    result = await sp.web
+      .getFolderByServerRelativePath(path)
+      .files.addUsingPath(fileNamePath, image, { Overwrite: true })
+
+    if (result) {
+      let fileInfo = await sp.web
+        .getFileByServerRelativePath(result.ServerRelativeUrl)
+        .getItem()
+
+      await fileInfo.update({
+        PostID: postUUID,
+      })
+    }
+  } else {
+    // large upload
+    result = await sp.web
+      .getFolderByServerRelativePath(path)
+      .files.addChunked(fileNamePath, image, {
+        progress: (data) => {
+          console.log(`progress`)
+        },
+        Overwrite: true,
+      })
+
+    if (result) {
+      let fileInfo = await sp.web
+        .getFileByServerRelativePath(result.ServerRelativeUrl)
+        .getItem()
+
+      await fileInfo.update({
+        PostID: postUUID,
+      })
+    }
+  }
+  return result
 }

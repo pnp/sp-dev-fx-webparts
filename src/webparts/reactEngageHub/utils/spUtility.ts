@@ -10,6 +10,7 @@ import "@pnp/sp/batching"
 import "@pnp/sp/site-users/web"
 import "@pnp/sp/folders"
 import "@pnp/sp/sites"
+import "@pnp/sp/files"
 
 var _sp: SPFI | null = null
 
