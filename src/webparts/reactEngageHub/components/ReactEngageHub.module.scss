@@ -49,3 +49,34 @@
   display: flex;
   flex-direction: column;
 }
+.article{
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.imageWrapper{
+  width: 250px;
+  height: 150px;
+}
+.avatar{
+  display: flex;
+  gap: 0.5rem;
+}
+.author{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.commentArea{
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+.reactions{
+  margin-top: 1rem;
+}

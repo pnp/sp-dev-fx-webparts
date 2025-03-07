@@ -7,6 +7,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
 import { AdvancedTextArea } from "./AdvancedTextArea"
 import { useEffect } from "react"
 import { ensureFolder, getCurrentUserDetails } from "../services/SPService"
+import { Posts } from "./Posts"
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
   useEffect(() => {
@@ -30,6 +31,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
       />
       <FluentProvider theme={webLightTheme}>
         <AdvancedTextArea context={props.context} />
+        <Posts />
       </FluentProvider>
     </>
   )
