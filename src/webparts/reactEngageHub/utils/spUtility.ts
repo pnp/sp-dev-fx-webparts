@@ -11,6 +11,8 @@ import "@pnp/sp/site-users/web"
 import "@pnp/sp/folders"
 import "@pnp/sp/sites"
 import "@pnp/sp/files"
+import "@pnp/sp/comments/item"
+import "@pnp/sp/comments"
 
 var _sp: SPFI | null = null
 

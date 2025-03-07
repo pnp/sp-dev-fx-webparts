@@ -1,6 +1,7 @@
 import { SPFI } from "@pnp/sp"
 import { getSP } from "../utils/spUtility"
 import { AdvancedTextAreaType } from "../components/AdvancedTextArea"
+import { IComments, Comment } from "@pnp/sp/comments"
 
 export const addNewPost = async (
   post: AdvancedTextAreaType,
@@ -109,4 +110,49 @@ export const uploadImage = async (
     }
   }
   return result
+}
+
+export const getPosts = async () => {
+  let sp: SPFI = getSP()
+
+  let results = await sp.web.lists
+    .getByTitle("Discussion Point")
+    .items.orderBy("Created", false)()
+
+  const itemsWithComments = await Promise.all(
+    results.map(async (item: any) => {
+      const comments: IComments = await sp.web.lists
+        .getByTitle("Discussion Point")
+        .items.getById(item.ID)
+        .comments()
+      return {
+        ...item,
+        comments,
+      }
+    })
+  )
+
+  return itemsWithComments
+}
+
+export const updateLikeDislike = async (
+  postID: number,
+  commentId: string,
+  like: boolean
+) => {
+  let sp: SPFI = getSP()
+
+  const commentInst = Comment(
+    sp.web.lists
+      .getByTitle("Discussion Point")
+      .items.getById(postID)
+      .comments.getById(commentId)
+  )
+
+  // Like or unlike the comment using the factory instance
+  if (like) {
+    await commentInst.like()
+  } else {
+    await commentInst.unlike()
+  }
 }
