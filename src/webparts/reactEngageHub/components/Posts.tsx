@@ -73,7 +73,16 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
             <section>
               <div className={styles.commentArea}>
                 <div className={styles.avatar}>
-                  <Avatar name={comment.author.name} size={36} />
+                  <Avatar
+                    name={comment.author.name}
+                    size={36}
+                    active={comment.author.isActive ? "active" : "inactive"}
+                    badge={
+                      comment.author.isActive
+                        ? { status: "available" }
+                        : { status: "offline" }
+                    }
+                  />
                   <div className={styles.author}>
                     <Text>{comment.author.name}</Text>
                     <Text size={100}>{comment.author.email}</Text>
