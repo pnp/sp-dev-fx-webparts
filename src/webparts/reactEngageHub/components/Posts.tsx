@@ -10,12 +10,15 @@ import * as React from "react"
 import { useEffect } from "react"
 import {
   addNewComment,
+  deleteComment,
   getPosts,
   updateLikeDislike,
 } from "../services/SPService"
 import styles from "./ReactEngageHub.module.scss"
 import {
   bundleIcon,
+  DeleteFilled,
+  DeleteRegular,
   Heart20Color,
   Heart20Regular,
   Send20Color,
@@ -24,6 +27,7 @@ import {
 export interface IPostsProps {}
 
 const ThumbLike = bundleIcon(Heart20Color, Heart20Regular)
+const Delete = bundleIcon(DeleteFilled, DeleteRegular)
 
 export const Posts: React.FunctionComponent<IPostsProps> = (
   props: React.PropsWithChildren<IPostsProps>
@@ -50,6 +54,10 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
   const onClickNewCommentBtn = async (postId: number) => {
     await addNewComment(postId, newComment)
     setNewComment("")
+  }
+
+  const onClickDeleteCommentBtn = async (postID: number, commentID: string) => {
+    await deleteComment(postID, commentID)
   }
 
   console.log("posts", posts)
@@ -94,6 +102,11 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                     appearance='transparent'
                     icon={<ThumbLike />}
                     onClick={() => onClickLikeBtn(post.ID, comment.id)}
+                  />
+                  <Button
+                    appearance='transparent'
+                    icon={<Delete />}
+                    onClick={() => onClickDeleteCommentBtn(post.ID, comment.id)}
                   />
                 </div>
               </div>

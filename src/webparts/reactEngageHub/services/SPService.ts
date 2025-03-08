@@ -164,3 +164,15 @@ export const addNewComment = async (postID: number, newComment: string) => {
     sp.web.lists.getByTitle("Discussion Point").items.getById(postID)
   ).add(newComment)
 }
+
+export const deleteComment = async (postID: number, commentID: string) => {
+  let sp: SPFI = getSP()
+
+  const commentInst = Comment(
+    sp.web.lists
+      .getByTitle("Discussion Point")
+      .items.getById(postID)
+      .comments.getById(commentID)
+  )
+  await commentInst.delete()
+}
