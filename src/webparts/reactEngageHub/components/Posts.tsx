@@ -4,12 +4,22 @@ import {
   Divider,
   Image,
   Text,
+  Textarea,
 } from "@fluentui/react-components"
 import * as React from "react"
 import { useEffect } from "react"
-import { getPosts, updateLikeDislike } from "../services/SPService"
+import {
+  addNewComment,
+  getPosts,
+  updateLikeDislike,
+} from "../services/SPService"
 import styles from "./ReactEngageHub.module.scss"
-import { bundleIcon, Heart20Color, Heart20Regular } from "@fluentui/react-icons"
+import {
+  bundleIcon,
+  Heart20Color,
+  Heart20Regular,
+  Send20Color,
+} from "@fluentui/react-icons"
 
 export interface IPostsProps {}
 
@@ -20,6 +30,7 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
 ) => {
   const [posts, setPosts] = React.useState<any[]>([])
   const [like, setLike] = React.useState<boolean>(false)
+  const [newComment, setNewComment] = React.useState<string>("")
 
   useEffect(() => {
     fetchPosts()
@@ -34,6 +45,11 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
   const onClickLikeBtn = async (postId: number, commentId: string) => {
     setLike(!like)
     await updateLikeDislike(postId, commentId, like)
+  }
+
+  const onClickNewCommentBtn = async (postId: number) => {
+    await addNewComment(postId, newComment)
+    setNewComment("")
   }
 
   console.log("posts", posts)
@@ -74,6 +90,15 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
               </div>
             </section>
           ))}
+          <Textarea
+            onChange={(e) => setNewComment(e.target.value)}
+            value={newComment}
+          />
+          <Button
+            appearance='transparent'
+            icon={<Send20Color />}
+            onClick={() => onClickNewCommentBtn(post.ID)}
+          />
         </article>
       ))}
     </>
