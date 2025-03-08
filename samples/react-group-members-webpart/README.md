@@ -221,4 +221,4 @@ The following Microsoft Graph API permissions are required for full functionalit
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
 - [FluentUI React Components](https://developer.microsoft.com/en-us/fluentui#/controls/web)
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-group-members" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-group-members-webpart" />
