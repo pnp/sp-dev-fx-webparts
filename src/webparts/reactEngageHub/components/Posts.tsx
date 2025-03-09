@@ -101,13 +101,13 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                 </Text>
               </div>
             </div>
-            {post.image && (
+            {post.Image && (
               <div className={styles.imageWrapper}>
                 <Image
                   src={`https://spl7c.sharepoint.com${
                     JSON.parse(post.Image).serverRelativeUrl
                   }`}
-                  fit='contain'
+                  fit='cover'
                   block
                 />
               </div>
