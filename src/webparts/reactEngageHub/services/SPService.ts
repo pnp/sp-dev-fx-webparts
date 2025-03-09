@@ -12,9 +12,10 @@ export const addNewPost = async (
   let userInfo = await getCurrentUserDetails()
 
   let postUUID = crypto.randomUUID()
+  console.log(post.imageUrl)
 
   let imageResult: any
-  if (post.imageUrl) {
+  if (post.imageUrl.name != "" && post.imageUrl.size !== 0) {
     imageResult = await uploadImage(
       post.imageUrl,
       pageContext,
@@ -23,9 +24,12 @@ export const addNewPost = async (
     )
   }
 
-  let image = {
-    serverRelativeUrl: imageResult.ServerRelativeUrl,
-    fileName: imageResult.Name,
+  let image: any
+  if (imageResult) {
+    image = {
+      serverRelativeUrl: imageResult.ServerRelativeUrl,
+      fileName: imageResult.Name,
+    }
   }
 
   await sp.web.lists.getByTitle("Discussion Point").items.add({
@@ -33,7 +37,13 @@ export const addNewPost = async (
     Description: post.postDescription,
     UserID: userInfo.UserId.NameId,
     PostID: postUUID,
-    Image: JSON.stringify(image),
+    Image: image
+      ? image.serverRelativeUrl !== ""
+        ? JSON.stringify(image)
+        : ""
+      : "",
+    AuthorName: userInfo.Title,
+    AuthorMailID: userInfo.UserPrincipalName,
   })
 }
 
