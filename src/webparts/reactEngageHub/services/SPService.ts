@@ -33,7 +33,6 @@ export const addNewPost = async (
   }
 
   await sp.web.lists.getByTitle("Discussion Point").items.add({
-    Title: post.postTitle,
     Description: post.postDescription,
     UserID: userInfo.UserId.NameId,
     PostID: postUUID,

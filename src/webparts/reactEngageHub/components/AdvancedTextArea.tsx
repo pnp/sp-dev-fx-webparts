@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 })
 
 export type AdvancedTextAreaType = {
-  postTitle: string
   postDescription: string
   imageUrl: File
 }
@@ -40,7 +39,6 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
   props: React.PropsWithChildren<any>
 ) => {
   const [post, setPost] = React.useState<AdvancedTextAreaType>({
-    postTitle: "",
     postDescription: "",
     imageUrl: new File([], ""),
   })
@@ -63,7 +61,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
     // Call addNewPost with the updated post inside the state update
     await addNewPost(post, props.context.pageContext)
 
-    setPost({ postTitle: "", postDescription: "", imageUrl: new File([], "") })
+    setPost({ postDescription: "", imageUrl: new File([], "") })
   }
 
   return (
@@ -86,7 +84,6 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
           setPost({
             ...post,
             postDescription: e.target.value,
-            postTitle: e.target.value,
           })
         }
         placeholder="What's on your mind?"
