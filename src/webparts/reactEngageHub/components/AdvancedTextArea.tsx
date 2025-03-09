@@ -1,24 +1,30 @@
 import * as React from "react"
-import { Button, Card, Textarea, makeStyles } from "@fluentui/react-components"
-import styles from "./ReactEngageHub.module.scss"
-import { Image24Regular, Send24Color } from "@fluentui/react-icons"
+import {
+  Button,
+  Card,
+  Textarea,
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  makeStyles,
+} from "@fluentui/react-components"
+// import styles from "./ReactEngageHub.module.scss"
+import {
+  bundleIcon,
+  Image24Regular,
+  Send20Color,
+  Send24Regular,
+} from "@fluentui/react-icons"
 import { addNewPost } from "../services/SPService"
 
 const useStyles = makeStyles({
-  text: {
-    outline: "none",
-    border: "none",
-    position: "absolute",
-    width: "98%",
+  textArea: {
+    width: "inherit",
     height: "120px",
-    marginTop: "4rem",
   },
-  button: {
-    position: "absolute",
-    right: "0",
-    bottom: "0",
-    marginRight: "1rem",
-    marginBottom: "1rem",
+  postBtn: {
+    width: "fit-content",
+    alignSelf: "flex-end",
   },
 })
 
@@ -27,6 +33,8 @@ export type AdvancedTextAreaType = {
   postDescription: string
   imageUrl: File
 }
+
+const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
 export const AdvancedTextArea: React.FunctionComponent<any> = (
   props: React.PropsWithChildren<any>
@@ -60,7 +68,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
 
   return (
     <Card>
-      <div className={styles.advancedTextArea}>
+      <Toolbar aria-label='Default' {...props}>
         <input
           type='file'
           accept='image/*'
@@ -68,26 +76,30 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
           ref={fileInputRef}
           onChange={handleImageUpload}
         />
-        <Button icon={<Image24Regular />} onClick={handleImageClick} />
-        <Textarea
-          className={fluentStyles.text}
-          value={post.postDescription}
-          onChange={(e) =>
-            setPost({
-              ...post,
-              postDescription: e.target.value,
-              postTitle: e.target.value,
-            })
-          }
-          placeholder="What's on your mind?"
-        />
-        <Button
-          icon={<Send24Color />}
-          className={fluentStyles.button}
-          onClick={handlePostSubmit}
-          disabled={!post.postDescription}
-        />
-      </div>
+        <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
+        <ToolbarDivider vertical />
+      </Toolbar>
+      <Textarea
+        className={fluentStyles.textArea}
+        value={post.postDescription}
+        onChange={(e) =>
+          setPost({
+            ...post,
+            postDescription: e.target.value,
+            postTitle: e.target.value,
+          })
+        }
+        placeholder="What's on your mind?"
+      />
+      <Button
+        icon={<SendIcon />}
+        appearance='primary'
+        onClick={handlePostSubmit}
+        disabled={!post.postDescription}
+        className={fluentStyles.postBtn}
+      >
+        Post
+      </Button>
     </Card>
   )
 }
