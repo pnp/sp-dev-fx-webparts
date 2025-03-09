@@ -11990,9 +11990,9 @@
     ],
     "thumbnails": [
       {
-        "type": "video",
+        "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
+        "url": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
         "alt": "Calendar"
       },
       {
@@ -12192,7 +12192,7 @@
       "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part."
     ],
     "creationDateTime": "2020-07-16",
-    "updateDateTime": "2022-10-22",
+    "updateDateTime": "2025-02-21",
     "products": [
       "SharePoint"
     ],
@@ -12203,7 +12203,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.15.2"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -12232,7 +12232,7 @@
       },
       {
         "gitHubAccount": "petkir",
-        "company": "Cubido Business Solutions GmbH",
+        "company": "ACP Cubido Digital Solutions GmbH",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
@@ -13792,6 +13792,69 @@
         "name": "Building Microsoft Teams Tabs using SharePoint Framework",
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-custom-localization",
+    "source": "pnp",
+    "title": "Custom Localization",
+    "shortDescription": "Shows how you can load localization files and use the localized strings if you have requirements to display localized text outside the normal SPFx/SPO processing",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-localization",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-localization",
+    "longDescription": [
+      "Shows how you can load localization files and use the localized strings if you have requirements to display localized text outside the normal SPFx/SPO processing"
+    ],
+    "creationDateTime": "2025-01-24",
+    "updateDateTime": "2025-01-24",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.18.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "default-behavior.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "page-translation-detection.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/page-translation-detection.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "specific-language.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/specific-language.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "brianpmccullough",
+        "pictureUrl": "https://github.com/brianpmccullough.png",
+        "name": "Brian McCullough"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -27567,7 +27630,7 @@
       "This web part demonstrates Star Ratings capabilities to SharePoint News. The Ratings site collection feature provides Likes and Star Ratings, but SharePoint News provides only provides Likes. This web part can get or set ratings of the current page."
     ],
     "creationDateTime": "2021-10-07",
-    "updateDateTime": "2023-11-09",
+    "updateDateTime": "2025-01-22",
     "products": [
       "SharePoint"
     ],
@@ -27578,7 +27641,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.0"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [

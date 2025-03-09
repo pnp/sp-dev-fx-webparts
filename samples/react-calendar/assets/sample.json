@@ -31,9 +31,9 @@
     ],
     "thumbnails": [
       {
-        "type": "video",
+        "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
+        "url": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
         "alt": "Calendar"
       },
       {
