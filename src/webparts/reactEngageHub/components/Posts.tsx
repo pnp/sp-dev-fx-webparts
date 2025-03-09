@@ -112,7 +112,11 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                 />
               </div>
             )}
-            <Text>{post.Description}</Text>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.Description,
+              }}
+            ></div>
             <Divider style={{ paddingTop: "1rem" }} />
             {post.comments.map((comment: any) => (
               <section>
