@@ -23,7 +23,7 @@ import {
   DeleteRegular,
   Heart20Color,
   Heart20Regular,
-  Send20Color,
+  Send16Color,
 } from "@fluentui/react-icons"
 
 export interface IPostsProps {}
@@ -36,13 +36,12 @@ const useStyles = makeStyles({
     position: "absolute",
     right: "0",
     bottom: "0",
-    marginRight: "1rem",
-    marginBottom: "1rem",
+    marginRight: "0.5rem",
+    marginBottom: "0.5rem",
   },
   newcommentTextarea: {
     width: "100%",
     position: "relative",
-    border: "none",
   },
 })
 
@@ -171,10 +170,12 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                   handleNewCommentChange(post.ID, e.target.value)
                 }
                 value={newComments[post.ID] || ""}
+                size='small'
+                placeholder='Add a comment'
               />
               <Button
                 appearance='transparent'
-                icon={<Send20Color />}
+                icon={<Send16Color />}
                 onClick={() => onClickNewCommentBtn(post.ID)}
                 className={fluentStyles.newCommentBtn}
               />
