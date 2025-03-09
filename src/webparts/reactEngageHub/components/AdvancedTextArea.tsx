@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Textarea, makeStyles } from "@fluentui/react-components"
+import { Button, Card, Textarea, makeStyles } from "@fluentui/react-components"
 import styles from "./ReactEngageHub.module.scss"
 import { Image24Regular, Send24Color } from "@fluentui/react-icons"
 import { addNewPost } from "../services/SPService"
@@ -59,7 +59,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
   }
 
   return (
-    <>
+    <Card>
       <div className={styles.advancedTextArea}>
         <input
           type='file'
@@ -88,6 +88,6 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
           disabled={!post.postDescription}
         />
       </div>
-    </>
+    </Card>
   )
 }

@@ -2,12 +2,24 @@ import * as React from "react"
 
 // import styles from "./ReactEngageHub.module.scss"
 import type { IReactEngageHubProps } from "./IReactEngageHubProps"
-import { FluentProvider, webLightTheme } from "@fluentui/react-components"
+import {
+  FluentProvider,
+  makeStyles,
+  webLightTheme,
+} from "@fluentui/react-components"
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
 import { AdvancedTextArea } from "./AdvancedTextArea"
 import { useEffect } from "react"
 import { ensureFolder, getCurrentUserDetails } from "../services/SPService"
 import { Posts } from "./Posts"
+
+const useStyles = makeStyles({
+  fluentWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+  },
+})
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
   useEffect(() => {
@@ -22,6 +34,8 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
     await ensureFolder(url)
   }
 
+  const fluentStyles = useStyles()
+
   return (
     <>
       <WebPartTitle
@@ -29,7 +43,10 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         title={props.title}
         updateProperty={props.updateProperty}
       />
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider
+        theme={webLightTheme}
+        className={fluentStyles.fluentWrapper}
+      >
         <AdvancedTextArea context={props.context} />
         <Posts />
       </FluentProvider>

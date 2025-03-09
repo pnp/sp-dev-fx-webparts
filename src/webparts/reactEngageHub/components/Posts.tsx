@@ -1,6 +1,7 @@
 import {
   Avatar,
   Button,
+  Card,
   Divider,
   Image,
   makeStyles,
@@ -49,7 +50,7 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
   props: React.PropsWithChildren<IPostsProps>
 ) => {
   const [posts, setPosts] = React.useState<any[]>([])
-  const [like, setLike] = React.useState<boolean>(false)
+  const [likeDislike, setLikeDislike] = React.useState<boolean>(false)
   const [newComments, setNewComments] = React.useState<{
     [key: number]: string
   }>({})
@@ -58,7 +59,7 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [likeDislike, newComments])
 
   const fetchPosts = async () => {
     let results = await getPosts()
@@ -67,8 +68,8 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
   }
 
   const onClickLikeBtn = async (postId: number, commentId: string) => {
-    setLike(!like)
-    await updateLikeDislike(postId, commentId, like)
+    setLikeDislike(!likeDislike)
+    await updateLikeDislike(postId, commentId, likeDislike)
   }
 
   const onClickNewCommentBtn = async (postId: number) => {
@@ -84,80 +85,102 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
     await deleteComment(postID, commentID)
   }
 
-  console.log("posts", posts)
   return (
     <>
-      <Text>Recent Posts</Text>
+      <Text size={300} weight='semibold'>
+        Recent Posts
+      </Text>
       {posts.map((post) => (
-        <article key={post.ID} className={styles.article}>
-          <div className={styles.imageWrapper}>
-            <Text weight='semibold'>{post.Title}</Text>
-            <Image
-              src={`https://spl7c.sharepoint.com${
-                JSON.parse(post.Image).serverRelativeUrl
-              }`}
-              fit='contain'
-            />
-          </div>
-          <Text>{post.Description}</Text>
-          <Divider />
-          {post.comments.map((comment: any) => (
-            <section>
-              <div className={styles.commentArea}>
-                <div className={styles.avatar}>
-                  <Avatar
-                    name={comment.author.name}
-                    size={36}
-                    active={comment.author.isActive ? "active" : "inactive"}
-                    badge={
-                      comment.author.isActive
-                        ? { status: "available" }
-                        : { status: "offline" }
-                    }
-                  />
-                  <div className={styles.author}>
-                    <Text>{comment.author.name}</Text>
-                    <Text size={100}>{comment.author.email}</Text>
+        <Card>
+          <article key={post.ID} className={styles.article}>
+            <div className={styles.avatar}>
+              <Avatar name={post.AuthorName} size={36} />
+              <div className={styles.author}>
+                <Text>{post.AuthorName}</Text>
+                <Text size={100}>
+                  {new Date(post.Created).toLocaleString("en-IN")}
+                </Text>
+              </div>
+            </div>
+            {post.image && (
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={`https://spl7c.sharepoint.com${
+                    JSON.parse(post.Image).serverRelativeUrl
+                  }`}
+                  fit='contain'
+                  block
+                />
+              </div>
+            )}
+            <Text>{post.Description}</Text>
+            <Divider style={{ paddingTop: "1rem" }} />
+            {post.comments.map((comment: any) => (
+              <section>
+                <div className={styles.commentArea}>
+                  <div className={styles.avatar}>
+                    <Avatar
+                      name={comment.author.name}
+                      size={36}
+                      active={comment.author.isActive ? "active" : "inactive"}
+                      badge={
+                        comment.author.isActive
+                          ? { status: "available" }
+                          : { status: "offline" }
+                      }
+                    />
+                    <div className={styles.author}>
+                      <Text>{comment.author.name}</Text>
+                      <Text size={100}>
+                        {new Date(comment.createdDate).toLocaleString("en-IN")}
+                      </Text>
+                    </div>
                   </div>
-                </div>
-                <Text>{comment.text}</Text>
-                <div className={styles.reactions}>
-                  <div className={styles.likeContainer}>
+                  <Text>{comment.text}</Text>
+                  <div className={styles.reactions}>
+                    <div className={styles.likeContainer}>
+                      <Button
+                        appearance='transparent'
+                        icon={
+                          <ThumbLike
+                            filled={comment.isLikedByUser}
+                            style={
+                              comment.isLikedByUser ? { color: "red" } : {}
+                            }
+                          />
+                        }
+                        onClick={() => onClickLikeBtn(post.ID, comment.id)}
+                      />
+                      <Text>{comment.likeCount}</Text>
+                    </div>
                     <Button
                       appearance='transparent'
-                      icon={
-                        <ThumbLike
-                          filled={comment.isLikedByUser}
-                          style={comment.isLikedByUser ? { color: "red" } : {}}
-                        />
+                      icon={<Delete />}
+                      onClick={() =>
+                        onClickDeleteCommentBtn(post.ID, comment.id)
                       }
-                      onClick={() => onClickLikeBtn(post.ID, comment.id)}
                     />
-                    <Text>{comment.likeCount}</Text>
                   </div>
-                  <Button
-                    appearance='transparent'
-                    icon={<Delete />}
-                    onClick={() => onClickDeleteCommentBtn(post.ID, comment.id)}
-                  />
                 </div>
-              </div>
-            </section>
-          ))}
-          <div className={styles.newCommentContainer}>
-            <Textarea
-              className={fluentStyles.newcommentTextarea}
-              onChange={(e) => handleNewCommentChange(post.ID, e.target.value)}
-              value={newComments[post.ID] || ""}
-            />
-            <Button
-              appearance='transparent'
-              icon={<Send20Color />}
-              onClick={() => onClickNewCommentBtn(post.ID)}
-              className={fluentStyles.newCommentBtn}
-            />
-          </div>
-        </article>
+              </section>
+            ))}
+            <div className={styles.newCommentContainer}>
+              <Textarea
+                className={fluentStyles.newcommentTextarea}
+                onChange={(e) =>
+                  handleNewCommentChange(post.ID, e.target.value)
+                }
+                value={newComments[post.ID] || ""}
+              />
+              <Button
+                appearance='transparent'
+                icon={<Send20Color />}
+                onClick={() => onClickNewCommentBtn(post.ID)}
+                className={fluentStyles.newCommentBtn}
+              />
+            </div>
+          </article>
+        </Card>
       ))}
     </>
   )
