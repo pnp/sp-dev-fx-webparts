@@ -1,15 +1,15 @@
-# calendar-webpart
+# New Modern Calendar Web Part
 
 ## Summary
 
 New Modern Calendar Web Part for SharePoint Framework
 This is a new web part that allows users to view their calendar events directly within SharePoint. It integrates with Microsoft Graph to pull in calendar data and provides a user-friendly interface for viewing events.
 
-![Solution in Action](/src/assets/moderCalendar1.png)
-![Solution in Action](/src/assets/modernCalendar.gif)
-![Solution in Action](/src/assets/modernCalendar2.png)
-![Solution in Action](/src/assets/modernCalendar3.png)
-![Solution in Action](/src/assets/modernCalendar4.png)
+![Solution in Action](assets/moderCalendar1.png)
+![Solution in Action](assets/modernCalendar.gif)
+![Solution in Action](assets/modernCalendar2.png)
+![Solution in Action](assets/modernCalendar3.png)
+![Solution in Action](assets/modernCalendar4.png)
 
 ## Used SharePoint Framework Version
 
@@ -75,3 +75,5 @@ This extension illustrates the following concepts:
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-calendar" />
