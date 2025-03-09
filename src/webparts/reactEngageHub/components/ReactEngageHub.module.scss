@@ -79,4 +79,19 @@
 }
 .reactions{
   margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.newCommentContainer{
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+}
+.likeContainer{
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 0px 10px 0px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

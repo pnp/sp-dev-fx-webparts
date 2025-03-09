@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Image,
+  makeStyles,
   Text,
   Textarea,
 } from "@fluentui/react-components"
@@ -29,12 +30,31 @@ export interface IPostsProps {}
 const ThumbLike = bundleIcon(Heart20Color, Heart20Regular)
 const Delete = bundleIcon(DeleteFilled, DeleteRegular)
 
+const useStyles = makeStyles({
+  newCommentBtn: {
+    position: "absolute",
+    right: "0",
+    bottom: "0",
+    marginRight: "1rem",
+    marginBottom: "1rem",
+  },
+  newcommentTextarea: {
+    width: "100%",
+    position: "relative",
+    border: "none",
+  },
+})
+
 export const Posts: React.FunctionComponent<IPostsProps> = (
   props: React.PropsWithChildren<IPostsProps>
 ) => {
   const [posts, setPosts] = React.useState<any[]>([])
   const [like, setLike] = React.useState<boolean>(false)
-  const [newComment, setNewComment] = React.useState<string>("")
+  const [newComments, setNewComments] = React.useState<{
+    [key: number]: string
+  }>({})
+
+  const fluentStyles = useStyles()
 
   useEffect(() => {
     fetchPosts()
@@ -52,8 +72,12 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
   }
 
   const onClickNewCommentBtn = async (postId: number) => {
-    await addNewComment(postId, newComment)
-    setNewComment("")
+    await addNewComment(postId, newComments[postId])
+    setNewComments({ ...newComments, [postId]: "" })
+  }
+
+  const handleNewCommentChange = (postId: number, value: string) => {
+    setNewComments({ ...newComments, [postId]: value })
   }
 
   const onClickDeleteCommentBtn = async (postID: number, commentID: string) => {
@@ -98,11 +122,19 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                 </div>
                 <Text>{comment.text}</Text>
                 <div className={styles.reactions}>
-                  <Button
-                    appearance='transparent'
-                    icon={<ThumbLike />}
-                    onClick={() => onClickLikeBtn(post.ID, comment.id)}
-                  />
+                  <div className={styles.likeContainer}>
+                    <Button
+                      appearance='transparent'
+                      icon={
+                        <ThumbLike
+                          filled={comment.isLikedByUser}
+                          style={comment.isLikedByUser ? { color: "red" } : {}}
+                        />
+                      }
+                      onClick={() => onClickLikeBtn(post.ID, comment.id)}
+                    />
+                    <Text>{comment.likeCount}</Text>
+                  </div>
                   <Button
                     appearance='transparent'
                     icon={<Delete />}
@@ -112,15 +144,19 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
               </div>
             </section>
           ))}
-          <Textarea
-            onChange={(e) => setNewComment(e.target.value)}
-            value={newComment}
-          />
-          <Button
-            appearance='transparent'
-            icon={<Send20Color />}
-            onClick={() => onClickNewCommentBtn(post.ID)}
-          />
+          <div className={styles.newCommentContainer}>
+            <Textarea
+              className={fluentStyles.newcommentTextarea}
+              onChange={(e) => handleNewCommentChange(post.ID, e.target.value)}
+              value={newComments[post.ID] || ""}
+            />
+            <Button
+              appearance='transparent'
+              icon={<Send20Color />}
+              onClick={() => onClickNewCommentBtn(post.ID)}
+              className={fluentStyles.newCommentBtn}
+            />
+          </div>
         </article>
       ))}
     </>
