@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-chatbubble-copilot-client-side-solution",
+    "id": "58424e7a-fc64-4330-ba0f-8f309aab34f2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Application.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "React-CoPilot-With-SSO description"
+      },
+      "longDescription": {
+        "default": "React-CoPilot-With-SSO description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-co-pilot-with-sso Feature",
+        "description": "The feature that activates elements of the react-co-pilot-with-sso solution.",
+        "id": "0ae6ef05-3c1c-498a-88d5-a0887e540573",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-chatbubble-copilot.sppkg"
+  }
+}
