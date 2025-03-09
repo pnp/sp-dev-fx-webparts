@@ -1,93 +1,53 @@
 @import "~@fluentui/react/dist/sass/References.scss";
 
-.reactEngageHub {
-  overflow: hidden;
-  padding: 1em;
-  color: "[theme:bodyText, default: #323130]";
-  color: var(--bodyText);
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
-  }
-}
-
-.welcome {
-  text-align: center;
-}
-
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
-}
-
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(
-      --link
-    ); // note: CSS Custom Properties support is limited to modern browsers only
-
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(
-        --linkHovered
-      ); // note: CSS Custom Properties support is limited to modern browsers only
-    }
-  }
-}
 .advancedTextArea {
   width: 100%;
   height: 200px;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   box-sizing: border-box;
   resize: none;
   position: relative;
   display: flex;
   flex-direction: column;
 }
-.article{
+.article {
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
-.imageWrapper{
+.imageWrapper {
   width: 250px;
   height: 150px;
 }
-.avatar{
+.avatar {
   display: flex;
   gap: 0.5rem;
 }
-.author{
+.author {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.commentArea{
+.commentArea {
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 4px;
   margin-top: 1rem;
 }
-.reactions{
+.reactions {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 }
-.newCommentContainer{
+.newCommentContainer {
   position: relative;
   margin-top: 1rem;
   width: 100%;
 }
-.likeContainer{
+.likeContainer {
   border: 1px solid #ccc;
   border-radius: 50px;
   padding: 0px 10px 0px 2px;
