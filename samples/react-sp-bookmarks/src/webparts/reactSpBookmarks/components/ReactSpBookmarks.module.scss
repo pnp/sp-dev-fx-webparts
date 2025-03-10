@@ -1,0 +1,217 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+// Light Theme (Default)
+.reactSpBookmarks {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #333;
+
+  a {
+    text-decoration: none; // Remove underline from all links
+    color: inherit; // Inherit text color from parent
+  }
+
+  &.darkTheme {
+    background-color: #121212; // Darker background for better contrast
+    color: #e0e0e0; // Light text for better readability
+
+    .gridItem {
+      background-color: #1f1f1f; // Slightly lighter than the background
+      border-color: #333; // Subtle border color
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px); // Lift effect on hover
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); // Soft white shadow
+      }
+    }
+
+    .bookmarkTitle {
+      color: #e0e0e0; // Light text for better readability
+      text-decoration: none; // Remove underline
+    }
+
+    .addNewButton {
+      background-color: #2a2a2a; // Darker background for the "Add New" button
+      border-color: #444; // Subtle border color
+      color: #e0e0e0; // Light text for better readability
+
+      &:hover {
+        background-color: #3a3a3a; // Slightly lighter on hover
+      }
+    }
+
+    .newBookmarkButton {
+      background-color: black; // Keep the primary button color consistent
+      color: white;
+
+      &:hover {
+        background-color: black; // Slightly darker on hover
+      }
+    }
+
+    .header {
+      h4 {
+        color: #e0e0e0; // Light text for the header
+        text-decoration: none; // Remove underline
+      }
+    }
+
+    .bookmarkIcon {
+      color: white; // White icon color for dark theme
+    }
+
+    .links {
+      a {
+        color: black; // Light blue for links in dark theme
+        text-decoration: black; // Remove underline
+
+        &:hover {
+          color: #42a5f5; // Slightly brighter blue on hover
+          text-decoration: none; // Remove underline on hover
+        }
+      }
+    }
+
+    .bookmarkActions {
+      .actionIcon {
+        color: white; // White icon color for dark theme
+
+        &:hover {
+          color: #e0e0e0; // Light gray on hover
+        }
+      }
+    }
+  }
+}
+
+// Common Styles
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+
+  a {
+    text-decoration: none; // Remove underline from header links
+  }
+}
+
+.newBookmarkButton {
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.gridItem {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  a {
+    text-decoration: none; // Remove underline from grid item links
+  }
+}
+
+.addNewButton {
+  flex-shrink: 0;
+  background: #f5f5f5;
+  border: 1px dashed #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 120px;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+
+.bookmarkCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  text-align: center;
+
+  a {
+    text-decoration: none; // Remove underline from bookmark card links
+    color: inherit; // Inherit text color from parent
+  }
+}
+
+.bookmarkIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: black; // Default icon color for light theme
+}
+
+.bookmarkTitle {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none; // Remove underline from text
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none; // Remove underline from links
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: none; // Remove underline on hover
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.bookmarkActions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+  gap: 8px;
+
+  .actionIcon {
+    cursor: pointer;
+    color: black; // Default icon color for light theme
+
+    &:hover {
+      color: black; // Slightly darker on hover
+    }
+  }
+}

@@ -29,7 +29,6 @@ Whenever you are submitting any changes to the SharePoint repositories, please f
 * If you are submitting multiple samples, please create a specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
-
 ## Sample Naming and Structure Guidelines
 
 When you submit a new sample, please follow these guidelines:

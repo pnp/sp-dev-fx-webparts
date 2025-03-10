@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
     "source": "pnp",
     "title": "Questions and Answers Web Part",
-    "shortDescription": "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.",
+    "shortDescription": "This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers",
     "longDescription": [
-      "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part."
+      "This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part."
     ],
     "creationDateTime": "2021-03-22",
     "updateDateTime": "2021-03-22",
@@ -47,7 +47,7 @@
       {
         "gitHubAccount": "bogeorge",
         "company": "ThreeWill",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460\u0026u=74d23f4289cd555aa530e1c2c6156a382c373f2f\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460&u=74d23f4289cd555aa530e1c2c6156a382c373f2f&v=4",
         "name": "Bo George",
         "twitter": "bo_george"
       }
@@ -68,6 +68,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers"
   }
 ]
