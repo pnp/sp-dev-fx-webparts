@@ -44,10 +44,13 @@ const ReactUseReducerHookBasic: React.FC<IReactUseReducerHookBasicProps> = (prop
           .getByTitle(listName)
           .items.select('Id', 'Title')();
         dispatch({ type: ActionTypes.FETCH_SUCCESS, payload: items });
-      } catch (error: any) {
-        Logger.write(`Error fetching items: ${error.message}`, LogLevel.Error);
-        dispatch({ type: ActionTypes.FETCH_ERROR, payload: strings.FetchListItemsErrorMessage });
       }
+      catch (error: unknown) {
+        if (error instanceof Error) {
+              Logger.write(`Error fetching items: ${error.message}`, LogLevel.Error);
+              dispatch({ type: ActionTypes.FETCH_ERROR, payload: strings.FetchListItemsErrorMessage });
+            }
+          }
     };
 
     loadItems();

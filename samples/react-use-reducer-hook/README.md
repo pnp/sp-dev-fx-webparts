@@ -1,8 +1,11 @@
-# React UseReducer Hook with PnPjs Web Part
+# React UseReducer Hook with PnPjs
 
 ## Summary
 
 This SPFx web part demonstrates how to use the **React useReducer hook** with the **PnPjs library** to fetch items from a SharePoint list. By using `useReducer`, developers can better manage complex state within their React components, making it easier to handle asynchronous data fetching, loading states, and error handling.
+
+![Web Part Preview](assets/preview_01.png)
+![Web Part Preview](assets/preview_02.png)
 
 [Blog: How to Use useReducer Hook for Managing Complex State in SPFx Projects: Step-by-Step Guide](https://pnp.github.io/blog/post/how-to-use-the-usereducer-hook-for-managing-complex-state-in-spfx-projects-step-by-step-guide)
 
@@ -12,9 +15,12 @@ This SPFx web part demonstrates how to use the **React useReducer hook** with th
 - **PnP.js**: This sample uses PnP.js to connect to SharePoint data.
 - **SPFx Development Environment**: [Set up your SPFx environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) before running the web part.
 
----
+### Compatibility
 
-## Used SharePoint Framework Version
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 This sample is optimally compatible with the following environment configuration:
 
@@ -27,20 +33,16 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
----
+## Applies to
 
-## Preview
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-![Web Part Preview](assets/preview_01.png)
-![Web Part Preview](assets/preview_02.png)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
----
+## Contributors
 
-## Solution
-
-| Solution                  | Author(s)                      |
-|---------------------------|--------------------------------|
-| ReactUseReducerHookWebPart | [Ahmad Jad Alhak](https://github.com/ahmad-jad-alhak) |
+- [Ahmad Jad Alhak](https://github.com/ahmad-jad-alhak) |
 
 ## Version history
 
@@ -48,29 +50,26 @@ This sample is optimally compatible with the following environment configuration
 |---------|------------|------------------|
 | 1.0     | Jan 17, 2025 | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
- ## Running the solution
+## Minimal path to awesome
 
 1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/your-repo/faq-search-ace.git
-   cd faq-search-ace
+  Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-use-reducer-hook) then unzip it)
 
-2. **Install dependencies:**
+  From your command line, change your current directory to the directory containing this sample (`react-use-reducer-hook`, located under `samples`)
+
+   > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+
+1. **Install dependencies:**
 
    ```bash
    npm install 
 
-3. **Install dependencies:**
+1. **Install dependencies:**
+
    ```bash
    gulp serve 
-   
+
 ## Deployment
 
 Follow these steps to deploy the web part:
@@ -82,6 +81,7 @@ Follow these steps to deploy the web part:
 2. **Build the solution:**
    - Clone the repository to your local machine.
    - Navigate to the project folder in your terminal and run:
+  
      ```bash
      npm install
      gulp build
@@ -89,6 +89,7 @@ Follow these steps to deploy the web part:
 
 3. **Package the solution:**
    - Once built, package the solution with:
+
      ```bash
      gulp bundle --ship
      gulp package-solution --ship
@@ -102,22 +103,23 @@ Follow these steps to deploy the web part:
 
 6. Add the web part to any SharePoint page
 
-
 ## Features
 
 ### useReducer State Management
+
 The sample demonstrates how to apply the `useReducer` hook to handle data fetching, loading states, and error messages in a clear and organized manner.
 
 ### Integration with PnP.js
+
 Simplifies interaction with SharePoint lists and data sources, making it easy to retrieve and display data dynamically.
 
 ### Conditional Rendering Based on State
+
 The web part shows how to conditionally render loading spinners, fetched data, and error messages depending on the current state managed by the reducer.
 
 ### Fluent UI Components
-Incorporates Fluent UI controls (e.g., `Spinner`) for consistent and visually appealing UI elements.
 
----
+Incorporates Fluent UI controls (e.g., `Spinner`) for consistent and visually appealing UI elements.
 
 ## Configuration
 
@@ -138,23 +140,6 @@ To configure the web part, you need to provide the following properties:
 - **Site URL**: `https://contoso.sharepoint.com/sites/example`
 - **List Name**: `Tasks`
 
----
-
-## Authors
-
-This repository's contributors are all community members who volunteered their time to share code samples. Work is done as an open source community project, with each sample contained in their own solution.
-
-## Contributions
-
-These samples are direct from the feature teams, Microsoft 365 platform community team (http://aka.ms/m365/community) or shared by the community. We welcome your input on issues and suggestions for new samples. We do also welcome community contributions around the client-side web parts. If you have any questions, just let us know.
-
-Please have a look on our [Contribution Guidance](./CONTRIBUTING.md) before submitting your pull requests, so that we can get your contribution processed as fast as possible.
-
-## Code of Conduct
-
-This repository has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-> Sharing is caring!
 
 ## References
 
@@ -163,3 +148,26 @@ This repository has adopted the [Microsoft Open Source Code of Conduct](https://
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples, and open-source controls for your Microsoft 365 development
+
+## Help
+
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-use-reducer-hook%22) to see if anybody else is having the same issues.
+
+You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-use-reducer-hook) and see what the community is saying.
+
+If you encounter any issues using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-use-reducer-hook&template=bug-report.yml&sample=react-use-reducer-hook&authors=@ahmad-jad-alhak&title=react-use-reducer-hook%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-use-reducer-hook&template=question.yml&sample=react-use-reducer-hook&authors=@ahmad-jad-alhak&title=react-use-reducer-hook%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-use-reducer-hook&template=suggestion.yml&sample=react-use-reducer-hook&authors=@ahmad-jad-alhak&title=react-use-reducer-hook%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-use-reducer-hook" />
+
