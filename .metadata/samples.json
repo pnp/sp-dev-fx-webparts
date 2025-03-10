@@ -27481,6 +27481,55 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-soccer-highlights"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-bookmarks",
+    "source": "pnp",
+    "title": "Bookmarks Manager",
+    "shortDescription": "Allows users to manage and organize bookmarks in a SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-bookmarks",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-bookmarks",
+    "longDescription": [
+      "The Bookmarks Manager web part allows users to manage and organize bookmarks in a SharePoint list. Users can add, edit, and delete bookmarks, which are displayed in a grid layout. The web part supports both light and dark themes and integrates seamlessly with SharePoint."
+    ],
+    "creationDateTime": "2025-01-27",
+    "updateDateTime": "2025-01-27",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "BookmarksManager.gif",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-bookmarks/assets/BookmarksManager.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-sp-elevatedprivileges",
     "source": "pnp",
     "title": "Communicate using elevated privileges with SharePoint",
@@ -30294,6 +30343,62 @@
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me"
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-use-reducer-hook",
+    "source": "pnp",
+    "title": "React UseReducer Hook with PnPjs",
+    "shortDescription": "This SPFx web part demonstrates how to use the React useReducer hook with the PnPjs library to fetch items from a SharePoint list. By using useReducer, developers can better manage complex state within their React components, making it easier to handle asynchronous data fetching, loading states, and error handling.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-use-reducer-hook",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-use-reducer-hook",
+    "longDescription": [
+      "This SPFx web part demonstrates how to use the React useReducer hook with the PnPjs library to fetch items from a SharePoint list. By using useReducer, developers can better manage complex state within their React components, making it easier to handle asynchronous data fetching, loading states, and error handling."
+    ],
+    "creationDateTime": "2025-01-17",
+    "updateDateTime": "2025-01-17",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "preview_01.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_01.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "preview_02.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_02.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/ahmad-jad-alhak",
+        "pictureUrl": "https://github.com/ahmad-jad-alhak.png",
+        "name": "Ahmad Jad Alhak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-versiondisplay",
