@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-sp-bookmarks-client-side-solution",
+    "id": "e4cd35b5-7269-45f8-a471-177c7f8fd1f1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-sp-bookmarks description"
+      },
+      "longDescription": {
+        "default": "react-sp-bookmarks description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-sp-bookmarks Feature",
+        "description": "The feature that activates elements of the react-sp-bookmarks solution.",
+        "id": "2e4577df-5446-4417-87e1-81d9d433f7d3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-bookmarks.sppkg"
+  }
+}
