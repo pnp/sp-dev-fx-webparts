@@ -62,7 +62,7 @@
         "company": "Cognizant",
         "pictureUrl": "https://github.com/ravi16a87.png",
         "name": "Ravi Kulkarni",
-        "twitter":"RaviKul16a87"
+        "twitter": "RaviKul16a87"
       },
       {
         "gitHubAccount": "SmitaNachan",
@@ -83,6 +83,7 @@
         "description": "Meetings are key to productivity in Teams. They enable collaboration, partnership, informed communication, and shared feedback in an inclusive and active forum. As a developer, you can create configurable tab, bot, and message extension applications to enhance and enrich a Teams meeting experience. Meeting users can access apps, via the tab gallery, to enable relevant scenarios such as pre-staging a Kanban board, launching an in-meeting actionable dialog, or creating a post-meeting poll. Your meeting app can deliver a user experience for each stage of the meeting lifecycle based upon attendee status.",
         "url": "https://docs.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/teams-apps-in-meetings?WT.mc_id=M365-MVP-5003693"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-meeting-app-questionnaire"
   }
 ]

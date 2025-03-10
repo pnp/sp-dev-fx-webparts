@@ -95,6 +95,7 @@
         "description": "Single part app pages provide a capability to host SharePoint Framework web parts or Microsoft Teams applications in SharePoint Online with a locked layout. End users cannot modify or configure the page that is using the Single Part App Page layout.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/single-part-app-pages?tabs=pnpposh"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-dashboard"
   }
 ]

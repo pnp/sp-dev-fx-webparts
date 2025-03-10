@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-css-in-js-typestyle",
     "source": "pnp",
     "title": "CSS in JS with SharePoint Framework and TypeStyle",
-    "shortDescription": "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library.",
+    "shortDescription": "The web part demonstrates the usage of \"CSS in JS\" pattern with SharePoint Framework. \"CSS in JS\" is implemented using TypeStyle library.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-css-in-js-typestyle",
     "longDescription": [
-      "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library."
+      "The web part demonstrates the usage of \"CSS in JS\" pattern with SharePoint Framework. \"CSS in JS\" is implemented using TypeStyle library."
     ],
     "creationDateTime": "2020-04-24",
     "updateDateTime": "2020-04-24",
@@ -61,6 +61,7 @@
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-css-in-js-typestyle"
   }
 ]
