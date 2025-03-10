@@ -68,7 +68,7 @@
       {
         "gitHubAccount": "Abderahman88",
         "company": "",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
       },
       {
@@ -89,6 +89,7 @@
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties"
   }
 ]

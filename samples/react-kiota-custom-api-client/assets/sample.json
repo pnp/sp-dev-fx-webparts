@@ -59,6 +59,7 @@
         "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
         "url": "https://aka.ms/m365pnp"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kiota-custom-api-client"
   }
 ]
