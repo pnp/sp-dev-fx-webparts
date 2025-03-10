@@ -39,7 +39,7 @@
       {
         "gitHubAccount": "bogeorge",
         "company": "ThreeWill",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460\u0026u=74d23f4289cd555aa530e1c2c6156a382c373f2f\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460&u=74d23f4289cd555aa530e1c2c6156a382c373f2f&v=4",
         "name": "Bo George",
         "twitter": "bo_george"
       },
@@ -50,14 +50,14 @@
         "twitter": "techienickb"
       },
       {
-          "gitHubAccount": "ruslan-s",
-          "name": "ruslan-s",
-          "pictureUrl": "https://github.com/ruslan-s.png"
+        "gitHubAccount": "ruslan-s",
+        "name": "ruslan-s",
+        "pictureUrl": "https://github.com/ruslan-s.png"
       },
       {
-          "gitHubAccount": "SlowRobot",
-          "name": "SlowRobot",
-          "pictureUrl": "https://github.com/SlowRobot.png"
+        "gitHubAccount": "SlowRobot",
+        "name": "SlowRobot",
+        "pictureUrl": "https://github.com/SlowRobot.png"
       },
       {
         "gitHubAccount": "tmaestrini",
@@ -76,6 +76,7 @@
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy"
   }
 ]
