@@ -1,0 +1,24 @@
+name: Validate Sample PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Run Validate SPFx Sample PR Action
+        uses: ./.github/actions/validate-sample-pr
+        with:
+          pr: ${{ toJson(github.event.pull_request) }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
