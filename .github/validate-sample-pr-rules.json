@@ -1,0 +1,50 @@
+{
+    "contributionsFolder": "samples",
+    "messageTemplate": {
+        "warningMessage": "\n@{author} please address the above issues and push new changes to this branch.\nFor more information, see the [contributing guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).\n",
+        "intro": "We automatically validate all pull requests against our [contributing guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.\n",
+        "issuesSummary": "In order to merge this PR in a timely manner, the following criteria must be met:\n\n",
+        "title": "Sample PR validation for #{prNumber}\n",
+        "validationSuccessSummary":"## ✅ Validation status: success\n",
+        "validationWarningSummary": "## ⚠️ Validation status: warnings\n"
+    },
+    "limitToSingleFolder": {
+        "ruleText": "Pull request affects only one folder",
+        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#typos-issues-bugs-and-contributions"
+    },
+    "requireVisitorStats": {
+        "ruleText": "`README.md` contains visitor stat image",
+        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#visitor-stats-image"
+    },
+    "folderName": {
+        "ruleText": "Sample folder name follows naming convention",
+        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#sample-folder",
+        "acceptedPrefixes": [
+            "react-", 
+            "angular-", 
+            "handlebarsjs-", 
+            "jquery-", 
+            "js-", 
+            "knockout-", 
+            "vue-", 
+            "vuejs-"
+        ]
+    },
+    "fileRules": [
+        {
+            "filePath": ".nvmrc",
+            "ruleText": "Sample includes a `.nvmrc` file",
+            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#nvmrc"
+        },
+        {
+            "filePath": "README.md",
+            "ruleText": "Sample includes a `README.md`",
+            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#readmemd"
+        },
+        {
+            "filePath": "assets/*.png",
+            "ruleText": "Sample includes a screenshot `.png` in the `assets` folder",
+            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#assets"
+        }
+    ]
+}
