@@ -33001,6 +33001,9 @@ function run() {
                             }
                             validationMessages += successStatus(`[${requireVisitorStats.ruleText}](${requireVisitorStats.ruleLink})`, hasImageTracker, messageTemplate);
                         }
+                        else {
+                            core.warning(`Can't read README.md content.`);
+                        }
                     }
                     catch (error) {
                         core.warning(`Error reading README.md: ${error}`);
