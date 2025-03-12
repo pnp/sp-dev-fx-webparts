@@ -1,0 +1,23 @@
+{
+    "name": "validate-sample-pr",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Prevents typical mistakes with SPFx samples.",
+    "main": "lib/main.js",
+    "scripts": {
+        "build": "tsc",
+        "package": "npx ncc build src/main.ts --source-map --license licenses.txt -o dist",
+        "all": "npm run build && npm run package"
+    },
+    "devDependencies": {
+        "@actions/core": "^1.11.1",
+        "@actions/github": "^5.1.1",
+        "@vercel/ncc": "^0.38.3",
+        "source-map-support": "^0.5.21",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    },
+    "dependencies": {
+        "minimatch": "^10.0.1"
+    }
+}

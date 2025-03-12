@@ -57,7 +57,7 @@
       {
         "gitHubAccount": "aakashbhardwaj619",
         "company": "Microsoft",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460\u0026u=e780f4ef1da922c84f2c5c66c59cecbff2300581\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460&u=e780f4ef1da922c84f2c5c66c59cecbff2300581&v=4",
         "name": "Aakash Bhardwaj",
         "twitter": "aakash_316"
       }
@@ -73,6 +73,7 @@
         "description": "Introduced in SharePoint Framework v1.10, you can implement an Outlook Web App add-in with the SharePoint Framework and use SharePoint as a host for your solution.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments"
   }
 ]
