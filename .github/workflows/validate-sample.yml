@@ -1,4 +1,4 @@
-name: Sample validation
+name: PnP Sample validation
 
 on:
   pull_request_target:

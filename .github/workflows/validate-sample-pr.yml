@@ -1,4 +1,4 @@
-name: Validate Sample PR
+name: Validate SPFx Web Parts Sample PR
 
 on:
   pull_request:
