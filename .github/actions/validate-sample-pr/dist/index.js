@@ -32950,23 +32950,28 @@ function run() {
             }
             // Filter to files under "samples/"
             const sampleFiles = files.map(f => f.filename).filter(f => f.startsWith(`${samplesFolder}/`));
-            core.info(`PR #${prNumber} has changed ${sampleFiles.length} files.`);
-            // Determine the sample folder (assumes all changes are in one folder: samples/<sampleName>/...)
+            core.info(`Changed ${sampleFiles.length} files under the "${samplesFolder}" folder.`);
+            // Determine the sample folders (considering full path structure)
             const sampleFolders = new Set();
             sampleFiles.forEach(filePath => {
-                const parts = filePath.split('/');
-                if (parts.length < 2)
-                    return;
-                sampleFolders.add(parts[1]);
+                const relativePath = path.relative(samplesFolder, filePath);
+                const parts = relativePath.split(path.sep);
+                if (parts.length > 0) {
+                    sampleFolders.add(parts[0]);
+                }
             });
+            core.info(`Affected sample folders: ${Array.from(sampleFolders).join(', ')}`);
             // Verify that only one folder is affected
             if (affectsOnlyOneFolder) {
-                if (affectsOnlyOneFolder) {
-                    const onlyOneFolder = sampleFolders.size === 1;
-                    validationMessages += successStatus(`[${affectsOnlyOneFolder.ruleText}](${affectsOnlyOneFolder.ruleLink})`, onlyOneFolder, messageTemplate);
-                    if (!onlyOneFolder) {
-                        hasIssues = true;
-                    }
+                // Check if there are any files outside the "samples/" folder
+                const filesOutsideSamples = files.map(f => f.filename).filter(f => !f.startsWith(`${samplesFolder}/`));
+                if (filesOutsideSamples.length > 0) {
+                    core.info(`Contains files outside the "${samplesFolder}" folder.`);
+                }
+                const onlyOneFolder = sampleFolders.size === 1 && filesOutsideSamples.length === 0;
+                validationMessages += successStatus(`[${affectsOnlyOneFolder.ruleText}](${affectsOnlyOneFolder.ruleLink})`, onlyOneFolder, messageTemplate);
+                if (!onlyOneFolder) {
+                    hasIssues = true;
                 }
             }
             // Verify the sample folder name
@@ -33046,8 +33051,12 @@ function run() {
             }
             core.info(message);
             // Post a comment to the PR with the results
-            yield octokit.rest.issues.createComment(Object.assign(Object.assign({}, context.repo), { issue_number: prNumber, body: message }));
-            core.info('All validations passed.');
+            // await octokit.rest.issues.createComment({
+            //     ...context.repo,
+            //     issue_number: prNumber,
+            //     body: message,
+            // });
+            core.info('Validation completed.');
         }
         catch (error) {
             core.setFailed(error.message);

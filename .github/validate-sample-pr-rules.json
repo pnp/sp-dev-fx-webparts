@@ -1,8 +1,8 @@
 {
     "contributionsFolder": "samples",
     "messageTemplate": {
-        "warningMessage": "\n@{author} please address the above issues and push new changes to this branch.\nFor more information, see the [contributing guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).\n",
-        "intro": "We automatically validate all pull requests against our [contributing guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.\n",
+        "warningMessage": "\n@{author} please address the above issues and push new changes to this branch.\nFor more information, see the [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).\n",
+        "intro": "We automatically validate all pull requests against our [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.\n",
         "issuesSummary": "In order to merge this PR in a timely manner, the following criteria must be met:\n\n",
         "title": "Sample PR validation for #{prNumber}\n",
         "validationSuccessSummary":"## ✅ Validation status: success\n",
