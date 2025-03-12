@@ -98,3 +98,6 @@ TODO: Provide schema and explain the JSON structure.
 - [ ] Add `order` parameter to rules to control the order in which rules are listed.
 - [ ] Add ability to create "forbidden" files or folder based on a glob filter (e.g.: `**\node_modules`)
 - [ ] Add deep-dive validation of `README.md` files
+- [ ] Add ability to pass result back instead of creating a message
+- [ ] Add ability to specif Success and Warning statuses for results table
+- [ ] Add ability to specify a different message structure -- possibly with handlebars.
