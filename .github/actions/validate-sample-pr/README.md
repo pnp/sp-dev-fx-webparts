@@ -101,3 +101,4 @@ TODO: Provide schema and explain the JSON structure.
 - [ ] Add ability to pass result back instead of creating a message
 - [ ] Add ability to specif Success and Warning statuses for results table
 - [ ] Add ability to specify a different message structure -- possibly with handlebars.
+- [ ] Add support for extensible IRuleValidator
