@@ -94,7 +94,7 @@ TODO: Provide schema and explain the JSON structure.
 
 ## Future considerations
 
-- [] Accept an array of glob filters for `contributionsFolder`
-- [] Add `order` parameter to rules to control the order in which rules are listed.
-- [] Add ability to create "forbidden" files or folder based on a glob filter (e.g.: `**\node_modules`)
-- [] Add deep-dive validation of `README.md` files
+- [ ] Accept an array of glob filters for `contributionsFolder`
+- [ ] Add `order` parameter to rules to control the order in which rules are listed.
+- [ ] Add ability to create "forbidden" files or folder based on a glob filter (e.g.: `**\node_modules`)
+- [ ] Add deep-dive validation of `README.md` files
