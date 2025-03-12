@@ -33051,11 +33051,7 @@ function run() {
             }
             core.info(message);
             // Post a comment to the PR with the results
-            // await octokit.rest.issues.createComment({
-            //     ...context.repo,
-            //     issue_number: prNumber,
-            //     body: message,
-            // });
+            yield octokit.rest.issues.createComment(Object.assign(Object.assign({}, context.repo), { issue_number: prNumber, body: message }));
             core.info('Validation completed.');
         }
         catch (error) {

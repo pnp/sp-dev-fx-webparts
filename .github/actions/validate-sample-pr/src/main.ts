@@ -195,11 +195,11 @@ async function run() {
         core.info(message);
 
         // Post a comment to the PR with the results
-        // await octokit.rest.issues.createComment({
-        //     ...context.repo,
-        //     issue_number: prNumber,
-        //     body: message,
-        // });
+        await octokit.rest.issues.createComment({
+            ...context.repo,
+            issue_number: prNumber,
+            body: message,
+        });
         core.info('Validation completed.');
 
     } catch (error: any) {
