@@ -1,6 +1,10 @@
 name: 'Validate SPFx Sample PR'
 description: 'Verifies that an SPFx sample PR is valid'
+author: 'Hugo Bernier'
 inputs:
+  gh-token:
+    description: 'The GitHub token for authentication.''
+    required: true
   pr: 
     required: true
     description: 'The PR to validate'
@@ -8,6 +12,13 @@ inputs:
     required: true
     description: 'Path to the JSON file containing validation rules'
     default:  '.github/validate-sample-pr-rules.json'
+  postComment:
+    required: false
+    description: 'Whether to post a comment on the PR with the validation result'
+    default: 'true'
+outputs:
+  result:
+    description: 'The validation result message'
 runs:
   using: 'node20'
   main: 'dist/index.js'
