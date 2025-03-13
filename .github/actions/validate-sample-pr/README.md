@@ -15,18 +15,26 @@ Does a first pass validation of pull requests to eliminate back and forth betwee
         # Required
         pr: 
 
+        # GitHub token
+        # Required
+        gh-token:
+
         # The path to the rules JSON file
         # Optional. Default is:  .github/validate-sample-pr-rules.json
         validationRuleFile:
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        # Wether or not to post comments
+        # Optional. Default is 'true'.
+        postComment: 
 ```
 
 ### Outputs
 
-Produces a message within the pull request with validation results. Message content is customizable.
+Produces a message within the pull request with validation results. Message content is customizable via a handlebars template.
 
 ![Example of a validation message](image.png)
+
+You can also choose to receive the results of the analysis via the `results` output.
 
 ### Configuration
 
@@ -38,25 +46,44 @@ Here is the rules configuration for the sp-dev-fx-webparts repo:
 ```json
 {
     "contributionsFolder": "samples",
-    "messageTemplate": {
-        "warningMessage": "\n@{author} please address the above issues and push new changes to this branch.\nFor more information, see the [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).\n",
-        "intro": "We automatically validate all pull requests against our [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.\n",
-        "issuesSummary": "In order to merge this PR in a timely manner, the following criteria must be met:\n\n",
-        "title": "Sample PR validation for #{prNumber}\n",
-        "validationSuccessSummary":"## ✅ Validation status: success\n",
-        "validationWarningSummary": "## ⚠️ Validation status: warnings\n"
-    },
+    "templateLines": [
+        "Sample PR validation for #{{prNumber}}",
+        "---",
+        "",
+        "{{#if hasIssues}}",
+        "## ⚠️ Validation status: warnings",
+        "{{else}}",
+        "## ✅ Validation status: success",
+        "{{/if}}",
+        "",
+        "We automatically validate all pull requests against our [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.",
+        "",
+        "In order to merge this PR in a timely manner, the following criteria must be met:",
+        "",
+        "Validation|Status",
+        "---|---",
+        "{{#each validationResults}}",
+        "[{{this.rule}}]({{this.href}})|{{#if this.success}}✅ Succeeded{{else}}⚠️ Warning{{/if}}",
+        "{{/each}}",
+        "",
+        "{{#if hasIssues}}",
+        "@{{author}} please address the above issues and push new changes to this branch.",
+        "For more information, see the [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).",
+        "{{/if}}"
+    ],
     "limitToSingleFolder": {
-        "ruleText": "Pull request affects only one folder",
-        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#typos-issues-bugs-and-contributions"
+        "rule": "Pull request affects only one folder",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#typos-issues-bugs-and-contributions",
+        "order": 1
     },
     "requireVisitorStats": {
-        "ruleText": "`README.md` contains visitor stat image",
-        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#visitor-stats-image"
+        "rule": "README.md contains visitor stat image",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#visitor-stats-image",
+        "order": 4
     },
     "folderName": {
-        "ruleText": "Sample folder name follows naming convention",
-        "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#sample-folder",
+        "rule": "Sample folder name follows naming convention",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#sample-folder",
         "acceptedPrefixes": [
             "react-", 
             "angular-", 
@@ -66,23 +93,27 @@ Here is the rules configuration for the sp-dev-fx-webparts repo:
             "knockout-", 
             "vue-", 
             "vuejs-"
-        ]
+        ],
+        "order": 2
     },
     "fileRules": [
         {
-            "filePath": ".nvmrc",
-            "ruleText": "Sample includes a `.nvmrc` file",
-            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#nvmrc"
+            "require": ".nvmrc",
+            "rule": "Sample requires a .nvmrc file",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#nvmrc",
+            "order": 6
         },
         {
-            "filePath": "README.md",
-            "ruleText": "Sample includes a `README.md`",
-            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#readmemd"
+            "require": "README.md",
+            "rule": "Sample requires a README.md",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#readmemd",
+            "order": 3
         },
         {
-            "filePath": "assets/*.png",
-            "ruleText": "Sample includes a screenshot `.png` in the `assets` folder",
-            "ruleLink": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#assets"
+            "require": "assets/*.png",
+            "rule": "Sample requires a screenshot .png in assets folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#assets",
+            "order": 5
         }
     ]
 }
@@ -95,10 +126,10 @@ TODO: Provide schema and explain the JSON structure.
 ## Future considerations
 
 - [ ] Accept an array of glob filters for `contributionsFolder`
-- [ ] Add `order` parameter to rules to control the order in which rules are listed.
-- [ ] Add ability to create "forbidden" files or folder based on a glob filter (e.g.: `**\node_modules`)
+- [x] Add `order` parameter to rules to control the order in which rules are listed.
+- [x] Add ability to create "forbidden" files or folder based on a glob filter (e.g.: `**\node_modules`)
 - [ ] Add deep-dive validation of `README.md` files
-- [ ] Add ability to pass result back instead of creating a message
-- [ ] Add ability to specif Success and Warning statuses for results table
-- [ ] Add ability to specify a different message structure -- possibly with handlebars.
+- [x] Add ability to pass result back instead of creating a message
+- [x] Add ability to specify Success and Warning statuses for results table
+- [x] Add ability to specify a different message structure -- possibly with handlebars.
 - [ ] Add support for extensible IRuleValidator
