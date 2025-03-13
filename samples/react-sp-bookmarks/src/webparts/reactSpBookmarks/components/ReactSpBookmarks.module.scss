@@ -42,11 +42,11 @@
     }
 
     .newBookmarkButton {
-      background-color: black; // Keep the primary button color consistent
+      background-color: #0078d4; // Keep the primary button color consistent
       color: white;
 
       &:hover {
-        background-color: black; // Slightly darker on hover
+        background-color: #106ebe; // Slightly darker on hover
       }
     }
 
@@ -63,8 +63,8 @@
 
     .links {
       a {
-        color: black; // Light blue for links in dark theme
-        text-decoration: black; // Remove underline
+        color: #64b5f6; // Light blue for links in dark theme
+        text-decoration: none; // Remove underline
 
         &:hover {
           color: #42a5f5; // Slightly brighter blue on hover
@@ -105,11 +105,11 @@
 }
 
 .newBookmarkButton {
-  background-color: black;
+  background-color: #0078d4;
   color: white;
 
   &:hover {
-    background-color: black;
+    background-color: #106ebe;
   }
 }
 
@@ -168,7 +168,7 @@
 .bookmarkIcon {
   font-size: 24px;
   margin-bottom: 8px;
-  color: black; // Default icon color for light theme
+  color: #0078d4; // Default icon color for light theme
 }
 
 .bookmarkTitle {
@@ -208,10 +208,10 @@
 
   .actionIcon {
     cursor: pointer;
-    color: black; // Default icon color for light theme
+    color: #0078d4; // Default icon color for light theme
 
     &:hover {
-      color: black; // Slightly darker on hover
+      color: #106ebe; // Slightly darker on hover
     }
   }
 }
