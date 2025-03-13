@@ -3,7 +3,7 @@ description: 'Verifies that an SPFx sample PR is valid'
 author: 'Hugo Bernier'
 inputs:
   gh-token:
-    description: 'The GitHub token for authentication.''
+    description: 'The GitHub token for authentication.'
     required: true
   pr: 
     required: true
