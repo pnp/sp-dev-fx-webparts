@@ -38,7 +38,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 ## Contributors
 
 * [Dan Toft](https://github.com/Tanddant) - Original author
-* [NicolasKheirallah] - SPFx 1.20.0 modernization with enhanced features including visual query builder, validator, and saved queries
+* [Nicolas Kheirallah](https://github.com/NicolasKheirallah) - SPFx 1.20.0 modernization with enhanced features including visual query builder, validator, and saved queries
 
 ## Version history
 
@@ -93,7 +93,8 @@ This enhanced web part provides a comprehensive tool for working with CAML queri
 
 The web part includes several pre-built query templates:
 
-**Get items by ID**
+### Get items by ID
+
 ```xml
 <View>
   <Query>
@@ -112,7 +113,8 @@ The web part includes several pre-built query templates:
 </View>
 ```
 
-**Modified in last 7 days**
+### Modified in last 7 days
+
 ```xml
 <View>
   <Query>
@@ -131,7 +133,8 @@ The web part includes several pre-built query templates:
 </View>
 ```
 
-**Top 10 items**
+### Top 10 items
+
 ```xml
 <View>
   <RowLimit>10</RowLimit>
@@ -143,7 +146,8 @@ The web part includes several pre-built query templates:
 </View>
 ```
 
-## For more info on CAML:
+## For more info on CAML
+
 - [Collaborative Application Markup Language (CAML) schemas](https://learn.microsoft.com/en-us/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas)
 - [camljs](https://github.com/andrei-markeev/camljs)
 - [Camlex.Net](https://github.com/sadomovalex/camlex)
