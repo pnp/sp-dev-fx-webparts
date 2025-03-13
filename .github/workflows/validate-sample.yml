@@ -1,4 +1,4 @@
-name: Sample validation
+name: PnP Sample validation
 
 on:
   pull_request_target:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   validate:
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Validate

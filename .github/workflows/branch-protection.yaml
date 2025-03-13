@@ -1,4 +1,4 @@
-name: Branch Protection # SIC-main is only used for Sharing is Caring sessions
+name: Sharing is Caring Branch Protection # SIC-main is only used for Sharing is Caring sessions
 on:
   pull_request:
     types: [opened, synchronize]
@@ -8,6 +8,7 @@ permissions:
 
 jobs:
   prevent_merge:
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Comment and Close PR if merging from sic-main to main
