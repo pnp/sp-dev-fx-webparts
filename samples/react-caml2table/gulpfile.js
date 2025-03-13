@@ -13,4 +13,25 @@ build.rig.getTasks = function () {
   return result;
 };
 
+// Fix issue with Monaco Editor
+build.configureWebpack.mergeConfig({
+  additionalConfiguration: (generatedConfiguration) => {
+    // Support for Monaco Editor
+    generatedConfiguration.module.rules.push(
+      {
+        test: /\.ttf$/,
+        use: ['file-loader']
+      }
+    );
+
+    // Fix for missing modules
+    generatedConfiguration.resolve.fallback = {
+      ...generatedConfiguration.resolve.fallback,
+      path: require.resolve('path-browserify')
+    };
+
+    return generatedConfiguration;
+  }
+});
+
 build.initialize(require('gulp'));
