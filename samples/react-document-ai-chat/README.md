@@ -68,31 +68,37 @@ This sample is optimally compatible with the following environment configuration
 Follow these steps to get started with the Document AI Chat:
 
 1. **Clone the repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-ai-chat) then unzip it)**
+
     ```sh
     git clone https://github.com/pnp/sp-dev-fx-webparts.git
     ```
 
 2. *** From your command line, change your current directory to the directory containing this sample (`react-document-ai-chat`, located under `samples`)**
+
     ```sh
     cd sp-dev-fx-webparts/samples/react-document-ai-chat
     ```
 
 3. **In the command line run the following command to install the packages**
+
     ```sh
     npm install
     ```
 
 4. **Build the project**
+
     ```sh
     gulp build --ship
     ```
 
 5. **Bundle the project**
+
     ```sh
     gulp bundle --ship
     ```
 
 6. **Package the solution**
+
     ```sh
     gulp package-solution --ship
     ```
@@ -105,6 +111,7 @@ Follow these steps to get started with the Document AI Chat:
 9. **Navigate to the `FunctionApp` repository and open it in Visual Studio 2022**
 
 10. **Fill in the following settings in the `local.settings.json` file**
+
     ```json
     {
       "IsEncrypted": false,
