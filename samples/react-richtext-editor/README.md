@@ -50,31 +50,37 @@ This sample is optimally compatible with the following environment configuration
 Follow these steps to get started with the Rich Text Editor:
 
 1. **Clone the repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-richtext-editor) then unzip it)**
+   
     ```sh
     git clone https://github.com/pnp/sp-dev-fx-webparts.git
     ```
 
 2. *** From your command line, change your current directory to the directory containing this sample (`react-richtext-editor`, located under `samples`)**
+   
     ```sh
     cd sp-dev-fx-webparts/samples/react-richtext-editor
     ```
 
 3. **In the command line run the following command to install the packages**
+   
     ```sh
     npm install
     ```
 
 4. **Build the project**
+   
     ```sh
     gulp build --ship
     ```
 
 5. **Bundle the project**
+   
     ```sh
     gulp bundle --ship
     ```
 
 6. **Package the solution**
+   
     ```sh
     gulp package-solution --ship
     ```
@@ -95,7 +101,6 @@ Follow these steps to get started with the Rich Text Editor:
 
 ## Help
 
-
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
@@ -109,7 +114,6 @@ If you encounter any issues using this sample, [create a new issue](https://gith
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-richtext-editor&template=question.yml&sample=react-richtext-editor&authors=@ejazhussain&title=react-richtext-editor%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-richtext-editor&template=suggestion.yml&sample=react-richtext-editor&authors=@ejazhussain&title=react-richtext-editor%20-%20).
-
 
 
 ## Disclaimer
