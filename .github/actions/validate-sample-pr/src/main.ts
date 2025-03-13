@@ -1,25 +1,32 @@
+import { ValidationResult } from './ValidationResult';
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as fs from 'fs';
 import * as path from 'path';
-import { MessageTemplate, ValidationRules } from './ValidationRules';
+import { getInput } from "@actions/core";
+import { ValidationRules } from './ValidationRules';
 import { minimatch } from 'minimatch';
-import { getEventListeners } from 'events';
+import handlebars from 'handlebars';
 
 async function run() {
     try {
-        const token = process.env.GITHUB_TOKEN;
+        const token = getInput("gh-token");
         if (!token) {
             core.setFailed('GITHUB_TOKEN is not set');
             return;
         }
+
+        core.info('Got token');
         const octokit = github.getOctokit(token);
+        core.info('Got oktokit');
+
         const { context } = github;
         const pr = context.payload.pull_request;
         if (!pr) {
             core.setFailed('This action only runs on pull requests.');
             return;
         }
+        core.info('Got PR');
         const { owner, repo } = context.repo;
         const prNumber = pr.number;
 
@@ -33,6 +40,8 @@ async function run() {
             repo,
             issue_number: prNumber,
         });
+        core.info('Got labels');
+
 
         const skipValidation = labels.some(label => label.name === 'skip-validation');
         if (skipValidation) {
@@ -40,15 +49,11 @@ async function run() {
             return;
         }
 
-        // Get list of files changed in the PR
-        const { data: files } = await octokit.rest.pulls.listFiles({
-            owner,
-            repo,
-            pull_number: prNumber,
-        });
-
         // Read inputs
         const validationRulesFile = core.getInput('validationRulesFile');
+
+        // Post comments?
+        const postComments = core.getInput('postComment') === 'true';
 
         // Read validation rules from JSON file
         const validationRules: ValidationRules = JSON.parse(fs.readFileSync(validationRulesFile, 'utf8'));
@@ -56,21 +61,27 @@ async function run() {
             core.setFailed('Validation rules not found.');
             return;
         }
+        core.info('Got rules');
+
         const samplesFolder = validationRules.contributionsFolder || 'samples';
-        const affectsOnlyOneFolder = validationRules.limitToSingleFolder || false;
+        const affectsOnlyOneFolder = validationRules.limitToSingleFolder || undefined;
         const sampleFolderNameRule = validationRules.folderName;
         const acceptedPrefix = sampleFolderNameRule?.acceptedPrefixes || [];
-        const messageTemplate = validationRules.messageTemplate;
         const requireVisitorStats = validationRules.requireVisitorStats || false;
-        messageTemplate.validationSuccessSummary = messageTemplate.validationSuccessSummary || '## ✅ Validation status: success\n';
-        messageTemplate.validationWarningSummary = messageTemplate.validationWarningSummary || '## ⚠️ Validation status: warnings\n';
-        messageTemplate.ruleStatusSuccess = messageTemplate.ruleStatusSuccess || '✅ Succeeded';
-        messageTemplate.ruleStatusWarning = messageTemplate.ruleStatusWarning || '⚠️ Warning';
 
-        // Compose a message based on criteria results
-        let message = '';
-        let validationMessages = '';
-        let hasIssues = false;
+
+        // const sourceRepo = pr!.head.repo.full_name;
+        // const baseRepo = pr!.base.repo.full_name;
+
+        // Get list of files changed in the PR
+        const { data: files } = await octokit.rest.pulls
+            .listFiles({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+            });
+
+        core.info('Got files');
 
         core.info(`PR #${prNumber} has ${files.length} files changed.`);
         for (const file of files) {
@@ -83,8 +94,8 @@ async function run() {
 
         // Determine the sample folders (considering full path structure)
         const sampleFolders = new Set<string>();
-        sampleFiles.forEach(filePath => {
-            const relativePath = path.relative(samplesFolder, filePath);
+        sampleFiles.forEach(include => {
+            const relativePath = path.relative(samplesFolder, include);
             const parts = relativePath.split(path.sep);
             if (parts.length > 0) {
                 sampleFolders.add(parts[0]);
@@ -92,6 +103,8 @@ async function run() {
         });
         core.info(`Affected sample folders: ${Array.from(sampleFolders).join(', ')}`);
 
+        // Build validation messages
+        const validationResults = new Array<ValidationResult>();
         // Verify that only one folder is affected
         if (affectsOnlyOneFolder) {
             // Check if there are any files outside the "samples/" folder
@@ -100,10 +113,12 @@ async function run() {
                 core.info(`Contains files outside the "${samplesFolder}" folder.`);
             }
             const onlyOneFolder = sampleFolders.size === 1 && filesOutsideSamples.length === 0;
-            validationMessages += successStatus(`[${affectsOnlyOneFolder.ruleText}](${affectsOnlyOneFolder.ruleLink})`, onlyOneFolder, messageTemplate);
-            if (!onlyOneFolder) {
-                hasIssues = true;
-            }
+            validationResults.push({
+                success: onlyOneFolder,
+                rule: affectsOnlyOneFolder.rule,
+                href: affectsOnlyOneFolder.href,
+                order: affectsOnlyOneFolder.order,
+            });
         }
 
         // Verify the sample folder name
@@ -114,10 +129,13 @@ async function run() {
         if (sampleFolderNameRule) {
             // Make sure the sample is named correctly
             const isValidSampleName = acceptedPrefix.some(prefix => sampleName.startsWith(prefix));
-            validationMessages += successStatus(`[${sampleFolderNameRule.ruleText}](${sampleFolderNameRule.ruleLink})`, isValidSampleName, messageTemplate);
-            if (!isValidSampleName) {
-                hasIssues = true;
-            }
+            validationResults.push({
+                success: isValidSampleName,
+                rule: sampleFolderNameRule.rule,
+                href: sampleFolderNameRule.href,
+                order: sampleFolderNameRule.order,
+            });
+
             core.info(`Sample name is valid: ${isValidSampleName}`);
         }
 
@@ -137,10 +155,12 @@ async function run() {
                         hasImageTracker = lines.some(line => line.trim().startsWith('<img src="https://m365-visitor-stats.azurewebsites.net/'));
                         core.info(`Visitor stats image in README.md: ${hasImageTracker}`);
 
-                        if (!hasImageTracker) {
-                            hasIssues = true;
-                        }
-                        validationMessages += successStatus(`[${requireVisitorStats.ruleText}](${requireVisitorStats.ruleLink})`, hasImageTracker, messageTemplate);
+                        validationResults.push({
+                            success: hasImageTracker,
+                            rule: requireVisitorStats.rule,
+                            href: requireVisitorStats.href,
+                            order: requireVisitorStats.order,
+                        });
                     } else {
                         core.warning(`Can't read README.md content.`);
                     }
@@ -153,62 +173,59 @@ async function run() {
 
         // Validate files based on rules
         if (validationRules.fileRules) {
-            for (const { filePath, ruleText, ruleLink } of validationRules.fileRules) {
-                const fullPath = path.join(samplesFolder, sampleName, filePath);
-                const fileExists = sampleFiles.some(f => minimatch(f, fullPath));
-                core.info(`${ruleText} exists: ${fileExists}`);
-                validationMessages += successStatus(`[${ruleText}](${ruleLink})`, fileExists, messageTemplate);
-                if (!fileExists) {
-                    hasIssues = true;
+            for (const { require, forbid, rule, href, order } of validationRules.fileRules) {
+                const pattern = require || forbid;
+                const isExclude = !!forbid;
+                if (!pattern) {
+                    core.warning(`Invalid rule: ${rule}`);
+                    continue;
                 }
+                const fullPath = path.join(samplesFolder, sampleName, pattern);
+                const fileExists = sampleFiles.some(f => minimatch(f, fullPath));
+                const isValid = isExclude ? !fileExists : fileExists;
+                core.info(`${rule} exists: ${fileExists} valid: ${isValid}`);
+                validationResults.push({
+                    success: isValid,
+                    rule,
+                    href,
+                    order
+                });
             }
         }
 
-        // Replace {prNumber} in the message template title
-        message += messageTemplate.title.replace('{prNumber}', prNumber.toString());
-        message += `---\n`;
-        if (messageTemplate.intro) {
-            message += messageTemplate.intro ;  
+        // Set hasIssues based on validationMessage items
+        const hasIssues = validationResults.some(message => !message.success);
+
+        const templateSource = validationRules.templateLines.join('\n');
+        const template = handlebars.compile(templateSource);
+
+        const data = {
+            validationResults,
+            hasIssues,
+            prNumber,
+            author
+        };
+
+        const message = template(data);
+
+        if (postComments) {
+            try {
+                // Post a comment to the PR with the results
+                await octokit.rest.issues.createComment({
+                    ...context.repo,
+                    issue_number: prNumber,
+                    body: message,
+                });
+            } catch (error) {
+                core.warning(`Error posting comment: ${error}`);
+            }
         }
-
-        core.info(`Validation issues: ${hasIssues}`);
-
-
-        if (hasIssues) {
-            message += messageTemplate.validationWarningSummary;
-        } else {
-            message += messageTemplate.validationSuccessSummary;
-        }
-
-        if (messageTemplate.issueSummary) {
-        message += messageTemplate.issueSummary;
-        }
-
-        message += '\nValidation|Status\n';
-        message += '---|---\n';
-        message += validationMessages;
-       
-        if (hasIssues) {
-            message += messageTemplate.warningMessage.replace('{author}', author);
-        }
-
-        core.info(message);
-
-        // Post a comment to the PR with the results
-        await octokit.rest.issues.createComment({
-            ...context.repo,
-            issue_number: prNumber,
-            body: message,
-        });
-        core.info('Validation completed.');
+        core.setOutput('result', message);
+        core.info('Validation completed and result output set.');
 
     } catch (error: any) {
         core.setFailed(error.message);
     }
-}
-
-function successStatus(message: string, hasSuccess: boolean, messageTemplate: MessageTemplate): string {
-    return `|${message}|${hasSuccess ? messageTemplate.ruleStatusSuccess : messageTemplate.ruleStatusWarning}|\n`;
 }
 
 async function getFileContent(octokit: any, owner: string, repo: string, path: string, ref: string): Promise<string | null> {
