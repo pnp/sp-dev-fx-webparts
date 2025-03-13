@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.5",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "m-365-planner-time-line-web-part",
+    "libraryId": "bfe0b260-4f9c-492f-a591-88be7bd6b427",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "m-365-planner-time-line-web-part",
+    "solutionShortDescription": "m-365-planner-time-line-web-part description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
