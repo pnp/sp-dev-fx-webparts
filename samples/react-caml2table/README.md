@@ -6,6 +6,8 @@ A powerful web part that allows users to test and build CAML queries visually wi
 
 ![Sample gif](./assets/Demo.gif)
 
+
+
 ## Compatibility
 
 | :warning: Important          |
