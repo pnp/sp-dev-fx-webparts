@@ -27,27 +27,18 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [editingBookmark, setEditingBookmark] = React.useState<Bookmark | null>(null);
 
-  interface ListItem {
-    Id: number;
-    Title: string;
-    URL: string;
-    Icon: string;
-  }
-
-  const fetchBookmarks = async (): Promise<void> => {
+  // Fetch bookmarks from the SharePoint list
+  const fetchBookmarks = async () => {
     try {
-      const items: ListItem[] = await sp.web.lists
-        .getByTitle(listName)
-        .items.select('Id', 'Title', 'URL', 'Icon')();
-
-      const fetchedBookmarks: Bookmark[] = items.map((item: ListItem) => ({
+      const items = await sp.web.lists.getByTitle(listName).items.select('Id', 'Title', 'URL', 'Icon')();
+      const bookmarks: Bookmark[] = items.map((item: any) => ({
         id: item.Id.toString(),
         title: item.Title,
         url: item.URL,
-        icon: item.Icon,
+        icon: item.Icon
       }));
 
-      setBookmarks(fetchedBookmarks);
+      setBookmarks(bookmarks);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching bookmarks:', error);
@@ -64,15 +55,16 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
   };
 
   // Add a new bookmark to the SharePoint list
-  const handleAddBookmark = async (newBookmark: Bookmark): Promise<void> => {
+  const handleAddBookmark = async (newBookmark: Bookmark) => {
     try {
       await sp.web.lists.getByTitle(listName).items.add({
         Title: newBookmark.title,
         URL: newBookmark.url,
-        Icon: newBookmark.icon,
+        Icon: newBookmark.icon
       });
 
-      await fetchBookmarks(); // Ensure bookmarks are refreshed
+      // Refresh the bookmarks list
+      fetchBookmarks();
       setIsModalOpen(false); // Close the modal after adding the bookmark
     } catch (error) {
       console.error('Error adding bookmark:', error);
@@ -81,15 +73,16 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
   };
 
   // Update an existing bookmark
-  const handleUpdateBookmark = async (updatedBookmark: Bookmark): Promise<void> => {
+  const handleUpdateBookmark = async (updatedBookmark: Bookmark) => {
     try {
       await sp.web.lists.getByTitle(listName).items.getById(Number(updatedBookmark.id)).update({
         Title: updatedBookmark.title,
         URL: updatedBookmark.url,
-        Icon: updatedBookmark.icon,
+        Icon: updatedBookmark.icon
       });
 
-      await fetchBookmarks(); // Ensure bookmarks are refreshed
+      // Refresh the bookmarks list
+      fetchBookmarks();
       setIsModalOpen(false); // Close the modal after updating the bookmark
       setEditingBookmark(null); // Reset the editing state
     } catch (error) {
@@ -99,11 +92,12 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
   };
 
   // Delete a bookmark
-  const handleDeleteBookmark = async (id: string): Promise<void> => {
+  const handleDeleteBookmark = async (id: string) => {
     try {
       await sp.web.lists.getByTitle(listName).items.getById(Number(id)).delete();
 
-      await fetchBookmarks(); // Ensure bookmarks are refreshed
+      // Refresh the bookmarks list
+      fetchBookmarks();
     } catch (error) {
       console.error('Error deleting bookmark:', error);
       setError('Failed to delete the bookmark.');
@@ -111,40 +105,21 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
   };
 
   // Open the modal for adding or editing a bookmark
-  const openModal = (bookmark: Bookmark | null = null): void => {
+  const openModal = (bookmark: Bookmark | null = null) => {
     setEditingBookmark(bookmark);
     setIsModalOpen(true);
   };
 
   // Close the modal and reset the editing state
-  const closeModal = (): void => {
+  const closeModal = () => {
     setIsModalOpen(false);
     setEditingBookmark(null);
   };
 
   // Fetch bookmarks when the component mounts
   React.useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      try {
-        await fetchBookmarks();
-      } catch (err) {
-        console.error("Error in useEffect fetchBookmarks:", err);
-      }
-    };
-
-    // Explicitly call the function and handle its result
-    fetchData()
-      .then(() => {
-        // Optional: Handle success if needed
-      })
-      .catch((err) => {
-        console.error("Error occurred:", err);
-      });
+    fetchBookmarks();
   }, []);
-
-
-
-
 
   if (loading) return <p>Loading bookmarks...</p>;
   if (error) return <p>{error}</p>;
@@ -170,6 +145,7 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>{props.title}</h2>
+          
         </div>
 
         {/* Grid View for Bookmarks */}
@@ -212,25 +188,13 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
                 id: editingBookmark ? editingBookmark.id : Date.now().toString(),
                 title: (form.elements.namedItem('title') as HTMLInputElement).value,
                 url: (form.elements.namedItem('url') as HTMLInputElement).value,
-                icon: (form.elements.namedItem('icon') as HTMLInputElement).value,
+                icon: (form.elements.namedItem('icon') as HTMLInputElement).value
               };
 
               if (editingBookmark) {
-                handleUpdateBookmark(updatedBookmark)
-                  .then(() => {
-                    console.log("Bookmark updated successfully!");
-                  })
-                  .catch((err) => {
-                    console.error("Error updating bookmark:", err);
-                  });
+                handleUpdateBookmark(updatedBookmark);
               } else {
-                handleAddBookmark(updatedBookmark)
-                  .then(() => {
-                    console.log("Bookmark updated successfully!");
-                  })
-                  .catch((err) => {
-                    console.error("Error updating bookmark:", err);
-                  });
+                handleAddBookmark(updatedBookmark);
               }
             }}
           >
@@ -252,7 +216,7 @@ const ReactSpBookmarks: React.FC<IReactSpBookmarksProps> = (props) => {
               <TextField
                 label="Icon"
                 name="icon"
-                description="Get the icon name from Fluent UI Icons (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)"
+                description='Get the icon name from Fluent UI Icons (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)'
                 required
                 placeholder="Enter the icon name"
                 defaultValue={editingBookmark ? editingBookmark.icon : ''}
