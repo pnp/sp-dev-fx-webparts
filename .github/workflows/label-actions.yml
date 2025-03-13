@@ -1,4 +1,4 @@
-name: 'Check for incomplete submissions'
+name: 'Check for Incomplete Issues'
 
 on:
   issues:

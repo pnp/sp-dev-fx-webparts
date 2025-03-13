@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-outlook-add-todo-task",
     "source": "pnp",
     "title": "Create To Do Task from Email (Outlook Add in)",
-    "shortDescription": "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let\u00B4s say this is similar to the OOTB \u0022Flag\u0022 action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.",
+    "shortDescription": "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB \"Flag\" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-outlook-add-todo-task",
     "longDescription": [
-      "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let\u00B4s say this is similar to the OOTB \u0022Flag\u0022 action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it."
+      "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB \"Flag\" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it."
     ],
     "creationDateTime": "2020-10-16",
     "updateDateTime": "2020-10-16",
@@ -40,7 +40,7 @@
         "gitHubAccount": "luismanez",
         "company": "ClearPeople",
         "pictureUrl": "https://github.com/luismanez.png",
-        "name": "Luis Ma\u00F1ez"
+        "name": "Luis Mañez"
       }
     ],
     "references": [
@@ -54,6 +54,7 @@
         "description": "Introduced in SharePoint Framework v1.10, you can implement an Outlook Web App add-in with the SharePoint Framework and use SharePoint as a host for your solution.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/office-addins-create"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-outlook-add-todo-task"
   }
 ]

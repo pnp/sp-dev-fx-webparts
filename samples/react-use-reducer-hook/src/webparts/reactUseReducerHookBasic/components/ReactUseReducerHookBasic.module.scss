@@ -1,0 +1,81 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.reactUseReducerHookBasic {
+  overflow: hidden;
+  padding: 20px; // Consolidated padding
+  color: var(--bodyText, #323130); // Fallback to #323130 if --bodyText is not defined
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+    background-color: var(--teams-background, #f3f2f1); // Fallback color
+  }
+
+  .welcome {
+    /* Removed text-align: center; to allow individual alignment */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; // Default alignment to center
+    gap: 20px; // Consistent spacing
+  }
+
+  .title {
+    text-align: center; // Center the title
+    color: var(--themePrimary, #0078d4); // Use theme color with fallback
+    font-weight: bold;
+  }
+
+  .description {
+    text-align: center; // Align description to center
+    color: var(--neutralSecondary, #605e5c); // Use theme color with fallback
+  }
+
+  .welcomeImage {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .links {
+    a {
+      text-decoration: none;
+      color: var(--link, #03787c); // Fallback to #03787c
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--linkHovered, #014446); // Fallback to #014446
+      }
+    }
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .loading {
+    width: 100%;
+    text-align: center;
+  }
+
+  .listItem {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+    border-bottom: 1px solid var(--border-color, #e1dfdd); // Fallback to #e1dfdd
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--hover-background, #f4f4f4); // Fallback to #f4f4f4
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
