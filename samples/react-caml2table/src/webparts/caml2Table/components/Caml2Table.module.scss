@@ -1,1 +1,201 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.caml2Table {
+  .container {
+    margin: 0px auto;
+    width: 100%;
+  }
+
+  // Editor styling
+  .editorContainer {
+    margin-bottom: 16px;
+    border: 1px solid $ms-color-neutralLight;
+    border-radius: 2px;
+    
+    &:hover {
+      border-color: $ms-color-neutralTertiary;
+    }
+    
+    // Add padding around the editor label
+    :global(.ms-Label) {
+      padding: 8px 12px 4px 12px;
+      display: flex;
+      background-color: $ms-color-neutralLighterAlt;
+      margin: 0;
+      border-bottom: 1px solid $ms-color-neutralLight;
+    }
+  }
+
+  // Command bar container
+  .commandBarContainer {
+    border: 1px solid $ms-color-neutralLight;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+
+  // Button styling
+  .buttonContainer {
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    
+    // Add space between buttons and status elements
+    > * {
+      margin-right: 12px;
+    }
+  }
+
+  // Results container
+  .resultsContainer {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: $ms-color-white;
+    border: 1px solid $ms-color-neutralLight;
+    border-radius: 2px;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  }
+
+  // Results header with count
+  .resultsLabel {
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    color: $ms-color-neutralPrimary;
+  }
+  
+  // List picker styling
+  .listPickerContainer {
+    margin-bottom: 16px;
+    
+    :global(.ms-Label) {
+      font-weight: 600;
+    }
+  }
+  
+  // Query history navigation buttons
+  .historyNavigation {
+    display: flex;
+    align-items: center;
+  }
+  
+  // Field panel item styling
+  .fieldItem {
+    padding: 8px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+    
+    &:hover {
+      background-color: $ms-color-neutralLighterAlt;
+    }
+  }
+  
+  // Saved query item styling
+  .savedQueryItem {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid $ms-color-neutralLight;
+    border-radius: 2px;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: $ms-color-neutralLighterAlt;
+      border-color: $ms-color-neutralTertiary;
+    }
+    
+    .queryName {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .queryInfo {
+      font-size: 12px;
+      color: $ms-color-neutralSecondary;
+    }
+  }
+  
+  // Status message styling
+  .statusMessage {
+    padding: 8px 12px;
+    background-color: $ms-color-neutralLighterAlt;
+    border-left: 4px solid $ms-color-themePrimary;
+    margin-bottom: 16px;
+    
+    &.error {
+      border-left-color: $ms-color-error;
+      background-color: $ms-color-errorBackground;
+    }
+    
+    &.success {
+      border-left-color: $ms-color-success;
+      background-color: $ms-color-successBackground;
+    }
+    
+    &.warning {
+      border-left-color: $ms-color-warning;
+      background-color: $ms-color-warningBackground;
+    }
+  }
+  
+  // Toggle container
+  .toggleContainer {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
+  
+  // Query builder form
+  .queryBuilderForm {
+    padding: 16px;
+    
+    .formField {
+      margin-bottom: 16px;
+    }
+    
+    .formActions {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-end;
+      
+      > * {
+        margin-left: 8px;
+      }
+    }
+  }
+  
+  // Results toolbar
+  .resultsToolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+    padding-bottom: 8px;
+  }
+  
+  // Make ListView more responsive
+  :global(.ms-DetailsList) {
+    overflow-x: auto;
+  }
+  
+  // Responsive adjustments
+  @media screen and (max-width: 640px) {
+    .buttonContainer {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      > * {
+        margin-bottom: 8px;
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+    
+    .resultsToolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      > * {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
