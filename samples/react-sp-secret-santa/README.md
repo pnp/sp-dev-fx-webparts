@@ -64,7 +64,7 @@ Version|Date|Comments
     - `gulp build`
     - `gulp serve --nobrowser`
 3. Create a custom list (e.g. Bookmarks) 
-5. Navigate to the hosted version of SharePoint workbench, eg. **https://\<tenant>.sharepoint.com/sites/\<your site>/_layouts/15/workbench.aspx**
+5. Navigate to the hosted version of SharePoint workbench, e.g. **https://\<tenant>.sharepoint.com/sites/\<your site>/_layouts/15/workbench.aspx**
 6. Add the Web Part to the canvas and configure it.
 
 ### Package and deploy
