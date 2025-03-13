@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-sp-secret-santa-client-side-solution",
+    "id": "dca24450-6401-4591-ae29-05efa0c5e492",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-sp-secret-santa description"
+      },
+      "longDescription": {
+        "default": "react-sp-secret-santa description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-sp-secret-santa Feature",
+        "description": "The feature that activates elements of the react-sp-secret-santa solution.",
+        "id": "bfef881c-0ae8-4a48-ad36-b0306db3bdff",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-secret-santa.sppkg"
+  }
+}

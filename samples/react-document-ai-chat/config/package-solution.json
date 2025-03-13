@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O365C - Docu Genie",
+    "id": "43b4f64c-dec8-4096-b978-6deac8ac42aa",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "O365C - Docu Genie description"
+      },
+      "longDescription": {
+        "default": "O365C - Docu Genie description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O365C - Docu Genie Feature",
+        "description": "The feature that activates elements of the O365C - Docu Genie solution.",
+        "id": "7a50945f-dba5-4bd5-8e5f-d18952150665",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o365c-docu-genie.sppkg"
+  }
+}
