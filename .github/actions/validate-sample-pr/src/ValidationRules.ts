@@ -1,5 +1,5 @@
 export interface ValidationRules {
-    messageTemplate: MessageTemplate;
+    templateLines: string[];
     contributionsFolder?:        string;
     limitToSingleFolder?: ValidationRule;
     requireVisitorStats?: ValidationRule;
@@ -8,9 +8,11 @@ export interface ValidationRules {
 }
 
 export interface FileRule {
-    filePath: string;
-    ruleText: string;
-    ruleLink: string;
+    require?: string;
+    forbid?: string;
+    rule: string;
+    href: string;
+    order?: number;
 }
 
 export interface FolderRule extends ValidationRule{
@@ -18,17 +20,7 @@ export interface FolderRule extends ValidationRule{
 }
 
 export interface ValidationRule {
-    ruleText: string;
-    ruleLink: string;
-}
-
-export interface MessageTemplate {
-    warningMessage: string;
-    title: string;
-    intro?: string;
-    issueSummary?: string;
-    validationWarningSummary?: string;
-    validationSuccessSummary?: string;
-    ruleStatusSuccess?: string;
-    ruleStatusWarning?: string;
+    rule: string;
+    href: string;
+    order?: number;
 }

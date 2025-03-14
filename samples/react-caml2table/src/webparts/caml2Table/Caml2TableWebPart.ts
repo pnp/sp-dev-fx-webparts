@@ -1,35 +1,72 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { BaseComponentContext } from '@microsoft/sp-component-base'
-import Caml2Table, { ICaml2TableProps } from './components/Caml2Table';
-import { spfi, SPFI, SPFx } from '@pnp/sp/presets/all';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-export interface ICaml2TableWebPartProps { }
+import * as strings from 'Caml2TableWebPartStrings';
+import Caml2Table from './components/Caml2Table';
+import { ICaml2TableProps } from './components/ICaml2TableProps';
+import { Caml2TableContext, ICaml2TableContext } from './Caml2TableContext';
 
-export interface ICaml2TableContext {
-  SPFxContext: BaseComponentContext;
-  spfi: SPFI;
+// PnPjs imports
+import { spfi, SPFx, SPFI } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+
+export interface ICaml2TableWebPartProps {
+  description: string;
 }
-export const Caml2TableContext = React.createContext<ICaml2TableContext>(null);
 
+/**
+ * Web part for CAML query builder and executor
+ */
 export default class Caml2TableWebPart extends BaseClientSideWebPart<ICaml2TableWebPartProps> {
+  private _isDarkTheme: boolean = false;
+  private _themeVariant: IReadonlyTheme | undefined;
+  private _sp: SPFI;
+
+  protected async onInit(): Promise<void> {
+    // Initialize PnPjs
+    this._sp = spfi().using(SPFx(this.context));
+    
+    return super.onInit();
+  }
+
   public render(): void {
-    const PnpJS = spfi().using(SPFx(this.context));
-    const component: React.ReactElement<ICaml2TableProps> = React.createElement(Caml2Table, {});
-    const wrapper = React.createElement(
+    const element: React.ReactElement<ICaml2TableProps> = React.createElement(
+      Caml2Table,
+      {}
+    );
+
+    // Create context provider for PnPjs and theme
+    const contextValue: ICaml2TableContext = {
+      SPFxContext: this.context,
+      spfi: this._sp,
+      themeVariant: this._themeVariant
+    };
+
+    const contextProvider = React.createElement(
       Caml2TableContext.Provider,
-      {
-        value: {
-          SPFxContext: this.context,
-          spfi: PnpJS
-        } as ICaml2TableContext
-      }, component);
+      { value: contextValue },
+      element
+    );
 
+    ReactDom.render(contextProvider, this.domElement);
+  }
 
-    ReactDom.render(wrapper, this.domElement);
+  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
+    if (!currentTheme) {
+      return;
+    }
+
+    this._isDarkTheme = !!currentTheme.isInverted;
+    this._themeVariant = currentTheme;
   }
 
   protected onDispose(): void {
@@ -42,7 +79,23 @@ export default class Caml2TableWebPart extends BaseClientSideWebPart<ICaml2Table
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
-      pages: []
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                })
+              ]
+            }
+          ]
+        }
+      ]
     };
   }
 }
