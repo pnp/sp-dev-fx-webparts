@@ -1913,7 +1913,7 @@
       "The Alert Banner SPFx Extension is a custom SharePoint Framework (SPFx) extension designed to display alert notifications prominently in the Banner of Modern SharePoint sites. These alerts are dynamically retrieved from a SharePoint list using the Microsoft Graph API, ensuring users receive important updates and information seamlessly integrated with Microsoft 365 services."
     ],
     "creationDateTime": "2023-12-25",
-    "updateDateTime": "2024-10-11",
+    "updateDateTime": "2025-03-06",
     "products": [
       "SharePoint"
     ],
@@ -2033,7 +2033,7 @@
       "SharePoint Framework application customizer displaying an information banner using office-fabric-ui MessageBar."
     ],
     "creationDateTime": "2020-06-18",
-    "updateDateTime": "2024-10-06",
+    "updateDateTime": "2024-12-24",
     "products": [
       "SharePoint"
     ],
@@ -4396,6 +4396,63 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-YOUR-SOLUTION-NAME-GOES-HERE",
+    "source": "pnp",
+    "title": "AI Document Assistant",
+    "shortDescription": "The AI Document Assistant is a SharePoint Framework (SPFx) Command Set extension designed to enhance document interactions in SharePoint Online. This intelligent assistant leverages the OpenAI Assistant API to allow users to ask questions about selected documents directly within a chat interface.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+    "longDescription": [
+      "The AI Document Assistant is a SharePoint Framework (SPFx) Command Set extension designed to enhance document interactions in SharePoint Online. This intelligent assistant leverages the OpenAI Assistant API to allow users to ask questions about selected documents directly within a chat interface."
+    ],
+    "creationDateTime": "2023-12-25",
+    "updateDateTime": "2023-12-31",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [
+      {
+        "name": "architecture.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/ejazhussain",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      },
+      {
+        "name": "Use page placeholders from Application Customizer",
+        "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
     "source": "pnp",
     "title": "Change Page Layout Command Extension",
@@ -5901,7 +5958,7 @@
       "This is an alternative to the built-in 'New document' experience in a document library in SharePoint Online. It allows a SharePoint admin to define a repository (such as a standard document library or an org assets library) which acts as a source of templates that can be used in every document library. Any user can browse through the collection of company templates, get an instance of the desired template(s) by one single click and start using it."
     ],
     "creationDateTime": "2023-12-22",
-    "updateDateTime": "2024-04-06",
+    "updateDateTime": "2025-03-12",
     "products": [
       "SharePoint"
     ],
@@ -5912,7 +5969,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.17.4"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -5933,6 +5990,11 @@
         "gitHubAccount": "Tanddant",
         "pictureUrl": "https://github.com/Tanddant.png",
         "name": "Dan Toft (Code Reviews)"
+      },
+      {
+        "gitHubAccount": "NicolasKheirallah",
+        "pictureUrl": "https://github.com/NicolasKheirallah.png",
+        "name": "Nicolas Kheirallah"
       }
     ],
     "references": [
@@ -7291,18 +7353,16 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
+    "name": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE",
     "source": "pnp",
     "title": "Copy Path and Copy Name List view command set extensions",
-    "shortDescription": "List view command set extensions with below functionalities: Copy Path and Copy Name.",
-    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
+    "shortDescription": "List view command set extensions with below functionalities",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
     "longDescription": [
-      "List view command set extensions with below functionalities:",
-      "1. Copy Path allows to copy the path of the document without breaking the permission inheritance.",
-      "2. Copy Name allows to copy the name of the document without using the currently available rename functionality."
+      "List view command set extensions with below functionalities"
     ],
-    "creationDateTime": "2023-10-04",
-    "updateDateTime": "2024-08-28",
+    "creationDateTime": "2023-10-22",
+    "updateDateTime": "2025-02-27",
     "products": [
       "SharePoint"
     ],
@@ -7313,24 +7373,25 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.19.0"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
     "categories": [
-      "SPFX-COMMAND-EXTENSION"
+      "SPFX-APPLICATION-EXTENSION"
     ],
     "thumbnails": [
       {
+        "name": "CopyPathCopyNameExtenstions.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
-        "alt": "Preview"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "HarminderSethi",
+        "gitHubAccount": "https://github.com/HarminderSethi",
         "pictureUrl": "https://github.com/HarminderSethi.png",
         "name": "Harminder Singh"
       }
