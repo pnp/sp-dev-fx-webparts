@@ -3,6 +3,7 @@
 ## Summary
 
 A powerful web part that allows users to test and build CAML queries visually with a rich, intuitive interface. This enhanced version includes a visual query builder, query validation, saved queries, and more.
+![Screenshot](./assets/image.png)
 
 ![Sample gif](./assets/Demo.gif)
 
