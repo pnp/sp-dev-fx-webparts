@@ -22,7 +22,7 @@
     "description": { "default": "Page Navigator builds a navigation structure on the page, based on the headers in your text." },
     "officeFabricIconFontName": "BulletedTreeList",
     "properties": { 
-      "stickyModeEnabled": false,
+      "stickyMode": false,
       "stickyParentDistance": "1"
     }
   }]

@@ -11,7 +11,7 @@ import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle }
 import strings from 'PageNavigatorWebPartStrings';
 
 export interface IPageNavigatorWebPartProps {
-  stickyModeEnabled: boolean,
+  stickyMode: boolean,
   stickyParentDistance: string
 }
 
@@ -41,7 +41,7 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNav
       {
         anchorLinks: this.anchorLinks,
         themeVariant: this._themeVariant,
-        stickyModeEnabled: this.properties.stickyModeEnabled,
+        stickyMode: this.properties.stickyMode,
         stickyParentDistance: this.properties.stickyParentDistance,
         webpartId: this.context.instanceId
       }
@@ -81,7 +81,7 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNav
           groups: [
             { 
               groupFields: [
-                PropertyPaneToggle('stickyModeEnabled', {
+                PropertyPaneToggle('stickyMode', {
                   label: strings.StickyMode
                 }),
                 PropertyPaneTextField('stickyParentDistance', {

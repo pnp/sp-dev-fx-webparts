@@ -53,7 +53,7 @@ export default class PageNavigator extends React.Component<IPageNavigatorProps, 
         }
         HTMLElementSticky = HTMLElementSticky.parentElement;
       }
-      if (this.props.stickyModeEnabled && window.innerWidth > 1024) {
+      if (this.props.stickyMode && window.innerWidth > 1024) {
         HTMLElementSticky.style.position = "Sticky";
         HTMLElementSticky.style.top = "0px";
       }
