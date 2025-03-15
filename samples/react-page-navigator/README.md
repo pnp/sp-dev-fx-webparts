@@ -8,6 +8,13 @@ When added to a vertical section it can be used as a contents table for the page
 
 ![Page Navigator](./assets/PageNavigator.gif)
 
+The Properties `Sticky Mode` and `Parent Distance` can be configured to allow the Page Navigator to remain visible while scrolling.
+When Sticky Mode is enabled, CSS will be added to the element `Parent Distance` nodes above the Page Navigator component. For example, `Parent Distance: 1` will apply the CSS to the direct parent element of the webpart, whereas `Parent Distance: 2` will apply the CSS to the parent of the parent, etc.
+
+As this feature involves modifying HTML elements outside of the webpart, it could stop working in the future if Microsoft change their HTML/CSS etc.
+
+At the time of writing, Sticky Parent Distance = 1 works for a Page Navigator configured on a vertical section like the example shown above.
+
 ## Compatibility
 
 | :warning: Important          |

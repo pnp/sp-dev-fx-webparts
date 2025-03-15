@@ -4,4 +4,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 export interface IPageNavigatorProps {
   anchorLinks: INavLink[];
   themeVariant: IReadonlyTheme;
+  stickyModeEnabled: boolean;
+  stickyParentDistance: string;
+  webpartId: string;
 }

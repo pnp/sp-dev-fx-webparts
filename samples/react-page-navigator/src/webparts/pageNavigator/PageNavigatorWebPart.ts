@@ -7,8 +7,15 @@ import { IPageNavigatorProps } from './components/IPageNavigatorProps';
 import { INavLink } from '@fluentui/react/lib/Nav';
 import { SPService } from '../../Service/SPService';
 import { IReadonlyTheme, ThemeChangedEventArgs, ThemeProvider } from '@microsoft/sp-component-base';
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+import strings from 'PageNavigatorWebPartStrings';
 
-export default class PageNavigatorWebPart extends BaseClientSideWebPart<{}> {
+export interface IPageNavigatorWebPartProps {
+  stickyModeEnabled: boolean,
+  stickyParentDistance: string
+}
+
+export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNavigatorWebPartProps> {
   private anchorLinks: INavLink[] = [];
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
@@ -33,7 +40,10 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<{}> {
       PageNavigator,
       {
         anchorLinks: this.anchorLinks,
-        themeVariant: this._themeVariant
+        themeVariant: this._themeVariant,
+        stickyModeEnabled: this.properties.stickyModeEnabled,
+        stickyParentDistance: this.properties.stickyParentDistance,
+        webpartId: this.context.instanceId
       }
     );
 
@@ -46,6 +56,44 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<{}> {
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
+  }
+
+  private validateDistanceParam(distStr: string): string {
+
+    const regex = /^\d+$/;
+    const isNumeric = regex.test(distStr);
+
+    if (!isNumeric) {
+      return strings.ErrorNumeric;
+    }
+    return ""; // No error
+
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            { 
+              groupFields: [
+                PropertyPaneToggle('stickyModeEnabled', {
+                  label: strings.StickyMode
+                }),
+                PropertyPaneTextField('stickyParentDistance', {
+                  label: strings.StickyParentDistance,
+                  onGetErrorMessage: this.validateDistanceParam.bind(this)
+                })
+              ]
+            }
+          ]
+        }
+      ]
+    };
   }
 
   private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
