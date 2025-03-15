@@ -68,6 +68,24 @@
             "rule": "Sample requires a screenshot .png in assets folder",
             "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#assets",
             "order": 5
+        },
+        {
+            "forbid": "*.sppkg",
+            "rule": "No .sppkg file",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 10
+        },
+        {
+            "forbid": "node_modules/**",
+            "rule": "No node_modules folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 11
+        },
+        {
+            "forbid": "lib/**",
+            "rule": "No lib folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 12
         }
     ]
 }

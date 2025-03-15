@@ -22,7 +22,7 @@ jobs:
           node-version: '20'
 
       - name: Run Validate SPFx Sample PR Action
-        uses: ./.github/actions/validate-sample-pr
+        uses: pnp/action-pr-validator@v1
         with:
           pr: ${{ toJson(github.event.pull_request) }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
