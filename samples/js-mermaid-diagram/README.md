@@ -6,6 +6,9 @@ I created this web part to add **Mermaid diagram support** in SharePoint Online 
 
 Since the native **Markdown web part in SharePoint Online does not support Mermaid diagrams**, I built this SPFx web part to enable rendering Mermaid syntax directly. I'm sharing this in case others find it useful or have suggestions for improvements.
 
+![Mermaid](https://github.com/user-attachments/assets/a347e747-0653-47df-8755-a1f6bb6c419c)
+
+
 <img width="446" alt="image" src="https://github.com/user-attachments/assets/128c01b7-f77d-483e-b1ad-f5343f8c9c81" />
 
 
