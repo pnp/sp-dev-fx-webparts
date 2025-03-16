@@ -7,8 +7,12 @@
 - Responsive design automatically switches to Accordion view on mobile devices.
 - Extensive personalization options including audience targeting and multi-language support.
 - Deep linking capabilities for easy sharing of specific tabs.
+- Comprehensive styling options for complete visual customization.
 
 ![Web part preview](assets/TabAccordionWebpart.gif)
+![image](assets/image.png)
+![image](assets/Settings1.png)
+![image](assets/Settings2.png)
 
 ## Compatibility
 
@@ -41,10 +45,19 @@ This enhanced web part includes the following features:
 - **Audience Targeting**: Show different tabs to different user groups
 - **Multi-language Support**: Display content in the user's preferred language
 
+### Enhanced Styling Options
+- **Color Customization**: Customize header background and text colors
+- **Active State Styling**: Define unique styles for active tabs/accordion items
+- **Typography Control**: Customize font family, size, weight, and text transforms
+- **Content Typography**: Apply consistent typography settings to content areas
+- **Theme Override**: Choose between SharePoint theme colors or custom colors
+- **Border Control**: Toggle borders on and off for different visual styles
+
 ### Enhanced Media Support
 - **Improved Embeds**: Better support for video, audio, and other media
 - **SharePoint Content Integration**: Embed document libraries and list views
 - **Templates**: Pre-defined content templates for common scenarios
+- **Consistent Font Rendering**: Typography settings apply to content editor
 
 ## Applies to
 
@@ -63,6 +76,7 @@ This enhanced web part includes the following features:
 
 Solution|Author(s)
 --------|---------
+react-tabaccordion | [Nicolas Kheirallah](https://github.com/arunkumarperumal)
 react-tabaccordion | [Arun Kumar Perumal](https://github.com/arunkumarperumal)
 
 ## Version history
@@ -71,6 +85,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 30, 2022|Initial release
 2.0|March 2025|Major update with modern SPFx, Fluent UI, and advanced features
+2.1|March 2025|Added comprehensive styling and typography controls
 
 ## Minimal path to awesome
 
@@ -86,7 +101,7 @@ For Microsoft Graph features:
 ## Features
 
 ### Core Features
-- Create and manage tabs with rich content
+- Create and manage tabs with rich content using tinymce
 - Toggle between Tab and Accordion display modes
 - Seamless SharePoint theme integration
 - Mobile-responsive design
@@ -98,37 +113,45 @@ For Microsoft Graph features:
 - Validation to ensure proper data structure
 
 ### Tab Reordering and Duplication
-![Tab Management](assets/tab-management.png)
 - Drag and drop tabs to reorder
 - Duplicate tabs with a single click
 - Remove tabs with confirmation
 
 ### SharePoint List Integration
-![List Integration](assets/list-integration.png)
 - Pull tab content directly from SharePoint lists
 - Configure list URL, columns, and sort order
 - Refresh from list with a single click
 
+### Enhanced Styling Options
+- Customize header and active state colors
+- Control typography with font family, size, weight options
+- Text transformation options (uppercase, lowercase, capitalize)
+- Content area font customization for consistent reading experience
+- Style reset option to quickly return to defaults
+
+### Typography Controls
+- Font family selection with web-safe font options
+- Font size control for headers and content
+- Font weight options from light to extra bold
+- Text transformation for creative styling
+- Consistent typography applied to TinyMCE editor
+
 ### Enhanced Media Support
-![Rich Media](assets/rich-media.png)
 - Improved support for video and audio content
 - Custom SharePoint content embedding
 - Pre-defined content templates
 
 ### Deep Linking
-![Deep Linking](assets/deep-linking.png)
 - Direct links to specific tabs
 - Copy link functionality for easy sharing
 - Browser history management
 
 ### Microsoft Graph Integration & Audience Targeting
-![Audience Targeting](assets/audience-targeting.png)
 - Target tabs to specific Microsoft 365 groups
 - Visual indicators for audience targeting
 - Integration with Microsoft Graph
 
 ### Multi-language Support
-![Multi-language](assets/multi-language.png)
 - Content in multiple languages
 - Automatic language detection
 - Language selector for manual switching
@@ -139,6 +162,13 @@ For Microsoft Graph features:
 1. Add the web part to a page
 2. Set the title and display mode (Tab/Accordion)
 3. Add tabs with titles and content using the rich text editor
+
+### Visual Customization
+1. Navigate to the "Header/Tab Styling" section in properties
+2. Set custom colors for headers and active states
+3. Select font family, size, weight, and text transformation
+4. Configure content typography for a consistent reading experience
+5. Use the reset button to return to default styling if needed
 
 ### SharePoint List Integration
 1. Enable "Use SharePoint List for content"
@@ -161,8 +191,6 @@ For Microsoft Graph features:
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
-
-If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-tabaccordion%22) to see if anybody else is having the same issues.
 

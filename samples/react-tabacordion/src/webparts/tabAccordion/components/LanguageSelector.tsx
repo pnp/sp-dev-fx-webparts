@@ -47,7 +47,6 @@ export const LanguageSelector: React.FC<ILanguageSelectorProps> = (props) => {
   
   return (
     <Stack horizontal horizontalAlign="end" style={{ marginBottom: 10 }}>
-      {/* Language icon displayed separately */}
       <Icon iconName="Globe" styles={{ root: { marginRight: 8, marginTop: 3 } }} />
       <Dropdown
         selectedKey={props.currentLanguage}

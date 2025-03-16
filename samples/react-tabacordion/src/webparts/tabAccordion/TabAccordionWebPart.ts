@@ -34,56 +34,10 @@ import { LanguageService } from './services/LanguageService';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 import { LanguageSelector } from './components/LanguageSelector';
 import 'tinymce';
+import { ITabAccordionWebPartProps } from './ITabAccordionWebPartProps';
 
 // Initialize Fluent UI icons
 initializeIcons();
-
-export interface ITabAccordionWebPartProps {
-  tabs: any[]; 
-  type: string;
-  title: string;
-  accordion: boolean;
-  tabContent: string;
-  
-  // Display settings
-  showBorders: boolean;
-  allowMultipleExpand: boolean;
-  useThemeColorForHeaders: boolean;
-  
-  // Header/Tab styling options
-  headerBackgroundColor: string;
-  headerTextColor: string;
-  activeHeaderBackgroundColor: string;
-  activeHeaderTextColor: string;
-  
-  // SharePoint List Integration
-  useSharePointList: boolean;
-  listUrl: string;
-  titleColumn: string;
-  contentColumn: string;
-  orderByColumn: string;
-  maxItems: number;
-  
-  // Deep Linking
-  enableDeepLinking: boolean;
-  
-  // Audience Targeting
-  enableAudienceTargeting: boolean;
-  
-  // Multi-language Support
-  enableMultiLanguage: boolean;
-  tabsMultiLanguage: {
-    [language: string]: {
-      title: string;
-      tabs: {
-        Title: string;
-        Content: string;
-        Id: string;
-      }[];
-    }
-  };
-}
-
 export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccordionWebPartProps> {
   private propertyFieldCollectionData;
   private customCollectionFieldType;
@@ -91,12 +45,12 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
   private isMobile: boolean;
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
-  
+
   // Services
   private _graphService: GraphService;
   private _sharePointService: SharePointService;
   private _languageService: LanguageService;
-  
+
   // Audience Targeting
   private _availableGroups: any[] = [];
 
@@ -123,7 +77,7 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
     //we need to bind this object on it first
     this.onPropertyPaneFieldChanged = this.onPropertyPaneFieldChanged.bind(this);
   }
-  
+
   protected async onInit(): Promise<void> {
     await super.onInit();
 
@@ -141,63 +95,88 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
     if (!this.properties.tabs) {
       this.properties.tabs = [];
     }
-    
+
     if (this.properties.type === undefined) {
       this.properties.type = 'Tab';
     }
-    
+
     if (this.properties.accordion === undefined) {
       this.properties.accordion = true;
     }
-    
+
     if (this.properties.showBorders === undefined) {
       this.properties.showBorders = true;
     }
-    
+
     if (this.properties.allowMultipleExpand === undefined) {
       this.properties.allowMultipleExpand = false;
     }
-    
+
     if (this.properties.useThemeColorForHeaders === undefined) {
       this.properties.useThemeColorForHeaders = true;
     }
-    
+
     // Initialize color properties
     if (this.properties.headerBackgroundColor === undefined) {
       this.properties.headerBackgroundColor = '';
     }
-    
+
     if (this.properties.headerTextColor === undefined) {
       this.properties.headerTextColor = '';
     }
-    
+
     if (this.properties.activeHeaderBackgroundColor === undefined) {
       this.properties.activeHeaderBackgroundColor = '';
     }
-    
+
     if (this.properties.activeHeaderTextColor === undefined) {
       this.properties.activeHeaderTextColor = '';
     }
-    
+
     if (this.properties.enableDeepLinking === undefined) {
       this.properties.enableDeepLinking = false;
     }
-    
+
     if (this.properties.enableAudienceTargeting === undefined) {
       this.properties.enableAudienceTargeting = false;
     }
-    
+
     if (this.properties.enableMultiLanguage === undefined) {
       this.properties.enableMultiLanguage = false;
     }
-    
+
     if (this.properties.useSharePointList === undefined) {
       this.properties.useSharePointList = false;
     }
-    
+    // Font property initialization code to add to onInit method
+
+    // Initialize font properties
+    if (this.properties.headerFontSize === undefined) {
+      this.properties.headerFontSize = 14;
+    }
+
+    if (this.properties.headerFontFamily === undefined) {
+      this.properties.headerFontFamily = '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif';
+    }
+
+    if (this.properties.headerFontWeight === undefined) {
+      this.properties.headerFontWeight = 'normal';
+    }
+
+    if (this.properties.headerTextTransform === undefined) {
+      this.properties.headerTextTransform = 'none';
+    }
+
+    if (this.properties.contentFontSize === undefined) {
+      this.properties.contentFontSize = 16;
+    }
+
+    if (this.properties.contentFontFamily === undefined) {
+      this.properties.contentFontFamily = '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif';
+    }
     if (!this.properties.tabsMultiLanguage) {
       this.properties.tabsMultiLanguage = {};
-      
+
       // Initialize with current language and tabs
       const currentLanguage = this._languageService.getCurrentLanguage();
       if (this.properties.tabs && this.properties.tabs.length > 0) {
@@ -207,12 +186,12 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         };
       }
     }
-    
+
     // Load list data if configured
     if (this.displayMode === DisplayMode.Read && this.properties.useSharePointList) {
       await this.loadListData();
     }
-    
+
     // Load audience groups if needed
     if (this.properties.enableAudienceTargeting && this.displayMode === DisplayMode.Edit) {
       await this.loadAvailableGroups();
@@ -223,12 +202,12 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
     this._themeVariant = args.theme;
     this.render();
   }
-  
+
   private async loadListData(): Promise<void> {
     if (!this.properties.useSharePointList || !this.properties.listUrl) {
       return;
     }
-    
+
     try {
       const items = await this._sharePointService.getListItems(
         this.properties.listUrl,
@@ -237,17 +216,17 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         this.properties.orderByColumn || 'Title',
         this.properties.maxItems || 10
       );
-      
+
       // Convert list items to tabs format
       const tabs = items.map(item => ({
         Id: item.Id,
         Title: item.Title,
         Content: item.Content
       }));
-      
+
       // Update the tabs property
       this.properties.tabs = tabs;
-      
+
       // Re-render the web part
       this.render();
     } catch (error) {
@@ -255,16 +234,16 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
       // Handle error (could show a message on the web part)
     }
   }
-  
+
   private async loadAvailableGroups(): Promise<void> {
     if (!this.properties.enableAudienceTargeting) {
       return;
     }
-    
+
     try {
       const groups = await this._graphService.getUserGroups();
       this._availableGroups = groups || [];
-      
+
       // If we have tabs with audience targeting, update the display names
       if (this.properties.tabs && this.properties.tabs.length > 0) {
         this.properties.tabs.forEach(tab => {
@@ -280,85 +259,85 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
       console.error('Error loading available groups:', error);
     }
   }
-  
+
   private async filterTabsByAudience(tabs: any[]): Promise<any[]> {
     if (!this.properties.enableAudienceTargeting) {
       return tabs;
     }
-    
+
     try {
       const result = [];
-      
+
       for (const tab of tabs) {
         // If no target audience or "everyone", include the tab
         if (!tab.TargetAudience || tab.TargetAudience === 'everyone') {
           result.push(tab);
           continue;
         }
-        
+
         // Check if user is in the target group
         const isInGroup = await this._graphService.checkUserInGroup(tab.TargetAudience);
         if (isInGroup) {
           result.push(tab);
         }
       }
-      
+
       return result;
     } catch (error) {
       console.error('Error filtering tabs by audience:', error);
       return tabs;
     }
   }
-  
+
   private getLanguageSpecificContent(): { title: string, tabs: any[] } {
     if (!this.properties.enableMultiLanguage || !this._languageService) {
-      return { 
-        title: this.properties.title, 
-        tabs: this.properties.tabs 
+      return {
+        title: this.properties.title,
+        tabs: this.properties.tabs
       };
     }
-    
+
     // Get the current language
     const currentLanguage = this._languageService.getCurrentLanguage();
-    
+
     // Check if we have content for this language
     if (this.properties.tabsMultiLanguage[currentLanguage]) {
       return this.properties.tabsMultiLanguage[currentLanguage];
     }
-    
+
     // Get the default language (first available)
     const defaultLanguage = Object.keys(this.properties.tabsMultiLanguage)[0] || '';
-    
+
     // Return default language content or fallback to main properties
-    return this.properties.tabsMultiLanguage[defaultLanguage] || { 
-      title: this.properties.title, 
-      tabs: this.properties.tabs 
+    return this.properties.tabsMultiLanguage[defaultLanguage] || {
+      title: this.properties.title,
+      tabs: this.properties.tabs
     };
   }
-  
+
   public async render(): Promise<void> {
     console.log('Web Part Render Called');
-    
+
     // Get language-specific content
     let { title, tabs } = this.getLanguageSpecificContent();
-    
+
     // Create tabContent string for backward compatibility
     this.properties.tabContent = "";
     tabs.map((tab: any, tabindex: number) => {
       this.properties.tabContent += tab.Title + "," + tab.Content + "|";
     });
-    
+
     // Filter tabs based on audience targeting
     if (this.displayMode === DisplayMode.Read && this.properties.enableAudienceTargeting) {
       tabs = await this.filterTabsByAudience(tabs);
     }
-    
+
     // Create the language selector if needed
     if (this.displayMode === DisplayMode.Read && this.properties.enableMultiLanguage) {
       const languageSelectorContainer = document.createElement('div');
       languageSelectorContainer.className = 'language-selector-container';
       this.domElement.appendChild(languageSelectorContainer);
-      
+
       const languageSelectorElement = React.createElement(
         LanguageSelector,
         {
@@ -372,15 +351,15 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
           }
         }
       );
-      
+
       ReactDom.render(languageSelectorElement, languageSelectorContainer);
     }
-    
+
     // Create the appropriate element based on display type and device
     const elementTab: React.ReactElement<ICTabProps> = React.createElement(
       TabComponent,
-      {        
-        tabs: tabs, 
+      {
+        tabs: tabs,
         displayMode: this.displayMode,
         guid: this.guid,
         title: title,
@@ -388,22 +367,34 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         themeVariant: this._themeVariant,
         showBorders: this.properties.showBorders,
         useThemeColor: this.properties.useThemeColorForHeaders,
+
         // Pass color properties
         headerBackgroundColor: this.properties.headerBackgroundColor,
         headerTextColor: this.properties.headerTextColor,
         activeHeaderBackgroundColor: this.properties.activeHeaderBackgroundColor,
         activeHeaderTextColor: this.properties.activeHeaderTextColor,
+
+        // Pass font properties
+        headerFontSize: this.properties.headerFontSize,
+        headerFontFamily: this.properties.headerFontFamily,
+        headerFontWeight: this.properties.headerFontWeight,
+        headerTextTransform: this.properties.headerTextTransform,
+        contentFontSize: this.properties.contentFontSize,
+        contentFontFamily: this.properties.contentFontFamily,
+
+        // Services and other properties
         graphService: this._graphService,
         enableDeepLinking: this.properties.enableDeepLinking,
         enableAudienceTargeting: this.properties.enableAudienceTargeting,
         enableMultiLanguage: this.properties.enableMultiLanguage
       }
     );
-    
+
+    // For Accordion component
     const elementAccordion: React.ReactElement<ICAccordionProps> = React.createElement(
       AccordionComponent,
-      {        
-        tabs: tabs, 
+      {
+        tabs: tabs,
         displayMode: this.displayMode,
         guid: this.guid,
         title: title,
@@ -413,24 +404,35 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
         showBorders: this.properties.showBorders,
         allowMultipleExpand: this.properties.allowMultipleExpand,
         useThemeColor: this.properties.useThemeColorForHeaders,
+
         // Pass color properties
         headerBackgroundColor: this.properties.headerBackgroundColor,
         headerTextColor: this.properties.headerTextColor,
         activeHeaderBackgroundColor: this.properties.activeHeaderBackgroundColor,
         activeHeaderTextColor: this.properties.activeHeaderTextColor,
+
+        // Pass font properties
+        headerFontSize: this.properties.headerFontSize,
+        headerFontFamily: this.properties.headerFontFamily,
+        headerFontWeight: this.properties.headerFontWeight,
+        headerTextTransform: this.properties.headerTextTransform,
+        contentFontSize: this.properties.contentFontSize,
+        contentFontFamily: this.properties.contentFontFamily,
+
+        // Services and other properties
         graphService: this._graphService,
         enableDeepLinking: this.properties.enableDeepLinking,
         enableAudienceTargeting: this.properties.enableAudienceTargeting,
         enableMultiLanguage: this.properties.enableMultiLanguage
       }
     );
-    
+
     // Render the appropriate component based on device and settings
-    if(this.isMobile) {
+    if (this.isMobile) {
       ReactDom.render(elementAccordion, this.domElement);
     }
     else {
-      if(this.properties.type == "Accordion") {
+      if (this.properties.type == "Accordion") {
         ReactDom.render(elementAccordion, this.domElement);
       }
       else {
@@ -461,7 +463,7 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
 
   private detectmob(): boolean {
     console.log('inside detectmob');
-    if(window.innerWidth <= 480) {
+    if (window.innerWidth <= 480) {
       return true;
     } else {
       return false;
@@ -473,9 +475,9 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
    * Generates a GUID part
    */
   private s4(): string {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
   }
 
   //executes only before property pane is loaded.
@@ -490,10 +492,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
     this.customCollectionFieldType = CustomCollectionFieldType;
   }
 
-  /**
-   * @function
-   * PropertyPanel settings definition
-   */
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -511,12 +509,12 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                 }),
                 PropertyPaneDropdown('type', {
                   label: strings.Type,
-                  disabled: false,                   
+                  disabled: false,
                   options: [
-                    {key: 'Accordion', text: 'Accordion'},
-                    {key: 'Tab', text: 'Tab'}
+                    { key: 'Accordion', text: 'Accordion' },
+                    { key: 'Tab', text: 'Tab' }
                   ]
-                }),  
+                }),
                 this.propertyFieldCollectionData("tabs", {
                   key: "tabs",
                   panelHeader: strings.ManageAccordion,
@@ -542,8 +540,8 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                       hidden: !this.properties.enableAudienceTargeting
                     }
                   ]
-                }),                           
-              ],             
+                }),
+              ],
             },
             {
               groupName: 'Display Settings',
@@ -563,9 +561,9 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
             {
               groupName: 'Header/Tab Styling',
               groupFields: [
-                // Add color picker controls
+                // Color options section
                 PropertyPaneLabel('', {
-                  text: 'Customize header/tab colors'
+                  text: 'Color Options'
                 }),
                 PropertyFieldColorPicker('headerBackgroundColor', {
                   label: 'Header Background Color',
@@ -576,7 +574,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                   debounce: 1000,
                   isHidden: false,
                   alphaSliderHidden: false,
-                  // Removed incorrect style property
                   iconName: 'ColorSolid',
                   key: 'headerBackgroundColorFieldId'
                 }),
@@ -589,7 +586,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                   debounce: 1000,
                   isHidden: false,
                   alphaSliderHidden: false,
-                  // Removed incorrect style property
                   iconName: 'ColorSolid',
                   key: 'headerTextColorFieldId'
                 }),
@@ -602,7 +598,6 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                   debounce: 1000,
                   isHidden: false,
                   alphaSliderHidden: false,
-                  // Removed incorrect style property
                   iconName: 'ColorSolid',
                   key: 'activeHeaderBackgroundColorFieldId'
                 }),
@@ -615,18 +610,97 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                   debounce: 1000,
                   isHidden: false,
                   alphaSliderHidden: false,
-                  // Removed incorrect style property
                   iconName: 'ColorSolid',
                   key: 'activeHeaderTextColorFieldId'
                 }),
-                PropertyPaneButton('resetColors', {
-                  text: 'Reset to Default Colors',
+
+                // Font options section
+                PropertyPaneLabel('', {
+                  text: 'Font Options'
+                }),
+                PropertyPaneSlider('headerFontSize', {
+                  label: 'Header Font Size (px)',
+                  min: 10,
+                  max: 24,
+                  step: 1,
+                  value: this.properties.headerFontSize || 14
+                }),
+                PropertyPaneDropdown('headerFontFamily', {
+                  label: 'Header Font Family',
+                  options: [
+                    { key: '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif', text: 'Segoe UI (Default)' },
+                    { key: 'Arial, sans-serif', text: 'Arial' },
+                    { key: '"Helvetica Neue", Helvetica, sans-serif', text: 'Helvetica' },
+                    { key: 'Verdana, sans-serif', text: 'Verdana' },
+                    { key: 'Georgia, serif', text: 'Georgia' },
+                    { key: '"Times New Roman", Times, serif', text: 'Times New Roman' },
+                    { key: 'Courier, monospace', text: 'Courier' }
+                  ]
+                }),
+                PropertyPaneDropdown('headerFontWeight', {
+                  label: 'Header Font Weight',
+                  options: [
+                    { key: 'normal', text: 'Normal' },
+                    { key: 'bold', text: 'Bold' },
+                    { key: '300', text: 'Light' },
+                    { key: '500', text: 'Medium' },
+                    { key: '600', text: 'Semi-Bold' },
+                    { key: '800', text: 'Extra Bold' }
+                  ]
+                }),
+                PropertyPaneDropdown('headerTextTransform', {
+                  label: 'Header Text Transform',
+                  options: [
+                    { key: 'none', text: 'None' },
+                    { key: 'uppercase', text: 'UPPERCASE' },
+                    { key: 'lowercase', text: 'lowercase' },
+                    { key: 'capitalize', text: 'Capitalize' }
+                  ]
+                }),
+
+                // Content font options
+                PropertyPaneLabel('', {
+                  text: 'Content Font Options'
+                }),
+                PropertyPaneSlider('contentFontSize', {
+                  label: 'Content Font Size (px)',
+                  min: 10,
+                  max: 24,
+                  step: 1,
+                  value: this.properties.contentFontSize || 16
+                }),
+                PropertyPaneDropdown('contentFontFamily', {
+                  label: 'Content Font Family',
+                  options: [
+                    { key: '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif', text: 'Segoe UI (Default)' },
+                    { key: 'Arial, sans-serif', text: 'Arial' },
+                    { key: '"Helvetica Neue", Helvetica, sans-serif', text: 'Helvetica' },
+                    { key: 'Verdana, sans-serif', text: 'Verdana' },
+                    { key: 'Georgia, serif', text: 'Georgia' },
+                    { key: '"Times New Roman", Times, serif', text: 'Times New Roman' },
+                    { key: 'Courier, monospace', text: 'Courier' }
+                  ]
+                }),
+
+                // Reset button
+                PropertyPaneButton('resetStyles', {
+                  text: 'Reset to Default Styles',
                   buttonType: PropertyPaneButtonType.Normal,
                   onClick: () => {
+                    // Reset colors
                     this.properties.headerBackgroundColor = '';
                     this.properties.headerTextColor = '';
                     this.properties.activeHeaderBackgroundColor = '';
                     this.properties.activeHeaderTextColor = '';
+
+                    // Reset fonts
+                    this.properties.headerFontSize = 14;
+                    this.properties.headerFontFamily = '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif';
+                    this.properties.headerFontWeight = 'normal';
+                    this.properties.headerTextTransform = 'none';
+                    this.properties.contentFontSize = 16;
+                    this.properties.contentFontFamily = '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif';
+
                     this.render();
                   }
                 })
@@ -686,7 +760,7 @@ export default class TabAccordionWebPart extends BaseClientSideWebPart<ITabAccor
                   label: 'Enable multi-language support'
                 })
               ]
-            }           
+            }
           ]
         }
       ]

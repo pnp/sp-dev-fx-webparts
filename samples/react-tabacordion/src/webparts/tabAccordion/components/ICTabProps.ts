@@ -10,21 +10,20 @@ export interface ICTabProps {
   title: string;
   context: WebPartContext;
   themeVariant?: IReadonlyTheme;
-  
-  // Styling options
   showBorders?: boolean;
   useThemeColor?: boolean;
-  
-  // Custom color options
   headerBackgroundColor?: string;
   headerTextColor?: string;
   activeHeaderBackgroundColor?: string;
   activeHeaderTextColor?: string;
-  
-  // Services
+
+  headerFontSize?: number;
+  headerFontFamily?: string;
+  headerFontWeight?: string;
+  headerTextTransform?: string;
+  contentFontSize?: number;
+  contentFontFamily?: string;
   graphService?: GraphService;
-  
-  // Feature flags
   enableDeepLinking?: boolean;
   enableAudienceTargeting?: boolean;
   enableMultiLanguage?: boolean;
