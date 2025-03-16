@@ -1,10 +1,13 @@
-# spfx-mermaid-diagram
+# Mermaid Diagram Web Part for SharePoint Online
 
 ## Summary
 
-Short summary on functionality and used technologies.
+I created this web part to add **Mermaid diagram support** in SharePoint Online as part of my tutorial series. While working on it, I found this discussion thread: [Displaying Mermaid Diagrams in SharePoint Online Markdown Web Parts](https://techcommunity.microsoft.com/discussions/sharepoint_general/displaying-mermaid-diagrams-in-sharepoint-online-markdown-web-parts/4043819), which highlights the need for a proper solution.
 
-[picture of the solution in action, if possible]
+Since the native **Markdown web part in SharePoint Online does not support Mermaid diagrams**, I built this SPFx web part to enable rendering Mermaid syntax directly. I'm sharing this in case others find it useful or have suggestions for improvements.
+
+<img width="446" alt="image" src="https://github.com/user-attachments/assets/128c01b7-f77d-483e-b1ad-f5343f8c9c81" />
+
 
 ## Used SharePoint Framework Version
 
@@ -17,29 +20,22 @@ Short summary on functionality and used technologies.
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0     | March 16, 2025   | Initial release |
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
+## Contributor
+- [Clavin Fernandes](https://github.com/cfernandes-muhimbi)
 
+  
 ## Minimal Path to Awesome
 
 - Clone this repository
@@ -48,21 +44,12 @@ Short summary on functionality and used technologies.
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
-
 ## Features
+- Render **Mermaid.js** diagrams in SharePoint Online
+- Supports flowcharts, sequence diagrams, Gantt charts, and more
+- Easy integration with existing SharePoint pagesShare your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+Happy diagramming!
 
 ## References
 
