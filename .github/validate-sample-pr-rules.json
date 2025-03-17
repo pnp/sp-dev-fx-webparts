@@ -38,15 +38,15 @@
     "folderName": {
         "rule": "Sample folder name follows naming convention",
         "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#sample-folder",
-        "acceptedPrefixes": [
-            "react-", 
-            "angular-", 
-            "handlebarsjs-", 
-            "jquery-", 
-            "js-", 
-            "knockout-", 
-            "vue-", 
-            "vuejs-"
+        "acceptedFolders": [
+            "react-*",
+            "angular-*",
+            "handlebarsjs-*",
+            "jquery-*",
+            "js-*",
+            "knockout-*",
+            "vue-*",
+            "vuejs-*"
         ],
         "order": 2
     },

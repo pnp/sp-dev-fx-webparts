@@ -22,8 +22,35 @@ jobs:
           node-version: '20'
 
       - name: Run Validate SPFx Sample PR Action
-        uses: pnp/action-pr-validator@v1
+        id: validate-spfx-sample-pr
+        uses: pnp/action-pr-validator@v1.1.0
         with:
           pr: ${{ toJson(github.event.pull_request) }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
           postComment: 'true'
+
+      - name: add success label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'true'
+        with:
+          labels: "Sample validation: Success"
+
+      - name: remove warning label
+        uses: actions-ecosystem/action-remove-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'true'
+        with:
+          labels: "Sample validation: Warning"
+        continue-on-error: true
+
+      - name: add warning label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'false'
+        with:
+          labels: "Sample validation: Warning"
+
+      - name: remove success label
+        uses: actions-ecosystem/action-remove-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'false'
+        with:
+          labels: "Sample validation: Success"
+        continue-on-error: true
