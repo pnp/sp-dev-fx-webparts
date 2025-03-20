@@ -2,7 +2,7 @@
 
 ## Summary
 
-The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the "Due Date" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on hte page for different plans and buckets is supported.
+The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the "Due Date" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on the page for different plans and buckets is supported.
 
 Single sign-on authentication is used to access M365 Groups Planner data in Microsoft Graph.
 
@@ -11,7 +11,7 @@ Single sign-on authentication is used to access M365 Groups Planner data in Micr
 - This sample web part was generated Microsoft SharePoint Framework.
 - React Hooks is used for the web part rendering.
 
-<img src="images/Planner-Timeline-Web-Part.gif" />
+![Planner Timeline Web Part](assets/Planner-Timeline-Web-Part.gif)
 
 Web part is developed using below technologies
 
@@ -54,9 +54,9 @@ This sample is optimally compatible with the following environment configuration
 
 ## Version history
 
-Version|Date|Author|Comments
--------|----|----|--------
-1.0|March 13, 2025|Bill Brockbank|Initial release
+|Version|Date|Author|Comments|
+|-------|----|----|--------|
+|1.0|March 13, 2025|Bill Brockbank|Initial release|
 
 ## Minimal Path to Awesome
 
@@ -94,15 +94,15 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 ### Task details popup
 
-![Task details popup](images/Task-Callout.gif)
+![Task details popup](assets/Task-Callout.gif)
 
 ### Plan Bucket Filter
 
-![Plan Bucket Filter](images/Plan-Bucket-Filter.gif)
+![Plan Bucket Filter](assets/Plan-Bucket-Filter.gif)
 
 ### Web Part Properties Settings
 
-![Web Part Properties Settings](images/WebPart-Properties-Settings.gif)
+![Web Part Properties Settings](assets/WebPart-Properties-Settings.gif)
 
 ## Limitations
 
@@ -114,7 +114,7 @@ M365 Planner timeline web part require a M365 User Group. This is because a plan
 
 ### You will see for sites without a M365 User Group
 
-![Not Supported](images/Not-Supported.gif)
+![Not Supported](assets/Not-Supported.gif)
 
 ## Help
 
