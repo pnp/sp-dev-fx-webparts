@@ -28,24 +28,28 @@
 This enhanced web part includes the following features:
 
 ### Core Functionality
+
 - **Tab/Accordion Toggle**: Display content in either Tab or Accordion format
 - **Mobile Responsive**: Automatically switches to Accordion view on mobile devices
 - **Rich Text Editing**: Advanced TinyMCE editor with enhanced media support
 - **Theme Integration**: Automatically adapts to SharePoint themes
 
 ### Content Management
+
 - **Import/Export**: Backup and restore tab configurations as JSON
 - **Tab Duplication**: Easily duplicate tabs with a single click
 - **Drag & Drop Reordering**: Intuitive drag-and-drop interface for tab management
 - **SharePoint List Integration**: Pull tab content directly from SharePoint lists
 
 ### Advanced Features
+
 - **Deep Linking**: Direct links to specific tabs via URL parameters
 - **Microsoft Graph Integration**: Personalization using Microsoft Graph data
 - **Audience Targeting**: Show different tabs to different user groups
 - **Multi-language Support**: Display content in the user's preferred language
 
 ### Enhanced Styling Options
+
 - **Color Customization**: Customize header background and text colors
 - **Active State Styling**: Define unique styles for active tabs/accordion items
 - **Typography Control**: Customize font family, size, weight, and text transforms
@@ -54,6 +58,7 @@ This enhanced web part includes the following features:
 - **Border Control**: Toggle borders on and off for different visual styles
 
 ### Enhanced Media Support
+
 - **Improved Embeds**: Better support for video, audio, and other media
 - **SharePoint Content Integration**: Embed document libraries and list views
 - **Templates**: Pre-defined content templates for common scenarios
@@ -72,12 +77,10 @@ This enhanced web part includes the following features:
 - Permission to deploy SPFx solutions
 - For Microsoft Graph features: Admin approval for required API permissions
 
-## Solution
+## Contributors
 
-Solution|Author(s)
---------|---------
-react-tabaccordion | [Nicolas Kheirallah](https://github.com/arunkumarperumal)
-react-tabaccordion | [Arun Kumar Perumal](https://github.com/arunkumarperumal)
+- [Nicolas Kheirallah](https://github.com/nicolaskheirallah)
+- [Arun Kumar Perumal](https://github.com/arunkumarperumal)
 
 ## Version history
 
@@ -95,34 +98,41 @@ Version|Date|Comments
   - `gulp serve`
 
 For Microsoft Graph features:
+
 - Add the solution to the SharePoint App Catalog
 - Approve the requested API permissions in SharePoint Admin Center
 
 ## Features
 
 ### Core Features
+
 - Create and manage tabs with rich content using tinymce
 - Toggle between Tab and Accordion display modes
 - Seamless SharePoint theme integration
 - Mobile-responsive design
 
 ### Content Import/Export
+
 ![Content Import/Export](assets/import-export.png)
+
 - Export all tabs to a JSON file for backup or sharing
 - Import tabs from JSON files
 - Validation to ensure proper data structure
 
 ### Tab Reordering and Duplication
+
 - Drag and drop tabs to reorder
 - Duplicate tabs with a single click
 - Remove tabs with confirmation
 
 ### SharePoint List Integration
+
 - Pull tab content directly from SharePoint lists
 - Configure list URL, columns, and sort order
 - Refresh from list with a single click
 
 ### Enhanced Styling Options
+
 - Customize header and active state colors
 - Control typography with font family, size, weight options
 - Text transformation options (uppercase, lowercase, capitalize)
@@ -130,6 +140,7 @@ For Microsoft Graph features:
 - Style reset option to quickly return to defaults
 
 ### Typography Controls
+
 - Font family selection with web-safe font options
 - Font size control for headers and content
 - Font weight options from light to extra bold
@@ -137,21 +148,25 @@ For Microsoft Graph features:
 - Consistent typography applied to TinyMCE editor
 
 ### Enhanced Media Support
+
 - Improved support for video and audio content
 - Custom SharePoint content embedding
 - Pre-defined content templates
 
 ### Deep Linking
+
 - Direct links to specific tabs
 - Copy link functionality for easy sharing
 - Browser history management
 
 ### Microsoft Graph Integration & Audience Targeting
+
 - Target tabs to specific Microsoft 365 groups
 - Visual indicators for audience targeting
 - Integration with Microsoft Graph
 
 ### Multi-language Support
+
 - Content in multiple languages
 - Automatic language detection
 - Language selector for manual switching
@@ -159,11 +174,13 @@ For Microsoft Graph features:
 ## Configuration
 
 ### Basic Configuration
+
 1. Add the web part to a page
 2. Set the title and display mode (Tab/Accordion)
 3. Add tabs with titles and content using the rich text editor
 
 ### Visual Customization
+
 1. Navigate to the "Header/Tab Styling" section in properties
 2. Set custom colors for headers and active states
 3. Select font family, size, weight, and text transformation
@@ -171,18 +188,21 @@ For Microsoft Graph features:
 5. Use the reset button to return to default styling if needed
 
 ### SharePoint List Integration
+
 1. Enable "Use SharePoint List for content"
 2. Enter the list URL (relative to site)
 3. Configure column mappings for title and content
 4. Click "Refresh from List" to load content
 
 ### Microsoft Graph Features
+
 1. Add the solution to the App Catalog
 2. Approve the requested Graph API permissions in SharePoint Admin Center
 3. Enable audience targeting in the web part properties
 4. Configure audience targets for individual tabs
 
 ### Multi-language Support
+
 1. Enable multi-language support in the web part properties
 2. Add languages using the language selector
 3. Enter content for each language
