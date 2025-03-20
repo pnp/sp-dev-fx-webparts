@@ -1,0 +1,51 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline",
+    "source": "pnp",
+    "title": "M365 Planner Timeline Web Part",
+    "shortDescription": "The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the \"Due Date\" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on hte page for different plans and buckets is supported.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-planner-timeline",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-planner-timeline",
+    "longDescription": [
+      "The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the \"Due Date\" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on hte page for different plans and buckets is supported."
+    ],
+    "creationDateTime": "2024-12-25",
+    "updateDateTime": "2024-12-31",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "webParts.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-planner-timeline/assets/webParts.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/billbrockbank",
+        "pictureUrl": "https://github.com/billbrockbank.png",
+        "name": "Bill Brockbank"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
