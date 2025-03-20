@@ -38,11 +38,6 @@
         "gitHubAccount": "https://github.com/billbrockbank",
         "pictureUrl": "https://github.com/billbrockbank.png",
         "name": "Bill Brockbank"
-      },
-      {
-        "gitHubAccount": "https://github.com/microsoftgraph/msgraph-typescript-typings/blob/main/README.md",
-        "pictureUrl": "https://github.com/microsoftgraph/msgraph-typescript-typings/blob/main/README.md.png",
-        "name": "Microsoft Graph TypeScript Types"
       }
     ],
     "references": [
