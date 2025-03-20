@@ -82,12 +82,12 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Filter task by plan bucket.
 - Tasks status rendered in colors:
 
-    Color | Status | Criteria
-    ----------|------------|--------------------------------
-    **Red** | Overdue | Passed Due Date
-    **Green** | Complete | Progress set to "Completed"
-    **Blue** | In progress| Progress set to "In Progress"
-    **Black** | Not Due | Progress set to "Not Started"
+    |Color | Status | Criteria|
+    |----------|------------|--------------------------------|
+    |**Red** | Overdue | Passed Due Date|
+    |**Green** | Complete | Progress set to "Completed"|
+    |**Blue** | In progress| Progress set to "In Progress"|
+    |**Black** | Not Due | Progress set to "Not Started"|
 
 - Refresh Planner Tasks then re-rending with the selected filter settings.
 - By clicking on the (i) the task details are rendered.
