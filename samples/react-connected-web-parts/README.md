@@ -46,6 +46,7 @@ This sample is optimally compatible with the following environment configuration
 Version|Date|Comments
 -------|----|--------
 |1.0|March 16, 2024|Initial release|
+|1.1|March 22, 2025|Bumped SPFx version|
 
 ## Minimal path to awesome
 
