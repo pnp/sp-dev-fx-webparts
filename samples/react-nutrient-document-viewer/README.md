@@ -4,7 +4,8 @@
 
 This a custom **PDF viewer web part** for **SharePoint Online** by integrating **Nutrient for Web** using the **SharePoint Framework (SPFx)**.
 
-[picture of the solution in action, if possible]
+![image](https://github.com/user-attachments/assets/36c23a10-b3d4-4f30-aae9-a8dfa860d54f)
+
 
 ## Used SharePoint Framework Version
 
