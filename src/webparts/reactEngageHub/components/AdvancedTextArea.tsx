@@ -3,12 +3,11 @@ import {
   Button,
   Card,
   Textarea,
-  Toolbar,
   ToolbarButton,
   ToolbarDivider,
   makeStyles,
+  Toolbar,
 } from "@fluentui/react-components"
-// import styles from "./ReactEngageHub.module.scss"
 import {
   bundleIcon,
   Image24Regular,
@@ -16,6 +15,7 @@ import {
   Send24Regular,
 } from "@fluentui/react-icons"
 import { addNewPost } from "../services/SPService"
+import { ImagePreview } from "./ImagePreview"
 
 const useStyles = makeStyles({
   textArea: {
@@ -43,6 +43,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
     imageUrl: new File([], ""),
   })
   const fileInputRef = React.useRef<HTMLInputElement>(null)
+  const [previewImage, setPreviewImage] = React.useState<any>()
 
   const fluentStyles = useStyles()
 
@@ -54,6 +55,7 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
     const file = event.target.files?.[0]
     if (file) {
       setPost({ ...post, imageUrl: file })
+      setPreviewImage(URL.createObjectURL(file))
     }
   }
 
@@ -62,6 +64,11 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
     await addNewPost(post, props.context.pageContext)
 
     setPost({ postDescription: "", imageUrl: new File([], "") })
+  }
+
+  const removeImageFromPreview = () => {
+    setPost({ ...post, imageUrl: new File([], "") })
+    setPreviewImage("")
   }
 
   return (
@@ -77,6 +84,12 @@ export const AdvancedTextArea: React.FunctionComponent<any> = (
         <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
         <ToolbarDivider vertical />
       </Toolbar>
+      {post.imageUrl.name !== "" && (
+        <ImagePreview
+          preview={previewImage}
+          handleRemoveImageFromPreview={removeImageFromPreview}
+        />
+      )}
       <Textarea
         className={fluentStyles.textArea}
         value={post.postDescription}
