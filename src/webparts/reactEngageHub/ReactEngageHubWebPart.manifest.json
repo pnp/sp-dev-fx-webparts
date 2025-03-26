@@ -22,7 +22,7 @@
     "description": { "default": "react-engage-hub description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "react-engage-hub"
+      "maxFileLimit": 5
     }
   }]
 }

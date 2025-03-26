@@ -43,3 +43,8 @@
   align-items: center;
   justify-content: center;
 }
+.previewImageWrapper{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

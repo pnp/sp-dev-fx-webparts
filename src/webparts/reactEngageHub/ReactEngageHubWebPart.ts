@@ -3,7 +3,7 @@ import * as ReactDom from "react-dom"
 import { Version } from "@microsoft/sp-core-library"
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField,
+  PropertyPaneSlider,
 } from "@microsoft/sp-property-pane"
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base"
 import { IReadonlyTheme } from "@microsoft/sp-component-base"
@@ -14,8 +14,8 @@ import { IReactEngageHubProps } from "./components/IReactEngageHubProps"
 import { getSP } from "./utils/spUtility"
 
 export interface IReactEngageHubWebPartProps {
-  description: string
   title: string
+  maxFileLimit: number
 }
 
 export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactEngageHubWebPartProps> {
@@ -25,7 +25,6 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
   public render(): void {
     const element: React.ReactElement<IReactEngageHubProps> =
       React.createElement(ReactEngageHub, {
-        description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -36,6 +35,7 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
         updateProperty: (value: string) => {
           this.properties.title = value
         },
+        maxFileLimit: this.properties.maxFileLimit,
       })
 
     ReactDom.render(element, this.domElement)
@@ -82,6 +82,7 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
     return {
       pages: [
         {
+          displayGroupsAsAccordion: true,
           header: {
             description: strings.PropertyPaneDescription,
           },
@@ -89,8 +90,10 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("description", {
-                  label: strings.DescriptionFieldLabel,
+                PropertyPaneSlider("maxFileLimit", {
+                  label: "Maximum files can upload",
+                  min: 1,
+                  max: 8,
                 }),
               ],
             },

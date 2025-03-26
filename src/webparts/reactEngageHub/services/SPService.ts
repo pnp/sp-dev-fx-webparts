@@ -12,12 +12,10 @@ export const addNewPost = async (
   let userInfo = await getCurrentUserDetails()
 
   let postUUID = crypto.randomUUID()
-  console.log(post.imageUrl)
-
   let imageResult: any
-  if (post.imageUrl.name != "" && post.imageUrl.size !== 0) {
+  if (post.imageUrls.length > 0) {
     imageResult = await uploadImage(
-      post.imageUrl,
+      post.imageUrls,
       pageContext,
       userInfo,
       postUUID
@@ -69,56 +67,64 @@ export const ensureFolder = async (uploadPath: string) => {
 }
 
 export const uploadImage = async (
-  image: File,
+  images: File[],
   pageContext: any,
   userInfo: any,
   postUUID: string
 ) => {
   let sp: SPFI = getSP()
+  let results: any[] = []
 
-  const fileNamePath = encodeURI(image.name)
+  // Create base path for uploads
+  let basePath = `${pageContext._site.serverRelativeUrl}/Discussion Point Gallery/${userInfo.UserId.NameId}`
 
-  let path = `${pageContext._site.serverRelativeUrl}/Discussion Point Gallery/${userInfo.UserId.NameId}`
+  // Ensure folder exists
+  await ensureFolder(basePath)
 
-  let result: any
+  // Process each image
+  for (const image of images) {
+    try {
+      const fileNamePath = encodeURI(image.name)
+      let result: any
 
-  if (image.size <= 10485760) {
-    // small upload
-    result = await sp.web
-      .getFolderByServerRelativePath(path)
-      .files.addUsingPath(fileNamePath, image, { Overwrite: true })
+      if (image.size <= 10485760) {
+        // Small upload (less than 10MB)
+        result = await sp.web
+          .getFolderByServerRelativePath(basePath)
+          .files.addUsingPath(fileNamePath, image, { Overwrite: true })
+      } else {
+        // Large upload (greater than 10MB)
+        result = await sp.web
+          .getFolderByServerRelativePath(basePath)
+          .files.addChunked(fileNamePath, image, {
+            progress: (data) => {
+              console.log(`Upload progress: ${data}%`)
+            },
+            Overwrite: true,
+          })
+      }
 
-    if (result) {
-      let fileInfo = await sp.web
-        .getFileByServerRelativePath(result.ServerRelativeUrl)
-        .getItem()
+      if (result) {
+        // Update file metadata
+        let fileInfo = await sp.web
+          .getFileByServerRelativePath(result.ServerRelativeUrl)
+          .getItem()
 
-      await fileInfo.update({
-        PostID: postUUID,
-      })
-    }
-  } else {
-    // large upload
-    result = await sp.web
-      .getFolderByServerRelativePath(path)
-      .files.addChunked(fileNamePath, image, {
-        progress: (data) => {
-          console.log(`progress`)
-        },
-        Overwrite: true,
-      })
+        await fileInfo.update({
+          PostID: postUUID,
+        })
 
-    if (result) {
-      let fileInfo = await sp.web
-        .getFileByServerRelativePath(result.ServerRelativeUrl)
-        .getItem()
-
-      await fileInfo.update({
-        PostID: postUUID,
-      })
+        results.push({
+          serverRelativeUrl: result.ServerRelativeUrl,
+          fileName: result.Name,
+        })
+      }
+    } catch (error) {
+      console.error(`Error uploading file ${image.name}:`, error)
     }
   }
-  return result
+
+  return results
 }
 
 export const getPosts = async () => {

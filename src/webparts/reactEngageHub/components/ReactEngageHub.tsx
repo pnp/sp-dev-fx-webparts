@@ -47,7 +47,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         theme={webLightTheme}
         className={fluentStyles.fluentWrapper}
       >
-        <AdvancedTextArea context={props.context} />
+        <AdvancedTextArea props={props} />
         <Posts />
       </FluentProvider>
     </>
