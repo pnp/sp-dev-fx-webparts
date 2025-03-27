@@ -62,7 +62,6 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
 
   const fetchPosts = async () => {
     let results = await getPosts()
-    console.log(results)
     setPosts(results)
   }
 
@@ -101,15 +100,17 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                 </Text>
               </div>
             </div>
-            {post.Image && (
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={`https://spl7c.sharepoint.com${
-                    JSON.parse(post.Image).serverRelativeUrl
-                  }`}
-                  fit='cover'
-                  block
-                />
+            {post.Images.length > 0 && (
+              <div className={styles.imageContainer}>
+                {post.Images.map((image: string) => (
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={`https://spl7c.sharepoint.com${image}`}
+                      fit='cover'
+                      block
+                    />
+                  </div>
+                ))}
               </div>
             )}
             <div

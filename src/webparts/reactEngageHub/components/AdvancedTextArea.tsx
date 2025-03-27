@@ -16,7 +16,6 @@ import {
 } from "@fluentui/react-icons"
 import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
-import { IReactEngageHubProps } from "./IReactEngageHubProps"
 import styles from "./ReactEngageHub.module.scss"
 
 const useStyles = makeStyles({
@@ -38,9 +37,7 @@ export type AdvancedTextAreaType = {
 
 const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
-export const AdvancedTextArea: React.FunctionComponent<any> = (
-  props: React.PropsWithChildren<IReactEngageHubProps>
-) => {
+export const AdvancedTextArea = ({ props }: any) => {
   const [post, setPost] = React.useState<AdvancedTextAreaType>({
     postDescription: "",
     imageUrls: [],

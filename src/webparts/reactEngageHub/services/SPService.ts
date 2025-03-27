@@ -22,25 +22,15 @@ export const addNewPost = async (
     )
   }
 
-  let image: any
-  if (imageResult) {
-    image = {
-      serverRelativeUrl: imageResult.ServerRelativeUrl,
-      fileName: imageResult.Name,
-    }
-  }
-
   await sp.web.lists.getByTitle("Discussion Point").items.add({
     Description: post.postDescription,
     UserID: userInfo.UserId.NameId,
     PostID: postUUID,
-    Image: image
-      ? image.serverRelativeUrl !== ""
-        ? JSON.stringify(image)
-        : ""
-      : "",
     AuthorName: userInfo.Title,
     AuthorMailID: userInfo.UserPrincipalName,
+    Images: imageResult
+      ? imageResult.map((image: any) => image.serverRelativeUrl).join(",")
+      : "",
   })
 }
 
@@ -140,9 +130,14 @@ export const getPosts = async () => {
         .getByTitle("Discussion Point")
         .items.getById(item.ID)
         .comments()
+
+      // Convert comma-separated image URLs to array
+      const imageUrls = item.Images ? item.Images.split(",") : []
+
       return {
         ...item,
         comments,
+        Images: imageUrls,
       }
     })
   )
