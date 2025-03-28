@@ -43,6 +43,11 @@ const useStyles = makeStyles({
     width: "100%",
     position: "relative",
   },
+  image: {
+    width: "inherit",
+    height: "inherit",
+    borderRadius: "8px",
+  },
 })
 
 export const Posts: React.FunctionComponent<IPostsProps> = (
@@ -108,6 +113,7 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                       src={`https://spl7c.sharepoint.com${image}`}
                       fit='cover'
                       block
+                      className={fluentStyles.image}
                     />
                   </div>
                 ))}
