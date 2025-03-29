@@ -8,10 +8,10 @@ import {
   webLightTheme,
 } from "@fluentui/react-components"
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
-import { AdvancedTextArea } from "./AdvancedTextArea"
+import { AdvancedTextArea } from "./components/AdvancedTextArea"
 import { useEffect } from "react"
-import { ensureFolder, getCurrentUserDetails } from "../services/SPService"
-import { Posts } from "./Posts"
+import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
+import { Posts } from "./components/Posts"
 
 const useStyles = makeStyles({
   fluentWrapper: {

@@ -9,8 +9,8 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base"
 import { IReadonlyTheme } from "@microsoft/sp-component-base"
 
 import * as strings from "ReactEngageHubWebPartStrings"
-import { ReactEngageHub } from "./components/ReactEngageHub"
-import { IReactEngageHubProps } from "./components/IReactEngageHubProps"
+import { ReactEngageHub } from "./ReactEngageHub"
+import { IReactEngageHubProps } from "./IReactEngageHubProps"
 import { getSP } from "./utils/spUtility"
 
 export interface IReactEngageHubWebPartProps {
