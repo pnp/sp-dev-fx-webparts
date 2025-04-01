@@ -11,9 +11,9 @@ export interface IImageGridProps {
   aspect?: number;
   onChange: (size: IResize) => void;
   onComplete?: (size: IResize) => void;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   onDragEnd?: (e: MouseEvent | any) => void;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   onDragStart?: (e: MouseEvent | any) => void;
 }
 
@@ -31,7 +31,7 @@ export interface IResizeData {
 
 export default class ImageGrid extends React.Component<IImageGridProps, IImageGridState> {
 
-  private evData: IResizeData = undefined;
+  private evData: IResizeData|undefined = undefined;
   private dragStarted: boolean = false;
   constructor(props: IImageGridProps) {
     super(props);
@@ -115,13 +115,13 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     // tslint:enable
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onStartResizing(e: MouseEvent | any): void {
     const mousePos: IMousePosition = this.getClientPos(e);
     let xInversed: boolean = false;
     let yInversed: boolean = false;
     const { ord } = e.target.dataset;
-    let pos: nodePoition = undefined;
+    let pos: nodePoition|undefined = undefined;
     if (ord && !isNaN(+ord)) {
       pos = +ord;
       xInversed = pos === nodePoition.NW || pos === nodePoition.W || pos === nodePoition.SW;
@@ -145,7 +145,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     };
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onDocMouseTouchMove(e: React.MouseEvent<HTMLDivElement> | any): void {
     const { aspect, onChange } = this.props;
     if (!this.dragStarted) {
@@ -195,7 +195,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     }
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onDocMouseTouchEnd(e: MouseEvent | any): void {
     const { width, height, onDragEnd, onComplete } = this.props;
     if (this.dragStarted) {
@@ -211,7 +211,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     }
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private getClientPos(e: MouseEvent | any): IMousePosition {
     let pageX: number;
     let pageY: number;

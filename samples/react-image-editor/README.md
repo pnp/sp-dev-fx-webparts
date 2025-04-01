@@ -43,14 +43,14 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.4.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg)
-![Node.js v6](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
-![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
+![SharePoint  Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
 ![Teams No: Not designed for Microsoft Teams](https://img.shields.io/badge/Teams-No-red.svg "Not designed for Microsoft Teams")
 ![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-References to office-ui-fabric-react version 5.x because of SharePoint 2019 Support
+
 
 ## Applies to
 
@@ -74,6 +74,7 @@ Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) t
 
 Version|Date|Comments
 -------|----|--------
+2.0.0.0|Apr 01, 2025|Added properties and accessibility
 1.1.0.0|Sep 09, 2024|Added properties and accessibility
 1.0.0.0|Mar 17, 2021|Initial release
 
@@ -93,7 +94,7 @@ Version|Date|Comments
 * PNP Placeholder control if not Configured
 * PNP WebPartTitle control  (toggle Show/Hide in property pane)
 * PNP FilePicker control to pick Images (is mocked on local workbench)
-* Office UI Fabric
+* Fluent UI Fabric
 
 ## Video
 

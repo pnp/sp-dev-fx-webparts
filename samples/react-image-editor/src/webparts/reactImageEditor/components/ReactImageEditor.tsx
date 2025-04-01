@@ -6,8 +6,10 @@ import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react/lib/FilePicker';
 import { ImageManipulation, IImageManipulationSettings } from '../../../components/ImageManipulation';
-import { IconButton } from 'office-ui-fabric-react';
+
+
 import { sp } from "@pnp/sp";
+import { IconButton } from '@fluentui/react';
 
 
 export interface IReactImageEditorBaseProps {
@@ -57,7 +59,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
   });
   }
   public render(): React.ReactElement<IReactImageEditorProps> {
-    const { url, settings } = this.props;
+    const { url } = this.props;
     const { isFilePickerOpen } = this.state;
     const isConfigured: boolean = !!url && url.length > 0;
     return (
@@ -81,12 +83,22 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             isPanelOpen={isFilePickerOpen}
             accepts={['.gif', '.jpg', '.jpeg', '.png']}
             buttonIcon={'FileImage'}
-            onSave={this.handleFileSave}
+            onSave={(filePickerResult: IFilePickerResult[]) => {
+             if(filePickerResult.length > 0){ 
+              this.handleFileSave(filePickerResult[0]).catch((error => {
+              console.error("Error in handleFileSave:", error);
+            }));
+          }
+          
+          }}
+            
             onCancel={() => {
               this.setState({ isFilePickerOpen: false });
             }}
-            onChanged={(filePickerResult: IFilePickerResult) => {
-              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl));
+            onChange={(filePickerResult: IFilePickerResult[]) =>  {
+              if(filePickerResult.length >0){
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult[0].fileAbsoluteUrl));
+              }
 
             }}
             context={this.props.context}
@@ -130,7 +142,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
                 }
                 displayMode={this.props.displayMode}
                 settingsChanged={this._onSettingsChanged}
-                src={this.props.url} altText={this.props.altText}
+                src={this.props.url!} altText={this.props.altText? this.props.altText : "Image"}
               />
             </div>
           )
@@ -138,7 +150,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
       </div >
     );
   }
-  private handleFileSave = async (filePickerResult: IFilePickerResult) => {
+  private handleFileSave = async (filePickerResult: IFilePickerResult):Promise<void> => {
     try {
       if (!filePickerResult.downloadFileContent) {
         this.setState(
@@ -223,8 +235,8 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
    */
   private async ensureFolder(parentFolderUrl: string, folderName: string): Promise<void> {
     try {
-      const folderUrl = `${parentFolderUrl}/${folderName}`;
-      const folder = await sp.web.getFolderByServerRelativeUrl(folderUrl).get();
+     // const folderUrl = `${parentFolderUrl}/${folderName}`;
+     // const folder = await sp.web.getFolderByServerRelativeUrl(folderUrl).get();
       console.log(`Folder '${folderName}' already exists under '${parentFolderUrl}'`);
     } catch (error) {
       if (error.message.includes("404")) {
@@ -273,13 +285,13 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
     }
   }
 
-  private _clearSelection = () => {
+  private _clearSelection = ():void => {
     this.props.updateUrlProperty("");
     this.setState({
       isFilePickerOpen: false
     });
   }
-  private _onConfigure = () => {
+  private _onConfigure = ():void => {
     if (Environment.type === EnvironmentType.Local) {
       this.setState({ isFilePickerOpen: false }, () => {
         this._onUrlChanged(
@@ -291,10 +303,10 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
       this.setState({ isFilePickerOpen: true });
     }
   }
-  private _onUrlChanged = (url: string) => {
+  private _onUrlChanged = (url: string):void => {
     this.props.updateUrlProperty(url);
   }
-  private _onSettingsChanged = (settings: IImageManipulationSettings[]) => {
+  private _onSettingsChanged = (settings: IImageManipulationSettings[]):void => {
     this.props.updateManipulationSettingsProperty(settings);
   }
 }

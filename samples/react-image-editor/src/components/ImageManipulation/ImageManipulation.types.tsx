@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line: no-any
 const colorFilterIcon: any = require('../../svg/colorFilter.svg');
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line: no-any
 const cropIcon: any = require('../../svg/crop.svg');
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line: no-any
 const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line: no-any
 const resizeIcon: any = require('../../svg/resize.svg');
 import * as strings from 'ImageManipulationStrings';
 
@@ -99,7 +99,7 @@ export interface IFilterTypeData {
 export interface IManipulationTypeDataBase {
   text: string;
   iconName?: string;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   svgIcon?: any;
   settingPanelType: SettingPanelType;
 }
