@@ -18,7 +18,7 @@
       "* Histoy of Actions"
     ],
     "creationDateTime": "2021-03-17",
-    "updateDateTime": "2021-03-17",
+    "updateDateTime": "2025-04-02",
     "products": [
       "SharePoint"
     ],
@@ -29,7 +29,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.4.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -51,7 +51,7 @@
     "authors": [
       {
         "gitHubAccount": "petkir",
-        "company": "Cubido Business Solutions GmbH",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"

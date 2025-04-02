@@ -1,6 +1,6 @@
 {
   "name": "react-image-editor",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": ">=18.17.1 <19.0.0"
@@ -20,6 +20,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.20.0",
     "@microsoft/sp-property-pane": "1.20.0",
     "@microsoft/sp-webpart-base": "1.20.0",
+    "@pnp/sp": "^4.11.0",
     "@pnp/spfx-controls-react": "^3.20.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",

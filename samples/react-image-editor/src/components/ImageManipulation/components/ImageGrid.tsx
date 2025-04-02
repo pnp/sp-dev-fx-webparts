@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { IResize } from '../ImageManipulation.types';
 
@@ -92,7 +93,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
               <div className={styles.ImgLeftCenter + ' ' + styles.ImgGridCell}>
                 <div className={styles.bubble} data-ord={nodePoition.W} onMouseDown={this.onStartResizing} />
               </div>
-              <div className={styles.ImgGridCell}></div>
+              <div className={styles.ImgGridCell} />
               <div className={styles.ImgRightCenter + ' ' + styles.ImgGridCell}>
                 <div className={styles.bubble} data-ord={nodePoition.E} onMouseDown={this.onStartResizing} />
               </div>

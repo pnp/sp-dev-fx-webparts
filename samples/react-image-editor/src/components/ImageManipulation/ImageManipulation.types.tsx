@@ -1,16 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 
-// eslint-disable-next-line: no-any
-const colorFilterIcon: any = require('../../svg/colorFilter.svg');
-// eslint-disable-next-line: no-any
-const cropIcon: any = require('../../svg/crop.svg');
-// eslint-disable-next-line: no-any
-const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
-// eslint-disable-next-line: no-any
-const resizeIcon: any = require('../../svg/resize.svg');
+
+import colorFilterIcon from '../../svg/colorFilter.svg';
+import cropIcon from '../../svg/crop.svg';
+import flipVerticalIcon from '../../svg/flipVertical.svg';
+import resizeIcon from '../../svg/resize.svg';
+
 import * as strings from 'ImageManipulationStrings';
-
-
 
 export enum SettingPanelType {
   Closed = 1,
@@ -86,7 +83,6 @@ export interface IResizeSettings extends IManipulationBase, IResize {
 export type IImageManipulationSettings = IFilterSettings | IRotateSettings |
           IScaleSettings | IFlipSettings | ICropSettings | IResizeSettings;
 
-
 export const filterTypeData: IFilterTypeData = {
   0: strings.FilterTypeGrayscale,
   1: strings.FilterTypeSepia
@@ -117,7 +113,7 @@ export const manipulationTypeData: IManipulationTypeData = {
     text: strings.ManipulationTypeCrop,
     svgIcon: cropIcon,
     toHTML: (item: ICropSettings) => {
-      return (<span></span>);
+      return (<span />);
       // return (<span>{`X:${item.sx} Y:${item.sy}`}</span>);
     },
     settingPanelType: SettingPanelType.Crop
@@ -125,19 +121,19 @@ export const manipulationTypeData: IManipulationTypeData = {
   1: {
     text: strings.ManipulationTypeScale,
     iconName: 'Zoom',
-    toHTML: (item: IScaleSettings) => { return (<span></span>); },
+    toHTML: (item: IScaleSettings) => { return (<span />); },
     settingPanelType: SettingPanelType.Scale
   },
   2: {
     text: strings.ManipulationTypeRotate,
     iconName: 'Rotate',
-    toHTML: (item: IRotateSettings) => { return (<span></span>); },
+    toHTML: (item: IRotateSettings) => { return (<span />); },
     settingPanelType: SettingPanelType.Rotate
   },
   3: {
     text: strings.ManipulationTypeFlip,
     svgIcon: flipVerticalIcon,
-    toHTML: (item: IFlipSettings) => { return (<span></span>); },
+    toHTML: (item: IFlipSettings) => { return (<span />); },
     settingPanelType: SettingPanelType.Flip
   },
   4: {
@@ -152,7 +148,7 @@ export const manipulationTypeData: IManipulationTypeData = {
     text: strings.ManipulationTypeResize,
     iconName: 'SizeLegacy',
     svgIcon: resizeIcon,
-    toHTML: (item: IResizeSettings) => { return (<span></span>); },
+    toHTML: (item: IResizeSettings) => { return (<span />); },
     settingPanelType: SettingPanelType.Resize
   }
 };

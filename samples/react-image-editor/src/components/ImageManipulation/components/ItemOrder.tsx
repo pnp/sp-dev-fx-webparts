@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { isEqual } from '@microsoft/sp-lodash-subset';
 import { EventGroup, IButtonStyles, IconButton, ISelection, Label,DragDropHelper, IDragDropContext } from '@fluentui/react';
 
@@ -84,14 +85,14 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
           {
             (items && items.length > 0) && <div
             className={styles.lastBox}
-            ref={(ref: HTMLElement) => { this._lastBox = ref; }} />
+            ref={(ref: HTMLDivElement | null) => { if (ref) this._lastBox = ref; }} />
           }
         </ul>
       </div>
     );
   }
 
-  public componentWillMount(): void {
+  public UNSAFE_componentWillMount(): void {
     this.setState({
       items: this.props.items || []
     });
@@ -101,7 +102,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     this.setupSubscriptions();
   }
 
-  public componentWillUpdate(nextProps: IItemOrderProps): void {
+  public UNSAFE_componentWillUpdate(nextProps: IItemOrderProps): void {
     // Check if the provided items are still the same
     if (!isEqual(nextProps.items, this.state.items)) {
       this.setState({
@@ -177,8 +178,10 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     );
   }
 
-  private registerRef = (ref: HTMLElement): void => {
-    this._refs.push(ref);
+  private registerRef = (ref: HTMLElement | null): void => {
+    if (ref) {
+      this._refs.push(ref);
+    }
   }
 
   private setupSubscriptions = (): void => {
@@ -263,7 +266,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
   }
 
   // eslint-disable-next-line: no-any
-  private insertBeforeItem = (item: any) => {
+  private insertBeforeItem = (item: any):void => {
     const itemIndex: number = this.state.items.indexOf(this._draggedItem);
     let targetIndex: number = this.state.items.indexOf(item);
     if (itemIndex < targetIndex) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { clone } from '@microsoft/sp-lodash-subset';
@@ -40,10 +41,9 @@ import {
   SettingPanelType
 } from './ImageManipulation.types';
 
-// eslint-disable-next-line: no-any
-const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
-// eslint-disable-next-line: no-any
-const flipHorizontalIcon: any = require('../../svg/flipHorizontal.svg');
+import flipVerticalIcon from '../../svg/flipVertical.svg';
+
+import flipHorizontalIcon from '../../svg/flipHorizontal.svg';
 
 import * as strings from 'ImageManipulationStrings';
 import { historyItem } from './HistoryItem';
@@ -477,7 +477,13 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
           }
         }
       }}
-      onRenderItem={historyItem}
+      onRenderItem={(item, index) => {
+        const renderedItem = historyItem(item, index);
+        if(renderedItem === undefined) {
+          return <></>;
+        }
+        return renderedItem;
+      }}
     />);
   }
 

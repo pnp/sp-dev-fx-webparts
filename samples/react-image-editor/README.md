@@ -43,14 +43,14 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
-![SharePoint  Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
-![Teams No: Not designed for Microsoft Teams](https://img.shields.io/badge/Teams-No-red.svg "Not designed for Microsoft Teams")
-![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 18](https://img.shields.io/badge/Node.js-LTS%2018-green.svg) 
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to the user's properties")
+![Hosted Workbench Compatible (with API permissions)](https://img.shields.io/badge/Hosted%20Workbench-Compatible%20(with%20API%20permissions)-yellow.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
-
-
 
 ## Applies to
 
@@ -61,20 +61,19 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 
 ## Prerequisites
 
-> SharePoint Online or SharePoint 2019
+> SharePoint Online
 
 ## Contributors
 
 * [Peter Paul Kirschner](https://github.com/petkir) 
 * [Ishai Sagi] (http://github.com/ishaisagi-hns)
 
-Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) to allow to share this code.
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-2.0.0.0|Apr 01, 2025|Added properties and accessibility
+2.0.0.0|Apr 02, 2025|Added properties and accessibility
 1.1.0.0|Sep 09, 2024|Added properties and accessibility
 1.0.0.0|Mar 17, 2021|Initial release
 
@@ -95,6 +94,7 @@ Version|Date|Comments
 * PNP WebPartTitle control  (toggle Show/Hide in property pane)
 * PNP FilePicker control to pick Images (is mocked on local workbench)
 * Fluent UI Fabric
+* PNPJS 4
 
 ## Video
 
