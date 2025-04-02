@@ -44,6 +44,12 @@
       {
         "type": "image",
         "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/screenshot.png",
+        "alt": "React Image Editor Web part"
+      },
+      {
+        "type": "image",
+        "order": 200,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
         "alt": "React Image Editor Web part"
       }

@@ -19,7 +19,7 @@ extensions:
 
 ## Summary
 
-This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
+This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and [Fluent UI](https://developer.microsoft.com/fluentui/). 
 
 Key features of the Editor
 
@@ -33,6 +33,8 @@ Key features of the Editor
 * Histoy of Actions
 
 The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react ](https://pnp.github.io/sp-dev-fx-controls-react/)
+
+![react-image-editor screenshot](assets/screenshot.png)
 
 ![react-image-editor in action](assets/react-image-editor.gif)
 
