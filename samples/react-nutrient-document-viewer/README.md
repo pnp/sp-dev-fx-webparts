@@ -48,8 +48,6 @@ This a custom **PDF viewer web part** for **SharePoint Online** by integrating *
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
-
 ## Features
 
 - **View PDF Files** directly from SharePoint document libraries.
