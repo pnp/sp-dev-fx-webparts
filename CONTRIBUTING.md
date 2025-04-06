@@ -52,7 +52,7 @@ When you submit a new sample, please follow these guidelines:
 * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
 * Do not use period/dot in the folder name of the provided sample
 
-### Source Code
+### Source Code Only
 
 * For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
 * Make sure to place the root of your solution's source code in sample folder
@@ -98,7 +98,7 @@ Each version of SPFx supports only a limited number of Node.js versions. To help
 
 * Create a new file with the name `.nvmrc` (including the dot at the beginning of the file name).
 * Open the .`nvmrc` file in a text editor and specify the desired Node.js version. The version should be in the format `vMajor.Minor.Patch`. For example, if you want to use Node.js version 14.17.0, simply write `v14.17.0` in the file. Make sure there are no leading or trailing spaces in the file.
-* Save the .nvmrc file in the root directory of your project.
+* Save the `.nvmrc` file in the root directory of your project.
 
 > To generate this file automatically, you can use the following command:
 >
