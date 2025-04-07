@@ -4,30 +4,28 @@
 
 Search People from Organization Directory and show live persona card on hover.
 
-##  
-![directory](/samples/react-directory/assets/react-directory7.png) 
+##
+![directory](/samples/react-directory/assets/react-directory1.png)
 
-![directory](/samples/react-directory/assets/react-directory8.png) 
+![directory](/samples/react-directory/assets/react-directory2.png)
 
-![directory](/samples/react-directory/assets/react-directory9.png) 
+![directory](/samples/react-directory/assets/react-directory3.png)
 
-![directory](/samples/react-directory/assets/react-directory.jpg) 
+![directory](/samples/react-directory/assets/react-directory4.png)
 
-![directory](/samples/react-directory/assets/react-directory-teams1.jpg) 
+![directory](/samples/react-directory/assets/react-directory5.png)
 
-![directory](/samples/react-directory/assets/react-directory2.jpg) 
+![directory](/samples/react-directory/assets/react-directory6.png)
 
-![directory](/samples/react-directory/assets/react-directory-teams2.png) 
+![directory](./assets/react-directory-withPaging.png)
 
-![directory](/samples/react-directory/assets/react-directory21.png) 
 
-![directory](/samples/react-directory/assets/react-directory3.jpg) 
+![directory](/samples/react-directory/assets/react-directory-teams1.png)
 
-![directory](/samples/react-directory/assets/react-directory6.png) 
+![directory](/samples/react-directory/assets/react-directory-teams2.png)
 
-![directory](/samples/react-directory/assets/react-directory5.jpg) 
+![directory](/samples/react-directory/assets/react-directory-teams3.png)
 
-![directory](./assets/react-directory-withPaging.png) 
 
 ## Compatibility
 
@@ -55,14 +53,14 @@ Search People from Organization Directory and show live persona card on hover.
 
 
 ## Web Part Properties
- 
+
 Property |Type|Required| comments
 --------------------|----|--------|----------
 Title | Text| No|Web Part Title
 searchFirstName | boolean|No| Lastname or Firstname search query
 Properties to search | text | No | By default **FirstName,LastName,WorkEmail,Department** are used for search. You can add custom properties separated by comma.
 Properties to sent as clear text | text | No | By default if the search key has empty spaces, its replaced with **+** before sending it to the search query. The search properties mentioned here will be sent without the empty space replacemnt.
-Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set. 
+Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set.
 
 ## Contributors
 
@@ -81,10 +79,11 @@ Version|Date|Comments
 2.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
 3.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
 3.0.1|March 4 2021|Bugfix 'Sort People by'
-3.0.2|Oct 3 2022|Minor styling fixes and people container position  
+3.0.2|Oct 3 2022|Minor styling fixes and people container position
 3.0.3|Oct 4 2022|Fix for LivePersonaCard
 3.0.4|Jun 20 2023|Upgrade to SPFx 1.17.3
 3.0.5|Oct 05 2024|Upgrade to SPFx 1.20.0
+4.0.0|Apr 06 2025|Upgrade to Fluent UI v9 & other changes
 
 ## Minimal Path to Awesome
 
