@@ -10,7 +10,7 @@ In action this looks like:
 
 Dashboard:
 
-![Dashboard view](./assets/Dashboard.png)
+![Dashboard view](./assets/personalDashboard.png)
 
 Selection:
 
@@ -18,7 +18,7 @@ Selection:
 
 Configuration:
 
-![Configuring a widget with MS Graph API](./assets/Configuration.gif)
+![Configuring a widget with MS Graph API](./assets/configuration.gif)
 
 ## Compatibility
 
