@@ -83,7 +83,7 @@ Version|Date|Comments
 3.0.3|Oct 4 2022|Fix for LivePersonaCard
 3.0.4|Jun 20 2023|Upgrade to SPFx 1.17.3
 3.0.5|Oct 05 2024|Upgrade to SPFx 1.20.0
-4.0.0|Apr 06 2025|Upgrade to Fluent UI v9 & other changes
+4.0.0|Apr 06 2025|Upgrade to Fluent UI v9 & other improvements
 
 ## Minimal Path to Awesome
 
