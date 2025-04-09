@@ -20,6 +20,7 @@ import {
   Theme,
   webDarkTheme,
   webLightTheme,
+  IdPrefixProvider,
 } from '@fluentui/react-components';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { createV9Theme } from '@fluentui/react-migration-v8-v9';
@@ -70,7 +71,11 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
     );
 
     //wrap the component with the Fluent UI 9 Provider.
-    const fluentElement: React.ReactElement<FluentProviderProps> =
+    const fluentElement: React.ReactElement = React.createElement(
+      IdPrefixProvider,
+      {
+        value: 'reactDirectoryWebpart-',
+      },
       React.createElement(
         FluentProvider,
         {
@@ -90,7 +95,8 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
               : webLightTheme,
         },
         element
-      );
+      )
+    );
 
     ReactDom.render(fluentElement, this.domElement);
   }
