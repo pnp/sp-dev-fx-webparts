@@ -15612,15 +15612,16 @@
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
-    "title": "Enhanced Power Apps Web Part",
     "source": "pnp",
-    "shortDescription": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
+    "title": "Enhanced Power App",
+    "shortDescription": "Sample web part showing how to embed a Power App that resizes, adapts to themes, and supports dynamic properties",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
     "longDescription": [
-      "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
+      "Sample web part showing how to embed a Power App that resizes, adapts to themes, and supports dynamic properties"
     ],
-    "creationDateTime": "2020-07-26",
-    "updateDateTime": "2023-06-27",
+    "creationDateTime": "2024-12-25",
+    "updateDateTime": "2024-12-31",
     "products": [
       "SharePoint"
     ],
@@ -15636,64 +15637,72 @@
     ],
     "thumbnails": [
       {
+        "name": "dpstep1.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/dpstep1.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "enhanced-power-apps.gif",
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/dpstep1.png?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "FixedPackage.json.png",
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/resize.gif?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/FixedPackage.json.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "resize.gif",
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/sizeoptions.png?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/resize.gif",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "sizeoptions.png",
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step1-5.png?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/sizeoptions.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "step1-5.png",
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step1.png?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/step1-5.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "step1.png",
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-powerapps/assets/step2.png?raw=true",
-        "alt": "Enhanced Power Apps"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/step1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "step2.png",
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/step2.png",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "hugoabernier",
+        "gitHubAccount": "https://github.com/hugoabernier",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       },
       {
-        "gitHubAccount": "babakdanyal",
+        "gitHubAccount": "https://github.com/babakdanyal",
         "pictureUrl": "https://github.com/babakdanyal.png",
         "name": "Babak Danyal"
-      },
-      {
-        "gitHubAccount": "kunj-sangani",
-        "pictureUrl": "https://github.com/kunj-sangani.png",
-        "name": "Kunj Balkrishna Sangani"
       }
     ],
     "references": [
@@ -15702,8 +15711,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ],
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps"
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
