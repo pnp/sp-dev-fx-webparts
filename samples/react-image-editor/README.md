@@ -1,6 +1,7 @@
-https://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogram---
+<https://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogram--->
 page_type: sample
 products:
+
 - office-sp
 languages:
 - javascript
@@ -12,27 +13,27 @@ extensions:
   platforms:
   - React
   createdDate: 3/17/2021 12:00:00 AM
+
 ---
 
 # React Image Editor
 
-
 ## Summary
 
-This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and [Fluent UI](https://developer.microsoft.com/fluentui/). 
+This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and [Fluent UI](https://developer.microsoft.com/fluentui/).
 
 Key features of the Editor
 
-* Resize
-* Crop
-* Flip
-* Rotate
-* Scale
-* Filter (Grayscale / Sepia)
-* Redo / Undo
-* Histoy of Actions
+- Resize
+- Crop
+- Flip
+- Rotate
+- Scale
+- Filter (Grayscale / Sepia)
+- Redo / Undo
+- Histoy of Actions
 
-The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react ](https://pnp.github.io/sp-dev-fx-controls-react/)
+The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react](https://pnp.github.io/sp-dev-fx-controls-react/)
 
 ![react-image-editor screenshot](assets/screenshot.png)
 
@@ -45,8 +46,8 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js LTS 18](https://img.shields.io/badge/Node.js-LTS%2018-green.svg) 
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
+![Node.js LTS 18](https://img.shields.io/badge/Node.js-LTS%2018-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -67,17 +68,16 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 
 ## Contributors
 
-* [Peter Paul Kirschner](https://github.com/petkir) 
-* [Ishai Sagi] (http://github.com/ishaisagi-hns)
-
+- [Peter Paul Kirschner](https://github.com/petkir)
+- [Ishai Sagi] (<http://github.com/ishaisagi-hns>)
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-2.0.0.0|Apr 02, 2025|Added properties and accessibility
-1.1.0.0|Sep 09, 2024|Added properties and accessibility
-1.0.0.0|Mar 17, 2021|Initial release
+|Version|Date|Comments|
+|-------|----|--------|
+|2.0.0.0|Apr 02, 2025|Added properties and accessibility|
+|1.1.0.0|Sep 09, 2024|Added properties and accessibility|
+|1.0.0.0|Mar 17, 2021|Initial release|
 
 ## Minimal Path to Awesome
 
@@ -88,15 +88,15 @@ Version|Date|Comments
   - edit `config\serve.json` set `"initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"`
   - `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Usage
 
-* PNP Placeholder control if not Configured
-* PNP WebPartTitle control  (toggle Show/Hide in property pane)
-* PNP FilePicker control to pick Images (is mocked on local workbench)
-* Fluent UI Fabric
-* PNPJS 4
+- PNP Placeholder control if not Configured
+- PNP WebPartTitle control  (toggle Show/Hide in property pane)
+- PNP FilePicker control to pick Images (is mocked on local workbench)
+- Fluent UI Fabric
+- PNPJS 4
 
 ## Video
 
@@ -118,8 +118,6 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-image-editor&template=question.yml&sample=react-image-editor&authors=@petkir&title=react-image-editor%20-%20).
 
-
-
 ## References
 
 - [Getting started with SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
@@ -131,6 +129,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-image-editor" />
