@@ -58,6 +58,16 @@ Version|Date|Comments
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
 
+## Minimal Path to Awesome - Build sppkg
+
+* Clone this repository
+* use node v14.21.3 or if you have nvm installed, run this in command line:
+  * `nvm use`
+* in the command line run:
+  * `npm install`
+  * `gulp build`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
 
 ### To Use
 
