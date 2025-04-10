@@ -2,6 +2,7 @@ import * as React from "react";
 import {sp} from "@pnp/sp";
 import styles from "./NutrientPdfViewerWebPartForSharePoint.module.scss";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function NutrientPdfViewerWebPartForSharePoint(props: INutrientPdfViewerWebPartForSharePointProps) {
   const containerRef = React.useRef(null);
   const [documentUrl, setDocumentAUrl] = React.useState(props.document);
@@ -14,19 +15,22 @@ function NutrientPdfViewerWebPartForSharePoint(props: INutrientPdfViewerWebPartF
       return;
     }
     const container = containerRef.current;
-    //@ts-ignore
-    let instance, NutrientViewer: any;;
 
+    // @ts-expect-error unknown any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let instance, NutrientViewer: any;
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     (async () => {
       console.log("Will load NutrientViewer instance");
-      NutrientViewer = await import("@nutrient-sdk/viewer");
+      NutrientViewer = await import(/* webpackChunkName: "nutrient-sdk-viewer" */ "@nutrient-sdk/viewer");
 
       const saveItem = {
         type: "custom",
         title: "Save",
         async onPress() {
           setLoading(true);
-          //@ts-ignore
+          //@ts-expect-error unknown any
           const fileContent = await instance.exportPDF();
           const serverRelativeUrl = new URL(documentUrl).pathname;
           const file = sp.web.getFileByServerRelativeUrl(serverRelativeUrl);
@@ -50,25 +54,29 @@ function NutrientPdfViewerWebPartForSharePoint(props: INutrientPdfViewerWebPartF
     })();
 
 
-    return () => NutrientViewer && NutrientViewer.unload(container);
+    return () => {
+      if (NutrientViewer && container) {
+        NutrientViewer.unload(container);
+      }
+    };
   }, [documentUrl]);
 
   React.useEffect(() => {
     setDocumentAUrl(props.document);
-  }, [document]);
+  }, [props.document]);
 
   return (
   <div className='App'> 
   {loading && (
         <div className={styles.blockingOverlay}>
           <div className={styles.blockingContent}>
-            <div className={styles.spinner}></div>
+            <div className={styles.spinner}/>
             <p>Saving document...</p>
           </div>
         </div>
       )}
   {documentUrl ? (
-    <div ref={containerRef} style={{ width: "100%", height: "100vh" }}></div>
+    <div ref={containerRef} style={{ width: "100%", height: "100vh" }}/>
   ):(
     <div> <p>Select Document from Library...</p></div>
   )

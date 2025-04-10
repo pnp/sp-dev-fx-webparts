@@ -57,6 +57,7 @@ export default class NutrientPdfViewerWebPartForSharePointWebPart extends BaseCl
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyFieldFilePicker("documentUrl", {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   context: this.context as any,
                   filePickerResult: this.properties.documentUrl,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
