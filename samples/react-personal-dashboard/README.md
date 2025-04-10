@@ -1,4 +1,4 @@
-# react-personal-dashboard
+# Personal Dashboard
 
 ## Summary
 
@@ -28,7 +28,7 @@ Configuration:
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.20.0](https://img.shields.io/badge/version-1.20-green.svg)
-![Node.js v18 | v16 ](https://img.shields.io/badge/Node.js-v18%20%7C%20v14-green.svg) 
+![Node.js v18 | v16 ](https://img.shields.io/badge/Node.js-v18%20%7C%20v14-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -45,7 +45,7 @@ Configuration:
 
 ## Contributors
 
-* [Saurabh Tripathi](https://github.com/saurabh7019)
+- [Saurabh Tripathi](https://github.com/saurabh7019)
 
 ## Version history
 
@@ -57,16 +57,16 @@ Configuration:
 
 Widgets list in tenant app catalog site, with the Title "Dashboard Widgets" and the below columns:
 
-Column Internal Name|Type|Required| comments
---------------------|----|--------|----------
-SC_WidgetTitle | Text| Yes
-SC_IconName | Text | No
-SC_DisplayTemplate | Note | No
-SC_ErrorTemplate | Note | No
-SC_ResourceEndpoint | Text | No
-SC_AADClientId | Text | No
-SC_HelpURL | Text | No
-SC_ViewDetails | Text | No
+|Column Internal Name|Type|Required|
+|--------------------|----|--------|
+|SC_WidgetTitle | Text| Yes|
+|SC_IconName | Text | No|
+|SC_DisplayTemplate | Note | No|
+|SC_ErrorTemplate | Note | No|
+|SC_ResourceEndpoint | Text | No|
+|SC_AADClientId | Text | No|
+|SC_HelpURL | Text | No|
+|SC_ViewDetails | Text | No|
 
 > Deploy the list using script [create-dashboard-list.ps1](./scripts/create-dashboard-list.ps1)
 
