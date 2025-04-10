@@ -14660,14 +14660,15 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-directory",
     "source": "pnp",
-    "title": "Organization Directory Web Part",
+    "title": "Organization Directory",
     "shortDescription": "Search People from Organization Directory and show live persona card on hover.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory",
     "longDescription": [
       "Search People from Organization Directory and show live persona card on hover."
     ],
-    "creationDateTime": "2021-03-04",
-    "updateDateTime": "2024-10-05",
+    "creationDateTime": "2019-07-29",
+    "updateDateTime": "2025-04-06",
     "products": [
       "SharePoint"
     ],
@@ -14687,111 +14688,101 @@
     ],
     "thumbnails": [
       {
+        "name": "react-directory-teams1.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory7.png",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams1.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory-teams2.png",
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory-teams1.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams2.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory-teams3.png",
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory-teams2.png?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams3.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory-withPaging.png",
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory-teams3.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-withPaging.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory1.png",
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory-withPaging.png?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory1.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory2.png",
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory2.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory3.png",
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory2.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory3.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory4.png",
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory21.png?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory4.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory5.png",
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory3.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory5.png",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-directory6.png",
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory5.jpg?raw=true",
-        "alt": "Organization Directory Web Part"
-      },
-      {
-        "type": "image",
-        "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory6.png?raw=true",
-        "alt": "Organization Directory Web Part"
-      },
-      {
-        "type": "image",
-        "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory8.png?raw=true",
-        "alt": "Organization Directory Web Part"
-      },
-      {
-        "type": "image",
-        "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-directory/assets/react-directory9.png?raw=true",
-        "alt": "Organization Directory Web Part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory6.png",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "joaojmendes",
-        "company": "Storm Technology Ltd",
+        "gitHubAccount": "https://github.com/joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
-        "name": "João Mendes",
-        "twitter": "joaojmendes"
+        "name": "João Mendes"
       },
       {
-        "gitHubAccount": "petkir",
-        "company": "ACP Cubido Digital Solution",
+        "gitHubAccount": "https://github.com/petkir",
         "pictureUrl": "https://github.com/petkir.png",
-        "name": "Peter Paul Kirschner",
-        "twitter": "petkir_at"
+        "name": "Peter Paul Kirschner"
       },
       {
-        "gitHubAccount": "sudharsank",
-        "company": "NTT Digital Business Solutions",
+        "gitHubAccount": "https://github.com/sudharsank",
         "pictureUrl": "https://github.com/sudharsank.png",
-        "name": "Sudharsan Kesavanarayanan",
-        "twitter": "sudharsank"
+        "name": "Sudharsan Kesavanarayanan"
       },
       {
-        "gitHubAccount": "Abderahman88",
-        "company": "",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
+        "gitHubAccount": "https://github.com/Abderahman88",
+        "pictureUrl": "https://github.com/Abderahman88.png",
         "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "pictureUrl": "https://github.com/Sandeep-FED.png",
+        "name": "Sandeep P S"
       }
     ],
     "references": [
@@ -14805,8 +14796,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ],
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory"
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-display-hierarchy",
