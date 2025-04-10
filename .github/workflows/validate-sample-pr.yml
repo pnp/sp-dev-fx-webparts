@@ -18,7 +18,7 @@ jobs:
 
       - name: Run Validate SPFx Sample PR Action
         id: validate-spfx-sample-pr
-        uses: pnp/action-pr-validator@v1.1.0
+        uses: pnp/action-pr-validator@v1.1.1
         with:
           pr: ${{ toJson(github.event.pull_request) }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
