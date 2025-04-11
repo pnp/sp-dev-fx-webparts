@@ -4,6 +4,7 @@ import * as React from "react"
 import type { IReactEngageHubProps } from "./IReactEngageHubProps"
 import {
   FluentProvider,
+  IdPrefixProvider,
   makeStyles,
   webLightTheme,
 } from "@fluentui/react-components"
@@ -18,6 +19,9 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
+  },
+  provider: {
+    height: "300px",
   },
 })
 
@@ -43,13 +47,15 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         title={props.title}
         updateProperty={props.updateProperty}
       />
-      <FluentProvider
-        theme={webLightTheme}
-        className={fluentStyles.fluentWrapper}
-      >
-        <AdvancedTextArea props={props} />
-        <Posts />
-      </FluentProvider>
+      <IdPrefixProvider value='react-engage-hub-'>
+        <FluentProvider
+          theme={webLightTheme}
+          className={fluentStyles.fluentWrapper}
+        >
+          <AdvancedTextArea props={props} />
+          <Posts />
+        </FluentProvider>
+      </IdPrefixProvider>
     </>
   )
 }
