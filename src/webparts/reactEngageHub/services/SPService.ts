@@ -77,7 +77,7 @@ export const uploadImage = async (
       const fileNamePath = encodeURI(image.name)
       let result: any
 
-      if (image.size <= 10485760) {
+      if (image.size <= 5242880) {
         // Small upload (less than 10MB)
         result = await sp.web
           .getFolderByServerRelativePath(basePath)
@@ -120,9 +120,31 @@ export const uploadImage = async (
 export const getPosts = async () => {
   let sp: SPFI = getSP()
 
+  let userInfo = await getCurrentUserDetails()
+
   let results = await sp.web.lists
     .getByTitle("Discussion Point")
-    .items.orderBy("Created", false)()
+    .items.orderBy("Created", false)
+    .select(
+      "ID",
+      "AuthorMailID",
+      "AuthorName",
+      "Created",
+      "Description",
+      "LikesCount",
+      "LikedBy/Id",
+      "LikedBy/EMail",
+      "LikedByInformation"
+    )
+    .top(10)
+    .expand("LikedBy", "LikedByInformation")()
+
+  results = results.map((item) => ({
+    ...item,
+    isLiked: item.LikedBy
+      ? item.LikedBy.some((user: any) => userInfo.Email === user.EMail)
+      : false,
+  }))
 
   const itemsWithComments = await Promise.all(
     results.map(async (item: any) => {
@@ -143,6 +165,20 @@ export const getPosts = async () => {
   )
 
   return itemsWithComments
+}
+
+export const updatePostLikeDislike = async (postID: number, like: boolean) => {
+  let sp: SPFI = getSP()
+
+  const item: any = sp.web.lists
+    .getByTitle("Discussion Point")
+    .items.getById(postID)
+
+  if (!like) {
+    await item.like()
+  } else {
+    await item.unlike()
+  }
 }
 
 export const updateLikeDislike = async (

@@ -15,6 +15,7 @@ import {
   deleteComment,
   getPosts,
   updateLikeDislike,
+  updatePostLikeDislike,
 } from "../services/SPService"
 import styles from "./ReactEngageHub.module.scss"
 import {
@@ -47,12 +48,13 @@ const useStyles = makeStyles({
     width: "inherit",
     height: "inherit",
     borderRadius: "8px",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
 })
 
-export const Posts: React.FunctionComponent<IPostsProps> = (
-  props: React.PropsWithChildren<IPostsProps>
-) => {
+export const Posts = (props: React.PropsWithChildren<IPostsProps>) => {
   const [posts, setPosts] = React.useState<any[]>([])
   const [likeDislike, setLikeDislike] = React.useState<boolean>(false)
   const [newComments, setNewComments] = React.useState<{
@@ -67,12 +69,18 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
 
   const fetchPosts = async () => {
     let results = await getPosts()
+    console.log(results)
     setPosts(results)
   }
 
   const onClickLikeBtn = async (postId: number, commentId: string) => {
     setLikeDislike(!likeDislike)
     await updateLikeDislike(postId, commentId, likeDislike)
+  }
+
+  const onClickPostLikeBtn = async (postId: number, postLike: boolean) => {
+    await updatePostLikeDislike(postId, postLike)
+    fetchPosts()
   }
 
   const onClickNewCommentBtn = async (postId: number) => {
@@ -104,16 +112,41 @@ export const Posts: React.FunctionComponent<IPostsProps> = (
                   {new Date(post.Created).toLocaleString("en-IN")}
                 </Text>
               </div>
+              <div
+                className={styles.likeContainer}
+                style={{
+                  marginLeft: "auto",
+                  padding: "0 18px 0 4px",
+                  height: "28px",
+                }}
+              >
+                <Button
+                  appearance='transparent'
+                  icon={
+                    <ThumbLike
+                      filled={post.isLiked}
+                      style={post.isLiked ? { color: "red" } : {}}
+                    />
+                  }
+                  onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
+                />
+                <Text>
+                  {post.LikesCount === null ? 0 : Math.ceil(post.LikesCount)}
+                </Text>
+              </div>
             </div>
             {post.Images.length > 0 && (
               <div className={styles.imageContainer}>
                 {post.Images.map((image: string) => (
                   <div className={styles.imageWrapper}>
                     <Image
-                      src={`https://spl7c.sharepoint.com${image}`}
+                      src={image}
                       fit='cover'
                       block
                       className={fluentStyles.image}
+                      onClick={() => {
+                        window.open(image)
+                      }}
                     />
                   </div>
                 ))}

@@ -42,6 +42,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: min-content;
+}
+.postLikeContainer{
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 0px 10px 0px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
 }
 .previewImageWrapper{
   display: flex;
