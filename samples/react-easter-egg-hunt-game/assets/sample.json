@@ -20,11 +20,18 @@
       }
     ],
     "thumbnails": [
+      
       {
         "type": "image",
         "order": 100,
+        "url" :"https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/huntgame.png",
+        "alt": "Easter Egg Hunt Game"
+      },
+      {
+        "type": "image",
+        "order": 200,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/EasterEggHunt.gif",
-        "alt": "Tailwind CSS"
+        "alt": "Easter Egg Hunt Game gif"
       }
     ],
     "authors": [
