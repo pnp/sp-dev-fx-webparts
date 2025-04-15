@@ -19,9 +19,14 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
+    height: "100%",
   },
-  provider: {
-    height: "300px",
+  container: {
+    height: "calc(100vh - 100px)",
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
+    paddingTop: "1rem",
+    overflow: "hidden",
   },
 })
 
@@ -41,7 +46,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
   const fluentStyles = useStyles()
 
   return (
-    <>
+    <div className={fluentStyles.container}>
       <WebPartTitle
         displayMode={props.displayMode}
         title={props.title}
@@ -53,9 +58,9 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
           className={fluentStyles.fluentWrapper}
         >
           <AdvancedTextArea props={props} />
-          <Posts />
+          <Posts props={props} />
         </FluentProvider>
       </IdPrefixProvider>
-    </>
+    </div>
   )
 }

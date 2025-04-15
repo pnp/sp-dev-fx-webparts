@@ -1,7 +1,9 @@
 import { SPFI } from "@pnp/sp"
 import { getSP } from "../utils/spUtility"
 import { AdvancedTextAreaType } from "../components/AdvancedTextArea"
-import { IComments, Comment, Comments } from "@pnp/sp/comments"
+import { Comment, Comments } from "@pnp/sp/comments"
+import { SPHttpClient } from "@microsoft/sp-http"
+import { commentsPerPage, postsPerPage } from "../../constants/constants"
 
 export const addNewPost = async (
   post: AdvancedTextAreaType,
@@ -117,55 +119,52 @@ export const uploadImage = async (
   return results
 }
 
-export const getPosts = async () => {
-  let sp: SPFI = getSP()
+export const getPosts = async (context: any, nextLink?: string) => {
+  const endpoint = nextLink
+    ? nextLink
+    : `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items?$top=${postsPerPage}`
 
-  let userInfo = await getCurrentUserDetails()
+  const postsResponse = await context.spHttpClient.get(
+    endpoint,
+    SPHttpClient.configurations.v1
+  )
 
-  let results = await sp.web.lists
-    .getByTitle("Discussion Point")
-    .items.orderBy("Created", false)
-    .select(
-      "ID",
-      "AuthorMailID",
-      "AuthorName",
-      "Created",
-      "Description",
-      "LikesCount",
-      "LikedBy/Id",
-      "LikedBy/EMail",
-      "LikedByInformation"
-    )
-    .top(10)
-    .expand("LikedBy", "LikedByInformation")()
+  const postsData = await postsResponse.json()
+  let results = postsData.value
 
-  results = results.map((item) => ({
-    ...item,
-    isLiked: item.LikedBy
-      ? item.LikedBy.some((user: any) => userInfo.Email === user.EMail)
-      : false,
-  }))
+  const hasMore = postsData["@odata.nextLink"] ? true : false
+  const nextLinkValue = postsData["@odata.nextLink"] || undefined
 
   const itemsWithComments = await Promise.all(
     results.map(async (item: any) => {
-      const comments: IComments = await sp.web.lists
-        .getByTitle("Discussion Point")
-        .items.getById(item.ID)
-        .comments()
+      const commentsEndpoint = `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items(${item.ID})/GetComments()?$top=${commentsPerPage}`
 
-      // Convert comma-separated image URLs to array
+      const commentsResponse = await context.spHttpClient.get(
+        commentsEndpoint,
+        SPHttpClient.configurations.v1
+      )
+
+      const commentsData = await commentsResponse.json()
       const imageUrls = item.Images ? item.Images.split(",") : []
 
       return {
         ...item,
-        comments,
+        comments: commentsData.value,
         Images: imageUrls,
+        hasMoreComments: commentsData["@odata.nextLink"] ? true : false,
+        nextLinkComments: commentsData["@odata.nextLink"] || undefined,
       }
     })
   )
 
-  return itemsWithComments
+  return {
+    items: itemsWithComments,
+    hasMore,
+    nextLink: nextLinkValue,
+  }
 }
+
+
 
 export const updatePostLikeDislike = async (postID: number, like: boolean) => {
   let sp: SPFI = getSP()
