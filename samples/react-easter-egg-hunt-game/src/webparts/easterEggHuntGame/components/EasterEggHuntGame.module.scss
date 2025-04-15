@@ -1,0 +1,573 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.easterEggHuntGame {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  background-color: #f8f6e9;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+
+  // Enhanced complex background with Easter theme pattern
+  background-image: 
+    // Colorful Easter egg pattern background
+    repeating-linear-gradient(45deg, 
+      rgba(255, 230, 240, 0.3) 0px, 
+      rgba(230, 255, 230, 0.3) 20px, 
+      rgba(230, 240, 255, 0.3) 40px, 
+      rgba(255, 255, 220, 0.3) 60px),
+    // Random small dots in pastel colors
+    radial-gradient(circle at 25% 30%, rgba(245, 183, 177, 0.15) 2px, transparent 2px),
+    radial-gradient(circle at 75% 44%, rgba(169, 223, 191, 0.15) 3px, transparent 3px),
+    radial-gradient(circle at 34% 66%, rgba(214, 234, 248, 0.15) 4px, transparent 4px),
+    radial-gradient(circle at 85% 82%, rgba(250, 219, 216, 0.15) 2px, transparent 2px),
+    // Subtle wavy pattern
+    repeating-radial-gradient(circle at 10% 10%, 
+      rgba(255, 255, 255, 0.1) 0px, 
+      rgba(255, 255, 255, 0.1) 8px,
+      rgba(230, 230, 250, 0.1) 9px,
+      rgba(230, 230, 250, 0.1) 15px),
+    // Watercolor-like blotches
+    radial-gradient(circle at 80% 40%, rgba(217, 136, 128, 0.05) 0px, transparent 80px),
+    radial-gradient(circle at 20% 60%, rgba(133, 193, 233, 0.05) 0px, transparent 100px),
+    radial-gradient(circle at 60% 80%, rgba(130, 224, 170, 0.05) 0px, transparent 120px);
+  
+  background-size: 
+    200px 200px,  // Colorful repeating background
+    60px 60px,    // Small dots 1
+    70px 70px,    // Small dots 2
+    80px 80px,    // Small dots 3
+    90px 90px,    // Small dots 4
+    100px 100px,  // Wavy pattern
+    400px 400px,  // Watercolor 1
+    400px 400px,  // Watercolor 2
+    400px 400px;  // Watercolor 3
+
+  // Layout styles for egg zones across the page
+  .pageHeader {
+    position: relative;
+    min-height: 100px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .gameContainer {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    
+    .leftSidebar {
+      position: relative;
+      width: 15%;
+      min-height: 400px;
+    }
+    
+    .mainContent {
+      position: relative;
+      flex: 1;
+      margin: 0 15px;
+    }
+    
+    .rightSidebar {
+      position: relative;
+      width: 15%;
+      min-height: 400px;
+    }
+  }
+  
+  .pageFooter {
+    position: relative;
+    min-height: 80px;
+    margin-top: 20px;
+    text-align: center;
+    
+    .footerText {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-style: italic;
+      color: #888;
+    }
+  }
+
+  // Game header styles
+  .gameHeader {
+    text-align: center;
+    padding-bottom: 15px;
+
+    .gameTitle {
+      color: #e0707c;
+      margin: 0;
+      padding: 10px;
+      font-size: 1.8em;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome {
+      font-size: 1.1em;
+      margin: 0;
+      color: #333;
+    }
+  }
+
+  // Game information area
+  .gameInfo {
+    margin-bottom: 20px;
+    text-align: center;
+    
+    .scoreTimer {
+      display: flex;
+      justify-content: space-around;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
+      .score, .timer {
+        font-size: 1.3em;
+        font-weight: 600;
+        padding: 5px 15px;
+        border-radius: 5px;
+      }
+      
+      .score {
+        color: #378e3c;
+        background-color: rgba(55, 142, 60, 0.1);
+      }
+      
+      .timer {
+        color: #d05d6e;
+        background-color: rgba(208, 93, 110, 0.1);
+      }
+
+      .stopButton {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 1.1em;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          background-color: #c9302c;
+        }
+        
+        &:focus {
+          outline: 3px solid rgba(217, 83, 79, 0.5);
+        }
+      }
+    }
+
+    // Start game container
+    .startGameContainer {
+      padding: 15px;
+      
+      .instructions {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: #555;
+        
+        ul {
+          text-align: left;
+          list-style-type: disc;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding-left: 20px;
+          
+          li {
+            margin: 5px 0;
+          }
+        }
+      }
+      
+      .startButton {
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 28px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+        
+        &:hover {
+          background-color: #4cae4c;
+          transform: scale(1.05);
+        }
+        
+        &:focus {
+          outline: 3px solid rgba(92, 184, 92, 0.5);
+        }
+      }
+    }
+
+    // Game over container
+    .gameOverContainer {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      
+      .gameOverTitle {
+        color: #d05d6e;
+        font-size: 2em;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+      
+      .finalScore {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #378e3c;
+      }
+      
+      .playAgainButton {
+        background-color: #5bc0de;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 24px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+        
+        &:hover {
+          background-color: #46b8da;
+          transform: scale(1.05);
+        }
+        
+        &:focus {
+          outline: 3px solid rgba(91, 192, 222, 0.5);
+        }
+      }
+    }
+  }
+
+  // Game area
+  .gameArea {
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    border: 3px dashed rgba(179, 229, 252, 0.6);
+    border-radius: 8px;
+    min-height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    // Add some decorative elements to game area
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(255, 230, 240, 0.4) 0px, transparent 40px),
+      radial-gradient(circle at 85% 25%, rgba(230, 255, 230, 0.4) 0px, transparent 50px),
+      radial-gradient(circle at 25% 65%, rgba(230, 240, 255, 0.4) 0px, transparent 45px),
+      radial-gradient(circle at 70% 80%, rgba(255, 255, 220, 0.4) 0px, transparent 55px);
+  }
+
+  // Easter egg common styles
+  .egg {
+    position: absolute;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    
+    // Enhanced egg styles with patterns
+    // Regular egg style
+    background: linear-gradient(135deg, #fdfdfd, #f9c5d1);
+    border: 2px solid rgba(249, 197, 209, 0.7);
+    
+    // Add subtle patterns to eggs to blend better with background
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      background-image: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6) 0px, transparent 5px),
+        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.5) 0px, transparent 4px);
+      opacity: 0.5;
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+      z-index: 20;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(249, 197, 209, 0.5);
+    }
+    
+    // Egg sizes
+    &.smallEgg {
+      width: 30px;
+      height: 40px;
+      opacity: 0.85; // Make small eggs slightly more transparent
+    }
+    
+    &.mediumEgg {
+      width: 45px;
+      height: 55px;
+      opacity: 0.9;
+    }
+    
+    &.largeEgg {
+      width: 60px;
+      height: 75px;
+    }
+    
+    // Bonus egg style
+    &.bonusEgg {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.85), rgba(255, 179, 71, 0.85));
+      border: 2px solid rgba(255, 179, 71, 0.7);
+      
+      &::after {
+        background-image: 
+          radial-gradient(circle at 40% 40%, rgba(255, 255, 200, 0.7) 0px, transparent 6px),
+          radial-gradient(circle at 60% 60%, rgba(255, 240, 180, 0.6) 0px, transparent 5px);
+      }
+    }
+    
+    // Found egg animation and style
+    &.eggFound {
+      animation: popAndFade 0.6s ease-out forwards;
+    }
+  }
+  
+
+  // Animation for found eggs
+  @keyframes popAndFade {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    40% {
+      transform: scale(1.4);
+      opacity: 0.8;
+    }
+    60% {
+      transform: scale(1.5);
+      opacity: 0.5;
+      box-shadow: 0 0 20px rgba(255, 223, 189, 0.8);
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  // Teams theme support
+  &.teams {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+    .gameHeader {
+      .gameTitle {
+        color: #6264a7;
+      }
+    }
+
+    .gameInfo {
+      .scoreTimer {
+        .score {
+          color: #6264a7;
+          background-color: rgba(98, 100, 167, 0.1);
+        }
+        
+        .timer {
+          color: #6264a7;
+          background-color: rgba(98, 100, 167, 0.1);
+        }
+      }
+    }
+  }
+
+  // Responsive design adjustments
+  @media (max-width: 768px) {
+    .gameContainer {
+      flex-direction: column;
+      
+      .leftSidebar, .rightSidebar {
+        width: 100%;
+        min-height: 60px;
+        margin: 10px 0;
+      }
+    }
+    
+    .gameHeader {
+      .gameTitle {
+        font-size: 1.5em;
+      }
+    }
+
+    .gameInfo {
+      .scoreTimer {
+        .score, .timer {
+          font-size: 1.1em;
+        }
+        
+        .stopButton {
+          font-size: 1em;
+          padding: 4px 12px;
+        }
+      }
+      
+      .startGameContainer {
+        .instructions {
+          font-size: 1em;
+        }
+        
+        .startButton {
+          font-size: 1.1em;
+          padding: 10px 20px;
+        }
+      }
+      
+      .gameOverContainer {
+        .gameOverTitle {
+          font-size: 1.8em;
+        }
+        
+        .finalScore {
+          font-size: 1.3em;
+        }
+        
+        .playAgainButton {
+          font-size: 1em;
+        }
+      }
+    }
+    
+    .gameArea {
+      min-height: 300px;
+    }
+    
+    .egg {
+      &.smallEgg {
+        width: 25px;
+        height: 35px;
+      }
+      
+      &.mediumEgg {
+        width: 35px;
+        height: 45px;
+      }
+      
+      &.largeEgg {
+        width: 45px;
+        height: 60px;
+      }
+    }
+  }
+}
+
+.egg {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  
+  // Enhanced egg styles with patterns
+  // Regular egg style
+  background: linear-gradient(135deg, #fdfdfd, #f9c5d1);
+  border: 2px solid rgba(249, 197, 209, 0.7);
+  
+  // Add subtle patterns to eggs to blend better with background
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background-image: 
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6) 0px, transparent 5px),
+      radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.5) 0px, transparent 4px);
+    opacity: 0.5;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+    z-index: 20;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 197, 209, 0.5);
+  }
+  
+  // Egg sizes
+  &.smallEgg {
+    width: 30px;
+    height: 40px;
+    opacity: 0.85; // Make small eggs slightly more transparent
+  }
+  
+  &.mediumEgg {
+    width: 45px;
+    height: 55px;
+    opacity: 0.9;
+  }
+  
+  &.largeEgg {
+    width: 60px;
+    height: 75px;
+  }
+  
+  // Bonus egg style
+  &.bonusEgg {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.85), rgba(255, 179, 71, 0.85));
+    border: 2px solid rgba(255, 179, 71, 0.7);
+    
+    &::after {
+      background-image: 
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 200, 0.7) 0px, transparent 6px),
+        radial-gradient(circle at 60% 60%, rgba(255, 240, 180, 0.6) 0px, transparent 5px);
+    }
+  }
+  
+  // Found egg animation and style
+  &.eggFound {
+    animation: popAndFade 0.6s ease-out forwards;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
