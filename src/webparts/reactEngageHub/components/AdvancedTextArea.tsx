@@ -11,12 +11,16 @@ import {
 import {
   bundleIcon,
   Image24Regular,
+  PenSparkle20Filled,
+  PenSparkle20Regular,
   Send20Color,
   Send24Regular,
 } from "@fluentui/react-icons"
 import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
 import styles from "./ReactEngageHub.module.scss"
+
+const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
 const useStyles = makeStyles({
   textArea: {
@@ -26,6 +30,9 @@ const useStyles = makeStyles({
   postBtn: {
     width: "fit-content",
     alignSelf: "flex-end",
+  },
+  rewriteBtn: {
+    marginLeft: "auto",
   },
 })
 
@@ -113,6 +120,13 @@ export const AdvancedTextArea = ({ props }: any) => {
         />
         <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
         <ToolbarDivider vertical />
+        <Button
+          icon={<SparkleBundle />}
+          appearance='transparent'
+          className={fluentStyles.rewriteBtn}
+        >
+          Rewrite
+        </Button>
       </Toolbar>
       {post.imageUrls.length > 0 && (
         <div className={styles.previewImageWrapper}>
