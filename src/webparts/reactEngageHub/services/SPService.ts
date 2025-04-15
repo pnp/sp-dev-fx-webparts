@@ -120,9 +120,12 @@ export const uploadImage = async (
 }
 
 export const getPosts = async (context: any, nextLink?: string) => {
+
+  const userInfo = await getCurrentUserDetails()
+
   const endpoint = nextLink
     ? nextLink
-    : `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items?$top=${postsPerPage}`
+    : `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items?$top=${postsPerPage}&$select=*,LikedBy/Id,LikedBy/Title,LikedBy/EMail&$expand=LikedBy&$orderby=Created desc`
 
   const postsResponse = await context.spHttpClient.get(
     endpoint,
@@ -131,6 +134,13 @@ export const getPosts = async (context: any, nextLink?: string) => {
 
   const postsData = await postsResponse.json()
   let results = postsData.value
+
+  results = results.map((item: any) => ({
+    ...item,
+    isLiked: item.LikedBy
+      ? item.LikedBy.some((user: any) => userInfo.Email === user.EMail)
+      : false,
+  }))
 
   const hasMore = postsData["@odata.nextLink"] ? true : false
   const nextLinkValue = postsData["@odata.nextLink"] || undefined
