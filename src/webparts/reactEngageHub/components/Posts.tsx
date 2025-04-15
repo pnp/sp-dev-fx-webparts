@@ -15,7 +15,7 @@ import {
   addNewComment,
   deleteComment,
   getPosts,
-  updateLikeDislike,
+  updateCommentLikeDislike,
   updatePostLikeDislike,
 } from "../services/SPService"
 import styles from "./ReactEngageHub.module.scss"
@@ -72,7 +72,6 @@ const useStyles = makeStyles({
 
 export const Posts = ({ props }: any) => {
   const [posts, setPosts] = React.useState<any>([])
-  const [likeDislike, setLikeDislike] = React.useState<boolean>(false)
   const [newComments, setNewComments] = React.useState<{
     [key: number]: string
   }>({})
@@ -83,6 +82,10 @@ export const Posts = ({ props }: any) => {
   const fluentStyles = useStyles()
 
   const loaderRef = React.useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -103,23 +106,24 @@ export const Posts = ({ props }: any) => {
     }
   }, [hasMore, nextLink])
 
-  useEffect(() => {
-    fetchPosts()
-  }, [likeDislike, newComments])
-
-  const onClickLikeBtn = async (postId: number, commentId: string) => {
-    setLikeDislike(!likeDislike)
-    await updateLikeDislike(postId, commentId, likeDislike)
+  const onClickCommentLikeBtn = async (
+    postId: number,
+    commentId: string,
+    isLikedByUser: boolean
+  ) => {
+    await updateCommentLikeDislike(postId, commentId, isLikedByUser)
+    await fetchPosts()
   }
 
   const onClickPostLikeBtn = async (postId: number, postLike: boolean) => {
     await updatePostLikeDislike(postId, postLike)
-    fetchPosts()
+    await fetchPosts()
   }
 
   const onClickNewCommentBtn = async (postId: number) => {
     await addNewComment(postId, newComments[postId])
     setNewComments({ ...newComments, [postId]: "" })
+    await fetchPosts()
   }
 
   const handleNewCommentChange = (postId: number, value: string) => {
@@ -128,6 +132,7 @@ export const Posts = ({ props }: any) => {
 
   const onClickDeleteCommentBtn = async (postID: number, commentID: string) => {
     await deleteComment(postID, commentID)
+    await fetchPosts()
   }
 
   const fetchPosts = async () => {
@@ -265,7 +270,13 @@ export const Posts = ({ props }: any) => {
                                 }
                               />
                             }
-                            onClick={() => onClickLikeBtn(post.ID, comment.id)}
+                            onClick={() =>
+                              onClickCommentLikeBtn(
+                                post.ID,
+                                comment.id,
+                                comment.isLikedByUser
+                              )
+                            }
                           />
                           <Text>{comment.likeCount}</Text>
                         </div>

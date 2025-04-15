@@ -180,7 +180,7 @@ export const updatePostLikeDislike = async (postID: number, like: boolean) => {
   }
 }
 
-export const updateLikeDislike = async (
+export const updateCommentLikeDislike = async (
   postID: number,
   commentID: string,
   like: boolean
@@ -195,7 +195,7 @@ export const updateLikeDislike = async (
   )
 
   // Like or unlike the comment using the factory instance
-  if (like) {
+  if (!like) {
     await commentInst.like()
   } else {
     await commentInst.unlike()
