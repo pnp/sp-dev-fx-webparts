@@ -1,4 +1,6 @@
-export const postsPerPage = 5
-export const commentsPerPage = 5
-export const loadPostsLabel = "Loading your feed…"
-export const loadMorePostsLabel = "Hold up, getting more posts…"
+export const POSTSPERPAGE = 5
+export const COMMENTSPERPAGE = 5
+
+export const RECENTPOSTSLABEL = "Recent posts"
+export const LOADPOSTSLABEL = "Loading your feed…"
+export const LOADMOREPOSTSLABEL = "Hold up, getting more posts…"

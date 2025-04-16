@@ -3,7 +3,7 @@ import { getSP } from "../utils/spUtility"
 import { AdvancedTextAreaType } from "../components/AdvancedTextArea"
 import { Comment, Comments } from "@pnp/sp/comments"
 import { SPHttpClient } from "@microsoft/sp-http"
-import { commentsPerPage, postsPerPage } from "../../constants/constants"
+import { COMMENTSPERPAGE, POSTSPERPAGE } from "../../constants/constants"
 
 export const addNewPost = async (
   post: AdvancedTextAreaType,
@@ -120,12 +120,11 @@ export const uploadImage = async (
 }
 
 export const getPosts = async (context: any, nextLink?: string) => {
-
   const userInfo = await getCurrentUserDetails()
 
   const endpoint = nextLink
     ? nextLink
-    : `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items?$top=${postsPerPage}&$select=*,LikedBy/Id,LikedBy/Title,LikedBy/EMail&$expand=LikedBy&$orderby=Created desc`
+    : `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items?$top=${POSTSPERPAGE}&$select=*,LikedBy/Id,LikedBy/Title,LikedBy/EMail&$expand=LikedBy&$orderby=Created desc`
 
   const postsResponse = await context.spHttpClient.get(
     endpoint,
@@ -147,7 +146,7 @@ export const getPosts = async (context: any, nextLink?: string) => {
 
   const itemsWithComments = await Promise.all(
     results.map(async (item: any) => {
-      const commentsEndpoint = `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items(${item.ID})/GetComments()?$top=${commentsPerPage}`
+      const commentsEndpoint = `${context.pageContext.web.absoluteUrl}/_api/web/lists/getByTitle('Discussion Point')/items(${item.ID})/GetComments()?$top=${COMMENTSPERPAGE}`
 
       const commentsResponse = await context.spHttpClient.get(
         commentsEndpoint,

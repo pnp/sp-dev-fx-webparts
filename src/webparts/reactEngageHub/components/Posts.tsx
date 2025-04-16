@@ -27,7 +27,7 @@ import {
   Heart20Regular,
   Send16Color,
 } from "@fluentui/react-icons"
-import { loadMorePostsLabel, loadPostsLabel } from "../../constants/constants"
+import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
 
 export interface IPostsProps {}
 
@@ -157,7 +157,7 @@ export const Posts = ({ props }: any) => {
   }
 
   if (isLoading) {
-    return <Spinner size='medium' label={loadPostsLabel} />
+    return <Spinner size='medium' label={LOADPOSTSLABEL} />
   }
 
   if (posts.length === 0) {
@@ -322,7 +322,7 @@ export const Posts = ({ props }: any) => {
               setLoaderRef((el) => !el)
             }}
           >
-            <Spinner size='tiny' label={loadMorePostsLabel} />
+            <Spinner size='tiny' label={LOADMOREPOSTSLABEL} />
           </div>
         )}
       </div>
