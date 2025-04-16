@@ -238,7 +238,14 @@ export const Posts = ({ props }: any) => {
                 <Divider style={{ paddingTop: "1rem" }} />
                 {post.comments.map((comment: any) => (
                   <section>
-                    <div className={styles.commentArea}>
+                    <div
+                      className={styles.commentArea}
+                      style={{
+                        backgroundColor: props.isDarkTheme
+                          ? "#2b2b2b"
+                          : "#f7f7f7",
+                      }}
+                    >
                       <div className={styles.avatar}>
                         <Avatar
                           name={comment.author.name}

@@ -6,6 +6,7 @@ import {
   FluentProvider,
   IdPrefixProvider,
   makeStyles,
+  webDarkTheme,
   webLightTheme,
 } from "@fluentui/react-components"
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: "1rem",
     height: "100%",
+    backgroundColor: "transparent",
   },
   container: {
     height: "calc(100vh - 100px)",
@@ -54,7 +56,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
       />
       <IdPrefixProvider value='react-engage-hub-'>
         <FluentProvider
-          theme={webLightTheme}
+          theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
           className={fluentStyles.fluentWrapper}
         >
           <AdvancedTextArea props={props} />
