@@ -6,6 +6,11 @@ This a custom PDF viewer web part for SharePoint Online by integrating Nutrient 
 
 ![Nutrient PDF Viewer Demo](./assets/Nutrient-PDF.gif)
 
+> 🔴 **IMPORTANT:**  
+> This sample uses a third-party SDK provided **for evaluation purposes only**.  
+> A **PAID license** is required after the evaluation period to continue using the SDK **without a red evaluation watermark** on rendered documents.  
+> For licensing and support, please visit [Nutrient.io](https://www.nutrient.io/sdk).
+
 ## Compatibility
 
 | :warning: Important          |
