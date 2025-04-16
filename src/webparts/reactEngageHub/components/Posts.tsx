@@ -27,6 +27,7 @@ import {
   Heart20Regular,
   Send16Color,
 } from "@fluentui/react-icons"
+import { loadMorePostsLabel, loadPostsLabel } from "../../constants/constants"
 
 export interface IPostsProps {}
 
@@ -54,10 +55,9 @@ const useStyles = makeStyles({
     },
   },
   postCardWrapper: {
-    minHeight: 0,
-    flex: 1,
     overflowY: "auto",
     padding: "0.25rem",
+    height: "350px",
   },
   card: {
     marginBottom: "0.75rem",
@@ -78,6 +78,7 @@ export const Posts = ({ props }: any) => {
   const [nextLink, setNextLink] = React.useState<string | undefined>()
   const [hasMore, setHasMore] = React.useState<boolean>(true)
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
 
   const fluentStyles = useStyles()
 
@@ -88,6 +89,8 @@ export const Posts = ({ props }: any) => {
   }, [])
 
   useEffect(() => {
+    const current = loaderRef.current
+
     const observer = new IntersectionObserver(
       (entries) => {
         const first = entries[0]
@@ -95,16 +98,17 @@ export const Posts = ({ props }: any) => {
           fetchMorePosts()
         }
       },
-      { threshold: 1 }
+      { threshold: 1, rootMargin: "0px" }
     )
 
-    const current = loaderRef.current
-    if (current) observer.observe(current)
+    if (current) {
+      observer.observe(current)
+    }
 
     return () => {
       if (current) observer.unobserve(current)
     }
-  }, [hasMore, nextLink])
+  }, [isLoaderRef])
 
   const onClickCommentLikeBtn = async (
     postId: number,
@@ -153,7 +157,7 @@ export const Posts = ({ props }: any) => {
   }
 
   if (isLoading) {
-    return <Spinner size='medium' label='Loading posts...' />
+    return <Spinner size='medium' label={loadPostsLabel} />
   }
 
   if (posts.length === 0) {
@@ -311,8 +315,16 @@ export const Posts = ({ props }: any) => {
               </article>
             </Card>
           ))}
-        {hasMore && <Spinner size='tiny' label='loading more posts...' />}
-        <div ref={loaderRef}></div>
+        {hasMore && (
+          <div
+            ref={(el) => {
+              loaderRef.current = el
+              setLoaderRef((el) => !el)
+            }}
+          >
+            <Spinner size='tiny' label={loadMorePostsLabel} />
+          </div>
+        )}
       </div>
     </>
   )
