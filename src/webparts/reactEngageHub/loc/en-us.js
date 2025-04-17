@@ -2,6 +2,7 @@ define([], function() {
   return {
     PropertyPaneDescription: "Manage your web part properties",
     BasicGroupName: "Drafting related configurations",
+    AzureOpenAI: "Azure OpenAI Configurations",
     DescriptionFieldLabel: "Description Field",
     AppLocalEnvironmentSharePoint:
       "The app is running on your local environment as SharePoint web part",

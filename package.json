@@ -12,6 +12,8 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@azure/identity": "^4.9.0",
+    "@azure/openai": "^2.0.0",
     "@fluentui/react": "^8.106.4",
     "@fluentui/react-components": "^9.60.0",
     "@fluentui/react-icons": "^2.0.279",
@@ -25,6 +27,7 @@
     "@pnp/logging": "^4.10.0",
     "@pnp/sp": "^4.10.0",
     "@pnp/spfx-controls-react": "3.20.0",
+    "openai": "^4.95.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

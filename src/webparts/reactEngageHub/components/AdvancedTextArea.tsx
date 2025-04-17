@@ -7,6 +7,13 @@ import {
   ToolbarDivider,
   makeStyles,
   Toolbar,
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
 } from "@fluentui/react-components"
 import {
   bundleIcon,
@@ -16,9 +23,12 @@ import {
   Send20Color,
   Send24Regular,
 } from "@fluentui/react-icons"
+import { AzureOpenAI } from "openai"
+
 import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
 import styles from "./ReactEngageHub.module.scss"
+import { grammarFix, reWritePostContents } from "../services/AOAIService"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
@@ -51,6 +61,8 @@ export const AdvancedTextArea = ({ props }: any) => {
     previewUrls: [],
   })
   const fileInputRef = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLTextAreaElement>(null)
+  const [selectedText, setSelectedText] = React.useState("")
 
   const fluentStyles = useStyles()
 
@@ -106,6 +118,97 @@ export const AdvancedTextArea = ({ props }: any) => {
     }
   }, [])
 
+  const handleSelection = () => {
+    const textarea = inputRef.current
+    if (!textarea) return
+
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    const value = textarea.value
+
+    if (start !== end) {
+      setSelectedText(value.substring(start, end))
+    } else {
+      setSelectedText("")
+    }
+  }
+
+  const onClick = async () => {
+    const apiKey = props.apiKey
+    const endpoint = props.apiEndpoint
+    const apiVersion = "2024-10-21"
+    const deployment = props.deploymentName
+
+    const client = new AzureOpenAI({
+      apiKey,
+      endpoint,
+      apiVersion,
+      deployment,
+      dangerouslyAllowBrowser: true,
+    })
+
+    if (selectedText.length === 0) {
+      let response = await reWritePostContents(client, post.postDescription)
+      setPost({ ...post, postDescription: response.choices[0].message.content })
+    } else {
+      let response = await reWritePostContents(client, selectedText)
+      const updatedText = response.choices[0].message.content
+
+      const textarea = inputRef.current
+      if (!textarea) return
+
+      const start = textarea.selectionStart
+      const end = textarea.selectionEnd
+
+      const newContent =
+        post.postDescription.substring(0, start) +
+        updatedText +
+        post.postDescription.substring(end)
+
+      setPost({ ...post, postDescription: newContent })
+    }
+  }
+
+  const primaryActionButtonProps = {
+    onClick,
+  }
+
+  const onClickGrammarFix = async () => {
+    const apiKey = props.apiKey
+    const endpoint = props.apiEndpoint
+    const apiVersion = "2024-10-21"
+    const deployment = props.deploymentName
+
+    const client = new AzureOpenAI({
+      apiKey,
+      endpoint,
+      apiVersion,
+      deployment,
+      dangerouslyAllowBrowser: true,
+    })
+
+    if (selectedText.length === 0) {
+      let response = await grammarFix(client, post.postDescription)
+      setPost({ ...post, postDescription: response.choices[0].message.content })
+    } else {
+      let response = await grammarFix(client, selectedText)
+      const updatedText = response.choices[0].message.content
+
+      const textarea = inputRef.current
+      if (!textarea) return
+
+      const start = textarea.selectionStart
+      const end = textarea.selectionEnd
+
+      const newContent =
+        post.postDescription.substring(0, start) +
+        updatedText +
+        post.postDescription.substring(end)
+
+      setPost({ ...post, postDescription: newContent })
+    }
+  }
+
   return (
     <Card>
       <Toolbar aria-label='Default' {...props}>
@@ -120,13 +223,27 @@ export const AdvancedTextArea = ({ props }: any) => {
         />
         <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
         <ToolbarDivider vertical />
-        <Button
-          icon={<SparkleBundle />}
-          appearance='transparent'
-          className={fluentStyles.rewriteBtn}
-        >
-          Rewrite
-        </Button>
+
+        <Menu positioning='below-end'>
+          <MenuTrigger disableButtonEnhancement>
+            {(triggerProps: MenuButtonProps) => (
+              <SplitButton
+                className={fluentStyles.rewriteBtn}
+                appearance='transparent'
+                menuButton={triggerProps}
+                primaryActionButton={primaryActionButtonProps}
+                icon={<SparkleBundle />}
+              >
+                AI Rewrite
+              </SplitButton>
+            )}
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem onClick={onClickGrammarFix}>Grammar fix</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
       </Toolbar>
       {post.imageUrls.length > 0 && (
         <div className={styles.previewImageWrapper}>
@@ -140,6 +257,7 @@ export const AdvancedTextArea = ({ props }: any) => {
         </div>
       )}
       <Textarea
+        ref={inputRef}
         className={fluentStyles.textArea}
         value={post.postDescription}
         onChange={(e) =>
@@ -149,6 +267,9 @@ export const AdvancedTextArea = ({ props }: any) => {
           })
         }
         placeholder="What's on your mind?"
+        onSelect={handleSelection}
+        onKeyUp={handleSelection}
+        onMouseUp={handleSelection}
       />
       <Button
         icon={<SendIcon />}

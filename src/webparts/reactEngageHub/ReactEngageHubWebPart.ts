@@ -4,6 +4,7 @@ import { Version } from "@microsoft/sp-core-library"
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneSlider,
+  PropertyPaneTextField,
 } from "@microsoft/sp-property-pane"
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base"
 import { IReadonlyTheme } from "@microsoft/sp-component-base"
@@ -16,6 +17,9 @@ import { getSP } from "./utils/spUtility"
 export interface IReactEngageHubWebPartProps {
   title: string
   maxFileLimit: number
+  apiKey: string
+  apiEndpoint: string
+  deploymentName: string
 }
 
 export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactEngageHubWebPartProps> {
@@ -36,6 +40,9 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
           this.properties.title = value
         },
         maxFileLimit: this.properties.maxFileLimit,
+        apiKey: this.properties.apiKey,
+        apiEndpoint: this.properties.apiEndpoint,
+        deploymentName: this.properties.deploymentName,
       })
 
     ReactDom.render(element, this.domElement)
@@ -94,6 +101,20 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
                   label: "Maximum files can upload",
                   min: 1,
                   max: 8,
+                }),
+              ],
+            },
+            {
+              groupName: strings.AzureOpenAI,
+              groupFields: [
+                PropertyPaneTextField("apiKey", {
+                  label: "API Key",
+                }),
+                PropertyPaneTextField("apiEndpoint", {
+                  label: "API Endpoint",
+                }),
+                PropertyPaneTextField("deploymentName", {
+                  label: "Deployment Name",
                 }),
               ],
             },
