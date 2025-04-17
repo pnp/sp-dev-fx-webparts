@@ -2,40 +2,79 @@ import * as React from 'react';
 import styles from './OrganisationChart.module.scss';
 import type { IOrganisationChartProps } from './IOrganisationChartProps';
 import { escape } from '@microsoft/sp-lodash-subset';
+import { spfi, SPFx } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import "@pnp/sp/site-users/web";
 
-export default class OrganisationChart extends React.Component<IOrganisationChartProps> {
+export interface IEmployee {
+  Title: string;
+  Manager: { Title: string };
+  Employee: { Title: string };
+}
+
+export default class OrganisationChart extends React.Component<IOrganisationChartProps, { employees: IEmployee[] }> {
+  private sp = spfi().using(SPFx(this.props.context)); // Correctly initialize spfi with SPFx context
+
+  constructor(props: IOrganisationChartProps) {
+    super(props);
+
+    this.state = {
+      employees: []
+    };
+  }
+
+  public componentDidMount(): void {
+    this._fetchEmployees();
+  }
+
+  private async _fetchEmployees(): Promise<void> {
+    try {
+      // Use this.sp to fetch data from the SharePoint list
+      const employees: IEmployee[] = await this.sp.web.lists
+        .getByTitle("Employee")
+        .items.select("Title", "Manager/Title", "Employee/Title")
+        .expand("Manager", "Employee")
+        ();
+
+      this.setState({ employees });
+      console.log("Fetched employees:", employees);
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
+  }
+
   public render(): React.ReactElement<IOrganisationChartProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+    const { isDarkTheme, environmentMessage, hasTeamsContext, userDisplayName } = this.props;
+    const { employees } = this.state;
 
     return (
       <section className={`${styles.organisationChart} ${hasTeamsContext ? styles.teams : ''}`}>
         <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+          <img
+            alt=""
+            src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')}
+            className={styles.welcomeImage}
+          />
           <h2>Well done, {escape(userDisplayName)}!</h2>
           <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
         </div>
         <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
+          <h3>Employee List</h3>
+          {employees.length > 0 ? (
+            <ul>
+              {employees.map((employee, index) => (
+                <li key={index}>
+                  <strong>Title:</strong> {employee.Title} <br />
+                  <strong>Manager:</strong> {employee.Manager?.Title || "N/A"} <br />
+                  <strong>Employee Name:</strong> {employee.Employee?.Title || "N/A"}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No employees found.</p>
+          )}
         </div>
       </section>
     );

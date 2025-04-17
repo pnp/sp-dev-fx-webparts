@@ -3,7 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -12,8 +13,11 @@ import * as strings from 'OrganisationChartWebPartStrings';
 import OrganisationChart from './components/OrganisationChart';
 import { IOrganisationChartProps } from './components/IOrganisationChartProps';
 
+
 export interface IOrganisationChartWebPartProps {
   description: string;
+  orgType: string; // New property for Org Type
+  list: string;    // New property for List
 }
 
 export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrganisationChartWebPartProps> {
@@ -25,51 +29,33 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
     const element: React.ReactElement<IOrganisationChartProps> = React.createElement(
       OrganisationChart,
       {
-        description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context: this.context
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
-  }
-
-
-
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
-        .then(context => {
-          let environmentMessage: string = '';
-          switch (context.app.host.name) {
-            case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-              break;
-            case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-              break;
-            case 'Teams': // running in Teams
-            case 'TeamsModern':
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              environmentMessage = strings.UnknownEnvironment;
-          }
-
-          return environmentMessage;
-        });
+  protected async onInit(): Promise<void> {
+    if (!this.properties.list) {
+      this.properties.list = 'Employee';
     }
 
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
+    
+
+    if (!this.properties.orgType) {
+      this.properties.orgType = 'List';
+    }
+
   }
+
+ 
+
+ 
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
@@ -110,6 +96,17 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('list', { // New text field for List
+                  label: 'List'
+                }),
+                PropertyPaneDropdown('orgType', { // New dropdown for Org Type
+                  label: 'Org Type',
+                  options: [
+                    { key: 'Type1', text: 'Type 1' },
+                    { key: 'Type2', text: 'Type 2' },
+                    { key: 'Type3', text: 'Type 3' }
+                  ]
                 })
               ]
             }

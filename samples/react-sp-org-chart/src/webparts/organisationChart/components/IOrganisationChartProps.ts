@@ -1,7 +1,7 @@
 export interface IOrganisationChartProps {
-  description: string;
-  isDarkTheme: boolean;
+ isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  context:any;
 }
