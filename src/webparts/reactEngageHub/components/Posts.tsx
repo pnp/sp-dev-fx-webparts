@@ -18,7 +18,7 @@ import {
   updateCommentLikeDislike,
   updatePostLikeDislike,
 } from "../services/SPService"
-import styles from "./ReactEngageHub.module.scss"
+import styles from "../ReactEngageHub.module.scss"
 import {
   bundleIcon,
   DeleteFilled,
@@ -58,6 +58,7 @@ const useStyles = makeStyles({
     overflowY: "auto",
     padding: "0.25rem",
     height: "350px",
+    paddingBottom: "3rem",
   },
   card: {
     marginBottom: "0.75rem",
@@ -98,7 +99,7 @@ export const Posts = ({ props }: any) => {
           fetchMorePosts()
         }
       },
-      { threshold: 1, rootMargin: "0px" }
+      { threshold: 0.5, rootMargin: "0px" }
     )
 
     if (current) {

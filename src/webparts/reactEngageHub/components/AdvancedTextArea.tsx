@@ -27,7 +27,7 @@ import { AzureOpenAI } from "openai"
 
 import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
-import styles from "./ReactEngageHub.module.scss"
+import styles from "../ReactEngageHub.module.scss"
 import { grammarFix, reWritePostContents } from "../services/AOAIService"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
