@@ -1,0 +1,36 @@
+{
+    "action": "created",
+    "repository": {
+        "full_name": "pnp/sp-dev-fx-webparts",
+        "name": "sp-dev-fx-webparts",
+        "owner": {
+            "login": "pnp"
+        }
+    },
+    "issue": {
+        "number": 42,
+        "title": "Sample issue",
+        "body": "This issue needs attention",
+        "user": {
+            "login": "test-user"
+        },
+        "labels": [
+            {
+                "name": "Needs: Author Feedback"
+            },
+            {
+                "name": "no-recent-activity"
+            }
+        ],
+        "state": "open"
+    },
+    "comment": {
+        "body": "Here is my response.",
+        "user": {
+            "login": "test-user"
+        }
+    },
+    "sender": {
+        "login": "test-user"
+    }
+}

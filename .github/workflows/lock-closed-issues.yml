@@ -1,0 +1,59 @@
+name: Lock Closed Issues After 7 Days
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Daily at 6:00 UTC
+  workflow_dispatch:
+
+jobs:
+  lock-closed-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Lock closed issues with no activity after 7 days
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const DAYS_INACTIVE = 7;
+            const sinceDate = new Date(Date.now() - DAYS_INACTIVE * 24 * 60 * 60 * 1000).toISOString();
+
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'closed',
+                sort: 'updated',
+                direction: 'asc',
+                per_page: 100,
+                since: sinceDate
+              }
+            );
+
+            for (const issue of issues) {
+              if (issue.pull_request) continue; // Skip PRs
+              if (issue.locked) continue; // Already locked
+              const closedAt = new Date(issue.closed_at);
+              const now = new Date();
+              const daysSinceClosed = (now - closedAt) / (1000 * 60 * 60 * 24);
+              
+              if (daysSinceClosed >= DAYS_INACTIVE) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `Issues that have been closed & had no follow-up activity for at least 7 days are automatically locked. Please refer to our wiki for more details, including how to remediate this action if you feel this was done prematurely or in error: [Issue List: Our approach to locked issues](https://github.com/SharePoint/sp-dev-docs/wiki/Issue-List#our-approach-to-locked-issues)`
+                });
+
+                await github.rest.issues.lock({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  lock_reason: 'resolved'
+                });
+
+                console.log(`Locked issue #${issue.number}`);
+              }
+            }

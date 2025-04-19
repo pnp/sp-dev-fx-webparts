@@ -107,3 +107,15 @@ status:spfx-doctor:
 
   # Close the issue
   close: true
+
+# Auto-reply when 'Needs: Author Feedback' + no activity
+'Needs: Author Feedback':
+  issue:
+    comment: >
+      This issue has been automatically marked as stale because it requires author feedback but has not had any activity for **7 days**. It will be closed soon if no update is received.
+
+# Remove 'no-recent-activity' if user comments
+no-recent-activity:
+  issue:
+    remove-labels:
+      - no-recent-activity

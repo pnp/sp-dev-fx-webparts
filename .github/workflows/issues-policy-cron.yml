@@ -1,0 +1,30 @@
+# .github/workflows/issue-policy-cron.yml
+name: Issue Management Cron
+
+on:
+  schedule:
+    - cron: '0 * * * *' # hourly
+  workflow_dispatch:
+
+jobs:
+  close-answered:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close answered issues with no activity in 3 days
+        uses: actions/stale@v4
+        with:
+          days-before-close: 3
+          only-labels: status:answered
+          stale-issue-message: >
+            Closing this issue as "answered". If you encounter a similar issue(s), please open a new one. See: https://github.com/pnp/sp-dev-fx-webparts/wiki/Issues-List#our-approach-to-closed-issues
+          close-issue-message: ""
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  close-author-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close stale issues with no recent author activity after 7 days
+        uses: dessant/label-actions@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/label-actions.yml

@@ -1,0 +1,24 @@
+{
+  "action": "opened",
+  "repository": {
+    "full_name": "pnp/sp-dev-fx-webparts",
+    "name": "sp-dev-fx-webparts",
+    "owner": {
+      "login": "pnp"
+    }
+  },
+  "issue": {
+    "number": 42,
+    "title": "Sample issue",
+    "body": "This is a test issue",
+    "assignee": null,
+    "labels": [],
+    "user": {
+      "login": "test-user"
+    },
+    "state": "open"
+  },
+  "sender": {
+    "login": "test-user"
+  }
+}
