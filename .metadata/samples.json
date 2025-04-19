@@ -15273,6 +15273,57 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-easter-egg-hunt-game",
+    "source": "pnp",
+    "title": "Easter Egg Hunt Game SPFx Web Part",
+    "shortDescription": "A fun interactive Easter Egg Hunt Game built as a SharePoint Framework web part",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-easter-egg-hunt-game",
+    "longDescription": [
+      "A fun interactive Easter Egg Hunt Game built as a SharePoint Framework web part. This web part creates an engaging, festive activity that allows users to hunt for hidden Easter eggs across a SharePoint page. The game includes regular and bonus eggs with different point values, and eggs can be placed both inside the web part and around other elements on the SharePoint page."
+    ],
+    "creationDateTime": "2025-04-15",
+    "updateDateTime": "2025-04-15",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/huntgame.png",
+        "alt": "Easter Egg Hunt Game"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/EasterEggHunt.gif",
+        "alt": "Easter Egg Hunt Game gif"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas",
+        "twitter": "ValerasNarbutas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-easter-egg-hunt-game"
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-edit-applicationcustomizer",
     "source": "pnp",
     "title": "Edit Application Customizers Web Part",
