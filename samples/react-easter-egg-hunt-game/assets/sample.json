@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-easter-egg-hunt-game",
     "source": "pnp",
-    "title": " Easter Egg Hunt Game SPFx Web Part",
+    "title": "Easter Egg Hunt Game SPFx Web Part",
     "shortDescription": "A fun interactive Easter Egg Hunt Game built as a SharePoint Framework web part",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-easter-egg-hunt-game",
     "longDescription": [

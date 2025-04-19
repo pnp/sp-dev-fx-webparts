@@ -1,4 +1,4 @@
-# Easter Egg Hunt Game SPFx Webpart
+# Easter Egg Hunt Game SPFx Web part
 
 A fun interactive Easter Egg Hunt Game built as a SharePoint Framework web part. This web part creates an engaging, festive activity that allows users to hunt for hidden Easter eggs across a SharePoint page. The game includes regular and bonus eggs with different point values, and eggs can be placed both inside the web part and around other elements on the SharePoint page.
 
