@@ -14,51 +14,22 @@ build.rig.getTasks = function () {
   return result;
 };
 
-/*
-Only here For documentation
-let needIESupport = false;
-if (!!process.argv && process.argv.length > 0) {
-  needIESupport = process.argv.findIndex(item => '--noie11' === item.toLowerCase()) === -1;
-}
+build.configureWebpack.mergeConfig({
+  additionalConfiguration: (generatedConfiguration) => {
+    // Add polyfills for Node.js core modules
+    generatedConfiguration.resolve = {
+      ...generatedConfiguration.resolve,
+      fallback: {
+        http: require.resolve('stream-http'),
+        https: require.resolve('https-browserify'),
+        timers: require.resolve('timers-browserify'),
+        fs: false,
+        stream:require.resolve("stream-browserify")
+      }
+    };
 
-if (needIESupport) {
-  const ie11BabeLoader = {
-    loader: 'babel-loader',
-    options: {
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            targets: {
-              "ie": "11"
-            }
-          }
-        ]
-      ]
-    }
-  };
+    return generatedConfiguration;
+  }
+});
 
-  //process.stdout.write(`Adding babel-loader to support IE11 \n`);
-  build.configureWebpack.mergeConfig({
-    additionalConfiguration: (generatedConfiguration) => {
-      generatedConfiguration.module.rules.push({
-        test: /\.js$/,
-        //
-        //This selector increase the webpack(gulp serve) time 5 times then without
-        //  exclude: [/node_modules\/(?!(rss-parser))/],
-        //
-        include: [
-          path.resolve(__dirname, "node_modules/rss-parser"),
-        ],
-        use: [ie11BabeLoader]
-      });
-
-      return generatedConfiguration;
-    }
-  });
-} else {
-  process.stdout.write(`No IE11 Support is set \n`);
-}
-
-*/
 build.initialize(gulp);

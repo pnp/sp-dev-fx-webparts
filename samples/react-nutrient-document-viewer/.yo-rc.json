@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.7",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-nutrient-document-viewer-web-part-for-sharepoint",
+    "libraryId": "b99b59ad-b4a8-47ab-be66-a9b5e7bcb666",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-nutrient-document-viewer-web-part-for-sharepoint",
+    "solutionShortDescription": "react-nutrient-document-viewer-web-part-for-sharepoint description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

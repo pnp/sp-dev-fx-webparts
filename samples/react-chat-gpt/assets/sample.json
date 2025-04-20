@@ -31,25 +31,24 @@
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example2.png",
         "alt": "Web Part Preview"
       },
-        {
+      {
         "type": "image",
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example.png",
         "alt": "Web Part Preview"
       },
-    {
+      {
         "type": "image",
         "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example3.png",
         "alt": "Web Part Preview"
       },
-            {
+      {
         "type": "image",
         "order": 103,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/chatgpt.gif",
         "alt": "Web Part Preview"
       }
-
     ],
     "authors": [
       {

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-mermaid-diagram",
+    "source": "pnp",
+    "title": "Mermaid Diagram Web Part for SharePoint Online",
+    "shortDescription": "I created this web part to add Mermaid diagram support in SharePoint Online as part of my tutorial series. While working on it, I found this discussion thread: Displaying Mermaid Diagrams in SharePoint Online Markdown Web Parts, which highlights the need for a proper solution.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-mermaid-diagram",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-mermaid-diagram",
+    "longDescription": [
+      "I created this web part to add Mermaid diagram support in SharePoint Online as part of my tutorial series. While working on it, I found this discussion thread: Displaying Mermaid Diagrams in SharePoint Online Markdown Web Parts, which highlights the need for a proper solution."
+    ],
+    "creationDateTime": "2025-03-16",
+    "updateDateTime": "2025-03-16",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "js-mermaid.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/js-mermaid.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "Mermaid.gif",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/Mermaid.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+        "pictureUrl": "https://github.com/cfernandes-muhimbi.png",
+        "name": "Clavin Fernandes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

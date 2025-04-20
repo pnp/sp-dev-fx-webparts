@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-vuejs-todo-single-file-component",
     "source": "pnp",
-    "title": "Todo Client Web Part built with Vue.js and Vue\u0027s single-file components",
+    "title": "Todo Client Web Part built with Vue.js and Vue's single-file components",
     "shortDescription": "Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vuejs-todo-single-file-component",
     "longDescription": [
@@ -28,7 +28,7 @@
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Todo Client Web Part built with Vue.js and Vue\u0027s single-file components"
+        "alt": "Todo Client Web Part built with Vue.js and Vue's single-file components"
       }
     ],
     "authors": [
@@ -46,6 +46,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vuejs-todo-single-file-component"
   }
 ]
