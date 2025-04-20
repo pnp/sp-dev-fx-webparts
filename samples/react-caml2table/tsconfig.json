@@ -1,7 +1,7 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.5/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2018",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -14,8 +14,6 @@
     "inlineSources": false,
     "strictNullChecks": false,
     "noUnusedLocals": false,
-    "noImplicitAny": true,
-
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
@@ -24,10 +22,12 @@
       "webpack-env"
     ],
     "lib": [
-      "es5",
+      "es2018",
       "dom",
       "es2015.collection",
-      "es2015.promise"
+      "es2015.promise",
+      "es2016.array.include",
+      "es2018.promise"
     ]
   },
   "include": [

@@ -1,0 +1,91 @@
+{
+    "contributionsFolder": "samples",
+    "templateLines": [
+        "Sample PR validation for #{{prNumber}}",
+        "---",
+        "",
+        "{{#if hasIssues}}",
+        "## ⚠️ Validation status: warnings",
+        "{{else}}",
+        "## ✅ Validation status: success",
+        "{{/if}}",
+        "",
+        "We automatically validate all pull requests against our [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md) to ensure that all samples provide a consistent experience to our community.",
+        "",
+        "In order to merge this PR in a timely manner, the following criteria must be met:",
+        "",
+        "Validation|Status",
+        "---|---",
+        "{{#each validationResults}}",
+        "[{{this.rule}}]({{this.href}})|{{#if this.success}}✅ Succeeded{{else}}⚠️ Warning{{/if}}",
+        "{{/each}}",
+        "",
+        "{{#if hasIssues}}",
+        "@{{author}} please address the above issues and push new changes to this branch.",
+        "For more information, see the [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).",
+        "{{/if}}"
+    ],
+    "limitToSingleFolder": {
+        "rule": "Pull request affects only one folder",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#typos-issues-bugs-and-contributions",
+        "order": 1
+    },
+    "requireVisitorStats": {
+        "rule": "README.md contains visitor stat image",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#visitor-stats-image",
+        "order": 4
+    },
+    "folderName": {
+        "rule": "Sample folder name follows naming convention",
+        "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#sample-folder",
+        "acceptedFolders": [
+            "react-*",
+            "angular-*",
+            "handlebarsjs-*",
+            "jquery-*",
+            "js-*",
+            "knockout-*",
+            "vue-*",
+            "vuejs-*"
+        ],
+        "order": 2
+    },
+    "fileRules": [
+        {
+            "require": ".nvmrc",
+            "rule": "Sample requires a .nvmrc file",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#nvmrc",
+            "order": 6
+        },
+        {
+            "require": "README.md",
+            "rule": "Sample requires a README.md",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#readmemd",
+            "order": 3
+        },
+        {
+            "require": "assets/*.png",
+            "rule": "Sample requires a screenshot .png in assets folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#assets",
+            "order": 5
+        },
+        {
+            "forbid": "*.sppkg",
+            "rule": "No .sppkg file",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 10
+        },
+        {
+            "forbid": "node_modules/**",
+            "rule": "No node_modules folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 11
+        },
+        {
+            "forbid": "lib/**",
+            "rule": "No lib folder",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
+            "order": 12
+        }
+    ]
+}

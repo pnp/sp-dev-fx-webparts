@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "docu-genie-solution",
+    "libraryId": "43b4f64c-dec8-4096-b978-6deac8ac42aa",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "DocuGenie Solution",
+    "solutionShortDescription": "DocuGenie Solution description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

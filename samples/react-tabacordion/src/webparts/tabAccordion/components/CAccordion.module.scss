@@ -1,237 +1,235 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-/*
-* ----------------------------------------------
-* Demo styles
-* ----------------------------------------------
-**/
-.webparttitle {
-  font-size: 32px;
+.accordionContainer {
+  margin-top: 20px;
+}
+
+.webpartTitle {
+  font-size: 20px;
   font-weight: 600;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.webpartheader>span {
-  float: right;
-  position:relative;
-}
-
-.positionAbsolute {
-  position: absolute;
-}
-
-.positionRelative {
-  position: relative;
-  display: inline;
-  padding-left: 20px;
-  font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  font-size: 21px;
-  top: 15%;
-  font-weight: 600;
+  margin-bottom: 16px;
+  color: $ms-color-neutralPrimary;
 }
 
 .accordion {
- // border-bottom: 1px solid;
-  //border-radius: 2px;
- // border-bottom-color: $ms-color-themePrimary;
-  float: left;
   width: 100%;
-  @media (max-width: 480px) {
-    margin-top: 10px !important;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.accordionItem {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $ms-color-white;
+  
+  &:focus {
+    outline: none;
   }
-  @media (max-width: 320px) {
-    margin-top: 10px !important;
-    
-  }
 }
 
-
-.accordion__item{
-  margin-bottom: 15px;
-}
-
-.accordion__item:focus{
-  outline:none;
-}
-
-.accordionItemHasIcon {
-  position: relative;
-}
-
-.accordion__title {
-  background-color: $ms-color-neutralLighter;
-  color: $ms-color-themePrimary;
+.accordionTitle {
+  background-color: $ms-color-white;
+  color: $ms-color-neutralPrimary;
   cursor: pointer;
-  padding: 8px 0px 10px 0px;
+  padding: 14px 16px;
   text-align: left;
   border: none;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  font-weight: normal;
+  transition: background-color 0.2s ease;
+  border-radius: 2px;
+  
   &:hover {
-    background-color: $ms-color-neutralLight;
+    background-color: $ms-color-neutralLighter;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &[aria-expanded='true'] {
+    color: $ms-color-themePrimary;
+    font-weight: 600;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid $ms-color-neutralLight;
+    
+    &:hover {
+      background-color: $ms-color-neutralLighter;
+    }
   }
 }
 
-.accordion__item [aria-expanded='true'], .accordion__item [aria-selected='true'] {
-  background-color: $ms-color-themePrimary;
-  color:$ms-color-white;
-  &:hover {
-    background-color: $ms-color-themeDarker;
-  }
-}
-
-.accordion__title:focus  {
-  outline:none;
-  border:none;
-}
-
-.accordion__body {
-  padding: 5px 20px;
+.accordionBody {
+  padding: 20px;
   display: block;
-  animation: fadein 0.35s ease-in;
+  background-color: $ms-color-white;
+  animation: fadeIn 0.25s ease-in;
+  
+  // Styles for rich text content
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h3 {
+    font-size: 16px;
+  }
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+    
+    li {
+      margin-bottom: 4px;
+    }
+  }
+  
+  // Table styles
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border: 1px solid $ms-color-neutralLight;
+  }
+  
+  td {
+    padding: 12px 16px;
+    border: 1px solid $ms-color-neutralLight;
+    vertical-align: top;
+  }
+  
+  tr:nth-child(even) {
+    background-color: $ms-color-neutralLighterAlt;
+  }
+  
+  tr:hover {
+    background-color: $ms-color-neutralLighter;
+  }
+  
+  // Link styles
+  a {
+    color: $ms-color-themePrimary !important;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  // Image styles
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    margin: 8px 0;
+  }
+  
+  // Code block styles
+  code, pre {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: $ms-color-neutralLighterAlt;
+    border-radius: 3px;
+  }
+  
+  code {
+    padding: 2px 4px;
+    font-size: 90%;
+  }
+  
+  pre {
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.45;
+    word-wrap: normal;
+    margin-bottom: 16px;
+    
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
 }
-
 
 .accordionBodyHidden {
   display: none;
   opacity: 0;
-  animation: fadein 0.35s ease-in;
 }
 
-.accordion__title > *:last-child, .accordion__body > *:last-child {
-  margin-bottom: 0;
-}
-
-.accordion__arrow {
-  display: inline-block;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  top: 20%;
-  border-radius: 20px;
-  background-color: $ms-color-themePrimary;
-  color:$ms-color-white;
-  margin-left: 20px;
-  &::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 10px;
-    height: 2px;    
-    content: '';
-    background-color: $ms-color-white;
-  }
-  &::before {
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 10px;
-    height: 2px;
-    content: '';
-    transform: rotate(45deg);
-    background-color: $ms-color-white;
+.accordionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $ms-color-neutralLighter;
+  margin-left: 8px;
+  transition: transform 0.25s ease;
+  
+  i {
+    color: $ms-color-neutralPrimary;
+    font-size: 12px;
   }
 }
 
-[aria-expanded='true'] .accordion__arrow, [aria-selected='true'] .accordion__arrow{
-	background-color: $ms-color-white;
-}
-
-[aria-expanded='true'] .accordion__arrow::before, [aria-selected='true'] .accordion__arrow::before {
-  transform: rotate(-45deg);
-  background-color: $ms-color-themePrimary;
-  color:$ms-color-themePrimary;
-}
-
-.accordion__arrow::before {
-  left: 2px;
-}
-
-.accordion__arrow::after {
-  right: 2px;
-  transform: rotate(-45deg);
-}
-
-[aria-expanded='true'] .accordion__arrow::after, [aria-selected='true'] .accordion__arrow::after {
-  transform: rotate(45deg);
-  background-color: $ms-color-themePrimary;
-}
-
-.accordion__arrow {
-  &::before, &::after {
-    transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+.accordionTitle[aria-expanded='true'] .accordionIcon {
+  transform: rotate(180deg);
+  background-color: $ms-color-themeLighter;
+  
+  i {
+    color: $ms-color-themePrimary;
   }
 }
 
-/* -------------------------------------------------- */
-/* ---------------- Animation part ------------------ */
-/* -------------------------------------------------- */
+// Loading state
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+  background-color: $ms-color-white;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-@keyframes fadein {
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
-  }
-}
-
-
-@keyframes moveDown {
-  0% {
-    transform: translateY(0);
-  }
-
-  10% {
-    transform: translateY(0);
-  }
-
-  20% {
-    transform: translateY(5px);
-  }
-
-  30% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-
-@keyframes moveUp {
-  0% {
-    transform: translateY(0);
-  }
-
-  10% {
-    transform: translateY(0);
-  }
-
-  20% {
-    transform: translateY(-5px);
-  }
-
-  30% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-
-.accordionTitleAnimated {
-  &:hover .accordion__arrow {
-    animation-name: moveDown;
-    animation-duration: 1.5s;
-  }
-  &[aria-expanded='true']:hover .accordion__arrow {
-    animation-name: moveUp;
-    animation-duration: 1.5s;
   }
 }
