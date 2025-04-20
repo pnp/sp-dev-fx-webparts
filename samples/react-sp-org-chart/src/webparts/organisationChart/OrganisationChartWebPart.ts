@@ -3,21 +3,20 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'OrganisationChartWebPartStrings';
 import OrganisationChart from './components/OrganisationChart';
 import { IOrganisationChartProps } from './components/IOrganisationChartProps';
 
 
 export interface IOrganisationChartWebPartProps {
-  description: string;
-  orgType: string; // New property for Org Type
-  list: string;    // New property for List
+  list: string;
+  gradientStart: string;
+  gradientEnd: string;
+  webpartTitle: string;
 }
 
 export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrganisationChartWebPartProps> {
@@ -33,7 +32,12 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        context: this.context
+        context: this.context,
+        list: this.properties.list,
+        gradientStart: this.properties.gradientStart,
+        gradientEnd: this.properties.gradientEnd,
+        webpartTitle: this.properties.webpartTitle,
+
       }
     );
 
@@ -42,20 +46,28 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
 
   protected async onInit(): Promise<void> {
     if (!this.properties.list) {
-      this.properties.list = 'Employee';
+      this.properties.list = 'Employees';
     }
 
-    
 
-    if (!this.properties.orgType) {
-      this.properties.orgType = 'List';
+
+    if (!this.properties.gradientStart) {
+      this.properties.gradientStart = '#6a11cb';
+    }
+
+    if (!this.properties.gradientEnd) {
+      this.properties.gradientEnd = '#2575fc';
+    }
+
+    if (!this.properties.webpartTitle) {
+      this.properties.webpartTitle = 'Organisation Chart';
     }
 
   }
 
- 
 
- 
+
+
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
@@ -88,25 +100,22 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Organisation Chart"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('webpartTitle', {
+                  label: "Organisation Chart"
+                }), 
+                PropertyPaneTextField('gradientStart', {
+                  label: "Gradient Start Color"
                 }),
-                PropertyPaneTextField('list', { // New text field for List
+                PropertyPaneTextField('gradientEnd', {
+                  label: "Gradient End Color"
+                }),
+                PropertyPaneTextField('list', {
                   label: 'List'
-                }),
-                PropertyPaneDropdown('orgType', { // New dropdown for Org Type
-                  label: 'Org Type',
-                  options: [
-                    { key: 'Type1', text: 'Type 1' },
-                    { key: 'Type2', text: 'Type 2' },
-                    { key: 'Type3', text: 'Type 3' }
-                  ]
                 })
               ]
             }

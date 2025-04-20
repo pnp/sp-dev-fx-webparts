@@ -20,6 +20,8 @@
     "@microsoft/sp-property-pane": "1.20.0",
     "@microsoft/sp-webpart-base": "1.20.0",
     "@pnp/sp": "^4.12.0",
+    "@unicef/react-org-chart": "github:unicef/react-org-chart",
+    "clsx": "^2.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

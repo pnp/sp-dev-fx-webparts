@@ -4,4 +4,8 @@ export interface IOrganisationChartProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   context:any;
+  list: string;  
+  gradientStart: string; 
+  gradientEnd: string;
+  webpartTitle:string
 }

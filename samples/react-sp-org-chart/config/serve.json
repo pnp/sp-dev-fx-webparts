@@ -2,5 +2,5 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
-  "initialPage": "https://sudeepghatakdemos.sharepoint.com/sites/AshishGhatak/_layouts/workbench.aspx"
+  "initialPage": "https://thetaco1nz.sharepoint.com/sites/sudeep/_layouts/workbench.aspx"
 }

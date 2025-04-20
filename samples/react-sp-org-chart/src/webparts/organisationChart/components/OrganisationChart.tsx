@@ -1,27 +1,43 @@
 import * as React from 'react';
 import styles from './OrganisationChart.module.scss';
 import type { IOrganisationChartProps } from './IOrganisationChartProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import "@pnp/sp/site-users/web";
 
 export interface IEmployee {
-  Title: string;
-  Manager: { Title: string };
-  Employee: { Title: string };
+  Id: number;
+  Title: string; // Job Title
+  Employee: {
+    Title: string; // Display Name
+    Email: string;
+    Id: number;
+  };
+  Manager?: {
+    Title: string;
+    Email: string;
+    Id: number;
+  };
 }
 
-export default class OrganisationChart extends React.Component<IOrganisationChartProps, { employees: IEmployee[] }> {
-  private sp = spfi().using(SPFx(this.props.context)); // Correctly initialize spfi with SPFx context
+export interface IOrganisationChartState {
+  employees: IEmployee[];
+  selectedId: number | null;
+  searchQuery: string;
+  error: string | null;
+}
+
+export default class OrganisationChart extends React.Component<IOrganisationChartProps, IOrganisationChartState> {
+  private sp = spfi().using(SPFx(this.props.context));
 
   constructor(props: IOrganisationChartProps) {
     super(props);
-
     this.state = {
-      employees: []
+      employees: [],
+      selectedId: null,
+      searchQuery: '',
+      error: null
     };
   }
 
@@ -31,52 +47,93 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
 
   private async _fetchEmployees(): Promise<void> {
     try {
-      // Use this.sp to fetch data from the SharePoint list
-      const employees: IEmployee[] = await this.sp.web.lists
-        .getByTitle("Employee")
-        .items.select("Title", "Manager/Title", "Employee/Title")
-        .expand("Manager", "Employee")
-        ();
+      const items: IEmployee[] = await this.sp.web.lists
+        .getByTitle(this.props.list)
+        .items
+        .select("Id", "Title", "Employee/Title", "Employee/EMail", "Employee/Id", "Manager/Title", "Manager/EMail", "Manager/Id")
+        .expand("Employee", "Manager")();
 
-      this.setState({ employees });
-      console.log("Fetched employees:", employees);
-    } catch (error) {
-      console.error("Error fetching employees:", error);
+      this.setState({ employees: items, error: null });
+    } catch (err) {
+      console.error("Error fetching employees:", err);
+      this.setState({ error: "Failed to fetch employees. Check list name and permissions." });
     }
   }
 
-  public render(): React.ReactElement<IOrganisationChartProps> {
-    const { isDarkTheme, environmentMessage, hasTeamsContext, userDisplayName } = this.props;
-    const { employees } = this.state;
+  private _onSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ searchQuery: event.target.value });
+  };
+
+  private _onNodeClick = (id: number): void => {
+    this.setState({ selectedId: id });
+  };
+
+  private _buildTree(managerId: number | null): JSX.Element[] {
+    const { employees, selectedId, searchQuery } = this.state;
+    const search = (searchQuery || '').toLowerCase();
+
+    const matchesSearch = (emp: IEmployee): boolean => {
+      const name = emp.Employee?.Title?.toLowerCase() || '';
+      const nameMatches = name.indexOf(search) !== -1;
+      const children = employees.filter(e => e.Manager?.Id === emp.Employee?.Id);
+      return nameMatches || children.some(matchesSearch);
+    };
+
+    return employees
+      .filter(emp => (emp.Manager?.Id ?? null) === managerId)
+      .filter(emp => !search || matchesSearch(emp))
+      .map(emp => (
+        <li key={emp.Id}>
+          <div
+            className={`${styles.node} ${emp.Id === selectedId ? styles.selected : ''}`}
+            onClick={() => this._onNodeClick(emp.Id)}
+          >
+            <strong>{emp.Employee?.Title}</strong>
+            <br />
+            <small>{emp.Title}</small>
+          </div>
+          <ul>{this._buildTree(emp.Employee?.Id ?? null)}</ul>
+        </li>
+      ));
+  }
+
+
+
+
+
+  public render(): React.ReactElement {
+    const { error, employees, searchQuery } = this.state;
+    const { gradientStart, gradientEnd } = this.props;
+
+    const gradientStyle: React.CSSProperties = {
+      // Default fallback values just in case
+      ['--gradient' as any]: `linear-gradient(135deg, ${gradientStart || '#6a11cb'} 0%, ${gradientEnd || '#2575fc'} 100%)`
+    };
 
     return (
-      <section className={`${styles.organisationChart} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img
-            alt=""
-            src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')}
-            className={styles.welcomeImage}
+       <div className={styles.header}>
+          <h2 className={styles.title}>{this.props.webpartTitle}</h2>
+        
+      <div className={styles.organisationChart} style={gradientStyle}>
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchQuery}
+            onChange={this._onSearchChange}
           />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
         </div>
-        <div>
-          <h3>Employee List</h3>
-          {employees.length > 0 ? (
-            <ul>
-              {employees.map((employee, index) => (
-                <li key={index}>
-                  <strong>Title:</strong> {employee.Title} <br />
-                  <strong>Manager:</strong> {employee.Manager?.Title || "N/A"} <br />
-                  <strong>Employee Name:</strong> {employee.Employee?.Title || "N/A"}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No employees found.</p>
-          )}
-        </div>
-      </section>
+        {error ? (
+          <div className={styles.error}>{error}</div>
+        ) : employees.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <ul className={styles.tree}>
+            {this._buildTree(null)}
+          </ul>
+        )}
+      </div>
+      </div>
     );
   }
 }
