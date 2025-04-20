@@ -95,11 +95,11 @@ export const Posts = ({ props }: any) => {
     const observer = new IntersectionObserver(
       (entries) => {
         const first = entries[0]
-        if (first.isIntersecting && hasMore) {
+        if (first.isIntersecting && hasMore && nextLink) {
           fetchMorePosts()
         }
       },
-      { threshold: 0.5, rootMargin: "0px" }
+      { threshold: 1.0 }
     )
 
     if (current) {
@@ -109,7 +109,7 @@ export const Posts = ({ props }: any) => {
     return () => {
       if (current) observer.unobserve(current)
     }
-  }, [isLoaderRef])
+  }, [isLoaderRef, hasMore, nextLink]) // Add hasMore and nextLink as dependencies
 
   const onClickCommentLikeBtn = async (
     postId: number,
@@ -150,11 +150,27 @@ export const Posts = ({ props }: any) => {
   }
 
   const fetchMorePosts = async () => {
-    if (!nextLink) return
-    const response = await getPosts(props.context, nextLink)
-    setPosts((prev: any) => [...prev, ...response.items])
-    setHasMore(response.hasMore)
-    setNextLink(response.nextLink)
+    if (!nextLink || !hasMore) return
+
+    try {
+      const response = await getPosts(props.context, nextLink)
+
+      console.log(response, "response")
+
+      // Only add new items if we get them
+      if (response.items && response.items.length > 0) {
+        setPosts((prev: any) => [...prev, ...response.items])
+        setHasMore(response.hasMore)
+        setNextLink(response.nextLink)
+      } else {
+        // No more items to load
+        setHasMore(false)
+        setNextLink(undefined)
+      }
+    } catch (error) {
+      setHasMore(false)
+      setNextLink(undefined)
+    }
   }
 
   if (isLoading) {
@@ -323,7 +339,7 @@ export const Posts = ({ props }: any) => {
               </article>
             </Card>
           ))}
-        {hasMore && (
+        {hasMore && nextLink && (
           <div
             ref={(el) => {
               loaderRef.current = el
