@@ -71,7 +71,7 @@ const useStyles = makeStyles({
   },
 })
 
-export const Posts = ({ props }: any) => {
+export const Posts = ({ webpartProps, refreshTrigger }: any) => {
   const [posts, setPosts] = React.useState<any>([])
   const [newComments, setNewComments] = React.useState<{
     [key: number]: string
@@ -87,7 +87,7 @@ export const Posts = ({ props }: any) => {
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [refreshTrigger])
 
   useEffect(() => {
     const current = loaderRef.current
@@ -109,7 +109,7 @@ export const Posts = ({ props }: any) => {
     return () => {
       if (current) observer.unobserve(current)
     }
-  }, [isLoaderRef, hasMore, nextLink]) // Add hasMore and nextLink as dependencies
+  }, [isLoaderRef, hasMore, nextLink])
 
   const onClickCommentLikeBtn = async (
     postId: number,
@@ -142,7 +142,7 @@ export const Posts = ({ props }: any) => {
 
   const fetchPosts = async () => {
     setIsLoading(true)
-    const data = await getPosts(props.context)
+    const data = await getPosts(webpartProps.context)
     setPosts(data.items)
     setHasMore(data.hasMore)
     setNextLink(data.nextLink)
@@ -153,9 +153,7 @@ export const Posts = ({ props }: any) => {
     if (!nextLink || !hasMore) return
 
     try {
-      const response = await getPosts(props.context, nextLink)
-
-      console.log(response, "response")
+      const response = await getPosts(webpartProps.context, nextLink)
 
       // Only add new items if we get them
       if (response.items && response.items.length > 0) {
@@ -258,7 +256,7 @@ export const Posts = ({ props }: any) => {
                     <div
                       className={styles.commentArea}
                       style={{
-                        backgroundColor: props.isDarkTheme
+                        backgroundColor: webpartProps.isDarkTheme
                           ? "#2b2b2b"
                           : "#f7f7f7",
                       }}

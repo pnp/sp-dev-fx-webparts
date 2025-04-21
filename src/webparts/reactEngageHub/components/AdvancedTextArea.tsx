@@ -54,7 +54,7 @@ export type AdvancedTextAreaType = {
 
 const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
-export const AdvancedTextArea = ({ props }: any) => {
+export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const [post, setPost] = React.useState<AdvancedTextAreaType>({
     postDescription: "",
     imageUrls: [],
@@ -87,9 +87,12 @@ export const AdvancedTextArea = ({ props }: any) => {
 
   const handlePostSubmit = async () => {
     // Call addNewPost with the updated post inside the state update
-    await addNewPost(post, props.context.pageContext)
+    await addNewPost(post, webpartProps.context.pageContext)
 
     setPost({ postDescription: "", imageUrls: [], previewUrls: [] })
+    if (onPostSubmitted) {
+      onPostSubmitted()
+    }
   }
 
   const removeImageFromPreview = (index: number) => {
@@ -134,10 +137,10 @@ export const AdvancedTextArea = ({ props }: any) => {
   }
 
   const onClick = async () => {
-    const apiKey = props.apiKey
-    const endpoint = props.apiEndpoint
+    const apiKey = webpartProps.apiKey
+    const endpoint = webpartProps.apiEndpoint
     const apiVersion = "2024-10-21"
-    const deployment = props.deploymentName
+    const deployment = webpartProps.deploymentName
 
     const client = new AzureOpenAI({
       apiKey,
@@ -174,10 +177,10 @@ export const AdvancedTextArea = ({ props }: any) => {
   }
 
   const onClickGrammarFix = async () => {
-    const apiKey = props.apiKey
-    const endpoint = props.apiEndpoint
+    const apiKey = webpartProps.apiKey
+    const endpoint = webpartProps.apiEndpoint
     const apiVersion = "2024-10-21"
-    const deployment = props.deploymentName
+    const deployment = webpartProps.deploymentName
 
     const client = new AzureOpenAI({
       apiKey,
@@ -211,12 +214,12 @@ export const AdvancedTextArea = ({ props }: any) => {
 
   return (
     <Card>
-      <Toolbar aria-label='Default' {...props}>
+      <Toolbar aria-label='Default' {...webpartProps}>
         <input
           type='file'
           accept='image/*'
           multiple
-          max={props.maxFileLimit}
+          max={webpartProps.maxFileLimit}
           style={{ display: "none" }}
           ref={fileInputRef}
           onChange={handleImageUpload}

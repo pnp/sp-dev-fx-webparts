@@ -33,6 +33,13 @@ const useStyles = makeStyles({
 })
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
+
+  const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
+
+  const handlePostSubmitted = () => {
+    setShouldRefreshPosts((prev) => !prev)
+  }
+
   useEffect(() => {
     checkFolderExists()
   }, [])
@@ -59,8 +66,11 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
           theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
           className={fluentStyles.fluentWrapper}
         >
-          <AdvancedTextArea props={props} />
-          <Posts props={props} />
+          <AdvancedTextArea
+            webpartProps={props}
+            onPostSubmitted={handlePostSubmitted}
+          />
+          <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
         </FluentProvider>
       </IdPrefixProvider>
     </div>
