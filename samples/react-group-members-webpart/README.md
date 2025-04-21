@@ -55,12 +55,15 @@ This sample is optimally compatible with the following environment configuration
 ## Contributors
 
 - [Nicolas Kheirallah](https://github.com/NicolasKheirallah)
+- [Nirav Raval](https://github.com/nrvrvl)
 
 ## Version History
 
 | Version | Date            | Comments                                        |
 | ------- | --------------- | ----------------------------------------------- |
 | 1.0.0   | 28 February 2025   | Initial release                                 |
+| 1.1.0   | 21 April 2025   | Added pagination controls                         |
+
 
 
 ## Minimal Path to Awesome
