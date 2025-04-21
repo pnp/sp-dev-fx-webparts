@@ -56,6 +56,8 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  overflow-y: auto;
+  height: 180px;
 }
 .imageContainer{
   display: flex;

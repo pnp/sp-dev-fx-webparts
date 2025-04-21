@@ -17,8 +17,8 @@ const useStyles = makeStyles({
   },
   imageContainer: {
     position: "relative",
-    width: "238px",
-    height: "160px",
+    width: "96px",
+    height: "96px",
   },
   overlay: {
     position: "absolute",
