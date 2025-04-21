@@ -28,6 +28,7 @@ import {
   Send16Color,
 } from "@fluentui/react-icons"
 import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
+import { ImagePreview } from "./ImagePreview"
 
 export interface IPostsProps {}
 
@@ -231,16 +232,8 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
                 {post.Images.length > 0 && (
                   <div className={styles.imageContainer}>
                     {post.Images.map((image: string) => (
-                      <div className={styles.imageWrapper}>
-                        <Image
-                          src={image}
-                          fit='cover'
-                          block
-                          className={fluentStyles.image}
-                          onClick={() => {
-                            window.open(image)
-                          }}
-                        />
+                      <div className={styles.previewImageWrapper}>
+                        <ImagePreview preview={image} />
                       </div>
                     ))}
                   </div>

@@ -57,7 +57,8 @@
   gap: 0.5rem;
   flex-wrap: wrap;
   overflow-y: auto;
-  height: 180px;
+  height: fit-content;
+  padding-bottom: 0.75rem;
 }
 .imageContainer{
   display: flex;

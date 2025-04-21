@@ -4,8 +4,8 @@ import * as React from "react"
 
 export interface IImagePreviewProps {
   preview: any
-  index: number
-  handleRemoveImageFromPreview: (index: number) => void
+  index?: number
+  handleRemoveImageFromPreview?: (index: number) => void
 }
 
 const useStyles = makeStyles({
@@ -63,12 +63,16 @@ export const ImagePreview: React.FunctionComponent<IImagePreviewProps> = (
             window.open(props.preview, "_blank")
           }}
         />
-        <Button
-          icon={<Delete24Regular />}
-          appearance='transparent'
-          className={fluentStyles.button}
-          onClick={() => props.handleRemoveImageFromPreview(props.index)}
-        />
+        {props.handleRemoveImageFromPreview && (
+          <Button
+            icon={<Delete24Regular />}
+            appearance='transparent'
+            className={fluentStyles.button}
+            onClick={() =>
+              props.handleRemoveImageFromPreview?.(props.index ?? -1)
+            }
+          />
+        )}
       </div>
     </div>
   )
