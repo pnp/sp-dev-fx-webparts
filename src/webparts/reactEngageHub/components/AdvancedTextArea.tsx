@@ -32,6 +32,7 @@ import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
 import styles from "../ReactEngageHub.module.scss"
 import { grammarFix, reWritePostContents } from "../services/AOAIService"
+import { ADVANCEDTEXTAREAPLACEHOLDER } from "../../constants/constants"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
@@ -304,7 +305,7 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
             postDescription: e.target.value,
           })
         }
-        placeholder="What's on your mind?"
+        placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
         onSelect={handleSelection}
         onKeyUp={handleSelection}
         onMouseUp={handleSelection}
