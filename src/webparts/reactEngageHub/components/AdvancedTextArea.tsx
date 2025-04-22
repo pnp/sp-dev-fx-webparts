@@ -40,6 +40,29 @@ const useStyles = makeStyles({
   textArea: {
     width: "inherit",
     height: "120px",
+    border: "none",
+    "&::after": {
+      borderBottom: "none",
+    },
+    ":hover": {
+      border: "none",
+      outline: "none",
+    },
+    ":focus": {
+      border: "none",
+      outline: "none",
+    },
+    ":focus-within": {
+      border: "none",
+      outline: "none",
+    },
+    ":active": {
+      border: "none",
+      outline: "none",
+    },
+    "&:focus-visible": {
+      outline: "none",
+    },
   },
   postBtn: {
     width: "fit-content",
