@@ -57,7 +57,7 @@ const useStyles = makeStyles({
   },
   postCardWrapper: {
     overflowY: "auto",
-    padding: "0.25rem",
+    paddingTop: "0.25rem",
     height: "350px",
     paddingBottom: "3rem",
   },

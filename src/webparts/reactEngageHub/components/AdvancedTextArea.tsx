@@ -14,6 +14,9 @@ import {
   MenuPopover,
   MenuTrigger,
   SplitButton,
+  Spinner,
+  tokens,
+  buttonClassNames,
 } from "@fluentui/react-components"
 import {
   bundleIcon,
@@ -44,6 +47,19 @@ const useStyles = makeStyles({
   rewriteBtn: {
     marginLeft: "auto",
   },
+  buttonNonInteractive: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    color: tokens.colorNeutralForeground1,
+    cursor: "default",
+    pointerEvents: "none",
+
+    [`& .${buttonClassNames.icon}`]: {
+      color: tokens.colorStatusSuccessForeground1,
+    },
+    width: "fit-content",
+    alignSelf: "flex-end",
+  },
 })
 
 export type AdvancedTextAreaType = {
@@ -54,12 +70,17 @@ export type AdvancedTextAreaType = {
 
 const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
+type LoadingState = "initial" | "loading" | "loaded"
+
 export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const [post, setPost] = React.useState<AdvancedTextAreaType>({
     postDescription: "",
     imageUrls: [],
     previewUrls: [],
   })
+  const [loadingState, setLoadingState] =
+    React.useState<LoadingState>("initial")
+
   const fileInputRef = React.useRef<HTMLInputElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const [selectedText, setSelectedText] = React.useState("")
@@ -86,6 +107,7 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   }
 
   const handlePostSubmit = async () => {
+    setLoadingState("loading")
     // Call addNewPost with the updated post inside the state update
     await addNewPost(post, webpartProps.context.pageContext)
 
@@ -93,7 +115,10 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
     if (onPostSubmitted) {
       onPostSubmitted()
     }
+    setLoadingState("loaded")
   }
+
+  console.log(loadingState, "loadingState")
 
   const removeImageFromPreview = (index: number) => {
     setPost((prevPost) => {
@@ -212,6 +237,16 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
     }
   }
 
+  const buttonIcon =
+    loadingState === "loading" ? <Spinner size='tiny' /> : <SendIcon />
+
+  const buttonClassName =
+    loadingState === "initial" || loadingState === "loaded"
+      ? fluentStyles.postBtn
+      : fluentStyles.buttonNonInteractive
+
+  const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
+
   return (
     <Card>
       <Toolbar aria-label='Default' {...webpartProps}>
@@ -275,13 +310,14 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
         onMouseUp={handleSelection}
       />
       <Button
-        icon={<SendIcon />}
+        icon={buttonIcon}
         appearance='primary'
         onClick={handlePostSubmit}
         disabled={!post.postDescription}
-        className={fluentStyles.postBtn}
+        disabledFocusable={loadingState === "loading" ? true : false}
+        className={buttonClassName}
       >
-        Post
+        {postButtonLabel}
       </Button>
     </Card>
   )
