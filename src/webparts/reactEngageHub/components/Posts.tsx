@@ -29,6 +29,8 @@ import {
 } from "@fluentui/react-icons"
 import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
 import { ImagePreview } from "./ImagePreview"
+import { WEBPARTCONTEXT } from "../../context/webPartContext"
+import { IReactEngageHubProps } from "../IReactEngageHubProps"
 
 export interface IPostsProps {}
 
@@ -71,8 +73,7 @@ const useStyles = makeStyles({
     marginTop: "5rem",
   },
 })
-
-export const Posts = ({ webpartProps, refreshTrigger }: any) => {
+export const Posts = ({ refreshTrigger }: any) => {
   const [posts, setPosts] = React.useState<any>([])
   const [newComments, setNewComments] = React.useState<{
     [key: number]: string
@@ -81,6 +82,8 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
   const [hasMore, setHasMore] = React.useState<boolean>(true)
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
+  const { context, isDarkTheme, containerHeight } =
+    React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
 
   const fluentStyles = useStyles()
 
@@ -143,7 +146,7 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
 
   const fetchPosts = async () => {
     setIsLoading(true)
-    const data = await getPosts(webpartProps.context)
+    const data = await getPosts(context)
     setPosts(data.items)
     setHasMore(data.hasMore)
     setNextLink(data.nextLink)
@@ -154,7 +157,7 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
     if (!nextLink || !hasMore) return
 
     try {
-      const response = await getPosts(webpartProps.context, nextLink)
+      const response = await getPosts(context, nextLink)
 
       // Only add new items if we get them
       if (response.items && response.items.length > 0) {
@@ -191,7 +194,10 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
       <Text size={300} weight='semibold'>
         Recent Posts
       </Text>
-      <div className={fluentStyles.postCardWrapper}>
+      <div
+        className={fluentStyles.postCardWrapper}
+        style={{ height: containerHeight.toString() + "px" }}
+      >
         {posts &&
           posts.map((post: any) => (
             <Card className={fluentStyles.card}>
@@ -249,9 +255,7 @@ export const Posts = ({ webpartProps, refreshTrigger }: any) => {
                     <div
                       className={styles.commentArea}
                       style={{
-                        backgroundColor: webpartProps.isDarkTheme
-                          ? "#2b2b2b"
-                          : "#f7f7f7",
+                        backgroundColor: isDarkTheme ? "#2b2b2b" : "#f7f7f7",
                       }}
                     >
                       <div className={styles.avatar}>

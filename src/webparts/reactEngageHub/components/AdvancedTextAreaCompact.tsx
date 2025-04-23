@@ -31,6 +31,9 @@ const useStyles = makeStyles({
       outline: "none",
     },
   },
+  compactTextAreaCard: {
+    flexShrink: 0,
+  },
 })
 
 interface IAdvancedTextAreaCompactInterface {
@@ -47,7 +50,7 @@ export const AdvancedTextAreaCompact = ({
   if (!exitCompactView) return null
 
   return (
-    <Card>
+    <Card className={fluentStyles.compactTextAreaCard}>
       <Textarea
         className={fluentStyles.compactTextArea}
         placeholder={ADVANCEDTEXTAREAPLACEHOLDER}

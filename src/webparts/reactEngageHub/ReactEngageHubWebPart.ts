@@ -17,6 +17,7 @@ import { getSP } from "./utils/spUtility"
 export interface IReactEngageHubWebPartProps {
   title: string
   maxFileLimit: number
+  containerHeight: number
   apiKey: string
   apiEndpoint: string
   deploymentName: string
@@ -40,6 +41,7 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
           this.properties.title = value
         },
         maxFileLimit: this.properties.maxFileLimit,
+        containerHeight:this.properties.containerHeight,
         apiKey: this.properties.apiKey,
         apiEndpoint: this.properties.apiEndpoint,
         deploymentName: this.properties.deploymentName,
@@ -101,6 +103,11 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
                   label: "Maximum files can upload",
                   min: 1,
                   max: 8,
+                }),
+                PropertyPaneSlider("containerHeight", {
+                  label: "Posts container height",
+                  min: 350,
+                  max: 766,
                 }),
               ],
             },

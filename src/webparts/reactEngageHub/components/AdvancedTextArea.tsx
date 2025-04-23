@@ -36,6 +36,9 @@ import styles from "../ReactEngageHub.module.scss"
 import { grammarFix, reWritePostContents } from "../services/AOAIService"
 import { ADVANCEDTEXTAREAPLACEHOLDER } from "../../constants/constants"
 import { AdvancedTextAreaCompact } from "./AdvancedTextAreaCompact"
+import { WEBPARTCONTEXT } from "../../context/webPartContext"
+import { useContext } from "react"
+import { IReactEngageHubProps } from "../IReactEngageHubProps"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
@@ -98,6 +101,7 @@ const useStyles = makeStyles({
   },
   advancedTextAreaCard: {
     padding: "1rem !important",
+    flexShrink: " 0",
   },
   toolbar: {
     paddingRight: "0",
@@ -118,7 +122,7 @@ const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
 type LoadingState = "initial" | "loading" | "loaded"
 
-export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
+export const AdvancedTextArea = ({ onPostSubmitted }: any) => {
   const [post, setPost] = React.useState<AdvancedTextAreaType>({
     postDescription: "",
     imageUrls: [],
@@ -132,6 +136,9 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const [selectedText, setSelectedText] = React.useState("")
   const [exitCompactView, setExitCompactView] = React.useState(true)
 
+  const { context, apiKey, apiEndpoint, deploymentName, maxFileLimit } =
+    useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
+
   const fluentStyles = useStyles()
 
   const handleImageClick = () => {
@@ -142,6 +149,11 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
     const files = event.target.files
 
     if (files && files.length > 0) {
+      // Check if total number of files (existing + new) exceeds the limit
+
+      if (post.imageUrls.length + files.length > maxFileLimit) {
+        alert(`You can only upload a maximum of ${maxFileLimit} files.`)
+      }
       const fileArray = Array.from(files)
       const newPreviewUrls = fileArray.map((file) => URL.createObjectURL(file))
 
@@ -156,7 +168,7 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const handlePostSubmit = async () => {
     setLoadingState("loading")
     // Call addNewPost with the updated post inside the state update
-    await addNewPost(post, webpartProps.context.pageContext)
+    await addNewPost(post, context.pageContext)
 
     setPost({ postDescription: "", imageUrls: [], previewUrls: [] })
     if (onPostSubmitted) {
@@ -164,8 +176,6 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
     }
     setLoadingState("loaded")
   }
-
-  console.log(loadingState, "loadingState")
 
   const removeImageFromPreview = (index: number) => {
     setPost((prevPost) => {
@@ -209,13 +219,13 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   }
 
   const onClick = async () => {
-    const apiKey = webpartProps.apiKey
-    const endpoint = webpartProps.apiEndpoint
+    const key = apiKey
+    const endpoint = apiEndpoint
     const apiVersion = "2024-10-21"
-    const deployment = webpartProps.deploymentName
+    const deployment = deploymentName
 
     const client = new AzureOpenAI({
-      apiKey,
+      apiKey: key,
       endpoint,
       apiVersion,
       deployment,
@@ -249,13 +259,13 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   }
 
   const onClickGrammarFix = async () => {
-    const apiKey = webpartProps.apiKey
-    const endpoint = webpartProps.apiEndpoint
+    const key = apiKey
+    const endpoint = apiEndpoint
     const apiVersion = "2024-10-21"
-    const deployment = webpartProps.deploymentName
+    const deployment = deploymentName
 
     const client = new AzureOpenAI({
-      apiKey,
+      apiKey: key,
       endpoint,
       apiVersion,
       deployment,
@@ -303,16 +313,11 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
       <CollapseRelaxed visible={exitCompactView === false ? true : false}>
         {!exitCompactView ? (
           <Card className={fluentStyles.advancedTextAreaCard}>
-            <Toolbar
-              aria-label='Default'
-              {...webpartProps}
-              className={fluentStyles.toolbar}
-            >
+            <Toolbar aria-label='Default' className={fluentStyles.toolbar}>
               <input
                 type='file'
                 accept='image/*'
                 multiple
-                max={webpartProps.maxFileLimit}
                 style={{ display: "none" }}
                 ref={fileInputRef}
                 onChange={handleImageUpload}
