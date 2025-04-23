@@ -14,6 +14,7 @@ import { AdvancedTextArea } from "./components/AdvancedTextArea"
 import { useEffect } from "react"
 import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
 import { Posts } from "./components/Posts"
+import { WEBPARTCONTEXT } from "../context/webPartContext"
 
 const useStyles = makeStyles({
   fluentWrapper: {
@@ -33,7 +34,6 @@ const useStyles = makeStyles({
 })
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
-
   const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
 
   const handlePostSubmitted = () => {
@@ -66,11 +66,13 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
           theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
           className={fluentStyles.fluentWrapper}
         >
-          <AdvancedTextArea
-            webpartProps={props}
-            onPostSubmitted={handlePostSubmitted}
-          />
-          <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
+          <WEBPARTCONTEXT.Provider value={props}>
+            <AdvancedTextArea
+              webpartProps={props}
+              onPostSubmitted={handlePostSubmitted}
+            />
+            <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
+          </WEBPARTCONTEXT.Provider>
         </FluentProvider>
       </IdPrefixProvider>
     </div>
