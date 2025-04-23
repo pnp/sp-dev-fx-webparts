@@ -17,6 +17,7 @@ import {
   Spinner,
   tokens,
   buttonClassNames,
+  Link,
 } from "@fluentui/react-components"
 import {
   bundleIcon,
@@ -27,12 +28,14 @@ import {
   Send24Regular,
 } from "@fluentui/react-icons"
 import { AzureOpenAI } from "openai"
+import { CollapseRelaxed } from "@fluentui/react-motion-components-preview"
 
 import { addNewPost } from "../services/SPService"
 import { ImagePreview } from "./ImagePreview"
 import styles from "../ReactEngageHub.module.scss"
 import { grammarFix, reWritePostContents } from "../services/AOAIService"
 import { ADVANCEDTEXTAREAPLACEHOLDER } from "../../constants/constants"
+import { AdvancedTextAreaCompact } from "./AdvancedTextAreaCompact"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
@@ -84,6 +87,25 @@ const useStyles = makeStyles({
     width: "fit-content",
     alignSelf: "flex-end",
   },
+  collapseBtn: {
+    width: "fit-content",
+    marginLeft: "0.25rem",
+  },
+  actionBtnWrapper: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+  },
+  advancedTextAreaCard: {
+    padding: "1rem !important",
+  },
+  toolbar: {
+    paddingRight: "0",
+    paddingLeft: "0.25rem",
+  },
+  textAreaSpan: {
+    padding: "0 0 0 0.25rem",
+  },
 })
 
 export type AdvancedTextAreaType = {
@@ -108,6 +130,7 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const fileInputRef = React.useRef<HTMLInputElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const [selectedText, setSelectedText] = React.useState("")
+  const [exitCompactView, setExitCompactView] = React.useState(true)
 
   const fluentStyles = useStyles()
 
@@ -272,77 +295,107 @@ export const AdvancedTextArea = ({ webpartProps, onPostSubmitted }: any) => {
   const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
 
   return (
-    <Card>
-      <Toolbar aria-label='Default' {...webpartProps}>
-        <input
-          type='file'
-          accept='image/*'
-          multiple
-          max={webpartProps.maxFileLimit}
-          style={{ display: "none" }}
-          ref={fileInputRef}
-          onChange={handleImageUpload}
-        />
-        <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
-        <ToolbarDivider vertical />
-
-        <Menu positioning='below-end'>
-          <MenuTrigger disableButtonEnhancement>
-            {(triggerProps: MenuButtonProps) => (
-              <SplitButton
-                className={fluentStyles.rewriteBtn}
-                appearance='transparent'
-                menuButton={triggerProps}
-                primaryActionButton={primaryActionButtonProps}
-                icon={<SparkleBundle />}
-              >
-                AI Rewrite
-              </SplitButton>
-            )}
-          </MenuTrigger>
-          <MenuPopover>
-            <MenuList>
-              <MenuItem onClick={onClickGrammarFix}>Grammar fix</MenuItem>
-            </MenuList>
-          </MenuPopover>
-        </Menu>
-      </Toolbar>
-      {post.imageUrls.length > 0 && (
-        <div className={styles.previewImageWrapper}>
-          {post.previewUrls.map((url, index) => (
-            <ImagePreview
-              preview={url}
-              index={index}
-              handleRemoveImageFromPreview={() => removeImageFromPreview(index)}
-            />
-          ))}
-        </div>
-      )}
-      <Textarea
-        ref={inputRef}
-        className={fluentStyles.textArea}
-        value={post.postDescription}
-        onChange={(e) =>
-          setPost({
-            ...post,
-            postDescription: e.target.value,
-          })
-        }
-        placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
-        onSelect={handleSelection}
-        onKeyUp={handleSelection}
-        onMouseUp={handleSelection}
+    <>
+      <AdvancedTextAreaCompact
+        exitCompactView={exitCompactView}
+        setExitCompactView={setExitCompactView}
       />
-      <Button
-        icon={buttonIcon}
-        appearance='primary'
-        onClick={handlePostSubmit}
-        disabled={!post.postDescription}
-        disabledFocusable={loadingState === "loading" ? true : false}
-        className={buttonClassName}
-      >
-        {postButtonLabel}
-      </Button>
-    </Card>
+      <CollapseRelaxed visible={exitCompactView === false ? true : false}>
+        {!exitCompactView ? (
+          <Card className={fluentStyles.advancedTextAreaCard}>
+            <Toolbar
+              aria-label='Default'
+              {...webpartProps}
+              className={fluentStyles.toolbar}
+            >
+              <input
+                type='file'
+                accept='image/*'
+                multiple
+                max={webpartProps.maxFileLimit}
+                style={{ display: "none" }}
+                ref={fileInputRef}
+                onChange={handleImageUpload}
+              />
+              <ToolbarButton
+                icon={<Image24Regular />}
+                onClick={handleImageClick}
+              />
+              <ToolbarDivider vertical />
+
+              <Menu positioning='below-end'>
+                <MenuTrigger disableButtonEnhancement>
+                  {(triggerProps: MenuButtonProps) => (
+                    <SplitButton
+                      className={fluentStyles.rewriteBtn}
+                      appearance='transparent'
+                      menuButton={triggerProps}
+                      primaryActionButton={primaryActionButtonProps}
+                      icon={<SparkleBundle />}
+                    >
+                      AI Rewrite
+                    </SplitButton>
+                  )}
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={onClickGrammarFix}>Grammar fix</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </Toolbar>
+            {post.imageUrls.length > 0 && (
+              <div className={styles.previewImageWrapper}>
+                {post.previewUrls.map((url, index) => (
+                  <ImagePreview
+                    preview={url}
+                    index={index}
+                    handleRemoveImageFromPreview={() =>
+                      removeImageFromPreview(index)
+                    }
+                  />
+                ))}
+              </div>
+            )}
+            <Textarea
+              ref={inputRef}
+              className={fluentStyles.textArea}
+              textarea={{ className: fluentStyles.textAreaSpan }}
+              value={post.postDescription}
+              onChange={(e) =>
+                setPost({
+                  ...post,
+                  postDescription: e.target.value,
+                })
+              }
+              placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
+              onSelect={handleSelection}
+              onKeyUp={handleSelection}
+              onMouseUp={handleSelection}
+            />
+            <div className={fluentStyles.actionBtnWrapper}>
+              <Link
+                className={fluentStyles.collapseBtn}
+                onClick={() => setExitCompactView(!exitCompactView)}
+              >
+                Collapse
+              </Link>
+              <Button
+                icon={buttonIcon}
+                appearance='primary'
+                onClick={handlePostSubmit}
+                disabled={!post.postDescription}
+                disabledFocusable={loadingState === "loading" ? true : false}
+                className={buttonClassName}
+              >
+                {postButtonLabel}
+              </Button>
+            </div>
+          </Card>
+        ) : (
+          <div></div>
+        )}
+      </CollapseRelaxed>
+    </>
   )
 }
