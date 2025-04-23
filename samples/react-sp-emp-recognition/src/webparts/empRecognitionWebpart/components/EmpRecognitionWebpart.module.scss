@@ -5,9 +5,9 @@
   padding: 40px;
   background: #f0f2f5;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
 
@@ -16,12 +16,252 @@
   }
 }
 
+/* Form Container and Layout */
+.formContainer {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Form Field Groups */
+  div {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  /* Labels */
+  label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+  }
+
+  input{
+    align-self: flex-start;
+  }
+
+  /* Text inputs and textareas */
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 100px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical;
+
+    &:focus {
+      border-color: #0078d4;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+    }
+  }
+
+  /* Submit button */
+  button[type="submit"] {
+    width: auto;
+    margin-top: 10px;
+    padding: 10px 24px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+
+    &:hover {
+      background-color: #106ebe;
+    }
+
+    &:active {
+      background-color: #005a9e;
+    }
+  }
+
+  /* Award Type Dropdown - more specific to override */
+  .awardTypeDropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    height: 40px;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #0078d4;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+    }
+  }
+
+  /* Force full width on the search box container */
+  :global(.ms-SearchBox) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* People Picker styles - place these OUTSIDE the .formContainer block */
+.peoplePickerWrapper,
+.peoplePickerControl {
+  width: 100%;
+}
+
+.peoplePickerControl {
+  :global {
+
+    /* Base picker styling */
+    .ms-BasePicker {
+      width: 100%;
+    }
+
+    .ms-BasePicker-text {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 4px 8px;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .ms-BasePicker-text:focus-within {
+      border-color: #0078d4;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+    }
+
+    /* Selected person styling */
+    .ms-PickerPersona-container {
+      display: flex !important;
+      align-items: left;
+      background-color: #f3f2f1;
+      border-radius: 16px;
+      margin: 2px 4px;
+      max-width: calc(100% - 8px);
+      padding: 2px 8px;
+      min-height: 32px;
+      overflow: visible;
+    }
+
+    /* Person image */
+    .ms-Persona-imageArea,
+    .ms-Persona-image {
+      display: block !important;
+      width: 24px !important;
+      height: 24px !important;
+      border-radius: 50% !important;
+      margin-right: 4px;
+    }
+
+    /* Fallback for image errors */
+    .ms-Persona-image.is-error {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23cccccc"><circle cx="12" cy="8" r="4"/><path d="M12,13c-4.4,0-8,3.6-8,8h16C20,16.6,16.4,13,12,13z"/></svg>') !important;
+      background-size: cover !important;
+      background-color: #f3f2f1 !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+    }
+
+    /* Person name */
+    .ms-Persona-details {
+      display: flex !important;
+      margin-right: 8px;
+    }
+
+    .ms-Persona-primaryText {
+      display: block !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #333;
+      font-size: 14px;
+      max-width: 150px;
+    }
+
+    /* Remove button */
+    .ms-PickerItem-removeButton {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      height: 24px;
+      width: 24px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    /* Input field */
+    .ms-BasePicker-input {
+      border: none;
+      flex: 1;
+      height: 28px;
+      font-size: 14px;
+      min-width: 50px;
+    }
+  }
+}
+
+.userPhoto {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 2px solid #eaeaea;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Recognition List */
+.recognitionList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Recognition Card */
 .recognitionCard {
   max-width: 400px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .senderInfo {
@@ -38,16 +278,93 @@
   }
 
   .senderName {
-    font-weight: 600;
     font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
   }
 
   .senderRole {
-    color: gray;
+    font-size: 14px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  div {
     font-size: 14px;
   }
 }
 
+.recipientInfo {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+
+  .recipientName {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+  }
+
+  .recipientRole {
+    font-size: 14px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  div {
+    font-size: 14px;
+  }
+}
+
+.message {
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #f9f9f9;
+}
+
+.awardType {
+  padding: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0078d4;
+}
+
+/* Reactions */
+.reactions {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+  border-top: 1px solid #eee;
+
+  .reaction {
+    background: #f9f9f9;
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .reaction:hover {
+    background: #e0e0e0;
+  }
+}
+
+/* Recognition Section */
 .recognition {
   background: #f5f5f5;
   display: flex;
@@ -94,26 +411,111 @@
   }
 }
 
-.message {
-  padding: 16px;
-  font-size: 14px;
-  line-height: 1.5;
+/* Modal Styles */
+.modalContainer {
+  width: 600px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-.reactions {
+.modalHeader {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  border-top: 1px solid #eee;
-  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-  .reaction {
-    background: #f9f9f9;
-    border-radius: 24px;
-    padding: 4px 10px;
+.modalHeader h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Open Modal Button */
+.openModalButton {
+  background: #0078d4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: #005a9e;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background: #004578;
+    transform: scale(1);
+  }
+}
+
+/* User Selection Preview */
+.selectedUser {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userPreview {
+  display: flex;
+  align-items: center;
+  background-color: #f0f6ff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 4px;
+
+  img.userPhoto {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid #eaeaea;
+  }
+
+  span {
     font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: #333;
+    font-weight: 500;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 15px;
+  }
+
+  .recognitionCard {
+    max-width: 100%;
+  }
+
+  .recognition {
+    flex-direction: column;
+    align-items: flex-start;
+
+    img {
+      margin-bottom: 12px;
+    }
+
+    .recognitionText {
+      margin-left: 0;
+    }
+  }
+
+  .reactions {
+    flex-direction: column;
+    gap: 10px;
+
+    .reaction {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }

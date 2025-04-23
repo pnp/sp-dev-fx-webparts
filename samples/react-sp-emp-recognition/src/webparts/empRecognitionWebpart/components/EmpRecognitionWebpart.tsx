@@ -1,5 +1,7 @@
 import * as React from 'react';
+import AddRecognitionForm from './AddRecognitionForm';
 import styles from './EmpRecognitionWebpart.module.scss';
+import { Modal, IconButton } from '@fluentui/react';
 import type { IEmpRecognitionWebpartProps } from './IEmpRecognitionWebpartProps';
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
@@ -10,11 +12,11 @@ export interface IEmployeeRecognitionItem {
   Id: number;
   From: {
     Title: string;
-    Picture:any
+    Picture: any;
   };
   To: {
     Title: string;
-    Picture: any
+    Picture: any;
   };
   Message: string;
   AwardType: string;
@@ -24,16 +26,21 @@ export interface IEmployeeRecognitionItem {
   DateRecognized: string;
 }
 
-export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, { items: IEmployeeRecognitionItem[] }> {
+export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, { items: IEmployeeRecognitionItem[]; isModalOpen: boolean }> {
   constructor(props: IEmpRecognitionWebpartProps) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      isModalOpen: false
     };
   }
 
   public async componentDidMount(): Promise<void> {
-    const sp = spfi().using(SPFx(this.props.context)); // Ensure you pass the context from the web part
+    await this.fetchItems();
+  }
+
+  private async fetchItems(): Promise<void> {
+    const sp = spfi().using(SPFx(this.props.context));
     try {
       const items = await sp.web.lists.getByTitle("Employee Recognition").items
         .select(
@@ -49,21 +56,18 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
           "Reactions_Clap",
           "DateRecognized"
         )
-        .expand("From", "To")(); // Expand the people fields
+        .expand("From", "To")();
 
-      console.log("Fetched items:", items); // Debugging: Check the structure of the fetched items
-
-      // Map the data to match the expected structure
       const mappedItems = items.map(item => ({
         Id: item.Id,
         From: {
-          Title: item.From?.Title || "Unknown", // Use Title for the display name
+          Title: item.From?.Title || "Unknown",
           Picture: item.From?.EMail
             ? `https://${this.props.context.pageContext.web.absoluteUrl.split('/')[2]}/_layouts/15/userphoto.aspx?size=L&accountname=${item.From.EMail}`
             : "https://via.placeholder.com/40"
         },
         To: {
-          Title: item.To?.Title || "Unknown", // Use Title for the display name
+          Title: item.To?.Title || "Unknown",
           Picture: item.To?.EMail
             ? `https://${this.props.context.pageContext.web.absoluteUrl.split('/')[2]}/_layouts/15/userphoto.aspx?size=L&accountname=${item.To.EMail}`
             : "https://via.placeholder.com/48"
@@ -76,9 +80,6 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
         DateRecognized: item.DateRecognized
       }));
 
-      console.log("Mapped items:", mappedItems); // Debugging: Check the structure of the mapped items
-
-      // Update the state with the mapped items
       this.setState({ items: mappedItems });
     } catch (error) {
       console.error("Error fetching Employee Recognition items:", error);
@@ -86,20 +87,15 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
   }
 
   private async handleReactionClick(itemId: number, reactionType: string): Promise<void> {
-    const sp = spfi().using(SPFx(this.props.context)); 
+    const sp = spfi().using(SPFx(this.props.context));
     try {
-      // Fetch the current value of the reaction field
       const item = await sp.web.lists.getByTitle("Employee Recognition").items.getById(itemId).select(reactionType)();
       const currentValue = item[reactionType] || 0;
 
-      // Increment the reaction count
       await sp.web.lists.getByTitle("Employee Recognition").items.getById(itemId).update({
         [reactionType]: currentValue + 1
       });
 
-      console.log(`Updated ${reactionType} for item ID: ${itemId}`);
-
-      // Update the state to reflect the new reaction count
       this.setState(prevState => ({
         items: prevState.items.map(item =>
           item.Id === itemId
@@ -112,14 +108,49 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
     }
   }
 
+  private openModal = (): void => {
+    this.setState({ isModalOpen: true });
+  };
+
+  private closeModal = (): void => {
+    this.setState({ isModalOpen: false });
+  };
+
   public render(): React.ReactElement<IEmpRecognitionWebpartProps> {
-    const { items } = this.state;
+    const { items, isModalOpen } = this.state;
 
     return (
       <div className={styles.empRecognitionWebpart}>
+        <button onClick={this.openModal} className={styles.openModalButton}>
+          Add New Recognition
+        </button>
+
+        <Modal
+          isOpen={isModalOpen}
+          onDismiss={this.closeModal}
+          isBlocking={false}
+          containerClassName={styles.modalContainer}
+        >
+          <div className={styles.modalHeader}>
+            <h2>Add New Recognition</h2>
+            <IconButton
+              iconProps={{ iconName: 'Cancel' }}
+              ariaLabel="Close popup modal"
+              onClick={this.closeModal}
+            />
+          </div>
+          <AddRecognitionForm
+            context={this.props.context}
+            listName="Employee Recognition"
+            onItemAdded={() => {
+              this.fetchItems();
+              this.closeModal();
+            }}
+          />
+        </Modal>
+
         {items.map((item, index) => (
           <div key={index} className={styles.recognitionCard}>
-            {/* Sender Info */}
             <div className={styles.senderInfo}>
               <img src={item.From.Picture} alt={item.From.Title} />
               <div>
@@ -127,8 +158,6 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
                 <div className={styles.senderRole}>Employee</div>
               </div>
             </div>
-
-            {/* Recognition Info */}
             <div className={styles.recognition}>
               <img src={item.To.Picture} alt={item.To.Title} />
               <div className={styles.recognitionText}>
@@ -139,32 +168,12 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
                 </div>
               </div>
             </div>
-
-            {/* Message */}
-            <div className={styles.message}>
-              {item.Message}
-            </div>
-
-            {/* Reactions */}
+            <div className={styles.message}>{item.Message}</div>
+            <div >Commended by: {item.From.Title}</div>
             <div className={styles.reactions}>
-              <div
-                className={styles.reaction}
-                onClick={() => this.handleReactionClick(item.Id, "Reactions_Medal")}
-              >
-                🥇 {item.Reactions_Medal}
-              </div>
-              <div
-                className={styles.reaction}
-                onClick={() => this.handleReactionClick(item.Id, "Reactions_Heart")}
-              >
-                💖 {item.Reactions_Heart}
-              </div>
-              <div
-                className={styles.reaction}
-                onClick={() => this.handleReactionClick(item.Id, "Reactions_Clap")}
-              >
-                👏 {item.Reactions_Clap}
-              </div>
+              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Medal")}>🥇 {item.Reactions_Medal}</div>
+              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Heart")}>💖 {item.Reactions_Heart}</div>
+              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Clap")}>👏 {item.Reactions_Clap}</div>
             </div>
           </div>
         ))}
