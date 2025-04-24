@@ -149,19 +149,26 @@ export const AdvancedTextArea = ({ onPostSubmitted }: any) => {
     const files = event.target.files
 
     if (files && files.length > 0) {
-      // Check if total number of files (existing + new) exceeds the limit
-
-      if (post.imageUrls.length + files.length > maxFileLimit) {
+      const remainingSlots = maxFileLimit - post.imageUrls.length
+      if (remainingSlots <= 0) {
         alert(`You can only upload a maximum of ${maxFileLimit} files.`)
+        return
       }
-      const fileArray = Array.from(files)
+      // Only take as many files as will fit
+      const fileArray = Array.from(files).slice(0, remainingSlots)
       const newPreviewUrls = fileArray.map((file) => URL.createObjectURL(file))
 
       setPost({
         ...post,
-        imageUrls: fileArray,
+        imageUrls: [...post.imageUrls, ...fileArray],
         previewUrls: [...post.previewUrls, ...newPreviewUrls],
       })
+
+      if (files.length > remainingSlots) {
+        alert(
+          `Only ${remainingSlots} more file(s) allowed. Extra files were ignored.`
+        )
+      }
     }
   }
 
