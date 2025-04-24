@@ -3,7 +3,12 @@ import { getSP } from "../utils/spUtility"
 import { AdvancedTextAreaType } from "../components/AdvancedTextArea"
 import { Comment, Comments } from "@pnp/sp/comments"
 import { SPHttpClient } from "@microsoft/sp-http"
-import { COMMENTSPERPAGE, POSTSPERPAGE } from "../../constants/constants"
+import {
+  COMMENTSPERPAGE,
+  MAXFILEUPLOADSIZE,
+  POSTSPERPAGE,
+} from "../../constants/constants"
+import { IFileUploadProgressData } from "@pnp/sp/files"
 
 export const addNewPost = async (
   post: AdvancedTextAreaType,
@@ -79,7 +84,7 @@ export const uploadImage = async (
       const fileNamePath = encodeURI(image.name)
       let result: any
 
-      if (image.size <= 5242880) {
+      if (image.size <= MAXFILEUPLOADSIZE) {
         // Small upload (less than 10MB)
         result = await sp.web
           .getFolderByServerRelativePath(basePath)
@@ -89,7 +94,7 @@ export const uploadImage = async (
         result = await sp.web
           .getFolderByServerRelativePath(basePath)
           .files.addChunked(fileNamePath, image, {
-            progress: (data) => {
+            progress: (data: IFileUploadProgressData) => {
               console.log(`Upload progress: ${data}%`)
             },
             Overwrite: true,
