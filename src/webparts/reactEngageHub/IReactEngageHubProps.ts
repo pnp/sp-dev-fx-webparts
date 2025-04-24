@@ -11,7 +11,6 @@ export interface IReactEngageHubProps {
   displayMode: DisplayMode
   updateProperty: (value: string) => void
   maxFileLimit: number
-  containerHeight: number
   apiKey: string
   apiEndpoint: string
   deploymentName: string

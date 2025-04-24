@@ -82,7 +82,7 @@ export const Posts = ({ refreshTrigger }: any) => {
   const [hasMore, setHasMore] = React.useState<boolean>(true)
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
-  const { context, isDarkTheme, containerHeight } =
+  const { context, isDarkTheme } =
     React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
 
   const fluentStyles = useStyles()
@@ -194,10 +194,7 @@ export const Posts = ({ refreshTrigger }: any) => {
       <Text size={300} weight='semibold'>
         Recent Posts
       </Text>
-      <div
-        className={fluentStyles.postCardWrapper}
-        style={{ height: containerHeight.toString() + "px" }}
-      >
+      <div className={fluentStyles.postCardWrapper}>
         {posts &&
           posts.map((post: any) => (
             <Card className={fluentStyles.card}>
