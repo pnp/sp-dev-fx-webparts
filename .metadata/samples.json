@@ -9902,7 +9902,7 @@
         "name": "webParts.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-M365-Planner-Timeline/assets/webParts.png?raw=true",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-M365-Planner-Timeline/assets/webParts.png",
         "alt": "Web Part Preview"
       }
     ],
