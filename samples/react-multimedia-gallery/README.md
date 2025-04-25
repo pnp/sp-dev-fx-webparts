@@ -71,7 +71,8 @@ The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react comp
 | Version | Date          | Comments                                                | Author(s)                                                          |
 | ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
 | 1.0.0   | June 24, 2019 | Initial release                                         | João Mendes                                                        |
-| 1.1.0   | July 10, 2020 | Version Conflict with websocket-driver | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at)) |
+| 1.1.0   | July 10, 2020 | Version Conflict with websocket-driver | [Peter Paul Kirschner](https://github.com/petkir) |
+| 2.0.0   | April 05, 2025 | Version Upgrade | [Peter Paul Kirschner](https://github.com/petkir)  |
 
 ## Minimal Path to Awesome
 
