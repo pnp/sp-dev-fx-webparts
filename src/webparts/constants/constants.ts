@@ -6,4 +6,4 @@ export const RECENTPOSTSLABEL = "Recent posts"
 export const LOADPOSTSLABEL = "Loading your feed…"
 export const LOADMOREPOSTSLABEL = "Hold up, getting more posts…"
 
-export const MAXFILEUPLOADSIZE = 10485760
+export const MAXFILEUPLOADSIZE = 10485760 //5242880
