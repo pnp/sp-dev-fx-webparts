@@ -31,6 +31,7 @@ import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
 import { ImagePreview } from "./ImagePreview"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
+import { DeletePostButton } from "./DeletePostButton"
 
 export interface IPostsProps {}
 
@@ -188,7 +189,6 @@ export const Posts = ({ refreshTrigger }: any) => {
       />
     )
   }
-
   return (
     <>
       <Text size={300} weight='semibold'>
@@ -231,6 +231,14 @@ export const Posts = ({ refreshTrigger }: any) => {
                         : Math.ceil(post.LikesCount)}
                     </Text>
                   </div>
+                  {post.UserID ===
+                    context.pageContext.legacyPageContext?.userPuid && (
+                    <DeletePostButton
+                      postId={post.PostID}
+                      itemId={post.ID}
+                      fetchPosts={fetchPosts}
+                    />
+                  )}
                 </div>
                 {post.Images.length > 0 && (
                   <div className={styles.imageContainer}>

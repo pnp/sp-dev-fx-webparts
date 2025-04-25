@@ -178,8 +178,6 @@ export const getPosts = async (context: any, nextLink?: string) => {
   }
 }
 
-
-
 export const updatePostLikeDislike = async (postID: number, like: boolean) => {
   let sp: SPFI = getSP()
 
@@ -234,4 +232,28 @@ export const deleteComment = async (postID: number, commentID: string) => {
       .comments.getById(commentID)
   )
   await commentInst.delete()
+}
+
+export const deletePost = async (postID: string, itemId: number) => {
+  let sp: SPFI = getSP()
+
+  const fileMetadata = await sp.web.lists
+    .getByTitle("Discussion Point Gallery")
+    .items.filter(`PostID eq '${postID}'`)
+    .select("File/ServerRelativeUrl")
+    .expand("File")()
+
+  // delete file
+  if (fileMetadata.length > 0) {
+    const fileUrl = fileMetadata.map((item) => item.File.ServerRelativeUrl)
+    fileUrl.forEach(async (url) => {
+      await sp.web.getFileByServerRelativePath(url).delete()
+    })
+  }
+
+  // delete post item
+  await sp.web.lists
+    .getByTitle("Discussion Point")
+    .items.getById(itemId)
+    .delete()
 }
