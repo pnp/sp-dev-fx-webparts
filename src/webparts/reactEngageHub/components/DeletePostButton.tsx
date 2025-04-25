@@ -4,13 +4,6 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Dialog,
-  DialogSurface,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  DialogBody,
 } from "@fluentui/react-components"
 
 import {
@@ -21,6 +14,7 @@ import {
 } from "@fluentui/react-icons"
 import * as React from "react"
 import { deletePost } from "../services/SPService"
+import { Alert } from "./Alert"
 
 interface IDeletePostButtonProps {
   postId: string
@@ -42,42 +36,6 @@ export const DeletePostButton = ({
     fetchPosts()
   }
 
-  const DeleteConfirmation = () => {
-    return (
-      <Dialog
-        open={isDialogOpen}
-        onOpenChange={() => setIsDialogOpen(false)}
-        modalType='alert'
-      >
-        <DialogSurface>
-          <DialogBody>
-            <DialogTitle>Delete post</DialogTitle>
-            <DialogContent>
-              Are you sure you want to delete this post?
-            </DialogContent>
-            <DialogActions>
-              <Button
-                appearance='primary'
-                onClick={() => {
-                  handlePostDelete(postId)
-                  setIsDialogOpen(false)
-                }}
-              >
-                Delete
-              </Button>
-              <Button
-                appearance='secondary'
-                onClick={() => setIsDialogOpen(false)}
-              >
-                Cancel
-              </Button>
-            </DialogActions>
-          </DialogBody>
-        </DialogSurface>
-      </Dialog>
-    )
-  }
-
   return (
     <>
       <Menu>
@@ -94,7 +52,14 @@ export const DeletePostButton = ({
           </MenuList>
         </MenuPopover>
       </Menu>
-      <DeleteConfirmation />
+      <Alert
+        isDialogOpen={isDialogOpen}
+        setIsDialogOpen={setIsDialogOpen}
+        title='Delete post'
+        description='Are you sure you want to delete this post?'
+        handlePostDelete={handlePostDelete}
+        postId={postId}
+      />
     </>
   )
 }

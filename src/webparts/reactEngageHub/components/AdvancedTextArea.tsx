@@ -39,6 +39,7 @@ import { AdvancedTextAreaCompact } from "./AdvancedTextAreaCompact"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { useContext } from "react"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
+import { Alert } from "./Alert"
 
 const SparkleBundle = bundleIcon(PenSparkle20Filled, PenSparkle20Regular)
 
@@ -135,6 +136,7 @@ export const AdvancedTextArea = ({ onPostSubmitted }: any) => {
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const [selectedText, setSelectedText] = React.useState("")
   const [exitCompactView, setExitCompactView] = React.useState(true)
+  const [alert, setAlert] = React.useState(false)
 
   const { context, apiKey, apiEndpoint, deploymentName, maxFileLimit } =
     useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
@@ -145,32 +147,31 @@ export const AdvancedTextArea = ({ onPostSubmitted }: any) => {
     fileInputRef.current?.click()
   }
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files
+const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const files = event.target.files
 
-    if (files && files.length > 0) {
-      const remainingSlots = maxFileLimit - post.imageUrls.length
-      if (remainingSlots <= 0) {
-        alert(`You can only upload a maximum of ${maxFileLimit} files.`)
-        return
-      }
-      // Only take as many files as will fit
-      const fileArray = Array.from(files).slice(0, remainingSlots)
-      const newPreviewUrls = fileArray.map((file) => URL.createObjectURL(file))
+  if (files && files.length > 0) {
+    const remainingSlots = maxFileLimit - post.imageUrls.length
+    if (remainingSlots <= 0) {
+      setAlert(true)
+      return
+    }
+    // Only take as many files as will fit
+    const fileArray = Array.from(files).slice(0, remainingSlots)
+    const newPreviewUrls = fileArray.map((file) => URL.createObjectURL(file))
 
-      setPost({
-        ...post,
-        imageUrls: [...post.imageUrls, ...fileArray],
-        previewUrls: [...post.previewUrls, ...newPreviewUrls],
-      })
+    setPost({
+      ...post,
+      imageUrls: [...post.imageUrls, ...fileArray],
+      previewUrls: [...post.previewUrls, ...newPreviewUrls],
+    })
 
-      if (files.length > remainingSlots) {
-        alert(
-          `Only ${remainingSlots} more file(s) allowed. Extra files were ignored.`
-        )
-      }
+    if (files.length > remainingSlots) {
+      setAlert(true)
+      return
     }
   }
+}
 
   const handlePostSubmit = async () => {
     setLoadingState("loading")
@@ -408,6 +409,12 @@ export const AdvancedTextArea = ({ onPostSubmitted }: any) => {
           <div></div>
         )}
       </CollapseRelaxed>
+      <Alert
+        isDialogOpen={alert}
+        setIsDialogOpen={setAlert}
+        title='Image Upload Limit'
+        description={`You can only upload ${maxFileLimit} images at a time.`}
+      />
     </>
   )
 }
