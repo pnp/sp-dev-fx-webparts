@@ -32,50 +32,47 @@ export const Comments = (props: IComments) => {
   }
 
   return (
-    <section>
-      <div
-        className={styles.commentArea}
-        style={{
-          backgroundColor: isDarkTheme ? "#2b2b2b" : "#f7f7f7",
-        }}
-      >
-        <div className={styles.avatar}>
-          <Avatar
-            name={comment.author.name}
-            size={36}
-            active={comment.author.isActive ? "active" : "inactive"}
-            badge={
-              comment.author.isActive
-                ? { status: "available" }
-                : { status: "offline" }
-            }
-          />
-          <div className={styles.author}>
-            <Text>{comment.author.name}</Text>
-            <Text size={100}>
-              {new Date(comment.createdDate).toLocaleString("en-IN")}
-            </Text>
-          </div>
-          <LikeUnlike
-            isLiked={comment.isLikedByUser}
-            likesCount={comment.likeCount}
-            onClick={onClickCommentLikeBtn}
-          />
-          {comment.author.email &&
-            comment.author.email.toLowerCase() ===
-              context.pageContext.user.email.toLowerCase() && (
-              <MoreOptions
-                id={comment.id}
-                dialogTitle='Delete comment'
-                dialogDescription='Are you sure you want to delete this comment?'
-                onClickDelete={() =>
-                  onClickDeleteCommentBtn(postId, comment.id)
-                }
-              />
-            )}
+    <div
+      className={styles.commentArea}
+      style={{
+        backgroundColor: isDarkTheme ? "#2b2b2b" : "#f7f7f7",
+      }}
+    >
+      <div className={styles.topContainer}>
+        <Avatar
+          name={comment.author.name}
+          size={36}
+          active={comment.author.isActive ? "active" : "inactive"}
+          badge={
+            comment.author.isActive
+              ? { status: "available" }
+              : { status: "offline" }
+          }
+        />
+        <div className={styles.author}>
+          <Text>{comment.author.name}</Text>
+          <Text size={100}>
+            {new Date(comment.createdDate).toLocaleString("en-IN")}
+          </Text>
         </div>
-        <Text>{comment.text}</Text>
+
+        {comment.author.email &&
+          comment.author.email.toLowerCase() ===
+            context.pageContext.user.email.toLowerCase() && (
+            <MoreOptions
+              id={comment.id}
+              dialogTitle='Delete comment'
+              dialogDescription='Are you sure you want to delete this comment?'
+              onClickDelete={() => onClickDeleteCommentBtn(postId, comment.id)}
+            />
+          )}
       </div>
-    </section>
+      <Text>{comment.text}</Text>
+      <LikeUnlike
+        isLiked={comment.isLikedByUser}
+        likesCount={comment.likeCount}
+        onClick={onClickCommentLikeBtn}
+      />
+    </div>
   )
 }

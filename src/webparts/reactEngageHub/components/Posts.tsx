@@ -51,9 +51,11 @@ const useStyles = makeStyles({
   },
   postCardWrapper: {
     overflowY: "auto",
-    paddingTop: "0.25rem",
     height: "350px",
     paddingBottom: "3rem",
+    paddingLeft: "0.15rem",
+    paddingRight: "0.15rem",
+    paddingTop: "0.15rem",
   },
   card: {
     marginBottom: "0.75rem",
@@ -63,6 +65,9 @@ const useStyles = makeStyles({
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "5rem",
+  },
+  recentPostsSubtitle: {
+    marginLeft: "0.15rem",
   },
 })
 export const Posts = ({ refreshTrigger }: any) => {
@@ -173,7 +178,11 @@ export const Posts = ({ refreshTrigger }: any) => {
   }
   return (
     <>
-      <Text size={300} weight='semibold'>
+      <Text
+        size={300}
+        weight='semibold'
+        className={fluentStyles.recentPostsSubtitle}
+      >
         Recent Posts
       </Text>
       <div className={fluentStyles.postCardWrapper}>
@@ -181,7 +190,7 @@ export const Posts = ({ refreshTrigger }: any) => {
           posts.map((post: any) => (
             <Card className={fluentStyles.card}>
               <article key={post.ID} className={styles.article}>
-                <div className={styles.avatar}>
+                <div className={styles.topContainer}>
                   <Avatar name={post.AuthorName} size={36} />
                   <div className={styles.author}>
                     <Text>{post.AuthorName}</Text>
@@ -189,11 +198,6 @@ export const Posts = ({ refreshTrigger }: any) => {
                       {new Date(post.Created).toLocaleString("en-IN")}
                     </Text>
                   </div>
-                  <LikeUnlike
-                    isLiked={post.isLiked}
-                    likesCount={post.LikesCount}
-                    onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
-                  />
                   {post.UserID ===
                     context.pageContext.legacyPageContext?.userPuid && (
                     <MoreOptions
@@ -220,6 +224,11 @@ export const Posts = ({ refreshTrigger }: any) => {
                     __html: post.Description,
                   }}
                 ></div>
+                <LikeUnlike
+                  isLiked={post.isLiked}
+                  likesCount={post.LikesCount}
+                  onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
+                />
                 <Divider style={{ paddingTop: "1rem" }} />
                 {post.comments.map((comment: any) => (
                   <Comments

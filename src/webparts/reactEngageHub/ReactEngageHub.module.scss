@@ -10,7 +10,7 @@
   width: 238px;
   height: 160px;
 }
-.avatar {
+.topContainer {
   display: flex;
   gap: 0.5rem;
 }
@@ -23,6 +23,7 @@
   padding: 1rem;
   border-radius: 4px;
   margin-top: 1rem;
+  margin-left: auto;
 }
 .reactions {
   margin-top: 1rem;
@@ -41,8 +42,8 @@
   align-items: center;
   justify-content: center;
   width: min-content;
-  margin-left: auto;
   padding: 0 18px 0 4px;
+  margin-top: 0.5rem;
   height: 28px;
 }
 .previewImageWrapper{
@@ -57,4 +58,9 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+}
+.moreOptions{
+  margin-top: 4px;
+  cursor:pointer;
+  margin-left: auto
 }

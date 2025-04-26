@@ -11,6 +11,7 @@ import * as React from "react"
 import { Alert } from "./Alert"
 import { DeleteIcon } from "../../constants/icons"
 import { useState } from "react"
+import styles from "../ReactEngageHub.module.scss"
 
 interface IMoreOptionsProps {
   id: string
@@ -27,9 +28,7 @@ export const MoreOptions = (props: IMoreOptionsProps) => {
     <>
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MoreVertical24Regular
-            style={{ marginTop: "4px", cursor: "pointer" }}
-          />
+          <MoreVertical24Regular className={styles.moreOptions} />
         </MenuTrigger>
         <MenuPopover>
           <MenuList>

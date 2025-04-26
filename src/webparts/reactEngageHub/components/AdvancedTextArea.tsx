@@ -341,7 +341,7 @@ const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
                   {(triggerProps: MenuButtonProps) => (
                     <SplitButton
                       className={fluentStyles.rewriteBtn}
-                      appearance='transparent'
+                      appearance='subtle'
                       menuButton={triggerProps}
                       primaryActionButton={primaryActionButtonProps}
                       icon={<SparkleBundle />}
