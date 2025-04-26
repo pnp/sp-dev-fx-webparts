@@ -1,5 +1,8 @@
 import * as React from "react";
-import { IHolidaysListProps } from "../../../../common/interfaces/HolidaysCalendar";
+import {
+  IHolidaysListProps,
+  IHolidayItem,
+} from "../../../../common/interfaces/HolidaysCalendar";
 import {
   DataGrid,
   DataGridBody,
@@ -17,21 +20,29 @@ import {
   TableColumnDefinition,
   createTableColumn,
 } from "@fluentui/react-components";
-import { IHolidayItem } from "../../../../common/interfaces/HolidaysCalendar";
-import { CalendarAdd20Regular, Diamond24Regular, ArrowDownload24Regular } from "@fluentui/react-icons";
+import {
+  CalendarAdd20Regular,
+  Diamond24Regular,
+  ArrowDownload24Regular,
+} from "@fluentui/react-icons";
+
 const useStyles = makeStyles({
   root: {
     marginTop: "25px",
   },
 });
 
-export default function HolidaysList(props: IHolidaysListProps): JSX.Element {
+export default function HolidaysList(
+  props: Readonly<IHolidaysListProps>
+): JSX.Element {
   const classes = useStyles();
-  const [showOptionalIcon, setShowOptionalIcon] = React.useState<boolean>(false);
+  const [showOptionalIcon, setShowOptionalIcon] =
+    React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (props.items.length > 0) {
-      if (props.items.filter((item) => item.holidayType.optional).length > 0) setShowOptionalIcon(true);
+      if (props.items.filter((item) => item.holidayType.optional).length > 0)
+        setShowOptionalIcon(true);
     }
   }, [props.items]);
   const columns: TableColumnDefinition<IHolidayItem>[] = React.useMemo(
@@ -46,7 +57,11 @@ export default function HolidaysList(props: IHolidaysListProps): JSX.Element {
             <TableCell>
               <TableCellLayout>{item.holidayTitle.label}</TableCellLayout>
               <TableCellActions>
-                <Button icon={<CalendarAdd20Regular />} appearance="subtle" onClick={() => props.onCalendarAddClick(item.Id)} />
+                <Button
+                  icon={<CalendarAdd20Regular />}
+                  appearance="subtle"
+                  onClick={() => props.onCalendarAddClick(item.Id)}
+                />
               </TableCellActions>
             </TableCell>
           );
@@ -98,17 +113,37 @@ export default function HolidaysList(props: IHolidaysListProps): JSX.Element {
       <Title2 align="center" style={{ fontFamily: "fontFamilyBase" }}>
         {props.title}
       </Title2>
-      <DataGrid items={props.items} columns={columns} sortable={false} getRowId={(item: IHolidayItem) => item.Id}>
+      <DataGrid
+        items={props.items}
+        columns={columns}
+        sortable={false}
+        getRowId={(item: IHolidayItem) => item.Id}
+      >
         <DataGridHeader>
-          <DataGridRow>{({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}</DataGridRow>
+          <DataGridRow>
+            {({ renderHeaderCell }) => (
+              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+            )}
+          </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }) => <DataGridRow key={rowId}>{({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}</DataGridRow>}
+          {({ item, rowId }) => (
+            <DataGridRow key={rowId}>
+              {({ renderCell }) => (
+                <DataGridCell>{renderCell(item)}</DataGridCell>
+              )}
+            </DataGridRow>
+          )}
         </DataGridBody>
       </DataGrid>
 
       {props.showDownload && (
-        <Button icon={<ArrowDownload24Regular />} appearance="subtle" onClick={props.onDownloadItems} className={classes.root}>
+        <Button
+          icon={<ArrowDownload24Regular />}
+          appearance="subtle"
+          onClick={props.onDownloadItems}
+          className={classes.root}
+        >
           Download
         </Button>
       )}
