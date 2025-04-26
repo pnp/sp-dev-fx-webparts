@@ -1,14 +1,36 @@
-# react-engage-hub
+# Engage Hub
 
 ## Summary
 
-Short summary on functionality and used technologies.
+Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries.
 
-[picture of the solution in action, if possible]
+Engage Hub maintains responsiveness and light weight with its elegant React user interface and integrated infinite scrolling. Additionally, it incorporates an AI-powered twist by using the Azure OpenAI JavaScript SDK to assist users in revising content and correcting grammar mistakes.
+
+![Engage hub 1](./assets/engage_hub1.png)
+
+![Engage hub 2](./assets/engage_hub2.gif)
+
+## Compatibility
+
+| :warning: Important                                                                                                                                                                                                                                                                                   |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
+| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                                     |
 
 ## Used SharePoint Framework Version
 
 ![version](https://img.shields.io/badge/version-1.20.0-green.svg)
+
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](<https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg> "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-red.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-red.svg)
 
 ## Applies to
 
@@ -19,55 +41,79 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+Create a SharePoint  list `Discussion Point` in the SPO site with below columns
 
-## Solution
+| Column Name | Type  |
+| ----------- | ----- |
+| Description       | Multi-line text with enhanced text enabled  |
+| UserID | Text  |
+| PostID | Text  |
+| AuthorName   | Text |
+| AuthorMailID   | Text |
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+Create a Document library `Discussion Point Gallery` in SPO site & create one new column
+
+| Column Name | Type  |
+| ----------- | ----- |
+| PostID   | Text |
+
+## Contributors🧑‍💻
+
+- [Sandeep P S](https://github.com/Sandeep-FED)
 
 ## Version history
 
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| Version | Date             | Comments                            |
+| ------- | ---------------- | ----------------------------------- |
+| 1.0     | April 26, 2025   | Initial release                     |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
+## Minimal Path to Awesome⚡
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
-> Include any additional steps as needed.
+## Deploy Package Solution 🚀
 
-## Features
+- Ensure that you are at the solution folder
+- in the command-line run:
+  - `gulp build --ship`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 
-Description of the extension that expands upon high-level summary above.
+- Upload package to AppCatalog & add it to the SharePoint site.
 
-This extension illustrates the following concepts:
+## Features💡
 
-- topic 1
-- topic 2
-- topic 3
+Key features demonstrated by this solution:
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- Leverage like/unlike, comments capabilities of list
+- Azure OpenAI JS SDK
+- Infinite loading
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development.
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [PnP JS](https://pnp.github.io/pnpjs/)
+- [React Docs](https://react.dev/learn)
+- [Azure OpenAI Library for TS](https://learn.microsoft.com/en-us/javascript/api/overview/azure/openai-readme?view=azure-node-latest)
+- [AOAI SDK](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai)
+
+## Help
+
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
+
+If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-engage-hub&template=bug-report.yml&sample=react-engage-hub&authors=@Sandeep-FED&title=react-engage-hub%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-engage-hub&template=question.yml&sample=react-engage-hub&authors=@Sandeep-FED&title=react-engage-hub%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-engage-hub&template=question.yml&sample=react-engage-hub&authors=@Sandeep-FED&title=react-engage-hub-widget%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
