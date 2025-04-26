@@ -13,30 +13,21 @@ import * as React from "react"
 import { useEffect } from "react"
 import {
   addNewComment,
-  deleteComment,
+  deletePost,
   getPosts,
-  updateCommentLikeDislike,
-  updatePostLikeDislike,
+  updatePostLikeUnlike,
 } from "../services/SPService"
 import styles from "../ReactEngageHub.module.scss"
-import {
-  bundleIcon,
-  DeleteFilled,
-  DeleteRegular,
-  Heart20Color,
-  Heart20Regular,
-  Send16Color,
-} from "@fluentui/react-icons"
+import { Send16Color } from "@fluentui/react-icons"
 import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
 import { ImagePreview } from "./ImagePreview"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
-import { DeletePostButton } from "./DeletePostButton"
+import { MoreOptions } from "./MoreOptions"
+import { Comments } from "./Comments"
+import { LikeUnlike } from "./LikeUnlike"
 
 export interface IPostsProps {}
-
-const ThumbLike = bundleIcon(Heart20Color, Heart20Regular)
-const Delete = bundleIcon(DeleteFilled, DeleteRegular)
 
 const useStyles = makeStyles({
   newCommentBtn: {
@@ -116,17 +107,8 @@ export const Posts = ({ refreshTrigger }: any) => {
     }
   }, [isLoaderRef, hasMore, nextLink])
 
-  const onClickCommentLikeBtn = async (
-    postId: number,
-    commentId: string,
-    isLikedByUser: boolean
-  ) => {
-    await updateCommentLikeDislike(postId, commentId, isLikedByUser)
-    await fetchPosts()
-  }
-
   const onClickPostLikeBtn = async (postId: number, postLike: boolean) => {
-    await updatePostLikeDislike(postId, postLike)
+    await updatePostLikeUnlike(postId, postLike)
     await fetchPosts()
   }
 
@@ -138,11 +120,6 @@ export const Posts = ({ refreshTrigger }: any) => {
 
   const handleNewCommentChange = (postId: number, value: string) => {
     setNewComments({ ...newComments, [postId]: value })
-  }
-
-  const onClickDeleteCommentBtn = async (postID: number, commentID: string) => {
-    await deleteComment(postID, commentID)
-    await fetchPosts()
   }
 
   const fetchPosts = async () => {
@@ -176,6 +153,11 @@ export const Posts = ({ refreshTrigger }: any) => {
     }
   }
 
+  const handlePostDelete = async (postId: string, itemId: number) => {
+    await deletePost(postId, itemId)
+    fetchPosts()
+  }
+
   if (isLoading) {
     return <Spinner size='medium' label={LOADPOSTSLABEL} />
   }
@@ -207,36 +189,20 @@ export const Posts = ({ refreshTrigger }: any) => {
                       {new Date(post.Created).toLocaleString("en-IN")}
                     </Text>
                   </div>
-                  <div
-                    className={styles.likeContainer}
-                    style={{
-                      marginLeft: "auto",
-                      padding: "0 18px 0 4px",
-                      height: "28px",
-                    }}
-                  >
-                    <Button
-                      appearance='transparent'
-                      icon={
-                        <ThumbLike
-                          filled={post.isLiked}
-                          style={post.isLiked ? { color: "red" } : {}}
-                        />
-                      }
-                      onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
-                    />
-                    <Text>
-                      {post.LikesCount === null
-                        ? 0
-                        : Math.ceil(post.LikesCount)}
-                    </Text>
-                  </div>
+                  <LikeUnlike
+                    isLiked={post.isLiked}
+                    likesCount={post.LikesCount}
+                    onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
+                  />
                   {post.UserID ===
                     context.pageContext.legacyPageContext?.userPuid && (
-                    <DeletePostButton
-                      postId={post.PostID}
-                      itemId={post.ID}
-                      fetchPosts={fetchPosts}
+                    <MoreOptions
+                      id={post.PostID}
+                      dialogTitle='Delete post'
+                      dialogDescription='Are you sure you want to delete this post?'
+                      onClickDelete={() =>
+                        handlePostDelete(post.PostID, post.ID)
+                      }
                     />
                   )}
                 </div>
@@ -256,68 +222,13 @@ export const Posts = ({ refreshTrigger }: any) => {
                 ></div>
                 <Divider style={{ paddingTop: "1rem" }} />
                 {post.comments.map((comment: any) => (
-                  <section>
-                    <div
-                      className={styles.commentArea}
-                      style={{
-                        backgroundColor: isDarkTheme ? "#2b2b2b" : "#f7f7f7",
-                      }}
-                    >
-                      <div className={styles.avatar}>
-                        <Avatar
-                          name={comment.author.name}
-                          size={36}
-                          active={
-                            comment.author.isActive ? "active" : "inactive"
-                          }
-                          badge={
-                            comment.author.isActive
-                              ? { status: "available" }
-                              : { status: "offline" }
-                          }
-                        />
-                        <div className={styles.author}>
-                          <Text>{comment.author.name}</Text>
-                          <Text size={100}>
-                            {new Date(comment.createdDate).toLocaleString(
-                              "en-IN"
-                            )}
-                          </Text>
-                        </div>
-                      </div>
-                      <Text>{comment.text}</Text>
-                      <div className={styles.reactions}>
-                        <div className={styles.likeContainer}>
-                          <Button
-                            appearance='transparent'
-                            icon={
-                              <ThumbLike
-                                filled={comment.isLikedByUser}
-                                style={
-                                  comment.isLikedByUser ? { color: "red" } : {}
-                                }
-                              />
-                            }
-                            onClick={() =>
-                              onClickCommentLikeBtn(
-                                post.ID,
-                                comment.id,
-                                comment.isLikedByUser
-                              )
-                            }
-                          />
-                          <Text>{comment.likeCount}</Text>
-                        </div>
-                        <Button
-                          appearance='transparent'
-                          icon={<Delete />}
-                          onClick={() =>
-                            onClickDeleteCommentBtn(post.ID, comment.id)
-                          }
-                        />
-                      </div>
-                    </div>
-                  </section>
+                  <Comments
+                    key={comment.id}
+                    postId={post.ID}
+                    comment={comment}
+                    fetchPosts={fetchPosts}
+                    isDarkTheme={isDarkTheme}
+                  />
                 ))}
                 <div className={styles.newCommentContainer}>
                   <Textarea

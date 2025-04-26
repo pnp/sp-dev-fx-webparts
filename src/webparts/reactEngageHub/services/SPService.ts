@@ -178,7 +178,7 @@ export const getPosts = async (context: any, nextLink?: string) => {
   }
 }
 
-export const updatePostLikeDislike = async (postID: number, like: boolean) => {
+export const updatePostLikeUnlike = async (postID: number, like: boolean) => {
   let sp: SPFI = getSP()
 
   const item: any = sp.web.lists
@@ -192,7 +192,7 @@ export const updatePostLikeDislike = async (postID: number, like: boolean) => {
   }
 }
 
-export const updateCommentLikeDislike = async (
+export const updateCommentLikeUnlike = async (
   postID: number,
   commentID: string,
   like: boolean

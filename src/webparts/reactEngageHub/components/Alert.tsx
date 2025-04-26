@@ -14,18 +14,18 @@ interface IAlertProps {
   setIsDialogOpen: (isOpen: boolean) => void
   title: string
   description: string
-  postId?: string
-  handlePostDelete?: (postId: string) => Promise<void>
+  id?: string
+  handleDelete?: (postId: string) => Promise<void>
 }
 
 export const Alert = (props: IAlertProps) => {
   const {
-    postId,
     isDialogOpen,
     setIsDialogOpen,
-    handlePostDelete,
+    handleDelete,
     title,
     description,
+    id,
   } = props
 
   return (
@@ -39,13 +39,13 @@ export const Alert = (props: IAlertProps) => {
           <DialogTitle>{title}</DialogTitle>
           <DialogContent>{description}</DialogContent>
           <DialogActions>
-            {postId && (
+            {id && (
               <Button
                 appearance='primary'
                 onClick={() => {
-                  if (handlePostDelete) {
-                    if (postId) {
-                      handlePostDelete(postId)
+                  if (handleDelete) {
+                    if (id) {
+                      handleDelete(id)
                     }
                   }
                   setIsDialogOpen(false)
