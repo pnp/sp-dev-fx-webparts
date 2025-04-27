@@ -28158,6 +28158,63 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-elevatedprivileges"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-org-chart",
+    "source": "pnp",
+    "title": "Building Org Chart using a SharePoint list",
+    "shortDescription": "Displays your organization's structure based on a custom list, starting from the top boss down to everyone else.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-org-chart",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-org-chart",
+    "longDescription": [
+      "This Org Chart Web Part displays your organization's structure based on a custom list, starting from the top boss down to everyone else.",
+      "Each person's card shows their name and job title, and when you click on someone, it highlights them so you can focus on where they sit in the company."
+    ],
+    "creationDateTime": "2025-04-20",
+    "updateDateTime": "2025-04-20",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "List.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-org-chart/assets/List.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "Orgchart.gif",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-org-chart/assets/Orgchart.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators",
     "source": "pnp",
     "title": "Using PnP JS Core custom objects with @select and @expand decorators",
