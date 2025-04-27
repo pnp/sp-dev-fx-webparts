@@ -1,39 +1,13 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  Divider,
-  Image,
-  makeStyles,
-  Spinner,
-  Text,
-  // Textarea,
-} from "@fluentui/react-components"
+import { Image, makeStyles, Spinner, Text } from "@fluentui/react-components"
 import * as React from "react"
 import { useEffect } from "react"
-import {
-  // addNewComment,
-  deletePost,
-  getPosts,
-  updatePostLikeUnlike,
-} from "../services/SPService"
-import styles from "../ReactEngageHub.module.scss"
-// import { Send16Color } from "@fluentui/react-icons"
-import {
-  // COMMENTEXTAREAPLACEHOLDER,
-  LOADMOREPOSTSLABEL,
-  LOADPOSTSLABEL,
-} from "../../constants/posts"
-import { ImagePreview } from "./ImagePreview"
+import { deletePost, updatePostLikeUnlike } from "../services/SPService"
+import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/posts"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
-import { MoreOptions } from "./MoreOptions"
-import { Comments } from "./Comments"
-import { LikeUnlike } from "./LikeUnlike"
-import { CommentIcon } from "../../constants/icons"
-import { CompactTextArea } from "./CompactTextArea"
-import { AdvancedTextArea } from "./AdvancedTextArea"
-import { formatDate } from "../utils/util"
+import { usePosts } from "../../hooks/usePosts"
+import { useInfiniteScroll } from "../../hooks/useInfiniteScroll"
+import { PostList } from "./PostList"
 
 export interface IPostsProps {}
 
@@ -84,93 +58,27 @@ const useStyles = makeStyles({
   },
 })
 export const Posts = ({ refreshTrigger }: any) => {
-  const [posts, setPosts] = React.useState<any>([])
-  // const [newComments, setNewComments] = React.useState<{
-  //   [key: number]: string
-  // }>({})
-  const [nextLink, setNextLink] = React.useState<string | undefined>()
-  const [hasMore, setHasMore] = React.useState<boolean>(true)
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
   const [exitCompactView, setExitCompactView] = React.useState(true)
 
   const { context, isDarkTheme } =
     React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
+  const loaderRef = React.useRef<HTMLDivElement | null>(null)
 
   const fluentStyles = useStyles()
 
-  const loaderRef = React.useRef<HTMLDivElement | null>(null)
+  const { fetchPosts, fetchMorePosts, posts, hasMore, isLoading, nextLink } =
+    usePosts(context)
+
+  useInfiniteScroll(loaderRef, isLoaderRef, hasMore, nextLink, fetchMorePosts)
 
   useEffect(() => {
     fetchPosts()
   }, [refreshTrigger])
 
-  useEffect(() => {
-    const current = loaderRef.current
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const first = entries[0]
-        if (first.isIntersecting && hasMore && nextLink) {
-          fetchMorePosts()
-        }
-      },
-      { threshold: 1.0 }
-    )
-
-    if (current) {
-      observer.observe(current)
-    }
-
-    return () => {
-      if (current) observer.unobserve(current)
-    }
-  }, [isLoaderRef, hasMore, nextLink])
-
   const onClickPostLikeBtn = async (postId: number, postLike: boolean) => {
     await updatePostLikeUnlike(postId, postLike)
     await fetchPosts()
-  }
-
-  const onClickNewCommentBtn = async (postId: number) => {
-    // await addNewComment(postId, newComments[postId])
-    // setNewComments({ ...newComments, [postId]: "" })
-    // await fetchPosts()
-  }
-
-  // const handleNewCommentChange = (postId: number, value: string) => {
-  //   setNewComments({ ...newComments, [postId]: value })
-  // }
-
-  const fetchPosts = async () => {
-    setIsLoading(true)
-    const data = await getPosts(context)
-    setPosts(data.items)
-    setHasMore(data.hasMore)
-    setNextLink(data.nextLink)
-    setIsLoading(false)
-  }
-
-  const fetchMorePosts = async () => {
-    if (!nextLink || !hasMore) return
-
-    try {
-      const response = await getPosts(context, nextLink)
-
-      // Only add new items if we get them
-      if (response.items && response.items.length > 0) {
-        setPosts((prev: any) => [...prev, ...response.items])
-        setHasMore(response.hasMore)
-        setNextLink(response.nextLink)
-      } else {
-        // No more items to load
-        setHasMore(false)
-        setNextLink(undefined)
-      }
-    } catch (error) {
-      setHasMore(false)
-      setNextLink(undefined)
-    }
   }
 
   const handlePostDelete = async (postId: string, itemId: number) => {
@@ -191,6 +99,7 @@ export const Posts = ({ refreshTrigger }: any) => {
       />
     )
   }
+
   return (
     <>
       <Text
@@ -201,93 +110,17 @@ export const Posts = ({ refreshTrigger }: any) => {
         Recent Posts
       </Text>
       <div className={fluentStyles.postCardWrapper}>
-        {posts &&
-          posts.map((post: any) => (
-            <Card className={fluentStyles.card}>
-              <article key={post.ID} className={styles.article}>
-                <div className={styles.topContainer}>
-                  <Avatar name={post.AuthorName} size={36} />
-                  <div className={styles.author}>
-                    <Text>{post.AuthorName}</Text>
-                    <Text size={100}>{formatDate(new Date(post.Created))}</Text>
-                  </div>
-                  {post.UserID ===
-                    context.pageContext.legacyPageContext?.userPuid && (
-                    <MoreOptions
-                      id={post.PostID}
-                      dialogTitle='Delete post'
-                      dialogDescription='Are you sure you want to delete this post?'
-                      onClickDelete={() =>
-                        handlePostDelete(post.PostID, post.ID)
-                      }
-                    />
-                  )}
-                </div>
-                {post.Images.length > 0 && (
-                  <div className={styles.imageContainer}>
-                    {post.Images.map((image: string) => (
-                      <div className={styles.previewImageWrapper}>
-                        <ImagePreview preview={image} />
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.Description,
-                  }}
-                ></div>
-                <div className={fluentStyles.postActions}>
-                  <LikeUnlike
-                    isLiked={post.isLiked}
-                    likesCount={post.LikesCount}
-                    onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
-                  />
-                  <Button appearance='transparent' icon={<CommentIcon />}>
-                    Comment
-                  </Button>
-                </div>
-                <Divider style={{ paddingTop: "1rem" }} />
-                {post.comments.map((comment: any) => (
-                  <Comments
-                    key={comment.id}
-                    postId={post.ID}
-                    comment={comment}
-                    fetchPosts={fetchPosts}
-                    isDarkTheme={isDarkTheme}
-                  />
-                ))}
-                <div className={styles.newCommentContainer}>
-                  {/* <Textarea
-                    className={fluentStyles.newcommentTextarea}
-                    onChange={(e) =>
-                      handleNewCommentChange(post.ID, e.target.value)
-                    }
-                    value={newComments[post.ID] || ""}
-                    size='small'
-                    placeholder={COMMENTEXTAREAPLACEHOLDER}
-                  />
-                  <Button
-                    appearance='transparent'
-                    icon={<Send16Color />}
-                    onClick={() => onClickNewCommentBtn(post.ID)}
-                    className={fluentStyles.newCommentBtn}
-                  /> */}
-                  <CompactTextArea
-                    exitCompactView={exitCompactView}
-                    setExitCompactView={setExitCompactView}
-                    source={"Comment"}
-                  />
-                  <AdvancedTextArea
-                    exitCompactView={exitCompactView}
-                    setExitCompactView={setExitCompactView}
-                    source={"Comment"}
-                    onCommentSubmit={() => onClickNewCommentBtn(post.ID)}
-                  />
-                </div>
-              </article>
-            </Card>
-          ))}
+        <PostList
+          posts={posts}
+          context={context}
+          isDarkTheme={isDarkTheme}
+          fluentStyles={fluentStyles}
+          exitCompactView={exitCompactView}
+          setExitCompactView={setExitCompactView}
+          fetchPosts={fetchPosts}
+          onClickPostLikeBtn={onClickPostLikeBtn}
+          handlePostDelete={handlePostDelete}
+        />
         {hasMore && nextLink && (
           <div
             ref={(el) => {

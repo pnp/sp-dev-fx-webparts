@@ -4,8 +4,8 @@ type UseAITextActionsProps = {
   apiKey: string
   apiEndpoint: string
   deploymentName: string
-  post: string
-  setPost: React.Dispatch<React.SetStateAction<string>>
+  text: string
+  setText: React.Dispatch<React.SetStateAction<string>>
   inputRef: React.RefObject<HTMLTextAreaElement>
   selectedText: string
 }
@@ -15,8 +15,8 @@ export function useAITextActions(props: UseAITextActionsProps) {
     apiKey,
     apiEndpoint,
     deploymentName,
-    post,
-    setPost,
+    text,
+    setText,
     inputRef,
     selectedText,
   } = props
@@ -29,8 +29,8 @@ export function useAITextActions(props: UseAITextActionsProps) {
 
   const handleRewrite = async () => {
     if (selectedText.length === 0) {
-      let response = await reWrite(post)
-      setPost(response.choices[0].message.content)
+      let response = await reWrite(text)
+      setText(response.choices[0].message.content)
     } else {
       let response = await reWrite(selectedText)
       const updatedText = response.choices[0].message.content
@@ -42,16 +42,16 @@ export function useAITextActions(props: UseAITextActionsProps) {
       const end = textarea.selectionEnd
 
       const newContent =
-        post.substring(0, start) + updatedText + post.substring(end)
+        text.substring(0, start) + updatedText + text.substring(end)
 
-      setPost(newContent)
+      setText(newContent)
     }
   }
 
   const handleGrammarFix = async () => {
     if (selectedText.length === 0) {
-      let response = await fixGrammar(post)
-      setPost(response.choices[0].message.content)
+      let response = await fixGrammar(text)
+      setText(response.choices[0].message.content)
     } else {
       let response = await fixGrammar(selectedText)
       const updatedText = response.choices[0].message.content
@@ -63,9 +63,9 @@ export function useAITextActions(props: UseAITextActionsProps) {
       const end = textarea.selectionEnd
 
       const newContent =
-        post.substring(0, start) + updatedText + post.substring(end)
+        text.substring(0, start) + updatedText + text.substring(end)
 
-      setPost(newContent)
+      setText(newContent)
     }
   }
 

@@ -1,7 +1,10 @@
 import * as React from "react"
 import { Card, Textarea, makeStyles } from "@fluentui/react-components"
 
-import { ADVANCEDTEXTAREAPLACEHOLDER } from "../../constants/posts"
+import {
+  ADVANCEDTEXTAREAPLACEHOLDER,
+  COMMENTEXTAREAPLACEHOLDER,
+} from "../../constants/posts"
 
 const useStyles = makeStyles({
   compactTextArea: {
@@ -71,13 +74,13 @@ const useStyles = makeStyles({
 interface ICompactTextAreaInterface {
   exitCompactView: boolean
   setExitCompactView: React.Dispatch<React.SetStateAction<boolean>>
-  source?: string
+  mode?: string
 }
 
 export const CompactTextArea = ({
   exitCompactView,
   setExitCompactView,
-  source,
+  mode,
 }: ICompactTextAreaInterface) => {
   const fluentStyles = useStyles()
 
@@ -85,7 +88,7 @@ export const CompactTextArea = ({
 
   return (
     <>
-      {source === "Comment" ? (
+      {mode === "Comment" ? (
         <Card
           className={
             (fluentStyles.compactTextAreaCard,
@@ -97,7 +100,7 @@ export const CompactTextArea = ({
             size='small'
             textarea={{ style: { marginTop: "-4px" } }}
             className={fluentStyles.compactCommentTextArea}
-            placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
+            placeholder={COMMENTEXTAREAPLACEHOLDER}
             onClick={() => setExitCompactView(!exitCompactView)}
           />
         </Card>

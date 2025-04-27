@@ -25,6 +25,7 @@ import { useImageUpload } from "../../hooks/useImageUpload"
 import { useAlertDialog } from "../../hooks/useAlertDialog"
 import { usePostSubmission } from "../../hooks/usePostSubmission"
 import { AdvancedTextAreaToolbar } from "./AdvancedTextAreaToolbar"
+import { useCommentSubmission } from "../../hooks/useCommentSubmission"
 
 const useStyles = makeStyles({
   textArea: {
@@ -99,18 +100,26 @@ const SendIcon = bundleIcon(Send20Color, Send24Regular)
 interface IAdvancedTextAreaProps {
   exitCompactView: boolean
   setExitCompactView: React.Dispatch<React.SetStateAction<boolean>>
-  source?: string
-  onCommentSubmit?: () => Promise<void>
+  mode?: string
+  postId?: number
   onPostSubmit?: () => void
+  fetchPosts?: () => Promise<void>
 }
 
 export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
-  const [post, setPost] = React.useState<string>("")
+  const [text, setText] = React.useState<string>("")
 
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const [selectedText, setSelectedText] = React.useState("")
 
-  const { exitCompactView, setExitCompactView, onPostSubmit } = props
+  const {
+    exitCompactView,
+    setExitCompactView,
+    onPostSubmit,
+    mode,
+    postId,
+    fetchPosts,
+  } = props
 
   const { context, apiKey, apiEndpoint, deploymentName, maxFileLimit } =
     useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
@@ -119,8 +128,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
     apiKey,
     apiEndpoint,
     deploymentName,
-    post,
-    setPost,
+    text,
+    setText,
     inputRef,
     selectedText,
   })
@@ -133,11 +142,16 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
     addNewPost,
     onPostSubmit,
     clearImages,
-    setPost,
+    setText,
     setExitCompactView,
     context,
   })
 
+  const { submitComment, commentLoadingState } = useCommentSubmission({
+    comment: text,
+    postId: postId ?? 0,
+    fetchPosts: fetchPosts ?? (async () => {}),
+  })
   const fluentStyles = useStyles()
 
   const handleSelection = () => {
@@ -169,6 +183,50 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
 
   const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
 
+  if (mode === "Comment") {
+    return (
+      <CollapseRelaxed visible={exitCompactView === false}>
+        {!exitCompactView ? (
+          <Card className={fluentStyles.advancedTextAreaCard}>
+            <Textarea
+              ref={inputRef}
+              className={fluentStyles.textArea}
+              textarea={{ className: fluentStyles.textAreaSpan }}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder='Write a comment...'
+              onSelect={handleSelection}
+              onKeyUp={handleSelection}
+              onMouseUp={handleSelection}
+            />
+            <div className={fluentStyles.actionBtnWrapper}>
+              <Button
+                icon={
+                  loadingState === "loading" ? (
+                    <Spinner size='tiny' />
+                  ) : (
+                    <SendIcon />
+                  )
+                }
+                appearance='primary'
+                onClick={async () => {
+                  await submitComment()
+                  setExitCompactView(!exitCompactView)
+                }}
+                disabled={!text}
+                disabledFocusable={loadingState === "loading"}
+                className={buttonClassName}
+              >
+                {commentLoadingState === "loading" ? "Posting..." : "Post"}
+              </Button>
+            </div>
+          </Card>
+        ) : (
+          <div></div>
+        )}
+      </CollapseRelaxed>
+    )
+  }
   return (
     <>
       <CollapseRelaxed visible={exitCompactView === false ? true : false}>
@@ -197,8 +255,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
               ref={inputRef}
               className={fluentStyles.textArea}
               textarea={{ className: fluentStyles.textAreaSpan }}
-              value={post}
-              onChange={(e) => setPost(e.target.value)}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
               placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
               onSelect={handleSelection}
               onKeyUp={handleSelection}
@@ -214,8 +272,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
               <Button
                 icon={buttonIcon}
                 appearance='primary'
-                onClick={() => submitPost(post, images.imageUrls)}
-                disabled={!post}
+                onClick={() => submitPost(text, images.imageUrls)}
+                disabled={!text}
                 disabledFocusable={loadingState === "loading" ? true : false}
                 className={buttonClassName}
               >
