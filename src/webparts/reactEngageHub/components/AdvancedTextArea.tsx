@@ -244,6 +244,7 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
               <div className={styles.previewImageWrapper}>
                 {images.previewUrls.map((url, index) => (
                   <ImagePreview
+                    key={url + index}
                     preview={url}
                     index={index}
                     handleRemoveImageFromPreview={() => removeImage(index)}

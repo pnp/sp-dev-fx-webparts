@@ -38,7 +38,7 @@ export const PostList = (props: IPostListProps) => {
     <>
       {posts &&
         posts.map((post: any) => (
-          <Card className={fluentStyles.card}>
+          <Card key={post.ID} className={fluentStyles.card}>
             <article key={post.ID} className={styles.article}>
               <div className={styles.topContainer}>
                 <Avatar name={post.AuthorName} size={36} />
@@ -58,9 +58,9 @@ export const PostList = (props: IPostListProps) => {
               </div>
               {post.Images.length > 0 && (
                 <div className={styles.imageContainer}>
-                  {post.Images.map((image: string) => (
+                  {post.Images.map((image: string, index: any) => (
                     <div className={styles.previewImageWrapper}>
-                      <ImagePreview preview={image} />
+                      <ImagePreview key={index} preview={image} />
                     </div>
                   ))}
                 </div>
