@@ -65,7 +65,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 
 | Version | Date             | Comments                            |
 | ------- | ---------------- | ----------------------------------- |
-| 1.0     | April 26, 2025   | Initial release                     |
+| 1.0     | April 27, 2025   | Initial release                     |
 
 ## Minimal Path to Awesome⚡
 
@@ -92,6 +92,8 @@ Key features demonstrated by this solution:
 - Leverage like/unlike, comments capabilities of list
 - Azure OpenAI JS SDK
 - Infinite loading
+- Custom hooks
+- Follows single responsiblity principle
 
 ## References
 
