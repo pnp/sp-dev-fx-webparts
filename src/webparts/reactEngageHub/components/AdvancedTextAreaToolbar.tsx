@@ -14,6 +14,7 @@ import {
 import { ImageUploader } from "./ImageUploader"
 import { useAlertDialog } from "../../hooks/useAlertDialog"
 import { SparkleBundle } from "../../constants/icons"
+import { Alert } from "./Alert"
 
 const useStyles = makeStyles({
   toolbar: {
@@ -49,34 +50,42 @@ export const AdvancedTextAreaToolbar = (
   const alertDialog = useAlertDialog()
 
   return (
-    <Toolbar aria-label='Default' className={fluentStyles.toolbar}>
-      <ImageUploader
-        imageCount={images.imageUrls.length}
-        maxFileLimit={maxFileLimit}
-        setAlert={alertDialog.setIsOpen}
-        addImages={addImages}
+    <>
+      <Toolbar aria-label='Default' className={fluentStyles.toolbar}>
+        <ImageUploader
+          imageCount={images.imageUrls.length}
+          maxFileLimit={maxFileLimit}
+          setAlert={alertDialog.setIsOpen}
+          addImages={addImages}
+        />
+        <ToolbarDivider vertical />
+        <Menu positioning='below-end'>
+          <MenuTrigger disableButtonEnhancement>
+            {(triggerProps: MenuButtonProps) => (
+              <SplitButton
+                className={fluentStyles.rewriteBtn}
+                appearance='subtle'
+                menuButton={triggerProps}
+                primaryActionButton={primaryActionButtonProps}
+                icon={<SparkleBundle />}
+              >
+                AI Rewrite
+              </SplitButton>
+            )}
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem onClick={handleGrammarFix}>Grammar fix</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </Toolbar>
+      <Alert
+        isDialogOpen={alertDialog.isOpen}
+        setIsDialogOpen={alertDialog.setIsOpen}
+        title='Image Upload Limit'
+        description={`You can only upload ${maxFileLimit} images at a time.`}
       />
-      <ToolbarDivider vertical />
-      <Menu positioning='below-end'>
-        <MenuTrigger disableButtonEnhancement>
-          {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              className={fluentStyles.rewriteBtn}
-              appearance='subtle'
-              menuButton={triggerProps}
-              primaryActionButton={primaryActionButtonProps}
-              icon={<SparkleBundle />}
-            >
-              AI Rewrite
-            </SplitButton>
-          )}
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem onClick={handleGrammarFix}>Grammar fix</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </Toolbar>
+    </>
   )
 }

@@ -19,10 +19,8 @@ import { ADVANCEDTEXTAREAPLACEHOLDER } from "../../constants/posts"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { useContext } from "react"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
-import { Alert } from "./Alert"
 import { useAITextActions } from "../../hooks/useAITextActions"
 import { useImageUpload } from "../../hooks/useImageUpload"
-import { useAlertDialog } from "../../hooks/useAlertDialog"
 import { usePostSubmission } from "../../hooks/usePostSubmission"
 import { AdvancedTextAreaToolbar } from "./AdvancedTextAreaToolbar"
 import { useCommentSubmission } from "../../hooks/useCommentSubmission"
@@ -135,8 +133,6 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
   })
 
   const { images, addImages, clearImages, removeImage } = useImageUpload()
-
-  const alertDialog = useAlertDialog()
 
   const { submitPost, loadingState } = usePostSubmission({
     addNewPost,
@@ -286,12 +282,6 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
           <div></div>
         )}
       </CollapseRelaxed>
-      <Alert
-        isDialogOpen={alertDialog.isOpen}
-        setIsDialogOpen={alertDialog.setIsOpen}
-        title='Image Upload Limit'
-        description={`You can only upload ${maxFileLimit} images at a time.`}
-      />
     </>
   )
 }
