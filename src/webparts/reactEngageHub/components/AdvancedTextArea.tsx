@@ -98,8 +98,8 @@ export type AdvancedTextAreaType = {
 const SendIcon = bundleIcon(Send20Color, Send24Regular)
 
 interface IAdvancedTextAreaProps {
-  exitCompactView: boolean
-  setExitCompactView: React.Dispatch<React.SetStateAction<boolean>>
+  isCompactView: boolean
+  setIsCompactView: React.Dispatch<React.SetStateAction<boolean>>
   mode?: string
   postId?: number
   onPostSubmit?: () => void
@@ -113,8 +113,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
   const [selectedText, setSelectedText] = React.useState("")
 
   const {
-    exitCompactView,
-    setExitCompactView,
+    isCompactView,
+    setIsCompactView,
     onPostSubmit,
     mode,
     postId,
@@ -143,7 +143,7 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
     onPostSubmit,
     clearImages,
     setText,
-    setExitCompactView,
+    setIsCompactView,
     context,
   })
 
@@ -185,8 +185,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
 
   if (mode === "Comment") {
     return (
-      <CollapseRelaxed visible={exitCompactView === false}>
-        {!exitCompactView ? (
+      <CollapseRelaxed visible={isCompactView === false}>
+        {!isCompactView ? (
           <Card className={fluentStyles.advancedTextAreaCard}>
             <Textarea
               ref={inputRef}
@@ -211,7 +211,7 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
                 appearance='primary'
                 onClick={async () => {
                   await submitComment()
-                  setExitCompactView(!exitCompactView)
+                  setIsCompactView(!isCompactView)
                 }}
                 disabled={!text}
                 disabledFocusable={commentLoadingState === "loading"}
@@ -229,8 +229,8 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
   }
   return (
     <>
-      <CollapseRelaxed visible={exitCompactView === false ? true : false}>
-        {!exitCompactView ? (
+      <CollapseRelaxed visible={isCompactView === false ? true : false}>
+        {!isCompactView ? (
           <Card className={fluentStyles.advancedTextAreaCard}>
             <AdvancedTextAreaToolbar
               images={images}
@@ -265,7 +265,7 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
             <div className={fluentStyles.actionBtnWrapper}>
               <Link
                 className={fluentStyles.collapseBtn}
-                onClick={() => setExitCompactView(!exitCompactView)}
+                onClick={() => setIsCompactView(!isCompactView)}
               >
                 Collapse
               </Link>

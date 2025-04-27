@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
   const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
-  const [exitCompactView, setExitCompactView] = React.useState(true)
+  const [isCompactView, setIsCompactView] = React.useState(true)
 
   const handlePostSubmitted = () => {
     setShouldRefreshPosts((prev) => !prev)
@@ -70,12 +70,12 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         >
           <WEBPARTCONTEXT.Provider value={props}>
             <CompactTextArea
-              exitCompactView={exitCompactView}
-              setExitCompactView={setExitCompactView}
+              isCompactView={isCompactView}
+              setIsCompactView={setIsCompactView}
             />
             <AdvancedTextArea
-              exitCompactView={exitCompactView}
-              setExitCompactView={setExitCompactView}
+              isCompactView={isCompactView}
+              setIsCompactView={setIsCompactView}
               onPostSubmit={handlePostSubmitted}
             />
             <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />

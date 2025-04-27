@@ -72,19 +72,19 @@ const useStyles = makeStyles({
 })
 
 interface ICompactTextAreaInterface {
-  exitCompactView: boolean
-  setExitCompactView: React.Dispatch<React.SetStateAction<boolean>>
+  isCompactView: boolean
+  setIsCompactView: React.Dispatch<React.SetStateAction<boolean>>
   mode?: string
 }
 
 export const CompactTextArea = ({
-  exitCompactView,
-  setExitCompactView,
+  isCompactView,
+  setIsCompactView,
   mode,
 }: ICompactTextAreaInterface) => {
   const fluentStyles = useStyles()
 
-  if (!exitCompactView) return null
+  if (!isCompactView) return null
 
   return (
     <>
@@ -101,7 +101,7 @@ export const CompactTextArea = ({
             textarea={{ style: { marginTop: "-4px" } }}
             className={fluentStyles.compactCommentTextArea}
             placeholder={COMMENTEXTAREAPLACEHOLDER}
-            onClick={() => setExitCompactView(!exitCompactView)}
+            onClick={() => setIsCompactView(!isCompactView)}
           />
         </Card>
       ) : (
@@ -109,7 +109,7 @@ export const CompactTextArea = ({
           <Textarea
             className={fluentStyles.compactTextArea}
             placeholder={ADVANCEDTEXTAREAPLACEHOLDER}
-            onClick={() => setExitCompactView(!exitCompactView)}
+            onClick={() => setIsCompactView(!isCompactView)}
           />
         </Card>
       )}

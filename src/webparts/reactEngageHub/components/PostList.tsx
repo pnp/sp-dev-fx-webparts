@@ -14,8 +14,8 @@ interface IPostListProps {
   context: any
   isDarkTheme: boolean
   fluentStyles: any
-  exitCompactView: boolean
-  setExitCompactView: React.Dispatch<React.SetStateAction<boolean>>
+  isCompactView: boolean
+  setIsCompactView: React.Dispatch<React.SetStateAction<boolean>>
   fetchPosts: () => Promise<void>
   onClickPostLikeBtn: (postId: number, postLike: boolean) => void
   handlePostDelete: (postId: string, itemId: number) => Promise<void>
@@ -27,8 +27,8 @@ export const PostList = (props: IPostListProps) => {
     context,
     isDarkTheme,
     fluentStyles,
-    exitCompactView,
-    setExitCompactView,
+    isCompactView,
+    setIsCompactView,
     fetchPosts,
     onClickPostLikeBtn,
     handlePostDelete,
@@ -74,8 +74,8 @@ export const PostList = (props: IPostListProps) => {
                 <PostActions
                   post={post}
                   onClickPostLikeBtn={onClickPostLikeBtn}
-                  exitCompactView={exitCompactView}
-                  setExitCompactView={setExitCompactView}
+                  isCompactView={isCompactView}
+                  setIsCompactView={setIsCompactView}
                 />
               </div>
               <Divider style={{ paddingTop: "1rem" }} />
@@ -90,13 +90,13 @@ export const PostList = (props: IPostListProps) => {
               ))}
               <div className={styles.newCommentContainer}>
                 <CompactTextArea
-                  exitCompactView={exitCompactView}
-                  setExitCompactView={setExitCompactView}
+                  isCompactView={isCompactView}
+                  setIsCompactView={setIsCompactView}
                   mode={"Comment"}
                 />
                 <AdvancedTextArea
-                  exitCompactView={exitCompactView}
-                  setExitCompactView={setExitCompactView}
+                  isCompactView={isCompactView}
+                  setIsCompactView={setIsCompactView}
                   mode={"Comment"}
                   postId={post.ID}
                   fetchPosts={fetchPosts}

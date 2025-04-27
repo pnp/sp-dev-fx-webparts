@@ -59,7 +59,7 @@ const useStyles = makeStyles({
 })
 export const Posts = ({ refreshTrigger }: any) => {
   const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
-  const [exitCompactView, setExitCompactView] = React.useState(true)
+  const [isCompactView, setIsCompactView] = React.useState(true)
 
   const { context, isDarkTheme } =
     React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
@@ -115,8 +115,8 @@ export const Posts = ({ refreshTrigger }: any) => {
           context={context}
           isDarkTheme={isDarkTheme}
           fluentStyles={fluentStyles}
-          exitCompactView={exitCompactView}
-          setExitCompactView={setExitCompactView}
+          isCompactView={isCompactView}
+          setIsCompactView={setIsCompactView}
           fetchPosts={fetchPosts}
           onClickPostLikeBtn={onClickPostLikeBtn}
           handlePostDelete={handlePostDelete}

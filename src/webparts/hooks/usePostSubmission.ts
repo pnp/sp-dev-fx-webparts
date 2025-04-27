@@ -5,7 +5,7 @@ type UsePostSubmissionProps = {
   onPostSubmit?: () => void
   clearImages: () => void
   setText: (value: string) => void
-  setExitCompactView: (value: boolean) => void
+  setIsCompactView: (value: boolean) => void
   context: any
 }
 
@@ -14,7 +14,7 @@ export function usePostSubmission({
   onPostSubmit,
   clearImages,
   setText,
-  setExitCompactView,
+  setIsCompactView,
   context,
 }: UsePostSubmissionProps) {
   const [loadingState, setLoadingState] = useState<
@@ -26,7 +26,7 @@ export function usePostSubmission({
     await addNewPost(post, images, context.pageContext)
     setText("")
     clearImages()
-    setExitCompactView(true)
+    setIsCompactView(true)
     if (onPostSubmit) onPostSubmit()
     setLoadingState("loaded")
   }
