@@ -5,9 +5,9 @@
     "nodeVersion": "16.16.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.12.0"
+      "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.19.0",
+    "version": "1.21.0",
     "libraryName": "react-m-365-services-health",
     "libraryId": "f4d4b329-f1c6-49c9-a2fa-12a9816ac717",
     "environment": "spo",
