@@ -33,6 +33,7 @@ import { LikeUnlike } from "./LikeUnlike"
 import { CommentIcon } from "../../constants/icons"
 import { CompactTextArea } from "./CompactTextArea"
 import { AdvancedTextArea } from "./AdvancedTextArea"
+import { formatDate } from "../utils/util"
 
 export interface IPostsProps {}
 
@@ -208,9 +209,7 @@ export const Posts = ({ refreshTrigger }: any) => {
                   <Avatar name={post.AuthorName} size={36} />
                   <div className={styles.author}>
                     <Text>{post.AuthorName}</Text>
-                    <Text size={100}>
-                      {new Date(post.Created).toLocaleString("en-IN")}
-                    </Text>
+                    <Text size={100}>{formatDate(new Date(post.Created))}</Text>
                   </div>
                   {post.UserID ===
                     context.pageContext.legacyPageContext?.userPuid && (

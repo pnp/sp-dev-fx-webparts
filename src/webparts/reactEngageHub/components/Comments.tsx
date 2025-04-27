@@ -8,6 +8,7 @@ import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import { useContext } from "react"
 import { MoreOptions } from "./MoreOptions"
+import { formatDate } from "../utils/util"
 
 interface IComments {
   key: number
@@ -51,9 +52,7 @@ export const Comments = (props: IComments) => {
         />
         <div className={styles.author}>
           <Text>{comment.author.name}</Text>
-          <Text size={100}>
-            {new Date(comment.createdDate).toLocaleString("en-IN")}
-          </Text>
+          <Text size={100}>{formatDate(new Date(comment.createdDate))}</Text>
         </div>
 
         {comment.author.email &&
