@@ -1,36 +1,27 @@
 import { SPFI } from "@pnp/sp"
 import { getSP } from "../utils/spUtility"
-import { AdvancedTextAreaType } from "../components/AdvancedTextArea"
 import { Comment, Comments } from "@pnp/sp/comments"
 import { SPHttpClient } from "@microsoft/sp-http"
 import {
   COMMENTSPERPAGE,
   MAXFILEUPLOADSIZE,
   POSTSPERPAGE,
-} from "../../constants/constants"
+} from "../../constants/posts"
 import { IFileUploadProgressData } from "@pnp/sp/files"
 
-export const addNewPost = async (
-  post: AdvancedTextAreaType,
-  pageContext: any
-) => {
+export const addNewPost = async (post: string, imageUrls: any, pageContext: any) => {
   let sp: SPFI = getSP()
 
   let userInfo = await getCurrentUserDetails()
 
   let postUUID = crypto.randomUUID()
   let imageResult: any
-  if (post.imageUrls.length > 0) {
-    imageResult = await uploadImage(
-      post.imageUrls,
-      pageContext,
-      userInfo,
-      postUUID
-    )
+  if (imageUrls.length > 0) {
+    imageResult = await uploadImage(imageUrls, pageContext, userInfo, postUUID)
   }
 
   await sp.web.lists.getByTitle("Discussion Point").items.add({
-    Description: post.postDescription,
+    Description: post,
     UserID: userInfo.UserId.NameId,
     PostID: postUUID,
     AuthorName: userInfo.Title,

@@ -7,25 +7,32 @@ import {
   makeStyles,
   Spinner,
   Text,
-  Textarea,
+  // Textarea,
 } from "@fluentui/react-components"
 import * as React from "react"
 import { useEffect } from "react"
 import {
-  addNewComment,
+  // addNewComment,
   deletePost,
   getPosts,
   updatePostLikeUnlike,
 } from "../services/SPService"
 import styles from "../ReactEngageHub.module.scss"
-import { Send16Color } from "@fluentui/react-icons"
-import { LOADMOREPOSTSLABEL, LOADPOSTSLABEL } from "../../constants/constants"
+// import { Send16Color } from "@fluentui/react-icons"
+import {
+  // COMMENTEXTAREAPLACEHOLDER,
+  LOADMOREPOSTSLABEL,
+  LOADPOSTSLABEL,
+} from "../../constants/posts"
 import { ImagePreview } from "./ImagePreview"
 import { WEBPARTCONTEXT } from "../../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import { MoreOptions } from "./MoreOptions"
 import { Comments } from "./Comments"
 import { LikeUnlike } from "./LikeUnlike"
+import { CommentIcon } from "../../constants/icons"
+import { CompactTextArea } from "./CompactTextArea"
+import { AdvancedTextArea } from "./AdvancedTextArea"
 
 export interface IPostsProps {}
 
@@ -69,16 +76,23 @@ const useStyles = makeStyles({
   recentPostsSubtitle: {
     marginLeft: "0.15rem",
   },
+  postActions: {
+    display: "flex",
+    gap: "0.25rem",
+    alignItems: "flex-end",
+  },
 })
 export const Posts = ({ refreshTrigger }: any) => {
   const [posts, setPosts] = React.useState<any>([])
-  const [newComments, setNewComments] = React.useState<{
-    [key: number]: string
-  }>({})
+  // const [newComments, setNewComments] = React.useState<{
+  //   [key: number]: string
+  // }>({})
   const [nextLink, setNextLink] = React.useState<string | undefined>()
   const [hasMore, setHasMore] = React.useState<boolean>(true)
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [isLoaderRef, setLoaderRef] = React.useState<boolean>(false)
+  const [exitCompactView, setExitCompactView] = React.useState(true)
+
   const { context, isDarkTheme } =
     React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
 
@@ -118,14 +132,14 @@ export const Posts = ({ refreshTrigger }: any) => {
   }
 
   const onClickNewCommentBtn = async (postId: number) => {
-    await addNewComment(postId, newComments[postId])
-    setNewComments({ ...newComments, [postId]: "" })
-    await fetchPosts()
+    // await addNewComment(postId, newComments[postId])
+    // setNewComments({ ...newComments, [postId]: "" })
+    // await fetchPosts()
   }
 
-  const handleNewCommentChange = (postId: number, value: string) => {
-    setNewComments({ ...newComments, [postId]: value })
-  }
+  // const handleNewCommentChange = (postId: number, value: string) => {
+  //   setNewComments({ ...newComments, [postId]: value })
+  // }
 
   const fetchPosts = async () => {
     setIsLoading(true)
@@ -224,11 +238,16 @@ export const Posts = ({ refreshTrigger }: any) => {
                     __html: post.Description,
                   }}
                 ></div>
-                <LikeUnlike
-                  isLiked={post.isLiked}
-                  likesCount={post.LikesCount}
-                  onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
-                />
+                <div className={fluentStyles.postActions}>
+                  <LikeUnlike
+                    isLiked={post.isLiked}
+                    likesCount={post.LikesCount}
+                    onClick={() => onClickPostLikeBtn(post.ID, post.isLiked)}
+                  />
+                  <Button appearance='transparent' icon={<CommentIcon />}>
+                    Comment
+                  </Button>
+                </div>
                 <Divider style={{ paddingTop: "1rem" }} />
                 {post.comments.map((comment: any) => (
                   <Comments
@@ -240,20 +259,31 @@ export const Posts = ({ refreshTrigger }: any) => {
                   />
                 ))}
                 <div className={styles.newCommentContainer}>
-                  <Textarea
+                  {/* <Textarea
                     className={fluentStyles.newcommentTextarea}
                     onChange={(e) =>
                       handleNewCommentChange(post.ID, e.target.value)
                     }
                     value={newComments[post.ID] || ""}
                     size='small'
-                    placeholder='Add a comment'
+                    placeholder={COMMENTEXTAREAPLACEHOLDER}
                   />
                   <Button
                     appearance='transparent'
                     icon={<Send16Color />}
                     onClick={() => onClickNewCommentBtn(post.ID)}
                     className={fluentStyles.newCommentBtn}
+                  /> */}
+                  <CompactTextArea
+                    exitCompactView={exitCompactView}
+                    setExitCompactView={setExitCompactView}
+                    source={"Comment"}
+                  />
+                  <AdvancedTextArea
+                    exitCompactView={exitCompactView}
+                    setExitCompactView={setExitCompactView}
+                    source={"Comment"}
+                    onCommentSubmit={() => onClickNewCommentBtn(post.ID)}
                   />
                 </div>
               </article>

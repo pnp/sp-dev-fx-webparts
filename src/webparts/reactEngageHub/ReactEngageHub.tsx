@@ -15,6 +15,7 @@ import { useEffect } from "react"
 import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
 import { Posts } from "./components/Posts"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
+import { CompactTextArea } from "./components/CompactTextArea"
 
 const useStyles = makeStyles({
   fluentWrapper: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles({
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
   const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
+  const [exitCompactView, setExitCompactView] = React.useState(true)
 
   const handlePostSubmitted = () => {
     setShouldRefreshPosts((prev) => !prev)
@@ -67,9 +69,14 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
           className={fluentStyles.fluentWrapper}
         >
           <WEBPARTCONTEXT.Provider value={props}>
+            <CompactTextArea
+              exitCompactView={exitCompactView}
+              setExitCompactView={setExitCompactView}
+            />
             <AdvancedTextArea
-              webpartProps={props}
-              onPostSubmitted={handlePostSubmitted}
+              exitCompactView={exitCompactView}
+              setExitCompactView={setExitCompactView}
+              onPostSubmit={handlePostSubmitted}
             />
             <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
           </WEBPARTCONTEXT.Provider>
