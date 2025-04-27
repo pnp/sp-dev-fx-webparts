@@ -7,7 +7,7 @@
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.20.0",
+    "version": "1.21.0",
     "libraryName": "react-my-one-drive-info",
     "libraryId": "a07f3777-40b2-413e-b024-23234e5142e3",
     "environment": "spo",
