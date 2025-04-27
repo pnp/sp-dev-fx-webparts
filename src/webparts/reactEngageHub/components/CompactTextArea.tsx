@@ -101,7 +101,7 @@ export const CompactTextArea = ({
             textarea={{ style: { marginTop: "-4px" } }}
             className={fluentStyles.compactCommentTextArea}
             placeholder={COMMENTEXTAREAPLACEHOLDER}
-            onClick={() => setIsCompactView(!isCompactView)}
+            onClick={() => setIsCompactView(false)}
           />
         </Card>
       ) : (

@@ -22,13 +22,15 @@ interface IPostListProps {
 }
 
 export const PostList = (props: IPostListProps) => {
+  const [isCommentCompactView, setIsCommentCompactView] = React.useState<{
+    [key: number]: boolean
+  }>({})
+
   const {
     posts,
     context,
     isDarkTheme,
     fluentStyles,
-    isCompactView,
-    setIsCompactView,
     fetchPosts,
     onClickPostLikeBtn,
     handlePostDelete,
@@ -74,8 +76,7 @@ export const PostList = (props: IPostListProps) => {
                 <PostActions
                   post={post}
                   onClickPostLikeBtn={onClickPostLikeBtn}
-                  isCompactView={isCompactView}
-                  setIsCompactView={setIsCompactView}
+                  setIsCommentCompactView={setIsCommentCompactView}
                 />
               </div>
               <Divider style={{ paddingTop: "1rem" }} />
@@ -90,13 +91,23 @@ export const PostList = (props: IPostListProps) => {
               ))}
               <div className={styles.newCommentContainer}>
                 <CompactTextArea
-                  isCompactView={isCompactView}
-                  setIsCompactView={setIsCompactView}
+                  isCompactView={isCommentCompactView[post.ID] !== false}
+                  setIsCompactView={() =>
+                    setIsCommentCompactView((prev) => ({
+                      ...prev,
+                      [post.ID]: false,
+                    }))
+                  }
                   mode={"Comment"}
                 />
                 <AdvancedTextArea
-                  isCompactView={isCompactView}
-                  setIsCompactView={setIsCompactView}
+                  isCompactView={isCommentCompactView[post.ID] !== false}
+                  setIsCompactView={() =>
+                    setIsCommentCompactView((prev) => ({
+                      ...prev,
+                      [post.ID]: true,
+                    }))
+                  }
                   mode={"Comment"}
                   postId={post.ID}
                   fetchPosts={fetchPosts}

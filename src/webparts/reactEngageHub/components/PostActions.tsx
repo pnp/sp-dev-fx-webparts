@@ -6,12 +6,11 @@ import { CommentIcon } from "../../constants/icons"
 interface IPostActionsProps {
   post: any
   onClickPostLikeBtn: (postId: number, postLike: boolean) => void
-  isCompactView: boolean
-  setIsCompactView: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCommentCompactView: any
 }
 
 export const PostActions = (props: IPostActionsProps) => {
-  const { post, onClickPostLikeBtn, isCompactView, setIsCompactView } = props
+  const { post, onClickPostLikeBtn, setIsCommentCompactView } = props
 
   return (
     <>
@@ -23,7 +22,12 @@ export const PostActions = (props: IPostActionsProps) => {
       <Button
         appearance='transparent'
         icon={<CommentIcon />}
-        onClick={() => setIsCompactView(!isCompactView)}
+        onClick={() =>
+          setIsCommentCompactView((prev: any) => ({
+            ...prev,
+            [post.ID]: prev[post.ID] === false ? true : false,
+          }))
+        }
       >
         Comment
       </Button>
