@@ -214,7 +214,7 @@ export const AdvancedTextArea = (props: IAdvancedTextAreaProps) => {
                   setExitCompactView(!exitCompactView)
                 }}
                 disabled={!text}
-                disabledFocusable={loadingState === "loading"}
+                disabledFocusable={commentLoadingState === "loading"}
                 className={buttonClassName}
               >
                 {commentLoadingState === "loading" ? "Posting..." : "Post"}
