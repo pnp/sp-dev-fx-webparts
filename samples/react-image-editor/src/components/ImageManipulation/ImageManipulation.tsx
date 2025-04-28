@@ -528,8 +528,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
       <IconButton
         iconProps={{ iconName: 'SwitcherStartEnd' }}
         onRenderIcon={() => {
-          // tslint:disable-next-line: react-a11y-img-has-alt
-          return (<img className={styles.svgbuttonPanel} src={flipVerticalIcon} />);
+          return (<img className={styles.svgbuttonPanel} alt='Flip Vertical' src={flipVerticalIcon} />);
         }}
         title={strings.FlipHorizontal}
         ariaLabel={strings.FlipHorizontal}
@@ -551,8 +550,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
       />
       <IconButton
         onRenderIcon={() => {
-          // tslint:disable-next-line: react-a11y-img-has-alt
-          return (<img className={styles.svgbuttonPanel} src={flipHorizontalIcon} />);
+          return (<img className={styles.svgbuttonPanel} alt='Flip Horizontal' src={flipHorizontalIcon} />);
         }}
         title={strings.FlipVertical}
         ariaLabel={strings.FlipVertical}
@@ -952,8 +950,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
       iconProps={{ iconName: options.iconName }}
       onRenderIcon={(p, defaultrenderer) => {
         if (options.svgIcon) {
-          // tslint:disable-next-line: react-a11y-img-has-alt
-          return (<img className={styles.svgbutton} src={options.svgIcon} />);
+          return (<img className={styles.svgbutton} alt={options.text} src={options.svgIcon} />);
         }
         return defaultrenderer ? defaultrenderer(p) : null;
       }}
