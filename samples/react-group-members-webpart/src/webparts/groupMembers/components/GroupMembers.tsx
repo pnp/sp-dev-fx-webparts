@@ -5,7 +5,6 @@ import {
   PersonaSize,
   Spinner,
   SpinnerSize,
-  DefaultButton,
   PersonaInitialsColor,
   Text,
   Stack,
@@ -84,6 +83,7 @@ const GroupMembers: React.FC<IGroupMembersProps> = (props): JSX.Element => {
 
   const itemsPerPage: number = props.itemsPerPage || 10;
   const sortField: string = props.sortField || 'name';
+ 
 
   // Debounced search function
   const handleSearchChange = (newValue?: string): void => {
@@ -210,18 +210,12 @@ const GroupMembers: React.FC<IGroupMembersProps> = (props): JSX.Element => {
     const startIndex = (currentPages[role] - 1) * itemsPerPage;
     const totalPages = Math.ceil(users.length / itemsPerPage);
     const paginatedUsers = users.slice(startIndex, startIndex + itemsPerPage);
-    const hasMoreItems = users.length > startIndex + itemsPerPage;
     const roleLabels: Record<string, string> = {
       admin: props.adminLabel || 'Administrators',
       member: props.memberLabel || 'Members',
       visitor: props.visitorLabel || 'Visitors'
     };
-    const handleLoadMore = (): void => {
-      setCurrentPages(prev => ({
-        ...prev,
-        [role]: prev[role] + 1
-      }));
-    };
+  
     return users.length > 0 ? (
       <div className={styles.userSection}>
         <Stack horizontal verticalAlign="center" className={styles.sectionHeader}>
@@ -277,47 +271,42 @@ const GroupMembers: React.FC<IGroupMembersProps> = (props): JSX.Element => {
           </FocusZone>
         </div>
         {users.length > itemsPerPage && (
-          <div className={styles.paginationContainer}>
-            {hasMoreItems ? (
-              <PrimaryButton
-                text="Load More"
-                onClick={handleLoadMore}
-                className={styles.loadMoreButton}
-                iconProps={{ iconName: 'ChevronDown' }}
-              />
-            ) : (
-              <div className={styles.paginationControls}>
-                <DefaultButton
-                  text="Previous"
-                  onClick={() => setCurrentPages(prev => ({
-                    ...prev,
-                    [role]: Math.max(1, prev[role] - 1)
-                  }))}
-                  disabled={currentPages[role] === 1}
-                  iconProps={{ iconName: 'ChevronLeft' }}
-                />
-                <Text variant="medium" className={styles.paginationText}>
-                  Page {currentPages[role]} of {totalPages}
-                </Text>
-                <DefaultButton
-                  text="Next"
-                  onClick={() => {
-                    setCurrentPages(prev => ({
-                      ...prev,
-                      [role]: Math.min(totalPages, prev[role] + 1)
-                    }));
-                  }}
-                  disabled={currentPages[role] === totalPages}
-                  iconProps={{ iconName: 'ChevronRight' }}
-                />
-              </div>
-            )}
-          </div>
-        )}
+  <div className={styles.paginationContainer}>
+    <PrimaryButton
+      text="Previous"
+      onClick={() => {
+        setCurrentPages(prev => ({
+          ...prev,
+          [role]: Math.max(1, prev[role] - 1)
+        }));
+        
+      }}
+     
+      disabled={currentPages[role] === 1}
+      iconProps={{ iconName: 'ChevronLeft' }}
+    />
+    <Text variant="medium" className={styles.paginationText}>
+      Page {currentPages[role]} of {totalPages}
+    </Text>
+    <PrimaryButton
+      text="Next"
+      onClick={() => {
+        setCurrentPages(prev => ({
+          ...prev,
+          [role]: Math.min(totalPages, prev[role] + 1)
+        }));
+      }}
+       
+      disabled={currentPages[role] === totalPages}
+      iconProps={{ iconName: 'ChevronRight' }}
+    />
+  </div>
+)}
       </div>
     ) : null;
   };
 
+  
   return (
     <div className={styles.groupMembers}>
       <Stack horizontal verticalAlign="center" className={styles.header}>
