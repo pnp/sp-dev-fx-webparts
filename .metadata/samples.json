@@ -15502,6 +15502,67 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-engage-hub",
+    "source": "pnp",
+    "title": "Engage Hub",
+    "shortDescription": "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
+    "longDescription": [
+      "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries."
+    ],
+    "creationDateTime": "2025-04-27",
+    "updateDateTime": "2025-04-27",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "engage_hub1.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-engage-hub/assets/engage_hub1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "engage_hub2.gif",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-engage-hub/assets/engage_hub2.gif",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "pictureUrl": "https://github.com/Sandeep-FED.png",
+        "name": "Sandeep P S"
+      },
+      {
+        "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
+        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
+        "name": "AOAI SDK"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-button",
     "source": "pnp",
     "title": "Enhanced Button",
