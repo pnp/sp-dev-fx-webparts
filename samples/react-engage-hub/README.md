@@ -93,7 +93,7 @@ Key features demonstrated by this solution:
 - Azure OpenAI JS SDK
 - Infinite loading
 - Custom hooks
-- Follows single responsiblity principle
+- Follows single responsibility principle
 
 ## References
 
