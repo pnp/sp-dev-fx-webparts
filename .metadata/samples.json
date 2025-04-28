@@ -21924,7 +21924,7 @@
       "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view."
     ],
     "creationDateTime": "2020-07-19",
-    "updateDateTime": "2020-07-19",
+    "updateDateTime": "2025-04-25",
     "products": [
       "SharePoint"
     ],
@@ -21935,7 +21935,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
