@@ -18516,7 +18516,7 @@
       "The Group Members Web Part provides a comprehensive solution for displaying and managing Microsoft 365 group memberships within SharePoint. This web part leverages Microsoft Graph to fetch user data and presents it in an intuitive, responsive interface that supports filtering, search, and quick actions."
     ],
     "creationDateTime": "2025-02-28",
-    "updateDateTime": "2025-02-28",
+    "updateDateTime": "2025-04-21",
     "products": [
       "SharePoint"
     ],
@@ -18537,6 +18537,13 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI.png",
         "alt": "Web Part Preview"
+      },
+      {
+        "name": "GroupMembersUI_updated.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI_updated.png",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
@@ -18544,6 +18551,16 @@
         "gitHubAccount": "https://github.com/NicolasKheirallah",
         "pictureUrl": "https://github.com/NicolasKheirallah.png",
         "name": "Nicolas Kheirallah"
+      },
+      {
+        "gitHubAccount": "https://github.com/nrvrvl",
+        "pictureUrl": "https://github.com/nrvrvl.png",
+        "name": "Nirav Raval"
+      },
+      {
+        "gitHubAccount": "https://github.com/microsoftgraph/msgraph-sdk-javascript",
+        "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png",
+        "name": "Microsoft Graph JavaScript SDK"
       }
     ],
     "references": [
