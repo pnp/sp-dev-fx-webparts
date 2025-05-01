@@ -5,6 +5,8 @@
 This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment.
 
 ![Award Recognition](./assets/AwardRecognition.png)
+![Award Recognition Property Pane Configuration](./assets/Property_pane_options.png)
+![Award Recognition Dark Theme Appearance](./assets/Dark_theme_appearance.png)
 
 ## Compatibility
 
@@ -56,6 +58,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 | 1.0     | March 16, 2024   | Initial release                     |
 | 1.1     | October 19, 2024 | Upgrade to SPFx 1.20 & misc. changes |
 | 2.0     | November 1, 2024 | New feature: card styles & animations |
+| 2.1     | May 1, 2025 | Upgrade to SPFx 1.21 & code cleanup |
 
 ## Minimal Path to Awesome⚡
 
