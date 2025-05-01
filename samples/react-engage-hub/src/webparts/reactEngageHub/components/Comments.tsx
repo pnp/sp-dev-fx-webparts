@@ -40,16 +40,7 @@ export const Comments = (props: IComments) => {
       }}
     >
       <div className={styles.topContainer}>
-        <Avatar
-          name={comment.author.name}
-          size={36}
-          active={comment.author.isActive ? "active" : "inactive"}
-          badge={
-            comment.author.isActive
-              ? { status: "available" }
-              : { status: "offline" }
-          }
-        />
+        <Avatar name={comment.author.name} size={36} />
         <div className={styles.author}>
           <Text>{comment.author.name}</Text>
           <Text size={100}>{formatDate(new Date(comment.createdDate))}</Text>
