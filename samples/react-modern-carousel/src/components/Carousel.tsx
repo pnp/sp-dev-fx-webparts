@@ -2,7 +2,7 @@ import * as React from "react"
 import { useContext } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, EffectCoverflow } from "swiper/modules"
-import { Card, CardPreview } from "@fluentui/react-components"
+import { Card, CardPreview, tokens } from "@fluentui/react-components"
 import { useEffect, useState } from "react"
 import { useListItems } from "pnp-react-hooks/hooks/sp/useListItems"
 import { ListOptions } from "pnp-react-hooks/types/options/ListOptions"
@@ -71,14 +71,16 @@ export const Carousel = (): JSX.Element => {
       </aside>
       <aside className={styles.carouselWrapper}>
         <div
-          className={
-            contextInfo.isDarkTheme ? styles.fade_left_dark : styles.fade_left
-          }
+          className={styles.fade_left}
+          style={{
+            background: `linear-gradient(to right, ${tokens.colorNeutralBackground4Selected}, transparent)`,
+          }}
         />
         <div
-          className={
-            contextInfo.isDarkTheme ? styles.fade_right_dark : styles.fade_right
-          }
+          className={styles.fade_right}
+          style={{
+            background: `linear-gradient(to left, ${tokens.colorNeutralBackground4Selected}, transparent)`,
+          }}
         />
         <Swiper
           effect={getCardLayoutType(contextInfo.cardType)}
