@@ -1,6 +1,6 @@
-import { ToolbarButton } from "@fluentui/react-components"
-import { Image24Regular } from "@fluentui/react-icons"
 import * as React from "react"
+import { ToolbarButton } from "@fluentui/react-components"
+import { ImageAddIcon } from "../../constants/icons"
 
 export interface IImageUploaderProps {
   imageCount: number
@@ -44,7 +44,7 @@ export const ImageUploader = (props: IImageUploaderProps) => {
         ref={fileInputRef}
         onChange={handleImageUpload}
       />
-      <ToolbarButton icon={<Image24Regular />} onClick={handleImageClick} />
+      <ToolbarButton icon={<ImageAddIcon />} onClick={handleImageClick} />
     </>
   )
 }
