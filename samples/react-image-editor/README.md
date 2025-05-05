@@ -46,7 +46,7 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.21](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
 ![Node.js LTS 22](https://img.shields.io/badge/Node.js-LTS%2022-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -75,7 +75,8 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 
 |Version|Date|Comments|
 |-------|----|--------|
-|2.0.1.0|Apr 27, 2025|Node Version|
+|2.0.1.0|Mai 5, 2025| SPFx 1.21.1|
+|2.0.1.0|Apr 27, 2025|Node Version SPFx 1.21|
 |2.0.0.0|Apr 02, 2025|Added properties and accessibility|
 |1.1.0.0|Sep 09, 2024|Added properties and accessibility|
 |1.0.0.0|Mar 17, 2021|Initial release|

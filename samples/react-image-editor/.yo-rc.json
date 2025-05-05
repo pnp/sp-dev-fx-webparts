@@ -7,7 +7,7 @@
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.21.0",
+    "version": "1.21.1",
     "environment": "spo",
     "libraryName": "react-image-editor",
     "libraryId": "e859f86f-7a12-40e3-94fb-97ee47419aed",
