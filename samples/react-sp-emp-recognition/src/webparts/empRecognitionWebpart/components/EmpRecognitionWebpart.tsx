@@ -1,18 +1,18 @@
 import * as React from 'react';
-import AddRecognitionForm from './AddRecognitionForm';
 import styles from './EmpRecognitionWebpart.module.scss';
-import { Modal, IconButton } from '@fluentui/react';
 import type { IEmpRecognitionWebpartProps } from './IEmpRecognitionWebpartProps';
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import AddRecognitionForm from './AddRecognitionForm';
 
 export interface IEmployeeRecognitionItem {
   Id: number;
   From: {
     Title: string;
     Picture: any;
+    JobTitle: string; // Add this field
   };
   To: {
     Title: string;
@@ -26,12 +26,17 @@ export interface IEmployeeRecognitionItem {
   DateRecognized: string;
 }
 
-export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, { items: IEmployeeRecognitionItem[]; isModalOpen: boolean }> {
+export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, {
+  items: IEmployeeRecognitionItem[];
+  isModalOpen: boolean;
+  showAddForm: boolean; // New state to track whether to show the form
+}> {
   constructor(props: IEmpRecognitionWebpartProps) {
     super(props);
     this.state = {
       items: [],
-      isModalOpen: false
+      isModalOpen: false,
+      showAddForm: false // Initialize as hidden
     };
   }
 
@@ -47,6 +52,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
           "Id",
           "From/Title",
           "From/EMail",
+          "From/JobTitle", // Add this field
           "To/Title",
           "To/EMail",
           "Message",
@@ -62,6 +68,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
         Id: item.Id,
         From: {
           Title: item.From?.Title || "Unknown",
+          JobTitle: item.From?.JobTitle || "Team Member", // Add this field with a fallback
           Picture: item.From?.EMail
             ? `https://${this.props.context.pageContext.web.absoluteUrl.split('/')[2]}/_layouts/15/userphoto.aspx?size=L&accountname=${item.From.EMail}`
             : "https://via.placeholder.com/40"
@@ -108,75 +115,75 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
     }
   }
 
-  private openModal = (): void => {
-    this.setState({ isModalOpen: true });
+  private toggleAddForm = (): void => {
+    this.setState(prevState => ({ showAddForm: !prevState.showAddForm }));
   };
 
-  private closeModal = (): void => {
-    this.setState({ isModalOpen: false });
+  private handleFormSubmitted = (): void => {
+    this.setState({ showAddForm: false });
+    this.fetchItems(); // Refresh the items list
   };
+
+
 
   public render(): React.ReactElement<IEmpRecognitionWebpartProps> {
-    const { items, isModalOpen } = this.state;
+    const { items, showAddForm } = this.state;
 
     return (
       <div className={styles.empRecognitionWebpart}>
-        <button onClick={this.openModal} className={styles.openModalButton}>
-          Add New Recognition
+        <button
+          onClick={this.toggleAddForm}
+          className={styles.openModalButton}
+        >
+          {showAddForm ? 'Hide Form' : 'Add New Recognition'}
         </button>
 
-        <Modal
-          isOpen={isModalOpen}
-          onDismiss={this.closeModal}
-          isBlocking={false}
-          containerClassName={styles.modalContainer}
-        >
-          <div className={styles.modalHeader}>
-            <h2>Add New Recognition</h2>
-            <IconButton
-              iconProps={{ iconName: 'Cancel' }}
-              ariaLabel="Close popup modal"
-              onClick={this.closeModal}
-            />
-          </div>
+        {showAddForm && (
+
           <AddRecognitionForm
             context={this.props.context}
             listName="Employee Recognition"
-            onItemAdded={() => {
-              this.fetchItems();
-              this.closeModal();
-            }}
+            onItemAdded={this.handleFormSubmitted}
           />
-        </Modal>
 
-        {items.map((item, index) => (
-          <div key={index} className={styles.recognitionCard}>
-            <div className={styles.senderInfo}>
-              <img src={item.From.Picture} alt={item.From.Title} />
-              <div>
-                <div className={styles.senderName}>{item.From.Title}</div>
-                <div className={styles.senderRole}>Employee</div>
-              </div>
-            </div>
-            <div className={styles.recognition}>
-              <img src={item.To.Picture} alt={item.To.Title} />
-              <div className={styles.recognitionText}>
-                <div className={styles.trophyIcon}>🏆</div>
-                <div className={styles.championDetails}>
-                  <div className={styles.championName}>{item.To.Title}</div>
-                  <div className={styles.championTitle}>{item.AwardType}</div>
+        )}
+
+        <div className={styles.cardsContainer}>
+          {items.map((item, index) => (
+            <div key={index} className={styles.recognitionCard}>
+              {/* Card content - no changes needed here */}
+              <div className={styles.senderInfo}>
+                <div className={styles.senderLabel}>Commended by:</div>
+                <div className={styles.senderDetails}>
+                  <img src={item.From.Picture} alt={item.From.Title} />
+                  <div>
+                    <div className={styles.senderName}>{item.From.Title}</div>
+                    <div className={styles.senderRole}>{item.From.JobTitle}</div>
+                  </div>
                 </div>
               </div>
+
+              <div className={styles.recognition}>
+                <img src={item.To.Picture} alt={item.To.Title} />
+                <div className={styles.recognitionText}>
+                  <div className={styles.trophyIcon}>🏆</div>
+                  <div className={styles.championDetails}>
+                    <div className={styles.championName}>{item.To.Title}</div>
+                    <div className={styles.championTitle}>{item.AwardType}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.message}>{item.Message}</div>
+
+              <div className={styles.reactions}>
+                <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Medal")}>🥇 {item.Reactions_Medal}</div>
+                <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Heart")}>💖 {item.Reactions_Heart}</div>
+                <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Clap")}>👏 {item.Reactions_Clap}</div>
+              </div>
             </div>
-            <div className={styles.message}>{item.Message}</div>
-            <div >Commended by: {item.From.Title}</div>
-            <div className={styles.reactions}>
-              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Medal")}>🥇 {item.Reactions_Medal}</div>
-              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Heart")}>💖 {item.Reactions_Heart}</div>
-              <div onClick={() => this.handleReactionClick(item.Id, "Reactions_Clap")}>👏 {item.Reactions_Clap}</div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }

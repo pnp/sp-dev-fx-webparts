@@ -1,14 +1,7 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 .empRecognitionWebpart {
-  overflow: hidden;
-  padding: 40px;
-  background: #f0f2f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  color: "[theme:bodyText, default: #323130]";
+
   color: var(--bodyText);
 
   &.teams {
@@ -41,12 +34,48 @@
     gap: 16px;
   }
 
-  /* Form Field Groups */
-  div {
-    display: flex;
-    flex-direction: column;
+  /* Select dropdown styling */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    height: 40px;
+    box-sizing: border-box;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23757575" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    cursor: pointer;
 
+    &:focus {
+      border-color: #0078d4;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+    }
+
+    &:hover {
+      border-color: #888;
+    }
+
+    &:disabled {
+      background-color: #f3f2f1;
+      color: #a19f9d;
+      cursor: not-allowed;
+    }
+
+    /* Style for the placeholder option */
+    option[disabled] {
+      color: #a19f9d;
+    }
+
+    option {
+      padding: 8px;
+    }
   }
+
+  /* Form Field Groups */
 
   /* Labels */
   label {
@@ -56,7 +85,7 @@
     font-size: 14px;
   }
 
-  input{
+  input {
     align-self: flex-start;
   }
 
@@ -128,13 +157,11 @@
   }
 }
 
-/* People Picker styles - place these OUTSIDE the .formContainer block */
+/* People Picker styles */
 .peoplePickerWrapper,
 .peoplePickerControl {
   width: 100%;
-}
 
-.peoplePickerControl {
   :global {
 
     /* Base picker styling */
@@ -150,6 +177,8 @@
       padding: 4px 8px;
       box-sizing: border-box;
       display: flex;
+      flex-direction: row;
+      /* Ensure row direction at top level */
       flex-wrap: wrap;
       align-items: center;
     }
@@ -160,89 +189,128 @@
       box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
     }
 
-    /* Selected person styling */
+    /* Selected person container - LEFT ALIGNED */
     .ms-PickerPersona-container {
       display: flex !important;
-      align-items: left;
-      background-color: #f3f2f1;
-      border-radius: 16px;
-      margin: 2px 4px;
-      max-width: calc(100% - 8px);
-      padding: 2px 8px;
-      min-height: 32px;
-      overflow: visible;
-    }
-
-    /* Person image */
-    .ms-Persona-imageArea,
-    .ms-Persona-image {
-      display: block !important;
-      width: 24px !important;
-      height: 24px !important;
-      border-radius: 50% !important;
-      margin-right: 4px;
-    }
-
-    /* Fallback for image errors */
-    .ms-Persona-image.is-error {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23cccccc"><circle cx="12" cy="8" r="4"/><path d="M12,13c-4.4,0-8,3.6-8,8h16C20,16.6,16.4,13,12,13z"/></svg>') !important;
-      background-size: cover !important;
+      flex-direction: row !important;
+      /* Force row layout */
+      align-items: center !important;
+      justify-content: flex-start !important;
+      /* Force left alignment */
       background-color: #f3f2f1 !important;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
+      border-radius: 16px !important;
+      margin: 2px 4px !important;
+      padding: 4px 8px !important;
+      height: auto !important;
+      box-sizing: border-box !important;
+      width: auto !important;
+      max-width: 100% !important;
+      text-align: left !important;
+      /* Additional left alignment */
     }
 
-    /* Person name */
-    .ms-Persona-details {
+    /* Content wrapper */
+    .ms-PickerItem-content {
       display: flex !important;
-      margin-right: 8px;
+      flex-direction: row !important;
+      /* Force row layout */
+      align-items: center !important;
+      justify-content: flex-start !important;
+      /* Force left alignment */
+      overflow: hidden !important;
+      width: 100% !important;
+      flex: 1 1 auto !important;
+      box-sizing: border-box !important;
     }
 
-    .ms-Persona-primaryText {
+    /* Hide the image completely */
+    .ms-Persona-imageArea,
+    .ms-Persona-image,
+    .ms-Image {
+      display: none !important;
+    }
+
+    /* Text container */
+    .ms-Persona-details {
       display: block !important;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: #333;
-      font-size: 14px;
-      max-width: 150px;
+    }
+
+    /* Name text */
+    .ms-Persona-primaryText {
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     /* Remove button */
     .ms-PickerItem-removeButton {
+      cursor: pointer !important;
+      margin-left: auto !important;
+      height: 24px !important;
+      width: 24px !important;
+      min-width: 24px !important;
       display: flex !important;
-      align-items: center;
-      justify-content: center;
-      height: 24px;
-      width: 24px;
-      cursor: pointer;
-      margin-left: auto;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #666 !important;
+      box-sizing: border-box !important;
+      flex: 0 0 auto !important;
     }
 
     /* Input field */
     .ms-BasePicker-input {
-      border: none;
-      flex: 1;
-      height: 28px;
-      font-size: 14px;
-      min-width: 50px;
+      width: 100% !important;
+    }
+
+    /* Fix potential styling from SPFx */
+
+    /* Selected person wrapper container */
+    .ms-PickerPersona-wrapper {
+      display: flex !important;
+      flex-direction: row !important;
+      /* Force row layout */
+      width: 100% !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      /* Force left alignment */
+    }
+
+    /* Add specific fix for all parent containers */
+    div[class*="ms-BasePicker"],
+    div[class*="ms-BasePicker-text"],
+    div[class*="ms-PickerPersona"] {
+      display: flex !important;
+      flex-direction: row !important;
+      /* Force row layout */
+      justify-content: flex-start !important;
+      /* Force left alignment */
+      text-align: left !important;
+    }
+
+    /* Add this specific style for selected picker items */
+    .ms-PickerPersona-container.is-selected {
+      display: flex !important;
+      flex-direction: row !important;
+      /* Ensure row direction */
+      background-color: #e6f7ff !important;
+      border: 1px solid #0078d4 !important;
+      box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25) !important;
+      justify-content: flex-start !important;
+      /* Force left alignment */
+    }
+
+    /* Ensure the content inside selected items is properly arranged */
+    .ms-PickerPersona-container.is-selected .ms-PickerItem-content {
+      width: 100% !important;
+    }
+
+    /* Make sure text is visible and properly aligned in selected items */
+    .ms-PickerPersona-container.is-selected .ms-Persona-primaryText {
+      color: #0078d4 !important;
+      /* Blue text to indicate selection */
+      font-weight: 600 !important;
+      /* Make it bold when selected */
     }
   }
-}
-
-.userPhoto {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  margin-right: 10px;
-  object-fit: cover;
-  border: 2px solid #eaeaea;
-}
-
-.formActions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
 }
 
 /* Recognition List */
@@ -253,45 +321,129 @@
   justify-content: center;
 }
 
+/* Recognition styling */
+.recognition {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+
+  img {
+    display: none !important;
+    /* Hide image in recognition component */
+  }
+
+  .recognitionText {
+    display: flex;
+    align-items: center;
+    margin-left: 0 !important;
+    /* Remove margin meant for image */
+    flex: 1;
+  }
+
+  .trophyIcon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #FFD700;
+  }
+
+  .championDetails {
+    display: flex;
+    flex-direction: column;
+
+    .championName {
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .championTitle {
+      font-size: 14px;
+      color: #0078d4;
+      margin-top: 4px;
+    }
+  }
+}
+
+/* Cards Container */
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
 /* Recognition Card */
 .recognitionCard {
-  max-width: 400px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: calc(33.33% - 14px);
+  min-width: 300px;
+  flex: 0 0 auto;
+
+  /* Add these properties for consistent card layout */
   display: flex;
   flex-direction: column;
+  height: 350px;
+  /* Set consistent card height */
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 14px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  /* Make message area take up remaining space */
+  .message {
+    flex-grow: 1;
+  }
 }
 
 .senderInfo {
   display: flex;
-  align-items: center;
-  padding: 16px;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
 
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
+  .senderLabel {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 14px;
   }
 
-  .senderName {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 4px;
+  .senderDetails {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+      border: 2px solid #f0f0f0;
+    }
+
+    .senderName {
+      font-weight: 600;
+      color: #333;
+      margin-left: 0 !important;
+      /* Remove margin meant for image */
+    }
   }
 
   .senderRole {
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
     margin-top: 2px;
-  }
-
-  div {
-    font-size: 14px;
   }
 }
 
@@ -301,11 +453,8 @@
   padding: 16px;
 
   img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
+    display: none !important;
+    /* Hide recipient image */
   }
 
   .recipientName {
@@ -313,6 +462,8 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 4px;
+    margin-left: 0 !important;
+    /* Remove margin meant for image */
   }
 
   .recipientRole {
@@ -320,95 +471,77 @@
     color: #666;
     margin-top: 2px;
   }
-
-  div {
-    font-size: 14px;
-  }
 }
 
+/* Message styling */
 .message {
   padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  margin: 0 16px 16px;
   font-size: 14px;
   line-height: 1.5;
-  background: #f9f9f9;
+  color: #333;
+  border-left: 3px solid #0078d4;
+
+  /* Add these properties for consistent height */
+  height: 80px;
+  /* Set a fixed height */
+  max-height: 80px;
+  /* Enforce maximum height */
+  overflow-y: auto;
+  /* Add scrolling for overflow content */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* Show approximately 4 lines of text */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  /* Show ellipsis for overflow */
 }
 
-.awardType {
-  padding: 16px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #0078d4;
-}
-
-/* Reactions */
+/* Reactions styling */
 .reactions {
   display: flex;
   justify-content: space-around;
-  padding: 16px;
-  border-top: 1px solid #eee;
+  padding: 10px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto;
+  /* Push to bottom of card */
+  position: relative;
+  /* Ensure proper positioning */
 
-  .reaction {
-    background: #f9f9f9;
-    border-radius: 24px;
-    padding: 8px 16px;
-    font-size: 14px;
+  div {
     display: flex;
     align-items: center;
-    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background-color: #f3f2f1;
     cursor: pointer;
-    transition: background 0.3s ease;
-  }
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 14px;
+    flex: 1;
+    justify-content: center;
+    /* Center reaction icons and counts */
+    margin: 0 4px;
+    /* Add spacing between reactions */
 
-  .reaction:hover {
-    background: #e0e0e0;
+    &:hover {
+      background-color: #edebe9;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 }
 
-/* Recognition Section */
-.recognition {
-  background: #f5f5f5;
-  display: flex;
+/* Make sure we have the reaction count properly styled */
+.reactions div {
+  display: inline-flex;
   align-items: center;
-  padding: 16px;
-
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
-  }
-
-  .recognitionText {
-    display: flex;
-    align-items: center;
-    margin-left: -20px;
-
-    .trophyIcon {
-      width: 80px;
-      height: 80px;
-      background: #3ee88a;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 50px;
-      margin-right: 8px;
-    }
-
-    .championDetails {
-      display: flex;
-      flex-direction: column;
-
-      .championName {
-        font-weight: 600;
-      }
-
-      .championTitle {
-        font-weight: bold;
-      }
-    }
-  }
+  gap: 6px;
+  font-weight: 500;
 }
 
 /* Modal Styles */
@@ -426,11 +559,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-}
 
-.modalHeader h2 {
-  margin: 0;
-  font-size: 20px;
+  h2 {
+    margin: 0;
+    font-size: 20px;
+  }
 }
 
 /* Open Modal Button */
@@ -455,34 +588,138 @@
   }
 }
 
-/* User Selection Preview */
-.selectedUser {
-  margin-top: 8px;
+/* Form actions */
+.formActions {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 
-.userPreview {
-  display: flex;
-  align-items: center;
-  background-color: #f0f6ff;
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-top: 4px;
+/* Buttons */
+.submitButton {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
 
-  img.userPhoto {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
-    border: 2px solid #eaeaea;
+  &:hover {
+    background-color: #005a9e;
+  }
+}
+
+.cancelButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Inline Form Container */
+.inlineFormContainer {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  span {
-    font-size: 14px;
-    color: #333;
-    font-weight: 500;
+  /* Horizontal form layout */
+  :global {
+    .horizontalForm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .formColumn {
+        flex: 1;
+        min-width: 300px;
+
+        .formRow {
+          margin-bottom: 20px;
+
+          label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+          }
+        }
+      }
+
+      .fullWidth {
+        width: 100%;
+
+        textarea {
+          width: 100%;
+          min-height: 120px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+      }
+
+      .formActions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        button {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* General person display across the app */
+.personName {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  display: block;
+}
+
+/* Override any Fluent UI persona components to hide images */
+:global {
+  .ms-Persona {
+    .ms-Persona-imageArea {
+      display: none !important;
+    }
+
+    .ms-Persona-details {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .ms-Persona-primaryText {
+      display: block !important;
+      visibility: visible !important;
+    }
   }
 }
 
@@ -496,19 +733,6 @@
     max-width: 100%;
   }
 
-  .recognition {
-    flex-direction: column;
-    align-items: flex-start;
-
-    img {
-      margin-bottom: 12px;
-    }
-
-    .recognitionText {
-      margin-left: 0;
-    }
-  }
-
   .reactions {
     flex-direction: column;
     gap: 10px;
@@ -517,5 +741,11 @@
       width: 100%;
       justify-content: center;
     }
+  }
+
+  .dateInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 }
