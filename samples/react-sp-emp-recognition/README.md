@@ -4,11 +4,7 @@
 
 This SharePoint Framework (SPFx) web part enables organizations to celebrate employee achievements and contributions through a modern recognition system. Users can easily nominate colleagues for various types of recognition and engage with these recognitions through social reactions.
 
-## Features
-- Responsive design based on Fluent UI components
-- Recognition Form: User-friendly form with people pickers for sender and recipient
-- Interactive reaction buttons (medals, hearts, claps)
-- Adapts to different screen sizes
+
 
 ![Add recognition](<src/webparts/empRecognitionWebpart/assets/Add recognition.png>)
 ![!Recognitions](src/webparts/empRecognitionWebpart/assets/Recognitions.png)
@@ -99,17 +95,10 @@ Version|Date|Comments
 7. Add the Web Part to the page and configure it.
 
 ## Features
-
-- **Instant Filtering**:  
-  - Enter a name to quickly filter visible employees.  
-  - Matches partial names, case-insensitive.
-
-- **Gradient Background Cards**:  
-  - Employee cards styled with customizable gradient colors.
-
-- **Custom Gradient Option**:  
-  - Gradient color can be changed from the web part properties pane.  
-  - Easily adaptable to different branding needs.
+- Responsive design based on Fluent UI components
+- Recognition Form: User-friendly form with people pickers for sender and recipient
+- Interactive reaction buttons (medals, hearts, claps)
+- Adapts to different screen sizes
 
 
 
