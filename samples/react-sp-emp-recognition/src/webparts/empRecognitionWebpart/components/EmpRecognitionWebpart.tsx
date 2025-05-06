@@ -12,7 +12,7 @@ export interface IEmployeeRecognitionItem {
   From: {
     Title: string;
     Picture: any;
-    JobTitle: string; // Add this field
+    JobTitle: string; 
   };
   To: {
     Title: string;
@@ -29,14 +29,14 @@ export interface IEmployeeRecognitionItem {
 export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, {
   items: IEmployeeRecognitionItem[];
   isModalOpen: boolean;
-  showAddForm: boolean; // New state to track whether to show the form
+  showAddForm: boolean; 
 }> {
   constructor(props: IEmpRecognitionWebpartProps) {
     super(props);
     this.state = {
       items: [],
       isModalOpen: false,
-      showAddForm: false // Initialize as hidden
+      showAddForm: false 
     };
   }
 
@@ -52,7 +52,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
           "Id",
           "From/Title",
           "From/EMail",
-          "From/JobTitle", // Add this field
+          "From/JobTitle", 
           "To/Title",
           "To/EMail",
           "Message",
@@ -68,7 +68,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
         Id: item.Id,
         From: {
           Title: item.From?.Title || "Unknown",
-          JobTitle: item.From?.JobTitle || "Team Member", // Add this field with a fallback
+          JobTitle: item.From?.JobTitle || "Team Member", 
           Picture: item.From?.EMail
             ? `https://${this.props.context.pageContext.web.absoluteUrl.split('/')[2]}/_layouts/15/userphoto.aspx?size=L&accountname=${item.From.EMail}`
             : "https://via.placeholder.com/40"
@@ -121,7 +121,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
 
   private handleFormSubmitted = (): void => {
     this.setState({ showAddForm: false });
-    this.fetchItems(); // Refresh the items list
+    this.fetchItems(); 
   };
 
 
@@ -151,7 +151,6 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
         <div className={styles.cardsContainer}>
           {items.map((item, index) => (
             <div key={index} className={styles.recognitionCard}>
-              {/* Card content - no changes needed here */}
               <div className={styles.senderInfo}>
                 <div className={styles.senderLabel}>Commended by:</div>
                 <div className={styles.senderDetails}>
