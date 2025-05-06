@@ -11,12 +11,12 @@ export interface IEmployeeRecognitionItem {
   Id: number;
   From: {
     Title: string;
-    Picture: any;
-    JobTitle: string; 
+    Picture: string;
+    JobTitle: string;
   };
   To: {
     Title: string;
-    Picture: any;
+    Picture: string;
   };
   Message: string;
   AwardType: string;
@@ -29,14 +29,14 @@ export interface IEmployeeRecognitionItem {
 export default class EmpRecognitionWebpart extends React.Component<IEmpRecognitionWebpartProps, {
   items: IEmployeeRecognitionItem[];
   isModalOpen: boolean;
-  showAddForm: boolean; 
+  showAddForm: boolean;
 }> {
   constructor(props: IEmpRecognitionWebpartProps) {
     super(props);
     this.state = {
       items: [],
       isModalOpen: false,
-      showAddForm: false 
+      showAddForm: false
     };
   }
 
@@ -52,7 +52,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
           "Id",
           "From/Title",
           "From/EMail",
-          "From/JobTitle", 
+          "From/JobTitle",
           "To/Title",
           "To/EMail",
           "Message",
@@ -68,7 +68,7 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
         Id: item.Id,
         From: {
           Title: item.From?.Title || "Unknown",
-          JobTitle: item.From?.JobTitle || "Team Member", 
+          JobTitle: item.From?.JobTitle || "Team Member",
           Picture: item.From?.EMail
             ? `https://${this.props.context.pageContext.web.absoluteUrl.split('/')[2]}/_layouts/15/userphoto.aspx?size=L&accountname=${item.From.EMail}`
             : "https://via.placeholder.com/40"
@@ -119,12 +119,14 @@ export default class EmpRecognitionWebpart extends React.Component<IEmpRecogniti
     this.setState(prevState => ({ showAddForm: !prevState.showAddForm }));
   };
 
-  private handleFormSubmitted = (): void => {
+  private handleFormSubmitted = async (): Promise<void> => {
     this.setState({ showAddForm: false });
-    this.fetchItems(); 
+    try {
+      await this.fetchItems();
+    } catch (error) {
+      console.error("Error fetching items after form submission:", error);
+    }
   };
-
-
 
   public render(): React.ReactElement<IEmpRecognitionWebpartProps> {
     const { items, showAddForm } = this.state;

@@ -6,25 +6,31 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/fields";
 import "@pnp/sp/site-users";
+import { IAddRecognitionFormProps } from './IAddRecognitionFormProps';
 
 import { IPeoplePickerContext, PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 
-interface IAddRecognitionFormProps {
-    context: any;
-    listName: string;
-    onItemAdded: () => void;
+/**
+ * Interface for a person selected in the People Picker
+ */
+interface IPerson {
+    id: string;
+    name:string
+    loginName: string;
+    picture?: string;
+   
 }
 
 interface IAddRecognitionFormState {
-    From: any[];
-    To: any[];
+    From: IPerson[];
+    To: IPerson[];
     Message: string;
     AwardType: string;
     awardTypeChoices: string[];
 }
 
 export default class AddRecognitionForm extends React.Component<IAddRecognitionFormProps, IAddRecognitionFormState> {
-    private sp: any;
+    private sp;
 
     constructor(props: IAddRecognitionFormProps) {
         super(props);
@@ -45,13 +51,15 @@ export default class AddRecognitionForm extends React.Component<IAddRecognitionF
                 .getByTitle(this.props.listName)
                 .fields.getByTitle("AwardType")();
 
-            if (field && field.FieldTypeKind === 6) {
-                this.setState({ awardTypeChoices: field["Choices"] });
+            if (field && field.FieldTypeKind === 6 && Array.isArray(field.Choices)) {
+                this.setState({ awardTypeChoices: field.Choices || [] });
             } else {
                 console.error('AwardType field is not a Choice field or has no choices.');
+                this.setState({ awardTypeChoices: [] });
             }
         } catch (error) {
             console.error("Error fetching AwardType field choices:", error);
+            this.setState({ awardTypeChoices: [] });
         }
     }
 
@@ -65,11 +73,18 @@ export default class AddRecognitionForm extends React.Component<IAddRecognitionF
         }
 
         try {
+            // Verify loginName exists
+            if (!From[0].loginName || !To[0].loginName) {
+                alert("User information is incomplete. Please try selecting users again.");
+                return;
+            }
+
             const fromUser = await this.sp.web.ensureUser(From[0].loginName);
             const toUser = await this.sp.web.ensureUser(To[0].loginName);
 
-            const fromName = From[0].text || From[0].fullName || "Employee";
-            const toName = To[0].text || To[0].fullName || "Colleague";
+            // Use nullish coalescing for potentially undefined properties
+            const fromName = From[0].name ;
+            const toName = To[0].name ;
             const title = `Recognition from ${fromName} to ${toName}`;
 
             await this.sp.web.lists.getByTitle(this.props.listName).items.add({
@@ -117,7 +132,7 @@ export default class AddRecognitionForm extends React.Component<IAddRecognitionF
                         showtooltip={true}
                         required={true}
                         principalTypes={[PrincipalType.User]}
-                        onChange={(items: any[]) => this.setState({ From: items })}
+                        onChange={(items: IPerson[]) => this.setState({ From: items })}
                         resolveDelay={500}
                         webAbsoluteUrl={this.props.context.pageContext.web.absoluteUrl}
                     />
@@ -129,7 +144,7 @@ export default class AddRecognitionForm extends React.Component<IAddRecognitionF
                         showtooltip={true}
                         required={true}
                         principalTypes={[PrincipalType.User]}
-                        onChange={(items: any[]) => this.setState({ To: items })}
+                        onChange={(items: IPerson[]) => this.setState({ To: items })}
                         resolveDelay={500}
                         webAbsoluteUrl={this.props.context.pageContext.web.absoluteUrl}
                     />
