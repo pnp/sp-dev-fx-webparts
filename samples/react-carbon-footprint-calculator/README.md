@@ -72,5 +72,3 @@ This SPFx web part demonstrates the following features:
 * [Using Microsoft Graph in SPFx solutions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 * [Publishing SPFx applications to Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 * [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Community-driven guidance, samples, and open-source tools.
-
-![Visitor Stats](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-carbon-footprint-calculator)
