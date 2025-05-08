@@ -5,7 +5,7 @@ import { ContentChangePlugin } from "../components/plugins/ContentChangePlugin"
 
 type RoosterEditorProps = {
   isDarkTheme: boolean
-  setContent: (html: string) => void
+  setContent: React.Dispatch<any>
   handleLink: (anchor: HTMLAnchorElement, mouseEvent: MouseEvent) => void
 }
 
@@ -31,7 +31,14 @@ export function useRoosterEditor({
             autoOrdinals: true,
           }),
           new HyperlinkPlugin(undefined, "_blank", handleLink),
-          ContentChangePlugin((html) => setContent(html)),
+            ContentChangePlugin((html) => {
+            // Remove HTML tags and replace &nbsp; with space, then trim
+            const text = html
+              ? html.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').trim()
+              : '';
+            const isOnlySpaces = !text;
+            setContent(isOnlySpaces ? null : html);
+          }),
         ],
       })
       rooster.setDarkModeState(isDarkTheme)
