@@ -19,6 +19,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.21.1",
     "@microsoft/sp-property-pane": "1.21.1",
     "@microsoft/sp-webpart-base": "1.21.1",
+    "@types/jspdf": "^2.0.0",
     "chart.js": "^4.4.9",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
