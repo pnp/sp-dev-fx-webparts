@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-carbon-footprint-calculator-client-side-solution",
-    "id": "1e5e4019-8bc2-490b-bff0-a9b8238dbe56",
+    "id": "b393780f-53b0-429c-8123-44bf7a1dd515",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
@@ -29,7 +29,7 @@
       {
         "title": "react-carbon-footprint-calculator Feature",
         "description": "The feature that activates elements of the react-carbon-footprint-calculator solution.",
-        "id": "80092330-273f-45ec-bb23-a978b5fe8a75",
+        "id": "916bbadc-41d4-443c-9b22-6bfc0a61608a",
         "version": "1.0.0.0"
       }
     ]
