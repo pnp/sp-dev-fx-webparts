@@ -31,9 +31,9 @@ This SharePoint Framework (SPFx) web part provides users with an interactive cal
 
 ## Version History
 
-| Version | Date           | Comments                       |
-| ------- | -------------- | ------------------------------ |
-| 1.1     | May 8, 2025    | Added PDF export functionality |
+| Version | Date        | Comments                       |
+| ------- | ----------- | ------------------------------ |
+| 1.1     | May 8, 2025 | Added PDF export functionality |
 | 1.0     | May 8, 2025 | Initial release                |
 
 ## Disclaimer
