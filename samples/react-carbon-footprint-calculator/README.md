@@ -27,7 +27,7 @@ This SharePoint Framework (SPFx) web part provides users with an interactive cal
 
 | Solution                          | Author(s)                                                                                                   |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| react-carbon-footprint-calculator | João LIVIO, [pH7x Systems](https://www.ph7xsystems.com), [LinkedIn](https://www.linkedin.com/in/joaolivio/) |
+| react-carbon-footprint-calculator | João LIVIO, [pH7x Systems](https://www.ph7x.com), [LinkedIn](https://www.linkedin.com/in/jlivio/) |
 
 ## Version History
 
