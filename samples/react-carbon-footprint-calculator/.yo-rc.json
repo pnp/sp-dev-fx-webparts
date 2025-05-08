@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.15.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-carbon-footprint-calculator",
+    "libraryId": "1e5e4019-8bc2-490b-bff0-a9b8238dbe56",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-carbon-footprint-calculator",
+    "solutionShortDescription": "react-carbon-footprint-calculator description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
