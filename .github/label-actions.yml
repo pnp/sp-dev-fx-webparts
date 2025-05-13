@@ -107,3 +107,19 @@ status:spfx-doctor:
 
   # Close the issue
   close: true
+
+  # First time contributors
+  first-time-contributor:
+    comment: |+
+      ## First-Time Contributor
+
+      Thank you for your contribution! It looks like that you are a first-time contributor in this repository.
+
+      Did you know that you are eligible for the PnP Recognition program, and that your submission will qualify for a badge :-) ?
+      
+      All you need to do is to register at https://pnp.github.io/recognitionprogram. Once you are registered, we'll automatically assign contribution badges for qualifying contributions.
+
+      We hope to see more contributions from you in the future!!!
+
+    # Don't close
+    close: false

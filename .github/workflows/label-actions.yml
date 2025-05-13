@@ -11,4 +11,4 @@ jobs:
       - uses: dessant/label-actions@v2
         with:
           github-token: ${{ github.token }}
-          process-only: 'issues'
+
