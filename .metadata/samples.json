@@ -2064,6 +2064,12 @@
         "gitHubAccount": "thespooler",
         "pictureUrl": "https://github.com/thespooler.png",
         "name": "Mike Myers"
+      },
+      {
+        "gitHubAccount": "Sandeep-FED",
+        "company": "EY",
+        "pictureUrl": "https://github.com/sandeep-fed.png",
+        "name": "Sandeep P S"
       }
     ],
     "references": [
@@ -2186,6 +2192,55 @@
         "pictureUrl": "https://github.com/Swaminathan-Sriram.png",
         "name": "Swaminathan Sriram",
         "twitter": "SwaminathanSri3"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      },
+      {
+        "name": "Use page placeholders from Application Customizer",
+        "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot",
+    "source": "pnp",
+    "title": "Chatbot Integration for SharePoint Online",
+    "shortDescription": "This solution integrates a chatbot within SharePoint Online using a Tenant App Catalog and Azure AD App Registration. It provides a seamless way to enhance user engagement on SharePoint sites by embedding a customizable chatbot interface. You have a per site agent by creating it in a SharePoint list or a global one by adding json to TWE",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-chatbubble-copilot",
+    "longDescription": [
+      "This solution integrates a chatbot within SharePoint Online using a Tenant App Catalog and Azure AD App Registration. It provides a seamless way to enhance user engagement on SharePoint sites by embedding a customizable chatbot interface. You have a per site agent by creating it in a SharePoint list or a global one by adding json to TWE"
+    ],
+    "creationDateTime": "2025-01-08",
+    "updateDateTime": "2025-01-08",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/NicolasKheirallah",
+        "pictureUrl": "https://github.com/NicolasKheirallah.png",
+        "name": "Nicolas Kheirallah"
       }
     ],
     "references": [
@@ -2700,6 +2755,12 @@
         "pictureUrl": "https://github.com/bschlintz.png",
         "name": "Brad Schlintz",
         "twitter": "bschlintz"
+      },
+      {
+        "gitHubAccount": "Sandeep-FED",
+        "company": "EY",
+        "pictureUrl": "https://github.com/sandeep-fed.png",
+        "name": "Sandeep P S"
       }
     ],
     "references": [
@@ -14765,27 +14826,27 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/joaojmendes",
+        "gitHubAccount": "joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes"
       },
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner"
       },
       {
-        "gitHubAccount": "https://github.com/sudharsank",
+        "gitHubAccount": "sudharsank",
         "pictureUrl": "https://github.com/sudharsank.png",
         "name": "Sudharsan Kesavanarayanan"
       },
       {
-        "gitHubAccount": "https://github.com/Abderahman88",
+        "gitHubAccount": "Abderahman88",
         "pictureUrl": "https://github.com/Abderahman88.png",
         "name": "Abderahman Moujahid"
       },
       {
-        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
       }
@@ -15544,7 +15605,7 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
       },
