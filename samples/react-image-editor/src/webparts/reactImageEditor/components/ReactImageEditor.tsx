@@ -107,7 +107,9 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
               }
 
             }}
-            context={this.props.context}
+            
+            /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+            context={this.props.context as any}
 
 
           />)}
