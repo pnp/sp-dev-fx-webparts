@@ -21609,7 +21609,7 @@
       "This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment."
     ],
     "creationDateTime": "2024-03-16",
-    "updateDateTime": "2024-11-01",
+    "updateDateTime": "2025-05-01",
     "products": [
       "SharePoint"
     ],
@@ -21620,7 +21620,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.2"
+        "value": "1.21.0"
       }
     ],
     "thumbnails": [
