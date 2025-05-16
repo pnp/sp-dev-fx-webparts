@@ -1,0 +1,116 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+:global {
+  #workbenchPageContent,
+  .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+.carbonFootprintCalculator {
+  background: var(--white, #ffffff);
+  color: var(--bodyText, #323130);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  font-family: $ms-font-family-fallbacks;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+:global(.ms-TextField),
+:global(.ms-Dropdown),
+:global(.ms-Toggle) {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.chartContainer {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.result {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #0078d4;
+}
+
+// Dicas (colapsável)
+.tipsToggle {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f5f5f5;
+  transition: background 0.2s ease;
+  font-weight: 600;
+  margin-top: 1rem;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.tipsToggle:hover {
+  background: #e8e8e8;
+}
+
+.tipsList {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: #444;
+}
+
+.tipsList li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+// Dark Mode
+:global(body[data-theme='dark']) {
+  .carbonFootprintCalculator {
+    background: #1e1e1e;
+    color: #f3f3f3;
+  }
+
+  .chartContainer {
+    background: #2a2a2a;
+    border-color: #444;
+  }
+
+  .result {
+    color: #50baff;
+  }
+
+  .tipsToggle {
+    background: #2f2f2f;
+    color: #ffffff;
+  }
+
+  .tipsToggle:hover {
+    background: #3a3a3a;
+  }
+
+  .tipsList {
+    color: #dddddd;
+  }
+
+  :global(.ms-TextField),
+  :global(.ms-Dropdown),
+  :global(.ms-Toggle) {
+    color: #f3f3f3;
+  }
+}
