@@ -12688,6 +12688,55 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-carbon-footprint-calculator",
+    "source": "pnp",
+    "title": "Carbon Footprint Calculator",
+    "shortDescription": "This SharePoint Framework (SPFx) web part provides users with an interactive calculator to estimate their monthly carbon footprint.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carbon-footprint-calculator",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carbon-footprint-calculator",
+    "longDescription": [
+      "This SharePoint Framework (SPFx) web part provides users with an interactive calculator to estimate their monthly carbon footprint."
+    ],
+    "creationDateTime": "2025-05-08",
+    "updateDateTime": "2025-05-08",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "sample.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/jtlivio",
+        "pictureUrl": "https://github.com/jtlivio.png",
+        "name": "João LIVIO"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-carousel",
     "source": "pnp",
     "title": "Carousel Web Part",
@@ -13763,7 +13812,7 @@
       "For sample purpose, I have built a CoPilot agent which will summarize sessions at ESPC 2024, and Provides a concise summary of all sessions and topics covered at ESPC 2024, including key take aways and speakers insights."
     ],
     "creationDateTime": "2025-01-09",
-    "updateDateTime": "2025-01-10",
+    "updateDateTime": "2025-05-16",
     "products": [
       "SharePoint"
     ],
