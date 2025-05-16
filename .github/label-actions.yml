@@ -108,8 +108,8 @@ status:spfx-doctor:
   # Close the issue
   close: true
 
-  # First time contributors
-  first-time-contributor:
+# First time contributors
+first-time-contributor:
     comment: |+
       ## First-Time Contributor
 
