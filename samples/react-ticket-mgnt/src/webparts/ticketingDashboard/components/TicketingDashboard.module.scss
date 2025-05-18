@@ -1,0 +1,477 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.ticketingDashboard {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.ticketManagementApp {
+  display: flex;
+  min-height: 400px;
+  background-color: #f9fafb;
+  font-family: 'Segoe UI', sans-serif;
+
+  .sidebar {
+    width: 200px;
+    background-color: #f9fafb;
+    padding: 20px 15px;
+    box-shadow: inset -1px 0 0 #e5e7eb;
+
+    h2 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #111827;
+    }
+
+    .navLink {
+      display: block;
+      padding: 8px 12px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      color: #4b5563;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f3f4f6;
+        color: #1f2937;
+      }
+
+      &.active {
+        background-color: #e5e7eb;
+        color: #1f2937;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+  }
+}
+
+.btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #2563eb;
+  }
+}
+
+.ticketCard {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  strong {
+    font-size: 16px;
+    display: block;
+    margin: 5px 0;
+    color: #111827;
+  }
+}
+
+.ticketStatus {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.open {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.inProgress {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.closed {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+// Due date styling
+.dueDate {
+  color: #888;
+  font-size: 0.95em;
+  margin-left: 8px;
+}
+
+// Add warning color for approaching/past due dates
+.dueSoon {
+  color: #d97706; // amber-600
+  font-weight: 500;
+}
+
+.pastDue {
+  color: #dc2626; // red-600
+  font-weight: 500;
+}
+
+.view {
+  position: relative;
+  padding: 0 10px;
+  max-width: 100%;
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  pre,
+  p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #d1d5db;
+  color: #6b7280;
+  margin: 20px 0;
+
+  p {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+  }
+}
+
+.priorityIndicator {
+  font-size: 16px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.categoryLabel {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-left: 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.assignedLabel {
+  display: inline-block;
+  font-size: 12px;
+  color: #4b5563;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.ticketMeta {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.statusBadge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 5px;
+  text-transform: uppercase;
+}
+
+.statusOpen {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.statusInProgress {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.statusFixed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.statusClosed {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.statusWontFix {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.errorMessage {
+  padding: 15px;
+  margin: 20px 0;
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  border-radius: 4px;
+}
+
+.navLink {
+  cursor: pointer;
+}
+
+.teams {
+  font-family: $ms-font-family-fallbacks;
+}
+
+.ticketForm {
+  max-width: 800px;
+
+  h2 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+  }
+
+  .formGroup {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+  }
+
+  .advancedToggle {
+    margin: 20px 0;
+  }
+
+  .linkButton {
+    background: none;
+    border: none;
+    color: $ms-color-themePrimary;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    text-align: left;
+    text-decoration: underline;
+
+    &:hover {
+      color: $ms-color-themeDark;
+    }
+  }
+
+  .advancedFields {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .formActions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .btnSecondary {
+    background-color: #f3f4f6;
+    color: #374151;
+
+    &:hover {
+      background-color: #e5e7eb;
+    }
+  }
+}
+
+.ticketDetail {
+  padding: 20px 0;
+
+  .ticketSection {
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #444;
+    }
+  }
+
+  .fieldGroup {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .field {
+    margin-bottom: 10px;
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .ticketDescription,
+  .ticketNotes {
+    background-color: #f9fafb;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    pre {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+  }
+
+  .ticketActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ticketCard {
+    flex-direction: column;
+
+    .ticketMeta {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+}
