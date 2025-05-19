@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ToolbarButton } from "@fluentui/react-components"
-import { ImageAddIcon } from "../../constants/icons"
+import { ImageAddIcon } from "../constants/icons"
 
 export interface IImageUploaderProps {
   imageCount: number

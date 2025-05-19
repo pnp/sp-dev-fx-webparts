@@ -8,6 +8,13 @@ import {
   makeStyles,
   Spinner,
   tokens,
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
 } from "@fluentui/react-components"
 import { CollapseRelaxed } from "@fluentui/react-motion-components-preview"
 import { ImagePreview } from "./ImagePreview"
@@ -16,11 +23,12 @@ import { EditorToolbar } from "./Toolbar/EditorToolbar"
 import { usePostSubmission } from "../hooks/usePostSubmission"
 import { useImageUpload } from "../hooks/useImageUpload"
 import { useRoosterEditor } from "../hooks/useRoosterEditor"
+import { useAITextActions } from "../hooks/useAITextActions"
 
 import { addNewPost } from "../services/SPService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 
-import { SendIcon } from "../constants/icons"
+import { SendIcon, SparkleBundle } from "../constants/icons"
 
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import styles from "../ReactEngageHub.module.scss"
@@ -78,14 +86,18 @@ interface IRichTextEditorProps {
 export const RichTextEditor = (props: IRichTextEditorProps) => {
   const [content, setContent] = useState<any>(null)
 
-  const { isDarkTheme } = React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
-
   const { isCompactView, setIsCompactView, onPostSubmit } = props
 
   const fluentStyles = useStyles()
 
-  const { context, maxFileLimit } =
-    React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
+  const {
+    isDarkTheme,
+    context,
+    maxFileLimit,
+    apiKey,
+    apiEndpoint,
+    deploymentName,
+  } = React.useContext<IReactEngageHubProps>(WEBPARTCONTEXT)
 
   const { images, addImages, clearImages, removeImage } = useImageUpload()
 
@@ -117,6 +129,18 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
       : fluentStyles.buttonNonInteractive
 
   const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
+
+  const { handleRewrite, handleGrammarFix } = useAITextActions({
+    apiKey,
+    apiEndpoint,
+    deploymentName,
+    content,
+    setContent,
+  })
+
+  const primaryActionButtonProps = {
+    onClick: handleRewrite,
+  }
 
   return (
     <>
@@ -151,6 +175,25 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
             contentEditable
           />
           <div className={fluentStyles.actionBtnWrapper}>
+            <Menu positioning='below-end'>
+              <MenuTrigger disableButtonEnhancement>
+                {(triggerProps: MenuButtonProps) => (
+                  <SplitButton
+                    appearance='subtle'
+                    menuButton={triggerProps}
+                    primaryActionButton={primaryActionButtonProps}
+                    icon={<SparkleBundle />}
+                  >
+                    AI Rewrite
+                  </SplitButton>
+                )}
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem onClick={handleGrammarFix}>Grammar fix</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
             <Link
               className={fluentStyles.collapseBtn}
               onClick={() => setIsCompactView(!isCompactView)}

@@ -4,22 +4,12 @@ type UseAITextActionsProps = {
   apiKey: string
   apiEndpoint: string
   deploymentName: string
-  text: string
-  setText: React.Dispatch<React.SetStateAction<string>>
-  inputRef: React.RefObject<HTMLTextAreaElement>
-  selectedText: string
+  content: any
+  setContent: React.Dispatch<any>
 }
 
 export function useAITextActions(props: UseAITextActionsProps) {
-  const {
-    apiKey,
-    apiEndpoint,
-    deploymentName,
-    text,
-    setText,
-    inputRef,
-    selectedText,
-  } = props
+  const { apiKey, apiEndpoint, deploymentName, content, setContent } = props
 
   const { reWrite, fixGrammar } = useAIActions({
     apiKey,
@@ -28,45 +18,13 @@ export function useAITextActions(props: UseAITextActionsProps) {
   })
 
   const handleRewrite = async () => {
-    if (selectedText.length === 0) {
-      let response = await reWrite(text)
-      setText(response.choices[0].message.content)
-    } else {
-      let response = await reWrite(selectedText)
-      const updatedText = response.choices[0].message.content
-
-      const textarea = inputRef.current
-      if (!textarea) return
-
-      const start = textarea.selectionStart
-      const end = textarea.selectionEnd
-
-      const newContent =
-        text.substring(0, start) + updatedText + text.substring(end)
-
-      setText(newContent)
-    }
+    let response = await reWrite(content)
+    setContent(response.choices[0].message.content)
   }
 
   const handleGrammarFix = async () => {
-    if (selectedText.length === 0) {
-      let response = await fixGrammar(text)
-      setText(response.choices[0].message.content)
-    } else {
-      let response = await fixGrammar(selectedText)
-      const updatedText = response.choices[0].message.content
-
-      const textarea = inputRef.current
-      if (!textarea) return
-
-      const start = textarea.selectionStart
-      const end = textarea.selectionEnd
-
-      const newContent =
-        text.substring(0, start) + updatedText + text.substring(end)
-
-      setText(newContent)
-    }
+    let response = await fixGrammar(content)
+    setContent(response.choices[0].message.content)
   }
 
   return { handleRewrite, handleGrammarFix }
