@@ -1,8 +1,5 @@
 import { AzureOpenAI } from "openai"
-import {
-  grammarFix,
-  reWritePostContents,
-} from "../reactEngageHub/services/AOAIService"
+import { grammarFix, reWritePostContents } from "../services/AOAIService"
 import { useContext } from "react"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 import { APIVERSION } from "../constants/ai"

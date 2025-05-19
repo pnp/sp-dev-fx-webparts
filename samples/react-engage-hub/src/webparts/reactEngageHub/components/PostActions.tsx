@@ -1,7 +1,7 @@
 import * as React from "react"
 import { LikeUnlike } from "./LikeUnlike"
 import { Button } from "@fluentui/react-components"
-import { CommentIcon } from "../../constants/icons"
+import { CommentIcon } from "../constants/icons"
 
 interface IPostActionsProps {
   post: any

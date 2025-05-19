@@ -4,7 +4,7 @@ import styles from "../ReactEngageHub.module.scss"
 
 import { deleteComment, updateCommentLikeUnlike } from "../services/SPService"
 import { LikeUnlike } from "./LikeUnlike"
-import { WEBPARTCONTEXT } from "../../context/webPartContext"
+import { WEBPARTCONTEXT } from "../context/webPartContext"
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import { useContext } from "react"
 import { MoreOptions } from "./MoreOptions"

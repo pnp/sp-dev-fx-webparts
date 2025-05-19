@@ -6,7 +6,7 @@ import {
   COMMENTSPERPAGE,
   MAXFILEUPLOADSIZE,
   POSTSPERPAGE,
-} from "../../constants/posts"
+} from "../constants/posts"
 import { IFileUploadProgressData } from "@pnp/sp/files"
 
 export const addNewPost = async (post: string, imageUrls: any, pageContext: any) => {

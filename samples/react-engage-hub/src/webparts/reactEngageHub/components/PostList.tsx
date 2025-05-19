@@ -2,12 +2,12 @@ import * as React from "react"
 import { Card, Avatar, Divider, Text } from "@fluentui/react-components"
 import styles from "../ReactEngageHub.module.scss"
 import { formatDate } from "../utils/util"
-import { AdvancedTextArea } from "./AdvancedTextArea"
 import { Comments } from "./Comments"
 import { CompactTextArea } from "./CompactTextArea"
 import { ImagePreview } from "./ImagePreview"
 import { MoreOptions } from "./MoreOptions"
 import { PostActions } from "./PostActions"
+import { RichTextEditor } from "./RichTextEditor"
 
 interface IPostListProps {
   posts: any[]
@@ -100,7 +100,7 @@ export const PostList = (props: IPostListProps) => {
                   }
                   mode={"Comment"}
                 />
-                <AdvancedTextArea
+                <RichTextEditor
                   isCompactView={isCommentCompactView[post.ID] !== false}
                   setIsCompactView={() =>
                     setIsCommentCompactView((prev) => ({

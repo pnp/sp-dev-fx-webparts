@@ -9,7 +9,7 @@ import {
 import { MoreVertical24Regular } from "@fluentui/react-icons"
 import * as React from "react"
 import { Alert } from "./Alert"
-import { DeleteIcon } from "../../constants/icons"
+import { DeleteIcon } from "../constants/icons"
 import { useState } from "react"
 import styles from "../ReactEngageHub.module.scss"
 

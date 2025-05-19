@@ -4,7 +4,7 @@ type UsePostSubmissionProps = {
   addNewPost: (post: string, images: File[], context: any) => Promise<void>
   onPostSubmit?: () => void
   clearImages: () => void
-  setText: (value: string) => void
+  setContent: React.Dispatch<any>
   setIsCompactView: (value: boolean) => void
   context: any
 }
@@ -13,7 +13,7 @@ export function usePostSubmission({
   addNewPost,
   onPostSubmit,
   clearImages,
-  setText,
+  setContent,
   setIsCompactView,
   context,
 }: UsePostSubmissionProps) {
@@ -24,7 +24,7 @@ export function usePostSubmission({
   const submitPost = async (post: string, images: File[]) => {
     setLoadingState("loading")
     await addNewPost(post, images, context.pageContext)
-    setText("")
+    setContent(null)
     clearImages()
     setIsCompactView(true)
     if (onPostSubmit) onPostSubmit()

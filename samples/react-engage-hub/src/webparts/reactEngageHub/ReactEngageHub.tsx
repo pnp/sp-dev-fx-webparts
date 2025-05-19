@@ -1,7 +1,5 @@
 import * as React from "react"
-
-// import styles from "./ReactEngageHub.module.scss"
-import type { IReactEngageHubProps } from "./IReactEngageHubProps"
+import { useState, useEffect } from "react"
 import {
   FluentProvider,
   IdPrefixProvider,
@@ -10,12 +8,15 @@ import {
   webLightTheme,
 } from "@fluentui/react-components"
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
-import { AdvancedTextArea } from "./components/AdvancedTextArea"
-import { useEffect } from "react"
-import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
+
 import { Posts } from "./components/Posts"
-import { WEBPARTCONTEXT } from "../context/webPartContext"
 import { CompactTextArea } from "./components/CompactTextArea"
+import { RichTextEditor } from "./components/RichTextEditor"
+
+import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
+
+import { WEBPARTCONTEXT } from "./context/webPartContext"
+import type { IReactEngageHubProps } from "./IReactEngageHubProps"
 
 const useStyles = makeStyles({
   fluentWrapper: {
@@ -35,8 +36,8 @@ const useStyles = makeStyles({
 })
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
-  const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
-  const [isCompactView, setIsCompactView] = React.useState(true)
+  const [shouldRefreshPosts, setShouldRefreshPosts] = useState(false)
+  const [isCompactView, setIsCompactView] = useState(true)
 
   const handlePostSubmitted = () => {
     setShouldRefreshPosts((prev) => !prev)
@@ -73,7 +74,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
               isCompactView={isCompactView}
               setIsCompactView={setIsCompactView}
             />
-            <AdvancedTextArea
+            <RichTextEditor
               isCompactView={isCompactView}
               setIsCompactView={setIsCompactView}
               onPostSubmit={handlePostSubmitted}

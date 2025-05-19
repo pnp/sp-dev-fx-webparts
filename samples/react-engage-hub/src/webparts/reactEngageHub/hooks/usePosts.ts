@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { getPosts } from "../reactEngageHub/services/SPService"
+import { getPosts } from "../services/SPService"
 
 export const usePosts = (context: any) => {
   const [posts, setPosts] = useState<any>([])
