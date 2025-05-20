@@ -28,6 +28,7 @@
     "@pnp/logging": "^4.10.0",
     "@pnp/sp": "^4.10.0",
     "@pnp/spfx-controls-react": "3.20.0",
+    "jotai": "^2.12.4",
     "openai": "^4.95.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",

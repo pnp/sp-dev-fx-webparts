@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Card, Avatar, Divider, Text } from "@fluentui/react-components"
+import { useAtom } from "jotai"
 import styles from "../ReactEngageHub.module.scss"
 import { formatDate } from "../utils/util"
 import { Comments } from "./Comments"
@@ -9,15 +10,16 @@ import { MoreOptions } from "./MoreOptions"
 import { PostActions } from "./PostActions"
 import { RichTextEditor } from "./RichTextEditor"
 
+import { postsAtom } from "../atoms/globalAtoms"
+import { updatePostLikeUnlike } from "../services/SPService"
+
 interface IPostListProps {
-  posts: any[]
   context: any
   isDarkTheme: boolean
   fluentStyles: any
   isCompactView: boolean
   setIsCompactView: React.Dispatch<React.SetStateAction<boolean>>
   fetchPosts: () => Promise<void>
-  onClickPostLikeBtn: (postId: number, postLike: boolean) => void
   handlePostDelete: (postId: string, itemId: number) => Promise<void>
 }
 
@@ -25,16 +27,26 @@ export const PostList = (props: IPostListProps) => {
   const [isCommentCompactView, setIsCommentCompactView] = React.useState<{
     [key: number]: boolean
   }>({})
+  const [posts, setPosts] = useAtom(postsAtom)
 
-  const {
-    posts,
-    context,
-    isDarkTheme,
-    fluentStyles,
-    fetchPosts,
-    onClickPostLikeBtn,
-    handlePostDelete,
-  } = props
+  const { context, isDarkTheme, fluentStyles, fetchPosts, handlePostDelete } =
+    props
+
+  const onClickPostLikeBtn = async (postId: number, postLike: boolean) => {
+    await updatePostLikeUnlike(postId, postLike)
+    // Update the local state based on the action
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.ID === postId
+          ? {
+              ...post,
+              LikesCount: postLike ? post.LikesCount - 1 : post.LikesCount + 1,
+              isLiked: !postLike,
+            }
+          : post
+      )
+    )
+  }
 
   return (
     <>
@@ -75,7 +87,9 @@ export const PostList = (props: IPostListProps) => {
               <div className={fluentStyles.postActions}>
                 <PostActions
                   post={post}
-                  onClickPostLikeBtn={onClickPostLikeBtn}
+                  onClickPostLikeBtn={() =>
+                    onClickPostLikeBtn(post.ID, post.isLiked)
+                  }
                   setIsCommentCompactView={setIsCommentCompactView}
                 />
               </div>

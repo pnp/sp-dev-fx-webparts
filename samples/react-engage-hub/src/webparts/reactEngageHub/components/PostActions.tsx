@@ -1,7 +1,9 @@
 import * as React from "react"
+import { useAtom } from "jotai"
 import { LikeUnlike } from "./LikeUnlike"
 import { Button } from "@fluentui/react-components"
 import { CommentIcon } from "../constants/icons"
+import { isCompactViewAtom, postsAtom } from "../atoms/globalAtoms"
 
 interface IPostActionsProps {
   post: any

@@ -1,5 +1,6 @@
 import { Avatar, Text } from "@fluentui/react-components"
 import * as React from "react"
+import { useAtom } from "jotai"
 import styles from "../ReactEngageHub.module.scss"
 
 import { deleteComment, updateCommentLikeUnlike } from "../services/SPService"
@@ -10,6 +11,8 @@ import { useContext } from "react"
 import { MoreOptions } from "./MoreOptions"
 import { formatDate } from "../utils/util"
 
+import { postsAtom } from "../atoms/globalAtoms"
+
 interface IComments {
   key: number
   postId: number
@@ -19,12 +22,33 @@ interface IComments {
 }
 
 export const Comments = (props: IComments) => {
+  const [posts, setPosts] = useAtom(postsAtom)
+
   const { postId, comment, isDarkTheme, fetchPosts } = props
   const { context } = useContext(WEBPARTCONTEXT) as IReactEngageHubProps
 
   const onClickCommentLikeBtn = async () => {
     await updateCommentLikeUnlike(postId, comment.id, comment.isLikedByUser)
-    await fetchPosts()
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.ID === postId
+          ? {
+              ...post,
+              comments: post.comments.map((item) =>
+                item.id === comment.id
+                  ? {
+                      ...item,
+                      isLikedByUser: !comment.isLikedByUser,
+                      likeCount: comment.isLikedByUser
+                        ? item.likeCount - 1
+                        : item.likeCount + 1,
+                    }
+                  : item
+              ),
+            }
+          : post
+      )
+    )
   }
 
   const onClickDeleteCommentBtn = async (postID: number, commentID: string) => {
