@@ -7,6 +7,7 @@ type UsePostSubmissionProps = {
   setContent: React.Dispatch<any>
   setIsCompactView: (value: boolean) => void
   context: any
+  editorDivRef: React.RefObject<HTMLDivElement>
 }
 
 export function usePostSubmission({
@@ -16,6 +17,7 @@ export function usePostSubmission({
   setContent,
   setIsCompactView,
   context,
+  editorDivRef,
 }: UsePostSubmissionProps) {
   const [loadingState, setLoadingState] = useState<
     "initial" | "loading" | "loaded"
@@ -24,6 +26,9 @@ export function usePostSubmission({
   const submitPost = async (post: string, images: File[]) => {
     setLoadingState("loading")
     await addNewPost(post, images, context.pageContext)
+    if (editorDivRef.current) {
+       editorDivRef.current.innerHTML = ""
+     }
     setContent(null)
     clearImages()
     setIsCompactView(true)
