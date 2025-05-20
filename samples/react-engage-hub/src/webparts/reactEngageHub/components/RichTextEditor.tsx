@@ -12,6 +12,7 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
+  Textarea,
 } from "@fluentui/react-components"
 import {
   CollapseRelaxed,
@@ -24,6 +25,7 @@ import { usePostSubmission } from "../hooks/usePostSubmission"
 import { useImageUpload } from "../hooks/useImageUpload"
 import { useRoosterEditor } from "../hooks/useRoosterEditor"
 import { useAITextActions } from "../hooks/useAITextActions"
+import { useCommentSubmission } from "../hooks/useCommentSubmission"
 
 import { addNewPost } from "../services/SPService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
@@ -85,6 +87,36 @@ const useStyles = makeStyles({
     transition: "opacity 0.2s",
     zIndex: 2,
   },
+  textAreaSpan: {
+    padding: "0 0 0 0.25rem",
+  },
+  textArea: {
+    width: "inherit",
+    height: "120px",
+    border: "none",
+    "&::after": {
+      borderBottom: "none",
+    },
+    ":hover": {
+      border: "none",
+      outline: "none",
+    },
+    ":focus": {
+      border: "none",
+      outline: "none",
+    },
+    ":focus-within": {
+      border: "none",
+      outline: "none",
+    },
+    ":active": {
+      border: "none",
+      outline: "none",
+    },
+    "&:focus-visible": {
+      outline: "none",
+    },
+  },
 })
 
 interface IRichTextEditorProps {
@@ -100,7 +132,14 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
   const [content, setContent] = useState<any>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  const { isCompactView, setIsCompactView, onPostSubmit } = props
+  const {
+    isCompactView,
+    setIsCompactView,
+    onPostSubmit,
+    mode,
+    postId,
+    fetchPosts,
+  } = props
 
   const fluentStyles = useStyles()
 
@@ -144,6 +183,12 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
     editorDivRef,
   })
 
+  const { submitComment, commentLoadingState } = useCommentSubmission({
+    comment: content,
+    postId: postId ?? 0,
+    fetchPosts: fetchPosts ?? (async () => {}),
+  })
+
   useEffect(() => {
     if (editorDivRef.current) {
       editorDivRef.current.style.background = tokens.colorNeutralBackground1
@@ -160,6 +205,55 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
       : fluentStyles.buttonNonInteractive
 
   const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
+
+  if (mode === "Comment") {
+    return (
+      <CollapseRelaxed visible={isCompactView === false}>
+        {!isCompactView ? (
+          <Card
+            className={fluentStyles.wrapper}
+            style={{
+              display: isCompactView ? "none" : "block",
+              pointerEvents: isLoading ? "none" : "auto",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Textarea
+              className={fluentStyles.textArea}
+              textarea={{ className: fluentStyles.textAreaSpan }}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder='Write a comment...'
+            />
+            <div className={fluentStyles.actionBtnWrapper}>
+              <Button
+                icon={
+                  commentLoadingState === "loading" ? (
+                    <Spinner size='tiny' />
+                  ) : (
+                    <SendIcon />
+                  )
+                }
+                appearance='primary'
+                onClick={async () => {
+                  await submitComment()
+                  setIsCompactView(!isCompactView)
+                }}
+                disabled={!content}
+                disabledFocusable={commentLoadingState === "loading"}
+                className={buttonClassName}
+              >
+                {commentLoadingState === "loading" ? "Posting..." : "Post"}
+              </Button>
+            </div>
+          </Card>
+        ) : (
+          <div></div>
+        )}
+      </CollapseRelaxed>
+    )
+  }
 
   return (
     <>
