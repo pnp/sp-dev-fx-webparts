@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Button,
   buttonClassNames,
@@ -142,6 +142,15 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
     setContent,
     editorDivRef,
   })
+
+  useEffect(() => {
+    if (editorDivRef.current) {
+      editorDivRef.current.style.background = isDarkTheme
+        ? "transparent"
+        : "#fff"
+      editorDivRef.current.style.color = isDarkTheme ? "#fff" : "#222"
+    }
+  }, [isDarkTheme])
 
   const buttonIcon =
     loadingState === "loading" ? <Spinner size='tiny' /> : <SendIcon />
