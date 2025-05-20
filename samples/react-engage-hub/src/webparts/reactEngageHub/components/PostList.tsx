@@ -58,6 +58,11 @@ export const PostList = (props: IPostListProps) => {
                   />
                 )}
               </div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: post.Description,
+                }}
+              ></div>
               {post.Images.length > 0 && (
                 <div className={styles.imageContainer}>
                   {post.Images.map((image: string, index: any) => (
@@ -67,11 +72,6 @@ export const PostList = (props: IPostListProps) => {
                   ))}
                 </div>
               )}
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: post.Description,
-                }}
-              ></div>
               <div className={fluentStyles.postActions}>
                 <PostActions
                   post={post}
