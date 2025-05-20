@@ -28,7 +28,11 @@ import { useAITextActions } from "../hooks/useAITextActions"
 import { addNewPost } from "../services/SPService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 
-import { SendIcon, SparkleBundle, ArrowUpIcon } from "../constants/icons"
+import {
+  SendIcon,
+  SparkleBundle,
+  ChevronCircleUpIcon,
+} from "../constants/icons"
 import { AI_OPTIONS } from "../constants/ai"
 
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
@@ -41,6 +45,9 @@ const useStyles = makeStyles({
     caretColor: tokens.colorBrandBackground,
     color: "white",
     outline: "none",
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem",
+    padding: "0.5rem",
   },
   wrapper: {
     padding: "1rem !important",
@@ -207,7 +214,7 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
             <Fade visible={!isCompactView && isHovered}>
               <Button
                 onClick={() => setIsCompactView(!isCompactView)}
-                icon={<ArrowUpIcon />}
+                icon={<ChevronCircleUpIcon />}
                 shape='circular'
                 className={fluentStyles.collapseBtn}
               />

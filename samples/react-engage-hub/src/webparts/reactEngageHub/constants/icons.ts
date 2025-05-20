@@ -42,8 +42,8 @@ import {
   FontDecrease20Regular,
   ImageAdd20Filled,
   ImageAdd20Regular,
-  ArrowUp16Filled,
-  ArrowUp16Regular,
+  ChevronCircleUp16Filled,
+  ChevronUp16Regular,
 } from "@fluentui/react-icons"
 
 export const LikeIcon = bundleIcon(Heart20Color, Heart20Regular)
@@ -105,4 +105,7 @@ export const FontDecreaseIcon = bundleIcon(
 
 export const ImageAddIcon = bundleIcon(ImageAdd20Filled, ImageAdd20Regular)
 
-export const ArrowUpIcon = bundleIcon(ArrowUp16Filled, ArrowUp16Regular)
+export const ChevronCircleUpIcon = bundleIcon(
+  ChevronCircleUp16Filled,
+  ChevronUp16Regular
+)
