@@ -4,7 +4,6 @@ import {
   Button,
   buttonClassNames,
   Card,
-  Link,
   makeStyles,
   Spinner,
   tokens,
@@ -16,7 +15,10 @@ import {
   MenuTrigger,
   SplitButton,
 } from "@fluentui/react-components"
-import { CollapseRelaxed } from "@fluentui/react-motion-components-preview"
+import {
+  CollapseRelaxed,
+  Fade,
+} from "@fluentui/react-motion-components-preview"
 import { ImagePreview } from "./ImagePreview"
 import { EditorToolbar } from "./Toolbar/EditorToolbar"
 
@@ -28,7 +30,7 @@ import { useAITextActions } from "../hooks/useAITextActions"
 import { addNewPost } from "../services/SPService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 
-import { SendIcon, SparkleBundle } from "../constants/icons"
+import { SendIcon, SparkleBundle, ArrowUpIcon } from "../constants/icons"
 
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import styles from "../ReactEngageHub.module.scss"
@@ -44,6 +46,12 @@ const useStyles = makeStyles({
   wrapper: {
     padding: "1rem !important",
     flexShrink: " 0",
+    overflow: "unset",
+    position: "relative",
+    "&:hover .collapseBtn": {
+      opacity: 1,
+      pointerEvents: "auto",
+    },
   },
   postBtn: {
     width: "fit-content",
@@ -63,14 +71,17 @@ const useStyles = makeStyles({
     width: "fit-content",
     alignSelf: "flex-end",
   },
-  collapseBtn: {
-    width: "fit-content",
-    marginLeft: "0.25rem",
-  },
   actionBtnWrapper: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "baseline",
+  },
+  collapseBtn: {
+    position: "absolute",
+    bottom: "-16px",
+    left: "50%",
+    transition: "opacity 0.2s",
+    zIndex: 2,
   },
 })
 
@@ -85,6 +96,7 @@ interface IRichTextEditorProps {
 
 export const RichTextEditor = (props: IRichTextEditorProps) => {
   const [content, setContent] = useState<any>(null)
+  const [isHovered, setIsHovered] = useState(false)
 
   const { isCompactView, setIsCompactView, onPostSubmit } = props
 
@@ -148,6 +160,8 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
         <Card
           className={fluentStyles.wrapper}
           style={{ display: isCompactView ? "none" : "block" }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           {editor && (
             <EditorToolbar
@@ -194,12 +208,14 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
                 </MenuList>
               </MenuPopover>
             </Menu>
-            <Link
-              className={fluentStyles.collapseBtn}
-              onClick={() => setIsCompactView(!isCompactView)}
-            >
-              Collapse
-            </Link>
+            <Fade visible={!isCompactView && isHovered}>
+              <Button
+                onClick={() => setIsCompactView(!isCompactView)}
+                icon={<ArrowUpIcon />}
+                shape='circular'
+                className={fluentStyles.collapseBtn}
+              />
+            </Fade>
             <Button
               icon={buttonIcon}
               appearance='primary'
