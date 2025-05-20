@@ -40,7 +40,7 @@ import styles from "../ReactEngageHub.module.scss"
 
 const useStyles = makeStyles({
   textEditor: {
-    minHeight: "120px",
+    minHeight: "140px",
     overflow: "hidden scroll",
     caretColor: tokens.colorBrandBackground,
     color: "white",
