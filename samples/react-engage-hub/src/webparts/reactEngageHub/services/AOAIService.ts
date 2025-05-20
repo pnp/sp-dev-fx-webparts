@@ -16,7 +16,7 @@ export const reWritePostContents = async (
     {
       role: "system",
       content:
-        "You are a content writer. Rewrite the given content in a way that's appealing for a social media post. Avoid hashtags for short sentences. Preserve the original meaning.",
+        "You are a content writer. Rewrite the given content in a way that's appealing for a social media post. Avoid hashtags for short sentences. Preserve the original meaning. Respond only in HTML format.",
     },
     { role: "user", content: input },
   ]
@@ -28,7 +28,7 @@ export const grammarFix = async (client: AzureOpenAI, input: string) => {
     {
       role: "system",
       content:
-        "Your task is to fix any grammar mistakes in the provided text without adding new info or changing the meaning.",
+        "Your task is to fix any grammar mistakes in the provided text without adding new info or changing the meaning. Respond only in HTML format.",
     },
     { role: "user", content: input },
   ]
@@ -43,7 +43,7 @@ export const shortenPostContents = async (
     {
       role: "system",
       content:
-        "You are a writing assistant that shortens posts without removing critical context. Make it concise but clear.",
+        "You are a writing assistant that shortens posts without removing critical context. Make it concise but clear. Respond only in HTML format.",
     },
     { role: "user", content: input },
   ]
@@ -58,7 +58,7 @@ export const lengthenPostContents = async (
     {
       role: "system",
       content:
-        "You are a writing assistant that expands posts with more detail, examples, or context—without rambling or going off-topic.",
+        "You are a writing assistant that expands posts with more detail, examples, or context—without rambling or going off-topic. Respond only in HTML format.",
     },
     { role: "user", content: input },
   ]
