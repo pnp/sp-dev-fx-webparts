@@ -1,3 +1,4 @@
+import { ACTIONS } from "../constants/ai"
 import { useAIActions } from "./useAIActions"
 
 type UseAITextActionsProps = {
@@ -6,26 +7,60 @@ type UseAITextActionsProps = {
   deploymentName: string
   content: any
   setContent: React.Dispatch<any>
+  editorDivRef: React.RefObject<HTMLDivElement>
 }
 
 export function useAITextActions(props: UseAITextActionsProps) {
-  const { apiKey, apiEndpoint, deploymentName, content, setContent } = props
+  const {
+    apiKey,
+    apiEndpoint,
+    deploymentName,
+    content,
+    setContent,
+    editorDivRef,
+  } = props
 
-  const { reWrite, fixGrammar } = useAIActions({
+  const { reWrite, fixGrammar, makeItShorter, makeItLonger } = useAIActions({
     apiKey,
     apiEndpoint,
     deploymentName,
   })
 
-  const handleRewrite = async () => {
-    let response = await reWrite(content)
-    setContent(response.choices[0].message.content)
+  const handleAIAction = async (aiAction: any) => {
+    let response
+
+    try {
+      switch (aiAction) {
+        case ACTIONS.rewrite:
+          response = await reWrite(content)
+          break
+        case ACTIONS.fixGrammar:
+          response = await fixGrammar(content)
+          break
+        case ACTIONS.makeItShorter:
+          response = await makeItShorter(content)
+          break
+        case ACTIONS.makeItLonger:
+          response = await makeItLonger(content)
+          break
+        default:
+          console.warn(`Unknown AI action: ${aiAction}`)
+          return
+      }
+
+      const newContent = response.choices?.[0]?.message?.content
+      if (newContent) {
+        if (editorDivRef.current) {
+          editorDivRef.current.innerHTML = newContent
+        }
+        setContent(newContent)
+      } else {
+        console.warn("AI response did not return content")
+      }
+    } catch (err) {
+      console.error("AI action failed:", err)
+    }
   }
 
-  const handleGrammarFix = async () => {
-    let response = await fixGrammar(content)
-    setContent(response.choices[0].message.content)
-  }
-
-  return { handleRewrite, handleGrammarFix }
+  return { handleAIAction }
 }

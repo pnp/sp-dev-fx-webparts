@@ -1,6 +1,11 @@
-import { AzureOpenAI } from "openai"
-import { grammarFix, reWritePostContents } from "../services/AOAIService"
 import { useContext } from "react"
+import { AzureOpenAI } from "openai"
+import {
+  grammarFix,
+  lengthenPostContents,
+  reWritePostContents,
+  shortenPostContents,
+} from "../services/AOAIService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 import { APIVERSION } from "../constants/ai"
 
@@ -32,5 +37,15 @@ export const useAIActions = (props: AIType) => {
     return grammarFix(client, text)
   }
 
-  return { reWrite, fixGrammar }
+  const makeItShorter = async (text: string) => {
+    const client = getClient()
+    return shortenPostContents(client, text)
+  }
+
+  const makeItLonger = async (text: string) => {
+    const client = getClient()
+    return lengthenPostContents(client, text)
+  }
+
+  return { reWrite, fixGrammar, makeItShorter, makeItLonger }
 }

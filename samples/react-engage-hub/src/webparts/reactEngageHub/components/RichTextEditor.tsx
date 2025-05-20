@@ -8,12 +8,10 @@ import {
   Spinner,
   tokens,
   Menu,
-  MenuButtonProps,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  SplitButton,
 } from "@fluentui/react-components"
 import {
   CollapseRelaxed,
@@ -31,6 +29,7 @@ import { addNewPost } from "../services/SPService"
 import { WEBPARTCONTEXT } from "../context/webPartContext"
 
 import { SendIcon, SparkleBundle, ArrowUpIcon } from "../constants/icons"
+import { AI_OPTIONS } from "../constants/ai"
 
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import styles from "../ReactEngageHub.module.scss"
@@ -48,10 +47,6 @@ const useStyles = makeStyles({
     flexShrink: " 0",
     overflow: "unset",
     position: "relative",
-    "&:hover .collapseBtn": {
-      opacity: 1,
-      pointerEvents: "auto",
-    },
   },
   postBtn: {
     width: "fit-content",
@@ -132,6 +127,15 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
     handleLink,
   })
 
+  const { handleAIAction } = useAITextActions({
+    apiKey,
+    apiEndpoint,
+    deploymentName,
+    content,
+    setContent,
+    editorDivRef,
+  })
+
   const buttonIcon =
     loadingState === "loading" ? <Spinner size='tiny' /> : <SendIcon />
 
@@ -141,18 +145,6 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
       : fluentStyles.buttonNonInteractive
 
   const postButtonLabel = loadingState === "loading" ? "Posting..." : "Post"
-
-  const { handleRewrite, handleGrammarFix } = useAITextActions({
-    apiKey,
-    apiEndpoint,
-    deploymentName,
-    content,
-    setContent,
-  })
-
-  const primaryActionButtonProps = {
-    onClick: handleRewrite,
-  }
 
   return (
     <>
@@ -191,20 +183,24 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
           <div className={fluentStyles.actionBtnWrapper}>
             <Menu positioning='below-end'>
               <MenuTrigger disableButtonEnhancement>
-                {(triggerProps: MenuButtonProps) => (
-                  <SplitButton
-                    appearance='subtle'
-                    menuButton={triggerProps}
-                    primaryActionButton={primaryActionButtonProps}
-                    icon={<SparkleBundle />}
-                  >
-                    AI Rewrite
-                  </SplitButton>
-                )}
+                <Button appearance='subtle' icon={<SparkleBundle />}>
+                  AI Rewrite
+                </Button>
               </MenuTrigger>
               <MenuPopover>
                 <MenuList>
-                  <MenuItem onClick={handleGrammarFix}>Grammar fix</MenuItem>
+                  {AI_OPTIONS.map((item, index) => {
+                    return (
+                      <MenuItem
+                        key={index}
+                        onClick={() => {
+                          handleAIAction(item)
+                        }}
+                      >
+                        {item}
+                      </MenuItem>
+                    )
+                  })}
                 </MenuList>
               </MenuPopover>
             </Menu>
