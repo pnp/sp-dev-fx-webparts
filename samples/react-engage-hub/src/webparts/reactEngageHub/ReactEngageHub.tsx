@@ -7,7 +7,7 @@ import {
   webDarkTheme,
   webLightTheme,
 } from "@fluentui/react-components"
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
+import { Placeholder, WebPartTitle } from "@pnp/spfx-controls-react"
 
 import { Posts } from "./components/Posts"
 import { CompactTextArea } from "./components/CompactTextArea"
@@ -64,25 +64,35 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         title={props.title}
         updateProperty={props.updateProperty}
       />
-      <IdPrefixProvider value='react-engage-hub-'>
-        <FluentProvider
-          theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
-          className={fluentStyles.fluentWrapper}
-        >
-          <WEBPARTCONTEXT.Provider value={props}>
-            <CompactTextArea
-              isCompactView={isCompactView}
-              setIsCompactView={setIsCompactView}
-            />
-            <RichTextEditor
-              isCompactView={isCompactView}
-              setIsCompactView={setIsCompactView}
-              onPostSubmit={handlePostSubmitted}
-            />
-            <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
-          </WEBPARTCONTEXT.Provider>
-        </FluentProvider>
-      </IdPrefixProvider>
+      {props.apiEndpoint && props.apiKey && props.deploymentName ? (
+        <IdPrefixProvider value='react-engage-hub-'>
+          <FluentProvider
+            theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
+            className={fluentStyles.fluentWrapper}
+          >
+            <WEBPARTCONTEXT.Provider value={props}>
+              <CompactTextArea
+                isCompactView={isCompactView}
+                setIsCompactView={setIsCompactView}
+              />
+              <RichTextEditor
+                isCompactView={isCompactView}
+                setIsCompactView={setIsCompactView}
+                onPostSubmit={handlePostSubmitted}
+              />
+              <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
+            </WEBPARTCONTEXT.Provider>
+          </FluentProvider>
+        </IdPrefixProvider>
+      ) : (
+        <Placeholder
+          iconName='Edit'
+          iconText='Configure your web part'
+          description='Please configure the web part.'
+          buttonLabel='Configure'
+          onConfigure={() => props.context.propertyPane.open()}
+        />
+      )}
     </div>
   )
 }
