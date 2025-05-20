@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ACTIONS } from "../constants/ai"
 import { useAIActions } from "./useAIActions"
 
@@ -11,6 +12,8 @@ type UseAITextActionsProps = {
 }
 
 export function useAITextActions(props: UseAITextActionsProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const {
     apiKey,
     apiEndpoint,
@@ -28,6 +31,7 @@ export function useAITextActions(props: UseAITextActionsProps) {
 
   const handleAIAction = async (aiAction: any) => {
     let response
+    setIsLoading(true)
 
     try {
       switch (aiAction) {
@@ -59,8 +63,10 @@ export function useAITextActions(props: UseAITextActionsProps) {
       }
     } catch (err) {
       console.error("AI action failed:", err)
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  return { handleAIAction }
+  return { handleAIAction, isLoading }
 }

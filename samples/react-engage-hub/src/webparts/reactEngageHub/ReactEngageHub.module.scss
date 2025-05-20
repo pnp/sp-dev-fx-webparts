@@ -64,3 +64,15 @@
   cursor:pointer;
   margin-left: auto
 }
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.textEditorLoading {
+  animation: pulseOpacity 1.2s infinite alternate;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+  pointer-events: none;
+}
