@@ -146,10 +146,8 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
 
   useEffect(() => {
     if (editorDivRef.current) {
-      editorDivRef.current.style.background = isDarkTheme
-        ? "transparent"
-        : "#fff"
-      editorDivRef.current.style.color = isDarkTheme ? "#fff" : "#222"
+      editorDivRef.current.style.background = tokens.colorNeutralBackground1
+      editorDivRef.current.style.color = tokens.colorNeutralForeground1
     }
   }, [isDarkTheme])
 
