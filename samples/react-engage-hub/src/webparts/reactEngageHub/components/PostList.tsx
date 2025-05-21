@@ -12,6 +12,7 @@ import { RichTextEditor } from "./RichTextEditor"
 
 import { postsAtom } from "../atoms/globalAtoms"
 import { updatePostLikeUnlike } from "../services/SPService"
+import { PostContent } from "./PostContent"
 
 interface IPostListProps {
   context: any
@@ -70,11 +71,7 @@ export const PostList = (props: IPostListProps) => {
                   />
                 )}
               </div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: post.Description,
-                }}
-              ></div>
+              <PostContent html={post.Description} />
               {post.Images.length > 0 && (
                 <div className={styles.imageContainer}>
                   {post.Images.map((image: string, index: any) => (
