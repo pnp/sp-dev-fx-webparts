@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Button, Text } from "@fluentui/react-components"
-import { LikeIcon } from "../../constants/icons"
+import { LikeIcon } from "../constants/icons"
 import styles from "../ReactEngageHub.module.scss"
 
 interface ILikeUnlikeProps {

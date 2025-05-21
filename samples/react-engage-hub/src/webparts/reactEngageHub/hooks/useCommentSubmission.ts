@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { addNewComment } from "../reactEngageHub/services/SPService"
+import { addNewComment } from "../services/SPService"
 
 type UseCommentSubmissionProps = {
   comment: string

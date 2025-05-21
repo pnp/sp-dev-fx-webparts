@@ -4,7 +4,7 @@ import { Card, Textarea, makeStyles } from "@fluentui/react-components"
 import {
   ADVANCEDTEXTAREAPLACEHOLDER,
   COMMENTEXTAREAPLACEHOLDER,
-} from "../../constants/posts"
+} from "../constants/posts"
 
 const useStyles = makeStyles({
   compactTextArea: {

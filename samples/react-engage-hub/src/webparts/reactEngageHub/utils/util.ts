@@ -20,7 +20,7 @@ export const formatDate = (date: Date) => {
   const days = Math.floor(hours / 24)
 
   if (seconds < 60) {
-    return "just now"
+    return "Just now"
   } else if (minutes < 60) {
     return `${minutes}m ago`
   } else if (hours < 24) {

@@ -7,8 +7,9 @@ Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemp
 Engage Hub maintains responsiveness and light weight with its elegant React user interface and integrated infinite scrolling. Additionally, it incorporates an AI-powered twist by using the Azure OpenAI JavaScript SDK to assist users in revising content and correcting grammar mistakes.
 
 ![Engage hub 1](./assets/engage_hub1.png)
+![Engage hub 2](./assets/engage_hub2.png)
 
-![Engage hub 2](./assets/engage_hub2.gif)
+![Engage hub 3](./assets/engage_hub2.gif)
 
 ## Compatibility
 
@@ -66,6 +67,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | Version | Date             | Comments                            |
 | ------- | ---------------- | ----------------------------------- |
 | 1.0     | April 27, 2025   | Initial release                     |
+| 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
 
 ## Minimal Path to Awesome⚡
 
