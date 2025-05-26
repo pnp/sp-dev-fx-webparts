@@ -14,14 +14,12 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
-
 export interface ITicketDetailViewProps {
     ticketId: number;
     onBack: () => void;
     ticketService: TicketService;
     onUpdate: (id: number, updates: Partial<ITicketFormData>) => Promise<void>;
     context: WebPartContext;
-
 }
 
 export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
@@ -36,21 +34,17 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
     const [error, setError] = React.useState<string | undefined>(undefined);
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>('');
-    const [assignedTo, setAssignedTo] = React.useState<string>('');
-    
-    React.useEffect(() => {
 
+    React.useEffect(() => {
         const loadTicket = async (): Promise<void> => {
             setLoading(true);
             setError(undefined);
             const sp = spfi().using(SPFx(context));
 
             try {
-
                 const ticketData = await ticketService.getTicketById(ticketId, sp);
                 setTicket(ticketData);
                 setStatus(ticketData.Status ?? '');
-                setAssignedTo(ticketData.AssignedTo?.Title ?? '');
             } catch (err) {
                 console.error('Error loading ticket:', err);
                 setError('Failed to load ticket details.');
@@ -60,7 +54,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         };
 
         loadTicket();
-    }, [ticketId, ticketService]);
+    }, [ticketId, ticketService, context]);
 
     const formatDate = (dateString?: string): string =>
         dateString ? format(new Date(dateString), 'MMM d, yyyy h:mm a') : 'Not specified';
@@ -96,26 +90,14 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         }
     };
 
+    // Handle the assignment changes here
     const handleAssignmentChange = async (items: any[]) => {
         if (!ticket) return;
-
         try {
-            
-
-            if (items && items.length > 0) {
-               
-
-                setAssignedTo('');
-                
-            } else {
-                setAssignedTo('');
-             
+            const assignedToId = items.length > 0 ? items[0].id : undefined;
+            if (assignedToId !== undefined) {
+                await onUpdate(ticket.Id, { assignedToId });
             }
-
-            await onUpdate(ticket.Id, {
-                assignedTo: ""
-            });
-
         } catch (err) {
             console.error('Error updating assignment:', err);
         }
@@ -273,7 +255,10 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                             <label>Created By:</label>
                             <span>{ticket.Author?.Title || 'Unknown'}</span>
                         </div>
-                        <span>{assignedTo || 'Unassigned'}</span>
+                        <div className={styles.field}>
+                            <label>Modified By:</label>
+                            <span>{ticket.Editor?.Title || 'Unknown'}</span>
+                        </div>
                         <div className={styles.field}>
                             <label>Created On:</label>
                             <span>{formatDate(ticket.Created)}</span>

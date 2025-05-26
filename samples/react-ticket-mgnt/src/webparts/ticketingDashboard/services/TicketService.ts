@@ -1,3 +1,4 @@
+import { SPFI } from "@pnp/sp";
 import { ITicketFormData } from "../components/ITicketFormData";
 import { TicketCategory, TicketEnvironment, TicketPriority, TicketRootCause, TicketSeverity, TicketStatus } from "../components/TicketingDashboard";
 import { ITicketItem } from "../ITicketItem";
@@ -6,7 +7,7 @@ export class TicketService {
 
     private listTitle: string = "Tickets"; // Make sure this matches your SharePoint list
 
-    public async getTickets(sp: any): Promise<ITicketItem[]> {
+    public async getTickets(sp: SPFI): Promise<ITicketItem[]> {
         try {
             const items = await sp.web.lists.getByTitle(this.listTitle).items.select("*", "AssignedTo/Id", "AssignedTo/Title").expand("AssignedTo")();
             return items;
@@ -16,7 +17,7 @@ export class TicketService {
         }
     }
 
-    public async getMyTickets(userId: number, sp: any): Promise<ITicketItem[]> {
+    public async getMyTickets(userId: number, sp: SPFI): Promise<ITicketItem[]> {
         try {
             const items = await sp.web.lists.getByTitle(this.listTitle).items
                 .select("*", "AssignedTo/Id", "AssignedTo/Title")
@@ -30,7 +31,7 @@ export class TicketService {
         }
     }
 
-    public async createTicket(data: ITicketFormData, sp: any): Promise<void> {
+    public async createTicket(data: ITicketFormData, sp: SPFI): Promise<void> {
         try {
             await sp.web.lists.getByTitle(this.listTitle).items.add(data);
         } catch (error) {
@@ -39,7 +40,7 @@ export class TicketService {
         }
     }
 
-    public async updateTicket(id: number, updates: ITicketFormData, sp: any): Promise<void> {
+    public async updateTicket(id: number, updates: ITicketFormData, sp: SPFI): Promise<void> {
         try {
             await sp.web.lists.getByTitle(this.listTitle).items.getById(id).update(updates);
         } catch (error) {
@@ -48,11 +49,11 @@ export class TicketService {
         }
     }
 
-    public async getTicketById(id: number, sp: any): Promise<ITicketItem> {
+    public async getTicketById(id: number, sp: SPFI): Promise<ITicketItem> {
         try {
             const item = await sp.web.lists.getByTitle(this.listTitle).items.getById(id)
-                .select("*", "AssignedTo/Id", "AssignedTo/Title")
-                .expand("AssignedTo")
+                .select("*", "AssignedTo/Id", "AssignedTo/Title", "Author/Id", "Author/Title", "Editor/Id", "Editor/Title")
+                .expand("AssignedTo","Author","Editor")
                 ();
             return item;
         } catch (error) {
@@ -70,7 +71,7 @@ export class TicketService {
             description: item.Description || '',
             priority: item.Priority as TicketPriority,
             status: item.Status as TicketStatus,
-            assignedTo: item.AssignedTo?.Id.toString(),
+            assignedToId: item.AssignedTo?.Id,
             dueDate: item.DueDate ? new Date(item.DueDate) : undefined,
             category: item.Category as TicketCategory,
             environment: item.Environment as TicketEnvironment,
@@ -99,7 +100,7 @@ export class TicketService {
         if (formData.status !== undefined) updateObj.Status = formData.status;
        
         if (formData.dueDate !== undefined) updateObj.DueDate = formData.dueDate;
-
+        if (formData.assignedToId !== undefined) updateObj.AssignedToId = formData.assignedToId;
         // Additional fields
         if (formData.category !== undefined) updateObj.Category = formData.category;
         if (formData.environment !== undefined) updateObj.Environment = formData.environment;

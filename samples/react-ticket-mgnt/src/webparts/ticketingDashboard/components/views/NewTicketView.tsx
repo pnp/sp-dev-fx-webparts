@@ -6,7 +6,7 @@ import {
   TicketCategory,
   TicketEnvironment,
   TicketSeverity,
-  TicketRootCause,
+  TicketRootCause
 } from '../TicketingDashboard';
 import { ITicketFormData } from '../ITicketFormData';
 import { PeoplePicker, PrincipalType } from '@pnp/spfx-controls-react/lib/PeoplePicker';
@@ -14,6 +14,7 @@ import { DateTimePicker, DateConvention } from '@pnp/spfx-controls-react/lib/Dat
 import { TextField } from '@fluentui/react/lib/TextField';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { SpinButton } from '@fluentui/react/lib/SpinButton';
+
 
 export interface INewTicketViewProps {
   onSubmit: (e: React.FormEvent, formData: ITicketFormData) => void;
@@ -28,7 +29,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   const [description, setDescription] = React.useState<string>('');
   const [priority, setPriority] = React.useState<TicketPriority>(TicketPriority.Normal);
   const [status, setStatus] = React.useState<TicketStatus>(TicketStatus.Open);
-  const [assignedTo, setAssignedTo] = React.useState<string>('');
+  const [assignedToId, setAssignedToId] = React.useState<number | undefined>(undefined);
   const [dueDate, setDueDate] = React.useState<Date | undefined>(undefined);
 
   // Additional fields
@@ -52,7 +53,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
       description,
       priority,
       status,
-      assignedTo,
+      assignedToId,
       dueDate,
       category,
       environment,
@@ -68,10 +69,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
       resolutionDate: undefined,
       regressionTestStatus: undefined,
       attachments: undefined,
-
-      
     };
-    
 
     onSubmit(e, formData);
   };
@@ -87,9 +85,9 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   // PeoplePicker selection handler
   const getPeoplePickerItems = (items: any[]): void => {
     if (items && items.length > 0) {
-      setAssignedTo(items[0].text);
+      setAssignedToId(items[0].id); // Use as a number
     } else {
-      setAssignedTo('');
+      setAssignedToId(undefined);
     }
   };
 

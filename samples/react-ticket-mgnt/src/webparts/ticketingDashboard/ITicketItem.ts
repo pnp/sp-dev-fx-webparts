@@ -30,7 +30,7 @@ export interface ITicketItem {
         LoginName?: string;
     };
     DueDate?: Date;             // Maps to dueDate in ITicketFormData (as string)
-
+    AssignedToId?: number;
     // Additional ticket fields
     Category?: string;            // Maps to category in ITicketFormData
     Environment?: string;         // Maps to environment in ITicketFormData
