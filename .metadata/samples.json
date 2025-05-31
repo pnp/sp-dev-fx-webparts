@@ -15664,7 +15664,7 @@
       "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries."
     ],
     "creationDateTime": "2025-04-27",
-    "updateDateTime": "2025-04-27",
+    "updateDateTime": "2025-05-04",
     "products": [
       "SharePoint"
     ],

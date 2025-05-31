@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-engage-hub-client-side-solution",
     "id": "156c77a3-ca7c-4d20-99d3-a895c0f3a630",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "react-engage-hub Feature",
         "description": "The feature that activates elements of the react-engage-hub solution.",
         "id": "fda8312b-9f90-4280-84b9-5e37f81c9eb2",
-        "version": "1.0.0.0"
+        "version": "1.1.0.0"
       }
     ]
   },
