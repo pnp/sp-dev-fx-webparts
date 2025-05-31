@@ -6067,6 +6067,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-copilot-aprils-fool",
+    "source": "pnp",
+    "title": "Copilot April's Fool",
+    "shortDescription": "An extention to privide a simple approach to display custom messages in SharePoint Online.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-copilot-aprils-fool",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-copilot-aprils-fool",
+    "longDescription": [
+      "An extention to privide a simple approach to display custom messages in SharePoint Online."
+    ],
+    "creationDateTime": "2025-03-23",
+    "updateDateTime": "2025-03-23",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png",
+        "alt": "Extension Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
     "source": "pnp",
     "title": "Dynamic Form with location picker",
@@ -9561,24 +9609,18 @@
     "authors": [
       {
         "gitHubAccount": "PopWarner",
-        "company": "Catapult Systems",
         "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4",
-        "name": "David Warner II",
-        "twitter": "PopWarner"
+        "name": "David Warner II"
       },
       {
         "gitHubAccount": "bcameron1231",
-        "company": "DMI",
         "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4",
-        "name": "Beau Cameron",
-        "twitter": "Beau__Cameron"
+        "name": "Beau Cameron"
       },
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       }
     ],
     "references": [

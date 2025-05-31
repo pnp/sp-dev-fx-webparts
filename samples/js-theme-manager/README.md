@@ -54,6 +54,7 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 * [Hugo Bernier](https://github.com/hugoabernier)
 * [Beau Cameron](https://github.com/bcameron1231)
+* [David (You don't even know my name) Warner II](https://github.com/popwarner)
 
 ## Version history
 
