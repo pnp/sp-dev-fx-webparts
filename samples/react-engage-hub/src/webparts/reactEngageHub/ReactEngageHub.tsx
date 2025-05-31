@@ -1,7 +1,5 @@
 import * as React from "react"
-
-// import styles from "./ReactEngageHub.module.scss"
-import type { IReactEngageHubProps } from "./IReactEngageHubProps"
+import { useState, useEffect } from "react"
 import {
   FluentProvider,
   IdPrefixProvider,
@@ -9,13 +7,16 @@ import {
   webDarkTheme,
   webLightTheme,
 } from "@fluentui/react-components"
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle"
-import { AdvancedTextArea } from "./components/AdvancedTextArea"
-import { useEffect } from "react"
-import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
+import { Placeholder, WebPartTitle } from "@pnp/spfx-controls-react"
+
 import { Posts } from "./components/Posts"
-import { WEBPARTCONTEXT } from "../context/webPartContext"
 import { CompactTextArea } from "./components/CompactTextArea"
+import { RichTextEditor } from "./components/RichTextEditor"
+
+import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
+
+import { WEBPARTCONTEXT } from "./context/webPartContext"
+import type { IReactEngageHubProps } from "./IReactEngageHubProps"
 
 const useStyles = makeStyles({
   fluentWrapper: {
@@ -35,8 +36,8 @@ const useStyles = makeStyles({
 })
 
 export const ReactEngageHub = (props: IReactEngageHubProps) => {
-  const [shouldRefreshPosts, setShouldRefreshPosts] = React.useState(false)
-  const [isCompactView, setIsCompactView] = React.useState(true)
+  const [shouldRefreshPosts, setShouldRefreshPosts] = useState(false)
+  const [isCompactView, setIsCompactView] = useState(true)
 
   const handlePostSubmitted = () => {
     setShouldRefreshPosts((prev) => !prev)
@@ -63,25 +64,35 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
         title={props.title}
         updateProperty={props.updateProperty}
       />
-      <IdPrefixProvider value='react-engage-hub-'>
-        <FluentProvider
-          theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
-          className={fluentStyles.fluentWrapper}
-        >
-          <WEBPARTCONTEXT.Provider value={props}>
-            <CompactTextArea
-              isCompactView={isCompactView}
-              setIsCompactView={setIsCompactView}
-            />
-            <AdvancedTextArea
-              isCompactView={isCompactView}
-              setIsCompactView={setIsCompactView}
-              onPostSubmit={handlePostSubmitted}
-            />
-            <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
-          </WEBPARTCONTEXT.Provider>
-        </FluentProvider>
-      </IdPrefixProvider>
+      {props.apiEndpoint && props.apiKey && props.deploymentName ? (
+        <IdPrefixProvider value='react-engage-hub-'>
+          <FluentProvider
+            theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
+            className={fluentStyles.fluentWrapper}
+          >
+            <WEBPARTCONTEXT.Provider value={props}>
+              <CompactTextArea
+                isCompactView={isCompactView}
+                setIsCompactView={setIsCompactView}
+              />
+              <RichTextEditor
+                isCompactView={isCompactView}
+                setIsCompactView={setIsCompactView}
+                onPostSubmit={handlePostSubmitted}
+              />
+              <Posts webpartProps={props} refreshTrigger={shouldRefreshPosts} />
+            </WEBPARTCONTEXT.Provider>
+          </FluentProvider>
+        </IdPrefixProvider>
+      ) : (
+        <Placeholder
+          iconName='Edit'
+          iconText='Configure your web part'
+          description='Please configure the web part.'
+          buttonLabel='Configure'
+          onConfigure={() => props.context.propertyPane.open()}
+        />
+      )}
     </div>
   )
 }
