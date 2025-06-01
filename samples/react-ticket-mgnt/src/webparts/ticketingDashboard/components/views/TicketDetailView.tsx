@@ -96,7 +96,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         try {
             const assignedToId = items.length > 0 ? items[0].id : undefined;
             if (assignedToId !== undefined) {
-                await onUpdate(ticket.Id, { assignedToId });
+                await onUpdate(ticket.Id, {assignedTo: assignedToId.toString()});
             }
         } catch (err) {
             console.error('Error updating assignment:', err);

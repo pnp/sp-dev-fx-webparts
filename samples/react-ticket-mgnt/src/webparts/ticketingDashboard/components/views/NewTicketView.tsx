@@ -53,7 +53,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
       description,
       priority,
       status,
-      assignedToId,
+      assignedTo: assignedToId,
       dueDate,
       category,
       environment,

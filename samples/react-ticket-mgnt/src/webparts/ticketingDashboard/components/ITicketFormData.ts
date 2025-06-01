@@ -14,7 +14,7 @@ export interface ITicketFormData {
     description: string;
     priority: TicketPriority;
     status: TicketStatus;
-    assignedToId?: number;  // This will be the user ID
+    assignedTo?: number;  // This will be the user ID
     dueDate?: Date;
 
     // Additional fields
