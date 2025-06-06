@@ -29,7 +29,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   const [description, setDescription] = React.useState<string>('');
   const [priority, setPriority] = React.useState<TicketPriority>(TicketPriority.Normal);
   const [status, setStatus] = React.useState<TicketStatus>(TicketStatus.Open);
-  const [assignedToId, setAssignedToId] = React.useState<number | undefined>(undefined);
+  const [assignedToId, setAssignedToId] = React.useState<string | undefined>(undefined);
   const [dueDate, setDueDate] = React.useState<Date | undefined>(undefined);
 
   // Additional fields
@@ -48,13 +48,21 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   const [release, setRelease] = React.useState<string>('');
 
   const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault(); // Prevent default form submission
+
+    // Validate the date before submitting
+    if (dueDate && isNaN(dueDate.getTime())) {
+      alert("Please enter a valid date");
+      return;
+    }
+
     const formData: ITicketFormData = {
       subject,
       description,
       priority,
       status,
-      assignedTo: assignedToId,
-      dueDate,
+      assignedTo: assignedToId !== undefined ? parseInt(assignedToId.toString()) : undefined, // Convert to string to match interface
+      dueDate: dueDate, // This will be properly formatted in the service
       category,
       environment,
       stepsToReproduce,
@@ -85,7 +93,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   // PeoplePicker selection handler
   const getPeoplePickerItems = (items: any[]): void => {
     if (items && items.length > 0) {
-      setAssignedToId(items[0].id); // Use as a number
+      setAssignedToId(items[0].id?.toString()); // Convert to string
     } else {
       setAssignedToId(undefined);
     }
@@ -141,12 +149,14 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
 
           <PeoplePicker
             context={context}
-            webAbsoluteUrl={context.pageContext.web.absoluteUrl}
             personSelectionLimit={1}
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000}
             onChange={getPeoplePickerItems}
-
+            ensureUser={true}
+            showHiddenInUI={false}
+            defaultSelectedUsers={[]}
+            webAbsoluteUrl={context.pageContext.web.absoluteUrl}
           />
         </div>
 
@@ -155,7 +165,19 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
             label="Due Date"
             dateConvention={DateConvention.Date}
             value={dueDate}
-            onChange={(date?: Date): void => setDueDate(date)}
+            onChange={(date?: Date): void => {
+              // Make sure we're working with a valid date
+              if (date && !isNaN(date.getTime())) {
+                setDueDate(date);
+              } else {
+                setDueDate(undefined);
+              }
+            }}
+            isMonthPickerVisible={true}
+            showGoToToday={true}
+            formatDate={(date?: Date): string =>
+              date ? date.toLocaleDateString() : ''}
+
           />
         </div>
 
