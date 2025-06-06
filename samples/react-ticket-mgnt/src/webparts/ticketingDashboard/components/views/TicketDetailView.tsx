@@ -34,6 +34,8 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
     const [error, setError] = React.useState<string | undefined>(undefined);
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>('');
+    // Add a state to track the current assignment
+    const [assignedUsers, setAssignedUsers] = React.useState<any[]>([]);
 
     React.useEffect(() => {
         const loadTicket = async (): Promise<void> => {
@@ -45,6 +47,26 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                 const ticketData = await ticketService.getTicketById(ticketId, sp);
                 setTicket(ticketData);
                 setStatus(ticketData.Status ?? '');
+
+                // Initialize assigned users from ticket data
+                if (ticketData.AssignedTo && Array.isArray(ticketData.AssignedTo) && ticketData.AssignedTo.length > 0) {
+                    // Handle array format
+                    setAssignedUsers([{
+                        id: ticketData.AssignedTo[0].Id,
+                        text: ticketData.AssignedTo[0].Title,
+                        email: ticketData.AssignedTo[0].Email || ''
+                    }]);
+                } else if (ticketData.AssignedTo) {
+                    // Handle object format
+                    setAssignedUsers([{
+                        id: ticketData.AssignedTo.Id,
+                        text: ticketData.AssignedTo.Title,
+                        email: ticketData.AssignedTo.Email || ''
+                    }]);
+                } else {
+                    setAssignedUsers([]);
+                }
+
             } catch (err) {
                 console.error('Error loading ticket:', err);
                 setError('Failed to load ticket details.');
@@ -90,16 +112,51 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         }
     };
 
-    // Handle the assignment changes here
-    const handleAssignmentChange = async (items: any[]) => {
+    // Update the assignment change handler
+    const handleAssignmentChange = async (items: any[]): Promise<void> => {
         if (!ticket) return;
+
         try {
-            const assignedToId = items.length > 0 ? items[0].id : undefined;
-            if (assignedToId !== undefined) {
-                await onUpdate(ticket.Id, {assignedTo: assignedToId.toString()});
+            if (items.length > 0) {
+                // Extract user data from the selected item
+                const selectedUser = items[0];
+                const newAssignedUsers = [{
+                    id: selectedUser.id,
+                    text: selectedUser.text || selectedUser.displayName,
+                    email: selectedUser.secondaryText || selectedUser.email || ''
+                }];
+
+                // Update local state immediately for responsive UI
+                setAssignedUsers(newAssignedUsers);
+
+                // Update SharePoint
+                await onUpdate(ticket.Id, { assignedTo: selectedUser.id.toString() });
+            } else {
+                // Handle unassignment
+                setAssignedUsers([]);
+                await onUpdate(ticket.Id, { assignedTo: undefined });
             }
+
+            // Don't overwrite the state we just set with old data from the ticket
+            // Remove this problematic line:
+            // setAssignedUsers([{
+            //     id: ticket.AssignedTo?.Id,
+            //     text: ticket.AssignedTo?.Title,
+            //     email: ticket.AssignedTo?.Email || ''
+            // }]);
         } catch (err) {
             console.error('Error updating assignment:', err);
+
+            // Restore previous state if error occurs
+            if (ticket.AssignedTo) {
+                setAssignedUsers([{
+                    id: ticket.AssignedTo.Id,
+                    text: ticket.AssignedTo.Title,
+                    email: ticket.AssignedTo.Email || ''
+                }]);
+            } else {
+                setAssignedUsers([]);
+            }
         }
     };
 
@@ -175,15 +232,23 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                                     resolveDelay={1000}
                                     onChange={handleAssignmentChange}
                                     ensureUser={true}
+                                    defaultSelectedUsers={
+                                        assignedUsers.length > 0 ? [assignedUsers[0].text] : []
+                                    }
+                                    key={`people-picker-${ticket.Id}-${assignedUsers.length > 0 ? assignedUsers[0].id : 'none'}`}
                                 />
                             ) : (
-                                <span>{ticket.AssignedTo?.Title || 'Unassigned'}</span>
+                                <span>
+                                    {assignedUsers.length > 0
+                                        ? assignedUsers[0].text
+                                        : 'Unassigned'}
+                                </span>
                             )}
                         </div>
 
                         <div className={styles.field}>
                             <label>Due Date:</label>
-                            <span>{formatDate(ticket.DueDate ? ticket.DueDate.toDateString() : undefined)}</span>
+                            <span>{formatDate(ticket.DueDate ? ticket.DueDate.toString() : undefined)}</span>
                         </div>
                     </div>
 

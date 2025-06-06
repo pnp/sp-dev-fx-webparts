@@ -13,7 +13,6 @@ export interface ITicketItem {
         Title: string;
         Email?: string;
     };
-
     Description?: string;
     Priority?: string;
     Status: string;
@@ -22,10 +21,9 @@ export interface ITicketItem {
         Title: string;
         Email?: string;
         LoginName?: string;
-    }[];
+    };
     DueDate?: Date;
     AssignedToId?: number;
-
     Category?: string;
     Environment?: string;
     StepsToReproduce?: string;
@@ -34,15 +32,10 @@ export interface ITicketItem {
     AffectedVersion?: string;
     Resolution?: string;
     ResolutionDate?: string;
-
     Severity?: string;
     RootCause?: string;
     TimeSpent?: number;
     RegressionTestStatus?: string;
     Release?: string;
 
-    AttachmentFiles?: {
-        FileName: string;
-        ServerRelativeUrl: string;
-    }[];
 }

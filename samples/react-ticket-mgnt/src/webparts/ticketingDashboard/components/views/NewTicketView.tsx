@@ -138,12 +138,15 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
 
         <div className={styles.formGroup}>
           <label htmlFor="assigned-to">Assigned To</label>
+
           <PeoplePicker
             context={context}
+            webAbsoluteUrl={context.pageContext.web.absoluteUrl}
             personSelectionLimit={1}
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000}
             onChange={getPeoplePickerItems}
+
           />
         </div>
 
