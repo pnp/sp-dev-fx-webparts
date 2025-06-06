@@ -4,7 +4,6 @@ import { DashboardView } from './views/DashboardView';
 import { MyTicketsView } from './views/MyTicketsView';
 import { NewTicketView } from './views/NewTicketView';
 import { TicketDetailView } from './views/TicketDetailView';
-import { SettingsView } from './views/SettingsView';
 import { ITicketingDashboardProps } from './ITicketingDashboardProps';
 import { ITicketFormData } from './ITicketFormData';
 import { TicketService } from '../services/TicketService';
@@ -182,7 +181,7 @@ console.log('All Tickets:', allTickets);
   }
 
   public render(): React.ReactElement<ITicketingDashboardProps> {
-    const { userDisplayName, context } = this.props;
+    const { context } = this.props;
     const { currentView, selectedTicketId, allTickets, myTickets, isLoading, error } = this.state;
     const sp = spfi().using(SPFx(this.props.context));
     return (
@@ -246,9 +245,7 @@ console.log('All Tickets:', allTickets);
             />
           )}
 
-          {currentView === 'settings' && (
-            <SettingsView userDisplayName={userDisplayName} />
-          )}
+          
         </div>
       </div>
     );
