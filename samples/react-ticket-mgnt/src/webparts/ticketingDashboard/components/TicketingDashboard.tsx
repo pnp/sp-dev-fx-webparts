@@ -12,7 +12,6 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import "@pnp/sp/webs";
 import "@pnp/sp/site-users/web";
 
 import { ITicketItem } from '../ITicketItem';
