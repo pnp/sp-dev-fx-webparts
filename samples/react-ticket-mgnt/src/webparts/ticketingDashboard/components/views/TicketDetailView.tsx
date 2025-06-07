@@ -13,12 +13,15 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import { PrimaryButton, DefaultButton, } from '@fluentui/react/lib/Button';
+import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 
 export interface ITicketDetailViewProps {
     ticketId: number;
     onBack: () => void;
     ticketService: TicketService;
     onUpdate: (id: number, updates: Partial<ITicketFormData>) => Promise<void>;
+    onDelete: (id: number) => Promise<void>; // Add this line
     context: WebPartContext;
 }
 
@@ -27,16 +30,20 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
     onBack,
     ticketService,
     onUpdate,
-    context,
+    onDelete, // Add this
+    context
 }) => {
     const [ticket, setTicket] = React.useState<ITicketItem | undefined>(undefined);
     const [loading, setLoading] = React.useState<boolean>(true);
     const [error, setError] = React.useState<string | undefined>(undefined);
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>('');
-    // Add a state to track the current assignment
     const [assignedUsers, setAssignedUsers] = React.useState<any[]>([]);
+    const [showDeleteConfirm, setShowDeleteConfirm] = React.useState(false); // Add this
+    const [, setDueDate] = React.useState<string | undefined>(undefined); // Add dueDate state
+    const [statusUpdating, setStatusUpdating] = React.useState<boolean>(false); // Add this near your other state declarations
 
+    // Update the useEffect to handle AssignedTo properly
     React.useEffect(() => {
         const loadTicket = async (): Promise<void> => {
             setLoading(true);
@@ -48,16 +55,9 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                 setTicket(ticketData);
                 setStatus(ticketData.Status ?? '');
 
-                // Initialize assigned users from ticket data
-                if (ticketData.AssignedTo && Array.isArray(ticketData.AssignedTo) && ticketData.AssignedTo.length > 0) {
-                    // Handle array format
-                    setAssignedUsers([{
-                        id: ticketData.AssignedTo[0].Id,
-                        text: ticketData.AssignedTo[0].Title,
-                        email: ticketData.AssignedTo[0].Email || ''
-                    }]);
-                } else if (ticketData.AssignedTo) {
-                    // Handle object format
+                // Initialize assigned users from ticket data - simplify this logic
+                if (ticketData.AssignedTo) {
+                    // Always treat as object
                     setAssignedUsers([{
                         id: ticketData.AssignedTo.Id,
                         text: ticketData.AssignedTo.Title,
@@ -65,6 +65,14 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                     }]);
                 } else {
                     setAssignedUsers([]);
+                }
+
+                // Set due date if available
+                if (ticketData.DueDate) {
+                    const parsedDate = new Date(ticketData.DueDate);
+                    setDueDate(isNaN(parsedDate.getTime()) ? undefined : ticketData.DueDate.toString());
+                } else {
+                    setDueDate(undefined);
                 }
 
             } catch (err) {
@@ -78,8 +86,24 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         loadTicket();
     }, [ticketId, ticketService, context]);
 
-    const formatDate = (dateString?: string): string =>
-        dateString ? format(new Date(dateString), 'MMM d, yyyy h:mm a') : 'Not specified';
+    const formatDate = (dateString?: string): string => {
+        if (!dateString) return 'Not specified';
+
+        // Try to parse the date, and return a fallback if it's invalid
+        try {
+            const date = new Date(dateString);
+
+            // Check if the date is valid
+            if (isNaN(date.getTime())) {
+                return 'Invalid date';
+            }
+
+            return format(date, 'MMM d, yyyy h:mm a');
+        } catch (error) {
+            console.error('Error formatting date:', dateString, error);
+            return 'Invalid date';
+        }
+    };
 
     const getStatusClassName = (status: string): string => {
         switch (status) {
@@ -98,27 +122,47 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         }
     };
 
+    // Update the handleStatusChange function to properly update the UI after status change
     const handleStatusChange = async (
         _event: React.FormEvent<HTMLDivElement>,
         option?: IDropdownOption
-    ) => {
+    ): Promise<void> => {
         if (!option || !ticket) return;
+
+        setStatusUpdating(true);
         const newStatus = option.key as TicketStatus;
-        setStatus(newStatus);
+
         try {
+            // Update the status in the backend first
             await onUpdate(ticket.Id, { status: newStatus });
+
+            // Then update local state
+            setStatus(newStatus);
+
+            // Update the ticket object to reflect the new status
+            setTicket({
+                ...ticket,
+                Status: newStatus
+            });
+
+            // Exit edit mode after successful update
+            setIsEditing(false);
         } catch (err) {
             console.error('Error updating status:', err);
+            setError('Failed to update status. Please try again.');
+
+            // Revert to the original status on error
+            setStatus(ticket.Status);
+        } finally {
+            setStatusUpdating(false);
         }
     };
 
-    // Update the assignment change handler
     const handleAssignmentChange = async (items: any[]): Promise<void> => {
         if (!ticket) return;
 
         try {
             if (items.length > 0) {
-                // Extract user data from the selected item
                 const selectedUser = items[0];
                 const newAssignedUsers = [{
                     id: selectedUser.id,
@@ -126,28 +170,38 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                     email: selectedUser.secondaryText || selectedUser.email || ''
                 }];
 
-                // Update local state immediately for responsive UI
                 setAssignedUsers(newAssignedUsers);
 
-                // Update SharePoint
                 await onUpdate(ticket.Id, { assignedTo: selectedUser.id.toString() });
+
+                // Update the ticket object with the new assignment
+                setTicket({
+                    ...ticket,
+                    AssignedTo: {
+                        Id: selectedUser.id,
+                        Title: selectedUser.text || selectedUser.displayName,
+                        Email: selectedUser.secondaryText || selectedUser.email || ''
+                    }
+                });
+
+                // Exit edit mode after successful update
+                setIsEditing(false);
             } else {
-                // Handle unassignment
                 setAssignedUsers([]);
                 await onUpdate(ticket.Id, { assignedTo: undefined });
-            }
 
-            // Don't overwrite the state we just set with old data from the ticket
-            // Remove this problematic line:
-            // setAssignedUsers([{
-            //     id: ticket.AssignedTo?.Id,
-            //     text: ticket.AssignedTo?.Title,
-            //     email: ticket.AssignedTo?.Email || ''
-            // }]);
+                // Update the ticket object to remove assignment
+                setTicket({
+                    ...ticket,
+                    AssignedTo: undefined
+                });
+
+                // Exit edit mode after successful update
+                setIsEditing(false);
+            }
         } catch (err) {
             console.error('Error updating assignment:', err);
 
-            // Restore previous state if error occurs
             if (ticket.AssignedTo) {
                 setAssignedUsers([{
                     id: ticket.AssignedTo.Id,
@@ -171,6 +225,22 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         msGraphClientFactory: context.msGraphClientFactory,
     };
 
+    const handleDeleteClick = (): void => {
+        setShowDeleteConfirm(true);
+    };
+
+    const handleDeleteConfirm = async (): Promise<void> => {
+        setShowDeleteConfirm(false);
+        try {
+            await onDelete(ticketId);
+            // The parent component will handle navigation
+        } catch (error) {
+            setError('Failed to delete ticket. Please try again.');
+        }
+    };
+
+ 
+
     if (loading) {
         return (
             <div className={styles.view}>
@@ -193,13 +263,17 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         );
     }
 
+
     return (
         <div id="ticket-detail" className={styles.view}>
             <div className={styles.header}>
                 <h1>{ticket.Title}</h1>
-                <button className={styles.btn} onClick={onBack}>
-                    ← Back
-                </button>
+                <div className={styles.headerActions}>
+                    {isEditing && <span className={styles.editingIndicator}>Editing</span>}
+                    <button className={styles.btn} onClick={onBack}>
+                        ← Back
+                    </button>
+                </div>
             </div>
 
             <div className={styles.ticketDetail}>
@@ -209,7 +283,16 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                         <div className={styles.field}>
                             <label>Status:</label>
                             {isEditing ? (
-                                <Dropdown selectedKey={status} options={statusOptions} onChange={handleStatusChange} />
+                                <>
+                                    <Dropdown
+                                        key={`status-dropdown-${status}`}
+                                        selectedKey={status}
+                                        options={statusOptions}
+                                        onChange={handleStatusChange}
+                                        disabled={statusUpdating}
+                                    />
+                                    {statusUpdating && <Spinner size={SpinnerSize.small} style={{ marginLeft: 8 }} />}
+                                </>
                             ) : (
                                 <span className={`${styles.statusBadge} ${getStatusClassName(ticket.Status)}`}>
                                     {ticket.Status}
@@ -248,7 +331,11 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
 
                         <div className={styles.field}>
                             <label>Due Date:</label>
-                            <span>{formatDate(ticket.DueDate ? ticket.DueDate.toString() : undefined)}</span>
+                            <span>
+                                {ticket.DueDate
+                                    ? formatDate(ticket.DueDate.toString())
+                                    : 'Not specified'}
+                            </span>
                         </div>
                     </div>
 
@@ -336,10 +423,47 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                 </div>
 
                 <div className={styles.ticketActions}>
-                    <button className={styles.btn} onClick={() => setIsEditing(!isEditing)}>
-                        {isEditing ? 'Done Editing' : 'Edit Ticket'}
-                    </button>
+                    <DefaultButton onClick={onBack} text="Back" />
+                    {!isEditing && (
+                        <>
+                            <PrimaryButton onClick={() => setIsEditing(true)} text="Edit" />
+                            <DefaultButton
+                                onClick={handleDeleteClick}
+                                text="Delete"
+                                className={styles.deleteButton}
+                                iconProps={{ iconName: 'Delete' }}
+                            />
+                        </>
+                    )}
+                    {isEditing && (
+                        <>
+                            
+                            <DefaultButton onClick={() => setIsEditing(false)} text="Cancel" />
+                        </>
+                    )}
                 </div>
+
+                <Dialog
+                    hidden={!showDeleteConfirm}
+                    onDismiss={() => setShowDeleteConfirm(false)}
+                    dialogContentProps={{
+                        type: DialogType.normal,
+                        title: 'Delete Ticket',
+                        subText: 'Are you sure you want to delete this ticket? This action cannot be undone.'
+                    }}
+                >
+                    <DialogFooter>
+                        <PrimaryButton
+                            onClick={handleDeleteConfirm}
+                            text="Delete"
+                            className={styles.dangerButton}
+                        />
+                        <DefaultButton
+                            onClick={() => setShowDeleteConfirm(false)}
+                            text="Cancel"
+                        />
+                    </DialogFooter>
+                </Dialog>
             </div>
         </div>
     );

@@ -2,16 +2,27 @@ import * as React from 'react';
 import styles from '../TicketingDashboard.module.scss';
 import { ITicketItem } from '../../ITicketItem';
 import { format } from 'date-fns';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { SPFI } from '@pnp/sp';
 
 export interface IMyTicketsViewProps {
   tickets: ITicketItem[];
   onTicketSelect: (id: number) => void;
-  sp: SPFI
+  sp: SPFI;
+  loading: boolean;  // Add this property
+  context: WebPartContext;
+  currentUserId: number;
 }
 
-export const MyTicketsView: React.FC<IMyTicketsViewProps> = (props): React.ReactElement => {
-  const { tickets, onTicketSelect } = props;
+export const MyTicketsView: React.FC<IMyTicketsViewProps> = ({
+  tickets,
+  onTicketSelect,
+  loading,  // Include this in the destructuring
+  context,
+  currentUserId,
+}) => {
+  // Now you can use the loading prop in your component
+  // ...
 
   // Helper function to get status class
   const getStatusClassName = (status: string): string => {

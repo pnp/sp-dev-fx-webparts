@@ -465,6 +465,41 @@
   }
 }
 
+.deleteButton {
+  background-color: #f0f0f0;
+  color: #d83b01;
+  margin-left: auto;
+
+  &:hover {
+    background-color: #f9d6c4;
+    color: #a80000;
+  }
+}
+
+.dangerButton {
+  background-color: #d83b01;
+  color: white;
+
+  &:hover {
+    background-color: #a80000;
+  }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.editingIndicator {
+  background-color: #deecf9;
+  color: #0078d4;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 @media (max-width: 640px) {
   .ticketCard {
     flex-direction: column;

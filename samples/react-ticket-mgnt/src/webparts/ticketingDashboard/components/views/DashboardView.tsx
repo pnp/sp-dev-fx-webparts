@@ -2,14 +2,25 @@ import * as React from 'react';
 import styles from '../TicketingDashboard.module.scss';
 import { ITicketItem } from '../../ITicketItem';
 import { format } from 'date-fns';
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 
 export interface IDashboardViewProps {
   tickets: ITicketItem[];
   onTicketSelect: (id: number) => void;
+  loading: boolean;
+  context: WebPartContext;
+  currentUserId: number;
 }
 
-export const DashboardView: React.FC<IDashboardViewProps> = (props): React.ReactElement => {
-  const { tickets, onTicketSelect } = props;
+export const DashboardView: React.FC<IDashboardViewProps> = ({
+  tickets,
+  onTicketSelect,
+  loading,
+  context,
+  currentUserId
+}) => {
+  // Component implementation
 
   // Helper function to get status class
   const getStatusClassName = (status: string): string => {
@@ -90,3 +101,4 @@ export const DashboardView: React.FC<IDashboardViewProps> = (props): React.React
     </div>
   );
 };
+

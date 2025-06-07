@@ -161,4 +161,14 @@ export class TicketService {
         console.log('Data:', JSON.stringify(data, null, 2));
         console.groupEnd();
     }
+
+    public async deleteTicket(id: number, sp: SPFI): Promise<void> {
+        try {
+            console.log(`Deleting ticket ${id}`);
+            await sp.web.lists.getByTitle(this.listTitle).items.getById(id).delete();
+        } catch (error) {
+            console.error(`Error deleting ticket ${id}:`, error);
+            throw error;
+        }
+    }
 }
