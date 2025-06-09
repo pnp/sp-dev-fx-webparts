@@ -10,6 +10,7 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { PeoplePicker, PrincipalType } from '@pnp/spfx-controls-react/lib/PeoplePicker';
 import { TicketStatus } from '../TicketingDashboard';
 import { spfi, SPFx } from "@pnp/sp";
+import { IPeoplePickerUserItem } from '@pnp/spfx-controls-react/lib/PeoplePicker';
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
@@ -38,7 +39,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
     const [error, setError] = React.useState<string | undefined>(undefined);
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const [status, setStatus] = React.useState<string>('');
-    const [assignedUsers, setAssignedUsers] = React.useState<any[]>([]);
+    const [assignedUsers, setAssignedUsers] = React.useState<IPeoplePickerUserItem[]>([]);
     const [showDeleteConfirm, setShowDeleteConfirm] = React.useState(false); // Add this
     const [, setDueDate] = React.useState<string | undefined>(undefined); // Add dueDate state
     const [statusUpdating, setStatusUpdating] = React.useState<boolean>(false); // Add this near your other state declarations
@@ -59,9 +60,14 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                 if (ticketData.AssignedTo) {
                     // Always treat as object
                     setAssignedUsers([{
-                        id: ticketData.AssignedTo.Id,
+                        id: ticketData.AssignedTo.Id.toString(),
                         text: ticketData.AssignedTo.Title,
-                        email: ticketData.AssignedTo.Email || ''
+                        secondaryText: ticketData.AssignedTo.Email || '',
+                        loginName: ticketData.AssignedTo.LoginName || '',
+                        imageUrl: '', // You may set a real image URL if available
+                        imageInitials: ticketData.AssignedTo.Title ? ticketData.AssignedTo.Title.split(' ').map((n: string) => n[0]).join('') : '',
+                        tertiaryText: '',
+                        optionalText: ''
                     }]);
                 } else {
                     setAssignedUsers([]);
@@ -165,9 +171,15 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
             if (items.length > 0) {
                 const selectedUser = items[0];
                 const newAssignedUsers = [{
-                    id: selectedUser.id,
+                    id: selectedUser.id.toString(),
                     text: selectedUser.text || selectedUser.displayName,
-                    email: selectedUser.secondaryText || selectedUser.email || ''
+                    secondaryText: '',
+                    loginName:  '',
+                    imageUrl: '',
+                    imageInitials: selectedUser.text ? selectedUser.text.split(' ').map((n: string) => n[0]).join('') : '',
+                    tertiaryText: '',
+                    optionalText: ''
+                   
                 }];
 
                 setAssignedUsers(newAssignedUsers);
@@ -204,9 +216,14 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
 
             if (ticket.AssignedTo) {
                 setAssignedUsers([{
-                    id: ticket.AssignedTo.Id,
+                    id: ticket.AssignedTo.Id.toString(),
                     text: ticket.AssignedTo.Title,
-                    email: ticket.AssignedTo.Email || ''
+                    secondaryText: ticket.AssignedTo.Email || '',
+                    loginName: ticket.AssignedTo.LoginName || '',
+                    imageUrl: '',
+                    imageInitials: ticket.AssignedTo.Title ? ticket.AssignedTo.Title.split(' ').map((n: string) => n[0]).join('') : '',
+                    tertiaryText: '',
+                    optionalText: ''
                 }]);
             } else {
                 setAssignedUsers([]);

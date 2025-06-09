@@ -67,7 +67,7 @@ export const MyTicketsView: React.FC<IMyTicketsViewProps> = ({
 
       {tickets.length === 0 ? (
         <div className={styles.emptyState}>
-          <p>You don't have any assigned tickets.</p>
+          <p>You do not have any assigned tickets.</p>
         </div>
       ) : (
         tickets.map(ticket => (

@@ -95,7 +95,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
   }
 
   public componentDidMount(): void {
-    void this.loadTickets();
+    this.loadTickets().catch(err => console.error("Error loading tickets", err));
   }
 
   private loadTickets = async (): Promise<void> => {
@@ -133,7 +133,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
     this.setState({ currentView: id });
 
     if (id === 'dashboard' || id === 'my-tickets') {
-      void this.loadTickets();
+      this.loadTickets().catch(err => console.error("Error loading tickets", err));
     }
   }
 
@@ -168,7 +168,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
     const sp = spfi().using(SPFx(this.props.context));
     try {
       await this.state.ticketService.updateTicket(id, updates as ITicketFormData, sp);
-      void this.loadTickets();
+      this.loadTickets().catch(err => console.error("Error loading tickets", err));
       alert('Ticket updated successfully!');
       this.setState({ isLoading: false });
     } catch (error) {
@@ -191,7 +191,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
 
     try {
       await this.state.ticketService.deleteTicket(id, sp);
-      void this.loadTickets();
+      this.loadTickets().catch(err => console.error("Error loading tickets", err));
       this.setState({
         isLoading: false,
         currentView: 'dashboard' // Navigate back to dashboard
@@ -272,6 +272,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
             <NewTicketView
               onSubmit={this.handleFormSubmit}
               context={context}
+              onCancel={() => this.showView('dashboard')}
             />
           )}
 

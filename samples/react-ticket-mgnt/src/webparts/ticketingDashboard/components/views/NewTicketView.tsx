@@ -9,20 +9,30 @@ import {
   TicketRootCause
 } from '../TicketingDashboard';
 import { ITicketFormData } from '../ITicketFormData';
-import { PeoplePicker, PrincipalType } from '@pnp/spfx-controls-react/lib/PeoplePicker';
+import { IPeoplePickerUserItem, PeoplePicker, PrincipalType } from '@pnp/spfx-controls-react/lib/PeoplePicker';
 import { DateTimePicker, DateConvention } from '@pnp/spfx-controls-react/lib/DateTimePicker';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { SpinButton } from '@fluentui/react/lib/SpinButton';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+
+
+
 
 
 export interface INewTicketViewProps {
   onSubmit: (e: React.FormEvent, formData: ITicketFormData) => void;
-  context: any; // SharePoint context for PeoplePicker
+  onCancel: () => void;
+  context: WebPartContext; // SharePoint context for PeoplePicker
 }
 
 export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.ReactElement => {
   const { onSubmit, context } = props;
+  const peoplePickerContext = {
+    absoluteUrl: context.pageContext.web.absoluteUrl,
+    spHttpClient: context.spHttpClient,
+    msGraphClientFactory: context.msGraphClientFactory,
+  };
 
   // Basic fields
   const [subject, setSubject] = React.useState<string>('');
@@ -83,21 +93,27 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
   };
 
   // Helper function to convert enum to dropdown options
-  const enumToOptions = (enumObject: any): IDropdownOption[] => {
+  const enumToOptions = (enumObject: Record<string, string | number>): IDropdownOption[] => {
     return Object.keys(enumObject).map(key => ({
       key: enumObject[key],
-      text: enumObject[key]
+      text: enumObject[key].toString()
     }));
   };
 
+
   // PeoplePicker selection handler
-  const getPeoplePickerItems = (items: any[]): void => {
-    if (items && items.length > 0) {
-      setAssignedToId(items[0].id?.toString()); // Convert to string
+
+
+  const getPeoplePickerItems = (items: IPeoplePickerUserItem[]): void => {
+    if (items.length > 0 && items[0] && typeof items[0].text === 'string') {
+      //const picked = items[0].props.text;      // display name
+      const pickedId = items[0].id;      // numeric id
+      setAssignedToId(pickedId?.toString());
     } else {
       setAssignedToId(undefined);
     }
   };
+
 
   return (
     <div id="new-ticket" className={styles.view}>
@@ -148,13 +164,12 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
           <label htmlFor="assigned-to">Assigned To</label>
 
           <PeoplePicker
-            context={context}
+            context={peoplePickerContext}
             personSelectionLimit={1}
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000}
             onChange={getPeoplePickerItems}
             ensureUser={true}
-            showHiddenInUI={false}
             defaultSelectedUsers={[]}
             webAbsoluteUrl={context.pageContext.web.absoluteUrl}
           />
@@ -293,7 +308,7 @@ export const NewTicketView: React.FC<INewTicketViewProps> = (props): React.React
           <button
             className={`${styles.btn} ${styles.btnSecondary}`}
             type="button"
-            onClick={(): void => props.onSubmit(new Event('cancel') as any, {} as ITicketFormData)}
+            onClick={props.onCancel}
           >
             Cancel
           </button>
