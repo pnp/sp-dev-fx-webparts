@@ -89,8 +89,11 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
             }
         };
 
-        loadTicket();
-    }, [ticketId, ticketService, context]);
+            loadTicket().catch(err => {
+                console.error('Failed to load ticket details.', err);
+                
+            });
+        }, [ticketId, ticketService, context]);
 
     const formatDate = (dateString?: string): string => {
         if (!dateString) return 'Not specified';
@@ -164,7 +167,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
         }
     };
 
-    const handleAssignmentChange = async (items: any[]): Promise<void> => {
+    const handleAssignmentChange = async (items: IPeoplePickerUserItem[]): Promise<void> => {
         if (!ticket) return;
 
         try {
@@ -172,7 +175,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                 const selectedUser = items[0];
                 const newAssignedUsers = [{
                     id: selectedUser.id.toString(),
-                    text: selectedUser.text || selectedUser.displayName,
+                    text: selectedUser.text ||  '',
                     secondaryText: '',
                     loginName:  '',
                     imageUrl: '',
@@ -184,15 +187,15 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
 
                 setAssignedUsers(newAssignedUsers);
 
-                await onUpdate(ticket.Id, { assignedTo: selectedUser.id.toString() });
+                await onUpdate(ticket.Id, { assignedTo: typeof selectedUser.id === 'string' ? parseInt(selectedUser.id, 10) : selectedUser.id });
 
                 // Update the ticket object with the new assignment
                 setTicket({
                     ...ticket,
                     AssignedTo: {
-                        Id: selectedUser.id,
-                        Title: selectedUser.text || selectedUser.displayName,
-                        Email: selectedUser.secondaryText || selectedUser.email || ''
+                        Id: typeof selectedUser.id === 'string' ? parseInt(selectedUser.id, 10) : selectedUser.id,
+                        Title: selectedUser.text,
+                        Email: selectedUser.secondaryText || ''
                     }
                 });
 
@@ -252,7 +255,7 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
             await onDelete(ticketId);
             // The parent component will handle navigation
         } catch (error) {
-            setError('Failed to delete ticket. Please try again.');
+            setError('Failed to delete ticket. Please try again.' + error);
         }
     };
 

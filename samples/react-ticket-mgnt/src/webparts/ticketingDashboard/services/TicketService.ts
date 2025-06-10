@@ -89,17 +89,21 @@ export class TicketService {
         };
     }
 
-    public convertFormDataToUpdateObject(formData: ITicketFormData): any {
-        const updateObj: any = {};
+    public convertFormDataToUpdateObject(formData: ITicketFormData): ITicketItem {
+        const updateObj: ITicketItem = {
+            Id: 0,
+            Title: "",
+            Status: "",
+        };
 
         if (formData.subject !== undefined) updateObj.Title = formData.subject;
         if (formData.description !== undefined) updateObj.Description = formData.description;
         if (formData.priority !== undefined) updateObj.Priority = formData.priority;
         if (formData.status !== undefined) updateObj.Status = formData.status;
-        if (formData.dueDate !== undefined) updateObj.DueDate = formData.dueDate?.toISOString();
+        if (formData.dueDate !== undefined) updateObj.DueDate = formData.dueDate;
 
         if (formData.assignedTo !== undefined) {
-            updateObj.AssignedToId = formData.assignedTo ? parseInt(formData.assignedTo.toString()) : null;
+            updateObj.AssignedToId = formData.assignedTo ? parseInt(formData.assignedTo.toString()) : undefined;
         }
 
         if (formData.category !== undefined) updateObj.Category = formData.category;
@@ -116,8 +120,12 @@ export class TicketService {
         return updateObj;
     }
 
-    private prepareItemForSharePoint(data: Partial<ITicketFormData>): any {
-        const spItem: any = {};
+    private prepareItemForSharePoint(data: Partial<ITicketFormData>): ITicketItem {
+        const spItem: ITicketItem = {
+            Id: 0,
+            Title: "",
+            Status: "",
+        };
 
         if (data.subject !== undefined) spItem.Title = data.subject;
         if (data.description !== undefined) spItem.Description = data.description;
@@ -128,16 +136,16 @@ export class TicketService {
             if (data.assignedTo) {
                 spItem.AssignedToId = parseInt(data.assignedTo.toString());
             } else {
-                spItem.AssignedToId = null;
+                spItem.AssignedToId = undefined;
             }
         }
 
         if (data.dueDate !== undefined) {
-            spItem.DueDate = data.dueDate ? data.dueDate.toISOString() : null;
+            spItem.DueDate = data.dueDate ? data.dueDate : undefined;
         }
 
         if (data.resolutionDate !== undefined) {
-            spItem.ResolutionDate = data.resolutionDate ? data.resolutionDate.toISOString() : null;
+            spItem.ResolutionDate = data.resolutionDate ? (data.resolutionDate instanceof Date ? data.resolutionDate.toISOString() : data.resolutionDate) : undefined;
         }
 
         if (data.category !== undefined) spItem.Category = data.category;
@@ -156,7 +164,7 @@ export class TicketService {
         return spItem;
     }
 
-    private logOperation(operation: string, data: any): void {
+    private logOperation(operation: string, data: ITicketItem): void {
         console.group(`SharePoint ${operation} Operation`);
         console.log('Data:', JSON.stringify(data, null, 2));
         console.groupEnd();
