@@ -82,7 +82,7 @@ export default class TicketingDashboard extends React.Component<ITicketingDashbo
   constructor(props: ITicketingDashboardProps) {
     super(props);
 
-    const ticketService = new TicketService();
+    const ticketService = new TicketService(props.listName);
 
     this.state = {
       currentView: 'dashboard',

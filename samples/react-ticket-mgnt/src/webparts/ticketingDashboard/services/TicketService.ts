@@ -4,7 +4,11 @@ import { RegressionTestStatus, TicketCategory, TicketEnvironment, TicketPriority
 import { ITicketItem } from "../ITicketItem";
 
 export class TicketService {
-    private listTitle: string = "Tickets";
+    private listTitle: string;
+
+    constructor(listName: string = "Tickets") {
+        this.listTitle = listName;
+    }
 
     public async getTickets(sp: SPFI): Promise<ITicketItem[]> {
         try {

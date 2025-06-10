@@ -20,13 +20,13 @@ export interface ITicketingDashboardWebPartProps {
 }
 
 export default class TicketingDashboardWebPart extends BaseClientSideWebPart<ITicketingDashboardWebPartProps> {
-  
+
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
   public async onInit(): Promise<void> {
- 
-    
+
+
 
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
@@ -112,15 +112,13 @@ export default class TicketingDashboardWebPart extends BaseClientSideWebPart<ITi
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
                 PropertyPaneTextField('listName', {
-                  label: 'Ticket List Name',
-                  description: 'Name of the SharePoint list to use for tickets',
-                  value: this.properties.listName || 'Tickets'
+                  label: 'List Name',
+                  description: 'Enter the name of the SharePoint list to store tickets'
                 })
               ]
             }
