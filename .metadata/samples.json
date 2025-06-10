@@ -6067,6 +6067,54 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-copilot-aprils-fool",
+    "source": "pnp",
+    "title": "Copilot April's Fool",
+    "shortDescription": "An extention to privide a simple approach to display custom messages in SharePoint Online.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-copilot-aprils-fool",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-copilot-aprils-fool",
+    "longDescription": [
+      "An extention to privide a simple approach to display custom messages in SharePoint Online."
+    ],
+    "creationDateTime": "2025-03-23",
+    "updateDateTime": "2025-03-23",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png",
+        "alt": "Extension Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
     "source": "pnp",
     "title": "Dynamic Form with location picker",
@@ -9561,24 +9609,18 @@
     "authors": [
       {
         "gitHubAccount": "PopWarner",
-        "company": "Catapult Systems",
         "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4",
-        "name": "David Warner II",
-        "twitter": "PopWarner"
+        "name": "David Warner II"
       },
       {
         "gitHubAccount": "bcameron1231",
-        "company": "DMI",
         "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4",
-        "name": "Beau Cameron",
-        "twitter": "Beau__Cameron"
+        "name": "Beau Cameron"
       },
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       }
     ],
     "references": [
@@ -12688,6 +12730,55 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-carbon-footprint-calculator",
+    "source": "pnp",
+    "title": "Carbon Footprint Calculator",
+    "shortDescription": "This SharePoint Framework (SPFx) web part provides users with an interactive calculator to estimate their monthly carbon footprint.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carbon-footprint-calculator",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carbon-footprint-calculator",
+    "longDescription": [
+      "This SharePoint Framework (SPFx) web part provides users with an interactive calculator to estimate their monthly carbon footprint."
+    ],
+    "creationDateTime": "2025-05-08",
+    "updateDateTime": "2025-05-08",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "sample.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/jtlivio",
+        "pictureUrl": "https://github.com/jtlivio.png",
+        "name": "João LIVIO"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-carousel",
     "source": "pnp",
     "title": "Carousel Web Part",
@@ -13763,7 +13854,7 @@
       "For sample purpose, I have built a CoPilot agent which will summarize sessions at ESPC 2024, and Provides a concise summary of all sessions and topics covered at ESPC 2024, including key take aways and speakers insights."
     ],
     "creationDateTime": "2025-01-09",
-    "updateDateTime": "2025-01-10",
+    "updateDateTime": "2025-05-16",
     "products": [
       "SharePoint"
     ],
@@ -14826,27 +14917,27 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/joaojmendes",
+        "gitHubAccount": "joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes"
       },
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner"
       },
       {
-        "gitHubAccount": "https://github.com/sudharsank",
+        "gitHubAccount": "sudharsank",
         "pictureUrl": "https://github.com/sudharsank.png",
         "name": "Sudharsan Kesavanarayanan"
       },
       {
-        "gitHubAccount": "https://github.com/Abderahman88",
+        "gitHubAccount": "Abderahman88",
         "pictureUrl": "https://github.com/Abderahman88.png",
         "name": "Abderahman Moujahid"
       },
       {
-        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
       }
@@ -15573,7 +15664,7 @@
       "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries."
     ],
     "creationDateTime": "2025-04-27",
-    "updateDateTime": "2025-04-27",
+    "updateDateTime": "2025-05-04",
     "products": [
       "SharePoint"
     ],
@@ -15605,7 +15696,7 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
       },
@@ -17730,7 +17821,7 @@
       "This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date."
     ],
     "creationDateTime": "2021-09-17",
-    "updateDateTime": "2025-01-10",
+    "updateDateTime": "2025-05-26",
     "products": [
       "SharePoint"
     ],
@@ -17741,7 +17832,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       },
       {
         "key": "PNPCONTROLS",
@@ -19049,7 +19140,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -21609,7 +21700,7 @@
       "This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment."
     ],
     "creationDateTime": "2024-03-16",
-    "updateDateTime": "2024-11-01",
+    "updateDateTime": "2025-05-01",
     "products": [
       "SharePoint"
     ],
@@ -21620,7 +21711,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.2"
+        "value": "1.21.0"
       }
     ],
     "thumbnails": [
@@ -28305,6 +28396,62 @@
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-elevatedprivileges"
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-emp-recognition",
+    "source": "pnp",
+    "title": "rEmployee Recognition",
+    "shortDescription": "This SharePoint Framework (SPFx) web part enables organizations to celebrate employee achievements and contributions through a modern recognition system. Users can easily nominate colleagues for various types of recognition and engage with these recognitions through social reactions.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-emp-recognition",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-emp-recognition",
+    "longDescription": [
+      "This SharePoint Framework (SPFx) web part enables organizations to celebrate employee achievements and contributions through a modern recognition system. Users can easily nominate colleagues for various types of recognition and engage with these recognitions through social reactions."
+    ],
+    "creationDateTime": "2025-04-20",
+    "updateDateTime": "2025-04-20",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "Add recognition.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Add recognition.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "Recognitions.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Recognitions.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-sp-org-chart",

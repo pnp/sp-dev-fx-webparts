@@ -52,6 +52,7 @@
   overflow-y: auto;
   height: fit-content;
   padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
 }
 .imageContainer{
   display: flex;
@@ -62,4 +63,16 @@
   margin-top: 4px;
   cursor:pointer;
   margin-left: auto
+}
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.textEditorLoading {
+  animation: pulseOpacity 1.2s infinite alternate;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+  pointer-events: none;
 }
