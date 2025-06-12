@@ -4,9 +4,8 @@
 
 This **SharePoint webpart** is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.
 
-![New ticket](./assets/new%20ticket.png)
+![Ticket dashboard](./assets/ticket%20dashboard.png)  ![New ticket](./assets/new%20ticket.png)
 ![Ticket details](./assets/ticket%20details.png)
-![Ticket dashboard](./assets/ticket%20dashboard.png)
 
 ## Prerequisites
 
@@ -32,7 +31,7 @@ A SharePoint list to store the information should have the following columns:
  - Regression Test Status (Choice)
  - Release (Single line of text)
 
- Use can use the ![script](./script/ProvisionTicketList.ps1) to provision the list.
+ Use can use the [Powershell script](./script/ProvisionTicketList.ps1) to provision the list.
 
 ## Compatibility
 
