@@ -58,24 +58,18 @@
     "authors": [
       {
         "gitHubAccount": "PopWarner",
-        "company": "Catapult Systems",
         "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4",
-        "name": "David Warner II",
-        "twitter": "PopWarner"
+        "name": "David Warner II"
       },
       {
         "gitHubAccount": "bcameron1231",
-        "company": "DMI",
         "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4",
-        "name": "Beau Cameron",
-        "twitter": "Beau__Cameron"
+        "name": "Beau Cameron"
       },
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       }
     ],
     "references": [

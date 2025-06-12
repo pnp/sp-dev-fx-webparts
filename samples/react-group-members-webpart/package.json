@@ -1,6 +1,6 @@
 {
   "name": "group-members-web-part",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "engines": {
     "node": ">=18.17.1 <19.0.0"

@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import styles from './ImageGallery.module.scss';
 import { ImageGalleryProps } from './ImageGalleryProps';
 import { ImageGalleryState } from './ImageGalleryState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import spservices from '../../../../services/spservices';
-import Gallery from 'react-grid-gallery';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import RenderImage from '../RenderImage/RenderImage';
 import {
@@ -15,34 +14,27 @@ import {
   Label,
   Icon,
   DocumentCard,
-  DefaultButton,
   PrimaryButton,
   ImageFit,
   Image,
-  Dialog,
-  DialogType,
-  DialogFooter,
   ActionButton,
-  IButtonProps,
-  IconButton,
   CommandBarButton,
   ImageLoadState,
-  Panel, PanelType
+  Panel, PanelType,
+  FontSizes,
+  CommunicationColors
 
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { DisplayMode } from '@microsoft/sp-core-library';
-import { FontSizes, } from '@uifabric/fluent-theme/lib/fluent/FluentType';
-import { CommunicationColors } from '@uifabric/fluent-theme/lib/fluent/FluentColors';
 import * as strings from 'ImageGalleryWebPartStrings';
-import * as microsoftTeams from '@microsoft/teams-js';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+//import * as microsoftTeams from '@microsoft/teams-js';
+//import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'video-react/dist/video-react.css'; // import css
 import { Player, BigPlayButton } from 'video-react';
-import './carousel.scss';
+import  stylescarousel from './carousel.module.scss';
 import { IGalleryImages } from './IGalleryImages';
-import Slider from "react-slick";
+import Slider,{Settings as ISliderSettings} from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import * as $ from 'jquery';
@@ -57,7 +49,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
   private spService: spservices = null;
   private images: any;
   private galleryImages: IGalleryImages[] = [];
-  private _teamsContext: microsoftTeams.Context;
+  private _teamsContext: undefined | any = undefined;
   private _teamsTheme: string = '';
   private _carouselImages: any;
   private _slider: any = null;
@@ -68,11 +60,14 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
 
     this.spService = new spservices(this.props.context);
 
-    if (this.props.context.microsoftTeams) {
-      this.props.context.microsoftTeams.getContext(context => {
+    if (this.props.context.sdks.microsoftTeams) {
+      this.props.context.sdks.microsoftTeams.teamsJs.app.getContext().then(context => {
         this._teamsContext = context;
         console.log('ctt', this._teamsContext.theme);
         this.setState({ teamsTheme: this._teamsContext.theme });
+      }).catch((error) => {
+        
+        this.setState({ teamsTheme: 'default' });
       });
 
 
@@ -90,6 +85,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
       isloadingCarousel: false,
       carouselImages: [],
       autoplay: true,
+   
     };
 
     this.onPlayResume = this.onPlayResume.bind(this);
@@ -110,7 +106,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
    * @private
    * @memberof ImageGallery
    */
-  private async loadPictures() {
+  private async loadPictures():Promise<void> {
     this.setState({ isLoading: true, hasError: false });
     const tenantUrl = `https://${location.host}`;
     try {
@@ -147,10 +143,12 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
             thumbnailHeight: 180,
             caption: image.Title ? image.Title : image.File.Name,
             //  thumbnailCaption: image.File.Name,
-            customOverlay:
-              <Label style={{ fontSize: FontSizes.size18, bottom: 0, transition: '.5s ease', textAlign: 'center', width: '100%', position: 'absolute', background: 'rgba(0, 0, 0, 0.5)', color: '#f1f1f1', padding: '10px' }}>
-                {image.Title ? image.Title : image.File.Name}
-              </Label>
+            customOverlay: <Label style={{ fontSize: FontSizes.size18, bottom: 0, transition: '.5s ease', textAlign: 'center', width: '100%', position: 'absolute', background: 'rgba(0, 0, 0, 0.5)', color: '#f1f1f1', padding: '10px' }}>
+              {image.Title ? image.Title : image.File.Name}
+            </Label>,
+            src: image.File.ServerRelativeUrl,
+            width: 240,
+            height: 180
           },
         );
 
@@ -158,8 +156,8 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
 
         this._carouselImages = this.galleryImages.map((GalleryImage, i) => {
           return (
-            <div className='slideLoading'>
-              <div style={{}}  >
+            <div key={"cImg"+i} className={stylescarousel.slideLoading}>
+              <div>
                 <Label
                   style={{ fontSize: FontSizes.size18, textAlign: 'center', width: '100%', padding: '5px' }}>
                   <ActionButton
@@ -174,11 +172,11 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
                   </ActionButton>
                 </Label>
               </div>
-              {GalleryImage.mediaType == 'video' ?
-                <div >
+              {GalleryImage.mediaType === 'video' ?
+                <div style={{ width: '100%', height: '640px' }}>
                   <Player
                     poster={GalleryImage.imageUrl}
-                    style={{ width: '100%', height: '640px' }}
+                    
                   >
                     <BigPlayButton position="center" />
                     <source src={GalleryImage.ServerRelativeUrl}
@@ -191,7 +189,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
                     style={{ height: 'auto', overflow: 'hidden', maxHeight: '100%' }}
                     onLoadingStateChange={async (loadState: ImageLoadState) => {
                       console.log('imageload Status ' + i, loadState, GalleryImage.imageUrl);
-                      if (loadState == ImageLoadState.loaded) {
+                      if (loadState === ImageLoadState.loaded) {
                         this.setState({ isloadingCarousel: false });
                       }
                     }}
@@ -210,7 +208,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
     }
   }
 
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
 
     await this.loadPictures();
     this.setState({ images: this.galleryImages, carouselImages: this._carouselImages, isLoading: false, isloadingCarousel: false });
@@ -224,7 +222,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
    * @returns
    * @memberof ImageGallery
    */
-  public async componentDidUpdate(prevProps: ImageGalleryProps) {
+  public async componentDidUpdate(prevProps: ImageGalleryProps): Promise<void> {
 
     if (!this.props.list || !this.props.siteUrl) return;
     // Get  Properties change
@@ -243,28 +241,28 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
    * @private
    * @memberof ImageGallery
    */
-  private onConfigure() {
+  private onConfigure(): void {
     // Context of the web part
     this.props.context.propertyPane.open();
   }
 
-  private handleclick = event => {
+  private handleclick = (event:any):void => {
     const value = event.currentTarget.attributes.getNamedItem("data-i").value;
 
     this.setState({ showLithbox: true, photoIndex: Number(value), isloadingCarousel: true });
   }
 
-  private onNext = () => {
+  private onNext = ():void => {
     this._slider.slickNext();
   }
 
-  private onPrev = () => {
+  private onPrev = ():void => {
     this._slider.slickPrev();
   }
 
 
 
-  private async onPlayResume() {
+  private  onPlayResume():void {
     const { isPlaying } = this.state;
     if (isPlaying) {
       this._slider.slickPause();
@@ -276,7 +274,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
     });
   }
 
-  private onDialogClose = (ev: React.MouseEvent<HTMLButtonElement>) => {
+  private onDialogClose = (ev: React.MouseEvent<HTMLButtonElement>):void => {
     this.setState({ showLithbox: false });
   }
 
@@ -288,7 +286,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
    */
   public render(): React.ReactElement<ImageGalleryProps> {
     console.log('theme', this.state.teamsTheme);
-    const sliderSettings = {
+    const sliderSettings:ISliderSettings = {
       dots: false,
       infinite: true,
       speed: 500,
@@ -308,7 +306,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
       <div className={styles.container}>
         <div>
           {
-            this.state.teamsTheme == 'dark' ?
+            this.state.teamsTheme === 'dark' ?
               <Label style={{color:'white',  fontSize: FontSizes.size24}}>{this.props.title}</Label>
               :
               <WebPartTitle displayMode={this.props.displayMode}
@@ -334,7 +332,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
               this.state.isLoading ?
                 <Spinner size={SpinnerSize.large} label='loading images...' />
                 :
-                this.state.images.length == 0 ?
+                this.state.images.length === 0 ?
                   <div style={{ width: '300px', margin: 'auto' }}>
                     <Icon iconName="PhotoCollection"
                       style={{ fontSize: '250px', color: '#d9d9d9' }} />
@@ -344,9 +342,11 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
                   <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
                     {
                       this.state.images.map((item, i) => {
-                        let v: boolean = true;
+                        const v: boolean = true;
                         return (
+                        
                           <div
+                            key={"images"+i}
                             onClick={this.handleclick}
                             data-i={i}
                             id={i.toString()}
@@ -375,12 +375,13 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
 
                       <div style={{ marginBottom: 25, verticalAlign: 'Top', width: '100%' }}>
                         <Slider
+                        
                           ref={c => (this._slider = c)}
                           {...sliderSettings}
                           autoplay={this.state.autoplay}
                           onReInit={() => {
                             if (!this.state.isloadingCarousel)
-                              $(".slideLoading").removeClass("slideLoading");
+                              $(`.${stylescarousel.slideLoading}`).removeClass(stylescarousel.slideLoading);
 
                           }}
                         >
@@ -397,25 +398,22 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
                               allowDisabledFocus={true}
                               style={{ fontSize: FontSizes.size16, marginRight: '10px' }}
                               title='Prev'
-                              onClick={this.onPrev}>
-                            </CommandBarButton>
+                              onClick={this.onPrev} />
                             <CommandBarButton
                               iconProps={{ iconName: this.state.isPlaying ? 'Pause' : 'PlayResume', styles: { root: { fontSize: FontSizes.size18, padding: '10px', color: CommunicationColors.primary } } }}
                               allowDisabledFocus={true}
                               style={{ fontSize: FontSizes.size18, marginRight: '10px' }}
                               title={this.state.isPlaying ? 'Pause' : 'Play'}
-                              onClick={this.onPlayResume}>
-                            </CommandBarButton>
+                              onClick={this.onPlayResume} />
                             <CommandBarButton
                               iconProps={{ iconName: 'TriangleSolidRight12', styles: { root: { fontSize: FontSizes.size16, padding: '10px', color: CommunicationColors.primary } } }}
                               allowDisabledFocus={true}
                               style={{ fontSize: FontSizes.size16 }}
                               title='Next'
-                              onClick={this.onNext}>
-                            </CommandBarButton>
+                              onClick={this.onNext} />
                           </div>
                           :
-                          <Spinner size={SpinnerSize.large} label={'Loading...'} style={{ fontSize: FontSizes.size18, color: CommunicationColors.primary }}></Spinner>
+                          <Spinner size={SpinnerSize.large} label={'Loading...'} style={{ fontSize: FontSizes.size18, color: CommunicationColors.primary }} />
                       }
                     </Panel>
                   </div>

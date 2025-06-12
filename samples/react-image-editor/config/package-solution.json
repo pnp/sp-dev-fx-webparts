@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-image-editor-client-side-solution",
     "id": "e859f86f-7a12-40e3-94fb-97ee47419aed",
-    "version": "2.0.0.0",
+    "version": "2.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.20.0"
+      "mpnId": "Undefined-1.21.1"
     },
     "metadata": {
       "shortDescription": {

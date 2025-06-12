@@ -219,25 +219,18 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
       }
 
       // Pagination container styles
-      .paginationContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 24px;
-
-        .loadMoreButton {
-          min-width: 180px;
-        }
-
-        .paginationControls {
+        .paginationContainer {
           display: flex;
+          justify-content: center;  
           align-items: center;
-
+          gap: 12px;
+          margin: 10px;
+        
           .paginationText {
             margin: 0 16px;
             color: $sp-neutralSecondary;
           }
         }
-      }
     }
   }
 

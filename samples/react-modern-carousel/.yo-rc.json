@@ -7,12 +7,12 @@
     "componentName": "AwardRecognition",
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "18.18.2",
+    "nodeVersion": "22.15.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.20.0",
+    "version": "1.21.0",
     "libraryName": "award-recognition",
     "libraryId": "45e061b8-13f5-423f-bedb-12fc2a44fa89",
     "environment": "spo",
