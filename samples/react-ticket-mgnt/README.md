@@ -93,26 +93,40 @@ A SharePoint list to store the information should have the following columns:
 
 ## Features
 
-1. **Bookmark Management**:
-   - Add new bookmarks with a title, URL, and icon.
-   - The web part supports FluentUI icon names (<https://developer.microsoft.com/en-us/fluentui#/styles/web/icons>)
-   - Edit existing bookmarks to update their details.
-   - Delete bookmarks from the list.
+# Ticket Management
 
-2. **Grid Layout**:
-   - Displays bookmarks in a responsive grid layout.
-   - Each bookmark includes a title, icon, and link.
+## Core Features
+- Create, view, edit, and delete tickets  
+- Track ticket status and progress  
+- Assign tickets to team members  
 
-3. **Theming**:
-   - Supports **light** and **dark** themes for better user experience.
-   - Automatically adapts to the SharePoint site's theme.
+## Dashboard Views
+- All tickets overview  
+- Personal tickets view  
+- Detailed ticket view  
+- New ticket creation form  
 
-4. **SharePoint Integration**:
-   - Stores bookmarks in a SharePoint list.
-   - Uses PnP JS for seamless interaction with SharePoint APIs.
+## Rich Ticket Metadata
+- Priority levels  
+- Status tracking  
+- Categories  
+- Due dates  
+- Assignments  
 
-5. **User-Friendly UI**:
-   - Intuitive interface with a modal dialog for adding/editing bookmarks.
+## User Interface
+- Modern, responsive design  
+- Intuitive navigation  
+- Visual status indicators  
+- Mobile-friendly layout  
+
+## SharePoint Integration
+- Configurable list storage  
+- User permission management  
+- People picker integration  
+- Real-time updates  
+
+
+
 
 ## Help
 
