@@ -93,33 +93,33 @@ A SharePoint list to store the information should have the following columns:
 
 ## Features
 
-# Ticket Management
+### Ticket Management
 
-## Core Features
+#### Core Features
 - Create, view, edit, and delete tickets  
 - Track ticket status and progress  
 - Assign tickets to team members  
 
-## Dashboard Views
+#### Dashboard Views
 - All tickets overview  
 - Personal tickets view  
 - Detailed ticket view  
 - New ticket creation form  
 
-## Rich Ticket Metadata
+#### Rich Ticket Metadata
 - Priority levels  
 - Status tracking  
 - Categories  
 - Due dates  
 - Assignments  
 
-## User Interface
+#### User Interface
 - Modern, responsive design  
 - Intuitive navigation  
 - Visual status indicators  
 - Mobile-friendly layout  
 
-## SharePoint Integration
+#### SharePoint Integration
 - Configurable list storage  
 - User permission management  
 - People picker integration  
