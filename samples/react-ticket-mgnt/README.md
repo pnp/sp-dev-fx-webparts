@@ -62,7 +62,7 @@ A SharePoint list to store the information should have the following columns:
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.0|June 12, 2025|Initial release|
+|1.0|June 13, 2025|Initial release|
 
 ## Minimal Path to Awesome
 
