@@ -30692,6 +30692,69 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-themes"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-ticket-mgnt",
+    "source": "pnp",
+    "title": "Ticket Management App",
+    "shortDescription": "This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ticket-mgnt",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ticket-mgnt",
+    "longDescription": [
+      "This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests."
+    ],
+    "creationDateTime": "2025-06-13",
+    "updateDateTime": "2025-06-13",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "new ticket.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/new ticket.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "ticket dashboard.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/ticket dashboard.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "ticket details.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/ticket details.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-tiles",
     "source": "pnp",
     "title": "Tiles Web Part",
