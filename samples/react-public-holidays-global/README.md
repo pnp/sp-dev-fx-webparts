@@ -2,7 +2,7 @@
 
 ## Summary
 
-This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results, and visualize the total holidays across the last 4 years with a dynamic bar chart.
+This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results.
 
 The solution uses **React**, **Fluent UI**, and **Recharts** for a responsive, modern experience. It integrates with the [Nager.Date Public Holidays API](https://date.nager.at/) to retrieve holiday data in real time from the following endpoint structure:
 
