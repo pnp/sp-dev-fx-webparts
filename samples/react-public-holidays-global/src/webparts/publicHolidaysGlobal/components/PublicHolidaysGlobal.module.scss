@@ -1,0 +1,86 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.publicHolidaysGlobal {
+  background: "[theme:bodyBackground, default:#fff]";
+  color: "[theme:bodyText, default:#323130]";
+  color: var(--bodyText);
+  padding: 2em 1.5em;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  font-family: $ms-font-family-fallbacks;
+  max-width: 900px;
+  margin: 2em auto;
+  transition: box-shadow 0.2s;
+
+  @media (max-width: 600px) {
+    padding: 1em 0.5em;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.holidaysTable {
+  width: 100%;
+  margin-top: 1.2em;
+  border-collapse: collapse;
+  background: "[theme:bodyBackground, default:#fff]";
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  font-size: 1em;
+  border-radius: 12px;
+  overflow: hidden;
+
+  th, td {
+    padding: 0.7em 1.1em;
+    text-align: left;
+    border-bottom: 1px solid "[theme:neutralLight, default:#e1e1e1]";
+    transition: background 0.2s;
+  }
+  th {
+    background: "[theme:neutralLighterAlt, default:#f3f2f1]";
+    color: "[theme:bodyText, default:#323130]";
+    font-weight: 600;
+    font-size: 1.06em;
+    border-top: 2px solid "[theme:themePrimary, default:#03787c]";
+    letter-spacing: 0.02em;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  tr:nth-child(even) td {
+    background: "[theme:neutralLighter, default:#faf9f8]";
+  }
+  tr:hover td {
+    background: "[theme:themeLighterAlt, default:#e5f6fa]";
+  }
+}
+
+.statusMessage {
+  color: "[theme:themePrimary, default:#03787c]";
+  font-weight: 500;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.errorMessage {
+  color: "[theme:errorText, default:#a4262c]";
+  background: "[theme:errorBackground, default:#f5d6d7]";
+  border-left: 4px solid "[theme:error, default:#a4262c]";
+  padding: 1em;
+  border-radius: 6px;
+  margin-top: 1em;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(164,38,44,0.07);
+}
+
+@media (max-width: 600px) {
+  .holidaysTable th, .holidaysTable td {
+    padding: 0.5em 0.3em;
+    font-size: 0.95em;
+  }
+}
