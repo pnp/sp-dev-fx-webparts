@@ -25935,6 +25935,60 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-provision-assets"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-public-holidays-global",
+    "source": "pnp",
+    "title": "Public Holidays Global",
+    "shortDescription": "Displays public holidays for multiple countries and years.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+    "longDescription": [
+      "This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results."
+    ],
+    "creationDateTime": "2025-06-17",
+    "updateDateTime": "2025-06-17",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "sample.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/jtlivio",
+        "pictureUrl": "https://github.com/jtlivio.png",
+        "name": "João Livio"
+      },
+      {
+        "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
+        "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
+        "name": "Create a new issue"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
     "source": "pnp",
     "title": "Questions and Answers Web Part",
