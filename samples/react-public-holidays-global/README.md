@@ -6,13 +6,13 @@ This SharePoint Framework (SPFx) web part displays public holidays for multiple 
 
 The solution uses **React**, **Fluent UI**, and **Recharts** for a responsive, modern experience. It integrates with the [Nager.Date Public Holidays API](https://date.nager.at/) to retrieve holiday data in real time from the following endpoint structure:
 
-```
+```https
 https://date.nager.at/api/v3/PublicHolidays/{year}/{countryCode}
 ```
 
 Example for Portugal 2025:
 
-```
+```https
 https://date.nager.at/api/v3/PublicHolidays/2025/PT
 ```
 
@@ -97,7 +97,5 @@ This sample is community-supported. For questions or issues:
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.**
-
----
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-public-holidays-global" alt="Visitor stats"/>
