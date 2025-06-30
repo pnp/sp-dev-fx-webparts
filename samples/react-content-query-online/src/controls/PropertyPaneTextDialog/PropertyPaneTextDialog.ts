@@ -18,8 +18,8 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
 
   /*****************************************************************************************
    * Property pane's contructor
-   * @param targetProperty 
-   * @param properties 
+   * @param targetProperty
+   * @param properties
    *****************************************************************************************/
   constructor(targetProperty: string, properties: IPropertyPaneTextDialogProps) {
     this.targetProperty = targetProperty;
@@ -62,6 +62,7 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
       stateKey: new Date().toString()
     });
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(textDialog, elem);
   }
 

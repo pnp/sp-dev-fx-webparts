@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "react-azure-openai-connector",
+    "libraryId": "8825f8b6-a323-4c34-abf5-29009d24a929",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-azure-openai-connector",
+    "solutionShortDescription": "react-azure-openai-connector description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

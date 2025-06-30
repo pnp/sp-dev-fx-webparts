@@ -2,11 +2,11 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.16.0",
-    "nodeVersion": "16.17.0",
+    "version": "1.17.2",
+    "nodeVersion": "16.20.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.4.1"
+      "@microsoft/teams-js": "2.9.1"
     },
     "libraryName": "react-fluentui-9",
     "libraryId": "d955a989-7441-475a-b4eb-ff132968b3c5",

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "SPFx Community call 28. July 2023",
+  "steps": [
+    {
+      "file": "src/Hooks/UseObject.ts",
+      "description": "Building a hook that avoids me having to use the spread operator every time I need to update just a single property",
+      "line": 6
+    },
+    {
+      "file": "src/webparts/jsonForm/components/Fields/Field.tsx",
+      "description": "Here is an example of using the exposed method without spreading the rest of the state object",
+      "line": 26
+    },
+    {
+      "file": "src/webparts/jsonForm/components/Fields/Field.tsx",
+      "description": "Rendering the entire form (in \"fill\" mode) is less than 100 lines of code, how cool is that? ",
+      "line": 97
+    },
+    {
+      "file": "src/Util/Util.ts",
+      "description": "Default generation of \"Id\" can be overwritten in the property pane",
+      "line": 8
+    },
+    {
+      "file": "src/webparts/jsonForm/JsonFormWebPart.ts",
+      "description": "Initializing the Context API in react",
+      "line": 25
+    },
+    {
+      "file": "src/webparts/jsonForm/JsonFormWebPart.ts",
+      "description": "Creating the \"outer\" shell",
+      "line": 33
+    },
+    {
+      "file": "src/webparts/jsonForm/components/JsonForm.tsx",
+      "description": "Fetching a value from it",
+      "line": 26
+    },
+    {
+      "file": "src/webparts/jsonForm/components/JsonForm.tsx",
+      "description": "Using that value, this can be many components deep without a problem, avoids prop drilling",
+      "line": 41
+    },
+    {
+      "file": "src/webparts/jsonForm/components/JsonForm.tsx",
+      "description": "Using the DisplayMode property to determine if we're in view or edit mode on the SharePoint page",
+      "line": 54
+    }
+  ]
+}

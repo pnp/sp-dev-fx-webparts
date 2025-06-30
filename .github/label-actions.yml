@@ -41,17 +41,19 @@ status:wrong-author:
   comment: |+
     ## Wrong or missing contributor @mentions
 
-    Thank you for your submission, but you appear to have forgotten to @mention the sample contributor(s).
+    Thank you for your submission, but you appear to have forgotten to @mention the sample author(s).
 
-    To help increase your chances of getting assistance from the original contributors of the sample, you should make sure to @mention the actual contributors (and not the repository maintainers).
+    To help increase your chances of getting assistance from the original authors of the sample, you should make sure to @mention the actual authors (and not the repository maintainers). 
 
-    Please note that the sample contributors will not get notified about this issue unless you update this issue accordingly.    
+    Make sure to include the `@` character before the GitHub username so that the author(s) get notified; using the person's name is not going to work.
 
-    You can find the contributors of each sample in the sample's `README.md`, under the aptly-named **Contributors** section.
+    Please note that the sample authors will not get notified about this issue unless you update this issue accordingly.    
+
+    You can find the author(s) of each sample in the sample's `README.md`, under **Solution**.
 
     We'll automatically close this issue in 7 days unless you update the issue.
 
-    For more information on how to create a good issue, refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)  
+    For more information on how to create a good issue, refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
 
   # Close the issue
   close: false
@@ -69,3 +71,55 @@ status:node-compatibility:
 
   # Close the issue
   close: true
+
+
+# Dealing with people asking for app packages
+status:app-package-request:
+  # Post a comment
+  comment: |+
+    ## Requests for packaged solutions
+
+    Thank you for reaching out! Please note that the samples in this repository are intended solely for educational purposes. Unfortunately, we are unable to provide a built or packaged solution.
+    
+    For your safety and security, we strongly advise against downloading or installing any packaged solutions from the internet without thoroughly reviewing their contents first. Additionally, please ensure to consult your organization’s security guidelines before employing any samples from this repository in a production environment.
+    
+    For more detailed information, please review our [support guidelines](https://github.com/pnp/sp-dev-fx-webparts/blob/main/SUPPORT.md).
+
+    Feel free to open a new issue if you'd like to request for help building the solution. Make sure to provide all the requested information so that we can help you as quickly as possible.
+    
+    We appreciate your understanding and cooperation!
+
+  # Close the issue
+  close: true
+
+  # Dealing with people asking for app packages
+status:spfx-doctor:
+  # Post a comment
+  comment: |+
+    ## No SPFx Doctor information
+    Thank you for reaching out! Unfortunately, we cannot proceed further without information from SPFx doctor to diagnose potential dependency issues with your enviroment and/or project.
+
+    Follow [the steps](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples#run-spfx-doctor) listed in [troubleshooting issues with samples](https://github.com/pnp/sp-dev-fx-webparts/wiki/Troubleshooting-issues-with-samples)
+
+    Feel free to open a new issue with the full SPFx doctor results. Make sure to provide all the requested information so that we can help you as quickly as possible.
+    
+    We appreciate your understanding and cooperation!
+
+  # Close the issue
+  close: true
+
+# First time contributors
+first-time-contributor:
+    comment: |+
+      ## First-Time Contributor
+
+      Thank you for your contribution! It looks like that you are a first-time contributor in this repository.
+
+      Did you know that you are eligible for the PnP Recognition program, and that your submission will qualify for a badge :-) ?
+      
+      All you need to do is to register at https://pnp.github.io/recognitionprogram. Once you are registered, we'll automatically assign contribution badges for qualifying contributions.
+
+      We hope to see more contributions from you in the future!!!
+
+    # Don't close
+    close: false

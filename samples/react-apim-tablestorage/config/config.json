@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "azure-apim-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/azureApim/AzureApimWebPart.js",
+          "manifest": "./src/webparts/azureApim/AzureApimWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AzureApimWebPartStrings": "lib/webparts/azureApim/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

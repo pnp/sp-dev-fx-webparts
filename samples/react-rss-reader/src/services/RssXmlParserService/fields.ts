@@ -44,7 +44,7 @@ export class Fields {
     'comments',
   ];
 
-  public static mapItunesField(f) {
+  public static mapItunesField(f: string) : any {
     return ['itunes:' + f, f];
   }
 

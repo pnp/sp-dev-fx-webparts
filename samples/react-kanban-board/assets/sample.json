@@ -3,13 +3,13 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-kanban-board",
     "source": "pnp",
     "title": "Kanban Board Web part",
-    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks.",
+    "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using Fluent UI. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
     "longDescription": [
-      "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks."
+      "This solution contains an SPFx web part which shows a Kanban board. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks."
     ],
     "creationDateTime": "2020-07-02",
-    "updateDateTime": "2020-07-02",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.13.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -36,7 +36,25 @@
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanofficeUI.gif",
-        "alt": "Kanban Board Web part"
+        "alt": "Kanban Board Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg1.png",
+        "alt": "Kanban Board Web part configuration of a bucket"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg2.png",
+        "alt": "Kanban Board Web part item View"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanimg3.png",
+        "alt": "Kanban Board Web part task list selection and status column order as bucket"
       }
     ],
     "authors": [
@@ -50,13 +68,13 @@
       {
         "gitHubAccount": "westerdaled",
         "company": "Westerdale Solutions Ltd",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/937208?s=460\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/937208?s=460&v=4",
         "name": "Daniel Westerdale",
         "twitter": "westerdaled"
       },
       {
         "gitHubAccount": "petkir",
-        "company": "Cubido Business Solutions GmbH",
+        "company": "ACP CUBIDO Digital Solutions GmbH",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
@@ -64,7 +82,7 @@
       {
         "gitHubAccount": "AJIXuMuK",
         "company": "Sharepointalist",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460\u0026u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460&u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f&v=4",
         "name": "Alex Terentiev",
         "twitter": "alexaterentiev"
       }
@@ -80,6 +98,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board"
   }
 ]

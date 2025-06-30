@@ -16,7 +16,7 @@ export class RssHttpClientService {
   /*
   initialize the static class
   */
-  public static async init(context: WebPartContext) {
+  public static async init(context: WebPartContext): Promise<void> {
 
     //obtain the httpClient from the webpart context
     this._httpClient = await context.httpClient;
@@ -30,9 +30,9 @@ export class RssHttpClientService {
 
   public static async getRssJson(url: string, corsProxyUrl: string, disableCors: boolean): Promise<any> {
 
-    var p = new Promise<string>(async (resolve, reject) => {
+    const p = new Promise<string>(async (resolve, reject) => {
 
-      let requestHeaders = new Headers();
+      const requestHeaders = new Headers();
 
       //if Cors is disabled, then we must send a simple Accept type
       if (!disableCors) {
@@ -49,7 +49,7 @@ export class RssHttpClientService {
         mode: !disableCors ? "cors" : "no-cors"
       };
 
-      let query = this._httpClient.fetch(
+      const query = this._httpClient.fetch(
         corsProxyUrl ? RssHttpClientService.processCorsProxyUrl(url, corsProxyUrl) : url,
         HttpClient.configurations.v1,
         requestGetOptions)
@@ -93,9 +93,9 @@ export class RssHttpClientService {
   */
   public static async getRssXml(url: string, corsProxyUrl: string, disableCors: boolean): Promise<any> {
 
-    var p = new Promise<string>(async (resolve, reject) => {
+    const p = new Promise<string>(async (resolve, reject) => {
 
-      let requestHeaders = new Headers();
+      const requestHeaders = new Headers();
       requestHeaders.append('Accept', 'text/xml; application/xml');
 
       //set up get options
@@ -105,7 +105,7 @@ export class RssHttpClientService {
         mode: !disableCors ? "cors" : "no-cors"
       };
 
-      let query = this._httpClient.fetch(
+      const query = this._httpClient.fetch(
         corsProxyUrl ? RssHttpClientService.processCorsProxyUrl(url, corsProxyUrl) : url,
         HttpClient.configurations.v1,
         requestGetOptions)

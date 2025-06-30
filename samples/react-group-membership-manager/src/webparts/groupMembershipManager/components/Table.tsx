@@ -1,4 +1,4 @@
-import { TableColumnDefinition, createTableColumn, TableRowId, useTableFeatures, useTableSelection, TableHeader, TableRow, Table, TableSelectionCell, TableHeaderCell, TableBody, TableCell, TableCellLayout } from "@fluentui/react-components/unstable";
+import { TableColumnDefinition, createTableColumn, TableRowId, useTableFeatures, useTableSelection, TableHeader, TableRow, Table, TableSelectionCell, TableHeaderCell, TableBody, TableCell, TableCellLayout } from "@fluentui/react-components";
 import * as React from 'react';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import SPFxPeopleCard from "./SPFxPeopleCard";

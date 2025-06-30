@@ -4,25 +4,27 @@
 
 > **NOTE:** This web part was built with SPFx 1.11.0, making it only compatible with SharePoint Online. If you wish, you can use [an earlier version of this web part](../react-content-query-onprem/README.md) which is compatible on-premises versions of SharePoint.
 
-The **Content Query web part** is a modern version of the good old **Content by Query web part** that was introduced in SharePoint 2007. Built for Office 365, this modern version is built using the **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. 
+The **Content Query web part** is a modern version of the good old **Content by Query web part** that was introduced in SharePoint 2007. Built for Office 365, this modern version is built using the **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices.
 
 While the original web part was based on an **XSLT** templating engine, this *React* web part is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerful **HTML** templates for rendering the queried content. This new version also lets the user query *any site collections* which resides on the same domain URL, add *unlimited filters*, query `DateTime` fields to the *nearest minute* rather than being limited to a day, and much more.
 
 ![Web Part Preview](assets/toolpart.gif)
 
-
 ## Compatibility
 
 | :warning: Important          |
 |:---------------------------|
-| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
+![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to content")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
@@ -38,6 +40,7 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 * [Paolo Pialorsi](https://github.com/PaoloPia)
 * [Simon-Pierre Plante](https://github.com/spplante)
 * [Abderahman Moujahid](https://github.com/Abderahman88)
+* [Chris Lizon](https://github.com/ChrisLizon)
 
 ## Version history
 
@@ -46,8 +49,8 @@ Version|Date|Comments
 1.0.0|May 04, 2017|Initial release
 1.0.1|July 23rd 15, 2017|Updated to GA Version
 1.0.3|August 12, 2017|Added external scripts functionality
-1.0.4|August 31, 2017|Fixed a bug where tenant sites/sub-sites were missing from the **Web Url** dropdown
-1.0.5|September 1st, 2017|Added a **Site Url** parameter next to the **Web Url** parameter in order to narrow down the results
+1.0.4|August 31, 2017|Fixed a bug where tenant sites/sub-sites were missing from the **Web URL** dropdown
+1.0.5|September 1st, 2017|Added a **Site URL** parameter next to the **Web URL** parameter in order to narrow down the results
 1.0.6|September 19, 2017|Upgraded to SharePoint drop 1.2.0 and added the site URL and web URL preselection when adding the web part for the first time on a page. Also fixed a bug with fields that had spaces in their internal names (automatically replaced with `_x0020_` by SharePoint).
 1.0.7|November 17, 2017|Reverted to drop 1.1.0 in order to keep compatibility for SP2016 on-premise
 1.0.8|March 17, 2018|Updated to store the selected list using its ID instead of its title, so the web part keeps working if the list title gets updated.
@@ -65,7 +68,7 @@ Version|Date|Comments
 
 ### Global dependencies
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 Requires Gulp globally installed:
 
@@ -81,14 +84,17 @@ Download & install all dependencies, build, bundle & package the project
 # download & install dependencies
 npm install
 
+#If you receive an error Cannot find module 'worker_threads' you will need to tell Node 10 to use the experiemental worker features via environment variable. In Powershell this is accomplished like this:
+$env:NODE_OPTIONS="--experimental-worker" 
+
 # transpile all TypeScript & SCSS => JavaScript & CSS
 gulp build
 
 # create component bundle & manifest
-gulp bundle
+gulp bundle --ship
 
 # create SharePoint package
-gulp package-solution
+gulp package-solution --ship
 ```
 
 These commands produce the following:
@@ -285,7 +291,6 @@ Property | Description
 `{{MyField.jsonValue}}`  | Returns a JSON object value of the field. For example, an *Image* field JSON value would return a JSON object which contains the `serverRelativeUrl` property
 `{{MyField.personValue}}`  | Returns an object value of a person field. The `personValue` property provides `email`, `displayName` and `image` properties. The `image` property contains `small`, `medium`, and `large` properties, each of which pointing to the profile image URL for the small, medium, and large profile images.
 
-
 ##### Handlebars
 
 ```handlebars
@@ -341,7 +346,6 @@ If you need custom logic files that can interact precisely **before** or **after
 
 ```javascript
 ReactContentQuery.ExternalScripts.MyScriptFile = {
-	
     onPreRender: function(wpContext, handlebarsContext) {
         // Do something before rendering (ie: adding a custom block helper)
     },
@@ -349,7 +353,6 @@ ReactContentQuery.ExternalScripts.MyScriptFile = {
     onPostRender: function(wpContext, handlebarsContext) {
         // Do something after rendering (ie: calling a plugin on the generated HTML)
     }
-    
 }
 ```
 
@@ -426,7 +429,6 @@ If you have a SharePoint list containing a user field (like a **Created By** or 
 
 For example, to use the `mgt-person` component with a person field called `MyPersonField`, you would use the following template:
 
-
 ```handlebars
 <mgt-person person-query="{{MyPersonField.personValue.email}}" view="twoLines"></mgt-person>
 ```
@@ -495,10 +497,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-content-query-online&template=question.yml&sample=react-content-query-online&authors=@YOURGITHUBUSERNAME&title=react-content-query-online%20-%20).
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-query-online" />

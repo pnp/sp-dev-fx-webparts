@@ -1,13 +1,20 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.10.0",
     "libraryName": "react-image-gallery",
     "libraryId": "cff1f832-50fb-4a72-bb4e-1393121dc4ad",
     "environment": "spo",
     "packageManager": "npm",
     "framework": "react",
+    "plusBeta": false,
     "isCreatingSolution": true,
+    "nodeVersion": "18.20.3",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
     "isDomainIsolated": false,
+    "version": "1.20.0",
+    "solutionName": "react-image-gallery",
     "componentType": "webpart"
   }
 }

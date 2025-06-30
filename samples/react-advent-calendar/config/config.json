@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "advent-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/adventCalendar/AdventCalendarWebPart.js",
+          "manifest": "./src/webparts/adventCalendar/AdventCalendarWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AdventCalendarWebPartStrings": "lib/webparts/adventCalendar/loc/{locale}.js"
+  }
+}

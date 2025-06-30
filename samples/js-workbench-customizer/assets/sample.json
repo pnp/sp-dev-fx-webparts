@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-workbench-customizer",
     "source": "pnp",
-    "title": "Workbench customizer",
+    "title": "Workbench customizer Web Part",
     "shortDescription": "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-workbench-customizer",
     "longDescription": [
       "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page."
     ],
     "creationDateTime": "2020-11-02",
-    "updateDateTime": "2020-11-02",
+    "updateDateTime": "2023-12-21",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.18.2"
       }
     ],
     "thumbnails": [
@@ -42,8 +42,7 @@
         "gitHubAccount": "joelfmrodrigues",
         "company": "Storm Technology",
         "pictureUrl": "https://github.com/joelfmrodrigues.png",
-        "name": "Joel Rodrigues",
-        "twitter": "joelfmrodrigues"
+        "name": "Joel Rodrigues"
       }
     ],
     "references": [
@@ -52,6 +51,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-workbench-customizer"
   }
 ]

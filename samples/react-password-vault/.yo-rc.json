@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.16.1",
+    "libraryName": "sp-fx-app-dev-simple-password-vault",
+    "libraryId": "d091b369-f63d-459c-846e-5a4323e31745",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "nodeVersion": "16.19.0",
+    "sdkVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    }
+  }
+}

@@ -11,8 +11,8 @@ import {
 } from '@microsoft/sp-property-pane';
 
 import * as strings from 'CalendarWebPartStrings';
-import Calendar from './components/Calendar';
-import { ICalendarProps } from './components/ICalendarProps';
+import Calendar from './components/Calendar/Calendar';
+import { ICalendarProps } from './components/Calendar/ICalendarProps';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention, IDateTimeFieldValue } from '@pnp/spfx-property-controls/lib/PropertyFieldDateTimePicker';
 
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
@@ -88,10 +88,6 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   /**

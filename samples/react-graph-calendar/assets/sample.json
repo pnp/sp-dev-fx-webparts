@@ -9,7 +9,7 @@
       "This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.)."
     ],
     "creationDateTime": "2020-11-06",
-    "updateDateTime": "2020-11-06",
+    "updateDateTime": "2024-09-12",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.19.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -54,15 +54,13 @@
     "authors": [
       {
         "gitHubAccount": "sebastienlevert",
-        "company": "Microsoft",
         "pictureUrl": "https://github.com/sebastienlevert.png",
-        "name": "S\u00E9bastien Levert",
+        "name": "Sébastien Levert",
         "twitter": "sebastienlevert"
       },
       {
         "gitHubAccount": "Abderahman88",
-        "company": "",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
       }
     ],
@@ -77,6 +75,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-calendar"
   }
 ]

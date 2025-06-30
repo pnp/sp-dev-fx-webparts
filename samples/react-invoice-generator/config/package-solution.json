@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "invoice-generator-client-side-solution",
+    "id": "05e5868d-2b90-44ba-82ea-0fcbd66b925a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "InvoiceGenerator description"
+      },
+      "longDescription": {
+        "default": "InvoiceGenerator description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "invoice-generator Feature",
+        "description": "The feature that activates elements of the invoice-generator solution.",
+        "id": "e3e60b93-71d8-40c7-95c7-ff734b818ef5",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/invoice-generator.sppkg"
+  }
+}

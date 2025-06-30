@@ -23,18 +23,16 @@ To change the profile or to use your own API follow the below path
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-
 ## Used SharePoint Framework Version
 
 ![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
 
 ## Applies to
 
-- [PnPjs V3](https://pnp.github.io/pnpjs/)
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 
@@ -45,6 +43,8 @@ To change the profile or to use your own API follow the below path
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | March 07, 2023   | Initial release  |
+| 1.1     | May 16, 2023   | Minor update  |
+
 
 ## Minimal path to awesome
 

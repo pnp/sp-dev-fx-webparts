@@ -16,21 +16,22 @@ build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not came
  ********************************************************************************************/
 build.configureWebpack.mergeConfig({
   additionalConfiguration: (generatedConfiguration) => {
-    generatedConfiguration.resolve.alias = { handlebars: 'handlebars/dist/handlebars.min.js' };
+    generatedConfiguration.resolve.fallback = {
+      fs: false, // Use "false" as fs cannot be polyfilled for browser environments
+      stream: require.resolve('stream-browserify'),
+      timers: require.resolve('timers-browserify'),
+      readline: false 
+    };
 
-    generatedConfiguration.module.rules.push(
-      {
-        test: /utils\.js$/,
-        loader: 'unlazy-loader',
-        include: [
-            /node_modules/,
-        ]
-      }
-    );
+    generatedConfiguration.resolve.alias = {
+      handlebars: 'handlebars/dist/handlebars.min.js'
+    };
 
-    generatedConfiguration.node = {
-      fs: 'empty'
-    }
+    generatedConfiguration.module.rules.push({
+      test: /utils\.js$/,
+      loader: 'unlazy-loader',
+      include: [/node_modules/]
+    });
 
     const lastDirName = path.basename(__dirname);
     const dropPath = path.join(__dirname, 'temp', 'stats');
@@ -46,5 +47,18 @@ build.configureWebpack.mergeConfig({
     return generatedConfiguration;
   }
 });
+
+
+
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
+
+  result.set('serve', result.get('serve-deprecated'));
+
+  return result;
+};
+
+// build.tslintCmd.enabled = false;
 
 build.initialize(gulp);

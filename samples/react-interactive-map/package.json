@@ -30,7 +30,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
     "@microsoft/rush-stack-compiler-3.9": "0.4.47",
-    "@microsoft/sp-build-web": "1.14.0",
+    "@microsoft/sp-build-web": "1.18.0",
     "@microsoft/sp-module-interfaces": "1.14.0",
     "@microsoft/sp-tslint-rules": "1.14.0",
     "@types/leaflet": "^1.7.9",
@@ -40,6 +40,6 @@
     "ajv": "~5.2.2",
     "babel-loader": "^8.2.3",
     "gulp": "~4.0.2",
-    "spfx-fast-serve-helpers": "~1.14.0"
+    "spfx-fast-serve-helpers": "~1.18.1"
   }
 }

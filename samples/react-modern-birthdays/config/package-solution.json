@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-birthdays-client-side-solution",
     "id": "caf83914-77f3-470c-b71c-21d8820c48a9",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

@@ -48,7 +48,11 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
 
   protected async onInit(): Promise<void> {
     await super.onInit();
-    sp.setup(this.context);
+
+    sp.setup({
+      spfxContext: this.context as any
+    }
+    );
   }
 
   public constructor() {
@@ -89,12 +93,12 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
         </div>
       </div>`;
     var self = this;
+    this.pageurl = this.context.pageContext.legacyPageContext.serverRequestPath;
     if (this.properties.enableAttachments) {
       await this.helper.getDocLibInfo();
       this.postAttachmentPath = await this.helper.getPostAttachmentFilePath(this.pageurl);
       this.pageFolderExists = await this.helper.checkForPageFolder(this.postAttachmentPath);
     }
-    this.pageurl = this.context.pageContext.legacyPageContext.serverRequestPath;
     this.currentUserInfo = await this.helper.getCurrentUserInfo();
     this.siteUsers = await this.helper.getSiteUsers(self.currentUserInfo.ID);
     require(['jquery', './js/jquery-comments.min'], (jQuery, comments) => {
@@ -259,7 +263,7 @@ export default class PageCommentsWebPart extends BaseClientSideWebPart<IPageComm
                   orderBy: PropertyFieldListPickerOrderBy.Title,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  context: this.context,
+                  context: this.context as any,
                   onGetErrorMessage: this.checkForDocumentLibrary.bind(this),
                   deferredValidationTime: 0,
                   key: 'docLibFieldId',

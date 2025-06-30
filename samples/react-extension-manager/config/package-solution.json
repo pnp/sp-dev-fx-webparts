@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "tenant-wide-extension-manager-client-side-solution",
+    "id": "6306e257-de7e-4884-b27f-9338b86b15fd",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Tenant Wide Extension Manager description"
+      },
+      "longDescription": {
+        "default": "Tenant Wide Extension Manager description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "tenant-wide-extension-manager Feature",
+        "description": "The feature that activates elements of the tenant-wide-extension-manager solution.",
+        "id": "ea8b7725-3b09-4a82-bdcb-6d6af31137a1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/tenant-wide-extension-manager.sppkg"
+  }
+}

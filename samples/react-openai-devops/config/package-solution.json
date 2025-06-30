@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O3C-OpenAI DevOps",
+    "id": "9639232e-a86e-406c-8d73-cab01892ee5c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "o3c-openai-devops description"
+      },
+      "longDescription": {
+        "default": "o3c-openai-devops description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O3C-OpenAI DevOps Feature",
+        "description": "The feature that activates elements of the O3C-OpenAI DevOps solution.",
+        "id": "fc371c00-5641-4fcf-8875-4be239c71e70",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Azure DevOps",
+        "scope": "user_impersonation"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o3c-openai-devops.sppkg"
+  }
+}

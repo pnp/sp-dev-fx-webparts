@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "o-3-c-azure-apim",
+    "libraryId": "57102b15-17aa-4b28-86f6-eceffda7bcec",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "o3c-azure-apim",
+    "solutionShortDescription": "o3c-azure-apim description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

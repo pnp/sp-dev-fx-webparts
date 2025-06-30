@@ -1,0 +1,11 @@
+{
+    "name": "github-actions-scripts",
+    "version": "1.0.0",
+    "description": "Merge all sample.json files into one",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+    }
+}

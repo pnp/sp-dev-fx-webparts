@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-personal-apps",
     "source": "pnp",
-    "title": "My Personal Apps",
+    "title": "My Personal Apps Web Part",
     "shortDescription": "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-personal-apps",
     "longDescription": [
       "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access."
     ],
     "creationDateTime": "2020-04-28",
-    "updateDateTime": "2020-04-28",
+    "updateDateTime": "2025-01-13",
     "products": [
       "SharePoint"
     ],
@@ -126,7 +126,7 @@
         "gitHubAccount": "joaojmendes",
         "company": "Storm Technology Ltd",
         "pictureUrl": "https://github.com/joaojmendes.png",
-        "name": "Jo\u00E3o Mendes",
+        "name": "João Mendes",
         "twitter": "joaojmendes"
       },
       {
@@ -134,6 +134,12 @@
         "company": "",
         "pictureUrl": "https://github.com/zachroberts8668.png",
         "name": "Zach Roberts"
+      },
+      {
+        "gitHubAccount": "gretchunkim",
+        "company": "",
+        "pictureUrl": "https://github.com/gretchunkim.png",
+        "name": "Azores"
       }
     ],
     "references": [
@@ -152,6 +158,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-personal-apps"
   }
 ]

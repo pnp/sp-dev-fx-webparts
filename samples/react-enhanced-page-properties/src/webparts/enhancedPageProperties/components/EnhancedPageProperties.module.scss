@@ -1,0 +1,46 @@
+.enhancedPageProperties {
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 18px;
+  }
+
+  .content {
+    display: grid;
+    gap: 20px;
+
+    .item {
+      h3 {
+        font-size: 17px;
+        font-weight: 300;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .choice {
+        display: flex;
+        gap: 5px;
+      }
+
+      span {
+        background-color: #fafafa;
+        padding: 8px 13px;
+        display: block;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+
+        &.errorMessage {
+          background-color: #fce100;
+          font-style: italic;
+        }
+
+        &.errorMessage:hover {
+          background-color: #fce100;
+        }
+      }
+    }
+  }
+}

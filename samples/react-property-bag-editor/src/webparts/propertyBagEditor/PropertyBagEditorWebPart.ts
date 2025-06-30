@@ -2,12 +2,8 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version, UrlQueryParameterCollection } from "@microsoft/sp-core-library";
 
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from "@microsoft/sp-webpart-base";
-
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import * as strings from "propertyBagEditorStrings";
 import PropertyBagEditor from "./components/PropertyBagEditor";
 import { IPropertyBagEditorProps } from "./components/IPropertyBagEditorProps";
@@ -15,7 +11,7 @@ import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps
 import utils from "../shared/utils";
 
 /**
- *  This webpart is used to edit the properties of a Rootweb. 
+ *  This webpart is used to edit the properties of a Rootweb.
  *  The web to be edited is passed in by the SiteUrl Property. If not set, the Current site is used
  * @export
  * @class PropertyBagEditorWebPart
@@ -25,13 +21,13 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
 
 
   /**
-   * Renders the component. If no siteUrl is present on the currnt url, the current site is 
+   * Renders the component. If no siteUrl is present on the currnt url, the current site is
    * passed in as the siteUrl Property.
-   * 
-   *  converts the propertiesToEdit from a new-line (\n) separated string to an array of 
+   *
+   *  converts the propertiesToEdit from a new-line (\n) separated string to an array of
    * strings to be passed to the component.
-   * 
-   * 
+   *
+   *
    * @memberOf PropertyBagEditorWebPart
    */
   public render(): void {
@@ -50,6 +46,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
       props
     );
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(element, this.domElement);
   }
 

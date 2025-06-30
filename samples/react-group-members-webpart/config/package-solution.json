@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "group-members-web-part-client-side-solution",
+    "id": "7cdc593f-2944-47b9-88b3-3c30dd7faf42",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Nicolas Kheirallah, Nirav Raval",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Group Members Web Part - Discover and interact with Microsoft 365 group members"
+      },
+      "longDescription": {
+        "default": "A comprehensive web part to view, search, and interact with group members using Microsoft Graph integration"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": ["Microsoft Graph", "User Management", "Collaboration"]
+    },
+    "features": [
+      {
+        "title": "Group Members Web Part Feature",
+        "description": "Enables advanced group member discovery and interaction",
+        "id": "78280172-6af6-49ee-8121-801b0d3a30bd",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Presence.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/group-members-web-part.sppkg"
+  }
+}

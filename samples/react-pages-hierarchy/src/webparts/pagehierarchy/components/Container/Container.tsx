@@ -10,7 +10,10 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { TreeLayout } from '../Layouts/TreeLayout';
 
 export const Container: React.FunctionComponent<IContainerProps> = props => {
-  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, props.treeFrom, props.treeExpandTo);
+  // Use props.treeFrom / treeExpandTo value from settings only in display mode "tree"
+  const treeFrom = (props.pagesToDisplay === PagesToDisplay.Tree) ? props.treeFrom : undefined;
+  const treeExpandTo = (props.pagesToDisplay === PagesToDisplay.Tree) ? props.treeExpandTo : undefined;
+  const pagesApi = usePageApi(props.currentPageId, props.pageEditFinished, props.context, treeFrom, treeExpandTo);
   let controlToRender = undefined;
   switch (props.pagesToDisplay) {
     case PagesToDisplay.Ancestors:
@@ -36,18 +39,13 @@ export const Container: React.FunctionComponent<IContainerProps> = props => {
 
   // if the parent page column was never created or it was deleted force them to recreate it
   if (!pagesApi.state.parentPageColumnExists) {
-    var description = strings.ParentPageMissing_Placeholder_Description;
-    if(!pagesApi.state.userCanManagePages) {
-      description = strings.ParentPageMissing_Placeholder_Description_NoPermissions;
-    }
-
     controlToRender =
       <div>
         <Placeholder
           iconName='FieldRequired'
           hideButton={!pagesApi.state.userCanManagePages}
           iconText={strings.ParentPageMissing_Placeholder_IconText}
-          description={description}
+          description={!pagesApi.state.userCanManagePages ? strings.ParentPageMissing_Placeholder_Description_NoPermissions : strings.ParentPageMissing_Placeholder_Description}
           buttonLabel={strings.ParentPageMissing_Placeholder_ButtonLabel}
           onConfigure={pagesApi.addParentPageField} />
       </div>;

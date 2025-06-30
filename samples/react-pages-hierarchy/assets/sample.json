@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy",
     "source": "pnp",
-    "title": "Page Hierarchy",
+    "title": "Page Hierarchy Web Part",
     "shortDescription": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy",
     "longDescription": [
       "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
     ],
     "creationDateTime": "2020-04-30",
-    "updateDateTime": "2023-03-29",
+    "updateDateTime": "2024-10-12",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
@@ -39,7 +39,7 @@
       {
         "gitHubAccount": "bogeorge",
         "company": "ThreeWill",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460\u0026u=74d23f4289cd555aa530e1c2c6156a382c373f2f\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460&u=74d23f4289cd555aa530e1c2c6156a382c373f2f&v=4",
         "name": "Bo George",
         "twitter": "bo_george"
       },
@@ -50,9 +50,19 @@
         "twitter": "techienickb"
       },
       {
-          "gitHubAccount": "ruslan-s",
-          "name": "ruslan-s",
-          "pictureUrl": "https://github.com/ruslan-s.png"
+        "gitHubAccount": "ruslan-s",
+        "name": "ruslan-s",
+        "pictureUrl": "https://github.com/ruslan-s.png"
+      },
+      {
+        "gitHubAccount": "SlowRobot",
+        "name": "SlowRobot",
+        "pictureUrl": "https://github.com/SlowRobot.png"
+      },
+      {
+        "gitHubAccount": "tmaestrini",
+        "name": "Tobias Maestrini",
+        "pictureUrl": "https://github.com/tmaestrini.png"
       }
     ],
     "references": [
@@ -66,6 +76,7 @@
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy"
   }
 ]

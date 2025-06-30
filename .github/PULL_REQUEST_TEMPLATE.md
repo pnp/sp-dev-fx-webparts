@@ -4,18 +4,36 @@
 
 > To submit a pull request with multiple authors, make sure that at least one commit is a co-authored commit by adding a `Co-authored-by:` trailer to the commit's message. E.g.: `Co-authored-by: name <name@example.com>`
 
-|        Q        |                    A                    |
-| --------------- | --------------------------------------- |
-| Bug fix?        | no - yes?                               |
-| New feature?    | no - yes?                               |
-| New sample?     | no - yes?                               |
-| Related issues? | fixes #X, partially #Y, mentioned in #Z |
+> Put an `x` in all the items that apply (`[x]`, no spaces between the `[`, the `x`, and the `]` ), make notes next to any that haven't been addressed.
+
+- [ ] New sample
+- [ ] Bug fix/update
+- [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
+
 
 ## What's in this Pull Request?
 
 > Please describe the changes in this PR. Sample description or details around bugs which are being fixed.
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
+
+## Node Version
+> (Use `node -v` to get the version of Node you used to build this sample)
+
+Node version used:
+
+## Checklist
+
+> This checklist is used to automatically pre-process your pull request; It is meant to help process pull requests in a timely manner, rather than hoops to jump through.
+> 
+> Put an `x` in all the items that apply (`[x]`, no spaces between the `[`, the `x`, and the `]` ). Make notes next to any that haven't been addressed.
+
+- [ ] My pull request affects only ONE sample.
+- [ ] My sample builds without any warnings
+- [ ] I have updated the `README.md` file's **Version history**. For new samples, created a new `README.md` file matching [this template](templates/README-template.md)
+- [ ] My `README.md` has at least one static high-resolution screenshot (i.e. not a GIF) located in the `assets` folder.
+- [ ] My `README.md` contains complete setup instructions, including pre-requisites and permissions required
+- [ ] My solution includes a `.nvmrc` file indicating the version of Node.js
 
 ## Submitter Guidance (DELETE AFTER READING)
 > 
@@ -26,6 +44,7 @@
 > *Please target your PR to `main` branch.*
 >
 > *Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.*
+>
 > _(DELETE THIS SECTION AFTER READING)_
 
 

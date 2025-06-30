@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.20.0",
+    "libraryName": "modern-calendar",
+    "libraryId": "c2a397d3-8c8f-47ab-b731-897178313c15",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "sdkVersions": {
+    "@microsoft/teams-js": "2.24.0",
+        "@microsoft/microsoft-graph-client": "3.0.2"
+      },
+    "nodeVersion": "18.18.0"
+    }
+}

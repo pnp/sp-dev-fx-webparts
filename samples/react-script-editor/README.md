@@ -1,7 +1,7 @@
 
-# Script editor web part for modern pages built in React
+# Script editor web part for modern pages
 
-This version works only for SharePoint Online. If you want a version for Sharepoint on-premises go to [react-script-editor-onprem](../react-script-editor-onprem).
+This version works only for SharePoint Online. If you want a version for SharePoint on-premises go to [react-script-editor-onprem](../react-script-editor-onprem).
 
 **It's important you read and understand the notes on [deployment](#deploy-to-non-script-sites--modern-team-sites).**
 
@@ -130,7 +130,7 @@ By default this web part is not allowed on no-script sites, as it allows executi
 
 If you however want to allow the web part for non-script sites like Office 365 Group modern team sites you have to edit `ScriptEditorWebPart.manifest.json` with the following change:
 
-```
+```json
 "requiresCustomScript": false
 ```
 
@@ -138,7 +138,7 @@ If you however want to allow the web part for non-script sites like Office 365 G
 
 By default you have to install this web part per site collection where you want it available. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
 
-```
+```json
 "skipFeatureDeployment": true
 ```
 
@@ -153,8 +153,8 @@ In order to make it available to absolutely all sites you need apply the *Deploy
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18 ](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -171,6 +171,9 @@ This sample is optimally compatible with the following environment configuration
 
 * [Mikael Svenson](https://github.com/wobba) 
 * [Felix Bohnacker](https://github.com/felixbohnackerfelixbohnacker)
+* [salascz](https://github.com/salascz)
+* [Waldek Mastykarz](https://github.com/waldekmastykarz)
+* [Luccas Castro](https://github.com/devpio)
 
 ## Version history
 
@@ -198,11 +201,15 @@ Version|Date|Comments
 1.0.19.0|August 31, 2022|Added support for section background color
 1.0.20.0|October 10, 2022|Added sample html/script with self-executing function
 1.0.21.0|March 11, 2023|Bump dependencies to allow react-script-editor to build under SPFx 1.16.1
-
+1.0.22.0|April 24, 2023|Added support for script in external template 
+1.0.23.0|September 7, 2023|Upgrade to SPFx 1.17.4
+1.0.24.0|March 8, 2024|Upgrade to SPFx 1.18.2
+1.0.25.0|September 25, 2024|Upgrade to SPFx 1.19.0, added support for audience targeting using SharePoint Groups, Entra Groups and individuals.
+1.0.26.0|October 1, 2024|Upgrade to SPFx 1.20.0
 
 ## Minimal Path to Awesome
 
-### Local testing
+### Testing
 
 * Clone this repository
 * In the command line run:
@@ -236,11 +243,11 @@ You can try looking at [issues related to this sample](https://github.com/pnp/sp
 
 You can also try looking at [discussions related to this sample](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=react-script-editor) and see what the community is saying.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-script-editor&template=bug-report.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-script-editor&template=bug-report.yml&sample=react-script-editor&authors=@wobba%20@salascz%20@felixbohnacker&title=react-script-editor%20-%20).
 
-For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-script-editor&template=question.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-script-editor&template=question.yml&sample=react-script-editor&authors=@wobba%20@salascz%20@felixbohnacker&title=react-script-editor%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-script-editor&template=question.yml&sample=react-script-editor&authors=@wobba&title=react-script-editor%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-script-editor&template=question.yml&sample=react-script-editor&authors=@wobba%20@salascz%20@felixbohnacker&title=react-script-editor%20-%20).
 
 ## Disclaimer
 

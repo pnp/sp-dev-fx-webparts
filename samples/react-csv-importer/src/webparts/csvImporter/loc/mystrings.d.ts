@@ -1,9 +1,14 @@
 declare interface ICsvImporterWebPartStrings {
   PropertyPaneDescription: string;
+  BasicGroupName: string;
+  AdvancedGroupName: string;
   PropertyPaneTextFieldTitleLabel: string;
   PropertyFieldListPickerLabel: string;
+  PropertyPaneToggleLabel: string;
   PropertyPaneToggleShowListText: string;
   PropertyPaneToggleHideListText: string;
+  PropertyPaneChunkSizeLabel: string;
+  PropertyPaneChunkSizeDescription: string;
   PlaceholderIconText: string;
   PlaceholderDescription: string;
   PlaceholderButtonLabel: string;

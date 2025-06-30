@@ -1,29 +1,15 @@
-import { html } from               'common-tags';
-import * as Handlebars from        'handlebars';
-
-import                             'core-js/modules/es7.array.includes.js';
-import                             'core-js/modules/es6.string.includes.js';
-import                             'core-js/modules/es6.number.is-nan.js';
-
-import templateStyles from         './BaseTemplateService.module.scss';
+import { html } from 'common-tags';
+import * as Handlebars from 'handlebars';
+import templateStyles from './BaseTemplateService.module.scss';
+import { format } from 'date-fns';  // For date formatting
+import * as _ from 'lodash';
 
 abstract class BaseTemplateService {
-    private _helper = null;
-    public CurrentLocale = "en";
+    public CurrentLocale: string = "en";
 
     constructor() {
-        // Registers all helpers
+        // Register custom helpers
         this.registerTemplateServices();
-    }
-
-    private async LoadHandlebarsHelpers() {
-        let component = await import(
-            /* webpackChunkName: 'search-handlebars-helpers' */
-            'handlebars-helpers'
-        );
-        this._helper = component({
-            handlebars: Handlebars
-        });
     }
 
     /**
@@ -40,7 +26,7 @@ abstract class BaseTemplateService {
                     <a href="{{channel/item/link}}" target="_blank">{{channel/item/title}}</a>
                 </div>
                 <div class="itemDate">
-                    {{getDate channel/item/pubDate "MM/DD/YYYY"}}
+                    {{getDate channel/item/pubDate "MM/dd/yyyy"}}
                 </div>
                 <div class="itemContent">
                     {{{getShortText channel/item/description 100 true}}}
@@ -74,7 +60,7 @@ abstract class BaseTemplateService {
                                     <div class="ms-Grid-col ms-sm12">
                                         <span class="primaryText"><a href="{{channel/item/link}}">{{channel/item/title}}</a></span>
                                         <span class="secondaryText">{{{getShortText channel/item/description 100 true}}}</span>
-                                        <span class="dateText">{{getDate channel/item/pubDate "MM/DD/YYYY"}}</span>
+                                        <span class="dateText">{{getDate channel/item/pubDate "MM/dd/yyyy"}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -95,240 +81,85 @@ abstract class BaseTemplateService {
     /**
      * Registers useful helpers for search results templates
      */
-    private registerTemplateServices() {
-        // Return the URL or Title part of a URL automatic managed property
-        // <p>{{getUrlField MyLinkOWSURLH "Title"}}</p>
+    private registerTemplateServices(): void {
+        // Register a helper for URL field extraction
         Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title") => {
-            let separatorPos = urlField.indexOf(",");
-            if (value === "URL") {
-                return urlField.substr(0, separatorPos);
-            }
-            return urlField.substr(separatorPos + 1).trim();
+            const separatorPos = urlField.indexOf(",");
+            return value === "URL" ? urlField.substring(0, separatorPos) : urlField.substring(separatorPos + 1).trim();
         });
 
-        // Return the formatted date according to current locale using moment.js
-        // <p>{{getDate Created "LL"}}</p>
-        Handlebars.registerHelper("getDate", (date: string, format: string) => {
-          try {
-              let d = this._helper.moment(date, format, { lang: this.CurrentLocale, datejs: false });
-              return d;
-          } catch (error) {
-              return;
-          }
+        // Register a date formatting helper using date-fns
+        Handlebars.registerHelper("getDate", (date: string, formatPattern: string) => {
+            return format(new Date(date), formatPattern); // Adjusts date format using date-fns
         });
 
-        // Get the first maxLength characters from a string
-        // <p>{{getShortText Description 100}}</p>
+        // Register a helper for getting a substring
         Handlebars.registerHelper("getShortText", (inputString: string, maxLength: number, ignoreHtml: boolean) => {
-          if (!inputString || inputString.length < 1) {
-            return "";
-          }
+            if (!inputString) return "";
 
-          //remove Html tags if necessary
-          if (ignoreHtml) {
-            let div = document.createElement("div");
-            div.innerHTML = inputString;
-            inputString = (div.textContent || div.innerText || "").replace(/\&nbsp;/ig, "").trim();
-          }
+            if (ignoreHtml) {
+                const div = document.createElement("div");
+                div.innerHTML = inputString;
+                inputString = (div.textContent || div.innerText || "").replace(/&nbsp;/g, "").trim();
+            }
 
-          if (inputString.length < maxLength) {
-            return inputString;
-          }
-          else {
-            return inputString.substr(0, maxLength).trim() + "...";
-          }
+            return inputString.length <= maxLength ? inputString : `${inputString.slice(0, maxLength)}...`;
         });
     }
+
+    private registerHandlebarsHelpers():void {
+        // Lodash-based helpers
+        Handlebars.registerHelper('after', (arr, n) => _.after(n, arr));
+        Handlebars.registerHelper('filter', (arr, predicate) => _.filter(arr, predicate));
+        Handlebars.registerHelper('first', arr => _.first(arr));
+        Handlebars.registerHelper('forEach', (arr, fn) => _.forEach(arr, fn));
+        Handlebars.registerHelper('isArray', value => _.isArray(value));
+        Handlebars.registerHelper('join', (arr, separator) => _.join(arr, separator));
+        Handlebars.registerHelper('last', arr => _.last(arr));
+        Handlebars.registerHelper('lengthEqual', (arr, length) => _.size(arr) === length);
+        Handlebars.registerHelper('map', (arr, fn) => _.map(arr, fn));
+        Handlebars.registerHelper('sort', arr => _.sortBy(arr));
+        Handlebars.registerHelper('sum', arr => _.sum(arr));
+        Handlebars.registerHelper('truncate', (str, length) => _.truncate(str, { length }));
+        Handlebars.registerHelper('capitalize', str => _.capitalize(str));
+        Handlebars.registerHelper('camelCase', str => _.camelCase(str));
+        Handlebars.registerHelper('toUpper', str => _.toUpper(str));
+        Handlebars.registerHelper('toLower', str => _.toLower(str));
+
+        // Native JS-based helpers
+        Handlebars.registerHelper('encodeURI', str => encodeURI(str));
+        Handlebars.registerHelper('decodeURI', str => decodeURI(str));
+        Handlebars.registerHelper('toFixed', (num, digits) => Number(num).toFixed(digits));
+
+        // Custom helpers
+        Handlebars.registerHelper('add', (a, b) => a + b);
+        Handlebars.registerHelper('subtract', (a, b) => a - b);
+        Handlebars.registerHelper('multiply', (a, b) => a * b);
+        Handlebars.registerHelper('divide', (a, b) => a / b);
+    }
+
 
     /**
      * Compile the specified Handlebars template with the associated context object¸
      * @returns the compiled HTML template string
      */
     public async processTemplate(templateContext: any, templateContent: string): Promise<string> {
-        // Process the Handlebars template
-        const handlebarFunctionNames = [
-            "getDate",
-            "after",
-            "arrayify",
-            "before",
-            "eachIndex",
-            "filter",
-            "first",
-            "forEach",
-            "inArray",
-            "isArray",
-            "itemAt",
-            "join",
-            "last",
-            "lengthEqual",
-            "map",
-            "some",
-            "sort",
-            "sortBy",
-            "withAfter",
-            "withBefore",
-            "withFirst",
-            "withGroup",
-            "withLast",
-            "withSort",
-            "embed",
-            "gist",
-            "jsfiddle",
-            "isEmpty",
-            "iterate",
-            "length",
-            "and",
-            "compare",
-            "contains",
-            "gt",
-            "gte",
-            "has",
-            "eq",
-            "ifEven",
-            "ifNth",
-            "ifOdd",
-            "is",
-            "isnt",
-            "lt",
-            "lte",
-            "neither",
-            "or",
-            "unlessEq",
-            "unlessGt",
-            "unlessLt",
-            "unlessGteq",
-            "unlessLteq",
-            "moment",
-            "fileSize",
-            "read",
-            "readdir",
-            "css",
-            "ellipsis",
-            "js",
-            "sanitize",
-            "truncate",
-            "ul",
-            "ol",
-            "thumbnailImage",
-            "i18n",
-            "inflect",
-            "ordinalize",
-            "info",
-            "bold",
-            "warn",
-            "error",
-            "debug",
-            "_inspect",
-            "markdown",
-            "md",
-            "mm",
-            "match",
-            "isMatch",
-            "add",
-            "subtract",
-            "divide",
-            "multiply",
-            "floor",
-            "ceil",
-            "round",
-            "sum",
-            "avg",
-            "default",
-            "option",
-            "noop",
-            "withHash",
-            "addCommas",
-            "phoneNumber",
-            "random",
-            "toAbbr",
-            "toExponential",
-            "toFixed",
-            "toFloat",
-            "toInt",
-            "toPrecision",
-            "extend",
-            "forIn",
-            "forOwn",
-            "toPath",
-            "get",
-            "getObject",
-            "hasOwn",
-            "isObject",
-            "merge",
-            "JSONparse",
-            "parseJSON",
-            "pick",
-            "JSONstringify",
-            "stringify",
-            "absolute",
-            "dirname",
-            "relative",
-            "basename",
-            "stem",
-            "extname",
-            "segments",
-            "camelcase",
-            "capitalize",
-            "capitalizeAll",
-            "center",
-            "chop",
-            "dashcase",
-            "dotcase",
-            "hyphenate",
-            "isString",
-            "lowercase",
-            "occurrences",
-            "pascalcase",
-            "pathcase",
-            "plusify",
-            "reverse",
-            "replace",
-            "sentence",
-            "snakecase",
-            "split",
-            "startsWith",
-            "titleize",
-            "trim",
-            "uppercase",
-            "encodeURI",
-            "decodeURI",
-            "urlResolve",
-            "urlParse",
-            "stripQuerystring",
-            "stripProtocol"
-        ];
+        // Register helpers only once
+        if (!Handlebars.helpers.after) this.registerHandlebarsHelpers();
 
-        for (let i = 0; i < handlebarFunctionNames.length; i++) {
-            const element = handlebarFunctionNames[i];
-
-            let regEx = new RegExp("{{#?.*?" + element + ".*?}}", "m");
-            if (regEx.test(templateContent)) {
-                await this.LoadHandlebarsHelpers();
-                break;
-            }
-        }
-
-        let template = Handlebars.compile(templateContent);
-        let result = template(templateContext);
-
-        return result;
+        // Compile and execute template
+        const template = Handlebars.compile(templateContent);
+        return template(templateContext);
     }
 
-    /**
-     * Verifies if the template fiel path is correct
-     * @param filePath the file path string
-     */
     public static isValidTemplateFile(filePath: string): boolean {
-
-        let path = filePath.toLowerCase().trim();
-        let pathExtension = path.substring(path.lastIndexOf('.'));
-        return (pathExtension == '.htm' || pathExtension == '.html');
+        const path = filePath.toLowerCase().trim();
+        const extension = path.substring(path.lastIndexOf('.'));
+        return extension === '.htm' || extension === '.html';
     }
 
     public abstract getFileContent(fileUrl: string): Promise<string>;
-
     public abstract ensureFileResolves(fileUrl: string): Promise<void>;
 }
 
 export default BaseTemplateService;
-

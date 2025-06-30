@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
@@ -16,7 +17,7 @@ export interface IPropertyPaneBucketConfig {
 
 export interface IPropertyPaneBucketConfigInternal extends IPropertyPaneBucketConfig {
     targetProperty: string;
-    onRender(elem: HTMLElement, ctx, changeCallback): void;
+    onRender(elem: HTMLElement, ctx:any, changeCallback:(targetProperty: string, value: any) => void): void;
     onDispose(elem: HTMLElement): void;
     onChanged(targetProperty: string, value: IKanbanBucket): void;
 }
@@ -44,7 +45,7 @@ class PropertyPaneBucketConfigBuilder implements IPropertyPaneField<IPropertyPan
         this.properties.onDispose = this.dispose;
     }
 
-    private render(elem: HTMLElement, ctx?, changeCallback?: (targetProperty: string, value: any) => void): void {
+    private render(elem: HTMLElement, ctx?:any, changeCallback?: (targetProperty: string, value: any) => void): void {
         if (!this.elem) {
             this.elem = elem;
         }
@@ -64,19 +65,21 @@ class PropertyPaneBucketConfigBuilder implements IPropertyPaneField<IPropertyPan
             this.onPropertyChange(this.targetProperty, this.customProperties, value);
         }
     }
-    private dispose(elem: HTMLElement): void { }
+    private dispose(elem: HTMLElement): void {
+        ReactDom.unmountComponentAtNode(elem);
+     }
 }
 
 export default function PropertyPaneBucketConfigComponent(targetProperty: string, properties: IPropertyPaneBucketConfig):
     IPropertyPaneField<IPropertyPaneBucketConfigInternal> {
-    var newProperties: IPropertyPaneBucketConfigInternal = {
+    const newProperties: IPropertyPaneBucketConfigInternal = {
         key: properties.key,
         properties: properties.properties,
         targetProperty: targetProperty,
         onPropertyChange: properties.onPropertyChange,
-        onDispose: null,
-        onRender: null,
-        onChanged: null
+        onDispose: () =>{ return null },
+        onRender: () =>{ return null },
+        onChanged: () =>{ return null }
     };
     return new PropertyPaneBucketConfigBuilder(targetProperty, newProperties);
 }

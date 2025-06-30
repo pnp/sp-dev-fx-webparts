@@ -7,10 +7,14 @@ import { IPropertyPaneConfiguration, IPropertyPaneField, PropertyPaneTextField, 
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
+import { PrincipalType, PropertyFieldNumber, PropertyFieldPeoplePicker } from '@pnp/spfx-property-controls';
+import { UserGroupCheck } from './AccessCheck';
+import { sp } from '@pnp/sp/presets/all';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public _propertyPaneHelper;
     private _unqiueId;
+    private _externalScriptContent;
 
     constructor() {
         super();
@@ -22,7 +26,24 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         this._propertyPaneHelper.initialValue = newVal;
     }
 
-    public render(): void {
+    protected async onInit(): Promise<void> {
+        if (this.properties.useExternalScript) {
+            try {
+                const prefix = this.properties.externalScript.indexOf('?') === -1 ? '?' : '&';
+                const response = await fetch(`${this.properties.externalScript}${prefix}pnp=${new Date().getTime()}`);
+                this._externalScriptContent = await response.text();
+            } catch (e) {
+                this._externalScriptContent = 'Failed to load external script.';
+            }
+        }
+
+        await super.onInit();
+        sp.setup({
+            spfxContext: this.context as any
+        });
+    }
+
+    public async render(): Promise<void> {
         this._unqiueId = this.context.instanceId;
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
@@ -42,7 +63,13 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             }
 
             ReactDom.unmountComponentAtNode(this.domElement);
-            this.domElement.innerHTML = this.properties.script;
+            if (this.properties.audiences) {
+                const checker = new UserGroupCheck(this.properties.audiences, this.properties.audienceCacheDuration, this.context);
+                const isInAudience = await checker.CheckAudiences();
+                if (!isInAudience) return;
+            }
+
+            this.domElement.innerHTML = this.properties.useExternalScript ? this._externalScriptContent : this.properties.script;
             this.executeScript(this.domElement);
         } else {
             this.renderEditor();
@@ -66,7 +93,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         );
         ReactDom.render(element, this.domElement);
     }
-    
+
     protected get dataVersion(): Version {
         return Version.parse('1.0');
     }
@@ -91,7 +118,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-        let webPartOptions: IPropertyPaneField<any>[] = [
+        const webPartOptions: IPropertyPaneField<any>[] = [
             PropertyPaneTextField("title", {
                 label: "Title to show in edit mode",
                 value: this.properties.title
@@ -108,11 +135,43 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 onText: "Enabled",
                 offText: "Disabled"
             }),
-            this._propertyPaneHelper
+            PropertyPaneToggle('useExternalScript', {
+                label: 'Use script from an external URL instead of inline script',
+                onText: "Use external script",
+                offText: "Use inline script"
+            }),
+            PropertyFieldPeoplePicker('audiences', {
+                label: 'Target Audience',
+                initialData: this.properties.audiences,
+                allowDuplicate: false,
+                principalType: [PrincipalType.SharePoint, PrincipalType.Users, PrincipalType.Security],
+                onPropertyChange: this.onPropertyPaneFieldChanged,
+                context: this.context as any,
+                properties: this.properties,
+                onGetErrorMessage: null,
+                deferredValidationTime: 0,
+                key: 'audienceTargeting'
+            }),
+            PropertyFieldNumber('audienceCacheDuration', {
+                key: 'audienceCacheDuration',
+                label: 'Audience cache duration in hours',
+                description: 'Duration in hours to cache the audience information',
+                value: this.properties.audienceCacheDuration || 24,
+                minValue: 1,
+            })
         ];
 
+        if (this.properties.useExternalScript) {
+            webPartOptions.push(PropertyPaneTextField("externalScript", {
+                label: "Script URL",
+                value: this.properties.externalScript,
+            }));
+        } else {
+            webPartOptions.push(this._propertyPaneHelper);
+        }
+
         if (this.context.sdks.microsoftTeams) {
-            let config = PropertyPaneToggle("teamsContext", {
+            const config = PropertyPaneToggle("teamsContext", {
                 label: "Enable teams context as _teamsContexInfo",
                 checked: this.properties.teamsContext,
                 onText: "Enabled",
@@ -173,9 +232,9 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     //
     // Argument element is an element in the dom.
     private async executeScript(element: HTMLElement) {
-        // clean up added script tags in case of smart re-load        
+        // clean up added script tags in case of smart re-load
         const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        let scriptTags = headTag.getElementsByTagName("script");
+        const scriptTags = headTag.getElementsByTagName("script");
         for (let i = 0; i < scriptTags.length; i++) {
             const scriptTag = scriptTags[i];
             if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {

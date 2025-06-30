@@ -5,7 +5,7 @@ import {
   IStackTokens,
   PersonaSize,
   Link,
-} from  "office-ui-fabric-react"
+} from  "@fluentui/react"
 import * as React from "react";
 import { Person } from "../Person/Person";
 import { IExpandedCardProps } from "./IExpandedCardProps";
@@ -34,11 +34,14 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     (async () => {
-      const { currentUserProfile } = await getUserProfile(user.manager);
-      const wManager: IUserInfo = await manpingUserProperties(
-        currentUserProfile
-      );
+      if (!user.manager) return;
+
+      const userProfileResponse = await getUserProfile(user.manager);
+      if (!userProfileResponse) return;
+
+      const wManager: IUserInfo = await manpingUserProperties(userProfileResponse.currentUserProfile);
       setManager(wManager);
     })();
   }, [getUserProfile, user.manager]);
@@ -65,7 +68,7 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
               <Text variant="smallPlus">{user.email}</Text>
             </Link>
           </Stack>
-          <div className={hoverCardStyles.separatorHorizontal}></div>
+          <div className={hoverCardStyles.separatorHorizontal} />
           </>
           )
         }
@@ -88,7 +91,7 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
                 <Text variant="smallPlus">{user.workPhone}</Text>
               </Link>
             </Stack>
-            <div className={hoverCardStyles.separatorHorizontal}></div>
+            <div className={hoverCardStyles.separatorHorizontal} />
           </>
         )}
         {user.location && (
@@ -131,7 +134,7 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
               pictureUrl={manager.pictureUrl}
               text={manager.displayName}
               secondaryText={manager.title}
-            ></Person>
+             />
           </>
         )}
       </Stack>

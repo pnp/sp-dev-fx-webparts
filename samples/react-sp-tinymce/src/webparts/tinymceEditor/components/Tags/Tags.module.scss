@@ -1,0 +1,18 @@
+.tagsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  margin: 0 0 0 5px;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 5px;
+  border: 1px solid;  
+  border-radius: 12px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}

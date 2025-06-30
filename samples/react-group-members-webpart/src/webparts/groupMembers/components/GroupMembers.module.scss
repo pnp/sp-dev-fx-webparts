@@ -1,0 +1,496 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+// SharePoint theme variables using theme tokens
+$sp-themePrimary: "[theme:themePrimary, default:#0078d4]";
+$sp-themeSecondary: "[theme:themeSecondary, default:#2b88d8]";
+$sp-themeTertiary: "[theme:themeTertiary, default:#71afe5]";
+$sp-themeLighter: "[theme:themeLighter, default:#deecf9]";
+$sp-themeLight: "[theme:themeLight, default:#c7e0f4]";
+$sp-themeDark: "[theme:themeDark, default:#005a9e]";
+$sp-themeDarker: "[theme:themeDarker, default:#004578]";
+$sp-neutralPrimary: "[theme:neutralPrimary, default:#323130]";
+$sp-neutralSecondary: "[theme:neutralSecondary, default:#605e5c]";
+$sp-neutralLight: "[theme:neutralLight, default:#edebe9]";
+$sp-neutralLighter: "[theme:neutralLighter, default:#f3f2f1]";
+$sp-white: "[theme:white, default:#ffffff]";
+
+// Mixins for reusable styles
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin circle-base($size: 40px) {
+  width: $size;
+  height: $size;
+  min-width: $size;
+  min-height: $size;
+  border-radius: 50%;
+  @include flex-center;
+  overflow: hidden;
+}
+
+@mixin transition-ease($property: all, $duration: 0.2s) {
+  transition: $property $duration ease;
+}
+
+// Font stack
+$font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+
+.groupMembers {
+  padding: 16px 24px;
+  min-height: 100%;
+  font-family: $font-stack;
+
+  // Header styles
+  .header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid $sp-neutralLight;
+    padding-bottom: 16px;
+
+    .pageTitle {
+      font-weight: 600;
+      margin: 0;
+      color: $sp-neutralPrimary;
+    }
+  }
+
+  // Search container styles
+  .searchContainer {
+    margin-bottom: 24px;
+    max-width: 600px;
+    position: relative;
+
+    .searchBox {
+      width: 100%;
+
+      &:hover {
+        border-color: $sp-themePrimary;
+      }
+    }
+  }
+
+  // Loading container styles
+  .loadingContainer {
+    padding: 32px;
+    text-align: center;
+    background-color: $sp-neutralLighter;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  // Error message styles
+  .errorMessage {
+    margin-bottom: 24px;
+    color: $sp-themeDarker;
+  }
+
+  // Content container styles
+  .contentContainer {
+    .userSection {
+      margin-bottom: 32px;
+
+      // Section header styles
+      .sectionHeader {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+
+        .sectionTitle {
+          font-weight: 600;
+          margin: 0 16px 0 0;
+          color: $sp-neutralPrimary;
+        }
+
+        .sectionDivider {
+          flex-grow: 1;
+          height: 1px;
+          background-color: $sp-neutralLight;
+        }
+      }
+
+      // Grid view styles
+      .userGrid {
+        .userCard {
+          border: 1px solid $sp-neutralLight;
+          border-radius: 4px;
+          padding: 16px;
+          cursor: pointer;
+          @include transition-ease;
+          position: relative;
+          background-color: $sp-white;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+          &:hover {
+            border-color: $sp-themePrimary;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+          }
+
+          &:focus {
+            outline: 2px solid $sp-themePrimary;
+            outline-offset: 2px;
+          }
+
+          .userCardInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .personaContainer {
+            position: relative;
+
+            .presenceIndicator {
+              position: absolute;
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              bottom: 4px;
+              left: 30px;
+              border: 2px solid $sp-white;
+            }
+          }
+        }
+
+        .userCardShimmer {
+          border: 1px solid $sp-neutralLight;
+          border-radius: 4px;
+          padding: 16px;
+          background-color: $sp-white;
+        }
+
+        .actionButton {
+          opacity: 0;
+          @include transition-ease(opacity);
+
+          &.chatButton {
+            color: $sp-themePrimary;
+          }
+        }
+
+        .userCard:hover .actionButton {
+          opacity: 1;
+        }
+      }
+
+      // List view styles
+      .userList {
+        .listItem {
+          padding: 12px 16px;
+          border-radius: 4px;
+          margin-bottom: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          @include transition-ease;
+
+          &:hover {
+            color: $sp-themePrimary;
+            background-color: $sp-neutralLighter;
+          }
+
+          .personaWrapper {
+            position: relative;
+            display: inline-block;
+          }
+          
+          .presenceCircle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid $sp-white;
+          }
+
+          .listActions {
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        .listShimmer {
+          margin-bottom: 8px;
+        }
+      }
+
+      // Pagination container styles
+        .paginationContainer {
+          display: flex;
+          justify-content: center;  
+          align-items: center;
+          gap: 12px;
+          margin: 10px;
+        
+          .paginationText {
+            margin: 0 16px;
+            color: $sp-neutralSecondary;
+          }
+        }
+    }
+  }
+
+  // User details panel styles
+  .userDetailsPanel {
+    .panelContent {
+      padding: 16px 0;
+
+      .userProfile {
+        margin-bottom: 24px;
+        position: relative;
+
+        .presenceStatus {
+          display: flex;
+          align-items: center;
+          margin-top: 8px;
+
+          .presenceIcon {
+            margin-right: 8px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .actionButtons {
+        margin-bottom: 24px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .contactInfo {
+        padding: 16px;
+        background-color: $sp-neutralLighter;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+
+      .recentDocuments {
+        .sectionSubheader {
+          font-weight: 600;
+          margin-bottom: 12px;
+          color: $sp-themePrimary;
+          border-bottom: 1px solid $sp-neutralLight;
+          padding-bottom: 8px;
+        }
+
+        .documentList {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          .documentItem {
+            margin-bottom: 12px;
+
+            .documentIcon {
+              color: $sp-themePrimary;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Profile image and default coin styles
+.profileImage {
+  @include circle-base(40px);
+  object-fit: cover;
+  border: 1px solid $sp-neutralLight;
+}
+
+.defaultCoin {
+  @include circle-base(40px);
+  background-color: $sp-themePrimary;
+  color: $sp-white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  
+  // Ensure text is centered even with flex
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Global Styles for SharePoint components
+:global {
+  // SearchBox
+  .ms-SearchBox {
+    .ms-SearchBox-iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $sp-themePrimary;
+    }
+
+    .ms-TextField-field {
+      &::placeholder {
+        color: $sp-neutralSecondary;
+      }
+    }
+  }
+
+  // Button styles
+  .ms-Button {
+    border-radius: 2px;
+
+    &.ms-Button--primary {
+      background-color: $sp-themePrimary;
+
+      &:hover {
+        background-color: $sp-themeDark;
+
+        .ms-Button-label {
+          color: $sp-white;
+        }
+      }
+    }
+
+    &.ms-Button--default {
+      border-color: $sp-neutralSecondary;
+
+      &:hover {
+        background-color: $sp-neutralLighter;
+      }
+    }
+
+    .ms-Button-label {
+      font-weight: 400;
+    }
+  }
+
+  // Persona styles
+  .ms-Persona {
+    .ms-Persona-details {
+      padding-left: 12px;
+    }
+
+    .ms-Persona-primaryText {
+      font-weight: 600;
+      color: $sp-neutralPrimary;
+    }
+
+    .ms-Persona-secondaryText {
+      color: $sp-themePrimary;
+    }
+
+    .ms-PersonaCoin-initials {
+      font-weight: 600;
+    }
+  }
+
+  // Spinner styles
+  .ms-Spinner {
+    margin-bottom: 16px;
+    
+    .ms-Spinner-circle {
+      border-width: 2px;
+      border-color: $sp-themePrimary;
+    }
+
+    .ms-Spinner-label {
+      margin-top: 8px;
+      color: $sp-neutralSecondary;
+      font-weight: 400;
+    }
+  }
+  
+  // ProgressIndicator styles
+  .ms-ProgressIndicator {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  // Panel styles
+  .ms-Panel {
+    .ms-Panel-header {
+      padding: 16px 24px;
+
+      .ms-Panel-headerText {
+        font-weight: 600;
+        color: $sp-themePrimary;
+      }
+    }
+
+    .ms-Panel-contentInner {
+      padding: 0 24px 24px;
+    }
+
+    .ms-Panel-closeButton {
+      color: $sp-neutralSecondary;
+
+      &:hover {
+        color: $sp-neutralPrimary;
+      }
+    }
+  }
+
+  // Button styles in list actions
+  .listActions .ms-Button {
+    margin-left: 4px;
+  }
+  
+  // Button styles in action buttons
+  .actionButtons .ms-Button {
+    flex: 1;
+  }
+  
+  // Shimmer styles
+  .ms-Shimmer {
+    margin-bottom: 8px;
+    height: 65px;
+    border-radius: 4px;
+    border: 1px solid $sp-neutralLight;
+    padding: 12px 16px;
+  }
+  
+  // Button styles in pagination controls
+  .paginationControls .ms-Button {
+    min-width: 100px;
+  }
+  
+  // Button label in load more button hover
+  .loadMoreButton:hover .ms-Button-label {
+    color: $sp-white;
+  }
+  
+  // Persona in user profile
+  .userProfile .ms-Persona {
+    margin-bottom: 16px;
+  }
+  
+  // Link styles in document items
+  .documentItem a {
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $sp-themeLighter;
+    }
+  }
+
+  // MGT LivePersona styles
+  mgt-person {
+    --person-avatar-size: 48px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  mgt-person-card {
+    --person-card-avatar-size: 72px;
+    --person-card-line-height: 1.5;
+    --person-card-display-name-font-weight: 600;
+    --person-card-background-color: $sp-white;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}

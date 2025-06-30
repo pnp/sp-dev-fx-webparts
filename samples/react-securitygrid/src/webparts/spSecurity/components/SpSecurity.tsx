@@ -1,616 +1,504 @@
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { SPPermission } from "@microsoft/sp-page-context";
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { SPPermission } from '@microsoft/sp-page-context';
 import { getFileTypeIconProps, initializeFileTypeIcons } from '@uifabric/file-type-icons';
-import { filter, find, findIndex } from "lodash";
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-import { ContextualMenuItemType, IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import { DetailsList, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import { Spinner } from "office-ui-fabric-react/lib/Spinner";
-import * as React from "react";
+import { filter, find, findIndex } from 'lodash';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { CommandBar } from '@fluentui/react/lib/CommandBar';
+import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { DetailsList, IColumn, Selection, SelectionMode } from '@fluentui/react/lib/DetailsList';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Spinner } from '@fluentui/react/lib/Spinner';
+import SPSecurityService from '../../SPSecurityService';
+import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
+import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
+import { ISelectedPermission } from '../ISpSecurityWebPartProps';
+import { ISpSecurityProps } from './ISpSecurityProps';
+import { ISpSecurityState } from './ISpSecurityState';
+import { Legend } from './Legend';
+import styles from './SpSecurity.module.scss';
 
-import SPSecurityService from "../../SPSecurityService";
-import { Helpers, SPList, SPListItem, SPSiteUser } from "../../SPSecurityService";
-import SelectedPermissionsPanel from "../containers/SelectedPermissionsPanel";
-import { ISelectedPermission } from "../ISpSecurityWebPartProps";
-import { ISpSecurityProps } from "./ISpSecurityProps";
-import { ISpSecurityState } from "./ISpSecurityState";
-import { Legend } from "./Legend";
-import styles from "./SpSecurity.module.scss";
+const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
+  const [state, setState] = useState<ISpSecurityState>({
+    securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] },
+    selectedPermissions: props.selectedPermissions,
+    showUserPanel: false,
+    showListPanel: false,
+    showEmail: props.showEmail,
+    securityInfoLoaded: false,
+    showPermissionsPanel: false,
+    errors: [],
+  });
 
-/* tslint:disable */
-export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSecurityState> {
-  private svc: SPSecurityService = new SPSecurityService("ss");
-  private userSelection = new Selection();
-  private listSelection = new Selection();
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] },
-      //permission: this.props.permission,
-      selectedPermissions: this.props.selectedPermissions,
-      showUserPanel: false,
-      showListPanel: false,
-      showEmail: this.props.showEmail,
-      securityInfoLoaded: false,
-      showPermissionsPanel: false,
-      errors: []
+  const svc = new SPSecurityService('ss');
+  const userSelection = new Selection();
+  const listSelection = new Selection();
 
-    };
-
-    this.expandCollapseList = this.expandCollapseList.bind(this);
-    this.collapseList = this.collapseList.bind(this);
-    this.collapseItem = this.collapseItem.bind(this);
-    this.expandList = this.expandList.bind(this);
-    this.renderTitle = this.renderTitle.bind(this);
-    this.renderUserItem = this.renderUserItem.bind(this);
-    this.getPermissionLevels = this.getPermissionLevels.bind(this);
-    this.selectUser = this.selectUser.bind(this);
-    this.parentIsExpanded = this.parentIsExpanded.bind(this);
-    this.renderUserSelected = this.renderUserSelected.bind(this);
-  }
-  public componentDidMount(): void {
-
+  useEffect(() => {
     initializeFileTypeIcons();
-  }
-  public componentDidUpdate(): void {
-    // disable postback of buttons. see https://github.com/SharePoint/sp-dev-docs/issues/492
-
-    if (Environment.type === EnvironmentType.ClassicSharePoint) {
-      const buttons: NodeListOf<HTMLButtonElement> = this.props.domElement.getElementsByTagName('button');
-      for (let i: number = 0; i < buttons.length; i++) {
-        if (buttons[i]) {
-          // Disable the button onclick postback
-          buttons[i].onclick = function () {
-            return false;
-          };
-        }
-      }
-    }
-  }
-  public componentWillReceiveProps(newProps: ISpSecurityProps) {
-
-    this.setState((current) => ({
-      ...current,
-      selectedPermissions: newProps.selectedPermissions,
-      showEmail: newProps.showEmail
-    }));
-
-  }
-
-  public componentWillMount(): void {
-    //debugger;
-    this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false)
+    svc.loadData(props.showHiddenLists, props.showCatalogs, props.aadHttpClient)
       .then((response) => {
-        const state: ISpSecurityState = {
-          securityInfo: response,
-          // permission: this.props.permission,
-          selectedPermissions: this.props.selectedPermissions ? this.props.selectedPermissions : [],
-          showUserPanel: false,
-          showListPanel: false,
-          showPermissionsPanel: false,
-          showEmail: this.props.showEmail,
+        const filteredLists = response.lists.filter((list) =>
+          props.includeAdminSelectedLists
+            ? !!find(props.adminSelectedLists, (asl) => list.id === asl)
+            : !find(props.adminSelectedLists, (asl) => list.id === asl)
+        );
+        setState((prevState) => ({
+          ...prevState,
+          securityInfo: { ...response, lists: filteredLists },
+          selectedPermissions: props.selectedPermissions ?? [],
+          showEmail: props.showEmail,
           securityInfoLoaded: true,
-          errors: []
-
-        };
-        // inlclude\exclude lists selected in property pane
-        //debugger;
-        state.securityInfo.lists = state.securityInfo.lists.filter((list) => {
-          if (this.props.includeAdminSelectedLists) { // include the lists
-
-            if (find(this.props.adminSelectedLists, (asl) => { return list.id === asl; })) {
-              return true;
-            } else {
-              return false;
-            }
-          } else { // exclude the lists
-            if (find(this.props.adminSelectedLists, (asl) => { return list.id === asl; })) {
-              return false;
-            }
-            else {
-              return true;
-            }
-
-          }
-        });
-        this.setState(state);
-      }).catch((errors: Array<string>) => {
-        this.setState((current) => ({ ...current, errors: errors, securityInfoLoaded: true }))
-        //debugger;
+        }));
+      })
+      .catch((errors: string[]) => {
+        setState((prevState) => ({ ...prevState, errors, securityInfoLoaded: true }));
       });
-  }
-  public expandList(item: any): any {
-    if (item instanceof SPListItem && !item.serverRelativeUrl) { // its a listitem. nothing to do
-      return;
+  }, [props]);
+
+  useEffect(() => {
+    if (props.selectedPermissions !== state.selectedPermissions || props.showEmail !== state.showEmail) {
+      setState((prevState) => ({
+        ...prevState,
+        selectedPermissions: props.selectedPermissions,
+        showEmail: props.showEmail,
+      }));
     }
+  }, [props.selectedPermissions, props.showEmail]);
+
+  const expandList = (item: SPList | SPListItem): void => {
+    if (item instanceof SPListItem && !item.serverRelativeUrl) return;
+
     if (item.isFetched) {
       item.isExpanded = true;
-      this.setState(this.state);
+      setState({ ...state });
+    } else {
+      const level = item instanceof SPListItem ? item.level + 1 : 1;
+      const listTitle = item instanceof SPListItem ? item.listTitle : item.title;
 
-    }
-    else {
-
-      // get the items in the list/folder;
-      let level: number;
-      let listTitle: string;
-      if (item instanceof SPListItem) {
-        level = item.level + 1;
-        listTitle = item.listTitle;
-      }
-      else {
-        level = 1;
-        listTitle = item.title;
-      }
-
-      this.svc.loadFolderRoleAssigmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level, true).then((response) => {
-
-        // add them to the list after the parent
-
-        let position: number = findIndex(this.state.securityInfo.lists, (stateitem) => {
-          return stateitem.id === item.id;
+      svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level)
+        .then((response) => {
+          const position = findIndex(state.securityInfo.lists, (stateItem) => stateItem.id === item.id);
+          const updatedLists = [...state.securityInfo.lists];
+          updatedLists.splice(position + 1, 0, ...response);
+          item.isExpanded = true;
+          item.isFetched = true;
+          setState((prevState) => ({ ...prevState, securityInfo: { ...prevState.securityInfo, lists: updatedLists } }));
+        })
+        .catch((error: Error) => {
+          const errors = [...state.errors, `There was an error fetching site users -- ${error.message}`];
+          setState((prevState) => ({ ...prevState, errors }));
         });
-        this.state.securityInfo.lists.splice(position + 1, 0, ...response);
-        item.isExpanded = true;
-        item.isFetched = true;
-        this.setState(this.state);
-
-      }).catch((error) => {
-        let errors = this.state.errors;
-        errors.push(`There was an error fetching site users -- ${error.message}`);
-        this.setState((current) => ({ ...current, errors: errors }))
-      });
-
     }
-  }
-  public collapseItem(itemId: string) {
-    let children = filter(this.state.securityInfo.lists, (otheritem) => {
-      return otheritem instanceof SPListItem && otheritem.parentId === itemId;
+  };
+
+  const collapseItem = (itemId: string) => {
+    const children = filter(state.securityInfo.lists, (otherItem) => otherItem instanceof SPListItem && otherItem.parentId === itemId);
+    children.forEach((childItem) => {
+      childItem.isExpanded = false;
+      collapseItem(childItem.id);
     });
-    for (let childitem of children) {
-      childitem.isExpanded = false;
-      this.collapseItem(childitem.id);
-    };
+  };
 
-  }
-  public collapseList(item: any): any {
-
+  const collapseList = (item: SPList | SPListItem): void => {
     item.isExpanded = false;
-    this.collapseItem(item.id);
-    this.setState(this.state);
+    collapseItem(item.id);
+    setState({ ...state });
+  };
 
-  }
+  const expandCollapseList = (item: SPList | SPListItem, event: React.MouseEvent): void => {
+    event.stopPropagation();
+    if (item.itemCount === 0) return;
 
-  public expandCollapseList(item?: any, index?: number, column?: IColumn): any {
-    if (item.itemCount === 0) {
-      return;
-    }
     if (item.isExpanded) {
-      this.collapseList(item);
+      collapseList(item);
+    } else {
+      expandList(item);
     }
-    else {
-      this.expandList(item);
+  };
+
+  const renderTitle = (item: SPList | SPListItem): JSX.Element => {
+    if (item instanceof SPList) {
+      return renderListTitle(item);
+    } else if (item.type === 'Folder') {
+      return renderFolderTitle(item);
+    } else {
+      return renderItemTitle(item);
     }
+  };
 
-  }
-  public parentIsExpanded(item: SPListItem): boolean {
-    let parent = find(this.state.securityInfo.lists, (otheritem) => {
-      return otheritem.id === item.parentId;
-    });
-    return parent.isExpanded;
+  const renderListTitle = (item: SPList): JSX.Element => {
+    const iconName = item.itemCount > 0 ? 'FabricFormLibrary' : 'FabricFolder';
+    return (
+      <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
+        <Icon iconName={iconName} className={styles.themecolor} />
+        <span>&nbsp;{item.title}</span>
+      </div>
+    );
+  };
 
-  }
+  const renderFolderTitle = (item: SPListItem): JSX.Element => {
+    const style = { marginLeft: `${item.level * 20}px` };
+    const iconName = item.itemCount > 0 ? 'FabricFormLibrary' : 'FabricFolder';
+    return (
+      <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
+        <Icon iconName={iconName} style={style} className={styles.themecolor} />
+        <span>&nbsp;{item.title}</span>
+      </div>
+    );
+  };
 
-  public renderItemTitle(item?: any, index?: number, column?: IColumn): any {
+  const renderItemTitle = (item: SPListItem): JSX.Element => {
     const extension = item.title.split('.').pop();
-    debugger;
-    const style = { marginLeft: item.level * 20 + 'px' }
+    const style = { marginLeft: `${item.level * 20}px` };
     return (
       <div className={styles.itemTitle} style={style}>
-        <Icon {...getFileTypeIconProps({ extension: extension, size: 16 })} />
+        <Icon {...getFileTypeIconProps({ extension, size: 16 })} />
         <span>&nbsp;{item.title}</span>
-      </div>);
-  }
-  public renderListTitle(item?: any, index?: number, column?: IColumn): any {
-    const iconName = item.itemCount > 0 ?
-      'FabricFormLibrary' :
-      'FabricFolder';
-    return (
-      <div className={styles.itemTitle} onClick={(e) => {
-        this.expandCollapseList(item);
-      }}>
-        <Icon iconName={iconName} className={styles.themecolor} />
-        <span >&nbsp;{item.title}</span>
-      </div>);
-  }
-
-  public renderFolderTitle(item?: any, index?: number, column?: IColumn): any {
-    const style = { marginLeft: item.level * 20 + 'px' }
-    const iconName = item.itemCount > 0 ?
-      'FabricFormLibrary' :
-      'FabricFolder';
-
-    return (
-      <div className={styles.itemTitle} onClick={(e) => {
-        this.expandCollapseList(item);
-      }}>
-        <Icon iconName={iconName} style={style} className={styles.themecolor} />
-        <span >&nbsp;{item.title}</span>
-      </div>);
-  }
-
-  public renderTitle(item?: any, index?: number, column?: IColumn): any {
-    if (item instanceof SPList) {
-      return this.renderListTitle(item, index, column);
-    } else {
-      if (item.type === "Folder") {
-        return this.renderFolderTitle(item, index, column);
-      } else {
-        return this.renderItemTitle(item, index, column);
-      }
-    }
-
-  }
-
-  public renderUserItem(item: any, index: number, column: IColumn, effectivePermissions: ISelectedPermission[]): any {
-
-    let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
-      return su.upn.toString() === column.key;
-    });
-    // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
-
-    for (let selectedPermission of effectivePermissions ? effectivePermissions : []) {
-      if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
-        this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups, this.state.securityInfo.adGroups)) {
-        return (
-          <Icon iconName={selectedPermission.iconName} style={{ color: selectedPermission.color }} onClick={(e) => {
-            this.expandCollapseList(item);
-          }} />
-        );
-      }
-    }
-    // no hits
-    return (
-      <Icon iconName={item.iconName} onClick={(e) => {
-        this.expandCollapseList(item);
-      }} />
+      </div>
     );
+  };
 
-  }
-  public renderUserSelected(item?: SPSiteUser, index?: number, column?: IColumn): any {
-
-    return (
-      <Checkbox checked={item.isSelected} />
-    )
-
-  }
-  public addUserColumns(columns: IColumn[], users: SPSiteUser[], effectivePermissions: ISelectedPermission[]): IColumn[] {
-    for (let user of users) {
+  const addUserColumns = (
+    columns: IColumn[],
+    users: SPSiteUser[],
+    effectivePermissions: ISelectedPermission[]
+  ): IColumn[] => {
+    for (const user of users) {
       if (user.isSelected) {
         if (
-          ((user.principalType === 1 || user.principalType === -1) && this.props.showUsers)
-          ||
-          (user.principalType === 4 && this.props.showSecurityGroups)
-        )
-          if (!this.props.showOnlyUsersWithPermission || Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists, user, effectivePermissions.map((sp) => { return SPPermission[sp.permission] }), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups, this.state.securityInfo.adGroups))
+          ((user.principalType === 1 || user.principalType === -1) && props.showUsers) ||
+          (user.principalType === 4 && props.showSecurityGroups)
+        ) {
+          if (
+            !props.showOnlyUsersWithPermission ||
+            Helpers.doesUserHaveAnyPermission(
+              state.securityInfo.lists,
+              user,
+              effectivePermissions.map(sp => {
+                const permissionKey = sp.permission as keyof typeof SPPermission;
+                return SPPermission[permissionKey];
+              }),
+              state.securityInfo.roleDefinitions,
+              state.securityInfo.siteGroups,
+              state.securityInfo.adGroups
+            )
+          ) {
             columns.push({
               key: user.upn,
-              name: this.state.showEmail ? user.upn : user.name,
+              name: state.showEmail ? user.upn : user.name,
               fieldName: "",
               minWidth: 20,
               maxWidth: 20,
-              onRender: (item?: any, index?: number, column?: IColumn) => {
-                //debugger;
-                return this.renderUserItem(item, index, column, effectivePermissions);
-              },
+              onRender: (item: SPListItem, index?: number, column?: IColumn) =>
+                renderUserItem(item, index!, column!, effectivePermissions),
               headerClassName: styles.rotatedColumnHeader,
-
             });
+          }
+        }
       }
     }
     return columns;
-  }
-  public getPermissionLevels(): IContextualMenuItem[] {
+  };
 
-    return this.props.getPermissionTypes().map(pt => {
-      return {
-        key: pt.text,
-        name: pt.text,
-        onClick: (event, item) => {
-
-          this.setState((current) => ({ ...current, permission: item.name }));
-        }
-
-      }
-    })
-  }
-  private setShowUserPanel(showPanel: boolean): () => void {
-    return (): void => {
-      this.setState((current) => ({ ...current, showUserPanel: showPanel }));
-
-    };
-  }
-  private selectUser(userid: number, value: boolean) {
-    find(this.state.securityInfo.siteUsers, (su) => {
-      return (su.id === userid)
-    }).isSelected = value;
-    this.setState(this.state);
-
-
-  }
-  private setShowListPanel(showPanel: boolean): () => void {
-    return (): void => {
-      this.setState((current) => ({ ...current, showListPanel: showPanel }));
-
-    };
-  }
-  private selectList(listid: string, value: boolean) {
-    let list: SPList = find(this.state.securityInfo.lists, (su) => {
-      return (su.id === listid)
-    }) as SPList;
-    list.isSelected = value;
-    this.setState(this.state);
-
-
-  }
-  private checkUncheckPermission(perm: ISelectedPermission) {
-    //debugger;
-    var sps = this.state.selectedPermissions;
-    const idx = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == perm.permission; });
-    if (idx != -1) {
-      sps[idx].isChecked = !sps[idx].isChecked
-      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-    }
-
-
-  }
-  public render(): React.ReactElement<ISpSecurityProps> {
-    if (!this.state.securityInfoLoaded) {
-      return (
-        <div >
-          <Spinner label={'Fetching security information, please wait...'} />
-        </div>
-
-      );
-    }
-    let userPanelCommands: IContextualMenuItem[] = [];
-    userPanelCommands.push({
-      icon: "BoxAdditionSolid",
-      key: "Add All Users",
-      name: "Add All Users",
-      itemType: ContextualMenuItemType.Normal,
-      onClick: (event, item) => {
-        for (let item of this.state.securityInfo.siteUsers) {
-          item.isSelected = true;
-        }
-        this.setState(this.state);
-      }
-    });
-    userPanelCommands.push({
-      icon: "BoxSubtractionSolid",
-      key: "RemoveAllUsers",
-      name: "Remove All Users",
-      itemType: ContextualMenuItemType.Normal,
-      onClick: (event, item) => {
-
-        for (let item of this.state.securityInfo.siteUsers) {
-          item.isSelected = false;
-        }
-        this.setState(this.state);
-      }
-    });
-    let listPanelCommands: IContextualMenuItem[] = [];
-    listPanelCommands.push({
+  const listPanelCommands: IContextualMenuItem[] = [
+    {
       icon: "BoxAdditionSolid",
       key: "Add All Lists",
       name: "Add All Lists",
       itemType: ContextualMenuItemType.Normal,
-      onClick: (event, item) => {
-
-        for (let item of this.state.securityInfo.lists) {
+      onClick: () => {
+        const updatedLists = state.securityInfo.lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = true;
           }
-        }
-        this.setState(this.state);
-      }
-    });
-    listPanelCommands.push({
+          return item;
+        });
+        setState((prevState) => ({
+          ...prevState,
+          securityInfo: {
+            ...prevState.securityInfo,
+            lists: updatedLists,
+          },
+        }));
+      },
+    },
+    {
       icon: "BoxSubtractionSolid",
       key: "Remove All Lists",
       name: "Remove All Lists",
       itemType: ContextualMenuItemType.Normal,
-      onClick: (event, item) => {
-        for (let item of this.state.securityInfo.lists) {
+      onClick: () => {
+        const updatedLists = state.securityInfo.lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = false;
           }
-        }
-        this.setState(this.state);
-      }
-
-    });
-    let commands: IContextualMenuItem[] = [];
-    if (this.props.letUserSelectPermission) {
-
-      commands.push({
-        icon: "AzureKeyVault",
-        key: "SecurityLevel2",
-        name: "Permission",
-        itemType: ContextualMenuItemType.Normal,
-        onClick: (event, item) => {
-          this.setState((current) => ({ ...current, showPermissionsPanel: !current.showPermissionsPanel }));
-        }
-      }
-      );
-    }
-    if (this.props.letUserSelectUsers) {
-      commands.push({
-        icon: "People",
-        key: "Users",
-        name: "Users",
-        itemType: ContextualMenuItemType.Normal,
-        onClick: (event, item) => {
-          this.setState((current) => ({ ...current, showUserPanel: !current.showUserPanel }));
-        }
-      });
-    }
-    if (this.props.letUserSelectLists) {
-
-      commands.push({
-        icon: "PageListSolid",
-        key: "Lists",
-        name: "Lists",
-        itemType: ContextualMenuItemType.Normal,
-        onClick: (event, item) => {
-          this.setState((current) => ({ ...current, showListPanel: !current.showListPanel }));
-        }
-      });
-    }
-    commands.push({
-
-      key: "DisplayMode",
-      title: "DisplayMode",
-      name: this.state.showEmail ? "Show Email" : "Show Name",
-      itemType: ContextualMenuItemType.Normal,
-      subMenuProps: {
-        items: [{
-          key: "ShowName",
-          name: "Show Name",
-          onClick: (event, item) => {
-            this.setState((current) => ({ ...current, showEmail: false }));
-          }
-        },
-        {
-          key: "ShowEmail",
-          name: "Show Email",
-          onClick: (event, item) => {
-            this.setState((current) => ({ ...current, showEmail: true }));
-          }
-        }]
-      }
-    });
-    let effectivePermissions = this.state.selectedPermissions.filter((sp) => { return sp.isChecked; })
-    let columns: Array<IColumn> = [
-      {
-        key: "title", name: "Title", isResizable: true, fieldName: "title",
-        minWidth: this.props.listTitleColumnWidth, maxWidth: this.props.listTitleColumnWidth,
-        onRender: this.renderTitle, isRowHeader: true
+          return item;
+        });
+        setState((prevState) => ({
+          ...prevState,
+          securityInfo: {
+            ...prevState.securityInfo,
+            lists: updatedLists,
+          },
+        }));
       },
-    ];
-    let displayColumns: IColumn[] = this.addUserColumns(columns, this.state.securityInfo.siteUsers, effectivePermissions);
+    },
+  ];
 
-
-    let displayItems: (SPList | SPListItem)[] = filter(this.state.securityInfo.lists, (item) => {
-      return (
-        (item instanceof SPList && item.isSelected)
-        ||
-        ((item instanceof SPListItem) && (this.parentIsExpanded(item)))
-      )
-    })
-
-    let errorMessages = [];
-    for (let error of this.state.errors) {
-      errorMessages.push(<li>{error}</li>)
-    }
-
+  const renderUserItem = (
+    item: SPListItem,
+    index: number,
+    column: IColumn,
+    effectivePermissions: ISelectedPermission[]
+  ): JSX.Element => {
+  
+    const user = find(state.securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
+  
+    const icons = effectivePermissions.map((selectedPermission) => {
+      const permissionKey = selectedPermission.permission as keyof typeof SPPermission;
+  
+      if (user && Helpers.doesUserHavePermission(
+        item,
+        user,
+        SPPermission[permissionKey],
+        state.securityInfo.roleDefinitions,
+        state.securityInfo.siteGroups,
+        state.securityInfo.adGroups
+      )) {
+        return (
+          <div key={selectedPermission.permission} style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
+        {icons}
+            <Icon
+              iconName={selectedPermission.iconName}
+              style={{ color: selectedPermission.color}}
+            />
+          </div>
+        );
+      }
+  
+      return null;
+    });
+  
     return (
-      <div >
-        <ul>{errorMessages}</ul>
-        <CommandBar
-          items={commands}
-        />
-        <br />
-        <Legend
-          selectedPermissions={this.state.selectedPermissions}
-          checkUncheckPermission={(e) => {
-            //debugger;
-            this.checkUncheckPermission(e);
-
-          }
-          }
-        />
-        <DetailsList
-          items={displayItems}
-          columns={displayColumns}
-          selectionMode={SelectionMode.none}
-          className={styles.SPFXSecurityGrid}
-
-        />
-        <SelectedPermissionsPanel
-          isOpen={this.state.showPermissionsPanel}
-          SelectedPermissions={this.props.selectedPermissions}
-          onPropertyChange={(propertyName: string, oldValue: Array<ISelectedPermission>, newValue: Array<ISelectedPermission>) => {
-
-            this.setState((current) => ({ ...current, selectedPermissions: newValue }));
-          }}
-          closePanel={() => {
-
-            this.setState((current) => ({ ...current, showPermissionsPanel: false }));
-          }}
-
-        >
-
-        </SelectedPermissionsPanel>
-        <Panel
-          isBlocking={false}
-          isOpen={this.state.showUserPanel}
-          onDismiss={this.setShowUserPanel(false)}
-          type={PanelType.medium}
-          headerText='Select Users'
-          closeButtonAriaLabel='Close'>
-          <CommandBar items={userPanelCommands} />
-          <DetailsList
-            selection={this.userSelection}
-            selectionMode={SelectionMode.none}
-            items={this.state.securityInfo.siteUsers}
-            columns={[
-              {
-                key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30, onRender: (item) => <Checkbox
-                  checked={item.isSelected}
-                  onChange={(element, value) => { this.selectUser(item.id, value); }}
-                />
-              },
-              { key: "id", name: "Name", fieldName: "name", minWidth: 400 },
-            ]}
-          />
-
-        </Panel>
-        <Panel
-          isBlocking={false}
-          isOpen={this.state.showListPanel}
-          onDismiss={this.setShowListPanel(false)}
-          type={PanelType.medium}
-          headerText='Select Lists'
-          closeButtonAriaLabel='Close'>
-          <CommandBar items={listPanelCommands} />
-
-          <DetailsList
-
-            selection={this.listSelection}
-            selectionMode={SelectionMode.none}
-            items={filter(this.state.securityInfo.lists, (l) => {
-              return l instanceof SPList;
-            })}
-            columns={[
-              {
-                key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30,
-                onRender: (item) => <Checkbox
-                  checked={item.isSelected}
-                  onChange={(element, value) => { this.selectList(item.id, value); }}
-                />
-              },
-
-              { key: "id", name: "Title", fieldName: "title", minWidth: 500 },
-            ]}
-          />
-
-        </Panel>
-
+      <div style={{ display: 'block' } } onClick={(event) => expandCollapseList(item, event)}>
+        {icons}
+        <div style={{ display: 'block' }}>
+          <Icon iconName={item.iconName}/>
+        </div>
       </div>
-    )
-
+    );
+  };
+  
+  if (!state.securityInfoLoaded) {
+    return (
+      <div>
+        <Spinner label={'Fetching security information, please wait...'} />
+      </div>
+    );
   }
-}
+  if (!state.securityInfoLoaded) {
+    return (
+      <div>
+        <Spinner label={'Fetching security information, please wait...'} />
+      </div>
+    );
+  }
+
+  // Define the commands for users, lists, permissions, and display mode
+  const commands: IContextualMenuItem[] = [];
+
+  // User selection command
+  if (props.letUserSelectUsers) {
+    commands.push({
+      icon: "People",
+      key: "Users",
+      name: "Users",
+      itemType: ContextualMenuItemType.Normal,
+      onClick: () => {
+        setState((current) => ({ ...current, showUserPanel: !current.showUserPanel }));
+      }
+    });
+  }
+
+  // List selection command
+  if (props.letUserSelectLists) {
+    commands.push({
+      icon: "PageListSolid",
+      key: "Lists",
+      name: "Lists",
+      itemType: ContextualMenuItemType.Normal,
+      onClick: () => {
+        setState((current) => ({ ...current, showListPanel: !current.showListPanel }));
+      }
+    });
+  }
+
+  // Permission selection command
+  if (props.letUserSelectPermission) {
+    commands.push({
+      icon: "AzureKeyVault",
+      key: "SecurityLevel2",
+      name: "Permission",
+      itemType: ContextualMenuItemType.Normal,
+      onClick: () => {
+        setState((current) => ({ ...current, showPermissionsPanel: !current.showPermissionsPanel }));
+      }
+    });
+  }
+
+  // Display mode command
+  commands.push({
+    key: "DisplayMode",
+    title: "DisplayMode",
+    name: state.showEmail ? "Show Email" : "Show Name",
+    itemType: ContextualMenuItemType.Normal,
+    subMenuProps: {
+      items: [{
+        key: "ShowName",
+        name: "Show Name",
+        onClick: () => {
+          setState((current) => ({ ...current, showEmail: false }));
+        }
+      },
+      {
+        key: "ShowEmail",
+        name: "Show Email",
+        onClick: () => {
+          setState((current) => ({ ...current, showEmail: true }));
+        }
+      }]
+    }
+  });
+
+  const effectivePermissions = state.selectedPermissions.filter((sp) => sp.isChecked);
+  const columns: IColumn[] = [
+    {
+      key: "title",
+      name: "Title",
+      isResizable: true,
+      fieldName: "title",
+      minWidth: props.listTitleColumnWidth,
+      maxWidth: props.listTitleColumnWidth,
+      onRender: renderTitle,
+      isRowHeader: true
+    }
+  ];
+
+  const displayColumns: IColumn[] = addUserColumns(columns, state.securityInfo.siteUsers, effectivePermissions);
+  const displayItems: (SPList | SPListItem)[] = filter(state.securityInfo.lists, (item) => {
+    return (
+      (item instanceof SPList && item.isSelected) ||
+      ((item instanceof SPListItem) && item.parentId && find(state.securityInfo.lists, l => l.id === item.parentId)?.isExpanded)
+    );
+  });
+
+  return (
+    <>
+      <CommandBar items={commands} />
+      <br />
+      <Legend
+        selectedPermissions={state.selectedPermissions}
+        checkUncheckPermission={(e) => {
+          const sps = [...state.selectedPermissions];
+          const idx = findIndex(sps, (sp) => sp.permission === e.permission);
+          if (idx !== -1) {
+            sps[idx].isChecked = !sps[idx].isChecked;
+            setState((prevState) => ({ ...prevState, selectedPermissions: sps }));
+          }
+        }}
+      />
+      <DetailsList
+        items={displayItems}
+        columns={displayColumns}
+        selectionMode={SelectionMode.none}
+        className={styles.SPFXSecurityGrid}
+      />
+      <SelectedPermissionsPanel
+        isOpen={state.showPermissionsPanel}
+        SelectedPermissions={props.selectedPermissions}
+        onPropertyChange={(propertyName, oldValue, newValue) => {
+          setState((prevState) => ({ ...prevState, selectedPermissions: newValue }));
+        }}
+        closePanel={() => {
+          setState((prevState) => ({ ...prevState, showPermissionsPanel: false }));
+        }}
+      />
+      <Panel
+        isBlocking={false}
+        isOpen={state.showUserPanel}
+        onDismiss={() => setState((prevState) => ({ ...prevState, showUserPanel: false }))}
+        type={PanelType.medium}
+        headerText="Select Users"
+        closeButtonAriaLabel="Close"
+      >
+        <CommandBar items={listPanelCommands} />
+        <DetailsList
+          selection={userSelection}
+          selectionMode={SelectionMode.none}
+          items={state.securityInfo.siteUsers}
+          columns={[
+            {
+              key: "isSelected",
+              name: "Select",
+              fieldName: "isSelected",
+              minWidth: 30,
+              onRender: (item) => (
+                <Checkbox
+                  checked={item.isSelected}
+                  onChange={(element, value) => {
+                    const user = find(state.securityInfo.siteUsers, (su) => su.id === item.id);
+                    if (user) {
+                      user.isSelected = value!;
+                      setState((prevState) => ({ ...prevState }));
+                    }
+                  }}
+                />
+              ),
+            },
+            { key: "id", name: "Name", fieldName: "name", minWidth: 400 }
+          ]}
+        />
+      </Panel>
+      <Panel
+        isBlocking={false}
+        isOpen={state.showListPanel}
+        onDismiss={() => setState((prevState) => ({ ...prevState, showListPanel: false }))}
+        type={PanelType.medium}
+        headerText="Select Lists"
+        closeButtonAriaLabel="Close"
+      >
+        <CommandBar items={listPanelCommands} />
+        <DetailsList
+          selection={listSelection}
+          selectionMode={SelectionMode.none}
+          items={filter(state.securityInfo.lists, (l) => l instanceof SPList)}
+          columns={[
+            {
+              key: "isSelected",
+              name: "Select",
+              fieldName: "isSelected",
+              minWidth: 30,
+              onRender: (item) => (
+                <Checkbox
+                  checked={item.isSelected}
+                  onChange={(element, value) => {
+                    const list = find(state.securityInfo.lists, (l) => l.id === item.id);
+                    if (list) {
+                      list.isSelected = value!;
+                      setState((prevState) => ({ ...prevState }));
+                    }
+                  }}
+                />
+              ),
+            },
+            { key: "id", name: "Title", fieldName: "title", minWidth: 500 }
+          ]}
+        />
+      </Panel>
+    </>
+  );
+};
+
+export default SpSecurity;

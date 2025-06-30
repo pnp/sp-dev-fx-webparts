@@ -1,0 +1,22 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.reactManageHublevelSubscriptions {
+  .container{
+    width:100%;
+    .webpartTitle{
+      display: flex;
+      color: rgb(0 0 0);
+    }
+    .sectionContainer {
+      display: flex;
+      align-items: center;
+    }
+    .dropdownSites {
+      margin-right: 10px;
+    }
+    .dropdownLists {
+      margin-left: 10px;
+    }
+  }
+
+}

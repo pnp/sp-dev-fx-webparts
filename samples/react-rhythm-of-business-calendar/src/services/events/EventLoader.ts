@@ -1,8 +1,19 @@
 import { decode } from "he";
 import { ErrorHandler } from "common";
-import { PagedViewLoader, IListItemResult, SPField, IUpdateListItem, ErrorDiagnosis } from "common/sharepoint";
-import { ISharePointService, ILiveUpdateService, ITimeZoneService, ITimeZone } from "common/services";
-import { Event, EventModerationStatus, ReadonlyEventMap } from "model";
+import {
+    PagedViewLoader,
+    IListItemResult,
+    SPField,
+    IUpdateListItem,
+    ErrorDiagnosis,
+} from "common/sharepoint";
+import {
+    ISharePointService,
+    ILiveUpdateService,
+    ITimeZoneService,
+    ITimeZone,
+} from "common/services";
+import { Event, EventModerationStatus, ReadonlyEventMap, RecurUntilType } from "model";
 import { IRhythmOfBusinessCalendarSchema } from "schema";
 import { RefinerValueLoader } from "./RefinerValueLoader";
 import { RecurrenceData } from "./RecurrenceData";
@@ -28,6 +39,7 @@ interface IEventListItemResult extends IListItemResult {
     RecurrenceID: SPField.Query_DateTime;
     UID: SPField.Query_Guid;
     Duration: SPField.Query_Integer;
+    TeamsGroupChatId: SPField.Query_Text;
 }
 
 interface IEventUpdateListItem extends IUpdateListItem {
@@ -51,47 +63,83 @@ interface IEventUpdateListItem extends IUpdateListItem {
     RecurrenceID: SPField.Update_DateTime;
     UID: SPField.Update_Guid;
     Duration: SPField.Update_Integer;
+    TeamsGroupChatId: SPField.Update_Text
 }
 
-const toEvent = async (row: IEventListItemResult, event: Event, siteTimeZone: ITimeZone, refinerValueLoader: RefinerValueLoader, eventsById: ReadonlyEventMap): Promise<void> => {
+const toEvent = async (
+    row: IEventListItemResult,
+    event: Event,
+    siteTimeZone: ITimeZone,
+    refinerValueLoader: RefinerValueLoader,
+    eventsById: ReadonlyEventMap
+): Promise<void> => {
     event.title = decode(row.Title);
     event.description = decode(row.Description);
     event.location = decode(row.Location);
     event.contacts = SPField.toUsers(row.Contacts);
-    event.refinerValues.set(await SPField.fromLookupMultiAsync(row.RefinerValues, refinerValueLoader.getById));
+    event.refinerValues.set(
+        await SPField.fromLookupMultiAsync(
+            row.RefinerValues,
+            refinerValueLoader.getById
+        )
+    );
 
-    const isAllDay = SPField.fromYesNo(row, 'fAllDayEvent');
-    const start = SPField.fromDateTime(row, 'EventDate', siteTimeZone);
-    const end = SPField.fromDateTime(row, 'EndDate', siteTimeZone);
+    const isAllDay = SPField.fromYesNo(row, "fAllDayEvent");
+    const start = isAllDay
+        ? SPField.fromDate(row, "EventDate", siteTimeZone)
+        : SPField.fromDateTime(row, "EventDate", siteTimeZone);
+    const end = isAllDay
+        ? SPField.fromDate(row, "EndDate", siteTimeZone)
+        : SPField.fromDateTime(row, "EndDate", siteTimeZone);
     if (isAllDay) {
-        start.utc().tz(siteTimeZone.momentId, true);
-        end.utc().tz(siteTimeZone.momentId, true);
+        start.tz(siteTimeZone.momentId, true);
+        end.tz(siteTimeZone.momentId, true);
     }
     event.start = start;
     event.end = end;
     event.isAllDay = isAllDay;
 
-    event.isConfidential = SPField.fromYesNo(row, 'IsConfidential');
+    event.isConfidential = SPField.fromYesNo(row, "IsConfidential");
     event.restrictedToAccounts = SPField.toUsers(row.RestrictedToAccounts);
-    event.moderationStatus = EventModerationStatus.fromName(row.ModerationStatus);
+    event.moderationStatus = EventModerationStatus.fromName(
+        row.ModerationStatus
+    );
     event.moderator = SPField.toUser(row.Moderator);
-    event.moderationTimestamp = SPField.fromDateTime(row, 'ModerationTimestamp', siteTimeZone);
+    event.moderationTimestamp = SPField.fromDateTime(
+        row,
+        "ModerationTimestamp",
+        siteTimeZone
+    );
     event.moderationMessage = decode(row.ModerationMessage);
-    event.isRecurring = SPField.fromRecurrence(row, 'fRecurrence');
-    event.recurrenceUID = SPField.fromGuid(row, 'UID');
+    event.isRecurring = SPField.fromRecurrence(row, "fRecurrence");
+    event.recurrenceUID = SPField.fromGuid(row, "UID");
 
     if (event.isRecurring) {
-        const seriesMasterId = SPField.fromInteger(row, 'MasterSeriesItemID');
-        if (seriesMasterId) { // this is an exception occurrence to the series
+        const seriesMasterId = SPField.fromInteger(row, "MasterSeriesItemID");
+        if (seriesMasterId) {
+            // this is an exception occurrence to the series
             event.seriesMaster.set(eventsById.get(seriesMasterId));
-            event.recurrenceExceptionInstanceDate = SPField.fromDateTime(row, 'RecurrenceID', siteTimeZone);
-            event.recurrenceInstanceCancelled = (SPField.fromInteger(row, 'EventType') === 3);
-        } else { // this is the series master
-            const duration = SPField.fromInteger(row, 'Duration');
-            event.end = event.start.clone().add(duration, 'seconds');
-            event.recurrence = RecurrenceData.deserialize(decode(row.RecurrenceData || ''));
+            event.recurrenceExceptionInstanceDate = SPField.fromDateTime(
+                row,
+                "RecurrenceID",
+                siteTimeZone
+            );
+            event.recurrenceInstanceCancelled =
+                SPField.fromInteger(row, "EventType") === 3;
+        } else {
+            // this is the series master
+            const duration = SPField.fromInteger(row, "Duration");
+            event.end = isAllDay ? event.start.clone().set({hours: 23, minutes: 59}) : event.start.clone().add(duration, "seconds");
+            event.recurrence = RecurrenceData.deserialize(
+                decode(row.RecurrenceData || "")
+            );
+            if (event.recurrence && event.recurrence.until && event.recurrence.until.date) {
+                event.recurrence.until.date = event.recurrence.until.date.tz(siteTimeZone.momentId);
+            }
+            console.log("event", event);
         }
     }
+    event.teamsGroupChatId = decode(row.TeamsGroupChatId);
 };
 
 const getEventTypeValue = (event: Event) => {
@@ -99,44 +147,97 @@ const getEventTypeValue = (event: Event) => {
     if (!event.isSeriesException) return 1; // 1 = series master
     if (!event.recurrenceInstanceCancelled) return 4; // 4 = this one occurrence of the series is an exception (date/time change)
     return 3; // 3 = cancelled this one occurrence of a series
-}
+};
 
-const toUpdateListItem = (event: Event): IEventUpdateListItem => {
-    const { isNew, isAllDay, isRecurring, isSeriesMaster, isSeriesException } = event;
+const toUpdateListItem = (
+    event: Event,
+    siteTimeZone: ITimeZone
+): IEventUpdateListItem => {
+    const { isNew, isAllDay, isRecurring, isSeriesMaster, isSeriesException } =
+        event;
+    if(isRecurring && event.recurrence.until.type === RecurUntilType.date){
+        event.recurrence.until.date.set({hours:23,minutes:59});
+    }
     return {
         Title: event.title,
         Description: event.description,
         Location: event.location,
         ContactsId: SPField.fromUsers(event.contacts),
         RefinerValuesId: SPField.toLookupMulti(event.refinerValues.get()),
-        EventDate: isAllDay ? SPField.toDateOnly(event.start) : SPField.toDateTime(event.start),
-        EndDate: isAllDay ? SPField.toDateOnly(event.end) : SPField.toDateTime(event.end),
+        EventDate: isAllDay
+            ? SPField.toDateOnly(event.start)
+            : SPField.toDateTime(event.start, siteTimeZone),
+        EndDate: isAllDay
+            ? SPField.toDateOnly(event.end)
+            : SPField.toDateTime(event.end, siteTimeZone),
         fAllDayEvent: event.isAllDay,
         IsConfidential: event.isConfidential,
         RestrictedToAccountsId: SPField.fromUsers(event.restrictedToAccounts),
-        ModerationStatus: event.moderationStatus?.name || EventModerationStatus.Pending.name,
+        ModerationStatus:
+            event.moderationStatus?.name || EventModerationStatus.Pending.name,
         ModeratorId: SPField.fromUser(event.moderator),
-        ModerationTimestamp: SPField.toDateTime(event.moderationTimestamp),
+        ModerationTimestamp: SPField.toDateTime(
+            event.moderationTimestamp,
+            siteTimeZone
+        ),
         ModerationMessage: event.moderationMessage,
         fRecurrence: SPField.tofRecurrence(isRecurring),
         EventType: getEventTypeValue(event),
-        RecurrenceData: isSeriesMaster ? RecurrenceData.serialize(event.recurrence) : undefined,
-        MasterSeriesItemID: isSeriesException ? event.seriesMaster.get()?.id : undefined,
-        RecurrenceID: isSeriesException ? SPField.toDateTime(event.recurrenceExceptionInstanceDate) : undefined,
+        RecurrenceData: isSeriesMaster
+            ? RecurrenceData.serialize(event.recurrence)
+            : undefined,
+        MasterSeriesItemID: isSeriesException
+            ? event.seriesMaster.get()?.id
+            : undefined,
+        RecurrenceID: isSeriesException
+            ? SPField.toDateTime(
+                  event.recurrenceExceptionInstanceDate,
+                  siteTimeZone
+              )
+            : undefined,
         UID: isRecurring && isNew ? event.recurrenceUID?.toString() : undefined,
-        Duration: event.duration.asSeconds()
+        Duration: event.duration.asSeconds(),
+        TeamsGroupChatId: event.teamsGroupChatId
     };
 };
 
 export class EventLoader extends PagedViewLoader<Event> {
-    constructor(schema: IRhythmOfBusinessCalendarSchema, timezones: ITimeZoneService, spo: ISharePointService, liveUpdate: ILiveUpdateService, private readonly _refinerValueLoader: RefinerValueLoader) {
-        super({ ctor: Event, view: schema.eventsList.view_AllEvents, timezones, spo, liveUpdate, fastLoad: { useCache: true } });
+    constructor(
+        schema: IRhythmOfBusinessCalendarSchema,
+        timezones: ITimeZoneService,
+        spo: ISharePointService,
+        liveUpdate: ILiveUpdateService,
+        private readonly _refinerValueLoader: RefinerValueLoader
+    ) {
+        super({
+            ctor: Event,
+            view: schema.eventsList.view_AllEvents,
+            timezones,
+            spo,
+            liveUpdate,
+            fastLoad: { useCache: true },
+        });
 
         this.registerDependency(_refinerValueLoader);
     }
 
-    protected readonly extractReferencedUsers = (event: Event) => [...event.contacts, ...event.restrictedToAccounts, event.moderator];
-    protected readonly toEntity = (row: IEventListItemResult, event: Event) => toEvent(row, event, this.timezones.siteTimeZone, this._refinerValueLoader, this._entitiesById);
-    protected readonly updateListItem = toUpdateListItem;
-    protected readonly diagnosePersistError = (error: any) => ErrorHandler.is_412_PRECONDITION_FAILED(error) ? ErrorDiagnosis.Propogate : ErrorDiagnosis.Critical;
+    protected readonly extractReferencedUsers = (event: Event) => [
+        ...event.contacts,
+        ...event.restrictedToAccounts,
+        event.moderator,
+    ];
+    protected readonly toEntity = (row: IEventListItemResult, event: Event) =>
+        toEvent(
+            row,
+            event,
+            this.timezones.siteTimeZone,
+            this._refinerValueLoader,
+            this._entitiesById
+        );
+    protected readonly updateListItem = (event: Event) =>
+        toUpdateListItem(event, this.timezones.siteTimeZone);
+    protected readonly diagnosePersistError = (error: any) =>
+        ErrorHandler.is_412_PRECONDITION_FAILED(error)
+            ? ErrorDiagnosis.Propogate
+            : ErrorDiagnosis.Critical;
 }

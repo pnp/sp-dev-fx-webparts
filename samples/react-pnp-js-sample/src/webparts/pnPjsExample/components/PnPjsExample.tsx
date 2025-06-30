@@ -9,8 +9,9 @@ import { Caching } from "@pnp/queryable";
 import { getSP } from "../pnpjsConfig";
 import { SPFI, spfi } from "@pnp/sp";
 import { Logger, LogLevel } from "@pnp/logging";
-import { IItemUpdateResult } from "@pnp/sp/items";
-import { Label, PrimaryButton } from '@microsoft/office-ui-fabric-react-bundle';
+import { Web } from "@pnp/sp/webs";
+
+import { Label, PrimaryButton } from  '@fluentui/react';
 
 export interface IAsyncAwaitPnPJsProps {
   description: string;
@@ -126,9 +127,9 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
       const [batchedSP, execute] = this._sp.batched();
 
       //Clone items from the state
-      const items = JSON.parse(JSON.stringify(this.state.items));
+      const items: IFile[] = JSON.parse(JSON.stringify(this.state.items));
 
-      const res: IItemUpdateResult[] = [];
+      const res: { Id: number, Title: string }[] = [];
 
       for (let i = 0; i < items.length; i++) {
         // you need to use .then syntax here as otherwise the application will stop and await the result
@@ -138,6 +139,7 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
           .getById(items[i].Id)
           .update({ Title: `${items[i].Name}-Updated` })
           .then(r => res.push(r));
+          
       }
       // Executes the batched calls
       await execute();
@@ -146,8 +148,8 @@ export default class PnPjsExample extends React.Component<IPnPjsExampleProps, II
       for (let i = 0; i < res.length; i++) {
         //If the result is successful update the item
         //NOTE: This code is over simplified, you need to make sure the Id's match
-        const item = await res[i].item.select("Id, Title")<{ Id: number, Title: string }>();
-        items[i].Name = item.Title;
+        
+        items[i].Title = `${items[i].Name}-Updated`;
       }
 
       //Update the state which rerenders the component

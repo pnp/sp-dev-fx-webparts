@@ -73,6 +73,7 @@
         "pictureUrl": "https://github.com/AriGunawan.png"
       }
     ],
-    "references": []
+    "references": [],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-form"
   }
-  ]
+]

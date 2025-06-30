@@ -1,0 +1,69 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+$primaryColor: "[theme: themePrimary, default: #0078d7]";
+
+:global {
+  #workbenchPageContent,
+  .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+  }
+}
+
+.container {
+  display: flex;
+}
+.webpartTitle {
+  font-family: var(--fontFamilyCustomFont1500, var(--fontFamilyBase));
+}
+.contentWrapper {
+  display: grid;
+  gap: 3rem;
+}
+.contentTitle,
+.userName {
+  color: $primaryColor;
+  font-family: var(--fontFamilyCustomFont1500, var(--fontFamilyBase));
+}
+.contentDescription,
+.designation {
+  font-family: var(--fontFamilyCustomFont800, var(--fontFamilyBase));
+}
+.asideWrapper {
+  width: 30%;
+}
+.carouselWrapper {
+  width: 70%;
+  position: relative;
+}
+.contentDescriptionWrapper {
+  display: grid;
+  gap: 1rem;
+  width: 85%;
+}
+.userInfo {
+  display: grid;
+  gap: 0.2rem;
+}
+img {
+  object-fit: cover;
+}
+
+// Fade
+.fade_left,
+.fade_right,.fade_left_dark,.fade_right_dark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem; /* Equivalent to w-16 in Tailwind */
+  z-index: 10;
+}
+
+.fade_left {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.fade_right {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}

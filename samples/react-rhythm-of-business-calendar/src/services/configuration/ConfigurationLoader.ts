@@ -1,8 +1,9 @@
 import { ErrorHandler } from "common";
 import { PagedViewLoader, IListItemResult, SPField, buildLiveList, IUpdateListItem, ErrorDiagnosis } from "common/sharepoint";
 import { ILiveUpdateService, ISharePointService, ITimeZoneService } from "common/services";
-import { ViewKeys } from "model";
+import { ViewKeys, ViewYearFYKeys, ListViewKeys } from "model";
 import { Configuration, ConfigurationList } from 'schema';
+import { TemplateViewKeys } from "model/TemplateViewKeys";
 
 interface IConfigurationListItemResult extends IListItemResult {
     readonly SchemaVersion: SPField.Query_Number;
@@ -14,6 +15,12 @@ interface IConfigurationListItemResult extends IListItemResult {
     readonly QuarterViewGroupByRefinerId: SPField.Query_Number;
     readonly UseApprovals: SPField.Query_Boolean;
     readonly AllowConfidentialEvents: SPField.Query_Boolean;
+    readonly UseApprovalsTeamsNotification: SPField.Query_Boolean;
+    readonly UseApprovalsEmailNotification: SPField.Query_Boolean;
+    readonly FiscalYearStartYear: SPField.Query_Choice;
+    readonly ListViewColumn: SPField.Query_ChoiceMulti;
+    readonly UseAddToOutlook: SPField.Query_Boolean;
+    readonly TemplateView: SPField.Query_ChoiceMulti;
 }
 
 interface IConfigurationUpdateListItem extends IUpdateListItem {
@@ -27,6 +34,12 @@ interface IConfigurationUpdateListItem extends IUpdateListItem {
     readonly QuarterViewGroupByRefinerId: SPField.Update_Number;
     readonly UseApprovals: SPField.Update_Boolean;
     readonly AllowConfidentialEvents: SPField.Update_Boolean;
+    readonly UseApprovalsTeamsNotification: SPField.Update_Boolean;
+    readonly UseApprovalsEmailNotification: SPField.Update_Boolean;
+    readonly FiscalYearStartYear: SPField.Update_Choice;
+    readonly ListViewColumn: SPField.Update_ChoiceMulti;
+    readonly UseAddToOutlook: SPField.Update_Boolean;
+    readonly TemplateView: SPField.Update_ChoiceMulti;
 }
 
 const toConfiguration = async (row: IConfigurationListItemResult, config: Configuration): Promise<void> => {
@@ -40,6 +53,12 @@ const toConfiguration = async (row: IConfigurationListItemResult, config: Config
     config.quarterViewGroupByRefinerId = SPField.fromInt(row, 'QuarterViewGroupByRefinerId', undefined);
     config.useApprovals = SPField.fromYesNo(row, 'UseApprovals', false);
     config.allowConfidentialEvents = SPField.fromYesNo(row, 'AllowConfidentialEvents', false);
+    config.useApprovalsTeamsNotification = SPField.fromYesNo(row, 'UseApprovalsTeamsNotification', false);
+    config.useApprovalsEmailNotification = SPField.fromYesNo(row, 'UseApprovalsEmailNotification', false);
+    config.fiscalYearStartYear = row.FiscalYearStartYear as ViewYearFYKeys || ViewYearFYKeys["Next Year"];
+    config.listViewColumn = row.ListViewColumn as ListViewKeys[] || [ListViewKeys["displayName"]];
+    config.useAddToOutlook = SPField.fromYesNo(row, 'UseAddToOutlook', false);
+    config.templateView = row.TemplateView as TemplateViewKeys[] || [TemplateViewKeys["eventTitle"]];
 };
 
 const toUpdateListItem = (config: Configuration): IConfigurationUpdateListItem => {
@@ -55,7 +74,13 @@ const toUpdateListItem = (config: Configuration): IConfigurationUpdateListItem =
             RefinerRailInitiallyExpanded: config.refinerRailInitiallyExpanded,
             QuarterViewGroupByRefinerId: config.quarterViewGroupByRefinerId || 0,
             UseApprovals: config.useApprovals,
-            AllowConfidentialEvents: config.allowConfidentialEvents
+            AllowConfidentialEvents: config.allowConfidentialEvents,
+            UseApprovalsTeamsNotification: config.useApprovalsTeamsNotification,
+            UseApprovalsEmailNotification: config.useApprovalsEmailNotification,
+            FiscalYearStartYear : config.fiscalYearStartYear,
+            ListViewColumn: SPField.toChoiceMulti(config.listViewColumn as any[]),
+            UseAddToOutlook: config.useAddToOutlook,
+            TemplateView: SPField.toChoiceMulti(config.templateView as any[]),    
         },
         // 1.1 fields
         ...(config.schemaVersion >= 1.1 && {

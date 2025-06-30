@@ -14,8 +14,8 @@ This web part demonstrates building a React functional component that uses data 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg) 
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
+![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg) 
+![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -32,7 +32,7 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Contributors
 
-* Bill Ayers
+* [Bill Ayers (SPDoctor)](https://github.com/SPDoctor)
 * [Don Kirkham](https://github.com/DonKirkham)
 
 ## Version history
@@ -42,6 +42,7 @@ Version|Date|Comments
 1.0|June 14, 2019|Initial release
 2.0|February 15, 2022|Upgrade to SPFx v1.13.1
 2.1|February 21, 2022|Upgrade to SPFx v1.14.0
+2.2|October 16, 2022|Upgrade to SPFx v1.18.0
 
 ## Minimal Path to Awesome
 
@@ -71,7 +72,7 @@ This is an extension of the approach used in the [React-Functional-Component](ht
 
 ## TeamsTrackerWebPart.ts Initialise PnPJS
 
-The onInit method of BaseClientSideWebPart is overriden to initialise the PnPJS graph object. The web part is then able to get access to the Microsoft Graph using the PnPJS library. The User.Read.All permission is implicitly provided.
+The onInit method of BaseClientSideWebPart is overridden to initialise the PnPJS graph object. The web part is then able to get access to the Microsoft Graph using the PnPJS library. The User.Read.All permission is implicitly provided.
 
 ## Functional Component with state
 
@@ -81,7 +82,7 @@ The TeamsTracker.tsx React Component is a React functional component. This simpl
   const initialTeamsList: MSGraph.Group[] = null;
   const [teamsList, setTeamsList] = React.useState(initialTeamsList);
 ```
-React.useState takes an initial value for the state variable, which we initialise to *null* but by means of a strongly typed const. This means that we will get type checking and intellisense for the state object. React.useState returns an array of two objects. The first is a variable containing the state value, and the second is a setter function for the value, and the convention is to use the array destructuring operator to unpack them into local constants.  Whenever we need to use the current value of the teamsList we just use it as a normal variable, and wherever we need to change the value we call *setTeamsList(newValue)*.
+React.useState takes an initial value for the state variable, which we initialize to *null* but by means of a strongly typed const. This means that we will get type checking and intellisense for the state object. React.useState returns an array of two objects. The first is a variable containing the state value, and the second is a setter function for the value, and the convention is to use the array destructuring operator to unpack them into local constants.  Whenever we need to use the current value of the teamsList we just use it as a normal variable, and wherever we need to change the value we call *setTeamsList(newValue)*.
 
 ## Fetching Data
 
@@ -89,7 +90,7 @@ If we were writing a React component class, we would need to use various lifecyc
 
 ```
   React.useEffect(() => {
-    graph.me.joinedTeams.get().then(teams => { setTeamsList(teams); });
+    await graph.me.joinedTeams.get().then(teams => { setTeamsList(teams); });
   }, []);
 ```
 We use the PnPJS library to get a list of Teams from the Microsoft Graph, and then use the setTeamsList method (which you may remember was the second element in the array returned by the React.useState function) to set the value of the state variable. Calling setTeamsList is very similar to calling *setState()* when doing things the 'old way'. It will result in the component being re-rendered to reflect the changes to the state variable.
@@ -116,13 +117,13 @@ The `Teams.tsx` component is only responsible for rendering an individual team, 
 ```
 export default function Team({ channelID, displayName, showChannels }) {
 ```
-Again we use state to manage a list of channels and initialise it to an empty array. But in this case we have a property *showChannels* that is the flag set by the user in the property pane. If this is enabled we retrieve the channels from the Microsoft Graph using the PnPJS library, and if not we set it to an empty array. We need to explicitly reset the array in case the user enables and then subsequently disables the *showChannels* option. Finally, notice that we now need to include a dependency for the second argument of *useEffect* so that the framework knows to call the method again if the value of showChannels changes.
+Again we use state to manage a list of channels and initialize it to an empty array. But in this case we have a property *showChannels* that is the flag set by the user in the property pane. If this is enabled we retrieve the channels from the Microsoft Graph using the PnPJS library, and if not we set it to an empty array. We need to explicitly reset the array in case the user enables and then subsequently disables the *showChannels* option. Finally, notice that we now need to include a dependency for the second argument of *useEffect* so that the framework knows to call the method again if the value of showChannels changes.
 
 ```
   const [channelsList, setChannelsList] = React.useState([]);
   React.useEffect(() => {
     if (showChannels)
-      graph.teams.getById(channelID).channels.get().then(channels => { setChannelsList(channels); });
+      await graph.teams.getById(channelID).channels.get().then(channels => { setChannelsList(channels); });
     else
       setChannelsList([]);
   }, [showChannels]);

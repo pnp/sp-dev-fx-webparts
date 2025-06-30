@@ -1,6 +1,6 @@
 {
     "name": "react-enhanced-powerapps",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "private": true,
     "main": "lib/index.js",
     "engines": {
@@ -14,23 +14,26 @@
         "postversion": "gulp dist"
     },
     "dependencies": {
+        "@microsoft/load-themed-styles": "^2.0.70",
         "@microsoft/sp-core-library": "1.13.1",
         "@microsoft/sp-lodash-subset": "1.13.1",
         "@microsoft/sp-office-ui-fabric-core": "1.13.1",
         "@microsoft/sp-property-pane": "1.13.1",
         "@microsoft/sp-webpart-base": "1.13.1",
+        "@pnp/common": "^1.0.1",
         "@pnp/spfx-controls-react": "1.19.0",
         "@pnp/spfx-property-controls": "1.19.0",
+        "lodash": ">=4.17.21",
+        "lodash.template": ">=4.5.0",
         "office-ui-fabric-react": "6.214.0",
-        "react": "16.8.5",
+        "postcss-selector-parser": "^6.0.13",
+        "react": "^16.13.1",
         "react-dom": "16.8.5",
-        "lodash": ">=4.17.19",
-        "serialize-javascript": ">=2.1.1",
-        "lodash.template": ">=4.5.0"
+        "serialize-javascript": ">=2.1.1"
     },
     "devDependencies": {
         "@microsoft/rush-stack-compiler-3.3": "0.3.5",
-        "@microsoft/sp-build-web": "1.13.1",
+        "@microsoft/sp-build-web": "^1.13.1",
         "@microsoft/sp-module-interfaces": "1.13.1",
         "@microsoft/sp-tslint-rules": "1.13.1",
         "@types/chai": "3.4.34",
@@ -43,10 +46,11 @@
         "gulp": "~4.0.2",
         "gulp-sequence": "1.0.0",
         "gulp-stylelint": "^13.0.0",
-        "stylelint": "^13.6.1",
+        "stylelint": "^13.0.0",
         "stylelint-config-css-modules": "^2.2.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-scss": "^3.18.0",
-        "webpack-bundle-analyzer": "^3.8.0"
+        "typescript": "^3.3.4000",
+        "webpack-bundle-analyzer": "^4.10.2"
     }
 }

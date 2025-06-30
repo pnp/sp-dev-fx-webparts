@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-simple-snackbar/package.json b/node_modules/react-simple-snackbar/package.json
+index f0277bf..88a06f7 100644
+--- a/node_modules/react-simple-snackbar/package.json
++++ b/node_modules/react-simple-snackbar/package.json
+@@ -83,8 +83,8 @@
+     "serialize-javascript": "^5.0.1"
+   },
+   "peerDependencies": {
+-    "react": "16.x",
+-    "react-dom": "16.x"
++    "react": "18.x",
++    "react-dom": "18.x"
+   },
+   "jest": {
+     "setupFilesAfterEnv": [

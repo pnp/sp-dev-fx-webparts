@@ -2,11 +2,20 @@
 
 ## Summary
 
-This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.
+This web part fetches all the automatically added header anchor tags in a SharePoint page and displays them in a navigation component.
 
-When added to a Vertical Section it can be used as a Contents table for the page
+When added to a vertical section it can be used as a contents table for the page:
 
 ![Page Navigator](./assets/PageNavigator.gif)
+
+The Properties `Sticky Mode` and `Parent Distance` can be configured to allow the Page Navigator to remain visible while scrolling.
+When Sticky Mode is enabled, CSS will be added to the element `Parent Distance` nodes above the Page Navigator component. For example, `Parent Distance: 1` will apply the CSS to the direct parent element of the webpart, whereas `Parent Distance: 2` will apply the CSS to the parent of the parent, etc.
+
+![Page Navigator](./assets/PageNavigatorProperties.png)
+
+As this feature involves modifying HTML elements outside of the webpart, it could stop working in the future if Microsoft change their HTML/CSS etc.
+
+At the time of writing, Sticky Parent Distance = 1 works for a Page Navigator configured on a vertical section like the example shown above.
 
 ## Compatibility
 
@@ -15,8 +24,8 @@ When added to a Vertical Section it can be used as a Contents table for the page
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -36,6 +45,9 @@ Version|Date|Comments
 1.5|July 19, 2022|Bug fixes
 1.6|August 8, 2022|Add theme provider and bug fixes
 1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
+1.8|May 13, 2023|Fixed issue when heading has a + symbol
+1.9|October 6, 2024|SPFx Upgraded to 1.20.0 and code refactored
+1.10|March 15, 2025|Added Sticky Mode options
 
 ## Minimal Path to Awesome
 
@@ -54,6 +66,8 @@ Version|Date|Comments
 
 * [Aakash Bhardwaj](https://github.com/aakashbhardwaj619)
 * [Jasey Waegebaert](https://github.com/Jwaegebaert)
+* [Mike Zimmerman](https://github.com/mikezimm)
+* [Tobias Maestrini](https://github.com/tmaestrini)
 
 ## Help
 

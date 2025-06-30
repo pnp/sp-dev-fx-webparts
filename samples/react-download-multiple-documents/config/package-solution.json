@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-download-multiple-documents-client-side-solution",
+    "id": "75ab4de7-3224-449a-b914-7d0b420598b5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-download-multiple-documents description"
+      },
+      "longDescription": {
+        "default": "react-download-multiple-documents description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-download-multiple-documents Feature",
+        "description": "The feature that activates elements of the react-download-multiple-documents solution.",
+        "id": "952046c9-58d0-498e-bd7d-dc508fa671cf",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-download-multiple-documents.sppkg"
+  }
+}

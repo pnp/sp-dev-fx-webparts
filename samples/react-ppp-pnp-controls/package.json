@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.9": "^0.4.48",
-    "@microsoft/sp-build-web": "1.15.0-beta.1",
+    "@microsoft/sp-build-web": "1.18.0",
     "@microsoft/sp-module-interfaces": "1.15.0-beta.1",
     "@microsoft/sp-tslint-rules": "1.15.0-beta.1",
     "@types/react": "16.9.51",

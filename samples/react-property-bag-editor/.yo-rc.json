@@ -1,7 +1,17 @@
 {
   "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "componentType": "webpart",
+    "packageManager": "npm",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false,
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.9.1",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "16.20.0",
     "libraryName": "react-property-bag-editor",
     "libraryId": "12dac38e-b255-44ce-9f06-050571b34d39",
-    "framework": "react"
+    "version": "1.17.1"
   }
 }

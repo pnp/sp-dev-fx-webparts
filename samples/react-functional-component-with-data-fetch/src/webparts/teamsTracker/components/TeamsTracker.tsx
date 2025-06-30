@@ -1,26 +1,30 @@
 import * as React from 'react';
 import styles from './TeamsTracker.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
-import * as Fabric from 'office-ui-fabric-react';
 import { graph } from '@pnp/graph';
 import * as MSGraph from '@microsoft/microsoft-graph-types';
 import { ITeamsTrackerWebPartProps } from '../TeamsTrackerWebPart';
 import Team from './Team';
+import { Spinner } from '@fluentui/react';
 
-export default function TeamsTracker(props: ITeamsTrackerWebPartProps) {
+export default function TeamsTracker(props: ITeamsTrackerWebPartProps): JSX.Element {
 
   // Use React Hooks to manage state - useState returns value and setter as array...
   const initialTeamsList: MSGraph.Group[] = null;
   const [teamsList, setTeamsList] = React.useState(initialTeamsList);
-  // Use React Hooks to manage lifecycle events like data fetching...
+
   React.useEffect(() => {
-    graph.me.joinedTeams.get().then(teams => { setTeamsList(teams); });
+    (async (): Promise<void> => {
+      const teams = await graph.me.joinedTeams.get();
+      setTeamsList(teams);
+    })().catch(err => {
+      console.error(err);
+    });
   }, []);
 
-  // create the content to be shown in the second column
-  var content = null;
-  if (teamsList === null) content = <Fabric.Spinner />;
-  else if (teamsList.length === 0) content = <div>You are not a member if any teams.</div>;
+  let content = null;
+  if (teamsList === null) content = <Spinner />;
+  else if (teamsList.length === 0) content = <div>You are not a member of any teams.</div>;
   else content = (
     <div>
       <ul>

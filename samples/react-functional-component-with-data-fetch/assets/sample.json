@@ -3,13 +3,13 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-functional-component-with-data-fetch",
     "source": "pnp",
     "title": "React Functional Component web part with data fetch",
-    "shortDescription": "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user\u0027s Teams and, optionally, the channels in each Team.",
+    "shortDescription": "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component-with-data-fetch",
     "longDescription": [
-      "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user\u0027s Teams and, optionally, the channels in each Team."
+      "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team."
     ],
     "creationDateTime": "2019-06-14",
-    "updateDateTime": "2022-02-21",
+    "updateDateTime": "2023-10-10",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.14.0"
+        "value": "1.18.0"
       }
     ],
     "thumbnails": [
@@ -34,8 +34,7 @@
     "authors": [
       {
         "gitHubAccount": "SPDoctor",
-        "company": "Flow Simulation Ltd.",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/10207194?s=460\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10207194?s=460&v=4",
         "name": "Bill Ayers",
         "twitter": "SPDoctor"
       },
@@ -51,6 +50,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component-with-data-fetch"
   }
 ]

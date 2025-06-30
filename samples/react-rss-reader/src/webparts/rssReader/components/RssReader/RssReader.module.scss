@@ -1,20 +1,8 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .rssReader {
   .rssReaderHeader {
     position: relative;
-
-    .rssReaderListViewAll {
-      position: absolute;
-      top: 7px;
-      right: 0px;
-
-      padding: 0px;
-
-      A {
-        color: $ms-color-themePrimary;
-      }
-    }
   }
 
   .rssReaderList {
@@ -59,7 +47,6 @@
 
   .itemDate {
     font-size:11px;
-    color:$ms-color-neutralDark;
   }
 
   .itemContent {

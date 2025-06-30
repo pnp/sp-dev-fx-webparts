@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "my-tools-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/myTools/MyToolsWebPart.js",
+          "manifest": "./src/webparts/myTools/MyToolsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MyToolsWebPartStrings": "lib/webparts/myTools/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

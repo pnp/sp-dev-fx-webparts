@@ -46,6 +46,8 @@ define([], function() {
     "DateFormatLabel": "Date Format",
     "BackgroundColorLabel": "Background Color",
     "FontColorLabel": "Title Color",
+    "UseThemeBackgroundColor": "Use background color from theme",
+    "UseThemeFontColor": "Use title color from theme",
 
 
     //feed service options

@@ -16,6 +16,8 @@ export interface ITimeZone {
 export interface ITimeZoneService extends IService {
     readonly timeZones: ITimeZone[];
     readonly siteTimeZone: ITimeZone;
+    readonly localTimeZone: ITimeZone;
+    readonly isDifferenceInTimezone: boolean;
     timeZoneFromId(id: number): ITimeZone;
     timeZoneForWeb(web?: IWeb): Promise<ITimeZone>;
 }
@@ -24,10 +26,15 @@ export type TimeZoneServiceProp = {
     [TimeZoneService]: ITimeZoneService;
 };
 
-export const useTimeZoneService = () => useServices<TimeZoneServiceProp>()[TimeZoneService];
+export const useTimeZoneService = () =>
+    useServices<TimeZoneServiceProp>()[TimeZoneService];
 
-export const TimeZoneServiceDescriptor: IServiceDescriptor<typeof TimeZoneService, ITimeZoneService, TimeZoneServiceProp> = {
+export const TimeZoneServiceDescriptor: IServiceDescriptor<
+    typeof TimeZoneService,
+    ITimeZoneService,
+    TimeZoneServiceProp
+> = {
     symbol: TimeZoneService,
     dependencies: [],
-    online: OnlineTimeZoneService
+    online: OnlineTimeZoneService,
 };

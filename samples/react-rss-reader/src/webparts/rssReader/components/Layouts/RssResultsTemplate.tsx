@@ -21,7 +21,7 @@ export default class RssResultsTemplate extends React.Component<IRssResultsTempl
     };
   }
 
-  public render() {
+  public render(): any {
     const objectNode: any = document.querySelector("object[data='about:blank']");
 
     if (objectNode) {
@@ -33,21 +33,24 @@ export default class RssResultsTemplate extends React.Component<IRssResultsTempl
 
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     this._updateTemplate(this.props);
 
   }
 
-  public componentWillReceiveProps(nextProps: IRssResultsTemplateProps) {
-
-    this._updateTemplate(nextProps);
-
+  public componentDidUpdate(prevProps: IRssResultsTemplateProps): void {
+    // Only update template if props have changed
+    if (
+      prevProps.templateContent !== this.props.templateContent ||
+      prevProps.templateContext !== this.props.templateContext
+    ) {
+      this._updateTemplate(this.props);
+    }
   }
+    private async _updateTemplate(props: IRssResultsTemplateProps): Promise<void> {
 
-  private async _updateTemplate(props: IRssResultsTemplateProps): Promise<void> {
-
-    let templateContent = props.templateContent;
+    const templateContent = props.templateContent;
 
     // Process the Handlebars template
     const template = await this.props.templateService.processTemplate(props.templateContext, templateContent);

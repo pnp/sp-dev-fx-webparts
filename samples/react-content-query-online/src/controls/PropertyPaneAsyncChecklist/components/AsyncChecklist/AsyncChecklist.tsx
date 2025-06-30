@@ -1,7 +1,7 @@
 import * as React                   from 'react';
 import { clone }                    from '@microsoft/sp-lodash-subset';
 import { Text }                     from '@microsoft/sp-core-library';
-import { Spinner, Label, Checkbox } from 'office-ui-fabric-react';
+import { Spinner, Label, Checkbox } from '@fluentui/react';
 import { IAsyncChecklistProps }     from './IAsyncChecklistProps';
 import { IAsyncChecklistState }     from './IAsyncChecklistState';
 import { IChecklistItem }           from './IChecklistItem';
@@ -10,7 +10,7 @@ import styles                       from './AsyncChecklist.module.scss';
 export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsyncChecklistState> {
 
     /*************************************************************************************
-     * Stores the checked items 
+     * Stores the checked items
      *************************************************************************************/
     private checkedItems: string[];
 
@@ -62,7 +62,7 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
 
     /*************************************************************************************
      * Returns whether the checkbox with the specified ID should be checked or not
-     * @param checkboxId 
+     * @param checkboxId
      *************************************************************************************/
     private isCheckboxChecked(checkboxId: string) {
         return (this.checkedItems.filter((checkedItem) => { return checkedItem.toLowerCase().trim() == checkboxId.toLowerCase().trim(); }).length > 0);
@@ -73,6 +73,7 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
      * Loads the checklist items asynchronously
      *************************************************************************************/
     private loadItems() {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         let _this_ = this;
 
         _this_.checkedItems = this.getDefaultCheckedItems();
@@ -140,12 +141,12 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
 
         return (
             <div className={ styles.checklist }>
-                
+
                 <Label>{ this.props.strings.label }</Label>
 
                 { loading }
 
-                { !this.state.loading && 
+                { !this.state.loading &&
                     <div className={ styles.checklistItems }>
                         <div className={ styles.checklistPadding }>{ checklistItems }</div>
                     </div>

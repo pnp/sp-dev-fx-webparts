@@ -1,0 +1,53 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.datePickerCallout {
+    max-width: 500px;
+    padding: 20px 24px;
+
+    div[class^="dateTimePicker_"] {
+        >div[class^="container_"] {
+            flex-direction: row;
+
+            >div {
+                margin-top: 0px !important;
+            }
+
+            div[class^="labelCell_"] {
+                min-width: 5px;
+            }
+
+            div[class^="time_"] {
+                width: 150px;
+            }
+        }
+    }
+}
+.datePickerRow,
+.datePickerDropDown {
+    display: flex;
+    padding: 2px 0px;
+    margin: 0px;
+
+    >div:first-child {
+        min-width: 150px;
+
+        i {
+            padding-top: 2px;
+            padding-right: 0px;
+        }
+    }
+
+    span,
+    div {
+        line-height: 23px;
+        height: 25px;
+    }
+}
+
+div[role="gridcell"]:has(> .heatmapCell) {
+    padding:0;
+
+    >.heatmapCell{
+        padding: 8px 12px;
+    }
+}

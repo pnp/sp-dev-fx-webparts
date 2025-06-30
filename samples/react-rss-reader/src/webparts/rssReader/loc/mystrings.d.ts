@@ -42,7 +42,8 @@ declare interface IRssReaderWebPartStrings {
   DateFormatLabel: string;
   BackgroundColorLabel: string;
   FontColorLabel: string;
-
+  UseThemeBackgroundColor: string;
+  UseThemeFontColor: string;
 
 
   //feed service options

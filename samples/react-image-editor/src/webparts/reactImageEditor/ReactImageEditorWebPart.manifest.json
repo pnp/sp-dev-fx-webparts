@@ -8,16 +8,18 @@
   "manifestVersion": 2,
 
   "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
-    "title": { "default": "react-image-editor" },
-    "description": { "default": "react-image-editor description" },
+    "title": { "default": "Advanced Image Editor" },
+    "description": { "default": "Add an image to the page, resize and edit the image." },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "title": "react-image-editor Sample",
-      "showTitle":true,
+      "title": "Advanced Image Editor",
+      "showTitle":false,
+      "showEditIcon":false,
       "settings":[],
       "url":""
     }

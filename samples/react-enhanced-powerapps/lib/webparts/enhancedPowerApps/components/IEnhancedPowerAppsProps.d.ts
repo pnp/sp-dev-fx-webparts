@@ -42,6 +42,10 @@ export interface IEnhancedPowerAppsProps {
      */
     border: boolean;
     /**
+     * Whether we show webpart or not
+     */
+    isWebPartHiddenOnSmallDevices: boolean;
+    /**
      * Selected theme values to pass to Power Apps
      */
     themeValues: string[];

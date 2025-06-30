@@ -11,14 +11,15 @@ import styles from './MonthView.module.scss';
 interface IProps {
     row: ContentRowInfo;
     onActivate: (cccurrence: EventOccurrence, target: HTMLElement) => void;
+    selectedTemplateKeys?: string[];
 }
 
-export const ContentRow: FC<IProps> = ({ row: { items }, onActivate }) =>
+export const ContentRow: FC<IProps> = ({ row: { items }, onActivate, selectedTemplateKeys }) =>
     <Stack horizontal className={styles.content}>
         {items.map((item, idx) =>
             <StackItem key={idx} styles={blockStyles(item.duration)}>
                 {item instanceof EventItemInfo
-                    ? <EventItem eventInfo={item} onActivate={onActivate} />
+                    ? <EventItem eventInfo={item} onActivate={onActivate} selectedTemplateKeys={selectedTemplateKeys} />
                     : <ShimItem duration={item.duration} />
                 }
             </StackItem>

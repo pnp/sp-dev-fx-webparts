@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-kiota-custom-api-client",
     "source": "pnp",
-    "title": "React Kiota Custom API Client",
+    "title": "React Kiota Custom API Client Web Part",
     "shortDescription": "Using Kiota to generate a client to your AzureAd API and use it from a SPFx webpart.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kiota-custom-api-client",
     "longDescription": [
@@ -59,6 +59,7 @@
         "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
         "url": "https://aka.ms/m365pnp"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kiota-custom-api-client"
   }
 ]

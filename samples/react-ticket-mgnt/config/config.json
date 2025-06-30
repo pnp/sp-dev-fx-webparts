@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ticketing-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/ticketingDashboard/TicketingDashboardWebPart.js",
+          "manifest": "./src/webparts/ticketingDashboard/TicketingDashboardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TicketingDashboardWebPartStrings": "lib/webparts/ticketingDashboard/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
@@ -8,14 +9,18 @@ import {
 } from '@microsoft/sp-property-pane';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
-import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
+//import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls';
+
 import * as strings from 'KanbanBoardWebPartStrings';
-import { sp } from '@pnp/sp';
+import { spfi, SPFx } from "@pnp/sp";
 
 import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
 import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
+
 import { bucketOrder } from './components/bucketOrder';
+import { PropertyFieldOrder } from './components/PropertyOrderField/PropertyFieldOrder';
+
+
 import { mergeBucketsWithChoices } from './components/helper';
 
 import { IKanbanBucket } from '../../kanban';
@@ -23,6 +28,7 @@ import { IKanbanBucket } from '../../kanban';
 import { ISPKanbanService } from './services/ISPKanbanService';
 import SPKanbanService from './services/SPKanbanService';
 import MockKanbanService from './services/MockKanbanService';
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from './components/PropertyListPicker';
 
 export interface IKanbanBoardWebPartProps {
   hideWPTitle: boolean;
@@ -34,20 +40,19 @@ export interface IKanbanBoardWebPartProps {
 }
 
 export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoardWebPartProps> {
-  private kanbanComponent = null;
+  //private kanbanComponent = null;
   private dataService: ISPKanbanService;
   private statekey: string = Date.now().toString();
   public onInit(): Promise<void> {
 
     return super.onInit().then(_ => {
 
-      sp.setup({
-        spfxContext: this.context
-      });
-      if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
+      const sp = spfi().using(SPFx(this.context));
+      //.using(PnPLogging(LogLevel.Warning));
+      if (Environment.type === EnvironmentType.Test) {
         this.dataService = new MockKanbanService();
       } else {
-        this.dataService = new SPKanbanService();
+        this.dataService = new SPKanbanService(sp);
       }
 
     });
@@ -66,12 +71,13 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         statekey: this.statekey,
         context: this.context,
         listId: this.properties.listId,
-        configuredBuckets: this.properties.buckets
+        configuredBuckets: this.properties.buckets,
+        dataService: this.dataService
       }
     );
 
 
-    this.kanbanComponent = ReactDom.render(element, this.domElement);
+    ReactDom.render(element, this.domElement);
 
   }
 
@@ -105,14 +111,14 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
             disabled: false,
             onPropertyChange: this.listConfigurationChanged.bind(this),
             properties: this.properties,
-            context: this.context,
-            onGetErrorMessage: null,
+            context: (this.context as any),
+            onGetErrorMessage: () => '', //TODO
             deferredValidationTime: 0,
             key: 'listPickerFieldId',
             onListsRetrieved: (lists) => {
               //TODO Check from TS Definition it should be a string but i get a number
               // with Typesafe equal it fails
-              if (Environment.type == EnvironmentType.Test) {
+              if (Environment.type === EnvironmentType.Test) {
                 return lists;
               } else {
                 const alists = lists.filter((l: any) => {
@@ -131,14 +137,14 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         {
           groupName: strings.propertyPaneLabelOrderBuckets,
           groupFields: [
-            PropertyFieldOrder("buckets", {
+           PropertyFieldOrder("buckets", {
               key: "orderedItems",
               label: strings.propertyPaneLabelOrderBuckets,
               items: this.properties.buckets,
               properties: this.properties,
               onPropertyChange: this.onPropertyPaneFieldChanged,
               onRenderItem: bucketOrder,
-            })
+            }) 
           ]
         }
       );
@@ -173,12 +179,14 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
     };
   }
 
-  private listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any) {
+  public listConfigurationChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    console.log('listConfigurationChanged');
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+    
     this.refreshBucket();
 
   }
-  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any) {
+  private bucketConfigurationChanged(propertyPath: string, oldValue: any, newValue: any): void {
     //its an array part !!!!!
     if (propertyPath.indexOf('bucket_') !== -1) {
       const oribuckets: IKanbanBucket[] = cloneDeep(this.properties.buckets);
@@ -192,7 +200,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       this.context.propertyPane.refresh();
       this.render();
     } else {
-      throw "propertypath is not a bucket";
+      throw new Error("propertypath is not a bucket");
     }
   }
 
@@ -207,7 +215,8 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       this.properties.buckets = currentbuckets;
       this.context.propertyPane.refresh();
     }
-    );
+    )
+      .catch(error => { throw new Error('Error loading Buckets by refreshBucket') });
   }
 
 }

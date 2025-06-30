@@ -1,4 +1,4 @@
-http://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogramhttp://aka.ms/m365devprogram# Hide Lists WebPart
+https://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogram# Hide Lists WebPart
 
 ## Summary
 
@@ -44,7 +44,7 @@ PnP JS library to get relevant SharePoint lists and libraries from current Site 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 

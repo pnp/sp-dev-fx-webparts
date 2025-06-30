@@ -1,4 +1,4 @@
-import { IDatePickerStrings } from 'office-ui-fabric-react';
+import { IDatePickerStrings } from '@fluentui/react';
 
 export interface IQueryFilterStrings {
   fieldLabel: string;

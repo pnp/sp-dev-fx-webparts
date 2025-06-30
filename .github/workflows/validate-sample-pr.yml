@@ -1,0 +1,51 @@
+name: Validate SPFx Web Parts Sample PR
+
+on:
+  pull_request_target:
+    branches:
+      - "main"
+
+jobs:
+  validate:
+    if: github.event.pull_request.user.login != 'dependabot[bot]' && !contains(github.event.pull_request.labels.*.name, 'skip-validation')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Validate SPFx Sample PR Action
+        id: validate-spfx-sample-pr
+        uses: pnp/action-pr-validator@v1.1.1
+        with:
+          pr: ${{ toJson(github.event.pull_request) }}
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+          postComment: 'true'
+
+      - name: add success label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'true'
+        with:
+          labels: "Sample validation: Success"
+
+      - name: remove warning label
+        uses: actions-ecosystem/action-remove-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'true'
+        with:
+          labels: "Sample validation: Warning"
+        continue-on-error: true
+
+      - name: add warning label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'false'
+        with:
+          labels: "Sample validation: Warning"
+
+      - name: remove success label
+        uses: actions-ecosystem/action-remove-labels@v1
+        if: steps.validate-spfx-sample-pr.outputs.valid == 'false'
+        with:
+          labels: "Sample validation: Success"
+        continue-on-error: true

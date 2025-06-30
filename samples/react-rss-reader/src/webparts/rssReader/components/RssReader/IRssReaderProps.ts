@@ -5,6 +5,8 @@ import { FeedServiceOption, FeedLayoutOption } from        '../../../../models';
 
 import { BaseTemplateService } from                        '../../../../services/TemplateService';
 
+import { IReadonlyTheme } from                             '@microsoft/sp-component-base';
+
 export interface IRssReaderProps {
   feedUrl: string;
   feedService: FeedServiceOption;
@@ -38,6 +40,8 @@ export interface IRssReaderProps {
 
   backgroundColor: string;
   fontColor: string;
+  useThemeBackgroundColor: boolean;
+  useThemeFontColor: boolean;
 
   propertyPane?: IPropertyPaneAccessor;
 
@@ -55,4 +59,9 @@ export interface IRssReaderProps {
   templateContent: string;
 
   updateProperty: (value: string) => void;
+
+  /**
+   * Theme awareness
+   */
+  themeVariant: IReadonlyTheme | undefined;
 }

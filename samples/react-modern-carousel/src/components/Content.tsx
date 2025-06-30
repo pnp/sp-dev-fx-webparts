@@ -1,0 +1,35 @@
+import * as React from "react"
+import { Text } from "@fluentui/react-components"
+import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss"
+import { ContentProps } from "../types/ContentProps"
+import { useContext } from "react"
+import { WebpartContext } from "../webparts/awardRecognition/components/AwardRecognition"
+
+export const Content = ({ user }: ContentProps): JSX.Element => {
+  const contextInfo = useContext(WebpartContext)
+
+  return (
+    <section className={styles.contentWrapper}>
+      <Text size={600} weight='semibold' className={styles.webpartTitle}>
+        {contextInfo.mainHeading}
+      </Text>
+      <div className={styles.contentDescriptionWrapper}>
+        <Text size={400} weight='semibold' className={styles.contentTitle}>
+          {contextInfo.subHeading}
+        </Text>
+        <Text size={300} className={styles.contentDescription}>
+          {contextInfo.subHeadingDescription}
+        </Text>
+      </div>
+
+      <div className={styles.userInfo}>
+        <Text size={800} weight='semibold' className={styles.userName}>
+          {user?.Title}
+        </Text>
+        <Text size={400} className={styles.designation}>
+          {user?.Designation}
+        </Text>
+      </div>
+    </section>
+  )
+}

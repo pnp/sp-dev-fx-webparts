@@ -1,0 +1,37 @@
+{
+  "name": "advanced-iframe-webpart",
+  "version": "0.0.1",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "tasks": "gulp --tasks",
+    "serve": "gulp serve-deprecated",
+    "dist": "gulp clean && gulp build --ship &&  gulp bundle --ship && gulp package-solution --ship",
+    "tslint:autofix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "preversion": "node ./tools/pre-version.js",
+    "postversion": "gulp dist"
+  },
+  "dependencies": {
+    "@microsoft/rush-stack-compiler-4.2": "^0.3.1",
+    "@microsoft/sp-core-library": "1.13.1",
+    "@microsoft/sp-lodash-subset": "1.13.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.13.1",
+    "@microsoft/sp-property-pane": "1.13.1",
+    "@microsoft/sp-webpart-base": "1.13.1",
+    "@pnp/sp": "^3.17.0",
+    "@pnp/spfx-property-controls": "3.14.0",
+    "handlebars": "^4.7.8"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "1.13.1",
+    "@microsoft/sp-module-interfaces": "1.13.1",
+    "@microsoft/sp-tslint-rules": "1.13.1",
+    "@types/webpack-env": "1.13.1",
+    "ajv": "~5.2.2",
+    "gulp": "~4.0.2",
+    "gulp-sequence": "1.0.0"
+  }
+}

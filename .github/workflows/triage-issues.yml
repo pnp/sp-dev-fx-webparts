@@ -21,7 +21,7 @@ jobs:
         if: contains(github.event.issue.labels.*.name, 'type:bug-suspected') && steps.valid-authors.outputs.valid-authors == ''
         with:
           labels: status:wrong-author
-      - name: Notify when invalid authors
+      - name: Notify when invalid a
         if: contains(github.event.issue.labels.*.name, 'type:bug-suspected') && steps.valid-authors.outputs.valid-authors == ''
         uses: actions/github-script@0.8.0
         with:

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "advanced-iframe-webpart": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/advancediframewebpart/AdvancedIFrameWebpart.js",
+          "manifest": "./src/webparts/advancediframewebpart/AdvancedIFrameWebpart.manifest.json"
+        }
+      ]
+    }
+  },
+  "localizedResources": {
+    "AdvancedIFrameWebpartStrings": "lib/webparts/advancediframewebpart/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

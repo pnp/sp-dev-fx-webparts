@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams",
     "source": "pnp",
-    "title": "Public teams I\u0027m not a member of",
+    "title": "Public teams I'm not a member of Web Part",
     "shortDescription": "This web part lists all the public teams the current user is not yet a member of. They can then join any of those teams by clicking the button right next to the team name. This web part can also be added to Teams as a tab (built with the 1.7.1 plusbeta/preview version).",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-public-unjoined-teams",
     "longDescription": [
@@ -28,7 +28,7 @@
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif",
-        "alt": "Public teams I\u0027m not a member of"
+        "alt": "Public teams I'm not a member of"
       }
     ],
     "authors": [
@@ -46,6 +46,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-public-unjoined-teams"
   }
 ]

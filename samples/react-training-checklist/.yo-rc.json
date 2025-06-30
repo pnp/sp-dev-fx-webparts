@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0-beta.0",
+    "libraryName": "trainning-checklist-web-part",
+    "libraryId": "f9745724-d01a-4022-bbf5-cc4b89981c67",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "trainning-checklist-web-part",
+    "solutionShortDescription": "trainning-checklist-web-part description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

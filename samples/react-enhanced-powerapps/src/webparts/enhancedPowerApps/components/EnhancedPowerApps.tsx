@@ -26,6 +26,7 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
       dynamicPropName,
       locale,
       border,
+      isWebPartHiddenOnSmallDevices,
       height
      }  = this.props;
 
@@ -55,13 +56,11 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
         }
       });
     }
-
-
     // Build the frame url
     const frameUrl: string = `${appUrl}?source=SPClient-EnhancedPowerAppsWebPart&amp;locale=${locale}&amp;enableOnBehalfOf=true&amp;authMode=onbehalfof&amp;hideNavBar=true&amp;${dynamicPropValue}${themeParams}&locale=${locale}`;
 
     return (
-      <div className={ styles.enhancedPowerApps } style={needConfiguration ? {height:`315px`}:{height:`${height}px`}}>
+      <div className={ isWebPartHiddenOnSmallDevices?styles.enhancedPowerApps && styles.hideOnMobileDevices:styles.enhancedPowerApps} style={needConfiguration ? {height:`315px`}:{height:`${height}px`}}>
         {needConfiguration &&
          <Placeholder
          iconName='PowerApps'
@@ -72,7 +71,8 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
          {!needConfiguration &&
          <>
         { this.props.appWebLink &&
-        <iframe src={frameUrl} scrolling="no" allow="geolocation *; microphone *; camera *; fullscreen *;" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-forms allow-orientation-lock allow-downloads" width={this.props.width} height={height}
+        <iframe src={frameUrl} scrolling="no" allow="geolocation *; microphone *; camera *; fullscreen *;" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-forms allow-orientation-lock allow-downloads" 
+        width={this.props.width} height={height}
         frameBorder={border ? "1": "0"}
         ></iframe>
         }

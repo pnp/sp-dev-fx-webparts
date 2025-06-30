@@ -2,23 +2,24 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-image-editor",
     "source": "pnp",
-    "title": "Image Editor",
-    "shortDescription": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric",
+    "title": "React Image Editor",
+    "shortDescription": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Fluent UI.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-editor",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-editor",
     "longDescription": [
       "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric ",
-"Key features of the Editor",
-"* Resize",
-"* Crop",
-"* Flip",
-"* Rotate",
-"* Scale",
-"* Filter (Grayscale / Sepia)",
-"* Redo / Undo",
-"* Histoy of Actions"
+      "Key features of the Editor",
+      "* Resize",
+      "* Crop",
+      "* Flip",
+      "* Rotate",
+      "* Scale",
+      "* Filter (Grayscale / Sepia)",
+      "* Redo / Undo",
+      "* Histoy of Actions"
     ],
     "creationDateTime": "2021-03-17",
-    "updateDateTime": "2021-03-17",
+    "updateDateTime": "2025-04-02",
     "products": [
       "SharePoint"
     ],
@@ -29,7 +30,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.4.0"
+        "value": "1.21.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -42,19 +43,25 @@
     ],
     "thumbnails": [
       {
+        "name": "react-image-editor.gif",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
-        "alt": "React Image Editor Web part"
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "screenshot.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/screenshot.png",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "petkir",
-        "company": "Cubido Business Solutions GmbH",
+        "gitHubAccount": "https://github.com/petkir",
         "pictureUrl": "https://github.com/petkir.png",
-        "name": "Peter Paul Kirschner",
-        "twitter": "petkir_at"
+        "name": "Peter Paul Kirschner"
       }
     ],
     "references": [

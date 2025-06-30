@@ -59,6 +59,7 @@ export interface IEnhancedPowerAppsWebPartProps {
   height: number;
   width: number;
   aspectratio: '16:9'|'3:2'|'16:10'|'4:3'|'Custom';
+  isWebPartHiddenOnSmallDevices: boolean;
   themeValues: string[];
 }
 
@@ -132,6 +133,7 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
         height: clientHeight,
         themeVariant: this._themeVariant,
         border: this.properties.border,
+        isWebPartHiddenOnSmallDevices: this.properties.isWebPartHiddenOnSmallDevices,
         themeValues: this.properties.themeValues
       }
     );
@@ -171,6 +173,9 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
               groupFields: [
                 PropertyPaneToggle('border', {
                   label: strings.BorderFieldLabel
+                }),
+                PropertyPaneToggle('isWebPartHiddenOnSmallDevices', {
+                  label: strings.IsWebPartHiddenOnSmallDevicesFieldLabel
                 }),
                 PropertyPaneChoiceGroup('layout', {
                   label: strings.LayoutFieldLabel,
@@ -224,7 +229,7 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
                 }),
                 this.properties.layout === "AspectRatio" && this.properties.aspectratio === "Custom" && PropertyPaneTextField('height', {
                   label: strings.HeightFieldLabel,
-                }),
+                })
               ]
             },
             {

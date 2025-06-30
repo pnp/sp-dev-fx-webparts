@@ -27,9 +27,9 @@ build.configureWebpack.mergeConfig({
 
     generatedConfiguration.resolve.alias = { handlebars: 'handlebars/dist/handlebars.min.js' };
 
-    generatedConfiguration.module.rules.push(
+    /*generatedConfiguration.module.rules.push(
       { test: /\.js$/, loader: 'unlazy-loader' }
-    );
+    );*/
 
     generatedConfiguration.node = {
       fs: 'empty'
@@ -39,28 +39,14 @@ build.configureWebpack.mergeConfig({
   }
 });
 
-/**
- * StyleLinter configuration
- * Reference and custom gulp task
- */
-const stylelint = require('gulp-stylelint');
 
-/* Stylelinter sub task */
-let styleLintSubTask = build.subTask('stylelint', (gulp) => {
+var getTasks = build.rig.getTasks;
+build.rig.getTasks = function () {
+  var result = getTasks.call(build.rig);
 
-    console.log('[stylelint]: By default style lint errors will not break your build. If you want to change this behaviour, modify failAfterError parameter in gulpfile.js.');
+  result.set('serve', result.get('serve-deprecated'));
 
-    return gulp
-        .src('src/**/*.scss')
-        .pipe(stylelint({
-            failAfterError: false,
-            reporters: [{
-                formatter: 'string',
-                console: true
-            }]
-        }));
-});
-/* end sub task */
-
+  return result;
+};
 
 build.initialize(gulp);

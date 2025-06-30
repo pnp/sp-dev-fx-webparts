@@ -19,8 +19,8 @@ export class PropertyPaneAsyncChecklist implements IPropertyPaneField<IPropertyP
 
   /*****************************************************************************************
    * Property pane's contructor
-   * @param targetProperty 
-   * @param properties 
+   * @param targetProperty
+   * @param properties
    *****************************************************************************************/
   constructor(targetProperty: string, properties: IPropertyPaneAsyncChecklistProps) {
     this.targetProperty = targetProperty;
@@ -65,6 +65,7 @@ export class PropertyPaneAsyncChecklist implements IPropertyPaneField<IPropertyP
         stateKey: new Date().toString()
     });
 
+    // eslint-disable-next-line @microsoft/spfx/pair-react-dom-render-unmount
     ReactDom.render(asyncChecklist, elem);
     this.loadedItems = true;
   }

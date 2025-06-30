@@ -13,8 +13,8 @@ This web part demonstrates *Star Ratings* capabilities to SharePoint News. The "
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14.0](https://img.shields.io/badge/SPFx-1.14.0-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg) 
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v19 | v18](https://img.shields.io/badge/Node.js-v19%20%7C%20v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -26,9 +26,9 @@ This web part demonstrates *Star Ratings* capabilities to SharePoint News. The "
 
 1. Enable the "Ratings" feature of the site collection. The feature GUID is `915c240e-a6cc-49b8-8b2c-0bff8b553ed3`.
 
-```
-Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
-```
+  ```shell
+  Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
+  ```
 
 2. Update "Rating settings".
 
@@ -41,22 +41,24 @@ Enable-PnPFeature -Identity 915c240e-a6cc-49b8-8b2c-0bff8b553ed3
 
 ## Minimal Path to Awesome
 
-* Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings) then unzip it)
-* From your command line, change your current directory to the directory containing this sample (`react-star-ratings`, located under `samples`)
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings) then unzip it)
+- From your command line, change your current directory to the directory containing this sample (`react-star-ratings`, located under `samples`)
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
 ## Contributors
 
-* [Takashi Shinohara](https://github.com/karamem0)
+- [Takashi Shinohara](https://github.com/karamem0)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.5|January 23, 2025|Upgraded to SPFx v1.20 and changed to React Fluent UI v9.
+1.4|November 9, 2023|Upgraded to SPFx v1.18
 1.3|April 27, 2022|Changed to show averages with stars instead of user ratings.
 1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 12, 2022|Updated to retrieve values from API
@@ -77,8 +79,6 @@ If you encounter any issues while using this sample, [create a new issue](https:
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-star-ratings&template=question.yml&sample=react-star-ratings&authors=@karamem0&title=react-star-ratings%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-star-ratings&template=suggestion.yml&sample=react-star-ratings&authors=@karamem0&title=react-star-ratings%20-%20).
-
-
 
 ## Disclaimer
 

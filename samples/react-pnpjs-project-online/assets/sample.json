@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online",
     "source": "pnp",
-    "title": "PnPjs Project Online",
+    "title": "PnPjs Project Online Web Part",
     "shortDescription": "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-project-online",
     "longDescription": [
@@ -46,6 +46,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-project-online"
   }
 ]

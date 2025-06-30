@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
 import styles from './Layouts.module.scss';
-import { RenderDirection, LogHelper } from '@src/utilities';
+import { RenderDirection } from '@src/utilities';
 import { IPage } from '@src/models/IPage';
-import { ActionButton, Icon } from 'office-ui-fabric-react';
+import { ActionButton, Icon } from '@fluentui/react';
 import { ILayoutProps } from './ILayoutProps';
 import ReactResizeDetector from 'react-resize-detector';
 import * as strings from 'PageHierarchyWebPartStrings';
@@ -12,9 +12,9 @@ export const BreadcrumbLayout: React.FunctionComponent<ILayoutProps> = props => 
   const [elementWidth, setElementWidth] = useState(props.domElement.getBoundingClientRect().width);
 
   // 455 was chosen because that's the smallest break pointin 2 column before it wraps and stacks
-  let renderDirection = elementWidth > 455 ? RenderDirection.Horizontal : RenderDirection.Vertical;
+  const renderDirection = elementWidth > 455 ? RenderDirection.Horizontal : RenderDirection.Vertical;
 
-  const renderPageAsBreadcrumb = (page: IPage, index: number, pages: IPage[]) => {
+  const renderPageAsBreadcrumb = (page: IPage, index: number, pages: IPage[]): React.ReactElement => {
     if (page) {
       return (
         <li key={page.id} className={styles.breadcrumbLayoutItem}>
@@ -41,7 +41,7 @@ export const BreadcrumbLayout: React.FunctionComponent<ILayoutProps> = props => 
     }
   };
 
-  const renderPageAsStack = (page: IPage, index: number, pages: IPage[]) => {
+  const renderPageAsStack = (page: IPage, index: number, pages: IPage[]): React.ReactElement => {
     if (page) {
       return (
         <li key={page.id} className={styles.breadcrumbLayoutItem}>
@@ -63,7 +63,7 @@ export const BreadcrumbLayout: React.FunctionComponent<ILayoutProps> = props => 
     }
   };
 
-  const renderPages = (pages: IPage[], ) => {
+  const renderPages = (pages: IPage[], ): React.ReactElement[] => {
     if (renderDirection === RenderDirection.Horizontal) {
       return pages.map((value, index, array) => renderPageAsBreadcrumb(value, index, array));
     }
@@ -72,7 +72,7 @@ export const BreadcrumbLayout: React.FunctionComponent<ILayoutProps> = props => 
     }
   };
 
-  const onResize = () => {
+  const onResize = (): void => {
     setElementWidth(props.domElement.getBoundingClientRect().width);
   };
 

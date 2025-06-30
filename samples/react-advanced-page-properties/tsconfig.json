@@ -1,7 +1,8 @@
 {
-  "extends": "./node_modules/@microsoft/sp-tslint-rules/base-tslint.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -9,7 +10,6 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
     "outDir": "lib",
     "inlineSources": false,
     "strictNullChecks": false,
@@ -27,11 +27,10 @@
       "dom",
       "es2015.collection",
       "es2015.promise"
-    ],
+    ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
-
+  ]
 }

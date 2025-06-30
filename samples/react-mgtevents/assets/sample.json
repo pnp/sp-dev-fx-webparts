@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-mgtevents",
     "source": "pnp",
-    "title": "MGT Events",
+    "title": "MGT Events Web Part",
     "shortDescription": "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents",
     "longDescription": [
@@ -52,7 +52,7 @@
         "gitHubAccount": "joaojmendes",
         "company": "Storm Technology Ltd",
         "pictureUrl": "https://github.com/joaojmendes.png",
-        "name": "Jo\u00E3o Mendes",
+        "name": "João Mendes",
         "twitter": "joaojmendes"
       }
     ],
@@ -77,6 +77,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents"
   }
 ]

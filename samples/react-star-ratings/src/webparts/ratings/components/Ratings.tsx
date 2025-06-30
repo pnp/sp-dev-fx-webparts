@@ -1,17 +1,19 @@
 import * as React from 'react';
 import {
+  FluentProvider,
+  IdPrefixProvider,
   MessageBar,
-  MessageBarType,
-  IRatingStyleProps,
-  IRatingStyles,
+  MessageBarBody,
   Rating,
-  RatingSize,
-  TooltipHost
-} from 'office-ui-fabric-react';
+  RatingOnChangeEventData,
+  Tooltip,
+  webLightTheme
+} from '@fluentui/react-components';
 import styles from './Ratings.module.scss';
 import * as strings from 'RatingsWebPartStrings';
 import { IRatingsProps } from './IRatingsProps';
 import SPHttpClientService from '../services/SPHttpClientService';
+import { WebPartTitle } from '@pnp/spfx-controls-react';
 
 interface IRatings {
   rating: number;
@@ -19,64 +21,27 @@ interface IRatings {
   average: number;
 }
 
-export const Ratings = ({ context, properties }: IRatingsProps) => {
+export const Ratings: React.FC<IRatingsProps> = (props: IRatingsProps) => {
 
-  const ratingStyles = React.useMemo(() => (props: IRatingStyleProps): Partial<IRatingStyles> => ({
-    root: {
-      selectors: {
-        '&:hover': {
-          selectors: {
-            '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
-            }
-          }
-        }
-      }
-    },
-    ratingButton: {
-      selectors: {
-        '&:hover ~ .ms-Rating-button': {
-          selectors: {
-            '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
-            },
-            '.ms-RatingStar-front': {
-              color: properties.inactiveColor,
-            }
-          }
-        },
-        '&:hover': {
-          selectors: {
-            '.ms-RatingStar-back': {
-              color: properties.inactiveColor,
-            },
-            '.ms-RatingStar-front': {
-              color: properties.inactiveColor,
-            }
-          }
-        }
-      }
-    },
-    ratingStarFront: {
-      color: properties.activeColor
-    },
-    ratingStarBack: {
-      color: properties.activeColor
-    }
-  }), [
-    properties.activeColor,
-    properties.inactiveColor
-  ]);
+  const {
+    context,
+    color,
+    displayMode,
+    size,
+    title,
+    onUpdateTitle
+  } = props;
 
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string>();
   const [value, setValue] = React.useState<IRatings>();
 
-  const getRating = React.useCallback(async (): Promise<IRatings> => {
-    if (!context.pageContext.list) {
+  const getRating = React.useCallback(async (): Promise<IRatings | undefined> => {
+    const { list, listItem } = context.pageContext;
+    if (list === undefined) {
       return;
     }
-    if (!context.pageContext.listItem) {
+    if (listItem === undefined) {
       return;
     }
     const service = new SPHttpClientService(context);
@@ -91,35 +56,35 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
   }, [context]);
 
   const setRating = React.useCallback(async (rating: number): Promise<void> => {
-    if (!context.pageContext.list) {
+    const { list, listItem } = context.pageContext;
+    if (list === undefined) {
       return;
     }
-    if (!context.pageContext.listItem) {
+    if (listItem === undefined) {
       return;
     }
     const service = new SPHttpClientService(context);
     await service.setRating(rating);
   }, [context]);
 
-  const handleOnChange = React.useCallback((_, rating?: number) => {
-    if (!rating) {
+  const handleOnChange = React.useCallback(async (_, data?: RatingOnChangeEventData) => {
+    if (data === undefined) {
       return;
     }
-    (async () => {
-      try {
-        await setRating(rating);
-        setValue(await getRating());
-      } catch (error) {
-        setError(error.toString());
-        console.error(error);
-      }
-    })();
-  }, []);
+    const { value } = data;
+    try {
+      await setRating(value);
+      setValue(await getRating());
+    } catch (error) {
+      setError(error.toString());
+      console.error(error);
+    }
+  }, [getRating, setRating]);
 
   React.useEffect(() => {
     (async () => {
+      const rating = await getRating();
       try {
-        const rating = await getRating();
         if (rating) {
           setValue(rating);
           setLoading(false);
@@ -127,43 +92,53 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
       } catch (error) {
         setError(error.toString());
         console.error(error);
-        setLoading(false);
       }
-    })();
-  }, []);
+    })().catch((error) => console.error(error));
+  }, [getRating]);
 
   return (
     <div className={styles.root}>
-      <div className={styles.container}>
-        {
-          (() => {
-            if (loading) {
-              return null;
+      <WebPartTitle
+        displayMode={displayMode}
+        title={title}
+        updateProperty={onUpdateTitle} />
+      <IdPrefixProvider value="react-star-ratings">
+        <FluentProvider theme={webLightTheme}>
+          <div className={styles.container}>
+            {
+              (() => {
+                if (loading) {
+                  return null;
+                }
+                if (error) {
+                  return (
+                    <MessageBar intent="error">
+                      <MessageBarBody>
+                        {error}
+                      </MessageBarBody>
+                    </MessageBar>
+                  );
+                }
+                return value ? (
+                  <div className={styles.flex}>
+                    <div>{strings.RateThisPageLabel}: </div>
+                    <Tooltip
+                      content={`${strings.YourRatingLabel}: ${value.rating}`}
+                      relationship="label">
+                      <Rating
+                        color={color}
+                        size={size}
+                        value={value.average}
+                        onChange={handleOnChange} />
+                    </Tooltip>
+                    <div>{value.count}</div>
+                  </div>
+                ) : null;
+              })()
             }
-            if (error) {
-              return (
-                <MessageBar messageBarType={MessageBarType.error}>
-                  {error}
-                </MessageBar>
-              );
-            }
-            return (
-              <div className={styles.flex}>
-                <div>{strings.RateThisPageLabel}: </div>
-                <TooltipHost content={`${strings.YourRatingLabel}: ${value.rating}`}>
-                  <Rating
-                    allowZeroStars
-                    rating={value.average}
-                    size={RatingSize.Small}
-                    styles={ratingStyles}
-                    onChange={handleOnChange} />
-                </TooltipHost>
-                <div>{value.count}</div>
-              </div>
-            );
-          })()
-        }
-      </div>
+          </div>
+        </FluentProvider>
+      </IdPrefixProvider>
     </div>
   );
 

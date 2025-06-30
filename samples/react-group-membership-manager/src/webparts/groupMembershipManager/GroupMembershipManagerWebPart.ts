@@ -6,7 +6,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import GroupMembershipManager from './components/GroupMembershipManager';
 import { IGroupMembershipManagerProps } from './components/IGroupMembershipManagerProps';
 import { FluentProvider, FluentProviderProps, teamsDarkTheme, teamsLightTheme, webLightTheme, webDarkTheme, Theme } from '@fluentui/react-components';
-import { createv9Theme } from '../../shims/v9ThemeShim';
+import { createV9Theme } from '@fluentui/react-migration-v8-v9';
 
 export enum AppMode {
   SharePoint, Teams, Office, Outlook
@@ -61,7 +61,7 @@ export default class GroupMembershipManagerWebPart extends BaseClientSideWebPart
     this._isDarkTheme = !!currentTheme.isInverted;
     //if the app mode is sharepoint, adjust the fluent ui 9 web light theme to use the sharepoint theme color, teams/dark mode should be fine on default
     if (this._appMode === AppMode.SharePoint) {
-      this._theme = createv9Theme(currentTheme, webLightTheme);
+      this._theme = createV9Theme(currentTheme as undefined, webLightTheme);
     }
   }
 

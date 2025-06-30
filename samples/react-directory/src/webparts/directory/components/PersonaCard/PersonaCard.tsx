@@ -2,27 +2,23 @@ import * as React from 'react';
 import styles from './PersonaCard.module.scss';
 import { IPersonaCardProps } from './IPersonaCardProps';
 import { IPersonaCardState } from './IPersonaCardState';
-import {
-  Log, Environment, EnvironmentType,
-} from '@microsoft/sp-core-library';
+import { Log } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {
-  Persona,
-  PersonaSize,
-  DocumentCard,
-  DocumentCardType,
-  Icon,
-} from 'office-ui-fabric-react';
-
-const EXP_SOURCE: string = 'SPFxDirectory';
-const LIVE_PERSONA_COMPONENT_ID: string =
-  '914330ee-2df2-4f6e-a858-30c23a812408';
+  Avatar,
+  Body1,
+  Card,
+  Subtitle1,
+  Text,
+} from '@fluentui/react-components';
+import { Call16Filled, Location16Filled } from '@fluentui/react-icons';
+import { LIVE_PERSONA_COMPONENT_ID, EXP_SOURCE } from '../../../../constants';
 
 export class PersonaCard extends React.Component<
   IPersonaCardProps,
   IPersonaCardState
-  > {
+> {
   constructor(props: IPersonaCardProps) {
     super(props);
 
@@ -33,27 +29,14 @@ export class PersonaCard extends React.Component<
    *
    * @memberof PersonaCard
    */
-  public async componentDidMount() {
-    if (Environment.type !== EnvironmentType.Local) {
-      const sharedLibrary = await this._loadSPComponentById(
-        LIVE_PERSONA_COMPONENT_ID
-      );
-      const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-      this.setState({ livePersonaCard: livePersonaCard });
-    }
+  public async componentDidMount(): Promise<void> {
+    const sharedLibrary = await this._loadSPComponentById(
+      LIVE_PERSONA_COMPONENT_ID
+    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const livePersonaCard: any = sharedLibrary.LivePersonaCard;
+    this.setState({ livePersonaCard: livePersonaCard });
   }
-
-  /**
-   *
-   *
-   * @param {IPersonaCardProps} prevProps
-   * @param {IPersonaCardState} prevState
-   * @memberof PersonaCard
-   */
-  public componentDidUpdate(
-    prevProps: IPersonaCardProps,
-    prevState: IPersonaCardState
-  ): void { }
 
   /**
    *
@@ -62,7 +45,7 @@ export class PersonaCard extends React.Component<
    * @returns
    * @memberof PersonaCard
    */
-  private _LivePersonaCard() {
+  private _LivePersonaCard(): JSX.Element {
     return React.createElement(
       this.state.livePersonaCard,
       {
@@ -88,60 +71,64 @@ export class PersonaCard extends React.Component<
    */
   private _PersonaCard(): JSX.Element {
     return (
-      <DocumentCard
-        className={styles.documentCard}
-        type={DocumentCardType.normal}
-      >
-        <div className={styles.persona}>
-          <Persona
-            text={this.props.profileProperties.DisplayName}
-            secondaryText={this.props.profileProperties.Title}
-            tertiaryText={this.props.profileProperties.Department}
-            imageUrl={this.props.profileProperties.PictureUrl}
-            size={PersonaSize.size72}
-            imageShouldFadeIn={false}
-            imageShouldStartVisible={true}
-          >
-            {this.props.profileProperties.WorkPhone ? (
-              <div>
-                <Icon iconName="Phone" style={{ fontSize: '12px' }} />
-                <span style={{ marginLeft: 5, fontSize: '12px' }}>
-                  {' '}
-                  {this.props.profileProperties.WorkPhone}
-                </span>
-              </div>
-            ) : (
-                ''
-              )}
-            {this.props.profileProperties.Location ? (
-              <div className={styles.textOverflow}>
-                <Icon iconName="Poi" style={{ fontSize: '12px' }} />
-                <span style={{ marginLeft: 5, fontSize: '12px' }}>
-                  {' '}
-                  {this.props.profileProperties.Location}
-                </span>
-              </div>
-            ) : (
-                ''
-              )}
-          </Persona>
+      <Card className={styles.documentCard}>
+        <Avatar
+          name={this.props.profileProperties.DisplayName}
+          image={{
+            src: `${this.props.profileProperties.PictureUrl}`,
+          }}
+          size={120}
+          shape="square"
+        />
+        <div className={styles.personaDetails}>
+          <Subtitle1>{this.props.profileProperties.DisplayName}</Subtitle1>
+          <Body1 className={styles.others} style={{ fontWeight: 600 }}>
+            {this.props.profileProperties.Title}
+          </Body1>
+          <Text className={styles.others}>
+            {this.props.profileProperties.Department}
+          </Text>
+          {this.props.profileProperties.WorkPhone ? (
+            <div className={styles.others}>
+              <Call16Filled style={{ fontSize: '12px' }} />
+              <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                {' '}
+                {this.props.profileProperties.WorkPhone}
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
+          {this.props.profileProperties.Location ? (
+            <div className={(styles.textOverflow, styles.others)}>
+              <Location16Filled style={{ fontSize: '12px' }} />
+              <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                {' '}
+                {this.props.profileProperties.Location}
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
-      </DocumentCard>
+      </Card>
     );
   }
   /**
    * Load SPFx component by id, SPComponentLoader is used to load the SPFx components
    * @param componentId - componentId, guid of the component library
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _loadSPComponentById(componentId: string): Promise<any> {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const component: any = await SPComponentLoader.loadComponentById(
         componentId
       );
       return component;
     } catch (error) {
-      Promise.reject(error);
-      Log.error(EXP_SOURCE, error, this.props.context.serviceScope);
+      Log.error(EXP_SOURCE, error);
+      throw new Error(error);
     }
   }
 

@@ -16,7 +16,6 @@ declare interface IPropertyBagFilteredSiteListStrings {
   TargetParentDescription: string;
   TargetTopDescription: string;
 }
-
 declare module 'propertyBagFilteredSiteListStrings' {
   const strings: IPropertyBagFilteredSiteListStrings;
   export = strings;

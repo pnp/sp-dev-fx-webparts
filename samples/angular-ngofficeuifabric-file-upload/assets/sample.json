@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload",
     "source": "pnp",
-    "title": "File Upload using AngularJs",
+    "title": "File Upload web part using AngularJs",
     "shortDescription": "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload",
     "longDescription": [
@@ -27,13 +27,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67",
-        "alt": "File Upload using AngularJs"
-      },
-      {
-        "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG File Upload.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
         "alt": "File Upload using AngularJs"
       }
     ],
@@ -41,7 +35,7 @@
       {
         "gitHubAccount": "dipongkor",
         "company": "Jashore University of Science and Technology",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/4987425?s=460\u0026u=998935621b0e998dc9bcd0fc26267623a8e5512c\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/4987425?s=460&u=998935621b0e998dc9bcd0fc26267623a8e5512c&v=4",
         "name": "Atish Kumar Dipongkor",
         "twitter": "atish_iit"
       },
@@ -59,6 +53,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload"
   }
 ]

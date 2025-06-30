@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "OC - SP TinyMce Editor",
+    "id": "3640f0cc-a41c-485c-b5e2-688975a75840",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "webApiPermissionRequests": [
+      {
+          "resource": "Microsoft Graph",
+          "scope": "User.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "OC - SP TinyMce Editor description"
+      },
+      "longDescription": {
+        "default": "OC - SP TinyMce Editor description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "OC - SP TinyMce Editor Feature",
+        "description": "The feature that activates elements of the oc-sp-tinymce solution.",
+        "id": "dfeff68c-447c-4df1-b4b5-f52243f1e30e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/oc-sp-tinymce.sppkg"
+  }
+}

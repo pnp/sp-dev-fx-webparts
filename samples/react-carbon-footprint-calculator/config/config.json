@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "carbon-footprint-calculator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/carbonFootprintCalculator/CarbonFootprintCalculatorWebPart.js",
+          "manifest": "./src/webparts/carbonFootprintCalculator/CarbonFootprintCalculatorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CarbonFootprintCalculatorWebPartStrings": "lib/webparts/carbonFootprintCalculator/loc/{locale}.js"
+  }
+}

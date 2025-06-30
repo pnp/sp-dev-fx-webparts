@@ -151,6 +151,10 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
             return (
               <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
             );
+          case "Note":
+            return (
+              <span className={styles.multiTextCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
+            );
           default:
             return (
               <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>

@@ -13,7 +13,7 @@ This app is an example of managing the membership of a group you own including t
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
+![SPFx 1.17.2](https://img.shields.io/badge/SPFx-1.17.2-green.svg)
 ![Node.js v16](https://img.shields.io/badge/Node.js-v16-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -27,7 +27,7 @@ This app is an example of managing the membership of a group you own including t
 - [SharePoint Framework](https://aka.ms/spfx)
 - [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 
@@ -38,7 +38,8 @@ This app is an example of managing the membership of a group you own including t
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | August 25, 2022  | Initial release |
-| 1.1|    | Jan 18, 2022     | Updated to SPFx 1.16.1 |
+| 1.1     | Jan 18, 2022     | Updated to SPFx 1.16.1 |
+| 1.2     | May 15, 2023     | Updated to SPFx 1.17.2, FluentUI 9.20, removed custom theme shim |
 
 
 ## Minimal Path to Awesome

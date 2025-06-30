@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-theme-manager",
     "source": "pnp",
-    "title": "Modern Experience Theme Manager",
+    "title": "Modern Experience Theme Manager Web Part",
     "shortDescription": "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager",
     "longDescription": [
@@ -58,24 +58,18 @@
     "authors": [
       {
         "gitHubAccount": "PopWarner",
-        "company": "Catapult Systems",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460\u0026u=9e4e74223c4ffb430fb77c97892a84b286df1921\u0026v=4",
-        "name": "David Warner II",
-        "twitter": "PopWarner"
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4",
+        "name": "David Warner II"
       },
       {
         "gitHubAccount": "bcameron1231",
-        "company": "DMI",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460\u0026u=cbea276e0125f71a183f8ad94475dbd1984c6afa\u0026v=4",
-        "name": "Beau Cameron",
-        "twitter": "Beau__Cameron"
+        "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4",
+        "name": "Beau Cameron"
       },
       {
         "gitHubAccount": "hugoabernier",
-        "company": "Tahoe Ninjas",
         "pictureUrl": "https://github.com/hugoabernier.png",
-        "name": "Hugo Bernier",
-        "twitter": "bernierh"
+        "name": "Hugo Bernier"
       }
     ],
     "references": [
@@ -84,6 +78,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager"
   }
 ]

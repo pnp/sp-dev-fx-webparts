@@ -8,7 +8,7 @@ import styles from "./FilmstripLayout.module.scss";
 import { useRef } from 'react';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-function useBreakpoints(currentWidth: number, breakpoints: number[]) {
+function useBreakpoints(currentWidth: number, breakpoints: number[]): boolean[] {
   return breakpoints.map(breakpoint => currentWidth < breakpoint);
 }
 
@@ -16,7 +16,7 @@ function useBreakpoints(currentWidth: number, breakpoints: number[]) {
  * Filmstrip layout
  * Presents the child compoments as a slick slide
  */
-export const FilmstripLayout = (props: { children: any; clientWidth: number; themeVariant?: IReadonlyTheme, ariaLabel?: string; }) => {
+export const FilmstripLayout = (props: { children: any; clientWidth: number; themeVariant?: IReadonlyTheme, ariaLabel?: string; }) :JSX.Element=> {
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 

@@ -29,8 +29,8 @@ import { User } from 'common';
 import { ListItemEntity } from 'common/sharepoint';
 
 interface IState {
-    int order;
-    User[] owners;
+    order: number;
+    owners: User[];
     // ... any other properties - these typically correspond with fields on the SharePoint list
 }
 

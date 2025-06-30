@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "SPFx Tailwind",
+    "id": "9c2d370c-9957-4e3f-b322-6b2cbd458c69",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-tailwind description"
+      },
+      "longDescription": {
+        "default": "spfx-tailwind description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-tailwind Feature",
+        "description": "The feature that activates elements of the spfx-tailwind solution.",
+        "id": "57651270-7533-41c5-bbc9-88bc9494876c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/SPFx Tailwind.sppkg"
+  }
+}

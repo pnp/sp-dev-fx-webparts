@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <!-- Fields for Poll Answers list -->
+    <Field ID="{060E50AC-E9C1-4D3C-B1F9-DE0BCAC300F6}"
+            Name="UserEmail"
+            DisplayName="UserEmail"
+            Type="Text"
+            Required="TRUE"
+            Group="React Poll Solution Fields" />
+
+    <Field ID="{943E7530-5E2B-4C02-8259-CCD93A9ECB18}"
+            Name="Option"
+            DisplayName="Option"
+            Type="Choice"
+            Required="TRUE"
+            Group="React Poll Solution Fields">
+        <CHOICES>
+        <CHOICE>Option1</CHOICE>
+        <CHOICE>Option2</CHOICE>
+        <CHOICE>Option3</CHOICE>
+        <CHOICE>Option4</CHOICE>
+        </CHOICES>
+    </Field>
+
+     <!-- Fields for Poll Questions list -->
+
+     <Field ID="{124AA081-3F62-477C-A8A6-ECDADE7BA492}"
+            Name="Question"
+            DisplayName="Question"
+            Type="Note"  
+            RichText="FALSE"  
+            NumLines="6"  
+            Required="TRUE"
+            Group="React Poll Solution Fields" />
+
+    <Field ID="{71961200-FCFB-42B6-BF0F-39826807D805}"
+            Name="Option1"
+            DisplayName="Option1"
+            Type="Text"
+            Required="TRUE"
+            Group="React Poll Solution Fields" />
+
+            <Field ID="{98880A02-9095-4699-8D40-7B967D5EBC77}"
+            Name="Option2"
+            DisplayName="Option2"
+            Type="Text"
+            Required="TRUE"
+            Group="React Poll Solution Fields" />
+
+            <Field ID="{1C2E1E97-12AB-4B60-BE32-074A2EDBBE5D}"
+            Name="Option3"
+            DisplayName="Option3"
+            Type="Text"
+            Required="FALSE"
+            Group="React Poll Solution Fields" />
+
+            <Field ID="{F55AEBF0-4C68-4646-975F-724E57F996B9}"
+            Name="Option4"
+            DisplayName="Option4"
+            Type="Text"
+            Required="FALSE"
+            Group="React Poll Solution Fields" />
+            
+            <Field ID="{F1FB6A34-5CEC-495E-9B79-AB459640A59D}"
+            Name="IsQuestionActive"
+            DisplayName="Is Question Active"
+            Type="Boolean"
+            Required="TRUE"
+            Group="React Poll Solution Fields" >
+                <Default>TRUE</Default>
+            </Field>
+
+
+
+
+ <!-- Content Type for Poll Answers list -->
+    <ContentType ID="0x010042D0C1C200A14B6887742B6344675C8B"
+            Name="Poll Answers"
+            Group="React Poll Solution Content Types"
+            Description="Content Type for Poll Answers">
+        <FieldRefs>
+            <FieldRef ID="{060E50AC-E9C1-4D3C-B1F9-DE0BCAC300F6}" />
+            <FieldRef ID="{943E7530-5E2B-4C02-8259-CCD93A9ECB18}" />
+        </FieldRefs>
+    </ContentType>
+
+    <!-- Content Type for Poll Questions list -->
+    <ContentType ID="0x0100f852c6a1eafd4e488d73242654e1ecbc"
+            Name="Poll Questions"
+            Group="React Poll Solution Content Types"
+            Description="Content Type for Poll Questions">
+        <FieldRefs>
+            <FieldRef ID="{124AA081-3F62-477C-A8A6-ECDADE7BA492}" />
+            <FieldRef ID="{71961200-FCFB-42B6-BF0F-39826807D805}" />
+            <FieldRef ID="{98880A02-9095-4699-8D40-7B967D5EBC77}" />
+            <FieldRef ID="{1C2E1E97-12AB-4B60-BE32-074A2EDBBE5D}" />
+            <FieldRef ID="{F55AEBF0-4C68-4646-975F-724E57F996B9}" />
+            <FieldRef ID="{F1FB6A34-5CEC-495E-9B79-AB459640A59D}" />
+        </FieldRefs>
+    </ContentType>
+
+    <ListInstance
+            CustomSchema="schema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="Poll Answers"
+            Description="List for Poll Answers"
+            TemplateType="100"            
+            Url="Lists/PollAnswers">
+    </ListInstance>
+
+    <ListInstance
+            CustomSchema="PollQuestionsSchema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="Poll Questions"
+            Description="List for Poll Answers"
+            TemplateType="100"            
+            Url="Lists/PollQuestions">
+    </ListInstance>
+
+</Elements>

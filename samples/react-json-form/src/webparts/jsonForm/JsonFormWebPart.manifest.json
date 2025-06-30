@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b71c2906-03f0-46a6-8efe-f7afe1cade2f",
+  "alias": "JsonFormWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "JSON Form" },
+    "description": { "default": "JSON Form description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "formJson": "{\"Title\":\"My Form\",\"Fields\":[]}"
+    }
+  }]
+}

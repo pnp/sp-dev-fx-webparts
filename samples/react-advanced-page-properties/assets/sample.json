@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
     "source": "pnp",
-    "title": "Advanced Page Properties",
+    "title": "Advanced Page Properties Web Part",
     "shortDescription": "Replicates the functionality of Page Properties with improvements",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties",
     "longDescription": [
@@ -12,10 +12,11 @@
       "- Support for image fields",
       "- Support for hyperlink fields",
       "- Support for currency",
-      "- Improved support for dates"
+      "- Improved support for dates",
+      "- Support for Multiline text fields"
     ],
     "creationDateTime": "2021-03-30",
-    "updateDateTime": "2023-03-06",
+    "updateDateTime": "2024-10-08",
     "products": [
       "SharePoint"
     ],
@@ -26,7 +27,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       }
     ],
     "thumbnails": [
@@ -67,8 +68,14 @@
       {
         "gitHubAccount": "Abderahman88",
         "company": "",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "NishkalankBezawada",
+        "company": "Bravero AB, Sweden",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/47456098?v=4",
+        "name": "Nishkalank Bezawada"
       }
     ],
     "references": [
@@ -82,6 +89,7 @@
         "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties"
   }
 ]

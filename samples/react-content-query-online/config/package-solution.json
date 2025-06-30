@@ -50,7 +50,29 @@
         "privacyUrl": "",
         "termsOfUseUrl": "",
         "websiteUrl": ""
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-content-query-webpart description"
+      },
+      "longDescription": {
+        "default": "react-content-query-webpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-content-query-webpart ContentQueryWebPart Feature",
+        "description": "The feature that activates ContentQueryWebPart from the react-content-query-webpart solution.",
+        "id": "ac515af1-4490-4c7b-8191-d49b41b26c5e",
+        "version": "1.1.0.0",
+        "componentIds": [
+          "ac515af1-4490-4c7b-8191-d49b41b26c5e"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-content-query-webpart.sppkg"

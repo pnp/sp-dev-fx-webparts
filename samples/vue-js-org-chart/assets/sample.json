@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-vue-js-org-chart",
     "source": "pnp",
-    "title": "VueJS Org Chart",
+    "title": "VueJS Org Chart Web Part",
     "shortDescription": "A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vue-js-org-chart",
     "longDescription": [
@@ -36,7 +36,7 @@
         "gitHubAccount": "serdarketenci",
         "company": "",
         "pictureUrl": "https://github.com/serdarketenci.png",
-        "name": "Serdar Ketenci\u0307"
+        "name": "Serdar Ketenci̇"
       }
     ],
     "references": [
@@ -45,6 +45,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vue-js-org-chart"
   }
 ]

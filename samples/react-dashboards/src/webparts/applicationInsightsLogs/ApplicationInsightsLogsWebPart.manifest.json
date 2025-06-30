@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "7bbd40d0-805c-4b5d-8d6a-0abd65a09474",
+  "alias": "ApplicationInsightsLogsWebPart",
+  "componentType": "WebPart",
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      //	4aca9e90-eff5-4fa1-bac7-728f5f157b66 "Business and intelligence"
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "Application Insights Logs"
+      },
+      "description": {
+        "default": "Dashboard displaying Application Insights logs"
+      },
+      // "officeFabricIconFontName": "BIDashboard",
+      "iconImageUrl": "data:image/png;base64,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",
+      "fullPageAppIconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABLCAMAAADdwICAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA8UExURVy0y0usxnjB1VGvyInJ2me5z4TG2G280WK3zVaxyn7E1p+rsj9XZW+BjJPF1IrD0m23zGy2y4/E0wAAAFHDhvEAAAAUdFJOU/////////////////////////8AT0/nEQAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAfRJREFUWEft2NtWwyAQheHS9JDak9r3f1cH2FAOMzA0Vm/y35hU8i1WSGzi5vFCG0NtacP+nHb+w6xxdm8tKrBULY+yE6SMpexe0hgbZmrLWWMOfohvhN0B8JWsmfwo1wB7xOGoYo3x42x6dsaxIYY1cenU7AlHxjjWfPjBarZSeTacByWbXgKIZ+Hq2AOOSRNY7+pYHJElsU5Usc9bK0li3XRVLMbniay9LTQsO1mZtbexguXWi5JZOg0KFmPL/p6dFewWY8sarFGw/IItZjGyqsUe38NOXVa4vNqsv4NbSSu2kC2/FGLLWOlCcKxYlwVSt4wVZ3vCALacPYewT4nn1rvFt3woZy+hKz5oXAlNt8vmjzJ5sttl5TWjRHcZK7nzQlZwiysBaMY21szGugq2M13OPf0Cy7g7DVuvSFHllncZ0JztTrd0q+cEoAUr/iWP5S5ta9j+dDPXvpuo2P50E9eJKpZ7ai6LrjtAxzLP+FVw3XAtK/81f+ZcpGUVy5a6anZsvnpWcX4xkBpgn9c7n/zOC1Rg2ydijzGuMVZeuRm/R6Ms/5VZoC+wNve/mtgRn6bJ7Bmbl0vyMBK73T+/qO8b9os2OJSiPWwp2E4rS60stbLUP7N4VUlfVlop2Ss23ShFK0u9wmKLcgTXylJvYR+PH/0CMcPIb3DQAAAAAElFTkSuQmCC",
+      "properties": {
+        "preset": 100,
+        "dateSelection": "P7D",
+        "query": "",
+        "cacheDuration": "FifteenMinutes",
+        "showList": true,
+        "listStyle": 1,
+        "listPalette": 2,
+        "showChart": true,
+        "chartStyle": 1,
+        "chartPalette": 1,
+        "layoutSettings": 1,
+        "showTimePicker": true
+      }
+    }
+  ]
+}

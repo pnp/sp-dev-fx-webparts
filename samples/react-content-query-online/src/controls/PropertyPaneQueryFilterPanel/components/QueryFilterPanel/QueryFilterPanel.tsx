@@ -1,8 +1,9 @@
+/* eslint-disable react/no-direct-mutation-state */
 import * as React                               from 'react';
 import { cloneDeep }                            from '@microsoft/sp-lodash-subset';
 import { Text }                                 from '@microsoft/sp-core-library';
 import { isEmpty }                              from '@microsoft/sp-lodash-subset';
-import { Spinner, CommandButton, ButtonType, Label }   from 'office-ui-fabric-react';
+import { Spinner, CommandButton, ButtonType, Label }   from '@fluentui/react';
 import { QueryFilter }                          from '../QueryFilter/QueryFilter';
 import { IQueryFilter }                         from '../QueryFilter/IQueryFilter';
 import { QueryFilterOperator }                  from '../QueryFilter/QueryFilterOperator';

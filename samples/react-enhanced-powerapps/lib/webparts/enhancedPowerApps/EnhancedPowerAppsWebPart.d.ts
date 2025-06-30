@@ -18,6 +18,7 @@ export interface IEnhancedPowerAppsWebPartProps {
     height: number;
     width: number;
     aspectratio: '16:9' | '3:2' | '16:10' | '4:3' | 'Custom';
+    isWebPartHiddenOnSmallDevices: boolean;
     themeValues: string[];
 }
 export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnhancedPowerAppsWebPartProps> {

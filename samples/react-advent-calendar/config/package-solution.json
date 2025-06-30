@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-advent-calendar-client-side-solution",
+    "id": "d83564aa-8508-4313-b690-1f48f0f4fdf6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.3"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "advent-calendar description"
+      },
+      "longDescription": {
+        "default": "advent-calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-advent-calendar Feature",
+        "description": "The feature that activates elements of the react-advent-calendar solution.",
+        "id": "725bc02f-98e2-409a-84c1-8dc061915c19",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-advent-calendar.sppkg"
+  }
+}

@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
-    "@microsoft/sp-build-web": "1.12.1",
+    "@microsoft/sp-build-web": "1.18.0",
     "@microsoft/sp-module-interfaces": "1.12.1",
     "@microsoft/sp-tslint-rules": "1.12.1",
     "@microsoft/sp-webpart-workbench": "1.12.1",
@@ -33,6 +33,6 @@
     "gulp": "4.0.2",
     "gulp-sequence": "1.0.0",
     "sp-pnp-js": "^3.0.10",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

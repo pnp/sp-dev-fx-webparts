@@ -1,29 +1,26 @@
-
-
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Button } from 'office-ui-fabric-react/lib/Button';
-
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-
-import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
-import {  IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
-
-
+import { Label } from '@fluentui/react/lib/Label';
+import { Button } from '@fluentui/react/lib/Button';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "@fluentui/react/lib/DetailsList";
+import { IDropdownOption } from "@fluentui/react/lib/Dropdown";
+import { IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 import { SPPermission } from "@microsoft/sp-page-context";
-
 import SelectedPermissionsPanel from "./SelectedPermissionsPanel";
+
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
-  initialValue?: Array<ISelectedPermission>;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  SelectedPermissions: Array<ISelectedPermission>;
+  initialValue?: ISelectedPermission[]; // Updated type here
+  onPropertyChange(propertyPath: string, oldValue: ISelectedPermission[], newValue: ISelectedPermission[]): void; // Updated type here
+  SelectedPermissions: ISelectedPermission[];
 }
+
 export interface IPropertyFieldSelectedPermissionsHostState {
   openPanel?: boolean;
-  SelectedPermissions: Array<ISelectedPermission>;
+  SelectedPermissions: ISelectedPermission[];
 }
+
 export default class PropertyFieldSelectedPermissionsHost extends React.Component<IPropertyFieldSelectedPermissionsHostProps, IPropertyFieldSelectedPermissionsHostState> {
   public panelColumns: IColumn[] = [
     {
@@ -33,10 +30,10 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       minWidth: 100,
       maxWidth: 100,
       isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
+      onRender: (item?: ISelectedPermission) => { // Updated type here
         return (
           <div>
-            {item.permission}
+            {item?.permission}
           </div>
         );
       }
@@ -48,10 +45,10 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       minWidth: 90,
       maxWidth: 90,
       isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
+      onRender: (item?: ISelectedPermission) => { // Updated type here
         return (
           <div>
-            {item.freindlyName}
+            {item?.freindlyName}
           </div>
         );
       }
@@ -63,13 +60,14 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       minWidth: 50,
       maxWidth: 50,
       isResizable: false,
-      onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
+      onRender: (item?: ISelectedPermission) => { // Updated type here
         return (
-          <Icon iconName={item.iconName} style={{ color: item.color }} />
+          <Icon iconName={item?.iconName} style={{ color: item?.color }} />
         );
       }
     }
   ];
+
   constructor(props: IPropertyFieldSelectedPermissionsHostProps) {
     super(props);
     this.state = {
@@ -77,10 +75,11 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       openPanel: false
     };
   }
+
   public getPermissionTypes(): IDropdownOption[] {
-    let perms = new Array();
+    const perms: IPropertyPaneDropdownOption[] = [];
     for (const perm in SPPermission) {
-      if (typeof (SPPermission[perm]) === "object") {
+      if (typeof SPPermission[perm as keyof typeof SPPermission] === "object") {
         perms.push({
           text: perm,
           key: perm
@@ -89,16 +88,16 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     }
     return perms;
   }
-  private onOpenPanel(element?: any): void {
-    this.setState((current) => ({ ...current, openPanel: true }));
+
+  private onOpenPanel(): void {
+    this.setState({ openPanel: true });
   }
-  private onClosePanel(element?: any): void {
-    //debugger;
-    this.setState((current) => ({ ...current, openPanel: false }));
+
+  private onClosePanel(): void {
+    this.setState({ openPanel: false });
   }
+
   public render(): JSX.Element {
-    //debugger;
-    //This Details list Renders  the short list of permissions in the panel
     return (
       <div style={{ marginBottom: '8px' }}>
         <Label>{this.props.label}</Label>
@@ -108,26 +107,23 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
           layoutMode={DetailsListLayoutMode.justified}
           selectionMode={SelectionMode.none}
         />
-        <Button
-          onClick={(e) => this.onOpenPanel()}>
+        <Button onClick={() => this.onOpenPanel()}>
           Edit Permissions and Colors
-          </Button>
+        </Button>
 
         <SelectedPermissionsPanel
           isOpen={this.state.openPanel}
-          onPropertyChange={(prop, oldval, newval) => {
-            this.setState((current) => ({ ...current, SelectedPermissions: [...newval] }));
-            this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, newval);
-
-
+          onPropertyChange={(prop: string, oldval: ISelectedPermission[], newval: ISelectedPermission[]) => {
+            const updatedPermissions = newval.map(newPerm => {
+              const existingPermission = this.state.SelectedPermissions.find(permission => permission.permission === newPerm.permission);
+              return existingPermission ? { ...existingPermission, ...newPerm } : newPerm;
+            });
+            this.setState({ SelectedPermissions: updatedPermissions });
+            this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, updatedPermissions);
           }}
           closePanel={() => { this.onClosePanel(); }}
           SelectedPermissions={this.props.SelectedPermissions}
-
-        />
-      </div>
+        />      </div>
     );
   }
 }
-
-

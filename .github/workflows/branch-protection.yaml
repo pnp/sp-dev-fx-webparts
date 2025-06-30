@@ -1,0 +1,27 @@
+name: Sharing is Caring Branch Protection # SIC-main is only used for Sharing is Caring sessions
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write  # Allows commenting on and closing PRs
+
+jobs:
+  prevent_merge:
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and Close PR if merging from sic-main to main
+        if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'sic-main'
+        run: |
+          # Post a comment on the PR
+          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"body": "Pull requests from `sic-main` to `main` are not allowed. This PR will be closed automatically."}' \
+          "${{ github.event.pull_request.comments_url }}"
+
+          # Close the PR
+          curl -s -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"state": "closed"}' \
+          "${{ github.event.pull_request.url }}"

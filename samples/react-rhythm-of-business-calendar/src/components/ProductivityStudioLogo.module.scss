@@ -1,0 +1,27 @@
+@import 'common.module';
+
+.productivityStudioLogo {
+    @include ms-font-mi;
+    font-size: 12px;
+    padding: 16px 16px 2px 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    // text-align: right;
+    span{
+        margin-right: 4px;
+        display:inline-block;
+    }
+    a{
+        text-decoration: none;
+        img{
+            position:relative;
+            top:1px;
+        }
+    }
+    a:visited {
+        color: $ms-color-themePrimary;
+        outline: 1px solid black;
+    }
+    
+}

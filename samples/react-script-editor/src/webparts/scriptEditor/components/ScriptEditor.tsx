@@ -7,7 +7,7 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
         super(props);
 
         this._showDialog = this._showDialog.bind(this);
-        this.state = {};
+        this.state = state || {};
     }
 
     public componentDidMount(): void {
@@ -19,7 +19,7 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
     }
 
     public render(): React.ReactElement<IScriptEditorProps> {
-        const viewMode = <span dangerouslySetInnerHTML={{ __html: this.state.script }}></span>;
+        const viewMode = <span dangerouslySetInnerHTML={{ __html: this.state.script }} />;
         return (
             <div className='ms-Fabric'>
                 <Placeholder iconName='JS'

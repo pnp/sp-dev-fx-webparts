@@ -1,7 +1,11 @@
+import { DisplayMode } from "@microsoft/sp-core-library";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { IRatingsWebPartProps } from '../RatingsWebPart';
 
 export interface IRatingsProps {
   context: WebPartContext;
-  properties: IRatingsWebPartProps;
+  color: 'brand' | 'marigold' | 'neutral';
+  displayMode: DisplayMode;
+  size: 'small' | 'medium' | 'large';
+  title: string;
+  onUpdateTitle: (value: string) => void;
 }

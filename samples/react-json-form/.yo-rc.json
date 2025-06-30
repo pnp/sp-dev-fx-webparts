@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.20.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.1",
+    "libraryName": "react-json-form",
+    "libraryId": "a2797e03-2117-49f4-8b08-15bdf177d07b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-json-form",
+    "solutionShortDescription": "react-json-form description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

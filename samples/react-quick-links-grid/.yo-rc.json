@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.19.0",
+    "libraryName": "react-quick-links-grid",
+    "libraryId": "676f926c-fcfa-4921-a624-a6e16aaa511a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-quick-links-grid",
+    "solutionShortDescription": "react-quick-links-grid description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

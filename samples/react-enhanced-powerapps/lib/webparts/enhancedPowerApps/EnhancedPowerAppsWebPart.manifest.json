@@ -21,6 +21,7 @@
     "properties": {
       "layout": 'AspectRatio',
       "aspectratio": '16:9',
+      "isWebPartHiddenOnSmallDevices":false
     }
   }]
 }

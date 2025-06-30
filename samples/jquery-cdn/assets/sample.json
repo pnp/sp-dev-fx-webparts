@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-jquery-cdn",
     "source": "pnp",
-    "title": "Using jQuery loaded from CDN",
+    "title": "Web Part Using jQuery loaded from CDN",
     "shortDescription": "This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/jquery-cdn",
     "longDescription": [
@@ -46,6 +46,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/jquery-cdn"
   }
 ]

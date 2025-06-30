@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-htm-templating",
     "source": "pnp",
-    "title": "HTM (Hyperscript Tagged Markup) Templating",
+    "title": "HTM (Hyperscript Tagged Markup) Templating Web Part",
     "shortDescription": "Provides an example of how to create a dynamic template system (configurable via Web Part properties) that can not only render HTML but also React controls, such as Fluent UI, without the need to use Handlebars.js + Web Components",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-htm-templating",
     "longDescription": [
@@ -44,6 +44,7 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-htm-templating"
   }
 ]

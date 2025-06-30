@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0-rc.1",
+    "libraryName": "copilot-hr-assistant",
+    "libraryId": "5235de52-9295-4deb-bbe6-654bc1f088d6",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "copilot-hr-assistant",
+    "solutionShortDescription": "copilot-hr-assistant description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

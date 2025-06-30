@@ -2,9 +2,12 @@
 
 ## Summary
 
-Let's the user test CAML queries at ease.
+A powerful web part that allows users to test and build CAML queries visually with a rich, intuitive interface. This enhanced version includes a visual query builder, query validation, saved queries, and more.
+![Screenshot](./assets/image.png)
 
 ![Sample gif](./assets/Demo.gif)
+
+
 
 ## Compatibility
 
@@ -15,14 +18,15 @@ Let's the user test CAML queries at ease.
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![React 17.0.1](https://img.shields.io/badge/React-17.0.1-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
-![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Not%20Tested-yellow.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
@@ -30,26 +34,27 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 * [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft Graph API](https://learn.microsoft.com/graph/overview)
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
 ## Contributors
 
-*[Dan Toft](https://github.com/Tanddant)
+* [Dan Toft](https://github.com/Tanddant) - Original author
+* [Nicolas Kheirallah](https://github.com/NicolasKheirallah) - SPFx 1.20.0 modernization with enhanced features including visual query builder, validator, and saved queries
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | November 26, 2022 | Initial release |
-
+| 2.0     | March 11, 2025   | Enhanced version with visual query builder, validator, saved queries, and SPFx 1.20.0 upgrade |
 
 ## Prerequisites
 
-This is a tool designed to help people who already know CAML to get going faster, not to help you build queries.
+Basic knowledge of SharePoint lists and CAML query language is helpful, but the visual query builder makes it accessible to beginners as well.
 
-I highly recommend checking out [the docs](https://learn.microsoft.com/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas) for more info
-
+For advanced usage, check out [the CAML documentation](https://learn.microsoft.com/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas).
 
 ## Minimal path to awesome
 
@@ -63,26 +68,124 @@ I highly recommend checking out [the docs](https://learn.microsoft.com/sharepoin
 
 ## Features
 
-This is a simple Web part that allows the user to input a [CAML Query](https://learn.microsoft.com/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas), select a list and run the query.
+This enhanced web part provides a comprehensive tool for working with CAML queries in SharePoint:
 
-I've been using PnP PowerShell to do this for a while, when you need to test a query real quick, but PowerShell can be dreading to some users, and is a whole new tool to learn, so in order to best help people whom are learning I made this __VERY__ simple Web part.
+### Core Features
 
-It also demonstrates several useful skill that a new SPFx Developer might find handy
+- **Visual Query Builder** - Create complex CAML queries without writing XML
+- **Query Validation** - Instant feedback on query syntax and potential issues
+- **Query Templates** - Pre-built templates for common query patterns
+- **Query History** - Navigate through previously executed queries
+- **Saved Queries** - Save, manage and reuse your queries
+- **Field Reference** - Quick access to list field metadata
+- **Export Results** - Export query results to CSV
+- **Enhanced Editor** - Monaco Editor for rich XML editing experience
+- **Modern UI** - Fluent UI components for a SharePoint-native look and feel
 
-- PnPJs - To make the request.
-- @pnp/spfx-controls-react - Are used both as the ListView and the ListPicker.
-- React functional components which are yet to be the default in SPFx.
-- React Context to avoid passing things that are needed globally as props.  
+### Technical Highlights
 
-## For more info on CAML:
+- **Microsoft Graph API Integration** - For SharePoint list operations
+- **PnPjs Integration** - Simplified SharePoint REST API interactions
+- **SPFx 1.20.0 compatibility** - Latest SharePoint Framework support
+- **React Hooks & Context** - Modern React patterns
+- **Separation of Concerns** - Clean architecture with services, utilities, and components
+- **TypeScript Type Safety** - Strong typing throughout
+- **Responsive Design** - Works on all device sizes
+
+## Sample Queries
+
+The web part includes several pre-built query templates:
+
+### Get items by ID
+
+```xml
+<View>
+  <Query>
+    <Where>
+      <In>
+          <FieldRef Name="ID" />
+          <Values>
+              <Value Type="Integer">1</Value>
+              <Value Type="Integer">4</Value>
+              <Value Type="Integer">6</Value>
+              <Value Type="Integer">8</Value>
+          </Values>
+      </In>
+    </Where>
+  </Query>
+</View>
+```
+
+### Modified in last 7 days
+
+```xml
+<View>
+  <Query>
+    <Where>
+      <Geq>
+        <FieldRef Name="Modified" />
+        <Value Type="DateTime">
+          <Today OffsetDays="-7" />
+        </Value>
+      </Geq>
+    </Where>
+    <OrderBy>
+      <FieldRef Name="Modified" Ascending="False" />
+    </OrderBy>
+  </Query>
+</View>
+```
+
+### Top 10 items
+
+```xml
+<View>
+  <RowLimit>10</RowLimit>
+  <Query>
+    <OrderBy>
+      <FieldRef Name="ID" Ascending="False" />
+    </OrderBy>
+  </Query>
+</View>
+```
+
+## For more info on CAML
+
 - [Collaborative Application Markup Language (CAML) schemas](https://learn.microsoft.com/en-us/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas)
 - [camljs](https://github.com/andrei-markeev/camljs)
 - [Camlex.Net](https://github.com/sadomovalex/camlex)
 
+## Solution Architecture
+
+The solution follows a modular architecture:
+
+```
+src/
+  └── webparts/
+      └── caml2Table/
+          ├── Caml2TableWebPart.ts        # Main web part definition
+          ├── Caml2TableContext.ts        # React context
+          ├── components/                 # React components
+          │   ├── Caml2Table.tsx          # Main component 
+          │   ├── CamlValidator.tsx       # Query validation component
+          │   ├── CamlQueryBuilder.tsx    # Visual query builder
+          │   └── SavedQueriesManager.tsx # Saved queries component
+          ├── models/                     # Data models
+          │   ├── IFieldInfo.ts           # Field metadata interface
+          │   ├── ICamlCondition.ts       # Query condition interface
+          │   └── ISavedQuery.ts          # Saved query interface
+          ├── services/                   # Service layer
+          │   ├── SharePointService.ts    # SharePoint API interactions
+          │   └── StorageService.ts       # Local storage service
+          └── utils/                      # Utilities
+              ├── CamlHelpers.ts          # CAML generation utilities
+              ├── QueryTemplates.ts       # Predefined query templates
+              └── QueryHistoryManager.ts  # Query history utilities
+```
 
 ## Help
 
-We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 

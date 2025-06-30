@@ -26,7 +26,7 @@
     "botframework-webchat": "^4.15.6",
     "react": "16.8.5",
     "react-dom": "16.8.5",
-    "swagger-client": "^2.1.23"
+    "swagger-client": "^3.27.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"

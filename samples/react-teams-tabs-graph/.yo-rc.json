@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.20.0",
+
+    "libraryName": "react-teams-tabs-graph",
+    "libraryId": "1e68649b-930f-4502-a858-12aa997bda01",
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "nodeVersion": "18.18.2",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
+  }
+}

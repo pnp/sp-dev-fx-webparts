@@ -9,7 +9,7 @@
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
     "creationDateTime": "2019-10-13",
-    "updateDateTime": "2023-03-11",
+    "updateDateTime": "2024-10-01",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
@@ -57,6 +57,16 @@
         "gitHubAccount": "felixbohnacker",
         "pictureUrl": "https://github.com/felixbohnacker.png",
         "name": "Felix Bohnacker"
+      },
+      {
+        "gitHubAccount": "salascz",
+        "name": "salascz",
+        "pictureUrl": "https://github.com/salascz.png"
+      },
+      {
+        "gitHubAccount": "wobba",
+        "name": "Mikael Svenson",
+        "pictureUrl": "https://github.com/wobba.png"
       }
     ],
     "references": [
@@ -75,6 +85,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-script-editor"
   }
 ]

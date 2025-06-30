@@ -1,0 +1,51 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.dateFormat {
+  color: "[theme:themePrimary, default: #0078d7]" !important;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+.bugList {
+  .header {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    color: #0065b1 !important;
+  }
+  // li {
+  //   display: flex;
+  //   margin-bottom: 10px;
+  //   font-size: 14px;
+  //   border-bottom: 1px dotted "[theme:link, default:#03787c]";
+  //   .icon {
+  //     width: 40px;
+  //     display: flex;
+  //     align-items: baseline;
+  //     justify-content: center;
+  //     color: "[theme:successIcon, default:#03787c]";
+  //     font-size: 23px;
+  //     margin-top: 8px;
+  //   }
+  //   .content {
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: self-start;
+  //     margin-left: 5px;
+  //     font-size: 14px;
+  //     padding: 5px 0;
+  //     a {
+  //       text-decoration: none;
+  //       color: "[theme:link, default:#03787c]";
+  //       cursor: pointer;
+  //       .title {
+  //         font-weight: 500;
+  //       }
+  //     }
+  //     .description {
+  //       text-align: left;
+  //       font-size: 12px;
+  //     }
+  //   }
+  // }
+}

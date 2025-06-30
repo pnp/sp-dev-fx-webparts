@@ -2,14 +2,14 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-multimedia-gallery",
     "source": "pnp",
-    "title": "Image Gallery",
+    "title": "Image Gallery Web Part",
     "shortDescription": "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multimedia-gallery",
     "longDescription": [
       "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view."
     ],
     "creationDateTime": "2020-07-19",
-    "updateDateTime": "2020-07-19",
+    "updateDateTime": "2025-04-25",
     "products": [
       "SharePoint"
     ],
@@ -20,7 +20,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.20.0"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -70,7 +70,7 @@
         "gitHubAccount": "joaojmendes",
         "company": "Storm Technology Ltd",
         "pictureUrl": "https://github.com/joaojmendes.png",
-        "name": "Jo\u00E3o Mendes",
+        "name": "João Mendes",
         "twitter": "joaojmendes"
       },
       {
@@ -98,6 +98,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multimedia-gallery"
   }
 ]

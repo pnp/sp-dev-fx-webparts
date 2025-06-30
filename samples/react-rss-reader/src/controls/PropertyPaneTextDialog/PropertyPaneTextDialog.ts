@@ -63,6 +63,9 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
     ReactDom.render(textDialog, elem);
   }
 
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.elem);
+  }
 
   /*****************************************************************************************
    * Call the property pane's onPropertyChange when the TextDialog changes

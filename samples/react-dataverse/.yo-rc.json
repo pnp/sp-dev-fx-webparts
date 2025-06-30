@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.0",
+    "libraryName": "react-dataverse",
+    "libraryId": "230bb7cd-1729-4134-b94b-484d993c986a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-dataverse",
+    "solutionShortDescription": "react-dataverse description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
