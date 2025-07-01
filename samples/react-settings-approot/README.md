@@ -4,6 +4,8 @@ This repository contains a sample solution demonstrating how to securely store a
 
 ![Personal Settings Web Part Screenshot](assets/webpart-screenshot.png)
 
+For a detailed technical explanation and step-by-step build guide, see [TECHNICAL_OVERVIEW.md](./TECHNICAL_OVERVIEW.md).
+
 ## Solution Structure
 
 - **spfx-personal-settings-webpart/**: SPFx Web Part (React, TypeScript) for users to manage their personal settings. Authenticates with Entra ID and calls the backend API securely.
