@@ -4,8 +4,8 @@
     "source": "pnp",
     "title": "SPFx Personal Settings Solution",
     "shortDescription": "A full-stack solution for secure, user-specific settings in SharePoint using SPFx, Azure Functions, and Microsoft Graph approot.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
     "longDescription": [
       "This sample demonstrates how to build a secure, enterprise-ready solution for managing personal user settings in SharePoint. It uses a SPFx React web part for the UI, an Azure Function API for business logic and security, and Microsoft Graph's approot special folder for per-user storage. The solution implements the On-Behalf-Of (OBO) flow, JWT validation, and CORS, and is ready for real-world deployment."
     ],
