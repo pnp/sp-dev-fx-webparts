@@ -27781,6 +27781,66 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-settings-approot",
+    "source": "pnp",
+    "title": "SPFx Personal Settings Solution",
+    "shortDescription": "A full-stack solution for secure, user-specific settings in SharePoint using SPFx, Azure Functions, and Microsoft Graph approot.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
+    "longDescription": [
+      "This sample demonstrates how to build a secure, enterprise-ready solution for managing personal user settings in SharePoint. It uses a SPFx React web part for the UI, an Azure Function API for business logic and security, and Microsoft Graph's approot special folder for per-user storage. The solution implements the On-Behalf-Of (OBO) flow, JWT validation, and CORS, and is ready for real-world deployment."
+    ],
+    "creationDateTime": "2025-07-01",
+    "updateDateTime": "2025-07-01",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-settings-approot/assets/webpart-screenshot.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PaoloPia",
+        "company": "PiaSys.com",
+        "pictureUrl": "https://github.com/paolopia.png",
+        "name": "Paolo Pialorsi",
+        "twitter": "PaoloPia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Microsoft Graph Special Folders",
+        "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
+        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+      },
+      {
+        "name": "On-Behalf-Of Flow",
+        "description": "Understand how to implement the OAuth 2.0 On-Behalf-Of (OBO) authentication flow to securely call downstream APIs like Microsoft Graph from your own APIs, while preserving the user's identity and permissions.",
+        "url": "https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-side-panel",
     "source": "pnp",
     "title": "Side Panel Client-Side Web Part",
