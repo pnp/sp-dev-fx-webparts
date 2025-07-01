@@ -62,3 +62,5 @@ For a detailed technical explanation and step-by-step build guide, see [TECHNICA
 ---
 
 This sample is provided as-is for community use and learning.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-settings-approot" />
