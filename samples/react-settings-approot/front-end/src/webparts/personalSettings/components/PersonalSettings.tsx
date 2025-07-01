@@ -25,7 +25,7 @@ const PersonalSettings: React.FC<IPersonalSettingsProps> = ({
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState(false);
 
-  const fetchSettings = async () => {
+  const fetchSettings = async (): Promise<void> => {
     if (!aadHttpClient) return;
     setLoading(true);
     setMessage('');
@@ -34,19 +34,19 @@ const PersonalSettings: React.FC<IPersonalSettingsProps> = ({
       if (!res.ok) throw new Error('Failed to list settings');
       const data = await res.json();
       setSettings(Array.isArray(data) ? data : []);
-    } catch (err: any) {
-      setMessage(err.message);
+    } catch (err) {
+      setMessage((err as Error).message);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchSettings();
+  useEffect((): void => {
+    fetchSettings().catch(() => { /* error already handled in fetchSettings */ });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aadHttpClient]);
 
-  const handleAdd = async () => {
+  const handleAdd = async (): Promise<void> => {
     if (!aadHttpClient || !key) return;
     setLoading(true);
     setMessage('');
@@ -54,20 +54,20 @@ const PersonalSettings: React.FC<IPersonalSettingsProps> = ({
       const res = await aadHttpClient.fetch(`${apiUrl}/${encodeURIComponent(key)}`, AadHttpClient.configurations.v1, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ value })
+        body: JSON.stringify(value)
       });
       if (!res.ok) throw new Error('Failed to add setting');
       setKey('');
       setValue('');
-      fetchSettings();
-    } catch (err: any) {
-      setMessage(err.message);
+      await fetchSettings();
+    } catch (err) {
+      setMessage((err as Error).message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (): Promise<void> => {
     if (!aadHttpClient || !editKey) return;
     setLoading(true);
     setMessage('');
@@ -75,21 +75,21 @@ const PersonalSettings: React.FC<IPersonalSettingsProps> = ({
       const res = await aadHttpClient.fetch(`${apiUrl}/${encodeURIComponent(editKey)}`, AadHttpClient.configurations.v1, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ value })
+        body: JSON.stringify(value)
       });
       if (!res.ok) throw new Error('Failed to update setting');
       setEditKey(null);
       setKey('');
       setValue('');
-      fetchSettings();
-    } catch (err: any) {
-      setMessage(err.message);
+      await fetchSettings();
+    } catch (err) {
+      setMessage((err as Error).message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleRemove = async (removeKey: string) => {
+  const handleRemove = async (removeKey: string): Promise<void> => {
     if (!aadHttpClient) return;
     setLoading(true);
     setMessage('');
@@ -98,21 +98,21 @@ const PersonalSettings: React.FC<IPersonalSettingsProps> = ({
         method: 'DELETE'
       });
       if (!res.ok) throw new Error('Failed to remove setting');
-      fetchSettings();
-    } catch (err: any) {
-      setMessage(err.message);
+      await fetchSettings();
+    } catch (err) {
+      setMessage((err as Error).message);
     } finally {
       setLoading(false);
     }
   };
 
-  const startEdit = (setting: Setting) => {
+  const startEdit = (setting: Setting): void => {
     setEditKey(setting.key);
     setKey(setting.key);
     setValue(setting.value);
   };
 
-  const cancelEdit = () => {
+  const cancelEdit = (): void => {
     setEditKey(null);
     setKey('');
     setValue('');

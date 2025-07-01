@@ -2,6 +2,8 @@
 
 This repository contains a sample solution demonstrating how to securely store and manage user-specific configuration settings in SharePoint using a SPFx Web Part and an Azure Function API leveraging Microsoft Graph special folders (approot).
 
+![Personal Settings Web Part Screenshot](assets/webpart-screenshot.png)
+
 ## Solution Structure
 
 - **spfx-personal-settings-webpart/**: SPFx Web Part (React, TypeScript) for users to manage their personal settings. Authenticates with Entra ID and calls the backend API securely.
@@ -30,13 +32,15 @@ This repository contains a sample solution demonstrating how to securely store a
 - Expose the API app as a scope and grant permissions to the client app.
 
 ### 2. Deploy the Azure Function
-- Go to `azure-function-personal-settings-api/`
+- Go to `back-end/`
+- Copy `.env.sample` to `.env` and fill in your real values for all secrets and IDs.
+- Copy `local.settings.sample.json` to `local.settings.json` and fill in your real values for local development.
 - Install dependencies and build: `npm install && npm run build`
 - Deploy to Azure Functions
 - Configure application settings for Entra ID (client ID, tenant ID, client secret)
 
 ### 3. Deploy the SPFx Web Part
-- Go to `spfx-personal-settings-webpart/`
+- Go to `front-end/`
 - Run `npm install`
 - Update the API endpoint and Entra ID app details in the code/config
 - Package and deploy the Web Part to your SharePoint App Catalog
