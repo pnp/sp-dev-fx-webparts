@@ -111,7 +111,7 @@ try {
             {this.state.listItems.map((item: CarousalItem) => {
               return (
                 <div className={styles.carousalItem} key={item.Id}>
-                  <p className={styles.profile}><img width='200' src={`https://ansellhealthcare.sharepoint.com/_layouts/15/userphoto.aspx?size=L&accountname=${item.EmailAddress}`} /></p>
+                  <p className={styles.profile}><img width='200' src={`https://{domainname}/_layouts/15/userphoto.aspx?size=L&accountname=${item.EmailAddress}`} /></p>
                   <p className={styles.title}>{item.Title}</p>
                   <p className={styles.description}>{item.JobTitle}, {item.Department}</p>
                   {item.RedirectURL && (
