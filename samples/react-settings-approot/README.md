@@ -36,7 +36,7 @@ For a detailed technical explanation and step-by-step build guide, see [TECHNICA
 ### 2. Deploy the Azure Function
 - Go to `back-end/`
 - Copy `.env.sample` to `.env` and fill in your real values for all secrets and IDs.
-- Copy `local.settings.sample.json` to `local.settings.json` and fill in your real values for local development.
+- Copy `local.settings.json.sample` to `local.settings.json` and fill in your real values for local development.
 - Install dependencies and build: `npm install && npm run build`
 - Deploy to Azure Functions
 - Configure application settings for Entra ID (client ID, tenant ID, client secret)

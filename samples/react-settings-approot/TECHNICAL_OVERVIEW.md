@@ -80,7 +80,7 @@ This document provides a technical deep dive into the architecture, authenticati
 
 ### Step 5: Local Development & Environment Management
 - Use `.env` and `local.settings.json` for secrets and config.
-- Provide `.env.sample` and `local.settings.sample.json` for onboarding.
+- Provide `.env.sample` and `local.settings.json.sample` for onboarding.
 - Use VS Code launch configurations for debugging both front-end and back-end.
 
 ### Step 6: Deployment
