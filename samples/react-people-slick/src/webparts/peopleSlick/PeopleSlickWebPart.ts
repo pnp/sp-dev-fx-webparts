@@ -41,6 +41,7 @@ export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSli
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
+        rootSiteURL: this.context.pageContext.site.absoluteUrl,
         context: this.context,
         listName: this.properties.listName,
         webpartName : this.properties.webpartName,

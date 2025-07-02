@@ -6,7 +6,7 @@ export interface IPeopleSlickProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  
+  rootSiteURL:string;
   listName: string;
   webpartName:string;
   context: WebPartContext;

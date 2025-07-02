@@ -6,6 +6,7 @@ import type { IPeopleSlickProps } from './IPeopleSlickProps';
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import "@pnp/sp/sites";
 import { SPFx, spfi } from "@pnp/sp";
  
 import Slider from "react-slick";
@@ -29,9 +30,10 @@ interface PersonItem{
   ID:number;
   Title: string;
 }
-
+ 
 interface IState {
   listItems: CarousalItem[];
+  
   loading: boolean;
 }
 
@@ -40,6 +42,7 @@ export default class PeopleSlick extends React.Component<IPeopleSlickProps, ISta
     super(props);
     this.state = {
       loading: true,
+    
       listItems: [],
     };
   }
@@ -55,6 +58,7 @@ console.log("Getting data from list");
 try {
     const sp = await spfi().using(SPFx(this.props.context));
 
+    
     const items = await sp.web.lists
       .getByTitle(this.props.listName)
       .items.filter("Active eq 1")
@@ -63,7 +67,7 @@ try {
 
     this.setState({
       listItems: items,
-      loading: false,
+      loading: false
     });}catch(error){console.log(error.message);}
     return;
   }
@@ -111,7 +115,7 @@ try {
             {this.state.listItems.map((item: CarousalItem) => {
               return (
                 <div className={styles.carousalItem} key={item.Id}>
-                  <p className={styles.profile}><img width='200' src={`https://{domainname}/_layouts/15/userphoto.aspx?size=L&accountname=${item.EmailAddress}`} /></p>
+                  <p className={styles.profile}><img width='200' src={`${this.props.rootSiteURL}/_layouts/15/userphoto.aspx?size=L&accountname=${item.EmailAddress}`} /></p>
                   <p className={styles.title}>{item.Title}</p>
                   <p className={styles.description}>{item.JobTitle}, {item.Department}</p>
                   {item.RedirectURL && (
