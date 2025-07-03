@@ -1,7 +1,6 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 
 export interface ICountdownTimerProps {
-  description: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;

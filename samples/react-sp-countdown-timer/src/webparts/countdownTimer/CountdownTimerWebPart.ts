@@ -14,7 +14,7 @@ import CountdownTimer from './components/CountdownTimer';
 import { ICountdownTimerProps } from './components/ICountdownTimerProps';
 
 export interface ICountdownTimerWebPartProps {
-  description: string;
+  listName: string;
 }
 
 export default class CountdownTimerWebPart extends BaseClientSideWebPart<ICountdownTimerWebPartProps> {
@@ -29,13 +29,12 @@ export default class CountdownTimerWebPart extends BaseClientSideWebPart<ICountd
     const element: React.ReactElement<ICountdownTimerProps> = React.createElement(
       CountdownTimer,
       {
-        description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        context: this.context, // Pass PnPjs SP instance
-        listName: 'Events'
+        context: this.context, 
+        listName: this.properties.listName || 'Events'
       }
     );
 
@@ -110,10 +109,10 @@ export default class CountdownTimerWebPart extends BaseClientSideWebPart<ICountd
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('listName', {
+                  label: "List Name"
                 })
               ]
             }
