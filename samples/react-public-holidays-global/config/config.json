@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "public-holidays-global-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/publicHolidaysGlobal/PublicHolidaysGlobalWebPart.js",
+          "manifest": "./src/webparts/publicHolidaysGlobal/PublicHolidaysGlobalWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PublicHolidaysGlobalWebPartStrings": "lib/webparts/publicHolidaysGlobal/loc/{locale}.js"
+  }
+}
