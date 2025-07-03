@@ -4,6 +4,8 @@
 
 This SharePoint Framework (SPFx) web part displays a countdown timer for upcoming events from a SharePoint list. It helps organizations keep users informed about important dates and deadlines by showing a live countdown for each event.
 
+![Countdown Timer](assets/screenshot.png)
+
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
