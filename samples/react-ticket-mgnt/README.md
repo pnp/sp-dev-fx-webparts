@@ -2,7 +2,7 @@
 
 ## Summary
 
-This **SharePoint webpart** is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.
+This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.
 
 ![Ticket dashboard](./assets/ticket%20dashboard.png)  ![New ticket](./assets/new%20ticket.png)
 ![Ticket details](./assets/ticket%20details.png)
@@ -11,25 +11,25 @@ This **SharePoint webpart** is a ticket management system with a modern, respons
 
 A SharePoint list to store the information should have the following columns:
 
- - Subject (Single line of text)
- - Description (Multiple lines of text)
- - Priority (Choice)
- - Status (Choice)
- - Assigned To (Person or Group)
- - Due Date (Date and Time)
- - Category (Choice)
- - Environment (Choice)
- - Steps to Reproduce (Multiple lines of text)
- - Expected Result (Multiple lines of text)
- - Actual Result (Multiple lines of text)
- - Affected Version (Single line of text)
- - Resolution (Multiple lines of text)
- - Resolution Date (Date and Time)
- - Severity (Choice)
- - Root Cause (Choice)
- - Time Spent (Hours) (Number)
- - Regression Test Status (Choice)
- - Release (Single line of text)
+- Subject (Single line of text)
+- Description (Multiple lines of text)
+- Priority (Choice)
+- Status (Choice)
+- Assigned To (Person or Group)
+- Due Date (Date and Time)
+- Category (Choice)
+- Environment (Choice)
+- Steps to Reproduce (Multiple lines of text)
+- Expected Result (Multiple lines of text)
+- Actual Result (Multiple lines of text)
+- Affected Version (Single line of text)
+- Resolution (Multiple lines of text)
+- Resolution Date (Date and Time)
+- Severity (Choice)
+- Root Cause (Choice)
+- Time Spent (Hours) (Number)
+- Regression Test Status (Choice)
+- Release (Single line of text)
 
  Use can use the [Powershell script](./script/ProvisionTicketList.ps1) to provision the list.
 
@@ -96,17 +96,20 @@ A SharePoint list to store the information should have the following columns:
 ### Ticket Management
 
 #### Core Features
+
 - Create, view, edit, and delete tickets  
 - Track ticket status and progress  
 - Assign tickets to team members  
 
 #### Dashboard Views
+
 - All tickets overview  
 - Personal tickets view  
 - Detailed ticket view  
 - New ticket creation form  
 
 #### Rich Ticket Metadata
+
 - Priority levels  
 - Status tracking  
 - Categories  
@@ -114,19 +117,18 @@ A SharePoint list to store the information should have the following columns:
 - Assignments  
 
 #### User Interface
+
 - Modern, responsive design  
 - Intuitive navigation  
 - Visual status indicators  
 - Mobile-friendly layout  
 
 #### SharePoint Integration
+
 - Configurable list storage  
 - User permission management  
 - People picker integration  
 - Real-time updates  
-
-
-
 
 ## Help
 
