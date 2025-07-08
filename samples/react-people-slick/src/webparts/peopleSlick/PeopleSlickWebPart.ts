@@ -18,6 +18,7 @@ export interface IPeopleSlickWebPartProps {
   description: string;
   listName: string;
   webpartName:string;
+  UseRootSite: boolean;
   showDots: boolean;
   autoplaySpeed: number;
   speed: number;
@@ -25,8 +26,11 @@ export interface IPeopleSlickWebPartProps {
    slidesToScroll: number;
    recordToReturn: number;
   enableAutoplay: boolean;
+   customFilter: boolean;
+   customFilterValue: string;
+   enableRedirectURL: boolean;
+ 
 }
-
 export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSlickWebPartProps> {
    private _isDarkTheme: boolean = false;
   private _environmentMessage: string = "";
@@ -45,19 +49,25 @@ export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSli
         context: this.context,
         listName: this.properties.listName,
         webpartName : this.properties.webpartName,
+        UseRootSite: this.properties.UseRootSite,
         showDots: this.properties.showDots,
         autoplaySpeed: this.properties.autoplaySpeed,
         speed: this.properties.speed,
-        
         slidesToShow: this.properties.slidesToShow,
         slidesToScroll: this.properties.slidesToScroll,
         recordToReturn: this.properties.recordToReturn,
         enableAutoplay: this.properties.enableAutoplay,
+        customFilter: this.properties.customFilter,
+        customFilterValue: this.properties.customFilterValue,
+        enableRedirectURL: this.properties.enableRedirectURL,
+       
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
+
+  
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
@@ -130,6 +140,8 @@ export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSli
           },
           groups: [
             {
+              groupName : "Basic Configuration",
+              
               groupFields: [
                    PropertyPaneTextField('webpartName', {
                   label: "Webpart Name"
@@ -137,6 +149,12 @@ export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSli
 
                 PropertyPaneTextField('listName', {
                   label: "List Name"
+                }),
+
+                   PropertyPaneToggle("UseRootSite", {
+                  label: "Use Root Site?",
+                  offText: "No",
+                  onText: "Yes",
                 }),
 
                    PropertyPaneToggle("showDots", {
@@ -175,9 +193,39 @@ export default class PeopleSlickWebPart extends BaseClientSideWebPart<IPeopleSli
                   max: 20,
                   disabled: !this.properties.enableAutoplay,
                 }),
+                
+               
+
               ]
-            }
-          ]
+            },
+            {
+                groupName:"Advanced configuration",
+             
+                groupFields:[
+                     PropertyPaneToggle("customFilter", {
+                  label: "Use Custom Filter?",
+                  offText: "No",
+                  onText: "Yes",
+                  }),
+
+                  PropertyPaneTextField('customFilterValue', {
+                    label: "Custom Filter Query, Eg: Tags eq 'APAC'",
+                    disabled: !this.properties.customFilter,
+                  }),
+
+                  PropertyPaneToggle("enableRedirectURL", {
+                  label: "enable RedirectURL?",
+                  offText: "No",
+                  onText: "Yes",
+                  }),
+
+
+              
+                ]
+
+            },
+            
+            ]
         }
       ]
     };

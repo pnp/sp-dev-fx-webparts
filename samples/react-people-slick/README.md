@@ -22,13 +22,11 @@ this webpart are using @pnp/sp to get sp list value and react-slick to display t
 pre-create the list with the format below
 | Column Name| Type                                               |
 | -----------| ------------------------------------------------------- |
-| Title          | Single Line of Text  |
-| EmailAddress   | Single Line of Text  |
-| JobTitle       | Single Line of Text  |
-| Department     | Single Line of Text  |
-| Active         | Yes/No  |
-| PublishedDate  | DateTime  |
+| Title          | Single Line of Text  | - default, not using
+| Email  | People & Group  |
+| Published  | DateTime  |
 | RedirectURL    | Hyperlink  |
+| Tags         | Choice  |
 
 
 
@@ -42,7 +40,7 @@ pre-create the list with the format below
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.0     | July 1, 2025| Initial release - read from custom list and display people carousel |
+| 1.0     | July 8, 2025| Initial release - read from custom list and display people carousel |
 
 ## Disclaimer
 

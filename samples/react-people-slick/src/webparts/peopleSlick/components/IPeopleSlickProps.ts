@@ -10,6 +10,7 @@ export interface IPeopleSlickProps {
   listName: string;
   webpartName:string;
   context: WebPartContext;
+  UseRootSite: boolean;
   showDots: boolean;
   autoplaySpeed: number;
    speed: number;
@@ -17,4 +18,9 @@ export interface IPeopleSlickProps {
   slidesToScroll: number;
   recordToReturn: number;
   enableAutoplay: boolean;
+
+  customFilter: boolean;
+  customFilterValue: string;
+  enableRedirectURL:boolean;
+ 
 }
