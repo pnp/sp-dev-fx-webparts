@@ -4,6 +4,7 @@
 
 this webpart are using @pnp/sp to get sp list value and react-slick to display the content
 ![Preview](./assets/react-people-slick.gif)
+![Preview](./assets/Screenshot.png)
 
 ## Used SharePoint Framework Version
 
