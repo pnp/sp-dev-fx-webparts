@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "migrate-personal-settings",
+    "libraryId": "b9150d7a-e523-48b6-977a-50ef0576a083",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "migrate-personal-settings",
+    "solutionShortDescription": "migrate-personal-settings description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
