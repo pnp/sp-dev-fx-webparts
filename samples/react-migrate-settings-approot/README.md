@@ -2,7 +2,7 @@
 
 ## Summary
 
-This SharePoint Framework (SPFx) web part provides a simplified interface for browsing and viewing files stored in the legacy "SharePoint Online Client Extensibility Web Application Principal" folder using the native SPFx MSGraphClientV3. The web part allows users to list legacy app files and view their text content directly within the interface, making it easy to examine and migrate legacy SharePoint application data.
+This SharePoint Framework (SPFx) web part provides a simplified interface for browsing and viewing files stored in the legacy "SharePoint Online Client Extensibility Web Application Principal" folder using the native SPFx MSGraphClientV3. The web part allows users to list legacy app files and view their text content directly within the interface, making it easy to examine and migrate legacy SharePoint application data. This sample can also be used to take inspiration in case you need to migrate settings stored in the approot special folder of the "SharePoint Online Client Extensibility Web Application Principal" after the transition to the new "SharePoint Online Web Client Extensibility" principal application for SharePoint Framework.
 
 ![SPFx Legacy App Files Browser](./assets/migrate-personal-settings-01.png)
 
