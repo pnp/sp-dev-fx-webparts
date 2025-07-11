@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "people-slick-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/peopleSlick/PeopleSlickWebPart.js",
+          "manifest": "./src/webparts/peopleSlick/PeopleSlickWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PeopleSlickWebPartStrings": "lib/webparts/peopleSlick/loc/{locale}.js"
+  }
+}
