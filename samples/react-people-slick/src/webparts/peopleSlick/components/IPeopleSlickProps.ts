@@ -6,14 +6,14 @@ export interface IPeopleSlickProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  rootSiteURL:string;
+  rootSiteURL: string;
   listName: string;
-  webpartName:string;
+  webpartName: string;
   context: WebPartContext;
   UseRootSite: boolean;
   showDots: boolean;
   autoplaySpeed: number;
-   speed: number;
+  speed: number;
   slidesToShow: number;
   slidesToScroll: number;
   recordToReturn: number;
@@ -21,6 +21,6 @@ export interface IPeopleSlickProps {
 
   customFilter: boolean;
   customFilterValue: string;
-  enableRedirectURL:boolean;
- 
+  enableRedirectURL: boolean;
+
 }
