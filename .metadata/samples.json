@@ -21388,6 +21388,76 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot",
+    "source": "pnp",
+    "title": "SPFx Legacy App Files Browser",
+    "shortDescription": "A SharePoint Framework web part for browsing and viewing files in the legacy 'SharePoint Online Client Extensibility Web Application Principal' folder using native SPFx MSGraphClientV3.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-migrate-settings-approot",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-migrate-settings-approot",
+    "longDescription": [
+      "This sample demonstrates how to build a simplified interface for browsing and viewing files stored in the legacy 'SharePoint Online Client Extensibility Web Application Principal' folder using the native SPFx MSGraphClientV3. The web part provides a clean, professional interface for listing legacy app files and viewing their text content directly within the SharePoint page, making it easy to examine and migrate legacy SharePoint application data without custom authentication complexity."
+    ],
+    "creationDateTime": "2025-07-09",
+    "updateDateTime": "2025-07-09",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-migrate-settings-approot/assets/migrate-personal-settings-01.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PaoloPia",
+        "company": "PiaSys.com",
+        "pictureUrl": "https://github.com/paolopia.png",
+        "name": "Paolo Pialorsi",
+        "twitter": "PaoloPia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Changes on SharePoint Framework (SPFx) permission grants in Microsoft Entra ID",
+        "description": "Article explaining a set of changes to the way API permissions are managed in SharePoint Online by Tenant Administrators in SharePoint Framework (SPFx) starting from March 2025.",
+        "url": "https://devblogs.microsoft.com/microsoft365dev/changes-on-sharepoint-framework-spfx-permission-grants-in-microsoft-entra-id/"
+      },
+      {
+        "name": "Microsoft Graph Special Folders",
+        "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
+        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+      },
+      {
+        "name": "Use Microsoft Graph in your SharePoint Framework solution",
+        "description": "Learn how to use Microsoft Graph APIs within SharePoint Framework solutions using the native MSGraphClientV3 for seamless authentication and API access.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
+      },
+      {
+        "name": "Microsoft Graph Files API",
+        "description": "Explore the Microsoft Graph Files API to access and manage files stored in OneDrive for Business, including special folders and legacy application data.",
+        "url": "https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-minesweeper",
     "source": "pnp",
     "title": "Minesweeper Web Part",
@@ -25935,6 +26005,60 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-provision-assets"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-public-holidays-global",
+    "source": "pnp",
+    "title": "Public Holidays Global",
+    "shortDescription": "Displays public holidays for multiple countries and years.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+    "longDescription": [
+      "This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results."
+    ],
+    "creationDateTime": "2025-06-17",
+    "updateDateTime": "2025-06-17",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "sample.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/jtlivio",
+        "pictureUrl": "https://github.com/jtlivio.png",
+        "name": "João Livio"
+      },
+      {
+        "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
+        "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
+        "name": "Create a new issue"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
     "source": "pnp",
     "title": "Questions and Answers Web Part",
@@ -27725,6 +27849,71 @@
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid"
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-settings-approot",
+    "source": "pnp",
+    "title": "SPFx Personal Settings Solution",
+    "shortDescription": "A full-stack solution for secure, user-specific settings in SharePoint using SPFx, Azure Functions, and Microsoft Graph approot.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-settings-approot",
+    "longDescription": [
+      "This sample demonstrates how to build a secure, enterprise-ready solution for managing personal user settings in SharePoint. It uses a SPFx React web part for the UI, an Azure Function API for business logic and security, and Microsoft Graph's approot special folder for per-user storage. The solution implements the On-Behalf-Of (OBO) flow, JWT validation, and CORS, and is ready for real-world deployment."
+    ],
+    "creationDateTime": "2025-07-01",
+    "updateDateTime": "2025-07-01",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-settings-approot/assets/webpart-screenshot.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PaoloPia",
+        "company": "PiaSys.com",
+        "pictureUrl": "https://github.com/paolopia.png",
+        "name": "Paolo Pialorsi",
+        "twitter": "PaoloPia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Changes on SharePoint Framework (SPFx) permission grants in Microsoft Entra ID",
+        "description": "Article explaining a set of changes to the way API permissions are managed in SharePoint Online by Tenant Administrators in SharePoint Framework (SPFx) starting from March 2025.",
+        "url": "https://devblogs.microsoft.com/microsoft365dev/changes-on-sharepoint-framework-spfx-permission-grants-in-microsoft-entra-id/"
+      },
+      {
+        "name": "Microsoft Graph Special Folders",
+        "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
+        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+      },
+      {
+        "name": "On-Behalf-Of Flow",
+        "description": "Understand how to implement the OAuth 2.0 On-Behalf-Of (OBO) authentication flow to securely call downstream APIs like Microsoft Graph from your own APIs, while preserving the user's identity and permissions.",
+        "url": "https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-side-panel",
