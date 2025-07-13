@@ -53,7 +53,11 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
-* in the command line run:
+* use node v14.21.3 or if you have nvm installed, run this in command line:
+  * `nvm use`
+* Alternatively, if using nvs, run this command line:
+  * `nvs use`
+* Then run:
   * `npm install`
   * `gulp serve`
 
@@ -64,7 +68,9 @@ Version|Date|Comments
 * Clone this repository
 * use node v14.21.3 or if you have nvm installed, run this in command line:
   * `nvm use`
-* in the command line run:
+* Alternatively, if using nvs, run this command line:
+  * `nvs use`
+* Then run:
   * `npm install`
   * `gulp build`
   * `gulp bundle --ship`
