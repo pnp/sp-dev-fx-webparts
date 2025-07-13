@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.15.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-people-slick",
+    "libraryId": "d8a876a0-000b-4f8d-b52f-dfff585481dc",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-people-slick",
+    "solutionShortDescription": "react-people-slick description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
