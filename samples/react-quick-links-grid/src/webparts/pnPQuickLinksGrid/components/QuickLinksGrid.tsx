@@ -12,6 +12,7 @@ export interface IQuickLink {
 
 // Props expected by the QuickLinks component
 export interface IQuickLinksProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context: any;  // Consider typing this more specifically if possible
   listTitle: string;  // SharePoint list title
   titleField: string; // Field for link titles
@@ -48,6 +49,7 @@ class QuickLinks extends React.Component<IQuickLinksProps, IQuickLinksState> {
       const data = await response.json();
      
       // Map SharePoint list data to quick links
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const quickLinks: IQuickLink[] = data.value.map((item: any) => ({
         title: item[titleField],
         url: item[urlField],

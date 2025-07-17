@@ -17,8 +17,8 @@ This project is a SharePoint Framework (SPFx) web part that displays a set of qu
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.19.0](https://img.shields.io/badge/SPFx-1.19.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -45,7 +45,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Prerequisites
 
-- Node.js (v19.00.4)
+- Node.js (v22.14.0)
 - SharePoint Online environment
 - A SharePoint list containing the quick links. This list is configured with columns
   - **Title** - Single line of text
