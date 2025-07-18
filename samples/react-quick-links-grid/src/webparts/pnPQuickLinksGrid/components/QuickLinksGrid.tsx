@@ -18,6 +18,7 @@ export interface IQuickLinksProps {
   titleField: string; // Field for link titles
   urlField: string;   // Field for link URLs
   iconField: string;  // Field for link icons
+  orderField: string; // Field for link order (optional)
 }
 
 // State for the QuickLinks component
@@ -41,8 +42,11 @@ class QuickLinks extends React.Component<IQuickLinksProps, IQuickLinksState> {
 
   // Fetch list items from SharePoint and update state
   private async fetchListItems(): Promise<void> {
-    const { listTitle, titleField, urlField, iconField, context } = this.props;
-    const apiUrl = `${context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items?$select=${titleField},${urlField},${iconField}`;
+    const { listTitle, titleField, urlField, iconField, context, orderField } = this.props;
+    let apiUrl = `${context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items?$select=${titleField},${urlField},${iconField}`;
+    if (orderField) {
+      apiUrl += `,${orderField}&$orderby=${orderField} asc`;
+    }
 
     try {
       const response: SPHttpClientResponse = await context.spHttpClient.get(apiUrl, SPHttpClient.configurations.v1);

@@ -51,6 +51,7 @@ This sample is optimally compatible with the following environment configuration
   - **Title** - Single line of text
   - **URL** - Hyperlink or Picture
   - **Icon** - Single line of text // Fluent Icon names can be referred from (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)
+  - **Order** - Number (optional, for custom ordering of links) - please be advised that every list has and internal 'order' field so if you plan to add a new column with title 'Order' then most probably its internal name will be 'Order0'.
   
   ![image](./assets/356854637-e68afa9a-0e48-40bf-abc0-f0fa12f154c7.png)
 
