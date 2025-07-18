@@ -42,6 +42,7 @@ This sample is optimally compatible with the following environment configuration
 | Version | Date            | Comments        |
 | ------- | --------------- | --------------- |
 | 1.0     | August 11, 2024 | Initial release |
+| 2.0     | July 18, 2025 | Adds order column |
 
 ## Prerequisites
 
