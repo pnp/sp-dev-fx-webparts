@@ -7683,6 +7683,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -7769,6 +7773,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -7817,6 +7825,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
@@ -7873,6 +7885,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -7928,6 +7944,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
@@ -8002,6 +8022,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -8051,6 +8075,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
@@ -8110,6 +8138,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -8166,6 +8198,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -8214,6 +8250,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
@@ -8265,6 +8305,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -8313,6 +8357,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
@@ -8371,6 +8419,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Angular"
       },
@@ -8420,6 +8472,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "jQuery"
@@ -8482,6 +8538,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Other"
       },
@@ -8532,6 +8592,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "jQuery"
       },
@@ -8581,6 +8645,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "jQuery"
@@ -8655,6 +8723,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "jQuery"
       },
@@ -8726,6 +8798,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "JavaScript"
       },
@@ -8768,7 +8844,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -8788,6 +8864,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -8865,6 +8945,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -8919,6 +9003,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -8982,6 +9070,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9037,6 +9129,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9086,6 +9182,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9143,6 +9243,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9193,6 +9297,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -9248,6 +9356,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9324,6 +9436,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -9373,6 +9489,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9456,6 +9576,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9504,6 +9628,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9565,6 +9693,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9614,6 +9746,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9665,6 +9801,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9714,6 +9854,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9796,6 +9940,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -9885,6 +10033,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -9940,6 +10092,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Knockout"
       },
@@ -9989,6 +10145,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Knockout"
@@ -10040,6 +10200,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Knockout"
       },
@@ -10089,6 +10253,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10141,6 +10309,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10188,6 +10360,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10239,6 +10415,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10288,6 +10468,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10350,6 +10534,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10444,6 +10632,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10532,6 +10724,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10579,6 +10775,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10632,6 +10832,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10710,6 +10914,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -10876,6 +11084,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10930,6 +11142,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -10976,6 +11192,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11029,6 +11249,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11089,6 +11313,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
       },
@@ -11145,6 +11373,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11232,6 +11464,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "SPFX-VERSION",
         "value": "1.17.3"
       }
@@ -11276,6 +11512,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11327,6 +11567,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -11354,7 +11598,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -11373,6 +11617,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11437,6 +11685,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11537,6 +11789,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -11625,7 +11881,7 @@
       {
         "name": "Application Insights",
         "description": "Application Insights provides many experiences to enhance the performance, reliability, and quality of your applications.",
-        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-usage"
@@ -11646,6 +11902,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "Javascript"
@@ -11694,6 +11954,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11756,6 +12020,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -11835,6 +12103,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -11891,6 +12163,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -11942,6 +12218,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -11969,7 +12249,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -11989,6 +12269,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12028,7 +12312,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -12048,6 +12332,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12082,7 +12370,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -12102,6 +12390,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12130,7 +12422,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -12149,6 +12441,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12199,6 +12495,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12288,6 +12588,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -12315,7 +12619,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -12334,6 +12638,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12427,6 +12735,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -12481,6 +12793,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12542,6 +12858,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -12770,6 +13090,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -12841,6 +13165,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -12895,6 +13223,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -12942,6 +13274,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13036,6 +13372,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -13068,7 +13408,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -13087,6 +13427,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "PNPCONTROLS",
         "value": "ChartControl"
@@ -13237,7 +13581,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol"
@@ -13258,6 +13602,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13304,7 +13652,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -13324,6 +13672,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13352,7 +13704,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -13371,6 +13723,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13421,6 +13777,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13477,6 +13837,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -13524,6 +13888,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13577,6 +13945,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13682,6 +14054,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -13731,6 +14107,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13800,6 +14180,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -13959,6 +14343,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14008,6 +14396,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14067,6 +14459,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14121,6 +14517,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14183,6 +14583,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14230,6 +14634,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14297,6 +14705,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14351,6 +14763,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14443,6 +14859,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14504,6 +14924,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14568,6 +14992,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14595,7 +15023,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -14615,6 +15043,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14643,7 +15075,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -14662,6 +15094,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14723,6 +15159,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14783,6 +15223,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14811,7 +15255,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -14830,6 +15274,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14881,6 +15329,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -14929,6 +15381,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -14979,6 +15435,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15120,6 +15580,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15200,6 +15664,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15266,6 +15734,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15328,6 +15800,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15415,6 +15891,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15473,6 +15953,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15500,7 +15984,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -15519,6 +16003,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15589,6 +16077,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "SPFX-VERSION",
         "value": "1.20.0"
       }
@@ -15639,6 +16131,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15696,6 +16192,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15749,6 +16249,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15798,7 +16302,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -15818,6 +16322,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15880,6 +16388,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -15907,7 +16419,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -15926,6 +16438,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -15997,6 +16513,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16024,7 +16544,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -16044,6 +16564,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16148,6 +16672,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16175,7 +16703,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -16194,6 +16722,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16249,6 +16781,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16308,6 +16844,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16335,7 +16875,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -16354,6 +16894,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16409,6 +16953,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16466,6 +17014,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16512,6 +17064,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16562,6 +17118,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16618,6 +17178,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16688,6 +17252,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16739,6 +17307,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16789,6 +17361,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16824,12 +17400,12 @@
       {
         "name": "Getting started with SharePoint Framework",
         "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant"
       },
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Learn how to build a SharePoint Framework Web Part.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
         "name": "Microsoft 365 Patterns and Practices",
@@ -16854,6 +17430,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16902,6 +17482,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -16964,6 +17548,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -16997,7 +17585,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -17017,6 +17605,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17065,6 +17657,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17124,6 +17720,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17203,6 +17803,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17252,6 +17856,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17312,6 +17920,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17366,6 +17978,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17415,6 +18031,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17466,6 +18086,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17515,6 +18139,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17609,6 +18237,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17702,6 +18334,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -17794,6 +18430,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -17956,7 +18596,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -17975,6 +18615,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18029,6 +18673,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18079,6 +18727,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18112,7 +18764,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -18131,6 +18783,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18211,6 +18867,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18272,6 +18932,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18335,6 +18999,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18384,6 +19052,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18435,6 +19107,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18483,6 +19159,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18533,6 +19213,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18597,6 +19281,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18643,6 +19331,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18700,6 +19392,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18748,6 +19444,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18824,6 +19524,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18863,7 +19567,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -18883,6 +19587,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -18950,6 +19658,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -18983,7 +19695,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -19002,6 +19714,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19053,7 +19769,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-groups-teams"
@@ -19073,6 +19789,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19122,6 +19842,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19178,6 +19902,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19225,6 +19953,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19283,6 +20015,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19347,6 +20083,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19396,6 +20136,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19447,6 +20191,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19497,6 +20245,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19524,7 +20276,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -19544,6 +20296,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19572,7 +20328,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -19591,6 +20347,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19643,6 +20403,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19670,7 +20434,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -19689,6 +20453,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -19739,6 +20507,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -19787,6 +20559,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20018,6 +20794,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20045,7 +20825,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -20064,6 +20844,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20170,6 +20954,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20199,7 +20987,7 @@
       {
         "name": "Getting started with SharePoint Framework",
         "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant"
       },
       {
         "name": "Microsoft Kiota",
@@ -20229,6 +21017,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20282,6 +21074,10 @@
       ""
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20356,6 +21152,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20462,6 +21262,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20523,6 +21327,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20630,6 +21438,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20682,6 +21494,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20737,6 +21553,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20786,6 +21606,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -20813,7 +21637,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -20836,6 +21660,10 @@
       "Get Subscriptions"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -20887,12 +21715,12 @@
       {
         "name": "Get Subscription",
         "description": "Get SharePoint webhook subscriptions",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/apis/webhooks/lists/get-subscription"
+        "url": "https://learn.microsoft.com/sharepoint/dev/apis/webhooks/lists/get-subscription"
       },
       {
         "name": "Update Subscription",
         "description": "Update SharePoint webhook subscriptions",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/apis/webhooks/lists/update-subscription"
+        "url": "https://learn.microsoft.com/sharepoint/dev/apis/webhooks/lists/update-subscription"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions"
@@ -20912,6 +21740,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21012,6 +21844,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21107,6 +21943,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21260,6 +22100,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21316,6 +22160,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21366,6 +22214,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21422,6 +22274,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21470,6 +22326,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21553,6 +22413,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21592,7 +22456,7 @@
       {
         "name": "Microsoft Graph Special Folders",
         "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+        "url": "https://learn.microsoft.com/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
       },
       {
         "name": "Use Microsoft Graph in your SharePoint Framework solution",
@@ -21602,7 +22466,7 @@
       {
         "name": "Microsoft Graph Files API",
         "description": "Explore the Microsoft Graph Files API to access and manage files stored in OneDrive for Business, including special folders and legacy application data.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0"
+        "url": "https://learn.microsoft.com/graph/api/resources/driveitem?view=graph-rest-1.0"
       }
     ]
   },
@@ -21621,6 +22485,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21671,6 +22539,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21719,6 +22591,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21771,6 +22647,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -21803,7 +22683,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -21823,6 +22703,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21856,7 +22740,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -21876,6 +22760,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21904,7 +22792,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -21924,6 +22812,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -21953,7 +22845,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -21972,6 +22864,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22040,6 +22936,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22115,6 +23015,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22176,6 +23080,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22240,6 +23148,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22315,6 +23227,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22363,6 +23279,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22466,6 +23386,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22515,6 +23439,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22586,6 +23514,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22635,6 +23567,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22662,7 +23598,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -22681,6 +23617,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22735,6 +23675,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -22798,6 +23742,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -22852,6 +23800,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23015,6 +23967,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23105,6 +24061,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23162,6 +24122,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23210,6 +24174,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23373,6 +24341,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23445,6 +24417,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23502,6 +24478,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23541,7 +24521,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -23561,6 +24541,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23616,6 +24600,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23676,6 +24664,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23745,6 +24737,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23800,6 +24796,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23862,6 +24862,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -23889,7 +24893,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -23909,6 +24913,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -23937,7 +24945,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -23956,6 +24964,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24012,6 +25024,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24086,6 +25102,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24143,6 +25163,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24209,6 +25233,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24269,6 +25297,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24327,6 +25359,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24389,6 +25425,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24471,6 +25511,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24526,6 +25570,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24571,7 +25619,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -24590,6 +25638,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24641,6 +25693,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24697,6 +25753,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24748,6 +25808,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24781,7 +25845,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -24800,6 +25864,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24851,6 +25919,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -24901,6 +25973,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -24964,6 +26040,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25014,6 +26094,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25062,6 +26146,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25114,6 +26202,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25205,7 +26297,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -25224,6 +26316,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25294,6 +26390,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25340,7 +26440,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-controls"
@@ -25360,6 +26460,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25422,6 +26526,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25470,6 +26578,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25507,7 +26619,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -25527,6 +26639,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25555,7 +26671,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -25574,6 +26690,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25626,6 +26746,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25659,7 +26783,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -25678,6 +26802,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25760,6 +26888,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25823,7 +26955,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -25843,6 +26975,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25890,6 +27026,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -25940,6 +27080,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -25987,6 +27131,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26038,6 +27186,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26085,6 +27237,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26138,17 +27294,17 @@
       {
         "name": "Integrate web part properties with SharePoint",
         "description": "Learn how to integrate web part properties with SharePoint.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/integrate-web-part-properties-with-sharepoint"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/integrate-web-part-properties-with-sharepoint"
       },
       {
         "name": "Make your SharePoint client-side web part configurable",
         "description": "Learn how to make your SharePoint client-side web part configurable.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/basics/integrate-with-property-pane"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/integrate-with-property-pane"
       },
       {
         "name": "Validate web part property values",
         "description": "Learn how to validate web part property values.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/validate-web-part-property-values"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/validate-web-part-property-values"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-pane-navigation"
@@ -26168,6 +27324,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26226,6 +27386,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26278,6 +27442,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26352,6 +27520,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26379,7 +27551,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -26400,6 +27572,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26455,7 +27631,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -26474,6 +27650,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26530,6 +27710,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26589,6 +27773,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26617,7 +27805,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query"
@@ -26637,6 +27825,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26729,6 +27921,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26780,6 +27976,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26807,7 +28007,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -26826,6 +28026,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26875,6 +28079,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -26926,6 +28134,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -26975,6 +28187,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27026,6 +28242,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27075,6 +28295,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27123,6 +28347,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27179,6 +28407,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27233,6 +28465,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27326,6 +28562,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "TypeScript"
       },
@@ -27366,12 +28606,12 @@
       {
         "name": "Getting started with SharePoint Framework",
         "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant"
       },
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Learn how to develop your first Web Part using SharePoint Framework (SPFx).",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar"
@@ -27392,6 +28632,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27441,6 +28685,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27494,6 +28742,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27566,6 +28818,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27616,6 +28872,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27665,7 +28925,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -27684,6 +28944,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27763,6 +29027,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27816,6 +29084,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -27906,6 +29178,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -27964,6 +29240,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28027,6 +29307,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28077,6 +29361,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28116,12 +29404,12 @@
       {
         "name": "Microsoft Graph Special Folders",
         "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+        "url": "https://learn.microsoft.com/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
       },
       {
         "name": "On-Behalf-Of Flow",
         "description": "Understand how to implement the OAuth 2.0 On-Behalf-Of (OBO) authentication flow to securely call downstream APIs like Microsoft Graph from your own APIs, while preserving the user's identity and permissions.",
-        "url": "https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
+        "url": "https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
       }
     ]
   },
@@ -28140,6 +29428,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28191,6 +29483,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28240,6 +29536,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28309,6 +29609,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28356,6 +29660,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28411,6 +29719,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28486,6 +29798,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28536,6 +29852,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28584,6 +29904,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28640,6 +29964,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28714,6 +30042,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28763,6 +30095,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28810,6 +30146,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28861,6 +30201,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -28919,6 +30263,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -28974,6 +30322,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29024,6 +30376,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29071,6 +30427,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29135,6 +30495,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29162,7 +30526,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -29181,6 +30545,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29246,6 +30614,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29317,6 +30689,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29421,6 +30797,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29468,6 +30848,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29519,6 +30903,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29597,6 +30985,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29648,6 +31040,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29715,6 +31111,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29742,7 +31142,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -29761,6 +31161,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29815,6 +31219,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29882,6 +31290,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29930,6 +31342,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -29986,6 +31402,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30035,6 +31455,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30087,6 +31511,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30131,7 +31559,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -30150,6 +31578,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30205,6 +31637,10 @@
       "Teams"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30285,6 +31721,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30344,12 +31784,12 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
         "name": "Apps in Teams meetings",
         "description": "Meetings are key to productivity in Teams. They enable collaboration, partnership, informed communication, and shared feedback in an inclusive and active forum. As a developer, you can create configurable tab, bot, and message extension applications to enhance and enrich a Teams meeting experience. Meeting users can access apps, via the tab gallery, to enable relevant scenarios such as pre-staging a Kanban board, launching an in-meeting actionable dialog, or creating a post-meeting poll. Your meeting app can deliver a user experience for each stage of the meeting lifecycle based upon attendee status.",
-        "url": "https://docs.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/teams-apps-in-meetings?WT.mc_id=M365-MVP-5003693"
+        "url": "https://learn.microsoft.com//microsoftteams/platform/apps-in-teams-meetings/teams-apps-in-meetings?WT.mc_id=M365-MVP-5003693"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-meeting-app-questionnaire"
@@ -30369,6 +31809,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30431,6 +31875,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30492,6 +31940,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30551,6 +32003,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30614,6 +32070,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30673,6 +32133,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30731,6 +32195,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30781,6 +32249,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -30829,6 +32301,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30889,6 +32365,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -30951,6 +32431,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31008,6 +32492,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31090,6 +32578,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31156,6 +32648,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31218,6 +32714,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31267,6 +32767,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31330,6 +32834,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31423,6 +32931,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31471,6 +32983,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31546,6 +33062,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31612,6 +33132,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31640,7 +33164,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -31659,6 +33183,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31745,6 +33273,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31806,6 +33338,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31856,6 +33392,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31912,6 +33452,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -31941,7 +33485,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-versiondisplay"
@@ -31961,6 +33505,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32020,6 +33568,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32068,6 +33620,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32128,6 +33684,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32177,6 +33737,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32239,6 +33803,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32295,6 +33863,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32344,6 +33916,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32405,6 +33981,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32478,6 +34058,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32525,6 +34109,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32580,6 +34168,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32656,6 +34248,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32710,6 +34306,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32768,6 +34368,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -32819,7 +34423,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   },
@@ -32838,6 +34442,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -32888,6 +34496,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "Other"
       },
@@ -32937,6 +34549,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -33009,6 +34625,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -33071,6 +34691,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "VueJS"
       },
@@ -33119,6 +34743,10 @@
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "VueJS"
