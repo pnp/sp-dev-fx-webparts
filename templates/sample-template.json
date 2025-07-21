@@ -16,12 +16,16 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.2"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
