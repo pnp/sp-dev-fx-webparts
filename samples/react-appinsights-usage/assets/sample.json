@@ -15,6 +15,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -103,7 +107,7 @@
       {
         "name": "Application Insights",
         "description": "Application Insights provides many experiences to enhance the performance, reliability, and quality of your applications.",
-        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-usage"

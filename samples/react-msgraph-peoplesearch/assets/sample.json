@@ -17,6 +17,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },

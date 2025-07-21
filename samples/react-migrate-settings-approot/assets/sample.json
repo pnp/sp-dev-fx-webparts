@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -55,7 +59,7 @@
       {
         "name": "Microsoft Graph Special Folders",
         "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+        "url": "https://learn.microsoft.com/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
       },
       {
         "name": "Use Microsoft Graph in your SharePoint Framework solution",
@@ -65,7 +69,7 @@
       {
         "name": "Microsoft Graph Files API",
         "description": "Explore the Microsoft Graph Files API to access and manage files stored in OneDrive for Business, including special folders and legacy application data.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0"
+        "url": "https://learn.microsoft.com/graph/api/resources/driveitem?view=graph-rest-1.0"
       }
     ]
   }
