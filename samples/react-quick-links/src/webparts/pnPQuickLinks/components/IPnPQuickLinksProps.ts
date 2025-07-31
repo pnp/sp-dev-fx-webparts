@@ -11,5 +11,8 @@ export interface IPnPQuickLinksProps {
     setSelectedItemId: (id: string) => void;
   
     displayMode: DisplayMode;
+
+    context: any;
+    pageContext: any;
   }
   
