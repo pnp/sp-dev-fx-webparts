@@ -37,12 +37,14 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 ## Contributors
 
 * Dan Toft ([@Tanddant](https://dan-toft.dk/)) |
+* Jeppe Spanggaard ([@jeppesc11](https://jeppe-spanggaard.dk/)) |
 
 ## Version history
 
 | Version | Date           | Comments        |
 | ------- | -------------- | --------------- |
 | 1.0     | March 05, 2023 | Initial release |
+| 1.1     | July 31, 2025 | Added audience targeting |
 
 
 
@@ -77,7 +79,7 @@ There are still loads of ideas that I would love to see implemented, but right n
 | Dynamic property pane                                                                                                                 | ✅    |
 | Demonstrate PnP reusable controls                                                                                                     | ✅    |
 | Styling Fluent UI                                                                                                                     | ✅    |
-| Audience targeting                                                                                                                    | ❌    |
+| Audience targeting                                                                                                                    | ✅    |
 | Several layouts                                                                                                                       | ❌    |
 | SPFx 1.16/1.17 [Top Action](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.16#web-part-top-actions) to choose layout | ❌    |
 
