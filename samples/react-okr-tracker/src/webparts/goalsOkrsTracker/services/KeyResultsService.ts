@@ -1,25 +1,27 @@
 import { spfi, SPFx } from "@pnp/sp";
+import { SPFI } from "@pnp/sp"; // explicitly import SPFI type
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/fields";
 import "@pnp/sp/site-users";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 
 export interface IKeyResult {
     Id?: number;
     Title: string;
-    ObjectiveId: number; // Lookup to Objectives
+    ObjectiveId: number;
     Progress: number;
     RAGStatus: string;
     LastUpdate?: string;
-    UpdatedById: number; // Person field (user ID)
+    UpdatedById: number;
 }
 
 export class KeyResultsService {
-    private sp: any;
+    private sp: SPFI;
     private listName = 'Key Results';
 
-    constructor(context: any) {
+    constructor(context: WebPartContext) {
         this.sp = spfi().using(SPFx(context));
     }
 
@@ -29,7 +31,8 @@ export class KeyResultsService {
                 .filter(`ObjectiveId eq ${objectiveId}`)
                 .select('Id', 'Title', 'Objective/Id', 'Progress', 'RAGStatus', 'LastUpdate', 'UpdatedBy/Id', 'UpdatedBy/Title')
                 .expand('Objective', 'UpdatedBy')();
-            return items.map((item: any) => ({
+
+            return items.map(item => ({
                 Id: item.Id,
                 Title: item.Title,
                 ObjectiveId: item.Objective?.Id,
@@ -54,7 +57,10 @@ export class KeyResultsService {
                 LastUpdate: keyResult.LastUpdate,
                 UpdatedById: keyResult.UpdatedById
             });
-            return result.data as IKeyResult;
+            return {
+                Id: result.data.Id,
+                ...keyResult
+            };
         } catch (error) {
             console.error('Error creating key result:', error);
             throw error;
@@ -78,4 +84,4 @@ export class KeyResultsService {
             throw error;
         }
     }
-} 
+}

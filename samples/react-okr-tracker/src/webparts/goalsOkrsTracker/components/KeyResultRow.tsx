@@ -8,6 +8,7 @@ export interface KeyResultRowProps {
     onChange: (updates: Partial<IKeyResult>) => void;
     onSave: () => void;
     onEdit: () => void;
+    onCancel?: () => void;
 }
 
 const ragOptions = [
@@ -16,7 +17,7 @@ const ragOptions = [
     { key: 'Red', text: 'Red' },
 ];
 
-export const KeyResultRow: React.FC<KeyResultRowProps> = ({ keyResult, isEditing, onChange, onSave, onEdit }) => {
+export const KeyResultRow: React.FC<KeyResultRowProps> = ({ keyResult, isEditing, onChange, onSave, onEdit, onCancel }) => {
     return (
         <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 12 }}>
             <Text styles={{ root: { minWidth: 120 } }}>{keyResult.Title}</Text>
@@ -34,7 +35,7 @@ export const KeyResultRow: React.FC<KeyResultRowProps> = ({ keyResult, isEditing
                 min={0}
                 max={100}
                 disabled={!isEditing}
-                onChange={(_, v) => onChange({ Progress: Number(v) })}
+                onChange={(_, v) => onChange({ Progress: Number(v) || 0 })}
                 styles={{ root: { width: 60 } }}
             />
             <TextField
@@ -45,7 +46,10 @@ export const KeyResultRow: React.FC<KeyResultRowProps> = ({ keyResult, isEditing
                 styles={{ root: { minWidth: 120 } }}
             />
             {isEditing ? (
-                <DefaultButton text="Save" onClick={onSave} />
+                <Stack horizontal tokens={{ childrenGap: 8 }}>
+                    <DefaultButton text="Save" onClick={onSave} />
+                    <DefaultButton text="Cancel" onClick={onCancel} />
+                </Stack>
             ) : (
                 <DefaultButton text="Edit" onClick={onEdit} />
             )}

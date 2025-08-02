@@ -1,9 +1,10 @@
-import { spfi, SPFx } from "@pnp/sp";
+import { spfi, SPFx, SPFI } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/fields";
 import "@pnp/sp/site-users";
+import { WebPartContext } from "@microsoft/sp-webpart-base"; // <- required for SPFx()
 
 export interface IObjective {
     Id?: number;
@@ -15,21 +16,39 @@ export interface IObjective {
     Notes?: string;
 }
 
+interface IObjectiveItem {
+    Id: number;
+    Title: string;
+    Owner?: {
+        Id: number;
+        Title: string;
+    };
+    Quarter: string;
+    Year: number;
+    Status: string;
+    Notes?: string;
+}
+
 export class ObjectivesService {
-    private sp: any; // Changed from SPFI to any as SPFI is not imported
+    private sp: SPFI;
     private listName = 'Objectives';
 
-    constructor(context: any) {
+    constructor(context: WebPartContext) {
         this.sp = spfi().using(SPFx(context));
     }
 
     public async getObjectives(): Promise<IObjective[]> {
         try {
-            const items = await this.sp.web.lists.getByTitle(this.listName).items.select('Id', 'Title', 'Owner/Id', 'Owner/Title', 'Quarter', 'Year', 'Status', 'Notes').expand('Owner')();
-            return items.map((item: any) => ({
+            const items: IObjectiveItem[] = await this.sp.web.lists
+                .getByTitle(this.listName)
+                .items
+                .select('Id', 'Title', 'Owner/Id', 'Owner/Title', 'Quarter', 'Year', 'Status', 'Notes')
+                .expand('Owner')();
+
+            return items.map((item) => ({
                 Id: item.Id,
                 Title: item.Title,
-                OwnerId: item.Owner?.Id,
+                OwnerId: item.Owner?.Id ?? 0,
                 Quarter: item.Quarter,
                 Year: item.Year,
                 Status: item.Status,
@@ -51,7 +70,16 @@ export class ObjectivesService {
                 Status: objective.Status,
                 Notes: objective.Notes
             });
-            return result.data as IObjective;
+
+            return {
+                Id: result.data.Id,
+                Title: result.data.Title,
+                OwnerId: result.data.OwnerId,
+                Quarter: result.data.Quarter,
+                Year: result.data.Year,
+                Status: result.data.Status,
+                Notes: result.data.Notes
+            };
         } catch (error) {
             console.error('Error creating objective:', error);
             throw error;
@@ -75,4 +103,4 @@ export class ObjectivesService {
             throw error;
         }
     }
-} 
+}
