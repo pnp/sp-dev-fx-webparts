@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "GoalsOkrsTrackerWebPartStrings": "lib/webparts/goalsOkrsTracker/loc/{locale}.js"
+    "GoalsOkrsTrackerWebPartStrings": "lib/webparts/goalsOkrsTracker/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
