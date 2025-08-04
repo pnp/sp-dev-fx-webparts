@@ -12,11 +12,13 @@ export interface IQuickLink {
 
 // Props expected by the QuickLinks component
 export interface IQuickLinksProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context: any;  // Consider typing this more specifically if possible
   listTitle: string;  // SharePoint list title
   titleField: string; // Field for link titles
   urlField: string;   // Field for link URLs
   iconField: string;  // Field for link icons
+  orderField: string; // Field for link order (optional)
 }
 
 // State for the QuickLinks component
@@ -40,14 +42,18 @@ class QuickLinks extends React.Component<IQuickLinksProps, IQuickLinksState> {
 
   // Fetch list items from SharePoint and update state
   private async fetchListItems(): Promise<void> {
-    const { listTitle, titleField, urlField, iconField, context } = this.props;
-    const apiUrl = `${context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items?$select=${titleField},${urlField},${iconField}`;
+    const { listTitle, titleField, urlField, iconField, context, orderField } = this.props;
+    let apiUrl = `${context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items?$select=${titleField},${urlField},${iconField}`;
+    if (orderField) {
+      apiUrl += `,${orderField}&$orderby=${orderField} asc`;
+    }
 
     try {
       const response: SPHttpClientResponse = await context.spHttpClient.get(apiUrl, SPHttpClient.configurations.v1);
       const data = await response.json();
      
       // Map SharePoint list data to quick links
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const quickLinks: IQuickLink[] = data.value.map((item: any) => ({
         title: item[titleField],
         url: item[urlField],
