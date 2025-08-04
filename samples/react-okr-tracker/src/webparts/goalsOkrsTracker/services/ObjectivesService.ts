@@ -9,7 +9,8 @@ import { WebPartContext } from "@microsoft/sp-webpart-base"; // <- required for 
 export interface IObjective {
     Id?: number;
     Title: string;
-    OwnerId: number; // Person field (user ID)
+    AuthorId: number;
+    AuthorName: string;
     Quarter: string;
     Year: number;
     Status: string;
@@ -19,7 +20,7 @@ export interface IObjective {
 interface IObjectiveItem {
     Id: number;
     Title: string;
-    Owner?: {
+    Author?: {
         Id: number;
         Title: string;
     };
@@ -27,6 +28,23 @@ interface IObjectiveItem {
     Year: number;
     Status: string;
     Notes?: string;
+}
+
+/**
+ * Represents a raw SharePoint list item as returned from the API
+ */
+interface ISharePointObjectiveItem {
+    Id: number;
+    Title: string;
+    Author?: {
+        Id: number;
+        Title: string;
+    };
+    Quarter: string;
+    Year: number;
+    Status: string;
+    Notes?: string;
+    // Add any additional fields that might come back from SharePoint
 }
 
 export class ObjectivesService {
@@ -42,18 +60,10 @@ export class ObjectivesService {
             const items: IObjectiveItem[] = await this.sp.web.lists
                 .getByTitle(this.listName)
                 .items
-                .select('Id', 'Title', 'Owner/Id', 'Owner/Title', 'Quarter', 'Year', 'Status', 'Notes')
-                .expand('Owner')();
+                .select('Id', 'Title', 'Author/Id', 'Author/Title', 'Quarter', 'Year', 'Status', 'Notes')
+                .expand('Author')();
 
-            return items.map((item) => ({
-                Id: item.Id,
-                Title: item.Title,
-                OwnerId: item.Owner?.Id ?? 0,
-                Quarter: item.Quarter,
-                Year: item.Year,
-                Status: item.Status,
-                Notes: item.Notes
-            }));
+            return items.map((item) => this.mapSharePointItemToObjective(item));
         } catch (error) {
             console.error('Error fetching objectives:', error);
             throw error;
@@ -64,31 +74,70 @@ export class ObjectivesService {
         try {
             const result = await this.sp.web.lists.getByTitle(this.listName).items.add({
                 Title: objective.Title,
-                OwnerId: objective.OwnerId,
                 Quarter: objective.Quarter,
                 Year: objective.Year,
                 Status: objective.Status,
                 Notes: objective.Notes
             });
 
-            return {
-                Id: result.data.Id,
-                Title: result.data.Title,
-                OwnerId: result.data.OwnerId,
-                Quarter: result.data.Quarter,
-                Year: result.data.Year,
-                Status: result.data.Status,
-                Notes: result.data.Notes
+            console.log('Objective created:', result);
+
+            // Fetch the complete item to get Author information
+            const createdItem = await this.sp.web.lists
+                .getByTitle(this.listName)
+                .items.getById(result.Id)
+                .select('Id', 'Title', 'Author/Id', 'Author/Title', 'Quarter', 'Year', 'Status', 'Notes')
+                .expand('Author')();
+
+            // Convert the returned item to the expected IObjectiveItem format
+            const formattedItem: IObjectiveItem = {
+                Id: createdItem.Id,
+                Title: createdItem.Title,
+                Author: createdItem.Author ? {
+                    Id: createdItem.Author.Id,
+                    Title: createdItem.Author.Title
+                } : undefined,
+                Quarter: createdItem.Quarter,
+                Year: createdItem.Year,
+                Status: createdItem.Status,
+                Notes: createdItem.Notes
             };
+
+            return this.mapSharePointItemToObjective(formattedItem);
         } catch (error) {
             console.error('Error creating objective:', error);
             throw error;
         }
     }
 
+    /**
+     * Updates an objective in SharePoint
+     * Note: AuthorId and AuthorName are excluded from updates as Author is a system field
+     * that cannot be directly modified
+     */
     public async updateObjective(id: number, updates: Partial<IObjective>): Promise<void> {
         try {
-            await this.sp.web.lists.getByTitle(this.listName).items.getById(id).update(updates);
+            // Create a clean object with only SharePoint-compatible fields
+            const validUpdates: {
+                Title?: string;
+                Quarter?: string;
+                Year?: number;
+                Status?: string;
+                Notes?: string;
+            } = {};
+
+            // Only include valid SharePoint fields
+            if ('Title' in updates) validUpdates.Title = updates.Title;
+            if ('Quarter' in updates) validUpdates.Quarter = updates.Quarter;
+            if ('Year' in updates) validUpdates.Year = updates.Year;
+            if ('Status' in updates) validUpdates.Status = updates.Status;
+            if ('Notes' in updates) validUpdates.Notes = updates.Notes;
+
+            // Log what's being sent to SharePoint for debugging
+            console.log('Sending to SharePoint:', validUpdates);
+
+            // Only send valid fields to SharePoint
+            await this.sp.web.lists.getByTitle(this.listName).items.getById(id).update(validUpdates);
         } catch (error) {
             console.error('Error updating objective:', error);
             throw error;
@@ -102,5 +151,22 @@ export class ObjectivesService {
             console.error('Error deleting objective:', error);
             throw error;
         }
+    }
+
+    /**
+     * Maps a SharePoint list item to our application's IObjective interface
+     * Handles the mapping of Author information to AuthorId and AuthorName
+     */
+    private mapSharePointItemToObjective(item: ISharePointObjectiveItem): IObjective {
+        return {
+            Id: item.Id,
+            Title: item.Title,
+            AuthorId: item.Author?.Id ?? 0,
+            AuthorName: item.Author?.Title || '',
+            Quarter: item.Quarter,
+            Year: item.Year,
+            Status: item.Status,
+            Notes: item.Notes
+        };
     }
 }

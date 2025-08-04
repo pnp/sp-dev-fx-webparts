@@ -58,7 +58,7 @@ export class KeyResultsService {
                 UpdatedById: keyResult.UpdatedById
             });
             return {
-                Id: result.data.Id,
+                Id: result.Id,
                 ...keyResult
             };
         } catch (error) {

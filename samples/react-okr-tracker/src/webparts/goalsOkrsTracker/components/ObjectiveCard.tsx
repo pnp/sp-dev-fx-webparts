@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IObjective } from '../services/ObjectivesService';
 import { IKeyResult } from '../services/KeyResultsService';
 import { Stack, Text, Persona, PersonaSize, DefaultButton, TextField, Dropdown, PrimaryButton, ProgressIndicator } from '@fluentui/react';
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 
 export interface ObjectiveCardProps {
     objective: IObjective;
@@ -18,6 +19,7 @@ export interface ObjectiveCardProps {
     onKeyResultChange?: (krId: number, updates: Partial<IKeyResult>) => void;
     onKeyResultSave?: (krId: number) => void;
     onKeyResultCancel?: (krId: number) => void;
+    context?: WebPartContext;
 }
 
 const statusOptions = [
@@ -47,7 +49,8 @@ export const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
     editingKeyResult,
     onKeyResultChange,
     onKeyResultSave,
-    onKeyResultCancel
+    onKeyResultCancel,
+    context
 }) => {
     return (
         <Stack tokens={{ childrenGap: 12 }} styles={{ root: { border: '1px solid #e1e1e1', borderRadius: 8, padding: 16, background: '#fff', boxShadow: '0 2px 8px #eee' } }}>
@@ -83,6 +86,15 @@ export const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
                                 styles={{ root: { flex: 1 } }}
                             />
                         </Stack>
+
+                        {/* Replace PeoplePicker with read-only TextField for Author */}
+                        <TextField
+                            label="Author"
+                            value={objective.AuthorName}
+                            readOnly
+                            disabled
+                        />
+
                         <TextField
                             label="Notes"
                             multiline
@@ -104,7 +116,12 @@ export const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
             {!isEditing && (
                 <>
                     <Stack horizontal tokens={{ childrenGap: 16 }} verticalAlign="center">
-                        <Persona text={`Owner: ${objective.OwnerId}`} size={PersonaSize.size32} />
+                        {/* Display Author name with Persona component */}
+                        <Persona
+                            text={objective.AuthorName || 'Unknown Author'}
+                            size={PersonaSize.size32}
+                            secondaryText="Author"
+                        />
                         <Text>{objective.Quarter} {objective.Year}</Text>
                     </Stack>
                     <Text>{objective.Notes}</Text>
@@ -206,4 +223,4 @@ export const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
             </Stack>
         </Stack>
     );
-}; 
+};
