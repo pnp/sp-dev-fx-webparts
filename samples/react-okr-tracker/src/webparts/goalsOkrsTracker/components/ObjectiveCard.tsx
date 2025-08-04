@@ -87,7 +87,7 @@ export const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
                             />
                         </Stack>
 
-                        {/* Replace PeoplePicker with read-only TextField for Author */}
+                       
                         <TextField
                             label="Author"
                             value={objective.AuthorName}

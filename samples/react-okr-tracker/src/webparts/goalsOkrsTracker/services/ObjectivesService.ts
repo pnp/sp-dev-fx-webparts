@@ -4,7 +4,7 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/fields";
 import "@pnp/sp/site-users";
-import { WebPartContext } from "@microsoft/sp-webpart-base"; // <- required for SPFx()
+import { WebPartContext } from "@microsoft/sp-webpart-base"; 
 
 export interface IObjective {
     Id?: number;
@@ -30,9 +30,7 @@ interface IObjectiveItem {
     Notes?: string;
 }
 
-/**
- * Represents a raw SharePoint list item as returned from the API
- */
+
 interface ISharePointObjectiveItem {
     Id: number;
     Title: string;
@@ -44,7 +42,7 @@ interface ISharePointObjectiveItem {
     Year: number;
     Status: string;
     Notes?: string;
-    // Add any additional fields that might come back from SharePoint
+    
 }
 
 export class ObjectivesService {
@@ -110,14 +108,10 @@ export class ObjectivesService {
         }
     }
 
-    /**
-     * Updates an objective in SharePoint
-     * Note: AuthorId and AuthorName are excluded from updates as Author is a system field
-     * that cannot be directly modified
-     */
+    
     public async updateObjective(id: number, updates: Partial<IObjective>): Promise<void> {
         try {
-            // Create a clean object with only SharePoint-compatible fields
+            
             const validUpdates: {
                 Title?: string;
                 Quarter?: string;
@@ -126,17 +120,17 @@ export class ObjectivesService {
                 Notes?: string;
             } = {};
 
-            // Only include valid SharePoint fields
+            
             if ('Title' in updates) validUpdates.Title = updates.Title;
             if ('Quarter' in updates) validUpdates.Quarter = updates.Quarter;
             if ('Year' in updates) validUpdates.Year = updates.Year;
             if ('Status' in updates) validUpdates.Status = updates.Status;
             if ('Notes' in updates) validUpdates.Notes = updates.Notes;
 
-            // Log what's being sent to SharePoint for debugging
+            
             console.log('Sending to SharePoint:', validUpdates);
 
-            // Only send valid fields to SharePoint
+            
             await this.sp.web.lists.getByTitle(this.listName).items.getById(id).update(validUpdates);
         } catch (error) {
             console.error('Error updating objective:', error);
@@ -153,10 +147,7 @@ export class ObjectivesService {
         }
     }
 
-    /**
-     * Maps a SharePoint list item to our application's IObjective interface
-     * Handles the mapping of Author information to AuthorId and AuthorName
-     */
+    
     private mapSharePointItemToObjective(item: ISharePointObjectiveItem): IObjective {
         return {
             Id: item.Id,
