@@ -11,6 +11,7 @@ export interface IPnPQuickLinksGridWebPartProps {
   titleField: string;   // Internal name of the field representing titles
   urlField: string;     // Internal name of the field representing URLs
   iconField: string;    // Internal name of the field representing icons
+  orderField: string;    // Internal name of the field representing order
 }
 
 export default class PnPQuickLinksGridWebPart extends BaseClientSideWebPart<IPnPQuickLinksGridWebPartProps> {
@@ -42,7 +43,8 @@ export default class PnPQuickLinksGridWebPart extends BaseClientSideWebPart<IPnP
           listTitle: this.properties.listTitle,
           titleField: this.properties.titleField,
           urlField: this.properties.urlField,
-          iconField: this.properties.iconField
+          iconField: this.properties.iconField,
+          orderField: this.properties.orderField
         }
       );
       ReactDom.render(element, this.domElement);
@@ -99,6 +101,10 @@ export default class PnPQuickLinksGridWebPart extends BaseClientSideWebPart<IPnP
                 PropertyPaneTextField('iconField', {
                   label: 'Icon Field',
                   description: 'Enter the internal name of the Icon field'
+                }),
+                PropertyPaneTextField('orderField', {
+                  label: 'Order Field (Optional)',
+                  description: 'Enter the internal name of the Order field'
                 })
               ]
             }
