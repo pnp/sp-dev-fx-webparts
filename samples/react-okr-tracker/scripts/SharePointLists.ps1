@@ -2,7 +2,6 @@ Connect-PnPOnline -Url "https://yourtenant.sharepoint.com/sites/yoursite" -UseWe
 
 # Create Objectives list
 New-PnPList -Title "Objectives" -Template GenericList -OnQuickLaunch
-Add-PnPField -List "Objectives" -DisplayName "Owner" -InternalName "Owner" -Type User
 Add-PnPField -List "Objectives" -DisplayName "Quarter" -InternalName "Quarter" -Type Choice -AddToDefaultView -Choices @("Q1", "Q2", "Q3", "Q4")
 Add-PnPField -List "Objectives" -DisplayName "Year" -InternalName "Year" -Type Number
 Add-PnPField -List "Objectives" -DisplayName "Status" -InternalName "Status" -Type Choice -AddToDefaultView -Choices @("On Track", "At Risk", "Off Track", "Completed")
