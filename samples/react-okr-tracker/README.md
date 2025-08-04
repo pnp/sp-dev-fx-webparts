@@ -26,6 +26,8 @@ A SharePoint list named "KeyResults" to store the key results with the following
  - Progress (Number - percentage)
  - Notes (Multiple lines of text)
 
+  Use can use the [Powershell script](./scripts/SharePointLists.ps1) to provision the list.
+
 ## Compatibility
 
 | :warning: Important          |
