@@ -163,6 +163,21 @@ export default class ListService {
     let hasToAddFieldsAsText = false;
     listQueryOptions.fields.map(field => {
       switch (field.fieldType) {
+        case SharePointType.Computed:
+          if (field.originalField === "ContentType") {
+            if (isCamlQuery) {
+              hasToAddFieldsAsText = true;
+              result.viewFields.push(field.originalField);
+            }
+            else {
+              result.viewFields.push(`${field.originalField}/Name`);
+              result.expandFields.push(`${field.originalField}`);
+            }
+          }
+          else {
+            result.viewFields.push(field.originalField);
+          }
+          break;
         case SharePointType.User:
         case SharePointType.UserEmail:
         case SharePointType.UserName:
@@ -228,6 +243,17 @@ export default class ListService {
 
   private GetItemValue(item: IResult, field: IListSearchListQueryItem, fromCamlQuery: boolean): IResult {
     switch (field.fieldType) {
+      case SharePointType.Computed:
+        if (fromCamlQuery) {
+          item[field.newField] = item['FieldValuesAsText'][field.originalField];
+        }
+        else {
+          item[field.newField] = item[field.originalField];
+          if (field.newField !== field.originalField) {
+            delete item[field.originalField];
+          }
+        }
+        break;
       case SharePointType.Lookup:
       case SharePointType.LookupMulti:
         if (fromCamlQuery) {
