@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "goals-okrs-tracker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/goalsOkrsTracker/GoalsOkrsTrackerWebPart.js",
+          "manifest": "./src/webparts/goalsOkrsTracker/GoalsOkrsTrackerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GoalsOkrsTrackerWebPartStrings": "lib/webparts/goalsOkrsTracker/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
