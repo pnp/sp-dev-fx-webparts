@@ -27514,7 +27514,7 @@
       "A demonstration of building a web part with a dynamic property pane, drag n' drop edit capabilities - I've built the Tiles feature of the default Quick Links web part, but made room for the option to implement the other 5 layouts."
     ],
     "creationDateTime": "2023-03-05",
-    "updateDateTime": "2023-03-05",
+    "updateDateTime": "2025-07-31",
     "products": [
       "SharePoint"
     ],
@@ -27538,6 +27538,18 @@
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links/assets/Demo.gif",
         "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links/assets/Screenshot.png",
+        "alt": "Screen shot"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links/assets/Screenshot-with-audiencetargeting.png",
+        "alt": "Screen shot with audience targeting"
       }
     ],
     "authors": [
@@ -27545,6 +27557,11 @@
         "gitHubAccount": "Tanddant",
         "pictureUrl": "https://github.com/Tanddant.png",
         "name": "Dan Toft"
+      },
+      {
+        "gitHubAccount": "jeppesc11",
+        "pictureUrl": "https://github.com/jeppesc11.png",
+        "name": "Jeppe Spanggaard"
       }
     ],
     "references": [
