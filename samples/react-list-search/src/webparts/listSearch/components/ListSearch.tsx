@@ -49,6 +49,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import GraphService from '../services/GraphService';
 import { List } from 'lodash';
 import { getKeyValue } from '../utils/ObjectUtils';
+import { IBaseFieldData } from '../model/IListConfigProps';
 
 
 const LOG_SOURCE = "IListdSearchWebPart";
@@ -165,7 +166,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     const columns: IColumn[] = [];
     this.props.detailListFieldsCollectionData.sort().map(column => {
       const mappingType = this.props.mappingFieldsCollectionData.find(e => e.TargetField === column.ColumnTitle);
-      columns.push({ key: column.ColumnTitle, name: column.ColumnTitle, fieldName: column.ColumnTitle, minWidth: column.MinColumnWidth || 50, maxWidth: column.MaxColumnWidth, isResizable: true, data: mappingType ? mappingType.SPFieldType : (column.IsFileIcon ? SharePointType.FileIcon : SharePointType.Text), onColumnClick: this._onColumnClick, isIconOnly: column.IsFileIcon });
+      columns.push({ key: column.ColumnTitle, name: column.ColumnTitle, fieldName: column.ColumnTitle, minWidth: column.MinColumnWidth || 50, maxWidth: column.MaxColumnWidth, isResizable: true, data: mappingType ? mappingType : (column.IsFileIcon ? SharePointType.FileIcon : SharePointType.Text), onColumnClick: this._onColumnClick, isIconOnly: column.IsFileIcon });
     });
 
     return columns;
@@ -333,10 +334,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     if (this.props.IndividualColumnFilter) {
       const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
         const filter: IColumnFilter = this.state.columnFilters.find(colFilter => colFilter.columnName == column.name);
-        if (this.props.IndividualColumnFilter && showSearchBox && column.data != SharePointType.FileIcon) {
+        if (this.props.IndividualColumnFilter && showSearchBox && column.data.SPFieldType != SharePointType.FileIcon) {
           return (
             <SearchBox placeholder={column.name} iconProps={filterIcon} value={filter ? filter.filterToApply : ""}
-              underlined={true} onChange={(_, value) => this.filterColumnListItems(column.name, value, column.data)} onClear={() => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
+              underlined={true} onChange={(_, value) => this.filterColumnListItems(column.name, value, column.data.SPFieldType)} onClear={() => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
           );
         }
         else {
@@ -521,7 +522,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                     <div className={styles.propertyModal}>
                       {val.TargetField}
                     </div>
-                    {this.GetModalBodyRenderByFieldType(this.state.selectedItem, val.TargetField, val.SPFieldType)}
+                    {this.GetModalBodyRenderByFieldType(this.state.selectedItem, val.TargetField, val)}
                   </>;
                 })
             }
@@ -538,7 +539,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                     {val.TargetField}
                   </div>
                   <div>
-                    {this.state.isModalLoading ? <Shimmer /> : this.GetModalBodyRenderByFieldType(this.state.completeModalItemData, val.SourceField, val.SPFieldType)}
+                    {this.state.isModalLoading ? <Shimmer /> : this.GetModalBodyRenderByFieldType(this.state.completeModalItemData, val.SourceField, val)}
                   </div>
                 </>;
               })
@@ -602,10 +603,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private GetModalBodyRenderByFieldType(item: any, propertyName: string, fieldType: SharePointType): JSX.Element {
-    let result = this.GetJSXElementByType(item, propertyName, fieldType, true);
+  private GetModalBodyRenderByFieldType(item: any, propertyName: string, data: IBaseFieldData): JSX.Element {
+    let result = this.GetJSXElementByType(item, propertyName, data, true);
 
-    switch (fieldType) {
+    switch (data.SPFieldType) {
       case SharePointType.Boolean:
         result = <Toggle checked={item[propertyName]} />;
         break;
@@ -693,11 +694,11 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private GetJSXElementByType(item: any, fieldName: string, fieldType: SharePointType, ommitCamlQuery = false): JSX.Element {
-    const value = this.GetItemValueFieldByFieldType(item, fieldName, fieldType, ommitCamlQuery);
+  private GetJSXElementByType(item: any, fieldName: string, data: IBaseFieldData, ommitCamlQuery = false): JSX.Element {
+    const value = this.GetItemValueFieldByFieldType(item, fieldName, data.SPFieldType, ommitCamlQuery);
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
-    let result: JSX.Element = <span/>;
-    switch (fieldType) {
+    let result: JSX.Element = <span />;
+    switch (data.SPFieldType) {
       case SharePointType.FileIcon:
         {
           result = this.GetFileIconByFileType(value);
@@ -721,7 +722,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
               />;
             }
             else {
-              result = <span/>;
+              result = <span />;
             }
           }
           break;
@@ -735,7 +736,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                 return <span key={index} style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span key={index} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+                return <span key={index} style={{ color: semanticColors.bodyText }}>{val}<br /></span>;
               }
             })}
             </span>;
@@ -755,7 +756,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
               />;
             }
             else {
-              result = <span/>;
+              result = <span />;
             }
           }
           break;
@@ -766,16 +767,16 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             result = <span>{value.map((val: any, index: number) => {
               if (index + 1 == value.length) {
-                return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
+                return <span key={`${data.SPFieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+                return <span key={`${data.SPFieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br /></span>;
               }
             })}
             </span>;
           }
           else {
-            result = <span/>;
+            result = <span />;
           }
           break;
         }
@@ -784,7 +785,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           result = <Link style={{ color: semanticColors.bodyText }} href="#">{value}</Link>;
         }
         else {
-          result = <span/>;
+          result = <span />;
         }
         break;
       case SharePointType.ChoiceMulti:
@@ -792,16 +793,16 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
-              return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
+              return <span key={`${data.SPFieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}</span>;
             }
             else {
-              return <span key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br/></span>;
+              return <span key={`${data.SPFieldType}-${index}`} style={{ color: semanticColors.bodyText }}>{val}<br /></span>;
             }
           })}
           </span>;
         }
         else {
-          result = <span/>;
+          result = <span />;
         }
         break;
       case SharePointType.LookupMulti:
@@ -809,16 +810,16 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           result = <span>{value.map((val: any, index: number) => {
             if (index + 1 == value.length) {
-              return <Link key={`${fieldType}-${index}`} style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
+              return <Link key={`${data.SPFieldType}-${index}`} style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
             }
             else {
-              return <span key={`${fieldType}-${index}`}><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br/></span>;
+              return <span key={`${data.SPFieldType}-${index}`}><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br /></span>;
             }
           })}
           </span>;
         }
         else {
-          result = <span/>;
+          result = <span />;
         }
         break;
       case SharePointType.Url:
@@ -826,7 +827,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           result = <Link href={value.Url} style={{ color: semanticColors.bodyText }}>{value.Description}</Link>;
         }
         else {
-          result = <span/>;
+          result = <span />;
         }
         break;
       case SharePointType.Image:
@@ -846,20 +847,29 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             />;
           }
           else {
-            result = <span/>;
+            result = <span />;
           }
           break;
         }
       case SharePointType.NoteFullHtml:
         {
           if (value) {
-            result = <span dangerouslySetInnerHTML={{ __html: value }}/>;
+            result = <span dangerouslySetInnerHTML={{ __html: value }} />;
           }
           else {
-            result = <span/>;
+            result = <span />;
           }
           break;
         }
+      case SharePointType.Computed:
+        if (data.SourceField === "ContentType") {
+          result = <span style={{ color: semanticColors.bodyText }}>{value.Name}</span>;
+        }
+        else {
+          result = <span style={{ color: semanticColors.bodyText }}>{value}</span>;
+        }
+
+        break;
       default:
         result = <span style={{ color: semanticColors.bodyText }}>{value}</span>;
         break;
@@ -1085,7 +1095,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       <div className={styles.listSearch} style={{ backgroundColor: semanticColors.bodyBackground, color: semanticColors.bodyText }}>
         <div className={styles.row}>
           <div className={styles.column}>
-            <WebPartTitle title={this.props.title} updateProperty={(value: string) => this.props.updateTitle(value)} displayMode={this.props.displayMode} placeholder={strings.WebPartTitlePlaceHolder}/>
+            <WebPartTitle title={this.props.title} updateProperty={(value: string) => this.props.updateTitle(value)} displayMode={this.props.displayMode} placeholder={strings.WebPartTitlePlaceHolder} />
             {this.state.errorMsg ?
               <MessageBar
                 messageBarType={MessageBarType.error}
