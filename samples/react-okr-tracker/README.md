@@ -1,4 +1,4 @@
-# goals-okrs-tracker
+# Goals OKR Tracker
 
 ## Summary
 
@@ -6,25 +6,24 @@ This SharePoint web part is an Objectives and Key Results (OKR) tracking system 
 
 ![OKR Dashboard](./assets/Screenshot.png)
 
-
 ## Prerequisites
 
 A SharePoint list named "Objectives" to store the objective information with the following columns:
 
- - Title (Single line of text)
- - Quarter (Choice - Q1, Q2, Q3, Q4)
- - Year (Number)
- - Status (Choice - Not Started, In Progress, Completed, On Hold)
- - Notes (Multiple lines of text)
- - Author (Person or Group)
+- Title (Single line of text)
+- Quarter (Choice - Q1, Q2, Q3, Q4)
+- Year (Number)
+- Status (Choice - Not Started, In Progress, Completed, On Hold)
+- Notes (Multiple lines of text)
+- Author (Person or Group)
 
 A SharePoint list named "KeyResults" to store the key results with the following columns:
 
- - Title (Single line of text)
- - ObjectiveId (Number - lookup to Objectives list)
- - Status (Choice - Not Started, In Progress, Completed, On Hold)
- - Progress (Number - percentage)
- - Notes (Multiple lines of text)
+- Title (Single line of text)
+- ObjectiveId (Number - lookup to Objectives list)
+- Status (Choice - Not Started, In Progress, Completed, On Hold)
+- Progress (Number - percentage)
+- Notes (Multiple lines of text)
 
   Use can use the [Powershell script](./scripts/SharePointLists.ps1) to provision the list.
 
@@ -59,12 +58,6 @@ A SharePoint list named "KeyResults" to store the key results with the following
 |-------|----|--------|
 |1.0|August 3, 2025|Initial release|
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 ### Build and Test
@@ -85,35 +78,39 @@ A SharePoint list named "KeyResults" to store the key results with the following
 ## Features
 
 ### Core Functionality
+
 - Create, view, edit, and delete objectives  
 - Add key results linked to objectives  
 - Track progress against key results  
 - Filter and view objectives by quarter and year  
 
 ### Dashboard & Views
+
 - Comprehensive overview of all objectives  
 - Detailed objective view with associated key results  
 - New objective creation form with validation  
 - In-place key result editing experience  
 
 ### Metadata & Tracking
+
 - Support for quarterly planning cycles  
 - Real-time status tracking of objectives and key results  
 - Visual progress indicators (e.g., bars, RAG status)  
 - Automatic author attribution and timestamps  
 
 ### User Experience
+
 - Clean, modern, and responsive UI  
 - Card-based layout for easy scanning  
 - Intuitive navigation and interaction flows  
 - Optimized for desktop and mobile devices  
 
 ### SharePoint Integration
+
 - Data stored in SharePoint lists  
 - Leverages user profile data from SharePoint  
 - Respects SharePoint permissions and security  
 - Real-time data updates using SharePoint framework APIs  
-
 
 ## References
 
@@ -122,3 +119,9 @@ A SharePoint list named "KeyResults" to store the key results with the following
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-okr-tracker" />
