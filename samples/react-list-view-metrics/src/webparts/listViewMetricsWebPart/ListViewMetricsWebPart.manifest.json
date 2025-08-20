@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "3e7b9ed6-fff3-42fa-938c-b7aa359306bb",
+  "alias": "ListViewMetricsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "List View Metrics Web Part" },
+    "description": { "default": "List View Metrics is a SharePoint web part that connects to any site, list, and view (or custom query) to display key metrics like total, average, sum, and more. Users can customize which insights to show, making it easy to track and visualize list data." },
+    "officeFabricIconFontName": "BarChartVertical"
+  }]
+}
