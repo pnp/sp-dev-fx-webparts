@@ -44,7 +44,6 @@ export default class PnpCopilotPromptsWebPart extends BaseClientSideWebPart<IPnp
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('sampleDataFileUrl', {
                   label: strings.SampleDataFileUrlFieldLabel

@@ -45,7 +45,7 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
       <section className={`${styles.pnpCopilotPrompts}`}>
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
-            <h1>🤖 Copilot Prompts Gallery</h1>
+            <h1>🤖 PnP Copilot Prompt Gallery</h1>
             <p>Discover and reuse Copilot prompts from the Microsoft 365 & Power Platform Community</p>
             <div className={`${styles.stats}`}>
               <div className={`${styles.statItem}`}>
@@ -128,11 +128,11 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
                 </div>
                 <div className={`${styles.sampleMeta}`}>
                   <div>
-                    <span className={`${styles.prerequisiteTag} ${styles.githubTag}`}>{this.renderPrerequisites(sample.Prerequisites || '')}</span>
+                    <span className={`${styles.prerequisiteTag}`}>{this.renderPrerequisites(sample.Prerequisites || '')}</span>
                   </div>
                   <div className={`${styles.sampleActions}`}>
                     <button
-                      className={`${styles.btn} ${styles.btnSecondary}`}
+                      className={`${styles.btn}`}
                       onClick={() => this.copyPromptToClipboard(sample.Prompt || '', index)}
                       title="Copy prompt to clipboard"
                     >

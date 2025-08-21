@@ -1,6 +1,6 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
+  "PropertyPaneDescription": "You can generate Copilot prompt samples by running the prepare-sample-data.ps1 script and providing the path to the JSON file. If no path is provided, the sample data from the current solution will be used.",
     "BasicGroupName": "Group Name",
     "DescriptionFieldLabel": "Description Field",
     "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",

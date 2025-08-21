@@ -1,9 +1,7 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 $bodyText: #323130;
-$primaryGradient: linear-gradient(45deg, #667eea, #764ba2);
-$githubGradient: linear-gradient(45deg, #24292e, #586069);
-$m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
+$primaryGradient: linear-gradient(45deg, #0078d4, #764ba2);
 
 .pnpCopilotPrompts {
   overflow: hidden;
@@ -33,8 +31,6 @@ $m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
       font-size: 2.5rem;
       margin-bottom: 10px;
       background: $primaryGradient;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
@@ -120,7 +116,7 @@ $m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
 
       .samplePrompt {
         background: #f8f9fa;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #0078d4;
         padding: 12px;
         margin: 15px 0;
         font-size: 0.9rem;
@@ -146,14 +142,6 @@ $m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
           font-size: 0.8rem;
           font-weight: 500;
           margin-right: 5px;
-
-          &.githubTag {
-            background: $githubGradient;
-          }
-
-          &.m365Tag {
-            background: $m365Gradient;
-          }
         }
 
         .sampleActions {
@@ -171,17 +159,9 @@ $m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
             display: inline-flex;
             align-items: center;
             gap: 5px;
-
-            &.btnPrimary {
-              background: $primaryGradient;
-              color: white;
-            }
-
-            &.btnSecondary {
-              background: #f8f9fa;
-              color: #666;
-              border: 1px solid #e1e8ed;
-            }
+            background: #f8f9fa;
+            color: #666;
+            border: 1px solid #e1e8ed;
 
             &:hover {
               transform: translateY(-2px);
@@ -197,7 +177,7 @@ $m365Gradient: linear-gradient(45deg, #0078d4, #106ebe);
         margin-bottom: 10px;
 
         a {
-          color: #667eea;
+          color: #0078d4;
           text-decoration: none;
 
           &:hover {
