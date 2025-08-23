@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type QueryParams = {
   select?: string | string[];
   expand?: string | string[]; 

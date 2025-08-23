@@ -14,6 +14,7 @@ export interface IListViewMetricsWebPartProps {
   customFilterQueryFilterParams: string | undefined;
 
   // Metrics configuration
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   metricsCollection: any[];
 
   // Design settings

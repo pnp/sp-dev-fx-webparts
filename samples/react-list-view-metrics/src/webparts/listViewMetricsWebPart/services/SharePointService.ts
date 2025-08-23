@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Log } from "@microsoft/sp-core-library";
 import { BaseWebPartContext } from "@microsoft/sp-webpart-base";
 import { sp, Web } from "@pnp/sp";

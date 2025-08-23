@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DisplayMode } from "@microsoft/sp-core-library";
 import { IDesignConfigurations } from "../models/IDesignConfigurations";
 

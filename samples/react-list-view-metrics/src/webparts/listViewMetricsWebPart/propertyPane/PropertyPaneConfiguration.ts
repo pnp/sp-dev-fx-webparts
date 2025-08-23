@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // React & libs (external)
 import { MessageBarType } from "@fluentui/react/lib/components/MessageBar";
 

@@ -1,3 +1,6 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // React & libs (external)
 import * as React from "react";
 import * as ReactDom from "react-dom";
@@ -237,6 +240,7 @@ export default class ListViewMetricsWebPart extends BaseClientSideWebPart<IListV
 
   protected async onPropertyPaneFieldChanged(
     propertyPath: string,
+
     oldValue: any,
     newValue: any
   ): Promise<void> {

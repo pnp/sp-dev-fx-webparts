@@ -14,7 +14,8 @@ This web part displays key metrics from SharePoint Lists and Libraries. It conne
 \
 ![List View Metrics Web Part - Configurations 3](./assets/asset5.png)
 
-**Key Features:**
+### Key Features
+
 - **Multiple Metric Types**: Total count, unique count, sum, average, min/max values, and most popular value
 - **Flexible Data Sources**: Use existing list views or custom REST queries with select, expand, and filter parameters
 - **Target Tracking**: Set target values and display variance as numbers or percentages
@@ -44,10 +45,6 @@ This sample is designed to be used in the following environments:
 
 For more information about SPFx compatibility, please refer to https://aka.ms/spfx-matrix
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.18.2-green.svg)
-
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
@@ -59,11 +56,9 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 None
 
-## Solution
+## Contributors
 
-| Solution | Author(s) |
-| -------- | --------- |
-| listviewmetricswebpart | [tvahk](https://github.com/tvahk) |
+- [tvahk](https://github.com/tvahk) |
 
 ## Version history
 
@@ -71,17 +66,14 @@ None
 | ------- | ---- | -------- |
 | 1.0 | TBD | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - In the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
@@ -90,15 +82,12 @@ None
 To package and deploy the solution:
 
 - In the command-line run:
-  - **gulp bundle --ship**
-  - **gulp package-solution --ship**
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 - Upload the generated .sppkg file (located in sharepoint/solution folder) to your tenant App Catalog
 - Install the app in your site collection
 - Add the web part to any page in the site collection
 
-## Contributors
-
-- [tvahk](https://github.com/tvahk)
 
 ## Disclaimer
 
