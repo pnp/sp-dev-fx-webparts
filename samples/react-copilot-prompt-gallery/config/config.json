@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "pnp-copilot-prompts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnpCopilotPrompts/PnpCopilotPromptsWebPart.js",
+          "manifest": "./src/webparts/pnpCopilotPrompts/PnpCopilotPromptsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PnpCopilotPromptsWebPartStrings": "lib/webparts/pnpCopilotPrompts/loc/{locale}.js"
+  }
+}
