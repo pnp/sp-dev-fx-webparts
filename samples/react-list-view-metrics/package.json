@@ -47,7 +47,7 @@
     "fork-ts-checker-webpack-plugin": "6.5.3",
     "gulp": "4.0.2",
     "spfx-fast-serve": "^4.0.2",
-    "spfx-fast-serve-helpers": "~1.18.0",
+    "spfx-fast-serve-helpers": "~1.21.1",
     "typescript": "4.7.4"
   }
 }
