@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "listviewmetricswebpart",
+    "libraryId": "810861d1-e880-4565-937a-25c02df93dd1",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "listviewmetricswebpart",
+    "solutionShortDescription": "listviewmetricswebpart description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
