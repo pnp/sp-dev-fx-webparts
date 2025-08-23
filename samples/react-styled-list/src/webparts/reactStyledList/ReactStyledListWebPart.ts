@@ -91,7 +91,7 @@ export default class ReactStyledListWebPart extends BaseClientSideWebPart<IReact
       this.domElement.style.setProperty('--link', semanticColors.link ?? null);
       this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered ?? null);
       this.domElement.style.setProperty('--background', semanticColors.bodyBackground ?? null);
-      this.domElement.style.setProperty('--cardBg', (semanticColors as any).bodyStandoutBackground ?? semanticColors.bodyBackground ?? null);
+      this.domElement.style.setProperty('--cardBg', (semanticColors as Record<string, string>).bodyStandoutBackground ?? semanticColors.bodyBackground ?? null);
       this.domElement.style.setProperty('--cardBorder', semanticColors.variantBorder ?? semanticColors.bodyDivider ?? (palette?.neutralLight ?? null));
       this.domElement.style.setProperty('--authorText', palette?.neutralSecondary ?? null);
       this.domElement.style.setProperty('--quoteText', palette?.neutralSecondary ?? null);

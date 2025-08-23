@@ -7,13 +7,13 @@ interface IListCardProps {
     item: IBookItem;
 }
 
-export default class ListCard extends React.Component<IListCardProps> {
+export class ListCard extends React.Component<IListCardProps> {
     public render(): React.ReactElement<IListCardProps> {
         const { item } = this.props;
 
         return (
             <div className={styles.gridItem}>
-                <div className={styles.number}>{item}</div>
+                <div className={styles.number}>{item.Number}</div>
                 <div className={styles.contentContainer}>
                     <div className={styles.author}>{item.BookAuthor}</div>
                     <div className={styles.bookAbstract}>{item.BookAbstract}</div>

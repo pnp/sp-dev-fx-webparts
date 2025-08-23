@@ -5,6 +5,7 @@ import type { IReactStyledListProps } from './IReactStyledListProps';
 
 import type { IBookItem } from '../services/SharePointService';
 import { BooksService } from '../services/SharePointService';
+import { ListCard } from './ListCard';
 
 
 
@@ -25,6 +26,7 @@ export default class ReactStyledList extends React.Component<IReactStyledListPro
       this.setState({ items });
     } catch (err) {
       this.setState({ items: [] });
+      console.error(err);
     }
   }
 
@@ -46,24 +48,4 @@ export default class ReactStyledList extends React.Component<IReactStyledListPro
   }
 }
 
-interface IListCardProps {
-  item: IBookItem;
-}
 
-class ListCard extends React.Component<IListCardProps> {
-  public render(): React.ReactElement<IListCardProps> {
-    const { item } = this.props;
-
-    return (
-      <div className={styles.gridItem}>
-        <div className={styles.number}>{item.Number}</div>
-        <div className={styles.contentContainer}>
-          <div className={styles.author}>{item.BookAuthor}</div>
-          <div className={styles.bookAbstract}>{item.BookAbstract}</div>
-        </div>
-        <div className={styles.category}>{item.Category}</div>
-        <div className={styles.price}>{item.Price}</div>
-      </div>
-    );
-  }
-}
