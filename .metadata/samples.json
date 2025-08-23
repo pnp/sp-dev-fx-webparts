@@ -14444,6 +14444,59 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-copilot-prompt-gallery",
+    "source": "pnp",
+    "title": "PnP Copilot Prompt Gallery",
+    "shortDescription": "This solution displays a gallery of Copilot prompts from the PnP copilot-prompts repository and allows users to easily copy prompts for reuse.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-prompt-gallery",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-prompt-gallery",
+    "longDescription": [
+      "This solution displays a gallery of Copilot prompts from the PnP copilot-prompts repository and allows users to easily copy prompts for reuse."
+    ],
+    "creationDateTime": "2025-08-21",
+    "updateDateTime": "2025-08-21",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "promptGallery.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-prompt-gallery/assets/promptGallery.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/saurabh7019",
+        "pictureUrl": "https://github.com/saurabh7019.png",
+        "name": "Saurabh Tripathi"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
     "source": "pnp",
     "title": "Copy Views Web Part",
