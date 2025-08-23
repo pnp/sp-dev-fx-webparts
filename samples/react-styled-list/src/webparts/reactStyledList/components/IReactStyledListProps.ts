@@ -1,3 +1,5 @@
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+
 export interface IReactStyledListProps {
   theme: string;
   alignment: string;
@@ -5,4 +7,5 @@ export interface IReactStyledListProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  spfxContext: WebPartContext;
 }
