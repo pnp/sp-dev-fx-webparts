@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-flag-template-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactFlagTemplate/ReactFlagTemplateWebPart.js",
+          "manifest": "./src/webparts/reactFlagTemplate/ReactFlagTemplateWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactFlagTemplateWebPartStrings": "lib/webparts/reactFlagTemplate/loc/{locale}.js"
+  }
+}
