@@ -1,34 +1,126 @@
-@import '~@fluentui/react/dist/sass/References.scss';
+/** Clean banner styles for ReactFlagTemplate */
 
-.reactFlagTemplate {
-  overflow: hidden;
-  padding: 1em;
-  color: "[theme:bodyText, default: #323130]";
-  color: var(--bodyText);
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
-  }
+.flagColor1 { --accent-color: #0B374D; }
+.flagColor2 { --accent-color: #1286A8; }
+.flagColor3 { --accent-color: #D2B53B; }
+.flagColor4 { --accent-color: #DA611E; }
+.flagColor5 { --accent-color: #AC2A1A; }
+
+.flagBannerRoot {
+  font-family: 'Jura', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  color: #222;
+  background: #f5f5f5;
 }
 
-.welcome {
+h1 {
   text-align: center;
+  margin: 0;
 }
 
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
+.bannerBar {
+  width: 90%;
+  max-width: 1200px;
+  height: 16px;
+  background: linear-gradient(180deg, #8c8c8c, #6e6e6e);
+  border-radius: 8px;
+  margin: 0 auto -24px auto;
 }
 
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+.flagBannerRoot .flagList {
+  width: min(70rem, 94%);
+  margin: 0 auto;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
-    }
-  }
+/* extra safety to nuke bullets across hosts */
+.flagList > li,
+.flagListItem {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+}
+
+.flagListItem {
+  width: 16em;
+  min-width: 200px;
+  position: relative;
+}
+
+.flag {
+  position: relative;
+  background: var(--accent-color, #666);
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.55) 0 3.25rem, rgba(0,0,0,.35) 3.25rem 4rem, rgba(0,0,0,0) 4rem),
+    radial-gradient(120% 80% at 50% 20%, rgba(255,255,255,.15) 0 40%, rgba(0,0,0,0) 41%);
+  color: #fff;
+  border-radius: 0 0 1.3rem 1.3rem;
+  padding: 2.75rem 1.25rem 2.5rem;
+  min-height: 18rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .25s ease-out;
+}
+
+.flag::before {
+  content: "";
+  position: absolute;
+  top: -1.2rem;
+  left: 0;
+  right: 0;
+  height: 1.6rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(0,0,0,.25));
+  border-top-left-radius: .4rem;
+  border-top-right-radius: .4rem;
+}
+
+.flag::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.1rem;
+  height: 2.2rem;
+  background: var(--accent-color, #666);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.2));
+}
+
+.flagListItem:hover .flag { transform: translateY(-12px); }
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin: .25rem 0 .5rem;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  font-family: 'Jura', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: .25rem 0 .25rem;
+}
+
+.descr {
+  font-family: 'Jura', Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  opacity: .95;
 }
