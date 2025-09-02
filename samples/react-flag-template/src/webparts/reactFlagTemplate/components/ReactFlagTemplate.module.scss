@@ -1,10 +1,24 @@
 /** Clean banner styles for ReactFlagTemplate */
 
-.flagColor1 { --accent-color: #0B374D; }
-.flagColor2 { --accent-color: #1286A8; }
-.flagColor3 { --accent-color: #D2B53B; }
-.flagColor4 { --accent-color: #DA611E; }
-.flagColor5 { --accent-color: #AC2A1A; }
+.flagColor1 {
+  --accent-color: #0B374D;
+}
+
+.flagColor2 {
+  --accent-color: #1286A8;
+}
+
+.flagColor3 {
+  --accent-color: #D2B53B;
+}
+
+.flagColor4 {
+  --accent-color: #DA611E;
+}
+
+.flagColor5 {
+  --accent-color: #AC2A1A;
+}
 
 .flagBannerRoot {
   font-family: 'Jura', Arial, sans-serif;
@@ -45,7 +59,7 @@ h1 {
 }
 
 /* extra safety to nuke bullets across hosts */
-.flagList > li,
+.flagList>li,
 .flagListItem {
   list-style: none !important;
   margin: 0 !important;
@@ -63,13 +77,13 @@ h1 {
   position: relative;
   background: var(--accent-color, #666);
   background-image:
-    linear-gradient(180deg, rgba(0,0,0,.55) 0 3.25rem, rgba(0,0,0,.35) 3.25rem 4rem, rgba(0,0,0,0) 4rem),
-    radial-gradient(120% 80% at 50% 20%, rgba(255,255,255,.15) 0 40%, rgba(0,0,0,0) 41%);
+    linear-gradient(180deg, rgba(0, 0, 0, .55) 0 3.25rem, rgba(0, 0, 0, .35) 3.25rem 4rem, rgba(0, 0, 0, 0) 4rem),
+    radial-gradient(120% 80% at 50% 20%, rgba(255, 255, 255, .15) 0 40%, rgba(0, 0, 0, 0) 41%);
   color: #fff;
   border-radius: 0 0 1.3rem 1.3rem;
   padding: 2.75rem 1.25rem 2.5rem;
   min-height: 18rem;
-  box-shadow: 0 6px 24px rgba(0,0,0,.15);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +98,7 @@ h1 {
   left: 0;
   right: 0;
   height: 1.6rem;
-  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(0,0,0,.25));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(0, 0, 0, .25));
   border-top-left-radius: .4rem;
   border-top-right-radius: .4rem;
 }
@@ -98,10 +112,12 @@ h1 {
   height: 2.2rem;
   background: var(--accent-color, #666);
   clip-path: polygon(50% 100%, 0 0, 100% 0);
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,.2));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .2));
 }
 
-.flagListItem:hover .flag { transform: translateY(-12px); }
+.flagListItem:hover .flag {
+  transform: translateY(-12px);
+}
 
 .icon {
   width: 64px;
