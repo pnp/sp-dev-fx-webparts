@@ -14,6 +14,7 @@ import { IReactFlagTemplateProps } from './components/IReactFlagTemplateProps';
 
 export interface IReactFlagTemplateWebPartProps {
   description: string;
+  listName: string;
 }
 
 export default class ReactFlagTemplateWebPart extends BaseClientSideWebPart<IReactFlagTemplateWebPartProps> {
@@ -26,10 +27,12 @@ export default class ReactFlagTemplateWebPart extends BaseClientSideWebPart<IRea
       ReactFlagTemplate,
       {
         description: this.properties.description,
+        listName: this.properties.listName,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        spfxContext: this.context
       }
     );
 
@@ -110,6 +113,9 @@ export default class ReactFlagTemplateWebPart extends BaseClientSideWebPart<IRea
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('listName', {
+                  label: 'List name (Title, Description, Icon columns)'
                 })
               ]
             }
