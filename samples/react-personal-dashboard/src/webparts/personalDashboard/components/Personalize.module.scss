@@ -1,0 +1,115 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.personalizeContainer {
+    text-align: right;
+
+    .customLink {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        margin: -5px 5px -10px 0;
+
+        background-color: darkgray;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 10px 20px;
+
+        i {
+            padding-right: 5px;
+            position: relative;
+        }
+    }
+}
+
+.container {
+    display: table;
+    width: 500px;
+
+
+    .listBox {
+        display: table-row;
+    }
+
+    .selectable,
+    .selected {
+        width: 45%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .selectionpanel {
+        width: 10%;
+        position: relative;
+    }
+
+    .selectable,
+    .selectionpanel,
+    .selected {
+        display: table-cell;
+    }
+
+    ul {
+        list-style: none;
+        height: 250px;
+        padding: 0;
+        overflow-y: auto;
+    }
+
+    ul li {
+        border-bottom: 1px #eee solid;
+        padding: 5px 12px;
+        color: #555;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    ul li:hover {
+        color: #add8e6;
+    }
+
+    .liSelected {
+        background: "[theme:themeLighterAlt, default:#000]";
+    }
+
+    .btns {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin: -25px 0 0 -25px;
+    }
+
+    button {
+        display: block;
+        margin: 10px;
+    }
+
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: block;
+        width: 350px;
+    }
+
+    .listBox,
+    .selectable,
+    .selectionpanel,
+    .selected {
+        display: block;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .btns {
+        left: 20%;
+        margin: 0;
+        position: relative;
+    }
+
+    button {
+        display: inline-block;
+        margin: 10px;
+    }
+}

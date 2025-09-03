@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.20.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-personal-dashboard",
+    "libraryId": "9973f73a-25d0-4ce7-8a61-27238f09eac9",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-personal-dashboard",
+    "solutionShortDescription": "react-personal-dashboard description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

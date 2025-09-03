@@ -4,7 +4,7 @@
 
 The **Group Members Web Part** provides a comprehensive solution for displaying and managing Microsoft 365 group memberships within SharePoint. This web part leverages Microsoft Graph to fetch user data and presents it in an intuitive, responsive interface that supports filtering, search, and quick actions.
 
-![Group Members UI](./assets/GroupMembersUI.png)
+![Group Members UI](./assets/GroupMembersUI_updated.png)
 
 ## Key Features
 
@@ -55,12 +55,15 @@ This sample is optimally compatible with the following environment configuration
 ## Contributors
 
 - [Nicolas Kheirallah](https://github.com/NicolasKheirallah)
+- [Nirav Raval](https://github.com/nrvrvl)
 
 ## Version History
 
 | Version | Date            | Comments                                        |
 | ------- | --------------- | ----------------------------------------------- |
 | 1.0.0   | 28 February 2025   | Initial release                                 |
+| 1.1.0   | 21 April 2025   | Added pagination controls                         |
+
 
 
 ## Minimal Path to Awesome

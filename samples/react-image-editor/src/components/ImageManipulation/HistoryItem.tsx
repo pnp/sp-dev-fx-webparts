@@ -1,4 +1,4 @@
-import { Icon } from 'office-ui-fabric-react';
+
 import * as React from 'react';
 import styles from './ImageManipulation.module.scss';
 
@@ -6,9 +6,10 @@ import {
   IImageManipulationSettings,
   manipulationTypeData,
   IManipulationTypeDataDetails } from './ImageManipulation.types';
+import { Icon } from '@fluentui/react';
 
 // tslint:disable-next-line: typedef
-export const historyItem = (item: IImageManipulationSettings, _index: number): JSX.Element => {
+export const historyItem = (item: IImageManipulationSettings, _index: number): JSX.Element|undefined => {
   if (!item) {
     return undefined;
   }
@@ -18,7 +19,6 @@ export const historyItem = (item: IImageManipulationSettings, _index: number): J
     return (
         <span  className={styles.historyItem}>
           <span className={styles.historyItemIcon}>{data.svgIcon ?
-          // tslint:disable-next-line: react-a11y-img-has-alt
           <img className={styles.historyItemSvg} src={data.svgIcon} /> :
           <Icon iconName={data.iconName} />}</span>
           <span className={styles.historyItemText}>{data.text}</span>

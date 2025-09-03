@@ -6,15 +6,14 @@ import { Log } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {
-  Persona,
-  PersonaSize,
-  DocumentCard,
-  DocumentCardType,
-  Icon,
-} from 'office-ui-fabric-react';
-
-const EXP_SOURCE = 'SPFxDirectory';
-const LIVE_PERSONA_COMPONENT_ID = '914330ee-2df2-4f6e-a858-30c23a812408';
+  Avatar,
+  Body1,
+  Card,
+  Subtitle1,
+  Text,
+} from '@fluentui/react-components';
+import { Call16Filled, Location16Filled } from '@fluentui/react-icons';
+import { LIVE_PERSONA_COMPONENT_ID, EXP_SOURCE } from '../../../../constants';
 
 export class PersonaCard extends React.Component<
   IPersonaCardProps,
@@ -30,7 +29,7 @@ export class PersonaCard extends React.Component<
    *
    * @memberof PersonaCard
    */
-  public async componentDidMount():Promise<void> {
+  public async componentDidMount(): Promise<void> {
     const sharedLibrary = await this._loadSPComponentById(
       LIVE_PERSONA_COMPONENT_ID
     );
@@ -39,8 +38,6 @@ export class PersonaCard extends React.Component<
     this.setState({ livePersonaCard: livePersonaCard });
   }
 
-
-
   /**
    *
    *
@@ -48,7 +45,7 @@ export class PersonaCard extends React.Component<
    * @returns
    * @memberof PersonaCard
    */
-  private _LivePersonaCard():JSX.Element {
+  private _LivePersonaCard(): JSX.Element {
     return React.createElement(
       this.state.livePersonaCard,
       {
@@ -74,45 +71,47 @@ export class PersonaCard extends React.Component<
    */
   private _PersonaCard(): JSX.Element {
     return (
-      <DocumentCard
-        className={styles.documentCard}
-        type={DocumentCardType.normal}
-      >
-        <div className={styles.persona}>
-          <Persona
-            text={this.props.profileProperties.DisplayName}
-            secondaryText={this.props.profileProperties.Title}
-            tertiaryText={this.props.profileProperties.Department}
-            imageUrl={this.props.profileProperties.PictureUrl}
-            size={PersonaSize.size72}
-            imageShouldFadeIn={false}
-            imageShouldStartVisible={true}
-          >
-            {this.props.profileProperties.WorkPhone ? (
-              <div>
-                <Icon iconName="Phone" style={{ fontSize: '12px' }} />
-                <span style={{ marginLeft: 5, fontSize: '12px' }}>
-                  {' '}
-                  {this.props.profileProperties.WorkPhone}
-                </span>
-              </div>
-            ) : (
-              ''
-            )}
-            {this.props.profileProperties.Location ? (
-              <div className={styles.textOverflow}>
-                <Icon iconName="Poi" style={{ fontSize: '12px' }} />
-                <span style={{ marginLeft: 5, fontSize: '12px' }}>
-                  {' '}
-                  {this.props.profileProperties.Location}
-                </span>
-              </div>
-            ) : (
-              ''
-            )}
-          </Persona>
+      <Card className={styles.documentCard}>
+        <Avatar
+          name={this.props.profileProperties.DisplayName}
+          image={{
+            src: `${this.props.profileProperties.PictureUrl}`,
+          }}
+          size={120}
+          shape="square"
+        />
+        <div className={styles.personaDetails}>
+          <Subtitle1>{this.props.profileProperties.DisplayName}</Subtitle1>
+          <Body1 className={styles.others} style={{ fontWeight: 600 }}>
+            {this.props.profileProperties.Title}
+          </Body1>
+          <Text className={styles.others}>
+            {this.props.profileProperties.Department}
+          </Text>
+          {this.props.profileProperties.WorkPhone ? (
+            <div className={styles.others}>
+              <Call16Filled style={{ fontSize: '12px' }} />
+              <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                {' '}
+                {this.props.profileProperties.WorkPhone}
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
+          {this.props.profileProperties.Location ? (
+            <div className={(styles.textOverflow, styles.others)}>
+              <Location16Filled style={{ fontSize: '12px' }} />
+              <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                {' '}
+                {this.props.profileProperties.Location}
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
-      </DocumentCard>
+      </Card>
     );
   }
   /**

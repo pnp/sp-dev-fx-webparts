@@ -18,9 +18,9 @@ import { PnpHookGlobalOptions, createProviderElement } from "pnp-react-hooks"
 import { spfi, SPFx } from "@pnp/sp"
 
 export interface IAwardRecognitionWebPartProps {
-  webpartTitle: string
-  contentTitle: string
-  contentDescription: string
+  mainHeading: string
+  subHeading: string
+  subHeadingDescription: string
   hookOptions: PnpHookGlobalOptions
   animationChoice: string
   cardType: string
@@ -34,9 +34,9 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
   public render(): void {
     const element: React.ReactElement<IAwardRecognitionProps> =
       React.createElement(AwardRecognition, {
-        webpartTitle: this.properties.webpartTitle,
-        contentTitle: this.properties.contentTitle,
-        contentDescription: this.properties.contentDescription,
+        mainHeading: this.properties.mainHeading,
+        subHeading: this.properties.subHeading,
+        subHeadingDescription: this.properties.subHeadingDescription,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -44,6 +44,7 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
         animationChoice: this.properties.animationChoice,
         cardType: this.properties.cardType,
         cardStyle: this.properties.cardStyle,
+        context: this.context,
       })
 
     // Use helper function to create React elements.
@@ -57,6 +58,8 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
   }
 
   protected onInit(): Promise<void> {
+    // this.properties.cardStyle ??= "rounded"
+    // this.properties.animationChoice ??= "off"
     return this._getEnvironmentMessage().then((message) => {
       this._environmentMessage = message
       const sp = spfi().using(SPFx(this.context))
@@ -139,6 +142,7 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
     return {
       pages: [
         {
+          displayGroupsAsAccordion: true,
           header: {
             description: strings.PropertyPaneDescription,
           },
@@ -146,17 +150,16 @@ export default class AwardRecognitionWebPart extends BaseClientSideWebPart<IAwar
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("webpartTitle", {
+                PropertyPaneTextField("mainHeading", {
                   label: strings.WebpartFieldLabel,
                 }),
-                PropertyPaneTextField("contentTitle", {
+                PropertyPaneTextField("subHeading", {
                   label: strings.ContentTitleFieldLabel,
                 }),
-                PropertyPaneTextField("contentDescription", {
+                PropertyPaneTextField("subHeadingDescription", {
                   label: strings.ContentDescriptionFieldLabel,
                   multiline: true,
                 }),
-                PropertyPaneHorizontalRule(),
               ],
             },
             {

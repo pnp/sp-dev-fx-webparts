@@ -18,7 +18,7 @@
     "fullcalendar": "6.1.15",
     "jquery": "^3.7.1",
     "moment": "2.30.1",
-    "sweetalert2": "11.14.1"
+    "sweetalert2": "11.22.4"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.20.2",

@@ -1,6 +1,6 @@
 {
   "name": "react-directory",
-  "version": "3.0.5",
+  "version": "4.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@fluentui/react": "8.106.4",
+    "@fluentui/react-components": "^9.61.6",
+    "@fluentui/react-migration-v8-v9": "^9.7.8",
     "@microsoft/sp-adaptive-card-extension-base": "1.20.0",
     "@microsoft/sp-component-base": "1.20.0",
     "@microsoft/sp-core-library": "1.20.0",
@@ -28,7 +30,6 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-js-pagination": "^3.0.3",
-    "throttle-debounce": "^5.0.0",
     "tslib": "2.3.1"
   },
   "devDependencies": {
@@ -42,7 +43,6 @@
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
     "@types/react-js-pagination": "^3.0.4",
-    "@types/throttle-debounce": "^5.0.0",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "eslint": "8.57.0",

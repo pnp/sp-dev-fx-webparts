@@ -1,0 +1,23 @@
+# .github/workflows/label-first-timers.yml
+name: Label First-Time Contributors
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  label-first-timer:
+    if: >
+      github.event.pull_request.merged == true &&
+      (
+        github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR' ||
+        github.event.pull_request.author_association == 'FIRST_TIMER'
+      )
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add “first-time-contributor” label
+        uses: actions-ecosystem/add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: first-time-contributor

@@ -4,14 +4,21 @@
 
 This list search web part allows the user to show data from lists or libraries. The web part can be used to (for more details see images below):
 
-  * [Show merged items from different lists/libraries](#merge-items-from-different-listslibraries)
-  * [Open item data in modal window (same data shown in the table)](#merge-items-from-different-listslibraries)
-  * [Select render by field type](#select-render-of-the-selected-fields)
-  * [Open item detail in modal window (it allows to select the fields to show by list)](#open-selected-item-with-selected-properties)
-  * [Open documents in modal window](#open-documents-in-modal-window)
-  * [Open documents in new tab](#open-documents-in-new-tab)
-  * [Use of dynamic data](#use-of-dynamic-data)
-  * [Redirect to url](#redirect-to-url-depends-on-selected-item)
+  [Show merged items from different lists/libraries](#merge-items-from-different-listslibraries)
+
+  [Open item data in modal window (same data shown in the table)](#merge-items-from-different-listslibraries)
+
+  [Select render by field type](#select-render-of-the-selected-fields)
+
+  [Open item detail in modal window (it allows to select the fields to show by list)](#open-selected-item-with-selected-properties)
+
+  [Open documents in modal window](#open-documents-in-modal-window)
+
+  [Open documents in new tab](#open-documents-in-new-tab)
+
+  [Use of dynamic data](#use-of-dynamic-data)
+  
+  [Redirect to url](#redirect-to-url-depends-on-selected-item)
 
 * Other useful functionalities:
   * List item modern audience support
@@ -91,6 +98,7 @@ Version|Date|Comments
 1.2.0|January 01, 2022|Upgraded for SPFx v1.13.1
 1.3.0|July 11, 2022|Fixes CAML issues
 1.4.0|October 2, 2024|Upgraded for SPFx v1.20.0
+1.5.0|August 14, 2025|Fixes ContentType query
 
 ## Minimal Path to Awesome
 
@@ -105,12 +113,6 @@ Version|Date|Comments
     * `gulp serve`
     * Open the *workbench* on your Office 365 Developer tenant
     * Test out the web part
-
-### Sppkg
-
-  * Download `.sppkg` files from `sppkg` folder
-  * Upload files to **App Catalog**
-  * Approve the API permissions in the new SP admin center (only needed if you are going to enable list item modern audience)
 
 ## Features
 

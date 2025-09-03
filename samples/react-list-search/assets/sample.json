@@ -9,11 +9,15 @@
       "This list search web part allows the user to show data from lists or libraries."
     ],
     "creationDateTime": "2020-12-20",
-    "updateDateTime": "2024-10-02",
+    "updateDateTime": "2025-08-14",
     "products": [
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"

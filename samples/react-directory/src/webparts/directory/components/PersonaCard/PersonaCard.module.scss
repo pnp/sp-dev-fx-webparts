@@ -14,9 +14,11 @@
   width: 100%;
   max-width: 350px;
   height: 120px;
-}
-.persona {
-  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5rem 0 5rem 22px;
+  justify-content: flex-start;
 }
 
 .bottomColor {
@@ -27,11 +29,21 @@
 }
 
 .textOverflow {
-    word-break: break-all;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.personaDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+}
+.others {
+  color: #6c6c6c;
+  display: flex;
+  align-items: center;
 }

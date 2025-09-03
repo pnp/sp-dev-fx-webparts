@@ -1,11 +1,11 @@
 {
   "name": "react-image-editor",
-  "version": "1.1.0",
+  "version": "2.0.2",
   "private": true,
-  "main": "lib/index.js",
   "engines": {
-    "node": ">=0.10.0"
+      "node": ">=22.14.0 < 23.0.0"
   },
+  "main": "lib/index.js",
   "scripts": {
     "build": "gulp bundle",
     "clean": "gulp clean",
@@ -13,26 +13,34 @@
     "ship": "gulp clean && gulp build && gulp bundle --ship && gulp package-solution --ship"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "~1.4.0",
-    "@microsoft/sp-lodash-subset": "~1.4.0",
-    "@microsoft/sp-office-ui-fabric-core": "~1.4.0",
-    "@microsoft/sp-webpart-base": "~1.4.0",
-    "@pnp/spfx-controls-react": "^1.21.1",
-    "office-ui-fabric-react": "5.131.0",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
+    "@fluentui/react": "^8.106.4",
+    "@microsoft/sp-core-library": "1.21.1",
+    "@microsoft/sp-component-base": "1.21.1",
+    "@microsoft/sp-property-pane": "1.21.1",
+    "@microsoft/sp-webpart-base": "1.21.1",
+    "@microsoft/sp-lodash-subset": "1.21.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
+    "@pnp/sp": "^4.11.0",
+    "@pnp/spfx-controls-react": "^3.20.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@types/react": "15.6.6",
-    "@types/react-dom": "15.5.6",
-    "@microsoft/sp-build-web": "~1.4.1",
-    "@microsoft/sp-module-interfaces": "~1.4.1",
-    "@microsoft/sp-webpart-workbench": "~1.4.1",
-    "gulp": "~3.9.1",
-    "@types/chai": "3.4.34",
-    "@types/mocha": "2.2.38",
-    "ajv": "~5.2.2",
-    "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@rushstack/eslint-config": "4.0.1",
+    "@microsoft/eslint-plugin-spfx": "1.21.1",
+    "@microsoft/eslint-config-spfx": "1.21.1",
+    "@microsoft/sp-build-web": "1.21.1",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint": "8.57.1",
+    "gulp": "4.0.2",
+    "typescript": "~5.3.3",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "@microsoft/sp-module-interfaces": "1.21.1"
+    
   }
 }

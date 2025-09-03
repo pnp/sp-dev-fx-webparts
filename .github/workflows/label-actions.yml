@@ -3,7 +3,8 @@ name: 'Check for Incomplete Issues'
 on:
   issues:
     types: [labeled, unlabeled]
-
+  pull_request_target:
+    types: [labeled, unlabeled]
 jobs:
   reaction:
     runs-on: ubuntu-latest
@@ -11,4 +12,4 @@ jobs:
       - uses: dessant/label-actions@v2
         with:
           github-token: ${{ github.token }}
-          process-only: 'issues'
+
