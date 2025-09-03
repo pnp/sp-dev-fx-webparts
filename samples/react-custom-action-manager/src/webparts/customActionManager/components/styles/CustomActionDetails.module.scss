@@ -1,0 +1,149 @@
+// Custom Action Details Styles
+
+.container {
+  padding: 16px;
+}
+
+.section {
+  margin-bottom: 24px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0078d4;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.propertyRow {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  
+  .propertyLabel {
+    font-weight: 600;
+    color: #323130;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+  
+  .propertyValue {
+    color: #605e5c;
+    word-break: break-word;
+    flex: 1;
+  }
+}
+
+.codeBlock {
+  background-color: #faf9f8;
+  border: 1px solid #edebe9;
+  border-radius: 2px;
+  padding: 12px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+.scopeIndicator {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #0078d4;
+  color: #ffffff;
+  
+  &.webScope {
+    background-color: #107c10;
+  }
+  
+  &.siteScope {
+    background-color: #0078d4;
+  }
+}
+
+.emptyValue {
+  font-style: italic;
+  color: #a19f9d;
+}
+
+.scopeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  i {
+    font-size: 16px;
+    color: #0078d4;
+  }
+}
+
+// Separator styling
+.separator {
+  margin: 20px 0;
+  border-color: #edebe9;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .propertyRow {
+    flex-direction: column;
+    gap: 4px;
+    
+    .propertyLabel {
+      min-width: unset;
+    }
+  }
+  
+  .codeBlock {
+    font-size: 11px;
+    padding: 8px;
+    max-height: 150px;
+  }
+}
+
+// High contrast mode
+@media screen and (-ms-high-contrast: active) {
+  .codeBlock {
+    border-color: windowText;
+    background-color: window;
+  }
+  
+  .scopeIndicator {
+    &.webScope,
+    &.siteScope {
+      background-color: highlight;
+      color: highlightText;
+      border: 1px solid windowText;
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .container {
+    padding: 0;
+  }
+  
+  .codeBlock {
+    border: 1px solid #000;
+    background-color: #f9f9f9;
+    font-size: 10px;
+  }
+  
+  .scopeIndicator {
+    border: 1px solid #000;
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+  }
+}
