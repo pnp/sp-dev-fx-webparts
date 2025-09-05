@@ -79,15 +79,16 @@ h1 {
   background-image:
     linear-gradient(180deg, rgba(0, 0, 0, .55) 0 3.25rem, rgba(0, 0, 0, .35) 3.25rem 4rem, rgba(0, 0, 0, 0) 4rem),
     radial-gradient(120% 80% at 50% 20%, rgba(255, 255, 255, .15) 0 40%, rgba(0, 0, 0, 0) 41%);
-  color: #fff;
+  color: var(--text-color, #fff);
   border-radius: 0 0 1.3rem 1.3rem;
-  padding: 2.75rem 1.25rem 2.5rem;
+  padding: 4.75rem 1.25rem 2.5rem;
   min-height: 18rem;
   box-shadow: 0 6px 24px rgba(0, 0, 0, .15);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transform-origin: top center;
   transition: transform .25s ease-out;
 }
 
@@ -116,7 +117,7 @@ h1 {
 }
 
 .flagListItem:hover .flag {
-  transform: translateY(-12px);
+  transform: scale(0.75);
 }
 
 .icon {
@@ -125,6 +126,31 @@ h1 {
   margin: .25rem 0 .5rem;
   display: grid;
   place-items: center;
+}
+
+.fluentIcon {
+  font-size: 48px;
+  color: #fff;
+}
+
+.icon :global(.ms-Icon) {
+  font-size: 48px;
+  color: currentColor;
+}
+
+.icon img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+.flagLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .title {
