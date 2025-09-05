@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "componentType": "webpart",
     "template": "react",
-    "componentName": "react-flag-template",
+    "componentName": "React Flag Template",
     "plusBeta": false,
     "isCreatingSolution": true,
     "nodeVersion": "18.20.6",
