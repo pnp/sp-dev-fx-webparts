@@ -1,73 +1,64 @@
-# react-flag-template
+# React Flag Template
 
 ## Summary
+Displays SharePoint list items as colorful hanging banner cards with an optional logo, title, (optional) description and a full‑card link. Each banner can have its own background and text colors.
 
-Short summary on functionality and used technologies.
+![Sample](./assets/Screenshot.png)
 
-[picture of the solution in action, if possible]
+## SharePoint List
+Create (or reuse) a Custom List (default view OK). Recommended columns:
 
-## Used SharePoint Framework Version
+| Column | Type | Required | Notes |
+|--------|------|----------|-------|
+| Title | Single line | Yes | Flag title |
+| Description | Multiple lines (Plain) | No | Shown if present |
+| Icon | Single line (Text) | No | Image URL (PNG/SVG/JPG/Data URI) |
+| BackgroundColor | Single line (Text) | No | Hex (fallback palette if missing) |
+| Color | Single line (Text) | No | Text/logo color hex (defaults to `#FFFFFF`) |
+| Url | Single line (or Hyperlink) | No | Destination link (opens in new tab) |
 
-![version](https://img.shields.io/badge/version-1.20.0-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+## Web Part Property
+| Property | Description |
+|----------|-------------|
+| listName | Title of the SharePoint list supplying data |
 
 ## Features
+- Data‑driven flags
+- Custom background & text colors
+- Responsive horizontal layout
+- Fixed top, subtle shrink hover animation
+- Full flag clickable
+- Palette fallback
 
-Description of the extension that expands upon high-level summary above.
+### Build and Test
+1. `npm i`
+2. `gulp build`
+3. `gulp serve --nobrowser`
+4. Open hosted workbench: `https://<tenant>.sharepoint.com/sites/<site>/_layouts/15/workbench.aspx`
+5. Add the web part and set List name.
 
-This extension illustrates the following concepts:
+## Help
 
-- topic 1
-- topic 2
-- topic 3
+If something does not work:
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+1. Run environment diagnostics:  
+   `npx @pnp/cli-microsoft365 spfx doctor`
+2. Confirm Node + SPFx version compatibility: https://aka.ms/spfx-matrix
+3. Clear old build artifacts:  
+   `gulp clean && gulp build`
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+Community support (GitHub Issues in pnp/sp-dev-fx-webparts):
 
-## References
+- Report a bug:  
+  https://github.com/pnp/sp-dev-fx-webparts/issues/new?labels=Needs%3A+Triage+%3Amag%3A,type%3Abug-suspected,sample%3A+react-flag-template&template=bug-report.yml&sample=react-flag-template&title=react-flag-template%3A+Bug
+- Ask a question:  
+  https://github.com/pnp/sp-dev-fx-webparts/issues/new?labels=Needs%3A+Triage+%3Amag%3A,type%3Aquestion,sample%3A+react-flag-template&template=question.yml&sample=react-flag-template&title=react-flag-template%3A+Question
+- Suggest an enhancement:  
+  https://github.com/pnp/sp-dev-fx-webparts/issues/new?labels=Needs%3A+Triage+%3Amag%3A,type%3Aenhancement,sample%3A+react-flag-template&template=feature-request.yml&sample=react-flag-template&title=react-flag-template%3A+Enhancement
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+(Replace any outdated template names if the repo updates its issue forms.)
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-flag
