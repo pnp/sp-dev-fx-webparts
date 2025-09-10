@@ -5832,6 +5832,82 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-command-movedoc2blob",
+    "source": "pnp",
+    "title": "Move Document to Blob Storage Command",
+    "shortDescription": "The sample demonstrates how to create a command that moves a document to Azure Blob Storage.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-movedoc2blob",
+    "longDescription": [
+      "This sample demonstrates 'on_behalf_of' authentication to securely move draft documents from SharePoint to Azure Blob Storage. It showcases delegated access and integration between SPFx, Azure Functions, and Azure Storage, while addressing the need to clean up repeated or outdated files (like Final, 'Final_Draft', etc.) in SharePoint."
+    ],
+    "creationDateTime": "2025-09-02",
+    "updateDateTime": "2025-09-02",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/select_move_document.png",
+        "alt": "Move Document to Blob Storage Command"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/confirm_moving.png",
+        "alt": "Move Document to Blob Storage Command"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/document_moved.png",
+        "alt": "Move Document to Blob Storage Command"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/docs_in_recyclebin.png",
+        "alt": "Move Document to Blob Storage Command"
+      },
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/docs_on_blob_wp.png",
+        "alt": "Move Document to Blob Storage Command"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "petkir",
+        "company": "ACP Cubido",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner"
+      }
+    ],
+    "references": [
+      {
+        "name": "Overview of SharePoint Framework Extensions",
+        "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs",
     "source": "pnp",
     "title": "Modern Page Model with PnP/PnPjs",
@@ -31210,6 +31286,66 @@
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-stock-information"
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-styled-list",
+    "source": "pnp",
+    "title": "Styled List",
+    "shortDescription": "This SharePoint web part displays items from a SharePoint list in a modern, responsive, and styled grid layout.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-styled-list",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-styled-list",
+    "longDescription": [
+      "This SharePoint web part displays items from a SharePoint list in a modern, responsive, and styled grid layout."
+    ],
+    "creationDateTime": "2025-08-23",
+    "updateDateTime": "2025-08-23",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "screenshot1.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "screenshot2.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot2.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-svg-to-json-converter",
