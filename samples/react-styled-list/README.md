@@ -1,4 +1,4 @@
-# Goals OKR Tracker
+# Styled List
 
 ## Summary
 
@@ -56,11 +56,6 @@ This SharePoint web part displays items from a SharePoint list in a modern, resp
 1. Create a custom list (e.g. Bookmarks)
 1. Navigate to the hosted version of SharePoint workbench, e.g. **https://\<tenant>.sharepoint.com/sites/\<your site>/_layouts/15/workbench.aspx**
 1. Add the Web Part to the canvas and configure it.
-
-### Package and deploy
-
-## Features
-
 
 ### Features
 
