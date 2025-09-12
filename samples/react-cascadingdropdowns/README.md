@@ -31,7 +31,7 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-Tested using Node.js: **v18.17.1**
+Tested using Node.js: **v22.15.0**
 
 ## Applies to
 
