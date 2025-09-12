@@ -10,7 +10,7 @@
       "This web part shows how you can call Azure OpenAI API in Streaming mode. The web part will show the data coming from the API in chunks, giving a much better user experience, so you are not waiting for the entire response. It also shows how you can cancel the streaming response at any point, which is useful to save some tokens (hence money), if the generating response does not look good to you (like when getting AI hallucinations). AI responses render Markdown but there is a toggle to disable so you can compare Markdown rendering of responses with Streaming and without."
     ],
     "creationDateTime": "2024-01-02",
-    "updateDateTime": "2024-02-08",
+    "updateDateTime": "2025-09-12",
     "products": [
       "SharePoint"
     ],
@@ -25,7 +25,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
