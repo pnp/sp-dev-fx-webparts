@@ -34,3 +34,4 @@ obj
 *.cer
 # .PEM Certificates
 *.pem
+release

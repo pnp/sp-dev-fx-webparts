@@ -3,7 +3,8 @@ import {
   Dropdown,
   IDropdownOption
 } from '@fluentui/react/lib/Dropdown';
-import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 import styles from './ChartPaletteSelector.module.scss';
 import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartPaletteSelector.types';

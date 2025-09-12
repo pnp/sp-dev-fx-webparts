@@ -237,7 +237,7 @@ export class HorizontalBarDemo extends React.Component<IHorizontalBarDemoProps, 
       borderColor: chartColors[data.datasets.length % chartColors.length],
       borderWidth: 1,
       // Start with blank data, we'll add some next
-      data: []
+      data: [] as number[]
     };
 
     // Add data for every month

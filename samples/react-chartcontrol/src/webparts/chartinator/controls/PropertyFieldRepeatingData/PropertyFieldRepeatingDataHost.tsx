@@ -168,7 +168,7 @@ export default class IPropertyFieldRepeatingDataHost extends React.Component<IPr
     const { data } = this.state;
     const row = data.filter((dataRow: { id: string }) => dataRow.id === id)![0];
     if (row !== undefined) {
-      row[dataElem] = value;
+      (row as any)[dataElem] = value;
     } else {
     }
     this.setState({

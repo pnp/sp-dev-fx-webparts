@@ -75,13 +75,13 @@ export  class BubbleChartDemo extends React.Component<IBubbleChartDemoProps, {}>
             const eventItem = this._chartElem.getElementAtEvent(event);
 
             // don't do anything if we didn't click on a bubble
-            if (eventItem[0] === undefined) {
+            if ((eventItem as any)[0] === undefined) {
               return;
             }
 
             // get the data item passed from the event
-            const datasetIndex: number = eventItem![0]!['_datasetIndex'];
-            const itemIndex: number = eventItem![0]!['_index'];
+            const datasetIndex: number = ((eventItem as any)[0] as any)['_datasetIndex'];
+            const itemIndex: number = ((eventItem as any)[0] as any)['_index'];
 
             // pop that bubble!
             if (datasetIndex !== undefined && itemIndex !== undefined) {

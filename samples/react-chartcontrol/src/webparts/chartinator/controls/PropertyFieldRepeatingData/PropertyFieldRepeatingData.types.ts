@@ -8,7 +8,7 @@ export interface IPropertyFieldRepeatingDataProps {
   chartType: ChartType;
   data: {}[];
   key: string;
-  onDataChanged: (any) => void;
+  onDataChanged: (data: any) => void;
 }
 
 /**
@@ -24,7 +24,7 @@ export interface IPropertyFieldRepeatingDataState {
 export interface IPropertyFieldRepeatingDataHostProps {
   chartType: ChartType;
   data: {}[];
-  onDataChanged: (any) => void;
+  onDataChanged: (data: any) => void;
 }
 
 /**

@@ -9,7 +9,7 @@
       "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react."
     ],
     "creationDateTime": "2020-12-13",
-    "updateDateTime": "2020-12-13",
+    "updateDateTime": "2025-09-12",
     "products": [
       "SharePoint"
     ],
@@ -28,7 +28,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.21.1"
       },
       {
         "key": "PNPCONTROLS",
