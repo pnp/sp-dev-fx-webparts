@@ -1,11 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import { CheckMarkIcon, DecreaseIndentArrowMirroredIcon, ErrorBadgeIcon } from '@fluentui/react-icons-mdl2';
 import * as strings from 'CopyViewsSharedStrings';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Link, MessageBar, MessageBarType, ProgressIndicator, Spinner, Stack } from '@fluentui/react';
 import * as React from 'react';
 import { CopyTaskState } from '../enums';
 import { ICopyTask } from '../interfaces';
