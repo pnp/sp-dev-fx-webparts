@@ -2,13 +2,13 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.20.0",
+    "version": "1.21.1",
     "libraryName": "react-rssreader",
     "libraryId": "fcb53167-e0d5-4ed1-9648-149146649aa1",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart",
-    "nodeVersion": "18.17.1",
+    "nodeVersion": "22.15.0",
     "sdkVersions": {
       "@microsoft/teams-js": "2.24.0",
       "@microsoft/microsoft-graph-client": "3.0.2"
