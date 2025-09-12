@@ -28,7 +28,7 @@
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
-    "axios": "^0.19.2",
+    "axios": "^1.12.0",
     "jquery": "^3.5.1",
     "office-ui-fabric-react": "^7.144.2",
     "react": "16.8.5",
