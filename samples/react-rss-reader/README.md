@@ -54,7 +54,6 @@ Tested with: Node.js v22.15.0
 
 Version|Date|Comments
 -------|----|--------
-1.3.0   | September 2025 | Upgraded with Pantoum SPFx AI Upgrader
 1.0.0 | Jan 21, 2019 | Initial release
 1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
 1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
@@ -63,6 +62,7 @@ Version|Date|Comments
 1.1.0 | February 6, 2024 | Upgraded to SPFx 1.18.2
 1.2.0 | October 30, 2024 | Upgraded to SPFx 1.20.0
 1.2.1 | November 20, 2024 | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain any items.
+1.2.2 | September 12, 2025 | Upgraded to SPFx 1.21.1
 
 ## Minimal Path to Awesome
 
