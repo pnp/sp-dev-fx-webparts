@@ -72,8 +72,8 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
-![Node.js v18](https://img.shields.io/badge/Node.js-%20v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -97,6 +97,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 Version|Date|Comments
 -------|----|--------
+1.0.8.0|Sept 12 2025 | Upgraded to SPFx 1.21.1
 1.0.7.0|Nov 28, 2024 | Property pane didn't refresh fixed, added multiple permissions display
 1.0.6.0|Oct 20, 2024 | Upgrade to SPFx 1.20
 1.0.5.0|March 6, 2021 | Added webApiPermission request
