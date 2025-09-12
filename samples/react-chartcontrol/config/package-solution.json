@@ -11,7 +11,29 @@
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://contoso.com/my-app",
       "mpnId": "m365pnp"
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-chartcontrol description"
+      },
+      "longDescription": {
+        "default": "react-chartcontrol description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-chartcontrol ScatterChartDemoWebPart Feature",
+        "description": "The feature that activates ScatterChartDemoWebPart from the react-chartcontrol solution.",
+        "id": "612ed0fa-453a-480a-81bf-2d3cb872d938",
+        "version": "1.4.0.0",
+        "componentIds": [
+          "612ed0fa-453a-480a-81bf-2d3cb872d938"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-chartcontrol.sppkg"

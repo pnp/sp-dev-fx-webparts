@@ -3,7 +3,8 @@ import {
   Dropdown,
   IDropdownOption
 } from '@fluentui/react/lib/Dropdown';
-import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 import styles from './DashSelector.module.scss';
 import { IDashSelectorProps, IDashSelectorState } from './DashSelector.types';

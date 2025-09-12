@@ -38,7 +38,7 @@ export enum DashType {
  * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash
  */
 export const DashStrokes = {
-  [DashType.Solid]: [],
+  [DashType.Solid]: [] as number[],
   [DashType.Dot]: [2],
   [DashType.Dash]: [10, 5],
   [DashType.DashDot]: [10, 5, 2, 5],
