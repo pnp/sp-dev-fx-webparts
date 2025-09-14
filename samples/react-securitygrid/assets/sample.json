@@ -2,14 +2,15 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
     "source": "pnp",
-    "title": "Security Grid Web Part",
-    "shortDescription": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web",
+    "title": "Security Grid",
+    "shortDescription": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
     "longDescription": [
-      "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web"
+      "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:"
     ],
     "creationDateTime": "2021-03-06",
-    "updateDateTime": "2024-10-20",
+    "updateDateTime": "2025-09-12",
     "products": [
       "SharePoint"
     ],
@@ -24,21 +25,21 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
       {
+        "name": "MainDisplay.PNG",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/src/images/MainDisplay.gif",
-        "alt": "Security Grid"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/assets/MainDisplay.PNG",
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "russgove",
-        "company": "",
+        "gitHubAccount": "https://github.com/russgove",
         "pictureUrl": "https://github.com/russgove.png",
         "name": "Russell Gove"
       }
@@ -49,7 +50,6 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ],
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid"
+    ]
   }
 ]

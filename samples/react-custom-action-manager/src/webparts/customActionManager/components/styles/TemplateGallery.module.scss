@@ -1,0 +1,285 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.templateGallery {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .detailsCard {
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e1dfdd;
+    margin-bottom: 16px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e1dfdd;
+
+    .title {
+      font-weight: 600;
+      color: #323130;
+    }
+  }
+
+  .toolbar {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e1dfdd;
+
+    .searchBox {
+      min-width: 250px;
+    }
+
+    .filterDropdown,
+    .sortDropdown,
+    .viewDropdown {
+      min-width: 150px;
+    }
+
+    .resultsCount {
+      color: #605e5c;
+      align-self: center;
+    }
+  }
+
+  .content {
+    min-height: 400px;
+  }
+
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+
+  .emptyState {
+    text-align: center;
+    padding: 40px 20px;
+
+    .emptyIcon {
+      font-size: 48px;
+      color: #c8c6c4;
+      margin-bottom: 16px;
+    }
+
+    .emptyTitle {
+      color: #323130;
+      margin-bottom: 8px;
+    }
+
+    .emptyText {
+      color: #605e5c;
+    }
+  }
+
+  .galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 8px;
+
+    .templateCard {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 8px;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .templateDescription {
+        color: #605e5c;
+        margin: 8px 0;
+        line-height: 1.4;
+      }
+
+      .templateTags {
+        margin-top: 8px;
+      }
+
+      .ratingText {
+        color: #605e5c;
+      }
+    }
+  }
+
+  .tag {
+    display: inline-block;
+    background: #eff6fc;
+    color: #0078d4;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .builtInBadge {
+    background: #d13438;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .parameterItem {
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #0078d4;
+    margin-bottom: 8px;
+
+    .parameterType {
+      color: #8a8886;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    .defaultValue {
+      color: #605e5c;
+      background: #ffffff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-top: 4px;
+      display: inline-block;
+      border: 1px solid #e1dfdd;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+    }
+  }
+
+  .templateFormDialog {
+    :global(.ms-Dialog-main) {
+      max-width: 600px;
+      width: 90vw;
+    }
+  }
+}
+
+// List view specific styles
+.templateGallery :global {
+  .ms-DetailsList {
+    .ms-DetailsRow {
+      &:hover {
+        background: #f8f9fa;
+      }
+    }
+
+    .ms-DetailsHeader {
+      padding-top: 0;
+    }
+  }
+
+  .ms-DocumentCard {
+    margin: 0;
+    
+    &:hover {
+      .ms-DocumentCardPreview {
+        background: #f3f2f1;
+      }
+    }
+  }
+
+  .ms-DocumentCardPreview {
+    transition: background 0.2s ease;
+  }
+
+  .ms-Rating {
+    .ms-Rating-star {
+      font-size: 16px;
+    }
+  }
+}
+
+// Category colors
+.categoryBadge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+
+  &.navigation { background: #0078d4; }
+  &.content { background: #107c10; }
+  &.branding { background: #d13438; }
+  &.integration { background: #8764b8; }
+  &.utility { background: #767676; }
+  &.forms { background: #ca5010; }
+  &.analytics { background: #004578; }
+  &.security { background: #c239b3; }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .templateGallery {
+    padding: 12px;
+
+    .toolbar {
+      padding: 12px;
+
+      .searchBox {
+        min-width: auto;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      > div > div {
+        flex-direction: column;
+        align-items: stretch;
+
+        > * {
+          margin-bottom: 8px;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .galleryGrid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .templateFormDialog {
+      :global(.ms-Dialog-main) {
+        width: 95vw;
+        max-width: none;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .templateGallery {
+    padding: 8px;
+
+    .header {
+      margin-bottom: 16px;
+
+      > div {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+    }
+
+    .galleryGrid {
+      gap: 12px;
+    }
+  }
+}

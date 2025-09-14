@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-site-content-client-side-solution",
+    "id": "deecdde6-08da-424e-872b-2e3b0dc16b7e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "https://github.com/HarminderSethi",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-site-content description"
+      },
+      "longDescription": {
+        "default": "react-site-content description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-site-content Feature",
+        "description": "The feature that activates elements of the react-site-content solution.",
+        "id": "58e2a236-e482-4d64-819e-e13fa1f8f002",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-site-content.sppkg"
+  }
+}

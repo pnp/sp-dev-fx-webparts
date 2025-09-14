@@ -1,0 +1,115 @@
+// Custom Action Form Styles
+
+.formContainer {
+  padding: 16px;
+  max-width: 800px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0078d4;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.buttonContainer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #edebe9;
+}
+
+.required {
+  color: #d13438;
+}
+
+.fieldDescription {
+  font-size: 12px;
+  color: #605e5c;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+// Form field spacing
+.formField {
+  margin-bottom: 16px;
+}
+
+// Tab styling
+.pivotContainer {
+  margin-bottom: 20px;
+  
+  :global(.ms-Pivot-link) {
+    font-size: 14px;
+    
+    &:hover {
+      background-color: #f3f2f1;
+    }
+  }
+  
+  :global(.ms-Pivot-link.is-selected) {
+    color: #0078d4;
+    font-weight: 600;
+  }
+}
+
+// Code editor styling for script blocks
+.codeEditor {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  background-color: #faf9f8;
+  border: 1px solid #edebe9;
+  border-radius: 2px;
+  
+  :global(.ms-TextField-field) {
+    font-family: inherit;
+    line-height: 1.4;
+  }
+}
+
+// Error message styling
+.errorMessage {
+  color: #d13438;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 12px;
+    max-width: none;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .buttonContainer {
+    margin-top: 20px;
+    padding-top: 12px;
+    
+    .buttonStack {
+      flex-direction: column;
+      gap: 8px;
+      
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// High contrast mode
+@media screen and (-ms-high-contrast: active) {
+  .sectionTitle {
+    color: windowText;
+  }
+  
+  .codeEditor {
+    border-color: windowText;
+  }
+}
