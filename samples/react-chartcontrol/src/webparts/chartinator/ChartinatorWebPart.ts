@@ -705,7 +705,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           disabled: false,
           onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
           properties: this.properties,
-          context: this.context,
+          context: this.context as any,
           onGetErrorMessage: null,
           deferredValidationTime: 0,
           key: 'dataSourceListId'
@@ -1367,17 +1367,17 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
     // Get all the palette key names
     const names = Object.keys(ChartPalette)
-      .filter(k => typeof ChartPalette[k] === "number") as string[];
+      .filter(k => typeof (ChartPalette as any)[k] === "number") as string[];
 
     // Generate the palette options from palette names
-    const paletteOptions: IDropdownOption[] = names.filter(paletteName => strings.PaletteName[paletteName] !== undefined).map((paletteName: string) => {
-      const displayName: string = strings.PaletteName[paletteName];
-      const description: string = strings.PaletteDescription[paletteName];
+    const paletteOptions: IDropdownOption[] = names.filter(paletteName => (strings.PaletteName as any)[paletteName] !== undefined).map((paletteName: string) => {
+      const displayName: string = (strings.PaletteName as any)[paletteName];
+      const description: string = (strings.PaletteDescription as any)[paletteName];
       return {
-        key: ChartPalette[paletteName],
+        key: (ChartPalette as any)[paletteName],
         text: displayName,
         data: {
-          colors: PaletteGenerator.GetPalette(ChartPalette[paletteName], NUMCOLORS).slice(0, NUMCOLORS),
+          colors: PaletteGenerator.GetPalette((ChartPalette as any)[paletteName], NUMCOLORS).slice(0, NUMCOLORS),
           description: description
         }
       };
@@ -1393,14 +1393,14 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
     // Enums often return two copies of each value: one by numerical value, and one by text.
     // we use the number enums so that we only get one instance of each type
     const names = Object.keys(DashType)
-      .filter(k => typeof DashType[k] === "number") as string[];
+      .filter(k => typeof (DashType as any)[k] === "number") as string[];
 
     // Generate the dash options from dash names
     const dashOptions: IDropdownOption[] = names.map((dashName: string, index: number) => {
-      const displayName: string = strings.DashNames[index];
-      const strokes: number[] = DashStrokes[DashType[dashName]];
+      const displayName: string = (strings.DashNames as any)[index];
+      const strokes: number[] = (DashStrokes as any)[(DashType as any)[dashName]];
       return {
-        key: DashType[dashName],
+        key: (DashType as any)[dashName],
         text: displayName,
         data: {
           strokes: strokes
@@ -1417,7 +1417,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
   private _getFields(): Promise<IListField[]> {
     // No list selected
     if (!this.properties.dataSourceListId) {
-      return Promise.resolve();
+      return Promise.resolve([]);
     }
 
     // Call the list service
@@ -1467,11 +1467,11 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
     const names = Object.keys(ChartType) as string[];
 
     // Make sure we retrieve chart types that have a string resource for them.
-    const chartOptions: IPropertyPaneChoiceGroupOption[] = names.filter(type => strings.ChartTypeName[type] !== undefined).map((chartTypeName: string) => {
+    const chartOptions: IPropertyPaneChoiceGroupOption[] = names.filter(type => (strings.ChartTypeName as any)[type] !== undefined).map((chartTypeName: string) => {
 
       const choice: IPropertyPaneChoiceGroupOption = {
-        key: ChartType[chartTypeName],
-        text: strings.ChartTypeName[chartTypeName]
+        key: (ChartType as any)[chartTypeName],
+        text: (strings.ChartTypeName as any)[chartTypeName]
       };
 
       // Only some of charts types have Office Fabric UI icon equivalents.
@@ -1503,8 +1503,8 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           };
           break;
         default:
-          choice.imageSrc = Assets.ChartIcons[chartTypeName];
-          choice.selectedImageSrc = Assets.ChartIcons[chartTypeName];
+          choice.imageSrc = (Assets.ChartIcons as any)[chartTypeName];
+          choice.selectedImageSrc = (Assets.ChartIcons as any)[chartTypeName];
       }
       return choice;
     });
@@ -1534,7 +1534,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
    * Forces chart to re-render.
    */
   private _handlePropertyChange(propertyPath: string, newValue: any): void {
-    this.properties[propertyPath] = newValue;
+    (this.properties as any)[propertyPath] = newValue;
 
     this.render();
   }
