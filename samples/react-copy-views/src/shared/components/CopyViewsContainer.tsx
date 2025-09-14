@@ -7,11 +7,7 @@ import { IListViewsService, ListViewsService } from '../services';
 import * as strings from 'CopyViewsSharedStrings';
 import styles from './../SharedStyles.module.scss';
 import { SourceListViewForm, TargetListForm, CopyStatus } from '.';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Stack, DefaultButton, PrimaryButton, MessageBar, MessageBarType, Link, Checkbox } from '@fluentui/react';
 
 interface ICopyViewsContainerProps {
   serviceScope: ServiceScope;
