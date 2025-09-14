@@ -26,9 +26,9 @@ Create (or reuse) a Custom List (default view OK). Recommended columns:
 - Data‑driven flags
 - Custom background & text colors
 - Responsive horizontal layout
-- Fixed top, subtle shrink hover animation
-- Full flag clickable
-- Palette fallback
+- Hover animation
+- Clickable flags
+
 
 ### Build and Test
 1. `npm i`
