@@ -20,8 +20,6 @@ export interface IListItemsWebPartProps {
 }
 
 export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWebPartProps> {
-  private isDarkTheme: boolean = false;
-  private environmentMessage: string = '';
   private lists: IPropertyPaneDropdownOption[];
   private items: IPropertyPaneDropdownOption[];
   private listsDropdownDisabled: boolean = true;
@@ -34,10 +32,10 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
       {
         listName: this.properties.listName,
         itemName: this.properties.itemName,
-        isDarkTheme: this.isDarkTheme,
-        environmentMessage: this.environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        context: this.context,
+        onConfigure: () => {
+          this.context.propertyPane.open();
+        }
       }
     );
 
@@ -45,8 +43,7 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
   }
 
   protected async onInit(): Promise<void> {
-    const message = await this.getEnvironmentMessage();
-    this.environmentMessage = message;
+    return super.onInit();
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -54,7 +51,6 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
       return;
     }
 
-    this.isDarkTheme = !!currentTheme.isInverted;
     const {
       semanticColors
     } = currentTheme;
@@ -173,42 +169,53 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
     }
   }
 
-  private async getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      const context = await this.context.sdks.microsoftTeams.teamsJs.app.getContext();
-      let environmentMessage: string = '';
-      switch (context.app.host.name) {
-        case 'Office': // running in Office
-          environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-          break;
-        case 'Outlook': // running in Outlook
-          environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-          break;
-        case 'Teams': // running in Teams
-        case 'TeamsModern':
-          environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-          break;
-        default:
-          environmentMessage = strings.UnknownEnvironment;
-      }
-      return environmentMessage;
-    }
-
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
-  }
 
   private async loadLists(): Promise<IPropertyPaneDropdownOption[]> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return await new Promise<IPropertyPaneDropdownOption[]>((resolve: (options: IPropertyPaneDropdownOption[]) => void, _reject: (error: any) => void) => {
       setTimeout((): void => {
-        resolve([{
-          key: 'sharedDocuments',
-          text: 'Shared Documents'
-        },
-        {
-          key: 'myDocuments',
-          text: 'My Documents'
-        }]);
+        resolve([
+          {
+            key: 'sharedDocuments',
+            text: 'Shared Documents'
+          },
+          {
+            key: 'contracts',
+            text: 'Contracts'
+          },
+          {
+            key: 'policies',
+            text: 'Company Policies'
+          },
+          {
+            key: 'projectDocuments',
+            text: 'Project Documents'
+          },
+          {
+            key: 'tasks',
+            text: 'Team Tasks'
+          },
+          {
+            key: 'announcements',
+            text: 'Announcements'
+          },
+          {
+            key: 'contacts',
+            text: 'Customer Contacts'
+          },
+          {
+            key: 'projects',
+            text: 'Active Projects'
+          },
+          {
+            key: 'departments',
+            text: 'Departments'
+          },
+          {
+            key: 'trainingMaterials',
+            text: 'Training Materials'
+          }
+        ]);
       }, 2000);
     });
   }
@@ -221,32 +228,79 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
 
     // This is where you'd replace the mock data with the actual data from SharePoint
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return await new Promise<IPropertyPaneDropdownOption[]>((resolve: (options: IPropertyPaneDropdownOption[]) => void, reject: (error: any) => void) => {
+    return await new Promise<IPropertyPaneDropdownOption[]>((resolve: (options: IPropertyPaneDropdownOption[]) => void, _reject: (error: any) => void) => {
       // timeout to simulate async call
       setTimeout(() => {
         const items: { [key: string]: { key: string; text: string }[] } = {
           sharedDocuments: [
-            {
-              key: 'spfx_presentation.pptx',
-              text: 'SPFx for the masses'
-            },
-            {
-              key: 'hello-world.spapp',
-              text: 'hello-world.spapp'
-            }
+            { key: 'annual_report_2024.pdf', text: 'Annual Report 2024.pdf' },
+            { key: 'board_meeting_minutes.docx', text: 'Board Meeting Minutes Q3.docx' },
+            { key: 'company_presentation.pptx', text: 'Company Overview Presentation.pptx' },
+            { key: 'budget_planning_2025.xlsx', text: 'Budget Planning FY2025.xlsx' }
           ],
-          myDocuments: [
-            {
-              key: 'isaiah_cv.docx',
-              text: 'Isaiah CV'
-            },
-            {
-              key: 'isaiah_expenses.xlsx',
-              text: 'Isaiah Expenses'
-            }
+          contracts: [
+            { key: 'vendor_agreement_001.pdf', text: 'Microsoft Enterprise Agreement.pdf' },
+            { key: 'service_contract_002.pdf', text: 'AWS Cloud Services Contract.pdf' },
+            { key: 'nda_template.docx', text: 'Non-Disclosure Agreement Template.docx' },
+            { key: 'sla_document.pdf', text: 'Service Level Agreement - Support.pdf' }
+          ],
+          policies: [
+            { key: 'hr_handbook_v3.pdf', text: 'Employee Handbook v3.0.pdf' },
+            { key: 'it_security_policy.docx', text: 'IT Security Policy 2024.docx' },
+            { key: 'remote_work_guidelines.pdf', text: 'Remote Work Guidelines.pdf' },
+            { key: 'code_of_conduct.pdf', text: 'Code of Conduct and Ethics.pdf' },
+            { key: 'data_privacy_policy.docx', text: 'Data Privacy Policy GDPR.docx' }
+          ],
+          projectDocuments: [
+            { key: 'project_alpha_charter.docx', text: 'Project Alpha - Charter.docx' },
+            { key: 'migration_plan.xlsx', text: 'SharePoint Migration Plan.xlsx' },
+            { key: 'technical_design.pdf', text: 'Technical Architecture Design.pdf' },
+            { key: 'test_results.xlsx', text: 'UAT Test Results Summary.xlsx' }
+          ],
+          tasks: [
+            { key: 'task_001', text: '🔴 Critical: Fix production bug in payment module' },
+            { key: 'task_002', text: '🟡 High: Complete quarterly review presentation' },
+            { key: 'task_003', text: '🟢 Normal: Update team documentation' },
+            { key: 'task_004', text: '🟡 High: Prepare for security audit' },
+            { key: 'task_005', text: '🟢 Normal: Onboard new team members' }
+          ],
+          announcements: [
+            { key: 'ann_001', text: '📢 Office Closure - Public Holiday Dec 25' },
+            { key: 'ann_002', text: '🎉 Welcome New Team Members!' },
+            { key: 'ann_003', text: '🔧 Scheduled Maintenance - Weekend' },
+            { key: 'ann_004', text: '📊 Quarterly All-Hands Meeting - Dec 15' },
+            { key: 'ann_005', text: '🏆 Employee of the Month - Congratulations!' }
+          ],
+          contacts: [
+            { key: 'contact_001', text: 'John Smith - Contoso Ltd (CEO)' },
+            { key: 'contact_002', text: 'Sarah Johnson - TechCorp (CTO)' },
+            { key: 'contact_003', text: 'Michael Chen - Global Solutions (Sales Director)' },
+            { key: 'contact_004', text: 'Emma Davis - Innovation Inc (Product Manager)' },
+            { key: 'contact_005', text: 'Robert Williams - Enterprise Co (VP Engineering)' }
+          ],
+          projects: [
+            { key: 'proj_001', text: '🚀 Digital Transformation Initiative (In Progress)' },
+            { key: 'proj_002', text: '⏸️ Mobile App Development (On Hold)' },
+            { key: 'proj_003', text: '✅ Website Redesign (Completed)' },
+            { key: 'proj_004', text: '🔄 SharePoint Migration (In Progress)' },
+            { key: 'proj_005', text: '📋 ISO Certification (Planning)' }
+          ],
+          departments: [
+            { key: 'dept_001', text: 'Information Technology (45 members)' },
+            { key: 'dept_002', text: 'Human Resources (12 members)' },
+            { key: 'dept_003', text: 'Sales & Marketing (28 members)' },
+            { key: 'dept_004', text: 'Finance & Accounting (18 members)' },
+            { key: 'dept_005', text: 'Research & Development (32 members)' }
+          ],
+          trainingMaterials: [
+            { key: 'training_001', text: '📚 SharePoint Basics for Beginners.mp4' },
+            { key: 'training_002', text: '📖 Microsoft Teams Advanced Features.pdf' },
+            { key: 'training_003', text: '🎓 Power Platform Fundamentals Course.zip' },
+            { key: 'training_004', text: '💻 TypeScript Best Practices Guide.pdf' },
+            { key: 'training_005', text: '🔐 Cybersecurity Awareness Training.pptx' }
           ]
         };
-        resolve(items[this.properties.listName]);
+        resolve(items[this.properties.listName] || []);
       }, 2000);
     });
   }
