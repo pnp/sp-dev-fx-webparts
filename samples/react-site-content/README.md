@@ -1,4 +1,4 @@
-# react-site-content
+# Site Content Web Part
 
 ## Summary
 
@@ -96,4 +96,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/REACT-SITE-CONTENT" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-site-content" />
