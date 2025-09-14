@@ -49,8 +49,8 @@ Tested using Node.js: **v22.15.0**
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 12, 2025| Upgraded to SPFx 1.21.1
 1.0|September 12, 2022|Initial release
+1.1|September 12, 2025| Upgraded to SPFx 1.21.1
 
 ## Minimal path to awesome
 
