@@ -97,15 +97,15 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 Version|Date|Comments
 -------|----|--------
-1.0.8.0|Sept 12 2025 | Upgraded to SPFx 1.21.1
-1.0.7.0|Nov 28, 2024 | Property pane didn't refresh fixed, added multiple permissions display
-1.0.6.0|Oct 20, 2024 | Upgrade to SPFx 1.20
-1.0.5.0|March 6, 2021 | Added webApiPermission request
-1.0.0.4|February 22, 2021 | Added support for AD groups
-1.0.0.3|October 28, 2020 | Update to office-ui-fabric-react 7.148.1, fixing icons and indentation for sub-folders 
-1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
-1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version
+1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
+1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
+1.0.0.3|October 28, 2020 | Update to office-ui-fabric-react 7.148.1, fixing icons and indentation for sub-folders 
+1.0.0.4|February 22, 2021 | Added support for AD groups
+1.0.5.0|March 6, 2021 | Added webApiPermission request
+1.0.6.0|Oct 20, 2024 | Upgrade to SPFx 1.20
+1.0.7.0|Nov 28, 2024 | Property pane didn't refresh fixed, added multiple permissions display
+1.0.8.0|Sept 12 2025 | Upgraded to SPFx 1.21.1
 
 
 ## Minimal Path to Awesome
