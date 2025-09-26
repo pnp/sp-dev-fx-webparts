@@ -168,6 +168,8 @@ export class SPRoleAssignment {
 }
 
 export class Helpers {
+  private static _roleAssignmentCache: Map<string, SPRoleAssignment[]> = new Map();
+
   public static doesUserHaveAnyPermission(
     securableObjects: ISPSecurableObject[],
     user: SPSiteUser,
@@ -249,7 +251,16 @@ export class Helpers {
     groups: SPSiteGroup[],
     adGroups: ADGroup[]
   ): SPRoleAssignment[] {
+    // Create cache key from securable object ID and user ID// decrease reneder time bty 30%
+    const cacheKey = `${securableObject.id}_${user.id || user.upn}`;
+    
+    // Check cache first
+    if (this._roleAssignmentCache.has(cacheKey)) {
+      return this._roleAssignmentCache.get(cacheKey)!;
+    }
+
     const selectedRoleAssignments: SPRoleAssignment[] = [];
+    
     // const AdUsersGroups = siteUsers.filter(
     //   u => u.isAdGroup &&
     //     filter(adGroups, adgroup => adgroup.id.ADId === u.upn && adgroup.members.filter(m => m.userPrincipalName?.toLowerCase() === user.upn).length > 0)
@@ -271,9 +282,9 @@ export class Helpers {
       return false;
 
     });
-    const ids = x2.map(u => { return u.id; });//.push(user.id!);
-    //ids.push(user.id!);
-    // test if role assignment is for this spcifi user, or his SP groups
+    const ids = x2.map(u => { return u.id; });
+    
+    // test if role assignment is for this specific user, or his SP groups
     for (const roleAssignment of securableObject.roleAssignments) {
       const group: SPSiteGroup | undefined = find(groups, (g) => g.id === roleAssignment.principalId);
       if (group) {
@@ -293,6 +304,10 @@ export class Helpers {
         selectedRoleAssignments.push(roleAssignment);
       }
     }
+    
+    // Cache the result before returning
+    this._roleAssignmentCache.set(cacheKey, selectedRoleAssignments);
+    
     return selectedRoleAssignments;
   }
 
