@@ -9,7 +9,7 @@ import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib
 import { DetailsList, IColumn, Selection, SelectionMode } from '@fluentui/react/lib/DetailsList';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
-import { Spinner } from '@fluentui/react/lib/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import SPSecurityService from '../../SPSecurityService';
 import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
@@ -74,9 +74,14 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       item.isExpanded = true;
       setState({ ...state });
     } else {
+
       const level = item instanceof SPListItem ? item.level + 1 : 1;
       const listTitle = item instanceof SPListItem ? item.listTitle : item.title;
-
+      item.isFetching = true;
+      const position = findIndex(state.securityInfo.lists, (stateItem) => stateItem.id === item.id);
+      const updatedLists = [...state.securityInfo.lists];
+      updatedLists.splice(position, 1, item);
+      setState((prevState) => ({ ...prevState, securityInfo: { ...prevState.securityInfo, lists: updatedLists } }));
       svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level)
         .then((response) => {
           const position = findIndex(state.securityInfo.lists, (stateItem) => stateItem.id === item.id);
@@ -84,6 +89,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
           updatedLists.splice(position + 1, 0, ...response);
           item.isExpanded = true;
           item.isFetched = true;
+          item.isFetching = false;
           setState((prevState) => ({ ...prevState, securityInfo: { ...prevState.securityInfo, lists: updatedLists } }));
         })
         .catch((error: Error) => {
@@ -134,6 +140,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
         <Icon iconName={iconName} className={styles.themecolor} />
         <span>&nbsp;{item.title}</span>
+        {item.isFetching && <Spinner size={SpinnerSize.small} />}
       </div>
     );
   };
@@ -176,6 +183,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
             Helpers.doesUserHaveAnyPermission(
               state.securityInfo.lists,
               user,
+              state.securityInfo.siteUsers,
               effectivePermissions.map(sp => {
                 const permissionKey = sp.permission as keyof typeof SPPermission;
                 return SPPermission[permissionKey];
@@ -246,6 +254,53 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       },
     },
   ];
+  const userPanelCommands: IContextualMenuItem[] = [
+    {
+      icon: "BoxAdditionSolid",
+      key: "Add All Users",
+      name: "Add All Users",
+      itemType: ContextualMenuItemType.Normal,
+      onClick: () => {
+
+        const updatedSiteUsers = state.securityInfo.siteUsers
+          .map((item) => {
+
+            item.isSelected = true;
+
+            return item;
+          });
+        setState((prevState) => ({
+          ...prevState,
+          securityInfo: {
+            ...prevState.securityInfo,
+            siteUsers: updatedSiteUsers,
+          },
+        }));
+      },
+    },
+    {
+      icon: "BoxSubtractionSolid",
+      key: "Remove All users",
+      name: "Remove All users",
+      itemType: ContextualMenuItemType.Normal,
+      onClick: () => {
+        const updatedSiteUsers = state.securityInfo.siteUsers
+          .map((item) => {
+
+            item.isSelected = false;
+
+            return item;
+          });
+        setState((prevState) => ({
+          ...prevState,
+          securityInfo: {
+            ...prevState.securityInfo,
+            siteUsers: updatedSiteUsers,
+          },
+        }));
+      },
+    },
+  ];
 
   const renderUserItem = (
     item: SPListItem,
@@ -253,15 +308,16 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     column: IColumn,
     effectivePermissions: ISelectedPermission[]
   ): JSX.Element => {
-  
+
     const user = find(state.securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
-  
+
     const icons = effectivePermissions.map((selectedPermission) => {
       const permissionKey = selectedPermission.permission as keyof typeof SPPermission;
-  
+
       if (user && Helpers.doesUserHavePermission(
         item,
         user,
+        state.securityInfo.siteUsers,
         SPPermission[permissionKey],
         state.securityInfo.roleDefinitions,
         state.securityInfo.siteGroups,
@@ -269,28 +325,28 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       )) {
         return (
           <div key={selectedPermission.permission} style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
-        {icons}
+            {icons}
             <Icon
               iconName={selectedPermission.iconName}
-              style={{ color: selectedPermission.color}}
+              style={{ color: selectedPermission.color }}
             />
           </div>
         );
       }
-  
+
       return null;
     });
-  
+
     return (
-      <div style={{ display: 'block' } } onClick={(event) => expandCollapseList(item, event)}>
+      <div style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
         {icons}
         <div style={{ display: 'block' }}>
-          <Icon iconName={item.iconName}/>
+          <Icon iconName={item.iconName} />
         </div>
       </div>
     );
   };
-  
+
   if (!state.securityInfoLoaded) {
     return (
       <div>
@@ -433,7 +489,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         headerText="Select Users"
         closeButtonAriaLabel="Close"
       >
-        <CommandBar items={listPanelCommands} />
+        <CommandBar items={userPanelCommands} />
         <DetailsList
           selection={userSelection}
           selectionMode={SelectionMode.none}

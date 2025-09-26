@@ -4,7 +4,8 @@ import { SPPermission } from "@microsoft/sp-page-context";
 import { SPFI } from '@pnp/sp';
 import { getSP } from '../pnpjs-config';
 
-import { find, includes } from "lodash";
+import { filter, find, includes } from "lodash";
+
 
 interface SPRoleAssignmentObject {
   PrincipalId: number;
@@ -97,6 +98,7 @@ export class SPSiteUser {
   public isSelected: boolean = false;
   public principalType: number = 0;
   public adId?: string;
+  public isAdGroup: boolean = false;
 }
 
 export class SPRoleDefinition {
@@ -132,6 +134,7 @@ export class SPList implements ISPSecurableObject {
   public roleAssignments: SPRoleAssignment[] = [];
   public isExpanded: boolean = false;
   public isFetched: boolean = false;
+  public isFetching: boolean = false;
   public hasBeenRetrieved: boolean = false;
   public isSelected: boolean = false;
 }
@@ -147,6 +150,7 @@ export class SPListItem implements ISPSecurableObject {
   public roleAssignments: SPRoleAssignment[] = [];
   public isExpanded: boolean = false;
   public isFetched: boolean = false;
+  public isFetching: boolean = false;
   public isSelected: boolean = false;
   public hasBeenRetrieved: boolean = false;
   public level: number = 0;
@@ -167,6 +171,7 @@ export class Helpers {
   public static doesUserHaveAnyPermission(
     securableObjects: ISPSecurableObject[],
     user: SPSiteUser,
+    siteUsers: SPSiteUser[],
     requestedpermissions: SPPermission[],
     roles: SPRoleDefinition[],
     siteGroups: SPSiteGroup[],
@@ -174,7 +179,7 @@ export class Helpers {
   ): boolean {
     for (const securableObject of securableObjects) {
       for (const requestedpermission of requestedpermissions) {
-        if (Helpers.doesUserHavePermission(securableObject, user, requestedpermission, roles, siteGroups, adGroups)) {
+        if (Helpers.doesUserHavePermission(securableObject, user, siteUsers, requestedpermission, roles, siteGroups, adGroups)) {
           return true;
         }
       }
@@ -185,12 +190,13 @@ export class Helpers {
   public static doesUserHavePermission(
     securableObject: ISPSecurableObject,
     user: SPSiteUser,
+    siteUsers: SPSiteUser[],
     requestedpermission: SPPermission,
     roles: SPRoleDefinition[],
     siteGroups: SPSiteGroup[],
     adGroups: ADGroup[]
   ): boolean {
-    const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups, adGroups);
+    const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, siteUsers, roles, siteGroups, adGroups);
     for (const permission of permissions) {
       if (
         ((permission.low & requestedpermission.value.Low) === (requestedpermission.value.Low)) &&
@@ -220,11 +226,12 @@ export class Helpers {
   public static getUserPermissionsForObject(
     securableObject: ISPSecurableObject,
     user: SPSiteUser,
+    siteUsers: SPSiteUser[],
     roles: SPRoleDefinition[],
     siteGroups: SPSiteGroup[],
     adGroups: ADGroup[]
   ): SPBasePermissions[] {
-    const userRoleAssignments: SPRoleAssignment[] = Helpers.GetRoleAssignmentsForUser(securableObject, user, siteGroups, adGroups);
+    const userRoleAssignments: SPRoleAssignment[] = Helpers.GetRoleAssignmentsForUser(securableObject, user, siteUsers, siteGroups, adGroups);
     const roleDefinitionIds: number[] = [];
 
     for (const roleAssignment of userRoleAssignments) {
@@ -238,11 +245,35 @@ export class Helpers {
   public static GetRoleAssignmentsForUser(
     securableObject: ISPSecurableObject,
     user: SPSiteUser,
+    siteUsers: SPSiteUser[],
     groups: SPSiteGroup[],
     adGroups: ADGroup[]
   ): SPRoleAssignment[] {
     const selectedRoleAssignments: SPRoleAssignment[] = [];
+    // const AdUsersGroups = siteUsers.filter(
+    //   u => u.isAdGroup &&
+    //     filter(adGroups, adgroup => adgroup.id.ADId === u.upn && adgroup.members.filter(m => m.userPrincipalName?.toLowerCase() === user.upn).length > 0)
+    // );
 
+
+    const AdUsersGroups = siteUsers.filter(
+      u => u.isAdGroup
+
+    );
+    const x2 = filter(AdUsersGroups, (groupUser) => {
+      const adgroup = find(adGroups, (adg) => {
+        return adg.id.ADId === groupUser.upn && find(adg.members, (m) => m.userPrincipalName?.toLowerCase() === user.upn);
+
+      });
+      if (adgroup) {
+        return true;
+      }
+      return false;
+
+    });
+    const ids = x2.map(u => { return u.id; });//.push(user.id!);
+    //ids.push(user.id!);
+    // test if role assignment is for this spcifi user, or his SP groups
     for (const roleAssignment of securableObject.roleAssignments) {
       const group: SPSiteGroup | undefined = find(groups, (g) => g.id === roleAssignment.principalId);
       if (group) {
@@ -253,6 +284,12 @@ export class Helpers {
           selectedRoleAssignments.push(roleAssignment);
         }
       } else if (user.id === roleAssignment.principalId) {
+        selectedRoleAssignments.push(roleAssignment);
+      }
+    }
+    // test if role assignment is for one of her AD Groups
+    for (const roleAssignment of securableObject.roleAssignments) {
+      if (ids.includes(roleAssignment.principalId)) {
         selectedRoleAssignments.push(roleAssignment);
       }
     }
@@ -272,7 +309,7 @@ export class Helpers {
   ): boolean {
     const group: SPSiteGroup = this.findGroup(groupId, groups);
     for (const adGrouId of group.adGroupIds) {
-      const adGroup = find(adGroups, (adg) => adg.id === adGrouId);
+      const adGroup = find(adGroups, (adg) => adg.id.ADId === adGrouId.ADId);
       if (adGroup && find(adGroup.members, (aduser) => aduser.id === userAdId)) {
         return true;
       }
@@ -362,6 +399,34 @@ export default class SPSecurityService {
         if (u.UserId) {
           user.userId = { nameId: u.UserId.NameId, nameIdIssuer: u.UserId.NameIdIssuer };
         }
+        const loginNameParts = u.LoginName.split('|');
+        if (u.PrincipalType == 4 && loginNameParts[1] == 'tenant') { // its a group
+          user.isAdGroup = true;
+          const groupId = loginNameParts[2];
+          this.fetchAdGroupById(aadHttpClient, groupId)
+            .then((adGroup: ADGroup) => {
+              if (adGroup) {
+                securityInfo.adGroups.push(adGroup);
+                for (const adUser of adGroup.members) {
+                  const siteUser = find(securityInfo.siteUsers, (su) => su.upn === adUser.userPrincipalName?.toLowerCase());
+                  if (siteUser) {
+                    siteUser.adId = adUser.id;
+                  } else {
+                    const user: SPSiteUser = new SPSiteUser();
+                    user.adId = adUser.id;
+                    user.name = adUser.displayName + "*";
+                    user.upn = adUser.userPrincipalName || adUser.displayName;
+                    user.isSelected = true;
+                    user.principalType = -1;
+                    securityInfo.siteUsers.push(user);
+                  }
+                }
+              }
+            }).catch(() => {
+              debugger;
+            });
+        }
+
         return user;
       });
     } catch (err) {
@@ -371,12 +436,12 @@ export default class SPSecurityService {
     // Get site groups with users, filtering out 'Limited Access System Group'
     try {
       const siteGroupsResponse = await this.sp.web.siteGroups
-        .filter(`Title ne 'Limited Access System Group'`)  // Add the filter to exclude this group
+        //  .filter(`Title ne 'Limited Access System Group'`)  // Add the filter to exclude this group
         .expand("Users")  // Expand users for each group
         .select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "Users/Id", "Users/LoginName", "Users/PrincipalType")();  // Select required fields
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      securityInfo.siteGroups = siteGroupsResponse.map((grp:any) => {
+      securityInfo.siteGroups = siteGroupsResponse.map((grp: any) => {
         const siteGroup: SPSiteGroup = new SPSiteGroup(grp.Id, grp.Title);
         for (const user of grp.Users) {
           if (user.PrincipalType === 4) {  // 4 = Security group
@@ -434,7 +499,7 @@ export default class SPSecurityService {
         }));
         return mylist;
       });
-  
+
     } catch (err) {
       errors.push(`There was an error fetching lists -- ${err.message}`);
     }
@@ -480,25 +545,64 @@ export default class SPSecurityService {
     return securityInfo;
   }
 
+  private _adGroupCache: Map<string, ADGroup> = new Map();
+  private _adGroupInFlight: Map<string, Promise<ADGroup>> = new Map();
+
+  private async fetchAdGroupById(aadHttpClient: AadHttpClient, adGrouId: string): Promise<ADGroup> {
+    // Check cache first
+    if (this._adGroupCache.has(adGrouId)) {
+      return this._adGroupCache.get(adGrouId)!;
+    }
+    // Check if a request is already in flight
+    if (this._adGroupInFlight.has(adGrouId)) {
+      return this._adGroupInFlight.get(adGrouId)!;
+    }
+    console.log(`Fetching AD group: ${adGrouId}`);
+    const fetchPromise = (async () => {
+      const aadHttpClientConfiguration: AadHttpClientConfiguration = new AadHttpClientConfiguration({}, {});
+      let uri = "";
+      if (adGrouId.endsWith('_o')) {
+        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId.replace('_o', '')}/owners?$top=999&$select=id,userPrincipalName`;
+      } else {
+        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId}/transitiveMembers?$top=999&$select=id,userPrincipalName`;
+      }
+
+      let allMembers: User[] = [];
+      let nextLink: string | undefined = uri;
+
+      try {
+        while (nextLink) {
+          const adResponse = await aadHttpClient.get(nextLink, aadHttpClientConfiguration);
+          const data = await adResponse.json();
+          if (data.value && Array.isArray(data.value)) {
+            allMembers = allMembers.concat(data.value);
+          }
+          nextLink = data['@odata.nextLink'];
+        }
+        const adGroup: ADGroup = new ADGroup();
+        adGroup.id = { ADId: adGrouId, SPId: 0 };
+        adGroup.members = allMembers;
+        // Cache the result
+        this._adGroupCache.set(adGrouId, adGroup);
+        return adGroup;
+      } catch (err) {
+        alert(`Error fetching AD group: ${err.message || err}`);
+        return null;
+      } finally {
+        // Remove from in-flight map
+        this._adGroupInFlight.delete(adGrouId);
+      }
+    })();
+
+    this._adGroupInFlight.set(adGrouId, fetchPromise);
+    return fetchPromise;
+  }
 
 
   private fetchAdGroup(aadHttpClient: AadHttpClient, adGrouId: ADGroupId): Promise<ADGroup> {
-    const aadHttpClientConfiguration: AadHttpClientConfiguration = new AadHttpClientConfiguration({}, {});
-    return aadHttpClient.get(`https://graph.microsoft.com/v1.0/groups/${adGrouId.ADId}/transitiveMembers`, aadHttpClientConfiguration)
-      .then((adResponse) => {
-        return adResponse.json()
-          .then((data: ADGroupResponse) => {
-            const adGroup: ADGroup = new ADGroup();
-            adGroup.id = adGrouId;
-            adGroup.members = data.value;
-            return adGroup;
-          }).catch(() => {
-            alert(`Error converting to JSON`);
-            return null;
-          });
-      }).catch(() => {
-        alert(`Grant app SharePoint Online Client Extensibility Web Application Principal graph permissions Group.Read.All & GroupMembers.Read.All`);
-        return null;
-      });
+    return this.fetchAdGroupById(aadHttpClient, adGrouId.ADId);
   }
+
+
+
 }
