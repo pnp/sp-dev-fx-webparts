@@ -1,0 +1,63 @@
+{
+  "name": "manage-schema-extensions",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 < 23.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.13.5",
+    "@fluentui/react-components": "^9.70.0",
+    "@fluentui/react-icons": "^2.0.310",
+    "@fluentui/react-migration-v8-v9": "^9.9.7",
+    "@microsoft/microsoft-graph-client": "^3.0.2",
+    "@microsoft/sp-component-base": "1.21.1",
+    "@microsoft/sp-core-library": "1.21.1",
+    "@microsoft/sp-lodash-subset": "1.21.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
+    "@microsoft/sp-property-pane": "1.21.1",
+    "@microsoft/sp-webpart-base": "1.21.1",
+    "@spteck/m365-hooks": "^1.2.34",
+    "@spteck/react-controls": "^1.5.37",
+    "jotai": "^2.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.21.1",
+    "@microsoft/eslint-plugin-spfx": "1.21.1",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.21.1",
+    "@microsoft/sp-module-interfaces": "1.21.1",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/uuid": "^10.0.0",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint": "8.57.1",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "typescript": "~5.3.3"
+  },
+  "overrides": {
+    "date-fns": "^2.30.0",
+    "@spteck/m365-hooks": {
+      "date-fns": "^2.30.0"
+    },
+    "@spteck/react-controls": {
+      "date-fns": "^2.30.0"
+    },
+    "date-fns-tz": {
+      "date-fns": "^2.30.0"
+    }
+  }
+}
