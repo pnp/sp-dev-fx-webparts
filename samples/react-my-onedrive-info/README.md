@@ -44,12 +44,13 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Version history
 
-| Version | Date             | Comments                                                          |
-| ------- | ---------------- | ----------------------------------------------------------------- |
-| 1.1     | January 24, 2021 | Initial Release                                                   |
-| 1.2     | August 26, 2024  | Upgraded to SPFx 1.19.0 and @fluentui/react-components to 9.54.13 |
-| 1.3     | October 11, 2024 | Upgraded to SPFx 1.20.0                                           |
-| 1.4     | April 27, 2025   | Upgraded to SPFx 1.21.0                                           |
+| Version | Date               | Comments                                                          |
+| ------- | ------------------ | ----------------------------------------------------------------- |
+| 1.1     | January 24, 2021   | Initial Release                                                   |
+| 1.2     | August 26, 2024    | Upgraded to SPFx 1.19.0 and @fluentui/react-components to 9.54.13 |
+| 1.3     | October 11, 2024   | Upgraded to SPFx 1.20.0                                           |
+| 1.4     | April 27, 2025     | Upgraded to SPFx 1.21.0                                           |
+| 1.5     | September 28, 2025 | Upgraded to SPFx 1.21.1                                           |
 
 ## Minimal Path to Awesome
 
