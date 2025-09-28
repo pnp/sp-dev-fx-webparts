@@ -55,13 +55,14 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Version history
 
-| Version | Date              | Comments                |
-| ------- | ----------------- | ----------------------- |
-| 1.0     | January 29, 2021  | Initial release         |
-| 1.1     | November 30, 2023 | Upgraded to SPFx 1.18.2 |
-| 1.2     | August 26, 2024   | Upgraded to SPFx 1.19.0 |
-| 1.3     | October 11, 2024  | Upgraded to SPFx 1.20.0 |
-| 1.4     | April 26, 2025    | Upgraded to SPFx 1.21.0 |
+| Version | Date               | Comments                |
+| ------- | ------------------ | ----------------------- |
+| 1.0     | January 29, 2021   | Initial release         |
+| 1.1     | November 30, 2023  | Upgraded to SPFx 1.18.2 |
+| 1.2     | August 26, 2024    | Upgraded to SPFx 1.19.0 |
+| 1.3     | October 11, 2024   | Upgraded to SPFx 1.20.0 |
+| 1.4     | April 26, 2025     | Upgraded to SPFx 1.21.0 |
+| 1.5     | September 28, 2025 | Upgraded to SPFx 1.21.1 |
 
 ## Minimal Path to Awesome
 
