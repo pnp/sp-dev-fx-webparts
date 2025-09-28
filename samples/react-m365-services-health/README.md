@@ -111,6 +111,7 @@ Steps to follow:
 | 2.0     | February 10, 2024  | Implementation using Azure Function |
 | 3.0     | September 05, 2024 | Bug fix and SPFx version upgrade    |
 | 3.1     | October 05, 2024   | SPFx version upgrade                |
+| 3.2     | September 28, 2025 | SPFx version upgrade to 1.21.1      |
 
 ## Minimal Path to Awesome
 
