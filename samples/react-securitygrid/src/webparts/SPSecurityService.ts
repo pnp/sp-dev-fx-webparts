@@ -437,8 +437,8 @@ export default class SPSecurityService {
                   }
                 }
               }
-            }).catch(() => {
-              debugger;
+            }).catch((err) => {
+                errors.push(`There was an error an ad group -- ${err.message}`);;
             });
         }
 
