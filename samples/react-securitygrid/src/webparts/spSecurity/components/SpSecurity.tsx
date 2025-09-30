@@ -12,7 +12,7 @@ import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { TagPicker, ITag } from '@fluentui/react/lib/Pickers';
 import SPSecurityService, { SPSecurityInfo } from '../../SPSecurityService';
-import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
+import { Helpers, SPList, SPListItem, SPSiteUser, SPSiteGroup } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
 import { ISelectedPermission } from '../ISpSecurityWebPartProps';
 import { ISpSecurityProps } from './ISpSecurityProps';
@@ -30,7 +30,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const [showListPanel, setShowListPanel] = useState<boolean>(false);
   const [showUserPanel, setShowUserPanel] = useState<boolean>(false);
   const [selectedPermissions, setSelectedPermissions] = useState<ISelectedPermission[]>(props.selectedPermissions);
-  const [securityInfo, setSecurityInfo] = useState<SPSecurityInfo>({ siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] });
+  const [siteUsers, setSiteUsers] = useState<SPSiteUser[]>([]);
+  const [siteGroups, setSiteGroups] = useState<SPSiteGroup[]>([]);
+  const [roleDefinitions, setRoleDefinitions] = useState<any[]>([]);
+  const [lists, setLists] = useState<(SPList | SPListItem)[]>([]);
+  const [adGroups, setAdGroups] = useState<any[]>([]);
   const [svc, setSvc] = useState<SPSecurityService>(() => 
     new SPSecurityService(null, props.spContext)
   );
@@ -59,7 +63,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
             ? !!find(props.adminSelectedLists, (asl) => list.id === asl)
             : !find(props.adminSelectedLists, (asl) => list.id === asl)
         );
-        setSecurityInfo({ ...response, lists: filteredLists });
+        setSiteUsers(response.siteUsers);
+        setSiteGroups(response.siteGroups);
+        setRoleDefinitions(response.roleDefinitions);
+        setLists(filteredLists);
+        setAdGroups(response.adGroups);
         setSelectedPermissions(props.selectedPermissions ?? []);
         setSecurityInfoLoaded(true);
       })
@@ -67,7 +75,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         setErrors(errorList);
         setSecurityInfoLoaded(true);
       });
-  }, [props,svc]);
+  }, [svc]);
 
   useEffect(() => {
     if (props.selectedPermissions !== selectedPermissions) {
@@ -83,24 +91,24 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
     if (item.isFetched) {
       item.isExpanded = true;
-      setSecurityInfo({ ...securityInfo });
+      setLists([...lists]);
     } else {
       const level = item instanceof SPListItem ? item.level + 1 : 1;
       const listTitle = item instanceof SPListItem ? item.listTitle : item.title;
       item.isFetching = true;
-      const position = findIndex(securityInfo.lists, (stateItem) => stateItem.id === item.id);
-      const updatedLists = [...securityInfo.lists];
+      const position = findIndex(lists, (stateItem) => stateItem.id === item.id);
+      const updatedLists = [...lists];
       updatedLists.splice(position, 1, item);
-      setSecurityInfo((prevSecurityInfo) => ({ ...prevSecurityInfo, lists: updatedLists }));
+      setLists(updatedLists);
       svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level)
         .then((response) => {
-          const position = findIndex(securityInfo.lists, (stateItem) => stateItem.id === item.id);
-          const updatedLists = [...securityInfo.lists];
+          const position = findIndex(lists, (stateItem) => stateItem.id === item.id);
+          const updatedLists = [...lists];
           updatedLists.splice(position + 1, 0, ...response);
           item.isExpanded = true;
           item.isFetched = true;
           item.isFetching = false;
-          setSecurityInfo((prevSecurityInfo) => ({ ...prevSecurityInfo, lists: updatedLists }));
+          setLists(updatedLists);
         })
         .catch((error: Error) => {
           const newErrors = [...errors, `There was an error fetching site users -- ${error.message}`];
@@ -110,7 +118,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   };
 
   const collapseItem = (itemId: string) => {
-    const children = filter(securityInfo.lists, (otherItem) => otherItem instanceof SPListItem && otherItem.parentId === itemId);
+    const children = filter(lists, (otherItem) => otherItem instanceof SPListItem && otherItem.parentId === itemId);
     children.forEach((childItem) => {
       childItem.isExpanded = false;
       collapseItem(childItem.id);
@@ -120,7 +128,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const collapseList = (item: SPList | SPListItem): void => {
     item.isExpanded = false;
     collapseItem(item.id);
-    setSecurityInfo({ ...securityInfo });
+    setLists([...lists]);
   };
 
   const expandCollapseList = (item: SPList | SPListItem, event: React.MouseEvent): void => {
@@ -192,16 +200,16 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
           if (
             !props.showOnlyUsersWithPermission ||
             Helpers.doesUserHaveAnyPermission(
-              securityInfo.lists,
+              lists,
               user,
-              securityInfo.siteUsers,
+              siteUsers,
               effectivePermissions.map(sp => {
                 const permissionKey = sp.permission as keyof typeof SPPermission;
                 return SPPermission[permissionKey];
               }),
-              securityInfo.roleDefinitions,
-              securityInfo.siteGroups,
-              securityInfo.adGroups
+              roleDefinitions,
+              siteGroups,
+              adGroups
             )
           ) {
             columns.push({
@@ -228,16 +236,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Add All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedLists = securityInfo.lists.map((item) => {
+        const updatedLists = lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = true;
           }
           return item;
         });
-        setSecurityInfo((prevSecurityInfo) => ({
-          ...prevSecurityInfo,
-          lists: updatedLists,
-        }));
+        setLists(updatedLists);
       },
     },
     {
@@ -246,16 +251,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Remove All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedLists = securityInfo.lists.map((item) => {
+        const updatedLists = lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = false;
           }
           return item;
         });
-        setSecurityInfo((prevSecurityInfo) => ({
-          ...prevSecurityInfo,
-          lists: updatedLists,
-        }));
+        setLists(updatedLists);
       },
     },
   ];
@@ -266,14 +268,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Add All Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedSiteUsers = securityInfo.siteUsers.map((item) => {
+        const updatedSiteUsers = siteUsers.map((item) => {
           item.isSelected = true;
           return item;
         });
-        setSecurityInfo((prevSecurityInfo) => ({
-          ...prevSecurityInfo,
-          siteUsers: updatedSiteUsers,
-        }));
+        setSiteUsers(updatedSiteUsers);
       },
     },
     {
@@ -282,14 +281,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Remove All users",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedSiteUsers = securityInfo.siteUsers.map((item) => {
+        const updatedSiteUsers = siteUsers.map((item) => {
           item.isSelected = false;
           return item;
         });
-        setSecurityInfo((prevSecurityInfo) => ({
-          ...prevSecurityInfo,
-          siteUsers: updatedSiteUsers,
-        }));
+        setSiteUsers(updatedSiteUsers);
       },
     },
   ];
@@ -300,7 +296,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     column: IColumn,
     effectivePermissions: ISelectedPermission[]
   ): JSX.Element => {
-    const user = find(securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
+    const user = find(siteUsers, (su) => su.upn.toString() === column.key);
 
     const icons = effectivePermissions.map((selectedPermission) => {
       const permissionKey = selectedPermission.permission as keyof typeof SPPermission;
@@ -308,11 +304,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       if (user && Helpers.doesUserHavePermission(
         item,
         user,
-        securityInfo.siteUsers,
+        siteUsers,
         SPPermission[permissionKey],
-        securityInfo.roleDefinitions,
-        securityInfo.siteGroups,
-        securityInfo.adGroups
+        roleDefinitions,
+        siteGroups,
+        adGroups
       )) {
         return (
           <div key={selectedPermission.permission} style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
@@ -469,11 +465,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     }
   ];
 
-  const displayColumns: IColumn[] = addUserColumns(columns, securityInfo.siteUsers, effectivePermissions);
-  const displayItems: (SPList | SPListItem)[] = filter(securityInfo.lists, (item) => {
+  const displayColumns: IColumn[] = addUserColumns(columns, siteUsers, effectivePermissions);
+  const displayItems: (SPList | SPListItem)[] = filter(lists, (item) => {
     return (
       (item instanceof SPList && item.isSelected) ||
-      ((item instanceof SPListItem) && item.parentId && find(securityInfo.lists, l => l.id === item.parentId)?.isExpanded)
+      ((item instanceof SPListItem) && item.parentId && find(lists, l => l.id === item.parentId)?.isExpanded)
     );
   });
 
@@ -524,7 +520,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         <DetailsList
           selection={userSelection}
           selectionMode={SelectionMode.none}
-          items={securityInfo.siteUsers}
+          items={siteUsers}
           columns={[
             {
               key: "isSelected",
@@ -535,10 +531,10 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
                 <Checkbox
                   checked={item.isSelected}
                   onChange={(element, value) => {
-                    const user = find(securityInfo.siteUsers, (su) => su.id === item.id);
+                    const user = find(siteUsers, (su) => su.id === item.id);
                     if (user) {
                       user.isSelected = value!;
-                      setSecurityInfo({ ...securityInfo });
+                      setSiteUsers([...siteUsers]);
                     }
                   }}
                 />
@@ -560,7 +556,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         <DetailsList
           selection={listSelection}
           selectionMode={SelectionMode.none}
-          items={filter(securityInfo.lists, (l) => l instanceof SPList)}
+          items={filter(lists, (l) => l instanceof SPList)}
           columns={[
             {
               key: "isSelected",
@@ -571,10 +567,10 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
                 <Checkbox
                   checked={item.isSelected}
                   onChange={(element, value) => {
-                    const list = find(securityInfo.lists, (l) => l.id === item.id);
+                    const list = find(lists, (l) => l.id === item.id);
                     if (list) {
                       list.isSelected = value!;
-                      setSecurityInfo({ ...securityInfo });
+                      setLists([...lists]);
                     }
                   }}
                 />
