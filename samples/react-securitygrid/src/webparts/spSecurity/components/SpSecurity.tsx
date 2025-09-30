@@ -21,6 +21,11 @@ import { Legend } from './Legend';
 import styles from './SpSecurity.module.scss';
 
 const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
+  // Add loading states
+  const [isExpanding, setIsExpanding] = useState<boolean>(false);
+  const [isUpdatingUsers, setIsUpdatingUsers] = useState<boolean>(false);
+  const [isUpdatingLists, setIsUpdatingLists] = useState<boolean>(false);
+
   // Define state variables
   const [securityInfoLoaded, setSecurityInfoLoaded] = useState<boolean>(false);
   const [showPermissionsPanel, setShowPermissionsPanel] = useState<boolean>(false);
@@ -86,13 +91,17 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     }
   }, [props.selectedPermissions, props.showEmail]);
 
-  const expandList = (item: SPList | SPListItem): void => {
+  const expandList = async (item: SPList | SPListItem): Promise<void> => {
     if (item instanceof SPListItem && !item.serverRelativeUrl) return;
 
     if (item.isFetched) {
+      setIsExpanding(true);
       item.isExpanded = true;
       setLists([...lists]);
+      // Use setTimeout to allow UI to update before heavy rendering
+      setTimeout(() => setIsExpanding(false), 100);
     } else {
+      setIsExpanding(true);
       const level = item instanceof SPListItem ? item.level + 1 : 1;
       const listTitle = item instanceof SPListItem ? item.listTitle : item.title;
       item.isFetching = true;
@@ -100,20 +109,22 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       const updatedLists = [...lists];
       updatedLists.splice(position, 1, item);
       setLists(updatedLists);
-      svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level)
-        .then((response) => {
-          const position = findIndex(lists, (stateItem) => stateItem.id === item.id);
-          const updatedLists = [...lists];
-          updatedLists.splice(position + 1, 0, ...response);
-          item.isExpanded = true;
-          item.isFetched = true;
-          item.isFetching = false;
-          setLists(updatedLists);
-        })
-        .catch((error: Error) => {
-          const newErrors = [...errors, `There was an error fetching site users -- ${error.message}`];
-          setErrors(newErrors);
-        });
+      
+      try {
+        const response = await svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level);
+        const position = findIndex(lists, (stateItem) => stateItem.id === item.id);
+        const updatedLists = [...lists];
+        updatedLists.splice(position + 1, 0, ...response);
+        item.isExpanded = true;
+        item.isFetched = true;
+        item.isFetching = false;
+        setLists(updatedLists);
+        setTimeout(() => setIsExpanding(false), 100);
+      } catch (error) {
+        const newErrors = [...errors, `There was an error fetching site users -- ${error.message}`];
+        setErrors(newErrors);
+        setIsExpanding(false);
+      }
     }
   };
 
@@ -474,6 +485,31 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     );
   });
 
+  // Add loading overlay component
+  const LoadingOverlay = ({ isLoading, message }: { isLoading: boolean; message: string }) => {
+    if (!isLoading) return null;
+    
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000
+      }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Spinner size={SpinnerSize.large} />
+          <div style={{ marginTop: '10px' }}>{message}</div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <CommandBar items={commands} farItems={farItems} />
@@ -481,23 +517,28 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       <Legend
         selectedPermissions={selectedPermissions}
         checkUncheckPermission={(e) => {
+          setIsUpdatingLists(true);
           const sps = [...selectedPermissions];
           const idx = findIndex(sps, (sp) => sp.permission === e.permission);
           if (idx !== -1) {
             sps[idx].isChecked = !sps[idx].isChecked;
             setSelectedPermissions(sps);
           }
+          setTimeout(() => setIsUpdatingLists(false), 100);
         }}
       />
+      
+      {/* Add loading overlay */}
+      <LoadingOverlay isLoading={isExpanding} message="Expanding items..." />
+      <LoadingOverlay isLoading={isUpdatingUsers} message="Updating user permissions..." />
+      <LoadingOverlay isLoading={isUpdatingLists} message="Updating list view..." />
+      
       <DetailsList
         items={displayItems}
         columns={displayColumns}
         selectionMode={SelectionMode.none}
         className={styles.SPFXSecurityGrid}
-         getKey={(item) =>{
-           return item.id;
-          }
-        } // Add this for stable keys
+        getKey={(item) => item.id}
       />
       <SelectedPermissionsPanel
         isOpen={showPermissionsPanel}
