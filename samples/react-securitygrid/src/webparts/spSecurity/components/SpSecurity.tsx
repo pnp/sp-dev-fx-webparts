@@ -171,6 +171,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       <div className={styles.itemTitle} onClick={(event) => expandCollapseList(item, event)}>
         <Icon iconName={iconName} style={style} className={styles.themecolor} />
         <span>&nbsp;{item.title}</span>
+        {item.isFetching && <Spinner size={SpinnerSize.small} />}
       </div>
     );
   };
