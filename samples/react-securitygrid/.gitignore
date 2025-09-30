@@ -33,4 +33,7 @@ obj
 *.scss.ts
 
 # heft folder
-.heft
+.heft# .CER Certificates
+*.cer
+# .PEM Certificates
+*.pem

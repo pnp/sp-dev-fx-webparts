@@ -1,5 +1,5 @@
 import { SPSiteUser } from "../../SPSecurityService";
-import {  } from "@microsoft/sp-webpart-base";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 import { AadHttpClient } from "@microsoft/sp-http";
 import {ISelectedPermission} from "../ISpSecurityWebPartProps";
@@ -21,6 +21,7 @@ export interface ISpSecurityProps {
   showSecurityGroups:boolean; // show PrincipalType=4
   showUsers:boolean; // show PrincipalType=1
   showOnlyUsersWithPermission:boolean; //// toggle to show everyone, or justy the users who have the permissions
+  spContext:WebPartContext
   //domElement:any; // needed to disable button postback after render on classic pages
   
 }

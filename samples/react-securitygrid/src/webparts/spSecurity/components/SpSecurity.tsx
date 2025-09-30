@@ -10,6 +10,7 @@ import { DetailsList, IColumn, Selection, SelectionMode } from '@fluentui/react/
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { TextField } from '@fluentui/react/lib/TextField';
 import SPSecurityService from '../../SPSecurityService';
 import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
@@ -26,12 +27,26 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     showUserPanel: false,
     showListPanel: false,
     showEmail: props.showEmail,
-    securityInfoLoaded: false,
     showPermissionsPanel: false,
     errors: [],
   });
+  const [securityInfoLoaded, setSecurityInfoLoaded] = useState<boolean>(false);
+  const [siteUrl, setSiteUrl] = useState<string>('');
+  const [svc, setSvc] = useState<SPSecurityService>(() => 
+    new SPSecurityService(null, props.spContext)
+  );
 
-  const svc = new SPSecurityService('ss');
+  // Create new service when siteUrl changes
+  useEffect(() => {
+    if (siteUrl.trim() !== '') {
+      const newSvc = new SPSecurityService(siteUrl, props.spContext);
+      setSvc(newSvc);
+      setSecurityInfoLoaded(false);
+    }
+  }, [siteUrl, props.spContext]);
+
+  // Create the service instance
+  //
   const userSelection = new Selection();
   const listSelection = new Selection();
 
@@ -49,13 +64,14 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
           securityInfo: { ...response, lists: filteredLists },
           selectedPermissions: props.selectedPermissions ?? [],
           showEmail: props.showEmail,
-          securityInfoLoaded: true,
         }));
+        setSecurityInfoLoaded(true);
       })
       .catch((errors: string[]) => {
-        setState((prevState) => ({ ...prevState, errors, securityInfoLoaded: true }));
+        setState((prevState) => ({ ...prevState, errors }));
+        setSecurityInfoLoaded(true);
       });
-  }, [props]);
+  }, [props,svc]);
 
   useEffect(() => {
     if (props.selectedPermissions !== state.selectedPermissions || props.showEmail !== state.showEmail) {
@@ -125,6 +141,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   };
 
   const renderTitle = (item: SPList | SPListItem): JSX.Element => {
+    console.log(item.title);
     if (item instanceof SPList) {
       return renderListTitle(item);
     } else if (item.type === 'Folder') {
@@ -347,14 +364,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     );
   };
 
-  if (!state.securityInfoLoaded) {
-    return (
-      <div>
-        <Spinner label={'Fetching security information, please wait...'} />
-      </div>
-    );
-  }
-  if (!state.securityInfoLoaded) {
+  if (!securityInfoLoaded) {
     return (
       <div>
         <Spinner label={'Fetching security information, please wait...'} />
@@ -364,6 +374,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
   // Define the commands for users, lists, permissions, and display mode
   const commands: IContextualMenuItem[] = [];
+  const farItems: IContextualMenuItem[] = [];
 
   // User selection command
   if (props.letUserSelectUsers) {
@@ -428,6 +439,28 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     }
   });
 
+  // Site URL command with textbox - moved to farItems for right side
+  farItems.push({
+    key: "SiteUrl",
+    name: "",
+    itemType: ContextualMenuItemType.Normal,
+    onRender: () => (
+      <div style={{ padding: '8px 12px', minWidth: '300px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span style={{ whiteSpace: 'nowrap' }}>Site URL:</span>
+        <TextField
+          value={siteUrl}
+          onChange={(event, newValue) => {
+            setSiteUrl(newValue || '');
+          }}
+          placeholder="Enter site URL..."
+          styles={{
+            root: { minWidth: '200px' }
+          }}
+        />
+      </div>
+    )
+  });
+
   const effectivePermissions = state.selectedPermissions.filter((sp) => sp.isChecked);
   const columns: IColumn[] = [
     {
@@ -452,7 +485,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
   return (
     <>
-      <CommandBar items={commands} />
+      <CommandBar items={commands} farItems={farItems} />
       <br />
       <Legend
         selectedPermissions={state.selectedPermissions}
@@ -470,6 +503,10 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         columns={displayColumns}
         selectionMode={SelectionMode.none}
         className={styles.SPFXSecurityGrid}
+         getKey={(item) =>{
+           return item.id;
+          }
+        } // Add this for stable keys
       />
       <SelectedPermissionsPanel
         isOpen={state.showPermissionsPanel}

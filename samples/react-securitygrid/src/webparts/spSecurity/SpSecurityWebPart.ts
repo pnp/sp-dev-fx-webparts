@@ -47,7 +47,8 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes.bind(this),
-      aadHttpClient: this.aadHttpClient
+      aadHttpClient: this.aadHttpClient,
+      spContext: this.context,
     };
 
     const element: React.ReactElement<ISpSecurityProps> = React.createElement(

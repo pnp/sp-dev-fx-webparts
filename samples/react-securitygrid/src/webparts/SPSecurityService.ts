@@ -1,7 +1,7 @@
 ﻿import { User } from "@microsoft/microsoft-graph-types";
 import { AadHttpClient, AadHttpClientConfiguration } from "@microsoft/sp-http";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { SPFI } from '@pnp/sp';
+import { spfi, SPFI, SPFx } from '@pnp/sp';
 import { getSP } from '../pnpjs-config';
 
 import { filter, find, includes } from "lodash";
@@ -44,10 +44,7 @@ interface SPUser {
   };
 }
 
-interface ADGroupResponse {
-  value: Array<User>;
-}
-
+// 
 export interface ISPSecurableObject {
   id: string | number;
   roleAssignments: SPRoleAssignment[];
@@ -341,9 +338,13 @@ export default class SPSecurityService {
   public siteUrl: string;
   private sp: SPFI;
 
-  public constructor(siteUrl: string) {
+  public constructor(siteUrl: string, private context: any) {
     this.siteUrl = siteUrl;
     this.sp = getSP();
+    if(siteUrl){
+      const spWebB = spfi(siteUrl).using(SPFx(this.context));
+      this.sp = spWebB;
+    }
   }
 
   // Adjust the loadFolderRoleAssignmentsDefinitionsMembers method with proper types
@@ -577,9 +578,9 @@ export default class SPSecurityService {
       const aadHttpClientConfiguration: AadHttpClientConfiguration = new AadHttpClientConfiguration({}, {});
       let uri = "";
       if (adGrouId.endsWith('_o')) {
-        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId.replace('_o', '')}/owners?$top=999&$select=id,userPrincipalName`;
+        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId.replace('_o', '')}/owners?$top=999&$select=id,userPrincipalName,displayName`;
       } else {
-        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId}/transitiveMembers?$top=999&$select=id,userPrincipalName`;
+        uri = `https://graph.microsoft.com/v1.0/groups/${adGrouId}/transitiveMembers?$top=999&$select=id,userPrincipalName,displayName`;
       }
 
       let allMembers: User[] = [];

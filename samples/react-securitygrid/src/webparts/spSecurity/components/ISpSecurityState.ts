@@ -8,7 +8,7 @@ export interface ISpSecurityState {
   showListPanel: boolean;
   showPermissionsPanel: boolean;
   showEmail: boolean; //0 show name, 1 show email
-  securityInfoLoaded: boolean;
+  //securityInfoLoaded: boolean;
   errors: Array<string>;
 
 }
