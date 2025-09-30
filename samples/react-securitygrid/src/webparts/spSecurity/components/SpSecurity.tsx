@@ -10,9 +10,8 @@ import { DetailsList, IColumn, Selection, SelectionMode } from '@fluentui/react/
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
-import { TextField } from '@fluentui/react/lib/TextField';
 import { TagPicker, ITag } from '@fluentui/react/lib/Pickers';
-import SPSecurityService from '../../SPSecurityService';
+import SPSecurityService, { SPSecurityInfo } from '../../SPSecurityService';
 import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
 import { ISelectedPermission } from '../ISpSecurityWebPartProps';
@@ -22,17 +21,16 @@ import { Legend } from './Legend';
 import styles from './SpSecurity.module.scss';
 
 const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
-  const [state, setState] = useState<ISpSecurityState>({
-    securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] },
-    selectedPermissions: props.selectedPermissions,
-    showUserPanel: false,
-    showListPanel: false,
-    showEmail: props.showEmail,
-    showPermissionsPanel: false,
-    errors: [],
-  });
+  // Define state variables
   const [securityInfoLoaded, setSecurityInfoLoaded] = useState<boolean>(false);
+  const [showPermissionsPanel, setShowPermissionsPanel] = useState<boolean>(false);
+  const [showEmail, setShowEmail] = useState<boolean>(props.showEmail);
   const [siteUrl, setSiteUrl] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const [showListPanel, setShowListPanel] = useState<boolean>(false);
+  const [showUserPanel, setShowUserPanel] = useState<boolean>(false);
+  const [selectedPermissions, setSelectedPermissions] = useState<ISelectedPermission[]>(props.selectedPermissions);
+  const [securityInfo, setSecurityInfo] = useState<SPSecurityInfo>({ siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] });
   const [svc, setSvc] = useState<SPSecurityService>(() => 
     new SPSecurityService(null, props.spContext)
   );
@@ -61,27 +59,22 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
             ? !!find(props.adminSelectedLists, (asl) => list.id === asl)
             : !find(props.adminSelectedLists, (asl) => list.id === asl)
         );
-        setState((prevState) => ({
-          ...prevState,
-          securityInfo: { ...response, lists: filteredLists },
-          selectedPermissions: props.selectedPermissions ?? [],
-          showEmail: props.showEmail,
-        }));
+        setSecurityInfo({ ...response, lists: filteredLists });
+        setSelectedPermissions(props.selectedPermissions ?? []);
         setSecurityInfoLoaded(true);
       })
-      .catch((errors: string[]) => {
-        setState((prevState) => ({ ...prevState, errors }));
+      .catch((errorList: string[]) => {
+        setErrors(errorList);
         setSecurityInfoLoaded(true);
       });
   }, [props,svc]);
 
   useEffect(() => {
-    if (props.selectedPermissions !== state.selectedPermissions || props.showEmail !== state.showEmail) {
-      setState((prevState) => ({
-        ...prevState,
-        selectedPermissions: props.selectedPermissions,
-        showEmail: props.showEmail,
-      }));
+    if (props.selectedPermissions !== selectedPermissions) {
+      setSelectedPermissions(props.selectedPermissions);
+    }
+    if (props.showEmail !== showEmail) {
+      setShowEmail(props.showEmail);
     }
   }, [props.selectedPermissions, props.showEmail]);
 
@@ -90,35 +83,34 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
     if (item.isFetched) {
       item.isExpanded = true;
-      setState({ ...state });
+      setSecurityInfo({ ...securityInfo });
     } else {
-
       const level = item instanceof SPListItem ? item.level + 1 : 1;
       const listTitle = item instanceof SPListItem ? item.listTitle : item.title;
       item.isFetching = true;
-      const position = findIndex(state.securityInfo.lists, (stateItem) => stateItem.id === item.id);
-      const updatedLists = [...state.securityInfo.lists];
+      const position = findIndex(securityInfo.lists, (stateItem) => stateItem.id === item.id);
+      const updatedLists = [...securityInfo.lists];
       updatedLists.splice(position, 1, item);
-      setState((prevState) => ({ ...prevState, securityInfo: { ...prevState.securityInfo, lists: updatedLists } }));
+      setSecurityInfo((prevSecurityInfo) => ({ ...prevSecurityInfo, lists: updatedLists }));
       svc.loadFolderRoleAssignmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level)
         .then((response) => {
-          const position = findIndex(state.securityInfo.lists, (stateItem) => stateItem.id === item.id);
-          const updatedLists = [...state.securityInfo.lists];
+          const position = findIndex(securityInfo.lists, (stateItem) => stateItem.id === item.id);
+          const updatedLists = [...securityInfo.lists];
           updatedLists.splice(position + 1, 0, ...response);
           item.isExpanded = true;
           item.isFetched = true;
           item.isFetching = false;
-          setState((prevState) => ({ ...prevState, securityInfo: { ...prevState.securityInfo, lists: updatedLists } }));
+          setSecurityInfo((prevSecurityInfo) => ({ ...prevSecurityInfo, lists: updatedLists }));
         })
         .catch((error: Error) => {
-          const errors = [...state.errors, `There was an error fetching site users -- ${error.message}`];
-          setState((prevState) => ({ ...prevState, errors }));
+          const newErrors = [...errors, `There was an error fetching site users -- ${error.message}`];
+          setErrors(newErrors);
         });
     }
   };
 
   const collapseItem = (itemId: string) => {
-    const children = filter(state.securityInfo.lists, (otherItem) => otherItem instanceof SPListItem && otherItem.parentId === itemId);
+    const children = filter(securityInfo.lists, (otherItem) => otherItem instanceof SPListItem && otherItem.parentId === itemId);
     children.forEach((childItem) => {
       childItem.isExpanded = false;
       collapseItem(childItem.id);
@@ -128,7 +120,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const collapseList = (item: SPList | SPListItem): void => {
     item.isExpanded = false;
     collapseItem(item.id);
-    setState({ ...state });
+    setSecurityInfo({ ...securityInfo });
   };
 
   const expandCollapseList = (item: SPList | SPListItem, event: React.MouseEvent): void => {
@@ -200,21 +192,21 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
           if (
             !props.showOnlyUsersWithPermission ||
             Helpers.doesUserHaveAnyPermission(
-              state.securityInfo.lists,
+              securityInfo.lists,
               user,
-              state.securityInfo.siteUsers,
+              securityInfo.siteUsers,
               effectivePermissions.map(sp => {
                 const permissionKey = sp.permission as keyof typeof SPPermission;
                 return SPPermission[permissionKey];
               }),
-              state.securityInfo.roleDefinitions,
-              state.securityInfo.siteGroups,
-              state.securityInfo.adGroups
+              securityInfo.roleDefinitions,
+              securityInfo.siteGroups,
+              securityInfo.adGroups
             )
           ) {
             columns.push({
               key: user.upn,
-              name: state.showEmail ? user.upn : user.name,
+              name: showEmail ? user.upn : user.name,
               fieldName: "",
               minWidth: 20,
               maxWidth: 20,
@@ -236,18 +228,15 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Add All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedLists = state.securityInfo.lists.map((item) => {
+        const updatedLists = securityInfo.lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = true;
           }
           return item;
         });
-        setState((prevState) => ({
-          ...prevState,
-          securityInfo: {
-            ...prevState.securityInfo,
-            lists: updatedLists,
-          },
+        setSecurityInfo((prevSecurityInfo) => ({
+          ...prevSecurityInfo,
+          lists: updatedLists,
         }));
       },
     },
@@ -257,18 +246,15 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Remove All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedLists = state.securityInfo.lists.map((item) => {
+        const updatedLists = securityInfo.lists.map((item) => {
           if (item instanceof SPList) {
             item.isSelected = false;
           }
           return item;
         });
-        setState((prevState) => ({
-          ...prevState,
-          securityInfo: {
-            ...prevState.securityInfo,
-            lists: updatedLists,
-          },
+        setSecurityInfo((prevSecurityInfo) => ({
+          ...prevSecurityInfo,
+          lists: updatedLists,
         }));
       },
     },
@@ -280,20 +266,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Add All Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-
-        const updatedSiteUsers = state.securityInfo.siteUsers
-          .map((item) => {
-
-            item.isSelected = true;
-
-            return item;
-          });
-        setState((prevState) => ({
-          ...prevState,
-          securityInfo: {
-            ...prevState.securityInfo,
-            siteUsers: updatedSiteUsers,
-          },
+        const updatedSiteUsers = securityInfo.siteUsers.map((item) => {
+          item.isSelected = true;
+          return item;
+        });
+        setSecurityInfo((prevSecurityInfo) => ({
+          ...prevSecurityInfo,
+          siteUsers: updatedSiteUsers,
         }));
       },
     },
@@ -303,19 +282,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Remove All users",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        const updatedSiteUsers = state.securityInfo.siteUsers
-          .map((item) => {
-
-            item.isSelected = false;
-
-            return item;
-          });
-        setState((prevState) => ({
-          ...prevState,
-          securityInfo: {
-            ...prevState.securityInfo,
-            siteUsers: updatedSiteUsers,
-          },
+        const updatedSiteUsers = securityInfo.siteUsers.map((item) => {
+          item.isSelected = false;
+          return item;
+        });
+        setSecurityInfo((prevSecurityInfo) => ({
+          ...prevSecurityInfo,
+          siteUsers: updatedSiteUsers,
         }));
       },
     },
@@ -327,8 +300,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     column: IColumn,
     effectivePermissions: ISelectedPermission[]
   ): JSX.Element => {
-
-    const user = find(state.securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
+    const user = find(securityInfo.siteUsers, (su) => su.upn.toString() === column.key);
 
     const icons = effectivePermissions.map((selectedPermission) => {
       const permissionKey = selectedPermission.permission as keyof typeof SPPermission;
@@ -336,15 +308,14 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       if (user && Helpers.doesUserHavePermission(
         item,
         user,
-        state.securityInfo.siteUsers,
+        securityInfo.siteUsers,
         SPPermission[permissionKey],
-        state.securityInfo.roleDefinitions,
-        state.securityInfo.siteGroups,
-        state.securityInfo.adGroups
+        securityInfo.roleDefinitions,
+        securityInfo.siteGroups,
+        securityInfo.adGroups
       )) {
         return (
           <div key={selectedPermission.permission} style={{ display: 'block' }} onClick={(event) => expandCollapseList(item, event)}>
-            {icons}
             <Icon
               iconName={selectedPermission.iconName}
               style={{ color: selectedPermission.color }}
@@ -352,7 +323,6 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
           </div>
         );
       }
-
       return null;
     });
 
@@ -368,7 +338,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
   const onResolveSuggestions = async (filterText: string): Promise<ITag[]> => {
     if (!filterText || filterText.length < 3) return [];
-    var sites= await svc.searchSites( filterText, 100);
+    let sites = await svc.searchSites( filterText, 100);
     return sites;
     
   };
@@ -393,7 +363,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        setState((current) => ({ ...current, showUserPanel: !current.showUserPanel }));
+        setShowUserPanel(!showUserPanel);
       }
     });
   }
@@ -406,7 +376,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        setState((current) => ({ ...current, showListPanel: !current.showListPanel }));
+        setShowListPanel(!showListPanel);
       }
     });
   }
@@ -419,7 +389,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       name: "Permission",
       itemType: ContextualMenuItemType.Normal,
       onClick: () => {
-        setState((current) => ({ ...current, showPermissionsPanel: !current.showPermissionsPanel }));
+        setShowPermissionsPanel(!showPermissionsPanel);
       }
     });
   }
@@ -428,21 +398,21 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   commands.push({
     key: "DisplayMode",
     title: "DisplayMode",
-    name: state.showEmail ? "Show Email" : "Show Name",
+    name: showEmail ? "Show Email" : "Show Name",
     itemType: ContextualMenuItemType.Normal,
     subMenuProps: {
       items: [{
         key: "ShowName",
         name: "Show Name",
         onClick: () => {
-          setState((current) => ({ ...current, showEmail: false }));
+          setShowEmail(false);
         }
       },
       {
         key: "ShowEmail",
         name: "Show Email",
         onClick: () => {
-          setState((current) => ({ ...current, showEmail: true }));
+          setShowEmail(true);
         }
       }]
     }
@@ -485,7 +455,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   });
 }
 
-  const effectivePermissions = state.selectedPermissions.filter((sp) => sp.isChecked);
+  const effectivePermissions = selectedPermissions.filter((sp) => sp.isChecked);
   const columns: IColumn[] = [
     {
       key: "title",
@@ -499,11 +469,11 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     }
   ];
 
-  const displayColumns: IColumn[] = addUserColumns(columns, state.securityInfo.siteUsers, effectivePermissions);
-  const displayItems: (SPList | SPListItem)[] = filter(state.securityInfo.lists, (item) => {
+  const displayColumns: IColumn[] = addUserColumns(columns, securityInfo.siteUsers, effectivePermissions);
+  const displayItems: (SPList | SPListItem)[] = filter(securityInfo.lists, (item) => {
     return (
       (item instanceof SPList && item.isSelected) ||
-      ((item instanceof SPListItem) && item.parentId && find(state.securityInfo.lists, l => l.id === item.parentId)?.isExpanded)
+      ((item instanceof SPListItem) && item.parentId && find(securityInfo.lists, l => l.id === item.parentId)?.isExpanded)
     );
   });
 
@@ -512,13 +482,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       <CommandBar items={commands} farItems={farItems} />
       <br />
       <Legend
-        selectedPermissions={state.selectedPermissions}
+        selectedPermissions={selectedPermissions}
         checkUncheckPermission={(e) => {
-          const sps = [...state.selectedPermissions];
+          const sps = [...selectedPermissions];
           const idx = findIndex(sps, (sp) => sp.permission === e.permission);
           if (idx !== -1) {
             sps[idx].isChecked = !sps[idx].isChecked;
-            setState((prevState) => ({ ...prevState, selectedPermissions: sps }));
+            setSelectedPermissions(sps);
           }
         }}
       />
@@ -533,19 +503,19 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         } // Add this for stable keys
       />
       <SelectedPermissionsPanel
-        isOpen={state.showPermissionsPanel}
+        isOpen={showPermissionsPanel}
         SelectedPermissions={props.selectedPermissions}
         onPropertyChange={(propertyName, oldValue, newValue) => {
-          setState((prevState) => ({ ...prevState, selectedPermissions: newValue }));
+          setSelectedPermissions(newValue);
         }}
         closePanel={() => {
-          setState((prevState) => ({ ...prevState, showPermissionsPanel: false }));
+          setShowPermissionsPanel(false);
         }}
       />
       <Panel
         isBlocking={false}
-        isOpen={state.showUserPanel}
-        onDismiss={() => setState((prevState) => ({ ...prevState, showUserPanel: false }))}
+        isOpen={showUserPanel}
+        onDismiss={() => setShowUserPanel(false)}
         type={PanelType.medium}
         headerText="Select Users"
         closeButtonAriaLabel="Close"
@@ -554,7 +524,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         <DetailsList
           selection={userSelection}
           selectionMode={SelectionMode.none}
-          items={state.securityInfo.siteUsers}
+          items={securityInfo.siteUsers}
           columns={[
             {
               key: "isSelected",
@@ -565,10 +535,10 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
                 <Checkbox
                   checked={item.isSelected}
                   onChange={(element, value) => {
-                    const user = find(state.securityInfo.siteUsers, (su) => su.id === item.id);
+                    const user = find(securityInfo.siteUsers, (su) => su.id === item.id);
                     if (user) {
                       user.isSelected = value!;
-                      setState((prevState) => ({ ...prevState }));
+                      setSecurityInfo({ ...securityInfo });
                     }
                   }}
                 />
@@ -580,8 +550,8 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       </Panel>
       <Panel
         isBlocking={false}
-        isOpen={state.showListPanel}
-        onDismiss={() => setState((prevState) => ({ ...prevState, showListPanel: false }))}
+        isOpen={showListPanel}
+        onDismiss={() => setShowListPanel(false)}
         type={PanelType.medium}
         headerText="Select Lists"
         closeButtonAriaLabel="Close"
@@ -590,7 +560,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
         <DetailsList
           selection={listSelection}
           selectionMode={SelectionMode.none}
-          items={filter(state.securityInfo.lists, (l) => l instanceof SPList)}
+          items={filter(securityInfo.lists, (l) => l instanceof SPList)}
           columns={[
             {
               key: "isSelected",
@@ -601,10 +571,10 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
                 <Checkbox
                   checked={item.isSelected}
                   onChange={(element, value) => {
-                    const list = find(state.securityInfo.lists, (l) => l.id === item.id);
+                    const list = find(securityInfo.lists, (l) => l.id === item.id);
                     if (list) {
                       list.isSelected = value!;
-                      setState((prevState) => ({ ...prevState }));
+                      setSecurityInfo({ ...securityInfo });
                     }
                   }}
                 />
