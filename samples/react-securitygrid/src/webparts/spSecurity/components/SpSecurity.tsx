@@ -11,6 +11,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { TextField } from '@fluentui/react/lib/TextField';
+import { TagPicker, ITag } from '@fluentui/react/lib/Pickers';
 import SPSecurityService from '../../SPSecurityService';
 import { Helpers, SPList, SPListItem, SPSiteUser } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
@@ -35,6 +36,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const [svc, setSvc] = useState<SPSecurityService>(() => 
     new SPSecurityService(null, props.spContext)
   );
+  const [selectedSites, setSelectedSites] = useState<ITag[]>([]);
 
   // Create new service when siteUrl changes
   useEffect(() => {
@@ -364,6 +366,13 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     );
   };
 
+  const onResolveSuggestions = async (filterText: string): Promise<ITag[]> => {
+    if (!filterText || filterText.length < 3) return [];
+    var sites= await svc.searchSites( filterText, 100);
+    return sites;
+    
+  };
+
   if (!securityInfoLoaded) {
     return (
       <div>
@@ -447,13 +456,26 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
     itemType: ContextualMenuItemType.Normal,
     onRender: () => (
       <div style={{ padding: '8px 12px', minWidth: '300px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <span style={{ whiteSpace: 'nowrap' }}>Site URL:</span>
-        <TextField
-          value={siteUrl}
-          onChange={(event, newValue) => {
-            setSiteUrl(newValue || '');
+        <span style={{ whiteSpace: 'nowrap' }}>Sites:</span>
+        <TagPicker
+          selectedItems={selectedSites}
+          onResolveSuggestions={onResolveSuggestions}
+          onChange={(items) => {
+            setSelectedSites(items || []);
+            // Set the first selected site as the main siteUrl
+            if (items && items.length > 0) {
+              setSiteUrl(items[0].key as string);
+            } else {
+              setSiteUrl('');
+            }
           }}
-          placeholder="Enter site URL..."
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Select a SharePoint site',
+            noResultsFoundText: 'No sites found'
+          }}
+          inputProps={{
+            placeholder: 'Type to search for sites...'
+          }}
           styles={{
             root: { minWidth: '200px' }
           }}

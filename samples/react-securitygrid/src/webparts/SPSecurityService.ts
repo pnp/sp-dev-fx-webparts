@@ -5,6 +5,8 @@ import { spfi, SPFI, SPFx } from '@pnp/sp';
 import { getSP } from '../pnpjs-config';
 
 import { filter, find, includes } from "lodash";
+import { ITag } from "@fluentui/react/lib/Pickers";
+import { SearchQueryInit } from "@pnp/sp/search";
 
 
 interface SPRoleAssignmentObject {
@@ -250,14 +252,14 @@ export class Helpers {
   ): SPRoleAssignment[] {
     // Create cache key from securable object ID and user ID// decrease reneder time bty 30%
     const cacheKey = `${securableObject.id}_${user.id || user.upn}`;
-    
+
     // Check cache first
     if (this._roleAssignmentCache.has(cacheKey)) {
       return this._roleAssignmentCache.get(cacheKey)!;
     }
 
     const selectedRoleAssignments: SPRoleAssignment[] = [];
-    
+
     // const AdUsersGroups = siteUsers.filter(
     //   u => u.isAdGroup &&
     //     filter(adGroups, adgroup => adgroup.id.ADId === u.upn && adgroup.members.filter(m => m.userPrincipalName?.toLowerCase() === user.upn).length > 0)
@@ -280,7 +282,7 @@ export class Helpers {
 
     });
     const ids = x2.map(u => { return u.id; });
-    
+
     // test if role assignment is for this specific user, or his SP groups
     for (const roleAssignment of securableObject.roleAssignments) {
       const group: SPSiteGroup | undefined = find(groups, (g) => g.id === roleAssignment.principalId);
@@ -301,10 +303,10 @@ export class Helpers {
         selectedRoleAssignments.push(roleAssignment);
       }
     }
-    
+
     // Cache the result before returning
     this._roleAssignmentCache.set(cacheKey, selectedRoleAssignments);
-    
+
     return selectedRoleAssignments;
   }
 
@@ -341,12 +343,35 @@ export default class SPSecurityService {
   public constructor(siteUrl: string, private context: any) {
     this.siteUrl = siteUrl;
     this.sp = getSP();
-    if(siteUrl){
+    if (siteUrl) {
       const spWebB = spfi(siteUrl).using(SPFx(this.context));
       this.sp = spWebB;
     }
   }
 
+  public async searchSites(searchTerm: string, maxResults: number): Promise<Array<ITag>> {
+
+    var sqi: SearchQueryInit = {
+      //Querytext: "contentclass:STS_Web AND Title:" + (searchTerm ? `${searchTerm}*` : "*"),
+      Querytext: "contentclass:STS_Site AND Title:" + (searchTerm ? `${searchTerm}*` : "*"),
+      TrimDuplicates: true,
+      EnableSorting: true,
+      RowLimit: maxResults, // Limit the number of results
+      SelectProperties: ["Title", "Path", "Description"], // Specify properties to retrieve
+    };
+    return this.sp.search(sqi)
+      .then((r) => {
+        const results: Array<ITag> = r.PrimarySearchResults.map((site) => ({
+          key: site.Path,
+          name: site.Title
+        }));
+        return results;
+      }).catch((err) => {
+        alert(`Error searching sites: ${err.message || err}`);
+        return [];
+      });
+
+  }
   // Adjust the loadFolderRoleAssignmentsDefinitionsMembers method with proper types
   public loadFolderRoleAssignmentsDefinitionsMembers(
     listTitle: string,
@@ -439,7 +464,7 @@ export default class SPSecurityService {
                 }
               }
             }).catch((err) => {
-                errors.push(`There was an error an ad group -- ${err.message}`);
+              errors.push(`There was an error an ad group -- ${err.message}`);
             });
         }
 
