@@ -17,6 +17,7 @@ export interface ISpSecurityWebPartProps {
   letUserSelectPermission: boolean;
   letUserSelectUsers: boolean;
   letUserSelectLists: boolean;
+    letUserSelectSites: boolean;
   includeAdminSelectedLists: boolean; // true to inlude them, false to excluder
   adminSelectedLists: string[];
   listTitleColumnWidth: number;

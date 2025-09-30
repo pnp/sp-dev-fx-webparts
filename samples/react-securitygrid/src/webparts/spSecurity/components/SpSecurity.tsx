@@ -440,6 +440,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   });
 
   // Site URL command with textbox - moved to farItems for right side
+  if (props.letUserSelectSites){
   farItems.push({
     key: "SiteUrl",
     name: "",
@@ -460,6 +461,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       </div>
     )
   });
+}
 
   const effectivePermissions = state.selectedPermissions.filter((sp) => sp.isChecked);
   const columns: IColumn[] = [
