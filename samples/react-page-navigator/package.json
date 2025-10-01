@@ -1,6 +1,6 @@
 {
   "name": "navigator",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -48,7 +48,7 @@
     "ajv": "6.12.5",
     "eslint": "8.57.0",
     "eslint-plugin-react-hooks": "4.3.0",
-    "gulp": "5.0.0",
+    "gulp": "^5.0.0",
     "gulp-sequence": "1.0.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
