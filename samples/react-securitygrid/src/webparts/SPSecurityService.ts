@@ -351,7 +351,7 @@ export default class SPSecurityService {
 
   public async searchSites(searchTerm: string, maxResults: number): Promise<Array<ITag>> {
 
-    var sqi: SearchQueryInit = {
+    const sqi: SearchQueryInit = {
       //Querytext: "contentclass:STS_Web AND Title:" + (searchTerm ? `${searchTerm}*` : "*"),
       Querytext: "contentclass:STS_Site AND Title:" + (searchTerm ? `${searchTerm}*` : "*"),
       TrimDuplicates: true,
@@ -429,7 +429,7 @@ export default class SPSecurityService {
     // Get site users
     try {
       const siteUsersResponse = await this.sp.web.siteUsers();
-      let adUsers: SPSiteUser[] = [];
+      const adUsers: SPSiteUser[] = [];
       securityInfo.siteUsers = siteUsersResponse.map((u: SPUser) => {
         const upn: string = u.LoginName.split('|')[2];
         const user: SPSiteUser = new SPSiteUser();

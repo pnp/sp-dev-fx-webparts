@@ -11,19 +11,18 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { TagPicker, ITag } from '@fluentui/react/lib/Pickers';
-import SPSecurityService, { SPSecurityInfo } from '../../SPSecurityService';
+import SPSecurityService, { ADGroup, SPRoleDefinition } from '../../SPSecurityService';
 import { Helpers, SPList, SPListItem, SPSiteUser, SPSiteGroup } from '../../SPSecurityService';
 import SelectedPermissionsPanel from '../containers/SelectedPermissionsPanel';
 import { ISelectedPermission } from '../ISpSecurityWebPartProps';
 import { ISpSecurityProps } from './ISpSecurityProps';
-import { ISpSecurityState } from './ISpSecurityState';
+
 import { Legend } from './Legend';
 import styles from './SpSecurity.module.scss';
 
 const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   // Add loading states
   const [isExpanding, setIsExpanding] = useState<boolean>(false);
-  const [isUpdatingUsers, setIsUpdatingUsers] = useState<boolean>(false);
   const [isUpdatingLists, setIsUpdatingLists] = useState<boolean>(false);
 
   // Define state variables
@@ -37,9 +36,9 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
   const [selectedPermissions, setSelectedPermissions] = useState<ISelectedPermission[]>(props.selectedPermissions);
   const [siteUsers, setSiteUsers] = useState<SPSiteUser[]>([]);
   const [siteGroups, setSiteGroups] = useState<SPSiteGroup[]>([]);
-  const [roleDefinitions, setRoleDefinitions] = useState<any[]>([]);
+  const [roleDefinitions, setRoleDefinitions] = useState<SPRoleDefinition[]>([]);
   const [lists, setLists] = useState<(SPList | SPListItem)[]>([]);
-  const [adGroups, setAdGroups] = useState<any[]>([]);
+  const [adGroups, setAdGroups] = useState<ADGroup[]>([]);
   const [svc, setSvc] = useState<SPSecurityService>(() => 
     new SPSecurityService(null, props.spContext)
   );
@@ -346,7 +345,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
 
   const onResolveSuggestions = async (filterText: string): Promise<ITag[]> => {
     if (!filterText || filterText.length < 3) return [];
-    let sites = await svc.searchSites( filterText, 100);
+    const sites = await svc.searchSites( filterText, 100);
     return sites;
     
   };
@@ -531,7 +530,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       
       {/* Add loading overlay */}
       <LoadingOverlay isLoading={isExpanding} message="Expanding items..." />
-      <LoadingOverlay isLoading={isUpdatingUsers} message="Updating user permissions..." />
+   
       <LoadingOverlay isLoading={isUpdatingLists} message="Updating list view..." />
       
       <DetailsList
