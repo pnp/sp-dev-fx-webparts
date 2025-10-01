@@ -429,6 +429,7 @@ export default class SPSecurityService {
     // Get site users
     try {
       const siteUsersResponse = await this.sp.web.siteUsers();
+      let adUsers: SPSiteUser[] = [];
       securityInfo.siteUsers = siteUsersResponse.map((u: SPUser) => {
         const upn: string = u.LoginName.split('|')[2];
         const user: SPSiteUser = new SPSiteUser();
@@ -453,13 +454,16 @@ export default class SPSecurityService {
                   if (siteUser) {
                     siteUser.adId = adUser.id;
                   } else {
+                    const existingAdUser = find(adUsers, (su) => su.upn === adUser.userPrincipalName?.toLowerCase());
+                    if (!existingAdUser) {
                     const user: SPSiteUser = new SPSiteUser();
                     user.adId = adUser.id;
                     user.name = adUser.displayName + "*";
                     user.upn = adUser.userPrincipalName || adUser.displayName;
                     user.isSelected = true;
                     user.principalType = -1;
-                    securityInfo.siteUsers.push(user);
+                    adUsers.push(user);
+                  }
                   }
                 }
               }
@@ -470,6 +474,7 @@ export default class SPSecurityService {
 
         return user;
       });
+      securityInfo.siteUsers = securityInfo.siteUsers.concat(adUsers);
     } catch (err) {
       errors.push(`There was an error fetching site users -- ${err.message}`);
     }
@@ -553,14 +558,15 @@ export default class SPSecurityService {
           .then((adGroup: ADGroup) => {
             securityInfo.adGroups.push(adGroup);
             for (const adUser of adGroup.members) {
-              const siteUser = find(securityInfo.siteUsers, (su) => su.upn === adUser.userPrincipalName?.toLowerCase());
+              const siteUser = find(securityInfo.siteUsers, (su) => su.upn.toLocaleLowerCase() === adUser.userPrincipalName?.toLowerCase());
               if (siteUser) {
                 siteUser.adId = adUser.id;
               } else {
+                console.log(`Adding AD user: ${adUser.displayName} from group ${adGroupId.ADId}`);
                 const user: SPSiteUser = new SPSiteUser();
                 user.adId = adUser.id;
                 user.name = adUser.displayName + "*";
-                user.upn = adUser.userPrincipalName || adUser.displayName;
+                user.upn = adUser.userPrincipalName;
                 user.isSelected = true;
                 user.principalType = -1;
                 securityInfo.siteUsers.push(user);
@@ -581,8 +587,8 @@ export default class SPSecurityService {
     } else {
       console.log("No errors encountered, proceeding.");
     }
-
-    //console.table(securityInfo.siteUsers);
+    securityInfo.siteUsers = securityInfo.siteUsers.sort((a, b) => a.name.localeCompare(b.name));
+    console.table(securityInfo.siteUsers);
     return securityInfo;
   }
 
