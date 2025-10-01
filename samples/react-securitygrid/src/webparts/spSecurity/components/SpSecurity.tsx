@@ -436,6 +436,7 @@ const SpSecurity: React.FC<ISpSecurityProps> = (props) => {
       <div style={{ padding: '8px 12px', minWidth: '300px', display: 'flex', alignItems: 'center', gap: '8px' }}>
         <span style={{ whiteSpace: 'nowrap' }}>Sites:</span>
         <TagPicker
+         itemLimit={1}
           selectedItems={selectedSites}
           onResolveSuggestions={onResolveSuggestions}
           onChange={(items) => {
