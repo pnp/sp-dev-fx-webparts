@@ -2,7 +2,7 @@
 
 ## Summary
 
-MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities
+My OneDrive Info solution contains Adaptive card extension for Viva connection with below functionalities
 
 1. Show the one drive quota/space utilized in card view
 2. Show other details like Web URL, last modified time, state, remaining size in quick view
