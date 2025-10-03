@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "schema-extensions-management",
+    "id": "d30a1208-c4e0-4f4f-b9b0-74992080c4eb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Application.ReadWrite.All"
+      }
+    ],
+    "developer": {
+      "name": "SPTECK",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Comprehensive Schema Extensions Management for Microsoft Graph"
+      },
+      "longDescription": {
+        "default": "A powerful SPFx web part for managing Microsoft Graph Schema Extensions with full CRUD operations, built with modern React patterns and Fluent UI components."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Schema Extensions Manager",
+        "description": "Feature that provides comprehensive Schema Extensions management capabilities.",
+        "id": "722eeeb1-3075-468f-bea9-afb404715919",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/schema-extensions-management.sppkg"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "manage-schema-extensions",
+    "environment": "spo",
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "ManageSchemaExtensions",
+    "componentDescription": "A comprehensive web part for managing Microsoft Graph Schema Extensions with full CRUD operations",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "manage-schema-extensions",
+    "libraryId": "d30a1208-c4e0-4f4f-b9b0-74992080c4eb",
+    "packageManager": "npm",
+    "solutionShortDescription": "manage-schema-extensions description"
+  }
+}
