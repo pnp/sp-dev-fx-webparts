@@ -116,14 +116,14 @@ export const ManageSchemaExtensions: React.FunctionComponent<
           "site",
           ""
         );
-        // If user has only ManageWeb or FullMask, they lack sufficient permissions
+        // If user has   manageWeb or fullMask, they can manage schema extensions
         if (
-          permissions.includes("ManageWeb") ||
-          permissions.includes("FullMask")
+          permissions.includes("manageWeb") ||
+          permissions.includes("fullMask")
         ) {
-          setUserHasPermissions(false);
-        } else {
           setUserHasPermissions(true);
+        } else {
+          setUserHasPermissions(false);
         }
       } catch (err) {
         const errorMessage =
