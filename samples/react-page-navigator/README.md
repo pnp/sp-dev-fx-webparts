@@ -48,6 +48,7 @@ Version|Date|Comments
 1.8|May 13, 2023|Fixed issue when heading has a + symbol
 1.9|October 6, 2024|SPFx Upgraded to 1.20.0 and code refactored
 1.10|March 15, 2025|Added Sticky Mode options
+1.11|October 1, 2025|Fixed issue when page URL (file name) had a & or + symbol in it
 
 ## Minimal Path to Awesome
 

@@ -128,9 +128,10 @@ export class ScatterChartDemo extends React.Component<IScatterChartDemoProps, {}
                 position: 'bottom',
                 ticks: {
                   callback: (tick) => {
-                    var remain = tick / (Math.pow(10, Math.floor(this._log10(tick))));
+                    const tickValue = typeof tick === 'string' ? parseFloat(tick) : tick;
+                    var remain = tickValue / (Math.pow(10, Math.floor(this._log10(tickValue))));
                     if (remain === 1 || remain === 2 || remain === 5) {
-                      return tick.toString() + strings.xAxisUnit;
+                      return tickValue.toString() + strings.xAxisUnit;
                     }
                     return '';
                   },

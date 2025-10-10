@@ -2,7 +2,11 @@
 import { ServiceHealth } from "@microsoft/microsoft-graph-types";
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { AadHttpClient, IHttpClientOptions, HttpClientResponse } from "@microsoft/sp-http";
+import {
+  AadHttpClient,
+  IHttpClientOptions,
+  HttpClientResponse,
+} from "@microsoft/sp-http";
 export class M365HealthService {
   private readonly context: WebPartContext;
   private readonly apiBaseUrl: string;
@@ -37,11 +41,17 @@ export class M365HealthService {
       headers: headers,
     };
 
-    const resp: HttpClientResponse | undefined = await this.aadHttpClient?.get(url, AadHttpClient.configurations.v1, options);
+    const resp: HttpClientResponse | undefined = await this.aadHttpClient?.get(
+      url,
+      AadHttpClient.configurations.v1,
+      options
+    );
     return this.handleResponse(resp);
   }
 
-  private async handleResponse(response: HttpClientResponse | undefined): Promise<any> {
+  private async handleResponse(
+    response: HttpClientResponse | undefined
+  ): Promise<any> {
     if (response?.ok) {
       try {
         return await response.clone().json();

@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-site-content",
+    "libraryId": "deecdde6-08da-424e-872b-2e3b0dc16b7e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-site-content",
+    "solutionShortDescription": "react-site-content description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

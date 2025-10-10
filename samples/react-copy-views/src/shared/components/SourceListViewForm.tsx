@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { IDefaults, IList, IListView, ISite } from './../interfaces';
 import { ServiceScope } from '@microsoft/sp-core-library';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from '@fluentui/react';
 import { SourceSitePicker } from '.';
 import { SourceListPicker } from '.';
 import { SourceListViewPicker } from '.';

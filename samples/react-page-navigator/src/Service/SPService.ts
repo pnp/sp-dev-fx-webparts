@@ -51,9 +51,11 @@ export class SPService {
       const currentPageRelativeUrl = context.pageContext.site.serverRequestPath;
       const currentPageSiteRelativeURl = context.pageContext.site.serverRelativeUrl;
       const currentPageUrl = currentPageRelativeUrl.replace(`${currentPageSiteRelativeURl}/`, '')
+      // encoding currentPageUrl to ensure special characters don't break the request
+      const encodedPageUrl = encodeURIComponent(currentPageUrl);
 
       /* Get the canvasContent1 data for the page which consists of all the HTML */
-      const data = await context.spHttpClient.get(`${context.pageContext.web.absoluteUrl}/_api/sitepages/pages?$select=CanvasContent1&$filter=Url eq '${currentPageUrl}'`, SPHttpClient.configurations.v1);
+      const data = await context.spHttpClient.get(`${context.pageContext.web.absoluteUrl}/_api/sitepages/pages?$select=CanvasContent1&$filter=Url eq '${encodedPageUrl}'`, SPHttpClient.configurations.v1);
       const jsonData = await data.json();
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
