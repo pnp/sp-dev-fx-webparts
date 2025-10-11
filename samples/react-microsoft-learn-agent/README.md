@@ -280,3 +280,6 @@ This web part supports Teams hosts and full page SharePoint hosts per the manife
 
 This sample is provided "as-is" with no warranties. Use at your own risk. See repository LICENSE for details.
 
+<!-- Visitor stats - do not modify; updated to match this sample's path in the repo -->
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-microsoft-learn-agent" alt="Visitor stats" />
+
