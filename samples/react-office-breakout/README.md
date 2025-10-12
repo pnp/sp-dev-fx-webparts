@@ -65,7 +65,6 @@ This sample is optimally compatible with the following environment configuration
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
-## Features
 
 ## Features
 
@@ -93,7 +92,6 @@ This sample demonstrates advanced React patterns and modern web technologies thr
 ### Motivation
 
 All these techniques are typically used in business cases with computer vision and webcams, but here they are presented in a more fun way.
-
 
 ## Help
 
