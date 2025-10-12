@@ -15,7 +15,7 @@ A modern take on the classic breakout game built with React 17, TypeScript, and 
 
 ![Office Breakout Paused](./assets/victory.png)
 
-![Office Breakout Short Video](./assets/officebreakout.png)
+![Office Breakout Short Video](./assets/officebreakout.mp4)
 
 
 ## Compatibility
