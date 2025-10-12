@@ -16,6 +16,7 @@
     "@fluentui/react": "^8.106.4",
     "@fluentui/react-components": "9.64.1",
     "@fluentui/react-icons": "^2.0.309",
+    "@microsoft/microsoft-graph-types": "^2.43.1",
     "@microsoft/sp-component-base": "1.21.1",
     "@microsoft/sp-core-library": "1.21.1",
     "@microsoft/sp-lodash-subset": "1.21.1",
