@@ -79,17 +79,12 @@ This sample demonstrates advanced React patterns and modern web technologies thr
 - **Custom hooks** for reusable game logic
 - **Provider pattern** to eliminate prop drilling
 
-### Game Features
 
-- **Canvas-based rendering** with 60fps animation loops
+### Game
+
 - **Smooth keyboard controls** with responsive paddle movement
-- **Office app themed blocks** featuring authentic Microsoft icons
-- **Physics simulation** with realistic ball collision detection
 - **Multiple game states** including pause, victory, and game over
 - **Visual effects** with ball glow and gradient rendering
-
-### Performance Optimizations
-
 - **Canvas rendering** for efficient graphics operations
 - **Image caching** for fast asset loading
 - **requestAnimationFrame** for smooth animations
