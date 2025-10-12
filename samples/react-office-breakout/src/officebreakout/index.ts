@@ -1,0 +1,10 @@
+export { OfficeBreakout } from './OfficeBreakout';
+export * from './types';
+export * from './utils';
+export * from './hooks/useGameState';
+export * from './context/GameServiceContext';
+export { Block as BlockComponent } from './components/Block';
+export { Ball as BallComponent } from './components/Ball';
+export { Paddle as PaddleComponent } from './components/Paddle';
+export { GameBoard as GameBoardComponent } from './components/GameBoard';
+export { GameStatusDisplay } from './components/GameStatusDisplay';
