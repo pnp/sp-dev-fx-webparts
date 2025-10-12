@@ -1,4 +1,4 @@
-# react-office-breakout
+# Office Breakout
 
 ## Summary
 
@@ -51,11 +51,6 @@ This sample is optimally compatible with the following environment configuration
 |Version|Date|Comments|
 |-------|----|--------|
 |1.0|Okt, 2025|Initial release|
-
-## Prerequisites
-
-
-
 
 ## Minimal Path to Awesome
 
