@@ -1,8 +1,8 @@
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+
 export interface ILearnAgentStudioClientProps {
   isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  context: WebPartContext;
   userEmail: string;
   environmentId: string;
   agentIdentifier: string;

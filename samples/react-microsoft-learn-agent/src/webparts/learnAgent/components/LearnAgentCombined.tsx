@@ -45,11 +45,7 @@ const LearnAgentCombined: React.FC<ILearnAgentCombinedProps> = (props) => {
   );
 
   const handleConfigure = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((window as any).propertyPane) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).propertyPane.open();
-    }
+    props.context.propertyPane.open();
   }, []);
 
   if (!isConfigured) {
