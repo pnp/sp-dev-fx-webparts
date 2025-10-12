@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.16.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "microsoft-learn-agent",
+    "libraryId": "4b22853b-37fb-4d9a-80c7-07348805a146",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "MicrosoftLearnAgent",
+    "solutionShortDescription": "MicrosoftLearnAgent description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

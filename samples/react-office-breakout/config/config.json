@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "office-break-out-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/officeBreakOut/OfficeBreakOutWebPart.js",
+          "manifest": "./src/webparts/officeBreakOut/OfficeBreakOutWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "OfficeBreakOutWebPartStrings": "lib/webparts/officeBreakOut/loc/{locale}.js"
+  }
+}

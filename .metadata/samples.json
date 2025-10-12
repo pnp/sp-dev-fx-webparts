@@ -13146,7 +13146,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2025-01-15",
+    "updateDateTime": "2025-10-07",
     "products": [
       "SharePoint"
     ],
@@ -13351,6 +13351,12 @@
         "gitHubAccount": "Eli-Schei",
         "name": "Eli H. Schei",
         "pictureUrl": "https://github.com/Eli-Schei"
+      },
+      {
+        "gitHubAccount": "Dhananjay-12",
+        "company": "",
+        "pictureUrl": "https://github.com/Dhananjay-12.png",
+        "name": "Dhananjay Pant"
       }
     ],
     "references": [
@@ -23865,6 +23871,66 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-microsoft-learn-agent",
+    "source": "pnp",
+    "title": "Microsoft Learn Agent (Copilot Studio) for SPFx",
+    "shortDescription": "- Connects to a Copilot Studio / Power Virtual Agents agent and renders a chat UI in a SharePoint web part. - Supports both a full WebChat UI (fast setup) and a custom Studio Client UI (full control). - Uses MSAL in the browser to acquire tokens scoped to the Power Platform APIs so the client can call the Copilot Studio endpoints.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-microsoft-learn-agent",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-microsoft-learn-agent",
+    "longDescription": [
+      "- Connects to a Copilot Studio / Power Virtual Agents agent and renders a chat UI in a SharePoint web part. - Supports both a full WebChat UI (fast setup) and a custom Studio Client UI (full control). - Uses MSAL in the browser to acquire tokens scoped to the Power Platform APIs so the client can call the Copilot Studio endpoints."
+    ],
+    "creationDateTime": "2025-10-11",
+    "updateDateTime": "2025-10-11",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "copilot-studio-client-api.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-api.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "copilot-studio-client-webchat.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-webchat.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/ejazhussain",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot",
     "source": "pnp",
     "title": "SPFx Legacy App Files Browser",
@@ -31023,7 +31089,7 @@
       "Site Content solution contains SPFx web part that provides"
     ],
     "creationDateTime": "2025-09-07",
-    "updateDateTime": "2025-09-07",
+    "updateDateTime": "2025-10-12",
     "products": [
       "SharePoint"
     ],

@@ -1,0 +1,91 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-office-breakout",
+    "source": "pnp",
+    "title": "Office Breakout",
+    "shortDescription": "A modern take on the classic breakout game built with React 17, TypeScript, and HTML5 Canvas. Features Office-themed blocks with authentic Microsoft app icons, demonstrates advanced React patterns including Context API and custom hooks. Perfect for SharePoint Framework environments and showcases high-performance Canvas rendering with responsive keyboard controls.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-breakout",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-breakout",
+    "longDescription": [
+      "A modern take on the classic breakout game built with React 17, TypeScript, and HTML5 Canvas. Features Office-themed blocks with authentic Microsoft app icons, demonstrates advanced React patterns including Context API and custom hooks. Perfect for SharePoint Framework environments and showcases high-performance Canvas rendering with responsive keyboard controls."
+    ],
+    "creationDateTime": "2025-10-12",
+    "updateDateTime": "2025-10-12",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "gameplay.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "gameplay2.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay2.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "officebreakout.gif",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/officebreakout.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "paused.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/paused.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "start_game.png",
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/start_game.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "victory.png",
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/victory.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/petkir",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner"
+      }
+    ],
+    "references": [
+       {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

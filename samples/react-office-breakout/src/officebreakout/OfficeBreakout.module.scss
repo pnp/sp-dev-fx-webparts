@@ -1,0 +1,346 @@
+/* Office Breakout Game Styles */
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.gameTitle {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gameBoard {
+  position: relative;
+  background: #1a1a1a;
+  border: 4px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  
+  /* Dynamic sizing using CSS custom properties */
+  width: var(--board-width, 800px);
+  height: var(--board-height, 600px);
+}
+
+.gameInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lives {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gameControls {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.gameButton {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #4CAF50;
+  color: white;
+
+  &:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  &.pauseButton {
+    background: #ff9800;
+
+    &:hover {
+      background: #e68900;
+    }
+  }
+
+  &.resetButton {
+    background: #f44336;
+
+    &:hover {
+      background: #da190b;
+    }
+  }
+}
+
+/* Game Elements */
+
+.block {
+  position: absolute;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  color: #ffffff;
+  transition: all 0.1s ease-in-out;
+  
+  /* Dynamic positioning using CSS custom properties */
+  left: var(--block-x, 0px);
+  top: var(--block-y, 0px);
+  width: var(--block-width, 60px);
+  height: var(--block-height, 30px);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.paddle {
+  position: absolute;
+  background: linear-gradient(180deg, #4CAF50 0%, #45a049 100%);
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: left 0.1s ease-out;
+  
+  /* Dynamic positioning using CSS custom properties */
+  left: var(--paddle-x, 0px);
+  top: var(--paddle-y, 0px);
+  width: var(--paddle-width, 100px);
+  height: var(--paddle-height, 20px);
+}
+
+.ball {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+  border: 2px solid #cccccc;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.016s linear; /* ~60fps */
+  
+  /* Dynamic positioning using CSS custom properties */
+  left: var(--ball-x, 0px);
+  top: var(--ball-y, 0px);
+  width: var(--ball-size, 20px);
+  height: var(--ball-size, 20px);
+}
+
+/* Office App Block Colors */
+
+.wordBlock {
+  background: linear-gradient(135deg, #2b579a 0%, #1a3d6b 100%);
+}
+
+.excelBlock {
+  background: linear-gradient(135deg, #217346 0%, #0f5132 100%);
+}
+
+.powerpointBlock {
+  background: linear-gradient(135deg, #d24726 0%, #a0351a 100%);
+}
+
+.teamsBlock {
+  background: linear-gradient(135deg, #6264a7 0%, #464775 100%);
+}
+
+.onenoteBlock {
+  background: linear-gradient(135deg, #80397b 0%, #5e2a59 100%);
+}
+
+.outlookBlock {
+  background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+}
+
+.oneDriveBlock {
+  background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+}
+
+.sharepointBlock {
+  background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+}
+
+/* Game Status Messages */
+
+.gameOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1000;
+}
+
+.gameOverlayTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gameOverlaySubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.gameInstructions {
+  margin-top: 20px;
+  text-align: center;
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .gameContainer {
+    padding: 10px;
+  }
+
+  .gameTitle {
+    font-size: 2rem;
+  }
+
+  .gameInfo {
+    font-size: 1rem;
+  }
+
+  .gameButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .block {
+    font-size: 20px;
+  }
+
+  .gameOverlayTitle {
+    font-size: 2.5rem;
+  }
+
+  .gameOverlaySubtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animations */
+
+@keyframes blockDestroy {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ballBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.blockDestroyed {
+  animation: blockDestroy 0.3s ease-out forwards;
+}
+
+.ballBouncing {
+  animation: ballBounce 0.1s ease-out;
+}
+
+/* Canvas GameBoard styles */
+.canvasGameBoard {
+  border: 4px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: #1a1a1a;
+  display: block;
+}
+
+/* GameStatusDisplay component styles */
+.gameStatusDisplay {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  color: white;
+  font-size: 0.9rem;
+  
+  h3 {
+    margin: 0 0 10px 0;
+    color: #ffd700;
+  }
+  
+  div {
+    margin: 5px 0;
+  }
+}
+
+.quickRestartButton {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  
+  &:hover {
+    background: #45a049;
+  }
+}
