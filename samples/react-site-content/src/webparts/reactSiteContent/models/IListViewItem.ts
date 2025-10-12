@@ -7,4 +7,6 @@ export interface IListViewItem {
   Thumbnail: string;
   Id: string;
   Target: string | undefined;
+  BaseTemplate: number;
+  AppId: string;
 }

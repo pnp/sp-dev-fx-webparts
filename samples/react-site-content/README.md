@@ -6,8 +6,11 @@ Site Content solution contains SPFx web part that provides
 
 1. Functionality to view the description of the list or libraries.
 2. Functionality to Filter the list or library by name, type, items count, description.
+3. Functionality to Sort the lists or libraries by name, type, items count, description.
+4. Functionality to get the Drive ID for document library
 
 ![Site Content ](./assets/SiteContent.png)
+![Detail](./assets/LibraryDetails.png)
 
 ## Compatibility
 
@@ -49,9 +52,10 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Version history
 
-| Version | Date               | Comments        |
-| ------- | ------------------ | --------------- |
-| 1.0     | September 07, 2025 | Initial release |
+| Version | Date               | Comments                                 |
+| ------- | ------------------ | ---------------------------------------- |
+| 1.0     | September 07, 2025 | Initial release                          |
+| 2.0     | October 12, 2025   | Sorting & Document Library Details added |
 
 ## Minimal Path to Awesome
 
@@ -67,6 +71,8 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 1. Functionality to view the description of the list or libraries.
 2. Functionality to Filter the list or library by name, type, items count, description.
+3. Functionality to Sort the lists or libraries by name, type, items count, description.
+4. Functionality to get the Drive ID for document library
 
 ## References
 
