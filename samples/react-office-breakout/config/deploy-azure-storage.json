@@ -2,6 +2,6 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/deploy-azure-storage.schema.json",
   "workingDir": "./release/assets/",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "react-nutrient-document-viewer-web-part-for-sharepoint",
+  "container": "react-office-breakout",
   "accessKey": "<!-- ACCESS KEY -->"
 }

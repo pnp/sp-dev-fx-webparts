@@ -1,4 +1,4 @@
-declare interface INutrientPdfViewerWebPartForSharePointWebPartStrings {
+declare interface IOfficeBreakOutWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -13,7 +13,7 @@ declare interface INutrientPdfViewerWebPartForSharePointWebPartStrings {
   UnknownEnvironment: string;
 }
 
-declare module 'NutrientPdfViewerWebPartForSharePointWebPartStrings' {
-  const strings: INutrientPdfViewerWebPartForSharePointWebPartStrings;
+declare module 'OfficeBreakOutWebPartStrings' {
+  const strings: IOfficeBreakOutWebPartStrings;
   export = strings;
 }
