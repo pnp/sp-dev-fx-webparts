@@ -43,8 +43,17 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Prerequisites
 
-- Run **\_applyTemplates.ps1** from the **PowerShell** folder to create the **Holidays** list
-- **officelocation** property of user profile should have a valid value and holiday items for that location should be available in the **Holidays** list (created as part of previous step)
+1. You have to provide permission in SharePoint admin for accessing graph api on behalf of users. You can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://learn.microsoft.com/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). You have to use API Access Page of SharePoint admin and add below permission for our use case.
+
+```
+"webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
+
+```
 
 ## Contributors
 
