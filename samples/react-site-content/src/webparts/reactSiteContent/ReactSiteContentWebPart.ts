@@ -26,6 +26,7 @@ export default class ReactSiteContentWebPart extends BaseClientSideWebPart<IReac
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
       userDisplayName: this.context.pageContext.user.displayName,
       spService: this.spService,
+      context: this.context,
     });
 
     ReactDom.render(element, this.domElement);

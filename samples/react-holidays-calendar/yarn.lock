@@ -17,63 +17,50 @@
   dependencies:
     tslib "^2.2.0"
 
-"@azure/abort-controller@^2.0.0", "@azure/abort-controller@^2.1.2":
+"@azure/abort-controller@^2.0.0":
   version "2.1.2"
   resolved "https://registry.npmjs.org/@azure/abort-controller/-/abort-controller-2.1.2.tgz"
   integrity sha512-nBrLsEWm4J2u5LpAPjxADTlq3trDgVZZXHNKabeXZtpq3d3AbN/KGO82R87rdDz5/lYB024rtEf10/q0urNgsA==
   dependencies:
     tslib "^2.6.2"
 
-"@azure/core-auth@^1.3.0", "@azure/core-auth@^1.4.0", "@azure/core-auth@^1.5.0", "@azure/core-auth@^1.8.0", "@azure/core-auth@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.npmjs.org/@azure/core-auth/-/core-auth-1.9.0.tgz"
-  integrity sha512-FPwHpZywuyasDSLMqJ6fhbOK3TqUdviZNF8OqRGA4W5Ewib2lEEZ+pBsYcBa88B2NGO/SEnYPGhyBqNlE8ilSw==
+"@azure/abort-controller@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/@azure/abort-controller/-/abort-controller-2.1.2.tgz"
+  integrity sha512-nBrLsEWm4J2u5LpAPjxADTlq3trDgVZZXHNKabeXZtpq3d3AbN/KGO82R87rdDz5/lYB024rtEf10/q0urNgsA==
   dependencies:
-    "@azure/abort-controller" "^2.0.0"
-    "@azure/core-util" "^1.11.0"
     tslib "^2.6.2"
 
-"@azure/core-client@^1.3.0", "@azure/core-client@^1.4.0", "@azure/core-client@^1.6.2", "@azure/core-client@^1.9.2":
-  version "1.9.3"
-  resolved "https://registry.npmjs.org/@azure/core-client/-/core-client-1.9.3.tgz"
-  integrity sha512-/wGw8fJ4mdpJ1Cum7s1S+VQyXt1ihwKLzfabS1O/RDADnmzVc01dHn44qD0BvGH6KlZNzOMW95tEpKqhkCChPA==
+"@azure/core-auth@^1.10.0", "@azure/core-auth@^1.4.0", "@azure/core-auth@^1.9.0":
+  version "1.10.1"
+  resolved "https://registry.npmjs.org/@azure/core-auth/-/core-auth-1.10.1.tgz"
+  integrity sha512-ykRMW8PjVAn+RS6ww5cmK9U2CyH9p4Q88YJwvUslfuMmN98w/2rdGRLPqJYObapBCdzBVeDgYWdJnFPFb7qzpg==
   dependencies:
-    "@azure/abort-controller" "^2.0.0"
-    "@azure/core-auth" "^1.4.0"
-    "@azure/core-rest-pipeline" "^1.9.1"
-    "@azure/core-tracing" "^1.0.0"
-    "@azure/core-util" "^1.6.1"
-    "@azure/logger" "^1.0.0"
+    "@azure/abort-controller" "^2.1.2"
+    "@azure/core-util" "^1.13.0"
+    tslib "^2.6.2"
+
+"@azure/core-client@^1.10.0", "@azure/core-client@^1.6.2", "@azure/core-client@^1.9.2":
+  version "1.10.1"
+  resolved "https://registry.npmjs.org/@azure/core-client/-/core-client-1.10.1.tgz"
+  integrity sha512-Nh5PhEOeY6PrnxNPsEHRr9eimxLwgLlpmguQaHKBinFYA/RU9+kOYVOQqOrTsCL+KSxrLLl1gD8Dk5BFW/7l/w==
+  dependencies:
+    "@azure/abort-controller" "^2.1.2"
+    "@azure/core-auth" "^1.10.0"
+    "@azure/core-rest-pipeline" "^1.22.0"
+    "@azure/core-tracing" "^1.3.0"
+    "@azure/core-util" "^1.13.0"
+    "@azure/logger" "^1.3.0"
     tslib "^2.6.2"
 
 "@azure/core-http-compat@^2.0.0":
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/@azure/core-http-compat/-/core-http-compat-2.2.0.tgz"
-  integrity sha512-1kW8ZhN0CfbNOG6C688z5uh2yrzALE7dDXHiR9dY4vt+EbhGZQSbjDa5bQd2rf3X2pdWMsXbqbArxUyeNdvtmg==
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/@azure/core-http-compat/-/core-http-compat-2.3.1.tgz"
+  integrity sha512-az9BkXND3/d5VgdRRQVkiJb2gOmDU8Qcq4GvjtBmDICNiQ9udFmDk4ZpSB5Qq1OmtDJGlQAfBaS4palFsazQ5g==
   dependencies:
-    "@azure/abort-controller" "^2.0.0"
-    "@azure/core-client" "^1.3.0"
-    "@azure/core-rest-pipeline" "^1.19.0"
-
-"@azure/core-http@^3.0.0":
-  version "3.0.4"
-  resolved "https://registry.npmjs.org/@azure/core-http/-/core-http-3.0.4.tgz"
-  integrity sha512-Fok9VVhMdxAFOtqiiAtg74fL0UJkt0z3D+ouUUxcRLzZNBioPRAMJFVxiWoJljYpXsRi4GDQHzQHDc9AiYaIUQ==
-  dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    "@azure/core-auth" "^1.3.0"
-    "@azure/core-tracing" "1.0.0-preview.13"
-    "@azure/core-util" "^1.1.1"
-    "@azure/logger" "^1.0.0"
-    "@types/node-fetch" "^2.5.0"
-    "@types/tunnel" "^0.0.3"
-    form-data "^4.0.0"
-    node-fetch "^2.6.7"
-    process "^0.11.10"
-    tslib "^2.2.0"
-    tunnel "^0.0.6"
-    uuid "^8.3.0"
-    xml2js "^0.5.0"
+    "@azure/abort-controller" "^2.1.2"
+    "@azure/core-client" "^1.10.0"
+    "@azure/core-rest-pipeline" "^1.22.0"
 
 "@azure/core-lro@^2.2.0":
   version "2.4.0"
@@ -91,84 +78,42 @@
   dependencies:
     tslib "^2.2.0"
 
-"@azure/core-rest-pipeline@^1.1.0", "@azure/core-rest-pipeline@^1.10.1", "@azure/core-rest-pipeline@^1.17.0", "@azure/core-rest-pipeline@^1.19.0", "@azure/core-rest-pipeline@^1.9.1":
-  version "1.19.1"
-  resolved "https://registry.npmjs.org/@azure/core-rest-pipeline/-/core-rest-pipeline-1.19.1.tgz"
-  integrity sha512-zHeoI3NCs53lLBbWNzQycjnYKsA1CVKlnzSNuSFcUDwBp8HHVObePxrM7HaX+Ha5Ks639H7chNC9HOaIhNS03w==
+"@azure/core-rest-pipeline@^1.10.1", "@azure/core-rest-pipeline@^1.17.0", "@azure/core-rest-pipeline@^1.22.0":
+  version "1.22.1"
+  resolved "https://registry.npmjs.org/@azure/core-rest-pipeline/-/core-rest-pipeline-1.22.1.tgz"
+  integrity sha512-UVZlVLfLyz6g3Hy7GNDpooMQonUygH7ghdiSASOOHy97fKj/mPLqgDX7aidOijn+sCMU+WU8NjlPlNTgnvbcGA==
   dependencies:
-    "@azure/abort-controller" "^2.0.0"
-    "@azure/core-auth" "^1.8.0"
-    "@azure/core-tracing" "^1.0.1"
-    "@azure/core-util" "^1.11.0"
-    "@azure/logger" "^1.0.0"
-    http-proxy-agent "^7.0.0"
-    https-proxy-agent "^7.0.0"
+    "@azure/abort-controller" "^2.1.2"
+    "@azure/core-auth" "^1.10.0"
+    "@azure/core-tracing" "^1.3.0"
+    "@azure/core-util" "^1.13.0"
+    "@azure/logger" "^1.3.0"
+    "@typespec/ts-http-runtime" "^0.3.0"
     tslib "^2.6.2"
 
-"@azure/core-tracing@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@azure/core-tracing/-/core-tracing-1.0.1.tgz"
-  integrity sha512-I5CGMoLtX+pI17ZdiFJZgxMJApsK6jjfm85hpgp3oazCdq5Wxgh4wMr7ge/TTWW1B5WBuvIOI1fMU/FrOAMKrw==
-  dependencies:
-    tslib "^2.2.0"
-
-"@azure/core-tracing@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@azure/core-tracing/-/core-tracing-1.0.1.tgz"
-  integrity sha512-I5CGMoLtX+pI17ZdiFJZgxMJApsK6jjfm85hpgp3oazCdq5Wxgh4wMr7ge/TTWW1B5WBuvIOI1fMU/FrOAMKrw==
-  dependencies:
-    tslib "^2.2.0"
-
-"@azure/core-tracing@^1.1.2":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@azure/core-tracing/-/core-tracing-1.2.0.tgz"
-  integrity sha512-UKTiEJPkWcESPYJz3X5uKRYyOcJD+4nYph+KpfdPRnQJVrZfk0KJgdnaAWKfhsBBtAf/D58Az4AvCJEmWgIBAg==
+"@azure/core-tracing@^1.0.0", "@azure/core-tracing@^1.1.2", "@azure/core-tracing@^1.3.0":
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/@azure/core-tracing/-/core-tracing-1.3.1.tgz"
+  integrity sha512-9MWKevR7Hz8kNzzPLfX4EAtGM2b8mr50HPDBvio96bURP/9C+HjdH3sBlLSNNrvRAr5/k/svoH457gB5IKpmwQ==
   dependencies:
     tslib "^2.6.2"
 
-"@azure/core-tracing@1.0.0-preview.13":
-  version "1.0.0-preview.13"
-  resolved "https://registry.npmjs.org/@azure/core-tracing/-/core-tracing-1.0.0-preview.13.tgz"
-  integrity sha512-KxDlhXyMlh2Jhj2ykX6vNEU0Vou4nHr025KoSEiz7cS3BNiHNaZcdECk/DmLkEB0as5T7b/TpRcehJ5yV6NeXQ==
+"@azure/core-util@^1.11.0", "@azure/core-util@^1.13.0", "@azure/core-util@^1.6.1":
+  version "1.13.1"
+  resolved "https://registry.npmjs.org/@azure/core-util/-/core-util-1.13.1.tgz"
+  integrity sha512-XPArKLzsvl0Hf0CaGyKHUyVgF7oDnhKoP85Xv6M4StF/1AhfORhZudHtOyf2s+FcbuQ9dPRAjB8J2KvRRMUK2A==
   dependencies:
-    "@opentelemetry/api" "^1.0.1"
-    tslib "^2.2.0"
-
-"@azure/core-util@^1.1.1", "@azure/core-util@^1.11.0", "@azure/core-util@^1.3.0", "@azure/core-util@^1.6.1":
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/@azure/core-util/-/core-util-1.11.0.tgz"
-  integrity sha512-DxOSLua+NdpWoSqULhjDyAZTXFdP/LKkqtYuxxz1SCN289zk3OG8UOpnCQAz/tygyACBtWp/BoO72ptK7msY8g==
-  dependencies:
-    "@azure/abort-controller" "^2.0.0"
+    "@azure/abort-controller" "^2.1.2"
+    "@typespec/ts-http-runtime" "^0.3.0"
     tslib "^2.6.2"
 
 "@azure/core-xml@^1.4.3":
-  version "1.4.5"
-  resolved "https://registry.npmjs.org/@azure/core-xml/-/core-xml-1.4.5.tgz"
-  integrity sha512-gT4H8mTaSXRz7eGTuQyq1aIJnJqeXzpOe9Ay7Z3FrCouer14CbV3VzjnJrNrQfbBpGBLO9oy8BmrY75A0p53cA==
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@azure/core-xml/-/core-xml-1.5.0.tgz"
+  integrity sha512-D/sdlJBMJfx7gqoj66PKVmhDDaU6TKA49ptcolxdas29X7AfvLTmfAGLjAcIMBK7UZ2o4lygHIqVckOlQU3xWw==
   dependencies:
     fast-xml-parser "^5.0.7"
     tslib "^2.8.1"
-
-"@azure/identity@~4.2.1":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@azure/identity/-/identity-4.2.1.tgz"
-  integrity sha512-U8hsyC9YPcEIzoaObJlRDvp7KiF0MGS7xcWbyJSVvXRkC/HXo1f0oYeBYmEvVgRfacw7GHf6D6yAoh9JHz6A5Q==
-  dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    "@azure/core-auth" "^1.5.0"
-    "@azure/core-client" "^1.4.0"
-    "@azure/core-rest-pipeline" "^1.1.0"
-    "@azure/core-tracing" "^1.0.0"
-    "@azure/core-util" "^1.3.0"
-    "@azure/logger" "^1.0.0"
-    "@azure/msal-browser" "^3.11.1"
-    "@azure/msal-node" "^2.9.2"
-    events "^3.0.0"
-    jws "^4.0.0"
-    open "^8.0.0"
-    stoppable "^1.1.0"
-    tslib "^2.2.0"
 
 "@azure/identity@~4.5.0":
   version "4.5.0"
@@ -190,14 +135,15 @@
     stoppable "^1.1.0"
     tslib "^2.2.0"
 
-"@azure/logger@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@azure/logger/-/logger-1.0.3.tgz"
-  integrity sha512-aK4s3Xxjrx3daZr3VylxejK3vG5ExXck5WOHDJ8in/k9AqlfIyFMMT1uG7u8mNjX+QRILTIn0/Xgschfh/dQ9g==
+"@azure/logger@^1.0.0", "@azure/logger@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@azure/logger/-/logger-1.3.0.tgz"
+  integrity sha512-fCqPIfOcLE+CGqGPd66c8bZpwAji98tZ4JI9i/mlTNTlsIWslCfpg48s/ypyLxZTump5sypjrKn2/kY7q8oAbA==
   dependencies:
-    tslib "^2.2.0"
+    "@typespec/ts-http-runtime" "^0.3.0"
+    tslib "^2.6.2"
 
-"@azure/msal-browser@^3.11.1", "@azure/msal-browser@^3.26.1":
+"@azure/msal-browser@^3.26.1":
   version "3.26.1"
   resolved "https://registry.npmjs.org/@azure/msal-browser/-/msal-browser-3.26.1.tgz"
   integrity sha512-y78sr9g61aCAH9fcLO1um+oHFXc1/5Ap88RIsUSuzkm0BHzFnN+PXGaQeuM1h5Qf5dTnWNOd6JqkskkMPAhh7Q==
@@ -209,7 +155,7 @@
   resolved "https://registry.npmjs.org/@azure/msal-common/-/msal-common-14.15.0.tgz"
   integrity sha512-ImAQHxmpMneJ/4S8BRFhjt1MZ3bppmpRPYYNyzeQPeFN288YKbb8TmmISQEbtfkQ1BPASvYZU5doIZOPBAqENQ==
 
-"@azure/msal-node@^2.15.0", "@azure/msal-node@^2.9.2":
+"@azure/msal-node@^2.15.0":
   version "2.15.0"
   resolved "https://registry.npmjs.org/@azure/msal-node/-/msal-node-2.15.0.tgz"
   integrity sha512-gVPW8YLz92ZeCibQH2QUw96odJoiM3k/ZPH3f2HxptozmH6+OnyyvKXo/Egg39HAM230akarQKHf0W74UHlh0Q==
@@ -217,20 +163,6 @@
     "@azure/msal-common" "14.15.0"
     jsonwebtoken "^9.0.0"
     uuid "^8.3.0"
-
-"@azure/storage-blob@~12.17.0":
-  version "12.17.0"
-  resolved "https://registry.npmjs.org/@azure/storage-blob/-/storage-blob-12.17.0.tgz"
-  integrity sha512-sM4vpsCpcCApagRW5UIjQNlNylo02my2opgp0Emi8x888hZUvJ3dN69Oq20cEGXkMUWnoCrBaB0zyS3yeB87sQ==
-  dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    "@azure/core-http" "^3.0.0"
-    "@azure/core-lro" "^2.2.0"
-    "@azure/core-paging" "^1.1.1"
-    "@azure/core-tracing" "1.0.0-preview.13"
-    "@azure/logger" "^1.0.0"
-    events "^3.0.0"
-    tslib "^2.2.0"
 
 "@azure/storage-blob@~12.26.0":
   version "12.26.0"
@@ -600,25 +532,25 @@
     "@fluentui/set-version" "^8.2.24"
     tslib "^2.1.0"
 
-"@fluentui/font-icons-mdl2@^8.5.12", "@fluentui/font-icons-mdl2@^8.5.60":
-  version "8.5.60"
-  resolved "https://registry.npmjs.org/@fluentui/font-icons-mdl2/-/font-icons-mdl2-8.5.60.tgz"
-  integrity sha512-PpS+lJrgIOHjDa1IiV13OSpcBrwldXuN+cz24qfqolmLRZ0NNeiWnhcOwse9Q5jxXc9JpY9kdPt9ECYtunzzaw==
+"@fluentui/font-icons-mdl2@^8.5.12", "@fluentui/font-icons-mdl2@^8.5.60", "@fluentui/font-icons-mdl2@^8.5.63":
+  version "8.5.63"
+  resolved "https://registry.npmjs.org/@fluentui/font-icons-mdl2/-/font-icons-mdl2-8.5.63.tgz"
+  integrity sha512-aSwI7GiIICvzrzok8xV082U1U8oieyjELUFjyocC12/WoAYUdLJAk3L4nh4o4WaFgpfHmbtBul7GIeJBDQxaHA==
   dependencies:
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/style-utilities" "^8.12.0"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/style-utilities" "^8.12.4"
+    "@fluentui/utilities" "^8.15.23"
     tslib "^2.1.0"
 
-"@fluentui/foundation-legacy@^8.2.32", "@fluentui/foundation-legacy@^8.4.26":
-  version "8.4.26"
-  resolved "https://registry.npmjs.org/@fluentui/foundation-legacy/-/foundation-legacy-8.4.26.tgz"
-  integrity sha512-kTOdBGk7xPK3usD4uQ77+2UrK9AsAp0CeAboEBSvV/1wO6uI86IWGN7iyvSaqnnZHRJ8k5VAMrE2lHRJsOveag==
+"@fluentui/foundation-legacy@^8.2.32", "@fluentui/foundation-legacy@^8.4.26", "@fluentui/foundation-legacy@^8.4.30":
+  version "8.4.30"
+  resolved "https://registry.npmjs.org/@fluentui/foundation-legacy/-/foundation-legacy-8.4.30.tgz"
+  integrity sha512-BQv7CqILjI+xKMZOOrs01EnuMeRBecmDRze2ThuxB8vZx+xTmBgDlrRIHnWDFIqfC6dMvNCnBwu6ubgiPk8ybQ==
   dependencies:
     "@fluentui/merge-styles" "^8.6.14"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/style-utilities" "^8.12.0"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/style-utilities" "^8.12.4"
+    "@fluentui/utilities" "^8.15.23"
     tslib "^2.1.0"
 
 "@fluentui/keyboard-key@^0.4.23":
@@ -984,26 +916,26 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-focus@^8.8.18", "@fluentui/react-focus@^8.9.23":
-  version "8.9.23"
-  resolved "https://registry.npmjs.org/@fluentui/react-focus/-/react-focus-8.9.23.tgz"
-  integrity sha512-cBx6E/uM9T55uzwO27cV9iKwfv/o2oZNSTyAdYdJeACIocVeIoH8fFA0zRbWoxwL72cZ9nteO+pKHcb+np2P9w==
+"@fluentui/react-focus@^8.8.18", "@fluentui/react-focus@^8.9.23", "@fluentui/react-focus@^8.9.26":
+  version "8.9.26"
+  resolved "https://registry.npmjs.org/@fluentui/react-focus/-/react-focus-8.9.26.tgz"
+  integrity sha512-mbFsdCSSgpxTxw3dCIek7hmTubxJZT4+7uFRZOo0abKKCn6rWGcQWpiLT9ndJrD6I5TtEzJaw68WEk7kvFYyAw==
   dependencies:
     "@fluentui/keyboard-key" "^0.4.23"
     "@fluentui/merge-styles" "^8.6.14"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/style-utilities" "^8.12.0"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/style-utilities" "^8.12.4"
+    "@fluentui/utilities" "^8.15.23"
     tslib "^2.1.0"
 
-"@fluentui/react-hooks@^8.6.18", "@fluentui/react-hooks@^8.8.17":
-  version "8.8.17"
-  resolved "https://registry.npmjs.org/@fluentui/react-hooks/-/react-hooks-8.8.17.tgz"
-  integrity sha512-P1GFAuG8IbRJa5nRZYbHsgYjqvPctZpsGXTxRUTLelYhUy1t2b2eiG2Eom/JFjNHazAEWwDRxwCgEPesdJbY3Q==
+"@fluentui/react-hooks@^8.6.18", "@fluentui/react-hooks@^8.8.17", "@fluentui/react-hooks@^8.8.19":
+  version "8.8.19"
+  resolved "https://registry.npmjs.org/@fluentui/react-hooks/-/react-hooks-8.8.19.tgz"
+  integrity sha512-uXcETVTl2L0G/Ocyb2Rjym96tcJd2NaZ2Hqt6EJcBb9KJD9irNeXjCCxsRNPC5kBDbfrQML2aai+M2kU9lZKNQ==
   dependencies:
-    "@fluentui/react-window-provider" "^2.2.29"
+    "@fluentui/react-window-provider" "^2.2.30"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/utilities" "^8.15.22"
     tslib "^2.1.0"
 
 "@fluentui/react-icons@^2.0.237", "@fluentui/react-icons@^2.0.239", "@fluentui/react-icons@^2.0.245", "@fluentui/react-icons@~2.0.258":
@@ -1217,10 +1149,10 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-portal-compat-context@^9.0.13", "@fluentui/react-portal-compat-context@^9.0.4":
-  version "9.0.13"
-  resolved "https://registry.npmjs.org/@fluentui/react-portal-compat-context/-/react-portal-compat-context-9.0.13.tgz"
-  integrity sha512-N+c6Qs775jnr/4WIzsQuNaRu4v16fa+gGsOCzzU1bqxX0IR9BSjjO2oLGC6luaAOqlQP+JIwn/aumOIJICKXkA==
+"@fluentui/react-portal-compat-context@^9.0.13", "@fluentui/react-portal-compat-context@^9.0.14", "@fluentui/react-portal-compat-context@^9.0.4":
+  version "9.0.14"
+  resolved "https://registry.npmjs.org/@fluentui/react-portal-compat-context/-/react-portal-compat-context-9.0.14.tgz"
+  integrity sha512-OyAaHIbkwqlIgStd8qnS2gcZMmrNokesCUnmELzaygTHJ8Q4L9BPlah98b0wRFf5Sdeu1EPT6nDgn3VuLGqSnQ==
   dependencies:
     "@swc/helpers" "^0.5.1"
 
@@ -1662,31 +1594,31 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-window-provider@^2.2.29", "@fluentui/react-window-provider@^2.2.7":
-  version "2.2.29"
-  resolved "https://registry.npmjs.org/@fluentui/react-window-provider/-/react-window-provider-2.2.29.tgz"
-  integrity sha512-4hK3UFH/TESnkuwTsE5yPTa0tgCmdoMHVynJrPQj0cBKcgZfcbb/l2lUwwtdxtAJ7K1x6yeNUC1rMLGosfeDJQ==
+"@fluentui/react-window-provider@^2.2.29", "@fluentui/react-window-provider@^2.2.30", "@fluentui/react-window-provider@^2.2.7":
+  version "2.2.30"
+  resolved "https://registry.npmjs.org/@fluentui/react-window-provider/-/react-window-provider-2.2.30.tgz"
+  integrity sha512-2SXuiZcU29W0D9zfExcTfzVx97OI50YCn5fGGO0bTDuP5VxzTQp1mipAY4qm/yJMMinoXkzBGLl1rK0Tdtxh1w==
   dependencies:
     "@fluentui/set-version" "^8.2.24"
     tslib "^2.1.0"
 
 "@fluentui/react@^8.122.9":
-  version "8.122.15"
-  resolved "https://registry.npmjs.org/@fluentui/react/-/react-8.122.15.tgz"
-  integrity sha512-uh0zZooMeGZj5F5fxLY8tjfALAHnJMFUBeiVEt5D6ZGVLr/bEUq9EDUBmyOYS/o5RpHuY55I4rT5+Ua/iLzKVw==
+  version "8.123.6"
+  resolved "https://registry.npmjs.org/@fluentui/react/-/react-8.123.6.tgz"
+  integrity sha512-z/y2Zqz3oeqb9VtWAtkvwt1yJ0TCJgqgU8hTGEUl6SuwXZqb0jTJamXXfB7T1DlSOkf2mTXaMU4alXX/odaONQ==
   dependencies:
     "@fluentui/date-time-utilities" "^8.6.10"
-    "@fluentui/font-icons-mdl2" "^8.5.60"
-    "@fluentui/foundation-legacy" "^8.4.26"
+    "@fluentui/font-icons-mdl2" "^8.5.63"
+    "@fluentui/foundation-legacy" "^8.4.30"
     "@fluentui/merge-styles" "^8.6.14"
-    "@fluentui/react-focus" "^8.9.23"
-    "@fluentui/react-hooks" "^8.8.17"
-    "@fluentui/react-portal-compat-context" "^9.0.13"
-    "@fluentui/react-window-provider" "^2.2.29"
+    "@fluentui/react-focus" "^8.9.26"
+    "@fluentui/react-hooks" "^8.8.19"
+    "@fluentui/react-portal-compat-context" "^9.0.14"
+    "@fluentui/react-window-provider" "^2.2.30"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/style-utilities" "^8.12.0"
-    "@fluentui/theme" "^2.6.65"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/style-utilities" "^8.12.4"
+    "@fluentui/theme" "^2.6.67"
+    "@fluentui/utilities" "^8.15.23"
     "@microsoft/load-themed-styles" "^1.10.26"
     tslib "^2.1.0"
 
@@ -1717,26 +1649,26 @@
   dependencies:
     tslib "^2.1.0"
 
-"@fluentui/style-utilities@^8.12.0", "@fluentui/style-utilities@^8.9.5":
-  version "8.12.0"
-  resolved "https://registry.npmjs.org/@fluentui/style-utilities/-/style-utilities-8.12.0.tgz"
-  integrity sha512-uBHPzZ1waIOj/lQG6Z8jjAilKnePqvFWJi2UHYAfezQM6HXoGpE0sUZWECYNPU+fL0/LTNF8FmfvYPFD0frVGw==
+"@fluentui/style-utilities@^8.12.0", "@fluentui/style-utilities@^8.12.4", "@fluentui/style-utilities@^8.9.5":
+  version "8.12.4"
+  resolved "https://registry.npmjs.org/@fluentui/style-utilities/-/style-utilities-8.12.4.tgz"
+  integrity sha512-s+u9v5gQ1SMLsuI7pUP2rXo6Kd2v+X2l4eKQxKO4UO0dZv/kLaA4fnmkXaIDpKkLS+eI9KBAG/W2KhojwBSt1g==
   dependencies:
     "@fluentui/merge-styles" "^8.6.14"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/theme" "^2.6.65"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/theme" "^2.6.67"
+    "@fluentui/utilities" "^8.15.23"
     "@microsoft/load-themed-styles" "^1.10.26"
     tslib "^2.1.0"
 
-"@fluentui/theme@^2.6.24", "@fluentui/theme@^2.6.65":
-  version "2.6.65"
-  resolved "https://registry.npmjs.org/@fluentui/theme/-/theme-2.6.65.tgz"
-  integrity sha512-i90fReoSoq5KTqjUfac7eT26og1uSMaC+PoBsmvqVu1Oj0zXJKGb/5HJXXCAfQYr7QQkUXw0YiyfjCkdzl2R6w==
+"@fluentui/theme@^2.6.24", "@fluentui/theme@^2.6.65", "@fluentui/theme@^2.6.67":
+  version "2.6.67"
+  resolved "https://registry.npmjs.org/@fluentui/theme/-/theme-2.6.67.tgz"
+  integrity sha512-+9+VkIkZ+NCQDXFP6+WV2ChAj/KHphOEDCvGO15w8ql7sqRxeRQACtoWYNq1tAAsodbnq/amCfo2PNy2VIcIOQ==
   dependencies:
     "@fluentui/merge-styles" "^8.6.14"
     "@fluentui/set-version" "^8.2.24"
-    "@fluentui/utilities" "^8.15.20"
+    "@fluentui/utilities" "^8.15.22"
     tslib "^2.1.0"
 
 "@fluentui/tokens@1.0.0-alpha.21":
@@ -1746,14 +1678,14 @@
   dependencies:
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/utilities@^8.13.8", "@fluentui/utilities@^8.15.19", "@fluentui/utilities@^8.15.20":
-  version "8.15.20"
-  resolved "https://registry.npmjs.org/@fluentui/utilities/-/utilities-8.15.20.tgz"
-  integrity sha512-sG4d8t6WvN7bPWz+zbYC33hmc5kGm3wcRupSWxc9rS0HJPKbJ04e4o5jd7KnBnBE4oWsB4axvhyaZmy2IB7P4Q==
+"@fluentui/utilities@^8.13.8", "@fluentui/utilities@^8.15.19", "@fluentui/utilities@^8.15.20", "@fluentui/utilities@^8.15.22", "@fluentui/utilities@^8.15.23":
+  version "8.15.23"
+  resolved "https://registry.npmjs.org/@fluentui/utilities/-/utilities-8.15.23.tgz"
+  integrity sha512-Vrto/daJ8lhwAZqf5XkC3qi+4PW8Dk2X0yXNgia9aV2wxsbMoEikqC08cNQnapTaBLkurAIShTbR56mxKh8Kyw==
   dependencies:
     "@fluentui/dom-utilities" "^2.3.10"
     "@fluentui/merge-styles" "^8.6.14"
-    "@fluentui/react-window-provider" "^2.2.29"
+    "@fluentui/react-window-provider" "^2.2.30"
     "@fluentui/set-version" "^8.2.24"
     tslib "^2.1.0"
 
@@ -2124,19 +2056,19 @@
     source-map "~0.6.1"
     typescript "~4.2.4"
 
-"@microsoft/eslint-config-spfx@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/eslint-config-spfx/-/eslint-config-spfx-1.21.0.tgz"
-  integrity sha512-yE0j681RjGhAMCnsIOGl4uMTXvTfJ7G1PRSsFuamNu8PfVXyuldUsgpj9CEBNkLPnQKpfCqhhTGcnQi8cxv0JQ==
+"@microsoft/eslint-config-spfx@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/eslint-config-spfx/-/eslint-config-spfx-1.21.1.tgz"
+  integrity sha512-7PlBiLrP7FLqI/9zAFfyfrasgZTJiaDF+MGZ/Nn25Uw56GOnuc1aGy0UVbCdo91/L4u4NnQ2UudOr27iKN7C1g==
   dependencies:
-    "@microsoft/eslint-plugin-spfx" "1.21.0"
+    "@microsoft/eslint-plugin-spfx" "1.21.1"
     "@rushstack/eslint-config" "4.3.0"
     "@typescript-eslint/utils" "8.26.1"
 
-"@microsoft/eslint-plugin-spfx@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/eslint-plugin-spfx/-/eslint-plugin-spfx-1.21.0.tgz"
-  integrity sha512-+rAFxCmS/1KVrKeeUxdqv9E1mlbWEizbFMR7E00l1vKQDK6hFj+745nenqyicWIMnJTq1eXqvpWXyz3A9Hi0Og==
+"@microsoft/eslint-plugin-spfx@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/eslint-plugin-spfx/-/eslint-plugin-spfx-1.21.1.tgz"
+  integrity sha512-Ox9GfnX/2SEICBVfVz5wRN09hHYKFXfXf1KnY4mbUAjZVMRG8ZdoJERMFp7QU8YB+mbLp/cxmzzAnRcox8b4jA==
   dependencies:
     "@typescript-eslint/utils" "8.26.1"
 
@@ -2248,20 +2180,15 @@
   resolved "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.295.tgz"
   integrity sha512-W+IzEBw8a6LOOfRJM02dTT7BDZijxm+Z7lhtOAz1+y9vQm1Kdz9jlAO+qCEKsfxtUOmKilW8DIRqFw2aUgKeGg==
 
-"@microsoft/load-themed-styles@^2.0.113", "@microsoft/load-themed-styles@2.0.142":
-  version "2.0.142"
-  resolved "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-2.0.142.tgz"
-  integrity sha512-ee7XGfseTf91ZsLXckYwAsLmQpFVLCOr0GbVtdsKU4MmUe3eQ1FR2P7T2023dCgks131eWK4l2oVfazKIz2gVA==
+"@microsoft/load-themed-styles@^2.0.113", "@microsoft/load-themed-styles@2.0.168":
+  version "2.0.168"
+  resolved "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-2.0.168.tgz"
+  integrity sha512-r/iVdemMF9EihqSU8XPMG6hvRnEQkgqMgPFBC0YRpip1D/B5Zema5ALabYiPoq+RJ9Hzmzt075gdvZ0NSSrH1A==
 
 "@microsoft/load-themed-styles@~1.10.172":
   version "1.10.295"
   resolved "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.295.tgz"
   integrity sha512-W+IzEBw8a6LOOfRJM02dTT7BDZijxm+Z7lhtOAz1+y9vQm1Kdz9jlAO+qCEKsfxtUOmKilW8DIRqFw2aUgKeGg==
-
-"@microsoft/load-themed-styles@2.0.168":
-  version "2.0.168"
-  resolved "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-2.0.168.tgz"
-  integrity sha512-r/iVdemMF9EihqSU8XPMG6hvRnEQkgqMgPFBC0YRpip1D/B5Zema5ALabYiPoq+RJ9Hzmzt075gdvZ0NSSrH1A==
 
 "@microsoft/loader-load-themed-styles@2.1.37":
   version "2.1.37"
@@ -2287,61 +2214,10 @@
     isomorphic-fetch "^3.0.0"
     tslib "^1.9.3"
 
-"@microsoft/microsoft-graph-types@^2.40.0":
+"@microsoft/microsoft-graph-types@^2.40.0", "@microsoft/microsoft-graph-types@2.40.0":
   version "2.40.0"
   resolved "https://registry.npmjs.org/@microsoft/microsoft-graph-types/-/microsoft-graph-types-2.40.0.tgz"
   integrity sha512-1fcPVrB/NkbNcGNfCy+Cgnvwxt6/sbIEEFgZHFBJ670zYLegENYJF8qMo7x3LqBjWX2/Eneq5BVVRCLTmlJN+g==
-
-"@microsoft/microsoft-graph-types@2.25.0":
-  version "2.25.0"
-  resolved "https://registry.npmjs.org/@microsoft/microsoft-graph-types/-/microsoft-graph-types-2.25.0.tgz"
-  integrity sha512-H/HK4MsRJ1H+G/HwbU/z225BKwzoMU3fawD8xivGxDgyGIDzdZf07Ruz/wPSM+tSJJin/swz3TwFllxveduG8Q==
-
-"@microsoft/rush-lib@5.135.0-pr4927.1":
-  version "5.135.0-pr4927.1"
-  resolved "https://registry.npmjs.org/@microsoft/rush-lib/-/rush-lib-5.135.0-pr4927.1.tgz"
-  integrity sha512-9HbxSdTGxEeLaZB3srs4iH4wH5zXIWOmOPTX9xXm70/Ue2futK4Iar7WUVE21bgBYLCf6+v51ILaCddvE7fr3w==
-  dependencies:
-    "@pnpm/dependency-path" "~2.1.2"
-    "@pnpm/link-bins" "~5.3.7"
-    "@rushstack/heft-config-file" "0.15.7"
-    "@rushstack/lookup-by-path" "0.2.2"
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/package-deps-hash" "4.2.0"
-    "@rushstack/package-extractor" "0.9.1"
-    "@rushstack/rig-package" "0.5.3"
-    "@rushstack/rush-amazon-s3-build-cache-plugin" "5.135.0-pr4927.1"
-    "@rushstack/rush-azure-storage-build-cache-plugin" "5.135.0-pr4927.1"
-    "@rushstack/rush-http-build-cache-plugin" "5.135.0-pr4927.1"
-    "@rushstack/stream-collator" "4.1.67"
-    "@rushstack/terminal" "0.14.2"
-    "@rushstack/ts-command-line" "4.22.8"
-    "@types/node-fetch" "2.6.2"
-    "@yarnpkg/lockfile" "~1.0.2"
-    builtin-modules "~3.1.0"
-    cli-table "~0.3.1"
-    dependency-path "~9.2.8"
-    fast-glob "~3.3.1"
-    figures "3.0.0"
-    git-repo-info "~2.1.0"
-    glob-escape "~0.0.2"
-    https-proxy-agent "~5.0.0"
-    ignore "~5.1.6"
-    inquirer "~7.3.3"
-    js-yaml "~3.13.1"
-    node-fetch "2.6.7"
-    npm-check "~6.0.1"
-    npm-package-arg "~6.1.0"
-    pnpm-sync-lib "0.2.9"
-    read-package-tree "~5.1.5"
-    rxjs "~6.6.7"
-    semver "~7.5.4"
-    ssri "~8.0.0"
-    strict-uri-encode "~2.0.0"
-    tapable "2.2.1"
-    tar "~6.2.1"
-    "true-case-path" "~2.2.1"
-    uuid "~8.3.2"
 
 "@microsoft/rush-lib@5.150.0":
   version "5.150.0"
@@ -2412,34 +2288,34 @@
     import-lazy "~4.0.0"
     typescript "~5.3.3"
 
-"@microsoft/sp-adaptive-card-extension-base@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-adaptive-card-extension-base/-/sp-adaptive-card-extension-base-1.21.0.tgz"
-  integrity sha512-ES7yPO482tnZQgAiUUgceKJ8nLpr/3ZhY0QC8esNuzhTHoH+TXaqNiD0yWMTPhGhEJTCwJR/roNazRACPTugWQ==
+"@microsoft/sp-adaptive-card-extension-base@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-adaptive-card-extension-base/-/sp-adaptive-card-extension-base-1.21.1.tgz"
+  integrity sha512-/0M0maRB1gtZCAy6GvNZklv+9yl4ccrqj77yWTe0b+szGmvdkWIBd2AqS0bkpzZPTyl7lkiDBckEzxbKmRyB/Q==
   dependencies:
-    "@microsoft/sp-component-base" "1.21.0"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-http" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-loader" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
-    "@microsoft/sp-property-pane" "1.21.0"
+    "@microsoft/sp-component-base" "1.21.1"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-http" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-loader" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
+    "@microsoft/sp-property-pane" "1.21.1"
     "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.32.0"
     "@swc/helpers" "0.5.12"
     adaptivecards "2.11.2"
     tslib "2.3.1"
 
-"@microsoft/sp-build-core-tasks@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-build-core-tasks/-/sp-build-core-tasks-1.21.0.tgz"
-  integrity sha512-4/KrUaRBsDJPhL5wnJ3O4HUWOJqYekmADJAWmZG3ZsyxNiFCPIVVyhieiLPBcK6ktkgtnzPgxU83/VG9WSCwSw==
+"@microsoft/sp-build-core-tasks@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-build-core-tasks/-/sp-build-core-tasks-1.21.1.tgz"
+  integrity sha512-JspUAKqVrl4Ewv0EBvyqkdUR0L9nk03CrIBvnJIZYRKTaFzi63h0QGCcqXbDnAJxlc5SQX/rYzNwj7KEGKedWA==
   dependencies:
     "@microsoft/gulp-core-build" "3.19.0"
     "@microsoft/gulp-core-build-serve" "3.13.0"
     "@microsoft/gulp-core-build-webpack" "6.0.3"
-    "@microsoft/spfx-heft-plugins" "1.21.0"
+    "@microsoft/spfx-heft-plugins" "1.21.1"
     "@rushstack/node-core-library" "5.12.0"
     "@rushstack/terminal" "0.15.1"
     "@types/lodash" "4.14.117"
@@ -2448,64 +2324,47 @@
     lodash "4.17.21"
     webpack "~5.95.0"
 
-"@microsoft/sp-build-web@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-build-web/-/sp-build-web-1.21.0.tgz"
-  integrity sha512-/Ltz09GeZ+woJ+/ZmDucLapYJ1GNQ5of1Ubdapbrv/TrgmzJpOasekXXALH/vSycST8eHrTDQNVYGR4byZoSlQ==
+"@microsoft/sp-build-web@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-build-web/-/sp-build-web-1.21.1.tgz"
+  integrity sha512-dML/6GBpFbfLo8R+AWnQD+V6fDjfYi5sbtFjJSvA8B446S70Lbj1rhTXSfZxdYLD29R0jnNmwPzRVGkfWsI56Q==
   dependencies:
     "@microsoft/gulp-core-build" "3.19.0"
     "@microsoft/gulp-core-build-sass" "4.17.3"
     "@microsoft/gulp-core-build-serve" "3.13.0"
     "@microsoft/gulp-core-build-typescript" "8.6.3"
     "@microsoft/gulp-core-build-webpack" "6.0.3"
-    "@microsoft/sp-build-core-tasks" "1.21.0"
+    "@microsoft/sp-build-core-tasks" "1.21.1"
     gulp "4.0.2"
     semver "~7.3.2"
     webpack "~5.95.0"
     yargs "~4.6.0"
 
-"@microsoft/sp-component-base@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-component-base/-/sp-component-base-1.21.0.tgz"
-  integrity sha512-hrTHvcLdrvAO8kvaviDCH2aRP/6j1r+vUdspb4yF5EDfEbN8czXxaJ/3WGMezZRzsEJp90Ll/OBv1TjBjX09VQ==
+"@microsoft/sp-component-base@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-component-base/-/sp-component-base-1.21.1.tgz"
+  integrity sha512-MpwpuvvT6LVZ91hfxOVp6WkUfuTfqiVOGriM1SCioVLkACvTVvFtqROhFlfSg7EzNiu9QgNbiH0Za43voQYlaA==
   dependencies:
     "@fluentui/react" "^8.122.9"
     "@fluentui/react-components" "^9.58.3"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-dynamic-data" "1.21.0"
-    "@microsoft/sp-http" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-dynamic-data" "1.21.1"
+    "@microsoft/sp-http" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-core-library@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-core-library/-/sp-core-library-1.21.0.tgz"
-  integrity sha512-kkR8egfiniDARAKo1h8spPwNsKToYIw+i+DmgxZDxSF0O7i44+g4xeg73NvbgDLyb4onwT6OL8ynmGc3gkMeWA==
+"@microsoft/sp-core-library@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-core-library/-/sp-core-library-1.21.1.tgz"
+  integrity sha512-yFhv6fSqMqvnp9YgihtGfy9ISyEjvHlFpavDmWQKiNdctqY3admuzhXF4c9o7GY60ICPJYs9Wrspda+HBsnbSw==
   dependencies:
-    "@microsoft/sp-module-interfaces" "1.21.0"
+    "@microsoft/sp-module-interfaces" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
-
-"@microsoft/sp-css-loader@1.20.2":
-  version "1.20.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-css-loader/-/sp-css-loader-1.20.2.tgz"
-  integrity sha512-s11fA/tR1rqSRcfb2dCAvN0iUYIqLF3ykAWSETiQLFU9wsJXry3hJwQskuPHm4DbweiEkdHcVJWWgLvDH6pTNw==
-  dependencies:
-    "@microsoft/load-themed-styles" "2.0.142"
-    "@rushstack/node-core-library" "5.9.0"
-    autoprefixer "9.7.1"
-    css-loader "3.4.2"
-    cssnano "~5.1.14"
-    loader-utils "~3.2.1"
-    postcss "^8.4.19"
-    postcss-modules-extract-imports "~3.0.0"
-    postcss-modules-local-by-default "~4.0.0"
-    postcss-modules-scope "~3.0.0"
-    postcss-modules-values "~4.0.0"
 
 "@microsoft/sp-css-loader@1.21.0":
   version "1.21.0"
@@ -2524,92 +2383,109 @@
     postcss-modules-scope "~3.0.0"
     postcss-modules-values "~4.0.0"
 
-"@microsoft/sp-diagnostics@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-diagnostics/-/sp-diagnostics-1.21.0.tgz"
-  integrity sha512-EfY2U7v3Fn8PPlZ5nUrWfgzgHzBkPicBKtWPixFdNwWHCoql9iz1XesCivoQcoDTka0jc55GiaQf4rJeOksceQ==
+"@microsoft/sp-css-loader@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-css-loader/-/sp-css-loader-1.21.1.tgz"
+  integrity sha512-thc3vuTTIkMrJV1iyCxDFEkNohVtEscL62X73uccObgYSwzqLB2cudUl0IDjd3nPPfLnL60QSzIkdnCDhxPYpg==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
+    "@microsoft/load-themed-styles" "2.0.168"
+    "@rushstack/node-core-library" "5.12.0"
+    autoprefixer "9.7.1"
+    css-loader "3.4.2"
+    cssnano "~5.1.14"
+    loader-utils "~3.2.1"
+    postcss "^8.4.19"
+    postcss-modules-extract-imports "~3.0.0"
+    postcss-modules-local-by-default "~4.0.0"
+    postcss-modules-scope "~3.0.0"
+    postcss-modules-values "~4.0.0"
 
-"@microsoft/sp-dynamic-data@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-dynamic-data/-/sp-dynamic-data-1.21.0.tgz"
-  integrity sha512-NAGxy0wmaK68/cR82Uxvf5rNNvF2ljHySDhmHMES5bHspUTeL37IDSQGLuGofP21RYrWyFO2VxPOHSZbyYm79Q==
+"@microsoft/sp-diagnostics@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-diagnostics/-/sp-diagnostics-1.21.1.tgz"
+  integrity sha512-MpiCTXIIAOV56H/uaPhGIf/+rLectIrh2Gfhl+VUKCHE14DhCB98ct/2OK3VlKOKLV6yLu6JeH4MobDTHdS2NA==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+
+"@microsoft/sp-dynamic-data@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-dynamic-data/-/sp-dynamic-data-1.21.1.tgz"
+  integrity sha512-CG1qIF1jgDdK18a9+mjjPbRYK6MJJBnGe6xiZTkKzOPFtEnL/xHwNUCDqXVSnN0imsc3RHu1cfhPLZ5VzAuHPA==
+  dependencies:
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-http-base@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http-base/-/sp-http-base-1.21.0.tgz"
-  integrity sha512-RucGfaRKUcBBFxTReD7hpdIEio0bp5eNPEtQ90Ehu83LqCzzGl67sdNv1QcXcHee5GaR8oVHudtf+xCRfogPlg==
+"@microsoft/sp-http-base@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-http-base/-/sp-http-base-1.21.1.tgz"
+  integrity sha512-nJtttro64yc5UwPIJyz/H+w4tqzn/5nduzJvGIqQj3Q0kYTWaV7qjESYgOCfWmZvS1K+BtbAf3A0M8PwbcPLgg==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
     "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.32.0"
     "@swc/helpers" "0.5.12"
     adal-angular "1.0.16"
     tslib "2.3.1"
 
-"@microsoft/sp-http-msgraph@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http-msgraph/-/sp-http-msgraph-1.21.0.tgz"
-  integrity sha512-sWucsi4gvRCO0tEjG6U52CfWN9aWVl6K6k5vkOkKmXZIaZEiVNp8Uuo2mZF3wftowXIECArsiNDcLqa1AbnIow==
+"@microsoft/sp-http-msgraph@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-http-msgraph/-/sp-http-msgraph-1.21.1.tgz"
+  integrity sha512-xpzNtVJR9YtXkql6HokvsvDUIZd7cRxT9Id8o9Q2WbRzarL6FtQZisqb4/7qodrZkKMyUJJpEezXnbqyI/7smQ==
   dependencies:
     "@microsoft/microsoft-graph-clientv1" "npm:@microsoft/microsoft-graph-client@1.7.2-spfx"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-loader" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-loader" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-http@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http/-/sp-http-1.21.0.tgz"
-  integrity sha512-3BgF61VLdWuccoxpRbXMhXoAzzk10L9KSxqG7BaL7Zy45LNuPNMjdZle7MuZmaeXL0HaMyY+Yl6lq3z/5yWCNw==
+"@microsoft/sp-http@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-http/-/sp-http-1.21.1.tgz"
+  integrity sha512-6Gvq0iqdWG19jfQhv2u6lgYUjSQKcduf36XaVLg3JAUT2fayQ+LTQAi15nt6kwN3RRnHWBwC4Lh07M0z9/AlLg==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-http-msgraph" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-http-msgraph" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-image-helper@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-image-helper/-/sp-image-helper-1.21.0.tgz"
-  integrity sha512-w7/JEbGKVeTSA08u0KLNkQ1tj9KKmKFfnzE8tmzq0Ki6MU6yfX9bZ47lxSWhYKNnTI85nCwtP/2wOBfLevFKvQ==
+"@microsoft/sp-image-helper@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-image-helper/-/sp-image-helper-1.21.1.tgz"
+  integrity sha512-2XVLItq19XqzZgXWamBcFRtC+Hl7u9BwHovfQy6XJ0FcbUzEIZ1WGRN8Y54EDuSSyz/aE+49MpUHV70eqKoTJQ==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-loader" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-loader" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-loader@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-loader/-/sp-loader-1.21.0.tgz"
-  integrity sha512-FAqJRj3pTfO0ZnG1V7zPqZ3XNYvanJfR3gkErEEXryeqc0xxvlLsLswYJVZi0rCBvztEJYcSoPQ912irAciQAQ==
+"@microsoft/sp-loader@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-loader/-/sp-loader-1.21.1.tgz"
+  integrity sha512-AYvJ3I30ECiaSYk8twKZYHMNiSW/udE3JgaIXlltQBBCgjN/HhVuMCMN1YpOgVW8OZGCtvNCc9Thmrq6kbuTBw==
   dependencies:
     "@fluentui/react" "^8.122.9"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-dynamic-data" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
-    "@microsoft/sp-odata-types" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-dynamic-data" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
+    "@microsoft/sp-odata-types" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
     "@rushstack/loader-raw-script" "1.4.92"
     "@swc/helpers" "0.5.12"
     "@types/requirejs" "2.1.29"
@@ -2619,22 +2495,14 @@
     requirejs "2.3.7"
     tslib "2.3.1"
 
-"@microsoft/sp-lodash-subset@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-lodash-subset/-/sp-lodash-subset-1.21.0.tgz"
-  integrity sha512-WcvJU/aghnsJ62w5op18tbXeKgfqqHVCw8sDQ8skCT0IJ/VwPUY41ZEREniXNt7s4kQQmneHG1VAUgNx1l5SHQ==
+"@microsoft/sp-lodash-subset@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-lodash-subset/-/sp-lodash-subset-1.21.1.tgz"
+  integrity sha512-5wOwxn96Um5gifI0EIq+sxeQaUppIYSHBn1msK/HY5m91MuntuRwjyA74aCjVkeqzu2gYeMNpMl/RY1mRVuPEw==
   dependencies:
     "@swc/helpers" "0.5.12"
     "@types/lodash" "4.14.117"
     tslib "2.3.1"
-
-"@microsoft/sp-module-interfaces@1.20.2":
-  version "1.20.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-module-interfaces/-/sp-module-interfaces-1.20.2.tgz"
-  integrity sha512-s4hm7PNes++7uviF+aJsqLsrzcaQttye/xuW+8IxMg1b2v/ys1bvfKUucM2N9T2hsz0q8+yWAwwuAl1C3PgBtA==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    z-schema "4.2.4"
 
 "@microsoft/sp-module-interfaces@1.21.0":
   version "1.21.0"
@@ -2644,80 +2512,88 @@
     "@rushstack/node-core-library" "5.12.0"
     z-schema "6.0.2"
 
-"@microsoft/sp-odata-types@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-odata-types/-/sp-odata-types-1.21.0.tgz"
-  integrity sha512-3VaSR+GR6qJYHqex4e9Fhzkkxhu0Y1HG2rLtEoEBEKyYWBHVRad56t2yFjIheTvK45WlopqaY2tf0nEpa0nRcA==
+"@microsoft/sp-module-interfaces@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-module-interfaces/-/sp-module-interfaces-1.21.1.tgz"
+  integrity sha512-ZIz8gKHtVerwrbi6il6qu69PtxOKzpFdL7YAts5BgGeupNjSwO7+rHPsupOz/zqwnXfpSnRMBUD3RFSCh1CnJQ==
+  dependencies:
+    "@rushstack/node-core-library" "5.12.0"
+    z-schema "6.0.2"
+
+"@microsoft/sp-odata-types@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-odata-types/-/sp-odata-types-1.21.1.tgz"
+  integrity sha512-pI7Qbxm+IjIThdUFpO63LwR/oxSLM9qqTbJNng6cRBEYCcNXiLRQiaXWFWP1TrNVTvDVSVThvT6vZZ7YPrz0ig==
   dependencies:
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-office-ui-fabric-core@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-office-ui-fabric-core/-/sp-office-ui-fabric-core-1.21.0.tgz"
-  integrity sha512-sS47Jq71T7YmeY9IqEuyFmpwL04XdRhOOh2nnKfTw2kQjAUM46wDjgI3WFmLvIEYmFRd660scD9xG+wKQ6ObCA==
+"@microsoft/sp-office-ui-fabric-core@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-office-ui-fabric-core/-/sp-office-ui-fabric-core-1.21.1.tgz"
+  integrity sha512-r4rfFvbVi6W02g+ikoyHMxDlcO0iHX0dtf5pK1YfZGnOzHzhkPLyhWWUxP+Jnmu7VoRecsZAw5RcQz09HP6VaQ==
   dependencies:
     "@swc/helpers" "0.5.12"
     office-ui-fabric-core "11.0.1"
     tslib "2.3.1"
 
-"@microsoft/sp-page-context@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-page-context/-/sp-page-context-1.21.0.tgz"
-  integrity sha512-uJclmfDu8k74zEdm0NH2jcRYU+UKgZSasYxxYXrBdFAJsbwUuuKfjFLPptJg3F7Jb4USF621aA8RoE401j/lHA==
+"@microsoft/sp-page-context@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-page-context/-/sp-page-context-1.21.1.tgz"
+  integrity sha512-hrLuhcmK2fxPYq/oWCk4qrzZrnYsjreyZ5rUUN1miYoFUpoPOuPPvZ61G9hONBzht+HAjw6n5G2LwKhCM97d4g==
   dependencies:
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-dynamic-data" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-odata-types" "1.21.0"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-dynamic-data" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-odata-types" "1.21.1"
     "@swc/helpers" "0.5.12"
     tslib "2.3.1"
 
-"@microsoft/sp-property-pane@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-property-pane/-/sp-property-pane-1.21.0.tgz"
-  integrity sha512-6UqMiLIgJP20s6wtE9ylkeg9gsdlwnNhkPv9psidyqARcSQWlzEOlgdToNERx3AH8qq9agt0DJ2sEKkggXaTuA==
+"@microsoft/sp-property-pane@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-property-pane/-/sp-property-pane-1.21.1.tgz"
+  integrity sha512-6xdjKzM05zkiDU90gFvQsRGJNK2HI4PQbc3Hkyzc1AM7KHQzkugiS8nbds0p4HoZGIv1p+4L25FmpZBeQtnfmw==
   dependencies:
     "@fluentui/react" "^8.122.9"
     "@fluentui/react-components" "^9.58.3"
     "@fluentui/react-icons" "~2.0.258"
     "@fluentui/react-tabster" "^9.23.3"
     "@fluentui/utilities" "^8.15.19"
-    "@microsoft/sp-component-base" "1.21.0"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-dynamic-data" "1.21.0"
-    "@microsoft/sp-image-helper" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
+    "@microsoft/sp-component-base" "1.21.1"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-dynamic-data" "1.21.1"
+    "@microsoft/sp-image-helper" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
     "@swc/helpers" "0.5.12"
     react "17.0.1"
     react-dom "17.0.1"
     tslib "2.3.1"
 
-"@microsoft/sp-top-actions@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-top-actions/-/sp-top-actions-1.21.0.tgz"
-  integrity sha512-BZ1b//u38+TPva3o6Fp90V8Ifcp3f2omBvjfSSDIiX1ucBtuF/maV55ZOE5A0thm3LU3jQmhczYWrMbTJNJcXA==
+"@microsoft/sp-top-actions@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-top-actions/-/sp-top-actions-1.21.1.tgz"
+  integrity sha512-ag2fDtYRRg/emS+qEGMr8AZib82QhlGgHZpAonq+pB07ofewlKJAOd/jDACWWZbNdDHNTWByHDPRjoWIu93law==
 
-"@microsoft/sp-webpart-base@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/sp-webpart-base/-/sp-webpart-base-1.21.0.tgz"
-  integrity sha512-YHx+LNxS7YiXV6/OHwmkDzdoPbefv7dqjId0QCI3fkOzHeSve8PdxuXnm1Y2Ce595Vz2X1Hfa7phUHmQlFOI2g==
+"@microsoft/sp-webpart-base@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/sp-webpart-base/-/sp-webpart-base-1.21.1.tgz"
+  integrity sha512-nzjT59nMfjM5b0Zr8J14lyshndJm28x2Tg+Jn3TAwA7PwcntlUosZj+lfTOvAyna8YdJpoc6vCrXSul9fQUSpA==
   dependencies:
     "@fluentui/react" "^8.122.9"
-    "@microsoft/sp-component-base" "1.21.0"
-    "@microsoft/sp-core-library" "1.21.0"
-    "@microsoft/sp-diagnostics" "1.21.0"
-    "@microsoft/sp-http" "1.21.0"
-    "@microsoft/sp-http-base" "1.21.0"
-    "@microsoft/sp-loader" "1.21.0"
-    "@microsoft/sp-lodash-subset" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
-    "@microsoft/sp-page-context" "1.21.0"
-    "@microsoft/sp-property-pane" "1.21.0"
-    "@microsoft/sp-top-actions" "1.21.0"
+    "@microsoft/sp-component-base" "1.21.1"
+    "@microsoft/sp-core-library" "1.21.1"
+    "@microsoft/sp-diagnostics" "1.21.1"
+    "@microsoft/sp-http" "1.21.1"
+    "@microsoft/sp-http-base" "1.21.1"
+    "@microsoft/sp-loader" "1.21.1"
+    "@microsoft/sp-lodash-subset" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
+    "@microsoft/sp-page-context" "1.21.1"
+    "@microsoft/sp-property-pane" "1.21.1"
+    "@microsoft/sp-top-actions" "1.21.1"
     "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.32.0"
     "@swc/helpers" "0.5.12"
     "@types/office-js" "1.0.36"
@@ -2725,25 +2601,26 @@
     react-dom "17.0.1"
     tslib "2.3.1"
 
-"@microsoft/spfx-heft-plugins@1.20.2":
-  version "1.20.2"
-  resolved "https://registry.npmjs.org/@microsoft/spfx-heft-plugins/-/spfx-heft-plugins-1.20.2.tgz"
-  integrity sha512-uExUJxYrBEMkvfe76TFqW9Jz4VpZvopJSSVchqTUCFi6efkqODnzBXXU+6jThY0Du00YbCamnDQfIY4AqA++wQ==
+"@microsoft/spfx-heft-plugins@1.21.0":
+  version "1.21.0"
+  resolved "https://registry.npmjs.org/@microsoft/spfx-heft-plugins/-/spfx-heft-plugins-1.21.0.tgz"
+  integrity sha512-hpcnFKEo8fnzFN3EZmAwfZesHR/AUrnCsJFB73sXpiaofjcxrkJ0VMOwM5vznAyKhhoXirLwAbtnGo059iLKXw==
   dependencies:
-    "@azure/storage-blob" "~12.17.0"
-    "@microsoft/rush-lib" "5.135.0-pr4927.1"
-    "@microsoft/sp-css-loader" "1.20.2"
-    "@microsoft/sp-module-interfaces" "1.20.2"
-    "@rushstack/heft-config-file" "0.15.7"
-    "@rushstack/localization-utilities" "0.12.2"
-    "@rushstack/module-minifier" "0.6.22"
-    "@rushstack/node-core-library" "5.9.0"
+    "@azure/storage-blob" "~12.26.0"
+    "@microsoft/rush-lib" "5.150.0"
+    "@microsoft/sp-css-loader" "1.21.0"
+    "@microsoft/sp-module-interfaces" "1.21.0"
+    "@rushstack/heft-config-file" "0.16.7"
+    "@rushstack/localization-utilities" "0.13.5"
+    "@rushstack/module-minifier" "0.7.12"
+    "@rushstack/node-core-library" "5.12.0"
     "@rushstack/rig-package" "0.5.3"
-    "@rushstack/set-webpack-public-path-plugin" "5.1.50"
-    "@rushstack/terminal" "0.14.2"
-    "@rushstack/webpack5-localization-plugin" "0.11.8"
-    "@rushstack/webpack5-module-minifier-plugin" "5.5.69"
+    "@rushstack/set-webpack-public-path-plugin" "5.1.76"
+    "@rushstack/terminal" "0.15.1"
+    "@rushstack/webpack5-localization-plugin" "0.13.5"
+    "@rushstack/webpack5-module-minifier-plugin" "5.5.96"
     "@types/tapable" "1.0.6"
+    cors "2.8.5"
     express "4.18.1"
     fast-glob "~3.2.12"
     git-repo-info "~2.1.1"
@@ -2755,20 +2632,19 @@
     source-map "0.6.1"
     source-map-loader "~4.0.1"
     tapable "1.1.3"
-    "true-case-path" "~2.2.1"
     uuid "^9.0.0"
-    webpack "~5.88.1"
+    webpack "~5.95.0"
     xml "~1.0.1"
 
-"@microsoft/spfx-heft-plugins@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.npmjs.org/@microsoft/spfx-heft-plugins/-/spfx-heft-plugins-1.21.0.tgz"
-  integrity sha512-hpcnFKEo8fnzFN3EZmAwfZesHR/AUrnCsJFB73sXpiaofjcxrkJ0VMOwM5vznAyKhhoXirLwAbtnGo059iLKXw==
+"@microsoft/spfx-heft-plugins@1.21.1":
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/@microsoft/spfx-heft-plugins/-/spfx-heft-plugins-1.21.1.tgz"
+  integrity sha512-97vdK31iotkzeEoUhgy+HiB23s0i/qBC9ZA3BpyURQDAUYCLWDkeYEf54si7t9zdhPK65M3KP0zksXcO3O4DgA==
   dependencies:
     "@azure/storage-blob" "~12.26.0"
     "@microsoft/rush-lib" "5.150.0"
-    "@microsoft/sp-css-loader" "1.21.0"
-    "@microsoft/sp-module-interfaces" "1.21.0"
+    "@microsoft/sp-css-loader" "1.21.1"
+    "@microsoft/sp-module-interfaces" "1.21.1"
     "@rushstack/heft-config-file" "0.16.7"
     "@rushstack/localization-utilities" "0.13.5"
     "@rushstack/module-minifier" "0.7.12"
@@ -2884,11 +2760,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opentelemetry/api@^1.0.1":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@opentelemetry/api/-/api-1.3.0.tgz"
-  integrity sha512-YveTnGNsFFixTKJz09Oi4zYkiLT5af3WpZDu4aIUM7xX+2bHAkOJayFTVQd6zB8kkWPpbua4Ha6Ql00grdLlJQ==
-
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
@@ -2907,46 +2778,46 @@
     schema-utils "^4.2.0"
     source-map "^0.7.3"
 
-"@pnp/core@^3.10.0", "@pnp/core@3.10.0":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@pnp/core/-/core-3.10.0.tgz"
-  integrity sha512-Nt4vX9KcjlpcCI+FbHdDpXQTVuYIC7HX/TeicvIP7nZz6YhS5LFBoaMn3t5POEvK77bCLrsrmkJVyNvFPHMsMQ==
+"@pnp/core@^4.16.0", "@pnp/core@4.16.0":
+  version "4.16.0"
+  resolved "https://registry.npmjs.org/@pnp/core/-/core-4.16.0.tgz"
+  integrity sha512-BJH3zHnWxBxRe7PkR6K4ab9Zbk3bjiqUrHuDoN3jJehEaaRj+R0//umuibvSjGrwfeu5HaMKtux68dDRh+Or+Q==
   dependencies:
-    tslib "2.4.0"
+    tslib "2.7.0"
 
-"@pnp/graph@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@pnp/graph/-/graph-3.10.0.tgz"
-  integrity sha512-L+qmKfut+NSGcOm1zRz4Z9Girhd8MO7U0o+MWVXGVv6e857kELcWKaItaVf9FOCH8OLo4US7pIfvkZv+InYcKg==
+"@pnp/graph@^4.16.0":
+  version "4.16.0"
+  resolved "https://registry.npmjs.org/@pnp/graph/-/graph-4.16.0.tgz"
+  integrity sha512-PJebN8YHd9Dh9w1Pz6HurVMQ/jGanimobxsheFfb7Pi5fS7HEtY+zbJTbfhOoHicD7MXDzojDHqyQ7SnhVxNTw==
   dependencies:
-    "@microsoft/microsoft-graph-types" "2.25.0"
-    "@pnp/core" "3.10.0"
-    "@pnp/queryable" "3.10.0"
-    tslib "2.4.0"
+    "@microsoft/microsoft-graph-types" "2.40.0"
+    "@pnp/core" "4.16.0"
+    "@pnp/queryable" "4.16.0"
+    tslib "2.7.0"
 
-"@pnp/logging@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@pnp/logging/-/logging-3.10.0.tgz"
-  integrity sha512-zUm31PY011QOcLrf5aGUhMamS1kuf6tA8Fr5RNxr392z0a2ED2omXOkz5bPfwbBou0VxLJukO0TqEj7caw2OKw==
+"@pnp/logging@^4.16.0":
+  version "4.16.0"
+  resolved "https://registry.npmjs.org/@pnp/logging/-/logging-4.16.0.tgz"
+  integrity sha512-tMEbS+SlNjNXBCyRYNzyuEDd3uMqNTBrxLNtulRruANQvBQPEh4bgLtsyWLyfOJjeUn8jeMR9S1rGOLvYdD0yQ==
   dependencies:
-    tslib "2.4.0"
+    tslib "2.7.0"
 
-"@pnp/queryable@^3.10.0", "@pnp/queryable@3.10.0":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@pnp/queryable/-/queryable-3.10.0.tgz"
-  integrity sha512-9sm31wZHNPoktOJokfRCYs6E1TV2inJmNT9ueAFihgmDZJ88gKNX0YF9IzuOrDbQkGCd8ztgwHVmEqv9mipsAw==
+"@pnp/queryable@^4.16.0", "@pnp/queryable@4.16.0":
+  version "4.16.0"
+  resolved "https://registry.npmjs.org/@pnp/queryable/-/queryable-4.16.0.tgz"
+  integrity sha512-PlbPxoX5r7wrPMz2lApsSHBOSU2VJaPIrzQXSh6Q23RCeh7Zpm4ScfnTXjx5Y58PUP/B/nglCpOkf+VSuU0GMQ==
   dependencies:
-    "@pnp/core" "3.10.0"
-    tslib "2.4.0"
+    "@pnp/core" "4.16.0"
+    tslib "2.7.0"
 
-"@pnp/sp@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@pnp/sp/-/sp-3.10.0.tgz"
-  integrity sha512-z5Fv1bHTh9AuXbKuYaiYSggHXo3t5D587OJjEmAHDutnGcciffNJcbxTJ0hOiwY+UN0jjasSy0e0XCZxC+31Bw==
+"@pnp/sp@^4.16.0":
+  version "4.16.0"
+  resolved "https://registry.npmjs.org/@pnp/sp/-/sp-4.16.0.tgz"
+  integrity sha512-PYAYCj+9p2Ji84YeV6OHCx5UWqcks0Ovx15PhqcQfSOz+Z1VVPtvn9N0t/Tb1BmsyQw2d1vFgMC9iWcMBpjZPw==
   dependencies:
-    "@pnp/core" "3.10.0"
-    "@pnp/queryable" "3.10.0"
-    tslib "2.4.0"
+    "@pnp/core" "4.16.0"
+    "@pnp/queryable" "4.16.0"
+    tslib "2.7.0"
 
 "@pnpm/crypto.base32-hash@1.0.1":
   version "1.0.1"
@@ -2985,16 +2856,6 @@
     encode-registry "^3.0.1"
     semver "^7.5.4"
 
-"@pnpm/dependency-path@~2.1.2", "@pnpm/dependency-path@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.npmjs.org/@pnpm/dependency-path/-/dependency-path-2.1.8.tgz"
-  integrity sha512-ywBaTjy0iSEF7lH3DlF8UXrdL2bw4AQFV2tTOeNeY7wc1W5CE+RHSJhf9MXBYcZPesqGRrPiU7Pimj3l05L9VA==
-  dependencies:
-    "@pnpm/crypto.base32-hash" "2.0.0"
-    "@pnpm/types" "9.4.2"
-    encode-registry "^3.0.1"
-    semver "^7.5.4"
-
 "@pnpm/dependency-path@~5.1.7":
   version "5.1.7"
   resolved "https://registry.npmjs.org/@pnpm/dependency-path/-/dependency-path-5.1.7.tgz"
@@ -3003,6 +2864,16 @@
     "@pnpm/crypto.base32-hash" "3.0.1"
     "@pnpm/types" "12.2.0"
     semver "^7.6.2"
+
+"@pnpm/dependency-path@2.1.8":
+  version "2.1.8"
+  resolved "https://registry.npmjs.org/@pnpm/dependency-path/-/dependency-path-2.1.8.tgz"
+  integrity sha512-ywBaTjy0iSEF7lH3DlF8UXrdL2bw4AQFV2tTOeNeY7wc1W5CE+RHSJhf9MXBYcZPesqGRrPiU7Pimj3l05L9VA==
+  dependencies:
+    "@pnpm/crypto.base32-hash" "2.0.0"
+    "@pnpm/types" "9.4.2"
+    encode-registry "^3.0.1"
+    semver "^7.5.4"
 
 "@pnpm/error@1.4.0":
   version "1.4.0"
@@ -3263,16 +3134,6 @@
     "@rushstack/tree-pattern" "0.2.4"
     "@typescript-eslint/experimental-utils" "~5.20.0"
 
-"@rushstack/heft-config-file@0.15.7":
-  version "0.15.7"
-  resolved "https://registry.npmjs.org/@rushstack/heft-config-file/-/heft-config-file-0.15.7.tgz"
-  integrity sha512-d8rwr9ctVmnVBPyl0o1WFh6NKsAJEX9eJip3mRGKOUd6Lq5FLHaTELwVNbqmZ76oQITABueD5MS02QE5Yq2fhw==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/rig-package" "0.5.3"
-    "@rushstack/terminal" "0.14.2"
-    jsonpath-plus "~4.0.0"
-
 "@rushstack/heft-config-file@0.16.6":
   version "0.16.6"
   resolved "https://registry.npmjs.org/@rushstack/heft-config-file/-/heft-config-file-0.16.6.tgz"
@@ -3300,17 +3161,6 @@
   dependencies:
     loader-utils "1.4.2"
 
-"@rushstack/localization-utilities@0.12.2":
-  version "0.12.2"
-  resolved "https://registry.npmjs.org/@rushstack/localization-utilities/-/localization-utilities-0.12.2.tgz"
-  integrity sha512-sNErW+OFd3YqMktJPjgimFRH2G2COfGEc3nVQOoxeLOhTI9ZjxhFAPbPHInS96t8pTuFz6UYx0WI2MUzIwzQVQ==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
-    "@rushstack/typings-generator" "0.14.2"
-    pseudolocale "~1.1.0"
-    xmldoc "~1.1.2"
-
 "@rushstack/localization-utilities@0.13.5":
   version "0.13.5"
   resolved "https://registry.npmjs.org/@rushstack/localization-utilities/-/localization-utilities-0.13.5.tgz"
@@ -3322,37 +3172,12 @@
     pseudolocale "~1.1.0"
     xmldoc "~1.1.2"
 
-"@rushstack/lookup-by-path@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/@rushstack/lookup-by-path/-/lookup-by-path-0.2.2.tgz"
-  integrity sha512-yUz281pQjxXjKWapQc0KeXYjHnLFjnBmC2V+Gvc3itmJmK7MxFlhDwOUiORzKcmy+ICpwCi3DEnmA5/FinHIYA==
-
 "@rushstack/lookup-by-path@0.5.9":
   version "0.5.9"
   resolved "https://registry.npmjs.org/@rushstack/lookup-by-path/-/lookup-by-path-0.5.9.tgz"
   integrity sha512-xGdjy6Mj2FDccpzo+wGDWmQoTzZQDjlEFNWbiKeIdA/TkIcOoK+6t0Ppka4XE+od0vggZD6Hqk9kZoXuY8lu+A==
 
-"@rushstack/module-minifier@*":
-  version "0.4.37"
-  resolved "https://registry.npmjs.org/@rushstack/module-minifier/-/module-minifier-0.4.37.tgz"
-  integrity sha512-i0NI9Wp8qkA1kN6Ks1ZhRnSpFDOZILMAXrxcI9418czaUakjpUde+haq+SPG/b/xu2H4m0NJbTq2IkLvZendNQ==
-  dependencies:
-    "@rushstack/worker-pool" "0.4.37"
-    serialize-javascript "6.0.0"
-    source-map "~0.7.3"
-    terser "^5.9.0"
-
-"@rushstack/module-minifier@0.6.22":
-  version "0.6.22"
-  resolved "https://registry.npmjs.org/@rushstack/module-minifier/-/module-minifier-0.6.22.tgz"
-  integrity sha512-pYuXQ22J7t/ZWDUKX6F94x/dnIsSUhgQUa8TSQ3hMuSqSJ5C1mf/q3WDYrzEp5Cnp3oJUz0g9ittTxBayL5vGg==
-  dependencies:
-    "@rushstack/worker-pool" "0.4.67"
-    serialize-javascript "6.0.0"
-    source-map "~0.7.3"
-    terser "^5.9.0"
-
-"@rushstack/module-minifier@0.7.12":
+"@rushstack/module-minifier@*", "@rushstack/module-minifier@0.7.12":
   version "0.7.12"
   resolved "https://registry.npmjs.org/@rushstack/module-minifier/-/module-minifier-0.7.12.tgz"
   integrity sha512-U0m0bNusiV1WHis14EVT3/CVq2DAOPeE9q/dil4P3o4lagdufCNGgA0Z7JWTkPDhnyW3jJF/lpnM3fcJ+3CP5Q==
@@ -3433,27 +3258,6 @@
     resolve "~1.22.1"
     semver "~7.5.4"
 
-"@rushstack/node-core-library@5.9.0":
-  version "5.9.0"
-  resolved "https://registry.npmjs.org/@rushstack/node-core-library/-/node-core-library-5.9.0.tgz"
-  integrity sha512-MMsshEWkTbXqxqFxD4gcIUWQOCeBChlGczdZbHfqmNZQFLHB3yWxDFSMHFUdu2/OB9NUk7Awn5qRL+rws4HQNg==
-  dependencies:
-    ajv "~8.13.0"
-    ajv-draft-04 "~1.0.0"
-    ajv-formats "~3.0.1"
-    fs-extra "~7.0.1"
-    import-lazy "~4.0.0"
-    jju "~1.4.0"
-    resolve "~1.22.1"
-    semver "~7.5.4"
-
-"@rushstack/package-deps-hash@4.2.0":
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/@rushstack/package-deps-hash/-/package-deps-hash-4.2.0.tgz"
-  integrity sha512-sh60w8H3SliPBxfnvJzrvcSf2M/9KqBK/xB7uWaCPxkX8In/5bolKzL9Gl4MrNBMKm/yOBSYHJ2qOR9xKg8mHA==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-
 "@rushstack/package-deps-hash@4.3.10":
   version "4.3.10"
   resolved "https://registry.npmjs.org/@rushstack/package-deps-hash/-/package-deps-hash-4.3.10.tgz"
@@ -3476,20 +3280,6 @@
     npm-packlist "~2.1.2"
     semver "~7.5.4"
 
-"@rushstack/package-extractor@0.9.1":
-  version "0.9.1"
-  resolved "https://registry.npmjs.org/@rushstack/package-extractor/-/package-extractor-0.9.1.tgz"
-  integrity sha512-akddNvE0hnupW1dttzOQFFJPaZHk9LaloU6RlOQ0XzR3vEgHfTxaWuhGf+3JI1M5xB6is7ifZYyxZVR5UAQjJQ==
-  dependencies:
-    "@pnpm/link-bins" "~5.3.7"
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
-    ignore "~5.1.6"
-    jszip "~3.8.0"
-    minimatch "~3.0.3"
-    npm-packlist "~2.1.2"
-    semver "~7.5.4"
-
 "@rushstack/rig-package@0.2.12":
   version "0.2.12"
   resolved "https://registry.npmjs.org/@rushstack/rig-package/-/rig-package-0.2.12.tgz"
@@ -3506,17 +3296,6 @@
     resolve "~1.22.1"
     strip-json-comments "~3.1.1"
 
-"@rushstack/rush-amazon-s3-build-cache-plugin@5.135.0-pr4927.1":
-  version "5.135.0-pr4927.1"
-  resolved "https://registry.npmjs.org/@rushstack/rush-amazon-s3-build-cache-plugin/-/rush-amazon-s3-build-cache-plugin-5.135.0-pr4927.1.tgz"
-  integrity sha512-8YvIpDeJhYfr1+9W9ie0JlOoCu/8eN7/ObaMkQgyQuapzZ1g2myunW58+85TvfjfZ2ATtR7YCYm/0s8CyP6ddw==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/rush-sdk" "5.135.0-pr4927.1"
-    "@rushstack/terminal" "0.14.2"
-    https-proxy-agent "~5.0.0"
-    node-fetch "2.6.7"
-
 "@rushstack/rush-amazon-s3-build-cache-plugin@5.150.0":
   version "5.150.0"
   resolved "https://registry.npmjs.org/@rushstack/rush-amazon-s3-build-cache-plugin/-/rush-amazon-s3-build-cache-plugin-5.150.0.tgz"
@@ -3526,17 +3305,6 @@
     "@rushstack/rush-sdk" "5.150.0"
     "@rushstack/terminal" "0.15.0"
     https-proxy-agent "~5.0.0"
-
-"@rushstack/rush-azure-storage-build-cache-plugin@5.135.0-pr4927.1":
-  version "5.135.0-pr4927.1"
-  resolved "https://registry.npmjs.org/@rushstack/rush-azure-storage-build-cache-plugin/-/rush-azure-storage-build-cache-plugin-5.135.0-pr4927.1.tgz"
-  integrity sha512-8hsj3eJ5BE+YmRTIGRwvy0hFZwqxPLK1ar2Oo/hwetqQiRZbOnTBNZ53iJe4DQbGhNJJzOpVUDG7Sg90optrhg==
-  dependencies:
-    "@azure/identity" "~4.2.1"
-    "@azure/storage-blob" "~12.17.0"
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/rush-sdk" "5.135.0-pr4927.1"
-    "@rushstack/terminal" "0.14.2"
 
 "@rushstack/rush-azure-storage-build-cache-plugin@5.150.0":
   version "5.150.0"
@@ -3549,16 +3317,6 @@
     "@rushstack/rush-sdk" "5.150.0"
     "@rushstack/terminal" "0.15.0"
 
-"@rushstack/rush-http-build-cache-plugin@5.135.0-pr4927.1":
-  version "5.135.0-pr4927.1"
-  resolved "https://registry.npmjs.org/@rushstack/rush-http-build-cache-plugin/-/rush-http-build-cache-plugin-5.135.0-pr4927.1.tgz"
-  integrity sha512-3X4XOGcbmxWshgZrUF+g9yuJThEodaHvsvL/fp22y4W7bHuqxKdl6BQjLRBmrhgFZu9WcpgxSVdlZXy/fVw41A==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/rush-sdk" "5.135.0-pr4927.1"
-    https-proxy-agent "~5.0.0"
-    node-fetch "2.6.7"
-
 "@rushstack/rush-http-build-cache-plugin@5.150.0":
   version "5.150.0"
   resolved "https://registry.npmjs.org/@rushstack/rush-http-build-cache-plugin/-/rush-http-build-cache-plugin-5.150.0.tgz"
@@ -3567,17 +3325,6 @@
     "@rushstack/node-core-library" "5.11.0"
     "@rushstack/rush-sdk" "5.150.0"
     https-proxy-agent "~5.0.0"
-
-"@rushstack/rush-sdk@5.135.0-pr4927.1":
-  version "5.135.0-pr4927.1"
-  resolved "https://registry.npmjs.org/@rushstack/rush-sdk/-/rush-sdk-5.135.0-pr4927.1.tgz"
-  integrity sha512-SPoVx1ZKjZkyWWkQ6DHz0nuMTJwseyGGjMt8kyygBRmLFlmT4Q/8nEniZBuPnw8b6uGs8A16u+x0YKxUgvgjuA==
-  dependencies:
-    "@rushstack/lookup-by-path" "0.2.2"
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
-    "@types/node-fetch" "2.6.2"
-    tapable "2.2.1"
 
 "@rushstack/rush-sdk@5.150.0":
   version "5.150.0"
@@ -3591,14 +3338,6 @@
     "@rushstack/terminal" "0.15.0"
     tapable "2.2.1"
 
-"@rushstack/set-webpack-public-path-plugin@5.1.50":
-  version "5.1.50"
-  resolved "https://registry.npmjs.org/@rushstack/set-webpack-public-path-plugin/-/set-webpack-public-path-plugin-5.1.50.tgz"
-  integrity sha512-f3jVlBnKraUskPjj2JbEYuE9sR44+7Y8R4Sy4zGLnYrIQfzVAEbLkTu3a/WCGqASc2A5uX64Ng9QuI7kS/AYpQ==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/webpack-plugin-utilities" "0.4.50"
-
 "@rushstack/set-webpack-public-path-plugin@5.1.76":
   version "5.1.76"
   resolved "https://registry.npmjs.org/@rushstack/set-webpack-public-path-plugin/-/set-webpack-public-path-plugin-5.1.76.tgz"
@@ -3607,14 +3346,6 @@
     "@rushstack/node-core-library" "5.12.0"
     "@rushstack/webpack-plugin-utilities" "0.4.76"
 
-"@rushstack/stream-collator@4.1.67":
-  version "4.1.67"
-  resolved "https://registry.npmjs.org/@rushstack/stream-collator/-/stream-collator-4.1.67.tgz"
-  integrity sha512-gb8lP0pQ8qA5/54MpetF16oVlK7ruTH1N/Hk72Brx3S0sXpJbc6SrZz6Ifi6OjHr2/ZS8HmG9PGq9btUkq0uxw==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
-
 "@rushstack/stream-collator@4.1.88":
   version "4.1.88"
   resolved "https://registry.npmjs.org/@rushstack/stream-collator/-/stream-collator-4.1.88.tgz"
@@ -3622,14 +3353,6 @@
   dependencies:
     "@rushstack/node-core-library" "5.11.0"
     "@rushstack/terminal" "0.15.0"
-
-"@rushstack/terminal@0.14.2":
-  version "0.14.2"
-  resolved "https://registry.npmjs.org/@rushstack/terminal/-/terminal-0.14.2.tgz"
-  integrity sha512-2fC1wqu1VCExKC0/L+0noVcFQEXEnoBOtCIex1TOjBzEDWcw8KzJjjj7aTP6mLxepG0XIyn9OufeFb6SFsa+sg==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    supports-color "~8.1.1"
 
 "@rushstack/terminal@0.15.0":
   version "0.15.0"
@@ -3657,16 +3380,6 @@
   resolved "https://registry.npmjs.org/@rushstack/tree-pattern/-/tree-pattern-0.3.4.tgz"
   integrity sha512-9uROnkiHWsQqxW6HirXABfTRlgzhYp6tevbYIGkwKQ09VaayUBkvFvt/urDKMwlo+tGU0iQQLuVige6c48wTgw==
 
-"@rushstack/ts-command-line@4.22.8":
-  version "4.22.8"
-  resolved "https://registry.npmjs.org/@rushstack/ts-command-line/-/ts-command-line-4.22.8.tgz"
-  integrity sha512-XbFjOoV7qZHJnSuFUHv0pKaFA4ixyCuki+xMjsMfDwfvQjs5MYG0IK5COal3tRnG7KCDe2l/G+9LrzYE/RJhgg==
-  dependencies:
-    "@rushstack/terminal" "0.14.2"
-    "@types/argparse" "1.0.38"
-    argparse "~1.0.9"
-    string-argv "~0.3.1"
-
 "@rushstack/ts-command-line@4.23.5":
   version "4.23.5"
   resolved "https://registry.npmjs.org/@rushstack/ts-command-line/-/ts-command-line-4.23.5.tgz"
@@ -3687,16 +3400,6 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
-"@rushstack/typings-generator@0.14.2":
-  version "0.14.2"
-  resolved "https://registry.npmjs.org/@rushstack/typings-generator/-/typings-generator-0.14.2.tgz"
-  integrity sha512-ivtCWBvFBkZb0c8jPeacQMCQc8Kf5NzDMYK6DuatFxbFGE56MzTN9Pr1DOBTjaNWyw45mAgTD7kzGc+iG239xw==
-  dependencies:
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
-    chokidar "~3.4.0"
-    fast-glob "~3.3.1"
-
 "@rushstack/typings-generator@0.14.29":
   version "0.14.29"
   resolved "https://registry.npmjs.org/@rushstack/typings-generator/-/typings-generator-0.14.29.tgz"
@@ -3707,14 +3410,6 @@
     chokidar "~3.6.0"
     fast-glob "~3.3.1"
 
-"@rushstack/webpack-plugin-utilities@0.4.50":
-  version "0.4.50"
-  resolved "https://registry.npmjs.org/@rushstack/webpack-plugin-utilities/-/webpack-plugin-utilities-0.4.50.tgz"
-  integrity sha512-p3TTt5XNz/bar2JnLDinUI7xL6RgqOWfWyyjveJSzozV/Jh/VtIFbh/e5JCL77GzruT3WZlpkspS7sqpXhQaHg==
-  dependencies:
-    memfs "3.4.3"
-    webpack-merge "~5.8.0"
-
 "@rushstack/webpack-plugin-utilities@0.4.76":
   version "0.4.76"
   resolved "https://registry.npmjs.org/@rushstack/webpack-plugin-utilities/-/webpack-plugin-utilities-0.4.76.tgz"
@@ -3722,15 +3417,6 @@
   dependencies:
     memfs "4.12.0"
     webpack-merge "~5.8.0"
-
-"@rushstack/webpack5-localization-plugin@0.11.8":
-  version "0.11.8"
-  resolved "https://registry.npmjs.org/@rushstack/webpack5-localization-plugin/-/webpack5-localization-plugin-0.11.8.tgz"
-  integrity sha512-qjXAs6+JvCy3Xkgu47KZWGw1aGt6r2gIMxeWXDFekYPE95bM17e5G5rtb1GFU5Ta9Mj3qG+tHaOHOgr0j8pX1g==
-  dependencies:
-    "@rushstack/localization-utilities" "0.12.2"
-    "@rushstack/node-core-library" "5.9.0"
-    "@rushstack/terminal" "0.14.2"
 
 "@rushstack/webpack5-localization-plugin@0.13.5":
   version "0.13.5"
@@ -3741,16 +3427,6 @@
     "@rushstack/node-core-library" "5.12.0"
     "@rushstack/terminal" "0.15.1"
 
-"@rushstack/webpack5-module-minifier-plugin@5.5.69":
-  version "5.5.69"
-  resolved "https://registry.npmjs.org/@rushstack/webpack5-module-minifier-plugin/-/webpack5-module-minifier-plugin-5.5.69.tgz"
-  integrity sha512-W3M4He1tv5pFMxT7E7634su+kpIHvalHDMaxEHJU1WeC/ug4CF//CwXpUE2v/gc4Ou82pXTB1EyEHMy2JnRgqQ==
-  dependencies:
-    "@rushstack/worker-pool" "0.4.67"
-    "@types/estree" "1.0.5"
-    "@types/tapable" "1.0.6"
-    tapable "2.2.1"
-
 "@rushstack/webpack5-module-minifier-plugin@5.5.96":
   version "5.5.96"
   resolved "https://registry.npmjs.org/@rushstack/webpack5-module-minifier-plugin/-/webpack5-module-minifier-plugin-5.5.96.tgz"
@@ -3760,16 +3436,6 @@
     "@types/estree" "1.0.6"
     "@types/tapable" "1.0.6"
     tapable "2.2.1"
-
-"@rushstack/worker-pool@0.4.37":
-  version "0.4.37"
-  resolved "https://registry.npmjs.org/@rushstack/worker-pool/-/worker-pool-0.4.37.tgz"
-  integrity sha512-ROnSatpZZWJYEhKqTHhTMnmnmxT0cntp7/xkTJ22cSbCdLng+9o6z00DmgauFB0+nsuryatQsAJUQvnwcVba2w==
-
-"@rushstack/worker-pool@0.4.67":
-  version "0.4.67"
-  resolved "https://registry.npmjs.org/@rushstack/worker-pool/-/worker-pool-0.4.67.tgz"
-  integrity sha512-HUDOp7PpHfBxRld2vTLrKXEB4fcif0IsWy5uqSYQB4Wh4akBSec5S6ksJTpP/QagpH8gRuRgP4Z9W6tzITpk0Q==
 
 "@rushstack/worker-pool@0.5.12":
   version "0.5.12"
@@ -3929,12 +3595,7 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*", "@types/estree@^1.0.0", "@types/estree@^1.0.5", "@types/estree@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.5.tgz"
-  integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
-
-"@types/estree@1.0.6":
+"@types/estree@*", "@types/estree@^1.0.0", "@types/estree@^1.0.5", "@types/estree@1.0.6":
   version "1.0.6"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.6.tgz"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==
@@ -4056,14 +3717,6 @@
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.5.tgz"
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
-"@types/node-fetch@^2.5.0", "@types/node-fetch@2.6.2":
-  version "2.6.2"
-  resolved "https://registry.npmjs.org/@types/node-fetch/-/node-fetch-2.6.2.tgz"
-  integrity sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==
-  dependencies:
-    "@types/node" "*"
-    form-data "^3.0.0"
-
 "@types/node-forge@^1.3.0":
   version "1.3.11"
   resolved "https://registry.npmjs.org/@types/node-forge/-/node-forge-1.3.11.tgz"
@@ -4147,7 +3800,7 @@
   dependencies:
     "@types/react" "^17"
 
-"@types/react@^17", "@types/react@>=16.14.0 <19.0.0", "@types/react@>=16.8.0 <19.0.0", "@types/react@>=16.9.51 <18.0.0", "@types/react@17.0.45":
+"@types/react@^17", "@types/react@>=16.14.0 <19.0.0", "@types/react@>=16.14.0 <20.0.0", "@types/react@>=16.8.0 <19.0.0", "@types/react@>=16.9.51 <18.0.0", "@types/react@17.0.45":
   version "17.0.45"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.45.tgz"
   integrity sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==
@@ -4238,13 +3891,6 @@
   version "2.0.32"
   resolved "https://registry.npmjs.org/@types/through2/-/through2-2.0.32.tgz"
   integrity sha512-VYclBauj55V0qPDHs9QMdKBdxdob6zta8mcayjTyOzlRgl+PNERnvNol99W1PBnvQXaYoTTqSce97rr9dz9oXQ==
-  dependencies:
-    "@types/node" "*"
-
-"@types/tunnel@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@types/tunnel/-/tunnel-0.0.3.tgz"
-  integrity sha512-sOUTGn6h1SfQ+gbgqC364jLFBw2lnFqkgF3q0WovEHRLMrVD1sd5aufqi/aJObLekJO+Aq5z646U4Oxy6shXMA==
   dependencies:
     "@types/node" "*"
 
@@ -4653,6 +4299,15 @@
     "@typescript-eslint/types" "8.26.1"
     eslint-visitor-keys "^4.2.0"
 
+"@typespec/ts-http-runtime@^0.3.0":
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/@typespec/ts-http-runtime/-/ts-http-runtime-0.3.1.tgz"
+  integrity sha512-SnbaqayTVFEA6/tYumdF0UmybY0KHyKwGPBXnyckFlrrKdhWFrL3a2HIPXHjht5ZOElKGcXfD2D63P36btb+ww==
+  dependencies:
+    http-proxy-agent "^7.0.0"
+    https-proxy-agent "^7.0.0"
+    tslib "^2.6.2"
+
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.2.0.tgz"
@@ -4941,10 +4596,15 @@ adaptivecards@2.11.2:
   resolved "https://registry.npmjs.org/adaptivecards/-/adaptivecards-2.11.2.tgz"
   integrity sha512-yV+o272Xe+qVoz0yIaJAo0RwLtRUX8XyuXIaKepaS+Ei3BgU2w5yl2g0d1UbgoFAyRtk9mVZuvWtPiM8mj+FmA==
 
-agent-base@^7.1.0, agent-base@^7.1.2:
-  version "7.1.3"
-  resolved "https://registry.npmjs.org/agent-base/-/agent-base-7.1.3.tgz"
-  integrity sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==
+agent-base@^7.1.0:
+  version "7.1.4"
+  resolved "https://registry.npmjs.org/agent-base/-/agent-base-7.1.4.tgz"
+  integrity sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==
+
+agent-base@^7.1.2:
+  version "7.1.4"
+  resolved "https://registry.npmjs.org/agent-base/-/agent-base-7.1.4.tgz"
+  integrity sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==
 
 agent-base@6:
   version "6.0.2"
@@ -6067,7 +5727,7 @@ chokidar@^3.6.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@~3.4.0:
+"chokidar@>=3.0.0 <4.0.0":
   version "3.4.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.4.3.tgz"
   integrity sha512-DtM3g7juCXQxFVSNPNByEC2+NImtBuxQQvWlHunpJIS5Ocr0lG306cC7FCi7cEA0fzmybPUIl4txBIobk1gGOQ==
@@ -6347,7 +6007,7 @@ colors@1.4.0:
   resolved "https://registry.npmjs.org/colors/-/colors-1.4.0.tgz"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
-combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.6:
+combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz"
   integrity sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
@@ -8184,11 +7844,11 @@ fast-uri@^3.0.1:
   integrity sha512-MWipKbbYiYI0UC7cl8m/i/IWTqfC8YXsqjzybjddLsFjStroQzsHXkc73JutMvBiXmOvapk+axIl79ig5t55Bw==
 
 fast-xml-parser@^5.0.7:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-5.2.1.tgz"
-  integrity sha512-Kqq/ewnRACQ20e0BlQ5KqHRYWRBp7yv+jttK4Yj2yY+2ldgCoxJkrP1NHUhjypsJ+eQXlGJ/jebM3wa60s1rbQ==
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-5.2.5.tgz"
+  integrity sha512-pfX9uG9Ki0yekDHx2SiuRIyFdyAr1kMIMitPvb0YBo8SUfKvia7w7FIyd/l6av85pFYRhZscS75MwMnbvY+hcQ==
   dependencies:
-    strnum "^2.0.5"
+    strnum "^2.1.0"
 
 fastest-levenshtein@^1.0.12:
   version "1.0.16"
@@ -8462,24 +8122,6 @@ fork-ts-checker-webpack-plugin@9.0.2:
     semver "^7.3.5"
     tapable "^2.2.1"
 
-form-data@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/form-data/-/form-data-3.0.1.tgz"
-  integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "^1.0.8"
-    mime-types "^2.1.12"
-
-form-data@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
-  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "^1.0.8"
-    mime-types "^2.1.12"
-
 form-data@~2.3.2:
   version "2.3.3"
   resolved "https://registry.npmjs.org/form-data/-/form-data-2.3.3.tgz"
@@ -8516,9 +8158,9 @@ fs-extra@^10.0.0:
     universalify "^2.0.0"
 
 fs-extra@~11.3.0:
-  version "11.3.0"
-  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-11.3.0.tgz"
-  integrity sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==
+  version "11.3.2"
+  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-11.3.2.tgz"
+  integrity sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
@@ -8552,11 +8194,6 @@ fs-monkey@^1.0.4:
   version "1.0.6"
   resolved "https://registry.npmjs.org/fs-monkey/-/fs-monkey-1.0.6.tgz"
   integrity sha512-b1FMfwetIKymC0eioW7mTywihSQE4oLzQn1dB6rZB5fx/3NpNEdAWeCSMB+60/AeT0TCXsxzAlcYVEFCTAksWg==
-
-fs-monkey@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/fs-monkey/-/fs-monkey-1.0.3.tgz"
-  integrity sha512-cybjIfiiE+pTWicSCLFHSrXZ6EilF30oh91FDP9S2B051prEa7QWfrVTQm10/dDpswBDXZugPa1Ogu8Yh+HV0Q==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -10817,9 +10454,9 @@ jsonfile@^4.0.0:
     graceful-fs "^4.1.6"
 
 jsonfile@^6.0.1:
-  version "6.1.0"
-  resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-6.1.0.tgz"
-  integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-6.2.0.tgz"
+  integrity sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==
   dependencies:
     universalify "^2.0.0"
   optionalDependencies:
@@ -10833,11 +10470,6 @@ jsonpath-plus@~10.3.0:
     "@jsep-plugin/assignment" "^1.3.0"
     "@jsep-plugin/regex" "^1.0.4"
     jsep "^1.4.0"
-
-jsonpath-plus@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/jsonpath-plus/-/jsonpath-plus-4.0.0.tgz"
-  integrity sha512-e0Jtg4KAzDJKKwzbLaUtinCn0RZseWBVRTRGihSpvFlM3wTR7ExSp+PTdeTsDrLNJUe7L7JYJe8mblHX5SCT6A==
 
 jsonwebtoken@^9.0.0:
   version "9.0.2"
@@ -11449,13 +11081,6 @@ memfs@^4.6.0:
     tree-dump "^1.0.1"
     tslib "^2.0.0"
 
-memfs@3.4.3:
-  version "3.4.3"
-  resolved "https://registry.npmjs.org/memfs/-/memfs-3.4.3.tgz"
-  integrity sha512-eivjfi7Ahr6eQTn44nvTnR60e4a1Fs1Via2kCR5lHo/kyNoiMWaXCNJ/GpSd0ilXas2JSOl9B5FTIhflXu0hlg==
-  dependencies:
-    fs-monkey "1.0.3"
-
 memfs@4.12.0:
   version "4.12.0"
   resolved "https://registry.npmjs.org/memfs/-/memfs-4.12.0.tgz"
@@ -11850,7 +11475,7 @@ node-emoji@^1.10.0:
   dependencies:
     lodash "^4.17.21"
 
-node-fetch@^2.6.1, node-fetch@^2.6.7:
+node-fetch@^2.6.1:
   version "2.6.7"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -11861,13 +11486,6 @@ node-fetch@2.6.1:
   version "2.6.1"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.1.tgz"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
-
-node-fetch@2.6.7:
-  version "2.6.7"
-  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
-  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
-  dependencies:
-    whatwg-url "^5.0.0"
 
 node-forge@^1, node-forge@~1.3.1:
   version "1.3.1"
@@ -13214,11 +12832,6 @@ process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-process@^0.11.10:
-  version "0.11.10"
-  resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
-  integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
-
 prompts@^2.0.1:
   version "2.4.2"
   resolved "https://registry.npmjs.org/prompts/-/prompts-2.4.2.tgz"
@@ -13431,7 +13044,7 @@ react-transition-group@^4.4.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@>=16.13.1 <18.0.0", "react@>=16.14.0 <19.0.0", react@>=16.6.0, "react@>=16.8.0 <19.0.0", react@17.0.1:
+"react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@>=16.13.1 <18.0.0", "react@>=16.14.0 <19.0.0", "react@>=16.14.0 <20.0.0", react@>=16.6.0, "react@>=16.8.0 <19.0.0", react@17.0.1:
   version "17.0.1"
   resolved "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
@@ -13890,11 +13503,11 @@ resolve@~1.19.0:
     path-parse "^1.0.6"
 
 resolve@~1.22.1:
-  version "1.22.8"
-  resolved "https://registry.npmjs.org/resolve/-/resolve-1.22.8.tgz"
-  integrity sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==
+  version "1.22.10"
+  resolved "https://registry.npmjs.org/resolve/-/resolve-1.22.10.tgz"
+  integrity sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==
   dependencies:
-    is-core-module "^2.13.0"
+    is-core-module "^2.16.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
@@ -14089,7 +13702,7 @@ sass@1.77.6:
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
-sax@^1.2.4, sax@>=0.6.0:
+sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
@@ -14239,7 +13852,7 @@ semver@^7.5.3:
   resolved "https://registry.npmjs.org/semver/-/semver-7.6.3.tgz"
   integrity sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==
 
-semver@^7.5.4, semver@~7.5.4:
+semver@^7.5.4:
   version "7.5.4"
   resolved "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
@@ -14252,9 +13865,16 @@ semver@^7.6.0:
   integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
 
 semver@^7.6.2:
-  version "7.7.1"
-  resolved "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz"
-  integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
+  version "7.7.2"
+  resolved "https://registry.npmjs.org/semver/-/semver-7.7.2.tgz"
+  integrity sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==
+
+semver@~7.5.4:
+  version "7.5.4"
+  resolved "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
+  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
+  dependencies:
+    lru-cache "^6.0.0"
 
 "semver@2 || 3 || 4 || 5":
   version "5.7.2"
@@ -14315,13 +13935,6 @@ serialize-javascript@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-6.0.2.tgz"
   integrity sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==
-  dependencies:
-    randombytes "^2.1.0"
-
-serialize-javascript@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-6.0.0.tgz"
-  integrity sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==
   dependencies:
     randombytes "^2.1.0"
 
@@ -14654,13 +14267,13 @@ spfx-css-modules-typescript-loader@4.0.6:
   resolved "https://registry.npmjs.org/spfx-css-modules-typescript-loader/-/spfx-css-modules-typescript-loader-4.0.6.tgz"
   integrity sha512-N/wzebd4ZepUdIMDkJZgd9v4rXTtI9wQ4qfaFjnCapLoifnVdlUal+IosSW/t7LdB4vlRcBkaLsawLciKG8K8w==
 
-spfx-fast-serve-helpers@^1.21.0-beta.1:
-  version "1.21.0-beta.1"
-  resolved "https://registry.npmjs.org/spfx-fast-serve-helpers/-/spfx-fast-serve-helpers-1.21.0-beta.1.tgz"
-  integrity sha512-7L4aUwdOO6qcU0PV6xKgCgYAfoVl1UTNkEAMLMAqPT6QthVPY5Bo8tIdghK4tlkwaexY3MSMpcVbcZrR3qv1Hg==
+spfx-fast-serve-helpers@^1.21.1:
+  version "1.21.1"
+  resolved "https://registry.npmjs.org/spfx-fast-serve-helpers/-/spfx-fast-serve-helpers-1.21.1.tgz"
+  integrity sha512-htoFM61UazBc7FA4tq9tGsykcsWQjhF+C+eg0h5B+3aSz2QUaWoMI/0NvkSuQQd3z6N1+9pz7YGVJP9Z34Vwbg==
   dependencies:
     "@microsoft/loader-load-themed-styles" "2.1.37"
-    "@microsoft/spfx-heft-plugins" "1.20.2"
+    "@microsoft/spfx-heft-plugins" "1.21.0"
     "@pmmmwh/react-refresh-webpack-plugin" "0.5.15"
     "@types/copy-webpack-plugin" "8.0.1"
     "@types/cross-spawn" "6.0.6"
@@ -15012,10 +14625,10 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz"
   integrity sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==
 
-strnum@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.npmjs.org/strnum/-/strnum-2.0.5.tgz"
-  integrity sha512-YAT3K/sgpCUxhxNMrrdhtod3jckkpYwH6JAuwmUdXZsmzH1wUyzTMrrK2wYCEEqlKwrWDd35NeuUkbBy/1iK+Q==
+strnum@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/strnum/-/strnum-2.1.1.tgz"
+  integrity sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==
 
 style-loader@4.0.0:
   version "4.0.0"
@@ -15496,10 +15109,10 @@ tslib@^2.8.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
-tslib@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+tslib@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.7.0.tgz"
+  integrity sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==
 
 tsutils@^3.21.0:
   version "3.21.0"
@@ -15514,11 +15127,6 @@ tunnel-agent@^0.6.0:
   integrity sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==
   dependencies:
     safe-buffer "^5.0.1"
-
-tunnel@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/tunnel/-/tunnel-0.0.6.tgz"
-  integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -15875,11 +15483,6 @@ validate-npm-package-name@^3.0.0:
   dependencies:
     builtins "^1.0.3"
 
-validator@^13.6.0:
-  version "13.15.0"
-  resolved "https://registry.npmjs.org/validator/-/validator-13.15.0.tgz"
-  integrity sha512-36B2ryl4+oL5QxZ3AzD0t5SsMNGvTtQHpjgFO5tbNxfXbMFkY822ktCDe1MnlqV3301QQI9SLHDNJokDI+Z9pA==
-
 validator@^13.7.0:
   version "13.12.0"
   resolved "https://registry.npmjs.org/validator/-/validator-13.12.0.tgz"
@@ -16101,7 +15704,7 @@ webpack-sources@^3.2.3:
   resolved "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.2.3.tgz"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-"webpack@^4.0.0 || ^5.0.0", webpack@^5.0.0, webpack@^5.1.0, webpack@^5.11.0, webpack@^5.27.0, "webpack@^5.35.1 || ^4.31.0", webpack@^5.68.0, webpack@^5.72.1, webpack@^5.88.1, "webpack@>=4.43.0 <6.0.0", webpack@~5.88.1, webpack@5.88.2, webpack@5.x.x:
+"webpack@^4.0.0 || ^5.0.0", webpack@^5.0.0, webpack@^5.1.0, webpack@^5.11.0, webpack@^5.27.0, "webpack@^5.35.1 || ^4.31.0", webpack@^5.72.1, "webpack@>=4.43.0 <6.0.0", webpack@~5.88.1, webpack@5.88.2, webpack@5.x.x:
   version "5.88.2"
   resolved "https://registry.npmjs.org/webpack/-/webpack-5.88.2.tgz"
   integrity sha512-JmcgNZ1iKj+aiR0OvTYtWQqJwq37Pf683dY9bVORwVbUrDhLhdn/PlO2sHsFHPkj7sHNQF3JwaAkp49V+Sq1tQ==
@@ -16131,7 +15734,7 @@ webpack-sources@^3.2.3:
     watchpack "^2.4.0"
     webpack-sources "^3.2.3"
 
-webpack@~5.95.0:
+webpack@^5.68.0, webpack@^5.88.1, webpack@~5.95.0:
   version "5.95.0"
   resolved "https://registry.npmjs.org/webpack/-/webpack-5.95.0.tgz"
   integrity sha512-2t3XstrKULz41MNMBF+cJ97TyHdyQ8HCt//pqErqDvNjU9YQBnZxIHa11VXsi7F3mb5/aO2tuDxdeTPdU7xu9Q==
@@ -16418,19 +16021,6 @@ xml@^1.0.1, xml@~1.0.1:
   resolved "https://registry.npmjs.org/xml/-/xml-1.0.1.tgz"
   integrity sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==
 
-xml2js@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/xml2js/-/xml2js-0.5.0.tgz"
-  integrity sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==
-  dependencies:
-    sax ">=0.6.0"
-    xmlbuilder "~11.0.0"
-
-xmlbuilder@~11.0.0:
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-11.0.1.tgz"
-  integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
-
 xmlchars@^2.1.1:
   version "2.2.0"
   resolved "https://registry.npmjs.org/xmlchars/-/xmlchars-2.2.0.tgz"
@@ -16628,17 +16218,6 @@ z-schema@~5.0.2:
     validator "^13.7.0"
   optionalDependencies:
     commander "^9.4.1"
-
-z-schema@4.2.4:
-  version "4.2.4"
-  resolved "https://registry.npmjs.org/z-schema/-/z-schema-4.2.4.tgz"
-  integrity sha512-YvBeW5RGNeNzKOUJs3rTL4+9rpcvHXt5I051FJbOcitV8bl40pEfcG0Q+dWSwS0/BIYrMZ/9HHoqLllMkFhD0w==
-  dependencies:
-    lodash.get "^4.4.2"
-    lodash.isequal "^4.5.0"
-    validator "^13.6.0"
-  optionalDependencies:
-    commander "^2.7.1"
 
 z-schema@6.0.2:
   version "6.0.2"

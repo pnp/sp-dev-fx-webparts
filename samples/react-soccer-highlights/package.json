@@ -24,7 +24,7 @@
     "@pnp/pnpjs": "^2.0.6",
     "@pnp/spfx-controls-react": "2.1.0",
     "@rehooks/component-size": "^1.0.3",
-    "axios": "^0.20.0",
+    "axios": "^0.30.2",
     "bootstrap": "^4.5.3",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",

@@ -23,7 +23,11 @@ const ReactSiteContent = (props: IReactSiteContentProps): JSX.Element => {
       (async () => {
         const appTiles = await spService.getAppTiles();
         const listViewItems = generateListViewItems(appTiles);
-        setState((prevState) => ({ ...prevState, items: listViewItems, filteredItems: listViewItems }));
+        setState((prevState) => ({
+          ...prevState,
+          items: listViewItems,
+          filteredItems: listViewItems,
+        }));
       })();
     }
   }, []);
@@ -33,7 +37,7 @@ const ReactSiteContent = (props: IReactSiteContentProps): JSX.Element => {
     setState((prevState) => ({ ...prevState, filteredItems: items }));
   };
 
-  return <SiteContentListView items={state.filteredItems} onFilter={handleFilter} />;
+  return <SiteContentListView items={state.filteredItems} onFilter={handleFilter} context={props.context} />;
 };
 
 export default ReactSiteContent;

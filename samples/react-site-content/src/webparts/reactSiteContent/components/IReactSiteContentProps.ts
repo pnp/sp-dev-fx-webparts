@@ -1,3 +1,4 @@
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { SPService } from "../services/SPService";
 
 export interface IReactSiteContentProps {
@@ -7,4 +8,5 @@ export interface IReactSiteContentProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   spService: SPService | undefined;
+  context: WebPartContext;
 }

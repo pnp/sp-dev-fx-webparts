@@ -20,7 +20,7 @@ Contains SPFx web part & Azure Function with below functionalities
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.21.0](https://img.shields.io/badge/SPFx-1.21.0-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -111,8 +111,7 @@ Steps to follow:
 | 2.0     | February 10, 2024  | Implementation using Azure Function |
 | 3.0     | September 05, 2024 | Bug fix and SPFx version upgrade    |
 | 3.1     | October 05, 2024   | SPFx version upgrade                |
-| 3.2     | April 27, 2025     | SPFx version upgrade                |
-
+| 3.2     | September 28, 2025 | SPFx version upgrade to 1.21.1      |
 
 ## Minimal Path to Awesome
 

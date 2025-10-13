@@ -36,6 +36,7 @@ const getTemplateName = (templateId: number): string => {
     1230: "Draft Apps",
     3100: "Access App",
     10102: "Converted Forms",
+    [-1]: "App",
   };
 
   return templateMap[templateId] ?? "List";
@@ -53,6 +54,8 @@ export const generateListViewItems = (tiles: IAppDetails[]): IListViewItem[] => 
       Modified: tile.LastModified,
       Target: tile.Target,
       Items: tile.ChildCount,
+      BaseTemplate: tile.BaseTemplate,
+      AppId: tile.AppId,
     });
   });
   return listViewItems;
