@@ -80,6 +80,7 @@ export const ChatInterface: React.FC<IChatInterfaceProps> = (props) => {
 
       setIsLoading(false);
 
+      // eslint-disable-next-line no-constant-condition
       while (true) {
         const { done, value } = await reader.read();
         
@@ -161,7 +162,9 @@ export const ChatInterface: React.FC<IChatInterfaceProps> = (props) => {
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      handleSendMessage();
+      handleSendMessage().catch(err => {
+        console.error('Error handling key press send message:', err);
+      });
     }
   };
 

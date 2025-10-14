@@ -23,6 +23,8 @@ export default class ChatWithSk extends React.Component<IChatWithSkProps, IChatW
   public componentDidMount(): void {
     this.props.wpcontext.aadTokenProviderFactory.getTokenProvider().then(provider => {
       this.setState({ tokenProvider: provider });
+    }).catch(error => {
+      console.error("Error obtaining AadTokenProvider:", error);
     });
   }
 
