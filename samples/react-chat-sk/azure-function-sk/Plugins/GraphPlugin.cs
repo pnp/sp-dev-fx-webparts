@@ -36,17 +36,18 @@ public class GraphPlugin
     public async Task<string> GetUserInfo(KernelArguments args)
     {
         _logger.LogInformation("GraphPlugin.GetUserInfo called");
-        if (!_userContextService.HasUserToken())
+       
+        var userToken = _userContextService.GetUserToken();
+        if (string.IsNullOrEmpty(userToken))
         {
-            _logger.LogWarning("GraphPlugin.GetUserInfo: User token not set in context");
-            return "Error: User token not set. Cannot retrieve user info.";
+            throw new InvalidOperationException("User token is not available");
         }
-
+    
         _logger.LogInformation("GraphPlugin.GetUserInfo: Acquiring OBO token for Graph API");
-        var oboToken = await _tokenService.GetOnBehalfOfTokenAsync(_userContextService.GetUserToken(), new[] { "https://graph.microsoft.com/.default" });
+        var oboToken = await _tokenService.GetOnBehalfOfTokenAsync(userToken, new[] { "https://graph.microsoft.com/.default" });
         if (oboToken == null)
         {
-            _logger.LogError("GraphPlugin.GetUserInfo: Failed to acquire Graph token");
+        _logger.LogError("GraphPlugin.GetUserInfo: Failed to acquire Graph token");
             return "Error: Failed to acquire Graph token.";
         }
 
@@ -75,13 +76,11 @@ public class GraphPlugin
     {
         _logger.LogInformation("GraphPlugin.GetCalendarInfo called");
         
-        if (!_userContextService.HasUserToken())
-        {
-            _logger.LogWarning("GraphPlugin.GetCalendarInfo: User token not set in context");
-            return "Error: User token not set. Cannot retrieve calendar info.";
-        }
-
         var userToken = _userContextService.GetUserToken();
+        if (string.IsNullOrEmpty(userToken))
+        {
+            throw new InvalidOperationException("User token is not available");
+        }
         _logger.LogInformation("GraphPlugin.GetCalendarInfo: Acquiring OBO token for Graph API");
         var oboToken = await _tokenService.GetOnBehalfOfTokenAsync(userToken!, new[] { "https://graph.microsoft.com/.default" });
         if (oboToken == null)

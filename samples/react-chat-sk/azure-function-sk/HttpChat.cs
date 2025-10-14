@@ -112,7 +112,7 @@ public class HttpChat
             try
             {
                 var payload = JsonSerializer.Deserialize<JsonElement>(body);
-                userMessage = payload.TryGetProperty("message", out var msgProp) ? msgProp.GetString() : null;
+                 userMessage = payload.TryGetProperty("message", out var msgProp) ? msgProp.GetString() ?? string.Empty : string.Empty;
             }
             catch
             {
