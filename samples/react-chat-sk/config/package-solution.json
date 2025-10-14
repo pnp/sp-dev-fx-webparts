@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-chat-sk-client-side-solution",
+    "id": "59412a9d-0ff5-464f-bb31-0bd9dd61a61d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-chat-sk description"
+      },
+      "longDescription": {
+        "default": "react-chat-sk description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-chat-sk Feature",
+        "description": "The feature that activates elements of the react-chat-sk solution.",
+        "id": "d23de075-e163-4fe2-8423-c18cd315730a",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+      "resource": "React-Chat-Sk",
+      "scope": "user_impersonation",
+      "appId": "c03217...",
+      "replyUrl": "http://localhost:7071"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-chat-sk.sppkg"
+  }
+}
