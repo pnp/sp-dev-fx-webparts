@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-copilot-retrieval-api-client-side-solution",
+    "id": "1a3f7c99-b38a-4564-9f6f-63ff144d71b2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-copilot-retrieval-api description"
+      },
+      "longDescription": {
+        "default": "react-copilot-retrieval-api description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-copilot-retrieval-api Feature",
+        "description": "The feature that activates elements of the react-copilot-retrieval-api solution.",
+        "id": "a8012597-534c-40e8-88a1-afd9bc709ce9",
+        "version": "1.0.0.0"
+      }
+    ],
+  "webApiPermissionRequests": [
+     {
+    "resource": "Microsoft Graph",
+    "scope": "Files.Read.All"
+  },
+  {
+    "resource": "Microsoft Graph",
+    "scope": "Sites.Read.All"
+  }
+  ]
+  },
+  
+  "paths": {
+    "zippedPackage": "solution/react-copilot-retrieval-api.sppkg"
+  }
+}
