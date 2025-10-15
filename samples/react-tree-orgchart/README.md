@@ -24,7 +24,7 @@ You can configure in the web part properties:
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 ![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg) 
-![Node.js LTS 22](https://img.shields.io/badge/Node.js-LTS%2018-green.svg) 
+![Node.js LTS 22](https://img.shields.io/badge/Node.js-LTS%2022-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
