@@ -20,7 +20,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.21.1",
     "@microsoft/sp-property-pane": "1.21.1",
     "@microsoft/sp-webpart-base": "1.21.1",
-    "@pnp/sp": "^1.3.11",
+    "@pnp/sp": "^4.16.0",
     "@pnp/spfx-controls-react": "3.22.0",
     "@pnp/spfx-property-controls": "3.21.0",
     "@types/es6-promise": "0.0.33",
