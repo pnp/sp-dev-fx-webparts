@@ -3,15 +3,7 @@ declare interface IManageSchemaExtensionsWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
-  AppLocalEnvironmentSharePoint: string;
-  AppLocalEnvironmentTeams: string;
-  AppLocalEnvironmentOffice: string;
-  AppLocalEnvironmentOutlook: string;
-  AppSharePointEnvironment: string;
-  AppTeamsTabEnvironment: string;
-  AppOfficeEnvironment: string;
-  AppOutlookEnvironment: string;
-  UnknownEnvironment: string;
+  
 
   // General
   Loading: string;
@@ -104,6 +96,16 @@ declare interface IManageSchemaExtensionsWebPartStrings {
   PropertyNameRequiredError: string;
   PropertyNameInvalidError: string;
   DuplicatePropertyNameError: string;
+  
+  // App ID Validation Messages
+  AppIdRequiredError: string;
+  AppIdInvalidFormatError: string;
+  AppIdNotFoundError: string;
+  AppIdAccessDeniedError: string;
+  AppIdNotOwnerError: string;
+  AppIdValidationError: string;
+  AppIdValidationSuccess: string;
+  AppIdValidatingMessage: string;
   
   // Success Messages
   SchemaExtensionCreatedSuccess: string;

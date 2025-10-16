@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as strings from "ManageSchemaExtensionsWebPartStrings";
 
 import {
   Badge,
@@ -38,9 +39,8 @@ import {
   ISchemaExtensionProperty,
 } from "../../models/ISchemaExtension";
 
-import { useSchemaExtensionViewerStyles } from "./useSchemaExtensionViewerStyles";
 import { TARGET_TYPES } from "../../constants";
-import * as strings from 'ManageSchemaExtensionsWebPartStrings';
+import { useSchemaExtensionViewerStyles } from "./useSchemaExtensionViewerStyles";
 
 export interface ISchemaExtensionViewerProps {
   isOpen: boolean;
@@ -52,7 +52,7 @@ export const SchemaExtensionViewer: React.FunctionComponent<
   ISchemaExtensionViewerProps
 > = ({ isOpen, onClose, schemaExtension }) => {
   const styles = useSchemaExtensionViewerStyles();
-
+  // Handle close action
   const handleClose = React.useCallback(() => {
     onClose();
   }, [onClose]);
@@ -98,7 +98,16 @@ export const SchemaExtensionViewer: React.FunctionComponent<
       ],
       [styles.iconStyles]
     );
-
+  // Handle drawer open state change
+  const onOpenChange = React.useCallback(
+    (_, { open }) => {
+      if (!open) {
+        handleClose();
+      }
+    },
+    [handleClose]
+  );
+  // Render title with icon and text
   const RenderTitle = React.useCallback(() => {
     return (
       <Stack direction="horizontal" gap="m">
@@ -116,7 +125,7 @@ export const SchemaExtensionViewer: React.FunctionComponent<
       type="overlay"
       separator
       open={isOpen}
-      onOpenChange={(_, { open }) => !open && handleClose()}
+      onOpenChange={onOpenChange}
       size="medium"
       position="end"
     >
@@ -142,11 +151,14 @@ export const SchemaExtensionViewer: React.FunctionComponent<
               {strings.NoDataToDisplay}
             </Stack>
           ) : (
-            <div className={styles.scrollableContent}>
+            <div>
               {/* Extension ID */}
               <Stack gap="5px" padding="s">
                 <Stack gap="5px" direction="horizontal">
-                  <RenderLabel label={strings.ExtensionIdLabel} icon={<Tag20Regular />} />
+                  <RenderLabel
+                    label={strings.ExtensionIdLabel}
+                    icon={<Tag20Regular />}
+                  />
                   <InfoLabel info={strings.ExtensionIdTooltip} />
                 </Stack>
                 <Field>
@@ -173,7 +185,8 @@ export const SchemaExtensionViewer: React.FunctionComponent<
                 <Field>
                   <Textarea
                     value={
-                      schemaExtension.description || strings.NoDescriptionProvided
+                      schemaExtension.description ||
+                      strings.NoDescriptionProvided
                     }
                     readOnly
                     disabled
@@ -210,7 +223,10 @@ export const SchemaExtensionViewer: React.FunctionComponent<
               {schemaExtension.status && (
                 <Stack gap="5px" padding="s">
                   <Stack gap="5px" direction="horizontal">
-                    <RenderLabel label={strings.StatusLabel} icon={<Target20Regular />} />
+                    <RenderLabel
+                      label={strings.StatusLabel}
+                      icon={<Target20Regular />}
+                    />
                     <InfoLabel info={strings.StatusTooltip} />
                   </Stack>
                   <Field>
@@ -280,12 +296,20 @@ export const SchemaExtensionViewer: React.FunctionComponent<
                   <InfoLabel info={strings.PropertiesTooltip} />
                 </Stack>
 
-                <Stack gap="m">
+                <Stack
+                  gap="m"
+                  width="100%"
+                  className={styles.gridPropertiesContainer}
+                >
                   <DataGrid
                     items={schemaExtension.properties}
                     columns={propertiesColumns as IColumnConfig<unknown>[]}
                     enableSorting={true}
                     noItemsMessage={strings.NoPropertiesDefined}
+                    virtualizedItemSize={44}
+                    virtualizedHeight={
+                      44 * schemaExtension.properties.length + 5
+                    }
                   />
                 </Stack>
               </Stack>

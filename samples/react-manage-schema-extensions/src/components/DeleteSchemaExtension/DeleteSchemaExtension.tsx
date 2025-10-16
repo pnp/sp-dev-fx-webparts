@@ -7,7 +7,6 @@ import {
   Body1Strong,
   Button,
   Spinner,
-  Text,
   tokens,
 } from "@fluentui/react-components";
 import {
@@ -70,16 +69,12 @@ export const DeleteSchemaExtension: React.FunctionComponent<
 > = (props: React.PropsWithChildren<IDeleteSchemaExtensionProps>) => {
   const { isOpen, onDismiss, schemaExtension, onDeleteSuccess } = props;
   const appGlobalState = useAtomValue(appGlobalStateAtom);
-  const { context,   } = appGlobalState;
+  const { context } = appGlobalState;
   const { deleteSchemaExtension } = useSchemaExtension({ context: context! });
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const { logError } = useLogging();
   const styles = useStyles();
-  const canBeDeleted = React.useMemo(
-    () => schemaExtension.status === "InDevelopment",
-    [schemaExtension]
-  );
 
   const handleDelete = React.useCallback(async () => {
     try {
@@ -107,36 +102,27 @@ export const DeleteSchemaExtension: React.FunctionComponent<
     return (
       <Stack gap="m" direction="horizontal" justifyContent="end" padding="20px">
         <Button onClick={onDismiss}>{strings.Cancel}</Button>
-        {canBeDeleted && (
-          <Button
-            appearance="primary"
-            onClick={handleDelete}
-            disabled={isDeleting}
-          >
-            {isDeleting ? <Spinner size="small" /> : strings.Delete}
-          </Button>
-        )}
+        <Button
+          appearance="primary"
+          onClick={handleDelete}
+          disabled={isDeleting}
+        >
+          {isDeleting ? <Spinner size="small" /> : strings.Delete}
+        </Button>
       </Stack>
     );
-  }, [handleDelete, isDeleting, onDismiss, canBeDeleted]);
+  }, [handleDelete, isDeleting, onDismiss]);
 
   const RenderDeleteConfirmation = React.useCallback(() => {
     return (
       <>
-        <Stack
-          className={styles.infoPanel}
-          padding="25px"
-        >
+        <Stack className={styles.infoPanel} padding="25px">
           <Stack direction="horizontal" gap="m" alignItems="start">
             <Info20Regular className={styles.iconStyle} />
-            <Body1>
-              {strings.DeleteDataInfo}
-            </Body1>
+            <Body1>{strings.DeleteDataInfo}</Body1>
           </Stack>
         </Stack>
-        <Body1Strong>
-          {strings.DeleteSchemaExtensionMessage}
-        </Body1Strong>
+        <Body1Strong>{strings.DeleteSchemaExtensionMessage}</Body1Strong>
         <div className={styles.grid}>
           <Body1>{strings.SchemaIdLabel}</Body1>
           <Body1Strong>{schemaExtension.id}</Body1Strong>
@@ -158,37 +144,6 @@ export const DeleteSchemaExtension: React.FunctionComponent<
     );
   }, [error, schemaExtension]);
 
-  const RenderCantDelete = React.useCallback(() => {
-    return (
-      <>
-        <Stack
-          style={{
-            backgroundColor: tokens.colorNeutralBackground3,
-            borderRadius: "8px",
-          }}
-          padding="25px"
-          gap="s"
-        >
-          <Body1>
-            {strings.CannotDeleteMessage}{" "}
-            <Text weight="semibold">{schemaExtension.id}</Text>{" "}
-          </Body1>
-          <Body1>
-            {strings.CannotDeleteReasonPrefix}{" "}
-            <Badge
-              appearance="filled"
-              color="warning"
-              style={{ maxWidth: "fit-content" }}
-            >
-              {schemaExtension.status}
-            </Badge>{" "}
-            {strings.CannotDeleteReasonSuffix}
-          </Body1>
-        </Stack>
-      </>
-    );
-  }, []);
-
   if (!schemaExtension) {
     return null;
   }
@@ -208,7 +163,7 @@ export const DeleteSchemaExtension: React.FunctionComponent<
             onDismiss={onDismiss}
           />
           <Stack gap="l">
-            {canBeDeleted ? <RenderDeleteConfirmation /> : <RenderCantDelete />}
+            <RenderDeleteConfirmation />
           </Stack>
         </Stack>
       </RenderDialog>

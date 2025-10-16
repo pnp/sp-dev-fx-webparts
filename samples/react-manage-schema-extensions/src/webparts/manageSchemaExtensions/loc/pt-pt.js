@@ -4,16 +4,6 @@ define([], function() {
     "PropertyPaneDescription": "Descrição",
     "BasicGroupName": "Nome do Grupo",
     "DescriptionFieldLabel": "Campo de Descrição",
-    "AppLocalEnvironmentSharePoint": "A aplicação está a ser executada no seu ambiente local como web part do SharePoint",
-    "AppLocalEnvironmentTeams": "A aplicação está a ser executada no seu ambiente local como aplicação do Microsoft Teams",
-    "AppLocalEnvironmentOffice": "A aplicação está a ser executada no seu ambiente local em office.com",
-    "AppLocalEnvironmentOutlook": "A aplicação está a ser executada no seu ambiente local no Outlook",
-    "AppSharePointEnvironment": "A aplicação está a ser executada numa página do SharePoint",
-    "AppTeamsTabEnvironment": "A aplicação está a ser executada no Microsoft Teams",
-    "AppOfficeEnvironment": "A aplicação está a ser executada em office.com",
-    "AppOutlookEnvironment": "A aplicação está a ser executada no Outlook",
-    "UnknownEnvironment": "A aplicação está a ser executada num ambiente desconhecido",
-
     // General
     "Loading": "A carregar...",
     "Error": "Erro",
@@ -105,6 +95,16 @@ define([], function() {
     "PropertyNameRequiredError": "Nome da propriedade é obrigatório",
     "PropertyNameInvalidError": "Nome da propriedade deve começar com uma letra e conter apenas letras, números e sublinhados",
     "DuplicatePropertyNameError": "Nome de propriedade duplicado",
+    
+    // App ID Validation Messages
+    "AppIdRequiredError": "ID da Aplicação é obrigatório",
+    "AppIdInvalidFormatError": "ID da Aplicação deve ter um formato GUID válido",
+    "AppIdNotFoundError": "Aplicação não encontrada no Entra ID",
+    "AppIdAccessDeniedError": "Acesso negado. Pode não ter permissão para ler esta aplicação",
+    "AppIdNotOwnerError": "Não é proprietário desta aplicação",
+    "AppIdValidationError": "Falha ao validar aplicação. Verifique o ID da Aplicação e tente novamente",
+    "AppIdValidationSuccess": "Proprietário válido da aplicação",
+    "AppIdValidatingMessage": "A validar propriedade da aplicação...",
     
     // Success Messages
     "SchemaExtensionCreatedSuccess": "Extensão de esquema criada com sucesso",
