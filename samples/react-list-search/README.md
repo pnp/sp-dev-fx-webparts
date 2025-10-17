@@ -99,6 +99,7 @@ Version|Date|Comments
 1.3.0|July 11, 2022|Fixes CAML issues
 1.4.0|October 2, 2024|Upgraded for SPFx v1.20.0
 1.5.0|August 14, 2025|Fixes ContentType query
+1.6.0|October 17, 2025|Fixes List view and Caml query 
 
 ## Minimal Path to Awesome
 
