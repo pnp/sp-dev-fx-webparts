@@ -58,7 +58,7 @@ This sample SPFx web part demonstrates multiple ways to read data from a SharePo
 
 | Version | Date             | Comments              |
 | ------- | ---------------- | --------------------- |
-| 1.0     | 02.10.2025       | Initial Release       |
+| 1.0     | 18.10.2025       | Initial Release       |
 
 
 ## Minimal Path to Awesome
