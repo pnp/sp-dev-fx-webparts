@@ -3,11 +3,11 @@
 
 This sample SPFx web part demonstrates multiple ways to read data from a SharePoint list/library. It includes side‑by‑side implementations using the native Fetch API, `SPHttpClient`, Microsoft Graph, and PnPjs. Configure `SITEID`, `SOURCELIBRARY`, and `SOURCELIBRARYID` in `src/Core/DataAccessOptions.ts`, then run and compare each approach with a single click in the UI.
 
-![UI of the App](docs/ui-webpart.png)
+![UI of the App](assets/ui-webpart.png)
 
 *UI of the App*
 
-![Overview about the data access options](docs/Access-SharePoint_Data_EN_v1.jpg)
+![Overview about the data access options](assets/Access-SharePoint_Data_EN_v1.jpg)
 
 *Overview about the data access options*
 
