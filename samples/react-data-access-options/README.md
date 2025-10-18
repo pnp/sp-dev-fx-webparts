@@ -43,6 +43,11 @@ This sample SPFx web part demonstrates multiple ways to read data from a SharePo
 > Check the file DataAccessOptions and set the variables: SITEID, SOURCELIBRARY and SOURCELIBRARYID
 > Install the App and add the App to a page OR use the workbench.
 
+## Contributors
+
+* [Marc André Schröder-Zhou](https://github.com/maschroeder-z)
+
+
 ## Solution
 
 | Solution    | Author(s)                                                   |
