@@ -1,0 +1,1 @@
+{"version":3,"file":"PropertyPaneLogo.d.ts","sourceRoot":"","sources":["../../src/Core/PropertyPaneLogo.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,qBAAqB,EAAE,6BAA6B,EAAE,MAAM,6BAA6B,CAAC;AAGvH,qBAAa,gBAAiB,YAAW,kBAAkB,CAAC,6BAA6B,CAAC;IAC/E,IAAI,EAAE,qBAAqB,CAAgC;IAC3D,cAAc,EAAE,MAAM,CAAC;IACvB,UAAU,EAAE,6BAA6B,CAAC;;IASjD,OAAO,CAAC,QAAQ;CAUnB;AACD,eAAe,gBAAgB,CAAC"}
