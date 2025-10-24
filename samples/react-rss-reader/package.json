@@ -1,6 +1,6 @@
 {
   "name": "react-rssreader",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": true,
   "engines": {
     "node": ">=22.14.0 < 23.0.0"
