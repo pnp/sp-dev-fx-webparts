@@ -4,7 +4,7 @@
 
 This sample web part shows a report of the web parts used on the current site.
 
-![Chart View](./assets/chartView.png)
+![Static sample](./assets/webpartReport.png)
 
 ![List View](./assets/listView.png)
 
