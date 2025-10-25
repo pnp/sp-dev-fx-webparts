@@ -1,7 +1,7 @@
 import { addYears, format } from "date-fns/esm";
 import formatDistance from "date-fns/formatDistance";
 import set from "date-fns/set";
-import { Icon, IconButton } from "office-ui-fabric-react";
+import { Icon, IconButton } from "@fluentui/react";
 import * as React from "react";
 
 import { BirthdaysInMonth } from "../../../models/BirthdaysInMonth";
@@ -72,7 +72,7 @@ const MonthSection = (props: IMonthSectionProps): JSX.Element => {
                   <IconButton
                     iconProps={{ iconName: "Mail" }}
                     title="Mail"
-                    onClick={(event) => {
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                       event.stopPropagation();
                       window.open(`mailto:${user.email}`);
                     }}
