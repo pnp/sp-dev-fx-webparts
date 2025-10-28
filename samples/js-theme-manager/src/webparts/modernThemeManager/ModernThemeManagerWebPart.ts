@@ -1,7 +1,6 @@
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './ModernThemeManagerWebPart.module.scss';
 import * as strings from 'ModernThemeManagerWebPartStrings';
@@ -11,6 +10,11 @@ import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@micro
 
 export interface IModernThemeManagerWebPartProps {
   description: string;
+}
+
+interface IThemeParams {
+  name?: string;
+  themeJson?: string;
 }
 
 export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IModernThemeManagerWebPartProps> {
@@ -86,34 +90,33 @@ export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IMo
   ***** *****/
  public setupClickEvent(): void {
 
-  let btnCreateTheme = document.getElementById("createTheme");
-  btnCreateTheme.addEventListener("click", (e: Event) => this.createTheme());
+  const btnCreateTheme = document.getElementById("createTheme");
+  btnCreateTheme.addEventListener("click", () => this.createTheme());
 
-  let btnUpdateTheme = document.getElementById("updateTheme");
-  btnUpdateTheme.addEventListener("click", (e: Event) => this.updateTheme());
+  const btnUpdateTheme = document.getElementById("updateTheme");
+  btnUpdateTheme.addEventListener("click", () => this.updateTheme());
 
-  let btnDeleteTheme = document.getElementById("deleteTheme");
-  btnDeleteTheme.addEventListener("click", (e: Event) => this.deleteTheme());
+  const btnDeleteTheme = document.getElementById("deleteTheme");
+  btnDeleteTheme.addEventListener("click", () => this.deleteTheme());
 
-  let btnApplyTheme = document.getElementById("applyTheme");
-  btnApplyTheme.addEventListener("click", (e: Event) => this.applyThemeNew());
+  const btnApplyTheme = document.getElementById("applyTheme");
+  btnApplyTheme.addEventListener("click", () => this.applyThemeNew());
 
-  let radioThemeActions = document.getElementsByName("themeAction");
-  let parent = this;
-  for (var i = 0, max = radioThemeActions.length; i < max; i++) {
-    radioThemeActions[i].onclick = function () {
-      let selectedValue = (<HTMLInputElement>this).value;
+  const radioThemeActions = document.getElementsByName("themeAction");
+  for (let i = 0, max = radioThemeActions.length; i < max; i++) {
+    radioThemeActions[i].onclick = (event) => {
+      const selectedValue = (<HTMLInputElement>event.target).value;
       if (selectedValue == 'delete') {
-        parent.displayDeleteOptions();
+        this.displayDeleteOptions();
       }
       else if (selectedValue == 'create') {
-        parent.displayCreateOptions();
+        this.displayCreateOptions();
       }
       else if (selectedValue == 'update') {
-        parent.displayUpdateOptions();
+        this.displayUpdateOptions();
       }
       else if (selectedValue == 'apply') {
-        parent.displayApplyOptions();
+        this.displayApplyOptions();
       }
     };
   }
@@ -128,13 +131,13 @@ public hideAllWrappers(): void {
   // Hide any other elements that might have been displayed
   document.getElementById(styles.themeNameWrapper).classList.add(styles.hide);
   document.getElementById(styles.themePaletteWrapper).classList.add(styles.hide);
-  let wrappers = document.getElementsByClassName(styles.genericWrapper);
+  const wrappers = document.getElementsByClassName(styles.genericWrapper);
   for (let i = 0; i < wrappers.length; i++) {
     wrappers[i].classList.add(styles.hide);
   }
 
 
-  let buttons = document.getElementsByClassName(styles.button);
+  const buttons = document.getElementsByClassName(styles.button);
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].classList.add(styles.hide);
   }
@@ -149,7 +152,7 @@ public displayUpdateOptions(): void {
   // Hide all wrappers
   this.hideAllWrappers();
 
-  this.populateExistingThemes("/_api/thememanager/GetTenantThemingOptions", {}).then((success: boolean) => {
+  this.populateExistingThemes().then((success: boolean) => {
     if (success) {
       // Display the dropdown.
       document.getElementById(styles.themeSelectWrapper).classList.remove(styles.hide);
@@ -183,7 +186,7 @@ public displayDeleteOptions(): void {
   // Hide all wrappers
   this.hideAllWrappers();
 
-  this.populateExistingThemes("/_api/thememanager/GetTenantThemingOptions", {}).then((success: boolean) => {
+  this.populateExistingThemes().then((success: boolean) => {
     if (success) {
       // Display the dropdown.
       document.getElementById(styles.themeSelectWrapper).classList.remove(styles.hide);
@@ -211,19 +214,19 @@ public displayApplyOptions(): void {
 Populate Existing Themes:
 This method retrieves the currently available themes in the tenant and inserts the values into the dropdown.
 ***** *****/
-public populateExistingThemes(url: string, params: any): Promise<boolean> {
+public populateExistingThemes(): Promise<boolean> {
 
 
   return this.context.spHttpClient.get("/_api/thememanager/GetTenantThemingOptions", SPHttpClient.configurations.v1)
     .then((response: SPHttpClientResponse) => {
       return response.json();
-    }).then((themeJSON: any) => {
+    }).then((themeJSON: { themePreviews: { name: string }[] }) => {
       // Clear the select
-      let themeSelect = <HTMLInputElement>document.getElementById(styles.availableThemesSelect);
+      const themeSelect = <HTMLInputElement>document.getElementById(styles.availableThemesSelect);
       themeSelect.innerHTML = "";
 
       for (let i = 0, max = themeJSON.themePreviews.length; i < max; i++) {
-        let option = document.createElement("option");
+        const option = document.createElement("option");
         option.text = themeJSON.themePreviews[i].name;
         (<HTMLInputElement>themeSelect).appendChild(option);
 
@@ -240,9 +243,9 @@ Collects the data needed to create a new theme at the tenant level and passes it
 public createTheme(): void {
 
   // Gather the theme properties
-  let themeTitle: string = (<HTMLInputElement>document.getElementById(styles.input)).value;
-  let themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
-  let themePaletteJSON = {
+  const themeTitle: string = (<HTMLInputElement>document.getElementById(styles.input)).value;
+  const themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
+  const themePaletteJSON = {
     "palette": themePalette
   };
 
@@ -270,10 +273,7 @@ Collects the data needed to delete a theme at the tenant level and passes it to 
 public deleteTheme(): void {
 
   // Gather the theme properties
-  let themeTitle: string = (<HTMLInputElement>document.getElementById(styles.availableThemesSelect)).value;
-
-  // Setup the success message
-  let successMessage: string = 'The theme has been successfully deleted';
+  const themeTitle: string = (<HTMLInputElement>document.getElementById(styles.availableThemesSelect)).value;
 
   // Pass the theme properties to themeManagerExecution method
   this.themeManagerExecution(this.context.pageContext.site.serverRelativeUrl + "/_api/thememanager/DeleteTenantTheme", { name: themeTitle })
@@ -297,9 +297,9 @@ Collects the data needed to update a theme at the tenant level and passes it to 
 public updateTheme(): void {
 
   // Gather the theme properties
-  let themeTitle: string = (<HTMLInputElement>document.getElementById(styles.availableThemesSelect)).value;
-  let themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
-  let themePaletteJSON = {
+  const themeTitle: string = (<HTMLInputElement>document.getElementById(styles.availableThemesSelect)).value;
+  const themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
+  const themePaletteJSON = {
     "palette": themePalette
   };
 
@@ -326,15 +326,15 @@ NOTE: This does NOT create a theme choice at the tenant level. It will directly 
 public applyThemeNew(): void {
 
   // Gather the theme properties
-  let themeURL: string = (<HTMLInputElement>document.getElementById(styles.siteurl)).value;
-  let themeTitle: string = (<HTMLInputElement>document.getElementById(styles.input)).value;
-  let themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
-  let themePaletteJSON = {
+  const themeURL: string = (<HTMLInputElement>document.getElementById(styles.siteurl)).value;
+  const themeTitle: string = (<HTMLInputElement>document.getElementById(styles.input)).value;
+  const themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
+  const themePaletteJSON = {
     "palette": themePalette
   };
 
   const digestCache: IDigestCache = this.context.serviceScope.consume(DigestCache.serviceKey);
-  digestCache.fetchDigest(themeURL).then((digest: string): void => {
+  digestCache.fetchDigest(themeURL).then((): void => {
 
     // Pass the theme properties to themeManagerExecution method
     this.themeManagerExecution(themeURL + "/_api/thememanager/ApplyTheme", { name: themeTitle, themeJson: JSON.stringify(themePaletteJSON) })
@@ -356,9 +356,9 @@ public applyThemeNew(): void {
 /***** *****
 Generic method for creating, updating, deleting and applying a theme.
 ***** *****/
-public themeManagerExecution(url: string, params: any): Promise<boolean> {
+public themeManagerExecution(url: string, params: IThemeParams): Promise<boolean> {
 
-  let options: ISPHttpClientOptions = {
+  const options: ISPHttpClientOptions = {
     body: JSON.stringify(params)
   };
 
