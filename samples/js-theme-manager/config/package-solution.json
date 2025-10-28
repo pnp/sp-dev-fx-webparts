@@ -4,7 +4,36 @@
     "name": "js-theme-manager-client-side-solution",
     "id": "555147fb-b773-446f-aef2-1b25001f92d9",
     "version": "2.0.0.0",
-    "includeClientSideAssets": true
+    "includeClientSideAssets": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "js-theme-manager description"
+      },
+      "longDescription": {
+        "default": "js-theme-manager description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "js-theme-manager ModernThemeManagerWebPart Feature",
+        "description": "The feature that activates ModernThemeManagerWebPart from the js-theme-manager solution.",
+        "id": "11a36ff0-b026-4860-9e92-8e3fa283ad0f",
+        "version": "2.0.0.0",
+        "componentIds": [
+          "11a36ff0-b026-4860-9e92-8e3fa283ad0f"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/js-theme-manager.sppkg"

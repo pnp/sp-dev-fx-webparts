@@ -211,7 +211,7 @@ public displayApplyOptions(): void {
 Populate Existing Themes:
 This method retrieves the currently available themes in the tenant and inserts the values into the dropdown.
 ***** *****/
-public populateExistingThemes(url, params): Promise<boolean> {
+public populateExistingThemes(url: string, params: any): Promise<boolean> {
 
 
   return this.context.spHttpClient.get("/_api/thememanager/GetTenantThemingOptions", SPHttpClient.configurations.v1)
