@@ -37,6 +37,8 @@
 
 9. **_Document Preview_** can be enabled or disabled for the office files and videos.
 
+![js-advanced-commenting](./assets/js-advanced-commenting.png)
+
 ![Advanced-Comments-Box](./assets/Advanced-Comments-Box.gif)
 
 ## Compatibility
