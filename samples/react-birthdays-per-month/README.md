@@ -16,8 +16,8 @@ The birthday data is stored in a SharePoint List.
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.15.2](https://img.shields.io/badge/SPFx-1.15.2-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
@@ -40,18 +40,24 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 Version|Date|Comments
 -------|----|--------
+1.3|October 2025| Upgraded to 1.21.1
 1.2|December 3, 2022|Initial version
 
 ## Prerequisites
 
-Create `Birthdays` list with below columns:
-Name|Type
-----|----
-Employee|Person
-Month|Choice with month options (January, February, March, and so on)
-Date|Number (Minimum 1 and maximum 31)
+None. The solution automatically provisions a `Birthdays` list when deployed to a SharePoint site.
 
-Insert employee birthday items into the list.
+### Auto-Provisioned List Structure
+
+When you deploy this solution, a `Birthdays` list will be automatically created at `Lists/Birthdays` with the following columns:
+
+Name|Type|Description
+----|----|-----------
+Employee|Person|The employee whose birthday is being tracked
+Month|Choice|Month of birth (January through December)
+Date|Number|Day of the month (1-31)
+
+The list will appear in the site's Quick Launch navigation. After deployment, simply add employee birthday items to the list to populate the web part.
 
 ## Minimal path to awesome
 
