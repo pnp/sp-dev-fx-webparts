@@ -9,7 +9,7 @@ A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access
 ## Used SharePoint Framework Version
 
 ![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
-![Node.js v22.14.0](https://img.shields.io/badge/Node.js-v22.14.0-green.svg)
+![Node.js v18.17.1](https://img.shields.io/badge/Node.js-v18.17.1-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 
 ## Applies to
