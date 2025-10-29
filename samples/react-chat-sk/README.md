@@ -1,29 +1,26 @@
-# Chat With Semantic Kernel and Plugins 
+# Chat With Semantic Kernel and Plugins
 
 ## Summary
 
-This solution demonstrates an intelligent chat interface built with SharePoint Framework (SPFx) that integrates with Azure Functions and Microsoft Semantic Kernel. The chat webpart provides a modern conversational UI with real-time communication using Server-Sent Events (SSE), allowing users to interact with AI-powered capabilities directly within SharePoint Online.
+This solution demonstrates an intelligent chat interface built with SharePoint Framework (SPFx) that integrates with Azure Functions and Microsoft Semantic Kernel. The chat web part provides a modern conversational UI with real-time communication using Server-Sent Events (SSE), allowing users to interact with AI-powered capabilities directly within SharePoint Online.
 
 The backend leverages Azure Functions with .NET 10 and Semantic Kernel for orchestrating AI interactions, including function calling capabilities for context-aware operations such as retrieving dates, user information, and calendar data from Microsoft Graph. The entire solution is protected by Entra ID (Azure AD) authentication.
 
 Key features include:
+
 - Real-time chat streaming with SSE
 - Semantic Kernel integration with extensible function calling
 - Semantic Kernel Plugins with Graph Calls
 - Secure authentication via Entra ID
-
-
 
 ![Demo](./assets/demo.gif)
 
 ![Webpart](./assets/ChatUI.png)
 ![AZ Function Output with the API Calls to Graph API](./assets/functionLog.png)
 ![SSE Response of a Chat Message](./assets/SSERequest.png)
-![Scoped UserContext for Sementic Kernel in Azure Function](./assets/userContextForPlugins.png)
+![Scoped UserContext for Semantic Kernel in Azure Function](./assets/userContextForPlugins.png)
 
 [Video](./assets/ReactChatSk.mp4)
-
-
 
 ## Compatibility
 
@@ -76,7 +73,7 @@ This sample is optimally compatible with the following environment configuration
 - Upload Sharepoint Solution to SharePoint
   - Approve API Permissions
   
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ### App Registration
 
@@ -116,7 +113,6 @@ This sample is optimally compatible with the following environment configuration
 - Approve pending API requests
 ![Go To API Permissions](./assets/appinstall/ApiAccess.png)
 
-
 ## Features
 
 - The main purpose: an SPFx chat webpart with Azure Functions and Semantic Kernel integration
@@ -125,7 +121,6 @@ This sample is optimally compatible with the following environment configuration
 - Functionality: function calling for dates, user info, and calendar data via Microsoft Graph
 - Security: Entra ID authentication
 - UI: Modern React with Fluent UI components
-
 
 ## Help
 
@@ -140,6 +135,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-chat-sk" />
