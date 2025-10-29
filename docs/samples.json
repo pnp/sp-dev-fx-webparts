@@ -29631,6 +29631,90 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-quick-links-pro",
+    "source": "pnp",
+    "title": "Quick Links Pro",
+    "shortDescription": "A modern SharePoint Framework web part that provides dynamic quick-access links with inline editing capabilities directly from the page.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-pro",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-pro",
+    "longDescription": [
+      "A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access links with inline editing capabilities. Content authors can manage links directly from the page using a configuration panel, eliminating the need to navigate to list settings or the property pane. Features include edit mode detection, multiple display styles (cards, buttons, list), CRUD operations, link target control, icon support, and responsive design."
+    ],
+    "creationDateTime": "2025-10-30",
+    "updateDateTime": "2025-10-30",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "quick-links-pro-demo.mp4",
+        "type": "video",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.mp4",
+        "alt": "Quick Links Pro demo"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
+        "alt": "Cards display style"
+      },
+      {
+        "type": "image",
+        "order": 300,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/list-view.png",
+        "alt": "List display style"
+      },
+      {
+        "type": "image",
+        "order": 400,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/config-panel.png",
+        "alt": "Configuration panel"
+      },
+      {
+        "type": "image",
+        "order": 500,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/edit-mode.png",
+        "alt": "Edit mode with gear icon"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "https://github.com/saiiiiiii.png",
+        "name": "Sai Siva Ram Bandaru"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Using PnP JS with SharePoint Framework",
+        "description": "Learn how to use PnP JS library in your SharePoint Framework solutions for modern SharePoint REST API interactions.",
+        "url": "https://pnp.github.io/pnpjs/getting-started/"
+      },
+      {
+        "name": "Fluent UI React Components",
+        "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
+        "url": "https://developer.microsoft.com/en-us/fluentui#/controls/web"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-quick-poll",
     "source": "pnp",
     "title": "Quick Poll Web Part",
