@@ -10142,7 +10142,7 @@
       "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online."
     ],
     "creationDateTime": "2020-06-01",
-    "updateDateTime": "2020-06-01",
+    "updateDateTime": "2025-10-28",
     "products": [
       "SharePoint"
     ],
@@ -10157,7 +10157,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
