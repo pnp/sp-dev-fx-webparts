@@ -30,6 +30,9 @@ import { useLogging } from "@spteck/m365-hooks";
 import { useSchemaExtension } from "../../hooks/useSchemaExtension";
 import { useSchemaExtensionListViewStyles } from "./useSchemaExtensionListViewStyles";
 
+const ROW_HEIGHT = 50;
+const DEFAULT_HEIGHT = 300;
+
 export interface ISchemaExtensionsListViewProps {
   onSchemaExtensionSelect?: (
     schemaExtension: ISchemaExtension | undefined
@@ -54,7 +57,7 @@ export const SchemaExtensionsListView: React.FunctionComponent<
   refreshTrigger,
 }) => {
   const [appGlobalState] = useAtom(appGlobalStateAtom);
-  const { context,   } = appGlobalState;
+  const { context } = appGlobalState;
   const { getSchemaExtensions } =
     useSchemaExtension({ context: context! }) || {};
   const { logError, logInfo } = useLogging();
@@ -66,10 +69,7 @@ export const SchemaExtensionsListView: React.FunctionComponent<
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const { styles } = useSchemaExtensionListViewStyles();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dataGridRef = React.useRef<DataGridHandle<unknown>>(null);
-  const containerGridRef = React.useRef<HTMLDivElement>(null);
- 
 
   const columnSizingOptions: TableColumnSizingOptions = {
     id: { minWidth: 260, defaultWidth: 260, idealWidth: 280 },
@@ -79,8 +79,6 @@ export const SchemaExtensionsListView: React.FunctionComponent<
     properties: { minWidth: 100, defaultWidth: 100, idealWidth: 100 },
     owner: { minWidth: 150, defaultWidth: 150, idealWidth: 200 },
   };
-
-    
 
   // Handle row selection
   const handleRowClick = useCallback(
@@ -131,9 +129,7 @@ export const SchemaExtensionsListView: React.FunctionComponent<
         column: "targetTypes",
         header: strings.TargetTypesColumnHeader,
         onRender: (schemaExtension: ISchemaExtension) => (
-          <div
-            className={styles.targetTypesContainer}
-          >
+          <div className={styles.targetTypesContainer}>
             <TargetTypesBadges targetTypes={schemaExtension.targetTypes} />
           </div>
         ),
@@ -177,7 +173,6 @@ export const SchemaExtensionsListView: React.FunctionComponent<
             b.status || "InDevelopment"
           ),
       },
-     
     ],
     []
   );
@@ -187,37 +182,47 @@ export const SchemaExtensionsListView: React.FunctionComponent<
     try {
       setIsLoading(true);
       setError(undefined);
-
       logInfo(
         "Loading schema extensions using tenant properties approach...",
         "loadSchemaExtensions"
       );
-      const extensions = await getSchemaExtensions(); // No owner parameter needed now
+      const extensions = await getSchemaExtensions();
       setSchemaExtensions(extensions || []);
       logInfo("Loaded schema extensions:", JSON.stringify(extensions));
-    } catch (err) {
+    } catch (error) {
       const errorMessage =
-        err instanceof Error ? err.message : "Failed to load schema extensions";
+        error instanceof Error ? error.message : "Failed to load schema extensions";
       setError(errorMessage);
-      logError("Error loading schema extensions:", JSON.stringify(err));
+      logError("loadSchemaExtensions","Error loading schema extensions:", JSON.stringify(error));
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, schemaExtensions.length]);
+  }, [ getSchemaExtensions, logError, logInfo ]);
 
-  // Initial load - runs when context is available
+  const onSelectionChange = useCallback(
+    (selectedItems: ISchemaExtension[]) => {
+      if (selectedItems.length > 0) {
+        handleRowClick(selectedItems[0]);
+      } else {
+        // Handle deselection - call with undefined to clear selection
+        if (onSchemaExtensionSelect) {
+          onSchemaExtensionSelect(undefined);
+        }
+      }
+    },
+    [handleRowClick, onSchemaExtensionSelect]
+  );
+
+  // Initial load on mount
   useEffect(() => {
-    if (context && !schemaExtensions.length) {
-      loadSchemaExtensions().catch((err) =>
-        logError(
-          "GetSchemaIds",
-          "Failed to load schema extensions on mount:",
-          JSON.stringify(err)
-        )
-      );
-      
-    }
-  }, [context ]);
+    loadSchemaExtensions().catch((error) =>
+      logError(
+        "SchemaExtensionsListView - onMount",
+        "Failed to load schema extensions on mount:",
+        JSON.stringify(error)
+      )
+    );
+  }, []);
 
   // Handle refresh trigger
   useEffect(() => {
@@ -231,7 +236,7 @@ export const SchemaExtensionsListView: React.FunctionComponent<
     }
   }, [refreshTrigger]);
 
-  // Render error state
+  // Render error
   if (error) {
     return (
       <Stack>
@@ -241,7 +246,7 @@ export const SchemaExtensionsListView: React.FunctionComponent<
   }
 
   return (
-    <div ref={containerGridRef}>
+    <div>
       <DataGrid
         ref={dataGridRef}
         columnSizingOptions={columnSizingOptions}
@@ -254,21 +259,16 @@ export const SchemaExtensionsListView: React.FunctionComponent<
         isLoadingDataMessage={
           <SchemaExtensionsDataGridSkeleton rowCount={10} />
         }
-        onSelectionChange={(selectedItems: ISchemaExtension[]) => {
-          if (selectedItems.length > 0) {
-            handleRowClick(selectedItems[0]);
-          } else {
-            // Handle deselection - call with undefined to clear selection
-            if (onSchemaExtensionSelect) {
-              onSchemaExtensionSelect(undefined);
-            }
-          }
-        }}
+        onSelectionChange={onSelectionChange}
         enableSorting={true}
         enableResizing={true}
         selectionMode="single"
-        virtualizedItemSize={50}
-        virtualizedHeight={ schemaExtensions.length ? schemaExtensions.length * 50 : 300 }
+        virtualizedItemSize={ROW_HEIGHT}
+        virtualizedHeight={
+          schemaExtensions.length
+            ? schemaExtensions.length * ROW_HEIGHT
+            : DEFAULT_HEIGHT
+        }
       />
     </div>
   );

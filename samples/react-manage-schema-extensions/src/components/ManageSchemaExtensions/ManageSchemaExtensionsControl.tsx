@@ -4,6 +4,7 @@ import { Divider, Subtitle1 } from "@fluentui/react-components";
 
 import { ChangeSchemaStatus } from "../ChangeSchemaStatus";
 import { DeleteSchemaExtension } from "../DeleteSchemaExtension";
+import { EPanelMode } from "../../models/EPanelMode";
 import { IManageSchemaExtensionsProps } from "./IManageSchemaExtensionsProps";
 import { ISchemaExtension } from "../../models/ISchemaExtension";
 import { InformationPanel } from "./InformationPanel";
@@ -15,7 +16,6 @@ import { SchemaStatusRestrictionDialog } from "../SchemaExtensionDrawer";
 import { StackV2 as Stack } from "@spteck/react-controls";
 import { appGlobalStateAtom } from "../../atoms/appGlobalState";
 import { useAtom } from "jotai";
-import { useLogging } from "@spteck/m365-hooks";
 
 export const ManageSchemaExtensionsControl: React.FunctionComponent<
   IManageSchemaExtensionsProps
@@ -25,15 +25,15 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
     ISchemaExtension | undefined
   >(undefined);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [drawerMode, setDrawerMode] = React.useState<"create" | "edit">(
-    "create"
+  const [drawerMode, setDrawerMode] = React.useState<EPanelMode>(
+    EPanelMode.CREATE
   );
   const [refreshTrigger, setRefreshTrigger] = React.useState(0);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = React.useState(false);
   const [isChangeStatusDialogOpen, setIsChangeStatusDialogOpen] =
     React.useState(false);
   const [isViewerOpen, setIsViewerOpen] = React.useState(false);
-  const { logInfo } = useLogging();
+ 
   const { title } = appGlobalState;
 
   const canBeEdited = React.useMemo(
@@ -46,7 +46,7 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
   );
 
   const handleAddSchemaExtension = React.useCallback(() => {
-    setDrawerMode("create");
+    setDrawerMode(EPanelMode.CREATE);
     setIsDrawerOpen(true);
   }, []);
 
@@ -59,8 +59,7 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
 
   const handleEditSchemaExtension = React.useCallback(
     (schemaExtension: ISchemaExtension) => {
-      setSelectedSchemaExtension(schemaExtension);
-      setDrawerMode("edit");
+      setDrawerMode(EPanelMode.EDIT);
       setIsDrawerOpen(true);
     },
     []
@@ -68,7 +67,6 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
 
   const handleDeleteSchemaExtension = React.useCallback(
     (schemaExtension: ISchemaExtension) => {
-      logInfo("Delete schema extension:", JSON.stringify(schemaExtension));
       setIsDeleteDialogOpen(true);
     },
     []
@@ -76,20 +74,18 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
 
   const handleViewSchemaExtension = React.useCallback(
     (schemaExtension: ISchemaExtension) => {
-      logInfo("View schema extension:", JSON.stringify(schemaExtension));
       setSelectedSchemaExtension(schemaExtension);
       setIsViewerOpen(true);
     },
-    [logInfo]
+    []
   );
 
   const handleChangeSchemaStatus = React.useCallback(
     (schemaExtension: ISchemaExtension) => {
-      logInfo("Change schema status:", JSON.stringify(schemaExtension));
       setSelectedSchemaExtension(schemaExtension);
       setIsChangeStatusDialogOpen(true);
     },
-    [logInfo]
+    []
   );
 
   const handleRefresh = React.useCallback(() => {
@@ -100,7 +96,7 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
 
   const handleDrawerClose = React.useCallback(() => {
     setIsDrawerOpen(false);
-    setDrawerMode("create");
+    setDrawerMode(EPanelMode.CREATE);
   }, []);
 
   const handleViewerClose = React.useCallback(() => {
@@ -110,18 +106,17 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
   const handleDrawerSuccess = React.useCallback(() => {
     setIsDrawerOpen(false);
     setSelectedSchemaExtension(undefined);
-    setDrawerMode("create");
+    setDrawerMode(EPanelMode.CREATE);
     // Trigger a refresh of the list view
     setRefreshTrigger((prev) => prev + 1);
   }, []);
 
   return (
-    <Stack>
-      <Stack gap="5px">
+    <>
+      <Stack>
         <Subtitle1>{title}</Subtitle1>
         <InformationPanel />
       </Stack>
-
       <SchemaExtensionsToolbar
         selectedSchemaExtension={selectedSchemaExtension}
         onAdd={handleAddSchemaExtension}
@@ -131,7 +126,7 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
         onChangeStatus={handleChangeSchemaStatus}
         onRefresh={handleRefresh}
       />
-      <Divider  />
+      <Divider />
       <Stack paddingTop="40px">
         <SchemaExtensionsListView
           onSchemaExtensionSelect={handleSchemaExtensionSelect}
@@ -201,7 +196,7 @@ export const ManageSchemaExtensionsControl: React.FunctionComponent<
           schemaExtension={selectedSchemaExtension}
         />
       )}
-    </Stack>
+    </>
   );
 };
 

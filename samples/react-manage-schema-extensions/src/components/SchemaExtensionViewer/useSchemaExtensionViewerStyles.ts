@@ -13,11 +13,18 @@ export interface ISchemaExtensionViewerStyles {
   iconStyles: string;
   targetTypesContainer: string;
   inputDisabledColor: string;
+  gridPropertiesContainer: string;
 }
 
 export const useSchemaExtensionViewerStyles =
   (): ISchemaExtensionViewerStyles => {
     return {
+      gridPropertiesContainer: css({
+        backgroundColor: tokens.colorNeutralBackground3,
+        padding: '5px',
+        borderRadius: '4px',
+      }),
+
       inputDisabledColor: css({
         backgroundColor: tokens.colorNeutralBackground3,
         color: tokens.colorNeutralForeground1Selected,

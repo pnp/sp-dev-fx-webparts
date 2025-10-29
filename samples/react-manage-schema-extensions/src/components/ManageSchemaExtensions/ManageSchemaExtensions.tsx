@@ -22,8 +22,8 @@ import { AccessInformation } from "../AccessInformation";
 import { EAppHostName } from "../../constants";
 import { ErrorBoundary } from "react-error-boundary";
 import { IManageSchemaExtensionsProps } from "./IManageSchemaExtensionsProps";
+import { Provider as JotaiProvider, } from "jotai";
 import { ManageSchemaExtensionsControl } from "./ManageSchemaExtensionsControl";
-import { Provider } from "jotai";
 import { ShowError } from "@spteck/react-controls";
 import { appGlobalStateAtom } from "../../atoms/appGlobalState";
 import { createV9Theme } from "@fluentui/react-migration-v8-v9";
@@ -36,6 +36,9 @@ const HydrateAtoms: React.FC<{
   useHydrateAtoms(initialValues as never);
   return <>{children}</>;
 };
+
+const MANAGED_WEB = "manageWeb";
+const FULL_MASK = "fullMask";
 
 export const ManageSchemaExtensions: React.FunctionComponent<
   IManageSchemaExtensionsProps
@@ -52,12 +55,13 @@ export const ManageSchemaExtensions: React.FunctionComponent<
   const [userHasPermissions, setUserHasPermissions] =
     React.useState<boolean>(false);
 
+  // Initialize global state atom with props
   const initialState = {
     ...props,
     isLoading: false,
     error: undefined,
   };
-
+  // Compute theme based on context and provided theme
   const computedTheme = React.useMemo<Partial<Theme>>(() => {
     if (hasTeamsContext) {
       switch (themeString) {
@@ -69,9 +73,10 @@ export const ManageSchemaExtensions: React.FunctionComponent<
           return { ...teamsLightTheme };
       }
     }
+    // If not in Teams context, use the provided theme 
     return createV9Theme(theme as never);
   }, [themeString, theme, hasTeamsContext]);
-
+  // Fallback render function for ErrorBoundary
   const fallbackRender = ({ error }: { error: Error }): React.ReactNode => {
     // Use console.error as fallback if logError is not available
     if (logError && typeof logError === "function") {
@@ -99,58 +104,55 @@ export const ManageSchemaExtensions: React.FunctionComponent<
     return <ShowError message={error.message} />;
   };
 
-  React.useEffect(() => {
-    const loadInitialData = async (): Promise<void> => {
-      try {
-        setIsLoadingData(true);
-        setError(undefined);
-
-        // Check if user has permissions to manage schema extensions
-        const appCatalogUrl = await getAppCatalogUrl();
-        if (!appCatalogUrl) {
-          throw new Error(strings.AppCatalogNotFoundError);
-        }
-        // Check permissions for managing tenant properties in the app catalog
-        const permissions = await checkPermissionsWithObjectId(
-          appCatalogUrl,
-          "site",
-          ""
-        );
-        // If user has   manageWeb or fullMask, they can manage schema extensions
-        if (
-          permissions.includes("manageWeb") ||
-          permissions.includes("fullMask")
-        ) {
-          setUserHasPermissions(true);
-        } else {
-          setUserHasPermissions(false);
-        }
-      } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : strings.LoadInitialDataError;
-        setError(errorMessage);
-        logError("Error loading initial data:", JSON.stringify(err));
-      } finally {
-        setIsLoadingData(false);
+  const loadInitialData = React.useCallback(async (): Promise<void> => {
+    try {
+      setIsLoadingData(true);
+      setError(undefined);
+      // Check if user has permissions to manage schema extensions
+      const appCatalogUrl = await getAppCatalogUrl();
+      if (!appCatalogUrl) {
+        throw new Error(strings.AppCatalogNotFoundError);
       }
-    };
-    loadInitialData().catch((err) =>
-      logError("Failed to load initial data:", JSON.stringify(err))
+      // Check permissions for managing tenant properties in the app catalog
+      const permissions = await checkPermissionsWithObjectId(
+        appCatalogUrl,
+        "site",
+        ""
+      );
+      // If user doesn't have manageWeb or fullMask, they lack sufficient permissions
+      setUserHasPermissions(
+        permissions.includes(MANAGED_WEB) || permissions.includes(FULL_MASK)
+      );
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : strings.LoadInitialDataError;
+      setError(errorMessage);
+      logError('loadInitialData', "Error loading initial data:", JSON.stringify(error));
+    } finally {
+      setIsLoadingData(false);
+    }
+  }, []);
+
+  React.useEffect(() => { 
+    loadInitialData().catch((error) =>
+      logError("Failed to load initial data:", JSON.stringify(error))
     );
-  }, [context]);
+  }, [props]);
 
   const RenderContent = React.useCallback((): JSX.Element => {
+    // If there was an error loading initial data, show error
     if (error) {
       return <ShowError message={error} />;
     }
+    // If user lacks permissions, show access information
     if (!userHasPermissions) {
       return <AccessInformation />;
     }
+    // User has permissions and no errors - render main control
     return <ManageSchemaExtensionsControl {...props} />;
   }, [error, userHasPermissions, props]);
 
   // Wait for context and initial data to load
-
   if (!context || isLoadingData) {
     return <></>;
   }
@@ -159,7 +161,7 @@ export const ManageSchemaExtensions: React.FunctionComponent<
     <IdPrefixProvider value="manage-schema-extensions">
       <FluentProvider
         theme={computedTheme}
-        applyStylesToPortals={true}
+        applyStylesToPortals={true}   
         style={{
           backgroundColor:
             appHostName === EAppHostName.SharePoint
@@ -168,15 +170,15 @@ export const ManageSchemaExtensions: React.FunctionComponent<
           paddingLeft: tokens.spacingHorizontalXXL,
           paddingRight: tokens.spacingHorizontalXXL,
           height: "100%",
-        }}
+        }} 
       >
         <ErrorBoundary fallbackRender={fallbackRender}>
-          <Provider>
+          <JotaiProvider>
             <HydrateAtoms initialValues={[[appGlobalStateAtom, initialState]]}>
               <RenderContent />
               <ToasterProvider />
             </HydrateAtoms>
-          </Provider>
+          </JotaiProvider>
         </ErrorBoundary>
       </FluentProvider>
     </IdPrefixProvider>

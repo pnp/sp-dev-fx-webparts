@@ -5,7 +5,7 @@ interface SchemaExtensionListViewStyles {
   linkTruncate: string;
   headerContainer: string;
   targetTypesCell: string;
-  targetTypesContainer
+  targetTypesContainer;
 }
 
 export const useSchemaExtensionListViewStyles = (): {
@@ -42,14 +42,14 @@ export const useSchemaExtensionListViewStyles = (): {
       alignItems: "center",
     }),
     targetTypesContainer: css({
-       width: "calc(100% - 16px)",
-              minWidth: 0,
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              position: "absolute",
-              top: 10,
-              right: 10,
+      width: "calc(100% - 16px)",
+      minWidth: 0,
+      overflow: "hidden",
+      display: "flex",
+      alignItems: "center",
+      position: "absolute",
+      top: 10,
+      right: 10,
     }),
   };
 

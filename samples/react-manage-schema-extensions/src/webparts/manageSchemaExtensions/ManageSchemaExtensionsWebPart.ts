@@ -2,9 +2,12 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as strings from "ManageSchemaExtensionsWebPartStrings";
 
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
 
-import { BaseClientSideWebPart, } from "@microsoft/sp-webpart-base";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { EAppHostName } from "../../constants/EAppHostName";
 import { IManageSchemaExtensionsProps } from "../../components/ManageSchemaExtensions/IManageSchemaExtensionsProps";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
@@ -39,9 +42,8 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
   };
 
   public render(): void {
-    const element: React.ReactElement<IManageSchemaExtensionsProps> = React.createElement(
-      ManageSchemaExtensions,
-      {
+    const element: React.ReactElement<IManageSchemaExtensionsProps> =
+      React.createElement(ManageSchemaExtensions, {
         theme: this._theme as never,
         isDarkTheme: this._isDarkTheme,
         themeString: this._themeString,
@@ -52,9 +54,8 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
         aadUserId: this._userId,
         environmentMessage: "",
         userDisplayName: this.context.pageContext.user.displayName,
-        containerWidth: this.domElement.clientWidth
-      }
-    );
+        containerWidth: this.domElement.clientWidth,
+      });
 
     ReactDom.render(element, this.domElement);
   }
@@ -79,7 +80,9 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
           this._appHostName = EAppHostName.Outlook;
           break;
         default:
-          throw new Error("[ManageSchemaExtensionsWebPart._onInit]: Unknown app host name");
+          throw new Error(
+            "[ManageSchemaExtensionsWebPart._onInit]: Unknown app host name"
+          );
       }
       this._applyTheme(teamsContext.app.theme || "default");
       this.context.sdks.microsoftTeams.teamsJs.app.registerOnThemeChangeHandler(
@@ -89,8 +92,6 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
 
     return;
   }
-
-
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
@@ -108,8 +109,6 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
     return Version.parse("1.0");
   }
 
- 
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -123,8 +122,8 @@ export default class ManageSchemaExtensionsWebPart extends BaseClientSideWebPart
               groupFields: [
                 PropertyPaneTextField("title", {
                   label: strings.DescriptionFieldLabel,
+                  value: this.properties.title,
                 }),
-               
               ],
             },
           ],
