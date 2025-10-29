@@ -31,11 +31,9 @@ A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access
   - **SortOrder** (Number) - Optional
   - **OpenInNewWindow** (Yes/No) - Optional
 
-## Solution
+## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| quick-links-pro | [Sai Siva Ram Bandaru](https://github.com/saiiiiiii) |
+- [Sai Siva Ram Bandaru](https://github.com/saiiiiiii)
 
 ## Version history
 
@@ -43,19 +41,13 @@ A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access
 | ------- | ---------------- | --------------- |
 | 1.0     | October 30, 2025 | Initial release |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - In the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 > Include any additional steps as needed.
 
@@ -150,12 +142,15 @@ Uses these Fluent UI React components:
 ### Display Styles
 
 #### Cards
+
 Grid layout with icon, title, and description. Best for visual navigation with detailed information.
 
 #### Buttons
+
 Compact horizontal layout. Best for space-constrained scenarios or many links.
 
 #### List
+
 Vertical stacked layout. Best for ordered navigation (e.g., Development > QA > Production).
 
 ## Usage
@@ -193,18 +188,23 @@ When adding/editing a link:
 ## Screenshots
 
 ### Cards Display Style
+
 ![Cards Style](./assets/cards-view.png)
 
 ### Buttons Display Style
+
 ![Buttons Style](./assets/buttons-view.png)
 
 ### List Display Style
+
 ![List Style](./assets/list-view.png)
 
 ### Configuration Panel
+
 ![Configuration Panel](./assets/config-panel.png)
 
 ### Edit Mode with Gear Icon
+
 ![Edit Mode](./assets/edit-mode.png)
 
 ## References
@@ -232,5 +232,9 @@ If you encounter any issues while using this sample, [create a new issue](https:
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20quick-links-pro&template=question.yml&sample=quick-links-pro&authors=@yourusername&title=quick-links-pro%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20quick-links-pro&template=suggestion.yml&sample=quick-links-pro&authors=@yourusername&title=quick-links-pro%20-%20).
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-quick-links-pro" />
