@@ -9,8 +9,8 @@
     "longDescription": [
       "A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access links with inline editing capabilities. Content authors can manage links directly from the page using a configuration panel, eliminating the need to navigate to list settings or the property pane. Features include edit mode detection, multiple display styles (cards, buttons, list), CRUD operations, link target control, icon support, and responsive design."
     ],
-    "creationDateTime": "2025-10-301T00:00:00.000Z",
-    "updateDateTime": "2025-10-30T00:00:00.000Z",
+    "creationDateTime": "2025-10-30",
+    "updateDateTime": "2025-10-30",
     "products": [
       "SharePoint",
       "Office"
