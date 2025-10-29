@@ -56,6 +56,11 @@
       border-color: $ms-color-themePrimary;
     }
 
+    &:focus {
+      outline: 2px solid $ms-color-themePrimary;
+      outline-offset: 2px;
+    }
+
     .linkCardIcon {
       font-size: 28px;
       color: $ms-color-themePrimary;
@@ -63,6 +68,8 @@
     }
 
     .linkCardContent {
+      width: 100%;
+
       .linkCardTitle {
         font-size: 17px;
         font-weight: 600;
@@ -77,6 +84,10 @@
         font-size: 13px;
         color: $ms-color-neutralSecondary;
         line-height: 1.4;
+        overflow: hidden;
+        display: -webkit-box;
+        //-webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
   }
@@ -106,9 +117,18 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     }
 
+    &:focus {
+      outline: 2px solid $ms-color-white;
+      outline-offset: 2px;
+    }
+
     .linkButtonIcon {
       font-size: 16px;
       margin-right: 8px;
+    }
+
+    .linkButtonText {
+      white-space: nowrap;
     }
   }
 
@@ -120,48 +140,78 @@
     max-width: 260px;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
     padding-right: 10px;
-    border: 1px;
-    border-right-style: solid;
+  }
 
-    .linkListItem {
-      display: flex;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+  .linkListItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: $ms-color-neutralPrimary;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-left: 3px solid transparent;
+
+    &:hover {
+      background-color: $ms-color-neutralLighter;
+      color: $ms-color-themePrimary;
+      border-left-color: $ms-color-themePrimary;
+      padding-left: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    &:focus {
+      outline: 2px solid $ms-color-themePrimary;
+      outline-offset: 2px;
+    }
+
+    .linkListIcon {
+      font-size: 18px;
+      margin-right: 10px;
+      color: inherit;
+    }
+
+    .linkListText {
+      font-size: 15px;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       color: $ms-color-neutralPrimary;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-left: 3px solid transparent;
+    }
+  }
 
-      &:hover {
-        background-color: $ms-color-neutralLighter;
-        color: $ms-color-themePrimary;
-        border-left-color: $ms-color-themePrimary;
-        padding-left: 16px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      }
+  // ===== RESPONSIVE DESIGN =====
+  @media (max-width: 640px) {
+    padding: 15px;
 
-      .linkListIcon {
-        font-size: 18px;
-        margin-right: 10px;
-        color: inherit;
-      }
+    .gearIconContainer {
+      right: 20px;
+    }
 
-      .linkListText {
-        font-size: 15px;
-        font-weight: 500;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: $ms-color-neutralPrimary;
+    .container {
+      width: 100%;
+    }
+
+    .linksGridCards {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .linksGridButtons {
+      flex-direction: column;
+
+      .linkButton {
+        width: 100%;
+        justify-content: flex-start;
       }
     }
 
-    @media (max-width: 600px) {
-      :global(.content-103) {
-        width: 100% !important;
-      }
+    .linksGridList {
+      max-width: 100%;
+      border-right: none;
+      padding-right: 0;
 
       .linkListItem {
         padding: 8px 10px;
@@ -170,22 +220,21 @@
           font-size: 14px;
         }
       }
-
-      .linkButtonText {
-        white-space: nowrap;
-      }
     }
-
   }
 
   // ===== DARK MODE SUPPORT =====
   @media (prefers-color-scheme: dark) {
-
     .linkCard,
     .linkListItem {
       background: rgba(30, 30, 30, 0.85);
       color: #fff;
       border-color: rgba(255, 255, 255, 0.1);
+
+      .linkCardTitle,
+      .linkListText {
+        color: #fff;
+      }
 
       .linkCardDescription {
         color: #bbb;
@@ -194,6 +243,10 @@
 
     .linkListItem:hover {
       background: rgba(50, 50, 50, 0.9);
+    }
+
+    .linkCard:hover {
+      border-color: $ms-color-themePrimary;
     }
   }
 }

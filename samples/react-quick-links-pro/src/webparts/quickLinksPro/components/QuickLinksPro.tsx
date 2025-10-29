@@ -25,10 +25,6 @@ export const QuickLinksPro: React.FC<IQuickLinksProProps> = (props) => {
 
   const isEditMode = props.displayMode === DisplayMode.Edit;
 
-  useEffect(() => {
-    void loadLinks();
-  }, [props.selectedListId]);
-
   const loadLinks = async (): Promise<void> => {
     if (!props.selectedListId) {
       setLinks([]);
@@ -48,6 +44,10 @@ export const QuickLinksPro: React.FC<IQuickLinksProProps> = (props) => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadLinks().catch(err => console.error('Failed to load links:', err));
+  }, [props.selectedListId]);
 
   const handleConfigurationSave = (
     quickLinks: IQuickLink[],

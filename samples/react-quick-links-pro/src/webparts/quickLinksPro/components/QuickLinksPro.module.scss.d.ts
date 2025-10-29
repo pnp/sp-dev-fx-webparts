@@ -14,6 +14,10 @@ declare const styles: {
   linkButton: string;
   linkButtonIcon: string;
   linkButtonText: string;
+  linksGridList: string;
+  linkListItem: string;
+  linkListIcon: string;
+  linkListText: string;
 };
 
 export default styles;

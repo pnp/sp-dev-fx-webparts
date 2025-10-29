@@ -6,6 +6,10 @@ import '@pnp/sp/items';
 import '@pnp/sp/fields';
 import { IQuickLink, IListInfo } from '../models/IQuickLink';
 
+interface IFieldInfo {
+  InternalName: string;
+}
+
 export class SPService {
   private sp: SPFI;
 
@@ -149,7 +153,7 @@ export class SPService {
         .fields
         .select('InternalName')();
 
-      const fieldNames = fields.map((f: any) => f.InternalName);
+      const fieldNames = (fields as IFieldInfo[]).map(f => f.InternalName);
       const requiredFields = ['Title', 'URL', 'IconName', 'Description', 'SortOrder', 'OpenInNewWindow'];
       const missingColumns = requiredFields.filter(field => fieldNames.indexOf(field) === -1);
 

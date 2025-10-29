@@ -43,16 +43,6 @@ export const ConfigurationPanel: React.FC<IConfigurationPanelProps> = (props) =>
   const [message, setMessage] = useState<{ text: string; type: MessageBarType } | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-   void loadLists();
-  }, []);
-
-  useEffect(() => {
-    if (selectedListId) {
-     void loadLinksFromList();
-    }
-  }, [selectedListId]);
-
   const loadLists = async (): Promise<void> => {
     try {
       const lists = await props.spService.getLists();
@@ -76,6 +66,16 @@ export const ConfigurationPanel: React.FC<IConfigurationPanelProps> = (props) =>
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadLists().catch(err => console.error('Failed to load lists:', err));
+  }, []);
+
+  useEffect(() => {
+    if (selectedListId) {
+      loadLinksFromList().catch(err => console.error('Failed to load links:', err));
+    }
+  }, [selectedListId]);
 
   const handleListChange = (event: React.FormEvent, option?: IDropdownOption): void => {
     if (option) {

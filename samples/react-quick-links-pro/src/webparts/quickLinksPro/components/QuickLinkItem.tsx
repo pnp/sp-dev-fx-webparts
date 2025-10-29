@@ -17,7 +17,7 @@ export const QuickLinkItem: React.FC<IQuickLinkItemProps> = ({ link, displayStyl
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (e.key === 'Enter') handleClick();
   };
 
