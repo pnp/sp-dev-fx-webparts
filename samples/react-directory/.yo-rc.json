@@ -1,12 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
-    "nodeVersion": "18.18.2",
+    "nodeVersion": "22.18.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-     "version": "1.20.0",
+    "version": "1.21.1",
     "libraryName": "react-directory",
     "libraryId": "5b62bc16-3a71-461d-be2f-16bfcb011e8a",
     "environment": "spo",
