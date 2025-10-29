@@ -1,0 +1,15 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    ,
+    "AzureAd__TenantId": "<YOUR_TENANT_ID>",
+    "AzureAd__ClientId": "<YOUR_CLIENT_ID>",
+    "AzureAd__ClientSecret": "<YOUR_CLIENT_SECRET>",
+    "Downstream__Scopes": "api://<DOWNSTREAM_APP_ID>/.default",
+    "AzureOpenAI__Endpoint": "https://<YOUR_RESOURCE_NAME>.openai.azure.com/",
+    "AzureOpenAI__DeploymentName": "<YOUR_DEPLOYMENT_NAME>",
+    "AzureOpenAI__ApiKey": "<YOUR_AZURE_OPENAI_API_KEY>"
+  }
+}

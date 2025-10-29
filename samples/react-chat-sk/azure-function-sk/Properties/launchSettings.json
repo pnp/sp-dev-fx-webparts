@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "azure_function_sk": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7222",
+      "launchBrowser": false
+    }
+  }
+}
