@@ -39,6 +39,8 @@ import { AI_OPTIONS } from "../constants/ai"
 
 import { IReactEngageHubProps } from "../IReactEngageHubProps"
 import styles from "../ReactEngageHub.module.scss"
+import { PhotoProvider } from "react-photo-view"
+import "react-photo-view/dist/react-photo-view.css"
 
 const useStyles = makeStyles({
   textEditor: {
@@ -276,16 +278,18 @@ export const RichTextEditor = (props: IRichTextEditorProps) => {
             />
           )}
           {images.previewUrls.length > 0 && (
-            <div className={styles.previewImageWrapper}>
-              {images.previewUrls.map((url, index) => (
-                <ImagePreview
-                  key={url + index}
-                  preview={url}
-                  index={index}
-                  handleRemoveImageFromPreview={() => removeImage(index)}
-                />
-              ))}
-            </div>
+            <PhotoProvider>
+              <div className={styles.previewImageWrapper}>
+                {images.previewUrls.map((url, index) => (
+                  <ImagePreview
+                    key={url + index}
+                    preview={url}
+                    index={index}
+                    handleRemoveImageFromPreview={() => removeImage(index)}
+                  />
+                ))}
+              </div>
+            </PhotoProvider>
           )}
           <div
             ref={editorDivRef}

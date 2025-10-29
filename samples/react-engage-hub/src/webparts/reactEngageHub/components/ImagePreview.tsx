@@ -1,6 +1,7 @@
 import { Button, Image, makeStyles } from "@fluentui/react-components"
 import { Delete24Regular, Eye24Regular } from "@fluentui/react-icons"
 import * as React from "react"
+import { PhotoView } from "react-photo-view"
 
 export interface IImagePreviewProps {
   preview: any
@@ -52,28 +53,30 @@ export const ImagePreview: React.FunctionComponent<IImagePreviewProps> = (
   const fluentStyles = useStyles()
 
   return (
-    <div className={fluentStyles.imageContainer}>
-      <Image src={props.preview} className={fluentStyles.image} />
-      <div className={fluentStyles.overlay}>
-        <Button
-          icon={<Eye24Regular />}
-          appearance='transparent'
-          className={fluentStyles.button}
-          onClick={() => {
-            window.open(props.preview, "_blank")
-          }}
-        />
-        {props.handleRemoveImageFromPreview && (
+    <PhotoView src={props.preview}>
+      <div className={fluentStyles.imageContainer}>
+        <Image src={props.preview} className={fluentStyles.image} />
+        <div className={fluentStyles.overlay}>
           <Button
-            icon={<Delete24Regular />}
+            icon={<Eye24Regular />}
             appearance='transparent'
             className={fluentStyles.button}
-            onClick={() =>
-              props.handleRemoveImageFromPreview?.(props.index ?? -1)
-            }
           />
-        )}
+          {props.handleRemoveImageFromPreview && (
+            <Button
+              icon={<Delete24Regular />}
+              appearance='transparent'
+              className={fluentStyles.button}
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                props.handleRemoveImageFromPreview?.(props.index ?? -1)
+              }}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </PhotoView>
   )
 }
