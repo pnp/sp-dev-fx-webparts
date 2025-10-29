@@ -16,11 +16,7 @@ Engage Hub maintains responsiveness and light weight with its elegant React user
 | :warning: Important                                                                                                                                                                                                                                                                                   |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
-| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                                     |
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.21.1-green.svg)
+| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.
 
 This sample is optimally compatible with the following environment configuration:
 
@@ -58,7 +54,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | ----------- | ----- |
 | PostID   | Text |
 
-## Contributors🧑‍💻
+## Contributors
 
 - [Sandeep P S](https://github.com/Sandeep-FED)
 
@@ -70,7 +66,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
 | 1.2     | Oct 22, 2025    | Upgrade to SPFx1.21.1, implemented Fluent UI Components color changes based on site theme colors & introduced image viewer component for RTE image uploads and post lists images |
 
-## Minimal Path to Awesome⚡
+## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
