@@ -18,11 +18,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "copilot-retrival-preview" },
-    "description": { "default": "copilot-retrival-preview description" },
+    "title": { "default": "copilot-retrieval-preview" },
+    "description": { "default": "copilot-retrieval-preview description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "copilot-retrival-preview"
+      "description": "copilot-retrieval-preview"
     }
   }]
 }

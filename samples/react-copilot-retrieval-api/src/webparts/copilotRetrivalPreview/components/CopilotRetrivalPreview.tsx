@@ -105,7 +105,7 @@ export default class CopilotRetrivalPreview extends React.Component<ICopilotRetr
               onChange={(e, newValue) => this.setState({ queryText: newValue || '' })}
               label='Search Text'
             />
-            <PrimaryButton onClick={() => this.onRetrival()}>Retrival</PrimaryButton>
+            <PrimaryButton onClick={() => this.onRetrival()}>Retrieval</PrimaryButton>
           </div>
           { this.state.loading && <div>Loading...</div> }
           { !this.state.loading && results && results.length > 0 && (

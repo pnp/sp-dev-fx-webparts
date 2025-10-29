@@ -1,21 +1,19 @@
-# Copilot Retrival API Playground
+# Copilot Retrieval API Playground
 
 ## Summary
-
 
 This SPFx sample shows how to integrate a Copilot retrieval API into an SPFx web part and provides a hands‑on workflow to evaluate and tune search relevance.
 
 Recommended steps:
+
 1. Change the filterExpression to broaden or narrow the set of returned documents and observe how results change.
-2. Try different queryText inputs — short phrases, long senteneses, synonyms, paraphrases, and common misspellings — to test the semantic index and matching behavior.
+2. Try different queryText inputs — short phrases, long sentences, synonyms, paraphrases, and common misspellings — to test the semantic index and matching behavior.
 3. Compare outcomes by relevance, ranking, and the metadata returned for each hit.
 4. Inspect the request and response JSON to review similarity scores, matched fields, and any debug fields returned by the retrieval service.
 
 Use this process to systematically evaluate and optimize your retrieval experience.
 
 ![Webpart](./assets/webpart.png)
-
-
 
 ## Compatibility
 
@@ -57,7 +55,7 @@ This sample is optimally compatible with the following environment configuration
   - `npm install`
   - `gulp serve`
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
 
@@ -95,14 +93,14 @@ You should also update the Data Source dropdown to include the ExternalItem opti
 />
 ```
 
-Read more 
-[Overview of the Microsoft 365 Copilot Retrieval API](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/api/ai-services/retrieval/overview)
-[Retrieve grounding data](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/api/ai-services/retrieval/copilotroot-retrieval)
+Read more
+[Overview of the Microsoft 365 Copilot Retrieval API](https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/ai-services/retrieval/overview)
+[Retrieve grounding data](https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/ai-services/retrieval/copilotroot-retrieval)
 
 Notes:
+
 - Make sure to update the permission in the correct file: `config/package-solution.json` (the sample previously had a misspelled filename).
 - After updating `package-solution.json`, package and deploy the solution and grant the permission in the tenant admin consent page if required.
-
 
 ## Help
 
@@ -117,6 +115,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-copilot-retrieval-api" />
