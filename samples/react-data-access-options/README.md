@@ -1,19 +1,14 @@
 # SharePoint - Use different options to access SharePoint data
+
 ## Summary
 
-This sample SPFx web part demonstrates multiple ways to read data from a SharePoint list/library. It includes side‑by‑side implementations using the native Fetch API, `SPHttpClient`, Microsoft Graph, and PnPjs. Configure `SITEID`, `SOURCELIBRARY`, and `SOURCELIBRARYID` in `src/Core/DataAccessOptions.ts`, then run and compare each approach with a single click in the UI.
+This sample SPFx web part demonstrates multiple ways to read data from a SharePoint list/library. It includes side‑by‑side implementations using the native Fetch API, `SPHttpClient`, Microsoft Graph, and PnPjs. 
+
+Configure `SITEID`, `SOURCELIBRARY`, and `SOURCELIBRARYID` in `src/Core/DataAccessOptions.ts`, then run and compare each approach with a single click in the UI.
 
 ![UI of the App](assets/ui-webpart.png)
 
-*UI of the App*
-
 ![Overview about the data access options](assets/Access-SharePoint_Data_EN_v1.jpg)
-
-*Overview about the data access options*
-
-
-## Used SharePoint Framework Version
-![version](https://img.shields.io/badge/version-1.21.1-green.svg)
 
 ## Compatibility
 
@@ -22,8 +17,8 @@ This sample SPFx web part demonstrates multiple ways to read data from a SharePo
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg) 
-![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg) 
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -45,14 +40,13 @@ This sample SPFx web part demonstrates multiple ways to read data from a SharePo
 
 ## Contributors
 
-* [Marc André Schröder-Zhou](https://github.com/maschroeder-z)
-
+- [Marc André Schröder-Zhou](https://github.com/maschroeder-z)
 
 ## Solution
 
 | Solution    | Author(s)                                                   |
 | ----------- | ----------------------------------------------------------- |
-| Repository  | Marc André Schröder-Zhou (https://github.com/maschroeder-z) |
+| Repository  | [Marc André Schröder-Zhou](https://github.com/maschroeder-z) |
 
 ## Version history
 
@@ -60,27 +54,28 @@ This sample SPFx web part demonstrates multiple ways to read data from a SharePo
 | ------- | ---------------- | --------------------- |
 | 1.0     | 18.10.2025       | Initial Release       |
 
-
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
 - Configure `SITEID`, `SOURCELIBRARY`, `SOURCELIBRARYID` in `src/Core/DataAccessOptions.ts`
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 > Check your current Node version and installed SPFx-Framework version.
 
 ## Features
- - Compare multiple data access methods side-by-side: Fetch, SPHttpClient, Microsoft Graph, and PnPjs
- - One-click buttons in the web part UI to invoke each option
- - Shows JSON results directly in the UI for quick verification
- - Works in local workbench and on SharePoint pages
- - Uses TypeScript and SPFx 1.21 with React 17
- - Example queries scoped to top item for fast responses
+
+- Compare multiple data access methods side-by-side: Fetch, SPHttpClient, Microsoft Graph, and PnPjs
+- One-click buttons in the web part UI to invoke each option
+- Shows JSON results directly in the UI for quick verification
+- Works in local workbench and on SharePoint pages
+- Uses TypeScript and SPFx 1.21 with React 17
+- Example queries scoped to top item for fast responses
 
 ## Help
+
 Please contact me for further help or information about the sample.
 
 ## References
