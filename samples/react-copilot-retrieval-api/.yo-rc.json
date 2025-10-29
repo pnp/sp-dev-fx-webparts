@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-copilot-retrieval-api",
+    "libraryId": "1a3f7c99-b38a-4564-9f6f-63ff144d71b2",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-copilot-retrieval-api",
+    "solutionShortDescription": "react-copilot-retrieval-api description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
