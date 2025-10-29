@@ -54,15 +54,14 @@ export default class ListService {
 
   public async getListItems(listQueryOptions: IListSearchListQuery, listPropertyName: string, sitePropertyName: string, sitePropertyValue: string, rowLimit: number, graphService?: GraphService): Promise<Array<IResult>> {
     try {
-      const camlQuery = false;
+      let camlQuery = false;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let items: any = undefined;
       const queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName), false);
       if (listQueryOptions.camlQuery) {
         const query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
         items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        items = items.map((m: { FieldValuesAsText: any; }) => m.FieldValuesAsText);
+        camlQuery = true;
       }
       else {
         if (listQueryOptions.viewName) {
@@ -70,8 +69,8 @@ export default class ListService {
           const viewInfo: any = await this._sp.web.lists.getById(listQueryOptions.list.Id).views.getByTitle(listQueryOptions.viewName).select("ViewQuery")();
           const query = this.getCamlQueryWithViewFieldsAndRowLimit(`<View><Query>${viewInfo.ViewQuery}</Query></View>`, queryConfig, rowLimit);
           items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
+           camlQuery = true;
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          items = items.map((m: { FieldValuesAsText: any; }) => m.FieldValuesAsText);
         }
         else {
           items = await this._sp.web.lists.getById(listQueryOptions.list.Id).items
@@ -258,7 +257,7 @@ export default class ListService {
       case SharePointType.LookupMulti:
         if (fromCamlQuery) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          setKeyValue(item, field.newField as any, getKeyValue(item, `FieldValuesAsText.${field.originalField}` as any));
+          setKeyValue(item, field.newField as any, item['FieldValuesAsText'][field.originalField]);
         }
         else {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -362,15 +361,16 @@ export default class ListService {
       const viewFieldsXml: XMLElement = { name: "ViewFields", value: "", children: viewFieldsChildren, attributes: undefined };
 
       let queryXml: XMLElement;
-      xml.children.map(child => {
-        if (child.name == "Query") {
-          queryXml.value = child.value;
-        }
+      const queryChild = xml.children.find(child => child.name === "Query");
+      if (queryChild) {
+        queryXml = queryChild;
+      }
 
-        if (child.name == "RowLimit") { //If the user set a camlquery with row limit or the view has row limit, it is not override
-          rowLimitXml.value = child.value;
-        }
-      });
+      //If the user set a camlquery with row limit or the view has row limit, it is not overrided
+      const rowLimitChild = xml.children.find(child => child.name === "RowLimit");
+      if (rowLimitChild) {
+        rowLimitXml.value = XmlParser.toString(rowLimitChild);
+      }
 
       if (queryXml) {
         xml.children = [viewFieldsXml, rowLimitXml, queryXml];

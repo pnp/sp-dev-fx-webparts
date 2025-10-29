@@ -87,7 +87,7 @@ This list search web part allows the user to show data from lists or libraries. 
 
 ## Contributors
 
-* [Alberto Gutiérrez](https://github.com/albegut) 
+* [Alberto Gutiérrez](https://github.com/albegut)
 
 ## Version history
 
@@ -99,20 +99,21 @@ Version|Date|Comments
 1.3.0|July 11, 2022|Fixes CAML issues
 1.4.0|October 2, 2024|Upgraded for SPFx v1.20.0
 1.5.0|August 14, 2025|Fixes ContentType query
+1.6.0|October 17, 2025|Fixes List view and Caml query
 
 ## Minimal Path to Awesome
 
 ### Dev Mode
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-  * Clone this repository
-  * From your command line, change your current directory to the directory containing this sample (react-list-search, located under samples)
-  * In the command line run:
-    * `npm install`
-    * `gulp serve`
-    * Open the *workbench* on your Office 365 Developer tenant
-    * Test out the web part
+* Clone this repository
+* From your command line, change your current directory to the directory containing this sample (react-list-search, located under samples)
+* In the command line run:
+  * `npm install`
+  * `gulp serve`
+  * Open the *workbench* on your Office 365 Developer tenant
+  * Test out the web part
 
 ## Features
 
@@ -149,6 +150,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-search" />
