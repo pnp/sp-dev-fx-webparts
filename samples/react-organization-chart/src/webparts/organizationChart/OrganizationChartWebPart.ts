@@ -16,7 +16,10 @@ import * as strings from "OrganizationChartWebPartStrings";
 import { OrgChart } from "../../components/OrgChart/OrgChart";
 
 import { IOrgChartProps } from "../../components/OrgChart/IOrgChartProps";
-import { sp } from "@pnp/sp";
+import { spfi, SPFI, SPFx } from "@pnp/sp";
+import "@pnp/sp/profiles";
+
+let _sp: SPFI;
 export interface IOrganizationChartWebPartProps {
   title: string;
   currentUser: string;
@@ -28,10 +31,12 @@ export interface IOrganizationChartWebPartProps {
 
 export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrganizationChartWebPartProps> {
   public async onInit(): Promise<void> {
-    sp.setup({
-      spfxContext: this.context,
-    });
-    return Promise.resolve();
+    _sp = spfi().using(SPFx(this.context));
+    return super.onInit();
+  }
+  
+  public get sp(): SPFI {
+    return _sp;
   }
   public render(): void {
     const element: React.ReactElement<IOrgChartProps> = React.createElement(
@@ -44,6 +49,7 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrg
         showGuestUsers: this.properties.showGuestUsers,
         context: this.context,
         showActionsBar: this.properties.showActionsBar,
+        sp: this.sp,
       }
     );
 

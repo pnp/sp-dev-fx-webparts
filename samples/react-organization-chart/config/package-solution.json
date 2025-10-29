@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-organization-chart",
     "id": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
-    "version": "1.2.0.0",
+    "version": "1.3.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": "",
-      "mpnId": "Undefined-1.20.0"
+      "mpnId": "Undefined-1.21.1"
     },
     "metadata": {
       "shortDescription": {
