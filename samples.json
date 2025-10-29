@@ -12070,13 +12070,15 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage",
     "source": "pnp",
     "title": "React AppInsights Usage WebParts",
-    "shortDescription": "This web parts shows different use cases for capturing data in your application and store it into the Azure Application Insights service.",
+    "shortDescription": "Three interactive web parts demonstrating Application Insights integration with real-time event tracking, custom logging, and page view analytics. Features visual feedback showing exactly what data is sent to Azure.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-usage",
     "longDescription": [
-      "This web parts shows different use cases for capturing data in your application. Azure Application Insights is more than only Logging and Tracing. It can be used to analyse data and display them in a graphical representation."
+      "Three educational web parts demonstrating different Application Insights scenarios: AB Testing with event tracking, Page Navigation with user flow analysis, and PnPJS Logger integration. Each web part provides real-time visual feedback showing tracked events, logs, and page views as they're sent to Azure Application Insights.",
+      "Key Features: Easy property pane configuration (no code changes needed), instant visual feedback with success/warning banners, real-time displays of tracked data within the web part, color-coded severity levels for logs, and comprehensive Azure Portal query examples.",
+      "Perfect for learning Application Insights, testing telemetry scenarios, demonstrating analytics capabilities, and understanding event tracking implementation."
     ],
     "creationDateTime": "2024-05-26",
-    "updateDateTime": "2024-05-26",
+    "updateDateTime": "2025-10-25",
     "products": [
       "SharePoint"
     ],
@@ -12091,7 +12093,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.18.2"
+        "value": "1.21.1"
       },
       {
         "key": "SPFX-FULLPAGEAPP",
@@ -12106,8 +12108,8 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
-        "alt": "React AppInsights Dashboard"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-usage/assets/AllWebparts.gif",
+        "alt": "All three Application Insights web parts in action showing real-time event tracking"
       },
       {
         "type": "image",
@@ -12141,7 +12143,7 @@
       },
       {
         "type": "image",
-        "order": 105,
+        "order": 106,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-usage/assets/SampleRouterUserFlow.png?raw=true",
         "alt": "AppInsights User Flow"
       }
