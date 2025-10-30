@@ -47,7 +47,7 @@ import IResult from '../model/IResult';
 import { IListSearchListQuery, IMapQuery } from '../model/IMapQuery';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import GraphService from '../services/GraphService';
-import { List } from 'lodash';
+import { cloneDeep, List } from 'lodash';
 import { getKeyValue } from '../utils/ObjectUtils';
 import { IBaseFieldData } from '../model/IListConfigProps';
 
@@ -87,12 +87,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   public componentDidUpdate(prevProps: Readonly<IListSearchProps>): void {
     if (prevProps != this.props) {
       this.setState({ items: null, filterItems: null, isLoading: true, columns: [] });
-      this.getData();
+      this.getData(true);
     }
   }
 
   public componentDidMount() {
-    this.getData();
+    this.getData(false);
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
@@ -110,7 +110,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     });
   }
 
-  private async getData() {
+  private async getData(reloadColumns: boolean) {
     try {
       let result: Array<IResult> = await this.readListsItems();
 
@@ -128,7 +128,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         filteredItems = this.filterListItemsByGeneralFilter(this.props.generalFilterText, false, false, result, filteredItems);
       }
 
-      this.setState({ items: result, filterItems: filteredItems, isLoading: false, groupedItems });
+      let columns = cloneDeep(this.state.columns);
+      if (reloadColumns) {
+        columns = this.AddColumnsToDisplay();
+      }
+
+      this.setState({ items: result, filterItems: filteredItems, isLoading: false, groupedItems, columns });
     } catch (error) {
       this.SetError(error, "getData");
     }
@@ -435,7 +440,6 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         case IModalType.DocumentIframePreview:
           {
             return this.GetModal();
-            break;
           }
         case IModalType.Redirect:
           {
@@ -522,7 +526,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                     <div className={styles.propertyModal}>
                       {val.TargetField}
                     </div>
-                    {this.GetModalBodyRenderByFieldType(this.state.selectedItem, val.TargetField, val)}
+                    {this.GetModalBodyRenderByFieldType(this.state.selectedItem, val.TargetField, val, true)}
                   </>;
                 })
             }
@@ -539,7 +543,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                     {val.TargetField}
                   </div>
                   <div>
-                    {this.state.isModalLoading ? <Shimmer /> : this.GetModalBodyRenderByFieldType(this.state.completeModalItemData, val.SourceField, val)}
+                    {this.state.isModalLoading ? <Shimmer /> : this.GetModalBodyRenderByFieldType(this.state.completeModalItemData, val.SourceField, val, false)}
                   </div>
                 </>;
               })
@@ -603,8 +607,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private GetModalBodyRenderByFieldType(item: any, propertyName: string, data: IBaseFieldData): JSX.Element {
-    let result = this.GetJSXElementByType(item, propertyName, data, true);
+  private GetModalBodyRenderByFieldType(item: any, propertyName: string, data: IBaseFieldData, fromCaml: boolean): JSX.Element {
+    let result = this.GetJSXElementByType(item, propertyName, data, !fromCaml);
 
     switch (data.SPFieldType) {
       case SharePointType.Boolean:
@@ -966,7 +970,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         }
       case SharePointType.ChoiceMulti:
         {
-          if (this.props.AnyCamlQuery && !ommitCamlQuery && value) {
+          if (this.props.AnyCamlQuery && !ommitCamlQuery && value && !Array.isArray(value)) {
             result = value ? value.split(',') : "";
           }
           else {
@@ -980,7 +984,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
             result = value ? value.split(';') : "";
           }
           else {
-            result = value && value.map((val: { Title: string; }) => { return val.Title; });
+              result = value && value.map((val: { Title: string; }) => { return val.Title; });
           }
           break;
         }

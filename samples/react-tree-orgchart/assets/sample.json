@@ -9,7 +9,7 @@
       "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart."
     ],
     "creationDateTime": "2021-02-28",
-    "updateDateTime": "2024-10-06",
+    "updateDateTime": "2025-10-15",
     "products": [
       "SharePoint"
     ],
@@ -24,7 +24,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       },
       {
         "key": "PNPCONTROLS",

@@ -17,6 +17,7 @@ import {
   Tooltip,
 } from "@fluentui/react-components";
 
+import { ESchemaStatus } from "../../constants/ESchemaStatus";
 import { ISchemaExtension } from "../../models/ISchemaExtension";
 import { css } from "@emotion/css";
 
@@ -71,9 +72,17 @@ export const SchemaExtensionsToolbar: React.FunctionComponent<
     onRefresh?.();
   }, [onRefresh]);
 
-  // Check if edit is disabled (Available status extensions can't be edited)
-  const isEditDisabled = selectedSchemaExtension?.status === "Available";
- 
+  // Check if edit is disabled (deprecated status extensions can't be edited)
+  const isEditDisabled = React.useMemo(() => {
+    return selectedSchemaExtension?.status === ESchemaStatus.Deprecated;
+  }, [selectedSchemaExtension]);
+  // Check if delete is disabled (available and deprecated status extensions can't be deleted)
+  const isDeleteDisabled = React.useMemo(() => {
+    return (
+      selectedSchemaExtension?.status === ESchemaStatus.Available ||
+      selectedSchemaExtension?.status === ESchemaStatus.Deprecated
+    );
+  }, [selectedSchemaExtension]);
 
   const styles = css({
     justifyContent: "space-between",
@@ -118,7 +127,7 @@ export const SchemaExtensionsToolbar: React.FunctionComponent<
         <Tooltip
           content={
             !selectedSchemaExtension
-              ? strings.ViewButtonTooltipNoSelection          
+              ? strings.ViewButtonTooltipNoSelection
               : strings.ViewButtonTooltip
           }
           relationship="label"
@@ -127,9 +136,9 @@ export const SchemaExtensionsToolbar: React.FunctionComponent<
             aria-label={strings.ViewButtonTooltip}
             icon={<Eye20Regular />}
             onClick={handleView}
-            disabled={!selectedSchemaExtension  }
+            disabled={!selectedSchemaExtension}
           >
-           {strings.ViewButtonLabel}
+            {strings.ViewButtonLabel}
           </ToolbarButton>
         </Tooltip>
 
@@ -137,7 +146,7 @@ export const SchemaExtensionsToolbar: React.FunctionComponent<
           content={
             !selectedSchemaExtension
               ? strings.DeleteButtonTooltipNoSelection
-              : isEditDisabled
+              : isDeleteDisabled
               ? strings.DeleteButtonTooltipDisabled
               : strings.DeleteButtonTooltip
           }
@@ -147,7 +156,7 @@ export const SchemaExtensionsToolbar: React.FunctionComponent<
             aria-label={strings.DeleteButtonTooltip}
             icon={<Delete20Regular />}
             onClick={handleDelete}
-            disabled={!selectedSchemaExtension || isLoading || isEditDisabled}
+            disabled={!selectedSchemaExtension || isLoading || isDeleteDisabled}
           >
             {strings.DeleteButtonLabel}
           </ToolbarButton>

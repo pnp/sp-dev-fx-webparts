@@ -2,7 +2,7 @@ import * as React from "react"
 import { Card, Avatar, Divider, Text } from "@fluentui/react-components"
 import { useAtom } from "jotai"
 import styles from "../ReactEngageHub.module.scss"
-import { formatDate } from "../utils/util"
+import { formatDate, formatSharePointImageUrl } from "../utils/util"
 import { Comments } from "./Comments"
 import { CompactTextArea } from "./CompactTextArea"
 import { ImagePreview } from "./ImagePreview"
@@ -13,6 +13,8 @@ import { RichTextEditor } from "./RichTextEditor"
 import { postsAtom } from "../atoms/globalAtoms"
 import { updatePostLikeUnlike } from "../services/SPService"
 import { PostContent } from "./PostContent"
+import { PhotoProvider } from "react-photo-view"
+import "react-photo-view/dist/react-photo-view.css"
 
 interface IPostListProps {
   context: any
@@ -72,14 +74,26 @@ export const PostList = (props: IPostListProps) => {
                 )}
               </div>
               <PostContent html={post.Description} />
-              {post.Images.length > 0 && (
-                <div className={styles.imageContainer}>
-                  {post.Images.map((image: string, index: any) => (
-                    <div className={styles.previewImageWrapper}>
-                      <ImagePreview key={index} preview={image} />
-                    </div>
-                  ))}
-                </div>
+              {post.Images && post.Images.length > 0 && (
+                <PhotoProvider>
+                  <div className={styles.imageContainer}>
+                    {post.Images.map((imageUrl: string, index: number) => {
+                      const fullImageUrl = formatSharePointImageUrl(
+                        imageUrl,
+                        props.context.pageContext.web.absoluteUrl
+                      )
+                      return (
+                        <div className={styles.previewImageWrapper}>
+                          <ImagePreview
+                            key={fullImageUrl + index}
+                            preview={fullImageUrl}
+                            index={index}
+                          />
+                        </div>
+                      )
+                    })}
+                  </div>
+                </PhotoProvider>
               )}
               <div className={fluentStyles.postActions}>
                 <PostActions

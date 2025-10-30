@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "quick-links-pro",
+    "libraryId": "897a2013-dfb6-4979-9e5e-028ff98cbe6d",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "quick-links-pro",
+    "solutionShortDescription": "quick-links-pro description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

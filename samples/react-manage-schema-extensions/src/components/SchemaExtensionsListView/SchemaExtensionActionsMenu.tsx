@@ -18,6 +18,7 @@ import {
  MenuTrigger,
 } from "@fluentui/react-components";
 
+import { ESchemaStatus } from "../../constants/ESchemaStatus";
 import { ISchemaExtension } from "../../models/ISchemaExtension";
 import { css } from "@emotion/css";
 
@@ -158,14 +159,14 @@ export const SchemaExtensionActionsMenu: React.FunctionComponent<
             <MenuItem
               icon={<Edit20Regular />}
               onClick={handleEditClick}
-              disabled={disabled || status === "Available"}
+              disabled={disabled || status === ESchemaStatus.Deprecated}
             >
               {strings.EditAction}
             </MenuItem>
             <MenuItem
               icon={<Delete20Regular />}
               onClick={handleDeleteClick}
-              disabled={disabled || status === "Available"}
+              disabled={disabled || status === ESchemaStatus.Deprecated || status === ESchemaStatus.Available}
             >
               {strings.DeleteAction}
             </MenuItem>

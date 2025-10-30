@@ -1,0 +1,156 @@
+/** Clean bubble styles for ReactBubbleTemplate */
+
+.bubbleColor1 {
+  --accent-color: #0B374D;
+}
+
+.bubbleColor2 {
+  --accent-color: #1286A8;
+}
+
+.bubbleColor3 {
+  --accent-color: #D2B53B;
+}
+
+.bubbleColor4 {
+  --accent-color: #DA611E;
+}
+
+.bubbleColor5 {
+  --accent-color: #AC2A1A;
+}
+
+.bubbleRoot {
+  font-family: 'Jura', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  color: #222;
+  background: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
+.bannerBar {
+  display: none;
+}
+
+.bubbleRoot .bubbleList {
+  width: min(70rem, 94%);
+  margin: 0 auto;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* extra safety to nuke bullets across hosts */
+.bubbleList>li,
+.bubbleListItem {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+}
+
+.bubbleListItem {
+  width: 16em;
+  min-width: 200px;
+  position: relative;
+}
+
+.bubble {
+  position: relative;
+  background: var(--accent-color, #666);
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, .55) 0 3.25rem, rgba(0, 0, 0, .35) 3.25rem 4rem, rgba(0, 0, 0, 0) 4rem),
+    radial-gradient(120% 80% at 50% 20%, rgba(255, 255, 255, .15) 0 40%, rgba(0, 0, 0, 0) 41%);
+  color: var(--text-color, #fff);
+  border-radius: 50%;
+  padding: 4.75rem 1.25rem 2.5rem;
+  min-height: 18rem;
+  /* layered shadow for a soft, lifted circle look */
+  box-shadow:
+    0 22px 42px rgba(0, 0, 0, 0.14),
+    0 8px 18px rgba(0, 0, 0, 0.08),
+    inset 0 -8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* grow from center for a natural hover scale */
+  transform-origin: center center;
+  /* smoother, slightly longer transition for grow/shrink */
+  transition: transform .35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  width: 16rem;
+  height: 16rem;
+}
+
+.bubble::before {
+  /* removed top bar highlight; rely on box-shadow and subtle gradients for depth */
+  display: none;
+}
+
+
+
+.bubbleListItem:hover .bubble {
+  transform: scale(1.06);
+  z-index: 2;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin: .25rem 0 .5rem;
+  display: grid;
+  place-items: center;
+}
+
+.fluentIcon {
+  font-size: 48px;
+  color: #fff;
+}
+
+.icon :global(.ms-Icon) {
+  font-size: 48px;
+  color: currentColor;
+}
+
+.icon img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+.bubbleLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.title {
+  font-family: 'Jura', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: .25rem 0 .25rem;
+}
+
+.descr {
+  font-family: 'Jura', Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  opacity: .95;
+}

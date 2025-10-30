@@ -1,22 +1,33 @@
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { sp } from "@pnp/sp/presets/all";
-import { graph, } from "@pnp/graph";
+import { spfi, SPFI, SPFx } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 import { MSGraphClient } from '@microsoft/sp-http';
+
+export interface ICarouselImageItem {
+  Title: string;
+  Description?: string;
+  File_x0020_Type: string;
+  FileSystemObjectType: number;
+  File: {
+    Name: string;
+    ServerRelativeUrl: string;
+    Title: string;
+    Id: string;
+    TimeLastModified: string;
+  };
+}
 
 export default class spservices {
 
   private graphClient: MSGraphClient = null;
+  private sp: SPFI;
 
   constructor(private context: WebPartContext) {
-    // Setuo Context to PnPjs and MSGraph
-    sp.setup({
-      spfxContext: this.context as any
-    });
-
-    graph.setup({
-      spfxContext: this.context as any
-    });
+    // Setup Context to PnPjs
+    this.sp = spfi().using(SPFx(this.context));
     // Init
     this.onInit();
   }
@@ -26,19 +37,16 @@ export default class spservices {
 
   public async getSiteLists(siteUrl: string) {
 
-    let results: any[] = [];
+    let results: { Title: string; Id: string }[] = [];
 
     if (!siteUrl) {
       return [];
     }
 
     try {
-      const web = sp.web;
-      results = await web.lists
-        .select("Title", "ID")
-        .filter('BaseTemplate eq 109')
-        .usingCaching()
-        .get();
+      results = await this.sp.web.lists
+        .select("Title", "Id")
+        .filter('BaseTemplate eq 101')();
 
     } catch (error) {
       return Promise.reject(error);
@@ -46,19 +54,16 @@ export default class spservices {
     return results;
   }
 
-  public async getImages(siteUrl: string, listId: string, numberImages: number): Promise<any[]> {
-    let results: any[] = [];
+  public async getImages(siteUrl: string, listId: string, numberImages: number): Promise<ICarouselImageItem[]> {
+    let results: ICarouselImageItem[] = [];
     try {
-      const web = sp.web;
-      results = await web.lists
+      results = await this.sp.web.lists
         .getById(listId).items
-        .select('Title','Description','File_x0020_Type', 'FileSystemObjectType','File/Name', 'File/ServerRelativeUrl', 'File/Title', 'File/Id', 'File/TimeLastModified')
+        .select('Title','File_x0020_Type', 'FileSystemObjectType','File/Name', 'File/ServerRelativeUrl', 'File/Title', 'File/Id', 'File/TimeLastModified')
         .top(numberImages)
         .expand('File')
         .filter((`File_x0020_Type eq  'jpg' or File_x0020_Type eq  'png' or  File_x0020_Type eq  'jpeg'  or  File_x0020_Type eq  'gif' or  File_x0020_Type eq  'mp4'`))
-        .orderBy('Id')
-        .usingCaching()
-        .get();
+        .orderBy('Id')();
     } catch (error) {
       return Promise.reject(error);
     }

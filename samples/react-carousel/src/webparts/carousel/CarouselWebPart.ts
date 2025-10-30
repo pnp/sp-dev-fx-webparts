@@ -23,7 +23,8 @@ export interface ICarouselWebPartProps {
   list: string;
   errorMessage: string;
   numberImages: number;
-
+  imageFit: string;
+  carouselSpeed: number;
 }
 
 export default class CarouselWebPart extends BaseClientSideWebPart<ICarouselWebPartProps> {
@@ -142,6 +143,8 @@ export default class CarouselWebPart extends BaseClientSideWebPart<ICarouselWebP
         siteUrl: this.properties.siteUrl,
         list: this.properties.list,
         numberImages: this.properties.numberImages,
+        imageFit: this.properties.imageFit || 'cover',
+        carouselSpeed: (this.properties.carouselSpeed || 3) * 1000,
         context: this.context,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
@@ -193,6 +196,23 @@ export default class CarouselWebPart extends BaseClientSideWebPart<ICarouselWebP
                   description: "Number between 1 and 250",
                   value: this.properties.numberImages,
                   maxValue: 250,
+                  minValue: 1,
+                  disabled: false
+                }),
+                PropertyPaneDropdown('imageFit', {
+                  label: strings.ImageFitFieldLabel,
+                  options: [
+                    { key: 'cover', text: 'Cover (Fill and crop)' },
+                    { key: 'contain', text: 'Contain (Fit without cropping)' }
+                  ],
+                  selectedKey: this.properties.imageFit || 'cover',
+                }),
+                PropertyFieldNumber("carouselSpeed", {
+                  key: "carouselSpeed",
+                  label: strings.CarouselSpeedFieldLabel,
+                  description: "Time in seconds before automatically advancing to next image",
+                  value: this.properties.carouselSpeed || 3,
+                  maxValue: 10,
                   minValue: 1,
                   disabled: false
                 }),
