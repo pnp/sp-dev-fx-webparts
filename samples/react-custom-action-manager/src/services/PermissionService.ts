@@ -1,5 +1,6 @@
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { SPPermission } from '@microsoft/sp-page-context';
 import { 
   IUserPermissions, 
   IPermissionCheck, 
@@ -14,6 +15,15 @@ export class PermissionService {
   private userPermissions: IUserPermissions | null = null;
   private userGroups: string[] = [];
   private userRole: CustomActionRole = CustomActionRole.Viewer;
+  private readonly permissionMap: Record<string, SPPermission> = {
+    ManageWeb: SPPermission.manageWeb,
+    ManageLists: SPPermission.manageLists,
+    AddAndCustomizePages: SPPermission.addAndCustomizePages,
+    ApplyThemeAndBorder: SPPermission.applyThemeAndBorder,
+    ViewPages: SPPermission.viewPages,
+    EditListItems: SPPermission.editListItems,
+    DeleteListItems: SPPermission.deleteListItems
+  };
 
   constructor(context: WebPartContext) {
     this.context = context;
@@ -54,20 +64,23 @@ export class PermissionService {
   }
 
   public async hasSharePointPermission(permissionKind: string): Promise<boolean> {
-    try {
-      const endpoint = `${this.context.pageContext.web.absoluteUrl}/_api/web/doesuserhavepermissions(@v)?@v=${encodeURIComponent("'" + permissionKind + "'")}`;
-      const response: SPHttpClientResponse = await this.context.spHttpClient.get(
-        endpoint,
-        SPHttpClient.configurations.v1
-      );
+    const mappedPermission = this.permissionMap[permissionKind];
 
-      if (response.ok) {
-        const data = await response.json();
-        return data.value || false;
-      }
+    if (!mappedPermission) {
+      console.warn(`Permission ${permissionKind} is not mapped to an SPPermission value.`);
       return false;
+    }
+
+    try {
+      const webPermissions = this.context.pageContext?.web?.permissions;
+      if (!webPermissions) {
+        console.warn('Web permissions are unavailable in the current context.');
+        return false;
+      }
+
+      return webPermissions.hasPermission(mappedPermission);
     } catch (error) {
-      console.error('Error checking SharePoint permission:', error);
+      console.error('Error checking SharePoint permission:', permissionKind, error);
       return false;
     }
   }
@@ -239,7 +252,6 @@ export class PermissionService {
   }
 
   private _getPermissionConfig(): IPermissionConfig {
-    // This would typically come from web part properties or a config service
     return {
       enableRBAC: true,
       defaultRole: CustomActionRole.Viewer,

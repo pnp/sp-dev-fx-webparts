@@ -13,12 +13,12 @@ Long story short, this solution provides everything you need for professional cu
 | :warning: Important                                                                                                                                                                                                                                                                           |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
-| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                              |
+| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                             |
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.20.2](https://img.shields.io/badge/SPFx-1.20.2-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
@@ -72,7 +72,7 @@ The Custom Action Manager provides a comprehensive set of features organized int
 
 ## Prerequisites
 
-- Node.js version compatible with SPFx (v18 LTS recommended)
+- Node.js version compatible with SPFx (v22 LTS recommended)
 - SharePoint Online or SharePoint 2019+ environment
 - SharePoint Framework v1.21.1 or later
 - Appropriate SharePoint permissions (Site Collection Admin recommended)
@@ -90,12 +90,24 @@ The Custom Action Manager provides a comprehensive set of features organized int
    npm install
    ```
 
-3. **Trust Dev Certificate** (Development only)
+3. **Build and Verify**
+   ```bash
+   # Run TypeScript compilation check
+   npm run typecheck
+
+   # Run linting
+   npm run lint
+
+   # Build the solution
+   npm run build
+   ```
+
+4. **Trust Dev Certificate** (Development only)
    ```bash
    gulp trust-dev-cert
    ```
 
-4. **Serve the Web Part** (Development)
+5. **Serve the Web Part** (Development)
    ```bash
    gulp serve
    ```
@@ -104,16 +116,16 @@ The Custom Action Manager provides a comprehensive set of features organized int
 
 1. **Prepare the Package**
    ```bash
-   # Bundle the solution
-   gulp bundle --ship
+   # Using npm scripts (recommended)
+   npm run package
 
-   # Package the solution
-   gulp package-solution --ship
+   # Or using gulp directly
+   gulp bundle --ship && gulp package-solution --ship
    ```
 
 2. **Deploy to SharePoint**
    - Navigate to your SharePoint App Catalog
-   - Upload the .sppkg file from sharepoint/solution
+   - Upload the `custom-action-manager.sppkg` file from `sharepoint/solution`
    - Deploy and trust the web part when prompted
 
 3. **Add to a Page**
@@ -199,24 +211,31 @@ Custom-Action-Manager/
 ### Key Components
 
 #### CustomActionManager.tsx
-Main component handling:
-- Custom action CRUD operations
-- Search and filtering functionality
-- Bulk operations interface
-- Template gallery management
+Main functional component with modern architecture:
+- Custom action CRUD operations with proper error handling
+- Debounced search and filtering functionality
+- Bulk operations interface with progress tracking
+- Template gallery management with validation
+- React Error Boundaries for graceful error handling
+- Custom hooks for state management and performance optimization
 
-#### Services Layer
-Service implementations for:
-- CustomActionService: SharePoint API abstraction
-- BulkOperationsService: Batch processing with progress tracking
-- TemplateService: Template CRUD operations and usage tracking
-- PermissionService: Role-based access control management
+#### Services & Utilities Layer
+Enhanced service implementations with error handling:
+- **CustomActionService**: SharePoint API abstraction with comprehensive validation
+- **BulkOperationsService**: Batch processing with progress tracking and rollback capabilities
+- **TemplateService**: Template CRUD operations and usage tracking with parameter validation
+- **PermissionService**: Role-based access control management
+- **ErrorHandler**: Centralized error categorization and user-friendly messaging
+- **ValidationUtils**: Input validation, sanitization, and XSS protection
+- **PerformanceUtils**: Debouncing, throttling, and memoization utilities
 
 ### Technology Stack
-- **SharePoint Framework 1.21.1** - Latest SPFx version
-- **React 17** with TypeScript 5.3 - Modern component architecture
-- **Fluent UI 8.x** - Official Microsoft design system
-- **SharePoint REST APIs** - Native integration with comprehensive error handling
+- **SharePoint Framework 1.21.1** - Latest SPFx version with enhanced performance
+- **React 17** with TypeScript 5.3 - Modern functional component architecture with custom hooks
+- **Fluent UI 8.x** - Official Microsoft design system with optimized imports
+- **SharePoint REST APIs** - Native integration with comprehensive error handling and validation
+- **Performance Utilities** - Custom debouncing, throttling, and memoization implementations
+- **Security Features** - Input sanitization, XSS protection, and proper error boundaries
 
 ## Troubleshooting
 
@@ -235,25 +254,34 @@ Service implementations for:
 3. **Template Issues**
    - Confirm SharePoint list existence
    - Check template parameter validation
-   - Verify template syntax
+   - Verify template syntax and parameter types
+
+4. **Build/Compilation Issues**
+   - Run `npm run typecheck` to identify TypeScript errors
+   - Run `npm run lint` to fix code quality issues
+   - Ensure Node.js version compatibility (v22 recommended)
 
 ### Error Messages
 
-| Error | Solution |
-|-------|----------|
-| "Access denied" | Check user permissions and RBAC settings |
-| "Bulk operation failed" | Verify target sites and network connectivity |
-| "Template validation error" | Review template parameters and syntax |
+| Error                          | Solution                                                                |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| "Access denied"                | Check user permissions and RBAC settings                                |
+| "Bulk operation failed"        | Verify target sites and network connectivity                            |
+| "Template validation error"    | Review template parameters and syntax                                   |
+| "TypeScript compilation error" | Run `npm run typecheck` and fix type issues                             |
+| "ESLint warnings"              | Run `npm run lint` to auto-fix code quality issues                      |
+| "Build failed"                 | Ensure all dependencies are installed and Node.js version is compatible |
 
 ## Browser Support
 
-| Browser | Support Status |
-|---------|---------------|
-| Microsoft Edge (Chromium) | ✅ Full Support |
-| Google Chrome | ✅ Full Support |
-| Firefox | ✅ Full Support |
-| Safari | ✅ Full Support |
-| Internet Explorer | ❌ Not Supported |
+| Browser                   | Support Status  |
+| ------------------------- | --------------- |
+| Microsoft Edge (Chromium) | ✅ Full Support  |
+| Google Chrome             | ✅ Full Support  |
+| Firefox                   | ✅ Full Support  |
+| Safari                    | ✅ Full Support  |
+| Internet Explorer         | ❌ Not Supported |
+
 
 ## Contributing
 
@@ -269,8 +297,11 @@ Service implementations for:
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
+| Version | Date       | Changes                                        |
+| ------- | ---------- | ---------------------------------------------- |
+| 5.0.0   | 2024-09-22 | Implement Cross-Site Action Management Service Added CrossSiteActionService to handle bulk operations across multiple SharePoint sites Implemented methods for testing site connectivity, executing site operations, and retrieving custom actions. Introduced interfaces for cross-site operations and results. Create Site Service for Site Management, Developed SiteService to manage site information and collections. Implemented caching for site collections and methods to retrieve accessible and recently accessed sites. Added functionality for searching sites using SharePoint Search API and Microsoft Graph API.
+Add Error Handling Utility, Created ErrorHandler class to standardize error handling and logging.Implemented categorization of errors for better user feedback Enhance Performance Utilities,Introduced PerformanceUtils for debouncing, throttling, and memoizing functions,Added hooks for React components to utilize these utilities.|
+| 4.0.0 | 2024-09-22 |Redesigned, Fixed all compilation warnings and errors, implemented comprehensive error handling, added performance optimizations with debouncing and memoization, created reusable utility classes (ErrorHandler, ValidationUtils, PerformanceUtils), converted to modern functional components with custom hooks, enhanced TypeScript strict mode compliance, added input sanitization and XSS protection, implemented React Error Boundaries, optimized bundle size and imports |
 | 3.0.0 | 2025-09-03 | Bug fixes and more production ready release!|
 | 2.1.0 | 2025-08-15 | Template gallery and advanced search |
 | 2.0.0 | 2025-06-03 | Bulk operations and improved UI |

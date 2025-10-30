@@ -11,6 +11,9 @@ declare interface ICustomActionManagerWebPartStrings {
   EnableFilteringFieldLabel: string;
   EnableCRUDFieldLabel: string;
   ShowAdvancedPropertiesFieldLabel: string;
+  ColumnConfigurationGroupName: string;
+  ColumnConfigurationFieldLabel: string;
+  ColumnConfigurationFieldDescription: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppSharePointEnvironment: string;
