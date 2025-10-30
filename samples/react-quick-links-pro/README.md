@@ -4,7 +4,7 @@
 
 A modern SharePoint Framework (SPFx) web part that provides dynamic quick-access links with inline editing capabilities. Content authors can manage links directly from the page using a configuration panel, eliminating the need to navigate to list settings or the property pane.
 
-![Quick Links Pro](./assets/quick-links-pro-demo.mp4)
+![Quick Links Pro](./assets/quick-links-pro-demo.gif)
 
 ## Used SharePoint Framework Version
 
