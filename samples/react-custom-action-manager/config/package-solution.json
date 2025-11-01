@@ -3,7 +3,7 @@
   "solution": {
     "name": "Custom Action Manager",
     "id": "e8b12345-1234-5678-9012-123456789abc",
-    "version": "1.0.0.0",
+    "version": "5.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -31,6 +31,12 @@
         "description": "Provides custom action management capabilities",
         "id": "f8b12345-1234-5678-9012-123456789def",
         "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
       }
     ]
   },

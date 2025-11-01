@@ -340,16 +340,24 @@ export class AdvancedSearchService {
   }
 
   private async _createExtendedCustomAction(action: ICustomAction): Promise<IExtendedCustomAction> {
-    
+    const createdDate = this._parseDate((action as any).Created) ||
+      this._parseDate((action as any).TimeCreated) ||
+      new Date();
+
+    const modifiedDate = this._parseDate((action as any).Modified) ||
+      this._parseDate((action as any).TimeLastModified) ||
+      createdDate;
+
     return {
       ...action,
       status: this._determineActionStatus(action),
       tags: this._extractTags(action),
       category: this._determineCategory(action),
       author: this._extractAuthor(action),
-      createdDate: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000), // Random date within last year
-      modifiedDate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000), // Random date within last month
-      usageCount: Math.floor(Math.random() * 100),
+      createdDate,
+      modifiedDate,
+      usageCount: 0,
+      lastUsed: undefined,
       isHealthy: this._checkActionHealth(action),
       healthIssues: this._getHealthIssues(action),
       dependencies: this._extractDependencies(action)
@@ -357,21 +365,15 @@ export class AdvancedSearchService {
   }
 
   private _determineActionStatus(action: ICustomAction): CustomActionStatus {
-    // Simulate status determination based on action properties
-    if (!action.ScriptBlock && !action.ScriptSrc && !action.Url) {
+    if (!action.ScriptBlock && !action.ScriptSrc && !action.Url && !action.CommandUIExtension) {
       return CustomActionStatus.Broken;
     }
-    
-    // Random status for simulation
-    const statuses = [
-      CustomActionStatus.Active,
-      CustomActionStatus.Active, // Weight towards active
-      CustomActionStatus.Active,
-      CustomActionStatus.Inactive,
-      CustomActionStatus.Testing
-    ];
-    
-    return statuses[Math.floor(Math.random() * statuses.length)];
+
+    if (action.Enabled === false) {
+      return CustomActionStatus.Inactive;
+    }
+
+    return CustomActionStatus.Active;
   }
 
   private _extractTags(action: ICustomAction): string[] {
@@ -393,14 +395,7 @@ export class AdvancedSearchService {
     if (action.CommandUIExtension) {
       tags.push('ribbon');
     }
-    
-    // Add some random tags for demonstration
-    const possibleTags = ['navigation', 'branding', 'utility', 'integration', 'analytics'];
-    const randomTag = possibleTags[Math.floor(Math.random() * possibleTags.length)];
-    if (!tags.includes(randomTag)) {
-      tags.push(randomTag);
-    }
-    
+
     return tags;
   }
 
@@ -413,8 +408,12 @@ export class AdvancedSearchService {
   }
 
   private _extractAuthor(action: ICustomAction): string {
-    const authors = ['System Administrator', 'Site Owner', 'Developer', 'Business User'];
-    return authors[Math.floor(Math.random() * authors.length)];
+    const author = (action as any).Author?.Title ||
+      (action as any).UserCreated?.Title ||
+      (action as any).CreatedBy?.Title ||
+      action.Name ||
+      action.Title;
+    return author || 'Unknown';
   }
 
   private _checkActionHealth(action: ICustomAction): boolean {
@@ -438,6 +437,14 @@ export class AdvancedSearchService {
     }
     
     return issues;
+  }
+
+  private _parseDate(value: unknown): Date | undefined {
+    if (!value) {
+      return undefined;
+    }
+    const date = new Date(value as string);
+    return isNaN(date.getTime()) ? undefined : date;
   }
 
   private _extractDependencies(action: ICustomAction): string[] {

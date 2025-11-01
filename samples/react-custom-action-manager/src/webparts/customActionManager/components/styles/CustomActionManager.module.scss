@@ -100,6 +100,12 @@
   width: 150px;
 }
 
+.descriptionCell {
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
 // Responsive design
 @media (max-width: 768px) {
   .container {
