@@ -1,6 +1,7 @@
 # SharePoint Custom Action Manager
 
 ## Summary
+
 The SharePoint Custom Action Manager is a comprehensive, enterprise-grade SharePoint Framework (SPFx) web part for managing SharePoint custom actions with advanced features including bulk operations, role-based access control, template gallery, and advanced search capabilities.
 
 Long story short, this solution provides everything you need for professional custom action management in SharePoint.
@@ -34,39 +35,45 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/m365devprogram)
 
-# Features
+## Features
 
 The Custom Action Manager provides a comprehensive set of features organized into several key areas:
 
-# Custom Action Manager Features
+### Custom Action Manager Features
 
-**Role-Based Access Control (RBAC)**  
+#### Role-Based Access Control (RBAC)
+
 - Site-level permissions integration with SharePoint groups  
 - Granular permission system with four user roles: Administrator, Designer, Contributor, and Viewer  
 - Dynamic permission checking based on SharePoint user groups with real-time evaluation  
 
-**Advanced Bulk Operations**  
+#### Advanced Bulk Operations
+
 - Multi-select support with batch processing capabilities for enable/disable operations  
 - Mass delete with comprehensive confirmation and rollback mechanisms  
 - Import/Export functionality supporting JSON and CSV formats with configurable field selection  
 - Cross-site deployment with enhanced service creation, proper logging, and progress tracking  
 
-**Template Gallery System**  
+#### Template Gallery System
+
 - Built-in template library with 5 templates including navigation, notifications, analytics, security, and optimization  
 - SharePoint List Integration for user-created templates with automatic provisioning  
 - Parameter-driven creation with comprehensive validation, form generation, and real-time usage tracking  
 
-**Advanced Search & Filtering**  
+#### Advanced Search & Filtering
+
 - Multi-criteria search across all custom action properties with tag-based filtering  
 - Date range filters, status tracking, and author/category filtering with faceted search  
 - Advanced query builder with AND/OR logic, search suggestions, and saved search queries  
 
-**Professional User Experience**  
+#### Professional User Experience
+
 - Microsoft Fluent UI 8.x throughout with responsive design optimized for all devices  
 - Dark/light theme support, keyboard navigation, and WCAG 2.1 AA accessibility compliance  
 - Progressive loading with skeleton screens, contextual help, and undo/redo functionality  
 
-**Custom Action Support**  
+#### Custom Action Support
+
 - Comprehensive location support: ScriptLink, Site Actions Menu, ECB, List View Command Sets, Application Customizers, Ribbon, Content Type Settings, and Site Settings  
 - Advanced properties including Registration Types, Command UI Extensions, Client-side Components, Rights Management, Sequence Control, and Group Organization
 
@@ -80,17 +87,20 @@ The Custom Action Manager provides a comprehensive set of features organized int
 ## Installation
 
 1. **Download the Repository**
+
    ```bash
    git clone https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-custom-action-manager.git
    cd react-custom-action-manager
    ```
 
 2. **Install Dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Build and Verify**
+
    ```bash
    # Run TypeScript compilation check
    npm run typecheck
@@ -103,11 +113,13 @@ The Custom Action Manager provides a comprehensive set of features organized int
    ```
 
 4. **Trust Dev Certificate** (Development only)
+
    ```bash
    gulp trust-dev-cert
    ```
 
 5. **Serve the Web Part** (Development)
+
    ```bash
    gulp serve
    ```
@@ -115,6 +127,7 @@ The Custom Action Manager provides a comprehensive set of features organized int
 ## Deployment
 
 1. **Prepare the Package**
+
    ```bash
    # Using npm scripts (recommended)
    npm run package
@@ -138,6 +151,7 @@ The Custom Action Manager provides a comprehensive set of features organized int
 ### Property Pane Settings
 
 #### General Settings
+
 - **Web Part Title**: Custom title display
 - **Description**: Web part description
 - **Default Scope**: Initial scope filter (Site/Web/List)
@@ -147,12 +161,14 @@ The Custom Action Manager provides a comprehensive set of features organized int
 - **Enable CRUD**: Enable create/edit/delete operations
 
 #### Advanced Settings
+
 - **Show Advanced Properties**: Display technical properties
 - **Enable Bulk Operations**: Enable bulk operation features
 - **Enable Templates**: Show template gallery
 - **Enable RBAC**: Enable role-based access control
 
 #### Theme Customization
+
 - **Custom Theme**: Override default theme colors
 - **Primary Color**: Set primary brand color
 - **Secondary Color**: Set secondary accent color
@@ -160,7 +176,9 @@ The Custom Action Manager provides a comprehensive set of features organized int
 ### Advanced Configuration
 
 #### Permission Configuration
+
 The web part implements comprehensive RBAC:
+
 ```typescript
 interface IPermissionConfig {
   enableRBAC: boolean;
@@ -173,7 +191,9 @@ interface IPermissionConfig {
 ```
 
 #### Search Implementation
+
 Optimized search with real-time indexing:
+
 ```typescript
 const searchCriteria: IAdvancedSearchCriteria = {
   searchTerm: "analytics",
@@ -187,6 +207,7 @@ const searchCriteria: IAdvancedSearchCriteria = {
 ## Development Guide
 
 ### Project Structure
+
 ```
 Custom-Action-Manager/
 ├── config/
@@ -211,7 +232,9 @@ Custom-Action-Manager/
 ### Key Components
 
 #### CustomActionManager.tsx
+
 Main functional component with modern architecture:
+
 - Custom action CRUD operations with proper error handling
 - Debounced search and filtering functionality
 - Bulk operations interface with progress tracking
@@ -220,7 +243,9 @@ Main functional component with modern architecture:
 - Custom hooks for state management and performance optimization
 
 #### Services & Utilities Layer
+
 Enhanced service implementations with error handling:
+
 - **CustomActionService**: SharePoint API abstraction with comprehensive validation
 - **BulkOperationsService**: Batch processing with progress tracking and rollback capabilities
 - **TemplateService**: Template CRUD operations and usage tracking with parameter validation
@@ -230,6 +255,7 @@ Enhanced service implementations with error handling:
 - **PerformanceUtils**: Debouncing, throttling, and memoization utilities
 
 ### Technology Stack
+
 - **SharePoint Framework 1.21.1** - Latest SPFx version with enhanced performance
 - **React 17** with TypeScript 5.3 - Modern functional component architecture with custom hooks
 - **Fluent UI 8.x** - Official Microsoft design system with optimized imports
@@ -282,7 +308,6 @@ Enhanced service implementations with error handling:
 | Safari                    | ✅ Full Support  |
 | Internet Explorer         | ❌ Not Supported |
 
-
 ## Contributing
 
 1. Fork the repository
@@ -310,13 +335,11 @@ Enhanced service implementations with error handling:
 ## Support
 
 For support, please:
+
 1. Check existing issues on GitHub
 2. Create a new issue with detailed reproduction steps
 3. Include browser and SharePoint version information
 
-## Authors
-
-- Nicolas Kheirallah
 
 ## Help
 
