@@ -5,7 +5,36 @@
     "id": "fa0d5606-da19-4ba2-b47d-058d0594272d",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-check-flows description"
+      },
+      "longDescription": {
+        "default": "react-check-flows description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-check-flows CheckListFlowsWebPart Feature",
+        "description": "The feature that activates CheckListFlowsWebPart from the react-check-flows solution.",
+        "id": "ef548472-a8f3-4fe4-b4b9-c57c3a3cc721",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "ef548472-a8f3-4fe4-b4b9-c57c3a3cc721"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-check-flows.sppkg"

@@ -1,0 +1,1 @@
+export const AZURE_FUNCTION_APP_ID = "c032171c-..."; // Azure Function App Registration Client ID

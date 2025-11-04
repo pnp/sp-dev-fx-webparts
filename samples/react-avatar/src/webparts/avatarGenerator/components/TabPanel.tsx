@@ -3,8 +3,8 @@ import Box from '@material-ui/core/Box';
 
 export interface ITabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: number;
+    value: number;
 }
 
 export const TabPanel: React.FunctionComponent<ITabPanelProps> = (props: ITabPanelProps) => {

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { css } from "@emotion/css";
 import { tokens } from "@fluentui/react-components";
 
@@ -13,6 +11,8 @@ export interface ISchemaExtensionDrawerStyles {
   removePropertyButton: string;
   inputDisabledColor: string;
   restrictionInfoMessage: string;
+  dropdownDataType: string;
+  divider: string;
 }
 
 export const useSchemaExtensionDrawerStyles =
@@ -71,6 +71,13 @@ export const useSchemaExtensionDrawerStyles =
         backgroundColor: tokens.colorNeutralBackground2,
         borderRadius: tokens.borderRadiusSmall,
         marginBottom: tokens.spacingVerticalS,
+      }),
+      dropdownDataType: css({
+        width: "100%",
+        maxHeight: "30px",
+      }),
+      divider: css({
+        flexGrow: 0,
       }),
     };
   };

@@ -12,11 +12,14 @@ import {
   MessageBarType,
   Spinner,
   SpinnerSize,
-  Selection,
   DetailsListLayoutMode,
   ConstrainMode,
   Dropdown,
   IDropdownOption,
+  TextField,
+  Toggle,
+  ChoiceGroup,
+  IChoiceGroupOption,
   Panel,
   PanelType,
   DefaultButton,
@@ -29,220 +32,325 @@ import {
 } from '@fluentui/react';
 import styles from './styles/CustomActionManager.module.scss';
 import { ICustomActionManagerProps } from './ICustomActionManagerProps';
-import { ICustomActionManagerState } from './ICustomActionManagerState';
-import { 
-  ICustomAction, 
-  CustomActionScope
+import {
+  ICustomAction,
+  CustomActionScope,
+  RegistrationType
 } from '../../../models';
-import { CustomActionService, PermissionService, TemplateService, AdvancedSearchService } from '../../../services';
+import { PermissionService, TemplateService } from '../../../services';
+import { useCustomActionState } from '../../../hooks/useCustomActionState';
+import { useCustomActionSelection } from '../../../hooks/useCustomActionSelection';
+import { useCustomActionOperations } from '../../../hooks/useCustomActionOperations';
+import { useDebounce } from '../../../utils/PerformanceUtils';
+import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { SiteSelector } from '../../../components/SiteSelector';
+import { CurrentSiteInfo } from '../../../components/CurrentSiteInfo';
 import { CustomActionForm } from './CustomActionForm';
 import { BulkOperationsPanel } from './BulkOperationsPanel';
 import { TemplateGallery } from './TemplateGallery';
+import { ISiteInfo } from '../../../services/SiteService';
+import {
+  ColumnSetting,
+  ColumnKey,
+  deriveColumnSettings
+} from '../utils/columnConfig';
 
-export default class CustomActionManager extends React.Component<ICustomActionManagerProps, ICustomActionManagerState> {
-  private _selection: Selection;
-  private _customActionService: CustomActionService;
-  private _permissionService: PermissionService;
-  private _templateService: TemplateService;
-  private _advancedSearchService: AdvancedSearchService;
+const CustomActionManager: React.FunctionComponent<ICustomActionManagerProps> = (props) => {
+  const {
+    title,
+    description,
+    context,
+    defaultScope,
+    pageSize,
+    enableSearch,
+    enableFiltering,
+    enableCRUD,
+    showAdvancedProperties,
+    showTitleColumn,
+    showLocationColumn,
+    showSiteColumn,
+    showScopeColumn,
+    showComponentColumn,
+    showSequenceColumn,
+    showDescriptionColumn,
+    columnOrder,
+    columnConfiguration
+  } = props;
 
-  constructor(props: ICustomActionManagerProps) {
-    super(props);
+  const [showCreateForm, setShowCreateForm] = React.useState(false);
+  const [showEditForm, setShowEditForm] = React.useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = React.useState(false);
+  const [showBulkOperationsPanel, setShowBulkOperationsPanel] = React.useState(false);
+  const [showTemplateGallery, setShowTemplateGallery] = React.useState(false);
+  const [showSiteSelector, setShowSiteSelector] = React.useState(false);
+  const [showAdvancedFilters, setShowAdvancedFilters] = React.useState<boolean>(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    const stored = window.sessionStorage.getItem('cam:showAdvancedFilters');
+    return stored ? stored === 'true' : false;
+  });
 
-    this._customActionService = new CustomActionService(props.context);
-    this._permissionService = new PermissionService(props.context);
-    this._templateService = new TemplateService(props.context);
-    this._advancedSearchService = new AdvancedSearchService(props.context);
-    this._selection = new Selection({
-      onSelectionChanged: () => {
-        const selectedItems = this._selection.getSelection() as ICustomAction[];
-        this.setState({ 
-          selectedAction: selectedItems.length === 1 ? selectedItems[0] : null,
-          selectedActions: selectedItems
-        });
+  const compactViewStorageKey = 'cam:compactView';
+  const [isCompactView, setIsCompactView] = React.useState<boolean>(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    const stored = window.sessionStorage.getItem(compactViewStorageKey);
+    return stored ? stored === 'true' : false;
+  });
+
+  React.useEffect(() => {
+    try {
+      window.sessionStorage.setItem(compactViewStorageKey, isCompactView.toString());
+    } catch (error) {
+      console.warn('Failed to persist compact view preference:', error);
+    }
+  }, [isCompactView]);
+
+  const columnWidthStorageKey = 'cam:columnWidths';
+  const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>(() => {
+    if (typeof window === 'undefined') {
+      return {};
+    }
+    try {
+      const stored = window.sessionStorage.getItem(columnWidthStorageKey);
+      return stored ? JSON.parse(stored) : {};
+    } catch (error) {
+      console.warn('Failed to parse stored column widths:', error);
+      return {};
+    }
+  });
+
+  const columnSettings = React.useMemo<ColumnSetting[]>(() =>
+    deriveColumnSettings({
+      columnConfiguration,
+      columnOrder,
+      showTitleColumn,
+      showLocationColumn,
+      showSiteColumn,
+      showScopeColumn,
+      showComponentColumn,
+      showSequenceColumn,
+      showDescriptionColumn
+    }),
+  [
+    columnConfiguration,
+    columnOrder,
+    showTitleColumn,
+    showLocationColumn,
+    showSiteColumn,
+    showScopeColumn,
+    showComponentColumn,
+    showSequenceColumn,
+    showDescriptionColumn
+  ]);
+
+  const visibleColumnKeys = React.useMemo<ColumnKey[]>(
+    () => columnSettings.filter(setting => setting.visible).map(setting => setting.key),
+    [columnSettings]
+  );
+
+  React.useEffect(() => {
+    try {
+      window.sessionStorage.setItem('cam:showAdvancedFilters', showAdvancedFilters.toString());
+    } catch (error) {
+      console.warn('Failed to persist advanced filter visibility:', error);
+    }
+  }, [showAdvancedFilters]);
+
+  const handleColumnResize = React.useCallback((column?: IColumn, newWidth?: number) => {
+    if (!column || typeof newWidth !== 'number' || Number.isNaN(newWidth)) {
+      return;
+    }
+
+    setColumnWidths(prev => {
+      const updated = { ...prev, [column.key]: newWidth };
+      try {
+        window.sessionStorage.setItem(columnWidthStorageKey, JSON.stringify(updated));
+      } catch (error) {
+        console.warn('Failed to persist column widths:', error);
       }
+      return updated;
     });
+  }, []);
 
-    this.state = {
-      customActions: [],
-      filteredActions: [],
-      loading: true,
-      error: null,
-      filter: {
-        scope: props.defaultScope,
-        searchTerm: '',
-        location: undefined,
-        group: undefined
-      },
-      pagination: {
-        currentPage: 1,
-        pageSize: props.pageSize,
-        totalItems: 0,
-        totalPages: 0
-      },
-      selectedAction: null,
-      selectedActions: [],
-      showCreateForm: false,
-      showEditForm: false,
-      showDeleteDialog: false,
-      showBulkOperationsPanel: false,
-      showTemplateGallery: false,
-      operationInProgress: false,
-      lastRefresh: null
+  const contextSite: ISiteInfo = React.useMemo(() => ({
+    id: context.pageContext.site.id?.toString() || '',
+    title: context.pageContext.web.title,
+    url: context.pageContext.web.absoluteUrl,
+    serverRelativeUrl: context.pageContext.web.serverRelativeUrl,
+    description: context.pageContext.web.description || '',
+    template: context.pageContext.web.templateName || 'STS',
+    isSubsite: (context.pageContext.web as any).isSubWeb || false,
+    lastModified: new Date(),
+    created: new Date()
+  }), [
+    context.pageContext.site.id,
+    context.pageContext.web.title,
+    context.pageContext.web.absoluteUrl,
+    context.pageContext.web.serverRelativeUrl,
+    context.pageContext.web.description,
+    context.pageContext.web.templateName,
+    (context.pageContext.web as any).isSubWeb
+  ]);
+
+  const [selectedSites, setSelectedSites] = React.useState<ISiteInfo[]>([]);
+
+  const createSiteInfoFromUrl = React.useCallback((url: string): ISiteInfo => {
+    if (url === contextSite.url) {
+      return contextSite;
+    }
+
+    return {
+      id: '',
+      title: url,
+      url,
+      serverRelativeUrl: '',
+      description: '',
+      template: 'STS',
+      isSubsite: false,
+      lastModified: new Date(),
+      created: new Date()
+    } as ISiteInfo;
+  }, [contextSite]);
+  const primarySelectedSite = selectedSites.length > 0 ? selectedSites[0] : null;
+
+  const permissionServiceRef = React.useRef<PermissionService>();
+  const templateServiceRef = React.useRef<TemplateService>();
+
+  if (!permissionServiceRef.current) {
+    permissionServiceRef.current = new PermissionService(context);
+  }
+  if (!templateServiceRef.current) {
+    templateServiceRef.current = new TemplateService(context);
+  }
+
+  const {
+    customActions,
+    filteredActions,
+    loading,
+    error,
+    filter,
+    pagination,
+    loadCustomActions,
+    setFilter,
+    clearError,
+    refreshData,
+    resetFilters,
+    selectedSiteUrls,
+    setSelectedSiteUrls
+  } = useCustomActionState(context, defaultScope, pageSize, primarySelectedSite?.url);
+
+  React.useEffect(() => {
+    if (!selectedSiteUrls || selectedSiteUrls.length === 0) {
+      setSelectedSiteUrls([contextSite.url]);
+      return;
+    }
+
+    setSelectedSites(prev => {
+      const prevMap = new Map(prev.map(site => [site.url, site]));
+      return selectedSiteUrls.map(url => prevMap.get(url) || createSiteInfoFromUrl(url));
+    });
+  }, [selectedSiteUrls, setSelectedSiteUrls, createSiteInfoFromUrl]);
+
+  React.useEffect(() => {
+    const targetUrl = primarySelectedSite?.url;
+    templateServiceRef.current?.setTargetSite(targetUrl);
+  }, [primarySelectedSite?.url]);
+
+  const [searchValue, setSearchValue] = React.useState(filter.searchTerm);
+
+  const {
+    selectedAction,
+    selectedActions,
+    selection,
+    setSelectedAction,
+    clearSelection
+  } = useCustomActionSelection();
+
+  const {
+    operationInProgress,
+    createCustomAction,
+    updateCustomAction,
+    deleteCustomAction
+  } = useCustomActionOperations(context, refreshData, selectedSites.map(site => site.url));
+
+  React.useEffect(() => {
+    const initializePermissions = async (): Promise<void> => {
+      try {
+        await permissionServiceRef.current!.initializePermissions();
+        await loadCustomActions();
+      } catch (err) {
+        console.error('Failed to initialize permissions:', err);
+      }
     };
-  }
 
-  public async componentDidMount(): Promise<void> {
-    await this._permissionService.initializePermissions();
-    this._loadCustomActions();
-  }
+    initializePermissions().catch(console.error);
+  }, [loadCustomActions]);
 
-  public render(): React.ReactElement<ICustomActionManagerProps> {
-    const { title, description } = this.props;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { loading, error, filteredActions, showCreateForm, showEditForm, showDeleteDialog, showBulkOperationsPanel, showTemplateGallery, selectedAction, selectedActions } = this.state;
+  const debouncedSearch = useDebounce((searchTerm: string) => {
+    setFilter({ searchTerm });
+  }, 300);
 
-    return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.headerTitle}>{title}</div>
-          <div className={styles.headerDescription}>{description}</div>
-        </div>
+  React.useEffect(() => {
+    if (filter.searchTerm !== searchValue) {
+      setSearchValue(filter.searchTerm);
+    }
+  }, [filter.searchTerm]);
 
-        {error && (
-          <MessageBar messageBarType={MessageBarType.error} onDismiss={this._clearError}>
-            {error}
-          </MessageBar>
-        )}
+  const renderToolbar = (): React.ReactElement => {
+   const scopeOptions: IDropdownOption[] = [
+     { key: 'All', text: 'All Scopes' },
+     { key: CustomActionScope.Web, text: 'Web' },
+     { key: CustomActionScope.Site, text: 'Site' }
+   ];
 
-        <div className={styles.toolbar}>
-          {this._renderToolbar()}
-        </div>
-
-        <div className={styles.listContainer}>
-          {loading ? this._renderLoading() : this._renderCustomActionsList()}
-        </div>
-
-        {showBulkOperationsPanel && (
-          <BulkOperationsPanel
-            selectedActions={selectedActions}
-            onClose={this._hideBulkOperationsPanel}
-            context={this.props.context}
-            onOperationComplete={this._handleBulkOperationComplete}
-            permissionService={this._permissionService}
-          />
-        )}
-
-        {showTemplateGallery && (
-          <Panel
-            headerText="Template Gallery"
-            isOpen={true}
-            onDismiss={this._hideTemplateGallery}
-            type={PanelType.extraLarge}
-            isFooterAtBottom={false}
-          >
-            <TemplateGallery
-              context={this.props.context}
-              onTemplateSelected={this._handleTemplateSelected}
-              onClose={this._hideTemplateGallery}
-              defaultScope={this.state.filter.scope === 'All' ? CustomActionScope.Web : this.state.filter.scope as CustomActionScope}
-            />
-          </Panel>
-        )}
-
-        {showCreateForm && (
-          <Panel
-            headerText="Create Custom Action"
-            isOpen={true}
-            onDismiss={this._hideCreateForm}
-            type={PanelType.largeFixed}
-            isFooterAtBottom={true}
-          >
-            <CustomActionForm
-              onSave={this._handleCreateAction}
-              onCancel={this._hideCreateForm}
-              isLoading={this.state.operationInProgress}
-              showAdvancedProperties={this.props.showAdvancedProperties}
-            />
-          </Panel>
-        )}
-
-        {showEditForm && selectedAction && (
-          <Panel
-            headerText="Edit Custom Action"
-            isOpen={true}
-            onDismiss={this._hideEditForm}
-            type={PanelType.largeFixed}
-            isFooterAtBottom={true}
-          >
-            <CustomActionForm
-              customAction={selectedAction}
-              onSave={this._handleUpdateAction}
-              onCancel={this._hideEditForm}
-              isLoading={this.state.operationInProgress}
-              showAdvancedProperties={this.props.showAdvancedProperties}
-            />
-          </Panel>
-        )}
-
-        {showDeleteDialog && selectedAction && (
-          <Dialog
-            hidden={false}
-            onDismiss={this._hideDeleteDialog}
-            dialogContentProps={{
-              type: DialogType.normal,
-              title: 'Delete Custom Action',
-              subText: `Are you sure you want to delete the custom action "${selectedAction.Title}"? This action cannot be undone.`
-            }}
-            modalProps={{ isBlocking: true }}
-          >
-            <DialogFooter>
-              <PrimaryButton
-                onClick={this._handleDeleteAction}
-                disabled={this.state.operationInProgress}
-                text="Delete"
-              />
-              <DefaultButton
-                onClick={this._hideDeleteDialog}
-                text="Cancel"
-                disabled={this.state.operationInProgress}
-              />
-            </DialogFooter>
-          </Dialog>
-        )}
-      </div>
-    );
-  }
-
-  private _renderToolbar = (): React.ReactElement => {
-    const { enableSearch, enableFiltering, enableCRUD } = this.props;
-    const { filter } = this.state;
-
-    const scopeOptions: IDropdownOption[] = [
-      { key: 'All', text: 'All Scopes' },
-      { key: CustomActionScope.Web, text: 'Web' },
-      { key: CustomActionScope.Site, text: 'Site' }
+    const registrationOptions: IChoiceGroupOption[] = [
+      { key: 'any', text: 'Any' },
+      { key: RegistrationType.None.toString(), text: 'None' },
+      { key: RegistrationType.List.toString(), text: 'List' },
+      { key: RegistrationType.ContentType.toString(), text: 'Content Type' },
+      { key: RegistrationType.ProgId.toString(), text: 'ProgId' },
+      { key: RegistrationType.FileType.toString(), text: 'File Type' }
     ];
 
-    return (
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Stack horizontal tokens={{ childrenGap: 16 }} verticalAlign="center">
+   return (
+    <Stack tokens={{ childrenGap: 16 }}>
+       <Stack horizontal tokens={{ childrenGap: 16 }} verticalAlign="center" wrap>
           {enableSearch && (
             <SearchBox
               placeholder="Search custom actions..."
-              value={filter.searchTerm}
-              onChange={this._onSearchChanged}
+              value={searchValue}
+              onChange={(_, newValue) => {
+                const value = newValue || '';
+                setSearchValue(value);
+                debouncedSearch(value);
+              }}
               className={styles.searchBox}
             />
           )}
-          
+
           {enableFiltering && (
             <Dropdown
               placeholder="Select scope"
               options={scopeOptions}
               selectedKey={filter.scope}
-              onChange={this._onScopeFilterChanged}
+              onChange={(_, option) => {
+                if (option) {
+                  setFilter({ scope: option.key as CustomActionScope | 'All' });
+                }
+              }}
               className={styles.scopeDropdown}
+            />
+          )}
+
+          {enableFiltering && (
+            <Toggle
+              inlineLabel
+              label="Advanced filters"
+              checked={showAdvancedFilters}
+              onChange={(_, checked) => setShowAdvancedFilters(!!checked)}
             />
           )}
 
@@ -251,48 +359,96 @@ export default class CustomActionManager extends React.Component<ICustomActionMa
           </Stack.Item>
 
           <DefaultButton
+            iconProps={{ iconName: 'Website' }}
+            text={primarySelectedSite ? primarySelectedSite.title : "Select Site"}
+            onClick={() => setShowSiteSelector(true)}
+            disabled={loading}
+            title={primarySelectedSite ? `Managing custom actions for: ${primarySelectedSite.title}` : "Select a different SharePoint site"}
+          />
+
+          <DefaultButton
             iconProps={{ iconName: 'Refresh' }}
             text="Refresh"
-            onClick={this._loadCustomActions}
-            disabled={this.state.loading}
+            onClick={refreshData}
+            disabled={loading}
+          />
+
+          <DefaultButton
+            iconProps={{ iconName: 'ClearFilter' }}
+            text="Reset Filters"
+            onClick={() => {
+              resetFilters();
+            }}
           />
         </Stack>
 
-        {enableCRUD && this._renderCommandBar()}
+        {enableFiltering && showAdvancedFilters && (
+          <Stack horizontal tokens={{ childrenGap: 24 }} wrap>
+            <TextField
+              placeholder="Filter by Component ID (GUID)"
+              value={filter.componentId || ''}
+              onChange={(_, value) => setFilter({ componentId: value || undefined })}
+              styles={{ root: { minWidth: 260 } }}
+            />
+
+            <ChoiceGroup
+              label="Registration Type"
+              selectedKey={typeof filter.registrationType === 'number' ? filter.registrationType.toString() : 'any'}
+              options={registrationOptions}
+              onChange={(_, option) => {
+                if (option?.key === 'any') {
+                  setFilter({ registrationType: undefined });
+                } else if (option) {
+                  setFilter({ registrationType: Number(option.key) });
+                }
+              }}
+              styles={{ root: { maxWidth: 260 } }}
+            />
+
+            <Toggle
+              label="Only Show Ribbon Customizations"
+              checked={filter.hasCommandUI === true}
+              onText="Ribbon actions only"
+              offText="Include non-ribbon actions"
+              onChange={(_, checked) => setFilter({ hasCommandUI: checked ? true : undefined })}
+            />
+          </Stack>
+        )}
+
+        {enableCRUD && renderCommandBar()}
       </Stack>
     );
   };
 
-  private _renderCommandBar = (): React.ReactElement => {
-    const { selectedAction, selectedActions } = this.state;
-    const canBulkOperations = this._permissionService.canPerformBulkOperations();
-    
+  const renderCommandBar = (): React.ReactElement => {
+    const canBulkOperations = permissionServiceRef.current?.canPerformBulkOperations() || false;
+
     const items: ICommandBarItemProps[] = [
       {
         key: 'new',
         text: 'New',
         iconProps: { iconName: 'Add' },
-        onClick: this._showCreateForm
+        onClick: () => setShowCreateForm(true)
       },
       {
         key: 'template',
         text: 'From Template',
-        iconProps: { iconName: 'TemplateFolderIcon' },
-        onClick: this._showTemplateGallery
+        iconProps: { iconName: 'FabricFolder' },
+        onClick: () => setShowTemplateGallery(true)
       },
       {
         key: 'edit',
         text: 'Edit',
         iconProps: { iconName: 'Edit' },
         disabled: !selectedAction,
-        onClick: this._showEditForm
+        onClick: () => setShowEditForm(true)
       },
       {
         key: 'delete',
         text: 'Delete',
         iconProps: { iconName: 'Delete' },
         disabled: !selectedAction,
-        onClick: this._showDeleteDialog
+        onClick: () => setShowDeleteDialog(true)
       }
     ];
 
@@ -302,14 +458,14 @@ export default class CustomActionManager extends React.Component<ICustomActionMa
         text: 'Bulk Operations',
         iconProps: { iconName: 'BulkUpload' },
         disabled: selectedActions.length === 0,
-        onClick: this._showBulkOperationsPanel
+        onClick: () => setShowBulkOperationsPanel(true)
       });
     }
 
     return <CommandBar items={items} />;
   };
 
-  private _renderLoading = (): React.ReactElement => {
+  const renderLoading = (): React.ReactElement => {
     return (
       <div className={styles.loadingContainer}>
         <Spinner size={SpinnerSize.large} label="Loading custom actions..." />
@@ -317,9 +473,132 @@ export default class CustomActionManager extends React.Component<ICustomActionMa
     );
   };
 
-  private _renderCustomActionsList = (): React.ReactElement => {
-    const { filteredActions } = this.state;
+  const availableColumns = React.useMemo<Record<ColumnKey, IColumn>>(() => ({
+    title: {
+      key: 'title',
+      name: 'Title',
+      fieldName: 'Title',
+      minWidth: 200,
+      maxWidth: 300,
+      isResizable: true,
+      onRender: (item: ICustomAction) => (
+        <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
+          <Text>{item.Title || 'Untitled'}</Text>
+        </Stack>
+      )
+    },
+    location: {
+      key: 'location',
+      name: 'Location',
+      fieldName: 'Location',
+      minWidth: 150,
+      maxWidth: 200,
+      isResizable: true
+    },
+    site: {
+      key: 'site',
+      name: 'Site',
+      fieldName: 'SiteTitle',
+      minWidth: 220,
+      maxWidth: 280,
+      isResizable: true,
+      onRender: (item: ICustomAction) => (
+        <Stack tokens={{ childrenGap: 2 }}>
+          <Text>{item.SiteTitle || primarySelectedSite?.title || context.pageContext.web.title}</Text>
+          <Text variant="small" style={{ color: '#666' }}>
+            {item.SiteUrl || primarySelectedSite?.url || context.pageContext.web.absoluteUrl}
+          </Text>
+        </Stack>
+      )
+    },
+    scope: {
+      key: 'scope',
+      name: 'Scope',
+      fieldName: 'Scope',
+      minWidth: 80,
+      maxWidth: 100,
+      onRender: (item: ICustomAction) => (
+        <span className={`${styles.scopeIndicator} ${
+          item.Scope === CustomActionScope.Web ? styles.webScope : styles.siteScope
+        }`}>
+          {item.Scope}
+        </span>
+      )
+    },
+    component: {
+      key: 'component',
+      name: 'Client Component',
+      fieldName: 'ClientSideComponentId',
+      minWidth: 220,
+      maxWidth: 320,
+      isResizable: true,
+      onRender: (item: ICustomAction) => (
+        item.ClientSideComponentId ? (
+          <Stack tokens={{ childrenGap: 2 }}>
+            <Text variant="small">{item.ClientSideComponentId}</Text>
+            {item.ClientSideComponentProperties && (
+              <TooltipHost content={item.ClientSideComponentProperties}>
+                <Text variant="small" style={{ color: '#666' }}>
+                  Properties: {item.ClientSideComponentProperties.length > 60
+                    ? `${item.ClientSideComponentProperties.substring(0, 57)}...`
+                    : item.ClientSideComponentProperties}
+                </Text>
+              </TooltipHost>
+            )}
+            {item.CommandUIExtension && (
+              <TooltipHost content={item.CommandUIExtension}>
+                <Text variant="small" style={{ color: '#107c10' }}>
+                  Ribbon Customization Present
+                </Text>
+              </TooltipHost>
+            )}
+          </Stack>
+        ) : (
+          <Text variant="small" style={{ color: '#666' }}>N/A</Text>
+        )
+      )
+    },
+    sequence: {
+      key: 'sequence',
+      name: 'Sequence',
+      fieldName: 'Sequence',
+      minWidth: 80,
+      maxWidth: 100,
+      data: 'number'
+    },
+    description: {
+      key: 'description',
+      name: 'Description',
+      fieldName: 'Description',
+      minWidth: 200,
+      isResizable: true,
+      onRender: (item: ICustomAction) => (
+        <TooltipHost content={item.Description}>
+          <div className={styles.descriptionCell}>
+            <Text>{item.Description ? item.Description : 'No description'}</Text>
+          </div>
+        </TooltipHost>
+      )
+    }
+  }), [primarySelectedSite, context.pageContext.web.title, context.pageContext.web.absoluteUrl]);
 
+  const columns = React.useMemo<IColumn[]>(() => {
+    return visibleColumnKeys.map(columnKey => {
+      const baseColumn = availableColumns[columnKey];
+      if (!baseColumn) {
+        return null;
+      }
+
+      const width = columnWidths[columnKey];
+      if (width) {
+        return { ...baseColumn, width, calculatedWidth: width };
+      }
+
+      return baseColumn;
+    }).filter((column): column is IColumn => column !== null);
+  }, [visibleColumnKeys, availableColumns, columnWidths]);
+
+  const renderCustomActionsList = React.useMemo((): React.ReactElement => {
     if (filteredActions.length === 0) {
       return (
         <div className={styles.emptyState}>
@@ -329,322 +608,235 @@ export default class CustomActionManager extends React.Component<ICustomActionMa
         </div>
       );
     }
-
-    const columns: IColumn[] = [
-      {
-        key: 'title',
-        name: 'Title',
-        fieldName: 'Title',
-        minWidth: 200,
-        maxWidth: 300,
-        isResizable: true,
-        onRender: (item: ICustomAction) => (
-          <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
-            <Text>{item.Title || 'Untitled'}</Text>
-          </Stack>
-        )
-      },
-      {
-        key: 'location',
-        name: 'Location',
-        fieldName: 'Location',
-        minWidth: 150,
-        maxWidth: 200,
-        isResizable: true
-      },
-      {
-        key: 'scope',
-        name: 'Scope',
-        fieldName: 'Scope',
-        minWidth: 80,
-        maxWidth: 100,
-        onRender: (item: ICustomAction) => (
-          <span className={`${styles.scopeIndicator} ${
-            item.Scope === CustomActionScope.Web ? styles.webScope : styles.siteScope
-          }`}>
-            {item.Scope}
-          </span>
-        )
-      },
-      {
-        key: 'sequence',
-        name: 'Sequence',
-        fieldName: 'Sequence',
-        minWidth: 80,
-        maxWidth: 100,
-        data: 'number'
-      },
-      {
-        key: 'description',
-        name: 'Description',
-        fieldName: 'Description',
-        minWidth: 200,
-        isResizable: true,
-        onRender: (item: ICustomAction) => (
-          <TooltipHost content={item.Description}>
-            <Text>{item.Description ? 
-              (item.Description.length > 50 ? `${item.Description.substring(0, 50)}...` : item.Description)
-              : 'No description'
-            }</Text>
-          </TooltipHost>
-        )
-      }
-    ];
-
     return (
       <DetailsList
         items={filteredActions}
         columns={columns}
         setKey="set"
         layoutMode={DetailsListLayoutMode.justified}
-        selection={this._selection}
+        selection={selection}
         selectionPreservedOnEmptyClick={true}
         selectionMode={SelectionMode.multiple}
         constrainMode={ConstrainMode.unconstrained}
-        onItemInvoked={this._onItemInvoked}
-        compact={false}
+        compact={isCompactView}
+        onColumnResize={handleColumnResize}
+        onItemInvoked={(item: ICustomAction) => {
+          setSelectedAction(item);
+          setShowEditForm(true);
+        }}
       />
     );
-  };
+  }, [filteredActions, selection, setSelectedAction, columns, isCompactView, handleColumnResize]);
 
-  private _loadCustomActions = async (): Promise<void> => {
-    this.setState({ loading: true, error: null });
+  const handleCreateAction = React.useCallback(async (formData: any, scope?: CustomActionScope): Promise<void> => {
+    const targetScope = scope || (filter.scope === 'All' ? CustomActionScope.Web : filter.scope as CustomActionScope);
+    const result = await createCustomAction(formData, targetScope);
 
+    if (result.success) {
+      setShowCreateForm(false);
+      clearSelection();
+    }
+  }, [createCustomAction, filter.scope, clearSelection]);
+
+  const handleUpdateAction = React.useCallback(async (formData: any): Promise<void> => {
+    if (!selectedAction) return;
+
+    const result = await updateCustomAction(selectedAction.Id, formData, selectedAction.Scope);
+
+    if (result.success) {
+      setShowEditForm(false);
+      clearSelection();
+    }
+  }, [updateCustomAction, selectedAction, clearSelection]);
+
+  const handleDeleteAction = React.useCallback(async (): Promise<void> => {
+    if (!selectedAction) return;
+
+    const result = await deleteCustomAction(selectedAction.Id, selectedAction.Scope);
+
+    if (result.success) {
+      setShowDeleteDialog(false);
+      clearSelection();
+    }
+  }, [deleteCustomAction, selectedAction, clearSelection]);
+
+  const handleBulkOperationComplete = React.useCallback(async (): Promise<void> => {
+    setShowBulkOperationsPanel(false);
+    await refreshData();
+    clearSelection();
+  }, [refreshData, clearSelection]);
+
+  const handleTemplateSelected = React.useCallback(async (template: any, formData: any): Promise<void> => {
     try {
-      const actions = await this._customActionService.getCustomActions(this.state.filter.scope);
-      this.setState({
-        customActions: actions,
-        loading: false,
-        lastRefresh: new Date()
-      }, this._applyFilters);
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.setState({
-        loading: false,
-        error: errorMessage
-      });
-    }
-  };
-
-  private _applyFilters = (): void => {
-    const { customActions, filter } = this.state;
-    let filtered = [...customActions];
-
-    if (filter.searchTerm) {
-      const searchTerm = filter.searchTerm.toLowerCase();
-      filtered = filtered.filter(action => 
-        (action.Title && action.Title.toLowerCase().includes(searchTerm)) ||
-        (action.Description && action.Description.toLowerCase().includes(searchTerm)) ||
-        (action.Location && action.Location.toLowerCase().includes(searchTerm))
-      );
-    }
-
-    if (filter.scope !== 'All') {
-      filtered = filtered.filter(action => action.Scope === filter.scope);
-    }
-
-    if (filter.location) {
-      filtered = filtered.filter(action => action.Location === filter.location);
-    }
-
-    if (filter.group) {
-      filtered = filtered.filter(action => action.Group === filter.group);
-    }
-
-    const totalItems = filtered.length;
-    const totalPages = Math.ceil(totalItems / this.state.pagination.pageSize);
-
-    this.setState({
-      filteredActions: filtered,
-      pagination: {
-        ...this.state.pagination,
-        totalItems,
-        totalPages
-      }
-    });
-  };
-
-  private _onSearchChanged = (_: any, newValue?: string): void => {
-    this.setState({
-      filter: { ...this.state.filter, searchTerm: newValue || '' }
-    }, this._applyFilters);
-  };
-
-  private _onScopeFilterChanged = (_: any, option?: IDropdownOption): void => {
-    if (option) {
-      this.setState({
-        filter: { ...this.state.filter, scope: option.key as CustomActionScope | 'All' }
-      }, () => {
-        this._loadCustomActions();
-      });
-    }
-  };
-
-  private _onItemInvoked = (item: ICustomAction): void => {
-    this.setState({ selectedAction: item, showEditForm: true });
-  };
-
-  private _showCreateForm = (): void => {
-    this.setState({ showCreateForm: true });
-  };
-
-  private _hideCreateForm = (): void => {
-    this.setState({ showCreateForm: false });
-  };
-
-  private _showEditForm = (): void => {
-    this.setState({ showEditForm: true });
-  };
-
-  private _hideEditForm = (): void => {
-    this.setState({ showEditForm: false });
-  };
-
-  private _showDeleteDialog = (): void => {
-    this.setState({ showDeleteDialog: true });
-  };
-
-  private _hideDeleteDialog = (): void => {
-    this.setState({ showDeleteDialog: false });
-  };
-
-  private _handleCreateAction = async (formData: any): Promise<void> => {
-    this.setState({ operationInProgress: true });
-
-    try {
-      const result = await this._customActionService.createCustomAction(
-        formData, 
-        this.state.filter.scope === 'All' ? CustomActionScope.Web : this.state.filter.scope as CustomActionScope
-      );
+      const targetScope = filter.scope === 'All' ? CustomActionScope.Web : filter.scope as CustomActionScope;
+      const payload = templateServiceRef.current!.getCustomActionFormData(template, formData);
+      const result = await createCustomAction(payload, targetScope);
 
       if (result.success) {
-        this.setState({ 
-          showCreateForm: false,
-          operationInProgress: false
-        });
-        await this._loadCustomActions();
-      } else {
-        this.setState({
-          error: result.message,
-          operationInProgress: false
-        });
+        if (template?.id) {
+          await templateServiceRef.current!.markTemplateUsed(template.id);
+        }
+        setShowTemplateGallery(false);
+        await refreshData();
       }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.setState({
-        error: errorMessage,
-        operationInProgress: false
-      });
+    } catch (err) {
+      console.error('Failed to create custom action from template:', err);
     }
-  };
+  }, [filter.scope, refreshData, createCustomAction]);
 
-  private _handleUpdateAction = async (formData: any): Promise<void> => {
-    if (!this.state.selectedAction) return;
+  const handleSitesSelected = React.useCallback(async (sites: ISiteInfo[]): Promise<void> => {
+    if (!sites || sites.length === 0) {
+      return;
+    }
 
-    this.setState({ operationInProgress: true });
+    setShowSiteSelector(false);
+    clearSelection();
+
+    const uniqueSites = Array.from(new Map(sites.map(site => [site.url, site])).values());
+    setSelectedSites(uniqueSites);
+    setSelectedSiteUrls(uniqueSites.map(site => site.url));
 
     try {
-      const result = await this._customActionService.updateCustomAction(
-        this.state.selectedAction.Id,
-        formData,
-        this.state.selectedAction.Scope
-      );
+      clearError();
+      await refreshData();
 
-      if (result.success) {
-        this.setState({ 
-          showEditForm: false,
-          operationInProgress: false,
-          selectedAction: null
-        });
-        await this._loadCustomActions();
-      } else {
-        this.setState({
-          error: result.message,
-          operationInProgress: false
-        });
-      }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.setState({
-        error: errorMessage,
-        operationInProgress: false
-      });
+    } catch (err) {
+      console.error('Error switching to sites:', err);
     }
-  };
+  }, [clearSelection, refreshData, clearError]);
 
-  private _handleDeleteAction = async (): Promise<void> => {
-    if (!this.state.selectedAction) return;
+  return (
+    <ErrorBoundary>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.headerTitle}>{title}</div>
+          <div className={styles.headerDescription}>{description}</div>
+        </div>
 
-    this.setState({ operationInProgress: true });
+        {error && (
+          <MessageBar messageBarType={MessageBarType.error} onDismiss={clearError}>
+            {error}
+          </MessageBar>
+        )}
 
-    try {
-      const result = await this._customActionService.deleteCustomAction(
-        this.state.selectedAction.Id,
-        this.state.selectedAction.Scope
-      );
+        <CurrentSiteInfo
+          context={context}
+          selectedSite={primarySelectedSite}
+          additionalSelectedCount={Math.max(0, selectedSites.length - 1)}
+          onChangeSite={() => setShowSiteSelector(true)}
+          disabled={operationInProgress || loading}
+        />
 
-      if (result.success) {
-        this.setState({ 
-          showDeleteDialog: false,
-          operationInProgress: false,
-          selectedAction: null
-        });
-        await this._loadCustomActions();
-      } else {
-        this.setState({
-          error: result.message,
-          operationInProgress: false
-        });
-      }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.setState({
-        error: errorMessage,
-        operationInProgress: false
-      });
-    }
-  };
+        <div className={styles.toolbar}>
+          {renderToolbar()}
+        </div>
 
-  private _clearError = (): void => {
-    this.setState({ error: null });
-  };
+        <div className={styles.listContainer}>
+          {loading ? renderLoading() : renderCustomActionsList}
+        </div>
 
-  private _showBulkOperationsPanel = (): void => {
-    this.setState({ showBulkOperationsPanel: true });
-  };
+        {showBulkOperationsPanel && (
+          <BulkOperationsPanel
+            selectedActions={selectedActions}
+            onClose={() => setShowBulkOperationsPanel(false)}
+            context={context}
+            onOperationComplete={handleBulkOperationComplete}
+            permissionService={permissionServiceRef.current!}
+            selectedSites={selectedSites}
+          />
+        )}
 
-  private _hideBulkOperationsPanel = (): void => {
-    this.setState({ showBulkOperationsPanel: false });
-  };
+        {showTemplateGallery && (
+          <Panel
+            headerText="Template Gallery"
+            isOpen={true}
+            onDismiss={() => setShowTemplateGallery(false)}
+            type={PanelType.extraLarge}
+            isFooterAtBottom={false}
+          >
+            <TemplateGallery
+              context={context}
+              onTemplateSelected={handleTemplateSelected}
+              onClose={() => setShowTemplateGallery(false)}
+              defaultScope={filter.scope === 'All' ? CustomActionScope.Web : filter.scope as CustomActionScope}
+              targetSiteUrl={primarySelectedSite?.url || context.pageContext.web.absoluteUrl}
+            />
+          </Panel>
+        )}
 
-  private _handleBulkOperationComplete = async (): Promise<void> => {
-    this.setState({ showBulkOperationsPanel: false });
-    await this._loadCustomActions();
-  };
+        {showCreateForm && (
+          <Panel
+            headerText="Create Custom Action"
+            isOpen={true}
+            onDismiss={() => setShowCreateForm(false)}
+            type={PanelType.largeFixed}
+            isFooterAtBottom={true}
+          >
+            <CustomActionForm
+              onSave={handleCreateAction}
+              onCancel={() => setShowCreateForm(false)}
+              isLoading={operationInProgress}
+              showAdvancedProperties={showAdvancedProperties}
+            />
+          </Panel>
+        )}
 
-  private _showTemplateGallery = (): void => {
-    this.setState({ showTemplateGallery: true });
-  };
+        {showEditForm && selectedAction && (
+          <Panel
+            headerText="Edit Custom Action"
+            isOpen={true}
+            onDismiss={() => setShowEditForm(false)}
+            type={PanelType.largeFixed}
+            isFooterAtBottom={true}
+          >
+            <CustomActionForm
+              customAction={selectedAction}
+              onSave={handleUpdateAction}
+              onCancel={() => setShowEditForm(false)}
+              isLoading={operationInProgress}
+              showAdvancedProperties={showAdvancedProperties}
+            />
+          </Panel>
+        )}
 
-  private _hideTemplateGallery = (): void => {
-    this.setState({ showTemplateGallery: false });
-  };
+        {showDeleteDialog && selectedAction && (
+          <Dialog
+            hidden={false}
+            onDismiss={() => setShowDeleteDialog(false)}
+            dialogContentProps={{
+              type: DialogType.normal,
+              title: 'Delete Custom Action',
+              subText: `Are you sure you want to delete the custom action "${selectedAction.Title}"? This action cannot be undone.`
+            }}
+            modalProps={{ isBlocking: true }}
+          >
+            <DialogFooter>
+              <PrimaryButton
+                onClick={handleDeleteAction}
+                disabled={operationInProgress}
+                text="Delete"
+              />
+              <DefaultButton
+                onClick={() => setShowDeleteDialog(false)}
+                text="Cancel"
+                disabled={operationInProgress}
+              />
+            </DialogFooter>
+          </Dialog>
+        )}
 
-  private _handleTemplateSelected = async (template: any, formData: any): Promise<void> => {
-    try {
-      const targetScope = this.state.filter.scope === 'All' ? CustomActionScope.Web : this.state.filter.scope as CustomActionScope;
-      const result = await this._templateService.createCustomActionFromTemplate(template, formData, targetScope);
-      
-      if (result.success) {
-        this.setState({ showTemplateGallery: false });
-        await this._loadCustomActions();
-      } else {
-        this.setState({ error: result.message });
-      }
-    } catch (error) {
-      this.setState({
-        error: error instanceof Error ? error.message : 'Failed to create custom action from template'
-      });
-    }
-  };
-}
+        {showSiteSelector && (
+          <SiteSelector
+            context={context}
+            isOpen={showSiteSelector}
+            onDismiss={() => setShowSiteSelector(false)}
+            onSitesSelected={handleSitesSelected}
+            selectedSiteUrls={selectedSites.length > 0 ? selectedSites.map(site => site.url) : [context.pageContext.web.absoluteUrl]}
+          />
+        )}
+      </div>
+    </ErrorBoundary>
+  );
+};
+
+export default React.memo(CustomActionManager);

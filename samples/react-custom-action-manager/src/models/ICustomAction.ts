@@ -18,6 +18,9 @@ export interface ICustomAction {
   ClientSideComponentProperties: string;
   Name: string;
   ImageUrl: string;
+  Enabled?: boolean;
+  SiteTitle?: string;
+  SiteUrl?: string;
 }
 
 export enum CustomActionScope {
@@ -52,6 +55,7 @@ export interface ICustomActionFormData {
   clientSideComponentProperties?: string;
   name: string;
   imageUrl?: string;
+  enabled?: boolean;
 }
 
 export interface ICustomActionFilter {

@@ -1,0 +1,55 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-bubble-template",
+    "source": "pnp",
+    "title": "React Bubble Template",
+    "shortDescription": "Displays SharePoint list items as interactive circular bubbles. Each bubble can show an optional logo, title, optional description and act as a link. The bubbles use customizable background and text colors, and a soft shadow to give a lifted appearance. On hover bubbles gently enlarge and return to their original size.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bubble-template",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bubble-template",
+    "longDescription": [
+      "Displays SharePoint list items as interactive circular bubbles. Each bubble can show an optional logo, title, optional description and act as a link. The bubbles use customizable background and text colors, and a soft shadow to give a lifted appearance. On hover bubbles gently enlarge and return to their original size."
+    ],
+    "creationDateTime": "2025-10-12",
+    "updateDateTime": "2025-10-12",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "Screenshot.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bubble-template/assets/Screenshot.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "sudeepghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

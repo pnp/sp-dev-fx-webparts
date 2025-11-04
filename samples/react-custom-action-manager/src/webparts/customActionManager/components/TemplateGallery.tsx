@@ -36,7 +36,14 @@ import {
   ConstrainMode,
   Dialog,
   DialogType,
-  DialogFooter
+  DialogFooter,
+  TextField,
+  Toggle,
+  Checkbox,
+  SpinButton,
+  Label,
+  Separator,
+  IconButton
 } from '@fluentui/react';
 import styles from './styles/TemplateGallery.module.scss';
 import {
@@ -57,6 +64,7 @@ export interface ITemplateGalleryProps {
   onTemplateSelected?: (template: ICustomActionTemplate, formData: ITemplateFormData) => void;
   onClose?: () => void;
   defaultScope?: CustomActionScope;
+  targetSiteUrl?: string;
 }
 
 export interface ITemplateGalleryState {
@@ -71,6 +79,54 @@ export interface ITemplateGalleryState {
   validationResult: ITemplateValidationResult | null;
   currentView: 'gallery' | 'list';
   operationInProgress: boolean;
+  createTemplateForm: ICreateTemplateForm;
+  savingTemplate: boolean;
+}
+
+export interface ICreateTemplateForm {
+  name: string;
+  description: string;
+  category: string;
+  tags: string;
+  template: {
+    title: string;
+    description: string;
+    location: string;
+    sequence: number;
+    scriptBlock: string;
+    scriptSrc: string;
+    url: string;
+    commandUIExtension: string;
+    registrationType: number;
+    registrationId: string;
+    rights: string;
+    group: string;
+    hostProperties: string;
+    clientSideComponentId: string;
+    clientSideComponentProperties: string;
+    imageUrl: string;
+  };
+  requiredParameters: ITemplateParameterForm[];
+  optionalParameters: ITemplateParameterForm[];
+}
+
+export interface ITemplateParameterForm {
+  id: string;
+  name: string;
+  displayName: string;
+  description: string;
+  type: TemplateParameterType;
+  required: boolean;
+  defaultValue: string;
+  placeholder: string;
+  helpText: string;
+  validation: {
+    pattern: string;
+    minLength: number;
+    maxLength: number;
+    min: number;
+    max: number;
+  };
 }
 
 export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITemplateGalleryState> {
@@ -79,7 +135,7 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
   constructor(props: ITemplateGalleryProps) {
     super(props);
 
-    this._templateService = new TemplateService(props.context);
+    this._templateService = new TemplateService(props.context, props.targetSiteUrl);
 
     this.state = {
       searchResult: {
@@ -107,12 +163,21 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
       templateFormData: {},
       validationResult: null,
       currentView: 'gallery',
-      operationInProgress: false
+      operationInProgress: false,
+      createTemplateForm: this._getEmptyTemplateForm(),
+      savingTemplate: false
     };
   }
 
   public componentDidMount(): void {
     this._searchTemplates();
+  }
+
+  public componentDidUpdate(prevProps: ITemplateGalleryProps): void {
+    if (prevProps.targetSiteUrl !== this.props.targetSiteUrl) {
+      this._templateService.setTargetSite(this.props.targetSiteUrl);
+      this._searchTemplates();
+    }
   }
 
   public render(): React.ReactElement<ITemplateGalleryProps> {
@@ -145,17 +210,27 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
           </MessageBar>
         )}
 
-        <div className={styles.toolbar}>
-          {this._renderToolbar()}
-        </div>
+        <Pivot defaultSelectedKey="browse">
+          <PivotItem headerText="Browse Templates" itemKey="browse">
+            <div className={styles.toolbar}>
+              {this._renderToolbar()}
+            </div>
 
-        <div className={styles.content}>
-          <Stack horizontal tokens={{ childrenGap: 20 }}>
-            <Stack.Item grow={1}>
-              {loading ? this._renderLoading() : this._renderTemplates()}
-            </Stack.Item>
-          </Stack>
-        </div>
+            <div className={styles.content}>
+              <Stack horizontal tokens={{ childrenGap: 20 }}>
+                <Stack.Item grow={1}>
+                  {loading ? this._renderLoading() : this._renderTemplates()}
+                </Stack.Item>
+              </Stack>
+            </div>
+          </PivotItem>
+
+          <PivotItem headerText="Create Template" itemKey="create">
+            <div className={styles.content} style={{ marginTop: '16px' }}>
+              {this._renderCreateTemplateForm()}
+            </div>
+          </PivotItem>
+        </Pivot>
 
         {showTemplateDetails && selectedTemplate && (
           <Panel
@@ -265,11 +340,15 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
     if (searchResult.templates.length === 0) {
       return (
         <div className={styles.emptyState}>
-          <Icon iconName="CustomList" className={styles.emptyIcon} />
-          <Text variant="xLarge" className={styles.emptyTitle}>No templates found</Text>
-          <Text className={styles.emptyText}>
-            Try adjusting your search criteria or browse by category.
-          </Text>
+          <Stack horizontalAlign="center" verticalAlign="center" tokens={{ childrenGap: 16 }}>
+            <Icon iconName="FabricFolder" className={styles.emptyIcon} />
+            <Stack horizontalAlign="center" tokens={{ childrenGap: 8 }}>
+              <Text variant="xLarge" className={styles.emptyTitle}>No templates found</Text>
+              <Text className={styles.emptyText}>
+                Try adjusting your search criteria or browse by category.
+              </Text>
+            </Stack>
+          </Stack>
         </div>
       );
     }
@@ -361,7 +440,7 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
         isResizable: true,
         onRender: (template: ICustomActionTemplate) => (
           <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
-            <Icon iconName={template.icon || 'CustomList'} />
+            <Icon iconName={template.icon || 'FabricFolder'} />
             <Text>{template.name}</Text>
             {template.isBuiltIn && (
               <span className={styles.builtInBadge}>Built-in</span>
@@ -609,9 +688,11 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
   private _renderParameterInput = (param: any, value: any): React.ReactElement => {
     const commonProps = {
       label: param.displayName + (param.required ? ' *' : ''),
-      description: param.helpText,
+      description: param.helpText || param.description,
       placeholder: param.placeholder,
-      onChange: (ev: any, newValue: any) => this._onParameterChanged(param.name, newValue)
+      value: value || param.defaultValue || '',
+      onChange: (ev: any, newValue: any) => this._onParameterChanged(param.name, newValue),
+      required: param.required
     };
 
     switch (param.type) {
@@ -623,7 +704,7 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
             selectedKey={value}
           />
         );
-      
+
       case TemplateParameterType.MultiSelect:
         return (
           <Dropdown
@@ -633,19 +714,43 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
             multiSelect
           />
         );
-      
+
       case TemplateParameterType.Boolean:
         return (
-          <div>
-            {/* Checkbox implementation would go here */}
-          </div>
+          <Toggle
+            label={commonProps.label}
+            onText="Yes"
+            offText="No"
+            checked={value === 'true' || value === true}
+            onChange={(ev, checked) => this._onParameterChanged(param.name, checked)}
+          />
         );
-      
+
+      case TemplateParameterType.Number:
+        return (
+          <TextField
+            {...commonProps}
+            type="number"
+            value={value?.toString() || ''}
+          />
+        );
+
+      case TemplateParameterType.Code:
+        return (
+          <TextField
+            {...commonProps}
+            multiline
+            rows={6}
+          />
+        );
+
       default:
         return (
-          <div>
-            {/* TextField implementation would go here */}
-          </div>
+          <TextField
+            {...commonProps}
+            multiline={param.type === TemplateParameterType.Code}
+            rows={param.type === TemplateParameterType.Code ? 6 : 1}
+          />
         );
     }
   };
@@ -776,4 +881,572 @@ export class TemplateGallery extends React.Component<ITemplateGalleryProps, ITem
   private _clearError = (): void => {
     this.setState({ error: null });
   };
+
+  private _getEmptyTemplateForm = (): ICreateTemplateForm => {
+    return {
+      name: '',
+      description: '',
+      category: '',
+      tags: '',
+      template: {
+        title: '',
+        description: '',
+        location: 'ScriptLink',
+        sequence: 1000,
+        scriptBlock: '',
+        scriptSrc: '',
+        url: '',
+        commandUIExtension: '',
+        registrationType: 0,
+        registrationId: '',
+        rights: '',
+        group: '',
+        hostProperties: '',
+        clientSideComponentId: '',
+        clientSideComponentProperties: '',
+        imageUrl: ''
+      },
+      requiredParameters: [],
+      optionalParameters: []
+    };
+  };
+
+  private _renderCreateTemplateForm = (): React.ReactElement => {
+    const { createTemplateForm, savingTemplate } = this.state;
+
+    return (
+      <Stack tokens={{ childrenGap: 24 }}>
+        <Stack tokens={{ childrenGap: 16 }}>
+          <Text variant="xLarge">Create Custom Template</Text>
+          <Text>Create a reusable template for custom actions. Define the basic structure and parameters that users can customize when using your template.</Text>
+        </Stack>
+
+        <Pivot defaultSelectedKey="basic">
+          <PivotItem headerText="Basic Information" itemKey="basic">
+            <Stack tokens={{ childrenGap: 16 }} style={{ marginTop: '16px' }}>
+              <TextField
+                label="Template Name"
+                required
+                value={createTemplateForm.name}
+                onChange={(_, newValue) => this._updateTemplateForm('name', newValue || '')}
+                placeholder="Enter a descriptive name for your template"
+                description="This name will be displayed in the template gallery"
+              />
+
+              <TextField
+                label="Description"
+                required
+                multiline
+                rows={3}
+                value={createTemplateForm.description}
+                onChange={(_, newValue) => this._updateTemplateForm('description', newValue || '')}
+                placeholder="Describe what this template does and when to use it"
+                description="Help users understand the purpose and benefits of your template"
+              />
+
+              <TextField
+                label="Category"
+                required
+                value={createTemplateForm.category}
+                onChange={(_, newValue) => this._updateTemplateForm('category', newValue || '')}
+                placeholder="e.g., Analytics, Navigation, Styling, Utilities"
+                description="Category helps users find your template more easily"
+              />
+
+              <TextField
+                label="Tags"
+                value={createTemplateForm.tags}
+                onChange={(_, newValue) => this._updateTemplateForm('tags', newValue || '')}
+                placeholder="javascript, css, analytics, tracking (comma-separated)"
+                description="Tags help users search and filter templates"
+              />
+            </Stack>
+          </PivotItem>
+
+          <PivotItem headerText="Custom Action Definition" itemKey="action">
+            <Stack tokens={{ childrenGap: 16 }} style={{ marginTop: '16px' }}>
+              <Text variant="large">Define the Custom Action Structure</Text>
+              <Text>Configure the basic custom action that will be created from this template. Use placeholder syntax for values that users should customize.</Text>
+
+              <TextField
+                label="Action Title"
+                required
+                value={createTemplateForm.template.title}
+                onChange={(_, newValue) => this._updateTemplateField('title', newValue || '')}
+                placeholder="e.g., Analytics Tracking - {{siteName}}"
+                description="Title for the custom action (supports parameters)"
+              />
+
+              <TextField
+                label="Action Description"
+                multiline
+                rows={2}
+                value={createTemplateForm.template.description}
+                onChange={(_, newValue) => this._updateTemplateField('description', newValue || '')}
+                placeholder="e.g., Adds {{trackingType}} tracking to all pages"
+                description="Description for the custom action (supports parameters)"
+              />
+
+              <Dropdown
+                label="Location"
+                required
+                selectedKey={createTemplateForm.template.location}
+                options={[
+                  { key: 'ScriptLink', text: 'ScriptLink' },
+                  { key: 'Microsoft.SharePoint.StandardMenu', text: 'Site Actions Menu' },
+                  { key: 'Microsoft.SharePoint.SiteSettings', text: 'Site Settings' },
+                  { key: 'EditControlBlock', text: 'Edit Control Block' },
+                  { key: 'CommandUI.Ribbon', text: 'Ribbon' }
+                ]}
+                onChange={(_, option) => this._updateTemplateField('location', option?.key as string || '')}
+              />
+
+              <Stack>
+                <SpinButton
+                  label="Sequence"
+                  value={createTemplateForm.template.sequence.toString()}
+                  min={0}
+                  max={65536}
+                  step={100}
+                  onValidate={(value) => {
+                    const numValue = parseInt(value, 10);
+                    if (!isNaN(numValue)) {
+                      this._updateTemplateField('sequence', numValue);
+                    }
+                    return value;
+                  }}
+                />
+                <Text variant="small" style={{ color: '#666' }}>Lower numbers appear first in menus</Text>
+              </Stack>
+
+              <TextField
+                label="Script Block"
+                multiline
+                rows={8}
+                value={createTemplateForm.template.scriptBlock}
+                onChange={(_, newValue) => this._updateTemplateField('scriptBlock', newValue || '')}
+                placeholder="<script>&#10;// Your JavaScript code here&#10;// Use {{parameterName}} for dynamic values&#10;</script>"
+                description="JavaScript code to execute (supports parameters)"
+              />
+
+              <TextField
+                label="Script Source URL"
+                value={createTemplateForm.template.scriptSrc}
+                onChange={(_, newValue) => this._updateTemplateField('scriptSrc', newValue || '')}
+                placeholder="{{scriptUrl}} or https://example.com/script.js"
+                description="URL to external JavaScript file (supports parameters)"
+              />
+
+              <TextField
+                label="URL"
+                value={createTemplateForm.template.url}
+                onChange={(_, newValue) => this._updateTemplateField('url', newValue || '')}
+                placeholder="{{targetUrl}} or https://example.com"
+                description="URL to navigate to (supports parameters)"
+              />
+            </Stack>
+          </PivotItem>
+
+          <PivotItem headerText="Required Parameters" itemKey="required">
+            <Stack tokens={{ childrenGap: 16 }} style={{ marginTop: '16px' }}>
+              <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
+                <Text variant="large">Required Parameters</Text>
+                <PrimaryButton
+                  iconProps={{ iconName: 'Add' }}
+                  text="Add Required Parameter"
+                  onClick={() => this._addParameter(true)}
+                />
+              </Stack>
+              <Text>Define parameters that users must provide when using this template.</Text>
+
+              {createTemplateForm.requiredParameters.map((param, index) => (
+                <div key={param.id} style={{ border: '1px solid #ddd', padding: '16px', borderRadius: '4px' }}>
+                  {this._renderParameterForm(param, index, true)}
+                </div>
+              ))}
+
+              {createTemplateForm.requiredParameters.length === 0 && (
+                <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+                  <Icon iconName="Info" style={{ fontSize: '24px', marginBottom: '8px' }} />
+                  <div>No required parameters defined</div>
+                  <div style={{ fontSize: '12px' }}>Required parameters must be filled by users</div>
+                </div>
+              )}
+            </Stack>
+          </PivotItem>
+
+          <PivotItem headerText="Optional Parameters" itemKey="optional">
+            <Stack tokens={{ childrenGap: 16 }} style={{ marginTop: '16px' }}>
+              <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
+                <Text variant="large">Optional Parameters</Text>
+                <DefaultButton
+                  iconProps={{ iconName: 'Add' }}
+                  text="Add Optional Parameter"
+                  onClick={() => this._addParameter(false)}
+                />
+              </Stack>
+              <Text>Define optional parameters with default values that users can customize.</Text>
+
+              {createTemplateForm.optionalParameters.map((param, index) => (
+                <div key={param.id} style={{ border: '1px solid #ddd', padding: '16px', borderRadius: '4px' }}>
+                  {this._renderParameterForm(param, index, false)}
+                </div>
+              ))}
+
+              {createTemplateForm.optionalParameters.length === 0 && (
+                <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+                  <Icon iconName="Info" style={{ fontSize: '24px', marginBottom: '8px' }} />
+                  <div>No optional parameters defined</div>
+                  <div style={{ fontSize: '12px' }}>Optional parameters have default values</div>
+                </div>
+              )}
+            </Stack>
+          </PivotItem>
+        </Pivot>
+
+        <Separator />
+
+        <Stack horizontal horizontalAlign="end" tokens={{ childrenGap: 8 }}>
+          <DefaultButton
+            text="Reset Form"
+            onClick={this._resetTemplateForm}
+            disabled={savingTemplate}
+          />
+          <PrimaryButton
+            text="Save Template"
+            iconProps={{ iconName: 'Save' }}
+            onClick={this._saveTemplate}
+            disabled={savingTemplate || !this._isTemplateFormValid()}
+          />
+        </Stack>
+
+        {savingTemplate && (
+          <MessageBar messageBarType={MessageBarType.info}>
+            <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
+              <Spinner size={SpinnerSize.small} />
+              <Text>Saving template to SharePoint...</Text>
+            </Stack>
+          </MessageBar>
+        )}
+      </Stack>
+    );
+  };
+
+  private _renderParameterForm = (param: ITemplateParameterForm, index: number, isRequired: boolean): React.ReactElement => {
+    const parameterTypeOptions: IDropdownOption[] = [
+      { key: TemplateParameterType.Text, text: 'Text' },
+      { key: TemplateParameterType.Number, text: 'Number' },
+      { key: TemplateParameterType.Boolean, text: 'Boolean (Yes/No)' },
+      { key: TemplateParameterType.Url, text: 'URL' },
+      { key: TemplateParameterType.Code, text: 'Code/Script' },
+      { key: TemplateParameterType.Color, text: 'Color' },
+      { key: TemplateParameterType.Date, text: 'Date' }
+    ];
+
+    return (
+      <Stack tokens={{ childrenGap: 12 }}>
+        <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
+          <Text variant="medium" style={{ fontWeight: '600' }}>
+            {isRequired ? 'Required' : 'Optional'} Parameter #{index + 1}
+          </Text>
+          <IconButton
+            iconProps={{ iconName: 'Delete' }}
+            title="Remove parameter"
+            onClick={() => this._removeParameter(param.id, isRequired)}
+          />
+        </Stack>
+
+        <Stack horizontal tokens={{ childrenGap: 16 }}>
+          <Stack.Item grow={1}>
+            <TextField
+              label="Parameter Name"
+              required
+              value={param.name}
+              onChange={(_, newValue) => this._updateParameter(param.id, 'name', newValue || '', isRequired)}
+              placeholder="e.g., trackingId, backgroundColor"
+              description="Internal name used in {{parameterName}} placeholders"
+            />
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <TextField
+              label="Display Name"
+              required
+              value={param.displayName}
+              onChange={(_, newValue) => this._updateParameter(param.id, 'displayName', newValue || '', isRequired)}
+              placeholder="e.g., Tracking ID, Background Color"
+              description="User-friendly name shown in the form"
+            />
+          </Stack.Item>
+        </Stack>
+
+        <TextField
+          label="Description"
+          multiline
+          rows={2}
+          value={param.description}
+          onChange={(_, newValue) => this._updateParameter(param.id, 'description', newValue || '', isRequired)}
+          placeholder="Explain what this parameter does and provide examples"
+          description="Help text shown to users"
+        />
+
+        <Stack horizontal tokens={{ childrenGap: 16 }}>
+          <Stack.Item grow={1}>
+            <Dropdown
+              label="Type"
+              required
+              selectedKey={param.type}
+              options={parameterTypeOptions}
+              onChange={(_, option) => this._updateParameter(param.id, 'type', option?.key as TemplateParameterType, isRequired)}
+            />
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <TextField
+              label="Default Value"
+              value={param.defaultValue}
+              onChange={(_, newValue) => this._updateParameter(param.id, 'defaultValue', newValue || '', isRequired)}
+              placeholder="Default value for this parameter"
+              description={isRequired ? "Required parameters can have defaults" : "Default value if user doesn't specify"}
+            />
+          </Stack.Item>
+        </Stack>
+
+        <Stack horizontal tokens={{ childrenGap: 16 }}>
+          <Stack.Item grow={1}>
+            <TextField
+              label="Placeholder"
+              value={param.placeholder}
+              onChange={(_, newValue) => this._updateParameter(param.id, 'placeholder', newValue || '', isRequired)}
+              placeholder="Placeholder text for the input field"
+            />
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <TextField
+              label="Help Text"
+              value={param.helpText}
+              onChange={(_, newValue) => this._updateParameter(param.id, 'helpText', newValue || '', isRequired)}
+              placeholder="Additional guidance for users"
+            />
+          </Stack.Item>
+        </Stack>
+      </Stack>
+    );
+  };
+
+  private _updateTemplateForm = (field: keyof ICreateTemplateForm, value: any): void => {
+    this.setState({
+      createTemplateForm: {
+        ...this.state.createTemplateForm,
+        [field]: value
+      }
+    });
+  };
+
+  private _updateTemplateField = (field: string, value: any): void => {
+    this.setState({
+      createTemplateForm: {
+        ...this.state.createTemplateForm,
+        template: {
+          ...this.state.createTemplateForm.template,
+          [field]: value
+        }
+      }
+    });
+  };
+
+  private _addParameter = (isRequired: boolean): void => {
+    const newParam: ITemplateParameterForm = {
+      id: `param-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      name: '',
+      displayName: '',
+      description: '',
+      type: TemplateParameterType.Text,
+      required: isRequired,
+      defaultValue: '',
+      placeholder: '',
+      helpText: '',
+      validation: {
+        pattern: '',
+        minLength: 0,
+        maxLength: 0,
+        min: 0,
+        max: 0
+      }
+    };
+
+    const field = isRequired ? 'requiredParameters' : 'optionalParameters';
+    this.setState({
+      createTemplateForm: {
+        ...this.state.createTemplateForm,
+        [field]: [...this.state.createTemplateForm[field], newParam]
+      }
+    });
+  };
+
+  private _removeParameter = (paramId: string, isRequired: boolean): void => {
+    const field = isRequired ? 'requiredParameters' : 'optionalParameters';
+    this.setState({
+      createTemplateForm: {
+        ...this.state.createTemplateForm,
+        [field]: this.state.createTemplateForm[field].filter(p => p.id !== paramId)
+      }
+    });
+  };
+
+  private _updateParameter = (paramId: string, field: string, value: any, isRequired: boolean): void => {
+    const paramField = isRequired ? 'requiredParameters' : 'optionalParameters';
+    const parameters = [...this.state.createTemplateForm[paramField]];
+    const paramIndex = parameters.findIndex(p => p.id === paramId);
+
+    if (paramIndex >= 0) {
+      parameters[paramIndex] = {
+        ...parameters[paramIndex],
+        [field]: value
+      };
+
+      this.setState({
+        createTemplateForm: {
+          ...this.state.createTemplateForm,
+          [paramField]: parameters
+        }
+      });
+    }
+  };
+
+  private _isTemplateFormValid = (): boolean => {
+    const { createTemplateForm } = this.state;
+
+    // Check basic required fields
+    if (!createTemplateForm.name.trim() ||
+        !createTemplateForm.description.trim() ||
+        !createTemplateForm.category.trim() ||
+        !createTemplateForm.template.title.trim()) {
+      return false;
+    }
+
+    // Check that all required parameters have names and display names
+    for (const param of createTemplateForm.requiredParameters) {
+      if (!param.name.trim() || !param.displayName.trim()) {
+        return false;
+      }
+    }
+
+    // Check that all optional parameters have names and display names
+    for (const param of createTemplateForm.optionalParameters) {
+      if (!param.name.trim() || !param.displayName.trim()) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  private _resetTemplateForm = (): void => {
+    this.setState({ createTemplateForm: this._getEmptyTemplateForm() });
+  };
+
+  private _saveTemplate = async (): Promise<void> => {
+    const { createTemplateForm } = this.state;
+
+    this.setState({ savingTemplate: true, error: null });
+
+    try {
+      // Convert form data to template format
+      const template: Omit<ICustomActionTemplate, 'id' | 'createdDate' | 'modifiedDate' | 'usageCount' | 'rating'> = {
+        name: createTemplateForm.name,
+        description: createTemplateForm.description,
+        category: createTemplateForm.category,
+        tags: createTemplateForm.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
+        author: this.props.context.pageContext.user.displayName,
+        version: '1.0.0',
+        isBuiltIn: false,
+        isActive: true,
+        defaultScope: this.props.defaultScope || CustomActionScope.Web,
+        template: {
+          Title: createTemplateForm.template.title,
+          Description: createTemplateForm.template.description,
+          Location: createTemplateForm.template.location,
+          Sequence: createTemplateForm.template.sequence,
+          ScriptBlock: createTemplateForm.template.scriptBlock,
+          ScriptSrc: createTemplateForm.template.scriptSrc,
+          Url: createTemplateForm.template.url,
+          CommandUIExtension: createTemplateForm.template.commandUIExtension,
+          RegistrationType: createTemplateForm.template.registrationType,
+          RegistrationId: createTemplateForm.template.registrationId,
+          Rights: createTemplateForm.template.rights,
+          Group: createTemplateForm.template.group,
+          HostProperties: createTemplateForm.template.hostProperties,
+          ClientSideComponentId: createTemplateForm.template.clientSideComponentId,
+          ClientSideComponentProperties: createTemplateForm.template.clientSideComponentProperties,
+          ImageUrl: createTemplateForm.template.imageUrl
+        },
+        requiredParameters: createTemplateForm.requiredParameters.map(p => ({
+          name: p.name,
+          displayName: p.displayName,
+          description: p.description,
+          type: p.type,
+          required: true,
+          defaultValue: p.defaultValue,
+          placeholder: p.placeholder,
+          helpText: p.helpText,
+          validation: {
+            pattern: p.validation.pattern || undefined,
+            minLength: p.validation.minLength || undefined,
+            maxLength: p.validation.maxLength || undefined,
+            min: p.validation.min || undefined,
+            max: p.validation.max || undefined
+          }
+        })),
+        optionalParameters: createTemplateForm.optionalParameters.map(p => ({
+          name: p.name,
+          displayName: p.displayName,
+          description: p.description,
+          type: p.type,
+          required: false,
+          defaultValue: p.defaultValue,
+          placeholder: p.placeholder,
+          helpText: p.helpText,
+          validation: {
+            pattern: p.validation.pattern || undefined,
+            minLength: p.validation.minLength || undefined,
+            maxLength: p.validation.maxLength || undefined,
+            min: p.validation.min || undefined,
+            max: p.validation.max || undefined
+          }
+        })),
+        icon: 'FabricFolder',
+        previewUrl: '',
+        documentationUrl: ''
+      };
+
+      const result = await this._templateService.saveTemplate(template);
+
+      if (result.success) {
+        this.setState({
+          createTemplateForm: this._getEmptyTemplateForm(),
+          savingTemplate: false
+        });
+
+        // Refresh templates list
+        await this._searchTemplates();
+
+        // Show success message
+        this.setState({
+          error: null
+        });
+      } else {
+        this.setState({
+          error: result.message || null,
+          savingTemplate: false
+        });
+      }
+
+    } catch (error) {
+      this.setState({
+        error: error instanceof Error ? error.message : 'Failed to save template',
+        savingTemplate: false
+      });
+    }
+  };
 }
+
+export default TemplateGallery;

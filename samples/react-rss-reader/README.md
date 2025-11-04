@@ -63,6 +63,7 @@ Version|Date|Comments
 1.2.0 | October 30, 2024 | Upgraded to SPFx 1.20.0
 1.2.1 | November 20, 2024 | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain any items.
 1.2.2 | September 12, 2025 | Upgraded to SPFx 1.21.1
+1.2.3 | October 24, 2025 | Updated PnP packages for Node 22 compatibility
 
 ## Minimal Path to Awesome
 

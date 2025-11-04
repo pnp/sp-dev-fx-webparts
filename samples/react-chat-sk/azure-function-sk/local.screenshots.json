@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    ,
+    "AzureAd__TenantId": "cd1107...",
+    "AzureAd__ClientId": "c03217...",
+    "AzureAd__ClientSecret": "YpE....",
+    "AzureAd__Audience": "api://c0321...",
+    "Downstream__Scopes": "api://c032..../user_impersonation",
+    "AzureOpenAI__Endpoint": "https://<YOUR_RESOURCE_NAME>.openai.azure.com/",
+    "AzureOpenAI__DeploymentName": "gpt-4o",
+    "AzureOpenAI__ApiKey": "<YOUR_AZURE_OPENAI_API_KEY>"
+  }
+}
+

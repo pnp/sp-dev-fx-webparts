@@ -36,8 +36,8 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -55,6 +55,7 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 * [Hugo Bernier](https://github.com/hugoabernier)
 * [Beau Cameron](https://github.com/bcameron1231)
 * [David (You don't even know my name) Warner II](https://github.com/popwarner)
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Version history
 
@@ -62,6 +63,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|February 27, 2019|Initial release
 2.0|June 1, 2020|Upgraded to SPFx 1.10.0
+3.0|October 28, 2025|Upgraded to SPFx 1.21.1
 
 ## Minimal Path to Awesome
 

@@ -4,4 +4,5 @@ export interface IPnPjsLoggerProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  isAppInsightsConfigured: boolean;
 }

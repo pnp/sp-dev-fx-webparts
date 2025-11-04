@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {
-  Panel,
-  PanelType,
   Stack,
   Text,
   PrimaryButton,
@@ -20,7 +18,6 @@ import {
   Dialog,
   DialogType,
   DialogFooter,
-  Icon,
   DetailsListLayoutMode
 } from '@fluentui/react';
 import {
@@ -35,6 +32,10 @@ import {
 } from '../../../models';
 import { BulkOperationsService } from '../../../services';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { SPHttpClient } from '@microsoft/sp-http';
+import { ISiteInfo } from '../../../services/SiteService';
+import { ValidationUtils } from '../../../utils/ValidationUtils';
+import { ErrorHandler } from '../../../utils/ErrorHandler';
 import styles from './styles/BulkOperationsPanel.module.scss';
 
 export interface IBulkOperationsPanelProps {
@@ -42,7 +43,10 @@ export interface IBulkOperationsPanelProps {
   context: WebPartContext;
   onClose: () => void;
   onOperationComplete: (operation?: IBulkOperation) => void;
-  permissionService: any;
+  permissionService: {
+    canPerformBulkOperations(): boolean;
+  };
+  selectedSites: ISiteInfo[];
 }
 
 export interface IBulkOperationsPanelState {
@@ -57,6 +61,7 @@ export interface IBulkOperationsPanelState {
   validationResults: IBulkOperationResult[];
   errorMessage: string | null;
   successMessage: string | null;
+  applyToAllSites: boolean;
 }
 
 export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelProps, IBulkOperationsPanelState> {
@@ -65,7 +70,8 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
   constructor(props: IBulkOperationsPanelProps) {
     super(props);
 
-    this.bulkService = new BulkOperationsService(props.context);
+    const initialSiteUrl = props.selectedSites[0]?.url;
+    this.bulkService = new BulkOperationsService(props.context, initialSiteUrl);
 
     this.state = {
       selectedOperation: null,
@@ -90,8 +96,24 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
       showTargetSelection: false,
       validationResults: [],
       errorMessage: null,
-      successMessage: null
+      successMessage: null,
+      applyToAllSites: props.selectedSites.length > 1
     };
+  }
+
+  public componentDidUpdate(prevProps: IBulkOperationsPanelProps): void {
+    const previousPrimary = prevProps.selectedSites[0]?.url;
+    const currentPrimary = this.props.selectedSites[0]?.url;
+    if (previousPrimary !== currentPrimary) {
+      this.bulkService.setTargetSite(currentPrimary);
+    }
+
+    if (prevProps.selectedSites.length !== this.props.selectedSites.length && this.state.selectedOperation === BulkOperationType.Import) {
+      const shouldApplyAll = this.props.selectedSites.length > 1;
+      if (shouldApplyAll !== this.state.applyToAllSites) {
+        this.setState({ applyToAllSites: shouldApplyAll });
+      }
+    }
   }
 
   public render(): React.ReactElement<IBulkOperationsPanelProps> {
@@ -183,19 +205,38 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
 
   private _renderOperationDetails(): React.ReactElement {
     const { selectedOperation } = this.state;
+    if (!selectedOperation) {
+      return <></>;
+    }
+
+    let content: React.ReactElement = <></>;
 
     switch (selectedOperation) {
       case BulkOperationType.Export:
-        return this._renderExportOptions();
+        content = this._renderExportOptions();
+        break;
       case BulkOperationType.Import:
-        return this._renderImportOptions();
+        content = this._renderImportOptions();
+        break;
       case BulkOperationType.Deploy:
-        return this._renderDeploymentOptions();
+        content = this._renderDeploymentOptions();
+        break;
       case BulkOperationType.Delete:
-        return this._renderDeleteWarning();
+        content = this._renderDeleteWarning();
+        break;
       default:
-        return <></>;
+        content = <></>;
+        break;
     }
+
+    const multiSiteToggle = this._renderMultiSiteToggle(selectedOperation);
+
+    return (
+      <Stack tokens={{ childrenGap: 16 }}>
+        {content}
+        {multiSiteToggle}
+      </Stack>
+    );
   }
 
   private _renderExportOptions(): React.ReactElement {
@@ -246,7 +287,7 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
   }
 
   private _renderImportOptions(): React.ReactElement {
-    const { importOptions, importFile } = this.state;
+    const { importOptions, importFile, applyToAllSites } = this.state;
 
     const formatOptions: IDropdownOption[] = [
       { key: 'JSON', text: 'JSON' },
@@ -318,8 +359,47 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
           checked={importOptions.validateOnly}
           onChange={(_, checked) => this._updateImportOptions({ validateOnly: !!checked })}
         />
+
+        {this.props.selectedSites.length > 1 && (
+          <Toggle
+            label={`Apply to all ${this.props.selectedSites.length} selected sites`}
+            checked={applyToAllSites}
+            onChange={(_, checked) => this.setState({ applyToAllSites: !!checked })}
+          />
+        )}
       </Stack>
     );
+  }
+
+  private _renderMultiSiteToggle(operation: BulkOperationType): React.ReactElement | null {
+    if (operation === BulkOperationType.Import || operation === BulkOperationType.Deploy) {
+      return null;
+    }
+
+    if (!this._supportsMultiSite(operation) || this.props.selectedSites.length <= 1) {
+      return null;
+    }
+
+    return (
+      <Toggle
+        label={`Apply to all ${this.props.selectedSites.length} selected sites`}
+        checked={this.state.applyToAllSites}
+        onChange={(_, checked) => this.setState({ applyToAllSites: !!checked })}
+      />
+    );
+  }
+
+  private _supportsMultiSite(operation: BulkOperationType): boolean {
+    switch (operation) {
+      case BulkOperationType.Enable:
+      case BulkOperationType.Disable:
+      case BulkOperationType.Delete:
+      case BulkOperationType.Export:
+      case BulkOperationType.Import:
+        return true;
+      default:
+        return false;
+    }
   }
 
   private _renderDeploymentOptions(): React.ReactElement {
@@ -400,13 +480,38 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
         }}
         modalProps={{ isBlocking: true }}
       >
-        <DetailsList
-          items={deploymentTargets}
-          columns={columns}
-          selectionMode={SelectionMode.none}
-          layoutMode={DetailsListLayoutMode.justified}
-        />
-        
+        <Stack tokens={{ childrenGap: 16 }}>
+          <Stack horizontal tokens={{ childrenGap: 8 }}>
+            <TextField
+              placeholder="https://contoso.sharepoint.com/sites/sitename"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  this._addManualTarget((e.target as HTMLInputElement).value);
+                  (e.target as HTMLInputElement).value = '';
+                }
+              }}
+              style={{ flexGrow: 1 }}
+            />
+            <DefaultButton
+              text="Add Site"
+              onClick={() => {
+                const input = document.querySelector('input[placeholder*="contoso.sharepoint.com"]') as HTMLInputElement;
+                if (input && input.value) {
+                  this._addManualTarget(input.value);
+                  input.value = '';
+                }
+              }}
+            />
+          </Stack>
+
+          <DetailsList
+            items={deploymentTargets}
+            columns={columns}
+            selectionMode={SelectionMode.none}
+            layoutMode={DetailsListLayoutMode.justified}
+          />
+        </Stack>
+
         <DialogFooter>
           <PrimaryButton
             onClick={() => this.setState({ showTargetSelection: false })}
@@ -414,7 +519,7 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
           />
           <DefaultButton
             onClick={this._loadAvailableSites}
-            text="Refresh Sites"
+            text="Discover Sites"
           />
         </DialogFooter>
       </Dialog>
@@ -513,10 +618,15 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
 
   private _onOperationChange = (_: any, option?: IDropdownOption): void => {
     if (option) {
+      const selectedOperation = option.key as BulkOperationType;
+      const supportsMultiSite = this._supportsMultiSite(selectedOperation);
+      const shouldApplyAll = supportsMultiSite && this.props.selectedSites.length > 1;
+
       this.setState({ 
-        selectedOperation: option.key as BulkOperationType,
+        selectedOperation,
         errorMessage: null,
-        successMessage: null
+        successMessage: null,
+        applyToAllSites: shouldApplyAll ? true : false
       });
     }
   };
@@ -524,7 +634,21 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
   private _onFileSelected = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const file = event.target.files?.[0];
     if (file) {
-      this.setState({ importFile: file });
+      // Validate file type
+      const fileTypeError = ValidationUtils.validateFileType(file, ['json', 'csv']);
+      if (fileTypeError) {
+        this.setState({ errorMessage: fileTypeError });
+        return;
+      }
+
+      // Validate file size (max 10MB)
+      const fileSizeError = ValidationUtils.validateFileSize(file, 10);
+      if (fileSizeError) {
+        this.setState({ errorMessage: fileSizeError });
+        return;
+      }
+
+      this.setState({ importFile: file, errorMessage: null });
     }
   };
 
@@ -548,45 +672,195 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
     this.setState({ deploymentTargets: updatedTargets });
   };
 
+  private _addManualTarget = (siteUrl: string): void => {
+    if (!siteUrl || !siteUrl.trim()) {
+      return;
+    }
+
+    const normalizedUrl = siteUrl.trim().replace(/\/$/, '');
+
+    // Validate URL format
+    try {
+      new URL(normalizedUrl);
+    } catch {
+      this.setState({
+        errorMessage: 'Please enter a valid SharePoint site URL (e.g., https://contoso.sharepoint.com/sites/sitename)'
+      });
+      return;
+    }
+
+    // Check if target already exists
+    const { deploymentTargets } = this.state;
+    if (deploymentTargets.some(target => target.siteUrl === normalizedUrl)) {
+      this.setState({
+        errorMessage: 'This site is already in the deployment targets list'
+      });
+      return;
+    }
+
+    // Add new target
+    const newTarget: IDeploymentTarget = {
+      siteUrl: normalizedUrl,
+      siteName: normalizedUrl.split('/').pop() || 'Manual Site',
+      selected: true
+    };
+
+    this.setState({
+      deploymentTargets: [...deploymentTargets, newTarget],
+      errorMessage: null,
+      successMessage: `Added ${newTarget.siteName} to deployment targets`
+    });
+  };
+
   private _loadAvailableSites = async (): Promise<void> => {
     try {
-      const currentDomain = window.location.hostname.split('.')[0];
-      const baseUrl = `https://${currentDomain}.sharepoint.com`;
-      
-      const availableSites: IDeploymentTarget[] = [
-        { 
-          siteUrl: `${baseUrl}`, 
-          siteName: 'Root Site Collection', 
-          selected: false 
-        },
-        { 
-          siteUrl: `${baseUrl}/sites/teamsite`, 
-          siteName: 'Team Site', 
-          selected: false 
-        },
-        { 
-          siteUrl: `${baseUrl}/sites/communications`, 
-          siteName: 'Communications Site', 
-          selected: false 
-        },
-        { 
-          siteUrl: `${baseUrl}/sites/intranet`, 
-          siteName: 'Intranet Portal', 
-          selected: false 
-        },
-        { 
-          siteUrl: `${baseUrl}/sites/projects`, 
-          siteName: 'Project Management Hub', 
-          selected: false 
+      this.setState({ errorMessage: null });
+
+      // Get sites using SharePoint Search API
+      const searchEndpoint = `${this.props.context.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site OR contentclass:STS_Web'&selectproperties='Title,SPWebUrl,SPSiteUrl,SiteDescription,Path,LastModifiedTime'&rowlimit=100&sortlist='Title:ascending'`;
+
+      const response = await this.props.context.spHttpClient.get(
+        searchEndpoint,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=verbose',
+            'odata-version': '3.0'
+          }
         }
-      ];
-      
-      this.setState({ deploymentTargets: availableSites });
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        const sites = data.d?.query?.PrimaryQueryResult?.RelevantResults?.Table?.Rows || [];
+
+        const deploymentTargets: IDeploymentTarget[] = sites
+          .filter((site: any) => {
+            // Filter out current site and ensure we have a valid URL
+            const siteUrl = this._getCellValue(site.Cells, 'SPWebUrl') || this._getCellValue(site.Cells, 'Path');
+            return siteUrl && siteUrl !== this.props.context.pageContext.web.absoluteUrl;
+          })
+          .map((site: any) => ({
+            siteUrl: this._getCellValue(site.Cells, 'SPWebUrl') || this._getCellValue(site.Cells, 'Path'),
+            siteName: this._getCellValue(site.Cells, 'Title') || 'Unknown Site',
+            selected: false
+          }))
+          .filter((target: IDeploymentTarget) => target.siteUrl) // Remove any with empty URLs
+          .sort((a: IDeploymentTarget, b: IDeploymentTarget) => a.siteName.localeCompare(b.siteName));
+
+        this.setState({
+          deploymentTargets,
+          successMessage: `Found ${deploymentTargets.length} available sites for deployment`
+        });
+      } else {
+        // Fallback to alternative methods if search fails
+        await this._loadSitesFromTenantAdmin();
+      }
     } catch (error) {
-      console.error('Error loading available sites:', error);
-      this.setState({ 
-        errorMessage: 'Failed to load available sites for deployment',
-        deploymentTargets: [] 
+      console.warn('Search API failed, trying alternative methods:', error);
+      await this._loadSitesFromTenantAdmin();
+    }
+  };
+
+  private _getCellValue = (cells: any[], key: string): string => {
+    const cell = cells.find((c: any) => c.Key === key);
+    return cell ? cell.Value : '';
+  };
+
+  private _getPrimarySite(): ISiteInfo {
+    if (this.props.selectedSites.length > 0) {
+      return this.props.selectedSites[0];
+    }
+
+    const { context } = this.props;
+    return {
+      id: context.pageContext.site.id?.toString() || '',
+      title: context.pageContext.web.title,
+      url: context.pageContext.web.absoluteUrl,
+      serverRelativeUrl: context.pageContext.web.serverRelativeUrl,
+      description: context.pageContext.web.description || '',
+      template: context.pageContext.web.templateName || 'STS',
+      isSubsite: (context.pageContext.web as any).isSubWeb || false,
+      lastModified: new Date(),
+      created: new Date()
+    };
+  }
+
+  private _getImportTargetSites(): ISiteInfo[] {
+    const { selectedSites } = this.props;
+    const { applyToAllSites } = this.state;
+
+    if (applyToAllSites && selectedSites.length > 1) {
+      return selectedSites;
+    }
+
+    return selectedSites.length > 0 ? [selectedSites[0]] : [this._getPrimarySite()];
+  }
+
+  private _getTargetSitesForOperation(operation: BulkOperationType): ISiteInfo[] {
+    if (operation === BulkOperationType.Import) {
+      return this._getImportTargetSites();
+    }
+
+    if (!this._shouldApplyToAllSites(operation)) {
+      return [this._getPrimarySite()];
+    }
+
+    return this.props.selectedSites.length > 0 ? this.props.selectedSites : [this._getPrimarySite()];
+  }
+
+  private _shouldApplyToAllSites(operation: BulkOperationType): boolean {
+    return this._supportsMultiSite(operation) && this.state.applyToAllSites && this.props.selectedSites.length > 1;
+  }
+
+  private _loadSitesFromTenantAdmin = async (): Promise<void> => {
+    try {
+      // Try to get sites from the hub site or site collection admin APIs
+      const hubSitesEndpoint = `${this.props.context.pageContext.web.absoluteUrl}/_api/web/hubsitedata`;
+
+      const response = await this.props.context.spHttpClient.get(
+        hubSitesEndpoint,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=verbose'
+          }
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        // Process hub site data if available
+        const deploymentTargets: IDeploymentTarget[] = [];
+
+        // Add current site collection as a fallback option
+        const currentSite: IDeploymentTarget = {
+          siteUrl: this.props.context.pageContext.site.absoluteUrl,
+          siteName: this.props.context.pageContext.site.serverRequestPath || 'Current Site Collection',
+          selected: false
+        };
+
+        if (currentSite.siteUrl !== this.props.context.pageContext.web.absoluteUrl) {
+          deploymentTargets.push(currentSite);
+        }
+
+        this.setState({
+          deploymentTargets,
+          errorMessage: deploymentTargets.length === 0
+            ? 'No additional sites found. You may need to manually add site URLs or ensure you have appropriate permissions to discover sites.'
+            : null
+        });
+      } else {
+        throw new Error('Unable to discover sites using available APIs');
+      }
+    } catch (error) {
+      const errorInfo = ErrorHandler.handleError(error);
+      ErrorHandler.logError(errorInfo, 'BulkOperationsPanel._loadSitesFromTenantAdmin');
+
+      // Provide manual entry option as fallback
+      this.setState({
+        errorMessage: 'Automatic site discovery failed. You can manually add deployment targets by entering site URLs.',
+        deploymentTargets: []
       });
     }
   };
@@ -612,18 +886,43 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
             throw new Error('No import file selected');
           }
           const fileContent = await this._readFile(importFile);
-          const importResults = await this.bulkService.importFromJson(fileContent, importOptions);
+          const format = (importOptions.format || 'JSON') as 'JSON' | 'CSV';
+          const targetSites = this._getImportTargetSites();
+          const aggregatedResults: IBulkOperationResult[] = [];
+
+          for (const site of targetSites) {
+            this.bulkService.setTargetSite(site.url);
+            const siteResults = await this.bulkService.importActions(fileContent, importOptions, format);
+            siteResults.forEach(result => {
+              aggregatedResults.push({
+                ...result,
+                actionName: `${result.actionName} (${site.title || site.url})`
+              });
+            });
+          }
+
+          const successCount = aggregatedResults.filter(r => r.success).length;
+          const status = successCount === aggregatedResults.length
+            ? BulkOperationStatus.Completed
+            : successCount === 0
+              ? BulkOperationStatus.Failed
+              : BulkOperationStatus.PartiallyCompleted;
+
           operation = {
             id: 'import-' + Date.now(),
             name: 'Import Operation',
             description: `Import from ${importFile.name}`,
             targetActions: [],
             operation: BulkOperationType.Import,
-            parameters: importOptions,
+            parameters: {
+              ...importOptions,
+              format,
+              appliedSites: targetSites.map(site => site.url)
+            },
             createdBy: this.props.context.pageContext.user.displayName,
             createdDate: new Date(),
-            status: importResults.every(r => r.success) ? BulkOperationStatus.Completed : BulkOperationStatus.PartiallyCompleted,
-            results: importResults
+            status,
+            results: aggregatedResults
           };
           break;
         }
@@ -633,6 +932,7 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
           if (selectedTargets.length === 0) {
             throw new Error('No deployment targets selected');
           }
+          this.bulkService.setTargetSite(this._getPrimarySite().url);
           operation = await this.bulkService.executeBulkOperation(
             selectedActions.map(a => a.Id),
             selectedOperation,
@@ -641,19 +941,39 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
           break;
         }
 
-        case BulkOperationType.Export:
-          operation = await this.bulkService.executeBulkOperation(
-            selectedActions.map(a => a.Id),
-            selectedOperation,
-            exportOptions
-          );
+        case BulkOperationType.Export: {
+          if (this._shouldApplyToAllSites(selectedOperation)) {
+            operation = await this.bulkService.executeBulkOperationAcrossSites(
+              selectedActions,
+              this._getTargetSitesForOperation(selectedOperation),
+              selectedOperation,
+              exportOptions
+            );
+          } else {
+            this.bulkService.setTargetSite(this._getPrimarySite().url);
+            operation = await this.bulkService.executeBulkOperation(
+              selectedActions.map(a => a.Id),
+              selectedOperation,
+              exportOptions
+            );
+          }
           break;
+        }
 
         default:
-          operation = await this.bulkService.executeBulkOperation(
-            selectedActions.map(a => a.Id),
-            selectedOperation
-          );
+          if (this._shouldApplyToAllSites(selectedOperation)) {
+            operation = await this.bulkService.executeBulkOperationAcrossSites(
+              selectedActions,
+              this._getTargetSitesForOperation(selectedOperation),
+              selectedOperation
+            );
+          } else {
+            this.bulkService.setTargetSite(this._getPrimarySite().url);
+            operation = await this.bulkService.executeBulkOperation(
+              selectedActions.map(a => a.Id),
+              selectedOperation
+            );
+          }
           break;
       }
 
@@ -665,8 +985,10 @@ export class BulkOperationsPanel extends React.Component<IBulkOperationsPanelPro
       this.props.onOperationComplete(operation);
 
     } catch (error) {
+      const errorInfo = ErrorHandler.handleError(error);
+      ErrorHandler.logError(errorInfo, 'BulkOperationsPanel._executeOperation');
       this.setState({
-        errorMessage: error instanceof Error ? error.message : 'Operation failed'
+        errorMessage: errorInfo.userFriendlyMessage
       });
     } finally {
       this.setState({ isExecuting: false });

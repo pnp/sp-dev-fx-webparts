@@ -1,19 +1,9 @@
 define([], function() {
   return {
     // Property Pane
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field",
-    "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
-    "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",
-    "AppLocalEnvironmentOffice": "The app is running on your local environment in office.com",
-    "AppLocalEnvironmentOutlook": "The app is running on your local environment in Outlook",
-    "AppSharePointEnvironment": "The app is running on SharePoint page",
-    "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
-    "AppOfficeEnvironment": "The app is running in office.com",
-    "AppOutlookEnvironment": "The app is running in Outlook",
-    "UnknownEnvironment": "The app is running in an unknown environment",
-
+    "PropertyPaneDescription": "Application to manage Microsoft Graph Schema Extensions",
+    "BasicGroupName": "Properties",
+    "DescriptionFieldLabel": "Title",
     // General
     "Loading": "Loading...",
     "Error": "Error",
@@ -23,7 +13,7 @@ define([], function() {
     "Close": "Close",
     "Delete": "Delete",
     "Create": "Create",
-    "Edit": "Edit",
+    "Edit": "Update",
     "View": "View",
     "Yes": "Yes",
     "No": "No",
@@ -105,6 +95,16 @@ define([], function() {
     "PropertyNameRequiredError": "Property name is required",
     "PropertyNameInvalidError": "Property name must start with a letter and contain only letters, numbers, and underscores",
     "DuplicatePropertyNameError": "Duplicate property name",
+    
+    // App ID Validation Messages
+    "AppIdRequiredError": "App ID is required",
+    "AppIdInvalidFormatError": "App ID must be a valid GUID format",
+    "AppIdNotFoundError": "Application not found in Entra ID",
+    "AppIdAccessDeniedError": "Access denied. You may not have permission to read this application",
+    "AppIdNotOwnerError": "You are not an owner of this application",
+    "AppIdValidationError": "Failed to validate application. Please check the App ID and try again",
+    "AppIdValidationSuccess": "Valid owner of application",
+    "AppIdValidatingMessage": "Validating application ownership...",
     
     // Success Messages
     "SchemaExtensionCreatedSuccess": "Schema extension created successfully",
@@ -228,13 +228,13 @@ define([], function() {
     "ReviewDocumentationLink": "review the documentation",
     "SchemaExtensionUpdateGuidelinesTitle": "Schema Extension Update Guidelines",
     "AdditiveUpdatesGuideline": "Additive updates only:",
-    "AdditiveUpdatesDetails": "You can only add new properties to existing schema extensions or change the description",
+    "AdditiveUpdatesDetails": "You can only add new properties, target types to existing schema extensions or change the description",
     "StatusRequirementGuideline": "Status requirement:",
     "StatusRequirementDetails": "Updates are only allowed when the extension status is \"InDevelopment\" or \"Available\"",
     "RestrictionsGuideline": "Restrictions:",
     "RestrictionsDetails": "Custom properties or target resource types cannot be removed from the definition once created",
     "AllowedChangesGuideline": "Allowed changes:",
-    "AllowedChangesDetails": "Add new custom properties and modify the extension description",
+    "AllowedChangesDetails": "Add new custom properties or target types and modify the extension description",
     "SupportedDataTypesLink": "Learn more about supported property data types",
     "SchemaExtensionsInfoDescription": "Schema extensions allow you to define custom properties for Microsoft Graph resources. They enable you to extend the schema of resources like users, groups, and devices with additional data that is specific to your application or organization.",
     "SchemaExtensionsUseCaseDescription": "By creating schema extensions, you can store and manage extra information that is not included in the default schema provided by Microsoft Graph. This is particularly useful for scenarios where you need to capture application-specific data or metadata that is relevant to your business processes.",

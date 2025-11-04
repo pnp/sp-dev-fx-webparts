@@ -1,4 +1,4 @@
-# Manage Schema Extensions
+# Schema Extensions Manager
 
 ## Summary
 

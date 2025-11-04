@@ -41,6 +41,33 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
     super();
   }
 
+  private _log(level: 'debug' | 'info' | 'warn' | 'error', message: string, data?: any): void {
+    const payload: any = {
+      ts: new Date().toISOString(),
+      level,
+      message,
+    };
+    if (data !== undefined) {
+      payload.data = data;
+    }
+    // Prefix so it's easy to find in logs
+    const prefix = '[ModernCalendarWebPart]';
+    try {
+      if (level === 'error') {
+        console.error(prefix, payload);
+      } else if (level === 'warn') {
+        console.warn(prefix, payload);
+      } else if (level === 'debug' && typeof console.debug === 'function') {
+        console.debug(prefix, payload);
+      } else {
+        console.log(prefix, payload);
+      }
+    } catch (e) {
+      // Fallback to plain console.log if structured logging fails
+      console.log(prefix, message, data);
+    }
+  }
+
   public render(): void {
     if (this.properties.theme != null) {
       SPComponentLoader.loadCss(this.properties.theme);
@@ -58,9 +85,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       this.properties.title == null ||
       this.properties.detail == null
     ) {
-      this.domElement.innerHTML = CalendarTemplate.emptyHtml(
-        this.properties.description
-      );
+      const missing: string[] = [];
+      if (!this.properties.listTitle) missing.push("listTitle");
+      if (!this.properties.start) missing.push("start");
+      if (!this.properties.end) missing.push("end");
+      if (!this.properties.title) missing.push("title");
+      if (!this.properties.detail) missing.push("detail");
+      this._log('warn', 'Missing required properties for ModernCalendarWebPart', { missing });
+      this.domElement.innerHTML = CalendarTemplate.emptyHtml(this.properties.description);
     } else {
       this.domElement.innerHTML = CalendarTemplate.templateHtml;
       this._renderListAsync();
@@ -88,7 +120,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         !this.properties.title ||
         !this.properties.detail)
     ) {
-     console.log("this.properties.listTitle: "+this.properties.listTitle);
+  this._log('debug', 'this.properties.listTitle', { listTitle: this.properties.listTitle });
 
       this._getListColumns(this.properties.listTitle, this.properties.site).then((response3) => {
         const col: IPropertyPaneDropdownOption[] = [];
@@ -154,7 +186,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                   text: list.Title,
                 };
               });
-              console.log("this.properties.site: "+this.properties.site );
+              this._log('debug', 'this.properties.site', { site: this.properties.site });
               this._getListColumns(
                 this.properties.listTitle!,
                 this.properties.site
@@ -229,7 +261,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
           this.context.statusRenderer.clearLoadingIndicator(this.domElement);
           this.render();
         }).catch(() => {
-          console.log("Error loading lists");
+          this._log('error', 'Error loading lists');
         });
       }
     } else if (propertyPath === "listTitle" && newValue) {
@@ -238,7 +270,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       if (this.properties.other && this.properties.siteOther) {
         siteUrl = this.properties.siteOther;
       }
-      console.log("siteUrl: "+siteUrl );
+  this._log('debug', 'siteUrl', { siteUrl });
       this._getListColumns(newValue, siteUrl).then((response) => {
         const col: IPropertyPaneDropdownOption[] = [];
         for (const _key in response.value) {
@@ -362,7 +394,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
-        console.log("response get List Titles ");
+  this._log('debug', 'response get List Titles');
         return response.json();
       });
   }
@@ -378,14 +410,13 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
-        console.log("listsite");
-    console.log(listsite);
+    this._log('debug', 'listsite', { listsite });
         return response.json();
       });
   }
 
   private _getListData(listName: string, site: string): Promise<any> {
-    console.log("listName: "+listName);
+  this._log('debug', 'listName', { listName });
     return this.context.spHttpClient
       .get(
         site +
@@ -399,8 +430,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         SPHttpClient.configurations.v1
       )
       .then((response: SPHttpClientResponse) => {
-        console.log("response get List Data ");
-        console.log(response);
+  this._log('debug', 'response get List Data', { response });
         return response.json();
       });
   }
@@ -489,7 +519,7 @@ calendar.render();
           });
           this.context.propertyPane.refresh();
           if (this.properties.listTitle) {
-            console.log("this.properties.site: "+this.properties.site );
+              this._log('debug', 'this.properties.site', { site: this.properties.site });
             this._getListColumns(
               this.properties.listTitle,
               this.properties.site
@@ -521,16 +551,14 @@ calendar.render();
     if (this.properties.other && this.properties.siteOther) {
       siteUrl = this.properties.siteOther;
     }
-    console.log("siteUrl");
-    console.log(siteUrl);
+  this._log('debug', 'siteUrl', { siteUrl });
     this._getListData(this.properties.listTitle!, siteUrl)
       .then((response) => {
-        console.log("response");
+  this._log('debug', 'response', { response });
         this._renderList(response.value);
       })
       .catch((err) => {
-        console.log("Error loading list data");
-        console.log(err);
+  this._log('error', 'Error loading list data', err);
         this.context.statusRenderer.clearLoadingIndicator(this.domElement);
         this.context.statusRenderer.renderError(
           this.domElement,

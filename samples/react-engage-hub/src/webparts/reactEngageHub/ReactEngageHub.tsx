@@ -4,8 +4,7 @@ import {
   FluentProvider,
   IdPrefixProvider,
   makeStyles,
-  webDarkTheme,
-  webLightTheme,
+  Theme,
 } from "@fluentui/react-components"
 import { Placeholder, WebPartTitle } from "@pnp/spfx-controls-react"
 
@@ -17,6 +16,7 @@ import { ensureFolder, getCurrentUserDetails } from "./services/SPService"
 
 import { WEBPARTCONTEXT } from "./context/webPartContext"
 import type { IReactEngageHubProps } from "./IReactEngageHubProps"
+import { createV9Theme } from "@fluentui/react-migration-v8-v9"
 
 const useStyles = makeStyles({
   fluentWrapper: {
@@ -57,6 +57,10 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
 
   const fluentStyles = useStyles()
 
+  const computedTheme = React.useMemo<Partial<Theme>>(() => {
+    return createV9Theme(props.theme as never)
+  }, [props.theme])
+
   return (
     <div className={fluentStyles.container}>
       <WebPartTitle
@@ -67,7 +71,7 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
       {props.apiEndpoint && props.apiKey && props.deploymentName ? (
         <IdPrefixProvider value='react-engage-hub-'>
           <FluentProvider
-            theme={props.isDarkTheme ? webDarkTheme : webLightTheme}
+            theme={computedTheme}
             className={fluentStyles.fluentWrapper}
           >
             <WEBPARTCONTEXT.Provider value={props}>

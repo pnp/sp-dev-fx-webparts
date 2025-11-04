@@ -2,12 +2,12 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-manage-schema-extensions",
     "source": "pnp",
-    "title": "Manage Schema Extensions",
-    "shortDescription": "Manage Schema Extensions is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later.",
+    "title": "Schema Extensions Manager",
+    "shortDescription": "Schema Extensions Manager is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-schema-extensions",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-schema-extensions",
     "longDescription": [
-      "Manage Schema Extensions is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later."
+      "Schema Extensions Manager is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later."
     ],
     "creationDateTime": "2025-09-27",
     "updateDateTime": "2025-09-27",

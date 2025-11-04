@@ -18,6 +18,7 @@ import { AIConnectionString } from '../../EnvProps';
 
 export interface IPnPjsLoggerWebPartProps {
   description: string;
+  applicationInsightsConnectionString: string;
 }
 
 export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLoggerWebPartProps> {
@@ -25,8 +26,12 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
   private _appInsights: ApplicationInsights;
-  
+
   public render(): void {
+    // Check if Application Insights is configured (evaluate on each render)
+    const connectionString = this.properties.applicationInsightsConnectionString || AIConnectionString;
+    const isConfigured = !!(connectionString && connectionString !== 'set-your-connection-string-here');
+
     const element: React.ReactElement<IPnPjsLoggerProps> = React.createElement(
       PnPjsLogger,
       {
@@ -34,7 +39,8 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        isAppInsightsConfigured: isConfigured
       }
     );
 
@@ -50,29 +56,38 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
 
     const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
 
-    // App Insights JS Documentation: https://github.com/microsoft/applicationinsights-js
-    this._appInsights = new ApplicationInsights({
-      config: {
-        connectionString: AIConnectionString,
-        accountId: userId,
-        disableFetchTracking: false,
-        enableRequestHeaderTracking: true,
-        enableResponseHeaderTracking: true,
-        enableAjaxErrorStatusText: true,
-        enableAjaxPerfTracking: true,
-        enableUnhandledPromiseRejectionTracking: true,
-        enableCorsCorrelation: true,
-        disableExceptionTracking: false,
-        distributedTracingMode: DistributedTracingModes.AI
-      }
-    });
+    // Get connection string from web part property or fallback to EnvProps
+    const connectionString = this.properties.applicationInsightsConnectionString || AIConnectionString;
 
-    this._appInsights.loadAppInsights();
-    this._appInsights.addTelemetryInitializer(this._appInsightsInitializer);
-    this._appInsights.setAuthenticatedUserContext(userId, userId, true);
-    this._appInsights.trackPageView();
+    // Only initialize Application Insights if a valid connection string is provided
+    if (connectionString && connectionString !== 'set-your-connection-string-here') {
+      // App Insights JS Documentation: https://github.com/microsoft/applicationinsights-js
+      this._appInsights = new ApplicationInsights({
+        config: {
+          connectionString: connectionString,
+          accountId: userId,
+          disableFetchTracking: false,
+          enableRequestHeaderTracking: true,
+          enableResponseHeaderTracking: true,
+          enableAjaxErrorStatusText: true,
+          enableAjaxPerfTracking: true,
+          enableUnhandledPromiseRejectionTracking: true,
+          enableCorsCorrelation: true,
+          disableExceptionTracking: false,
+          distributedTracingMode: DistributedTracingModes.AI
+        }
+      });
 
-    Logger.subscribe(new AppInsightListener(this._appInsights));
+      this._appInsights.loadAppInsights();
+      this._appInsights.addTelemetryInitializer(this._appInsightsInitializer);
+      this._appInsights.setAuthenticatedUserContext(userId, userId, true);
+      this._appInsights.trackPageView();
+
+      Logger.subscribe(new AppInsightListener(this._appInsights));
+    } else {
+      console.warn('Application Insights connection string not configured. Please set it in the web part properties or in src/EnvProps.ts');
+    }
+
     Logger.subscribe( ConsoleListener("pnpjs"));
     Logger.activeLogLevel =  LogLevel.Info;
 
@@ -148,6 +163,45 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
     return Version.parse('1.0');
   }
 
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: string, newValue: string): void {
+    // Re-initialize Application Insights if the connection string changes
+    if (propertyPath === 'applicationInsightsConnectionString' && newValue && newValue !== oldValue) {
+      const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
+      const connectionString = newValue;
+
+      if (connectionString && connectionString !== 'set-your-connection-string-here') {
+        // App Insights JS Documentation: https://github.com/microsoft/applicationinsights-js
+        this._appInsights = new ApplicationInsights({
+          config: {
+            connectionString: connectionString,
+            accountId: userId,
+            disableFetchTracking: false,
+            enableRequestHeaderTracking: true,
+            enableResponseHeaderTracking: true,
+            enableAjaxErrorStatusText: true,
+            enableAjaxPerfTracking: true,
+            enableUnhandledPromiseRejectionTracking: true,
+            enableCorsCorrelation: true,
+            disableExceptionTracking: false,
+            distributedTracingMode: DistributedTracingModes.AI
+          }
+        });
+
+        this._appInsights.loadAppInsights();
+        this._appInsights.addTelemetryInitializer(this._appInsightsInitializer);
+        this._appInsights.setAuthenticatedUserContext(userId, userId, true);
+        this._appInsights.trackPageView();
+
+        Logger.subscribe(new AppInsightListener(this._appInsights));
+      }
+
+      // Re-render to update the UI
+      this.render();
+    }
+
+    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -161,6 +215,18 @@ export default class PnPjsLoggerWebPart extends BaseClientSideWebPart<IPnPjsLogg
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                })
+              ]
+            },
+            {
+              groupName: 'Application Insights Configuration',
+              groupFields: [
+                PropertyPaneTextField('applicationInsightsConnectionString', {
+                  label: 'Application Insights Connection String',
+                  description: 'Enter your Azure Application Insights connection string. You can find this in the Azure Portal under your Application Insights resource.',
+                  placeholder: 'InstrumentationKey=...',
+                  multiline: true,
+                  rows: 3
                 })
               ]
             }
