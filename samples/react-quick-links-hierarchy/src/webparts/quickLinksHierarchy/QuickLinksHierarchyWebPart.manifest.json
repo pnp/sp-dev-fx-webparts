@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c1eae3c9-5c2b-4b09-8a4b-07c02f2ac9fa",
+  "alias": "QuickLinksHierarchyWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "requiresCustomScript": false,
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Content" },
+      "title": { "default": "Quick Links Hierarchy" },
+      "description": { "default": "Collapsible hierarchical quick links with configuration panel" },
+      "officeFabricIconFontName": "Link",
+      "properties": {
+        "description": "Quick Links Hierarchy",
+        "listId": "",
+        "listTitle": ""
+      }
+    }
+  ]
+}
