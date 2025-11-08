@@ -264,6 +264,18 @@
   font-weight: 800;
   color: #2b6cb0;
   box-shadow: 0 6px 12px rgba(59,130,246,0.06);
+  overflow: hidden;
+}
+
+/* Profile image when available (user photo) */
+.avatarImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+  display: inline-block;
+  box-shadow: 0 6px 12px rgba(59,130,246,0.06);
+  background: #eef2ff;
 }
 
 .employeeName {
@@ -271,6 +283,13 @@
   color: #0f172a;
   margin: 0;
   font-size: 16px;
+}
+
+.employeeJobTitle {
+  font-weight: 100;
+  color: #0f172a;
+  margin: 0;
+  font-size: 12px;
 }
 
 .employeeSub {

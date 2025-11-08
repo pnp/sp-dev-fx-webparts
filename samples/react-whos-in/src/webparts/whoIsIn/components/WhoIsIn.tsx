@@ -36,7 +36,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     });
   };
 
- 
+
   private filteredItems = () => {
     const { items = [] } = this.props;
     const { date, office, search } = this.state;
@@ -101,7 +101,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
             <div className={styles.subtitle}>Quickly see who visited which office on a selected day.</div>
           </div>
 
-          
+
         </div>
 
         <div className={styles.layoutGrid}>
@@ -158,33 +158,36 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                       <th>Office</th>
                       <th>Arriving on</th>
                       <th>Departing</th>
-                     
+
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((it: any, idx: number) => {
                       const employee = it.Employee && it.Employee.Title ? it.Employee.Title : (it.Employee || '');
                       const officeName = it.BaseLocation || '';
-                      const checkIn = it.From ? new Date(it.From).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '—';
-                      const checkOut = it.To ? new Date(it.To).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '—';
-                      const initials = String(employee).split(' ').map((n: string) => n[0]).slice(0,2).join('').toUpperCase() || '??';
-
+                      const checkIn = it.From ? new Date(it.From).toLocaleDateString() : '—';
+                      const checkOut = it.To ? new Date(it.To).toLocaleDateString() : '—';
+                      const empTitle = it.EmployeeTitle;
+                     
                       return (
                         <tr key={it.ID || it.Id || idx}>
                           <td>
                             <div className={styles.employeeBlock}>
-                              <div className={styles.avatar}>{initials}</div>
+                              <div className={styles.avatar}>
+                                <img src={it.EmployeePhotoUrl} alt={employee} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                              </div>
                               <div>
                                 <div className={styles.employeeName}>{escape(String(employee))}</div>
-                                
+                                <div className={styles.employeeJobTitle}>{escape(String(empTitle))}</div>
+
                               </div>
                             </div>
                           </td>
-                          
+
                           <td>{escape(officeName)}</td>
                           <td>{escape(checkIn)}</td>
                           <td>{escape(checkOut)}</td>
-                          
+
                         </tr>
                       );
                     })}
@@ -193,7 +196,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
               )}
             </div>
 
-            
+
           </div>
         </div>
       </section>

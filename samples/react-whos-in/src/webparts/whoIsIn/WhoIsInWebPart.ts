@@ -48,13 +48,26 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
     try {
       const sp = getSP(this.context);
       if (sp) {
+        // include Employee EMail so we can derive a profile photo URL client-side
         const items = await sp.web.lists.getByTitle('WhoIsIn')
-          .items.select('ID','BaseLocation','TravellingTo','From','To','Employee/Title')
+          .items.select('ID', 'BaseLocation', 'TravellingTo', 'From', 'To', 'Employee/JobTitle', 'Employee/Title','Employee/EMail','Employee/Id')
           .expand('Employee')();
-        this._items = items || [];
+        // enrich items with a computed photo URL (SharePoint user photo endpoint)
+        const webUrl = this.context.pageContext.web.absoluteUrl;
+        this._items = (items || []).map((it: any) => {
+          const email = it.Employee && (it.Employee.EMail || it.Employee.Email) ? (it.Employee.EMail || it.Employee.Email) : '';
+          const photoUrl = email ? `${webUrl}/_layouts/15/userphoto.aspx?size=S&accountname=${encodeURIComponent(email)}` : '';
+          return {
+            ...it,
+            EmployeeEmail: email,
+            EmployeeTitle: it.Employee && it.Employee.JobTitle ? it.Employee.JobTitle : '',
+            EmployeePhotoUrl: photoUrl
+          };
+        });
       } else {
         this._items = [];
       }
+      console.log(this._items);
     } catch (error) {
       // don't block init on errors; log for debugging
       // eslint-disable-next-line no-console
