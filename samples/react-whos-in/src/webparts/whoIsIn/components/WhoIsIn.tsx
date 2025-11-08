@@ -3,70 +3,198 @@ import styles from './WhoIsIn.module.scss';
 import type { IWhoIsInProps } from './IWhoIsInProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-export default class WhoIsIn extends React.Component<IWhoIsInProps> {
+type State = {
+  date: string;
+  office: string;
+  search: string;
+};
+
+export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
+  public state: State = {
+    date: new Date().toISOString().slice(0, 10),
+    office: 'All offices',
+    search: ''
+  };
+
+  private onDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ date: e.target.value });
+  };
+
+  private onOfficeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    this.setState({ office: e.target.value });
+  };
+
+  private onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ search: e.target.value });
+  };
+
+  private clearFilters = () => {
+    this.setState({
+      date: new Date().toISOString().slice(0, 10),
+      office: 'All offices',
+      search: ''
+    });
+  };
+
+ 
+  private filteredItems = () => {
+    const { items = [] } = this.props;
+    const { date, office, search } = this.state;
+
+    return items.filter((item: any) => {
+      if (office && office !== 'All offices') {
+        if ((item.BaseLocation || '') !== office) { return false; }
+      }
+
+      if (date) {
+        const d = new Date(date);
+        const from = item.From ? new Date(item.From) : null;
+        const to = item.To ? new Date(item.To) : null;
+
+        if (from || to) {
+          const fromDay = from ? new Date(from.getFullYear(), from.getMonth(), from.getDate()) : null;
+          const toDay = to ? new Date(to.getFullYear(), to.getMonth(), to.getDate()) : null;
+          const checkDay = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
+          if (fromDay && toDay) {
+            if (checkDay < fromDay || checkDay > toDay) { return false; }
+          } else if (fromDay && !toDay) {
+            if (checkDay.getTime() !== fromDay.getTime()) { return false; }
+          } else if (!fromDay && toDay) {
+            if (checkDay.getTime() !== toDay.getTime()) { return false; }
+          }
+        } else {
+          return false;
+        }
+      }
+
+      if (search) {
+        const q = search.toString().toLowerCase();
+        const employee = item.Employee && item.Employee.Title ? item.Employee.Title : (item.Employee || '');
+        const team = item.Team || '';
+        const badge = item.Badge || '';
+        const combined = `${employee} ${team} ${badge}`.toLowerCase();
+        if (combined.indexOf(q) === -1) { return false; }
+      }
+
+      return true;
+    });
+  };
+
+  private totalVisitors = () => this.filteredItems().length;
+
   public render(): React.ReactElement<IWhoIsInProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName,
-      items = []
-    } = this.props;
+    const { hasTeamsContext } = this.props;
+    const { date, office, search } = this.state;
+    const items = this.filteredItems();
+
+    const officesSet = new Set<string>((this.props.items || []).map((i: any) => i.BaseLocation || '').filter(Boolean));
+    const officesArr: string[] = ['All offices'];
+    officesSet.forEach((o) => officesArr.push(o));
+    const offices = officesArr;
 
     return (
       <section className={`${styles.whoIsIn} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
+        <div className={styles.pageHeader}>
+          <div>
+            <h1 className={styles.pageTitle}>Office Attendance — Day View</h1>
+            <div className={styles.subtitle}>Quickly see who visited which office on a selected day.</div>
+          </div>
+
+          
         </div>
 
-        <div>
-          <h3>Who is In</h3>
-          {items.length === 0 ? (
-            <div>No records found in the WhoIsIn list.</div>
-          ) : (
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Employee</th>
-                  <th>Base Location</th>
-                  <th>Travelling To</th>
-                  <th>From</th>
-                  <th>To</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item: any) => {
-                  const employee = item.Employee && item.Employee.Title ? item.Employee.Title : (item.Employee || '');
-                  const fromDate = item.From ? new Date(item.From).toLocaleDateString() : '';
-                  const toDate = item.To ? new Date(item.To).toLocaleDateString() : '';
-                  const key = item.ID || item.Id || `${employee}-${fromDate}-${toDate}`;
-                  return (
-                    <tr key={key}>
-                      <td>{escape(String(employee))}</td>
-                      <td>{escape(String(item.BaseLocation || ''))}</td>
-                      <td>{escape(String(item.TravellingTo || ''))}</td>
-                      <td>{escape(fromDate)}</td>
-                      <td>{escape(toDate)}</td>
+        <div className={styles.layoutGrid}>
+          <aside className={styles.sidebarCard}>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="dateInput">Date</label>
+              <input id="dateInput" aria-label="Date" className={styles.input} type="date" value={date} onChange={this.onDateChange} />
+            </div>
+
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="officeSelect">Office Location</label>
+              <select id="officeSelect" aria-label="Office Location" className={styles.input} value={office} onChange={this.onOfficeChange}>
+                {offices.map(o => <option key={o} value={o}>{o}</option>)}
+              </select>
+            </div>
+
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="searchInput">Search</label>
+              <input id="searchInput" aria-label="Search name, team or badge" className={styles.input} placeholder="Search name, team or badge" value={search} onChange={this.onSearchChange} />
+            </div>
+
+            <div style={{ marginTop: 8 }}>
+              <button className={styles.primaryBtn} onClick={() => this.setState({ date, office, search })}>Show</button>
+              <button className={styles.ghostBtn} onClick={this.clearFilters}>Clear</button>
+            </div>
+
+            <hr style={{ margin: '18px 0', border: 'none', borderTop: '1px solid #eef2f6' }} />
+
+            <div className={styles.meta}>
+              <div><strong>Total visitors:</strong> <span style={{ color: '#0f172a' }}> {this.totalVisitors()}</span></div>
+              <div style={{ marginTop: 8 }}><strong>Last updated:</strong> {new Date().toLocaleString()}</div>
+            </div>
+          </aside>
+
+          <div className={styles.contentColumn}>
+            <div className={styles.listCard}>
+              <div className={styles.cardHeader}>
+                <div>
+                  <h3 style={{ margin: 0 }}>Visitors</h3>
+                  <div className={styles.cardSub}>Showing employees who visited the selected office and date.</div>
+                </div>
+                <div style={{ color: '#6b7280', fontSize: 14 }}>
+                  Showing {items.length} of {(this.props.items || []).length}
+                </div>
+              </div>
+
+              {items.length === 0 ? (
+                <div style={{ padding: 12 }}>No records found for the selected filters.</div>
+              ) : (
+                <table className={styles.table} aria-hidden>
+                  <thead>
+                    <tr>
+                      <th>Employee</th>
+                      <th>Office</th>
+                      <th>Arriving on</th>
+                      <th>Departing</th>
+                     
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          )}
-        </div>
+                  </thead>
+                  <tbody>
+                    {items.map((it: any, idx: number) => {
+                      const employee = it.Employee && it.Employee.Title ? it.Employee.Title : (it.Employee || '');
+                      const officeName = it.BaseLocation || '';
+                      const checkIn = it.From ? new Date(it.From).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '—';
+                      const checkOut = it.To ? new Date(it.To).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '—';
+                      const initials = String(employee).split(' ').map((n: string) => n[0]).slice(0,2).join('').toUpperCase() || '??';
 
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            </ul>
+                      return (
+                        <tr key={it.ID || it.Id || idx}>
+                          <td>
+                            <div className={styles.employeeBlock}>
+                              <div className={styles.avatar}>{initials}</div>
+                              <div>
+                                <div className={styles.employeeName}>{escape(String(employee))}</div>
+                                
+                              </div>
+                            </div>
+                          </td>
+                          
+                          <td>{escape(officeName)}</td>
+                          <td>{escape(checkIn)}</td>
+                          <td>{escape(checkOut)}</td>
+                          
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
+            </div>
+
+            
+          </div>
         </div>
       </section>
     );
