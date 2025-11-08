@@ -4,7 +4,7 @@
 
 A SharePoint Framework (SPFx) React web part that shows who is in the office and when:
 - Filter by destination office, traveler name, and date range
-- See “currently in” counts per office
+- See "currently in" counts per office
 - Display profile picture and job title (when available)
 - Accessible, responsive UI built with Fluent UI
 
@@ -21,32 +21,30 @@ A SharePoint Framework (SPFx) React web part that shows who is in the office and
 
 ## Prerequisites
 
-- Microsoft 365 developer tenant with an App Catalog
-- Node.js 18 LTS (recommended 18.x)
-- Gulp CLI installed globally: npm install -g gulp-cli
-- If using Microsoft Graph for photos/titles, approve the following permissions after deployment:
-  - Microsoft Graph delegated permissions:
-    - User.Read
-    - User.ReadBasic.All
+Create a SharePoint list named "Who is in" to store trips with the following columns:
 
-## Solution
+- Title (Single line of text) – Trip title
+- Employee (Person or Group) – ensures name/email/ID are available
+- DestinationOffice (Choice) – e.g. Auckland, Wellington, Christchurch, Tauranga
+- StartDate (Date and Time) – Date only
+- EndDate (Date and Time) – Date only
+- Purpose (Multiple lines of text) – optional
+- Notes (Multiple lines of text) – optional
 
-| Solution       | Author(s)                         |
-| -------------- | --------------------------------- |
-| react-whos-in  | Add your name/company/@twitter    |
+Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to provision the list.
 
 ## Version history
 
 | Version | Date           | Comments                            |
 | ------- | -------------- | ----------------------------------- |
-| 1.2     | Nov 8, 2025    | Documentation refresh and guidance  |
-| 1.1     | March 10, 2021 | Update comment                      |
-| 1.0     | Jan 29, 2021   | Initial release                     |
+| 2.0     | Nov 8, 2025    | Documentation                       |
+| 1.1     | Jul 10, 2025   | Update comment                      |
+| 1.0     | Jun 29, 2025   | Initial release                     |
 
 ## Features
 
 - Office presence overview with quick filters
-- “Currently in” aggregate counts by office
+- "Currently in" aggregate counts by office
 - Profile photos with fallback to initials
 - Job title shown beneath user’s name
 - Resilient loading state, error handling, and empty results messaging
@@ -57,17 +55,6 @@ A SharePoint Framework (SPFx) React web part that shows who is in the office and
 - Renders profile picture when available, falls back to initials
 - Shows user job title (from list/person field or Graph when configured)
 
-## Information Architecture (SharePoint List)
-
-Create a SharePoint list to store trips (suggested name: “Travel Plans”) with the following columns:
-
-- Title (Single line of text) – Trip title
-- Employee (Person or Group) – ensures name/email/ID are available
-- DestinationOffice (Choice) – e.g. Auckland, Wellington, Christchurch, Tauranga
-- StartDate (Date and Time) – Date only
-- EndDate (Date and Time) – Date only
-- Purpose (Multiple lines of text) – optional
-- Notes (Multiple lines of text) – optional
 
 > You can adjust the available offices in code (see Configuration section below).
 
