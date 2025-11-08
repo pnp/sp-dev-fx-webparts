@@ -10,11 +10,11 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'WhoIsInWebPartStrings';
 import WhoIsIn from './components/WhoIsIn';
-import { IWhoIsInProps } from './components/IWhoIsInProps';
+import type { IWhoIsInProps, IWhoIsInItem } from './components/IWhoIsInProps';
 import { getSP } from './pnpjsConfig';
 
 export interface IWhoIsInWebPartProps {
-  description: string;
+  listName: string;
 }
 
 export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPartProps> {
@@ -22,13 +22,12 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
   // cached items from the WhoIsIn list
-  private _items: any[] = [];
+  private _items: IWhoIsInItem[] = [];
 
   public render(): void {
     const element: React.ReactElement<IWhoIsInProps> = React.createElement(
       WhoIsIn,
       {
-        description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -49,20 +48,21 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
       const sp = getSP(this.context);
       if (sp) {
         // include Employee EMail so we can derive a profile photo URL client-side
-        const items = await sp.web.lists.getByTitle('WhoIsIn')
+        const listTitle = this.properties.listName || 'WhoIsIn';
+        const items = await sp.web.lists.getByTitle(listTitle)
           .items.select('ID', 'BaseLocation', 'TravellingTo', 'From', 'To', 'Employee/JobTitle', 'Employee/Title','Employee/EMail','Employee/Id')
           .expand('Employee')();
         // enrich items with a computed photo URL (SharePoint user photo endpoint)
         const webUrl = this.context.pageContext.web.absoluteUrl;
-        this._items = (items || []).map((it: any) => {
-          const email = it.Employee && (it.Employee.EMail || it.Employee.Email) ? (it.Employee.EMail || it.Employee.Email) : '';
+        this._items = (items || []).map((it: any): IWhoIsInItem => {
+          const email = it.Employee && (it.Employee.EMail) ? it.Employee.EMail : '';
           const photoUrl = email ? `${webUrl}/_layouts/15/userphoto.aspx?size=S&accountname=${encodeURIComponent(email)}` : '';
           return {
             ...it,
             EmployeeEmail: email,
             EmployeeTitle: it.Employee && it.Employee.JobTitle ? it.Employee.JobTitle : '',
             EmployeePhotoUrl: photoUrl
-          };
+          } as IWhoIsInItem;
         });
       } else {
         this._items = [];
@@ -144,8 +144,8 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('listName', {
+                  label: 'List name'
                 })
               ]
             }

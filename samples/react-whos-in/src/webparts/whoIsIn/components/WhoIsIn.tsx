@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './WhoIsIn.module.scss';
-import type { IWhoIsInProps } from './IWhoIsInProps';
+import type { IWhoIsInProps, IWhoIsInItem } from './IWhoIsInProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 type State = {
@@ -41,7 +41,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     const { items = [] } = this.props;
     const { date, office, search } = this.state;
 
-    return items.filter((item: any) => {
+    return items.filter((item: IWhoIsInItem) => {
       if (office && office !== 'All offices') {
         if ((item.BaseLocation || '') !== office) { return false; }
       }
@@ -70,10 +70,15 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
 
       if (search) {
         const q = search.toString().toLowerCase();
-        const employee = item.Employee && item.Employee.Title ? item.Employee.Title : (item.Employee || '');
-        const team = item.Team || '';
-        const badge = item.Badge || '';
-        const combined = `${employee} ${team} ${badge}`.toLowerCase();
+        // Safely extract the employee display name whether Employee is a string or an object.
+        // Use an 'in' check to narrow the union type and avoid "possibly undefined" errors.
+        let employee = '';
+        if (typeof item.Employee === 'object' && item.Employee !== null && 'Title' in item.Employee) {
+          employee = (item.Employee as { Title?: string }).Title || '';
+        } else if (typeof item.Employee === 'string') {
+          employee = item.Employee;
+        }
+        const combined = `${employee}`.toLowerCase();
         if (combined.indexOf(q) === -1) { return false; }
       }
 
@@ -88,7 +93,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     const { date, office, search } = this.state;
     const items = this.filteredItems();
 
-    const officesSet = new Set<string>((this.props.items || []).map((i: any) => i.BaseLocation || '').filter(Boolean));
+    const officesSet = new Set<string>((this.props.items || []).map((i: IWhoIsInItem) => i.BaseLocation || '').filter(Boolean));
     const officesArr: string[] = ['All offices'];
     officesSet.forEach((o) => officesArr.push(o));
     const offices = officesArr;
@@ -162,32 +167,38 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                     </tr>
                   </thead>
                   <tbody>
-                    {items.map((it: any, idx: number) => {
-                      const employee = it.Employee && it.Employee.Title ? it.Employee.Title : (it.Employee || '');
+                    {items.map((it: IWhoIsInItem, idx: number) => {
+                      const employee = (typeof it.Employee === 'object' && it.Employee && it.Employee.Title)
+                        ? it.Employee.Title
+                        : (typeof it.Employee === 'string' ? it.Employee : '');
                       const officeName = it.BaseLocation || '';
                       const checkIn = it.From ? new Date(it.From).toLocaleDateString() : '—';
                       const checkOut = it.To ? new Date(it.To).toLocaleDateString() : '—';
-                      const empTitle = it.EmployeeTitle;
+                      const empTitle = (typeof it.Employee === 'object' && it.Employee)
+                        ? (it.Employee.JobTitle  || '')
+                        : '';
+                      const photoUrl = it.EmployeePhotoUrl || '';
                      
                       return (
                         <tr key={it.ID || it.Id || idx}>
                           <td>
                             <div className={styles.employeeBlock}>
                               <div className={styles.avatar}>
-                                <img src={it.EmployeePhotoUrl} alt={employee} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                                {photoUrl ? (
+                                  <img src={photoUrl} alt={employee || ''} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                                ) : null}
                               </div>
                               <div>
                                 <div className={styles.employeeName}>{escape(String(employee))}</div>
                                 <div className={styles.employeeJobTitle}>{escape(String(empTitle))}</div>
-
                               </div>
                             </div>
                           </td>
-
+    
                           <td>{escape(officeName)}</td>
                           <td>{escape(checkIn)}</td>
                           <td>{escape(checkOut)}</td>
-
+    
                         </tr>
                       );
                     })}
