@@ -54,7 +54,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 
 ## Minimal Path to Awesome
 
-- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-hub-site-navigator) then unzip it)
+- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hub-site-navigator) then unzip it)
 - From your command line, change your current directory to the directory containing this sample (`REACT-HUB-SITE-NAVIGATOR`, located under `samples`)
 - in the command line run:
   - `npm install`
@@ -97,4 +97,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-react-hub-site-navigator" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-hub-site-navigator" />
