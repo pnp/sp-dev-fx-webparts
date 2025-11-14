@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dynamic-formular-generator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicFormularGenerator/DynamicFormularGeneratorWebPart.js",
+          "manifest": "./src/webparts/dynamicFormularGenerator/DynamicFormularGeneratorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DynamicFormularGeneratorWebPartStrings": "lib/webparts/dynamicFormularGenerator/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

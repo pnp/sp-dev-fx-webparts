@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "dev-sky Dynamic Form App",
+    "id": "2ba45745-b532-4cf8-96f6-30e30e081a20",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "iconPath": "assets/96x96.png",
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Send"
+      }
+    ],
+    "developer": {
+      "name": "Marc Andre Schröder-Zhou",
+      "websiteUrl": "https://www.dev-sky.net",
+      "privacyUrl": "",
+      "termsOfUseUrl": "https://go.microsoft.com/fwlink/?linkid=2041178",
+      "mpnId": "6499491"
+    },
+    "supportedLocales": [
+      "de-DE",
+      "en-US"
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "dev-sky.net .::. Dynamic Forms App for SharePoint Online"
+      },
+      "longDescription": {
+        "default": "Generate a form based on list and views information"
+      }
+    },
+    "features": [
+      {
+        "title": "dev-sky .:: Dynamic Form from View",
+        "description": "The feature that activates elements of the dynamic-forms solution.",
+        "id": "4b13308a-0b3f-45d7-8cd9-4eb6a45869fb",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/dev-sky-dynamic-forms.sppkg"
+  }
+}

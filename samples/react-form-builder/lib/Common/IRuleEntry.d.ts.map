@@ -1,0 +1,1 @@
+{"version":3,"file":"IRuleEntry.d.ts","sourceRoot":"","sources":["../../src/Common/IRuleEntry.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,UAAU;IACzB,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,MAAM,GAAC,IAAI,CAAC;IACtB,QAAQ,EAAE,MAAM,GAAC,IAAI,CAAC;IACtB,QAAQ,EAAE,MAAM,CAAC;IACjB,YAAY,EAAC,MAAM,CAAA;CACpB"}
