@@ -42,6 +42,10 @@ This allows the form to be flexibly integrated into all SharePoint pages. The we
 
 - [Marc André Schröder-Zhou](https://github.com/maschroeder-z)
 
+## Permissions
+ The following permission is request vai webApiPermissionRequests:
+ - resource: "Microsoft Graph" -> scope": "Mail.Send"
+  
 ## Prerequisites
 
 > You just need a SharePoint list and a view for field order configuration.
