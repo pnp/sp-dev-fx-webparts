@@ -5,6 +5,41 @@
   max-width: 800px;
 }
 
+// Mode Toggle Header
+.modeToggleContainer {
+  padding: 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+// Easy Mode Action Cards
+.actionCard {
+  padding: 16px;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+
+  &:hover {
+    border-color: #0078d4;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    border-color: #0078d4;
+    background-color: #deecf9;
+    box-shadow: 0 2px 8px rgba(0, 120, 212, 0.2);
+
+    &:hover {
+      background-color: #c7e0f4;
+    }
+  }
+}
+
 .section {
   margin-bottom: 24px;
 }

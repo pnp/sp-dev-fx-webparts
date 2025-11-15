@@ -16,6 +16,8 @@ import CustomActionManager from './components/CustomActionManager';
 import { ICustomActionManagerProps } from './components/ICustomActionManagerProps';
 import { ICustomActionManagerWebPartProps } from './ICustomActionManagerWebPartProps';
 import { CustomActionScope } from '../../models';
+import { PropertyPaneColumnConfiguration } from './propertyPane/PropertyPaneColumnConfiguration';
+import { ColumnSetting, deriveColumnSettings, serializeColumnConfiguration } from './utils/columnConfig';
 
 export default class CustomActionManagerWebPart extends BaseClientSideWebPart<ICustomActionManagerWebPartProps> {
 
@@ -35,7 +37,16 @@ export default class CustomActionManagerWebPart extends BaseClientSideWebPart<IC
         enableSearch: this.properties.enableSearch !== false,
         enableFiltering: this.properties.enableFiltering !== false,
         enableCRUD: this.properties.enableCRUD !== false,
-        showAdvancedProperties: this.properties.showAdvancedProperties || false
+        showAdvancedProperties: this.properties.showAdvancedProperties || false,
+        showTitleColumn: this.properties.showTitleColumn,
+        showLocationColumn: this.properties.showLocationColumn,
+        showSiteColumn: this.properties.showSiteColumn,
+        showScopeColumn: this.properties.showScopeColumn,
+        showComponentColumn: this.properties.showComponentColumn,
+        showSequenceColumn: this.properties.showSequenceColumn,
+        showDescriptionColumn: this.properties.showDescriptionColumn,
+        columnOrder: this.properties.columnOrder,
+        columnConfiguration: this.properties.columnConfiguration
       }
     );
 
@@ -65,6 +76,8 @@ export default class CustomActionManagerWebPart extends BaseClientSideWebPart<IC
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    const columnSettings = deriveColumnSettings(this.properties);
+
     return {
       pages: [
         {
@@ -129,10 +142,42 @@ export default class CustomActionManagerWebPart extends BaseClientSideWebPart<IC
                   checked: this.properties.showAdvancedProperties || false
                 })
               ]
+            },
+            {
+              groupName: strings.ColumnConfigurationGroupName,
+              groupFields: [
+                PropertyPaneColumnConfiguration({
+                  key: 'columnConfigurationField',
+                  targetProperty: 'columnConfiguration',
+                  label: strings.ColumnConfigurationFieldLabel,
+                  description: strings.ColumnConfigurationFieldDescription,
+                  settings: columnSettings,
+                  onChange: this._onColumnConfigurationChanged
+                })
+              ]
             }
           ]
         }
       ]
     };
   }
+
+  private _onColumnConfigurationChanged = (settings: ColumnSetting[]): void => {
+    const serialized = serializeColumnConfiguration(settings);
+    const previousValue = this.properties.columnConfiguration;
+
+    this.properties.columnConfiguration = serialized;
+    this.properties.columnOrder = settings.map(setting => setting.key).join(',');
+    this.properties.showTitleColumn = settings.find(setting => setting.key === 'title')?.visible ?? true;
+    this.properties.showLocationColumn = settings.find(setting => setting.key === 'location')?.visible ?? true;
+    this.properties.showSiteColumn = settings.find(setting => setting.key === 'site')?.visible ?? true;
+    this.properties.showScopeColumn = settings.find(setting => setting.key === 'scope')?.visible ?? true;
+    this.properties.showComponentColumn = settings.find(setting => setting.key === 'component')?.visible ?? true;
+    this.properties.showSequenceColumn = settings.find(setting => setting.key === 'sequence')?.visible ?? true;
+    this.properties.showDescriptionColumn = settings.find(setting => setting.key === 'description')?.visible ?? true;
+
+    this.onPropertyPaneFieldChanged('columnConfiguration', previousValue, serialized);
+    this.render();
+    this.context.propertyPane.refresh();
+  };
 }
