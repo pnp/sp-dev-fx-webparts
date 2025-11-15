@@ -5,23 +5,28 @@ export interface UserPersonaProps {
   context: WebPartContext;
 }
 
-export interface IGroupMembersProps {
-  context: WebPartContext;
-  roles: string[];
-  itemsPerPage?: number;
-  sortField?: string;
-  showPresenceIndicator?: boolean;
-  showSearchBox?: boolean;
-  adminLabel: string;
-  memberLabel: string;
-  visitorLabel: string;
-}
 
 export interface IGroup {
   id: string;
   displayName: string;
   '@odata.type': string;
   description?: string;
+}
+
+export interface ISite {
+  id: string;
+  displayName: string;
+  webUrl: string;
+  siteCollectionId?: string;
+  webId?: string;
+  isPersonalSite?: boolean;
+}
+
+export interface ISiteAccess {
+  id: string;
+  displayName: string;
+  roles: string[];
+  principalType: 'User' | 'Group' | 'SecurityGroup';
 }
 export interface IUser {
   id: string;
@@ -41,9 +46,17 @@ export interface IUser {
   businessPhones?: string[];
 
   mobilePhone?: string;
+
+  accessLevel?: 'owner' | 'admin' | 'member' | 'visitor';
+
+  source?: 'group' | 'site';
+  principalType?: 'User' | 'Group' | 'SecurityGroup' | 'ClaimsPrincipal' | string;
+  isGroup?: boolean;
 }
 
 export interface IUsersByRole {
+  owner: IUser[];
+
   admin: IUser[];
 
   member: IUser[];
@@ -52,6 +65,8 @@ export interface IUsersByRole {
 }
 
 export interface ICurrentPages {
+  owner: number;
+
   admin: number;
 
   member: number;
@@ -65,11 +80,3 @@ export interface IUserPresence {
   lastSeenDateTime?: string;
 }
 
-
-export interface ISharedDocument {
-  name: string;
-  webUrl: string;
-  lastModifiedDateTime: string;
-  fileType?: string;
-  size?: number;
-}

@@ -6,19 +6,68 @@ The **Group Members Web Part** provides a comprehensive solution for displaying 
 
 ![Group Members UI](./assets/GroupMembersUI.png)
 
-## Key Features
+- **Unified Site Member Discovery**: Works with both M365 Groups and Communication sites
+- **Smart Access Level Detection**: Automatically identifies Owners, Administrators, Members, and Visitors
+- **Microsoft Graph Integration**: Real-time data from Microsoft 365 and SharePoint APIs
+- **Smart Profile Images**: Automated fallback with initials, intelligent caching
+- **Advanced Search**: Debounced search across multiple user properties
+- **Role-based Filtering**: Owners, Administrators, Members, and Visitors
+- **Interactive Actions**: Direct Teams chat and email integration
+- **Customizable Title**: SharePoint native title editing with inline editing support
+- **Responsive Design**: Optimized for desktop and mobile experiences
+- **Accessibility**: Full screen reader and keyboard navigation support
 
-- **Role-Based Filtering**: Display users by role (Administrators, Members, Visitors)
-- **Advanced User Search**: Filter users by name, title, or other attributes
-- **Profile Photo Management**: Intelligent handling of user photos with fallbacks
-- **Quick Action Buttons**: One-click access to chat and email capabilities
-- **Presence Indicators**: Show real-time Teams presence status
-- **Responsive Design**: Optimized for all screen sizes
-- **Pagination Controls**: Simple navigation for large groups
-- **Customizable Labels**: Rename roles to match your organization's terminology
-- **Flexible Configuration**: Extensive property pane options for customization
+## Features
+- **Unified member discovery**: Pulls from M365 group owners/members and SharePoint site permissions, deduplicating to the highest access level.
+- **Role-aware display**: Owners/Admins/Members/Visitors with customizable labels and optional role chips under each persona.
+- **Filtering controls**: Hide claims principals (“Everyone”, etc.) and exclude service accounts via configurable patterns.
+- **Search & pagination**: Debounced search across name/title/department/location plus per-role paging.
+- **Presence & photos**: Batched Teams presence and photo prefetch with caching for fast persona rendering.
+- **Actions**: One-click Teams chat and email per person.
+- **Layout & chrome toggles**: Command bar, header, summary cards, role pivot tabs, section borders—all per-instance toggles.
+- **Header customization**: Localizable header title/subtitle or hide entirely.
+- **Responsive UI**: Fluent/SharePoint styling with responsive grids, pivots, and pagination.
+- **Accessibility**: Aria labels on commands, keyboard-friendly pagination, and error boundaries.
 
-## Compatibility
+## Configuration overview
+
+### 1. People & pagination
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Show Owners/Admins/Members/Visitors | Toggle each role on/off | Owners/Admins/Members on, Visitors off |
+| Items per page | Page size for each role section | 10 |
+| Sort field | `name` or `jobTitle` | `name` |
+
+### 2. Layout & chrome
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Search box | Display the search input above the list | On |
+| Presence indicator | Render Teams presence pills | Off |
+| Command bar | Show the page-level action bar (Refresh, Presence toggle) | On |
+| Page header | Show header title/subtitle | Off |
+| Summary cards | Display role counts above the list | Off |
+| Role navigation (pivot) | Tabs for switching roles | Off |
+| Section borders | Bordered vs. borderless cards | On |
+| Role label under persona | Show highest role below each name | Off |
+
+### 3. Header configuration
+
+- `pageHeaderTitle` – defaults to **People directory**
+- `pageHeaderSubtitle` – defaults to **Your site directory**
+
+### 4. Role labels
+
+Use `ownerLabel`, `adminLabel`, `memberLabel`, and `visitorLabel` to localize the role names that appear in section headers and persona labels.
+
+### 5. Filtering
+
+- `hideClaimsPrincipals` – hides well-known claims providers (Everyone, Everyone except external users, SPO grid, etc.)
+- `excludedPrincipals` – multi-line textbox; each line is a lower-case substring matched against login/UPN to suppress service accounts such as `sharepoint\system` or `nt service\`.
+
+
+## 6. Compatibility
 
 | :warning: Important          |
 |:---------------------------|
@@ -27,8 +76,8 @@ The **Group Members Web Part** provides a comprehensive solution for displaying 
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.20.2](https://img.shields.io/badge/SPFx-1.20.2-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)  
+![Node.js v18-22](https://img.shields.io/badge/Node.js-v18--22-green.svg)  
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -47,10 +96,50 @@ This sample is optimally compatible with the following environment configuration
 
 ## Prerequisites
 
+- SharePoint Online tenant
+- Microsoft 365 account with access to Microsoft Graph
 - Node.js v18
-- SharePoint Framework 1.20.2 or later
-- SharePoint Online environment
-- Microsoft 365 account with appropriate Graph API permissions
+- SharePoint Framework 1.20.2
+
+## Security and Permissions
+
+### Required Microsoft Graph API Permissions
+
+The following Microsoft Graph API permissions are required for full functionality:
+
+| Permission Scope | Purpose | Type |
+|-----------------|---------|------|
+| `User.Read.All` | Read comprehensive user profiles | Application |
+| `User.ReadBasic.All` | Read basic user profile information | Application |
+| `Group.Read.All` | Read Microsoft 365 group details | Application |
+| `GroupMember.Read.All` | Read group membership information | Application |
+| `Presence.Read.All` | Read user presence status in Microsoft Teams | Application |
+| `Sites.Read.All` | Read SharePoint site information and permissions | Application |
+| `Sites.ReadWrite.All` | Read and write SharePoint site permissions | Application |
+
+### Permission Request Process
+
+1. Deploy the web part solution
+2. Navigate to the SharePoint Admin Center
+3. Go to "Advanced" > "API Access"
+4. Approve the requested Microsoft Graph API permissions
+
+### Security Considerations
+
+- Users will only see group members they have permission to view
+- Respects existing SharePoint and Microsoft 365 group access controls
+- Permissions are scoped to read-only access
+
+## Known Limitations
+
+- Performance may vary with large group memberships
+- Profile photo retrieval depends on user's Microsoft 365 profile
+
+## Troubleshooting
+
+- Ensure proper Microsoft Graph API permissions
+- Verify network connectivity
+- Check browser console for specific error messages
 
 ## Contributors
 
@@ -60,7 +149,10 @@ This sample is optimally compatible with the following environment configuration
 
 | Version | Date            | Comments                                        |
 | ------- | --------------- | ----------------------------------------------- |
-| 1.0.0   | 28 February 2025   | Initial release                                 |
+| 4.0.0 | 15 November 2025 | Added configurable filtering, batched presence/photo loading, layout toggles, and reorganized settings |
+| 3.0.0 | 6 May 2025 | Major refactor with fixes to retreving the right information, deeper retrival from groups such as everyone except externals etc |
+| 2.0.0 | 15 March 2025 | Major refactor with GraphService, improved caching, LivePersona integration |
+| 1.0.0 | 28 February 2025   | Initial release                                 |
 
 
 ## Minimal Path to Awesome
@@ -76,153 +168,6 @@ This sample is optimally compatible with the following environment configuration
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 > 
-## Technical Details
-
-### Component Architecture
-
-The web part follows a component-based approach with these key elements:
-
-1. **GroupMembersWebPart**: Main web part that handles configuration and renders the core component
-2. **GroupMembersContainer**: Container component that manages state and data fetching
-3. **UserCard**: Individual user card component with profile details and actions
-4. **SearchBox**: Reusable search component with filtering capabilities
-5. **Pagination**: Navigation controls for large member lists
-6. **Service Classes**:
-   - **GraphService**: Handles all Microsoft Graph API requests
-   - **ProfilePhotoService**: Manages user profile photo retrieval and caching
-   - **PresenceService**: Retrieves real-time presence information from Teams
-
-### Microsoft Graph Integration
-
-The web part uses Microsoft Graph to retrieve:
-
-- Group membership details
-- User profile information
-- Profile photos
-- Presence status
-
-### Data Flow
-
-1. Web part initializes and determines current group context
-2. GraphService fetches group members based on configured roles
-3. User data is processed, sorted, and filtered based on web part properties
-4. UI components render with appropriate data and action handlers
-5. User interactions (search, pagination, etc.) trigger state updates
-
-### Web Part Properties
-
-| Property | Type | Description | Default | Required |
-|----------|------|-------------|---------|----------|
-| `roles` | Array of Strings | Roles to display (admin, member, visitor) | None | Yes |
-| `itemsPerPage` | Number | Number of users per page | 10 | No |
-| `sortField` | String | Sort users by 'name' or 'jobTitle' | 'name' | No |
-| `showSearchBox` | Boolean | Enable/disable search functionality | true | No |
-| `showPresenceIndicator` | Boolean | Show Microsoft Teams presence status | true | No |
-| `adminLabel` | String | Custom label for administrators | 'Administrators' | No |
-| `memberLabel` | String | Custom label for members | 'Members' | No |
-| `visitorLabel` | String | Custom label for visitors | 'Visitors' | No |
-
-### Usage Example
-
-```typescript
-// Web part configuration example
-{
-  roles: ['admin', 'member'],
-  itemsPerPage: 15,
-  sortField: 'jobTitle',
-  showSearchBox: true,
-  adminLabel: 'Leadership Team'
-}
-```
-
-### Advanced Configuration Options
-
-#### Profile Photo Settings
-
-The web part implements sophisticated profile photo handling:
-
-- **Fallback Mechanism**: If a user's profile photo isn't available, the web part generates an avatar with the user's initials
-- **Lazy Loading**: Photos are loaded only when visible in the viewport
-- **Caching**: Profile photos are cached to improve performance and reduce API calls
-
-#### Search Functionality
-
-The search component supports:
-
-- **Multi-attribute Search**: Search by name, email, job title
-- **Instant Results**: Real-time filtering as users type
-- **Debounced Input**: Performance optimization for search queries
-
-## Security and Permissions
-
-### Required Microsoft Graph API Permissions
-
-The following Microsoft Graph API permissions are required for full functionality:
-
-| Permission Scope | Purpose | Type |
-|-----------------|---------|------|
-| `User.Read.All` | Read comprehensive user profiles | Application |
-| `User.ReadBasic.All` | Read basic user profile information | Application |
-| `Group.Read.All` | Read Microsoft 365 group details | Application |
-| `GroupMember.Read.All` | Read group membership information | Application |
-| `Presence.Read.All` | Read user presence status in Microsoft Teams | Application |
-
-### Permission Request Process
-
-1. Deploy the web part solution
-2. Navigate to the SharePoint Admin Center
-3. Go to "Advanced" > "API Access"
-4. Approve the requested Microsoft Graph API permissions
-
-### Security Considerations
-
-- Users will only see group members they have permission to view
-- Respects existing SharePoint and Microsoft 365 group access controls
-- All data is retrieved via secure Graph API calls
-- No data is stored locally beyond caching for performance
-
-## Performance Optimizations
-
-- **Incremental Loading**: Large groups load members in batches
-- **Caching Strategy**: User data and photos are cached appropriately
-- **Throttling Protection**: Implements retry and backoff for API limits
-- **Render Optimization**: React memo and callback patterns for performance
-- **Virtualized Lists**: For very large groups, only visible items render
-
-## Accessibility Features
-
-- **Keyboard Navigation**: Full keyboard support for all interactive elements
-- **Screen Reader Support**: ARIA attributes for better accessibility
-- **Focus Management**: Proper focus handling for better keyboard navigation
-- **Color Contrast**: Meets WCAG standards for color contrast
-- **Text Scaling**: Supports browser text scaling for vision impairments
-
-## Current Limitations
-
-- Presence indicators require additional Graph API permissions
-- Performance may degrade with very large groups (1000+ members)
-- Quick actions depend on appropriate client applications being installed
-- Limited customization for user card appearance
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Missing Graph API Permissions**
-   - Symptom: "Access Denied" errors in the console
-   - Solution: Ensure API permissions are approved in SharePoint Admin Center
-
-2. **No Users Displayed**
-   - Symptom: Empty user list
-   - Solution: Verify current page is in a group context or configure default group
-
-3. **Profile Photos Not Loading**
-   - Symptom: Initials displayed instead of photos
-   - Solution: Check User.Read.All permission and verify user has Exchange Online license
-
-4. **Performance Issues**
-   - Symptom: Slow loading or unresponsive UI
-   - Solution: Reduce items per page, disable presence indicators for large groups
 
 ## References
 

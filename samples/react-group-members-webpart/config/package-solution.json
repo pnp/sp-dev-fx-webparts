@@ -3,7 +3,7 @@
   "solution": {
     "name": "group-members-web-part-client-side-solution",
     "id": "7cdc593f-2944-47b9-88b3-3c30dd7faf42",
-    "version": "1.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -23,7 +23,7 @@
       },
       "screenshotPaths": [],
       "videoUrl": "",
-      "categories": ["Microsoft Graph", "User Management", "Collaboration"]
+      "categories": ["Collaboration"]
     },
     "features": [
       {
@@ -53,6 +53,14 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Presence.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.ReadWrite.All"
       }
     ]
   },

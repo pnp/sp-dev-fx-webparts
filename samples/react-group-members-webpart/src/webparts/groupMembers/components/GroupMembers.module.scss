@@ -14,6 +14,9 @@ $sp-neutralLight: "[theme:neutralLight, default:#edebe9]";
 $sp-neutralLighter: "[theme:neutralLighter, default:#f3f2f1]";
 $sp-white: "[theme:white, default:#ffffff]";
 
+$breakpoint-medium: 1024px;
+$breakpoint-small: 640px;
+
 // Mixins for reusable styles
 @mixin flex-center {
   display: flex;
@@ -39,9 +42,71 @@ $sp-white: "[theme:white, default:#ffffff]";
 $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
 
 .groupMembers {
-  padding: 16px 24px;
+  padding: 16px 24px 32px;
   min-height: 100%;
   font-family: $font-stack;
+  background-color: $sp-white;
+
+  .pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .headerText {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    margin: 0;
+    font-weight: 600;
+    color: $sp-neutralPrimary;
+  }
+
+  .subtitle {
+    color: $sp-neutralSecondary;
+  }
+
+  .commandBar {
+    min-width: 220px;
+  }
+
+  .summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .summaryCard {
+    background-color: $sp-neutralLighter;
+    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1px solid $sp-neutralLight;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .summaryLabel {
+    color: $sp-neutralSecondary;
+  }
+
+  .summaryValue {
+    margin-top: 6px;
+    font-weight: 600;
+    color: $sp-themePrimary;
+  }
+
+  .pivotContainer {
+    margin-bottom: 8px;
+  }
+
+  .separator {
+    margin: 8px 0 16px;
+  }
 
   // Header styles
   .header {
@@ -58,12 +123,13 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
 
   // Search container styles
   .searchContainer {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     max-width: 600px;
     position: relative;
 
     .searchBox {
       width: 100%;
+      border-radius: 4px;
 
       &:hover {
         border-color: $sp-themePrimary;
@@ -90,11 +156,22 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
   .contentContainer {
     .userSection {
       margin-bottom: 32px;
+      background-color: $sp-white;
+      border-radius: 8px;
+      border: 1px solid $sp-neutralLight;
+      padding: 16px;
+
+      &.#{'userSectionBorderless'} {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+      }
 
       // Section header styles
       .sectionHeader {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         margin-bottom: 16px;
 
         .sectionTitle {
@@ -175,41 +252,138 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
         }
       }
 
-      // List view styles
+      // List view styles - FIXED for proper alignment and overflow
       .userList {
         .listItem {
           padding: 12px 16px;
-          border-radius: 4px;
+          border-radius: 6px;
           margin-bottom: 8px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           cursor: pointer;
           @include transition-ease;
+          min-height: 56px; // Ensure consistent height
+          overflow: hidden; // Prevent content overflow
+          border: 1px solid transparent;
 
           &:hover {
             color: $sp-themePrimary;
             background-color: $sp-neutralLighter;
+            border-color: $sp-themePrimary;
+          }
+
+          // Main content area (persona)
+          .personaContainer {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0; // Allow shrinking
+            margin-right: 12px;
+            position: relative;
+            
+            // Fix for Persona component alignment
+            :global(.ms-Persona) {
+              display: flex;
+              align-items: center;
+              min-width: 0;
+              width: 100%;
+              
+              :global(.ms-Persona-coin) {
+                flex-shrink: 0; // Keep coin size fixed
+                margin-right: 0;
+              }
+              
+              :global(.ms-Persona-details) {
+                flex: 1;
+                min-width: 0; // Allow text to shrink
+                padding-left: 10px !important; // add spacing between image and text
+                
+                :global(.ms-Persona-primaryText) {
+                  font-weight: 600;
+                  color: $sp-neutralPrimary;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-width: 100%;
+                }
+                
+                :global(.ms-Persona-secondaryText) {
+                  color: $sp-themePrimary;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-width: 100%;
+                }
+                
+                :global(.ms-Persona-tertiaryText) {
+                  color: $sp-neutralSecondary;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-width: 100%;
+                }
+                
+                :global(.ms-Persona-optionalText) {
+                  color: $sp-neutralSecondary;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-width: 100%;
+                }
+              }
+            }
           }
 
           .personaWrapper {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 8px;
+          }
+
+          .principalBadge {
+            background-color: $sp-neutralLighter;
+            color: $sp-neutralSecondary;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 600;
           }
           
           .presenceCircle {
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: 2px;
+            right: 2px;
             width: 10px;
             height: 10px;
             border-radius: 50%;
             border: 2px solid $sp-white;
+            z-index: 1;
           }
 
+          // Action buttons container - FIXED alignment
           .listActions {
             display: flex;
             align-items: center;
+            flex-shrink: 0;
+            gap: 4px;
+            
+            :global(.ms-Button) {
+              min-width: 32px;
+              width: 32px;
+              height: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              
+              :global(.ms-Button-icon) {
+                margin: 0 !important;
+                font-size: 14px;
+              }
+            }
           }
         }
 
@@ -224,17 +398,28 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
         justify-content: center;
         margin-top: 24px;
 
-        .loadMoreButton {
-          min-width: 180px;
-        }
-
         .paginationControls {
           display: flex;
           align-items: center;
+          gap: 8px;
 
           .paginationText {
             margin: 0 16px;
             color: $sp-neutralSecondary;
+          }
+
+          .paginationButton {
+            background: transparent;
+            border: none;
+            color: $sp-themePrimary;
+            font-weight: 600;
+            :global(.ms-Button-label) {
+              font-weight: 600;
+            }
+            &:hover {
+              background-color: rgba(0,0,0,0.04);
+              border-radius: 999px;
+            }
           }
         }
       }
@@ -301,6 +486,66 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
       }
     }
   }
+
+  @media (max-width: $breakpoint-medium) {
+    padding: 12px 16px 24px;
+
+    .pageHeader {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .commandBar {
+      width: 100%;
+    }
+
+    .summaryGrid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .contentContainer .userSection {
+      padding: 12px;
+    }
+  }
+
+  @media (max-width: $breakpoint-small) {
+    .summaryGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .searchContainer {
+      max-width: 100%;
+    }
+
+    .pivotContainer {
+      overflow-x: auto;
+      :global(.ms-Pivot-links) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    .contentContainer .userList .listItem {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+
+      .listActions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+}
+
+// Error boundary styles
+.errorBoundary {
+  margin: 16px 0;
+
+  .errorMessage {
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
 // Profile image and default coin styles
@@ -308,6 +553,11 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
   @include circle-base(40px);
   object-fit: cover;
   border: 1px solid $sp-neutralLight;
+  @include transition-ease(opacity);
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .defaultCoin {
@@ -322,6 +572,22 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  @include transition-ease(all);
+
+  &:hover {
+    background-color: $sp-themeDark;
+    transform: scale(1.05);
+  }
+}
+
+// Loading animation for profile images
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 
 // Global Styles for SharePoint components
@@ -371,23 +637,70 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
     }
   }
 
-  // Persona styles
+  // Persona styles - ENHANCED with proper text overflow
   .ms-Persona {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    
+    .ms-Persona-coin {
+      flex-shrink: 0 !important;
+      margin-right: 12px !important;
+    }
+    
     .ms-Persona-details {
-      padding-left: 12px;
+      flex: 1 !important;
+      min-width: 0 !important;
+      padding-left: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
     }
 
     .ms-Persona-primaryText {
-      font-weight: 600;
-      color: $sp-neutralPrimary;
+      font-weight: 600 !important;
+      color: $sp-neutralPrimary !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 100% !important;
+      line-height: 1.3 !important;
+      margin-bottom: 2px !important;
     }
 
     .ms-Persona-secondaryText {
-      color: $sp-themePrimary;
+      color: $sp-themePrimary !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 100% !important;
+      line-height: 1.2 !important;
+      margin-bottom: 1px !important;
+    }
+    
+    .ms-Persona-tertiaryText {
+      color: $sp-neutralSecondary !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 100% !important;
+      line-height: 1.2 !important;
+      font-size: 12px !important;
+    }
+    
+    .ms-Persona-optionalText {
+      color: $sp-neutralSecondary !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 100% !important;
+      line-height: 1.2 !important;
+      font-size: 12px !important;
     }
 
     .ms-PersonaCoin-initials {
-      font-weight: 600;
+      font-weight: 600 !important;
     }
   }
 
@@ -437,9 +750,29 @@ $font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica
     }
   }
 
-  // Button styles in list actions
-  .listActions .ms-Button {
-    margin-left: 4px;
+  // Button styles in list actions - IMPROVED alignment
+  .listActions {
+    :global(.ms-Button) {
+      margin-left: 4px;
+      min-width: 32px !important;
+      width: 32px !important;
+      height: 32px !important;
+      
+      :global(.ms-Button-flexContainer) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+      
+      :global(.ms-Button-icon) {
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
   
   // Button styles in action buttons
