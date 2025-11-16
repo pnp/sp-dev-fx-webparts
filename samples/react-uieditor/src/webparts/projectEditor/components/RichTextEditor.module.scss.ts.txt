@@ -1,0 +1,20 @@
+
+require("./RichTextEditor.module.css");
+const styles = {
+  richTextEditor: 'richTextEditor_e2c6d5a4',
+  toolbar: 'toolbar_e2c6d5a4',
+  divider: 'divider_e2c6d5a4',
+  editorContainer: 'editorContainer_e2c6d5a4',
+  editor: 'editor_e2c6d5a4',
+  sourceEditor: 'sourceEditor_e2c6d5a4',
+  fileLabel: 'fileLabel_e2c6d5a4',
+  fileInput: 'fileInput_e2c6d5a4',
+  imagePreview: 'imagePreview_e2c6d5a4',
+  imagePreviewLabel: 'imagePreviewLabel_e2c6d5a4',
+  dialogContent: 'dialogContent_e2c6d5a4',
+  uploadSection: 'uploadSection_e2c6d5a4',
+  orDivider: 'orDivider_e2c6d5a4',
+  uploadButton: 'uploadButton_e2c6d5a4'
+};
+
+export default styles;
