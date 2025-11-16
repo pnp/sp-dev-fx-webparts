@@ -7,16 +7,28 @@ This solution enables content authors to manage structured project or content da
 
 ![React UI Editor Demo](./assets/react-uieditor.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
-![Node.js v18.17.1](https://img.shields.io/badge/Node.js-v18.17.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https://aka.ms/spfx)
-* [Microsoft 365 Tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Microsoft 365 Tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 Developer Program](http://aka.ms/o365devprogram)
 
@@ -44,11 +56,11 @@ This solution enables content authors to manage structured project or content da
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- In the command-line run:
-  - `npm install`
-  - `gulp serve`
+* Clone this repository
+* Ensure that you are at the solution folder
+* In the command-line run:
+  * `npm install`
+  * `gulp serve`
 
 > Include any additional steps as needed.
 
@@ -68,8 +80,6 @@ Add-PnPField -List "UI Editor Projects" -DisplayName "SortOrder" -InternalName "
 Add-PnPField -List "UI Editor Projects" -DisplayName "Active" -InternalName "Active" -Type Boolean -AddToDefaultView
 ```
 
----
-
 ## Features
 
 ### Core Features
@@ -84,9 +94,7 @@ Add-PnPField -List "UI Editor Projects" -DisplayName "Active" -InternalName "Act
 ***Note: Please add the ProjectImages Folder inside the SiteAssets Library***
 * **Responsive & Modern Design** — Styled with Fluent UI + custom SCSS for a seamless Microsoft 365 look.
 
----
-
-## Technical Highlights
+### Technical Highlights
 
 * **React Hooks** — State management via `useState`, `useEffect`, and custom handlers.
 * **PnP JS** — Used for efficient SharePoint list CRUD and batch operations.
@@ -95,25 +103,21 @@ Add-PnPField -List "UI Editor Projects" -DisplayName "Active" -InternalName "Act
 * **HTML Sanitization** — Custom sanitization logic for editor content.
 * **Custom CSS Modules / SCSS** — Fully themeable, isolated styles for Card and Accordion layouts.
 
----
+### Layout Modes
 
-## Layout Modes
-
-### Card View
+#### Card View
 
 Visually enhanced card layout with hover animations, gradients, and structured content.
 
 ![Cards View](./assets/cards-view.png)
 
-### Accordion View
+#### Accordion View
 
 Expandable accordion interface optimized for long text sections.
 
 ![Accordion View](./assets/accordion-view.png)
 
----
-
-## Configuration & Management Panel
+### Configuration & Management Panel
 
 * **List Selection** — Choose any SharePoint list with compatible schema.
 * **Item Management** — Add, edit, delete, activate/deactivate, and reorder items.
@@ -123,9 +127,7 @@ Expandable accordion interface optimized for long text sections.
 
 ![Configuration Panel](./assets/config-panel.png)
 
----
-
-## Rich Text Editor Features
+### Rich Text Editor Features
 
 * Text formatting: bold, italic, underline, strikethrough
 * Headings (H1–H6)
@@ -137,11 +139,9 @@ Expandable accordion interface optimized for long text sections.
 * Undo/redo
 * Source code toggle (HTML view)
 
----
+### Usage
 
-## Usage
-
-### Add to a Modern Page
+#### Add to a Modern Page
 
 1. Edit your SharePoint modern page.
 2. Add the **React UI Editor** web part.
@@ -150,13 +150,10 @@ Expandable accordion interface optimized for long text sections.
 5. Manage your content directly in the configuration panel.
 6. Publish the page.
 
----
-
 Absolutely 👍 — here’s a clean **note block** you can add to your `README.md`, right under your new **“📁 Required Style Mapping Files”** section:
 
----
-
 ⚠️ **Note:**
+
 * In this sample, the following style mapping files are provided as `.txt` files to comply with repository upload and file-type restrictions.
 
 * Before building or running the solution, **rename them to `.ts`**:
@@ -168,13 +165,13 @@ Absolutely 👍 — here’s a clean **note block** you can add to your `README.
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
-- [PnP JS Documentation](https://pnp.github.io/pnpjs/)
-- [Fluent UI React](https://developer.microsoft.com/en-us/fluentui#/controls/web)
+* [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
+* [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
+* [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
+* [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
+* [PnP JS Documentation](https://pnp.github.io/pnpjs/)
+* [Fluent UI React](https://developer.microsoft.com/en-us/fluentui#/controls/web)
 
 ## Help
 
@@ -195,6 +192,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-uieditor" />
