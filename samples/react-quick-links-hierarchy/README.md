@@ -15,7 +15,7 @@ A modern **SharePoint Framework (SPFx)** web part that provides a **hierarchical
 ## Applies to
 
 * [SharePoint Framework](https://aka.ms/spfx)
-* [Microsoft 365 Tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Microsoft 365 Tenant](https://docs.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 Developer Program](http://aka.ms/o365devprogram)
 
@@ -47,11 +47,11 @@ A modern **SharePoint Framework (SPFx)** web part that provides a **hierarchical
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- In the command-line run:
-  - `npm install`
-  - `gulp serve`
+* Clone this repository
+* Ensure that you are at the solution folder
+* In the command-line run:
+  * `npm install`
+  * `gulp serve`
 
 ### Create the SharePoint List
 
@@ -73,9 +73,7 @@ Before using the web part, create a SharePoint list with the required structure.
 * **Real-time Updates** — Changes reflect immediately in the web part
 * **Responsive Design** — Works seamlessly on desktop and mobile devices
 
----
-
-## Technical Highlights
+### Technical Highlights
 
 * **React Hooks** — Modern state management with `useState`, `useEffect`, and `useMemo`
 * **PnP JS v4** — Efficient SharePoint REST API interactions
@@ -85,11 +83,9 @@ Before using the web part, create a SharePoint list with the required structure.
 * **Tree Data Structure** — Efficient hierarchical data rendering
 * **Lookup Field Support** — Self-referencing lookup for parent-child relationships
 
----
+### User Interface
 
-## User Interface
-
-### Display Mode (End User View)
+#### Display Mode (End User View)
 
 The web part displays links in a clean, collapsible hierarchy:
 
@@ -99,15 +95,13 @@ The web part displays links in a clean, collapsible hierarchy:
 * Only **active items** (IsActive = true) are displayed
 * Items are sorted by **SortOrder** field, then alphabetically
 
-### Edit Mode (Configuration View)
+#### Edit Mode (Configuration View)
 
 When the page is in edit mode, a gear icon (⚙️) appears to open the configuration panel.
 
----
+### Configuration Panel Features
 
-## Configuration Panel Features
-
-### Toolbar Actions
+#### Toolbar Actions
 
 * **Save Changes** — Commits edits to SharePoint list
 * **Apply Configuration** — Closes panel and refreshes web part
@@ -116,7 +110,7 @@ When the page is in edit mode, a gear icon (⚙️) appears to open the configur
 * **List Selection Dropdown** — Choose which list to manage
 * **Lock/Unlock Button** — Prevent accidental list changes
 
-### Tree View (Left Pane)
+#### Tree View (Left Pane)
 
 * **Visual Hierarchy** — Shows parent-child relationships
 * **Expand/Collapse** — All items expanded by default
@@ -125,7 +119,7 @@ When the page is in edit mode, a gear icon (⚙️) appears to open the configur
 * **Add Child** — Create child under selected item
 * **Delete** — Remove selected item (orphans children)
 
-### Item Editor (Right Pane)
+#### Item Editor (Right Pane)
 
 Edit form with the following fields:
 
@@ -139,50 +133,53 @@ Edit form with the following fields:
 * **Sort Order** — Numeric ordering within parent
 * **Description** — Optional notes field
 
----
+### Usage
 
-## Usage
-
-### Add to a Modern Page
+#### Add to a Modern Page
 
 1. Edit your SharePoint modern page
 2. Add a new web part
 3. Search for **"Quick Links Hierarchy"**
 4. Click the web part to add it to the page
 
-### Initial Configuration
+#### Initial Configuration
 
 1. Click the **⚙️ gear icon** in edit mode
 2. Select a SharePoint list from the dropdown
 3. Click **Lock** icon to prevent accidental changes
 4. The tree will load automatically
 
-### Managing Links
+#### Managing Links
 
-#### Add a Parent Item
+##### Add a Parent Item
+
 1. Click **Add Parent** button
 2. Fill in the form (required: Link Label)
 3. Check **Is Header** if creating a folder
 4. Click **Save Changes**
 
-#### Add a Child Item
+##### Add a Child Item
+
 1. Select a parent item in the tree
 2. Click **Add Child** button
 3. Fill in the form
 4. Click **Save Changes**
 
-#### Edit an Item
+##### Edit an Item
+
 1. Click on any item in the tree
 2. Modify fields in the right pane
 3. Click **Save Changes**
 
-#### Delete an Item
+##### Delete an Item
+
 1. Select the item in the tree
 2. Click **Delete** button
 3. Confirm deletion
 4. Note: Children become orphaned (move them first if needed)
 
-#### Reorder Items
+##### Reorder Items
+
 1. Edit the **Sort Order** field
 2. Lower numbers appear first
 3. Items with same sort order are alphabetized
@@ -193,11 +190,9 @@ Edit form with the following fields:
 2. Save and publish the page
 3. End users see only active links
 
----
+### Customization
 
-## Customization
-
-### Icon Names
+#### Icon Names
 
 The web part uses Fluent UI icons. Common icon names:
 
@@ -209,9 +204,9 @@ The web part uses Fluent UI icons. Common icon names:
 * `Phone` — Phone
 * `Settings` — Settings
 
-Full icon list: [Fluent UI Icons](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)
+Full icon list: [Fluent UI Icons](https://developer.microsoft.com/fluentui#/styles/web/icons)
 
-### Styling
+#### Styling
 
 The web part includes custom SCSS modules:
 
@@ -220,48 +215,44 @@ The web part includes custom SCSS modules:
 
 Modify these files to customize appearance.
 
----
 
-## Troubleshooting
+### Troubleshooting
 
-### Links Not Appearing
+#### Links Not Appearing
 
 * Ensure **IsActive** is set to **true**
 * Check that **ParentLinkId** references a valid parent
 * Verify list permissions
 
-### Tree Not Loading
+#### Tree Not Loading
 
 * Confirm list ID is correct
 * Check browser console for errors
 * Verify all required columns exist
 
-### Configuration Panel Won't Open
+#### Configuration Panel Won't Open
 
 * Ensure page is in **Edit Mode**
 * Check if web part has edit permissions
 * Refresh the page
 
----
-
-## Known Limitations
+### Known Limitations
 
 * Maximum recommended items: 5000 (SharePoint list view threshold)
 * Self-referencing lookups must be managed carefully
 * Deleting parents orphans children (doesn't cascade delete)
 * No drag-and-drop reordering (use Sort Order field)
 
----
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft Teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
-- [PnP JS Documentation](https://pnp.github.io/pnpjs/)
-- [Fluent UI React](https://developer.microsoft.com/en-us/fluentui#/controls/web)
+* [Getting started with SharePoint Framework](https://docs.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant)
+* [Building for Microsoft Teams](https://docs.microsoft.com//sharepoint/dev/spfx/build-for-teams-overview)
+* [Use Microsoft Graph in your solution](https://docs.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
+* [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com//sharepoint/dev/spfx/publish-to-marketplace-overview)
+* [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
+* [PnP JS Documentation](https://pnp.github.io/pnpjs/)
+* [Fluent UI React](https://developer.microsoft.com//fluentui#/controls/web)
 
 ## Help
 
