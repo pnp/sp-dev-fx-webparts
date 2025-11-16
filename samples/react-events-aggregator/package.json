@@ -20,7 +20,7 @@
     "kind-of": ">=6.0.3",
     "cryptiles": ">=4.1.2",
     "fstream": ">=1.0.12",
-    "js-yaml": ">=3.13.1",
+    "js-yaml": ">=4.1.1",
     "lodash.merge": ">=4.6.2",
     "macaddress": ">=0.2.9",
     "node.extend": ">=1.1.7",
