@@ -67,7 +67,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 1. Functionality to view all hub sites and associated sites in Tree View
 2. Functionality to filter the sites by title
 3. Functionality to view the details for the sites, copy URL etc.
-4. Functionality to adjust the height of the webpart
+4. Functionality to adjust the height of the web part
 
 ## References
 
