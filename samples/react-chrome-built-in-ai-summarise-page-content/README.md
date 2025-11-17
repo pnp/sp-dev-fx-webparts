@@ -2,15 +2,15 @@
 
 ## Summary
 
-This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with advanced features including caching, translation, multilingual support, and permission-based access control. All AI processing runs entirely in the browser using Chrome's on-device AI capabilities—no server-side APIs required.
+This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with advanced features including caching, translation, multilingual support, and permission-based access control. All AI processing runs entirely in the browser using Chrome's on-device AI capabilities - no server-side APIs required.
 
-![Demo](./attachments/demo.gif)
+![Demo](./assets/demo.gif)
 
 ### Summary in English using Chrome built-in AI summarization
-![Summary Result English](./attachments/summary-result-en.png)
+![Summary Result English](./assets/summary-result-en.png)
 
 ### Summary in Italian using Chrome built-in AI translation (of a page in Italian)
-![Summary Result Italian](./attachments/summary-result-it.png)
+![Summary Result Italian](./assets/summary-result-it.png)
 
 ## Used SharePoint Framework Version
 
