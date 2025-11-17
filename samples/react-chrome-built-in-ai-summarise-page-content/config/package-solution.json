@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Summarize Page Content - Built-In AI",
+    "id": "d886e845-de39-49c1-9a6e-b75009e92d26",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Summarize SharePoint page content using Chrome's built-in AI Summarizer API"
+      },
+      "longDescription": {
+        "default": "Summarize SharePoint page content using Chrome's built-in AI Summarizer API"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "summarize-page-content-built-in-ai Feature",
+        "description": "The feature that activates elements of the summarize-page-content-built-in-ai solution.",
+        "id": "352fb2e5-df4a-4aad-9c19-b9be677f396c",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema-summary-cache.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/summarize-page-content-built-in-ai.sppkg"
+  }
+}
