@@ -15218,20 +15218,11 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content",
     "source": "pnp",
     "title": "SharePoint Page Summarization with Chrome Built-in AI (Gemini Nano)",
-    "shortDescription": "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with multilingual support, translation, caching, and permission-based access control. All AI processing runs entirely in the browser.",
+    "shortDescription": "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
     "longDescription": [
-      "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with advanced features including:",
-      "- On-device AI processing (no external API calls)",
-      "- SharePoint list caching for generated summaries",
-      "- Automatic language detection and translation support",
-      "- Multilingual support (English, Japanese, Spanish, Italian, French)",
-      "- Permission-based access control (only editors can generate summaries)",
-      "- Real-time streaming of summary generation",
-      "- Smooth animations and modern UI with Fluent UI React",
-      "- Integration with Microsoft Graph API for page content extraction",
-      "All AI processing runs entirely in the browser using Chrome's on-device AI capabilities—no server-side APIs or Azure functions required."
+      "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with multilingual support, translation, caching, and permission-based access control. All AI processing runs entirely in the browser."
     ],
     "creationDateTime": "2025-11-17",
     "updateDateTime": "2025-11-17",
@@ -15256,19 +15247,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/demo.gif",
         "alt": "Web Part Demo"
       },
       {
         "type": "image",
         "order": 200,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/summarize-result-en.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-en.png",
         "alt": "Summarize Result English"
       },
       {
         "type": "image",
         "order": 300,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/summarize-result-it.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-it.png",
         "alt": "Summarize Result Italian"
       }
     ],
