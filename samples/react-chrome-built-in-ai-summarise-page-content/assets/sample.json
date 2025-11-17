@@ -2,7 +2,7 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content",
     "source": "pnp",
-    "title": "SharePoint Page Summarization with Chrome Built-in AI (Gemini Nano)",
+    "title": "Page Summarization with Chrome Built-in AI",
     "shortDescription": "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
@@ -30,20 +30,23 @@
     ],
     "thumbnails": [
       {
+        "name": "demo.gif",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/demo.gif",
         "alt": "Web Part Demo"
       },
       {
+        "name": "summarize-result-en.png",
         "type": "image",
-        "order": 200,
+        "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-en.png",
         "alt": "Summarize Result English"
       },
       {
+        "name": "summarize-result-it.png",
         "type": "image",
-        "order": 300,
+        "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-it.png",
         "alt": "Summarize Result Italian"
       }
