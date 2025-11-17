@@ -15215,6 +15215,89 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content",
+    "source": "pnp",
+    "title": "SharePoint Page Summarization with Chrome Built-in AI (Gemini Nano)",
+    "shortDescription": "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with multilingual support, translation, caching, and permission-based access control. All AI processing runs entirely in the browser.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
+    "longDescription": [
+      "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content with advanced features including:",
+      "- On-device AI processing (no external API calls)",
+      "- SharePoint list caching for generated summaries",
+      "- Automatic language detection and translation support",
+      "- Multilingual support (English, Japanese, Spanish, Italian, French)",
+      "- Permission-based access control (only editors can generate summaries)",
+      "- Real-time streaming of summary generation",
+      "- Smooth animations and modern UI with Fluent UI React",
+      "- Integration with Microsoft Graph API for page content extraction",
+      "All AI processing runs entirely in the browser using Chrome's on-device AI capabilities—no server-side APIs or Azure functions required."
+    ],
+    "creationDateTime": "2025-11-17",
+    "updateDateTime": "2025-11-17",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/demo.gif",
+        "alt": "Web Part Demo"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/summarize-result-en.png",
+        "alt": "Summarize Result English"
+      },
+      {
+        "type": "image",
+        "order": 300,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/attachments/summarize-result-it.png",
+        "alt": "Summarize Result Italian"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "anoopt",
+        "pictureUrl": "https://github.com/anoopt.png",
+        "name": "Anoop T"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Chrome Built-in AI",
+        "description": "Chrome's built-in AI APIs provide on-device machine learning capabilities including summarization, translation, and language detection using Gemini Nano.",
+        "url": "https://developer.chrome.com/docs/ai/built-in"
+      },
+      {
+        "name": "Chrome Summarizer API",
+        "description": "The Summarizer API enables on-device text summarization using Chrome's built-in AI model.",
+        "url": "https://developer.chrome.com/docs/ai/summarizer-api"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-company-stories",
     "source": "pnp",
     "title": "Company Stories Web Part",
