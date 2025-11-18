@@ -1,0 +1,83 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.telemetryEventSenderSample {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+/* --- Telemetry UI styles --- */
+
+.telemetryStatus {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.telemetryOn {
+  color: #107c10; // Fluent "success" green
+  font-weight: 600;
+}
+
+.telemetryOff {
+  color: #a80000; // Fluent "error" red
+  font-weight: 600;
+}
+
+.actions {
+  margin-top: 12px;
+}
+
+.primaryButton {
+  padding: 6px 16px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: "[theme:themePrimary, default:#0078d4]";
+  background-color: var(--link); // reuse theme link color
+  color: #ffffff;
+
+  &:hover {
+    background-color: "[theme:themeDarker, default:#005a9e]";
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.helperText {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
