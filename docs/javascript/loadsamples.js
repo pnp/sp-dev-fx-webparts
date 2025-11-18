@@ -1,12 +1,7 @@
 /**
  * This file is unique for each sample browser. It contains the logic specific to each repo for loading the samples as needed.
  */
-var jsonPath = "https://pnp.github.io/sp-dev-fx-webparts/samples.json";
-if (window.location.host.toLowerCase() !== "pnp.github.io") {
-  // When serving locally there is no /teams-dev-samples in the path
-  jsonPath = window.location.origin + "/sp-dev-fx-webparts/samples.json";
-  console.log(`Reading samples from ${jsonPath}`);
-}
+var jsonPath = "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/samples.json";
 
 /**
  * Reads a sample metadata and returns a pre-populated HTML element
