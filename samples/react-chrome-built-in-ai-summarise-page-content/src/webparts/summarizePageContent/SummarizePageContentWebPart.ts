@@ -68,7 +68,16 @@ export default class SummarizePageContentWebPart extends BaseClientSideWebPart<I
           showSummaryText: this.properties.showSummaryText || strings.ShowSummaryText,
           regenerateSummaryText: this.properties.regenerateSummaryText || strings.RegenerateSummaryText,
           apiNotSupportedWarning: this.properties.apiNotSupportedWarning || strings.ApiNotSupportedWarning,
-          waitForEditorText: this.properties.waitForEditorText || strings.WaitForEditorText
+          waitForEditorText: this.properties.waitForEditorText || strings.WaitForEditorText,
+          
+          // Status Messages with fallback to locale strings
+          statusInitializing: strings.StatusInitializing,
+          statusCheckingCache: strings.StatusCheckingCache,
+          statusPreparingTranslation: strings.StatusPreparingTranslation,
+          statusDownloadingModel: strings.StatusDownloadingModel,
+          statusInitializingModel: strings.StatusInitializingModel,
+          statusFetchingContent: strings.StatusFetchingContent,
+          statusGeneratingSummary: strings.StatusGeneratingSummary
         }
       )
     );

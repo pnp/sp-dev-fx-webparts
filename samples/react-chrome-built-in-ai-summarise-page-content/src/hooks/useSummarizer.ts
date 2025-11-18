@@ -11,6 +11,7 @@ interface UseSummarizerReturn {
     error: string;
     isSupported: boolean;
     downloadProgress: number | undefined;
+    statusMessage: string;
     summarizePage: (forceRegenerate?: boolean) => Promise<void>;
     stopSummarizing: () => void;
     clearSummary: () => void;
@@ -22,12 +23,30 @@ export const useSummarizer = (
     summarizerFormat: string = 'markdown',
     summarizerLength: string = 'medium',
     sharedContext: string = 'This is a SharePoint page with business content.',
-    context: string = 'This is SharePoint page content that needs to be summarized for business users.'
+    context: string = 'This is SharePoint page content that needs to be summarized for business users.',
+    statusMessages: {
+        initializing: string;
+        checkingCache: string;
+        preparingTranslation: string;
+        downloadingModel: string;
+        initializingModel: string;
+        fetchingContent: string;
+        generatingSummary: string;
+    } = {
+        initializing: 'Initializing...',
+        checkingCache: 'Checking cache...',
+        preparingTranslation: 'Preparing translation...',
+        downloadingModel: 'Downloading model...',
+        initializingModel: 'Initializing AI model...',
+        fetchingContent: 'Fetching page content...',
+        generatingSummary: 'Generating summary...'
+    }
 ): UseSummarizerReturn => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [summary, setSummary] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [downloadProgress, setDownloadProgress] = useState<number | undefined>(undefined);
+    const [statusMessage, setStatusMessage] = useState<string>('');
     const [isSupported, setIsSupported] = useState<boolean>(true);
     const abortRef = useRef<boolean>(false);
     const summarizerRef = useRef<any>(null);
@@ -179,6 +198,7 @@ export const useSummarizer = (
             setError('');
             setSummary('');
             setDownloadProgress(undefined);
+            setStatusMessage(statusMessages.initializing);
 
             // Get page ID for caching
             const pageId = (pageContext.listItem as any)?.uniqueId;
@@ -189,16 +209,19 @@ export const useSummarizer = (
 
             // Check cache first (unless forceRegenerate is true)
             if (!forceRegenerate) {
+                setStatusMessage(statusMessages.checkingCache);
                 const cachedSummary = await getCachedSummary(pageId, languageCode);
                 if (cachedSummary) {
                     setSummary(cachedSummary);
                     setIsLoading(false);
+                    setStatusMessage('');
                     return;
                 }
             }
 
             // Pre-create translators if language is not supported (requires user gesture)
             if (!isLanguageSupported) {
+                setStatusMessage(statusMessages.preparingTranslation);
                 try {
                     await translate('test', languageCode, 'en');
                     await translate('test', 'en', languageCode);
@@ -232,15 +255,22 @@ export const useSummarizer = (
 
             // Only add monitor if model needs to be downloaded
             if (availability === 'downloadable') {
+                setStatusMessage(statusMessages.downloadingModel);
                 summarizerOptions.monitor = (m: any) => {
                     m.addEventListener('downloadprogress', (e: any) => {
-                        setDownloadProgress(e.loaded);
+                        setDownloadProgress(e.loaded * 100);
                     });
                 };
+            } else {
+                setStatusMessage(statusMessages.initializingModel);
             }
 
             const summarizer = await (window as unknown as Window).Summarizer.create(summarizerOptions);
             summarizerRef.current = summarizer;
+            
+            // Clear download progress and update status
+            setDownloadProgress(undefined);
+            setStatusMessage(statusMessages.fetchingContent);
 
             if (abortRef.current) {
                 summarizer.destroy();
@@ -262,6 +292,8 @@ export const useSummarizer = (
             if (!cleanedContent || cleanedContent.length === 0) {
                 throw new Error('No content found on the page to summarize.');
             }
+            
+            setStatusMessage(statusMessages.generatingSummary);
 
             if (abortRef.current) {
                 summarizer.destroy();
@@ -416,6 +448,7 @@ export const useSummarizer = (
         } finally {
             setIsLoading(false);
             setDownloadProgress(undefined);
+            setStatusMessage('');
         }
     }, [checkSupport, pageContext, languageCode, getCachedSummary, isLanguageSupported, translate, getPageContentUsingGraphAPI, cleanPageContent, useStreaming, summarizerType, summarizerFormat, summarizerLength, effectiveSharedContext, effectiveContext, detectLanguage, translateStreaming, translateMarkdown, saveSummary, updateSummary]);
 
@@ -425,6 +458,7 @@ export const useSummarizer = (
         error,
         isSupported,
         downloadProgress,
+        statusMessage,
         summarizePage,
         stopSummarizing,
         clearSummary

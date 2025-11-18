@@ -25,6 +25,7 @@ const SummarizePageContent: React.FC<ISummarizePageContentProps> = (props) => {
     error,
     isSupported,
     downloadProgress,
+    statusMessage,
     summarizePage,
     stopSummarizing
   } = useSummarizer(
@@ -33,7 +34,16 @@ const SummarizePageContent: React.FC<ISummarizePageContentProps> = (props) => {
     props.summarizerFormat ?? 'markdown',
     props.summarizerLength ?? 'medium',
     props.sharedContext ?? 'This is a SharePoint page with business content.',
-    props.context ?? 'This is SharePoint page content that needs to be summarized for business users.'
+    props.context ?? 'This is SharePoint page content that needs to be summarized for business users.',
+    {
+      initializing: props.statusInitializing,
+      checkingCache: props.statusCheckingCache,
+      preparingTranslation: props.statusPreparingTranslation,
+      downloadingModel: props.statusDownloadingModel,
+      initializingModel: props.statusInitializingModel,
+      fetchingContent: props.statusFetchingContent,
+      generatingSummary: props.statusGeneratingSummary
+    }
   );
 
   const [isCollapsed, setIsCollapsed] = React.useState<boolean>(false);
@@ -171,6 +181,7 @@ const SummarizePageContent: React.FC<ISummarizePageContentProps> = (props) => {
             <div className={styles.progressContainer}>
               <ProgressIndicator 
                 label={props.downloadingModelText}
+                description={statusMessage}
                 percentComplete={downloadProgress / 100}
                 barHeight={4}
               />
@@ -182,6 +193,16 @@ const SummarizePageContent: React.FC<ISummarizePageContentProps> = (props) => {
               <div className={styles.summaryInner}>
                 {renderSummary()}
               </div>
+            </div>
+          )}
+
+          {downloadProgress === undefined && isLoading && statusMessage && !isCollapsed && (
+            <div className={styles.progressContainer}>
+              <ProgressIndicator 
+                label={statusMessage}
+                percentComplete={undefined}
+                barHeight={4}
+              />
             </div>
           )}
         </>

@@ -17,4 +17,13 @@ export interface ISummarizePageContentProps {
   regenerateSummaryText: string;
   apiNotSupportedWarning: string;
   waitForEditorText: string;
+  
+  // Status Messages
+  statusInitializing: string;
+  statusCheckingCache: string;
+  statusPreparingTranslation: string;
+  statusDownloadingModel: string;
+  statusInitializingModel: string;
+  statusFetchingContent: string;
+  statusGeneratingSummary: string;
 }

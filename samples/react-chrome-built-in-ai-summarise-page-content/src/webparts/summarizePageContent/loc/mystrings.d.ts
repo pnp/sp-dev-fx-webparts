@@ -24,6 +24,15 @@ declare interface ISummarizePageContentWebPartStrings {
   ApiNotSupportedWarning: string;
   WaitForEditorText: string;
   SummarizerContext: string;
+  
+  // Status Messages
+  StatusInitializing: string;
+  StatusCheckingCache: string;
+  StatusPreparingTranslation: string;
+  StatusDownloadingModel: string;
+  StatusInitializingModel: string;
+  StatusFetchingContent: string;
+  StatusGeneratingSummary: string;
 }
 
 declare module 'SummarizePageContentWebPartStrings' {

@@ -24,6 +24,15 @@ define([], function() {
     "RegenerateSummaryText": "Rigenera riepilogo",
     "ApiNotSupportedWarning": "L'API Summarizer non è supportata nel tuo browser. Utilizza Chrome 138 o versioni successive.",
     "WaitForEditorText": "Attendi che l'editore generi il riepilogo",
-    "SummarizerContext": "Questo è il contenuto di una pagina SharePoint che deve essere riassunto per gli utenti aziendali."
+    "SummarizerContext": "Questo è il contenuto di una pagina SharePoint che deve essere riassunto per gli utenti aziendali.",
+    
+    // Status Messages
+    "StatusInitializing": "Inizializzazione...",
+    "StatusCheckingCache": "Controllo cache...",
+    "StatusPreparingTranslation": "Preparazione traduzione...",
+    "StatusDownloadingModel": "Download modello in corso...",
+    "StatusInitializingModel": "Inizializzazione modello AI...",
+    "StatusFetchingContent": "Recupero contenuto pagina...",
+    "StatusGeneratingSummary": "Generazione riepilogo..."
   };
 });

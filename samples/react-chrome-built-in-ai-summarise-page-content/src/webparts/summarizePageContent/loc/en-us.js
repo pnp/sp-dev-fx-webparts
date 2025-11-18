@@ -24,6 +24,15 @@ define([], function() {
     "RegenerateSummaryText": "Regenerate summary",
     "ApiNotSupportedWarning": "The Summarizer API is not supported in your browser. Please use Chrome 138 or later.",
     "WaitForEditorText": "Wait for editor to generate summary",
-    "SummarizerContext": "This is SharePoint page content that needs to be summarized for business users."
+    "SummarizerContext": "This is SharePoint page content that needs to be summarized for business users.",
+    
+    // Status Messages
+    "StatusInitializing": "Initializing...",
+    "StatusCheckingCache": "Checking cache...",
+    "StatusPreparingTranslation": "Preparing translation...",
+    "StatusDownloadingModel": "Downloading model...",
+    "StatusInitializingModel": "Initializing AI model...",
+    "StatusFetchingContent": "Fetching page content...",
+    "StatusGeneratingSummary": "Generating summary..."
   };
 });
