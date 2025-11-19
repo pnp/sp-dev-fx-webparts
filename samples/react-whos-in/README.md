@@ -2,7 +2,7 @@
 
 ## Summary
 
-A SharePoint Framework (SPFx) React web part that shows who is in the office and when:
+A web part that shows who is in the office and when:
 - Filter by destination office, traveler name, and date range
 - See "currently in" counts per office
 - Display profile picture and job title (when available)
@@ -56,7 +56,6 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 - Shows user job title (from list/person field or Graph when configured)
 
 
-> You can adjust the available offices in code (see Configuration section below).
 
 ## Minimal Path to Awesome (Local Debug)
 

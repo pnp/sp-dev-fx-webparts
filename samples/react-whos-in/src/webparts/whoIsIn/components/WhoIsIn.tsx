@@ -163,7 +163,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                   <thead>
                     <tr>
                       <th>Employee</th>
-                      <th>Office</th>
+                      <th>Visiting Office</th>
                       <th>Arriving on</th>
                       <th>Departing</th>
                     </tr>
@@ -173,7 +173,7 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                       const employee = (typeof it.Employee === 'object' && it.Employee && it.Employee.Title)
                         ? it.Employee.Title
                         : (typeof it.Employee === 'string' ? it.Employee : '');
-                      const officeName = it.BaseLocation || '';
+                      const officeName = it.TravellingTo || '';
                       const checkIn = it.From ? new Date(it.From).toLocaleDateString() : '—';
                       const checkOut = it.To ? new Date(it.To).toLocaleDateString() : '—';
                       const empTitle = (typeof it.Employee === 'object' && it.Employee)
