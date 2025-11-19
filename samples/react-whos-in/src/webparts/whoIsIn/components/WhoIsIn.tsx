@@ -157,9 +157,15 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
             {errorMessageDecoded ? (
               <div style={{ border: '1px solid #f87171', background: '#fff1f2', color: '#7f1d1d', padding: 12, marginBottom: 12, borderRadius: 4 }}>
                 <strong>Error:</strong>{' '}
-                <span style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>
-                  {errorMessageDecoded}
-                </span>
+                <div style={{ marginTop: 6, whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>
+                  {/* Show the canonical list name (from props) so it renders exactly as configured. */}
+                  The SharePoint list <strong>{this.props.listName || '(unknown)'}</strong> was not found or is inaccessible. Please provision the list and ensure the web part has permission to access it.
+                </div>
+                {errorMessageDecoded ? (
+                  <div style={{ marginTop: 8, color: '#374151', fontSize: 13 }}>
+                    <em>Details:</em> <span style={{ whiteSpace: 'pre-wrap' }}>{errorMessageDecoded}</span>
+                  </div>
+                ) : null}
               </div>
             ) : null}
             <div className={styles.listCard}>
