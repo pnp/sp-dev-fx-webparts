@@ -3,6 +3,11 @@ import styles from './WhoIsIn.module.scss';
 import type { IWhoIsInProps, IWhoIsInItem } from './IWhoIsInProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
+// WhoIsIn component
+// - Displays office attendance for a selected date (day view).
+// - Provides sidebar filters (date, office, search).
+// - Computes filtered results and renders a visitors summary and table.
+
 type State = {
   date: string;
   office: string;
@@ -16,19 +21,19 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     search: ''
   };
 
-  private onDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  private onDateChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ date: e.target.value });
   };
 
-  private onOfficeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  private onOfficeChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     this.setState({ office: e.target.value });
   };
 
-  private onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  private onSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ search: e.target.value });
   };
 
-  private clearFilters = () => {
+  private clearFilters = (): void => {
     this.setState({
       date: new Date().toISOString().slice(0, 10),
       office: 'All offices',
@@ -36,8 +41,8 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     });
   };
 
-
-  private filteredItems = () => {
+  // Filter logic: apply office, date range, and search query filters.
+  private filteredItems = (): IWhoIsInItem[] => {
     const { items = [] } = this.props;
     const { date, office, search } = this.state;
 
@@ -70,8 +75,6 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
 
       if (search) {
         const q = search.toString().toLowerCase();
-        // Safely extract the employee display name whether Employee is a string or an object.
-        // Use an 'in' check to narrow the union type and avoid "possibly undefined" errors.
         let employee = '';
         if (typeof item.Employee === 'object' && item.Employee !== null && 'Title' in item.Employee) {
           employee = (item.Employee as { Title?: string }).Title || '';
@@ -86,8 +89,10 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     });
   };
 
-  private totalVisitors = () => this.filteredItems().length;
+  // Helper returning number of filtered visitors.
+  private totalVisitors = (): number => this.filteredItems().length;
 
+  // Render: sidebar filters + visitors list/table
   public render(): React.ReactElement<IWhoIsInProps> {
     const { hasTeamsContext } = this.props;
     const { date, office, search } = this.state;
@@ -105,8 +110,6 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
             <h1 className={styles.pageTitle}>Office Attendance — Day View</h1>
             <div className={styles.subtitle}>Quickly see who visited which office on a selected day.</div>
           </div>
-
-
         </div>
 
         <div className={styles.layoutGrid}>
@@ -163,7 +166,6 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                       <th>Office</th>
                       <th>Arriving on</th>
                       <th>Departing</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -175,10 +177,10 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                       const checkIn = it.From ? new Date(it.From).toLocaleDateString() : '—';
                       const checkOut = it.To ? new Date(it.To).toLocaleDateString() : '—';
                       const empTitle = (typeof it.Employee === 'object' && it.Employee)
-                        ? (it.Employee.JobTitle  || '')
+                        ? (it.Employee.JobTitle || '')
                         : '';
                       const photoUrl = it.EmployeePhotoUrl || '';
-                     
+
                       return (
                         <tr key={it.ID || it.Id || idx}>
                           <td>
@@ -194,11 +196,10 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                               </div>
                             </div>
                           </td>
-    
+
                           <td>{escape(officeName)}</td>
                           <td>{escape(checkIn)}</td>
                           <td>{escape(checkOut)}</td>
-    
                         </tr>
                       );
                     })}
@@ -206,8 +207,6 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
                 </table>
               )}
             </div>
-
-
           </div>
         </div>
       </section>

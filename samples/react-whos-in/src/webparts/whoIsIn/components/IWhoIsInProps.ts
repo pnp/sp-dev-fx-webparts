@@ -1,3 +1,6 @@
+// Type definitions for the WhoIsIn component
+// - IWhoIsInItem describes the shape of a record from the WhoIsIn SharePoint list.
+// - IWhoIsInProps lists props passed into the WhoIsIn React component.
 export interface IWhoIsInItem {
   ID?: number;
   Id?: number;
@@ -5,14 +8,12 @@ export interface IWhoIsInItem {
   TravellingTo?: string;
   From?: string;
   To?: string;
-  // Employee can be either a display string or an object with details from SharePoint
   Employee?: string | {
     JobTitle?: string;
     Title?: string;
     EMail?: string;
     Id?: number;
   };
-  // optional photo url stored on the item
   EmployeePhotoUrl?: string;
 }
 
@@ -21,6 +22,5 @@ export interface IWhoIsInProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
-  // items loaded from the WhoIsIn SharePoint list (optional)
   items?: IWhoIsInItem[];
 }

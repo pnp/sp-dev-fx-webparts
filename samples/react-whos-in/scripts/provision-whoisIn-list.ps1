@@ -8,13 +8,13 @@ param(
     [switch]$Force
 )
 
-function Ensure-Connection {
+function Connect-Site {
     param([string]$Url)
     Write-Host "Connecting to $Url ..."
-    Connect-PnPOnline -Url $Url -UseWebLogin
+    Connect-PnPOnline -Url $Url -Interactive
 }
 
-function Ensure-List {
+function New-PnPListIfMissing {
     param([string]$Title)
     $list = Get-PnPList -Identity $Title -ErrorAction SilentlyContinue
     if ($null -eq $list) {
@@ -26,7 +26,7 @@ function Ensure-List {
     }
 }
 
-function Ensure-Field {
+function Add-PnPFieldIfMissing {
     param(
         [string]$List,
         [string]$DisplayName,
@@ -47,29 +47,29 @@ function Ensure-Field {
         "Choice" {
             $choices = $Options -as [string[]]
 
-            # Call Add-PnPField using splatting and only include AddToDefaultView if the cmdlet supports it
+            
             $addCmd = Get-Command Add-PnPField -ErrorAction SilentlyContinue
             if ($null -ne $addCmd -and $addCmd.Parameters.Keys -contains 'AddToDefaultView') {
                 $params = @{
-                    List = $List
-                    DisplayName = $DisplayName
-                    InternalName = $InternalName
-                    Type = 'Choice'
-                    Group = 'WhoIsIn Columns'
-                    Choices = $choices
+                    List             = $List
+                    DisplayName      = $DisplayName
+                    InternalName     = $InternalName
+                    Type             = 'Choice'
+                    Group            = 'WhoIsIn Columns'
+                    Choices          = $choices
                     AddToDefaultView = $true
-                    ErrorAction = 'Stop'
+                    ErrorAction      = 'Stop'
                 }
             }
             else {
                 $params = @{
-                    List = $List
-                    DisplayName = $DisplayName
+                    List         = $List
+                    DisplayName  = $DisplayName
                     InternalName = $InternalName
-                    Type = 'Choice'
-                    Group = 'WhoIsIn Columns'
-                    Choices = $choices
-                    ErrorAction = 'Stop'
+                    Type         = 'Choice'
+                    Group        = 'WhoIsIn Columns'
+                    Choices      = $choices
+                    ErrorAction  = 'Stop'
                 }
             }
             Add-PnPField @params
@@ -79,23 +79,23 @@ function Ensure-Field {
             $addCmd = Get-Command Add-PnPField -ErrorAction SilentlyContinue
             if ($null -ne $addCmd -and $addCmd.Parameters.Keys -contains 'AddToDefaultView') {
                 $params = @{
-                    List = $List
-                    DisplayName = $DisplayName
-                    InternalName = $InternalName
-                    Type = 'User'
-                    Group = 'WhoIsIn Columns'
+                    List             = $List
+                    DisplayName      = $DisplayName
+                    InternalName     = $InternalName
+                    Type             = 'User'
+                    Group            = 'WhoIsIn Columns'
                     AddToDefaultView = $true
-                    ErrorAction = 'Stop'
+                    ErrorAction      = 'Stop'
                 }
             }
             else {
                 $params = @{
-                    List = $List
-                    DisplayName = $DisplayName
+                    List         = $List
+                    DisplayName  = $DisplayName
                     InternalName = $InternalName
-                    Type = 'User'
-                    Group = 'WhoIsIn Columns'
-                    ErrorAction = 'Stop'
+                    Type         = 'User'
+                    Group        = 'WhoIsIn Columns'
+                    ErrorAction  = 'Stop'
                 }
             }
             Add-PnPField @params
@@ -109,10 +109,10 @@ function Ensure-Field {
             $addFromXmlCmd = Get-Command Add-PnPFieldFromXml -ErrorAction SilentlyContinue
             if ($null -ne $addFromXmlCmd -and $addFromXmlCmd.Parameters.Keys -contains 'AddToDefaultView') {
                 $params = @{
-                    List = $List
-                    FieldXml = $fieldXml
+                    List             = $List
+                    FieldXml         = $fieldXml
                     AddToDefaultView = $true
-                    ErrorAction = 'Stop'
+                    ErrorAction      = 'Stop'
                 }
                 Add-PnPFieldFromXml @params
             }
@@ -147,15 +147,15 @@ function Ensure-Field {
 }
 
 # Script start
-Ensure-Connection -Url $SiteUrl
-Ensure-List -Title $ListTitle
+Connect-Site -Url $SiteUrl
+New-PnPListIfMissing -Title $ListTitle
 
 Write-Host "Ensuring fields..."
-Ensure-Field -List $ListTitle -DisplayName "Employee" -InternalName "Employee" -Type "User"
-Ensure-Field -List $ListTitle -DisplayName "Base Location" -InternalName "BaseLocation" -Type "Choice" -Options @("Auckland", "Wellington", "Christchurch")
-Ensure-Field -List $ListTitle -DisplayName "Travelling to" -InternalName "TravellingTo" -Type "Choice" -Options @("Auckland", "Wellington", "Christchurch")
-Ensure-Field -List $ListTitle -DisplayName "From" -InternalName "From" -Type "DateTime" -Options "DateOnly"
-Ensure-Field -List $ListTitle -DisplayName "To" -InternalName "To" -Type "DateTime" -Options "DateOnly"
+Add-PnPFieldIfMissing -List $ListTitle -DisplayName "Employee" -InternalName "Employee" -Type "User"
+Add-PnPFieldIfMissing -List $ListTitle -DisplayName "Base Location" -InternalName "BaseLocation" -Type "Choice" -Options @("Auckland", "Wellington", "Christchurch")
+Add-PnPFieldIfMissing -List $ListTitle -DisplayName "Travelling to" -InternalName "TravellingTo" -Type "Choice" -Options @("Auckland", "Wellington", "Christchurch")
+Add-PnPFieldIfMissing -List $ListTitle -DisplayName "From" -InternalName "From" -Type "DateTime" -Options "DateOnly"
+Add-PnPFieldIfMissing -List $ListTitle -DisplayName "To" -InternalName "To" -Type "DateTime" -Options "DateOnly"
 
 Write-Host "Provisioning complete. List '$ListTitle' is ready."
 

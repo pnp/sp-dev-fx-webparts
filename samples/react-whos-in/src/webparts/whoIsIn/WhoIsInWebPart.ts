@@ -54,8 +54,18 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
           .expand('Employee')();
         // enrich items with a computed photo URL (SharePoint user photo endpoint)
         const webUrl = this.context.pageContext.web.absoluteUrl;
-        this._items = (items || []).map((it: any): IWhoIsInItem => {
-          const email = it.Employee && (it.Employee.EMail) ? it.Employee.EMail : '';
+        // Define a narrow incoming item shape to avoid using `any`.
+        type IncomingItem = {
+          ID?: number;
+          Id?: number;
+          BaseLocation?: string;
+          TravellingTo?: string;
+          From?: string;
+          To?: string;
+          Employee?: { JobTitle?: string; Title?: string; EMail?: string; Id?: number };
+        };
+        this._items = (items || []).map((it: IncomingItem): IWhoIsInItem => {
+          const email = it.Employee && it.Employee.EMail ? it.Employee.EMail : '';
           const photoUrl = email ? `${webUrl}/_layouts/15/userphoto.aspx?size=S&accountname=${encodeURIComponent(email)}` : '';
           return {
             ...it,
