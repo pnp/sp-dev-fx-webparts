@@ -23,6 +23,8 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
   private _environmentMessage: string = '';
   // cached items from the WhoIsIn list
   private _items: IWhoIsInItem[] = [];
+  // Optional error message surfaced to the React component when list access fails.
+  private _errorMessage?: string;
 
   public render(): void {
     const element: React.ReactElement<IWhoIsInProps> = React.createElement(
@@ -32,7 +34,9 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        items: this._items
+        items: this._items,
+        listName: this.properties.listName || 'WhoIsIn',
+        errorMessage: this._errorMessage
       }
     );
 
@@ -43,14 +47,16 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
     // load environment message first
     this._environmentMessage = await this._getEnvironmentMessage();
 
+    // Determine list title up-front so we can refer to it in error messages.
+    const listTitle = this.properties.listName || 'WhoIsIn';
+
     // initialize PnP and load items from the WhoIsIn SharePoint list
     try {
       const sp = getSP(this.context);
       if (sp) {
         // include Employee EMail so we can derive a profile photo URL client-side
-        const listTitle = this.properties.listName || 'WhoIsIn';
         const items = await sp.web.lists.getByTitle(listTitle)
-          .items.select('ID', 'BaseLocation', 'TravellingTo', 'From', 'To', 'Employee/JobTitle', 'Employee/Title','Employee/EMail','Employee/Id')
+          .items.select('ID', 'BaseLocation', 'TravellingTo', 'From', 'To', 'Employee/JobTitle', 'Employee/Title', 'Employee/EMail', 'Employee/Id')
           .expand('Employee')();
         // enrich items with a computed photo URL (SharePoint user photo endpoint)
         const webUrl = this.context.pageContext.web.absoluteUrl;
@@ -74,6 +80,8 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
             EmployeePhotoUrl: photoUrl
           } as IWhoIsInItem;
         });
+        // clear any previous error state on success
+        this._errorMessage = undefined;
       } else {
         this._items = [];
       }
@@ -82,6 +90,15 @@ export default class WhoIsInWebPart extends BaseClientSideWebPart<IWhoIsInWebPar
       // don't block init on errors; log for debugging
       // eslint-disable-next-line no-console
       console.error('Error loading WhoIsIn list items', error);
+      // Surface a friendly error message to the component when the list
+      // cannot be found or is inaccessible.
+      const errMsg = (error && (error as any).message) ? (error as any).message : String(error);
+      const lower = errMsg.toLowerCase();
+      if (lower.includes('not found') || lower.includes('404') || lower.includes('does not exist') || (lower.includes('list') && lower.includes('does not exist'))) {
+        this._errorMessage = `The SharePoint list '${listTitle}' was not found or is inaccessible. Please provision the list and ensure the web part has permission to access it.`;
+      } else {
+        this._errorMessage = `Unable to load data from the SharePoint list '${listTitle}': ${errMsg}`;
+      }
       this._items = [];
     }
 

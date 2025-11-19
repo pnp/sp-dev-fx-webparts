@@ -41,6 +41,13 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     });
   };
 
+  private decodeHtml = (html: string): string => {
+    if (!html) { return ''; }
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  };
+
   // Filter logic: apply office, date range, and search query filters.
   private filteredItems = (): IWhoIsInItem[] => {
     const { items = [] } = this.props;
@@ -98,6 +105,8 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
     const { date, office, search } = this.state;
     const items = this.filteredItems();
 
+    const errorMessageDecoded = this.props.errorMessage ? this.decodeHtml(String(this.props.errorMessage)) : undefined;
+
     const officesSet = new Set<string>((this.props.items || []).map((i: IWhoIsInItem) => i.BaseLocation || '').filter(Boolean));
     const officesArr: string[] = ['All offices'];
     officesSet.forEach((o) => officesArr.push(o));
@@ -145,6 +154,14 @@ export default class WhoIsIn extends React.Component<IWhoIsInProps, State> {
           </aside>
 
           <div className={styles.contentColumn}>
+            {errorMessageDecoded ? (
+              <div style={{ border: '1px solid #f87171', background: '#fff1f2', color: '#7f1d1d', padding: 12, marginBottom: 12, borderRadius: 4 }}>
+                <strong>Error:</strong>{' '}
+                <span style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>
+                  {errorMessageDecoded}
+                </span>
+              </div>
+            ) : null}
             <div className={styles.listCard}>
               <div className={styles.cardHeader}>
                 <div>

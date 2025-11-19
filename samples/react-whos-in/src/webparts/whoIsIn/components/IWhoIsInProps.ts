@@ -23,4 +23,11 @@ export interface IWhoIsInProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   items?: IWhoIsInItem[];
+  listName?: string;
+  /**
+   * Optional error message surfaced from the web part when the SharePoint list
+   * cannot be found or is inaccessible. If provided the UI should render this
+   * message prominently so authors/operators can diagnose provisioning issues.
+   */
+  errorMessage?: string;
 }

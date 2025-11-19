@@ -33,6 +33,26 @@ Create a SharePoint list named "Who is in" to store trips with the following col
 
 Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to provision the list.
 
+## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+## Contributors
+
+- [Sudeep Ghatak](https://github.com/sudeepghatak)
+
 ## Version history
 
 | Version | Date           | Comments                            |
@@ -56,8 +76,7 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 - Shows user job title (from list/person field or Graph when configured)
 
 
-
-## Minimal Path to Awesome (Local Debug)
+## Minimal Path to Awesome 
 
 - Open a terminal in the sample folder:
   - cd samples/react-whos-in
@@ -71,7 +90,7 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
   - https://yourtenant.sharepoint.com/_layouts/15/workbench.aspx
 - Add the “React Who’s In” web part to the canvas.
 
-## Build and Deploy (Production)
+## Package and Deploy 
 
 1) Build and package
 - gulp clean
@@ -88,28 +107,7 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 - Add the app to your target site
 - Add the web part to a page
 
-## Microsoft Graph Permissions (optional but recommended)
 
-To show photos/titles for users across the tenant, include these in config/package-solution.json and re-package:
-
-```json
-{
-  "solution": {
-    "webApiPermissionRequests": [
-      {
-        "resource": "Microsoft Graph",
-        "scope": "User.Read"
-      },
-      {
-        "resource": "Microsoft Graph",
-        "scope": "User.ReadBasic.All"
-      }
-    ]
-  }
-}
-```
-
-After deployment, approve the permissions in the SharePoint Admin Center > Advanced > API access.
 
 ## Configuration
 
