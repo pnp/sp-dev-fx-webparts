@@ -1,6 +1,6 @@
 {
     "name": "pnp-script-editor",
-    "version": "1.0.25",
+    "version": "1.0.26",
     "private": true,
     "main": "lib/index.js",
     "resolutions": {
