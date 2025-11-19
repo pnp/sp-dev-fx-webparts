@@ -12,18 +12,18 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
 ### Summary in Italian using Chrome built-in AI translation (of a page in Italian)
 ![Summary Result Italian](./assets/summary-result-it.png)
 
+### First time experience - Model Download for editors and summary generation
+![Model Download](./assets/model-download-and-generation.gif)
+
+### Summary Regeneration by editors (faster than first time)
+![Regenerate Summary](./assets/regenerate-summary.gif)
+
+### Experience for read-only users (no model download)
+![Read-only Experience](./assets/readonly-user.gif)
+
 ## Used SharePoint Framework Version
 
 ![version](https://img.shields.io/badge/version-1.21.1-green.svg)
-
-## Key Dependencies
-
-- **SPFx**: 1.21.1
-- **React**: 17.0.1
-- **Fluent UI React**: 8.106.4
-- **@apvee/spfx-react-toolkit**: 1.0.0 - Provides essential SPFx React hooks
-- **PnPjs**: Via spfx-react-toolkit for SharePoint operations
-- **marked**: 17.0.0 - Markdown parsing and rendering
 
 ## Applies to
 
@@ -46,6 +46,18 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
   - GPU: More than 4 GB of VRAM, OR
   - CPU: 16 GB of RAM and 4+ CPU cores
 - **Network**: Unlimited data or unmetered connection for model download
+
+### Instructions for editors (users generating summaries)
+
+#### Verify Device Performance Class (Optional)
+- Open Chrome and navigate to `chrome://on-device-internals`
+- Check the value for `Device performance class`. If it is `low` or `Very low`, summarization may take a long time.
+
+#### Using the Summarizer
+- The first time you use the summarizer, the Gemini Nano model (~3 GB) will be downloaded. Ensure you have sufficient disk space and an unmetered network connection.
+- This might take a while depending on your connection speed.
+- Once downloaded, the article will be summarized locally in the browser.
+- For subsequent uses, the summarizer will be ready to use immediately without re-downloading the model.
 
 ### Development Requirements
 - Node.js v18 LTS
@@ -106,6 +118,15 @@ gulp package-solution --ship
 ```
 
 The package will be available at: `sharepoint/solution/summarize-page-content-built-in-ai.sppkg`
+
+## Key Dependencies
+
+- **SPFx**: 1.21.1
+- **React**: 17.0.1
+- **Fluent UI React**: 8.106.4
+- **@apvee/spfx-react-toolkit**: 1.0.0 - Provides essential SPFx React hooks
+- **PnPjs**: Via spfx-react-toolkit for SharePoint operations
+- **marked**: 17.0.0 - Markdown parsing and rendering
 
 ## Features
 
