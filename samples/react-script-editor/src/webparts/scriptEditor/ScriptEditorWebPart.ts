@@ -32,7 +32,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 const prefix = this.properties.externalScript.indexOf('?') === -1 ? '?' : '&';
                 const response = await fetch(`${this.properties.externalScript}${prefix}pnp=${new Date().getTime()}`);
                 this._externalScriptContent = await response.text();
-            } catch (e) {
+            } catch {
                 this._externalScriptContent = 'Failed to load external script.';
             }
         }
