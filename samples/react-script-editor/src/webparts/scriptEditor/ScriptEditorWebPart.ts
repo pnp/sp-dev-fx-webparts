@@ -195,32 +195,28 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
 
-    private evalScript(elem) {
+    private evalScript(elem): void {
         const data = (elem.text || elem.textContent || elem.innerHTML || "");
-        const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        const scriptTag = document.createElement("script");
-
-        for (let i = 0; i < elem.attributes.length; i++) {
-            const attr = elem.attributes[i];
-            // Copies all attributes in case of loaded script relies on the tag attributes
-            if (attr.name.toLowerCase() === "onload") continue; // onload handled after loading with SPComponentLoader
-            scriptTag.setAttribute(attr.name, attr.value);
+        
+        // Check if this is an external script
+        if (elem.src && elem.src.length > 0) {
+            // External scripts are handled in executeScript method
+            return;
         }
 
-        // set a bogus type to avoid browser loading the script, as it's loaded with SPComponentLoader
-        scriptTag.type = (scriptTag.src && scriptTag.src.length) > 0 ? "pnp" : "text/javascript";
-        // Ensure proper setting and adding id used in cleanup on reload
-        scriptTag.setAttribute("pnpname", this._unqiueId);
-
-        try {
-            // doesn't work on ie...
-            scriptTag.appendChild(document.createTextNode(data));
-        } catch (e) {
-            // IE has funky script nodes
-            scriptTag.text = data;
+        // For inline scripts, use Function constructor which works with CSP 'unsafe-eval'
+        if (data && data.trim().length > 0) {
+            try {
+                // Use Function constructor instead of eval for better scoping
+                // This works because SharePoint CSP includes 'unsafe-eval'
+                const scriptFunc = new Function(data);
+                scriptFunc.call(window);
+            } catch (error) {
+                if (console.error) {
+                    console.error('Failed to execute inline script:', error);
+                }
+            }
         }
-
-        headTag.insertBefore(scriptTag, headTag.firstChild);
     }
 
     private nodeName(elem, name) {
@@ -232,15 +228,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     //
     // Argument element is an element in the dom.
     private async executeScript(element: HTMLElement) {
-        // clean up added script tags in case of smart re-load
-        const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
-        const scriptTags = headTag.getElementsByTagName("script");
-        for (let i = 0; i < scriptTags.length; i++) {
-            const scriptTag = scriptTags[i];
-            if (scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId) {
-                headTag.removeChild(scriptTag);
-            }
-        }
 
         if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {
             window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
