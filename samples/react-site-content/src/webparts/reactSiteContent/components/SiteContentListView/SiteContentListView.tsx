@@ -63,14 +63,25 @@ const columnsDef = (): TableColumnDefinition<IListViewItem>[] => {
       columnId: "Items",
       renderHeaderCell: () => <>Items</>,
       compare: (a, b) => {
-        return a.Items && b.Items ? a.Items?.toString().localeCompare(b.Items?.toString()) : -1;
+        const aValue = a.Items ?? 0;
+        const bValue = b.Items ?? 0;
+        return aValue - bValue;
       },
     }),
     createTableColumn<IListViewItem>({
       columnId: "Modified",
       renderHeaderCell: () => <>Modified</>,
       compare: (a, b) => {
-        return a.Modified.localeCompare(b.Modified);
+         // Use the ISO string from SharePoint: a.Modified = "2025-11-13T07:45:25Z"
+        const dateA = a.ModifiedDate; // e.g., "2025-11-13T07:45:25Z"
+        const dateB = b.ModifiedDate; // e.g., "2025-11-12T22:30:00Z"
+
+        // Fallback: treat missing/empty as oldest
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1; 
+        if (!dateB) return -1; 
+
+        return dateA.localeCompare(dateB);
       },
     }),
     createTableColumn<IListViewItem>({
