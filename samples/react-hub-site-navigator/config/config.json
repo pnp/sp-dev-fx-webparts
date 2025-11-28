@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hub-site-navigator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hubSiteNavigator/HubSiteNavigatorWebPart.js",
+          "manifest": "./src/webparts/hubSiteNavigator/HubSiteNavigatorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HubSiteNavigatorWebPartStrings": "lib/webparts/hubSiteNavigator/loc/{locale}.js"
+  }
+}

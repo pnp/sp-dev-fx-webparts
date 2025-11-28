@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-file-type-distribution-client-side-solution",
+    "id": "a94f359c-19fe-404b-a3f3-6b0fb8e31ef8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "https://github.com/HarminderSethi",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-file-type-distribution description"
+      },
+      "longDescription": {
+        "default": "react-file-type-distribution description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-file-type-distribution Feature",
+        "description": "The feature that activates elements of the react-file-type-distribution solution.",
+        "id": "5b50a70e-da19-494a-85b6-7e154d9e6f34",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-file-type-distribution.sppkg"
+  }
+}
