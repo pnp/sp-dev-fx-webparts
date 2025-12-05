@@ -35098,6 +35098,78 @@
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tagging"
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-telemetry-event-sender-sample",
+    "source": "pnp",
+    "title": "Telemetry Event Sender Web Part",
+    "shortDescription": "SPFx React web part that sends telemetry events via CustomEvent to a tenant-wide telemetry Application Customizer.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-telemetry-event-sender-sample",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-telemetry-event-sender-sample",
+    "longDescription": [
+      "This sample demonstrates a React-based SPFx web part that emits telemetry events through the browser CustomEvent API (`spfx-telemetry`).",
+      "It is designed to work together with a tenant-wide Application Customizer that listens for these events and forwards them to Azure Application Insights or an Azure Function endpoint.",
+      "The web part showcases configurable scenario metadata, importance levels, and a simple UI to trigger sample telemetry events."
+    ],
+    "creationDateTime": "2025-11-18",
+    "updateDateTime": "2025-11-18",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/preview.png",
+        "alt": "Telemetry Event Sender web part preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/propertyPanePreview.png",
+        "alt": "Telemetry Event Sender web part property pane preview"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/AppInsightsPreview.png",
+        "alt": "Telemetry Event Sender web part property pane preview"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/DEbugLogPreview.png",
+        "alt": "Telemetry Event Sender web part property pane preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-tenant-properties",
     "source": "pnp",
     "title": "Tenant Properties Web Part",
