@@ -56,6 +56,7 @@ export const generateListViewItems = (tiles: IAppDetails[]): IListViewItem[] => 
       Items: tile.ChildCount,
       BaseTemplate: tile.BaseTemplate,
       AppId: tile.AppId,
+      ModifiedDate: tile.LastModifiedDate
     });
   });
   return listViewItems;

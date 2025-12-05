@@ -9,4 +9,5 @@ export interface IListViewItem {
   Target: string | undefined;
   BaseTemplate: number;
   AppId: string;
+  ModifiedDate: string;
 }
