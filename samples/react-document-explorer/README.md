@@ -6,11 +6,23 @@ A comprehensive SharePoint Framework (SPFx) web part that enables users to brows
 
 ![Document Explorer](./assets/document-explorer-demo.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
+
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
-![Node.js v18.17.1](https://img.shields.io/badge/Node.js-v18.17.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
@@ -27,9 +39,7 @@ A comprehensive SharePoint Framework (SPFx) web part that enables users to brows
 
 ## Contributors
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| Document Library Explorer | [Sai Siva Ram Bandaru](https://github.com/saiiiiiii) |
+- [Sai Siva Ram Bandaru](https://github.com/saiiiiiii)
 
 ## Version history
 
@@ -37,7 +47,6 @@ A comprehensive SharePoint Framework (SPFx) web part that enables users to brows
 | ------- | ---------------- | --------------- |
 | 1.0     | November 9, 2025 | Initial release |
 
----
 
 ## Minimal Path to Awesome
 
@@ -117,6 +126,7 @@ Uses these Fluent UI React components:
 #### Row Layout (3-Column)
 
 Three-panel horizontal layout with dynamic widths:
+
 - **All panels visible**: 20% (tree) + 60% (files) + 20% (filters)
 - **Two panels visible**: 20% + 80%
 - **One panel visible**: 100%
@@ -137,9 +147,11 @@ Vertical stacked panels, each taking full width. Best for mobile devices or narr
 4. In the property pane:
    - **Option A**: Select a library from the dropdown
    - **Option B**: Enter comma-separated library URLs in "Manual Libraries" field
+
      ```
      Example: /sites/yoursite/Documents,/sites/yoursite/Shared Documents
      ```
+
 5. Configure display options (show/hide panels)
 6. Choose layout type
 7. Save and publish the page
@@ -177,6 +189,7 @@ To browse multiple libraries simultaneously, enter comma-separated URLs in the p
 ```
 
 The web part will:
+
 - Load all accessible libraries
 - Display a warning for libraries you cannot access
 - Show combined folder tree with library names as root nodes
@@ -188,7 +201,6 @@ The web part will:
 
 ![Document Library Explorer Demo](./assets/document-explorer-demo.gif)
 *Document Library Explorer Demo*
-
 
 ### Full Three-Panel View
 
@@ -206,8 +218,8 @@ The web part will:
 
 The **"All Files"** feature (italic text at the top of each library) performs recursive traversal.
 
-
 This is useful for:
+
 - Searching across entire libraries
 - Generating complete file inventories
 - Finding files in deeply nested structures
@@ -235,6 +247,7 @@ The web part gracefully handles various permission scenarios:
 **Issue**: A document library doesn't show in the selection dropdown
 
 **Solutions**:
+
 - Verify you have read permissions to the library
 - Check if library is hidden (Hidden=true libraries are excluded)
 - Confirm library is a Document Library (BaseTemplate=101)
@@ -245,6 +258,7 @@ The web part gracefully handles various permission scenarios:
 **Issue**: Error messages when trying to access libraries or folders
 
 **Solutions**:
+
 - Contact SharePoint administrator for appropriate permissions
 - Use property pane to remove inaccessible libraries from configuration
 - Check SharePoint audit logs for recent permission changes
@@ -255,17 +269,18 @@ The web part gracefully handles various permission scenarios:
 **Issue**: Files don't appear when selecting a folder
 
 **Solutions**:
+
 - Verify folder path in breadcrumb is correct
 - Check browser console (F12) for detailed error messages
 - Confirm files exist and aren't checked out exclusively
 - Ensure files aren't in a restricted folder
-
 
 ### Property Pane Issues
 
 **Issue**: Libraries not loading in property pane dropdown
 
 **Solutions**:
+
 - Open and close the property pane to trigger refresh
 - Check browser console for initialization errors
 - Verify PnP JS configuration is correct
@@ -301,6 +316,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-document-explorer" />
