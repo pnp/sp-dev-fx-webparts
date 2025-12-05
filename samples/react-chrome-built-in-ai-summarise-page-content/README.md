@@ -7,18 +7,23 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
 ![Demo](./assets/demo.gif)
 
 ### Summary in English using Chrome built-in AI summarization
+
 ![Summary Result English](./assets/summary-result-en.png)
 
 ### Summary in Italian using Chrome built-in AI translation (of a page in Italian)
+
 ![Summary Result Italian](./assets/summary-result-it.png)
 
 ### First time experience - Model Download for editors and summary generation
+
 ![Model Download](./assets/model-download-and-generation.gif)
 
 ### Summary Regeneration by editors (faster than first time)
+
 ![Regenerate Summary](./assets/regenerate-summary.gif)
 
 ### Experience for read-only users (no model download)
+
 ![Read-only Experience](./assets/readonly-user.gif)
 
 ## Used SharePoint Framework Version
@@ -28,15 +33,16 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
 ## Prerequisites
 
 ### Browser Requirements
+
 - **Chrome 138 or later** with built-in AI features enabled
-- **Operating System**: 
+- **Operating System**:
   - Windows 10 or 11
   - macOS 13+ (Ventura and onwards)
   - Linux
@@ -50,25 +56,26 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
 ### Instructions for editors (users generating summaries)
 
 #### Verify Device Performance Class (Optional)
+
 - Open Chrome and navigate to `chrome://on-device-internals`
 - Check the value for `Device performance class`. If it is `low` or `Very low`, summarization may take a long time.
 
 #### Using the Summarizer
+
 - The first time you use the summarizer, the Gemini Nano model (~3 GB) will be downloaded. Ensure you have sufficient disk space and an unmetered network connection.
 - This might take a while depending on your connection speed.
 - Once downloaded, the article will be summarized locally in the browser.
 - For subsequent uses, the summarizer will be ready to use immediately without re-downloading the model.
 
 ### Development Requirements
+
 - Node.js v18 LTS
 - SharePoint Online tenant
 - SPFx development environment
 
-## Solution
+## Collaborators
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| new-web-part | [Anoop T](https://github.com/anoopt) (@anoopt) |
+- [Anoop T](https://github.com/anoopt) (@anoopt)
 
 ## Version history
 
@@ -76,15 +83,10 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
 | ------- | ---------------- | --------------- |
 | 1.0     | November 2025    | Initial release with Chrome Summarizer API |
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
 ## Minimal Path to Awesome
 
 ### Initial Setup
+
 - Clone this repository
 - Navigate to the `react-chrome-built-in-ai-summarise-page-content` folder
 - In the command-line run:
@@ -92,11 +94,13 @@ This SharePoint Framework (SPFx) web part uses Chrome's built-in Summarizer API 
   - `gulp serve`
 
 ### SharePoint List Setup
+
 The web part automatically uses a SharePoint list named "Page Summary Cache" to store summaries. You need to create this list with the following schema:
 
 **List Name**: `Page Summary Cache`
 
 **Columns**:
+
 - `Title` (Single line of text) - Default column
 - `builtinaiPageId` (Single line of text) - **Indexed**
 - `builtinaiLanguage` (Single line of text)
@@ -105,6 +109,7 @@ The web part automatically uses a SharePoint list named "Page Summary Cache" to 
 **Quick Setup**: Upload the `sharepoint/assets/schema-summary-cache.xml` file using the SharePoint list template feature.
 
 ### Deployment
+
 - Add the web part to a SharePoint page with content
 - **Important**: After deploying, approve the Microsoft Graph API permissions:
   - Go to SharePoint Admin Center → Advanced → API Access
@@ -112,6 +117,7 @@ The web part automatically uses a SharePoint list named "Page Summary Cache" to 
 - Click "Summarize article" to generate a summary (requires editListItems permission)
 
 ### Build for Production
+
 ```bash
 npm run build
 gulp package-solution --ship
@@ -133,6 +139,7 @@ The package will be available at: `sharepoint/solution/summarize-page-content-bu
 This web part demonstrates the following:
 
 ### Core Functionality
+
 - **Chrome's Built-in Summarizer API**: Uses Gemini Nano for on-device AI summarization
 - **Microsoft Graph Integration**: Fetches SharePoint page content via Graph API
 - **SharePoint List Caching**: Stores generated summaries in a SharePoint list for reuse
@@ -140,12 +147,14 @@ This web part demonstrates the following:
 - **Markdown Rendering**: Supports markdown-formatted summaries with proper styling
 
 ### Multilingual Support
+
 - **Language Detection**: Automatically detects page content language
 - **Translation**: Translates content between English and target language if needed
 - **Supported Languages**: English, Japanese, Spanish (direct), Italian, French (via translation)
 - **Locale-specific UI**: Interface adapts to user's SharePoint locale (en-US, it-IT, fr-FR)
 
 ### User Experience
+
 - **Permission-Based Access**: Only users with `editListItems` permission can generate summaries
 - **Read-Only User Support**: Non-editors can view cached summaries without triggering AI downloads
 - **Smooth Animations**: Fade-in/out transitions and slide up/down effects for show/hide
@@ -154,6 +163,7 @@ This web part demonstrates the following:
 - **Regenerate Option**: Editors can regenerate summaries with force refresh
 
 ### Technical Features
+
 - **Fluent UI Components**: Modern, responsive design with PrimaryButton, Shimmer, MessageBar, ProgressIndicator
 - **React Hooks**: Custom hooks for Summarizer, Translator, Language Detector, and Summary Cache
 - **@apvee/spfx-react-toolkit**: Leverages powerful SPFx hooks for simplified development
@@ -184,6 +194,7 @@ This web part demonstrates the following:
 ## How It Works
 
 ### For Editors (users with editListItems permission)
+
 1. **Page Content Extraction**: Uses Microsoft Graph API to fetch text content from web parts on the current SharePoint page
 2. **Language Detection**: Automatically detects the language of the page content
 3. **Translation (if needed)**: Translates content to English if not in supported Summarizer language (en/ja/es)
@@ -194,12 +205,14 @@ This web part demonstrates the following:
 8. **Display Results**: Shows summary with hide/show toggle and regenerate option
 
 ### For Read-Only Users (users without editListItems permission)
+
 1. **Cache Check**: Checks SharePoint list for existing summary
 2. **Load Cached Summary**: If found, displays cached summary without triggering AI
 3. **No Cache Available**: Shows disabled button with message to wait for editor
 4. **No Model Download**: Prevents unnecessary AI model downloads on user machines
 
 ### Caching Strategy
+
 - Summaries are stored in a SharePoint list named "Page Summary Cache"
 - Cache key: Page ID + Language code (e.g., `{pageId}_it`)
 - Editors can force regenerate to update cached summaries
@@ -219,13 +232,16 @@ This web part demonstrates the following:
 ## Security & Permissions
 
 ### SharePoint Permissions Required
+
 - **Editors** (generate summaries): `editListItems` permission on the site
 - **Viewers** (view cached summaries): Standard read access to the site
 
 ### API Permissions
+
 - **Microsoft Graph**: `Sites.Read.All` (to read page content)
 
 ### Data Privacy
+
 - All AI processing happens locally in the user's browser
 - No data is sent to external servers for summarization
 - Summaries are stored in your SharePoint tenant (not external storage)
