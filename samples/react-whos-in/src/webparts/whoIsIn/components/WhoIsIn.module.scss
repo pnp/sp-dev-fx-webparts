@@ -1,0 +1,365 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.whoIsIn {
+  overflow: hidden;
+  padding: 1.25rem;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+/* Page header / title area */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.02;
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  margin: 6px 0 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Top right export toolbar */
+.topToolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Export / CSV button */
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.02);
+}
+
+/* Layout grid: left sidebar + right content */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Sidebar card */
+.sidebarCard {
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 28px rgba(16,24,40,0.05);
+  min-height: 420px;
+}
+
+/* Sidebar form elements */
+.field {
+  margin-bottom: 18px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: #374151;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #eef2f6;
+  border-radius: 10px;
+  background: white;
+  font-size: 15px;
+  color: #0f172a;
+  box-shadow: inset 0 1px 0 rgba(16,24,40,0.02);
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(59,130,246,0.6);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.08);
+}
+
+/* Buttons in sidebar */
+.primaryBtn {
+  background: linear-gradient(90deg, #6EE7B7, #3B82F6);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  margin-right: 8px;
+  box-shadow: 0 8px 20px rgba(59,130,246,0.10);
+}
+
+.ghostBtn {
+  background: white;
+  color: #0f172a;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Small meta text */
+.meta {
+  margin-top: 18px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.meta strong {
+  color: #0f172a;
+}
+
+/* Main content column */
+.contentColumn {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+}
+
+/* Visitors card (main list) */
+.listCard {
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 28px rgba(16,24,40,0.06);
+}
+
+/* Card header for Visitors */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef2f6;
+  margin-bottom: 12px;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.cardSub {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Modern table styling for WhoIsIn list */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 8px;
+}
+
+/* Table header row */
+.table thead {
+  display: block;
+}
+.table thead tr {
+  display: grid;
+  /* Keep header and body column track identical to align with data columns */
+  grid-template-columns: 2.2fr 1fr 1fr 0.9fr 0.9fr 0.6fr;
+  align-items: center;
+  gap: 12px;
+}
+.table thead th {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 12px 8px;
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 15px;
+  background: #fbfdff;
+  border-bottom: 1px solid #eef2f6;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Table body card-like rows */
+.table tbody {
+  display: block;
+}
+
+.table tbody tr {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.04);
+  display: grid;
+  /* Match the header columns: Employee | Team | Office | Check-in | Check-out | Badge */
+  grid-template-columns: 2.2fr 1fr 1fr 0.9fr 0.9fr 0.6fr;
+  gap: 12px;
+  padding: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  /* Prevent content overflow from changing column alignment */
+  overflow: hidden;
+}
+
+.table tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+}
+
+.table tbody td {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  border: none;
+  font-size: 14px;
+  color: #111827;
+  vertical-align: middle;
+  min-height: 40px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Avatar + name block */
+.employeeBlock {
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#eef2ff,#f0f2ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #2b6cb0;
+  box-shadow: 0 6px 12px rgba(59,130,246,0.06);
+  overflow: hidden;
+}
+
+/* Profile image when available (user photo) */
+.avatarImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+  display: inline-block;
+  box-shadow: 0 6px 12px rgba(59,130,246,0.06);
+  background: #eef2ff;
+}
+
+.employeeName {
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  font-size: 16px;
+}
+
+.employeeJobTitle {
+  font-weight: 100;
+  color: #0f172a;
+  margin: 0;
+  font-size: 12px;
+}
+
+.employeeSub {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Badge style for Travelling To or Badge column */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#f0f9ff,#e6fffa);
+  color: #0369a1;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  min-width: 44px;
+}
+
+/* Map placeholder and quick stats row */
+.lowerRow {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.mapCard {
+  background: white;
+  border-radius: 10px;
+  border: 1px dashed #e6eef5;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9aa4b2;
+  font-size: 14px;
+  padding: 18px;
+}
+
+.quickStats {
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(16,24,40,0.04);
+}
+
+.quickStats h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.quickStats p {
+  margin: 6px 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+  .lowerRow {
+    grid-template-columns: 1fr;
+  }
+  .table tbody tr {
+    grid-template-columns: 1fr;
+    display: block;
+  }
+}
