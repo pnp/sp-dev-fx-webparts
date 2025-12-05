@@ -26,7 +26,7 @@
     "handlebars": "^4.7.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.13.1",
+    "@microsoft/sp-build-web": "1.21.1",
     "@microsoft/sp-module-interfaces": "1.13.1",
     "@microsoft/sp-tslint-rules": "1.13.1",
     "@types/webpack-env": "1.13.1",
