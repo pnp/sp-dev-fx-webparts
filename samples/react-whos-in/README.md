@@ -3,16 +3,13 @@
 ## Summary
 
 A web part that shows who is in the office and when:
+
 - Filter by destination office, traveler name, and date range
 - See "currently in" counts per office
 - Display profile picture and job title (when available)
 - Accessible, responsive UI built with Fluent UI
 
-![version](https://img.shields.io/badge/version-1.20.0-green.svg)
-
-> Screenshot
->
-![screenshot](./src/webparts/whoIsIn/assets/screenshot.png)
+![screenshot](./assets/screenshot.png)
 
 ## Applies to
 
@@ -75,8 +72,7 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 - Renders profile picture when available, falls back to initials
 - Shows user job title (from list/person field or Graph when configured)
 
-
-## Minimal Path to Awesome 
+## Minimal Path to Awesome
 
 - Open a terminal in the sample folder:
   - cd samples/react-whos-in
@@ -87,18 +83,20 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 - Start local debugging:
   - gulp serve
 - Open the hosted workbench:
-  - https://yourtenant.sharepoint.com/_layouts/15/workbench.aspx
+  - <https://yourtenant.sharepoint.com/_layouts/15/workbench.aspx>
 - Add the “React Who’s In” web part to the canvas.
 
-## Package and Deploy 
+## Package and Deploy
 
 1) Build and package
+
 - gulp clean
 - gulp build
 - gulp bundle --ship
 - gulp package-solution --ship
 
 2) Deploy
+
 - Upload sharepoint/solution/*.sppkg to your tenant App Catalog
 - In the App Catalog:
   - Approve API permission requests (if prompted) for Microsoft Graph:
@@ -106,8 +104,6 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
     - User.ReadBasic.All
 - Add the app to your target site
 - Add the web part to a page
-
-
 
 ## Configuration
 
@@ -150,16 +146,18 @@ Use can use the [Powershell script](./scripts/provision-whoisIn-list.ps1) to pro
 ## References
 
 - Getting started with SharePoint Framework  
-  https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant
+  <https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant>
 - Building for Microsoft Teams  
-  https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview
+  <https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview>
 - Use Microsoft Graph in your solution  
-  https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis
+  <https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis>
 - Publish SPFx apps to the Marketplace  
-  https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview
+  <https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview>
 - Microsoft 365 Patterns and Practices (PnP)  
-  https://aka.ms/m365pnp
+  <https://aka.ms/m365pnp>
 
 ## Disclaimer
 
-THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-whos-in" />
