@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "summarize-page-content-built-in-ai",
+    "libraryId": "d886e845-de39-49c1-9a6e-b75009e92d26",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "summarize-page-content-built-in-ai",
+    "solutionShortDescription": "summarize-page-content-built-in-ai description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
