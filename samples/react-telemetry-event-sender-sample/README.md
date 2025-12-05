@@ -176,6 +176,7 @@ If you encounter any issues using this sample, [create a new issue](https://gith
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-telemetry-sample-webpart&template=question.yml&react-telemetry-event-sender-sample&authors=@ValerasNarbutas&title=react-telemetry-sample-webpart%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-telemetry-sample-webpart&template=suggestion.yml&react-telemetry-event-sender-sample&authors=@ValerasNarbutas&title=react-telemetry-sample-webpart%20-%20).
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
