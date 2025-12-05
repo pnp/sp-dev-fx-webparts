@@ -10,7 +10,7 @@
       "The Group Members Web Part provides a comprehensive solution for displaying and managing Microsoft 365 group memberships within SharePoint. This web part leverages Microsoft Graph to fetch user data and presents it in an intuitive, responsive interface that supports filtering, search, and quick actions."
     ],
     "creationDateTime": "2025-02-28",
-    "updateDateTime": "2025-02-28",
+    "updateDateTime": "2025-11-15",
     "products": [
       "SharePoint"
     ],
