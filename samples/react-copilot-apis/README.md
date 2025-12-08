@@ -1,5 +1,10 @@
 # Microsoft 365 Copilot Chat Web Part
 
+![SPFx v1.22.0-rc.0](https://img.shields.io/badge/SPFx-1.22.0-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+
 This SharePoint Framework (SPFx) web part demonstrates how to integrate with Microsoft 365 Copilot APIs using Work IQ to create an interactive AI chat experience directly within SharePoint pages.
 
 ![Copilot Chat Web Part Screenshot](assets/preview.png)
@@ -15,6 +20,16 @@ This sample provides a fully functional chat interface that leverages the Work I
 - **Markdown Rendering**: Display AI responses with rich formatting, tables, and code blocks
 - **Chat History**: Maintain conversation history within a session
 - **Multiple Conversations**: Start new conversations as needed
+
+## Contributors
+
+* [Paolo Pialorsi](https://github.com/PaoloPia)
+
+## Version history
+
+|Version|Date|Comments|
+|-------|----|--------|
+|1.0|December 08, 2025|Initial release|
 
 ## Solution Structure
 
