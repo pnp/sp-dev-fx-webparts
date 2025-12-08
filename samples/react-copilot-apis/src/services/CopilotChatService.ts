@@ -10,7 +10,7 @@ export class CopilotChatService implements ICopilotChatService {
 
     constructor(serviceScope: ServiceScope) {
         serviceScope.whenFinished(async () => {
-            const msGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
+            const msGraphClientFactory: MSGraphClientFactory = serviceScope.consume(MSGraphClientFactory.serviceKey);
             this._msGraphClient = await msGraphClientFactory.getClient('3');
         });
     }
