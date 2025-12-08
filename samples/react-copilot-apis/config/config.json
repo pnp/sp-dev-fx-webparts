@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "copilot-chat-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotChat/CopilotChatWebPart.js",
+          "manifest": "./src/webparts/copilotChat/CopilotChatWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CopilotChatWebPartStrings": "lib/webparts/copilotChat/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.22.0-rc.0",
+    "libraryName": "react-copilot-apis",
+    "libraryId": "171c7878-93b8-4022-a020-49bb7e87b437",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-copilot-apis",
+    "solutionShortDescription": "react-copilot-apis description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
