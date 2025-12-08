@@ -1,0 +1,106 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.demoAccessData {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100px;  
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.dataAccessSection {
+  margin-top: 2em;
+  padding: 1em;
+  border: 1px solid #e1dfdd;
+  border-radius: 4px;
+  background-color: #faf9f8;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 0.75em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #106ebe;
+  }
+
+  &:disabled {
+    background-color: #a19f9d;
+    cursor: not-allowed;
+  }
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.resultPanel {
+  border: 1px solid #d2d0ce;
+  border-radius: 4px;
+  padding: 1em;
+  background-color: white;
+
+  h4 {
+    margin: 0 0 0.5em 0;
+    color: #323130;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.jsonResult {
+  background-color: #f8f8f8;
+  border: 1px solid #e1dfdd;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #323130;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 400px;
+  overflow-y: auto;
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-sp-countdown-timer",
+    "libraryId": "57a9d455-30bd-4a4f-9b50-92ccc8f4506e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-sp-countdown-timer",
+    "solutionShortDescription": "react-sp-countdown-timer description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

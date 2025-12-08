@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "React Flag Template",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-flag-template",
+    "libraryId": "de1a13f1-4ff5-4033-8fd6-8ff9cfb4a67c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-flag-template",
+    "solutionShortDescription": "react-flag-template description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

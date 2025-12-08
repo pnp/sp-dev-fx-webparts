@@ -10,22 +10,22 @@
       "Search People from Organization Directory and show live persona card on hover."
     ],
     "creationDateTime": "2019-07-29",
-    "updateDateTime": "2025-04-06",
+    "updateDateTime": "2025-10-22",
     "products": [
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
-      },
-      {
-        "key": "SPFX-TEAMSTAB",
-        "value": "true"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
@@ -102,27 +102,27 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "joaojmendes",
+        "gitHubAccount": "https://github.com/joaojmendes",
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "João Mendes"
       },
       {
-        "gitHubAccount": "petkir",
+        "gitHubAccount": "https://github.com/petkir",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner"
       },
       {
-        "gitHubAccount": "sudharsank",
+        "gitHubAccount": "https://github.com/sudharsank",
         "pictureUrl": "https://github.com/sudharsank.png",
         "name": "Sudharsan Kesavanarayanan"
       },
       {
-        "gitHubAccount": "Abderahman88",
+        "gitHubAccount": "https://github.com/Abderahman88",
         "pictureUrl": "https://github.com/Abderahman88.png",
         "name": "Abderahman Moujahid"
       },
       {
-        "gitHubAccount": "Sandeep-FED",
+        "gitHubAccount": "https://github.com/Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
       }
@@ -132,11 +132,6 @@
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
-      },
-      {
-        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
-        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
-        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
     ]
   }

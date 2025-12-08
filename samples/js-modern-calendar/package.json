@@ -1,6 +1,6 @@
 {
   "name": "modern-calendar",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -9,31 +9,30 @@
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
-    "@microsoft/sp-adaptive-card-extension-base": "1.20.0",
-    "@microsoft/sp-core-library": "1.20.0",
-    "@microsoft/sp-lodash-subset": "1.20.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.20.0",
-    "@microsoft/sp-property-pane": "1.20.0",
-    "@microsoft/sp-webpart-base": "1.20.0",
+    "@microsoft/sp-adaptive-card-extension-base": "1.21.1",
+    "@microsoft/sp-core-library": "1.21.1",
+    "@microsoft/sp-lodash-subset": "1.21.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
+    "@microsoft/sp-property-pane": "1.21.1",
+    "@microsoft/sp-webpart-base": "1.21.1",
     "fullcalendar": "6.1.15",
     "jquery": "^3.7.1",
     "moment": "2.30.1",
-    "sweetalert2": "11.14.1"
+    "sweetalert2": "11.22.4"
   },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "1.20.2",
-    "@microsoft/eslint-plugin-spfx": "1.20.2",
-    "@microsoft/rush-stack-compiler-3.3": "0.3.5",
-    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
-    "@microsoft/sp-build-web": "1.20.2",
-    "@microsoft/sp-module-interfaces": "1.20.2",
+    "@microsoft/eslint-config-spfx": "1.21.1",
+    "@microsoft/eslint-plugin-spfx": "1.21.1",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.21.1",
+    "@microsoft/sp-module-interfaces": "1.21.1",
     "@rushstack/eslint-config": "4.0.1",
     "@types/jquery": "^3.5.31",
     "@types/webpack-env": "1.15.2",
     "ajv": "6.12.5",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "gulp": "4.0.2",
-    "typescript": "4.7.4"
+    "typescript": "5.3.3"
   },
   "scripts": {
     "build": "gulp bundle",

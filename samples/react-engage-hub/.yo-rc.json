@@ -7,12 +7,12 @@
     "componentName": "react-engage-hub",
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "18.18.2",
+    "nodeVersion": "22.18.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.20.0",
+    "version": "1.21.1",
     "libraryName": "react-engage-hub",
     "libraryId": "156c77a3-ca7c-4d20-99d3-a895c0f3a630",
     "environment": "spo",

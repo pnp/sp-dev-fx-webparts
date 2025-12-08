@@ -9,11 +9,15 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2025-01-15",
+    "updateDateTime": "2025-10-07",
     "products": [
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -210,6 +214,12 @@
         "gitHubAccount": "Eli-Schei",
         "name": "Eli H. Schei",
         "pictureUrl": "https://github.com/Eli-Schei"
+      },
+      {
+        "gitHubAccount": "Dhananjay-12",
+        "company": "",
+        "pictureUrl": "https://github.com/Dhananjay-12.png",
+        "name": "Dhananjay Pant"
       }
     ],
     "references": [

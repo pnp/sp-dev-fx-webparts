@@ -2,10 +2,15 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.10.0",
+    "version": "1.21.1",
     "libraryName": "js-theme-manager",
     "libraryId": "555147fb-b773-446f-aef2-1b25001f92d9",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "22.14.0"
   }
 }

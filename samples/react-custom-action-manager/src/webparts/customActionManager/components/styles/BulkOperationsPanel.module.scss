@@ -1,0 +1,511 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.bulkPanel {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e1dfdd;
+  border-radius: 8px;
+  margin-bottom: 24px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e1dfdd;
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #323130;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #605e5c;
+      margin-top: 4px;
+    }
+
+    .closeButton {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 4px;
+      
+      &:hover {
+        background: #f3f2f1;
+      }
+    }
+  }
+
+  .operationSelector {
+    margin-bottom: 24px;
+
+    .selectorGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .operationCard {
+      padding: 16px;
+      border: 1px solid #e1dfdd;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #fafafa;
+
+      &:hover {
+        border-color: #0078d4;
+        background: #f8f9fa;
+      }
+
+      &.selected {
+        border-color: #0078d4;
+        background: #eff6fc;
+      }
+
+      .cardTitle {
+        font-weight: 600;
+        color: #323130;
+        margin-bottom: 8px;
+      }
+
+      .cardDescription {
+        font-size: 12px;
+        color: #605e5c;
+      }
+    }
+  }
+
+  .operationContent {
+    .section {
+      margin-bottom: 24px;
+      
+      .sectionTitle {
+        font-size: 16px;
+        font-weight: 600;
+        color: #323130;
+        margin-bottom: 12px;
+      }
+
+      .sectionContent {
+        padding: 16px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border: 1px solid #e1dfdd;
+      }
+    }
+  }
+
+  .operationDetails {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e1dfdd;
+  }
+
+  .fileInput {
+    display: none;
+  }
+
+  .progress {
+    margin-top: 16px;
+    padding: 12px;
+    background: #eff6fc;
+    border-radius: 6px;
+    border: 1px solid #0078d4;
+  }
+
+  .fileUpload {
+    .uploadArea {
+      border: 2px dashed #c8c6c4;
+      border-radius: 6px;
+      padding: 24px;
+      text-align: center;
+      transition: border-color 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #0078d4;
+      }
+
+      &.dragOver {
+        border-color: #0078d4;
+        background: #eff6fc;
+      }
+
+      .uploadIcon {
+        font-size: 32px;
+        color: #605e5c;
+        margin-bottom: 8px;
+      }
+
+      .uploadText {
+        font-size: 14px;
+        color: #605e5c;
+        margin-bottom: 4px;
+      }
+
+      .uploadSubtext {
+        font-size: 12px;
+        color: #8a8886;
+      }
+    }
+
+    .hiddenInput {
+      display: none;
+    }
+
+    .selectedFile {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: #eff6fc;
+      border: 1px solid #0078d4;
+      border-radius: 4px;
+      margin-top: 12px;
+
+      .fileIcon {
+        margin-right: 8px;
+        color: #0078d4;
+      }
+
+      .fileName {
+        flex: 1;
+        font-size: 14px;
+        color: #323130;
+      }
+
+      .removeButton {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        color: #605e5c;
+
+        &:hover {
+          color: #d13438;
+        }
+      }
+    }
+  }
+
+  .targetSites {
+    .sitesGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .siteCard {
+      padding: 12px;
+      border: 1px solid #e1dfdd;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #0078d4;
+        background: #f8f9fa;
+      }
+
+      &.selected {
+        border-color: #0078d4;
+        background: #eff6fc;
+      }
+
+      .siteInfo {
+        flex: 1;
+        margin-left: 8px;
+
+        .siteName {
+          font-weight: 600;
+          color: #323130;
+          font-size: 14px;
+          margin-bottom: 4px;
+        }
+
+        .siteUrl {
+          font-size: 12px;
+          color: #605e5c;
+        }
+      }
+    }
+  }
+
+  .selectedActions {
+    .actionsCount {
+      display: inline-block;
+      background: #eff6fc;
+      color: #0078d4;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .actionsList {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #e1dfdd;
+      border-radius: 4px;
+      padding: 8px;
+
+      .actionItem {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin-bottom: 4px;
+
+        &:hover {
+          background: #f3f2f1;
+        }
+
+        .actionName {
+          font-weight: 600;
+          color: #323130;
+          margin-right: 12px;
+        }
+
+        .actionLocation {
+          color: #605e5c;
+          font-size: 12px;
+          background: #f3f2f1;
+          padding: 2px 6px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  .operationOptions {
+    .optionsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .optionGroup {
+      .groupTitle {
+        font-weight: 600;
+        color: #323130;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e1dfdd;
+
+    .executeButton {
+      min-width: 120px;
+    }
+  }
+
+  .progressSection {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e1dfdd;
+
+    .progressInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .progressText {
+        font-size: 14px;
+        color: #323130;
+      }
+
+      .progressPercentage {
+        font-size: 12px;
+        color: #605e5c;
+        font-weight: 600;
+      }
+    }
+
+    .progressBar {
+      width: 100%;
+      height: 4px;
+      background: #e1dfdd;
+      border-radius: 2px;
+      overflow: hidden;
+
+      .progressFill {
+        height: 100%;
+        background: #0078d4;
+        border-radius: 2px;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+
+  .results {
+    margin-top: 20px;
+    
+    .resultsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .resultsTitle {
+        font-weight: 600;
+        color: #323130;
+      }
+
+      .resultsSummary {
+        font-size: 12px;
+        color: #605e5c;
+      }
+    }
+
+    .resultsList {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #e1dfdd;
+      border-radius: 4px;
+
+      .resultItem {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid #f3f2f1;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .resultIcon {
+          margin-right: 12px;
+          font-size: 16px;
+
+          &.success {
+            color: #107c10;
+          }
+
+          &.error {
+            color: #d13438;
+          }
+
+          &.warning {
+            color: #ffb900;
+          }
+        }
+
+        .resultDetails {
+          flex: 1;
+
+          .resultAction {
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 4px;
+          }
+
+          .resultMessage {
+            font-size: 12px;
+            color: #605e5c;
+          }
+
+          .resultError {
+            font-size: 12px;
+            color: #d13438;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .validationOptions {
+    .checkboxGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  .exportOptions {
+    .formatSelector {
+      margin-bottom: 16px;
+    }
+
+    .fieldSelector {
+      .fieldsGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 8px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .importOptions {
+    .importSettings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+  }
+
+  .deployOptions {
+    .deploymentSettings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .bulkPanel {
+    padding: 16px;
+
+    .operationSelector {
+      .selectorGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .actionButtons {
+      flex-direction: column;
+      
+      .executeButton {
+        width: 100%;
+      }
+    }
+
+    .targetSites {
+      .sitesGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .operationOptions {
+      .optionsGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

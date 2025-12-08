@@ -1,0 +1,95 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.row {
+  @include ms-Grid-row;
+  padding: 0px;
+}
+
+.colSM4 {
+  @include ms-Grid-col;
+  @include ms-sm4;
+}
+
+.colSM8 {
+  @include ms-Grid-col;
+  @include ms-sm8;
+}
+
+.dynamicFormularGenerator {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.configWrapper {
+  padding: 20px;
+  background-color: #ccc;
+}
+
+.cfgDetails {
+  padding-top: 35px;
+}
+
+.configWrapper h2 {
+  display: inline-flex;
+  padding-left: 10px;
+  vertical-align: super;
+  margin: 0px;
+}
+
+.configWrapper svg {
+  display: inline-flex;
+}
+
+.configWrapper button {
+  margin-top: 12px;
+}
+
+.configWrapper ul {
+  margin: 0px;
+}
+
+.uploadArea {
+  label {
+    display: inline;
+    margin-right: 8px;
+  }
+
+  div {
+    padding-bottom: 10px;
+  }
+}
+
+
+/*.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}*/
+
+.cmdWrapper {
+  border-top: solid 1px #ccc;
+  text-align: right;
+  padding-top: 15px;
+}
+
+.btnSave {
+  margin-right: 20px !important;
+}
+
+.btnPrint {
+  margin-right: 20px !important;
+}

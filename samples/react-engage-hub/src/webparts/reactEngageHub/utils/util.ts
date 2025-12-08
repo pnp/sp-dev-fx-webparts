@@ -36,3 +36,23 @@ export const formatDate = (date: Date) => {
     return date.toLocaleDateString(undefined, options)
   }
 }
+
+export const formatSharePointImageUrl = (
+  url: string,
+  siteUrl: string
+): string => {
+  // Check if it's already a full URL or a blob URL
+  if (url.startsWith("http") || url.startsWith("blob:")) {
+    return url
+  }
+
+  // Extract just the domain portion (protocol + domain)
+  const urlObj = new URL(siteUrl)
+  const baseUrl = `${urlObj.protocol}//${urlObj.hostname}`
+
+  // Remove leading slash if present
+  const cleanPath = url.startsWith("/") ? url : "/" + url
+
+  // Use encodeURI which preserves slashes but encodes spaces
+  return encodeURI(`${baseUrl}${cleanPath}`)
+}

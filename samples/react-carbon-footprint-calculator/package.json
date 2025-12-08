@@ -22,7 +22,7 @@
     "@types/jspdf": "^2.0.0",
     "chart.js": "^4.4.9",
     "html2canvas": "^1.4.1",
-    "jspdf": "^3.0.1",
+    "jspdf": "^3.0.2",
     "react": "17.0.1",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "17.0.1",

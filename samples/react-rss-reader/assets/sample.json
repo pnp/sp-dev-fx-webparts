@@ -2,63 +2,75 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-rss-reader",
     "source": "pnp",
-    "title": "SharePoint Framework RSS Reader Web Part",
-    "shortDescription": "A RSS Reader original based on work completed by Olivier Carpentier's",
+    "title": "RSS Reader",
+    "shortDescription": "A RSS Reader original based on work by Olivier Carpentier, part of the SPFx Fantastic 40 Web Parts",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
     "longDescription": [
-      "A RSS Reader original based on work completed by Olivier Carpentier's"
+      "A RSS Reader original based on work by Olivier Carpentier, part of the SPFx Fantastic 40 Web Parts"
     ],
-    "creationDateTime": "2020-11-22",
-    "updateDateTime": "2024-11-20",
+    "creationDateTime": "2024-12-25",
+    "updateDateTime": "2025-10-24",
     "products": [
       "SharePoint"
     ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       }
     ],
     "thumbnails": [
       {
+        "name": "react-rss-reader-original.gif",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader.gif",
-        "alt": "SharePoint Framework RSS Reader"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader-original.gif",
+        "alt": "Web Part Preview"
       },
       {
+        "name": "react-rss-reader.gif",
         "type": "image",
         "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "rss_property_pane.png",
+        "type": "image",
+        "order": 102,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/rss_property_pane.png",
-        "alt": "Property Pane"
+        "alt": "Web Part Preview"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "eoverfield",
-        "pictureUrl": "https://github.com/eoverfield.png",
-        "name": "Eric Overfield",
-        "twitter": "EricOverfield"
-      },
-      {
-        "gitHubAccount": "AbhishekGarg",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400&v=4",
-        "name": "Abhishek Garg",
-        "twitter": "abhig89"
-      },
-      {
-        "gitHubAccount": "Abderahman88",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
+        "gitHubAccount": "https://github.com/Abderahman88",
+        "pictureUrl": "https://github.com/Abderahman88.png",
         "name": "Abderahman Moujahid"
       },
       {
-        "gitHubAccount": "djsladi",
-        "name": "Kalle Mansikkaniemi",
-        "pictureUrl": "https://github.com/djsladi.png"
+        "gitHubAccount": "https://github.com/eoverfield",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield"
+      },
+      {
+        "gitHubAccount": "https://github.com/djsladi",
+        "pictureUrl": "https://github.com/djsladi.png",
+        "name": "Kalle Mansikkaniemi"
+      },
+      {
+        "gitHubAccount": "https://github.com/koskimiesl",
+        "pictureUrl": "https://github.com/koskimiesl.png",
+        "name": "Lauri Koskimies"
       }
     ],
     "references": [
@@ -67,7 +79,6 @@
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
-    ],
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader"
+    ]
   }
 ]

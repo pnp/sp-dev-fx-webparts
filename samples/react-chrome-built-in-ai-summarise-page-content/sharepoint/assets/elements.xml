@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  
+  <!-- Page Summary Cache List -->
+  <ListInstance 
+    Title="Page Summary Cache"
+    OnQuickLaunch="FALSE"
+    TemplateType="100"
+    CustomSchema="schema-summary-cache.xml"
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+    Url="Lists/PageSummaryCache"
+    Description="Cache for AI-generated page summaries to avoid regenerating the same summary multiple times">
+  </ListInstance>
+
+</Elements>

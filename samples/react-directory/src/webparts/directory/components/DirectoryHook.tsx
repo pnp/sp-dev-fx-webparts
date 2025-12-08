@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { WebPartTitle } from '@pnp/spfx-controls-react';
 import {
   Dropdown,
@@ -32,6 +31,7 @@ import { spservices } from '../../../SPServices/spservices';
 import { IDirectoryState } from './IDirectoryState';
 import * as strings from 'DirectoryWebPartStrings';
 import { Shimmer } from './Shimmer/Shimmer';
+import { IStackTokens, Stack } from '@fluentui/react';
 
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 

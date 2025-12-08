@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "who-is-in-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/whoIsIn/WhoIsInWebPart.js",
+          "manifest": "./src/webparts/whoIsIn/WhoIsInWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WhoIsInWebPartStrings": "lib/webparts/whoIsIn/loc/{locale}.js"
+  }
+}
