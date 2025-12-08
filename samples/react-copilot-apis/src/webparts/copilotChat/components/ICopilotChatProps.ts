@@ -1,7 +1,9 @@
 import { ICopilotChatService } from '../../../services/ICopilotChatService';
 
 export interface ICopilotChatProps {
-  additionalInstructions: string;
+  additionalContext: string;
+  webSearchEnabled: boolean;
+  files: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;

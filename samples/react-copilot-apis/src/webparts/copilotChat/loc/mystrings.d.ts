@@ -2,6 +2,8 @@ declare interface ICopilotChatWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   AdditionalInstructionsFieldLabel: string;
+  EnablePublicWebContentFieldLabel: string;
+  FilesFieldLabel: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppLocalEnvironmentOffice: string;

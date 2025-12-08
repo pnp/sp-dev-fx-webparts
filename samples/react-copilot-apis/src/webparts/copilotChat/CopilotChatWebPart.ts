@@ -3,7 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -15,7 +16,9 @@ import { ICopilotChatService } from '../../services/ICopilotChatService';
 import { CopilotChatService } from '../../services/CopilotChatService';
 
 export interface ICopilotChatWebPartProps {
-  additionalInstructions: string;
+  additionalContext: string;
+  webSearchEnabled: boolean;
+  files: string;
 }
 
 export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotChatWebPartProps> {
@@ -28,7 +31,9 @@ export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotCh
     const element: React.ReactElement<ICopilotChatProps> = React.createElement(
       CopilotChat,
       {
-        additionalInstructions: this.properties.additionalInstructions,
+        additionalContext: this.properties.additionalContext,
+        webSearchEnabled: this.properties.webSearchEnabled,
+        files: this.properties.files,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -119,10 +124,21 @@ export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotCh
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('additionalInstructions', {
+                PropertyPaneTextField('additionalContext', {
                   label: strings.AdditionalInstructionsFieldLabel,
                   multiline: true,
                   rows: 5
+                }),
+                PropertyPaneToggle('webSearchEnabled', {
+                  label: strings.EnablePublicWebContentFieldLabel,
+                  onText: 'Enabled',
+                  offText: 'Disabled'
+                }),
+                PropertyPaneTextField('files', {
+                  label: strings.FilesFieldLabel,
+                  multiline: true,
+                  rows: 3,
+                  placeholder: 'https://example.com/file1.pdf, https://example.com/file2.docx'
                 })
               ]
             }

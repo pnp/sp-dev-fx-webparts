@@ -81,17 +81,17 @@ export class CopilotChatService implements ICopilotChatService {
             
             // Build the request body
             const requestBody: ChatMessageRequest = {
-            message: {
-                    text: messageText.trim()
-                },
-                locationHint: {
-                    timeZone: options?.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
-                }
+                message: {
+                        text: messageText.trim()
+                    },
+                    locationHint: {
+                        timeZone: options?.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+                    }
             };
 
             // Add additional context if provided
             if (options?.additionalContext && options.additionalContext.length > 0) {
-            requestBody.additionalContext = options.additionalContext;
+                requestBody.additionalContext = options.additionalContext;
             }
 
             // Handle contextual resources with priority order:
@@ -114,7 +114,7 @@ export class CopilotChatService implements ICopilotChatService {
                 // Configure web search if specified
                 if (options?.webSearchEnabled !== undefined) {
                     contextualResources.webContext = {
-                    isWebEnabled: options.webSearchEnabled
+                        isWebEnabled: options.webSearchEnabled
                     };
                 }
 

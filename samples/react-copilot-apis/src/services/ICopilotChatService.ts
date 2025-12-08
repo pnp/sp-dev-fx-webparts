@@ -12,7 +12,7 @@ export interface CopilotConversationMessage {
   id: string;
   text: string;
   createdDateTime: string;
-  adaptiveCards: any[];
+  adaptiveCards: unknown[];
   attributions: CopilotAttribution[];
   sensitivityLabel: CopilotSensitivityLabel;
 }
@@ -29,12 +29,12 @@ export interface CopilotAttribution {
 }
 
 export interface CopilotSensitivityLabel {
-  sensitivityLabelId: string | null;
-  displayName: string | null;
-  tooltip: string | null;
-  priority: number | null;
-  color: string | null;
-  isEncrypted: boolean | null;
+  sensitivityLabelId: string | undefined;
+  displayName: string | undefined;
+  tooltip: string | undefined;
+  priority: number | undefined;
+  color: string | undefined;
+  isEncrypted: boolean | undefined;
 }
 
 export interface ChatMessageRequest {
