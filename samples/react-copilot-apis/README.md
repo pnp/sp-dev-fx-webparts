@@ -1,73 +1,149 @@
-# react-copilot-apis
+# Microsoft 365 Copilot Chat Web Part
+
+This SharePoint Framework (SPFx) web part demonstrates how to integrate with Microsoft 365 Copilot APIs using Work IQ to create an interactive AI chat experience directly within SharePoint pages.
+
+![Copilot Chat Web Part Screenshot](assets/preview.png)
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This sample provides a fully functional chat interface that leverages the Work IQ Copilot APIs (`/beta/copilot/conversations`) to create conversations and exchange messages with Microsoft 365 Copilot. The web part supports advanced features including:
 
-[picture of the solution in action, if possible]
+- **Conversational AI**: Create and manage chat conversations with Microsoft 365 Copilot
+- **Additional Context**: Configure custom instructions to guide Copilot's responses
+- **Web Search**: Enable or disable public web content in Copilot responses
+- **File References**: Include external files (PDFs, documents) for Copilot to reference
+- **Markdown Rendering**: Display AI responses with rich formatting, tables, and code blocks
+- **Chat History**: Maintain conversation history within a session
+- **Multiple Conversations**: Start new conversations as needed
 
-## Used SharePoint Framework Version
+## Solution Structure
 
-![version](https://img.shields.io/badge/version-1.22.0--rc.0-yellow.svg)
+```
+react-copilot-apis/
+├── src/
+│   ├── services/
+│   │   ├── CopilotChatService.ts        # Service implementation for Copilot APIs
+│   │   └── ICopilotChatService.ts       # Interface and type definitions
+│   └── webparts/
+│       └── copilotChat/
+│           ├── CopilotChatWebPart.ts    # Web part entry point
+│           └── components/
+│               ├── CopilotChat.tsx       # Main React component
+│               └── CopilotChat.module.scss # Styling
+├── package.json
+└── README.md
+```
 
-## Applies to
+## How It Works
 
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+1. **Conversation Creation**: On first message, the service creates a new Copilot conversation via `POST /beta/copilot/conversations`
+2. **Message Exchange**: User messages are sent to `POST /beta/copilot/conversations/{id}/chat` with optional context, files, and web search settings
+3. **Response Rendering**: AI responses are parsed and rendered as Markdown with support for tables, code blocks, and formatting
+4. **Service Scope**: The `CopilotChatService` is registered as a singleton service in the SPFx service scope for efficient Work IQ client management
 
 ## Prerequisites
 
-> Any special pre-requisites?
+- **Node.js**: v22.14.0 or higher (< v23.0.0)
+- **SharePoint Framework**: v1.22.0-rc.0 or higher
+- **Microsoft 365 Tenant**: With Microsoft 365 Copilot license
+- **SharePoint Online**: Environment with sufficient permissions
+- **Work IQ Permissions**: The web part requires delegated permissions for Copilot APIs (*Sites.Read.All, Mail.Read, People.Read.All, OnlineMeetingTranscript.Read.All, Chat.Read, ChannelMessage.Read.All, ExternalItem.Read.All*)
 
-## Solution
+## Setup Instructions
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+### 1. Clone the Repository
 
-## Version history
+```bash
+git clone <repository-url>
+cd react-copilot-apis
+```
 
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+### 2. Install Dependencies
 
-## Disclaimer
+```bash
+npm install
+```
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+### 3. Trust the Development Certificate
 
----
+```bash
+npm run trust-dev-cert
+```
 
-## Minimal Path to Awesome
+### 4. Start the Development Server
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **npm run start**
+```bash
+npm run start
+```
 
-> Include any additional steps as needed.
+### 5. Test the Web Part
 
-## Features
+Open the SPFx Workbanch (_layouts/15/workbench.aspx) and load the webpart from the local development environment.
 
-Description of the extension that expands upon high-level summary above.
+### 6. Package for Production
 
-This extension illustrates the following concepts:
+```bash
+npm run package-solution
+```
 
-- topic 1
-- topic 2
-- topic 3
+The package will be created in `sharepoint/solution/react-copilot-apis.sppkg`
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+### 7. Deploy to SharePoint
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+1. Upload the `.sppkg` file to your SharePoint App Catalog
+2. When prompted, approve the Work IQ permission requests (admin consent required)
+3. Add the web part to any SharePoint page
+
+## Configuration
+
+The web part provides three configurable properties in the property pane:
+
+1. **Additional Instructions**: Custom context or instructions to guide Copilot's behavior (multiline text)
+2. **Enable Public Web Content**: Toggle to enable/disable web search in Copilot responses
+3. **Files**: Comma-separated URLs of external files for Copilot to reference (e.g., PDFs, Word documents)
+
+## Key Features
+
+### CopilotChatService
+
+- **CreateCopilotConversation()**: Creates a new conversation and returns conversation ID
+- **SendChatMessage()**: Sends a message with optional parameters:
+  - `additionalContext`: Array of context messages
+  - `files`: Array of file references (URIs)
+  - `webSearchEnabled`: Boolean to enable web search
+  - `contextualResources`: Combined resources object
+
+### React Component
+
+- Real-time message rendering with Markdown support
+- Conversation history management
+- Loading states and error handling
+- Responsive design with Fluent UI components
+- Keyboard shortcuts (Ctrl+Enter to send)
+
+## API Endpoints Used
+
+- `POST /beta/copilot/conversations` - Create new conversation
+- `POST /beta/copilot/conversations/{id}/chat` - Send chat message
+
+## Limitations
+
+- Requires Microsoft 365 Copilot license and appropriate Work IQ API permissions
+- Uses Beta Work IQ APIs which may change
+- Conversation history is session-based (not persisted across page reloads)
+- Admin consent required for Work IQ API permissions
 
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [Work IQ Copilot APIs](https://learn.microsoft.com/en-us/graph/api/resources/copilot-api-overview)
+- [SharePoint Framework Overview](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Work IQ TypeScript Client](https://github.com/microsoftgraph/msgraph-sdk-javascript)
+- [React Markdown Documentation](https://github.com/remarkjs/react-markdown)
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-copilot-apis" />
