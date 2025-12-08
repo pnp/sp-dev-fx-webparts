@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-copilot-apis-client-side-solution",
+    "id": "171c7878-93b8-4022-a020-49bb7e87b437",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.0-rc.0"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "People.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OnlineMeetingTranscript.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Chat.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ChannelMessage.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ExternalItem.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "react-copilot-apis description"
+      },
+      "longDescription": {
+        "default": "react-copilot-apis description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-copilot-apis Feature",
+        "description": "The feature that activates elements of the react-copilot-apis solution.",
+        "id": "f5c2263e-278b-4fbb-b61e-08ad8e7dfaaa",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-copilot-apis.sppkg"
+  }
+}
