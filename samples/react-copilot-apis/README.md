@@ -213,8 +213,8 @@ The Search web part provides one configurable property in the property pane:
 
 ## References
 
-- [Work IQ Copilot APIs](https://learn.microsoft.com/en-us/graph/api/resources/copilot-api-overview)
-- [SharePoint Framework Overview](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Work IQ Copilot APIs](https://learn.microsoft.com/microsoft-365-copilot/extensibility/copilot-apis-overview)
+- [SharePoint Framework Overview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 - [Work IQ TypeScript Client](https://github.com/microsoftgraph/msgraph-sdk-javascript)
 - [React Markdown Documentation](https://github.com/remarkjs/react-markdown)
 
