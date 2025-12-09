@@ -15865,7 +15865,7 @@
       {
         "name": "Microsoft Graph Copilot APIs",
         "description": "Explore the Microsoft Graph APIs for interacting with Microsoft 365 Copilot, including creating conversations, sending messages, and managing chat sessions programmatically.",
-        "url": "https://learn.microsoft.com/graph/api/resources/copilot-api-overview"
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/copilot-apis-overview"
       },
       {
         "name": "Using Microsoft Graph in SharePoint Framework",
