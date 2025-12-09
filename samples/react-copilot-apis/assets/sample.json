@@ -2,12 +2,12 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-copilot-apis",
     "source": "pnp",
-    "title": "Microsoft 365 Copilot Chat with Work IQ in SPFx",
-    "shortDescription": "A SharePoint Framework web part that integrates Microsoft 365 Copilot Chat to create an interactive AI assistant with conversational history.",
+    "title": "Microsoft 365 Copilot Chat and Search with Work IQ in SPFx",
+    "shortDescription": "SharePoint Framework web parts that integrate Microsoft 365 Copilot Chat and Search APIs to create interactive AI assistants with conversational history and intelligent document search.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-apis",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-apis",
     "longDescription": [
-      "This sample demonstrates how to integrate Microsoft 365 Copilot Chat into a SharePoint Framework React web part. It provides a full conversational interface with chat history, allowing users to interact with Microsoft 365 Copilot directly from SharePoint. The solution includes features like scrollable conversation history, markdown rendering for AI responses, optional web search integration, support for file references and additional context, and the ability to start new conversations with a single click. The chat interface displays both user prompts and AI responses in a clean, organized timeline with timestamps."
+      "This sample demonstrates how to integrate Microsoft 365 Copilot Chat and Search APIs into SharePoint Framework React web parts. It includes two web parts: Copilot Chat provides a full conversational interface with chat history, allowing users to interact with Microsoft 365 Copilot directly from SharePoint with features like scrollable conversation history, markdown rendering for AI responses, optional web search integration, support for file references and additional context, and the ability to start new conversations. Copilot Search enables hybrid semantic and lexical search using natural language queries, displaying results with document titles, authors, preview text with keyword highlighting, and direct links to documents. Both web parts leverage Work IQ Copilot APIs to provide enterprise-grade AI capabilities within SharePoint."
     ],
     "creationDateTime": "2025-12-08",
     "updateDateTime": "2025-12-08",
@@ -32,8 +32,14 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png",
         "alt": "Microsoft 365 Copilot Chat Web Part with conversation history"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-search.png",
+        "alt": "Microsoft 365 Copilot Search Web Part with document results"
       }
     ],
     "authors": [

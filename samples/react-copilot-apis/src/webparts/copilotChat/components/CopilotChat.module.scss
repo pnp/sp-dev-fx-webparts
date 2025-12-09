@@ -566,4 +566,25 @@
 
 .sendButton {
   min-width: 120px;
+  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+  border-color: #0078d4;
+  color: white;
+
+  &:hover {
+    background: linear-gradient(135deg, #1084e0 0%, #207fce 100%);
+    border-color: #1084e0;
+    color: white;
+  }
+
+  &:active {
+    background: linear-gradient(135deg, #006cc1 0%, #005da8 100%);
+    border-color: #006cc1;
+  }
+
+  &:disabled {
+    background: #d1d1d1;
+    border-color: #d1d1d1;
+    color: #a0a0a0;
+    opacity: 0.6;
+  }
 }

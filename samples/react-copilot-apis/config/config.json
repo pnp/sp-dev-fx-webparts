@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/copilotChat/CopilotChatWebPart.manifest.json"
         }
       ]
+    },
+    "copilot-search-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotSearch/CopilotSearchWebPart.js",
+          "manifest": "./src/webparts/copilotSearch/CopilotSearchWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "CopilotChatWebPartStrings": "lib/webparts/copilotChat/loc/{locale}.js"
+    "CopilotChatWebPartStrings": "lib/webparts/copilotChat/loc/{locale}.js",
+    "CopilotSearchWebPartStrings": "lib/webparts/copilotSearch/loc/{locale}.js"
   }
 }

@@ -1,17 +1,23 @@
-# Microsoft 365 Copilot Chat Web Part
+# Microsoft 365 Copilot Chat and Search Web Parts
 
 ![SPFx v1.22.0-rc.0](https://img.shields.io/badge/SPFx-1.22.0-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 
-This SharePoint Framework (SPFx) web part demonstrates how to integrate with Microsoft 365 Copilot APIs using Work IQ to create an interactive AI chat experience directly within SharePoint pages.
+This SharePoint Framework (SPFx) solution demonstrates how to integrate with Microsoft 365 Copilot APIs using Work IQ to create interactive AI experiences directly within SharePoint pages. The solution includes two web parts: Copilot Chat and Copilot Search.
 
-![Copilot Chat Web Part Screenshot](assets/preview.png)
+![Copilot Chat Web Part Screenshot](assets/preview-chat.png)
+
+![Copilot Search Web Part Screenshot](assets/preview-search.png)
 
 ## Summary
 
-This sample provides a fully functional chat interface that leverages the Work IQ Copilot APIs (`/beta/copilot/conversations`) to create conversations and exchange messages with Microsoft 365 Copilot. The web part supports advanced features including:
+This sample provides two fully functional web parts that leverage Work IQ Copilot APIs:
+
+### Copilot Chat Web Part
+
+A conversational interface using the `/beta/copilot/conversations` API to create conversations and exchange messages with Microsoft 365 Copilot:
 
 - **Conversational AI**: Create and manage chat conversations with Microsoft 365 Copilot
 - **Additional Context**: Configure custom instructions to guide Copilot's responses
@@ -20,6 +26,17 @@ This sample provides a fully functional chat interface that leverages the Work I
 - **Markdown Rendering**: Display AI responses with rich formatting, tables, and code blocks
 - **Chat History**: Maintain conversation history within a session
 - **Multiple Conversations**: Start new conversations as needed
+
+### Copilot Search Web Part
+
+An intelligent search interface using the `/beta/copilot/search` API for hybrid semantic and lexical search:
+
+- **Natural Language Search**: Enter queries in plain language to find relevant documents
+- **Semantic Understanding**: AI-powered search that understands context and intent
+- **Rich Metadata**: Display document titles, authors, and resource types
+- **Keyword Highlighting**: Preview text with highlighted search terms
+- **Direct Document Access**: Click-through links to search results
+- **Configurable Results**: Customize page size for search results
 
 ## Contributors
 
@@ -37,24 +54,41 @@ This sample provides a fully functional chat interface that leverages the Work I
 react-copilot-apis/
 ├── src/
 │   ├── services/
-│   │   ├── CopilotChatService.ts        # Service implementation for Copilot APIs
-│   │   └── ICopilotChatService.ts       # Interface and type definitions
+│   │   ├── CopilotChatService.ts        # Chat service implementation
+│   │   ├── ICopilotChatService.ts       # Chat interface and types
+│   │   ├── CopilotSearchService.ts      # Search service implementation
+│   │   └── ICopilotSearchService.ts     # Search interface and types
 │   └── webparts/
-│       └── copilotChat/
-│           ├── CopilotChatWebPart.ts    # Web part entry point
+│       ├── copilotChat/
+│       │   ├── CopilotChatWebPart.ts    # Chat web part entry point
+│       │   └── components/
+│       │       ├── CopilotChat.tsx       # Chat React component
+│       │       └── CopilotChat.module.scss # Chat styling
+│       └── copilotSearch/
+│           ├── CopilotSearchWebPart.ts  # Search web part entry point
 │           └── components/
-│               ├── CopilotChat.tsx       # Main React component
-│               └── CopilotChat.module.scss # Styling
+│               ├── CopilotSearch.tsx     # Search React component
+│               └── CopilotSearch.module.scss # Search styling
 ├── package.json
 └── README.md
 ```
 
 ## How It Works
 
+### Copilot Chat
+
 1. **Conversation Creation**: On first message, the service creates a new Copilot conversation via `POST /beta/copilot/conversations`
 2. **Message Exchange**: User messages are sent to `POST /beta/copilot/conversations/{id}/chat` with optional context, files, and web search settings
 3. **Response Rendering**: AI responses are parsed and rendered as Markdown with support for tables, code blocks, and formatting
 4. **Service Scope**: The `CopilotChatService` is registered as a singleton service in the SPFx service scope for efficient Work IQ client management
+
+### Copilot Search
+
+1. **Search Request**: User queries are sent to `POST /beta/copilot/search` with natural language text
+2. **Metadata Retrieval**: The service requests title and author metadata for each search result
+3. **Keyword Highlighting**: Preview text includes highlighted keywords using `<c0>` tags which are converted to bold formatting
+4. **Result Display**: Search hits are displayed with document titles as clickable links, author information, and formatted preview text
+5. **Service Scope**: The `CopilotSearchService` is registered as a singleton service in the SPFx service scope for efficient Work IQ client management
 
 ## Prerequisites
 
@@ -111,11 +145,19 @@ The package will be created in `sharepoint/solution/react-copilot-apis.sppkg`
 
 ## Configuration
 
-The web part provides three configurable properties in the property pane:
+### Copilot Chat Web Part
+
+The Chat web part provides three configurable properties in the property pane:
 
 1. **Additional Instructions**: Custom context or instructions to guide Copilot's behavior (multiline text)
 2. **Enable Public Web Content**: Toggle to enable/disable web search in Copilot responses
 3. **Files**: Comma-separated URLs of external files for Copilot to reference (e.g., PDFs, Word documents)
+
+### Copilot Search Web Part
+
+The Search web part provides one configurable property in the property pane:
+
+1. **Page Size**: Number of search results to display per page (1-100, default: 25)
 
 ## Key Features
 
@@ -128,7 +170,14 @@ The web part provides three configurable properties in the property pane:
   - `webSearchEnabled`: Boolean to enable web search
   - `contextualResources`: Combined resources object
 
-### React Component
+### CopilotSearchService
+
+- **Search()**: Performs hybrid semantic and lexical search with parameters:
+  - `query`: Natural language search query (max 1,500 characters)
+  - `pageSize`: Number of results to return (1-100)
+  - `dataSources`: Configuration for OneDrive data source with metadata fields
+
+### Chat React Component
 
 - Real-time message rendering with Markdown support
 - Conversation history management
@@ -136,10 +185,24 @@ The web part provides three configurable properties in the property pane:
 - Responsive design with Fluent UI components
 - Keyboard shortcuts (Ctrl+Enter to send)
 
+### Search React Component
+
+- Natural language search input
+- Loading states and error handling
+- Rich result display with titles, authors, and preview text
+- Keyword highlighting in preview text
+- Direct links to document locations
+- Responsive design with Fluent UI components
+- Keyboard shortcuts (Enter to search)
+
 ## API Endpoints Used
 
+### Chat APIs
 - `POST /beta/copilot/conversations` - Create new conversation
 - `POST /beta/copilot/conversations/{id}/chat` - Send chat message
+
+### Search APIs
+- `POST /beta/copilot/search` - Perform hybrid semantic and lexical search across OneDrive
 
 ## Limitations
 

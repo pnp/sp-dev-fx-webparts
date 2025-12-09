@@ -171,7 +171,7 @@ export default class CopilotChat extends React.Component<ICopilotChatProps, ICop
           <div className={styles.chatHeader}>
             <div className={styles.headerLeft}>
               <Icon iconName="Robot" className={styles.headerIcon} />
-              <h2 className={styles.chatTitle}>AI Microsoft 365 Copilot Chat</h2>
+              <h2 className={styles.chatTitle}>Microsoft 365 Copilot Chat</h2>
             </div>
             <DefaultButton
               text="New Conversation"
