@@ -3,42 +3,37 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'CopilotChatWebPartStrings';
-import CopilotChat from './components/CopilotChat';
-import { ICopilotChatProps } from './components/ICopilotChatProps';
-import { ICopilotChatService } from '../../services/ICopilotChatService';
-import { CopilotChatService } from '../../services/CopilotChatService';
+import * as strings from 'CopilotSearchWebPartStrings';
+import CopilotSearch from './components/CopilotSearch';
+import { ICopilotSearchProps } from './components/ICopilotSearchProps';
+import { ICopilotSearchService } from '../../services/ICopilotSearchService';
+import { CopilotSearchService } from '../../services/CopilotSearchService';
 
-export interface ICopilotChatWebPartProps {
-  additionalContext: string;
-  webSearchEnabled: boolean;
-  files: string;
+export interface ICopilotSearchWebPartProps {
+  pageSize: string;
 }
 
-export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotChatWebPartProps> {
+export default class CopilotSearchWebPart extends BaseClientSideWebPart<ICopilotSearchWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
-  private _copilotChatService: ICopilotChatService | undefined;
+  private _copilotSearchService: ICopilotSearchService | undefined;
 
   public render(): void {
-    const element: React.ReactElement<ICopilotChatProps> = React.createElement(
-      CopilotChat,
+    const element: React.ReactElement<ICopilotSearchProps> = React.createElement(
+      CopilotSearch,
       {
-        additionalContext: this.properties.additionalContext,
-        webSearchEnabled: this.properties.webSearchEnabled,
-        files: this.properties.files,
+        pageSize: this.properties.pageSize,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        copilotChatService: this._copilotChatService
+        copilotSearchService: this._copilotSearchService
       }
     );
 
@@ -47,7 +42,7 @@ export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotCh
 
   protected onInit(): Promise<void> {
     // Consume the service from service scope
-    this._copilotChatService = this.context.serviceScope.consume(CopilotChatService.serviceKey);
+    this._copilotSearchService = this.context.serviceScope.consume(CopilotSearchService.serviceKey);
     
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
@@ -120,21 +115,9 @@ export default class CopilotChatWebPart extends BaseClientSideWebPart<ICopilotCh
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('additionalContext', {
-                  label: strings.AdditionalInstructionsFieldLabel,
-                  multiline: true,
-                  rows: 5
-                }),
-                PropertyPaneToggle('webSearchEnabled', {
-                  label: strings.EnablePublicWebContentFieldLabel,
-                  onText: 'Enabled',
-                  offText: 'Disabled'
-                }),
-                PropertyPaneTextField('files', {
-                  label: strings.FilesFieldLabel,
-                  multiline: true,
-                  rows: 3,
-                  placeholder: 'https://example.com/file1.pdf, https://example.com/file2.docx'
+                PropertyPaneTextField('pageSize', {
+                  label: 'Page Size (1-100)',
+                  placeholder: '25'
                 })
               ]
             }

@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "useGulp": false,
     "plusBeta": false,
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "nodeVersion": "22.17.0",
     "sdksVersions": {},
     "version": "1.22.0-rc.0",
