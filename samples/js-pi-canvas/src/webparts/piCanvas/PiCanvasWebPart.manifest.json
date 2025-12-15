@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6bcd9bfc-425b-47c2-8e5e-c17eb1c864c5",
+  "alias": "PiCanvasWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFlexibleLayout": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "PiCanvas" },
+    "description": { "default": "Infinite possibilities - Organize web parts into flexible tabbed layouts" },
+    "iconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJjYW52YXNHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA2NmNjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGRhNmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGxpbmUgeDE9IjYiIHkxPSIyOCIgeDI9IjE2IiB5Mj0iNiIgc3Ryb2tlPSIjOGI0NTEzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxsaW5lIHgxPSIyNiIgeTE9IjI4IiB4Mj0iMTYiIHkyPSI2IiBzdHJva2U9IiM4YjQ1MTMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGxpbmUgeDE9IjkiIHkxPSIyMCIgeDI9IjIzIiB5Mj0iMjAiIHN0cm9rZT0iIzhiNDUxMyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSI3IiB5PSI1IiB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHJ4PSIxIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIvPjxyZWN0IHg9IjgiIHk9IjYiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMiIgZmlsbD0idXJsKCNjYW52YXNHcmFkKSIvPjx0ZXh0IHg9IjE2IiB5PSIxNS41IiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7PgDwvdGV4dD48L3N2Zz4=",
+    "properties": {
+      "description": "PiCanvas",
+      "sectionClass": "CanvasSection",
+      "webpartClass": "ControlZone",
+      "tabData": []
+    }
+  }]
+}

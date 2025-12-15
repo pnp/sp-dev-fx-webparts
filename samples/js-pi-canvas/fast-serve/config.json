@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nickvandenbos/spfx-fast-serve/master/schema/config.latest.schema.json",
+  "serve": {
+    "open": false
+  }
+}

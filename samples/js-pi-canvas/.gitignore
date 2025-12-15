@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Build generated files
+dist
+lib
+release
+temp
+sharepoint/solution/debug/
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# OSX
+.DS_Store
+
+# Visual Studio files
+.ntvs_analysis.dat
+.vs
+bin
+obj
+
+# Resx Generated Code
+*.resx.ts
+
+# Styles Generated Code
+*.scss.ts
+
+# Heft
+.heft
+
+# Playwright MCP testing artifacts
+.playwright-mcp
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.local
+.env.*.local

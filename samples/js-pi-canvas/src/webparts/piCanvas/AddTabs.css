@@ -1,0 +1,866 @@
+/* ===== CSS CUSTOM PROPERTIES (Defaults) ===== */
+.addui-Tabs {
+  /* Colors */
+  --pi-tab-accent: #0078d4;
+  --pi-tab-text: rgba(0, 0, 0, 0.7);
+  --pi-tab-text-active: var(--pi-tab-accent);
+  --pi-tab-bg: transparent;
+  --pi-tab-bg-active: transparent;
+  --pi-tab-bg-hover: rgba(0, 0, 0, 0.04);
+
+  /* Typography */
+  --pi-tab-font-size: 14px;
+  --pi-tab-font-weight: 500;
+
+  /* Spacing */
+  --pi-tab-padding-v: 12px;
+  --pi-tab-padding-h: 20px;
+  --pi-tab-gap: 0px;
+  --pi-tab-content-gap: 0px;
+
+  /* Borders & Effects */
+  --pi-tab-radius: 0px;
+  --pi-tab-indicator-width: 3px;
+  --pi-tab-indicator-color: var(--pi-tab-accent);
+  --pi-tab-indicator-display: block;
+  --pi-tab-separator-color: rgba(0, 0, 0, 0.12);
+  --pi-tab-separator-display: block;
+  --pi-tab-shadow: none;
+  --pi-tab-transition: all 0.2s ease;
+}
+
+/* Disable transitions when user opts out */
+.addui-Tabs[data-transitions="false"] {
+  --pi-tab-transition: none;
+}
+
+/* ===== BASE TAB STYLES ===== */
+.addui-Tabs .addui-Tabs-tabHolder {
+  display: flex;
+  gap: var(--pi-tab-gap);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 1;
+  border-bottom: 1px solid var(--pi-tab-separator-color);
+  border-bottom-style: var(--pi-tab-separator-display, solid);
+  text-align: center;
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  cursor: pointer;
+  color: var(--pi-tab-text);
+  font-weight: var(--pi-tab-font-weight);
+  font-size: var(--pi-tab-font-size);
+  transition: var(--pi-tab-transition);
+  background: var(--pi-tab-bg);
+  border-radius: var(--pi-tab-radius) var(--pi-tab-radius) 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tab image support */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab .tab-image {
+  max-height: 24px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab .tab-image.tab-image-right {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab .tab-image.tab-image-top {
+  display: block;
+  margin: 0 auto 6px auto;
+  max-height: 32px;
+}
+
+/* Tab background image support */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-has-bg-image="true"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-has-bg-image="true"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+  transition: var(--pi-tab-transition);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-has-bg-image="true"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:hover {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: var(--pi-tab-bg-hover);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-has-bg-image="true"]:hover::before {
+  background: rgba(0,0,0,0.4);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  padding-bottom: calc(var(--pi-tab-padding-v) - var(--pi-tab-indicator-width) + 1px);
+  border-bottom: var(--pi-tab-indicator-width) solid var(--pi-tab-indicator-color);
+  border-bottom-style: var(--pi-tab-indicator-display, solid);
+  color: var(--pi-tab-text-active);
+  background: var(--pi-tab-bg-active);
+  box-shadow: var(--pi-tab-shadow);
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-has-bg-image="true"].addui-Tabs-active::before {
+  background: rgba(0,0,0,0.2);
+}
+
+/* Web part as tab label support */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+}
+
+/* Style web parts used as tab labels - remove all SharePoint chrome */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab .as-tab-label,
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab .as-tab-label * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Remove all container restrictions for web part labels */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab .ControlZone,
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="ControlZone"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="controlZone"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [data-automation-id="CanvasControl"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="webPartContainer"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="WebPart"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="webpart"] {
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Target SharePoint image webpart containers */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [data-automation-id="imageWebPart"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="imageWebPart"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="ImageWebPart"],
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab figure,
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab picture {
+  width: auto !important;
+  max-width: none !important;
+  display: block;
+}
+
+/* Images in web part labels - show full image, not truncated */
+/* Label image height is configurable via --pi-label-image-height (default: 60px) */
+/* When --pi-label-image-height is 'none', images fill the tab but stay within bounds */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab img {
+  max-height: var(--pi-label-image-height, 60px);
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+  object-fit: contain !important;
+}
+
+/* When no limit is set, constrain images to fit within tab while maintaining aspect ratio */
+.addui-Tabs[data-label-image-unlimited="true"] .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab img {
+  max-height: none;
+  max-width: 100%;
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Handle Image web part specific structure */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [data-sp-web-part] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+}
+
+/* Remove any clipping from image containers */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab [class*="image"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.addui-Tabs .addui-Tabs-content {
+  display: none;
+  margin-top: var(--pi-tab-content-gap, 0);
+}
+
+.addui-Tabs .addui-Tabs-content.addui-Tabs-active { display: block; }
+
+/* ===== TAB ALIGNMENT STYLES ===== */
+
+/* Stretch (default) - tabs fill full width */
+[data-tab-alignment="stretch"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 1;
+}
+
+/* Left alignment */
+[data-tab-alignment="left"] .addui-Tabs-tabHolder {
+  justify-content: flex-start;
+}
+[data-tab-alignment="left"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 0 0 auto;
+}
+
+/* Center alignment */
+[data-tab-alignment="center"] .addui-Tabs-tabHolder {
+  justify-content: center;
+}
+[data-tab-alignment="center"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 0 0 auto;
+}
+
+/* Right alignment */
+[data-tab-alignment="right"] .addui-Tabs-tabHolder {
+  justify-content: flex-end;
+}
+[data-tab-alignment="right"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 0 0 auto;
+}
+
+/* ===== TAB STYLE: DEFAULT ===== */
+/* (Already defined in base styles above) */
+
+/* ===== TAB STYLE: PILLS ===== */
+[data-tab-style="pills"] .addui-Tabs-tabHolder {
+  gap: max(var(--pi-tab-gap), 8px);
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: calc(var(--pi-tab-radius) + 2px);
+}
+
+[data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  border: none;
+  border-radius: max(var(--pi-tab-radius), 6px);
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  background: var(--pi-tab-bg);
+  color: var(--pi-tab-text);
+}
+
+[data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab:hover {
+  background: var(--pi-tab-bg-hover);
+}
+
+[data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  background: var(--pi-tab-accent);
+  color: #fff;
+  border: none;
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  box-shadow: var(--pi-tab-shadow, 0 2px 4px rgba(0, 120, 212, 0.3));
+}
+
+[data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active:hover {
+  filter: brightness(0.9);
+  color: #fff;
+}
+
+/* ===== TAB STYLE: UNDERLINE ===== */
+[data-tab-style="underline"] .addui-Tabs-tabHolder {
+  border-bottom: 1px solid var(--pi-tab-separator-color, rgba(0, 0, 0, 0.08));
+  border-bottom-style: var(--pi-tab-separator-display, solid);
+  gap: var(--pi-tab-gap);
+}
+
+[data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  border: none;
+  border-bottom: var(--pi-tab-indicator-width) solid transparent;
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  background: var(--pi-tab-bg);
+  color: var(--pi-tab-text);
+  margin-bottom: -1px;
+  border-radius: var(--pi-tab-radius) var(--pi-tab-radius) 0 0;
+}
+
+[data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab:hover {
+  color: rgba(0, 0, 0, 0.87);
+  background: var(--pi-tab-bg-hover);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-bottom: var(--pi-tab-indicator-width) solid var(--pi-tab-indicator-color);
+  border-bottom-style: var(--pi-tab-indicator-display, solid);
+  color: var(--pi-tab-text-active);
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  background: var(--pi-tab-bg-active);
+  box-shadow: var(--pi-tab-shadow);
+}
+
+/* ===== TAB STYLE: BOXED ===== */
+[data-tab-style="boxed"] .addui-Tabs-tabHolder {
+  gap: max(var(--pi-tab-gap), 4px);
+  border-bottom: 1px solid var(--pi-tab-separator-color, rgba(0, 0, 0, 0.12));
+  border-bottom-style: var(--pi-tab-separator-display, solid);
+}
+
+[data-tab-style="boxed"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: none;
+  border-radius: max(var(--pi-tab-radius), 8px) max(var(--pi-tab-radius), 8px) 0 0;
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  background: var(--pi-tab-bg, rgba(0, 0, 0, 0.02));
+  color: var(--pi-tab-text);
+  margin-bottom: -1px;
+}
+
+[data-tab-style="boxed"] .addui-Tabs-tabHolder .addui-Tabs-tab:hover {
+  background: var(--pi-tab-bg-hover);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+[data-tab-style="boxed"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  background: var(--pi-tab-bg-active, #fff);
+  color: var(--pi-tab-text-active);
+  border-color: rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid var(--pi-tab-bg-active, #fff);
+  padding: var(--pi-tab-padding-v) var(--pi-tab-padding-h);
+  font-weight: calc(var(--pi-tab-font-weight) + 100);
+  box-shadow: var(--pi-tab-shadow);
+}
+
+/* Ensure tab content containers fill full width */
+.hillbilly-tab-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Force the content wrapper itself to be full width */
+.addui-Tabs .addui-Tabs-content {
+  width: 100%;
+}
+
+.addui-Tabs .addui-Tabs-content.addui-Tabs-active {
+  display: block;
+  width: 100%;
+}
+
+/* ===== SECTION CONTENT - Preserve original SharePoint layout ===== */
+/* When a section is moved into a tab, preserve its column structure */
+.hillbilly-tab-content.hillbilly-section-content {
+  width: 100%;
+}
+
+/* The section container itself - make it a flex row */
+.hillbilly-tab-content.hillbilly-section-content > div {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* SharePoint Canvas Section - force flex row layout */
+.hillbilly-tab-content.hillbilly-section-content .CanvasSection,
+.hillbilly-tab-content.hillbilly-section-content [class*="CanvasSection"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+}
+
+/* SharePoint Columns - preserve their width percentages */
+/* 2-column layout: each column should be ~50% */
+.hillbilly-tab-content.hillbilly-section-content .CanvasSection-col,
+.hillbilly-tab-content.hillbilly-section-content [class*="CanvasSection-col"] {
+  flex: 0 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+/* SharePoint responsive column classes */
+/* Full width on small screens */
+.hillbilly-tab-content.hillbilly-section-content .CanvasSection-sm12 {
+  width: 100% !important;
+}
+
+/* Large screen column widths - 2 column (50% each) */
+@media (min-width: 640px) {
+  .hillbilly-tab-content.hillbilly-section-content .CanvasSection-lg6 {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+  }
+
+  /* 3 column layout (33% each) */
+  .hillbilly-tab-content.hillbilly-section-content .CanvasSection-lg4 {
+    width: 33.333% !important;
+    flex: 0 0 33.333% !important;
+  }
+
+  /* 1/3 + 2/3 layout */
+  .hillbilly-tab-content.hillbilly-section-content .CanvasSection-lg8 {
+    width: 66.666% !important;
+    flex: 0 0 66.666% !important;
+  }
+
+  /* Full width column */
+  .hillbilly-tab-content.hillbilly-section-content .CanvasSection-lg12 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
+
+/* Images in sections should fit within their column */
+.hillbilly-tab-content.hillbilly-section-content img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* Webparts inside section columns */
+.hillbilly-tab-content.hillbilly-section-content .ControlZone,
+.hillbilly-tab-content.hillbilly-section-content [class*="ControlZone"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ===== INDIVIDUAL WEBPART CONTENT - Full width ===== */
+/* Individual webparts (not from sections) should fill full width */
+.hillbilly-tab-content.hillbilly-single-webpart > div,
+.hillbilly-tab-content.hillbilly-single-webpart > div > div,
+.hillbilly-tab-content.hillbilly-single-webpart > div > div > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Override SharePoint container restrictions for individual webparts only */
+.hillbilly-tab-content.hillbilly-single-webpart [data-automation-id="CanvasControl"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="ControlZone"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="webPartContainer"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="controlZone"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="WebPart"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="webpart"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Force images inside individual webpart tabs to fill full width */
+.hillbilly-tab-content.hillbilly-single-webpart img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+}
+
+/* Target SharePoint image webpart containers for individual webparts */
+.hillbilly-tab-content.hillbilly-single-webpart [data-automation-id="imageWebPart"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="imageWebPart"],
+.hillbilly-tab-content.hillbilly-single-webpart [class*="ImageWebPart"],
+.hillbilly-tab-content.hillbilly-single-webpart figure,
+.hillbilly-tab-content.hillbilly-single-webpart picture {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Remove any margin/padding that creates whitespace for individual webparts */
+.hillbilly-tab-content.hillbilly-single-webpart [class*="image"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* Highlight styles for webpart/section selection in property pane */
+.hillbilly-highlight {
+  position: relative;
+  outline: 3px solid #0078d4 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(0, 120, 212, 0.3) !important;
+  animation: hillbilly-pulse 1.5s ease-in-out infinite;
+  z-index: 100;
+}
+
+.hillbilly-highlight::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px dashed #0078d4;
+  border-radius: 4px;
+  pointer-events: none;
+  animation: hillbilly-dash 0.5s linear infinite;
+}
+
+@keyframes hillbilly-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 6px rgba(0, 120, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 120, 212, 0.15);
+  }
+}
+
+@keyframes hillbilly-dash {
+  to {
+    stroke-dashoffset: -10px;
+  }
+}
+
+/* Section highlight - slightly different style */
+.hillbilly-section-highlight {
+  position: relative;
+  background-color: rgba(0, 120, 212, 0.08) !important;
+  outline: 3px solid #0078d4 !important;
+  outline-offset: 4px;
+  animation: hillbilly-pulse 1.5s ease-in-out infinite;
+}
+
+/* ===== TAB DIVIDERS ===== */
+/* Horizontal mode - vertical divider line after tab */
+[data-tab-orientation="horizontal"] .addui-Tabs-tabHolder .addui-Tabs-tab[data-divider-after="true"]::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 20%;
+  height: 60%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--pi-tab-accent, #0078d4), transparent);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* Ensure tab has relative positioning for the divider */
+.addui-Tabs-tabHolder .addui-Tabs-tab[data-divider-after="true"] {
+  position: relative;
+}
+
+/* Add some spacing after divider */
+[data-tab-orientation="horizontal"] .addui-Tabs-tabHolder .addui-Tabs-tab[data-divider-after="true"] {
+  margin-right: 8px;
+}
+
+/* Vertical mode - horizontal divider line after tab */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab[data-divider-after="true"]::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  bottom: -1px;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--pi-tab-accent, #0078d4), transparent);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* Add spacing after divider in vertical mode */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab[data-divider-after="true"] {
+  margin-bottom: 8px;
+}
+
+/* ===== VERTICAL TAB LAYOUT ===== */
+/* Main container - flex row layout */
+[data-tab-orientation="vertical"].addui-Tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Tabs on right side - reverse the flex direction */
+[data-tab-orientation="vertical"][data-vertical-position="right"].addui-Tabs {
+  flex-direction: row-reverse !important;
+}
+
+/* Vertical tab holder - column layout */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder {
+  flex-direction: column !important;
+  width: var(--pi-vertical-tab-width, 200px) !important;
+  min-width: var(--pi-vertical-tab-width, 200px) !important;
+  max-width: var(--pi-vertical-tab-width, 200px) !important;
+  flex-shrink: 0 !important;
+  gap: 0 !important;
+  border-bottom: none !important;
+  border-right: 1px solid var(--pi-tab-separator-color, rgba(0, 0, 0, 0.12));
+  border-right-style: var(--pi-tab-separator-display, solid);
+  height: auto;
+  align-self: stretch;
+}
+
+/* Right side tabs - border on left instead of right */
+[data-tab-orientation="vertical"][data-vertical-position="right"] .addui-Tabs-tabHolder {
+  border-right: none !important;
+  border-left: 1px solid var(--pi-tab-separator-color, rgba(0, 0, 0, 0.12));
+  border-left-style: var(--pi-tab-separator-display, solid);
+}
+
+/* Individual vertical tabs */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  text-align: left !important;
+  border-bottom: none !important;
+  border-right: 3px solid transparent;
+  border-radius: 0 !important;
+  padding: var(--pi-tab-padding-v, 12px) var(--pi-tab-padding-h, 16px);
+}
+
+/* Right side - indicator on left */
+[data-tab-orientation="vertical"][data-vertical-position="right"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  text-align: right !important;
+  border-right: none !important;
+  border-left: 3px solid transparent;
+}
+
+/* Active vertical tab */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-bottom: none !important;
+  border-right-color: var(--pi-tab-indicator-color, var(--pi-tab-accent, #0078d4)) !important;
+  border-right-width: var(--pi-tab-indicator-width, 3px) !important;
+  border-right-style: var(--pi-tab-indicator-display, solid) !important;
+  padding-bottom: var(--pi-tab-padding-v, 12px) !important;
+  background: var(--pi-tab-bg-active, rgba(0, 120, 212, 0.08)) !important;
+}
+
+/* Right side active indicator */
+[data-tab-orientation="vertical"][data-vertical-position="right"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-right-color: transparent !important;
+  border-left-color: var(--pi-tab-indicator-color, var(--pi-tab-accent, #0078d4)) !important;
+  border-left-width: var(--pi-tab-indicator-width, 3px) !important;
+  border-left-style: var(--pi-tab-indicator-display, solid) !important;
+}
+
+/* Vertical tab content area */
+[data-tab-orientation="vertical"] .addui-Tabs-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+  width: auto !important;
+  padding: 16px;
+  overflow: auto;
+}
+
+/* ===== VERTICAL MODE STYLE ADJUSTMENTS ===== */
+
+/* Pills style in vertical mode */
+[data-tab-orientation="vertical"][data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  margin: 4px 8px;
+  width: calc(100% - 16px) !important;
+  border-radius: var(--pi-tab-radius, 6px) !important;
+  border-right: none !important;
+  border-left: none !important;
+}
+
+[data-tab-orientation="vertical"][data-tab-style="pills"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-right: none !important;
+  border-left: none !important;
+}
+
+/* Boxed style in vertical mode */
+[data-tab-orientation="vertical"][data-tab-style="boxed"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  margin: 4px 8px;
+  width: calc(100% - 16px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: var(--pi-tab-radius, 8px) !important;
+}
+
+[data-tab-orientation="vertical"][data-tab-style="boxed"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-color: var(--pi-tab-indicator-color, var(--pi-tab-accent, #0078d4)) !important;
+  border-width: 2px !important;
+  border-style: var(--pi-tab-indicator-display, solid) !important;
+}
+
+/* Underline style in vertical mode - just left/right border */
+[data-tab-orientation="vertical"][data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  border-right: 2px solid transparent !important;
+}
+
+[data-tab-orientation="vertical"][data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-right-color: var(--pi-tab-indicator-color, var(--pi-tab-accent, #0078d4)) !important;
+  border-right-style: var(--pi-tab-indicator-display, solid) !important;
+}
+
+[data-tab-orientation="vertical"][data-vertical-position="right"][data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+  border-right: none !important;
+  border-left: 2px solid transparent !important;
+}
+
+[data-tab-orientation="vertical"][data-vertical-position="right"][data-tab-style="underline"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+  border-left-color: var(--pi-tab-indicator-color, var(--pi-tab-accent, #0078d4)) !important;
+  border-left-style: var(--pi-tab-indicator-display, solid) !important;
+}
+
+/* ===== VERTICAL MODE CONTENT SIZING ===== */
+/* Ensure content in vertical mode fills properly */
+[data-tab-orientation="vertical"] .addui-Tabs-content.addui-Tabs-active {
+  display: flex !important;
+  flex-direction: column;
+}
+
+[data-tab-orientation="vertical"] .hillbilly-tab-content {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Sections in vertical mode */
+[data-tab-orientation="vertical"] .hillbilly-tab-content.hillbilly-section-content {
+  width: 100% !important;
+}
+
+[data-tab-orientation="vertical"] .hillbilly-tab-content.hillbilly-section-content > div {
+  width: 100% !important;
+}
+
+/* Individual webparts in vertical mode - full width */
+[data-tab-orientation="vertical"] .hillbilly-tab-content.hillbilly-single-webpart {
+  width: 100% !important;
+}
+
+[data-tab-orientation="vertical"] .hillbilly-tab-content.hillbilly-single-webpart img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Web part labels in vertical tabs */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab {
+  justify-content: flex-start !important;
+}
+
+[data-tab-orientation="vertical"][data-vertical-position="right"] .addui-Tabs-tabHolder .addui-Tabs-tab.webpart-label-tab {
+  justify-content: flex-end !important;
+}
+
+/* ===== DARK MODE FOR VERTICAL TABS ===== */
+[data-tab-orientation="vertical"] .addui-Tabs-tabHolder {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Dark mode detection via parent class or data attribute */
+.darkMode [data-tab-orientation="vertical"] .addui-Tabs-tabHolder,
+[data-theme="dark"] [data-tab-orientation="vertical"] .addui-Tabs-tabHolder {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== RESPONSIVE VERTICAL TABS ===== */
+/* On small screens, stack vertically (tabs on top) */
+@media (max-width: 768px) {
+  [data-tab-orientation="vertical"].addui-Tabs {
+    flex-direction: column !important;
+  }
+
+  [data-tab-orientation="vertical"][data-vertical-position="right"].addui-Tabs {
+    flex-direction: column !important;
+  }
+
+  [data-tab-orientation="vertical"] .addui-Tabs-tabHolder {
+    flex-direction: row !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+    overflow-x: auto;
+  }
+
+  [data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 3px solid transparent !important;
+  }
+
+  [data-tab-orientation="vertical"] .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom-color: var(--pi-tab-accent, #0078d4) !important;
+  }
+
+  [data-tab-orientation="vertical"] .addui-Tabs-content {
+    padding: 12px 0;
+  }
+}
+
+/* ===== PERMISSION PLACEHOLDER TABS ===== */
+
+/* Placeholder tab styling - disabled appearance */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-placeholder="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  position: relative;
+}
+
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-placeholder="true"]::after {
+  content: attr(data-placeholder-text);
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--pi-tab-text);
+  opacity: 0.7;
+  white-space: nowrap;
+  display: none;
+}
+
+/* Show tooltip on hover for placeholder tabs */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-placeholder="true"]:hover::after {
+  display: block;
+}
+
+/* Placeholder content area styling */
+.hillbilly-placeholder-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.placeholder-restricted-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--pi-tab-text, rgba(0, 0, 0, 0.6));
+  opacity: 0.7;
+}
+
+.placeholder-restricted-message .placeholder-icon {
+  font-size: 32px;
+}
+
+.placeholder-restricted-message .placeholder-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Dark mode support for placeholders */
+.addui-Tabs[data-theme="dark"] .hillbilly-placeholder-content {
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+}
+
+.addui-Tabs[data-theme="dark"] .placeholder-restricted-message {
+  color: rgba(255, 255, 255, 0.6);
+}
