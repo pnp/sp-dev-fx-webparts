@@ -42,13 +42,14 @@ You can add as many screen shots as you'd like to help users understand your web
 
 | :warning: Important          |
 |:---------------------------|
-| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to Toolchain this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![SPFx 1.22.0](https://img.shields.io/badge/SPFx-1.22.0-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![Toolchain: Heft](https://img.shields.io/badge/Toolchain-Heft-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -57,6 +58,12 @@ This sample is optimally compatible with the following environment configuration
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 <!--
+If using SPFx 1.22
+
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![Toolchain: Gulp](https://img.shields.io/badge/Toolchain-Gulp-green.svg)
+
 If using SPFx 1.18
 ![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
 ![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
@@ -145,8 +152,8 @@ If you want to provide links to your social media, blog, and employer name, make
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.1|November 1, 2024|Update comment|
-|1.0|October 28, 2024|Initial release|
+|1.1|November 1, 2026|Update comment|
+|1.0|October 28, 2026|Initial release|
 
 ## Prerequisites
 
@@ -176,7 +183,8 @@ As tempting as it may be, don't just use images to describe the steps. Let's be 
 * From your command line, change your current directory to the directory containing this sample (`YOUR-SOLUTION-NAME`, located under `samples`)
 * in the command line run:
   * `npm install`
-  * `gulp serve`
+  <!--* `gulp serve`-->
+  * `npm run start`
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
