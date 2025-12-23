@@ -68,7 +68,7 @@
         "name": "Use cascading dropdowns in web part properties",
         "description": "When designing the property pane for your SharePoint client-side web parts, you may have one web part property that displays its options based on the value selected in another property.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties"
-      },
+      }
     ]
   }
 ]
