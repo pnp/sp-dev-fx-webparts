@@ -1,7 +1,7 @@
 name: Merge All Samples
 
 on: 
-  push:
+  push: 
     branches: 
       - main
     paths: 
@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: write
     
-    steps:
+    steps: 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -26,15 +26,32 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version:  '3.11'
       
       - name:  Merge samples files
-        id: merge
+        id:  merge
         run: |
           python3 << 'EOF'
           import json
           import sys
           from pathlib import Path
+          
+          def flatten_samples(data):
+              """Flatten nested arrays to get individual sample objects"""
+              if isinstance(data, list):
+                  result = []
+                  for item in data:
+                      if isinstance(item, dict):
+                          # It's a sample object, add it
+                          result.append(item)
+                      elif isinstance(item, list):
+                          # It's a nested array, flatten it recursively
+                          result.extend(flatten_samples(item))
+                  return result
+              elif isinstance(data, dict):
+                  # Single sample object
+                  return [data]
+              return []
           
           # Initialize collections
           all_samples = []
@@ -55,23 +72,24 @@ jobs:
               file_path = metadata_dir / filename
               
               if file_path.exists():
-                  try:
+                  try: 
                       with open(file_path, 'r', encoding='utf-8') as f:
                           content = f.read().strip()
                           
                           if content:
-                              samples = json.loads(content)
+                              data = json.loads(content)
+                              samples = flatten_samples(data)
                               
-                              if isinstance(samples, list):
+                              if samples:
                                   sample_count = len(samples)
                                   all_samples.extend(samples)
                                   print(f"✓ {filename}: Added {sample_count} {source_type} samples")
                               else: 
                                   errors.append({
                                       "file": filename,
-                                      "error": "Expected JSON array, got object"
+                                      "error":  "No valid samples found after flattening"
                                   })
-                                  print(f"✗ {filename}: Not a JSON array")
+                                  print(f"✗ {filename}: No valid samples found")
                           else:
                               errors.append({
                                   "file": filename,
@@ -93,12 +111,12 @@ jobs:
                       })
                       print(f"✗ {filename}: Error - {str(e)}")
               else:
-                  print(f"ℹ️  {filename}: File not found (skipping)")
+                  print(f"ℹ️ {filename}: File not found (skipping)")
           
           # Write merged all-samples.json
           all_samples_output = metadata_dir / 'all-samples.json'
           
-          try:
+          try: 
               with open(all_samples_output, 'w', encoding='utf-8') as f:
                   json.dump(all_samples, f, indent=4, ensure_ascii=False)
               print(f"\n✓ Successfully wrote {all_samples_output}")
@@ -168,7 +186,7 @@ jobs:
             echo "✅ Changes detected"
           fi
       
-      - name:  Commit and push changes
+      - name: Commit and push changes
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -210,12 +228,12 @@ jobs:
             
             # Count by source if possible
             if [ -f .metadata/samples.json ]; then
-              WEBPARTS_COUNT=$(jq '. | length' .metadata/samples.json)
-              echo "- 🧩 WebParts: $WEBPARTS_COUNT" >> $GITHUB_STEP_SUMMARY
+              WEBPARTS_COUNT=$(jq 'if type == "array" then flatten | length else .  | length end' .metadata/samples.json)
+              echo "- 🧩 WebParts:  $WEBPARTS_COUNT" >> $GITHUB_STEP_SUMMARY
             fi
             
-            if [ -f .metadata/extensions-samplesjson ]; then
-              EXTENSIONS_COUNT=$(jq '. | length' .metadata/extensions-samples.json)
+            if [ -f .metadata/extensions-samples.json ]; then
+              EXTENSIONS_COUNT=$(jq 'if type == "array" then flatten | length else . | length end' .metadata/extensions-samples.json)
               echo "- 🔌 Extensions: $EXTENSIONS_COUNT" >> $GITHUB_STEP_SUMMARY
             fi
           fi
