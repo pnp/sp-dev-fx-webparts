@@ -1,13 +1,13 @@
 name: Sync Extensions Samples
 
-on:
-  workflow_dispatch:
+on: 
+  workflow_dispatch: 
   schedule: 
     # Run daily at 2 AM UTC as a backup
-    - cron: '0 2 * * *'
+    - cron:  '0 2 * * *'
 
-jobs: 
-  sync_extensions_samples: 
+jobs:
+  sync_extensions_samples:
     runs-on: ubuntu-latest
     
     permissions:
@@ -20,11 +20,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
       
-      - name: Create metadata directory
-        run: |
-          mkdir -p .metadata
-          echo "📁 Created . metadata directory"
-      
       - name: Download extensions samples.json
         id: download
         run: |
@@ -32,9 +27,9 @@ jobs:
           
           HTTP_CODE=$(curl -L \
             -w "%{http_code}" \
-            -H "Accept: application/vnd. github. raw" \
+            -H "Accept:  application/vnd.github.raw" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "X-GitHub-Api-Version:  2022-11-28" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/pnp/sp-dev-fx-extensions/contents/.metadata/samples.json \
             -o .metadata/extensions-samples.json)
           
@@ -55,7 +50,7 @@ jobs:
           fi
       
       - name:  Verify file content
-        if: steps.download.outputs.download_success == 'true'
+        if:  steps.download.outputs.download_success == 'true'
         run: |
           echo "📊 Verifying JSON file..."
           
@@ -72,13 +67,13 @@ jobs:
             exit 1
           fi
       
-      - name:  Check for changes
+      - name: Check for changes
         id: check_changes
         run: |
           git status
           echo ""
           echo "Git diff:"
-          git diff . metadata/extensions-samples.json
+          git diff .metadata/extensions-samples.json
           echo ""
           
           if git diff --exit-code .metadata/extensions-samples.json; then
@@ -89,8 +84,8 @@ jobs:
             echo "✅ Changes detected"
           fi
       
-      - name:  Commit and push changes
-        if:  steps.check_changes.outputs. changes == 'true'
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
