@@ -1,0 +1,183 @@
+name: Combine Sample JSON Files
+
+on:
+  push: 
+    branches: 
+      - main
+    paths:
+      - 'samples/**'
+  workflow_dispatch:
+  pull_request:
+    types: 
+      - closed
+    branches:
+      - main
+
+jobs:
+  combine-samples: 
+    # Only run on push to main, or when a PR is merged to main
+    if: github.event_name == 'push' || (github.event. pull_request.merged == true && github.event.pull_request.base.ref == 'main')
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses:  actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version:  '3.11'
+      
+      - name:  Combine sample. json files
+        id: combine
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+          from pathlib import Path
+          
+          # Initialize collections
+          valid_samples = []
+          errors = []
+          
+          # Find all sample.json files
+          samples_dir = Path('samples')
+          if samples_dir.exists():
+              sample_files = list(samples_dir.glob('**/assets/sample.json'))
+              
+              for sample_file in sample_files:
+                  relative_path = str(sample_file.relative_to(Path. cwd()))
+                  try:
+                      with open(sample_file, 'r', encoding='utf-8') as f:
+                          content = f.read().strip()
+                          
+                          # Try to parse as JSON
+                          if content: 
+                              sample_data = json.loads(content)
+                              valid_samples.append(sample_data)
+                              print(f"✓ Successfully processed:  {relative_path}")
+                          else:
+                              errors.append({
+                                  "file": relative_path,
+                                  "error": "Empty file"
+                              })
+                              print(f"✗ Empty file: {relative_path}")
+                  
+                  except json.JSONDecodeError as e:
+                      errors.append({
+                          "file": relative_path,
+                          "error": f"JSON decode error: {str(e)}"
+                      })
+                      print(f"✗ JSON error in {relative_path}: {str(e)}")
+                  
+                  except Exception as e: 
+                      errors.append({
+                          "file": relative_path,
+                          "error": f"Error reading file: {str(e)}"
+                      })
+                      print(f"✗ Error reading {relative_path}: {str(e)}")
+          
+          # Create . metadata directory if it doesn't exist
+          metadata_dir = Path('.metadata')
+          metadata_dir.mkdir(exist_ok=True)
+          
+          # Write combined samples.json (JSONL format - one JSON object per line)
+          samples_output = metadata_dir / 'samples.json'
+          with open(samples_output, 'w', encoding='utf-8') as f:
+              for sample in valid_samples: 
+                  f.write(json.dumps(sample, ensure_ascii=False) + '\n')
+          
+          print(f"\n📊 Summary:")
+          print(f"   Valid samples: {len(valid_samples)}")
+          print(f"   Errors: {len(errors)}")
+          
+          # Handle errors. json
+          errors_file = metadata_dir / 'errors.json'
+          
+          if errors:
+              # Write errors.json
+              with open(errors_file, 'w', encoding='utf-8') as f:
+                  json.dump({
+                      "timestamp": "${{ github.event.head_commit.timestamp || github.event.pull_request. merged_at }}",
+                      "commit": "${{ github.sha }}",
+                      "errors":  errors
+                  }, f, indent=2, ensure_ascii=False)
+              print(f"   Errors written to: {errors_file}")
+          else:
+              # Remove errors.json if it exists
+              if errors_file.exists():
+                  errors_file.unlink()
+                  print(f"   No errors found.  Removed existing errors.json")
+              else:
+                  print(f"   No errors found. No errors. json to remove.")
+          
+          # Set output for git commit step
+          if errors:
+              print(f"\nhas_errors=true")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f. write(f"has_errors=true\n")
+          else:
+              print(f"\nhas_errors=false")
+              with open(os. environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f"has_errors=false\n")
+          
+          EOF
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code . metadata/ || echo "changes=true" >> $GITHUB_OUTPUT
+          if git diff --exit-code .metadata/; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name:  Commit and push changes
+        if: steps. check_changes.outputs.changes == 'true'
+        run:  |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .metadata/
+          
+          if [ "${{ steps.combine.outputs.has_errors }}" == "true" ]; then
+            git commit -m "chore: update samples metadata (with errors) [skip ci]"
+          else
+            git commit -m "chore: update samples metadata [skip ci]"
+          fi
+          
+          git push
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Sample JSON Combination Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f . metadata/samples.json ]; then
+            SAMPLE_COUNT=$(wc -l < .metadata/samples.json)
+            echo "✅ **Valid Samples:** $SAMPLE_COUNT" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f .metadata/errors.json ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Errors Found**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat .metadata/errors.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **No Errors**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ steps.check_changes.outputs.changes }}" != "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ No changes detected in metadata files." >> $GITHUB_STEP_SUMMARY
+          fi
