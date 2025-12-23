@@ -15,7 +15,7 @@ on:
 jobs:
   process_samples:  
     runs-on: ubuntu-latest
-    if: github. event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     permissions: 
       contents: write
@@ -32,7 +32,7 @@ jobs:
         with: 
           python-version:  '3.11'
       
-      - name:  Combine sample. json files
+      - name:  Combine sample.json files
         id: combine
         continue-on-error: false
         run: |
@@ -51,7 +51,7 @@ jobs:
           
           # Find all sample.json files
           samples_dir = base_path / 'samples'
-          if samples_dir. exists():
+          if samples_dir.exists():
               sample_files = list(samples_dir.glob('**/assets/sample.json'))
               print(f"Found {len(sample_files)} sample.json files\n")
               
@@ -59,7 +59,7 @@ jobs:
                   # Resolve to absolute path first, then make relative
                   try:
                       absolute_path = sample_file.resolve()
-                      relative_path = str(absolute_path. relative_to(base_path))
+                      relative_path = str(absolute_path.relative_to(base_path))
                   except Exception as e: 
                       print(f"✗ Error resolving path for {sample_file}: {str(e)}")
                       continue
@@ -80,7 +80,7 @@ jobs:
                           # Try to parse as JSON
                           try:
                               sample_data = json.loads(content)
-                              valid_samples. append(sample_data)
+                              valid_samples.append(sample_data)
                               print(f"✓ Successfully processed:  {relative_path}")
                           except json.JSONDecodeError as e:
                               errors.append({
@@ -105,11 +105,11 @@ jobs:
           else:
               print(f"⚠️  Samples directory not found:  {samples_dir}")
           
-          # Create . metadata directory if it doesn't exist
+          # Create .metadata directory if it doesn't exist
           metadata_dir = base_path / '.metadata'
           metadata_dir.mkdir(exist_ok=True)
           
-          # Write combined samples. json as a proper JSON array
+          # Write combined samples.json as a proper JSON array
           samples_output = metadata_dir / 'samples.json'
           try:
               with open(samples_output, 'w', encoding='utf-8') as f:
@@ -124,21 +124,21 @@ jobs:
           print(f"   ✓ Valid samples: {len(valid_samples)}")
           print(f"   ✗ Errors:  {len(errors)}")
           
-          # Handle errors. json
+          # Handle errors.json
           errors_file = metadata_dir / 'errors.json'
           
           if errors:  
               # Write errors.json
               try:
                   with open(errors_file, 'w', encoding='utf-8') as f:
-                      json. dump({
-                          "timestamp":  "${{ github. event.head_commit.timestamp || github.event.pull_request. merged_at }}",
+                      json.dump({
+                          "timestamp":  "${{ github.event.head_commit.timestamp || github.event.pull_request. merged_at }}",
                           "commit": "${{ github.sha }}",
                           "errors":  errors
                       }, f, indent=2, ensure_ascii=False)
                   print(f"   ⚠️  Errors written to: {errors_file}")
               except Exception as e: 
-                  print(f"   ✗ Error writing errors. json: {str(e)}")
+                  print(f"   ✗ Error writing errors.json: {str(e)}")
           else:
               # Remove errors.json if it exists
               if errors_file.exists():
@@ -152,7 +152,7 @@ jobs:
           
           # Set output for git commit step
           if errors:  
-              with open(os. environ['GITHUB_OUTPUT'], 'a') as f:
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
                   f.write(f"has_errors=true\n")
           else:
               with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
@@ -167,7 +167,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run:  |
-          git diff --exit-code . metadata/ || echo "changes=true" >> $GITHUB_OUTPUT
+          git diff --exit-code .metadata/ || echo "changes=true" >> $GITHUB_OUTPUT
           if git diff --exit-code .metadata/; then
             echo "changes=false" >> $GITHUB_OUTPUT
           else
@@ -175,7 +175,7 @@ jobs:
           fi
       
       - name:  Commit and push changes
-        if:  steps.check_changes.outputs. changes == 'true'
+        if:  steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -196,12 +196,12 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f .metadata/samples.json ]; then
-            SAMPLE_COUNT=$(jq '.  | length' .metadata/samples. json)
+            SAMPLE_COUNT=$(jq '.  | length' .metadata/samples.json)
             echo "✅ **Valid Samples:** $SAMPLE_COUNT" >> $GITHUB_STEP_SUMMARY
           fi
           
           if [ -f .metadata/errors.json ]; then
-            ERROR_COUNT=$(jq '. errors | length' .metadata/errors. json)
+            ERROR_COUNT=$(jq '.errors | length' .metadata/errors.json)
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "⚠️ **Errors Found:** $ERROR_COUNT" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
