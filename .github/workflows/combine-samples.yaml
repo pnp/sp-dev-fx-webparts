@@ -6,17 +6,18 @@ on:
       - main
     paths:
       - 'samples/**'
-  workflow_dispatch:
+
   pull_request:
     types: 
       - closed
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   combine-samples: 
     # Only run on push to main, or when a PR is merged to main
-    if: github.event_name == 'push' || (github.event. pull_request.merged == true && github.event.pull_request.base.ref == 'main')
+     if: github.event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     
     permissions:
