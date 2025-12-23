@@ -219,8 +219,44 @@ jobs:
         if: always()
         run: |
           if [ -f .metadata/errors.json ]; then
-            ERROR_COUNT=$(jq '.errors | length' .metadata/errors.json)
+            ERROR_COUNT=$(jq '.errors | length' . metadata/errors.json)
             
             if [ "$ERROR_COUNT" -gt 0 ]; then
-              echo "::warning:: Found $ERROR_COUNT sample validation](#)
-
+              echo "::warning:: Found $ERROR_COUNT sample validation error(s). Check the workflow summary for details."
+              
+              # Output each error as a warning annotation with file reference
+              jq -r '.errors[] | ":: warning file=\(.file)::\(.error)"' .metadata/errors.json
+            fi
+          fi
+      
+      - name:  Summary
+        if: always()
+        run: |
+          echo "## Sample JSON Combination Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f . metadata/samples.json ]; then
+            SAMPLE_COUNT=$(jq '.  | length' .metadata/samples.json)
+            echo "✅ **Valid Samples:** $SAMPLE_COUNT" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f .metadata/errors.json ]; then
+            ERROR_COUNT=$(jq '.errors | length' .metadata/errors.json)
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Errors Found:** $ERROR_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "<details><summary>View errors</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat . metadata/errors.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **No Errors**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ steps. check_changes.outputs.changes }}" != "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ No changes detected in metadata files." >> $GITHUB_STEP_SUMMARY
+          fi
