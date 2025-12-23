@@ -1,0 +1,242 @@
+name: Merge All Samples
+
+on: 
+  push:
+    branches: 
+      - main
+    paths: 
+      - '.metadata/samples.json'
+      - '.metadata/extensions-samples.json'
+  workflow_dispatch: 
+
+jobs:
+  merge_all_samples:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name:  Merge samples files
+        id: merge
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          from pathlib import Path
+          
+          # Initialize collections
+          all_samples = []
+          errors = []
+          
+          base_path = Path.cwd().resolve()
+          metadata_dir = base_path / '.metadata'
+          
+          # Files to merge
+          files_to_merge = [
+              ('samples.json', 'WebParts'),
+              ('extensions-samples.json', 'Extensions')
+          ]
+          
+          print("🔄 Merging sample files.. .\n")
+          
+          for filename, source_type in files_to_merge:
+              file_path = metadata_dir / filename
+              
+              if file_path.exists():
+                  try:
+                      with open(file_path, 'r', encoding='utf-8') as f:
+                          content = f.read().strip()
+                          
+                          if content:
+                              samples = json.loads(content)
+                              
+                              if isinstance(samples, list):
+                                  sample_count = len(samples)
+                                  all_samples.extend(samples)
+                                  print(f"✓ {filename}: Added {sample_count} {source_type} samples")
+                              else: 
+                                  errors.append({
+                                      "file": filename,
+                                      "error": "Expected JSON array, got object"
+                                  })
+                                  print(f"✗ {filename}: Not a JSON array")
+                          else:
+                              errors.append({
+                                  "file": filename,
+                                  "error":  "Empty file"
+                              })
+                              print(f"✗ {filename}: Empty file")
+                  
+                  except json.JSONDecodeError as e:
+                      errors.append({
+                          "file": filename,
+                          "error": f"JSON decode error: {str(e)}"
+                      })
+                      print(f"✗ {filename}: JSON error - {str(e)}")
+                  
+                  except Exception as e: 
+                      errors.append({
+                          "file": filename,
+                          "error": f"Unexpected error: {str(e)}"
+                      })
+                      print(f"✗ {filename}: Error - {str(e)}")
+              else:
+                  print(f"ℹ️  {filename}: File not found (skipping)")
+          
+          # Write merged all-samples.json
+          all_samples_output = metadata_dir / 'all-samples.json'
+          
+          try:
+              with open(all_samples_output, 'w', encoding='utf-8') as f:
+                  json.dump(all_samples, f, indent=4, ensure_ascii=False)
+              print(f"\n✓ Successfully wrote {all_samples_output}")
+          except Exception as e:
+              print(f"\n✗ Error writing {all_samples_output}: {str(e)}")
+              sys.exit(1)
+          
+          print(f"\n📊 Summary:")
+          print(f"   Total samples merged: {len(all_samples)}")
+          print(f"   Errors: {len(errors)}")
+          
+          # Handle merge-errors.json
+          merge_errors_file = metadata_dir / 'merge-errors.json'
+          
+          if errors:
+              try:
+                  with open(merge_errors_file, 'w', encoding='utf-8') as f:
+                      json.dump({
+                          "timestamp": "${{ github.event.head_commit.timestamp }}",
+                          "commit": "${{ github.sha }}",
+                          "errors": errors
+                      }, f, indent=2, ensure_ascii=False)
+                  print(f"   ⚠️ Errors written to:  {merge_errors_file}")
+              except Exception as e:
+                  print(f"   ✗ Error writing merge-errors.json: {str(e)}")
+          else:
+              if merge_errors_file.exists():
+                  try:
+                      merge_errors_file.unlink()
+                      print(f"   ✓ No errors.  Removed existing merge-errors.json")
+                  except Exception as e:
+                      print(f"   ⚠️ Could not remove merge-errors.json: {str(e)}")
+              else:
+                  print(f"   ✓ No errors.")
+          
+          # Set output
+          import os
+          if errors:
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f"has_errors=true\n")
+          else:
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f"has_errors=false\n")
+          
+          sys.exit(0)
+          
+          EOF
+      
+      - name:  Check for changes
+        id: check_changes
+        run: |
+          # Add files to staging to check for changes
+          git add .metadata/all-samples.json
+          if [ -f .metadata/merge-errors.json ]; then
+            git add .metadata/merge-errors.json
+          fi
+          
+          git status
+          echo ""
+          
+          # Check if there are staged changes
+          if git diff --cached --exit-code .metadata/; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes detected"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected"
+          fi
+      
+      - name:  Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if [ "${{ steps.merge.outputs.has_errors }}" == "true" ]; then
+            git commit -m "chore:  merge all samples (with errors) [skip ci]"
+          else
+            git commit -m "chore: merge all samples [skip ci]"
+          fi
+          
+          git push
+          echo "✅ Changes committed and pushed"
+      
+      - name: Check for merge errors
+        if: always()
+        run: |
+          if [ -f .metadata/merge-errors.json ]; then
+            ERROR_COUNT=$(jq '.errors | length' .metadata/merge-errors.json)
+            
+            if [ "$ERROR_COUNT" -gt 0 ]; then
+              echo ":: warning::Found $ERROR_COUNT merge error(s). Check the workflow summary for details."
+              
+              # Output each error as a warning annotation
+              jq -r '.errors[] | ":: warning file=.metadata/\(.file)::\(.error)"' .metadata/merge-errors.json
+            fi
+          fi
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## All Samples Merge Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f .metadata/all-samples.json ]; then
+            TOTAL_COUNT=$(jq '. | length' .metadata/all-samples.json)
+            echo "✅ **Total Samples:** $TOTAL_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Count by source if possible
+            if [ -f .metadata/samples.json ]; then
+              WEBPARTS_COUNT=$(jq '. | length' .metadata/samples.json)
+              echo "- 🧩 WebParts: $WEBPARTS_COUNT" >> $GITHUB_STEP_SUMMARY
+            fi
+            
+            if [ -f .metadata/extensions-samplesjson ]; then
+              EXTENSIONS_COUNT=$(jq '. | length' .metadata/extensions-samples.json)
+              echo "- 🔌 Extensions: $EXTENSIONS_COUNT" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+          
+          if [ -f .metadata/merge-errors.json ]; then
+            ERROR_COUNT=$(jq '.errors | length' .metadata/merge-errors.json)
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Merge Errors:** $ERROR_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "<details><summary>View errors</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat .metadata/merge-errors.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **No Errors**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ steps.check_changes.outputs.changes }}" != "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ No changes detected in merged file." >> $GITHUB_STEP_SUMMARY
+          fi
