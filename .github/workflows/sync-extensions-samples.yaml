@@ -1,0 +1,122 @@
+name: Sync Extensions Samples
+
+on:
+  workflow_dispatch:
+  schedule: 
+    # Run daily at 2 AM UTC as a backup
+    - cron: '0 2 * * *'
+
+jobs: 
+  sync_extensions_samples: 
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout sp-dev-fx-webparts
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+      
+      - name: Create metadata directory
+        run: |
+          mkdir -p .metadata
+          echo "📁 Created . metadata directory"
+      
+      - name: Download extensions samples. json
+        id: download
+        run: |
+          echo "🔄 Downloading from pnp/sp-dev-fx-extensions..."
+          
+          HTTP_CODE=$(curl -L \
+            -w "%{http_code}" \
+            -H "Accept: application/vnd. github. raw" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version:  2022-11-28" \
+            https://api.github.com/repos/pnp/sp-dev-fx-extensions/contents/. metadata/samples.json \
+            -o .metadata/extensions-samples.json)
+          
+          echo "HTTP Status Code: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" -eq 200 ]; then
+            echo "✅ Successfully downloaded"
+            echo "File size: $(wc -c < .metadata/extensions-samples.json) bytes"
+            echo "First 100 chars:"
+            head -c 100 .metadata/extensions-samples.json
+            echo ""
+            echo "download_success=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Download failed with HTTP $HTTP_CODE"
+            cat .metadata/extensions-samples.json
+            echo "download_success=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+      
+      - name:  Verify file content
+        if: steps.download.outputs.download_success == 'true'
+        run: |
+          echo "📊 Verifying JSON file..."
+          
+          if [ -f .metadata/extensions-samples.json ]; then
+            if jq empty .metadata/extensions-samples.json 2>/dev/null; then
+              SAMPLE_COUNT=$(jq '. | length' .metadata/extensions-samples.json)
+              echo "✅ Valid JSON with $SAMPLE_COUNT samples"
+            else
+              echo "❌ Invalid JSON file"
+              exit 1
+            fi
+          else
+            echo "❌ File not found"
+            exit 1
+          fi
+      
+      - name:  Check for changes
+        id: check_changes
+        run: |
+          git status
+          echo ""
+          echo "Git diff:"
+          git diff . metadata/extensions-samples.json
+          echo ""
+          
+          if git diff --exit-code .metadata/extensions-samples.json; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes detected"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected"
+          fi
+      
+      - name:  Commit and push changes
+        if:  steps.check_changes.outputs. changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .metadata/extensions-samples.json
+          git commit -m "chore: sync extensions samples from sp-dev-fx-extensions [skip ci]"
+          git push
+          echo "✅ Changes committed and pushed"
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Extensions Samples Sync Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.download.outputs.download_success }}" == "true" ]; then
+            if [ "${{ steps.check_changes.outputs.changes }}" == "true" ]; then
+              echo "✅ **Extensions samples synced successfully**" >> $GITHUB_STEP_SUMMARY
+              
+              if [ -f .metadata/extensions-samples.json ]; then
+                SAMPLE_COUNT=$(jq '. | length' .metadata/extensions-samples.json)
+                echo "" >> $GITHUB_STEP_SUMMARY
+                echo "📊 **Total Extensions Samples:** $SAMPLE_COUNT" >> $GITHUB_STEP_SUMMARY
+              fi
+            else
+              echo "ℹ️ **No changes detected** - extensions-samples.json is up to date" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "❌ **Download failed** - check logs for details" >> $GITHUB_STEP_SUMMARY
+          fi
