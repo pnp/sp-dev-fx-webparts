@@ -70,13 +70,17 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
+          # Add the file to staging to check for changes
+          git add .metadata/extensions-samples.json
+          
           git status
           echo ""
-          echo "Git diff:"
-          git diff .metadata/extensions-samples.json
+          echo "Git diff (staged):"
+          git diff --cached .metadata/extensions-samples.json
           echo ""
           
-          if git diff --exit-code .metadata/extensions-samples.json; then
+          # Check if there are staged changes
+          if git diff --cached --exit-code .metadata/extensions-samples.json; then
             echo "changes=false" >> $GITHUB_OUTPUT
             echo "ℹ️ No changes detected"
           else
