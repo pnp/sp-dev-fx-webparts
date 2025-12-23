@@ -4,40 +4,42 @@ on:
   push:  
     branches: 
       - main
-    paths:
+    paths: 
       - 'samples/**'
   pull_request:  
-    branches:
+    branches: 
       - main
     types:  [closed]
-  workflow_dispatch:  
+  workflow_dispatch: 
 
 jobs:
   process_samples:  
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github. event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
-    permissions:  
+    permissions: 
       contents: write
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name:   Checkout repository
+        uses:  actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth:  0
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+        with: 
+          python-version:  '3.11'
       
       - name:  Combine sample. json files
         id: combine
+        continue-on-error: false
         run: |
           python3 << 'EOF'
           import json
           import os
+          import sys
           from pathlib import Path
           
           # Initialize collections
@@ -49,43 +51,59 @@ jobs:
           
           # Find all sample.json files
           samples_dir = base_path / 'samples'
-          if samples_dir.exists():
+          if samples_dir. exists():
               sample_files = list(samples_dir.glob('**/assets/sample.json'))
+              print(f"Found {len(sample_files)} sample.json files\n")
               
               for sample_file in sample_files: 
                   # Resolve to absolute path first, then make relative
-                  absolute_path = sample_file.resolve()
-                  relative_path = str(absolute_path.relative_to(base_path))
-                  
                   try:
+                      absolute_path = sample_file.resolve()
+                      relative_path = str(absolute_path. relative_to(base_path))
+                  except Exception as e: 
+                      print(f"✗ Error resolving path for {sample_file}: {str(e)}")
+                      continue
+                  
+                  try: 
                       with open(sample_file, 'r', encoding='utf-8') as f:
                           content = f.read().strip()
                           
-                          # Try to parse as JSON
-                          if content:  
-                              sample_data = json.loads(content)
-                              valid_samples.append(sample_data)
-                              print(f"✓ Successfully processed: {relative_path}")
-                          else:
-                              errors. append({
+                          # Check if file is empty
+                          if not content:
+                              errors.append({
                                   "file": relative_path,
                                   "error": "Empty file"
                               })
                               print(f"✗ Empty file: {relative_path}")
+                              continue
+                          
+                          # Try to parse as JSON
+                          try:
+                              sample_data = json.loads(content)
+                              valid_samples. append(sample_data)
+                              print(f"✓ Successfully processed:  {relative_path}")
+                          except json.JSONDecodeError as e:
+                              errors.append({
+                                  "file":  relative_path,
+                                  "error": f"JSON decode error at line {e.lineno}, column {e.colno}: {e.msg}"
+                              })
+                              print(f"✗ JSON error in {relative_path}: {str(e)}")
                   
-                  except json.JSONDecodeError as e:
+                  except PermissionError as e:
                       errors.append({
                           "file": relative_path,
-                          "error": f"JSON decode error: {str(e)}"
+                          "error": f"Permission denied: {str(e)}"
                       })
-                      print(f"✗ JSON error in {relative_path}: {str(e)}")
+                      print(f"✗ Permission error reading {relative_path}: {str(e)}")
                   
-                  except Exception as e:  
+                  except Exception as e: 
                       errors.append({
                           "file": relative_path,
-                          "error":  f"Error reading file: {str(e)}"
+                          "error": f"Unexpected error:  {str(e)}"
                       })
-                      print(f"✗ Error reading {relative_path}: {str(e)}")
+                      print(f"✗ Unexpected error reading {relative_path}: {str(e)}")
+          else:
+              print(f"⚠️  Samples directory not found:  {samples_dir}")
           
           # Create . metadata directory if it doesn't exist
           metadata_dir = base_path / '.metadata'
@@ -93,42 +111,56 @@ jobs:
           
           # Write combined samples. json as a proper JSON array
           samples_output = metadata_dir / 'samples.json'
-          with open(samples_output, 'w', encoding='utf-8') as f:
-              json.dump(valid_samples, f, indent=4, ensure_ascii=False)
+          try:
+              with open(samples_output, 'w', encoding='utf-8') as f:
+                  json.dump(valid_samples, f, indent=4, ensure_ascii=False)
+              print(f"\n✓ Successfully wrote {samples_output}")
+          except Exception as e: 
+              print(f"\n✗ Error writing {samples_output}:  {str(e)}")
+              sys.exit(1)
           
           print(f"\n📊 Summary:")
-          print(f"   Valid samples: {len(valid_samples)}")
-          print(f"   Errors: {len(errors)}")
+          print(f"   Total files found: {len(sample_files) if 'sample_files' in locals() else 0}")
+          print(f"   ✓ Valid samples: {len(valid_samples)}")
+          print(f"   ✗ Errors:  {len(errors)}")
           
           # Handle errors. json
           errors_file = metadata_dir / 'errors.json'
           
           if errors:  
               # Write errors.json
-              with open(errors_file, 'w', encoding='utf-8') as f:
-                  json.dump({
-                      "timestamp": "${{ github.event.head_commit.timestamp || github.event.pull_request.merged_at }}",
-                      "commit": "${{ github.sha }}",
-                      "errors": errors
-                  }, f, indent=2, ensure_ascii=False)
-              print(f"   Errors written to: {errors_file}")
+              try:
+                  with open(errors_file, 'w', encoding='utf-8') as f:
+                      json. dump({
+                          "timestamp":  "${{ github. event.head_commit.timestamp || github.event.pull_request. merged_at }}",
+                          "commit": "${{ github.sha }}",
+                          "errors":  errors
+                      }, f, indent=2, ensure_ascii=False)
+                  print(f"   ⚠️  Errors written to: {errors_file}")
+              except Exception as e: 
+                  print(f"   ✗ Error writing errors. json: {str(e)}")
           else:
               # Remove errors.json if it exists
               if errors_file.exists():
-                  errors_file.unlink()
-                  print(f"   No errors found.  Removed existing errors.json")
-              else:
-                  print(f"   No errors found. No errors.json to remove.")
+                  try:
+                      errors_file.unlink()
+                      print(f"   ✓ No errors found.  Removed existing errors.json")
+                  except Exception as e:  
+                      print(f"   ⚠️  Could not remove errors.json: {str(e)}")
+              else: 
+                  print(f"   ✓ No errors found.")
           
           # Set output for git commit step
-          if errors:
-              print(f"\nhas_errors=true")
-              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+          if errors:  
+              with open(os. environ['GITHUB_OUTPUT'], 'a') as f:
                   f.write(f"has_errors=true\n")
           else:
-              print(f"\nhas_errors=false")
               with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
                   f.write(f"has_errors=false\n")
+          
+          # Exit successfully even if there were individual file errors
+          # The workflow should only fail if it can't write the output files
+          sys.exit(0)
           
           EOF
       
@@ -143,7 +175,7 @@ jobs:
           fi
       
       - name:  Commit and push changes
-        if: steps.check_changes.outputs.changes == 'true'
+        if:  steps.check_changes.outputs. changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users. noreply.github.com"
           git config --local user. name "github-actions[bot]"
@@ -164,17 +196,21 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f .metadata/samples.json ]; then
-            SAMPLE_COUNT=$(jq '. | length' .metadata/samples.json)
+            SAMPLE_COUNT=$(jq '.  | length' .metadata/samples. json)
             echo "✅ **Valid Samples:** $SAMPLE_COUNT" >> $GITHUB_STEP_SUMMARY
           fi
           
           if [ -f .metadata/errors.json ]; then
+            ERROR_COUNT=$(jq '. errors | length' .metadata/errors. json)
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "⚠️ **Errors Found**" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Errors Found:** $ERROR_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "<details><summary>View errors</summary>" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
             cat .metadata/errors.json >> $GITHUB_STEP_SUMMARY
             echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
           else
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "✅ **No Errors**" >> $GITHUB_STEP_SUMMARY
