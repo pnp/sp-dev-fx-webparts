@@ -1,24 +1,21 @@
-name: Combine Sample JSON Files
+name: Merge and Distribute Samples
 
 on:
   push: 
-    branches: 
+    branches:
       - main
     paths:
       - 'samples/**'
-
   pull_request:
-    types: 
-      - closed
     branches:
       - main
-  workflow_dispatch:
+    types: [closed]
+  workflow_dispatch:  # Add this line
 
 jobs:
-  combine-samples: 
-    # Only run on push to main, or when a PR is merged to main
-     if: github.event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+  process_samples: 
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'  # Update this condition
     
     permissions:
       contents: write
