@@ -40,7 +40,7 @@ This sample is optimally compatible with the following environment configuration
   - **Title2** (Single line of text) - Required
   - **Description2** (Multiple lines of text) - Required
   - **Active** (Yes/No) - Automatically created by the web part
-  - **SortOrder** (Ngumber) - Automatically created by the web part
+  - **SortOrder** (Number) - Automatically created by the web part
 
 ## Contributors
 
@@ -211,7 +211,7 @@ The web part requires a SharePoint list with these columns:
 
 #### Reordering Items
 
-1. Click and hold the **grip handle** (⋮⋮) on any item
+1. Click and hold the **grip handle** on any item
 2. Drag the item up or down
 3. Release to drop in the new position
 4. Click **Save** to persist the new order
