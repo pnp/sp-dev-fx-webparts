@@ -254,6 +254,8 @@ The web part requires a SharePoint list with these columns:
 2. Edit HTML directly
 3. Click again to return to visual mode
 
+- [UI Editor Sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-uieditor)
+
 ### Display Modes
 
 #### Edit Mode
