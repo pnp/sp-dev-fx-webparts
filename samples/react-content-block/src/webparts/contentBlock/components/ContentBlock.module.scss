@@ -1,0 +1,271 @@
+$primary-color: #0078d4;
+$primary-hover: #106ebe;
+$error-color: #a4262c;
+$success-color: #107c10;
+$border-color: #edebe9;
+$bg-light-gray: #f5f5f5;
+$text-dark: #333333;
+$text-medium: #605e5c;
+$shadow-light: 0 1px 3px rgba(0, 0, 0, 0.06);
+$shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.12);
+$shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.15);
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+@mixin card-style {
+  background: $bg-light-gray;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@mixin fade-in($duration: 0.4s) {
+  animation: fadeIn $duration ease-out forwards;
+}
+
+@mixin slide-in-up($duration: 0.5s) {
+  animation: slideInUp $duration ease-out forwards;
+}
+
+@mixin slide-in-down($duration: 0.5s) {
+  animation: slideInDown $duration ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.managerIcon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 100;
+
+  button {
+    background: $primary-color;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: $shadow-medium;
+
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+.notConfigured {
+  @include card-style;
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 16px;
+  border: 2px dashed $border-color;
+}
+
+.contentBlock {
+  width: 100%;
+  padding: 0;
+}
+
+.itemsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.itemRow {
+  // background: #ffffff;
+  display: grid;
+  gap: 0;
+  padding: 0;
+  position: relative;
+}
+
+.itemPanelWrapper {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemPanel {
+  @include card-style;
+  padding: 10px 20px 10px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout50_50 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.layout75_25 {
+  grid-template-columns: 3fr 1fr;
+}
+
+.layout25_75 {
+  grid-template-columns: 1fr 3fr;
+}
+
+@media (max-width: 768px) {
+  .layout50_50, .layout75_25, .layout25_75 {
+    grid-template-columns: 1fr;
+  }
+
+  .itemPanelWrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: $text-dark;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: $text-dark;
+
+  p { margin-bottom: 16px; }
+  strong { font-weight: 700; }
+  a { color: $primary-color; }
+  img { max-width: 100%; margin: 16px 0; }
+  ul, ol { padding-left: 24px; margin: 12px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+
+    th, td {
+      padding: 12px;
+      border: 1px solid $border-color;
+    }
+
+    th {
+      background: #f3f2f1;
+      font-weight: 600;
+    }
+  }
+}
+
+.loadingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.messageBar {
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+.managerPanel { padding: 20px; }
+
+.managerToolbar {
+  margin: 16px 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid $border-color;
+}
+
+.savingOrder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f3f2f1;
+  border-radius: 6px;
+  margin: 16px 0;
+}
+
+.groupSection { margin: 24px 0; }
+.groupHeader {
+  display: flex;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, $primary-color, #00bcf2);
+  border-radius: 6px;
+}
+.groupTitle { color: white; font-size: 18px; }
+
+.accordionRow {
+  @include card-style;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all $transition-medium;
+}
+
+.accordionRowDragging {
+  opacity: 0.5;
+  box-shadow: $shadow-heavy;
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+}
+
+.dragHandle { cursor: grab; }
+.headerText { flex: 1; cursor: pointer; }
+.headerTitle { font-size: 16px; font-weight: 500; }
+.headerActions { display: flex; gap: 8px; }
+
+.accordionBody {
+  padding: 20px;
+  background: #fafafa;
+}
+
+.richLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.configTab, .managerTab { padding: 20px; }
+
+.lockedTab {
+  padding: 40px;
+  text-align: center;
+}
+
+@media print {
+  .managerIcon, .managerToolbar, .headerActions, .dragHandle {
+    display: none !important;
+  }
+
+  .itemRow {
+    border: 1px solid #d2d0ce;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .contentBlock { color: #f3f2f1; }
+  .itemRow { background: #1f1f1f; }
+  .title { color: #f3f2f1; }
+  .body { color: #d2d0ce; }
+}
