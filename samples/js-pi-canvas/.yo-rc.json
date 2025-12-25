@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.20.0",
+    "libraryName": "modern-hillbilly-tabs",
+    "libraryId": "86a6b96a-7f98-4508-827d-b8bd6409f60b",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "nodeVersion": "20.19.3",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
+  }
+}

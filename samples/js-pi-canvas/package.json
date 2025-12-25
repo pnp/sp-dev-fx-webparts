@@ -1,0 +1,62 @@
+{
+  "name": "pi-canvas",
+  "version": "2.0.211",
+  "description": "PiCanvas - Infinite possibilities. Upgraded by @anthonyrhopkins, originally created by Mark Rackley.",
+  "author": "PiSpace (@anthonyrhopkins)",
+  "license": "MIT",
+  "homepage": "https://github.com/anthonyrhopkins/PiCanvas#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonyrhopkins/PiCanvas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anthonyrhopkins/PiCanvas/issues"
+  },
+  "keywords": [
+    "sharepoint",
+    "spfx",
+    "webpart",
+    "tabs",
+    "tabbed-layout",
+    "sharepoint-online",
+    "microsoft-365"
+  ],
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=18.17.1 <19.0.0 || >=20.0.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "serve": "fast-serve"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.21.1",
+    "@microsoft/sp-lodash-subset": "1.21.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
+    "@microsoft/sp-property-pane": "1.21.1",
+    "@microsoft/sp-webpart-base": "1.21.1",
+    "@pnp/spfx-property-controls": "^3.13.0",
+    "@pnp/telemetry-js": "^2.0.0",
+    "jquery": "^3.6.0",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.21.1",
+    "@microsoft/eslint-plugin-spfx": "1.21.1",
+    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
+    "@microsoft/sp-build-web": "1.21.1",
+    "@microsoft/sp-module-interfaces": "1.21.1",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/jquery": "^3.5.33",
+    "@types/webpack-env": "1.15.2",
+    "ajv": "6.12.5",
+    "eslint": "8.57.0",
+    "gulp": "~4.0.2",
+    "sparkles": "^2.1.0",
+    "spfx-fast-serve-helpers": "~1.21.0",
+    "typescript": "5.3.3"
+  }
+}

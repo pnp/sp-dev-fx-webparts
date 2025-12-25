@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "pi-canvas-client-side-solution",
+    "id": "31e1eb87-fc73-47ee-b8d2-fd2a63f34270",
+    "version": "2.0.21.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PiSpace (@anthonyrhopkins) - Built on Mark Rackley's foundation",
+      "websiteUrl": "https://github.com/anthonyrhopkins/PiCanvas",
+      "privacyUrl": "https://github.com/anthonyrhopkins/PiCanvas/blob/main/README.md",
+      "termsOfUseUrl": "https://github.com/anthonyrhopkins/PiCanvas/blob/main/LICENSE",
+      "mpnId": ""
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "PiCanvas - Infinite possibilities"
+      },
+      "longDescription": {
+        "default": "PiCanvas for SharePoint - Organize web parts into flexible tabbed layouts. Upgraded by @anthonyrhopkins, originally created by Mark Rackley."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "PiCanvas Feature",
+        "description": "The feature that activates PiCanvas - infinite possibilities.",
+        "id": "6bcd9bfc-425b-47c2-8e5e-c17eb1c864c5",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "6bcd9bfc-425b-47c2-8e5e-c17eb1c864c5"
+        ]
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/pi-canvas.sppkg"
+  }
+}

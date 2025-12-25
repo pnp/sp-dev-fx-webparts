@@ -1,0 +1,62 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-pi-canvas",
+    "source": "pnp",
+    "title": "PiCanvas - Tabbed Page Sections",
+    "shortDescription": "Organize SharePoint web parts into flexible tabbed layouts with permission-based visibility and templates.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "longDescription": [
+      "PiCanvas is a SharePoint Framework web part that organizes web parts into a clean tabbed interface.",
+      "Features include permission-based tab visibility, multiple tab styles (default, pills, underline, boxed), vertical layouts, theme auto-detection, and a template system for consistent deployments.",
+      "Originally based on Mark Rackley's Modern Hillbilly Tabs, modernized for SPFx 1.21.1 with TypeScript 5.3, ESLint, and fast-serve."
+    ],
+    "creationDateTime": "2025-01-15",
+    "updateDateTime": "2025-01-15",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "TypeScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png",
+        "alt": "PiCanvas tabbed web part interface"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "anthonyrhopkins",
+        "pictureUrl": "https://github.com/anthonyrhopkins.png",
+        "name": "Anthony Hopkins"
+      },
+      {
+        "gitHubAccount": "cimares",
+        "pictureUrl": "https://github.com/cimares.png",
+        "name": "Mark Rackley"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Original Modern Hillbilly Tabs",
+        "description": "The original SPFx 1.13.1 implementation by Mark Rackley that PiCanvas builds upon.",
+        "url": "http://www.markrackley.net/2022/06/29/the-return-of-hillbilly-tabs/"
+      }
+    ]
+  }
+]
