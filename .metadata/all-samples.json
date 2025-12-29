@@ -10293,7 +10293,14 @@
         "name": "Harminder Singh"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-site-content.webp",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-modern-calendar",
