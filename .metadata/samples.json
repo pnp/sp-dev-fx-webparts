@@ -290,7 +290,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.gif",
                 "alt": "Area Chart"
             }
         ],
@@ -485,7 +485,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.gif",
                 "alt": "Bubble Chart"
             }
         ],
@@ -550,7 +550,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.gif",
                 "alt": "Chartinator"
             }
         ],
@@ -810,7 +810,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.gif",
                 "alt": "Dynamic Data Callable"
             }
         ],
@@ -875,7 +875,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.gif",
                 "alt": "Dynamic Data Consumer"
             }
         ],
@@ -1265,7 +1265,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.gif",
                 "alt": "Real-Time Chart"
             }
         ],
@@ -4310,14 +4310,14 @@
                 "name": "react-csv-importer.gif",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "react-csv-importer.png",
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.gif",
                 "alt": "Web Part Preview"
             }
         ],
@@ -6446,14 +6446,14 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/16OfferCreationDemo_SPFx.gif",
-                "alt": "App in action"
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png",
+                "alt": "Create Offer Form with FluentUI controls"
             },
             {
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png",
-                "alt": "Create Offer Form with FluentUI controls"
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/16OfferCreationDemo_SPFx.gif",
+                "alt": "App in action"
             },
             {
                 "type": "image",
@@ -8014,13 +8014,13 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
                 "alt": "Sample in action"
             },
             {
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
                 "alt": "Screenshot"
             }
         ],
@@ -9170,7 +9170,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
                 "alt": "Calendar"
             },
             {
@@ -18496,28 +18496,28 @@
                 "name": "demo1.png",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo1.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "demo2.png",
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo2.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo2.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "demo3.png",
                 "type": "image",
                 "order": 102,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo3.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo3.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "demo4.png",
                 "type": "image",
                 "order": 103,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo4.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo4.png",
                 "alt": "Web Part Preview"
             }
         ],
@@ -21244,17 +21244,17 @@
         ],
         "thumbnails": [
             {
-                "name": "quick-links-pro-demo.gif",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
-                "alt": "Quick Links Pro demo"
-            },
-            {
-                "type": "image",
-                "order": 200,
                 "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
                 "alt": "Cards display style"
+            },
+            {
+                "name": "quick-links-pro-demo.gif",
+                "type": "image",
+                "order": 200,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
+                "alt": "Quick Links Pro demo"
             },
             {
                 "type": "image",
@@ -27271,25 +27271,25 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/webpart-preview.png",
                 "alt": "Web part displaying hierarchical information from SharePoint list"
             },
             {
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-sample-data.png?raw=true",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/list-sample-data.png",
                 "alt": "Web part displaying hierarchical information from SharePoint list"
             },
             {
                 "type": "image",
                 "order": 102,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-schema.png?raw=true",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/list-schema.png",
                 "alt": "Web part displaying hierarchical information from SharePoint list"
             },
             {
                 "type": "image",
                 "order": 103,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/sharepoint-run.gif?raw=true",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/sharepoint-run.gif",
                 "alt": "Web part displaying hierarchical information from SharePoint list"
             },
             {
