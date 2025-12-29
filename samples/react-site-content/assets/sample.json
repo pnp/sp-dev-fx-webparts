@@ -33,7 +33,7 @@
         "name": "SiteContent.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContent.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContentWebpart.png",
         "alt": "Web Part Preview"
       }
     ],
