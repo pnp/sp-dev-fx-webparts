@@ -39,7 +39,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
         "alt": "Calendar"
       },
       {

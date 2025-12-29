@@ -27,17 +27,17 @@
     ],
     "thumbnails": [
       {
-        "name": "quick-links-pro-demo.gif",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
-        "alt": "Quick Links Pro demo"
-      },
-      {
-        "type": "image",
-        "order": 200,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
         "alt": "Cards display style"
+      },
+      {
+        "name": "quick-links-pro-demo.gif",
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
+        "alt": "Quick Links Pro demo"
       },
       {
         "type": "image",
