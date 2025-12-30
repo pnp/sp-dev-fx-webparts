@@ -2294,70 +2294,70 @@
                 "name": "1.png",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/1.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "10.png",
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/10.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/1.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "2.png",
                 "type": "image",
                 "order": 102,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/2.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/2.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "3.png",
                 "type": "image",
                 "order": 103,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/3.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/3.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "4.png",
                 "type": "image",
                 "order": 104,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/4.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/4.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "5.png",
                 "type": "image",
                 "order": 105,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/5.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/5.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "6.png",
                 "type": "image",
                 "order": 106,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/6.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/6.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "7.png",
                 "type": "image",
                 "order": 107,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/7.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/7.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "8.png",
                 "type": "image",
                 "order": 108,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/8.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/8.png",
                 "alt": "Web Part Preview"
             },
             {
                 "name": "9.png",
                 "type": "image",
                 "order": 109,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/9.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/9.png",
                 "alt": "Web Part Preview"
             }
         ],
@@ -3795,7 +3795,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-extensions/blob/269ae2f269aadb35361ec657dd969bf730e79df8/samples/react-company-templates/assets/Demo.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-company-templates/assets/Demo.gif",
                 "alt": "Extension Preview"
             }
         ],
@@ -5840,7 +5840,12 @@
         "categories": [
             "SPFX-APPLICATION-EXTENSION"
         ],
-        "thumbnails": [],
+        "thumbnails": {
+            "type": "image",
+            "order": 100,
+            "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-chatbubble-copilot/assets/Chatbot.png",
+            "alt": "Extension Preview"
+        },
         "authors": [
             {
                 "gitHubAccount": "https://github.com/NicolasKheirallah",
