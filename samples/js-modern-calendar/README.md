@@ -28,7 +28,7 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg) 
+![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg) 
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -49,27 +49,28 @@ None
 ## Contributors
 
 * [Jeremy Coleman](https://github.com/jcoleman-pcprofessional)
-* [Nanddeep Nachan](https://github.com/nanddeepn) 
+* [Nanddeep Nachan](https://github.com/nanddeepn)
 * [Ravi Chandra](https://github.com/Ravikadri)
 * [Peter Paul Kirschner](https://github.com/petkir)
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.0.0.0|February 11, 2017|Initial release
-1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
-1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies
-1.0.3.0|October 28, 2021|fixed issues with Time zones. The Browser Time zone Settings are now used
-1.0.4.0|October 05, 2024|Upgraded to SPFx 1.20 and fixed issues with dependencies eslint
-1.0.5.0|October 16, 2025|Upgraded to SPFx 1.21.1 
+Version|Date|Comments|
+-------|----|--------|
+1.0.0.0|February 11, 2017|Initial release|
+1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references|
+1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies|
+1.0.3.0|October 28, 2021|fixed issues with Time zones. The Browser Time zone Settings are now used|
+1.0.4.0|October 05, 2024|Upgraded to SPFx 1.20 and fixed issues with dependencies eslint|
+1.0.5.0|October 16, 2025|Upgraded to SPFx 1.21.1 |
+1.0.6.0|December 30, 2025|Upgraded to SPFx 1.22.1 |
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `gulp serve`
+  - `npm run start`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 

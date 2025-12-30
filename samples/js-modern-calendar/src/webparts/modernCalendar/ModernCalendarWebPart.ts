@@ -14,8 +14,8 @@ import * as strings from "modernCalendarStrings";
 import { IModernCalendarWebPartProps } from "./IModernCalendarWebPartProps";
 import CalendarTemplate from "./CalendarTemplate";
 
-import * as jQuery from "jquery";
-import * as moment from "moment";
+import jQuery from "jquery";
+import moment from "moment";
 import Swal from "sweetalert2";
 import { SPComponentLoader } from "@microsoft/sp-loader";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
