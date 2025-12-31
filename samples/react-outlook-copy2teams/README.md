@@ -8,12 +8,10 @@ Furthermore it shows you how to retrieve a complete mail as a mimestream via Mic
 * Writing normal files smaller 4MB
 * Writing big files with an UploadSession when bigger than 4MB
 
-## outlook-2-sp-spfx in action
-![WebPartInAction](https://mmsharepoint.files.wordpress.com/2020/01/addin_overall.png)
+![WebPartInAction](assets/addin_overall.png)
 
 A detailed functionality and technical description can be found in the [author's blog series](https://mmsharepoint.wordpress.com/2020/01/11/an-outlook-add-in-with-sharepoint-framework-spfx-introduction/)
 
-#
 ## Compatibility
 
 | :warning: Important          |
