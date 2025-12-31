@@ -659,11 +659,11 @@
         ]
     },
     {
-        "name": "pnp-sp-dev-spfx-extensions-YOUR-SOLUTION-NAME-GOES-HERE",
+        "name": "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant",
         "source": "pnp",
         "title": "AI Document Assistant",
         "shortDescription": "The AI Document Assistant is a SharePoint Framework (SPFx) Command Set extension designed to enhance document interactions in SharePoint Online. This intelligent assistant leverages the OpenAI Assistant API to allow users to ask questions about selected documents directly within a chat interface.",
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-ai-document-assistant",
         "longDescription": [
             "The AI Document Assistant is a SharePoint Framework (SPFx) Command Set extension designed to enhance document interactions in SharePoint Online. This intelligent assistant leverages the OpenAI Assistant API to allow users to ask questions about selected documents directly within a chat interface."
         ],
@@ -691,7 +691,7 @@
                 "name": "architecture.png",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
                 "alt": "Web Part Preview"
             }
         ],
@@ -2828,11 +2828,11 @@
         ]
     },
     {
-        "name": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE",
+        "name": "pnp-sp-dev-spfx-extensions-react-application-copy-page",
         "source": "pnp",
         "title": "Copy Page SPFx Application Customizer",
         "shortDescription": "This SPFx Application Customizer empowers content authors to copy modern site pages across sites with full control over:",
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-copy-page",
         "longDescription": [
             "This SPFx Application Customizer empowers content authors to copy modern site pages across sites with full control over:"
         ],
@@ -4776,11 +4776,11 @@
         ]
     },
     {
-        "name": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE",
+        "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
         "source": "pnp",
         "title": "Copy Path and Copy Name List view command set extensions",
         "shortDescription": "List view command set extensions with below functionalities",
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
         "longDescription": [
             "List view command set extensions with below functionalities"
         ],
