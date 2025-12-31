@@ -2836,7 +2836,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-outlook-copy2teams/assets/addin_overall.png",
                 "alt": "Outlook to Teams"
             },
             {
@@ -8014,13 +8014,13 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
                 "alt": "Sample in action"
             },
             {
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
                 "alt": "Screenshot"
             }
         ],
