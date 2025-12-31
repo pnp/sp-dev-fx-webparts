@@ -18,6 +18,7 @@ The **Group Members Web Part** provides a comprehensive solution for displaying 
 - **Accessibility**: Full screen reader and keyboard navigation support
 
 ## Features
+
 - **Unified member discovery**: Pulls from M365 group owners/members and SharePoint site permissions, deduplicating to the highest access level.
 - **Role-aware display**: Owners/Admins/Members/Visitors with customizable labels and optional role chips under each persona.
 - **Filtering controls**: Hide claims principals (“Everyone”, etc.) and exclude service accounts via configurable patterns.
@@ -67,7 +68,7 @@ Use `ownerLabel`, `adminLabel`, `memberLabel`, and `visitorLabel` to localize th
 - `excludedPrincipals` – multi-line textbox; each line is a lower-case substring matched against login/UPN to suppress service accounts such as `sharepoint\system` or `nt service\`.
 
 
-## 6. Compatibility
+## Compatibility
 
 | :warning: Important          |
 |:---------------------------|
@@ -153,7 +154,6 @@ The following Microsoft Graph API permissions are required for full functionalit
 | 3.0.0 | 6 May 2025 | Major refactor with fixes to retreving the right information, deeper retrival from groups such as everyone except externals etc |
 | 2.0.0 | 15 March 2025 | Major refactor with GraphService, improved caching, LivePersona integration |
 | 1.0.0 | 28 February 2025   | Initial release                                 |
-
 
 ## Minimal Path to Awesome
 
