@@ -1,0 +1,111 @@
+.richTextEditor {
+    border: 1px solid #e1dfdd;
+    border-radius: 4px;
+    background: #ffffff;
+  }
+  
+  .toolbar {
+    padding: 4px 8px;
+    border-bottom: 1px solid #e1dfdd;
+    background-color: #faf9f8;
+  }
+  
+  .divider {
+    width: 1px;
+    margin: 0 4px;
+    background-color: #e1dfdd;
+  }
+  
+  .editorContainer {
+    min-height: 160px;
+  }
+  
+  .editor {
+    padding: 8px;
+    min-height: 160px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .sourceEditor {
+    width: 100%;
+    min-height: 160px;
+    border: none;
+    padding: 8px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 12px;
+    outline: none;
+  }
+  
+  .dialogContent {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .uploadSection {
+    margin-bottom: 16px;
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .uploadButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #605e5c;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  .imagePreview {
+    margin-top: 8px;
+  
+    img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 4px;
+      border: 1px solid #e1dfdd;
+    }
+  }
+  
+  .imagePreviewLabel {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  
+  .orDivider {
+    text-align: center;
+    margin: 12px 0;
+    position: relative;
+  
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 45%;
+      height: 1px;
+      background: #e1dfdd;
+    }
+  
+    &::before {
+      left: 0;
+    }
+  
+    &::after {
+      right: 0;
+    }
+  
+    span {
+      background: #ffffff;
+      padding: 0 6px;
+      font-size: 12px;
+      color: #605e5c;
+    }
+  }
+  
