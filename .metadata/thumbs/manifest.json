@@ -568,7 +568,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-angular-migration.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-recent-contacts": {
@@ -832,7 +832,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-script-editor-onprem.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-mobx": {
-    "sourceUrl": "https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-mobx.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-personal-email": {
@@ -896,7 +896,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-script-editor.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/_nopreview.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb": {
@@ -996,7 +996,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-my-teams": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/Preview.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-my-teams.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-advanced-iframe": {
