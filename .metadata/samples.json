@@ -10008,7 +10008,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png",
                 "alt": "App in action"
             }
         ],
@@ -14432,7 +14432,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
                 "alt": "Using React and Mobx"
             }
         ],
@@ -15407,7 +15407,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/_nopreview.png",
                 "alt": "No preview available"
             }
         ],
@@ -16999,7 +16999,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/Preview.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png",
                 "alt": "My Teams"
             }
         ],
