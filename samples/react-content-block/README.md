@@ -94,7 +94,7 @@ This web part illustrates the following concepts:
   - File validation (type and size)
   - Unique filename generation
   - Direct SharePoint integration
-- **Active/Inactive Managegment**: 
+- **Active/Inactive Managegment**:
   - Toggle content visibility without deletion
   - Separate groups for active and inactive items
   - Only active items display to end users
@@ -102,7 +102,7 @@ This web part illustrates the following concepts:
   - Visual feedback during dragging
   - Reorder within active or inactive groups
   - Automatic sort order persistence
-- **Responsive Design**: 
+- **Responsive Design**:
   - Mobile-friendly stacked layout
   - Adaptive panel sizing
   - Touch-friendly controls
@@ -117,7 +117,7 @@ This web part illustrates the following concepts:
 - **DnD Kit**: Modern drag-and-drop functionality
 - **Automatic Column Management**: Web part creates required columns if missing
 - **Permission-Aware**: Graceful handling of library access
-- **Performance Optimized**: 
+- **Performance Optimized**:
   - Memoized components to prevent unnecessary re-renders
   - Debounced input updates
   - Efficient batch operations
@@ -141,12 +141,15 @@ The custom RichTextEditor component provides:
 ### Layout Options
 
 #### 50/50 Layout
+
 Equal width panels - ideal for balanced content presentation
 
 #### 75/25 Layout
+
 Large left panel, smaller right panel - great for main content with sidebar
 
 #### 25/75 Layout
+
 Smaller left panel, large right panel - perfect for navigation with detailed content
 
 ## Configuration
@@ -259,11 +262,13 @@ The web part requires a SharePoint list with these columns:
 ### Display Modes
 
 #### Edit Mode
+
 - Settings icon appears in top-right corner
 - Click to open Content Block Manager
 - Configure list and manage items
 
 #### Read Mode (Published Page)
+
 - Only active content blocks are displayed
 - Content appears in selected layout
 - Users can interact with links and images
@@ -274,6 +279,7 @@ The web part requires a SharePoint list with these columns:
 ### Multiple Content Blocks
 
 Create multiple content blocks in list to build rich page sections:
+
 - Each block can have different content in left/right panels
 - Reorder blocks to tell a story
 - Deactivate seasonal content without deletion
@@ -281,19 +287,21 @@ Create multiple content blocks in list to build rich page sections:
 ### Image Management
 
 Images uploaded through the editor are stored in:
+
 ```
 /sites/SiteName/SiteAssets/ProjectImages/
 ```
 
 Files are named with timestamps to prevent conflicts:
+
 ```
 1640000000000_image.jpg
 ```
 
-
 ### Responsive Behavior
 
 The web part automatically switches to stacked layout on mobile devices:
+
 - Breakpoint: 768px
 - Panels stack vertically
 - Full-width panels for easier reading
@@ -331,7 +339,6 @@ The web part automatically switches to stacked layout on mobile devices:
 - [PnP JS Documentation](https://pnp.github.io/pnpjs/)
 - [Fluent UI React](https://developer.microsoft.com/en-us/fluentui#/controls/web)
 - [DnD Kit Documentation](https://docs.dndkit.com/)
-
 
 ## Help
 
