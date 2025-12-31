@@ -8,12 +8,13 @@
       "@microsoft/teams-js": "2.24.0"
     },
     "isDomainIsolated": false,
-    "version": "1.21.1",
+    "version": "1.22.1",
     "libraryName": "react-organization-chart",
     "libraryId": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
     "environment": "onprem19",
     "packageManager": "npm",
     "solutionName": "react-organization-chart",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "useGulp": false
   }
 }
