@@ -49,7 +49,7 @@ jobs:
                       if isinstance(item, dict):
                           out.append(item)
                       elif isinstance(item, list):
-                          out. extend(flatten_samples(item))
+                          out.extend(flatten_samples(item))
                   return out
               if isinstance(data, dict):
                   return [data]
@@ -163,11 +163,11 @@ jobs:
           merge_errors_file = metadata_dir / "merge-errors.json"
           if errors:
               payload = {
-                  "timestamp": "${{ github. event.head_commit.timestamp }}",
+                  "timestamp": "${{ github.event.head_commit.timestamp }}",
                   "commit": "${{ github.sha }}",
                   "errors": errors
               }
-              merge_errors_file. write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+              merge_errors_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
               print(f"⚠️ Errors written to: {merge_errors_file}")
               has_errors = "true"
           else:
@@ -188,7 +188,7 @@ jobs:
           npm init -y >/dev/null 2>&1
           npm install sharp@latest
 
-      - name: Optimize thumbnails + rewrite all-samples. json thumbnails
+      - name: Optimize thumbnails + rewrite all-samples.json thumbnails
         id: thumbs
         run: |
           node << 'EOF'
@@ -197,9 +197,9 @@ jobs:
           const sharp = require("sharp");
 
           const repo = process.env.GITHUB_REPOSITORY;
-          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/. metadata/thumbs/`;
+          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/thumbs/`;
 
-          const metadataDir = path.resolve(". metadata");
+          const metadataDir = path.resolve(".metadata");
           const thumbsDir = path.join(metadataDir, "thumbs");
           fs.mkdirSync(thumbsDir, { recursive: true });
 
@@ -258,7 +258,7 @@ jobs:
             let failed = 0;
 
             for (const s of samples) {
-              const name = s?. name;
+              const name = s?.name;
               if (!name) continue;
 
               const thumb = pickThumb(s);
@@ -340,7 +340,7 @@ jobs:
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_processed=${processed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_skipped=${skipped}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_failed=${failed}\n`);
-            fs.appendFileSync(process.env. GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_thumb_failures=${failedThumbs.length > 0 ? 'true' : 'false'}\n`);
           }
 
@@ -372,13 +372,13 @@ jobs:
             echo "✅ Changes detected"
           fi
 
-      - name: Commit and push changes
+      - name: Commit and push changesF
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          if [ "${{ steps.merge. outputs.has_errors }}" == "true" ]; then
+          if [ "${{ steps.merge.outputs.has_errors }}" == "true" ]; then
             git commit -m "chore:  merge all samples + thumbs (with errors) [skip ci]"
           else
             git commit -m "chore: merge all samples + thumbs [skip ci]"
@@ -403,25 +403,25 @@ jobs:
           
           | Metric | Count |
           |--------|-------|
-          | **Processed** | ${{ steps. thumbs.outputs.thumbs_processed }} |
+          | **Processed** | ${{ steps.thumbs.outputs.thumbs_processed }} |
           | **Skipped (cached)** | ${{ steps.thumbs.outputs.thumbs_skipped }} |
           | **Failed** | ${{ steps.thumbs.outputs.thumbs_failed }} |
           | **Deleted (orphaned)** | ${{ steps.thumbs.outputs.thumbs_deleted }} |
           
           EOF
           
-          if [ "${{ steps.thumbs.outputs. has_thumb_failures }}" == "true" ]; then
+          if [ "${{ steps.thumbs.outputs.has_thumb_failures }}" == "true" ]; then
             echo "### ⚠️ Failed Thumbnails" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "The following thumbnails failed to process.  See \`.metadata/thumbnail-failures.json\` for details:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
-            if [ -f . metadata/thumbnail-failures.json ]; then
+            if [ -f .metadata/thumbnail-failures.json ]; then
               python3 << 'PYEOF'
           import json
           import os
           
-          with open(". metadata/thumbnail-failures.json") as f:
+          with open(".metadata/thumbnail-failures.json") as f:
               failures = json.load(f)
           
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
@@ -437,5 +437,5 @@ jobs:
           
           ---
           
-          ${{ steps.merge. outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
+          ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
           EOF
