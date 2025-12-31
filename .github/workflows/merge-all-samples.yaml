@@ -188,7 +188,7 @@ jobs:
           npm init -y >/dev/null 2>&1
           npm install sharp@latest
 
-      - name:  Optimize thumbnails + rewrite all-samples.json thumbnails
+      - name: Optimize thumbnails + rewrite all-samples. json thumbnails
         id: thumbs
         run: |
           node << 'EOF'
@@ -196,10 +196,10 @@ jobs:
           const path = require("path");
           const sharp = require("sharp");
 
-          const repo = process.env. GITHUB_REPOSITORY; // owner/repo
-          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/thumbs/`;
+          const repo = process.env.GITHUB_REPOSITORY;
+          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/. metadata/thumbs/`;
 
-          const metadataDir = path.resolve(".metadata");
+          const metadataDir = path.resolve(". metadata");
           const thumbsDir = path.join(metadataDir, "thumbs");
           fs.mkdirSync(thumbsDir, { recursive: true });
 
@@ -213,35 +213,33 @@ jobs:
 
           const newManifest = {};
           const expectedFiles = new Set();
+          const failedThumbs = []; // ← Track failed thumbnails
 
           function safeFileName(name) {
-            // Keep sample.name, but make it filesystem-safe
             return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
           }
 
           function pickThumb(sample) {
-            const thumbs = Array.isArray(sample. thumbnails) ? sample.thumbnails : [];
-            // already slimmed to 0 or 1, but keep robust:
+            const thumbs = Array.isArray(sample.thumbnails) ? sample.thumbnails : [];
             const img = thumbs
-              .filter(t => t && t.type === "image" && typeof t. url === "string" && t. url.length > 0)
-              .sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999))[0];
+              .filter(t => t && t.type === "image" && typeof t.url === "string" && t.url.length > 0)
+              .sort((a, b) => (a.order ??  999999) - (b.order ?? 999999))[0];
 
             return img || null;
           }
 
           async function fetchBuffer(url) {
-            const res = await fetch(url, { redirect:  "follow" });
+            const res = await fetch(url, { redirect: "follow" });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const ab = await res.arrayBuffer();
             return Buffer.from(ab);
           }
 
           async function makeThumbWebp(inputBuffer, outPath) {
-            const maxWidth = 420; // adjust as desired (e.g., 320 or 480)
+            const maxWidth = 420;
 
             let img;
             try {
-              // helps decode GIF; we only keep a static thumbnail for card grids
               img = sharp(inputBuffer, { animated: true, pages: 1 });
               await img.metadata();
             } catch {
@@ -260,7 +258,7 @@ jobs:
             let failed = 0;
 
             for (const s of samples) {
-              const name = s?.name;
+              const name = s?. name;
               if (!name) continue;
 
               const thumb = pickThumb(s);
@@ -272,7 +270,7 @@ jobs:
 
               expectedFiles.add(outFile);
 
-              if (!origUrl) {
+              if (! origUrl) {
                 s.thumbnails = [];
                 continue;
               }
@@ -291,8 +289,16 @@ jobs:
                   processed++;
                 } catch (e) {
                   failed++;
-                  // If we can't build a thumb, don't break the site; just omit thumb
-                  s.thumbnails = [];
+                  // ← Log the failure details
+                  failedThumbs.push({
+                    name: name,
+                    url: origUrl,
+                    error:  e.message
+                  });
+                  console.error(`❌ Failed to process thumbnail for ${name}:  ${e.message}`);
+                  
+                  // Keep the original thumbnail URL instead of emptying
+                  // s.thumbnails = []; // ← Remove this line
                   continue;
                 }
               }
@@ -308,10 +314,10 @@ jobs:
               ];
             }
 
-            // Delete orphan thumbs (for samples that no longer exist)
+            // Delete orphan thumbs
             let deleted = 0;
             for (const file of fs.readdirSync(thumbsDir)) {
-              if (file === "manifest. json") continue;
+              if (file === "manifest.json") continue;
               if (! expectedFiles.has(file)) {
                 fs.rmSync(path.join(thumbsDir, file), { force: true });
                 deleted++;
@@ -321,13 +327,21 @@ jobs:
             fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2), "utf8");
             fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2), "utf8");
 
-            console.log(`🖼️ Thumbs processed: ${processed}, skipped:  ${skipped}, failed: ${failed}`);
+            console.log(`🖼️ Thumbs processed: ${processed}, skipped: ${skipped}, failed: ${failed}`);
+
+            // Write failed thumbnails to a file for debugging
+            if (failedThumbs.length > 0) {
+              const failedPath = path.join(metadataDir, "thumbnail-failures.json");
+              fs.writeFileSync(failedPath, JSON.stringify(failedThumbs, null, 2), "utf8");
+              console.log(`⚠️ Failed thumbnails written to: ${failedPath}`);
+            }
 
             // Output for GitHub Actions
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_processed=${processed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_skipped=${skipped}\n`);
-            fs.appendFileSync(process.env. GITHUB_OUTPUT, `thumbs_failed=${failed}\n`);
-            fs.appendFileSync(process. env.GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_failed=${failed}\n`);
+            fs.appendFileSync(process.env. GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_thumb_failures=${failedThumbs.length > 0 ? 'true' : 'false'}\n`);
           }
 
           run().catch(err => {
@@ -378,69 +392,50 @@ jobs:
         run: |
           cat << 'EOF' >> $GITHUB_STEP_SUMMARY
           # 📊 Merge All Samples Workflow Summary
-
+          
           ## Workflow Details
           - **Triggered by**: ${{ github.event_name }}
           - **Run number**: ${{ github.run_number }}
           - **Commit**:  ${{ github.sha }}
           - **Branch**: ${{ github.ref_name }}
-
-          ## 📦 Sample Processing
-
-          | Metric | Value |
-          |--------|-------|
-          | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
-          | **Merge Errors** | ${{ steps. merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
-
-          ### Source Files
-          EOF
-
-          # Parse and display file stats
-          python3 << 'PYEOF'
-          import json
-          import os
-
-          file_stats_json = """${{ steps.merge.outputs.file_stats }}"""
           
-          if file_stats_json:
-              try:
-                  file_stats = json.loads(file_stats_json)
-                  
-                  with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
-                      for filename, stats in file_stats. items():
-                          status_emoji = {
-                              "success": "✅",
-                              "not_found": "ℹ️",
-                              "empty": "⚠️",
-                              "no_samples": "⚠️",
-                              "json_error": "❌",
-                              "error": "❌"
-                          }. get(stats.get("status"), "❓")
-                          
-                          f.write(f"- {status_emoji} **{filename}** ({stats.get('type')}): {stats.get('count')} samples\n")
-              except: 
-                  pass
-          PYEOF
-
-          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
-
           ## 🖼️ Thumbnail Optimization
-
+          
           | Metric | Count |
           |--------|-------|
-          | **Processed** | ${{ steps.thumbs.outputs.thumbs_processed }} |
+          | **Processed** | ${{ steps. thumbs.outputs.thumbs_processed }} |
           | **Skipped (cached)** | ${{ steps.thumbs.outputs.thumbs_skipped }} |
           | **Failed** | ${{ steps.thumbs.outputs.thumbs_failed }} |
           | **Deleted (orphaned)** | ${{ steps.thumbs.outputs.thumbs_deleted }} |
-
-          ## 📝 Git Changes
-
-          | Status | Result |
-          |--------|--------|
-          | **Changes Detected** | ${{ steps. check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |
-          | **Committed & Pushed** | ${{ steps. check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No changes to commit' }} |
-
+          
+          EOF
+          
+          if [ "${{ steps.thumbs.outputs. has_thumb_failures }}" == "true" ]; then
+            echo "### ⚠️ Failed Thumbnails" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The following thumbnails failed to process.  See \`.metadata/thumbnail-failures.json\` for details:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            if [ -f . metadata/thumbnail-failures.json ]; then
+              python3 << 'PYEOF'
+          import json
+          import os
+          
+          with open(". metadata/thumbnail-failures.json") as f:
+              failures = json.load(f)
+          
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("| Sample | Error |\n")
+              summary.write("|--------|-------|\n")
+              for failure in failures:
+                  summary.write(f"| {failure['name']} | {failure['error']} |\n")
+          PYEOF
+            fi
+          fi
+          
+          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+          
           ---
-
-          ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
+          
+          ${{ steps.merge. outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
           EOF
