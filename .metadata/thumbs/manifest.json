@@ -224,7 +224,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-redux": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux/assets/nonreactive.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-redux/assets/nonreactive.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-redux.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-videolibrary": {
@@ -1148,7 +1148,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-adaptive-cards-image-gallery.webp"
   },
   "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
     "file": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-engage-hub": {
@@ -1891,6 +1891,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-personal-assistant/assets/demo.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment.webp"
+  },
   "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-listdrivenplaceholders/assets/placeholders.jpg",
     "file": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders.webp"
@@ -1900,7 +1904,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-application-grouplinks.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-driveitem-properties": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
     "file": "pnp-sp-dev-spfx-extensions-react-driveitem-properties.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-tfl-status": {
@@ -1928,7 +1932,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-field-slider.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-application-redirect": {
-    "sourceUrl": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/tree/raw/samples/js-application-redirect/ext-redirects.png",
     "file": "pnp-sp-dev-spfx-extensions-js-application-redirect.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items": {
@@ -2272,7 +2276,7 @@
     "file": "pnp-sp-dev-spfx-extensions-js-command-item-permissions.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-mega-menu": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/menu.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega.png",
     "file": "pnp-sp-dev-spfx-extensions-react-mega-menu.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-application-appinsights": {

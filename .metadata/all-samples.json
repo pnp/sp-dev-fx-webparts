@@ -2603,7 +2603,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux/assets/nonreactive.png",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-redux.webp",
         "alt": "Using React and Redux"
       }
     ]
@@ -12871,7 +12871,7 @@
       {
         "gitHubAccount": "dipongkor",
         "company": "Jashore University of Science and Technology",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/4987425?s=460&u=998935621b0e998dc9bcd0fc26267623a8e5512c&v=4",
+        "pictureUrl": "https://github.com/dipongkor.png",
         "name": "Atish Kumar Dipongkor",
         "twitter": "atish_iit"
       },
@@ -12887,7 +12887,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload.webp",
         "alt": "File Upload using AngularJs"
       }
     ]
@@ -21028,6 +21028,44 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment",
+    "source": "pnp",
+    "title": "Quick Register to Appointment (SharePoint Event page)",
+    "shortDescription": "SharePoint Online provides a list of appointments (events) on a site. The \"Events\" web part can be used to display them on a page. Users can access the appointment details via the web part and view all the details. The detailed view provides a link that allows them to add the appointment to their personal calendar. An appointment entry also allows them to maintain an attendee list. The \"Events\" list provides the \"Attendees\" column, where multiple people can be added. However, there is no automatic function for this; the list must be edited manually. The special app extension adds a registration and deregistration function to the detailed view. Users can register for a specific appointment and later deregister with a simple click. Attendees are automatically managed in the attendee column of the list.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-quick-register-to-appointment",
+    "downloadUrl": null,
+    "updateDateTime": "2025-10-17",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/maschroeder-z",
+        "pictureUrl": "https://github.com/maschroeder-z.png",
+        "name": "Marc André Schröder-Zhou"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+        "alt": "Web Part Preview"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
     "source": "pnp",
     "title": "List-Driven Placeholders",
@@ -21138,7 +21176,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-react-driveitem-properties.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -21419,7 +21457,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/raw/samples/js-application-redirect/ext-redirects.png",
         "alt": "Redirect Application Customizers"
       }
     ]
@@ -24968,7 +25006,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/menu.gif",
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-react-mega-menu.webp",
         "alt": "Mega Menu Application Customizer Extension"
       }
     ]
