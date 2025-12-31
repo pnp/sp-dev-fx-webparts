@@ -19,19 +19,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses:  actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses:  actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Set up Node
         uses: actions/setup-node@v4
-        with:
+        with: 
           node-version: "20"
 
       - name: Merge + slim samples files
@@ -49,7 +49,7 @@ jobs:
                       if isinstance(item, dict):
                           out.append(item)
                       elif isinstance(item, list):
-                          out.extend(flatten_samples(item))
+                          out. extend(flatten_samples(item))
                   return out
               if isinstance(data, dict):
                   return [data]
@@ -88,7 +88,7 @@ jobs:
                   "categories": sample.get("categories") or [],
                   "authors": sample.get("authors") or [],
                   # Keep ONLY 1 thumbnail for the optimizer to consume
-                  "thumbnails": [primary] if primary else [],
+                  "thumbnails":  [primary] if primary else [],
               }
 
               # Explicitly dropped:
@@ -101,6 +101,7 @@ jobs:
 
           all_samples = []
           errors = []
+          file_stats = {}
 
           base_path = Path.cwd().resolve()
           metadata_dir = base_path / ".metadata"
@@ -117,13 +118,15 @@ jobs:
               file_path = metadata_dir / filename
               if not file_path.exists():
                   print(f"ℹ️ {filename}: File not found (skipping)")
+                  file_stats[filename] = {"type": source_type, "count": 0, "status": "not_found"}
                   continue
 
               try:
                   content = file_path.read_text(encoding="utf-8").strip()
-                  if not content:
+                  if not content: 
                       errors.append({"file": filename, "error": "Empty file"})
                       print(f"✗ {filename}: Empty file")
+                      file_stats[filename] = {"type": source_type, "count": 0, "status": "empty"}
                       continue
 
                   data = json.loads(content)
@@ -132,18 +135,22 @@ jobs:
                   if not samples:
                       errors.append({"file": filename, "error": "No valid samples found after flattening"})
                       print(f"✗ {filename}: No valid samples found")
+                      file_stats[filename] = {"type": source_type, "count": 0, "status": "no_samples"}
                       continue
 
                   slimmed = [slim_sample(s) for s in samples if isinstance(s, dict)]
                   all_samples.extend(slimmed)
                   print(f"✓ {filename}: Added {len(slimmed)} {source_type} samples")
+                  file_stats[filename] = {"type": source_type, "count": len(slimmed), "status": "success"}
 
               except json.JSONDecodeError as e:
                   errors.append({"file": filename, "error": f"JSON decode error: {str(e)}"})
                   print(f"✗ {filename}: JSON error - {str(e)}")
+                  file_stats[filename] = {"type": source_type, "count": 0, "status": "json_error"}
               except Exception as e:
                   errors.append({"file": filename, "error": f"Unexpected error: {str(e)}"})
                   print(f"✗ {filename}: Error - {str(e)}")
+                  file_stats[filename] = {"type":  source_type, "count": 0, "status": "error"}
 
           out_path = metadata_dir / "all-samples.json"
           try:
@@ -156,22 +163,24 @@ jobs:
           merge_errors_file = metadata_dir / "merge-errors.json"
           if errors:
               payload = {
-                  "timestamp": "${{ github.event.head_commit.timestamp }}",
+                  "timestamp": "${{ github. event.head_commit.timestamp }}",
                   "commit": "${{ github.sha }}",
                   "errors": errors
               }
-              merge_errors_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+              merge_errors_file. write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
               print(f"⚠️ Errors written to: {merge_errors_file}")
               has_errors = "true"
           else:
               if merge_errors_file.exists():
                   merge_errors_file.unlink()
-                  print("✓ No errors. Removed existing merge-errors.json")
+                  print("✓ No errors.  Removed existing merge-errors.json")
               has_errors = "false"
 
           import os
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
               f.write(f"has_errors={has_errors}\n")
+              f.write(f"total_samples={len(all_samples)}\n")
+              f.write(f"file_stats={json.dumps(file_stats)}\n")
           EOF
 
       - name: Install thumbnail optimizer deps
@@ -179,14 +188,15 @@ jobs:
           npm init -y >/dev/null 2>&1
           npm install sharp@latest
 
-      - name: Optimize thumbnails + rewrite all-samples.json thumbnails
+      - name:  Optimize thumbnails + rewrite all-samples.json thumbnails
+        id: thumbs
         run: |
           node << 'EOF'
           const fs = require("fs");
           const path = require("path");
           const sharp = require("sharp");
 
-          const repo = process.env.GITHUB_REPOSITORY; // owner/repo
+          const repo = process.env. GITHUB_REPOSITORY; // owner/repo
           const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/thumbs/`;
 
           const metadataDir = path.resolve(".metadata");
@@ -210,17 +220,17 @@ jobs:
           }
 
           function pickThumb(sample) {
-            const thumbs = Array.isArray(sample.thumbnails) ? sample.thumbnails : [];
+            const thumbs = Array.isArray(sample. thumbnails) ? sample.thumbnails : [];
             // already slimmed to 0 or 1, but keep robust:
             const img = thumbs
-              .filter(t => t && t.type === "image" && typeof t.url === "string" && t.url.length > 0)
+              .filter(t => t && t.type === "image" && typeof t. url === "string" && t. url.length > 0)
               .sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999))[0];
 
             return img || null;
           }
 
           async function fetchBuffer(url) {
-            const res = await fetch(url, { redirect: "follow" });
+            const res = await fetch(url, { redirect:  "follow" });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const ab = await res.arrayBuffer();
             return Buffer.from(ab);
@@ -281,7 +291,7 @@ jobs:
                   processed++;
                 } catch (e) {
                   failed++;
-                  // If we can’t build a thumb, don't break the site; just omit thumb
+                  // If we can't build a thumb, don't break the site; just omit thumb
                   s.thumbnails = [];
                   continue;
                 }
@@ -299,17 +309,25 @@ jobs:
             }
 
             // Delete orphan thumbs (for samples that no longer exist)
+            let deleted = 0;
             for (const file of fs.readdirSync(thumbsDir)) {
-              if (file === "manifest.json") continue;
-              if (!expectedFiles.has(file)) {
+              if (file === "manifest. json") continue;
+              if (! expectedFiles.has(file)) {
                 fs.rmSync(path.join(thumbsDir, file), { force: true });
+                deleted++;
               }
             }
 
             fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2), "utf8");
             fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2), "utf8");
 
-            console.log(`🖼️ Thumbs processed: ${processed}, skipped: ${skipped}, failed: ${failed}`);
+            console.log(`🖼️ Thumbs processed: ${processed}, skipped:  ${skipped}, failed: ${failed}`);
+
+            // Output for GitHub Actions
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_processed=${processed}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_skipped=${skipped}\n`);
+            fs.appendFileSync(process.env. GITHUB_OUTPUT, `thumbs_failed=${failed}\n`);
+            fs.appendFileSync(process. env.GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
           }
 
           run().catch(err => {
@@ -320,13 +338,13 @@ jobs:
 
       - name: Check for changes
         id: check_changes
-        run: |
+        run:  |
           git add .metadata/all-samples.json
           if [ -f .metadata/merge-errors.json ]; then
             git add .metadata/merge-errors.json
           fi
           if [ -d .metadata/thumbs ]; then
-            git add .metadata/thumbs
+            git add . metadata/thumbs
           fi
 
           git status
@@ -346,11 +364,85 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          if [ "${{ steps.merge.outputs.has_errors }}" == "true" ]; then
-            git commit -m "chore: merge all samples + thumbs (with errors) [skip ci]"
+          if [ "${{ steps.merge. outputs.has_errors }}" == "true" ]; then
+            git commit -m "chore:  merge all samples + thumbs (with errors) [skip ci]"
           else
             git commit -m "chore: merge all samples + thumbs [skip ci]"
           fi
 
           git push
           echo "✅ Changes committed and pushed"
+
+      - name: Generate workflow summary
+        if: always()
+        run: |
+          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+          # 📊 Merge All Samples Workflow Summary
+
+          ## Workflow Details
+          - **Triggered by**: ${{ github.event_name }}
+          - **Run number**: ${{ github.run_number }}
+          - **Commit**:  ${{ github.sha }}
+          - **Branch**: ${{ github.ref_name }}
+
+          ## 📦 Sample Processing
+
+          | Metric | Value |
+          |--------|-------|
+          | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
+          | **Merge Errors** | ${{ steps. merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
+
+          ### Source Files
+          EOF
+
+          # Parse and display file stats
+          python3 << 'PYEOF'
+          import json
+          import os
+
+          file_stats_json = """${{ steps.merge.outputs.file_stats }}"""
+          
+          if file_stats_json:
+              try:
+                  file_stats = json.loads(file_stats_json)
+                  
+                  with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+                      for filename, stats in file_stats. items():
+                          status_emoji = {
+                              "success": "✅",
+                              "not_found": "ℹ️",
+                              "empty": "⚠️",
+                              "no_samples": "⚠️",
+                              "json_error": "❌",
+                              "error": "❌"
+                          }. get(stats.get("status"), "❓")
+                          
+                          f.write(f"- {status_emoji} **{filename}** ({stats.get('type')}): {stats.get('count')} samples\n")
+              except: 
+                  pass
+          PYEOF
+
+          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+
+          ## 🖼️ Thumbnail Optimization
+
+          | Metric | Count |
+          |--------|-------|
+          | **Processed** | ${{ steps.thumbs.outputs.thumbs_processed }} |
+          | **Skipped (cached)** | ${{ steps.thumbs.outputs.thumbs_skipped }} |
+          | **Failed** | ${{ steps.thumbs.outputs.thumbs_failed }} |
+          | **Deleted (orphaned)** | ${{ steps.thumbs.outputs.thumbs_deleted }} |
+
+          ## 📝 Git Changes
+
+          | Status | Result |
+          |--------|--------|
+          | **Changes Detected** | ${{ steps. check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |
+          | **Committed & Pushed** | ${{ steps. check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No changes to commit' }} |
+
+          ---
+
+          ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
+          EOF
+
+```
