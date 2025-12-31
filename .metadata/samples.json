@@ -3742,7 +3742,13 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://camo.githubusercontent.com/4d5690679fd7d36dce6c9bd92ec37d6047b443b6/68747470733a2f2f692e6779617a6f2e636f6d2f37323963346164646636633939323531336638656239316133666130653330322e676966",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux/assets/nonreactive.png",
+                "alt": "Using React and Redux"
+            },
+            {
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux/assets/reactive.gif",
                 "alt": "Using React and Redux"
             }
         ],
