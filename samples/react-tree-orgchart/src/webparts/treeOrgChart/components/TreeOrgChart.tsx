@@ -44,7 +44,7 @@ export default class TreeOrgChart extends React.Component<
 
   constructor(props:ITreeOrgChartProps) {
     super(props);
-
+    this.treeData = [];
     this.SPService = new SPService(this.props.context);
     this.GraphService = new GraphServices(this.props.context);
     this.state = {
