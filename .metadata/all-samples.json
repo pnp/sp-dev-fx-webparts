@@ -2057,7 +2057,14 @@
         "twitter": "moeller2_0"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
+        "alt": "Outlook to Teams"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-react-query",
@@ -2091,7 +2098,14 @@
         "company": "Valo"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "alt": "No preview available"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-at-a-glance",
@@ -2165,7 +2179,14 @@
         "company": "Valo"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "alt": "No preview available"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage",
@@ -2578,7 +2599,14 @@
         "name": "Kevin Mees"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/4d5690679fd7d36dce6c9bd92ec37d6047b443b6/68747470733a2f2f692e6779617a6f2e636f6d2f37323963346164646636633939323531336638656239316133666130653330322e676966",
+        "alt": "Using React and Redux"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-videolibrary",
@@ -5180,7 +5208,14 @@
         "name": "Chris Kent"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+        "alt": "Sample in action"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores",
@@ -6453,7 +6488,14 @@
         "name": "Markus Moeller"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.gif",
+        "alt": "App in action"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-recent-contacts",
@@ -9434,7 +9476,14 @@
         "name": "Kevin Mees"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966",
+        "alt": "Using React and Mobx"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-personal-email",
@@ -10121,7 +10170,14 @@
         "twitter": "stfbauer"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "alt": "No preview available"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb",
@@ -11179,7 +11235,14 @@
         "twitter": "yhabersaat"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/Preview.png",
+        "alt": "My Teams"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-advanced-iframe",
@@ -12820,7 +12883,14 @@
         "twitter": "gautamdsheth"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
+        "alt": "File Upload using AngularJs"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-engage-hub",
@@ -13775,7 +13845,14 @@
         "twitter": "stfbauer"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "alt": "No preview available"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-angular2-prototype",
@@ -20471,7 +20548,15 @@
         "name": "Ejaz Hussain"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "name": "architecture.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-app-announcements",
@@ -21050,7 +21135,15 @@
         "name": "Harminder Singh"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "name": "DriveItemProperties.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-application-tfl-status",
@@ -21324,7 +21417,14 @@
         "twitter": "sebastienlevert"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
+        "alt": "Redirect Application Customizers"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items",
@@ -21784,7 +21884,15 @@
         "name": "Ahmad Jad Alhak"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "name": "preview-01.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-application-qna-chat",
@@ -22284,7 +22392,15 @@
         "name": "João Mendes"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "name": "m365ServiceHealth01.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-command-qrcode",
@@ -22993,7 +23109,15 @@
         "name": "Harminder Singh"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "name": "CopyPathCopyNameExtenstions.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
@@ -23146,7 +23270,14 @@
         "name": "Jonas Bjerke Hansen"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/b65cbd290ecf800f79481174196e527ccb36aa15/68747470733a2f2f6a6f6e6173626a65726b652e66696c65732e776f726470726573732e636f6d2f323031392f30312f636f70796469726563746c696e6b2e706e673f773d343530",
+        "alt": "Get a direct link to a document or folder"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-application-webhooks-notification",
@@ -24315,7 +24446,14 @@
         "name": "Nicolas Kheirallah"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-convert-to-pdf/screenshot.gif",
+        "alt": "Save and convert as PDF by PnP"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-field-text-analytics-api",
@@ -24831,7 +24969,14 @@
         "name": "Velin Georgiev"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/menu.gif",
+        "alt": "Mega Menu Application Customizer Extension"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-js-application-appinsights",
