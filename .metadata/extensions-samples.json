@@ -1461,6 +1461,63 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment",
+        "source": "pnp",
+        "title": "Quick Register to Appointment (SharePoint Event page)",
+        "shortDescription": "SharePoint Online provides a list of appointments (events) on a site. The \"Events\" web part can be used to display them on a page. Users can access the appointment details via the web part and view all the details. The detailed view provides a link that allows them to add the appointment to their personal calendar. An appointment entry also allows them to maintain an attendee list. The \"Events\" list provides the \"Attendees\" column, where multiple people can be added. However, there is no automatic function for this; the list must be edited manually. The special app extension adds a registration and deregistration function to the detailed view. Users can register for a specific appointment and later deregister with a simple click. Attendees are automatically managed in the attendee column of the list.",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-quick-register-to-appointment",
+        "longDescription": [
+            "SharePoint Online provides a list of appointments (events) on a site. The \"Events\" web part can be used to display them on a page. Users can access the appointment details via the web part and view all the details. The detailed view provides a link that allows them to add the appointment to their personal calendar. An appointment entry also allows them to maintain an attendee list. The \"Events\" list provides the \"Attendees\" column, where multiple people can be added. However, there is no automatic function for this; the list must be edited manually. The special app extension adds a registration and deregistration function to the detailed view. Users can register for a specific appointment and later deregister with a simple click. Attendees are automatically managed in the attendee column of the list."
+        ],
+        "creationDateTime": "2025-10-17",
+        "updateDateTime": "2025-10-17",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.21.1"
+            }
+        ],
+        "tags": [],
+        "categories": [
+            "SPFX-APPLICATION-EXTENSION"
+        ],
+        "thumbnails": [
+            {
+                "name": "fastregisterappointment.png",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "https://github.com/maschroeder-z",
+                "pictureUrl": "https://github.com/maschroeder-z.png",
+                "name": "Marc André Schröder-Zhou"
+            }
+        ],
+        "references": [
+            {
+                "name": "Overview of SharePoint Framework Extensions",
+                "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+                "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+            },
+            {
+                "name": "Use page placeholders from Application Customizer",
+                "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+                "url": "https://docs.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
         "source": "pnp",
         "title": "List-Driven Placeholders",
@@ -1607,7 +1664,7 @@
                 "name": "DriveItemProperties.png",
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
                 "alt": "Web Part Preview"
             }
         ],
@@ -2030,7 +2087,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/raw/samples/js-application-redirect/ext-redirects.png",
                 "alt": "Redirect Application Customizers"
             }
         ],
@@ -7688,13 +7745,13 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/menu.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega.png",
                 "alt": "Mega Menu Application Customizer Extension"
             },
             {
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-mega-menu/assets/menu2.gif?raw=true",
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega2.png",
                 "alt": "Mega Menu Application Customizer Extension"
             }
         ],
