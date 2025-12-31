@@ -231,7 +231,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-area-chart.webp",
+        "alt": "Area Chart"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-bar-chart-static",
@@ -383,7 +390,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-bubble-chart.webp",
+        "alt": "Bubble Chart"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-chartinator",
@@ -429,7 +443,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-chartinator.webp",
+        "alt": "Chartinator"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-combo-chart",
@@ -581,7 +602,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-doughnut-patterns.webp",
+        "alt": "Doughnut with Patterns"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable",
@@ -627,7 +655,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable.webp",
+        "alt": "Dynamic Data Callable"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer",
@@ -673,7 +708,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer.webp",
+        "alt": "Dynamic Data Consumer"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-horizontal-bar",
@@ -963,7 +1005,14 @@
         "name": "Nello D'Andrea"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-realtime-chart.webp",
+        "alt": "Real-Time Chart"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-scatter-chart",
@@ -2866,7 +2915,14 @@
         "name": "Michał Romiszewski"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-csv-importer.webp",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content",
@@ -4217,7 +4273,7 @@
         "type": "image",
         "order": 100,
         "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-office-offer-creation.webp",
-        "alt": "App in action"
+        "alt": "Create Offer Form with FluentUI controls"
       }
     ]
   },
@@ -5950,7 +6006,14 @@
         "name": "Dhananjay Pant"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-calendar.webp",
+        "alt": "Calendar"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
@@ -12080,7 +12143,14 @@
         "name": "Ejaz Hussain"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-employees-onboarding.webp",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-feature-framework",
@@ -13876,7 +13946,7 @@
         "type": "image",
         "order": 100,
         "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-quick-links-pro.webp",
-        "alt": "Quick Links Pro demo"
+        "alt": "Cards display style"
       }
     ]
   },
@@ -18092,7 +18162,14 @@
         "name": "Ravi Kulkarni"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-display-hierarchy.webp",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-web-parts-js-workbench-customizer",
@@ -21409,7 +21486,14 @@
         "name": "Nico"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp",
+        "alt": "Web Part Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-field-attachment-info",
@@ -22319,7 +22403,14 @@
         "name": "Nicolas Kheirallah"
       }
     ],
-    "thumbnails": []
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-company-templates.webp",
+        "alt": "Extension Preview"
+      }
+    ]
   },
   {
     "name": "pnp-sp-dev-spfx-extensions-react-application-sites-hubsite-switcher",

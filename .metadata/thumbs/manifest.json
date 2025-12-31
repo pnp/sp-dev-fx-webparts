@@ -48,7 +48,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-doughnut-patterns.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer": {
@@ -256,7 +256,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-adaptivecards.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-csv-importer": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-csv-importer.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content": {
@@ -376,7 +376,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-directory.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-office-offer-creation": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/16OfferCreationDemo_SPFx.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-my-approvals": {
@@ -456,7 +456,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-components-dynamicloading.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores": {
@@ -528,7 +528,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-organisationchart.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-calendar": {
-    "sourceUrl": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-calendar.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-securitygrid": {
@@ -1088,7 +1088,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-realtime-documents.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-employees-onboarding": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo1.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-employees-onboarding.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-feature-framework": {
@@ -1252,7 +1252,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-quick-links-pro": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-quick-links-pro.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-calendar-feed": {
@@ -1632,7 +1632,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-display-hierarchy": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/webpart-preview.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-display-hierarchy.webp"
   },
   "pnp-sp-dev-spfx-web-parts-js-workbench-customizer": {
@@ -1944,7 +1944,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-command-addfolders.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-collab-footer/assets/1.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
     "file": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-field-attachment-info": {
@@ -2036,7 +2036,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-company-templates": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/blob/269ae2f269aadb35361ec657dd969bf730e79df8/samples/react-company-templates/assets/Demo.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-company-templates/assets/Demo.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-company-templates.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-sites-hubsite-switcher": {
