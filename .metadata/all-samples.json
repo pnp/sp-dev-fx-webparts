@@ -20550,7 +20550,6 @@
     ],
     "thumbnails": [
       {
-        "name": "architecture.png",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
@@ -21137,7 +21136,6 @@
     ],
     "thumbnails": [
       {
-        "name": "DriveItemProperties.png",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
@@ -21886,7 +21884,6 @@
     ],
     "thumbnails": [
       {
-        "name": "preview-01.png",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
@@ -22394,7 +22391,6 @@
     ],
     "thumbnails": [
       {
-        "name": "m365ServiceHealth01.png",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
@@ -23111,7 +23107,6 @@
     ],
     "thumbnails": [
       {
-        "name": "CopyPathCopyNameExtenstions.png",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
