@@ -1,4 +1,4 @@
-name: Merge All Samples
+name: Generate All Samples and Cache Thumbnails
 
 on:
   push:
