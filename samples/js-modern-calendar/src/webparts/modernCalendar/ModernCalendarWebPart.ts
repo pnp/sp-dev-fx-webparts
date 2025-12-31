@@ -62,7 +62,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       } else {
         console.log(prefix, payload);
       }
-    } catch (e) {
+    } catch {
       // Fallback to plain console.log if structured logging fails
       console.log(prefix, message, data);
     }
