@@ -9,7 +9,7 @@ on:
       - ".metadata/extensions-samples.json"
   workflow_dispatch:
   schedule:
-  - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  - cron: "0 6 * * *" # Daily 06:00 UTC
 jobs:
   merge_all_samples:
     runs-on: ubuntu-latest
