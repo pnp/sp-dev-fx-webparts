@@ -444,5 +444,3 @@ jobs:
 
           ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
           EOF
-
-```
