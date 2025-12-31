@@ -1839,9 +1839,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-myfollowedsites/assets/spfx-react-myFollowedSites.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-myfollowedsites.webp"
   },
-  "pnp-sp-dev-spfx-extensions-YOUR-SOLUTION-NAME-GOES-HERE": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
-    "file": "pnp-sp-dev-spfx-extensions-YOUR-SOLUTION-NAME-GOES-HERE.webp"
+  "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-app-announcements": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-app-announcements/assets/announcements-preview.png",
@@ -1975,9 +1975,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
     "file": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
-    "file": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE.webp"
+  "pnp-sp-dev-spfx-extensions-react-application-copy-page": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-copy-page.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-qna-chat": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-qna-chat/assets/qnachatbot.png",
@@ -2098,6 +2098,10 @@
   "pnp-sp-dev-spfx-extensions-react-command-folder-select": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-folder-select/assets/folderselect.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-command-folder-select.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-utility-extensions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-utility-extensions.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
