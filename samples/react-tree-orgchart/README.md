@@ -4,8 +4,9 @@
 The Tree Organization Web Part shows the Organization Chart of the  or the team, the web part reads infomation from current user to build the Organization Chart.  
 
 You can configure in the web part properties:
-* show all Organization Chart 
-* the only user team, (same manager and peers). 
+
+* show all Organization Chart
+* the only user team, (same manager and peers).
 * show Organization Chart by picking up user
  
 
@@ -23,7 +24,7 @@ You can configure in the web part properties:
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg) 
+![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg) 
 ![Node.js LTS 22](https://img.shields.io/badge/Node.js-LTS%2022-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -67,25 +68,24 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-2.0.0|October 15, 2025|Update to SPFx 1.21.1, 
-2.0.0|October 06, 2024|Update to SPFx 1.20, removed react-sortable-tree(no updates any more) and replaced with custom control
-1.1.2|October 28, 2021|Fixes the Issue with different TimeZones.
-1.1.1|October 5, 2021|Added missing Graph permissions in manifest
-1.1.0|Feb 28, 2021|Added <ul><li>Show Other Team</li><li>Live Contact Card</li><li>Filter user by userPrincipalName</li><li>Graph API</li><li>PNPJS updates</li></ul> 
-1.0.2|June 12, 2020|Added exception handler for profiles missing display name 
-1.0.1|Jan 28, 2020|Update to SPFx 1.10, minor fixes and refactoring.
-1.0.0|Feb 25, 2019|Initial release  
+|Version|Date|Comments |
+|-------|----|--------|
+|2.0.2|December 31, 2025|Update to SPFx 1.22.1, |
+|2.0.1|October 15, 2025|Update to SPFx 1.21.1, |
+|2.0.0|October 06, 2024|Update to SPFx 1.20, removed react-sortable-tree(no updates any |more) and replaced with custom control|
+|1.1.2|October 28, 2021|Fixes the Issue with different TimeZones.|
+|1.1.1|October 5, 2021|Added missing Graph permissions in manifest|
+|1.1.0|Feb 28, 2021|Added <ul><li>Show Other Team</li><li>Live Contact Card</li><li>Filter user by userPrincipalName</li><li>Graph API</li><li>PNPJS updates</li></ul> |
+|1.0.2|June 12, 2020|Added exception handler for profiles missing display name |
+|1.0.1|Jan 28, 2020|Update to SPFx 1.10, minor fixes and refactoring.|
+|1.0.0|Feb 25, 2019|Initial release  |
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `gulp build`
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
+  - `npm run starrt`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
