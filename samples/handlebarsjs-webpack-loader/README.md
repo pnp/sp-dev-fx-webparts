@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - Handlebars
-  createdDate: 3/5/2017 12:00:00 AM
----
 # SPFx Sample with Handlebars.js
 
 This sample demonstrate how to set up SPFx to use [Handlebars](http://handlebarsjs.com) through [webpack loader](https://webpack.github.io/docs/loaders.html).
