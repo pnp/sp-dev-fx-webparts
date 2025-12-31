@@ -344,7 +344,7 @@ jobs:
             git add .metadata/merge-errors.json
           fi
           if [ -d .metadata/thumbs ]; then
-            git add . metadata/thumbs
+            git add .metadata/thumbs
           fi
 
           git status
