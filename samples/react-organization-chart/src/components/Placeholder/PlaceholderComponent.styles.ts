@@ -20,13 +20,13 @@ export const getClassNames = (theme: IPartialTheme | ITheme): IPlaceholderCompon
     },
     placeholderContainer: {
       alignItems: "center",
-      color: theme.palette.neutralSecondary,
-      backgroundColor: theme.palette.neutralLighter,
+      color: theme.palette?.neutralSecondary,
+      backgroundColor: theme.palette?.neutralLighter,
       width: "100%",
       padding: "80px 0"
     },
     placeholderHead: {
-      color: theme.palette.neutralPrimary
+      color: theme.palette?.neutralPrimary
     },
     placeholderHeadContainer: {
       height: "100%",
@@ -57,7 +57,7 @@ export const getClassNames = (theme: IPartialTheme | ITheme): IPlaceholderCompon
       textAlign: "center"
     },
     placeholderDescriptionText: {
-      color: theme.palette.neutralSecondary,
+      color: theme.palette?.neutralSecondary,
       fontSize: "17px",
       display: "inline-block",
       margin: "24px 0",

@@ -79,7 +79,8 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrg
                   label: strings.TitleFieldLabel,
                 }),
                 PropertyFieldPeoplePicker("selectedUser", {
-                  context: this.context,
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  context: this.context as any,
                   label: strings.startFromUserLabel,
                   initialData: this.properties.selectedUser,
                   key: "peopleFieldId",
