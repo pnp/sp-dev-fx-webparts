@@ -19538,7 +19538,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
                 "alt": "File Upload using AngularJs"
             }
         ],
@@ -19546,7 +19546,7 @@
             {
                 "gitHubAccount": "dipongkor",
                 "company": "Jashore University of Science and Technology",
-                "pictureUrl": "https://avatars.githubusercontent.com/u/4987425?s=460&u=998935621b0e998dc9bcd0fc26267623a8e5512c&v=4",
+                "pictureUrl": "https://github.com/dipongkor.png",
                 "name": "Atish Kumar Dipongkor",
                 "twitter": "atish_iit"
             },
