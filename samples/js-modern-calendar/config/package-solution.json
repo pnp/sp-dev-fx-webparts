@@ -2,7 +2,7 @@
   "solution": {
     "name": "SPFx Modern Calendar",
     "id": "3d593a2f-73f1-486f-9dae-555c6f6b584d",
-    "version": "1.0.5.0",
+    "version": "1.0.6.0",
     "includeClientSideAssets": true,
     "developer": {
       "name": "",
