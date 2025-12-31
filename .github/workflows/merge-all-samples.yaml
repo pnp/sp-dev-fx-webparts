@@ -297,8 +297,16 @@ jobs:
                   });
                   console.error(`❌ Failed to process thumbnail for ${name}:  ${e.message}`);
                   
-                  // Keep the original thumbnail URL instead of emptying
-                  // s.thumbnails = []; // ← Remove this line
+                  // Keep the original thumbnail URL
+                  const alt = thumb?.alt || s. title || "Sample thumbnail";
+                  s.thumbnails = [
+                    {
+                      type:  "image",
+                      order:  100,
+                      url:  origUrl,
+                      alt
+                    }
+                  ];
                   continue;
                 }
               }
@@ -399,6 +407,45 @@ jobs:
           - **Commit**:  ${{ github.sha }}
           - **Branch**: ${{ github.ref_name }}
           
+          ## 📦 Sample Processing
+          
+          | Metric | Value |
+          |--------|-------|
+          | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
+          | **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
+          
+          ### Source Files
+          EOF
+
+          # Parse and display file stats
+          python3 << 'PYEOF'
+          import json
+          import os
+
+          file_stats_json = """${{ steps.merge.outputs.file_stats }}"""
+          
+          if file_stats_json:
+              try:
+                  file_stats = json.loads(file_stats_json)
+                  
+                  with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+                      for filename, stats in file_stats.items():
+                          status_emoji = {
+                              "success": "✅",
+                              "not_found": "ℹ️",
+                              "empty": "⚠️",
+                              "no_samples": "⚠️",
+                              "json_error": "❌",
+                              "error": "❌"
+                          }.get(stats.get("status"), "❓")
+                          
+                          f.write(f"- {status_emoji} **{filename}** ({stats.get('type')}): {stats.get('count')} samples\n")
+              except: 
+                  pass
+          PYEOF
+
+          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+          
           ## 🖼️ Thumbnail Optimization
           
           | Metric | Count |
@@ -413,7 +460,7 @@ jobs:
           if [ "${{ steps.thumbs.outputs.has_thumb_failures }}" == "true" ]; then
             echo "### ⚠️ Failed Thumbnails" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "The following thumbnails failed to process.  See \`.metadata/thumbnail-failures.json\` for details:" >> $GITHUB_STEP_SUMMARY
+            echo "The following thumbnails failed to process and are using original URLs.  See \`.metadata/thumbnail-failures.json\` for details:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
             if [ -f .metadata/thumbnail-failures.json ]; then
@@ -434,6 +481,13 @@ jobs:
           fi
           
           cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+          
+          ## 📝 Git Changes
+          
+          | Status | Result |
+          |--------|--------|
+          | **Changes Detected** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |
+          | **Committed & Pushed** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No changes to commit' }} |
           
           ---
           
