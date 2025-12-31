@@ -172,7 +172,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-teams-graph-upload-as-pdf.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams": {
-    "sourceUrl": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-outlook-copy2teams/assets/addin_overall.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-react-query": {
@@ -224,7 +224,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-redux": {
-    "sourceUrl": "https://camo.githubusercontent.com/4d5690679fd7d36dce6c9bd92ec37d6047b443b6/68747470733a2f2f692e6779617a6f2e636f6d2f37323963346164646636633939323531336638656239316133666130653330322e676966",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux/assets/nonreactive.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-redux.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-videolibrary": {
@@ -456,7 +456,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-components-dynamicloading.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores": {
