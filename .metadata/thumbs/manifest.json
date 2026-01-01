@@ -1507,6 +1507,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tiles-v2/assets/react-tiles-v2.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-tiles-v2.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-content-block": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-block/assets/content-block-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-content-block.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-themes": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-themes/assets/themes.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-themes.webp"
@@ -1839,6 +1843,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-myfollowedsites/assets/spfx-react-myFollowedSites.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-myfollowedsites.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-telemetry-listener/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener.webp"
+  },
   "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
     "file": "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant.webp"
@@ -2066,6 +2074,10 @@
   "pnp-sp-dev-spfx-extensions-js-application-header-toggler": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-header-toggler/assets/screenshot.gif",
     "file": "pnp-sp-dev-spfx-extensions-js-application-header-toggler.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-my-sites-hub": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-my-sites-hub.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-related-bing-news/assets/related-bing-news.png",

@@ -5266,7 +5266,7 @@
     "shortDescription": "This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-modern-calendar",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-modern-calendar",
-    "updateDateTime": "2025-10-16",
+    "updateDateTime": "2025-12-30",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -5278,7 +5278,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.22.1"
       }
     ],
     "tags": [],
@@ -16899,6 +16899,42 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-content-block",
+    "source": "pnp",
+    "title": "Content Block",
+    "shortDescription": "A dynamic SharePoint Framework web part for displaying content in flexible two-panel layouts with rich text editing, drag-and-drop reordering, and SharePoint image uploads.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-block",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-block",
+    "updateDateTime": "2025-12-24",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "https://github.com/saiiiiiii.png",
+        "name": "Sai Siva Ram Bandaru"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-web-parts-react-content-block.webp",
+        "alt": "Content Block web part demo showing drag-and-drop reordering and rich text editing"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-themes",
     "source": "pnp",
     "title": "SharePoint Themes Client Side Web Part",
@@ -19937,7 +19973,7 @@
     "shortDescription": "Shows an organization chart based on specified user, and user can navigate to show company organization",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
-    "updateDateTime": "2025-10-16",
+    "updateDateTime": "2025-12-30",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -19949,7 +19985,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.22.1"
       }
     ],
     "tags": [],
@@ -20516,6 +20552,44 @@
         "order": 100,
         "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-react-application-myfollowedsites.webp",
         "alt": "My Followed Sites Application Customizer"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener",
+    "source": "pnp",
+    "title": "Tenant Telemetry Application Customizer",
+    "shortDescription": "A tenant-wide SPFx Application Customizer that collects telemetry from all SPFx web parts and extensions using Application Insights or Azure Functions.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-tenant-telemetry-listener",
+    "downloadUrl": null,
+    "updateDateTime": "2025-11-18",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ValerasNarbutas",
+        "pictureUrl": "https://github.com/ValerasNarbutas.png",
+        "name": "Valeras Narbutas"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener.webp",
+        "alt": "Tenant Telemetry Application Customizer preview screenshot"
       }
     ]
   },
@@ -21770,7 +21844,7 @@
     "shortDescription": "A react Message Banner sample, allows to add a custom banner message to your SharePoint Online modern sites.",
     "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-messagebanner",
     "downloadUrl": null,
-    "updateDateTime": "2024-10-06",
+    "updateDateTime": "2025-10-20",
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
@@ -21778,7 +21852,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       }
     ],
     "tags": [],
@@ -22523,7 +22597,7 @@
     "shortDescription": "An extension to provide a simple approach for company wide used templates in SharePoint Online.",
     "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-company-templates",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-company-templates",
-    "updateDateTime": "2025-03-12",
+    "updateDateTime": "2025-12-08",
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
@@ -22798,6 +22872,44 @@
         "order": 100,
         "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/thumbs/pnp-sp-dev-spfx-extensions-js-application-header-toggler.webp",
         "alt": "Site Header Toggler"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-my-sites-hub",
+    "source": "pnp",
+    "title": "My Sites Hub",
+    "shortDescription": "My Sites Hub is a SharePoint Framework (SPFx) Application Customizer Extension that provides users with a centralized “My Sites” dashboard accessible directly from any SharePoint site.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-my-sites-hub",
+    "downloadUrl": null,
+    "updateDateTime": "2025-10-30",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "pictureUrl": "https://github.com/Sandeep-FED.png",
+        "name": "Sandeep P S"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+        "alt": "Web Part Preview"
       }
     ]
   },
@@ -24279,7 +24391,7 @@
     "shortDescription": "SharePoint Framework application customizer displaying an information banner using office-fabric-ui MessageBar.",
     "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-announcements",
     "downloadUrl": null,
-    "updateDateTime": "2024-12-24",
+    "updateDateTime": "2025-10-20",
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
@@ -24287,7 +24399,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.21.1"
       }
     ],
     "tags": [],
