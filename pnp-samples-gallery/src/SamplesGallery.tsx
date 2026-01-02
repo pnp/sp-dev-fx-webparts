@@ -10,6 +10,7 @@ import { techKey, techLabel, techToIcon } from "./types/index";
 import Pill from "./components/Pill";
 import SampleCard from "./components/SampleCard";
 import { FacetGroup } from "./components";
+import SamplePanel from "./components/SamplePanel";
 
 import { LayoutGroup } from "framer-motion";
 
@@ -397,6 +398,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const toggleFullscreen = () => setFullscreen(f => !f);
 
+    const [selected, setSelected] = useState<PnPSample | null>(null);
+
     const renderContent = () => (
         <section className={`pnp-samples ${props.className ?? ""}`.trim()} aria-modal={fullscreen} role={fullscreen ? "dialog" : undefined}>
              <div className="pnp-samples__layout">
@@ -517,7 +520,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                     <div style={{ position: "relative" }}>
                         <div ref={gridRef} className="pnp-card-grid pnp-muuri-grid" aria-label="Sample cards">
                             {!loading && (isMobile ? filteredSamples : samples).map(s => (
-                                <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} />
+                                <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} />
                             ))}
                         </div>
 
@@ -548,15 +551,33 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         </section>
     );
 
+    // Render the content normally, and render the panel portal on top when selected.
+    const content = renderContent();
+
+    const panelPortal = (typeof document !== "undefined" && selected) ? createPortal(
+        <div className="pnp-sample-panel-overlay" onClick={() => setSelected(null)}>
+            <div className="pnp-sample-panel-container" onClick={(e) => e.stopPropagation()}>
+                <SamplePanel sample={selected} onClose={() => setSelected(null)} />
+            </div>
+        </div>,
+        document.body
+    ) : null;
+
     // When fullscreen, render the same content into a portal that sits on top
     if (typeof document !== "undefined" && fullscreen) {
         return createPortal(
             <div className="pnp-samples-overlay" onDoubleClick={() => setFullscreen(false)}>
-                {renderContent()}
+                {content}
+                {panelPortal}
             </div>,
             document.body
         );
     }
 
-    return renderContent();
+    return (
+        <>
+            {content}
+            {panelPortal}
+        </>
+    );
 }

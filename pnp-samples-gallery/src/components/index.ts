@@ -6,5 +6,6 @@ export { default as SampleCard } from "./SampleCard";
 export { SampleCard as SampleCardNamed } from "./SampleCard";
 export { default as Facepile } from "./Facepile";
 export { default as Icon } from "./Icon";
+export { default as SamplePanel } from "./SamplePanel";
 export { SamplesGallery } from "../SamplesGallery";
 export { default as FacetGroup } from "./FacetGroup";

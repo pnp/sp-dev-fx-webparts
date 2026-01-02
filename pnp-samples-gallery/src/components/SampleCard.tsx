@@ -8,9 +8,10 @@ export interface SampleCardProps {
     iconBasePath?: string | undefined;
     techIconBasePath?: string | undefined;
     muuriRef?: React.MutableRefObject<any>;
+    onOpen?: (sample: PnPSample) => void;
 }
 
-export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef }: SampleCardProps) {
+export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef, onOpen }: SampleCardProps) {
     const thumb = bestThumb(s);
     const spfxBucket = (metaFirst(s, "SPFX-VERSION") as string) ?? "";
     const tech = techKey(metaFirst(s, "CLIENT-SIDE-DEV")) ?? "";
@@ -22,6 +23,19 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
 
     const primaryCat = cats[0] ?? "SPFX-WEB-PART";
     const catLabel = prettyCategory(primaryCat);
+
+    const handleClick = (e: React.MouseEvent) => {
+        if (!onOpen) return;
+
+        // Only intercept plain left-clicks without modifier keys
+        // let other clicks (middle, ctrl/cmd, shift) behave normally
+        const isLeft = (e.button === 0);
+        const hasModifier = e.ctrlKey || e.metaKey || e.shiftKey || e.altKey;
+        if (isLeft && !hasModifier) {
+            e.preventDefault();
+            onOpen(s);
+        }
+    };
 
     return (
         <div
@@ -35,7 +49,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
             data-date={(s.updateDateTime ?? "")}
         >
             <div className="pnp-sample-item-content">
-                <a className="pnp-card" href={s.url} rel="noopener">
+                    <a className="pnp-card" href={s.url} rel="noopener" onClick={handleClick}>
                     {thumb ? (
                         <img
                             className="pnp-card__thumb"
@@ -84,7 +98,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     </div>
 
                     <h3 className="pnp-card__title">{s.title}</h3>
-                    <div className="pnp-card__desc">{s.shortDescription}</div>
+                    {/* <div className="pnp-card__desc">{s.shortDescription}</div> */}
 
                     <div className="pnp-card__footer">
                         <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={true} />
