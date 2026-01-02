@@ -20,10 +20,22 @@ export class TemplateService {
 
   private context: WebPartContext;
   private siteUrl: string;
+  private isWorkbench: boolean;
 
   constructor(context: WebPartContext) {
     this.context = context;
     this.siteUrl = context.pageContext.web.absoluteUrl;
+    // Detect workbench environment to avoid API calls that will fail
+    this.isWorkbench = this.detectWorkbenchEnvironment();
+  }
+
+  /**
+   * Detect if running in SharePoint workbench (local or online)
+   * API calls typically fail in workbench, so we skip them
+   */
+  private detectWorkbenchEnvironment(): boolean {
+    const url = window.location.href.toLowerCase();
+    return url.indexOf('workbench') !== -1 || url.indexOf('localhost') !== -1;
   }
 
   /**
@@ -100,6 +112,11 @@ export class TemplateService {
    * Check if Site Assets is accessible
    */
   public async checkSiteAssetsAccess(): Promise<boolean> {
+    // Skip API call in workbench - it will fail
+    if (this.isWorkbench) {
+      return false;
+    }
+
     try {
       const checkUrl = `${this.siteUrl}/_api/web/lists/getbytitle('Site Assets')`;
       const response = await this.context.spHttpClient.get(
@@ -191,6 +208,11 @@ export class TemplateService {
         fileName: `${t.templateId}.json`
       });
     });
+
+    // In workbench mode, only return built-in templates (skip API calls)
+    if (this.isWorkbench) {
+      return templates;
+    }
 
     // Load saved templates from Site Assets
     try {
@@ -295,11 +317,40 @@ export class TemplateService {
       template.tabOrientation = template.tabOrientation || 'horizontal';
       template.themeMode = template.themeMode || 'auto';
 
-      return template;
+      // Migrate template if needed
+      return this.migrateTemplate(template);
     } catch (error) {
       console.error('Template validation error:', error);
       return null;
     }
+  }
+
+  /**
+   * Migrate template from older schema versions to current
+   * v1.0 -> v2.0: Add content type fields with defaults
+   */
+  private migrateTemplate(template: IPiCanvasTemplate): IPiCanvasTemplate {
+    const version = parseFloat(template.schemaVersion || '1.0');
+
+    // v1.0 -> v2.0: Add content type support
+    if (version < 2.0) {
+      console.log(`[PiCanvas] Migrating template "${template.templateName}" from v${template.schemaVersion} to v${TEMPLATE_SCHEMA_VERSION}`);
+
+      // Add default content type to each tab
+      template.tabs = template.tabs.map(tab => ({
+        ...tab,
+        contentType: tab.contentType || 'webpart'
+      }));
+
+      // Add default feature flags
+      template.enableDeepLinking = template.enableDeepLinking ?? true;
+      template.enableLazyLoading = template.enableLazyLoading ?? true;
+
+      // Update schema version
+      template.schemaVersion = TEMPLATE_SCHEMA_VERSION;
+    }
+
+    return template;
   }
 
   /**
@@ -330,6 +381,11 @@ export class TemplateService {
         imageUrl: properties[`tab${i}Image`] as string | undefined,
         imagePosition: properties[`tab${i}ImagePosition`] as 'left' | 'right' | 'top' | 'background' | undefined,
         dividerAfter: properties[`tab${i}DividerAfter`] as boolean | undefined,
+        // Content type settings (v2.0+)
+        contentType: (properties[`tab${i}ContentType`] as ITabTemplateConfig['contentType']) || 'webpart',
+        customContent: properties[`tab${i}CustomContent`] as string | undefined,
+        embedUrl: properties[`tab${i}EmbedUrl`] as string | undefined,
+        embedHeight: properties[`tab${i}EmbedHeight`] as string | undefined,
         // Permission settings
         permissionEnabled: properties[`tab${i}PermissionEnabled`] as boolean | undefined,
         permissionStandardGroups: permissionStandardGroups && permissionStandardGroups.length > 0 ? permissionStandardGroups : undefined,
@@ -377,7 +433,10 @@ export class TemplateService {
       showActiveIndicator: properties.showActiveIndicator,
       activeIndicatorColor: properties.activeIndicatorColor,
       showTabSeparator: properties.showTabSeparator,
-      tabSeparatorColor: properties.tabSeparatorColor
+      tabSeparatorColor: properties.tabSeparatorColor,
+      // Features (v2.0+)
+      enableDeepLinking: properties.enableDeepLinking,
+      enableLazyLoading: properties.enableLazyLoading
     };
   }
 
@@ -397,6 +456,11 @@ export class TemplateService {
       properties[`tab${i}ImagePosition`] = undefined;
       properties[`tab${i}DividerAfter`] = undefined;
       properties[`tab${i}WebPartID`] = undefined;
+      // Clear content type settings
+      properties[`tab${i}ContentType`] = undefined;
+      properties[`tab${i}CustomContent`] = undefined;
+      properties[`tab${i}EmbedUrl`] = undefined;
+      properties[`tab${i}EmbedHeight`] = undefined;
       // Clear permission settings
       properties[`tab${i}PermissionEnabled`] = undefined;
       properties[`tab${i}PermissionGroups`] = undefined;
@@ -415,6 +479,12 @@ export class TemplateService {
       if (tab.imagePosition) properties[`tab${tabNum}ImagePosition`] = tab.imagePosition;
       properties[`tab${tabNum}DividerAfter`] = tab.dividerAfter || false;
       // Note: WebPartID is NOT applied - user must map content manually
+
+      // Apply content type settings (v2.0+)
+      properties[`tab${tabNum}ContentType`] = tab.contentType || 'webpart';
+      if (tab.customContent) properties[`tab${tabNum}CustomContent`] = tab.customContent;
+      if (tab.embedUrl) properties[`tab${tabNum}EmbedUrl`] = tab.embedUrl;
+      if (tab.embedHeight) properties[`tab${tabNum}EmbedHeight`] = tab.embedHeight;
 
       // Apply permission settings
       if (tab.permissionEnabled !== undefined) {
@@ -470,6 +540,10 @@ export class TemplateService {
     if (template.activeIndicatorColor) properties.activeIndicatorColor = template.activeIndicatorColor;
     if (template.showTabSeparator !== undefined) properties.showTabSeparator = template.showTabSeparator;
     if (template.tabSeparatorColor) properties.tabSeparatorColor = template.tabSeparatorColor;
+
+    // Apply feature flags (v2.0+)
+    if (template.enableDeepLinking !== undefined) properties.enableDeepLinking = template.enableDeepLinking;
+    if (template.enableLazyLoading !== undefined) properties.enableLazyLoading = template.enableLazyLoading;
   }
 
   /**

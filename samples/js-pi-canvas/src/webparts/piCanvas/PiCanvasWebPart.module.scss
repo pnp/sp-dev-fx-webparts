@@ -302,6 +302,15 @@
     }
   }
 
+  .featureHighlight {
+    border-color: var(--pi-accent);
+    background: rgba(0, 120, 212, 0.05);
+
+    &:hover {
+      border-color: var(--pi-accent);
+    }
+  }
+
   .featureClickHint {
     font-size: 11px;
     color: var(--pi-text-tertiary);
@@ -338,6 +347,13 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0 0 16px;
+  }
+
+  .sectionSubtext {
+    font-size: 14px;
+    color: var(--pi-text-secondary);
+    margin: -8px 0 20px;
+    line-height: 1.5;
   }
 
   // Steps
@@ -607,17 +623,37 @@
       }
     }
 
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--pi-text-primary);
+      margin: 20px 0 10px;
+    }
+
     p {
       margin: 0 0 12px;
     }
 
-    ul {
+    ul, ol {
       margin: 0 0 16px;
       padding-left: 20px;
     }
 
     li {
       margin-bottom: 6px;
+    }
+
+    a {
+      color: var(--pi-accent);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    del {
+      opacity: 0.6;
     }
 
     code {
@@ -677,6 +713,165 @@
     overflow-x: auto;
     white-space: pre;
     color: var(--pi-text-secondary);
+  }
+
+  // Interactive Example Playground
+  .examplePlayground {
+    background: var(--pi-bg-secondary);
+    border: 1px solid var(--pi-border);
+    border-radius: var(--pi-radius-md);
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .playgroundHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--pi-bg-tertiary);
+    border-bottom: 1px solid var(--pi-border);
+  }
+
+  .playgroundLabel {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pi-text-primary);
+    white-space: nowrap;
+  }
+
+  .playgroundSelect {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid var(--pi-border);
+    border-radius: var(--pi-radius-sm);
+    background: var(--pi-bg-primary);
+    color: var(--pi-text-primary);
+    cursor: pointer;
+    max-width: 300px;
+
+    &:focus {
+      outline: 2px solid var(--pi-accent);
+      outline-offset: 1px;
+    }
+  }
+
+  .playgroundBody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 200px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .playgroundCode {
+    padding: 16px;
+    border-right: 1px solid var(--pi-border);
+    background: var(--pi-bg-primary);
+    overflow: auto;
+    max-height: 400px;
+
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 1px solid var(--pi-border);
+      max-height: 200px;
+    }
+
+    pre {
+      margin: 0;
+      font-family: 'SF Mono', Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--pi-text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+
+  .playgroundPreview {
+    padding: 16px;
+    background: var(--pi-bg-primary);
+    overflow: auto;
+    max-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      max-height: 300px;
+    }
+
+    .mermaid {
+      width: 100%;
+
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .playgroundPreviewHtml {
+    width: 100%;
+    align-self: flex-start;
+  }
+
+  .playgroundTabs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 16px;
+    background: var(--pi-bg-tertiary);
+    border-bottom: 1px solid var(--pi-border);
+  }
+
+  .playgroundTab {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--pi-text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: var(--pi-radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--pi-bg-card-hover);
+      color: var(--pi-text-primary);
+    }
+
+    &.active {
+      background: var(--pi-accent);
+      color: #fff;
+    }
+  }
+
+  .playgroundCopyBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--pi-text-secondary);
+    background: var(--pi-bg-primary);
+    border: 1px solid var(--pi-border);
+    border-radius: var(--pi-radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--pi-bg-card-hover);
+      color: var(--pi-text-primary);
+      border-color: var(--pi-border-strong);
+    }
+
+    &.copied {
+      background: #4caf50;
+      color: #fff;
+      border-color: #4caf50;
+    }
   }
 
   // Version Info Section

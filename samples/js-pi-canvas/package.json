@@ -1,6 +1,6 @@
 {
   "name": "pi-canvas",
-  "version": "2.0.211",
+  "version": "2.3.0.0",
   "description": "PiCanvas - Infinite possibilities. Upgraded by @anthonyrhopkins, originally created by Mark Rackley.",
   "author": "PiSpace (@anthonyrhopkins)",
   "license": "MIT",
@@ -19,44 +19,52 @@
     "tabs",
     "tabbed-layout",
     "sharepoint-online",
-    "microsoft-365"
+    "microsoft-365",
+    "heft"
   ],
   "private": true,
   "main": "lib/index.js",
   "engines": {
-    "node": ">=18.17.1 <19.0.0 || >=20.0.0"
+    "node": ">=18.17.1 <19.0.0 || >=20.0.0 || >=22.0.0"
   },
   "scripts": {
-    "build": "gulp bundle",
-    "clean": "gulp clean",
-    "test": "gulp test",
-    "serve": "fast-serve"
+    "build": "heft build --clean",
+    "build:dev": "heft build",
+    "build:ship": "heft build --clean --production",
+    "clean": "heft clean",
+    "test": "heft test",
+    "serve": "heft start",
+    "package": "heft build --clean --production && heft package-solution --production",
+    "serve:workbench": "open \"https://pispace.sharepoint.com/_layouts/15/workbench.aspx?debug=true&noredir=true&debugManifestsFile=https://localhost:4321/temp/build/manifests.js\" && heft start",
+    "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.21.1",
-    "@microsoft/sp-lodash-subset": "1.21.1",
-    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
-    "@microsoft/sp-property-pane": "1.21.1",
-    "@microsoft/sp-webpart-base": "1.21.1",
-    "@pnp/spfx-property-controls": "^3.13.0",
+    "@microsoft/sp-core-library": "1.22.0",
+    "@microsoft/sp-lodash-subset": "1.22.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.22.0",
+    "@microsoft/sp-property-pane": "1.22.0",
+    "@microsoft/sp-webpart-base": "1.22.0",
+    "@pnp/spfx-property-controls": "^3.18.0",
     "@pnp/telemetry-js": "^2.0.0",
-    "jquery": "^3.6.0",
-    "tslib": "2.3.1"
+    "dompurify": "^3.3.1",
+    "jquery": "^3.7.1",
+    "marked": "^15.0.0",
+    "mermaid": "^11.4.0",
+    "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "1.21.1",
-    "@microsoft/eslint-plugin-spfx": "1.21.1",
-    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
-    "@microsoft/sp-build-web": "1.21.1",
-    "@microsoft/sp-module-interfaces": "1.21.1",
+    "@microsoft/eslint-config-spfx": "1.22.0",
+    "@microsoft/eslint-plugin-spfx": "1.22.0",
+    "@microsoft/sp-module-interfaces": "1.22.0",
+    "@microsoft/spfx-heft-plugins": "1.22.0",
+    "@microsoft/spfx-web-build-rig": "1.22.0",
     "@rushstack/eslint-config": "4.0.1",
+    "@rushstack/heft": "^1.1.2",
+    "@types/dompurify": "^3.0.5",
     "@types/jquery": "^3.5.33",
-    "@types/webpack-env": "1.15.2",
-    "ajv": "6.12.5",
+    "@types/webpack-env": "1.18.5",
+    "ajv": "8.17.1",
     "eslint": "8.57.0",
-    "gulp": "~4.0.2",
-    "sparkles": "^2.1.0",
-    "spfx-fast-serve-helpers": "~1.21.0",
-    "typescript": "5.3.3"
+    "typescript": "5.6.3"
   }
 }

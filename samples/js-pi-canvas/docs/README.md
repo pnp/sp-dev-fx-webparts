@@ -10,6 +10,7 @@
 | [Section Support](#section-support) | Group entire page sections into single tabs |
 | [Theme Aware](#theme-aware) | Automatically adapts to light and dark modes |
 | [Permission-Based Visibility](#permission-based-visibility) | Control tab visibility based on group membership |
+| [Content Types](#content-types) | Markdown, HTML, Embed, and Mermaid diagrams |
 | [Installation](#installation) | Deploy to SharePoint |
 | [Troubleshooting](#troubleshooting) | Common issues and solutions |
 
@@ -96,6 +97,16 @@ Vertical Layout:
 6. For web part labels: select the web part to use as the label
 7. Optionally enable dividers between tabs
 8. Adjust **Label Image Size** if using images
+
+---
+
+## Reuse Across Tabs and Instances
+
+PiCanvas can reuse the same web part in multiple tabs or across multiple PiCanvas web parts on the same page. It auto-clones the DOM and removes duplicate IDs to avoid conflicts, so you can build alternate views without duplicating content.
+
+**Typical uses:**
+- Show the same report under different tab labels
+- Include a shared "Overview" tab in multiple PiCanvas instances
 
 ---
 
@@ -204,6 +215,8 @@ PiCanvas uses CSS custom properties for consistent theming:
 
 Control tab visibility based on SharePoint group membership.
 
+The Permission Settings panel in the property pane shows the "Restrict by Group" toggle, a multi-select dropdown for choosing Site Owners/Members/Visitors, a text field for custom group IDs, and radio buttons for visibility behavior (Hide completely or Show Placeholder).
+
 ![Permission Settings](images/settings-permissions.png)
 
 ### How It Works
@@ -286,11 +299,280 @@ For advanced scenarios, enter SharePoint group IDs directly:
 
 ---
 
+## Content Types
+
+PiCanvas supports four custom content types that let you create rich tab content without adding extra web parts.
+
+### Markdown Content
+
+Write beautifully formatted text using simple, readable syntax.
+
+#### Basic Syntax
+
+| Element | Syntax | Output |
+|---------|--------|--------|
+| Heading 1 | `# Heading` | Large title |
+| Heading 2 | `## Heading` | Section title |
+| Bold | `**bold**` | **bold** |
+| Italic | `*italic*` | *italic* |
+| Link | `[text](url)` | [text](#) |
+| Image | `![alt](url)` | Image |
+| Code | `` `code` `` | `code` |
+
+#### Lists
+
+```markdown
+- Bullet item
+- Another item
+  - Nested item
+
+1. First step
+2. Second step
+3. Third step
+
+- [x] Completed task
+- [ ] Incomplete task
+```
+
+#### Tables
+
+```markdown
+| Name | Role | Status |
+|------|------|--------|
+| Alice | Developer | Active |
+| Bob | Designer | Active |
+```
+
+#### Code Blocks
+
+````markdown
+```javascript
+function hello() {
+  return 'Hello World!';
+}
+```
+````
+
+### HTML Content
+
+Use custom HTML for advanced layouts with inline styling.
+
+#### Allowed Elements
+
+- **Structure:** `div`, `span`, `section`, `article`, `header`, `footer`
+- **Text:** `p`, `h1-h6`, `strong`, `em`, `b`, `i`, `u`
+- **Lists:** `ul`, `ol`, `li`
+- **Tables:** `table`, `thead`, `tbody`, `tr`, `th`, `td`
+- **Media:** `img`, `figure`, `video`
+- **Links:** `a` (with `href`, `target`, `rel`)
+
+#### Sample: Info Cards
+
+```html
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px;">
+    <h3 style="margin: 0 0 8px;">📊 Analytics</h3>
+    <p style="margin: 0; opacity: 0.9;">View dashboard reports</p>
+  </div>
+</div>
+```
+
+#### Security
+
+- `<script>` tags are completely removed
+- Event handlers (`onclick`, `onerror`, etc.) are stripped
+- All HTML is sanitized using DOMPurify
+
+### Embed (iframe) Content
+
+Embed videos, apps, dashboards, and external content securely.
+
+#### Trusted Domains
+
+| Category | Domains |
+|----------|---------|
+| **Video** | YouTube, Vimeo, Microsoft Stream |
+| **Microsoft 365** | SharePoint, OneDrive, Sway, Loop, Teams |
+| **Power Platform** | Power BI, Power Apps, Power Automate |
+| **Forms** | Microsoft Forms, Typeform, Calendly |
+| **Design** | Canva, Figma, Miro, Lucidchart |
+| **Productivity** | Notion, Airtable, Coda, Mural |
+
+#### Getting Embed URLs
+
+**YouTube:**
+```
+https://www.youtube.com/embed/VIDEO_ID
+```
+
+**Power BI:**
+```
+https://app.powerbi.com/reportEmbed?reportId=...
+```
+
+**Microsoft Forms:**
+```
+https://forms.office.com/Pages/ResponsePage.aspx?id=...
+```
+
+#### Custom Domain Allow List
+
+Create `/SiteAssets/PiCanvas/embed-allowlist.json`:
+
+```json
+{
+  "allowedDomains": [
+    "custom-app.contoso.com",
+    "internal-tool.company.com"
+  ]
+}
+```
+
+### Mermaid Diagrams
+
+Create professional diagrams using simple text syntax. 20+ diagram types supported!
+
+#### Flowchart
+
+```mermaid
+flowchart TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
+```
+
+#### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant S as Server
+    U->>S: Request
+    S-->>U: Response
+```
+
+#### Class Diagram
+
+```mermaid
+classDiagram
+    class Animal {
+        +String name
+        +makeSound()
+    }
+    class Dog {
+        +bark()
+    }
+    Animal <|-- Dog
+```
+
+#### State Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Review
+    Review --> Approved
+    Approved --> Published
+```
+
+#### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE_ITEM : contains
+    PRODUCT ||--o{ LINE_ITEM : includes
+```
+
+#### Gantt Chart
+
+```mermaid
+gantt
+    title Project Timeline
+    section Planning
+        Requirements :a1, 2024-01-01, 14d
+        Design :a2, after a1, 10d
+    section Development
+        Backend :b1, after a2, 21d
+```
+
+#### Pie Chart
+
+```mermaid
+pie showData
+    title Time Distribution
+    "Development" : 45
+    "Design" : 20
+    "Testing" : 15
+```
+
+#### Mind Map
+
+```mermaid
+mindmap
+  root((Project))
+    Planning
+      Requirements
+      Timeline
+    Development
+      Frontend
+      Backend
+```
+
+#### Timeline
+
+```mermaid
+timeline
+    title Company History
+    2020 : Founded
+    2021 : Series A
+    2022 : Global Expansion
+```
+
+#### Kanban Board
+
+```mermaid
+kanban
+  column1[To Do]
+    task1[Design]
+  column2[In Progress]
+    task2[Develop]
+  column3[Done]
+    task3[Deploy]
+```
+
+#### More Diagram Types
+
+- **Quadrant Chart** - Priority matrices
+- **Git Graph** - Branching visualization
+- **Architecture Diagram** - System design
+- **XY Chart** - Line and bar charts
+- **Sankey Diagram** - Flow visualization
+- **Block Diagram** - Simple blocks
+- **Radar Chart** - Multi-dimensional comparison
+
+#### Resources
+
+- [Mermaid Official Documentation](https://mermaid.js.org/)
+- [Mermaid Live Editor](https://mermaid.live/) - Test diagrams online
+
+---
+
 ## Templates
 
 Save and share PiCanvas configurations across sites.
 
+The Templates panel in the property pane shows a dropdown of built-in templates (Classic, Dashboard, Navigation Dock, Portal Hub, Minimal), plus Export and Import buttons for JSON configuration files, and a "Save to Site Assets" option for team sharing.
+
 ![Template Settings](images/settings-templates.png)
+
+### How to Use Templates
+
+1. Open the web part property pane and expand **Templates**
+2. Select a built-in template to apply it
+3. Use the export/import controls to download or load a JSON template
+4. Optionally save templates to Site Assets for team reuse
 
 ### Built-in Templates
 
@@ -301,7 +583,6 @@ Save and share PiCanvas configurations across sites.
 | **Navigation Dock** | 5 | Pills | Vertical sidebar |
 | **Portal Hub** | 4 | Boxed | Department categories |
 | **Minimal** | 3 | Underline | Light, clean design |
-| **Dark Mode** | 3 | Pills | Pre-configured dark theme |
 
 ### Template Features
 
@@ -310,6 +591,7 @@ Save and share PiCanvas configurations across sites.
 - **Save to Site Assets** - Store templates in SharePoint for team sharing
 - **Includes all settings** - Tab labels, icons, images, permissions, styling, colors
 - **Content mapping preserved** - Web part assignments stay with templates
+- **Dark Mode preset** - Pre-configured dark theme
 
 ---
 
@@ -323,8 +605,13 @@ Save and share PiCanvas configurations across sites.
 
 ### Deploy to SharePoint
 
-1. **[Download pi-canvas.sppkg](https://github.com/anthonyrhopkins/PiCanvas/releases/latest/download/pi-canvas.sppkg)** from GitHub Releases
-2. Upload to your **App Catalog** > **Apps for SharePoint**
+Prebuilt packages are not provided; build the `.sppkg` locally.
+
+1. Build the package from source:
+   - `npm install`
+   - `npx heft build --production`
+   - `npx heft package-solution --production`
+2. Upload `sharepoint/solution/pi-canvas.sppkg` to your **App Catalog** > **Apps for SharePoint**
 3. Click **Deploy** when prompted
 4. Add the app to your site from **Site Contents > New > App**
 
@@ -342,6 +629,8 @@ Save and share PiCanvas configurations across sites.
 ---
 
 ## Troubleshooting
+
+The Troubleshooting section in the property pane provides diagnostic tools when web parts aren't detected correctly. It includes Section Selector and Web Part Selector dropdowns to try different DOM query strategies, plus Reset buttons to restore defaults.
 
 ![Troubleshooting Settings](images/settings-troubleshooting.png)
 
@@ -393,6 +682,8 @@ Save and share PiCanvas configurations across sites.
 
 ### Colors
 
+The Colors panel provides color pickers for Accent Color, Tab Text Color, Active Tab Text Color, Tab Background, Active Tab Background, and Hover Background. Each setting has a color swatch preview and hex input field.
+
 ![Colors Settings](images/settings-colors.png)
 
 | Setting | Description |
@@ -406,6 +697,8 @@ Save and share PiCanvas configurations across sites.
 
 ### Typography & Spacing
 
+The Typography & Spacing panel contains sliders for Font Size (12-20px), Font Weight (400-700), Vertical Padding, Horizontal Padding, and Gap Between Tabs. Each slider shows the current value and updates the preview in real-time.
+
 ![Typography Settings](images/settings-typography.png)
 
 | Setting | Range | Default |
@@ -417,6 +710,8 @@ Save and share PiCanvas configurations across sites.
 | **Gap Between Tabs** | 0px - 20px | 0px |
 
 ### Borders & Effects
+
+The Borders & Effects panel includes sliders for Corner Radius and Active Indicator Width, a color picker for Indicator Color, a dropdown for Shadow Effect presets, and toggles for Show Tab Separators and Enable Animations.
 
 ![Borders Settings](images/settings-borders.png)
 
@@ -435,7 +730,6 @@ Save and share PiCanvas configurations across sites.
 
 - [Main README](../README.md) - Overview and quick start
 - [GitHub Issues](https://github.com/anthonyrhopkins/PiCanvas/issues) - Report bugs or request features
-- [Releases](https://github.com/anthonyrhopkins/PiCanvas/releases) - Download latest version
 - [Contributing Guide](../CONTRIBUTING.md) - Help improve PiCanvas
 
 ---

@@ -52,6 +52,36 @@ define([], function() {
     "PermissionPlaceholderDescription": "Show disabled tab with message instead of hiding",
     "PermissionPlaceholderTextLabel": "Placeholder Message",
     "PermissionPlaceholderTextPlaceholder": "e.g. Access restricted",
-    "PermissionPlaceholderDefault": "Restricted"
+    "PermissionPlaceholderDefault": "Restricted",
+
+    // Content type strings (v3.0)
+    "ContentTypeLabel": "Content Type",
+    "ContentTypeWebPart": "SharePoint Web Part",
+    "ContentTypeSection": "SharePoint Section",
+    "ContentTypeMarkdown": "Markdown Content",
+    "ContentTypeHtml": "HTML Content",
+    "ContentTypeMermaid": "Mermaid Diagram",
+    "ContentTypeEmbed": "Embed (iframe)",
+
+    // Custom content strings (v3.0)
+    "CustomContentLabel": "Content",
+    "MarkdownPlaceholder": "Enter Markdown content...\n\n# Heading\n**Bold** and *italic* text\n- List item",
+    "HtmlPlaceholder": "Enter HTML content...\n\n<div class=\"my-content\">\n  <h2>Title</h2>\n  <p>Your content here</p>\n</div>",
+    "MermaidPlaceholder": "Enter Mermaid diagram code...\n\ngraph TD\n    A[Start] --> B{Decision}\n    B -->|Yes| C[Action]\n    B -->|No| D[End]",
+
+    // Embed strings (v3.0)
+    "EmbedUrlLabel": "Embed URL",
+    "EmbedUrlDescription": "Enter a URL from a trusted domain (YouTube, Power BI, Forms, etc.)",
+    "EmbedHeightLabel": "Embed Height",
+    "EmbedHeightPlaceholder": "e.g. 400px, 50vh",
+
+    // Feature toggle strings (v3.0)
+    "EnableDeepLinkingLabel": "Enable URL Deep Linking",
+    "EnableDeepLinkingDescription": "Allow linking directly to tabs via URL hash (e.g. #tab-name)",
+    "EnableLazyLoadingLabel": "Enable Lazy Loading",
+    "EnableLazyLoadingDescription": "Delay loading tab content until tab is activated",
+
+    // Accessibility strings (v3.0)
+    "TabListAriaLabel": "Content sections"
   }
 });

@@ -1,7 +1,11 @@
 require('@rushstack/eslint-config/patch/modern-module-resolution');
+
 module.exports = {
   extends: ['@microsoft/eslint-config-spfx/lib/profiles/default'],
-  parserOptions: { tsconfigRootDir: __dirname },
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: './tsconfig.json'
+  },
   rules: {
     // Security-focused ESLint rules
     'no-eval': 'error',                           // Prevent eval() usage
@@ -16,6 +20,21 @@ module.exports = {
     'no-unused-expressions': 'warn',              // Warn on unused expressions
     'eqeqeq': ['error', 'always'],                // Require === and !==
     'no-var': 'warn',                             // Prefer let/const over var
-    'prefer-const': 'warn'                        // Prefer const when variable is not reassigned
-  }
+    'prefer-const': 'warn',                       // Prefer const when variable is not reassigned
+
+    // Relaxed rules for migration (can tighten later)
+    '@typescript-eslint/no-explicit-any': 'warn', // Warn instead of error for any types
+    '@typescript-eslint/explicit-function-return-type': 'off', // Don't require return types
+    '@rushstack/no-new-null': 'off'               // Allow null usage
+  },
+  overrides: [
+    {
+      // Relaxed rules for legacy JavaScript files
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off'
+      }
+    }
+  ]
 };

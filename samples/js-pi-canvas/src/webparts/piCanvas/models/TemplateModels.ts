@@ -5,8 +5,15 @@
 
 /**
  * Schema version for backwards compatibility
+ * v1.0 - Initial version
+ * v2.0 - Added content types (markdown, html, mermaid, embed), deep linking, lazy loading
  */
-export const TEMPLATE_SCHEMA_VERSION = '1.0';
+export const TEMPLATE_SCHEMA_VERSION = '2.0';
+
+/**
+ * Content type for tab content
+ */
+export type TabContentType = 'webpart' | 'section' | 'markdown' | 'html' | 'mermaid' | 'embed';
 
 /**
  * Individual tab configuration within a template
@@ -19,6 +26,12 @@ export interface ITabTemplateConfig {
   imageUrl?: string;
   imagePosition?: 'left' | 'right' | 'top' | 'background';
   dividerAfter?: boolean;
+
+  // Content type settings (v2.0+)
+  contentType?: TabContentType;
+  customContent?: string;  // For markdown, html, mermaid content
+  embedUrl?: string;       // For embed type
+  embedHeight?: string;    // Height for embed iframe (default: '400px')
 
   // Permission settings
   permissionEnabled?: boolean;
@@ -83,6 +96,10 @@ export interface IPiCanvasTemplate {
   activeIndicatorColor?: string;
   showTabSeparator?: boolean;
   tabSeparatorColor?: string;
+
+  // Features (v2.0+)
+  enableDeepLinking?: boolean;    // URL hash navigation (default: true)
+  enableLazyLoading?: boolean;    // Lazy load tab content (default: true)
 }
 
 /**

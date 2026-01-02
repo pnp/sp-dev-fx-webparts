@@ -55,6 +55,7 @@ export class PermissionService {
 
   private context: WebPartContext;
   private siteUrl: string;
+  private isWorkbench: boolean;
 
   // Cache for permission check results (per webpart instance)
   private _permissionCache: IPermissionCheckResult | null = null;
@@ -62,6 +63,17 @@ export class PermissionService {
   constructor(context: WebPartContext) {
     this.context = context;
     this.siteUrl = context.pageContext.web.absoluteUrl;
+    // Detect workbench environment to avoid API calls that will fail
+    this.isWorkbench = this.detectWorkbenchEnvironment();
+  }
+
+  /**
+   * Detect if running in SharePoint workbench (local or online)
+   * API calls typically fail in workbench, so we skip them
+   */
+  private detectWorkbenchEnvironment(): boolean {
+    const url = window.location.href.toLowerCase();
+    return url.indexOf('workbench') !== -1 || url.indexOf('localhost') !== -1;
   }
 
   /**
@@ -69,6 +81,16 @@ export class PermissionService {
    * Results are cached for CACHE_DURATION_MS
    */
   public async getUserPermissionData(): Promise<IPermissionCheckResult> {
+    // In workbench mode, skip API calls - they will fail and cause errors
+    if (this.isWorkbench) {
+      return {
+        userId: this.context.pageContext.legacyPageContext?.userId || 0,
+        userGroups: [],
+        associatedGroups: { ownerId: null, memberId: null, visitorId: null },
+        cachedAt: Date.now()
+      };
+    }
+
     // Return cached result if valid
     if (this._permissionCache &&
         Date.now() - this._permissionCache.cachedAt < PermissionService.CACHE_DURATION_MS) {

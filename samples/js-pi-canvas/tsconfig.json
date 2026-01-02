@@ -1,20 +1,25 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
   "compilerOptions": {
-    "target": "es5",
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "target": "ES2017",
+    "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "outDir": "lib",
+    "rootDir": "src",
     "inlineSources": false,
+    "strict": false,
     "strictNullChecks": true,
     "noUnusedLocals": false,
     "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
@@ -23,11 +28,9 @@
       "webpack-env"
     ],
     "lib": [
-      "es5",
-      "dom",
-      "es2015.collection",
-      "es2015.promise",
-      "es2015.core"
+      "ES2017",
+      "DOM",
+      "DOM.Iterable"
     ]
   },
   "include": [
@@ -36,6 +39,8 @@
   ],
   "exclude": [
     "node_modules",
-    "lib"
+    "lib",
+    "dist",
+    "temp"
   ]
 }

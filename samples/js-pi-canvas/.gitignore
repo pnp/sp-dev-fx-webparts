@@ -9,9 +9,11 @@ node_modules
 # Build generated files
 dist
 lib
+lib-commonjs
 release
 temp
 sharepoint/solution/debug/
+sharepoint/solution/*.sppkg
 
 # Coverage directory used by tools like istanbul
 coverage

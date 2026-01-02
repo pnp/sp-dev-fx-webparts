@@ -5,7 +5,7 @@ Thank you for your interest in contributing to PiCanvas! This document provides 
 ## Getting Started
 
 ### Prerequisites
-- Node.js 20.x or 18.17.1+
+- Node.js 18.17.1+ or 22.14+
 - npm (comes with Node.js)
 - A SharePoint Online tenant for testing
 
@@ -27,7 +27,7 @@ Thank you for your interest in contributing to PiCanvas! This document provides 
    Edit `config/serve.json` and replace `{tenantDomain}` with your SharePoint domain:
    ```json
    {
-     "initialPage": "https://yourtenant.sharepoint.com/_layouts/15/workbench.aspx"
+     "initialPage": "https://yourtenant.sharepoint.com/_layouts/15/workbench.aspx?debug=true&noredir=true&debugManifestsFile=https://localhost:4321/temp/build/manifests.js"
    }
    ```
 
@@ -35,18 +35,18 @@ Thank you for your interest in contributing to PiCanvas! This document provides 
    ```bash
    npm run serve
    ```
-   This uses fast-serve for hot reload (~2 second rebuilds).
+   This starts the Heft dev server (build-watch with HTTPS).
 
 5. **Trust the development certificate** (first time only)
    ```bash
-   npx gulp trust-dev-cert
+   npx heft trust-dev-cert
    ```
 
 ### Building for Production
 
 ```bash
-npx gulp bundle --ship
-npx gulp package-solution --ship
+npx heft build --production
+npx heft package-solution --production
 ```
 
 The `.sppkg` file will be in `sharepoint/solution/`.
@@ -125,7 +125,3 @@ The `.sppkg` file will be in `sharepoint/solution/`.
 - Open a [Discussion](https://github.com/anthonyrhopkins/PiCanvas/discussions) for questions
 - Check the [README](README.md) for documentation
 - Review existing issues and PRs for context
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.

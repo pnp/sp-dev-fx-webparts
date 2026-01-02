@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "pi-canvas-client-side-solution",
-    "id": "31e1eb87-fc73-47ee-b8d2-fd2a63f34270",
-    "version": "2.0.21.1",
+    "id": "86a6b96a-7f98-4508-827d-b8bd6409f60b",
+    "version": "2.3.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

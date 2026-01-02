@@ -486,6 +486,303 @@
   width: 100% !important;
 }
 
+/* ===== HERO/BANNER WEB PART FIXES ===== */
+/* SharePoint Hero web parts use background-image on container divs.
+   These layouts (overlap, image and title, color block, fade) need special handling
+   to preserve their background images and height when inside PiCanvas tabs. */
+
+/* Preserve Hero web part background images and layout */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"],
+.hillbilly-tab-content [data-automation-id="heroWebPart"],
+.hillbilly-tab-content [class*="heroWebPart"],
+.hillbilly-tab-content [class*="HeroWebPart"],
+.hillbilly-tab-content .picanvas-hero-fixed {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  min-height: 300px; /* Ensure container has height for background-image */
+  position: relative;
+  display: block !important;
+}
+
+/* CRITICAL: Force ALL nested elements within Hero to fill full width */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] *,
+.hillbilly-tab-content [class*="heroWebPart"] *,
+.hillbilly-tab-content [class*="HeroWebPart"] *,
+.hillbilly-tab-content .picanvas-hero-fixed * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* All divs within Hero need explicit width reset */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] div,
+.hillbilly-tab-content [class*="heroWebPart"] div,
+.hillbilly-tab-content [class*="HeroWebPart"] div,
+.hillbilly-tab-content .picanvas-hero-fixed div {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  flex: 1 1 100% !important;
+  flex-basis: 100% !important;
+}
+
+/* Hero layout containers that use background-image */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="heroLayout"],
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="HeroLayout"],
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] > div,
+.hillbilly-tab-content [class*="heroWebPart"] [class*="heroLayout"],
+.hillbilly-tab-content [class*="heroWebPart"] > div {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: inherit;
+  position: relative;
+  width: 100% !important;
+}
+
+/* Preserve background-image on all child divs that might have it */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [style*="background-image"],
+.hillbilly-tab-content [class*="heroWebPart"] [style*="background-image"],
+.hillbilly-tab-content [class*="HeroWebPart"] [style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 300px;
+}
+
+/* Hero content overlay - ensure proper positioning */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="heroContent"],
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="HeroContent"],
+.hillbilly-tab-content [class*="heroWebPart"] [class*="heroContent"] {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix for overlap, fade, color block layouts that use absolute positioning */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="imageContainer"],
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="backgroundImage"],
+.hillbilly-tab-content [class*="heroWebPart"] [class*="imageContainer"],
+.hillbilly-tab-content [class*="heroWebPart"] [class*="backgroundImage"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Banner web part specific fixes */
+/* SharePoint Banner webpart uses deeply nested flex containers with calculated widths.
+   When moved into PiCanvas tabs, these width calculations become stale and must be 
+   aggressively overridden to ensure the banner fills 100% of the tab content area.
+   
+   Banner configurations handled:
+   1. "Image and heading" - background image with text overlay
+   2. "Heading only" - just text, colored background  
+   3. "Color block" - solid color with text
+   4. "Fade" - image fades into page background
+   5. "Overlap" - image with overlapping text box
+*/
+
+/* Base Banner container - must fill full width */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"],
+.hillbilly-tab-content [class*="bannerWebPart"],
+.hillbilly-tab-content [class*="BannerWebPart"],
+.hillbilly-tab-content .picanvas-banner-fixed {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  min-height: 200px;
+  position: relative;
+  display: block !important;
+}
+
+/* CRITICAL: Force ALL nested elements within Banner to fill full width */
+/* The JavaScript clears inline styles, CSS ensures they stay full width */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] *,
+.hillbilly-tab-content [class*="bannerWebPart"] *,
+.hillbilly-tab-content [class*="BannerWebPart"] *,
+.hillbilly-tab-content .picanvas-banner-fixed * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* All divs within Banner need explicit width reset */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] div,
+.hillbilly-tab-content [class*="bannerWebPart"] div,
+.hillbilly-tab-content [class*="BannerWebPart"] div,
+.hillbilly-tab-content .picanvas-banner-fixed div {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important; /* Allow flex items to shrink */
+  flex: 1 1 100% !important;
+  flex-basis: 100% !important;
+}
+
+/* Background images must cover full container */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [style*="background-image"],
+.hillbilly-tab-content [class*="bannerWebPart"] [style*="background-image"],
+.hillbilly-tab-content .picanvas-banner-fixed [style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: inherit;
+  width: 100% !important;
+}
+
+/* Banner layout containers - handle all configuration types */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="root"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="container"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="wrapper"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="content"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="layout"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Layout"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="image"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Image"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="banner"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Banner"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="heading"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Heading"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="text"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Text"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="root"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="container"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="wrapper"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="content"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="layout"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Layout"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="image"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Image"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="banner"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Banner"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="heading"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Heading"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="text"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Text"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 100% !important;
+  flex-basis: 100% !important;
+}
+
+/* Fix Banner picture/img elements to fill container */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] picture,
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] img,
+.hillbilly-tab-content [class*="bannerWebPart"] picture,
+.hillbilly-tab-content [class*="bannerWebPart"] img,
+.hillbilly-tab-content .picanvas-banner-fixed picture,
+.hillbilly-tab-content .picanvas-banner-fixed img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Special handling for "Overlap" and "Color block" layouts */
+/* These have a text container that floats over the image */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="overlay"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="Overlay"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="textContainer"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="TextContainer"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="overlay"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="Overlay"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="textContainer"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="TextContainer"] {
+  /* These are okay to have auto width - they're text overlays */
+  width: auto !important;
+  max-width: 100% !important;
+  flex: 0 1 auto !important;
+}
+
+/* Ensure CTA buttons don't stretch full width */
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] a[class*="button"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] button,
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="cta"],
+.hillbilly-tab-content [data-automation-id="BannerWebPart"] [class*="CTA"],
+.hillbilly-tab-content [class*="bannerWebPart"] a[class*="button"],
+.hillbilly-tab-content [class*="bannerWebPart"] button,
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="cta"],
+.hillbilly-tab-content [class*="bannerWebPart"] [class*="CTA"] {
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+/* Ensure the first child container in hero/banner maintains height */
+.hillbilly-tab-content.hillbilly-single-webpart [data-automation-id="HeroWebPart"] > div:first-child,
+.hillbilly-tab-content.hillbilly-single-webpart [class*="heroWebPart"] > div:first-child {
+  min-height: 300px;
+  width: 100% !important;
+}
+
+/* Fix for Hero web part images that use <img> tags instead of background-image */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] img,
+.hillbilly-tab-content [class*="heroWebPart"] img,
+.hillbilly-tab-content [class*="HeroWebPart"] img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* SharePoint uses cB (Canvas Background) class patterns for hero backgrounds */
+.hillbilly-tab-content [class*="cB"],
+.hillbilly-tab-content [class*="canvasBackground"] {
+  min-height: 300px;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Handle picture elements used in modern SharePoint */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] picture,
+.hillbilly-tab-content [class*="heroWebPart"] picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] picture img,
+.hillbilly-tab-content [class*="heroWebPart"] picture img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Force visibility on img elements with loading="lazy" attribute */
+.hillbilly-tab-content img[loading="lazy"] {
+  content-visibility: auto;
+}
+
+/* Handle Hero layouts with flex containers */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="layout"],
+.hillbilly-tab-content [class*="heroWebPart"] [class*="layout"] {
+  display: flex !important;
+  flex-direction: column;
+  min-height: inherit;
+  position: relative;
+}
+
+/* Ensure image wrapper has proper dimensions */
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="imageWrapper"],
+.hillbilly-tab-content [data-automation-id="HeroWebPart"] [class*="ImageWrapper"],
+.hillbilly-tab-content [class*="heroWebPart"] [class*="imageWrapper"] {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden;
+}
+
 /* Highlight styles for webpart/section selection in property pane */
 .hillbilly-highlight {
   position: relative;
@@ -863,4 +1160,442 @@
 
 .addui-Tabs[data-theme="dark"] .placeholder-restricted-message {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== WCAG 2.2 ACCESSIBILITY STYLES ===== */
+
+/* WCAG 2.4.7 - Visible focus indicator */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:focus {
+  outline: 3px solid var(--pi-tab-accent, #0078d4);
+  outline-offset: 2px;
+  z-index: 10;
+}
+
+/* Remove focus outline for mouse users */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced focus for keyboard users */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:focus-visible {
+  outline: 3px solid var(--pi-tab-accent, #0078d4);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(0, 120, 212, 0.2);
+  z-index: 10;
+}
+
+/* Focus indicator for tab panels (for keyboard navigation into content) */
+.addui-Tabs .addui-Tabs-content[role="tabpanel"]:focus {
+  outline: 2px solid var(--pi-tab-accent, #0078d4);
+  outline-offset: 2px;
+}
+
+.addui-Tabs .addui-Tabs-content[role="tabpanel"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.addui-Tabs .addui-Tabs-content[role="tabpanel"]:focus-visible {
+  outline: 2px solid var(--pi-tab-accent, #0078d4);
+  outline-offset: 2px;
+}
+
+/* WCAG 2.5.5 - Minimum touch target size (44x44px recommendation) */
+.addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+@media (forced-colors: active) {
+  .addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab {
+    border: 1px solid CanvasText;
+  }
+
+  .addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:focus,
+  .addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab.addui-Tabs-active {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .addui-Tabs .addui-Tabs-tabHolder .addui-Tabs-tab[data-placeholder="true"] {
+    border-style: dashed;
+    opacity: 0.7;
+  }
+
+  /* High contrast focus for content panels */
+  .addui-Tabs .addui-Tabs-content[role="tabpanel"]:focus,
+  .addui-Tabs .addui-Tabs-content[role="tabpanel"]:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+/* Respect user's motion preferences (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  .addui-Tabs,
+  .addui-Tabs .addui-Tabs-tab,
+  .addui-Tabs .addui-Tabs-content,
+  .addui-Tabs [data-addui="tabs"],
+  .addui-Tabs [data-addui="tabs"] * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Disable highlight animations */
+  .hillbilly-highlight,
+  .hillbilly-section-highlight {
+    animation: none !important;
+  }
+
+  .hillbilly-highlight::before {
+    animation: none !important;
+  }
+}
+
+/* Manual transition disable via class (added by JS) */
+.addui-Tabs.picanvas-no-transitions,
+.addui-Tabs.picanvas-no-transitions .addui-Tabs-tab,
+.addui-Tabs.picanvas-no-transitions .addui-Tabs-content {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* ===== CUSTOM CONTENT STYLES ===== */
+
+/* Base custom content container */
+.hillbilly-tab-content.hillbilly-custom-content {
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Markdown content styling */
+.hillbilly-tab-content.markdown-content {
+  line-height: 1.6;
+  font-size: 15px;
+  color: var(--pi-tab-text, rgba(0, 0, 0, 0.87));
+}
+
+.hillbilly-tab-content.markdown-content h1,
+.hillbilly-tab-content.markdown-content h2,
+.hillbilly-tab-content.markdown-content h3,
+.hillbilly-tab-content.markdown-content h4,
+.hillbilly-tab-content.markdown-content h5,
+.hillbilly-tab-content.markdown-content h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.hillbilly-tab-content.markdown-content h1 { font-size: 2em; }
+.hillbilly-tab-content.markdown-content h2 { font-size: 1.5em; }
+.hillbilly-tab-content.markdown-content h3 { font-size: 1.25em; }
+.hillbilly-tab-content.markdown-content h4 { font-size: 1em; }
+
+.hillbilly-tab-content.markdown-content p {
+  margin: 0 0 1em 0;
+}
+
+.hillbilly-tab-content.markdown-content a {
+  color: var(--pi-tab-accent, #0078d4);
+  text-decoration: none;
+}
+
+.hillbilly-tab-content.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.hillbilly-tab-content.markdown-content code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.hillbilly-tab-content.markdown-content pre {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.hillbilly-tab-content.markdown-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+.hillbilly-tab-content.markdown-content blockquote {
+  border-left: 4px solid var(--pi-tab-accent, #0078d4);
+  margin: 1em 0;
+  padding: 0.5em 0 0.5em 1em;
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.hillbilly-tab-content.markdown-content ul,
+.hillbilly-tab-content.markdown-content ol {
+  margin: 0 0 1em 0;
+  padding-left: 2em;
+}
+
+.hillbilly-tab-content.markdown-content li {
+  margin: 0.25em 0;
+}
+
+.hillbilly-tab-content.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.hillbilly-tab-content.markdown-content th,
+.hillbilly-tab-content.markdown-content td {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.hillbilly-tab-content.markdown-content th {
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.hillbilly-tab-content.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.hillbilly-tab-content.markdown-content hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 2em 0;
+}
+
+/* HTML content styling */
+.hillbilly-tab-content.html-content {
+  line-height: 1.6;
+}
+
+/* Mermaid diagram container */
+.picanvas-mermaid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+.picanvas-mermaid-container .mermaid {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.picanvas-mermaid-container .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.picanvas-mermaid-container.picanvas-mermaid-rendered {
+  min-height: auto;
+}
+
+/* Mermaid error styling */
+.picanvas-mermaid-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
+  color: #d32f2f;
+  text-align: center;
+}
+
+.picanvas-mermaid-error .error-icon {
+  font-size: 32px;
+}
+
+.picanvas-mermaid-error .error-text {
+  font-weight: 500;
+}
+
+.picanvas-mermaid-error details {
+  margin-top: 8px;
+  text-align: left;
+  width: 100%;
+}
+
+.picanvas-mermaid-error details summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.picanvas-mermaid-error details pre {
+  margin-top: 8px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  font-size: 11px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Embed container */
+.picanvas-embed-container {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.picanvas-embed-container iframe {
+  display: block;
+}
+
+/* Embed blocked message */
+.picanvas-embed-blocked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  background: rgba(255, 152, 0, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 8px;
+  text-align: center;
+  min-height: 150px;
+}
+
+.picanvas-embed-blocked .blocked-icon {
+  font-size: 32px;
+}
+
+.picanvas-embed-blocked .blocked-text {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.picanvas-embed-blocked details {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.picanvas-embed-blocked details summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.picanvas-embed-blocked details p {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Content render error */
+.picanvas-render-error {
+  padding: 16px;
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+/* ===== DARK MODE FOR CUSTOM CONTENT ===== */
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content,
+.darkMode .hillbilly-tab-content.markdown-content {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content code,
+.darkMode .hillbilly-tab-content.markdown-content code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content pre,
+.darkMode .hillbilly-tab-content.markdown-content pre {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content blockquote,
+.darkMode .hillbilly-tab-content.markdown-content blockquote {
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content th,
+.darkMode .hillbilly-tab-content.markdown-content th {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content th,
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content td,
+.darkMode .hillbilly-tab-content.markdown-content th,
+.darkMode .hillbilly-tab-content.markdown-content td {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.addui-Tabs[data-theme="dark"] .hillbilly-tab-content.markdown-content hr,
+.darkMode .hillbilly-tab-content.markdown-content hr {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.addui-Tabs[data-theme="dark"] .picanvas-embed-container,
+.darkMode .picanvas-embed-container {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.addui-Tabs[data-theme="dark"] .picanvas-mermaid-error details pre,
+.darkMode .picanvas-mermaid-error details pre {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== CONTENT-ONLY MODE (Hidden Labels) ===== */
+/* Hide entire tab bar when all tabs have hidden labels */
+.addui-Tabs[data-content-only="true"] .addui-Tabs-tabHolder {
+  display: none !important;
+}
+
+/* In content-only mode, show all content panels stacked */
+.addui-Tabs[data-content-only="true"] .addui-Tabs-content .hillbilly-tab-content {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Remove margin/padding from tabs container in content-only mode */
+.addui-Tabs[data-content-only="true"] {
+  padding: 0;
+}
+
+.addui-Tabs[data-content-only="true"] .addui-Tabs-content {
+  margin-top: 0;
+}
+
+/* Individual hidden label tabs */
+.addui-Tabs-tab.hidden-label-tab,
+.addui-Tabs-tab[data-hidden-label="true"] {
+  display: none !important;
 }

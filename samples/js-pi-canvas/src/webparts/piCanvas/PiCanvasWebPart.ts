@@ -15,13 +15,28 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import styles from './PiCanvasWebPart.module.scss';
 import * as strings from 'PiCanvasWebPartStrings';
 import { PropertyPaneTabPreview } from './PropertyPaneTabPreview';
+import { PropertyPaneContentPreview } from './PropertyPaneContentPreview';
 
-import * as $ from 'jquery';
+import $ from 'jquery';
+
+// Extend Window interface for jQuery globals
+interface WindowWithJQuery extends Window {
+  jQuery?: typeof $;
+  $?: typeof $;
+}
+
+// Make jQuery available globally for AddTabs.js which expects jQuery/$ on window
+(window as WindowWithJQuery).jQuery = $;
+(window as WindowWithJQuery).$ = $;
+
 import PnPTelemetry from '@pnp/telemetry-js';
 
 // Template imports
 import { TemplateService } from './services/TemplateService';
 import { ITemplateListItem } from './models/TemplateModels';
+
+// Content renderer for custom content types (markdown, html, mermaid, embed)
+import { ContentRenderer } from './services/ContentRenderer';
 
 // Permission imports
 import { PermissionService, ITabPermissionConfig, IPermissionCheckResult } from './services/PermissionService';
@@ -84,25 +99,63 @@ export interface IPiCanvasWebPartProps {
   // Label Image Settings
   labelImageHeight: string;
 
+  // Features (v3.0.0+)
+  enableDeepLinking: boolean;   // URL hash navigation (default: true)
+  enableLazyLoading: boolean;   // Lazy load tab content (default: true)
+
   // Dynamic properties for tab configuration (tab1WebPartID, tab1Label, tab2WebPartID, tab2Label, etc.)
   // Also supports per-tab images: tab1Image (URL string), tab1ImagePosition, etc.
   // Also supports per-tab dividers: tab1DividerAfter (boolean)
+  // Also supports per-tab content types (v3.0): tab1ContentType, tab1CustomContent, tab1EmbedUrl, tab1EmbedHeight
   [key: string]: string | number | boolean | ITabDataItem[] | undefined;
 }
 
 // Version info - pulled from package.json at build time
-const PICANVAS_VERSION = '2.2.0';
-const SPFX_VERSION = '1.21.1';
+const PICANVAS_VERSION = '3.0.0';
+const SPFX_VERSION = '1.22.0';
 const NODE_VERSION = '18.x / 22.x';
 
-type FeatureView = 'home' | 'tabbed-layouts' | 'section-support' | 'theme-aware' | 'permission-based';
+type FeatureView = 'home' | 'tabbed-layouts' | 'section-support' | 'theme-aware' | 'permission-based' | 'content-markdown' | 'content-html' | 'content-iframe' | 'content-mermaid';
 
 export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebPartProps> {
+  private static readonly MAX_TABS = 20;
+  private static readonly TAB_PROPERTY_SUFFIXES: ReadonlyArray<string> = [
+    'WebPartID',
+    'Label',
+    'ContentType',
+    'CustomContent',
+    'EmbedUrl',
+    'EmbedHeight',
+    'LabelType',
+    'LabelWebPartID',
+    'Icon',
+    'Image',
+    'ImagePosition',
+    'DividerAfter',
+    'PermissionEnabled',
+    'PermissionGroups',
+    'PermissionCustomGroups',
+    'PermissionPlaceholder',
+    'PermissionPlaceholderText'
+  ];
 
   private _zonesCache: Array<[string, string]> = [];
   private _currentHighlightedElement: HTMLElement | null = null;
   private _currentView: FeatureView = 'home';
   private _isPropertyPaneOpen: boolean = false;
+
+  /**
+   * GLOBAL REGISTRY: Tracks which webparts are owned by which PiCanvas instance.
+   * Key = webpart element key (e.g., "wp-123" or "SECTION:abc")
+   * Value = { instanceId: string, $element: JQuery }
+   * This allows multiple PiCanvas instances to coordinate webpart ownership.
+   */
+  private static _globalWebpartRegistry: Map<string, { instanceId: string; $element: JQuery<HTMLElement> }> = new Map();
+
+  /**
+   * GLOBAL EVENT SETUP: Ensures cross-instance tab change handling is only set up once
+   */
+  private static _globalEventHandlerInitialized: boolean = false;
 
   // Template management
   private _templateService: TemplateService | null = null;
@@ -123,7 +176,9 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
    */
   private encodeHtml(str: string): string {
     if (!str) return '';
-    return str
+    // Safety: ensure we have a string, not an object
+    const safeStr = typeof str === 'string' ? str : String(str);
+    return safeStr
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -153,6 +208,133 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
   }
 
   protected async onInit(): Promise<void> {
+    // Suppress unhandled promise rejections from SharePoint workbench internal code
+    // These are not PiCanvas errors but trigger webpack-dev-server's error overlay
+    // Only active in development mode (DEBUG flag is set by build process)
+    if (DEBUG) {
+      // Helper function to check if error is from SharePoint internal code
+      const isSharePointInternalError = (reason: unknown): boolean => {
+        if (reason === undefined || reason === null) {
+          return true; // SharePoint often rejects with undefined/null
+        }
+        const errorStack = (reason as Error)?.stack || '';
+        const errorMessage = (reason as Error)?.message || String(reason);
+        return (
+          errorStack.includes('sp-webpart-workbench') ||
+          errorStack.includes('sp-canvas') ||
+          errorStack.includes('sp-mysitecache') ||
+          errorStack.includes('spserviceworker') ||
+          errorStack.includes('PersonalCache') ||
+          errorMessage.includes('PersonalCache') ||
+          errorMessage === '' ||
+          errorMessage === 'undefined'
+        );
+      };
+
+      // Method 1: Add handler in capture phase (runs before bubble phase handlers)
+      window.addEventListener('unhandledrejection', (event: PromiseRejectionEvent) => {
+        if (isSharePointInternalError(event.reason)) {
+          event.preventDefault();
+          event.stopImmediatePropagation(); // Prevent other handlers from running
+          console.warn('[PiCanvas] Suppressed SharePoint internal error:', event.reason);
+          return false;
+        }
+      }, { capture: true });
+
+      // Method 2: Override window.onunhandledrejection property
+      // This catches cases where webpack-dev-server uses the property directly
+      const originalHandler = window.onunhandledrejection;
+      Object.defineProperty(window, 'onunhandledrejection', {
+        get: () => originalHandler,
+        set: (handler) => {
+          // Wrap any handler that gets set to filter SharePoint errors
+          if (handler && typeof handler === 'function') {
+            const wrappedHandler = (event: PromiseRejectionEvent) => {
+              if (isSharePointInternalError(event.reason)) {
+                event.preventDefault();
+                console.warn('[PiCanvas] Suppressed SharePoint error (property handler):', event.reason);
+                return;
+              }
+              return handler.call(window, event);
+            };
+            // Store wrapped handler but don't call the original setter
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any)._wrappedUnhandledRejection = wrappedHandler;
+          }
+        },
+        configurable: true
+      });
+
+      // Method 3: Also suppress via error event (some overlays use this)
+      window.addEventListener('error', (event: ErrorEvent) => {
+        const errorStack = event.error?.stack || '';
+        const errorMessage = event.message || '';
+        if (
+          errorStack.includes('sp-webpart-workbench') ||
+          errorStack.includes('PersonalCache') ||
+          errorMessage.includes('Unknown') ||
+          errorMessage === ''
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          console.warn('[PiCanvas] Suppressed SharePoint internal error (error event):', event.error);
+          return false;
+        }
+      }, { capture: true });
+
+      // Method 4: Remove webpack-dev-server overlay when it appears
+      // The overlay is added to the DOM, so we can watch for it and remove it
+      const removeOverlay = (): void => {
+        // webpack-dev-server creates an iframe with id 'webpack-dev-server-client-overlay'
+        // or a div with similar naming patterns
+        const selectors = [
+          '#webpack-dev-server-client-overlay',
+          '#webpack-dev-server-client-overlay-div',
+          '[id*="webpack"][id*="overlay"]',
+          'iframe[src*="overlay"]'
+        ];
+
+        selectors.forEach(selector => {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => {
+            console.warn('[PiCanvas] Removed webpack-dev-server overlay element');
+            el.remove();
+          });
+        });
+      };
+
+      // Run immediately in case overlay already exists
+      removeOverlay();
+
+      // Watch for overlay being added to DOM
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach((node) => {
+              if (node instanceof HTMLElement) {
+                const id = node.id || '';
+                const tagName = node.tagName?.toLowerCase() || '';
+                // Check if this looks like a webpack overlay
+                if (
+                  id.includes('webpack') ||
+                  id.includes('overlay') ||
+                  (tagName === 'iframe' && (node as HTMLIFrameElement).src?.includes('overlay'))
+                ) {
+                  console.warn('[PiCanvas] Detected and removed overlay element:', id || tagName);
+                  node.remove();
+                }
+              }
+            });
+          }
+        }
+      });
+
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+
     const telemetry = PnPTelemetry.getInstance();
     telemetry.optOut();
     // Load CSS for highlight styles (needed in edit mode for property pane interactions)
@@ -167,6 +349,11 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
     // Load available templates in background (don't block init)
     this.loadAvailableTemplates().catch(err => {
       console.warn('Failed to load templates:', err);
+    });
+
+    // Load site-level embed allow list for custom content embeds (v3.0)
+    ContentRenderer.loadSiteAllowList(this.context).catch(err => {
+      console.warn('Failed to load embed allow list:', err);
     });
 
     // Wait for permission data to load before render (for correct filtering on first render)
@@ -259,6 +446,175 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
   }
 
   /**
+   * Initialize Mermaid diagrams for the first active tab (v3.0)
+   * Other tabs will be initialized via lazy loading
+   */
+  private initializeMermaidDiagrams(tabsDiv: string): void {
+    // Use getElementById to handle IDs with special characters (base64 =, +, /)
+    const tabsElement = document.getElementById(tabsDiv);
+    if (!tabsElement) {
+      console.warn('[PiCanvas] Could not find tabs element for mermaid initialization:', tabsDiv);
+      return;
+    }
+
+    console.log('[PiCanvas] Looking for mermaid containers in active tab...');
+    console.log('[PiCanvas] tabsElement:', tabsElement);
+    console.log('[PiCanvas] siblings:', $(tabsElement).siblings().length);
+
+    // Find first active tab's mermaid containers
+    // The structure is: tabHolder (tabsElement) + content panels (.addui-Tabs-content) as siblings
+    const $activeContent = $(tabsElement).siblings('.addui-Tabs-content.addui-Tabs-active').find('.picanvas-mermaid-container');
+
+    console.log('[PiCanvas] Found mermaid containers:', $activeContent.length);
+
+    if ($activeContent.length === 0) {
+      // Try alternate selector - the content might be inside the parent container
+      const $parent = $(tabsElement).parent('[data-addui="tabs"]');
+      const $altContent = $parent.find('.addui-Tabs-content.addui-Tabs-active .picanvas-mermaid-container');
+      console.log('[PiCanvas] Alt selector found:', $altContent.length);
+
+      $altContent.each((_i, el) => {
+        console.log('[PiCanvas] Rendering mermaid (alt):', el);
+        ContentRenderer.renderMermaidElement(el as HTMLElement).catch(err => {
+          console.warn('[PiCanvas] Failed to render mermaid diagram:', err);
+        });
+      });
+      return;
+    }
+
+    $activeContent.each((_i, el) => {
+      console.log('[PiCanvas] Rendering mermaid:', el);
+      ContentRenderer.renderMermaidElement(el as HTMLElement).catch(err => {
+        console.warn('[PiCanvas] Failed to render mermaid diagram:', err);
+      });
+    });
+  }
+
+  /**
+   * Initialize deep linking support (v3.0)
+   * Reads URL hash and activates corresponding tab, updates hash on tab change
+   */
+  private initializeDeepLinking(tabsDiv: string): void {
+    // Check if deep linking is enabled (default: true)
+    if (this.properties.enableDeepLinking === false) {
+      return;
+    }
+
+    // Use getElementById to handle IDs with special characters (base64 =, +, /)
+    const tabsElement = document.getElementById(tabsDiv);
+    if (!tabsElement) return;
+
+    const $tabsContainer = $(tabsElement).parent('[data-addui="tabs"]');
+    if (!$tabsContainer.length) return;
+
+    // Get the activation function exposed by AddTabs.js
+    const activateTab = $tabsContainer.data('picanvas-activate-tab');
+    const findTab = $tabsContainer.data('picanvas-find-tab');
+
+    if (!activateTab || !findTab) return;
+
+    // Read URL hash on initial load
+    const hash = window.location.hash.substring(1); // Remove #
+    if (hash) {
+      // Try to find tab by label text first
+      let tabIndex = findTab(hash);
+
+      // If not found by label, try numeric index (e.g., #tab-2)
+      if (tabIndex === -1 && hash.match(/^tab-\d+$/)) {
+        tabIndex = parseInt(hash.replace('tab-', ''), 10) - 1;
+      }
+
+      if (tabIndex >= 0) {
+        activateTab(tabIndex);
+      }
+    }
+
+    // Listen for tab changes and update URL hash
+    $tabsContainer.on('picanvas:tab-change', (_e: JQuery.Event, data: { tabIndex: number; tabElement: JQuery }) => {
+      const $tab = data.tabElement;
+      const tabText = $tab.text().trim().toLowerCase().replace(/\s+/g, '-');
+      const newHash = tabText || `tab-${data.tabIndex + 1}`;
+
+      // Update URL without triggering page scroll
+      if (history.replaceState) {
+        history.replaceState(null, '', `#${newHash}`);
+      }
+    });
+  }
+
+  /**
+   * Initialize lazy loading event handlers (v3.0)
+   * Listens for tab activation and initializes mermaid diagrams in lazy-loaded panels
+   */
+  private initializeLazyLoadEvents(tabsDiv: string): void {
+    // Check if lazy loading is enabled (default: true)
+    if (this.properties.enableLazyLoading === false) {
+      return;
+    }
+
+    // Use getElementById to handle IDs with special characters (base64 =, +, /)
+    const tabsElement = document.getElementById(tabsDiv);
+    if (!tabsElement) return;
+
+    const $tabsContainer = $(tabsElement).parent('[data-addui="tabs"]');
+    if (!$tabsContainer.length) return;
+
+    // Listen for lazy load events from AddTabs.js
+    $tabsContainer.on('picanvas:lazy-load', '.hillbilly-tab-content', (e: JQuery.TriggeredEvent) => {
+      const $panel = $(e.currentTarget as HTMLElement);
+
+      // Initialize mermaid diagrams in this panel
+      const $mermaidContainers = $panel.find('.picanvas-mermaid-container');
+      $mermaidContainers.each((_i, el) => {
+        ContentRenderer.renderMermaidElement(el as HTMLElement).catch(err => {
+          console.warn('[PiCanvas] Failed to render lazy-loaded mermaid diagram:', err);
+        });
+      });
+    });
+  }
+
+  /**
+   * Initialize shared webpart handling - moves webparts between tabs when the same
+   * webpart is assigned to multiple tabs. Since React components can't be cloned,
+   * we move the single instance to whichever tab is currently active.
+   */
+  private initializeSharedWebpartHandling(tabsDiv: string, usedElements: Map<string, JQuery<HTMLElement>>): void {
+    const tabsElement = document.getElementById(tabsDiv);
+    if (!tabsElement) return;
+
+    const $tabsContainer = $(tabsElement).parent('[data-addui="tabs"]');
+    if (!$tabsContainer.length) return;
+
+    // Listen for tab changes
+    $tabsContainer.on('picanvas:tab-change', (_e: JQuery.Event, data: { tabIndex: number; panelElement: JQuery }) => {
+      const $activePanel = data.panelElement;
+
+      // Check if the active panel expects a shared webpart
+      const sharedWebpartId = $activePanel.attr('data-shared-webpart-id');
+      if (sharedWebpartId) {
+        console.log(`[PiCanvas] Tab change: Moving shared webpart "${sharedWebpartId}" to active tab`);
+
+        // Find the shared webpart (it's currently in another tab panel)
+        const $sharedWebpart = $tabsContainer.find(`[data-picanvas-webpart-id="${sharedWebpartId}"]`);
+        if ($sharedWebpart.length) {
+          // Move the webpart to this panel
+          $activePanel.append($sharedWebpart);
+
+          // Force images to reload after moving
+          this.forceImageWebpartLoad($sharedWebpart);
+
+          // Trigger resize to help lazy-loaded content
+          setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+          }, 50);
+        }
+      }
+    });
+
+    console.log(`[PiCanvas] Shared webpart handling initialized for ${usedElements.size} elements`);
+  }
+
+  /**
    * Generate template dropdown options for property pane
    */
   private getTemplateOptions(): IPropertyPaneDropdownOption[] {
@@ -295,12 +651,16 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
       return;
     }
 
-    const template = await this._templateService.loadTemplate(this._selectedTemplateId);
-    if (template) {
-      this._templateService.applyTemplate(template, this.properties);
-      this._selectedTemplateId = ''; // Reset selection
-      this.context.propertyPane.refresh();
-      this.render();
+    try {
+      const template = await this._templateService.loadTemplate(this._selectedTemplateId);
+      if (template) {
+        this._templateService.applyTemplate(template, this.properties);
+        this._selectedTemplateId = ''; // Reset selection
+        this.context.propertyPane.refresh();
+        this.render();
+      }
+    } catch (error) {
+      console.error('[PiCanvas] Failed to apply template:', error);
     }
   }
 
@@ -334,11 +694,11 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.json';
-    input.onchange = async (e: Event): Promise<void> => {
+    input.onchange = (e: Event): void => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = async (event): Promise<void> => {
+        reader.onload = (event): void => {
           try {
             const jsonContent = event.target?.result as string;
             const template = this._templateService?.parseImportedJson(jsonContent);
@@ -351,9 +711,13 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
               alert(strings.ImportErrorMessage);
             }
           } catch (error) {
-            console.error('Import error:', error);
+            console.error('[PiCanvas] Import error:', error);
             alert(strings.ImportErrorMessage);
           }
+        };
+        reader.onerror = (error): void => {
+          console.error('[PiCanvas] File read error:', error);
+          alert(strings.ImportErrorMessage);
         };
         reader.readAsText(file);
       }
@@ -417,7 +781,9 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
         text: strings.ApplyTemplateButton,
         buttonType: PropertyPaneButtonType.Primary,
         onClick: () => {
-          this.applySelectedTemplate();
+          this.applySelectedTemplate().catch(err => {
+            console.error('[PiCanvas] Apply template error:', err);
+          });
         }
       }));
     }
@@ -446,7 +812,11 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
       fields.push(PropertyPaneButton('saveAsTemplate', {
         text: strings.SaveAsTemplateLabel,
         buttonType: PropertyPaneButtonType.Normal,
-        onClick: () => this.saveAsTemplate()
+        onClick: () => {
+          this.saveAsTemplate().catch(err => {
+            console.error('[PiCanvas] Save template error:', err);
+          });
+        }
       }));
     }
 
@@ -487,6 +857,86 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
 
     // 3. Default to light mode (most SharePoint pages are light)
     return false;
+  }
+
+  /**
+   * Force SharePoint Image webpart images to load after cloning.
+   * SharePoint Image webparts use lazy loading and React state that doesn't
+   * survive jQuery DOM cloning. This method copies background images from
+   * original elements and forces img tags to reload.
+   * @param $clonedWebpart - The jQuery element containing the cloned webpart
+   */
+  private forceImageWebpartLoad($clonedWebpart: JQuery<HTMLElement>): void {
+    console.log('[PiCanvas] forceImageWebpartLoad: Starting image load fix for cloned webpart');
+
+    // Method 1: Copy background-image styles from computed styles
+    // SharePoint sets background-image via React after mount, which gets lost on clone
+    $clonedWebpart.find('[style*="background"]').addBack('[style*="background"]').each(function() {
+      const el = this as HTMLElement;
+      const computedStyle = window.getComputedStyle(el);
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[PiCanvas] forceImageWebpartLoad: Found background-image:', bgImage.substring(0, 100));
+        el.style.backgroundImage = bgImage;
+      }
+    });
+
+    // Method 2: Find SharePoint Image webpart containers and copy their image src
+    // Image webparts use data-automation-id="imageWebPart" or similar
+    $clonedWebpart.find('[data-automation-id*="image"], [data-automation-id*="Image"]').each(function() {
+      const $container = $(this);
+      console.log('[PiCanvas] forceImageWebpartLoad: Found Image webpart container');
+
+      // Find img elements and force reload
+      $container.find('img').each(function() {
+        const $img = $(this);
+        const src = $img.attr('src') || $img.attr('data-src');
+        if (src) {
+          console.log('[PiCanvas] forceImageWebpartLoad: Forcing img reload:', src.substring(0, 100));
+          // Remove and re-add src to force reload
+          $img.removeAttr('src');
+          setTimeout(() => {
+            $img.attr('src', src);
+          }, 10);
+        }
+      });
+    });
+
+    // Method 3: Handle lazy-loaded images with data-src
+    $clonedWebpart.find('img[data-src]').each(function() {
+      const $img = $(this);
+      const dataSrc = $img.attr('data-src');
+      if (dataSrc) {
+        console.log('[PiCanvas] forceImageWebpartLoad: Loading lazy image from data-src');
+        $img.attr('src', dataSrc);
+        $img.removeAttr('data-src');
+      }
+    });
+
+    // Method 4: Force all img elements with loading="lazy" to reload
+    $clonedWebpart.find('img[loading="lazy"]').each(function() {
+      const $img = $(this);
+      const src = $img.attr('src');
+      if (src) {
+        console.log('[PiCanvas] forceImageWebpartLoad: Forcing lazy img reload');
+        $img.attr('src', '');
+        setTimeout(() => {
+          $img.attr('src', src);
+        }, 10);
+      }
+    });
+
+    // Method 5: Trigger resize event to activate IntersectionObserver
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+      console.log('[PiCanvas] forceImageWebpartLoad: Dispatched resize event');
+
+      // Also force reflow
+      if ($clonedWebpart[0]) {
+        void $clonedWebpart[0].offsetHeight;
+      }
+    }, 50);
   }
 
   /**
@@ -573,6 +1023,31 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
       this.insertIconIntoLabel(tabIndex, newValue as string);
       // Reset the icon dropdown after inserting
       this.properties[`tab${tabIndex}Icon`] = '';
+    }
+
+    // Check if content type dropdown was changed - refresh property pane to show/hide conditional fields
+    if (propertyPath.match(/^tab\d+ContentType$/)) {
+      const match = propertyPath.match(/^tab(\d+)ContentType$/);
+      if (match) {
+        const tabIndex = parseInt(match[1], 10);
+        const oldContentType = oldValue as string || 'webpart';
+        const newContentType = newValue as string || 'webpart';
+
+        // Clear WebPartID when switching between webpart and section content types
+        // This prevents stale selections (e.g., section ID when switching to webpart mode)
+        if ((oldContentType === 'webpart' && newContentType === 'section') ||
+            (oldContentType === 'section' && newContentType === 'webpart')) {
+          this.properties[`tab${tabIndex}WebPartID`] = '';
+        }
+      }
+      // Force property pane refresh to show the appropriate fields for the new content type
+      this.context.propertyPane.refresh();
+    }
+
+    // Check if custom content was changed - refresh preview
+    if (propertyPath.match(/^tab\d+(CustomContent|EmbedUrl|EmbedHeight)$/)) {
+      // Force property pane refresh to update the preview
+      this.context.propertyPane.refresh();
     }
   }
 
@@ -683,7 +1158,9 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
 
     if (this.displayMode === DisplayMode.Read)
     {
-      const tabWebPartID = $(this.domElement).closest("div." + this.properties.webpartClass).attr("id");
+      // Get webpart ID from SharePoint DOM structure, or fallback to SPFx instance ID for workbench
+      const tabWebPartID = $(this.domElement).closest("div." + this.properties.webpartClass).attr("id")
+        || `picanvas-${this.context.instanceId}`;
 
       const tabsDiv = tabWebPartID + "tabs";
       const contentsDiv = tabWebPartID + "Contents";
@@ -702,23 +1179,63 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
         ? `data-tab-orientation="vertical" data-vertical-position="${verticalTabPosition}" style="${customStyles}; --pi-vertical-tab-width: ${verticalTabWidth}"`
         : `data-tab-orientation="horizontal" style="${customStyles}"`;
 
-      this.domElement.innerHTML = `<div data-addui='tabs' data-tab-style='${tabStyle}' data-tab-alignment='${tabAlignment}' ${orientationAttrs} ${transitionsAttr} ${unlimitedImageAttr}><div role='tabs' id='${tabsDiv}'></div><div role='contents' id='${contentsDiv}'></div></div>`;
+      // Check if all tabs have hidden labels (for content-only mode)
+      const numTabs = this.getTabCount();
+      let allTabsHidden = true;
+      for (let i = 1; i <= numTabs; i++) {
+        const labelType = (this.properties[`tab${i}LabelType`] as string) || 'text';
+        if (labelType !== 'hidden') {
+          allTabsHidden = false;
+          break;
+        }
+      }
+
+      // Add data attribute if all tabs should be hidden (content-only mode)
+      const contentOnlyAttr = allTabsHidden ? 'data-content-only="true"' : '';
+
+      this.domElement.innerHTML = `<div data-addui='tabs' data-tab-style='${tabStyle}' data-tab-alignment='${tabAlignment}' ${orientationAttrs} ${transitionsAttr} ${unlimitedImageAttr} ${contentOnlyAttr}><div role='tabs' id='${tabsDiv}'></div><div role='contents' id='${contentsDiv}'></div></div>`;
+
+      // IMPORTANT: Call getSections() to mark DOM elements with data-hillbilly-section-id
+      // and data-hillbilly-column-id BEFORE we try to find them in the render loop
+      this.getSections();
+
+      // Track webparts/sections/columns that have been used within THIS instance
+      // Store the actual element reference so we can clone from it later
+      const usedElements = new Map<string, JQuery<HTMLElement>>();
+
+      // Get unique instance ID for this PiCanvas instance
+      const instanceId = this.instanceId;
+
+      // Clear any previous registrations from THIS instance (in case of re-render)
+      PiCanvasWebPart._globalWebpartRegistry.forEach((value, key) => {
+        if (value.instanceId === instanceId) {
+          PiCanvasWebPart._globalWebpartRegistry.delete(key);
+        }
+      });
 
       // Build tabData from dynamic properties if tabData is empty or not set
       const thisTabData = this.getTabDataFromProperties();
       for(const x in thisTabData)
       {
-        // Handle both regular tabs (with WebPartID) and placeholder tabs
+        // Handle regular tabs (with WebPartID), placeholder tabs, and custom content tabs
         const isPlaceholder = thisTabData[x].isPlaceholder || false;
-        if (thisTabData[x].WebPartID || isPlaceholder) {
-          // Use originalTabIndex if available (after permission filtering), else fall back to x + 1
-          const tabIndex = thisTabData[x].originalTabIndex || (parseInt(x) + 1);
+        const tabIndex = thisTabData[x].originalTabIndex || (parseInt(x) + 1);
+        const contentType = (this.properties[`tab${tabIndex}ContentType`] as string) || 'webpart';
+        const isCustomContent = contentType === 'markdown' || contentType === 'html' || contentType === 'mermaid' || contentType === 'embed';
 
+        // Process tab if it has WebPartID, is placeholder, or has custom content type
+        if (thisTabData[x].WebPartID || isPlaceholder || isCustomContent) {
           // Create tab with HTML support - the label can contain HTML for styling
           const tabDiv = $("<div></div>");
           const labelType = (this.properties[`tab${tabIndex}LabelType`] as string) || 'text';
 
-          if (labelType === 'webpart') {
+          if (labelType === 'hidden') {
+            // Hidden label mode - tab header is invisible but content still renders
+            tabDiv.addClass('hidden-label-tab');
+            tabDiv.attr('data-hidden-label', 'true');
+            // Empty content - the tab bar CSS will hide this
+            tabDiv.html('');
+          } else if (labelType === 'webpart') {
             // Web part label mode - move the selected web part into the tab header
             const labelWebPartID = this.properties[`tab${tabIndex}LabelWebPartID`] as string;
             if (labelWebPartID) {
@@ -811,33 +1328,330 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
               </div>
             </div>`);
           } else {
-            // Check if this is a section selection (starts with "SECTION:")
-            const isSection = thisTabData[x].WebPartID.indexOf("SECTION:") === 0;
+            // Check content type for this tab (v3.0 feature)
+            const contentType = (this.properties[`tab${tabIndex}ContentType`] as string) || 'webpart';
 
-            // Use different classes for sections (preserve layout) vs individual webparts (full width)
-            const contentClass = isSection ? 'hillbilly-tab-content hillbilly-section-content' : 'hillbilly-tab-content hillbilly-single-webpart';
-            tabContentContainer = $(`<div class='${contentClass}'></div>`);
+            // Check if lazy loading should be applied (non-first tabs)
+            const enableLazy = this.properties.enableLazyLoading !== false && parseInt(x, 10) > 0;
 
-            if (isSection) {
-              const sectionId = thisTabData[x].WebPartID.substring(8); // Remove "SECTION:" prefix
-              // Find the section and move the ENTIRE section (preserving column layout)
-              let $section = $(`[data-automation-id="${sectionId}"]`);
-              if (!$section.length) {
-                $section = $(`#${sectionId}`);
-              }
-              if (!$section.length) {
-                $section = $(`[data-hillbilly-section-id="${sectionId}"]`);
-              }
-              if ($section.length) {
-                // Move the entire section element to preserve column structure
-                // This keeps the SharePoint grid layout (2-column, 3-column, etc.)
-                tabContentContainer.append($section);
-              }
+            if (contentType === 'markdown') {
+              // Render Markdown content
+              const customContent = (this.properties[`tab${tabIndex}CustomContent`] as string) || '';
+              const rendered = ContentRenderer.renderMarkdown(customContent);
+              const lazyAttr = enableLazy ? `data-lazy="true" data-lazy-loaded="false"` : '';
+              tabContentContainer = $(`<div class='hillbilly-tab-content hillbilly-custom-content markdown-content' ${lazyAttr}>${rendered.html}</div>`);
+
+            } else if (contentType === 'html') {
+              // Render HTML content (sanitized)
+              const customContent = (this.properties[`tab${tabIndex}CustomContent`] as string) || '';
+              const rendered = ContentRenderer.renderHtml(customContent);
+              const lazyAttr = enableLazy ? `data-lazy="true" data-lazy-loaded="false"` : '';
+              tabContentContainer = $(`<div class='hillbilly-tab-content hillbilly-custom-content html-content' ${lazyAttr}>${rendered.html}</div>`);
+
+            } else if (contentType === 'mermaid') {
+              // Render Mermaid diagram (requires post-render initialization)
+              const customContent = (this.properties[`tab${tabIndex}CustomContent`] as string) || '';
+              // Sanitize ID for CSS selector compatibility (remove invalid chars like = from base64)
+              const sanitizedTabsDiv = tabsDiv.replace(/[^a-zA-Z0-9_-]/g, '');
+              const mermaidId = `mermaid-${sanitizedTabsDiv}-${tabIndex}`;
+              const rendered = ContentRenderer.prepareMermaid(customContent, mermaidId);
+              const lazyAttr = enableLazy ? `data-lazy="true" data-lazy-loaded="false"` : '';
+              tabContentContainer = $(`<div class='hillbilly-tab-content hillbilly-custom-content mermaid-content' ${lazyAttr}>${rendered.html}</div>`);
+
+            } else if (contentType === 'embed') {
+              // Render embed iframe (URL validated against allow list)
+              const embedUrl = (this.properties[`tab${tabIndex}EmbedUrl`] as string) || '';
+              const embedHeight = (this.properties[`tab${tabIndex}EmbedHeight`] as string) || '400px';
+              const rendered = ContentRenderer.renderEmbed({ url: embedUrl, height: embedHeight });
+              const lazyAttr = enableLazy ? `data-lazy="true" data-lazy-loaded="false"` : '';
+              tabContentContainer = $(`<div class='hillbilly-tab-content hillbilly-custom-content embed-content' ${lazyAttr}>${rendered.html}</div>`);
+
             } else {
-              // Individual webpart - move it into the tab container (full width)
-              const $webpart = $("#"+thisTabData[x].WebPartID);
-              if ($webpart.length) {
-                tabContentContainer.append($webpart);
+              // Default: webpart or section content type
+              // Check if this is a section or column selection
+              const isSection = thisTabData[x].WebPartID.indexOf("SECTION:") === 0;
+              const isColumn = thisTabData[x].WebPartID.indexOf("COLUMN:") === 0;
+
+              // Use different classes for sections/columns (preserve layout) vs individual webparts (full width)
+              const contentClass = (isSection || isColumn) ? 'hillbilly-tab-content hillbilly-section-content' : 'hillbilly-tab-content hillbilly-single-webpart';
+              const lazyAttr = enableLazy ? `data-lazy="true" data-lazy-loaded="false"` : '';
+              tabContentContainer = $(`<div class='${contentClass}' ${lazyAttr}></div>`);
+
+              if (isSection) {
+                const sectionId = thisTabData[x].WebPartID.substring(8); // Remove "SECTION:" prefix
+                const elementKey = thisTabData[x].WebPartID;
+
+                // Check GLOBAL registry first - is this section owned by ANOTHER PiCanvas instance?
+                const globalOwner = PiCanvasWebPart._globalWebpartRegistry.get(elementKey);
+                if (globalOwner && globalOwner.instanceId !== instanceId) {
+                  // OWNED BY ANOTHER INSTANCE: Try to clone it
+                  console.log(`[PiCanvas] Tab ${x}: Section "${elementKey}" owned by another instance, attempting clone`);
+
+                  const $originalSection = globalOwner.$element;
+                  if ($originalSection && $originalSection.length) {
+                    const $clonedSection = $originalSection.clone(true, true);
+                    const cloneSuffix = '-clone-' + instanceId;
+                    $clonedSection.find('[id]').addBack('[id]').each(function() {
+                      const $el = $(this);
+                      const oldId = $el.attr('id');
+                      if (oldId) { $el.attr('id', oldId + cloneSuffix); }
+                    });
+                    $clonedSection.attr('data-picanvas-clone', 'true');
+                    $clonedSection.addClass('picanvas-cloned-webpart');
+                    tabContentContainer.append($clonedSection);
+                    tabContentContainer.addClass('picanvas-cloned-content');
+                    console.log(`[PiCanvas] Tab ${x}: Successfully cloned section from another instance`);
+                  } else {
+                    tabContentContainer.addClass('picanvas-unavailable-content');
+                    tabContentContainer.html(`
+                      <div class="picanvas-unavailable-message" style="padding: 20px; text-align: center; color: #666; background: #f5f5f5; border-radius: 4px; margin: 10px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+                        <div style="font-weight: 500;">Content unavailable</div>
+                        <div style="font-size: 12px; margin-top: 4px;">Could not load this section. Try refreshing the page.</div>
+                      </div>
+                    `);
+                  }
+                } else if (usedElements.has(elementKey)) {
+                  // DUPLICATE USE WITHIN THIS INSTANCE: Mark for shared handling
+                  console.log(`[PiCanvas] Tab ${x}: Duplicate section within instance, marking container for sharing`);
+                  tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                  tabContentContainer.addClass('picanvas-shared-content');
+                } else {
+                  // First use - find and move the original section
+                  let $section = $(`[data-hillbilly-section-id="${sectionId}"]`);
+                  if (!$section.length) {
+                    $section = $(`[data-automation-id="${sectionId}"]`);
+                  }
+                  if (!$section.length) {
+                    $section = $(`#${sectionId}`);
+                  }
+
+                  if ($section.length) {
+                    // Store in LOCAL registry
+                    usedElements.set(elementKey, $section);
+                    // Register in GLOBAL registry
+                    PiCanvasWebPart._globalWebpartRegistry.set(elementKey, { instanceId, $element: $section });
+                    $section.attr('data-picanvas-shared', 'true');
+                    $section.attr('data-picanvas-webpart-id', elementKey);
+                    $section.attr('data-picanvas-owner', instanceId);
+                    tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                    tabContentContainer.append($section);
+
+                    // Fallback: if container ended up empty, move all webparts inside the section
+                    if (tabContentContainer.children().length === 0) {
+                      const $webpartsInSection = $section.find('.ControlZone, [data-automation-id="CanvasControl"]');
+                      $webpartsInSection.each((_i, wp) => { tabContentContainer.append(wp); });
+                    }
+                  }
+                }
+              } else if (isColumn) {
+                const columnId = thisTabData[x].WebPartID.substring(7); // Remove "COLUMN:" prefix
+                const elementKey = thisTabData[x].WebPartID;
+
+                // Check GLOBAL registry first - is this column owned by ANOTHER PiCanvas instance?
+                const globalOwner = PiCanvasWebPart._globalWebpartRegistry.get(elementKey);
+                if (globalOwner && globalOwner.instanceId !== instanceId) {
+                  // OWNED BY ANOTHER INSTANCE: Try to clone it
+                  console.log(`[PiCanvas] Tab ${x}: Column "${elementKey}" owned by another instance, attempting clone`);
+
+                  const $originalColumn = globalOwner.$element;
+                  if ($originalColumn && $originalColumn.length) {
+                    const $clonedColumn = $originalColumn.clone(true, true);
+                    const cloneSuffix = '-clone-' + instanceId;
+                    $clonedColumn.find('[id]').addBack('[id]').each(function() {
+                      const $el = $(this);
+                      const oldId = $el.attr('id');
+                      if (oldId) { $el.attr('id', oldId + cloneSuffix); }
+                    });
+                    $clonedColumn.attr('data-picanvas-clone', 'true');
+                    $clonedColumn.addClass('picanvas-cloned-webpart');
+                    tabContentContainer.append($clonedColumn);
+                    tabContentContainer.addClass('picanvas-cloned-content');
+                    console.log(`[PiCanvas] Tab ${x}: Successfully cloned column from another instance`);
+                  } else {
+                    tabContentContainer.addClass('picanvas-unavailable-content');
+                    tabContentContainer.html(`
+                      <div class="picanvas-unavailable-message" style="padding: 20px; text-align: center; color: #666; background: #f5f5f5; border-radius: 4px; margin: 10px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+                        <div style="font-weight: 500;">Content unavailable</div>
+                        <div style="font-size: 12px; margin-top: 4px;">Could not load this column. Try refreshing the page.</div>
+                      </div>
+                    `);
+                  }
+                } else if (usedElements.has(elementKey)) {
+                  // DUPLICATE USE WITHIN THIS INSTANCE: Mark for shared handling
+                  console.log(`[PiCanvas] Tab ${x}: Duplicate column within instance, marking container for sharing`);
+                  tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                  tabContentContainer.addClass('picanvas-shared-content');
+                } else {
+                  // First use - find and move the original column
+                  let $column = $(`[data-hillbilly-column-id="${columnId}"]`);
+                  if (!$column.length) {
+                    $column = $(`[data-automation-id="${columnId}"]`);
+                  }
+                  if (!$column.length) {
+                    $column = $(`#${columnId}`);
+                  }
+
+                  if ($column.length) {
+                    // Store in LOCAL registry
+                    usedElements.set(elementKey, $column);
+                    // Register in GLOBAL registry
+                    PiCanvasWebPart._globalWebpartRegistry.set(elementKey, { instanceId, $element: $column });
+                    $column.attr('data-picanvas-shared', 'true');
+                    $column.attr('data-picanvas-webpart-id', elementKey);
+                    $column.attr('data-picanvas-owner', instanceId);
+                    tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                    tabContentContainer.append($column);
+                  }
+                }
+              } else {
+                // Individual webpart
+                const elementKey = thisTabData[x].WebPartID;
+
+                console.log(`[PiCanvas] Tab ${x}: Processing webpart ID "${elementKey}"`);
+                console.log(`[PiCanvas] Tab ${x}: usedElements has key: ${usedElements.has(elementKey)}`);
+
+                // Check GLOBAL registry first - is this webpart owned by ANOTHER PiCanvas instance?
+                const globalOwner = PiCanvasWebPart._globalWebpartRegistry.get(elementKey);
+                if (globalOwner && globalOwner.instanceId !== instanceId) {
+                  // OWNED BY ANOTHER INSTANCE: Try to clone it
+                  // Static content (images, text) will display correctly; interactive features won't work
+                  console.log(`[PiCanvas] Tab ${x}: Webpart "${elementKey}" owned by another instance, attempting clone`);
+
+                  const $originalWebpart = globalOwner.$element;
+                  if ($originalWebpart && $originalWebpart.length) {
+                    // Deep clone the webpart DOM (includes data and events where possible)
+                    const $clonedWebpart = $originalWebpart.clone(true, true);
+
+                    // Remove IDs to avoid duplicates (add unique suffix)
+                    const cloneSuffix = '-clone-' + instanceId;
+                    $clonedWebpart.find('[id]').addBack('[id]').each(function() {
+                      const $el = $(this);
+                      const oldId = $el.attr('id');
+                      if (oldId) {
+                        $el.attr('id', oldId + cloneSuffix);
+                      }
+                    });
+
+                    // Mark as a clone
+                    $clonedWebpart.attr('data-picanvas-clone', 'true');
+                    $clonedWebpart.attr('data-picanvas-clone-source', elementKey);
+                    $clonedWebpart.addClass('picanvas-cloned-webpart');
+
+                    // Add to container
+                    tabContentContainer.append($clonedWebpart);
+                    tabContentContainer.addClass('picanvas-cloned-content');
+
+                    // FORCE IMAGE LOADING: SharePoint uses lazy loading that doesn't trigger for cloned elements
+                    // Copy ALL computed background-image styles from original to clone (not just inline)
+                    $originalWebpart.find('*').each(function(i) {
+                      const bgImage = window.getComputedStyle(this).backgroundImage;
+                      if (bgImage && bgImage !== 'none') {
+                        const $cloneEl = $clonedWebpart.find('*').eq(i);
+                        if ($cloneEl.length) {
+                          $cloneEl.css('background-image', bgImage);
+                        }
+                      }
+                    });
+
+                    // Also check the root element
+                    const rootBgImage = window.getComputedStyle($originalWebpart[0]).backgroundImage;
+                    if (rootBgImage && rootBgImage !== 'none') {
+                      $clonedWebpart.css('background-image', rootBgImage);
+                    }
+
+                    // Force img src to reload (handle all variations)
+                    $clonedWebpart.find('img, picture source').each(function() {
+                      const $el = $(this);
+                      const src = $el.attr('src') || $el.attr('data-src') || $el.attr('srcset') || $el.attr('data-srcset');
+                      if (src) {
+                        if ($el.attr('srcset') || $el.attr('data-srcset')) {
+                          $el.attr('srcset', src);
+                        } else {
+                          $el.attr('src', src);
+                          if (this.tagName === 'IMG') {
+                            (this as HTMLImageElement).src = src;
+                          }
+                        }
+                        $el.removeAttr('data-src');
+                        $el.removeAttr('data-srcset');
+                        $el.removeAttr('loading'); // Remove lazy loading attribute
+                      }
+                    });
+
+                    // Force visibility and display on ALL elements
+                    $clonedWebpart.css({
+                      'visibility': 'visible',
+                      'opacity': '1',
+                      'display': 'block'
+                    });
+                    $clonedWebpart.find('*').css({
+                      'visibility': 'visible',
+                      'opacity': '1'
+                    });
+                    // Remove any lazy/hidden classes that SharePoint might use
+                    $clonedWebpart.find('[class*="lazy"], [class*="hidden"], [class*="placeholder"]').removeClass(function(_i, className) {
+                      return (className.match(/(^|\s)(lazy|hidden|placeholder)\S*/g) || []).join(' ');
+                    });
+
+                    // Trigger multiple events to wake up lazy loaders
+                    setTimeout(() => {
+                      window.dispatchEvent(new Event('resize'));
+                      window.dispatchEvent(new Event('scroll'));
+                      // Force reflow on the cloned element
+                      void $clonedWebpart[0].offsetHeight;
+                      // Trigger intersection observer by simulating visibility change
+                      $clonedWebpart.find('img').each(function() {
+                        void (this as HTMLImageElement).offsetHeight;
+                      });
+                    }, 100);
+
+                    // Second attempt with longer delay
+                    setTimeout(() => {
+                      window.dispatchEvent(new Event('resize'));
+                      this.forceImageWebpartLoad($clonedWebpart);
+                    }, 300);
+
+                    console.log(`[PiCanvas] Tab ${x}: Successfully cloned webpart from another instance`);
+                  } else {
+                    // Fallback: show message if clone source not found
+                    console.log(`[PiCanvas] Tab ${x}: Could not find source webpart to clone`);
+                    tabContentContainer.addClass('picanvas-unavailable-content');
+                    tabContentContainer.html(`
+                      <div class="picanvas-unavailable-message" style="padding: 20px; text-align: center; color: #666; background: #f5f5f5; border-radius: 4px; margin: 10px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+                        <div style="font-weight: 500;">Content unavailable</div>
+                        <div style="font-size: 12px; margin-top: 4px;">Could not load this content. Try refreshing the page.</div>
+                      </div>
+                    `);
+                  }
+                } else if (usedElements.has(elementKey)) {
+                  // DUPLICATE USE WITHIN THIS INSTANCE: This webpart is already in another tab of THIS PiCanvas
+                  // Mark this container so the webpart can be moved here on tab switch
+                  console.log(`[PiCanvas] Tab ${x}: Duplicate webpart within instance, marking container for sharing`);
+                  tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                  tabContentContainer.addClass('picanvas-shared-content');
+                  // Container is empty - webpart will move here when this tab is activated
+                } else {
+                  // FIRST USE: Move the original webpart to this tab
+                  const $webpart = $("#"+thisTabData[x].WebPartID);
+                  console.log(`[PiCanvas] Tab ${x}: First use, found webpart: ${$webpart.length > 0}, ID selector: "#${thisTabData[x].WebPartID}"`);
+                  if ($webpart.length) {
+                    // Store in LOCAL registry
+                    usedElements.set(elementKey, $webpart);
+                    // Register in GLOBAL registry so other PiCanvas instances know this is taken
+                    PiCanvasWebPart._globalWebpartRegistry.set(elementKey, { instanceId, $element: $webpart });
+                    // Mark the webpart so we can find it later
+                    $webpart.attr('data-picanvas-shared', 'true');
+                    $webpart.attr('data-picanvas-webpart-id', elementKey);
+                    $webpart.attr('data-picanvas-owner', instanceId);
+                    // Mark the container too - so we can move webpart back here on tab switch
+                    tabContentContainer.attr('data-shared-webpart-id', elementKey);
+                    // Move webpart to this tab
+                    tabContentContainer.append($webpart);
+                  }
+                }
               }
             }
           }
@@ -849,6 +1663,18 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
 
       // @ts-expect-error RenderTabs is defined in AddTabs.js
       RenderTabs();
+
+      // Set up shared webpart handling - move webparts between tabs on tab change
+      this.initializeSharedWebpartHandling(tabsDiv, usedElements);
+
+      // Initialize v3.0 features after tabs are rendered
+      // Use setTimeout to ensure DOM is fully ready after RenderTabs
+      setTimeout(() => {
+        this.initializeMermaidDiagrams(tabsDiv);
+        this.initializeDeepLinking(tabsDiv);
+        this.initializeLazyLoadEvents(tabsDiv);
+      }, 100);
+
       } else {
         const isDark = this.isDarkMode();
         const themeClass = isDark ? styles.darkMode : '';
@@ -862,6 +1688,10 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
           if (backButton) {
             backButton.addEventListener('click', () => this.showHome());
           }
+
+          // Initialize interactive example playgrounds
+          this.initializeExamplePlaygrounds();
+
           return;
         }
 
@@ -940,6 +1770,35 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
                   <span class="${ styles.featureIcon }">&#128274;</span>
                   <h3 class="${ styles.featureTitle }">Permission-Based</h3>
                   <p class="${ styles.featureDesc }">Show tabs by group membership</p>
+                  <span class="${ styles.featureClickHint }">Click to learn more</span>
+                </div>
+              </div>
+
+              <h2 class="${ styles.sectionHeader }">Content Types</h2>
+              <p class="${ styles.sectionSubtext }">Create rich tab content without adding extra web parts</p>
+              <div class="${ styles.features }">
+                <div class="${ styles.feature }" data-feature="content-markdown" tabindex="0" role="button" aria-label="Learn more about Markdown Content">
+                  <span class="${ styles.featureIcon }">📝</span>
+                  <h3 class="${ styles.featureTitle }">Markdown</h3>
+                  <p class="${ styles.featureDesc }">Write formatted text with easy syntax</p>
+                  <span class="${ styles.featureClickHint }">Click to learn more</span>
+                </div>
+                <div class="${ styles.feature }" data-feature="content-html" tabindex="0" role="button" aria-label="Learn more about HTML Content">
+                  <span class="${ styles.featureIcon }">🌐</span>
+                  <h3 class="${ styles.featureTitle }">HTML</h3>
+                  <p class="${ styles.featureDesc }">Use custom HTML for advanced layouts</p>
+                  <span class="${ styles.featureClickHint }">Click to learn more</span>
+                </div>
+                <div class="${ styles.feature }" data-feature="content-iframe" tabindex="0" role="button" aria-label="Learn more about Embed/Iframe Content">
+                  <span class="${ styles.featureIcon }">🖼️</span>
+                  <h3 class="${ styles.featureTitle }">Embed (iframe)</h3>
+                  <p class="${ styles.featureDesc }">Embed videos, apps, and external content</p>
+                  <span class="${ styles.featureClickHint }">Click to learn more</span>
+                </div>
+                <div class="${ styles.feature } ${ styles.featureHighlight }" data-feature="content-mermaid" tabindex="0" role="button" aria-label="Learn more about Mermaid Diagrams">
+                  <span class="${ styles.featureIcon }">📊</span>
+                  <h3 class="${ styles.featureTitle }">Mermaid Diagrams</h3>
+                  <p class="${ styles.featureDesc }">Create flowcharts, sequences, Gantt &amp; more</p>
                   <span class="${ styles.featureClickHint }">Click to learn more</span>
                 </div>
               </div>
@@ -1039,6 +1898,555 @@ export default class PiCanvasWebPart extends BaseClientSideWebPart<IPiCanvasWebP
   private showHome(): void {
     this._currentView = 'home';
     this.render();
+  }
+
+  /**
+   * Mermaid example data for the interactive playground
+   */
+  private readonly mermaidExamples: Record<string, { name: string; code: string }> = {
+    'flowchart': {
+      name: 'Flowchart',
+      code: `flowchart TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
+    C --> E[Deploy]`
+    },
+    'flowchart-shapes': {
+      name: 'Flowchart - Node Shapes',
+      code: `flowchart LR
+    A[Rectangle] --> B(Rounded)
+    B --> C([Stadium])
+    C --> D[[Subroutine]]
+    D --> E[(Database)]
+    E --> F((Circle))
+    F --> G{Diamond}
+    G --> H{{Hexagon}}`
+    },
+    'sequence': {
+      name: 'Sequence Diagram',
+      code: `sequenceDiagram
+    participant U as User
+    participant S as SharePoint
+    participant A as API
+
+    U->>S: Open page
+    S->>A: Fetch data
+    A-->>S: Return JSON
+    S-->>U: Display content
+
+    Note over U,S: User sees content`
+    },
+    'class': {
+      name: 'Class Diagram',
+      code: `classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+        +bark()
+    }
+    class Cat {
+        +String color
+        +meow()
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat`
+    },
+    'state': {
+      name: 'State Diagram',
+      code: `stateDiagram-v2
+    [*] --> Draft
+    Draft --> Review: Submit
+    Review --> Approved: Accept
+    Review --> Draft: Request Changes
+    Approved --> Published: Publish
+    Published --> [*]`
+    },
+    'er': {
+      name: 'Entity Relationship',
+      code: `erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string email
+        int id PK
+    }
+    ORDER ||--|{ LINE_ITEM : contains
+    ORDER {
+        int id PK
+        date created
+    }
+    PRODUCT ||--o{ LINE_ITEM : includes`
+    },
+    'journey': {
+      name: 'User Journey',
+      code: `journey
+    title Employee Onboarding
+    section Day 1
+      Arrive at office: 5: New Hire
+      Meet team: 4: New Hire, Manager
+      Setup workstation: 3: New Hire, IT
+    section Week 1
+      Training sessions: 4: New Hire, HR
+      First project: 3: New Hire, Mentor`
+    },
+    'gantt': {
+      name: 'Gantt Chart',
+      code: `gantt
+    title Project Timeline
+    dateFormat YYYY-MM-DD
+    section Planning
+        Requirements    :a1, 2024-01-01, 14d
+        Design          :a2, after a1, 10d
+    section Development
+        Backend API     :b1, after a2, 21d
+        Frontend UI     :b2, after a2, 21d
+    section Testing
+        QA Testing      :c1, after b1, 14d`
+    },
+    'pie': {
+      name: 'Pie Chart',
+      code: `pie showData
+    title Project Time Distribution
+    "Development" : 45
+    "Design" : 20
+    "Testing" : 15
+    "Documentation" : 10
+    "Meetings" : 10`
+    },
+    'quadrant': {
+      name: 'Quadrant Chart',
+      code: `quadrantChart
+    title Feature Prioritization
+    x-axis Low Effort --> High Effort
+    y-axis Low Impact --> High Impact
+    quadrant-1 Plan
+    quadrant-2 Do First
+    quadrant-3 Eliminate
+    quadrant-4 Delegate
+    Feature A: [0.3, 0.8]
+    Feature B: [0.7, 0.9]
+    Feature C: [0.2, 0.3]`
+    },
+    'mindmap': {
+      name: 'Mind Map',
+      code: `mindmap
+  root((Project Hub))
+    Planning
+      Requirements
+      Timeline
+      Budget
+    Development
+      Frontend
+      Backend
+      Database
+    Testing
+      Unit Tests
+      Integration`
+    },
+    'timeline': {
+      name: 'Timeline',
+      code: `timeline
+    title Company History
+    2020 : Company Founded
+         : First Product Launch
+    2021 : Series A Funding
+         : Team grows to 20
+    2022 : International Expansion
+    2023 : Series B Funding
+    2024 : IPO Preparation`
+    },
+    'kanban': {
+      name: 'Kanban Board',
+      code: `kanban
+  column1[To Do]
+    task1[Design mockups]
+    task2[Write specs]
+  column2[In Progress]
+    task3[Build API]
+  column3[Done]
+    task4[Setup CI/CD]`
+    },
+    'gitgraph': {
+      name: 'Git Graph',
+      code: `gitGraph
+    commit id: "Initial"
+    branch develop
+    checkout develop
+    commit id: "Feature start"
+    branch feature/login
+    checkout feature/login
+    commit id: "Add login"
+    checkout develop
+    merge feature/login
+    checkout main
+    merge develop tag: "v1.0"`
+    },
+    'xychart': {
+      name: 'XY Chart',
+      code: `xychart-beta
+    title "Monthly Sales"
+    x-axis [Jan, Feb, Mar, Apr, May, Jun]
+    y-axis "Revenue (k)" 0 --> 100
+    bar [30, 45, 52, 48, 65, 78]
+    line [25, 40, 48, 52, 60, 72]`
+    },
+    'sankey': {
+      name: 'Sankey Diagram',
+      code: `sankey-beta
+
+Marketing,Website,50
+Marketing,Social,30
+Marketing,Email,20
+Website,Leads,35
+Website,Bounce,15
+Social,Leads,20
+Email,Leads,15
+Leads,Converted,50
+Leads,Lost,20`
+    },
+    'block': {
+      name: 'Block Diagram',
+      code: `block-beta
+    columns 3
+    
+    Frontend:3
+    block:group1:1
+        API
+    end
+    block:group2:2
+        DB[(Database)]
+        Cache[(Cache)]
+    end`
+    },
+    'styling': {
+      name: 'Custom Styling',
+      code: `flowchart LR
+    A[Start]:::highlight --> B[Process]
+    B --> C[End]:::success
+
+    classDef highlight fill:#ffeb3b,stroke:#f57c00,stroke-width:2px
+    classDef success fill:#4caf50,stroke:#2e7d32,color:#fff`
+    }
+  };
+
+  /**
+   * Markdown example data for the interactive playground
+   */
+  private readonly markdownExamples: Record<string, { name: string; code: string }> = {
+    'headings': {
+      name: 'Headings',
+      code: `# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4`
+    },
+    'formatting': {
+      name: 'Text Formatting',
+      code: `**Bold text** and *italic text*
+
+***Bold and italic*** together
+
+~~Strikethrough text~~
+
+\`Inline code\` example`
+    },
+    'lists': {
+      name: 'Lists',
+      code: `- Bullet item one
+- Bullet item two
+  - Nested item
+  - Another nested
+
+1. First step
+2. Second step
+3. Third step
+
+- [x] Completed task
+- [ ] Incomplete task`
+    },
+    'links': {
+      name: 'Links & Images',
+      code: `[Visit Microsoft](https://microsoft.com)
+
+[SharePoint Docs](https://docs.microsoft.com/sharepoint)
+
+![Alt text for image](https://via.placeholder.com/150)`
+    },
+    'tables': {
+      name: 'Tables',
+      code: `| Name | Role | Status |
+|------|------|--------|
+| Alice | Developer | Active |
+| Bob | Designer | Active |
+| Carol | PM | On Leave |`
+    },
+    'blockquotes': {
+      name: 'Blockquotes',
+      code: `> This is a blockquote.
+> It can span multiple lines.
+
+> You can also
+>> nest blockquotes`
+    },
+    'code': {
+      name: 'Code Blocks',
+      code: `\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+\`\`\`
+
+\`\`\`python
+def greet(name):
+    return f"Hello, {name}!"
+\`\`\``
+    },
+    'team-page': {
+      name: 'Sample: Team Page',
+      code: `# Welcome to Our Team 👋
+
+We're a **cross-functional** team focused on delivering *exceptional* results.
+
+## Our Mission
+> To innovate, collaborate, and deliver value every day.
+
+## Team Members
+
+| Name | Role | Contact |
+|------|------|---------|
+| Alice | Lead Dev | [Email](mailto:alice@example.com) |
+| Bob | Designer | [Email](mailto:bob@example.com) |
+
+## Quick Links
+- [Team SharePoint](#)
+- [Project Board](#)
+- [Documentation](#)
+
+---
+*Last updated: December 2024*`
+    }
+  };
+
+  /**
+   * HTML example data for the interactive playground
+   */
+  private readonly htmlExamples: Record<string, { name: string; code: string }> = {
+    'info-cards': {
+      name: 'Info Cards',
+      code: `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px;">
+    <h3 style="margin: 0 0 8px;">📊 Analytics</h3>
+    <p style="margin: 0; opacity: 0.9;">View dashboard reports</p>
+  </div>
+  <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 12px;">
+    <h3 style="margin: 0 0 8px;">📅 Calendar</h3>
+    <p style="margin: 0; opacity: 0.9;">Team events</p>
+  </div>
+</div>`
+    },
+    'alert-box': {
+      name: 'Alert Box',
+      code: `<div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; border-radius: 4px;">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span style="font-size: 24px;">⚠️</span>
+    <div>
+      <strong style="color: #856404;">Important Notice</strong>
+      <p style="margin: 4px 0 0; color: #856404;">System maintenance this weekend.</p>
+    </div>
+  </div>
+</div>`
+    },
+    'success-box': {
+      name: 'Success Box',
+      code: `<div style="background: #d4edda; border-left: 4px solid #28a745; padding: 16px; border-radius: 4px;">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span style="font-size: 24px;">✅</span>
+    <div>
+      <strong style="color: #155724;">Success!</strong>
+      <p style="margin: 4px 0 0; color: #155724;">Your changes have been saved.</p>
+    </div>
+  </div>
+</div>`
+    },
+    'quick-links': {
+      name: 'Quick Links Grid',
+      code: `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+  <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 12px; background: #f5f5f5; border-radius: 8px; text-decoration: none; color: #333;">
+    <span style="font-size: 20px;">📧</span>
+    <span>Contact Support</span>
+  </a>
+  <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 12px; background: #f5f5f5; border-radius: 8px; text-decoration: none; color: #333;">
+    <span style="font-size: 20px;">📚</span>
+    <span>Knowledge Base</span>
+  </a>
+</div>`
+    },
+    'stats-row': {
+      name: 'Stats Row',
+      code: `<div style="display: flex; gap: 16px; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 120px; text-align: center; padding: 20px; background: #f0f4ff; border-radius: 8px;">
+    <div style="font-size: 32px; font-weight: bold; color: #0066cc;">1,234</div>
+    <div style="color: #666; font-size: 14px;">Total Users</div>
+  </div>
+  <div style="flex: 1; min-width: 120px; text-align: center; padding: 20px; background: #f0fff4; border-radius: 8px;">
+    <div style="font-size: 32px; font-weight: bold; color: #28a745;">98%</div>
+    <div style="color: #666; font-size: 14px;">Satisfaction</div>
+  </div>
+</div>`
+    },
+    'hero-banner': {
+      name: 'Hero Banner',
+      code: `<div style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 40px; border-radius: 12px; text-align: center;">
+  <h1 style="margin: 0 0 12px; font-size: 28px;">Welcome to the Portal</h1>
+  <p style="margin: 0 0 20px; opacity: 0.9;">Your one-stop destination for all resources</p>
+  <a href="#" style="display: inline-block; background: white; color: #1e3a5f; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">Get Started</a>
+</div>`
+    }
+  };
+
+  /**
+   * Initialize interactive example playgrounds in feature detail views
+   */
+  private initializeExamplePlaygrounds(): void {
+    // Initialize Mermaid playground
+    const mermaidSelect = this.domElement.querySelector('[data-example-select="mermaid"]') as HTMLSelectElement;
+    if (mermaidSelect) {
+      this.updateMermaidExample(mermaidSelect.value);
+      mermaidSelect.addEventListener('change', (e) => {
+        this.updateMermaidExample((e.target as HTMLSelectElement).value);
+      });
+    }
+
+    // Initialize Markdown playground
+    const markdownSelect = this.domElement.querySelector('[data-example-select="markdown"]') as HTMLSelectElement;
+    if (markdownSelect) {
+      this.updateMarkdownExample(markdownSelect.value);
+      markdownSelect.addEventListener('change', (e) => {
+        this.updateMarkdownExample((e.target as HTMLSelectElement).value);
+      });
+    }
+
+    // Initialize HTML playground
+    const htmlSelect = this.domElement.querySelector('[data-example-select="html"]') as HTMLSelectElement;
+    if (htmlSelect) {
+      this.updateHtmlExample(htmlSelect.value);
+      htmlSelect.addEventListener('change', (e) => {
+        this.updateHtmlExample((e.target as HTMLSelectElement).value);
+      });
+    }
+
+    // Initialize copy buttons
+    this.domElement.querySelectorAll('[data-copy-btn]').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const type = (e.target as HTMLElement).getAttribute('data-copy-btn');
+        let code = '';
+
+        if (type === 'mermaid') {
+          const select = this.domElement.querySelector('[data-example-select="mermaid"]') as HTMLSelectElement;
+          code = this.mermaidExamples[select?.value]?.code || '';
+        } else if (type === 'markdown') {
+          const select = this.domElement.querySelector('[data-example-select="markdown"]') as HTMLSelectElement;
+          code = this.markdownExamples[select?.value]?.code || '';
+        } else if (type === 'html') {
+          const select = this.domElement.querySelector('[data-example-select="html"]') as HTMLSelectElement;
+          code = this.htmlExamples[select?.value]?.code || '';
+        }
+
+        if (code) {
+          await navigator.clipboard.writeText(code);
+          const button = e.target as HTMLElement;
+          button.textContent = '✓ Copied!';
+          button.classList.add(styles.copied);
+          setTimeout(() => {
+            button.textContent = '📋 Copy Code';
+            button.classList.remove(styles.copied);
+          }, 2000);
+        }
+      });
+    });
+  }
+
+  /**
+   * Update Mermaid example display
+   */
+  private async updateMermaidExample(exampleKey: string): Promise<void> {
+    const example = this.mermaidExamples[exampleKey];
+    if (!example) return;
+
+    // Update code display
+    const codeDisplay = this.domElement.querySelector('[data-code-display="mermaid"]');
+    if (codeDisplay) {
+      codeDisplay.textContent = example.code;
+    }
+
+    // Update preview
+    const previewContainer = this.domElement.querySelector('[data-preview="mermaid"]');
+    const mermaidDiv = previewContainer?.querySelector('.mermaid');
+    if (mermaidDiv) {
+      try {
+        // Import mermaid dynamically to render
+        const mermaid = await import('mermaid');
+        mermaid.default.initialize({
+          startOnLoad: false,
+          theme: 'default',
+          securityLevel: 'strict'
+        });
+
+        const uniqueId = `mermaid-preview-${Date.now()}`;
+        const { svg } = await mermaid.default.render(uniqueId, example.code);
+        mermaidDiv.innerHTML = svg;
+      } catch {
+        mermaidDiv.innerHTML = `<div style="color: #d32f2f; padding: 16px;">Error rendering diagram. This diagram type may require the latest Mermaid version.</div>`;
+      }
+    }
+  }
+
+  /**
+   * Update Markdown example display
+   */
+  private updateMarkdownExample(exampleKey: string): void {
+    const example = this.markdownExamples[exampleKey];
+    if (!example) return;
+
+    // Update code display
+    const codeDisplay = this.domElement.querySelector('[data-code-display="markdown"]');
+    if (codeDisplay) {
+      codeDisplay.textContent = example.code;
+    }
+
+    // Update preview using ContentRenderer
+    const previewContainer = this.domElement.querySelector('[data-preview="markdown"]');
+    if (previewContainer) {
+      const rendered = ContentRenderer.renderMarkdown(example.code);
+      previewContainer.innerHTML = `<div class="${styles.playgroundPreviewHtml}">${rendered.html}</div>`;
+    }
+  }
+
+  /**
+   * Update HTML example display
+   */
+  private updateHtmlExample(exampleKey: string): void {
+    const example = this.htmlExamples[exampleKey];
+    if (!example) return;
+
+    // Update code display (HTML escaped for display)
+    const codeDisplay = this.domElement.querySelector('[data-code-display="html"]');
+    if (codeDisplay) {
+      codeDisplay.textContent = example.code;
+    }
+
+    // Update preview using ContentRenderer
+    const previewContainer = this.domElement.querySelector('[data-preview="html"]');
+    if (previewContainer) {
+      const rendered = ContentRenderer.renderHtml(example.code);
+      previewContainer.innerHTML = `<div class="${styles.playgroundPreviewHtml}">${rendered.html}</div>`;
+    }
   }
 
   /**
@@ -1305,6 +2713,337 @@ Vertical Layout:
             <li><strong>Department pages</strong> - Target content to specific security groups</li>
           </ul>
         `
+      },
+      'content-markdown': {
+        icon: '📝',
+        title: 'Markdown Content',
+        subtitle: 'Write beautifully formatted text using simple syntax',
+        content: `
+          <h3>What is Markdown?</h3>
+          <p>Markdown is a lightweight markup language that lets you write formatted content using plain text. It's easy to learn and produces clean, readable HTML output. PiCanvas uses <strong>GitHub Flavored Markdown (GFM)</strong> for full compatibility.</p>
+
+          <h3>How to Use</h3>
+          <ol>
+            <li>Select <strong>"Markdown Content"</strong> from the Content Type dropdown</li>
+            <li>Enter your Markdown text in the content field</li>
+            <li>See a live preview below your content as you type</li>
+            <li>Save your changes - content renders instantly</li>
+          </ol>
+
+          <h3>Basic Syntax Reference</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Element</th><th>Syntax</th><th>Output</th></tr>
+            <tr><td>Heading 1</td><td><code># Heading</code></td><td>Large title</td></tr>
+            <tr><td>Heading 2</td><td><code>## Heading</code></td><td>Section title</td></tr>
+            <tr><td>Heading 3</td><td><code>### Heading</code></td><td>Subsection title</td></tr>
+            <tr><td>Bold</td><td><code>**bold text**</code></td><td><strong>bold text</strong></td></tr>
+            <tr><td>Italic</td><td><code>*italic text*</code></td><td><em>italic text</em></td></tr>
+            <tr><td>Bold + Italic</td><td><code>***both***</code></td><td><strong><em>both</em></strong></td></tr>
+            <tr><td>Strikethrough</td><td><code>~~deleted~~</code></td><td><del>deleted</del></td></tr>
+            <tr><td>Inline Code</td><td><code>\`code\`</code></td><td><code>code</code></td></tr>
+            <tr><td>Link</td><td><code>[text](url)</code></td><td><a href="#">text</a></td></tr>
+            <tr><td>Image</td><td><code>![alt](url)</code></td><td>Image</td></tr>
+          </table>
+
+          <h3>🎮 Interactive Examples</h3>
+          <p>Select an example below to see the code and live preview. Click <strong>Copy Code</strong> to use it in your tabs!</p>
+
+          <div class="${styles.examplePlayground}" data-playground="markdown">
+            <div class="${styles.playgroundHeader}">
+              <span class="${styles.playgroundLabel}">Example:</span>
+              <select class="${styles.playgroundSelect}" data-example-select="markdown">
+                <option value="headings">📑 Headings</option>
+                <option value="formatting">✏️ Text Formatting</option>
+                <option value="lists">📋 Lists</option>
+                <option value="links">🔗 Links & Images</option>
+                <option value="tables">📊 Tables</option>
+                <option value="blockquotes">💬 Blockquotes</option>
+                <option value="code">💻 Code Blocks</option>
+                <option value="team-page">📄 Sample: Team Page</option>
+              </select>
+              <button class="${styles.playgroundCopyBtn}" data-copy-btn="markdown">📋 Copy Code</button>
+            </div>
+            <div class="${styles.playgroundBody}">
+              <div class="${styles.playgroundCode}">
+                <pre data-code-display="markdown"></pre>
+              </div>
+              <div class="${styles.playgroundPreview}" data-preview="markdown"></div>
+            </div>
+          </div>
+
+          <h3>Security</h3>
+          <ul>
+            <li>All Markdown is <strong>sanitized</strong> before rendering to prevent XSS attacks</li>
+            <li><code>&lt;script&gt;</code> tags and event handlers are automatically removed</li>
+            <li>Links open in new tabs with <code>rel="noopener"</code> for security</li>
+            <li>Images are rendered safely without executing embedded code</li>
+          </ul>
+
+          <h3>More Resources</h3>
+          <ul>
+            <li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="noopener">Markdown Guide - Basic Syntax</a></li>
+            <li><a href="https://github.github.com/gfm/" target="_blank" rel="noopener">GitHub Flavored Markdown Spec</a></li>
+          </ul>
+        `
+      },
+      'content-html': {
+        icon: '🌐',
+        title: 'HTML Content',
+        subtitle: 'Use custom HTML for advanced layouts and styling',
+        content: `
+          <h3>What is HTML Content?</h3>
+          <p>HTML Content mode lets you write raw HTML directly into your tabs. This is perfect for advanced users who need precise control over layout, custom styling, or complex structures that Markdown can't provide.</p>
+
+          <h3>How to Use</h3>
+          <ol>
+            <li>Select <strong>"HTML Content"</strong> from the Content Type dropdown</li>
+            <li>Enter your HTML code in the content field</li>
+            <li>See a live preview below your content as you type</li>
+            <li>Save your changes - HTML renders after sanitization</li>
+          </ol>
+
+          <h3>Allowed HTML Elements</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Category</th><th>Elements</th></tr>
+            <tr><td>Structure</td><td><code>div</code>, <code>span</code>, <code>section</code>, <code>article</code>, <code>header</code>, <code>footer</code>, <code>nav</code>, <code>main</code>, <code>aside</code></td></tr>
+            <tr><td>Text</td><td><code>p</code>, <code>h1-h6</code>, <code>strong</code>, <code>em</code>, <code>b</code>, <code>i</code>, <code>u</code>, <code>s</code>, <code>mark</code>, <code>small</code></td></tr>
+            <tr><td>Lists</td><td><code>ul</code>, <code>ol</code>, <code>li</code>, <code>dl</code>, <code>dt</code>, <code>dd</code></td></tr>
+            <tr><td>Tables</td><td><code>table</code>, <code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>tr</code>, <code>th</code>, <code>td</code></td></tr>
+            <tr><td>Media</td><td><code>img</code>, <code>figure</code>, <code>figcaption</code>, <code>video</code>, <code>audio</code></td></tr>
+            <tr><td>Forms</td><td><code>form</code>, <code>input</code>, <code>button</code>, <code>select</code>, <code>textarea</code>, <code>label</code></td></tr>
+            <tr><td>Links</td><td><code>a</code> (with <code>href</code>, <code>target</code>, <code>rel</code> attributes)</td></tr>
+          </table>
+
+          <h3>🎮 Interactive Examples</h3>
+          <p>Select an example below to see the code and live preview. Click <strong>Copy Code</strong> to use it in your tabs!</p>
+
+          <div class="${styles.examplePlayground}" data-playground="html">
+            <div class="${styles.playgroundHeader}">
+              <span class="${styles.playgroundLabel}">Example:</span>
+              <select class="${styles.playgroundSelect}" data-example-select="html">
+                <option value="info-cards">🎨 Info Cards</option>
+                <option value="alert-box">⚠️ Alert Box</option>
+                <option value="success-box">✅ Success Box</option>
+                <option value="quick-links">🔗 Quick Links Grid</option>
+                <option value="stats-row">📊 Stats Row</option>
+                <option value="hero-banner">🖼️ Hero Banner</option>
+              </select>
+              <button class="${styles.playgroundCopyBtn}" data-copy-btn="html">📋 Copy Code</button>
+            </div>
+            <div class="${styles.playgroundBody}">
+              <div class="${styles.playgroundCode}">
+                <pre data-code-display="html"></pre>
+              </div>
+              <div class="${styles.playgroundPreview}" data-preview="html"></div>
+            </div>
+          </div>
+
+          <h3>Security &amp; Sanitization</h3>
+          <ul>
+            <li>All HTML is <strong>sanitized</strong> using DOMPurify before rendering</li>
+            <li><code>&lt;script&gt;</code> tags are <strong>completely removed</strong></li>
+            <li>Event handlers (<code>onclick</code>, <code>onerror</code>, etc.) are <strong>stripped</strong></li>
+            <li><code>&lt;style&gt;</code> tags are removed (use inline styles instead)</li>
+            <li>Embedded iframes are validated against the trusted domain list</li>
+          </ul>
+
+          <h3>Blocked Elements &amp; Attributes</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Blocked</th><th>Reason</th></tr>
+            <tr><td><code>&lt;script&gt;</code></td><td>JavaScript execution risk</td></tr>
+            <tr><td><code>&lt;style&gt;</code></td><td>CSS injection risk</td></tr>
+            <tr><td><code>onclick</code>, <code>onerror</code>, etc.</td><td>Event handler XSS risk</td></tr>
+            <tr><td><code>javascript:</code> URLs</td><td>JavaScript execution risk</td></tr>
+          </table>
+
+          <h3>More Resources</h3>
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener">MDN HTML Documentation</a></li>
+            <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">CSS Flexbox Guide</a></li>
+            <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener">CSS Grid Guide</a></li>
+          </ul>
+        `
+      },
+      'content-iframe': {
+        icon: '🖼️',
+        title: 'Embed (iframe) Content',
+        subtitle: 'Embed videos, apps, dashboards, and external content securely',
+        content: `
+          <h3>What are Embeds?</h3>
+          <p>Embeds let you display external content inside your tabs using iframes. Perfect for videos, Power BI dashboards, Microsoft Forms, and many other web applications. PiCanvas validates all embed URLs against a trusted domain list for security.</p>
+
+          <h3>How to Use</h3>
+          <ol>
+            <li>Select <strong>"Embed (iframe)"</strong> from the Content Type dropdown</li>
+            <li>Paste your embed URL (must be from a trusted domain)</li>
+            <li>Optionally adjust the height (default: 400px)</li>
+            <li>Save your changes - content loads securely</li>
+          </ol>
+
+          <h3>Trusted Domains (Built-in)</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Category</th><th>Domains</th></tr>
+            <tr><td><strong>Video</strong></td><td>YouTube, Vimeo, Microsoft Stream</td></tr>
+            <tr><td><strong>Microsoft 365</strong></td><td>SharePoint, OneDrive, Sway, Loop, Teams</td></tr>
+            <tr><td><strong>Power Platform</strong></td><td>Power BI, Power Apps, Power Automate</td></tr>
+            <tr><td><strong>Forms</strong></td><td>Microsoft Forms, Typeform, Calendly</td></tr>
+            <tr><td><strong>Design</strong></td><td>Canva, Figma, Miro, Lucidchart, Whimsical</td></tr>
+            <tr><td><strong>Productivity</strong></td><td>Notion, Airtable, Coda, Mural, Pitch</td></tr>
+            <tr><td><strong>Other</strong></td><td>Loom, and more...</td></tr>
+          </table>
+
+          <h3>Getting Embed URLs</h3>
+
+          <h4>YouTube</h4>
+          <div class="${styles.detailDiagram}">1. Go to the YouTube video
+2. Click "Share" → "Embed"
+3. Copy the URL from the src attribute:
+   https://www.youtube.com/embed/VIDEO_ID
+
+Or convert a regular URL:
+https://www.youtube.com/watch?v=VIDEO_ID
+→ https://www.youtube.com/embed/VIDEO_ID</div>
+
+          <h4>Power BI</h4>
+          <div class="${styles.detailDiagram}">1. Open your report in Power BI
+2. Click File → Embed report → Website or portal
+3. Copy the provided embed URL:
+   https://app.powerbi.com/reportEmbed?reportId=...
+
+Note: Ensure proper sharing permissions are set.</div>
+
+          <h4>Microsoft Forms</h4>
+          <div class="${styles.detailDiagram}">1. Open your form in Microsoft Forms
+2. Click "Collect responses" → "Embed"
+3. Copy the URL from the embed code:
+   https://forms.office.com/Pages/ResponsePage.aspx?id=...</div>
+
+          <h4>SharePoint Document</h4>
+          <div class="${styles.detailDiagram}">1. Open the document in SharePoint
+2. Click "..." → "Embed"
+3. Copy the embed URL from the code snippet:
+   https://yourtenant.sharepoint.com/sites/.../embed.aspx?...</div>
+
+          <h3>Custom Domain Allow List</h3>
+          <p>Site administrators can add custom domains by creating a JSON file:</p>
+          <div class="${styles.detailDiagram}">Location: /SiteAssets/PiCanvas/embed-allowlist.json
+
+{
+  "allowedDomains": [
+    "custom-app.contoso.com",
+    "internal-tool.company.com",
+    "trusted-service.io"
+  ]
+}</div>
+
+          <h3>Height Options</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Value</th><th>Use Case</th></tr>
+            <tr><td>300px</td><td>Compact forms, small videos</td></tr>
+            <tr><td>400px</td><td>Default - good for most content</td></tr>
+            <tr><td>500px</td><td>Standard video aspect ratio</td></tr>
+            <tr><td>600px</td><td>Dashboards, detailed forms</td></tr>
+            <tr><td>100%</td><td>Fill available tab height</td></tr>
+          </table>
+
+          <h3>Security Features</h3>
+          <ul>
+            <li><strong>HTTPS only</strong> - HTTP URLs are rejected</li>
+            <li><strong>Domain validation</strong> - URLs checked against allow list</li>
+            <li><strong>Sandbox attributes</strong> - Iframes run with restricted permissions</li>
+            <li><strong>No JavaScript access</strong> - Embedded content can't access parent page</li>
+            <li><strong>Lazy loading</strong> - Embeds load on-demand for better performance</li>
+          </ul>
+
+          <h3>Troubleshooting</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Issue</th><th>Solution</th></tr>
+            <tr><td>Embed shows blocked message</td><td>Domain not in allow list - contact admin to add it</td></tr>
+            <tr><td>Embed shows blank</td><td>Check if URL requires authentication or has sharing restrictions</td></tr>
+            <tr><td>Content doesn't fit</td><td>Adjust the height setting or use percentage values</td></tr>
+            <tr><td>Power BI not loading</td><td>Verify report sharing settings allow embedding</td></tr>
+          </table>
+        `
+      },
+      'content-mermaid': {
+        icon: '📊',
+        title: 'Mermaid Diagrams',
+        subtitle: 'Create flowcharts, sequences, Gantt charts, and 20+ diagram types',
+        content: `
+          <h3>What is Mermaid?</h3>
+          <p>Mermaid is a JavaScript-based diagramming tool that renders text definitions into beautiful diagrams. Write simple text syntax and PiCanvas automatically generates professional diagrams. Perfect for documentation, process flows, org charts, timelines, and more!</p>
+
+          <h3>How to Use</h3>
+          <ol>
+            <li>Select <strong>"Mermaid Diagram"</strong> from the Content Type dropdown</li>
+            <li>Enter your Mermaid diagram code</li>
+            <li>See a live preview as you type</li>
+            <li>Save - diagrams render beautifully on your page</li>
+          </ol>
+
+          <h3>🎮 Interactive Examples</h3>
+          <p>Select a diagram type below to see the code and live preview. Click <strong>Copy Code</strong> to use it in your tabs!</p>
+
+          <div class="${styles.examplePlayground}" data-playground="mermaid">
+            <div class="${styles.playgroundHeader}">
+              <span class="${styles.playgroundLabel}">Diagram Type:</span>
+              <select class="${styles.playgroundSelect}" data-example-select="mermaid">
+                <option value="flowchart">📊 Flowchart</option>
+                <option value="flowchart-shapes">📊 Flowchart - Node Shapes</option>
+                <option value="sequence">📋 Sequence Diagram</option>
+                <option value="class">📐 Class Diagram</option>
+                <option value="state">🔄 State Diagram</option>
+                <option value="er">🔗 Entity Relationship</option>
+                <option value="journey">🚶 User Journey</option>
+                <option value="gantt">📅 Gantt Chart</option>
+                <option value="pie">🥧 Pie Chart</option>
+                <option value="quadrant">📍 Quadrant Chart</option>
+                <option value="mindmap">🧠 Mind Map</option>
+                <option value="timeline">⏰ Timeline</option>
+                <option value="kanban">📌 Kanban Board</option>
+                <option value="gitgraph">🔀 Git Graph</option>
+                <option value="xychart">📊 XY Chart</option>
+                <option value="sankey">🌊 Sankey Diagram</option>
+                <option value="block">📦 Block Diagram</option>
+                <option value="styling">🎨 Custom Styling</option>
+              </select>
+              <button class="${styles.playgroundCopyBtn}" data-copy-btn="mermaid">📋 Copy Code</button>
+            </div>
+            <div class="${styles.playgroundBody}">
+              <div class="${styles.playgroundCode}">
+                <pre data-code-display="mermaid"></pre>
+              </div>
+              <div class="${styles.playgroundPreview}" data-preview="mermaid">
+                <div class="mermaid" data-mermaid-preview="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Direction Options</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Code</th><th>Direction</th></tr>
+            <tr><td><code>TD</code> or <code>TB</code></td><td>Top to Bottom</td></tr>
+            <tr><td><code>BT</code></td><td>Bottom to Top</td></tr>
+            <tr><td><code>LR</code></td><td>Left to Right</td></tr>
+            <tr><td><code>RL</code></td><td>Right to Left</td></tr>
+          </table>
+
+          <h3>More Resources</h3>
+          <ul>
+            <li><a href="https://mermaid.js.org/syntax/flowchart.html" target="_blank" rel="noopener">Mermaid Official Documentation</a></li>
+            <li><a href="https://mermaid.live" target="_blank" rel="noopener">Mermaid Live Editor</a> - Test diagrams online</li>
+            <li>Experiment with the live preview in PiCanvas property pane</li>
+          </ul>
+
+          <h3>Troubleshooting</h3>
+          <table class="${styles.detailTable}">
+            <tr><th>Issue</th><th>Solution</th></tr>
+            <tr><td>Diagram shows error</td><td>Check syntax - expand error details for specifics</td></tr>
+            <tr><td>Missing elements</td><td>Ensure proper indentation and arrow syntax</td></tr>
+            <tr><td>Text cut off</td><td>Use shorter labels or abbreviations</td></tr>
+            <tr><td>Theme mismatch</td><td>Diagrams auto-adapt to dark/light mode</td></tr>
+          </table>
+        `
       }
     };
 
@@ -1345,7 +3084,7 @@ Vertical Layout:
                   </div>
                   <div class="${styles.versionItem}">
                     <span class="${styles.versionLabel}">SPFx Version</span>
-                    <span class="${styles.versionValue}"><a href="https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.21.1" target="_blank" rel="noopener">${SPFX_VERSION}</a></span>
+                    <span class="${styles.versionValue}"><a href="https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.22" target="_blank" rel="noopener">${SPFX_VERSION}</a></span>
                   </div>
                   <div class="${styles.versionItem}">
                     <span class="${styles.versionLabel}">Node.js</span>
@@ -1371,23 +3110,43 @@ Vertical Layout:
     const tabData: ITabDataItem[] = [];
     const numTabs = this.properties.tabCount || 2;
 
+    // Helper to safely get string property (prevents [object Object])
+    const safeString = (val: unknown): string => {
+      if (!val) return '';
+      return typeof val === 'string' ? val : String(val);
+    };
+
     // Check configured tabs (label is optional - will default to "Tab N")
     for (let i = 1; i <= numTabs; i++) {
       const webPartIDKey = `tab${i}WebPartID`;
       const labelKey = `tab${i}Label`;
+      const contentTypeKey = `tab${i}ContentType`;
 
-      const webPartID = this.properties[webPartIDKey] as string;
-      const label = this.properties[labelKey] as string;
+      const webPartID = safeString(this.properties[webPartIDKey]);
+      const label = safeString(this.properties[labelKey]);
+      const contentType = safeString(this.properties[contentTypeKey]) || 'webpart';
 
-      // Only require WebPartID - label is optional and will default in render
-      if (webPartID) {
+      // Determine if tab has valid content based on its content type
+      let hasValidContent = false;
+      if (contentType === 'webpart' || contentType === 'section') {
+        // WebPart/Section types require a WebPartID
+        hasValidContent = !!webPartID;
+      } else if (contentType === 'markdown' || contentType === 'html' || contentType === 'mermaid') {
+        // Custom content types - allow even empty content so users can configure it
+        hasValidContent = true;
+      } else if (contentType === 'embed') {
+        // Embed type requires embedUrl (or allow empty for configuration)
+        hasValidContent = true; // Allow even empty so users can configure it
+      }
+
+      if (hasValidContent) {
         // Check permission
         if (!this.isTabVisibleToUser(i)) {
           // Check if placeholder is enabled for this tab
           const showPlaceholder = this.properties[`tab${i}PermissionPlaceholder`] as boolean;
           if (showPlaceholder) {
             // Add as placeholder tab (visible but disabled)
-            const placeholderText = (this.properties[`tab${i}PermissionPlaceholderText`] as string) || strings.PermissionPlaceholderDefault;
+            const placeholderText = safeString(this.properties[`tab${i}PermissionPlaceholderText`]) || strings.PermissionPlaceholderDefault;
             tabData.push({
               WebPartID: '', // No content for placeholder
               TabLabel: label || `Tab ${i}`,
@@ -1401,7 +3160,7 @@ Vertical Layout:
         }
 
         tabData.push({
-          WebPartID: webPartID,
+          WebPartID: webPartID, // May be empty for custom content types
           TabLabel: label || '',  // Empty string if no label, render will handle default
           originalTabIndex: i     // Track original index for property lookup
         });
@@ -1621,56 +3380,169 @@ Vertical Layout:
   }
 
   /**
-   * Get all sections on the page with their IDs
-   * Returns array of [sectionId, sectionLabel, sectionNumber]
+   * Get all sections (rows) and columns on the page with their IDs
+   * Returns array of [id, label, sectionNumber]
+   *
+   * Modern SharePoint DOM structure:
+   * - Sections: elements with data-automation-id="CanvasSection" (or configurable class)
+   * - Columns: elements with data-automation-id="CanvasColumn" inside a section
+   * - Web parts: ControlZone / CanvasControl inside columns
+   *
+   * This method returns both:
+   * - SECTION: entries for entire sections (all columns combined)
+   * - COLUMN: entries for individual columns within multi-column sections
    */
   private getSections(): Array<[string, string, number]> {
-    const sections = new Array<[string, string, number]>();
-    const tabWebPartSection = $(this.domElement).closest("div." + this.properties.sectionClass);
+    const results = new Array<[string, string, number]>();
 
-    // Get the index of the section containing the tab webpart
-    const allSections = $("div." + this.properties.sectionClass);
-    let tabWebPartSectionIndex = -1;
-    allSections.each((index: number, element: HTMLElement) => {
-      if ($(element).is(tabWebPartSection)) {
-        tabWebPartSectionIndex = index;
-        return false; // break
-      }
+    // Find the PiCanvas web part to avoid moving itself
+    const tabWebPartElement = $(this.domElement).closest("div." + this.properties.webpartClass);
+    const tabWebPartZone = tabWebPartElement.closest('[data-automation-id="CanvasZone"]');
+    const tabWebPartSection = tabWebPartElement.closest('[data-automation-id="CanvasSection"], div.' + this.properties.sectionClass);
+    const tabWebPartColumn = tabWebPartElement.closest('[data-automation-id="CanvasColumn"], div.CanvasColumn, [data-automation-id="CanvasSection"], div.' + this.properties.sectionClass);
+
+    // --- Primary strategy: modern pages where CanvasZone is the row and CanvasSection are columns ---
+    const rowContainers = $('[data-automation-id="CanvasZone"]').filter((_idx: number, el: HTMLElement) => {
+      const $el = $(el);
+      const hasSection = $el.find('[data-automation-id="CanvasSection"]').length > 0;
+      const hasControlZone = $el.find('.ControlZone, [data-automation-id="CanvasControl"]').length > 0;
+      const isNested = $el.parent().closest('[data-automation-id="CanvasZone"]').length > 0;
+      return (hasSection || hasControlZone) && !isNested;
     });
 
-    allSections.each((index: number, element: HTMLElement) => {
-      const $element = $(element);
+    if (rowContainers.length > 0) {
+      rowContainers.each((rowIndex: number, element: HTMLElement) => {
+        const $row = $(element);
+        const sectionNum = rowIndex + 1;
 
-      // Don't include the section containing this tab webpart (compare by index)
-      if (index !== tabWebPartSectionIndex) {
-        const sectionNum = index + 1;
-        // Count web parts using multiple selectors for compatibility with different SharePoint versions
-        // Use the maximum count from different selector strategies
-        const countByClass = $element.find("div." + this.properties.webpartClass).length;
-        const countByDataAttr = $element.find('[data-automation-id="CanvasControl"]').length;
-        const countByNested = $element.find('.CanvasZone .ControlZone, .CanvasZone [data-automation-id="CanvasControl"]').length;
-        const webpartCount = Math.max(countByClass, countByDataAttr, countByNested);
+        // Count ALL web parts in this row (across all columns), excluding PiCanvas
+        const allWebparts = $row.find('.ControlZone, [data-automation-id="CanvasControl"]')
+          .filter((_i, wp: HTMLElement) => !tabWebPartElement.is(wp));
+        const totalWebpartCount = allWebparts.length;
 
-        // Only include sections that have webparts
-        if (webpartCount > 0) {
-          // Use index-based ID for consistent identification
-          const sectionId = `hillbilly-section-${index}`;
-          // Store it on the element for later reference during render
-          $element.attr("data-hillbilly-section-id", sectionId);
-
-          const sectionLabel = `>> Section ${sectionNum} (${webpartCount} web part${webpartCount !== 1 ? 's' : ''})`;
-          sections.push([`SECTION:${sectionId}`, sectionLabel, sectionNum]);
+        if (totalWebpartCount === 0) {
+          return; // continue
         }
+
+        // Mark the row so render() can find it later
+        const sectionId = `hillbilly-section-${rowIndex}`;
+        $row.attr("data-hillbilly-section-id", sectionId);
+
+        // Add the whole row as a SECTION option unless it contains PiCanvas
+        if (!$row.is(tabWebPartZone)) {
+          const sectionLabel = `▦ Section ${sectionNum} (${totalWebpartCount} web part${totalWebpartCount !== 1 ? 's' : ''})`;
+          results.push([`SECTION:${sectionId}`, sectionLabel, sectionNum]);
+        }
+
+        // Columns: commonly CanvasSection within the row. Also allow CanvasColumn just in case.
+        let columns = $row.find('[data-automation-id="CanvasSection"]');
+        if (columns.length === 0) {
+          columns = $row.find('[data-automation-id="CanvasColumn"], div.CanvasColumn');
+        }
+
+        // Only expose columns when there is more than one
+        if (columns.length > 1) {
+          columns.each((colIndex: number, colElement: HTMLElement) => {
+            const $col = $(colElement);
+
+            // Skip the column containing PiCanvas
+            if ($col.is(tabWebPartColumn)) {
+              return;
+            }
+
+            const colWebparts = $col.find('.ControlZone, [data-automation-id="CanvasControl"]')
+              .filter((_i, wp: HTMLElement) => !tabWebPartElement.is(wp));
+
+            if (colWebparts.length === 0) {
+              return;
+            }
+
+            const columnId = `hillbilly-column-${rowIndex}-${colIndex}`;
+            $col.attr("data-hillbilly-column-id", columnId);
+
+            const columnName = this.getColumnPositionName(colIndex, columns.length);
+            const columnLabel = `  ├ ${columnName} (${colWebparts.length} web part${colWebparts.length !== 1 ? 's' : ''})`;
+            results.push([`COLUMN:${columnId}`, columnLabel, sectionNum]);
+          });
+        }
+      });
+
+      return results;
+    }
+
+    // --- Fallback strategy: treat CanvasSection as sections directly (older or variant DOM) ---
+    const sections = $('[data-automation-id="CanvasSection"], div.' + this.properties.sectionClass);
+
+    sections.each((sectionIndex: number, element: HTMLElement) => {
+      const $section = $(element);
+      const sectionNum = sectionIndex + 1;
+
+      const sectionId = `hillbilly-section-${sectionIndex}`;
+      $section.attr("data-hillbilly-section-id", sectionId);
+
+      const allSectionWebparts = $section.find('.ControlZone, [data-automation-id="CanvasControl"]')
+        .filter((_i, wp: HTMLElement) => !tabWebPartElement.is(wp));
+      const webpartCount = allSectionWebparts.length;
+
+      if (webpartCount > 0 && !$section.is(tabWebPartSection)) {
+        const sectionLabel = `▦ Section ${sectionNum} (${webpartCount} web part${webpartCount !== 1 ? 's' : ''})`;
+        results.push([`SECTION:${sectionId}`, sectionLabel, sectionNum]);
+      }
+
+      // Columns inside the section (if present)
+      let columns = $section.find('[data-automation-id="CanvasColumn"], div.CanvasColumn');
+      if (columns.length === 0) {
+        columns = $section.find('[data-automation-id="CanvasSection"]');
+      }
+
+      if (columns.length > 1) {
+        columns.each((colIndex: number, colElement: HTMLElement) => {
+          const $col = $(colElement);
+          if ($col.is(tabWebPartColumn)) {
+            return;
+          }
+
+          const colWebparts = $col.find('.ControlZone, [data-automation-id="CanvasControl"]')
+            .filter((_i, wp: HTMLElement) => !tabWebPartElement.is(wp));
+
+          if (colWebparts.length === 0) {
+            return;
+          }
+
+          const columnId = `hillbilly-column-${sectionIndex}-${colIndex}`;
+          $col.attr("data-hillbilly-column-id", columnId);
+
+          const columnName = this.getColumnPositionName(colIndex, columns.length);
+          const columnLabel = `  ├ ${columnName} (${colWebparts.length} web part${colWebparts.length !== 1 ? 's' : ''})`;
+          results.push([`COLUMN:${columnId}`, columnLabel, sectionNum]);
+        });
       }
     });
 
-    return sections;
+    return results;
+  }
+
+  /**
+   * Get a human-readable name for a column position
+   */
+  private getColumnPositionName(colIndex: number, totalColumns: number): string {
+    if (totalColumns === 2) {
+      return colIndex === 0 ? 'Left Column' : 'Right Column';
+    } else if (totalColumns === 3) {
+      if (colIndex === 0) return 'Left Column';
+      if (colIndex === 1) return 'Center Column';
+      return 'Right Column';
+    } else {
+      return `Column ${colIndex + 1}`;
+    }
   }
 
   private getZones(): Array<[string, string, number]> {
     const zones = new Array<[string, string, number]>();
 
-    const tabWebPartID = $(this.domElement).closest("div." + this.properties.webpartClass).attr("id");
+    // Get webpart ID from SharePoint DOM structure, or fallback to SPFx instance ID for workbench
+    const tabWebPartID = $(this.domElement).closest("div." + this.properties.webpartClass).attr("id")
+      || `picanvas-${this.context.instanceId}`;
 
     // Track webpart count per section for labeling
     const sectionWebPartCounts: { [key: number]: number } = {};
@@ -1752,54 +3624,62 @@ Vertical Layout:
   /**
    * Build dropdown options from detected zones and sections
    * @param forTabIndex - The tab index this dropdown is for (to exclude self from "already used" check)
+   * @param contentTypeFilter - Filter to show only 'webpart', only 'section', or 'all' (default)
    */
-  private getDropdownOptions(forTabIndex?: number): IPropertyPaneDropdownOption[] {
+  private getDropdownOptions(forTabIndex?: number, contentTypeFilter: 'webpart' | 'section' | 'all' = 'all'): IPropertyPaneDropdownOption[] {
     const zones = this.getZones();
     const sections = this.getSections();
     const assignedItems = this.getAssignedItems();
     const options: IPropertyPaneDropdownOption[] = [
-      { key: '', text: '(None - skip this tab)' }
+      { key: '', text: contentTypeFilter === 'section' ? '(None - skip this tab)' : '(None - skip this tab)' }
     ];
 
-    // Helper to add "already used" indicator with visual emphasis
+    // Helper to add "already used" indicator - informational since cloning is supported
     const addUsageIndicator = (text: string, itemKey: string): string => {
       const assignedToTab = assignedItems.get(itemKey);
       if (assignedToTab && assignedToTab !== forTabIndex) {
-        return `${text} ⚠️ IN USE → Tab ${assignedToTab}`;
+        return `${text} 🔄 Also in Tab ${assignedToTab}`;
       }
       return text;
     };
 
-    // Add sections first (entire section options)
-    if (sections.length > 0) {
-      sections.forEach(section => {
-        options.push({
-          key: section[0],
-          text: addUsageIndicator(section[1], section[0])
+    // Add sections (only if filter allows)
+    if (contentTypeFilter === 'section' || contentTypeFilter === 'all') {
+      if (sections.length > 0) {
+        sections.forEach(section => {
+          options.push({
+            key: section[0],
+            text: addUsageIndicator(section[1], section[0])
+          });
+        });
+      }
+    }
+
+    // Add webparts (only if filter allows)
+    if (contentTypeFilter === 'webpart' || contentTypeFilter === 'all') {
+      // Group webpart zones by section
+      const sectionGroups: { [key: number]: Array<[string, string, number]> } = {};
+      zones.forEach(zone => {
+        const sectionNum = zone[2];
+        if (!sectionGroups[sectionNum]) {
+          sectionGroups[sectionNum] = [];
+        }
+        sectionGroups[sectionNum].push(zone);
+      });
+
+      // Add individual webparts sorted by section
+      const sortedSections = Object.keys(sectionGroups).map(Number).sort((a, b) => a - b);
+      sortedSections.forEach(sectionNum => {
+        sectionGroups[sectionNum].forEach(zone => {
+          // Only indent if showing both sections and webparts
+          const prefix = contentTypeFilter === 'all' ? '    ' : '';
+          options.push({
+            key: zone[0],
+            text: addUsageIndicator(`${prefix}${zone[1]}`, zone[0])
+          });
         });
       });
     }
-
-    // Group webpart zones by section
-    const sectionGroups: { [key: number]: Array<[string, string, number]> } = {};
-    zones.forEach(zone => {
-      const sectionNum = zone[2];
-      if (!sectionGroups[sectionNum]) {
-        sectionGroups[sectionNum] = [];
-      }
-      sectionGroups[sectionNum].push(zone);
-    });
-
-    // Add individual webparts sorted by section
-    const sortedSections = Object.keys(sectionGroups).map(Number).sort((a, b) => a - b);
-    sortedSections.forEach(sectionNum => {
-      sectionGroups[sectionNum].forEach(zone => {
-        options.push({
-          key: zone[0],
-          text: addUsageIndicator(`    ${zone[1]}`, zone[0])  // Indent individual webparts
-        });
-      });
-    });
 
     return options;
   }
@@ -1826,11 +3706,11 @@ Vertical Layout:
       }
     }
 
-    // Helper to add "already used" indicator
+    // Helper to add "already used" indicator - informational since cloning is supported
     const addUsageIndicator = (text: string, itemKey: string): string => {
       const assignedToTab = usedAsLabels.get(itemKey);
       if (assignedToTab) {
-        return `${text} ⚠️ USED AS LABEL → Tab ${assignedToTab}`;
+        return `${text} 🔄 Label in Tab ${assignedToTab}`;
       }
       return text;
     };
@@ -1858,7 +3738,7 @@ Vertical Layout:
    */
   private addTab(): void {
     const currentCount = this.getTabCount();
-    if (currentCount < 20) { // Max 20 tabs
+    if (currentCount < PiCanvasWebPart.MAX_TABS) { // Max 20 tabs
       this.properties.tabCount = currentCount + 1;
       this.context.propertyPane.refresh();
     }
@@ -1870,13 +3750,7 @@ Vertical Layout:
   private removeTab(): void {
     const currentCount = this.getTabCount();
     if (currentCount > 1) { // Min 1 tab
-      // Clear the last tab's data
-      const lastTabIndex = currentCount;
-      this.properties[`tab${lastTabIndex}WebPartID`] = '';
-      this.properties[`tab${lastTabIndex}Label`] = '';
-      this.properties.tabCount = currentCount - 1;
-      this.context.propertyPane.refresh();
-      this.render();
+      this.deleteTab(currentCount);
     }
   }
 
@@ -1888,18 +3762,7 @@ Vertical Layout:
 
     // Swap with previous tab
     const prevIndex = tabIndex - 1;
-
-    // Store current tab data
-    const currentWebPartID = this.properties[`tab${tabIndex}WebPartID`];
-    const currentLabel = this.properties[`tab${tabIndex}Label`];
-
-    // Move previous tab data to current position
-    this.properties[`tab${tabIndex}WebPartID`] = this.properties[`tab${prevIndex}WebPartID`];
-    this.properties[`tab${tabIndex}Label`] = this.properties[`tab${prevIndex}Label`];
-
-    // Move current tab data to previous position
-    this.properties[`tab${prevIndex}WebPartID`] = currentWebPartID;
-    this.properties[`tab${prevIndex}Label`] = currentLabel;
+    this.swapTabProperties(tabIndex, prevIndex);
 
     this.context.propertyPane.refresh();
     this.render();
@@ -1914,18 +3777,81 @@ Vertical Layout:
 
     // Swap with next tab
     const nextIndex = tabIndex + 1;
+    this.swapTabProperties(tabIndex, nextIndex);
 
-    // Store current tab data
-    const currentWebPartID = this.properties[`tab${tabIndex}WebPartID`];
-    const currentLabel = this.properties[`tab${tabIndex}Label`];
+    this.context.propertyPane.refresh();
+    this.render();
+  }
 
-    // Move next tab data to current position
-    this.properties[`tab${tabIndex}WebPartID`] = this.properties[`tab${nextIndex}WebPartID`];
-    this.properties[`tab${tabIndex}Label`] = this.properties[`tab${nextIndex}Label`];
+  /**
+   * Copy all per-tab properties from one tab index to another
+   */
+  private copyTabProperties(sourceIndex: number, targetIndex: number): void {
+    PiCanvasWebPart.TAB_PROPERTY_SUFFIXES.forEach((suffix) => {
+      const sourceKey = `tab${sourceIndex}${suffix}`;
+      const targetKey = `tab${targetIndex}${suffix}`;
+      this.properties[targetKey] = this.properties[sourceKey];
+    });
+  }
 
-    // Move current tab data to next position
-    this.properties[`tab${nextIndex}WebPartID`] = currentWebPartID;
-    this.properties[`tab${nextIndex}Label`] = currentLabel;
+  /**
+   * Swap all per-tab properties between two tab indexes
+   */
+  private swapTabProperties(firstIndex: number, secondIndex: number): void {
+    PiCanvasWebPart.TAB_PROPERTY_SUFFIXES.forEach((suffix) => {
+      const firstKey = `tab${firstIndex}${suffix}`;
+      const secondKey = `tab${secondIndex}${suffix}`;
+      const firstValue = this.properties[firstKey];
+      this.properties[firstKey] = this.properties[secondKey];
+      this.properties[secondKey] = firstValue;
+    });
+  }
+
+  /**
+   * Clear all per-tab properties for a tab index
+   */
+  private clearTabProperties(tabIndex: number): void {
+    PiCanvasWebPart.TAB_PROPERTY_SUFFIXES.forEach((suffix) => {
+      const key = `tab${tabIndex}${suffix}`;
+      this.properties[key] = undefined;
+    });
+  }
+
+  /**
+   * Delete a tab and shift remaining tabs down
+   */
+  private deleteTab(tabIndex: number): void {
+    const currentCount = this.getTabCount();
+    if (currentCount <= 1) return;
+    if (tabIndex < 1 || tabIndex > currentCount) return;
+
+    for (let i = tabIndex; i < currentCount; i++) {
+      this.copyTabProperties(i + 1, i);
+    }
+
+    this.clearTabProperties(currentCount);
+    this.properties.tabCount = currentCount - 1;
+
+    this.context.propertyPane.refresh();
+    this.render();
+  }
+
+  /**
+   * Duplicate a tab and insert it after the source tab
+   */
+  private duplicateTab(tabIndex: number): void {
+    const currentCount = this.getTabCount();
+    if (currentCount >= PiCanvasWebPart.MAX_TABS) return;
+    if (tabIndex < 1 || tabIndex > currentCount) return;
+
+    const insertIndex = tabIndex + 1;
+    this.properties.tabCount = currentCount + 1;
+
+    for (let i = currentCount; i >= insertIndex; i--) {
+      this.copyTabProperties(i, i + 1);
+    }
+
+    this.copyTabProperties(tabIndex, insertIndex);
 
     this.context.propertyPane.refresh();
     this.render();
@@ -2176,7 +4102,7 @@ Vertical Layout:
       text: `Configure Tabs (${zones.length} web part${zones.length !== 1 ? 's' : ''} detected)`
     }));
 
-    // Add/Remove tab buttons
+    // Add tab button
     fields.push(
       PropertyPaneButton('addTab', {
         text: 'Add Tab',
@@ -2185,17 +4111,6 @@ Vertical Layout:
         onClick: () => this.addTab()
       })
     );
-
-    if (numTabs > 1) {
-      fields.push(
-        PropertyPaneButton('removeTab', {
-          text: 'Remove Last Tab',
-          buttonType: PropertyPaneButtonType.Normal,
-          icon: 'Remove',
-          onClick: () => this.removeTab()
-        })
-      );
-    }
 
     // Tab configuration fields
     for (let i = 1; i <= numTabs; i++) {
@@ -2226,21 +4141,116 @@ Vertical Layout:
         );
       }
 
+      if (numTabs < PiCanvasWebPart.MAX_TABS) {
+        fields.push(
+          PropertyPaneButton(`duplicateTab${i}`, {
+            text: 'Duplicate Tab',
+            buttonType: PropertyPaneButtonType.Normal,
+            icon: 'Copy',
+            onClick: () => this.duplicateTab(i)
+          })
+        );
+      }
+
+      if (numTabs > 1) {
+        fields.push(
+          PropertyPaneButton(`deleteTab${i}`, {
+            text: 'Delete Tab',
+            buttonType: PropertyPaneButtonType.Normal,
+            icon: 'Delete',
+            onClick: () => this.deleteTab(i)
+          })
+        );
+      }
+
+      // Content Type dropdown (v3.0)
       fields.push(
-        PropertyPaneDropdown(`tab${i}WebPartID`, {
-          label: `Web Part`,
-          options: this.getDropdownOptions(i),
-          selectedKey: this.properties[`tab${i}WebPartID`] as string || ''
+        PropertyPaneDropdown(`tab${i}ContentType`, {
+          label: strings.ContentTypeLabel || 'Content Type',
+          options: [
+            { key: 'webpart', text: strings.ContentTypeWebPart || 'SharePoint Web Part' },
+            { key: 'section', text: strings.ContentTypeSection || 'SharePoint Section' },
+            { key: 'markdown', text: strings.ContentTypeMarkdown || 'Markdown Content' },
+            { key: 'html', text: strings.ContentTypeHtml || 'HTML Content' },
+            { key: 'mermaid', text: strings.ContentTypeMermaid || 'Mermaid Diagram' },
+            { key: 'embed', text: strings.ContentTypeEmbed || 'Embed (iframe)' }
+          ],
+          selectedKey: this.properties[`tab${i}ContentType`] as string || 'webpart'
         })
       );
 
-      // Label type dropdown - text or web part (image)
+      const contentType = (this.properties[`tab${i}ContentType`] as string) || 'webpart';
+
+      // Conditional fields based on content type
+      if (contentType === 'webpart' || contentType === 'section') {
+        // Show WebPartID dropdown filtered by content type (webpart shows only webparts, section shows only sections)
+        fields.push(
+          PropertyPaneDropdown(`tab${i}WebPartID`, {
+            label: contentType === 'section' ? 'Section' : 'Web Part',
+            options: this.getDropdownOptions(i, contentType as 'webpart' | 'section'),
+            selectedKey: this.properties[`tab${i}WebPartID`] as string || ''
+          })
+        );
+      } else if (contentType === 'markdown' || contentType === 'html' || contentType === 'mermaid') {
+        // Show custom content text field
+        const placeholders: { [key: string]: string } = {
+          markdown: strings.MarkdownPlaceholder || '# Heading\n\nYour **markdown** content here...',
+          html: strings.HtmlPlaceholder || '<div>\n  <p>Your HTML content here...</p>\n</div>',
+          mermaid: strings.MermaidPlaceholder || 'graph TD\n    A[Start] --> B[Process]\n    B --> C[End]'
+        };
+        fields.push(
+          PropertyPaneTextField(`tab${i}CustomContent`, {
+            label: strings.CustomContentLabel || 'Content',
+            placeholder: placeholders[contentType],
+            multiline: true,
+            rows: 8
+          })
+        );
+        // Add live preview for custom content
+        fields.push(
+          PropertyPaneContentPreview(`tab${i}Preview`, {
+            key: `tab${i}ContentPreview`,
+            contentType: contentType as 'markdown' | 'html' | 'mermaid',
+            content: (this.properties[`tab${i}CustomContent`] as string) || ''
+          })
+        );
+      } else if (contentType === 'embed') {
+        // Show embed URL and height fields
+        fields.push(
+          PropertyPaneTextField(`tab${i}EmbedUrl`, {
+            label: strings.EmbedUrlLabel || 'Embed URL',
+            placeholder: 'https://www.youtube.com/embed/...',
+            description: strings.EmbedUrlDescription || 'Only trusted domains are allowed (YouTube, PowerBI, Forms, etc.)',
+            multiline: false
+          })
+        );
+        fields.push(
+          PropertyPaneTextField(`tab${i}EmbedHeight`, {
+            label: strings.EmbedHeightLabel || 'Embed Height',
+            placeholder: '400px',
+            multiline: false
+          })
+        );
+        // Add live preview for embed content
+        fields.push(
+          PropertyPaneContentPreview(`tab${i}EmbedPreview`, {
+            key: `tab${i}EmbedContentPreview`,
+            contentType: 'embed',
+            content: '',
+            embedUrl: (this.properties[`tab${i}EmbedUrl`] as string) || '',
+            embedHeight: (this.properties[`tab${i}EmbedHeight`] as string) || '200px'
+          })
+        );
+      }
+
+      // Label type dropdown - text, web part, or hidden
       fields.push(
         PropertyPaneDropdown(`tab${i}LabelType`, {
           label: `Label Type`,
           options: [
             { key: 'text', text: 'Text Label' },
-            { key: 'webpart', text: 'Use Web Part as Label (e.g., Image)' }
+            { key: 'webpart', text: 'Use Web Part as Label (e.g., Image)' },
+            { key: 'hidden', text: 'Hidden (Content Only)' }
           ],
           selectedKey: this.properties[`tab${i}LabelType`] as string || 'text'
         })
@@ -2248,7 +4258,14 @@ Vertical Layout:
 
       const labelType = this.properties[`tab${i}LabelType`] as string || 'text';
 
-      if (labelType === 'webpart') {
+      if (labelType === 'hidden') {
+        // No additional fields needed for hidden label - just show content
+        fields.push(
+          PropertyPaneLabel(`tab${i}HiddenInfo`, {
+            text: 'Tab bar will be hidden when all tabs use "Hidden" label type.'
+          })
+        );
+      } else if (labelType === 'webpart') {
         // Show web part selector for label
         fields.push(
           PropertyPaneDropdown(`tab${i}LabelWebPartID`, {
@@ -2474,6 +4491,19 @@ Vertical Layout:
                     { key: 'dark', text: 'Dark' }
                   ],
                   selectedKey: this.properties.themeMode || 'auto'
+                }),
+                // v3.0 Feature toggles
+                PropertyPaneToggle('enableDeepLinking', {
+                  label: strings.EnableDeepLinkingLabel || 'Enable URL Deep Linking',
+                  checked: this.properties.enableDeepLinking !== false,
+                  onText: 'Enabled',
+                  offText: 'Disabled'
+                }),
+                PropertyPaneToggle('enableLazyLoading', {
+                  label: strings.EnableLazyLoadingLabel || 'Enable Lazy Loading',
+                  checked: this.properties.enableLazyLoading !== false,
+                  onText: 'Enabled',
+                  offText: 'Disabled'
                 })
               ]
             },

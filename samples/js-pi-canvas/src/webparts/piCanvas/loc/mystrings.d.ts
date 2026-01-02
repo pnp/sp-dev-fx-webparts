@@ -52,6 +52,36 @@ declare interface IPiCanvasWebPartStrings {
   PermissionPlaceholderTextLabel: string;
   PermissionPlaceholderTextPlaceholder: string;
   PermissionPlaceholderDefault: string;
+
+  // Content type strings (v3.0)
+  ContentTypeLabel: string;
+  ContentTypeWebPart: string;
+  ContentTypeSection: string;
+  ContentTypeMarkdown: string;
+  ContentTypeHtml: string;
+  ContentTypeMermaid: string;
+  ContentTypeEmbed: string;
+
+  // Custom content strings (v3.0)
+  CustomContentLabel: string;
+  MarkdownPlaceholder: string;
+  HtmlPlaceholder: string;
+  MermaidPlaceholder: string;
+
+  // Embed strings (v3.0)
+  EmbedUrlLabel: string;
+  EmbedUrlDescription: string;
+  EmbedHeightLabel: string;
+  EmbedHeightPlaceholder: string;
+
+  // Feature toggle strings (v3.0)
+  EnableDeepLinkingLabel: string;
+  EnableDeepLinkingDescription: string;
+  EnableLazyLoadingLabel: string;
+  EnableLazyLoadingDescription: string;
+
+  // Accessibility strings (v3.0)
+  TabListAriaLabel: string;
 }
 
 declare module 'PiCanvasWebPartStrings' {

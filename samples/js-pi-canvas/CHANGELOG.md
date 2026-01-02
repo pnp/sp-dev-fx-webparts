@@ -5,6 +5,17 @@ All notable changes to PiCanvas will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2026-01-02
+
+### Changed
+- Upgraded to SPFx 1.22.0 and RushStack Heft toolchain
+- Replaced Gulp/fast-serve with Heft build-watch and webpack patches
+- Updated TypeScript pipeline to match the SPFx 1.22 rig
+
+### Fixed
+- Updated jQuery import for esModuleInterop compatibility
+- Normalized workbench manifest path to `/temp/build/manifests.js`
+
 ## [2.2.0] - 2024-12-15
 
 ### Added

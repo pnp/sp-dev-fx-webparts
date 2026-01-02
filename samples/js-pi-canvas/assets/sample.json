@@ -3,47 +3,41 @@
     "name": "pnp-sp-dev-spfx-web-parts-js-pi-canvas",
     "source": "pnp",
     "title": "PiCanvas - Tabbed Page Sections",
-    "shortDescription": "Organize SharePoint web parts into flexible tabbed layouts with permission-based visibility and templates.",
+    "shortDescription": "Organize SharePoint page sections and web parts into a tabbed interface with permission-based visibility, templates, and full customization.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
     "longDescription": [
-      "PiCanvas is a SharePoint Framework web part that organizes web parts into a clean tabbed interface.",
-      "Features include permission-based tab visibility, multiple tab styles (default, pills, underline, boxed), vertical layouts, theme auto-detection, and a template system for consistent deployments.",
-      "Originally based on Mark Rackley's Modern Hillbilly Tabs, modernized for SPFx 1.21.1 with TypeScript 5.3, ESLint, and fast-serve."
+      "PiCanvas is a SharePoint Framework web part that organizes page content into a clean tabbed interface. It supports permission-based tab visibility (Owners/Members/Visitors/Custom groups), multiple tab styles (default, pills, underline, boxed), vertical and horizontal layouts, and full color/typography customization. Features include template export/import, Mermaid diagram rendering, section grouping, theme auto-detection, and web part reuse across tabs."
     ],
-    "creationDateTime": "2025-01-15",
-    "updateDateTime": "2025-01-15",
+    "creationDateTime": "2024-11-15",
+    "updateDateTime": "2026-01-02",
     "products": [
       "SharePoint"
     ],
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript"
+        "value": "TypeScript,jQuery"
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.22.0"
       }
     ],
     "thumbnails": [
       {
+        "name": "PiCanvas Screenshot",
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png",
-        "alt": "PiCanvas tabbed web part interface"
+        "alt": "PiCanvas web part showing tabbed interface with multiple tabs organizing page content"
       }
     ],
     "authors": [
       {
         "gitHubAccount": "anthonyrhopkins",
-        "pictureUrl": "https://github.com/anthonyrhopkins.png",
-        "name": "Anthony Hopkins"
-      },
-      {
-        "gitHubAccount": "cimares",
-        "pictureUrl": "https://github.com/cimares.png",
-        "name": "Mark Rackley"
+        "name": "Anthony Hopkins",
+        "pictureUrl": "https://github.com/anthonyrhopkins.png"
       }
     ],
     "references": [
@@ -53,8 +47,8 @@
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
-        "name": "Original Modern Hillbilly Tabs",
-        "description": "The original SPFx 1.13.1 implementation by Mark Rackley that PiCanvas builds upon.",
+        "name": "Modern Hillbilly Tabs",
+        "description": "Original concept by Mark Rackley that PiCanvas modernizes",
         "url": "http://www.markrackley.net/2022/06/29/the-return-of-hillbilly-tabs/"
       }
     ]
