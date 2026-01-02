@@ -9,7 +9,8 @@ on:
       - ".metadata/extensions-samples.json"
   workflow_dispatch:
   schedule:
-  - cron: "0 6 * * *" # Daily 06:00 UTC
+    - cron: "0 6 * * *" # Daily 06:00 UTC
+
 jobs:
   merge_all_samples:
     runs-on: ubuntu-latest
@@ -18,22 +19,32 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repository
-        uses:  actions/checkout@v4
+      - name: Checkout main (source JSON)
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
+          fetch-depth: 0
+
+      - name: Checkout Docs branch (published site output)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: Docs
+          path: Docs
+          fetch-depth: 0
 
       - name: Set up Python
-        uses:  actions/setup-python@v5
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Set up Node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: "20"
 
+-
       - name: Merge + slim samples files
         id: merge
         run: |
@@ -74,7 +85,6 @@ jobs:
           def slim_sample(sample: dict):
               primary = pick_primary_thumbnail(sample)
 
-              # Keep only what your UI needs
               out = {
                   "name": sample.get("name"),
                   "source": sample.get("source"),
@@ -87,16 +97,8 @@ jobs:
                   "tags": sample.get("tags") or [],
                   "categories": sample.get("categories") or [],
                   "authors": sample.get("authors") or [],
-                  # Keep ONLY 1 thumbnail for the optimizer to consume
                   "thumbnails":  [primary] if primary else [],
               }
-
-              # Explicitly dropped:
-              # - creationDateTime
-              # - longDescription
-              # - products
-              # - references
-              # - extra thumbnails
               return out
 
           all_samples = []
@@ -123,7 +125,7 @@ jobs:
 
               try:
                   content = file_path.read_text(encoding="utf-8").strip()
-                  if not content: 
+                  if not content:
                       errors.append({"file": filename, "error": "Empty file"})
                       print(f"✗ {filename}: Empty file")
                       file_stats[filename] = {"type": source_type, "count": 0, "status": "empty"}
@@ -131,7 +133,6 @@ jobs:
 
                   data = json.loads(content)
                   samples = flatten_samples(data)
-
                   if not samples:
                       errors.append({"file": filename, "error": "No valid samples found after flattening"})
                       print(f"✗ {filename}: No valid samples found")
@@ -183,12 +184,12 @@ jobs:
               f.write(f"file_stats={json.dumps(file_stats)}\n")
           EOF
 
-      - name: Install thumbnail optimizer deps
+      - name: Install image optimizer deps
         run: |
           npm init -y >/dev/null 2>&1
           npm install sharp@latest
 
-      - name: Optimize thumbnails + rewrite all-samples.json thumbnails
+      - name: Optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
         id: thumbs
         run: |
           node << 'EOF'
@@ -196,15 +197,17 @@ jobs:
           const path = require("path");
           const sharp = require("sharp");
 
-          const repo = process.env.GITHUB_REPOSITORY;
-          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/thumbs/`;
+          const repo = process.env.GITHUB_REPOSITORY;        // owner/name
+          const repoName = repo.split("/")[1];               // name
+          const pagesBase = `/${repoName}/`;                 // GitHub Pages project base
+          const thumbUrlBase = `${pagesBase}images/thumbnails/`;
 
-          const metadataDir = path.resolve(".metadata");
-          const thumbsDir = path.join(metadataDir, "thumbs");
-          fs.mkdirSync(thumbsDir, { recursive: true });
-
-          const allSamplesPath = path.join(metadataDir, "all-samples.json");
+          const allSamplesPath = path.resolve(".metadata/all-samples.json");
           const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          // Write directly into Docs branch published site output
+          const thumbsDir = path.resolve("Docs/docs/images/thumbnails");
+          fs.mkdirSync(thumbsDir, { recursive: true });
 
           const manifestPath = path.join(thumbsDir, "manifest.json");
           const oldManifest = fs.existsSync(manifestPath)
@@ -212,8 +215,8 @@ jobs:
             : {};
 
           const newManifest = {};
-          const expectedFiles = new Set();
-          const failedThumbs = []; // ← Track failed thumbnails
+          const expectedFiles = new Set(["manifest.json"]);
+          const failedThumbs = [];
 
           function safeFileName(name) {
             return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -223,8 +226,7 @@ jobs:
             const thumbs = Array.isArray(sample.thumbnails) ? sample.thumbnails : [];
             const img = thumbs
               .filter(t => t && t.type === "image" && typeof t.url === "string" && t.url.length > 0)
-              .sort((a, b) => (a.order ??  999999) - (b.order ?? 999999))[0];
-
+              .sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999))[0];
             return img || null;
           }
 
@@ -237,7 +239,6 @@ jobs:
 
           async function makeThumbWebp(inputBuffer, outPath) {
             const maxWidth = 420;
-
             let img;
             try {
               img = sharp(inputBuffer, { animated: true, pages: 1 });
@@ -253,9 +254,7 @@ jobs:
           }
 
           async function run() {
-            let processed = 0;
-            let skipped = 0;
-            let failed = 0;
+            let processed = 0, skipped = 0, failed = 0;
 
             for (const s of samples) {
               const name = s?.name;
@@ -270,7 +269,7 @@ jobs:
 
               expectedFiles.add(outFile);
 
-              if (! origUrl) {
+              if (!origUrl) {
                 s.thumbnails = [];
                 continue;
               }
@@ -289,44 +288,27 @@ jobs:
                   processed++;
                 } catch (e) {
                   failed++;
-                  // ← Log the failure details
-                  failedThumbs.push({
-                    name: name,
-                    url: origUrl,
-                    error:  e.message
-                  });
-                  console.error(`❌ Failed to process thumbnail for ${name}:  ${e.message}`);
-                  
-                  // Keep the original thumbnail URL
-                  const alt = thumb?.alt || s. title || "Sample thumbnail";
-                  s.thumbnails = [
-                    {
-                      type:  "image",
-                      order:  100,
-                      url:  origUrl,
-                      alt
-                    }
-                  ];
+                  failedThumbs.push({ name, url: origUrl, error: e.message });
+                  // keep original URL if processing fails
+                  const alt = thumb?.alt || s.title || "Sample thumbnail";
+                  s.thumbnails = [{ type: "image", order: 100, url: origUrl, alt }];
                   continue;
                 }
               }
 
               const alt = thumb?.alt || s.title || "Sample thumbnail";
-              s.thumbnails = [
-                {
-                  type: "image",
-                  order: 100,
-                  url: rawBase + encodeURIComponent(outFile),
-                  alt
-                }
-              ];
+              s.thumbnails = [{
+                type: "image",
+                order: 100,
+                url: thumbUrlBase + encodeURIComponent(outFile),
+                alt
+              }];
             }
 
-            // Delete orphan thumbs
+            // delete orphans in Docs/docs/images/thumbnails
             let deleted = 0;
             for (const file of fs.readdirSync(thumbsDir)) {
-              if (file === "manifest.json") continue;
-              if (! expectedFiles.has(file)) {
+              if (!expectedFiles.has(file)) {
                 fs.rmSync(path.join(thumbsDir, file), { force: true });
                 deleted++;
               }
@@ -335,30 +317,16 @@ jobs:
             fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2), "utf8");
             fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2), "utf8");
 
-            console.log(`🖼️ Thumbs processed: ${processed}, skipped: ${skipped}, failed: ${failed}`);
-
-            // Write failed thumbnails to a file for debugging
-            if (failedThumbs.length > 0) {
-              const failedPath = path.join(metadataDir, "thumbnail-failures.json");
-              fs.writeFileSync(failedPath, JSON.stringify(failedThumbs, null, 2), "utf8");
-              console.log(`⚠️ Failed thumbnails written to: ${failedPath}`);
-            }
-
-            // Output for GitHub Actions
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_processed=${processed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_skipped=${skipped}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_failed=${failed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbs_deleted=${deleted}\n`);
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_thumb_failures=${failedThumbs.length > 0 ? 'true' : 'false'}\n`);
           }
 
-          run().catch(err => {
-            console.error("Thumbnail optimization failed:", err);
-            process.exit(1);
-          });
+          run().catch(err => { console.error(err); process.exit(1); });
           EOF
 
-      - name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl
+      - name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
         id: avatars
         run: |
           node << 'EOF'
@@ -368,17 +336,16 @@ jobs:
           const sharp = require("sharp");
 
           const repo = process.env.GITHUB_REPOSITORY;
-
-          // Where we store normalized avatars in this repo
-          const avatarsDir = path.resolve(".metadata/avatars");
-          fs.mkdirSync(avatarsDir, { recursive: true });
-
-          // Where the website should load them from.
-          // Option A (easy): load from GitHub raw:
-          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/avatars/`;
+          const repoName = repo.split("/")[1];
+          const pagesBase = `/${repoName}/`;
+          const avatarUrlBase = `${pagesBase}images/avatars/`;
 
           const allSamplesPath = path.resolve(".metadata/all-samples.json");
           const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          // Write directly into Docs branch published site output
+          const avatarsDir = path.resolve("Docs/docs/images/avatars");
+          fs.mkdirSync(avatarsDir, { recursive: true });
 
           const manifestPath = path.join(avatarsDir, "manifest.json");
           const oldManifest = fs.existsSync(manifestPath)
@@ -423,14 +390,13 @@ jobs:
           async function run() {
             const sizePx = 28;
 
-            // 1) Collect unique avatar URLs
-            const byUrl = new Map(); // sourceUrl -> { slugBase }
+            // unique avatar URLs
+            const byUrl = new Map();
             for (const s of samples) {
               const authors = Array.isArray(s.authors) ? s.authors : [];
               for (const a of authors) {
                 const url = a?.pictureUrl;
                 if (typeof url !== "string" || !url.startsWith("http")) continue;
-
                 const slugBase = a.gitHubAccount || a.name || "author";
                 if (!byUrl.has(url)) byUrl.set(url, { slugBase });
               }
@@ -438,17 +404,10 @@ jobs:
 
             const expectedFiles = new Set(["manifest.json"]);
             const newManifest = {};
-            const failures = [];
+            let processed = 0, skipped = 0, failed = 0, deleted = 0;
 
-            let processed = 0;
-            let skipped = 0;
-            let failed = 0;
-
-            // 2) Download + normalize each unique URL once
             for (const [sourceUrl, info] of byUrl.entries()) {
               try {
-                // Skip if we already produced a file for this sourceUrl and it still exists.
-                // If you want to *always* re-check remote images, remove this skip block.
                 const prev = oldManifest[sourceUrl];
                 if (prev?.file) {
                   const prevPath = path.join(avatarsDir, prev.file);
@@ -468,9 +427,7 @@ jobs:
                 const outFile = `${slug}.${hash}.webp`;
                 const outPath = path.join(avatarsDir, outFile);
 
-                if (!fs.existsSync(outPath)) {
-                  fs.writeFileSync(outPath, outBuf);
-                }
+                if (!fs.existsSync(outPath)) fs.writeFileSync(outPath, outBuf);
 
                 newManifest[sourceUrl] = {
                   sourceUrl,
@@ -483,13 +440,10 @@ jobs:
                 processed++;
               } catch (e) {
                 failed++;
-                failures.push({ url: sourceUrl, error: e?.message || String(e) });
                 console.error(`❌ Avatar failed: ${sourceUrl}: ${e?.message || e}`);
               }
             }
 
-            // 3) Delete orphaned files
-            let deleted = 0;
             for (const file of fs.readdirSync(avatarsDir)) {
               if (!expectedFiles.has(file)) {
                 fs.rmSync(path.join(avatarsDir, file), { force: true });
@@ -497,7 +451,7 @@ jobs:
               }
             }
 
-            // 4) Rewrite authors[].pictureUrl to local + preserve source
+            // rewrite authors[].pictureUrl
             for (const s of samples) {
               const authors = Array.isArray(s.authors) ? s.authors : [];
               for (const a of authors) {
@@ -508,77 +462,98 @@ jobs:
                 if (!entry?.file) continue;
 
                 if (!a.avatarSourceUrl) a.avatarSourceUrl = sourceUrl;
-                a.pictureUrl = rawBase + encodeURIComponent(entry.file);
+                a.pictureUrl = avatarUrlBase + encodeURIComponent(entry.file);
               }
             }
 
             fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2), "utf8");
             fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2), "utf8");
 
-            const failuresPath = path.resolve(".metadata/avatar-failures.json");
-            if (failures.length) {
-              fs.writeFileSync(failuresPath, JSON.stringify(failures, null, 2), "utf8");
-              console.log(`⚠️ Avatar failures written to: ${failuresPath}`);
-            } else if (fs.existsSync(failuresPath)) {
-              fs.rmSync(failuresPath, { force: true });
-            }
-
-            console.log(`🧑‍🎨 Avatars processed=${processed}, skipped=${skipped}, failed=${failed}, deleted=${deleted}`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_processed=${processed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_skipped=${skipped}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_failed=${failed}\n`);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_deleted=${deleted}\n`);
           }
 
-          run().catch(err => {
-            console.error("Avatar normalization failed:", err);
-            process.exit(1);
-          });
+          run().catch(err => { console.error(err); process.exit(1); });
           EOF
 
-
-      - name: Check for changes
-        id: check_changes
-        run:  |
-          git add .metadata/all-samples.json
-          if [ -f .metadata/merge-errors.json ]; then
-            git add .metadata/merge-errors.json
-          fi
-          if [ -d .metadata/thumbs ]; then
-            git add .metadata/thumbs
-          fi
-
-          if [ -d .metadata/avatars ]; then
-            git add .metadata/avatars
-          fi
-          if [ -f .metadata/avatar-failures.json ]; then
-            git add .metadata/avatar-failures.json
-          fi
-
-
-          git status
-          echo ""
-
-          if git diff --cached --exit-code .metadata/; then
-            echo "changes=false" >> $GITHUB_OUTPUT
-            echo "ℹ️ No changes detected"
-          else
-            echo "changes=true" >> $GITHUB_OUTPUT
-            echo "✅ Changes detected"
-          fi
-
-      - name: Commit and push changesF
-        if: steps.check_changes.outputs.changes == 'true'
+      - name: Write published JSON files into Docs/docs/data
+        id: publish_json
         run: |
+          node << 'EOF'
+          const fs = require("fs");
+          const path = require("path");
+
+          const allSamplesPath = path.resolve(".metadata/all-samples.json");
+          const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          const dataDir = path.resolve("Docs/docs/data");
+          fs.mkdirSync(dataDir, { recursive: true });
+
+          // all-samples.json
+          fs.writeFileSync(
+            path.join(dataDir, "all-samples.json"),
+            JSON.stringify(samples, null, 2),
+            "utf8"
+          );
+
+          // authors.json (deduped)
+          const byKey = new Map();
+          for (const s of samples) {
+            const authors = Array.isArray(s.authors) ? s.authors : [];
+            for (const a of authors) {
+              if (!a) continue;
+              const key =
+                (a.gitHubAccount && `gh:${a.gitHubAccount.toLowerCase()}`) ||
+                (a.avatarSourceUrl && `src:${a.avatarSourceUrl}`) ||
+                (a.pictureUrl && `pic:${a.pictureUrl}`) ||
+                (a.name && `name:${a.name.toLowerCase()}`);
+
+              if (!key) continue;
+
+              const existing = byKey.get(key) || {};
+              byKey.set(key, {
+                gitHubAccount: a.gitHubAccount || existing.gitHubAccount || "",
+                name: a.name || existing.name || "",
+                company: a.company || existing.company || "",
+                pictureUrl: a.pictureUrl || existing.pictureUrl || "",
+                avatarSourceUrl: a.avatarSourceUrl || existing.avatarSourceUrl || ""
+              });
+            }
+          }
+
+          const authors = Array.from(byKey.values())
+            .sort((x, y) => (x.name || "").localeCompare(y.name || ""));
+
+          fs.writeFileSync(
+            path.join(dataDir, "authors.json"),
+            JSON.stringify(authors, null, 2),
+            "utf8"
+          );
+
+          // optional tiny meta file (handy for debugging)
+          fs.writeFileSync(
+            path.join(dataDir, "generated-meta.json"),
+            JSON.stringify({ generatedAt: new Date().toISOString(), sampleCount: samples.length }, null, 2),
+            "utf8"
+          );
+          EOF
+
+      - name: Commit + push to Docs branch only
+        run: |
+          cd Docs
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          if [ "${{ steps.merge.outputs.has_errors }}" == "true" ]; then
-            git commit -m "chore:  merge all samples + thumbs (with errors) [skip ci]"
-          else
-            git commit -m "chore: merge all samples + thumbs [skip ci]"
+          git add docs/images/avatars docs/images/thumbnails docs/data/all-samples.json docs/data/authors.json docs/data/generated-meta.json
+
+          if git diff --cached --exit-code; then
+            echo "ℹ️ No changes to publish to Docs branch"
+            exit 0
           fi
 
+          git commit -m "chore: publish samples data + images [skip ci]"
           git push
           echo "✅ Changes committed and pushed"
 
