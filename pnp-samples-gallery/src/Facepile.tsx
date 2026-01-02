@@ -42,7 +42,7 @@ export function Facepile(props: FacepileProps) {
         >
             {visible.map((a, idx) => {
                 const name = displayName(a);
-                const url = props.linkToGithub ? githubUrl(a) : null;
+                const url = githubUrl(a);
 
                 const AvatarTag = url ? "a" : "div";
                 const avatarProps = url
