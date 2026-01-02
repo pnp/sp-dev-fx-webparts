@@ -85,7 +85,7 @@ currentUserTeam|boolean|no|only in Interface to handle previouse installations
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `npm run starrt`
+  - `npm run start`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
