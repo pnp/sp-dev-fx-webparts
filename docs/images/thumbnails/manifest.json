@@ -1,0 +1,2314 @@
+{
+  "pnp-sp-dev-spfx-web-parts-react-adaptive-card-host-control": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptive-card-host-control/assets/AdaptiveCardHost.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-adaptive-card-host-control.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-multiscreen-webpart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multiscreen-webpart/assets/multi-screen-webpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-multiscreen-webpart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-emoji-ratings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-emoji-ratings/assets/EmojiWPinAction.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-emoji-ratings.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-accessible-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AccessibleChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-accessible-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-area-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-area-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bar-chart-static": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChartStatic.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bar-chart-static.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bar-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bar-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bubble-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bubble-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-chartinator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-chartinator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-combo-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ComboBar.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-combo-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-custom-plugin": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/CustomPlugin.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-custom-plugin.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-doughnut-patterns": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DoughnutPatterns.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-doughnut-patterns.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-horizontal-bar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/HorizontalBarChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-horizontal-bar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-line-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/LineChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-line-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pie-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PieChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pie-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-polar-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PolarChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-polar-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-radar-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RadarChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-radar-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-realtime-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-realtime-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-scatter-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ScatterChart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-scatter-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-global-news": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-global-news.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-world-time": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-world-time.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-world-time.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-schema-extensions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-schema-extensions/assets/Screenshot 2025-09-26 at 21.30.22.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-schema-extensions.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-data-access-options": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-data-access-options/assets/ui-webpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-data-access-options.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-lob-integration": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-lob-integration.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-star-ratings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-star-ratings.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview-room.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-meeting-app-questionnaire": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-meeting-app-questionnaire/assets/web-part-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-meeting-app-questionnaire.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-onedrive-finder": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-onedrive-finder/assets/OneDrivefinderSample3.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-onedrive-finder.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-material-ui": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-material-ui/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-material-ui.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-multipage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multipage/assets/poll-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-multipage.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-rss-reader": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader-original.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-rss-reader.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-telemetry-event-sender-sample": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-telemetry-event-sender-sample.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-target-audience": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-target-audience.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-gitHubbadge": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-officegraph": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-officegraph.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-M365-Planner-Timeline/assets/webParts.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-events-dynamicdata": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-events-dynamicdata.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators": {
+    "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-tools-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/MyToolsDemo1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-tools-list.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-document-explorer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-explorer/assets/document-explorer-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-document-explorer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-graph-upload-as-pdf": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-graph-upload-as-pdf/assets/UploadAnimated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-graph-upload-as-pdf.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-outlook-copy2teams/assets/addin_overall.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-react-query": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-react-query.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-at-a-glance": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-at-a-glance.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-appinsights-usage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-usage/assets/AllWebparts.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-comparer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-comparer/assets/ComparerWebPart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-comparer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-recently-visited-sites": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recently-visited-sites.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-recently-visited-sites.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-connected-web-parts": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-connected-web-parts/assets/connected-web-parts.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-connected-web-parts.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-todo": {
+    "sourceUrl": "https://avatars2.githubusercontent.com/u/11164679?s=460&v=4",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-todo.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-async-await-sp-pnp-js": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-async-await-sp-pnp-js.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-hooks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hooks/assets/webpart.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-hooks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-reports": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-reports/assets/react-graph-reports.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-reports.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/assets/Example1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-redux": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-redux/assets/nonreactive.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-redux.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-videolibrary": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-videolibrary/src/assets/react-3d-carousel.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-videolibrary.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quotes": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quotes.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bot-framework-secure": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework-secure/assets/sp-wp-secure.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bot-framework-secure.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-remote-event-receiver-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-remote-event-receiver-manager/assets/video.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-remote-event-receiver-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-greeting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-greeting/assets/react-personal-greeting.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-greeting.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-company-stories": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-company-stories/assets/react-company-stories.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-company-stories.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-adaptivecards": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-adaptivecards.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-csv-importer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-csv-importer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-summarise-page-content/assets/page_summary.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-bootstrap-slider": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/bootstrap-slider/assets/slider_image_1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-bootstrap-slider.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dataverse": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dataverse/assets/dataverseclient.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dataverse.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-caml2table": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-caml2table.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-instagram": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-instagram.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-documents-detailslist": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-documents-detailslist/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-documents-detailslist.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-mgt-client": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-mgt-client/assets/DemoGraphClient.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-mgt-client.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-msgraph-extension": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-extension/assets/create-graph-extension.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-msgraph-extension.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-prompt-gallery": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-prompt-gallery/assets/promptGallery.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-prompt-gallery.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-configure-tab": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-configure-tab.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-lists-hide": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/ListHideWebPart.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-lists-hide.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-extend-webpack": {
+    "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-extend-webpack.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-carbon-footprint-calculator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-carbon-footprint-calculator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-file-type-distribution": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-type-distribution/assets/donutchart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-file-type-distribution.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-interactive-map": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-interactive-map.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-news-banner": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-banner/assets/NewsBanner.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-news-banner.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-save-to-onedrive-app-personal-folder": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-to-onedrive-app-personal-folder/assets/in-sharepoint.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-save-to-onedrive-app-personal-folder.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-aad-api-spo-cookie": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/aad-api-spo-cookie/assets/preview-orders.png",
+    "file": "pnp-sp-dev-spfx-web-parts-aad-api-spo-cookie.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-invoice-generator": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-invoice-generator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-aad-webapi": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-webapi/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-aad-webapi.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-svg-to-json-converter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-svg-to-json-converter/assets/webpart-german.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-svg-to-json-converter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-birthdays": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays/assets/birthdays.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-birthdays.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-jquery-cdn": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-cdn/assets/preview_weather.png",
+    "file": "pnp-sp-dev-spfx-web-parts-jquery-cdn.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-msal-msgraph": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msal-msgraph/assets/msal-wp-output.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-msal-msgraph.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-directory": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-directory.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-office-offer-creation": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-approvals": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-approvals/assets/react-my-approvals.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-approvals.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angularelements-helloworld": {
+    "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angularelements-helloworld.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-taxonomy-file-explorer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/03Link.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-taxonomy-file-explorer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sitepages-metadata": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepages-metadata/assets/demo-wp.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sitepages-metadata.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnp-controls-list-view-fields": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls-list-view-fields/assets/web-part.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnp-controls-list-view-fields.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-soccer-highlights": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-soccer-highlights.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-property-bag-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-property-bag-editor.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-apis": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-apis.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-office-breakout": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-office-breakout.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-personal-apps": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-personal-apps/assets/Image1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-personal-apps.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-tagging": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tagging/assets/webpart.JPG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-tagging.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-custom-links": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-links/assets/customlinks.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-custom-links.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-rhythm-of-business-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-rhythm-of-business-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-yet-another-FAQ-webpart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yet-another-FAQ-webpart/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-yet-another-FAQ-webpart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-mytasks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mytasks/assets/MyTasks.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mytasks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-sites": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites/assets/MySites.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-sites.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-save-attachments": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-attachments/assets/ReactSaveAttachments.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-save-attachments.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-components-dynamicloading": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-components-dynamicloading/assets/cs3.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-components-dynamicloading.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx-multiple-stores/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-modern-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-modern-calendar/assets/14b88f34-0121-11e7-8c91-56ecff9343e1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-modern-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quick-links-grid": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-grid/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quick-links-grid.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-dashboard/assets/MyDashboard_default.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-dashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-tab-field-visit-mashup": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-tab-field-visit-mashup.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-world-clocks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/ClocksInAction.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-world-clocks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bubble-template": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bubble-template/assets/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bubble-template.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-page-navigator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-navigator/assets/PageNavigator.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-page-navigator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-flag-template": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flag-template/assets/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-flag-template.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-bookmarks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-bookmarks/assets/BookmarksManager.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-bookmarks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-followed-drag-and-drop-grid": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/mainImage.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-followed-drag-and-drop-grid.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-group-members-webpart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-group-members-webpart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-slide-swiper": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-slide-swiper.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-azureapps": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-azureapps/assets/Add-New-App.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-azureapps.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-people-slick": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-people-slick/assets/react-people-slick.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-people-slick.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-myflows": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-myflows/assets/Screenshot4.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-myflows.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-organisationchart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-organisationchart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-securitygrid": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/assets/MainDisplay.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-securitygrid.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-site-provisioning-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-provisioning-manager/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-site-provisioning-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-reduxform": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-reduxform.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-group-membership-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/group-membership-manager.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-list-items-menu": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-items-menu/assets/ListMenuDocs.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-items-menu.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-palette-picker": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-palette-picker/assets/palettePickerWebPart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-palette-picker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-faqapp": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqapp/assets/FAQWebpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-faqapp.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-spupsproperty-sync": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-spupsproperty-sync.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-migration": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-migration/assets/angular-todo-spfx-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-migration.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-recent-contacts": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recent-contacts.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-recent-contacts.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-avatar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-avatar/assets/reactAvatarOutcome.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-avatar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-list-items-menu-sp2019": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-items-menu-sp2019/assets/react-list-item-menu.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-items-menu-sp2019.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-message": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message/assets/myteamsmessage.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-message.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-video-banner": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-video-banner/assets/react-video-banner-demo1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-video-banner.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-display-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-display-list/assets/display-list-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-display-list.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-json-form": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-json-form.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-evalurl": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-evalurl/assets/url-graph-eval.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-evalurl.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-team-creator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-creator/assets/teams-creator.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-team-creator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-nutrient-document-viewer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-nutrient-document-viewer/assets/Nutrient-PDF.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-nutrient-document-viewer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-spfx-solutions-alm": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-spfx-solutions-alm.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-tasks": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-tasks.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-tasks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-form-builder": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-form-builder/assets/form-builder-screen-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-form-builder.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-datatable": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-datatable.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-webhooks-realtime": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webhooks-realtime/assets/spfx-react-webhooks-realtime.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-webhooks-realtime.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-ioc-tests": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ioc-tests/assets/preview.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-ioc-tests.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-recently-used-documents": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recently-used-documents.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-recently-used-documents.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tailwindcss3": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tailwindcss3.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-staffdirectory": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staffdirectory/assets/staffdirectory.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-staffdirectory.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-twitter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-twitter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-migrate-settings-approot/assets/migrate-personal-settings-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-project-online/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-redux-async-immutablejs": {
+    "sourceUrl": "https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-redux-async-immutablejs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-global-news-sp2019": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news-sp2019/assets/GlobalNews02.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-global-news-sp2019.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pagecontributors": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pagecontributors.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-site-information": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-site-information.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-site-information.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tabacordion": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tabacordion/assets/TabAccordionWebpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tabacordion.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-multipage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-multipage/assets/poll-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-multipage.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-adaptivecards-hooks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards-hooks/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-adaptivecards-hooks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-jest-testing": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-jest-testing.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-conversationview": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-conversationview/assets/1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-conversationview.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-myonedrive": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-myonedrive/assets/MyOneDriveInAction.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-myonedrive.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-message-user": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-message-user.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angularelements-html-templatefile": {
+    "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angularelements-html-templatefile.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-carousel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carousel/assets/carousel.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-carousel.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-taxonomypicker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-richtext-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-richtext-editor/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-richtext-editor.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-knockout-taxonomy": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-taxonomy/assets/Taxonomy.png",
+    "file": "pnp-sp-dev-spfx-web-parts-knockout-taxonomy.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-custompropertypanecontrols": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-custompropertypanecontrols.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-timeline": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-timeline/assets/webpart-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-timeline.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-m365-services-health": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-services-health/assets/M365ServiceHealthDetail.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-m365-services-health.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-sections-navigation/assets/page-nav.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-groupviewer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-groupviewer/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-groupviewer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-ppw-html": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppw-html/assets/React-PPW-HTML-Sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-ppw-html.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnp-js-sample": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-sample/assets/react-pnp-js-sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnp-js-sample.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-tabs-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-tabs-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-stock-information": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-stock.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-stock-information.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-edit-applicationcustomizer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-edit-applicationcustomizer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tree-orgchart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tree-orgchart/assets/Screenshot1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tree-orgchart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-connector.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-hub-site-navigator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hub-site-navigator/assets/HubSiteNavigator.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-hub-site-navigator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnpjs-http-client": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-http-client/assets/UpdateAPICall.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnpjs-http-client.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-advanced-commenting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-advanced-commenting.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-app-secret-expiration": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-app-secret-expiration/assets/react-graph-app-secret-expiration-animated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-app-secret-expiration.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-advent-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-advent-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-custom-action-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-action-manager/assets/image.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-custom-action-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-tabs-graph": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-tabs-graph.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-provision-assets": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-provision-assets/assets/spfx-provision-assets.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-provision-assets.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-propertycontrols-svg": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-propertycontrols-svg/assets/js-propertycontrols-svg.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-propertycontrols-svg.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-script-editor-onprem": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-script-editor-onprem/assets/modern-script-editor-wp.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-script-editor-onprem.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-mobx": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mobx.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-email": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-email.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-email.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-word-game": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-word-game/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-word-game.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-extend-gulp": {
+    "sourceUrl": "https://avatars3.githubusercontent.com/u/7882052?s=460&v=4",
+    "file": "pnp-sp-dev-spfx-web-parts-js-extend-gulp.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tiles": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-tiles.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tiles.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-events": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-events.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-link-presenter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-link-presenter/assets/modernlink-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-link-presenter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-events-aggregator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-aggregator/assets/spfx-event-aggregator.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-events-aggregator.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-groups": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-groups.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-real-time": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-real-time/assets/animated-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-real-time.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-image-magnifier": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-image-magnifier.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-aad-webapi": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-aad-webapi/assets/preview.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-aad-webapi.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-openai-devops": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-devops/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-openai-devops.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-versiondisplay": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-versiondisplay/assets/versiondisplay.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-versiondisplay.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-script-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-script-editor/assets/modern-script-editor-wp.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-script-editor.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/_nopreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/02_employeelistview_ecb3.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-listview-context-ecb.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-find-parker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-find-parker/assets/parker.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-find-parker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-personalemail": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-personalemail.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-add-formcustomizer-to-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-formcustomizer-to-list/assets/webpartinaction-form.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-add-formcustomizer-to-list.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-htm-templating": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-htm-templating/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-htm-templating.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-site-content": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContentWebpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-site-content.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-calendar/assets/moderCalendar1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-spfx-control-iframepanel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-control-iframepanel/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-spfx-control-iframepanel.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-retrieval-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-retrieval-api/assets/page.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-retrieval-api.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-css-in-js-typestyle": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-css-in-js-typestyle.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-followedsites": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-followed-sites.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-followedsites.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-groups-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-groups-teams.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-search": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-search/assets/angularSearch.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-search.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-feedback": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback/assets/feedbackwebpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-feedback.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-governor-sharing": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-governor-sharing.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-telephonedirectory/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-people-directory": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-people-directory.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-people-directory.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-countdown-timer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-countdown-timer/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-countdown-timer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-microsoft-learn-agent": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-api.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-microsoft-learn-agent.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quick-poll": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-poll/assets/react-quick-poll.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quick-poll.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-okr-tracker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-okr-tracker/assets/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-okr-tracker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-mermaid-diagram": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/js-mermaid.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-mermaid-diagram.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-weather-information": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-weather.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-weather-information.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-teams.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-advanced-iframe": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-iframe/assets/advancediframewebpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-advanced-iframe.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-vue-js-org-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/vue-js-org-chart/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-vue-js-org-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-news": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Single-View-Default.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-news.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sales-orders": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sales-orders.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bot-framework": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bot-framework.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-poll": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/react-poll.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-poll.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-links": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-links.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-links.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-check-user-group": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-check-user-group/assets/CheckUserGroup.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-check-user-group.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-associated-sites-links": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-associated-sites-links/assets/result.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-associated-sites-links.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-solution-editions": {
+    "sourceUrl": "https://avatars3.githubusercontent.com/u/17036219?s=460&v=4",
+    "file": "pnp-sp-dev-spfx-web-parts-js-solution-editions.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-organization-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-organization-chart/assets/Screenshot1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-organization-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-tinymce": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-tinymce/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-tinymce.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-dynamic-bundling-libraries": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-js-dynamic-bundling-libraries.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-google-fit": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-google-fit/assets/webpart-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-google-fit.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-knockout-dependent-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-dependent-properties/assets/dep-props.png",
+    "file": "pnp-sp-dev-spfx-web-parts-knockout-dependent-properties.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-hero-webpart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero-webpart/assets/Hero-Webpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-hero-webpart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-password-vault": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-password-vault.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-feedback-form": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-feedback-form/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-feedback-form.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-check-flows": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-check-flows/assets/CheckFlows.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-check-flows.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-cascading-managed-metadata": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-cascading-managed-metadata.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-hublevel-subscriptions/assets/SubscriptionsDashboard.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-realtime-documents": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-documents/assets/list-subscription-webpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-realtime-documents.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-employees-onboarding": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-employees-onboarding.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-feature-framework": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feature-framework/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-feature-framework.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-aad-implicitflow": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-aad-implicitflow.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-document-ai-chat": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-ai-chat/assets/kernel-memory-architecture.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-document-ai-chat.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-content-query-onprem": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-onprem/Misc/toolpart.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-content-query-onprem.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-profile-card-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-profile-card-properties/assets/Screenshot5.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-profile-card-properties.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-theme-variant/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-anniversary-counter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-anniversary-counter/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-anniversary-counter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-content-query-online": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-online/assets/toolpart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-content-query-online.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-custom-localization": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-custom-localization.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-3rd-party-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-3rd-party-api.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-private-libraries": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-private-libraries/assets/HomeScreen.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-private-libraries.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-item-History": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-item-History/Capture.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-item-History.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-skype-status": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-skype-status/images/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-skype-status.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-adaptive-cards-image-gallery": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-adaptive-cards-image-gallery.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-engage-hub": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-engage-hub/assets/engage_hub1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-engage-hub.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-styled-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-styled-list.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-covid19-info": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-covid19-info/assets/covid-counter.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-covid19-info.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-todo-basic": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-todo-basic/assets/todo-basic-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-todo-basic.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-charts": {
+    "sourceUrl": "https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/modern-chart2.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-charts.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/diff-screencap.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-invitation-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-invitation-manager/assets/SPFx-Invitation-Manager.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-invitation-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-recaptcha": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-recaptcha/screens/WebpartInAction.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-recaptcha.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-appinsights-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-appinsights-dashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-easter-egg-hunt-game": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/huntgame.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-easter-egg-hunt-game.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-list-search": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-search/assets/differentSources.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-search.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-riot-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/riot-list/assets/riot-list-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-riot-list.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-kiota-custom-api-client": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kiota-custom-api-client/assets/react-kiota-custom-api-client.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-kiota-custom-api-client.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-elevatedprivileges": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-elevatedprivileges/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-elevatedprivileges.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-facebook-plugin": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-facebook-plugin.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-doccard-faq": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-doccard-faq/assets/FAQdocCardPreview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-doccard-faq.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-org-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-org-chart/assets/List.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-org-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-msgraph-thumbnail/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-zod": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zod/assets/data-usage.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-zod.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-github-badge": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-github-badge.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular2-prototype": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular2-prototype/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular2-prototype.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-upgrade-me": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-upgrade-me.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-lead-dashboard/assets/LeadAssistDashboard_overview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quick-links-pro": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quick-links-pro.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-calendar-feed": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-calendar-feed.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-kanban-board": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanofficeUI.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-kanban-board.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-follow-document": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-follow-document/assets/FollowDocumentSample1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-follow-document.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-birthdays-per-month": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/app.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-birthdays-per-month.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-accordion": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/AccordionPreview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-accordion.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sites-selected-admin": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sites-selected-admin/assets/sites-manager-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sites-selected-admin.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-skype-status": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-skype-status/images/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-skype-status.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-mcs-hr-assistant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcs-hr-assistant/assets/demo-1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mcs-hr-assistant.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-image-gallery": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-gallery/assets/image-gallery.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-image-gallery.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-theme-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-theme-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-dashboard/assets/Configuration.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-dashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnp-js-hooks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-hooks/assets/react-pnp-js-sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnp-js-hooks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-calendar.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-whos-in": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-whos-in/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-whos-in.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-pnp-controls": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls/assets/webpart-outcome.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-pnp-controls.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-designpatterns-typescript": {
+    "sourceUrl": "https://avatars3.githubusercontent.com/u/6962857?s=460&v=4",
+    "file": "pnp-sp-dev-spfx-web-parts-react-designpatterns-typescript.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-personal-contacts": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-contacts.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-personal-contacts.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dall-e-image-generation": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-dall-e-image-generation/assets/react-dall-e-image-generation.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dall-e-image-generation.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-document-links-accordion": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-environment-settings": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-environment-settings/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-environment-settings.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-peoplepicker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-peoplepicker/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-peoplepicker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-azure-devops-tasks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-devops-tasks/assets/react-azure-devops-tasks.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-azure-devops-tasks.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-download-multiple-documents": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-download-multiple-documents/assets/MultipleDownloadsWebPartDemo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-download-multiple-documents.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-section-backgrounds": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/section-backgrounds/assets/webpartexample3.png",
+    "file": "pnp-sp-dev-spfx-web-parts-section-backgrounds.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-enhanced-page-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-page-properties/assets/app.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-enhanced-page-properties.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-apim-tablestorage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-apim-tablestorage/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-apim-tablestorage.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-file-upload": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-upload/assets/SPFileUploadPreview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-file-upload.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-restaurant-menu": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-restaurant-menu/assets/restaurantmenu.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-restaurant-menu.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/propertypane.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-app-settings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-app-settings/assets/app-settings-class.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-app-settings.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-vuejs-todo-single-file-component": {
+    "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+    "file": "pnp-sp-dev-spfx-web-parts-vuejs-todo-single-file-component.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-questions-and-answers": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-admin-sc-catalog-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-admin-sc-catalog-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnpjsexplorer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnpjsexplorer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-faqs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqs/assets/FAQWebpart.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-faqs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-carousel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-carousel/assets/AwardRecognition.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-carousel.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-use-reducer-hook": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-use-reducer-hook.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-accordion-section": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-section/assets/react-accordion-section.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-accordion-section.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-cherry-picked-content": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cherry-picked-content/assets/React-Cherry-Picked-Content-Sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-cherry-picked-content.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-settings-approot": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-settings-approot/assets/webpart-screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-settings-approot.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-sharepoint-crud": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/sharepoint-crud/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-sharepoint-crud.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-banner": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-banner.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-banner.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-fluentui-9": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzNLB4XwAIFMRh.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-fluentui-9.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-public-holidays-global": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-public-holidays-global.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-demo-time": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-demo-time/assets/demo-time-gif1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-js-demo-time.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dashboards": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dashboards/assets/AppInsights.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dashboards.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-employee-spotlight": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-employee-spotlight.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-yammer-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-yammer-api.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-powerbi-embedded": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-powerbi-embedded.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-enhanced-button": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-button/assets/app.jpeg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-enhanced-button.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-functional-component-with-data-fetch": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component-with-data-fetch/assets/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-functional-component-with-data-fetch.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-extension-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-extension-manager/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-extension-manager.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-flighttracker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-flighttracker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-youtube": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-youtube/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-youtube.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-webpartdetails": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webpartdetails/assets/webpartDetails.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-webpartdetails.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-theme-manager-2019": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager-2019/assets/apply-a-theme.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-theme-manager-2019.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pages-hierarchy/assets/PagesHierarchy.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-holidays-calendar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-holidays-calendar/assets/209691123-03ac3c5d-cc8e-490e-8cb2-837539914db8.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-holidays-calendar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-feedback-sidebar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback-sidebar/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-feedback-sidebar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamics-crm-api/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-mgtevents": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mgtevents.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-search": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-search.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tiles-v2": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tiles-v2/assets/react-tiles-v2.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tiles-v2.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-content-block": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-block/assets/content-block-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-content-block.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-themes": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-themes/assets/themes.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-themes.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-news-extension": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-news-extension.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-cross-device-data": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cross-device-data/assets/Preview.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-cross-device-data.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-datatable-using-mui-tables": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/first.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-datatable-using-mui-tables.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quick-links": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quick-links.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-secret-santa": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-secret-santa/assets/SecretSanta.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-secret-santa.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-training-checklist": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-training-checklist/assets/trainingchecklist.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-training-checklist.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-js-css-ref/assets/webpartinaction.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-ticket-mgnt": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/new ticket.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-ticket-mgnt.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-todo": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-todo/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-todo.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tinymce": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tinymce/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tinymce.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-multilist-grid": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-multilist-grid.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-daterangepicker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-daterangepicker.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-chatgpt-app": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chatgpt-app/assets/ChatGPT.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-chatgpt-app.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-minesweeper": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-minesweeper/assets/Minesweeper.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-minesweeper.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-functional-component": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-functional-component.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-jquery-photopile": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-photopile/assets/photopileoverview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-jquery-photopile.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-offline-first": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-offline-first/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-offline-first.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-list-view-metrics": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-view-metrics/assets/asset1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-view-metrics.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-bot-framework-sso": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework-secure/assets/sp-wp-secure.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bot-framework-sso.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-emp-recognition": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Add recognition.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-emp-recognition.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-flow-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Dashboard.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-flow-dashboard.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-property-pane-navigation": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-property-pane-navigation/assets/navigation_in_action.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-property-pane-navigation.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-copy-views": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copy-views/assets/copy-views.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copy-views.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-modern-birthdays": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-display-hierarchy": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/webpart-preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-display-hierarchy.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-workbench-customizer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-workbench-customizer/assets/Preview.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-workbench-customizer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/dpstep1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tailwindcss": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tailwindcss.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-zpl-viewer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zpl-viewer/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-zpl-viewer.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-functional-stateful-component": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-stateful-component/Screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-functional-stateful-component.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-dev-radar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dev-radar/dev-radar.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dev-radar.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-webpart-report": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-webpart-report/assets/Animated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-webpart-report.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-visio": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG",
+    "file": "pnp-sp-dev-spfx-web-parts-react-visio.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-msgraph": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-msgraph/assets/Connect.png",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-msgraph.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-webcam": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-webcam.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-angular-greeting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-greeting/assets/captured.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-angular-greeting.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-list-form": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-form/assets/React-ListForm-Overview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-form.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-roomchat": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-roomchat.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-project-online": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-project-online/assets/Preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-project-online.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-side-panel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-side-panel/assets/side-panel.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-side-panel.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-chat-gpt": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example2.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-chat-gpt.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-send-notification": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-send-notification/assets/teams-notification-sender.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-send-notification.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-msgraph-peoplesearch": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-msgraph-peoplesearch.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-pnpjs-spsite-er-diagram": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPageFullScreen.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-pnpjs-spsite-er-diagram.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-members-with-presence": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-members-with-presence/assets/react-members-with-presence.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-members-with-presence.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-multimedia-gallery": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-multimedia-gallery.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-yammer-praise": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yammer-praise/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-yammer-praise.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-flow-button": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-button/assets/react-flow-button.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-flow-button.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tour-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-animated.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tour-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-manage-o365-groups": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-o365-groups/assets/web-part-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-manage-o365-groups.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-outlook-add-todo-task": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-outlook-add-todo-task/assets/spfx-todo-outlook.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-outlook-add-todo-task.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-chat-sk": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-sk/assets/ChatUI.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-chat-sk.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-uieditor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-uieditor/assets/react-uieditor.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-uieditor.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-tenant-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tenant-properties/assets/TenantProperties2.jpg",
+    "file": "pnp-sp-dev-spfx-web-parts-react-tenant-properties.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-quick-links-hierarchy": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-hierarchy/assets/quick-links-hierarchy-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-quick-links-hierarchy.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-js-applicationinsights-api-calls-tracking": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/alerttule.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-applicationinsights-api-calls-tracking.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-my-onedrive-info": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/ACEScreenshot1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-onedrive-info.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-photo-sync": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-photo-sync/assets/SPUPS_Photo_Sync_1.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-photo-sync.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-organization-chart": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organization-chart/assets/orgchart.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-organization-chart.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-taxonomypicker-panel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
+    "file": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker-panel.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-graph-profile-awards": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-profile-awards/assets/react-graph-profile-awards.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-graph-profile-awards.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-image-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-image-editor.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-convert-to-pdf/demo/convert-docs-to-pdf.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-send-to-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-send-to-teams/assets/SendToTeams.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-send-to-teams.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-field-conditionalformatting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-conditionalformatting/assets/conditionalformatting-preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-field-conditionalformatting.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-print": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-print/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-print.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-hidefrom-externalusers": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-hidefrom-externalusers/assets/SharePoint-hidefrom-guest-user.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-hidefrom-externalusers.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-myfavourites": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-myfavourites/assets/spfx-myfavourites.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-myfavourites.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-machine-translations": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-machine-translations/assets/sample.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-machine-translations.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-clone": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-clone/assets/spfxClone-Animation.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-clone.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-myfollowedsites": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-myfollowedsites/assets/spfx-react-myFollowedSites.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-myfollowedsites.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-telemetry-listener/assets/preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-ai-document-assistant.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-app-announcements": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-app-announcements/assets/announcements-preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-app-announcements.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-movedoc2blob": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/select_move_document.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-movedoc2blob.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-bot-framework-secure": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-bot-framework-secure/assets/sp-ex-secure.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-bot-framework-secure.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-customizer-notification": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-notification/assets/Light theme.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-customizer-notification.webp"
+  },
+  "pnp-sp-dev-fx-extensions-react-formcustomizer-customers": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-formcustomizer-customers/assets/viewform.png",
+    "file": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-msal-bot": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-msal-bot/images/react-msal-bot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-msal-bot.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-botframework-chat": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-botframework-chat/assets/bf_app_customizer01.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-botframework-chat.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-field-animated-progress": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-field-animated-progress.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-dialog": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-dialog/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-dialog.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-toggle": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-toggle/assets/react-field-toggle.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-toggle.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-hide-commands": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-hide-commands/CssSelector.PNG",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-hide-commands.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-personal-assistant": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-personal-assistant/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-listdrivenplaceholders/assets/placeholders.jpg",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-grouplinks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-grouplinks/assets/react-application-grouplinks.jpg",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-grouplinks.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-driveitem-properties": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-driveitem-properties.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-tfl-status": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tfl-status/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-tfl-status.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-search-dynamicdata": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-search-dynamicdata/assets/samplepnpExtensions.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-search-dynamicdata.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-form-settings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-form-settings/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-form-settings.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-sitepagecoremetadata": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sitepagecoremetadata/assets/SitePageMetadataExtension.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-sitepagecoremetadata.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-flows-list/assets/HowItWorks.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-slider": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-slider/assets/slider.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-slider.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-redirect": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/tree/raw/samples/js-application-redirect/ext-redirects.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-redirect.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-move-items/assets/CopyMoveItems.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-pva-bot": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-pva-bot/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-pva-bot.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-addfolders": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-addfolders/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-addfolders.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-attachment-info": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-attachment-info/assets/react-field-attachment-info.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-attachment-info.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-page-comments-sentiment": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-comments-sentiment/assets/react-application-page-comments-sentiment.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-page-comments-sentiment.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-portal-footer": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-portal-footer.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-portal-footer.webp"
+  },
+  "pnp-sp-dev-fx-extensions-react-application-messagebanner": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-messagebanner/assets/BannerMessageAdminView.png",
+    "file": "pnp-sp-dev-fx-extensions-react-application-messagebanner.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-graph-client": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-graph-client/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-graph-client.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-unique-permissions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-copy-page": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-copy-page.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-qna-chat": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-qna-chat/assets/qnachatbot.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-qna-chat.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-field-taskpriority": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-taskpriority/assets/js-field-taskpriority-preview.jpg",
+    "file": "pnp-sp-dev-spfx-extensions-js-field-taskpriority.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-get-thumbnail": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-get-thumbnail/assets/GetThumbnail.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-get-thumbnail.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-dynamic-site-form": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-site-form/assets/dynamic-site-form.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-dynamic-site-form.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-vision-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-vision-api/assets/react-command-vision-api.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-vision-api.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-lock-item": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-lock-item/assets/lock-item.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-lock-item.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-directions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-directions/assets/directions-preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-directions.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-mail-view-as-image/demo/Mail_this_view.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-image-editor": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-image-editor/assets/Screenshot1.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-image-editor.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-share-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-pnpjs/assets/share.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-share-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-copilot-aprils-fool": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-copilot-aprils-fool.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-tenant-global-navbar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-global-navbar/assets/Tenant-Global-NavBar.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-tenant-global-navbar.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-m365-service-health": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-m365-service-health.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-qrcode": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-qrcode/assets/QRCode.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-qrcode.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-pnp-field-renderer-helper/assets/FieldRendererHelper.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper.webp"
+  },
+  "pnp-sp-dev-spfx-web-parts-react-company-templates": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-company-templates/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-company-templates.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-sites-hubsite-switcher": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sites-hubsite-switcher/assets/react-application-sites-hubsite-switcher.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-sites-hubsite-switcher.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-office-groups-nav": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-office-groups-nav/assets/office-groups-nav.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-office-groups-nav.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-page-model-pnpjs/assets/use-Modern-Page-Template-extension.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-js-share-to-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-share-to-teams/assets/sendToTeams.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-js-share-to-teams.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-header-toggler": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-header-toggler/assets/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-header-toggler.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-my-sites-hub": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-my-sites-hub.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-related-bing-news/assets/related-bing-news.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-festivals": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-festivals/demo/festivals.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-festivals.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-jquery-field-itemorder": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/jquery-field-itemorder/assets/spfxItemOrder-Animation.gif",
+    "file": "pnp-sp-dev-spfx-extensions-jquery-field-itemorder.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-selecteditems-export": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-selecteditems-export/assets/excel-export-preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-selecteditems-export.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-teams-chats-sharepoint": {
+    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-teams-chats-sharepoint.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-singlepartapppage/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-dynamically-importing-styles": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-dynamically-importing-styles/assets/DynamicImportingResultsInBrwoser.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-dynamically-importing-styles.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-folder-select": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-folder-select/assets/folderselect.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-folder-select.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-utility-extensions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-utility-extensions.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-file-size-viewer/assets/FileSizeViewer.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-votes": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-votes.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-direct-link": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-direct-link/assets/directlink.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-direct-link.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-webhooks-notification": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-webhooks-notification/assets/spfx-react-webhooks-notification.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-webhooks-notification.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-discuss-now": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-discuss-now/assets/Discuss-Now-Command-Set.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-discuss-now.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-appinsights-advanced": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights-advanced/assets/Performance.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-appinsights-advanced.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-news-ticker": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-news-ticker/assets/react-application-news-ticker.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-news-ticker.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-team-archived-notification": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-team-archived-notification/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-team-archived-notification.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-injectcss": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-injectcss/assets/sampleresults.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-injectcss.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-alert-message": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-alert-message/assets/GlobalAlerts.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-alert-message.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-reporting": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-reporting/assets/app-charts.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-reporting.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-item-History": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-item-History/Capture.PNG",
+    "file": "pnp-sp-dev-spfx-extensions-react-item-History.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-lists-notifications/assets/myListsNotifications.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications.webp"
+  },
+  "pnp-sp-dev-fx-extensions-react-command-share-to-teams": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-to-teams/assets/preview.PNG",
+    "file": "pnp-sp-dev-fx-extensions-react-command-share-to-teams.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-jquery-application-toastr": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/jquery-application-toastr/assets/spfxToastr-Preview.PNG",
+    "file": "pnp-sp-dev-spfx-extensions-jquery-application-toastr.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-menu-footer-classic-modern": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-menu-footer-classic-modern/Documentation/images/ClassicFullHeaderFooter.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-menu-footer-classic-modern.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-logo-festoon": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-logo-festoon/assets/festoon-shot.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-logo-festoon.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-duetasks": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-duetasks/assets/app-customizer.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-duetasks.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-guest-message": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-guest-message/assets/externalmessage.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-guest-message.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-change-page-layouttype/assets/FileSelection.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-analytics": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-analytics/assets/js-application-google-analytics.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-analytics.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-custom-command-bar": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-custom-command-bar/assets/command-bar.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-custom-command-bar.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-user-permission": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-user-permission/assets/react-field-user-permission.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-user-permission.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-copy-classic-link": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-copy-classic-link/demo/copy-classic-link.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-copy-classic-link.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-announcements": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-announcements/assets/announcements-MUI.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-announcements.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-demote-news": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-demote-news/assets/preview.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-demote-news.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-aadtokenprovider-bot": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-aadtokenprovider-bot/images/react-aadtokenprovider-bot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-aadtokenprovider-bot.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-modern-version-history": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-modern-version-history/assets/Demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-modern-version-history.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-convert-to-pdf/screenshot.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-text-analytics-api": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-text-analytics-api/assets/react-field-text-analytics-api.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-text-analytics-api.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-send-document": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-send-document/assets/preview.PNG",
+    "file": "pnp-sp-dev-spfx-extensions-react-send-document.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-regions-footer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-regions-footer/assets/Regions-Footer.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-regions-footer.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-bot-framework-sso": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-bot-framework-sso/assets/sp-ex-sso.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-bot-framework-sso.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-microsoft-clarity": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-microsoft-clarity/assets/dashboard.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-microsoft-clarity.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-pnp-file-type-renderer/assets/file-type-renderer.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-jump-to-folder": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-jump-to-folder/assets/jump-to-folder.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-jump-to-folder.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-weather-widget": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-weather-widget/assets/weatherwidget.PNG",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-weather-widget.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-breadcrumb": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-breadcrumb/assets/breadcrumb-sample.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-breadcrumb.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-field-weather": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-weather/assets/weather-preview.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-field-weather.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-intranet-searchbox": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-intranet-searchbox/assets/IntranetSearchBox.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-intranet-searchbox.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-command-item-permissions": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-item-permissions/assets/item-permissions.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-command-item-permissions.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-mega-menu": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-mega-menu.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-js-application-appinsights": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights/assets/appinsights-1.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-appinsights.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-pnp-search-webpart-settings/assets/copy_pnp_search_results_settings.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-alerts": {
+    "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-alert.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-alerts.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-application-quick-create": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-create/assets/QuickCreateDemo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-quick-create.webp"
+  }
+}
