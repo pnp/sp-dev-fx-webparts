@@ -1,0 +1,25 @@
+<section class="section-base team" id="{{ .File.BaseFileName | safeHTML }}">
+<div class="section-inner">
+    <menu class="section-grid">
+        <li class="teams-header">
+            <header>
+                <h1>{{ .Title | safeHTML }}</h1>
+                {{ .Content | safeHTML }}
+            </header>
+        </li>
+        {{ $datafile := .Params.datafile }}
+        {{ $data := index .Site.Data $datafile }}
+        {{ range $data }}
+        <li>
+
+            {{ partial "pnpstyles/organisms-team-card" . }}
+        </li>
+        {{ end }}
+        <li class="teams-end">
+            <p>
+                {{ .Description }}
+            </p>
+        </li>
+    </menu>
+</div>
+</section>

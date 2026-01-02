@@ -1,0 +1,16 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=organisms-sample-card
+
+Variables:
+.title: The title
+.image: The image URL
+
+*/}}
+<a href="{{ .externalLink }}" class="card-link"  aria-label="{{ .title | htmlEscape }}">
+<article class="card sample">
+    <figure class="sample-media">
+        <img src="{{ .image  | absURL }}" class="sample-media-img" alt="{{ .title | htmlEscape }}"/>
+    </figure>
+    {{ partial "pnpstyles/molecules-card-side-plate-hor" . }}
+</article>
+</a>

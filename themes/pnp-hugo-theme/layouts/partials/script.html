@@ -1,0 +1,3 @@
+{{ $js := resources.Get "js/main.js" }}
+{{ $js = $js | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>

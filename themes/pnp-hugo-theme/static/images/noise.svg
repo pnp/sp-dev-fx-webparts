@@ -1,0 +1,26 @@
+<!-- svg: first layer -->
+<svg viewBox='0 0 136 136' xmlns='http://www.w3.org/2000/svg'>
+    <filter id='noiseFilter'>
+        <!-- <feTurbulence
+            type='fractalNoise'
+            baseFrequency='0.3'
+            numOctaves='10'
+            stitchTiles='stitch'/> -->
+        <feTurbulence baseFrequency="0.3" numOctaves="5" result="turb" stitchTiles="stitch"
+            type="fractalNoise"></feTurbulence>
+        <!-- <feColorMatrix in="turb" type="saturate" values="0.10" result="turb2"/>
+        <feColorMatrix in="turb2" type="luminanceToAlpha" />
+        <feColorMatrix type="matrix" values="0 0 0 1 0
+                                     0 0 0 1 0
+                                     0 0 0 1 0
+                                     0 0 0 0 1"/> -->
+        <feComponentTransfer>
+            <feFuncA type="linear" slope="0.1" />
+        </feComponentTransfer>
+        <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+        </feMerge>
+    </filter>
+    <rect width='100%' height='100%' filter='url(#noiseFilter)' fill-opacity="0.1" />
+</svg>

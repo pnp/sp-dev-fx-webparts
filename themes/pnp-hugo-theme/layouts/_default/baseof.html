@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
+    {{ "<!-- Made with ❤️ by the PnP team -->" | safeHTML }}
+    {{ "<!-- Design: Stefan Bauer (https://n8d.at/)-->" | safeHTML }}
+    {{ "<!-- Site: Hugo Bernier (https://tahoeninja.blog/)-->" | safeHTML }}
+</head>
+<body class="pnp-backdrop">
+    <div class="wrapper">
+        {{- partial "header.html" . -}}
+    </div>
+    
+    <main>
+    {{- block "main" . }}{{- end }}
+    </main>
+
+    {{ if ne .Layout "summer-vacation" }}
+        {{- partial "footer.html" . -}}
+    {{ end }}
+
+    {{- partial "script.html" . -}}
+
+    {{ range .Site.Params.customJS }}
+    {{ if hugo.IsServer }}
+    {{ $script := resources.Get . }}
+    <script src="{{ $script.Permalink }}"></script>
+    {{ else }}
+    {{ $script := resources.Get . | minify  }}
+    <script src="{{ $script.Permalink }}" ></script>
+    {{ end }}
+    {{ end }}
+
+    {{ range .Site.Params.customRemoteJS }}
+    {{ if hugo.IsServer }}
+    {{ $script := resources.GetRemote . }}
+    <script src="{{ $script.Permalink }}"></script>
+    {{ else }}
+    {{ $script := resources.GetRemote . | minify }}
+    <script src="{{ $script.Permalink }}" ></script>
+    {{ end }}
+    {{ end }}
+
+    {{ template "_internal/google_analytics.html" . }}
+
+    {{ if and .Site.Params.googleTagManager .Site.Params.googleTagManager.id }}
+    {{- partial "analytics/googletagmanager" . -}}
+    {{ end }}
+    
+    {{ if and .Site.Params.applicationInsights .Site.Params.applicationInsights.connectionString }}
+    {{- partial "analytics/applicationinsights" . -}}
+    {{ end }}
+
+    {{ if and .Site.Params.clarity .Site.Params.clarity.trackingCode }}
+    {{- partial "analytics/clarity" . -}}
+    {{ end }}
+
+    {{ if not .Site.Params.disablePnPTelemetry }}
+    {{- partial "analytics/pnptelemetry" . -}}
+    {{ end }}
+
+    {{- partial "cookie-consent" . -}}
+
+    {{- partial "body/extensions" . -}}
+</body>
+</html>

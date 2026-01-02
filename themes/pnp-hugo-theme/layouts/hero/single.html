@@ -1,0 +1,16 @@
+<section class="hero-main"  id="{{ .File.BaseFileName | safeHTML }}">
+<div class="hero-main-inner">
+    {{ partial "pnpstyles/atoms-logo-big.html" . }}
+
+    {{ with .Content }}
+    <div class="tagline">
+        {{ . | safeHTML }}
+    </div>
+    {{ end }}
+    {{ with .Title }}
+    <div class="call2action">
+        {{. | safeHTML }}
+    </div>
+    {{ end}}
+</div>
+</section>

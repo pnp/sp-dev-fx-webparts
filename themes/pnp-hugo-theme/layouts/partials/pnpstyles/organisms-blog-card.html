@@ -1,0 +1,46 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=organisms-blog-card
+
+Variables:
+.title: The title
+.image: The image URL
+.description: The description
+.date: The date of the blog post
+.author: The author of the blog post
+.type: The blog post tag
+*/}}
+
+<article class="card blog" aria-label="{{ .title | htmlEscape }}">
+
+    <figure class="blog-media">
+        <img src="{{ .image | absURL }}" class="blog-media-img" alt="{{ .title | htmlEscape }}">
+    </figure>
+    <div class="blog-content">
+        <h2 class="blog-headline">
+            {{ .title }}
+        </h2>
+        <p class="blog-excerpt">
+            {{ .description }}
+        </p>
+        <div class="blog-meta">
+            <div class="blog-info">
+                <time class="blog-created" datetime="{{ .Date.Format "2006-01-02" }}">{{ .date | dateFormat "Jan 2, 2006" }}</time>
+                <div class="blog-author">by {{ .author }}</div>
+            </div>
+            <div class="blog-type">
+
+                    {{ with .categories }}
+                                    <div class="blog-cat">
+                    {{ with index . 0 }}
+                    {{ . }}
+                    {{ end }}
+                </div>
+                    {{ end }}
+
+                    
+
+            </div>
+        </div>
+    </div>
+
+</article>

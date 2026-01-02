@@ -1,0 +1,23 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=organisms-main-header
+
+Variables:
+. (Site): The site context
+*/}}
+<header class="page-header">
+    {{ partial "pnpstyles/atoms-logo-small.html" . }}
+
+    <nav class="nav">
+        <button class="hamburger" tabindex="-1">
+            <svg class="active">
+                <title id="ham-title-active">Click to close - Hamburger in form of arrows</title>
+                <use xlink:href="{{ "images/base-assets.svg" | absURL }}#hamburger"></use>
+            </svg>
+            <svg class="inactive">
+                <title id="ham-title-inactive">Click to open - Hamburger in form of three stripes</title>
+                <use xlink:href="{{ "images/base-assets.svg" | absURL }}#hamburger-inactive"></use>
+            </svg>
+        </button>
+        {{ partial "pnpstyles/molecules-nav-primary.html" . }}
+    </nav>
+</header>

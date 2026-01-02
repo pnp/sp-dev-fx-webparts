@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/vendor/pnp-samples-gallery/pnp-samples-gallery.css"/>
+<script>
+    // Minimal shim for browser bundles expecting Node's `process`
+    window.process = window.process || { env: { NODE_ENV: "production" } };
+</script>
+<section class="section-base samples" id="{{ .File.BaseFileName | safeHTML }}">
+<div class="section-inner">
+    <header class="section-header">
+        <h1>{{ .Title | safeHTML}}</h1>
+        {{if .Description  }}
+        <p>{{ .Description | safeHTML }}</p>
+        {{ end }}
+    </header>
+    {{ if .Content  }}
+    <article class="main">
+        {{ .Content }}
+    </article>
+    {{ end }}
+    <div data-pnp-samples-gallery
+        data-src="https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/.metadata/all-samples.json">
+    </div>
+</div>
+</section>
+
+
+
+
+
+<script src="/vendor/pnp-samples-gallery/pnp-samples-gallery.js?cb={{ now.Unix }}"></script>

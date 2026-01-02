@@ -1,0 +1,17 @@
+
+<section class="section-base samples" id="{{ .File.BaseFileName | safeHTML }}">
+<div class="section-inner">
+    <header class="section-header">
+        <h1>{{ .Title | safeHTML}}</h1>
+        <p>{{ .Description | safeHTML }}</p>
+    </header>
+    <menu class="section-grid">
+        {{ $section := .Site.GetPage "section" .Params.sectionname }}
+        {{ range sort $section.Pages "Title" "asc"}}
+        <li>
+            {{ partial "pnpstyles/organisms-sample-card" .Params }}
+        </li>
+        {{ end }}
+    </menu>
+</div>
+</section>

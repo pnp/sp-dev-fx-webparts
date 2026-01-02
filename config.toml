@@ -1,0 +1,65 @@
+siteTitle = "SPFx Samples"
+title = "SPFx Samples"
+baseURL = "https://pnp.github.io/sp-dev-fx-webparts/"
+canonifyURLs = true
+languageCode = "en-us"
+theme = "pnp-hugo-theme"
+publishDir = "docs"
+
+
+[params]
+description = "Learn from others how to build apps on Microsoft 365 & Power Platform."
+callToAction = "Changing the world one contribution at a time!"
+tagline = "<p>Learn from others how to build apps on Microsoft 365 & Power Platform.</p><p>Don't reinvent the wheel. Focus on what truly matters for your organization.</p>"
+#smallLogo = [ "SharePoint Framework", "(SPFx) Samples"]
+smallLogo = [ "Microsoft 365 &", "Power Platform", "Community"]
+disablePnPTelemetry = true
+logo = "pnp.svg"
+alternateName = "PnP"
+noparker = true
+customCSS =  ["css/spfx-webparts.css"]
+
+[[menus.main]]
+identifier = "samples"
+name = "Samples"
+url = "/"
+weight = 20
+
+[[menus.main]]
+identifier = "gettingstarted"
+name = "Getting started"
+url = "/gettingstarted/"
+weight = 30
+
+[[menus.main]]
+identifier = "contributing"
+name = "Contributing"
+url = "/contributing"
+weight = 40
+
+[[params.bigLogo]]
+line = "SharePoint Framework"
+
+[[params.bigLogo]]
+line = "(SPFx) Samples"
+class = "fa-pp"
+
+[params.clarity]
+trackingCode = "a7tyzwydh7"
+
+[[params.social]]
+name = "GitHub"
+icon = "icon-github"
+weight = 1
+url = "https://github.com/PnP/sp-dev-fx-webparts"
+
+[[params.social]]
+name = "Discord"
+icon = "icon-discord"
+weight = 5
+url = "https://discord.com/channels/1095788595010338956/1096363629680529418"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

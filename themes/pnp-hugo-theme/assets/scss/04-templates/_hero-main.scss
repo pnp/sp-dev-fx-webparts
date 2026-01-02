@@ -1,0 +1,64 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.hero-main {
+    min-height: 75vh;
+    margin-top: 10vw;
+
+    background-blend-mode: multiply;
+
+    background-size: cover, cover, cover;
+
+    @media screen and (max-width: 1024px){
+        margin-top: 10svh;
+        margin-bottom: 25svh;;
+    }
+}
+
+.hero-main-inner {
+    display: grid;
+    max-width: 1920px;
+    padding: 4vw;
+    margin: 0 auto;
+
+    grid-template-columns: 2fr 1fr;
+    gap: 6vw;
+
+    transition: all 0.125s linear;
+
+    @media screen and (max-width: 1024px){
+        grid-template-columns: 1fr;
+        gap: 3vh;
+    }
+}
+
+.tagline {
+    font-size: clamp(1.25rem, 2vw, 2.75rem);
+    font-weight: 500;
+
+    p,
+    p+p {
+        margin: 0;
+    }
+
+    @media screen and (max-width: 1024px){
+        font-size: clamp(1rem, 2vw, 2rem);
+    }
+}
+
+.call2action {
+    margin-top: 2vw;
+
+    grid-column: 1 / span 2;
+
+    font-size: clamp(1.5rem, 3vw, 5rem);
+    font-weight: 600;
+    text-align: center;
+
+    color: dt.$dark-blue;
+
+    @media screen and (max-width: 1024px){
+        grid-column: 1 / span 1;
+
+        font-size: clamp(1.25rem, 3vw, 5rem);
+    }
+}

@@ -1,0 +1,38 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.card-status{
+    display: inline-flex;
+    box-sizing: border-box;
+    width: auto;
+    border: 1px black solid;
+    padding: .25em 1.25em;
+    border-radius: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    &.cancelled{
+        color: dt.$dark-red;
+        border-color: dt.$dark-red;
+    }
+    &.onhaitus{
+        color: dt.$dark-gray;
+        border-color: dt.$dark-gray;
+    }
+    &.live{
+        color: dt.$purple;
+        border-color: dt.$purple;
+        &:before{
+            content: "⬤";
+            font-size: 0.9em;
+            display: block;
+            color: dt.$red;
+            margin-right: 0.5em;;
+        }
+    }
+    &.moved{
+        border-color: dt.$dark-green;
+        color: dt.$dark-green;
+    }
+}

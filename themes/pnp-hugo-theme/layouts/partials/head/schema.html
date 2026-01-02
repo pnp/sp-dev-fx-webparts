@@ -1,0 +1,20 @@
+{{ if .IsHome -}}
+{{ "<script type='application/ld+json'>" | safeHTML }}
+{{ "{" | safeHTML }}
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : "{{ .Site.Title }}",
+    "url" : "{{ .Site.BaseURL  }}",
+    "description" : "{{ .Site.Params.Description }}"
+    {{- with .Site.Params.Logo -}},
+    "thumbnailUrl" : "{{ . | absURL | htmlUnescape }}"
+    {{- end -}}
+    {{- with .Site.Params.Copyright -}},
+    "license" : "{{ . }}"
+    {{- end -}}
+    {{- with .Site.Params.AlternateName -}},
+    "alternateName" : "{{ . }}"
+    {{ end }}
+{{ "}" | safeHTML }}
+{{ "</script>" | safeHTML }}
+{{ end }}

@@ -1,0 +1,186 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.card {
+  display: grid;
+
+  overflow: clip;
+  border-radius: 1rem;
+
+  margin: auto;
+  aspect-ratio: 16 / 9;
+
+  grid-template-columns: 4.5rem auto;
+  height: 100%;
+
+  backdrop-filter: blur(20px) saturate(190%) brightness(110%);
+
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+
+  filter: drop-shadow(-10px -10px 0.5em rgba(#99B5D8, 0.1));
+  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, .35));
+
+  background-color: rgba(255, 255, 255, 0);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: clip;
+    width: inherit;
+    height: inherit;
+
+    border: 1px white solid;
+    border-radius: 1rem;
+
+    mix-blend-mode: multiply;
+
+    content: " ";
+
+  }
+
+  &::after {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    border-radius: 1rem;
+
+    content: " ";
+
+    background-image: linear-gradient(-215deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3));
+
+  }
+
+}
+
+.card-header {
+
+  h1 {
+    height: 3lh;
+    margin-top: 0;
+
+    line-height: 0.9em;
+  }
+}
+
+.card-side {
+  position: relative;
+  z-index: 10;
+
+  overflow: clip;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+
+  backdrop-filter: blur(10px) saturate(120%) brightness(120%);
+  background-color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+
+  &:before {
+    position: absolute;
+    top: 25%;
+    bottom: 20px;
+    left: 8px;
+
+    isolation: isolate;
+
+    display: block;
+    width: 4px;
+    height: 50%;
+    border-radius: 2px;
+
+    background-color: dt.$blue;
+
+    content: " ";
+  }
+}
+
+.card-hor {
+
+    @extend .card-side;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    border-radius: 0 0 1em 1em;
+
+    &:before {
+        top: calc(100% - 16px);
+        left: 25%;
+
+        width: 50%;
+        height: 4px;
+    }
+}
+
+.card-main {
+  display: flex;
+  overflow: clip;
+  padding: 2rem;
+
+  gap: 1rem;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: left;
+
+  text-shadow: 0.125em 0.125em 0.125em rgba(255, 255, 255, 0.2);
+
+  background-color: rgba(255,255,255,0.85);
+}
+
+.card-iconbar {
+  position: absolute;
+  z-index: 100;
+
+  isolation: isolate;
+
+  display: flex;
+  width: auto;
+  padding: 0;
+
+  gap: 0.25em;
+  flex-direction: column;
+
+  list-style-type: none;
+
+  margin-block: 0;
+  margin-inline: 1.5em 1.25em;
+
+  .icon {
+    width: 2em;
+
+    transition: all ease-in;
+  }
+
+  .icon-svg {
+    fill: currentColor;
+    pointer-events: none;
+  }
+
+  .icon-calendar-ltr-filled {
+    fill: dt.$dark-blue;
+  }
+
+  .icon-video-clip-filled {
+    fill: dt.$red;
+  }
+
+}
+
+.card-iconbar-item {
+  transform-origin: center;
+
+  &:hover {
+    transition: all ease-out;
+
+    filter: drop-shadow(4px 4px rgba(0, 0, 0, 0.25));
+    transform: scale(1.1);
+  }
+}

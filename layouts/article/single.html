@@ -1,0 +1,15 @@
+{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<section class="section-base article" id="article">
+    <article itemscope itemtype="https://schema.org/Article">
+        <header>
+            <h1 itemprop="headline">{{ .Title }}</h1>
+        </header>
+
+        <section itemprop="articleBody">
+            {{ .Content }}
+        </section>
+    </article>
+</section>
+{{ end }}

@@ -1,0 +1,17 @@
+<section class="section-base upcoming" id="upcoming">
+    <div class="section-inner">
+        <header class="section-header">
+            <h1>{{.Title }}</h1>
+            <p>{{.Description | safeHTML }}</p>
+        </header>
+        <menu class="section-grid" id="calendar-container">
+
+        </menu>
+    </div>
+</section>
+
+{{ $js := resources.Get "js/calendar.js" }}
+{{ "<script>" | safeHTML }}
+    window.baseUrl = '{{ .Site.BaseURL }}';
+{{ "</script>" | safeHTML }}
+<script type="module" src="{{ $js.Permalink }}"></script>

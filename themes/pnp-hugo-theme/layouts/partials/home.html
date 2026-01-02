@@ -1,0 +1,7 @@
+    {{ $section := .Site.GetPage "section" "home" }}
+    {{ $homePageSections := $section.Pages.ByWeight }}
+    {{ range $homePageSections }}
+        {{- .Render "single" -}}
+    {{ end }}
+    {{ partialCached "home/extensions.html" . }}
+

@@ -1,0 +1,63 @@
+@use '../00-base/designtoken.vars' as dt;
+
+@keyframes rotate-background {
+
+    0% {
+        --rotation-angle: 0deg;
+        background-position: 0 0;
+        
+    }
+
+    35% {
+        background-position: 100% 100%;
+    }
+
+    50% {
+        --rotation-angle: 180deg;
+        background-position: 100% 0;
+    }
+
+    75% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        --rotation-angle: 360deg;
+        background-position: 0 0;
+    }
+}
+
+.logo-big {
+    box-sizing: border-box;
+
+    font-size: clamp(2rem, 6vw, 7rem);
+
+    font-weight: 900;
+    line-height: 0.75;
+    text-transform: uppercase;
+            
+    animation: rotate-background 30s ease-in-out infinite;
+
+    background-clip: text;
+    background-size: 400% 400%;
+
+    color: transparent;
+
+    background-image: dt.$grad-lin-1;
+
+
+    @media screen and (max-width: 1024px){
+        font-size: clamp(1rem, 9vw, 10rem);
+
+        background-clip: text;
+    }
+
+}
+
+.fa-pp {
+    font-size: 1.020em;
+}
+
+.fa-com {
+    font-size: 1.4125em
+}

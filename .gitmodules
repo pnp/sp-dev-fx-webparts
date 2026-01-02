@@ -1,0 +1,3 @@
+[submodule "themes/pnp-hugo-theme"]
+	path = themes/pnp-hugo-theme
+	url = https://github.com/pnp/pnp-hugo-theme.git

@@ -1,0 +1,154 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.nav-menu {
+    display: inline-flex;
+    gap: 0.75em;
+    padding: 0;
+    padding-block: 0.35em 0.5em;
+    padding-inline: 1vw 1vw;
+    border-top: none;
+    border-bottom-left-radius: .5em;
+    margin: 0;
+    margin-left: 0.5em;
+
+    align-items: center;
+
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+
+    backdrop-filter: blur(20px) saturate(1.8);
+    filter: drop-shadow(3px 3px 30px rgba(#666, 0.75));
+
+    list-style: none;
+    background-color: rgba(255, 252, 248, 0.85);
+
+    @media screen and (max-width: 1024px) {
+        position: absolute;
+        top: 60px;
+
+        overflow: clip;
+        visibility: hidden;
+        height: 0;
+        margin: 0;
+
+        gap: 0;
+
+        align-items: flex-start;
+
+        font-size: clamp(1rem, 4vh, 2rem);
+
+        oveflow: hidden;
+        background-color: rgba(255, 255, 255, 1);
+
+        .nav-link{
+            white-space: wrap;
+        }
+    }
+
+        
+}
+
+.nav-link {
+    display: block;
+    padding-block: 0.5em;
+
+    font-weight: 700;
+    text-transform: uppercase;
+
+    transition: color 0.125s ease-in;
+
+    color: dt.$blue;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+    margin-inline: 0.5em;
+
+    &:visited {
+        color: dt.$blue;
+    }
+
+    &:hover {
+        transition: color 0.125s ease-out;
+
+        color: dt.$dark-blue;
+    }
+
+    &:active {
+        color: dt.$blue;
+    }
+
+}
+
+.hamburger {
+    display: inline-flex;
+    display: none;
+    width: auto;
+    height: inherit;
+    height: clamp(2rem, 3vw, 3rem);
+    padding-block: 2em;
+    border: none;
+    margin-right: 0.5em;
+    aspect-ratio: 1 / 1;
+
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: transparent;
+    color: dt.$blue;
+
+    @media screen and (max-width: 1024px) {
+        display: flex;
+    }
+
+    svg {
+        width: inherit;
+
+        height: inherit;
+        aspect-ratio: 1 / 1;
+
+        fill: currentColor;
+        pointer-events: none;
+
+        &>* {
+            pointer-events: none;
+        }
+
+    }
+
+    .active {
+        display: none;
+    }
+
+    .inactive {
+        display: block;
+    }
+
+    &.show{
+
+        .active {
+            display: block;
+        }
+
+        .inactive {
+            display: none;
+        }
+
+        &~.nav-menu{
+            display: flex;
+            visibility: visible;
+            height: 100svh;
+
+            flex-direction: column;
+        }
+
+        .nav-link{
+            width: 100%;
+        }
+
+        .nav-item{
+            width:100%
+        }
+    }
+
+
+}

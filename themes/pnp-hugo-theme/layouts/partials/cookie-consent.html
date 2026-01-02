@@ -1,0 +1,112 @@
+{{/* Simple Cookie Consent Banner */}}
+<div id="cookie-consent-banner">
+    <div class="container">
+        <p>
+            We use cookies and similar technologies to improve your experience and analyze site usage. 
+            <a href="/privacy">Privacy Policy</a>
+        </p>
+        <div>
+            <button id="accept-cookies">Accept All</button>
+            <button id="reject-cookies">Reject All</button>
+            <button id="customize-cookies">Customize</button>
+        </div>
+    </div>
+</div>
+
+{{/* Cookie Preferences Modal */}}
+<div id="cookie-preferences-modal">
+    <div class="modal-content">
+        <h3>Cookie Preferences</h3>
+        <div class="preferences">
+            <label>
+                <input type="checkbox" id="essential-cookies" checked disabled>
+                <strong>Essential Cookies</strong> (Required)
+                <br><small>Necessary for the website to function properly.</small>
+            </label>
+            <label>
+                <input type="checkbox" id="analytics-cookies">
+                <strong>Analytics Cookies</strong>
+                <br><small>Help us understand how visitors use our website (Microsoft Clarity).</small>
+            </label>
+        </div>
+        <div class="buttons">
+            <button id="save-preferences">Save Preferences</button>
+            <button id="close-modal">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Cookie utility functions
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
+    }
+    
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    
+    // Check if consent already given
+    var consentGiven = getCookie('cookie-consent');
+    if (!consentGiven) {
+        document.getElementById('cookie-consent-banner').style.display = 'block';
+    }
+    
+    // Event listeners
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+        setCookie('cookie-consent', 'accepted', 365);
+        setCookie('analytics-consent', 'true', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        // Reload to activate analytics
+        location.reload();
+    });
+    
+    document.getElementById('reject-cookies').addEventListener('click', function() {
+        setCookie('cookie-consent', 'rejected', 365);
+        setCookie('analytics-consent', 'false', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+    });
+    
+    document.getElementById('customize-cookies').addEventListener('click', function() {
+        document.getElementById('cookie-preferences-modal').style.display = 'block';
+        // Set current analytics preference
+        var analyticsConsent = getCookie('analytics-consent');
+        document.getElementById('analytics-cookies').checked = analyticsConsent === 'true';
+    });
+    
+    document.getElementById('save-preferences').addEventListener('click', function() {
+        var analyticsChecked = document.getElementById('analytics-cookies').checked;
+        setCookie('cookie-consent', 'customized', 365);
+        setCookie('analytics-consent', analyticsChecked ? 'true' : 'false', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        document.getElementById('cookie-preferences-modal').style.display = 'none';
+        // Reload to activate/deactivate analytics
+        location.reload();
+    });
+    
+    document.getElementById('close-modal').addEventListener('click', function() {
+        document.getElementById('cookie-preferences-modal').style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    document.getElementById('cookie-preferences-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
+})();
+</script>

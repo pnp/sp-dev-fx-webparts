@@ -1,0 +1,22 @@
+<!-- static/templates/blog-item.html -->
+<a href="{{link}}" class="card-link">
+<article class="card blog" itemscope itemtype="https://schema.org/NewsArticle">
+    <meta itemprop="image" content="{{mediaContentUrl}}" />
+    <figure class="blog-media">
+        <img src="{{mediaContentUrl}}" class="blog-media-img" alt="{{title | safeHTML}}">
+    </figure>
+    <div class="blog-content">
+        <h2 class="blog-headline" itemprop="headline">{{title}}</h2>
+        <p class="blog-excerpt">{{description}}</p>
+        <div class="blog-meta">
+            <div class="blog-info">
+                <time class="blog-created" datetime="{{isoDate}}" itemprop="datePublished" content="{{isoDate}}">{{pubDate}}</time>
+                <div class="blog-author"  itemprop="author" itemscope itemtype="https://schema.org/Person">by <span itemprop="name">{{author}}</span></div>
+            </div>
+            <div class="blog-type">
+                <div class="blog-cat">{{category}}</div>
+            </div>
+        </div>
+    </div>
+</article>
+</a>

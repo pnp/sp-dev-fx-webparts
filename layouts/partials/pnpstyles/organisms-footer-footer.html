@@ -1,0 +1,35 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=organisms-footer
+
+Variables:
+
+*/}}
+<footer class="footer">
+    <div class="footer-cnt">
+        <menu class="footer-menu">
+            {{ with .Site.Params.social }}
+            {{ range sort . "weight" }}
+            {{ if .icon }}
+            <li class="card-iconbar-item">
+                <a class="card-iconbar-link" href="{{ .url | safeURL }}" aria-label="{{ .name }}" {{ if .rel
+                    }}rel="{{ .rel }}" {{ end }} {{ if .target }}target="{{ .target }}" {{ end }} {{ if .type
+                    }}type="{{ .type }}" {{ end }}>
+                    {{ partial "pnpstyles/atoms-icon" (dict "iconName" .icon "ariaHidden" true "title" .name) }}
+                </a>
+            </li>
+            {{ else }}
+            <li class="card-iconbar-item">
+                <a class="card-iconbar-link" href="{{ .url | safeURL }}" aria-label="{{ .name }}" {{ if .rel
+                    }}rel="{{ .rel }}" {{ end }} {{ if .target }}target="{{ .target }}" {{ end }}>{{ .name }}</a>
+            </li>
+            {{ end }}
+            {{ end }}
+            {{ end }}
+        </menu>
+        {{ if not .Site.Params.noparker }}
+        <div class="comic">
+            <img src='{{ "images/parker-was-here.svg" | absURL }}' alt="Parker was here" class="parker" />
+        </div>
+        {{ end }}
+    </div>
+</footer>

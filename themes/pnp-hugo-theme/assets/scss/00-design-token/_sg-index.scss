@@ -1,0 +1,117 @@
+@property --rotation-angle {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 45deg;
+}
+
+@property --rotation {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 45deg;
+}
+
+@property --background-inicator-y {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 45deg;
+}
+
+// var(--mid-gray),
+// var(--cool-gray),
+.sample-gradient {
+
+    --rotation-angle: 45deg;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 2vw 2vw;
+
+    font-size: clamp(1rem, calc(9vw), 14rem);
+    font-weight: 900;
+    line-height: 0.85;
+    text-transform: uppercase;
+
+    animation: rotate-background 60s ease-in-out infinite;
+
+    background-clip: text;
+
+    background-image: linear-gradient(var(--rotation-angle),
+            var(--yellow),
+            var(--orange),
+            var(--red),
+            var(--magenta),
+            var(--purple),
+            var(--blue),
+            var(--teal),
+            var(--green));
+    background-repeat: no-repeat;
+
+    background-size: 100% 100%;
+    color: transparent;
+}
+
+
+// background: radial-gradient(ellipse at top, #e66465, transparent),
+//             radial-gradient(ellipse at bottom, #4d9f0c, transparent);backgroundbackgroundbackgroundbackgroundbackgroundbackground
+
+// background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
+
+backgroundbackground
+
+backgroundbackground
+
+backgroundbackground .animated {
+    --rotation: 45deg;
+
+    background-image: linear-gradient(var(--rotation-angle), var(--yellow) 0, var(--red) 25%, var(--orange) 50%, var(--magenta) 75%, var(--purple) 100%);
+    background-size: 200% 200%;
+}
+
+@keyframes move-background {
+
+    0% {
+        background-position: 0 0;
+    }
+
+    35% {
+        background-position: 100% 100%;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+
+    65% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes rotate-background {
+
+    0% {
+        --rotation-angle: 0deg;
+        background-position: 0 0;
+
+    }
+
+    35% {
+        background-position: 100% 100%;
+    }
+
+    50% {
+        --rotation-angle: 180deg;
+        background-position: 100% 0;
+    }
+
+    75% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        --rotation-angle: 360deg;
+        background-position: 0 0;
+    }
+}

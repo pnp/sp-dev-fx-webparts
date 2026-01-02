@@ -1,0 +1,42 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.card-upcoming-title {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px dt.$blue solid;
+    padding-bottom: 1em;
+    .day {
+        font-size: clamp(1.5rem, 3vw, 3rem);
+        font-weight: 600;
+        line-height: .8;
+    }
+
+}
+.event-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.25em;
+    .card-status{
+        margin: 0;
+    }
+    .card-status-outer{
+        text-align: right;
+    }
+}
+
+.event-start {
+    font-size: clamp(1rem, 1.125vw, 1.5rem);
+    grid-column: 1 / span 1;
+    grid-row: 1;
+    padding-top: 0.25em;
+}
+
+.event-title {
+    font-size: clamp(1.25rem, 1.125vw, 1.25rem);
+    font-weight: 600;
+    margin: 0;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    line-height: 1.125;
+}

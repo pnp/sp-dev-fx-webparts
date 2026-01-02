@@ -1,0 +1,68 @@
+@use '../00-base/designtoken.vars' as dt;
+body:has(.section-404){
+    margin: 0;
+    background-color: dt.$dark-blue;
+    background-color: #7c70dc;
+    color: #7c70dc;
+}
+.section-404{
+    font-family: 'Commodore 64 Pixelized', monospace;
+    height: 100vh;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-404-inner{
+    width: 80vw;
+    height: max-content;
+    margin-inline: 10vw;
+    background-color: #3e32a2;
+    box-sizing: border-box;
+    padding: 1vw;
+    h1{
+        margin: 0;
+        text-align: center;
+        font-size: 2vw;
+        letter-spacing: 0.35ch;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+    pre{
+        font-family: inherit;
+        font-size: 1vw;
+    }
+    a{
+        color: dt.$light-yellow;
+        &:visited{
+            color: dt.$light-yellow;
+        }
+        &:hover{
+            color: dt.$yellow;
+        }
+    }
+}
+.ascii-block{
+    animation: ascii-blink 0.75s linear infinite;
+}
+.pre-center{
+    width: max-content;
+    margin: auto;
+    background-image: dt.$grad-lin-1;
+    background-clip: text;
+    background-size: 400% 400%;
+    color: transparent;
+    animation: rotate-background 30s ease-in-out infinite;
+}
+
+@keyframes ascii-blink {
+    from{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

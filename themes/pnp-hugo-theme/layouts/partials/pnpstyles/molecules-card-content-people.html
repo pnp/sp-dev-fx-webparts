@@ -1,0 +1,21 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=molecules-card-content-people
+
+Variables:
+.name: The person's name
+.img: The url to the person's profile picture
+.title: The person's title
+.company: The person's company
+*/}}
+<div class="card-main" >
+    <div class="profile-data">
+        <img src="{{ .img }}" alt="Profile picture of {{ .name }}" class="profile-picture">
+        <span class="profile-name">
+            <h1>{{ .name }}</h1>
+            {{ if .title }}
+            <span class="profile-mvp">{{ .title }}</span>
+            {{ end }}
+            <div class="profile-company">{{ .company }}</div>
+        </span>
+    </div>
+</div>

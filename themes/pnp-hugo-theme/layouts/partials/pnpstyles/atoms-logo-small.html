@@ -1,0 +1,19 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=atoms-logo-small
+
+Variables:
+(the site context is available in the .Site variable)
+*/}}
+
+<a class="site-logo-link" href="{{ .Site.BaseURL }}">
+    <div class="site-logo">
+        {{ $logoLines := default (slice .Site.Title) .Site.Params.smallLogo }}
+        {{ range $index, $line := $logoLines }}
+            {{ if eq $index (sub (len $logoLines) 1) }}
+            {{ $line }}
+            {{ else }}
+            <span class="u-nowrap">{{ $line }}</span><br>
+            {{ end }}
+        {{ end }}
+    </div>
+</a>

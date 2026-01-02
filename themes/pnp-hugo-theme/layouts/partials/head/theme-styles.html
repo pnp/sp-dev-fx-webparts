@@ -1,0 +1,9 @@
+
+{{ $styles := resources.Get "css/styles.css" }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+
+{{ $styles := resources.Get "css/tweaks.css" }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+
+
+<link rel="prefetch" href='{{ "images/base-assets.svg" | absURL }}' as="image" type="image/svg+xml" media="all">

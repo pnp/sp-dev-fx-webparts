@@ -1,0 +1,45 @@
+@use 'designtoken.vars' as dt;
+
+body {
+    margin: 0;
+
+    font-family: Parker, "Segoe UI", "Segoe Sans", sans-serif;
+
+    scroll-behavior: smooth;
+    content-visibility: visible;
+    contain-intrinsic-size: 10000px; 
+
+    // text-rendering: geometricPrecision;text-renderingtext-renderingtext-renderingtext-rendering
+
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+.pnp-backdrop {
+    background-attachment: fixed;
+    background-size: contain;
+    background-size: cover;
+
+    background-image: url(../images/keyart-bg.webp);
+
+    background-position: bottom left;
+}
+
+a{
+    color: dt.$dark-teal;
+    &:visited{
+        color: dt.$dark-teal;
+    }
+    &:active{
+        color: dt.$dark-red;
+    }
+    &:hover{
+        color: dt.$dark-blue;
+    }
+}
+
+

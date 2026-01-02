@@ -1,0 +1,14 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=atoms-icon
+
+Variables:
+.title: The title to display in the icon
+.iconName: The name of the icon to display
+.ariaHidden: Whether the icon should be hidden from screen readers
+*/}}
+<span class="icon">
+    <svg class="icon-svg {{ .iconName }}" aria-hidden="{{ .ariaHidden }}">
+        {{ .title }}
+        <use xlink:href="{{ "images/base-assets.svg" | absURL }}#{{ .iconName }}"></use>
+    </svg>
+</span>

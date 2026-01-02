@@ -1,0 +1,49 @@
+{{ define "main" }}
+    <h1>
+        {{ $logoLines := default (slice .Site.Title) .Site.Params.smallLogo }}
+        {{ range $index, $line := $logoLines }}
+        {{ $lineLength := len $line }}
+        {{ $spaces := 2 }}
+        {{ $totalLength := 32 }}
+        {{ $asterisks := div (sub $totalLength $lineLength $spaces) 2 }}
+        {{ $asterisksString := "" }}
+        {{ range seq 0 $asterisks }}
+        {{ $asterisksString = print $asterisksString "*" }}
+        {{ end }}
+        {{ $formattedLine := print $asterisksString " " $line " " $asterisksString }}
+        {{ $formattedLine }}<br>
+        {{ end }}
+        <br>
+        <br>
+        64k RAM SYSTEM 38911 BASIC BYTES FREE
+    </h1>
+    <br>
+    ERROR CODE:
+    <pre class="pre-center">
+           444444444            000000000                 444444444  
+          4::::::::4          00:::::::::00              4::::::::4  
+         4:::::::::4        00:::::::::::::00           4:::::::::4  
+        4::::44::::4       0:::::::000:::::::0         4::::44::::4  
+       4::::4 4::::4       0::::::0   0::::::0        4::::4 4::::4  
+      4::::4  4::::4       0:::::0     0:::::0       4::::4  4::::4  
+     4::::4   4::::4       0:::::0     0:::::0      4::::4   4::::4  
+    4::::444444::::444     0:::::0 000 0:::::0     4::::444444::::444
+    4::::::::::::::::4     0:::::0 000 0:::::0     4::::::::::::::::4
+    4444444444:::::444     0:::::0     0:::::0     4444444444:::::444
+              4::::4       0:::::0     0:::::0               4::::4  
+              4::::4       0::::::0   0::::::0               4::::4  
+              4::::4       0:::::::000:::::::0               4::::4  
+            44::::::44      00:::::::::::::00              44::::::44
+            4::::::::4        00:::::::::00                4::::::::4
+            4444444444          000000000                  4444444444
+    </pre>
+    <br>
+    <br>
+    GOTO <a href="{{ .Site.BaseURL }}">HOME</a>&nbsp;<br>
+    READY<br>
+    <span class="ascii-block">&block;</span>
+{{ end }}
+
+{{ define "title" }}
+404 Page Not Found | {{ .Site.Title }}
+{{ end }}

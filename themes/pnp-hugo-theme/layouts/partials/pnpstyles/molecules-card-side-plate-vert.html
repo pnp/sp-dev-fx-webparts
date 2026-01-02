@@ -1,0 +1,10 @@
+<div class="card-side">
+
+        <menu class="card-iconbar">
+            {{range .links }}
+            <li class="card-iconbar-item"><a href="{{ .url}}" class="card-iconbar-link" aria-label="{{ .title }}">{{ partial "pnpstyles/atoms-icon"
+                    (dict "iconName" .iconName "ariaHidden" .ariaHidden "title" .title) }}</a></li>
+            {{ end }}
+        </menu>
+
+</div>

@@ -1,0 +1,143 @@
+@use '../00-base/designtoken.vars' as dt;
+
+
+
+.blog-media {
+    overflow: clip;
+    border-radius: 1em 1em 0 0;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+}
+
+.blog-info {
+    padding: 0.25em 0.5em 0 0;
+
+    font-size: 0.875em;
+}
+
+.blog-meta {
+    position: relative;
+
+    display: flex;
+    padding-block: 1em 0.25em;
+
+    justify-content: space-between;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        right: 10%;
+        left: 10%;
+
+        height: 1px;
+        border-radius: 2px;
+
+        background-color: dt.$blue;
+
+        content: " ";
+    }
+}
+
+.blog-type {
+
+    .blog-cat {
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        border-radius: 0.5em;
+
+        flex-grow: 0;
+
+        font-size: 0.9em;
+        font-size: 0.875em;
+        font-weight: 600;
+
+        background-color: dt.$blue;
+        color: dt.$pure-white;
+
+        white-space: nowrap;
+    }
+}
+
+.blog-created {}
+
+.blog-author {
+    display: inline-block;
+}
+
+.blog-media-img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    transition: all 0.125s ease-in-out;
+
+    opacity: 0.85;
+
+    border-collapse: collapse;
+}
+
+.blog-content {
+    overflow: hidden;
+    padding: 1em;
+    padding-bottom: 0.74em;
+    border-radius: 0 0 1em 1em;
+
+    background-color: rgba(255, 255, 255, 0.75);
+    filter: drop-shadow(-2px -2px 10px rgba(0, 0, 0, .5));
+}
+
+.blog-headline {
+    overflow: hidden;
+    height: 2lh;
+    margin-top: 0;
+
+    font-size: clamp(1rem, 1.125vw, 1.5rem);
+    line-height: 1.125;
+    text-wrap: balance;
+}
+
+.blog-excerpt {
+    overflow: hidden;
+    min-height: 3lh;
+    max-height: 3lh;
+
+    text-wrap: balance;
+    transition: all .25s linear;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.card.blog {
+    aspect-ratio: unset;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    grid-auto-rows: max-content;
+
+    transition: all 0.35s ease-in-out;
+    height: auto;
+
+    &:hover {
+        position: relative;
+        z-index: 10;
+        @media screen and (min-width: 480px) {
+            transform: translate(10px, 10px) scale(1.1);            
+        }
+        .blog-media-img {
+            opacity: 1;
+        }
+
+        .blog-excerpt {
+            min-height: 3lh;
+            height: max-content;
+            max-height: 100%;
+            display: block;
+            overflow: auto;
+        }
+    }
+
+    &:active {
+        filter: none;
+    }
+}

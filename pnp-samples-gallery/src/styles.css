@@ -1,0 +1,706 @@
+.pnp-samples {
+    --pnp-bg: var(--md-default-bg-color, #fff);
+    --pnp-fg: var(--md-default-fg-color, #1f2328);
+    --pnp-muted: rgba(127, 127, 127, 0.9);
+    --pnp-border: rgba(127, 127, 127, 0.25);
+    --pnp-surface: rgba(127, 127, 127, 0.06);
+    --pnp-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    --pnp-radius: 14px;
+
+    color: var(--pnp-fg);
+    margin: 1.25rem 0 2rem;
+}
+
+.pnp-samples__header {
+    margin-bottom: 1rem;
+}
+
+.pnp-samples__title {
+    margin: 0 0 0.25rem;
+}
+
+.pnp-samples__subtitle {
+    margin: 0;
+    color: var(--pnp-muted);
+}
+
+.pnp-samples__layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (max-width: 980px) {
+    .pnp-samples__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .pnp-filters {
+        position: static;
+    }
+}
+
+/* Mobile-specific tweaks for compact layout */
+@media (max-width: 640px) {
+    .pnp-filter-select {
+        width: 100%;
+        padding: 0.6rem 0.75rem;
+        border-radius: 10px;
+        border: 1px solid var(--pnp-border);
+        background: var(--pnp-bg);
+        font-size: 0.95rem;
+    }
+
+    /* Make the card grid use CSS flow (no absolute positioning by muuri) */
+    .pnp-muuri-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .pnp-sample-item {
+        position: static;
+        width: 100%;
+        margin: 0;
+        --card-h: auto;
+        height: auto;
+    }
+
+    .pnp-card {
+        min-height: 0;
+        transform: none !important;
+    }
+
+    /* Disable hover transform on small screens */
+    .pnp-card:hover {
+        transform: none;
+        box-shadow: var(--pnp-shadow);
+    }
+
+    /* Tighter card content for mobile */
+    .pnp-card__title { padding: 0.6rem 0.75rem; }
+    .pnp-card__desc { padding: 0 0.75rem 0.75rem; }
+    .pnp-card__footer { padding: 0 0.75rem 0.75rem; }
+}
+
+.pnp-filters {
+    position: sticky;
+    top: 1rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: var(--pnp-radius);
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(10px) saturate(300%);
+}
+
+/* Mobile filters toggle */
+@media (max-width: 640px) {
+    .pnp-mobile-filters-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.5rem;
+    }
+
+    .pnp-filters {
+        transition: max-height 250ms ease, opacity 200ms ease, transform 200ms ease;
+    }
+
+    .pnp-filters--hidden {
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        transform: translateY(-6px);
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border: none !important;
+    }
+
+    .pnp-filters:not(.pnp-filters--hidden) {
+        max-height: 100vh;
+        opacity: 1;
+                z-index: 999;
+                    top: 0px;
+    }
+}
+
+
+
+.pnp-label {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.pnp-search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pnp-search__input {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: 12px;
+    background: var(--pnp-bg);
+    color: var(--pnp-fg);
+}
+
+.pnp-filters__actions {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pnp-btn {
+    border: 1px solid var(--pnp-border);
+    background: var(--pnp-bg);
+    color: var(--pnp-fg);
+    padding: 0.55rem 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.pnp-btn:hover {
+    box-shadow: var(--pnp-shadow);
+}
+
+.pnp-btn--ghost {
+    padding: 0.55rem 0.65rem;
+}
+
+.pnp-filter-group {
+    margin-top: 1rem;
+}
+
+.pnp-filter-group__title {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+}
+
+.pnp-chipset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.pnp-chip {
+    border: 1px solid var(--pnp-border);
+    background: var(--pnp-surface);
+    padding: 0.4rem 0.65rem;
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.92rem;
+}
+
+/* Ensure interactive pills show pointer cursor */
+button.pnp-pill,
+.pnp-pill[role="button"],
+.pnp-pill[tabindex] {
+    cursor: pointer;
+}
+
+.pnp-chip[aria-pressed="true"] {
+    background: var(--pnp-bg);
+    border-color: rgba(0, 0, 0, 0.45);
+    /* box-shadow: var(--pnp-shadow); */
+}
+
+.pnp-results__meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.pnp-results__count {
+    font-weight: 600;
+}
+
+.pnp-results__active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.pnp-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 0.9rem;
+}
+
+@media (max-width: 1200px) {
+    .pnp-card-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .pnp-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pnp-card {
+    border: 1px solid var(--pnp-border);
+    border-radius: var(--pnp-radius);
+    background-color: rgba(255, 255, 255, 0.85);
+    /* padding: 0.95rem; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.65rem; */
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+}
+
+.pnp-card__date::after {
+
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    content: " ";
+    background-image: linear-gradient(-215deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3));
+    border-radius: 1rem;
+
+}
+
+.pnp-card__title {
+    padding-top: .47rem;
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+    color: rgb(42, 68, 111);
+}
+
+.pnp-card__footer,
+.pnp-card__desc {
+    padding: 0.95rem;
+}
+
+.pnp-card:hover {
+    box-shadow: var(--pnp-shadow);
+    opacity: 1;
+    z-index: 10;
+}
+
+@media screen and (min-width: 480px) {
+    .pnp-card:hover {
+        transform: translate(10px, 10px) scale(1.1);
+    }
+}
+
+
+
+.pnp-card__thumb {
+    width: 100%;
+    /* height: 180px; */
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid var(--pnp-border);
+    background: var(--pnp-surface);
+    /* min-height: 180px; */
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.pnp-card__thumb--empty {
+    width: 100%;
+    /* height: 140px; */
+    /* match your thumbnail height */
+    aspect-ratio: 16 / 9;
+    background: #f3f3f3;
+}
+
+.pnp-card__title {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+/* .pnp-card__title {
+    position: relative;
+    padding-bottom: 10px;
+    /* space for the line 
+    /* margin-bottom: 10px; 
+} */
+
+.pnp-card__date::before {
+    content: "";
+    position: absolute;
+
+    left: 10%;
+    right: 10%;
+    bottom: 44px;
+
+    height: 1px;
+    border-radius: 2px;
+    background-color: var(--blue);
+}
+
+.pnp-card__desc {
+    margin: 0;
+    color: var(--pnp-muted);
+    line-height: 1.35;
+}
+
+.pnp-pill {
+    font-size: 0.82rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: 999px;
+    padding: 0.25rem 0.5rem;
+    background: var(--pnp-bg);
+}
+
+.pnp-card__meta .pnp-pill {
+    z-index: 3;
+}
+
+.pnp-empty {
+    border: 1px dashed var(--pnp-border);
+    border-radius: var(--pnp-radius);
+    padding: 1rem;
+    margin-top: 1rem;
+    background: var(--pnp-bg);
+}
+
+.wrapper .page-header {
+    position: unset;
+
+}
+
+/* ===== Facepile ===== */
+.pnp-facepile {
+    display: inline-flex;
+    align-items: center;
+    --pnp-face-size: 28px;
+}
+
+.pnp-facepile__avatar,
+.pnp-facepile__more {
+    width: var(--pnp-face-size);
+    height: var(--pnp-face-size);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 2px solid var(--pnp-bg);
+    background: var(--pnp-surface);
+    display: grid;
+    place-items: center;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); */
+}
+
+.pnp-facepile__avatar {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+    /* overlap */
+    text-decoration: none;
+    color: inherit;
+}
+
+.pnp-facepile__avatar:first-child {
+    margin-left: 0;
+}
+
+.pnp-facepile__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pnp-facepile__initials {
+    font-size: calc(var(--pnp-face-size) * 0.38);
+    font-weight: 700;
+    color: var(--pnp-fg);
+    opacity: 0.9;
+}
+
+.pnp-facepile__more {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+    font-size: calc(var(--pnp-face-size) * 0.34);
+    font-weight: 700;
+    color: var(--pnp-fg);
+    opacity: 0.9;
+}
+
+.pnp-card__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+    /* padding-bottom: 12px; */
+}
+
+.pnp-card__meta,
+.pnp-facepile,
+.pnp-card__date {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.pnp-card__date {
+    color: black;
+    font-size: 0.82rem;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.pnp-card__meta {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    margin-top: -14px;
+    margin-left: 14px;
+}
+
+.pnp-facepile {
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+
+.pnp-chip--icon {
+    padding: 0.45rem 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.pnp-pill--icon {
+    padding: 0.25rem 0.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+/* .pnp-icon {
+    display: block;
+} */
+
+
+.pnp-muuri-grid {
+    position: relative;
+}
+
+.pnp-sample-item {
+    position: absolute;
+    --pnp-sample-width: 320px;
+    /* default card width */
+    width: var(--pnp-sample-width);
+    margin: 10px;
+}
+
+/* Make items narrower on larger screens so more columns fit */
+@media screen and (min-width: 1200px) {
+    .pnp-sample-item {
+        --pnp-sample-width: 320px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .pnp-sample-item {
+        --pnp-sample-width: 320px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .pnp-sample-item {
+        --pnp-sample-width: 320px;
+    }
+
+}
+
+@media screen and (min-width: 3000px) {
+    .pnp-sample-item {
+        --pnp-sample-width: 320px;
+    }
+
+    .section-inner {
+        max-width: 2380px;
+    }
+
+}
+
+.pnp-sample-item-content {
+    height: 100%;
+}
+
+/* Grid holds the CSS variable */
+/* .pnp-muuri-grid {
+    --card-h: auto;
+} */
+
+/* Muuri positions this */
+.pnp-sample-item {
+    height: var(--card-h);
+}
+
+/* Ensure content fills the item */
+.pnp-sample-item-content {
+    height: 100%;
+}
+
+/* Card layout stays intact */
+.pnp-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 248px;
+
+    /* backdrop-filter: blur(20px) saturate(190%) brightness(110%); */
+    color: black;
+    /* filter: drop-shadow(rgba(0, 0, 0, 0.35) 2px 2px 10px); */
+    background-color: #f4f4f4;
+    overflow: clip;
+    border-radius: 1rem;
+}
+
+.pnp-card::before {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+    border-radius: 1rem;
+    pointer-events: none;
+}
+
+/* Prevent overflow issues */
+.pnp-sample-item,
+.pnp-sample-item-content,
+.pnp-card {
+    overflow: visible;
+}
+
+.pnp-card__desc {
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 2lh;
+    line-height: 18px;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    display: -webkit-box !important;
+    overflow: hidden;
+    white-space: normal;
+    /* padding-bottom: 20px; */
+}
+
+.section-header p {
+    /* font-size: clamp(1rem, 1vw, 1.5rem); */
+    text-align: center;
+}
+
+article.main {
+        font-size: clamp(1rem, 1vw, 1.5rem);
+        box-sizing: border-box;
+            padding: 1.75em 2em;
+            border-radius: 1em;
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 3;
+            -webkit-backdrop-filter: blur(10px) saturate(300%);
+            backdrop-filter: blur(10px) saturate(300%);
+            background-color: rgba(255, 255, 255, 0.9);
+}
+
+.pnp-card__date {
+    padding: 0.25em 0.5em 0 0;
+    font-size: 0.875em;
+}
+
+.pnp-chip--animated {
+    position: relative;
+    isolation: isolate;
+}
+
+.pnp-chip__active {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(65, 145, 255, 0.25);
+    border: 1px solid rgba(65, 145, 255, 0.35);
+    z-index: -1;
+}
+
+
+.pnp-chip__content {
+    display: inline-flex;
+        align-items: center;
+}
+
+.pnp-chip__content:has(.pnp-icon) {
+    position: relative;
+    top: 2px;
+}
+
+/* Fullscreen overlay for the samples gallery */
+.pnp-samples-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--pnp-bg, #fff);
+    z-index: 99999;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    background-attachment: fixed;
+        background-size: contain;
+        background-size: cover;
+        background-image: url(/sp-dev-fx-webparts/images/keyart-bg.webp);
+        background-position: bottom left;
+}
+
+.pnp-samples-overlay__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.pnp-samples-overlay .pnp-samples__layout {
+    grid-template-columns: 320px 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 980px) {
+    .pnp-samples-overlay .pnp-samples__layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Strong mobile override to ensure Muuri positioning doesn't prevent scrolling/stacking */
+@media (max-width: 640px) {
+    .pnp-muuri-grid {
+        position: static;
+        display: block;
+    }
+
+    .pnp-card-grid {
+        display: block;
+    }
+
+    .pnp-muuri-grid .pnp-sample-item,
+    .pnp-card-grid .pnp-sample-item {
+        position: static;
+        display: block;
+        width: 100%;
+        margin: 0 0 0.75rem 0;
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+}

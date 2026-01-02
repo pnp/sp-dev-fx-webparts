@@ -1,0 +1,24 @@
+<section class="section-base blog" id="{{ .File.BaseFileName | safeHTML }}">
+<div class="section-inner"></div>
+<header class="section-header">
+    <h1>{{.Title | safeHTML }}</h1>
+    <p>{{.Description | safeHTML }}</p>
+</header>
+<div class="section-inner">
+    <menu class="section-grid" id="rss-section">
+        {{/*
+        Content is fetched from the RSS feed and displayed here.
+
+        The template is based on the blog-item.html template in the static/templates folder.
+        */}}
+
+    </menu>
+</div>
+</div>
+</section>
+<script>
+    window.rssFeedUrl = 'https://pnp.github.io/blog/index.xml';
+</script>
+{{ $js := resources.Get "js/blog-feed.js" }}
+{{ $js = $js | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>

@@ -1,0 +1,33 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.card{
+
+    &.event{
+        height: 100%;
+        min-height: 300px;
+        aspect-ratio: unset;
+        @media screen and (max-width: 768px ) {
+            aspect-ratio: unset;
+            max-height: 600px;
+        }
+        .card-main{
+            gap: unset;
+        }
+        .card-header{
+            color: dt.$dark-purple;
+            h1{
+                font-size: clamp(1.25rem, 1.25vw, 1.5rem);
+                line-height: 1.15;
+            }
+
+            @media screen and (max-width: 720px) {
+
+                h1{
+                    margin-bottom: 0;
+
+                    font-size: clamp(1.25rem, 2vw, 3rem);;
+                }
+            }
+        }
+    }
+}

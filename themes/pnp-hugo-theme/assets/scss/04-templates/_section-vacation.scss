@@ -1,0 +1,45 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.vacation{
+    background-image: url(../images/on-vacation.webp);
+    background-position: center center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+.vacation-inner{
+    font-size: clamp(2rem, 6vw, 7rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: dt.$warm-white;
+    max-width: 35ch;
+    margin-inline: 1em;
+    text-align: center;
+    text-shadow: .25em .25em .75em rgba(0,0,0,0.9);
+    .text-xl{
+        font-size: 1em;
+        margin-bottom: 0.25em;
+    }
+    .text-l{
+        font-size: 0.65em;
+    }
+}
+
+.wrapper.vacation{
+    .page-header{
+        backdrop-filter: none;
+        background-color: transparent;
+    }
+    .hamburger{
+        color: dt.$warm-white;
+    }
+    .site-logo{
+        color: dt.$warm-white;
+        text-shadow: .125em .125em .75em rgba(0,0,0,0.8);
+    }
+}

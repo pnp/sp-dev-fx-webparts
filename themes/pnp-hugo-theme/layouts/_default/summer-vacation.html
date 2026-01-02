@@ -1,0 +1,42 @@
+{{ define "main" }}
+<style>
+    .vacation-inner a {
+    color: white;
+}
+
+.vacation-inner p {
+    font-size: clamp(1.25rem, 2vw, 2.75rem);
+    font-weight: 500;
+}
+
+.vacation-inner p.text-xl {
+    font-weight: 900;
+}
+</style>
+<section class="vacation" id="{{ .File.BaseFileName | safeHTML }}">
+    <div class="vacation-inner">
+        <p class="text-xl">{{ .Title | safeHTML }}</p>
+        {{ with .Description }}
+            <p class="text-l">{{ . | safeHTML }}</p>
+        {{ else }}
+            {{ with .Content }}
+            <p class="text-l">{{ . | safeHTML }}</p>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{ $js := resources.Get "js/jquery.ripples-min.js" }}
+{{ $js = $js | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>
+<script>
+    $(document).ready(function () {
+            $('.vacation').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.04,
+            });
+        });
+
+</script>
+{{ end }}

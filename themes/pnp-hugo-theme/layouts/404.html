@@ -1,0 +1,18 @@
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+    <title>{{- block "title" . }}{{- end }}</title>
+    {{ partial "head.html" . }}
+    <meta name="robots" content="noindex">
+</head>
+
+<body class="" style="">
+    <section class="section-404">
+        <div class="section-404-inner">
+            {{- block "main" . }}{{- end }}
+        </div>
+    </section>
+
+</body>
+
+</html>

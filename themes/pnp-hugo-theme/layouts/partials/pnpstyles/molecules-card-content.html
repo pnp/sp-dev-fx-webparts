@@ -1,0 +1,15 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=molecules-card-content
+
+Variables:
+.title
+.content (HTML content)
+*/}}
+<div class="card-main">
+    <header class="card-header">
+        <h1>
+            {{ .title }}
+        </h1>
+    </header>
+{{ .content | safeHTML }}
+</div>

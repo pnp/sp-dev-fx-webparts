@@ -1,0 +1,134 @@
+section:target:before {
+    content: "";
+    display: block;
+    height: 80px;
+    /* Give height of your fixed header */
+    margin: -80px 0 0;
+    /* Negative top margin of header height */
+}
+
+a.card-link, a.blog-link {
+    text-decoration: none;
+}
+
+svg.icon-bluesky.icon-svg {
+    fill: #1185fe;
+}
+
+/* Cookie Consent Banner Styles */
+#cookie-consent-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    color: white;
+    padding: 15px;
+    z-index: 9999;
+    text-align: center;
+}
+
+#cookie-consent-banner .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#cookie-consent-banner p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+
+#cookie-consent-banner a {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+#cookie-consent-banner button {
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+}
+
+#accept-cookies {
+    background: #4CAF50;
+}
+
+#reject-cookies {
+    background: #f44336;
+}
+
+#customize-cookies {
+    background: #2196F3;
+}
+
+/* Cookie Preferences Modal */
+#cookie-preferences-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+#cookie-preferences-modal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+}
+
+#cookie-preferences-modal h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+#cookie-preferences-modal .preferences {
+    margin: 20px 0;
+}
+
+#cookie-preferences-modal label {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+}
+
+#cookie-preferences-modal input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+#cookie-preferences-modal small {
+    color: #666;
+}
+
+#cookie-preferences-modal .buttons {
+    text-align: right;
+}
+
+#cookie-preferences-modal button {
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+}
+
+#save-preferences {
+    background: #4CAF50;
+}
+
+#close-modal {
+    background: #666;
+}

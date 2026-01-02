@@ -1,0 +1,20 @@
+name = 'PnP'
+license = 'MIT'
+licenselink = 'https://github.com/pnp/pnp-hugo-theme/blob/main/LICENSE'
+description = 'A Hugo theme for the Microsoft 365 and Power Platform Patterns and Practices'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/pnp/pnp-hugo-theme'
+
+# If you have a running demo of the theme
+demosite = 'https://pnp.github.io'
+
+# Taxonomy terms
+tags = ['responsive', 'light', 'landing']
+features = ['analytics', 'favicon', 'webfonts', '']
+
+# If the theme has multiple authors
+authors = [
+  {name = 'Hugo Bernier', homepage = 'https://tahoeninja.blog'},
+  {name = 'Stefan Bauer', homepage = 'https://n8d.at/'}
+]

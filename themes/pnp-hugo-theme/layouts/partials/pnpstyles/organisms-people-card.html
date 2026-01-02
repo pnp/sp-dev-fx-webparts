@@ -1,0 +1,17 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=organisms-people-card
+
+Variables:
+.title: The title
+.imgSrc: The image URL
+.imgAlt: The alternate text for the image
+.description: The description
+.date: The date of the blog post
+.author: The author of the blog post
+.type: The blog post tag
+.links: The links for the card
+*/}}
+<article class="card people">
+    {{ partial "pnpstyles/molecules-card-side-plate-vert" (dict "links" .links) }}
+    {{ partial "pnpstyles/molecules-card-content-people" . }}
+</article>

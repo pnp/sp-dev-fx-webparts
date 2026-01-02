@@ -1,0 +1,33 @@
+{{ $links := slice }}
+{{ if .github }}
+{{ $links = $links | append (dict "url" .github "iconName" "icon-github" "ariaHidden" true "title" "Follow on Github") }}
+{{ end }}
+{{ if .linkedin }}
+{{ $links = $links | append (dict "url" .linkedin "iconName" "icon-linkedin" "ariaHidden" true "title" "Connect on LinkedIn") }}
+{{ end }}
+{{ if .twitter }}
+{{ $links = $links | append (dict "url" .twitter "iconName" "icon-twitter" "ariaHidden" true "title" "Follow on Twitter") }}
+{{ end }}
+{{ if .bluesky }}
+{{ $links = $links | append (dict "url" .bluesky "iconName" "icon-bluesky" "ariaHidden" true "title" "Follow on Bluesky") }}
+{{ end }}
+{{ "<script type='application/ld+json'>" | safeHTML }}
+{{ "{" | safeHTML }}
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ .name }}",
+    {{ with .img -}}
+    "image": [ 
+        "{{ . | absURL }}" 
+    ],
+    {{- end }}
+    "jobTitle": "{{ .title }}",
+    "worksFor": "{{ .company }}",
+    "sameAs": [
+    {{ range $i, $link := $links }}
+        "{{ $link.url }}"{{ if ne $i (sub (len $links) 1) }},{{ end }}
+    {{- end }}
+    ]
+{{ "}" | safeHTML }}
+{{ "</script>" | safeHTML }}
+{{ partial "pnpstyles/molecules-card-side-plate-vert" (dict "links" $links) }}

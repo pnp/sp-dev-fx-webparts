@@ -1,0 +1,13 @@
+<meta name="msapplication-TileColor" content='{{ .Site.Params.msapplicationTileColor | default "#0078d4" }}'/>
+<meta name="theme-color" content='{{ .Site.Params.themeColor | default "#ffffff" }}'/>
+
+<link rel="apple-touch-icon" sizes="180x180" href='{{ .Site.Params.appleTouchIcon | default "apple-touch-icon.png" | absURL }}' />
+<link rel="icon" type="image/svg+xml" href='{{ .Site.Params.faviconSVG | default "favicon.svg" | absURL }}' sizes="any" />
+<link rel="icon" type="image/png" href='{{ .Site.Params.favicon_32 | default "favicon-32x32.png" | absURL }}' sizes="32x32" />
+<link rel="icon" type="image/png" href='{{ .Site.Params.favicon_16 | default "favicon-16x16.png" | absURL }}' sizes="16x16" />
+
+<link rel="apple-touch-icon" href='{{ .Site.Params.touchicon | default "images/apple-touch-icon.png" | absURL }}' />
+<link rel="apple-touch-icon" sizes="180x180" href='{{ .Site.Params.touchicon | default "/images/apple-touch-icon.png" | absURL }}' />
+
+<link rel="manifest" href='{{ .Site.Params.manifest | default "site.webmanifest" | absURL }}' />
+<link rel="mask-icon" href='{{ .Site.Params.mask_icon | default "safari-pinned-tab.svg" | absURL }}' color='{{ .Site.Params.mask_icon_color | default "#0078d4" }}' />

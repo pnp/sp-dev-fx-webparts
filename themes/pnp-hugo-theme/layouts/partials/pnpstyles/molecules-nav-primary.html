@@ -1,0 +1,14 @@
+{{/*
+Matches https://pnp.github.io/styleguide/?p=molecules-nav-primary
+
+Variables:
+(.Sitem.Menus.main): Passed in from the context
+*/}}
+<menu class="nav-menu primary" aria-label="Primary navigation" aria-expanded="true">
+    {{ range .Site.Menus.main }}
+    <li class="nav-item">
+        <a href="{{ .URL }}" class="nav-link">{{ $text := print .Name | safeHTML }}
+            {{ $text }}</a>
+    </li>
+    {{ end }}
+</menu>

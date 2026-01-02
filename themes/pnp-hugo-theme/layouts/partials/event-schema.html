@@ -1,0 +1,27 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "{{ .Title }}",
+    "startDate": "2025-07-21T19:00:00-05:00",
+    "endDate": "2025-07-21T23:00-05:00",
+    "identifier": "{{ .Params.uid }}",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "location": {
+        "@type": "VirtualLocation",
+        "url": "{{.Params.joinUrl}}"
+    },
+    {{- with .Params.image }}
+    "image": [
+    "{{ . | absURL }}"
+    ],
+    {{ end }}
+    "description": "{{ .Params.description }}",
+    "organizer": {
+        "@type": "Organization",
+        "name": "{{ default "Microsoft 365 & Power Platform Community" .Params.organizer }}",
+        "url": "{{ if eq (default "Microsoft 365 & Power Platform Community" .Params.organizer) "Microsoft" }}https://www.microsoft.com{{ else }}https://pnp.github.io{{ end }}"
+    }
+}
+</script>

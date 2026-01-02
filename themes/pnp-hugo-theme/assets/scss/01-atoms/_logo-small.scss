@@ -1,0 +1,32 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.site-logo{
+    padding-block: 1em;
+
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 700;
+    line-height: 0.9;
+
+    color: dt.$dark-blue;
+    .ff-pp{
+        font-size: clamp(1rem, 1.55vw, 1.20rem);
+    }
+    .ff-com{
+        font-size: clamp(1rem, 1.55vw, 1.35rem);
+    }
+}
+
+.site-logo-link{
+    display: flex;
+    height: inherit;
+    padding-left: 4svw;
+
+    flex-direction: column;
+    justify-content: center;
+
+    text-decoration: none;
+
+    @media screen and (max-width: 1024px) {
+        grid-column: 1 / span 3;
+    }
+}

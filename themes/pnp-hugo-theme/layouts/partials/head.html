@@ -1,0 +1,15 @@
+{{ partial "head/schema.html" . }}
+{{ partial "head/meta-tags.html" . }}
+{{ if .Params.canonicalUrl }}
+<link rel="canonical" href="{{ .Params.canonicalUrl }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+{{ partialCached "head/theme-styles.html" . }}
+{{ partialCached "head/custom-styles.html" . }}
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ partial "head/favicon" . }}
+{{ partial "head/alternative-output-formats.html" . }}
+{{ partial "head/extensions.html" . }}

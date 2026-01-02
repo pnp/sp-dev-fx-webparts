@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    // Check for cookie consent before loading Clarity
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+    
+    // Load Clarity only if user has consented
+    if (getCookie('analytics-consent') === 'true') {
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "{{ .Site.Params.clarity.trackingCode }}");
+    }
+</script>

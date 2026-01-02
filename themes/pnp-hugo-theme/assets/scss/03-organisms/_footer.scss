@@ -1,0 +1,44 @@
+@use '../00-base/designtoken.vars' as dt;
+
+.footer{
+    background-image: linear-gradient(to bottom, transparent 30%,  dt.$light-gray 50%, dt.$mid-gray 75%, dt.$warm-gray 100%);
+    display: flex;
+    justify-content: center;
+    align-content: end;
+}
+.footer-menu{
+    height: max-content;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+    flex-grow: 0;
+}
+
+.footer-cnt{
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+}
+
+.comic{
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.parker{
+    height: 4rem;
+    image{
+        width: 100%;
+        height: inherit;
+    }
+}

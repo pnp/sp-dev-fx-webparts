@@ -1,0 +1,119 @@
+ body {}
+
+ .stage {
+   overflow: clip;
+   height: 90svh;
+   padding-block: 300px;
+
+   background-color: rgba(9, 31, 44, 1);
+   aspect-ration: 16 / 9;
+
+   &:nth-child(even) {
+     background-color: rgba(217, 217, 214, 1);
+   }
+ }
+
+ .stage-welcome {
+   position: relative;
+
+   height: 50svh;
+
+   &.alt {
+     background-color: whitesmoke;
+   }
+ }
+
+ .stage-1 {
+   position: relative;
+
+   box-sizing: border-box;
+ }
+
+ .stage-2 {
+   background-image: url(frosted-glass);
+ }
+
+ .bg-image {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+
+   width: auto;
+
+   clip: auto;
+ }
+
+ .card-grid {
+   display: grid;
+
+   grid-template-columns: 1fr 1fr;
+   gap: 2vw;
+
+   transition: all 0.25s linear;
+ }
+
+ .typo-grid {
+   display: grid;
+   height: auto;
+   padding: 2vw 5vw;
+
+   grid-template-columns: 2fr 1fr;
+   gap: 2svw;
+
+   background-color: rgba(9, 31, 41, 1);
+
+   &.alt {
+     background-color: whitesmoke;
+     color: rgba(9, 31, 41, 1);
+
+     .lead {
+       color: inherit;
+     }
+   }
+
+ }
+
+ .headline {
+   display: block;
+   height: auto;
+   padding: 2svw;
+   padding-top: 0;
+   margin-top: 0;
+
+   font-family: "Segoe Sans", sans-serif;
+   font-size: clamp(3rem, 6.5vw, 7rem);
+   font-weight: 900;
+   line-height: 0.8;
+   text-transform: uppercase;
+   text-wrap: pretty;
+
+   background-clip: text;
+   background-image: url("https://assets.codepen.io/83107/250584_M365_CoreAsset_TeamsBkgd_A2.png?width=1920&height=1080&format=auto&fit=cover");
+   background-repeat: no-repeat;
+   background-size: cover;
+   color: transparent;
+
+   background-position: top left;
+   grid-columns: 1 / span 2;
+ }
+
+ .lead {
+   font-size: clamp(1rem, 2vw, 3rem);
+   font-weight: 400;
+   line-height: 1.15;
+   text-wrap: balanced;
+
+   background-clip: text;
+   background-image: url("https://assets.codepen.io/83107/250584_M365_CoreAsset_TeamsBkgd_A2.png?width=1920&height=1080&format=auto&fit=cover");
+   background-repeat: no-repeat;
+   background-size: cover;
+   color: white;
+
+   background-position: top right;
+
+   p {
+     margin-top: 0;
+     margin-bottom: 1rem;
+   }
+ }

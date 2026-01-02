@@ -1,0 +1,85 @@
+:root {
+    --base-color-opactity: 1;
+    --pure-white: rgba(255, 255, 255, var(--base-color-opactity));
+    --off-white: rgba(244, 243, 245, var(--base-color-opactity));
+    --warm-white: rgba(255, 248, 243, var(--base-color-opactity));
+
+    --warm-light-gray: rgba(232, 230, 223, var(--base-color-opactity));
+    --mid-gray: rgba(215, 210, 203, var(--base-color-opactity));
+    --warm-gray: rgba(140, 130, 121, var(--base-color-opactity));
+
+    --light-gray: rgba(217, 217, 214, var(--base-color-opactity));
+    --cool-gray: rgba(177, 179, 179, var(--base-color-opactity));
+    --dark-gray: rgba(69, 65, 66, var(--base-color-opactity));
+
+    --light-brown: rgba(225, 211, 199, var(--base-color-opactity));
+    --brown: rgba(191, 148, 116, var(--base-color-opactity));
+    --dark-brown: rgba(92, 71, 56, var(--base-color-opactity));
+
+    --light-yellow: rgba(255, 227, 153, var(--base-color-opactity));
+    --yellow: rgba(255, 185, 0, var(--base-color-opactity));
+    --dark-yellow: rgba(127, 90, 26, var(--base-color-opactity));
+
+    --light-orange: rgba(255, 163, 139, var(--base-color-opactity));
+    --orange: rgba(255, 92, 57, var(--base-color-opactity));
+    --dark-orange: rgba(115, 57, 29, var(--base-color-opactity));
+
+    --light-red: rgba(255, 179, 187, var(--base-color-opactity));
+    --red: rgba(244, 54, 76, var(--base-color-opactity));
+    --dark-red: rgba(115, 38, 47, var(--base-color-opactity));
+
+    --light-magenta: rgba(213, 158, 215, var(--base-color-opactity));
+    --magenta: rgba(192, 59, 196, var(--base-color-opactity));
+    --dark-magenta: rgba(112, 37, 115, var(--base-color-opactity));
+
+    --light-purple: rgba(197, 180, 227, var(--base-color-opactity));
+    --purple: rgba(134, 97, 197, var(--base-color-opactity));
+    --dark-purple: rgba(70, 54, 104, var(--base-color-opactity));
+
+    --light-blue: rgba(141, 200, 232, var(--base-color-opactity));
+    --blue: rgba(0, 120, 212, var(--base-color-opactity));
+    --dark-blue: rgba(42, 68, 111, var(--base-color-opactity));
+
+    --light-teal: rgba(185, 220, 210, var(--base-color-opactity));
+    --teal: rgba(73, 197, 177, var(--base-color-opactity));
+    --dark-teal: rgba(34, 91, 98, var(--base-color-opactity));
+
+    --light-green: rgba(212, 236, 142, var(--base-color-opactity));
+    --green: rgba(141, 233, 113, var(--base-color-opactity));
+    --dark-green: rgba(7, 100, 29, var(--base-color-opactity));
+
+    --light-black: rgba(9, 31, 44, var(--base-color-opactity));
+    --black: rgba(0, 0, 0, var(--base-color-opactity));
+    --dark-black: rgba(41, 24, 23, var(--base-color-opactity));
+
+    /* Effect; */
+    --frosted-glass: '../../images/base-assets.svg#frosted-glass';
+    --frosted-glass: '../../images/noise.svg';
+    --frosted-glass-size: 200px 200px;
+
+    /* Linear gradient */
+    --grad-lin-1: linear-gradient(var(--rotation-angle, 45deg),
+            var(--yellow),
+            var(--orange),
+            var(--red),
+            var(--magenta),
+            var(--purple),
+            var(--blue),
+            var(--teal),
+            var(--green));
+    /* radial gradient */
+    --grad-rad-1: radial-gradient(circle,
+            var(--yellow),
+            var(--orange),
+            var(--red),
+            var(--magenta),
+            var(--orange),
+            var(--red),
+            var(--magenta),
+            var(--purple),
+            var(--blue),
+            var(--teal),
+            var(--green));
+
+
+}
