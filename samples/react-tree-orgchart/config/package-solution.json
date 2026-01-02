@@ -30,7 +30,7 @@
         "title": "react-tree-orgchart TreeOrgChartWebPart Feature",
         "description": "The feature that activates TreeOrgChartWebPart from the react-tree-orgchart solution.",
         "id": "4f45c562-805c-42da-81cc-8e84bf7834b0",
-        "version": "2.0.1.0",
+        "version": "2.0.2.0",
         "componentIds": [
           "4f45c562-805c-42da-81cc-8e84bf7834b0"
         ]
