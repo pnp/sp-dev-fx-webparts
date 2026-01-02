@@ -28271,14 +28271,28 @@
                 "name": "summarize-result-en.png",
                 "type": "image",
                 "order": 101,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-en.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summary-result-en.png",
                 "alt": "Summarize Result English"
             },
             {
                 "name": "summarize-result-it.png",
                 "type": "image",
                 "order": 102,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summarize-result-it.png",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/summary-result-it.png",
+                "alt": "Summarize Result Italian"
+            },
+            {
+                "name": "regenerate-summary.gif",
+                "type": "image",
+                "order": 103,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/regenerate-summary.gif",
+                "alt": "Summarize Result Italian"
+            },
+            {
+                "name": "model-download-and-generation.gif",
+                "type": "image",
+                "order": 103,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/model-download-and-generation.gif",
                 "alt": "Summarize Result Italian"
             }
         ],
