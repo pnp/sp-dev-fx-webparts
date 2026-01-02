@@ -358,6 +358,185 @@ jobs:
           });
           EOF
 
+      - name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl
+        id: avatars
+        run: |
+          node << 'EOF'
+          const fs = require("fs");
+          const path = require("path");
+          const crypto = require("crypto");
+          const sharp = require("sharp");
+
+          const repo = process.env.GITHUB_REPOSITORY;
+
+          // Where we store normalized avatars in this repo
+          const avatarsDir = path.resolve(".metadata/avatars");
+          fs.mkdirSync(avatarsDir, { recursive: true });
+
+          // Where the website should load them from.
+          // Option A (easy): load from GitHub raw:
+          const rawBase = `https://raw.githubusercontent.com/${repo}/refs/heads/main/.metadata/avatars/`;
+
+          const allSamplesPath = path.resolve(".metadata/all-samples.json");
+          const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          const manifestPath = path.join(avatarsDir, "manifest.json");
+          const oldManifest = fs.existsSync(manifestPath)
+            ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+            : {}; // keyed by sourceUrl
+
+          function safeSlug(s) {
+            return String(s || "author")
+              .trim()
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/^-+|-+$/g, "")
+              .slice(0, 40) || "author";
+          }
+
+          function sha256Hex(buf) {
+            return crypto.createHash("sha256").update(buf).digest("hex");
+          }
+
+          async function fetchBuffer(url) {
+            const res = await fetch(url, { redirect: "follow" });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const ab = await res.arrayBuffer();
+            return {
+              buf: Buffer.from(ab),
+              contentType: res.headers.get("content-type") || ""
+            };
+          }
+
+          async function normalizeToWebp(inputBuf, contentType, sizePx) {
+            const isSvg = /image\/svg\+xml/i.test(contentType);
+            const img = isSvg
+              ? sharp(inputBuf, { density: 256 })
+              : sharp(inputBuf, { animated: true, pages: 1 });
+
+            return await img
+              .resize(sizePx, sizePx, { fit: "cover", position: "centre" })
+              .webp({ quality: 80, effort: 4 })
+              .toBuffer();
+          }
+
+          async function run() {
+            const sizePx = 64;
+
+            // 1) Collect unique avatar URLs
+            const byUrl = new Map(); // sourceUrl -> { slugBase }
+            for (const s of samples) {
+              const authors = Array.isArray(s.authors) ? s.authors : [];
+              for (const a of authors) {
+                const url = a?.pictureUrl;
+                if (typeof url !== "string" || !url.startsWith("http")) continue;
+
+                const slugBase = a.gitHubAccount || a.name || "author";
+                if (!byUrl.has(url)) byUrl.set(url, { slugBase });
+              }
+            }
+
+            const expectedFiles = new Set(["manifest.json"]);
+            const newManifest = {};
+            const failures = [];
+
+            let processed = 0;
+            let skipped = 0;
+            let failed = 0;
+
+            // 2) Download + normalize each unique URL once
+            for (const [sourceUrl, info] of byUrl.entries()) {
+              try {
+                // Skip if we already produced a file for this sourceUrl and it still exists.
+                // If you want to *always* re-check remote images, remove this skip block.
+                const prev = oldManifest[sourceUrl];
+                if (prev?.file) {
+                  const prevPath = path.join(avatarsDir, prev.file);
+                  if (fs.existsSync(prevPath)) {
+                    newManifest[sourceUrl] = prev;
+                    expectedFiles.add(prev.file);
+                    skipped++;
+                    continue;
+                  }
+                }
+
+                const { buf, contentType } = await fetchBuffer(sourceUrl);
+                const outBuf = await normalizeToWebp(buf, contentType, sizePx);
+
+                const hash = sha256Hex(outBuf).slice(0, 12);
+                const slug = safeSlug(info.slugBase);
+                const outFile = `${slug}.${hash}.webp`;
+                const outPath = path.join(avatarsDir, outFile);
+
+                if (!fs.existsSync(outPath)) {
+                  fs.writeFileSync(outPath, outBuf);
+                }
+
+                newManifest[sourceUrl] = {
+                  sourceUrl,
+                  file: outFile,
+                  sizePx,
+                  sha256_12: hash
+                };
+
+                expectedFiles.add(outFile);
+                processed++;
+              } catch (e) {
+                failed++;
+                failures.push({ url: sourceUrl, error: e?.message || String(e) });
+                console.error(`❌ Avatar failed: ${sourceUrl}: ${e?.message || e}`);
+              }
+            }
+
+            // 3) Delete orphaned files
+            let deleted = 0;
+            for (const file of fs.readdirSync(avatarsDir)) {
+              if (!expectedFiles.has(file)) {
+                fs.rmSync(path.join(avatarsDir, file), { force: true });
+                deleted++;
+              }
+            }
+
+            // 4) Rewrite authors[].pictureUrl to local + preserve source
+            for (const s of samples) {
+              const authors = Array.isArray(s.authors) ? s.authors : [];
+              for (const a of authors) {
+                const sourceUrl = a?.pictureUrl;
+                if (typeof sourceUrl !== "string" || !sourceUrl.startsWith("http")) continue;
+
+                const entry = newManifest[sourceUrl] || oldManifest[sourceUrl];
+                if (!entry?.file) continue;
+
+                if (!a.avatarSourceUrl) a.avatarSourceUrl = sourceUrl;
+                a.pictureUrl = rawBase + encodeURIComponent(entry.file);
+              }
+            }
+
+            fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2), "utf8");
+            fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2), "utf8");
+
+            const failuresPath = path.resolve(".metadata/avatar-failures.json");
+            if (failures.length) {
+              fs.writeFileSync(failuresPath, JSON.stringify(failures, null, 2), "utf8");
+              console.log(`⚠️ Avatar failures written to: ${failuresPath}`);
+            } else if (fs.existsSync(failuresPath)) {
+              fs.rmSync(failuresPath, { force: true });
+            }
+
+            console.log(`🧑‍🎨 Avatars processed=${processed}, skipped=${skipped}, failed=${failed}, deleted=${deleted}`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_processed=${processed}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_skipped=${skipped}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_failed=${failed}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `avatars_deleted=${deleted}\n`);
+          }
+
+          run().catch(err => {
+            console.error("Avatar normalization failed:", err);
+            process.exit(1);
+          });
+          EOF
+
+
       - name: Check for changes
         id: check_changes
         run:  |
@@ -368,6 +547,14 @@ jobs:
           if [ -d .metadata/thumbs ]; then
             git add .metadata/thumbs
           fi
+
+          if [ -d .metadata/avatars ]; then
+            git add .metadata/avatars
+          fi
+          if [ -f .metadata/avatar-failures.json ]; then
+            git add .metadata/avatar-failures.json
+          fi
+
 
           git status
           echo ""
@@ -414,6 +601,15 @@ jobs:
           | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
           | **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
           
+          ## 🧑‍🎨 Avatar Normalization
+
+          | Metric | Count |
+          |--------|-------|
+          | **Processed** | ${{ steps.avatars.outputs.avatars_processed }} |
+          | **Skipped (cached)** | ${{ steps.avatars.outputs.avatars_skipped }} |
+          | **Failed** | ${{ steps.avatars.outputs.avatars_failed }} |
+          | **Deleted (orphaned)** | ${{ steps.avatars.outputs.avatars_deleted }} |
+
           ### Source Files
           EOF
 
