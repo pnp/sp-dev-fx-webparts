@@ -44,7 +44,6 @@ jobs:
         with:
           node-version: "20"
 
--
       - name: Merge + slim samples files
         id: merge
         run: |
