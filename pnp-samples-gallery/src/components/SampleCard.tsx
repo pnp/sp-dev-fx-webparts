@@ -101,7 +101,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     {/* <div className="pnp-card__desc">{s.shortDescription}</div> */}
 
                     <div className="pnp-card__footer">
-                        <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={true} />
+                        <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
                         <div className="pnp-card__date">
                             {(() => {

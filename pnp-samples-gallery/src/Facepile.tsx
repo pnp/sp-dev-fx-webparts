@@ -55,7 +55,7 @@ export function Facepile(props: FacepileProps) {
                         className="pnp-facepile__avatar"
                         {...avatarProps}
                     >
-                        {a.pictureUrl ? (
+                        { (a.pictureUrl) ? (
                             <img
                                 src={a.pictureUrl}
                                 alt={name}

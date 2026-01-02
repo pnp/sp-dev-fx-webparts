@@ -305,24 +305,28 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
             window.removeEventListener('pointermove', onPointerMove);
             window.removeEventListener('pointerup', onPointerUp);
         };
-    }, [thumbnails.length]);
+    }, [next, prev, thumbnails.length]);
 
     // resolve author picture URLs relative to sampleBase as well
     const resolvedAuthors = useMemo(() => {
         const authors = sample.authors ?? [];
-        const resolve = (u: unknown) => {
-            try {
-                const s = String(u ?? '');
-                if (!s) return '';
-                if (/^https?:|^data:/.test(s)) return s;
-                if (sampleBase) return `${sampleBase.replace(/\/$/, '')}/${s.replace(/^\//, '')}`;
-                return s;
-            } catch {
-                return String(u ?? '');
-            }
-        };
-        return authors.map(a => ({ ...a, pictureUrl: a.pictureUrl ? resolve(a.pictureUrl) : a.pictureUrl }));
-    }, [sample.authors, sampleBase]);
+        // const resolve = (u: unknown) => {
+        //     try {
+        //         const s = String(u ?? '');
+        //         if (!s) return '';
+        //         if (/^https?:|^data:/.test(s)) return s;
+        //         if (sampleBase) return `${sampleBase.replace(/\/$/, '')}/${s.replace(/^\//, '')}`;
+        //         return s;
+        //     } catch {
+        //         return String(u ?? '');
+        //     }
+        // };
+        // return authors.map(a => ({ 
+        //     ...a, 
+        //     pictureUrl: a.pictureUrl ? resolve(a.pictureUrl) : a.pictureUrl,
+        // }));
+        return authors;
+    }, [sample.authors]);
 
     useEffect(() => {
         previouslyFocusedRef.current = document.activeElement;

@@ -17,7 +17,6 @@ export interface SampleAuthor {
     gitHubAccount?: string;
     name?: string;
     pictureUrl?: string;
-    company?: string;
 }
 
 export interface PnPSample {
