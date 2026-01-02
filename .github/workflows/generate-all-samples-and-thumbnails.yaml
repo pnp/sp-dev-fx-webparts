@@ -421,7 +421,7 @@ jobs:
           }
 
           async function run() {
-            const sizePx = 64;
+            const sizePx = 28;
 
             // 1) Collect unique avatar URLs
             const byUrl = new Map(); // sourceUrl -> { slugBase }
