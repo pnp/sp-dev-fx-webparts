@@ -24,18 +24,136 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     const primaryCat = cats[0] ?? "SPFX-WEB-PART";
     const catLabel = prettyCategory(primaryCat);
 
-    const handleClick = (e: React.MouseEvent) => {
-        if (!onOpen) return;
+    const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:640px)').matches : false;
+    const anchorRef = React.useRef<HTMLElement | null>(null);
 
-        // Only intercept plain left-clicks without modifier keys
-        // let other clicks (middle, ctrl/cmd, shift) behave normally
-        const isLeft = (e.button === 0);
-        const hasModifier = e.ctrlKey || e.metaKey || e.shiftKey || e.altKey;
+    React.useEffect(() => {
+        try {
+            const el = anchorRef.current;
+            if (el) {
+                console.debug('[SampleCard] mounted', { name: s.name, href: el.getAttribute('href'), dataset: { id: el.closest('.pnp-sample-item')?.getAttribute('data-id') } });
+            }
+        } catch {
+            // ignore
+        }
+    }, [s.name]);
+    const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+        const isMouse = 'button' in e;
+        const isLeft = isMouse ? (e as React.MouseEvent).button === 0 : false;
+        const hasModifier = ('ctrlKey' in e && e.ctrlKey) || ('metaKey' in e && e.metaKey) || ('shiftKey' in e && e.shiftKey) || ('altKey' in e && e.altKey);
         if (isLeft && !hasModifier) {
+            if (isMobile) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Prefer in-app panel when possible
+                if (onOpen) {
+                    try {
+                        onOpen(s);
+                    } catch (err) {
+                        console.error('[SampleCard] onOpen failed', err);
+                        // Fall back to opening the URL
+                        if (s.url) window.location.href = s.url;
+                    }
+                    return;
+                }
+
+                // Fallback: open URL in new tab/window
+                if (s.url) {
+                    try {
+                        const winName = `_pnp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+                        window.open(s.url, winName, "noopener,noreferrer");
+                    } catch {
+                        window.location.href = s.url;
+                    }
+                }
+                return;
+            }
+
+            if (!onOpen) return;
             e.preventDefault();
             onOpen(s);
         }
     };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        // Treat Enter and Space as activation for non-anchor mobile element
+        if (isMobile && (e.key === 'Enter' || e.key === ' ')) {
+            // synthesize a click-like event
+            handleClick(e as unknown as React.MouseEvent);
+        }
+    };
+
+    const cardInner = (
+        <>
+            {thumb ? (
+                <img
+                    className="pnp-card__thumb"
+                    src={thumb.url}
+                    alt={thumb.alt ?? "Sample thumbnail"}
+                    loading="lazy"
+                    onLoad={() => {
+                        const g = muuriRef?.current;
+                        if (g) {
+                            g.refreshItems().layout();
+                        }
+                    }}
+                />
+            ) : (
+                <img
+                    className="pnp-card__thumb"
+                    src={'/sp-dev-fx-webparts/_nopreview.png'}
+                    alt={"No preview available"}
+                    loading="lazy"
+                    onLoad={() => {
+                        const g = muuriRef?.current;
+                        if (g) {
+                            g.refreshItems().layout();
+                        }
+                    }}
+                />
+            )}
+
+            <div className="pnp-card__meta">
+                {metaFirst(s, "SPFX-VERSION") ? <span className="pnp-pill" title={`SPFx ${metaFirst(s, "SPFX-VERSION")}`}>{metaFirst(s, "SPFX-VERSION")}</span> : null}
+                <span className="pnp-pill pnp-pill--icon" title={techText} aria-label={techText}>
+                    <Icon src={techSrc} size={16} />
+                </span>
+                <span
+                    className="pnp-pill pnp-pill--icon"
+                    title={catLabel}
+                    aria-label={catLabel}
+                >
+                    <Icon
+                        icon={categoryToIcon(primaryCat)}
+                        basePath={iconBasePath}
+                        size={16}
+                        className="pnp-icon"
+                    />
+                </span>
+            </div>
+
+            <h3 className="pnp-card__title">{s.title}</h3>
+
+            <div className="pnp-card__footer">
+                <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
+
+                <div className="pnp-card__date">
+                    {(() => {
+                        const raw = s.updateDateTime ?? "";
+                        if (!raw) return null;
+                        const d = new Date(raw);
+                        if (isNaN(d.getTime())) return null;
+                        return (
+                            <time dateTime={d.toISOString()} title={d.toUTCString()}>
+                                {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                            </time>
+                        );
+                    })()}
+                </div>
+            </div>
+        </>
+    );
 
     return (
         <div
@@ -49,76 +167,15 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
             data-date={(s.updateDateTime ?? "")}
         >
             <div className="pnp-sample-item-content">
-                    <a className="pnp-card" href={s.url} rel="noopener" onClick={handleClick}>
-                    {thumb ? (
-                        <img
-                            className="pnp-card__thumb"
-                            src={thumb.url}
-                            alt={thumb.alt ?? "Sample thumbnail"}
-                            loading="lazy"
-                            onLoad={() => {
-                                const g = muuriRef?.current;
-                                if (g) {
-                                    g.refreshItems().layout();
-                                }
-                            }}
-                        />
-                    ) : (
-                        <img
-                            className="pnp-card__thumb"
-                                src={'/sp-dev-fx-webparts/_nopreview.png'}
-                            alt={"No preview available"}
-                            loading="lazy"
-                            onLoad={() => {
-                                const g = muuriRef?.current;
-                                if (g) {
-                                    g.refreshItems().layout();
-                                }
-                            }}
-                        />
-                    )}
-
-                    <div className="pnp-card__meta">
-                        {metaFirst(s, "SPFX-VERSION") ? <span className="pnp-pill" title={`SPFx ${metaFirst(s, "SPFX-VERSION")}`}>{metaFirst(s, "SPFX-VERSION")}</span> : null}
-                        <span className="pnp-pill pnp-pill--icon" title={techText} aria-label={techText}>
-                            <Icon src={techSrc} size={16} />
-                        </span>
-                        <span
-                            className="pnp-pill pnp-pill--icon"
-                            title={catLabel}
-                            aria-label={catLabel}
-                        >
-                            <Icon
-                                icon={categoryToIcon(primaryCat)}
-                                basePath={iconBasePath}
-                                size={16}
-                                className="pnp-icon"
-                            />
-                        </span>
+                {isMobile ? (
+                    <div ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" role="link" tabIndex={0} onClick={handleClick} onKeyDown={handleKeyDown}>
+                        {cardInner}
                     </div>
-
-                    <h3 className="pnp-card__title">{s.title}</h3>
-                    {/* <div className="pnp-card__desc">{s.shortDescription}</div> */}
-
-                    <div className="pnp-card__footer">
-                        <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
-
-                        <div className="pnp-card__date">
-                            {(() => {
-                                const raw = s.updateDateTime ?? "";
-                                if (!raw) return null;
-                                const d = new Date(raw);
-                                if (isNaN(d.getTime())) return null;
-                                return (
-                                    <time dateTime={d.toISOString()} title={d.toUTCString()}>
-                                        {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-                                    </time>
-                                );
-                            })()}
-                        </div>
-                    </div>
-
-                </a>
+                ) : (
+                    <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
+                        {cardInner}
+                    </a>
+                )}
             </div>
         </div>
     );

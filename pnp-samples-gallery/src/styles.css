@@ -79,6 +79,23 @@
         box-shadow: var(--pnp-shadow);
     }
 
+    /* Defensive: ensure no card or sample item can become an invisible overlay on mobile */
+    .pnp-sample-item,
+    .pnp-sample-item *,
+    .pnp-card,
+    .pnp-card * {
+        position: static !important;
+        transform: none !important;
+        z-index: 0 !important;
+        pointer-events: auto !important;
+    }
+
+    /* Ensure pseudo elements inside cards don't capture pointer events */
+    .pnp-card__date::before,
+    .pnp-card__date::after {
+        pointer-events: none !important;
+    }
+
     /* Tighter card content for mobile */
     .pnp-card__title { padding: 0.6rem 0.75rem; }
     .pnp-card__desc { padding: 0 0.75rem 0.75rem; }
@@ -982,4 +999,45 @@ article.main {
 
 @media (max-width: 980px) {
     .pnp-sample-panel-container { width: 100%; }
+}
+
+/* Mobile: make the sample detail panel edge-to-edge (no padding) */
+@media (max-width: 640px) {
+    .pnp-sample-panel-overlay {
+        padding: 0 !important;
+        align-items: stretch; /* stretch vertically so container can fill viewport */
+        justify-content: stretch; /* fill horizontally */
+        background: rgba(0,0,0,0.22); /* keep dim */
+    }
+
+    .pnp-sample-panel-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        max-height: 100vh !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        box-shadow: none;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+
+    .pnp-sample-panel {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        padding: 0.75rem !important; /* keep small inner padding for content */
+        box-shadow: none !important;
+        border: none !important;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Ensure header stays visible and content area scrolls */
+    .pnp-sample-panel__body {
+        overflow: auto;
+        flex: 1 1 auto;
+    }
 }
