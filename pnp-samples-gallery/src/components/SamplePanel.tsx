@@ -392,6 +392,28 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
         };
     }, [onClose]);
 
+    // prevent body scroll while the sample panel is open
+    useEffect(() => {
+        const cls = 'pnp-sample-panel-open';
+        const body = document.body;
+        if (!body) return;
+
+        // compute scrollbar compensation to avoid layout shift
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        const originalPaddingRight = body.style.paddingRight || '';
+
+        body.classList.add(cls);
+        if (scrollBarWidth > 0) {
+            // add padding to account for removed scrollbar
+            body.style.paddingRight = `calc(${originalPaddingRight || '0px'} + ${scrollBarWidth}px)`;
+        }
+
+        return () => {
+            body.classList.remove(cls);
+            body.style.paddingRight = originalPaddingRight;
+        };
+    }, []);
+
     const copyCli = async () => {
         // try modern clipboard API first
         try {

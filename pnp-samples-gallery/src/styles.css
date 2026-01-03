@@ -1099,3 +1099,21 @@ article.main {
         opacity: 1;
     }
 }
+
+/* When the sample panel is open, prevent the main page from scrolling */
+body.pnp-sample-panel-open {
+    overflow: hidden !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+}
+
+/* Defensive: ensure overlay and panel allow touch scrolling inside the panel */
+body.pnp-sample-panel-open .pnp-samples-overlay,
+body.pnp-sample-panel-open .pnp-sample-panel-overlay {
+    overflow: hidden;
+}
+
+body.pnp-sample-panel-open .pnp-sample-panel__body {
+    overflow: auto; /* keep internal scrolling for the panel body */
+    -webkit-overflow-scrolling: touch;
+}
