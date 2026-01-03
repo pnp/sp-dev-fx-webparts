@@ -85,8 +85,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     };
 
     const cardInner = (
-        <>
+        <article className="pnp-card" aria-label={s.title}>
             {thumb ? (
+                <figure className="pnp-card__thumb-figure">
                 <img
                     className="pnp-card__thumb"
                     src={thumb.url}
@@ -99,7 +100,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         }
                     }}
                 />
+                </figure>
             ) : (
+                <figure className="pnp-card__thumb-figure">
                 <img
                     className="pnp-card__thumb"
                     src={'/sp-dev-fx-webparts/_nopreview.png'}
@@ -112,6 +115,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         }
                     }}
                 />
+                    </figure>
             )}
 
             <div className="pnp-card__meta">
@@ -132,8 +136,8 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     />
                 </span>
             </div>
-
-            <h3 className="pnp-card__title">{s.title}</h3>
+<div className="pnp-card__body">
+            <h2 className="pnp-card__title">{s.title}</h2>
 
             <div className="pnp-card__footer">
                 <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
@@ -152,7 +156,8 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     })()}
                 </div>
             </div>
-        </>
+            </div>
+        </article>
     );
 
     return (
@@ -172,7 +177,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         {cardInner}
                     </div>
                 ) : (
-                    <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
+                    <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card-link" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
                         {cardInner}
                     </a>
                 )}
