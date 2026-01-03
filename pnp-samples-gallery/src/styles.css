@@ -5,7 +5,7 @@
     --pnp-border: rgba(127, 127, 127, 0.25);
     --pnp-surface: rgba(127, 127, 127, 0.06);
     --pnp-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    --pnp-radius: 14px;
+    --pnp-radius: 16px;
 
     color: var(--pnp-fg);
     margin: 1.25rem 0 2rem;
@@ -71,12 +71,14 @@
     .pnp-card {
         min-height: 0;
         transform: none !important;
+        border-color: rgb(255,255,255);/* rgb(96, 94, 92);*/
     }
 
     /* Disable hover transform on small screens */
     .pnp-card:hover {
         transform: none;
-        box-shadow: var(--pnp-shadow);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132),
+            0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 
     /* Defensive: ensure no card or sample item can become an invisible overlay on mobile */
@@ -311,7 +313,7 @@ button.pnp-pill,
 
 @media screen and (min-width: 480px) {
     .pnp-card:hover {
-        transform: translate(10px, 10px) scale(1.1);
+        transform: translate(5px, 5px) scale(1.1);
     }
 }
 
@@ -488,6 +490,11 @@ button.pnp-pill,
     transition: box-shadow 180ms ease, transform 160ms ease;
     z-index: 4;
     pointer-events: auto;
+    font-size: 2rem; /* larger chevrons */
+    line-height: 1; /* ensure glyphs are vertically tight */
+    padding: 0; /* keep glyph centered inside the circle */
+    font-family: inherit;
+    color: var(--pnp-fg);
 }
 
 .pnp-sample-panel__carousel-prev { left: 12px; }
@@ -735,6 +742,8 @@ button.pnp-pill,
     background-color: #f4f4f4;
     overflow: clip;
     border-radius: 1rem;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, .132),
+        0 .3px .9px 0 rgba(0, 0, 0, .108);
 }
 
 .pnp-card::before {
@@ -887,6 +896,12 @@ article.main {
     justify-content: space-between;
     gap: 1rem;
 }
+
+/* Ensure ghost/close button aligns to the top of the header */
+.pnp-sample-panel__header .pnp-btn.pnp-btn--ghost {
+    align-self: flex-start;
+    padding: 0.25rem 0.5rem;
+}
 .pnp-sample-panel__thumb {
     width: 100%;
     max-height: 420px;
@@ -897,7 +912,7 @@ article.main {
 .pnp-sample-panel__actions {
     display: grid;
     /* row-gap: 0.5rem; */
-    margin-top: 0.75rem;
+    margin-top: 1rem;
 }
 
 .pnp-sample-panel__actions > div {
@@ -922,6 +937,7 @@ article.main {
     grid-template-columns: 28px 1fr;
     align-items: center;
     padding: 0.6rem 0.75rem;
+    padding-left:0px;
     gap: 12px;
 }
 
@@ -940,9 +956,6 @@ article.main {
     display: grid;
     grid-template-columns: 28px 1fr;
     align-items: center;
-    /* gap: 8px; */
-    /* margin-top: .5rem; */
-    margin-left: .78rem;
     cursor: pointer;
 }
 
@@ -958,7 +971,6 @@ article.main {
     padding: 12px;
     border-radius: 8px;
     overflow: auto; /* allow horizontal scroll if extremely long words */
-    margin-left: .78rem;
 }
 
 .pnp-sample-panel__cli-code {
@@ -995,6 +1007,16 @@ article.main {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    border-color: rgb(96, 94, 92);
+    box-shadow:0 25.6px 57.6px 0 rgba(0, 0, 0, .22),
+        0 4.8px 14.4px 0 rgba(0, 0, 0, .18);
+            -webkit-animation: scale-in-center 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: scale-in-center 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.pnp-sample-panel__meta {
+    padding-top:1rem;
+    font-size: 0.85rem;
 }
 
 @media (max-width: 980px) {
@@ -1030,14 +1052,50 @@ article.main {
         padding: 0.75rem !important; /* keep small inner padding for content */
         box-shadow: none !important;
         border: none !important;
-        overflow: auto;
+        overflow: hidden; /* container should not scroll; body will */
         display: flex;
         flex-direction: column;
+        max-height: 100vh; /* ensure panel constrained to viewport */
     }
 
     /* Ensure header stays visible and content area scrolls */
+    .pnp-sample-panel__header {
+        flex: 0 0 auto;
+        z-index: 2;
+    }
+
     .pnp-sample-panel__body {
         overflow: auto;
+        -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
         flex: 1 1 auto;
+        min-height: 0; /* allow flex child to shrink and enable scrolling */
+    }
+}
+
+@-webkit-keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
     }
 }

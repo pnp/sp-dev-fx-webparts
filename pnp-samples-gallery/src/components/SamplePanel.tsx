@@ -472,26 +472,6 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
 
                 <p className="pnp-sample-panel__desc">{sample.shortDescription}</p>
 
-                <div className="pnp-sample-panel__meta">
-                    {(() => {
-                        const createdRaw = fetchedMeta?.creationDate ?? fetchedMeta?.created ?? fetchedMeta?.creationDateTime ?? (sample as any).creationDateTime ?? null;
-                        return createdRaw ? (
-                            <div>
-                                <strong>Created:</strong> {formatDate(createdRaw)}
-                            </div>
-                        ) : null;
-                    })()}
-                    <div>
-                        <strong>Updated:</strong> {formatDate(sample.updateDateTime ?? fetchedMeta?.updateDateTime)}
-                    </div>
-                    
-                    {fetchError ? (
-                        <div style={{ color: 'var(--ms-color-red-6)', marginTop: 8 }}>
-                            Failed to load sample metadata
-                        </div>
-                    ) : null}
-                </div>
-
                 <div className="pnp-sample-panel__actions">
                     <div>
                         <button className="pnp-btn pnp-btn--action" onClick={openGitHub} title="View on GitHub">
@@ -516,6 +496,26 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                         <code className="pnp-sample-panel__cli-code">{cliCommand}</code>
                         {/* clicking the block will copy to clipboard */}
                     </div>
+                </div>
+
+                <div className="pnp-sample-panel__meta">
+                    {(() => {
+                        const createdRaw = fetchedMeta?.creationDate ?? fetchedMeta?.created ?? fetchedMeta?.creationDateTime ?? (sample as any).creationDateTime ?? null;
+                        return createdRaw ? (
+                            <div>
+                                <strong>Created:</strong> {formatDate(createdRaw)}
+                            </div>
+                        ) : null;
+                    })()}
+                    <div>
+                        <strong>Updated:</strong> {formatDate(sample.updateDateTime ?? fetchedMeta?.updateDateTime)}
+                    </div>
+
+                    {fetchError ? (
+                        <div style={{ color: 'var(--ms-color-red-6)', marginTop: 8 }}>
+                            Failed to load sample metadata
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </div>
