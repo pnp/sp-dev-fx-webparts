@@ -789,6 +789,57 @@ figure.pnp-card__thumb-figure {
         0 .3px .9px 0 rgba(0, 0, 0, .108);
 }
 
+/* While the grid is initializing, reduce heavy shadows and transforms to avoid visual clutter
+   (useful while Muuri measures and positions items). Add `pnp-samples--loading` to the
+   top-level container to temporarily disable effects. */
+.pnp-samples--loading .pnp-card,
+.pnp-samples--loading .pnp-card *,
+.pnp-samples--loading .pnp-card__thumb,
+.pnp-samples--loading .pnp-sample-panel__thumb,
+.pnp-samples--loading .pnp-sample-panel__thumb-btn,
+.pnp-samples--loading .pnp-sample-panel__thumb-btn img {
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+}
+
+.pnp-samples--loading .pnp-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Also disable button hover shadows while loading */
+.pnp-samples--loading .pnp-btn:hover {
+    box-shadow: none !important;
+}
+
+/* Broader disabling: target elements that may add shadows or backdrop filters */
+.pnp-samples--loading .pnp-sample-item,
+.pnp-samples--loading .pnp-sample-item *,
+.pnp-samples--loading .pnp-card::before,
+.pnp-samples--loading .pnp-card__date::after,
+.pnp-samples--loading .pnp-card__date::before,
+.pnp-samples--loading .pnp-facepile__avatar,
+.pnp-samples--loading .pnp-facepile__avatar img,
+.pnp-samples--loading .pnp-sample-panel__carousel-prev,
+.pnp-samples--loading .pnp-sample-panel__carousel-next,
+.pnp-samples--loading .pnp-sample-panel__thumb-btn.is-active,
+.pnp-samples--loading .pnp-sample-panel__thumb-btn img,
+.pnp-samples--loading figure.pnp-card__thumb-figure {
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Disable transitions that might animate shadows */
+.pnp-samples--loading .pnp-card,
+.pnp-samples--loading .pnp-card *,
+.pnp-samples--loading .pnp-sample-panel__carousel-prev,
+.pnp-samples--loading .pnp-sample-panel__carousel-next {
+    transition: none !important;
+}
+
 /* .pnp-card::before {
     border-width: 1px;
     border-style: solid;

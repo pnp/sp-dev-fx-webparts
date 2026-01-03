@@ -48,6 +48,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const [samples, setSamples] = useState<PnPSample[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [gridReady, setGridReady] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const gridRef = useRef<HTMLDivElement | null>(null);
     const muuriRef = useRef<Muuri | null>(null);
@@ -126,6 +127,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         async function load(): Promise<void> {
             setLoading(true);
+            setGridReady(false);
             setError(null);
 
             try {
@@ -179,6 +181,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         if (isMobile) {
             muuriRef.current?.destroy();
             muuriRef.current = null;
+            // Without Muuri, grid is ready instantly
+            setGridReady(true);
             // Clear inline styles Muuri may have left on items
             if (gridRef.current) {
                 const els = Array.from(gridRef.current.querySelectorAll<HTMLElement>(".pnp-sample-item"));
@@ -202,13 +206,29 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             layoutEasing: "ease",
         });
 
+        // mark grid as not-yet-ready while Muuri performs its first layout
+        setGridReady(false);
+
         // initial sort + layout
         applyGridSort(muuriRef.current);
+        // When Muuri finishes layout, mark grid as ready so shadows/transitions can be enabled
+        const onLayoutEnd = () => setGridReady(true);
+        // Muuri emits events; listen for layoutEnd
+        muuriRef.current.on?.("layoutEnd", onLayoutEnd);
+
+        // trigger first layout
         muuriRef.current.refreshItems().layout();
 
         return () => {
-            muuriRef.current?.destroy();
-            muuriRef.current = null;
+            if (muuriRef.current) {
+                try {
+                    muuriRef.current.off?.("layoutEnd", onLayoutEnd);
+                } catch {
+                    // ignore
+                }
+                muuriRef.current.destroy();
+                muuriRef.current = null;
+            }
         };
     }, [loading, samples.length, fullscreen, isMobile]);
 
@@ -266,6 +286,13 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             // text search
             if (!q) return true;
 
+            const authorText = (s.authors ?? []).map((a) => {
+                const name = a.name ?? "";
+                const gh = a.gitHubAccount ?? "";
+                const atGh = gh ? (gh.startsWith("@") ? gh : `@${gh}`) : "";
+                return [name, gh, atGh].filter(Boolean).join(" ");
+            }).join(" ");
+
             const hay = [
                 s.title,
                 s.shortDescription ?? "",
@@ -273,7 +300,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 spfx,
                 tech,
                 cats.join(" "),
-                (s.authors ?? []).map((a) => a.name ?? a.gitHubAccount ?? "").join(" "),
+                authorText,
             ]
                 .join(" | ")
                 .toLowerCase();
@@ -400,8 +427,16 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const [selected, setSelected] = useState<PnPSample | null>(null);
 
+    // Ensure `gridReady` is read (used by the render path). Assigning to a local
+    // prevents a TypeScript "declared but its value is never read" error.
+    const isLoadingClass = loading || !gridReady;
+
     const renderContent = () => (
-        <section className={`pnp-samples ${props.className ?? ""}`.trim()} aria-modal={fullscreen} role={fullscreen ? "dialog" : undefined}>
+        <section
+            className={["pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
+            aria-modal={fullscreen}
+            role={fullscreen ? "dialog" : undefined}
+        >
              <div className="pnp-samples__layout">
                 {isMobile ? (
                     <div className="pnp-mobile-filters-header">
