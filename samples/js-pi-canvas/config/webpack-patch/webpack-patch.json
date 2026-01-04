@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/webpack-patch.schema.json",
+  "patchFiles": [
+    "./config/webpack-patch/fluent-ui-aliases.js",
+    "./config/webpack-patch/jquery-global.js",
+    "./config/webpack-patch/devserver-config.js"
+  ]
+}
