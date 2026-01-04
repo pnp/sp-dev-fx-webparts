@@ -2770,8 +2770,9 @@
       },
       {
         "gitHubAccount": "yhabersaat",
-        "pictureUrl": "https://github.com/yhabersaat",
-        "name": "Yves Habersaat"
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/yhabersaat.de6e3382cb45.webp",
+        "name": "Yves Habersaat",
+        "avatarSourceUrl": "https://github.com/yhabersaat.png"
       }
     ],
     "thumbnails": [
@@ -5940,16 +5941,6 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
         "name": "Nicolas Kheirallah",
         "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/nrvrvl",
-        "pictureUrl": "https://github.com/nrvrvl.png",
-        "name": "Nirav Raval"
-      },
-      {
-        "gitHubAccount": "https://github.com/microsoftgraph/msgraph-sdk-javascript",
-        "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png",
-        "name": "Microsoft Graph JavaScript SDK"
       }
     ],
     "thumbnails": [
@@ -6255,7 +6246,8 @@
       {
         "gitHubAccount": "Eli-Schei",
         "name": "Eli H. Schei",
-        "pictureUrl": "https://github.com/Eli-Schei"
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eli-schei.3680818ac120.webp",
+        "avatarSourceUrl": "https://github.com/Eli-Schei.png"
       },
       {
         "gitHubAccount": "Dhananjay-12",
@@ -8001,13 +7993,6 @@
     "tags": [],
     "categories": [],
     "authors": [
-      {
-        "gitHubAccount": "SPParseError",
-        "company": "Infeeny",
-        "pictureUrl": "https://github.com/SPParseError.png",
-        "name": "Stéphane Magne",
-        "twitter": "SPParse"
-      },
       {
         "gitHubAccount": "AriGunawan",
         "name": "Ari Gunawan",
@@ -13347,11 +13332,6 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sandeep-fed.6784dfb80995.webp",
         "name": "Sandeep P S",
         "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-        "name": "AOAI SDK"
       }
     ],
     "thumbnails": [
@@ -16521,11 +16501,6 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-jtlivio.ec9ee626d7c7.webp",
         "name": "João Livio",
         "avatarSourceUrl": "https://github.com/jtlivio.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
-        "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
-        "name": "Create a new issue"
       }
     ],
     "thumbnails": [
@@ -17208,11 +17183,6 @@
     "tags": [],
     "categories": [],
     "authors": [
-      {
-        "gitHubAccount": "srpmtt",
-        "pictureUrl": "https://github.com/srpmtt.png",
-        "name": "Matteo Serpi"
-      },
       {
         "gitHubAccount": "AlessiaDeMartino",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/alessiademartino.a2ce39f89cd3.webp",
