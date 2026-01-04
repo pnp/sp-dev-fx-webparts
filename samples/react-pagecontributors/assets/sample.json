@@ -43,13 +43,6 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "SPParseError",
-        "company": "Infeeny",
-        "pictureUrl": "https://github.com/SPParseError.png",
-        "name": "Stéphane Magne",
-        "twitter": "SPParse"
-      },
-      {
         "gitHubAccount": "AriGunawan",
         "name": "Ari Gunawan",
         "company": "",
