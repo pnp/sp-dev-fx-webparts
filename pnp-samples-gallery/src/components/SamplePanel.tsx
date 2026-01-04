@@ -510,7 +510,7 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                     <div role="button" tabIndex={0} className="pnp-sample-panel__cli-heading" onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
                         <Icon icon="cli" size={18} />
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div>Download using command-line</div>
+                            <div>Download using command-line (experimental)</div>
                             {copied ? <span style={{ color: 'green4' }}>Copied!</span> : null}
                         </div>
                     </div>
