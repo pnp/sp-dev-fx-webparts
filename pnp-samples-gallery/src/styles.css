@@ -93,16 +93,18 @@
         pointer-events: auto !important;
     }
 
+    /* Ensure pills are visible above card overlays on mobile (restore stacking) */
+    .pnp-card__meta .pnp-pill {
+        position: relative !important;
+        z-index: 6 !important;
+        background: var(--pnp-bg) !important;
+    }
+
     /* Ensure pseudo elements inside cards don't capture pointer events */
     .pnp-card__date::before,
     .pnp-card__date::after {
         pointer-events: none !important;
     }
-
-    /* Tighter card content for mobile */
-    .pnp-card__title { padding: 0.6rem 0.75rem; }
-    .pnp-card__desc { padding: 0 0.75rem 0.75rem; }
-    .pnp-card__footer { padding: 0 0.75rem 0.75rem; }
 }
 
 .pnp-filters {
@@ -1261,4 +1263,11 @@ body.pnp-sample-panel-open .pnp-sample-panel__body {
             border-radius: 0 0 1em 1em;
             padding-bottom: 0.74em;
             margin-top:-1rem;
+}
+
+@media (max-width: 640px) {
+    .pnp-card__body {
+    margin-top: 0;
+    padding:0.75rem;
+    }
 }
