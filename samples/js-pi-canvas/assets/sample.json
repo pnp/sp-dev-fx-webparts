@@ -17,7 +17,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,jQuery"
+        "value": "jQuery"
       },
       {
         "key": "SPFX-VERSION",
