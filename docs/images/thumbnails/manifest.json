@@ -279,6 +279,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-caml2table.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-js-pi-canvas": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-js-pi-canvas.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs.webp"

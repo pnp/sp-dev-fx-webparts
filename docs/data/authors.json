@@ -140,6 +140,13 @@
     "avatarSourceUrl": "https://github.com/anoopt.png"
   },
   {
+    "gitHubAccount": "anthonyrhopkins",
+    "name": "Anthony Hopkins",
+    "company": "",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anthonyrhopkins.4f062ae9d60d.webp",
+    "avatarSourceUrl": "https://github.com/anthonyrhopkins.png"
+  },
+  {
     "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
     "name": "AOAI SDK",
     "company": "",

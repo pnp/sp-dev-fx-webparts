@@ -3256,6 +3256,43 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-js-pi-canvas",
+    "source": "pnp",
+    "title": "PiCanvas - Tabbed Page Sections",
+    "shortDescription": "Organize SharePoint page sections and web parts into a tabbed interface with permission-based visibility, templates, and full customization.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "updateDateTime": "2026-01-02",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "jQuery"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "anthonyrhopkins",
+        "name": "Anthony Hopkins",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anthonyrhopkins.4f062ae9d60d.webp",
+        "avatarSourceUrl": "https://github.com/anthonyrhopkins.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-js-pi-canvas.webp",
+        "alt": "PiCanvas web part showing tabbed interface with multiple tabs organizing page content"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs",
     "source": "pnp",
     "title": "Web Part Using PnPJS with MS Graph",
