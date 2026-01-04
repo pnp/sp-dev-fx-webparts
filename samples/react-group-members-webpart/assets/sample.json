@@ -49,16 +49,6 @@
         "gitHubAccount": "https://github.com/NicolasKheirallah",
         "pictureUrl": "https://github.com/NicolasKheirallah.png",
         "name": "Nicolas Kheirallah"
-      },
-      {
-        "gitHubAccount": "https://github.com/nrvrvl",
-        "pictureUrl": "https://github.com/nrvrvl.png",
-        "name": "Nirav Raval"
-      },
-      {
-        "gitHubAccount": "https://github.com/microsoftgraph/msgraph-sdk-javascript",
-        "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png",
-        "name": "Microsoft Graph JavaScript SDK"
       }
     ],
     "references": [
