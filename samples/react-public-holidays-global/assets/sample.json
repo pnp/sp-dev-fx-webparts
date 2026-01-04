@@ -42,11 +42,6 @@
         "gitHubAccount": "https://github.com/jtlivio",
         "pictureUrl": "https://github.com/jtlivio.png",
         "name": "João Livio"
-      },
-      {
-        "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
-        "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
-        "name": "Create a new issue"
       }
     ],
     "references": [
