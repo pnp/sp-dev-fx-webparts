@@ -49,11 +49,6 @@
         "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "https://github.com/Sandeep-FED.png",
         "name": "Sandeep P S"
-      },
-      {
-        "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-        "name": "AOAI SDK"
       }
     ],
     "references": [
