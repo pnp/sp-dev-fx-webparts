@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-01-05T18:49:25.624Z",
+  "source": {
+    "owner": "pnp",
+    "repo": "sp-dev-fx-webparts",
+    "category": "Likes"
+  },
+  "likes": {
+    "pnp-sp-dev-spfx-web-parts-react-chartinator": {
+      "count": 1,
+      "discussionNumber": 5678,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5678"
+    },
+    "pnp-sp-dev-spfx-web-parts-js-modern-calendar": {
+      "count": 0,
+      "discussionNumber": 5677,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5677"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-tree-orgchart": {
+      "count": 1,
+      "discussionNumber": 5676,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5676"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-organization-chart": {
+      "count": 0,
+      "discussionNumber": 5675,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5675"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-accessible-chart": {
+      "count": 0,
+      "discussionNumber": 5674,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5674"
+    }
+  }
+}
