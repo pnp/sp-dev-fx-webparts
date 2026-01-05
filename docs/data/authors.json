@@ -14,13 +14,6 @@
     "avatarSourceUrl": "https://avatars.githubusercontent.com/u/33526902?s=460&u=e780f4ef1da922c84f2c5c66c59cecbff2300581&v=4"
   },
   {
-    "gitHubAccount": "https://github.com/Abderahman88",
-    "name": "Abderahman Moujahid",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-abderahman88.beeaab590de7.webp",
-    "avatarSourceUrl": "https://github.com/Abderahman88.png"
-  },
-  {
     "gitHubAccount": "Abderahman88",
     "name": "Abderahman Moujahid",
     "company": "",
@@ -42,18 +35,18 @@
     "avatarSourceUrl": "https://github.com/Adam-it.png"
   },
   {
-    "gitHubAccount": "https://github.com/Adam-it",
-    "name": "Adam Wójcik",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/adam-it.38c80c88770d.webp",
-    "avatarSourceUrl": "https://github.com/Adam-it.png"
-  },
-  {
     "gitHubAccount": "AdrianDiaz81",
     "name": "Adrián Díaz",
     "company": "SCRM",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/adriandiaz81.8ebea5e5e2f4.webp",
     "avatarSourceUrl": "https://github.com/AdrianDiaz81.png"
+  },
+  {
+    "gitHubAccount": "ahmad-jad-alhak",
+    "name": "Ahmad Jad Alhak",
+    "company": "",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-ahmad-jad-alhak.5d2730987f4b.webp",
+    "avatarSourceUrl": "https://github.com/ahmad-jad-alhak.png"
   },
   {
     "gitHubAccount": "https://github.com/ahmad-jad-alhak",
@@ -64,13 +57,6 @@
   },
   {
     "gitHubAccount": "a1mery",
-    "name": "Aimery Thomas",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
-    "avatarSourceUrl": "https://github.com/a1mery.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/a1mery",
     "name": "Aimery Thomas",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
@@ -140,21 +126,14 @@
     "avatarSourceUrl": "https://github.com/anoopt.png"
   },
   {
-    "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-    "name": "AOAI SDK",
+    "gitHubAccount": "anthonyrhopkins",
+    "name": "Anthony Hopkins",
     "company": "",
-    "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-    "avatarSourceUrl": ""
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anthonyrhopkins.4f062ae9d60d.webp",
+    "avatarSourceUrl": "https://github.com/anthonyrhopkins.png"
   },
   {
     "gitHubAccount": "AriGunawan",
-    "name": "Ari Gunawan",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",
-    "avatarSourceUrl": "https://github.com/AriGunawan.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/AriGunawan",
     "name": "Ari Gunawan",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",
@@ -196,7 +175,7 @@
     "avatarSourceUrl": "https://avatars.githubusercontent.com/u/10480670?s=460&v=4"
   },
   {
-    "gitHubAccount": "https://github.com/babakdanyal",
+    "gitHubAccount": "babakdanyal",
     "name": "Babak Danyal",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-babakdanyal.0013e8218d14.webp",
@@ -217,7 +196,7 @@
     "avatarSourceUrl": "https://avatars.githubusercontent.com/u/10207194?s=460&v=4"
   },
   {
-    "gitHubAccount": "https://github.com/billbrockbank",
+    "gitHubAccount": "billbrockbank",
     "name": "Bill Brockbank",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-billbrockbank.3d36635c9c0e.webp",
@@ -287,28 +266,14 @@
     "avatarSourceUrl": "https://github.com/PathToSharePoint.png"
   },
   {
-    "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+    "gitHubAccount": "cfernandes-muhimbi",
     "name": "Clavin Fernandes",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-cfernandes-muhimbi.94b83deafea2.webp",
     "avatarSourceUrl": "https://github.com/cfernandes-muhimbi.png"
   },
   {
-    "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
-    "name": "Create a new issue",
-    "company": "",
-    "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
-    "avatarSourceUrl": ""
-  },
-  {
     "gitHubAccount": "Tanddant",
-    "name": "Dan Toft",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
-    "avatarSourceUrl": "https://github.com/Tanddant.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/Tanddant",
     "name": "Dan Toft",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
@@ -451,7 +416,7 @@
     "gitHubAccount": "Eli-Schei",
     "name": "Eli H. Schei",
     "company": "",
-    "pictureUrl": "https://github.com/Eli-Schei",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eli-schei.3680818ac120.webp",
     "avatarSourceUrl": "https://github.com/Eli-Schei.png"
   },
   {
@@ -472,13 +437,6 @@
     "gitHubAccount": "eoverfield",
     "name": "Eric Overfield",
     "company": "PixelMill",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eoverfield.29624c9e405b.webp",
-    "avatarSourceUrl": "https://github.com/eoverfield.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/eoverfield",
-    "name": "Eric Overfield",
-    "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eoverfield.29624c9e405b.webp",
     "avatarSourceUrl": "https://github.com/eoverfield.png"
   },
@@ -574,13 +532,6 @@
     "avatarSourceUrl": "https://github.com/gretchunkim.png"
   },
   {
-    "gitHubAccount": "https://github.com/guidozam",
-    "name": "Guido Zambarda",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-guidozam.7bd1ac0b8597.webp",
-    "avatarSourceUrl": "https://github.com/guidozam.png"
-  },
-  {
     "gitHubAccount": "GuidoZam",
     "name": "Guido Zambarda",
     "company": "PiaSys S.r.l.",
@@ -595,14 +546,14 @@
     "avatarSourceUrl": "https://github.com/GSellier.png"
   },
   {
-    "gitHubAccount": "https://github.com/HarminderSethi",
+    "gitHubAccount": "HarminderSethi",
     "name": "Harminder Singh",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
     "avatarSourceUrl": "https://github.com/HarminderSethi.png"
   },
   {
-    "gitHubAccount": "HarminderSethi",
+    "gitHubAccount": "https://github.com/HarminderSethi",
     "name": "Harminder Singh",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
@@ -626,13 +577,6 @@
     "gitHubAccount": "hugoabernier",
     "name": "Hugo Bernier",
     "company": "Microsoft",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/hugoabernier.eea32675b0e6.webp",
-    "avatarSourceUrl": "https://github.com/hugoabernier.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/hugoabernier",
-    "name": "Hugo Bernier",
-    "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/hugoabernier.eea32675b0e6.webp",
     "avatarSourceUrl": "https://github.com/hugoabernier.png"
   },
@@ -700,13 +644,6 @@
     "avatarSourceUrl": "https://github.com/jtlivio.png"
   },
   {
-    "gitHubAccount": "https://github.com/jtlivio",
-    "name": "João Livio",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-jtlivio.ec9ee626d7c7.webp",
-    "avatarSourceUrl": "https://github.com/jtlivio.png"
-  },
-  {
     "gitHubAccount": "joaojmendes",
     "name": "João Mendes",
     "company": "Storm Technology Ltd",
@@ -749,7 +686,7 @@
     "avatarSourceUrl": "https://github.com/juliemturner.png"
   },
   {
-    "gitHubAccount": "https://github.com/djsladi",
+    "gitHubAccount": "djsladi",
     "name": "Kalle Mansikkaniemi",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-djsladi.7c8de9cd4e99.webp",
@@ -791,14 +728,14 @@
     "avatarSourceUrl": "https://github.com/LauraKokkarinen.png"
   },
   {
-    "gitHubAccount": "https://github.com/koskimiesl",
+    "gitHubAccount": "koskimiesl",
     "name": "Lauri Koskimies",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-koskimiesl.ccd648d4bf8e.webp",
     "avatarSourceUrl": "https://github.com/koskimiesl.png"
   },
   {
-    "gitHubAccount": "https://github.com/ChinHoongLew",
+    "gitHubAccount": "ChinHoongLew",
     "name": "Lew Chin Hoong",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-chinhoonglew.885fa743e7c6.webp",
@@ -847,6 +784,13 @@
     "avatarSourceUrl": "https://github.com/msekkappan.png"
   },
   {
+    "gitHubAccount": "maschroeder-z",
+    "name": "Marc André Schröder-Zhou",
+    "company": "",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-maschroeder-z.ee3d256a07e0.webp",
+    "avatarSourceUrl": "https://github.com/maschroeder-z.png"
+  },
+  {
     "gitHubAccount": "https://github.com/maschroeder-z",
     "name": "Marc André Schröder-Zhou",
     "company": "",
@@ -889,13 +833,6 @@
     "avatarSourceUrl": "https://github.com/mjimison.png"
   },
   {
-    "gitHubAccount": "srpmtt",
-    "name": "Matteo Serpi",
-    "company": "",
-    "pictureUrl": "https://github.com/srpmtt.png",
-    "avatarSourceUrl": ""
-  },
-  {
     "gitHubAccount": "mpaukkon",
     "name": "Matti Paukkonen",
     "company": "",
@@ -936,13 +873,6 @@
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/pnp.19814af3d700.webp",
     "avatarSourceUrl": "https://github.com/pnp.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/microsoftgraph/msgraph-sdk-javascript",
-    "name": "Microsoft Graph JavaScript SDK",
-    "company": "",
-    "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png",
-    "avatarSourceUrl": ""
   },
   {
     "gitHubAccount": "wobba",
@@ -1050,16 +980,16 @@
     "avatarSourceUrl": "https://github.com/nicodecleyre.png"
   },
   {
-    "gitHubAccount": "https://github.com/NicolasKheirallah",
+    "gitHubAccount": "NicolasKheirallah",
     "name": "Nicolas Kheirallah",
-    "company": "",
+    "company": "Exobe",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
     "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
   },
   {
-    "gitHubAccount": "NicolasKheirallah",
+    "gitHubAccount": "https://github.com/NicolasKheirallah",
     "name": "Nicolas Kheirallah",
-    "company": "Exobe",
+    "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
     "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
   },
@@ -1069,13 +999,6 @@
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ictniklaswilhelm.c8056b120e12.webp",
     "avatarSourceUrl": "https://github.com/ICTNiklasWilhelm.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/nrvrvl",
-    "name": "Nirav Raval",
-    "company": "",
-    "pictureUrl": "https://github.com/nrvrvl.png",
-    "avatarSourceUrl": ""
   },
   {
     "gitHubAccount": "NishkalankBezawada",
@@ -1151,13 +1074,6 @@
     "gitHubAccount": "petkir",
     "name": "Peter Paul Kirschner",
     "company": "ACP Cubido",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
-    "avatarSourceUrl": "https://github.com/petkir.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/petkir",
-    "name": "Peter Paul Kirschner",
-    "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
     "avatarSourceUrl": "https://github.com/petkir.png"
   },
@@ -1316,13 +1232,6 @@
     "avatarSourceUrl": "https://github.com/russgove.png"
   },
   {
-    "gitHubAccount": "https://github.com/russgove",
-    "name": "Russell Gove",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/russgove.6eb4ebcc8a07.webp",
-    "avatarSourceUrl": "https://github.com/russgove.png"
-  },
-  {
     "gitHubAccount": "sharepointknight",
     "name": "Ryan Schouten",
     "company": "",
@@ -1358,18 +1267,18 @@
     "avatarSourceUrl": "https://github.com/SamC148.png"
   },
   {
-    "gitHubAccount": "https://github.com/Sandeep-FED",
-    "name": "Sandeep P S",
-    "company": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sandeep-fed.6784dfb80995.webp",
-    "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
-  },
-  {
     "gitHubAccount": "Sandeep-FED",
     "name": "Sandeep P S",
     "company": "EY",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
     "avatarSourceUrl": "https://github.com/sandeep-fed.png"
+  },
+  {
+    "gitHubAccount": "https://github.com/Sandeep-FED",
+    "name": "Sandeep P S",
+    "company": "",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sandeep-fed.6784dfb80995.webp",
+    "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
   },
   {
     "gitHubAccount": "SandeepDev365",
@@ -1386,7 +1295,7 @@
     "avatarSourceUrl": "https://github.com/sauslash.png"
   },
   {
-    "gitHubAccount": "https://github.com/saurabh7019",
+    "gitHubAccount": "saurabh7019",
     "name": "Saurabh Tripathi",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-saurabh7019.1c80cfa0d82a.webp",
@@ -1477,14 +1386,7 @@
     "avatarSourceUrl": "https://github.com/stephanbisser.png"
   },
   {
-    "gitHubAccount": "SPParseError",
-    "name": "Stéphane Magne",
-    "company": "Infeeny",
-    "pictureUrl": "https://github.com/SPParseError.png",
-    "avatarSourceUrl": ""
-  },
-  {
-    "gitHubAccount": "https://github.com/sudeepghatak",
+    "gitHubAccount": "sudeepghatak",
     "name": "Sudeep Ghatak",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
@@ -1494,13 +1396,6 @@
     "gitHubAccount": "sudharsank",
     "name": "Sudharsan K.",
     "company": "NTT Ltd",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudharsank.416ed5d2b87f.webp",
-    "avatarSourceUrl": "https://github.com/sudharsank.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/sudharsank",
-    "name": "Sudharsan Kesavanarayanan",
-    "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudharsank.416ed5d2b87f.webp",
     "avatarSourceUrl": "https://github.com/sudharsank.png"
   },
@@ -1561,7 +1456,7 @@
     "avatarSourceUrl": "https://github.com/tristian2.png"
   },
   {
-    "gitHubAccount": "https://github.com/tvahk",
+    "gitHubAccount": "tvahk",
     "name": "tvahk",
     "company": "",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-tvahk.38def45be826.webp",

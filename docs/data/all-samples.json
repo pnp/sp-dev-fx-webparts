@@ -1026,7 +1026,28 @@
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
     "updateDateTime": "2025-09-12",
-    "metadata": [],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "ChartControl"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder, ChartControl"
+      }
+    ],
     "tags": [],
     "categories": [],
     "authors": [
@@ -1233,7 +1254,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/joaojmendes",
+        "gitHubAccount": "joaojmendes",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
         "name": "João Mendes",
         "avatarSourceUrl": "https://github.com/joaojmendes.png"
@@ -1274,7 +1295,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/maschroeder-z",
+        "gitHubAccount": "maschroeder-z",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-maschroeder-z.ee3d256a07e0.webp",
         "name": "Marc André Schröder-Zhou",
         "avatarSourceUrl": "https://github.com/maschroeder-z.png"
@@ -1397,7 +1418,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/NicolasKheirallah",
+        "gitHubAccount": "NicolasKheirallah",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
         "name": "Nicolas Kheirallah",
         "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -1628,25 +1649,25 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/Abderahman88",
+        "gitHubAccount": "Abderahman88",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-abderahman88.beeaab590de7.webp",
         "name": "Abderahman Moujahid",
         "avatarSourceUrl": "https://github.com/Abderahman88.png"
       },
       {
-        "gitHubAccount": "https://github.com/eoverfield",
+        "gitHubAccount": "eoverfield",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eoverfield.29624c9e405b.webp",
         "name": "Eric Overfield",
         "avatarSourceUrl": "https://github.com/eoverfield.png"
       },
       {
-        "gitHubAccount": "https://github.com/djsladi",
+        "gitHubAccount": "djsladi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-djsladi.7c8de9cd4e99.webp",
         "name": "Kalle Mansikkaniemi",
         "avatarSourceUrl": "https://github.com/djsladi.png"
       },
       {
-        "gitHubAccount": "https://github.com/koskimiesl",
+        "gitHubAccount": "koskimiesl",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-koskimiesl.ccd648d4bf8e.webp",
         "name": "Lauri Koskimies",
         "avatarSourceUrl": "https://github.com/koskimiesl.png"
@@ -1861,7 +1882,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/billbrockbank",
+        "gitHubAccount": "billbrockbank",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-billbrockbank.3d36635c9c0e.webp",
         "name": "Bill Brockbank",
         "avatarSourceUrl": "https://github.com/billbrockbank.png"
@@ -2140,7 +2161,7 @@
     "source": "pnp",
     "title": "Query Microsoft Graph Web Part",
     "shortDescription": "This sample shows how you can query Microsoft Graph from React in SharePoint Framework",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query",
     "updateDateTime": "2022-10-18",
     "metadata": [
@@ -2172,7 +2193,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-react-query.webp",
         "alt": "No preview available"
       }
     ]
@@ -2255,7 +2276,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-graph-auto-batching.webp",
         "alt": "No preview available"
       }
     ]
@@ -2423,7 +2444,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/guidozam",
+        "gitHubAccount": "guidozam",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-guidozam.7bd1ac0b8597.webp",
         "name": "Guido Zambarda",
         "avatarSourceUrl": "https://github.com/guidozam.png"
@@ -2770,8 +2791,9 @@
       },
       {
         "gitHubAccount": "yhabersaat",
-        "pictureUrl": "https://github.com/yhabersaat",
-        "name": "Yves Habersaat"
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/yhabersaat.de6e3382cb45.webp",
+        "name": "Yves Habersaat",
+        "avatarSourceUrl": "https://github.com/yhabersaat.png"
       }
     ],
     "thumbnails": [
@@ -3234,13 +3256,13 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/Tanddant",
+        "gitHubAccount": "Tanddant",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
         "name": "Dan Toft",
         "avatarSourceUrl": "https://github.com/Tanddant.png"
       },
       {
-        "gitHubAccount": "https://github.com/NicolasKheirallah",
+        "gitHubAccount": "NicolasKheirallah",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
         "name": "Nicolas Kheirallah",
         "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -3252,6 +3274,43 @@
         "order": 100,
         "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-caml2table.webp",
         "alt": "Web Part Preview"
+      }
+    ]
+  },
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-pi-canvas",
+    "source": "pnp",
+    "title": "PiCanvas - Tabbed Page Sections",
+    "shortDescription": "Organize SharePoint page sections and web parts into a tabbed interface with permission-based visibility, templates, and full customization.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+    "updateDateTime": "2026-01-02",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "jQuery"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "anthonyrhopkins",
+        "name": "Anthony Hopkins",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anthonyrhopkins.4f062ae9d60d.webp",
+        "avatarSourceUrl": "https://github.com/anthonyrhopkins.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-js-pi-canvas.webp",
+        "alt": "PiCanvas web part showing tabbed interface with multiple tabs organizing page content"
       }
     ]
   },
@@ -3501,7 +3560,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/saurabh7019",
+        "gitHubAccount": "saurabh7019",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-saurabh7019.1c80cfa0d82a.webp",
         "name": "Saurabh Tripathi",
         "avatarSourceUrl": "https://github.com/saurabh7019.png"
@@ -3718,7 +3777,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/jtlivio",
+        "gitHubAccount": "jtlivio",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-jtlivio.ec9ee626d7c7.webp",
         "name": "João LIVIO",
         "avatarSourceUrl": "https://github.com/jtlivio.png"
@@ -3759,7 +3818,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/HarminderSethi",
+        "gitHubAccount": "HarminderSethi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
         "name": "Harminder Singh",
         "avatarSourceUrl": "https://github.com/HarminderSethi.png"
@@ -4358,31 +4417,31 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/joaojmendes",
+        "gitHubAccount": "joaojmendes",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
         "name": "João Mendes",
         "avatarSourceUrl": "https://github.com/joaojmendes.png"
       },
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
         "name": "Peter Paul Kirschner",
         "avatarSourceUrl": "https://github.com/petkir.png"
       },
       {
-        "gitHubAccount": "https://github.com/sudharsank",
+        "gitHubAccount": "sudharsank",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudharsank.416ed5d2b87f.webp",
         "name": "Sudharsan Kesavanarayanan",
         "avatarSourceUrl": "https://github.com/sudharsank.png"
       },
       {
-        "gitHubAccount": "https://github.com/Abderahman88",
+        "gitHubAccount": "Abderahman88",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-abderahman88.beeaab590de7.webp",
         "name": "Abderahman Moujahid",
         "avatarSourceUrl": "https://github.com/Abderahman88.png"
       },
       {
-        "gitHubAccount": "https://github.com/Sandeep-FED",
+        "gitHubAccount": "Sandeep-FED",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sandeep-fed.6784dfb80995.webp",
         "name": "Sandeep P S",
         "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
@@ -4860,7 +4919,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
         "name": "Peter Paul Kirschner",
         "avatarSourceUrl": "https://github.com/petkir.png"
@@ -5680,7 +5739,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "sudeepghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -5776,7 +5835,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "sudeepghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -5817,7 +5876,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -5899,20 +5958,10 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/NicolasKheirallah",
+        "gitHubAccount": "NicolasKheirallah",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
         "name": "Nicolas Kheirallah",
         "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/nrvrvl",
-        "pictureUrl": "https://github.com/nrvrvl.png",
-        "name": "Nirav Raval"
-      },
-      {
-        "gitHubAccount": "https://github.com/microsoftgraph/msgraph-sdk-javascript",
-        "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png",
-        "name": "Microsoft Graph JavaScript SDK"
       }
     ],
     "thumbnails": [
@@ -6033,7 +6082,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ChinHoongLew",
+        "gitHubAccount": "ChinHoongLew",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-chinhoonglew.885fa743e7c6.webp",
         "name": "Lew Chin Hoong",
         "avatarSourceUrl": "https://github.com/ChinHoongLew.png"
@@ -6218,7 +6267,8 @@
       {
         "gitHubAccount": "Eli-Schei",
         "name": "Eli H. Schei",
-        "pictureUrl": "https://github.com/Eli-Schei"
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eli-schei.3680818ac120.webp",
+        "avatarSourceUrl": "https://github.com/Eli-Schei.png"
       },
       {
         "gitHubAccount": "Dhananjay-12",
@@ -6263,7 +6313,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/russgove",
+        "gitHubAccount": "russgove",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/russgove.6eb4ebcc8a07.webp",
         "name": "Russell Gove",
         "avatarSourceUrl": "https://github.com/russgove.png"
@@ -7122,7 +7172,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+        "gitHubAccount": "cfernandes-muhimbi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-cfernandes-muhimbi.94b83deafea2.webp",
         "name": "Clavin Fernandes",
         "avatarSourceUrl": "https://github.com/cfernandes-muhimbi.png"
@@ -7249,7 +7299,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/maschroeder-z",
+        "gitHubAccount": "maschroeder-z",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-maschroeder-z.ee3d256a07e0.webp",
         "name": "Marc André Schröder-Zhou",
         "avatarSourceUrl": "https://github.com/maschroeder-z.png"
@@ -7965,13 +8015,6 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "SPParseError",
-        "company": "Infeeny",
-        "pictureUrl": "https://github.com/SPParseError.png",
-        "name": "Stéphane Magne",
-        "twitter": "SPParse"
-      },
-      {
         "gitHubAccount": "AriGunawan",
         "name": "Ari Gunawan",
         "company": "",
@@ -8576,7 +8619,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ejazhussain",
+        "gitHubAccount": "ejazhussain",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
         "name": "Ejaz Hussain",
         "avatarSourceUrl": "https://github.com/ejazhussain.png"
@@ -9262,7 +9305,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/HarminderSethi",
+        "gitHubAccount": "HarminderSethi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
         "name": "Harminder Singh",
         "avatarSourceUrl": "https://github.com/HarminderSethi.png"
@@ -9526,7 +9569,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/NicolasKheirallah",
+        "gitHubAccount": "NicolasKheirallah",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-nicolaskheirallah.50f81b9fb5b9.webp",
         "name": "Nicolas Kheirallah",
         "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -10060,7 +10103,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/maschroeder-z",
+        "gitHubAccount": "maschroeder-z",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-maschroeder-z.ee3d256a07e0.webp",
         "name": "Marc André Schröder-Zhou",
         "avatarSourceUrl": "https://github.com/maschroeder-z.png"
@@ -10484,7 +10527,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/_nopreview.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo.webp",
         "alt": "No preview available"
       }
     ]
@@ -10722,7 +10765,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/HarminderSethi",
+        "gitHubAccount": "HarminderSethi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
         "name": "Harminder Singh",
         "avatarSourceUrl": "https://github.com/HarminderSethi.png"
@@ -10851,7 +10894,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
         "name": "Peter Paul Kirschner",
         "avatarSourceUrl": "https://github.com/petkir.png"
@@ -11261,7 +11304,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -11302,7 +11345,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ejazhussain",
+        "gitHubAccount": "ejazhussain",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
         "name": "Ejaz Hussain",
         "avatarSourceUrl": "https://github.com/ejazhussain.png"
@@ -11393,7 +11436,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -11434,7 +11477,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+        "gitHubAccount": "cfernandes-muhimbi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-cfernandes-muhimbi.94b83deafea2.webp",
         "name": "Clavin Fernandes",
         "avatarSourceUrl": "https://github.com/cfernandes-muhimbi.png"
@@ -11966,7 +12009,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/AriGunawan",
+        "gitHubAccount": "AriGunawan",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",
         "name": "Ari Gunawan",
         "avatarSourceUrl": "https://github.com/AriGunawan.png"
@@ -12693,7 +12736,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ejazhussain",
+        "gitHubAccount": "ejazhussain",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
         "name": "Ejaz Hussain",
         "avatarSourceUrl": "https://github.com/ejazhussain.png"
@@ -13310,11 +13353,6 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sandeep-fed.6784dfb80995.webp",
         "name": "Sandeep P S",
         "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-        "name": "AOAI SDK"
       }
     ],
     "thumbnails": [
@@ -13352,7 +13390,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -14084,7 +14122,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -14264,7 +14302,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader.webp",
         "alt": "No preview available"
       }
     ]
@@ -14926,13 +14964,13 @@
         "gitHubAccount": "PopWarner",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/popwarner.4b31f3a45bc9.webp",
         "name": "David Warner II",
-        "avatarSourceUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4"
+        "avatarSourceUrl": "https://github.com/PopWarner.png"
       },
       {
         "gitHubAccount": "bcameron1231",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/bcameron1231.dd354298cb1c.webp",
         "name": "Beau Cameron",
-        "avatarSourceUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4"
+        "avatarSourceUrl": "https://github.com/bcameron1231.png"
       },
       {
         "gitHubAccount": "hugoabernier",
@@ -14976,7 +15014,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/saurabh7019",
+        "gitHubAccount": "saurabh7019",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-saurabh7019.1c80cfa0d82a.webp",
         "name": "Saurabh Tripathi",
         "avatarSourceUrl": "https://github.com/saurabh7019.png"
@@ -15101,7 +15139,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -15779,7 +15817,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/hugoabernier",
+        "gitHubAccount": "hugoabernier",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/hugoabernier.eea32675b0e6.webp",
         "name": "Hugo Bernier",
         "avatarSourceUrl": "https://github.com/hugoabernier.png"
@@ -16156,7 +16194,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ahmad-jad-alhak",
+        "gitHubAccount": "ahmad-jad-alhak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-ahmad-jad-alhak.5d2730987f4b.webp",
         "name": "Ahmad Jad Alhak",
         "avatarSourceUrl": "https://github.com/ahmad-jad-alhak.png"
@@ -16480,15 +16518,10 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/jtlivio",
+        "gitHubAccount": "jtlivio",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-jtlivio.ec9ee626d7c7.webp",
         "name": "João Livio",
         "avatarSourceUrl": "https://github.com/jtlivio.png"
-      },
-      {
-        "gitHubAccount": "https://github.com/pnp/sp-dev-fx-webparts/issues/new",
-        "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png",
-        "name": "Create a new issue"
       }
     ],
     "thumbnails": [
@@ -16526,7 +16559,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/Adam-it",
+        "gitHubAccount": "Adam-it",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/adam-it.38c80c88770d.webp",
         "name": "Adam Wójcik",
         "avatarSourceUrl": "https://github.com/Adam-it.png"
@@ -17131,7 +17164,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/HarminderSethi",
+        "gitHubAccount": "HarminderSethi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
         "name": "Harminder Singh",
         "avatarSourceUrl": "https://github.com/HarminderSethi.png"
@@ -17171,11 +17204,6 @@
     "tags": [],
     "categories": [],
     "authors": [
-      {
-        "gitHubAccount": "srpmtt",
-        "pictureUrl": "https://github.com/srpmtt.png",
-        "name": "Matteo Serpi"
-      },
       {
         "gitHubAccount": "AlessiaDeMartino",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/alessiademartino.a2ce39f89cd3.webp",
@@ -17786,7 +17814,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -17914,7 +17942,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -18424,7 +18452,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/tvahk",
+        "gitHubAccount": "tvahk",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-tvahk.38def45be826.webp",
         "name": "tvahk",
         "avatarSourceUrl": "https://github.com/tvahk.png"
@@ -18548,7 +18576,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/sudeepghatak",
+        "gitHubAccount": "sudeepghatak",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-sudeepghatak.72498f95b645.webp",
         "name": "Sudeep Ghatak",
         "avatarSourceUrl": "https://github.com/sudeepghatak.png"
@@ -18901,13 +18929,13 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/hugoabernier",
+        "gitHubAccount": "hugoabernier",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/hugoabernier.eea32675b0e6.webp",
         "name": "Hugo Bernier",
         "avatarSourceUrl": "https://github.com/hugoabernier.png"
       },
       {
-        "gitHubAccount": "https://github.com/babakdanyal",
+        "gitHubAccount": "babakdanyal",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-babakdanyal.0013e8218d14.webp",
         "name": "Babak Danyal",
         "avatarSourceUrl": "https://github.com/babakdanyal.png"
@@ -19122,7 +19150,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/a1mery",
+        "gitHubAccount": "a1mery",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
         "name": "Aimery Thomas",
         "avatarSourceUrl": "https://github.com/a1mery.png"
@@ -20208,7 +20236,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
         "name": "Peter Paul Kirschner",
         "avatarSourceUrl": "https://github.com/petkir.png"
@@ -20458,7 +20486,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/HarminderSethi",
+        "gitHubAccount": "HarminderSethi",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/https-github-com-harmindersethi.1d1b349b140b.webp",
         "name": "Harminder Singh",
         "avatarSourceUrl": "https://github.com/HarminderSethi.png"
@@ -20739,7 +20767,7 @@
     "categories": [],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/petkir",
+        "gitHubAccount": "petkir",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/petkir.1b17ee0657a4.webp",
         "name": "Peter Paul Kirschner",
         "avatarSourceUrl": "https://github.com/petkir.png"
@@ -21768,7 +21796,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -22053,7 +22081,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-my-flows-list",
     "source": "pnp",
     "title": "My Flows List",
     "shortDescription": "Application extension that allows the user to check list of flows and their current status and details.",
@@ -22086,7 +22114,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-my-flows-list.webp",
         "alt": "Preview"
       }
     ]
@@ -22182,7 +22210,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-copy-move-items",
     "source": "pnp",
     "title": "Copy/Move Item(s)",
     "shortDescription": "Displays a command button named **Copy/Move Item(s)** in all the custom lists",
@@ -22217,7 +22245,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-copy-move-items.webp",
         "alt": "Preview"
       }
     ]
@@ -22318,7 +22346,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
     "source": "pnp",
     "title": "SharePoint Collaboration Footer v8.0.0",
     "shortDescription": "Enterprise-grade SharePoint footer with hybrid architecture, advanced link management, and modern user experience",
@@ -22351,7 +22379,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-collab-footer.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -22660,7 +22688,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-copy-page.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -22796,7 +22824,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,React"
+        "value": "React"
       },
       {
         "key": "SPFX-VERSION",
@@ -23180,7 +23208,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-m365-service-health.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23596,7 +23624,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-my-sites-hub.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23956,7 +23984,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-utility-extensions.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23972,7 +24000,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,React"
+        "value": "React"
       },
       {
         "key": "SPFX-VERSION",
@@ -24507,7 +24535,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications",
     "source": "pnp",
     "title": "My Lists Notifications",
     "shortDescription": "This application extension alows user receive notifications from selected lists or libraries",
@@ -24540,7 +24568,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications.webp",
         "alt": "Preview"
       }
     ]
@@ -24819,7 +24847,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype",
     "source": "pnp",
     "title": "Change Page Layout Command Extension",
     "shortDescription": "Listview command extension that is available only for the Site Pages library to change the layout type. If the page is Article, it can be changed to Home which will remove the page title placeholder and vice versa.",
@@ -24853,7 +24881,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype.webp",
         "alt": "Preview"
       }
     ]
@@ -24908,7 +24936,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget",
     "source": "pnp",
     "title": "Sticky Feedback Widget Application Customizer",
     "shortDescription": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
@@ -24941,7 +24969,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget.webp",
         "alt": "Preview"
       }
     ]
@@ -25933,7 +25961,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings",
     "source": "pnp",
     "title": "Copy PnP search results webpart settings",
     "shortDescription": "This list view command set, helps in copying the settings of the PnP search results web part present on a page to the settings of the  PnP search results web part present on the selected pages.",
@@ -25967,7 +25995,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings.webp",
         "alt": "Preview"
       }
     ]
