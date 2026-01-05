@@ -1,4 +1,4 @@
-name: Update Likes JSON (Docs branch)
+name: Update Likes JSON
 
 on:
   workflow_dispatch:
@@ -188,16 +188,23 @@ jobs:
           EOF
 
           node build-likes.mjs
+        - run: |
+          ls -la docs/data
+          git status --porcelain
 
       - name: Commit & push to Docs (if changed)
         run: |
-          if git diff --quiet; then
+          # Stage the generated file (use -f if you discover it's ignored)
+          git add -A docs/data/likes.json
+
+          # If nothing staged (including new files), exit cleanly
+          if git diff --cached --quiet; then
             echo "No changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/likes.json
           git commit -m "chore: update likes.json"
           git push origin Docs
+
