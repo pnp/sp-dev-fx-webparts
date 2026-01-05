@@ -1269,13 +1269,38 @@
                 "alt": "Real-Time Chart"
             }
         ],
-        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol"
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+        "metadata": [
+            {
+                "key": "SAMPLE-TYPE",
+                "value": "SPFx-WebPart"
+            },
+            {
+                "key": "PNPCONTROLS",
+                "value": "ChartControl"
+            },
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.21.1"
+            },
+            {
+                "key": "PNPCONTROLS",
+                "value": "WebPartTitle, Placeholder, ChartControl"
+            }
+        ]
     },
     {
         "name": "pnp-sp-dev-spfx-web-parts-react-scatter-chart",
         "source": "pnp",
         "creationDateTime": "2020-12-13",
         "updateDateTime": "2025-09-12",
+        "products": [
+            "SharePoint"
+        ],
         "authors": [
             {
                 "gitHubAccount": "hugoabernier",
@@ -1543,7 +1568,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/joaojmendes",
+                "gitHubAccount": "joaojmendes",
                 "pictureUrl": "https://github.com/joaojmendes.png",
                 "name": "João Mendes"
             }
@@ -1596,7 +1621,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/maschroeder-z",
+                "gitHubAccount": "maschroeder-z",
                 "pictureUrl": "https://github.com/maschroeder-z.png",
                 "name": "Marc André Schröder-Zhou"
             }
@@ -1767,7 +1792,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/NicolasKheirallah",
+                "gitHubAccount": "NicolasKheirallah",
                 "pictureUrl": "https://github.com/NicolasKheirallah.png",
                 "name": "Nicolas Kheirallah"
             }
@@ -2098,22 +2123,22 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/Abderahman88",
+                "gitHubAccount": "Abderahman88",
                 "pictureUrl": "https://github.com/Abderahman88.png",
                 "name": "Abderahman Moujahid"
             },
             {
-                "gitHubAccount": "https://github.com/eoverfield",
+                "gitHubAccount": "eoverfield",
                 "pictureUrl": "https://github.com/eoverfield.png",
                 "name": "Eric Overfield"
             },
             {
-                "gitHubAccount": "https://github.com/djsladi",
+                "gitHubAccount": "djsladi",
                 "pictureUrl": "https://github.com/djsladi.png",
                 "name": "Kalle Mansikkaniemi"
             },
             {
-                "gitHubAccount": "https://github.com/koskimiesl",
+                "gitHubAccount": "koskimiesl",
                 "pictureUrl": "https://github.com/koskimiesl.png",
                 "name": "Lauri Koskimies"
             }
@@ -2422,7 +2447,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/billbrockbank",
+                "gitHubAccount": "billbrockbank",
                 "pictureUrl": "https://github.com/billbrockbank.png",
                 "name": "Bill Brockbank"
             }
@@ -2723,7 +2748,7 @@
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             },
             {
                 "name": "Using PnP JS with SharePoint Framework",
@@ -2733,7 +2758,7 @@
             {
                 "name": "Fluent UI React Components",
                 "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
-                "url": "https://developer.microsoft.com/en-us/fluentui#/controls/web"
+                "url": "https://developer.microsoft.com/fluentui#/controls/web"
             },
             {
                 "name": "Working with Folders and Files using PnP JS",
@@ -3396,7 +3421,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/guidozam",
+                "gitHubAccount": "guidozam",
                 "pictureUrl": "https://github.com/guidozam.png",
                 "name": "Guido Zambarda"
             }
@@ -4606,12 +4631,12 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/Tanddant",
+                "gitHubAccount": "Tanddant",
                 "pictureUrl": "https://github.com/Tanddant.png",
                 "name": "Dan Toft"
             },
             {
-                "gitHubAccount": "https://github.com/NicolasKheirallah",
+                "gitHubAccount": "NicolasKheirallah",
                 "pictureUrl": "https://github.com/NicolasKheirallah.png",
                 "name": "Nicolas Kheirallah"
             }
@@ -5017,7 +5042,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/saurabh7019",
+                "gitHubAccount": "saurabh7019",
                 "pictureUrl": "https://github.com/saurabh7019.png",
                 "name": "Saurabh Tripathi"
             }
@@ -5295,7 +5320,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/jtlivio",
+                "gitHubAccount": "jtlivio",
                 "pictureUrl": "https://github.com/jtlivio.png",
                 "name": "João LIVIO"
             }
@@ -5355,7 +5380,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/HarminderSethi",
+                "gitHubAccount": "HarminderSethi",
                 "pictureUrl": "https://github.com/HarminderSethi.png",
                 "name": "Harminder Singh"
             }
@@ -6441,27 +6466,27 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/joaojmendes",
+                "gitHubAccount": "joaojmendes",
                 "pictureUrl": "https://github.com/joaojmendes.png",
                 "name": "João Mendes"
             },
             {
-                "gitHubAccount": "https://github.com/petkir",
+                "gitHubAccount": "petkir",
                 "pictureUrl": "https://github.com/petkir.png",
                 "name": "Peter Paul Kirschner"
             },
             {
-                "gitHubAccount": "https://github.com/sudharsank",
+                "gitHubAccount": "sudharsank",
                 "pictureUrl": "https://github.com/sudharsank.png",
                 "name": "Sudharsan Kesavanarayanan"
             },
             {
-                "gitHubAccount": "https://github.com/Abderahman88",
+                "gitHubAccount": "Abderahman88",
                 "pictureUrl": "https://github.com/Abderahman88.png",
                 "name": "Abderahman Moujahid"
             },
             {
-                "gitHubAccount": "https://github.com/Sandeep-FED",
+                "gitHubAccount": "Sandeep-FED",
                 "pictureUrl": "https://github.com/Sandeep-FED.png",
                 "name": "Sandeep P S"
             }
@@ -7181,7 +7206,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/petkir",
+                "gitHubAccount": "petkir",
                 "pictureUrl": "https://github.com/petkir.png",
                 "name": "Peter Paul Kirschner"
             }
@@ -8539,7 +8564,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "sudeepghatak"
             }
@@ -8656,7 +8681,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "sudeepghatak"
             }
@@ -8709,7 +8734,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -9022,7 +9047,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/ChinHoongLew",
+                "gitHubAccount": "ChinHoongLew",
                 "pictureUrl": "https://github.com/ChinHoongLew.png",
                 "name": "Lew Chin Hoong"
             }
@@ -9457,7 +9482,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/russgove",
+                "gitHubAccount": "russgove",
                 "pictureUrl": "https://github.com/russgove.png",
                 "name": "Russell Gove"
             }
@@ -10657,7 +10682,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+                "gitHubAccount": "cfernandes-muhimbi",
                 "pictureUrl": "https://github.com/cfernandes-muhimbi.png",
                 "name": "Clavin Fernandes"
             }
@@ -10831,7 +10856,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/maschroeder-z",
+                "gitHubAccount": "maschroeder-z",
                 "pictureUrl": "https://github.com/maschroeder-z.png",
                 "name": "Marc André Schröder-Zhou"
             }
@@ -12876,7 +12901,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/ejazhussain",
+                "gitHubAccount": "ejazhussain",
                 "pictureUrl": "https://github.com/ejazhussain.png",
                 "name": "Ejaz Hussain"
             }
@@ -13818,7 +13843,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/HarminderSethi",
+                "gitHubAccount": "HarminderSethi",
                 "pictureUrl": "https://github.com/HarminderSethi.png",
                 "name": "Harminder Singh"
             }
@@ -14173,7 +14198,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/NicolasKheirallah",
+                "gitHubAccount": "NicolasKheirallah",
                 "pictureUrl": "https://github.com/NicolasKheirallah.png",
                 "name": "Nicolas Kheirallah"
             }
@@ -14874,7 +14899,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/maschroeder-z",
+                "gitHubAccount": "maschroeder-z",
                 "pictureUrl": "https://github.com/maschroeder-z.png",
                 "name": "Marc André Schröder-Zhou"
             }
@@ -15775,7 +15800,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/HarminderSethi",
+                "gitHubAccount": "HarminderSethi",
                 "pictureUrl": "https://github.com/HarminderSethi.png",
                 "name": "Harminder Singh"
             }
@@ -15963,7 +15988,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/petkir",
+                "gitHubAccount": "petkir",
                 "pictureUrl": "https://github.com/petkir.png",
                 "name": "Peter Paul Kirschner"
             }
@@ -16644,7 +16669,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -16704,7 +16729,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/ejazhussain",
+                "gitHubAccount": "ejazhussain",
                 "pictureUrl": "https://github.com/ejazhussain.png",
                 "name": "Ejaz Hussain"
             }
@@ -16817,7 +16842,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -16877,7 +16902,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/cfernandes-muhimbi",
+                "gitHubAccount": "cfernandes-muhimbi",
                 "pictureUrl": "https://github.com/cfernandes-muhimbi.png",
                 "name": "Clavin Fernandes"
             }
@@ -17657,7 +17682,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/AriGunawan",
+                "gitHubAccount": "AriGunawan",
                 "pictureUrl": "https://github.com/AriGunawan.png",
                 "name": "Ari Gunawan"
             }
@@ -18741,7 +18766,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/ejazhussain",
+                "gitHubAccount": "ejazhussain",
                 "pictureUrl": "https://github.com/ejazhussain.png",
                 "name": "Ejaz Hussain"
             }
@@ -19711,7 +19736,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -20814,7 +20839,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -21324,7 +21349,7 @@
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             },
             {
                 "name": "Using PnP JS with SharePoint Framework",
@@ -21334,7 +21359,7 @@
             {
                 "name": "Fluent UI React Components",
                 "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
-                "url": "https://developer.microsoft.com/en-us/fluentui#/controls/web"
+                "url": "https://developer.microsoft.com/fluentui#/controls/web"
             }
         ]
     },
@@ -22085,7 +22110,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/saurabh7019",
+                "gitHubAccount": "saurabh7019",
                 "pictureUrl": "https://github.com/saurabh7019.png",
                 "name": "Saurabh Tripathi"
             }
@@ -22244,7 +22269,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -23169,7 +23194,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/hugoabernier",
+                "gitHubAccount": "hugoabernier",
                 "pictureUrl": "https://github.com/hugoabernier.png",
                 "name": "Hugo Bernier"
             }
@@ -23684,7 +23709,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/ahmad-jad-alhak",
+                "gitHubAccount": "ahmad-jad-alhak",
                 "pictureUrl": "https://github.com/ahmad-jad-alhak.png",
                 "name": "Ahmad Jad Alhak"
             }
@@ -24127,7 +24152,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/jtlivio",
+                "gitHubAccount": "jtlivio",
                 "pictureUrl": "https://github.com/jtlivio.png",
                 "name": "João Livio"
             }
@@ -24208,7 +24233,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/Adam-it",
+                "gitHubAccount": "Adam-it",
                 "pictureUrl": "https://github.com/Adam-it.png",
                 "name": "Adam Wójcik"
             }
@@ -25015,7 +25040,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/HarminderSethi",
+                "gitHubAccount": "HarminderSethi",
                 "pictureUrl": "https://github.com/HarminderSethi.png",
                 "name": "Harminder Singh"
             }
@@ -25458,7 +25483,7 @@
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             },
             {
                 "name": "Using PnP JS with SharePoint Framework",
@@ -25468,7 +25493,7 @@
             {
                 "name": "Fluent UI React Components",
                 "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
-                "url": "https://developer.microsoft.com/en-us/fluentui#/controls/web"
+                "url": "https://developer.microsoft.com/fluentui#/controls/web"
             },
             {
                 "name": "DnD Kit - Modern drag and drop toolkit for React",
@@ -25964,7 +25989,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -26141,7 +26166,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -26847,7 +26872,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/tvahk",
+                "gitHubAccount": "tvahk",
                 "pictureUrl": "https://github.com/tvahk.png",
                 "name": "tvahk"
             }
@@ -27024,7 +27049,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/sudeepghatak",
+                "gitHubAccount": "sudeepghatak",
                 "pictureUrl": "https://github.com/sudeepghatak.png",
                 "name": "Sudeep Ghatak"
             }
@@ -27593,12 +27618,12 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/hugoabernier",
+                "gitHubAccount": "hugoabernier",
                 "pictureUrl": "https://github.com/hugoabernier.png",
                 "name": "Hugo Bernier"
             },
             {
-                "gitHubAccount": "https://github.com/babakdanyal",
+                "gitHubAccount": "babakdanyal",
                 "pictureUrl": "https://github.com/babakdanyal.png",
                 "name": "Babak Danyal"
             }
@@ -27894,7 +27919,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/a1mery",
+                "gitHubAccount": "a1mery",
                 "pictureUrl": "https://github.com/a1mery.png",
                 "name": "Aimery Thomas"
             }
@@ -29528,7 +29553,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/petkir",
+                "gitHubAccount": "petkir",
                 "pictureUrl": "https://github.com/petkir.png",
                 "name": "Peter Paul Kirschner"
             }
@@ -29611,7 +29636,7 @@
             {
                 "name": "Build your first SharePoint client-side web part",
                 "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
             },
             {
                 "name": "Using PnP JS with SharePoint Framework",
@@ -29621,7 +29646,7 @@
             {
                 "name": "Fluent UI React Components",
                 "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
-                "url": "https://developer.microsoft.com/en-us/fluentui#/controls/web"
+                "url": "https://developer.microsoft.com/fluentui#/controls/web"
             }
         ]
     },
@@ -29973,7 +29998,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/HarminderSethi",
+                "gitHubAccount": "HarminderSethi",
                 "pictureUrl": "https://github.com/HarminderSethi.png",
                 "name": "Harminder Singh"
             }
@@ -30377,7 +30402,7 @@
         ],
         "authors": [
             {
-                "gitHubAccount": "https://github.com/petkir",
+                "gitHubAccount": "petkir",
                 "pictureUrl": "https://github.com/petkir.png",
                 "name": "Peter Paul Kirschner"
             }
