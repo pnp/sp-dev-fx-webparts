@@ -1,11 +1,16 @@
 {
-  "generatedAt": "2026-01-05T18:49:25.624Z",
+  "generatedAt": "2026-01-05T23:03:46.974Z",
   "source": {
     "owner": "pnp",
     "repo": "sp-dev-fx-webparts",
     "category": "Likes"
   },
   "likes": {
+    "pnp-sp-dev-spfx-web-parts-react-adaptivecards": {
+      "count": 1,
+      "discussionNumber": 5680,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5680"
+    },
     "pnp-sp-dev-spfx-web-parts-react-chartinator": {
       "count": 1,
       "discussionNumber": 5678,
@@ -17,7 +22,7 @@
       "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5677"
     },
     "pnp-sp-dev-spfx-web-parts-react-tree-orgchart": {
-      "count": 1,
+      "count": 0,
       "discussionNumber": 5676,
       "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5676"
     },
