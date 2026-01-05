@@ -1240,7 +1240,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-github-badge.webp"
   },
   "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/handlebarsjs-webpack-loader/assets/_nopreview.png",
     "file": "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader.webp"
   },
   "pnp-sp-dev-spfx-web-parts-angular2-prototype": {
