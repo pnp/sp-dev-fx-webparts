@@ -1904,7 +1904,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders": {
@@ -1935,9 +1935,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sitepagecoremetadata/assets/SitePageMetadataExtension.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-sitepagecoremetadata.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list": {
+  "pnp-sp-dev-spfx-extensions-react-application-my-flows-list": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-flows-list/assets/HowItWorks.gif",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-application-my-flows-list.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-field-slider": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-slider/assets/slider.png",
@@ -1947,9 +1947,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/tree/raw/samples/js-application-redirect/ext-redirects.png",
     "file": "pnp-sp-dev-spfx-extensions-js-application-redirect.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items": {
+  "pnp-sp-dev-spfx-extensions-react-command-copy-move-items": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-move-items/assets/CopyMoveItems.png",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-command-copy-move-items.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-pva-bot": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-pva-bot/assets/preview.gif",
@@ -1959,9 +1959,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-addfolders/assets/preview.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-command-addfolders.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer": {
+  "pnp-sp-dev-spfx-extensions-react-application-collab-footer": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-application-collab-footer.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-field-attachment-info": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-attachment-info/assets/react-field-attachment-info.png",
@@ -1988,7 +1988,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-copy-page": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-copy-page/assets/preview-01.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-copy-page.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-qna-chat": {
@@ -2040,7 +2040,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-application-tenant-global-navbar.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-m365-service-health": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-m365-service-health.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-command-qrcode": {
@@ -2080,7 +2080,7 @@
     "file": "pnp-sp-dev-spfx-extensions-js-application-header-toggler.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-my-sites-hub": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
     "file": "pnp-sp-dev-spfx-extensions-react-my-sites-hub.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news": {
@@ -2116,7 +2116,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-command-folder-select.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-utility-extensions": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
     "file": "pnp-sp-dev-spfx-extensions-react-utility-extensions.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker": {
@@ -2171,9 +2171,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-item-History/Capture.PNG",
     "file": "pnp-sp-dev-spfx-extensions-react-item-History.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications": {
+  "pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-lists-notifications/assets/myListsNotifications.gif",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications.webp"
   },
   "pnp-sp-dev-fx-extensions-react-command-share-to-teams": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-to-teams/assets/preview.PNG",
@@ -2199,17 +2199,17 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-guest-message/assets/externalmessage.png",
     "file": "pnp-sp-dev-spfx-extensions-js-guest-message.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype": {
+  "pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-change-page-layouttype/assets/FileSelection.png",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-application-analytics": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-analytics/assets/js-application-google-analytics.gif",
     "file": "pnp-sp-dev-spfx-extensions-js-application-analytics.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget": {
+  "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-command-custom-command-bar": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-custom-command-bar/assets/command-bar.png",
@@ -2303,9 +2303,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights/assets/appinsights-1.png",
     "file": "pnp-sp-dev-spfx-extensions-js-application-appinsights.webp"
   },
-  "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings": {
+  "pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-pnp-search-webpart-settings/assets/copy_pnp_search_results_settings.gif",
-    "file": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings.webp"
+    "file": "pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-alerts": {
     "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-alert.gif",

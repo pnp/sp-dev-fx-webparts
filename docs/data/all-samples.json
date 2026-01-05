@@ -21796,7 +21796,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-quick-register-to-appointment.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -22081,7 +22081,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-my-flows-list",
     "source": "pnp",
     "title": "My Flows List",
     "shortDescription": "Application extension that allows the user to check list of flows and their current status and details.",
@@ -22114,7 +22114,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-my-flows-list.webp",
         "alt": "Preview"
       }
     ]
@@ -22210,7 +22210,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-copy-move-items",
     "source": "pnp",
     "title": "Copy/Move Item(s)",
     "shortDescription": "Displays a command button named **Copy/Move Item(s)** in all the custom lists",
@@ -22245,7 +22245,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-copy-move-items.webp",
         "alt": "Preview"
       }
     ]
@@ -22346,7 +22346,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
     "source": "pnp",
     "title": "SharePoint Collaboration Footer v8.0.0",
     "shortDescription": "Enterprise-grade SharePoint footer with hybrid architecture, advanced link management, and modern user experience",
@@ -22379,7 +22379,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-collab-footer.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-collab-footer.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -22688,7 +22688,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-copy-page.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23208,7 +23208,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-m365-service-health.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23624,7 +23624,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-my-sites-hub.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -23984,7 +23984,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-utility-extensions.webp",
         "alt": "Web Part Preview"
       }
     ]
@@ -24535,7 +24535,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications",
     "source": "pnp",
     "title": "My Lists Notifications",
     "shortDescription": "This application extension alows user receive notifications from selected lists or libraries",
@@ -24568,7 +24568,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications.webp",
         "alt": "Preview"
       }
     ]
@@ -24847,7 +24847,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype",
     "source": "pnp",
     "title": "Change Page Layout Command Extension",
     "shortDescription": "Listview command extension that is available only for the Site Pages library to change the layout type. If the page is Article, it can be changed to Home which will remove the page title placeholder and vice versa.",
@@ -24881,7 +24881,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype.webp",
         "alt": "Preview"
       }
     ]
@@ -24936,7 +24936,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget",
     "source": "pnp",
     "title": "Sticky Feedback Widget Application Customizer",
     "shortDescription": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
@@ -24969,7 +24969,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget.webp",
         "alt": "Preview"
       }
     ]
@@ -25961,7 +25961,7 @@
     ]
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings",
+    "name": "pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings",
     "source": "pnp",
     "title": "Copy PnP search results webpart settings",
     "shortDescription": "This list view command set, helps in copying the settings of the PnP search results web part present on a page to the settings of the  PnP search results web part present on the selected pages.",
@@ -25995,7 +25995,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings.webp",
         "alt": "Preview"
       }
     ]
