@@ -1,0 +1,128 @@
+/* giscus "Likes-only" theme
+   - Keeps reactions visible
+   - Hides comment box + timeline so the embed stays lightweight
+   - Uses subtle Microsoft-ish accent and pill buttons
+*/
+
+:root {
+    /* Typography */
+    --gsc-font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    --gsc-font-size: 14px;
+
+    /* Light theme palette */
+    --gsc-bg: transparent;
+    --gsc-fg: #111827;
+    /* slate-900 */
+    --gsc-fg-muted: #6b7280;
+    /* slate-500 */
+    --gsc-border: rgba(17, 24, 39, 0.12);
+
+    /* Accent (MS-ish blue) */
+    --gsc-accent: #0f6cbd;
+    --gsc-accent-soft: rgba(15, 108, 189, 0.12);
+    --gsc-accent-soft-hover: rgba(15, 108, 189, 0.18);
+
+    /* Radii / spacing */
+    --gsc-radius: 999px;
+    --gsc-gap: 8px;
+}
+
+/* Dark mode (auto, based on the viewer’s OS setting) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --gsc-bg: transparent;
+        --gsc-fg: #e5e7eb;
+        /* slate-200 */
+        --gsc-fg-muted: #9ca3af;
+        /* slate-400 */
+        --gsc-border: rgba(229, 231, 235, 0.14);
+
+        --gsc-accent: #66b2ff;
+        --gsc-accent-soft: rgba(102, 178, 255, 0.14);
+        --gsc-accent-soft-hover: rgba(102, 178, 255, 0.22);
+    }
+}
+
+/* Page-level reset inside the iframe */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--gsc-bg) !important;
+    color: var(--gsc-fg) !important;
+    font-family: var(--gsc-font-family) !important;
+    font-size: var(--gsc-font-size) !important;
+}
+
+/* Hide “full discussion UI” parts */
+.gsc-header,
+.gsc-comment-box,
+.gsc-timeline,
+.gsc-pagination,
+.gsc-footer {
+    display: none !important;
+}
+
+/* Make reactions look like a compact control row */
+.gsc-reactions {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+/* Optional: hide the “X reactions” header line if you want ultra-minimal */
+.gsc-reactions-count {
+    display: none !important;
+}
+
+/* The container that holds the reaction buttons */
+.gsc-reactions>div {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: var(--gsc-gap) !important;
+    align-items: center;
+}
+
+/* Style reaction buttons as pills */
+.gsc-reactions button {
+    border-radius: var(--gsc-radius) !important;
+    border: 1px solid var(--gsc-border) !important;
+    background: var(--gsc-accent-soft) !important;
+    color: var(--gsc-fg) !important;
+
+    padding: 6px 10px !important;
+    line-height: 1 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+
+    box-shadow: none !important;
+    transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.gsc-reactions button:hover {
+    background: var(--gsc-accent-soft-hover) !important;
+    border-color: rgba(15, 108, 189, 0.35) !important;
+    transform: translateY(-1px);
+}
+
+/* Keyboard focus */
+.gsc-reactions button:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(15, 108, 189, 0.28) !important;
+}
+
+/* Emoji icon sizing (safe even if markup differs slightly) */
+.gsc-reactions button svg,
+.gsc-reactions button img {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* Count text sizing */
+.gsc-reactions button span {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gsc-fg) !important;
+}

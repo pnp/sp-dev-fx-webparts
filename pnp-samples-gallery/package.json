@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "framer-motion": "^12.23.26",
     "lodas": "^1.2.0",
     "muuri": "^0.9.5",

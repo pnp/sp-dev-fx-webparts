@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import type { PnPSample } from "../types/index";
 import { Facepile, Icon } from "./index";
+import { LikesPanel } from "./LikesPanel";
 
 export interface SamplePanelProps {
     sample: PnPSample;
@@ -493,7 +494,6 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                 ) : null}
 
                 <p className="pnp-sample-panel__desc">{sample.shortDescription}</p>
-
                 <div className="pnp-sample-panel__actions">
                     <div>
                         <button className="pnp-btn pnp-btn--action" onClick={openGitHub} title="View on GitHub">
@@ -519,6 +519,8 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                         {/* clicking the block will copy to clipboard */}
                     </div>
                 </div>
+
+                <LikesPanel sampleName={sample.name || ''} />
 
                 <div className="pnp-sample-panel__meta">
                     {(() => {

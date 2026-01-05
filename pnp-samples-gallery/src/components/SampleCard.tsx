@@ -2,6 +2,7 @@ import React from "react";
 import type { PnPSample } from "../types/index";
 import { bestThumb, categoryToIcon, getCategories, metaFirst, prettyCategory, techKey, techLabel, techToIcon } from "../types/index";
 import { Icon, Facepile } from "../components";
+// import { LikeButton } from "./LikeButton";
 
 export interface SampleCardProps {
     sample: PnPSample;
@@ -138,7 +139,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
             </div>
 <div className="pnp-card__body">
             <h2 className="pnp-card__title">{s.title}</h2>
-
+{/* <LikeButton sampleName={s.name} sampleTitle={s.title} /> */}
             <div className="pnp-card__footer">
                 <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
