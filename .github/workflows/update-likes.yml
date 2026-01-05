@@ -188,9 +188,7 @@ jobs:
           EOF
 
           node build-likes.mjs
-        - run: |
-          ls -la docs/data
-          git status --porcelain
+          
 
       - name: Commit & push to Docs (if changed)
         run: |
