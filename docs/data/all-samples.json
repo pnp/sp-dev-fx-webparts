@@ -2161,7 +2161,7 @@
     "source": "pnp",
     "title": "Query Microsoft Graph Web Part",
     "shortDescription": "This sample shows how you can query Microsoft Graph from React in SharePoint Framework",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query",
     "updateDateTime": "2022-10-18",
     "metadata": [
@@ -2193,7 +2193,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-react-query.webp",
         "alt": "No preview available"
       }
     ]
