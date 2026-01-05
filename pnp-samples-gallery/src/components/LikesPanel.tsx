@@ -2,7 +2,7 @@ import Giscus from "@giscus/react";
 
 export function LikesPanel({ sampleName }: { sampleName: string }) {
     const term = `sample:${sampleName}`;
-    const themeUrl = "https://pnp.github.io/sp-dev-fx-webparts/giscus/likes.css?v=1";
+    // const themeUrl = "https://pnp.github.io/sp-dev-fx-webparts/giscus/likes.css?v=1";
 
 
     return (
@@ -18,7 +18,7 @@ export function LikesPanel({ sampleName }: { sampleName: string }) {
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="top"
-            theme={themeUrl}
+            theme="light"
             lang="en"
         />
         </div>

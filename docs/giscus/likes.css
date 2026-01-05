@@ -55,36 +55,34 @@ body {
 }
 
 /* Hide “full discussion UI” parts */
-.gsc-header,
+/* .gsc-header,
 .gsc-comment-box,
 .gsc-timeline,
 .gsc-pagination,
 .gsc-footer {
     display: none !important;
-}
+} */
 
 /* Make reactions look like a compact control row */
 .gsc-reactions {
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 0 !important;
-}
+    align-self: flex-start;
+} 
 
 /* Optional: hide the “X reactions” header line if you want ultra-minimal */
-.gsc-reactions-count {
+/* .gsc-reactions-count {
     display: none !important;
-}
+} */
 
 /* The container that holds the reaction buttons */
-.gsc-reactions>div {
+/* .gsc-reactions>div {
     display: flex !important;
     flex-wrap: wrap;
     gap: var(--gsc-gap) !important;
     align-items: center;
-}
+} */
 
 /* Style reaction buttons as pills */
-.gsc-reactions button {
+/* .gsc-reactions button {
     border-radius: var(--gsc-radius) !important;
     border: 1px solid var(--gsc-border) !important;
     background: var(--gsc-accent-soft) !important;
@@ -99,30 +97,30 @@ body {
 
     box-shadow: none !important;
     transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
-}
+} */
 
-.gsc-reactions button:hover {
+/* .gsc-reactions button:hover {
     background: var(--gsc-accent-soft-hover) !important;
     border-color: rgba(15, 108, 189, 0.35) !important;
     transform: translateY(-1px);
-}
+} */
 
 /* Keyboard focus */
-.gsc-reactions button:focus-visible {
+/* .gsc-reactions button:focus-visible {
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(15, 108, 189, 0.28) !important;
-}
+} */
 
 /* Emoji icon sizing (safe even if markup differs slightly) */
-.gsc-reactions button svg,
+/* .gsc-reactions button svg,
 .gsc-reactions button img {
     width: 18px !important;
     height: 18px !important;
-}
+} */
 
 /* Count text sizing */
-.gsc-reactions button span {
+/* .gsc-reactions button span {
     font-weight: 600;
     font-size: 13px;
     color: var(--gsc-fg) !important;
-}
+} */
