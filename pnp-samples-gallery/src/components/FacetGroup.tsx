@@ -6,13 +6,14 @@ type FacetGroupProps<T extends string> = {
     label: string;
     value: T | null;
     options: T[];
+    disabledOptions?: Set<T>;
     renderLabel?: (opt: T) => React.ReactNode;
     mobile?: boolean;
     labelText?: (opt: T) => string;
     onChange: (value: T | null) => void;
 };
 
-export function FacetGroup<T extends string>({ label, value, options, renderLabel, onChange, mobile, labelText }: FacetGroupProps<T>) {
+export function FacetGroup<T extends string>({ label, value, options, renderLabel, onChange, mobile, labelText, disabledOptions }: FacetGroupProps<T>) {
     if (mobile) {
         return (
             <div className="pnp-filter-group">
@@ -29,7 +30,7 @@ export function FacetGroup<T extends string>({ label, value, options, renderLabe
                     >
                         <option value="__all__">All</option>
                         {options.map(opt => (
-                            <option key={opt} value={opt}>{labelText ? labelText(opt) : (typeof renderLabel === 'function' ? (typeof renderLabel(opt) === 'string' ? renderLabel(opt) : String(opt)) : opt)}</option>
+                            <option key={opt} value={opt} disabled={disabledOptions?.has(opt)} title={disabledOptions?.has(opt) ? "Disabled: selecting this option would yield no results with the current filters" : undefined}>{labelText ? labelText(opt) : (typeof renderLabel === 'function' ? (typeof renderLabel(opt) === 'string' ? renderLabel(opt) : String(opt)) : opt)}</option>
                         ))}
                     </select>
                 </div>
@@ -49,6 +50,8 @@ export function FacetGroup<T extends string>({ label, value, options, renderLabe
                         label={renderLabel ? renderLabel(opt) : opt}
                         selected={value === opt}
                         onClick={() => onChange(opt)}
+                        disabled={disabledOptions?.has(opt)}
+                        // title is provided already by Chip when disabled, but pass it explicitly for non-button label nodes
                     />
                 ))}
             </div>

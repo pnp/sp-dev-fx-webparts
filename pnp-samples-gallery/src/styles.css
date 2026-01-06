@@ -221,6 +221,22 @@
     cursor: pointer;
     user-select: none;
     font-size: 0.92rem;
+    transition: opacity 240ms ease, background-color 200ms ease, color 200ms ease;
+}
+
+/* Disabled chip visuals */
+.pnp-chip--disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+/* Make icons (svg/img) inside disabled chips 50% transparent and animate changes */
+.pnp-chip--disabled img,
+.pnp-chip--disabled svg,
+.pnp-chip--disabled .pnp-chip__content img,
+.pnp-chip--disabled .pnp-chip__content svg {
+    opacity: 0.5;
+    transition: opacity 240ms ease;
 }
 
 /* Ensure interactive pills show pointer cursor */

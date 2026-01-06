@@ -2,17 +2,24 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-export function Chip(props: { label: React.ReactNode; selected: boolean; onClick: () => void; className?: string }) {
-    const { label, selected, onClick, className } = props;
+export function Chip(props: { label: React.ReactNode; selected: boolean; onClick: () => void; className?: string; disabled?: boolean }) {
+    const { label, selected, onClick, className, disabled } = props;
     const classes = ["pnp-chip", "pnp-chip--animated"];
     if (className) classes.push(className);
+    if (disabled) classes.push("pnp-chip--disabled");
 
     return (
         <button
             type="button"
             className={classes.join(" ")}
             aria-pressed={selected}
-            onClick={onClick}
+            aria-disabled={disabled}
+            onClick={() => {
+                if (disabled) return;
+                onClick();
+            }}
+            disabled={disabled}
+            title={disabled ? "Disabled: selecting this option would yield no results with the current filters" : undefined}
         >
             {selected ? (
                 <motion.span

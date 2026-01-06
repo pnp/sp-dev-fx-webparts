@@ -264,6 +264,85 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return { spfx, tech, categories };
     }, [samples]);
 
+    // Compute disabled options: for each option in a facet, determine if selecting it
+    // (in combination with the other currently selected facets) would yield zero results.
+    const disabledOptions = useMemo(() => {
+        const disabled = {
+            spfx: new Set<string>(),
+            tech: new Set<string>(),
+            category: new Set<string>(),
+        };
+
+        // Helper: check if any sample would match when we apply candidate selections
+        const anyMatchWhen = (candidate: { spfx?: string | null; tech?: string | null; category?: string | null }) => {
+            const q = norm(state.q);
+            for (const s of samples) {
+                const sspfx = spfxToBucket(metaFirst(s, "SPFX-VERSION"));
+                const stech = techKey(metaFirst(s, "CLIENT-SIDE-DEV") ?? "");
+                const scats = getCategories(s);
+
+                if (candidate.spfx !== undefined && candidate.spfx !== null && sspfx !== candidate.spfx) continue;
+                if (candidate.tech !== undefined && candidate.tech !== null && stech !== candidate.tech) continue;
+                if (candidate.category !== undefined && candidate.category !== null && !scats.includes(candidate.category)) continue;
+
+                // apply existing other state filters (but not the facet we're testing)
+                if (state.spfx && candidate.spfx === undefined) {
+                    if (sspfx !== state.spfx) continue;
+                }
+                if (state.tech && candidate.tech === undefined) {
+                    if (stech !== state.tech) continue;
+                }
+                if (state.category && candidate.category === undefined) {
+                    if (!scats.includes(state.category)) continue;
+                }
+
+                // text search
+                if (q) {
+                    const authorText = (s.authors ?? []).map((a) => {
+                        const name = a.name ?? "";
+                        const gh = a.gitHubAccount ?? "";
+                        const atGh = gh ? (gh.startsWith("@") ? gh : `@${gh}`) : "";
+                        return [name, gh, atGh].filter(Boolean).join(" ");
+                    }).join(" ");
+
+                    const hay = [
+                        s.title,
+                        s.shortDescription ?? "",
+                        s.name,
+                        sspfx,
+                        stech,
+                        scats.join(" "),
+                        authorText,
+                    ]
+                        .join(" | ")
+                        .toLowerCase();
+
+                    if (!hay.includes(q)) continue;
+                }
+
+                return true;
+            }
+            return false;
+        };
+
+        // For each spfx option, see if any sample matches when selecting it
+        for (const opt of facets.spfx) {
+            if (!anyMatchWhen({ spfx: opt })) disabled.spfx.add(opt);
+        }
+
+        // For each tech option
+        for (const opt of facets.tech) {
+            if (!anyMatchWhen({ tech: opt })) disabled.tech.add(opt);
+        }
+
+        // For each category option
+        for (const opt of facets.categories) {
+            if (!anyMatchWhen({ category: opt })) disabled.category.add(opt);
+        }
+
+        return disabled;
+    }, [samples, facets, state]);
+
     const byId = useMemo(() => {
         const m = new Map<string, PnPSample>();
         for (const s of samples) m.set(s.name, s); // assumes data-id={s.name}
@@ -486,6 +565,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             value={state.spfx}
                             options={facets.spfx}
                             onChange={(v) => setFacet("spfx", v)}
+                            disabledOptions={disabledOptions.spfx}
                             mobile={isMobile}
                         />
                     </LayoutGroup>
@@ -497,6 +577,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             value={state.tech}
                             options={facets.tech}
                             onChange={(v) => setFacet("tech", v)}
+                            disabledOptions={disabledOptions.tech}
                             renderLabel={(t) => {
                                 const label = techLabel(t as TechKey);
                                 const src = `${techBase}/${techToIcon(t as TechKey)}.svg`;
@@ -514,6 +595,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             value={state.category}
                             options={facets.categories}
                             onChange={(v) => setFacet("category", v)}
+                            disabledOptions={disabledOptions.category}
                             renderLabel={(cat) => (
                                 <>
                                     <Icon icon={categoryToIcon(cat)} basePath={props.iconBasePath} size={18} />&nbsp;{prettyCategory(cat)}
