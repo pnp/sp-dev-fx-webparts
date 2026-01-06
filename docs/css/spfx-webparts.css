@@ -40,3 +40,22 @@ font-size:1rem;
 padding:1rem;
     }
 }
+
+.tagline {
+        font-size: clamp(1.25rem, 1.25vw, 2.75rem);
+}
+
+.tagline p,
+.tagline p+p {
+margin: 1em;
+}
+
+.hero-main {
+    min-height: unset!important;
+    margin-top: unset!important;
+}
+
+.hero-main-inner {
+    padding-top:1vw!important;
+    padding-bottom:1vw!important;
+}

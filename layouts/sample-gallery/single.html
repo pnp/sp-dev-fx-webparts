@@ -3,19 +3,21 @@
     // Minimal shim for browser bundles expecting Node's `process`
     window.process = window.process || { env: { NODE_ENV: "production" } };
 </script>
+<section class="hero-main" id="hero">
+    <div class="hero-main-inner">
+        <div class="logo-big">
+            <span class="">{{ .Title }}</span>
+        </div>
+
+        <div class="tagline">
+            {{if .Content }}
+            {{ .Content }}
+            {{ end }}
+        </div>
+    </div>
+</section>
 <section class="section-base samples" id="{{ .File.BaseFileName | safeHTML }}">
 <div class="section-inner">
-    <header class="section-header">
-        <h1>{{ .Title | safeHTML}}</h1>
-        {{if .Description  }}
-        <p>{{ .Description | safeHTML }}</p>
-        {{ end }}
-    </header>
-    {{ if .Content  }}
-    <article class="main">
-        {{ .Content }}
-    </article>
-    {{ end }}
     <div data-pnp-samples-gallery
         data-src="/sp-dev-fx-webparts/data/all-samples.json">
     </div>
