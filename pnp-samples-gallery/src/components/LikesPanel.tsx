@@ -51,11 +51,19 @@ export function LikesPanel({ sampleName }: { sampleName: string }) {
 .gsc-reactions {
     align-self: flex-start;
 }
+
+.gsc-comments {
+    gap: 1rem;
+}
+
+.gsc-main {
+    gap: 1rem;
+}
 `;
     const theme = 'data:text/css;charset=utf-8,' + encodeURIComponent(css);
 
     return (
-        <div className="pnp-sample-panel__likes">
+
         <Giscus
             key={term}
             repo="pnp/sp-dev-fx-webparts"
@@ -70,6 +78,6 @@ export function LikesPanel({ sampleName }: { sampleName: string }) {
             theme={theme}
             lang="en"
         />
-        </div>
+
     );
 }

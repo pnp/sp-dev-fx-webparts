@@ -51,3 +51,11 @@
 .gsc-reactions {
     align-self: flex-start;
 }
+
+.gsc-comments {
+    gap: 1rem;
+}
+
+.gsc-main {
+    gap: 1rem;
+}

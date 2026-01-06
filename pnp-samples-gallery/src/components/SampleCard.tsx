@@ -28,16 +28,6 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:640px)').matches : false;
     const anchorRef = React.useRef<HTMLElement | null>(null);
 
-    React.useEffect(() => {
-        try {
-            const el = anchorRef.current;
-            if (el) {
-                console.debug('[SampleCard] mounted', { name: s.name, href: el.getAttribute('href'), dataset: { id: el.closest('.pnp-sample-item')?.getAttribute('data-id') } });
-            }
-        } catch {
-            // ignore
-        }
-    }, [s.name]);
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
         const isMouse = 'button' in e;
         const isLeft = isMouse ? (e as React.MouseEvent).button === 0 : false;

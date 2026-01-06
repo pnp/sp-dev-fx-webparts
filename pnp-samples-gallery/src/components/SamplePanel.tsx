@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import type { PnPSample } from "../types/index";
-import { Facepile, Icon } from "./index";
+import { Icon } from "./index";
+import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategory, categoryToIcon } from "../types/index";
 import { LikesPanel } from "./LikesPanel";
 
 export interface SamplePanelProps {
@@ -20,8 +21,8 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
         }
     };
     // fetched sample metadata (from ${sample.url}/assets/sample.json)
-    const [fetchedMeta, setFetchedMeta] = useState<any | null>(null);
-    const [fetchError, setFetchError] = useState<string | null>(null);
+    const [fetchedMeta, setFetchedMeta] = useState<Record<string, any> | null>(null);
+
     const download = () => {
         const url = sample.downloadUrl ?? sample.url;
         // Open download in new tab
@@ -137,7 +138,7 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                 })
             .catch((err) => {
                 if (controller.signal.aborted) return;
-                setFetchError(String(err));
+                console.error(`Failed to fetch sample metadata from ${jsonUrl}:`, err);
             });
 
         return () => {
@@ -444,16 +445,84 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
         }
     };
 
+    // helper to display name and github URL
+    type SampleAuthor = {
+        name?: string;
+        gitHubAccount?: string;
+        pictureUrl?: string;
+    };
+    
+    const displayName = (a?: SampleAuthor | null) => {
+        const name = a?.name ?? a?.gitHubAccount ?? 'Unknown';
+        return String(name).trim();
+    };
+    
+    const githubUrl = (a?: SampleAuthor | null) => a?.gitHubAccount ? `https://github.com/${a.gitHubAccount}` : null;
+
+    const lastModifiedRaw = sample.updateDateTime ?? fetchedMeta?.updateDateTime ?? sample.updateDateTime;
+
+    const spfxVersion = useMemo(() => {
+        const v = metaFirst(sample, 'SPFX-VERSION' as any) || metaFirst(sample, 'SPFX_VERSION' as any);
+        if (v) return String(v);
+        return String(fetchedMeta?.spfxVersion ?? fetchedMeta?.spfx ?? '');
+    }, [fetchedMeta, sample]);
+
+    const categoriesList = useMemo(() => {
+        const cats = getCategories(sample) ?? [];
+        const fromMeta = Array.isArray(fetchedMeta?.categories) ? fetchedMeta.categories : (Array.isArray(fetchedMeta?.tags) ? fetchedMeta.tags : []);
+        return Array.from(new Set([...cats, ...fromMeta])).filter(Boolean) as string[];
+    }, [sample, fetchedMeta]);
+
+    const techList = useMemo(() => {
+        // Prefer explicitly provided arrays/fields in fetched sample metadata
+        const t = fetchedMeta?.technologies ?? fetchedMeta?.tech ?? fetchedMeta?.technologiesUsed ?? fetchedMeta?.technology;
+        if (Array.isArray(t)) return t.filter(Boolean) as string[];
+        if (typeof t === 'string') return t.split(/[,|;]/).map((s: string) => s.trim()).filter(Boolean) as string[];
+
+        // Next, check the sample's metadata entries (including CLIENT-SIDE-DEV used by SampleCard)
+        // Sample metadata may have keys like CLIENT-SIDE-DEV or entries with key names containing TECH/TECHNOLOGY
+        const metaEntries = fetchedMeta?.metadata ?? sample.metadata ?? [];
+        if (Array.isArray(metaEntries) && metaEntries.length) {
+            // First, look for CLIENT-SIDE-DEV exact key
+            const csDev = (metaEntries as Array<Record<string, any>>).find((m) => String(m.key || '').toUpperCase() === 'CLIENT-SIDE-DEV');
+            if (csDev && typeof csDev.value === 'string' && csDev.value.trim()) {
+                return csDev.value.split(/[,|;]/).map((s: string) => s.trim()).filter(Boolean) as string[];
+            }
+
+            // Fallback: any metadata entry whose key contains TECH or TECHNOLOGY
+            const entry = (metaEntries as Array<Record<string, any>>).find((m) => /TECH|TECHNOLOGY/i.test(String(m.key || '')));
+            if (entry && typeof entry.value === 'string' && entry.value.trim()) {
+                return entry.value.split(/[,|;]/).map((s: string) => s.trim()).filter(Boolean) as string[];
+            }
+        }
+
+        return [] as string[];
+    }, [fetchedMeta, sample.metadata]);
+
+    // Debugging: surface fetched metadata and computed tech list in dev tools
+    useEffect(() => {
+        try {
+            // use console.debug so it can be filtered in production
+            console.debug('SamplePanel: fetchedMeta for', sample.name, fetchedMeta);
+            console.debug('SamplePanel: techList for', sample.name, techList);
+        } catch {
+            // ignore
+        }
+    }, [fetchedMeta, techList, sample.name]);
+
     return (
         <div ref={containerRef} className="pnp-sample-panel" role="dialog" aria-label={`Sample details: ${sample.title}`} tabIndex={-1}>
             <div className="pnp-sample-panel__header">
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <h2 style={{ margin: 0 }}>{sample.title}</h2>
-                    <Facepile authors={resolvedAuthors} maxVisible={5} size={32} linkToGithub={true} />
                 </div>
                 <button className="pnp-btn pnp-btn--ghost" onClick={onClose} aria-label="Close">✕</button>
             </div>
             <div className="pnp-sample-panel__body">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 6 }}>
+                    <div className="pnp-sample-panel__last-modified">Last modified on {formatDate(lastModifiedRaw)}</div>
+                </div>
+
                 {/* Thumbnail carousel */}
                 {thumbnails && thumbnails.length ? (
                     <div className="pnp-sample-panel__carousel">
@@ -494,7 +563,9 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                 ) : null}
 
                 <p className="pnp-sample-panel__desc">{sample.shortDescription}</p>
+
                 <div className="pnp-sample-panel__actions">
+                    <h3>Actions</h3>
                     <div>
                         <button className="pnp-btn pnp-btn--action" onClick={openGitHub} title="View on GitHub">
                             <Icon icon="github" size={16} />
@@ -520,26 +591,83 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                     </div>
                 </div>
 
-                <LikesPanel sampleName={sample.name || ''} />
-
-                <div className="pnp-sample-panel__meta">
-                    {(() => {
-                        const createdRaw = fetchedMeta?.creationDate ?? fetchedMeta?.created ?? fetchedMeta?.creationDateTime ?? (sample as any).creationDateTime ?? null;
-                        return createdRaw ? (
-                            <div>
-                                <strong>Created:</strong> {formatDate(createdRaw)}
+                <div className="pnp-sample-panel__authors-list">
+                    <h3>Contributor{(resolvedAuthors && resolvedAuthors.length > 1) ? 's' : ''}</h3>
+                    {(resolvedAuthors ?? []).map((a: SampleAuthor, idx: number) => {
+                        const gh = githubUrl(a) ?? undefined;
+                        return (
+                            <div key={`${a.gitHubAccount ?? a.name ?? 'author'}-${idx}`} className="pnp-sample-panel__author-row">
+                                <div className="pnp-sample-panel__author-avatar">
+                                    {a.pictureUrl ? <img src={a.pictureUrl} alt={displayName(a)} loading="lazy" referrerPolicy="no-referrer" /> : <span className="pnp-facepile__initials">{(displayName(a)[0] || '?').toUpperCase()}</span>}
+                                </div>
+                                {gh ? (
+                                    <a className="pnp-sample-panel__author-link" href={gh} target="_blank" rel="noopener">
+                                        <div>
+                                            <div className="pnp-sample-panel__author-name">{displayName(a)}</div>
+                                        </div>
+                                    </a>
+                                ) : (
+                                    <div>
+                                        <div className="pnp-sample-panel__author-name">{displayName(a)}</div>
+                                    </div>
+                                )}
                             </div>
-                        ) : null;
-                    })()}
-                    <div>
-                        <strong>Updated:</strong> {formatDate(sample.updateDateTime ?? fetchedMeta?.updateDateTime)}
+                        );
+                    })}
+                </div>
+
+                {/* Values (Category, SPFx, Technology) - placed below actions */}
+                <div className="pnp-sample-panel__values">
+                    <h3>Tags</h3>
+                    {/* SPFx Version */}
+                    <div className="pnp-sample-panel__pill-value">
+                        <strong className="pnp-sample-panel__pill-label">SPFx version:</strong>
+                        <span className="pnp-pill">{spfxVersion || 'Unknown'}</span>
                     </div>
 
-                    {fetchError ? (
-                        <div style={{ color: 'var(--ms-color-red-6)', marginTop: 8 }}>
-                            Failed to load sample metadata
+                    {/* Technologies */}
+                    {techList && techList.length ? (
+                        <div className="pnp-sample-panel__pill-value">
+                            <strong className="pnp-sample-panel__pill-label">Technology:</strong>
+
+                            {techList.map((t: string) => {
+                                const k = techKey(t);
+                                const techIcon = techToIcon(k);
+                                const labelText = k === 'other' ? t : techLabel(k);
+                                return (
+                                    <span className="pnp-pill">
+                                        <Icon icon={techIcon} basePath="/sp-dev-fx-webparts/tech-icons" size={16} />
+                                        {labelText}</span>
+                                );
+                            })}
+
                         </div>
-                    ) : null}
+                    ) : (
+                        <div className="pnp-sample-panel__pill-value">
+                            <strong className="pnp-sample-panel__pill-label">Technology:</strong>
+                            <span className="pnp-pill">None specified</span>
+                        </div>
+                    )}
+
+                    {/* Category */}
+                    {categoriesList && categoriesList.length ? (() => {
+                        const primary = categoriesList[0] ?? 'SPFX-WEB-PART';
+                        const catLabel = prettyCategory(primary);
+                        return (
+                            <div className="pnp-sample-panel__pill-value">
+                                <strong className="pnp-sample-panel__pill-label">Category:</strong>
+                                <span className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                                    <Icon icon={categoryToIcon(primary)} size={16} />
+                                    <span>{catLabel}</span>
+                                </span>
+                            </div>
+                        );
+                    })() : null}
+                </div>
+
+        <div className="pnp-sample-panel__likes">
+            <h3>Reactions</h3>
+                <LikesPanel sampleName={sample.name || ''} />
                 </div>
             </div>
         </div>
