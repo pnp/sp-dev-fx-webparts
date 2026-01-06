@@ -47,7 +47,7 @@ padding:1rem;
 
 .tagline p,
 .tagline p+p {
-margin: 1em;
+margin: 1em!important;
 }
 
 .hero-main {
