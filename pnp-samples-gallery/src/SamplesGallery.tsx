@@ -9,6 +9,7 @@ import { Icon } from "./components";
 import { techKey, techLabel, techToIcon } from "./types/index";
 import Pill from "./components/Pill";
 import SampleCard from "./components/SampleCard";
+import SkeletonCard from "./components/SkeletonCard";
 import { FacetGroup } from "./components";
 import SamplePanel from "./components/SamplePanel";
 
@@ -510,6 +511,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     // prevents a TypeScript "declared but its value is never read" error.
     const isLoadingClass = loading || !gridReady;
 
+
     const renderContent = () => (
         <section
             className={["pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
@@ -612,7 +614,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 <main className="pnp-results" aria-label="Sample results">
                     <div className="pnp-results__meta" role="status" aria-live="polite">
                         <div className="pnp-results__count">
-                            {loading ? "Loading…" : (
+                            {loading ? null : (
                                 matchCount === 1
                                     ? `Showing 1 item`
                                     : `Showing ${matchCount.toLocaleString()} items`
@@ -635,11 +637,19 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                     ) : null}
 
                     <div style={{ position: "relative" }}>
-                        <div ref={gridRef} className="pnp-card-grid pnp-muuri-grid" aria-label="Sample cards">
-                            {!loading && (isMobile ? filteredSamples : samples).map(s => (
-                                <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} />
-                            ))}
-                        </div>
+                        {loading ? (
+                            <div className="pnp-card-grid pnp-skeleton-grid" aria-label="Sample cards">
+                                {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
+                                    <SkeletonCard key={`skeleton-${i}`} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div ref={gridRef} className="pnp-card-grid pnp-muuri-grid" aria-label="Sample cards">
+                                {(isMobile ? filteredSamples : samples).map(s => (
+                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} />
+                                ))}
+                            </div>
+                        )}
 
                         {/* Toggle button: becomes Collapse (X) when fullscreen */}
                         {!isMobile ? (

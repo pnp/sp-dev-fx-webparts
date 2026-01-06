@@ -871,6 +871,63 @@ figure.pnp-card__thumb-figure {
     transition: none !important;
 }
 
+/* Skeleton grid: separate grid for placeholders so Muuri's container is untouched */
+.pnp-skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 320px));
+    gap: 0.9rem;
+    justify-content: start;
+}
+
+/* Ensure items inside the skeleton grid participate in normal flow */
+.pnp-skeleton-grid .pnp-sample-item {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    --card-h: auto !important;
+    height: auto !important;
+}
+
+/* Skeleton-specific sizing: cap skeleton card width to 320px and make it fill the grid cell */
+.pnp-sample-item--skeleton {
+    max-width: 320px !important;
+    width: 100% !important;
+}
+
+/* Ensure skeleton thumbs visually match expected aspect ratio */
+.pnp-sample-item--skeleton .skeleton-thumb {
+    height: 180px;
+}
+
+/* Skeleton / shimmer styles for minimal loading placeholders */
+.skeleton-thumb {
+    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
+    /* background-size: 400% 100%; */
+    animation: shimmer 1.4s ease-in-out infinite;
+    height: 180px;
+    border-radius: 12px 12px 0 0;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+}
+
+.skeleton-line {
+    display: inline-block;
+    height: 14px;
+    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: 6px;
+}
+
+.skeleton-title { width: 60%; height: 20px; display: block; margin: 8px 0; }
+.skeleton-desc { width: 90%; height: 14px; display: block; margin: 6px 0; }
+.skeleton-pill { width: 72px; height: 28px; display: inline-block; border-radius: 999px; vertical-align: middle; animation: shimmer 1.4s ease-in-out infinite; background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%); }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 /* .pnp-card::before {
     border-width: 1px;
     border-style: solid;
