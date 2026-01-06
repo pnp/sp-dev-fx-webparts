@@ -40,3 +40,26 @@ font-size:1rem;
 padding:1rem;
     }
 }
+
+.spfx-webparts .tagline {
+    font-size: clamp(1.25rem, 1vw, 2.75rem);
+}
+
+.spfx-webparts .tagline p,
+.spfx-webparts .tagline p+p {
+    margin-top: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1em;
+}
+
+.spfx-webparts.hero-main {
+    min-height: unset;
+    margin-top: unset;
+}
+
+.spfx-webparts .hero-main-inner {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    gap: 2vw;
+}
