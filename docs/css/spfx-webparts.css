@@ -42,7 +42,7 @@ padding:1rem;
 }
 
 .tagline {
-        font-size: clamp(1.25rem, 1.25vw, 2.75rem);
+        font-size: clamp(1.25rem, 1.25vw, 2.75rem)!important;
 }
 
 .tagline p,
