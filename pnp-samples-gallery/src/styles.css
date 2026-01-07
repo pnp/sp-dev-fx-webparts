@@ -380,7 +380,7 @@ figure.pnp-card__thumb-figure {
     opacity: 0.85;
     border-collapse: collapse;
     border-radius: 1em 1em 0 0;
-    /* object-fit: cover; */
+    object-fit: cover;
     /* border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 0;
