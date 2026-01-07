@@ -52,14 +52,14 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
-        "alt": "Web part in action"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
+        "alt": "Screen shot of web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
-        "alt": "Screen shot of web part"
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
+        "alt": "Web part in action"
       }
     ],
     "authors": [
