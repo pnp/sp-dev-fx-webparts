@@ -1,11 +1,36 @@
 {
-  "generatedAt": "2026-01-07T11:03:31.480Z",
+  "generatedAt": "2026-01-07T23:03:59.111Z",
   "source": {
     "owner": "pnp",
     "repo": "sp-dev-fx-webparts",
     "category": "Likes"
   },
   "likes": {
+    "pnp-sp-dev-spfx-web-parts-react-horizontal-bar": {
+      "count": 0,
+      "discussionNumber": 5691,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5691"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-bar-chart-static": {
+      "count": 0,
+      "discussionNumber": 5690,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5690"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-bar-chart": {
+      "count": 0,
+      "discussionNumber": 5689,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5689"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-area-chart": {
+      "count": 0,
+      "discussionNumber": 5688,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5688"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-uieditor": {
+      "count": 0,
+      "discussionNumber": 5687,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5687"
+    },
     "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator": {
       "count": 0,
       "discussionNumber": 5686,
