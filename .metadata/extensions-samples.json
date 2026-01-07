@@ -5121,6 +5121,62 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-extensions-react-command-document-translation",
+        "source": "pnp",
+        "title": "Command Document Translation",
+        "shortDescription": "A SharePoint Framework (SPFx) List View Command Set extension that enables users to translate documents from one language to another using Azure Document Translation Service. Users can select one or more documents from a SharePoint document library and translate them into multiple target languages simultaneously.",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-document-translation",
+        "longDescription": [
+            "A SharePoint Framework (SPFx) List View Command Set extension that enables users to translate documents from one language to another using Azure Document Translation Service. Users can select one or more documents from a SharePoint document library and translate them into multiple target languages simultaneously."
+        ],
+        "creationDateTime": "2025-11-12",
+        "updateDateTime": "2025-11-12",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.21.1"
+            }
+        ],
+        "tags": [],
+        "categories": [
+            "SPFX-APPLICATION-EXTENSION"
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-document-translation/assets/demo.gif",
+                "alt": "Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "ramin-ahmadi",
+                "pictureUrl": "https://github.com/ramin-ahmadi.png",
+                "name": "Ramin Ahmadi"
+            }
+        ],
+        "references": [
+            {
+                "name": "Overview of SharePoint Framework Extensions",
+                "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+            },
+            {
+                "name": "Use page placeholders from Application Customizer",
+                "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-extensions-react-field-votes",
         "source": "pnp",
         "title": "Field Votes",
