@@ -139,9 +139,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-target-audience.webp"
   },
-  "pnp-sp-dev-spfx-web-parts-js-gitHubbadge": {
+  "pnp-sp-dev-spfx-web-parts-js-githubbadge": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
-    "file": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge.webp"
+    "file": "pnp-sp-dev-spfx-web-parts-js-githubbadge.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-officegraph": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
@@ -2126,6 +2126,10 @@
   "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-file-size-viewer/assets/FileSizeViewer.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-document-translation": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-document-translation/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-document-translation.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-field-votes": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
