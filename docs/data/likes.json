@@ -1,11 +1,36 @@
 {
-  "generatedAt": "2026-01-06T23:03:49.457Z",
+  "generatedAt": "2026-01-07T11:03:31.480Z",
   "source": {
     "owner": "pnp",
     "repo": "sp-dev-fx-webparts",
     "category": "Likes"
   },
   "likes": {
+    "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator": {
+      "count": 0,
+      "discussionNumber": 5686,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5686"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-content-block": {
+      "count": 0,
+      "discussionNumber": 5685,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5685"
+    },
+    "pnp-sp-dev-spfx-extensions-react-application-logo-festoon": {
+      "count": 0,
+      "discussionNumber": 5684,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5684"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-teams-tagging": {
+      "count": 0,
+      "discussionNumber": 5683,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5683"
+    },
+    "pnp-sp-dev-spfx-web-parts-react-company-templates": {
+      "count": 0,
+      "discussionNumber": 5682,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5682"
+    },
     "pnp-sp-dev-spfx-web-parts-js-theme-manager": {
       "count": 0,
       "discussionNumber": 5681,
