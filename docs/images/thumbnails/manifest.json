@@ -139,9 +139,9 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-target-audience.webp"
   },
-  "pnp-sp-dev-spfx-web-parts-js-gitHubbadge": {
+  "pnp-sp-dev-spfx-web-parts-js-githubbadge": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
-    "file": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge.webp"
+    "file": "pnp-sp-dev-spfx-web-parts-js-githubbadge.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-officegraph": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
