@@ -2127,6 +2127,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-file-size-viewer/assets/FileSizeViewer.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-command-document-translation": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-document-translation/assets/demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-document-translation.webp"
+  },
   "pnp-sp-dev-spfx-extensions-react-field-votes": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-field-votes.webp"

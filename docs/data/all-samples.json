@@ -24077,6 +24077,45 @@
     ]
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-command-document-translation",
+    "source": "pnp",
+    "title": "Command Document Translation",
+    "shortDescription": "A SharePoint Framework (SPFx) List View Command Set extension that enables users to translate documents from one language to another using Azure Document Translation Service. Users can select one or more documents from a SharePoint document library and translate them into multiple target languages simultaneously.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-document-translation",
+    "downloadUrl": null,
+    "updateDateTime": "2025-11-12",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ramin-ahmadi",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ramin-ahmadi.5ee473df3a93.webp",
+        "name": "Ramin Ahmadi",
+        "avatarSourceUrl": "https://github.com/ramin-ahmadi.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-document-translation.webp",
+        "alt": "Preview"
+      }
+    ]
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-field-votes",
     "source": "pnp",
     "title": "Field Votes",
