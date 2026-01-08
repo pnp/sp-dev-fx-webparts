@@ -1,11 +1,16 @@
 {
-  "generatedAt": "2026-01-08T11:03:49.071Z",
+  "generatedAt": "2026-01-08T23:03:50.186Z",
   "source": {
     "owner": "pnp",
     "repo": "sp-dev-fx-webparts",
     "category": "Likes"
   },
   "likes": {
+    "pnp-sp-dev-spfx-web-parts-js-pi-canvas": {
+      "count": 0,
+      "discussionNumber": 5692,
+      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5692"
+    },
     "pnp-sp-dev-spfx-web-parts-react-horizontal-bar": {
       "count": 0,
       "discussionNumber": 5691,
