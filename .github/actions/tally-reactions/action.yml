@@ -204,11 +204,8 @@ runs:
             tally[discussion.number] = {
               title: discussion.title,
               url: discussion.url,
-              # category: discussion.category.name,
               totalReactions: discussion.reactions.totalCount,
-              # uniqueReactors: allDiscussionReactors.size,
               reactionCounts: reactionsByType,
-              # reactorsByType: reactorsByType,
               allReactors: Array.from(allDiscussionReactors)
             };
           }
@@ -219,13 +216,7 @@ runs:
 
           const result = {
             generatedAt: new Date().toISOString(),
-            # category: categoryName,
-            # pattern: titlePattern.toString(),
-            # totalDiscussionsFetched: allDiscussions.length,
-            # matchingDiscussions: Object.keys(tally).length,
-            # totalUniqueReactors: reactorSummary.length,
-            discussions: tally,
-            # topReactors: reactorSummary
+            discussions: tally
           };
 
           console.log(`Matched ${Object.keys(tally).length} discussions`);
