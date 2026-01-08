@@ -1,0 +1,13 @@
+name: Eally Reactions
+
+on:
+  workflow_dispatch:
+      
+jobs:
+- name: Tally discussion reactions
+  id: reactions
+  uses: ./.github/actions/tally-reactions
+
+- name: Use tally results
+  run: |
+    echo '${{ steps.reactions.outputs. result }}' > .metadata/discussion-reactions.json

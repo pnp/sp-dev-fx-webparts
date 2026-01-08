@@ -1,0 +1,144 @@
+name: 'Tally Discussion Reactions'
+description: 'Tallies reactions from GitHub discussions'
+
+outputs:
+  result:
+    description: 'JSON string with reaction tallies'
+    value: ${{ steps.tally. outputs.result }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Tally reactions
+      id: tally
+      uses: actions/github-script@v7
+      with:
+        script: |
+          async function fetchAllDiscussions(github, owner, repo, categoryName) {
+            // First, get the category ID
+            const categoriesQuery = `
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name:  $repo) {
+                  discussionCategories(first: 100) {
+                    nodes {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+            `;
+            
+            const categoriesResult = await github.graphql(categoriesQuery, { owner, repo });
+            const categories = categoriesResult.repository.discussionCategories.nodes;
+            const likesCategory = categories.find(cat => cat.name === categoryName);
+            
+            if (!likesCategory) {
+              throw new Error(`Category "${categoryName}" not found. Available: ${categories.map(c => c.name).join(', ')}`);
+            }
+            
+            const categoryId = likesCategory.id;
+            console.log(`Found category "${categoryName}" with ID: ${categoryId}`);
+            
+            const allDiscussions = [];
+            let discussionCursor = null;
+            let hasNextPage = true;
+            
+            while (hasNextPage) {
+              const query = `
+                query($owner: String!, $repo: String!, $categoryId: ID!, $cursor: String) {
+                  repository(owner:  $owner, name: $repo) {
+                    discussions(first: 100, after:  $cursor, categoryId: $categoryId) {
+                      nodes {
+                        number
+                        title
+                        url
+                        category {
+                          name
+                          id
+                        }
+                        reactions(first: 100) {
+                          nodes {
+                            content
+                            user {
+                              login
+                            }
+                          }
+                          pageInfo {
+                            hasNextPage
+                            endCursor
+                          }
+                          totalCount
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                        endCursor
+                      }
+                    }
+                  }
+                }
+              `;
+              
+              const result = await github.graphql(query, {
+                owner,
+                repo,
+                categoryId:  categoryId,
+                cursor: discussionCursor
+              });
+              
+              const discussions = result.repository.discussions.nodes;
+              
+              // For each discussion, paginate through ALL reactions if needed
+              for (const discussion of discussions) {
+                const allReactions = [...discussion.reactions.nodes];
+                let reactionCursor = discussion.reactions.pageInfo.endCursor;
+                let hasMoreReactions = discussion. reactions.pageInfo.hasNextPage;
+                
+                while (hasMoreReactions) {
+                  const reactionQuery = `
+                    query($owner: String!, $repo:  String!, $number: Int!, $cursor: String) {
+                      repository(owner: $owner, name:  $repo) {
+                        discussion(number: $number) {
+                          reactions(first: 100, after: $cursor) {
+                            nodes {
+                              content
+                              user {
+                                login
+                              }
+                            }
+                            pageInfo {
+                              hasNextPage
+                              endCursor
+                            }
+                          }
+                        }
+                      }
+                    }
+                  `;
+                  
+                  const reactionResult = await github.graphql(reactionQuery, {
+                    owner,
+                    repo,
+                    number: discussion.number,
+                    cursor: reactionCursor
+                  });
+                  
+                  allReactions.push(...reactionResult.repository.discussion.reactions. nodes);
+                  hasMoreReactions = reactionResult.repository.discussion.reactions.pageInfo.hasNextPage;
+                  reactionCursor = reactionResult.repository.discussion.reactions.pageInfo.endCursor;
+                }
+                
+                // Replace with all reactions
+                discussion.reactions.nodes = allReactions;
+                discussion.reactions. totalCount = allReactions.length;
+                
+                allDiscussions.push(discussion);
+              }
+              
+              hasNextPage = result.repository.discussions.pageInfo.hasNextPage;
+              discussionCursor = result.repository.discussions.pageInfo.endCursor;
+            }
+            
+            return allDiscussions;
+          }
