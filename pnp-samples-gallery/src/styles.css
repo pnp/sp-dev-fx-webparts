@@ -398,6 +398,58 @@ figure.pnp-card__thumb-figure {
     /* match your thumbnail height */
     aspect-ratio: 16 / 9;
     background: #f3f3f3;
+
+}
+
+.pnp-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem 1rem 1rem;
+}
+
+.pnp-card__footer-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pnp-card__date {
+    color: var(--pnp-muted);
+    font-size: 0.9rem;
+}
+
+.pnp-card__footer-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pnp-card__likes {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333;
+    pointer-events: auto;
+    position: relative;
+    z-index: 6;
+}
+
+.pnp-card__likes--active svg.pnp-card__likes-icon {
+    stroke: #e0245e;
+    fill: red;
+}
+
+.pnp-card__likes-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+}
+
+.pnp-card__likes-count {
+    font-size: 0.95rem;
 }
 
 .pnp-card__title {
@@ -683,7 +735,6 @@ figure.pnp-card__thumb-figure {
 .pnp-card__footer {
     margin-top: 1rem;
     display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     align-items: stretch;
     /* padding-bottom: 12px; */

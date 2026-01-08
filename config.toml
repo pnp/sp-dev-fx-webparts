@@ -62,3 +62,17 @@ url = "https://discord.com/channels/1095788595010338956/1096363629680529418"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+
+[params.pnpSamplesGallery]
+ # Where to the data (relative to site base URL)
+  dataSrc = "/sp-dev-fx-webparts/data/all-samples.json"
+
+  # Reactions configuration for pnp-samples-gallery
+  [params.pnpSamplesGallery.reactions]
+    repo = "pnp/sp-dev-fx-webparts"
+    repoId = "MDEwOlJlcG9zaXRvcnk2Njk2MjE3OQ=="
+    category = "Likes"
+    categoryId = "DIC_kwDOA_3DA84C0m26"
+    likesFeed = "/sp-dev-fx-webparts/data/likes.json"
+    enabled = true

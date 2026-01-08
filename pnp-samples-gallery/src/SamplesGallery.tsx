@@ -14,6 +14,8 @@ import { FacetGroup } from "./components";
 import SamplePanel from "./components/SamplePanel";
 
 import { LayoutGroup } from "framer-motion";
+import type { LikesJson } from "./types/likes";
+import { reconcilePendingLikesWithGeneratedAt } from "./types/pendingLikes";
 
 
 import "./styles.css";
@@ -24,6 +26,16 @@ export interface SamplesGalleryProps {
     className?: string;
     iconBasePath?: string;
     techIconBasePath?: string;
+    baseUrl?: string;
+    giscusSettings?: {
+        repo?: string;
+        repoId?: string;
+        category?: string;
+        categoryId?: string;
+        reactionsSupported?: boolean | string;
+    };
+    reactionsSupported?: boolean;
+    config?: Record<string, unknown>;
 }
 
 type FacetState = {
@@ -501,11 +513,80 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const setQ = (q: string) =>
         setState(prev => ({ ...prev, q }));
-    const techBase = (props.techIconBasePath ?? "/sp-dev-fx-webparts/tech-icons").replace(/\/$/, "");
+    const techBase = (props.techIconBasePath ?? (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/tech-icons` : "/sp-dev-fx-webparts/tech-icons")).replace(/\/$/, "");
 
     const toggleFullscreen = () => setFullscreen(f => !f);
 
     const [selected, setSelected] = useState<PnPSample | null>(null);
+    const [likesData, setLikesData] = useState<LikesJson | null>(null);
+    const [pendingLikesVersion, setPendingLikesVersion] = useState(0);
+
+    const reactionsSupported = (() => {
+        // Priority: explicit prop -> config.reactionsSupported -> giscusSettings.reactionsSupported -> default true
+        if (typeof props.reactionsSupported === 'boolean') return props.reactionsSupported;
+        const cfg = (props.config as any) ?? {};
+        const cfgReacts = cfg.reactionsSupported;
+        if (typeof cfgReacts === 'boolean') return cfgReacts;
+        if (typeof cfgReacts === 'string') return (cfgReacts === '1' || cfgReacts.toLowerCase() === 'true');
+        const v = (props.giscusSettings as any)?.reactionsSupported;
+        if (typeof v === 'boolean') return v;
+        if (typeof v === 'string') return (v === '1' || v.toLowerCase() === 'true');
+        return true;
+    })();
+
+    // Merge giscus settings: config.giscus has priority over props.giscusSettings when present
+    const mergedGiscusSettings = useMemo(() => {
+        const cfg = (props.config as any) ?? {};
+        const cfgG = cfg.giscus ?? {};
+        const out: Record<string, any> = {};
+        if (props.giscusSettings) Object.assign(out, props.giscusSettings);
+        if (cfgG && typeof cfgG === 'object') Object.assign(out, cfgG);
+        return out as { repo?: string; repoId?: string; category?: string; categoryId?: string; mapping?: string; reactionsEnabled?: string; emitMetadata?: string; inputPosition?: string; lang?: string };
+    }, [props.config, props.giscusSettings]);
+
+    useEffect(() => {
+        const onPendingLikes = () => {
+            try {
+                setPendingLikesVersion(v => v + 1);
+            } catch {
+                // ignore
+            }
+        };
+        window.addEventListener('pendingLikesChanged', onPendingLikes as EventListener);
+        return () => window.removeEventListener('pendingLikesChanged', onPendingLikes as EventListener);
+    }, []);
+
+    // Ensure pendingLikesVersion is read so React includes it in render dependencies
+    // (used by SampleCard to recompute pending state)
+    useEffect(() => {
+        let cancelled = false;
+        async function loadLikes() {
+            if (!reactionsSupported) return;
+            try {
+                // Determine likes feed URL from config, then props.baseUrl, then public
+                const cfg = (props.config as any) ?? {};
+                const likesFeed = cfg.likesFeed as string | undefined;
+                const likesUrl = likesFeed ? likesFeed : (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/data/likes.json` : 'https://pnp.github.io/sp-dev-fx-webparts/data/likes.json');
+                const res = await fetch(likesUrl, { cache: 'no-cache' });
+                if (!res.ok) return;
+                const json = (await res.json()) as LikesJson;
+                if (!cancelled) setLikesData(json);
+                // reconcile any pending likes timestamps that are older than generatedAt
+                try {
+                    reconcilePendingLikesWithGeneratedAt(json.generatedAt ?? null);
+                } catch {
+                    // ignore
+                }
+            } catch {
+                // ignore
+            }
+        }
+
+        // load once on mount and then periodically every 10 minutes
+        void loadLikes();
+        const id = setInterval(loadLikes, 10 * 60 * 1000);
+        return () => { cancelled = true; clearInterval(id); };
+    }, []);
 
     // Ensure `gridReady` is read (used by the render path). Assigning to a local
     // prevents a TypeScript "declared but its value is never read" error.
@@ -646,7 +727,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         ) : (
                             <div ref={gridRef} className="pnp-card-grid pnp-muuri-grid" aria-label="Sample cards">
                                 {(isMobile ? filteredSamples : samples).map(s => (
-                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} />
+                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} likesData={likesData} pendingLikesVersion={pendingLikesVersion} reactionsSupported={reactionsSupported} config={props.config} />
                                 ))}
                             </div>
                         )}
@@ -684,7 +765,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const panelPortal = (typeof document !== "undefined" && selected) ? createPortal(
         <div className="pnp-sample-panel-overlay" onClick={() => setSelected(null)}>
             <div className="pnp-sample-panel-container" onClick={(e) => e.stopPropagation()}>
-                <SamplePanel sample={selected} onClose={() => setSelected(null)} />
+                <SamplePanel sample={selected} onClose={() => setSelected(null)} baseUrl={props.baseUrl} giscusSettings={mergedGiscusSettings} reactionsSupported={reactionsSupported} config={props.config} />
             </div>
         </div>,
         document.body

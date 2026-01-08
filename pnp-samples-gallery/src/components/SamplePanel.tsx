@@ -7,9 +7,20 @@ import { LikesPanel } from "./LikesPanel";
 export interface SamplePanelProps {
     sample: PnPSample;
     onClose: () => void;
+    baseUrl?: string;
+    giscusSettings?: {
+        repo?: string;
+        repoId?: string;
+        category?: string;
+        categoryId?: string;
+    };
+    config?: Record<string, unknown>;
+    reactionsSupported?: boolean;
 }
 
-export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
+export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, config, reactionsSupported }: SamplePanelProps) {
+    // ensure `config` is considered used (may be read by consumers later)
+    void config;
     const formatDate = (v: string | undefined | null) => {
         if (!v) return 'Unknown';
         try {
@@ -499,16 +510,43 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
         return [] as string[];
     }, [fetchedMeta, sample.metadata]);
 
-    // Debugging: surface fetched metadata and computed tech list in dev tools
-    useEffect(() => {
+    // Compute visitor stats image src: https://m365-visitor-stats.azurewebsites.net/{repo}/samples/{folder}
+    const visitorStatsSrc = useMemo(() => {
         try {
-            // use console.debug so it can be filtered in production
-            console.debug('SamplePanel: fetchedMeta for', sample.name, fetchedMeta);
-            console.debug('SamplePanel: techList for', sample.name, techList);
+            const src = (sample.url ?? sample.source ?? sample.downloadUrl ?? "") as string;
+            let repoName = '';
+            let folder = '';
+            if (src) {
+                try {
+                    const u = new URL(src);
+                    const parts = u.pathname.split('/').filter(Boolean);
+                    // If hosted on GitHub, parts[1] is repo
+                    if (u.hostname && u.hostname.toLowerCase().includes('github.com') && parts.length >= 2) {
+                        repoName = parts[1];
+                        const idx = parts.indexOf('samples');
+                        if (idx >= 0 && parts.length > idx + 1) folder = parts[idx + 1];
+                    }
+                } catch {
+                    // ignore
+                }
+            }
+
+            if (!repoName) {
+                // Fallback to using the repository this gallery lives in if sample doesn't include repo info
+                repoName = 'sp-dev-fx-webparts';
+            }
+
+            if (!folder) {
+                // Fallback to derive from sample.name
+                folder = String(sample.name ?? '').replace(/^pnp-sp-dev-spfx-web-parts-/, '');
+            }
+
+            if (!folder) return '';
+            return `https://m365-visitor-stats.azurewebsites.net/${encodeURIComponent(repoName)}/samples/${encodeURIComponent(folder)}`;
         } catch {
-            // ignore
+            return '';
         }
-    }, [fetchedMeta, techList, sample.name]);
+    }, [sample]);
 
     return (
         <div ref={containerRef} className="pnp-sample-panel" role="dialog" aria-label={`Sample details: ${sample.title}`} tabIndex={-1}>
@@ -665,10 +703,16 @@ export default function SamplePanel({ sample, onClose }: SamplePanelProps) {
                     })() : null}
                 </div>
 
-        <div className="pnp-sample-panel__likes">
-            <h3>Reactions</h3>
-                <LikesPanel sampleName={sample.name || ''} />
-                </div>
+        {reactionsSupported ? (
+            <div className="pnp-sample-panel__likes">
+                <h3>Reactions</h3>
+                <LikesPanel sampleName={sample.name || ''} baseUrl={baseUrl} giscusSettings={giscusSettings} />
+            </div>
+        ) : null}
+                {/* Invisible 1x1 visitor stats image for tracking */}
+                {visitorStatsSrc ? (
+                    <img src={visitorStatsSrc} width={1} height={1} style={{ width: 1, height: 1, opacity: 0, border: 0 }} alt="" aria-hidden="true" />
+                ) : null}
             </div>
         </div>
     );

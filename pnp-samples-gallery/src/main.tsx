@@ -6,6 +6,14 @@ import { SamplesGallery } from "./SamplesGallery";
 export type MountOptions = {
   src: string;
   initialSearch?: string;
+  baseUrl?: string;
+  giscusSettings?: {
+    repo?: string;
+    repoId?: string;
+    category?: string;
+    categoryId?: string;
+  };
+  config?: Record<string, unknown>;
 };
 
 const roots = new WeakMap<Element, Root>();
@@ -23,7 +31,15 @@ export function mount(el: Element, options: MountOptions): void {
 
   root.render(
     <React.StrictMode>
-      <SamplesGallery src={options.src} initialSearch={options.initialSearch} />
+      <SamplesGallery
+        src={options.src}
+        initialSearch={options.initialSearch}
+        baseUrl={options.baseUrl}
+        iconBasePath={options.baseUrl ? `${options.baseUrl.replace(/\/$/, '')}/` : undefined}
+        techIconBasePath={options.baseUrl ? `${options.baseUrl.replace(/\/$/, '')}/tech-icons` : undefined}
+        giscusSettings={options.giscusSettings}
+        config={options.config}
+      />
     </React.StrictMode>
   );
 }
@@ -33,12 +49,28 @@ function autoMount(): void {
 
   els.forEach((el) => {
     const src = el.dataset.src;
+    const baseUrl = (el.getAttribute('data-base-url') || el.dataset.baseUrl || undefined) as string | undefined;
+    const giscusSettings = {
+      repo: (el.getAttribute('data-giscus-repo') || el.dataset.giscusRepo) as string | undefined,
+      repoId: (el.getAttribute('data-giscus-repo-id') || el.dataset.giscusRepoId) as string | undefined,
+      category: (el.getAttribute('data-giscus-category') || el.dataset.giscusCategory) as string | undefined,
+      categoryId: (el.getAttribute('data-giscus-category-id') || el.dataset.giscusCategoryId) as string | undefined
+    };
+    let config: Record<string, unknown> | undefined = undefined;
+    const rawConfig = el.getAttribute('data-config') || el.dataset.config;
+    if (rawConfig) {
+      try {
+        config = JSON.parse(rawConfig as string) as Record<string, unknown>;
+      } catch {
+        // ignore invalid JSON
+      }
+    }
 
     if (!src) {
       return;
     }
 
-    mount(el, { src, initialSearch: el.dataset.initialSearch });
+    mount(el, { src, initialSearch: el.dataset.initialSearch, baseUrl, giscusSettings, config });
   });
 }
 
