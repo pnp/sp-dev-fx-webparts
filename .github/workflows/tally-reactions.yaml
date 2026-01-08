@@ -1,4 +1,4 @@
-name: Eally Reactions
+name: Tally Reactions
 
 on:
   workflow_dispatch:
