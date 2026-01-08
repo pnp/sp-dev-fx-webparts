@@ -217,7 +217,6 @@ runs:
           };
 
           console.log(`Matched ${Object.keys(tally).length} discussions`);
-          console.log(`Found ${reactorSummary.length} unique reactors`);
           console.log('Reaction Tally:', JSON.stringify(result, null, 2));
 
           core.setOutput('result', JSON.stringify(result));
