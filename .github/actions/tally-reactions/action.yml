@@ -201,7 +201,7 @@ runs:
               }
             }
             
-            if (totalReactions > 0) {
+            if (discussion.reactions.totalCount > 0) {
               tally[discussion.title] = {
                 url: discussion.url,
                 totalReactions: discussion.reactions.totalCount,
