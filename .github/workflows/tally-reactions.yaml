@@ -22,6 +22,22 @@ jobs:
         id: reactions
         uses: ./.github/actions/tally-reactions
 
-      - name: Use tally results
+      - name: Save tally results to file
         run: |
-          echo '${{ steps.reactions.outputs. result }}' > .metadata/discussion-reactions.json
+          mkdir -p .metadata
+          echo '${{ steps.reactions.outputs.result }}' > .metadata/discussion-reactions.json
+          cat .metadata/discussion-reactions.json
+      
+      - name:  Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .metadata/discussion-reactions.json
+          
+          if git diff --cached --quiet --exit-code; then
+            echo "ℹ️ No changes to commit"
+          else
+            git commit -m "chore: update discussion reaction tallies [skip ci]"
+            git push
+            echo "✅ Changes committed and pushed"
+          fi
