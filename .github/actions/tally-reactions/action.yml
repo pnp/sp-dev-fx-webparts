@@ -4,7 +4,7 @@ description: 'Tallies reactions from GitHub discussions'
 outputs:
   result:
     description: 'JSON string with reaction tallies'
-    value: ${{ steps.tally. outputs.result }}
+    value: ${{ steps.tally.outputs.result }}
 
 runs:
   using: "composite"
@@ -93,7 +93,7 @@ runs:
               for (const discussion of discussions) {
                 const allReactions = [...discussion.reactions.nodes];
                 let reactionCursor = discussion.reactions.pageInfo.endCursor;
-                let hasMoreReactions = discussion. reactions.pageInfo.hasNextPage;
+                let hasMoreReactions = discussion.reactions.pageInfo.hasNextPage;
                 
                 while (hasMoreReactions) {
                   const reactionQuery = `
@@ -124,14 +124,14 @@ runs:
                     cursor: reactionCursor
                   });
                   
-                  allReactions.push(...reactionResult.repository.discussion.reactions. nodes);
+                  allReactions.push(...reactionResult.repository.discussion.reactions.nodes);
                   hasMoreReactions = reactionResult.repository.discussion.reactions.pageInfo.hasNextPage;
                   reactionCursor = reactionResult.repository.discussion.reactions.pageInfo.endCursor;
                 }
                 
                 // Replace with all reactions
                 discussion.reactions.nodes = allReactions;
-                discussion.reactions. totalCount = allReactions.length;
+                discussion.reactions.totalCount = allReactions.length;
                 
                 allDiscussions.push(discussion);
               }

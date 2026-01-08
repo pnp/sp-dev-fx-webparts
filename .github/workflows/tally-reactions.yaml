@@ -6,11 +6,22 @@ on:
 jobs:
   Tally-Reactions:
     runs-on: ubuntu-latest
-    steps:
-    - name: Tally discussion reactions
-      id: reactions
-      uses: ./.github/actions/tally-reactions
 
-    - name: Use tally results
-      run: |
-        echo '${{ steps.reactions.outputs. result }}' > .metadata/discussion-reactions.json
+    permissions:
+      contents: write
+      discussions: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth:  1
+
+      - name: Tally discussion reactions
+        id: reactions
+        uses: ./.github/actions/tally-reactions
+
+      - name: Use tally results
+        run: |
+          echo '${{ steps.reactions.outputs. result }}' > .metadata/discussion-reactions.json
