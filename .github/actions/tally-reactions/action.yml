@@ -9,7 +9,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Tally reactions
+    - name:  Tally reactions
       id: tally
       uses: actions/github-script@v7
       with:
@@ -46,9 +46,9 @@ runs:
             
             while (hasNextPage) {
               const query = `
-                query($owner: String!, $repo: String!, $categoryId: ID!, $cursor: String) {
-                  repository(owner:  $owner, name: $repo) {
-                    discussions(first: 100, after:  $cursor, categoryId: $categoryId) {
+                query($owner: String!, $repo: String!, $categoryId:  ID!, $cursor: String) {
+                  repository(owner: $owner, name: $repo) {
+                    discussions(first: 100, after: $cursor, categoryId: $categoryId) {
                       nodes {
                         number
                         title
@@ -57,7 +57,7 @@ runs:
                           name
                           id
                         }
-                        reactions(first: 100) {
+                        reactions(first:  100) {
                           nodes {
                             content
                             user {
@@ -98,7 +98,7 @@ runs:
                 while (hasMoreReactions) {
                   const reactionQuery = `
                     query($owner: String!, $repo:  String!, $number: Int!, $cursor: String) {
-                      repository(owner: $owner, name:  $repo) {
+                      repository(owner: $owner, name: $repo) {
                         discussion(number: $number) {
                           reactions(first: 100, after: $cursor) {
                             nodes {
@@ -142,3 +142,95 @@ runs:
             
             return allDiscussions;
           }
+
+          // Main logic starts here
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const categoryName = "Likes";
+
+          console.log(`Fetching all discussions in category "${categoryName}" and their reactions...`);
+          const allDiscussions = await fetchAllDiscussions(github, owner, repo, categoryName);
+          console.log(`Fetched ${allDiscussions.length} discussions from "${categoryName}" category`);
+
+          // Define your pattern (optional - only if you want to filter by title too)
+          const titlePattern = /^sample:/i;
+
+          // Filter and tally reactions
+          const tally = {};
+          const allReactors = new Map();
+
+          for (const discussion of allDiscussions) {
+            // Optional: Check if discussion matches title pattern
+            if (! titlePattern.test(discussion.title)) {
+              continue;
+            }
+            
+            const reactionsByType = {};
+            const reactorsByType = {};
+            const allDiscussionReactors = new Set();
+            
+            for (const reaction of discussion.reactions.nodes) {
+              const reactionType = reaction.content;
+              const userLogin = reaction.user.login;
+              
+              // Count reactions by type
+              reactionsByType[reactionType] = (reactionsByType[reactionType] || 0) + 1;
+              
+              // Track reactors by reaction type (login only)
+              if (!reactorsByType[reactionType]) {
+                reactorsByType[reactionType] = [];
+              }
+              reactorsByType[reactionType].push(userLogin);
+              
+              // Track all unique reactors for this discussion
+              allDiscussionReactors.add(userLogin);
+              
+              // Track globally across all matching discussions
+              if (!allReactors.has(userLogin)) {
+                allReactors.set(userLogin, {
+                  login: userLogin,
+                  reactedToCount: 0,
+                  discussions: []
+                });
+              }
+              
+              const reactor = allReactors.get(userLogin);
+              if (!reactor.discussions.includes(discussion.number)) {
+                reactor.discussions.push(discussion.number);
+                reactor.reactedToCount++;
+              }
+            }
+            
+            tally[discussion.number] = {
+              title: discussion.title,
+              url: discussion.url,
+              category: discussion.category.name,
+              totalReactions: discussion.reactions.totalCount,
+              uniqueReactors: allDiscussionReactors.size,
+              reactionCounts: reactionsByType,
+              reactorsByType: reactorsByType,
+              allReactors: Array.from(allDiscussionReactors)
+            };
+          }
+
+          // Create summary of all reactors across matching discussions
+          const reactorSummary = Array.from(allReactors.values())
+            .sort((a, b) => b.reactedToCount - a.reactedToCount);
+
+          const result = {
+            category: categoryName,
+            pattern: titlePattern.toString(),
+            totalDiscussionsFetched: allDiscussions.length,
+            matchingDiscussions: Object.keys(tally).length,
+            totalUniqueReactors: reactorSummary.length,
+            discussions: tally,
+            topReactors: reactorSummary
+          };
+
+          console.log(`Matched ${Object.keys(tally).length} discussions`);
+          console.log(`Found ${reactorSummary.length} unique reactors`);
+          console.log('Reaction Tally:', JSON.stringify(result, null, 2));
+
+          core.setOutput('result', JSON.stringify(result));
+          
+          return result;
