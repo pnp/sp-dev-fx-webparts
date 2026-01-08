@@ -204,11 +204,11 @@ runs:
             tally[discussion.number] = {
               title: discussion.title,
               url: discussion.url,
-              category: discussion.category.name,
+              # category: discussion.category.name,
               totalReactions: discussion.reactions.totalCount,
-              uniqueReactors: allDiscussionReactors.size,
+              # uniqueReactors: allDiscussionReactors.size,
               reactionCounts: reactionsByType,
-              reactorsByType: reactorsByType,
+              # reactorsByType: reactorsByType,
               allReactors: Array.from(allDiscussionReactors)
             };
           }
@@ -218,13 +218,14 @@ runs:
             .sort((a, b) => b.reactedToCount - a.reactedToCount);
 
           const result = {
-            category: categoryName,
-            pattern: titlePattern.toString(),
-            totalDiscussionsFetched: allDiscussions.length,
-            matchingDiscussions: Object.keys(tally).length,
-            totalUniqueReactors: reactorSummary.length,
+            generatedAt: new Date().toISOString(),
+            # category: categoryName,
+            # pattern: titlePattern.toString(),
+            # totalDiscussionsFetched: allDiscussions.length,
+            # matchingDiscussions: Object.keys(tally).length,
+            # totalUniqueReactors: reactorSummary.length,
             discussions: tally,
-            topReactors: reactorSummary
+            # topReactors: reactorSummary
           };
 
           console.log(`Matched ${Object.keys(tally).length} discussions`);
