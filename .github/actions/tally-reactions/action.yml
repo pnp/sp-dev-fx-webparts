@@ -201,18 +201,15 @@ runs:
               }
             }
             
-            tally[discussion.number] = {
-              title: discussion.title,
-              url: discussion.url,
-              totalReactions: discussion.reactions.totalCount,
-              reactionCounts: reactionsByType,
-              allReactors: Array.from(allDiscussionReactors)
-            };
+            if (totalReactions > 0) {
+              tally[discussion.title] = {
+                url: discussion.url,
+                totalReactions: discussion.reactions.totalCount,
+                reactionCounts: reactionsByType,
+                allReactors: Array.from(allDiscussionReactors)
+              };
+            }
           }
-
-          // Create summary of all reactors across matching discussions
-          const reactorSummary = Array.from(allReactors.values())
-            .sort((a, b) => b.reactedToCount - a.reactedToCount);
 
           const result = {
             generatedAt: new Date().toISOString(),
