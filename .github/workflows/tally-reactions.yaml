@@ -2,7 +2,9 @@ name: Tally Reactions
 
 on:
   workflow_dispatch:
-      
+  schedule:
+    # 11:00 & 23:00 UTC (~6am/6pm Toronto in winter)
+    - cron: "0 11,23 * * *"  
 jobs:
   Tally-Reactions:
     runs-on: ubuntu-latest
@@ -12,11 +14,13 @@ jobs:
       discussions: read
     
     steps:
-      - name: Checkout repository
+      - name: Checkout Docs branch
         uses: actions/checkout@v4
         with:
+          ref: Docs
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth:  1
+          fetch-depth: 1
+          persist-credentials: true
 
       - name: Tally discussion reactions
         id: reactions
@@ -24,20 +28,24 @@ jobs:
 
       - name: Save tally results to file
         run: |
-          mkdir -p .metadata
-          echo '${{ steps.reactions.outputs.result }}' > .metadata/discussion-reactions.json
-          cat .metadata/discussion-reactions.json
+          mkdir -p docs/data
+          echo '${{ steps.reactions.outputs.result }}' > docs/data/likes.json
+          cat docs/data/likes.json
       
-      - name:  Commit and push results
+      - name: Commit and push results to Docs
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add .metadata/discussion-reactions.json
+          # Stage the generated file (use -f if you discover it's ignored)
+          git add -A docs/data/likes.json
           
           if git diff --cached --quiet --exit-code; then
             echo "ℹ️ No changes to commit"
           else
             git commit -m "chore: update discussion reaction tallies [skip ci]"
-            git push
+            git push origin Docs
             echo "✅ Changes committed and pushed"
           fi
+
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "chore: update likes.json"
+          git push origin Docs
