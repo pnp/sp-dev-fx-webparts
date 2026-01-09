@@ -12,34 +12,62 @@ jobs:
       discussions: read
     
     steps:
-      - name:  Checkout Docs branch
+      - name:  Checkout main branch (for action)
         uses: actions/checkout@v4
         with: 
-          ref: Docs
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth:  1
-          persist-credentials:  true
 
       - name: Tally discussion reactions
         id: reactions
         uses: ./.github/actions/tally-reactions
 
-      - name: Save tally results to docs/data/likes.json
+      - name:  Checkout Docs branch
+        uses: actions/checkout@v4
+        with:
+          ref: Docs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name:  Save tally results to docs/data/likes.json
         run: |
           mkdir -p docs/data
-          echo '${{ steps.reactions.outputs.result }}' > docs/data/likes. json
+          echo '${{ steps.reactions.outputs.result }}' > docs/data/likes.json
           cat docs/data/likes.json
       
       - name:  Commit and push to Docs branch
+        id: commit
         run: |
-          git config --local user.email "github-actions[bot]@users. noreply.github.com"
-          git config --local user. name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add docs/data/likes.json
           
           if git diff --cached --quiet --exit-code; then
             echo "ℹ️ No changes to commit"
+            echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "chore: update likes.json"
             git push origin Docs
             echo "✅ Changes committed and pushed to Docs branch"
+            echo "changed=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Generate summary
+        run: |
+          echo "## 🎯 Tally Reactions Workflow Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** Docs" >> $GITHUB_STEP_SUMMARY
+          echo "**Output File:** \`docs/data/likes.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.commit.outputs.changed }}" == "true" ]; then
+            echo "✅ **Status:** Changes detected and committed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **Status:** No changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Sample Count" >> $GITHUB_STEP_SUMMARY
+          SAMPLE_COUNT=$(jq '.likes | length' docs/data/likes.json)
+          echo "Total samples with likes: **${SAMPLE_COUNT}**" >> $GITHUB_STEP_SUMMARY
