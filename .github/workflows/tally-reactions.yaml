@@ -68,6 +68,13 @@ jobs:
           fi
           
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Sample Count" >> $GITHUB_STEP_SUMMARY
-          SAMPLE_COUNT=$(jq '.likes | length' docs/data/likes.json)
-          echo "Total samples with likes: **${SAMPLE_COUNT}**" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Reaction Statistics" >> $GITHUB_STEP_SUMMARY
+          
+          # Count discussions with reactions (where count > 0)
+          DISCUSSION_COUNT=$(jq '[.likes | to_entries[] | select(.value.count > 0)] | length' docs/data/likes.json)
+          
+          # Sum total reactions across all discussions
+          TOTAL_REACTIONS=$(jq '[.likes | to_entries[].value.count] | add // 0' docs/data/likes.json)
+          
+          echo "- **Discussions with reactions:** ${DISCUSSION_COUNT}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total reactions:** ${TOTAL_REACTIONS}" >> $GITHUB_STEP_SUMMARY
