@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "vitest",
     "postbuild": "npx cpy \"dist/*.js\" \"dist/*.css\" \"../static/vendor/pnp-samples-gallery/\" --flat",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -30,8 +31,10 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "jsdom": "^27.4.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vitest": "^1.3.0"
   }
 }

@@ -31,4 +31,6 @@ export interface PnPSample {
     thumbnails?: SampleThumbnail[];
     authors?: SampleAuthor[];
     categories?: string[];
+    totalReactions?: number;
+    userHasReactions?: boolean;
 }

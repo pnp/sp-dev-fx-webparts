@@ -1,0 +1,15 @@
+.root {
+    font-size: 0.82rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: 999px;
+    padding: 0.25rem 0.5rem;
+    background: var(--pnp-bg);
+}
+
+.icon {
+    padding: 0.25rem 0.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}

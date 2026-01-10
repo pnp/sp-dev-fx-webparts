@@ -1,45 +1,107 @@
 {
-  "generatedAt": "2026-01-06T23:03:49.457Z",
-  "source": {
-    "owner": "pnp",
-    "repo": "sp-dev-fx-webparts",
-    "category": "Likes"
-  },
-  "likes": {
-    "pnp-sp-dev-spfx-web-parts-js-theme-manager": {
-      "count": 0,
-      "discussionNumber": 5681,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5681"
+  "generatedAt": "2026-01-09T19:07:18.640Z",
+  "discussions": {
+    "sample:pnp-sp-dev-spfx-web-parts-react-bar-chart-static": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5690",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-react-adaptivecards": {
-      "count": 1,
-      "discussionNumber": 5680,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5680"
+    "sample:pnp-sp-dev-spfx-web-parts-react-bar-chart": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5689",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-react-chartinator": {
-      "count": 1,
-      "discussionNumber": 5678,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5678"
+    "sample:pnp-sp-dev-spfx-web-parts-react-area-chart": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5688",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-js-modern-calendar": {
-      "count": 0,
-      "discussionNumber": 5677,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5677"
+    "sample:pnp-sp-dev-spfx-web-parts-react-uieditor": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5687",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-react-tree-orgchart": {
-      "count": 1,
-      "discussionNumber": 5676,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5676"
+    "sample:pnp-sp-dev-spfx-web-parts-js-theme-manager": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5681",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-react-organization-chart": {
-      "count": 0,
-      "discussionNumber": 5675,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5675"
+    "sample:pnp-sp-dev-spfx-web-parts-react-adaptivecards": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5680",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "THUMBS_UP": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     },
-    "pnp-sp-dev-spfx-web-parts-react-accessible-chart": {
-      "count": 0,
-      "discussionNumber": 5674,
-      "discussionUrl": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5674"
+    "sample:pnp-sp-dev-spfx-web-parts-react-chartinator": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5678",
+      "totalReactions": 2,
+      "reactionCounts": {
+        "THUMBS_UP": 1,
+        "ROCKET": 1
+      },
+      "allReactors": [
+        "hugoabernier",
+        "PopWarner"
+      ]
+    },
+    "sample:pnp-sp-dev-spfx-web-parts-js-modern-calendar": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5677",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
+    },
+    "sample:pnp-sp-dev-spfx-web-parts-react-tree-orgchart": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5676",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
+    },
+    "sample:pnp-sp-dev-spfx-web-parts-react-accessible-chart": {
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5674",
+      "totalReactions": 1,
+      "reactionCounts": {
+        "HEART": 1
+      },
+      "allReactors": [
+        "hugoabernier"
+      ]
     }
   }
 }

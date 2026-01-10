@@ -21,14 +21,9 @@
     <div data-pnp-samples-gallery
         data-src="{{ with .Site.Params.pnpSamplesGallery.dataSrc }}{{ . }}{{ end }}"
         data-base-url="{{ .Site.BaseURL }}"
-        data-likes-feed="{{ with .Site.Params.pnpSamplesGallery.reactions.likesFeed }}{{ . }}{{ end }}"
         {{ $cfg := dict "likesFeed" .Site.Params.pnpSamplesGallery.reactions.likesFeed "reactionsSupported" .Site.Params.pnpSamplesGallery.reactions.enabled "giscus" (dict "repo" .Site.Params.pnpSamplesGallery.reactions.repo "repoId" .Site.Params.pnpSamplesGallery.reactions.repoId "category" .Site.Params.pnpSamplesGallery.reactions.category "categoryId" .Site.Params.pnpSamplesGallery.reactions.categoryId "mapping" .Site.Params.pnpSamplesGallery.giscusMapping "reactionsEnabled" .Site.Params.pnpSamplesGallery.giscusReactionsEnabled "emitMetadata" .Site.Params.pnpSamplesGallery.giscusEmitMetadata "inputPosition" .Site.Params.pnpSamplesGallery.giscusInputPosition "lang" .Site.Params.pnpSamplesGallery.giscusLang) }}{{ with $cfg }}data-config='{{ . | jsonify }}'{{ end }}>
     </div>
 </div>
 </section>
-
-
-
-
 
 <script src="/vendor/pnp-samples-gallery/pnp-samples-gallery.js?cb={{ now.Unix }}"></script>

@@ -1,5 +1,6 @@
 import React from "react";
-import Chip from "./Chip";
+import Chip from "../Chip/Chip";
+import styles from "./FacetGroup.module.css";
 
 type FacetGroupProps<T extends string> = {
     id?: string;
@@ -16,12 +17,12 @@ type FacetGroupProps<T extends string> = {
 export function FacetGroup<T extends string>({ label, value, options, renderLabel, onChange, mobile, labelText, disabledOptions }: FacetGroupProps<T>) {
     if (mobile) {
         return (
-            <div className="pnp-filter-group">
-                <label className="pnp-filter-group__title" htmlFor={`facet-${label}`}>{label}</label>
+            <div className={styles.root}>
+                <label className={styles.title} htmlFor={`facet-${label}`}>{label}</label>
                 <div>
                     <select
                         id={`facet-${label}`}
-                        className="pnp-filter-select"
+                        className={styles.select}
                         value={value ?? "__all__"}
                         onChange={(e) => {
                             const v = e.currentTarget.value;
@@ -39,9 +40,9 @@ export function FacetGroup<T extends string>({ label, value, options, renderLabe
     }
 
     return (
-        <div className="pnp-filter-group">
-            <h3 className="pnp-filter-group__title">{label}</h3>
-            <div className="pnp-chipset" aria-label={`Filter by ${label}`}>
+        <div className={styles.root}>
+            <h3 className={styles.title}>{label}</h3>
+            <div className={styles.chipset} aria-label={`Filter by ${label}`}>
                 <Chip label={"All"} selected={value === null} onClick={() => onChange(null)} />
 
                 {options.map(opt => (
@@ -51,7 +52,6 @@ export function FacetGroup<T extends string>({ label, value, options, renderLabe
                         selected={value === opt}
                         onClick={() => onChange(opt)}
                         disabled={disabledOptions?.has(opt)}
-                        // title is provided already by Chip when disabled, but pass it explicitly for non-button label nodes
                     />
                 ))}
             </div>

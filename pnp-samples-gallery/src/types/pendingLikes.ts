@@ -1,18 +1,23 @@
+import { readAllOverrides, upsertOverride, writeAllOverrides } from '../utils/likesOverrides';
+
 export type PendingLikesRecord = Record<
   string,
   {
     liked: boolean;
-    likedAt: string | null; // ISO timestamp
+    likedAt: string; // ISO timestamp
   }
 >;
 
-const STORAGE_KEY = "sp-dev-fx-webparts:likes";
-
 export function readPendingLikes(): PendingLikesRecord {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    return JSON.parse(raw) as PendingLikesRecord;
+    const all = readAllOverrides();
+    const out: PendingLikesRecord = {};
+    for (const e of all) {
+      if (e && typeof e.sample === 'string' && (typeof e.pendingLiked === 'boolean' || typeof e.pendingLikedAt === 'string')) {
+        out[e.sample] = { liked: Boolean(e.pendingLiked === undefined ? true : e.pendingLiked), likedAt: e.pendingLikedAt ?? e.updatedAt };
+      }
+    }
+    return out;
   } catch {
     return {};
   }
@@ -20,37 +25,52 @@ export function readPendingLikes(): PendingLikesRecord {
 
 export function writePendingLikes(rec: PendingLikesRecord) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(rec));
+    const all = readAllOverrides();
+    const map = new Map(all.map((a) => [a.sample, a] as const));
+    // apply rec entries
+    for (const [k, v] of Object.entries(rec)) {
+      const existing = map.get(k) ?? { sample: k, updatedAt: new Date().toISOString() };
+      const copy = { ...existing } as any;
+      copy.pendingLiked = Boolean(v.liked);
+      copy.pendingLikedAt = v.likedAt;
+      copy.updatedAt = v.likedAt;
+      map.set(k, copy);
+    }
+    // remove pending fields for keys not present in rec
+    for (const [k, v] of map.entries()) {
+      if (!rec[k] && (v as any).pendingLiked !== undefined) {
+        const copy = { ...v } as any;
+        delete copy.pendingLiked;
+        delete copy.pendingLikedAt;
+        map.set(k, copy);
+      }
+    }
+    const merged = Array.from(map.values()) as any[];
+    writeAllOverrides(merged);
   } catch {
     // ignore
   }
 }
 
 export function setPendingLike(sampleName: string, likedAt?: string | null, liked?: boolean) {
-  const rec = readPendingLikes();
-  // Preserve explicit null (means no date yet). If undefined, set to now.
-  const timestamp = likedAt === undefined ? new Date().toISOString() : likedAt;
-  rec[sampleName] = { liked: liked ?? true, likedAt: timestamp };
-  writePendingLikes(rec);
+  const timestamp = likedAt === undefined || likedAt === null ? new Date().toISOString() : likedAt;
   try {
-    const detail = { key: sampleName, record: rec[sampleName] };
-    window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail }));
-  } catch (e) {
+    upsertOverride(sampleName, { pendingLiked: liked ?? true, pendingLikedAt: timestamp, updatedAt: timestamp });
+  } catch {
     // ignore
   }
+  try {
+    const detail = { key: sampleName, record: { liked: liked ?? true, likedAt: timestamp } };
+    window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail }));
+  } catch { }
 }
 
 export function removePendingLike(sampleName: string) {
-  const rec = readPendingLikes();
-  if (rec[sampleName]) {
-    delete rec[sampleName];
-    writePendingLikes(rec);
-    try {
-      const detail = { key: sampleName, removed: true };
-      window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail }));
-    } catch (e) {
-      // ignore
-    }
+  try {
+    upsertOverride(sampleName, { pendingLiked: null, pendingLikedAt: null, updatedAt: new Date().toISOString() });
+    try { window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail: { key: sampleName, removed: true } })); } catch { }
+  } catch {
+    // ignore
   }
 }
 
@@ -60,27 +80,24 @@ export function reconcilePendingLikesWithGeneratedAt(generatedAt?: string | null
     const gen = new Date(generatedAt);
     if (isNaN(gen.getTime())) return;
 
-    const rec = readPendingLikes();
-    const changed: string[] = [];
-    for (const k of Object.keys(rec)) {
-      const item = rec[k];
-      if (item && item.likedAt) {
-        const la = new Date(item.likedAt);
+    const all = readAllOverrides();
+    let changed = false;
+    const updated = all.map((e) => {
+      if (e && e.pendingLikedAt) {
+        const la = new Date(e.pendingLikedAt);
         if (!isNaN(la.getTime()) && la <= gen) {
-          // remove the timestamp (set to null) per requirement
-          rec[k] = { liked: item.liked, likedAt: null };
-          changed.push(k);
+          const copy = { ...e } as any;
+          delete copy.pendingLiked;
+          delete copy.pendingLikedAt;
+          changed = true;
+          return copy;
         }
       }
-    }
-
-    if (changed.length > 0) {
-      writePendingLikes(rec);
-      try {
-        window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail: { reconciled: true, keys: changed } }));
-      } catch {
-        // ignore
-      }
+      return e;
+    });
+    if (changed) {
+      writeAllOverrides(updated as any[]);
+      try { window.dispatchEvent(new CustomEvent('pendingLikesChanged', { detail: { reconciled: true } })); } catch { }
     }
   } catch {
     // ignore
@@ -88,6 +105,15 @@ export function reconcilePendingLikesWithGeneratedAt(generatedAt?: string | null
 }
 
 export function getPendingLike(sampleName: string) {
-  const rec = readPendingLikes();
-  return rec[sampleName] ?? null;
+  try {
+    const all = readAllOverrides();
+    const e = all.find((x) => x.sample === sampleName);
+    if (!e) return null;
+    if (typeof e.pendingLiked === 'boolean' || typeof e.pendingLikedAt === 'string') {
+      return { liked: Boolean(e.pendingLiked === undefined ? true : e.pendingLiked), likedAt: e.pendingLikedAt ?? e.updatedAt };
+    }
+    return null;
+  } catch {
+    return null;
+  }
 }

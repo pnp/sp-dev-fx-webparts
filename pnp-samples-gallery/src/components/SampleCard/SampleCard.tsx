@@ -1,9 +1,9 @@
-import React, { useMemo } from "react";
-import type { PnPSample } from "../types/index";
-import { bestThumb, categoryToIcon, getCategories, metaFirst, prettyCategory, techKey, techLabel, techToIcon } from "../types/index";
-import { Icon, Facepile } from "../components";
-import { getPendingLike } from "../types/pendingLikes";
-import type { LikesJson } from "../types/likes";
+import React, { useEffect, useState } from "react";
+import type { PnPSample } from "../../types/index";
+import { bestThumb, categoryToIcon, getCategories, metaFirst, prettyCategory, techKey, techLabel, techToIcon } from "../../types/index";
+import { Icon, Facepile } from "../";
+import { readOverrideFor, subscribe } from "../../utils/likesOverrides";
+import styles from './SampleCard.module.css';
 
 export interface SampleCardProps {
     sample: PnPSample;
@@ -11,13 +11,10 @@ export interface SampleCardProps {
     techIconBasePath?: string | undefined;
     muuriRef?: React.MutableRefObject<any>;
     onOpen?: (sample: PnPSample) => void;
-    likesData?: LikesJson | null;
-    pendingLikesVersion?: number;
     reactionsSupported?: boolean;
     config?: Record<string, unknown>;
 }
-
-export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef, onOpen, likesData, pendingLikesVersion, reactionsSupported = true }: SampleCardProps) {
+export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef, onOpen, reactionsSupported = true }: SampleCardProps) {
     const thumb = bestThumb(s);
     const spfxBucket = (metaFirst(s, "SPFX-VERSION") as string) ?? "";
     const tech = techKey(metaFirst(s, "CLIENT-SIDE-DEV")) ?? "";
@@ -33,39 +30,77 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:640px)').matches : false;
     const anchorRef = React.useRef<HTMLElement | null>(null);
 
-    const pending = useMemo(() => reactionsSupported ? getPendingLike(s.name) : null, [s.name, pendingLikesVersion, reactionsSupported]);
-
-    const baseCount = useMemo(() => {
+    const [displayedCount, setDisplayedCount] = useState<number>(() => {
         if (!reactionsSupported) return 0;
         try {
-            return (likesData?.likes?.[s.name]?.count) ?? 0;
+            const override = readOverrideFor(s.name);
+            const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+            const base = (override && typeof override.count === 'number') ? override.count : (typeof sampleTotal === 'number' ? sampleTotal : 0);
+            // consider pending like/unlike
+            const pending = (override as any)?.pendingLiked;
+            if (pending === true) return base + 1;
+            if (pending === false) return Math.max(0, base - 1);
+            return base;
         } catch {
             return 0;
         }
-    }, [likesData, s.name, reactionsSupported]);
+    });
 
-    const generatedAt = likesData?.generatedAt ? new Date(likesData.generatedAt) : null;
-
-    const displayedCount = useMemo(() => {
-        if (pending && pending.likedAt) {
-            const likedAt = new Date(pending.likedAt);
-            if (!generatedAt || likedAt > generatedAt) return baseCount + 1;
+    // Visual liked indicator should reflect whether the current session user has reacted.
+    // Prefer overrides when present.
+    const [isLiked, setIsLiked] = useState<boolean>(() => {
+        try {
+            const override = readOverrideFor(s.name) as any;
+            if (override) {
+                if (typeof override.pendingLiked === 'boolean') return override.pendingLiked;
+                if (typeof override.viewerReacted === 'boolean') return override.viewerReacted;
+            }
+            return !!((s as any)?.userHasReactions);
+        } catch {
+            return !!((s as any)?.userHasReactions);
         }
-        return baseCount;
-    }, [pending, generatedAt, baseCount]);
+    });
 
-    const isLiked = !!pending;
+    useEffect(() => {
+        if (!reactionsSupported) return;
+        const unsub = subscribe((sample) => {
+            try {
+                if (sample && sample !== s.name) return;
+                const override = readOverrideFor(s.name) as any;
+                if (override) {
+                    const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+                    const base = (typeof override.count === 'number') ? override.count : (typeof sampleTotal === 'number' ? sampleTotal : 0);
+                    if (typeof override.pendingLiked === 'boolean') {
+                        if (override.pendingLiked === true) setDisplayedCount(base + 1);
+                        else setDisplayedCount(Math.max(0, base - 1));
+                    } else {
+                        if (typeof override.count === 'number') setDisplayedCount(override.count);
+                        else setDisplayedCount(typeof sampleTotal === 'number' ? sampleTotal : 0);
+                    }
+
+                    if (typeof override.pendingLiked === 'boolean') setIsLiked(override.pendingLiked);
+                    else if (typeof override.viewerReacted === 'boolean') setIsLiked(override.viewerReacted);
+                } else {
+                    const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+                    setDisplayedCount(typeof sampleTotal === 'number' ? sampleTotal : 0);
+                    setIsLiked(!!((s as any)?.userHasReactions));
+                }
+            } catch {
+                // ignore
+            }
+        });
+        return unsub;
+    }, [s, reactionsSupported]);
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
         const isMouse = 'button' in e;
         const isLeft = isMouse ? (e as React.MouseEvent).button === 0 : false;
-        const hasModifier = ('ctrlKey' in e && e.ctrlKey) || ('metaKey' in e && e.metaKey) || ('shiftKey' in e && e.shiftKey) || ('altKey' in e && e.altKey);
+        const hasModifier = ('ctrlKey' in e && (e as any).ctrlKey) || ('metaKey' in e && (e as any).metaKey) || ('shiftKey' in e && (e as any).shiftKey) || ('altKey' in e && (e as any).altKey);
         if (isLeft && !hasModifier) {
             if (isMobile) {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // Prefer in-app panel when possible
                 if (onOpen) {
                     try {
                         onOpen(s);
@@ -76,7 +111,6 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     return;
                 }
 
-                // Fallback: open URL in new tab/window
                 if (s.url) {
                     try {
                         const winName = `_pnp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
@@ -101,11 +135,11 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     };
 
     const cardInner = (
-        <article className="pnp-card" aria-label={s.title}>
+        <article className={`pnp-card ${styles.root}`} aria-label={s.title}>
             {thumb ? (
-                <figure className="pnp-card__thumb-figure">
+                <figure className={styles.thumbFigure}>
                     <img
-                        className="pnp-card__thumb"
+                        className={styles.thumb}
                         src={thumb.url}
                         alt={thumb.alt ?? "Sample thumbnail"}
                         loading="lazy"
@@ -118,9 +152,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     />
                 </figure>
             ) : (
-                <figure className="pnp-card__thumb-figure">
+                <figure className={styles.thumbFigure}>
                     <img
-                        className="pnp-card__thumb"
+                        className={styles.thumb}
                         src={'/sp-dev-fx-webparts/_nopreview.png'}
                         alt={"No preview available"}
                         loading="lazy"
@@ -134,7 +168,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 </figure>
             )}
 
-            <div className="pnp-card__meta">
+            <div className={`pnp-card__meta ${styles.meta}`}>
                 {metaFirst(s, "SPFX-VERSION") ? <span className="pnp-pill" title={`SPFx ${metaFirst(s, "SPFX-VERSION")}`}>{metaFirst(s, "SPFX-VERSION")}</span> : null}
                 <span className="pnp-pill pnp-pill--icon" title={techText} aria-label={techText}>
                     <Icon src={techSrc} size={16} />
@@ -153,13 +187,13 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 </span>
             </div>
 
-            <div className="pnp-card__body">
-                <h2 className="pnp-card__title">{s.title}</h2>
+            <div className={`pnp-card__body ${styles.body}`}>
+                <h2 className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
                 <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
             </div>
-            <div className="pnp-card__footer">
-                <div className="pnp-card__footer-left">
+            <div className={`pnp-card__footer ${styles.footer}`}>
+                <div className={`pnp-card__footer-left ${styles.footerLeft}`}>
                     <div className="pnp-card__date">
                         {(() => {
                             const raw = s.updateDateTime ?? "";
@@ -182,10 +216,10 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     }
                     {reactionsSupported ? (
                         <span
-                            className={`pnp-card__likes ${isLiked ? 'pnp-card__likes--active' : ''}`}
+                            className={`pnp-card__likes ${isLiked ? 'pnp-card__likes--active' : ''} ${styles.likes}`}
                             title={isLiked ? `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'} — you reacted` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}
                             aria-label={isLiked ? `You reacted. ${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" className="pnp-card__likes-icon" role="img" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" className={`pnp-card__likes-icon ${styles.likesIcon}`} role="img" aria-hidden="true">
                                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
                             </svg>
                             <span className="pnp-card__likes-count">{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>

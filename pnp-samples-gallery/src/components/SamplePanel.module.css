@@ -1,0 +1,199 @@
+.root {
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body {
+    padding-top: 8px;
+}
+
+.lastModified {
+    margin-bottom: 6px;
+}
+
+.carousel {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.carouselViewport {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--pnp-surface);
+}
+
+.thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 240ms ease-in-out, transform 300ms ease;
+    pointer-events: none;
+}
+
+.thumbActive {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carouselPrev,
+.carouselNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    border: 1px solid var(--pnp-border);
+    box-shadow: 0 4px 8px rgba(16, 24, 40, 0.06);
+    z-index: 4;
+    pointer-events: auto;
+}
+
+.carouselPrev { left: 12px; }
+.carouselNext { right: 12px; }
+
+.carouselIndicators {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    justify-content: center;
+}
+
+.carouselIndicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid var(--pnp-border);
+    background: transparent;
+}
+
+.carouselIndicatorActive {
+    background: var(--pnp-fg);
+}
+
+.thumbStrip {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+.thumbBtn {
+    border: 1px solid var(--pnp-border);
+    background: var(--pnp-bg);
+    padding: 3px;
+    border-radius: 6px;
+    display: inline-grid;
+    place-items: center;
+    width: 80px;
+    height: 56px;
+}
+
+.authorRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.authorAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--pnp-surface);
+    display: grid;
+    place-items: center;
+}
+
+.facepileInitials {
+    font-weight: 700;
+}
+
+.pill {
+    font-size: 0.82rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: 999px;
+    padding: 0.25rem 0.5rem;
+    background: var(--pnp-bg);
+}
+
+.desc {
+    margin: 0;
+    color: var(--pnp-muted);
+    line-height: 1.35;
+}
+
+.actions {
+    display: block;
+    margin-top: 12px;
+}
+
+.actionLabel {
+    margin-left: 8px;
+}
+
+.cliHeading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.cli {
+    margin-top: 8px;
+    background: var(--pnp-surface);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.cliCode {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Helvetica Neue", monospace;
+}
+
+.authorsList {
+    margin-top: 12px;
+}
+
+.authorLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.authorName {
+    font-weight: 600;
+}
+
+.values {
+    margin-top: 12px;
+}
+
+.pillValue {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.pillLabel {
+    margin-right: 8px;
+}
+
+.likes {
+    margin-top: 12px;
+}

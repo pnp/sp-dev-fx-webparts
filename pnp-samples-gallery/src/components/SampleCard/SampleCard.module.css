@@ -1,0 +1,71 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all .35s ease-in-out;
+    background-image: linear-gradient(-215deg,#fff0 50%,#ffffff4d);
+    border-radius: var(--pnp-radius);
+}
+
+.thumbFigure {
+    overflow: clip;
+    border-radius: 1em 1em 0 0;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+}
+
+.thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    transition: all .125s ease-in-out;
+    opacity: .85;
+    border-collapse: collapse;
+    border-radius: 1em 1em 0 0;
+    object-fit: cover;
+}
+
+.meta {
+    display: flex;
+    gap: .25rem;
+    flex-wrap: wrap;
+    margin-top: -1rem;
+    margin-left: 1rem;
+}
+
+.body {
+    padding: 0 1rem 0 1rem;
+}
+
+.title {
+    font-weight: 700;
+    color: var(--pnp-fg);
+    overflow: hidden;
+    height: 2lh;
+    margin-top: 0;
+    font-size: clamp(1rem,1.125vw,1.5rem);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .75rem 1rem 1rem;
+}
+
+.footerLeft {
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+}
+
+.likes {
+    display:flex;
+    align-items:center;
+    gap:.25rem;
+}
+
+.likesIcon {
+    width:18px;
+    height:18px;
+}

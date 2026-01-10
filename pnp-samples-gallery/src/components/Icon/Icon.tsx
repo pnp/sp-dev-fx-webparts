@@ -1,4 +1,4 @@
-import type { CategoryIcon } from "../types/index";
+import type { CategoryIcon } from "../../types/index";
 
 type IconPropsBase = {
     size?: number;
@@ -15,6 +15,8 @@ type IconNamedProps = IconPropsBase & {
     basePath?: string;
 };
 
+import styles from './Icon.module.css';
+
 export function Icon(props: IconSrcProps | IconNamedProps) {
     const size = props.size ?? 18;
 
@@ -22,13 +24,13 @@ export function Icon(props: IconSrcProps | IconNamedProps) {
     if ("src" in props) {
         src = props.src;
     } else {
-        const base = (props.basePath ?? "/sp-dev-fx-webparts/spfx-icons").replace(/\/$/, "");
+        const base = (props.basePath ?? "/sp-dev-fx-webparts").replace(/\/$/, "");
         src = `${base}/${props.icon}.svg`;
     }
 
     return (
         <img
-            className={props.className ?? "pnp-icon"}
+            className={props.className ?? styles.root}
             src={src}
             width={size}
             height={size}

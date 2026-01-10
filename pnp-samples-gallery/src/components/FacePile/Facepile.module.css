@@ -1,0 +1,49 @@
+.root {
+    display: inline-flex;
+    align-items: center;
+    --pnp-face-size: 28px;
+}
+
+.avatar,
+.more {
+    width: var(--pnp-face-size);
+    height: var(--pnp-face-size);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 2px solid var(--pnp-bg);
+    background: var(--pnp-surface);
+    display: grid;
+    place-items: center;
+}
+
+.avatar {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+    text-decoration: none;
+    color: inherit;
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.initials {
+    font-size: calc(var(--pnp-face-size) * 0.38);
+    font-weight: 700;
+    color: var(--pnp-fg);
+    opacity: 0.9;
+}
+
+.more {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+    font-size: calc(var(--pnp-face-size) * 0.34);
+    font-weight: 700;
+    color: var(--pnp-fg);
+    opacity: 0.9;
+}

@@ -1,4 +1,4 @@
-import type { SampleAuthor } from "./types/index";
+import type { SampleAuthor } from "../../types/index";
 
 export type FacepileProps = {
     authors?: SampleAuthor[];
@@ -23,6 +23,8 @@ function githubUrl(a: SampleAuthor): string | null {
     return a.gitHubAccount ? `https://github.com/${a.gitHubAccount}` : null;
 }
 
+import styles from './Facepile.module.css';
+
 export function Facepile(props: FacepileProps) {
     const max = props.maxVisible ?? 4;
     const size = props.size ?? 28;
@@ -35,14 +37,14 @@ export function Facepile(props: FacepileProps) {
 
     return (
         <div
-            className="pnp-facepile"
+            className={styles.root}
             role="group"
             aria-label={`Authors: ${authors.map(displayName).join(", ")}`}
             style={{ ["--pnp-face-size" as any]: `${size}px` }}
         >
             {visible.map((a, idx) => {
                 const name = displayName(a);
-                const url = githubUrl(a);
+                const url = props.linkToGithub ? githubUrl(a) : null;
 
                 const AvatarTag = url ? "a" : "div";
                 const avatarProps = url
@@ -52,10 +54,10 @@ export function Facepile(props: FacepileProps) {
                 return (
                     <AvatarTag
                         key={`${a.gitHubAccount ?? a.name ?? "author"}-${idx}`}
-                        className="pnp-facepile__avatar"
+                        className={styles.avatar}
                         {...avatarProps}
                     >
-                        { (a.pictureUrl) ? (
+                        {a.pictureUrl ? (
                             <img
                                 src={a.pictureUrl}
                                 alt={name}
@@ -63,17 +65,19 @@ export function Facepile(props: FacepileProps) {
                                 referrerPolicy="no-referrer"
                             />
                         ) : (
-                            <span className="pnp-facepile__initials">{initials(name)}</span>
+                            <span className={styles.initials}>{initials(name)}</span>
                         )}
                     </AvatarTag>
                 );
             })}
 
             {overflow > 0 ? (
-                <div className="pnp-facepile__more" title={authors.slice(max).map(displayName).join(", ")}>
+                <div className={styles.more} title={authors.slice(max).map(displayName).join(", ")}>
                     +{overflow}
                 </div>
             ) : null}
         </div>
     );
 }
+
+export default Facepile;

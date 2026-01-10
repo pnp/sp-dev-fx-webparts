@@ -3,6 +3,7 @@ import type { PnPSample } from "../types/index";
 import { Icon } from "./index";
 import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategory, categoryToIcon } from "../types/index";
 import { LikesPanel } from "./LikesPanel";
+import styles from "./SamplePanel.module.css";
 
 export interface SamplePanelProps {
     sample: PnPSample;
@@ -269,7 +270,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
 
     // swipe support (pointer events) for carousel
     useEffect(() => {
-        const vp = containerRef.current?.querySelector('.pnp-sample-panel__carousel-viewport') as HTMLElement | null;
+        const vp = containerRef.current?.querySelector(`.${styles.carouselViewport}`) as HTMLElement | null;
         if (!vp) return;
 
         let startX: number | null = null;
@@ -279,7 +280,9 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
             // If pointerdown originates from an interactive control (button, link), ignore
             const tgt = e.target as HTMLElement | null;
             if (tgt) {
-                const interactive = tgt.closest && (tgt.closest('button, a, [role="button"], .pnp-sample-panel__thumb-btn, .pnp-sample-panel__carousel-prev, .pnp-sample-panel__carousel-next'));
+                const legacySelectors = 'button, a, [role="button"], .pnp-sample-panel__thumb-btn, .pnp-sample-panel__carousel-prev, .pnp-sample-panel__carousel-next';
+                const moduleSelectors = `.${styles.thumbBtn}, .${styles.carouselPrev}, .${styles.carouselNext}`;
+                const interactive = tgt.closest && (tgt.closest(`${legacySelectors}, ${moduleSelectors}`));
                 if (interactive) return;
             }
             // only primary button
@@ -549,50 +552,49 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
     }, [sample]);
 
     return (
-        <div ref={containerRef} className="pnp-sample-panel" role="dialog" aria-label={`Sample details: ${sample.title}`} tabIndex={-1}>
-            <div className="pnp-sample-panel__header">
+        <div ref={containerRef} className={`pnp-sample-panel ${styles.root}`} role="dialog" aria-label={`Sample details: ${sample.title}`} tabIndex={-1}>
+            <div className={styles.header}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <h2 style={{ margin: 0 }}>{sample.title}</h2>
                 </div>
                 <button className="pnp-btn pnp-btn--ghost" onClick={onClose} aria-label="Close">✕</button>
             </div>
-            <div className="pnp-sample-panel__body">
+            <div className={`pnp-sample-panel__body ${styles.body}`}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 6 }}>
-                    <div className="pnp-sample-panel__last-modified">Last modified on {formatDate(lastModifiedRaw)}</div>
+                    <div className={styles.lastModified}>Last modified on {formatDate(lastModifiedRaw)}</div>
                 </div>
 
                 {/* Thumbnail carousel */}
                 {thumbnails && thumbnails.length ? (
-                    <div className="pnp-sample-panel__carousel">
-                        <div className="pnp-sample-panel__carousel-viewport">
+                    <div className={styles.carousel}>
+                        <div className={styles.carouselViewport}>
                             {thumbnails.map((t, idx) => (
                                 <img
                                     key={t.url + idx}
                                     src={t.url}
                                     alt={t.alt}
-                                    className={`pnp-sample-panel__thumb ${idx === activeIndex ? 'is-active' : ''}`}
+                                    className={`${styles.thumb} ${idx === activeIndex ? styles.thumbActive : ''}`}
                                 />
                             ))}
 
-                            <button className="pnp-sample-panel__carousel-prev pnp-btn pnp-btn--ghost" onClick={prev} aria-label="Previous image">‹</button>
-                            <button className="pnp-sample-panel__carousel-next pnp-btn pnp-btn--ghost" onClick={next} aria-label="Next image">›</button>
+                            <button className={`${styles.carouselPrev} pnp-btn pnp-btn--ghost`} onClick={prev} aria-label="Previous image">‹</button>
+                            <button className={`${styles.carouselNext} pnp-btn pnp-btn--ghost`} onClick={next} aria-label="Next image">›</button>
                         </div>
 
-                        <div className="pnp-sample-panel__carousel-indicators">
+                        <div className={styles.carouselIndicators}>
                             {thumbnails.map((_, idx) => (
                                 <button
                                     key={idx}
-                                    className={`pnp-sample-panel__carousel-indicator ${idx === activeIndex ? 'is-active' : ''}`}
+                                    className={`${styles.carouselIndicator} ${idx === activeIndex ? styles.carouselIndicatorActive : ''}`}
                                     onClick={() => setActiveIndex(idx)}
                                     aria-label={`Show image ${idx + 1}`}
                                 />
                             ))}
                         </div>
 
-                        {/* thumbnail strip below full preview */}
-                        <div className="pnp-sample-panel__thumb-strip">
+                        <div className={styles.thumbStrip}>
                             {thumbnails.map((t, idx) => (
-                                <button key={t.url + '-thumb-' + idx} className={`pnp-sample-panel__thumb-btn ${idx === activeIndex ? 'is-active' : ''}`} onClick={() => setActiveIndex(idx)} aria-label={`Thumbnail ${idx + 1}`}>
+                                <button key={t.url + '-thumb-' + idx} className={`${styles.thumbBtn} ${idx === activeIndex ? 'is-active' : ''}`} onClick={() => setActiveIndex(idx)} aria-label={`Thumbnail ${idx + 1}`}>
                                     <img src={t.url} alt={t.alt} />
                                 </button>
                             ))}
@@ -607,46 +609,46 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                     <div>
                         <button className="pnp-btn pnp-btn--action" onClick={openGitHub} title="View on GitHub">
                             <Icon icon="github" size={16} />
-                            <span className="pnp-sample-panel__action-label">View on GitHub</span>
+                            <span className={styles.actionLabel}>View on GitHub</span>
                         </button>
                     </div>
                     <div>
                         <button className="pnp-btn pnp-btn--action" onClick={download} title="Download as ZIP">
                             <Icon icon="download" size={16} />
-                            <span className="pnp-sample-panel__action-label">Download as ZIP</span>
+                            <span className={styles.actionLabel}>Download as ZIP</span>
                         </button>
                     </div>
-                    <div role="button" tabIndex={0} className="pnp-sample-panel__cli-heading" onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
+                    <div role="button" tabIndex={0} className={styles.cliHeading} onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
                         <Icon icon="cli" size={18} />
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                             <div>Download using command-line (experimental)</div>
                             {copied ? <span style={{ color: 'green4' }}>Copied!</span> : null}
                         </div>
                     </div>
-                    <div className="pnp-sample-panel__cli" onClick={copyCli} role="button" tabIndex={0}>
-                        <code className="pnp-sample-panel__cli-code">{cliCommand}</code>
+                    <div className={styles.cli} onClick={copyCli} role="button" tabIndex={0}>
+                        <code className={styles.cliCode}>{cliCommand}</code>
                         {/* clicking the block will copy to clipboard */}
                     </div>
                 </div>
 
-                <div className="pnp-sample-panel__authors-list">
+                <div className={styles.authorsList}>
                     <h3>Contributor{(resolvedAuthors && resolvedAuthors.length > 1) ? 's' : ''}</h3>
                     {(resolvedAuthors ?? []).map((a: SampleAuthor, idx: number) => {
                         const gh = githubUrl(a) ?? undefined;
                         return (
-                            <div key={`${a.gitHubAccount ?? a.name ?? 'author'}-${idx}`} className="pnp-sample-panel__author-row">
-                                <div className="pnp-sample-panel__author-avatar">
-                                    {a.pictureUrl ? <img src={a.pictureUrl} alt={displayName(a)} loading="lazy" referrerPolicy="no-referrer" /> : <span className="pnp-facepile__initials">{(displayName(a)[0] || '?').toUpperCase()}</span>}
+                            <div key={`${a.gitHubAccount ?? a.name ?? 'author'}-${idx}`} className={styles.authorRow}>
+                                <div className={styles.authorAvatar}>
+                                    {a.pictureUrl ? <img src={a.pictureUrl} alt={displayName(a)} loading="lazy" referrerPolicy="no-referrer" /> : <span className={styles.facepileInitials}>{(displayName(a)[0] || '?').toUpperCase()}</span>}
                                 </div>
                                 {gh ? (
-                                    <a className="pnp-sample-panel__author-link" href={gh} target="_blank" rel="noopener">
+                                    <a className={styles.authorLink} href={gh} target="_blank" rel="noopener">
                                         <div>
-                                            <div className="pnp-sample-panel__author-name">{displayName(a)}</div>
+                                            <div className={styles.authorName}>{displayName(a)}</div>
                                         </div>
                                     </a>
                                 ) : (
                                     <div>
-                                        <div className="pnp-sample-panel__author-name">{displayName(a)}</div>
+                                        <div className={styles.authorName}>{displayName(a)}</div>
                                     </div>
                                 )}
                             </div>
@@ -655,18 +657,18 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                 </div>
 
                 {/* Values (Category, SPFx, Technology) - placed below actions */}
-                <div className="pnp-sample-panel__values">
+                <div className={styles.values}>
                     <h3>Tags</h3>
                     {/* SPFx Version */}
-                    <div className="pnp-sample-panel__pill-value">
-                        <strong className="pnp-sample-panel__pill-label">SPFx version:</strong>
+                    <div className={styles.pillValue}>
+                        <strong className={styles.pillLabel}>SPFx version:</strong>
                         <span className="pnp-pill">{spfxVersion || 'Unknown'}</span>
                     </div>
 
                     {/* Technologies */}
                     {techList && techList.length ? (
-                        <div className="pnp-sample-panel__pill-value">
-                            <strong className="pnp-sample-panel__pill-label">Technology:</strong>
+                        <div className={styles.pillValue}>
+                            <strong className={styles.pillLabel}>Technology:</strong>
 
                             {techList.map((t: string) => {
                                 const k = techKey(t);
@@ -681,8 +683,8 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
 
                         </div>
                     ) : (
-                        <div className="pnp-sample-panel__pill-value">
-                            <strong className="pnp-sample-panel__pill-label">Technology:</strong>
+                        <div className={styles.pillValue}>
+                            <strong className={styles.pillLabel}>Technology:</strong>
                             <span className="pnp-pill">None specified</span>
                         </div>
                     )}
@@ -691,9 +693,9 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                     {categoriesList && categoriesList.length ? (() => {
                         const primary = categoriesList[0] ?? 'SPFX-WEB-PART';
                         const catLabel = prettyCategory(primary);
-                        return (
-                            <div className="pnp-sample-panel__pill-value">
-                                <strong className="pnp-sample-panel__pill-label">Category:</strong>
+                            return (
+                            <div className={styles.pillValue}>
+                                <strong className={styles.pillLabel}>Category:</strong>
                                 <span className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                                     <Icon icon={categoryToIcon(primary)} size={16} />
                                     <span>{catLabel}</span>
@@ -704,7 +706,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                 </div>
 
         {reactionsSupported ? (
-            <div className="pnp-sample-panel__likes">
+            <div className={styles.likes}>
                 <h3>Reactions</h3>
                 <LikesPanel sampleName={sample.name || ''} baseUrl={baseUrl} giscusSettings={giscusSettings} />
             </div>

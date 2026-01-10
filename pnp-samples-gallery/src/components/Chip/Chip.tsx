@@ -1,12 +1,13 @@
 // Chip.tsx
 import { motion } from "framer-motion";
 import React from "react";
+import styles from "./Chip.module.css";
 
 export function Chip(props: { label: React.ReactNode; selected: boolean; onClick: () => void; className?: string; disabled?: boolean }) {
     const { label, selected, onClick, className, disabled } = props;
-    const classes = ["pnp-chip", "pnp-chip--animated"];
+    const classes = [styles.root, styles.animated];
     if (className) classes.push(className);
-    if (disabled) classes.push("pnp-chip--disabled");
+    if (disabled) classes.push(styles.isDisabled);
 
     return (
         <button
@@ -23,13 +24,13 @@ export function Chip(props: { label: React.ReactNode; selected: boolean; onClick
         >
             {selected ? (
                 <motion.span
-                    layoutId="active-pill"                 // <-- shared within a group
-                    className="pnp-chip__active"
+                    layoutId="active-pill"
+                    className={styles.active}
                     transition={{ type: "spring", stiffness: 600, damping: 40, mass: 0.35 }}
                 />
             ) : null}
 
-            <span className="pnp-chip__content">{label}</span>
+            <span className={styles.content}>{label}</span>
         </button>
     );
 }

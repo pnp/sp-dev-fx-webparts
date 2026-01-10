@@ -1,0 +1,53 @@
+.root {
+    border: 1px solid var(--pnp-border);
+    background: var(--pnp-surface);
+    padding: 0.4rem 0.65rem;
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.92rem;
+    transition: opacity 240ms ease, background-color 200ms ease, color 200ms ease;
+}
+
+.root:hover {
+    background: var(--pnp-hover);
+    box-shadow: var(--pnp-shadow);
+}
+
+/* Disabled chip visuals */
+.isDisabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+/* Make icons (svg/img) inside disabled chips 50% transparent and animate changes */
+.isDisabled img,
+.isDisabled svg,
+.isDisabled .content img,
+.isDisabled .content svg {
+    opacity: 0.5;
+    transition: opacity 240ms ease;
+}
+
+.animated {
+    position: relative;
+    isolation: isolate;
+}
+
+.active {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    /* background: var(--pnp-accent);
+    border: 1px solid rgba(65,145,255,.35); */
+    background: #4191ff40;
+    border: 1px solid rgba(65, 145, 255, .35);
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+}

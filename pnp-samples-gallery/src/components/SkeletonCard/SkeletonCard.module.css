@@ -1,0 +1,33 @@
+.root {
+}
+
+.skeletonThumb {
+    height: 140px;
+    background: linear-gradient(90deg, #f3f3f3 25%, #ececec 37%, #f3f3f3 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+.skeletonLine {
+    display: inline-block;
+    height: 16px;
+    background: #eee;
+    width: 80%;
+}
+
+.skeletonTitle {
+    height: 20px;
+    width: 60%;
+}
+
+.skeletonPill {
+    width: 48px;
+    height: 20px;
+    background: #eee;
+    border-radius: 999px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 0%; }
+    100% { background-position: -135% 0%; }
+}

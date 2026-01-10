@@ -76,3 +76,20 @@ url = "https://discord.com/channels/1095788595010338956/1096363629680529418"
     categoryId = "DIC_kwDOA_3DA84C0m26"
     likesFeed = "/sp-dev-fx-webparts/data/likes.json"
     enabled = true
+
+  # Filters configuration: declare filter groups used by the gallery UI
+  [params.pnpSamplesGallery.filters]
+    # Each group is declared using the [[params.pnpSamplesGallery.filters.group]] table
+    [[params.pnpSamplesGallery.filters.group]]
+    key = "framework"
+    label = "Framework"
+    jsonPath = ["metadata","CLIENT-SIDE-DEV"]
+    multiple = false
+    values = [ { value = "React", label = "React" }, { value = "NoFramework", label = "No framework" } ]
+
+    [[params.pnpSamplesGallery.filters.group]]
+    key = "type"
+    label = "Type"
+    jsonPath = "metadata.SAMPLE-TYPE"
+    multiple = false
+    values = [ { value = "SPFx-WebPart", label = "Web Part" }, { value = "SPFx-Extension", label = "Extension" } ]

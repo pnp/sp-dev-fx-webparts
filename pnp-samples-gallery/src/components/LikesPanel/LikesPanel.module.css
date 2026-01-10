@@ -1,0 +1,9 @@
+/* Minimal wrapper styles for LikesPanel (Giscus embed) */
+.root {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    box-sizing: border-box;
+}

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import styles from './SamplesGallery.module.css';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from "react-dom";
 import Muuri from "muuri";
 import type { PnPSample, TechKey } from "./types/index";
@@ -7,15 +8,17 @@ import { metaFirst, getCategories, spfxToBucket, spfxBucketSortKeyDesc } from ".
 import { categoryToIcon, prettyCategory } from "./types/index";
 import { Icon } from "./components";
 import { techKey, techLabel, techToIcon } from "./types/index";
-import Pill from "./components/Pill";
+import Pill from "./components/Pill/Pill";
 import SampleCard from "./components/SampleCard";
-import SkeletonCard from "./components/SkeletonCard";
+import SkeletonCard from "./components/SkeletonCard/SkeletonCard";
 import { FacetGroup } from "./components";
 import SamplePanel from "./components/SamplePanel";
 
 import { LayoutGroup } from "framer-motion";
 import type { LikesJson } from "./types/likes";
 import { reconcilePendingLikesWithGeneratedAt } from "./types/pendingLikes";
+import { setScope as setLikesScope } from './utils/likesOverrides';
+import { clearOverridesOlderThan } from "./utils/likesOverrides";
 
 
 import "./styles.css";
@@ -133,6 +136,55 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 mq.removeListener?.(onChange);
             }
         };
+    }, []);
+
+    // Attempt to resolve session alias on load and when the stored hash changes
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        let cancelled = false;
+
+        // Reconcile local overrides against the generatedAt timestamp from likes.json
+        const reconcile = async () => {
+            try {
+                const res = await fetch('/sp-dev-fx-webparts/data/likes.json', { cache: 'no-cache' });
+                if (!res.ok) return;
+                const feed = await res.json() as { generatedAt?: string };
+                const gen = feed?.generatedAt;
+                if (gen && typeof gen === 'string' && !isNaN(Date.parse(gen))) {
+                    clearOverridesOlderThan(new Date(gen).toISOString());
+                    try { console.debug('[SamplesGallery] reconciled overrides with likes.json generatedAt', { generatedAt: gen }); } catch { }
+                }
+            } catch (err) {
+                try { console.debug('[SamplesGallery] failed to fetch likes.json for reconciliation', err); } catch { }
+            }
+        };
+        void reconcile();
+
+        const runLookup = async () => {
+            try {
+                const storage = await import('./utils/githubIdStorage');
+                const stored = storage.getStoredHash();
+                if (!stored) return;
+                const res = await fetch('/sp-dev-fx-webparts/data/likes.json', { cache: 'no-cache' });
+                if (!res.ok) return;
+                const feed = await res.json();
+                const alias = await storage.lookupAliasFromDiscussionFeed(feed);
+                if (!cancelled) {
+                    try { console.debug('[SamplesGallery] lookupAliasFromDiscussionFeed result', { alias }); } catch {
+                        /* ignore */
+                    }
+                }
+            } catch (err) {
+                try { console.debug('[SamplesGallery] lookupAliasFromDiscussionFeed failed', err); } catch {
+                    /* ignore */
+                }
+            }
+        };
+
+        void runLookup();
+        const onChanged = () => { void runLookup(); };
+        window.addEventListener('pnp:githubLoginChanged', onChanged as EventListener);
+        return () => { cancelled = true; window.removeEventListener('pnp:githubLoginChanged', onChanged as EventListener); };
     }, []);
 
     useEffect(() => {
@@ -519,7 +571,57 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const [selected, setSelected] = useState<PnPSample | null>(null);
     const [likesData, setLikesData] = useState<LikesJson | null>(null);
+
     const [pendingLikesVersion, setPendingLikesVersion] = useState(0);
+
+    // Derive a samples array enriched with totalReactions from the likes feed (if available)
+    const samplesWithLikes = useMemo(() => {
+        if (!samples || samples.length === 0) return samples;
+        if (!likesData || !(likesData as any).discussions) return samples;
+
+        const totals = new Map<string, number>();
+        const reactorsMap = new Map<string, string[]>();
+        try {
+            for (const [k, v] of Object.entries((likesData as any).discussions)) {
+                const short = k.replace(/^sample:/, '');
+                const total = (v as any)?.totalReactions ?? (Array.isArray((v as any)?.allReactors) ? ((v as any).allReactors.length) : 0);
+                totals.set(short, Number(total) || 0);
+                const reactors = Array.isArray((v as any)?.allReactors) ? (v as any).allReactors.map((r: any) => String(r).toLowerCase()) : [];
+                reactorsMap.set(short, reactors);
+            }
+        } catch {
+            // fall back to no totals
+        }
+
+        // Get the session alias (viewer) if available from sessionStorage
+        let sessionAlias: string | null = null;
+        try {
+            sessionAlias = window.sessionStorage.getItem('pnp.github.alias');
+        } catch {
+            sessionAlias = null;
+        }
+
+        // Do not apply pending likes here — SampleCard reads overrides and
+        // applies pending adjustments itself. We keep pendingLikesVersion in
+        // the hook deps so the gallery re-renders when pending changes.
+
+        return samples.map(s => {
+            const key = (s.name ?? (s as any).id ?? '').toString();
+            const shortKey = key.replace(/^sample:/, '');
+            const total = totals.get(shortKey) ?? totals.get(key) ?? 0;
+            let userHas = false;
+            try {
+                const reactors = reactorsMap.get(shortKey) ?? reactorsMap.get(key) ?? [];
+                if (sessionAlias && reactors.length > 0) userHas = reactors.includes(sessionAlias.toLowerCase());
+            } catch {
+                userHas = false;
+            }
+            // don't apply pending here; leave to SampleCard which reads overrides
+            // and applies pending adjustments so we avoid double-counting
+
+            return { ...s, totalReactions: total, userHasReactions: userHas } as typeof s & { totalReactions?: number; userHasReactions?: boolean };
+        });
+    }, [samples, likesData, pendingLikesVersion]);
 
     const reactionsSupported = (() => {
         // Priority: explicit prop -> config.reactionsSupported -> giscusSettings.reactionsSupported -> default true
@@ -541,6 +643,17 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         const out: Record<string, any> = {};
         if (props.giscusSettings) Object.assign(out, props.giscusSettings);
         if (cfgG && typeof cfgG === 'object') Object.assign(out, cfgG);
+        // normalize repo: if provided repo looks like just a repo name, prefix with default org
+        try {
+            const raw = out.repo as string | undefined;
+            if (raw && typeof raw === 'string') {
+                if (!raw.includes('/')) {
+                    out.repo = `pnp/${raw}`;
+                }
+            }
+        } catch {
+            // ignore
+        }
         return out as { repo?: string; repoId?: string; category?: string; categoryId?: string; mapping?: string; reactionsEnabled?: string; emitMetadata?: string; inputPosition?: string; lang?: string };
     }, [props.config, props.giscusSettings]);
 
@@ -556,6 +669,15 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return () => window.removeEventListener('pendingLikesChanged', onPendingLikes as EventListener);
     }, []);
 
+    // Set scoped storage key for likes overrides based on giscus repo setting
+    useEffect(() => {
+        try {
+            setLikesScope(mergedGiscusSettings?.repo as string | undefined);
+        } catch {
+            // ignore
+        }
+    }, [mergedGiscusSettings?.repo]);
+
     // Ensure pendingLikesVersion is read so React includes it in render dependencies
     // (used by SampleCard to recompute pending state)
     useEffect(() => {
@@ -566,7 +688,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 // Determine likes feed URL from config, then props.baseUrl, then public
                 const cfg = (props.config as any) ?? {};
                 const likesFeed = cfg.likesFeed as string | undefined;
-                const likesUrl = likesFeed ? likesFeed : (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/data/likes.json` : 'https://pnp.github.io/sp-dev-fx-webparts/data/likes.json');
+                const likesUrl = likesFeed ? likesFeed : (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/data/discussion-reactions.json` : 'https://pnp.github.io/sp-dev-fx-webparts/data/discussion-reactions.json');
                 const res = await fetch(likesUrl, { cache: 'no-cache' });
                 if (!res.ok) return;
                 const json = (await res.json()) as LikesJson;
@@ -595,13 +717,15 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const renderContent = () => (
         <section
-            className={["pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
+            className={[styles.root, "pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
             aria-modal={fullscreen}
             role={fullscreen ? "dialog" : undefined}
         >
-             <div className="pnp-samples__layout">
-                {isMobile ? (
-                    <div className="pnp-mobile-filters-header">
+             <div className={[styles.layout, "pnp-samples__layout"].join(" ")}
+             >
+                {/* Dev-only diagnostics removed */}
+                    {isMobile ? (
+                    <div className={[styles.mobileFiltersHeader, "pnp-mobile-filters-header"].join(" ")}>
                         <button
                             type="button"
                             className="pnp-btn"
@@ -611,10 +735,12 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         >
                             {showFilters ? "Hide filters" : "Show filters"}
                         </button>
+                        
+
                     </div>
                 ) : null}
 
-                <aside id="pnp-mobile-filters" className={`pnp-filters ${isMobile && !showFilters ? 'pnp-filters--hidden' : ''}`.trim()} aria-label="Sample filters">
+                <aside id="pnp-mobile-filters" className={[styles.filters, "pnp-filters", (isMobile && !showFilters) ? styles.filtersHidden : "", (isMobile && !showFilters) ? 'pnp-filters--hidden' : '' ].join(" ").trim()} aria-label="Sample filters">
                     
                     <label className="pnp-label" htmlFor="pnpSearch">Search</label>
                     <div className="pnp-search">
@@ -692,16 +818,16 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                 </aside>
 
-                <main className="pnp-results" aria-label="Sample results">
-                    <div className="pnp-results__meta" role="status" aria-live="polite">
-                        <div className="pnp-results__count">
+                <main className={[styles.results, "pnp-results"].join(" ")} aria-label="Sample results">
+                    <div className={[styles.resultsMeta, "pnp-results__meta"].join(" ")} role="status" aria-live="polite">
+                        <div className={[styles.resultsCount, "pnp-results__count"].join(" ")}>
                             {loading ? null : (
                                 matchCount === 1
                                     ? `Showing 1 item`
                                     : `Showing ${matchCount.toLocaleString()} items`
                             )}
                         </div>
-                        <div className="pnp-results__active" aria-label="Active filters">
+                        <div className={[styles.resultsActive, "pnp-results__active"].join(" ")} aria-label="Active filters">
                             {state.q ? <Pill label={`Search: ${state.q}`} onRemove={() => setState(p => ({ ...p, q: "" }))} /> : null}
                             {state.spfx ? <Pill label={`SPFx: ${state.spfx}`} onRemove={() => setFacet("spfx", null)} /> : null}
                             {state.tech ? <Pill label={`Tech: ${state.tech}`} onRemove={() => setFacet("tech", null)} /> : null}
@@ -717,17 +843,17 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         </div>
                     ) : null}
 
-                    <div style={{ position: "relative" }}>
+                    <div className={styles.cardGridWrapper}>
                         {loading ? (
-                            <div className="pnp-card-grid pnp-skeleton-grid" aria-label="Sample cards">
+                            <div className={[styles.cardGrid, "pnp-card-grid pnp-skeleton-grid"].join(" ")} aria-label="Sample cards">
                                 {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
                                     <SkeletonCard key={`skeleton-${i}`} />
                                 ))}
                             </div>
                         ) : (
-                            <div ref={gridRef} className="pnp-card-grid pnp-muuri-grid" aria-label="Sample cards">
-                                {(isMobile ? filteredSamples : samples).map(s => (
-                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} likesData={likesData} pendingLikesVersion={pendingLikesVersion} reactionsSupported={reactionsSupported} config={props.config} />
+                            <div ref={gridRef} className={[styles.cardGrid, "pnp-card-grid pnp-muuri-grid"].join(" ")} aria-label="Sample cards">
+                                {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
+                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
                                 ))}
                             </div>
                         )}
