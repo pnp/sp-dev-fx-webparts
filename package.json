@@ -1,0 +1,21 @@
+{
+  "name": "sp-dev-fx-webparts",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "pnp-samples-gallery"
+  ],
+  "scripts": {
+    "hugo:build": "hugo --gc --minify",
+    "hugo:serve": "hugo server -D",
+    "build:react": "npm --prefix ./pnp-samples-gallery run build",
+    "dev:react": "npm --prefix ./pnp-samples-gallery run dev",
+    "build": "npm run build:react && npm run hugo:build",
+    "dev": "concurrently \"npm run hugo:serve\" \"npm run dev:react\" \"npm run dev:static:watch\"",
+    "watch": "concurrently \"npm run hugo:serve\" \"npm --prefix ./pnp-samples-gallery run watch\" \"npm --prefix ./pnp-samples-gallery run watch:copy\"",
+    "preview": "hugo server --buildDrafts --buildFuture"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

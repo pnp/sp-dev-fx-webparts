@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "watch": "concurrently \"tsc -b -w\" \"vite build --watch\"",
+    "watch:copy": "npx chokidar \"dist/*.{js,css}\" -c \"npx cpy \"dist/*.js\" \"dist/*.css\" \"../static/vendor/pnp-samples-gallery/\" --flat\"",
     "test": "vitest",
     "postbuild": "npx cpy \"dist/*.js\" \"dist/*.css\" \"../static/vendor/pnp-samples-gallery/\" --flat",
     "lint": "eslint .",
@@ -16,6 +18,8 @@
     "framer-motion": "^12.23.26",
     "lodas": "^1.2.0",
     "muuri": "^0.9.5",
+    "pa11y": "^9.0.1",
+    "pnp-samples-gallery": "file:",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -27,6 +31,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "cpy-cli": "^3.1.1",
+    "concurrently": "^8.2.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
