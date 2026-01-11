@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
-import type { PnPSample } from "../types/index";
-import { Icon } from "./index";
-import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategory, categoryToIcon } from "../types/index";
-import { LikesPanel } from "./LikesPanel";
+import type { PnPSample } from "../../types/index";
+import { Icon } from "../index";
+import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategory, categoryToIcon } from "../../types/index";
+import { LikesPanel } from "../LikesPanel";
 import styles from "./SamplePanel.module.css";
 
 export interface SamplePanelProps {
@@ -594,7 +594,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
 
                         <div className={styles.thumbStrip}>
                             {thumbnails.map((t, idx) => (
-                                <button key={t.url + '-thumb-' + idx} className={`${styles.thumbBtn} ${idx === activeIndex ? 'is-active' : ''}`} onClick={() => setActiveIndex(idx)} aria-label={`Thumbnail ${idx + 1}`}>
+                                <button key={t.url + '-thumb-' + idx} className={`${styles.thumbBtn} ${idx === activeIndex ? styles.isActive : ''}`} onClick={() => setActiveIndex(idx)} aria-label={`Thumbnail ${idx + 1}`}>
                                     <img src={t.url} alt={t.alt} />
                                 </button>
                             ))}
@@ -602,28 +602,28 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                     </div>
                 ) : null}
 
-                <p className="pnp-sample-panel__desc">{sample.shortDescription}</p>
+                <p className={styles.description}>{sample.shortDescription}</p>
 
-                <div className="pnp-sample-panel__actions">
+                <div className={styles.actions}>
                     <h3>Actions</h3>
-                    <div>
-                        <button className="pnp-btn pnp-btn--action" onClick={openGitHub} title="View on GitHub">
+                    <div className={styles.actionRow}>
+                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={openGitHub} title="View on GitHub">
                             <Icon icon="github" size={16} />
                             <span className={styles.actionLabel}>View on GitHub</span>
                         </button>
                     </div>
-                    <div>
-                        <button className="pnp-btn pnp-btn--action" onClick={download} title="Download as ZIP">
+                    <div className={styles.actionRow}>
+                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={download} title="Download as ZIP">
                             <Icon icon="download" size={16} />
                             <span className={styles.actionLabel}>Download as ZIP</span>
                         </button>
                     </div>
-                    <div role="button" tabIndex={0} className={styles.cliHeading} onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
-                        <Icon icon="cli" size={18} />
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div>Download using command-line (experimental)</div>
-                            {copied ? <span style={{ color: 'green4' }}>Copied!</span> : null}
-                        </div>
+                    <div className={styles.actionRow} role="button" tabIndex={0} onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
+                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} aria-label="Download using command-line (experimental)">
+                            <Icon icon="cli" size={16} />
+                            <span className={styles.actionLabel}>Download using command-line (experimental)</span>
+                        </button>
+                        {copied ? <span style={{ color: 'green4' }}>Copied!</span> : null}
                     </div>
                     <div className={styles.cli} onClick={copyCli} role="button" tabIndex={0}>
                         <code className={styles.cliCode}>{cliCommand}</code>
@@ -662,30 +662,35 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                     {/* SPFx Version */}
                     <div className={styles.pillValue}>
                         <strong className={styles.pillLabel}>SPFx version:</strong>
-                        <span className="pnp-pill">{spfxVersion || 'Unknown'}</span>
+                        <div className={styles.pillValueValue}>
+                            <span className="pnp-pill">{spfxVersion || 'Unknown'}</span>
+                        </div>
                     </div>
 
                     {/* Technologies */}
                     {techList && techList.length ? (
                         <div className={styles.pillValue}>
                             <strong className={styles.pillLabel}>Technology:</strong>
-
-                            {techList.map((t: string) => {
-                                const k = techKey(t);
-                                const techIcon = techToIcon(k);
-                                const labelText = k === 'other' ? t : techLabel(k);
-                                return (
-                                    <span className="pnp-pill">
-                                        <Icon icon={techIcon} basePath="/sp-dev-fx-webparts/tech-icons" size={16} />
-                                        {labelText}</span>
-                                );
-                            })}
-
+                            <div className={styles.pillValueValue}>
+                                {techList.map((t: string) => {
+                                    const k = techKey(t);
+                                    const techIcon = techToIcon(k);
+                                    const labelText = k === 'other' ? t : techLabel(k);
+                                    return (
+                                        <span key={t} className="pnp-pill">
+                                            <Icon icon={techIcon} basePath="/sp-dev-fx-webparts/tech-icons" size={16} />
+                                            {labelText}
+                                        </span>
+                                    );
+                                })}
+                            </div>
                         </div>
                     ) : (
                         <div className={styles.pillValue}>
                             <strong className={styles.pillLabel}>Technology:</strong>
-                            <span className="pnp-pill">None specified</span>
+                            <div className={styles.pillValueValue}>
+                                <span className="pnp-pill">None specified</span>
+                            </div>
                         </div>
                     )}
 
@@ -696,10 +701,12 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                             return (
                             <div className={styles.pillValue}>
                                 <strong className={styles.pillLabel}>Category:</strong>
-                                <span className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                                    <Icon icon={categoryToIcon(primary)} size={16} />
-                                    <span>{catLabel}</span>
-                                </span>
+                                <div className={styles.pillValueValue}>
+                                    <span className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                                        <Icon icon={categoryToIcon(primary)} size={16} />
+                                        <span>{catLabel}</span>
+                                    </span>
+                                </div>
                             </div>
                         );
                     })() : null}

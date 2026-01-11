@@ -20,7 +20,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     const tech = techKey(metaFirst(s, "CLIENT-SIDE-DEV")) ?? "";
     const cats = getCategories(s);
 
-    const techBase = (techIconBasePath ?? "/sp-dev-fx-webparts/tech-icons").replace(/\/$/, "");
+    const techBase = (techIconBasePath ?? "/sp-dev-fx-webparts").replace(/\/$/, "");
     const techText = techLabel(tech);
     const techSrc = `${techBase}/${techToIcon(tech)}.svg`;
 
@@ -135,7 +135,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
     };
 
     const cardInner = (
-        <article className={`pnp-card ${styles.root}`} aria-label={s.title}>
+        <article className={styles.root} aria-label={s.title}>
             {thumb ? (
                 <figure className={styles.thumbFigure}>
                     <img
@@ -168,7 +168,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 </figure>
             )}
 
-            <div className={`pnp-card__meta ${styles.meta}`}>
+            <div className={styles.meta}>
                 {metaFirst(s, "SPFX-VERSION") ? <span className="pnp-pill" title={`SPFx ${metaFirst(s, "SPFX-VERSION")}`}>{metaFirst(s, "SPFX-VERSION")}</span> : null}
                 <span className="pnp-pill pnp-pill--icon" title={techText} aria-label={techText}>
                     <Icon src={techSrc} size={16} />
@@ -187,27 +187,25 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 </span>
             </div>
 
-            <div className={`pnp-card__body ${styles.body}`}>
+<div className={styles.container}>
+            <div className={styles.body}>
                 <h2 className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
                 <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
             </div>
-            <div className={`pnp-card__footer ${styles.footer}`}>
-                <div className={`pnp-card__footer-left ${styles.footerLeft}`}>
-                    <div className="pnp-card__date">
-                        {(() => {
-                            const raw = s.updateDateTime ?? "";
-                            if (!raw) return null;
-                            const d = new Date(raw);
-                            if (isNaN(d.getTime())) return null;
-                            return (
-                                <time dateTime={d.toISOString()} title={d.toUTCString()}>
-                                    {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-                                </time>
-                            );
-                        })()}
-                    </div>
-
+            <div className={styles.footer}>
+                <div className={`${styles.footerLeft} ${styles.date}`}>
+                    {(() => {
+                        const raw = s.updateDateTime ?? "";
+                        if (!raw) return null;
+                        const d = new Date(raw);
+                        if (isNaN(d.getTime())) return null;
+                        return (
+                            <time dateTime={d.toISOString()} title={d.toUTCString()}>
+                                {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                            </time>
+                        );
+                    })()}
                 </div>
 
                 <div className="pnp-card__footer-right" aria-hidden>
@@ -216,16 +214,17 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     }
                     {reactionsSupported ? (
                         <span
-                            className={`pnp-card__likes ${isLiked ? 'pnp-card__likes--active' : ''} ${styles.likes}`}
+                            className={`${styles.likes} ${isLiked ? styles.likesActive : ''}`}
                             title={isLiked ? `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'} — you reacted` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}
                             aria-label={isLiked ? `You reacted. ${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" className={`pnp-card__likes-icon ${styles.likesIcon}`} role="img" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" className={styles.likesIcon} role="img" aria-hidden="true">
                                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
                             </svg>
-                            <span className="pnp-card__likes-count">{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
+                            <span className={styles.likesCount}>{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
                         </span>
                     ) : null}
                 </div>
+            </div>
             </div>
         </article>
     );

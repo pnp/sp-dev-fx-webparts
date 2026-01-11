@@ -366,81 +366,11 @@ figure.pnp-card__thumb-figure {
 
 }
 
-.pnp-card__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem 1rem 1rem;
-}
-
-.pnp-card__footer-left {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.pnp-card__date {
-    color: var(--pnp-muted);
-    font-size: 0.9rem;
-}
-
-.pnp-card__footer-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.pnp-card__likes {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #333;
-    pointer-events: auto;
-    position: relative;
-    z-index: 6;
-}
-
-.pnp-card__likes--active svg.pnp-card__likes-icon {
-    stroke: #e0245e;
-    fill: red;
-}
-
-.pnp-card__likes-icon {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-}
-
-.pnp-card__likes-count {
-    font-size: 0.95rem;
-}
-
 .pnp-card__title {
     margin: 0;
     font-size: 1.05rem;
 }
 
-/* .pnp-card__title {
-    position: relative;
-    padding-bottom: 10px;
-    /* space for the line 
-    /* margin-bottom: 10px; 
-} */
-
-.pnp-card__date::before {
-    content: "";
-    position: absolute;
-
-    left: 10%;
-    right: 10%;
-    bottom: 40px;
-
-    height: 1px;
-    border-radius: 2px;
-    background-color: var(--blue);
-}
 
 .pnp-card__desc {
     margin: 0;
@@ -553,13 +483,6 @@ figure.pnp-card__thumb-figure {
     padding-top: 10px;
 }
 
-.pnp-card__meta {
-    display: flex;
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    margin-top: -1rem;
-    margin-left: 1rem;
-}
 
 .pnp-facepile {
     justify-content: flex-start;
@@ -667,20 +590,6 @@ figure.pnp-card__thumb-figure {
         0 .3px .9px 0 rgba(0, 0, 0, .108);
 }
 
-/* While the grid is initializing, reduce heavy shadows and transforms to avoid visual clutter
-   (useful while Muuri measures and positions items). Add `pnp-samples--loading` to the
-   top-level container to temporarily disable effects. */
-.pnp-samples--loading .pnp-card,
-.pnp-samples--loading .pnp-card *,
-.pnp-samples--loading .pnp-card__thumb,
-.pnp-samples--loading .pnp-sample-panel__thumb,
-.pnp-samples--loading .pnp-sample-panel__thumb-btn,
-.pnp-samples--loading .pnp-sample-panel__thumb-btn img {
-    box-shadow: none !important;
-    filter: none !important;
-    transform: none !important;
-}
-
 .pnp-samples--loading .pnp-card:hover {
     transform: none !important;
     box-shadow: none !important;
@@ -766,13 +675,38 @@ figure.pnp-card__thumb-figure {
     border-radius: 6px;
 }
 
-.skeleton-title { width: 60%; height: 20px; display: block; margin: 8px 0; }
-.skeleton-desc { width: 90%; height: 14px; display: block; margin: 6px 0; }
-.skeleton-pill { width: 72px; height: 28px; display: inline-block; border-radius: 999px; vertical-align: middle; animation: shimmer 1.4s ease-in-out infinite; background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%); }
+.skeleton-title {
+    width: 60%;
+    height: 20px;
+    display: block;
+    margin: 8px 0;
+}
+
+.skeleton-desc {
+    width: 90%;
+    height: 14px;
+    display: block;
+    margin: 6px 0;
+}
+
+.skeleton-pill {
+    width: 72px;
+    height: 28px;
+    display: inline-block;
+    border-radius: 999px;
+    vertical-align: middle;
+    animation: shimmer 1.4s ease-in-out infinite;
+    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
+}
 
 @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* .pnp-card::before {
@@ -1032,25 +966,7 @@ article.main {
     margin: 0.75rem 0;
 }
 
-.pnp-sample-panel__actions {
-    display: grid;
-}
 
-.pnp-sample-panel__actions>div {
-    width: max-content;
-}
-
-.pnp-sample-panel__actions .pnp-btn img.pnp-icon {
-    vertical-align: middle;
-}
-
-.pnp-sample-panel__actions .pnp-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding-top: 0;
-}
 
 /* New: stacked action buttons with left-aligned icons */
 .pnp-btn--action {
@@ -1326,4 +1242,10 @@ body.pnp-sample-panel-open .pnp-sample-panel__body {
         margin-top: 0;
         padding: 0.75rem;
     }
+}
+
+/* to keep after migration */
+.pnp-sample-item .pnp-pill {
+    z-index: 6 !important;
+    background: var(--pnp-bg) !important;
 }

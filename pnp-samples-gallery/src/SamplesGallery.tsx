@@ -12,7 +12,7 @@ import Pill from "./components/Pill/Pill";
 import SampleCard from "./components/SampleCard";
 import SkeletonCard from "./components/SkeletonCard/SkeletonCard";
 import { FacetGroup } from "./components";
-import SamplePanel from "./components/SamplePanel";
+import SamplePanel from "./components/SamplePanel/SamplePanel";
 
 import { LayoutGroup } from "framer-motion";
 import type { LikesJson } from "./types/likes";
