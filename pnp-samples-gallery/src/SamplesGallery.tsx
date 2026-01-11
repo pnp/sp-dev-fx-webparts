@@ -59,7 +59,46 @@ function uniqSorted(values: string[]): string[] {
     );
 }
 
+function sanitizeScopePath(): string {
+    try {
+        const path = (typeof window !== 'undefined' && window.location && window.location.pathname) ? window.location.pathname : 'site';
+        return String(path).replace(/[^a-z0-9-_]/gi, '-').replace(/^-+|-+$/g, '').toLowerCase();
+    } catch {
+        return 'site';
+    }
+}
+
+function makeScopedKey(base: string) {
+    const scope = sanitizeScopePath();
+    return `${base}:${scope}`;
+}
+
 export function SamplesGallery(props: SamplesGalleryProps) {
+    const [sortModeInternal, setSortModeInternal] = useState<'new' | 'popular'>(() => {
+        try {
+            if (typeof window !== 'undefined' && window.localStorage) {
+                const key = makeScopedKey('pnp.samples.sortMode');
+                const v = window.localStorage.getItem(key);
+                if (v === 'popular' || v === 'new') return v;
+            }
+        } catch {
+            // ignore
+        }
+        return 'new';
+    });
+
+    const setSortMode = (m: 'new' | 'popular') => {
+        try {
+            if (typeof window !== 'undefined' && window.localStorage) {
+                const key = makeScopedKey('pnp.samples.sortMode');
+                window.localStorage.setItem(key, m);
+            }
+        } catch {
+            // ignore storage errors
+        }
+        setSortModeInternal(m);
+    };
+    const sortMode = sortModeInternal;
     const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== "undefined" ? window.matchMedia('(max-width:640px)').matches : false);
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const [samples, setSamples] = useState<PnPSample[]>([]);
@@ -107,7 +146,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 const qcat = params.get("category");
                 if (qcat !== null && qcat !== "") category = qcat;
             }
-        } catch  {
+        } catch {
             // ignore - keep defaults
         }
 
@@ -121,7 +160,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         const onChange = () => setIsMobile(mq.matches);
         try {
             mq.addEventListener?.('change', onChange);
-        } catch  {
+        } catch {
             // Safari fallback
             // @ts-ignore
             mq.addListener?.(onChange);
@@ -462,7 +501,24 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     // Precompute filtered samples for mobile (we re-render the list on mobile)
     const filteredSamples = useMemo(() => {
         const out = samples.filter(s => matchesSample(s));
-        return out;
+        if (sortMode === 'popular') {
+            return out.slice().sort((a, b) => {
+                const ta = (a as any)?.totalReactions ?? (a as any)?.reactionsTotal ?? 0;
+                const tb = (b as any)?.totalReactions ?? (b as any)?.reactionsTotal ?? 0;
+                if (tb !== ta) return tb - ta;
+                const da = Date.parse(a.updateDateTime ?? "") || 0;
+                const db = Date.parse(b.updateDateTime ?? "") || 0;
+                if (db !== da) return db - da;
+                return (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
+            });
+        }
+
+        return out.slice().sort((a, b) => {
+            const da = Date.parse(a.updateDateTime ?? "") || 0;
+            const db = Date.parse(b.updateDateTime ?? "") || 0;
+            if (db !== da) return db - da;
+            return (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
+        });
     }, [samples, matchesSample]);
 
     // Helper to sort a Muuri grid newest-first by `data-date` attribute
@@ -471,6 +527,13 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             const ea = a.getElement();
             const eb = b.getElement();
 
+            if (sortMode === 'popular') {
+                const pa = Number(ea?.getAttribute('data-total-reactions') ?? 0) || 0;
+                const pb = Number(eb?.getAttribute('data-total-reactions') ?? 0) || 0;
+                if (pb !== pa) return pb - pa; // highest reactions first
+            }
+
+            // fallback to date/title ordering for 'new' or ties
             const da = Date.parse(ea?.getAttribute("data-date") ?? "") || 0;
             const db = Date.parse(eb?.getAttribute("data-date") ?? "") || 0;
 
@@ -521,7 +584,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         };
     }, [fullscreen]);
 
-    // Global key handler: `e` to toggle fullscreen, `Escape` to close.
+    const [selected, setSelected] = useState<PnPSample | null>(null);
+    const panelRef = useRef<HTMLDivElement | null>(null);
+    const lastFocusedRef = useRef<HTMLElement | null>(null);
+
+    // Global key handler: `f` to toggle fullscreen, `Escape` to close panel or fullscreen.
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
             // ignore if modifiers are held
@@ -537,15 +604,74 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
             const k = e.key;
             if (k === "Escape") {
-                if (fullscreen) setFullscreen(false);
-            } else if (k.toLowerCase() === "e") {
+                if (selected) setSelected(null);
+                else if (fullscreen) setFullscreen(false);
+            } else if (k.toLowerCase() === "f") {
                 setFullscreen(f => !f);
             }
         };
 
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
-    }, [fullscreen]);
+    }, [fullscreen, selected]);
+
+    // Focus management & simple focus-trap for the panel modal
+    useEffect(() => {
+        const node = panelRef.current;
+        if (!selected) {
+            // restore focus when panel closes
+            try { lastFocusedRef.current?.focus?.(); } catch { }
+            return;
+        }
+
+        // save last focused element
+        try { lastFocusedRef.current = document.activeElement as HTMLElement | null; } catch { lastFocusedRef.current = null; }
+
+        // focus panel container when it mounts
+        if (node) {
+            node.setAttribute('tabindex', '-1');
+            try { node.focus(); } catch { }
+        }
+
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setSelected(null);
+                e.stopPropagation();
+                return;
+            }
+
+            if (e.key === 'Tab' && node) {
+                const focusable = node.querySelectorAll<HTMLElement>('a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])');
+                if (!focusable || focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                } else if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            }
+        };
+
+        document.addEventListener('keydown', onKeyDown, true);
+
+        // hide background from AT while panel is open
+        try {
+            const mainSection = gridRef.current?.closest('section') ?? document.querySelector('section.pnp-samples');
+            if (mainSection && selected) mainSection.setAttribute('aria-hidden', 'true');
+        } catch { }
+
+        return () => {
+            document.removeEventListener('keydown', onKeyDown, true);
+            try {
+                const mainSection = gridRef.current?.closest('section') ?? document.querySelector('section.pnp-samples');
+                if (mainSection) mainSection.removeAttribute('aria-hidden');
+            } catch { }
+        };
+    }, [selected]);
 
     // Ensure Muuri recalculates after fullscreen toggles (both enter and exit)
     useEffect(() => {
@@ -554,6 +680,15 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         }, 80);
         return () => clearTimeout(id);
     }, [fullscreen]);
+
+    // Reapply sorting when sort mode changes
+    useEffect(() => {
+        const grid = muuriRef.current;
+        if (grid) {
+            applyGridSort(grid);
+            grid.refreshItems().layout();
+        }
+    }, [sortMode]);
 
 
     const setFacet = (facet: "spfx" | "tech" | "category", value: string | null) =>
@@ -569,7 +704,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const toggleFullscreen = () => setFullscreen(f => !f);
 
-    const [selected, setSelected] = useState<PnPSample | null>(null);
     const [likesData, setLikesData] = useState<LikesJson | null>(null);
 
     const [pendingLikesVersion, setPendingLikesVersion] = useState(0);
@@ -720,11 +854,14 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             className={[styles.root, "pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
             aria-modal={fullscreen}
             role={fullscreen ? "dialog" : undefined}
+            aria-labelledby={fullscreen ? 'pnp-gallery-fullscreen-title' : undefined}
+            aria-hidden={ (selected || fullscreen) ? true : undefined }
         >
-             <div className={[styles.layout, "pnp-samples__layout"].join(" ")}
-             >
+            {fullscreen ? <h2 id="pnp-gallery-fullscreen-title" className="sr-only">Samples gallery — fullscreen</h2> : null}
+            <div className={[styles.layout, "pnp-samples__layout"].join(" ")}
+            >
                 {/* Dev-only diagnostics removed */}
-                    {isMobile ? (
+                {isMobile ? (
                     <div className={[styles.mobileFiltersHeader, "pnp-mobile-filters-header"].join(" ")}>
                         <button
                             type="button"
@@ -735,38 +872,51 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         >
                             {showFilters ? "Hide filters" : "Show filters"}
                         </button>
-                        
+
 
                     </div>
                 ) : null}
 
-                <aside id="pnp-mobile-filters" className={[styles.filters, "pnp-filters", (isMobile && !showFilters) ? styles.filtersHidden : "", (isMobile && !showFilters) ? 'pnp-filters--hidden' : '' ].join(" ").trim()} aria-label="Sample filters">
-                    
-                    <label className="pnp-label" htmlFor="pnpSearch">Search</label>
-                    <div className="pnp-search">
-                        <input
-                            id="pnpSearch"
-                            className="pnp-search__input"
-                            type="search"
-                            placeholder="Search title, description, authors…"
-                            value={state.q}
-                            onChange={(e) => setQ(e.currentTarget.value)}
-                        />
-                        <button
-                            type="button"
-                            className="pnp-btn pnp-btn--ghost"
-                            onClick={() => setQ("")}
-                            aria-label="Clear search"
-                        >
-                            ✕
-                        </button>
+                <aside id="pnp-mobile-filters" className={[styles.filters, "pnp-filters", (isMobile && !showFilters) ? styles.filtersHidden : "", (isMobile && !showFilters) ? 'pnp-filters--hidden' : ''].join(" ").trim()} aria-label="Sample filters" aria-hidden={isMobile && !showFilters}  hidden={isMobile && !showFilters}>
+
+                    <div className={[styles.filterSort, "pnp-filter__sort"].join(" ")}>
+                        <label htmlFor="pnpSort" className="pnp-label">Sort</label>
+                        <div>
+                            <select id="pnpSort" className="pnp-select" value={sortMode} onChange={(e) => setSortMode(e.currentTarget.value === 'popular' ? 'popular' : 'new')}>
+                                <option value="new">New</option>
+                                <option value="popular">Popular</option>
+                            </select>
+                        </div>
                     </div>
 
+                    <div style={{ marginTop: isMobile ? '' : '1rem' }}>
+                        <label className="pnp-label" htmlFor="pnpSearch">Search</label>
+                        <div className="pnp-search">
+                            <input
+                                id="pnpSearch"
+                                className="pnp-search__input"
+                                type="search"
+                                placeholder="Search title, description, authors…"
+                                value={state.q}
+                                onChange={(e) => setQ(e.currentTarget.value)}
+                            />
+                            <button
+                                type="button"
+                                className="pnp-btn pnp-btn--ghost"
+                                onClick={() => setQ("")}
+                                aria-label="Clear search"
+                            >
+                                ✕
+                            </button>
+                        </div></div>
+
+
                     <div className="pnp-filters__actions">
-                        <button type="button" className="pnp-btn" onClick={clearAll}>
+                        <button type="button" className="pnp-btn" onClick={clearAll} aria-label='Clear all filters' title="Clear all filters">
                             Clear all
                         </button>
                     </div>
+
 
                     <LayoutGroup id="spfx">
                         <FacetGroup
@@ -792,11 +942,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                 const src = `${techBase}/${techToIcon(t as TechKey)}.svg`;
                                 return (<><Icon src={src} size={18} />&nbsp;{label}</>);
                             }}
-                                mobile={isMobile}
-                                labelText={(t) => techLabel(t as TechKey)}
+                            mobile={isMobile}
+                            labelText={(t) => techLabel(t as TechKey)}
                         />
                     </LayoutGroup>
-                       
+
 
                     <LayoutGroup id="category">
                         <FacetGroup
@@ -810,15 +960,15 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                     <Icon icon={categoryToIcon(cat)} basePath={props.iconBasePath} size={18} />&nbsp;{prettyCategory(cat)}
                                 </>
                             )}
-                                mobile={isMobile}
-                                labelText={(cat) => prettyCategory(cat)}
+                            mobile={isMobile}
+                            labelText={(cat) => prettyCategory(cat)}
                         />
                     </LayoutGroup>
 
 
                 </aside>
 
-                <main className={[styles.results, "pnp-results"].join(" ")} aria-label="Sample results">
+                <main className={[styles.results, "pnp-results"].join(" ")} aria-label="Sample results" aria-busy={loading ? "true" : "false"}>
                     <div className={[styles.resultsMeta, "pnp-results__meta"].join(" ")} role="status" aria-live="polite">
                         <div className={[styles.resultsCount, "pnp-results__count"].join(" ")}>
                             {loading ? null : (
@@ -862,8 +1012,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         {!isMobile ? (
                             <button
                                 type="button"
-                                title={fullscreen ? "Collapse" : "Expand (E)"}
-                                aria-label={fullscreen ? "Collapse" : "Expand (E)"}
+                                title={fullscreen ? "Collapse" : "Full page (F)"}
+                                aria-label={fullscreen ? "Collapse" : "Full page (F)"}
                                 className="pnp-btn pnp-btn--ghost"
                                 onClick={toggleFullscreen}
                                 style={{ position: "absolute", top: 8, right: 8, padding: 6, lineHeight: 1 }}
@@ -890,7 +1040,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const panelPortal = (typeof document !== "undefined" && selected) ? createPortal(
         <div className="pnp-sample-panel-overlay" onClick={() => setSelected(null)}>
-            <div className="pnp-sample-panel-container" onClick={(e) => e.stopPropagation()}>
+            <div className="pnp-sample-panel-container" ref={(el) => { panelRef.current = el; }} onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="pnp-sample-panel-title">
                 <SamplePanel sample={selected} onClose={() => setSelected(null)} baseUrl={props.baseUrl} giscusSettings={mergedGiscusSettings} reactionsSupported={reactionsSupported} config={props.config} />
             </div>
         </div>,

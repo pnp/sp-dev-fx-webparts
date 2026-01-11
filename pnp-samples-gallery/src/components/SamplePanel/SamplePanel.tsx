@@ -554,9 +554,9 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
     return (
         <div ref={containerRef} className={`pnp-sample-panel ${styles.root}`} role="dialog" aria-label={`Sample details: ${sample.title}`} tabIndex={-1}>
             <div className={styles.header}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <h2 style={{ margin: 0 }}>{sample.title}</h2>
-                </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        <h2 id="pnp-sample-panel-title" style={{ margin: 0 }}>{sample.title}</h2>
+                    </div>
                 <button className="pnp-btn pnp-btn--ghost" onClick={onClose} aria-label="Close">✕</button>
             </div>
             <div className={`pnp-sample-panel__body ${styles.body}`}>

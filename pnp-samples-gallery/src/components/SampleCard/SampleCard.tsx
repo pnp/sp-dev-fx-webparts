@@ -29,6 +29,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
 
     const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:640px)').matches : false;
     const anchorRef = React.useRef<HTMLElement | null>(null);
+    const titleId = `pnp-card-title-${String(s.name ?? '').replace(/[^a-z0-9-_]/gi, '-')}`;
 
     const [displayedCount, setDisplayedCount] = useState<number>(() => {
         if (!reactionsSupported) return 0;
@@ -189,7 +190,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
 
 <div className={styles.container}>
             <div className={styles.body}>
-                <h2 className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
+                <h2 id={titleId} className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
                 <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
             </div>
@@ -239,16 +240,24 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
             data-tech={tech}
             data-categories={cats.join("|")}
             data-date={(s.updateDateTime ?? "")}
+            data-total-reactions={((s as any)?.totalReactions ?? (s as any)?.reactionsTotal ?? 0)}
         >
             <div className="pnp-sample-item-content">
                 {isMobile ? (
-                    <div ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" role="link" tabIndex={0} onClick={handleClick} onKeyDown={handleKeyDown}>
+                    <button ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" type="button" aria-labelledby={titleId} onClick={handleClick} onKeyDown={handleKeyDown}>
                         {cardInner}
-                    </div>
+                    </button>
                 ) : (
-                    <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card-link" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
-                        {cardInner}
-                    </a>
+                    // Desktop: prefer to open the panel via onOpen (button) when provided; otherwise fall back to link
+                    onOpen ? (
+                        <button ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" type="button" aria-labelledby={titleId} onClick={handleClick} onKeyDown={handleKeyDown}>
+                            {cardInner}
+                        </button>
+                    ) : (
+                        <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card-link" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
+                            {cardInner}
+                        </a>
+                    )
                 )}
             </div>
         </div>

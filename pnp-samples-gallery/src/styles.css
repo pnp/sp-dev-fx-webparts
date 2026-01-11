@@ -73,6 +73,8 @@
         /* transform: none !important; */
         border-color: rgb(255, 255, 255);
         /* rgb(96, 94, 92);*/
+        margin:0;
+        padding:0;
     }
 
     /* Disable hover transform on small screens */
@@ -588,6 +590,8 @@ figure.pnp-card__thumb-figure {
     border-radius: 1rem;
     box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, .132),
         0 .3px .9px 0 rgba(0, 0, 0, .108);
+    margin:0;
+    padding:0;
 }
 
 .pnp-samples--loading .pnp-card:hover {
@@ -1248,4 +1252,15 @@ body.pnp-sample-panel-open .pnp-sample-panel__body {
 .pnp-sample-item .pnp-pill {
     z-index: 6 !important;
     background: var(--pnp-bg) !important;
+}
+
+select#pnpSort {
+    width: 100%;
+    padding: .65rem .75rem;
+    border: 1px solid var(--pnp-border);
+        background: var(--pnp-bg) #fff;
+    border-radius: 12px;
+    padding-left: 9px;
+    color: var(--pnp-fg)
+
 }

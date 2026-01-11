@@ -9,7 +9,8 @@
     animation: appear linear both;
     animation-timeline: view();
     animation-range: entry 10% cover 25%;
-    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.35))
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.35));
+    margin:0;
 }
 
 .root:hover {
@@ -161,8 +162,8 @@
 .likesIcon {
     width: 18px;
     height: 18px;
-    fill: none;
-    stroke: currentColor;
+    fill: #9e9ea7;
+    stroke: #9e9ea7;
 }
 
 .likesCount {
