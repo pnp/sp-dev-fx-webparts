@@ -313,6 +313,7 @@ button.pnp-pill,
     line-height: 1.125;
     text-wrap: balance;
     padding-top: 1rem;
+    text-align: left;
 }
 
 /* .pnp-card__footer,
