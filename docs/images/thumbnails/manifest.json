@@ -1332,7 +1332,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-dall-e-image-generation.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-document-links-accordion": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-environment-settings": {
@@ -1884,7 +1884,7 @@
     "file": "pnp-sp-dev-spfx-extensions-react-application-botframework-chat.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-field-animated-progress": {
-    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/preview.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/progressfield.png",
     "file": "pnp-sp-dev-spfx-extensions-js-field-animated-progress.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-command-dialog": {
