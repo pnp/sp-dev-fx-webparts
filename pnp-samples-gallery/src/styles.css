@@ -271,6 +271,8 @@ button.pnp-pill,
     overflow: hidden;
     transition: all 0.35s ease-in-out;
 
+    cursor: pointer;
+
 
     -webkit-backdrop-filter: blur(20px) saturate(190%) brightness(110%);
     backdrop-filter: blur(20px) saturate(190%) brightness(110%);
@@ -331,6 +333,23 @@ button.pnp-pill,
     .pnp-card:hover {
         transform: translate(5px, 5px) scale(1.1);
     }
+}
+
+/* Make interactive affordance clear and accessible */
+.pnp-card:focus-visible,
+.pnp-card-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(65, 145, 255, 0.18);
+    border-color: rgba(65, 145, 255, 0.4);
+    z-index: 12;
+}
+
+.pnp-card:active {
+    transform: translate(2px, 2px) scale(1.04);
+}
+
+.pnp-card-link {
+    cursor: pointer;
 }
 
 figure.pnp-card__thumb-figure {
@@ -593,6 +612,7 @@ figure.pnp-card__thumb-figure {
         0 .3px .9px 0 rgba(0, 0, 0, .108);
     margin:0;
     padding:0;
+    cursor:pointer;
 }
 
 .pnp-samples--loading .pnp-card:hover {
