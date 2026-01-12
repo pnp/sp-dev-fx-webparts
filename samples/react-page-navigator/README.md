@@ -49,6 +49,7 @@ Version|Date|Comments
 1.9|October 6, 2024|SPFx Upgraded to 1.20.0 and code refactored
 1.10|March 15, 2025|Added Sticky Mode options
 1.11|October 1, 2025|Fixed issue when page URL (file name) had a & or + symbol in it
+1.12|January 12, 2026|Add an option to display headings collapsed by default
 
 ## Minimal Path to Awesome
 
@@ -69,6 +70,7 @@ Version|Date|Comments
 * [Jasey Waegebaert](https://github.com/Jwaegebaert)
 * [Mike Zimmerman](https://github.com/mikezimm)
 * [Tobias Maestrini](https://github.com/tmaestrini)
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Help
 
