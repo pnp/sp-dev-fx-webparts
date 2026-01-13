@@ -5761,7 +5761,7 @@
     "shortDescription": "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator",
-    "updateDateTime": "2025-10-01",
+    "updateDateTime": "2026-01-12",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -5798,6 +5798,12 @@
         "name": "Mike Zimmerman",
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/mikezimm.86e4b8677faf.webp",
         "avatarSourceUrl": "https://github.com/mikezimm.png"
+      },
+      {
+        "gitHubAccount": "a1mery",
+        "name": "Aimery Thomas",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
+        "avatarSourceUrl": "https://github.com/a1mery.png"
       }
     ],
     "thumbnails": [
