@@ -36,12 +36,21 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
         try {
             const override = readOverrideFor(s.name);
             const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
-            const base = (override && typeof override.count === 'number') ? override.count : (typeof sampleTotal === 'number' ? sampleTotal : 0);
-            // consider pending like/unlike
-            const pending = (override as any)?.pendingLiked;
-            if (pending === true) return base + 1;
-            if (pending === false) return Math.max(0, base - 1);
+            const hasOverrideCount = override && typeof override.count === "number";
+            const base = hasOverrideCount
+                ? (override!.count as number)
+                : (typeof sampleTotal === "number" ? sampleTotal : 0);
+
+            // Only apply the pending delta when we DON'T yet have an authoritative override.count.
+            // If override.count exists, it already reflects live giscus totals.
+            if (!hasOverrideCount) {
+                const pending = (override as any)?.pendingLiked;
+                if (pending === true) return base + 1;
+                if (pending === false) return Math.max(0, base - 1);
+            }
+
             return base;
+
         } catch {
             return 0;
         }
@@ -70,14 +79,19 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 const override = readOverrideFor(s.name) as any;
                 if (override) {
                     const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
-                    const base = (typeof override.count === 'number') ? override.count : (typeof sampleTotal === 'number' ? sampleTotal : 0);
-                    if (typeof override.pendingLiked === 'boolean') {
+                    const hasOverrideCount = typeof override.count === "number";
+                    const base = hasOverrideCount
+                        ? (override.count as number)
+                        : (typeof sampleTotal === "number" ? sampleTotal : 0);
+
+                    // Only apply pending delta when override.count is NOT available yet.
+                    if (!hasOverrideCount && typeof override.pendingLiked === "boolean") {
                         if (override.pendingLiked === true) setDisplayedCount(base + 1);
                         else setDisplayedCount(Math.max(0, base - 1));
                     } else {
-                        if (typeof override.count === 'number') setDisplayedCount(override.count);
-                        else setDisplayedCount(typeof sampleTotal === 'number' ? sampleTotal : 0);
+                        setDisplayedCount(base);
                     }
+
 
                     if (typeof override.pendingLiked === 'boolean') setIsLiked(override.pendingLiked);
                     else if (typeof override.viewerReacted === 'boolean') setIsLiked(override.viewerReacted);
@@ -240,7 +254,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
             data-tech={tech}
             data-categories={cats.join("|")}
             data-date={(s.updateDateTime ?? "")}
-            data-total-reactions={((s as any)?.totalReactions ?? (s as any)?.reactionsTotal ?? 0)}
+            data-total-reactions={(displayedCount ?? 0)}
         >
             <div className="pnp-sample-item-content">
                 {isMobile ? (

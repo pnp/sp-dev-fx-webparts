@@ -1,5 +1,5 @@
 import styles from './SamplesGallery.module.css';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from "react-dom";
 import Muuri from "muuri";
 import type { PnPSample, TechKey } from "./types/index";
@@ -17,8 +17,9 @@ import SamplePanel from "./components/SamplePanel/SamplePanel";
 import { LayoutGroup } from "framer-motion";
 import type { LikesJson } from "./types/likes";
 import { reconcilePendingLikesWithGeneratedAt } from "./types/pendingLikes";
-import { setScope as setLikesScope } from './utils/likesOverrides';
-import { clearOverridesOlderThan } from "./utils/likesOverrides";
+import { setScope as setLikesScope, clearOverridesOlderThan, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
+import type { OverrideEntry } from "./utils/likesOverrides";
+
 
 
 import "./styles.css";
@@ -191,10 +192,10 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 const gen = feed?.generatedAt;
                 if (gen && typeof gen === 'string' && !isNaN(Date.parse(gen))) {
                     clearOverridesOlderThan(new Date(gen).toISOString());
-                    try { console.debug('[SamplesGallery] reconciled overrides with likes.json generatedAt', { generatedAt: gen }); } catch { }
+                    try { console.debug('[SamplesGallery] reconciled overrides with likes.json generatedAt', { generatedAt: gen }); } catch { /* ignore */}  
                 }
             } catch (err) {
-                try { console.debug('[SamplesGallery] failed to fetch likes.json for reconciliation', err); } catch { }
+                try { console.debug('[SamplesGallery] failed to fetch likes.json for reconciliation', err); } catch {  /* ignore */}
             }
         };
         void reconcile();
@@ -276,6 +277,39 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         };
     }, [props.src]);
 
+    // Helper to sort a Muuri grid newest-first by `data-date` attribute
+    const totalReactionsByIdRef = useRef<Map<string, number>>(new Map());
+    
+    // Helper to sort a Muuri grid newest-first by `data-date` attribute
+    const applyGridSort = useCallback((grid: Muuri) => {
+        grid.sort((a, b) => {
+            const ea = a.getElement();
+            const eb = b.getElement();
+
+            if (sortMode === 'popular') {
+                const ida = String(ea?.getAttribute("data-id") ?? "");
+                const idb = String(eb?.getAttribute("data-id") ?? "");
+
+                // Use the latest override-aware totals (including pending adjustments if you include them in the map)
+                const pa = totalReactionsByIdRef.current.get(ida) ?? 0;
+                const pb = totalReactionsByIdRef.current.get(idb) ?? 0;
+
+                if (pb !== pa) return pb - pa; // highest reactions first
+            }
+
+            // fallback to date/title ordering for 'new' or ties
+            const da = Date.parse(ea?.getAttribute("data-date") ?? "") || 0;
+            const db = Date.parse(eb?.getAttribute("data-date") ?? "") || 0;
+
+            if (db !== da) return db - da; // newest first
+
+            const ta = ea?.getAttribute("data-title") ?? "";
+            const tb = eb?.getAttribute("data-title") ?? "";
+            return ta.localeCompare(tb);
+        });
+    }, [sortMode]);
+
+
     useEffect(() => {
         if (!gridRef.current) return;
         if (loading) return;
@@ -334,7 +368,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 muuriRef.current = null;
             }
         };
-    }, [loading, samples.length, fullscreen, isMobile]);
+    }, [loading, samples.length, fullscreen, isMobile, applyGridSort]);
 
 
     const facets = useMemo(() => {
@@ -498,9 +532,133 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return n;
     }, [samples, matchesSample]);
 
+    const [likesData, setLikesData] = useState<LikesJson | null>(null);
+
+    const [, setPendingLikesVersion] = useState(0);
+    const likesOverridesRaw = useSyncExternalStore(
+        (onStoreChange: () => void) => {
+            if (typeof window === "undefined") return () => { };
+            return subscribeLikesOverrides(() => onStoreChange());
+        },
+        () => (typeof window === "undefined" ? "" : localStorage.getItem("pnp:likes:overrides") ?? ""),
+        () => ""
+    );
+
+    const likesOverrides = useMemo<OverrideEntry[]>(() => {
+        if (!likesOverridesRaw) return [];
+        try {
+            const parsed = JSON.parse(likesOverridesRaw) as unknown;
+            return Array.isArray(parsed) ? (parsed as OverrideEntry[]) : [];
+        } catch {
+            return [];
+        }
+    }, [likesOverridesRaw]);
+
+
+    // Derive a samples array enriched with totalReactions from the likes feed (if available)
+    const samplesWithLikes = useMemo(() => {
+        if (!samples || samples.length === 0) return samples;
+        if (!likesData || !(likesData as any).discussions) return samples;
+
+        const totals = new Map<string, number>();
+        const reactorsMap = new Map<string, string[]>();
+        try {
+            for (const [k, v] of Object.entries((likesData as any).discussions)) {
+                const short = k.replace(/^sample:/, '');
+                const total = (v as any)?.totalReactions ?? (Array.isArray((v as any)?.allReactors) ? ((v as any).allReactors.length) : 0);
+                totals.set(short, Number(total) || 0);
+                const reactors = Array.isArray((v as any)?.allReactors) ? (v as any).allReactors.map((r: any) => String(r).toLowerCase()) : [];
+                reactorsMap.set(short, reactors);
+            }
+        } catch {
+            // fall back to no totals
+        }
+
+        // Get the session alias (viewer) if available from sessionStorage
+        let sessionAlias: string | null = null;
+        try {
+            sessionAlias = window.sessionStorage.getItem('pnp.github.alias');
+        } catch {
+            sessionAlias = null;
+        }
+
+        const overridesBySample = new Map<string, OverrideEntry>();
+        for (const o of likesOverrides) {
+            const raw = String(o.sample ?? "");
+            const short = raw.replace(/^sample:/, "");
+            overridesBySample.set(short, o);
+            overridesBySample.set(raw, o);
+        }
+
+
+
+        return samples.map(s => {
+            const key = (s.name ?? (s as PnPSample).name ?? '').toString();
+            const shortKey = key.replace(/^sample:/, '');
+            const total = totals.get(shortKey) ?? totals.get(key) ?? 0;
+            const ov = overridesBySample.get(shortKey) ?? overridesBySample.get(key);
+            const mergedTotal = (typeof ov?.count === "number") ? ov.count : total;
+            let userHas = false;
+            try {
+                const reactors = reactorsMap.get(shortKey) ?? reactorsMap.get(key) ?? [];
+                if (sessionAlias && reactors.length > 0) userHas = reactors.includes(sessionAlias.toLowerCase());
+            } catch {
+                userHas = false;
+            }
+
+            const mergedUserHas =
+                (typeof ov?.viewerReacted === "boolean") ? ov.viewerReacted : userHas;
+
+            return { ...s, totalReactions: mergedTotal, userHasReactions: mergedUserHas } as typeof s & { totalReactions?: number; userHasReactions?: boolean };
+        });
+    }, [samples, likesData, likesOverrides]);
+
+    const totalReactionsById = useMemo(() => {
+        const map = new Map<string, number>();
+
+        // Build an override lookup by short and raw id
+        const ovById = new Map<string, OverrideEntry>();
+        for (const o of likesOverrides) {
+            const raw = String(o.sample ?? "");
+            const short = raw.replace(/^sample:/, "");
+            ovById.set(raw, o);
+            ovById.set(short, o);
+        }
+
+        for (const s of samplesWithLikes) {
+            const rawId = String((s as any).name ?? "");
+            if (!rawId) continue;
+
+            const shortId = rawId.replace(/^sample:/, "");
+
+            // Base total that came from likes.json (already merged with ov.count in your samplesWithLikes)
+            let total = Number((s as any).totalReactions ?? 0) || 0;
+
+            // Apply pending delta ONLY if we don't have an authoritative ov.count
+            const ov = ovById.get(rawId) ?? ovById.get(shortId);
+            const hasAuthoritativeCount = typeof ov?.count === "number";
+
+            if (!hasAuthoritativeCount && typeof ov?.pendingLiked === "boolean") {
+                total = ov.pendingLiked ? (total + 1) : Math.max(0, total - 1);
+            }
+
+            map.set(rawId, total);
+            map.set(shortId, total);
+        }
+
+        return map;
+    }, [samplesWithLikes, likesOverrides]);
+
+    
+    useEffect(() => {
+        // keep the ref in sync so applyGridSort can read the latest totals
+        totalReactionsByIdRef.current = totalReactionsById;
+    }, [totalReactionsById]);
+
+
     // Precompute filtered samples for mobile (we re-render the list on mobile)
     const filteredSamples = useMemo(() => {
-        const out = samples.filter(s => matchesSample(s));
+        const out = samplesWithLikes.filter(s => matchesSample(s));
         if (sortMode === 'popular') {
             return out.slice().sort((a, b) => {
                 const ta = (a as any)?.totalReactions ?? (a as any)?.reactionsTotal ?? 0;
@@ -519,31 +677,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             if (db !== da) return db - da;
             return (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
         });
-    }, [samples, matchesSample]);
+    }, [samplesWithLikes, matchesSample, sortMode]);
 
-    // Helper to sort a Muuri grid newest-first by `data-date` attribute
-    const applyGridSort = (grid: Muuri) => {
-        grid.sort((a, b) => {
-            const ea = a.getElement();
-            const eb = b.getElement();
-
-            if (sortMode === 'popular') {
-                const pa = Number(ea?.getAttribute('data-total-reactions') ?? 0) || 0;
-                const pb = Number(eb?.getAttribute('data-total-reactions') ?? 0) || 0;
-                if (pb !== pa) return pb - pa; // highest reactions first
-            }
-
-            // fallback to date/title ordering for 'new' or ties
-            const da = Date.parse(ea?.getAttribute("data-date") ?? "") || 0;
-            const db = Date.parse(eb?.getAttribute("data-date") ?? "") || 0;
-
-            if (db !== da) return db - da; // newest first
-
-            const ta = ea?.getAttribute("data-title") ?? "";
-            const tb = eb?.getAttribute("data-title") ?? "";
-            return ta.localeCompare(tb);
-        });
-    };
+    // applyGridSort moved earlier to ensure it's declared before use
 
     useEffect(() => {
         const grid = muuriRef.current;
@@ -558,16 +694,16 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             });
 
             // Ensure newest-first sorting after filter
+            grid.refreshItems();
             applyGridSort(grid);
-
-            // Re-measure + layout (good when item heights differ)
-            grid.refreshItems().layout();
+            grid.layout();
             return;
         }
 
         // No Muuri (mobile): mobile re-renders the list via React; nothing to do here
         return;
-    }, [state, byId, matchesSample]);
+    }, [state, byId, matchesSample, applyGridSort, totalReactionsById]);
+
 
     // Fullscreen: lock body scroll and restore on exit
     useEffect(() => {
@@ -620,7 +756,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         const node = panelRef.current;
         if (!selected) {
             // restore focus when panel closes
-            try { lastFocusedRef.current?.focus?.(); } catch { }
+            try { lastFocusedRef.current?.focus?.(); } catch {  /* ignore */ }
             return;
         }
 
@@ -630,7 +766,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         // focus panel container when it mounts
         if (node) {
             node.setAttribute('tabindex', '-1');
-            try { node.focus(); } catch { }
+            try { node.focus(); } catch {  /* ignore */ }
         }
 
         const onKeyDown = (e: KeyboardEvent) => {
@@ -681,15 +817,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return () => clearTimeout(id);
     }, [fullscreen]);
 
-    // Reapply sorting when sort mode changes
-    useEffect(() => {
-        const grid = muuriRef.current;
-        if (grid) {
-            applyGridSort(grid);
-            grid.refreshItems().layout();
-        }
-    }, [sortMode]);
-
 
     const setFacet = (facet: "spfx" | "tech" | "category", value: string | null) =>
         setState(prev => ({ ...prev, [facet]: value }));
@@ -704,58 +831,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const toggleFullscreen = () => setFullscreen(f => !f);
 
-    const [likesData, setLikesData] = useState<LikesJson | null>(null);
-
-    const [pendingLikesVersion, setPendingLikesVersion] = useState(0);
-
-    // Derive a samples array enriched with totalReactions from the likes feed (if available)
-    const samplesWithLikes = useMemo(() => {
-        if (!samples || samples.length === 0) return samples;
-        if (!likesData || !(likesData as any).discussions) return samples;
-
-        const totals = new Map<string, number>();
-        const reactorsMap = new Map<string, string[]>();
-        try {
-            for (const [k, v] of Object.entries((likesData as any).discussions)) {
-                const short = k.replace(/^sample:/, '');
-                const total = (v as any)?.totalReactions ?? (Array.isArray((v as any)?.allReactors) ? ((v as any).allReactors.length) : 0);
-                totals.set(short, Number(total) || 0);
-                const reactors = Array.isArray((v as any)?.allReactors) ? (v as any).allReactors.map((r: any) => String(r).toLowerCase()) : [];
-                reactorsMap.set(short, reactors);
-            }
-        } catch {
-            // fall back to no totals
-        }
-
-        // Get the session alias (viewer) if available from sessionStorage
-        let sessionAlias: string | null = null;
-        try {
-            sessionAlias = window.sessionStorage.getItem('pnp.github.alias');
-        } catch {
-            sessionAlias = null;
-        }
-
-        // Do not apply pending likes here — SampleCard reads overrides and
-        // applies pending adjustments itself. We keep pendingLikesVersion in
-        // the hook deps so the gallery re-renders when pending changes.
-
-        return samples.map(s => {
-            const key = (s.name ?? (s as any).id ?? '').toString();
-            const shortKey = key.replace(/^sample:/, '');
-            const total = totals.get(shortKey) ?? totals.get(key) ?? 0;
-            let userHas = false;
-            try {
-                const reactors = reactorsMap.get(shortKey) ?? reactorsMap.get(key) ?? [];
-                if (sessionAlias && reactors.length > 0) userHas = reactors.includes(sessionAlias.toLowerCase());
-            } catch {
-                userHas = false;
-            }
-            // don't apply pending here; leave to SampleCard which reads overrides
-            // and applies pending adjustments so we avoid double-counting
-
-            return { ...s, totalReactions: total, userHasReactions: userHas } as typeof s & { totalReactions?: number; userHasReactions?: boolean };
-        });
-    }, [samples, likesData, pendingLikesVersion]);
+    
 
     const reactionsSupported = (() => {
         // Priority: explicit prop -> config.reactionsSupported -> giscusSettings.reactionsSupported -> default true

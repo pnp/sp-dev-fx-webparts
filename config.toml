@@ -16,7 +16,7 @@ disablePnPTelemetry = false
 logo = "pnp.svg"
 alternateName = "PnP"
 noparker = true
-customCSS =  ["css/spfx-webparts.css"]
+customCSS =  ["css/custom.css"]
 
 [[menus.main]]
 identifier = "samples"
