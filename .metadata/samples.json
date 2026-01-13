@@ -8587,7 +8587,7 @@
             "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
         ],
         "creationDateTime": "2019-09-05",
-        "updateDateTime": "2025-10-01",
+        "updateDateTime": "2026-01-12",
         "products": [
             "SharePoint"
         ],
@@ -8630,6 +8630,11 @@
                 "gitHubAccount": "mikezimm",
                 "name": "Mike Zimmerman",
                 "pictureUrl": "https://github.com/mikezimm.png"
+            },
+            {
+                "gitHubAccount": "a1mery",
+                "name": "Aimery Thomas",
+                "pictureUrl": "https://github.com/a1mery.png"
             }
         ],
         "references": [
