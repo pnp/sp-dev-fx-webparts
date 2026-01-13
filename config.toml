@@ -93,3 +93,6 @@ url = "https://discord.com/channels/1095788595010338956/1096363629680529418"
     jsonPath = "metadata.SAMPLE-TYPE"
     multiple = false
     values = [ { value = "SPFx-WebPart", label = "Web Part" }, { value = "SPFx-Extension", label = "Extension" } ]
+
+[params.googleTagManager]
+id = "G-YZHMBM65MJ"
