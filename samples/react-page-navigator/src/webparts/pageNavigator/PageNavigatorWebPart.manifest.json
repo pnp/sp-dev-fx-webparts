@@ -23,7 +23,8 @@
     "officeFabricIconFontName": "BulletedTreeList",
     "properties": { 
       "stickyMode": false,
-      "stickyParentDistance": "1"
+      "stickyParentDistance": "1",
+      "isExpanded": true
     }
   }]
 }

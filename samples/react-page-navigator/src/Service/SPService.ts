@@ -42,9 +42,10 @@ export class SPService {
   /**
    * Returns the Anchor Links for Nav element
    * @param context Web part context
+   * @param isExpanded whether navigation links should be expanded by default
    * @returns anchorLinks
    */
-  public static async GetAnchorLinks(context: WebPartContext): Promise<INavLink[]> {
+  public static async GetAnchorLinks(context: WebPartContext, isExpanded: boolean = false): Promise<INavLink[]> {
     const anchorLinks: INavLink[] = [];
 
     try {
@@ -110,7 +111,7 @@ export class SPService {
             this.allUrls.push(anchorUrl);
 
             // Add link to nav element
-            const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true };
+            const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: isExpanded };
             navLinkBuilder.build<INavLink>(anchorLinks, newNavLink, headingOrder);
           });
         }
