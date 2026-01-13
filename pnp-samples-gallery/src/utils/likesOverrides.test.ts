@@ -59,7 +59,6 @@ describe('likesOverrides', () => {
 
         clearOverridesOlderThan('2020-06-01T00:00:00.000Z');
 
-        const all = readAllOverrides();
         const old = readOverrideFor('sample-old');
         const neu = readOverrideFor('sample-new');
 

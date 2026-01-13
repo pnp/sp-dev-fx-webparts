@@ -5,6 +5,21 @@ import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategor
 import { LikesPanel } from "../LikesPanel";
 import styles from "./SamplePanel.module.css";
 
+type AnalyticsEvent = "download_click" | "view_click";
+
+function track(eventName: AnalyticsEvent, params?: Record<string, unknown>) {
+    const gtagFn = (window as any).gtag as undefined | ((...args: any[]) => void);
+    if (!gtagFn) return;
+    try {
+        gtagFn("event", eventName, {
+            event_category: "engagement",
+            ...params,
+        });
+    } catch {
+        // swallow errors from analytics to avoid breaking UX
+    }
+}
+
 export interface SamplePanelProps {
     sample: PnPSample;
     onClose: () => void;
@@ -15,6 +30,7 @@ export interface SamplePanelProps {
         category?: string;
         categoryId?: string;
     };
+
     config?: Record<string, unknown>;
     reactionsSupported?: boolean;
 }
@@ -37,11 +53,14 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
 
     const download = () => {
         const url = sample.downloadUrl ?? sample.url;
+        track("download_click", { item_id: sample.name, method: 'zip' });
         // Open download in new tab
         window.open(url, "_blank", "noopener");
     };
 
     const openGitHub = () => {
+        track("download_click", { item_id: sample.name, method: 'github' });
+
         // Open the sample URL (usually links to the GitHub sample page)
         const gh = sample.url ?? sample.source ?? sample.downloadUrl;
         if (gh) window.open(gh, "_blank", "noopener");
@@ -80,6 +99,15 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
     }, [sample]);
 
     const [copied, setCopied] = useState(false);
+
+    useEffect(() => {
+        // Track when this panel is displayed for the current sample
+        try {
+            track("view_click", { item_id: sample.name ?? sample.title ?? sample.url, view: 'sample_panel' });
+        } catch {
+            // ignore analytics errors
+        }
+    }, [sample]);
 
     // refs for focus management
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -451,13 +479,26 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
             }
 
             setCopied(true);
+            // track that user copied the CLI command
+            track("download_click", { item_id: sample.name, method: 'cli_copy' });
             setTimeout(() => setCopied(false), 2000);
         } catch {
             // If both methods fail, still provide visual feedback (no throw)
             setCopied(true);
+            // track failure as copy attempt
+            track("download_click", { item_id: sample.name, method: 'cli_copy_attempt' });
             setTimeout(() => setCopied(false), 2000);
         }
     };
+
+        const downloadUsingCli = () => {
+            // track the CLI-initiated download
+            track("download_click", { item_id: sample.name ?? sample.title ?? cliCommand, method: 'cli' });
+            // Provide a minimal UX: open a new tab with a prefilled search showing the CLI command
+            // This avoids executing shell commands from the browser. Users can copy and run locally.
+            const url = `https://www.google.com/search?q=${encodeURIComponent(cliCommand)}`;
+            window.open(url, "_blank", "noopener");
+        };
 
     // helper to display name and github URL
     type SampleAuthor = {
@@ -618,16 +659,19 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                             <span className={styles.actionLabel}>Download as ZIP</span>
                         </button>
                     </div>
-                    <div className={styles.actionRow} role="button" tabIndex={0} onClick={copyCli} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCli(); } }}>
-                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} aria-label="Download using command-line (experimental)">
+                    <div className={styles.actionRow}>
+                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={downloadUsingCli} title="Download using command-line (experimental)">
                             <Icon icon="cli" size={16} />
                             <span className={styles.actionLabel}>Download using command-line (experimental)</span>
                         </button>
+                        <button className={`${styles.actionsButton} pnp-btn pnp-btn--ghost`} onClick={copyCli} aria-label="Copy CLI command">
+                            Copy command
+                        </button>
                         {copied ? <span style={{ color: 'green4' }}>Copied!</span> : null}
                     </div>
-                    <div className={styles.cli} onClick={copyCli} role="button" tabIndex={0}>
-                        <code className={styles.cliCode}>{cliCommand}</code>
-                        {/* clicking the block will copy to clipboard */}
+                    <div className={styles.cli}>
+                        <code className={styles.cliCode} onClick={copyCli} role="button" tabIndex={0}>{cliCommand}</code>
+                        {/* clicking the code block will copy to clipboard */}
                     </div>
                 </div>
 
