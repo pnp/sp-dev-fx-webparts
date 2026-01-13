@@ -33,7 +33,7 @@ export function readAllOverrides(): OverrideEntry[] {
         if (!raw) return [];
         const parsed = JSON.parse(raw) as unknown;
         if (Array.isArray(parsed)) {
-            return parsed.filter((v): v is OverrideEntry => v && typeof v === 'object' && typeof (v as any).sample === 'string');
+            return parsed.filter((v): v is OverrideEntry => isOverrideEntry(v));
         }
     } catch {
         // ignore
@@ -67,23 +67,23 @@ export function upsertOverride(sample: string, fields: { count?: number | null; 
     const idx = all.findIndex((e) => normalizeSampleKey(e.sample) === key);
     if (idx >= 0) {
         const entry = { ...all[idx] } as OverrideEntry;
-        if (fields.count === null) delete (entry as any).count;
+        if (fields.count === null) delete entry.count;
         else if (typeof fields.count === 'number') entry.count = fields.count;
 
-        if (fields.viewerReacted === null) delete (entry as any).viewerReacted;
+        if (fields.viewerReacted === null) delete entry.viewerReacted;
         else if (typeof fields.viewerReacted === 'boolean') entry.viewerReacted = fields.viewerReacted;
 
-        if (fields.pendingLiked === null) delete (entry as any).pendingLiked;
+        if (fields.pendingLiked === null) delete entry.pendingLiked;
         else if (typeof fields.pendingLiked === 'boolean') entry.pendingLiked = fields.pendingLiked;
 
-        if (fields.pendingLikedAt === null) delete (entry as any).pendingLikedAt;
+        if (fields.pendingLikedAt === null) delete entry.pendingLikedAt;
         else if (typeof fields.pendingLikedAt === 'string') entry.pendingLikedAt = fields.pendingLikedAt;
 
         entry.updatedAt = now;
-        entry.sample = key;
+        entry.sample = sample;
         all[idx] = entry;
     } else {
-        const entry: OverrideEntry = { sample: key, updatedAt: now };
+        const entry: OverrideEntry = { sample: sample, updatedAt: now };
         if (typeof fields.count === 'number') entry.count = fields.count;
         if (typeof fields.viewerReacted === 'boolean') entry.viewerReacted = fields.viewerReacted;
         if (typeof fields.pendingLiked === 'boolean') entry.pendingLiked = fields.pendingLiked;
@@ -91,13 +91,38 @@ export function upsertOverride(sample: string, fields: { count?: number | null; 
         all.push(entry);
     }
     writeAllOverrides(all);
+    try { window.dispatchEvent(new CustomEvent('pnp:likesOverrideChanged', { detail: { sample } })); } catch { }
+}
+
+function isOverrideEntry(v: unknown): v is OverrideEntry {
+    if (!v || typeof v !== 'object') return false;
+    const o = v as Record<string, unknown>;
+    if (typeof o.sample !== 'string') return false;
+    if (typeof o.updatedAt !== 'string') return false;
+    if ('count' in o && o.count !== undefined && typeof o.count !== 'number') return false;
+    if ('viewerReacted' in o && o.viewerReacted !== undefined && typeof o.viewerReacted !== 'boolean') return false;
+    if ('pendingLiked' in o && o.pendingLiked !== undefined && typeof o.pendingLiked !== 'boolean') return false;
+    if ('pendingLikedAt' in o && o.pendingLikedAt !== undefined && typeof o.pendingLikedAt !== 'string') return false;
+    return true;
 }
 
 export function clearOverridesOlderThan(isoDate: string): void {
     try {
         const all = readAllOverrides();
         const cutoff = new Date(isoDate).toISOString();
-        const filtered = all.filter((e) => e.updatedAt >= cutoff);
+        const filtered = all.map((e) => {
+            // If entry is newer or equal, keep as-is
+            if (e.updatedAt >= cutoff) return e;
+
+            // Entry is older than cutoff: preserve viewerReacted if present, but
+            // remove transient numeric/pending fields so counts are refreshed
+            if (typeof e.viewerReacted === 'boolean') {
+                return { sample: e.sample, viewerReacted: e.viewerReacted, updatedAt: e.updatedAt } as OverrideEntry;
+            }
+
+            // otherwise, drop the entry (return undefined marker)
+            return undefined as unknown as OverrideEntry;
+        }).filter((v): v is OverrideEntry => !!v);
         const newRaw = JSON.stringify(filtered);
         const existingRaw = localStorage.getItem(STORAGE_OVERRIDES_KEY);
         if (existingRaw !== newRaw) {

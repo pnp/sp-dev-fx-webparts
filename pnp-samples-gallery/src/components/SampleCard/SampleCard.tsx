@@ -35,7 +35,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
         if (!reactionsSupported) return 0;
         try {
             const override = readOverrideFor(s.name);
-            const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+            const sampleTotal = s.totalReactions;
             const hasOverrideCount = override && typeof override.count === "number";
             const base = hasOverrideCount
                 ? (override!.count as number)
@@ -65,9 +65,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 if (typeof override.pendingLiked === 'boolean') return override.pendingLiked;
                 if (typeof override.viewerReacted === 'boolean') return override.viewerReacted;
             }
-            return !!((s as any)?.userHasReactions);
+            return !!(s.userHasReactions);
         } catch {
-            return !!((s as any)?.userHasReactions);
+            return !!(s.userHasReactions);
         }
     });
 
@@ -78,7 +78,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 if (sample && sample !== s.name) return;
                 const override = readOverrideFor(s.name) as any;
                 if (override) {
-                    const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+                    const sampleTotal = s.totalReactions;
                     const hasOverrideCount = typeof override.count === "number";
                     const base = hasOverrideCount
                         ? (override.count as number)
@@ -96,9 +96,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     if (typeof override.pendingLiked === 'boolean') setIsLiked(override.pendingLiked);
                     else if (typeof override.viewerReacted === 'boolean') setIsLiked(override.viewerReacted);
                 } else {
-                    const sampleTotal = (s as any)?.totalReactions ?? (s as any)?.reactionsTotal;
+                    const sampleTotal = s.totalReactions;
                     setDisplayedCount(typeof sampleTotal === 'number' ? sampleTotal : 0);
-                    setIsLiked(!!((s as any)?.userHasReactions));
+                    setIsLiked(!!(s.userHasReactions));
                 }
             } catch {
                 // ignore
@@ -106,6 +106,33 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
         });
         return unsub;
     }, [s, reactionsSupported]);
+
+    // Ensure component state resyncs when props change (e.g., after reconcile or feed refresh)
+    useEffect(() => {
+        try {
+            const override = readOverrideFor(s.name);
+            if (override) {
+                const sampleTotal = s.totalReactions;
+                const hasOverrideCount = typeof override.count === 'number';
+                const base = hasOverrideCount ? (override.count as number) : (typeof sampleTotal === 'number' ? sampleTotal : 0);
+
+                if (!hasOverrideCount && typeof override.pendingLiked === 'boolean') {
+                    setDisplayedCount(override.pendingLiked ? base + 1 : Math.max(0, base - 1));
+                } else {
+                    setDisplayedCount(base);
+                }
+
+                if (typeof override.pendingLiked === 'boolean') setIsLiked(override.pendingLiked);
+                else if (typeof override.viewerReacted === 'boolean') setIsLiked(override.viewerReacted);
+            } else {
+                const sampleTotal = s.totalReactions;
+                setDisplayedCount(typeof sampleTotal === 'number' ? sampleTotal : 0);
+                setIsLiked(!!s.userHasReactions);
+            }
+        } catch {
+            // ignore
+        }
+    }, [s.name, s.totalReactions, s.userHasReactions]);
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
         const isMouse = 'button' in e;
@@ -229,13 +256,13 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                     }
                     {reactionsSupported ? (
                         <span
-                            className={`${styles.likes} ${isLiked ? styles.likesActive : ''}`}
+                            className={`${styles.likes} pnp-card__likes ${isLiked ? `pnp-card__likes--active ${styles.likesActive}` : ''}`.trim()}
                             title={isLiked ? `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'} — you reacted` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}
                             aria-label={isLiked ? `You reacted. ${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}>
                             <svg width="18" height="18" viewBox="0 0 24 24" className={styles.likesIcon} role="img" aria-hidden="true">
                                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
                             </svg>
-                            <span className={styles.likesCount}>{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
+                            <span className={`${styles.likesCount} pnp-card__likes-count`}>{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
                         </span>
                     ) : null}
                 </div>

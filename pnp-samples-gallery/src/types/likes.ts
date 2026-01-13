@@ -4,6 +4,8 @@ export interface LikesEntry {
   discussionUrl?: string;
 }
 
+export interface DiscussionEntry { totalReactions?: number; allReactors?: string[]; }
+
 export interface LikesJson {
   generatedAt?: string; // ISO timestamp
   source?: {
@@ -12,4 +14,5 @@ export interface LikesJson {
     category?: string;
   };
   likes?: Record<string, LikesEntry>;
+  discussions?: Record<string, DiscussionEntry>;
 }

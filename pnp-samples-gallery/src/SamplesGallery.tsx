@@ -19,6 +19,7 @@ import type { LikesJson } from "./types/likes";
 import { reconcilePendingLikesWithGeneratedAt } from "./types/pendingLikes";
 import { setScope as setLikesScope, clearOverridesOlderThan, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
 import type { OverrideEntry } from "./utils/likesOverrides";
+import normalizeLikes from "./utils/likesNormalizer";
 
 
 
@@ -534,6 +535,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const [likesData, setLikesData] = useState<LikesJson | null>(null);
 
+    // Use typed normalizer helper
+    const normalizeLikesData = normalizeLikes;
+
     const [, setPendingLikesVersion] = useState(0);
     const likesOverridesRaw = useSyncExternalStore(
         (onStoreChange: () => void) => {
@@ -558,21 +562,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     // Derive a samples array enriched with totalReactions from the likes feed (if available)
     const samplesWithLikes = useMemo(() => {
         if (!samples || samples.length === 0) return samples;
-        if (!likesData || !(likesData as any).discussions) return samples;
-
-        const totals = new Map<string, number>();
-        const reactorsMap = new Map<string, string[]>();
-        try {
-            for (const [k, v] of Object.entries((likesData as any).discussions)) {
-                const short = k.replace(/^sample:/, '');
-                const total = (v as any)?.totalReactions ?? (Array.isArray((v as any)?.allReactors) ? ((v as any).allReactors.length) : 0);
-                totals.set(short, Number(total) || 0);
-                const reactors = Array.isArray((v as any)?.allReactors) ? (v as any).allReactors.map((r: any) => String(r).toLowerCase()) : [];
-                reactorsMap.set(short, reactors);
-            }
-        } catch {
-            // fall back to no totals
-        }
+        const { totals, reactorsMap } = normalizeLikesData(likesData);
 
         // Get the session alias (viewer) if available from sessionStorage
         let sessionAlias: string | null = null;
@@ -590,10 +580,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             overridesBySample.set(raw, o);
         }
 
-
-
         return samples.map(s => {
-            const key = (s.name ?? (s as PnPSample).name ?? '').toString();
+            const key = (s.name ?? '').toString();
             const shortKey = key.replace(/^sample:/, '');
             const total = totals.get(shortKey) ?? totals.get(key) ?? 0;
             const ov = overridesBySample.get(shortKey) ?? overridesBySample.get(key);
@@ -606,12 +594,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 userHas = false;
             }
 
-            const mergedUserHas =
-                (typeof ov?.viewerReacted === "boolean") ? ov.viewerReacted : userHas;
+            const mergedUserHas = (typeof ov?.viewerReacted === "boolean") ? ov.viewerReacted : userHas;
 
-            return { ...s, totalReactions: mergedTotal, userHasReactions: mergedUserHas } as typeof s & { totalReactions?: number; userHasReactions?: boolean };
+            return { ...s, totalReactions: mergedTotal, userHasReactions: mergedUserHas } as PnPSample;
         });
-    }, [samples, likesData, likesOverrides]);
+    }, [samples, likesData, likesOverrides, normalizeLikesData]);
 
     const totalReactionsById = useMemo(() => {
         const map = new Map<string, number>();
@@ -626,13 +613,13 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         }
 
         for (const s of samplesWithLikes) {
-            const rawId = String((s as any).name ?? "");
+            const rawId = String(s.name ?? "");
             if (!rawId) continue;
 
             const shortId = rawId.replace(/^sample:/, "");
 
-            // Base total that came from likes.json (already merged with ov.count in your samplesWithLikes)
-            let total = Number((s as any).totalReactions ?? 0) || 0;
+            // Base total that came from likes.json (already merged with ov.count in samplesWithLikes)
+            let total = Number(s.totalReactions ?? 0) || 0;
 
             // Apply pending delta ONLY if we don't have an authoritative ov.count
             const ov = ovById.get(rawId) ?? ovById.get(shortId);
@@ -661,8 +648,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         const out = samplesWithLikes.filter(s => matchesSample(s));
         if (sortMode === 'popular') {
             return out.slice().sort((a, b) => {
-                const ta = (a as any)?.totalReactions ?? (a as any)?.reactionsTotal ?? 0;
-                const tb = (b as any)?.totalReactions ?? (b as any)?.reactionsTotal ?? 0;
+                const ta = a.totalReactions ?? 0;
+                const tb = b.totalReactions ?? 0;
                 if (tb !== ta) return tb - ta;
                 const da = Date.parse(a.updateDateTime ?? "") || 0;
                 const db = Date.parse(b.updateDateTime ?? "") || 0;

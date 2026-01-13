@@ -50,4 +50,22 @@ describe('likesOverrides', () => {
         expect(calls).toContain('s2');
         expect(calls).not.toContain('s3');
     });
+
+    it('reconcile preserves viewerReacted when clearing old overrides', () => {
+        // older entry that has viewerReacted should preserve that field
+        upsertOverride('sample-old', { count: 1, viewerReacted: true, updatedAt: '2020-01-01T00:00:00.000Z' });
+        // newer entry without viewerReacted should remain as-is
+        upsertOverride('sample-new', { count: 2, updatedAt: '2021-01-01T00:00:00.000Z' });
+
+        clearOverridesOlderThan('2020-06-01T00:00:00.000Z');
+
+        const all = readAllOverrides();
+        const old = readOverrideFor('sample-old');
+        const neu = readOverrideFor('sample-new');
+
+        expect(old).toBeDefined();
+        // viewerReacted should still be present after reconcile
+        expect(old?.viewerReacted).toBe(true);
+        expect(neu).toBeDefined();
+    });
 });
