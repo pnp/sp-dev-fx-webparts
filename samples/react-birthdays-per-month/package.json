@@ -40,7 +40,7 @@
     "gulp-postcss": "^9.0.1",
     "postcss": "8.4.49",
     "postcss-import": "15.0.1",
-    "spfx-fast-serve-helpers": "1.15.5",
+    "spfx-fast-serve-helpers": "1.21.1",
     "tailwindcss": "3.2.7",
     "typescript": "5.3.3",
     "eslint": "8.57.1",
