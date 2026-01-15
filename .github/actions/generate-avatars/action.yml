@@ -229,7 +229,7 @@ runs:
                 }
 
                 a.pictureUrl = `${avatarUrlBase}${encodeURIComponent(result.outFile)}`;
-                authorsUpdated += 1;
+                avatarsUpdated += 1;
               } catch (err) {
                 avatarsFailed += 1;
                 console.warn(
@@ -263,7 +263,7 @@ runs:
           // Outputs (single source of truth)
           const outPath = process.env.GITHUB_OUTPUT;
           fs.appendFileSync(outPath, `avatars_generated=${avatarsGenerated}\n`);
-          fs.appendFileSync(outPath, `authors_updated=${authorsUpdated}\n`);
+          fs.appendFileSync(outPath, `authors_updated=${avatarsUpdated}\n`);
           fs.appendFileSync(outPath, `avatars_skipped=${avatarsSkipped}\n`);
           fs.appendFileSync(outPath, `avatars_deleted=${avatarsDeleted}\n`);
           fs.appendFileSync(outPath, `avatars_failed=${avatarsFailed}\n`);
@@ -273,7 +273,7 @@ runs:
           const lines = [];
           lines.push(`## Avatars`);
           lines.push(`- Avatars generated/updated: **${avatarsGenerated}**`);
-          lines.push(`- Author entries updated: **${authorsUpdated}**`);
+          lines.push(`- Author entries updated: **${avatarsUpdated}**`);
           lines.push(`- Skipped: **${avatarsSkipped}**`);
           lines.push(`- Failed: **${avatarsFailed}**`);
           lines.push(`- Deleted (orphans): **${avatarsDeleted}**`);
