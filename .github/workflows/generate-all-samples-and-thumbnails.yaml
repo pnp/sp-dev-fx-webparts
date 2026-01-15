@@ -208,6 +208,7 @@ jobs:
         with:
           docs-path: Docs
           all-samples-path: .metadata/all-samples.json
+          allow-remote: "true"
           node-version: "20"
           install-deps: "true"
 
@@ -279,7 +280,8 @@ jobs:
             const authors = Array.isArray(s.authors) ? s.authors : [];
             for (const a of authors) {
               if (!a) continue;
-              const key =
+
+                           const key =
                 (a.gitHubAccount && `gh:${a.gitHubAccount.toLowerCase()}`) ||
                 (a.avatarSourceUrl && `src:${a.avatarSourceUrl}`) ||
                 (a.pictureUrl && `pic:${a.pictureUrl}`) ||
@@ -291,7 +293,6 @@ jobs:
               byKey.set(key, {
                 gitHubAccount: a.gitHubAccount || existing.gitHubAccount || "",
                 name: a.name || existing.name || "",
-                company: a.company || existing.company || "",
                 pictureUrl: a.pictureUrl || existing.pictureUrl || "",
                 avatarSourceUrl: a.avatarSourceUrl || existing.avatarSourceUrl || ""
               });

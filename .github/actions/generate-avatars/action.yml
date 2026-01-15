@@ -14,6 +14,9 @@ inputs:
   install-deps:
     required: false
     default: "true"
+  allow-remote:
+    required: false
+    default: "true"
 
 outputs:
   avatars_generated:
@@ -67,12 +70,13 @@ runs:
         fs.mkdirSync(avatarsDir, { recursive: true });
 
         let avatarsGenerated = 0;
-        let authorsUpdated = 0;
+        let avatarsUpdated = 0;
+        let avatarsFailed = 0;
         let avatarsSkipped = 0;
         let avatarsDeleted = 0;
 
         // Track which files should exist after generation
-        const expectedFiles = new Set([".gitkeep"]); // keep if you use one; safe even if it doesn't exist
+        const expectedFiles = new Set(["manifest.json", ".gitkeep"]); 
 
         function safeFileName(name) {
           return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -84,18 +88,98 @@ runs:
           return [];
         }
 
-        // If you want remote avatar downloading, we can add it. For now: skip remote.
-        async function normalizeAvatar(url) {
+        const crypto = require("crypto");
+
+        const allowRemote = String(process.env.ALLOW_REMOTE || "true").toLowerCase() === "true";
+
+        const manifestPath = path.join(avatarsDir, "manifest.json");
+        const oldManifest = fs.existsSync(manifestPath)
+          ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+          : {}; // keyed by sourceUrl
+
+        function safeSlug(s) {
+          return String(s || "author")
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 40) || "author";
+        }
+
+        function sha256Hex(buf) {
+          return crypto.createHash("sha256").update(buf).digest("hex");
+        }
+
+        async function fetchBuffer(url) {
+          const res = await fetch(url, { redirect: "follow" });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const ab = await res.arrayBuffer();
+          return {
+            buf: Buffer.from(ab),
+            contentType: res.headers.get("content-type") || ""
+          };
+        }
+
+        async function normalizeRemoteToWebp(inputBuf, contentType, sizePx) {
+          const isSvg = /image\/svg\+xml/i.test(contentType);
+          const img = isSvg
+            ? sharp(inputBuf, { density: 256 })
+            : sharp(inputBuf, { animated: true, pages: 1 });
+
+          return await img
+            .resize(sizePx, sizePx, { fit: "cover", position: "centre" })
+            .webp({ quality: 80, effort: 4 })
+            .toBuffer();
+        }
+
+        async function normalizeAvatar(url, slugBase) {
           if (!url || typeof url !== "string") {
             avatarsSkipped += 1;
             return null;
           }
 
+          // Remote URL path (the common case)
           if (url.startsWith("http://") || url.startsWith("https://")) {
-            avatarsSkipped += 1;
-            return null;
+            if (!allowRemote) {
+              avatarsSkipped += 1;
+              return null;
+            }
+
+            // Manifest cache hit?
+            const prev = oldManifest[url];
+            if (prev?.file) {
+              const prevPath = path.join(avatarsDir, prev.file);
+              if (fs.existsSync(prevPath)) {
+                expectedFiles.add("manifest.json");
+                expectedFiles.add(prev.file);
+                avatarsSkipped += 1;
+                return { outFile: prev.file, sourceUrl: url, cached: true };
+              }
+            }
+
+            // Download + normalize + hashed filename
+            const sizePx = 28;
+            const { buf, contentType } = await fetchBuffer(url);
+            const outBuf = await normalizeRemoteToWebp(buf, contentType, sizePx);
+
+            const hash = sha256Hex(outBuf).slice(0, 12);
+            const slug = safeSlug(slugBase);
+            const outFile = `${slug}.${hash}.webp`;
+            const outPath = path.join(avatarsDir, outFile);
+
+            if (!fs.existsSync(outPath)) fs.writeFileSync(outPath, outBuf);
+
+            // Update manifest entry (keyed by sourceUrl)
+            oldManifest[url] = { sourceUrl: url, file: outFile, sizePx, sha256_12: hash };
+
+            expectedFiles.add("manifest.json");
+            expectedFiles.add(outFile);
+            avatarsGenerated += 1;
+            return { outFile, sourceUrl: url, cached: false };
           }
 
+          // Local file path fallback (keep your current behavior if you still need it)
+          const inputPath = path.resolve(url);
           const inputPath = path.resolve(url);
           if (!fs.existsSync(inputPath)) {
             avatarsSkipped += 1;
@@ -108,23 +192,18 @@ runs:
 
           expectedFiles.add(outFile);
 
-          if (!fs.existsSync(outPath)) {
-            try {
-              await sharp(inputPath)
-                .resize({ width: 160, height: 160, fit: "cover" })
-                .webp({ quality: 82 })
-                .toFile(outPath);
-              avatarsGenerated += 1;
-            } catch (e) {
-              avatarsSkipped += 1;
-              // If generation failed, don't treat output as expected
-              expectedFiles.delete(outFile);
-              return null;
-            }
+          const alreadyExisted = fs.existsSync(outPath);
+          if (!alreadyExisted) {
+            await sharp(inputPath)
+              .resize({ width: 28, height: 28, fit: "cover" })
+              .webp({ quality: 82 })
+              .toFile(outPath);
+            avatarsGenerated += 1;
           }
 
-          return outFile;
+          return { outFile, sourceUrl: null, cached: alreadyExisted };
         }
+
 
         (async () => {
           for (const s of samples) {
@@ -134,33 +213,44 @@ runs:
             for (const a of authors) {
               if (!a) continue;
 
-              const current =
-                a.pictureUrl ||
-                a.avatarUrl ||
-                a.image ||
-                a.picture ||
-                null;
+              // Exact old behavior: only remote pictureUrl
+              const sourceUrl = a.pictureUrl;
+              if (!sourceUrl || typeof sourceUrl !== "string") continue;
+              if (!sourceUrl.startsWith("http://") && !sourceUrl.startsWith("https://")) continue;
 
-              const outFile = await normalizeAvatar(current);
-              if (!outFile) continue;
+              const slugBase = a.gitHubAccount || a.name || "author";
 
-              a.pictureUrl = `${avatarUrlBase}${outFile}`;
-              authorsUpdated += 1;
+              try {
+                const result = await normalizeAvatar(sourceUrl, slugBase);
+                if (!result?.outFile) continue;
+
+                // Preserve original remote URL like the old workflow
+                if (result.sourceUrl && !a.avatarSourceUrl) {
+                  a.avatarSourceUrl = result.sourceUrl;
+                }
+
+                a.pictureUrl = `${avatarUrlBase}${encodeURIComponent(result.outFile)}`;
+                authorsUpdated += 1;
+              } catch (err) {
+                avatarsFailed += 1;
+                console.warn(
+                  `[avatars] Failed for ${a.gitHubAccount || a.name || "author"} (${sourceUrl}):`,
+                  err?.message ?? err
+                );
+                continue;
+              }
             }
-
-            s.authors = authors;
           }
 
+          // Persist JSON
           fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2) + "\n");
 
-          // Delete orphaned avatar images (anything not in expectedFiles)
+          // Delete orphans
           if (fs.existsSync(avatarsDir)) {
             for (const f of fs.readdirSync(avatarsDir)) {
-              // Ignore directories + non-images if needed
               const full = path.join(avatarsDir, f);
               if (!fs.statSync(full).isFile()) continue;
 
-              // If you have a manifest.json or other keepers, add them to expectedFiles
               if (!expectedFiles.has(f)) {
                 fs.unlinkSync(full);
                 avatarsDeleted += 1;
@@ -168,12 +258,16 @@ runs:
             }
           }
 
-          // Outputs
+          // Persist manifest
+          fs.writeFileSync(manifestPath, JSON.stringify(oldManifest, null, 2) + "\n", "utf8");
+
+          // Outputs (single source of truth)
           const outPath = process.env.GITHUB_OUTPUT;
           fs.appendFileSync(outPath, `avatars_generated=${avatarsGenerated}\n`);
           fs.appendFileSync(outPath, `authors_updated=${authorsUpdated}\n`);
           fs.appendFileSync(outPath, `avatars_skipped=${avatarsSkipped}\n`);
           fs.appendFileSync(outPath, `avatars_deleted=${avatarsDeleted}\n`);
+          fs.appendFileSync(outPath, `avatars_failed=${avatarsFailed}\n`);
 
           // Step summary
           const summaryPath = process.env.GITHUB_STEP_SUMMARY;
@@ -182,13 +276,17 @@ runs:
           lines.push(`- Avatars generated/updated: **${avatarsGenerated}**`);
           lines.push(`- Author entries updated: **${authorsUpdated}**`);
           lines.push(`- Skipped: **${avatarsSkipped}**`);
+          lines.push(`- Failed: **${avatarsFailed}**`);
           lines.push(`- Deleted (orphans): **${avatarsDeleted}**`);
           fs.appendFileSync(summaryPath, lines.join("\n") + "\n");
         })().catch(err => {
           console.error(err);
           process.exit(1);
         });
+
         EOF
       env:
         DOCS_PATH: ${{ inputs.docs-path }}
         ALL_SAMPLES_PATH: ${{ inputs.all-samples-path }}
+        ALLOW_REMOTE: ${{ inputs.allow-remote }}
+
