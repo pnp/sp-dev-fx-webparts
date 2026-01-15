@@ -180,7 +180,6 @@ runs:
 
           // Local file path fallback (keep your current behavior if you still need it)
           const inputPath = path.resolve(url);
-          const inputPath = path.resolve(url);
           if (!fs.existsSync(inputPath)) {
             avatarsSkipped += 1;
             return null;
