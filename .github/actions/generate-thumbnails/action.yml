@@ -1,5 +1,5 @@
 name: Generate thumbnails
-description: Optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
+description: Download/optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
 
 inputs:
   node-version:
@@ -14,17 +14,20 @@ inputs:
   install-deps:
     required: false
     default: "true"
+  allow-remote:
+    description: Allow downloading remote thumbnails (http/https)
+    required: false
+    default: "true"
 
 outputs:
   thumbnails_generated:
-    description: Number of thumbnail files generated/updated
     value: ${{ steps.metrics.outputs.thumbnails_generated }}
   thumbnails_failed:
-    description: Number of thumbnails that failed
     value: ${{ steps.metrics.outputs.thumbnails_failed }}
   samples_with_thumbnails:
-    description: Number of samples that ended up with a thumbnail URL
     value: ${{ steps.metrics.outputs.samples_with_thumbnails }}
+  thumbnails_deleted:
+    value: ${{ steps.metrics.outputs.thumbnails_deleted }}
 
 runs:
   using: composite
@@ -42,16 +45,21 @@ runs:
         npm install sharp >/dev/null 2>&1
 
     - id: metrics
-      name: Optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
+      name: Download/optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
       shell: bash
       run: |
         node << 'EOF'
         const fs = require("fs");
         const path = require("path");
+        const os = require("os");
+        const crypto = require("crypto");
+        const https = require("https");
+        const http = require("http");
         const sharp = require("sharp");
 
         const docsPath = process.env.DOCS_PATH || "Docs";
         const allSamplesPath = path.resolve(process.env.ALL_SAMPLES_PATH || ".metadata/all-samples.json");
+        const allowRemote = String(process.env.ALLOW_REMOTE || "true").toLowerCase() === "true";
 
         const repo = process.env.GITHUB_REPOSITORY;
         const repoName = repo.split("/")[1];
@@ -63,16 +71,25 @@ runs:
         const thumbsDir = path.resolve(docsPath, "docs/images/thumbnails");
         fs.mkdirSync(thumbsDir, { recursive: true });
 
+        // Keep-list + orphan cleanup
+        const expectedFiles = new Set(["manifest.json", ".gitkeep"].filter(f => true));
         const manifestPath = path.join(thumbsDir, "manifest.json");
         const newManifest = {};
-        const expectedFiles = new Set(["manifest.json"]);
 
-        const failedThumbs = [];
+        const failures = [];
         let generatedCount = 0;
         let samplesWithThumb = 0;
+        let deletedCount = 0;
+
+        const dlCacheDir = path.join(os.tmpdir(), "thumb-dl-cache");
+        fs.mkdirSync(dlCacheDir, { recursive: true });
 
         function safeFileName(name) {
           return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
+        }
+
+        function sha1(input) {
+          return crypto.createHash("sha1").update(String(input)).digest("hex");
         }
 
         function pickThumb(sample) {
@@ -83,20 +100,92 @@ runs:
           return img?.url || null;
         }
 
+        function fetchToFile(url, outPath, maxRedirects = 5) {
+          return new Promise((resolve, reject) => {
+            const lib = url.startsWith("https://") ? https : http;
+            const req = lib.get(url, {
+              headers: {
+                "User-Agent": "github-actions-thumbnail-bot",
+                "Accept": "image/*,*/*;q=0.8"
+              }
+            }, (res) => {
+              const status = res.statusCode || 0;
+
+              // Redirect
+              if ([301, 302, 303, 307, 308].includes(status) && res.headers.location && maxRedirects > 0) {
+                const next = new URL(res.headers.location, url).toString();
+                res.resume();
+                return resolve(fetchToFile(next, outPath, maxRedirects - 1));
+              }
+
+              if (status < 200 || status >= 300) {
+                res.resume();
+                return reject(new Error(`HTTP ${status} fetching ${url}`));
+              }
+
+              const file = fs.createWriteStream(outPath);
+              res.pipe(file);
+              file.on("finish", () => file.close(() => resolve(outPath)));
+              file.on("error", (err) => {
+                try { fs.unlinkSync(outPath); } catch {}
+                reject(err);
+              });
+            });
+
+            req.on("error", reject);
+            req.setTimeout(30000, () => {
+              req.destroy(new Error(`Timeout fetching ${url}`));
+            });
+          });
+        }
+
+        async function resolveInputPath(thumbUrl) {
+          // Remote?
+          if (thumbUrl.startsWith("http://") || thumbUrl.startsWith("https://")) {
+            if (!allowRemote) throw new Error("remote_disabled");
+
+            const ext = path.extname(new URL(thumbUrl).pathname) || ".img";
+            const cacheName = `${sha1(thumbUrl)}${ext}`;
+            const cachedPath = path.join(dlCacheDir, cacheName);
+
+            if (!fs.existsSync(cachedPath)) {
+              await fetchToFile(thumbUrl, cachedPath);
+            }
+            return cachedPath;
+          }
+
+          // Local
+          const localPath = path.resolve(thumbUrl);
+          if (!fs.existsSync(localPath)) throw new Error(`missing_input_file:${localPath}`);
+          return localPath;
+        }
+
+        async function writeWebp(inputPath, outPath) {
+          // For GIFs (often animated), reliably take the first frame
+          const ext = path.extname(inputPath).toLowerCase();
+          const isGif = ext === ".gif";
+
+          // sharp animated:true will load frames; we just want frame 0.
+          // If libvips can't decode animation, sharp still usually decodes first frame.
+          const pipeline = isGif
+            ? sharp(inputPath, { animated: true }).extractFrame(0)
+            : sharp(inputPath);
+
+          await pipeline
+            .resize({ width: 640, withoutEnlargement: true })
+            .webp({ quality: 80 })
+            .toFile(outPath);
+        }
+
         async function optimizeOne(sample) {
           const thumbUrl = pickThumb(sample);
           if (!thumbUrl) return;
 
-          // Your prior workflow logic may have supported more mapping rules.
-          // Keep behavior conservative and count failures instead of crashing.
-          if (thumbUrl.startsWith("http://") || thumbUrl.startsWith("https://")) {
-            failedThumbs.push({ sample: sample.sample, reason: "remote_url_not_supported", url: thumbUrl });
-            return;
-          }
-
-          const inputPath = path.resolve(thumbUrl);
-          if (!fs.existsSync(inputPath)) {
-            failedThumbs.push({ sample: sample.sample, reason: "missing_input_file", path: inputPath });
+          let inputPath;
+          try {
+            inputPath = await resolveInputPath(thumbUrl);
+          } catch (e) {
+            failures.push({ sample: sample.sample, reason: "input_unavailable", url: thumbUrl, error: String(e?.message || e) });
             return;
           }
 
@@ -105,13 +194,10 @@ runs:
           const outPath = path.join(thumbsDir, outFile);
 
           try {
-            await sharp(inputPath)
-              .resize({ width: 640, withoutEnlargement: true })
-              .webp({ quality: 80 })
-              .toFile(outPath);
+            await writeWebp(inputPath, outPath);
             generatedCount += 1;
           } catch (e) {
-            failedThumbs.push({ sample: sample.sample, reason: "sharp_failed", error: String(e) });
+            failures.push({ sample: sample.sample, reason: "sharp_failed", url: thumbUrl, inputPath, error: String(e?.message || e) });
             return;
           }
 
@@ -123,42 +209,45 @@ runs:
         }
 
         (async () => {
+          // generate
           for (const s of samples) {
             // eslint-disable-next-line no-await-in-loop
             await optimizeOne(s);
           }
 
+          // persist updated metadata + manifest
           fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2) + "\n");
           fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2) + "\n");
 
-          // Clean old files
+          // cleanup orphans
           for (const f of fs.readdirSync(thumbsDir)) {
+            const full = path.join(thumbsDir, f);
+            if (!fs.statSync(full).isFile()) continue;
             if (!expectedFiles.has(f)) {
-              fs.unlinkSync(path.join(thumbsDir, f));
+              fs.unlinkSync(full);
+              deletedCount += 1;
             }
           }
 
-          // Outputs
-          const outPath = process.env.GITHUB_OUTPUT;
-          fs.appendFileSync(outPath, `thumbnails_generated=${generatedCount}\n`);
-          fs.appendFileSync(outPath, `thumbnails_failed=${failedThumbs.length}\n`);
-          fs.appendFileSync(outPath, `samples_with_thumbnails=${samplesWithThumb}\n`);
+          // outputs
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_generated=${generatedCount}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_failed=${failures.length}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `samples_with_thumbnails=${samplesWithThumb}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_deleted=${deletedCount}\n`);
 
-          // Step summary
-          const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+          // summary
           const lines = [];
           lines.push(`## Thumbnails`);
           lines.push(`- Generated/updated: **${generatedCount}**`);
           lines.push(`- Samples with thumbnail URL set: **${samplesWithThumb}**`);
-          lines.push(`- Failed: **${failedThumbs.length}**`);
-          if (failedThumbs.length) {
+          lines.push(`- Deleted (orphans): **${deletedCount}**`);
+          lines.push(`- Failed: **${failures.length}**`);
+          if (failures.length) {
             lines.push(`\n<details><summary>Failures</summary>\n`);
-            lines.push(`\n\`\`\`json\n${JSON.stringify(failedThumbs, null, 2)}\n\`\`\`\n`);
+            lines.push(`\n\`\`\`json\n${JSON.stringify(failures, null, 2)}\n\`\`\`\n`);
             lines.push(`</details>\n`);
           }
-          fs.appendFileSync(summaryPath, lines.join("\n") + "\n");
-
-          console.log(`Thumbnails generated into: ${thumbsDir}`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
         })().catch(err => {
           console.error(err);
           process.exit(1);
@@ -167,3 +256,4 @@ runs:
       env:
         DOCS_PATH: ${{ inputs.docs-path }}
         ALL_SAMPLES_PATH: ${{ inputs.all-samples-path }}
+        ALLOW_REMOTE: ${{ inputs.allow-remote }}

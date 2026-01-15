@@ -192,14 +192,17 @@ jobs:
           EOF
 
       - name: Generate thumbnails
+        id: thumbs
         uses: ./.github/actions/generate-thumbnails
         with:
           docs-path: Docs
           all-samples-path: .metadata/all-samples.json
+          allow-remote: "true"
           node-version: "20"
           install-deps: "true"
 
       - name: Generate avatars
+        id: avatars
         uses: ./.github/actions/generate-avatars
         with:
           docs-path: Docs
@@ -269,127 +272,72 @@ jobs:
           );
           EOF
 
+      - name: Check Docs working tree changes
+        id: check_changes
+        shell: bash
+        run: |
+          cd Docs
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+
       - name: Commit + push to Docs branch only
+        shell: bash
         run: |
           cd Docs
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
           git add -A docs/images/thumbnails docs/images/avatars docs/data
-   
+
           if git diff --cached --exit-code; then
             echo "ℹ️ No changes to publish to Docs branch"
             exit 0
           fi
 
           git commit -m "chore: publish samples data + images [skip ci]"
-          git push
+          git push origin HEAD:Docs
           echo "✅ Changes committed and pushed"
 
       - name: Generate workflow summary
         if: always()
+        shell: bash
         run: |
-          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
-          # 📊 Merge All Samples Workflow Summary
-          
-          ## Workflow Details
-          - **Triggered by**: ${{ github.event_name }}
-          - **Run number**: ${{ github.run_number }}
-          - **Commit**:  ${{ github.sha }}
-          - **Branch**: ${{ github.ref_name }}
-          
-          ## 📦 Sample Processing
-          
-          | Metric | Value |
-          |--------|-------|
-          | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
-          | **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
-
-          ## 🧑‍🎨 Avatar Normalization
-
-          | Metric | Count |
-          |--------|-------|
-          | **Processed** | ${{ steps.avatars.outputs.avatars_generated }} |
-          | **Skipped (cached)** | ${{ steps.avatars.outputs.avatars_skipped }} |
-          | **Updated** | ${{ steps.avatars.outputs.authors_updated }} |
-          | **Deleted (orphaned)** | ${{ steps.avatars.outputs.avatars_deleted }} |
-
-          ### Source Files
-          EOF
-
-          # Parse and display file stats
-          python3 << 'PYEOF'
-          import json
-          import os
-
-          file_stats_json = """${{ steps.merge.outputs.file_stats }}"""
-          
-          if file_stats_json:
-              try:
-                  file_stats = json.loads(file_stats_json)
-                  
-                  with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
-                      for filename, stats in file_stats.items():
-                          status_emoji = {
-                              "success": "✅",
-                              "not_found": "ℹ️",
-                              "empty": "⚠️",
-                              "no_samples": "⚠️",
-                              "json_error": "❌",
-                              "error": "❌"
-                          }.get(stats.get("status"), "❓")
-                          
-                          f.write(f"- {status_emoji} **{filename}** ({stats.get('type')}): {stats.get('count')} samples\n")
-              except: 
-                  pass
-          PYEOF
-
-          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
-          
-          ## 🖼️ Thumbnail Optimization
-          
-          | Metric | Count |
-          |--------|-------|
-          | **Samples with thumbnails|${{ steps.thumbs.outputs.samples_with_thumbnails }}|
-          | **Generated**| ${{ steps.thumbs.outputs.thumbnails_generated }}|
-          | **Failed**|${{ steps.thumbs.outputs.thumbnails_failed }}|
-
-          
-          EOF
-          
-          if [ "${{ steps.thumbs.outputs.has_thumb_failures }}" == "true" ]; then
-            echo "### ⚠️ Failed Thumbnails" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "The following thumbnails failed to process and are using original URLs.  See \`.metadata/thumbnail-failures.json\` for details:" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            if [ -f .metadata/thumbnail-failures.json ]; then
-              python3 << 'PYEOF'
-          import json
-          import os
-          
-          with open(".metadata/thumbnail-failures.json") as f:
-              failures = json.load(f)
-          
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
-              summary.write("| Sample | Error |\n")
-              summary.write("|--------|-------|\n")
-              for failure in failures:
-                  summary.write(f"| {failure['name']} | {failure['error']} |\n")
-          PYEOF
-            fi
-          fi
-          
-          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
-          
-          ## 📝 Git Changes
-          
-          | Status | Result |
-          |--------|--------|
-          | **Changes Detected** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |
-          | **Committed & Pushed** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No changes to commit' }} |
-          
-          ---
-          
-          ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ **Warning**:  Merge completed with errors.  Check `.metadata/merge-errors.json` for details.' || '✅ **Success**: All samples merged successfully!' }}
-          EOF
+          {
+            echo "# 📊 Merge All Samples Workflow Summary"
+            echo
+            echo "## Workflow Details"
+            echo "- **Triggered by**: ${{ github.event_name }}"
+            echo "- **Run number**: ${{ github.run_number }}"
+            echo "- **Commit**: ${{ github.sha }}"
+            echo "- **Branch**: ${{ github.ref_name }}"
+            echo
+            echo "## 📦 Sample Processing"
+            echo "| Metric | Value |"
+            echo "|--------|-------|"
+            echo "| **Total Samples** | ${{ steps.merge.outputs.total_samples }} |"
+            echo "| **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |"
+            echo
+            echo "## 🖼️ Thumbnails"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Generated/updated** | ${{ steps.thumbs.outputs.thumbnails_generated }} |"
+            echo "| **Failed** | ${{ steps.thumbs.outputs.thumbnails_failed }} |"
+            echo "| **Samples with thumbnail URL set** | ${{ steps.thumbs.outputs.samples_with_thumbnails }} |"
+            echo
+            echo "## 🧑‍🎨 Avatars"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Generated/updated** | ${{ steps.avatars.outputs.avatars_generated }} |"
+            echo "| **Updated** | ${{ steps.avatars.outputs.authors_updated }} |"
+            echo "| **Skipped** | ${{ steps.avatars.outputs.avatars_skipped }} |"
+            echo "| **Deleted (orphans)** | ${{ steps.avatars.outputs.avatars_deleted }} |"
+            echo
+            echo "## 📝 Git Changes"
+            echo "| Status | Result |"
+            echo "|--------|--------|"
+            echo "| **Changes Detected** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
