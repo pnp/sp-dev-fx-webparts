@@ -76,7 +76,6 @@ runs:
         const oldManifest = fs.existsSync(manifestPath)
           ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
           : {};
-        const newManifest = {};
 
         const newManifest = {};
 
