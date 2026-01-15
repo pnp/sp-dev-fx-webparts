@@ -244,27 +244,26 @@ jobs:
             likes = JSON.parse(fs.readFileSync(likesPath, "utf8"));
           }
 
-          const discussions = likes?.discussions && typeof likes.discussions === "object"
-            ? likes.discussions
-            : {};
+          const discussions =
+            likes && likes.discussions && typeof likes.discussions === "object"
+              ? likes.discussions
+              : {};
 
           for (const s of samples) {
-            const key = `sample:${s.name}`;   // join key matches tally action title convention
-            const d = discussions[key];
+            const titleKey = `sample:${s.name}`; // join key matches tally action title convention
+            const d = discussions[titleKey];
 
-            if (d) {
-              s.reactions = {
-                total: d.totalReactions ?? 0,
-                url: d.url ?? ""
-                allReactors: Array.isArray(d.allReactors) ? d.allReactors : []  
-              };
-            } else {
-              s.reactions = {
-                url: "",
-                totalReactions: 0,
-                allReactors: []
-              };
-            }
+            s.reactions = d
+              ? {
+                  url: d.url ?? "",
+                  totalReactions: d.totalReactions ?? 0,
+                  allReactors: Array.isArray(d.allReactors) ? d.allReactors : []
+                }
+              : {
+                  url: "",
+                  totalReactions: 0,
+                  allReactors: []
+                };
           }
 
           const dataDir = path.resolve("Docs/docs/data");
@@ -284,7 +283,7 @@ jobs:
             for (const a of authors) {
               if (!a) continue;
 
-                           const key =
+              const key =
                 (a.gitHubAccount && `gh:${a.gitHubAccount.toLowerCase()}`) ||
                 (a.avatarSourceUrl && `src:${a.avatarSourceUrl}`) ||
                 (a.pictureUrl && `pic:${a.pictureUrl}`) ||
