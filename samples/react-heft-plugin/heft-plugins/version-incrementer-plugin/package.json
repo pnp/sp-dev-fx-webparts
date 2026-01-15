@@ -1,0 +1,19 @@
+{
+  "name": "version-incrementer-plugin",
+  "version": "1.0.0",
+  "description": "Heft plugin to auto-increment version for SPFx production builds",
+  "main": "lib/VersionIncrementerPlugin.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@rushstack/heft": "^1.1.2",
+    "@rushstack/node-core-library": "^5.11.4",
+    "semver": "^7.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/semver": "^7.5.0",
+    "typescript": "~5.8.0"
+  }
+}
